@@ -16,12 +16,10 @@
 #
 
 
-%bcond_with	zypper_posttrans
-
-%define texlive_version  2021
-%define texlive_previous 2020
-%define texlive_release  20210325
-%define texlive_noarch   189
+%define texlive_version  2022
+%define texlive_previous 2021
+%define texlive_release  20220321
+%define texlive_noarch   191
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -57,7 +55,7 @@
 %define _appdefdir      %{_x11data}/app-defaults
 
 Name:           texlive-specs-i
-Version:        2021
+Version:        2022
 Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
@@ -102,7 +100,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-eskd-doc >= %{texlive_version}
+Suggests:       texlive-eskd-doc >= %{texlive_version}
 Provides:       tex(eskd.cls)
 Requires:       tex(article.cls)
 Requires:       tex(babel.sty)
@@ -113,8 +111,8 @@ Requires:       tex(inputenc.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(lastpage.sty)
 Requires:       tex(rotating.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
 Source1:        eskd.tar.xz
 Source2:        eskd.doc.tar.xz
 
@@ -148,9 +146,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-eskd
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -164,9 +159,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-eskd
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/eskd/eskd.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-eskd-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
-%endif
 
 %package -n texlive-eskdx
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.98svn29235
@@ -195,7 +187,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-eskdx-doc >= %{texlive_version}
+Suggests:       texlive-eskdx-doc >= %{texlive_version}
 Provides:       tex(eskdafterpkg.sty)
 Provides:       tex(eskdappsheet.sty)
 Provides:       tex(eskdbiblist.sty)
@@ -243,8 +235,8 @@ Requires:       tex(longtable.sty)
 Requires:       tex(lscape.sty)
 Requires:       tex(rotating.sty)
 Requires:       tex(zref-perpage.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
 Source3:        eskdx.tar.xz
 Source4:        eskdx.doc.tar.xz
 
@@ -279,9 +271,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-eskdx
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -384,9 +373,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/eskdx/eskdtitlebase.sty
 %{_texmfdistdir}/tex/latex/eskdx/eskdtotal.sty
 %{_texmfdistdir}/tex/latex/eskdx/eskdukrainian.def
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-eskdx-%{texlive_version}.%{texlive_noarch}.0.0.98svn29235-%{release}-zypper
-%endif
 
 %package -n texlive-eso-pic
 Version:        %{texlive_version}.%{texlive_noarch}.3.0asvn56658
@@ -415,14 +401,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-eso-pic-doc >= %{texlive_version}
+Suggests:       texlive-eso-pic-doc >= %{texlive_version}
 Provides:       tex(eso-pic.sty)
 Provides:       tex(showframe.sty)
 Requires:       tex(color.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(xcolor.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
 Source5:        eso-pic.tar.xz
 Source6:        eso-pic.doc.tar.xz
 
@@ -457,9 +443,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-eso-pic
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -478,9 +461,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/eso-pic/eso-pic.sty
 %{_texmfdistdir}/tex/latex/eso-pic/showframe.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-eso-pic-%{texlive_version}.%{texlive_noarch}.3.0asvn56658-%{release}-zypper
-%endif
 
 %package -n texlive-esrelation
 Version:        %{texlive_version}.%{texlive_noarch}.svn37236
@@ -521,13 +501,13 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-esrelation-fonts >= %{texlive_version}
-Recommends:     texlive-esrelation-doc >= %{texlive_version}
+Suggests:       texlive-esrelation-doc >= %{texlive_version}
 Provides:       tex(esrelation.map)
 Provides:       tex(esrelation.sty)
 Provides:       tex(esrelation10.tfm)
 Provides:       tex(uesrelation.fd)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
 Source7:        esrelation.tar.xz
 Source8:        esrelation.doc.tar.xz
 
@@ -594,9 +574,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-esrelation
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -626,9 +603,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-esrelation/fonts.dir
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-esrelation/fonts.scale
 %{_datadir}/fonts/texlive-esrelation/esrelation10.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-esrelation-fonts-%{texlive_version}.%{texlive_noarch}.svn37236-%{release}-zypper
-%endif
 
 %package -n texlive-esstix
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn22426
@@ -669,7 +643,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-esstix-fonts >= %{texlive_version}
-Recommends:     texlive-esstix-doc >= %{texlive_version}
+Suggests:       texlive-esstix-doc >= %{texlive_version}
 Provides:       tex(ESSTIX.map)
 Provides:       tex(esstixbb.sty)
 Provides:       tex(esstixbb.tfm)
@@ -688,8 +662,8 @@ Provides:       tex(uesstixcal.fd)
 Provides:       tex(uesstixfrak.fd)
 Requires:       tex(cmr10.tfm)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
 Source9:        esstix.tar.xz
 Source10:       esstix.doc.tar.xz
 
@@ -745,9 +719,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-esstix
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -871,9 +842,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-esstix/ESSTIX7_.pfb
 %{_datadir}/fonts/texlive-esstix/ESSTIX8_.pfb
 %{_datadir}/fonts/texlive-esstix/ESSTIX9_.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-esstix-fonts-%{texlive_version}.%{texlive_noarch}.1.0svn22426-%{release}-zypper
-%endif
 
 %package -n texlive-estcpmm
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn17335
@@ -902,7 +870,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-estcpmm-doc >= %{texlive_version}
+Suggests:       texlive-estcpmm-doc >= %{texlive_version}
 Provides:       tex(estcpmm.cls)
 Requires:       tex(book.cls)
 Requires:       tex(caption.sty)
@@ -912,8 +880,8 @@ Requires:       tex(geometry.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(helvet.sty)
 Requires:       tex(mathptmx.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
 Source11:       estcpmm.tar.xz
 Source12:       estcpmm.doc.tar.xz
 
@@ -950,9 +918,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-estcpmm
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -969,9 +934,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-estcpmm
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/estcpmm/estcpmm.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-estcpmm-%{texlive_version}.%{texlive_noarch}.0.0.4svn17335-%{release}-zypper
-%endif
 
 %package -n texlive-esvect
 Version:        %{texlive_version}.%{texlive_noarch}.1.3svn32098
@@ -1012,7 +974,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-esvect-fonts >= %{texlive_version}
-Recommends:     texlive-esvect-doc >= %{texlive_version}
+Suggests:       texlive-esvect-doc >= %{texlive_version}
 Provides:       tex(esvect.map)
 Provides:       tex(esvect.sty)
 Provides:       tex(uesvect.fd)
@@ -1022,8 +984,8 @@ Provides:       tex(vect6.tfm)
 Provides:       tex(vect7.tfm)
 Provides:       tex(vect8.tfm)
 Provides:       tex(vect9.tfm)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
 Source13:       esvect.tar.xz
 Source14:       esvect.doc.tar.xz
 
@@ -1077,9 +1039,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-esvect
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -1130,9 +1089,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-esvect/vect7.pfb
 %{_datadir}/fonts/texlive-esvect/vect8.pfb
 %{_datadir}/fonts/texlive-esvect/vect9.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-esvect-fonts-%{texlive_version}.%{texlive_noarch}.1.3svn32098-%{release}-zypper
-%endif
 
 %package -n texlive-etaremune
 Version:        %{texlive_version}.%{texlive_noarch}.1.2svn15878
@@ -1161,11 +1117,11 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-etaremune-doc >= %{texlive_version}
+Suggests:       texlive-etaremune-doc >= %{texlive_version}
 Provides:       tex(etaremune.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
 Source15:       etaremune.tar.xz
 Source16:       etaremune.doc.tar.xz
 
@@ -1200,9 +1156,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-etaremune
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -1214,12 +1167,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-etaremune
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/etaremune/etaremune.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-etaremune-%{texlive_version}.%{texlive_noarch}.1.2svn15878-%{release}-zypper
-%endif
 
 %package -n texlive-etbb
-Version:        %{texlive_version}.%{texlive_noarch}.1.051svn56390
+Version:        %{texlive_version}.%{texlive_noarch}.1.056svn61872
 Release:        0
 License:        LPPL-1.0
 Summary:        An expansion of Edward Tufte's ET-Bembo family
@@ -1257,25 +1207,31 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-etbb-fonts >= %{texlive_version}
-Recommends:     texlive-etbb-doc >= %{texlive_version}
+Suggests:       texlive-etbb-doc >= %{texlive_version}
 Provides:       tex(ETbb-Bold-dnom-ly1--base.tfm)
 Provides:       tex(ETbb-Bold-dnom-ly1.tfm)
 Provides:       tex(ETbb-Bold-dnom-ly1.vf)
+Provides:       tex(ETbb-Bold-dnom-ot1--base.tfm)
 Provides:       tex(ETbb-Bold-dnom-ot1.tfm)
+Provides:       tex(ETbb-Bold-dnom-ot1.vf)
 Provides:       tex(ETbb-Bold-dnom-t1--base.tfm)
 Provides:       tex(ETbb-Bold-dnom-t1.tfm)
 Provides:       tex(ETbb-Bold-dnom-t1.vf)
 Provides:       tex(ETbb-Bold-inf-ly1--base.tfm)
 Provides:       tex(ETbb-Bold-inf-ly1.tfm)
 Provides:       tex(ETbb-Bold-inf-ly1.vf)
+Provides:       tex(ETbb-Bold-inf-ot1--base.tfm)
 Provides:       tex(ETbb-Bold-inf-ot1.tfm)
+Provides:       tex(ETbb-Bold-inf-ot1.vf)
 Provides:       tex(ETbb-Bold-inf-t1--base.tfm)
 Provides:       tex(ETbb-Bold-inf-t1.tfm)
 Provides:       tex(ETbb-Bold-inf-t1.vf)
 Provides:       tex(ETbb-Bold-lf-ly1--base.tfm)
 Provides:       tex(ETbb-Bold-lf-ly1.tfm)
 Provides:       tex(ETbb-Bold-lf-ly1.vf)
+Provides:       tex(ETbb-Bold-lf-ot1--base.tfm)
 Provides:       tex(ETbb-Bold-lf-ot1.tfm)
+Provides:       tex(ETbb-Bold-lf-ot1.vf)
 Provides:       tex(ETbb-Bold-lf-sc-ly1--base.tfm)
 Provides:       tex(ETbb-Bold-lf-sc-ly1.tfm)
 Provides:       tex(ETbb-Bold-lf-sc-ly1.vf)
@@ -1288,7 +1244,9 @@ Provides:       tex(ETbb-Bold-lf-sc-t1.vf)
 Provides:       tex(ETbb-Bold-lf-swash-ly1--base.tfm)
 Provides:       tex(ETbb-Bold-lf-swash-ly1.tfm)
 Provides:       tex(ETbb-Bold-lf-swash-ly1.vf)
+Provides:       tex(ETbb-Bold-lf-swash-ot1--base.tfm)
 Provides:       tex(ETbb-Bold-lf-swash-ot1.tfm)
+Provides:       tex(ETbb-Bold-lf-swash-ot1.vf)
 Provides:       tex(ETbb-Bold-lf-swash-t1--base.tfm)
 Provides:       tex(ETbb-Bold-lf-swash-t1.tfm)
 Provides:       tex(ETbb-Bold-lf-swash-t1.vf)
@@ -1301,7 +1259,9 @@ Provides:       tex(ETbb-Bold-lf-ts1.vf)
 Provides:       tex(ETbb-Bold-osf-ly1--base.tfm)
 Provides:       tex(ETbb-Bold-osf-ly1.tfm)
 Provides:       tex(ETbb-Bold-osf-ly1.vf)
+Provides:       tex(ETbb-Bold-osf-ot1--base.tfm)
 Provides:       tex(ETbb-Bold-osf-ot1.tfm)
+Provides:       tex(ETbb-Bold-osf-ot1.vf)
 Provides:       tex(ETbb-Bold-osf-sc-ly1--base.tfm)
 Provides:       tex(ETbb-Bold-osf-sc-ly1.tfm)
 Provides:       tex(ETbb-Bold-osf-sc-ly1.vf)
@@ -1314,7 +1274,9 @@ Provides:       tex(ETbb-Bold-osf-sc-t1.vf)
 Provides:       tex(ETbb-Bold-osf-swash-ly1--base.tfm)
 Provides:       tex(ETbb-Bold-osf-swash-ly1.tfm)
 Provides:       tex(ETbb-Bold-osf-swash-ly1.vf)
+Provides:       tex(ETbb-Bold-osf-swash-ot1--base.tfm)
 Provides:       tex(ETbb-Bold-osf-swash-ot1.tfm)
+Provides:       tex(ETbb-Bold-osf-swash-ot1.vf)
 Provides:       tex(ETbb-Bold-osf-swash-t1--base.tfm)
 Provides:       tex(ETbb-Bold-osf-swash-t1.tfm)
 Provides:       tex(ETbb-Bold-osf-swash-t1.vf)
@@ -1327,14 +1289,18 @@ Provides:       tex(ETbb-Bold-osf-ts1.vf)
 Provides:       tex(ETbb-Bold-sup-ly1--base.tfm)
 Provides:       tex(ETbb-Bold-sup-ly1.tfm)
 Provides:       tex(ETbb-Bold-sup-ly1.vf)
+Provides:       tex(ETbb-Bold-sup-ot1--base.tfm)
 Provides:       tex(ETbb-Bold-sup-ot1.tfm)
+Provides:       tex(ETbb-Bold-sup-ot1.vf)
 Provides:       tex(ETbb-Bold-sup-t1--base.tfm)
 Provides:       tex(ETbb-Bold-sup-t1.tfm)
 Provides:       tex(ETbb-Bold-sup-t1.vf)
 Provides:       tex(ETbb-Bold-tlf-ly1--base.tfm)
 Provides:       tex(ETbb-Bold-tlf-ly1.tfm)
 Provides:       tex(ETbb-Bold-tlf-ly1.vf)
+Provides:       tex(ETbb-Bold-tlf-ot1--base.tfm)
 Provides:       tex(ETbb-Bold-tlf-ot1.tfm)
+Provides:       tex(ETbb-Bold-tlf-ot1.vf)
 Provides:       tex(ETbb-Bold-tlf-sc-ly1--base.tfm)
 Provides:       tex(ETbb-Bold-tlf-sc-ly1.tfm)
 Provides:       tex(ETbb-Bold-tlf-sc-ly1.vf)
@@ -1347,7 +1313,9 @@ Provides:       tex(ETbb-Bold-tlf-sc-t1.vf)
 Provides:       tex(ETbb-Bold-tlf-swash-ly1--base.tfm)
 Provides:       tex(ETbb-Bold-tlf-swash-ly1.tfm)
 Provides:       tex(ETbb-Bold-tlf-swash-ly1.vf)
+Provides:       tex(ETbb-Bold-tlf-swash-ot1--base.tfm)
 Provides:       tex(ETbb-Bold-tlf-swash-ot1.tfm)
+Provides:       tex(ETbb-Bold-tlf-swash-ot1.vf)
 Provides:       tex(ETbb-Bold-tlf-swash-t1--base.tfm)
 Provides:       tex(ETbb-Bold-tlf-swash-t1.tfm)
 Provides:       tex(ETbb-Bold-tlf-swash-t1.vf)
@@ -1360,7 +1328,9 @@ Provides:       tex(ETbb-Bold-tlf-ts1.vf)
 Provides:       tex(ETbb-Bold-tosf-ly1--base.tfm)
 Provides:       tex(ETbb-Bold-tosf-ly1.tfm)
 Provides:       tex(ETbb-Bold-tosf-ly1.vf)
+Provides:       tex(ETbb-Bold-tosf-ot1--base.tfm)
 Provides:       tex(ETbb-Bold-tosf-ot1.tfm)
+Provides:       tex(ETbb-Bold-tosf-ot1.vf)
 Provides:       tex(ETbb-Bold-tosf-sc-ly1--base.tfm)
 Provides:       tex(ETbb-Bold-tosf-sc-ly1.tfm)
 Provides:       tex(ETbb-Bold-tosf-sc-ly1.vf)
@@ -1373,7 +1343,9 @@ Provides:       tex(ETbb-Bold-tosf-sc-t1.vf)
 Provides:       tex(ETbb-Bold-tosf-swash-ly1--base.tfm)
 Provides:       tex(ETbb-Bold-tosf-swash-ly1.tfm)
 Provides:       tex(ETbb-Bold-tosf-swash-ly1.vf)
+Provides:       tex(ETbb-Bold-tosf-swash-ot1--base.tfm)
 Provides:       tex(ETbb-Bold-tosf-swash-ot1.tfm)
+Provides:       tex(ETbb-Bold-tosf-swash-ot1.vf)
 Provides:       tex(ETbb-Bold-tosf-swash-t1--base.tfm)
 Provides:       tex(ETbb-Bold-tosf-swash-t1.tfm)
 Provides:       tex(ETbb-Bold-tosf-swash-t1.vf)
@@ -1386,21 +1358,27 @@ Provides:       tex(ETbb-Bold-tosf-ts1.vf)
 Provides:       tex(ETbb-BoldItalic-dnom-ly1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-dnom-ly1.tfm)
 Provides:       tex(ETbb-BoldItalic-dnom-ly1.vf)
+Provides:       tex(ETbb-BoldItalic-dnom-ot1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-dnom-ot1.tfm)
+Provides:       tex(ETbb-BoldItalic-dnom-ot1.vf)
 Provides:       tex(ETbb-BoldItalic-dnom-t1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-dnom-t1.tfm)
 Provides:       tex(ETbb-BoldItalic-dnom-t1.vf)
 Provides:       tex(ETbb-BoldItalic-inf-ly1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-inf-ly1.tfm)
 Provides:       tex(ETbb-BoldItalic-inf-ly1.vf)
+Provides:       tex(ETbb-BoldItalic-inf-ot1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-inf-ot1.tfm)
+Provides:       tex(ETbb-BoldItalic-inf-ot1.vf)
 Provides:       tex(ETbb-BoldItalic-inf-t1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-inf-t1.tfm)
 Provides:       tex(ETbb-BoldItalic-inf-t1.vf)
 Provides:       tex(ETbb-BoldItalic-lf-ly1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-lf-ly1.tfm)
 Provides:       tex(ETbb-BoldItalic-lf-ly1.vf)
+Provides:       tex(ETbb-BoldItalic-lf-ot1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-lf-ot1.tfm)
+Provides:       tex(ETbb-BoldItalic-lf-ot1.vf)
 Provides:       tex(ETbb-BoldItalic-lf-sc-ly1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-lf-sc-ly1.tfm)
 Provides:       tex(ETbb-BoldItalic-lf-sc-ly1.vf)
@@ -1413,7 +1391,9 @@ Provides:       tex(ETbb-BoldItalic-lf-sc-t1.vf)
 Provides:       tex(ETbb-BoldItalic-lf-swash-ly1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-lf-swash-ly1.tfm)
 Provides:       tex(ETbb-BoldItalic-lf-swash-ly1.vf)
+Provides:       tex(ETbb-BoldItalic-lf-swash-ot1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-lf-swash-ot1.tfm)
+Provides:       tex(ETbb-BoldItalic-lf-swash-ot1.vf)
 Provides:       tex(ETbb-BoldItalic-lf-swash-t1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-lf-swash-t1.tfm)
 Provides:       tex(ETbb-BoldItalic-lf-swash-t1.vf)
@@ -1426,7 +1406,9 @@ Provides:       tex(ETbb-BoldItalic-lf-ts1.vf)
 Provides:       tex(ETbb-BoldItalic-osf-ly1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-osf-ly1.tfm)
 Provides:       tex(ETbb-BoldItalic-osf-ly1.vf)
+Provides:       tex(ETbb-BoldItalic-osf-ot1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-osf-ot1.tfm)
+Provides:       tex(ETbb-BoldItalic-osf-ot1.vf)
 Provides:       tex(ETbb-BoldItalic-osf-sc-ly1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-osf-sc-ly1.tfm)
 Provides:       tex(ETbb-BoldItalic-osf-sc-ly1.vf)
@@ -1439,7 +1421,9 @@ Provides:       tex(ETbb-BoldItalic-osf-sc-t1.vf)
 Provides:       tex(ETbb-BoldItalic-osf-swash-ly1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-osf-swash-ly1.tfm)
 Provides:       tex(ETbb-BoldItalic-osf-swash-ly1.vf)
+Provides:       tex(ETbb-BoldItalic-osf-swash-ot1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-osf-swash-ot1.tfm)
+Provides:       tex(ETbb-BoldItalic-osf-swash-ot1.vf)
 Provides:       tex(ETbb-BoldItalic-osf-swash-t1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-osf-swash-t1.tfm)
 Provides:       tex(ETbb-BoldItalic-osf-swash-t1.vf)
@@ -1452,14 +1436,18 @@ Provides:       tex(ETbb-BoldItalic-osf-ts1.vf)
 Provides:       tex(ETbb-BoldItalic-sup-ly1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-sup-ly1.tfm)
 Provides:       tex(ETbb-BoldItalic-sup-ly1.vf)
+Provides:       tex(ETbb-BoldItalic-sup-ot1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-sup-ot1.tfm)
+Provides:       tex(ETbb-BoldItalic-sup-ot1.vf)
 Provides:       tex(ETbb-BoldItalic-sup-t1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-sup-t1.tfm)
 Provides:       tex(ETbb-BoldItalic-sup-t1.vf)
 Provides:       tex(ETbb-BoldItalic-tlf-ly1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-tlf-ly1.tfm)
 Provides:       tex(ETbb-BoldItalic-tlf-ly1.vf)
+Provides:       tex(ETbb-BoldItalic-tlf-ot1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-tlf-ot1.tfm)
+Provides:       tex(ETbb-BoldItalic-tlf-ot1.vf)
 Provides:       tex(ETbb-BoldItalic-tlf-sc-ly1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-tlf-sc-ly1.tfm)
 Provides:       tex(ETbb-BoldItalic-tlf-sc-ly1.vf)
@@ -1472,7 +1460,9 @@ Provides:       tex(ETbb-BoldItalic-tlf-sc-t1.vf)
 Provides:       tex(ETbb-BoldItalic-tlf-swash-ly1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-tlf-swash-ly1.tfm)
 Provides:       tex(ETbb-BoldItalic-tlf-swash-ly1.vf)
+Provides:       tex(ETbb-BoldItalic-tlf-swash-ot1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-tlf-swash-ot1.tfm)
+Provides:       tex(ETbb-BoldItalic-tlf-swash-ot1.vf)
 Provides:       tex(ETbb-BoldItalic-tlf-swash-t1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-tlf-swash-t1.tfm)
 Provides:       tex(ETbb-BoldItalic-tlf-swash-t1.vf)
@@ -1485,7 +1475,9 @@ Provides:       tex(ETbb-BoldItalic-tlf-ts1.vf)
 Provides:       tex(ETbb-BoldItalic-tosf-ly1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-tosf-ly1.tfm)
 Provides:       tex(ETbb-BoldItalic-tosf-ly1.vf)
+Provides:       tex(ETbb-BoldItalic-tosf-ot1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-tosf-ot1.tfm)
+Provides:       tex(ETbb-BoldItalic-tosf-ot1.vf)
 Provides:       tex(ETbb-BoldItalic-tosf-sc-ly1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-tosf-sc-ly1.tfm)
 Provides:       tex(ETbb-BoldItalic-tosf-sc-ly1.vf)
@@ -1498,7 +1490,9 @@ Provides:       tex(ETbb-BoldItalic-tosf-sc-t1.vf)
 Provides:       tex(ETbb-BoldItalic-tosf-swash-ly1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-tosf-swash-ly1.tfm)
 Provides:       tex(ETbb-BoldItalic-tosf-swash-ly1.vf)
+Provides:       tex(ETbb-BoldItalic-tosf-swash-ot1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-tosf-swash-ot1.tfm)
+Provides:       tex(ETbb-BoldItalic-tosf-swash-ot1.vf)
 Provides:       tex(ETbb-BoldItalic-tosf-swash-t1--base.tfm)
 Provides:       tex(ETbb-BoldItalic-tosf-swash-t1.tfm)
 Provides:       tex(ETbb-BoldItalic-tosf-swash-t1.vf)
@@ -1511,21 +1505,27 @@ Provides:       tex(ETbb-BoldItalic-tosf-ts1.vf)
 Provides:       tex(ETbb-Italic-dnom-ly1--base.tfm)
 Provides:       tex(ETbb-Italic-dnom-ly1.tfm)
 Provides:       tex(ETbb-Italic-dnom-ly1.vf)
+Provides:       tex(ETbb-Italic-dnom-ot1--base.tfm)
 Provides:       tex(ETbb-Italic-dnom-ot1.tfm)
+Provides:       tex(ETbb-Italic-dnom-ot1.vf)
 Provides:       tex(ETbb-Italic-dnom-t1--base.tfm)
 Provides:       tex(ETbb-Italic-dnom-t1.tfm)
 Provides:       tex(ETbb-Italic-dnom-t1.vf)
 Provides:       tex(ETbb-Italic-inf-ly1--base.tfm)
 Provides:       tex(ETbb-Italic-inf-ly1.tfm)
 Provides:       tex(ETbb-Italic-inf-ly1.vf)
+Provides:       tex(ETbb-Italic-inf-ot1--base.tfm)
 Provides:       tex(ETbb-Italic-inf-ot1.tfm)
+Provides:       tex(ETbb-Italic-inf-ot1.vf)
 Provides:       tex(ETbb-Italic-inf-t1--base.tfm)
 Provides:       tex(ETbb-Italic-inf-t1.tfm)
 Provides:       tex(ETbb-Italic-inf-t1.vf)
 Provides:       tex(ETbb-Italic-lf-ly1--base.tfm)
 Provides:       tex(ETbb-Italic-lf-ly1.tfm)
 Provides:       tex(ETbb-Italic-lf-ly1.vf)
+Provides:       tex(ETbb-Italic-lf-ot1--base.tfm)
 Provides:       tex(ETbb-Italic-lf-ot1.tfm)
+Provides:       tex(ETbb-Italic-lf-ot1.vf)
 Provides:       tex(ETbb-Italic-lf-sc-ly1--base.tfm)
 Provides:       tex(ETbb-Italic-lf-sc-ly1.tfm)
 Provides:       tex(ETbb-Italic-lf-sc-ly1.vf)
@@ -1538,7 +1538,9 @@ Provides:       tex(ETbb-Italic-lf-sc-t1.vf)
 Provides:       tex(ETbb-Italic-lf-swash-ly1--base.tfm)
 Provides:       tex(ETbb-Italic-lf-swash-ly1.tfm)
 Provides:       tex(ETbb-Italic-lf-swash-ly1.vf)
+Provides:       tex(ETbb-Italic-lf-swash-ot1--base.tfm)
 Provides:       tex(ETbb-Italic-lf-swash-ot1.tfm)
+Provides:       tex(ETbb-Italic-lf-swash-ot1.vf)
 Provides:       tex(ETbb-Italic-lf-swash-t1--base.tfm)
 Provides:       tex(ETbb-Italic-lf-swash-t1.tfm)
 Provides:       tex(ETbb-Italic-lf-swash-t1.vf)
@@ -1551,7 +1553,9 @@ Provides:       tex(ETbb-Italic-lf-ts1.vf)
 Provides:       tex(ETbb-Italic-osf-ly1--base.tfm)
 Provides:       tex(ETbb-Italic-osf-ly1.tfm)
 Provides:       tex(ETbb-Italic-osf-ly1.vf)
+Provides:       tex(ETbb-Italic-osf-ot1--base.tfm)
 Provides:       tex(ETbb-Italic-osf-ot1.tfm)
+Provides:       tex(ETbb-Italic-osf-ot1.vf)
 Provides:       tex(ETbb-Italic-osf-sc-ly1--base.tfm)
 Provides:       tex(ETbb-Italic-osf-sc-ly1.tfm)
 Provides:       tex(ETbb-Italic-osf-sc-ly1.vf)
@@ -1564,7 +1568,9 @@ Provides:       tex(ETbb-Italic-osf-sc-t1.vf)
 Provides:       tex(ETbb-Italic-osf-swash-ly1--base.tfm)
 Provides:       tex(ETbb-Italic-osf-swash-ly1.tfm)
 Provides:       tex(ETbb-Italic-osf-swash-ly1.vf)
+Provides:       tex(ETbb-Italic-osf-swash-ot1--base.tfm)
 Provides:       tex(ETbb-Italic-osf-swash-ot1.tfm)
+Provides:       tex(ETbb-Italic-osf-swash-ot1.vf)
 Provides:       tex(ETbb-Italic-osf-swash-t1--base.tfm)
 Provides:       tex(ETbb-Italic-osf-swash-t1.tfm)
 Provides:       tex(ETbb-Italic-osf-swash-t1.vf)
@@ -1577,14 +1583,18 @@ Provides:       tex(ETbb-Italic-osf-ts1.vf)
 Provides:       tex(ETbb-Italic-sup-ly1--base.tfm)
 Provides:       tex(ETbb-Italic-sup-ly1.tfm)
 Provides:       tex(ETbb-Italic-sup-ly1.vf)
+Provides:       tex(ETbb-Italic-sup-ot1--base.tfm)
 Provides:       tex(ETbb-Italic-sup-ot1.tfm)
+Provides:       tex(ETbb-Italic-sup-ot1.vf)
 Provides:       tex(ETbb-Italic-sup-t1--base.tfm)
 Provides:       tex(ETbb-Italic-sup-t1.tfm)
 Provides:       tex(ETbb-Italic-sup-t1.vf)
 Provides:       tex(ETbb-Italic-tlf-ly1--base.tfm)
 Provides:       tex(ETbb-Italic-tlf-ly1.tfm)
 Provides:       tex(ETbb-Italic-tlf-ly1.vf)
+Provides:       tex(ETbb-Italic-tlf-ot1--base.tfm)
 Provides:       tex(ETbb-Italic-tlf-ot1.tfm)
+Provides:       tex(ETbb-Italic-tlf-ot1.vf)
 Provides:       tex(ETbb-Italic-tlf-sc-ly1--base.tfm)
 Provides:       tex(ETbb-Italic-tlf-sc-ly1.tfm)
 Provides:       tex(ETbb-Italic-tlf-sc-ly1.vf)
@@ -1597,7 +1607,9 @@ Provides:       tex(ETbb-Italic-tlf-sc-t1.vf)
 Provides:       tex(ETbb-Italic-tlf-swash-ly1--base.tfm)
 Provides:       tex(ETbb-Italic-tlf-swash-ly1.tfm)
 Provides:       tex(ETbb-Italic-tlf-swash-ly1.vf)
+Provides:       tex(ETbb-Italic-tlf-swash-ot1--base.tfm)
 Provides:       tex(ETbb-Italic-tlf-swash-ot1.tfm)
+Provides:       tex(ETbb-Italic-tlf-swash-ot1.vf)
 Provides:       tex(ETbb-Italic-tlf-swash-t1--base.tfm)
 Provides:       tex(ETbb-Italic-tlf-swash-t1.tfm)
 Provides:       tex(ETbb-Italic-tlf-swash-t1.vf)
@@ -1610,7 +1622,9 @@ Provides:       tex(ETbb-Italic-tlf-ts1.vf)
 Provides:       tex(ETbb-Italic-tosf-ly1--base.tfm)
 Provides:       tex(ETbb-Italic-tosf-ly1.tfm)
 Provides:       tex(ETbb-Italic-tosf-ly1.vf)
+Provides:       tex(ETbb-Italic-tosf-ot1--base.tfm)
 Provides:       tex(ETbb-Italic-tosf-ot1.tfm)
+Provides:       tex(ETbb-Italic-tosf-ot1.vf)
 Provides:       tex(ETbb-Italic-tosf-sc-ly1--base.tfm)
 Provides:       tex(ETbb-Italic-tosf-sc-ly1.tfm)
 Provides:       tex(ETbb-Italic-tosf-sc-ly1.vf)
@@ -1623,7 +1637,9 @@ Provides:       tex(ETbb-Italic-tosf-sc-t1.vf)
 Provides:       tex(ETbb-Italic-tosf-swash-ly1--base.tfm)
 Provides:       tex(ETbb-Italic-tosf-swash-ly1.tfm)
 Provides:       tex(ETbb-Italic-tosf-swash-ly1.vf)
+Provides:       tex(ETbb-Italic-tosf-swash-ot1--base.tfm)
 Provides:       tex(ETbb-Italic-tosf-swash-ot1.tfm)
+Provides:       tex(ETbb-Italic-tosf-swash-ot1.vf)
 Provides:       tex(ETbb-Italic-tosf-swash-t1--base.tfm)
 Provides:       tex(ETbb-Italic-tosf-swash-t1.tfm)
 Provides:       tex(ETbb-Italic-tosf-swash-t1.vf)
@@ -1760,9 +1776,6 @@ Provides:       tex(ETbb-Regular-tosf-ts1.tfm)
 Provides:       tex(ETbb-Regular-tosf-ts1.vf)
 Provides:       tex(ETbb.map)
 Provides:       tex(ETbb.sty)
-Provides:       tex(Etbb1-Bold-dnom-t1--base.tfm)
-Provides:       tex(Etbb1-Bold-dnom-t1.tfm)
-Provides:       tex(Etbb1-Bold-dnom-t1.vf)
 Provides:       tex(Etbb1-Bold-lf-sc-t1--base.tfm)
 Provides:       tex(Etbb1-Bold-lf-sc-t1.tfm)
 Provides:       tex(Etbb1-Bold-lf-sc-t1.vf)
@@ -1799,9 +1812,6 @@ Provides:       tex(Etbb1-Bold-tosf-swash-t1.vf)
 Provides:       tex(Etbb1-Bold-tosf-t1--base.tfm)
 Provides:       tex(Etbb1-Bold-tosf-t1.tfm)
 Provides:       tex(Etbb1-Bold-tosf-t1.vf)
-Provides:       tex(Etbb1-BoldItalic-dnom-t1--base.tfm)
-Provides:       tex(Etbb1-BoldItalic-dnom-t1.tfm)
-Provides:       tex(Etbb1-BoldItalic-dnom-t1.vf)
 Provides:       tex(Etbb1-BoldItalic-lf-sc-t1--base.tfm)
 Provides:       tex(Etbb1-BoldItalic-lf-sc-t1.tfm)
 Provides:       tex(Etbb1-BoldItalic-lf-sc-t1.vf)
@@ -1838,9 +1848,6 @@ Provides:       tex(Etbb1-BoldItalic-tosf-swash-t1.vf)
 Provides:       tex(Etbb1-BoldItalic-tosf-t1--base.tfm)
 Provides:       tex(Etbb1-BoldItalic-tosf-t1.tfm)
 Provides:       tex(Etbb1-BoldItalic-tosf-t1.vf)
-Provides:       tex(Etbb1-Italic-dnom-t1--base.tfm)
-Provides:       tex(Etbb1-Italic-dnom-t1.tfm)
-Provides:       tex(Etbb1-Italic-dnom-t1.vf)
 Provides:       tex(Etbb1-Italic-lf-sc-t1--base.tfm)
 Provides:       tex(Etbb1-Italic-lf-sc-t1.tfm)
 Provides:       tex(Etbb1-Italic-lf-sc-t1.vf)
@@ -1877,9 +1884,6 @@ Provides:       tex(Etbb1-Italic-tosf-swash-t1.vf)
 Provides:       tex(Etbb1-Italic-tosf-t1--base.tfm)
 Provides:       tex(Etbb1-Italic-tosf-t1.tfm)
 Provides:       tex(Etbb1-Italic-tosf-t1.vf)
-Provides:       tex(Etbb1-Regular-dnom-t1--base.tfm)
-Provides:       tex(Etbb1-Regular-dnom-t1.tfm)
-Provides:       tex(Etbb1-Regular-dnom-t1.vf)
 Provides:       tex(Etbb1-Regular-lf-sc-t1--base.tfm)
 Provides:       tex(Etbb1-Regular-lf-sc-t1.tfm)
 Provides:       tex(Etbb1-Regular-lf-sc-t1.vf)
@@ -1941,141 +1945,132 @@ Provides:       tex(TS1ETbb-LF.fd)
 Provides:       tex(TS1ETbb-OsF.fd)
 Provides:       tex(TS1ETbb-TLF.fd)
 Provides:       tex(TS1ETbb-TOsF.fd)
-Provides:       tex(etbb1_2wngtz.enc)
 Provides:       tex(etbb1_3ccbvp.enc)
-Provides:       tex(etbb1_5325we.enc)
-Provides:       tex(etbb1_77pqsh.enc)
+Provides:       tex(etbb1_3ggaku.enc)
+Provides:       tex(etbb1_6bhqsy.enc)
+Provides:       tex(etbb1_6dkfmm.enc)
+Provides:       tex(etbb1_d63baf.enc)
+Provides:       tex(etbb1_dpvwoq.enc)
 Provides:       tex(etbb1_eqc2ac.enc)
+Provides:       tex(etbb1_frcze6.enc)
 Provides:       tex(etbb1_hah5or.enc)
-Provides:       tex(etbb1_hibu6u.enc)
+Provides:       tex(etbb1_mfrons.enc)
 Provides:       tex(etbb1_mgm6re.enc)
 Provides:       tex(etbb1_pvrda3.enc)
-Provides:       tex(etbb1_rwec2l.enc)
-Provides:       tex(etbb1_sp7p3o.enc)
+Provides:       tex(etbb1_sb7odk.enc)
 Provides:       tex(etbb1_vtabip.enc)
-Provides:       tex(etbb1_w52zjg.enc)
-Provides:       tex(etbb1_x5rskw.enc)
 Provides:       tex(etbb1_xaqh3v.enc)
 Provides:       tex(etbb1_yziesh.enc)
-Provides:       tex(etbb1_zxy3n5.enc)
-Provides:       tex(etbb_22apno.enc)
 Provides:       tex(etbb_242knm.enc)
-Provides:       tex(etbb_2wngtz.enc)
+Provides:       tex(etbb_2jmcdk.enc)
+Provides:       tex(etbb_2ynk4h.enc)
 Provides:       tex(etbb_33mftd.enc)
 Provides:       tex(etbb_3ccbvp.enc)
-Provides:       tex(etbb_3jmjat.enc)
-Provides:       tex(etbb_3li7dq.enc)
-Provides:       tex(etbb_3pfdgz.enc)
+Provides:       tex(etbb_3ggaku.enc)
+Provides:       tex(etbb_3obh62.enc)
+Provides:       tex(etbb_3pymqv.enc)
+Provides:       tex(etbb_3ygfa2.enc)
+Provides:       tex(etbb_42bwpg.enc)
 Provides:       tex(etbb_4hpi45.enc)
-Provides:       tex(etbb_4qfaj2.enc)
+Provides:       tex(etbb_4o3pf4.enc)
 Provides:       tex(etbb_4sxvu4.enc)
-Provides:       tex(etbb_4x2qhb.enc)
-Provides:       tex(etbb_5325we.enc)
-Provides:       tex(etbb_5cjnk5.enc)
+Provides:       tex(etbb_4xv7ax.enc)
+Provides:       tex(etbb_5drz2o.enc)
 Provides:       tex(etbb_5iollt.enc)
-Provides:       tex(etbb_6tax72.enc)
-Provides:       tex(etbb_77pqsh.enc)
+Provides:       tex(etbb_5um4so.enc)
+Provides:       tex(etbb_65swoa.enc)
+Provides:       tex(etbb_6bhqsy.enc)
+Provides:       tex(etbb_6dkfmm.enc)
+Provides:       tex(etbb_6z6nrw.enc)
+Provides:       tex(etbb_7dlbn4.enc)
+Provides:       tex(etbb_7ipmvr.enc)
 Provides:       tex(etbb_7pzsmk.enc)
 Provides:       tex(etbb_7t4ywj.enc)
+Provides:       tex(etbb_7tqudy.enc)
+Provides:       tex(etbb_7uz5xh.enc)
 Provides:       tex(etbb_atf2m5.enc)
-Provides:       tex(etbb_ay4ati.enc)
-Provides:       tex(etbb_behrx3.enc)
-Provides:       tex(etbb_bowihu.enc)
-Provides:       tex(etbb_c6gjhm.enc)
-Provides:       tex(etbb_chsevo.enc)
-Provides:       tex(etbb_cluc7m.enc)
-Provides:       tex(etbb_cpb6sd.enc)
-Provides:       tex(etbb_cpdyi3.enc)
-Provides:       tex(etbb_cpixk3.enc)
+Provides:       tex(etbb_b3flk2.enc)
+Provides:       tex(etbb_bb5xlm.enc)
+Provides:       tex(etbb_boj3jd.enc)
 Provides:       tex(etbb_cq6xx2.enc)
-Provides:       tex(etbb_cuqhrj.enc)
 Provides:       tex(etbb_cxbogn.enc)
+Provides:       tex(etbb_cyp5f5.enc)
 Provides:       tex(etbb_cyyszv.enc)
-Provides:       tex(etbb_dcps7k.enc)
-Provides:       tex(etbb_dep6cd.enc)
-Provides:       tex(etbb_dz2qg3.enc)
-Provides:       tex(etbb_e3m4fz.enc)
-Provides:       tex(etbb_ea2dgh.enc)
+Provides:       tex(etbb_d63baf.enc)
+Provides:       tex(etbb_dkuysn.enc)
+Provides:       tex(etbb_dpvwoq.enc)
+Provides:       tex(etbb_e7zo2o.enc)
+Provides:       tex(etbb_ehl4wc.enc)
 Provides:       tex(etbb_elsw3h.enc)
 Provides:       tex(etbb_eqc2ac.enc)
+Provides:       tex(etbb_eqlboo.enc)
 Provides:       tex(etbb_f55msl.enc)
-Provides:       tex(etbb_f7n52p.enc)
-Provides:       tex(etbb_f7rui7.enc)
 Provides:       tex(etbb_fpvlkw.enc)
-Provides:       tex(etbb_ftphfy.enc)
-Provides:       tex(etbb_fue2l2.enc)
+Provides:       tex(etbb_frcze6.enc)
+Provides:       tex(etbb_fveuju.enc)
 Provides:       tex(etbb_fwcdph.enc)
-Provides:       tex(etbb_gkmjhd.enc)
-Provides:       tex(etbb_gtayjy.enc)
+Provides:       tex(etbb_fyek6u.enc)
+Provides:       tex(etbb_g2yynh.enc)
+Provides:       tex(etbb_gteq3q.enc)
 Provides:       tex(etbb_gtqfg2.enc)
-Provides:       tex(etbb_h4dyum.enc)
 Provides:       tex(etbb_hah5or.enc)
-Provides:       tex(etbb_hcre2c.enc)
-Provides:       tex(etbb_hibu6u.enc)
+Provides:       tex(etbb_hdnox5.enc)
+Provides:       tex(etbb_hn62ay.enc)
+Provides:       tex(etbb_i2z4ax.enc)
 Provides:       tex(etbb_i5ezvi.enc)
-Provides:       tex(etbb_ihmnlr.enc)
-Provides:       tex(etbb_imedjx.enc)
+Provides:       tex(etbb_izxro2.enc)
+Provides:       tex(etbb_j43iwo.enc)
+Provides:       tex(etbb_j4gzyc.enc)
 Provides:       tex(etbb_j7myeh.enc)
-Provides:       tex(etbb_kkjcws.enc)
-Provides:       tex(etbb_ko4aue.enc)
-Provides:       tex(etbb_kuig7z.enc)
+Provides:       tex(etbb_jjhcst.enc)
 Provides:       tex(etbb_kvzzr3.enc)
-Provides:       tex(etbb_lchj55.enc)
-Provides:       tex(etbb_lfrz6w.enc)
-Provides:       tex(etbb_lolxkk.enc)
+Provides:       tex(etbb_ladhhj.enc)
 Provides:       tex(etbb_m5kdwt.enc)
+Provides:       tex(etbb_mfrons.enc)
 Provides:       tex(etbb_mgm6re.enc)
 Provides:       tex(etbb_mpvq56.enc)
-Provides:       tex(etbb_na6tk5.enc)
-Provides:       tex(etbb_nfh2ow.enc)
-Provides:       tex(etbb_nnawaw.enc)
+Provides:       tex(etbb_n73bzf.enc)
+Provides:       tex(etbb_num7wi.enc)
+Provides:       tex(etbb_nvfc5y.enc)
+Provides:       tex(etbb_oe3mzn.enc)
 Provides:       tex(etbb_ohc25e.enc)
-Provides:       tex(etbb_ohvjcv.enc)
+Provides:       tex(etbb_olodrh.enc)
+Provides:       tex(etbb_onypnl.enc)
+Provides:       tex(etbb_ooqfsa.enc)
+Provides:       tex(etbb_ow4ien.enc)
 Provides:       tex(etbb_oynaqb.enc)
-Provides:       tex(etbb_p4wmli.enc)
-Provides:       tex(etbb_pijcl4.enc)
+Provides:       tex(etbb_p6ehom.enc)
+Provides:       tex(etbb_pqh27d.enc)
 Provides:       tex(etbb_pvrda3.enc)
-Provides:       tex(etbb_qmwyqz.enc)
-Provides:       tex(etbb_qqjyre.enc)
-Provides:       tex(etbb_r34xpu.enc)
+Provides:       tex(etbb_q62n24.enc)
+Provides:       tex(etbb_rgl4wj.enc)
 Provides:       tex(etbb_riohwx.enc)
-Provides:       tex(etbb_rt4kro.enc)
-Provides:       tex(etbb_rwec2l.enc)
 Provides:       tex(etbb_rzlqzq.enc)
-Provides:       tex(etbb_s2dnn6.enc)
-Provides:       tex(etbb_sk3nrp.enc)
+Provides:       tex(etbb_sb7odk.enc)
+Provides:       tex(etbb_sjtq2a.enc)
 Provides:       tex(etbb_skushq.enc)
-Provides:       tex(etbb_sp7p3o.enc)
-Provides:       tex(etbb_sz3fgd.enc)
+Provides:       tex(etbb_t4d6nl.enc)
 Provides:       tex(etbb_tbmtgo.enc)
-Provides:       tex(etbb_tif2yn.enc)
-Provides:       tex(etbb_ujmsnd.enc)
-Provides:       tex(etbb_un2f5f.enc)
-Provides:       tex(etbb_uoncjt.enc)
-Provides:       tex(etbb_v2eodf.enc)
+Provides:       tex(etbb_tunzhv.enc)
+Provides:       tex(etbb_ujzbb6.enc)
 Provides:       tex(etbb_v6nho7.enc)
-Provides:       tex(etbb_vmkycp.enc)
+Provides:       tex(etbb_vazzz3.enc)
+Provides:       tex(etbb_veuqiz.enc)
+Provides:       tex(etbb_vmilsn.enc)
+Provides:       tex(etbb_vqghpl.enc)
 Provides:       tex(etbb_vtabip.enc)
-Provides:       tex(etbb_w52zjg.enc)
-Provides:       tex(etbb_whnzkz.enc)
-Provides:       tex(etbb_wplash.enc)
-Provides:       tex(etbb_x5rskw.enc)
 Provides:       tex(etbb_xaqh3v.enc)
-Provides:       tex(etbb_xdptht.enc)
 Provides:       tex(etbb_xe5wuh.enc)
 Provides:       tex(etbb_xmn5et.enc)
+Provides:       tex(etbb_xwgzeq.enc)
+Provides:       tex(etbb_y6dqd4.enc)
+Provides:       tex(etbb_yadlkl.enc)
 Provides:       tex(etbb_ybjyd4.enc)
-Provides:       tex(etbb_ydcfbc.enc)
-Provides:       tex(etbb_yhvmm4.enc)
 Provides:       tex(etbb_yiqwpu.enc)
-Provides:       tex(etbb_yjlloh.enc)
 Provides:       tex(etbb_ytzykv.enc)
 Provides:       tex(etbb_yziesh.enc)
 Provides:       tex(etbb_yzoycr.enc)
-Provides:       tex(etbb_yzujze.enc)
-Provides:       tex(etbb_z6brcn.enc)
 Provides:       tex(etbb_zpkt7y.enc)
-Provides:       tex(etbb_zxy3n5.enc)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(fontaxes.sty)
 Requires:       tex(fontenc.sty)
@@ -2086,8 +2081,8 @@ Requires:       tex(scalefnt.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
 Source17:       etbb.tar.xz
 Source18:       etbb.doc.tar.xz
 
@@ -2101,7 +2096,7 @@ Sharp S with small caps version, along with macros to activate
 these features in LaTeX. Both otf and pfb are provided.
 
 %package -n texlive-etbb-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.051svn56390
+Version:        %{texlive_version}.%{texlive_noarch}.1.056svn61872
 Release:        0
 Summary:        Documentation for texlive-etbb
 License:        LPPL-1.0
@@ -2112,7 +2107,7 @@ URL:            http://www.tug.org/texlive/
 This package includes the documentation for texlive-etbb
 
 %package -n texlive-etbb-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.051svn56390
+Version:        %{texlive_version}.%{texlive_noarch}.1.056svn61872
 Release:        0
 Summary:        Severed fonts for texlive-etbb
 License:        LPPL-1.0
@@ -2144,9 +2139,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-etbb
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -2165,141 +2157,132 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/afm/public/etbb/ETbb-BoldItalic.afm
 %{_texmfdistdir}/fonts/afm/public/etbb/ETbb-Italic.afm
 %{_texmfdistdir}/fonts/afm/public/etbb/ETbb-Regular.afm
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb1_2wngtz.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb1_3ccbvp.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb1_5325we.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb1_77pqsh.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb1_3ggaku.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb1_6bhqsy.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb1_6dkfmm.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb1_d63baf.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb1_dpvwoq.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb1_eqc2ac.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb1_frcze6.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb1_hah5or.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb1_hibu6u.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb1_mfrons.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb1_mgm6re.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb1_pvrda3.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb1_rwec2l.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb1_sp7p3o.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb1_sb7odk.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb1_vtabip.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb1_w52zjg.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb1_x5rskw.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb1_xaqh3v.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb1_yziesh.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb1_zxy3n5.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_22apno.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_242knm.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_2wngtz.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_2jmcdk.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_2ynk4h.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_33mftd.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_3ccbvp.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_3jmjat.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_3li7dq.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_3pfdgz.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_3ggaku.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_3obh62.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_3pymqv.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_3ygfa2.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_42bwpg.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_4hpi45.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_4qfaj2.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_4o3pf4.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_4sxvu4.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_4x2qhb.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_5325we.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_5cjnk5.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_4xv7ax.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_5drz2o.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_5iollt.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_6tax72.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_77pqsh.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_5um4so.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_65swoa.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_6bhqsy.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_6dkfmm.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_6z6nrw.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_7dlbn4.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_7ipmvr.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_7pzsmk.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_7t4ywj.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_7tqudy.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_7uz5xh.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_atf2m5.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_ay4ati.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_behrx3.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_bowihu.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_c6gjhm.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_chsevo.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_cluc7m.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_cpb6sd.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_cpdyi3.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_cpixk3.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_b3flk2.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_bb5xlm.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_boj3jd.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_cq6xx2.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_cuqhrj.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_cxbogn.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_cyp5f5.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_cyyszv.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_dcps7k.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_dep6cd.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_dz2qg3.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_e3m4fz.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_ea2dgh.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_d63baf.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_dkuysn.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_dpvwoq.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_e7zo2o.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_ehl4wc.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_elsw3h.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_eqc2ac.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_eqlboo.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_f55msl.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_f7n52p.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_f7rui7.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_fpvlkw.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_ftphfy.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_fue2l2.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_frcze6.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_fveuju.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_fwcdph.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_gkmjhd.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_gtayjy.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_fyek6u.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_g2yynh.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_gteq3q.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_gtqfg2.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_h4dyum.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_hah5or.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_hcre2c.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_hibu6u.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_hdnox5.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_hn62ay.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_i2z4ax.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_i5ezvi.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_ihmnlr.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_imedjx.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_izxro2.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_j43iwo.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_j4gzyc.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_j7myeh.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_kkjcws.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_ko4aue.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_kuig7z.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_jjhcst.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_kvzzr3.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_lchj55.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_lfrz6w.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_lolxkk.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_ladhhj.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_m5kdwt.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_mfrons.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_mgm6re.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_mpvq56.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_na6tk5.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_nfh2ow.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_nnawaw.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_n73bzf.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_num7wi.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_nvfc5y.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_oe3mzn.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_ohc25e.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_ohvjcv.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_olodrh.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_onypnl.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_ooqfsa.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_ow4ien.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_oynaqb.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_p4wmli.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_pijcl4.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_p6ehom.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_pqh27d.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_pvrda3.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_qmwyqz.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_qqjyre.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_r34xpu.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_q62n24.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_rgl4wj.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_riohwx.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_rt4kro.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_rwec2l.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_rzlqzq.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_s2dnn6.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_sk3nrp.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_sb7odk.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_sjtq2a.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_skushq.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_sp7p3o.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_sz3fgd.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_t4d6nl.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_tbmtgo.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_tif2yn.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_ujmsnd.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_un2f5f.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_uoncjt.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_v2eodf.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_tunzhv.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_ujzbb6.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_v6nho7.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_vmkycp.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_vazzz3.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_veuqiz.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_vmilsn.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_vqghpl.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_vtabip.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_w52zjg.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_whnzkz.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_wplash.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_x5rskw.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_xaqh3v.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_xdptht.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_xe5wuh.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_xmn5et.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_xwgzeq.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_y6dqd4.enc
+%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_yadlkl.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_ybjyd4.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_ydcfbc.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_yhvmm4.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_yiqwpu.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_yjlloh.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_ytzykv.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_yziesh.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_yzoycr.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_yzujze.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_z6brcn.enc
 %{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_zpkt7y.enc
-%{_texmfdistdir}/fonts/enc/dvips/etbb/etbb_zxy3n5.enc
 %{_texmfdistdir}/fonts/map/dvips/etbb/ETbb.map
 %verify(link) %{_texmfdistdir}/fonts/opentype/public/etbb/ETbb-Bold.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/public/etbb/ETbb-BoldItalic.otf
@@ -2307,16 +2290,19 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %verify(link) %{_texmfdistdir}/fonts/opentype/public/etbb/ETbb-Regular.otf
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-dnom-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-dnom-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-dnom-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-dnom-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-dnom-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-inf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-inf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-inf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-inf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-lf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-lf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-lf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-lf-sc-ly1.tfm
@@ -2326,6 +2312,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-lf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-lf-swash-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-lf-swash-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-lf-swash-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-lf-swash-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-lf-swash-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-lf-swash-t1.tfm
@@ -2335,6 +2322,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-osf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-osf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-osf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-osf-sc-ly1.tfm
@@ -2344,6 +2332,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-osf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-osf-swash-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-osf-swash-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-osf-swash-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-osf-swash-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-osf-swash-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-osf-swash-t1.tfm
@@ -2353,11 +2342,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-osf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-sup-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-sup-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tlf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tlf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tlf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tlf-sc-ly1.tfm
@@ -2367,6 +2358,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tlf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tlf-swash-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tlf-swash-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tlf-swash-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tlf-swash-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tlf-swash-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tlf-swash-t1.tfm
@@ -2376,6 +2368,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tosf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tosf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tosf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tosf-sc-ly1.tfm
@@ -2385,6 +2378,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tosf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tosf-swash-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tosf-swash-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tosf-swash-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tosf-swash-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tosf-swash-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tosf-swash-t1.tfm
@@ -2394,16 +2388,19 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Bold-tosf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-dnom-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-dnom-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-dnom-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-dnom-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-dnom-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-inf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-inf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-inf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-inf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-lf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-lf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-lf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-lf-sc-ly1.tfm
@@ -2413,6 +2410,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-lf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-lf-swash-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-lf-swash-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-lf-swash-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-lf-swash-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-lf-swash-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-lf-swash-t1.tfm
@@ -2422,6 +2420,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-osf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-osf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-osf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-osf-sc-ly1.tfm
@@ -2431,6 +2430,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-osf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-osf-swash-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-osf-swash-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-osf-swash-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-osf-swash-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-osf-swash-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-osf-swash-t1.tfm
@@ -2440,11 +2440,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-osf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-sup-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-sup-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tlf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tlf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tlf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tlf-sc-ly1.tfm
@@ -2454,6 +2456,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tlf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tlf-swash-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tlf-swash-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tlf-swash-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tlf-swash-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tlf-swash-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tlf-swash-t1.tfm
@@ -2463,6 +2466,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tosf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tosf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tosf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tosf-sc-ly1.tfm
@@ -2472,6 +2476,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tosf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tosf-swash-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tosf-swash-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tosf-swash-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tosf-swash-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tosf-swash-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tosf-swash-t1.tfm
@@ -2481,16 +2486,19 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-BoldItalic-tosf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-dnom-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-dnom-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-dnom-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-dnom-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-dnom-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-inf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-inf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-inf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-inf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-lf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-lf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-lf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-lf-sc-ly1.tfm
@@ -2500,6 +2508,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-lf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-lf-swash-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-lf-swash-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-lf-swash-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-lf-swash-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-lf-swash-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-lf-swash-t1.tfm
@@ -2509,6 +2518,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-osf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-osf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-osf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-osf-sc-ly1.tfm
@@ -2518,6 +2528,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-osf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-osf-swash-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-osf-swash-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-osf-swash-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-osf-swash-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-osf-swash-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-osf-swash-t1.tfm
@@ -2527,11 +2538,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-osf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-sup-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-sup-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-tlf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-tlf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-tlf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-tlf-sc-ly1.tfm
@@ -2541,6 +2554,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-tlf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-tlf-swash-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-tlf-swash-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-tlf-swash-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-tlf-swash-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-tlf-swash-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-tlf-swash-t1.tfm
@@ -2550,6 +2564,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-tosf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-tosf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-tosf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-tosf-sc-ly1.tfm
@@ -2559,6 +2574,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-tosf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-tosf-swash-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-tosf-swash-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-tosf-swash-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-tosf-swash-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-tosf-swash-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Italic-tosf-swash-t1.tfm
@@ -2653,8 +2669,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Regular-tosf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Regular-tosf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/ETbb-Regular-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-Bold-dnom-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-Bold-dnom-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-Bold-lf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-Bold-lf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-Bold-lf-swash-t1--base.tfm
@@ -2679,8 +2693,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-Bold-tosf-swash-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-Bold-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-Bold-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-BoldItalic-dnom-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-BoldItalic-dnom-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-BoldItalic-lf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-BoldItalic-lf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-BoldItalic-lf-swash-t1--base.tfm
@@ -2705,8 +2717,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-BoldItalic-tosf-swash-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-BoldItalic-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-BoldItalic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-Italic-dnom-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-Italic-dnom-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-Italic-lf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-Italic-lf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-Italic-lf-swash-t1--base.tfm
@@ -2731,8 +2741,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-Italic-tosf-swash-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-Italic-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-Italic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-Regular-dnom-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-Regular-dnom-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-Regular-lf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-Regular-lf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/etbb/Etbb1-Regular-lf-swash-t1--base.tfm
@@ -2762,116 +2770,149 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %verify(link) %{_texmfdistdir}/fonts/type1/public/etbb/ETbb-Italic.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/public/etbb/ETbb-Regular.pfb
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-dnom-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-dnom-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-dnom-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-inf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-inf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-inf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-lf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-lf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-lf-swash-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-lf-swash-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-lf-swash-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-lf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-osf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-osf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-osf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-osf-swash-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-osf-swash-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-osf-swash-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-osf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-sup-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-sup-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-tlf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-tlf-swash-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-tlf-swash-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-tlf-swash-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-tosf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-tosf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-tosf-swash-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-tosf-swash-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-tosf-swash-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Bold-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-dnom-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-dnom-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-dnom-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-inf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-inf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-inf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-lf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-lf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-lf-swash-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-lf-swash-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-lf-swash-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-lf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-osf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-osf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-osf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-osf-swash-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-osf-swash-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-osf-swash-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-osf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-sup-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-sup-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-tlf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-tlf-swash-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-tlf-swash-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-tlf-swash-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-tosf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-tosf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-tosf-swash-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-tosf-swash-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-tosf-swash-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-BoldItalic-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-dnom-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-dnom-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-dnom-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-inf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-inf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-inf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-lf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-lf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-lf-swash-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-lf-swash-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-lf-swash-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-lf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-osf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-osf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-osf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-osf-swash-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-osf-swash-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-osf-swash-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-osf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-sup-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-sup-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-tlf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-tlf-swash-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-tlf-swash-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-tlf-swash-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-tosf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-tosf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-tosf-swash-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-tosf-swash-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-tosf-swash-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Italic-tosf-ts1.vf
@@ -2913,7 +2954,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Regular-tosf-swash-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Regular-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/ETbb-Regular-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/etbb/Etbb1-Bold-dnom-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/Etbb1-Bold-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/Etbb1-Bold-lf-swash-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/Etbb1-Bold-lf-t1.vf
@@ -2926,7 +2966,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/etbb/Etbb1-Bold-tosf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/Etbb1-Bold-tosf-swash-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/Etbb1-Bold-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/etbb/Etbb1-BoldItalic-dnom-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/Etbb1-BoldItalic-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/Etbb1-BoldItalic-lf-swash-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/Etbb1-BoldItalic-lf-t1.vf
@@ -2939,7 +2978,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/etbb/Etbb1-BoldItalic-tosf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/Etbb1-BoldItalic-tosf-swash-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/Etbb1-BoldItalic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/etbb/Etbb1-Italic-dnom-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/Etbb1-Italic-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/Etbb1-Italic-lf-swash-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/Etbb1-Italic-lf-t1.vf
@@ -2952,7 +2990,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/etbb/Etbb1-Italic-tosf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/Etbb1-Italic-tosf-swash-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/Etbb1-Italic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/etbb/Etbb1-Regular-dnom-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/Etbb1-Regular-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/Etbb1-Regular-lf-swash-t1.vf
 %{_texmfdistdir}/fonts/vf/public/etbb/Etbb1-Regular-lf-t1.vf
@@ -3010,9 +3047,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-etbb/ETbb-BoldItalic.pfb
 %{_datadir}/fonts/texlive-etbb/ETbb-Italic.pfb
 %{_datadir}/fonts/texlive-etbb/ETbb-Regular.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-etbb-fonts-%{texlive_version}.%{texlive_noarch}.1.051svn56390-%{release}-zypper
-%endif
 
 %package -n texlive-etdipa
 Version:        %{texlive_version}.%{texlive_noarch}.2.6svn36354
@@ -3041,8 +3075,8 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
 Source19:       etdipa.doc.tar.xz
 
 %description -n texlive-etdipa
@@ -3066,9 +3100,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-etdipa
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -3097,9 +3128,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/etdipa/Textparts/zusammenfassung.tex
 %{_texmfdistdir}/doc/latex/etdipa/diplomarbeit.tex
 %{_texmfdistdir}/doc/latex/etdipa/etdipa.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-etdipa-%{texlive_version}.%{texlive_noarch}.2.6svn36354-%{release}-zypper
-%endif
 
 %package -n texlive-etex
 Version:        %{texlive_version}.%{texlive_noarch}.svn56291
@@ -3128,10 +3156,10 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-etex-doc >= %{texlive_version}
+Suggests:       texlive-etex-doc >= %{texlive_version}
 Provides:       tex(xbmc10.tfm)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
 Source20:       etex.tar.xz
 Source21:       etex.doc.tar.xz
 
@@ -3170,9 +3198,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-etex
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -3196,9 +3221,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/etex/xbmc10.tfm
 %{_texmfdistdir}/tex/plain/etex/etex.src
 %{_texmfdistdir}/tex/plain/etex/etexdefs.lib
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-etex-%{texlive_version}.%{texlive_noarch}.svn56291-%{release}-zypper
-%endif
 
 %package -n texlive-etex-pkg
 Version:        %{texlive_version}.%{texlive_noarch}.2.7svn41784
@@ -3227,10 +3249,10 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-etex-pkg-doc >= %{texlive_version}
+Suggests:       texlive-etex-pkg-doc >= %{texlive_version}
 Provides:       tex(etex.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
 Source22:       etex-pkg.tar.xz
 Source23:       etex-pkg.doc.tar.xz
 
@@ -3266,9 +3288,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-etex-pkg
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -3279,9 +3298,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-etex-pkg
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/etex-pkg/etex.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-etex-pkg-%{texlive_version}.%{texlive_noarch}.2.7svn41784-%{release}-zypper
-%endif
 
 %package -n texlive-etexcmds
 Version:        %{texlive_version}.%{texlive_noarch}.1.7svn53171
@@ -3310,12 +3326,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-etexcmds-doc >= %{texlive_version}
+Suggests:       texlive-etexcmds-doc >= %{texlive_version}
 Provides:       tex(etexcmds.sty)
 Requires:       tex(iftex.sty)
 Requires:       tex(infwarerr.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
 Source24:       etexcmds.tar.xz
 Source25:       etexcmds.doc.tar.xz
 
@@ -3350,9 +3366,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-etexcmds
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -3364,9 +3377,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-etexcmds
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/etexcmds/etexcmds.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-etexcmds-%{texlive_version}.%{texlive_noarch}.1.7svn53171-%{release}-zypper
-%endif
 
 %package -n texlive-etextools
 Version:        %{texlive_version}.%{texlive_noarch}.3.1415926svn20694
@@ -3395,13 +3405,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-etextools-doc >= %{texlive_version}
+Suggests:       texlive-etextools-doc >= %{texlive_version}
 Provides:       tex(etextools.sty)
 Requires:       tex(etex.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(letltxmacro.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
 Source26:       etextools.tar.xz
 Source27:       etextools.doc.tar.xz
 
@@ -3445,9 +3455,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-etextools
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -3461,9 +3468,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-etextools
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/etextools/etextools.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-etextools-%{texlive_version}.%{texlive_noarch}.3.1415926svn20694-%{release}-zypper
-%endif
 
 %package -n texlive-ethiop
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.7svn15878
@@ -3492,7 +3496,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-ethiop-doc >= %{texlive_version}
+Suggests:       texlive-ethiop-doc >= %{texlive_version}
 Provides:       tex(etha10.tfm)
 Provides:       tex(etha6.tfm)
 Provides:       tex(etha7.tfm)
@@ -3543,8 +3547,8 @@ Provides:       tex(ethiop.sty)
 Provides:       tex(uetha.fd)
 Provides:       tex(uethb.fd)
 Provides:       tex(uetho.fd)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
 Source28:       ethiop.tar.xz
 Source29:       ethiop.doc.tar.xz
 
@@ -3579,9 +3583,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-ethiop
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -3768,9 +3769,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/ethiop/uetha.fd
 %{_texmfdistdir}/tex/latex/ethiop/uethb.fd
 %{_texmfdistdir}/tex/latex/ethiop/uetho.fd
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-ethiop-%{texlive_version}.%{texlive_noarch}.0.0.7svn15878-%{release}-zypper
-%endif
 
 %package -n texlive-ethiop-t1
 Version:        %{texlive_version}.%{texlive_noarch}.svn15878
@@ -3811,10 +3809,10 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-ethiop-t1-fonts >= %{texlive_version}
-Recommends:     texlive-ethiop-t1-doc >= %{texlive_version}
+Suggests:       texlive-ethiop-t1-doc >= %{texlive_version}
 Provides:       tex(ethiop.map)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
 Source30:       ethiop-t1.tar.xz
 Source31:       ethiop-t1.doc.tar.xz
 
@@ -3866,9 +3864,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-ethiop-t1
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -3978,12 +3973,94 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-ethiop-t1/ethbsb36.pfb
 %{_datadir}/fonts/texlive-ethiop-t1/ethbsb9.pfb
 %{_datadir}/fonts/texlive-ethiop-t1/ethbtt10.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-ethiop-t1-fonts-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
-%endif
+
+%package -n texlive-etl
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn60998
+Release:        0
+License:        LPPL-1.0
+Summary:        Expandable token list operations
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-etl-doc >= %{texlive_version}
+Provides:       tex(etl.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source32:       etl.tar.xz
+Source33:       etl.doc.tar.xz
+
+%description -n texlive-etl
+This package provides expandable token list operations for
+which expl3's l3tl only has unexpandable variants. These
+expandable versions are typically slower than the unexpandable
+code. Unlike the l3tl versions, the functions in this module
+may contain braces and macro parameter tokens in their
+arguments, but as a drawback they cannot distinguish some
+tokens and do not consider the character code of group-begin
+and group-end tokens. Additionally a general map to token lists
+is provided, modelled after the expl3 internal __tl_act:NNNn
+but with additional features. The package has no immediate use
+for document authors; it only contains expl3 functions intended
+for programmers.
+
+%package -n texlive-etl-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn60998
+Release:        0
+Summary:        Documentation for texlive-etl
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+
+%description -n texlive-etl-doc
+This package includes the documentation for texlive-etl
+
+%post -n texlive-etl
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-etl
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-etl
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-etl-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/etl/README.md
+%{_texmfdistdir}/doc/latex/etl/etl.pdf
+
+%files -n texlive-etl
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/etl/etl.sty
 
 %package -n texlive-etoc
-Version:        %{texlive_version}.%{texlive_noarch}.1.09csvn55156
+Version:        %{texlive_version}.%{texlive_noarch}.1.09esvn60589
 Release:        0
 License:        LPPL-1.0
 Summary:        Completely customisable TOCs
@@ -4009,13 +4086,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-etoc-doc >= %{texlive_version}
+Suggests:       texlive-etoc-doc >= %{texlive_version}
 Provides:       tex(etoc.sty)
 Requires:       tex(multicol.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source32:       etoc.tar.xz
-Source33:       etoc.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source34:       etoc.tar.xz
+Source35:       etoc.doc.tar.xz
 
 %description -n texlive-etoc
 The package gives the user complete control of how the entries
@@ -4035,7 +4112,7 @@ may be used arbitrarily many times in the same document, while
 \localtableofcontents provides a 'local' table of contents.
 
 %package -n texlive-etoc-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.09csvn55156
+Version:        %{texlive_version}.%{texlive_noarch}.1.09esvn60589
 Release:        0
 Summary:        Documentation for texlive-etoc
 License:        LPPL-1.0
@@ -4060,9 +4137,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-etoc
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -4104,9 +4178,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-etoc
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/etoc/etoc.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-etoc-%{texlive_version}.%{texlive_noarch}.1.09csvn55156-%{release}-zypper
-%endif
 
 %package -n texlive-etoolbox
 Version:        %{texlive_version}.%{texlive_noarch}.2.5ksvn56554
@@ -4135,14 +4206,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-etoolbox-doc >= %{texlive_version}
+Suggests:       texlive-etoolbox-doc >= %{texlive_version}
 Provides:       tex(etoolbox.def)
 Provides:       tex(etoolbox.sty)
 Requires:       tex(etex.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source34:       etoolbox.tar.xz
-Source35:       etoolbox.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source36:       etoolbox.tar.xz
+Source37:       etoolbox.doc.tar.xz
 
 %description -n texlive-etoolbox
 The package is a toolbox of programming facilities geared
@@ -4181,9 +4252,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-etoolbox
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -4197,9 +4265,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/etoolbox/etoolbox.def
 %{_texmfdistdir}/tex/latex/etoolbox/etoolbox.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-etoolbox-%{texlive_version}.%{texlive_noarch}.2.5ksvn56554-%{release}-zypper
-%endif
 
 %package -n texlive-etoolbox-de
 Version:        %{texlive_version}.%{texlive_noarch}.1svn21906
@@ -4228,9 +4293,9 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source36:       etoolbox-de.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source38:       etoolbox-de.doc.tar.xz
 
 %description -n texlive-etoolbox-de
 The version translated is 2.1 or 2011-01-03.
@@ -4249,9 +4314,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-etoolbox-de
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -4259,9 +4321,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/etoolbox-de/etoolbox-DE.pdf
 %{_texmfdistdir}/doc/latex/etoolbox-de/etoolbox-DE.tex
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-etoolbox-de-%{texlive_version}.%{texlive_noarch}.1svn21906-%{release}-zypper
-%endif
 
 %package -n texlive-etsvthor
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn48186
@@ -4290,14 +4349,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-etsvthor-doc >= %{texlive_version}
+Suggests:       texlive-etsvthor-doc >= %{texlive_version}
 Provides:       tex(etsvthor.sty)
 Requires:       tex(epsfig.sty)
 Requires:       tex(graphicx.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source37:       etsvthor.tar.xz
-Source38:       etsvthor.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source39:       etsvthor.tar.xz
+Source40:       etsvthor.doc.tar.xz
 
 %description -n texlive-etsvthor
 "e.t.s.v. Thor" stands for "Elektrotechnische Studievereniging
@@ -4337,9 +4396,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-etsvthor
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -4350,12 +4406,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-etsvthor
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/etsvthor/etsvthor.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-etsvthor-%{texlive_version}.%{texlive_noarch}.1.0svn48186-%{release}-zypper
-%endif
 
 %package -n texlive-euclideangeometry
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.8svn54897
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.1svn60697
 Release:        0
 License:        LPPL-1.0
 Summary:        Draw geometrical constructions
@@ -4381,13 +4434,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-euclideangeometry-doc >= %{texlive_version}
+Suggests:       texlive-euclideangeometry-doc >= %{texlive_version}
 Provides:       tex(euclideangeometry.sty)
 Requires:       tex(curve2e.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source39:       euclideangeometry.tar.xz
-Source40:       euclideangeometry.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source41:       euclideangeometry.tar.xz
+Source42:       euclideangeometry.doc.tar.xz
 
 %description -n texlive-euclideangeometry
 This package provides tools to draw most of the geometrical
@@ -4398,7 +4451,7 @@ made with ruler, compass and also with ellipsograph. This
 package extends the functionalities of the curve2e package.
 
 %package -n texlive-euclideangeometry-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.8svn54897
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.1svn60697
 Release:        0
 Summary:        Documentation for texlive-euclideangeometry
 License:        LPPL-1.0
@@ -4422,9 +4475,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-euclideangeometry
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -4438,9 +4488,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-euclideangeometry
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/euclideangeometry/euclideangeometry.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-euclideangeometry-%{texlive_version}.%{texlive_noarch}.0.0.1.8svn54897-%{release}-zypper
-%endif
 
 %package -n texlive-euenc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.1hsvn19795
@@ -4469,7 +4516,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-euenc-doc >= %{texlive_version}
+Suggests:       texlive-euenc-doc >= %{texlive_version}
 Provides:       tex(eu1enc.def)
 Provides:       tex(eu1lmdh.fd)
 Provides:       tex(eu1lmr.fd)
@@ -4484,10 +4531,10 @@ Provides:       tex(eu2lmss.fd)
 Provides:       tex(eu2lmssq.fd)
 Provides:       tex(eu2lmtt.fd)
 Provides:       tex(eu2lmvtt.fd)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source41:       euenc.tar.xz
-Source42:       euenc.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source43:       euenc.tar.xz
+Source44:       euenc.doc.tar.xz
 
 %description -n texlive-euenc
 Font encoding definitions for unicode fonts loaded by LaTeX in
@@ -4526,9 +4573,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-euenc
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -4554,9 +4598,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/euenc/eu2lmssq.fd
 %{_texmfdistdir}/tex/latex/euenc/eu2lmtt.fd
 %{_texmfdistdir}/tex/latex/euenc/eu2lmvtt.fd
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-euenc-%{texlive_version}.%{texlive_noarch}.0.0.1hsvn19795-%{release}-zypper
-%endif
 
 %package -n texlive-euflag
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.8svn55265
@@ -4585,15 +4626,15 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-euflag-doc >= %{texlive_version}
+Suggests:       texlive-euflag-doc >= %{texlive_version}
 Provides:       tex(euflag.sty)
 Requires:       tex(amssymb.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(xcolor.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source43:       euflag.tar.xz
-Source44:       euflag.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source45:       euflag.tar.xz
+Source46:       euflag.doc.tar.xz
 
 %description -n texlive-euflag
 This LaTeX package implements a command to reproduce the
@@ -4626,9 +4667,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-euflag
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -4642,9 +4680,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-euflag
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/euflag/euflag.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-euflag-%{texlive_version}.%{texlive_noarch}.0.0.8svn55265-%{release}-zypper
-%endif
 
 %package -n texlive-eukdate
 Version:        %{texlive_version}.%{texlive_noarch}.1.04svn15878
@@ -4673,12 +4708,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-eukdate-doc >= %{texlive_version}
+Suggests:       texlive-eukdate-doc >= %{texlive_version}
 Provides:       tex(eukdate.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source45:       eukdate.tar.xz
-Source46:       eukdate.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source47:       eukdate.tar.xz
+Source48:       eukdate.doc.tar.xz
 
 %description -n texlive-eukdate
 The package is used to change the format of \today's date,
@@ -4712,9 +4747,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-eukdate
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -4726,9 +4758,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-eukdate
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/eukdate/eukdate.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-eukdate-%{texlive_version}.%{texlive_noarch}.1.04svn15878-%{release}-zypper
-%endif
 
 %package -n texlive-euler
 Version:        %{texlive_version}.%{texlive_noarch}.2.5svn42428
@@ -4757,12 +4786,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-euler-doc >= %{texlive_version}
+Suggests:       texlive-euler-doc >= %{texlive_version}
 Provides:       tex(euler.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source47:       euler.tar.xz
-Source48:       euler.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source49:       euler.tar.xz
+Source50:       euler.doc.tar.xz
 
 %description -n texlive-euler
 Provides a setup for using the AMS Euler family of fonts for
@@ -4798,9 +4827,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-euler
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -4812,12 +4838,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-euler
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/euler/euler.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-euler-%{texlive_version}.%{texlive_noarch}.2.5svn42428-%{release}-zypper
-%endif
 
 %package -n texlive-eulerpx
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.1svn43735
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.1svn59905
 Release:        0
 License:        LPPL-1.0
 Summary:        A modern interface for the Euler math fonts
@@ -4843,14 +4866,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-eulerpx-doc >= %{texlive_version}
+Suggests:       texlive-eulerpx-doc >= %{texlive_version}
 Provides:       tex(eulerpx.sty)
-Requires:       tex(fontenc.sty)
+Requires:       tex(amsmath.sty)
 Requires:       tex(newpxmath.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source49:       eulerpx.tar.xz
-Source50:       eulerpx.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source51:       eulerpx.tar.xz
+Source52:       eulerpx.doc.tar.xz
 
 %description -n texlive-eulerpx
 This package provides the "eulerpx" font, which started as a
@@ -4865,7 +4888,7 @@ intent to use it with the Palatino and Optima fonts, but it may
 work with other combinations, too.
 
 %package -n texlive-eulerpx-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.1svn43735
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.1svn59905
 Release:        0
 Summary:        Documentation for texlive-eulerpx
 License:        LPPL-1.0
@@ -4889,9 +4912,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-eulerpx
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -4902,9 +4922,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-eulerpx
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/eulerpx/eulerpx.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-eulerpx-%{texlive_version}.%{texlive_noarch}.0.0.2.1svn43735-%{release}-zypper
-%endif
 
 %package -n texlive-eulervm
 Version:        %{texlive_version}.%{texlive_noarch}.4.0svn15878
@@ -4933,7 +4950,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-eulervm-doc >= %{texlive_version}
+Suggests:       texlive-eulervm-doc >= %{texlive_version}
 Provides:       tex(eulervm.sty)
 Provides:       tex(uzeuex.fd)
 Provides:       tex(uzeur.fd)
@@ -5005,10 +5022,10 @@ Requires:       tex(eusm7.tfm)
 Requires:       tex(msam10.tfm)
 Requires:       tex(msam5.tfm)
 Requires:       tex(msam7.tfm)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source51:       eulervm.tar.xz
-Source52:       eulervm.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source53:       eulervm.tar.xz
+Source54:       eulervm.doc.tar.xz
 
 %description -n texlive-eulervm
 The well-known Euler fonts are suitable for typsetting
@@ -5050,9 +5067,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-eulervm
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -5094,9 +5108,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/eulervm/uzeuex.fd
 %{_texmfdistdir}/tex/latex/eulervm/uzeur.fd
 %{_texmfdistdir}/tex/latex/eulervm/uzeus.fd
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-eulervm-%{texlive_version}.%{texlive_noarch}.4.0svn15878-%{release}-zypper
-%endif
 
 %package -n texlive-euro
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn22191
@@ -5125,14 +5136,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-euro-doc >= %{texlive_version}
+Suggests:       texlive-euro-doc >= %{texlive_version}
 Provides:       tex(euro.sty)
 Requires:       tex(fp-basic.sty)
 Requires:       tex(fp-snap.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source53:       euro.tar.xz
-Source54:       euro.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source55:       euro.tar.xz
+Source56:       euro.doc.tar.xz
 
 %description -n texlive-euro
 Converts arbitrary national currency amounts using the Euro as
@@ -5167,9 +5178,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-euro
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -5182,9 +5190,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-euro
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/euro/euro.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-euro-%{texlive_version}.%{texlive_noarch}.1.1svn22191-%{release}-zypper
-%endif
 
 %package -n texlive-euro-ce
 Version:        %{texlive_version}.%{texlive_noarch}.3.0bsvn25714
@@ -5213,7 +5218,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-euro-ce-doc >= %{texlive_version}
+Suggests:       texlive-euro-ce-doc >= %{texlive_version}
 Provides:       tex(ceit.tfm)
 Provides:       tex(cerm.tfm)
 Provides:       tex(cesl.tfm)
@@ -5225,10 +5230,10 @@ Provides:       tex(euroof.tfm)
 Provides:       tex(eurorm.tfm)
 Provides:       tex(eurosl.tfm)
 Provides:       tex(eurosp.tfm)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source55:       euro-ce.tar.xz
-Source56:       euro-ce.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source57:       euro-ce.tar.xz
+Source58:       euro-ce.doc.tar.xz
 
 %description -n texlive-euro-ce
 Metafont source for the symbols in several variants, designed
@@ -5259,9 +5264,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-euro-ce
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -5297,9 +5299,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/euro-ce/eurorm.tfm
 %{_texmfdistdir}/fonts/tfm/public/euro-ce/eurosl.tfm
 %{_texmfdistdir}/fonts/tfm/public/euro-ce/eurosp.tfm
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-euro-ce-%{texlive_version}.%{texlive_noarch}.3.0bsvn25714-%{release}-zypper
-%endif
 
 %package -n texlive-europasscv
 Version:        %{texlive_version}.%{texlive_noarch}.svn56829
@@ -5328,7 +5327,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-europasscv-doc >= %{texlive_version}
+Suggests:       texlive-europasscv-doc >= %{texlive_version}
 Provides:       tex(europasscv-bibliography.sty)
 Provides:       tex(europasscv.cls)
 Provides:       tex(europasscv_ca.def)
@@ -5375,10 +5374,10 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xifthen.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source57:       europasscv.tar.xz
-Source58:       europasscv.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source59:       europasscv.tar.xz
+Source60:       europasscv.doc.tar.xz
 
 %description -n texlive-europasscv
 This class is an unofficial LaTeX implementation of the
@@ -5412,9 +5411,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-europasscv
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -5465,12 +5461,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/europasscv/icons/telephone_europass_icon.pdf
 %{_texmfdistdir}/tex/latex/europasscv/icons/website_europass_icon.pdf
 %{_texmfdistdir}/tex/latex/europasscv/icons/work_europass_icon.pdf
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-europasscv-%{texlive_version}.%{texlive_noarch}.svn56829-%{release}-zypper
-%endif
 
 %package -n texlive-europecv
-Version:        %{texlive_version}.%{texlive_noarch}.svn57641
+Version:        %{texlive_version}.%{texlive_noarch}.svn62684
 Release:        0
 License:        LPPL-1.0
 Summary:        Unofficial class for European curricula vitae
@@ -5496,7 +5489,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-europecv-doc >= %{texlive_version}
+Suggests:       texlive-europecv-doc >= %{texlive_version}
 Provides:       tex(ecvbg.def)
 Provides:       tex(ecvca.def)
 Provides:       tex(ecvcs.def)
@@ -5528,15 +5521,18 @@ Provides:       tex(europecv.cls)
 Requires:       tex(array.sty)
 Requires:       tex(article.cls)
 Requires:       tex(booktabs.sty)
+Requires:       tex(combelow.sty)
+Requires:       tex(etoolbox.sty)
 Requires:       tex(fancyhdr.sty)
+Requires:       tex(hyperref.sty)
 Requires:       tex(inputenc.sty)
 Requires:       tex(longtable.sty)
 Requires:       tex(totpages.sty)
 Requires:       tex(ucs.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source59:       europecv.tar.xz
-Source60:       europecv.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source61:       europecv.tar.xz
+Source62:       europecv.doc.tar.xz
 
 %description -n texlive-europecv
 The europecv class is an unofficial LaTeX implementation of the
@@ -5549,7 +5545,7 @@ has localisations for all the official languages of the EU
 and koi8-r.
 
 %package -n texlive-europecv-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn57641
+Version:        %{texlive_version}.%{texlive_noarch}.svn62684
 Release:        0
 Summary:        Documentation for texlive-europecv
 License:        LPPL-1.0
@@ -5573,9 +5569,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-europecv
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -5607,6 +5600,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/europecv/templates/cv_template_academic_en.tex
 %{_texmfdistdir}/doc/latex/europecv/templates/cv_template_en.pdf
 %{_texmfdistdir}/doc/latex/europecv/templates/cv_template_en.tex
+%{_texmfdistdir}/doc/latex/europecv/templates/cv_template_en_bieber.tex
+%{_texmfdistdir}/doc/latex/europecv/templates/europecv_biber.conf
+%{_texmfdistdir}/doc/latex/europecv/templates/europecv_biber.tex
+%{_texmfdistdir}/doc/latex/europecv/templates/europecv_photo.jpg
+%{_texmfdistdir}/doc/latex/europecv/templates/europecv_pub.bib
+%{_texmfdistdir}/doc/latex/europecv/templates/europecv_thesis.bib
 
 %files -n texlive-europecv
 %defattr(-,root,root,755)
@@ -5645,12 +5644,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/europecv/ecvsl.def
 %{_texmfdistdir}/tex/latex/europecv/ecvsr.def
 %{_texmfdistdir}/tex/latex/europecv/ecvsv.def
+%{_texmfdistdir}/tex/latex/europecv/europasslogo-eps-converted-to.pdf
 %{_texmfdistdir}/tex/latex/europecv/europasslogo.eps
 %{_texmfdistdir}/tex/latex/europecv/europasslogo.pdf
 %{_texmfdistdir}/tex/latex/europecv/europecv.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-europecv-%{texlive_version}.%{texlive_noarch}.svn57641-%{release}-zypper
-%endif
 
 %package -n texlive-eurosym
 Version:        %{texlive_version}.%{texlive_noarch}.1.4_subrfixsvn17265
@@ -5691,7 +5688,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-eurosym-fonts >= %{texlive_version}
-Recommends:     texlive-eurosym-doc >= %{texlive_version}
+Suggests:       texlive-eurosym-doc >= %{texlive_version}
 Provides:       tex(eurosym.map)
 Provides:       tex(eurosym.sty)
 Provides:       tex(feybl10.tfm)
@@ -5700,10 +5697,10 @@ Provides:       tex(feybr10.tfm)
 Provides:       tex(feyml10.tfm)
 Provides:       tex(feymo10.tfm)
 Provides:       tex(feymr10.tfm)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source61:       eurosym.tar.xz
-Source62:       eurosym.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source63:       eurosym.tar.xz
+Source64:       eurosym.doc.tar.xz
 
 %description -n texlive-eurosym
 The European currency symbol for the Euro implemented in
@@ -5756,9 +5753,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-eurosym
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -5829,9 +5823,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-eurosym/geyml10.pfb
 %{_datadir}/fonts/texlive-eurosym/geymo10.pfb
 %{_datadir}/fonts/texlive-eurosym/geymr10.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-eurosym-fonts-%{texlive_version}.%{texlive_noarch}.1.4_subrfixsvn17265-%{release}-zypper
-%endif
 
 %package -n texlive-euxm
 Version:        %{texlive_version}.%{texlive_noarch}.svn54074
@@ -5863,9 +5854,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Provides:       tex(euxm10.tfm)
 Provides:       tex(euxm5.tfm)
 Provides:       tex(euxm7.tfm)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source63:       euxm.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source65:       euxm.tar.xz
 
 %description -n texlive-euxm
 Includes two additional characters needed for Concrete Math
@@ -5885,9 +5876,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-euxm
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -5902,9 +5890,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/euxm/euxm10.tfm
 %{_texmfdistdir}/fonts/tfm/public/euxm/euxm5.tfm
 %{_texmfdistdir}/fonts/tfm/public/euxm/euxm7.tfm
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-euxm-%{texlive_version}.%{texlive_noarch}.svn54074-%{release}-zypper
-%endif
 
 %package -n texlive-everyhook
 Version:        %{texlive_version}.%{texlive_noarch}.1.2svn35675
@@ -5933,14 +5918,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-everyhook-doc >= %{texlive_version}
+Suggests:       texlive-everyhook-doc >= %{texlive_version}
 Provides:       tex(everyhook.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(svn-prov.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source64:       everyhook.tar.xz
-Source65:       everyhook.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source66:       everyhook.tar.xz
+Source67:       everyhook.doc.tar.xz
 
 %description -n texlive-everyhook
 The package takes control of the six TeX token registers
@@ -5975,9 +5960,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-everyhook
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -5989,9 +5971,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-everyhook
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/everyhook/everyhook.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-everyhook-%{texlive_version}.%{texlive_noarch}.1.2svn35675-%{release}-zypper
-%endif
 
 %package -n texlive-everypage
 Version:        %{texlive_version}.%{texlive_noarch}.2.0bsvn56694
@@ -6020,13 +5999,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-everypage-doc >= %{texlive_version}
+Suggests:       texlive-everypage-doc >= %{texlive_version}
 Provides:       tex(everypage-1x.sty)
 Provides:       tex(everypage.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source66:       everypage.tar.xz
-Source67:       everypage.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source68:       everypage.tar.xz
+Source69:       everypage.doc.tar.xz
 
 %description -n texlive-everypage
 The package provides hooks to perform actions on every page, or
@@ -6061,9 +6040,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-everypage
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -6076,9 +6052,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/everypage/everypage-1x.sty
 %{_texmfdistdir}/tex/latex/everypage/everypage.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-everypage-%{texlive_version}.%{texlive_noarch}.2.0bsvn56694-%{release}-zypper
-%endif
 
 %package -n texlive-everysel
 Version:        %{texlive_version}.%{texlive_noarch}.2.1svn57489
@@ -6107,13 +6080,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-everysel-doc >= %{texlive_version}
+Suggests:       texlive-everysel-doc >= %{texlive_version}
 Provides:       tex(everysel-2011-10-28.sty)
 Provides:       tex(everysel.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source68:       everysel.tar.xz
-Source69:       everysel.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source70:       everysel.tar.xz
+Source71:       everysel.doc.tar.xz
 
 %description -n texlive-everysel
 The package provided hooks whose arguments are executed just
@@ -6150,9 +6123,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-everysel
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -6165,9 +6135,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/everysel/everysel-2011-10-28.sty
 %{_texmfdistdir}/tex/latex/everysel/everysel.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-everysel-%{texlive_version}.%{texlive_noarch}.2.1svn57489-%{release}-zypper
-%endif
 
 %package -n texlive-everyshi
 Version:        %{texlive_version}.%{texlive_noarch}.4.00svn57001
@@ -6196,13 +6163,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-everyshi-doc >= %{texlive_version}
+Suggests:       texlive-everyshi-doc >= %{texlive_version}
 Provides:       tex(everyshi-2001-05-15.sty)
 Provides:       tex(everyshi.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source70:       everyshi.tar.xz
-Source71:       everyshi.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source72:       everyshi.tar.xz
+Source73:       everyshi.doc.tar.xz
 
 %description -n texlive-everyshi
 This package provides hooks into \sshipout called \EveryShipout
@@ -6239,9 +6206,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-everyshi
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -6254,9 +6218,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/everyshi/everyshi-2001-05-15.sty
 %{_texmfdistdir}/tex/latex/everyshi/everyshi.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-everyshi-%{texlive_version}.%{texlive_noarch}.4.00svn57001-%{release}-zypper
-%endif
 
 %package -n texlive-exam
 Version:        %{texlive_version}.%{texlive_noarch}.2.7svn58023
@@ -6285,15 +6246,15 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-exam-doc >= %{texlive_version}
+Suggests:       texlive-exam-doc >= %{texlive_version}
 Provides:       tex(exam.cls)
 Requires:       tex(article.cls)
 Requires:       tex(color.sty)
 Requires:       tex(ifthen.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source72:       exam.tar.xz
-Source73:       exam.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source74:       exam.tar.xz
+Source75:       exam.doc.tar.xz
 
 %description -n texlive-exam
 Provides a class exam.cls, which eases production of exams,
@@ -6344,9 +6305,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-exam
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -6360,9 +6318,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-exam
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/exam/exam.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-exam-%{texlive_version}.%{texlive_noarch}.2.7svn58023-%{release}-zypper
-%endif
 
 %package -n texlive-exam-n
 Version:        %{texlive_version}.%{texlive_noarch}.1.1.4svn42755
@@ -6391,7 +6346,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-exam-n-doc >= %{texlive_version}
+Suggests:       texlive-exam-n-doc >= %{texlive_version}
 Provides:       tex(exam-n.cls)
 Requires:       tex(amsmath.sty)
 Requires:       tex(article.cls)
@@ -6404,10 +6359,10 @@ Requires:       tex(ifpdf.sty)
 Requires:       tex(mathptm.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(times.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source74:       exam-n.tar.xz
-Source75:       exam-n.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source76:       exam-n.tar.xz
+Source77:       exam-n.doc.tar.xz
 
 %description -n texlive-exam-n
 The class design offers: Direct support for collaborative
@@ -6444,9 +6399,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-exam-n
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -6486,12 +6438,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-exam-n
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/exam-n/exam-n.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-exam-n-%{texlive_version}.%{texlive_noarch}.1.1.4svn42755-%{release}-zypper
-%endif
 
 %package -n texlive-exam-randomizechoices
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn49662
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn61719
 Release:        0
 License:        LPPL-1.0
 Summary:        Randomize mc choices using the exam class
@@ -6517,15 +6466,15 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-exam-randomizechoices-doc >= %{texlive_version}
+Suggests:       texlive-exam-randomizechoices-doc >= %{texlive_version}
 Provides:       tex(exam-randomizechoices.sty)
 Requires:       tex(environ.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(pgffor.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source76:       exam-randomizechoices.tar.xz
-Source77:       exam-randomizechoices.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source78:       exam-randomizechoices.tar.xz
+Source79:       exam-randomizechoices.doc.tar.xz
 
 %description -n texlive-exam-randomizechoices
 This package is an extension to the exam document class. It
@@ -6539,7 +6488,7 @@ key table typesetter and has a command for writing the answer
 keys to an external file.
 
 %package -n texlive-exam-randomizechoices-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn49662
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn61719
 Release:        0
 Summary:        Documentation for texlive-exam-randomizechoices
 License:        LPPL-1.0
@@ -6563,9 +6512,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-exam-randomizechoices
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -6580,9 +6526,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-exam-randomizechoices
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/exam-randomizechoices/exam-randomizechoices.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-exam-randomizechoices-%{texlive_version}.%{texlive_noarch}.0.0.1svn49662-%{release}-zypper
-%endif
 
 %package -n texlive-examdesign
 Version:        %{texlive_version}.%{texlive_noarch}.1.101svn15878
@@ -6611,16 +6554,16 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-examdesign-doc >= %{texlive_version}
+Suggests:       texlive-examdesign-doc >= %{texlive_version}
 Provides:       tex(examdesign.cls)
 Requires:       tex(article.cls)
 Requires:       tex(enumerate.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(multicol.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source78:       examdesign.tar.xz
-Source79:       examdesign.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source80:       examdesign.tar.xz
+Source81:       examdesign.doc.tar.xz
 
 %description -n texlive-examdesign
 This bundle provides a class examdesign. The class provides
@@ -6661,9 +6604,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-examdesign
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -6685,9 +6625,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-examdesign
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/examdesign/examdesign.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-examdesign-%{texlive_version}.%{texlive_noarch}.1.101svn15878-%{release}-zypper
-%endif
 
 %package -n texlive-example
 Version:        %{texlive_version}.%{texlive_noarch}.svn33398
@@ -6717,9 +6654,9 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Provides:       tex(example.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source80:       example.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source82:       example.tar.xz
 
 %description -n texlive-example
 The package makes it easier to produce examples for TeX course.
@@ -6740,18 +6677,12 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-example
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-example
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/example/example.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-example-%{texlive_version}.%{texlive_noarch}.svn33398-%{release}-zypper
-%endif
 
 %package -n texlive-examplep
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.04svn55265
@@ -6780,14 +6711,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-examplep-doc >= %{texlive_version}
+Suggests:       texlive-examplep-doc >= %{texlive_version}
 Provides:       tex(codep.sty)
 Provides:       tex(examplep.sty)
 Provides:       tex(verbfwr.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source81:       examplep.tar.xz
-Source82:       examplep.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source83:       examplep.tar.xz
+Source84:       examplep.doc.tar.xz
 
 %description -n texlive-examplep
 Examplep provides sophisticated features for typesetting
@@ -6833,9 +6764,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-examplep
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -6857,9 +6785,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/examplep/codep.sty
 %{_texmfdistdir}/tex/latex/examplep/examplep.sty
 %{_texmfdistdir}/tex/latex/examplep/verbfwr.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-examplep-%{texlive_version}.%{texlive_noarch}.0.0.04svn55265-%{release}-zypper
-%endif
 
 %package -n texlive-exceltex
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.5.1svn26313
@@ -6890,7 +6815,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-exceltex-doc >= %{texlive_version}
+Suggests:       texlive-exceltex-doc >= %{texlive_version}
 Requires:       perl(Encode)
 #!BuildIgnore:  perl(Encode)
 Requires:       perl(Getopt::Long)
@@ -6903,10 +6828,10 @@ Requires:       perl(Spreadsheet::ParseExcel)
 Provides:       tex(exceltex.sty)
 Requires:       tex(color.sty)
 Requires:       tex(ulem.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source83:       exceltex.tar.xz
-Source84:       exceltex.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source85:       exceltex.tar.xz
+Source86:       exceltex.doc.tar.xz
 
 %description -n texlive-exceltex
 Exceltex is a LaTeX package combined with a helper program
@@ -6946,9 +6871,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-exceltex
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -6963,9 +6885,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/scripts/exceltex/exceltex
 %{_texmfdistdir}/tex/latex/exceltex/exceltex.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-exceltex-%{texlive_version}.%{texlive_noarch}.0.0.5.1svn26313-%{release}-zypper
-%endif
 
 %package -n texlive-excludeonly
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn17262
@@ -6994,12 +6913,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-excludeonly-doc >= %{texlive_version}
+Suggests:       texlive-excludeonly-doc >= %{texlive_version}
 Provides:       tex(excludeonly.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source85:       excludeonly.tar.xz
-Source86:       excludeonly.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source87:       excludeonly.tar.xz
+Source88:       excludeonly.doc.tar.xz
 
 %description -n texlive-excludeonly
 The package defines an \excludeonly command, which is (in
@@ -7034,9 +6953,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-excludeonly
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -7048,9 +6964,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-excludeonly
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/excludeonly/excludeonly.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-excludeonly-%{texlive_version}.%{texlive_noarch}.1.0svn17262-%{release}-zypper
-%endif
 
 %package -n texlive-exercise
 Version:        %{texlive_version}.%{texlive_noarch}.1.6svn35417
@@ -7079,14 +6992,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-exercise-doc >= %{texlive_version}
+Suggests:       texlive-exercise-doc >= %{texlive_version}
 Provides:       tex(exercise.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(keyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source87:       exercise.tar.xz
-Source88:       exercise.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source89:       exercise.tar.xz
+Source90:       exercise.doc.tar.xz
 
 %description -n texlive-exercise
 The package helps to typeset exercises or list of exercises
@@ -7124,9 +7037,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-exercise
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -7138,9 +7048,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-exercise
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/exercise/exercise.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-exercise-%{texlive_version}.%{texlive_noarch}.1.6svn35417-%{release}-zypper
-%endif
 
 %package -n texlive-exercisebank
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.0svn50448
@@ -7169,7 +7076,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-exercisebank-doc >= %{texlive_version}
+Suggests:       texlive-exercisebank-doc >= %{texlive_version}
 Provides:       tex(exercisebank.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(comment.sty)
@@ -7181,10 +7088,10 @@ Requires:       tex(pgfpages.sty)
 Requires:       tex(scrextend.sty)
 Requires:       tex(trimspaces.sty)
 Requires:       tex(xstring.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source89:       exercisebank.tar.xz
-Source90:       exercisebank.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source91:       exercisebank.tar.xz
+Source92:       exercisebank.doc.tar.xz
 
 %description -n texlive-exercisebank
 This package makes it easier to maintain and edit your exercise
@@ -7217,9 +7124,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-exercisebank
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -7233,9 +7137,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-exercisebank
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/exercisebank/exercisebank.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-exercisebank-%{texlive_version}.%{texlive_noarch}.0.0.3.0svn50448-%{release}-zypper
-%endif
 
 %package -n texlive-exercisepoints
 Version:        %{texlive_version}.%{texlive_noarch}.1.2.3svn49590
@@ -7264,13 +7165,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-exercisepoints-doc >= %{texlive_version}
+Suggests:       texlive-exercisepoints-doc >= %{texlive_version}
 Provides:       tex(exercisepoints.sty)
 Requires:       tex(ifthen.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source91:       exercisepoints.tar.xz
-Source92:       exercisepoints.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source93:       exercisepoints.tar.xz
+Source94:       exercisepoints.doc.tar.xz
 
 %description -n texlive-exercisepoints
 The package can be used to facilitate exercise counting and
@@ -7306,9 +7207,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-exercisepoints
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -7321,9 +7219,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-exercisepoints
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/exercisepoints/exercisepoints.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-exercisepoints-%{texlive_version}.%{texlive_noarch}.1.2.3svn49590-%{release}-zypper
-%endif
 
 %package -n texlive-exercises
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn55188
@@ -7352,17 +7247,17 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-exercises-doc >= %{texlive_version}
+Suggests:       texlive-exercises-doc >= %{texlive_version}
 Provides:       tex(exercises.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(marginnote.sty)
 Requires:       tex(verbatim.sty)
 Requires:       tex(xparse.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source93:       exercises.tar.xz
-Source94:       exercises.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source95:       exercises.tar.xz
+Source96:       exercises.doc.tar.xz
 
 %description -n texlive-exercises
 This package defines the environments exercise and solution.
@@ -7395,9 +7290,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-exercises
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -7409,12 +7301,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-exercises
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/exercises/exercises.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-exercises-%{texlive_version}.%{texlive_noarch}.1.1svn55188-%{release}-zypper
-%endif
 
 %package -n texlive-exesheet
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn55916
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn61061
 Release:        0
 License:        LPPL-1.0
 Summary:        Typesetting exercise or exam sheets
@@ -7440,7 +7329,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-exesheet-doc >= %{texlive_version}
+Suggests:       texlive-exesheet-doc >= %{texlive_version}
 Provides:       tex(exesheet.cls)
 Provides:       tex(exesheet.sty)
 Requires:       tex(article.cls)
@@ -7450,12 +7339,13 @@ Requires:       tex(geometry.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(schooldocs.sty)
 Requires:       tex(tasks.sty)
+Requires:       tex(translations.sty)
 Requires:       tex(versions.sty)
 Requires:       tex(xcolor.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source95:       exesheet.tar.xz
-Source96:       exesheet.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source97:       exesheet.tar.xz
+Source98:       exesheet.doc.tar.xz
 
 %description -n texlive-exesheet
 This package is used for typesetting exercise or exam sheets.
@@ -7463,10 +7353,10 @@ In addition, the exesheet class loads the schooldocs package.
 The package provides macros to mark out exercises and
 subparts, specific settings for enumeration lists, environments
 for questions and answers, with conditional display, macros for
-marking scheme with detailed comments.
+marking schemes with detailed comments.
 
 %package -n texlive-exesheet-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn55916
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn61061
 Release:        0
 Summary:        Documentation for texlive-exesheet
 License:        LPPL-1.0
@@ -7490,9 +7380,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-exesheet
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -7505,9 +7392,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/exesheet/exesheet.cls
 %{_texmfdistdir}/tex/latex/exesheet/exesheet.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-exesheet-%{texlive_version}.%{texlive_noarch}.1.0svn55916-%{release}-zypper
-%endif
 
 %package -n texlive-exframe
 Version:        %{texlive_version}.%{texlive_noarch}.3.4svn53911
@@ -7536,16 +7420,16 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-exframe-doc >= %{texlive_version}
+Suggests:       texlive-exframe-doc >= %{texlive_version}
 Provides:       tex(exframe.sty)
 Requires:       tex(color.sty)
 Requires:       tex(metastr.sty)
 Requires:       tex(verbatim.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source97:       exframe.tar.xz
-Source98:       exframe.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source99:       exframe.tar.xz
+Source100:      exframe.doc.tar.xz
 
 %description -n texlive-exframe
 This LaTeX2e package provides a general purpose framework to
@@ -7582,9 +7466,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-exframe
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -7606,9 +7487,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-exframe
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/exframe/exframe.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-exframe-%{texlive_version}.%{texlive_noarch}.3.4svn53911-%{release}-zypper
-%endif
 
 %package -n texlive-exp-testopt
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn15878
@@ -7637,12 +7515,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-exp-testopt-doc >= %{texlive_version}
+Suggests:       texlive-exp-testopt-doc >= %{texlive_version}
 Provides:       tex(exp-testopt.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source99:       exp-testopt.tar.xz
-Source100:      exp-testopt.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source101:      exp-testopt.tar.xz
+Source102:      exp-testopt.doc.tar.xz
 
 %description -n texlive-exp-testopt
 The package provides an expandable variant of the LaTeX kernel
@@ -7677,9 +7555,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-exp-testopt
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -7692,9 +7567,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-exp-testopt
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/exp-testopt/exp-testopt.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-exp-testopt-%{texlive_version}.%{texlive_noarch}.0.0.3svn15878-%{release}-zypper
-%endif
 
 %package -n texlive-expdlist
 Version:        %{texlive_version}.%{texlive_noarch}.2.4svn15878
@@ -7723,12 +7595,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-expdlist-doc >= %{texlive_version}
+Suggests:       texlive-expdlist-doc >= %{texlive_version}
 Provides:       tex(expdlist.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source101:      expdlist.tar.xz
-Source102:      expdlist.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source103:      expdlist.tar.xz
+Source104:      expdlist.doc.tar.xz
 
 %description -n texlive-expdlist
 The package provides additional features for the LaTeX
@@ -7764,9 +7636,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-expdlist
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -7779,9 +7648,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-expdlist
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/expdlist/expdlist.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-expdlist-%{texlive_version}.%{texlive_noarch}.2.4svn15878-%{release}-zypper
-%endif
 
 %package -n texlive-expex
 Version:        %{texlive_version}.%{texlive_noarch}.5.1bsvn44499
@@ -7810,7 +7676,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-expex-doc >= %{texlive_version}
+Suggests:       texlive-expex-doc >= %{texlive_version}
 Provides:       tex(epltxchapno.sty)
 Provides:       tex(epltxfn.sty)
 Provides:       tex(eptexfn.tex)
@@ -7818,10 +7684,10 @@ Provides:       tex(expex-demo.tex)
 Provides:       tex(expex.sty)
 Provides:       tex(expex.tex)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source103:      expex.tar.xz
-Source104:      expex.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source105:      expex.tar.xz
+Source106:      expex.doc.tar.xz
 
 %description -n texlive-expex
 The package provides macros for typesetting linguistic examples
@@ -7854,9 +7720,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-expex
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -7874,12 +7737,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/expex/expex-demo.tex
 %{_texmfdistdir}/tex/generic/expex/expex.sty
 %{_texmfdistdir}/tex/generic/expex/expex.tex
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-expex-%{texlive_version}.%{texlive_noarch}.5.1bsvn44499-%{release}-zypper
-%endif
 
 %package -n texlive-expkv
-Version:        %{texlive_version}.%{texlive_noarch}.1.6svn57247
+Version:        %{texlive_version}.%{texlive_noarch}.1.9asvn60573
 Release:        0
 License:        LPPL-1.0
 Summary:        An expandable key=val implementation
@@ -7905,13 +7765,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-expkv-doc >= %{texlive_version}
+Suggests:       texlive-expkv-doc >= %{texlive_version}
 Provides:       tex(expkv.sty)
 Provides:       tex(expkv.tex)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source105:      expkv.tar.xz
-Source106:      expkv.doc.tar.xz
+Provides:       tex(t-expkv.tex)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source107:      expkv.tar.xz
+Source108:      expkv.doc.tar.xz
 
 %description -n texlive-expkv
 expkv is a minimalistic but fast and expandable <key>=<val>
@@ -7926,7 +7787,7 @@ interface that is not as rudimentary as the macros provided in
 this package is contained in expkv-def.
 
 %package -n texlive-expkv-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.6svn57247
+Version:        %{texlive_version}.%{texlive_noarch}.1.9asvn60573
 Release:        0
 Summary:        Documentation for texlive-expkv
 License:        LPPL-1.0
@@ -7950,9 +7811,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-expkv
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -7963,14 +7821,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-expkv
 %defattr(-,root,root,755)
+%{_texmfdistdir}/tex/context/third/expkv/t-expkv.tex
 %{_texmfdistdir}/tex/generic/expkv/expkv.tex
 %{_texmfdistdir}/tex/latex/expkv/expkv.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-expkv-%{texlive_version}.%{texlive_noarch}.1.6svn57247-%{release}-zypper
-%endif
 
 %package -n texlive-expkv-cs
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn56693
+Version:        %{texlive_version}.%{texlive_noarch}.1.2svn62003
 Release:        0
 License:        LPPL-1.0
 Summary:        Define expandable key=val macros using expkv
@@ -7996,14 +7852,15 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-expkv-cs-doc >= %{texlive_version}
+Suggests:       texlive-expkv-cs-doc >= %{texlive_version}
 Provides:       tex(expkv-cs.sty)
 Provides:       tex(expkv-cs.tex)
+Provides:       tex(t-expkv-cs.tex)
 Requires:       tex(expkv.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source107:      expkv-cs.tar.xz
-Source108:      expkv-cs.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source109:      expkv-cs.tar.xz
+Source110:      expkv-cs.doc.tar.xz
 
 %description -n texlive-expkv-cs
 This package is a frontend to define expandable macros with
@@ -8023,7 +7880,7 @@ generic code in expkv-cs.tex. Note: In this context, "cs"
 stands for "control sequence" (i.e.: macro).
 
 %package -n texlive-expkv-cs-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn56693
+Version:        %{texlive_version}.%{texlive_noarch}.1.2svn62003
 Release:        0
 Summary:        Documentation for texlive-expkv-cs
 License:        LPPL-1.0
@@ -8047,9 +7904,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-expkv-cs
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -8060,14 +7914,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-expkv-cs
 %defattr(-,root,root,755)
+%{_texmfdistdir}/tex/context/third/expkv-cs/t-expkv-cs.tex
 %{_texmfdistdir}/tex/generic/expkv-cs/expkv-cs.tex
 %{_texmfdistdir}/tex/latex/expkv-cs/expkv-cs.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-expkv-cs-%{texlive_version}.%{texlive_noarch}.0.0.6svn56693-%{release}-zypper
-%endif
 
 %package -n texlive-expkv-def
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.7svn57246
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.9svn61796
 Release:        0
 License:        LPPL-1.0
 Summary:        A key-defining frontend for expkv
@@ -8093,14 +7945,15 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-expkv-def-doc >= %{texlive_version}
+Suggests:       texlive-expkv-def-doc >= %{texlive_version}
 Provides:       tex(expkv-def.sty)
 Provides:       tex(expkv-def.tex)
+Provides:       tex(t-expkv-def.tex)
 Requires:       tex(expkv.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source109:      expkv-def.tar.xz
-Source110:      expkv-def.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source111:      expkv-def.tar.xz
+Source112:      expkv-def.doc.tar.xz
 
 %description -n texlive-expkv-def
 This package provides a key=val interface to define keys for
@@ -8114,7 +7967,7 @@ is not needed and does not provide more functionality than the
 generic code in expkv-def.tex.
 
 %package -n texlive-expkv-def-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.7svn57246
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.9svn61796
 Release:        0
 Summary:        Documentation for texlive-expkv-def
 License:        LPPL-1.0
@@ -8138,9 +7991,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-expkv-def
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -8151,14 +8001,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-expkv-def
 %defattr(-,root,root,755)
+%{_texmfdistdir}/tex/context/third/expkv-def/t-expkv-def.tex
 %{_texmfdistdir}/tex/generic/expkv-def/expkv-def.tex
 %{_texmfdistdir}/tex/latex/expkv-def/expkv-def.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-expkv-def-%{texlive_version}.%{texlive_noarch}.0.0.7svn57246-%{release}-zypper
-%endif
 
 %package -n texlive-expkv-opt
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1bsvn56633
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn58772
 Release:        0
 License:        LPPL-1.0
 Summary:        Parse class and package options with expkv
@@ -8184,13 +8032,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-expkv-opt-doc >= %{texlive_version}
+Suggests:       texlive-expkv-opt-doc >= %{texlive_version}
+Provides:       tex(expkv-opt-2020-10-10.sty)
 Provides:       tex(expkv-opt.sty)
 Requires:       tex(expkv.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source111:      expkv-opt.tar.xz
-Source112:      expkv-opt.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source113:      expkv-opt.tar.xz
+Source114:      expkv-opt.doc.tar.xz
 
 %description -n texlive-expkv-opt
 This package provides option parsing for classes and packages
@@ -8200,7 +8049,7 @@ key=value options and keys without a value. expkv is the only
 required package.
 
 %package -n texlive-expkv-opt-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1bsvn56633
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn58772
 Release:        0
 Summary:        Documentation for texlive-expkv-opt
 License:        LPPL-1.0
@@ -8224,9 +8073,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-expkv-opt
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -8237,10 +8083,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-expkv-opt
 %defattr(-,root,root,755)
+%{_texmfdistdir}/tex/generic/expkv-opt/expkv-opt-2020-10-10.sty
 %{_texmfdistdir}/tex/generic/expkv-opt/expkv-opt.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-expkv-opt-%{texlive_version}.%{texlive_noarch}.0.0.1bsvn56633-%{release}-zypper
-%endif
 
 %package -n texlive-export
 Version:        %{texlive_version}.%{texlive_noarch}.1.8svn27206
@@ -8269,13 +8113,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-export-doc >= %{texlive_version}
+Suggests:       texlive-export-doc >= %{texlive_version}
 Provides:       tex(dvipaste.sty)
 Provides:       tex(export.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source113:      export.tar.xz
-Source114:      export.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source115:      export.tar.xz
+Source116:      export.doc.tar.xz
 
 %description -n texlive-export
 The package allows the user to export/import the values of
@@ -8309,9 +8153,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-export
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -8324,9 +8165,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/export/dvipaste.sty
 %{_texmfdistdir}/tex/latex/export/export.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-export-%{texlive_version}.%{texlive_noarch}.1.8svn27206-%{release}-zypper
-%endif
 
 %package -n texlive-expose-expl3-dunkerque-2019
 Version:        %{texlive_version}.%{texlive_noarch}.1.2svn54451
@@ -8355,9 +8193,9 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source115:      expose-expl3-dunkerque-2019.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source117:      expose-expl3-dunkerque-2019.doc.tar.xz
 
 %description -n texlive-expose-expl3-dunkerque-2019
 An article, in French, based on a presentation made in
@@ -8382,9 +8220,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-expose-expl3-dunkerque-2019
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -8410,9 +8245,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/expose-expl3-dunkerque-2019/glosaires/les-macros.tex
 %{_texmfdistdir}/doc/latex/expose-expl3-dunkerque-2019/glosaires/termes-techniques.tex
 %{_texmfdistdir}/doc/latex/expose-expl3-dunkerque-2019/latexmkrc
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-expose-expl3-dunkerque-2019-%{texlive_version}.%{texlive_noarch}.1.2svn54451-%{release}-zypper
-%endif
 
 %package -n texlive-expressg
 Version:        %{texlive_version}.%{texlive_noarch}.1.5svn29349
@@ -8441,11 +8273,11 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-expressg-doc >= %{texlive_version}
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source116:      expressg.tar.xz
-Source117:      expressg.doc.tar.xz
+Suggests:       texlive-expressg-doc >= %{texlive_version}
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source118:      expressg.tar.xz
+Source119:      expressg.doc.tar.xz
 
 %description -n texlive-expressg
 A MetaPost package providing facilities to assist in drawing
@@ -8480,9 +8312,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-expressg
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -8502,9 +8331,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/metapost/expressg/aam.mp
 %{_texmfdistdir}/metapost/expressg/expeg.mp
 %{_texmfdistdir}/metapost/expressg/expressg.mp
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-expressg-%{texlive_version}.%{texlive_noarch}.1.5svn29349-%{release}-zypper
-%endif
 
 %package -n texlive-exsheets
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.21ksvn52227
@@ -8533,7 +8359,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-exsheets-doc >= %{texlive_version}
+Suggests:       texlive-exsheets-doc >= %{texlive_version}
 Provides:       tex(exsheets-listings.sty)
 Provides:       tex(exsheets.sty)
 Provides:       tex(exsheets_configurations.cfg)
@@ -8547,10 +8373,10 @@ Requires:       tex(translations.sty)
 Requires:       tex(ulem.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source118:      exsheets.tar.xz
-Source119:      exsheets.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source120:      exsheets.tar.xz
+Source121:      exsheets.doc.tar.xz
 
 %description -n texlive-exsheets
 The package provides the means to create exercises or questions
@@ -8593,9 +8419,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-exsheets
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -8614,9 +8437,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/exsheets/exsheets_configurations.cfg
 %{_texmfdistdir}/tex/latex/exsheets/exsheets_headings.cfg
 %{_texmfdistdir}/tex/latex/exsheets/exsheets_headings.def
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-exsheets-%{texlive_version}.%{texlive_noarch}.0.0.21ksvn52227-%{release}-zypper
-%endif
 
 %package -n texlive-exsol
 Version:        %{texlive_version}.%{texlive_noarch}.1.4svn48977
@@ -8645,7 +8465,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-exsol-doc >= %{texlive_version}
+Suggests:       texlive-exsol-doc >= %{texlive_version}
 Provides:       tex(exsol.sty)
 Requires:       tex(fancyvrb.sty)
 Requires:       tex(ifmtarg.sty)
@@ -8653,10 +8473,10 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(multicol.sty)
 Requires:       tex(varwidth.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source120:      exsol.tar.xz
-Source121:      exsol.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source122:      exsol.tar.xz
+Source123:      exsol.doc.tar.xz
 
 %description -n texlive-exsol
 This package provides macros to allow for embedding exercises
@@ -8697,9 +8517,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-exsol
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -8716,9 +8533,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-exsol
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/exsol/exsol.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-exsol-%{texlive_version}.%{texlive_noarch}.1.4svn48977-%{release}-zypper
-%endif
 
 %package -n texlive-extarrows
 Version:        %{texlive_version}.%{texlive_noarch}.1.2.0svn54400
@@ -8747,13 +8561,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-extarrows-doc >= %{texlive_version}
+Suggests:       texlive-extarrows-doc >= %{texlive_version}
 Provides:       tex(extarrows.sty)
 Requires:       tex(amsmath.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source122:      extarrows.tar.xz
-Source123:      extarrows.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source124:      extarrows.tar.xz
+Source125:      extarrows.doc.tar.xz
 
 %description -n texlive-extarrows
 Arrows are provided to supplement \xleftarrow and \xrightarrow
@@ -8787,9 +8601,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-extarrows
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -8802,9 +8613,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-extarrows
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/extarrows/extarrows.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-extarrows-%{texlive_version}.%{texlive_noarch}.1.2.0svn54400-%{release}-zypper
-%endif
 
 %package -n texlive-exteps
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.41svn19859
@@ -8833,11 +8641,11 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-exteps-doc >= %{texlive_version}
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source124:      exteps.tar.xz
-Source125:      exteps.doc.tar.xz
+Suggests:       texlive-exteps-doc >= %{texlive_version}
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source126:      exteps.tar.xz
+Source127:      exteps.doc.tar.xz
 
 %description -n texlive-exteps
 Exteps is a module for including external EPS figures into
@@ -8870,9 +8678,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-exteps
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -8887,9 +8692,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-exteps
 %defattr(-,root,root,755)
 %{_texmfdistdir}/metapost/exteps/exteps.mp
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-exteps-%{texlive_version}.%{texlive_noarch}.0.0.41svn19859-%{release}-zypper
-%endif
 
 %package -n texlive-extpfeil
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn16243
@@ -8918,16 +8720,16 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-extpfeil-doc >= %{texlive_version}
+Suggests:       texlive-extpfeil-doc >= %{texlive_version}
 Provides:       tex(extpfeil.sty)
 Requires:       tex(amsmath.sty)
 Requires:       tex(amssymb.sty)
 Requires:       tex(mathtools.sty)
 Requires:       tex(stmaryrd.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source126:      extpfeil.tar.xz
-Source127:      extpfeil.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source128:      extpfeil.tar.xz
+Source129:      extpfeil.doc.tar.xz
 
 %description -n texlive-extpfeil
 The package provides some more extensible arrows (usable in the
@@ -8960,9 +8762,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-extpfeil
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -8974,9 +8773,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-extpfeil
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/extpfeil/extpfeil.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-extpfeil-%{texlive_version}.%{texlive_noarch}.0.0.4svn16243-%{release}-zypper
-%endif
 
 %package -n texlive-extract
 Version:        %{texlive_version}.%{texlive_noarch}.1.9asvn52117
@@ -9005,14 +8801,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-extract-doc >= %{texlive_version}
+Suggests:       texlive-extract-doc >= %{texlive_version}
 Provides:       tex(extract.sty)
 Requires:       tex(verbatim.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source128:      extract.tar.xz
-Source129:      extract.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source130:      extract.tar.xz
+Source131:      extract.doc.tar.xz
 
 %description -n texlive-extract
 The package provides the means to extract specific content from
@@ -9055,9 +8851,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-extract
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -9078,9 +8871,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-extract
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/extract/extract.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-extract-%{texlive_version}.%{texlive_noarch}.1.9asvn52117-%{release}-zypper
-%endif
 
 %package -n texlive-extsizes
 Version:        %{texlive_version}.%{texlive_noarch}.1.4asvn17263
@@ -9109,7 +8899,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-extsizes-doc >= %{texlive_version}
+Suggests:       texlive-extsizes-doc >= %{texlive_version}
 Provides:       tex(autopagewidth.sty)
 Provides:       tex(extarticle.cls)
 Provides:       tex(extbook.cls)
@@ -9123,10 +8913,10 @@ Provides:       tex(size20.clo)
 Provides:       tex(size8.clo)
 Provides:       tex(size9.clo)
 Requires:       tex(exscale.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source130:      extsizes.tar.xz
-Source131:      extsizes.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source132:      extsizes.tar.xz
+Source133:      extsizes.doc.tar.xz
 
 %description -n texlive-extsizes
 Provides classes extarticle, extreport, extletter, extbook and
@@ -9160,9 +8950,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-extsizes
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -9187,9 +8974,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/extsizes/size20.clo
 %{_texmfdistdir}/tex/latex/extsizes/size8.clo
 %{_texmfdistdir}/tex/latex/extsizes/size9.clo
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-extsizes-%{texlive_version}.%{texlive_noarch}.1.4asvn17263-%{release}-zypper
-%endif
 
 %package -n texlive-facsimile
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn21328
@@ -9218,16 +9002,16 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-facsimile-doc >= %{texlive_version}
+Suggests:       texlive-facsimile-doc >= %{texlive_version}
 Provides:       tex(fac-de.cfg)
 Provides:       tex(fac-en.cfg)
 Provides:       tex(facsimile.cls)
 Requires:       tex(fancyhdr.sty)
 Requires:       tex(lastpage.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source132:      facsimile.tar.xz
-Source133:      facsimile.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source134:      facsimile.tar.xz
+Source135:      facsimile.doc.tar.xz
 
 %description -n texlive-facsimile
 The facsimile class provides a simple interface for creating a
@@ -9264,9 +9048,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-facsimile
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -9281,12 +9062,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/facsimile/fac-de.cfg
 %{_texmfdistdir}/tex/latex/facsimile/fac-en.cfg
 %{_texmfdistdir}/tex/latex/facsimile/facsimile.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-facsimile-%{texlive_version}.%{texlive_noarch}.1.0svn21328-%{release}-zypper
-%endif
 
 %package -n texlive-factura
-Version:        %{texlive_version}.%{texlive_noarch}.4.00svn56948
+Version:        %{texlive_version}.%{texlive_noarch}.4.32svn61697
 Release:        0
 License:        LPPL-1.0
 Summary:        Typeset and calculate invoices according to Venezuelan law
@@ -9312,11 +9090,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-factura-doc >= %{texlive_version}
+Suggests:       texlive-factura-doc >= %{texlive_version}
 Provides:       tex(factura.cls)
 Provides:       tex(factura.def)
 Requires:       tex(anyfontsize.sty)
 Requires:       tex(article.cls)
+Requires:       tex(atbegshi.sty)
 Requires:       tex(babel.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(datetime2.sty)
@@ -9337,10 +9116,10 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 Requires:       tex(zref-savepos.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source134:      factura.tar.xz
-Source135:      factura.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source136:      factura.tar.xz
+Source137:      factura.doc.tar.xz
 
 %description -n texlive-factura
 'factura' is the Spanish word for 'invoice', so this is a LaTeX
@@ -9352,7 +9131,7 @@ the displayed text can be redefined by invoking commands or
 editing.
 
 %package -n texlive-factura-doc
-Version:        %{texlive_version}.%{texlive_noarch}.4.00svn56948
+Version:        %{texlive_version}.%{texlive_noarch}.4.32svn61697
 Release:        0
 Summary:        Documentation for texlive-factura
 License:        LPPL-1.0
@@ -9377,9 +9156,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-factura
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -9409,15 +9185,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/factura/factura-ejemplo-reporte1.tex
 %{_texmfdistdir}/doc/latex/factura/factura-ejemplo-reporte2.tex
 %{_texmfdistdir}/doc/latex/factura/factura-ejemplo-reporte3.tex
+%{_texmfdistdir}/doc/latex/factura/factura-ejemplo-reporte4.tex
 %{_texmfdistdir}/doc/latex/factura/factura.pdf
 
 %files -n texlive-factura
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/factura/factura.cls
 %{_texmfdistdir}/tex/latex/factura/factura.def
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-factura-%{texlive_version}.%{texlive_noarch}.4.00svn56948-%{release}-zypper
-%endif
 
 %package -n texlive-facture
 Version:        %{texlive_version}.%{texlive_noarch}.1.2.2svn43865
@@ -9446,7 +9220,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-facture-doc >= %{texlive_version}
+Suggests:       texlive-facture-doc >= %{texlive_version}
 Provides:       tex(facture.cls)
 Requires:       tex(advdate.sty)
 Requires:       tex(array.sty)
@@ -9462,10 +9236,10 @@ Requires:       tex(polyglossia.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xargs.sty)
 Requires:       tex(xunicode.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source136:      facture.tar.xz
-Source137:      facture.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source138:      facture.tar.xz
+Source139:      facture.doc.tar.xz
 
 %description -n texlive-facture
 Une classe simple permettant de produire une facture, avec ou
@@ -9500,9 +9274,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-facture
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -9521,9 +9292,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-facture
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/xelatex/facture/facture.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-facture-%{texlive_version}.%{texlive_noarch}.1.2.2svn43865-%{release}-zypper
-%endif
 
 %package -n texlive-facture-belge-simple-sans-tva
 Version:        %{texlive_version}.%{texlive_noarch}.2.1svn49004
@@ -9552,12 +9320,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-facture-belge-simple-sans-tva-doc >= %{texlive_version}
+Suggests:       texlive-facture-belge-simple-sans-tva-doc >= %{texlive_version}
 Provides:       tex(facture-belge-simple-sans-tva.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source138:      facture-belge-simple-sans-tva.tar.xz
-Source139:      facture-belge-simple-sans-tva.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source140:      facture-belge-simple-sans-tva.tar.xz
+Source141:      facture-belge-simple-sans-tva.doc.tar.xz
 
 %description -n texlive-facture-belge-simple-sans-tva
 This package can be used to generate invoices for Belgian
@@ -9597,9 +9365,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-facture-belge-simple-sans-tva
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -9624,9 +9389,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-facture-belge-simple-sans-tva
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/xelatex/facture-belge-simple-sans-tva/facture-belge-simple-sans-tva.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-facture-belge-simple-sans-tva-%{texlive_version}.%{texlive_noarch}.2.1svn49004-%{release}-zypper
-%endif
 
 %package -n texlive-faktor
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.1bsvn15878
@@ -9655,12 +9417,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-faktor-doc >= %{texlive_version}
+Suggests:       texlive-faktor-doc >= %{texlive_version}
 Provides:       tex(faktor.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source140:      faktor.tar.xz
-Source141:      faktor.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source142:      faktor.tar.xz
+Source143:      faktor.doc.tar.xz
 
 %description -n texlive-faktor
 The package provides the means to typeset factor structures, as
@@ -9696,9 +9458,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-faktor
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -9710,9 +9469,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-faktor
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/faktor/faktor.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-faktor-%{texlive_version}.%{texlive_noarch}.0.0.1bsvn15878-%{release}-zypper
-%endif
 
 %package -n texlive-fancybox
 Version:        %{texlive_version}.%{texlive_noarch}.1.4svn18304
@@ -9741,12 +9497,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fancybox-doc >= %{texlive_version}
+Suggests:       texlive-fancybox-doc >= %{texlive_version}
 Provides:       tex(fancybox.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source142:      fancybox.tar.xz
-Source143:      fancybox.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source144:      fancybox.tar.xz
+Source145:      fancybox.doc.tar.xz
 
 %description -n texlive-fancybox
 Provides variants of \fbox: \shadowbox, \doublebox, \ovalbox,
@@ -9779,9 +9535,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fancybox
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -9796,9 +9549,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fancybox
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fancybox/fancybox.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fancybox-%{texlive_version}.%{texlive_noarch}.1.4svn18304-%{release}-zypper
-%endif
 
 %package -n texlive-fancyhandout
 Version:        %{texlive_version}.%{texlive_noarch}.svn46411
@@ -9827,7 +9577,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fancyhandout-doc >= %{texlive_version}
+Suggests:       texlive-fancyhandout-doc >= %{texlive_version}
 Provides:       tex(fancyhandout.cls)
 Requires:       tex(article.cls)
 Requires:       tex(csquotes.sty)
@@ -9836,10 +9586,10 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(fancyhdr.sty)
 Requires:       tex(geometry.sty)
 Requires:       tex(xcolor.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source144:      fancyhandout.tar.xz
-Source145:      fancyhandout.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source146:      fancyhandout.tar.xz
+Source147:      fancyhandout.doc.tar.xz
 
 %description -n texlive-fancyhandout
 This package breaks with some of LaTeX's principles and
@@ -9879,9 +9629,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fancyhandout
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -9894,9 +9641,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fancyhandout
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fancyhandout/fancyhandout.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fancyhandout-%{texlive_version}.%{texlive_noarch}.svn46411-%{release}-zypper
-%endif
 
 %package -n texlive-fancyhdr
 Version:        %{texlive_version}.%{texlive_noarch}.4.0.1svn57672
@@ -9925,14 +9669,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fancyhdr-doc >= %{texlive_version}
+Suggests:       texlive-fancyhdr-doc >= %{texlive_version}
 Provides:       tex(extramarks.sty)
 Provides:       tex(fancyhdr.sty)
 Provides:       tex(fancyheadings.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source146:      fancyhdr.tar.xz
-Source147:      fancyhdr.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source148:      fancyhdr.tar.xz
+Source149:      fancyhdr.doc.tar.xz
 
 %description -n texlive-fancyhdr
 The package provides extensive facilities, both for
@@ -9965,9 +9709,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fancyhdr
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -9981,9 +9722,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/fancyhdr/extramarks.sty
 %{_texmfdistdir}/tex/latex/fancyhdr/fancyhdr.sty
 %{_texmfdistdir}/tex/latex/fancyhdr/fancyheadings.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fancyhdr-%{texlive_version}.%{texlive_noarch}.4.0.1svn57672-%{release}-zypper
-%endif
 
 %package -n texlive-fancyhdr-it
 Version:        %{texlive_version}.%{texlive_noarch}.svn21912
@@ -10012,9 +9750,9 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source148:      fancyhdr-it.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source150:      fancyhdr-it.doc.tar.xz
 
 %description -n texlive-fancyhdr-it
 The translation is of documentation provided with the fancyhdr
@@ -10034,9 +9772,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fancyhdr-it
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -10046,9 +9781,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/fancyhdr-it/README
 %{_texmfdistdir}/doc/latex/fancyhdr-it/itfancyhdr.pdf
 %{_texmfdistdir}/doc/latex/fancyhdr-it/itfancyhdr.tex
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fancyhdr-it-%{texlive_version}.%{texlive_noarch}.svn21912-%{release}-zypper
-%endif
 
 %package -n texlive-fancylabel
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn46736
@@ -10077,15 +9809,15 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fancylabel-doc >= %{texlive_version}
+Suggests:       texlive-fancylabel-doc >= %{texlive_version}
 Provides:       tex(fancylabel.sty)
 Requires:       tex(suffix.sty)
 Requires:       tex(xifthen.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source149:      fancylabel.tar.xz
-Source150:      fancylabel.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source151:      fancylabel.tar.xz
+Source152:      fancylabel.doc.tar.xz
 
 %description -n texlive-fancylabel
 The package provides a complex labelling scheme. It is designed
@@ -10116,9 +9848,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fancylabel
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -10130,9 +9859,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fancylabel
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fancylabel/fancylabel.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fancylabel-%{texlive_version}.%{texlive_noarch}.1.1svn46736-%{release}-zypper
-%endif
 
 %package -n texlive-fancynum
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.92svn15878
@@ -10161,12 +9887,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fancynum-doc >= %{texlive_version}
+Suggests:       texlive-fancynum-doc >= %{texlive_version}
 Provides:       tex(fancynum.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source151:      fancynum.tar.xz
-Source152:      fancynum.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source153:      fancynum.tar.xz
+Source154:      fancynum.doc.tar.xz
 
 %description -n texlive-fancynum
 A LaTeX package for typesetting numbers, in particular floating
@@ -10197,9 +9923,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fancynum
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -10216,12 +9939,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fancynum
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fancynum/fancynum.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fancynum-%{texlive_version}.%{texlive_noarch}.0.0.92svn15878-%{release}-zypper
-%endif
 
 %package -n texlive-fancypar
-Version:        %{texlive_version}.%{texlive_noarch}.1.2svn49801
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn58895
 Release:        0
 License:        LPPL-1.0
 Summary:        Decoration of individual paragraphs
@@ -10247,15 +9967,15 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fancypar-doc >= %{texlive_version}
+Suggests:       texlive-fancypar-doc >= %{texlive_version}
 Provides:       tex(fancypar.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source153:      fancypar.tar.xz
-Source154:      fancypar.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source155:      fancypar.tar.xz
+Source156:      fancypar.doc.tar.xz
 
 %description -n texlive-fancypar
 Decorates individual paragraphs of a document, offering five
@@ -10267,7 +9987,7 @@ also define their own styles. Decorated paragraphs may not
 include displayed mathematics.
 
 %package -n texlive-fancypar-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2svn49801
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn58895
 Release:        0
 Summary:        Documentation for texlive-fancypar
 License:        LPPL-1.0
@@ -10291,9 +10011,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fancypar
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -10305,9 +10022,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fancypar
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fancypar/fancypar.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fancypar-%{texlive_version}.%{texlive_noarch}.1.2svn49801-%{release}-zypper
-%endif
 
 %package -n texlive-fancyref
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.9csvn15878
@@ -10336,13 +10050,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fancyref-doc >= %{texlive_version}
+Suggests:       texlive-fancyref-doc >= %{texlive_version}
 Provides:       tex(fancyref.sty)
 Requires:       tex(varioref.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source155:      fancyref.tar.xz
-Source156:      fancyref.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source157:      fancyref.tar.xz
+Source158:      fancyref.doc.tar.xz
 
 %description -n texlive-fancyref
 Provides fancy cross-referencing support, based on the
@@ -10376,9 +10090,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fancyref
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -10392,9 +10103,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fancyref
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fancyref/fancyref.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fancyref-%{texlive_version}.%{texlive_noarch}.0.0.9csvn15878-%{release}-zypper
-%endif
 
 %package -n texlive-fancyslides
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn36263
@@ -10423,14 +10131,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fancyslides-doc >= %{texlive_version}
+Suggests:       texlive-fancyslides-doc >= %{texlive_version}
 Provides:       tex(fancyslides.cls)
 Requires:       tex(framed.sty)
 Requires:       tex(tikz.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source157:      fancyslides.tar.xz
-Source158:      fancyslides.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source159:      fancyslides.tar.xz
+Source160:      fancyslides.doc.tar.xz
 
 %description -n texlive-fancyslides
 This class is prepared for short presentations with a modern
@@ -10465,9 +10173,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fancyslides
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -10492,9 +10197,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fancyslides
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fancyslides/fancyslides.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fancyslides-%{texlive_version}.%{texlive_noarch}.1.0svn36263-%{release}-zypper
-%endif
 
 %package -n texlive-fancytabs
 Version:        %{texlive_version}.%{texlive_noarch}.1.9svn41549
@@ -10523,14 +10225,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fancytabs-doc >= %{texlive_version}
+Suggests:       texlive-fancytabs-doc >= %{texlive_version}
 Provides:       tex(fancytabs.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(tikz.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source159:      fancytabs.tar.xz
-Source160:      fancytabs.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source161:      fancytabs.tar.xz
+Source162:      fancytabs.doc.tar.xz
 
 %description -n texlive-fancytabs
 The package can typeset tabs on the side of a page. It requires
@@ -10561,9 +10263,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fancytabs
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -10575,9 +10274,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fancytabs
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fancytabs/fancytabs.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fancytabs-%{texlive_version}.%{texlive_noarch}.1.9svn41549-%{release}-zypper
-%endif
 
 %package -n texlive-fancytooltips
 Version:        %{texlive_version}.%{texlive_noarch}.1.8svn56291
@@ -10606,7 +10302,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fancytooltips-doc >= %{texlive_version}
+Suggests:       texlive-fancytooltips-doc >= %{texlive_version}
 Provides:       tex(fancytooltips.sty)
 Requires:       tex(atbegshi.sty)
 Requires:       tex(eso-pic.sty)
@@ -10614,10 +10310,10 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(ocg.sty)
 Requires:       tex(transparent.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source161:      fancytooltips.tar.xz
-Source162:      fancytooltips.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source163:      fancytooltips.tar.xz
+Source164:      fancytooltips.doc.tar.xz
 
 %description -n texlive-fancytooltips
 The package was inspired by the cooltooltips package. In
@@ -10653,9 +10349,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fancytooltips
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -10690,12 +10383,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/fancytooltips/fancytipmark.pdf
 %{_texmfdistdir}/tex/latex/fancytooltips/fancytipmark.svg
 %{_texmfdistdir}/tex/latex/fancytooltips/fancytooltips.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fancytooltips-%{texlive_version}.%{texlive_noarch}.1.8svn56291-%{release}-zypper
-%endif
 
 %package -n texlive-fancyvrb
-Version:        %{texlive_version}.%{texlive_noarch}.3.7svn57488
+Version:        %{texlive_version}.%{texlive_noarch}.4.1bsvn61368
 Release:        0
 License:        LPPL-1.0
 Summary:        Sophisticated verbatim text
@@ -10721,7 +10411,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fancyvrb-doc >= %{texlive_version}
+Suggests:       texlive-fancyvrb-doc >= %{texlive_version}
 Provides:       tex(fancyvrb-ex.sty)
 Provides:       tex(fancyvrb.sty)
 Provides:       tex(hbaw.sty)
@@ -10729,10 +10419,10 @@ Provides:       tex(hcolor.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(pstricks.sty)
 Requires:       tex(xcolor.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source163:      fancyvrb.tar.xz
-Source164:      fancyvrb.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source165:      fancyvrb.tar.xz
+Source166:      fancyvrb.doc.tar.xz
 
 %description -n texlive-fancyvrb
 Flexible handling of verbatim text including: verbatim commands
@@ -10743,7 +10433,7 @@ write and read files in verbatim mode; build "example"
 environments (showing both result and verbatim source).
 
 %package -n texlive-fancyvrb-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.7svn57488
+Version:        %{texlive_version}.%{texlive_noarch}.4.1bsvn61368
 Release:        0
 Summary:        Documentation for texlive-fancyvrb
 License:        LPPL-1.0
@@ -10767,9 +10457,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fancyvrb
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -10786,9 +10473,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/fancyvrb/fancyvrb.sty
 %{_texmfdistdir}/tex/latex/fancyvrb/hbaw.sty
 %{_texmfdistdir}/tex/latex/fancyvrb/hcolor.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fancyvrb-%{texlive_version}.%{texlive_noarch}.3.7svn57488-%{release}-zypper
-%endif
 
 %package -n texlive-fandol
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn37889
@@ -10818,11 +10502,11 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-fandol-fonts >= %{texlive_version}
-Recommends:     texlive-fandol-doc >= %{texlive_version}
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source165:      fandol.tar.xz
-Source166:      fandol.doc.tar.xz
+Suggests:       texlive-fandol-doc >= %{texlive_version}
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source167:      fandol.tar.xz
+Source168:      fandol.doc.tar.xz
 
 %description -n texlive-fandol
 Fandol fonts designed for Chinese typesetting. The current
@@ -10871,9 +10555,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fandol
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -10910,9 +10591,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-fandol/FandolKai-Regular.otf
 %{_datadir}/fonts/texlive-fandol/FandolSong-Bold.otf
 %{_datadir}/fonts/texlive-fandol/FandolSong-Regular.otf
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fandol-fonts-%{texlive_version}.%{texlive_noarch}.0.0.3svn37889-%{release}-zypper
-%endif
 
 %package -n texlive-fascicules
 Version:        %{texlive_version}.%{texlive_noarch}.1svn54080
@@ -10941,7 +10619,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fascicules-doc >= %{texlive_version}
+Suggests:       texlive-fascicules-doc >= %{texlive_version}
 Provides:       tex(fascicules.sty)
 Requires:       tex(amsthm.sty)
 Requires:       tex(answers.sty)
@@ -10963,10 +10641,10 @@ Requires:       tex(tcolorbox.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xcomment.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source167:      fascicules.tar.xz
-Source168:      fascicules.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source169:      fascicules.tar.xz
+Source170:      fascicules.doc.tar.xz
 
 %description -n texlive-fascicules
 This package enables LaTeX users to create math books for
@@ -11001,9 +10679,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fascicules
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -11039,9 +10714,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fascicules
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fascicules/fascicules.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fascicules-%{texlive_version}.%{texlive_noarch}.1svn54080-%{release}-zypper
-%endif
 
 %package -n texlive-fast-diagram
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn29264
@@ -11070,16 +10742,16 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fast-diagram-doc >= %{texlive_version}
+Suggests:       texlive-fast-diagram-doc >= %{texlive_version}
 Provides:       tex(fast-diagram.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(relsize.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xargs.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source169:      fast-diagram.tar.xz
-Source170:      fast-diagram.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source171:      fast-diagram.tar.xz
+Source172:      fast-diagram.doc.tar.xz
 
 %description -n texlive-fast-diagram
 The package provides simple means of producing FAST diagrams,
@@ -11112,9 +10784,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fast-diagram
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -11144,9 +10813,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fast-diagram
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fast-diagram/fast-diagram.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fast-diagram-%{texlive_version}.%{texlive_noarch}.1.1svn29264-%{release}-zypper
-%endif
 
 %package -n texlive-fbb
 Version:        %{texlive_version}.%{texlive_noarch}.1.16svn55728
@@ -11187,7 +10853,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-fbb-fonts >= %{texlive_version}
-Recommends:     texlive-fbb-doc >= %{texlive_version}
+Suggests:       texlive-fbb-doc >= %{texlive_version}
 Provides:       tex(LY1fbb-Inf.fd)
 Provides:       tex(LY1fbb-LF.fd)
 Provides:       tex(LY1fbb-OsF.fd)
@@ -12043,10 +11709,10 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source171:      fbb.tar.xz
-Source172:      fbb.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source173:      fbb.tar.xz
+Source174:      fbb.doc.tar.xz
 
 %description -n texlive-fbb
 The package provides a Bembo-like font package based on Cardo
@@ -12101,9 +11767,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fbb
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -12991,9 +12654,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-fbb/fbb-BoldItalic.pfb
 %{_datadir}/fonts/texlive-fbb/fbb-Italic.pfb
 %{_datadir}/fonts/texlive-fbb/fbb-Regular.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fbb-fonts-%{texlive_version}.%{texlive_noarch}.1.16svn55728-%{release}-zypper
-%endif
 
 %package -n texlive-fbithesis
 Version:        %{texlive_version}.%{texlive_noarch}.1.2msvn21340
@@ -13022,14 +12682,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fbithesis-doc >= %{texlive_version}
+Suggests:       texlive-fbithesis-doc >= %{texlive_version}
 Provides:       tex(fbithesis.cfg)
 Provides:       tex(fbithesis.cls)
 Requires:       tex(graphicx.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source173:      fbithesis.tar.xz
-Source174:      fbithesis.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source175:      fbithesis.tar.xz
+Source176:      fbithesis.doc.tar.xz
 
 %description -n texlive-fbithesis
 At the department of computer science at the University of
@@ -13064,9 +12724,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fbithesis
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -13084,12 +12741,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fbithesis/fbithesis.cfg
 %{_texmfdistdir}/tex/latex/fbithesis/fbithesis.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fbithesis-%{texlive_version}.%{texlive_noarch}.1.2msvn21340-%{release}-zypper
-%endif
 
 %package -n texlive-fbox
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.05svn55627
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.06svn62126
 Release:        0
 License:        LPPL-1.0
 Summary:        Extended \fbox macro from standard LaTeX
@@ -13115,13 +12769,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fbox-doc >= %{texlive_version}
+Suggests:       texlive-fbox-doc >= %{texlive_version}
 Provides:       tex(fbox.sty)
+Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source175:      fbox.tar.xz
-Source176:      fbox.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source177:      fbox.tar.xz
+Source178:      fbox.doc.tar.xz
 
 %description -n texlive-fbox
 This package redefines \fbox to allow an optional argument for
@@ -13131,7 +12786,7 @@ letters or a combination of lowercase and uppercase is also
 possible.
 
 %package -n texlive-fbox-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.05svn55627
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.06svn62126
 Release:        0
 Summary:        Documentation for texlive-fbox
 License:        LPPL-1.0
@@ -13155,9 +12810,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fbox
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -13171,9 +12823,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fbox
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fbox/fbox.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fbox-%{texlive_version}.%{texlive_noarch}.0.0.05svn55627-%{release}-zypper
-%endif
 
 %package -n texlive-fbs
 Version:        %{texlive_version}.%{texlive_noarch}.svn15878
@@ -13202,9 +12851,9 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source177:      fbs.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source179:      fbs.tar.xz
 
 %description -n texlive-fbs
 A BibTeX style file made with custom-bib to fit Frontiers in
@@ -13227,18 +12876,12 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fbs
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-fbs
 %defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bst/fbs/fbs.bst
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fbs-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
-%endif
 
 %package -n texlive-fc
 Version:        %{texlive_version}.%{texlive_noarch}.1.4svn32796
@@ -13267,7 +12910,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fc-doc >= %{texlive_version}
+Suggests:       texlive-fc-doc >= %{texlive_version}
 Provides:       tex(fcbx10.tfm)
 Provides:       tex(fcbx11.tfm)
 Provides:       tex(fcbx12.tfm)
@@ -13482,10 +13125,10 @@ Provides:       tex(t4fcr.fd)
 Provides:       tex(t4phonet.sty)
 Requires:       tex(fontenc.sty)
 Requires:       tex(newlfont.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source178:      fc.tar.xz
-Source179:      fc.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source180:      fc.tar.xz
+Source181:      fc.doc.tar.xz
 
 %description -n texlive-fc
 The fonts are provided as Metafont source, in the familiar
@@ -13518,9 +13161,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fc
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -14021,9 +13661,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/fc/t4enc.def
 %{_texmfdistdir}/tex/latex/fc/t4fcr.fd
 %{_texmfdistdir}/tex/latex/fc/t4phonet.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fc-%{texlive_version}.%{texlive_noarch}.1.4svn32796-%{release}-zypper
-%endif
 
 %package -n texlive-fcavtex
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn38074
@@ -14052,7 +13689,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fcavtex-doc >= %{texlive_version}
+Suggests:       texlive-fcavtex-doc >= %{texlive_version}
 Provides:       tex(fcavtex.cls)
 Requires:       tex(abntex2cite.sty)
 Requires:       tex(babel.sty)
@@ -14077,10 +13714,10 @@ Requires:       tex(textpos.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(titlesec.sty)
 Requires:       tex(tocloft.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source180:      fcavtex.tar.xz
-Source181:      fcavtex.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source182:      fcavtex.tar.xz
+Source183:      fcavtex.doc.tar.xz
 
 %description -n texlive-fcavtex
 This package provides a class and a bibliography style for the
@@ -14114,9 +13751,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fcavtex
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -14134,9 +13768,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bst/fcavtex/fcavtex.bst
 %{_texmfdistdir}/tex/latex/fcavtex/fcavtex.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fcavtex-%{texlive_version}.%{texlive_noarch}.1.1svn38074-%{release}-zypper
-%endif
 
 %package -n texlive-fcltxdoc
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn24500
@@ -14165,7 +13796,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fcltxdoc-doc >= %{texlive_version}
+Suggests:       texlive-fcltxdoc-doc >= %{texlive_version}
 Provides:       tex(fcltxdoc.sty)
 Requires:       tex(amsfonts.sty)
 Requires:       tex(amsmath.sty)
@@ -14212,10 +13843,10 @@ Requires:       tex(tocloft.sty)
 Requires:       tex(ulem.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xspace.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source182:      fcltxdoc.tar.xz
-Source183:      fcltxdoc.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source184:      fcltxdoc.tar.xz
+Source185:      fcltxdoc.doc.tar.xz
 
 %description -n texlive-fcltxdoc
 The package is not advertised for public use, but is necessary
@@ -14247,9 +13878,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fcltxdoc
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -14260,12 +13888,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fcltxdoc
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fcltxdoc/fcltxdoc.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fcltxdoc-%{texlive_version}.%{texlive_noarch}.1.0svn24500-%{release}-zypper
-%endif
 
 %package -n texlive-fcolumn
-Version:        %{texlive_version}.%{texlive_noarch}.1.3svn57428
+Version:        %{texlive_version}.%{texlive_noarch}.1.4.1svn61855
 Release:        0
 License:        LPPL-1.0
 Summary:        Typesetting financial tables
@@ -14291,13 +13916,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fcolumn-doc >= %{texlive_version}
+Suggests:       texlive-fcolumn-doc >= %{texlive_version}
 Provides:       tex(fcolumn.sty)
 Requires:       tex(array.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source184:      fcolumn.tar.xz
-Source185:      fcolumn.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source186:      fcolumn.tar.xz
+Source187:      fcolumn.doc.tar.xz
 
 %description -n texlive-fcolumn
 In financial reports, text and currency amounts are regularly
@@ -14307,7 +13932,7 @@ typesetting such columns, including the sum line (preceded by a
 rule of the correct width) using the specifier "f".
 
 %package -n texlive-fcolumn-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.3svn57428
+Version:        %{texlive_version}.%{texlive_noarch}.1.4.1svn61855
 Release:        0
 Summary:        Documentation for texlive-fcolumn
 License:        LPPL-1.0
@@ -14331,9 +13956,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fcolumn
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -14346,12 +13968,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fcolumn
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fcolumn/fcolumn.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fcolumn-%{texlive_version}.%{texlive_noarch}.1.3svn57428-%{release}-zypper
-%endif
 
 %package -n texlive-fdsymbol
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.8svn26722
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.8svn61719
 Release:        0
 License:        OFL-1.1
 Summary:        A maths symbol font
@@ -14389,7 +14008,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-fdsymbol-fonts >= %{texlive_version}
-Recommends:     texlive-fdsymbol-doc >= %{texlive_version}
+Suggests:       texlive-fdsymbol-doc >= %{texlive_version}
 Provides:       tex(FdSymbolA-Bold.tfm)
 Provides:       tex(FdSymbolA-Book.tfm)
 Provides:       tex(FdSymbolA-Medium.tfm)
@@ -14425,10 +14044,10 @@ Provides:       tex(fdsymbol.sty)
 Requires:       tex(amsmath.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source186:      fdsymbol.tar.xz
-Source187:      fdsymbol.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source188:      fdsymbol.tar.xz
+Source189:      fdsymbol.doc.tar.xz
 
 %description -n texlive-fdsymbol
 FdSymbol is a maths symbol font, designed as a companion to the
@@ -14436,7 +14055,7 @@ Fedra family by Typotheque, but it might also fit other
 contemporary typefaces.
 
 %package -n texlive-fdsymbol-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.8svn26722
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.8svn61719
 Release:        0
 Summary:        Documentation for texlive-fdsymbol
 License:        OFL-1.1
@@ -14447,7 +14066,7 @@ URL:            http://www.tug.org/texlive/
 This package includes the documentation for texlive-fdsymbol
 
 %package -n texlive-fdsymbol-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.8svn26722
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.8svn61719
 Release:        0
 Summary:        Severed fonts for texlive-fdsymbol
 License:        OFL-1.1
@@ -14479,9 +14098,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fdsymbol
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -14631,9 +14247,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-fdsymbol/FdSymbolF-Book.pfb
 %{_datadir}/fonts/texlive-fdsymbol/FdSymbolF-Medium.pfb
 %{_datadir}/fonts/texlive-fdsymbol/FdSymbolF-Regular.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fdsymbol-fonts-%{texlive_version}.%{texlive_noarch}.0.0.8svn26722-%{release}-zypper
-%endif
 
 %package -n texlive-fduthesis
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.7esvn56216
@@ -14662,7 +14275,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fduthesis-doc >= %{texlive_version}
+Suggests:       texlive-fduthesis-doc >= %{texlive_version}
 Provides:       tex(fdudoc.cls)
 Provides:       tex(fdulogo.sty)
 Provides:       tex(fduthesis-en.cls)
@@ -14682,10 +14295,10 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xtemplate.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source188:      fduthesis.tar.xz
-Source189:      fduthesis.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source190:      fduthesis.tar.xz
+Source191:      fduthesis.doc.tar.xz
 
 %description -n texlive-fduthesis
 This package is a LaTeX thesis template package for Fudan
@@ -14718,9 +14331,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fduthesis
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -14745,9 +14355,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/fduthesis/fudan-emblem-new.pdf
 %{_texmfdistdir}/tex/latex/fduthesis/fudan-emblem.pdf
 %{_texmfdistdir}/tex/latex/fduthesis/fudan-name.pdf
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fduthesis-%{texlive_version}.%{texlive_noarch}.0.0.7esvn56216-%{release}-zypper
-%endif
 
 %package -n texlive-featpost
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.8.8svn35346
@@ -14776,11 +14383,11 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-featpost-doc >= %{texlive_version}
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source190:      featpost.tar.xz
-Source191:      featpost.doc.tar.xz
+Suggests:       texlive-featpost-doc >= %{texlive_version}
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source192:      featpost.tar.xz
+Source193:      featpost.doc.tar.xz
 
 %description -n texlive-featpost
 These macros allow the production of three-dimensional schemes
@@ -14812,9 +14419,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-featpost
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -15695,12 +15299,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/metapost/featpost/featpost.mp
 %{_texmfdistdir}/metapost/featpost/featpost3Dplus2D.mp
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-featpost-%{texlive_version}.%{texlive_noarch}.0.0.8.8svn35346-%{release}-zypper
-%endif
 
 %package -n texlive-fei
-Version:        %{texlive_version}.%{texlive_noarch}.4.10.1svn55960
+Version:        %{texlive_version}.%{texlive_noarch}.4.10.3svn59589
 Release:        0
 License:        LPPL-1.0
 Summary:        Class for academic works at FEI University Center -- Brazil
@@ -15726,12 +15327,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fei-doc >= %{texlive_version}
+Suggests:       texlive-fei-doc >= %{texlive_version}
 Provides:       tex(fei.cls)
 Requires:       tex(algorithm2e.sty)
 Requires:       tex(amsthm.sty)
+Requires:       tex(arimo.sty)
 Requires:       tex(babel.sty)
-Requires:       tex(caption.sty)
 Requires:       tex(csquotes.sty)
 Requires:       tex(enumitem.sty)
 Requires:       tex(fontenc.sty)
@@ -15741,19 +15342,22 @@ Requires:       tex(hyperref.sty)
 Requires:       tex(icomma.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(imakeidx.sty)
+Requires:       tex(indentfirst.sty)
 Requires:       tex(inputenc.sty)
+Requires:       tex(kvoptions.sty)
 Requires:       tex(lmodern.sty)
 Requires:       tex(mathtools.sty)
 Requires:       tex(memoir.cls)
+Requires:       tex(microtype.sty)
 Requires:       tex(morewrites.sty)
+Requires:       tex(newtxtext.sty)
 Requires:       tex(pdfpages.sty)
 Requires:       tex(pdfx.sty)
 Requires:       tex(thmtools.sty)
-Requires:       tex(times.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source192:      fei.tar.xz
-Source193:      fei.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source194:      fei.tar.xz
+Source195:      fei.doc.tar.xz
 
 %description -n texlive-fei
 fei is a class created by graduate students and LaTeX
@@ -15771,7 +15375,7 @@ the creation of academic works, such as ABNT NBR 10520:2002
 (Citations) and ABNT NBR 6023:2002 (Bibliographic References).
 
 %package -n texlive-fei-doc
-Version:        %{texlive_version}.%{texlive_noarch}.4.10.1svn55960
+Version:        %{texlive_version}.%{texlive_noarch}.4.10.3svn59589
 Release:        0
 Summary:        Documentation for texlive-fei
 License:        LPPL-1.0
@@ -15796,14 +15400,12 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fei
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-fei-doc
 %defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/fei/10.3
 %{_texmfdistdir}/doc/latex/fei/README
 %{_texmfdistdir}/doc/latex/fei/README.txt
 %{_texmfdistdir}/doc/latex/fei/fei-template-sublist.tex
@@ -15814,9 +15416,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fei
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fei/fei.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fei-%{texlive_version}.%{texlive_noarch}.4.10.1svn55960-%{release}-zypper
-%endif
 
 %package -n texlive-fenixpar
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.92svn24730
@@ -15845,13 +15444,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fenixpar-doc >= %{texlive_version}
+Suggests:       texlive-fenixpar-doc >= %{texlive_version}
 Provides:       tex(fenixpar.sty)
 Provides:       tex(fenixtok.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source194:      fenixpar.tar.xz
-Source195:      fenixpar.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source196:      fenixpar.tar.xz
+Source197:      fenixpar.doc.tar.xz
 
 %description -n texlive-fenixpar
 The bundle provides two packages, fenxitok and fenixpar. The
@@ -15891,9 +15490,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fenixpar
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -15905,9 +15501,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/fenixpar/fenixpar.sty
 %{_texmfdistdir}/tex/generic/fenixpar/fenixtok.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fenixpar-%{texlive_version}.%{texlive_noarch}.0.0.92svn24730-%{release}-zypper
-%endif
 
 %package -n texlive-fetamont
 Version:        %{texlive_version}.%{texlive_noarch}.svn43812
@@ -15948,7 +15541,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-fetamont-fonts >= %{texlive_version}
-Recommends:     texlive-fetamont-doc >= %{texlive_version}
+Suggests:       texlive-fetamont-doc >= %{texlive_version}
 Provides:       tex(T1ffm.fd)
 Provides:       tex(T1ffmw.fd)
 Provides:       tex(fetamont.map)
@@ -15989,10 +15582,10 @@ Provides:       tex(ffmr8.tfm)
 Provides:       tex(ffmr9.tfm)
 Provides:       tex(ffmw10.tfm)
 Provides:       tex(ffmwo10.tfm)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source196:      fetamont.tar.xz
-Source197:      fetamont.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source198:      fetamont.tar.xz
+Source199:      fetamont.doc.tar.xz
 
 %description -n texlive-fetamont
 The fetamont typeface was designed in Metafont and extends the
@@ -16045,9 +15638,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fetamont
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -16331,9 +15921,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-fetamont/ffmr9.pfb
 %{_datadir}/fonts/texlive-fetamont/ffmw10.pfb
 %{_datadir}/fonts/texlive-fetamont/ffmwo10.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fetamont-fonts-%{texlive_version}.%{texlive_noarch}.svn43812-%{release}-zypper
-%endif
 
 %package -n texlive-fetchcls
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn45245
@@ -16362,12 +15949,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fetchcls-doc >= %{texlive_version}
+Suggests:       texlive-fetchcls-doc >= %{texlive_version}
 Provides:       tex(fetchcls.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source198:      fetchcls.tar.xz
-Source199:      fetchcls.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source200:      fetchcls.tar.xz
+Source201:      fetchcls.doc.tar.xz
 
 %description -n texlive-fetchcls
 With standard LaTeX you are able to check for the class in use
@@ -16405,9 +15992,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fetchcls
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -16419,9 +16003,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fetchcls
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fetchcls/fetchcls.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fetchcls-%{texlive_version}.%{texlive_noarch}.1.0svn45245-%{release}-zypper
-%endif
 
 %package -n texlive-feupphdteses
 Version:        %{texlive_version}.%{texlive_noarch}.4.0svn30962
@@ -16450,7 +16031,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-feupphdteses-doc >= %{texlive_version}
+Suggests:       texlive-feupphdteses-doc >= %{texlive_version}
 Provides:       tex(feupphdteses.sty)
 Requires:       tex(adjustbox.sty)
 Requires:       tex(amsmath.sty)
@@ -16493,10 +16074,10 @@ Requires:       tex(tabulary.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(url.sty)
 Requires:       tex(xcolor.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source200:      feupphdteses.tar.xz
-Source201:      feupphdteses.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source202:      feupphdteses.tar.xz
+Source203:      feupphdteses.doc.tar.xz
 
 %description -n texlive-feupphdteses
 A complete template for thesis/works of Faculdade de Engenharia
@@ -16528,9 +16109,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-feupphdteses
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -16562,9 +16140,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-feupphdteses
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/feupphdteses/feupphdteses.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-feupphdteses-%{texlive_version}.%{texlive_noarch}.4.0svn30962-%{release}-zypper
-%endif
 
 %package -n texlive-fewerfloatpages
 Version:        %{texlive_version}.%{texlive_noarch}.1.0bsvn58058
@@ -16593,12 +16168,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fewerfloatpages-doc >= %{texlive_version}
+Suggests:       texlive-fewerfloatpages-doc >= %{texlive_version}
 Provides:       tex(fewerfloatpages.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source202:      fewerfloatpages.tar.xz
-Source203:      fewerfloatpages.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source204:      fewerfloatpages.tar.xz
+Source205:      fewerfloatpages.doc.tar.xz
 
 %description -n texlive-fewerfloatpages
 This package implements a float algorithm extension for
@@ -16632,9 +16207,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fewerfloatpages
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -16652,9 +16224,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fewerfloatpages
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fewerfloatpages/fewerfloatpages.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fewerfloatpages-%{texlive_version}.%{texlive_noarch}.1.0bsvn58058-%{release}-zypper
-%endif
 
 %package -n texlive-feyn
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.4.1svn55777
@@ -16683,7 +16252,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-feyn-doc >= %{texlive_version}
+Suggests:       texlive-feyn-doc >= %{texlive_version}
 Provides:       tex(feyn.sty)
 Provides:       tex(feyn10.tfm)
 Provides:       tex(feyn11.tfm)
@@ -16700,10 +16269,10 @@ Provides:       tex(feynx11.tfm)
 Provides:       tex(feynx12.tfm)
 Provides:       tex(feynx18.tfm)
 Provides:       tex(feynx24.tfm)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source204:      feyn.tar.xz
-Source205:      feyn.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source206:      feyn.tar.xz
+Source207:      feyn.doc.tar.xz
 
 %description -n texlive-feyn
 Feyn may be used to produce relatively simple Feynman diagrams
@@ -16738,9 +16307,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-feyn
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -16798,9 +16364,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/feyn/feynx18.tfm
 %{_texmfdistdir}/fonts/tfm/public/feyn/feynx24.tfm
 %{_texmfdistdir}/tex/latex/feyn/feyn.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-feyn-%{texlive_version}.%{texlive_noarch}.0.0.4.1svn55777-%{release}-zypper
-%endif
 
 %package -n texlive-feynmf
 Version:        %{texlive_version}.%{texlive_noarch}.1.08svn17259
@@ -16829,14 +16392,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-feynmf-doc >= %{texlive_version}
+Suggests:       texlive-feynmf-doc >= %{texlive_version}
 Provides:       tex(feynmf.sty)
 Provides:       tex(feynmp.sty)
 Requires:       tex(graphics.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source206:      feynmf.tar.xz
-Source207:      feynmf.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source208:      feynmf.tar.xz
+Source209:      feynmf.doc.tar.xz
 
 %description -n texlive-feynmf
 The feynmf package provides an interface to Metafont (inspired
@@ -16873,9 +16436,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-feynmf
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -16899,9 +16459,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/metapost/feynmf/manpics.mp
 %{_texmfdistdir}/tex/latex/feynmf/feynmf.sty
 %{_texmfdistdir}/tex/latex/feynmf/feynmp.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-feynmf-%{texlive_version}.%{texlive_noarch}.1.08svn17259-%{release}-zypper
-%endif
 
 %package -n texlive-feynmp-auto
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn30223
@@ -16930,16 +16487,16 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-feynmp-auto-doc >= %{texlive_version}
+Suggests:       texlive-feynmp-auto-doc >= %{texlive_version}
 Provides:       tex(feynmp-auto.sty)
 Requires:       tex(feynmp.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(pdftexcmds.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source208:      feynmp-auto.tar.xz
-Source209:      feynmp-auto.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source210:      feynmp-auto.tar.xz
+Source211:      feynmp-auto.doc.tar.xz
 
 %description -n texlive-feynmp-auto
 The package takes care of running Metapost on the output files
@@ -16972,9 +16529,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-feynmp-auto
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -16986,9 +16540,96 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-feynmp-auto
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/feynmp-auto/feynmp-auto.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-feynmp-auto-%{texlive_version}.%{texlive_noarch}.1.1svn30223-%{release}-zypper
-%endif
+
+%package -n texlive-ffcode
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4.1svn61719
+Release:        0
+License:        LPPL-1.0
+Summary:        Fixed-font code blocks formatted nicely
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires:       texlive-microtype >= %{texlive_version}
+#!BuildIgnore: texlive-microtype
+Requires:       texlive-minted >= %{texlive_version}
+#!BuildIgnore: texlive-minted
+Requires:       texlive-tcolorbox >= %{texlive_version}
+#!BuildIgnore: texlive-tcolorbox
+Requires:       texlive-xkeyval >= %{texlive_version}
+#!BuildIgnore: texlive-xkeyval
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-ffcode-doc >= %{texlive_version}
+Provides:       tex(ffcode.sty)
+Requires:       tex(minted.sty)
+Requires:       tex(tcolorbox.sty)
+Requires:       tex(xkeyval.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source212:      ffcode.tar.xz
+Source213:      ffcode.doc.tar.xz
+
+%description -n texlive-ffcode
+This LaTeX package helps you write source code in your academic
+papers and make sure it looks neat. It uses minted and
+tcolorbox, configuring them the right way, to make sure code
+fragments and code blocks look nicer.
+
+%package -n texlive-ffcode-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4.1svn61719
+Release:        0
+Summary:        Documentation for texlive-ffcode
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+
+%description -n texlive-ffcode-doc
+This package includes the documentation for texlive-ffcode
+
+%post -n texlive-ffcode
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-ffcode
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-ffcode
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-ffcode-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/ffcode/DEPENDS.txt
+%{_texmfdistdir}/doc/latex/ffcode/README.md
+%{_texmfdistdir}/doc/latex/ffcode/ffcode.pdf
+%{_texmfdistdir}/doc/latex/ffcode/ffcode.tex
+
+%files -n texlive-ffcode
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/ffcode/ffcode.sty
 
 %package -n texlive-ffslides
 Version:        %{texlive_version}.%{texlive_noarch}.svn38895
@@ -17017,7 +16658,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-ffslides-doc >= %{texlive_version}
+Suggests:       texlive-ffslides-doc >= %{texlive_version}
 Provides:       tex(ffslides.cls)
 Requires:       tex(article.cls)
 Requires:       tex(calc.sty)
@@ -17028,10 +16669,10 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(lastpage.sty)
 Requires:       tex(pstricks.sty)
 Requires:       tex(twoopt.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source210:      ffslides.tar.xz
-Source211:      ffslides.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source214:      ffslides.tar.xz
+Source215:      ffslides.doc.tar.xz
 
 %description -n texlive-ffslides
 The ffslides ("freeform slides") class is intended to make it
@@ -17070,9 +16711,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-ffslides
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -17092,9 +16730,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-ffslides
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/ffslides/ffslides.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-ffslides-%{texlive_version}.%{texlive_noarch}.svn38895-%{release}-zypper
-%endif
 
 %package -n texlive-fge
 Version:        %{texlive_version}.%{texlive_noarch}.1.25svn37628
@@ -17135,7 +16770,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-fge-fonts >= %{texlive_version}
-Recommends:     texlive-fge-doc >= %{texlive_version}
+Suggests:       texlive-fge-doc >= %{texlive_version}
 Provides:       tex(Ufgeit.fd)
 Provides:       tex(Ufgerm.fd)
 Provides:       tex(fge.cfg)
@@ -17143,10 +16778,10 @@ Provides:       tex(fge.map)
 Provides:       tex(fge.sty)
 Provides:       tex(fgeit10.tfm)
 Provides:       tex(fgerm10.tfm)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source212:      fge.tar.xz
-Source213:      fge.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source216:      fge.tar.xz
+Source217:      fge.doc.tar.xz
 
 %description -n texlive-fge
 The fonts are provided as Metafont source and Adobe Type 1
@@ -17196,9 +16831,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fge
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -17235,9 +16867,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-fge/fonts.scale
 %{_datadir}/fonts/texlive-fge/fgeit10.pfb
 %{_datadir}/fonts/texlive-fge/fgerm10.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fge-fonts-%{texlive_version}.%{texlive_noarch}.1.25svn37628-%{release}-zypper
-%endif
 
 %package -n texlive-fgruler
 Version:        %{texlive_version}.%{texlive_noarch}.1.3svn56854
@@ -17266,17 +16895,17 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fgruler-doc >= %{texlive_version}
+Suggests:       texlive-fgruler-doc >= %{texlive_version}
 Provides:       tex(fgruler.sty)
 Requires:       tex(eso-pic.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(xcolor.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source214:      fgruler.tar.xz
-Source215:      fgruler.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source218:      fgruler.tar.xz
+Source219:      fgruler.doc.tar.xz
 
 %description -n texlive-fgruler
 The fgruler is an abbreviation for the foreground ruler. This
@@ -17312,9 +16941,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fgruler
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -17326,178 +16952,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fgruler
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fgruler/fgruler.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fgruler-%{texlive_version}.%{texlive_noarch}.1.3svn56854-%{release}-zypper
-%endif
-
-%package -n texlive-fibeamer
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.8svn53146
-Release:        0
-License:        LPPL-1.0
-Summary:        Beamer theme for thesis defense presentations at Masaryk University (Brno, Czech Republic)
-Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
-Requires(pre):  texlive-filesystem >= %{texlive_version}
-Requires(post): coreutils
-Requires(postun):coreutils
-Requires(postun):texlive >= %{texlive_version}
-Requires(postun):texlive-filesystem >= %{texlive_version}
-Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
-Requires(postun):texlive-kpathsea >= %{texlive_version}
-Requires(postun):texlive-scripts-bin >= %{texlive_version}
-Requires(postun):texlive-scripts >= %{texlive_version}
-Requires(posttrans):coreutils
-Requires(posttrans):ed
-Requires(posttrans):findutils
-Requires(posttrans):grep
-Requires(posttrans):sed
-Requires(posttrans):texlive >= %{texlive_version}
-Requires(posttrans):texlive-filesystem >= %{texlive_version}
-Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
-Requires(posttrans):texlive-kpathsea >= %{texlive_version}
-Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
-Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fibeamer-doc >= %{texlive_version}
-Provides:       tex(beamercolorthemefibeamer-mu-econ.sty)
-Provides:       tex(beamercolorthemefibeamer-mu-fi.sty)
-Provides:       tex(beamercolorthemefibeamer-mu-fsps.sty)
-Provides:       tex(beamercolorthemefibeamer-mu-fss.sty)
-Provides:       tex(beamercolorthemefibeamer-mu-law.sty)
-Provides:       tex(beamercolorthemefibeamer-mu-med.sty)
-Provides:       tex(beamercolorthemefibeamer-mu-ped.sty)
-Provides:       tex(beamercolorthemefibeamer-mu-phil.sty)
-Provides:       tex(beamercolorthemefibeamer-mu-sci.sty)
-Provides:       tex(beamercolorthemefibeamer-mu.sty)
-Provides:       tex(beamerfontthemefibeamer-mu.sty)
-Provides:       tex(beamerinnerthemefibeamer-mu.sty)
-Provides:       tex(beamerouterthemefibeamer-mu.sty)
-Provides:       tex(beamerthemefibeamer.sty)
-Requires:       tex(DejaVuSansMono.sty)
-Requires:       tex(carlito.sty)
-Requires:       tex(cmap.sty)
-Requires:       tex(dsfont.sty)
-Requires:       tex(fontenc.sty)
-Requires:       tex(fontspec.sty)
-Requires:       tex(ifluatex.sty)
-Requires:       tex(ifpdf.sty)
-Requires:       tex(ifthen.sty)
-Requires:       tex(ifxetex.sty)
-Requires:       tex(listings.sty)
-Requires:       tex(lmodern.sty)
-Requires:       tex(microtype.sty)
-Requires:       tex(pgfcore.sty)
-Requires:       tex(setspace.sty)
-Requires:       tex(tikz.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source216:      fibeamer.tar.xz
-Source217:      fibeamer.doc.tar.xz
-
-%description -n texlive-fibeamer
-A beamer theme for the typesetting of thesis defense
-presentations at the Masaryk University (Brno, Czech Republic).
-The theme has been designed for easy extensibility by color
-themes of other academic institutions.
-
-%package -n texlive-fibeamer-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.8svn53146
-Release:        0
-Summary:        Documentation for texlive-fibeamer
-License:        LPPL-1.0
-Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
-
-%description -n texlive-fibeamer-doc
-This package includes the documentation for texlive-fibeamer
-
-%post -n texlive-fibeamer
-mkdir -p /var/run/texlive
-> /var/run/texlive/run-mktexlsr
-> /var/run/texlive/run-update
-
-%postun -n texlive-fibeamer
-mkdir -p /var/run/texlive
-> /var/run/texlive/run-mktexlsr
-> /var/run/texlive/run-update
-if test $1 = 0; then
-    exit 0
-fi
-
-%posttrans -n texlive-fibeamer
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
-test -d /var/run/texlive || exit 0
-VERBOSE=false %{_texmfdistdir}/texconfig/update || :
-
-%files -n texlive-fibeamer-doc
-%defattr(-,root,root,755)
-%{_texmfdistdir}/doc/latex/fibeamer/fibeamer.pdf
-%{_texmfdistdir}/doc/latex/fibeamer/guide/mu/econ.pdf
-%{_texmfdistdir}/doc/latex/fibeamer/guide/mu/fi.pdf
-%{_texmfdistdir}/doc/latex/fibeamer/guide/mu/fsps.pdf
-%{_texmfdistdir}/doc/latex/fibeamer/guide/mu/fss.pdf
-%{_texmfdistdir}/doc/latex/fibeamer/guide/mu/law.pdf
-%{_texmfdistdir}/doc/latex/fibeamer/guide/mu/med.pdf
-%{_texmfdistdir}/doc/latex/fibeamer/guide/mu/ped.pdf
-%{_texmfdistdir}/doc/latex/fibeamer/guide/mu/phil.pdf
-%{_texmfdistdir}/doc/latex/fibeamer/guide/mu/sci.pdf
-
-%files -n texlive-fibeamer
-%defattr(-,root,root,755)
-%{_texmfdistdir}/tex/latex/fibeamer/beamerthemefibeamer.sty
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-econ-czech.eps
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-econ-czech.pdf
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-econ-english.eps
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-econ-english.pdf
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-fi-czech.eps
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-fi-czech.pdf
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-fi-english.eps
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-fi-english.pdf
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-fsps-czech.eps
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-fsps-czech.pdf
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-fsps-english.eps
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-fsps-english.pdf
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-fss-czech.eps
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-fss-czech.pdf
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-fss-english.eps
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-fss-english.pdf
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-law-czech.eps
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-law-czech.pdf
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-law-english.eps
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-law-english.pdf
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-med-czech.eps
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-med-czech.pdf
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-med-english.eps
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-med-english.pdf
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-ped-czech.eps
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-ped-czech.pdf
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-ped-english.eps
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-ped-english.pdf
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-phil-czech.eps
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-phil-czech.pdf
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-phil-english.eps
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-phil-english.pdf
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-sci-czech.eps
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-sci-czech.pdf
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-sci-english.eps
-%{_texmfdistdir}/tex/latex/fibeamer/logo/mu/fibeamer-mu-sci-english.pdf
-%{_texmfdistdir}/tex/latex/fibeamer/theme/mu/beamercolorthemefibeamer-mu-econ.sty
-%{_texmfdistdir}/tex/latex/fibeamer/theme/mu/beamercolorthemefibeamer-mu-fi.sty
-%{_texmfdistdir}/tex/latex/fibeamer/theme/mu/beamercolorthemefibeamer-mu-fsps.sty
-%{_texmfdistdir}/tex/latex/fibeamer/theme/mu/beamercolorthemefibeamer-mu-fss.sty
-%{_texmfdistdir}/tex/latex/fibeamer/theme/mu/beamercolorthemefibeamer-mu-law.sty
-%{_texmfdistdir}/tex/latex/fibeamer/theme/mu/beamercolorthemefibeamer-mu-med.sty
-%{_texmfdistdir}/tex/latex/fibeamer/theme/mu/beamercolorthemefibeamer-mu-ped.sty
-%{_texmfdistdir}/tex/latex/fibeamer/theme/mu/beamercolorthemefibeamer-mu-phil.sty
-%{_texmfdistdir}/tex/latex/fibeamer/theme/mu/beamercolorthemefibeamer-mu-sci.sty
-%{_texmfdistdir}/tex/latex/fibeamer/theme/mu/beamercolorthemefibeamer-mu.sty
-%{_texmfdistdir}/tex/latex/fibeamer/theme/mu/beamerfontthemefibeamer-mu.sty
-%{_texmfdistdir}/tex/latex/fibeamer/theme/mu/beamerinnerthemefibeamer-mu.sty
-%{_texmfdistdir}/tex/latex/fibeamer/theme/mu/beamerouterthemefibeamer-mu.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fibeamer-%{texlive_version}.%{texlive_noarch}.1.1.8svn53146-%{release}-zypper
-%endif
 
 %package -n texlive-fifinddo-info
 Version:        %{texlive_version}.%{texlive_noarch}.1.1bsvn29349
@@ -17526,11 +16980,11 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fifinddo-info-doc >= %{texlive_version}
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source218:      fifinddo-info.source.tar.xz
-Source219:      fifinddo-info.doc.tar.xz
+Suggests:       texlive-fifinddo-info-doc >= %{texlive_version}
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source220:      fifinddo-info.source.tar.xz
+Source221:      fifinddo-info.doc.tar.xz
 
 %description -n texlive-fifinddo-info
 The bundle: exhibits the process of making an "HTML beamer
@@ -17563,9 +17017,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fifinddo-info
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -17602,9 +17053,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/source/latex/fifinddo-info/makevars/longdan.sh
 %{_texmfdistdir}/source/latex/fifinddo-info/makevars/makedots.tex
 %{_texmfdistdir}/source/latex/fifinddo-info/makevars/texvars.sh
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fifinddo-info-%{texlive_version}.%{texlive_noarch}.1.1bsvn29349-%{release}-zypper
-%endif
 
 %package -n texlive-fifo-stack
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn33288
@@ -17633,13 +17081,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fifo-stack-doc >= %{texlive_version}
+Suggests:       texlive-fifo-stack-doc >= %{texlive_version}
 Provides:       tex(fifo-stack.sty)
 Requires:       tex(ifthen.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source220:      fifo-stack.tar.xz
-Source221:      fifo-stack.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source222:      fifo-stack.tar.xz
+Source223:      fifo-stack.doc.tar.xz
 
 %description -n texlive-fifo-stack
 A LaTeX implementation of a combined FIFO Stack modified from
@@ -17674,9 +17122,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fifo-stack
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -17690,9 +17135,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fifo-stack
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fifo-stack/fifo-stack.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fifo-stack-%{texlive_version}.%{texlive_noarch}.1.0svn33288-%{release}-zypper
-%endif
 
 %package -n texlive-fig4latex
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn26313
@@ -17723,11 +17165,11 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fig4latex-doc >= %{texlive_version}
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source222:      fig4latex.tar.xz
-Source223:      fig4latex.doc.tar.xz
+Suggests:       texlive-fig4latex-doc >= %{texlive_version}
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source224:      fig4latex.tar.xz
+Source225:      fig4latex.doc.tar.xz
 
 %description -n texlive-fig4latex
 Fig4LaTeX simplifies management of the figures in a large LaTeX
@@ -17761,9 +17203,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fig4latex
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -17780,9 +17219,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fig4latex
 %defattr(-,root,root,755)
 %{_texmfdistdir}/scripts/fig4latex/fig4latex
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fig4latex-%{texlive_version}.%{texlive_noarch}.0.0.2svn26313-%{release}-zypper
-%endif
 
 %package -n texlive-figbas
 Version:        %{texlive_version}.%{texlive_noarch}.1.0.3svn28943
@@ -17812,15 +17248,15 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-figbas-fonts >= %{texlive_version}
-Recommends:     texlive-figbas-doc >= %{texlive_version}
+Suggests:       texlive-figbas-doc >= %{texlive_version}
 Provides:       tex(cmrj.tfm)
 Provides:       tex(cmssj.tfm)
 Provides:       tex(figbas.map)
 Provides:       tex(plrj.tfm)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source224:      figbas.tar.xz
-Source225:      figbas.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source226:      figbas.tar.xz
+Source227:      figbas.doc.tar.xz
 
 %description -n texlive-figbas
 This package consists of three mini-fonts (and associated
@@ -17871,9 +17307,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-figbas
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -17910,9 +17343,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-figbas/cmrj.pfb
 %{_datadir}/fonts/texlive-figbas/cmssj.pfb
 %{_datadir}/fonts/texlive-figbas/plrj.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-figbas-fonts-%{texlive_version}.%{texlive_noarch}.1.0.3svn28943-%{release}-zypper
-%endif
 
 %package -n texlive-figbib
 Version:        %{texlive_version}.%{texlive_noarch}.svn19388
@@ -17941,13 +17371,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-figbib-doc >= %{texlive_version}
+Suggests:       texlive-figbib-doc >= %{texlive_version}
 Provides:       tex(figbib.sty)
 Requires:       tex(epsfig.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source226:      figbib.tar.xz
-Source227:      figbib.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source228:      figbib.tar.xz
+Source229:      figbib.doc.tar.xz
 
 %description -n texlive-figbib
 FigBib lets you organize your figures in BibTeX databases. Some
@@ -17983,9 +17413,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-figbib
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -18004,12 +17431,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/bibtex/bst/figbib/figbib.bst
 %{_texmfdistdir}/bibtex/bst/figbib/figbib1.bst
 %{_texmfdistdir}/tex/latex/figbib/figbib.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-figbib-%{texlive_version}.%{texlive_noarch}.svn19388-%{release}-zypper
-%endif
 
 %package -n texlive-figchild
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.0svn58759
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.1svn58964
 Release:        0
 License:        LPPL-1.0
 Summary:        Pictures for creating children's activities
@@ -18035,14 +17459,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-figchild-doc >= %{texlive_version}
+Suggests:       texlive-figchild-doc >= %{texlive_version}
 Provides:       tex(figchild.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source228:      figchild.tar.xz
-Source229:      figchild.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source230:      figchild.tar.xz
+Source231:      figchild.doc.tar.xz
 
 %description -n texlive-figchild
 This package was created with the aim of facilitating the work
@@ -18054,7 +17478,7 @@ Fernando de Souza Bastos. It makes use of the TikZ and xcolor
 packages.
 
 %package -n texlive-figchild-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.0svn58759
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.1svn58964
 Release:        0
 Summary:        Documentation for texlive-figchild
 License:        LPPL-1.0
@@ -18078,15 +17502,13 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-figchild
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-figchild-doc
 %defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/figchild/README.md
+%{_texmfdistdir}/doc/latex/figchild/capa.tex
 %{_texmfdistdir}/doc/latex/figchild/figchild.pdf
 %{_texmfdistdir}/doc/latex/figchild/figchild.tex
 %{_texmfdistdir}/doc/latex/figchild/latexmkrc
@@ -18094,9 +17516,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-figchild
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/figchild/figchild.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-figchild-%{texlive_version}.%{texlive_noarch}.1.0.0svn58759-%{release}-zypper
-%endif
 
 %package -n texlive-figflow
 Version:        %{texlive_version}.%{texlive_noarch}.svn21462
@@ -18125,12 +17544,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-figflow-doc >= %{texlive_version}
+Suggests:       texlive-figflow-doc >= %{texlive_version}
 Provides:       tex(figflow.tex)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source230:      figflow.tar.xz
-Source231:      figflow.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source232:      figflow.tar.xz
+Source233:      figflow.doc.tar.xz
 
 %description -n texlive-figflow
 Provides a Plain TeX macro \figflow that allows one to insert a
@@ -18166,9 +17585,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-figflow
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -18179,9 +17595,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-figflow
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/plain/figflow/figflow.tex
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-figflow-%{texlive_version}.%{texlive_noarch}.svn21462-%{release}-zypper
-%endif
 
 %package -n texlive-figsize
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn18784
@@ -18210,16 +17623,16 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-figsize-doc >= %{texlive_version}
+Suggests:       texlive-figsize-doc >= %{texlive_version}
 Provides:       tex(figsize.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(subfigure.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source232:      figsize.tar.xz
-Source233:      figsize.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source234:      figsize.tar.xz
+Source235:      figsize.doc.tar.xz
 
 %description -n texlive-figsize
 The FigSize package enables automatic sizing of graphics,
@@ -18258,9 +17671,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-figsize
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -18274,9 +17684,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-figsize
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/figsize/figsize.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-figsize-%{texlive_version}.%{texlive_noarch}.0.0.1svn18784-%{release}-zypper
-%endif
 
 %package -n texlive-filecontents
 Version:        %{texlive_version}.%{texlive_noarch}.1.5svn52142
@@ -18305,12 +17712,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-filecontents-doc >= %{texlive_version}
+Suggests:       texlive-filecontents-doc >= %{texlive_version}
 Provides:       tex(filecontents.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source234:      filecontents.tar.xz
-Source235:      filecontents.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source236:      filecontents.tar.xz
+Source237:      filecontents.doc.tar.xz
 
 %description -n texlive-filecontents
 LaTeX2e's filecontents and filecontents* environments enable a
@@ -18354,9 +17761,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-filecontents
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -18368,9 +17772,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-filecontents
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/filecontents/filecontents.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-filecontents-%{texlive_version}.%{texlive_noarch}.1.5svn52142-%{release}-zypper
-%endif
 
 %package -n texlive-filecontentsdef
 Version:        %{texlive_version}.%{texlive_noarch}.1.5svn52208
@@ -18399,12 +17800,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-filecontentsdef-doc >= %{texlive_version}
+Suggests:       texlive-filecontentsdef-doc >= %{texlive_version}
 Provides:       tex(filecontentsdef.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source236:      filecontentsdef.tar.xz
-Source237:      filecontentsdef.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source238:      filecontentsdef.tar.xz
+Source239:      filecontentsdef.doc.tar.xz
 
 %description -n texlive-filecontentsdef
 The package provides two environments called filecontentsdef
@@ -18444,9 +17845,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-filecontentsdef
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -18466,9 +17864,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-filecontentsdef
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/filecontentsdef/filecontentsdef.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-filecontentsdef-%{texlive_version}.%{texlive_noarch}.1.5svn52208-%{release}-zypper
-%endif
 
 %package -n texlive-filedate
 Version:        %{texlive_version}.%{texlive_noarch}.svn29529
@@ -18497,12 +17892,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-filedate-doc >= %{texlive_version}
+Suggests:       texlive-filedate-doc >= %{texlive_version}
 Provides:       tex(filedate.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source238:      filedate.tar.xz
-Source239:      filedate.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source240:      filedate.tar.xz
+Source241:      filedate.doc.tar.xz
 
 %description -n texlive-filedate
 The package provides basic access to the date of a LaTeX source
@@ -18535,9 +17930,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-filedate
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -18552,9 +17944,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/filedate/filedate.RLS
 %{_texmfdistdir}/tex/latex/filedate/filedate.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-filedate-%{texlive_version}.%{texlive_noarch}.svn29529-%{release}-zypper
-%endif
 
 %package -n texlive-filehook
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.8asvn56479
@@ -18583,7 +17972,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-filehook-doc >= %{texlive_version}
+Suggests:       texlive-filehook-doc >= %{texlive_version}
 Provides:       tex(filehook-2019.sty)
 Provides:       tex(filehook-2020.sty)
 Provides:       tex(filehook-fink.sty)
@@ -18595,10 +17984,10 @@ Provides:       tex(pgf-filehook.sty)
 Requires:       tex(currfile.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(pgfkeys.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source240:      filehook.tar.xz
-Source241:      filehook.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source242:      filehook.tar.xz
+Source243:      filehook.doc.tar.xz
 
 %description -n texlive-filehook
 The package provides several file hooks (AtBegin, AtEnd, ...)
@@ -18633,9 +18022,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-filehook
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -18654,9 +18040,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/filehook/filehook-scrlfile.sty
 %{_texmfdistdir}/tex/latex/filehook/filehook.sty
 %{_texmfdistdir}/tex/latex/filehook/pgf-filehook.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-filehook-%{texlive_version}.%{texlive_noarch}.0.0.8asvn56479-%{release}-zypper
-%endif
 
 %package -n texlive-fileinfo
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.81asvn28421
@@ -18685,13 +18068,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fileinfo-doc >= %{texlive_version}
+Suggests:       texlive-fileinfo-doc >= %{texlive_version}
 Provides:       tex(myfilist.sty)
 Provides:       tex(readprov.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source242:      fileinfo.tar.xz
-Source243:      fileinfo.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source244:      fileinfo.tar.xz
+Source245:      fileinfo.doc.tar.xz
 
 %description -n texlive-fileinfo
 The bundle provides two packages, readprov and myfilist. The
@@ -18724,9 +18107,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fileinfo
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -18744,9 +18124,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/fileinfo/fileinfo.RLS
 %{_texmfdistdir}/tex/latex/fileinfo/myfilist.sty
 %{_texmfdistdir}/tex/latex/fileinfo/readprov.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fileinfo-%{texlive_version}.%{texlive_noarch}.0.0.81asvn28421-%{release}-zypper
-%endif
 
 %package -n texlive-filemod
 Version:        %{texlive_version}.%{texlive_noarch}.1.2svn56291
@@ -18775,16 +18152,16 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-filemod-doc >= %{texlive_version}
+Suggests:       texlive-filemod-doc >= %{texlive_version}
 Provides:       tex(filemod-expmin.sty)
 Provides:       tex(filemod-expmin.tex)
 Provides:       tex(filemod.sty)
 Provides:       tex(filemod.tex)
 Requires:       tex(pdftexcmds.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source244:      filemod.tar.xz
-Source245:      filemod.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source246:      filemod.tar.xz
+Source247:      filemod.doc.tar.xz
 
 %description -n texlive-filemod
 The package provides macros to read and compare the
@@ -18822,9 +18199,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-filemod
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -18839,9 +18213,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/filemod/filemod.tex
 %{_texmfdistdir}/tex/latex/filemod/filemod-expmin.sty
 %{_texmfdistdir}/tex/latex/filemod/filemod.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-filemod-%{texlive_version}.%{texlive_noarch}.1.2svn56291-%{release}-zypper
-%endif
 
 %package -n texlive-finbib
 Version:        %{texlive_version}.%{texlive_noarch}.svn15878
@@ -18870,9 +18241,9 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source246:      finbib.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source248:      finbib.tar.xz
 
 %description -n texlive-finbib
 The finbib package
@@ -18891,18 +18262,12 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-finbib
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-finbib
 %defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bst/finbib/finplain.bst
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-finbib-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
-%endif
 
 %package -n texlive-findhyph
 Version:        %{texlive_version}.%{texlive_noarch}.3.4svn47444
@@ -18933,15 +18298,15 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-findhyph-doc >= %{texlive_version}
+Suggests:       texlive-findhyph-doc >= %{texlive_version}
 Requires:       perl(Getopt::Std)
 #!BuildIgnore:  perl(Getopt::Std)
 Requires:       perl(warnings)
 #!BuildIgnore:  perl(warnings)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source247:      findhyph.tar.xz
-Source248:      findhyph.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source249:      findhyph.tar.xz
+Source250:      findhyph.doc.tar.xz
 
 %description -n texlive-findhyph
 Findhyph is a Perl script that will analyse the log file from
@@ -18975,9 +18340,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-findhyph
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -18991,9 +18353,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-findhyph
 %defattr(-,root,root,755)
 %{_texmfdistdir}/scripts/findhyph/findhyph
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-findhyph-%{texlive_version}.%{texlive_noarch}.3.4svn47444-%{release}-zypper
-%endif
 
 %package -n texlive-fink
 Version:        %{texlive_version}.%{texlive_noarch}.2.2.1svn24329
@@ -19022,13 +18381,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fink-doc >= %{texlive_version}
+Suggests:       texlive-fink-doc >= %{texlive_version}
 Provides:       tex(fink.sty)
 Requires:       tex(kvoptions.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source249:      fink.tar.xz
-Source250:      fink.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source251:      fink.tar.xz
+Source252:      fink.doc.tar.xz
 
 %description -n texlive-fink
 This package "looks over your shoulder" and keeps track of
@@ -19065,9 +18424,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fink
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -19083,9 +18439,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fink
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fink/fink.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fink-%{texlive_version}.%{texlive_noarch}.2.2.1svn24329-%{release}-zypper
-%endif
 
 %package -n texlive-finstrut
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.5svn21719
@@ -19114,12 +18467,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-finstrut-doc >= %{texlive_version}
+Suggests:       texlive-finstrut-doc >= %{texlive_version}
 Provides:       tex(finstrut.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source251:      finstrut.tar.xz
-Source252:      finstrut.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source253:      finstrut.tar.xz
+Source254:      finstrut.doc.tar.xz
 
 %description -n texlive-finstrut
 The LaTeX internal command \@finalstrut is used automatically
@@ -19153,9 +18506,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-finstrut
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -19169,9 +18519,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-finstrut
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/finstrut/finstrut.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-finstrut-%{texlive_version}.%{texlive_noarch}.0.0.5svn21719-%{release}-zypper
-%endif
 
 %package -n texlive-fira
 Version:        %{texlive_version}.%{texlive_noarch}.4.3svn55437
@@ -19212,7 +18559,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-fira-fonts >= %{texlive_version}
-Recommends:     texlive-fira-doc >= %{texlive_version}
+Suggests:       texlive-fira-doc >= %{texlive_version}
 Provides:       tex(FiraMono-Bold-sup-lgr--base.tfm)
 Provides:       tex(FiraMono-Bold-sup-lgr.tfm)
 Provides:       tex(FiraMono-Bold-sup-lgr.vf)
@@ -21333,10 +20680,10 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source253:      fira.tar.xz
-Source254:      fira.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source255:      fira.tar.xz
+Source256:      fira.doc.tar.xz
 
 %description -n texlive-fira
 This package provides LaTeX, pdfLaTeX, XeLaTeX and LuaLaTeX
@@ -21389,9 +20736,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fira
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -23643,9 +22987,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-fira/FiraSans-ThinItalic.pfb
 %{_datadir}/fonts/texlive-fira/FiraSans-UltraLight.pfb
 %{_datadir}/fonts/texlive-fira/FiraSans-UltraLightItalic.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fira-fonts-%{texlive_version}.%{texlive_noarch}.4.3svn55437-%{release}-zypper
-%endif
 
 %package -n texlive-firamath
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.4svn56672
@@ -23675,11 +23016,11 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-firamath-fonts >= %{texlive_version}
-Recommends:     texlive-firamath-doc >= %{texlive_version}
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source255:      firamath.tar.xz
-Source256:      firamath.doc.tar.xz
+Suggests:       texlive-firamath-doc >= %{texlive_version}
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source257:      firamath.tar.xz
+Source258:      firamath.doc.tar.xz
 
 %description -n texlive-firamath
 Fira Math is a sans-serif font with Unicode math support. The
@@ -23730,9 +23071,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-firamath
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -23759,9 +23097,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-firamath/fonts.dir
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-firamath/fonts.scale
 %{_datadir}/fonts/texlive-firamath/FiraMath-Regular.otf
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-firamath-fonts-%{texlive_version}.%{texlive_noarch}.0.0.3.4svn56672-%{release}-zypper
-%endif
 
 %package -n texlive-firamath-otf
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.02asvn50732
@@ -23790,7 +23125,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-firamath-otf-doc >= %{texlive_version}
+Suggests:       texlive-firamath-otf-doc >= %{texlive_version}
 Provides:       tex(firamath-otf.sty)
 Requires:       tex(ifluatex.sty)
 Requires:       tex(ifxetex.sty)
@@ -23798,10 +23133,10 @@ Requires:       tex(textcomp.sty)
 Requires:       tex(unicode-math.sty)
 Requires:       tex(xfakebold.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source257:      firamath-otf.tar.xz
-Source258:      firamath-otf.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source259:      firamath-otf.tar.xz
+Source260:      firamath-otf.doc.tar.xz
 
 %description -n texlive-firamath-otf
 The package offers XeTeX/LuaTeX support for the Sans Serif
@@ -23832,9 +23167,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-firamath-otf
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -23848,9 +23180,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-firamath-otf
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/firamath-otf/firamath-otf.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-firamath-otf-%{texlive_version}.%{texlive_noarch}.0.0.02asvn50732-%{release}-zypper
-%endif
 
 %package -n texlive-first-latex-doc
 Version:        %{texlive_version}.%{texlive_noarch}.svn15878
@@ -23879,9 +23208,9 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source259:      first-latex-doc.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source261:      first-latex-doc.doc.tar.xz
 
 %description -n texlive-first-latex-doc
 The document leads a reader, who knows nothing about LaTeX,
@@ -23903,9 +23232,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-first-latex-doc
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -23924,12 +23250,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/first-latex-doc/latex-second-c.tex
 %{_texmfdistdir}/doc/latex/first-latex-doc/latex-second-d.tex
 %{_texmfdistdir}/doc/latex/first-latex-doc/latex-second-e.tex
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-first-latex-doc-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
-%endif
 
 %package -n texlive-firstaid
-Version:        %{texlive_version}.%{texlive_noarch}.1.0jsvn58440
+Version:        %{texlive_version}.%{texlive_noarch}.1.0qsvn61042
 Release:        0
 License:        LPPL-1.0
 Summary:        First aid for external LaTeX files and packages that need updating
@@ -23955,12 +23278,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-firstaid-doc >= %{texlive_version}
+Suggests:       texlive-firstaid-doc >= %{texlive_version}
+Provides:       tex(everysel-ltx.sty)
 Provides:       tex(filehook-ltx.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source260:      firstaid.tar.xz
-Source261:      firstaid.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source262:      firstaid.tar.xz
+Source263:      firstaid.doc.tar.xz
 
 %description -n texlive-firstaid
 This package contains some first aid for LaTeX packages or
@@ -23971,7 +23295,7 @@ provided by this package is meant to be loaded during format
 generation and not by the user.
 
 %package -n texlive-firstaid-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0jsvn58440
+Version:        %{texlive_version}.%{texlive_noarch}.1.0qsvn61042
 Release:        0
 Summary:        Documentation for texlive-firstaid
 License:        LPPL-1.0
@@ -23995,9 +23319,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-firstaid
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -24009,11 +23330,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-firstaid
 %defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/firstaid/everysel-ltx.sty
 %{_texmfdistdir}/tex/latex/firstaid/filehook-ltx.sty
 %{_texmfdistdir}/tex/latex/firstaid/latex2e-first-aid-for-external-files.ltx
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-firstaid-%{texlive_version}.%{texlive_noarch}.1.0jsvn58440-%{release}-zypper
-%endif
 
 %package -n texlive-fitbox
 Version:        %{texlive_version}.%{texlive_noarch}.1.02svn50088
@@ -24042,13 +23361,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fitbox-doc >= %{texlive_version}
+Suggests:       texlive-fitbox-doc >= %{texlive_version}
 Provides:       tex(fitbox.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source262:      fitbox.tar.xz
-Source263:      fitbox.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source264:      fitbox.tar.xz
+Source265:      fitbox.doc.tar.xz
 
 %description -n texlive-fitbox
 The package allows a box (usually an \includegraphics box) to
@@ -24081,9 +23400,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fitbox
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -24102,12 +23418,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fitbox
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fitbox/fitbox.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fitbox-%{texlive_version}.%{texlive_noarch}.1.02svn50088-%{release}-zypper
-%endif
 
 %package -n texlive-fithesis
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.51svn54483
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.2svn60795
 Release:        0
 License:        LPPL-1.0
 Summary:        Thesis class and template for Masaryk University (Brno, Czech Republic)
@@ -24133,11 +23446,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fithesis-doc >= %{texlive_version}
-Provides:       tex(fithesis-10.clo)
-Provides:       tex(fithesis-11.clo)
-Provides:       tex(fithesis-12.clo)
-Provides:       tex(fithesis-base.sty)
+Suggests:       texlive-fithesis-doc >= %{texlive_version}
 Provides:       tex(fithesis-base.sty)
 Provides:       tex(fithesis-czech.def)
 Provides:       tex(fithesis-czech.def)
@@ -24150,7 +23459,7 @@ Provides:       tex(fithesis-czech.def)
 Provides:       tex(fithesis-czech.def)
 Provides:       tex(fithesis-czech.def)
 Provides:       tex(fithesis-czech.def)
-Provides:       tex(fithesis-econ.sty)
+Provides:       tex(fithesis-czech.def)
 Provides:       tex(fithesis-english.def)
 Provides:       tex(fithesis-english.def)
 Provides:       tex(fithesis-english.def)
@@ -24162,14 +23471,22 @@ Provides:       tex(fithesis-english.def)
 Provides:       tex(fithesis-english.def)
 Provides:       tex(fithesis-english.def)
 Provides:       tex(fithesis-english.def)
-Provides:       tex(fithesis-fi.sty)
-Provides:       tex(fithesis-fsps.sty)
-Provides:       tex(fithesis-fss.sty)
-Provides:       tex(fithesis-law.sty)
-Provides:       tex(fithesis-med.sty)
-Provides:       tex(fithesis-ped.sty)
-Provides:       tex(fithesis-phil.sty)
-Provides:       tex(fithesis-sci.sty)
+Provides:       tex(fithesis-english.def)
+Provides:       tex(fithesis-mu-10.clo)
+Provides:       tex(fithesis-mu-11.clo)
+Provides:       tex(fithesis-mu-12.clo)
+Provides:       tex(fithesis-mu-base.sty)
+Provides:       tex(fithesis-mu-econ.sty)
+Provides:       tex(fithesis-mu-fi.sty)
+Provides:       tex(fithesis-mu-fsps.sty)
+Provides:       tex(fithesis-mu-fss.sty)
+Provides:       tex(fithesis-mu-law.sty)
+Provides:       tex(fithesis-mu-med.sty)
+Provides:       tex(fithesis-mu-ped.sty)
+Provides:       tex(fithesis-mu-pharm.sty)
+Provides:       tex(fithesis-mu-phil.sty)
+Provides:       tex(fithesis-mu-sci.sty)
+Provides:       tex(fithesis-slovak.def)
 Provides:       tex(fithesis-slovak.def)
 Provides:       tex(fithesis-slovak.def)
 Provides:       tex(fithesis-slovak.def)
@@ -24184,7 +23501,8 @@ Provides:       tex(fithesis-slovak.def)
 Provides:       tex(fithesis.cls)
 Provides:       tex(fithesis2.cls)
 Provides:       tex(fithesis3.cls)
-Requires:       tex(babel.sty)
+Provides:       tex(fithesis4.cls)
+Requires:       tex(caption.sty)
 Requires:       tex(cmap.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(fontenc.sty)
@@ -24193,10 +23511,11 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(inputenc.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(ltxcmds.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source264:      fithesis.tar.xz
-Source265:      fithesis.doc.tar.xz
+Requires:       tex(xpatch.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source266:      fithesis.tar.xz
+Source267:      fithesis.doc.tar.xz
 
 %description -n texlive-fithesis
 A document class for the typesetting of theses at the Masaryk
@@ -24205,7 +23524,7 @@ for easy extensibility by style and locale files of other
 academic institutions.
 
 %package -n texlive-fithesis-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.51svn54483
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.2svn60795
 Release:        0
 Summary:        Documentation for texlive-fithesis
 License:        LPPL-1.0
@@ -24229,9 +23548,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fithesis
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -24239,21 +23555,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/fithesis/README.md
 %{_texmfdistdir}/doc/latex/fithesis/fithesis.pdf
-%{_texmfdistdir}/doc/latex/fithesis/guide/mu/econ.pdf
-%{_texmfdistdir}/doc/latex/fithesis/guide/mu/fi.pdf
-%{_texmfdistdir}/doc/latex/fithesis/guide/mu/fsps.pdf
-%{_texmfdistdir}/doc/latex/fithesis/guide/mu/fss.pdf
-%{_texmfdistdir}/doc/latex/fithesis/guide/mu/law.pdf
-%{_texmfdistdir}/doc/latex/fithesis/guide/mu/med.pdf
-%{_texmfdistdir}/doc/latex/fithesis/guide/mu/ped.pdf
-%{_texmfdistdir}/doc/latex/fithesis/guide/mu/phil.pdf
-%{_texmfdistdir}/doc/latex/fithesis/guide/mu/sci.pdf
 
 %files -n texlive-fithesis
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fithesis/fithesis.cls
 %{_texmfdistdir}/tex/latex/fithesis/fithesis2.cls
 %{_texmfdistdir}/tex/latex/fithesis/fithesis3.cls
+%{_texmfdistdir}/tex/latex/fithesis/fithesis4.cls
 %{_texmfdistdir}/tex/latex/fithesis/locale/fithesis-czech.def
 %{_texmfdistdir}/tex/latex/fithesis/locale/fithesis-english.def
 %{_texmfdistdir}/tex/latex/fithesis/locale/fithesis-slovak.def
@@ -24281,6 +23589,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/fithesis/locale/mu/ped/fithesis-czech.def
 %{_texmfdistdir}/tex/latex/fithesis/locale/mu/ped/fithesis-english.def
 %{_texmfdistdir}/tex/latex/fithesis/locale/mu/ped/fithesis-slovak.def
+%{_texmfdistdir}/tex/latex/fithesis/locale/mu/pharm/fithesis-czech.def
+%{_texmfdistdir}/tex/latex/fithesis/locale/mu/pharm/fithesis-english.def
+%{_texmfdistdir}/tex/latex/fithesis/locale/mu/pharm/fithesis-slovak.def
 %{_texmfdistdir}/tex/latex/fithesis/locale/mu/phil/fithesis-czech.def
 %{_texmfdistdir}/tex/latex/fithesis/locale/mu/phil/fithesis-english.def
 %{_texmfdistdir}/tex/latex/fithesis/locale/mu/phil/fithesis-slovak.def
@@ -24289,63 +23600,195 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/fithesis/locale/mu/sci/fithesis-slovak.def
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-base-color.eps
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-base-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-base-czech-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-base-czech-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-base-czech.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-base-czech.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-base-english-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-base-english-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-base-english.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-base-english.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-base-slovak-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-base-slovak-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-base-slovak.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-base-slovak.pdf
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-base.eps
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-base.pdf
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-econ-color.eps
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-econ-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-econ-czech-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-econ-czech-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-econ-czech.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-econ-czech.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-econ-english-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-econ-english-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-econ-english.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-econ-english.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-econ-slovak-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-econ-slovak-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-econ-slovak.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-econ-slovak.pdf
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-econ.eps
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-econ.pdf
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fi-color.eps
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fi-color.pdf
-%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fi-color_.eps
-%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fi-color__.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fi-czech-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fi-czech-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fi-czech.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fi-czech.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fi-english-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fi-english-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fi-english.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fi-english.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fi-slovak-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fi-slovak-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fi-slovak.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fi-slovak.pdf
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fi.eps
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fi.pdf
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fsps-color.eps
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fsps-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fsps-czech-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fsps-czech-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fsps-czech.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fsps-czech.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fsps-english-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fsps-english-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fsps-english.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fsps-english.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fsps-slovak-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fsps-slovak-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fsps-slovak.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fsps-slovak.pdf
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fsps.eps
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fsps.pdf
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fss-color.eps
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fss-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fss-czech-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fss-czech-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fss-czech.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fss-czech.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fss-english-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fss-english-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fss-english.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fss-english.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fss-slovak-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fss-slovak-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fss-slovak.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fss-slovak.pdf
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fss.eps
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-fss.pdf
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-law-color.eps
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-law-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-law-czech-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-law-czech-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-law-czech.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-law-czech.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-law-english-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-law-english-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-law-english.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-law-english.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-law-slovak-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-law-slovak-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-law-slovak.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-law-slovak.pdf
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-law.eps
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-law.pdf
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-med-color.eps
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-med-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-med-czech-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-med-czech-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-med-czech.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-med-czech.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-med-english-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-med-english-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-med-english.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-med-english.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-med-slovak-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-med-slovak-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-med-slovak.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-med-slovak.pdf
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-med.eps
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-med.pdf
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-ped-color.eps
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-ped-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-ped-czech-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-ped-czech-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-ped-czech.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-ped-czech.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-ped-english-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-ped-english-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-ped-english.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-ped-english.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-ped-slovak-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-ped-slovak-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-ped-slovak.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-ped-slovak.pdf
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-ped.eps
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-ped.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-pharm-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-pharm-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-pharm-czech-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-pharm-czech-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-pharm-czech.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-pharm-czech.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-pharm-english-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-pharm-english-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-pharm-english.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-pharm-english.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-pharm-slovak-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-pharm-slovak-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-pharm-slovak.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-pharm-slovak.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-pharm.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-pharm.pdf
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-phil-color.eps
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-phil-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-phil-czech-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-phil-czech-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-phil-czech.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-phil-czech.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-phil-english-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-phil-english-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-phil-english.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-phil-english.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-phil-slovak-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-phil-slovak-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-phil-slovak.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-phil-slovak.pdf
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-phil.eps
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-phil.pdf
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-sci-color.eps
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-sci-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-sci-czech-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-sci-czech-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-sci-czech.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-sci-czech.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-sci-english-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-sci-english-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-sci-english.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-sci-english.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-sci-slovak-color.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-sci-slovak-color.pdf
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-sci-slovak.eps
+%{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-sci-slovak.pdf
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-sci.eps
 %{_texmfdistdir}/tex/latex/fithesis/logo/mu/fithesis-sci.pdf
 %{_texmfdistdir}/tex/latex/fithesis/style/fithesis-base.sty
-%{_texmfdistdir}/tex/latex/fithesis/style/mu/fithesis-10.clo
-%{_texmfdistdir}/tex/latex/fithesis/style/mu/fithesis-11.clo
-%{_texmfdistdir}/tex/latex/fithesis/style/mu/fithesis-12.clo
-%{_texmfdistdir}/tex/latex/fithesis/style/mu/fithesis-base.sty
-%{_texmfdistdir}/tex/latex/fithesis/style/mu/fithesis-econ.sty
-%{_texmfdistdir}/tex/latex/fithesis/style/mu/fithesis-fi.sty
-%{_texmfdistdir}/tex/latex/fithesis/style/mu/fithesis-fsps.sty
-%{_texmfdistdir}/tex/latex/fithesis/style/mu/fithesis-fss.sty
-%{_texmfdistdir}/tex/latex/fithesis/style/mu/fithesis-law.sty
-%{_texmfdistdir}/tex/latex/fithesis/style/mu/fithesis-med.sty
-%{_texmfdistdir}/tex/latex/fithesis/style/mu/fithesis-ped.sty
-%{_texmfdistdir}/tex/latex/fithesis/style/mu/fithesis-phil.sty
-%{_texmfdistdir}/tex/latex/fithesis/style/mu/fithesis-sci.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fithesis-%{texlive_version}.%{texlive_noarch}.0.0.3.51svn54483-%{release}-zypper
-%endif
+%{_texmfdistdir}/tex/latex/fithesis/style/mu/fithesis-mu-10.clo
+%{_texmfdistdir}/tex/latex/fithesis/style/mu/fithesis-mu-11.clo
+%{_texmfdistdir}/tex/latex/fithesis/style/mu/fithesis-mu-12.clo
+%{_texmfdistdir}/tex/latex/fithesis/style/mu/fithesis-mu-base.sty
+%{_texmfdistdir}/tex/latex/fithesis/style/mu/fithesis-mu-econ.sty
+%{_texmfdistdir}/tex/latex/fithesis/style/mu/fithesis-mu-fi.sty
+%{_texmfdistdir}/tex/latex/fithesis/style/mu/fithesis-mu-fsps.sty
+%{_texmfdistdir}/tex/latex/fithesis/style/mu/fithesis-mu-fss.sty
+%{_texmfdistdir}/tex/latex/fithesis/style/mu/fithesis-mu-law.sty
+%{_texmfdistdir}/tex/latex/fithesis/style/mu/fithesis-mu-med.sty
+%{_texmfdistdir}/tex/latex/fithesis/style/mu/fithesis-mu-ped.sty
+%{_texmfdistdir}/tex/latex/fithesis/style/mu/fithesis-mu-pharm.sty
+%{_texmfdistdir}/tex/latex/fithesis/style/mu/fithesis-mu-phil.sty
+%{_texmfdistdir}/tex/latex/fithesis/style/mu/fithesis-mu-sci.sty
 
 %package -n texlive-fix2col
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.04svn38770
@@ -24374,12 +23817,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fix2col-doc >= %{texlive_version}
+Suggests:       texlive-fix2col-doc >= %{texlive_version}
 Provides:       tex(fix2col.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source266:      fix2col.tar.xz
-Source267:      fix2col.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source268:      fix2col.tar.xz
+Source269:      fix2col.doc.tar.xz
 
 %description -n texlive-fix2col
 OBSOLETE: do not use in new documents. This package will do
@@ -24416,9 +23859,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fix2col
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -24430,9 +23870,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fix2col
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fix2col/fix2col.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fix2col-%{texlive_version}.%{texlive_noarch}.0.0.04svn38770-%{release}-zypper
-%endif
 
 %package -n texlive-fixcmex
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn51825
@@ -24461,12 +23898,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fixcmex-doc >= %{texlive_version}
+Suggests:       texlive-fixcmex-doc >= %{texlive_version}
 Provides:       tex(fixcmex.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source268:      fixcmex.tar.xz
-Source269:      fixcmex.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source270:      fixcmex.tar.xz
+Source271:      fixcmex.doc.tar.xz
 
 %description -n texlive-fixcmex
 This package provides a fully scalable version of the Computer
@@ -24503,9 +23940,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fixcmex
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -24517,9 +23951,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fixcmex
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fixcmex/fixcmex.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fixcmex-%{texlive_version}.%{texlive_noarch}.1.1svn51825-%{release}-zypper
-%endif
 
 %package -n texlive-fixfoot
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.3asvn17131
@@ -24548,12 +23979,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fixfoot-doc >= %{texlive_version}
+Suggests:       texlive-fixfoot-doc >= %{texlive_version}
 Provides:       tex(fixfoot.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source270:      fixfoot.tar.xz
-Source271:      fixfoot.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source272:      fixfoot.tar.xz
+Source273:      fixfoot.doc.tar.xz
 
 %description -n texlive-fixfoot
 Provides a \DeclareFixedFootnote command to provide a single
@@ -24586,9 +24017,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fixfoot
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -24602,9 +24030,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fixfoot
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fixfoot/fixfoot.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fixfoot-%{texlive_version}.%{texlive_noarch}.0.0.3asvn17131-%{release}-zypper
-%endif
 
 %package -n texlive-fixjfm
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.8svn47113
@@ -24633,12 +24058,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fixjfm-doc >= %{texlive_version}
+Suggests:       texlive-fixjfm-doc >= %{texlive_version}
 Provides:       tex(fixjfm.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source272:      fixjfm.tar.xz
-Source273:      fixjfm.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source274:      fixjfm.tar.xz
+Source275:      fixjfm.doc.tar.xz
 
 %description -n texlive-fixjfm
 This package fixes several bugs in the JFM format. Both LaTeX
@@ -24669,9 +24094,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fixjfm
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -24684,9 +24106,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fixjfm
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/fixjfm/fixjfm.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fixjfm-%{texlive_version}.%{texlive_noarch}.0.0.8svn47113-%{release}-zypper
-%endif
 
 %package -n texlive-fixlatvian
 Version:        %{texlive_version}.%{texlive_noarch}.1asvn21631
@@ -24715,7 +24134,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fixlatvian-doc >= %{texlive_version}
+Suggests:       texlive-fixlatvian-doc >= %{texlive_version}
 Provides:       tex(fixlatvian.sty)
 Requires:       tex(caption.sty)
 Requires:       tex(etoolbox.sty)
@@ -24725,10 +24144,10 @@ Requires:       tex(perpage.sty)
 Requires:       tex(polyglossia.sty)
 Requires:       tex(svn-prov.sty)
 Requires:       tex(xstring.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source274:      fixlatvian.tar.xz
-Source275:      fixlatvian.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source276:      fixlatvian.tar.xz
+Source277:      fixlatvian.doc.tar.xz
 
 %description -n texlive-fixlatvian
 The package offers improvement of the Latvian language support
@@ -24761,9 +24180,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fixlatvian
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -24777,9 +24193,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/makeindex/fixlatvian/lv.ist
 %{_texmfdistdir}/tex/xelatex/fixlatvian/fixlatvian.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fixlatvian-%{texlive_version}.%{texlive_noarch}.1asvn21631-%{release}-zypper
-%endif
 
 %package -n texlive-fixltxhyph
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn25832
@@ -24808,13 +24221,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fixltxhyph-doc >= %{texlive_version}
+Suggests:       texlive-fixltxhyph-doc >= %{texlive_version}
 Provides:       tex(fixltxhyph.sty)
 Requires:       tex(etoolbox.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source276:      fixltxhyph.tar.xz
-Source277:      fixltxhyph.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source278:      fixltxhyph.tar.xz
+Source279:      fixltxhyph.doc.tar.xz
 
 %description -n texlive-fixltxhyph
 The package fixes the problem of TeX failing to hyphenate
@@ -24849,9 +24262,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fixltxhyph
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -24863,9 +24273,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fixltxhyph
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fixltxhyph/fixltxhyph.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fixltxhyph-%{texlive_version}.%{texlive_noarch}.0.0.4svn25832-%{release}-zypper
-%endif
 
 %package -n texlive-fixme
 Version:        %{texlive_version}.%{texlive_noarch}.4.5svn49591
@@ -24894,7 +24301,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fixme-doc >= %{texlive_version}
+Suggests:       texlive-fixme-doc >= %{texlive_version}
 Provides:       tex(fixme.sty)
 Provides:       tex(fxenvlayoutcolor.sty)
 Provides:       tex(fxenvlayoutcolorsig.sty)
@@ -24921,10 +24328,10 @@ Requires:       tex(pdfcomment.sty)
 Requires:       tex(verbatim.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source278:      fixme.tar.xz
-Source279:      fixme.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source280:      fixme.tar.xz
+Source281:      fixme.doc.tar.xz
 
 %description -n texlive-fixme
 FiXme is a collaborative annotation tool for LaTeX documents.
@@ -24968,9 +24375,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fixme
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -25003,9 +24407,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/fixme/themes/fxthemecolor.sty
 %{_texmfdistdir}/tex/latex/fixme/themes/fxthemecolorsig.sty
 %{_texmfdistdir}/tex/latex/fixme/themes/fxthemesignature.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fixme-%{texlive_version}.%{texlive_noarch}.4.5svn49591-%{release}-zypper
-%endif
 
 %package -n texlive-fixmetodonotes
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.2svn30168
@@ -25034,7 +24435,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fixmetodonotes-doc >= %{texlive_version}
+Suggests:       texlive-fixmetodonotes-doc >= %{texlive_version}
 Provides:       tex(fixmetodonotes.sty)
 Requires:       tex(color.sty)
 Requires:       tex(fix-cm.sty)
@@ -25043,10 +24444,10 @@ Requires:       tex(tocloft.sty)
 Requires:       tex(transparent.sty)
 Requires:       tex(ulem.sty)
 Requires:       tex(watermark.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source280:      fixmetodonotes.tar.xz
-Source281:      fixmetodonotes.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source282:      fixmetodonotes.tar.xz
+Source283:      fixmetodonotes.doc.tar.xz
 
 %description -n texlive-fixmetodonotes
 The package provides tools to highlight FIXME and TODO
@@ -25079,9 +24480,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fixmetodonotes
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -25093,9 +24491,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fixmetodonotes
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fixmetodonotes/fixmetodonotes.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fixmetodonotes-%{texlive_version}.%{texlive_noarch}.0.0.2.2svn30168-%{release}-zypper
-%endif
 
 %package -n texlive-fixpdfmag
 Version:        %{texlive_version}.%{texlive_noarch}.svn15878
@@ -25125,9 +24520,9 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Provides:       tex(fixpdfmag.tex)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source282:      fixpdfmag.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source284:      fixpdfmag.tar.xz
 
 %description -n texlive-fixpdfmag
 A recent change to pdfTeX has caused magnification to apply to
@@ -25149,21 +24544,15 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fixpdfmag
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-fixpdfmag
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/plain/fixpdfmag/fixpdfmag.tex
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fixpdfmag-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
-%endif
 
 %package -n texlive-fiziko
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.3svn54512
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.0svn61944
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        A MetaPost library for physics textbook illustrations
@@ -25189,11 +24578,11 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fiziko-doc >= %{texlive_version}
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source283:      fiziko.tar.xz
-Source284:      fiziko.doc.tar.xz
+Suggests:       texlive-fiziko-doc >= %{texlive_version}
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source285:      fiziko.tar.xz
+Source286:      fiziko.doc.tar.xz
 
 %description -n texlive-fiziko
 This MetaPost library was initially written to automate some
@@ -25205,7 +24594,7 @@ The library also contains functions to draw some objects
 constructed from these primitives.
 
 %package -n texlive-fiziko-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.3svn54512
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.0svn61944
 Release:        0
 Summary:        Documentation for texlive-fiziko
 License:        GPL-2.0-or-later
@@ -25229,9 +24618,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fiziko
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -25244,9 +24630,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fiziko
 %defattr(-,root,root,755)
 %{_texmfdistdir}/metapost/fiziko/fiziko.mp
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fiziko-%{texlive_version}.%{texlive_noarch}.0.0.1.3svn54512-%{release}-zypper
-%endif
 
 %package -n texlive-fjodor
 Version:        %{texlive_version}.%{texlive_noarch}.svn53207
@@ -25275,12 +24658,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-fjodor-doc >= %{texlive_version}
+Suggests:       texlive-fjodor-doc >= %{texlive_version}
 Provides:       tex(fjodor.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source285:      fjodor.tar.xz
-Source286:      fjodor.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source287:      fjodor.tar.xz
+Source288:      fjodor.doc.tar.xz
 
 %description -n texlive-fjodor
 The package provides several page layouts, selectable by
@@ -25311,9 +24694,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-fjodor
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -25330,9 +24710,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-fjodor
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/fjodor/fjodor.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-fjodor-%{texlive_version}.%{texlive_noarch}.svn53207-%{release}-zypper
-%endif
 
 %package -n texlive-flabels
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn17272
@@ -25361,13 +24738,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-flabels-doc >= %{texlive_version}
+Suggests:       texlive-flabels-doc >= %{texlive_version}
 Provides:       tex(flabels.sty)
 Requires:       tex(color.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source287:      flabels.tar.xz
-Source288:      flabels.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source289:      flabels.tar.xz
+Source290:      flabels.doc.tar.xz
 
 %description -n texlive-flabels
 Macros for typesetting pretty labels (optionally colored) for
@@ -25399,9 +24776,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-flabels
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -25415,9 +24789,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-flabels
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/flabels/flabels.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-flabels-%{texlive_version}.%{texlive_noarch}.1.0svn17272-%{release}-zypper
-%endif
 
 %package -n texlive-flacards
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.1bsvn19440
@@ -25446,14 +24817,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-flacards-doc >= %{texlive_version}
+Suggests:       texlive-flacards-doc >= %{texlive_version}
 Provides:       tex(flacards.cls)
 Requires:       tex(article.cls)
 Requires:       tex(geometry.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source289:      flacards.tar.xz
-Source290:      flacards.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source291:      flacards.tar.xz
+Source292:      flacards.doc.tar.xz
 
 %description -n texlive-flacards
 The flacards class provides an easy interface to produce
@@ -25485,9 +24856,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-flacards
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -25505,9 +24873,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-flacards
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/flacards/flacards.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-flacards-%{texlive_version}.%{texlive_noarch}.0.0.1.1bsvn19440-%{release}-zypper
-%endif
 
 %package -n texlive-flagderiv
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.10svn15878
@@ -25536,15 +24901,15 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-flagderiv-doc >= %{texlive_version}
+Suggests:       texlive-flagderiv-doc >= %{texlive_version}
 Provides:       tex(flagderiv.sty)
 Requires:       tex(array.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(longtable.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source291:      flagderiv.tar.xz
-Source292:      flagderiv.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source293:      flagderiv.tar.xz
+Source294:      flagderiv.doc.tar.xz
 
 %description -n texlive-flagderiv
 The flagderiv package is used to create mathematical
@@ -25578,9 +24943,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-flagderiv
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -25592,12 +24954,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-flagderiv
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/flagderiv/flagderiv.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-flagderiv-%{texlive_version}.%{texlive_noarch}.0.0.10svn15878-%{release}-zypper
-%endif
 
 %package -n texlive-flashcards
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.1svn19667
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.2svn62104
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        A class for typesetting flashcards
@@ -25623,17 +24982,17 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-flashcards-doc >= %{texlive_version}
+Suggests:       texlive-flashcards-doc >= %{texlive_version}
 Provides:       tex(avery5371.cfg)
 Provides:       tex(avery5388.cfg)
 Provides:       tex(flashcards.cls)
 Requires:       tex(article.cls)
 Requires:       tex(geometry.sty)
 Requires:       tex(ifthen.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source293:      flashcards.tar.xz
-Source294:      flashcards.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source295:      flashcards.tar.xz
+Source296:      flashcards.doc.tar.xz
 
 %description -n texlive-flashcards
 The FlashCards class provides for the typesetting of flash
@@ -25643,7 +25002,7 @@ on the flip (back) side. Flash cards come in many sizes
 depending on the nature of the information they contain.
 
 %package -n texlive-flashcards-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.1svn19667
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.2svn62104
 Release:        0
 Summary:        Documentation for texlive-flashcards
 License:        GPL-2.0-or-later
@@ -25667,9 +25026,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-flashcards
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -25685,9 +25041,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/flashcards/avery5371.cfg
 %{_texmfdistdir}/tex/latex/flashcards/avery5388.cfg
 %{_texmfdistdir}/tex/latex/flashcards/flashcards.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-flashcards-%{texlive_version}.%{texlive_noarch}.1.0.1svn19667-%{release}-zypper
-%endif
 
 %package -n texlive-flashmovie
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn25768
@@ -25716,14 +25069,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-flashmovie-doc >= %{texlive_version}
+Suggests:       texlive-flashmovie-doc >= %{texlive_version}
 Provides:       tex(flashmovie.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(keyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source295:      flashmovie.tar.xz
-Source296:      flashmovie.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source297:      flashmovie.tar.xz
+Source298:      flashmovie.doc.tar.xz
 
 %description -n texlive-flashmovie
 The package allows direct embedding of flash movies into PDF
@@ -25760,9 +25113,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-flashmovie
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -25782,9 +25132,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/flashmovie/flashmovie.sty
 %{_texmfdistdir}/tex/latex/flashmovie/player_flv_maxi.swf
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-flashmovie-%{texlive_version}.%{texlive_noarch}.0.0.4svn25768-%{release}-zypper
-%endif
 
 %package -n texlive-flipbook
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn25584
@@ -25813,7 +25160,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-flipbook-doc >= %{texlive_version}
+Suggests:       texlive-flipbook-doc >= %{texlive_version}
 Provides:       tex(flipbook.sty)
 Requires:       tex(everypage.sty)
 Requires:       tex(fancyhdr.sty)
@@ -25821,10 +25168,10 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(scalefnt.sty)
 Requires:       tex(verbatim.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source297:      flipbook.tar.xz
-Source298:      flipbook.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source299:      flipbook.tar.xz
+Source300:      flipbook.doc.tar.xz
 
 %description -n texlive-flipbook
 The package provides techniques for adding flip book animations
@@ -25858,9 +25205,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-flipbook
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -26013,9 +25357,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-flipbook
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/flipbook/flipbook.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-flipbook-%{texlive_version}.%{texlive_noarch}.0.0.2svn25584-%{release}-zypper
-%endif
 
 %package -n texlive-flippdf
 Version:        %{texlive_version}.%{texlive_noarch}.2.0bsvn56782
@@ -26044,15 +25385,15 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-flippdf-doc >= %{texlive_version}
+Suggests:       texlive-flippdf-doc >= %{texlive_version}
 Provides:       tex(flippdf-1x.sty)
 Provides:       tex(flippdf.sty)
 Requires:       tex(everypage.sty)
 Requires:       tex(iftex.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source299:      flippdf.tar.xz
-Source300:      flippdf.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source301:      flippdf.tar.xz
+Source302:      flippdf.doc.tar.xz
 
 %description -n texlive-flippdf
 The package allows the production of a document with pages
@@ -26087,9 +25428,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-flippdf
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -26104,9 +25442,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/flippdf/flippdf-1x.sty
 %{_texmfdistdir}/tex/latex/flippdf/flippdf.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-flippdf-%{texlive_version}.%{texlive_noarch}.2.0bsvn56782-%{release}-zypper
-%endif
 
 %prep
 %setup -q -c -T
@@ -26124,28 +25459,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf ../../../share/texmf/tlpkg/tlpostcode \
                                     %{buildroot}%{_datadir}/texlive/tlpkg/tlpostcode
     ln -sf tlpkg/tlpostcode         %{buildroot}%{_texmfmaindir}/tlpostcode
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-eskd-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:1} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:2} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-eskdx-%{texlive_version}.%{texlive_noarch}.0.0.98svn29235-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:3} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:4} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-eso-pic-%{texlive_version}.%{texlive_noarch}.3.0asvn56658-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:5} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:6} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-esrelation-fonts-%{texlive_version}.%{texlive_noarch}.svn37236-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:7} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:8} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
@@ -26178,10 +25497,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-esstix-fonts-%{texlive_version}.%{texlive_noarch}.1.0svn22426-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:9} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:10} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
@@ -26232,16 +25547,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	    esac
 	done
     popd
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-estcpmm-%{texlive_version}.%{texlive_noarch}.0.0.4svn17335-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:11} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:12} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-esvect-fonts-%{texlive_version}.%{texlive_noarch}.1.3svn32098-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:13} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:14} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
@@ -26274,16 +25581,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-etaremune-%{texlive_version}.%{texlive_noarch}.1.2svn15878-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:15} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:16} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-etbb-fonts-%{texlive_version}.%{texlive_noarch}.1.051svn56390-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:17} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:18} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
@@ -26337,45 +25636,17 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-etbb.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-etbb.conf
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-etdipa-%{texlive_version}.%{texlive_noarch}.2.6svn36354-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:19} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-etex-%{texlive_version}.%{texlive_noarch}.svn56291-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:20} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:21} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-etex-pkg-%{texlive_version}.%{texlive_noarch}.2.7svn41784-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:22} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:23} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-etexcmds-%{texlive_version}.%{texlive_noarch}.1.7svn53171-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:24} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:25} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-etextools-%{texlive_version}.%{texlive_noarch}.3.1415926svn20694-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:26} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:27} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ethiop-%{texlive_version}.%{texlive_noarch}.0.0.7svn15878-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:28} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:29} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ethiop-t1-fonts-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:30} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:31} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
@@ -26408,101 +25679,39 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-etoc-%{texlive_version}.%{texlive_noarch}.1.09csvn55156-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:32} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:33} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-etoolbox-%{texlive_version}.%{texlive_noarch}.2.5ksvn56554-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:34} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:35} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-etoolbox-de-%{texlive_version}.%{texlive_noarch}.1svn21906-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:36} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-etsvthor-%{texlive_version}.%{texlive_noarch}.1.0svn48186-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:37} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:38} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-euclideangeometry-%{texlive_version}.%{texlive_noarch}.0.0.1.8svn54897-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:39} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:40} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-euenc-%{texlive_version}.%{texlive_noarch}.0.0.1hsvn19795-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:41} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:42} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-euflag-%{texlive_version}.%{texlive_noarch}.0.0.8svn55265-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:43} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:44} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-eukdate-%{texlive_version}.%{texlive_noarch}.1.04svn15878-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:45} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:46} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-euler-%{texlive_version}.%{texlive_noarch}.2.5svn42428-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:47} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:48} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-eulerpx-%{texlive_version}.%{texlive_noarch}.0.0.2.1svn43735-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:49} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:50} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-eulervm-%{texlive_version}.%{texlive_noarch}.4.0svn15878-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:51} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:52} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-euro-%{texlive_version}.%{texlive_noarch}.1.1svn22191-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:53} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:54} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-euro-ce-%{texlive_version}.%{texlive_noarch}.3.0bsvn25714-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:55} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:56} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-europasscv-%{texlive_version}.%{texlive_noarch}.svn56829-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:57} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:58} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-europecv-%{texlive_version}.%{texlive_noarch}.svn57641-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:59} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:60} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-eurosym-fonts-%{texlive_version}.%{texlive_noarch}.1.4_subrfixsvn17265-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:61} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:62} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:63} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:64} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/fonts/eurosym/makemfs \
 	       %{_texmfdistdir}/doc/fonts/eurosym/rundvips \
@@ -26541,332 +25750,124 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-euxm-%{texlive_version}.%{texlive_noarch}.svn54074-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:63} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-everyhook-%{texlive_version}.%{texlive_noarch}.1.2svn35675-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:64} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:65} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-everypage-%{texlive_version}.%{texlive_noarch}.2.0bsvn56694-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:66} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:67} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-everysel-%{texlive_version}.%{texlive_noarch}.2.1svn57489-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:68} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:69} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-everyshi-%{texlive_version}.%{texlive_noarch}.4.00svn57001-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:70} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:71} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-exam-%{texlive_version}.%{texlive_noarch}.2.7svn58023-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:72} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:73} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-exam-n-%{texlive_version}.%{texlive_noarch}.1.1.4svn42755-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:74} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:75} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-exam-randomizechoices-%{texlive_version}.%{texlive_noarch}.0.0.1svn49662-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:76} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:77} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-examdesign-%{texlive_version}.%{texlive_noarch}.1.101svn15878-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:78} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:79} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-example-%{texlive_version}.%{texlive_noarch}.svn33398-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:80} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-examplep-%{texlive_version}.%{texlive_noarch}.0.0.04svn55265-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:81} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:82} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:83} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:84} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/latex/examplep/wrfiles.pl
     do
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-exceltex-%{texlive_version}.%{texlive_noarch}.0.0.5.1svn26313-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:83} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:84} -C %{buildroot}%{_datadir}/texlive
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-excludeonly-%{texlive_version}.%{texlive_noarch}.1.0svn17262-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:85} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:86} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-exercise-%{texlive_version}.%{texlive_noarch}.1.6svn35417-%{release}-zypper
-%endif
+    tar --use-compress-program=xz -xf %{S:85} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:86} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:87} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:88} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-exercisebank-%{texlive_version}.%{texlive_noarch}.0.0.3.0svn50448-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:89} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:90} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-exercisepoints-%{texlive_version}.%{texlive_noarch}.1.2.3svn49590-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:91} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:92} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-exercises-%{texlive_version}.%{texlive_noarch}.1.1svn55188-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:93} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:94} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-exesheet-%{texlive_version}.%{texlive_noarch}.1.0svn55916-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:95} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:96} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-exframe-%{texlive_version}.%{texlive_noarch}.3.4svn53911-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:97} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:98} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-exp-testopt-%{texlive_version}.%{texlive_noarch}.0.0.3svn15878-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:99} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:100} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-expdlist-%{texlive_version}.%{texlive_noarch}.2.4svn15878-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:101} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:102} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-expex-%{texlive_version}.%{texlive_noarch}.5.1bsvn44499-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:103} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:104} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-expkv-%{texlive_version}.%{texlive_noarch}.1.6svn57247-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:105} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:106} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-expkv-cs-%{texlive_version}.%{texlive_noarch}.0.0.6svn56693-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:107} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:108} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-expkv-def-%{texlive_version}.%{texlive_noarch}.0.0.7svn57246-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:109} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:110} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-expkv-opt-%{texlive_version}.%{texlive_noarch}.0.0.1bsvn56633-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:111} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:112} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-export-%{texlive_version}.%{texlive_noarch}.1.8svn27206-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:113} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:114} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-expose-expl3-dunkerque-2019-%{texlive_version}.%{texlive_noarch}.1.2svn54451-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:115} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-expressg-%{texlive_version}.%{texlive_noarch}.1.5svn29349-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:116} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:117} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:118} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:119} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/metapost/expressg/n2mps.sh
     do
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-exsheets-%{texlive_version}.%{texlive_noarch}.0.0.21ksvn52227-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:118} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:119} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-exsol-%{texlive_version}.%{texlive_noarch}.1.4svn48977-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:120} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:121} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-extarrows-%{texlive_version}.%{texlive_noarch}.1.2.0svn54400-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:122} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:123} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-exteps-%{texlive_version}.%{texlive_noarch}.0.0.41svn19859-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:124} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/metapost/exteps/delfin
     do
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-extpfeil-%{texlive_version}.%{texlive_noarch}.0.0.4svn16243-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-extract-%{texlive_version}.%{texlive_noarch}.1.9asvn52117-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-extsizes-%{texlive_version}.%{texlive_noarch}.1.4asvn17263-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-facsimile-%{texlive_version}.%{texlive_noarch}.1.0svn21328-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-factura-%{texlive_version}.%{texlive_noarch}.4.00svn56948-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-facture-%{texlive_version}.%{texlive_noarch}.1.2.2svn43865-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-facture-belge-simple-sans-tva-%{texlive_version}.%{texlive_noarch}.2.1svn49004-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:138} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:139} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-faktor-%{texlive_version}.%{texlive_noarch}.0.0.1bsvn15878-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:140} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:141} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fancybox-%{texlive_version}.%{texlive_noarch}.1.4svn18304-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:142} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:143} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fancyhandout-%{texlive_version}.%{texlive_noarch}.svn46411-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:144} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:145} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fancyhdr-%{texlive_version}.%{texlive_noarch}.4.0.1svn57672-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:146} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:147} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fancyhdr-it-%{texlive_version}.%{texlive_noarch}.svn21912-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:148} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fancylabel-%{texlive_version}.%{texlive_noarch}.1.1svn46736-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:149} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:150} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fancynum-%{texlive_version}.%{texlive_noarch}.0.0.92svn15878-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:151} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:152} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fancypar-%{texlive_version}.%{texlive_noarch}.1.2svn49801-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:153} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:154} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fancyref-%{texlive_version}.%{texlive_noarch}.0.0.9csvn15878-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:155} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:156} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fancyslides-%{texlive_version}.%{texlive_noarch}.1.0svn36263-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:157} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:158} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fancytabs-%{texlive_version}.%{texlive_noarch}.1.9svn41549-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:159} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:160} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fancytooltips-%{texlive_version}.%{texlive_noarch}.1.8svn56291-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:161} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:162} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:163} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/doc/latex/fancytooltips/fancy-preview
     do
@@ -26879,18 +25880,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fancyvrb-%{texlive_version}.%{texlive_noarch}.3.7svn57488-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:163} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fandol-fonts-%{texlive_version}.%{texlive_noarch}.0.0.3svn37889-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:165} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:166} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:167} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-fandol
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/fandol/*.{pf[ab],[ot]tf}
@@ -26921,24 +25914,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fascicules-%{texlive_version}.%{texlive_noarch}.1svn54080-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:167} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fast-diagram-%{texlive_version}.%{texlive_noarch}.1.1svn29264-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fbb-fonts-%{texlive_version}.%{texlive_noarch}.1.16svn55728-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:171} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-fbb
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/fbb/*.{pf[ab],[ot]tf} \
@@ -26990,53 +25971,21 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-fbb.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-fbb.conf
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fbithesis-%{texlive_version}.%{texlive_noarch}.1.2msvn21340-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fbox-%{texlive_version}.%{texlive_noarch}.0.0.05svn55627-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:175} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:176} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fbs-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:177} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fc-%{texlive_version}.%{texlive_noarch}.1.4svn32796-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:178} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:179} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fcavtex-%{texlive_version}.%{texlive_noarch}.1.1svn38074-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:180} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:181} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fcltxdoc-%{texlive_version}.%{texlive_noarch}.1.0svn24500-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:182} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:183} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fcolumn-%{texlive_version}.%{texlive_noarch}.1.3svn57428-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:184} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:185} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fdsymbol-fonts-%{texlive_version}.%{texlive_noarch}.0.0.8svn26722-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:186} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:187} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:189} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-fdsymbol
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/fdsymbol/*.{pf[ab],[ot]tf} \
@@ -27088,18 +26037,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-fdsymbol.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-fdsymbol.conf
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fduthesis-%{texlive_version}.%{texlive_noarch}.0.0.7esvn56216-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:189} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-featpost-%{texlive_version}.%{texlive_noarch}.0.0.8.8svn35346-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:190} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:191} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:192} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:193} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Add shebang e.g. correct perl wrapper scripts if any
     for scr in %{_texmfdistdir}/doc/metapost/featpost/bash/dvipngproof.sh \
 	       %{_texmfdistdir}/doc/metapost/featpost/bash/pdflatexproof.sh \
@@ -27115,24 +26056,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fei-%{texlive_version}.%{texlive_noarch}.4.10.1svn55960-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:192} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:193} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fenixpar-%{texlive_version}.%{texlive_noarch}.0.0.92svn24730-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fetamont-fonts-%{texlive_version}.%{texlive_noarch}.svn43812-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:197} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-fetamont
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/fetamont/*.{pf[ab],[ot]tf} \
@@ -27184,54 +26113,24 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-fetamont.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-fetamont.conf
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fetchcls-%{texlive_version}.%{texlive_noarch}.1.0svn45245-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-feupphdteses-%{texlive_version}.%{texlive_noarch}.4.0svn30962-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:201} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fewerfloatpages-%{texlive_version}.%{texlive_noarch}.1.0bsvn58058-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:202} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:203} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-feyn-%{texlive_version}.%{texlive_noarch}.0.0.4.1svn55777-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:204} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:205} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-feynmf-%{texlive_version}.%{texlive_noarch}.1.08svn17259-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:206} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:207} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-feynmp-auto-%{texlive_version}.%{texlive_noarch}.1.1svn30223-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:208} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:209} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ffslides-%{texlive_version}.%{texlive_noarch}.svn38895-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:210} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:211} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fge-fonts-%{texlive_version}.%{texlive_noarch}.1.25svn37628-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:212} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:213} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:214} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:215} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:216} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:217} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-fge
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/fge/*.{pf[ab],[ot]tf}
@@ -27262,24 +26161,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fgruler-%{texlive_version}.%{texlive_noarch}.1.3svn56854-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:214} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:215} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fibeamer-%{texlive_version}.%{texlive_noarch}.1.1.8svn53146-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:216} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:217} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fifinddo-info-%{texlive_version}.%{texlive_noarch}.1.1bsvn29349-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:218} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:219} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:220} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:221} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Add shebang e.g. correct perl wrapper scripts if any
     for scr in %{_texmfdistdir}/source/latex/fifinddo-info/makeelse/updsfl.sh \
 	       %{_texmfdistdir}/source/latex/fifinddo-info/makevars/longdan.sh
@@ -27294,18 +26179,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fifo-stack-%{texlive_version}.%{texlive_noarch}.1.0svn33288-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:220} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:221} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fig4latex-%{texlive_version}.%{texlive_noarch}.0.0.2svn26313-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:222} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:223} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:222} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:223} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:224} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:225} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/fig4latex/fig4latex
     do
@@ -27318,12 +26195,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-figbas-fonts-%{texlive_version}.%{texlive_noarch}.1.0.3svn28943-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:224} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:225} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:226} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:227} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-figbas
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/figbas/*.{pf[ab],[ot]tf}
@@ -27354,97 +26227,37 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-figbib-%{texlive_version}.%{texlive_noarch}.svn19388-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:226} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:227} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-figchild-%{texlive_version}.%{texlive_noarch}.1.0.0svn58759-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:228} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-figflow-%{texlive_version}.%{texlive_noarch}.svn21462-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:230} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:231} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-figsize-%{texlive_version}.%{texlive_noarch}.0.0.1svn18784-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:232} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-filecontents-%{texlive_version}.%{texlive_noarch}.1.5svn52142-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:234} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:235} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-filecontentsdef-%{texlive_version}.%{texlive_noarch}.1.5svn52208-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:236} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:237} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-filedate-%{texlive_version}.%{texlive_noarch}.svn29529-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:238} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:239} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-filehook-%{texlive_version}.%{texlive_noarch}.0.0.8asvn56479-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:240} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fileinfo-%{texlive_version}.%{texlive_noarch}.0.0.81asvn28421-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:242} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-filemod-%{texlive_version}.%{texlive_noarch}.1.2svn56291-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:244} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:245} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-finbib-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:246} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-findhyph-%{texlive_version}.%{texlive_noarch}.3.4svn47444-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:247} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:248} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:247} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:248} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:249} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:250} -C %{buildroot}%{_datadir}/texlive
     # Remove files
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/support/findhyph/findhyph.bat
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fink-%{texlive_version}.%{texlive_noarch}.2.2.1svn24329-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:249} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:250} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-finstrut-%{texlive_version}.%{texlive_noarch}.0.0.5svn21719-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:251} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:252} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fira-fonts-%{texlive_version}.%{texlive_noarch}.4.3svn55437-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:253} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:254} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:255} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:256} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-fira
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/fira/*.{pf[ab],[ot]tf} \
@@ -27496,12 +26309,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-fira.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-fira.conf
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-firamath-fonts-%{texlive_version}.%{texlive_noarch}.0.0.3.4svn56672-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:255} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:256} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:257} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:258} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-firamath
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/firamath/*.{pf[ab],[ot]tf}
@@ -27532,106 +26341,38 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-firamath-otf-%{texlive_version}.%{texlive_noarch}.0.0.02asvn50732-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:257} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:258} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-first-latex-doc-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:259} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-firstaid-%{texlive_version}.%{texlive_noarch}.1.0jsvn58440-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:260} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:261} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fitbox-%{texlive_version}.%{texlive_noarch}.1.02svn50088-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:262} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:263} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fithesis-%{texlive_version}.%{texlive_noarch}.0.0.3.51svn54483-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:264} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:265} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fix2col-%{texlive_version}.%{texlive_noarch}.0.0.04svn38770-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:266} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:267} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fixcmex-%{texlive_version}.%{texlive_noarch}.1.1svn51825-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:268} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:269} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fixfoot-%{texlive_version}.%{texlive_noarch}.0.0.3asvn17131-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:270} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:271} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fixjfm-%{texlive_version}.%{texlive_noarch}.0.0.8svn47113-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:272} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:273} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fixlatvian-%{texlive_version}.%{texlive_noarch}.1asvn21631-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:274} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fixltxhyph-%{texlive_version}.%{texlive_noarch}.0.0.4svn25832-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fixme-%{texlive_version}.%{texlive_noarch}.4.5svn49591-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fixmetodonotes-%{texlive_version}.%{texlive_noarch}.0.0.2.2svn30168-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:280} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:281} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fixpdfmag-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:282} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fiziko-%{texlive_version}.%{texlive_noarch}.0.0.1.3svn54512-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:283} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:284} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-fjodor-%{texlive_version}.%{texlive_noarch}.svn53207-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:285} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:286} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-flabels-%{texlive_version}.%{texlive_noarch}.1.0svn17272-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:287} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:288} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:289} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:290} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove files
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/flabels/makedoc.bat
     # Make possible scripts usable if any
@@ -27640,42 +26381,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-flacards-%{texlive_version}.%{texlive_noarch}.0.0.1.1bsvn19440-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:289} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:290} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-flagderiv-%{texlive_version}.%{texlive_noarch}.0.0.10svn15878-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:291} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:292} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-flashcards-%{texlive_version}.%{texlive_noarch}.1.0.1svn19667-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:293} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:294} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-flashmovie-%{texlive_version}.%{texlive_noarch}.0.0.4svn25768-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:295} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:296} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-flipbook-%{texlive_version}.%{texlive_noarch}.0.0.2svn25584-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:297} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:298} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-flippdf-%{texlive_version}.%{texlive_noarch}.2.0bsvn56782-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:299} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:300} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:301} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:302} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove this
     rm -vrf %{buildroot}%{_texmfdistdir}/tlpkg/tlpobj
     rm -vrf %{buildroot}%{_texmfmaindir}/tlpkg/tlpobj
