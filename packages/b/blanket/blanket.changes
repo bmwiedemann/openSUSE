@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 20 19:13:05 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.0:
+  * App ported to GTK 4 and libadwaita
+  * User interface refinements
+  * New translations added
+  * Bug fixes
+
+-------------------------------------------------------------------
 Thu Sep 30 11:49:04 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.0:
