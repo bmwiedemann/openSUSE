@@ -459,4 +459,12 @@
     <comment>Also add some obsoletes and conflicts</comment>
     <requestid>964546</requestid>
   </revision>
+  <revision rev="45" vrev="48">
+    <srcmd5>a9a84a790050ef27d690f6f87ff0f0ab</srcmd5>
+    <version>unknown</version>
+    <time>1650548518</time>
+    <user>dimstar_suse</user>
+    <comment>Explicit do Provides tex(dtk-logos.sty)</comment>
+    <requestid>971043</requestid>
+  </revision>
 </revisionlist>
