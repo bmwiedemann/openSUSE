@@ -188,7 +188,7 @@
  }
 --- texk/makeindexk/scanid.h
 +++ texk/makeindexk/scanid.h	2016-06-07 13:29:37.209589558 +0000
-@@ -112,6 +112,20 @@
+@@ -118,6 +118,20 @@
      idx_ec++; \
  }
  
@@ -209,7 +209,7 @@
  #define IDX_ERROR1(F, D) { \
      if (idx_dot) { \
  	fprintf(ilg_fp, "\n"); \
-@@ -119,7 +133,7 @@
+@@ -125,7 +139,7 @@
      } \
      fprintf(ilg_fp, "!! Input index error (file = %s, line = %d):\n   -- ", \
  	    idx_fn, idx_lc); \

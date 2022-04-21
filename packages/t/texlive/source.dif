@@ -23,6 +23,17 @@
  texk/xdvik/xdvi-sh.in                                       |   19 +
  22 files changed, 224 insertions(+), 83 deletions(-)
 
+--- reautoconf
++++ reautoconf	2022-04-05 13:46:43.207504121 +0000
+@@ -94,7 +94,7 @@ echo "$0:               TL_AUTOHEADER, T
+ 
+ # Give users a chance to quit here
+ # and set TL_AUTOCONF, TL_AUTOHEADER, TL_AUTOMAKE, and/or TL_ACLOCAL
+-$do_cmd sleep 4
++# $do_cmd sleep 4
+ $do_say "$0: starting at `date`."
+ 
+ AUTOCONF=$TL_AUTOCONF
 --- libs/icu/icu-src/source/common/Makefile.in
 +++ libs/icu/icu-src/source/common/Makefile.in	2021-04-07 10:14:44.202880715 +0000
 @@ -69,7 +69,7 @@ DEFS += -DU_COMMON_IMPLEMENTATION
@@ -34,17 +45,6 @@
  
  # for icu data location
  ifeq ($(PKGDATA_MODE),common)
---- reautoconf
-+++ reautoconf	2021-04-07 10:14:44.202880715 +0000
-@@ -83,7 +83,7 @@ echo "$0:               TL_AUTOHEADER, T
- 
- # Give users a chance to quit here
- # and set TL_AUTOCONF, TL_AUTOHEADER, TL_AUTOMAKE, and/or TL_ACLOCAL
--$do_cmd sleep 5
-+# $do_cmd sleep 5
- 
- AUTOCONF=$TL_AUTOCONF
- AUTOHEADER=$TL_AUTOHEADER
 --- texk/dviljk/dvi2xx.c
 +++ texk/dviljk/dvi2xx.c	2021-04-07 10:14:44.206880772 +0000
 @@ -168,7 +168,18 @@ main(int argc, char *argv[])
@@ -161,7 +161,7 @@
    sdir_greatgrandparent = xdirname (sdir_grandparent);
    kpathsea_xputenv (kpse, "SELFAUTOGRANDPARENT", fix_selfdir (sdir_greatgrandparent));
 --- texk/kpathsea/texmf.cnf
-+++ texk/kpathsea/texmf.cnf	2021-04-07 10:22:03.917307810 +0000
++++ texk/kpathsea/texmf.cnf	2022-04-05 13:47:33.158601044 +0000
 @@ -62,20 +62,20 @@
  TEXMFROOT = $SELFAUTOPARENT
  
@@ -191,11 +191,11 @@
  TEXMFHOME = ~/texmf
  
  % TEXMFVAR, where texconfig/updmap/fmtutil store cached runtime data.
--TEXMFVAR = ~/.texlive2021/texmf-var
+-TEXMFVAR = ~/.texlive2022/texmf-var
 +TEXMFVAR = ${TEXMFSYSVAR}
  
  % TEXMFCONFIG, where texconfig/updmap/fmtutil store configuration data.
--TEXMFCONFIG = ~/.texlive2021/texmf-config
+-TEXMFCONFIG = ~/.texlive2022/texmf-config
 +TEXMFCONFIG = ${TEXMFSYSCONFIG}
  
  % This is the value manipulated by tlmgr's auxtrees subcommand in the
@@ -256,8 +256,8 @@
  
  % This variable exists only to be redefined; it is used in nearly all
  % search paths. If a document has source files not only in the current
-@@ -307,7 +307,7 @@ TEXINPUTS               = $TEXMFDOTDIR;$
- TTF2TFMINPUTS =                 $TEXMFDOTDIR;$TEXMF/ttf2pk//
+@@ -304,7 +304,7 @@ TEXINPUTS.frpdftex      = $TEXMFDOTDIR;$
+ TEXINPUTS               = $TEXMFDOTDIR;$TEXMF/tex/{$progname,generic,latex,}//
  
  % Metafont, MetaPost inputs.
 -MFINPUTS = $TEXMFDOTDIR;$TEXMF/metafont//;{$TEXMF/fonts,$VARTEXFONTS}/source//
@@ -265,7 +265,7 @@
  MPINPUTS = $TEXMFDOTDIR;$TEXMF/metapost//
  
  % Dump files (fmt/base/mem) for vir{tex,mf,mp} to read.
-@@ -317,31 +317,31 @@ MPINPUTS = $TEXMFDOTDIR;$TEXMF/metapost/
+@@ -314,31 +314,31 @@ MPINPUTS = $TEXMFDOTDIR;$TEXMF/metapost/
  % We repeat the same definition three times because of the way fmtutil
  % is implemented; if we use ${TEXFORMATS}, the mpost/mf/etc. formats
  % will not be found.
@@ -304,7 +304,7 @@
  
  % Similarly for the GF format, which only remains in existence because
  % Metafont outputs it (and MF isn't going to change).
-@@ -437,8 +437,8 @@ MPSUPPORT = $TEXMFDOTDIR;$TEXMF/metapost
+@@ -442,8 +442,8 @@ MPSUPPORT = $TEXMFDOTDIR;$TEXMF/metapost
  % For xdvi to find mime.types and .mailcap, if they do not exist in
  % ~.  These are single directories, not paths.
  % (But the default mime.types, at least, may well suffice.)
@@ -315,7 +315,7 @@
  
  % Default settings for the fontconfig library as used by the Windows
  % versions of xetex/xdvipdfmx.  Not used by xetex on Unixish systems.
-@@ -462,10 +462,10 @@ WEBINPUTS = $TEXMFDOTDIR;$TEXMF/web//
+@@ -467,10 +467,10 @@ WEBINPUTS = $TEXMFDOTDIR;$TEXMF/web//
  CWEBINPUTS = $TEXMFDOTDIR;$TEXMF/cweb//
  
  % Omega-related fonts and other files.
@@ -330,7 +330,7 @@
  OTPINPUTS = $TEXMFDOTDIR;$TEXMF/omega/otp//
  OCPINPUTS = $TEXMFDOTDIR;$TEXMF/omega/ocp//
  
-@@ -558,32 +558,38 @@ RUBYINPUTS   = $TEXMFDOTDIR;$TEXMF/scrip
+@@ -566,32 +566,38 @@ RUBYINPUTS   = $TEXMFDOTDIR;$TEXMF/scrip
  % explicitly list every directory.  Arguably more understandable anyway.
  %
  TEXMFCNF = {\
@@ -394,7 +394,7 @@
  %
  % For reference, here is the old brace-using definition:
  %TEXMFCNF = {$SELFAUTOLOC,$SELFAUTODIR,$SELFAUTOPARENT}{,{/share,}/texmf{-local,}/web2c}
-@@ -904,3 +910,33 @@ guess_input_kanji_encoding = 1
+@@ -909,3 +915,33 @@ guess_input_kanji_encoding = 1
  % command_line_encoding = none
  % in a texmf.cnf prefered, for example $TEXMFLOCAL/web2c/texmf.cnf.
  command_line_encoding = utf-8
@@ -452,15 +452,15 @@
         msg  ("Usage: %s [-bh] {-c char|-o octchar} [-W width -H height] pkfile\n", myname);
         fatal("\nEmail bug reports to %s.\n", PACKAGE_BUGREPORT);
 --- texk/texlive/linked_scripts/musixtex/musixtex.lua
-+++ texk/texlive/linked_scripts/musixtex/musixtex.lua	2021-04-07 10:29:14.951604240 +0000
-@@ -212,16 +212,27 @@ end
- --       possible by exploiting the the fact that Lua has two false values.
- --         dvi == nil    "do not produce a DVI file" (but maybe PDF)
- --         dvi == false  "do not process the DVI file" (but stop after TeX)
++++ texk/texlive/linked_scripts/musixtex/musixtex.lua	2022-04-05 13:52:00.765759055 +0000
+@@ -226,16 +226,27 @@ end
+ local dvips = "dvips -e0"  
+ -- option -e0 suppresses dvips "feature" of adjusting location to align 
+ -- characters in words of text 
 +local base=string.explode(arg[0], "/+")
 +base=string.explode(base[#base], ".+")
 +base=base[1]
- local dvips = "dvips -e0"
+ 
  function defaults()
    xml2pmx = "xml2pmx"
    prepmx = "prepmx"
@@ -493,10 +493,10 @@
 +umask 022
  exec fmtutil --sys ${1+"$@"}
 --- texk/texlive/linked_scripts/texlive/fmtutil.pl
-+++ texk/texlive/linked_scripts/texlive/fmtutil.pl	2021-04-07 10:14:44.210880832 +0000
++++ texk/texlive/linked_scripts/texlive/fmtutil.pl	2022-04-05 13:53:52.711731787 +0000
 @@ -10,16 +10,16 @@
  # History:
- # Original shell script (C) 2001 Thomas Esser, public domain
+ # Original shell script 2001 Thomas Esser, public domain
  
 -my $TEXMFROOT;
 +my $TEXMFDIST;
@@ -516,7 +516,7 @@
    require "mktexlsr.pl";
    TeX::Update->import();
  }
-@@ -70,7 +70,7 @@ TeXLive::TLUtils::prepend_own_path();
+@@ -76,7 +76,7 @@ TeXLive::TLUtils::prepend_own_path();
  # this function checks by itself whether it is running on windows or not
  reset_root_home();
  
@@ -525,22 +525,22 @@
  chomp(our $TEXMFVAR = `kpsewhich -var-value=TEXMFVAR`);
  chomp(our $TEXMFSYSVAR = `kpsewhich -var-value=TEXMFSYSVAR`);
  chomp(our $TEXMFCONFIG = `kpsewhich -var-value=TEXMFCONFIG`);
-@@ -361,7 +361,14 @@ sub callback_build_formats {
-       TeXLive::TLWinGoo::maybe_make_ro ($tmpdir);
+@@ -413,7 +413,14 @@ sub callback_build_formats {
+         TeXLive::TLWinGoo::maybe_make_ro ($tmpdir);
+       }
+     } else {
++      my ($uid, $gid);
+       $tmpdir = File::Temp::tempdir(CLEANUP => 1);
++      if ($> == 0 && ($uid=getpwnam("mktex")) && ($gid=getgrnam("mktex"))) {
++        my $cnt = chown $uid, $gid, $tmpdir;
++        die "could not create directory $tmpdir" if $cnt <= 0;
++        $cnt = chmod 0770, $tmpdir;
++        die "could not create directory $tmpdir" if $cnt <= 0;
++      }
      }
-   } else {
-+    my ($uid, $gid);
-     $tmpdir = File::Temp::tempdir(CLEANUP => 1);
-+    if ($> == 0 && ($uid=getpwnam("mktex")) && ($gid=getgrnam("mktex"))) {
-+      my $cnt = chown $uid, $gid, $tmpdir;
-+      die "could not create directory $tmpdir" if $cnt <= 0;
-+      $cnt = chmod 0770, $tmpdir;
-+      die "could not create directory $tmpdir" if $cnt <= 0;
-+    }
    }
    # set up destination directory
-   $opts{'fmtdir'} ||= "$texmfvar/web2c";
-@@ -592,6 +599,7 @@ sub rebuild_one_format {
+@@ -717,6 +724,7 @@ sub rebuild_one_format {
    # check for existence of ini file before doing anything else
    if (system("kpsewhich -progname=$fmt -format=$kpsefmt $inifile >$nul 2>&1") != 0) {
      # we didn't find the ini file, skip
@@ -548,7 +548,7 @@
      print_deferred_warning("inifile $inifile for $fmt/$eng not found.\n");
      # The original script just skipped it but in TeX Live we expect that
      # all activated formats are also buildable, thus return failure.
-@@ -651,11 +659,15 @@ sub rebuild_one_format {
+@@ -776,11 +784,15 @@ sub rebuild_one_format {
          ",$opts{'no-error-if-no-engine'}," =~ m/,$eng,/) {
        return $FMT_NOTAVAIL;
      } else {
@@ -574,7 +574,7 @@
  exec updmap --sys ${1+"$@"}
 --- texk/web2c/Makefile.in
 +++ texk/web2c/Makefile.in	2021-04-07 10:14:44.210880832 +0000
-@@ -5483,7 +5483,7 @@ libmd5_a_SOURCES = libmd5/md5.c libmd5/m
+@@ -5699,7 +5699,7 @@ libmd5_a_SOURCES = libmd5/md5.c libmd5/m
  md5main_CPPFLAGS = -I$(srcdir)/libmd5
  md5main_SOURCES = libmd5/md5main.c
  md5main_LDADD = libmd5.a
@@ -583,7 +583,7 @@
  	$(MAKE) $(AM_MAKEFLAGS) all-recursive
  
  .SUFFIXES:
-@@ -5530,6 +5530,11 @@ w2c/c-auto.h: w2c/stamp-h1
+@@ -5746,6 +5746,11 @@ w2c/c-auto.h: w2c/stamp-h1
  w2c/stamp-h1: $(srcdir)/c-auto.in $(top_builddir)/config.status
  	@rm -f w2c/stamp-h1
  	cd $(top_builddir) && $(SHELL) ./config.status w2c/c-auto.h

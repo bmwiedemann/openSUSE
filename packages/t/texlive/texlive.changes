@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  5 13:38:47 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Update to TeXLive 2022 (boo#1188577)
+- Remove patch source-missed-scripts.dif as scripts now are upstream
+- Remove patch source-r58686:r58919.dif as obsolete
+
+-------------------------------------------------------------------
 Wed Mar 30 14:44:43 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use gzip -n for bit-reproducible builds
