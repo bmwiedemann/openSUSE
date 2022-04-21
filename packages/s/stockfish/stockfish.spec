@@ -17,9 +17,9 @@
 
 
 # See evaluate.h > EvalFileDefaultName
-%define nnuenet nn-13406b1dcbe0.nnue
+%define nnuenet nn-6877cd24400e.nnue
 Name:           stockfish
-Version:        14.1
+Version:        15
 Release:        0
 Summary:        Chess engine
 License:        GPL-3.0-or-later
@@ -31,6 +31,8 @@ Source10:       https://bazaar.launchpad.net/~ubuntu-branches/ubuntu/vivid/%{nam
 Source11:       https://bazaar.launchpad.net/~ubuntu-branches/ubuntu/vivid/%{name}/vivid/download/head:/%{name}.6-20091204230329-yljoyxocuxhxg1ot-76/%{name}.6
 # If 'Version' is not set it will display the date as version number. We dont want __DATE__ and Version is set anyways.
 Patch0:         date.patch
+# Don't try to download file. We already have it.
+Patch1:         stockfish-remove-net.patch
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
 BuildRequires:  xz
@@ -51,6 +53,7 @@ information about how to use Stockfish with your GUI.
 %prep
 %setup -q -n Stockfish-sf_%{version}
 %patch0 -p1
+%patch1 -p1
 cp %{SOURCE1} src/
 cp -p %{SOURCE10} %{SOURCE11} .
 

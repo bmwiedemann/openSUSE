@@ -90,4 +90,18 @@
     <comment></comment>
     <requestid>965331</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>11ccf68491f8b4772e9a7f95c9fead7d</srcmd5>
+    <version>15</version>
+    <time>1650548548</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 15:
+  Stockfish 15 continues to push the boundaries of chess, providing
+  unrivalled analysis and playing strength. In our testing, Stockfish
+  15 is ahead of Stockfish 14 by 36 Elo points and wins nine times
+  more game pairs than it loses.
+- Add stockfish-remove-net.patch: Don't try to donwload nnue
+  we already have it.</comment>
+    <requestid>971242</requestid>
+  </revision>
 </revisionlist>

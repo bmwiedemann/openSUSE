@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 20 19:17:58 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 15:
+  Stockfish 15 continues to push the boundaries of chess, providing
+  unrivalled analysis and playing strength. In our testing, Stockfish
+  15 is ahead of Stockfish 14 by 36 Elo points and wins nine times
+  more game pairs than it loses.
+- Add stockfish-remove-net.patch: Don't try to donwload nnue
+  we already have it.
+
+-------------------------------------------------------------------
 Sun Mar 27 18:37:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 14.1:
