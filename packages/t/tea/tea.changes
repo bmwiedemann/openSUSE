@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Apr 17 18:12:06 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Add tea-fix-mimetype.patch: Fix MimeType .desktop entry.
+
+-------------------------------------------------------------------
+Thu Apr 14 11:55:37 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 60.7.0
+  * Fixes external processes when TEA is compiled against Qt6.
+  * TEA features user-defined virtual keyboards for quick mouse-type
+    letters or whole words.
+- Update to version 60.6.0
+  * Spanish UI translation
+- Update to version 60.5.0
+  * Single application mode fixed
+  * DJVU support
+  * FB2 reader has been improved
+  * May bug fixes
+- Update to version 60.4.0
+  * New feature: autosave
+  * TEA can now temporary save newly created unsaved files and then
+    load them with a new session.
+  * Fixes: braces highlighting and palettes.
+- Update to version 60.3.0
+  * Polish UI and Manual translation
+  * Rust hl support
+  * Time consuming operations such as "Find in files" can be interrupted
+  * Hunspell engine support is available again
+- update 0001-Add-metainfo-use-GNUInstallDirs-install-metainfo-des.patch 
+
+-------------------------------------------------------------------
 Tue May 18 16:22:42 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 60.1.0
@@ -17,7 +48,7 @@ Tue May 18 16:22:42 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
     Youtube subtitles (sbv, vtt) formats (timecode highlighting)
   * Haskell highlighting also featured.
   * Dates panel becomes more fancy.
-- Build with QT6 on Factory
+- Build with Qt6 on Factory
 - Add 0001-Add-metainfo-use-GNUInstallDirs-install-metainfo-des.patch
 
 -------------------------------------------------------------------

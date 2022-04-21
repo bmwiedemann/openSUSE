@@ -1,7 +1,7 @@
 #
 # spec file for package tea
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,28 @@
 #
 
 
-%if 0%{suse_version} >= 1550
+%if 0%{?suse_version} >= 1550
 %bcond_without qt6
 %else
 %bcond_with qt6
 %endif
 Name:           tea
-Version:        60.1.0
+Version:        60.7.0
 Release:        0
 Summary:        Qt-based text editor with image viewer
 License:        GPL-3.0-or-later
 URL:            http://semiletov.org/tea
 Source:         https://github.com/psemiletov/tea-qt/archive/%{version}.tar.gz#/%{name}-qt-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE tea-fix-mimetype.patch -- Fix MimeType .desktop entry.
+Patch0:         tea-fix-mimetype.patch
 # PATCH-FEATURE-UPSTREAM -- https://github.com/psemiletov/tea-qt/pull/45
-Patch0:         0001-Add-metainfo-use-GNUInstallDirs-install-metainfo-des.patch
+Patch1:         0001-Add-metainfo-use-GNUInstallDirs-install-metainfo-des.patch
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(hunspell)
+BuildRequires:  pkgconfig(zlib)
 %if %{with qt6}
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Core5Compat)
@@ -43,15 +47,13 @@ BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6Quick)
 BuildRequires:  cmake(Qt6Widgets)
 %else
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Qml)
-BuildRequires:  pkgconfig(Qt5Quick)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5Qml)
+BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5Widgets)
 %endif
-BuildRequires:  pkgconfig(hunspell)
-BuildRequires:  pkgconfig(zlib)
 
 %description
 TEA is a Qt-based text editor. It supports reading FB2, ODT, RTF,
@@ -61,8 +63,7 @@ Midnight-Commander-style file manager, integrates spell checking
 (aspell/hunspell), and syntax highlighting for a number of languages.
 
 %prep
-%setup -q -n tea-qt-%{version}
-%patch0 -p1
+%autosetup -n tea-qt-%{version} -p1
 
 %build
 %cmake \
