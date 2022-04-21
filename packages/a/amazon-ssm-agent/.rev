@@ -111,4 +111,41 @@
     <comment></comment>
     <requestid>902858</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8433750c2ee2f17528f0e3f88eac9931</srcmd5>
+    <version>3.1.1260.0</version>
+    <time>1650548520</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.1260.0
+  + Added missing check for invalid S3 path parameter
+  + Added support for domain join using a non-local username
+  + Fixed broken links in README.md
+  + Fixed ECS Exec issue where agent was using environment variables for credentials
+  + Updated Ec2Detector test to query smbios directly for system information
+- from version 3.1.1208.0
+  + Updated ec2detector module to use Get-CmiInstance instead of wmic.exe
+  + Fixed file creation mode of ssm-agent-users sudoer file (bsc#1196556, CVE-2022-29527)
+- from version 3.1.1188.0
+  + Added new ec2detector module to determine if agent is on EC2
+  + Added support for port forwarding to remote host
+  + Added quotes around inventory parameter ValueName on Windows
+  + Fix for domain join DNS IP assignments in shared directories
+  + Replaced namedpipe updater test with ec2detector test
+- from version 3.1.1141.0
+  + Add application inventory by file for Bottlerocket
+  + Fix infinite retry logic to send failed replies in MGSInteractor
+  + Remove usage of io/fs package
+- from version 3.1.1080.0
+  + (windows only) Remove symlink scan during update
+- from version 3.1.1045.0
+  + Fixed sourceHash validation for aws:application document plugin
+  + Added document parameter validation for values passed to target document of aws:runDocument plugin
+  + (windows only) Fix process leak when legacy cloudwatch plugin is enabled
+  + (windows only) Fail installation if C:\ProgramData\Amazon\SSM\ has symlinks
+- from version 3.1.1004.0
+  + Added platform detection for Bottlerocket OS
+  + Consolidated regional endpoint generation to common endpoint module
+- from version 3.1.941.0 (forwarded request 971060 from glaubitz)</comment>
+    <requestid>971130</requestid>
+  </revision>
 </revisionlist>

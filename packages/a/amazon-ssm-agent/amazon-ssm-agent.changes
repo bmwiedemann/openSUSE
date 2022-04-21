@@ -1,4 +1,139 @@
 -------------------------------------------------------------------
+Wed Apr 20 10:39:00 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.1.1260.0
+  + Added missing check for invalid S3 path parameter
+  + Added support for domain join using a non-local username
+  + Fixed broken links in README.md
+  + Fixed ECS Exec issue where agent was using environment variables for credentials
+  + Updated Ec2Detector test to query smbios directly for system information
+- from version 3.1.1208.0
+  + Updated ec2detector module to use Get-CmiInstance instead of wmic.exe
+  + Fixed file creation mode of ssm-agent-users sudoer file (bsc#1196556, CVE-2022-29527)
+- from version 3.1.1188.0
+  + Added new ec2detector module to determine if agent is on EC2
+  + Added support for port forwarding to remote host
+  + Added quotes around inventory parameter ValueName on Windows
+  + Fix for domain join DNS IP assignments in shared directories
+  + Replaced namedpipe updater test with ec2detector test
+- from version 3.1.1141.0
+  + Add application inventory by file for Bottlerocket
+  + Fix infinite retry logic to send failed replies in MGSInteractor
+  + Remove usage of io/fs package
+- from version 3.1.1080.0
+  + (windows only) Remove symlink scan during update
+- from version 3.1.1045.0
+  + Fixed sourceHash validation for aws:application document plugin
+  + Added document parameter validation for values passed to target document of aws:runDocument plugin
+  + (windows only) Fix process leak when legacy cloudwatch plugin is enabled
+  + (windows only) Fail installation if C:\ProgramData\Amazon\SSM\ has symlinks
+- from version 3.1.1004.0
+  + Added platform detection for Bottlerocket OS
+  + Consolidated regional endpoint generation to common endpoint module
+- from version 3.1.941.0
+  + Added support for Rocky linux
+  + Fixed sharefile/shareprofile not being propagated to updateutil
+  + Fixed incorrect darwin platform detection post BigSur
+  + Fixed log flush issue in updater
+  + Updated .NET dependencies for domainjoin and cloudwatch (windows only)
+  + Updated go version to 1.17.6
+- from version 3.1.821.0
+  + Implement new core module named MessageService to start processing commands from both MGS and MDS
+    * Merge functionalities from RunCommandService core module and Session core module.
+    * Receive run command documents through MGS if connected and fallback to MDS otherwise.
+      This functionality requires appropriate permissions for both endpoints and will be rolled
+      out gradually to end users.
+    * Provide filesystem based idempotency check to avoid duplicate run command document execution.
+    * Increase default run command pool buffer size from 1 to 5 to load additional documents
+      before-hand for processing.
+  + Fix nil pointer deference panic produced in named pipe test case during agent update
+  + Remove StopType concept in ssm-agent-worker and add different waits for reboot and shutdown stop
+- from version 3.1.804.0
+  + Add support for upstart when running get-diagnostic command using ssm-cli
+  + Fix systemctl service name to support older versions of systemctl
+  + Include changes to facilitate testing
+  + Update DNS server selection logic for seamless domain join on linux and darwin
+  + Update go version to go1.17.5
+  + Update golang sys package dependency
+- from version 3.1.715.0
+  + Derive default directories from appconfig on Darwin
+  + Set x-bit on newly-created directories
+- from version 3.1.634.0
+  + Fix for ssm-setup-cli to be able to select service manager without the agent being installed
+- from version 3.1.630.0
+  + Added greengrass component recipe for the new SystemsManagerAgent component
+  + Added support for registering agent on a greengrass device
+  + Added support for downloading more than 1000 objects in downloadContent
+  + Fixed retry logic for onprem and s3 upload
+  + Fixed unit tests when running on Mac
+  + Update AWS SDK to v1.41.4
+  + Update logic to retrieve platform details for Rocky Linux
+- from version 3.1.501.0
+  + Add diagnostics command to ssm-cli
+  + Fix caching for onprem credentials
+  + Additional configuration options for Seamless Domain Join
+  + Gracefully exit session if group of runas user is modified
+  + Skip retries for cert validation errors in S3 HEAD requests
+  + Fix DNS failures on CentOS 8.2
+  + Update several dependencies
+- from version 3.1.459.0
+  + Fixed a bug with powershell command for Inventory
+- from version 3.1.426.0
+  + Fixed cpu spike issue manifesting on snap
+  + Fixed issue with version comparison in EC2Config update plugin
+  + Fixed panic when command output was being truncated
+  + Updated build to use go1.16.8
+  + Removed Profile from inventory powershell commands on Windows
+- from version 3.1.338.0
+  + Fix to eliminate WaitGroup reuse panic triggered during agent reboot
+  + Fix to include applications without UninstallString in Inventory for Windows
+  + Fixed a bug where multi-plugin documents with large outputs would timeout RunCommand
+  + Fixed a bug where RunCommand could delay executions for up to 15 minutes
+- from version 3.1.282.0
+  + Add serial port logging of AwsNitroEnclaves package version on windows during startup
+  + Allow usage of existing loggroup/logstream when the user does not have create permission
+  + Change service interrogate request log to debug
+  + Cleanup old surveyor channel files on startup
+  + Fix filehandle leak in windows leading to agent going offline
+  + Fix to schedule correct next run time during orchestration directories cleanup
+  + Fix to sequentially update correct runcount value in the document bookkeeping file
+  + Fix a bug with version parsing EC2Config updater
+  + Updated rpm packaging for fips compliance
+- from version 3.1.192.0
+  + Added darwin arm64 to makefile
+  + Added logic to limit orchestration directory cleanup
+  + Added packaging for public SSM Agent container image
+  + Fixed cloudwatch endpoint for telemetry metrics requests
+  + Fixed handling of Windows filepaths and mutex locks
+  + Fixed agent worker handling of OS signals and termination channel requests
+  + Updated datachannel retry strategy to not retry for a specific error scenario
+  + Updated default gomaxproc value for Windows
+  + Update build to use go1.16.6
+- from version 3.1.127.0
+  + Added a workaround for windows random halts
+  + Fixed race condition during reboot document execution
+- from version 3.1.90.0
+  + Updated to version 3.1
+  + Updated build to build statically linked binaries for linux 64bit
+    * Minimum supported linux kernel version for linux 64bit is 3.2+
+  + Fixed permissions for docker config file
+  + Fixed issue with ubuntu prerm and postinst scripts
+  + Fixed issue where processor stop was being called twice
+- from version 3.0.1390.0
+  + Added config option to delete orchestration folder
+  + Added snapcraft packaging config
+  + Added workaround for aws:runDocument status bug
+  + Added improved handling of file closure
+  + Added support for go mod and updated build to use go 1.16.4
+  + Fixed bug parsing vpce s3 urls
+  + Refactored use of agent identity in agent cli
+  + Updated check if agent is running as windows service
+  + Updated handling of session cancellation to still send output to client side
+  + Updated interactive session exit code logic to match non-interactive mode
+  + Updated vendor dependencies
+- Update directory path for GOPATH
+
+-------------------------------------------------------------------
 Fri Jun 25 12:59:01 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.0.1295.0

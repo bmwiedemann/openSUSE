@@ -1,7 +1,7 @@
 #
 # spec file for package amazon-ssm-agent
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           amazon-ssm-agent
-Version:        3.0.1295.0
+Version:        3.1.1260.0
 Release:        0
 Summary:        Amazon Remote System Config Management
 License:        Apache-2.0
@@ -106,7 +106,7 @@ cp -r Tools agent common core internal packaging vendor src
 
 PKG_ROOT=`pwd`
 GOPATH=${PKG_ROOT}/vendor:${PKG_ROOT}
-ln -s ${PKG_ROOT} ${PKG_ROOT}/vendor/src/github.com/aws/amazon-ssm-agent
+ln -s ${PKG_ROOT} ${PKG_ROOT}/vendor/github.com/aws/aws-sdk-go
 export GOPATH
 
 CGO_ENABLED=0 go build -ldflags "-s -w -extldflags=-Wl,-z,now,-z,relro,-z,defs" -buildmode=pie -o bin/amazon-ssm-agent -v core/agent.go core/agent_unix.go core/agent_parser.go
