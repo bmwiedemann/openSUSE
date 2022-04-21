@@ -18,7 +18,7 @@
              -- only used for FONTCONFIG_PATH & TEXMFCACHE in TeX Live
  
 -            TEXMFSYSVAR     = "selfautoparent:texmf-var",
--            TEXMFVAR        = "home:.texlive2021/texmf-var",
+-            TEXMFVAR        = "home:.texlive2022/texmf-var",
 +            TEXMFSYSVAR     = "/var/lib/texmf",
 +            TEXMFVAR        = "$TEXMFSYSVAR",
 +            HOMECACHE       = "home:.cache/texmf/fonts",
@@ -27,7 +27,7 @@
              -- will be chosen but there can be more readable paths.
  
 -            TEXMFCACHE      = "$TEXMFSYSVAR;$TEXMFVAR",
--            TEXMFCONFIG     = "home:.texlive2021/texmf-config",
+-            TEXMFCONFIG     = "home:.texlive2022/texmf-config",
 +            TEXMFCACHE      = "$TEXMFSYSVAR;$TEXMFVAR;$HOMECACHE",
 +            TEXMFCONFIG     = "$TEXMFSYSCONFIG",
  
