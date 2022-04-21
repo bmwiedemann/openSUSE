@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 20 18:13:56 UTC 2022 - michael@stroeder.com
+
+- Update to version 0.5.2:
+  * Implement audio-video sync in the diskwriter.
+  * Fix setting of the keyframe flag in audio samples in diskwriter.
+  * Don't use high-quality audio for screenshare by default, obey the
+    hqaudio preference in all cases.
+  * Maintain user information for oneself, not just other users.
+  * Call the onuser callback when a user deletes a stream.
+
+-------------------------------------------------------------------
 Fri Mar 25 10:00:18 UTC 2022 - michael@stroeder.com
 
 - Update to version 0.5.1:
