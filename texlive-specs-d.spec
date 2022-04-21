@@ -16,12 +16,10 @@
 #
 
 
-%bcond_with	zypper_posttrans
-
-%define texlive_version  2021
-%define texlive_previous 2020
-%define texlive_release  20210325
-%define texlive_noarch   189
+%define texlive_version  2022
+%define texlive_previous 2021
+%define texlive_release  20220321
+%define texlive_noarch   191
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -57,7 +55,7 @@
 %define _appdefdir      %{_x11data}/app-defaults
 
 Name:           texlive-specs-d
-Version:        2021
+Version:        2022
 Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
@@ -76,7 +74,7 @@ Source0:        texlive-specs-d-rpmlintrc
 Meta package to build tons of noarch texlive packages.
 
 %package -n texlive-biolett-bst
-Version:        %{texlive_version}.%{texlive_noarch}.svn42217
+Version:        %{texlive_version}.%{texlive_noarch}.svn61719
 Release:        0
 License:        LPPL-1.0
 Summary:        A BibTeX style for the journal "Biology Letters"
@@ -102,9 +100,9 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-biolett-bst-doc >= %{texlive_version}
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
+Suggests:       texlive-biolett-bst-doc >= %{texlive_version}
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
 Source1:        biolett-bst.tar.xz
 Source2:        biolett-bst.doc.tar.xz
 
@@ -115,7 +113,7 @@ style was produced independently and hence has no formal
 approval from the Royal Society.
 
 %package -n texlive-biolett-bst-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn42217
+Version:        %{texlive_version}.%{texlive_noarch}.svn61719
 Release:        0
 Summary:        Documentation for texlive-biolett-bst
 License:        LPPL-1.0
@@ -139,9 +137,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-biolett-bst
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -152,9 +147,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-biolett-bst
 %defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bst/biolett-bst/biolett.bst
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-biolett-bst-%{texlive_version}.%{texlive_noarch}.svn42217-%{release}-zypper
-%endif
 
 %package -n texlive-bitelist
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn25779
@@ -183,11 +175,11 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bitelist-doc >= %{texlive_version}
+Suggests:       texlive-bitelist-doc >= %{texlive_version}
 Provides:       tex(bitedemo.tex)
 Provides:       tex(bitelist.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
 Source3:        bitelist.tar.xz
 Source4:        bitelist.doc.tar.xz
 
@@ -228,9 +220,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bitelist
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -243,12 +232,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/bitelist/bitedemo.tex
 %{_texmfdistdir}/tex/generic/bitelist/bitelist.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bitelist-%{texlive_version}.%{texlive_noarch}.0.0.1svn25779-%{release}-zypper
-%endif
 
 %package -n texlive-bithesis
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.1svn57388
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.1svn61719
 Release:        0
 License:        LPPL-1.0
 Summary:        Templates for the Beijing Institute of Technology
@@ -274,7 +260,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bithesis-doc >= %{texlive_version}
+Suggests:       texlive-bithesis-doc >= %{texlive_version}
 Provides:       tex(bitart.cls)
 Provides:       tex(bitbook.cls)
 Requires:       tex(amsmath.sty)
@@ -292,6 +278,8 @@ Requires:       tex(fontspec.sty)
 Requires:       tex(geometry.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(hyperref.sty)
+Requires:       tex(kvoptions.sty)
+Requires:       tex(listings.sty)
 Requires:       tex(multirow.sty)
 Requires:       tex(pdfpages.sty)
 Requires:       tex(setspace.sty)
@@ -300,8 +288,8 @@ Requires:       tex(titlesec.sty)
 Requires:       tex(titletoc.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xeCJK.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
 Source5:        bithesis.tar.xz
 Source6:        bithesis.doc.tar.xz
 
@@ -312,12 +300,13 @@ including general undergraduate research papers and master's
 theses.
 
 %package -n texlive-bithesis-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.1svn57388
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.1svn61719
 Release:        0
 Summary:        Documentation for texlive-bithesis
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            http://www.tug.org/texlive/
+Provides:       locale(texlive-bithesis-doc:zh)
 
 %description -n texlive-bithesis-doc
 This package includes the documentation for texlive-bithesis
@@ -336,9 +325,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bithesis
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -355,9 +341,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bithesis/bitart.cls
 %{_texmfdistdir}/tex/latex/bithesis/bitbook.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bithesis-%{texlive_version}.%{texlive_noarch}.1.0.1svn57388-%{release}-zypper
-%endif
 
 %package -n texlive-bitpattern
 Version:        %{texlive_version}.%{texlive_noarch}.svn39073
@@ -386,13 +369,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bitpattern-doc >= %{texlive_version}
+Suggests:       texlive-bitpattern-doc >= %{texlive_version}
 Provides:       tex(bitpattern.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(multido.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
 Source7:        bitpattern.tar.xz
 Source8:        bitpattern.doc.tar.xz
 
@@ -425,9 +408,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bitpattern
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -439,9 +419,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bitpattern
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bitpattern/bitpattern.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bitpattern-%{texlive_version}.%{texlive_noarch}.svn39073-%{release}-zypper
-%endif
 
 %package -n texlive-bitset
 Version:        %{texlive_version}.%{texlive_noarch}.1.3svn53837
@@ -472,13 +449,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bitset-doc >= %{texlive_version}
+Suggests:       texlive-bitset-doc >= %{texlive_version}
 Provides:       tex(bitset.sty)
 Requires:       tex(bigintcalc.sty)
 Requires:       tex(infwarerr.sty)
 Requires:       tex(intcalc.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
 Source9:        bitset.tar.xz
 Source10:       bitset.doc.tar.xz
 
@@ -512,9 +489,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bitset
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -526,9 +500,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bitset
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/bitset/bitset.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bitset-%{texlive_version}.%{texlive_noarch}.1.3svn53837-%{release}-zypper
-%endif
 
 %package -n texlive-bitter
 Version:        %{texlive_version}.%{texlive_noarch}.svn56026
@@ -569,7 +540,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-bitter-fonts >= %{texlive_version}
-Recommends:     texlive-bitter-doc >= %{texlive_version}
+Suggests:       texlive-bitter-doc >= %{texlive_version}
 Provides:       tex(Bttr-Bold-tlf-ly1--base.tfm)
 Provides:       tex(Bttr-Bold-tlf-ly1.tfm)
 Provides:       tex(Bttr-Bold-tlf-ly1.vf)
@@ -625,8 +596,8 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
 Source11:       bitter.tar.xz
 Source12:       bitter.doc.tar.xz
 
@@ -681,9 +652,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bitter
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -767,9 +735,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-bitter/Bttr-Bold.pfb
 %{_datadir}/fonts/texlive-bitter/Bttr-Italic.pfb
 %{_datadir}/fonts/texlive-bitter/Bttr-Regular.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bitter-fonts-%{texlive_version}.%{texlive_noarch}.svn56026-%{release}-zypper
-%endif
 
 %package -n texlive-bizcard
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn15878
@@ -798,12 +763,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bizcard-doc >= %{texlive_version}
+Suggests:       texlive-bizcard-doc >= %{texlive_version}
 Provides:       tex(bizcard.sty)
 Requires:       tex(geometry.sty)
 Requires:       tex(ifthen.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
 Source13:       bizcard.tar.xz
 Source14:       bizcard.doc.tar.xz
 
@@ -837,9 +802,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bizcard
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -852,9 +814,125 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bizcard
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bizcard/bizcard.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bizcard-%{texlive_version}.%{texlive_noarch}.1.1svn15878-%{release}-zypper
-%endif
+
+%package -n texlive-bjfuthesis
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.1svn59809
+Release:        0
+License:        GPL-2.0-or-later
+Summary:        A thesis class for Beijing Forestry University
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-bjfuthesis-doc >= %{texlive_version}
+Provides:       tex(bjfuthesis.cls)
+Requires:       tex(amsmath.sty)
+Requires:       tex(amssymb.sty)
+Requires:       tex(biblatex.sty)
+Requires:       tex(bicaption.sty)
+Requires:       tex(booktabs.sty)
+Requires:       tex(ctexbook.cls)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(fancyhdr.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(hyperref.sty)
+Requires:       tex(iftex.sty)
+Requires:       tex(pdfpages.sty)
+Requires:       tex(silence.sty)
+Requires:       tex(titlesec.sty)
+Requires:       tex(titletoc.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source15:       bjfuthesis.tar.xz
+Source16:       bjfuthesis.doc.tar.xz
+
+%description -n texlive-bjfuthesis
+This is a class file for producing dissertations and theses
+according to the Beijing Forestry University (BJFU) Guidelines
+for Undergraduate Theses and Dissertations. The class should
+meet all current requirements and is updated whenever the
+university guidelines change.
+
+%package -n texlive-bjfuthesis-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.1svn59809
+Release:        0
+Summary:        Documentation for texlive-bjfuthesis
+License:        GPL-2.0-or-later
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Provides:       locale(texlive-bjfuthesis-doc:zh,en)
+
+%description -n texlive-bjfuthesis-doc
+This package includes the documentation for texlive-bjfuthesis
+
+%post -n texlive-bjfuthesis
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-bjfuthesis
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-bjfuthesis
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-bjfuthesis-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/bjfuthesis/LICENSE
+%{_texmfdistdir}/doc/latex/bjfuthesis/README.md
+%{_texmfdistdir}/doc/latex/bjfuthesis/bjfuthesis.layout
+%{_texmfdistdir}/doc/latex/bjfuthesis/documentation/bjfuthesis.lyx
+%{_texmfdistdir}/doc/latex/bjfuthesis/documentation/bjfuthesis.pdf
+%{_texmfdistdir}/doc/latex/bjfuthesis/documentation/bjfuthesis.tex
+%{_texmfdistdir}/doc/latex/bjfuthesis/example/bibliography.bib
+%{_texmfdistdir}/doc/latex/bjfuthesis/example/contents/cover.pdf
+%{_texmfdistdir}/doc/latex/bjfuthesis/example/contents/mission-statement.pdf
+%{_texmfdistdir}/doc/latex/bjfuthesis/example/contents/statement-of-originality.pdf
+%{_texmfdistdir}/doc/latex/bjfuthesis/example/figures/admin-knowledge-graph.png
+%{_texmfdistdir}/doc/latex/bjfuthesis/example/figures/admin-movie.png
+%{_texmfdistdir}/doc/latex/bjfuthesis/example/figures/admin-navigation.png
+%{_texmfdistdir}/doc/latex/bjfuthesis/example/figures/anonymous-category.png
+%{_texmfdistdir}/doc/latex/bjfuthesis/example/figures/anonymous-details.png
+%{_texmfdistdir}/doc/latex/bjfuthesis/example/figures/anonymous-index.png
+%{_texmfdistdir}/doc/latex/bjfuthesis/example/figures/anonymous-search.png
+%{_texmfdistdir}/doc/latex/bjfuthesis/example/figures/enhanced-recommendation.png
+%{_texmfdistdir}/doc/latex/bjfuthesis/example/figures/general-details.png
+%{_texmfdistdir}/doc/latex/bjfuthesis/example/figures/illustration-of-ripple-sets.png
+%{_texmfdistdir}/doc/latex/bjfuthesis/example/figures/jwt.pdf
+%{_texmfdistdir}/doc/latex/bjfuthesis/example/figures/recommendation-procedure.pdf
+%{_texmfdistdir}/doc/latex/bjfuthesis/example/figures/ripplenet-framework.png
+%{_texmfdistdir}/doc/latex/bjfuthesis/example/figures/use-case.pdf
+%{_texmfdistdir}/doc/latex/bjfuthesis/example/thesis.lyx
+%{_texmfdistdir}/doc/latex/bjfuthesis/example/thesis.pdf
+%{_texmfdistdir}/doc/latex/bjfuthesis/example/thesis.tex
+
+%files -n texlive-bjfuthesis
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/bjfuthesis/bjfuthesis.cls
 
 %package -n texlive-blacklettert1
 Version:        %{texlive_version}.%{texlive_noarch}.svn15878
@@ -883,7 +961,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-blacklettert1-doc >= %{texlive_version}
+Suggests:       texlive-blacklettert1-doc >= %{texlive_version}
 Provides:       tex(t1yfrak.fd)
 Provides:       tex(tfrak.tfm)
 Provides:       tex(tfrak.vf)
@@ -907,10 +985,10 @@ Requires:       tex(ecrm1000.tfm)
 Requires:       tex(yfrak.tfm)
 Requires:       tex(ygoth.tfm)
 Requires:       tex(yswab.tfm)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source15:       blacklettert1.tar.xz
-Source16:       blacklettert1.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source17:       blacklettert1.tar.xz
+Source18:       blacklettert1.doc.tar.xz
 
 %description -n texlive-blacklettert1
 This package contains virtual fonts that offer T1-alike encoded
@@ -944,9 +1022,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-blacklettert1
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -968,9 +1043,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/blacklettert1/tgoth.vf
 %{_texmfdistdir}/fonts/vf/public/blacklettert1/tswab.vf
 %{_texmfdistdir}/tex/latex/blacklettert1/t1yfrak.fd
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-blacklettert1-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
-%endif
 
 %package -n texlive-blindtext
 Version:        %{texlive_version}.%{texlive_noarch}.2.0svn25039
@@ -999,13 +1071,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-blindtext-doc >= %{texlive_version}
+Suggests:       texlive-blindtext-doc >= %{texlive_version}
 Provides:       tex(blindtext.sty)
 Requires:       tex(xspace.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source17:       blindtext.tar.xz
-Source18:       blindtext.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source19:       blindtext.tar.xz
+Source20:       blindtext.doc.tar.xz
 
 %description -n texlive-blindtext
 The package provides the commands \blindtext and \Blindtext for
@@ -1041,9 +1113,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-blindtext
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -1055,9 +1124,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-blindtext
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/blindtext/blindtext.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-blindtext-%{texlive_version}.%{texlive_noarch}.2.0svn25039-%{release}-zypper
-%endif
 
 %package -n texlive-blkarray
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.07svn36406
@@ -1086,14 +1152,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-blkarray-doc >= %{texlive_version}
+Suggests:       texlive-blkarray-doc >= %{texlive_version}
 Provides:       tex(blkarray.sty)
 Requires:       tex(article.sty)
 Requires:       tex(doc.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source19:       blkarray.tar.xz
-Source20:       blkarray.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source21:       blkarray.tar.xz
+Source22:       blkarray.doc.tar.xz
 
 %description -n texlive-blkarray
 An experimental package which implements an environment,
@@ -1131,9 +1197,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-blkarray
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -1146,9 +1209,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-blkarray
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/blkarray/blkarray.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-blkarray-%{texlive_version}.%{texlive_noarch}.0.0.07svn36406-%{release}-zypper
-%endif
 
 %package -n texlive-blochsphere
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn38388
@@ -1177,7 +1237,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-blochsphere-doc >= %{texlive_version}
+Suggests:       texlive-blochsphere-doc >= %{texlive_version}
 Provides:       tex(blochsphere.sty)
 Requires:       tex(environ.sty)
 Requires:       tex(etoolbox.sty)
@@ -1185,10 +1245,10 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(kvsetkeys.sty)
 Requires:       tex(tikz.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source21:       blochsphere.tar.xz
-Source22:       blochsphere.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source23:       blochsphere.tar.xz
+Source24:       blochsphere.doc.tar.xz
 
 %description -n texlive-blochsphere
 This package is used to draw pseudo-3D Blochsphere diagrams. It
@@ -1222,9 +1282,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-blochsphere
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -1239,9 +1296,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-blochsphere
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/blochsphere/blochsphere.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-blochsphere-%{texlive_version}.%{texlive_noarch}.1.1svn38388-%{release}-zypper
-%endif
 
 %package -n texlive-block
 Version:        %{texlive_version}.%{texlive_noarch}.svn17209
@@ -1270,12 +1324,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-block-doc >= %{texlive_version}
+Suggests:       texlive-block-doc >= %{texlive_version}
 Provides:       tex(block.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source23:       block.tar.xz
-Source24:       block.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source25:       block.tar.xz
+Source26:       block.doc.tar.xz
 
 %description -n texlive-block
 A style file for use with the letter class that overwrites the
@@ -1309,9 +1363,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-block
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -1323,9 +1374,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-block
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/block/block.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-block-%{texlive_version}.%{texlive_noarch}.svn17209-%{release}-zypper
-%endif
 
 %package -n texlive-blockdraw_mp
 Version:        %{texlive_version}.%{texlive_noarch}.svn15878
@@ -1354,11 +1402,11 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-blockdraw_mp-doc >= %{texlive_version}
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source25:       blockdraw_mp.tar.xz
-Source26:       blockdraw_mp.doc.tar.xz
+Suggests:       texlive-blockdraw_mp-doc >= %{texlive_version}
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source27:       blockdraw_mp.tar.xz
+Source28:       blockdraw_mp.doc.tar.xz
 
 %description -n texlive-blockdraw_mp
 A set of simple MetaPost macros for the task. While the task is
@@ -1390,9 +1438,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-blockdraw_mp
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -1414,9 +1459,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/metapost/blockdraw_mp/cascadedemo.mp
 %{_texmfdistdir}/metapost/blockdraw_mp/docblockprefs.mp
 %{_texmfdistdir}/metapost/blockdraw_mp/shiftoff.mp
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-blockdraw_mp-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
-%endif
 
 %package -n texlive-bloques
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn22490
@@ -1445,13 +1487,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bloques-doc >= %{texlive_version}
+Suggests:       texlive-bloques-doc >= %{texlive_version}
 Provides:       tex(bloques.sty)
 Requires:       tex(tikz.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source27:       bloques.tar.xz
-Source28:       bloques.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source29:       bloques.tar.xz
+Source30:       bloques.doc.tar.xz
 
 %description -n texlive-bloques
 The package uses TikZ to provide commands for generating
@@ -1482,9 +1524,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bloques
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -1497,9 +1536,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bloques
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bloques/bloques.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bloques-%{texlive_version}.%{texlive_noarch}.1.0svn22490-%{release}-zypper
-%endif
 
 %package -n texlive-blowup
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn46213
@@ -1528,7 +1564,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-blowup-doc >= %{texlive_version}
+Suggests:       texlive-blowup-doc >= %{texlive_version}
 Provides:       tex(blowup.sty)
 Requires:       tex(atbegshi.sty)
 Requires:       tex(graphics.sty)
@@ -1538,10 +1574,10 @@ Requires:       tex(ifvtex.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(typearea.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source29:       blowup.tar.xz
-Source30:       blowup.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source31:       blowup.tar.xz
+Source32:       blowup.doc.tar.xz
 
 %description -n texlive-blowup
 The package blowup only defines the user-level macro \blowUp,
@@ -1574,9 +1610,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-blowup
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -1598,9 +1631,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-blowup
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/blowup/blowup.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-blowup-%{texlive_version}.%{texlive_noarch}.1.0svn46213-%{release}-zypper
-%endif
 
 %package -n texlive-blox
 Version:        %{texlive_version}.%{texlive_noarch}.2.51svn57949
@@ -1629,15 +1659,15 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-blox-doc >= %{texlive_version}
+Suggests:       texlive-blox-doc >= %{texlive_version}
 Provides:       tex(blox.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(pgffor.sty)
 Requires:       tex(tikz.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source31:       blox.tar.xz
-Source32:       blox.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source33:       blox.tar.xz
+Source34:       blox.doc.tar.xz
 
 %description -n texlive-blox
 This package, along with TikZ, will typeset block diagrams for
@@ -1669,9 +1699,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-blox
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -1683,12 +1710,310 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-blox
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/blox/blox.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-blox-%{texlive_version}.%{texlive_noarch}.2.51svn57949-%{release}-zypper
-%endif
+
+%package -n texlive-bmstu
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.0svn62012
+Release:        0
+License:        LPPL-1.0
+Summary:        A LaTeX class for Bauman Moscow State Technical University
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-bmstu-doc >= %{texlive_version}
+Provides:       tex(bmstu-appendix.sty)
+Provides:       tex(bmstu-biblio.sty)
+Provides:       tex(bmstu-defabbr.sty)
+Provides:       tex(bmstu-essay.sty)
+Provides:       tex(bmstu-figure.sty)
+Provides:       tex(bmstu-listing.sty)
+Provides:       tex(bmstu-title.sty)
+Provides:       tex(bmstu-toc.sty)
+Provides:       tex(bmstu.cls)
+Requires:       tex(afterpage.sty)
+Requires:       tex(amsmath.sty)
+Requires:       tex(amssymb.sty)
+Requires:       tex(assoccnt.sty)
+Requires:       tex(babel.sty)
+Requires:       tex(booktabs.sty)
+Requires:       tex(csquotes.sty)
+Requires:       tex(enumitem.sty)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(extreport.cls)
+Requires:       tex(fix-cm.sty)
+Requires:       tex(float.sty)
+Requires:       tex(fontenc.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(hyperref.sty)
+Requires:       tex(indentfirst.sty)
+Requires:       tex(inputenc.sty)
+Requires:       tex(lastpage.sty)
+Requires:       tex(listings.sty)
+Requires:       tex(listingsutf8.sty)
+Requires:       tex(lscape.sty)
+Requires:       tex(microtype.sty)
+Requires:       tex(pgfplots.sty)
+Requires:       tex(setspace.sty)
+Requires:       tex(stackengine.sty)
+Requires:       tex(tabularx.sty)
+Requires:       tex(tikzscale.sty)
+Requires:       tex(titlesec.sty)
+Requires:       tex(totcount.sty)
+Requires:       tex(ulem.sty)
+Requires:       tex(wrapfig.sty)
+Requires:       tex(xcolor.sty)
+Requires:       tex(xifthen.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source35:       bmstu.tar.xz
+Source36:       bmstu.doc.tar.xz
+
+%description -n texlive-bmstu
+The class defines commands and environments for creating
+reports and explanatory notes in Bauman Moscow State Technical
+University (Russia). Klass opredeliaet komandy i okruzheniia
+dlia sozdaniia otchetov i raschetno-poiasnitel'nykh zapisok v
+MGTU im. N. E. Baumana. Sgenerirovannye faily sootvetstvuiut
+trebovaniiam MGTU im. N. E. Baumanai GOST 7.32-2017.
+Raschetno-poiasnitel'nye zapiski k vypusknym kvalifikatsionnym
+rabotam uspeshno prokhodiat proverku TestVKR (sborka 203).
+
+%package -n texlive-bmstu-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.0svn62012
+Release:        0
+Summary:        Documentation for texlive-bmstu
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+
+%description -n texlive-bmstu-doc
+This package includes the documentation for texlive-bmstu
+
+%post -n texlive-bmstu
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-bmstu
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-bmstu
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-bmstu-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/bmstu/README.md
+%{_texmfdistdir}/doc/latex/bmstu/examples/examples.pdf
+%{_texmfdistdir}/doc/latex/bmstu/examples/examples.tex
+%{_texmfdistdir}/doc/latex/bmstu/examples/inc/img/tux.png
+%{_texmfdistdir}/doc/latex/bmstu/examples/inc/img/tuz.png
+%{_texmfdistdir}/doc/latex/bmstu/examples/inc/lst/main.c
+
+%files -n texlive-bmstu
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/bmstu/bmstu.cls
+%{_texmfdistdir}/tex/latex/bmstu/img/bmstu-logo.pdf
+%{_texmfdistdir}/tex/latex/bmstu/sty/bmstu-appendix.sty
+%{_texmfdistdir}/tex/latex/bmstu/sty/bmstu-biblio.sty
+%{_texmfdistdir}/tex/latex/bmstu/sty/bmstu-defabbr.sty
+%{_texmfdistdir}/tex/latex/bmstu/sty/bmstu-essay.sty
+%{_texmfdistdir}/tex/latex/bmstu/sty/bmstu-figure.sty
+%{_texmfdistdir}/tex/latex/bmstu/sty/bmstu-listing.sty
+%{_texmfdistdir}/tex/latex/bmstu/sty/bmstu-title.sty
+%{_texmfdistdir}/tex/latex/bmstu/sty/bmstu-toc.sty
+
+%package -n texlive-bmstu-iu8
+Version:        %{texlive_version}.%{texlive_noarch}.1.2svn61937
+Release:        0
+License:        LPPL-1.0
+Summary:        A class for IU8 reports
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-bmstu-iu8-doc >= %{texlive_version}
+Provides:       tex(01-IU8-base.sty)
+Provides:       tex(02-IU8-construction.sty)
+Provides:       tex(03-IU8-numbering.sty)
+Provides:       tex(04-IU8-section-numbering.sty)
+Provides:       tex(05-IU8-figures.sty)
+Provides:       tex(06-IU8-tables.sty)
+Provides:       tex(07-IU8-footnotes.sty)
+Provides:       tex(08-IU8-formulas.sty)
+Provides:       tex(09-IU8-cites.sty)
+Provides:       tex(10-IU8-titlepage.sty)
+Provides:       tex(11-IU8-performers.sty)
+Provides:       tex(12-IU8-abstract.sty)
+Provides:       tex(13-IU8-contents.sty)
+Provides:       tex(14-IU8-terms-and-definitions.sty)
+Provides:       tex(15-IU8-list-of-abbreviations.sty)
+Provides:       tex(16-IU8-references.sty)
+Provides:       tex(17-IU8-appendices.sty)
+Provides:       tex(18-IU8-extra.sty)
+Provides:       tex(19-IU8-counters.sty)
+Provides:       tex(20-IU8-listing.sty)
+Provides:       tex(21-IU8-math.sty)
+Provides:       tex(22-IU8-algorithms.sty)
+Provides:       tex(BMSTU-IU8.cls)
+Requires:       tex(algorithm2e.sty)
+Requires:       tex(amsthm.sty)
+Requires:       tex(anyfontsize.sty)
+Requires:       tex(article.cls)
+Requires:       tex(babel.sty)
+Requires:       tex(bookmark.sty)
+Requires:       tex(calc.sty)
+Requires:       tex(caption.sty)
+Requires:       tex(chngcntr.sty)
+Requires:       tex(csquotes.sty)
+Requires:       tex(enumitem.sty)
+Requires:       tex(fancyhdr.sty)
+Requires:       tex(float.sty)
+Requires:       tex(fontenc.sty)
+Requires:       tex(glossaries-extra.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(hhline.sty)
+Requires:       tex(hyphsubst.sty)
+Requires:       tex(ifthen.sty)
+Requires:       tex(indentfirst.sty)
+Requires:       tex(inputenc.sty)
+Requires:       tex(lastpage.sty)
+Requires:       tex(lineno.sty)
+Requires:       tex(listings.sty)
+Requires:       tex(longtable.sty)
+Requires:       tex(multirow.sty)
+Requires:       tex(nowidow.sty)
+Requires:       tex(scrextend.sty)
+Requires:       tex(setspace.sty)
+Requires:       tex(stackengine.sty)
+Requires:       tex(tabto.sty)
+Requires:       tex(tabularx.sty)
+Requires:       tex(titlesec.sty)
+Requires:       tex(titletoc.sty)
+Requires:       tex(totcount.sty)
+Requires:       tex(ulem.sty)
+Requires:       tex(xassoccnt.sty)
+Requires:       tex(xcolor.sty)
+Requires:       tex(xltabular.sty)
+Requires:       tex(xstring.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source37:       bmstu-iu8.tar.xz
+Source38:       bmstu-iu8.doc.tar.xz
+
+%description -n texlive-bmstu-iu8
+This package consists of a class file and style files for
+writing reports at the IU8 department of IU faculty of BMSTU
+(Bauman Moscow State Technical University). The class defines
+all headings, structure elements and other things in respect of
+Russian standard GOST 7.32-2017. But there are correctives to
+be compatible with our local IU8 department requirements.
+
+%package -n texlive-bmstu-iu8-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.2svn61937
+Release:        0
+Summary:        Documentation for texlive-bmstu-iu8
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Provides:       locale(texlive-bmstu-iu8-doc:ru)
+
+%description -n texlive-bmstu-iu8-doc
+This package includes the documentation for texlive-bmstu-iu8
+
+%post -n texlive-bmstu-iu8
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-bmstu-iu8
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-bmstu-iu8
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-bmstu-iu8-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/bmstu-iu8/README.md
+%{_texmfdistdir}/doc/latex/bmstu-iu8/bmstu-example.pdf
+%{_texmfdistdir}/doc/latex/bmstu-iu8/bmstu-example.tex
+%{_texmfdistdir}/doc/latex/bmstu-iu8/bmstu.png
+
+%files -n texlive-bmstu-iu8
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/bmstu-iu8/01-IU8-base.sty
+%{_texmfdistdir}/tex/latex/bmstu-iu8/02-IU8-construction.sty
+%{_texmfdistdir}/tex/latex/bmstu-iu8/03-IU8-numbering.sty
+%{_texmfdistdir}/tex/latex/bmstu-iu8/04-IU8-section-numbering.sty
+%{_texmfdistdir}/tex/latex/bmstu-iu8/05-IU8-figures.sty
+%{_texmfdistdir}/tex/latex/bmstu-iu8/06-IU8-tables.sty
+%{_texmfdistdir}/tex/latex/bmstu-iu8/07-IU8-footnotes.sty
+%{_texmfdistdir}/tex/latex/bmstu-iu8/08-IU8-formulas.sty
+%{_texmfdistdir}/tex/latex/bmstu-iu8/09-IU8-cites.sty
+%{_texmfdistdir}/tex/latex/bmstu-iu8/10-IU8-titlepage.sty
+%{_texmfdistdir}/tex/latex/bmstu-iu8/11-IU8-performers.sty
+%{_texmfdistdir}/tex/latex/bmstu-iu8/12-IU8-abstract.sty
+%{_texmfdistdir}/tex/latex/bmstu-iu8/13-IU8-contents.sty
+%{_texmfdistdir}/tex/latex/bmstu-iu8/14-IU8-terms-and-definitions.sty
+%{_texmfdistdir}/tex/latex/bmstu-iu8/15-IU8-list-of-abbreviations.sty
+%{_texmfdistdir}/tex/latex/bmstu-iu8/16-IU8-references.sty
+%{_texmfdistdir}/tex/latex/bmstu-iu8/17-IU8-appendices.sty
+%{_texmfdistdir}/tex/latex/bmstu-iu8/18-IU8-extra.sty
+%{_texmfdistdir}/tex/latex/bmstu-iu8/19-IU8-counters.sty
+%{_texmfdistdir}/tex/latex/bmstu-iu8/20-IU8-listing.sty
+%{_texmfdistdir}/tex/latex/bmstu-iu8/21-IU8-math.sty
+%{_texmfdistdir}/tex/latex/bmstu-iu8/22-IU8-algorithms.sty
+%{_texmfdistdir}/tex/latex/bmstu-iu8/BMSTU-IU8.cls
 
 %package -n texlive-bnumexpr
-Version:        %{texlive_version}.%{texlive_noarch}.1.2dsvn49643
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn59244
 Release:        0
 License:        LPPL-1.0
 Summary:        Extends eTeX's \numexpr...\relax construct to big integers
@@ -1714,13 +2039,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bnumexpr-doc >= %{texlive_version}
+Suggests:       texlive-bnumexpr-doc >= %{texlive_version}
 Provides:       tex(bnumexpr.sty)
+Requires:       tex(xintbinhex.sty)
 Requires:       tex(xintcore.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source33:       bnumexpr.tar.xz
-Source34:       bnumexpr.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source39:       bnumexpr.tar.xz
+Source40:       bnumexpr.doc.tar.xz
 
 %description -n texlive-bnumexpr
 The package extends e-TeX \numexpr...\relax operation to allow
@@ -1729,7 +2055,7 @@ associated modulo. By default, bnumexpr loads package xintcore
 (part of the xint bundle) and uses its arithmetic macros.
 
 %package -n texlive-bnumexpr-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2dsvn49643
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn59244
 Release:        0
 Summary:        Documentation for texlive-bnumexpr
 License:        LPPL-1.0
@@ -1753,15 +2079,11 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bnumexpr
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bnumexpr-doc
 %defattr(-,root,root,755)
-%{_texmfdistdir}/doc/latex/bnumexpr/README
 %{_texmfdistdir}/doc/latex/bnumexpr/README.md
 %{_texmfdistdir}/doc/latex/bnumexpr/bnumexpr.pdf
 %{_texmfdistdir}/doc/latex/bnumexpr/bnumexpr.tex
@@ -1770,12 +2092,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bnumexpr
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bnumexpr/bnumexpr.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bnumexpr-%{texlive_version}.%{texlive_noarch}.1.2dsvn49643-%{release}-zypper
-%endif
 
 %package -n texlive-bodegraph
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn20047
+Version:        %{texlive_version}.%{texlive_noarch}.1.4svn61719
 Release:        0
 License:        LPPL-1.0
 Summary:        Draw Bode, Nyquist and Black plots with gnuplot and TikZ
@@ -1801,15 +2120,15 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bodegraph-doc >= %{texlive_version}
+Suggests:       texlive-bodegraph-doc >= %{texlive_version}
 Provides:       tex(bodegraph.sty)
 Requires:       tex(ifsym.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(tikz.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source35:       bodegraph.tar.xz
-Source36:       bodegraph.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source41:       bodegraph.tar.xz
+Source42:       bodegraph.doc.tar.xz
 
 %description -n texlive-bodegraph
 The package provides facilities to draw Bode, Nyquist and Black
@@ -1817,7 +2136,7 @@ plots using Gnuplot and Tikz. Elementary Transfer Functions and
 basic correctors are preprogrammed for use.
 
 %package -n texlive-bodegraph-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn20047
+Version:        %{texlive_version}.%{texlive_noarch}.1.4svn61719
 Release:        0
 Summary:        Documentation for texlive-bodegraph
 License:        LPPL-1.0
@@ -1841,9 +2160,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bodegraph
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -2032,9 +2348,95 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bodegraph
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bodegraph/bodegraph.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bodegraph-%{texlive_version}.%{texlive_noarch}.1.4svn20047-%{release}-zypper
-%endif
+
+%package -n texlive-bodeplot
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.7svn61661
+Release:        0
+License:        LPPL-1.0
+Summary:        Draw Bode, Nyquist and Nichols plots with gnuplot or pgfplots
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-bodeplot-doc >= %{texlive_version}
+Provides:       tex(bodeplot.sty)
+Requires:       tex(ifluatex.sty)
+Requires:       tex(ifplatform.sty)
+Requires:       tex(pdftexcmds.sty)
+Requires:       tex(pgfplots.sty)
+Requires:       tex(tikz.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source43:       bodeplot.tar.xz
+Source44:       bodeplot.doc.tar.xz
+
+%description -n texlive-bodeplot
+This is a LaTeX package to plot Bode, Nichols, and Nyquist
+diagrams. It provides added functionality over the similar
+bodegraph package: New \BodeZPK and \BodeTF commands to
+generate Bode plots of any transfer function given either
+poles, zeros, gain, and delay, or numerator and denominator
+coefficients and delay Support for unstable poles and zeros.
+Support for complex poles and zeros. Support for general stable
+and unstable second order transfer functions. Support for both
+Gnuplot (default) and pgfplots (package option pgf). Support
+for linear and asymptotic approximation of magnitude and phase
+plots of any transfer function given poles, zeros, and gain.
+
+%package -n texlive-bodeplot-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.7svn61661
+Release:        0
+Summary:        Documentation for texlive-bodeplot
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+
+%description -n texlive-bodeplot-doc
+This package includes the documentation for texlive-bodeplot
+
+%post -n texlive-bodeplot
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-bodeplot
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-bodeplot
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-bodeplot-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/bodeplot/README.md
+%{_texmfdistdir}/doc/latex/bodeplot/bodeplot.pdf
+
+%files -n texlive-bodeplot
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/bodeplot/bodeplot.sty
 
 %package -n texlive-bohr
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn54512
@@ -2063,15 +2465,15 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bohr-doc >= %{texlive_version}
+Suggests:       texlive-bohr-doc >= %{texlive_version}
 Provides:       tex(bohr.sty)
 Requires:       tex(elements.sty)
 Requires:       tex(pgfopts.sty)
 Requires:       tex(tikz.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source37:       bohr.tar.xz
-Source38:       bohr.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source45:       bohr.tar.xz
+Source46:       bohr.doc.tar.xz
 
 %description -n texlive-bohr
 The package provides means for the creation of simple Bohr
@@ -2104,9 +2506,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bohr
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -2119,9 +2518,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bohr
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bohr/bohr.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bohr-%{texlive_version}.%{texlive_noarch}.1.0svn54512-%{release}-zypper
-%endif
 
 %package -n texlive-boisik
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.5svn15878
@@ -2150,7 +2546,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-boisik-doc >= %{texlive_version}
+Suggests:       texlive-boisik-doc >= %{texlive_version}
 Provides:       tex(boisik.sty)
 Provides:       tex(bskarr10.tfm)
 Provides:       tex(bskex10.tfm)
@@ -2202,10 +2598,10 @@ Provides:       tex(ot1bsk.fd)
 Provides:       tex(ot1bskf.fd)
 Provides:       tex(ts1bsk.fd)
 Provides:       tex(ubskex.fd)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source39:       boisik.tar.xz
-Source40:       boisik.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source47:       boisik.tar.xz
+Source48:       boisik.doc.tar.xz
 
 %description -n texlive-boisik
 Boisik is a serif font set (inspired by the Baskerville
@@ -2239,9 +2635,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-boisik
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -2376,9 +2769,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/boisik/ot1bskf.fd
 %{_texmfdistdir}/tex/latex/boisik/ts1bsk.fd
 %{_texmfdistdir}/tex/latex/boisik/ubskex.fd
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-boisik-%{texlive_version}.%{texlive_noarch}.0.0.5svn15878-%{release}-zypper
-%endif
 
 %package -n texlive-boites
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn32235
@@ -2407,14 +2797,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-boites-doc >= %{texlive_version}
+Suggests:       texlive-boites-doc >= %{texlive_version}
 Provides:       tex(boites.sty)
 Provides:       tex(boites_exemples.sty)
 Requires:       tex(color.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source41:       boites.tar.xz
-Source42:       boites.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source49:       boites.tar.xz
+Source50:       boites.doc.tar.xz
 
 %description -n texlive-boites
 Defines environments that allow page breaks inside framed boxes
@@ -2446,9 +2836,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-boites
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -2466,9 +2853,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/boites/boites.sty
 %{_texmfdistdir}/tex/latex/boites/boites_exemples.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-boites-%{texlive_version}.%{texlive_noarch}.1.1svn32235-%{release}-zypper
-%endif
 
 %package -n texlive-bold-extra
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn17076
@@ -2497,12 +2881,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bold-extra-doc >= %{texlive_version}
+Suggests:       texlive-bold-extra-doc >= %{texlive_version}
 Provides:       tex(bold-extra.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source43:       bold-extra.tar.xz
-Source44:       bold-extra.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source51:       bold-extra.tar.xz
+Source52:       bold-extra.doc.tar.xz
 
 %description -n texlive-bold-extra
 Allows access to 'extra' bold fonts for Computer Modern OT1
@@ -2535,9 +2919,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bold-extra
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -2549,9 +2930,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bold-extra
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bold-extra/bold-extra.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bold-extra-%{texlive_version}.%{texlive_noarch}.0.0.1svn17076-%{release}-zypper
-%endif
 
 %package -n texlive-boldtensors
 Version:        %{texlive_version}.%{texlive_noarch}.svn15878
@@ -2580,12 +2958,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-boldtensors-doc >= %{texlive_version}
+Suggests:       texlive-boldtensors-doc >= %{texlive_version}
 Provides:       tex(boldtensors.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source45:       boldtensors.tar.xz
-Source46:       boldtensors.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source53:       boldtensors.tar.xz
+Source54:       boldtensors.doc.tar.xz
 
 %description -n texlive-boldtensors
 This package provides bold latin and greek characters within
@@ -2616,9 +2994,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-boldtensors
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -2630,9 +3005,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-boldtensors
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/boldtensors/boldtensors.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-boldtensors-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
-%endif
 
 %package -n texlive-bondgraph
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn21670
@@ -2661,14 +3033,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bondgraph-doc >= %{texlive_version}
+Suggests:       texlive-bondgraph-doc >= %{texlive_version}
 Provides:       tex(bondgraph.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(tikz.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source47:       bondgraph.tar.xz
-Source48:       bondgraph.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source55:       bondgraph.tar.xz
+Source56:       bondgraph.doc.tar.xz
 
 %description -n texlive-bondgraph
 The package draws bond graphs using PGF and TikZ.
@@ -2698,9 +3070,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bondgraph
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -2715,9 +3084,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bondgraph
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bondgraph/bondgraph.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bondgraph-%{texlive_version}.%{texlive_noarch}.1.0svn21670-%{release}-zypper
-%endif
 
 %package -n texlive-bondgraphs
 Version:        %{texlive_version}.%{texlive_noarch}.1.0.1svn36605
@@ -2746,16 +3112,16 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bondgraphs-doc >= %{texlive_version}
+Suggests:       texlive-bondgraphs-doc >= %{texlive_version}
 Provides:       tex(bondgraphs.sty)
 Requires:       tex(amsfonts.sty)
 Requires:       tex(bm.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(tikz.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source49:       bondgraphs.tar.xz
-Source50:       bondgraphs.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source57:       bondgraphs.tar.xz
+Source58:       bondgraphs.doc.tar.xz
 
 %description -n texlive-bondgraphs
 The package is used to draw bond graphs in LaTeX. It uses a
@@ -2791,9 +3157,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bondgraphs
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -2806,9 +3169,104 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bondgraphs
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bondgraphs/bondgraphs.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bondgraphs-%{texlive_version}.%{texlive_noarch}.1.0.1svn36605-%{release}-zypper
-%endif
+
+%package -n texlive-book-of-common-prayer
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.0svn62240
+Release:        0
+License:        LPPL-1.0
+Summary:        Typeset in the style of "Book of Common Prayer"
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-book-of-common-prayer-doc >= %{texlive_version}
+Provides:       tex(book-of-common-prayer.sty)
+Requires:       tex(alltt.sty)
+Requires:       tex(bilingualpages.sty)
+Requires:       tex(changepage.sty)
+Requires:       tex(enumitem.sty)
+Requires:       tex(fontspec.sty)
+Requires:       tex(framed.sty)
+Requires:       tex(geometry.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(makecell.sty)
+Requires:       tex(paracol.sty)
+Requires:       tex(pgf.sty)
+Requires:       tex(pgfopts.sty)
+Requires:       tex(pgfornament.sty)
+Requires:       tex(titlesec.sty)
+Requires:       tex(titling.sty)
+Requires:       tex(tocloft.sty)
+Requires:       tex(xcolor.sty)
+Requires:       tex(xtab.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source59:       book-of-common-prayer.tar.xz
+Source60:       book-of-common-prayer.doc.tar.xz
+
+%description -n texlive-book-of-common-prayer
+This a package for the typesetting of liturgical documents in
+the style of the 1979 "Book of Common Prayer". It provides
+macros for common liturgical situations (e.g. versicle and
+response, longer prayers, etc.). This package is designed to
+work with the Sabon font, but it is not necessary to run the
+macros.
+
+%package -n texlive-book-of-common-prayer-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.0svn62240
+Release:        0
+Summary:        Documentation for texlive-book-of-common-prayer
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+
+%description -n texlive-book-of-common-prayer-doc
+This package includes the documentation for texlive-book-of-common-prayer
+
+%post -n texlive-book-of-common-prayer
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-book-of-common-prayer
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-book-of-common-prayer
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-book-of-common-prayer-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/book-of-common-prayer/README.md
+%{_texmfdistdir}/doc/latex/book-of-common-prayer/book-of-common-prayer.pdf
+%{_texmfdistdir}/doc/latex/book-of-common-prayer/book-of-common-prayer.tex
+
+%files -n texlive-book-of-common-prayer
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/book-of-common-prayer/book-of-common-prayer.sty
 
 %package -n texlive-bookcover
 Version:        %{texlive_version}.%{texlive_noarch}.3.3svn57326
@@ -2837,7 +3295,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bookcover-doc >= %{texlive_version}
+Suggests:       texlive-bookcover-doc >= %{texlive_version}
 Provides:       tex(bookcover.cls)
 Requires:       tex(article.cls)
 Requires:       tex(calc.sty)
@@ -2849,10 +3307,10 @@ Requires:       tex(kvoptions.sty)
 Requires:       tex(picture.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source51:       bookcover.tar.xz
-Source52:       bookcover.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source61:       bookcover.tar.xz
+Source62:       bookcover.doc.tar.xz
 
 %description -n texlive-bookcover
 This class helps typesetting book covers and dust jackets.
@@ -2882,9 +3340,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bookcover
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -2918,9 +3373,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bookcover
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bookcover/bookcover.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bookcover-%{texlive_version}.%{texlive_noarch}.3.3svn57326-%{release}-zypper
-%endif
 
 %package -n texlive-bookdb
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn37536
@@ -2949,11 +3401,11 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bookdb-doc >= %{texlive_version}
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source53:       bookdb.tar.xz
-Source54:       bookdb.doc.tar.xz
+Suggests:       texlive-bookdb-doc >= %{texlive_version}
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source63:       bookdb.tar.xz
+Source64:       bookdb.doc.tar.xz
 
 %description -n texlive-bookdb
 This package provides an extended book entry for use in
@@ -2986,9 +3438,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bookdb
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -3001,9 +3450,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bookdb
 %defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bst/bookdb/bookdb.bst
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bookdb-%{texlive_version}.%{texlive_noarch}.0.0.2svn37536-%{release}-zypper
-%endif
 
 %package -n texlive-bookest
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn15878
@@ -3032,7 +3478,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bookest-doc >= %{texlive_version}
+Suggests:       texlive-bookest-doc >= %{texlive_version}
 Provides:       tex(bookest.cls)
 Requires:       tex(book.cls)
 Requires:       tex(color.sty)
@@ -3042,10 +3488,10 @@ Requires:       tex(geometry.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(setspace.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source55:       bookest.tar.xz
-Source56:       bookest.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source65:       bookest.tar.xz
+Source66:       bookest.doc.tar.xz
 
 %description -n texlive-bookest
 The class extends the standard book class, in the areas of
@@ -3078,9 +3524,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bookest
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -3095,9 +3538,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bookest
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bookest/bookest.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bookest-%{texlive_version}.%{texlive_noarch}.1.1svn15878-%{release}-zypper
-%endif
 
 %package -n texlive-bookhands
 Version:        %{texlive_version}.%{texlive_noarch}.svn46480
@@ -3138,7 +3578,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-bookhands-fonts >= %{texlive_version}
-Recommends:     texlive-bookhands-doc >= %{texlive_version}
+Suggests:       texlive-bookhands-doc >= %{texlive_version}
 Provides:       tex(allcmin.sty)
 Provides:       tex(allegoth.sty)
 Provides:       tex(allhmin.sty)
@@ -3260,10 +3700,10 @@ Provides:       tex(uncl7.tfm)
 Provides:       tex(unclb10.tfm)
 Provides:       tex(unclb17.tfm)
 Provides:       tex(unclb7.tfm)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source57:       bookhands.tar.xz
-Source58:       bookhands.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source67:       bookhands.tar.xz
+Source68:       bookhands.doc.tar.xz
 
 %description -n texlive-bookhands
 This is a set of book-hand (Metafont) fonts and packages
@@ -3323,9 +3763,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bookhands
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -3671,9 +4108,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-bookhands/fonts.scale
 %{_datadir}/fonts/texlive-bookhands/sqrc10.pfb
 %{_datadir}/fonts/texlive-bookhands/sqrcb10.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bookhands-fonts-%{texlive_version}.%{texlive_noarch}.svn46480-%{release}-zypper
-%endif
 
 %package -n texlive-booklet
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.7bsvn15878
@@ -3702,13 +4136,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-booklet-doc >= %{texlive_version}
+Suggests:       texlive-booklet-doc >= %{texlive_version}
 Provides:       tex(bkltprnt.sty)
 Provides:       tex(booklet.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source59:       booklet.tar.xz
-Source60:       booklet.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source69:       booklet.tar.xz
+Source70:       booklet.doc.tar.xz
 
 %description -n texlive-booklet
 Pages of a document processed with the booklet package will be
@@ -3743,9 +4177,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-booklet
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -3758,15 +4189,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/booklet/bkltprnt.sty
 %{_texmfdistdir}/tex/latex/booklet/booklet.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-booklet-%{texlive_version}.%{texlive_noarch}.0.0.7bsvn15878-%{release}-zypper
-%endif
 
 %package -n texlive-bookman
-Version:        %{texlive_version}.%{texlive_noarch}.svn31835
+Version:        %{texlive_version}.%{texlive_noarch}.svn61719
 Release:        0
 License:        GPL-2.0-or-later
-Summary:        URW "Base 35" font pack for LaTeX
+Summary:        URW 'Base 35' font pack for LaTeX
 Group:          Productivity/Publishing/TeX/Base
 URL:            http://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -3974,9 +4402,9 @@ Provides:       tex(ubkro8c.vf)
 Provides:       tex(ubkro8r.tfm)
 Provides:       tex(ubkro8t.tfm)
 Provides:       tex(ubkro8t.vf)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source61:       bookman.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source71:       bookman.tar.xz
 
 %description -n texlive-bookman
 A set of fonts for use as "drop-in" replacements for Adobe's
@@ -3991,7 +4419,7 @@ Chancery); URW Gothic L Book (substituting for Adobe's Avant
 Garde); and URW Palladio L (substituting for Adobe's Palatino).
 
 %package -n texlive-bookman-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn31835
+Version:        %{texlive_version}.%{texlive_noarch}.svn61719
 Release:        0
 Summary:        Severed fonts for texlive-bookman
 License:        GPL-2.0-or-later
@@ -4023,9 +4451,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bookman
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -4235,9 +4660,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-bookman/ubkdi8a.pfb
 %{_datadir}/fonts/texlive-bookman/ubkl8a.pfb
 %{_datadir}/fonts/texlive-bookman/ubkli8a.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bookman-fonts-%{texlive_version}.%{texlive_noarch}.svn31835-%{release}-zypper
-%endif
 
 %package -n texlive-bookmark
 Version:        %{texlive_version}.%{texlive_noarch}.1.29svn56885
@@ -4266,7 +4688,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bookmark-doc >= %{texlive_version}
+Suggests:       texlive-bookmark-doc >= %{texlive_version}
 Provides:       tex(bkm-dvipdfm-2019-12-03.def)
 Provides:       tex(bkm-dvipdfm.def)
 Provides:       tex(bkm-dvips-2019-12-03.def)
@@ -4280,10 +4702,10 @@ Requires:       tex(atenddvi.sty)
 Requires:       tex(atveryend.sty)
 Requires:       tex(auxhook.sty)
 Requires:       tex(hyperref.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source62:       bookmark.tar.xz
-Source63:       bookmark.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source72:       bookmark.tar.xz
+Source73:       bookmark.doc.tar.xz
 
 %description -n texlive-bookmark
 This package implements a new bookmark (outline) organization
@@ -4317,9 +4739,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bookmark
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -4340,9 +4759,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bookmark/bkm-vtex-2019-12-03.def
 %{_texmfdistdir}/tex/latex/bookmark/bkm-vtex.def
 %{_texmfdistdir}/tex/latex/bookmark/bookmark.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bookmark-%{texlive_version}.%{texlive_noarch}.1.29svn56885-%{release}-zypper
-%endif
 
 %package -n texlive-bookshelf
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.5svn55475
@@ -4371,7 +4787,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bookshelf-doc >= %{texlive_version}
+Suggests:       texlive-bookshelf-doc >= %{texlive_version}
 Provides:       tex(bookshelf.cls)
 Requires:       tex(calc.sty)
 Requires:       tex(eso-pic.sty)
@@ -4382,10 +4798,10 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(random.tex)
 Requires:       tex(report.cls)
 Requires:       tex(xcolor.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source64:       bookshelf.tar.xz
-Source65:       bookshelf.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source74:       bookshelf.tar.xz
+Source75:       bookshelf.doc.tar.xz
 
 %description -n texlive-bookshelf
 This package turns a BibTeX bibliography file into a
@@ -4417,9 +4833,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bookshelf
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -4436,9 +4849,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bookshelf
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bookshelf/bookshelf.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bookshelf-%{texlive_version}.%{texlive_noarch}.0.0.5svn55475-%{release}-zypper
-%endif
 
 %package -n texlive-booktabs
 Version:        %{texlive_version}.%{texlive_noarch}.1.61803398svn53402
@@ -4467,12 +4877,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-booktabs-doc >= %{texlive_version}
+Suggests:       texlive-booktabs-doc >= %{texlive_version}
 Provides:       tex(booktabs.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source66:       booktabs.tar.xz
-Source67:       booktabs.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source76:       booktabs.tar.xz
+Source77:       booktabs.doc.tar.xz
 
 %description -n texlive-booktabs
 The package enhances the quality of tables in LaTeX, providing
@@ -4507,9 +4917,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-booktabs
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -4521,9 +4928,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-booktabs
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/booktabs/booktabs.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-booktabs-%{texlive_version}.%{texlive_noarch}.1.61803398svn53402-%{release}-zypper
-%endif
 
 %package -n texlive-booktabs-de
 Version:        %{texlive_version}.%{texlive_noarch}.1.61803svn21907
@@ -4552,9 +4956,9 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source68:       booktabs-de.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source78:       booktabs-de.doc.tar.xz
 
 %description -n texlive-booktabs-de
 This is a "translation" of the booktabs.
@@ -4573,9 +4977,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-booktabs-de
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -4585,9 +4986,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/booktabs-de/booktabs-de.dtx
 %{_texmfdistdir}/doc/latex/booktabs-de/booktabs-de.ins
 %{_texmfdistdir}/doc/latex/booktabs-de/booktabs-de.pdf
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-booktabs-de-%{texlive_version}.%{texlive_noarch}.1.61803svn21907-%{release}-zypper
-%endif
 
 %package -n texlive-booktabs-fr
 Version:        %{texlive_version}.%{texlive_noarch}.1.00svn21948
@@ -4616,9 +5014,9 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source69:       booktabs-fr.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source79:       booktabs-fr.doc.tar.xz
 
 %description -n texlive-booktabs-fr
 The translation comes from a collection provided by Benjamin
@@ -4638,9 +5036,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-booktabs-fr
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -4650,9 +5045,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/booktabs-fr/f-booktabs.dtx
 %{_texmfdistdir}/doc/latex/booktabs-fr/f-booktabs.pdf
 %{_texmfdistdir}/doc/latex/booktabs-fr/ltxdoc.cfg
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-booktabs-fr-%{texlive_version}.%{texlive_noarch}.1.00svn21948-%{release}-zypper
-%endif
 
 %package -n texlive-boolexpr
 Version:        %{texlive_version}.%{texlive_noarch}.3.14svn17830
@@ -4681,12 +5073,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-boolexpr-doc >= %{texlive_version}
+Suggests:       texlive-boolexpr-doc >= %{texlive_version}
 Provides:       tex(boolexpr.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source70:       boolexpr.tar.xz
-Source71:       boolexpr.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source80:       boolexpr.tar.xz
+Source81:       boolexpr.doc.tar.xz
 
 %description -n texlive-boolexpr
 The \boolexpr macro evaluates boolean expressions in a purely
@@ -4726,9 +5118,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-boolexpr
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -4740,9 +5129,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-boolexpr
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/boolexpr/boolexpr.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-boolexpr-%{texlive_version}.%{texlive_noarch}.3.14svn17830-%{release}-zypper
-%endif
 
 %package -n texlive-boondox
 Version:        %{texlive_version}.%{texlive_noarch}.1.02dsvn54512
@@ -4783,7 +5169,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-boondox-fonts >= %{texlive_version}
-Recommends:     texlive-boondox-doc >= %{texlive_version}
+Suggests:       texlive-boondox-doc >= %{texlive_version}
 Provides:       tex(BOONDOX-b-cal.tfm)
 Provides:       tex(BOONDOX-b-cal.vf)
 Provides:       tex(BOONDOX-b-calo.tfm)
@@ -4829,10 +5215,10 @@ Provides:       tex(zxxrw7z.tfm)
 Provides:       tex(zxxrw8a.tfm)
 Requires:       tex(cmr10.tfm)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source72:       boondox.tar.xz
-Source73:       boondox.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source82:       boondox.tar.xz
+Source83:       boondox.doc.tar.xz
 
 %description -n texlive-boondox
 The package contains a number of PostScript fonts derived from
@@ -4885,9 +5271,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-boondox
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -4968,9 +5351,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-boondox/zxxrf8a.pfb
 %{_datadir}/fonts/texlive-boondox/zxxrl8a.pfb
 %{_datadir}/fonts/texlive-boondox/zxxrw8a.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-boondox-fonts-%{texlive_version}.%{texlive_noarch}.1.02dsvn54512-%{release}-zypper
-%endif
 
 %package -n texlive-bophook
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.02svn17062
@@ -4999,12 +5379,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bophook-doc >= %{texlive_version}
+Suggests:       texlive-bophook-doc >= %{texlive_version}
 Provides:       tex(bophook.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source74:       bophook.tar.xz
-Source75:       bophook.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source84:       bophook.tar.xz
+Source85:       bophook.doc.tar.xz
 
 %description -n texlive-bophook
 Using the \AtBeginPage hook, you can add material in the
@@ -5037,9 +5417,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bophook
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -5050,9 +5427,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bophook
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bophook/bophook.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bophook-%{texlive_version}.%{texlive_noarch}.0.0.02svn17062-%{release}-zypper
-%endif
 
 %package -n texlive-borceux
 Version:        %{texlive_version}.%{texlive_noarch}.svn21047
@@ -5081,11 +5455,11 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-borceux-doc >= %{texlive_version}
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source76:       borceux.tar.xz
-Source77:       borceux.doc.tar.xz
+Suggests:       texlive-borceux-doc >= %{texlive_version}
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source86:       borceux.tar.xz
+Source87:       borceux.doc.tar.xz
 
 %description -n texlive-borceux
 The macros support the construction of diagrams, such as those
@@ -5122,9 +5496,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-borceux
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -5146,9 +5517,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/borceux/MicroDiagram
 %{_texmfdistdir}/tex/generic/borceux/MiniDiagram
 %{_texmfdistdir}/tex/generic/borceux/MultipleArrows
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-borceux-%{texlive_version}.%{texlive_noarch}.svn21047-%{release}-zypper
-%endif
 
 %package -n texlive-bosisio
 Version:        %{texlive_version}.%{texlive_noarch}.svn16989
@@ -5177,7 +5545,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bosisio-doc >= %{texlive_version}
+Suggests:       texlive-bosisio-doc >= %{texlive_version}
 Provides:       tex(accenti.sty)
 Provides:       tex(dblfont.sty)
 Provides:       tex(envmath.sty)
@@ -5190,10 +5558,10 @@ Requires:       tex(float.sty)
 Requires:       tex(graphics.sty)
 Requires:       tex(subfigure.sty)
 Requires:       tex(xspace.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source78:       bosisio.tar.xz
-Source79:       bosisio.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source88:       bosisio.tar.xz
+Source89:       bosisio.doc.tar.xz
 
 %description -n texlive-bosisio
 A collection of packages containing: accenti dblfont; envmath;
@@ -5224,9 +5592,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bosisio
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -5262,9 +5627,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bosisio/mathcmd.sty
 %{_texmfdistdir}/tex/latex/bosisio/quotes.sty
 %{_texmfdistdir}/tex/latex/bosisio/sobolev.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bosisio-%{texlive_version}.%{texlive_noarch}.svn16989-%{release}-zypper
-%endif
 
 %package -n texlive-boxedminipage
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn54827
@@ -5293,13 +5655,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-boxedminipage-doc >= %{texlive_version}
+Suggests:       texlive-boxedminipage-doc >= %{texlive_version}
 Provides:       tex(boxedminipage.sty)
 Provides:       tex(boxedminipage2e.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source80:       boxedminipage.tar.xz
-Source81:       boxedminipage.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source90:       boxedminipage.tar.xz
+Source91:       boxedminipage.doc.tar.xz
 
 %description -n texlive-boxedminipage
 The package essentially just wraps a minipage within an \fbox.
@@ -5337,9 +5699,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-boxedminipage
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -5352,9 +5711,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/boxedminipage/boxedminipage.sty
 %{_texmfdistdir}/tex/latex/boxedminipage/boxedminipage2e.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-boxedminipage-%{texlive_version}.%{texlive_noarch}.1.1svn54827-%{release}-zypper
-%endif
 
 %package -n texlive-boxhandler
 Version:        %{texlive_version}.%{texlive_noarch}.1.30svn28031
@@ -5383,14 +5739,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-boxhandler-doc >= %{texlive_version}
+Suggests:       texlive-boxhandler-doc >= %{texlive_version}
 Provides:       tex(boxhandler.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(pbox.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source82:       boxhandler.tar.xz
-Source83:       boxhandler.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source92:       boxhandler.tar.xz
+Source93:       boxhandler.doc.tar.xz
 
 %description -n texlive-boxhandler
 The package allows the user to optimise presentation of LaTeX
@@ -5434,9 +5790,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-boxhandler
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -5448,9 +5801,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-boxhandler
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/boxhandler/boxhandler.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-boxhandler-%{texlive_version}.%{texlive_noarch}.1.30svn28031-%{release}-zypper
-%endif
 
 %package -n texlive-bpchem
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn45120
@@ -5479,14 +5829,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bpchem-doc >= %{texlive_version}
+Suggests:       texlive-bpchem-doc >= %{texlive_version}
 Provides:       tex(bpchem.sty)
 Requires:       tex(lgrenc.def)
 Requires:       tex(xspace.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source84:       bpchem.tar.xz
-Source85:       bpchem.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source94:       bpchem.tar.xz
+Source95:       bpchem.doc.tar.xz
 
 %description -n texlive-bpchem
 The package provides support for typesetting simple chemical
@@ -5519,9 +5869,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bpchem
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -5533,9 +5880,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bpchem
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bpchem/bpchem.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bpchem-%{texlive_version}.%{texlive_noarch}.1.1svn45120-%{release}-zypper
-%endif
 
 %package -n texlive-bpolynomial
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.5svn15878
@@ -5564,11 +5908,11 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bpolynomial-doc >= %{texlive_version}
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source86:       bpolynomial.tar.xz
-Source87:       bpolynomial.doc.tar.xz
+Suggests:       texlive-bpolynomial-doc >= %{texlive_version}
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source96:       bpolynomial.tar.xz
+Source97:       bpolynomial.doc.tar.xz
 
 %description -n texlive-bpolynomial
 This MetaPost package helps plotting polynomial and root
@@ -5603,9 +5947,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bpolynomial
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -5621,9 +5962,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bpolynomial
 %defattr(-,root,root,755)
 %{_texmfdistdir}/metapost/bpolynomial/bpolynomial.mp
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bpolynomial-%{texlive_version}.%{texlive_noarch}.0.0.5svn15878-%{release}-zypper
-%endif
 
 %package -n texlive-br-lex
 Version:        %{texlive_version}.%{texlive_noarch}.svn44939
@@ -5652,7 +5990,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-br-lex-doc >= %{texlive_version}
+Suggests:       texlive-br-lex-doc >= %{texlive_version}
 Provides:       tex(br-lex.cls)
 Requires:       tex(babel.sty)
 Requires:       tex(fontspec.sty)
@@ -5661,10 +5999,10 @@ Requires:       tex(inputenc.sty)
 Requires:       tex(polyglossia.sty)
 Requires:       tex(textcase.sty)
 Requires:       tex(ulem.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source88:       br-lex.tar.xz
-Source89:       br-lex.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source98:       br-lex.tar.xz
+Source99:       br-lex.doc.tar.xz
 
 %description -n texlive-br-lex
 This class implements rules to typeset Brazilian legal texts.
@@ -5697,9 +6035,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-br-lex
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -5713,9 +6048,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-br-lex
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/br-lex/br-lex.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-br-lex-%{texlive_version}.%{texlive_noarch}.svn44939-%{release}-zypper
-%endif
 
 %package -n texlive-bracketkey
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn17129
@@ -5744,16 +6076,16 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bracketkey-doc >= %{texlive_version}
+Suggests:       texlive-bracketkey-doc >= %{texlive_version}
 Provides:       tex(bracketkey.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(coolstr.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(xifthen.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source90:       bracketkey.tar.xz
-Source91:       bracketkey.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source100:      bracketkey.tar.xz
+Source101:      bracketkey.doc.tar.xz
 
 %description -n texlive-bracketkey
 The package provides an environment bracketkey for use when
@@ -5784,9 +6116,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bracketkey
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -5801,9 +6130,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bracketkey
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bracketkey/bracketkey.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bracketkey-%{texlive_version}.%{texlive_noarch}.1.0svn17129-%{release}-zypper
-%endif
 
 %package -n texlive-braids
 Version:        %{texlive_version}.%{texlive_noarch}.2.0svn54080
@@ -5832,13 +6158,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-braids-doc >= %{texlive_version}
+Suggests:       texlive-braids-doc >= %{texlive_version}
 Provides:       tex(braids.sty)
 Provides:       tex(tikzlibrarybraids.code.tex)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source92:       braids.tar.xz
-Source93:       braids.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source102:      braids.tar.xz
+Source103:      braids.doc.tar.xz
 
 %description -n texlive-braids
 The package enables drawing of braid diagrams with PGF/TikZ
@@ -5871,9 +6197,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-braids
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -5888,9 +6211,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/braids/braids.sty
 %{_texmfdistdir}/tex/latex/braids/tikzlibrarybraids.code.tex
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-braids-%{texlive_version}.%{texlive_noarch}.2.0svn54080-%{release}-zypper
-%endif
 
 %package -n texlive-braille
 Version:        %{texlive_version}.%{texlive_noarch}.svn20655
@@ -5919,12 +6239,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-braille-doc >= %{texlive_version}
+Suggests:       texlive-braille-doc >= %{texlive_version}
 Provides:       tex(braille.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source94:       braille.tar.xz
-Source95:       braille.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source104:      braille.tar.xz
+Source105:      braille.doc.tar.xz
 
 %description -n texlive-braille
 This package allows the user to produce Braille documents on
@@ -5959,9 +6279,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-braille
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -5979,9 +6296,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-braille
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/braille/braille.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-braille-%{texlive_version}.%{texlive_noarch}.svn20655-%{release}-zypper
-%endif
 
 %package -n texlive-braket
 Version:        %{texlive_version}.%{texlive_noarch}.svn17127
@@ -6010,12 +6324,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-braket-doc >= %{texlive_version}
+Suggests:       texlive-braket-doc >= %{texlive_version}
 Provides:       tex(braket.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source96:       braket.tar.xz
-Source97:       braket.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source106:      braket.tar.xz
+Source107:      braket.doc.tar.xz
 
 %description -n texlive-braket
 Provides macros to typeset bra-ket notation, as well as set
@@ -6050,9 +6364,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-braket
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -6064,12 +6375,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-braket
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/braket/braket.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-braket-%{texlive_version}.%{texlive_noarch}.svn17127-%{release}-zypper
-%endif
 
 %package -n texlive-brandeis-dissertation
-Version:        %{texlive_version}.%{texlive_noarch}.3.11svn54758
+Version:        %{texlive_version}.%{texlive_noarch}.3.13svn61215
 Release:        0
 License:        LPPL-1.0
 Summary:        Class for Brandeis University dissertations
@@ -6095,20 +6403,20 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-brandeis-dissertation-doc >= %{texlive_version}
+Suggests:       texlive-brandeis-dissertation-doc >= %{texlive_version}
 Provides:       tex(brandeis-dissertation.cls)
-Requires:       tex(article.cls)
 Requires:       tex(babel.sty)
+Requires:       tex(book.cls)
 Requires:       tex(csquotes.sty)
 Requires:       tex(geometry.sty)
 Requires:       tex(inputenc.sty)
 Requires:       tex(setspace.sty)
 Requires:       tex(titlesec.sty)
 Requires:       tex(tocloft.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source98:       brandeis-dissertation.tar.xz
-Source99:       brandeis-dissertation.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source108:      brandeis-dissertation.tar.xz
+Source109:      brandeis-dissertation.doc.tar.xz
 
 %description -n texlive-brandeis-dissertation
 The class will enable the user to typeset a dissertation which
@@ -6116,7 +6424,7 @@ adheres to the formatting guidelines of Brandeis University
 Graduate School of Arts and Sciences (GSAS).
 
 %package -n texlive-brandeis-dissertation-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.11svn54758
+Version:        %{texlive_version}.%{texlive_noarch}.3.13svn61215
 Release:        0
 Summary:        Documentation for texlive-brandeis-dissertation
 License:        LPPL-1.0
@@ -6140,9 +6448,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-brandeis-dissertation
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -6154,9 +6459,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-brandeis-dissertation
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/brandeis-dissertation/brandeis-dissertation.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-brandeis-dissertation-%{texlive_version}.%{texlive_noarch}.3.11svn54758-%{release}-zypper
-%endif
 
 %package -n texlive-brandeis-problemset
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.5.5svn50991
@@ -6185,7 +6487,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-brandeis-problemset-doc >= %{texlive_version}
+Suggests:       texlive-brandeis-problemset-doc >= %{texlive_version}
 Provides:       tex(brandeis-problemset.cls)
 Provides:       tex(brandeis-problemset.sty)
 Requires:       tex(amsmath.sty)
@@ -6212,10 +6514,10 @@ Requires:       tex(titletoc.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source100:      brandeis-problemset.tar.xz
-Source101:      brandeis-problemset.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source110:      brandeis-problemset.tar.xz
+Source111:      brandeis-problemset.doc.tar.xz
 
 %description -n texlive-brandeis-problemset
 Brandeis University's computer science ("COSI") courses often
@@ -6250,9 +6552,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-brandeis-problemset
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -6269,12 +6568,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/brandeis-problemset/brandeis-problemset.cls
 %{_texmfdistdir}/tex/latex/brandeis-problemset/brandeis-problemset.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-brandeis-problemset-%{texlive_version}.%{texlive_noarch}.0.0.5.5svn50991-%{release}-zypper
-%endif
 
 %package -n texlive-brandeis-thesis
-Version:        %{texlive_version}.%{texlive_noarch}.3.1svn54758
+Version:        %{texlive_version}.%{texlive_noarch}.3.2svn59832
 Release:        0
 License:        LPPL-1.0
 Summary:        A class for Brandeis University M.A. theses
@@ -6300,19 +6596,23 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-brandeis-thesis-doc >= %{texlive_version}
+Suggests:       texlive-brandeis-thesis-doc >= %{texlive_version}
 Provides:       tex(brandeis-thesis.cls)
-Requires:       tex(article.cls)
 Requires:       tex(babel.sty)
+Requires:       tex(book.cls)
 Requires:       tex(csquotes.sty)
 Requires:       tex(geometry.sty)
 Requires:       tex(inputenc.sty)
+Requires:       tex(mathptmx.sty)
+Requires:       tex(sectsty.sty)
 Requires:       tex(setspace.sty)
+Requires:       tex(silence.sty)
 Requires:       tex(titlesec.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source102:      brandeis-thesis.tar.xz
-Source103:      brandeis-thesis.doc.tar.xz
+Requires:       tex(tocloft.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source112:      brandeis-thesis.tar.xz
+Source113:      brandeis-thesis.doc.tar.xz
 
 %description -n texlive-brandeis-thesis
 brandeis-thesis.cls provides the structures and formatting
@@ -6320,7 +6620,7 @@ information for an M.A. thesis for the Brandeis University
 Graduate School of Arts and Sciences.
 
 %package -n texlive-brandeis-thesis-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.1svn54758
+Version:        %{texlive_version}.%{texlive_noarch}.3.2svn59832
 Release:        0
 Summary:        Documentation for texlive-brandeis-thesis
 License:        LPPL-1.0
@@ -6344,9 +6644,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-brandeis-thesis
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -6358,9 +6655,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-brandeis-thesis
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/brandeis-thesis/brandeis-thesis.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-brandeis-thesis-%{texlive_version}.%{texlive_noarch}.3.1svn54758-%{release}-zypper
-%endif
 
 %package -n texlive-breakcites
 Version:        %{texlive_version}.%{texlive_noarch}.svn21014
@@ -6389,12 +6683,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-breakcites-doc >= %{texlive_version}
+Suggests:       texlive-breakcites-doc >= %{texlive_version}
 Provides:       tex(breakcites.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source104:      breakcites.tar.xz
-Source105:      breakcites.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source114:      breakcites.tar.xz
+Source115:      breakcites.doc.tar.xz
 
 %description -n texlive-breakcites
 Makes a very minor change to the operation of the \cite
@@ -6428,9 +6722,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-breakcites
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -6443,9 +6734,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-breakcites
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/breakcites/breakcites.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-breakcites-%{texlive_version}.%{texlive_noarch}.svn21014-%{release}-zypper
-%endif
 
 %package -n texlive-breakurl
 Version:        %{texlive_version}.%{texlive_noarch}.1.40svn29901
@@ -6474,14 +6762,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-breakurl-doc >= %{texlive_version}
+Suggests:       texlive-breakurl-doc >= %{texlive_version}
 Provides:       tex(breakurl.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source106:      breakurl.tar.xz
-Source107:      breakurl.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source116:      breakurl.tar.xz
+Source117:      breakurl.doc.tar.xz
 
 %description -n texlive-breakurl
 This package provides a command much like hyperref's \url that
@@ -6516,9 +6804,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-breakurl
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -6530,9 +6815,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-breakurl
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/breakurl/breakurl.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-breakurl-%{texlive_version}.%{texlive_noarch}.1.40svn29901-%{release}-zypper
-%endif
 
 %package -n texlive-bredzenie
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn44371
@@ -6561,12 +6843,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bredzenie-doc >= %{texlive_version}
+Suggests:       texlive-bredzenie-doc >= %{texlive_version}
 Provides:       tex(bredzenie.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source108:      bredzenie.tar.xz
-Source109:      bredzenie.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source118:      bredzenie.tar.xz
+Source119:      bredzenie.doc.tar.xz
 
 %description -n texlive-bredzenie
 This is a polish version of the classic pseudo-Latin "lorem
@@ -6599,9 +6881,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bredzenie
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -6614,12 +6893,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bredzenie
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bredzenie/bredzenie.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bredzenie-%{texlive_version}.%{texlive_noarch}.1.0svn44371-%{release}-zypper
-%endif
 
 %package -n texlive-breqn
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.98ksvn56422
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.98lsvn60881
 Release:        0
 License:        LPPL-1.0
 Summary:        Automatic line breaking of displayed equations
@@ -6645,7 +6921,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-breqn-doc >= %{texlive_version}
+Suggests:       texlive-breqn-doc >= %{texlive_version}
 Provides:       tex(breqn.sty)
 Provides:       tex(flexisym.sty)
 Provides:       tex(mathstyle.sty)
@@ -6654,10 +6930,10 @@ Requires:       tex(calc.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(keyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source110:      breqn.tar.xz
-Source111:      breqn.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source120:      breqn.tar.xz
+Source121:      breqn.doc.tar.xz
 
 %description -n texlive-breqn
 The package provides solutions to a number of common
@@ -6676,7 +6952,7 @@ the flexisym and mathstyle packages, which are both designated
 as support for breqn.
 
 %package -n texlive-breqn-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.98ksvn56422
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.98lsvn60881
 Release:        0
 Summary:        Documentation for texlive-breqn
 License:        LPPL-1.0
@@ -6700,9 +6976,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-breqn
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -6723,9 +6996,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/breqn/mathptmx.sym
 %{_texmfdistdir}/tex/latex/breqn/mathstyle.sty
 %{_texmfdistdir}/tex/latex/breqn/msabm.sym
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-breqn-%{texlive_version}.%{texlive_noarch}.0.0.98ksvn56422-%{release}-zypper
-%endif
 
 %package -n texlive-bropd
 Version:        %{texlive_version}.%{texlive_noarch}.1.2svn35383
@@ -6754,12 +7024,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bropd-doc >= %{texlive_version}
+Suggests:       texlive-bropd-doc >= %{texlive_version}
 Provides:       tex(bropd.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source112:      bropd.tar.xz
-Source113:      bropd.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source122:      bropd.tar.xz
+Source123:      bropd.doc.tar.xz
 
 %description -n texlive-bropd
 The package simplifies the process of writing differential
@@ -6792,9 +7062,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bropd
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -6806,9 +7073,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bropd
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bropd/bropd.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bropd-%{texlive_version}.%{texlive_noarch}.1.2svn35383-%{release}-zypper
-%endif
 
 %package -n texlive-brushscr
 Version:        %{texlive_version}.%{texlive_noarch}.svn28363
@@ -6849,7 +7113,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-brushscr-fonts >= %{texlive_version}
-Recommends:     texlive-brushscr-doc >= %{texlive_version}
+Suggests:       texlive-brushscr-doc >= %{texlive_version}
 Provides:       tex(pbsi.map)
 Provides:       tex(pbsi.sty)
 Provides:       tex(pbsi.tfm)
@@ -6857,10 +7121,10 @@ Provides:       tex(pbsi8r.tfm)
 Provides:       tex(pbsi8t.tfm)
 Provides:       tex(pbsi8t.vf)
 Provides:       tex(t1pbsi.fd)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source114:      brushscr.tar.xz
-Source115:      brushscr.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source124:      brushscr.tar.xz
+Source125:      brushscr.doc.tar.xz
 
 %description -n texlive-brushscr
 The BrushScript font simulates hand-written characters; it is
@@ -6913,9 +7177,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-brushscr
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -6952,9 +7213,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-brushscr/fonts.dir
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-brushscr/fonts.scale
 %{_datadir}/fonts/texlive-brushscr/BrushScriptX-Italic.pfa
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-brushscr-fonts-%{texlive_version}.%{texlive_noarch}.svn28363-%{release}-zypper
-%endif
 
 %package -n texlive-bubblesort
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn56070
@@ -6983,13 +7241,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bubblesort-doc >= %{texlive_version}
+Suggests:       texlive-bubblesort-doc >= %{texlive_version}
 Provides:       tex(bubblesort.sty)
 Requires:       tex(etoolbox.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source116:      bubblesort.tar.xz
-Source117:      bubblesort.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source126:      bubblesort.tar.xz
+Source127:      bubblesort.doc.tar.xz
 
 %description -n texlive-bubblesort
 This package sorts a list of TeX items {item 1}...{item k} in
@@ -7025,9 +7283,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bubblesort
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -7039,9 +7294,148 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bubblesort
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bubblesort/bubblesort.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bubblesort-%{texlive_version}.%{texlive_noarch}.1.0svn56070-%{release}-zypper
-%endif
+
+%package -n texlive-buctthesis
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn62473
+Release:        0
+License:        LPPL-1.0
+Summary:        Beijing University of Chemical Technology Thesis Template
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-buctthesis-doc >= %{texlive_version}
+Provides:       tex(buctcover.cls)
+Provides:       tex(buctthesis.cls)
+Requires:       tex(amsmath.sty)
+Requires:       tex(amssymb.sty)
+Requires:       tex(amsthm.sty)
+Requires:       tex(array.sty)
+Requires:       tex(bicaption.sty)
+Requires:       tex(booktabs.sty)
+Requires:       tex(calc.sty)
+Requires:       tex(caption.sty)
+Requires:       tex(ctexbook.cls)
+Requires:       tex(enumitem.sty)
+Requires:       tex(fancyhdr.sty)
+Requires:       tex(fgruler.sty)
+Requires:       tex(float.sty)
+Requires:       tex(footmisc.sty)
+Requires:       tex(gbt7714.sty)
+Requires:       tex(geometry.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(hyperref.sty)
+Requires:       tex(ifxetex.sty)
+Requires:       tex(kvoptions.sty)
+Requires:       tex(lineno.sty)
+Requires:       tex(listings.sty)
+Requires:       tex(longtable.sty)
+Requires:       tex(mhchem.sty)
+Requires:       tex(multirow.sty)
+Requires:       tex(pdfpages.sty)
+Requires:       tex(pifont.sty)
+Requires:       tex(siunitx.sty)
+Requires:       tex(subcaption.sty)
+Requires:       tex(tabularx.sty)
+Requires:       tex(threeparttable.sty)
+Requires:       tex(tikz.sty)
+Requires:       tex(titletoc.sty)
+Requires:       tex(unicode-math.sty)
+Requires:       tex(xcolor.sty)
+Requires:       tex(xpatch.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source128:      buctthesis.tar.xz
+Source129:      buctthesis.doc.tar.xz
+
+%description -n texlive-buctthesis
+This package provides a LaTeX class and template for Beijing
+University of Chemical Technology, supporting bachelor, master,
+and doctor theses.
+
+%package -n texlive-buctthesis-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn62473
+Release:        0
+Summary:        Documentation for texlive-buctthesis
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Provides:       locale(texlive-buctthesis-doc:zh)
+
+%description -n texlive-buctthesis-doc
+This package includes the documentation for texlive-buctthesis
+
+%post -n texlive-buctthesis
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-buctthesis
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-buctthesis
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-buctthesis-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/buctthesis/AddBib.png
+%{_texmfdistdir}/doc/latex/buctthesis/BUCT-badge.pdf
+%{_texmfdistdir}/doc/latex/buctthesis/ChangeLog.md
+%{_texmfdistdir}/doc/latex/buctthesis/LICENSE
+%{_texmfdistdir}/doc/latex/buctthesis/README.md
+%{_texmfdistdir}/doc/latex/buctthesis/acknowledgement.tex
+%{_texmfdistdir}/doc/latex/buctthesis/app1.tex
+%{_texmfdistdir}/doc/latex/buctthesis/buctcover.tex
+%{_texmfdistdir}/doc/latex/buctthesis/buctthesis.pdf
+%{_texmfdistdir}/doc/latex/buctthesis/chapter1.tex
+%{_texmfdistdir}/doc/latex/buctthesis/chapter2.tex
+%{_texmfdistdir}/doc/latex/buctthesis/chapter3.tex
+%{_texmfdistdir}/doc/latex/buctthesis/conclusion.tex
+%{_texmfdistdir}/doc/latex/buctthesis/declare-bachelor.png
+%{_texmfdistdir}/doc/latex/buctthesis/declare-master-doctor.png
+%{_texmfdistdir}/doc/latex/buctthesis/denotation.tex
+%{_texmfdistdir}/doc/latex/buctthesis/foreword.tex
+%{_texmfdistdir}/doc/latex/buctthesis/frontmatter.tex
+%{_texmfdistdir}/doc/latex/buctthesis/helloworld.cpp
+%{_texmfdistdir}/doc/latex/buctthesis/image-a.pdf
+%{_texmfdistdir}/doc/latex/buctthesis/image-c.pdf
+%{_texmfdistdir}/doc/latex/buctthesis/image-plain.pdf
+%{_texmfdistdir}/doc/latex/buctthesis/latexmkrc
+%{_texmfdistdir}/doc/latex/buctthesis/main.tex
+%{_texmfdistdir}/doc/latex/buctthesis/manual.sty
+%{_texmfdistdir}/doc/latex/buctthesis/mycfg.sty
+%{_texmfdistdir}/doc/latex/buctthesis/thesisbib.bib
+%{_texmfdistdir}/doc/latex/buctthesis/translation.tex
+%{_texmfdistdir}/doc/latex/buctthesis/worm-gear.pdf
+
+%files -n texlive-buctthesis
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/buctthesis/buctcover.cls
+%{_texmfdistdir}/tex/latex/buctthesis/buctthesis.cls
 
 %package -n texlive-bullcntr
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.04svn15878
@@ -7070,13 +7464,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bullcntr-doc >= %{texlive_version}
+Suggests:       texlive-bullcntr-doc >= %{texlive_version}
 Provides:       tex(bullcntr.sty)
 Provides:       tex(bullenum.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source118:      bullcntr.tar.xz
-Source119:      bullcntr.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source130:      bullcntr.tar.xz
+Source131:      bullcntr.doc.tar.xz
 
 %description -n texlive-bullcntr
 The bullcntr package defines the command bullcntr, which may be
@@ -7109,9 +7503,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bullcntr
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -7129,9 +7520,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bullcntr/bullcntr.sty
 %{_texmfdistdir}/tex/latex/bullcntr/bullenum.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bullcntr-%{texlive_version}.%{texlive_noarch}.0.0.04svn15878-%{release}-zypper
-%endif
 
 %package -n texlive-bundledoc
 Version:        %{texlive_version}.%{texlive_noarch}.3.4svn55064
@@ -7162,7 +7550,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bundledoc-doc >= %{texlive_version}
+Suggests:       texlive-bundledoc-doc >= %{texlive_version}
 Requires:       perl(File::Basename)
 #!BuildIgnore:  perl(File::Basename)
 Requires:       perl(File::Copy)
@@ -7188,10 +7576,10 @@ Requires:       perl(warnings)
 Provides:       tex(miktex.cfg)
 Provides:       tex(texlive-unix-arlatex.cfg)
 Provides:       tex(texlive-unix.cfg)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source120:      bundledoc.tar.xz
-Source121:      bundledoc.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source132:      bundledoc.tar.xz
+Source133:      bundledoc.doc.tar.xz
 
 %description -n texlive-bundledoc
 The bundledoc package is a post-processor for the snapshot
@@ -7233,9 +7621,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bundledoc
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -7252,9 +7637,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bundledoc/miktex.cfg
 %{_texmfdistdir}/tex/latex/bundledoc/texlive-unix-arlatex.cfg
 %{_texmfdistdir}/tex/latex/bundledoc/texlive-unix.cfg
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bundledoc-%{texlive_version}.%{texlive_noarch}.3.4svn55064-%{release}-zypper
-%endif
 
 %package -n texlive-burmese
 Version:        %{texlive_version}.%{texlive_noarch}.svn25185
@@ -7295,16 +7677,16 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-burmese-fonts >= %{texlive_version}
-Recommends:     texlive-burmese-doc >= %{texlive_version}
+Suggests:       texlive-burmese-doc >= %{texlive_version}
 Provides:       tex(birm.sty)
 Provides:       tex(burm.tfm)
 Provides:       tex(burmese.map)
 Provides:       tex(ubirm.fd)
 Requires:       tex(relsize.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source122:      burmese.tar.xz
-Source123:      burmese.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source134:      burmese.tar.xz
+Source135:      burmese.doc.tar.xz
 
 %description -n texlive-burmese
 This package provides basic support for writing Burmese. The
@@ -7355,9 +7737,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-burmese
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -7383,12 +7762,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-burmese/fonts.dir
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-burmese/fonts.scale
 %{_datadir}/fonts/texlive-burmese/burm.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-burmese-fonts-%{texlive_version}.%{texlive_noarch}.svn25185-%{release}-zypper
-%endif
 
 %package -n texlive-businesscard-qrcode
-Version:        %{texlive_version}.%{texlive_noarch}.1.2svn54080
+Version:        %{texlive_version}.%{texlive_noarch}.1.2svn61719
 Release:        0
 License:        LGPL-2.1-or-later
 Summary:        Business cards with QR-Code
@@ -7414,7 +7790,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-businesscard-qrcode-doc >= %{texlive_version}
+Suggests:       texlive-businesscard-qrcode-doc >= %{texlive_version}
 Provides:       tex(businesscard-qrcode.cls)
 Requires:       tex(DejaVuSans.sty)
 Requires:       tex(calc.sty)
@@ -7429,10 +7805,10 @@ Requires:       tex(marvosym.sty)
 Requires:       tex(qrcode.sty)
 Requires:       tex(varwidth.sty)
 Requires:       tex(wrapfig.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source124:      businesscard-qrcode.tar.xz
-Source125:      businesscard-qrcode.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source136:      businesscard-qrcode.tar.xz
+Source137:      businesscard-qrcode.doc.tar.xz
 
 %description -n texlive-businesscard-qrcode
 What happens when you give your visiting card to someone?
@@ -7454,7 +7830,7 @@ varwidth, and wrapfig. The package needs XeLaTeX for working
 properly.
 
 %package -n texlive-businesscard-qrcode-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2svn54080
+Version:        %{texlive_version}.%{texlive_noarch}.1.2svn61719
 Release:        0
 Summary:        Documentation for texlive-businesscard-qrcode
 License:        LGPL-2.1-or-later
@@ -7478,9 +7854,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-businesscard-qrcode
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -7506,9 +7879,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-businesscard-qrcode
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/xelatex/businesscard-qrcode/businesscard-qrcode.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-businesscard-qrcode-%{texlive_version}.%{texlive_noarch}.1.2svn54080-%{release}-zypper
-%endif
 
 %package -n texlive-bussproofs
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn54080
@@ -7537,12 +7907,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bussproofs-doc >= %{texlive_version}
+Suggests:       texlive-bussproofs-doc >= %{texlive_version}
 Provides:       tex(bussproofs.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source126:      bussproofs.tar.xz
-Source127:      bussproofs.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source138:      bussproofs.tar.xz
+Source139:      bussproofs.doc.tar.xz
 
 %description -n texlive-bussproofs
 The package allows the construction of proof trees in the style
@@ -7579,9 +7949,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bussproofs
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -7596,9 +7963,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bussproofs
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bussproofs/bussproofs.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bussproofs-%{texlive_version}.%{texlive_noarch}.1.1svn54080-%{release}-zypper
-%endif
 
 %package -n texlive-bussproofs-extra
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn51299
@@ -7627,14 +7991,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bussproofs-extra-doc >= %{texlive_version}
+Suggests:       texlive-bussproofs-extra-doc >= %{texlive_version}
 Provides:       tex(bussproofs-extra.sty)
 Requires:       tex(bussproofs.sty)
 Requires:       tex(tikz.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source128:      bussproofs-extra.tar.xz
-Source129:      bussproofs-extra.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source140:      bussproofs-extra.tar.xz
+Source141:      bussproofs-extra.doc.tar.xz
 
 %description -n texlive-bussproofs-extra
 This package provides additional functionality for
@@ -7666,9 +8030,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bussproofs-extra
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -7682,9 +8043,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bussproofs-extra
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bussproofs-extra/bussproofs-extra.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bussproofs-extra-%{texlive_version}.%{texlive_noarch}.0.0.4svn51299-%{release}-zypper
-%endif
 
 %package -n texlive-bxbase
 Version:        %{texlive_version}.%{texlive_noarch}.1.2svn56528
@@ -7713,7 +8071,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bxbase-doc >= %{texlive_version}
+Suggests:       texlive-bxbase-doc >= %{texlive_version}
 Provides:       tex(bxbase.def)
 Provides:       tex(bxbase.sty)
 Provides:       tex(bxtoolbox-ext.def)
@@ -7727,10 +8085,10 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source130:      bxbase.tar.xz
-Source131:      bxbase.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source142:      bxbase.tar.xz
+Source143:      bxbase.doc.tar.xz
 
 %description -n texlive-bxbase
 The main purpose of this bundle is to serve as an underlying
@@ -7764,9 +8122,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bxbase
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -7789,9 +8144,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bxbase/bxutf8.def
 %{_texmfdistdir}/tex/latex/bxbase/bxutf8x.def
 %{_texmfdistdir}/tex/latex/bxbase/zxbase.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bxbase-%{texlive_version}.%{texlive_noarch}.1.2svn56528-%{release}-zypper
-%endif
 
 %package -n texlive-bxcalc
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn56431
@@ -7820,16 +8172,16 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bxcalc-doc >= %{texlive_version}
+Suggests:       texlive-bxcalc-doc >= %{texlive_version}
 Provides:       tex(bxcalc.sty)
 Provides:       tex(bxcalcize.sty)
 Provides:       tex(bxcalcux.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(etoolbox.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source132:      bxcalc.tar.xz
-Source133:      bxcalc.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source144:      bxcalc.tar.xz
+Source145:      bxcalc.doc.tar.xz
 
 %description -n texlive-bxcalc
 This package bundle consists of the following packages:
@@ -7863,9 +8215,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bxcalc
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -7886,9 +8235,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bxcalc/bxcalc.sty
 %{_texmfdistdir}/tex/latex/bxcalc/bxcalcize.sty
 %{_texmfdistdir}/tex/latex/bxcalc/bxcalcux.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bxcalc-%{texlive_version}.%{texlive_noarch}.1.1svn56431-%{release}-zypper
-%endif
 
 %package -n texlive-bxcjkjatype
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn54080
@@ -7917,7 +8263,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bxcjkjatype-doc >= %{texlive_version}
+Suggests:       texlive-bxcjkjatype-doc >= %{texlive_version}
 Provides:       tex(bxcjkjatype.sty)
 Requires:       tex(CJK.sty)
 Requires:       tex(CJKpunct.sty)
@@ -7927,10 +8273,10 @@ Requires:       tex(CJKvert.sty)
 Requires:       tex(atbegshi.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(keyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source134:      bxcjkjatype.tar.xz
-Source135:      bxcjkjatype.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source146:      bxcjkjatype.tar.xz
+Source147:      bxcjkjatype.doc.tar.xz
 
 %description -n texlive-bxcjkjatype
 The package provides a working configuration of the CJK
@@ -7965,9 +8311,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bxcjkjatype
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -7984,9 +8327,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bxcjkjatype
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxcjkjatype/bxcjkjatype.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bxcjkjatype-%{texlive_version}.%{texlive_noarch}.0.0.3svn54080-%{release}-zypper
-%endif
 
 %package -n texlive-bxdpx-beamer
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn41813
@@ -8015,12 +8355,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bxdpx-beamer-doc >= %{texlive_version}
+Suggests:       texlive-bxdpx-beamer-doc >= %{texlive_version}
 Provides:       tex(bxdpx-beamer.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source136:      bxdpx-beamer.tar.xz
-Source137:      bxdpx-beamer.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source148:      bxdpx-beamer.tar.xz
+Source149:      bxdpx-beamer.doc.tar.xz
 
 %description -n texlive-bxdpx-beamer
 The package is a driver to support beamer Navigation symbols
@@ -8053,9 +8393,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bxdpx-beamer
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -8069,9 +8406,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bxdpx-beamer
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxdpx-beamer/bxdpx-beamer.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bxdpx-beamer-%{texlive_version}.%{texlive_noarch}.0.0.3svn41813-%{release}-zypper
-%endif
 
 %package -n texlive-bxdvidriver
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2asvn43219
@@ -8100,17 +8434,17 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bxdvidriver-doc >= %{texlive_version}
+Suggests:       texlive-bxdvidriver-doc >= %{texlive_version}
 Provides:       tex(bxdvidriver.sty)
 Requires:       tex(ifluatex.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(ifvtex.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(pdftexcmds.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source138:      bxdvidriver.tar.xz
-Source139:      bxdvidriver.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source150:      bxdvidriver.tar.xz
+Source151:      bxdvidriver.doc.tar.xz
 
 %description -n texlive-bxdvidriver
 This single-function package enables authors to specify a
@@ -8144,9 +8478,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bxdvidriver
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -8158,9 +8489,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bxdvidriver
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxdvidriver/bxdvidriver.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bxdvidriver-%{texlive_version}.%{texlive_noarch}.0.0.2asvn43219-%{release}-zypper
-%endif
 
 %package -n texlive-bxeepic
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn30559
@@ -8189,14 +8517,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bxeepic-doc >= %{texlive_version}
+Suggests:       texlive-bxeepic-doc >= %{texlive_version}
 Provides:       tex(bxdpxp2e.def)
 Provides:       tex(bxeepic.sty)
 Requires:       tex(pict2e.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source140:      bxeepic.tar.xz
-Source141:      bxeepic.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source152:      bxeepic.tar.xz
+Source153:      bxeepic.doc.tar.xz
 
 %description -n texlive-bxeepic
 The package provides an eepic driver to use pict2e facilities.
@@ -8226,9 +8554,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bxeepic
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -8243,9 +8568,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxeepic/bxdpxp2e.def
 %{_texmfdistdir}/tex/latex/bxeepic/bxeepic.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bxeepic-%{texlive_version}.%{texlive_noarch}.0.0.2svn30559-%{release}-zypper
-%endif
 
 %package -n texlive-bxenclose
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn40213
@@ -8274,12 +8596,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bxenclose-doc >= %{texlive_version}
+Suggests:       texlive-bxenclose-doc >= %{texlive_version}
 Provides:       tex(bxenclose.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source142:      bxenclose.tar.xz
-Source143:      bxenclose.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source154:      bxenclose.tar.xz
+Source155:      bxenclose.doc.tar.xz
 
 %description -n texlive-bxenclose
 The package enables authors to designate in the preamble to
@@ -8313,9 +8635,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bxenclose
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -8327,12 +8646,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bxenclose
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxenclose/bxenclose.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bxenclose-%{texlive_version}.%{texlive_noarch}.0.0.2svn40213-%{release}-zypper
-%endif
 
 %package -n texlive-bxghost
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.0svn53606
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4.0svn61989
 Release:        0
 License:        LPPL-1.0
 Summary:        Ghost insertion for proper xkanjiskip
@@ -8358,12 +8674,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bxghost-doc >= %{texlive_version}
+Suggests:       texlive-bxghost-doc >= %{texlive_version}
 Provides:       tex(bxghost.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source144:      bxghost.tar.xz
-Source145:      bxghost.doc.tar.xz
+Requires:       tex(luatexja-adjust.sty)
+Requires:       tex(luatexja.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source156:      bxghost.tar.xz
+Source157:      bxghost.doc.tar.xz
 
 %description -n texlive-bxghost
 The package provides two commands to help authors for documents
@@ -8371,7 +8689,7 @@ in Japanese to insert proper xkanjiskips. It supports LuaTeX,
 XeTeX, pTeX, upTeX, and ApTeX (pTeX-ng).
 
 %package -n texlive-bxghost-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.0svn53606
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4.0svn61989
 Release:        0
 Summary:        Documentation for texlive-bxghost
 License:        LPPL-1.0
@@ -8395,9 +8713,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bxghost
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -8409,12 +8724,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bxghost
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxghost/bxghost.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bxghost-%{texlive_version}.%{texlive_noarch}.0.0.3.0svn53606-%{release}-zypper
-%endif
 
 %package -n texlive-bxjaholiday
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.0svn57025
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.1svn60636
 Release:        0
 License:        LPPL-1.0
 Summary:        Support for Japanese holidays
@@ -8440,13 +8752,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bxjaholiday-doc >= %{texlive_version}
+Suggests:       texlive-bxjaholiday-doc >= %{texlive_version}
 Provides:       tex(bxjaholiday.sty)
 Requires:       tex(expl3.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source146:      bxjaholiday.tar.xz
-Source147:      bxjaholiday.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source158:      bxjaholiday.tar.xz
+Source159:      bxjaholiday.doc.tar.xz
 
 %description -n texlive-bxjaholiday
 This LaTeX package provides a command to convert dates to names
@@ -8456,7 +8768,7 @@ Further (lower-level) APIs are provided for expl3. The package
 supports pdfTeX, XeTeX, LuaTeX, pTeX, and upTeX.
 
 %package -n texlive-bxjaholiday-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.0svn57025
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.1svn60636
 Release:        0
 Summary:        Documentation for texlive-bxjaholiday
 License:        LPPL-1.0
@@ -8481,9 +8793,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bxjaholiday
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -8499,9 +8808,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bxjaholiday
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxjaholiday/bxjaholiday.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bxjaholiday-%{texlive_version}.%{texlive_noarch}.1.1.0svn57025-%{release}-zypper
-%endif
 
 %package -n texlive-bxjalipsum
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.3asvn43369
@@ -8530,13 +8836,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bxjalipsum-doc >= %{texlive_version}
+Suggests:       texlive-bxjalipsum-doc >= %{texlive_version}
 Provides:       tex(bxjalipsum.sty)
 Requires:       tex(intcalc.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source148:      bxjalipsum.tar.xz
-Source149:      bxjalipsum.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source160:      bxjalipsum.tar.xz
+Source161:      bxjalipsum.doc.tar.xz
 
 %description -n texlive-bxjalipsum
 This package enables users to print some Japanese text that can
@@ -8570,9 +8876,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bxjalipsum
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -8586,12 +8889,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bxjalipsum
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxjalipsum/bxjalipsum.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bxjalipsum-%{texlive_version}.%{texlive_noarch}.0.0.3asvn43369-%{release}-zypper
-%endif
 
 %package -n texlive-bxjaprnind
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3bsvn45291
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4asvn59641
 Release:        0
 License:        LPPL-1.0
 Summary:        Adjust the position of parentheses at paragraph head
@@ -8617,14 +8917,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bxjaprnind-doc >= %{texlive_version}
+Suggests:       texlive-bxjaprnind-doc >= %{texlive_version}
 Provides:       tex(bxjaprnind.sty)
 Requires:       tex(bxtoolbox.sty)
 Requires:       tex(everyhook.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source150:      bxjaprnind.tar.xz
-Source151:      bxjaprnind.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source162:      bxjaprnind.tar.xz
+Source163:      bxjaprnind.doc.tar.xz
 
 %description -n texlive-bxjaprnind
 In Japanese typesetting, opening parentheses placed at the
@@ -8634,7 +8934,7 @@ characters is 1em, the indent before parentheses can be 0.5em,
 1em or 1.5em deoending on the local rule in effect.
 
 %package -n texlive-bxjaprnind-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3bsvn45291
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4asvn59641
 Release:        0
 Summary:        Documentation for texlive-bxjaprnind
 License:        LPPL-1.0
@@ -8659,9 +8959,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bxjaprnind
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -8678,9 +8975,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bxjaprnind
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxjaprnind/bxjaprnind.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bxjaprnind-%{texlive_version}.%{texlive_noarch}.0.0.3bsvn45291-%{release}-zypper
-%endif
 
 %package -n texlive-bxjatoucs
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn52509
@@ -8709,16 +9003,16 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bxjatoucs-doc >= %{texlive_version}
+Suggests:       texlive-bxjatoucs-doc >= %{texlive_version}
 Provides:       tex(bxjatoucs-cid.tfm)
 Provides:       tex(bxjatoucs-jis.tfm)
 Provides:       tex(bxjatoucs.sty)
 Requires:       tex(infwarerr.sty)
 Requires:       tex(ltxcmds.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source152:      bxjatoucs.tar.xz
-Source153:      bxjatoucs.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source164:      bxjatoucs.tar.xz
+Source165:      bxjatoucs.doc.tar.xz
 
 %description -n texlive-bxjatoucs
 This package is meant for macro/package developers: It provides
@@ -8753,9 +9047,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bxjatoucs
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -8769,12 +9060,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/bxjatoucs/bxjatoucs-cid.tfm
 %{_texmfdistdir}/fonts/tfm/public/bxjatoucs/bxjatoucs-jis.tfm
 %{_texmfdistdir}/tex/latex/bxjatoucs/bxjatoucs.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bxjatoucs-%{texlive_version}.%{texlive_noarch}.0.0.2svn52509-%{release}-zypper
-%endif
 
 %package -n texlive-bxjscls
-Version:        %{texlive_version}.%{texlive_noarch}.2.5svn57625
+Version:        %{texlive_version}.%{texlive_noarch}.2.6svn62825
 Release:        0
 License:        BSD-3-Clause
 Summary:        Japanese document class collection for all major engines
@@ -8800,7 +9088,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bxjscls-doc >= %{texlive_version}
+Suggests:       texlive-bxjscls-doc >= %{texlive_version}
 Provides:       tex(bxjsarticle.cls)
 Provides:       tex(bxjsbook.cls)
 Provides:       tex(bxjscjkcat.sty)
@@ -8815,19 +9103,23 @@ Provides:       tex(bxjsslide.cls)
 Requires:       tex(babel.sty)
 Requires:       tex(bxcalc.sty)
 Requires:       tex(bxcjkjatype.sty)
+Requires:       tex(bxghost.sty)
 Requires:       tex(bxorigcapt.sty)
 Requires:       tex(bxwareki.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(etoolbox.sty)
+Requires:       tex(filehook.sty)
 Requires:       tex(fixltx2e.sty)
 Requires:       tex(geometry.sty)
 Requires:       tex(ifpdf.sty)
+Requires:       tex(iftex.sty)
 Requires:       tex(inputenc.sty)
 Requires:       tex(jslogo.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(luatexja-fontspec.sty)
 Requires:       tex(luatexja-preset.sty)
 Requires:       tex(luatexja.sty)
+Requires:       tex(pdftexcmds.sty)
 Requires:       tex(plautopatch.sty)
 Requires:       tex(polyglossia.sty)
 Requires:       tex(pxbabel.sty)
@@ -8837,10 +9129,10 @@ Requires:       tex(t1enc.def)
 Requires:       tex(type1cm.sty)
 Requires:       tex(zxjafont.sty)
 Requires:       tex(zxjatype.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source154:      bxjscls.tar.xz
-Source155:      bxjscls.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source166:      bxjscls.tar.xz
+Source167:      bxjscls.doc.tar.xz
 
 %description -n texlive-bxjscls
 This package provides an extended version of the Japanese
@@ -8851,7 +9143,7 @@ aid of suitable packages that provide capability of Japanese
 typesetting.
 
 %package -n texlive-bxjscls-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.5svn57625
+Version:        %{texlive_version}.%{texlive_noarch}.2.6svn62825
 Release:        0
 Summary:        Documentation for texlive-bxjscls
 License:        BSD-3-Clause
@@ -8876,9 +9168,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bxjscls
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -8904,9 +9193,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bxjscls/bxjspandoc.sty
 %{_texmfdistdir}/tex/latex/bxjscls/bxjsreport.cls
 %{_texmfdistdir}/tex/latex/bxjscls/bxjsslide.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bxjscls-%{texlive_version}.%{texlive_noarch}.2.5svn57625-%{release}-zypper
-%endif
 
 %package -n texlive-bxnewfont
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2bsvn44173
@@ -8935,13 +9221,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bxnewfont-doc >= %{texlive_version}
+Suggests:       texlive-bxnewfont-doc >= %{texlive_version}
 Provides:       tex(bxnewfont.sty)
 Requires:       tex(etoolbox.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source156:      bxnewfont.tar.xz
-Source157:      bxnewfont.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source168:      bxnewfont.tar.xz
+Source169:      bxnewfont.doc.tar.xz
 
 %description -n texlive-bxnewfont
 This package provides a new command \newfontx. It is similar to
@@ -8977,9 +9263,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bxnewfont
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -8991,12 +9274,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bxnewfont
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxnewfont/bxnewfont.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bxnewfont-%{texlive_version}.%{texlive_noarch}.0.0.2bsvn44173-%{release}-zypper
-%endif
 
 %package -n texlive-bxorigcapt
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn48606
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn62714
 Release:        0
 License:        LPPL-1.0
 Summary:        To retain the original caption names when using Babel
@@ -9022,13 +9302,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bxorigcapt-doc >= %{texlive_version}
+Suggests:       texlive-bxorigcapt-doc >= %{texlive_version}
 Provides:       tex(bxorigcapt.sty)
 Requires:       tex(etoolbox.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source158:      bxorigcapt.tar.xz
-Source159:      bxorigcapt.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source170:      bxorigcapt.tar.xz
+Source171:      bxorigcapt.doc.tar.xz
 
 %description -n texlive-bxorigcapt
 This package forces the caption names (`\chaptername`,
@@ -9037,7 +9317,7 @@ as the caption names for a specific language introduced by the
 Babel package.
 
 %package -n texlive-bxorigcapt-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn48606
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn62714
 Release:        0
 Summary:        Documentation for texlive-bxorigcapt
 License:        LPPL-1.0
@@ -9061,9 +9341,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bxorigcapt
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -9075,9 +9352,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bxorigcapt
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxorigcapt/bxorigcapt.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bxorigcapt-%{texlive_version}.%{texlive_noarch}.0.0.3svn48606-%{release}-zypper
-%endif
 
 %package -n texlive-bxpapersize
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.5svn56491
@@ -9106,7 +9380,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bxpapersize-doc >= %{texlive_version}
+Suggests:       texlive-bxpapersize-doc >= %{texlive_version}
 Provides:       tex(bxpapersize.sty)
 Requires:       tex(atbegshi.sty)
 Requires:       tex(ifluatex.sty)
@@ -9116,10 +9390,10 @@ Requires:       tex(ifvtex.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(pxatbegshi.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source160:      bxpapersize.tar.xz
-Source161:      bxpapersize.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source172:      bxpapersize.tar.xz
+Source173:      bxpapersize.doc.tar.xz
 
 %description -n texlive-bxpapersize
 As is well known, in LaTeX processing layout paper size
@@ -9152,9 +9426,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bxpapersize
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -9166,9 +9437,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bxpapersize
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxpapersize/bxpapersize.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bxpapersize-%{texlive_version}.%{texlive_noarch}.0.0.5svn56491-%{release}-zypper
-%endif
 
 %package -n texlive-bxpdfver
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.5asvn57755
@@ -9197,14 +9465,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bxpdfver-doc >= %{texlive_version}
+Suggests:       texlive-bxpdfver-doc >= %{texlive_version}
 Provides:       tex(bxpdfver.sty)
 Requires:       tex(atbegshi.sty)
 Requires:       tex(ifthen.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source162:      bxpdfver.tar.xz
-Source163:      bxpdfver.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source174:      bxpdfver.tar.xz
+Source175:      bxpdfver.doc.tar.xz
 
 %description -n texlive-bxpdfver
 This package enables users to specify in their sources the
@@ -9239,9 +9507,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bxpdfver
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -9255,9 +9520,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bxpdfver
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxpdfver/bxpdfver.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bxpdfver-%{texlive_version}.%{texlive_noarch}.0.0.5asvn57755-%{release}-zypper
-%endif
 
 %package -n texlive-bxtexlogo
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn47230
@@ -9286,13 +9548,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bxtexlogo-doc >= %{texlive_version}
+Suggests:       texlive-bxtexlogo-doc >= %{texlive_version}
 Provides:       tex(bxtexlogo.sty)
 Requires:       tex(hologo.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source164:      bxtexlogo.tar.xz
-Source165:      bxtexlogo.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source176:      bxtexlogo.tar.xz
+Source177:      bxtexlogo.doc.tar.xz
 
 %description -n texlive-bxtexlogo
 The hologo package provides many useful logos of popular (and
@@ -9331,9 +9593,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bxtexlogo
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -9347,9 +9606,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bxtexlogo
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxtexlogo/bxtexlogo.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bxtexlogo-%{texlive_version}.%{texlive_noarch}.0.0.4svn47230-%{release}-zypper
-%endif
 
 %package -n texlive-bxwareki
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn51286
@@ -9378,14 +9634,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bxwareki-doc >= %{texlive_version}
+Suggests:       texlive-bxwareki-doc >= %{texlive_version}
 Provides:       tex(bxwareki-cd.def)
 Provides:       tex(bxwareki.sty)
 Provides:       tex(bxwareki2019.def)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source166:      bxwareki.tar.xz
-Source167:      bxwareki.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source178:      bxwareki.tar.xz
+Source179:      bxwareki.doc.tar.xz
 
 %description -n texlive-bxwareki
 This LaTeX package provides commands to convert from the
@@ -9422,9 +9678,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bxwareki
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -9440,12 +9693,175 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bxwareki/bxwareki-cd.def
 %{_texmfdistdir}/tex/latex/bxwareki/bxwareki.sty
 %{_texmfdistdir}/tex/latex/bxwareki/bxwareki2019.def
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bxwareki-%{texlive_version}.%{texlive_noarch}.0.0.6svn51286-%{release}-zypper
-%endif
+
+%package -n texlive-byo-twemojis
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn58917
+Release:        0
+License:        LPPL-1.0
+Summary:        "Build Your Own Twemojis" with TikZ
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-byo-twemojis-doc >= %{texlive_version}
+Provides:       tex(byo-twemojis.sty)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(tikz.sty)
+Requires:       tex(xstring.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source180:      byo-twemojis.tar.xz
+Source181:      byo-twemojis.doc.tar.xz
+
+%description -n texlive-byo-twemojis
+This package provides the means to create your own emojis (the
+simple, round, and mostly yellow ones) from elements of
+existing emojis. The provided command creates a TikZ picture
+from the stated elements with multiple possibilities to modify
+the result in color and position.
+
+%package -n texlive-byo-twemojis-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn58917
+Release:        0
+Summary:        Documentation for texlive-byo-twemojis
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+
+%description -n texlive-byo-twemojis-doc
+This package includes the documentation for texlive-byo-twemojis
+
+%post -n texlive-byo-twemojis
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-byo-twemojis
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-byo-twemojis
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-byo-twemojis-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/byo-twemojis/README.md
+%{_texmfdistdir}/doc/latex/byo-twemojis/byo-twemojis.pdf
+
+%files -n texlive-byo-twemojis
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/byo-twemojis/byo-twemojis.sty
+
+%package -n texlive-byrne
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.2svn61943
+Release:        0
+License:        GPL-2.0-or-later
+Summary:        This package provides a set of tools to typeset geometric proofs in the style of Oliver Byrne's 1847 ed. of Euclid's "Elements"
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-byrne-doc >= %{texlive_version}
+Provides:       tex(byrne.sty)
+Requires:       tex(ifmtarg.sty)
+Requires:       tex(luamplib.sty)
+Requires:       tex(xparse.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source182:      byrne.tar.xz
+Source183:      byrne.doc.tar.xz
+
+%description -n texlive-byrne
+This package is a LaTeX adaptation of a set of tools developed
+for ConTeXt reproduction of Oliver Byrne's 1847 edition of the
+first six books of Euclid's "Elements";
+(https://github.com/jemmybutton/byrne-euclid). It consists of a
+MetaPost library, responsible for all the drawing and a set of
+LaTeX macros to conveniently use them. This package works with
+LuaLaTeX and relies on luamplib v2.23.0 or higher.
+
+%package -n texlive-byrne-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.2svn61943
+Release:        0
+Summary:        Documentation for texlive-byrne
+License:        GPL-2.0-or-later
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+
+%description -n texlive-byrne-doc
+This package includes the documentation for texlive-byrne
+
+%post -n texlive-byrne
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-byrne
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-byrne
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-byrne-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/metapost/byrne/README
+%{_texmfdistdir}/doc/metapost/byrne/byrne-latex.pdf
+%{_texmfdistdir}/doc/metapost/byrne/byrne-latex.tex
+
+%files -n texlive-byrne
+%defattr(-,root,root,755)
+%{_texmfdistdir}/metapost/byrne/byrne.mp
+%{_texmfdistdir}/tex/latex/byrne/byrne.sty
 
 %package -n texlive-bytefield
-Version:        %{texlive_version}.%{texlive_noarch}.2.6svn56821
+Version:        %{texlive_version}.%{texlive_noarch}.2.7svn60265
 Release:        0
 License:        LPPL-1.0
 Summary:        Create illustrations for network protocol specifications
@@ -9471,14 +9887,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-bytefield-doc >= %{texlive_version}
+Suggests:       texlive-bytefield-doc >= %{texlive_version}
 Provides:       tex(bytefield.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(keyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source168:      bytefield.tar.xz
-Source169:      bytefield.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source184:      bytefield.tar.xz
+Source185:      bytefield.doc.tar.xz
 
 %description -n texlive-bytefield
 The bytefield package helps the user create illustrations for
@@ -9487,7 +9903,7 @@ fields of data. These illustrations show how the bits and bytes
 are laid out in a packet or in memory.
 
 %package -n texlive-bytefield-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.6svn56821
+Version:        %{texlive_version}.%{texlive_noarch}.2.7svn60265
 Release:        0
 Summary:        Documentation for texlive-bytefield
 License:        LPPL-1.0
@@ -9511,9 +9927,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-bytefield
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -9527,9 +9940,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bytefield
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bytefield/bytefield.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-bytefield-%{texlive_version}.%{texlive_noarch}.2.6svn56821-%{release}-zypper
-%endif
 
 %package -n texlive-c-pascal
 Version:        %{texlive_version}.%{texlive_noarch}.1.2svn18337
@@ -9558,16 +9968,16 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-c-pascal-doc >= %{texlive_version}
+Suggests:       texlive-c-pascal-doc >= %{texlive_version}
 Provides:       tex(cap.tex)
 Provides:       tex(cap_c.tex)
 Provides:       tex(cap_comm.tex)
 Provides:       tex(cap_pas.tex)
 Provides:       tex(cap_pyt.tex)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source170:      c-pascal.tar.xz
-Source171:      c-pascal.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source186:      c-pascal.tar.xz
+Source187:      c-pascal.doc.tar.xz
 
 %description -n texlive-c-pascal
 A TeX macro package for easy typesetting programs in Python, C
@@ -9599,9 +10009,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-c-pascal
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -9622,12 +10029,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/c-pascal/cap_comm.tex
 %{_texmfdistdir}/tex/generic/c-pascal/cap_pas.tex
 %{_texmfdistdir}/tex/generic/c-pascal/cap_pyt.tex
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-c-pascal-%{texlive_version}.%{texlive_noarch}.1.2svn18337-%{release}-zypper
-%endif
 
 %package -n texlive-c90
-Version:        %{texlive_version}.%{texlive_noarch}.svn54074
+Version:        %{texlive_version}.%{texlive_noarch}.svn60830
 Release:        0
 License:        LPPL-1.0
 Summary:        C90 font encoding for Thai
@@ -9653,18 +10057,18 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-c90-doc >= %{texlive_version}
+Suggests:       texlive-c90-doc >= %{texlive_version}
 Provides:       tex(c90.enc)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source172:      c90.tar.xz
-Source173:      c90.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source188:      c90.tar.xz
+Source189:      c90.doc.tar.xz
 
 %description -n texlive-c90
 part of the CJK package, ctan.org/pkg/cjk
 
 %package -n texlive-c90-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn54074
+Version:        %{texlive_version}.%{texlive_noarch}.svn60830
 Release:        0
 Summary:        Documentation for texlive-c90
 License:        LPPL-1.0
@@ -9688,9 +10092,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-c90
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -9701,9 +10102,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-c90
 %defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/enc/dvips/c90/c90.enc
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-c90-%{texlive_version}.%{texlive_noarch}.svn54074-%{release}-zypper
-%endif
 
 %package -n texlive-cabin
 Version:        %{texlive_version}.%{texlive_noarch}.svn55907
@@ -9744,7 +10142,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-cabin-fonts >= %{texlive_version}
-Recommends:     texlive-cabin-doc >= %{texlive_version}
+Suggests:       texlive-cabin-doc >= %{texlive_version}
 Provides:       tex(Cabin-Bold-sup-ly1--base.tfm)
 Provides:       tex(Cabin-Bold-sup-ly1.tfm)
 Provides:       tex(Cabin-Bold-sup-ly1.vf)
@@ -10117,10 +10515,10 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source174:      cabin.tar.xz
-Source175:      cabin.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source190:      cabin.tar.xz
+Source191:      cabin.doc.tar.xz
 
 %description -n texlive-cabin
 Cabin is a humanist sans with four weights and true italics and
@@ -10178,9 +10576,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-cabin
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -10639,9 +11034,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-cabin/CabinCondensed-RegularCondensed.pfb
 %{_datadir}/fonts/texlive-cabin/CabinCondensed-SemiBoldCondensed.pfb
 %{_datadir}/fonts/texlive-cabin/CabinCondensed-SemiboldItalicCondensed.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-cabin-fonts-%{texlive_version}.%{texlive_noarch}.svn55907-%{release}-zypper
-%endif
 
 %package -n texlive-cachepic
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn26313
@@ -10672,15 +11064,15 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-cachepic-doc >= %{texlive_version}
+Suggests:       texlive-cachepic-doc >= %{texlive_version}
 Provides:       tex(cachepic.sty)
 Provides:       tex(prcachepic.def)
 Requires:       tex(graphicx.sty)
 Requires:       tex(verbatim.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source176:      cachepic.tar.xz
-Source177:      cachepic.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source192:      cachepic.tar.xz
+Source193:      cachepic.doc.tar.xz
 
 %description -n texlive-cachepic
 The bundle simplifies and automates conversion of document
@@ -10714,9 +11106,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-cachepic
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -10732,9 +11121,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/scripts/cachepic/cachepic.tlu
 %{_texmfdistdir}/tex/latex/cachepic/cachepic.sty
 %{_texmfdistdir}/tex/latex/cachepic/prcachepic.def
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-cachepic-%{texlive_version}.%{texlive_noarch}.1.0svn26313-%{release}-zypper
-%endif
 
 %package -n texlive-caladea
 Version:        %{texlive_version}.%{texlive_noarch}.svn34991
@@ -10775,7 +11161,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-caladea-fonts >= %{texlive_version}
-Recommends:     texlive-caladea-doc >= %{texlive_version}
+Suggests:       texlive-caladea-doc >= %{texlive_version}
 Provides:       tex(Caladea-Bold-tlf-ly1--base.tfm)
 Provides:       tex(Caladea-Bold-tlf-ly1.tfm)
 Provides:       tex(Caladea-Bold-tlf-ly1.vf)
@@ -10831,10 +11217,10 @@ Requires:       tex(ifluatex.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source178:      caladea.tar.xz
-Source179:      caladea.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source194:      caladea.tar.xz
+Source195:      caladea.doc.tar.xz
 
 %description -n texlive-caladea
 This package provides LaTeX, pdfLaTeX, XeLaTeX and LuaLaTeX
@@ -10887,9 +11273,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-caladea
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -10981,9 +11364,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-caladea/Caladea-BoldItalic.pfb
 %{_datadir}/fonts/texlive-caladea/Caladea-Italic.pfb
 %{_datadir}/fonts/texlive-caladea/Caladea-Regular.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-caladea-fonts-%{texlive_version}.%{texlive_noarch}.svn34991-%{release}-zypper
-%endif
 
 %package -n texlive-calcage
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.90svn27725
@@ -11012,13 +11392,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-calcage-doc >= %{texlive_version}
+Suggests:       texlive-calcage-doc >= %{texlive_version}
 Provides:       tex(calcage.sty)
 Requires:       tex(fnumprint.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source180:      calcage.tar.xz
-Source181:      calcage.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source196:      calcage.tar.xz
+Source197:      calcage.doc.tar.xz
 
 %description -n texlive-calcage
 The package calculates the age of someone or something in
@@ -11051,9 +11431,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-calcage
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -11065,9 +11442,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-calcage
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/calcage/calcage.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-calcage-%{texlive_version}.%{texlive_noarch}.0.0.90svn27725-%{release}-zypper
-%endif
 
 %package -n texlive-calctab
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.6.1svn15878
@@ -11096,7 +11470,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-calctab-doc >= %{texlive_version}
+Suggests:       texlive-calctab-doc >= %{texlive_version}
 Provides:       tex(calctab.sty)
 Requires:       tex(alphalph.sty)
 Requires:       tex(booktabs.sty)
@@ -11107,10 +11481,10 @@ Requires:       tex(numprint.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source182:      calctab.tar.xz
-Source183:      calctab.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source198:      calctab.tar.xz
+Source199:      calctab.doc.tar.xz
 
 %description -n texlive-calctab
 The calctab package helps the user to typeset a kind of
@@ -11144,9 +11518,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-calctab
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -11159,9 +11530,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-calctab
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/calctab/calctab.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-calctab-%{texlive_version}.%{texlive_noarch}.0.0.6.1svn15878-%{release}-zypper
-%endif
 
 %package -n texlive-calculation
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn35973
@@ -11190,13 +11558,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-calculation-doc >= %{texlive_version}
+Suggests:       texlive-calculation-doc >= %{texlive_version}
 Provides:       tex(calculation.sty)
 Requires:       tex(delarray.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source184:      calculation.tar.xz
-Source185:      calculation.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source200:      calculation.tar.xz
+Source201:      calculation.doc.tar.xz
 
 %description -n texlive-calculation
 The calculation environment formats reasoned calculations, also
@@ -11238,9 +11606,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-calculation
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -11252,9 +11617,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-calculation
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/calculation/calculation.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-calculation-%{texlive_version}.%{texlive_noarch}.1.0svn35973-%{release}-zypper
-%endif
 
 %package -n texlive-calculator
 Version:        %{texlive_version}.%{texlive_noarch}.2.0svn33041
@@ -11283,13 +11645,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-calculator-doc >= %{texlive_version}
+Suggests:       texlive-calculator-doc >= %{texlive_version}
 Provides:       tex(calculator.sty)
 Provides:       tex(calculus.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source186:      calculator.tar.xz
-Source187:      calculator.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source202:      calculator.tar.xz
+Source203:      calculator.doc.tar.xz
 
 %description -n texlive-calculator
 The calculator and calculus packages define several
@@ -11325,9 +11687,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-calculator
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -11402,9 +11761,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/calculator/calculator.sty
 %{_texmfdistdir}/tex/latex/calculator/calculus.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-calculator-%{texlive_version}.%{texlive_noarch}.2.0svn33041-%{release}-zypper
-%endif
 
 %package -n texlive-calligra
 Version:        %{texlive_version}.%{texlive_noarch}.svn15878
@@ -11433,12 +11789,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-calligra-doc >= %{texlive_version}
+Suggests:       texlive-calligra-doc >= %{texlive_version}
 Provides:       tex(callig15.tfm)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source188:      calligra.tar.xz
-Source189:      calligra.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source204:      calligra.tar.xz
+Source205:      calligra.doc.tar.xz
 
 %description -n texlive-calligra
 A calligraphic font in the handwriting style of the author,
@@ -11471,9 +11827,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-calligra
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -11487,9 +11840,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/source/public/calligra/callig15.mf
 %{_texmfdistdir}/fonts/source/public/calligra/calligra.mf
 %{_texmfdistdir}/fonts/tfm/public/calligra/callig15.tfm
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-calligra-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
-%endif
 
 %package -n texlive-calligra-type1
 Version:        %{texlive_version}.%{texlive_noarch}.001.000svn24302
@@ -11530,12 +11880,12 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-calligra-type1-fonts >= %{texlive_version}
-Recommends:     texlive-calligra-type1-doc >= %{texlive_version}
+Suggests:       texlive-calligra-type1-doc >= %{texlive_version}
 Provides:       tex(calligra.map)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source190:      calligra-type1.tar.xz
-Source191:      calligra-type1.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source206:      calligra-type1.tar.xz
+Source207:      calligra-type1.doc.tar.xz
 
 %description -n texlive-calligra-type1
 This is a conversion (using mf2pt1) of Peter Vanroose's
@@ -11585,9 +11935,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-calligra-type1
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -11611,9 +11958,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-calligra-type1/fonts.dir
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-calligra-type1/fonts.scale
 %{_datadir}/fonts/texlive-calligra-type1/callig15.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-calligra-type1-fonts-%{texlive_version}.%{texlive_noarch}.001.000svn24302-%{release}-zypper
-%endif
 
 %package -n texlive-callouts
 Version:        %{texlive_version}.%{texlive_noarch}.svn44899
@@ -11642,15 +11986,15 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-callouts-doc >= %{texlive_version}
+Suggests:       texlive-callouts-doc >= %{texlive_version}
 Provides:       tex(callouts.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xifthen.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source192:      callouts.tar.xz
-Source193:      callouts.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source208:      callouts.tar.xz
+Source209:      callouts.doc.tar.xz
 
 %description -n texlive-callouts
 The package defines the annotation environment in which
@@ -11682,9 +12026,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-callouts
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -11698,9 +12039,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-callouts
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/callouts/callouts.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-callouts-%{texlive_version}.%{texlive_noarch}.svn44899-%{release}-zypper
-%endif
 
 %package -n texlive-calrsfs
 Version:        %{texlive_version}.%{texlive_noarch}.svn17125
@@ -11729,13 +12067,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-calrsfs-doc >= %{texlive_version}
+Suggests:       texlive-calrsfs-doc >= %{texlive_version}
 Provides:       tex(OMSrsfs.fd)
 Provides:       tex(calrsfs.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source194:      calrsfs.tar.xz
-Source195:      calrsfs.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source210:      calrsfs.tar.xz
+Source211:      calrsfs.doc.tar.xz
 
 %description -n texlive-calrsfs
 Provides a maths interface to the rsfs fonts.
@@ -11765,9 +12103,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-calrsfs
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -11781,9 +12116,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/calrsfs/OMSrsfs.fd
 %{_texmfdistdir}/tex/latex/calrsfs/calrsfs.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-calrsfs-%{texlive_version}.%{texlive_noarch}.svn17125-%{release}-zypper
-%endif
 
 %package -n texlive-cals
 Version:        %{texlive_version}.%{texlive_noarch}.2.4.2svn43003
@@ -11812,12 +12144,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-cals-doc >= %{texlive_version}
+Suggests:       texlive-cals-doc >= %{texlive_version}
 Provides:       tex(cals.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source196:      cals.tar.xz
-Source197:      cals.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source212:      cals.tar.xz
+Source213:      cals.doc.tar.xz
 
 %description -n texlive-cals
 The package is a set of macros to typeset multipage tables with
@@ -11851,9 +12183,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-cals
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -11991,12 +12320,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-cals
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/cals/cals.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-cals-%{texlive_version}.%{texlive_noarch}.2.4.2svn43003-%{release}-zypper
-%endif
 
 %package -n texlive-calxxxx-yyyy
-Version:        %{texlive_version}.%{texlive_noarch}.20.21asvn57282
+Version:        %{texlive_version}.%{texlive_noarch}.20.22asvn61463
 Release:        0
 License:        LPPL-1.0
 Summary:        Print a calendar for a group of years
@@ -12022,13 +12348,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-calxxxx-yyyy-doc >= %{texlive_version}
+Suggests:       texlive-calxxxx-yyyy-doc >= %{texlive_version}
 Provides:       tex(calxxxx-yyyy-doc.tex)
 Provides:       tex(calxxxx-yyyy.tex)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source198:      calxxxx-yyyy.tar.xz
-Source199:      calxxxx-yyyy.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source214:      calxxxx-yyyy.tar.xz
+Source215:      calxxxx-yyyy.doc.tar.xz
 
 %description -n texlive-calxxxx-yyyy
 The package prints a calendar for two or more years, according
@@ -12039,7 +12365,7 @@ English-speaking world. The package requires array, babel, and
 geometry.
 
 %package -n texlive-calxxxx-yyyy-doc
-Version:        %{texlive_version}.%{texlive_noarch}.20.21asvn57282
+Version:        %{texlive_version}.%{texlive_noarch}.20.22asvn61463
 Release:        0
 Summary:        Documentation for texlive-calxxxx-yyyy
 License:        LPPL-1.0
@@ -12064,27 +12390,21 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-calxxxx-yyyy
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-calxxxx-yyyy-doc
 %defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/calxxxx-yyyy/README
-%{_texmfdistdir}/doc/latex/calxxxx-yyyy/cal2021-2038_DE.pdf
-%{_texmfdistdir}/doc/latex/calxxxx-yyyy/cal2021-2038_DK.pdf
-%{_texmfdistdir}/doc/latex/calxxxx-yyyy/cal2021-2038_EN.pdf
+%{_texmfdistdir}/doc/latex/calxxxx-yyyy/cal2022-2039_DE.pdf
+%{_texmfdistdir}/doc/latex/calxxxx-yyyy/cal2022-2039_DK.pdf
+%{_texmfdistdir}/doc/latex/calxxxx-yyyy/cal2022-2039_EN.pdf
 %{_texmfdistdir}/doc/latex/calxxxx-yyyy/calxxxx-yyyy-doc.pdf
 
 %files -n texlive-calxxxx-yyyy
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/calxxxx-yyyy/calxxxx-yyyy-doc.tex
 %{_texmfdistdir}/tex/latex/calxxxx-yyyy/calxxxx-yyyy.tex
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-calxxxx-yyyy-%{texlive_version}.%{texlive_noarch}.20.21asvn57282-%{release}-zypper
-%endif
 
 %package -n texlive-cancel
 Version:        %{texlive_version}.%{texlive_noarch}.2.2svn32508
@@ -12113,12 +12433,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-cancel-doc >= %{texlive_version}
+Suggests:       texlive-cancel-doc >= %{texlive_version}
 Provides:       tex(cancel.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source200:      cancel.tar.xz
-Source201:      cancel.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source216:      cancel.tar.xz
+Source217:      cancel.doc.tar.xz
 
 %description -n texlive-cancel
 A package to draw diagonal lines ("cancelling" a term) and
@@ -12150,9 +12470,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-cancel
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -12164,9 +12481,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-cancel
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/cancel/cancel.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-cancel-%{texlive_version}.%{texlive_noarch}.2.2svn32508-%{release}-zypper
-%endif
 
 %package -n texlive-canoniclayout
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.5svn54758
@@ -12195,13 +12509,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-canoniclayout-doc >= %{texlive_version}
+Suggests:       texlive-canoniclayout-doc >= %{texlive_version}
 Provides:       tex(canoniclayout.sty)
 Requires:       tex(xfp.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source202:      canoniclayout.tar.xz
-Source203:      canoniclayout.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source218:      canoniclayout.tar.xz
+Source219:      canoniclayout.doc.tar.xz
 
 %description -n texlive-canoniclayout
 A canonic text layout has specified relations to a circle
@@ -12233,9 +12547,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-canoniclayout
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -12247,9 +12558,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-canoniclayout
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/canoniclayout/canoniclayout.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-canoniclayout-%{texlive_version}.%{texlive_noarch}.0.0.5svn54758-%{release}-zypper
-%endif
 
 %package -n texlive-cantarell
 Version:        %{texlive_version}.%{texlive_noarch}.3.2svn54512
@@ -12290,7 +12598,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-cantarell-fonts >= %{texlive_version}
-Recommends:     texlive-cantarell-doc >= %{texlive_version}
+Suggests:       texlive-cantarell-doc >= %{texlive_version}
 Provides:       tex(Cantarell-Bold-OT1-LF--base.tfm)
 Provides:       tex(Cantarell-Bold-OT1-LF-Slanted--base.tfm)
 Provides:       tex(Cantarell-Bold-OT1-LF-Slanted.tfm)
@@ -13196,10 +13504,10 @@ Requires:       tex(fontspec.sty)
 Requires:       tex(ifluatex.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source204:      cantarell.tar.xz
-Source205:      cantarell.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source220:      cantarell.tar.xz
+Source221:      cantarell.doc.tar.xz
 
 %description -n texlive-cantarell
 Cantarell is a contemporary Humanist sans serif designed by
@@ -13254,9 +13562,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-cantarell
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -14201,9 +14506,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-cantarell/Cantarell-Light.pfb
 %{_datadir}/fonts/texlive-cantarell/Cantarell-Regular.pfb
 %{_datadir}/fonts/texlive-cantarell/Cantarell-Thin.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-cantarell-fonts-%{texlive_version}.%{texlive_noarch}.3.2svn54512-%{release}-zypper
-%endif
 
 %package -n texlive-capt-of
 Version:        %{texlive_version}.%{texlive_noarch}.svn29803
@@ -14232,12 +14534,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-capt-of-doc >= %{texlive_version}
+Suggests:       texlive-capt-of-doc >= %{texlive_version}
 Provides:       tex(capt-of.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source206:      capt-of.tar.xz
-Source207:      capt-of.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source222:      capt-of.tar.xz
+Source223:      capt-of.doc.tar.xz
 
 %description -n texlive-capt-of
 Defines a command \captionof for putting a caption to something
@@ -14270,9 +14572,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-capt-of
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -14284,9 +14583,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-capt-of
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/capt-of/capt-of.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-capt-of-%{texlive_version}.%{texlive_noarch}.svn29803-%{release}-zypper
-%endif
 
 %package -n texlive-captcont
 Version:        %{texlive_version}.%{texlive_noarch}.2.0svn15878
@@ -14315,12 +14611,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-captcont-doc >= %{texlive_version}
+Suggests:       texlive-captcont-doc >= %{texlive_version}
 Provides:       tex(captcont.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source208:      captcont.tar.xz
-Source209:      captcont.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source224:      captcont.tar.xz
+Source225:      captcont.doc.tar.xz
 
 %description -n texlive-captcont
 The captcont package provides the ability to continue the
@@ -14358,9 +14654,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-captcont
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -14374,9 +14667,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-captcont
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/captcont/captcont.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-captcont-%{texlive_version}.%{texlive_noarch}.2.0svn15878-%{release}-zypper
-%endif
 
 %package -n texlive-captdef
 Version:        %{texlive_version}.%{texlive_noarch}.svn17353
@@ -14405,12 +14695,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-captdef-doc >= %{texlive_version}
+Suggests:       texlive-captdef-doc >= %{texlive_version}
 Provides:       tex(captdef.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source210:      captdef.tar.xz
-Source211:      captdef.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source226:      captdef.tar.xz
+Source227:      captdef.doc.tar.xz
 
 %description -n texlive-captdef
 The \DeclareCaption command defines a class of caption command
@@ -14445,9 +14735,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-captdef
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -14460,12 +14747,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-captdef
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/captdef/captdef.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-captdef-%{texlive_version}.%{texlive_noarch}.svn17353-%{release}-zypper
-%endif
 
 %package -n texlive-caption
-Version:        %{texlive_version}.%{texlive_noarch}.svn56771
+Version:        %{texlive_version}.%{texlive_noarch}.svn62757
 Release:        0
 License:        LPPL-1.0
 Summary:        Customising captions in floating environments
@@ -14491,19 +14775,36 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-caption-doc >= %{texlive_version}
+Suggests:       texlive-caption-doc >= %{texlive_version}
 Provides:       tex(bicaption.sty)
 Provides:       tex(caption-light.sty)
 Provides:       tex(caption.sty)
 Provides:       tex(caption2.sty)
+Provides:       tex(caption2_1995-10-09.sty)
+Provides:       tex(caption2_2005-10-03.sty)
 Provides:       tex(caption3.sty)
+Provides:       tex(caption3_2007-04-11.sty)
+Provides:       tex(caption3_2010-01-14.sty)
+Provides:       tex(caption3_2011-11-01.sty)
+Provides:       tex(caption3_2019-09-01.sty)
+Provides:       tex(caption3_2020-07-29.sty)
+Provides:       tex(caption3_2020-10-26.sty)
+Provides:       tex(caption_1995-04-05.sty)
+Provides:       tex(caption_2007-04-16.sty)
+Provides:       tex(caption_2010-01-09.sty)
+Provides:       tex(caption_2011-11-10.sty)
+Provides:       tex(caption_2019-09-01.sty)
+Provides:       tex(caption_2020-07-29.sty)
+Provides:       tex(caption_2020-10-26.sty)
 Provides:       tex(ltcaption.sty)
 Provides:       tex(subcaption.sty)
 Requires:       tex(keyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source212:      caption.tar.xz
-Source213:      caption.doc.tar.xz
+Requires:       tex(newfloat.sty)
+Requires:       tex(ragged2e.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source228:      caption.tar.xz
+Source229:      caption.doc.tar.xz
 
 %description -n texlive-caption
 The caption package provides many ways to customise the
@@ -14517,13 +14818,13 @@ float" facility, in the same way that simpler packages like
 capt-of do. The package supersedes caption2.
 
 %package -n texlive-caption-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn56771
+Version:        %{texlive_version}.%{texlive_noarch}.svn62757
 Release:        0
 Summary:        Documentation for texlive-caption
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            http://www.tug.org/texlive/
-Provides:       locale(texlive-caption-doc:de;en;ru)
+Provides:       locale(texlive-caption-doc:en)
 
 %description -n texlive-caption-doc
 This package includes the documentation for texlive-caption
@@ -14542,9 +14843,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-caption
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -14554,10 +14852,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/caption/README
 %{_texmfdistdir}/doc/latex/caption/SUMMARY
 %{_texmfdistdir}/doc/latex/caption/bicaption.pdf
-%{_texmfdistdir}/doc/latex/caption/caption-deu.pdf
-%{_texmfdistdir}/doc/latex/caption/caption-eng.pdf
 %{_texmfdistdir}/doc/latex/caption/caption-light.pdf
-%{_texmfdistdir}/doc/latex/caption/caption-rus.pdf
+%{_texmfdistdir}/doc/latex/caption/caption.pdf
+%{_texmfdistdir}/doc/latex/caption/caption2.pdf
 %{_texmfdistdir}/doc/latex/caption/ltcaption.pdf
 %{_texmfdistdir}/doc/latex/caption/subcaption.pdf
 
@@ -14574,12 +14871,24 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/caption/caption-thesis.sto
 %{_texmfdistdir}/tex/latex/caption/caption.sty
 %{_texmfdistdir}/tex/latex/caption/caption2.sty
+%{_texmfdistdir}/tex/latex/caption/caption2_1995-10-09.sty
+%{_texmfdistdir}/tex/latex/caption/caption2_2005-10-03.sty
 %{_texmfdistdir}/tex/latex/caption/caption3.sty
+%{_texmfdistdir}/tex/latex/caption/caption3_2007-04-11.sty
+%{_texmfdistdir}/tex/latex/caption/caption3_2010-01-14.sty
+%{_texmfdistdir}/tex/latex/caption/caption3_2011-11-01.sty
+%{_texmfdistdir}/tex/latex/caption/caption3_2019-09-01.sty
+%{_texmfdistdir}/tex/latex/caption/caption3_2020-07-29.sty
+%{_texmfdistdir}/tex/latex/caption/caption3_2020-10-26.sty
+%{_texmfdistdir}/tex/latex/caption/caption_1995-04-05.sty
+%{_texmfdistdir}/tex/latex/caption/caption_2007-04-16.sty
+%{_texmfdistdir}/tex/latex/caption/caption_2010-01-09.sty
+%{_texmfdistdir}/tex/latex/caption/caption_2011-11-10.sty
+%{_texmfdistdir}/tex/latex/caption/caption_2019-09-01.sty
+%{_texmfdistdir}/tex/latex/caption/caption_2020-07-29.sty
+%{_texmfdistdir}/tex/latex/caption/caption_2020-10-26.sty
 %{_texmfdistdir}/tex/latex/caption/ltcaption.sty
 %{_texmfdistdir}/tex/latex/caption/subcaption.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-caption-%{texlive_version}.%{texlive_noarch}.svn56771-%{release}-zypper
-%endif
 
 %package -n texlive-carbohydrates
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn39000
@@ -14608,15 +14917,15 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-carbohydrates-doc >= %{texlive_version}
+Suggests:       texlive-carbohydrates-doc >= %{texlive_version}
 Provides:       tex(carbohydrates.sty)
 Requires:       tex(chemfig.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(xcolor.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source214:      carbohydrates.tar.xz
-Source215:      carbohydrates.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source230:      carbohydrates.tar.xz
+Source231:      carbohydrates.doc.tar.xz
 
 %description -n texlive-carbohydrates
 This package offers macros that make the preparation of
@@ -14650,9 +14959,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-carbohydrates
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -14666,12 +14972,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-carbohydrates
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/carbohydrates/carbohydrates.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-carbohydrates-%{texlive_version}.%{texlive_noarch}.0.0.1svn39000-%{release}-zypper
-%endif
 
 %package -n texlive-carlisle
-Version:        %{texlive_version}.%{texlive_noarch}.svn56753
+Version:        %{texlive_version}.%{texlive_noarch}.svn59577
 Release:        0
 License:        LPPL-1.0
 Summary:        David Carlisle's small packages
@@ -14697,7 +15000,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-carlisle-doc >= %{texlive_version}
+Suggests:       texlive-carlisle-doc >= %{texlive_version}
 Provides:       tex(dotlessj.sty)
 Provides:       tex(ltxtable.sty)
 Provides:       tex(plain.sty)
@@ -14707,10 +15010,10 @@ Provides:       tex(slashed.sty)
 Requires:       tex(color.sty)
 Requires:       tex(longtable.sty)
 Requires:       tex(tabularx.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source216:      carlisle.tar.xz
-Source217:      carlisle.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source232:      carlisle.tar.xz
+Source233:      carlisle.doc.tar.xz
 
 %description -n texlive-carlisle
 Many of David Carlisle's more substantial packages stand on
@@ -14724,7 +15027,7 @@ LaTeX format); A jiffy to create 'slashed' characters for
 physicists.
 
 %package -n texlive-carlisle-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn56753
+Version:        %{texlive_version}.%{texlive_noarch}.svn59577
 Release:        0
 Summary:        Documentation for texlive-carlisle
 License:        LPPL-1.0
@@ -14748,9 +15051,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-carlisle
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -14768,9 +15068,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/carlisle/remreset.sty
 %{_texmfdistdir}/tex/latex/carlisle/scalefnt.sty
 %{_texmfdistdir}/tex/latex/carlisle/slashed.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-carlisle-%{texlive_version}.%{texlive_noarch}.svn56753-%{release}-zypper
-%endif
 
 %package -n texlive-carlito
 Version:        %{texlive_version}.%{texlive_noarch}.svn35002
@@ -14811,7 +15108,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-carlito-fonts >= %{texlive_version}
-Recommends:     texlive-carlito-doc >= %{texlive_version}
+Suggests:       texlive-carlito-doc >= %{texlive_version}
 Provides:       tex(Carlito-Bold-inf-ly1.tfm)
 Provides:       tex(Carlito-Bold-inf-ot1.tfm)
 Provides:       tex(Carlito-Bold-inf-t1--base.tfm)
@@ -15031,10 +15328,10 @@ Requires:       tex(ifluatex.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source218:      carlito.tar.xz
-Source219:      carlito.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source234:      carlito.tar.xz
+Source235:      carlito.doc.tar.xz
 
 %description -n texlive-carlito
 The package provides LaTeX, pdfLaTeX, XeLaTeX and LuaLaTeX
@@ -15087,9 +15384,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-carlito
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -15343,9 +15637,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-carlito/Carlito-BoldItalic.pfb
 %{_datadir}/fonts/texlive-carlito/Carlito-Italic.pfb
 %{_datadir}/fonts/texlive-carlito/Carlito.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-carlito-fonts-%{texlive_version}.%{texlive_noarch}.svn35002-%{release}-zypper
-%endif
 
 %package -n texlive-carolmin-ps
 Version:        %{texlive_version}.%{texlive_noarch}.svn15878
@@ -15386,12 +15677,12 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-carolmin-ps-fonts >= %{texlive_version}
-Recommends:     texlive-carolmin-ps-doc >= %{texlive_version}
+Suggests:       texlive-carolmin-ps-doc >= %{texlive_version}
 Provides:       tex(cmin.map)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source220:      carolmin-ps.tar.xz
-Source221:      carolmin-ps.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source236:      carolmin-ps.tar.xz
+Source237:      carolmin-ps.doc.tar.xz
 
 %description -n texlive-carolmin-ps
 The bundle offers Adobe Type 1 format versions of Peter
@@ -15443,9 +15734,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-carolmin-ps
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -15484,12 +15772,105 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-carolmin-ps/cminb10.pfb
 %{_datadir}/fonts/texlive-carolmin-ps/cminb17.pfb
 %{_datadir}/fonts/texlive-carolmin-ps/cminb7.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-carolmin-ps-fonts-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
-%endif
+
+%package -n texlive-cartonaugh
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn59938
+Release:        0
+License:        LPPL-1.0
+Summary:        A LuaLaTeX package for drawing karnaugh maps with up to 6 variables
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-cartonaugh-doc >= %{texlive_version}
+Provides:       tex(cartonaugh.sty)
+Requires:       tex(iftex.sty)
+Requires:       tex(tikz.sty)
+Requires:       tex(xparse.sty)
+Requires:       tex(xstring.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source238:      cartonaugh.tar.xz
+Source239:      cartonaugh.doc.tar.xz
+
+%description -n texlive-cartonaugh
+This package, a fork of 2pi's karnaugh-map package, draws
+karnaugh maps with 2, 3, 4, 5, and 6 variables. It also
+contains commands for filling the karnaugh map with terms
+semi-automatically or manually. Last but not least it contains
+commands for drawing implicants on top of the map. The name
+"cartonaugh" is a portmanteau of "cartographer" and "karnaugh".
+The package needs LuaLaTeX and depends on TikZ, xparse, and
+xstring.
+
+%package -n texlive-cartonaugh-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn59938
+Release:        0
+Summary:        Documentation for texlive-cartonaugh
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+
+%description -n texlive-cartonaugh-doc
+This package includes the documentation for texlive-cartonaugh
+
+%post -n texlive-cartonaugh
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-cartonaugh
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-cartonaugh
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-cartonaugh-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/cartonaugh/README.md
+%{_texmfdistdir}/doc/latex/cartonaugh/cartonaugh-example.pdf
+%{_texmfdistdir}/doc/latex/cartonaugh/cartonaugh-example.tex
+%{_texmfdistdir}/doc/latex/cartonaugh/cartonaugh.pdf
+%{_texmfdistdir}/doc/latex/cartonaugh/test.sh
+%{_texmfdistdir}/doc/latex/cartonaugh/test/cartonaugh-bw-color.tex
+%{_texmfdistdir}/doc/latex/cartonaugh/test/cartonaugh-grid.tex
+%{_texmfdistdir}/doc/latex/cartonaugh/test/cartonaugh-implicant.tex
+%{_texmfdistdir}/doc/latex/cartonaugh/test/cartonaugh-implicantcorner.tex
+%{_texmfdistdir}/doc/latex/cartonaugh/test/cartonaugh-implicantedge.tex
+%{_texmfdistdir}/doc/latex/cartonaugh/test/cartonaugh-options.tex
+%{_texmfdistdir}/doc/latex/cartonaugh/test/cartonaugh-terms.tex
+
+%files -n texlive-cartonaugh
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/cartonaugh/cartonaugh.lua
+%{_texmfdistdir}/tex/latex/cartonaugh/cartonaugh.sty
 
 %package -n texlive-cascade
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn55759
+Version:        %{texlive_version}.%{texlive_noarch}.1.2svn60310
 Release:        0
 License:        LPPL-1.0
 Summary:        Constructions with braces to present mathematical demonstrations
@@ -15515,14 +15896,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-cascade-doc >= %{texlive_version}
+Suggests:       texlive-cascade-doc >= %{texlive_version}
 Provides:       tex(cascade.sty)
 Requires:       tex(l3keys2e.sty)
-Requires:       tex(xparse.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source222:      cascade.tar.xz
-Source223:      cascade.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source240:      cascade.tar.xz
+Source241:      cascade.doc.tar.xz
 
 %description -n texlive-cascade
 The LaTeX package cascade provides a command \Cascade to do
@@ -15530,7 +15910,7 @@ constructions to present mathematical demonstrations with
 successive braces for the deductions.
 
 %package -n texlive-cascade-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn55759
+Version:        %{texlive_version}.%{texlive_noarch}.1.2svn60310
 Release:        0
 Summary:        Documentation for texlive-cascade
 License:        LPPL-1.0
@@ -15555,9 +15935,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-cascade
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -15571,9 +15948,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-cascade
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/cascade/cascade.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-cascade-%{texlive_version}.%{texlive_noarch}.1.1svn55759-%{release}-zypper
-%endif
 
 %package -n texlive-cascadia-code
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.0.1svn57478
@@ -15614,7 +15988,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-cascadia-code-fonts >= %{texlive_version}
-Recommends:     texlive-cascadia-code-doc >= %{texlive_version}
+Suggests:       texlive-cascadia-code-doc >= %{texlive_version}
 Provides:       tex(CascadiaCod3-Bold-sup-ly1--base.tfm)
 Provides:       tex(CascadiaCod3-Bold-sup-ly1.tfm)
 Provides:       tex(CascadiaCod3-Bold-sup-ly1.vf)
@@ -15739,10 +16113,10 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source224:      cascadia-code.tar.xz
-Source225:      cascadia-code.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source242:      cascadia-code.tar.xz
+Source243:      cascadia-code.doc.tar.xz
 
 %description -n texlive-cascadia-code
 Cascadia Code is a monospaced font by Microsoft. This package
@@ -15795,9 +16169,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-cascadia-code
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -15964,9 +16335,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-cascadia-code/CascadiaCod3-Regular.pfb
 %{_datadir}/fonts/texlive-cascadia-code/CascadiaCod3-SemiBold.pfb
 %{_datadir}/fonts/texlive-cascadia-code/CascadiaCod3-SemiLight.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-cascadia-code-fonts-%{texlive_version}.%{texlive_noarch}.0.0.0.1svn57478-%{release}-zypper
-%endif
 
 %package -n texlive-cascadilla
 Version:        %{texlive_version}.%{texlive_noarch}.1.8.2svn25144
@@ -15995,7 +16363,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-cascadilla-doc >= %{texlive_version}
+Suggests:       texlive-cascadilla-doc >= %{texlive_version}
 Provides:       tex(cascadilla.cls)
 Requires:       tex(article.cls)
 Requires:       tex(caption.sty)
@@ -16006,10 +16374,10 @@ Requires:       tex(indentfirst.sty)
 Requires:       tex(natbib.sty)
 Requires:       tex(times.sty)
 Requires:       tex(titlesec.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source226:      cascadilla.tar.xz
-Source227:      cascadilla.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source244:      cascadilla.tar.xz
+Source245:      cascadilla.doc.tar.xz
 
 %description -n texlive-cascadilla
 The class provides an extension of the standard LaTeX article
@@ -16043,9 +16411,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-cascadilla
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -16061,9 +16426,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bst/cascadilla/cascadilla.bst
 %{_texmfdistdir}/tex/latex/cascadilla/cascadilla.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-cascadilla-%{texlive_version}.%{texlive_noarch}.1.8.2svn25144-%{release}-zypper
-%endif
 
 %package -n texlive-cases
 Version:        %{texlive_version}.%{texlive_noarch}.3.2svn54682
@@ -16092,12 +16454,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-cases-doc >= %{texlive_version}
+Suggests:       texlive-cases-doc >= %{texlive_version}
 Provides:       tex(cases.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source228:      cases.tar.xz
-Source229:      cases.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source246:      cases.tar.xz
+Source247:      cases.doc.tar.xz
 
 %description -n texlive-cases
 This package provides a LaTeX environment "numcases" to produce
@@ -16131,9 +16493,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-cases
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -16146,9 +16505,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-cases
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/cases/cases.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-cases-%{texlive_version}.%{texlive_noarch}.3.2svn54682-%{release}-zypper
-%endif
 
 %package -n texlive-casyl
 Version:        %{texlive_version}.%{texlive_noarch}.2.0svn15878
@@ -16177,13 +16533,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-casyl-doc >= %{texlive_version}
+Suggests:       texlive-casyl-doc >= %{texlive_version}
 Provides:       tex(casyll10.tfm)
 Provides:       tex(casyltex.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source230:      casyl.tar.xz
-Source231:      casyl.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source248:      casyl.tar.xz
+Source249:      casyl.doc.tar.xz
 
 %description -n texlive-casyl
 The bundle constitutes a font (as Metafont source) and LaTeX
@@ -16214,9 +16570,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-casyl
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -16231,9 +16584,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/source/public/casyl/casyll10.mf
 %{_texmfdistdir}/fonts/tfm/public/casyl/casyll10.tfm
 %{_texmfdistdir}/tex/latex/casyl/casyltex.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-casyl-%{texlive_version}.%{texlive_noarch}.2.0svn15878-%{release}-zypper
-%endif
 
 %package -n texlive-catchfile
 Version:        %{texlive_version}.%{texlive_noarch}.1.8svn53084
@@ -16262,15 +16612,15 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-catchfile-doc >= %{texlive_version}
+Suggests:       texlive-catchfile-doc >= %{texlive_version}
 Provides:       tex(catchfile.sty)
 Requires:       tex(etexcmds.sty)
 Requires:       tex(infwarerr.sty)
 Requires:       tex(ltxcmds.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source232:      catchfile.tar.xz
-Source233:      catchfile.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source250:      catchfile.tar.xz
+Source251:      catchfile.doc.tar.xz
 
 %description -n texlive-catchfile
 This package catches the contents of a file and puts it in a
@@ -16302,9 +16652,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-catchfile
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -16316,9 +16663,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-catchfile
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/catchfile/catchfile.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-catchfile-%{texlive_version}.%{texlive_noarch}.1.8svn53084-%{release}-zypper
-%endif
 
 %package -n texlive-catchfilebetweentags
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn21476
@@ -16347,16 +16691,16 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-catchfilebetweentags-doc >= %{texlive_version}
+Suggests:       texlive-catchfilebetweentags-doc >= %{texlive_version}
 Provides:       tex(catchfilebetweentags.sty)
 Requires:       tex(catchfile.sty)
 Requires:       tex(etex.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(ltxcmds.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source234:      catchfilebetweentags.tar.xz
-Source235:      catchfilebetweentags.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source252:      catchfilebetweentags.tar.xz
+Source253:      catchfilebetweentags.doc.tar.xz
 
 %description -n texlive-catchfilebetweentags
 This package (built using the facilities of catchfile) provides
@@ -16391,9 +16735,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-catchfilebetweentags
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -16405,9 +16746,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-catchfilebetweentags
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/catchfilebetweentags/catchfilebetweentags.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-catchfilebetweentags-%{texlive_version}.%{texlive_noarch}.1.1svn21476-%{release}-zypper
-%endif
 
 %package -n texlive-catcodes
 Version:        %{texlive_version}.%{texlive_noarch}.r0.2svn38859
@@ -16436,14 +16774,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-catcodes-doc >= %{texlive_version}
+Suggests:       texlive-catcodes-doc >= %{texlive_version}
 Provides:       tex(actcodes.sty)
 Provides:       tex(catchdq.sty)
 Provides:       tex(stacklet.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source236:      catcodes.tar.xz
-Source237:      catcodes.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source254:      catcodes.tar.xz
+Source255:      catcodes.doc.tar.xz
 
 %description -n texlive-catcodes
 The bundle deals with category code switching; the packages of
@@ -16479,9 +16817,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-catcodes
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -16497,12 +16832,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/catcodes/catchdq.sty
 %{_texmfdistdir}/tex/generic/catcodes/catcodes.RLS
 %{_texmfdistdir}/tex/generic/catcodes/stacklet.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-catcodes-%{texlive_version}.%{texlive_noarch}.r0.2svn38859-%{release}-zypper
-%endif
 
 %package -n texlive-catechis
-Version:        %{texlive_version}.%{texlive_noarch}.2.5svn49061
+Version:        %{texlive_version}.%{texlive_noarch}.2.6svn59998
 Release:        0
 License:        LPPL-1.0
 Summary:        Macros for typesetting catechisms
@@ -16528,13 +16860,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-catechis-doc >= %{texlive_version}
+Suggests:       texlive-catechis-doc >= %{texlive_version}
 Provides:       tex(catechis.sty)
 Requires:       tex(paralist.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source238:      catechis.tar.xz
-Source239:      catechis.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source256:      catechis.tar.xz
+Source257:      catechis.doc.tar.xz
 
 %description -n texlive-catechis
 The macros include: format for question-and-answer; comments on
@@ -16543,7 +16875,7 @@ formatting of all the macros is highly (and simply)
 customizable.
 
 %package -n texlive-catechis-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.5svn49061
+Version:        %{texlive_version}.%{texlive_noarch}.2.6svn59998
 Release:        0
 Summary:        Documentation for texlive-catechis
 License:        LPPL-1.0
@@ -16567,9 +16899,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-catechis
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -16583,9 +16912,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-catechis
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/catechis/catechis.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-catechis-%{texlive_version}.%{texlive_noarch}.2.5svn49061-%{release}-zypper
-%endif
 
 %package -n texlive-catoptions
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.7hsvn35069
@@ -16614,14 +16940,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-catoptions-doc >= %{texlive_version}
+Suggests:       texlive-catoptions-doc >= %{texlive_version}
 Provides:       tex(catoptions-guide.cfg)
 Provides:       tex(catoptions.sty)
 Requires:       tex(pdftexcmds.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source240:      catoptions.tar.xz
-Source241:      catoptions.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source258:      catoptions.tar.xz
+Source259:      catoptions.doc.tar.xz
 
 %description -n texlive-catoptions
 The package changes package loading internals so that all
@@ -16659,9 +16985,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-catoptions
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -16674,12 +16997,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/catoptions/catoptions-guide.cfg
 %{_texmfdistdir}/tex/latex/catoptions/catoptions.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-catoptions-%{texlive_version}.%{texlive_noarch}.0.0.2.7hsvn35069-%{release}-zypper
-%endif
 
 %package -n texlive-causets
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn57139
+Version:        %{texlive_version}.%{texlive_noarch}.1.2svn61916
 Release:        0
 License:        LPPL-1.0
 Summary:        Draw causal set (Hasse) diagrams
@@ -16705,13 +17025,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-causets-doc >= %{texlive_version}
+Suggests:       texlive-causets-doc >= %{texlive_version}
 Provides:       tex(causets.sty)
 Requires:       tex(tikz.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source242:      causets.tar.xz
-Source243:      causets.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source260:      causets.tar.xz
+Source261:      causets.doc.tar.xz
 
 %description -n texlive-causets
 This LaTeX package uses TikZ to generate (Hasse) diagrams for
@@ -16721,7 +17041,7 @@ tikzpicture environment to annotate or modify a diagram, as
 shown with some examples in the documentation.
 
 %package -n texlive-causets-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn57139
+Version:        %{texlive_version}.%{texlive_noarch}.1.2svn61916
 Release:        0
 Summary:        Documentation for texlive-causets
 License:        LPPL-1.0
@@ -16745,9 +17065,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-causets
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -16764,9 +17081,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-causets
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/causets/causets.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-causets-%{texlive_version}.%{texlive_noarch}.1.1svn57139-%{release}-zypper
-%endif
 
 %package -n texlive-cbcoptic
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn16666
@@ -16796,17 +17110,17 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-cbcoptic-fonts >= %{texlive_version}
-Recommends:     texlive-cbcoptic-doc >= %{texlive_version}
+Suggests:       texlive-cbcoptic-doc >= %{texlive_version}
 Provides:       tex(copti.tfm)
 Provides:       tex(coptic.sty)
 Provides:       tex(copto.tfm)
 Provides:       tex(lcopcoptic.fd)
 Provides:       tex(prnthyph.sty)
 Requires:       tex(textcomp.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source244:      cbcoptic.tar.xz
-Source245:      cbcoptic.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source262:      cbcoptic.tar.xz
+Source263:      cbcoptic.doc.tar.xz
 
 %description -n texlive-cbcoptic
 CBcoptic is a bundle of files for typesetting Coptic
@@ -16859,9 +17173,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-cbcoptic
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -16896,9 +17207,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-cbcoptic/fonts.scale
 %{_datadir}/fonts/texlive-cbcoptic/copti.pfb
 %{_datadir}/fonts/texlive-cbcoptic/copto.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-cbcoptic-fonts-%{texlive_version}.%{texlive_noarch}.0.0.2svn16666-%{release}-zypper
-%endif
 
 %package -n texlive-cbfonts
 Version:        %{texlive_version}.%{texlive_noarch}.svn54080
@@ -16941,7 +17249,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-cbfonts-fonts >= %{texlive_version}
-Recommends:     texlive-cbfonts-doc >= %{texlive_version}
+Suggests:       texlive-cbfonts-doc >= %{texlive_version}
 Provides:       tex(CB.enc)
 Provides:       tex(cbgreek-full.map)
 Provides:       tex(glic0700.tfm)
@@ -17889,10 +18197,10 @@ Provides:       tex(gttu2074.tfm)
 Provides:       tex(gttu2488.tfm)
 Provides:       tex(gttu2986.tfm)
 Provides:       tex(gttu3583.tfm)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source246:      cbfonts.tar.xz
-Source247:      cbfonts.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source264:      cbfonts.tar.xz
+Source265:      cbfonts.doc.tar.xz
 
 %description -n texlive-cbfonts
 This bundle presents the whole of Beccari's original Greek font
@@ -17947,9 +18255,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-cbfonts
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -21838,9 +22143,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-cbfonts/gttu2488.pfb
 %{_datadir}/fonts/texlive-cbfonts/gttu2986.pfb
 %{_datadir}/fonts/texlive-cbfonts/gttu3583.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-cbfonts-fonts-%{texlive_version}.%{texlive_noarch}.svn54080-%{release}-zypper
-%endif
 
 %package -n texlive-cbfonts-fd
 Version:        %{texlive_version}.%{texlive_noarch}.1.2svn54080
@@ -21869,7 +22171,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-cbfonts-fd-doc >= %{texlive_version}
+Suggests:       texlive-cbfonts-fd-doc >= %{texlive_version}
 Provides:       tex(lgrcmr.fd)
 Provides:       tex(lgrcmro.fd)
 Provides:       tex(lgrcmss.fd)
@@ -21880,10 +22182,10 @@ Provides:       tex(lgrlmr.fd)
 Provides:       tex(lgrlmro.fd)
 Provides:       tex(lgrlmss.fd)
 Provides:       tex(lgrlmtt.fd)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source248:      cbfonts-fd.tar.xz
-Source249:      cbfonts-fd.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source266:      cbfonts-fd.tar.xz
+Source267:      cbfonts-fd.doc.tar.xz
 
 %description -n texlive-cbfonts-fd
 The package provides font description files for all the many
@@ -21916,9 +22218,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-cbfonts-fd
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -21940,9 +22239,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/cbfonts-fd/lgrlmro.fd
 %{_texmfdistdir}/tex/latex/cbfonts-fd/lgrlmss.fd
 %{_texmfdistdir}/tex/latex/cbfonts-fd/lgrlmtt.fd
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-cbfonts-fd-%{texlive_version}.%{texlive_noarch}.1.2svn54080-%{release}-zypper
-%endif
 
 %package -n texlive-cc-pl
 Version:        %{texlive_version}.%{texlive_noarch}.1.02.3svn58602
@@ -21983,7 +22279,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-cc-pl-fonts >= %{texlive_version}
-Recommends:     texlive-cc-pl-doc >= %{texlive_version}
+Suggests:       texlive-cc-pl-doc >= %{texlive_version}
 Provides:       tex(ccpl.map)
 Provides:       tex(pccsc10.tfm)
 Provides:       tex(pcmi10.tfm)
@@ -21996,10 +22292,10 @@ Provides:       tex(pcr9.tfm)
 Provides:       tex(pcsl10.tfm)
 Provides:       tex(pcslc9.tfm)
 Provides:       tex(pcti10.tfm)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source250:      cc-pl.tar.xz
-Source251:      cc-pl.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source268:      cc-pl.tar.xz
+Source269:      cc-pl.doc.tar.xz
 
 %description -n texlive-cc-pl
 These Metafont sources rely on the availability of the Metafont
@@ -22051,9 +22347,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-cc-pl
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -22119,9 +22412,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-cc-pl/pcsl10.pfb
 %{_datadir}/fonts/texlive-cc-pl/pcslc9.pfb
 %{_datadir}/fonts/texlive-cc-pl/pcti10.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-cc-pl-fonts-%{texlive_version}.%{texlive_noarch}.1.02.3svn58602-%{release}-zypper
-%endif
 
 %package -n texlive-ccaption
 Version:        %{texlive_version}.%{texlive_noarch}.3.2csvn23443
@@ -22150,12 +22440,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-ccaption-doc >= %{texlive_version}
+Suggests:       texlive-ccaption-doc >= %{texlive_version}
 Provides:       tex(ccaption.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source252:      ccaption.tar.xz
-Source253:      ccaption.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source270:      ccaption.tar.xz
+Source271:      ccaption.doc.tar.xz
 
 %description -n texlive-ccaption
 A package providing commands for 'continuation captions',
@@ -22190,9 +22480,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-ccaption
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -22204,12 +22491,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-ccaption
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/ccaption/ccaption.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-ccaption-%{texlive_version}.%{texlive_noarch}.3.2csvn23443-%{release}-zypper
-%endif
 
 %package -n texlive-ccfonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.2svn54686
+Version:        %{texlive_version}.%{texlive_noarch}.svn61431
 Release:        0
 License:        LPPL-1.0
 Summary:        Support for Concrete text and math fonts in LaTeX
@@ -22235,14 +22519,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-ccfonts-doc >= %{texlive_version}
+Suggests:       texlive-ccfonts-doc >= %{texlive_version}
 Provides:       tex(ccfonts.sty)
 Provides:       tex(t1ccr.fd)
 Provides:       tex(ts1ccr.fd)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source254:      ccfonts.tar.xz
-Source255:      ccfonts.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source272:      ccfonts.tar.xz
+Source273:      ccfonts.doc.tar.xz
 
 %description -n texlive-ccfonts
 LaTeX font definition files for the Concrete fonts and a LaTeX
@@ -22251,7 +22535,7 @@ font family. The files support OT1, T1, TS1, and Concrete
 mathematics including AMS fonts (Ulrik Vieth's concmath).
 
 %package -n texlive-ccfonts-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2svn54686
+Version:        %{texlive_version}.%{texlive_noarch}.svn61431
 Release:        0
 Summary:        Documentation for texlive-ccfonts
 License:        LPPL-1.0
@@ -22275,14 +22559,12 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-ccfonts
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-ccfonts-doc
 %defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/ccfonts/LICENSE
 %{_texmfdistdir}/doc/latex/ccfonts/README
 %{_texmfdistdir}/doc/latex/ccfonts/ccfonts.pdf
 
@@ -22291,9 +22573,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/ccfonts/ccfonts.sty
 %{_texmfdistdir}/tex/latex/ccfonts/t1ccr.fd
 %{_texmfdistdir}/tex/latex/ccfonts/ts1ccr.fd
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-ccfonts-%{texlive_version}.%{texlive_noarch}.1.2svn54686-%{release}-zypper
-%endif
 
 %package -n texlive-ccicons
 Version:        %{texlive_version}.%{texlive_noarch}.1.6svn54512
@@ -22334,16 +22613,16 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-ccicons-fonts >= %{texlive_version}
-Recommends:     texlive-ccicons-doc >= %{texlive_version}
+Suggests:       texlive-ccicons-doc >= %{texlive_version}
 Provides:       tex(ccicons-u.enc)
 Provides:       tex(ccicons.map)
 Provides:       tex(ccicons.sty)
 Provides:       tex(ccicons.tfm)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source256:      ccicons.tar.xz
-Source257:      ccicons.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source274:      ccicons.tar.xz
+Source275:      ccicons.doc.tar.xz
 
 %description -n texlive-ccicons
 The package provides the means to typeset Creative Commons
@@ -22394,9 +22673,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-ccicons
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -22428,9 +22704,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-ccicons/fonts.scale
 %{_datadir}/fonts/texlive-ccicons/ccicons.otf
 %{_datadir}/fonts/texlive-ccicons/ccicons.pfb
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-ccicons-fonts-%{texlive_version}.%{texlive_noarch}.1.6svn54512-%{release}-zypper
-%endif
 
 %package -n texlive-cclicenses
 Version:        %{texlive_version}.%{texlive_noarch}.svn15878
@@ -22459,13 +22732,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-cclicenses-doc >= %{texlive_version}
+Suggests:       texlive-cclicenses-doc >= %{texlive_version}
 Provides:       tex(cclicenses.sty)
 Requires:       tex(rotating.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source258:      cclicenses.tar.xz
-Source259:      cclicenses.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source276:      cclicenses.tar.xz
+Source277:      cclicenses.doc.tar.xz
 
 %description -n texlive-cclicenses
 The cclicenses package helps users typesetting Creative Commons
@@ -22497,9 +22770,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-cclicenses
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -22511,12 +22781,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-cclicenses
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/cclicenses/cclicenses.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-cclicenses-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
-%endif
 
 %package -n texlive-ccool
-Version:        %{texlive_version}.%{texlive_noarch}.3.1svn56636
+Version:        %{texlive_version}.%{texlive_noarch}.3.2svn60600
 Release:        0
 License:        LPPL-1.0
 Summary:        A key-value document command parser
@@ -22542,16 +22809,16 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-ccool-doc >= %{texlive_version}
+Suggests:       texlive-ccool-doc >= %{texlive_version}
 Provides:       tex(ccool.sty)
-Requires:       tex(erw-l3.sty)
-Requires:       tex(etoolbox.sty)
+Requires:       tex(expl3.sty)
 Requires:       tex(l3keys2e.sty)
+Requires:       tex(lambdax.sty)
 Requires:       tex(xparse.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source260:      ccool.tar.xz
-Source261:      ccool.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source278:      ccool.tar.xz
+Source279:      ccool.doc.tar.xz
 
 %description -n texlive-ccool
 This package provides a key-value interface, \Ccool, on top of
@@ -22570,7 +22837,7 @@ This can useful for typesetting documents sharing the same
 notation.
 
 %package -n texlive-ccool-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.1svn56636
+Version:        %{texlive_version}.%{texlive_noarch}.3.2svn60600
 Release:        0
 Summary:        Documentation for texlive-ccool
 License:        LPPL-1.0
@@ -22594,24 +22861,18 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-ccool
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-ccool-doc
 %defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/ccool/README.md
-%{_texmfdistdir}/doc/latex/ccool/ccool-1343e33-8ca.tex
+%{_texmfdistdir}/doc/latex/ccool/ccool.bib
 %{_texmfdistdir}/doc/latex/ccool/ccool.pdf
 
 %files -n texlive-ccool
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/ccool/ccool.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-ccool-%{texlive_version}.%{texlive_noarch}.3.1svn56636-%{release}-zypper
-%endif
 
 %package -n texlive-cd
 Version:        %{texlive_version}.%{texlive_noarch}.1.4svn34452
@@ -22640,14 +22901,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-cd-doc >= %{texlive_version}
+Suggests:       texlive-cd-doc >= %{texlive_version}
 Provides:       tex(cd.cls)
 Requires:       tex(article.cls)
 Requires:       tex(rotating.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source262:      cd.tar.xz
-Source263:      cd.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source280:      cd.tar.xz
+Source281:      cd.doc.tar.xz
 
 %description -n texlive-cd
 Normal usage will ordinarily require no more than a simple data
@@ -22679,9 +22940,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-cd
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -22699,9 +22957,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-cd
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/cd/cd.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-cd-%{texlive_version}.%{texlive_noarch}.1.4svn34452-%{release}-zypper
-%endif
 
 %package -n texlive-cd-cover
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn17121
@@ -22730,14 +22985,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-cd-cover-doc >= %{texlive_version}
+Suggests:       texlive-cd-cover-doc >= %{texlive_version}
 Provides:       tex(cd-cover.cls)
 Requires:       tex(article.cls)
 Requires:       tex(rotating.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source264:      cd-cover.tar.xz
-Source265:      cd-cover.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source282:      cd-cover.tar.xz
+Source283:      cd-cover.doc.tar.xz
 
 %description -n texlive-cd-cover
 The CD-cover class will typeset front and back cover sheets for
@@ -22769,9 +23024,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-cd-cover
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -22783,12 +23035,90 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-cd-cover
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/cd-cover/cd-cover.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-cd-cover-%{texlive_version}.%{texlive_noarch}.1.0svn17121-%{release}-zypper
-%endif
+
+%package -n texlive-cdcmd
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn60742
+Release:        0
+License:        LPPL-1.0
+Summary:        Expandable conditional commands for LaTeX
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-cdcmd-doc >= %{texlive_version}
+Provides:       tex(cdcmd.sty)
+Requires:       tex(expl3.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source284:      cdcmd.tar.xz
+Source285:      cdcmd.doc.tar.xz
+
+%description -n texlive-cdcmd
+This package provides some conditional commands, just like the
+styledcmd package. The difference is that cdcmd can define
+expandable conditional commands.
+
+%package -n texlive-cdcmd-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn60742
+Release:        0
+Summary:        Documentation for texlive-cdcmd
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Provides:       locale(texlive-cdcmd-doc:zh)
+
+%description -n texlive-cdcmd-doc
+This package includes the documentation for texlive-cdcmd
+
+%post -n texlive-cdcmd
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-cdcmd
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-cdcmd
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-cdcmd-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/cdcmd/README.md
+%{_texmfdistdir}/doc/latex/cdcmd/cdcmd-cn.pdf
+%{_texmfdistdir}/doc/latex/cdcmd/cdcmd-cn.tex
+%{_texmfdistdir}/doc/latex/cdcmd/cdcmd-test.tex
+%{_texmfdistdir}/doc/latex/cdcmd/cdcmd.pdf
+
+%files -n texlive-cdcmd
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/cdcmd/cdcmd.sty
 
 %package -n texlive-cdpbundl
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.36dsvn46613
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.36dsvn61719
 Release:        0
 License:        LPPL-1.0
 Summary:        Business letters in the Italian style
@@ -22814,7 +23144,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-cdpbundl-doc >= %{texlive_version}
+Suggests:       texlive-cdpbundl-doc >= %{texlive_version}
 Provides:       tex(articoletteracdp.cls)
 Provides:       tex(cdpaddon.sty)
 Provides:       tex(cdpbabel.sty)
@@ -22829,10 +23159,10 @@ Requires:       tex(babel.sty)
 Requires:       tex(color.sty)
 Requires:       tex(eepic.sty)
 Requires:       tex(hyperref.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source266:      cdpbundl.tar.xz
-Source267:      cdpbundl.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source286:      cdpbundl.tar.xz
+Source287:      cdpbundl.doc.tar.xz
 
 %description -n texlive-cdpbundl
 The C.D.P. Bundle can be used to typeset high-quality business
@@ -22847,7 +23177,7 @@ letters, and each letter will have its own table of contents,
 etc., independent from the other ones.
 
 %package -n texlive-cdpbundl-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.36dsvn46613
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.36dsvn61719
 Release:        0
 Summary:        Documentation for texlive-cdpbundl
 License:        LPPL-1.0
@@ -22871,9 +23201,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-cdpbundl
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -22899,9 +23226,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/cdpbundl/epson-stylus-740.def
 %{_texmfdistdir}/tex/latex/cdpbundl/hp-laserjet-4500.def
 %{_texmfdistdir}/tex/latex/cdpbundl/letteracdp.cls
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-cdpbundl-%{texlive_version}.%{texlive_noarch}.0.0.36dsvn46613-%{release}-zypper
-%endif
 
 %package -n texlive-cell
 Version:        %{texlive_version}.%{texlive_noarch}.svn42428
@@ -22930,13 +23254,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-cell-doc >= %{texlive_version}
+Suggests:       texlive-cell-doc >= %{texlive_version}
 Provides:       tex(cell.sty)
 Requires:       tex(cite.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source268:      cell.tar.xz
-Source269:      cell.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source288:      cell.tar.xz
+Source289:      cell.doc.tar.xz
 
 %description -n texlive-cell
 This is an "apa-like" style (cf. apalike.bst in the BibTeX
@@ -22968,9 +23292,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-cell
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -22982,9 +23303,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bst/cell/cell.bst
 %{_texmfdistdir}/tex/latex/cell/cell.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-cell-%{texlive_version}.%{texlive_noarch}.svn42428-%{release}-zypper
-%endif
 
 %package -n texlive-cellprops
 Version:        %{texlive_version}.%{texlive_noarch}.2.0svn57599
@@ -23013,17 +23331,17 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-cellprops-doc >= %{texlive_version}
+Suggests:       texlive-cellprops-doc >= %{texlive_version}
 Provides:       tex(cellprops.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(mdwtab.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source270:      cellprops.tar.xz
-Source271:      cellprops.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source290:      cellprops.tar.xz
+Source291:      cellprops.doc.tar.xz
 
 %description -n texlive-cellprops
 This package reworks the internals of tabular, array, and
@@ -23056,9 +23374,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-cellprops
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -23071,12 +23386,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-cellprops
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/cellprops/cellprops.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-cellprops-%{texlive_version}.%{texlive_noarch}.2.0svn57599-%{release}-zypper
-%endif
 
 %package -n texlive-cellspace
-Version:        %{texlive_version}.%{texlive_noarch}.1.8.1svn50374
+Version:        %{texlive_version}.%{texlive_noarch}.1.9.0svn61501
 Release:        0
 License:        LPPL-1.0
 Summary:        Ensure minimal spacing of table cells
@@ -23102,17 +23414,17 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-cellspace-doc >= %{texlive_version}
+Suggests:       texlive-cellspace-doc >= %{texlive_version}
 Provides:       tex(cellspace.sty)
 Requires:       tex(amsmath.sty)
 Requires:       tex(array.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source272:      cellspace.tar.xz
-Source273:      cellspace.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source292:      cellspace.tar.xz
+Source293:      cellspace.doc.tar.xz
 
 %description -n texlive-cellspace
 It is well known that high or deep cells tend to touch the
@@ -23127,7 +23439,7 @@ columns. The package depends on ifthen, array, calc, and
 xkeyval.
 
 %package -n texlive-cellspace-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.8.1svn50374
+Version:        %{texlive_version}.%{texlive_noarch}.1.9.0svn61501
 Release:        0
 Summary:        Documentation for texlive-cellspace
 License:        LPPL-1.0
@@ -23151,9 +23463,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-cellspace
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -23166,9 +23475,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-cellspace
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/cellspace/cellspace.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-cellspace-%{texlive_version}.%{texlive_noarch}.1.8.1svn50374-%{release}-zypper
-%endif
 
 %package -n texlive-celtic
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn39797
@@ -23197,12 +23503,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-celtic-doc >= %{texlive_version}
+Suggests:       texlive-celtic-doc >= %{texlive_version}
 Provides:       tex(tikzlibraryceltic.code.tex)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source274:      celtic.tar.xz
-Source275:      celtic.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source294:      celtic.tar.xz
+Source295:      celtic.doc.tar.xz
 
 %description -n texlive-celtic
 The package provides a TikZ library for drawing celtic knots.
@@ -23232,9 +23538,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-celtic
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -23248,12 +23551,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-celtic
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/celtic/tikzlibraryceltic.code.tex
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-celtic-%{texlive_version}.%{texlive_noarch}.1.1svn39797-%{release}-zypper
-%endif
 
 %package -n texlive-censor
-Version:        %{texlive_version}.%{texlive_noarch}.3.22svn49168
+Version:        %{texlive_version}.%{texlive_noarch}.4.1svn61969
 Release:        0
 License:        LPPL-1.0
 Summary:        Tools for producing redacted documents
@@ -23279,14 +23579,14 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-censor-doc >= %{texlive_version}
+Suggests:       texlive-censor-doc >= %{texlive_version}
 Provides:       tex(censor.sty)
-Requires:       tex(ifnextok.sty)
 Requires:       tex(pbox.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source276:      censor.tar.xz
-Source277:      censor.doc.tar.xz
+Requires:       tex(tokcycle.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source296:      censor.tar.xz
+Source297:      censor.doc.tar.xz
 
 %description -n texlive-censor
 This package provides simple tools for creating redacted
@@ -23297,7 +23597,7 @@ unrestricted environment (for eventual transfer and completion
 in the restricted environment).
 
 %package -n texlive-censor-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.22svn49168
+Version:        %{texlive_version}.%{texlive_noarch}.4.1svn61969
 Release:        0
 Summary:        Documentation for texlive-censor
 License:        LPPL-1.0
@@ -23321,9 +23621,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-censor
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -23336,9 +23633,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-censor
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/censor/censor.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-censor-%{texlive_version}.%{texlive_noarch}.3.22svn49168-%{release}-zypper
-%endif
 
 %package -n texlive-centeredline
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn50971
@@ -23367,12 +23661,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-centeredline-doc >= %{texlive_version}
+Suggests:       texlive-centeredline-doc >= %{texlive_version}
 Provides:       tex(centeredline.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source278:      centeredline.tar.xz
-Source279:      centeredline.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source298:      centeredline.tar.xz
+Source299:      centeredline.doc.tar.xz
 
 %description -n texlive-centeredline
 This package provides a macro \centeredline{...} which allows
@@ -23407,9 +23701,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-centeredline
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -23420,9 +23711,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-centeredline
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/centeredline/centeredline.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-centeredline-%{texlive_version}.%{texlive_noarch}.1.1svn50971-%{release}-zypper
-%endif
 
 %package -n texlive-centerlastline
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn56644
@@ -23451,12 +23739,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-centerlastline-doc >= %{texlive_version}
+Suggests:       texlive-centerlastline-doc >= %{texlive_version}
 Provides:       tex(centerlastline.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source280:      centerlastline.tar.xz
-Source281:      centerlastline.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source300:      centerlastline.tar.xz
+Source301:      centerlastline.doc.tar.xz
 
 %description -n texlive-centerlastline
 This LaTeX package provides a command \centerlastline and an
@@ -23490,9 +23778,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-centerlastline
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -23504,9 +23789,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-centerlastline
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/centerlastline/centerlastline.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-centerlastline-%{texlive_version}.%{texlive_noarch}.1.0svn56644-%{release}-zypper
-%endif
 
 %package -n texlive-cesenaexam
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn44960
@@ -23535,7 +23817,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-cesenaexam-doc >= %{texlive_version}
+Suggests:       texlive-cesenaexam-doc >= %{texlive_version}
 Provides:       tex(cesenaexam.cls)
 Provides:       tex(cesenaexam.sty)
 Requires:       tex(article.cls)
@@ -23549,10 +23831,10 @@ Requires:       tex(pgfkeys.sty)
 Requires:       tex(pgfopts.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(titlesec.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source282:      cesenaexam.tar.xz
-Source283:      cesenaexam.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source302:      cesenaexam.tar.xz
+Source303:      cesenaexam.doc.tar.xz
 
 %description -n texlive-cesenaexam
 This LaTeX document class has been designed to typeset exams.
@@ -23582,9 +23864,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-cesenaexam
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -23600,12 +23879,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/cesenaexam/cesenaexam.cls
 %{_texmfdistdir}/tex/latex/cesenaexam/cesenaexam.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-cesenaexam-%{texlive_version}.%{texlive_noarch}.0.0.2svn44960-%{release}-zypper
-%endif
 
 %package -n texlive-cfr-initials
-Version:        %{texlive_version}.%{texlive_noarch}.1.01svn36728
+Version:        %{texlive_version}.%{texlive_noarch}.1.01svn61719
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX packages for use of initials
@@ -23631,7 +23907,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-cfr-initials-doc >= %{texlive_version}
+Suggests:       texlive-cfr-initials-doc >= %{texlive_version}
 Provides:       tex(Acorn.sty)
 Provides:       tex(AnnSton.sty)
 Provides:       tex(ArtNouv.sty)
@@ -23678,23 +23954,23 @@ Requires:       tex(Sanremo.fd)
 Requires:       tex(Starburst.fd)
 Requires:       tex(Typocaps.fd)
 Requires:       tex(Zallman.fd)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source284:      cfr-initials.tar.xz
-Source285:      cfr-initials.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source304:      cfr-initials.tar.xz
+Source305:      cfr-initials.doc.tar.xz
 
 %description -n texlive-cfr-initials
 This is a set of 23 tiny packages designed to make it easier to
 use fonts from the initials package in LaTeX, e.g. with the
 lettrine package. It is a response to comments on an answer at
-TeX Stack Exchange (http://tex.stackexchange.com/a/236410/)
+TeX Stack Exchange (https://tex.stackexchange.com/a/236410/)
 requesting sample package files for others to copy. I had
 previously assumed these were too trivial to be of interest,
 but if they would be useful, then I would prefer them to be
 generally available via CTAN.
 
 %package -n texlive-cfr-initials-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.01svn36728
+Version:        %{texlive_version}.%{texlive_noarch}.1.01svn61719
 Release:        0
 Summary:        Documentation for texlive-cfr-initials
 License:        LPPL-1.0
@@ -23718,9 +23994,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-cfr-initials
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -23756,9 +24029,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/cfr-initials/Starburst.sty
 %{_texmfdistdir}/tex/latex/cfr-initials/Typocaps.sty
 %{_texmfdistdir}/tex/latex/cfr-initials/Zallman.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-cfr-initials-%{texlive_version}.%{texlive_noarch}.1.01svn36728-%{release}-zypper
-%endif
 
 %package -n texlive-cfr-lm
 Version:        %{texlive_version}.%{texlive_noarch}.1.5svn36195
@@ -23798,7 +24068,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-cfr-lm-doc >= %{texlive_version}
+Suggests:       texlive-cfr-lm-doc >= %{texlive_version}
 Provides:       tex(cfr-lm.sty)
 Provides:       tex(clm.map)
 Provides:       tex(clmb28t10.tfm)
@@ -24687,10 +24957,10 @@ Requires:       tex(fontenc.sty)
 Requires:       tex(nfssext-cfr.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source286:      cfr-lm.tar.xz
-Source287:      cfr-lm.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source306:      cfr-lm.tar.xz
+Source307:      cfr-lm.doc.tar.xz
 
 %description -n texlive-cfr-lm
 The package supports a number of features of the Latin Modern
@@ -24742,9 +25012,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-cfr-lm
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -25643,9 +25910,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/cfr-lm/uclms.fd
 %{_texmfdistdir}/tex/latex/cfr-lm/uclmt.fd
 %{_texmfdistdir}/tex/latex/cfr-lm/uclmv.fd
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-cfr-lm-%{texlive_version}.%{texlive_noarch}.1.5svn36195-%{release}-zypper
-%endif
 
 %package -n texlive-changebar
 Version:        %{texlive_version}.%{texlive_noarch}.3.6csvn46919
@@ -25674,12 +25938,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-changebar-doc >= %{texlive_version}
+Suggests:       texlive-changebar-doc >= %{texlive_version}
 Provides:       tex(changebar.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source288:      changebar.tar.xz
-Source289:      changebar.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source308:      changebar.tar.xz
+Source309:      changebar.doc.tar.xz
 
 %description -n texlive-changebar
 Identify areas of text to be marked with changebars with the
@@ -25713,9 +25977,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-changebar
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -25740,9 +26001,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-changebar
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/changebar/changebar.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-changebar-%{texlive_version}.%{texlive_noarch}.3.6csvn46919-%{release}-zypper
-%endif
 
 %package -n texlive-changelayout
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn16094
@@ -25771,16 +26029,16 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-changelayout-doc >= %{texlive_version}
+Suggests:       texlive-changelayout-doc >= %{texlive_version}
 Provides:       tex(changelayout.sty)
 Requires:       tex(etextools.sty)
 Requires:       tex(ltxnew.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source290:      changelayout.tar.xz
-Source291:      changelayout.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source310:      changelayout.tar.xz
+Source311:      changelayout.doc.tar.xz
 
 %description -n texlive-changelayout
 The package is an extension of the changepage package to permit
@@ -25812,9 +26070,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-changelayout
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -25827,9 +26082,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-changelayout
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/changelayout/changelayout.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-changelayout-%{texlive_version}.%{texlive_noarch}.1.0svn16094-%{release}-zypper
-%endif
 
 %package -n texlive-changelog
 Version:        %{texlive_version}.%{texlive_noarch}.2.4.0svn56338
@@ -25858,15 +26110,15 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-changelog-doc >= %{texlive_version}
+Suggests:       texlive-changelog-doc >= %{texlive_version}
 Provides:       tex(changelog.sty)
 Requires:       tex(translations.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source292:      changelog.tar.xz
-Source293:      changelog.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source312:      changelog.tar.xz
+Source313:      changelog.doc.tar.xz
 
 %description -n texlive-changelog
 This package provides a changelog environment (which itself
@@ -25899,9 +26151,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-changelog
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -25918,9 +26167,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-changelog
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/changelog/changelog.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-changelog-%{texlive_version}.%{texlive_noarch}.2.4.0svn56338-%{release}-zypper
-%endif
 
 %package -n texlive-changepage
 Version:        %{texlive_version}.%{texlive_noarch}.1.0csvn15878
@@ -25949,13 +26195,13 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-changepage-doc >= %{texlive_version}
+Suggests:       texlive-changepage-doc >= %{texlive_version}
 Provides:       tex(changepage.sty)
 Provides:       tex(chngpage.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source294:      changepage.tar.xz
-Source295:      changepage.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source314:      changepage.tar.xz
+Source315:      changepage.doc.tar.xz
 
 %description -n texlive-changepage
 The package provides commands to change the page layout in the
@@ -25991,9 +26237,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-changepage
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -26006,12 +26249,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/changepage/changepage.sty
 %{_texmfdistdir}/tex/latex/changepage/chngpage.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-changepage-%{texlive_version}.%{texlive_noarch}.1.0csvn15878-%{release}-zypper
-%endif
 
 %package -n texlive-changes
-Version:        %{texlive_version}.%{texlive_noarch}.4.0.1svn57756
+Version:        %{texlive_version}.%{texlive_noarch}.4.2.1svn59950
 Release:        0
 License:        LPPL-1.0
 Summary:        Manual change markup
@@ -26037,7 +26277,7 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-changes-doc >= %{texlive_version}
+Suggests:       texlive-changes-doc >= %{texlive_version}
 Provides:       tex(changes.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(todonotes.sty)
@@ -26046,10 +26286,10 @@ Requires:       tex(ulem.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source296:      changes.tar.xz
-Source297:      changes.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source316:      changes.tar.xz
+Source317:      changes.doc.tar.xz
 
 %description -n texlive-changes
 The package allows the user to manually markup changes of text,
@@ -26062,7 +26302,7 @@ changes, authors, highlights or comments. A Python script is
 provided for removing the changes.
 
 %package -n texlive-changes-doc
-Version:        %{texlive_version}.%{texlive_noarch}.4.0.1svn57756
+Version:        %{texlive_version}.%{texlive_noarch}.4.2.1svn59950
 Release:        0
 Summary:        Documentation for texlive-changes
 License:        LPPL-1.0
@@ -26087,9 +26327,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-changes
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -26161,6 +26398,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.commentmarkup.todo.tex
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.commentmarkup.uwave.pdf
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.commentmarkup.uwave.tex
+%{_texmfdistdir}/doc/latex/changes/examples/changes.example.commentmarkup.wrong.pdf
+%{_texmfdistdir}/doc/latex/changes/examples/changes.example.commentmarkup.wrong.tex
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.defaultcolor.pdf
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.defaultcolor.tex
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.deletedmarkup.bf.pdf
@@ -26199,6 +26438,20 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.highlightmarkup.uuline.tex
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.highlightmarkup.uwave.pdf
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.highlightmarkup.uwave.tex
+%{_texmfdistdir}/doc/latex/changes/examples/changes.example.highlightmarkup.wrong.pdf
+%{_texmfdistdir}/doc/latex/changes/examples/changes.example.highlightmarkup.wrong.tex
+%{_texmfdistdir}/doc/latex/changes/examples/changes.example.language.british.pdf
+%{_texmfdistdir}/doc/latex/changes/examples/changes.example.language.british.tex
+%{_texmfdistdir}/doc/latex/changes/examples/changes.example.language.english.pdf
+%{_texmfdistdir}/doc/latex/changes/examples/changes.example.language.english.tex
+%{_texmfdistdir}/doc/latex/changes/examples/changes.example.language.french.pdf
+%{_texmfdistdir}/doc/latex/changes/examples/changes.example.language.french.tex
+%{_texmfdistdir}/doc/latex/changes/examples/changes.example.language.german.pdf
+%{_texmfdistdir}/doc/latex/changes/examples/changes.example.language.german.tex
+%{_texmfdistdir}/doc/latex/changes/examples/changes.example.language.italian.pdf
+%{_texmfdistdir}/doc/latex/changes/examples/changes.example.language.italian.tex
+%{_texmfdistdir}/doc/latex/changes/examples/changes.example.language.ngerman.pdf
+%{_texmfdistdir}/doc/latex/changes/examples/changes.example.language.ngerman.tex
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.listofchanges.all.pdf
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.listofchanges.all.tex
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.listofchanges.compactsummary.pdf
@@ -26223,6 +26476,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.markup.underlined.tex
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.markup.wrong.pdf
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.markup.wrong.tex
+%{_texmfdistdir}/doc/latex/changes/examples/changes.example.package.hyperref.pdf
+%{_texmfdistdir}/doc/latex/changes/examples/changes.example.package.hyperref.tex
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.packageoptions.todonotes.pdf
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.packageoptions.todonotes.tex
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.packageoptions.truncate.pdf
@@ -26235,6 +26490,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.screenshot.tex
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.setaddedmarkup.pdf
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.setaddedmarkup.tex
+%{_texmfdistdir}/doc/latex/changes/examples/changes.example.setanonymousname.pdf
+%{_texmfdistdir}/doc/latex/changes/examples/changes.example.setanonymousname.tex
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.setauthormarkup.pdf
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.setauthormarkup.tex
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.setauthormarkupposition.pdf
@@ -26247,6 +26504,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.setdeletedmarkup.tex
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.sethighlightmarkup.pdf
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.sethighlightmarkup.tex
+%{_texmfdistdir}/doc/latex/changes/examples/changes.example.setlocextension.pdf
+%{_texmfdistdir}/doc/latex/changes/examples/changes.example.setlocextension.tex
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.setsocextension.pdf
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.setsocextension.tex
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.setsummarytowidth.pdf
@@ -26257,6 +26516,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.settruncatewidth.tex
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.simple.pdf
 %{_texmfdistdir}/doc/latex/changes/examples/changes.example.simple.tex
+%{_texmfdistdir}/doc/latex/changes/regression/changes.regression.draft.id.tex
+%{_texmfdistdir}/doc/latex/changes/regression/changes.regression.draft.name.tex
+%{_texmfdistdir}/doc/latex/changes/regression/changes.regression.draft.nobabel.tex
+%{_texmfdistdir}/doc/latex/changes/regression/changes.regression.final.nobabel.tex
+%{_texmfdistdir}/doc/latex/changes/regression/changes.regression.final.tex
 %{_texmfdistdir}/doc/latex/changes/userdoc/added_ex.tex
 %{_texmfdistdir}/doc/latex/changes/userdoc/added_in.tex
 %{_texmfdistdir}/doc/latex/changes/userdoc/changes.de.tex
@@ -26279,6 +26543,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/changes/userdoc/script_pymergechanges_empty.tex
 %{_texmfdistdir}/doc/latex/changes/userdoc/setaddedmarkup_ex.tex
 %{_texmfdistdir}/doc/latex/changes/userdoc/setaddedmarkup_in.tex
+%{_texmfdistdir}/doc/latex/changes/userdoc/setanonymousname_ex.tex
+%{_texmfdistdir}/doc/latex/changes/userdoc/setanonymousname_in.tex
 %{_texmfdistdir}/doc/latex/changes/userdoc/setauthormarkup_ex.tex
 %{_texmfdistdir}/doc/latex/changes/userdoc/setauthormarkup_in.tex
 %{_texmfdistdir}/doc/latex/changes/userdoc/setauthormarkupposition_ex.tex
@@ -26338,9 +26604,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/scripts/changes/pyMergeChanges.py
 %{_texmfdistdir}/tex/latex/changes/changes.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-changes-%{texlive_version}.%{texlive_noarch}.4.0.1svn57756-%{release}-zypper
-%endif
 
 %package -n texlive-chappg
 Version:        %{texlive_version}.%{texlive_noarch}.2.1bsvn15878
@@ -26369,12 +26632,12 @@ Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
-Recommends:     texlive-chappg-doc >= %{texlive_version}
+Suggests:       texlive-chappg-doc >= %{texlive_version}
 Provides:       tex(chappg.sty)
-# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20210325
-Source298:      chappg.tar.xz
-Source299:      chappg.doc.tar.xz
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20220321
+Source318:      chappg.tar.xz
+Source319:      chappg.doc.tar.xz
 
 %description -n texlive-chappg
 The package provides for 'chapterno-pageno' or
@@ -26406,9 +26669,6 @@ if test $1 = 0; then
 fi
 
 %posttrans -n texlive-chappg
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
@@ -26419,9 +26679,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-chappg
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/chappg/chappg.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-chappg-%{texlive_version}.%{texlive_noarch}.2.1bsvn15878-%{release}-zypper
-%endif
 
 %prep
 %setup -q -c -T
@@ -26439,40 +26696,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf ../../../share/texmf/tlpkg/tlpostcode \
                                     %{buildroot}%{_datadir}/texlive/tlpkg/tlpostcode
     ln -sf tlpkg/tlpostcode         %{buildroot}%{_texmfmaindir}/tlpostcode
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-biolett-bst-%{texlive_version}.%{texlive_noarch}.svn42217-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:1} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:2} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bitelist-%{texlive_version}.%{texlive_noarch}.0.0.1svn25779-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:3} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:4} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bithesis-%{texlive_version}.%{texlive_noarch}.1.0.1svn57388-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:5} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:6} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bitpattern-%{texlive_version}.%{texlive_noarch}.svn39073-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:7} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:8} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bitset-%{texlive_version}.%{texlive_noarch}.1.3svn53837-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:9} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:10} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bitter-fonts-%{texlive_version}.%{texlive_noarch}.svn56026-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:11} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:12} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
@@ -26526,144 +26759,62 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-bitter.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-bitter.conf
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bizcard-%{texlive_version}.%{texlive_noarch}.1.1svn15878-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:13} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:14} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-blacklettert1-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:15} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:16} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-blindtext-%{texlive_version}.%{texlive_noarch}.2.0svn25039-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:17} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:18} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-blkarray-%{texlive_version}.%{texlive_noarch}.0.0.07svn36406-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:19} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:20} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-blochsphere-%{texlive_version}.%{texlive_noarch}.1.1svn38388-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:21} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:22} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-block-%{texlive_version}.%{texlive_noarch}.svn17209-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:23} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:24} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-blockdraw_mp-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:25} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:26} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bloques-%{texlive_version}.%{texlive_noarch}.1.0svn22490-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:27} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:28} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-blowup-%{texlive_version}.%{texlive_noarch}.1.0svn46213-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:29} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:30} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-blox-%{texlive_version}.%{texlive_noarch}.2.51svn57949-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:31} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:32} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bnumexpr-%{texlive_version}.%{texlive_noarch}.1.2dsvn49643-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:33} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:34} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bodegraph-%{texlive_version}.%{texlive_noarch}.1.4svn20047-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:35} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:36} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bohr-%{texlive_version}.%{texlive_noarch}.1.0svn54512-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:37} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:38} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-boisik-%{texlive_version}.%{texlive_noarch}.0.0.5svn15878-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:39} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:40} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-boites-%{texlive_version}.%{texlive_noarch}.1.1svn32235-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:41} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:42} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bold-extra-%{texlive_version}.%{texlive_noarch}.0.0.1svn17076-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:43} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:44} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-boldtensors-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:45} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:46} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bondgraph-%{texlive_version}.%{texlive_noarch}.1.0svn21670-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:47} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:48} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bondgraphs-%{texlive_version}.%{texlive_noarch}.1.0.1svn36605-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:49} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:50} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bookcover-%{texlive_version}.%{texlive_noarch}.3.3svn57326-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:51} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:52} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bookdb-%{texlive_version}.%{texlive_noarch}.0.0.2svn37536-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:53} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:54} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bookest-%{texlive_version}.%{texlive_noarch}.1.1svn15878-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:55} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:56} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bookhands-fonts-%{texlive_version}.%{texlive_noarch}.svn46480-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:57} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:58} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:59} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:60} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:61} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:62} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:63} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:64} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:65} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:66} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:67} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:68} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-bookhands
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/bookhands/*.{pf[ab],[ot]tf}
@@ -26694,17 +26845,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-booklet-%{texlive_version}.%{texlive_noarch}.0.0.7bsvn15878-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:59} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:60} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bookman-fonts-%{texlive_version}.%{texlive_noarch}.svn31835-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:61} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:69} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:70} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:71} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-bookman
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/urw/bookman/*.{pf[ab],[ot]tf}
@@ -26735,46 +26878,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bookmark-%{texlive_version}.%{texlive_noarch}.1.29svn56885-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:62} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:63} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bookshelf-%{texlive_version}.%{texlive_noarch}.0.0.5svn55475-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:64} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:65} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-booktabs-%{texlive_version}.%{texlive_noarch}.1.61803398svn53402-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:66} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:67} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-booktabs-de-%{texlive_version}.%{texlive_noarch}.1.61803svn21907-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:68} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-booktabs-fr-%{texlive_version}.%{texlive_noarch}.1.00svn21948-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:69} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-boolexpr-%{texlive_version}.%{texlive_noarch}.3.14svn17830-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:70} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:71} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-boondox-fonts-%{texlive_version}.%{texlive_noarch}.1.02dsvn54512-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:72} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:73} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:74} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:75} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:76} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:77} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:78} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:79} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:80} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:81} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:82} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:83} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-boondox
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/boondox/*.{pf[ab],[ot]tf}
@@ -26805,138 +26920,54 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bophook-%{texlive_version}.%{texlive_noarch}.0.0.02svn17062-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:74} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:75} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-borceux-%{texlive_version}.%{texlive_noarch}.svn21047-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:76} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:77} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bosisio-%{texlive_version}.%{texlive_noarch}.svn16989-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:78} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:79} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:84} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:85} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:86} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:87} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:88} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:89} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/latex/bosisio/makedoc
     do
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-boxedminipage-%{texlive_version}.%{texlive_noarch}.1.1svn54827-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:80} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:81} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-boxhandler-%{texlive_version}.%{texlive_noarch}.1.30svn28031-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:82} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:83} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bpchem-%{texlive_version}.%{texlive_noarch}.1.1svn45120-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:84} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:85} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bpolynomial-%{texlive_version}.%{texlive_noarch}.0.0.5svn15878-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:86} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:87} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-br-lex-%{texlive_version}.%{texlive_noarch}.svn44939-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:88} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:89} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bracketkey-%{texlive_version}.%{texlive_noarch}.1.0svn17129-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:90} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:91} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-braids-%{texlive_version}.%{texlive_noarch}.2.0svn54080-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:92} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:93} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-braille-%{texlive_version}.%{texlive_noarch}.svn20655-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:94} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:95} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-braket-%{texlive_version}.%{texlive_noarch}.svn17127-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:96} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:97} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-brandeis-dissertation-%{texlive_version}.%{texlive_noarch}.3.11svn54758-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:98} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:99} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-brandeis-problemset-%{texlive_version}.%{texlive_noarch}.0.0.5.5svn50991-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:100} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:101} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-brandeis-thesis-%{texlive_version}.%{texlive_noarch}.3.1svn54758-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:102} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:103} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-breakcites-%{texlive_version}.%{texlive_noarch}.svn21014-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:104} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:105} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-breakurl-%{texlive_version}.%{texlive_noarch}.1.40svn29901-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:106} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:107} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bredzenie-%{texlive_version}.%{texlive_noarch}.1.0svn44371-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:108} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:109} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-breqn-%{texlive_version}.%{texlive_noarch}.0.0.98ksvn56422-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:110} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:111} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bropd-%{texlive_version}.%{texlive_noarch}.1.2svn35383-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:112} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:113} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-brushscr-fonts-%{texlive_version}.%{texlive_noarch}.svn28363-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:114} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:115} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:116} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:117} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:118} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:119} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:120} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:121} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:122} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:123} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:124} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-brushscr
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/brushscr/*.{pf[ab],[ot]tf}
@@ -26967,24 +26998,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bubblesort-%{texlive_version}.%{texlive_noarch}.1.0svn56070-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:116} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:117} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bullcntr-%{texlive_version}.%{texlive_noarch}.0.0.04svn15878-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:118} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:119} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bundledoc-%{texlive_version}.%{texlive_noarch}.3.4svn55064-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:120} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:121} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/bundledoc/arlatex \
 	       %{_texmfdistdir}/scripts/bundledoc/bundledoc
@@ -26998,12 +27019,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-burmese-fonts-%{texlive_version}.%{texlive_noarch}.svn25185-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:122} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:123} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-burmese
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/burmese/*.{pf[ab],[ot]tf}
@@ -27034,162 +27051,62 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-businesscard-qrcode-%{texlive_version}.%{texlive_noarch}.1.2svn54080-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:124} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bussproofs-%{texlive_version}.%{texlive_noarch}.1.1svn54080-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bussproofs-extra-%{texlive_version}.%{texlive_noarch}.0.0.4svn51299-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bxbase-%{texlive_version}.%{texlive_noarch}.1.2svn56528-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bxcalc-%{texlive_version}.%{texlive_noarch}.1.1svn56431-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bxcjkjatype-%{texlive_version}.%{texlive_noarch}.0.0.3svn54080-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bxdpx-beamer-%{texlive_version}.%{texlive_noarch}.0.0.3svn41813-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bxdvidriver-%{texlive_version}.%{texlive_noarch}.0.0.2asvn43219-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:138} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:139} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bxeepic-%{texlive_version}.%{texlive_noarch}.0.0.2svn30559-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:140} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:141} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bxenclose-%{texlive_version}.%{texlive_noarch}.0.0.2svn40213-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:142} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:143} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bxghost-%{texlive_version}.%{texlive_noarch}.0.0.3.0svn53606-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:144} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:145} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bxjaholiday-%{texlive_version}.%{texlive_noarch}.1.1.0svn57025-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:146} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:147} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bxjalipsum-%{texlive_version}.%{texlive_noarch}.0.0.3asvn43369-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:148} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:149} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bxjaprnind-%{texlive_version}.%{texlive_noarch}.0.0.3bsvn45291-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:150} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:151} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bxjatoucs-%{texlive_version}.%{texlive_noarch}.0.0.2svn52509-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:152} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:153} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bxjscls-%{texlive_version}.%{texlive_noarch}.2.5svn57625-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:154} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:155} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bxnewfont-%{texlive_version}.%{texlive_noarch}.0.0.2bsvn44173-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:156} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:157} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bxorigcapt-%{texlive_version}.%{texlive_noarch}.0.0.3svn48606-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:158} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:159} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bxpapersize-%{texlive_version}.%{texlive_noarch}.0.0.5svn56491-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:160} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:161} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bxpdfver-%{texlive_version}.%{texlive_noarch}.0.0.5asvn57755-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:162} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:163} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bxtexlogo-%{texlive_version}.%{texlive_noarch}.0.0.4svn47230-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:165} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bxwareki-%{texlive_version}.%{texlive_noarch}.0.0.6svn51286-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:166} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:167} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-bytefield-%{texlive_version}.%{texlive_noarch}.2.6svn56821-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-c-pascal-%{texlive_version}.%{texlive_noarch}.1.2svn18337-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:171} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-c90-%{texlive_version}.%{texlive_noarch}.svn54074-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-cabin-fonts-%{texlive_version}.%{texlive_noarch}.svn55907-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:175} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:176} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:177} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:178} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:179} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:180} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:181} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:182} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:183} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:184} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:185} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:186} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:187} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:189} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:190} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:191} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-cabin
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/impallari/cabin/*.{pf[ab],[ot]tf} \
@@ -27241,12 +27158,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-cabin.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-cabin.conf
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-cachepic-%{texlive_version}.%{texlive_noarch}.1.0svn26313-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:176} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:177} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:192} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:193} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/cachepic/cachepic.tlu
     do
@@ -27259,12 +27172,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-caladea-fonts-%{texlive_version}.%{texlive_noarch}.svn34991-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:178} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:179} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-caladea
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/huerta/caladea/*.{pf[ab],[ot]tf} \
@@ -27316,42 +27225,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-caladea.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-caladea.conf
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-calcage-%{texlive_version}.%{texlive_noarch}.0.0.90svn27725-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:180} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:181} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-calctab-%{texlive_version}.%{texlive_noarch}.0.0.6.1svn15878-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:182} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:183} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-calculation-%{texlive_version}.%{texlive_noarch}.1.0svn35973-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:184} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:185} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-calculator-%{texlive_version}.%{texlive_noarch}.2.0svn33041-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:186} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:187} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-calligra-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:189} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-calligra-type1-fonts-%{texlive_version}.%{texlive_noarch}.001.000svn24302-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:190} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:191} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:197} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:201} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:202} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:203} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:204} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:205} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:206} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:207} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-calligra-type1
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/calligra-type1/*.{pf[ab],[ot]tf}
@@ -27382,48 +27267,20 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-callouts-%{texlive_version}.%{texlive_noarch}.svn44899-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:192} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:193} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-calrsfs-%{texlive_version}.%{texlive_noarch}.svn17125-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-cals-%{texlive_version}.%{texlive_noarch}.2.4.2svn43003-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:197} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-calxxxx-yyyy-%{texlive_version}.%{texlive_noarch}.20.21asvn57282-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-cancel-%{texlive_version}.%{texlive_noarch}.2.2svn32508-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:201} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-canoniclayout-%{texlive_version}.%{texlive_noarch}.0.0.5svn54758-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:202} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:203} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-cantarell-fonts-%{texlive_version}.%{texlive_noarch}.3.2svn54512-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:204} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:205} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:208} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:209} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:210} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:211} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:212} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:213} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:214} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:215} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:216} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:217} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:218} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:219} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:220} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:221} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-cantarell
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/gnome/cantarell/*.{pf[ab],[ot]tf} \
@@ -27475,48 +27332,20 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-cantarell.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-cantarell.conf
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-capt-of-%{texlive_version}.%{texlive_noarch}.svn29803-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:206} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:207} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-captcont-%{texlive_version}.%{texlive_noarch}.2.0svn15878-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:208} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:209} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-captdef-%{texlive_version}.%{texlive_noarch}.svn17353-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:210} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:211} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-caption-%{texlive_version}.%{texlive_noarch}.svn56771-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:212} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:213} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-carbohydrates-%{texlive_version}.%{texlive_noarch}.0.0.1svn39000-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:214} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:215} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-carlisle-%{texlive_version}.%{texlive_noarch}.svn56753-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:216} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:217} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-carlito-fonts-%{texlive_version}.%{texlive_noarch}.svn35002-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:218} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:219} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:222} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:223} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:224} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:225} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:226} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:227} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:228} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:230} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:231} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:232} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:234} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:235} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-carlito
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/typoland/carlito/*.{pf[ab],[ot]tf} \
@@ -27568,12 +27397,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-carlito.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-carlito.conf
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-carolmin-ps-fonts-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:220} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:221} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:236} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:237} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-carolmin-ps
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/carolmin-ps/*.{pf[ab],[ot]tf}
@@ -27604,18 +27429,24 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-cascade-%{texlive_version}.%{texlive_noarch}.1.1svn55759-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:222} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:223} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-cascadia-code-fonts-%{texlive_version}.%{texlive_noarch}.0.0.0.1svn57478-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:224} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:225} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:238} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:239} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    # Avoid /usr/bin/bash or similar
+    for scr in %{_texmfdistdir}/doc/latex/cartonaugh/test.sh
+    do
+	test -e %{buildroot}/$scr || continue
+	ed %{buildroot}/${scr} <<-'EOF'
+		1
+		s@^#!.*bash@#!/bin/bash@
+		.
+		w
+		q
+	EOF
+    done
+    tar --use-compress-program=xz -xf %{S:240} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:242} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-cascadia-code
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/cascadia-code/*.{pf[ab],[ot]tf} \
@@ -27667,66 +27498,26 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-cascadia-code.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-cascadia-code.conf
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-cascadilla-%{texlive_version}.%{texlive_noarch}.1.8.2svn25144-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:226} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:227} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-cases-%{texlive_version}.%{texlive_noarch}.3.2svn54682-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:228} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-casyl-%{texlive_version}.%{texlive_noarch}.2.0svn15878-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:230} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:231} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-catchfile-%{texlive_version}.%{texlive_noarch}.1.8svn53084-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:232} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-catchfilebetweentags-%{texlive_version}.%{texlive_noarch}.1.1svn21476-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:234} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:235} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-catcodes-%{texlive_version}.%{texlive_noarch}.r0.2svn38859-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:236} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:237} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-catechis-%{texlive_version}.%{texlive_noarch}.2.5svn49061-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:238} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:239} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-catoptions-%{texlive_version}.%{texlive_noarch}.0.0.2.7hsvn35069-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:240} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-causets-%{texlive_version}.%{texlive_noarch}.1.1svn57139-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:242} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-cbcoptic-fonts-%{texlive_version}.%{texlive_noarch}.0.0.2svn16666-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:244} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:245} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:246} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:247} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:248} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:249} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:250} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:251} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:252} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:253} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:254} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:255} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:256} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:257} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:258} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:259} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:260} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:261} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:262} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:263} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-cbcoptic
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/cbcoptic/*.{pf[ab],[ot]tf}
@@ -27757,12 +27548,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-cbfonts-fonts-%{texlive_version}.%{texlive_noarch}.svn54080-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:246} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:247} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:264} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:265} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-cbfonts
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/cbfonts/*.{pf[ab],[ot]tf}
@@ -27793,18 +27580,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-cbfonts-fd-%{texlive_version}.%{texlive_noarch}.1.2svn54080-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:248} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:249} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-cc-pl-fonts-%{texlive_version}.%{texlive_noarch}.1.02.3svn58602-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:250} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:251} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:266} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:267} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:268} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:269} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-cc-pl
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/cc-pl/*.{pf[ab],[ot]tf}
@@ -27835,24 +27614,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ccaption-%{texlive_version}.%{texlive_noarch}.3.2csvn23443-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:252} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:253} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ccfonts-%{texlive_version}.%{texlive_noarch}.1.2svn54686-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:254} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:255} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ccicons-fonts-%{texlive_version}.%{texlive_noarch}.1.6svn54512-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:256} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:257} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:270} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:271} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:272} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:273} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:274} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-ccicons
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/ccicons/*.{pf[ab],[ot]tf} \
@@ -27904,138 +27671,60 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-ccicons.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-ccicons.conf
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-cclicenses-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:258} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:259} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ccool-%{texlive_version}.%{texlive_noarch}.3.1svn56636-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:260} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:261} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-cd-%{texlive_version}.%{texlive_noarch}.1.4svn34452-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:262} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:263} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:280} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:281} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/latex/cd/parsecd.rb
     do
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-cd-cover-%{texlive_version}.%{texlive_noarch}.1.0svn17121-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:264} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:265} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-cdpbundl-%{texlive_version}.%{texlive_noarch}.0.0.36dsvn46613-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:266} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:267} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-cell-%{texlive_version}.%{texlive_noarch}.svn42428-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:268} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:269} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-cellprops-%{texlive_version}.%{texlive_noarch}.2.0svn57599-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:270} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:271} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-cellspace-%{texlive_version}.%{texlive_noarch}.1.8.1svn50374-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:272} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:273} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-celtic-%{texlive_version}.%{texlive_noarch}.1.1svn39797-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:274} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-censor-%{texlive_version}.%{texlive_noarch}.3.22svn49168-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-centeredline-%{texlive_version}.%{texlive_noarch}.1.1svn50971-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-centerlastline-%{texlive_version}.%{texlive_noarch}.1.0svn56644-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:280} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:281} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-cesenaexam-%{texlive_version}.%{texlive_noarch}.0.0.2svn44960-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:282} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:283} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-cfr-initials-%{texlive_version}.%{texlive_noarch}.1.01svn36728-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:284} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:285} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-cfr-lm-%{texlive_version}.%{texlive_noarch}.1.5svn36195-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:286} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:287} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-changebar-%{texlive_version}.%{texlive_noarch}.3.6csvn46919-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:288} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:289} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:290} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:291} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:292} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:293} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:294} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:295} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:296} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:297} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:298} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:299} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:300} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:301} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:302} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:303} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:304} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:305} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:306} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:307} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:308} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:309} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/latex/changebar/chbar.sh
     do
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-changelayout-%{texlive_version}.%{texlive_noarch}.1.0svn16094-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:290} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:291} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-changelog-%{texlive_version}.%{texlive_noarch}.2.4.0svn56338-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:292} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:293} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-changepage-%{texlive_version}.%{texlive_noarch}.1.0csvn15878-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:294} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:295} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-changes-%{texlive_version}.%{texlive_noarch}.4.0.1svn57756-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:296} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:297} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:310} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:311} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:312} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:313} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:314} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:315} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:316} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:317} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Correct shebang of python3 scripts if any
     for scr in %{_texmfdistdir}/scripts/changes/pyMergeChanges.py
     do
@@ -28049,12 +27738,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-chappg-%{texlive_version}.%{texlive_noarch}.2.1bsvn15878-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:298} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:299} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:318} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:319} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove this
     rm -vrf %{buildroot}%{_texmfdistdir}/tlpkg/tlpobj
     rm -vrf %{buildroot}%{_texmfmaindir}/tlpkg/tlpobj
