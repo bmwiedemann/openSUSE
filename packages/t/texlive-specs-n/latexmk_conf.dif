@@ -1,19 +1,19 @@
 ---
  texmf-dist/doc/man/man1/latexmk.1     |    1 
  texmf-dist/latexmk/latexmk.conf       |  408 ++++++++++++++++++++++++++++++++++
- texmf-dist/scripts/latexmk/latexmk.pl |   12 -
- 3 files changed, 414 insertions(+), 7 deletions(-)
+ texmf-dist/scripts/latexmk/latexmk.pl |   14 -
+ 3 files changed, 414 insertions(+), 9 deletions(-)
 
 --- texmf-dist/doc/man/man1/latexmk.1
-+++ texmf-dist/doc/man/man1/latexmk.1	2021-01-20 09:29:07.818024678 +0000
-@@ -1468,6 +1468,7 @@ system RC file, in the following order,
-    "/opt/local/share/latexmk/LatexMk",
-    "/usr/local/share/latexmk/LatexMk",
-    "/usr/local/lib/latexmk/LatexMk".
++++ texmf-dist/doc/man/man1/latexmk.1	2022-04-06 14:29:16.262536603 +0000
+@@ -1532,6 +1532,7 @@ read at startup in the following order:
+    "/opt/local/share/latexmk",
+    "/usr/local/share/latexmk",
+    "/usr/local/lib/latexmk".
 +   On a Linux system, it only looks for "/etc/texmf/latexmk/latexmk.conf".
-    On a MS-Windows system it looks for "C:\\latexmk\\LatexMk".
+    On a MS-Windows system it looks just in "C:\\latexmk".
     On a cygwin system (i.e., a MS-Windows system in which Perl is
- that of cygwin), \fIlatexmk\fR reads the first it finds of
+ that of cygwin), \fIlatexmk\fR looks in the directories
 --- texmf-dist/latexmk/latexmk.conf
 +++ texmf-dist/latexmk/latexmk.conf	2021-01-20 08:50:13.687032187 +0000
 @@ -0,0 +1,408 @@
@@ -426,23 +426,25 @@
 +# The command line switch to make xelatex run in silent mode
 +# $xelatex_silent_switch = '-interaction=batchmode';
 --- texmf-dist/scripts/latexmk/latexmk.pl
-+++ texmf-dist/scripts/latexmk/latexmk.pl	2021-01-20 09:29:56.693091749 +0000
-@@ -1040,13 +1040,11 @@ else {
-     ## /usr/local/share, depending on the local conventions.
-     ## But /usr/local/lib/latexmk is put in the list for
-     ## compatibility with older versions of latexmk.
++++ texmf-dist/scripts/latexmk/latexmk.pl	2022-04-06 14:28:17.883597521 +0000
+@@ -940,15 +940,11 @@ elsif ( $^O eq "cygwin" ) {
+     ##   with a cygwin equivalent of the MSWin location
+     ## In addition, we need to add the same set of possible locations as with
+     ## unix, so that the user use a unix-style setup.
 -    @rc_system_files = ();
 -    foreach ( 'LatexMk', 'latexmkrc' ) {
 -       push @rc_system_files,
--            ( "/opt/local/share/latexmk/$_", 
--              "/usr/local/share/latexmk/$_",
--              "/usr/local/lib/latexmk/$_" );
+-           ( "/cygdrive/c/latexmk/$_",
+-             "/etc/$_",
+-             "/opt/local/share/latexmk/$_", 
+-             "/usr/local/share/latexmk/$_",
+-             "/usr/local/lib/latexmk/$_" );
 -    }
 +    ## Linux change: look below /etc/texmf/latexmk
 +    ## ... later on env LATEXMKRCSYS and HOME are checked as well
 +
 +    @rc_system_files = ( '/etc/texmf/latexmk/latexmk.conf' );
 +
-     $search_path_separator = ':';  # Separator of elements in search_path
- 
-     $dvi_update_signal = $signo{USR1} 
+     $search_path_separator = ';';  # Separator of elements in search_path
+     # This is tricky.  The search_path_separator depends on the kind
+     # of executable: native NT v. cygwin.  
