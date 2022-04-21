@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 20 05:47:11 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.27.0:
+  * Multiarch enablement on Dockerfile and Dockerfile.build (#538)
+
+-------------------------------------------------------------------
 Sat Apr 16 09:03:30 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.26.0:
