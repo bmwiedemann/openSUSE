@@ -460,4 +460,12 @@
     <comment>Also add some obsoletes and conflicts</comment>
     <requestid>964543</requestid>
   </revision>
+  <revision rev="45" vrev="48">
+    <srcmd5>82edac388fc5377ea750ae537290e335</srcmd5>
+    <version>unknown</version>
+    <time>1650548492</time>
+    <user>dimstar_suse</user>
+    <comment>Do not prefix Suggests by Requires</comment>
+    <requestid>967785</requestid>
+  </revision>
 </revisionlist>
