@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 21 02:10:14 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- feedparser is now available on Python 3.10, remove the skip.
+
+-------------------------------------------------------------------
 Wed Mar 23 13:30:21 UTC 2022 - pgajdos@suse.com
 
 - python-mock is not required for build

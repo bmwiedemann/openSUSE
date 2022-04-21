@@ -17,8 +17,6 @@
 
 
 %define skip_python2 1
-# no feedparser for python 3.10
-%define skip_python310 1
 %define appname limnoria
 %define srcver 2022-03-19
 Name:           python-limnoria
