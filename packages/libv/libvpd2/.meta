@@ -1,6 +1,0 @@
-<package name="libvpd2" project="openSUSE:Factory">
-  <title>VPD Database access library for lsvpd</title>
-  <description>The libvpd_cxx package contains the classes that are used to access a
-vpd database created by vpdupdate in the lsvpd package.</description>
-  <devel project="devel:libraries:c_c++" package="libvpd2"/>
-</package>
