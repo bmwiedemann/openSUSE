@@ -21,7 +21,7 @@
 # versions before 15.2 cannot have a package that obsoletes libvpd2
 # to be able to migrate to 15.2 which has lsvpd that requires libvpd2
 # let libvpd2 provide the udev rules instead
-%define basepackage ( 0%{?sle_version} && 0%{?sle_version} <= 150200 )
+%define basepackage ( ! 0%{?sle_version} || 0%{?sle_version} >= 150200 )
 
 Name:           libvpd
 Version:        2.2.9

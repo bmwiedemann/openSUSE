@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 21 09:10:00 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix inverted basepackage condition
+
+-------------------------------------------------------------------
 Wed Apr 20 11:53:57 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - Allow for migration to 15.2 from earlier releases
