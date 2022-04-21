@@ -30,4 +30,27 @@
 </comment>
     <requestid>873837</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>05fdcd13e0808b3bd2a2776fdeaa2929</srcmd5>
+    <version>0.13.0</version>
+    <time>1650548560</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.0:
+  * Allow files to be larger than 2GB (Thanks Wout)
+  * Simplify the eiger2cbf tool
+  * Correct densification with missing wavelength
+  * Correct issue with EDF headers (#459)
+  * Support for Python versions 3.6 to 3.10, tested on amd64, ppc64le and
+    arm64
+  * Densification of sparse data (densify-Bragg) produced by pyFAI
+    (sparsify-Bragg)
+  * Writer for EigerImage format
+  * Writer for LimaImage format
+  * Refactor all CLI tools
+  * Disable the mask calculation by default in eiger2crysalis
+  * Clean-up some debuging prints in CbfImage
+  * Correct MrcImage format (and change in tests) 
+- Use run_tests rather than setup.py tests to run the testsuite.</comment>
+    <requestid>971316</requestid>
+  </revision>
 </revisionlist>

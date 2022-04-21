@@ -1,7 +1,7 @@
 #
 # spec file for package python-fabio
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,9 @@
 
 %define packagename fabio
 %define skip_python2 1
-%define skip_python36 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fabio
-Version:        0.11.0
+Version:        0.13.0
 Release:        0
 Summary:        Image IO for images produced by 2D X-ray detectors
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -63,6 +62,7 @@ grep -ElRZ '*.py' . | xargs -0 -l sed -i '/^#!/d'
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/densify-Bragg
 %python_clone -a %{buildroot}%{_bindir}/fabio-convert
 %python_clone -a %{buildroot}%{_bindir}/fabio_viewer
 %python_clone -a %{buildroot}%{_bindir}/eiger2cbf
@@ -71,18 +71,20 @@ grep -ElRZ '*.py' . | xargs -0 -l sed -i '/^#!/d'
 %prepare_alternative fabio-convert fabio_viewer eiger2cbf eiger2crysalis
 
 %post
-%python_install_alternative fabio-convert fabio_viewer eiger2cbf eiger2crysalis
+%python_install_alternative densify-Bragg fabio-convert fabio_viewer eiger2cbf eiger2crysalis
 
 %postun
-%python_uninstall_alternative fabio-convert fabio_viewer eiger2cbf eiger2crysalis
+%python_uninstall_alternative densify-Bragg fabio-convert fabio_viewer eiger2cbf eiger2crysalis
 
 %check
-# Does not support pytest
-%python_exec setup.py test
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
+$python ./run_tests.py --installed -v
+}
 
 %files %{python_files}
 %doc README.rst
 %license copyright
+%python_alternative %{_bindir}/densify-Bragg
 %python_alternative %{_bindir}/fabio-convert
 %python_alternative %{_bindir}/fabio_viewer
 %python_alternative %{_bindir}/eiger2cbf
