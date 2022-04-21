@@ -1,5 +1,5 @@
 #
-# spec file for package trilinos
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -368,6 +368,10 @@ ExclusiveArch:  do_not_build
 %define mpi_ext %{?mpi_ver}
 %endif
 
+%if 0%{?sle_version} && 0%{?sle_version} < 150400
+%define python_flavor python%{use_python_version}
+%endif
+
 %if %{without hpc}
  %if %{with mpi}
 %define p_prefix %{_libdir}/mpi/gcc/%{mpi_family}%{?mpi_ext}
@@ -526,8 +530,8 @@ Requires:       %libname = %version
 %if %{without hpc}
 Requires:       glpk-devel
 Requires:       swig
-Recommends:     %{pname}-python%{use_python_version}-devel = %version
 Recommends:     %{name}-doc
+Recommends:     %{pname}-python%{use_python_version}-devel = %version
 Conflicts:      exodusii-devel
  %if %{without mpi}
 Requires:       hdf5-devel
@@ -790,6 +794,7 @@ done
 
 %postun -n %{libname} -p /sbin/ldconfig
 %else
+
 # For HPC or MPI do not rebuild the cache on non-standard directories
 %post -n %{libname}
 /sbin/ldconfig -N %{p_libdir}

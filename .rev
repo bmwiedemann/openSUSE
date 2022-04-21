@@ -243,4 +243,13 @@
     <comment>- Fix dependencies with other Factory packages (forwarded request 953800 from eeich)</comment>
     <requestid>953801</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>32eeb8765e9da2757806c90242465dab</srcmd5>
+    <version>13.2.0</version>
+    <time>1650548532</time>
+    <user>dimstar_suse</user>
+    <comment>- Tie %python_flavor to python3 on Leap/SLE 15 &lt; SP3
+  (bsc#1197781).</comment>
+    <requestid>971217</requestid>
+  </revision>
 </revisionlist>
