@@ -1,7 +1,7 @@
 #
 # spec file for package python-txtorcon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} %{!?skip_python3:python3-%{**}}}
 %bcond_without python2
 Name:           python-txtorcon
-Version:        21.1.0
+Version:        22.0.0
 Release:        0
 Summary:        Twisted-based asynchronous Tor control protocol implementation
 License:        MIT
@@ -37,7 +37,6 @@ BuildArch:      noarch
 BuildRequires:  lsof
 BuildRequires:  %{python_module Automat}
 BuildRequires:  %{python_module Twisted >= 15.5.0}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module zope.interface >= 3.6.1}
 %if %{with python2}
 BuildRequires:  python-ipaddress
@@ -67,6 +66,8 @@ sed -i '/data_files/,/\]\,/s/^/#/' setup.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# https://github.com/meejah/txtorcon/issues/368
+sed -i 's:from mock:from unittest.mock:' test/*.py
 # looks more like integration tests
 # Async tests don't work with pytest gh#crossbario/autobahn-python#1235
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}

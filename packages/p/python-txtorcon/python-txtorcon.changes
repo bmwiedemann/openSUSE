@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 20 11:49:40 UTC 2022 - pgajdos@suse.com
+
+- version update to 22.0.0
+  * Use GitHub Action for CI (instead of Travis)
+  * fix coveralls uploading of coverage
+- do not require python-mock for build
+
+-------------------------------------------------------------------
 Tue Aug 31 20:06:50 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 21.1.0:
