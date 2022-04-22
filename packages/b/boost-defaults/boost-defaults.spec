@@ -1,7 +1,7 @@
 #
 # spec file for package boost-defaults
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
+%define boost_version 1_79_0
 Name:           boost-defaults
-Version:        1.78.0
+Version:        1.79.0
 Release:        0
-%define boost_version 1_78_0
 Summary:        Default Boost C++ Libraries
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            http://www.boost.org
+URL:            https://www.boost.org
 Source1:        README
 BuildArch:      noarch
 

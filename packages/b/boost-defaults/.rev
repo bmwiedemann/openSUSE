@@ -82,4 +82,12 @@
     <comment></comment>
     <requestid>942093</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>556dbb41fbba8aef5692b822d1887ebd</srcmd5>
+    <version>1.79.0</version>
+    <time>1650666313</time>
+    <user>dimstar_suse</user>
+    <comment>- update to Boost 1.79.0</comment>
+    <requestid>971843</requestid>
+  </revision>
 </revisionlist>
