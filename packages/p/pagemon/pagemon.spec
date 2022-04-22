@@ -1,7 +1,7 @@
 #
 # spec file for package pagemon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           pagemon
-Version:        0.01.22
+Version:        0.01.23
 Release:        0
 Summary:        Interactive memory/page monitoring tool
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-URL:            https://kernel.ubuntu.com/~cking/pagemon
-Source:         https://kernel.ubuntu.com/~cking/tarballs/%{name}/%{name}-%{version}.tar.xz
+URL:            https://github.com/ColinIanKing/pagemon
+Source:         https://deb.debian.org/debian/pool/main/p/pagemon/pagemon_%{version}.orig.tar.xz
 BuildRequires:  ncurses-devel
 
 %description
@@ -55,7 +55,7 @@ export CFLAGS="%{optflags}"
 
 %files
 %license COPYING
-%doc README
+%doc README.md
 %{_sbindir}/pagemon
 %{_mandir}/man8/pagemon.8%{?ext_man}
 
