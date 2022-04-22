@@ -32,7 +32,7 @@
 %bcond_with coverage
 
 Name:           snapper
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        Tool for filesystem snapshot management
 License:        GPL-2.0-only
@@ -95,11 +95,12 @@ BuildRequires:  json-c-devel
 %else
 BuildRequires:  libjson-c-devel
 %endif
+BuildRequires:  zlib-devel
 %if %{with coverage}
 BuildRequires:  lcov
 %endif
 Requires:       diffutils
-Requires:       libsnapper5 = %version
+Requires:       libsnapper6 = %version
 Requires:       systemd
 %if 0%{?suse_version}
 Recommends:     logrotate snapper-zypp-plugin
@@ -210,7 +211,7 @@ fi
 %{_datadir}/dbus-1/system-services/org.opensuse.Snapper.service
 %{_datadir}/bash-completion/completions/snapper
 
-%package -n libsnapper5
+%package -n libsnapper6
 Summary:        Library for filesystem snapshot management
 Group:          System/Libraries
 Requires:       util-linux
@@ -218,12 +219,12 @@ Requires:       util-linux
 PreReq:         %fillup_prereq
 %endif
 # expands to Obsoletes: libsnapper1 libsnapper2 libsnapper3...
-Obsoletes:      %(echo `seq -s " " -f "libsnapper%.f" $((5 - 1))`)
+Obsoletes:      %(echo `seq -s " " -f "libsnapper%.f" $((6 - 1))`)
 
-%description -n libsnapper5
+%description -n libsnapper6
 This package contains libsnapper, a library for filesystem snapshot management.
 
-%files -n libsnapper5
+%files -n libsnapper6
 %license %{_defaultdocdir}/snapper/COPYING
 %doc %dir %{_defaultdocdir}/snapper
 %doc %{_defaultdocdir}/snapper/AUTHORS
@@ -241,25 +242,25 @@ This package contains libsnapper, a library for filesystem snapshot management.
 %config(noreplace) %{_sysconfdir}/sysconfig/snapper
 %endif
 
-%pre -n libsnapper5
+%pre -n libsnapper6
 # Migration from /etc/snapper to /usr/share/snapper
 for i in config-templates/default filters/base.txt filters/lvm.txt filters/x11.txt ; do
     test -f /etc/snapper/${i}.rpmsave && mv -v /etc/snapper/${i}.rpmsave /etc/snapper/${i}.rpmsave.old ||:
 done
 
-%posttrans -n libsnapper5
+%posttrans -n libsnapper6
 # Migration from /etc/snapper to /usr/share/snapper
 for i in config-templates/default filters/base.txt filters/lvm.txt filters/x11.txt ; do
     test -f /etc/snapper/${i}.rpmsave && mv -v /etc/snapper/${i}.rpmsave /etc/snapper/${i} ||:
 done
 
-%post -n libsnapper5
+%post -n libsnapper6
 /sbin/ldconfig
 %if 0%{?suse_version}
 %{fillup_only -n snapper}
 %endif
 
-%postun -n libsnapper5 -p /sbin/ldconfig
+%postun -n libsnapper6 -p /sbin/ldconfig
 
 %package -n libsnapper-devel
 %if 0%{?suse_version} > 1325
@@ -269,7 +270,7 @@ Requires:       boost-devel
 %endif
 Requires:       gcc-c++
 Requires:       libacl-devel
-Requires:       libsnapper5 = %version
+Requires:       libsnapper6 = %version
 Requires:       libstdc++-devel
 Requires:       libxml2-devel
 %if 0%{?suse_version}
