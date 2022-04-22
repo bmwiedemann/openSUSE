@@ -1402,4 +1402,12 @@
   * Added command line option to pass the password to open an encrypted document.</comment>
     <requestid>964104</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9cd2423c96fab0ce129ab1fedc1b2435</srcmd5>
+    <version>0.99.47+2</version>
+    <time>1650657257</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971857</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 21 06:59:28 UTC 2022 - info@paolostivanin.com
+
+- Update to version 0.99.47+2:
+  * Added support for latex math equations.
+  * Added copy/paste of tree nodes and subnodes between multiple opened files.
+  * Restored support for drag and drop of text selection.
+    Now rich text content is preserved.
+  * Added syntax highlighting for HCL.
+  * Fixed issue at reset toolbar in preferences dialog when menubar in titlebar.
+  * Added command line option (-S/--secondary_session) to run in isolation
+    from a possibly already running main instance.
+  * Updated flatpak script.
+
+-------------------------------------------------------------------
 Tue Mar 22 08:06:35 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 0.99.46+6:
