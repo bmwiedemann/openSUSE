@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 18 23:41:57 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.211.0
+  * vulkaninfo: Enable portability extension for device groups
+  * vkcube,vulkaninfo: Add portability_enumeration if present
+
+-------------------------------------------------------------------
 Sat Feb 19 17:12:37 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.204.0
