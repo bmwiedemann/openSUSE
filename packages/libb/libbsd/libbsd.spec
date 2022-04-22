@@ -1,7 +1,7 @@
 #
 # spec file for package libbsd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,17 @@
 
 %define lname	libbsd0
 Name:           libbsd
-Version:        0.10.0
+Version:        0.11.6
 Release:        0
 Summary:        Library with functions commonly found on BSD systems
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://libbsd.freedesktop.org/
-#Git-Clone:	git://anongit.freedesktop.org/git/libbsd
-#Git-Web:	http://cgit.freedesktop.org/libbsd/
-Source0:        https://archive.hadrons.org/software/%{name}/%{name}-%{version}.tar.xz
-Source1:        https://archive.hadrons.org/software/%{name}/%{name}-%{version}.tar.xz.asc
+Source0:        https://libbsd.freedesktop.org/releases/libbsd-%{version}.tar.xz
+Source1:        https://libbsd.freedesktop.org/releases/libbsd-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 BuildRequires:  fdupes
+BuildRequires:  libmd-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 
@@ -54,6 +53,7 @@ Summary:        Development headers and files for libbsd
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 Requires:       glibc-devel
+Requires:       libmd-devel
 
 %description devel
 This library provides functions commonly found on BSD systems, and
@@ -76,7 +76,7 @@ configured using "pkg-config --libs libbsd-ctor".
 %autosetup
 
 %build
-%define _lto_cflags %{nil}
+export CFLAGS="%{optflags} -ffat-lto-objects"
 %configure --disable-static
 %make_build
 

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Apr 20 08:53:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add missing devel requires 
+
+-------------------------------------------------------------------
+Fri Apr 15 12:44:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.6:
+  * import pwcache module from OpenBSD
+  * use libmd for hashing functions
+  * Fix message digest library checks
+  * Switch libmd wrapper to dlsym
+  * Enable .init_array support when building with LTO
+  * Switch md5 back to direct linking
+- reenable LTO
+
+-------------------------------------------------------------------
 Mon Jun  7 12:12:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop --with-pic (no effect with --disable-static).
