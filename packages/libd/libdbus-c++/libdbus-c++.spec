@@ -1,7 +1,7 @@
 #
-# spec file for package libdbus
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -101,10 +101,10 @@ Summary:        Development files for libdbus-c++
 Group:          Development/Libraries/C and C++
 Requires:       libdbus-c++%{?psuffix}-1-%{sover} = %{version}
 Recommends:     libdbus-c++-api-docs
-Conflicts:      libdbus-c++-devel < %{version}-%{release}
+Conflicts:      libdbus-c++-devel < %{version}
 %if 0%{?suse_version} <= 1500
 %if %{with glib}
-Requires:       libdbus-c++-devel = %{version}-%{release}
+Requires:       libdbus-c++-devel = %{version}
 %endif
 %endif
 

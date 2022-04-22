@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 13 07:23:25 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not reference %release in requires/conflicts: with builds
+  going across _multibuild, the rebuild counter of the two flavors
+  is not guaranteed to be in sync (i.e glib flavor could build more
+  often).
+
+-------------------------------------------------------------------
 Mon Nov 25 22:22:13 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix self-conflict of devel package
