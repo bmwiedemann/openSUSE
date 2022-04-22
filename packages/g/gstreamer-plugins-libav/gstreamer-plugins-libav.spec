@@ -22,7 +22,7 @@ Name:           gstreamer-plugins-libav
 Version:        1.20.1
 Release:        0
 Summary:        A ffmpeg/libav plugin for GStreamer
-License:        GPL-3.0-or-later
+License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
 Source0:        %{url}/src/gst-libav/gst-libav-%{version}.tar.xz
