@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 18 20:36:09 UTC 2022 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Use nasm instead of yasm, the latter has not released any update 
+   in 7 years.
+
+-------------------------------------------------------------------
 Sun Mar 20 19:33:28 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.3:

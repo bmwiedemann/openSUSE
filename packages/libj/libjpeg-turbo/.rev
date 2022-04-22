@@ -976,4 +976,13 @@
     be reproduced using the libjpeg API, not using djpeg.</comment>
     <requestid>969262</requestid>
   </revision>
+  <revision rev="62" vrev="69">
+    <srcmd5>3cc3a00a1d90cff6b471cb2f5aa0100c</srcmd5>
+    <version>unknown</version>
+    <time>1650657149</time>
+    <user>dimstar_suse</user>
+    <comment>- Use nasm instead of yasm, the latter has not released any update 
+   in 7 years. (forwarded request 970636 from elvigia)</comment>
+    <requestid>970678</requestid>
+  </revision>
 </revisionlist>

@@ -36,8 +36,8 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 # needed for tests as we remove the lib here
 BuildRequires:  libturbojpeg0 >= 8.2.2
+BuildRequires:  nasm
 BuildRequires:  pkgconfig
-BuildRequires:  yasm
 Conflicts:      jpeg%{major}
 
 %description

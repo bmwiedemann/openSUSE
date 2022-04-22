@@ -39,8 +39,8 @@ Source3:        baselibs.conf
 Patch1:         libjpeg-turbo-1.3.0-tiff-ojpeg.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  nasm
 BuildRequires:  pkgconfig
-BuildRequires:  yasm
 Conflicts:      jpeg%{major}
 Obsoletes:      jpeg = 6b
 Obsoletes:      jpeg = 8.0.1
