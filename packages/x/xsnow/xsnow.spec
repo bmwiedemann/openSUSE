@@ -1,7 +1,7 @@
 #
 # spec file for package xsnow
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xsnow
-Version:        3.4.2
+Version:        3.5.0
 Release:        0
 Summary:        A Christmas Animation
 License:        GPL-3.0-or-later
@@ -28,12 +28,11 @@ Source:         https://www.ratrabbit.nl/downloads/xsnow/%{name}-%{version}.tar.
 Patch0:         xsnow-desktop_file.patch
 # PATCH-FIX-OPENSUSE xsnow-bindir.patch -- Install in /usr/bin instead /usr/games
 Patch1:         xsnow-bindir.patch
-# PATCH-FIX-UPSTREAM https://sourceforge.net/p/xsnow/tickets/10/
-Patch2:         reproducible.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  xorg-x11-devel
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 
