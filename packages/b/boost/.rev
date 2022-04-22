@@ -1426,4 +1426,17 @@ Boost Software License 1.0 is available in SPDX format on http://www.spdx.org/li
     <comment></comment>
     <requestid>961652</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>c609c66092ada1532f9e4c612f47997f</srcmd5>
+    <version>1.79.0</version>
+    <time>1650666286</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.79.0:
+  * no new libraries
+  * for details on all changes see,
+    https://www.boost.org/users/history/version_1_79_0.html
+- add 0001-json-array-erase-relocate.patch
+- drop 0001-b2-fix-install.patch (obsolete)</comment>
+    <requestid>970258</requestid>
+  </revision>
 </revisionlist>

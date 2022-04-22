@@ -19,9 +19,9 @@
 #
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define ver 1.78.0
-%define _ver 1_78_0
-%define package_version 1_78_0
+%define ver 1.79.0
+%define _ver 1_79_0
+%define package_version 1_79_0
 %define file_version %_ver
 %define lib_appendix %_ver
 %define docs_version 1.56.0
@@ -235,10 +235,9 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %endif
 
 Name:           %{base_name}
-Version:        1.78.0
+Version:        1.79.0
 Release:        0
-%define library_version 1_78_0
-
+%define library_version 1_79_0
 Summary:        Boost C++ Libraries
 License:        BSL-1.0
 Group:          Development/Libraries/C and C++
@@ -266,7 +265,7 @@ Patch18:        dynamic_linking.patch
 Patch20:        python_library_name.patch
 Patch21:        boost-remove-cmakedir.patch
 Patch22:        boost-process.patch
-Patch23:        0001-b2-fix-install.patch
+Patch23:        https://www.boost.org/patches/1_79_0/0001-json-array-erase-relocate.patch
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
 BuildRequires:  libbz2-devel

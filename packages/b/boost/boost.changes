@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 15 00:23:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.79.0:
+  * no new libraries
+  * for details on all changes see,
+    https://www.boost.org/users/history/version_1_79_0.html
+- add 0001-json-array-erase-relocate.patch
+- drop 0001-b2-fix-install.patch (obsolete)
+
+-------------------------------------------------------------------
 Fri Mar 11 15:11:05 CET 2022 - aschnell@suse.com
 
 - add dependency on libzstd and libzstd-devel to get on-the-fly
