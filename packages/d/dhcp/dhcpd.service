@@ -1,7 +1,7 @@
 [Unit]
 Description=ISC DHCPv4 Server
 Before=multi-user.target
-After=remote-fs.target network.target nss-lookup.target time-sync.target slapd.service sssd.service  ndsd.service
+After=remote-fs.target network-online.target nss-lookup.target time-sync.target slapd.service sssd.service  ndsd.service
 
 [Service]
 # added automatically, for details please see

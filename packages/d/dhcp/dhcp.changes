@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 16 20:19:19 UTC 2022 - chris@computersalat.de
+
+- Update dhcpd.service: After: network-online.target
+  * boo#826319: DHCP gets autostarted too early (network interface
+     not up yet - Systemd/LSB problem)
+    e.g. NM and bridged interface
+
+-------------------------------------------------------------------
 Tue Mar 15 07:45:51 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Require hostname binary, not package [bsc#1197087]
