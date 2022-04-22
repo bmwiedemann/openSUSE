@@ -1236,4 +1236,18 @@ file with an '_' (PHP loads extensions in alphabetical order) (forwarded request
   [boo#1197994]</comment>
     <requestid>969706</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>eb60bcf67b6432533134ed2d867195a3</srcmd5>
+    <version>7.4.29</version>
+    <time>1650666304</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.4.29:
+  Core:
+    No source changes to this release. This update allows for
+    re-building the Windows binaries against upgraded dependencies
+    which have received security updates.
+  Date:
+    Updated to latest IANA timezone database (2022a).</comment>
+    <requestid>971313</requestid>
+  </revision>
 </revisionlist>

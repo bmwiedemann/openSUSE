@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 20 17:49:17 UTC 2022 - pgajdos@suse.com
+
+- version update to 7.4.29:
+  Core:
+    No source changes to this release. This update allows for
+    re-building the Windows binaries against upgraded dependencies
+    which have received security updates.
+  Date:
+    Updated to latest IANA timezone database (2022a).
+
+-------------------------------------------------------------------
 Mon Apr 11 19:36:58 UTC 2022 - pgajdos@suse.com
 
 - fpm %postrans: check whether sytemctl is available
