@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-calendar
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 
 Name:           deepin-calendar
-Version:        5.8.16
+Version:        5.8.29
 Release:        0
 Summary:        A calendar application for Deepin Desktop
 License:        GPL-3.0-or-later
@@ -125,6 +125,7 @@ install -m0644 calendar-client/assets/resources/icon/%{_name}.svg \
 %dir %{_libdir}/deepin-aiassistant
 %dir %{_libdir}/deepin-aiassistant/serivce-plugins
 %{_libdir}/deepin-aiassistant/serivce-plugins/libuosschedulex-plugin.so
+%{_prefix}/lib/systemd/user/com.dde.calendarserver.calendar.*
 
 %files lang
 %defattr(-,root,root,-)

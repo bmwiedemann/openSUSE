@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Mar 31 06:47:21 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.8.29
+  * Add a systemd timer
+  * Optmize ui
+  * Fix bugs
+  * Update translations
+
+-------------------------------------------------------------------
+Sat Jan 29 02:53:25 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.8.27
+  * Fix bugs
+  * Update translations
+  * Update documents
+
+-------------------------------------------------------------------
 Thu Dec  2 12:59:42 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix build on aarch64:
