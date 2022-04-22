@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 13 20:55:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- split testsuite into _multibuild flavor to speedup dependent packages
+- rediff patches (no functional change)
+
+-------------------------------------------------------------------
 Tue Apr 12 18:26:25 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Apache Subversion 1.14.2:

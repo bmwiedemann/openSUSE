@@ -2,7 +2,7 @@ Index: Makefile.in
 ===================================================================
 --- Makefile.in.orig
 +++ Makefile.in
-@@ -860,7 +860,7 @@ clean-swig-headers:
+@@ -876,7 +876,7 @@ clean-swig-headers:
  extraclean-swig-headers: clean-swig-headers
  	$(EXTRACLEAN_SWIG_HEADERS)
  

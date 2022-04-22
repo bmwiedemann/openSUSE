@@ -1,6 +1,8 @@
---- a/Makefile.in
-+++ b/Makefile.in
-@@ -91,7 +91,7 @@ swig_rbdir = $(SWIG_RB_SITE_ARCH_DIR)/sv
+Index: subversion-1.14.2/Makefile.in
+===================================================================
+--- subversion-1.14.2.orig/Makefile.in
++++ subversion-1.14.2/Makefile.in
+@@ -96,7 +96,7 @@ swig_rbdir = $(SWIG_RB_SITE_ARCH_DIR)/sv
  toolsdir = @bindir@/svn-tools
  
  # where to install pkg-config files

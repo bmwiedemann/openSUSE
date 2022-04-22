@@ -1,7 +1,7 @@
-diff --git a/subversion/bindings/javahl/native/SVNClient.cpp b/subversion/bindings/javahl/native/SVNClient.cpp
-index 2c83f56..f1c8b02 100644
---- a/subversion/bindings/javahl/native/SVNClient.cpp
-+++ b/subversion/bindings/javahl/native/SVNClient.cpp
+Index: subversion-1.14.2/subversion/bindings/javahl/native/SVNClient.cpp
+===================================================================
+--- subversion-1.14.2.orig/subversion/bindings/javahl/native/SVNClient.cpp
++++ subversion-1.14.2/subversion/bindings/javahl/native/SVNClient.cpp
 @@ -77,10 +77,13 @@
  #include "private/svn_subr_private.h"
  #include "svn_private_config.h"

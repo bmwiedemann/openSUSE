@@ -2,11 +2,11 @@
  Makefile.in |    4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-Index: subversion-nightly/Makefile.in
+Index: subversion-1.14.2/Makefile.in
 ===================================================================
---- subversion-nightly.orig/Makefile.in	2013-03-15 12:21:46.000000000 +0000
-+++ subversion-nightly/Makefile.in	2013-03-17 20:02:04.000000000 +0000
-@@ -112,8 +112,8 @@ EXEEXT = @EXEEXT@
+--- subversion-1.14.2.orig/Makefile.in
++++ subversion-1.14.2/Makefile.in
+@@ -124,8 +124,8 @@ EXEEXT = @EXEEXT@
  
  SHELL = @SHELL@
  LIBTOOL = @SVN_LIBTOOL@

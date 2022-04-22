@@ -1,5 +1,5 @@
 #
-# spec file for package subversion
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2009-2010 Pascal Bleser <pascal.bleser@opensuse.org>
@@ -33,13 +33,21 @@
 %bcond_without kde
 %bcond_with	python_ctypes
 %bcond_with	all_regression_tests
-Name:           subversion
+%global flavor @BUILD_FLAVOR@%{nil}
+
+%if "%{flavor}" == "testsuite"
+%global psuffix -testsuite
+%else
+%global psuffix %{nil}
+%endif
+
+Name:           subversion%{psuffix}
 Version:        1.14.2
 Release:        0
 Summary:        Subversion version control system
 License:        Apache-2.0
 URL:            https://subversion.apache.org
-Source0:        https://www.apache.org/dist/subversion/%{name}-%{version}.tar.bz2
+Source0:        https://www.apache.org/dist/subversion/subversion-%{version}.tar.bz2
 Source1:        subversion.conf
 Source2:        subversion.README.SUSE
 Source4:        contrib-1804739.tar.bz2
@@ -49,9 +57,9 @@ Source15:       svnserve.tmpfiles
 Source16:       svn.sysusers
 Source42:       subversion.svngrep.sh
 Source43:       subversion.svndiff.sh
-Source50:       https://www.apache.org/dist/subversion/subversion-%{version}.KEYS#/%{name}.keyring
-Source51:       https://www.apache.org/dist/subversion/%{name}-%{version}.tar.bz2.asc
-Source92:       %{name}-rpmlintrc
+Source50:       https://www.apache.org/dist/subversion/subversion-%{version}.KEYS#/subversion.keyring
+Source51:       https://www.apache.org/dist/subversion/subversion-%{version}.tar.bz2.asc
+Source92:       subversion-rpmlintrc
 Patch0:         subversion-pkgconfig.patch
 Patch1:         subversion-1.10.2-javadoc.patch
 Patch11:        subversion.libtool-verbose.patch
@@ -103,7 +111,7 @@ BuildConflicts: pkgconfig(liblz4) = 124
 Requires:       libsqlite3-0 >= %{sqlite_minimum_version}
 Requires(post): %fillup_prereq
 %sysusers_requires
-Recommends:     %{name}-bash-completion
+Recommends:     subversion-bash-completion
 # workaround for boo#969159
 Conflicts:      libsvn_auth_kwallet-1-0 < %{version}
 Conflicts:      libsvn_auth_kwallet-1-0 > %{version}
@@ -206,7 +214,7 @@ to the Apache directories and configuration.
 %if %{with kde}
 %package -n libsvn_auth_kwallet-1-0
 Summary:        KWallet support for Subversion
-Requires:       %{name} = %{version}
+Requires:       subversion = %{version}
 Supplements:    (subversion and kdebase4-workspace)
 Supplements:    (subversion and plasma5-workspace)
 
@@ -217,7 +225,7 @@ Provides KWallet integration for Subversion
 %if %{with gnome}
 %package -n libsvn_auth_gnome_keyring-1-0
 Summary:        GNOME keyring sypport for Subversion
-Requires:       %{name} = %{version}
+Requires:       subversion = %{version}
 Supplements:    (subversion and gnome-session)
 
 %description -n libsvn_auth_gnome_keyring-1-0
@@ -225,17 +233,17 @@ Provides GNOME keyring support for Subversion
 %endif
 
 %package bash-completion
-Summary:        Bash Completion for %{name}
-Requires:       %{name} = %{version}
+Summary:        Bash Completion for subversion
 Requires:       bash-completion
+Requires:       subversion = %{version}
 BuildArch:      noarch
 
 %description bash-completion
-Bash command line completion support for %{name} - completion of subcommands,
+Bash command line completion support for subversion - completion of subcommands,
 parameters and keywords for the svn command and other tools.
 
 %prep
-%setup -q -a 4
+%setup -q -a 4 -n subversion-%{version}
 %patch0 -p1
 %patch1 -p1
 %patch11 -p1
@@ -254,7 +262,7 @@ parameters and keywords for the svn command and other tools.
 sed -i -e 's#%{_bindir}/env python#%{_bindir}/python3#' subversion/tests/cmdline/*.py
 
 %build
-%sysusers_generate_pre %{SOURCE16} %{name} system-user-svn.conf
+%sysusers_generate_pre %{SOURCE16} subversion system-user-svn.conf
 # Re-boot strap, needed for patch37
 PATH=%{_prefix}/bin:$PATH ./autogen.sh --release
 
@@ -330,6 +338,7 @@ export LDFLAGS="-pie"
 %make_build -j1 JAVAC_FLAGS=" -encoding iso8859-1" javahl doc-javahl
 
 %install
+%if "%{flavor}" != "testsuite"
 %make_install
 make DESTDIR=%{buildroot} install-swig-py install-swig-pl install-javahl install-swig-rb
 %if %{with python_ctypes}
@@ -340,7 +349,7 @@ find "%{buildroot}%{python_sitelib}/csvn/" -name "*.pyc" | xargs rm -f
 %endif
 
 %perl_process_packlist
-%find_lang %{name}
+%find_lang subversion
 
 cp -Lav %{SOURCE42} %{buildroot}%{_bindir}/svngrep
 cp -Lav %{SOURCE43} %{buildroot}%{_bindir}/svndiff
@@ -356,7 +365,7 @@ cp -av %{SOURCE1} %{buildroot}/%{apache_sysconfdir}/conf.d/subversion.conf
 
 cp -avL %{SOURCE2} README.SUSE
 cp -avL subversion/mod_authz_svn/INSTALL README.mod_authz_svn
-cat %{name}.lang > files.subversion
+cat subversion.lang > files.subversion
 cat with_jdk.files >> files.subversion
 
 # tools
@@ -396,12 +405,12 @@ install -d -m 0755 %{buildroot}/%{_datadir}/java
 ln -sv %{_libdir}/svn-javahl/svn-javahl.jar %{buildroot}/%{_datadir}/java/svn-javahl.jar
 rm -f %{buildroot}%{_localstatedir}/adm/perl-modules/subversion
 
-install -D -m0644 tools/client-side/bash_completion %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+install -D -m0644 tools/client-side/bash_completion %{buildroot}%{_datadir}/bash-completion/completions/subversion
 
 # examples
-mkdir -p %{buildroot}%{_docdir}/%{name}
-cp -r tools/hook-scripts tools/backup tools/bdb tools/examples tools/xslt %{buildroot}%{_docdir}/%{name}
-find %{buildroot}%{_docdir}/%{name} -type f -print0 | xargs -0 chmod 644
+mkdir -p %{buildroot}%{_docdir}/subversion
+cp -r tools/hook-scripts tools/backup tools/bdb tools/examples tools/xslt %{buildroot}%{_docdir}/subversion
+find %{buildroot}%{_docdir}/subversion -type f -print0 | xargs -0 chmod 644
 
 # clean tools for doc
 rm -rf tools/*/*.in
@@ -409,7 +418,9 @@ rm -rf doc/doxygen/html/installdox
 
 # sysusers
 install -Dm0644 %{SOURCE16} %{buildroot}%{_sysusersdir}/system-user-svn.conf
+%endif
 
+%if "%{flavor}" == "testsuite"
 %check
 export LANG=C LC_ALL=C
 
@@ -433,7 +444,9 @@ ln -s /dev/shm/svn-test-work subversion/tests/cmdline/
 %make_build davautocheck CLEANUP=true FS_TYPE=bdb || (cat fails.log; exit 1)
 %endif
 
-%pre -f %{name}.pre
+%else
+
+%pre -f subversion.pre
 %service_add_pre svnserve.service
 
 %preun
@@ -469,8 +482,8 @@ systemd-tmpfiles --create %{_tmpfilesdir}/svnserve.conf
 %files -f files.subversion
 %license LICENSE
 %doc README.SUSE BUGS CHANGES README.mod_authz_svn
-%dir %{_docdir}/%{name}/*
-%{_docdir}/%{name}
+%dir %{_docdir}/subversion/*
+%{_docdir}/subversion
 %{_sbindir}/rcsvnserve
 %{_fillupdir}/sysconfig.svnserve
 %dir %attr(755,%{svnuser},%{svngroup}) /srv/svn
@@ -566,6 +579,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/svnserve.conf
 %endif
 
 %files bash-completion
-%{_datadir}/bash-completion/completions/%{name}
+%{_datadir}/bash-completion/completions/subversion
+%endif
 
 %changelog

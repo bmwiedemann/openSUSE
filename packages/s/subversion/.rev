@@ -1637,4 +1637,13 @@
     <comment></comment>
     <requestid>969547</requestid>
   </revision>
+  <revision rev="188" vrev="2">
+    <srcmd5>97af91d8d5f5b602b9c9e17f686ceb01</srcmd5>
+    <version>1.14.2</version>
+    <time>1650666301</time>
+    <user>dimstar_suse</user>
+    <comment>- split testsuite into _multibuild flavor to speedup dependent packages
+- rediff patches (no functional change)</comment>
+    <requestid>971259</requestid>
+  </revision>
 </revisionlist>

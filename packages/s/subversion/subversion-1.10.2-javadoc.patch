@@ -1,6 +1,8 @@
---- subversion-1.10.2/Makefile.in	2018-02-16 05:00:12.000000000 +0100
-+++ subversion-1.10.2/Makefile.in	2018-09-11 10:55:03.062316623 +0200
-@@ -721,7 +721,6 @@
+Index: subversion-1.14.2/Makefile.in
+===================================================================
+--- subversion-1.14.2.orig/Makefile.in
++++ subversion-1.14.2/Makefile.in
+@@ -738,7 +738,6 @@ doc-api: mkdir-init
  doc-javahl:
  	$(JAVADOC) -d $(abs_builddir)/doc/javadoc \
  	  -sourcepath $(top_srcdir)/subversion/bindings/javahl/src \

@@ -1,8 +1,8 @@
-diff --git a/build.conf b/build.conf
-index 7631a61..f9551f0 100644
---- a/build.conf
-+++ b/build.conf
-@@ -805,15 +805,6 @@ msvc-force-static = yes
+Index: subversion-1.14.2/build.conf
+===================================================================
+--- subversion-1.14.2.orig/build.conf
++++ subversion-1.14.2/build.conf
+@@ -806,15 +806,6 @@ msvc-force-static = yes
  
  # ----------------------------------------------------------------------------
  # Tests for libsvn_fs_fs
