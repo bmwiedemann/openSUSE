@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 19 09:52:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add revert-ft212-subpixel-hinting-change.patch (bsc#1198536)
+- add 079a22da037835daf5be2bd9eccf7bc1eaa2e783.patch to avoid
+  an integer overflow occuring during fuzzing
+
+-------------------------------------------------------------------
 Fri Apr 15 17:07:44 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix segfault in some applications boo#1198497
