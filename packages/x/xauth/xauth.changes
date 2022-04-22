@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Apr 20 08:51:00 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to version 1.1.2
+  * tests: make tests work in out-of-tree builds
+  * tests: Fix failure to make distcheck
+  * tests: report failure if stderr has unexpected output
+  * configure.ac: fail build if xtrans is not found
+  * gitlab CI: add a basic build test
+  * Build xz tarballs instead of bzip2
+  * Fix off-by-one in quote-stripping routines
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Improve portability
+  * Removed build requirement "cmdtest".
+  * Fix warning -Wstringop-truncation for strncpy by using memcpy instead
+  * Expand checks of socket file with S_ISSOCK
+
+-------------------------------------------------------------------
 Mon Nov 29 15:29:09 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to version 1.1.1

@@ -116,4 +116,24 @@
     crashes.</comment>
     <requestid>934583</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0c351d270a48d1be0e3a8d3c0eaa4e96</srcmd5>
+    <version>1.1.2</version>
+    <time>1650657183</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.1.2
+  * tests: make tests work in out-of-tree builds
+  * tests: Fix failure to make distcheck
+  * tests: report failure if stderr has unexpected output
+  * configure.ac: fail build if xtrans is not found
+  * gitlab CI: add a basic build test
+  * Build xz tarballs instead of bzip2
+  * Fix off-by-one in quote-stripping routines
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Improve portability
+  * Removed build requirement &quot;cmdtest&quot;.
+  * Fix warning -Wstringop-truncation for strncpy by using memcpy instead
+  * Expand checks of socket file with S_ISSOCK</comment>
+    <requestid>971033</requestid>
+  </revision>
 </revisionlist>
