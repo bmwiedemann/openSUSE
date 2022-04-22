@@ -244,4 +244,16 @@
     CHANGELOG.md file provided with this package (forwarded request 953383 from glaubitz)</comment>
     <requestid>953576</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9c7851219b348794bd8b81da3124d785</srcmd5>
+    <version>1.23.1</version>
+    <time>1650666318</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.23.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 971052 from glaubitz)</comment>
+    <requestid>971129</requestid>
+  </revision>
 </revisionlist>

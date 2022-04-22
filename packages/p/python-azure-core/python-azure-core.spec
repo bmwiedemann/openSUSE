@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-core
-Version:        1.22.1
+Version:        1.23.1
 Release:        0
 Summary:        Microsoft Azure Core Library for Python
 License:        MIT
@@ -38,6 +38,7 @@ BuildRequires:  unzip
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-requests >= 2.18.4
 Requires:       python-six >= 1.11.0
+Requires:       python-typing_extensions >= 4.0.1
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
