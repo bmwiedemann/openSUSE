@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 18 08:50:01 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.10
+  * Update documents
+  * Fix bugs
+
+-------------------------------------------------------------------
 Thu Mar 31 08:48:21 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer pin to GCC10: the code builds just fine using GCC11
