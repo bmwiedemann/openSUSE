@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 21 13:14:24 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Update to version 1.9.0:
+  * Many fixes and features. See: https://commons.apache.org/proper/commons-csv/changes-report.html#a1.9.0
+
+- Added apache-commons-csv.rpmlintrc:
+  * Ignore summary too long warnings
+
+-------------------------------------------------------------------
 Tue Jun 25 07:38:44 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Initial release v1.6 on OBS 

@@ -1,7 +1,7 @@
 #
-# spec file for package apache-commons-csv
+# spec file
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,14 @@
 %global base_name csv
 %global short_name commons-%{base_name}
 Name:           apache-%{short_name}
-Version:        1.6
+Version:        1.9.0
 Release:        0
 Summary:        A library to read and write files in variations of the Comma Separated Value (CSV) format
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://commons.apache.org/proper/commons-csv/
-Source0:        http://archive.apache.org/dist/commons/csv/source/commons-csv-%{version}-src.tar.gz
+Source0:        https://dlcdn.apache.org/commons/csv/source/commons-csv-%{version}-src.tar.gz
+Source1000:     apache-commons-csv.rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.commons:commons-parent:pom:)
@@ -53,6 +54,7 @@ This package contains the API documentation for %{name}.
 
 %files -f .mfiles
 %license LICENSE.txt NOTICE.txt
+%doc RELEASE-NOTES.txt
 
 %files javadoc -f .mfiles-javadoc
 %license LICENSE.txt NOTICE.txt
