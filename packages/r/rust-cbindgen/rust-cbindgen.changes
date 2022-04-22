@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Apr 21 22:18:35 UTC 2022 - william.brown@suse.com
+
+- Update to version 0.23.0+git0:
+  * v0.23.0
+  * constant: Make const.allow_constexpr default to true.
+  * constant: Allow more constexpr constants.
+  * Update syn dependency to at least 1.0.88
+  * Fix #753
+
+-------------------------------------------------------------------
+Wed Apr 20 00:14:13 UTC 2022 - william.brown@suse.com
+
+- Update to version 0.22.0+git0:
+  * v0.22.0
+  * Support rename rule for union body members.
+  * constant: Add support for other expressions WebRender uses.
+  * constant: Add support for associated constant expressions.
+  * Fix regression in CamelCase rename rule (should be lowerCamelCase)
+  * enumeration: simplify standard types in variants.
+  * Avoid generating and writing bindings when called recursively
+  * Cython: Omit per-variant tags in unions generated for Rust enums
+  * Update various dependencies.
+  * v0.21.0
+
+-------------------------------------------------------------------
 Tue Apr  5 05:36:24 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Automatic update of vendored dependencies
