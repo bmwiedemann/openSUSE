@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 22 00:00:00 CEST 2022 - dsterba@suse.cz
+
+- fix build, regenerate autoconf files
+- clean spec
+
+-------------------------------------------------------------------
 Wed Sep  3 14:47:11 CEST 2014 - dsterba@suse.cz
 
 - clean spec

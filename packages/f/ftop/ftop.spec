@@ -1,7 +1,7 @@
 #
 # spec file for package ftop
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           ftop
 Version:        1.0
 Release:        0
 Summary:        Open File Monitoring
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          System/Monitoring
-Url:            http://code.google.com/p/ftop/
+URL:            https://code.google.com/p/ftop/
 Source:         http://ftop.googlecode.com/files/ftop-%{version}.tar.bz2
 Patch1:         ftop-ncurses.patch
 Patch2:         ftop-fix_buffer_overflow.patch
@@ -35,7 +35,6 @@ BuildRequires:  libtool
 BuildRequires:  make
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Ftop is to files what top is to processes. The progress of all open files and
@@ -52,6 +51,7 @@ items are displayed in order from most to least active.
 %patch3
 
 %build
+autoreconf -vfi
 export CFLAGS="%{optflags} -Wall -DHAVE_LIBCURSES=1"
 export CPPFLAGS="$CFLAGS"
 %configure
@@ -61,9 +61,9 @@ make %{?_smp_mflags}
 make DESTDIR=%{buildroot} install %{?_smp_mflags}
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING NEWS README
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README
 %{_bindir}/ftop
-%doc %{_mandir}/man1/ftop.1%{ext_man}
+%{_mandir}/man1/ftop.1%{?ext_man}
 
 %changelog
