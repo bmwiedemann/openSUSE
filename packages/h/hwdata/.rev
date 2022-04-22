@@ -518,4 +518,13 @@
     <comment>- Update to version 0.357 (bsc#1196332):</comment>
     <requestid>961857</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>3fa53d60ed89be7a011082e242c3a5b7</srcmd5>
+    <version>0.358</version>
+    <time>1650657151</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.358 (bsc#1196332):
+  + Updated pci, usb and vendor ids.</comment>
+    <requestid>970684</requestid>
+  </revision>
 </revisionlist>
