@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 21 20:43:51 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.1.1
+  * Made responses 0.19.0 compatible
+  * Dropped support for Python 3.6
+
+-------------------------------------------------------------------
 Fri Nov  6 09:33:36 UTC 2020 - Marketa Machova <mmachova@suse.com>
 
 - Update to 1.0.1
