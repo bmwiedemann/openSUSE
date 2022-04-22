@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 15 00:37:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.39:
+  * Rename strtoi to strosi (string to signed int). The strtoi
+    function on BSD does something else (returns an intmax, not
+    an int)
+
+-------------------------------------------------------------------
 Mon Mar  7 07:05:42 UTC 2022 - Maciej Borzecki <maciek.borzecki@gmail.com>
 
 - update to 4.0.38:

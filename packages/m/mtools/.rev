@@ -523,4 +523,15 @@ mtools is GPL-3.0+ licensed, not GPL-2.0+ (forwarded request 126894 from babelwo
     bits&quot; (forwarded request 959790 from maciek_borzecki)</comment>
     <requestid>959792</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>b81810c88221bc7d3d340b8e9a740a82</srcmd5>
+    <version>4.0.39</version>
+    <time>1650657148</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.39:
+  * Rename strtoi to strosi (string to signed int). The strtoi
+    function on BSD does something else (returns an intmax, not
+    an int) (forwarded request 970257 from dirkmueller)</comment>
+    <requestid>970677</requestid>
+  </revision>
 </revisionlist>
