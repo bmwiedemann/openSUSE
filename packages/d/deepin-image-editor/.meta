@@ -1,0 +1,5 @@
+<package name="deepin-image-editor" project="openSUSE:Factory">
+  <title>Deepin Image Editor</title>
+  <description>Libraries of Deepin Image editor</description>
+  <devel project="X11:Deepin" package="deepin-image-editor"/>
+</package>

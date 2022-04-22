@@ -1,0 +1,13 @@
+diff -Nur image-editor-1.0.13/CMakeLists.txt image-editor-1.0.13-new/CMakeLists.txt
+--- image-editor-1.0.13/CMakeLists.txt	2022-03-30 09:47:20.000000000 +0800
++++ image-editor-1.0.13-new/CMakeLists.txt	2022-04-07 20:50:43.098078041 +0800
+@@ -2,6 +2,9 @@
+ 
+ project(imageeditor)
+ 
++set(CMAKE_C_FLAGS "-fPIC")
++set(CMAKE_CXX_FLAGS "-fPIC")
++
+ execute_process(COMMAND uname -m OUTPUT_VARIABLE MACH
+     ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE)
+ 

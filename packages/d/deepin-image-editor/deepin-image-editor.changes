@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Tue Apr 12 07:04:45 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- initial package for version 1.0.13
+- Add recompile-with-fPIC.patch, fix build on 64bit arch
