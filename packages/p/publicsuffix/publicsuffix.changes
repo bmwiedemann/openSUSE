@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 19 07:43:55 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20220415:
+  * util: gTLD data autopull updates for 2022-04-14T15:15:34 UTC (#1554)
+  * Add `1.azurestaticapps.net` DNS suffix (#1514)
+  * add support for scaleway subdomains (#1507)
+
+-------------------------------------------------------------------
 Tue Apr  5 08:14:44 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20220405 (bsc#1198068):

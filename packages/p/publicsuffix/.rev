@@ -1149,4 +1149,15 @@ Now with build cycle removed.</comment>
   * fix: Fixed spelling errors in PSL (#1530)</comment>
     <requestid>966957</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>065d7c90fb69ad337207bd287531e8d4</srcmd5>
+    <version>20220415</version>
+    <time>1650657150</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220415:
+  * util: gTLD data autopull updates for 2022-04-14T15:15:34 UTC (#1554)
+  * Add `1.azurestaticapps.net` DNS suffix (#1514)
+  * add support for scaleway subdomains (#1507)</comment>
+    <requestid>970683</requestid>
+  </revision>
 </revisionlist>
