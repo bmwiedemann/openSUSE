@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package libinput
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -37,7 +37,7 @@
 %define lname	libinput10
 %define pname	libinput
 Name:           libinput%{?xsuffix}
-Version:        1.20.0
+Version:        1.20.1
 Release:        0
 Summary:        Input device and event processing library
 License:        MIT
@@ -46,7 +46,7 @@ URL:            https://www.freedesktop.org/wiki/Software/libinput/
 
 #Git-Web:	https://gitlab.freedesktop.org/libinput/libinput/
 #DL-URL:        https://gitlab.freedesktop.org/libinput/libinput/-/releases
-Source:         https://gitlab.freedesktop.org/libinput/libinput/-/archive/1.20.0/libinput-1.20.0.tar.gz
+Source:         https://gitlab.freedesktop.org/libinput/libinput/-/archive/%version/libinput-%version.tar.gz
 Source3:        baselibs.conf
 Source5:        libinput-rpmlintrc
 Patch1:         kill-env.diff
