@@ -1,5 +1,0 @@
-<package name="java16-devel-container" project="openSUSE:Factory">
-  <title>Java 16 development container</title>
-  <description>Environment for Java 16 development.</description>
-  <devel project="devel:kubic:containers" package="java16-devel-container"/>
-</package>
