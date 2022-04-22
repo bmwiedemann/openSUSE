@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr 19 08:07:27 UTC 2022 - git@opensuse.org
+
+- Update to version 84.87.20220419.0c85b52778:
+  * New POT for text domain 'migration_sle'.
+  * New POT for text domain 'hana-update'.
+  * New POT for text domain 'firstboot'.
+  * New POT for text domain 'control'.
+  * New POT for text domain 'cc-control'.
+  * Fixed control.xml translations
+  * Fixed control.xml translations
+  * Fixed control.xml translations
+  * Translated using Weblate (Finnish)
+
+-------------------------------------------------------------------
 Mon Apr 18 05:13:32 UTC 2022 - git@opensuse.org
 
 - Update to version 84.87.20220415.000649bca9:
