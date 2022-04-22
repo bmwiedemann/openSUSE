@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 19 07:41:29 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20220408:
+  * wireless-regdb: add db files missing from previous commit
+  * wireless-regdb: update regulatory database based on preceding changes
+  * wireless-regdb: Update regulatory rules for Australia (AU)
+  * wireless-regdb: add missing spaces for US S1G rules
+
+-------------------------------------------------------------------
 Mon Mar 28 07:23:11 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20220324:
