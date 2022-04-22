@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 21 20:21:33 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add remove-mock.patch because mock WAS required and is not pulled
+  in anymore by something else -- gh#man-group/pytest-plugins#171
+
+-------------------------------------------------------------------
 Mon Mar 21 04:29:05 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Drop mock BuildRequires, it is not required. 

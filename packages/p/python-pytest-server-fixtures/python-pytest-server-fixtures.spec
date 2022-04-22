@@ -17,16 +17,19 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-pytest-server-fixtures
 Version:        1.7.0
 Release:        0
-Summary:        Extensible server fixures for py.test
+Summary:        Extensible server fixtures for pytest
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/man-group/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-server-fixtures/pytest-server-fixtures-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM pytest-plugins-pr186-fix-psycopg29.patch -- gh#man-group/pytest-plugins#186
 Patch0:         https://github.com/man-group/pytest-plugins/pull/186.patch#/pytest-plugins-pr186-fix-psycopg29.patch
+# PATCH-FEATURE-UPSTREAM remove-mock.patch -- gh#man-group#pytest-plugins#171
+Patch1:         remove-mock.patch
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -75,6 +78,9 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module rethinkdb}
 BuildRequires:  %{python_module retry}
 BuildRequires:  %{python_module six}
+%if %{with python2}
+BuildRequires:  python2-mock
+%endif
 BuildRequires:  apache2
 BuildRequires:  lsof
 BuildRequires:  net-tools-deprecated
@@ -87,7 +93,7 @@ BuildRequires:  xorg-x11-server
 %python_subpackages
 
 %description
-Extensible server fixures for py.test.
+Extensible server fixtures for pytest
 
 %prep
 %autosetup -p2 -n pytest-server-fixtures-%{version}
@@ -120,6 +126,7 @@ export SERVER_FIXTURES_REDIS=%{_sbindir}/redis-server
 %files %{python_files}
 %doc CHANGES.md README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_server_fixtures
+%{python_sitelib}/pytest_server_fixtures-%{version}*-info
 
 %changelog
