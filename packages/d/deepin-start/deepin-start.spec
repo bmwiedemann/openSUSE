@@ -17,10 +17,10 @@
 
 
 %define _name       startdde
-%define import_path pkg.deepin.io/dde/startdde
+%define import_path github.com/linuxdeepin/startdde
 
 Name:           deepin-start
-Version:        5.9.9.1
+Version:        5.9.15.1
 Release:        0
 Summary:        Starter of deepin desktop
 License:        GPL-3.0-or-later
@@ -97,9 +97,11 @@ export GO111MODULE=off
 %make_build
 
 %install
-rm -rf $HOME/rpmbuild/BUILD/go/src/github.com \
+mv $HOME/rpmbuild/BUILD/go/src/github.com/linuxdeepin .
+rm -rf $HOME/rpmbuild/BUILD/go/src/github.com/* \
        $HOME/rpmbuild/BUILD/go/src/golang.org \
        $HOME/rpmbuild/BUILD/go/src/gopkg.in
+mv linuxdeepin $HOME/rpmbuild/BUILD/go/src/github.com/
 %goinstall
 %gosrc
 %make_install
@@ -144,6 +146,7 @@ fi
 %config %{_sysconfdir}/profile.d/deepin-xdg-dir.sh
 %config %{_sysconfdir}/X11/xinit/xinitrc.d/01deepin-profile
 %config %{_sysconfdir}/X11/xinit/xinitrc.d/00deepin-dde-env
+%config %{_sysconfdir}/X11/xinit/xinitrc.d/94qt_env
 
 %files -n golang-github-linuxdeepin-startdde -f file.lst
 

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr  6 03:20:04 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.9.15.1
+  * Change pkg.deepin.io to github.com
+  * use go env cmd
+  * Add None mode for low-resolution tiling method
+  * Fix bugs
+
+-------------------------------------------------------------------
 Tue Mar 15 13:04:34 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Change license tag to GPL-3.0-or-later
