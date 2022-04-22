@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 11 11:50:04 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
+
+- use common SBAT values (boo#1193282)
+
+-------------------------------------------------------------------
 Fri Mar 25 03:46:55 UTC 2022 - Michael Chang <mchang@suse.com>
 
 - Fix wrong order in kernel sorting of listing rc before final release

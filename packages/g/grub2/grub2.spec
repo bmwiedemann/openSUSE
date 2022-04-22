@@ -19,6 +19,14 @@
 
 %define _binaries_in_noarch_package_terminate_build 0
 
+%if %{defined sbat_distro}
+# SBAT metadata
+%define sbat_generation 1
+%define sbat_generation_grub 1
+%else
+%{error please define sbat_distro, sbat_distro_summary and sbat_distro_url}
+%endif
+
 Name:           grub2
 %ifarch x86_64 ppc64
 BuildRequires:  gcc-32bit
@@ -663,24 +671,16 @@ cd build-efi
         --program-transform-name=s,grub,%{name},
 make %{?_smp_mflags}
 
-# SBAT metadata
-%if 0%{?is_opensuse} == 1
-distro_id="opensuse"
-distro_name="The openSUSE Project"
-%else
-distro_id="sle"
-distro_name="SUSE Linux Enterprise"
-%endif
-upstream_sbat=1
-distro_sbat=1
+%if 0%{?sbat_generation}
 echo "sbat,1,SBAT Version,sbat,1,https://github.com/rhboot/shim/blob/main/SBAT.md" > sbat.csv
-echo "grub,${upstream_sbat},Free Software Foundation,grub,%{version},https://www.gnu.org/software/grub/" >> sbat.csv
-echo "grub.${distro_id},${distro_sbat},${distro_name},%{name},%{version},mail:security-team@suse.de" >> sbat.csv
+echo "grub,%{sbat_generation_grub},Free Software Foundation,grub,%{version},https://www.gnu.org/software/grub/" >> sbat.csv
+echo "grub.%{sbat_distro},%{sbat_generation},%{sbat_distro_summary},%{name},%{version},%{sbat_distro_url}" >> sbat.csv
+%endif
 
-./grub-mkimage -O %{grubefiarch} -o grub.efi --prefix= --sbat sbat.csv \
+./grub-mkimage -O %{grubefiarch} -o grub.efi --prefix= %{?sbat_generation:--sbat sbat.csv} \
 		-d grub-core ${GRUB_MODULES}
 %ifarch x86_64
-./grub-mkimage -O %{grubefiarch} -o grub-tpm.efi --prefix= --sbat sbat.csv \
+./grub-mkimage -O %{grubefiarch} -o grub-tpm.efi --prefix= %{?sbat_generation:--sbat sbat.csv} \
 		-d grub-core ${GRUB_MODULES} tpm
 %endif
 
