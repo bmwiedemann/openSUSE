@@ -15,7 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 %ifarch %{ix86} x86_64 aarch64
 %bcond_without efi_fw_update
 %else
@@ -37,7 +36,7 @@
 %endif
 
 Name:           fwupd
-Version:        1.7.6
+Version:        1.7.7
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -46,14 +45,12 @@ URL:            https://fwupd.org/
 # Do not use upstream tarball, we are using source service!
 #Source:         https://github.com/%%{name}/%%{name}/archive/%%{version}.tar.gz
 Source:         %{name}-%{version}.tar.xz
-
 # PATCH-FIX-OPENSUSE fwupd-bsc1130056-shim-path.patch bsc#1130056
 Patch1:         fwupd-bsc1130056-change-shim-path.patch
 # PATCH-FIX-OPENSUSE fwupd-jscSLE-11766-close-efidir-leap-gap.patch jsc#SLE-11766 qkzhu@suse.com -- Set SLE and openSUSE esp os dir at runtime
 Patch2:         fwupd-jscSLE-11766-close-efidir-leap-gap.patch
 Patch3:         harden_fwupd-offline-update.service.patch
 Patch4:         harden_fwupd-refresh.service.patch
-
 BuildRequires:  dejavu-fonts
 %if %{with fish_support}
 BuildRequires:  fish
@@ -185,6 +182,30 @@ Requires:       libfwupdplugin5 = %{version}
 fwupd is a daemon to allows session software to update device firmware on
 the local machine.
 
+%package bash-completion
+Summary:        Bash completion for fwupd
+Group:          System/Management
+Requires:       bash-completion
+Requires:       %{name}
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+This package contain the bash completion command for the device firmware updater daemon.
+
+%if %{with fish_support}
+%package fish-completion
+Summary:        Fish completion for fwupd
+Group:          System/Management
+Requires:       fish
+Requires:       %{name}
+Supplements:    (%{name} and fish)
+BuildArch:      noarch
+
+%description fish-completion
+This package contain the fish completion command for the device firmware updater daemon.
+%endif
+
 %lang_package
 
 %prep
@@ -195,6 +216,8 @@ for file in $(grep -l %{_bindir}/env . -r); do
 done
 
 %build
+# for F_OFD_SETLK detection
+export CFLAGS="%{optflags} -D_GNU_SOURCE"
 # Dell support requires direct SMBIOS access,
 # Synaptics requires Dell support, i.e. x86 only
 %meson \
@@ -231,7 +254,6 @@ done
 %meson_build
 
 %install
-export BRP_PESIGN_FILES='%{_libexecdir}/fwupd/efi/fwupd*.efi'
 %meson_install
 # README.md is packaged as doc
 rm %{buildroot}/usr/share/doc/fwupd/builder/README.md
@@ -272,7 +294,6 @@ rm -fr %{buildroot}%{_datadir}/fish
 %service_del_postun %{name}.service fwupd-offline-update.service fwupd-refresh.service
 
 %files
-
 %license COPYING
 %doc README.md
 %{_unitdir}/fwupd.service
@@ -345,12 +366,6 @@ rm -fr %{buildroot}%{_datadir}/fish
 %{_libdir}/fwupd-plugins-5/
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.freedesktop.fwupd.metainfo.xml
-%{_datadir}/bash-completion/completions/fwupdmgr
-%{_datadir}/bash-completion/completions/fwupdtool
-%{_datadir}/bash-completion/completions/fwupdagent
-%if %{with fish_support}
-%{_datadir}/fish/vendor_completions.d/fwupdmgr.fish
-%endif
 %{_datadir}/icons/hicolor/*
 %{_prefix}/lib/systemd/system-shutdown/fwupd.shutdown
 %{_prefix}/lib/systemd/system-preset/fwupd-refresh.preset
@@ -384,5 +399,15 @@ rm -fr %{buildroot}%{_datadir}/fish
 %{_libdir}/pkgconfig/fwupdplugin.pc
 %{_libdir}/libfwupd.so
 %{_libdir}/libfwupdplugin.so
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/fwupdmgr
+%{_datadir}/bash-completion/completions/fwupdtool
+%{_datadir}/bash-completion/completions/fwupdagent
+
+%if %{with fish_support}
+%files fish-completion
+%{_datadir}/fish/vendor_completions.d/fwupdmgr.fish
+%endif
 
 %changelog

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Apr 17 12:52:22 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 1.7.7:
+  * This release adds the following features:
+    + Add CCGX trigger code to support future hardware
+    + Add signed and unsigned payload metadata to more devices
+    + Allow overriding the detected machine type
+    + Allow quirking the flashrom flash size
+    + Do not allow the DBX update for broken firmware versions
+  * This release fixes the following bugs:
+    + Do not add the backup BMC device as it shares the same GUIDs
+    + Do not hardcode the libexecdir to /usr/libexec
+    + Do not leak child processes when canceling
+    + Do not throw away the TPM eventlog when uploading reports to
+      the LVFS
+    + Don't export USB4 host controllers if they do not have unique
+      GUIDs
+    + Fix build for MacOS
+    + Fix the TPM eventlog replay for Intel TXT machines
+    + Fix writing large MTD images
+    + Never send the DeviceChanged signal with invalid data
+    + Return the correct error when there is no GPIO device to open
+    + Show the update message and update image in front end tools
+    + Support the new PENDING upower device states
+  * This release adds support for the following hardware:
+    + Logitech M550, M650 and K650
+    + More Elan fingerprint readers
+    + More Star Labs StarLite laptops
+    + More Wacom panels found on Lenovo laptops
+- Split bash and fish completions to separate subpackages
+- Remove un-needed BRP_PESIGN_FILES
+- Set GNU_SOURCE so meson detects F_OFD_SETLK in fnctl.h support
+
+-------------------------------------------------------------------
 Fri Feb 25 17:22:01 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.7.6:
