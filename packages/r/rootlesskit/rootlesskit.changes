@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 22 13:36:54 UTC 2022 - rpm@fthiessen.de
+
+- Update to version 1.0.0:
+  * use Go 1.18
+  * updated some dependencies
+
+-------------------------------------------------------------------
 Tue Nov 23 11:21:49 UTC 2021 - Richard Brown <rbrown@suse.com>
 
 - Initial Packaging 

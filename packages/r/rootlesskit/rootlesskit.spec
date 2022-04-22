@@ -1,7 +1,7 @@
 #
 # spec file for package rootlesskit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global provider        github
 %global provider_tld    com
 %global project         rootless-containers
@@ -23,14 +24,14 @@
 %global import_path     %{provider_prefix}
 
 Name:           rootlesskit
-Version:        0.14.6
+Version:        1.0.0
 Release:        0
 Summary:        Linux-native fakeroot using user namespaces
 License:        Apache-2.0
 URL:            https://github.com/rootless-containers/rootlesskit
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.13
+BuildRequires:  golang(API) >= 1.18
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -45,7 +46,6 @@ the real root on the host from potential container-breakout attacks.
 %build
 go build -mod=vendor -buildmode=pie -o _output/rootlesskit %{provider_prefix}/cmd/rootlesskit
 go build -mod=vendor -buildmode=pie -o _output/rootlessctl %{provider_prefix}/cmd/rootlessctl
-
 
 %install
 mkdir -p %{buildroot}%{_bindir}/
