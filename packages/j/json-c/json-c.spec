@@ -1,7 +1,7 @@
 #
 # spec file for package json-c
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,15 @@
 %define libname libjson-c
 %define libsoname %{libname}5
 %define oldlibname libjson
+%define version_date 20220414
 Name:           json-c
-Version:        0.15
+Version:        0.16
 Release:        0
 Summary:        JSON implementation in C
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/json-c/json-c
-Source0:        https://github.com/json-c/json-c/archive/json-c-0.15-20200726.tar.gz
+Source0:        https://github.com/json-c/json-c/archive/json-c-%{version}-%{version_date}.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -85,7 +86,7 @@ representation of JSON objects.
 This package includes the json-c documentation.
 
 %prep
-%autosetup -p1 -n %{name}-json-c-0.15-20200726
+%autosetup -p1 -n %{name}-json-c-%{version}-%{version_date}
 
 %build
 %if 0%{?suse_version} <= 1110
