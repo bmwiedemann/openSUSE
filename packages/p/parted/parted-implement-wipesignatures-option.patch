@@ -148,9 +148,9 @@ Index: parted-3.3/parted/parted.c
 +  WIPESIGNATURES = CHAR_MAX + 2,
  };
  
- enum
+ /* Output modes */
 @@ -117,6 +118,7 @@ static struct option const options[] = {
-         {"script",      0, NULL, 's'},
+         {"fix",         0, NULL, 'f'},
          {"version",     0, NULL, 'v'},
          {"align",       required_argument, NULL, 'a'},
 +        {"wipesignatures", 0, NULL, WIPESIGNATURES},
@@ -158,7 +158,6 @@ Index: parted-3.3/parted/parted.c
          {NULL,          0, NULL, 0}
  };
 @@ -128,11 +130,13 @@ static const char *const options_help []
-         {"script",      N_("never prompts for user intervention")},
          {"version",     N_("displays the version")},
          {"align=[none|cyl|min|opt]", N_("alignment for new partitions")},
 +        {"wipesignatures", N_("wipe superblock signatures when creating partition")},
@@ -166,9 +165,10 @@ Index: parted-3.3/parted/parted.c
  };
  
  int     opt_script_mode = 0;
+ int     opt_fix_mode = 0;
  int     pretend_input_tty = 0;
+ int     opt_output_mode = HUMAN;
 +int     wipesignatures = 0;
- int     opt_machine_mode = 0;
  int     disk_is_modified = 0;
  int     is_toggle_mode = 0;
 @@ -651,6 +655,7 @@ _adjust_end_if_iec (PedSector* start, Pe

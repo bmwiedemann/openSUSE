@@ -77,38 +77,28 @@ Index: parted-3.3/parted/parted.c
                  goto error;
  
          /* Push the End value back onto the command_line, if it exists */
-@@ -1681,19 +1693,32 @@ do_resizepart (PedDevice** dev, PedDisk*
-                 goto error;
-         _adjust_end_if_iec(&start, &end, range_end, end_input);
-         free(end_input);
-+        if (cmdline_words >= end_idx && !_partition_warn_busy (part, danger_if_busy))
-+                goto error;
-+
-         /* Do not move start of the partition */
-         constraint = constraint_from_start_end_fixed_start (*dev, start, range_end);
-         if (!ped_disk_set_partition_geom (disk, part, constraint,
+@@ -1871,13 +1873,23 @@ do_resizepart (PedDevice** dev, PedDisk*
                                            start, end))
                  goto error_destroy_constraint;
          /* warn when shrinking partition - might lose data */
 -        if (part->geom.end < oldend)
 -                if (ped_exception_throw (
 +        if (part->geom.end < oldend) {
-+	        if (opt_script_mode && (!ped_partition_is_busy (part) || ignore_busy)) {
-+	               	char *path = ped_partition_get_path (part);
++                if (opt_script_mode && (!ped_partition_is_busy (part) || ignore_busy)) {
++                        char *path = ped_partition_get_path (part);
 +                        ped_exception_throw (
-+                             PED_EXCEPTION_WARNING,
-+                             PED_EXCEPTION_UNHANDLED,
-+                             _("Shrinking partition %s, data loss possible."), path);
-+                         free(path);
++                            PED_EXCEPTION_WARNING,
++                            PED_EXCEPTION_UNHANDLED,
++                            _("Shrinking partition %s, data loss possible."), path);
++                        free(path);
 +                } else if (ped_exception_throw (
                              PED_EXCEPTION_WARNING,
                              PED_EXCEPTION_YES_NO,
                              _("Shrinking a partition can cause data loss, " \
                                "are you sure you want to continue?")) != PED_EXCEPTION_YES)
--                        goto error_destroy_constraint;
-+		{
-+                	goto error_destroy_constraint;
-+		}
++                {
+                         goto error_destroy_constraint;
++                }
 +        }
          ped_disk_commit (disk);
  

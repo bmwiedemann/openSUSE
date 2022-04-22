@@ -61,7 +61,7 @@ Index: parted-3.3/libparted/arch/linux.c
                  if (!_partition_is_mounted_by_path (name)) {
 -                        fd = open (name, WR_MODE, 0);
 +                        fd = open (name, RD_MODE, 0);
-                         if (fd > 0) {
+                         if (fd > -1) {
                                  ioctl (fd, BLKFLSBUF);
  retry:
 @@ -1709,7 +1728,7 @@ _device_open_ro (PedDevice* dev)

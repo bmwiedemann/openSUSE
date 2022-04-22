@@ -13,12 +13,12 @@ Index: parted-3.3/parted/parted.c
              }
 -            printf ("%s:%s:%s:%lld:%lld:%s:%s:%s;\n",
 +            printf ("%s:%s:%s:%lld:%lld:%s:%s:%s",
-                     path, end, transport[dev->type],
+                     escaped_path, end, transport[dev->type],
                      dev->sector_size, dev->phys_sector_size,
-                     pt_name, dev->model, disk_flags);
+                     pt_name, escaped_model, disk_flags);
 +	    if (getenv("PARTED_PRINT_NUMBER_OF_PARTITION_SLOTS"))
 +		     printf(":%lld", diskp && diskp->type->ops->get_max_primary_partition_count ? diskp->type->ops->get_max_primary_partition_count(diskp) : 0);
 +	    printf(";\n");
-             free(path);
-         } else {
-             printf (_("Model: %s (%s)\n"),
+             free (escaped_path);
+             free (escaped_model);
+         } else if (opt_output_mode == JSON) {

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Apr 20 09:11:11 CEST 2022 - aschnell@suse.com
+
+- update to version 3.5:
+  * Add support for JSON output.
+  * Add support for linux-home flag for GPT.
+  * Add --fix option.
+  added patches:
+  - direct-handling-of-partition-type-id-and-uuid.patch
+  - parted-json-no-type-flag.patch
+  refreshed patches:
+  - libparted-open-the-device-RO-and-lazily-switch-to-RW.patch
+  - parted-2.4-ncursesw6.patch
+  - parted-add-ignore-busy-option.patch
+  - parted-fix-resizepart-and-rm-command.patch
+  - parted-implement-wipesignatures-option.patch
+  - parted-print-max-partitions-for-yast.patch
+  - parted-type.patch
+  - tests-disable.patch
+  removed patches:
+  - parted-escape-printed-device-path.patch
+  - parted-mkpart-allow-empty-gpt-part-name.patch
+
+-------------------------------------------------------------------
 Tue Oct 19 13:16:11 CEST 2021 - aschnell@suse.com
 
 - fixed name of shared library package and split off

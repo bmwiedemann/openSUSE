@@ -16,16 +16,14 @@ Index: parted-3.3/include/parted/disk.in.h
 ===================================================================
 --- parted-3.3.orig/include/parted/disk.in.h
 +++ parted-3.3/include/parted/disk.in.h
-@@ -78,10 +78,11 @@
-         PED_PARTITION_IRST=17,
-         PED_PARTITION_ESP=18,
+@@ -86,9 +86,10 @@
          PED_PARTITION_CHROMEOS_KERNEL=19,
--        PED_PARTITION_BLS_BOOT=20
-+        PED_PARTITION_BLS_BOOT=20,
-+        PED_PARTITION_TYPE=21
+         PED_PARTITION_BLS_BOOT=20,
+         PED_PARTITION_LINUX_HOME=21,
++         PED_PARTITION_TYPE=22,
  };
  #define PED_PARTITION_FIRST_FLAG        PED_PARTITION_BOOT
--#define PED_PARTITION_LAST_FLAG         PED_PARTITION_BLS_BOOT
+-#define PED_PARTITION_LAST_FLAG         PED_PARTITION_LINUX_HOME
 +#define PED_PARTITION_LAST_FLAG         PED_PARTITION_TYPE
  
  enum _PedDiskTypeFeature {
@@ -69,8 +67,8 @@ Index: parted-3.3/libparted/labels/dos.c
  		return dos_data->palo;
  
 @@ -1728,6 +1735,7 @@ msdos_partition_is_flag_available (const
- 	case PED_PARTITION_RAID:
  	case PED_PARTITION_LVM:
+ 	case PED_PARTITION_SWAP:
  	case PED_PARTITION_LBA:
 +	case PED_PARTITION_TYPE:
  	case PED_PARTITION_PALO:
@@ -80,7 +78,7 @@ Index: parted-3.3/parted/parted.c
 ===================================================================
 --- parted-3.3.orig/parted/parted.c
 +++ parted-3.3/parted/parted.c
-@@ -928,28 +928,40 @@ error:
+@@ -946,28 +946,40 @@ error:
  static char*
  partition_print_flags (PedPartition const *part)
  {
@@ -139,7 +137,7 @@ Index: parted-3.3/parted/parted.c
 +        return res;
  }
  
- static int
+ static void
 @@ -1808,12 +1820,19 @@ do_set (PedDevice** dev, PedDisk **diskp
                  goto error;
          if (!command_line_get_part_flag (_("Flag to Invert?"), part, &flag))
