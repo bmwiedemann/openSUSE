@@ -256,4 +256,12 @@
 - 42342.patch: fix expired certificates in unit tests</comment>
     <requestid>962188</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>cc146d8e81621cf3491144e2e143f537</srcmd5>
+    <version>16.14.2</version>
+    <time>1650657210</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>971139</requestid>
+  </revision>
 </revisionlist>

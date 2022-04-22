@@ -15,23 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-###########################################################
-#
-#   WARNING! WARNING! WARNING! WARNING! WARNING! WARNING!
-#
-# This spec file is generated from a template hosted at
-# https://github.com/AdamMajer/nodejs-packaging
-#
-###########################################################
 
-# Fedora doesn't have rpm-config-SUSE which provides
-# ext_man in /usr/lib/rpm/macros.d/macros.obs
 %if 0%{?fedora_version}
 %define ext_man .gz
 %endif
 
 Name:           nodejs16
-Version:        16.14.1
+Version:        16.14.2
 Release:        0
 
 # Double DWZ memory limits
@@ -106,6 +96,12 @@ Release:        0
 %bcond_without intree_nghttp2
 %endif
 
+%if 0%{?suse_version} >= 1550
+%bcond_with    intree_brotli
+%else
+%bcond_without intree_brotli
+%endif
+
 %ifnarch x86_64 %{ix86}
 %bcond_with    gdb
 %else
@@ -123,8 +119,8 @@ Source1:        https://nodejs.org/dist/v%{version}/SHASUMS256.txt
 Source2:        https://nodejs.org/dist/v%{version}/SHASUMS256.txt.sig
 Source3:        nodejs.keyring
 
-# Only required to run unit tests in NodeJS 10+ 
-Source10:       update_npm_tarball.sh 
+# Only required to run unit tests in NodeJS 10+
+Source10:       update_npm_tarball.sh
 Source11:       node_modules.tar.xz
 Source20:       bash_output_helper.bash
 
@@ -134,8 +130,6 @@ Patch3:         fix_ci_tests.patch
 Patch5:         sle12_python3_compat.patch
 Patch7:         manual_configure.patch
 Patch13:        openssl_binary_detection.patch
-
-
 
 ## Patches specific to SUSE and openSUSE
 Patch100:       linker_lto_jobs.patch
@@ -160,8 +154,8 @@ Patch133:       rsa-pss-revert.patch
 # Use versioned binaries and paths
 Patch200:       versioned.patch
 
-BuildRequires:  pkg-config
 BuildRequires:  fdupes
+BuildRequires:  pkg-config
 BuildRequires:  procps
 BuildRequires:  xz
 BuildRequires:  zlib-devel
@@ -181,10 +175,10 @@ BuildRequires:  config(netcfg)
 %if 0%{?suse_version} == 1110
 # GCC 5 is only available in the SUSE:SLE-11:SP4:Update repository (SDK).
 %if %node_version_number >= 8
-BuildRequires:   gcc5-c++
+BuildRequires:  gcc5-c++
 %define forced_gcc_version 5
 %else
-BuildRequires:   gcc48-c++
+BuildRequires:  gcc48-c++
 %define forced_gcc_version 4.8
 %endif
 %endif
@@ -194,15 +188,15 @@ BuildRequires:   gcc48-c++
 # for SLE-12:Update targets
 %if 0%{?suse_version} == 1315
 %if %node_version_number >= 17
-BuildRequires:   gcc10-c++
+BuildRequires:  gcc10-c++
 %define forced_gcc_version 10
 %else
 %if %node_version_number >= 14
-BuildRequires:   gcc9-c++
+BuildRequires:  gcc9-c++
 %define forced_gcc_version 9
 %else
 %if %node_version_number >= 8
-BuildRequires:   gcc7-c++
+BuildRequires:  gcc7-c++
 %define forced_gcc_version 7
 %endif
 %endif
@@ -211,7 +205,7 @@ BuildRequires:   gcc7-c++
 
 %if 0%{?suse_version} == 1500
 %if %node_version_number >= 17
-BuildRequires:   gcc10-c++
+BuildRequires:  gcc10-c++
 %define forced_gcc_version 10
 %endif
 %endif
@@ -221,7 +215,6 @@ BuildRequires:   gcc10-c++
 %if ! 0%{?forced_gcc_version:1}
 BuildRequires:  gcc-c++
 %endif
-
 
 # Python dependencies
 %if %node_version_number >= 16
@@ -247,8 +240,8 @@ BuildRequires:  python
 %endif
 
 %if 0%{?suse_version} >= 1500 && %{node_version_number} >= 10
-BuildRequires:  user(nobody)
 BuildRequires:  group(nobody)
+BuildRequires:  user(nobody)
 %endif
 
 %if ! 0%{with intree_openssl}
@@ -256,9 +249,11 @@ BuildRequires:  group(nobody)
 BuildRequires:  pkgconfig(openssl) >= %{openssl_req_ver}
 
 # require patched openssl library on SLES for nodejs16
-%if %node_version_number >= 16 && 0%{?suse_version} <= 1500 && 0%{?suse_version} && %{pkg_vcmp openssl-1_1 < '1.1.1e' } && 0%{with openssl_RSA_get0_pss_params}
+%if 0%{?suse_version}
+%if %node_version_number >= 16 && 0%{suse_version} <= 1500 && %{pkg_vcmp openssl-1_1 < '1.1.1e' } && 0%{with openssl_RSA_get0_pss_params}
 BuildRequires:  openssl-has-RSA_get0_pss_params
 Requires:       openssl-has-RSA_get0_pss_params
+%endif
 %endif
 
 %if 0%{?suse_version}
@@ -278,7 +273,7 @@ BuildRequires:  openssl >= %{openssl_req_ver}
 
 %else
 %if %node_version_number <= 12 && 0%{?suse_version} == 1315 && 0%{?sle_version} < 120400
-Provides:       bundled(openssl) = 1.1.1m
+Provides:       bundled(openssl) = 1.1.1n
 %else
 BuildRequires:  bundled_openssl_should_not_be_required
 %endif
@@ -309,7 +304,7 @@ BuildRequires:  valgrind
 %if %{with libalternatives}
 Requires:       alts
 %else
-Requires(postun): %{_sbindir}/update-alternatives
+Requires(postun):%{_sbindir}/update-alternatives
 %endif
 # either for update-alternatives, or their removal
 Requires(post): %{_sbindir}/update-alternatives
@@ -348,11 +343,14 @@ ExclusiveArch:  not_buildable
 %endif
 %endif
 
-Provides:       bundled(uvwasi) = 0.0.12
 Provides:       bundled(libuv) = 1.43.0
+Provides:       bundled(uvwasi) = 0.0.12
 Provides:       bundled(v8) = 9.4.146.24
+%if %{with intree_brotli}
 Provides:       bundled(brotli) = 1.0.9
-
+%else
+BuildRequires:  pkgconfig(libbrotlidec)
+%endif
 
 Provides:       bundled(llhttp) = 6.0.4
 Provides:       bundled(ngtcp2) = 0.1.0-DEV
@@ -371,8 +369,8 @@ provided by npm.
 Summary:        Development headers for NodeJS 16.x
 Group:          Development/Languages/NodeJS
 Provides:       nodejs-devel = %{version}
-Requires:       npm16 = %{version}
 Requires:       %{name} = %{version}
+Requires:       npm16 = %{version}
 
 %description devel
 This package provides development headers for Node.js needed for creation
@@ -389,12 +387,12 @@ Requires:       nodejs-common
 Requires:       nodejs16 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
-Provides:       npm(npm) = 8.5.0
 Provides:       npm = %{version}
+Provides:       npm(npm) = 8.5.0
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
-Requires:       user(nobody)
 Requires:       group(nobody)
+Requires:       user(nobody)
 %endif
 %endif
 Provides:       bundled(node-abbrev) = 1.1.1
@@ -562,10 +560,10 @@ Provides:       bundled(node-spdx-exceptions) = 2.3.0
 Provides:       bundled(node-spdx-expression-parse) = 3.0.1
 Provides:       bundled(node-spdx-license-ids) = 3.0.11
 Provides:       bundled(node-ssri) = 8.0.1
-Provides:       bundled(node-string_decoder) = 1.3.0
 Provides:       bundled(node-string-width) = 2.1.1
 Provides:       bundled(node-string-width) = 4.2.2
 Provides:       bundled(node-string-width) = 4.2.3
+Provides:       bundled(node-string_decoder) = 1.3.0
 Provides:       bundled(node-stringify-package) = 1.0.1
 Provides:       bundled(node-strip-ansi) = 3.0.1
 Provides:       bundled(node-strip-ansi) = 4.0.0
@@ -668,7 +666,6 @@ mkdir deps/npm/node_modules/node-gyp
 tar -C deps/npm/node_modules/node-gyp Jxf %{SOURCE5}
 %endif
 
-
 %build
 # normalize shebang
 %if %{node_version_number} >= 12
@@ -750,6 +747,9 @@ EOF
 %endif
 %if ! 0%{with intree_nghttp2}
     --shared-nghttp2 \
+%endif
+%if ! 0%{with intree_brotli}
+    --shared-brotli \
 %endif
 %if 0%{with gdb}
     --gdb \
@@ -974,6 +974,7 @@ update-alternatives --remove npm-default %{_bindir}/npm%{node_version_number}
 update-alternatives --remove npx-default %{_bindir}/npx%{node_version_number}
 
 %else
+
 %pre
 # remove files that are no longer owned but provided by update-alternatives
 if ! [ -L %{_mandir}/man1/node.1%{ext_man} ]; then

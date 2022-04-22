@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 13 12:55:22 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- update to LTS release 16.14.2:
+  * deps: upgrade openssl sources to OpenSSL_1_1_1n
+
+- fix_ci_tests.patch: refreshed
+
+-------------------------------------------------------------------
 Wed Mar 16 11:01:02 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - update to LTS release 16.14.1:
