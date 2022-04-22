@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Apr 05 01:26:27 UTC 2022 - Cliff Zhao <qzhao@suse.com>
+
+- Update to version 0.9.5~git20210406.e554475:
+  * client: Free command parser after event loop
+  * script: Don't crash for scripts without input validation
+    functions
+  * script: Enforce separate lines for function parameters
+  * configure: Fix help string for --with-background-end-color-stop
+  * two-step: Make SHOW_ANIMATION_FRACTION configurable
+  * plugin: animation should transition to the end animation
+  * theme: Allow themes to configure at which percentage
+  * scripts: support populating from configurable theme dir
+  * main: refactor code for searching the theme path
+  * main: add ThemeDir configuration option
+  * Fix crash when hiding message in details splash mode
+  * drm: Honour screen rotation when detecting HiDPI
+  * main: add --ignore-serial-consoles option so we can ignore 
+    serial consoles
+
+- Update SPEC file:
+  A few minor tweaks to fix part of rpmlint error reporting.
+
+- Drop plymouth-no-longer-modify-conf-to-drop-isopensuse-macro.patch:
+  Upstream accompish this requirement in 11b0ce0: Look for config 
+  in runtime dir first(jsc#SLE-11637).
+
+- Drop source boot-duration: The source is an empty file, ghost
+  macro in %files section is enough to work.
+
+-------------------------------------------------------------------
 Thu Feb 10 22:09:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update plymouth-install-label-library-and-font-file-to-initrd.patch: 
