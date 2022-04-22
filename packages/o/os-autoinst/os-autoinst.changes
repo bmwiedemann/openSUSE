@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 21 18:04:34 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1650546937.fd12334c:
+  * Ignore external/ directory for tidy
+  * Use OpenQA::Test::PatchDeparse to avoid warnings
+  * git subrepo pull (merge) external/os-autoinst-common
+  * Sync tools/tidy with openQA
+  * t: Add unit test for consoles::amtSol
+  * t: Add test for consoles::sshVirtshSUT
+  * t: Add unit test for consoles::network_console
+  * Use signatures in most of backend/ and consoles/ as possible
+  * Enlarge visible windows only in fullscreen method
+
+-------------------------------------------------------------------
 Sun Apr 17 12:58:18 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1650200290.89b7f088:
