@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 18 23:33:42 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to 2022.2 (SDK-1.3.211.0)
+  * Handle propagation of arrays with decorations
+  * spirv-opt: Add OpExecutionModeId support
+  * Support SPV_KHR_uniform_group_instructions
+  * Introduce spirv-diff
+
+-------------------------------------------------------------------
 Sat Feb 19 17:29:05 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to 2022.2~sdk204 (SDK-1.3.204.0)

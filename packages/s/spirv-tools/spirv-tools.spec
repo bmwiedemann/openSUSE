@@ -17,18 +17,17 @@
 
 
 %define _lto_cflags %nil
-%define lname libSPIRV-Tools-suse24
+%define lname libSPIRV-Tools-suse25
 
 Name:           spirv-tools
-Version:        2022.2~sdk204
+Version:        2022.2
 Release:        0
 Summary:        API and commands for processing SPIR-V modules
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/SPIRV-Tools
 
-#Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/v%%version.tar.gz
-Source:         SPIRV-Tools-%version.tar.xz
+Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/v%version.tar.gz
 Source9:        baselibs.conf
 Patch1:         ver.diff
 Patch2:         gcc48.diff
@@ -38,7 +37,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
-BuildRequires:  spirv-headers >= 1.6.g6
+BuildRequires:  spirv-headers >= 1.6.1+sdk211
 
 %description
 The package includes an assembler, binary module parser,
@@ -89,6 +88,7 @@ perl -i -lpe 's{^#!/usr/bin/env sh$}{#!/bin/sh}' "%buildroot/%_bindir/spirv-less
 
 %files -n %lname
 %_libdir/libSPIRV-Tools.so.*
+%_libdir/libSPIRV-Tools-diff.so.*
 %_libdir/libSPIRV-Tools-link.so.*
 %_libdir/libSPIRV-Tools-lint.so.*
 %_libdir/libSPIRV-Tools-opt.so.*
@@ -98,6 +98,7 @@ perl -i -lpe 's{^#!/usr/bin/env sh$}{#!/bin/sh}' "%buildroot/%_bindir/spirv-less
 %files devel
 %_libdir/cmake/
 %_libdir/libSPIRV-Tools.so
+%_libdir/libSPIRV-Tools-diff.so
 %_libdir/libSPIRV-Tools-link.so
 %_libdir/libSPIRV-Tools-lint.so
 %_libdir/libSPIRV-Tools-opt.so
