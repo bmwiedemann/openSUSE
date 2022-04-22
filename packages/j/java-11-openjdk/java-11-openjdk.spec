@@ -37,10 +37,9 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       14
-%global patchver        1
-%global datever         2022-02-08
-%global buildver        1
+%global updatever       15
+%global datever         2022-04-19
+%global buildver        10
 %global openjdk_repo    jdk11u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}-%{buildver}
@@ -120,9 +119,9 @@
 %endif
 %global with_system_harfbuzz 1
 %if %{is_release}
-%global package_version %{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}
+%global package_version %{featurever}.%{interimver}.%{updatever}.%{?patchver:%{patchver}}%{!?patchver:0}
 %else
-%global package_version %{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}~%{buildver}
+%global package_version %{featurever}.%{interimver}.%{updatever}.%{?patchver:%{patchver}}%{!?patchver:0}~%{buildver}
 %endif
 %global NSS_LIBDIR %(pkg-config --variable=libdir nss)
 %bcond_with zero
@@ -628,7 +627,7 @@ bash ../configure \
     --with-version-feature=%{featurever} \
     --with-version-interim=%{interimver} \
     --with-version-update=%{updatever} \
-    --with-version-patch=%{patchver} \
+    --with-version-patch=%{?patchver:%{patchver}}%{!?patchver:0} \
     --with-version-date=%{datever} \
     --with-version-build=%{buildver} \
 %if %{is_release}

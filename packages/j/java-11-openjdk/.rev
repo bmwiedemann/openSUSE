@@ -423,4 +423,12 @@
     <comment>Stop adding the JavaEE modules in Factor</comment>
     <requestid>962352</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>271cefe7b916ee72a6000eb5a9dd2d1c</srcmd5>
+    <version>11.0.15.0</version>
+    <time>1650666293</time>
+    <user>dimstar_suse</user>
+    <comment>April 2022 CPU</comment>
+    <requestid>971204</requestid>
+  </revision>
 </revisionlist>
