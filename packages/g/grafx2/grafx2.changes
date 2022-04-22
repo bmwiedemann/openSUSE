@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 22 10:53:34 UTC 2022 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Update to version 2.8.3124
+
+  New Features
+  * Load and save SymbOS SGX files
+  Improvements
+  * Amstrad CPC SCR loading: handle ConvImgCPC packed files
+  Fixes
+  * Gradient ellipses tool could write pixels outside the image in some cases
+  * Fix canvas size when saving GIF files
+  * Many fixes to file path handling and unicode support
+
+-------------------------------------------------------------------
 Sat Feb  8 19:38:25 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Update to version 2.7.2950
