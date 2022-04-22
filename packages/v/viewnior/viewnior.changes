@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Apr 22 01:05:49 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.8
+  * New features included:
+    * Add Preview to the Open Image dialog
+    * Add "Best Fit" option to the right-click context menu
+    * Expand list of image info in the Property window
+    * Add hideable statusbar showing the same info as the titlebar
+    * Increase size of the Crop Image window
+    * Updated translations
+  * Fixed:
+    * Don't allow drag and drop if source is the viewer itself
+    * Better error handling when loading preferences
+    * Properly escape file names displayed in the Delete popup
+    * Remove 1px white gap when the menu and the toolbar are hidden
+    * Memory leaks
+- Drop upstream fixed viewnior-appdata_file.patch
+
+-------------------------------------------------------------------
 Mon Nov 23 13:29:29 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build

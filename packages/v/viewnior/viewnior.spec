@@ -1,7 +1,7 @@
 #
 # spec file for package viewnior
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           viewnior
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        An Image Viewer
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            http://siyanpanayotov.com/project/viewnior/
 Source0:        https://github.com/hellosiyan/Viewnior/archive/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM viewnior-appdata_file.patch lazy.kent@opensuse.org -- fix the appdata.xml file
-Patch0:         viewnior-appdata_file.patch
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.43.0
 BuildRequires:  ninja
@@ -51,7 +49,6 @@ Its features are:
 
 %prep
 %setup -q -n Viewnior-%{name}-%{version}
-%patch0 -p1
 # fix spurious executable perms
 chmod 0644 AUTHORS COPYING NEWS src/* data/icons/scalable/apps/viewnior.svg
 
@@ -79,7 +76,7 @@ chmod 0644 AUTHORS COPYING NEWS src/* data/icons/scalable/apps/viewnior.svg
 %doc AUTHORS NEWS README.md TODO
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
-%{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/metainfo/%{name}.metainfo.xml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
 %{_mandir}/man*/%{name}.*
