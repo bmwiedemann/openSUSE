@@ -1,0 +1,106 @@
+diff -Nur deepin-movie-reborn-5.9.8/CMakeLists.txt deepin-movie-reborn-5.9.8-new/CMakeLists.txt
+--- deepin-movie-reborn-5.9.8/CMakeLists.txt	2022-01-11 13:11:54.000000000 +0800
++++ deepin-movie-reborn-5.9.8-new/CMakeLists.txt	2022-03-04 11:33:25.176476555 +0800
+@@ -20,6 +20,11 @@
+ 
+ set(CMAKE_EXPORT_COMPILE_COMMANDS on)
+ 
++#匹配mpris差异
++if(NOT DEFINED _LIBMPR_)
++    add_definitions(-D_LIBMPR_)
++endif()
++
+ find_package(PkgConfig REQUIRED)
+ 
+ # Find includes in corresponding build directories
+diff -Nur deepin-movie-reborn-5.9.8/src/CMakeLists.txt deepin-movie-reborn-5.9.8-new/src/CMakeLists.txt
+--- deepin-movie-reborn-5.9.8/src/CMakeLists.txt	2022-03-04 11:32:27.515344141 +0800
++++ deepin-movie-reborn-5.9.8-new/src/CMakeLists.txt	2022-03-04 11:33:48.871345113 +0800
+@@ -86,13 +86,6 @@
+     RENAME deepin-movie.svg)
+ install(DIRECTORY ${CMAKE_SOURCE_DIR}/assets/deepin-movie DESTINATION /usr/share/deepin-manual/manual-assets/application/)
+ 
+-#匹配mpris差异
+-execute_process(COMMAND dpkg -s libmpris-qt5-1 COMMAND grep -i version COMMAND cut -d\  -f2 OUTPUT_VARIABLE libmprisVersion)
+-message(${libmprisVersion})
+-if( ${libmprisVersion} MATCHES "0.1.0-" )
+-    add_definitions(-D_LIBMPR_)
+-endif()
+-
+ # 加速编译优化参数
+ if (CMAKE_HOST_SYSTEM_PROCESSOR MATCHES "mips64")
+     SET(CMAKE_CXX_FLAGS "$ENV{CXXFLAGS} -O3 -ftree-vectorize -march=loongson3a -mhard-float -mno-micromips -mno-mips16 -flax-vector-conversions -mloongson-ext2 -mloongson-mmi -Wl,--as-need -fPIE -z noexecstack")
+diff -Nur deepin-movie-reborn-5.9.8/src/libdmr/CMakeLists.txt deepin-movie-reborn-5.9.8-new/src/libdmr/CMakeLists.txt
+--- deepin-movie-reborn-5.9.8/src/libdmr/CMakeLists.txt	2022-03-04 11:32:27.515344141 +0800
++++ deepin-movie-reborn-5.9.8-new/src/libdmr/CMakeLists.txt	2022-03-04 11:35:03.588084743 +0800
+@@ -3,17 +3,15 @@
+ set(CMAKE_AUTOMOC ON)
+ set(CMD_NAME dmr)
+ 
+-add_definitions(-D_LIBDMR_)
+-
+ pkg_check_modules(FFTHUMB REQUIRED libffmpegthumbnailer)
+ pkg_check_modules(AV REQUIRED IMPORTED_TARGET libavformat libavutil libavcodec)
+ 
+-include_directories(${CMAKE_INCLUDE_CURRENT_DIR})
+-
+ file(GLOB_RECURSE SRCS LIST_DIRECTORIES false *.cpp)
+ file(GLOB_RECURSE MPV_SRCS LIST_DIRECTORIES false ../backends/mpv/*.cpp)
+ file(GLOB_RECURSE HWDEC_SRCS ../common/hwdec_probe.cpp)
+-list(APPEND SRCS player_widget.cpp ${MPV_SRCS} ${HWDEC_SRCS})
++file(GLOB_RECURSE SETTINGS_SRCS ../common/dmr_settings.cpp)
++file(GLOB_RECURSE OPTIONS_SRCS ../common/options.cpp)
++list(APPEND SRCS player_widget.cpp ${MPV_SRCS} ${HWDEC_SRCS} ${SETTINGS_SRCS} ${OPTIONS_SRCS})
+ 
+ add_library(${CMD_NAME} SHARED ${SRCS})
+ set_target_properties(${CMD_NAME} PROPERTIES VERSION 0.1.0 SOVERSION 0.1)
+diff -Nur deepin-movie-reborn-5.9.8/src/libdmr/filefilter.cpp deepin-movie-reborn-5.9.8-new/src/libdmr/filefilter.cpp
+--- deepin-movie-reborn-5.9.8/src/libdmr/filefilter.cpp	2022-01-11 13:11:54.000000000 +0800
++++ deepin-movie-reborn-5.9.8-new/src/libdmr/filefilter.cpp	2022-03-04 11:35:36.754714760 +0800
+@@ -175,7 +175,7 @@
+     {
+          AVStream *in_stream = av_ctx->streams[0];
+ 
+-         if (in_stream->codec->codec_type == AVMEDIA_TYPE_AUDIO)
++         if (in_stream->codecpar->codec_type == AVMEDIA_TYPE_AUDIO)
+          {
+              bAudio = true;
+          }
+@@ -247,10 +247,10 @@
+      {
+          AVStream *in_stream = av_ctx->streams[i];
+ 
+-         if (in_stream->codec->codec_type == AVMEDIA_TYPE_VIDEO)
++         if (in_stream->codecpar->codec_type == AVMEDIA_TYPE_VIDEO)
+         {
+-             nWidth = in_stream->codec->width;
+-             nHeight = in_stream->codec->height;
++             nWidth = in_stream->codecpar->width;
++             nHeight = in_stream->codecpar->height;
+          }
+     }
+ 
+diff -Nur deepin-movie-reborn-5.9.8/src/libdmr/playlist_model.cpp deepin-movie-reborn-5.9.8-new/src/libdmr/playlist_model.cpp
+--- deepin-movie-reborn-5.9.8/src/libdmr/playlist_model.cpp	2022-01-11 13:11:54.000000000 +0800
++++ deepin-movie-reborn-5.9.8-new/src/libdmr/playlist_model.cpp	2022-03-04 11:35:36.754714760 +0800
+@@ -1576,7 +1576,7 @@
+     st = fmt_ctx->streams[stream_index];
+ #if LIBAVFORMAT_VERSION_MAJOR >= 57
+     *dec_ctx = st->codecpar;
+-    dec = avcodec_find_decoder((*dec_ctx)->codec_id);
++    dec = avcodec_find_decoder(const_cast<AVCodec*>((*dec_ctx))->codec_id);
+ #else
+     /* find decoder for the stream */
+     dec = avcodec_find_decoder(st->codecpar->codec_id);
+diff -Nur deepin-movie-reborn-5.9.8/tests/deepin-movie/stub/stub.h deepin-movie-reborn-5.9.8-new/tests/deepin-movie/stub/stub.h
+--- deepin-movie-reborn-5.9.8/tests/deepin-movie/stub/stub.h	2022-01-11 13:11:54.000000000 +0800
++++ deepin-movie-reborn-5.9.8-new/tests/deepin-movie/stub/stub.h	2022-03-04 11:35:36.754714760 +0800
+@@ -38,7 +38,7 @@
+ #include <cstring>
+ //c++
+ #include <map>
+-
++#include <cstdint>
+ 
+ #define ADDR(CLASS_NAME,MEMBER_NAME) (&CLASS_NAME::MEMBER_NAME)
+ 

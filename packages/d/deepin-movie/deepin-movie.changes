@@ -5,6 +5,23 @@ Thu Apr 14 14:52:23 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 - Add fix-mpv_opengl_init_params.patch，Upstream of MPV changed this api
 
 -------------------------------------------------------------------
+Thu Apr 14 09:09:08 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.9.8
+  * Fix bugs
+  * Add English document
+  * Optimize hard decoding
+- Add fix-build-on-mpv-0_34_1.patch
+
+-------------------------------------------------------------------
+Sat Jan 15 07:39:13 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.9.1
+  * Fix bugs
+  * Update manual documents
+- Add drop-setCanShowInUI.patch 
+
+-------------------------------------------------------------------
 Sun May 23 06:57:17 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Stop owning directories provided by filesystem and other packages

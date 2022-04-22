@@ -1,0 +1,13 @@
+diff -Nur deepin-movie-reborn-5.9.8/src/vendor/presenter.cpp deepin-movie-reborn-5.9.8-new/src/vendor/presenter.cpp
+--- deepin-movie-reborn-5.9.8/src/vendor/presenter.cpp	2022-01-11 13:11:54.000000000 +0800
++++ deepin-movie-reborn-5.9.8-new/src/vendor/presenter.cpp	2022-02-11 10:02:19.109078420 +0800
+@@ -55,9 +55,6 @@
+     mprisPlayer->setCanGoPrevious(true);
+     mprisPlayer->setCanPause(true);
+     mprisPlayer->setCanSeek(true);
+-#ifndef _LIBMPR_
+-    mprisPlayer->setCanShowInUI(false);
+-#endif
+     initMpris(mprisPlayer);
+ }
+ 

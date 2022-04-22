@@ -1,17 +1,16 @@
-diff -Nur deepin-movie-reborn-5.7.11/src/backends/mpv/mpv_proxy.cpp deepin-movie-reborn-5.7.11-new/src/backends/mpv/mpv_proxy.cpp
---- deepin-movie-reborn-5.7.11/src/backends/mpv/mpv_proxy.cpp	2021-03-22 12:01:47.000000000 +0800
-+++ deepin-movie-reborn-5.7.11-new/src/backends/mpv/mpv_proxy.cpp	2022-04-14 23:07:19.551364419 +0800
-@@ -582,11 +582,13 @@
+diff -Nur deepin-movie-reborn-5.9.14/src/backends/mpv/mpv_proxy.cpp deepin-movie-reborn-5.9.14-new/src/backends/mpv/mpv_proxy.cpp
+--- deepin-movie-reborn-5.9.14/src/backends/mpv/mpv_proxy.cpp	2022-03-15 14:10:26.000000000 +0800
++++ deepin-movie-reborn-5.9.14-new/src/backends/mpv/mpv_proxy.cpp	2022-04-14 16:55:15.895534382 +0800
+@@ -661,12 +661,6 @@
              // caused by seek or just playing
              break;
  
-+#if MPV_CLIENT_API_VERSION < MPV_MAKE_VERSION(2,0)
-         case MPV_EVENT_TRACKS_CHANGED:
-             qInfo() << m_eventName(pEvent->event_id);
-             updatePlayingMovieInfo();
-             emit tracksChanged();
-             break;
-+#endif
- 
+-        case MPV_EVENT_TRACKS_CHANGED:
+-            qInfo() << m_eventName(pEvent->event_id);
+-            updatePlayingMovieInfo();
+-            emit tracksChanged();
+-            break;
+-
          case MPV_EVENT_FILE_LOADED: {
              qInfo() << m_eventName(pEvent->event_id);
+ 
