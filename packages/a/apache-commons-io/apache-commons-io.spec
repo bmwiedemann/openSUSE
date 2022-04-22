@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define base_name  io
 %define short_name commons-%{base_name}
 Name:           apache-%{short_name}
-Version:        2.9.0
+Version:        2.11.0
 Release:        0
 Summary:        Utilities to assist with developing IO functionality
 License:        Apache-2.0
