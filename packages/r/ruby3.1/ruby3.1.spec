@@ -110,7 +110,7 @@ BuildRequires:  update-alternatives
 #!BuildIgnore: ruby-common
 BuildRequires:  netcfg
 BuildRequires:  procps
-BuildRequires:  ruby3.1
+BuildRequires:  %{rb_soname}
 BuildRequires:  timezone
 %endif
 BuildRequires:  readline-devel

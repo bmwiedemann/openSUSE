@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 13 13:41:18 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- use rb_soname instead of hard coding the ruby package name
+
+-------------------------------------------------------------------
 Wed Apr 13 10:09:28 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - add buildignore for ruby and ruby-common so we do not pull

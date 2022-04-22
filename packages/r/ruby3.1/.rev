@@ -61,4 +61,12 @@
 - Update to 3.1.1</comment>
     <requestid>969824</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>bbec8b203486a06e2341dd50ac4c38d2</srcmd5>
+    <version>3.1.2</version>
+    <time>1650657211</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>971140</requestid>
+  </revision>
 </revisionlist>
