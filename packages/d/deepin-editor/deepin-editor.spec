@@ -23,7 +23,7 @@
 %endif
 
 Name:           deepin-editor
-Version:        5.10.18
+Version:        5.10.19
 Release:        0
 Summary:        A text editor for the Deepin environment
 License:        GPL-3.0-or-later
@@ -42,6 +42,7 @@ BuildRequires:  gmock
 BuildRequires:  gtest
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libQt5Gui-private-headers-devel
+BuildRequires:  libicu-devel
 BuildRequires:  libqt5-linguist
 BuildRequires:  recode-devel
 BuildRequires:  cmake(DFrameworkdbus)
