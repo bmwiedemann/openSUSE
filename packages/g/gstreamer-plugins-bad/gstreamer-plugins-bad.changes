@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 21 12:09:16 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Disable ldacBT on ppc64: ldacBT is not available there.
+
+-------------------------------------------------------------------
 Sun Apr 10 11:08:27 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Add spandsp3.patch: Fix build with spandsp 3.x by including

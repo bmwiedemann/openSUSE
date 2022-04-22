@@ -54,7 +54,7 @@
 %bcond_with zxing
 %endif
 
-%ifarch s390x
+%ifarch s390x ppc64
 %bcond_with ldacBT
 %else
 %bcond_without ldacBT
