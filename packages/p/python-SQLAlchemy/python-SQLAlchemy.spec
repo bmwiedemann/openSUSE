@@ -43,7 +43,6 @@ Requires:       python-importlib-metadata
 # SECTION test requirements
 BuildRequires:  %{python_module greenlet}
 BuildRequires:  %{python_module importlib-metadata}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest >= 4.4.0}
 # /SECTION
 %python_subpackages

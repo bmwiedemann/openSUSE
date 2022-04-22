@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 20 08:25:03 UTC 2022 - pgajdos@suse.com
+
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Sun Apr 10 17:41:04 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.4.35:
