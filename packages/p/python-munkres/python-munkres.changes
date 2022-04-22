@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 22 10:38:15 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add test_profil_float_32bit.patch to skip test_profil_float
+  test which fails on 32bit systems (gh#bmc/munkres#40).
+
+-------------------------------------------------------------------
 Sat Mar 26 19:58:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.4:

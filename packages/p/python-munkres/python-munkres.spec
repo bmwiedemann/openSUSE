@@ -26,6 +26,9 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://software.clapper.org/munkres/
 Source:         https://github.com/bmc/munkres/archive/release-%{version}.tar.gz
+# PATCH-{FIX|FEATURE}-{OPENSUSE|SLE|UPSTREAM} name-of-file.patch bsc#[0-9]+ mcepl@suse.com
+# this patch makes things totally awesome
+Patch0:         test_profil_float_32bit.patch
 BuildRequires:  %{python_module setuptools}
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
@@ -47,7 +50,7 @@ This particular implementation is based on
 http://csclab.murraystate.edu/~bob.pilgrim/445/munkres.html.
 
 %prep
-%setup -q -n munkres-release-%{version}
+%autosetup -p1 -n munkres-release-%{version}
 
 %build
 %python_build
