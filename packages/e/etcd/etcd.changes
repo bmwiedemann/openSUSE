@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Apr 20 13:18:23 UTC 2022 - eroca@suse.com
+
+- Update to version 3.5.3:
+  https://github.com/etcd-io/etcd/compare/v3.5.2...v3.5.3
+
+  * clientv3: disable mirror auth test with proxy
+  * cv3/mirror: Fetch the most recent prefix revision
+  * set backend to cindex before recovering the lessor in applySnapshot
+  * support linearizable renew lease
+  * clientv3: filter learners members during autosync
+  * etcdserver: upgrade the golang.org/x/crypto dependency
+  * fix the data inconsistency issue by adding a txPostLockHook into the backend
+  * server: Save consistency index and term to backend even when they decrease
+  * server: Add verification of whether lock was called within out outside of apply
+  * go.mod: Upgrade to prometheus/client_golang v1.11.1
+  * server: Use default logging configuration instead of zap production one
+  * Fix offline defrag
+  * backport 3.5: #13676 load all leases from backend
+  * server/storage/backend: restore original bolt db options after defrag
+  * always print raft term in decimal when displaying member list in json
+  * enhance health check endpoint to support serializable request
+  * trim the suffix dot from the srv.Target for etcd-client DNS lookup
+
+-------------------------------------------------------------------
 Thu Mar 10 12:15:44 UTC 2022 - Elisei Roca <eroca@suse.com>
 
 - Add vendor-update.sh as a source to pass obs-service-source_validator
