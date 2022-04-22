@@ -18,6 +18,7 @@
 
 %define ldaplibdir %{buildroot}%{_libexecdir}/%{name}
 %define sover   10
+%define __provides_exclude ^(libldap\\.so.*|liblber\\.so.*)$
 Name:           linphone
 Version:        5.0.70
 Release:        0

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 22 11:50:24 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- do not add bundled libraries as rpm provided libs boo#1198407
+
+-------------------------------------------------------------------
 Mon Mar  7 21:46:37 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 5.0.70:
