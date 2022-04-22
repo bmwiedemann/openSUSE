@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 19 03:36:44 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
+
+- Add patch ibus-fix-refcounting-issues.patch:
+
+  This addresses the possible GLib warnings, fixes the possible
+  double unrefs happening on IBusText used in signals, and fixes
+  the missing unrefs on IBusText objects created from static
+  strings (gh#ibus/ibus#2387, gh#ibus/ibus#2393).
+
+-------------------------------------------------------------------
 Tue Mar 29 13:47:00 UTC 2022 - Fuminobu Takeyama <ftake@geeko.jp>
 
 - Add install/uninstall scripts for the user service files

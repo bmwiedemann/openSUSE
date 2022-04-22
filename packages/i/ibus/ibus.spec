@@ -72,6 +72,9 @@ Patch12:        ibus-disable-engines-preload-in-GNOME.patch
 # Qt5 does not be update to the new version and patch for ibus on Leap 15,
 # it still needs this patch on leap 15. (boo#1187202)
 Patch15:        ibus-socket-name-compatibility.patch
+# PATCH-FIX-UPSTREAM ibus-fix-refcounting-issues.patch gh#ibus/ibus#2387, gh#ibus/ibus#2393 yfjiang@suse.com
+# Fix refcounting issues and address possible glib warnings
+Patch16:        ibus-fix-refcounting-issues.patch
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(systemd)
 %if ! 0%{?with_gtk4}
@@ -93,12 +96,12 @@ BuildRequires:  pkgconfig(libnotify) >= 0.7
 BuildRequires:  pkgconfig(python3)
 # copy_deep method is supported since 0.31.1
 BuildRequires:  vala >= 0.31.1
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  x11-tools
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  pkgconfig(xkbcommon)
-BuildRequires:  systemd-rpm-macros
 %if %{with_emoji}
 Requires:       %{_name}-dict-emoji = %{version}
 %endif
@@ -229,6 +232,7 @@ cp -r %{SOURCE11} .
 %if 0%{?suse_version} <= 1500
 %patch15 -p1
 %endif
+%patch16 -p1
 
 %build
 %configure --disable-static \
