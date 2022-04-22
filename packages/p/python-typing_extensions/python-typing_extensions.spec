@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,13 +28,15 @@
 %bcond_with test
 %endif
 Name:           python-typing_extensions%{psuffix}
-Version:        3.10.0.2
+Version:        4.2.0
 Release:        0
 Summary:        Backported and Experimental Type Hints for Python 35+
 License:        Python-2.0
 URL:            https://github.com/python/typing/
 Source0:        https://files.pythonhosted.org/packages/source/t/typing_extensions/%{modname}-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module flit-core < 4}
+BuildRequires:  %{python_module flit-core >= 3.4}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -72,20 +74,17 @@ Python versions or requires experimental types.
 %setup -q -n %{modname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %if ! %{with test}
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
 %if %{with test}
 %check
-# X.Y -> X
-%{python_expand current_bin_suffix=%{$python_bin_suffix}
-$python src_py${current_bin_suffix:0:1}/test_typing_extensions.py
-}
+%python_exec src/test_typing_extensions.py
 %endif
 
 %if ! %{with test}

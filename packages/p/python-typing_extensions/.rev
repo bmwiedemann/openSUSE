@@ -128,4 +128,12 @@
   * Support most use cases for PEP 612 with Generic</comment>
     <requestid>931292</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>831b00278ca6c8aea233cf45a058db67</srcmd5>
+    <version>4.2.0</version>
+    <time>1650657186</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971082</requestid>
+  </revision>
 </revisionlist>
