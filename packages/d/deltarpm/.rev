@@ -218,4 +218,12 @@
     <comment>- update to deltarpm-3.6.3</comment>
     <requestid>928133</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>db6efd0112514d2a3d12a9b71f33d422</srcmd5>
+    <version>3.6.3</version>
+    <time>1650657163</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970774</requestid>
+  </revision>
 </revisionlist>

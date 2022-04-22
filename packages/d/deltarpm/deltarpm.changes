@@ -1,3 +1,11 @@
+-------------------------------------------------------------------
+Wed Apr 13 16:25:58 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- deltarpm-b7987f6aa4211df3df03dcfc55a00b2ce7472e0a.patch: fixed 
+  some C bugs ( incorrect sized memset() , memcpy instead of strcpy,
+  unsigned int)
+
+-------------------------------------------------------------------
 Fri Oct 29 15:09:47 CEST 2021 - mls@suse.de
 
 - update to deltarpm-3.6.3

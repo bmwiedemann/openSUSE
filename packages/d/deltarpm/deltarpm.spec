@@ -1,7 +1,7 @@
 #
 # spec file for package deltarpm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,10 @@ Release:        0
 Summary:        Tools to Create and Apply deltarpms
 License:        BSD-3-Clause
 Group:          System/Packages
-Url:            https://github.com/rpm-software-management/deltarpm/
+URL:            https://github.com/rpm-software-management/deltarpm/
 Source:         deltarpm-3.6.3.tar.gz
+# is in upstream git
+Patch0:         deltarpm-b7987f6aa4211df3df03dcfc55a00b2ce7472e0a.patch
 BuildRequires:  libbz2-devel
 %if %{with python2}
 BuildRequires:  python2-devel
