@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 19 15:24:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- enable aio=io_uring on all kvm architectures (bsc#1197699) 
+
+-------------------------------------------------------------------
 Tue Apr  5 08:54:51 UTC 2022 - Li Zhang <li.zhang@suse.com>
 
 - Backport aqmp patches from upstream which can fix iotest issues

@@ -70,6 +70,8 @@
 
 %ifarch %ix86 x86_64 ppc ppc64 ppc64le s390x armv7hl aarch64
 %define kvm_available 1
+%define with_uring 1
+%define liburing_min_version 1.0
 %endif
 
 %ifarch %ix86 x86_64 s390x
@@ -82,11 +84,6 @@
 
 %ifarch x86_64 ppc64le
 %define with_daxctl 1
-%endif
-
-%ifarch %ix86 x86_64
-%define with_uring 1
-%define liburing_min_version 0.3
 %endif
 
 # qemu, qemu-linux-user, and qemu-testsuite "flavors" are enabled via OBS Multibuild
