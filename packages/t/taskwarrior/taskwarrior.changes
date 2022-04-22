@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 13 16:59:00 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 2.6.2:
+  * Fix sequence of IDs doesn't work with attribute "depends"
+  * Fix the bulk removal of depends: and tags: is ignored
+  * Fix tag exclusion should be detected as invalid write context
+  * Fix the value of soww named date is incorrect
+  * Fix corruption of the depends attribute upon syncing with
+    taskd 1.1.0
+  * Fix assigning dependencies via ID ranges
+  * Fix recurring report does not include parent tasks
+
+-------------------------------------------------------------------
 Sun Nov 28 20:00:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.1:
