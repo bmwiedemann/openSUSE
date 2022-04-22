@@ -19,14 +19,15 @@
 %define _name dde-polkit-agent
 
 Name:           deepin-polkit-agent
-Version:        5.4.14
+Version:        5.5.7
 Release:        0
 Summary:        Deepin Polkit Agent
 License:        GPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/dde-polkit-agent
 Source0:        https://github.com/linuxdeepin/dde-polkit-agent/archive/%{version}/%{_name}-%{version}.tar.gz
-Patch0:         fix-sudo-issue.patch
+# https://github.com/deepincn/repo/blob/master/deepincn/git/deepin-polkit-agent-git/fix.patch
+Patch0:         polkit-qt5.patch
 BuildRequires:  dtkcore
 BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig(Qt5Concurrent)
@@ -59,13 +60,14 @@ to develop applications that require these.
 sed -i 's|lrelease|lrelease-qt5|' translate_generation.sh
 sed -i 's/bool is_deepin = true/bool is_deepin = false/' policykitlistener.cpp
 sed -i '/setCancel/d' policykitlistener.cpp
+sed -i 's/qdbusxml2cpp/qdbusxml2cpp-qt5/g' CMakeLists.txt
 
 %build
-%qmake5 PREFIX=%{_prefix}
-%make_build
+%cmake
+%cmake_build
 
 %install
-%qmake5_install
+%cmake_install
 
 %files
 %defattr(-,root,root,-)

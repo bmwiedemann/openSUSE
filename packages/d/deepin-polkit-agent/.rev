@@ -25,4 +25,12 @@
     <comment></comment>
     <requestid>952942</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9c4e4f033e2c2588d4ff0e6ee7bf2e50</srcmd5>
+    <version>5.5.7</version>
+    <time>1650657249</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop fix-sudo-issue.patch, merged by upstream (forwarded request 971839 from hillwood)</comment>
+    <requestid>971840</requestid>
+  </revision>
 </revisionlist>

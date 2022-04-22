@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Apr  6 07:14:43 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.7
+  * Migrate qmake to cmake
+  * Update translations
+  * Fix bugs
+- Add polkit-qt5.patch, use upstream's api instead deepin's patch
+- Drop fix-sudo-issue.patch, merged by upstream
+
+-------------------------------------------------------------------
+Thu Feb 10 12:26:34 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.3
+  * Disable copy and cut options of DPasswordEdit
+  * Fix bugs 
+
+-------------------------------------------------------------------
 Wed Feb  9 12:08:49 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add fix-sudo-issue.patch, fix a sudo issue. 
