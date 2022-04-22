@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 10 13:27:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.1.10:
+  - Add ED25519 support (Richard Hughes)
+  - Define three more types used for the firmware transparency log (Richard Hughes)
+  - Include the pkgconfig variables in the subproject dependency (Richard Hughes)
+  - Drop the use of setuptools in the test script for regenerating ld version file (Eli Schwartz)
+  - Use the correct lookup method for the python3 script interpreter (Eli Schwartz)
+
+-------------------------------------------------------------------
 Mon Dec 20 22:03:58 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.1.9:
