@@ -40,4 +40,13 @@
     <comment></comment>
     <requestid>959812</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>12f4a1f7468aa1179ec5c60828c4b73f</srcmd5>
+    <version>1650464301.a198cf9</version>
+    <time>1650657212</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1650464301.a198cf9:
+  * Detect and treat local builds specially</comment>
+    <requestid>971200</requestid>
+  </revision>
 </revisionlist>
