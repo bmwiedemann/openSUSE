@@ -1,7 +1,7 @@
 #
 # spec file for package python-ruffus
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://github.com/cgat-developers/ruffus
 Source:         https://files.pythonhosted.org/packages/source/r/ruffus/ruffus-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  hostname
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
