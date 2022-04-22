@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 19 21:17:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- skip empty post/postuninstalls on SLE15+ 
+
+-------------------------------------------------------------------
 Mon Sep 20 20:19:09 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

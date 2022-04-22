@@ -365,4 +365,12 @@
   (jsc#SLE-21105). (forwarded request 920435 from sbrabec)</comment>
     <requestid>920592</requestid>
   </revision>
+  <revision rev="51" vrev="7">
+    <srcmd5>e9ad04d09225c39e9fb27066058c7893</srcmd5>
+    <version>3.20.0</version>
+    <time>1650657192</time>
+    <user>dimstar_suse</user>
+    <comment>- skip empty post/postuninstalls on SLE15+ (forwarded request 970913 from dirkmueller)</comment>
+    <requestid>971096</requestid>
+  </revision>
 </revisionlist>

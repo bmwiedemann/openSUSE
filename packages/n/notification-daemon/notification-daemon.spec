@@ -1,7 +1,7 @@
 #
 # spec file for package notification-daemon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Notification Daemon
 License:        GPL-2.0-or-later
 Group:          System/Daemons
-URL:            http://galago-project.org/
+URL:            https://galago-project.org/
 Source:         https://download.gnome.org/sources/notification-daemon/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -50,11 +50,13 @@ make %{?_smp_mflags} V=1
 %find_lang %{name} %{?no_lang_C}
 %suse_update_desktop_file %{name}
 
+%if 0%{?suse_version} <= 1315
 %post
 %desktop_database_post
 
 %postun
 %desktop_database_postun
+%endif
 
 %files
 # README is empty
