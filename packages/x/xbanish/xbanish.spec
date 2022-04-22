@@ -1,7 +1,7 @@
 #
 # spec file for package xbanish
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           xbanish
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        Program to hide the mouse cursor when typing
-License:        BSD-3-Clause
+License:        ISC
 Group:          System/X11/Utilities
 URL:            https://github.com/jcs/xbanish
 Source:         https://github.com/jcs/xbanish/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -47,12 +47,13 @@ corner of the screen.
 
 %build
 export CFLAGS="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install PREFIX="%{_prefix}" MANDIR="%{_mandir}/man1"
 
 %files
+%license LICENSE
 %doc README.md
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
