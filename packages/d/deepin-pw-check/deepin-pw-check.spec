@@ -27,7 +27,7 @@
 %define   import_path     %{provider_prefix}
 
 Name:           deepin-pw-check
-Version:        5.1.2
+Version:        5.1.8
 Release:        0
 License:        GPL-3.0+
 Summary:        Deepin Password Check tool
