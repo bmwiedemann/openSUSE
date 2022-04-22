@@ -111,4 +111,12 @@
     <comment></comment>
     <requestid>965495</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a3af0b6e5baf2d541f1ded10369a64d0</srcmd5>
+    <version>2022.1</version>
+    <time>1650657155</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2022.1</comment>
+    <requestid>970696</requestid>
+  </revision>
 </revisionlist>

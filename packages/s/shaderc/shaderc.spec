@@ -19,7 +19,7 @@
 # Remember to bump in baselibs.conf
 %define lname libshaderc_shared1
 Name:           shaderc
-Version:        2022.0
+Version:        2022.1
 Release:        0
 Summary:        A collection of tools, libraries and tests for shader compilation
 License:        Apache-2.0
@@ -33,8 +33,8 @@ BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  glslang-devel >= 11.8.0
 BuildRequires:  python-xml
-BuildRequires:  spirv-headers >= 1.5.1.corrected+git24
-BuildRequires:  spirv-tools-devel >= 2020.2
+BuildRequires:  spirv-headers >= 1.6.g6
+BuildRequires:  spirv-tools-devel >= 2022.2~sdk204
 
 %description
 A collection of tools, libraries and tests for shader compilation.
