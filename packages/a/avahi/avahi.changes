@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 15 08:34:35 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Stop requiring "avahi" from "libavahi-devel". The devel package
+  ought to facilitate building programs with avahi, not run the
+  whole deamon.
+
+-------------------------------------------------------------------
 Wed Feb 23 11:13:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - switch to use _multibuild

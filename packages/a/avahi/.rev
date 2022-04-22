@@ -1159,4 +1159,14 @@ https://github.com/openSUSE/python-rpm-macros/issues/107 (forwarded request 9273
 </comment>
     <requestid>957125</requestid>
   </revision>
+  <revision rev="151" vrev="17">
+    <srcmd5>fc6574b26ffe5734115e3725ca54da81</srcmd5>
+    <version>0.8</version>
+    <time>1650657189</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop requiring &quot;avahi&quot; from &quot;libavahi-devel&quot;. The devel package
+  ought to facilitate building programs with avahi, not run the
+  whole deamon. (forwarded request 970362 from jengelh)</comment>
+    <requestid>971094</requestid>
+  </revision>
 </revisionlist>
