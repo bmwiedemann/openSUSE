@@ -17,7 +17,7 @@
 #
 
 Name:           dtkcommon
-Version:        5.5.20
+Version:        5.5.21
 Release:        0
 Summary:        The DTK Tools
 License:        GPL-3.0+
