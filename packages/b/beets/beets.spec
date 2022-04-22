@@ -25,6 +25,7 @@ Group:          Productivity/Multimedia/Sound/Players
 URL:            http://beets.io/
 Source:         https://github.com/beetbox/beets/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-Unidecode
 BuildRequires:  python3-confuse >= 1.0.0
@@ -38,7 +39,6 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-Flask
 BuildRequires:  python3-beautifulsoup4
 BuildRequires:  python3-discogs-client
-BuildRequires:  python3-mock
 %if 0%{?suse_version} <= 1320
 BuildRequires:  python3-pathlib
 %endif
