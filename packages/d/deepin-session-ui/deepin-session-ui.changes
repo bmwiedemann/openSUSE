@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  6 13:20:51 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.10
+  * Migrate to cmake
+  * Fix bugs
+- Add fix-library-path.patch
+
+-------------------------------------------------------------------
 Tue Feb 15 05:59:47 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.5.6

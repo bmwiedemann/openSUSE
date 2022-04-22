@@ -77,4 +77,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>959469</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ba75c55e6ba9b57f712ade1543babebc</srcmd5>
+    <version>5.5.10</version>
+    <time>1650657255</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-library-path.patch (forwarded request 971865 from hillwood)</comment>
+    <requestid>971866</requestid>
+  </revision>
 </revisionlist>
