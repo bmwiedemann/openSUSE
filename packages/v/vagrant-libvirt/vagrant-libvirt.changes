@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Fri Apr 22 06:25:12 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.8.1
+
+  Removed patches:
+  * 0001-Remove-simplecov-from-tests.patch
+  * 0002-Double-the-UDPSocket-in-cases-where-there-s-no-netwo.patch
+  * 0003-Allow-the-connection.client.libversion-call-1416.patch
+
+## [0.8.1](https://github.com/vagrant-libvirt/vagrant-libvirt/tree/0.8.1) (2022-04-20)
+
+[Full Changelog](https://github.com/vagrant-libvirt/vagrant-libvirt/compare/0.8.0...0.8.1)
+
+**Closed issues:**
+
+- @electrofelix All commands run successfully but `vagrant plugin install vagrant-libvirt` still output this error:
+[\#1476](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1476)
+- Unable to install plugin on Ubuntu 20.04 [\#1474](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1474)
+
+**Merged pull requests:**
+
+- Ensure provisioning executed after networking [\#1480](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1480) ([electrofelix](https://github.com/electrofelix))
+
+## [0.8.0](https://github.com/vagrant-libvirt/vagrant-libvirt/tree/0.8.0) (2022-04-04)
+
+[Full Changelog](https://github.com/vagrant-libvirt/vagrant-libvirt/compare/0.7.0...0.8.0)
+
+**Closed issues:**
+
+- Crash: driver.rb:138  undefined method [\#1472](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1472)
+- if ssh forwarding is enabled, ssh process is left running after destroy [\#1467](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1467)
+- Unable to write to '/sys/fs/cgroup/cpuset/machine/qemu-1-adminwin2016.libvirt-qemu/emulator/cpuset.cpus': Permission denied
+[\#1465](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1465)
+- echo to stdout in container image breaks ansible molecule \(and possibly other applications\) [\#1463](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1463)
+- Skip network deletion [\#1462](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1462)
+- \[OS X\] `Vagrant failed to properly resolve required dependencies. ` for vagrant plugin install vagrant-libvirt
+[\#1461](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1461)
+- unsupported configuration: virtiofs requires shared memory [\#1460](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1460)
+- unable to install vagrant-libvirt on ubuntu 20.04 [\#1455](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1455)
+- No slim image available on docker hub [\#1454](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1454)
+- Cannot rename interface 'bridge4' to 'virbr1' on this platform: Function not implemented [\#1449](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1449)
+- Create linked\_image [\#1446](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1446)
+- using qemu/edk2-x86\_64-code.fd uefi firmware [\#1443](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1443)
+- forwarded\_port feature with SSH tunneling does not work [\#1439](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1439)
+- installation fails on RHEL 8 [\#1428](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1428)
+- Docker endless loop [\#1421](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1421)
+- Potential plugins collision [\#1419](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1419)
+- Unit tests fail in isolated OBS workers [\#1415](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1415)
+- Please support Libvirt Modular Daemons [\#1405](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1405)
+- Can't install vagrant-libvirt on Fedora [\#1403](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1403)
+- How to build a vagrant box of libvirt type by using ubuntu cloud image [\#1401](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1401)
+- disk\_device has no effect [\#1353](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1353)
+- Not able to boot a mips vm [\#1347](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1347)
+- Retrieve IP Address of management interface using qemu-guest-agent commands [\#1341](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1341)
+- Need assistance getting vagrant to use existing bridge intf while also assigning them static IPs [\#1339](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1339)
+- How to prevent Domain Removal on provision failure? [\#1328](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1328)
+- Using session rather than system, have to sudo virsh net-list --all first [\#1258](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1258)
+
+**Merged pull requests:**
+
+- Added fix for issue \#1472 [\#1473](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1473) ([ebaklund](https://github.com/ebaklund))
+- Fix older bundle cloning of dependencies via git [\#1470](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1470) ([electrofelix](https://github.com/electrofelix))
+- Pass ssh command for port forwarding using array [\#1469](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1469) ([electrofelix](https://github.com/electrofelix))
+- From docker only output vagrant to stdout [\#1464](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1464) ([electrofelix](https://github.com/electrofelix))
+- Update README.md [\#1458](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1458) ([ellcs](https://github.com/ellcs))
+- Allow serials to be disabled [\#1453](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1453) ([electrofelix](https://github.com/electrofelix))
+- Move autoloading to start of module [\#1451](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1451) ([electrofelix](https://github.com/electrofelix))
+- Update README.md [\#1441](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1441) ([aromanos](https://github.com/aromanos))
+- Fix ipv6-only routed networks [\#1440](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1440) ([rubenk](https://github.com/rubenk))
+- Fix a few typos in unit test [\#1437](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1437) ([rubenk](https://github.com/rubenk))
+- Fix static ipv6 ips on private networks [\#1436](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1436) ([rubenk](https://github.com/rubenk))
+- Change the default amount of video ram to 16MB [\#1435](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1435) ([rubenk](https://github.com/rubenk))
+- Make disabling and configuring memballoon possible [\#1434](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1434) ([rubenk](https://github.com/rubenk))
+- Fix snippets about podman in README.md [\#1427](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1427) ([blame2020](https://github.com/blame2020))
+- Management network keep option [\#1425](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1425) ([ssasso](https://github.com/ssasso))
+- Reduce patching for distro default session use [\#1424](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1424) ([electrofelix](https://github.com/electrofelix))
+- Cpu mode host-passthrough allows topology and features [\#1423](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1423)
+([electrofelix](https://github.com/electrofelix))
+- Rework prevent destroy if provider completed [\#1422](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1422) ([electrofelix](https://github.com/electrofelix))
+- Ensure domain removal/halt limited to provider error [\#1420](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1420)
+([electrofelix](https://github.com/electrofelix))
+- Make simplecov a source development dependency only [\#1418](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1418)
+([electrofelix](https://github.com/electrofelix))
+- Validate partial mocks [\#1417](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1417) ([electrofelix](https://github.com/electrofelix))
+- Allow the connection.client.libversion call [\#1416](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1416) ([dcermak](https://github.com/dcermak))
+- Double the UDPSocket in cases where there's no network [\#1414](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1414) ([dcermak](https://github.com/dcermak))
+- Make destroy network locale independent [\#1413](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1413) ([Elyfler](https://github.com/Elyfler))
+- feat: Support libvirt built-in TFTP server [\#1412](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1412) ([amaczuga](https://github.com/amaczuga))
+- Allow usage of public/private networks as management networks [\#1411](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1411)
+([electrofelix](https://github.com/electrofelix))
+- Remove duplicate actions for up and start [\#1410](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1410) ([electrofelix](https://github.com/electrofelix))
+- Ensure sessions trigger a listing of the network devices [\#1409](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1409)
+([electrofelix](https://github.com/electrofelix))
+- Inject default qemu\_agent allowing for explicit disable [\#1408](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1408)
+([electrofelix](https://github.com/electrofelix))
+- Tidy up XML generated [\#1407](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1407) ([electrofelix](https://github.com/electrofelix))
+- Remove duplicate gemspec [\#1406](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1406) ([electrofelix](https://github.com/electrofelix))
+- Rework destroy domain for multiple box volumes [\#1404](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1404) ([electrofelix](https://github.com/electrofelix))
+- Pin dependency to allow tests to run on older version [\#1400](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1400)
+([electrofelix](https://github.com/electrofelix))
+- Dockerfile: vagrant 2.2.19 [\#1399](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1399) ([yjftsjthsd-g](https://github.com/yjftsjthsd-g))
+- Restore handling of disk\_device domain setting [\#1365](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1365) ([electrofelix](https://github.com/electrofelix))
+
+-------------------------------------------------------------------
 Tue Feb  1 11:01:22 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - Switch to default ruby for Tumbleweed

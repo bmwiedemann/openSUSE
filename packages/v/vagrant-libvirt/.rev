@@ -135,4 +135,12 @@
     <comment>Switch to default ruby for Tumbleweed</comment>
     <requestid>950422</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b260111dfeefb7db7a61494f8ef9605e</srcmd5>
+    <version>0.8.1</version>
+    <time>1650657296</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>972140</requestid>
+  </revision>
 </revisionlist>
