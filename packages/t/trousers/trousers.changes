@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 12 13:58:28 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- changed urls to https (except main URL which has no https)
+
+-------------------------------------------------------------------
 Thu Nov 25 15:00:17 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:

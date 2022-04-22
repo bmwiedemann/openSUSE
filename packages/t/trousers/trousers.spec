@@ -1,7 +1,7 @@
 #
 # spec file for package trousers
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Summary:        TSS (TCG Software Stack) access daemon for a TPM chip
 License:        BSD-3-Clause
 Group:          Productivity/Security
 URL:            http://trousers.sourceforge.net/
-Source0:        http://downloads.sf.net/trousers/%{name}-%{version}.tar.gz
+Source0:        https://downloads.sf.net/trousers/%{name}-%{version}.tar.gz
 Source1:        tcsd.service
 Source2:        baselibs.conf
 Source3:        91-trousers.rules
@@ -42,7 +42,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 The trousers package provides a TSS implementation through the help of
 a user-space daemon, the tcsd, and a library  Trousers aims to be
 compliant to the 1.1b and 1.2 TSS specifications as available from the
-Trusted Computing website http://www.trustedcomputinggroup.org/.
+Trusted Computing website https://www.trustedcomputinggroup.org/.
 
 The package needs the /dev/tpm device file to be present on your
 system. It is a character device file major 10 minor 224, 0600 tss:tss.
@@ -59,7 +59,7 @@ Requires:       trousers = %{version}
 The trousers package provides a TSS implementation through the help of
 a user-space daemon, the tcsd, and a library  Trousers aims to be
 compliant to the 1.1b and 1.2 TSS specifications as available from the
-Trusted Computing website http://www.trustedcomputinggroup.org/.
+Trusted Computing website https://www.trustedcomputinggroup.org/.
 
 The package needs the /dev/tpm device file to be present on your
 system. It is a character device file major 10 minor 224, 0600 tss:tss.
@@ -73,7 +73,7 @@ Requires:       trousers
 The trousers package provides a TSS implementation through the help of
 a user-space daemon, the tcsd, and a library  Trousers aims to be
 compliant to the 1.1b and 1.2 TSS specifications as available from the
-Trusted Computing website http://www.trustedcomputinggroup.org/.
+Trusted Computing website https://www.trustedcomputinggroup.org/.
 
 The package needs the /dev/tpm device file to be present on your
 system. It is a character device file major 10 minor 224, 0600 tss:tss.

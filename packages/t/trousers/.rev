@@ -451,4 +451,12 @@ Should be handled together with sr#769061</comment>
     <comment>Automatic systemd hardening effort by the security team. This has not been tested. For details please see https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort (forwarded request 933796 from jsegitz)</comment>
     <requestid>934587</requestid>
   </revision>
+  <revision rev="51" vrev="4">
+    <srcmd5>bd373e599eb0c06a40c23b6e17e8527c</srcmd5>
+    <version>0.3.15</version>
+    <time>1650657165</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>970851</requestid>
+  </revision>
 </revisionlist>
