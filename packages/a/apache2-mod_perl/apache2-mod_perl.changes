@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 21 15:15:11 UTC 2022 - David Anes <david.anes@suse.com>
+
+- update to 2.0.12:
+  * Add bug tracker information to README, and add CONTRIBUTING.md.
+  * Fix detection of APR's threading support on RHEL 8.
+  * Fix build for perl >= 5.33.7.
+  * Fix SIGSEGV crash due to wrong use of perl_parse().
+  * Improve installation instructions for AIX.
+- remove patch:
+  * fix_perl_5.34_build.patch (there is a fix already upstreamed)
+- refreshed patches:
+  * avoid-broken-provides.diff
+  * apache2-mod_perl-prctl-short-name.patch
+
+-------------------------------------------------------------------
 Mon Sep 27 16:39:34 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - fix build error with fix_perl_5.34_build.patch

@@ -1,7 +1,7 @@
-Index: mod_perl-2.0.10/src/modules/perl/mod_perl.c
+Index: mod_perl-2.0.12/src/modules/perl/mod_perl.c
 ===================================================================
---- mod_perl-2.0.10.orig/src/modules/perl/mod_perl.c	2016-10-27 22:11:11.000000000 +0200
-+++ mod_perl-2.0.10/src/modules/perl/mod_perl.c	2018-07-17 10:47:27.962807330 +0200
+--- mod_perl-2.0.12.orig/src/modules/perl/mod_perl.c
++++ mod_perl-2.0.12/src/modules/perl/mod_perl.c
 @@ -15,6 +15,7 @@
   */
  

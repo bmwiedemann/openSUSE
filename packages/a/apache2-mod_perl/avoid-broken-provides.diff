@@ -1,5 +1,7 @@
---- httpd24/Apache-Test/lib/Apache/TestRequest.pm
-+++ httpd24/Apache-Test/lib/Apache/TestRequest.pm
+Index: mod_perl-2.0.12/Apache-Test/lib/Apache/TestRequest.pm
+===================================================================
+--- mod_perl-2.0.12.orig/Apache-Test/lib/Apache/TestRequest.pm
++++ mod_perl-2.0.12/Apache-Test/lib/Apache/TestRequest.pm
 @@ -43,7 +43,8 @@ unless ($ENV{APACHE_TEST_PRETEND_NO_LWP}
          require HTTP::Request::Common;
  

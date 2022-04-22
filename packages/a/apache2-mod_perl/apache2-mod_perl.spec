@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_perl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define srcname mod_perl
 Name:           apache2-mod_perl
-Version:        2.0.11
+Version:        2.0.12
 Release:        0
 Summary:        Embedded Perl for Apache
 License:        Apache-2.0
@@ -30,8 +30,6 @@ Source2:        https://www.apache.org/dist/perl/KEYS#/%{name}.keyring
 Patch1:         avoid-broken-provides.diff
 # bsc#1091625, workaround, according to mls it should be solved in perl
 Patch2:         apache2-mod_perl-prctl-short-name.patch
-# PATCH-FIX-UPSTREAM fix build error caused by new error checking in perl 5.34.0
-Patch3:         fix_perl_5.34_build.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
 BuildRequires:  db-devel
@@ -86,7 +84,6 @@ software depending on apache2-mod_perl.
 %setup -q -n %{srcname}-%{version}
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor MP_APXS=%{apache_apxs} MP_APR_CONFIG=%{_bindir}/apr-1-config MP_CCOPTS="%{apache_cflags} -fgnu89-inline"
