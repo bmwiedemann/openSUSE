@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 12 07:39:34 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.9.4:
+  * Correction for udev events on SCSI vports
+  * Add hidden developer option --fork_plugin to fork and exec
+    plugin directly from lsmcli
+  * Misc. code improvements/bug fixes
+    - remove libxml2 dependency
+    - coverity corrections
+    - remove dlerror & library requirement
+    - remove visibility of some symbols that are private
+
+-------------------------------------------------------------------
 Sat Dec 18 07:37:24 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.9.3:
