@@ -1,7 +1,7 @@
 #
 # spec file for package libfabric
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 #
-%define git_ver .0.119622b6309e
+%define git_ver .0.e800ff281fdb
 
 Name:           libfabric
-Version:        1.14.0
+Version:        1.14.1
 Release:        0
 Summary:        User-space RDMA Fabric Interfaces
 License:        BSD-2-Clause OR GPL-2.0-only
