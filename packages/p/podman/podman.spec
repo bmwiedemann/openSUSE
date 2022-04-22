@@ -56,7 +56,7 @@ BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libsystemd)
 Recommends:     apparmor-abstractions
 Recommends:     apparmor-parser
-Requires:       catatonit
+Requires:       catatonit >= 0.1.7
 Requires:       cni
 Requires:       cni-plugins
 Requires:       conmon >= 2.0.24

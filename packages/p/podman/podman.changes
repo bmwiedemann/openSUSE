@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 12 08:09:02 UTC 2022 - Richard Brown <rbrown@suse.com>
+
+- Require catatonit >= 0.1.7 for pause functionality needed by pods 
+
+-------------------------------------------------------------------
 Thu Apr  7 12:25:33 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to make buildah happy after selinux change:
