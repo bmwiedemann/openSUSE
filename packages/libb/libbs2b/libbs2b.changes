@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 19 20:34:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add libbs2b-security.patch to prevent format-security issues
+- spec-cleaner fixes 
+
+-------------------------------------------------------------------
 Thu Aug 18 09:35:10 UTC 2016 - zaitor@opensuse.org
 
 - Add baselibs.conf to build 32-bit support. Also add to sources.
