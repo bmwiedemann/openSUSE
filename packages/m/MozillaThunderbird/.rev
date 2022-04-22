@@ -4136,4 +4136,31 @@ I cannot test locally unfortunately.
     <comment></comment>
     <requestid>969350</requestid>
   </revision>
+  <revision rev="278" vrev="1">
+    <srcmd5>e3f7f01a9c60b29360153160e6175f78</srcmd5>
+    <version>91.8.1</version>
+    <time>1650657166</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 91.8.1
+  * CLIENTID extension to SMTP was not supported by smtp-js#
+  * Additional SMTP errors now propagated to user
+  * OpenPGP was not able to use some previously supported key types
+  * OpenPGP Key Manager did not always display correct information
+    after importing additional IDs
+  * Duplicate new mail notifications could be displayed when
+    server-side filters were in use
+  * Cancelling an SMTP password entry resulted in multiple failure
+    dialogs being displayed
+
+- Mozilla Thunderbird 91.8.0
+  * Google accounts using password authentication will be migrated
+    to OAuth2.
+  * bugfixes
+    https://www.thunderbird.net/en-US/thunderbird/91.8.0/releasenotes
+  MFSA 2022- (bsc#1197903)
+- update create-tar.sh
+
+- skip slow workers, this is a tough build job</comment>
+    <requestid>970866</requestid>
+  </revision>
 </revisionlist>
