@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Fri Apr 22 14:49:13 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#591
+- fix typo (bsc#1198326)
+- 17.50
+
+--------------------------------------------------------------------
+Thu Apr 21 12:50:46 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#589
+- use parse-zdev.sh from s390-tools for device activation (bsc#1198326)
+- 17.49
+
+--------------------------------------------------------------------
 Thu Apr 14 12:16:47 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#586
