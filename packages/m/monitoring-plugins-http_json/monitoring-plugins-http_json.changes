@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar  8 11:12:18 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+-  Skip build for Python 3.8.
+
+-------------------------------------------------------------------
+Tue Mar  8 11:00:33 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+-  Skip build for Python 3.6.
+
+-------------------------------------------------------------------
 Tue May  4 10:35:08 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Skip build with python39
