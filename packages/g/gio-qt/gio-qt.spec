@@ -19,10 +19,10 @@
 %define   libver          0
 
 Name:           gio-qt
-Version:        0.0.9
+Version:        0.0.11
 Release:        0
 Summary:        A Qt wrapper library for Gio
-License:        GPL-3.0-or-later
+License:        LGPL-3.0-or-later
 Group:          System/GUI/Other
 Url:            https://github.com/linuxdeepin/gio-qt
 Source0:        https://github.com/linuxdeepin/gio-qt/archive/%{version}/%{name}-%{version}.tar.gz
