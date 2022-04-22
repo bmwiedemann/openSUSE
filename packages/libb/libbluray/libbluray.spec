@@ -28,7 +28,7 @@ URL:            https://www.videolan.org/developers/libbluray.html
 Source0:        https://download.videolan.org/pub/videolan/%{name}/%{version}/%{name}-%{version}.tar.bz2
 Source99:       baselibs.conf
 Patch0:         libbluray-pkgconfig.patch
-Patch1:         libbluray-java9.patch
+Patch1:         libbluray-April2022CPU.patch
 BuildRequires:  ant
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  libtool
@@ -91,9 +91,7 @@ MPlayer). We, the authors of this library, do not condone nor endorse piracy.
 %prep
 %setup -q
 %patch0 -p1
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
 %patch1 -p1
-%endif
 
 %build
 %configure \
