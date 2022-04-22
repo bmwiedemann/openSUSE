@@ -273,7 +273,6 @@
         <package name="parted"/>
         <package name="systemd-sysvinit"/>
         <package name="timezone"/>
-        <package name="wicked"/>
         <package name="iproute2"/> 
         <package name="openssh"/>
         <package name="rsync"/>
@@ -295,15 +294,19 @@
         <package name="snapper"/>
 
         <!-- Only if not cloud-init -->
-        <package name="jeos-firstboot"/>
+        <!-- Require 1.2.0.0 for proper NM support.
+             Not sure whether this syntax is intentionally supported but it appears to work. -->
+        <package name="jeos-firstboot &gt;= 1.2.0.0"/>
         <package name="fbiterm"/> <!-- Optionally used by jeos-firstboot for non-latin fonts -->
+        <!-- NM everywhere except that cloud-init needs wicked -->
+        <package name="NetworkManager"/>
 
         <!-- Not useful with OpenStack --> 
         <package name="firewalld"/>
     </packages>
 
-    <!-- Shim for secure boot everywhere except for RPi -->
     <packages type="image" profiles="kvm-and-xen,VMware,MS-HyperV,OpenStack-Cloud">
+        <!-- Shim for secure boot everywhere except for RPi -->
         <package name="shim" arch="aarch64,x86_64"/>
     </packages>
 
@@ -338,7 +341,8 @@
         <package name="dracut-kiwi-oem-repart"/>
         <package name="kernel-default"/>
         <!-- For WiFi: -->
-        <package name="jeos-firstboot-rpiwifi"/>
+        <package name="wireless-tools"/>
+        <package name="wpa_supplicant"/>
         <package name="bcm43xx-firmware"/>
         <package name="kernel-firmware"/><!-- Fix choice between kernel-firmware and kernel-firmware-all -->
         <package name="u-boot-rpiarm64" arch="aarch64"/>

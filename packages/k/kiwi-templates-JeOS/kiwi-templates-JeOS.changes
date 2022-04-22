@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 14 12:32:44 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Switch to NetworkManager except for OpenStack-Cloud
+
+-------------------------------------------------------------------
 Fri Jan 28 15:27:59 UTC 2022 - Ivan Ivanov <ivan.ivanov@suse.com>
 
 - Add Trusted Firmware-A (TF-A) package in RaspberryPi images
