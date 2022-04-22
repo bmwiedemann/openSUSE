@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 22 07:37:46 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Add a fake provide osgi(org.eclipse.swt) to make packages that
+  require it installable. But, since on the architectures where this
+  package is present, full eclipse does not exist, nothing will ever
+  try to resolve the bundle itself.
+
+-------------------------------------------------------------------
 Tue Nov 16 17:14:40 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

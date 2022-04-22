@@ -15,4 +15,12 @@
     <comment>fix build on some misdetected 32-bit architectures</comment>
     <requestid>931894</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>005e89c2cdfaae9bbb9b62485321e4ed</srcmd5>
+    <version>4.9.0</version>
+    <time>1650657290</time>
+    <user>dimstar_suse</user>
+    <comment>Fake provide to make swtchart installable</comment>
+    <requestid>972024</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package eclipse-swt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -73,6 +73,11 @@ Requires:       atk
 Requires:       cairo
 Requires:       gtk2
 Requires:       libglvnd
+# Fake provide to make packages that require it installable.
+# But, since on the architectures where this package is present,
+# full eclipse does not exist, nothing will ever try to resolve
+# the bundle itself.
+Provides:       osgi(org.eclipse.swt)
 Obsoletes:      %{name}-bootstrap
 # Upstream Eclipse no longer supports non-64bit arches
 ExclusiveArch:  s390 %{arm} %{ix86}
