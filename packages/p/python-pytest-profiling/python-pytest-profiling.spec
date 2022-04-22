@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-profiling
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-pytest-profiling
 Version:        1.7.0
 Release:        0
@@ -25,6 +26,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/manahl/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-profiling/pytest-profiling-%{version}.tar.gz
+# PATCH-FEATURE-UPSTREAM pytest-fixtures-pr171-remove-mock.patch -- gh#man-group#pytest-plugins#171
+Patch0:         pytest-fixtures-pr171-remove-mock.patch
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -39,6 +42,9 @@ BuildRequires:  %{python_module more-itertools}
 BuildRequires:  %{python_module pytest-virtualenv}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
+%if %{with python2}
+BuildRequires:  python2-mock
+%endif
 # /SECTION
 %python_subpackages
 
@@ -46,7 +52,7 @@ BuildRequires:  %{python_module six}
 Profiling plugin for py.test
 
 %prep
-%setup -q -n pytest-profiling-%{version}
+%autosetup -p2 -n pytest-profiling-%{version}
 # Unpin
 sed -i 's/more-itertools==5.0.0/more-itertools/' tests/integration/test_profile_integration.py
 
@@ -64,6 +70,8 @@ sed -i 's/more-itertools==5.0.0/more-itertools/' tests/integration/test_profile_
 %files %{python_files}
 %doc CHANGES.md README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_profiling.py*
+%pycache_only %{python_sitelib}/__pycache__/pytest_profiling*.pyc
+%{python_sitelib}/pytest_profiling-%{version}*-info
 
 %changelog

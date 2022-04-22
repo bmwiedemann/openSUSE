@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 21 21:34:18 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fix fallout from SUSE's crusade against mock because mock was
+  required and is not pulled in anymore by something else
+  * Add pytest-fixtures-pr171-remove-mock.patch
+  * gh#man-group/pytest-plugins#171
+
+-------------------------------------------------------------------
 Mon Jun  3 09:16:15 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.7.0:
