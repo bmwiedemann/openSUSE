@@ -1,7 +1,7 @@
 #
 # spec file for package jpegoptim
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           jpegoptim
-Version:        1.4.6
+Version:        1.4.7
 Release:        0
 Summary:        Utility for Optimizing JPEG Files
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
-URL:            http://www.kokkonen.net/tjko/projects.html
-Source0:        http://www.kokkonen.net/tjko/src/%{name}-%{version}.tar.gz
-Source1:        http://www.kokkonen.net/tjko/src/%{name}-%{version}.tar.gz.sig
+URL:            https://www.kokkonen.net/tjko/projects.html
+Source0:        https://github.com/tjko/jpegoptim/archive/refs/tags/v%{version}.tar.gz#/jpegoptim-%{version}.tar.gz
+Source1:        https://github.com/tjko/jpegoptim/releases/download/v%{version}/jpegoptim-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 BuildRequires:  libjpeg-devel
 
@@ -37,14 +37,14 @@ based on setting a maximum quality factor.
 %setup -q
 
 %build
-%configure
-make %{?_smp_mflags}
+%configure --with-arith
+%make_build
 
 %install
 %make_install
 
 %files
-%license COPYING COPYRIGHT
+%license COPYRIGHT
 %doc README
 %{_bindir}/%{name}
 %{_mandir}/man?/*

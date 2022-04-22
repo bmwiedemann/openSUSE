@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 21 20:44:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.7:
+  * Experimental support for arithmetic coding (enable with configure option --with-arith)
+  * Add option --nofix
+  * Support for JFIF Extension (JFXX) markers
+  * Support for nanosecond timestamps (thanks to GerbilSoft)
+  * Optimization now works same with stdin as with standard files
+  * Fixed --size (-S) option not working correctly when processing multiple files
+  * New --keep-* options to use with --strip-all (see man page)
+  * Other minor fixes 
+
+-------------------------------------------------------------------
 Wed Apr 18 14:28:21 UTC 2018 - lazy.kent@opensuse.org
 
 - Update to 1.4.6.
