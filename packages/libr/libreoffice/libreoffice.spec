@@ -47,7 +47,7 @@
 %endif
 %bcond_with firebird
 Name:           libreoffice
-Version:        7.3.2.2
+Version:        7.3.3.1
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -105,6 +105,8 @@ Patch3:         mediawiki-no-broken-help.diff
 Patch6:         gcc11-fix-error.patch
 Patch9:         fix_math_desktop_file.patch
 Patch10:        fix_gtk_popover_on_3.20.patch
+# Bug 1192616 - LO-L3: Extraneous/missing lines in table in Impress versus PowerPoint
+Patch13:        bsc1192616.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
@@ -124,8 +126,9 @@ BuildRequires:  commons-logging
 BuildRequires:  cups-devel
 # Use bundled curl on SLE-12-SP5
 %if 0%{suse_version} >= 1500
-Source2013:     %{external_url}/curl-7.79.1.tar.xz
 BuildRequires:  curl-devel >= 7.68.0
+%else
+Source2013:     %{external_url}/curl-7.79.1.tar.xz
 %endif
 # Needed for tests
 BuildRequires:  dejavu-fonts
@@ -1014,6 +1017,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch3
 %patch6 -p1
 %patch9 -p1
+%patch13 -p1
 %if 0%{?suse_version} < 1500
 %patch10 -p1
 %patch101 -p1

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Apr 19 10:40:59 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 7.3.3.1:
+  There is no changelog available
+  * Fixes bsc#1196499
+- Remove upstreamed patches:
+  * bsc1195881.patch
+  * bsc1196212.patch
+
+-------------------------------------------------------------------
+Wed Apr 13 10:50:07 UTC 2022 - Andras Timar <andras.timar@collabora.com>
+
+- Fix bsc#1192616 - LO-L3: Extraneous/missing lines in table in Impress versus PowerPoint
+  * bsc1192616.patch
+
+-------------------------------------------------------------------
+Wed Apr  6 10:09:59 UTC 2022 - Andras Timar <andras.timar@collabora.com>
+
+- Fix bsc#1195881 - LO-L3: Bullets appear larger and green (instead of black)
+  * bsc1195881.patch
+
+-------------------------------------------------------------------
 Thu Mar 31 10:33:24 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to version 7.3.2.2:
@@ -10,6 +32,13 @@ Thu Mar 31 10:33:24 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
   * tdf#148053 Typing or pasting ZWNJ leads to Writer crash (debug build only) [Caolán McNamara]
   You can find the complete release notes here:
   https://wiki.documentfoundation.org/Releases/7.3.2/RC2
+
+-------------------------------------------------------------------
+Fri Mar 25 12:13:06 UTC 2022 - Andras Timar <andras.timar@collabora.com>
+
+- Fix bsc#1196212 - LO-L3: Text with tabs appears quite different in
+  Impress than in PowerPoint
+  * bsc1196212.patch
 
 -------------------------------------------------------------------
 Fri Mar 25 11:45:21 UTC 2022 - Cor Blom <cornelis@solcon.nl>
@@ -35,7 +64,7 @@ Wed Mar  9 16:33:59 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Refresh patches:
   * 0001-Revert-java-9-changes.patch
-  * fix_gtk_popover_on_3.20.patch 
+  * fix_gtk_popover_on_3.20.patch
 
 -------------------------------------------------------------------
 Sat Mar  5 14:30:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
