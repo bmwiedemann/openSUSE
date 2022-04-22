@@ -79,4 +79,12 @@
     <comment>Make this one to be stronger alternative then java-11-openjdk on Factory</comment>
     <requestid>964938</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>aa914e7c8f3d9357473d18f617944d7f</srcmd5>
+    <version>17.0.3.0</version>
+    <time>1650666290</time>
+    <user>dimstar_suse</user>
+    <comment>April 2022 CPU</comment>
+    <requestid>971165</requestid>
+  </revision>
 </revisionlist>
