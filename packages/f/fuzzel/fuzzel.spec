@@ -1,7 +1,7 @@
 #
 # spec file for package fuzzel
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,15 +22,15 @@ Release:        0
 Summary:        A Wayland-native application launcher, similar to rofi's drun mode
 License:        MIT
 Group:          System/X11/Utilities
-Url:            https://codeberg.org/dnkl/fuzzel
+URL:            https://codeberg.org/dnkl/fuzzel
 Source:         https://codeberg.org/dnkl/fuzzel/archive/%{version}.tar.gz
 BuildRequires:  meson >= 0.48.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3
+BuildRequires:  scdoc
 BuildRequires:  pkgconfig(cairo)
-BuildRequires:  pkgconfig(fcft) >= 3.0.0
 BuildRequires:  pkgconfig(fcft) <  4.0.0
-BuildRequires:  pkgconfig(librsvg-2.0)
+BuildRequires:  pkgconfig(fcft) >= 3.0.0
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(tllist) >= 1.0.1
 BuildRequires:  pkgconfig(wayland-client)
@@ -38,7 +38,6 @@ BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(xkbcommon)
-BuildRequires:  scdoc
 
 %description
 A Wayland-native application launcher, similar to rofi's drun mode.
@@ -57,7 +56,7 @@ Zsh command-line completion support for %{name}
 
 %build
 export CFLAGS="%{optflags}"
-%meson
+%meson -Denable-cairo=enabled -Dpng-backend=libpng -Dsvg-backend=nanosvg
 
 %meson_build
 
