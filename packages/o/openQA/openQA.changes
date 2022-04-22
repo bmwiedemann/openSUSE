@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 21 17:49:26 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1650557297.c7f8e5313:
+  * Use regular asciidoctor-pdf release
+  * Fix doc headings and numbers
+  * docs: Fix typo 'OPENQAATABASE'
+  * Sync tools/tidy with os-autoinst
+  * Use signatures in Schema::Result::Needles
+  * Use signatures in OpenQA::Setup
+  * Simplify OpenQA::Setup
+
+-------------------------------------------------------------------
 Tue Apr 19 09:49:25 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1650202155.7a94e8114:
