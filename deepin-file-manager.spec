@@ -19,14 +19,8 @@
 %define _name dde-file-manager
 %define sover 5
 
-%if 0%{?is_opensuse}
-    %define  distribution  openSUSE-Edition
-%else
-    %define  distribution  SUSE-Edition
-%endif
-
 Name:           deepin-file-manager
-Version:        5.5.3
+Version:        5.5.10
 Release:        0
 Summary:        Deepin File Manager
 License:        GPL-3.0-or-later AND MIT
@@ -131,6 +125,13 @@ Group:          System/Libraries
 %description -n lib%{_name}%{sover}
 This package contains the libraries for deepin-file-manager
 
+%package -n libdfm-extension%{sover}
+Summary:        Deepin File Manager libraries
+Group:          System/Libraries
+
+%description -n libdfm-extension%{sover}
+This package contains the libraries for deepin-file-manager
+
 %package polkit
 Summary:        Deepin File polkit profiles
 Group:          Productivity/File utilities
@@ -168,16 +169,9 @@ Header files and libraries for Deepin File Manager.
 %prep
 %autosetup -p1 -n %{_name}-%{version}
 
-# sed -i '/#include <QException>/a #include <QPainterPath>' dialogs/dfmtaskwidget.cpp
-# sed -i '/#include <QTimer>/a #include <QPainterPath>' dde-file-manager-lib/interfaces/dfmglobal.cpp
-# sed -i '/#include <QPainter>/a #include <QPainterPath>' \
-# dde-file-manager-lib/interfaces/{dlistitemdelegate,dfmstyleditemdelegate,diconitemdelegate}.cpp dde-file-manager-lib/dialogs/openwithdialog.cpp
-
 find -type f -perm 775 -exec chmod 644 {} \;
+find -type f -name ".readme" -delete -print
 sed -i '/target.path/s|$${PREFIX}/lib|$$LIBDIR|' src/dde-dock-plugins/disk-mount/disk-mount.pro
-# sed -i '/deepin-daemon/s|lib|libexec|' dde-zone/mainwindow.h
-# sed -i 's|lib/gvfs|libexec|' %{_name}-lib/gvfs/networkmanager.cpp
-# sed -i 's|%{_datadir}|%{_libdir}|' dde-sharefiles/appbase.pri
 
 sed -i 's|lrelease|lrelease-qt5|' src/%{_name}/generate_translations.sh \
 src/%{_name}-*/generate_translations.sh \
@@ -211,15 +205,12 @@ qmake-qt5 \
         LIBDIR=%{_libdir} \
         CONFIG+="DISABLE_ANYTHING" \
         IS_PLATFORM_OPENSUSE=YES \
-        VERSION=%{version}-%{distribution} \
+        VERSION=%{version} \
         filemanager.pro
 %make_build
 
 %install
 %qmake5_install
-
-rm -rf %{buildroot}%{_datadir}/applications/context-menus/.readme \
-       %{buildroot}%{_datadir}/deepin/dde-file-manager/oem-menuextensions/.readme
 
 chmod -x %{buildroot}%{_datadir}/deepin-manual/manual-assets/application/dde-file-manager/file-manager/common/*.svg \
          %{buildroot}%{_datadir}/deepin-manual/manual-assets/application/dde-file-manager/file-manager/*/*.md
@@ -279,6 +270,9 @@ chmod -x %{buildroot}%{_datadir}/dbus-1/services/*.service
 %post -n lib%{_name}%{sover} -p /sbin/ldconfig
 %postun -n lib%{_name}%{sover} -p /sbin/ldconfig
 
+%post -n libdfm-extension%{sover} -p /sbin/ldconfig
+%postun -n libdfm-extension%{sover} -p /sbin/ldconfig
+
 %files
 %defattr(-,root,root,-)
 %doc README.md CHANGELOG.md
@@ -299,7 +293,7 @@ chmod -x %{buildroot}%{_datadir}/dbus-1/services/*.service
 %{_datadir}/deepin-manual/manual-assets/application/%{_name}
 %exclude %{_datadir}/%{_name}/*.tar.gz
 %{_datadir}/icons/hicolor/scalable/apps/*.svg
-%{_datadir}/deepin/dde-file-manager
+# %{_datadir}/deepin/dde-file-manager
 %{_datadir}/dbus-1/interfaces/com.deepin.filemanager.filedialog.xml
 %{_datadir}/dbus-1/interfaces/com.deepin.filemanager.filedialogmanager.xml
 %{_datadir}/dbus-1/services/*.service
@@ -321,11 +315,17 @@ chmod -x %{buildroot}%{_datadir}/dbus-1/services/*.service
 %defattr(-,root,root,-)
 %{_libdir}/lib%{_name}.so.*
 
+%files -n libdfm-extension%{sover}
+%defattr(-,root,root,-)
+%{_libdir}/libdfm-extension.so.*
+
 %files devel
 %defattr(-,root,root,-)
-%{_includedir}/%{_name}/
-%{_libdir}/pkgconfig/%{_name}.pc
+%{_includedir}/%{_name}
+%{_includedir}/dfm-extension
+%{_libdir}/pkgconfig/*.pc
 %{_libdir}/lib%{_name}.so
+%{_libdir}/libdfm-extension.so
 
 %files dbus
 %defattr(-,root,root,-)
