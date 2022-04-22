@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Apr 20 06:42:43 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.3.1:
+  + Changes:
+    * API: some camera ID have been renamed or value changed.
+    * API: or_rawdata_get_roi() renamed to or_rawdata_get_active_area().
+    * API: cfa_pattern renamed to mosaicinfo.
+    * API: Added or_ifd_release(), or_ifd_get_name() and or_ifd_get_type().
+    * API: The ORIfdDirRef returned by or_rawfile_get_ifd() must
+      be released.
+    * API: or_rawfile_get_ifd() support more IFD types.
+    * API: or_ifd_index is replaced by or_ifd_dir_type. OR_IFD_MAKERNOTE is replaced
+      by OR_IFD_MNOTE, OR_IFD_CFA is replaced by OR_IFD_RAW.
+    * API: or_iterator*() to iterate through the metadata tags.
+    * API: Added or_metavalue_get_count().
+    * Fix getting MakerNotes for Pentax, Panasonic.
+    * Get the Panasonic Exif thumbnail.
+    * Added tool `exifdump`.
+  + Lots of new cameras added and bugs fixed. See the following link for a complete
+    list: https://gitlab.freedesktop.org/libopenraw/libopenraw/-/blob/master/NEWS
+
+-------------------------------------------------------------------
 Fri May 31 06:34:05 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.1.3:

@@ -1,7 +1,7 @@
 #
 # spec file for package libopenraw
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libopenraw
-Version:        0.1.3
+Version:        0.3.1
 Release:        0
 Summary:        A library to decode digital camera RAW files
 License:        LGPL-2.1-or-later
@@ -26,19 +26,23 @@ URL:            http://libopenraw.freedesktop.org/
 Source0:        http://libopenraw.freedesktop.org/download/%{name}-%{version}.tar.bz2
 Source1:        http://libopenraw.freedesktop.org/download/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
+# cd lib/mp4 && cargo vendor -s Cargo.toml -s mp4parse/Cargo.toml -s mp4parse_capi/Cargo.toml && tar cf vendor.tar.xz vendor
+Source3:        vendor.tar.xz
 Source99:       baselibs.conf
-
+BuildRequires:  autoconf >= 2.69
+BuildRequires:  cargo
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
+BuildRequires:  rust
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.21
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.5.0
 %if 0%{?suse_version} > 1325
-BuildRequires:  libboost_test-devel
+BuildRequires:  libboost_test-devel >= 1.60.0
 %else
-BuildRequires:  boost-devel >= 1.31.1
+BuildRequires:  boost-devel >= 1.60.0
 %endif
 
 %description
@@ -74,6 +78,18 @@ libopenraw is a library that aim at decoding digital camera RAW files.
 
 %prep
 %setup -q
+%setup -q -T -D -a3
+mv vendor lib/mp4/
+cd lib/mp4
+sed -i 's/byteorder = "1.2.1"/byteorder = "1.2.2"/' mp4parse/Cargo.toml
+mkdir .cargo
+cat <<EOF >> .cargo/config.toml
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"
+EOF
 
 %build
 %configure \
@@ -90,6 +106,7 @@ make %{?_smp_mflags} check
 
 %post -n libopenraw1 -p /sbin/ldconfig
 %postun -n libopenraw1 -p /sbin/ldconfig
+
 %post -n gdk-pixbuf-loader-libopenraw
 %{gdk_pixbuf_loader_post}
 
@@ -106,8 +123,8 @@ make %{?_smp_mflags} check
 
 %files -n libopenraw-devel
 %{_libdir}/*.so
-%dir %{_includedir}/libopenraw-0.1
-%{_includedir}/libopenraw-0.1/*
+%dir %{_includedir}/libopenraw-0.3
+%{_includedir}/libopenraw-0.3/*
 %{_libdir}/pkgconfig/*.pc
 
 %changelog
