@@ -297,4 +297,13 @@
 </comment>
     <requestid>958321</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>bce5f41df8a63963f2eb51aa7566c06d</srcmd5>
+    <version>2.4.6</version>
+    <time>1650657304</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.4.6
+- Update .NET SDK to 6.0</comment>
+    <requestid>972187</requestid>
+  </revision>
 </revisionlist>
