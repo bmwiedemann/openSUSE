@@ -25,7 +25,7 @@
 %define    procps_version    %(rpm -q --queryformat '%%{VERSION}' procps-devel)
 
 Name:           deepin-system-monitor
-Version:        5.8.21
+Version:        5.8.22
 Release:        0
 Summary:        A user-friendly system monitor
 License:        GPL-3.0-or-later
