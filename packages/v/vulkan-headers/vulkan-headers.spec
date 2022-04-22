@@ -21,7 +21,7 @@
 # Consider only updating the sources in lockstep.
 #
 Name:           vulkan-headers
-Version:        1.3.204.0
+Version:        1.3.211.0
 Release:        0
 Summary:        Vulkan C and C++ API header files
 License:        Apache-2.0
