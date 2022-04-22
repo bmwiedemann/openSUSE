@@ -20,7 +20,7 @@
 %define _name dde-dock
 
 Name:           deepin-dock
-Version:        5.5.9
+Version:        5.5.12
 Release:        0
 Summary:        Deepin dock
 License:        LGPL-3.0-or-later
