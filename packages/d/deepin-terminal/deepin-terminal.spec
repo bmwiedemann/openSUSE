@@ -29,14 +29,14 @@
 %endif
 
 Name:           deepin-terminal
-Version:        5.4.24
+Version:        5.4.29
 Release:        0
 Summary:        Deepin terminal
 License:        GPL-3.0-only
 Group:          System/X11/Terminals
-URL:            https://github.com/linuxdeepin/deepin-terminal-reborn
-Source0:        https://github.com/linuxdeepin/deepin-terminal-reborn/archive/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM recompile-with-fPIC.patch hillwood@opensuse.org - Fix link failed on 64bit
+URL:            https://github.com/linuxdeepin/deepin-terminal
+Source0:        https://github.com/linuxdeepin/deepin-terminal/archive/%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM recompile-with-fPIC.patch hillwood@opensuse.org - Fix build on 64bit arch
 Patch1:         recompile-with-fPIC.patch
 %ifarch ppc ppc64 ppc64le s390 s390x
 BuildRequires:  deepin-desktop-base
@@ -98,16 +98,10 @@ docs for deepin-terminal.
 
 %prep
 %autosetup -n %{name}-%{version}
-sed -i '/<QHash>/i#include <QObject>\n#include <QMap>' 3rdparty/terminalwidget/lib/SessionManager.h
+# sed -i '/<QHash>/i#include <QObject>\n#include <QMap>' 3rdparty/terminalwidget/lib/SessionManager.h
 sed -i '/LXQtCompilerSettings/a remove_definitions(-DQT_NO_CAST_FROM_ASCII -DQT_NO_CAST_TO_ASCII)' 3rdparty/terminalwidget/CMakeLists.txt
 sed -i 's|default-config.json|src/assets/other/default-config.json|' CMakeLists.txt
-sed -i '/#include <QPainter>/a #include <QPainterPath>' 3rdparty/terminalwidget/lib/TerminalDisplay.cpp \
-3rdparty/terminalwidget/lib/konsole_wcwidth.cpp \
-3rdparty/terminalwidget/lib/konsole_wcwidth.h \
-src/views/focusframe.cpp \
-src/views/themepreviewarea.cpp
 
-sed -i '/#include <QDebug>/a #include <QPainterPath>' src/views/customthemesettingdialog.cpp
 
 %build
 %cmake -DCMAKE_INSTALL_DIR=%{_prefix} \
