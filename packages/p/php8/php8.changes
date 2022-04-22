@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 20 17:46:22 UTC 2022 - pgajdos@suse.com
+
+- version update to 8.1.5:
+  * This is a bug fix release.
+    https://www.php.net/ChangeLog-8.php#8.1.5
+
+-------------------------------------------------------------------
 Mon Apr 11 19:41:50 UTC 2022 - pgajdos@suse.com
 
 - fpm %postrans: check whether sytemctl is available

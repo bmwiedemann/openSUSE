@@ -250,4 +250,14 @@
   [boo#1197994]</comment>
     <requestid>969707</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c39e0f4df21070b1ded0dddc2d592378</srcmd5>
+    <version>8.1.5</version>
+    <time>1650666304</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 8.1.5:
+  * This is a bug fix release.
+    https://www.php.net/ChangeLog-8.php#8.1.5</comment>
+    <requestid>971314</requestid>
+  </revision>
 </revisionlist>
