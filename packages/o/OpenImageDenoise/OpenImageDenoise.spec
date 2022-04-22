@@ -1,7 +1,7 @@
 #
 # spec file for package OpenImageDenoise
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019-2021 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,14 +21,14 @@
 %define libname lib%{name}%{sover}
 %define pkgname oidn
 Name:           OpenImageDenoise
-Version:        1.4.1
+Version:        1.4.3
 Release:        0
 Summary:        Open Image Denoise library
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://openimagedenoise.github.io/
 Source:         https://github.com/%{name}/%{pkgname}/releases/download/v%{version}/%{pkgname}-%{version}.src.tar.gz
-BuildRequires:  cmake >= 2.8.6
+BuildRequires:  cmake >= 3.1
 BuildRequires:  gcc-c++
 BuildRequires:  ispc
 BuildRequires:  tbb-devel
