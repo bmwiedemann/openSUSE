@@ -34,6 +34,7 @@ Source4:        prometheus-node_exporter.sysconfig
 # This patch has been applied before generating vendor tarball
 Patch1:         0001-Update-prometheus-client-to-1.11.1.patch
 BuildRequires:  fdupes
+BuildRequires:  golang-github-prometheus-promu >= 0.12.0
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) = 1.14
 %{?systemd_ordering}
@@ -55,10 +56,12 @@ Prometheus exporter for hardware and OS metrics exposed by *NIX kernels, written
 
 %build
 %goprep github.com/prometheus/node_exporter
-%gobuild -mod=vendor "" ...
+export BUILDFLAGS="-v -p 4 -x -buildmode=pie -mod=vendor"
+GOPATH=%{_builddir}/go promu build
 
 %install
 %goinstall
+install -D -m 0755 %{_builddir}/node_exporter-%{version}/node_exporter %{buildroot}/%{_bindir}/node_exporter
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/prometheus-node_exporter.service
 install -D -m 0644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.prometheus-node_exporter
 %fdupes %{buildroot}

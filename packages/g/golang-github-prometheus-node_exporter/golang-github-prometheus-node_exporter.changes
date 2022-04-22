@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 13 08:17:29 UTC 2022 - Tatjana Dehler <tdehler@suse.com>
+
+- Update spec file in order to make --version work (bsc#1196652)
+
+-------------------------------------------------------------------
 Wed Mar  9 09:35:46 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Update vendor tarball with prometheus/client_golang 1.11.1
