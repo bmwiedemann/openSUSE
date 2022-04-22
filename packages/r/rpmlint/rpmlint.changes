@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 19 14:42:07 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220419.1dbd1ae:
+  * dbus-services: remove gconf-polkit entry which is no longer shipped in Factory
+  * Distinguish exit code in --strict mode.
+  * Remove FIXME as we have a test for it.
+
+-------------------------------------------------------------------
 Wed Apr 13 19:13:01 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.2.0+git20220413.2dafaf8:

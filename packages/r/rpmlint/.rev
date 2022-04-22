@@ -3739,4 +3739,15 @@ oddjob-gpupdate isn't blocked)</comment>
   * Add ergo user and group</comment>
     <requestid>969976</requestid>
   </revision>
+  <revision rev="396" vrev="1">
+    <srcmd5>d28bf7a75567a42afebe1ffdc0bc0480</srcmd5>
+    <version>2.2.0+git20220419.1dbd1ae</version>
+    <time>1650657137</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git20220419.1dbd1ae:
+  * dbus-services: remove gconf-polkit entry which is no longer shipped in Factory
+  * Distinguish exit code in --strict mode.
+  * Remove FIXME as we have a test for it.</comment>
+    <requestid>970862</requestid>
+  </revision>
 </revisionlist>
