@@ -1,7 +1,7 @@
 #
 # spec file for package libquvi
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,15 +22,17 @@ Name:           libquvi
 Version:        0.9.4
 Release:        0
 Summary:        Library to parse flash media stream URLs
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          System/Libraries
-Url:            http://quvi.sourceforge.net/
+URL:            http://quvi.sourceforge.net/
 Source:         http://sourceforge.net/projects/quvi/files/0.9/libquvi/libquvi-0.9.4.tar.xz
 Source1:        %{name}.rpmlintrc
 # PATCH-FEATURE-OPENSUSE libquvi-stable-build-date.patch sbrabec@suse.cz -- Don't embed build date. Triggers rebuild.
 Patch0:         %{name}-stable-build-date.patch
 # PATCH-FIX-UPSTREAM marguerite@opensuse.org -- compatibility for lua 5.2+
 Patch1:         %{name}-%{version}-lua-5.2.patch
+# PATCH-FIX-UPSTREAM libquvi-autoconf-2.70.patch dimstar@opensuse.org -- Fix build with autconfig 2.70
+Patch2:         libquvi-autoconf-2.70.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -77,6 +79,7 @@ echo "timestamp for BUILD_TIME" >stamp-build-time
 touch -d "$(sed -n '2s/ - .*$//p' <%{_sourcedir}/%{name}.changes)" stamp-build-time
 fi
 %patch1 -p1
+%patch2 -p1
 
 %build
 export CFLAGS="%{optflags} -DLUA_COMPAT_MODULE"
