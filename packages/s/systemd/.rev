@@ -5998,4 +5998,12 @@ handle manual pages that consist only of a .so directive such as
     - upstream commit 34357545590d4791d1acbbeb07ae8f7636e187cb (bsc#1198093)</comment>
     <requestid>967294</requestid>
   </revision>
+  <revision rev="357" vrev="5">
+    <srcmd5>36594237b482740783f291e06147c35f</srcmd5>
+    <version>250.4</version>
+    <time>1650657182</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971023</requestid>
+  </revision>
 </revisionlist>

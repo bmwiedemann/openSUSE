@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Apr 20 07:59:23 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
+
+- spec: sign the systemd-boot efi binary (boo#1198586)
+
+-------------------------------------------------------------------
+Tue Apr 19 11:17:03 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Drop 0011-core-disable-session-keyring-per-system-sevice-entir.patch
+
+  Since bsc#1081947 has been addressed, we can attempt to re-enable private
+  session kernel keyring for each system service hence each service gets a
+  session keyring that is specific to the service.
+
+-------------------------------------------------------------------
+Tue Apr 19 07:30:31 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Import commit 736db5a59f1ab1317ef64ec6e7dc394250178146
+
+  98bc28d824 tmpfiles: constify item_compatible() parameters
+  3faf1a2648 test: adapt install_pam() for openSUSE
+  b7ca34fa28 test: add test checking tmpfiles conf file precedence
+  2713693d93 test tmpfiles: add a test for 'w+'
+  ce2cbefe38 tmpfiles.d: only 'w+' can have multiple lines for the same path (bsc#1198090)
+  769f5a0cbe Support -D_FORTIFY_SOURCE=3 by using __builtin_dynamic_object_size.
+
+-------------------------------------------------------------------
+Sat Apr  9 12:54:30 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- libseccomp is needed everywhere
+
+-------------------------------------------------------------------
+Thu Apr  7 19:27:11 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Move coredumpctl completion files into systemd-coredump sub-package.
+
+-------------------------------------------------------------------
 Wed Apr  6 09:55:10 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - Import commit e43a1b018899266b764ab81afb9c30fb417675c6

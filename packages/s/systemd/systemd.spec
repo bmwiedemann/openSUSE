@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define min_kernel_version 4.5
-%define suse_version +suse.47.ge43a1b0188
+%define suse_version +suse.54.g736db5a59f
 %define _testsuitedir /usr/lib/systemd/tests
 %define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
 
@@ -93,11 +93,9 @@ BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libqrencode)
+BuildRequires:  pkgconfig(libseccomp) >= 2.3.1
 BuildRequires:  pkgconfig(libselinux) >= 2.1.9
 BuildRequires:  pkgconfig(libzstd)
-%ifarch aarch64 %ix86 x86_64 x32 %arm ppc64le s390x
-BuildRequires:  pkgconfig(libseccomp) >= 2.3.1
-%endif
 %endif
 BuildRequires:  fdupes
 BuildRequires:  gperf
@@ -197,7 +195,6 @@ Patch5:         0005-udev-create-default-symlinks-for-primary-cd_dvd-driv.patch
 Patch8:         0008-sysv-generator-translate-Required-Start-into-a-Wants.patch
 %endif
 Patch10:        0001-conf-parser-introduce-early-drop-ins.patch
-Patch11:        0011-core-disable-session-keyring-per-system-sevice-entir.patch
 Patch12:        0009-pid1-handle-console-specificities-weirdness-for-s390.patch
 
 # Temporary workaround until bsc#1197178 is addressed.
@@ -308,6 +305,7 @@ License:        GPL-2.0-only
 URL:            http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html
 %if %{with sd_boot}
 BuildRequires:  gnu-efi
+BuildRequires:  pesign-obs-integration
 %endif
 Requires:       %{name} = %{version}-%{release}
 %systemd_requires
@@ -722,6 +720,12 @@ Have fun with these services at your own risk.
 
 %install
 %meson_install
+
+%if %{with sd_boot}
+%ifarch x86_64
+export BRP_PESIGN_FILES="/usr/lib/systemd/boot/efi/systemd-bootx64.efi"
+%endif
+%endif
 
 # Don't ship resolvconf symlink for now as it conflicts with the
 # binary shipped by openresolv and provides limited compatibility
@@ -1317,6 +1321,8 @@ fi
 %config(noreplace) %{_sysconfdir}/systemd/coredump.conf
 %dir %{_localstatedir}/lib/systemd/coredump
 %if %{without bootstrap}
+%{_datadir}/bash-completion/completions/coredumpctl
+%{_datadir}/zsh/site-functions/_coredumpctl
 %{_mandir}/man1/coredumpctl*
 %{_mandir}/man5/coredump.conf*
 %{_mandir}/man8/systemd-coredump*

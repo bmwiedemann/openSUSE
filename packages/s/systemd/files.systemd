@@ -124,7 +124,6 @@
 %{_bindir}/timedatectl
 %if %{without bootstrap}
 %{_datadir}/bash-completion/completions/busctl
-%{_datadir}/bash-completion/completions/coredumpctl
 %{_datadir}/bash-completion/completions/hostnamectl
 %{_datadir}/bash-completion/completions/journalctl
 %{_datadir}/bash-completion/completions/localectl
@@ -188,7 +187,6 @@
 %{_datadir}/systemd/language-fallback-map
 %if %{without bootstrap}
 %{_datadir}/zsh/site-functions/_busctl
-%{_datadir}/zsh/site-functions/_coredumpctl
 %{_datadir}/zsh/site-functions/_hostnamectl
 %{_datadir}/zsh/site-functions/_journalctl
 %{_datadir}/zsh/site-functions/_localectl
