@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Fri Apr 22 12:25:02 UTC 2022 - rpm@fthiessen.de
+
+- Update to version 0.19.0:
+  * Add nerdctl cp command
+  * nerdctl run:
+    * seccomp: relax restrictions depending on --cap-add
+    * Add --init flag for enabling tini
+  * nerdctl build: Fix content digest ... not found for
+    multi-platform images
+  * nerdctl push: Add --ipfs-address flag to push to a
+    remote IPFS node
+  * nerdctl inspect: Add --type=(container|image) flag
+  * nerdctl container inspect: Add Mounts field for Docker
+    compatibility
+  * nerdctl image inspect: Fix the format of Created field
+    for Docker compatibility
+  * nerdctl volume rm: Refuse removing volumes in use 
+- Update to version 0.18.0:
+  * nerdctl build: Support using containerd worker, for efficiency
+    and for supporting local base images
+  * nerdctl network create: Switch away from CNI isolation plugin
+    to firewall plugin (>= 1.1.0), with ingressPolicy
+  * nerdctl run:
+    * Support automatic host port assignment for nerdctl run -p
+    * Add --ip option
+  * nerdctl namespace: Add nerdctl namespace (create|inspect|remove|update) commands
+  * nerdctl push: Add --allow-nondistributable-artifacts option
+  * Update to use Go 1.18
+- Update to version 0.17.1:
+  * nerdctl network create:
+    * Add --driver=(macvlan|ipvlan)
+    * Add --ipam-driver=dhcp
+- Update to version 0.17.0:
+  * Rootless containers can be now executed without slirp4netns overhead.
+  * nerdctl run:
+    * Support bypass4netns to bypass slirp4netns overhead:
+      nerdctl run --label nerdctl/bypass4netns=true
+    * Add nerdctl run --mount
+  * nerdctl images: Show blob sizes
+  * nerdctl history: Add nerdctl history command
+  * Compose: Support multi compose files
+  * Kata: Support CNI networking for Kata 
+- Update to version 0.16.0:
+  * Support nerdctl.toml for global configuration
+  * nerdctl pull, nerdctl push, nerdctl login:
+    Support /etc/containerd/certs.d/<HOST:PORT>/hosts.toml
+    (~/.config/containerd/certs.d/<HOST:PORT>/hosts.toml) for configuring certs
+  * nerdctl run:
+    * Add --verify=cosign and --cosign-key=KEY flags for cosign integration
+    * Automatically generate a container name from the image name
+    * Add --cpuset-mems, --cpu-quota, and --cpu-period options
+    * Add --rdt-class option for Intel RDT classes
+  * nerdctl commit:
+    * Add --pause=false option
+    * Support overriding ENTRYPOINT with --change option
+  * nerdctl ipfs registry: Add --read-retry-num and --read-timeout options
+  * nerdctl build:
+    * Add --label option
+    * Add a dummy --rm option
+  * nerdctl create: Add nerdctl create command
+  * nerdctl network rm: Remove bridge network interface
+  * nerdctl compose:
+    * Support specifying service name for nerdctl compose pull/push
+    * Support labels in nerdctl compose up --build
+    * Support specifying subnets
+    * Add --services, --volumes, and --hash options for nerdctl compose config
+    * Add nerdctl compose kill command
+- Update to version 0.15.0:
+  * nerdctl pull:
+    * Support verifying Cosign signatures: nerdctl pull --verify=cosign
+    * Support OverlayBD
+    * Add --quiet option (#599, thanks to @Junnplus)
+  * nerdctl push: Support signing Cosign signatures: nerdctl push --sign=cosign
+  * nerdctl build: Add --iidfile option
+  * nerdctl commit: Add --change 'CMD ["foo", "bar"]' option
+  * nerdctl load: Support loading gzipped archive
+  * nerdctl image convert: Add --zstdchunked option
+  * nerdctl exec: Add --user option
+  * nerdctl ps: Add --latest and --last options
+  * nerdctl stats: Support showing network I/O stats on cgroup v2 hosts
+  * nerdctl compose:
+    * Add nerdctl compose up --scale option
+    * Add nerdctl compose config command
+    * Support ulimits
+    * Support interpolating host env vars
+
+-------------------------------------------------------------------
 Tue Nov 23 10:53:55 UTC 2021 - Richard Brown <rbrown@suse.com>
 
 - Initial Packaging 
