@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 19 06:38:55 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Update to 3.2.4
+  * A new form of arg protection was added that works similarly to
+    the older `--protect-args` (`-s`) option but in a way that 
+    avoids breaking things like rrsync.
+  * A long-standing bug was preventing rsync from figuring out the
+    current locale's decimal point character, which made rsync 
+    always output numbers using the "C" locale.
+  * Too many changes to list, see included NEWS.md file.
+- Drop rsync-CVE-2020-14387.patch, already included upstream.
+
+-------------------------------------------------------------------
 Tue Nov 16 08:59:11 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:

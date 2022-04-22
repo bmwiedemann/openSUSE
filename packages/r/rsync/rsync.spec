@@ -1,7 +1,7 @@
 #
 # spec file for package rsync
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           rsync
-Version:        3.2.3
+Version:        3.2.4
 Release:        0
 Summary:        Versatile tool for fast incremental file transfer
 License:        GPL-3.0-or-later
@@ -42,7 +42,6 @@ Source10:       http://rsync.samba.org/ftp/rsync/src/rsync-%{version}.tar.gz.asc
 Source11:       http://rsync.samba.org/ftp/rsync/src/rsync-patches-%{version}.tar.gz.asc
 Source12:       %{name}.keyring
 Patch0:         rsync-no-libattr.patch
-Patch1:         rsync-CVE-2020-14387.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  c++_compiler
@@ -79,7 +78,6 @@ rm -f zlib/*.h
 patch -p1 < patches/slp.diff
 
 %patch0 -p1
-%patch1 -p1
 
 %build
 autoreconf -fiv
