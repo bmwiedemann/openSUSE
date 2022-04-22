@@ -1,7 +1,7 @@
 #
 # spec file for package hwloc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %global lname libhwloc15
 Name:           hwloc
-Version:        2.6.0
+Version:        2.7.1
 Release:        0
 Summary:        Portable Hardware Locality
 License:        BSD-3-Clause
 Group:          Productivity/Clustering/Computing
 URL:            https://www.open-mpi.org/projects/hwloc/
-Source0:        https://download.open-mpi.org/release/hwloc/v2.6/hwloc-%{version}.tar.bz2
+Source0:        https://download.open-mpi.org/release/hwloc/v2.7/hwloc-%{version}.tar.bz2
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
