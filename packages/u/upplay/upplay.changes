@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 22 16:21:39 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to 1.6.0
+  * New alternative tabbed compact interface for small displays
+  * Hopefully better scaling
+- update to 1.5.2
+  * Implement minimal MPRIS interface on Linux, mostly so that
+    media keys work on the Gnome desktop
+  * Small miscellaneous improvements in directory browser display
+  * Cache album covers
+  * Option to poll for volume changes, for renderers which generate no volume events
+
+-------------------------------------------------------------------
 Thu Apr 15 12:46:31 UTC 2021 - Michael Pujos <pujos.michael@gmail.com>
 
 - update to 1.4.10

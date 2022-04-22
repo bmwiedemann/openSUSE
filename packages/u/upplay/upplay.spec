@@ -1,7 +1,7 @@
 #
 # spec file for package upplay
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           upplay
-Version:        1.4.10
+Version:        1.6.0
 Release:        0
 Summary:        UPnP and OpenHome audio Control Point
 License:        GPL-2.0-or-later
@@ -32,6 +32,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5WebEngine)
 BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(libupnpp)
+BuildRequires:  pkgconfig(mpris-qt5)
 
 %description
 upplay is a Qt5-based audio Control Point for browsing and playing music
