@@ -1,0 +1,39 @@
+From 5b5212d7d6e8e00925a18dc92adf0ee95249143a Mon Sep 17 00:00:00 2001
+From: Jorge Hermo Gonzalez <jorge.hermo.gonzalez@udc.es>
+Date: Thu, 4 Nov 2021 10:33:10 +0100
+Subject: [PATCH] Patch for compability with Ryzen processors (v2)
+
+---
+ src/cpu/cpu.cpp | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/src/cpu/cpu.cpp b/src/cpu/cpu.cpp
+index c09cbc5..1c12765 100644
+--- a/src/cpu/cpu.cpp
++++ b/src/cpu/cpu.cpp
+@@ -551,6 +551,12 @@ void report_display_cpu_cstates(void)
+ 				if (!_core->can_collapse()) {
+ 					buffer[0] = 0;
+ 					buffer2[0] = 0;
++					
++					/*
++						* Patch for compatibility with Ryzen processors
++						* See https://github.com/fenrus75/powertop/issues/64
++					*/
++					if(idx2 >= core_tbl_size.cols * core_tbl_size.rows) break;
+ 
+ 					if (line == LEVEL_HEADER) {
+ 						/* Here we need to check for which core type we
+@@ -576,11 +582,7 @@ void report_display_cpu_cstates(void)
+ 							}
+ 						}
+ 					} else {
+-						/*
+-						 * Patch for compatibility with Ryzen processors
+-						 * See https://github.com/fenrus75/powertop/issues/64
+-						*/
+-						if(idx2 >= core_tbl_size.cols * core_tbl_size.rows) break;
++
+ 						
+ 						tmp_str=string(_core->fill_cstate_name(line, buffer));
+ 						core_data[idx2]=(tmp_str=="" ? "&nbsp;" : tmp_str);

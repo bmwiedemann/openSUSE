@@ -1,7 +1,7 @@
 #
 # spec file for package powertop
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,9 @@ Group:          System/Monitoring
 URL:            https://01.org/powertop/
 Source0:        https://github.com/fenrus75/powertop/archive/v%{version}.tar.gz
 Source1:        powertop.service
+# PATCH-FIX-UPSTREAM mvetter@suse.com -- Fix powertop Ryzen issues (bsc#1198000)
+Patch0:         https://github.com/fenrus75/powertop/commit/798eb463d419941fa014ada1f863d769650351c7.patch#/powertop-ryzen1.patch
+Patch1:         https://github.com/fenrus75/powertop/commit/5b5212d7d6e8e00925a18dc92adf0ee95249143a.patch#/powertop-ryzen2.patch
 # they repeatedly forget to upload a release tarball and only have the one from
 # GitHub which doesnt contain configure thus adding:
 # autoconf, autoconf-archive, automake, libtool
@@ -52,6 +55,8 @@ doing in terms of power savings.
 
 %prep
 %setup -q -n powertop-%{version}
+%patch0 -p1
+%patch1 -p1
 
 # Delete objects files left in tarball
 find . -name '*.o' -delete

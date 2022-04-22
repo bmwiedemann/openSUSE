@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 20 08:14:19 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- boo#1198000: Add Ryzen compatability fixes:
+  * Add powertop-ryzen1.patch 
+  * Add powertop-ryzen2.patch 
+
+-------------------------------------------------------------------
 Thu Nov 11 09:41:32 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
