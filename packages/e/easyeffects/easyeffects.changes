@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Apr 21 08:04:54 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to latest release 6.2.4
+- Features:
+  + There is a new setting allowing the user to select an
+    inactivity timeout for the pipeline. When no client is playing
+    to or recording from our devices the filters will be unlinked
+    after the timeout is reached. This is done to make sure we do
+    not waste CPU power processing silence.
+  + The autogain plugin now allows the user to select which of the
+    three loudness are used to calculate the geometric mean.
+  + The autogain plugin now allows the maximum history to be set
+    and does not use libebur128 histogram mode anymore. This should
+    avoid the cases where the Integrated loudness gets stuck
+    forever in the same value.
+  + EasyEffects icon has been updated in a way that should make it
+    visible in QT desktops.
+- Bugfixes:
+  + The command line option that returns the global bypass state is
+    working again.
+
+-------------------------------------------------------------------
 Wed Feb  2 17:47:05 UTC 2022 - Boris Manojlovic <boris@steki.net>
 
 - Updated to latest release 6.2.3
