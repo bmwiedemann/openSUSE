@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 21 11:48:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- refresh keyring with new signing key 
+
+-------------------------------------------------------------------
+Fri Apr 15 15:04:26 UTC 2022 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- update to version 7.3
+  - see NEWS and ChangeLog file for full details
+- Remove smartmontools-drivedb.h. Up to date version is included
+  in release tarball
+- packaging: try to fix smartmontools-drivedb_h-update.sh
+
+-------------------------------------------------------------------
 Thu Feb 17 14:50:19 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
 
 - Restart smartd and generate smartd_opts only if there are real

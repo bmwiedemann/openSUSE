@@ -820,4 +820,18 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment></comment>
     <requestid>955710</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>bd53e6d080fc205fc1a525714863fd37</srcmd5>
+    <version>7.3</version>
+    <time>1650666307</time>
+    <user>dimstar_suse</user>
+    <comment>- refresh keyring with new signing key 
+
+- update to version 7.3
+  - see NEWS and ChangeLog file for full details
+- Remove smartmontools-drivedb.h. Up to date version is included
+  in release tarball
+- packaging: try to fix smartmontools-drivedb_h-update.sh</comment>
+    <requestid>971702</requestid>
+  </revision>
 </revisionlist>

@@ -61,9 +61,9 @@ rm -f "$DEST.old"
 
 # Compare time (file in the drivedb branch can be older) and compare
 # files without Id (files can be equal but committed in two commits).
-UPD_TIME=$(date -d "$(sed -n 's/^.*$Id: drivedb.h [0-9][0-9]* \([^ ]* [^ ]*\) .*$/\1/p' <smartmontools-drivedb.h)" +%s)
-sed '/^.*$Id:/d' <smartmontools-$VERSION/drivedb.h >smartmontools-$VERSION/drivedb-noid.h
-sed '/^.*$Id:/d' <smartmontools-drivedb.h >smartmontools-drivedb-noid.h
+UPD_TIME=$(date -d "$(sed -n 's/^.*$Id: drivedb.h [0-9][0-9]* \([^ ]* [^ ]*\) .*$/\1/p' <../smartmontools-drivedb.h)" +%s)
+sed '/^.*$Id:/d' <smartmontools-$VERSION/drivedb.h >drivedb-noid.h
+sed '/^.*$Id:/d' <../smartmontools-drivedb.h >smartmontools-drivedb-noid.h
 if cmp -s drivedb-noid.h smartmontools-drivedb-noid.h ; then
 	EQUAL=true
 else
