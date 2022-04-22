@@ -69,4 +69,13 @@
   Remove unnecessary ldconfig call. (forwarded request 523404 from jengelh)</comment>
     <requestid>573410</requestid>
   </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>25d71b01ce99564dd123ff07f6d2ef06</srcmd5>
+    <version>0.5.11</version>
+    <time>1650657270</time>
+    <user>dimstar_suse</user>
+    <comment>- Add config.sub and config.guess files to sources in order to fix
+  generation of configure from configure.ac in Factory</comment>
+    <requestid>972153</requestid>
+  </revision>
 </revisionlist>

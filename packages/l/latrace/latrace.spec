@@ -2,7 +2,7 @@
 #
 # spec file for package latrace
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,20 +21,30 @@ Name:           latrace
 Version:        0.5.11
 Release:        0
 Summary:        Trace Library Calls using LD_AUDIT
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/Monitoring
-Source:         http://people.redhat.com/jolsa/latrace/dl/latrace-%{version}.tar.bz2
+URL:            http://people.redhat.com/jolsa/latrace/index.shtml
+Source:         %{name}-%{version}.tar.xz
+# Fresh config.guess and config.sub files
+# wget -O config.guess 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD'
+Source1:        config.guess
+# wget -O config.sub 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD'
+Source2:        config.sub
 Source99:       latrace-rpmlintrc
 Patch0:         reproducible.patch
 Patch1:         latrace-0.5.11-fixes.diff
-Url:            http://people.redhat.com/jolsa/latrace/index.shtml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch2:         0001-make-Fixes-paraller-building-like-make-j16.patch
+Patch3:         0002-stats-bugfix-use-timersub-and-timeradd.patch
+Patch4:         0003-stats-report-zero-percents-instead-of-NaN.patch
+Patch5:         0004-add-aarch64-and-ppc64le-support-to-audit.h.patch
+Patch6:         latrace-PRINT-format.patch
+Patch7:         ppc-fedora.patch
 BuildRequires:  asciidoc
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  flex
+BuildRequires:  libtool
 BuildRequires:  xmlto
-ExclusiveArch:  %{ix86} x86_64 %{arm}
 
 %description
 latrace is a glibc 2.4+ LD_AUDIT frontend. It allows you to trace library calls
@@ -42,8 +52,15 @@ and get their statistics in a manner similar to the strace utility.
 
 %prep
 %setup -q
+cp %{SOURCE1} %{SOURCE2} .
 %patch0 -p1
 %patch1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
 
 %build
 autoconf
@@ -54,8 +71,8 @@ make V=1
 %make_install V=1
 
 %files
-%defattr(-,root,root)
-%doc COPYING ChangeLog README TODO ReleaseNotes
+%license COPYING
+%doc ChangeLog README TODO ReleaseNotes
 %config %dir %{_sysconfdir}/latrace.d
 %config %dir %{_sysconfdir}/latrace.d/headers
 %config %{_sysconfdir}/latrace.d/*.conf
@@ -69,6 +86,6 @@ make V=1
 %{_bindir}/latrace-ctl
 %dir %{_libdir}/latrace
 %{_libdir}/latrace/libltaudit.so.%{version}
-%doc %{_mandir}/man1/latrace.1%{ext_man}
+%{_mandir}/man1/latrace.1%{?ext_man}
 
 %changelog

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Apr 21 13:02:40 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Add config.sub and config.guess files to sources in order to fix
+  generation of configure from configure.ac in Factory
+- Fetch the tarball using source service, since the tarball does
+  not exist any more on people.redhat.com
+- Added patches:
+  * 0001-make-Fixes-paraller-building-like-make-j16.patch:
+    Upstream fix for highly parallel builds
+  * 0002-stats-bugfix-use-timersub-and-timeradd.patch:
+    Upstream commit to replace buggy tv_sub and tv_add by
+    timersub and timeradd
+  * 0003-stats-report-zero-percents-instead-of-NaN.patch:
+    Upstream fix to report zero percent instead of NaN
+  * 0004-add-aarch64-and-ppc64le-support-to-audit.h.patch:
+    Upstream commit to add support for ppc64le and aarch64
+    architectures
+  * ppc-fedora.patch
+  * latrace-PRINT-format.patch:
+    Avoid a non-literal format string by using string token
+    pasting  
+
+-------------------------------------------------------------------
 Mon Sep 11 19:31:07 UTC 2017 - jengelh@inai.de
 
 - Drop old RPM constructs like %clean or %__-type indirections.
