@@ -1142,4 +1142,12 @@
   fixes plasmoid layout regression (kde#452512)</comment>
     <requestid>970325</requestid>
   </revision>
+  <revision rev="124" vrev="3">
+    <srcmd5>f07a8996383e9dfb2f4f99fab7add609</srcmd5>
+    <version>5.93.0</version>
+    <time>1650666300</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971236</requestid>
+  </revision>
 </revisionlist>

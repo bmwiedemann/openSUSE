@@ -37,6 +37,9 @@ Source2:        frameworks.keyring
 %endif
 # PATCH-FIX-UPSTREAM
 Patch0:         b62d83bef7733e4943e6f66787166b41198d1359.patch
+Patch1:         0001-Fix-osd-dialog-position.patch
+Patch2:         0002-Keep-PlasmaComponents.Highlight-on-its-former-behavi.patch
+Patch3:         0003-Fix-check-for-argument-length-in-DataEngine-loader.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
