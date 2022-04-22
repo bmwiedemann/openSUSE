@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr 21 04:15:58 UTC 2022 - william.brown@suse.com
+
+- bsc#1196526 - Add systemd override to correct ordering with krb components
+- Update to version 2.1.1~git13.beb382e1b:
+  * Issue 2893 - CLI - dscreate - add options for setting up replication
+  * Issue 4866 - CLI - when enabling replication set changelog trimming by default
+  * Issue 5241 - UI - Add account locking missing functionality (#5251)
+  * Issue 5180 - snmp_collator tries to unlock NULL mutex (#5266)
+  * Issue 4904 - Fix various small issues
+  * Issue 5260 - BUG - OpenLDAP allows multiple names of memberof overlay (#5261)
+  * Issue 5252 - During DEL, vlv search can erroneously return NULL candidate (#5256)
+  * Issue 5210 - Python undefined names in lib389
+  * Issue 5247 - BUG - Missing attributes in samba schema (#5248)
+  * Issue 5242- Craft message may crash the server (#5243)
+
+-------------------------------------------------------------------
 Wed Apr 13 02:07:17 UTC 2022 - william.brown@suse.com
 
 - Update to version 2.1.1~git8.d50340ba5:

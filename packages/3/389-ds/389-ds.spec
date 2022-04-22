@@ -33,7 +33,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        2.1.1~git8.d50340ba5
+Version:        2.1.1~git13.beb382e1b
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -47,6 +47,7 @@ Source4:        supportutils-plugin-dirsrv.tar.xz
 Source5:        70yast.ldif
 Source9:        %{name}-rpmlintrc
 Source10:       %{user_group}-user.conf
+Source11:       krbkdcbefore.conf
 # 389-ds does not support i686
 ExcludeArch:    %ix86
 BuildRequires:  autoconf
@@ -281,6 +282,7 @@ mkdir -p %{buildroot}%{homedir}
 mkdir -p %{buildroot}%{lockdir}
 mkdir -p %{buildroot}%{_sysusersdir}
 mkdir -p %{buildroot}/usr/lib/supportconfig/plugins/
+mkdir -p %{buildroot}%{_unitdir}/dirsrv@.service.d/
 
 #remove libtool archives and static libs
 find %{buildroot} -type f -name "*.la" -delete -print
@@ -300,6 +302,7 @@ rm -rv %{buildroot}/usr/share/metainfo/389-console/
 mv src/svrcore/README{,.svrcore}
 mv src/svrcore/LICENSE{,.svrcore}
 install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/
+install -m 0644 %{SOURCE11} %{buildroot}%{_unitdir}/dirsrv@.service.d/krbkdcbefore.conf
 
 # For the purposes of our krb integration, we enable this by default.
 mv %{buildroot}%{_datadir}/dirsrv/data/60kerberos.ldif %{buildroot}%{_datadir}/dirsrv/schema/60kerberos.ldif
@@ -377,6 +380,8 @@ exit 0
 %verify(not caps) %attr(755,root,root) %{_sbindir}/ns-slapd
 %{_sbindir}/openldap_to_ds
 %{_unitdir}/dirsrv@.service
+%dir %{_unitdir}/dirsrv@.service.d
+%{_unitdir}/dirsrv@.service.d/krbkdcbefore.conf
 %{_unitdir}/dirsrv.target
 %exclude %{_unitdir}/dirsrv@.service.d/custom.conf
 %{_prefix}/lib/dirsrv/ds_systemd_ask_password_acl
