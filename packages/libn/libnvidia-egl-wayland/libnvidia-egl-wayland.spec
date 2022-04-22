@@ -28,6 +28,9 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/NVIDIA/egl-wayland
 Source0:        https://github.com/NVIDIA/egl-wayland/archive/%{version}/%{rname}-%{version}.tar.gz
 Source1:        baselibs.conf
+Patch1:         U_0001-wayland-Fail-eglGetDisplay-if-wl_drm-is-not-availabl.patch
+Patch2:         U_0002-generate-wayland-drm-client-protocol.h.patch
+Patch3:         U_0003-egl-wayland-retrieve-DRM-device-name-before-acquirin.patch
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.50
 BuildRequires:  ninja
@@ -75,7 +78,7 @@ This package provides headers and libraries required to build software
 using %{name}.
 
 %prep
-%autosetup -n %{rname}-%{version}
+%autosetup -n %{rname}-%{version} -p1
 
 %build
 export LDFLAGS="-Wl,-z,noexecstack -Wl,-z,now -Wl,-z,relro %{?_lto_cflags}"

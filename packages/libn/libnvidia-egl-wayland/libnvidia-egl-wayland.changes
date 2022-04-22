@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 21 12:46:29 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_0001-wayland-Fail-eglGetDisplay-if-wl_drm-is-not-availabl.patch
+  U_0002-generate-wayland-drm-client-protocol.h.patch
+  U_0003-egl-wayland-retrieve-DRM-device-name-before-acquirin.patch
+  * add latest fixes (U_0003-egl-wayland ... fixes boo#1195598)
+
+-------------------------------------------------------------------
 Thu Apr 14 08:37:33 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - baselibs.conf
