@@ -1,7 +1,7 @@
 #
 # spec file for package libbs2b
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define soname 0
-
 Name:           libbs2b
 Version:        3.1.0
 Release:        0
 Summary:        The Bauer stereophonic-to-binaural DSP library
 License:        MIT
 Group:          System/Libraries
-Url:            http://bs2b..sourceforge.net/
+URL:            http://bs2b.sourceforge.net/
 Source0:        https://downloads.sourceforge.net/project/bs2b/libbs2b/%{version}/libbs2b-%{version}.tar.bz2
+Patch0:         libbs2b-security.patch
 Source99:       baselibs.conf
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(sndfile)
 
 %description
@@ -66,22 +65,23 @@ DSP.
 
 %prep
 %setup -q
+%patch -p1
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 rm -f '%{buildroot}%{_libdir}/libbs2b.la'
 
 %post -n libbs2b%{soname} -p /sbin/ldconfig
-
 %postun -n libbs2b%{soname} -p /sbin/ldconfig
 
 %files -n libbs2b%{soname}
 %defattr(0644, root, root, 0755)
-%doc AUTHORS ChangeLog COPYING README
+%license COPYING
+%doc AUTHORS ChangeLog README
 %{_libdir}/libbs2b.so.%{soname}*
 
 %files -n libbs2b-devel
