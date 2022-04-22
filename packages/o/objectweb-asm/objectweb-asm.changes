@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr 20 07:35:37 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Upgrade to version 9.3
+  * new Opcodes.V19 constant for Java 19
+  * new size() method in ByteVector
+  * checkDataFlow option in CheckClassAdapter can now be used 
+    without valid maxStack and maxLocals values
+  * new Maven BOM
+  * bug fixes
+    + 317949: fix javadoc errors
+    + remap invokedynamic field handles properly
+    + add missing left curly brace in ASMifier output of visitModule
+
+-------------------------------------------------------------------
 Wed Mar  2 17:03:01 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build asm as modular jar files to be used as such by java >= 9

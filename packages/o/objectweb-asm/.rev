@@ -179,4 +179,12 @@
     <comment>Build as modular jars, minus asm-all.jar</comment>
     <requestid>958693</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>63a1ef6677d0717c33cf0a5e34822631</srcmd5>
+    <version>9.3</version>
+    <time>1650657301</time>
+    <user>dimstar_suse</user>
+    <comment>9.3</comment>
+    <requestid>972176</requestid>
+  </revision>
 </revisionlist>
