@@ -19,7 +19,7 @@
 # Prefer to go with just /^sdk-.*/ tags
 %define lname	libvulkan1
 Name:           vulkan-loader
-Version:        1.3.204.0
+Version:        1.3.211.0
 Release:        0
 Summary:        Reference ICD loader for Vulkan
 License:        Apache-2.0
@@ -29,7 +29,7 @@ Source:         https://github.com/KhronosGroup/Vulkan-Loader/archive/sdk-%versi
 Source9:        baselibs.conf
 BuildRequires:  cmake >= 3.4
 BuildRequires:  gcc-c++ >= 4.8
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 BuildRequires:  python3-xml
 BuildRequires:  vulkan-headers >= %version
 BuildRequires:  pkgconfig(pciaccess)

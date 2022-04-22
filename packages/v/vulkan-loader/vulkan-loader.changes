@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 18 23:09:17 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.211.0
+  * Add "additive" environment variables: VK_ADD_DRIVER_FILES
+    and VK_ADD_LAYER_PATH.
+
+-------------------------------------------------------------------
 Tue Feb 15 10:45:31 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.204.0
