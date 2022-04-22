@@ -23,7 +23,7 @@
 %if 0%{?fedora}
 # Debuginfo packages aren't very useful here. If you need to debug
 # you should do a proper debug build (not implemented in this spec yet)
-%global debug_package %{nil}
+#%%global debug_package %{nil}
 %endif
 
 %define mod_name electron
@@ -131,6 +131,8 @@ Patch29:        electron-16-webpack-fix-openssl-3.patch
 Patch30:        electron-16-fix-swiftshader-template.patch
 Patch31:        electron-16-v8-missing-utility-include.patch
 Patch32:        electron-17-breakpad-align-int-types.patch
+# From https://git.droidware.info/wchen342/ungoogled-chromium-fedora
+Patch33:        chromium-94.0.4606.71-InkDropHost-crash.patch
 BuildRequires:  SDL-devel
 BuildRequires:  binutils-gold
 BuildRequires:  bison
@@ -168,6 +170,9 @@ BuildRequires:  libatomic
 BuildRequires:  ninja-build >= 1.7.2
 %endif
 BuildRequires:  nodejs >= 16.5.0
+%if 0%{?suse_version}
+BuildRequires:  nodejs16
+%endif
 %if 0%{?suse_version}
 BuildRequires:  npm-default
 %else
@@ -242,6 +247,9 @@ BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.5
 BuildRequires:  pkgconfig(libxslt)
 %if 0%{?fedora}
 BuildRequires:  minizip-compat-devel
+# help decide for dependency
+BuildRequires:  pipewire-jack-audio-connection-kit-devel
+BuildRequires:  nodejs-devel >= 17
 %else
 BuildRequires:  pkgconfig(minizip)
 %endif
@@ -368,7 +376,8 @@ export CXX=clang++
 %else
 
 # REDUCE DEBUG as it gets TOO large
-ARCH_FLAGS="$(echo %{optflags} | sed -e 's/^-g / /g' -e 's/ -g / /g' -e 's/ -g$//g')"
+ARCH_FLAGS="$(echo %{optflags} | sed -e 's/-g /-g1 /g' -e 's/-g$/-g1/g')"
+
 %if 0%{?fedora}
 # Fix base/allocator/allocator_shim.cc:408:2: error: #error This code cannot be
 # used when exceptions are turned on.
@@ -540,8 +549,6 @@ gn gen out/Release --args="import(\"//electron/build/args/release.gn\") ${myconf
 ninja -v %{?_smp_mflags} -C out/Release electron
 ninja -v %{?_smp_mflags} -C out/Release copy_headers
 
-# strip the debugging and symbol information
-electron/script/strip-binaries.py -d out/Release
 
 %install
 install -d -m 0755 %{buildroot}%{_bindir}
