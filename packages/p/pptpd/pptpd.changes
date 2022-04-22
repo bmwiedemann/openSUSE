@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 22 14:04:43 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %_modulesloaddir instead of hardcoding
+  usr/lib/modules-load.d.
+- BuildRequire pkgconfig(udev) instead of pkgconfig(systemd):
+  modules-load.d belongs to udev, not systemd.
+
+-------------------------------------------------------------------
 Mon Feb  3 15:42:09 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

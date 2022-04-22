@@ -1,7 +1,7 @@
 #
 # spec file for package pptpd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,11 +39,12 @@ BuildRequires:  automake
 BuildRequires:  ppp-devel
 Requires:       ppp
 %if 0%{?suse_version} > 1140
-BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(udev)
 %{?systemd_ordering}
 %define has_systemd 1
 %else
-PreReq:         %fillup_prereq %insserv_prereq
+PreReq:         %fillup_prereq
+PreReq:         %insserv_prereq
 %endif
 
 %description
@@ -71,7 +72,7 @@ install -m 0755 pptpctrl		%{buildroot}/usr/sbin/pptpctrl
 
 %if 0%{?has_systemd}
 install -D -m 0644 %{S:9} %{buildroot}%{_unitdir}/`basename %{S:9}`
-mkdir -p %{buildroot}/usr/lib/modules-load.d
+mkdir -p %{buildroot}%{_modulesloaddir}
 echo "ppp_mppe" > %{buildroot}/usr/lib/modules-load.d/pptpd.conf
 %else
 mkdir -p %{buildroot}/etc/init.d
@@ -81,14 +82,13 @@ ln -sf ../../etc/init.d/pptpd %{buildroot}/usr/sbin/rcpptpd
 install -Dm 0644 %{S:4}			%{buildroot}/etc/pptpd.conf
 find {samples,PPTP-Installation,pptp-server} -type f -exec chmod -x {} +
 chmod -x AUTHORS COPYING ChangeLog INSTALL NEWS README* TODO
-mkdir -p %{buildroot}/usr/lib/modules-load.d
 
 %pre
 %if 0%{?has_systemd}
 %service_add_pre %{name}.service
 %endif
 
-%preun 
+%preun
 %if 0%{?has_systemd}
 %service_del_preun %{name}.service
 %else
@@ -125,7 +125,7 @@ mkdir -p %{buildroot}/usr/lib/modules-load.d
 /usr/lib/pptpd
 %if 0%{?has_systemd}
 %{_unitdir}/%{name}.service
-/usr/lib/modules-load.d/pptpd.conf
+%{_modulesloaddir}/pptpd.conf
 %else
 /usr/sbin/rcpptpd
 /etc/init.d/pptpd
