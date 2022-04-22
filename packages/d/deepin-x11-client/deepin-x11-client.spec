@@ -26,7 +26,7 @@
 # %define   shortcommit     %(c=%{commit}; echo ${c:0:7})
 
 Name:           deepin-x11-client
-Version:        0.6.3
+Version:        0.6.9
 Release:        0
 Summary:        A X11 client Go bindings
 License:        GPL-3.0+

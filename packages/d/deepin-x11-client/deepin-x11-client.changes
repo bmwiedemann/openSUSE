@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr  2 07:58:02 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 0.6.9
+  * Change pkg.deepin.io to github.com
+
+-------------------------------------------------------------------
 Wed Feb 23 06:32:47 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Use last stable version of go to build
