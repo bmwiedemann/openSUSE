@@ -16,18 +16,18 @@
 #
 
 
+%if 0%{?!make_build:1}
+%define make_build make -O %{?_smp_mflags} V=1 VERBOSE=1
+%endif
+
 # during building the major version of glibc is built into the suppression file
 %define glibc_main_version %(getconf GNU_LIBC_VERSION | cut -d' ' -f2 | cut -d. -f1)
 %define glibc_major_version %(getconf GNU_LIBC_VERSION | cut -d' ' -f2 | cut -d. -f2)
-
 %global flavor @BUILD_FLAVOR@%{nil}
-
 %if "%{flavor}" == "client-headers"
 %define psuffix  -client-headers-source
 %endif
-
 %bcond_without docs
-
 Name:           valgrind%{?psuffix}
 Version:        3.19.0
 Release:        0
@@ -42,31 +42,31 @@ Patch0:         valgrind.xen.patch
 Patch2:         armv6-support.diff
 Patch9:         parallel-lto.patch
 Patch10:        dhat-use-datadir.patch
-%if "%{flavor}" == ""
-%if %{with docs}
-BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  libxslt
-%endif
 BuildRequires:  automake
-%if 0%{?suse_version} < 1320
-BuildRequires:  gcc8-c++
-%else
-BuildRequires:  gcc-c++
-%endif
 BuildRequires:  pkgconfig
-BuildRequires:  procps
+%if "%{flavor}" == ""
 Requires:       glibc >= %{glibc_main_version}.%{glibc_major_version}
 Requires:       glibc < %{glibc_main_version}.%{lua:print(rpm.expand("%{glibc_major_version}")+1)}
 Provides:       callgrind = %{version}
 Obsoletes:      callgrind < %{version}
-ExclusiveArch:  aarch64 %ix86 x86_64 ppc ppc64 ppc64le s390x armv7l armv7hl armv6l armv6hl
+ExclusiveArch:  aarch64 %{ix86} x86_64 ppc ppc64 ppc64le s390x armv7l armv7hl armv6l armv6hl
+%if %{with docs}
+BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  libxslt
+%endif
+%if 0%{?suse_version} < 1500
+BuildRequires:  gcc8-c++
+%global cpp_version -8
+%else
+BuildRequires:  gcc-c++
+%endif
 %ifarch x86_64 ppc64
-%if 0%{?suse_version} < 1320
+BuildRequires:  glibc-devel-32bit
+%if 0%{?suse_version} < 1500
 BuildRequires:  gcc8-c++-32bit
 %else
 BuildRequires:  gcc-c++-32bit
 %endif
-BuildRequires:  glibc-devel-32bit
 %endif
 %else
 %endif
@@ -145,7 +145,6 @@ directory. A debugged application runs slower and needs much more
 memory, but is usually still usable. Valgrind is still in development,
 but it has been successfully used to optimize several KDE applications.
 
-
 %endif
 
 %prep
@@ -153,21 +152,11 @@ but it has been successfully used to optimize several KDE applications.
 %autopatch -p1
 
 %build
-%if "%{flavor}" == ""
 %define _lto_cflags %{nil}
-%if 0%{?suse_version} < 1320
-export CC="%{_bindir}/gcc-8"
-export CXX="%{_bindir}/g++-8"
-%endif
-
 export FLAGS="%{optflags}"
-%ifarch %arm
-# Valgrind doesn't support compiling for Thumb yet. Remove when it gets
-# native thumb support.
-FLAGS=${FLAGS/-mthumb/-mthumb-interwork -marm}
-%endif
 # not a good idea to build valgrind with fortify, as it does not link glibc
 FLAGS="${FLAGS/-D_FORTIFY_SOURCE=2/}"
+FLAGS="${FLAGS/-D_FORTIFY_SOURCE=3/}"
 FLAGS="${FLAGS/-fstack-protector-strong/}"
 FLAGS="${FLAGS/-fstack-protector/}"
 # -m64 / -m32 is set explicitly everywhere, do not override it
@@ -175,6 +164,8 @@ FLAGS="${FLAGS/-m64/}"
 export CFLAGS="$FLAGS"
 export CXXFLAGS="$FLAGS"
 export FFLAGS="$FLAGS"
+export CXX="g++%{?cpp_version}"
+export CC="gcc%{?cpp_version}"
 autoreconf -fi
 
 export GDB=%{_bindir}/gdb
@@ -185,19 +176,20 @@ export GDB=%{_bindir}/gdb
 %endif
     %{nil}
 
-make %{?_smp_mflags}
+%if "%{flavor}" == ""
+%make_build
 %if %{with docs}
 pushd docs
     #make all-docs
     # building the docs needs network access at the moment :-(
-    make FAQ.txt man-pages html-docs
+    %make_build FAQ.txt man-pages html-docs
 popd
 %endif
 %endif
 
 %install
 %if "%{flavor}" == ""
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 rm %{buildroot}/%{_libdir}/valgrind/lib*.a # drop unreproducible unused files to fix boo#1118163
 
 mkdir -p %{buildroot}/%{_defaultdocdir}
@@ -224,11 +216,11 @@ install -m 644 -t %{buildroot}/%{_includedir}/valgrind \
 %check
 %if "%{flavor}" == ""
 # OBS doesn't have a z13
-%ifnarch s390x %arm
+%ifnarch s390x %{arm}
 # has too many spurious failures
 # make %{?_smp_mflags} regtest
 #patent pending self test
-VALGRIND_LIB=$PWD/.in_place VALGRIND_LIB_INNER=$PWD/.in_place ./coregrind/valgrind  /usr/bin/perl -wc tests/vg_regtest
+VALGRIND_LIB=$PWD/.in_place VALGRIND_LIB_INNER=$PWD/.in_place ./coregrind/valgrind  %{_bindir}/perl -wc tests/vg_regtest
 %endif
 %endif
 
@@ -246,7 +238,7 @@ VALGRIND_LIB=$PWD/.in_place VALGRIND_LIB_INNER=$PWD/.in_place ./coregrind/valgri
 %{_bindir}/*
 %doc README* NEWS AUTHORS
 %doc %{_defaultdocdir}/%{name}/*
-%doc %{_mandir}/*/*
+%{_mandir}/*/*
 %dir %{_libexecdir}/valgrind
 %ifarch aarch64
 %{_libexecdir}/valgrind/*-arm64-linux
@@ -254,7 +246,7 @@ VALGRIND_LIB=$PWD/.in_place VALGRIND_LIB_INNER=$PWD/.in_place ./coregrind/valgri
 %ifarch x86_64
 %{_libexecdir}/valgrind/*-amd64-linux
 %endif
-%ifarch %ix86
+%ifarch %{ix86}
 %{_libexecdir}/valgrind/*-x86-linux
 %endif
 %ifarch ppc
@@ -269,7 +261,7 @@ VALGRIND_LIB=$PWD/.in_place VALGRIND_LIB_INNER=$PWD/.in_place ./coregrind/valgri
 %ifarch s390x
 %{_libexecdir}/valgrind/*-s390x-linux
 %endif
-%ifarch %arm
+%ifarch %{arm}
 %{_libexecdir}/valgrind/*-arm-linux
 %endif
 %dir %{_datadir}/valgrind
@@ -323,9 +315,11 @@ VALGRIND_LIB=$PWD/.in_place VALGRIND_LIB_INNER=$PWD/.in_place ./coregrind/valgri
 %ifarch x86_64 ppc64 s390x
 %files 32bit
 %endif
-%ifarch %ix86 x86_64
+
+%ifarch %{ix86} x86_64
 %{_libexecdir}/valgrind/*-x86-linux
 %endif
+
 %ifarch ppc ppc64
 %{_libexecdir}/valgrind/*-ppc32-linux
 %endif

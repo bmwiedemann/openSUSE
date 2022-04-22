@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 20 09:39:21 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- fix build on SLE12
+
+-------------------------------------------------------------------
+Wed Apr 13 15:17:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- spec-cleaner suggested cleanups
+- drop unnecessary procps buildrequires 
+
+-------------------------------------------------------------------
 Tue Apr 12 19:27:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.19.0:

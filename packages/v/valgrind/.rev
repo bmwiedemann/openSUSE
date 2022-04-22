@@ -1296,4 +1296,12 @@ See https://bugs.kde.org/show_bug.cgi?id=290719 (forwarded request 115750 from w
 - drop handle-rseq-syscall.patch: upstream</comment>
     <requestid>969550</requestid>
   </revision>
+  <revision rev="137" vrev="2">
+    <srcmd5>58d0c74c5ef1c94fd509deef8b44a8e9</srcmd5>
+    <version>3.19.0</version>
+    <time>1650666306</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971624</requestid>
+  </revision>
 </revisionlist>
