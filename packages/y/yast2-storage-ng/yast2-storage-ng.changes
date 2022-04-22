@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 18 09:01:42 UTC 2022 - Martin Vidner <mvidner@suse.com>
+
+- Fix empty help in some Partitioner dialogs (bsc#1194274)
+  using the standard CWM mechanism.
+- 4.5.3
+
+-------------------------------------------------------------------
 Mon Apr 11 07:36:47 UTC 2022 - José Iván López González <jlopez@suse.com>
 
 - Release sources before probing during installation to avoid
