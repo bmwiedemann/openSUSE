@@ -17,10 +17,10 @@
 
 
 %define   _name           go-lib
-%define   import_path     pkg.deepin.io/lib
+%define   import_path     github.com/linuxdeepin/go-lib
 
 Name:           golang-github-linuxdeepin-go-lib
-Version:        5.8.4
+Version:        6.0.0
 Release:        0
 Summary:        Go bindings for Deepin Desktop Environment development
 License:        GPL-3.0-or-later
@@ -33,15 +33,15 @@ BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  libpulse0
 BuildRequires:  mobile-broadband-provider-info
-BuildRequires:  golang(pkg.deepin.io/gir/gio-2.0)
-BuildRequires:  golang(pkg.deepin.io/gir/glib-2.0)
+BuildRequires:  golang(github.com/linuxdeepin/go-gir/gio-2.0)
+BuildRequires:  golang(github.com/linuxdeepin/go-gir/glib-2.0)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(x11)
 BuildArch:      noarch
-Requires:       golang(pkg.deepin.io/gir/gio-2.0)
-Requires:       golang(pkg.deepin.io/gir/glib-2.0)
+Requires:       golang(github.com/linuxdeepin/go-gir/gio-2.0)
+Requires:       golang(github.com/linuxdeepin/go-gir/glib-2.0)
 AutoReq:        Off
 %{go_provides}
 
