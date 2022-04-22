@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 13 16:13:57 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.37
+  * Make libinih a fallback dependency
+  * Fix timestamp parsing in INI conf
+  * Factorize timestamp parsing to be coherent with command line
+    format in configuration file.
+
+-------------------------------------------------------------------
 Wed Mar 23 14:46:45 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.36
