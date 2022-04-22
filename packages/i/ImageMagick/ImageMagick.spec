@@ -20,7 +20,7 @@
 %define asan_build     0
 %define maj            7
 %define mfr_version    %{maj}.1.0
-%define mfr_revision   29
+%define mfr_revision   30
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        10
@@ -46,9 +46,6 @@ Source3:        ImageMagick.keyring
 # suse specific patches
 Patch0:         ImageMagick-configuration-SUSE.patch
 Patch2:         ImageMagick-library-installable-in-parallel.patch
-#%%ifarch s390x s390 ppc64 ppc
-Patch3:         ImageMagick-s390-disable-tests.patch
-#%%endif
 #%%ifarch i586
 #%%if %%{?suse_version} < 1550
 # do not report test issues related to 32-bit architectures upstream,
@@ -340,9 +337,6 @@ preserved.
 %prep
 %setup -q -n ImageMagick-%{source_version}
 %patch2 -p1
-%ifarch s390x s390 ppc ppc64
-%patch3 -p1
-%endif
 %ifarch i586
 %if %{?suse_version} < 1550
 %patch4 -p1
@@ -497,7 +491,7 @@ end
 
 %postun %{config_spec}-upstream
 if [ ! -d %{_sysconfdir}/%{config_dir}-upstream ] ; then
-    %{_sbindir}/update-alternatives -quiet --remove %{config_dir}  %{_sysconfdir}/%{config_dir}-upstream
+    %{_sbindir}/update-alternatives --quiet --remove %{config_dir}  %{_sysconfdir}/%{config_dir}-upstream
 fi
 
 %pretrans %{config_spec}-SUSE -p <lua>

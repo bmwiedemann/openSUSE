@@ -3322,4 +3322,18 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>970069</requestid>
   </revision>
+  <revision rev="249" vrev="1">
+    <srcmd5>dbdad85a851e4e296c82e8b43239392a</srcmd5>
+    <version>7.1.0.30</version>
+    <time>1650657181</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.1.0.30:
+  * Remove unused EXPLICIT_TEMPLATE_INSTANTIATION
+  * Fixes #4985: 4e+26 is outside the range of representable values of type
+    'unsigned long' at
+- fix typo on update-alternatives call
+
+- drop ImageMagick-s390-disable-tests.patch - the tests no longer fail</comment>
+    <requestid>970975</requestid>
+  </revision>
 </revisionlist>

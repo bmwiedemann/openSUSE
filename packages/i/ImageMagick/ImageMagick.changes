@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr 19 13:37:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- version update to 7.1.0.30:
+  * Remove unused EXPLICIT_TEMPLATE_INSTANTIATION
+  * Fixes #4985: 4e+26 is outside the range of representable values of type
+    'unsigned long' at
+- fix typo on update-alternatives call
+
+-------------------------------------------------------------------
+Sun Apr 17 12:36:12 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
+
+- drop ImageMagick-s390-disable-tests.patch - the tests no longer fail
+
+-------------------------------------------------------------------
 Thu Apr  7 07:29:22 UTC 2022 - pgajdos@suse.com
 
 - version update to 7.1.0.29
