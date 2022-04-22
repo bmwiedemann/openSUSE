@@ -20,7 +20,7 @@
 %define _name  dde-qt-dbus-factory
 
 Name:           deepin-qt-dbus-factory
-Version:        5.5.5
+Version:        5.5.22
 Release:        0
 Summary:        A repository storing auto-generated Qt5 D-Bus code
 License:        GPL-3.0-or-later
@@ -71,7 +71,6 @@ docs for libdbusextended(deepin-qt-dbus-factory).
 
 %prep
 %setup -q -n %{_name}-%{version}
-# sed -i 's/!system(python/!system(python3/g' libdframeworkdbus/libdframeworkdbus.pro
 
 %build
 %qmake5 DEFINES+=QT_NO_DEBUG_OUTPUT \
