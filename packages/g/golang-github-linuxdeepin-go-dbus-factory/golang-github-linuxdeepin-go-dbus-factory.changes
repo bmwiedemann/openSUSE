@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr  2 07:50:05 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.10.9
+  * Change pkg.deepin.io to github.com
+  * Add godbus interfaces for exporting devicemanager and license
+  * Add interfaceflags attribute
+  * Add DisconnectAudioDevices interface
+  * Update com.deepin.api.SoundThemePlayer
+  * Fix bugs
+
+-------------------------------------------------------------------
 Wed Feb 23 06:29:17 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Use last stable version of go to build
