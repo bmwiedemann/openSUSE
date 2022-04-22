@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr  4 03:15:06 UTC 2022 - Hillwood Yang <hillwoodroc@gmail.com>
+
+- Update version to 5.10.6
+  * Change shortcut key for airplane mode
+  * Add isHighPerformanceSupported gsettings
+  * Change close shortcut nameas media-close
+  * Change screenshot shortcut
+  * Fix bugs
+
+-------------------------------------------------------------------
 Wed Feb 23 12:59:51 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.10.2
