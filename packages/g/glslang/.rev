@@ -270,4 +270,12 @@
     <comment>- Enable baselibs, for use by ffmpeg.</comment>
     <requestid>963686</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>c84a788ed97eb2581b708c9fe380de7a</srcmd5>
+    <version>11.9.0</version>
+    <time>1650657153</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 11.9.0</comment>
+    <requestid>970694</requestid>
+  </revision>
 </revisionlist>

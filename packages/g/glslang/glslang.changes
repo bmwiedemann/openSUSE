@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 18 23:15:08 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.9.0
+  * Add GLSL version override functionality
+  * Add eliminate-dead-input-components to -Os
+  * Add enhanced-msgs option
+
+-------------------------------------------------------------------
 Mon Mar 21 08:02:20 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable baselibs, for use by ffmpeg.
