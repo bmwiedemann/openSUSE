@@ -24,7 +24,7 @@
 %endif
 
 Name:           deepin-image-viewer
-Version:        5.8.2
+Version:        5.8.13
 Release:        0
 Summary:        Deepin Image Viewer
 License:        GPL-3.0-or-later
@@ -43,6 +43,7 @@ BuildRequires:  fdupes
 BuildRequires:  freeimage-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libQt5Widgets-private-headers-devel
+BuildRequires:  libimageviewer-devel
 BuildRequires:  libqt5-linguist
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5LinguistTools)
@@ -75,16 +76,13 @@ Deepin Image Viewer is the Image Viewer for Deepin Desktop Environment(DDE)
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 sed -i "s/(lrelease/(lrelease-qt5/g" src/src.pro
-# sed -i '/#include <QDebug>/a #include <QPainterPath>' \
-#         viewer/frame/toptoolbar.cpp \
-#         viewer/module/view/contents/ttbcontent.cpp
-# sed -i '/#include <QtDebug>/a #include <QPainterPath>' \
-#         viewer/module/view/contents/imageinfowidget.cpp
 # sed -i '/FIF_FAXG3/d' src/src/utils/unionimage.cpp
 sed -i 's/Exec=deepin-image-viewer/Exec=env QT_QPA_PLATFORMTHEME=deepin deepin-image-viewer/g' \
 src/%{name}.desktop
+sed -i 's|"../libimageviewer/image-viewer_global.h"|<libimageviewer/image-viewer_global.h>|g' \
+src/src/module/view/homepagewidget.cpp
 
 %build
 %cmake -DCMAKE_BUILD_TYPE=Release \
