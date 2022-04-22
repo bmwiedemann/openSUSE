@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 29 13:14:36 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- stage2-serialize.patch: Serialize stage2 build only
+
+-------------------------------------------------------------------
 Mon Mar 21 20:52:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use parallel build for Rings

@@ -40,6 +40,8 @@ Patch0:         guile-3.0-gc_pkgconfig_private.patch
 Patch1:         disable-test-out-of-memory.patch
 Patch2:         gcc10-x86-disable-one-test.patch
 Patch3:         adjust-32bit-big-endian-build-flags.patch
+# do sequential build for reproducible .go files = https://issues.guix.gnu.org/issue/20272 - boo#1102408
+Patch4:         stage2-serialize.patch
 BuildRequires:  gmp-devel
 BuildRequires:  libffi-devel
 BuildRequires:  libltdl-devel
@@ -105,6 +107,7 @@ linked in as a library when building extensible programs.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 # remove broken prebuilt objects
 rm -r prebuilt/32-bit-big-endian
@@ -115,19 +118,14 @@ echo exit 77 > test-suite/standalone/test-stack-overflow
 %endif
 
 %build
-aclocal
+autoreconf -fi
 %configure \
   --disable-static \
   --with-pic \
   --enable-lto \
   --with-threads \
   --disable-silent-rules
-%if 0%{?_with_ringdisabled}
 %make_build
-%else
-# do sequential build for reproducible .go files = https://issues.guix.gnu.org/issue/20272 - boo#1102408
-%make_build -j1
-%endif
 
 %check
 LD_LIBRARY_PATH="." \
