@@ -31,4 +31,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>959464</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4d15b47756909a52575e4c2d4127481c</srcmd5>
+    <version>2.1.0</version>
+    <time>1650657249</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 971825 from hillwood)</comment>
+    <requestid>971826</requestid>
+  </revision>
 </revisionlist>

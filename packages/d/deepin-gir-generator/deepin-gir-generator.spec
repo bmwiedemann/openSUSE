@@ -18,13 +18,14 @@
 %define _name go-gir-generator
 
 Name:           deepin-gir-generator
-Version:        2.0.8
+Version:        2.1.0
 Release:        0
 Summary:        Go-gir-generator imeplement static golang bindings for GObject
 License:        MIT
 Group:          Development/Languages/Golang
 Url:            https://github.com/linuxdeepin/go-gir-generator
 Source:         https://github.com/linuxdeepin/%{_name}/archive/%{version}/%{_name}-%{version}.tar.gz
+Source99:       %{name}-rpmlintrc
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gudev-1.0)
@@ -73,10 +74,10 @@ Requires:       pkgconfig(gio-2.0)
 Requires:       pkgconfig(gdk-2.0)
 Requires:       pkgconfig(gdk-3.0)
 Requires:       pkgconfig(gudev-1.0)
-Provides:       golang(pkg.deepin.io/gir/glib-2.0)
-Provides:       golang(pkg.deepin.io/gir/gio-2.0)
-Provides:       golang(pkg.deepin.io/gir/gobject-2.0)
-Provides:       golang(pkg.deepin.io/gir/gudev-1.0)
+Provides:       golang(github.com/linuxdeepin/go-gir/glib-2.0)
+Provides:       golang(github.com/linuxdeepin/go-gir/gio-2.0)
+Provides:       golang(github.com/linuxdeepin/go-gir/gobject-2.0)
+Provides:       golang(github.com/linuxdeepin/go-gir/gudev-1.0)
 BuildArch:      noarch
 
 %{go_exclusivearch}
