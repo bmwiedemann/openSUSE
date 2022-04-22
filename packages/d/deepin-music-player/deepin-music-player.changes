@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 21 08:41:16 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 6.2.12
+  * Fix bugs
+
+-------------------------------------------------------------------
+Fri Mar 25 09:17:27 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 6.2.11.4
+  * Fix bugs
+- Drop recompile-with-fPIC.patch, merged by upstream
+
+-------------------------------------------------------------------
 Mon Feb 21 07:17:52 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 6.2.8

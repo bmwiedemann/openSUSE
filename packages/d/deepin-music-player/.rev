@@ -276,4 +276,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>959465</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>d22811b481989bb0267476c00f3f3fc1</srcmd5>
+    <version>6.2.12</version>
+    <time>1650657275</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 6.2.12
+  * Fix bugs
+
+- Update version to 6.2.11.4
+  * Fix bugs
+- Drop recompile-with-fPIC.patch, merged by upstream</comment>
+    <requestid>971965</requestid>
+  </revision>
 </revisionlist>
