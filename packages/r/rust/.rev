@@ -665,4 +665,12 @@ See SR#946556</comment>
     <comment>- Update to version 1.59.0 - for details see the rust1.59 package</comment>
     <requestid>958353</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>cfaa7116b7dd41b0219a488016195e95</srcmd5>
+    <version>1.60.0</version>
+    <time>1650657145</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.60.0 - for details see the rust1.60 package</comment>
+    <requestid>970644</requestid>
+  </revision>
 </revisionlist>
