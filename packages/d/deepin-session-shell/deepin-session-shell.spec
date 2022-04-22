@@ -19,7 +19,7 @@
 %define _name dde-session-shell
 
 Name:           deepin-session-shell
-Version:        5.5.9
+Version:        5.5.24
 Release:        0
 Summary:        Deepin desktop-environment - Session UI Shell
 License:        GPL-3.0+
