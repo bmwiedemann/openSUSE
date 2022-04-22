@@ -23,7 +23,7 @@
 %endif
 
 Name:           deepin-voice-note
-Version:        5.10.14
+Version:        5.10.15
 Release:        0
 License:        GPL-3.0+
 Summary:        Deepin Voice Note 
