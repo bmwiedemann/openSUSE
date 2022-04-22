@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr  4 13:36:46 UTC 2022 - Hillwood Yang <hillwoodroc@gmail.com>
+
+- Update version to 5.5.22
+  * Optimize dnd-example
+  * Support non-title, window rounded corners, system menu
+
+-------------------------------------------------------------------
 Mon Feb 14 14:59:52 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
-- Update version to 5.5.23
+- Update version to 5.5.21
   * Add dde-kwin-debug
   * Fix bugs 
 

@@ -22,7 +22,7 @@
 # %define pkg_ver 5.5
 
 Name:           dtkgui
-Version:        5.5.21
+Version:        5.5.22
 Release:        0
 Summary:        Deepin Toolkit GUI
 License:        LGPL-3.0
@@ -90,7 +90,8 @@ You should first read the "Deepin Application Specification".
 %dir %{_libdir}/libdtk-%{apiver}/DGui/bin
 %{_libdir}/libdtk-%{apiver}/DGui/bin/deepin-gui-settings
 %{_libdir}/libdtk-%{apiver}/DGui/bin/dde-kwin-debug
-%{_libdir}/libdtk-%{apiver}/DGui/bin/taskbar
+%{_libdir}/libdtk-%{apiver}/DGui/bin/dnd-test-*
+# %{_libdir}/libdtk-%{apiver}/DGui/bin/taskbar
 
 %files -n lib%{name}%{libver}
 %{_libdir}/lib%{name}.so.*
