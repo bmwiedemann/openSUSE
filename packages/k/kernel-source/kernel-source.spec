@@ -17,7 +17,7 @@
 
 
 %define srcversion 5.17
-%define patchversion 5.17.3
+%define patchversion 5.17.4
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -31,9 +31,9 @@
 %endif
 
 Name:           kernel-source
-Version:        5.17.3
+Version:        5.17.4
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ga63605c
+Release:        <RELEASE>.g75e9961
 %else
 Release:        0
 %endif
@@ -50,7 +50,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-a63605c1aab6acecebb54d67860a09c4b0bf67bd
+Provides:       %name-srchash-75e9961c635cc70f47cb1ad5049982f16917bb87
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz

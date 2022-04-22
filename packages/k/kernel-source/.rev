@@ -5866,4 +5866,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.17.3 &amp; PSTORE_DEFAULT_DISABLE &amp; other fixes</comment>
     <requestid>970053</requestid>
   </revision>
+  <revision rev="639" vrev="1">
+    <srcmd5>f813db88754f53bd6b0bd17bee83322f</srcmd5>
+    <version>5.17.4</version>
+    <time>1650657138</time>
+    <user>dimstar_suse</user>
+    <comment>5.17.4 &amp; config changes</comment>
+    <requestid>971282</requestid>
+  </revision>
 </revisionlist>
