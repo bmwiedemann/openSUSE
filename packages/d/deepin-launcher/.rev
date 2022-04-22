@@ -51,4 +51,12 @@
   * Fix bugs</comment>
     <requestid>950173</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>733dcf15b076d1f481745c96c8247ccf</srcmd5>
+    <version>5.5.11</version>
+    <time>1650657227</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971785</requestid>
+  </revision>
 </revisionlist>

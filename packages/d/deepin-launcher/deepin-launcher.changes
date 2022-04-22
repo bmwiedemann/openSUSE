@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 13 06:08:59 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.11
+  * Fix bugs
+  * Optimize wayland support
+
+-------------------------------------------------------------------
 Thu Dec 16 12:42:21 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.4.60

@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-launcher
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _name dde-launcher
 
 Name:           deepin-launcher
-Version:        5.4.60
+Version:        5.5.11
 Release:        0
 Summary:        Deepin Launcher
 License:        GPL-3.0-or-later
@@ -85,15 +85,20 @@ sed -i 's|lrelease|lrelease-qt5|g' translate_generation.sh
 %dir %{_datadir}/%{_name}
 %dir %{_datadir}/%{_name}/translations
 %{_datadir}/%{_name}/translations/dde-launcher.qm
+%dir %{_datadir}/dsg
+%dir %{_datadir}/dsg/apps
+%{_datadir}/dsg/apps/dde-launcher
 
 %files devel
-%{_includedir}/%{_name}
+# %{_includedir}/%{_name}
 
 %files lang -f %{_name}.lang
+%if 0%{?suse_version} <= 1500
 # unusual languages not autodetected by find_lang (boo#1187036)
 %lang(ast) %{_datadir}/%{_name}/translations/dde-launcher_ast.qm
 %lang(fil) %{_datadir}/%{_name}/translations/dde-launcher_fil.qm
 %lang(kab) %{_datadir}/%{_name}/translations/dde-launcher_kab.qm
 %lang(pam) %{_datadir}/%{_name}/translations/dde-launcher_pam.qm
+%endif
 
 %changelog
