@@ -505,11 +505,14 @@ if [ "$1" -gt 0 ] && [ -f %{_sbindir}/update-alternatives ] && [ ! -e %{_bindir}
     %{_sbindir}/update-alternatives --remove vim %{_bindir}/vim-small
 fi
 
+%if 0%{?suse_version} <= 1315
 %post -n gvim
 %icon_theme_cache_post
 
 %postun -n gvim
 %icon_theme_cache_postun
+%endif
+
 %else
 
 # without libalternatives
@@ -527,14 +530,17 @@ fi
 %{_sbindir}/update-alternatives \
  --install %{_bindir}/vim vim %{_bindir}/gvim 30 \
  --slave %{_bindir}/vi vi %{_bindir}/gvim
-
+%if 0%{?suse_version} <= 1315
 %icon_theme_cache_post
+%endif
 
 %postun -n gvim
 if [ ! -e %{_bindir}/gvim ] ; then
   %{_sbindir}/update-alternatives --remove vim %{_bindir}/gvim
 fi
+%if 0%{?suse_version} <= 1315
 %icon_theme_cache_postun
+%endif
 
 %post small
 %{_sbindir}/update-alternatives \

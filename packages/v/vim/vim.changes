@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 19 21:19:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- skip empty post/postun on gvim for SLE15+ 
+
+-------------------------------------------------------------------
 Wed Apr 13 13:59:49 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.4745, fixes the following problems

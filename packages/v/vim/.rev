@@ -5794,4 +5794,12 @@ always built-in because vim has direct perl dependencies anyway.
   * flatten() does not use maxdepth correctly.</comment>
     <requestid>969893</requestid>
   </revision>
+  <revision rev="307" vrev="2">
+    <srcmd5>ecf85a7c3ab917fb74940fa65dabc86f</srcmd5>
+    <version>8.2.4745</version>
+    <time>1650657187</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971085</requestid>
+  </revision>
 </revisionlist>
