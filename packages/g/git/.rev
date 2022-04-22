@@ -2442,4 +2442,12 @@ git 2.12.3
 - Require nogroup group for %pre (bsc#1192023)</comment>
     <requestid>970347</requestid>
   </revision>
+  <revision rev="277" vrev="1">
+    <srcmd5>a5c4e28e2d67bcfb884f73f2c53b30f6</srcmd5>
+    <version>2.36.0</version>
+    <time>1650657178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970899</requestid>
+  </revision>
 </revisionlist>
