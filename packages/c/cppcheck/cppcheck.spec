@@ -17,7 +17,7 @@
 
 
 Name:           cppcheck
-Version:        2.7.4
+Version:        2.7.5
 Release:        0
 Summary:        A tool for static C/C++ code analysis
 License:        GPL-3.0-or-later
@@ -38,6 +38,7 @@ BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(libpcre)
+ExcludeArch:    %ix86 %arm
 Requires:       python3-Pygments
 
 %description

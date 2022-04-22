@@ -230,4 +230,13 @@
   * Replace tinyxml2_LIBRARY with tinyxml2_LIBRARIES</comment>
     <requestid>965031</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>bd8e9216270e232b84f29806480456c3</srcmd5>
+    <version>2.7.5</version>
+    <time>1650657215</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.7.5:
+  * Import Project: Fix problem with define value with space</comment>
+    <requestid>971910</requestid>
+  </revision>
 </revisionlist>
