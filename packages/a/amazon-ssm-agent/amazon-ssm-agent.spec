@@ -27,9 +27,6 @@ Source0:        https://github.com/aws/amazon-ssm-agent/archive/%{version}.tar.g
 BuildRequires:  go >= 1.15
 BuildRequires:  pkgconfig(systemd)
 Requires:       systemd
-Provides:       ExclusiveArch:
-Provides:       aarch64
-Provides:       x86_64
 Provides:       bundled(golang(github.com/Microsoft/go-winio))
 Provides:       bundled(golang(github.com/Workiva/go-datastructures))
 Provides:       bundled(golang(github.com/aws/aws-sdk-go))
@@ -77,6 +74,8 @@ Provides:       bundled(golang(golang.org/x/oauth2))
 Provides:       bundled(golang(golang.org/x/sync))
 Provides:       bundled(golang(golang.org/x/sys))
 Provides:       bundled(golang(gopkg.in/warnings.v0))
+
+ExclusiveArch:  aarch64 x86_64
 
 %description
 This package provides the Amazon SSM Agent for managing EC2 Instances using
