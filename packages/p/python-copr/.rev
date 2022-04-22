@@ -15,4 +15,21 @@
     <comment></comment>
     <requestid>959945</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0b28322ca87e9cdb5f25a4b888553952</srcmd5>
+    <version>1.119</version>
+    <time>1650657304</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.119:
+  - Bugfixes
+  - Kerberos/GSSAPI authentication for API and copr-cli
+  - Copr-cli re-tries connections with Copr Frontend
+  - Large queue improvements
+  - Smaller fixes
+  - More copr-cli options for editing chroots
+  - Signing packages with SHA256
+  - Remote refs in committish
+</comment>
+    <requestid>972178</requestid>
+  </revision>
 </revisionlist>

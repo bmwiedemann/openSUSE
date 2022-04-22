@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 22 12:08:48 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.119:
+  - Bugfixes
+  - Kerberos/GSSAPI authentication for API and copr-cli
+  - Copr-cli re-tries connections with Copr Frontend
+  - Large queue improvements
+  - Smaller fixes
+  - More copr-cli options for editing chroots
+  - Signing packages with SHA256
+  - Remote refs in committish
+
+-------------------------------------------------------------------
 Mon Mar  7 13:17:52 UTC 2022 - pgajdos@suse.com
 
 - version update to 1.115

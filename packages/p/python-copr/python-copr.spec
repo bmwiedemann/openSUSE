@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-copr
-Version:        1.115
+Version:        1.119
 Release:        0
 Summary:        Python client for copr service
 License:        GPL-2.0-or-later
@@ -27,9 +27,12 @@ Source:         https://files.pythonhosted.org/packages/source/c/copr/copr-%{ver
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
+BuildRequires:  %{python_module filelock}
+BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module marshmallow}
 BuildRequires:  %{python_module munch}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests-gssapi}
 BuildRequires:  %{python_module requests-toolbelt}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module six}
