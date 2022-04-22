@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 21 21:27:14 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.1.5
+  * The Schreier-Sims object size function returned wrong results
+
+-------------------------------------------------------------------
 Fri Mar  4 18:53:58 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.1.4
