@@ -25,7 +25,7 @@ Index: openssl-1.0.2j/crypto/fips/fips_kwvs.c
 +
 +void die(char *mes)
 +{
-+    fprintf(stderr, mes);
++    fprintf(stderr, "%s", mes);
 +    exit(1);
 +}
 +
