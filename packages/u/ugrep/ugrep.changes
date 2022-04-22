@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr  8 09:49:39 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.7.9:
+  * Additional --stats results with total lines searched and
+    matched, and time elapsed. 
+
+-------------------------------------------------------------------
 Sat Apr  2 14:32:47 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.7.7:
