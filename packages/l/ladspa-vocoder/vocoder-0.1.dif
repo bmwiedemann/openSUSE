@@ -22,14 +22,3 @@
    long lIndex;
    if (g_psDescriptor) {
      free((char *)g_psDescriptor->Label);
---- Makefile-dist	2004-01-22 14:32:58.000000000 +0100
-+++ Makefile	2004-01-22 14:33:02.000000000 +0100
-@@ -14,7 +14,7 @@
- 
- vocoder.so:	vocoder.c
- 	$(CC) $(CFLAGS) -o vocoder.o -c vocoder.c
--	$(LD) -o vocoder.so vocoder.o -shared
-+	$(CC) -o vocoder.so vocoder.o -shared
- 
- ###############################################################################
- #
