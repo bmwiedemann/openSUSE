@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-template
-Version:        0.1.0b1438905
+Version:        0.1.0b1519537
 Release:        0
 Summary:        Microsoft Azure Template Package Client Library for Python
 License:        MIT
