@@ -27,4 +27,12 @@
     <comment>- Fix build on Tumbleweed. (forwarded request 951995 from hillwood)</comment>
     <requestid>951996</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cc7bf3621f057991e448fb3a6256bcfd</srcmd5>
+    <version>5.8.5</version>
+    <time>1650657227</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971786</requestid>
+  </revision>
 </revisionlist>

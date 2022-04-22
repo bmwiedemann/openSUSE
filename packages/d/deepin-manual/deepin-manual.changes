@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 19 08:44:23 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.8.5
+  * Fix bugs
+  * Add test-prj-running.sh
+
+-------------------------------------------------------------------
 Mon Feb  7 02:11:52 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Fix build on Tumbleweed. 

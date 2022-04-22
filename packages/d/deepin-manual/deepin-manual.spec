@@ -23,7 +23,7 @@
 %endif
 
 Name:           deepin-manual
-Version:        5.8.4
+Version:        5.8.5
 Release:        0
 Summary:        Deepin Manual
 License:        GPL-3.0-or-later
