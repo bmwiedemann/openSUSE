@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 20 07:35:20 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+
+-------------------------------------------------------------------
 Wed Jan 13 14:19:23 UTC 2021 - pgajdos@suse.com
 
 - version update to 3.0.1

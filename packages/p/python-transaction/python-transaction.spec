@@ -1,7 +1,7 @@
 #
 # spec file for package python-transaction
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,15 +24,14 @@ Summary:        Transaction management for Python
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/transaction
 Source:         https://files.pythonhosted.org/packages/source/t/transaction/transaction-%{version}.tar.gz
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-zope.interface
 BuildArch:      noarch
 # SECTION Test requirements
-BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module zope.interface}
 # /SECTION
 %python_subpackages
 
@@ -58,6 +57,8 @@ rm -rf transaction.egg-info
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# https://github.com/zopefoundation/zdaemon/issues/28#issuecomment-1102754818
+sed -i 's:import mock:from unittest import mock:' src/transaction/tests/test__manager.py
 %pytest
 
 %files %{python_files}
