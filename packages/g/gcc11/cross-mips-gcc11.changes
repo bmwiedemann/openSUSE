@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 20 07:01:09 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-11 branch head (691af15031e00227ba6d5935c), git1635
+  * includes gcc11-pr104931.patch
+  * includes fix for Firefox ICE  [gcc#105256]
+
+-------------------------------------------------------------------
 Fri Apr  1 09:52:40 UTC 2022 - Richard Biener <rguenther@suse.com>
 
 - Add provides/conflicts to glibc crosses since only one GCC version

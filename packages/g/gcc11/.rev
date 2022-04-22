@@ -247,4 +247,14 @@ The compiler is NOT used by default.</comment>
 - Add provides/conflicts to libgccjit.</comment>
     <requestid>966407</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>214d5412e0aca412dfd0f30edbc64bc4</srcmd5>
+    <version>11.2.1+git1635</version>
+    <time>1650657138</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-11 branch head (691af15031e00227ba6d5935c), git1635
+  * includes gcc11-pr104931.patch
+  * includes fix for Firefox ICE  [gcc#105256]</comment>
+    <requestid>970979</requestid>
+  </revision>
 </revisionlist>

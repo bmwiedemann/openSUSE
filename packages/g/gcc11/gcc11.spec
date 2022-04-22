@@ -186,7 +186,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        11.2.1+git1406
+Version:        11.2.1+git1635
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -359,7 +359,6 @@ Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
 Patch18:        gcc10-amdgcn-llvm-as.patch
 Patch19:        gcc11-gdwarf-4-default.patch
 Patch20:        gcc11-amdgcn-disable-hot-cold-partitioning.patch
-Patch21:        gcc11-pr104931.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 Patch52:        gcc10-foffload-default.patch
@@ -2008,7 +2007,6 @@ cd ..
 %patch19 -p1
 %endif
 %patch20 -p1
-%patch21 -p1
 %patch51
 %patch52 -p1
 %patch60 -p1
