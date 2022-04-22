@@ -19,10 +19,11 @@
 %define   provider_tld    com
 %define   project         linuxdeepin
 %define   repo            dde-api
-%define   import_path     pkg.deepin.io/dde/api
+%define   provider_prefix %{provider}.%{provider_tld}/%{project}/%{repo}
+%define   import_path     %{provider_prefix}
 
 Name:           deepin-api
-Version:        5.5.5
+Version:        5.5.12
 Release:        0
 Summary:        Go-lang bingding for dde-daemon
 License:        GPL-3.0+
@@ -124,9 +125,11 @@ export GO111MODULE=off
 %make_build
 
 %install
-rm -rf $HOME/rpmbuild/BUILD/go/src/github.com \
+mv $HOME/rpmbuild/BUILD/go/src/github.com/linuxdeepin .
+rm -rf $HOME/rpmbuild/BUILD/go/src/github.com/*\
        $HOME/rpmbuild/BUILD/go/src/golang.org \
        $HOME/rpmbuild/BUILD/go/src/gopkg.in
+mv linuxdeepin $HOME/rpmbuild/BUILD/go/src/github.com/
 %goinstall
 %gosrc
 install -m0644 themes/*.c %{buildroot}%{go_contribsrcdir}/%{import_path}/themes/
