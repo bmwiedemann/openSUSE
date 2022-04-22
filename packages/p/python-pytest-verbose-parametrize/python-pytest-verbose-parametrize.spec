@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-pytest-verbose-parametrize
 Version:        1.7.0
 Release:        0
@@ -28,6 +29,8 @@ Source:         https://files.pythonhosted.org/packages/source/p/pytest-verbose-
 # Python 3.10 finally really killed collections class, which are now in
 # collections.abc
 Patch0:         Iterable-collections.patch
+# PATCH-FEATURE-UPSTREAM pytest-fixtures-pr171-remove-mock.patch -- gh#man-group#pytest-plugins#171
+Patch1:         pytest-fixtures-pr171-remove-mock.patch
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -40,6 +43,9 @@ BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module pytest-virtualenv}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
+%if %{with python2}
+BuildRequires:  python2-mock
+%endif
 # /SECTION
 %python_subpackages
 
@@ -66,6 +72,8 @@ rm tests/integration/test_verbose_parametrize.py
 %files %{python_files}
 %doc CHANGES.md README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_verbose_parametrize.py*
+%pycache_only %{python_sitelib}/__pycache__/pytest_verbose_parametrize*.pyc
+%{python_sitelib}/pytest_verbose_parametrize-%{version}*-info
 
 %changelog

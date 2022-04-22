@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 21 20:58:14 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add pytest-fixtures-pr171-remove-mock.patch because mock WAS
+  required and is not pulled in anymore by something else
+  -- gh#man-group/pytest-plugins#171
+- Refresh Iterable-collections.patch for Python 2 compatibility
+
+-------------------------------------------------------------------
 Fri Mar 11 03:54:45 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded BuildRequires on mock. 

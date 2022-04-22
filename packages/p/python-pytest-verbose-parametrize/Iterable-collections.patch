@@ -4,11 +4,13 @@
 
 --- a/pytest_verbose_parametrize.py
 +++ b/pytest_verbose_parametrize.py
-@@ -1,4 +1,7 @@
+@@ -1,4 +1,9 @@
 -from collections import Iterable
 +try:
 +    from collections.abc import Iterable
-+except (ImportError, ModuleNotFoundError):
++except ImportError:
++    from collections import Iterable
++except ModuleNotFoundError:
 +    from collections import Iterable
  from six import string_types, text_type
  
