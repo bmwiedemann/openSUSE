@@ -17,7 +17,7 @@
 
 
 Name:           xdg-desktop-portal
-Version:        1.14.2
+Version:        1.14.3
 Release:        0
 Summary:        A portal frontend service for Flatpak
 License:        LGPL-2.1-or-later
