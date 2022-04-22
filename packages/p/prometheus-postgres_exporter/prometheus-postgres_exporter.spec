@@ -45,6 +45,7 @@ BuildRequires:  fdupes
 BuildRequires:  golang-github-prometheus-promu
 BuildRequires:  golang-packaging
 BuildRequires:  xz
+ExcludeArch:    s390
 %if 0%{?rhel}
 BuildRequires:  golang >= 1.14
 Requires(pre):  shadow-utils
