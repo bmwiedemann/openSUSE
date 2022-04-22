@@ -1,0 +1,10 @@
+<package name="monitoring-plugins-http_json" project="openSUSE:Factory">
+  <title>A Nagios plugin for rule based JSON parsing via http</title>
+  <description>A generic plugin for Icinga/Nagios which checks json values from
+a given HTTP endpoint against argument specified rules and
+determines the status and performance data for that service. 
+
+</description>
+  <devel project="server:monitoring" package="monitoring-plugins-http_json"/>
+  <url>https://github.com/drewkerrigan/nagios-http-json</url>
+</package>
