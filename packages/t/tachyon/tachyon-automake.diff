@@ -4,28 +4,47 @@ Upstream: sent on Dec 03 00:28+0100
 This patch updated thereafter.
 
 ---
- Makefile.am         |    3 +++
- configure.ac        |   17 +++++++++++++++++
- demosrc/Makefile.am |   11 +++++++++++
- src/Makefile.am     |   15 +++++++++++++++
- 4 files changed, 46 insertions(+)
+ Makefile.am  |   23 +++++++++++++++++++++++
+ configure.ac |   18 ++++++++++++++++++
+ 2 files changed, 41 insertions(+)
 
 Index: tachyon/Makefile.am
 ===================================================================
 --- /dev/null
 +++ tachyon/Makefile.am
-@@ -0,0 +1,3 @@
+@@ -0,0 +1,23 @@
 +# -*- Makefile -*-
++ACLOCAL_AMFLAGS = -I m4
++AM_CPPFLAGS = ${regular_CPPFLAGS} ${libGL_CFLAGS} ${libpng_CFLAGS} ${libX11_CFLAGS} -I${top_srcdir}/src
++AM_CFLAGS   = ${regular_CFLAGS}
 +
-+SUBDIRS = src demosrc
++bin_PROGRAMS = tachyon
++lib_LTLIBRARIES = libtachyon.la
++libtachyon_la_SOURCES = \
++	src/api.c src/apigeom.c src/box.c src/global.c src/hash.c \
++	src/parallel.c src/threads.c src/camera.c src/render.c src/trace.c \
++	src/grid.c src/intersect.c src/sphere.c src/plane.c src/ring.c \
++	src/triangle.c src/cylinder.c src/quadric.c src/extvol.c src/vol.c \
++	src/ui.c src/util.c src/vector.c src/shade.c src/texture.c \
++	src/coordsys.c src/imap.c src/light.c src/imageio.c src/jpeg.c \
++	src/pngfile.c src/ppm.c src/psd.c src/sgirgb.c src/tgafile.c \
++	src/winbmp.c
++libtachyon_la_LIBADD = -lm -lpthread -ljpeg ${libpng_LIBS}
++libtachyon_la_LDFLAGS = -release ${PACKAGE_VERSION}
++tachyon_SOURCES = \
++	demosrc/main.c demosrc/getargs.c demosrc/parse.c demosrc/nffparse.c \
++	demosrc/glwin.c demosrc/spaceball.c demosrc/trackball.c \
++	demosrc/mgfparse.c demosrc/ac3dparse.c
++tachyon_LDADD = libtachyon.la -lm ${libGL_LIBS} ${libX11_LIBS}
 Index: tachyon/configure.ac
 ===================================================================
 --- /dev/null
 +++ tachyon/configure.ac
-@@ -0,0 +1,17 @@
-+AC_INIT([tachyon], [0.99b6])
+@@ -0,0 +1,18 @@
++AC_INIT([tachyon], [0.99.4])
 +AC_CONFIG_AUX_DIR([build-aux])
-+AM_INIT_AUTOMAKE([-Wall foreign])
++AC_CONFIG_MACRO_DIRS([m4])
++AM_INIT_AUTOMAKE([-Wall foreign subdir-objects])
 +AC_PROG_INSTALL
 +AC_PROG_CC
 +AC_DISABLE_STATIC
@@ -38,41 +57,5 @@ Index: tachyon/configure.ac
 +regular_CFLAGS="-ffast-math"
 +AC_SUBST([regular_CPPFLAGS])
 +AC_SUBST([regular_CFLAGS])
-+AC_CONFIG_FILES([Makefile src/Makefile demosrc/Makefile])
++AC_CONFIG_FILES([Makefile])
 +AC_OUTPUT
-Index: tachyon/demosrc/Makefile.am
-===================================================================
---- /dev/null
-+++ tachyon/demosrc/Makefile.am
-@@ -0,0 +1,11 @@
-+# -*- Makefile -*-
-+
-+AM_CPPFLAGS = ${regular_CPPFLAGS} -I${top_srcdir}/src
-+AM_CFLAGS   = ${regular_CFLAGS} ${libGL_CFLAGS} ${libX11_CFLAGS}
-+
-+bin_PROGRAMS = tachyon
-+
-+tachyon_SOURCES = \
-+	main.c getargs.c parse.c nffparse.c glwin.c spaceball.c trackball.c \
-+	mgfparse.c ac3dparse.c
-+tachyon_LDADD = ../src/libtachyon.la -lm ${libGL_LIBS} ${libX11_LIBS}
-Index: tachyon/src/Makefile.am
-===================================================================
---- /dev/null
-+++ tachyon/src/Makefile.am
-@@ -0,0 +1,15 @@
-+# -*- Makefile -*-
-+
-+AM_CPPFLAGS = ${regular_CPPFLAGS}
-+AM_CFLAGS   = ${regular_CFLAGS} ${libpng_CFLAGS}
-+
-+lib_LTLIBRARIES = libtachyon.la
-+
-+libtachyon_la_SOURCES = \
-+	api.c apigeom.c box.c global.c hash.c parallel.c threads.c camera.c \
-+	render.c trace.c grid.c intersect.c sphere.c plane.c ring.c \
-+	triangle.c cylinder.c quadric.c extvol.c vol.c ui.c util.c vector.c \
-+	shade.c texture.c coordsys.c imap.c light.c imageio.c jpeg.c \
-+	pngfile.c ppm.c psd.c sgirgb.c tgafile.c winbmp.c
-+libtachyon_la_LIBADD = -lm -lpthread -ljpeg ${libpng_LIBS}
-+libtachyon_la_LDFLAGS = -release ${PACKAGE_VERSION}

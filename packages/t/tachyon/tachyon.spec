@@ -1,7 +1,7 @@
 #
 # spec file for package tachyon
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           tachyon
-%define lname	libtachyon-0_99b6
-Version:        0.99~b6
+%define lname	libtachyon-0_99_4
+Version:        0.99.4
 Release:        0
 Summary:        Parallel ray tracing system
 License:        BSD-3-Clause
 Group:          Productivity/Graphics/Visualization/Raytracers
 URL:            http://jedi.ks.uiuc.edu/~johns/raytracer/
 
-Source:         http://jedi.ks.uiuc.edu/~johns/raytracer/files/0.99b6/tachyon-0.99b6.tar.gz
+Source:         http://jedi.ks.uiuc.edu/~johns/raytracer/files/%version/tachyon-%version.tar.gz
 Patch1:         tachyon-automake.diff
 BuildRequires:  autoconf
 BuildRequires:  automake >= 1.10

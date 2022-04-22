@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Apr 21 22:12:54 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.99.4
+  * Added support for AO maximum occlusion distance cutoff, for
+    convenient rendering of interior scenes where the "sky" would
+    otherwise be largely or fully occluded.
+  * Updated grid acceleration structure generation logic to avoid
+    integer wraparound when working with scenes containing
+    billions of objects and very large resulting grids.
+  * Added a rough draft implementation of a quadrilateral mesh
+    primitive
+  * Migrated gradient noise magnitude and associated calculations
+    outside of the ray tracing kernels themselves.
+  * Unified the various camera raygen program alpha transparency
+    code.
+  * Added mainstream tone mapping operators and corrected alpha
+    channel handling in colorspace conversions.
+
+-------------------------------------------------------------------
 Thu Dec 24 12:49:43 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Specfile modernizations. Remove conjecture from descriptions.
