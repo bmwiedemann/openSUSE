@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Apr 18 20:14:48 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.211.0
+  * Block Texel View VU 01583
+  * Add VK_QCOM_fragment_density_map_offset VUs
+  * Add VK_KHR_dynamic_rendering VUs and Tests
+  * Validate viewport and scissor with count
+  * Validate depth RenderingAttachment resolve mode
+  * Validate RenderingInfo depth and stencil samples
+  * Validate BeginRendering depth attachment format
+  * Validate statistics query queue support
+  * Validate get query pool results parameters
+  * Validate non-acquired swapchain image use
+  * Support VK_KHR_graphics_pipeline
+
+-------------------------------------------------------------------
 Sat Feb 19 17:24:34 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.204.0
