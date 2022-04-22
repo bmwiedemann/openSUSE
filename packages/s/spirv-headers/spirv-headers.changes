@@ -1,14 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr 18 23:29:28 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to 1.6.1+sdk211 (4995a2f)
+  * Implement SPV_KHR_uniform_group_instructions extension
+  * Update SPIR-V headers for SPV_INTEL_split_barrier
+  * Implement SPV_INTEL_memory_access_aliasing extension
+
+-------------------------------------------------------------------
 Wed Jan 26 20:47:58 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
-- Update to snapshot 1.6.g6 (b42ba6d)
+- Update to snapshot 1.6.g6 (b42ba6d / sdk204)
   * Add definitions to implement the SPIR-V 1.6 spec.
   * Add ShaderWriter as SPIR-V generation tool.
 
 -------------------------------------------------------------------
 Thu Nov 11 19:38:18 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
-- Update to snapshot 1.5.5.g9 (814e728b)
+- Update to snapshot 1.5.5.g9 (814e728b / sdk198)
   * Add spirv-headers pkgconfig file
   * Implement header definitions for SPV_NV_bindless_texture
   * Add SpecConstantSubgroupMaxSize to the clspv reflection

@@ -217,4 +217,12 @@
     <comment>- Update to snapshot 1.6.g6 (b42ba6d)</comment>
     <requestid>949425</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8bddd6e08899b5258f09a03a45463e07</srcmd5>
+    <version>1.6.1+sdk211</version>
+    <time>1650657152</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.1+sdk211 (4995a2f)</comment>
+    <requestid>970692</requestid>
+  </revision>
 </revisionlist>
