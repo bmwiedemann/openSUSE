@@ -1,7 +1,7 @@
-diff -Nur dde-control-center-5.4.109/src/frame/window/modules/commoninfo/commoninfowidget.cpp dde-control-center-5.4.109-new/src/frame/window/modules/commoninfo/commoninfowidget.cpp
---- dde-control-center-5.4.109/src/frame/window/modules/commoninfo/commoninfowidget.cpp	2021-10-27 09:42:21.000000000 +0800
-+++ dde-control-center-5.4.109-new/src/frame/window/modules/commoninfo/commoninfowidget.cpp	2022-01-29 14:07:26.585575887 +0800
-@@ -104,8 +104,6 @@
+diff -Nur dde-control-center-5.5.16.2/src/frame/window/modules/commoninfo/commoninfowidget.cpp dde-control-center-5.5.16.2-new/src/frame/window/modules/commoninfo/commoninfowidget.cpp
+--- dde-control-center-5.5.16.2/src/frame/window/modules/commoninfo/commoninfowidget.cpp	2022-03-03 15:52:44.000000000 +0800
++++ dde-control-center-5.5.16.2-new/src/frame/window/modules/commoninfo/commoninfowidget.cpp	2022-04-05 15:58:47.026961958 +0800
+@@ -109,8 +109,6 @@
              m_itemList.append({"dcc_developer_mode", tr("Developer Mode"),
                                 QMetaMethod::fromSignal(&CommonInfoWidget::requestShowDeveloperModeWidget), nullptr, "developerMode"});
          }

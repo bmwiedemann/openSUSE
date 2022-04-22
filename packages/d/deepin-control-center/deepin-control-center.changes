@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr  5 09:02:35 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.16.2
+  * Add sound device manager
+  * Update manaul document
+  * Add computer name in system info
+  * Add hotspot button config
+  * Update translations
+  * Fix bugs
+- Drop fix-return-type.patch, fixed by upstream
+- Drop fix-qDBusRegisterMetaType-error.patch, merged by upstream
+- Add remove-auth.patch
+
+-------------------------------------------------------------------
 Wed Feb 23 12:36:08 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - No longer need deepin-dock-devel

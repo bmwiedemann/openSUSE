@@ -24,7 +24,7 @@
 %endif
 
 Name:           deepin-control-center
-Version:        5.4.109
+Version:        5.5.16.2
 Release:        0
 Summary:        New control center for Linux Deepin
 License:        LGPL-3.0-or-later
@@ -35,15 +35,15 @@ Source0:        https://github.com/linuxdeepin/dde-control-center/archive/%{vers
 Patch0:         %{name}-no-user-experience.patch
 # PATCH-FOR-OPENSUSE systeminfo-deepin-icon.patch hillwood@opensuse.org - Use deepin icons instead of UOS
 Patch1:         systeminfo-deepin-icon.patch
-# PATCH-FOR-UPSTEAM fix-qDBusRegisterMetaType-error.patch hillwood@opensuse.org
-Patch2:         fix-qDBusRegisterMetaType-error.patch
-# PATCH-FOR-UPSTRAM fix-return-type.patch hillwood@opensuse.org
-Patch3:         fix-return-type.patch
+# PATCH-FOR-OPENSUSE remove-auth.patch
+Patch3:         remove-auth.patch
 Group:          System/GUI/Other
 BuildRequires:  cmake
 BuildRequires:  deepin-desktop-base
+# BuildRequires:  deepin-dock-devel > 5.5.9
 BuildRequires:  deepin-pw-check-devel
 BuildRequires:  desktop-file-utils
+BuildRequires:  dtkcommon >= 5.5.20
 BuildRequires:  dtkcore
 BuildRequires:  fdupes
 BuildRequires:  gtest
@@ -73,10 +73,10 @@ Requires:       deepin-account-faces
 Requires:       deepin-api
 Requires:       deepin-daemon
 Requires:       deepin-start
+Requires:       libdeepin_pw_check1
 Requires:       libqt5-qdbus
 Requires:       qt5integration
 Requires:       redshift
-Requires:       libdeepin_pw_check1
 Recommends:     %{name}-data
 Recommends:     %{name}-lang
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -146,9 +146,15 @@ rm -rf %{buildroot}%{_datadir}/polkit-1/actions/com.deepin.controlcenter.develop
 %{_datadir}/applications/%{_name}.desktop
 %{_datadir}/dbus-1/services/*.service
 %{_libdir}/libdccwidgets.so
+%dir %{_prefix}/lib/dde-grand-search-daemon
+%dir %{_prefix}/lib/dde-grand-search-daemon/plugins
+%{_prefix}/lib/dde-grand-search-daemon/plugins/searcher
 %dir %{_datadir}/%{_name}/
 %{_datadir}/%{_name}/%{_name}.conf
 %{_datadir}/glib-2.0/schemas/com.deepin.dde.control-center.gschema.xml
+%dir %{_datadir}/dsg
+%dir %{_datadir}/dsg/apps
+%{_datadir}/dsg/apps/dde-control-center
 # %{_datadir}/polkit-1/actions/com.deepin.controlcenter.develop.policy
 
 %files data

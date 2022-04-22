@@ -26,4 +26,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>959457</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ea34b3119f2fffba0f350b7de2d26289</srcmd5>
+    <version>5.5.16.2</version>
+    <time>1650657247</time>
+    <user>dimstar_suse</user>
+    <comment>- Add remove-auth.patch (forwarded request 971812 from hillwood)</comment>
+    <requestid>971814</requestid>
+  </revision>
 </revisionlist>
