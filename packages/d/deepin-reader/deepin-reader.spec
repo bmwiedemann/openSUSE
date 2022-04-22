@@ -21,7 +21,7 @@
 %define	_lto_cflags	%{nil}
 
 Name:           deepin-reader
-Version:        5.9.13
+Version:        5.10.13
 Release:        0
 Summary:        The deepin Document Viewer
 License:        GPL-3.0+
@@ -53,6 +53,7 @@ BuildRequires:  pkgconfig(ddjvuapi)
 BuildRequires:  pkgconfig(dtkwidget)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
 BuildRequires:  pkgconfig(gsettings-qt)
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(lcms2)
@@ -61,6 +62,8 @@ BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(chardet)
 Requires:       libdeepin-pdfium%{sover}
+# Qt5WebEngineWidgets is invalid on these arches
+ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -110,6 +113,8 @@ find %{buildroot}%{_datadir}/deepin-manual -name '*.txt' -type f -print -exec ch
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
+%dir %{_prefix}/lib/deepin-reader
+%{_prefix}/lib/deepin-reader/htmltopdf
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/deepin-manual/manual-assets/application/%{name}
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
@@ -121,3 +126,5 @@ find %{buildroot}%{_datadir}/deepin-manual -name '*.txt' -type f -print -exec ch
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/translations
 %{_datadir}/%{name}/translations/%{name}.qm
+
+%changelog

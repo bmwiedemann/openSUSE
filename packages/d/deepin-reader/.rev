@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>920004</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>33f5247cb59a1cb73549dbe09f5f3282</srcmd5>
+    <version>5.10.13</version>
+    <time>1650657253</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 971861 from hillwood)</comment>
+    <requestid>971862</requestid>
+  </revision>
 </revisionlist>

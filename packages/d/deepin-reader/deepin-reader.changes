@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr 19 13:01:12 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.10.13
+  * Fix a wayland issue
+  * Optimize slide playing
+
+-------------------------------------------------------------------
+Sat Jan 29 07:48:09 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.10.10
+  * Use QtWebEngine
+  * Update manual documents
+  * Update translations
+  * Fix bugs
+
+-------------------------------------------------------------------
 Tue Aug 31 04:13:18 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Initial package for version 5.9.13
