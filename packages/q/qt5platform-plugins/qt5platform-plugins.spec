@@ -21,7 +21,7 @@
 # %define   qt_version      5.14.1
 
 Name:           qt5platform-plugins
-Version:        5.0.46
+Version:        5.0.61
 Release:        0
 Summary:        Qt platform integration plugins
 License:        GPL-3.0-or-later

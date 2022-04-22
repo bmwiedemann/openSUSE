@@ -36,4 +36,12 @@
   * Fix bugs (forwarded request 964286 from hillwood)</comment>
     <requestid>964287</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d1e28dc4b29e8f3a258adcd97a3af143</srcmd5>
+    <version>5.0.61</version>
+    <time>1650657247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971807</requestid>
+  </revision>
 </revisionlist>

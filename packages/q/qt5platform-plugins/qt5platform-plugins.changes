@@ -1,7 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 31 05:49:21 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.0.61
+  * Update window property when keepabovechanged
+  * Clean up invalid comments and logs 
+  * ActiveChanged handler changed
+  * Add conditional compilation
+  * Call sendProperty when setWindowProperty
+  * Add global keyboard
+  * Fix bugs
+
+-------------------------------------------------------------------
 Thu Feb 24 14:12:30 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
-- Update version to 5.0.42
+- Update version to 5.0.46
   * Set tooltip role and standalone role
   * Wayland plugin merge from wayland_x86
   * Fix bugs
