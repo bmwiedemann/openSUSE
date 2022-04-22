@@ -22,7 +22,7 @@
 %define pkg_ver 5.5
 
 Name:           dtkcore
-Version:        5.5.23
+Version:        5.5.30
 Release:        0
 Summary:        Deepin Tool Kit Core
 License:        LGPL-3.0-only
