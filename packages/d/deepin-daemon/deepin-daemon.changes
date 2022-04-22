@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr  3 14:10:23 UTC 2022 - Hillwood Yang <hillwoodroc@gmail.com>
+
+- Update version to 5.14.18
+  * Change pkg.deepin.io to github.com
+  * Fix bugs
+  * Update tranlations
+- Drop fix-login_defs-path.patch, merged by upstream
+
+-------------------------------------------------------------------
 Wed Feb 23 07:17:20 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Use last stable version of go to build 

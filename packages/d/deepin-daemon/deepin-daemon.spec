@@ -16,10 +16,10 @@
 #
 
 %define   _name       dde-daemon
-%define   import_path pkg.deepin.io/dde/daemon
+%define   import_path github.com/linuxdeepin/dde-daemon
 
 Name:           deepin-daemon
-Version:        5.14.11.1
+Version:        5.14.18
 Release:        0
 Summary:        Daemon handling the DDE session settings
 License:        GPL-3.0+
@@ -38,10 +38,7 @@ Patch1:         %{name}-libinput.patch
 # PATCH-FIX-OPENSUSE disable-gobuild-in-makefile.patch hillwood@opensuse.org
 # Use gobuild macro instead of makefile to build go binaries
 Patch2:         disable-gobuild-in-makefile.patch
-# PATCH-Fix-UPSTREAM fix-login_defs-path.patch
-# https://github.com/linuxdeepin/dde-daemon/commit/1262c03c5e5b4771f04a73ee2c01e1490f4e96af
-Patch3:         fix-login_defs-path.patch
-Patch4:         harden_deepin-accounts-daemon.service.patch
+Patch3:         harden_deepin-accounts-daemon.service.patch
 Group:          System/GUI/Other
 BuildRequires:  lightdm
 BuildRequires:  lightdm-gtk-greeter
@@ -299,8 +296,6 @@ fi
 # %{_prefix}/lib/modules-load.d/i2c_dev.conf
 %dir %{_sysconfdir}/pulse/daemon.conf.d
 %config %{_sysconfdir}/pulse/daemon.conf.d/10-deepin.conf
-%dir %{_sysconfdir}/grub.d
-%{_sysconfdir}/grub.d/35_deepin_gfxmode
 %{_prefix}/lib/%{name}/
 %dir %{_sysusersdir}
 %{_sysusersdir}/%{name}.conf

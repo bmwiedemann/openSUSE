@@ -1,8 +1,8 @@
-diff -Nur dde-daemon-5.14.11.1/Makefile dde-daemon-5.14.11.1-new/Makefile
---- dde-daemon-5.14.11.1/Makefile	2022-01-20 09:58:02.000000000 +0800
-+++ dde-daemon-5.14.11.1-new/Makefile	2022-02-17 22:45:53.224122130 +0800
-@@ -5,8 +5,8 @@
- export GO111MODULE=off
+diff -Nur dde-daemon-5.14.18/Makefile dde-daemon-5.14.18-new/Makefile
+--- dde-daemon-5.14.18/Makefile	2022-03-03 17:27:19.000000000 +0800
++++ dde-daemon-5.14.18-new/Makefile	2022-04-03 21:42:19.575417035 +0800
+@@ -6,8 +6,8 @@
+ export GOPATH=$(shell go env GOPATH)
  
  BINARIES =  \
 -	    dde-session-daemon \
@@ -12,7 +12,7 @@ diff -Nur dde-daemon-5.14.11.1/Makefile dde-daemon-5.14.11.1-new/Makefile
  	    grub2 \
  	    search \
  	    theme-thumb-tool \
-@@ -15,7 +15,7 @@
+@@ -16,7 +16,7 @@
  	    soundeffect \
  	    dde-lockservice \
  	    dde-authority \
@@ -21,7 +21,7 @@ diff -Nur dde-daemon-5.14.11.1/Makefile dde-daemon-5.14.11.1-new/Makefile
  	    dde-greeter-setter
  
  LANGUAGES = $(basename $(notdir $(wildcard misc/po/*.po)))
-@@ -28,7 +28,7 @@
+@@ -31,7 +31,7 @@
  	@ln -snf ../../../.. ${GOPATH_DIR}/src/${GOPKG_PREFIX};
  
  out/bin/%: prepare
@@ -29,8 +29,8 @@ diff -Nur dde-daemon-5.14.11.1/Makefile dde-daemon-5.14.11.1-new/Makefile
 +#	env GOPATH="${CURDIR}/${GOPATH_DIR}:${GOPATH}" ${GOBUILD} -o $@ ${GOBUILD_OPTIONS} ${GOPKG_PREFIX}/bin/${@F}
  
  out/bin/default-file-manager: bin/default-file-manager/main.c
- 	gcc $^ $(shell pkg-config --cflags --libs gio-unix-2.0) -o $@
-@@ -56,7 +56,7 @@
+ 	gcc $^ $(shell pkg-config --cflags --libs gio-unix-2.0) $(CFLAGS) -o $@
+@@ -59,7 +59,7 @@
  	deepin-policy-ts-convert ts2policy misc/polkit-action/com.deepin.daemon.$$i.policy.in misc/ts/com.deepin.daemon.$$i.policy misc/polkit-action/com.deepin.daemon.$$i.policy; \
  	done
  
