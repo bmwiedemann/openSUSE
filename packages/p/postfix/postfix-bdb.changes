@@ -1,8 +1,39 @@
 -------------------------------------------------------------------
-Mon Apr  4 09:02:48 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+Mon Apr 18 19:59:01 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 3.6.6
+  * (problem introduced: Postfix 2.7) The milter_header_checks maps
+    are now opened before the cleanup(8) server enters the chroot
+    jail.
+  * In an internal client module, "host or service not found" was
+    a fatal error, causing the milter_default_action setting to be
+    ignored. It is now a non-fatal error, just like a failure to
+    connect.
+  * The proxy_read_maps default value was missing up to 27 parameter
+    names. The corresponding lookup tables were not automatically
+    authorized for use with the proxymap(8) service. The parameter
+    names were ending in _checks, _reply_footer, _reply_filter,
+    _command_filter, and _delivery_status_filter.
+  * (problem introduced: Postfix 3.0) With dynamic map loading
+    enabled, an attempt to create a map with "postmap regexp:path"
+    would result in a bogus error message "Is the postfix-regexp
+    package installed?" instead of "unsupported map type for this
+    operation". This happened with all non-dynamic map types (static,
+    cidr, etc.) that have no 'bulk create' support.
+
+-------------------------------------------------------------------
+Mon Apr  4 09:01:56 UTC 2022 - Peter Varkoly <varkoly@suse.com>
 
 - config.postfix fails to set smtp_tls_security_level
   (bsc#1192314) 
+
+-------------------------------------------------------------------
+Tue Mar 29 10:12:29 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+
+- Refreshed spec-file via spec-cleaner and manual optimizated.
+  * Added -p flag to all install commands.
+  * Removed -f flag from all ln commands.
+- Changed file harden_postfix.service.patch (boo#1191988).
 
 -------------------------------------------------------------------
 Fri Mar 18 20:29:34 UTC 2022 - Michael Ströder <michael@stroeder.com>
