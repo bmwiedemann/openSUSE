@@ -335,4 +335,13 @@
     <comment>cacti 1.2.19 boo#1192408</comment>
     <requestid>929901</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>56dfe41d9a798a1f75ff3a9405d7be13</srcmd5>
+    <version>1.2.20</version>
+    <time>1650657620</time>
+    <user>dimstar_suse</user>
+    <comment>cacti 1.2.20 CVE-2022-0730 boo#1196692
+</comment>
+    <requestid>972230</requestid>
+  </revision>
 </revisionlist>

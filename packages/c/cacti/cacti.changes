@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Apr 22 11:16:10 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.2.20
+  * Security fix for CVE-2022-0730, boo#1196692
+    Under certain ldap conditions, Cacti authentication can be
+    bypassed with certain credential types.
+  * Security fix: Device, Graph, Graph Template,
+    and Graph Items may be vulnerable to XSS issues
+  * Security fix: Lockout policies are not properly applied to LDAP
+    and Domain Users
+  * Security fix: When using 'remember me' option, incorrect realm
+    may be selected
+  * Security fix: User and Group maintenance are vulnerable to SQL attacks
+  * Security fix: Color Templates are vulnerable to XSS attack
+  * Features:
+    * When creating a Data Source Profile, allow additional choices for Heartbeat
+    * Change select all options to use Font Awesome icons
+    * Improve spine performance by storing the total number of system snmp_ports in use
+    * Prevent Template User Accounts from being Removed
+    * When managing by users, allow filtering by Realm
+    * Allow plugins to supply template account names
+    * When viewing logs, additional message types should be filterable
+    * When creating a Graph Template Item, allow filtering by Data Template
+    * Allow language handler to be selected via UI
+    * Updated Device packages for Synology, Citrix NetScaler, Cisco ASA/Cisco
+    * Add Advanced Ping Graph Template to initial Installable templates
+    * Add LDAP Debug Mode option
+    * Allow Reports to include devices not on a Tree
+    * Allow Basic Authentication to display custom failure message
+  * Fix: When replicating data during installation/upgrade,
+    system may appear to hang
+  * Fix: Graph Template Items may have duplicated entries
+  * Fix: Unable to Save Graph Settings
+  * Fix: Script Server may crash if an OID is missing or unavailable
+  * Fix: When system-wide polling is disabled,
+    remote pollers may fail to sync changed settings
+  * Fix: When updating poller name, duplicate name protection may be over zealous
+  * Fix: Titles may show "Missing Datasource" incorectly
+  * Fix: Checking for MIB Cache can cause crashes
+  * Fix: Polling cycles may not always complete as expected
+  * Fix: When viewing graph data, non-numeric values may appear
+  * Fix: Utilities view has calculation errors when there are no data sources
+  * Fix: When editing Reports, drag and drop may not function as intended
+  * Fix: When data drive is full, viewing a Graph can result in errors
+  * Various other bug fixes
+
+-------------------------------------------------------------------
 Sat Nov  6 16:22:34 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti 1.2.19:

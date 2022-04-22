@@ -1,7 +1,7 @@
 #
 # spec file for package cacti
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,13 +28,13 @@
 %bcond_with systemd
 %endif
 Name:           cacti
-Version:        1.2.19
+Version:        1.2.20
 Release:        0
 Summary:        Web Front-End to Monitor System Data via RRDtool
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-URL:            http://www.cacti.net/
-Source0:        http://www.cacti.net/downloads/%{name}-%{version}.tar.gz
+URL:            https://www.cacti.net/
+Source0:        https://www.cacti.net/downloads/%{name}-%{version}.tar.gz
 Source1:        %{name}.cron
 Source2:        %{name}-httpd.conf
 Source3:        %{name}.logrotate
