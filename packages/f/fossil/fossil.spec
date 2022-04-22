@@ -16,7 +16,7 @@
 #
 
 
-%define fossil_uuid f48180f2ff3169651a725396d4f7d667c99a92873b9c3df7eee2f144be7a0721
+%define fossil_uuid 84f25d7eb10c0714109d69bb2809abfa8b4b5c3d73b151a5b10df724dacd46d8
 %if 0%{?suse_version} > 1500
 %bcond_without system_sqlite
 %else
@@ -24,22 +24,21 @@
 %endif
 %bcond_without tests
 Name:           fossil
-Version:        2.17
+Version:        2.18
 Release:        0
 Summary:        Distributed software configuration management
 License:        BSD-2-Clause
 Group:          Development/Tools/Version Control
 URL:            https://fossil-scm.org/
 Source:         https://fossil-scm.org/home/tarball/%{fossil_uuid}/%{name}-%{version}.tar.gz
+Patch0:         fossil-json1.patch
 BuildRequires:  fuse-devel
 BuildRequires:  gcc
 BuildRequires:  openssl-devel
 BuildRequires:  tcl
 BuildRequires:  zlib-devel
 %if %{with system_sqlite}
-# package specifies 3.35, but sqlite3_deserialize / sqlite3_serialize
-# interfaces enabled by default in 3.36
-BuildRequires:  sqlite3-devel >= 3.36.0
+BuildRequires:  sqlite3-devel >= 3.38.0
 %endif
 
 %description
@@ -52,7 +51,7 @@ these features:
 * sqlite-backed database
 
 %prep
-%autosetup
+%autosetup -p0
 # test package version and source version match
 grep -qFx %{version} VERSION
 

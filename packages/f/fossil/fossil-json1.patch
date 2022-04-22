@@ -1,0 +1,10 @@
+--- tools/sqlcompattest.c	2022-04-22 09:12:32.070901756 +0200
++++ tools/sqlcompattest.c	2022-04-22 09:13:32.251220664 +0200
+@@ -64,7 +64,6 @@ int main(int argc, char **argv){
+   int i;
+   static const char *zRequiredOpts[] = {
+     "ENABLE_FTS4",        /* Required for repository search */
+-    "ENABLE_JSON1",       /* Required for the check-in locking protocol */
+     "ENABLE_DBSTAT_VTAB", /* Required by /repo-tabsize page */
+   };
+ 

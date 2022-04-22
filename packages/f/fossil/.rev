@@ -339,4 +339,39 @@
     <comment></comment>
     <requestid>957633</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a6949d98d9bf2fa38329b7c3e6818186</srcmd5>
+    <version>2.18</version>
+    <time>1650657299</time>
+    <user>dimstar_suse</user>
+    <comment>- fossil 2.18:
+  * Added support for SSL/TLS server mode for commands like &quot;fossil
+    server&quot; and &quot;fossil http&quot;
+  * The new cherry-pick command is an alias for merge --cherrypick
+  * Add new setting &quot;large-file-size&quot;. If the size of any file in a
+    commit exceeds this size, a warning is issued
+  * Query parameter &quot;year=YYYY&quot; is now accepted by /timeline
+  * The tar and zip commands no longer sterilize the manifest file
+  * Futher improvement to diff alignment in cases that involve both
+    edits and indentation changes
+  * Chat improvements
+  * Promote the test-detach command into the detach command
+  * For &quot;fossil pull&quot; with the --from-parent-project option, if no
+    URL is specified then use the last URL from the most recent
+    prior &quot;fossil pull --from-parent-project&quot;
+  * Add options --project-name and --project-desc to the &quot;fossil
+    init&quot; command.
+  * The /ext page generates the SERVER_SOFTWARE environment
+    variable for clients
+  * Fix the REQUEST_URI CGI variable such that it includes the
+    query string. This is how most other systems understand
+    REQUEST_URI
+  * Added the --transport-command option to fossil sync and similar
+- minimum/bundled version of sqlite increased to 3.38.0
+- fossil-json1.patch: Starting from version 3.38.0 SQLite has JSON
+  enabled by default and ENABLE_JSON1 has disappeared from the list
+  of compile-time options.
+- Add a _service file to download the tarball automatically.</comment>
+    <requestid>972159</requestid>
+  </revision>
 </revisionlist>
