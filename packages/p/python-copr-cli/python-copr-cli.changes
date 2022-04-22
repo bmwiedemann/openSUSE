@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Apr 22 11:55:03 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.100 (changes for all copr packages, not only copr-cli):
+  - Bugfixes
+  - Kerberos/GSSAPI authentication for API and copr-cli
+  - Copr-cli re-tries connections with Copr Frontend
+  - Large queue improvements
+  - More copr-cli options for editing chroots
+  - Signing packages with SHA256
+  - Remote refs in committish
+  - Removing unused tarballs
+  - More human-readable validation errors in APIv3
+  - Basic build tagging
+  - Webhook rebuilds are background jobs now
+  - Searching by attributes
+  - APIv3 /monitor route
+  - The “Rebuild all” packages feature enhanced
+  - Builder VMs priority
+  - Query built RPM results via API
+  - Pull request CoprDirs are automatically deleted after inactivity
+  - Showing two latest Copr-related articles
+  - Specify copr-cli output format
+  - IPv6 support
+  - Isolation configuration per-chroot
+  - Submit build with excluded chroots
+  - EOL chroot management
+  - Disabling modules in buildroot
+  - New mock –isolation option
+  - EOL repository management
+  - Searching by build ID
+
+-------------------------------------------------------------------
 Tue Nov 17 12:07:43 PM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Initial spec for v1.90

@@ -7,4 +7,40 @@
     <comment>copr tools</comment>
     <requestid>849377</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>af4e260cac824a47c2a9456310daac17</srcmd5>
+    <version>1.100</version>
+    <time>1650657305</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.100 (changes for all copr packages, not only copr-cli):
+  - Bugfixes
+  - Kerberos/GSSAPI authentication for API and copr-cli
+  - Copr-cli re-tries connections with Copr Frontend
+  - Large queue improvements
+  - More copr-cli options for editing chroots
+  - Signing packages with SHA256
+  - Remote refs in committish
+  - Removing unused tarballs
+  - More human-readable validation errors in APIv3
+  - Basic build tagging
+  - Webhook rebuilds are background jobs now
+  - Searching by attributes
+  - APIv3 /monitor route
+  - The “Rebuild all” packages feature enhanced
+  - Builder VMs priority
+  - Query built RPM results via API
+  - Pull request CoprDirs are automatically deleted after inactivity
+  - Showing two latest Copr-related articles
+  - Specify copr-cli output format
+  - IPv6 support
+  - Isolation configuration per-chroot
+  - Submit build with excluded chroots
+  - EOL chroot management
+  - Disabling modules in buildroot
+  - New mock –isolation option
+  - EOL repository management
+  - Searching by build ID
+</comment>
+    <requestid>972179</requestid>
+  </revision>
 </revisionlist>

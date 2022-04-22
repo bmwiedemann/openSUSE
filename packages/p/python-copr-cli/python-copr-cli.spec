@@ -1,7 +1,7 @@
 #
 # spec file for package python-copr-cli
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,27 +18,35 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-copr-cli
-Version:        1.90
+Version:        1.100
 Release:        0
 Summary:        Copr cli
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 URL:            https://pagure.io/copr/copr
 Source:         https://files.pythonhosted.org/packages/source/c/copr-cli/copr-cli-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
-# SECTION test requirements
-BuildRequires:  %{python_module copr}
-BuildRequires:  %{python_module humanize}
-BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module simplejson}
-# /SECTION
 BuildRequires:  fdupes
-Requires:       python-copr
-Requires:       python-humanize
+BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
+Requires:       python-copr >= 1.116
+Requires:       python-filelock
+Requires:       python-future
+Requires:       python-humanize
+Requires:       python-requests-gssapi
+Requires:       python-responses
 Requires:       python-simplejson
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module copr >= 1.116}
+BuildRequires:  %{python_module filelock}
+BuildRequires:  %{python_module future}
+BuildRequires:  %{python_module humanize}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests-gssapi}
+BuildRequires:  %{python_module responses}
+BuildRequires:  %{python_module simplejson}
+# /SECTION
 %python_subpackages
 
 %description
