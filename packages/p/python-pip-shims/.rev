@@ -51,4 +51,18 @@
     <comment></comment>
     <requestid>841970</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3e5e8d06712af383c2dc4c3ec8977167</srcmd5>
+    <version>0.7.0</version>
+    <time>1650657277</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0:
+  * Drop support for Python 3.6
+  * Support pip 22.x. 
+
+- update to 0.6.0:
+  * No longer guarantee compatibility for ``pip&lt;20``.
+  * Drop support for Python 2.7 and 3.5.</comment>
+    <requestid>971969</requestid>
+  </revision>
 </revisionlist>

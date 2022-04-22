@@ -1,7 +1,7 @@
 #
 # spec file for package python-pip-shims
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,29 +17,24 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%global skip_python2 1
 Name:           python-pip-shims
-Version:        0.5.3
+Version:        0.7.0
 Release:        0
 Summary:        Compatibility shims for pip versions 8 thru current
 License:        ISC
 URL:            https://github.com/sarugaku/pip-shims
 Source:         https://github.com/sarugaku/pip-shims/archive/%{version}.tar.gz#/pip-shims-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools >= 40.8.0}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with python2}
-BuildRequires:  python-backports.tempfile
-%endif
-Requires:       python-pip
+Requires:       python-pip >= 21.0
 Requires:       python-setuptools
-Requires:       python-six
 Requires:       python-wheel
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pip >= 21}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module wheel}
 # /SECTION
 %python_subpackages
@@ -58,14 +53,14 @@ Compatibility shims for pip versions 8 thru current.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Skip two online tests
+# Skip three online tests
 # Some skipped tests fail because of missing git, however
 # adding git only causes failure to fetch repositories.
 # The tests are highly tied to API changes in pip
 #  but they do not factualy test if the tool behave
 #  so just skip them instead of having to patch them with
 #  each pip release
-%pytest -k 'not (test_resolution or test_wheelbuilder or test_resolve or test_get_packagefinder)'
+%pytest -k 'not (test_resolution or test_wheelbuilder or test_resolve or test_get_packagefinder or test_build_wheel)'
 
 %files %{python_files}
 %license LICENSE
