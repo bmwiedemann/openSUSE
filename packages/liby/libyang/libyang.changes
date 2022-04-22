@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Apr 10 11:56:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.164:
+  * Windows support (thanks to @jktjkt)
+  * Schema Mount support
+  * schema compilation fixes
+  * minor schema printer fixes
+  * user-ordered list diff bugfix
+  * JSON anyxml/anydata format fixed
+  * XML parser CDATA support
+  * module caching improvements
+  * doc improvements
+  * many other various bugfixes 
+
+-------------------------------------------------------------------
 Wed Nov 17 05:23:08 UTC 2021 - Linnaea Lavia <linnaea@lavia.moe>
 
 - Update to version 2.0.112

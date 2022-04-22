@@ -1,7 +1,7 @@
 #
 # spec file for package libyang
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,17 +17,16 @@
 #
 
 
-%define sover 2
-%define commit a81b3304695ad94fe0b34697f3e24d7f25a6bd05
+%global sover 2
 
 Name:           libyang
-Version:        2.0.112
+Version:        2.0.164
 Release:        0
 Summary:        Parser toolkit for IETF YANG data modeling
 License:        BSD-3-Clause
 Group:          System/Libraries
 URL:            https://github.com/CESNET/libyang
-Source:         https://github.com/CESNET/libyang/archive/%{commit}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/CESNET/libyang/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -101,7 +100,7 @@ BuildArch:      noarch
 This is the API documentation of libyang.
 
 %prep
-%autosetup -n libyang-%{commit} -p1
+%autosetup -p1
 
 %build
 %cmake \
