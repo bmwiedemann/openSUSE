@@ -19,7 +19,7 @@
 %bcond_without  tests
 #
 Name:           geekodoc
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        DocBook based RNG Schema for SUSE Documentation
 License:        GPL-3.0-only
