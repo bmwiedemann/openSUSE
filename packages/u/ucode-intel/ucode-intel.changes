@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 21 09:27:19 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- Updated to Intel CPU Microcode 20220419 release. (bsc#1198717)
+  - Update for functional issues. Refer to errata
+    APLI-11 in [Intel Atom Processor E3900
+    Series](https://cdrdv2.intel.com/v1/dl/getContent/612204) for details.
+  - Changed Microcodes:
+    - | APL            | E0       | 06-5c-0a/03 | 00000024 | 00000028 | Atom x5-E39xx
+
+-------------------------------------------------------------------
 Thu Feb 10 13:10:30 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - Updated to Intel CPU Microcode 20220207 release.

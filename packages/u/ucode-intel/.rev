@@ -780,4 +780,17 @@
   - Update for functional issues. Refer to [Intel® Pentium® Silver and Intel® Celeron® Processors](https://www.intel.com/content/www/us/en/products/docs/processors/pentium/silver-celeron-spec-update.html?wapkw=processor+specification+update) for details.</comment>
     <requestid>953726</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>e8868f9604dc81d184c205cbb2715124</srcmd5>
+    <version>20220419</version>
+    <time>1650666305</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to Intel CPU Microcode 20220419 release. (bsc#1198717)
+  - Update for functional issues. Refer to errata
+    APLI-11 in [Intel Atom Processor E3900
+    Series](https://cdrdv2.intel.com/v1/dl/getContent/612204) for details.
+  - Changed Microcodes:
+    - | APL            | E0       | 06-5c-0a/03 | 00000024 | 00000028 | Atom x5-E39xx</comment>
+    <requestid>971361</requestid>
+  </revision>
 </revisionlist>
