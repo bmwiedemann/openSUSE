@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 22 06:53:02 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.11.5:
+  * Makefile: enable -trimpath
+  * modules: Append original device name to virtual microphone
+  * Makefile: use $(MAKE) instead of directly using make
+  * Chore: Upgrade nucular GUI dependency
+  * Chore: Upgrade toml dependency
+- Do not use -buildmode=pie in ppc64 where it's not supported.
+
+-------------------------------------------------------------------
 Fri Oct 08 20:46:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 0.11.4:

@@ -1,7 +1,7 @@
 #
 # spec file for package noisetorch
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           noisetorch
-Version:        0.11.4
+Version:        0.11.5
 Release:        0
 Summary:        Real-time microphone noise suppression on Linux
 License:        GPL-3.0-or-later
@@ -49,7 +49,12 @@ ldd rnnoise_ladspa.so
 popd
 go generate
 # -tags release would enable the auto-updater (update.go)
-CGO_ENABLED=0 GOOS=linux go build -buildmode=pie -a -ldflags '-w -X main.version=%{version} -X main.distribution=rpm' .
+
+CGO_ENABLED=0 GOOS=linux go build \
+%ifnarch ppc64
+    -buildmode=pie \
+%endif
+    -a -ldflags '-w -X main.version=%{version} -X main.distribution=rpm' .
 
 %install
 install -D -m 644 assets/icon/noisetorch.png %{buildroot}/%{_datadir}/icons/hicolor/256x256/apps/noisetorch.png
