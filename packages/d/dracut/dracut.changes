@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 22 08:01:44 UTC 2022 - antonio.feijoo@suse.com
+
+- Update to version 056+suse.275.g4ce7a6a7:
+  * fix(resume): relax exclusion check (bsc#1198554)
+  * fix(nfs): /var is not mounted during the transactional-update run (bsc#1184970)
+  * fix(nfs): give /run/rpcbind ownership to rpc user (bsc#1177461)
+  * fix(nfs): require and install needed binaries
+
+-------------------------------------------------------------------
 Tue Apr 12 10:49:53 UTC 2022 - antonio.feijoo@suse.com
 
 - Update to version 056+suse.268.g0b2bd662:
