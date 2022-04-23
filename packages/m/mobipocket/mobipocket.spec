@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           mobipocket
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        E-book plugin and library
 License:        GPL-2.0-or-later
@@ -66,10 +66,7 @@ library
 
 %files
 %license COPYING
-%{_kf5_appstreamdir}/org.kde.kdegraphics-mobipocket.metainfo.xml
 %{_kf5_libdir}/libqmobipocket.so.*
-%{_kf5_plugindir}/mobithumbnail.so
-%{_kf5_servicesdir}/mobithumbnail.desktop
 
 %files devel
 %{_includedir}/qmobipocket/
