@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-isort
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,39 +16,45 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-pytest-isort
-Version:        1.1.0
+Version:        3.0.0
 Release:        0
-Summary:        Plugin for pytest to perform isort checks
-License:        BSD-3-Clause
-URL:            https://github.com/moccu/pytest-isort/
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-isort/pytest-isort-%{version}.tar.gz
-Patch0:         pytest6.patch
+Summary:        Pytest plugin to check import ordering using isort
+License:        MIT
+URL:            https://github.com/stephrdev/pytest-isort/
+Source:         https://github.com/stephrdev/pytest-isort/archive/refs/tags/%{version}.tar.gz#/pytest-isort-%{version}-gh.tar.gz
+BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
 BuildRequires:  %{python_module isort >= 4.0}
-BuildRequires:  %{python_module pytest >= 5}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry >= 1.1}
+BuildRequires:  %{python_module pytest >= 6.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-isort >= 4.0
 Requires:       python-pytest >= 3.5
+%if 0%{python_version_nodots} < 38
+Requires:       python-importlib-metadata
+%endif
 BuildArch:      noarch
 %python_subpackages
 
 %description
-This is a py.test plugin to check import ordering using isort.
+This is a pytest plugin to check import ordering using isort.
 
 %prep
 %setup -q -n pytest-isort-%{version}
-%patch0 -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%pyproject_install
+%{python_expand #
+rm %{buildroot}%{$python_sitelib}/LICENSE.rst
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 %check
 %pytest
@@ -56,6 +62,7 @@ This is a py.test plugin to check import ordering using isort.
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
 %license LICENSE.rst
-%{python_sitelib}/*
+%{python_sitelib}/pytest_isort
+%{python_sitelib}/pytest_isort-%{version}*-info
 
 %changelog
