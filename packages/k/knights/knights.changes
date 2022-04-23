@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:51:59 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:19:53 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:14:26 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Use new KDE_INSTALL_KXMLGUIDIR
+  * Use new API
+  * Move KDEInstallDirs on top
+  * Port deprecated method
+  * Adapt build system for building against qt6
+  * Enabled by default in qt6
+  * Not neccessary to use I18N_NOOP here
+
+-------------------------------------------------------------------
 Tue Mar  1 09:57:30 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3

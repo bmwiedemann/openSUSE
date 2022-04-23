@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           knights
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        A simple chess board
 License:        GPL-2.0-or-later
@@ -30,6 +30,7 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
+BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
@@ -50,9 +51,6 @@ BuildRequires:  cmake(Qt5Widgets)
 Requires:       gnuchess
 Suggests:       crafty
 Obsoletes:      kchess
-%if 0%{?suse_version}
-BuildRequires:  update-desktop-files
-%endif
 
 %description
 Knights is KDE's chess frontend. It supports playing local games against
@@ -73,9 +71,7 @@ against each other.
 %install
 %kf5_makeinstall -C build
 
-%if 0%{?suse_version}
 %suse_update_desktop_file -r org.kde.knights Qt KDE Game BoardGame
-%endif
 
 %if %{with released}
 %find_lang %{name}
