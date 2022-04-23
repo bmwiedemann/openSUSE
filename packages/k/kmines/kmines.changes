@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:51:55 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:19:43 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:14:23 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Add missing KCoreAddons link
+  * [appstream] Add content rating
+  * Modernize code
+  * Kdelibs4ConfigMigrator was removed in qt6
+  * Adapt build system for building against qt6
+  * Remove unused includes
+
+-------------------------------------------------------------------
 Tue Mar  1 09:57:26 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
