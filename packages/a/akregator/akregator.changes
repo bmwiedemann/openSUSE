@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:50:38 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:16:57 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:13:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Synchronize normalize method
+  * Fix compile without deprecated method
+  * Search Diacritic support
+  * Add textutil
+  * Fix build without texttospeech
+  * Make it compile without texttospeach
+  * Use KDE_INSTALL_KSERVICESDIR
+  * It compile fine without deprecated qt5 method
+  * Remove unused Grantlee5
+  * Use upper case include
+  * Fix includes
+  * It will be removed in qt6
+  * Start to remove QNetworkConfigurationManager necessary for qt6 build
+  * Use isOnline method directly
+  * Add content rating tag in appdata
+  * Qt5::WebEngine doesn't exist in qt6 and it's not necessary for qt5 build
+  * Adapt build system for building against qt6
+  * Use SingleMainWindow=true
+  * Mark as single-instance using X-GNOME-SingleWindow key
+  * Convert desktop files to JSON
+  * Port deprecated methods
+  * Correct prefix to other PIM repositories in .kde-ci.yml
+
+-------------------------------------------------------------------
 Tue Mar  1 09:56:32 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
