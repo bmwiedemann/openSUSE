@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kio-extras5
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Additional KIO slaves for KDE applications
 License:        GPL-2.0-or-later
@@ -138,6 +138,7 @@ sed -i '/^add_subdirectory( doc )/d' CMakeLists.txt
 %{_kf5_sharedir}/remoteview/
 %{_kf5_sharedir}/solid/
 %{_kf5_sharedir}/dbus-1/services/org.kde.kmtpd5.service
+%{_kf5_sharedir}/mime/packages/org.kde.kio.smb.xml
 
 %files -n libkioarchive-devel
 %{_kf5_includedir}/kio_archivebase.h
