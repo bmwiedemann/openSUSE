@@ -4819,4 +4819,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment></comment>
     <requestid>970004</requestid>
   </revision>
+  <revision rev="436" vrev="308">
+    <srcmd5>78c70698dd545942395573f3cab25480</srcmd5>
+    <version>unknown</version>
+    <time>1650735903</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 22.0.2
+  * bugfix release with almost all nominated patches</comment>
+    <requestid>972113</requestid>
+  </revision>
 </revisionlist>
