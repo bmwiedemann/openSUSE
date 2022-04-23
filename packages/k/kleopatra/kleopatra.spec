@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kleopatra
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Certificate manager and GUI for OpenPGP and CMS cryptography
 License:        GPL-2.0-or-later
@@ -115,6 +115,7 @@ Kleopatra is a certificate manager and GUI for OpenPGP and CMS cryptography.
 %{_kf5_sharedir}/kio/servicemenus/kleopatra_decryptverifyfolders.desktop
 %{_kf5_sharedir}/kio/servicemenus/kleopatra_signencryptfiles.desktop
 %{_kf5_sharedir}/kio/servicemenus/kleopatra_signencryptfolders.desktop
+%{_kf5_sharedir}/mime/packages/application-vnd-kde-kleopatra.xml
 
 %if %{with released}
 %files lang -f %{name}.lang
