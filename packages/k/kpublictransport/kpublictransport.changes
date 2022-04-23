@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:52:12 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:20:24 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:14:37 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Add UIC coach sub-type mappings for CH and FR
+  * Add overnight train coach types and parse corresponding UIC coach types
+  * Include NightJet trains in supported types of the ÖBB vehicle layout API
+  * Port to ECMQmlModule
+  * Update coverage polygons from the Transport API Repository
+  * Rewrite the train coach element rendering
+  * Check name-based location search results for plausibility
+  * Fix the backend identifier
+  * tests: querytest: un_navitia: Add a Queensland test case
+  * Allow to show headers in qtc6
+  * Support EFA floor level difference attributes
+  * Make isBackendEnabled() accessible from QML
+  * Only list covered countries in the location picker
+  * Make backend and coverage area objects accessbile from QML
+  * Prefer nationwide providers for location searches with a known country
+  * Add a configurable query delay for the location query model
+  * Add a location history model
+  * Remove superfluous export macro
+
+-------------------------------------------------------------------
 Tue Mar  1 09:57:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
