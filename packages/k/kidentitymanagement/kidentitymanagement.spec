@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kidentitymanagement
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        KDE PIM Libraries: Identity Management
 License:        LGPL-2.1-or-later
@@ -61,10 +61,21 @@ Provides:       %{name} = %{version}
 This package provides the core library to handle multiple email identities and
 associated settings.
 
+%package -n libKF5IdentityManagementWidgets5
+Summary:        KDE PIM Libraries: Identity Management - widgets library
+Group:          Development/Libraries/KDE
+Recommends:     %{name}-lang
+Requires:       libKF5IdentityManagement5 = %{version}
+
+%description  -n libKF5IdentityManagementWidgets5
+This package provides graphical widgets to handle multiple email identities
+and associated settings.
+
 %package devel
 Summary:        KDE PIM Libraries: Identity Management - development files
 Group:          Development/Libraries/KDE
 Requires:       libKF5IdentityManagement5 = %{version}
+Requires:       libKF5IdentityManagementWidgets5 = %{version}
 Requires:       cmake(KF5CoreAddons) >= %{kf5_version}
 Requires:       cmake(KF5PimTextEdit)
 
@@ -90,19 +101,28 @@ to develop applications that make use of multiple email identities.
 %post -n libKF5IdentityManagement5 -p /sbin/ldconfig
 %postun -n libKF5IdentityManagement5 -p /sbin/ldconfig
 
+%post -n libKF5IdentityManagementWidgets5 -p /sbin/ldconfig
+%postun -n libKF5IdentityManagementWidgets5 -p /sbin/ldconfig
+
 %files -n libKF5IdentityManagement5
 %license LICENSES/*
 %{_kf5_libdir}/libKF5IdentityManagement.so.*
 %{_kf5_debugdir}/*.categories
 %{_kf5_debugdir}/*.renamecategories
 
+%files -n libKF5IdentityManagementWidgets5
+%license LICENSES/*
+%{_kf5_libdir}/libKF5IdentityManagementWidgets.so.*
+
 %files devel
 %{_kf5_cmakedir}/KF5IdentityManagement/
 %{_kf5_dbusinterfacesdir}/kf5_org.kde.pim.IdentityManager.xml
 %{_kf5_includedir}/KIdentityManagement/
-%{_kf5_includedir}/kidentitymanagement_version.h
+%{_kf5_includedir}/KIdentityManagementWidgets/
 %{_kf5_libdir}/libKF5IdentityManagement.so
+%{_kf5_libdir}/libKF5IdentityManagementWidgets.so
 %{_kf5_mkspecsdir}/qt_KIdentityManagement.pri
+%{_kf5_mkspecsdir}/qt_KIdentityManagementWidgets.pri
 
 %if %{with released}
 %files lang -f %{name}.lang
