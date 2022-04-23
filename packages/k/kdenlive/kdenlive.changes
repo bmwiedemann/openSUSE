@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:51:32 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:18:30 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:13:59 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Too many changes since 21.12.3, only listing bugfixes:
+  * [Render Widget] Refactoring and feature extension (kde#415610)
+  * "Add Marker/Guide quickly" allow shortcut * only on keypad
+    (otherwise * is ambigous with Shift++) (kde#434411)
+  * Fix action name: "Save Timeline Zone to Bin" is not what it does (kde#436386)
+  * Try to improve alpha render quality (kde#436879)
+  * Fix alpha render and add utvideo (kde#448010)
+  * [OTIO] Differentiate between read and write adapters (kde#448318)
+  * Add python interface (kde#423083)
+  * Don't attempt to create audio thumbs if thumbs are disabled. (kde#448304)
+  * Use a SPDX standard license identifier in Appstream data (kde#448134)
+  * Make it possible to enable/disable track with a shortcut (kde#440181)
+- Drop obsolete patch:
+  * 0001-Handle-the-melt-package-rename-nicely.patch
+
+-------------------------------------------------------------------
 Tue Mar  1 09:57:02 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
