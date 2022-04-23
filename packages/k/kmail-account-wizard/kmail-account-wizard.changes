@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:51:53 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:19:37 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:14:21 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Add missing QGpgME/gpgme++ dependency
+  * Fix compile without deprecated method
+  * Explicitly link against MailTransport where needed
+  * Use SingleMainWindow=true
+  * Add icon to desktop file
+  * Mark as single-instance using X-GNOME-SingleWindow key
+  * Add missing CI dep
+  * Modernize code
+  * Correct prefix to other PIM repositories in .kde-ci.yml
+  * Const'ify pointer
+
+-------------------------------------------------------------------
 Tue Mar  1 09:57:24 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
