@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           eventviews
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Eventviews Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -106,8 +106,6 @@ The development package for the eventviews libraries
 %files devel
 %{_kf5_cmakedir}/KF5EventViews/
 %{_kf5_includedir}/EventViews/
-%{_kf5_includedir}/eventviews/
-%{_kf5_includedir}/eventviews_version.h
 %{_kf5_libdir}/libKF5EventViews.so
 %{_kf5_mkspecsdir}/qt_EventViews.pri
 

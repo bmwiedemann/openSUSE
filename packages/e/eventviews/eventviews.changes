@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:50:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:17:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:13:37 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Fix compile without deprecated method
+  * Port to setFilterRegularExpression
+  * Fix some compile error against qt6
+  * Use new akonadi calendar install include
+  * Fix ecm_set_disabled_deprecation_versions
+  * Fix install headers
+  * Fix build with GCC 12 (standard attributes in middle of decl-specifiers)
+  * Adapt build system for building against qt6
+  * Port deprecated methods
+  * Make it compile on freebsd
+  * Modernize code
+  * Fix more prefixes on dependencies
+  * Correct prefix to other PIM repositories in .kde-ci.yml
+  * Do not merge release/21.12 .gitlab-ci.yml
+  * not necessary to use I18N_NOOP here, i18n(..) is enough
+
+-------------------------------------------------------------------
 Tue Mar  1 09:56:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
