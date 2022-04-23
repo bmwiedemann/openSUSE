@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:51:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:17:41 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:13:43 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Const'ify pointer
+  * const'ify more pointer
+  * const'ify pointer
+  * It compiles fine without deprecated method
+  * Fix AkonadiSearch include path
+  * Use KDE_INSTALL_KSERVICESDIR
+  * Use QListIterator in qt6
+  * Use new akonadi calendar install include
+  * It's removed in qt6
+  * Fix includes
+  * Adapt build system for building against qt6
+  * Use SingleMainWindow=true
+  * Mark as single-instance using X-GNOME-SingleWindow key
+  * Correct prefix to other PIM repositories in .kde-ci.yml
+
+-------------------------------------------------------------------
 Tue Mar  1 09:56:46 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
