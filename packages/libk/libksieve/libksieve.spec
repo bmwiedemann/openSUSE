@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libksieve
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Sieve and Managesieve support library for KDE PIM applications
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -118,15 +118,12 @@ This package contains development headers of libksieve.
 %files devel
 %{_kf5_includedir}/KManageSieve/
 %{_kf5_includedir}/KSieveUi/
-%{_kf5_includedir}/kmanagesieve/
-%{_kf5_includedir}/ksieveui/
 %{_kf5_includedir}/libksieve_version.h
 %{_kf5_libdir}/cmake/KF5LibKSieve/
 %{_kf5_libdir}/libKF5KManageSieve.so
 %{_kf5_libdir}/libKF5KSieve.so
 %{_kf5_libdir}/libKF5KSieveUi.so
 %{_kf5_mkspecsdir}/qt_KManageSieve.pri
-%{_kf5_mkspecsdir}/qt_KSieve.pri
 %{_kf5_mkspecsdir}/qt_KSieveUi.pri
 
 %if %{with released}
