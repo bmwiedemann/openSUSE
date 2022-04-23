@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           libkdepim
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Base package of kdepim
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -120,8 +120,6 @@ The development package for the libkdepim libraries
 %{_kf5_cmakedir}/KF5Libkdepim/
 %{_kf5_cmakedir}/MailTransportDBusService/
 %{_kf5_includedir}/Libkdepim/
-%{_kf5_includedir}/libkdepim/
-%{_kf5_includedir}/libkdepim_version.h
 %{_kf5_libdir}/libKF5Libkdepim.so
 %{_kf5_mkspecsdir}/qt_Libkdepim.pri
 

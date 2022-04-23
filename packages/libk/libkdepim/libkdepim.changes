@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:52:35 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:21:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:14:58 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Modernize code (const'ify pointer/variable)
+  * Fix compile without deprecated method
+  * Fix install headers (qt6 fix)
+  * Remove kplugindesigner dep
+  * Add qt6 ci support
+  * Fix warning
+  * Adapt build system for building qt6
+  * Fix some reuse lint warnings
+  * Use =default directly and use not deprecated includes
+  * Correct prefix to other PIM repositories in .kde-ci.yml
+
+-------------------------------------------------------------------
 Tue Mar  1 09:58:02 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
