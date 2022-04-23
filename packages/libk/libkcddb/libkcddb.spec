@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libkcddb
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        CDDB library for KDE Applications
 License:        GPL-2.0-or-later
@@ -105,8 +105,9 @@ information over the Internet.
 %{_kf5_libdir}/libKF5Cddb.so.*
 
 %files devel
+%{_includedir}/KCddb5/
 %{_kf5_cmakedir}/KF5Cddb/
-%{_kf5_includedir}/KCddb
+%{_kf5_includedir}/KCddb/
 %{_kf5_includedir}/kcddb_version.h
 %{_kf5_libdir}/libKF5Cddb.so
 %{_kf5_mkspecsdir}/qt_KCddb.pri
