@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr  7 12:59:59 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.45:
+  * gpgrt_access and gpgrt_mkdir now support file names longer than
+    MAX_PATH
+
+-------------------------------------------------------------------
 Wed Feb  2 15:21:58 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.44:
