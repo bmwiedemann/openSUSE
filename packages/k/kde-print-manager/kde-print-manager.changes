@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:52:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:22:12 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:15:12 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Don't require a not yet existing ECM version
+  * Port to PlasmaExtras version of Highlight
+  * applet: improve scrollview implementation
+  * Drop custom elide fading (kde#419916)
+  * [applet]: Fix scrolling in ScrollViews
+  * Port from ScrollArea to ScrollView
+  * enable the smb browse button (kde#368305)
+  * Use Q_EMIT
+  * Install KCMs in new namespaces
+  * Add CI
+
+-------------------------------------------------------------------
 Tue Mar  1 09:58:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3

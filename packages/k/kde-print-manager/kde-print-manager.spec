@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kde-print-manager
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Tools for managing print jobs and printers
 License:        GPL-2.0-or-later
@@ -95,6 +95,10 @@ kde-print-manager provides tools for managing print jobs and printers.
 %dir %{_kf5_plasmadir}/plasmoids
 %dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/kded
+%dir %{_kf5_plugindir}/plasma
+%dir %{_kf5_plugindir}/plasma/kcms
+%dir %{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets
+%{_kf5_applicationsdir}/kcm_printer_manager.desktop
 %{_kf5_applicationsdir}/org.kde.ConfigurePrinter.desktop
 %{_kf5_applicationsdir}/org.kde.PrintQueue.desktop
 %{_kf5_applicationsdir}/org.kde.kde-add-printer.desktop
@@ -106,13 +110,9 @@ kde-print-manager provides tools for managing print jobs and printers.
 %{_kf5_libdir}/libkcupslib.so*
 %{_kf5_notifydir}/printmanager.notifyrc
 %{_kf5_plasmadir}/plasmoids/org.kde.plasma.printmanager/
-%{_kf5_plugindir}/kcm_printer_manager.so
 %{_kf5_plugindir}/kf5/kded/printmanager.so
+%{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_printer_manager.so
 %{_kf5_qmldir}/org/kde/plasma/printmanager/
-%{_kf5_servicesdir}/kcm_printer_manager.desktop
-%if %{pkg_vcmp plasma-framework-devel > 5.89}
-%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.printmanager.desktop
-%endif
 
 %if %{with released}
 %files lang -f %{name}.lang
