@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           mailimporter
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Mail import functionality for KDE PIM applications
 License:        GPL-2.0-or-later
@@ -112,10 +112,6 @@ used by KDE PIM applications to import data from other mail formats
 %{_kf5_cmakedir}/KF5MailImporterAkonadi/
 %{_kf5_includedir}/MailImporter/
 %{_kf5_includedir}/MailImporterAkonadi/
-%{_kf5_includedir}/mailimporter/
-%{_kf5_includedir}/mailimporter_version.h
-%{_kf5_includedir}/mailimporterakonadi/
-%{_kf5_includedir}/mailimporterakonadi_version.h
 %{_kf5_libdir}/libKF5MailImporter.so
 %{_kf5_libdir}/libKF5MailImporterAkonadi.so
 %{_kf5_mkspecsdir}/qt_MailImporter.pri
