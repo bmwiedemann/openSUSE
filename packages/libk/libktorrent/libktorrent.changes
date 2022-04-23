@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:52:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:21:44 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:15:02 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Do not use deprecated KIO::Scheduler::setJobPriority.
+  * Fix build error by making compiler settings less strict.
+  * Port away from deprecated KFilterDev.
+  * Port away from QMutex::Recursive.
+  * mitigate potential DoS vector by limiting pending piece uploads
+
+-------------------------------------------------------------------
 Tue Mar  1 09:58:07 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
