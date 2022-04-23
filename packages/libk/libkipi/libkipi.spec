@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libkipi
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        KDE Image Plugin Interface
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
@@ -103,9 +103,10 @@ kipi-plugins package.
 %files data
 %{_kf5_iconsdir}/hicolor/*/apps/kipi.png
 %{_kf5_servicetypesdir}/kipiplugin.desktop
+%{_kf5_debugdir}/kipi.categories
 
 %files devel
-%license COPYING
+%license LICENSES/*
 %doc README
 %{_kf5_cmakedir}/KF5Kipi/
 %{_kf5_includedir}/KIPI/
