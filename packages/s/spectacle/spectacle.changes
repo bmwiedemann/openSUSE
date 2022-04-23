@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:52:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:22:19 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:15:14 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * clean forward declaration
+  * Darken/lighten the rectangular region overlay
+  * Adapt build system for building against qt6
+  * Const'ify variable. Initialize it. Use forward declaration
+  * const'ify pointer
+  * Fix mem leak (actions created in init() method)
+  * const'ify method/variables
+  * Minor: Respect KDE HIG
+  * Add timezone placeholder "%t"
+  * Respect -c, in combination with -b, to only save image into clipboard (kde#447811)
+  * Simplify branching for the notify text and fix messages containing dots (kde#447517)
+  * It's enabled by default in qt6
+  * Make DocTools as optional
+  * Inconsistency between man page and actual available command line options (kde#446710)
+  * Reenable the user set dbus values ignored by MR98
+  * Wayland: Allow to copy to clipboard img while in dbus or background mode (kde#429390)
+  * Replace last emit with Q_EMIT
+  * Fix build without KImageAnnotator
+  * Add "snipping tool" to keywords list
+  * Save Annotation tool settings across launches
+  * Check for min version of kImageAnnotator
+  * Enable newly introduced controls within kImageAnnotator
+  * Drop KIPI support
+  * Respect in-windows settings when launched via DBUS (kde#392057)
+  * Add feature to annotate existing screenshots (kde#431257)
+  * Add CI
+  * Use KIO::JobUiDelegate for opening other application (kde#445530)
+
+-------------------------------------------------------------------
 Tue Mar  1 09:58:18 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3

@@ -16,11 +16,12 @@
 #
 
 
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           spectacle
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Screen Capture Program
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later
@@ -45,6 +46,7 @@ BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5GlobalAccel)
+BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Kipi)
