@@ -295,4 +295,12 @@
     <comment>Use %_libexecdir</comment>
     <requestid>960091</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>dac78aa7bbec6dd8adb66bb60347f426</srcmd5>
+    <version>22.04.0</version>
+    <time>1650735993</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 22.04.0</comment>
+    <requestid>971559</requestid>
+  </revision>
 </revisionlist>
