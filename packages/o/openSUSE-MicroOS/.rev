@@ -494,4 +494,12 @@
 - Add jeos-firstboot</comment>
     <requestid>962456</requestid>
   </revision>
+  <revision rev="51" vrev="51">
+    <srcmd5>060891f032e2ec2b2724a77c6f02dc57</srcmd5>
+    <version>16.0.0</version>
+    <time>1650735909</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>972215</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 14 15:09:57 UTC 2022 - Richard Brown <rbrown@suse.com>
+
+- SelfInstall - remove swap partition to be consistent with other
+  image flavours and suitable for k8s hosting 
+
+-------------------------------------------------------------------
 Thu Mar 17 12:05:55 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - config.sh: Enable jeos-firstboot iff installed

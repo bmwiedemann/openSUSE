@@ -673,8 +673,6 @@
                 <volume name="var" copy_on_write="false"/>
             </systemdisk>
             <oemconfig>
-                <oem-systemsize>2048</oem-systemsize>
-                <oem-swap>true</oem-swap>
                 <oem-device-filter>/dev/ram</oem-device-filter>
                 <oem-multipath-scan>false</oem-multipath-scan>
             </oemconfig>
