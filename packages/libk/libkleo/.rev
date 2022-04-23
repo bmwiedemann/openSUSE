@@ -599,4 +599,12 @@
     <comment>- Add gcc12-fix.patch upstream fix in order to support GCC 12.</comment>
     <requestid>964891</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>023d164a3ae80a9b5d60fec9b0a9ecdd</srcmd5>
+    <version>22.04.0</version>
+    <time>1650752391</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 22.04.0</comment>
+    <requestid>971580</requestid>
+  </revision>
 </revisionlist>

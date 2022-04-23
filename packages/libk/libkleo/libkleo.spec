@@ -1,7 +1,7 @@
 #
 # spec file for package libkleo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libkleo
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Base package of Kleopatra, a key manager by KDE
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -105,8 +105,6 @@ The development package for the libkleo libraries.
 %files devel
 %{_kf5_cmakedir}/KF5Libkleo/
 %{_kf5_includedir}/Libkleo/
-%{_kf5_includedir}/libkleo/
-%{_kf5_includedir}/libkleo_version.h
 %{_kf5_libdir}/libKF5Libkleo.so
 %{_kf5_mkspecsdir}/qt_Libkleo.pri
 
