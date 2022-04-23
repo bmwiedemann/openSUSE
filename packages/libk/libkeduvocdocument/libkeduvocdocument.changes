@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:52:35 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:21:30 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:14:58 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Add gitlab qt6 ci support
+  * Adapt build system against qt6
+  * Use at(...)
+  * Remove unused variable
+  * Port some qt6 error
+  * Port Q_FOREACH
+  * Fix some qt6 compile error
+  * Use nullptr
+  * Time to increase version
+  * Fix compile
+  * Remove unused files
+
+-------------------------------------------------------------------
 Tue Mar  1 09:58:02 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
