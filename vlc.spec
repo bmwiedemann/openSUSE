@@ -33,7 +33,7 @@
 %bcond_with faad
 %bcond_with fdk_aac
 Name:           vlc
-Version:        3.0.17.3
+Version:        3.0.17.4
 Release:        0
 Summary:        Graphical media player
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
