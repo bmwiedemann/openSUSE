@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kmime
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        KDE PIM libraries MIME support
 License:        LGPL-2.1-or-later
@@ -86,7 +86,6 @@ to develop KDE PIM applications.
 %files devel
 %{_kf5_cmakedir}/KF5Mime/
 %{_kf5_includedir}/KMime/
-%{_kf5_includedir}/kmime_version.h
 %{_kf5_libdir}/libKF5Mime.so
 %{_kf5_mkspecsdir}/qt_KMime.pri
 
