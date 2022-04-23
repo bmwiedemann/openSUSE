@@ -1085,4 +1085,12 @@
     <comment>KDE Gear 21.12.3</comment>
     <requestid>958805</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>cf23dace3a9b6d917c71da95d2580e3f</srcmd5>
+    <version>22.04.0</version>
+    <time>1650735938</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 22.04.0</comment>
+    <requestid>971424</requestid>
+  </revision>
 </revisionlist>
