@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Apr 22 09:32:06 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Fix soversion
+
+-------------------------------------------------------------------
+Mon Apr 18 07:50:39 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:17:00 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:13:30 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Skip parent directory check if it is already read-only
+  * Skip non-local files in extract file item action
+  * Cache result of libarchiveHasLzo
+  * Use a better and simpler default name for multi-file archives
+  * [compress action] Enable fancy "job finished" notification
+  * app/compressfileitemaction: Show archive name in menu actions
+  * kerfuffle/addtoarchive: Add getFileName()
+  * [Previewer] Use file name in archive for window caption
+  * Kdelibs4ConfigMigrator will be removed in qt6
+  * Do not highlight file after compression (kde#440663)
+  * We depend agains 5.86.
+  * Kerfuffle CreateJob: delete addJob in dtor (kde#443540)
+  * Mark LoadJob as transient
+  * Fix extraction "Dolphin Actions" not abiding "Open destination
+    folder after extracting" setting. (kde#319134)
+  * [libarchiveplugin] Remove trailing slash while there is one
+  * [libarchiveplugin] Handle absolute paths
+  * Make AddToArchive::fileName() const.
+  * Port away from deprecated KPluginLoader
+
+-------------------------------------------------------------------
 Tue Mar  1 09:56:33 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3

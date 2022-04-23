@@ -16,12 +16,12 @@
 #
 
 
-%define SOMAJOR 21
+%define SOMAJOR 22
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           ark
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        KDE Archiver Tool
 License:        GPL-2.0-or-later
@@ -65,7 +65,6 @@ Recommends:     xz
 Obsoletes:      ark-devel
 Recommends:     p7zip-full
 Recommends:     unar
-Recommends:     %{name}-lang
 
 %description
 This is a KDE application to work with compressed archives.
@@ -120,6 +119,7 @@ This is a KDE application to work with compressed archives.
 
 %files -n libkerfuffle%{SOMAJOR}
 %license COPYING*
+%{_kf5_libdir}/libkerfuffle.so.%{SOMAJOR}
 %{_kf5_libdir}/libkerfuffle.so.*
 
 %if %{with released}
