@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 21 22:31:11 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Add depends on zstd to allow zst compression in rust projects
+
+-------------------------------------------------------------------
 Fri Mar 18 01:35:59 UTC 2022 - william.brown@suse.com
 
 - Update to version 1.0.0~git7.63c3500:
