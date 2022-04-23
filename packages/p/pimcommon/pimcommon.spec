@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           pimcommon
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Base package of KDE PIM PimCommon library
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -85,6 +85,7 @@ Requires:       cmake(KF5AkonadiContact)
 Requires:       cmake(KF5Config)
 Requires:       cmake(KF5Contacts)
 Requires:       cmake(KF5IMAP)
+Requires:       cmake(KF5PimTextEdit)
 
 %description devel
 The development package for the pimcommon libraries
@@ -137,10 +138,6 @@ The PimCommon Akonadi library
 %{_kf5_cmakedir}/KF5PimCommonAkonadi/
 %{_kf5_includedir}/PimCommon/
 %{_kf5_includedir}/PimCommonAkonadi
-%{_kf5_includedir}/pimcommon/
-%{_kf5_includedir}/pimcommon_version.h
-%{_kf5_includedir}/pimcommonakonadi/
-%{_kf5_includedir}/pimcommonakonadi_version.h
 %{_kf5_libdir}/libKF5PimCommon.so
 %{_kf5_libdir}/libKF5PimCommonAkonadi.so
 %{_kf5_mkspecsdir}/qt_PimCommon.pri
