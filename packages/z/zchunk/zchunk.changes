@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 22 01:32:37 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.2.2
+  * Turn off EOL handling for the *.zck test files.
+  * Let the tests also pass with libzstd-1.4.10.
+
+-------------------------------------------------------------------
 Thu Apr 14 13:49:30 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.2.1
