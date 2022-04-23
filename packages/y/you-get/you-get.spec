@@ -1,7 +1,7 @@
 #
 # spec file for package you-get
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           you-get
-Version:        0.4.1555
+Version:        0.4.1602
 Release:        0
 Summary:        Dumb downloader that scrapes the web
 License:        MIT
