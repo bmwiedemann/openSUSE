@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:52:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:22:07 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:15:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Fix compile without deprecated method
+  * Use new akonadi notes install include
+  * Use new akonadi mime install include
+  * Adapt build system for building against qt6
+  * Use SingleMainWindow=true
+  * Fix doctool file license
+  * Mark as single-instance using X-GNOME-SingleWindow key
+  * Correct prefix to other PIM repositories in .kde-ci.yml
+  * Add import/export support for akonadi_newmailnotifier_agentrc
+
+-------------------------------------------------------------------
 Tue Mar  1 09:58:14 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
