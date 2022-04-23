@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 28 21:54:21 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add pytest-django-pr996-pytest7.patch
+  * gh#pytest-dev/pytest-django#996
+
+-------------------------------------------------------------------
 Tue Feb 22 18:40:14 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add autoclear_mailbox.patch checking for the existence of the

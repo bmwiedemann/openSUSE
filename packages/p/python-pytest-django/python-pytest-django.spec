@@ -16,13 +16,12 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
 Name:           python-pytest-django
 Version:        4.5.2
 Release:        0
-Summary:        A Django plugin for py.test
+Summary:        A Django plugin for Pytest
 License:        BSD-3-Clause
 URL:            https://github.com/pytest-dev/pytest-django
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-django/pytest-django-%{version}.tar.gz
@@ -30,6 +29,8 @@ Source:         https://files.pythonhosted.org/packages/source/p/pytest-django/p
 # Protect against non-existant mail.outbox folder
 # https://stackoverflow.com/q/5424498/164233
 Patch0:         autoclear_mailbox.patch
+# PATCH-FIX-UPSTREAM pytest-django-pr996-pytest7.patch -- gh#pytest-dev/pytest-django#996
+Patch1:         https://github.com/pytest-dev/pytest-django/pull/996.patch#/pytest-django-pr996-pytest7.patch
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module pytest > 5.4.0}
 BuildRequires:  %{python_module pytest-xdist}
@@ -70,7 +71,7 @@ that are already present in pytest:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# memory operations failed in OBS not localy, thus skip them
+# memory operations fail in OBS server-side, thus skip them
 export DJANGO_SETTINGS_MODULE=pytest_django_test.settings_sqlite
 export PYTHONPATH=$(pwd)
 %pytest -v tests/ -k 'not (test_sqlite_in_memory_used or test_django_assert_num_queries_db or test_django_assert_max_num_queries_db)'
