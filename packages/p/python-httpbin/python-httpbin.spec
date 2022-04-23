@@ -17,6 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# The PyPI version is 0.7.0 but the metadata reads an internal file with version 0.9.2
+%define internalversion 0.9.2
 Name:           python-httpbin
 Version:        0.7.0+git20181107.f8ec666
 Release:        0
@@ -25,12 +27,14 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Runscope/httpbin
 Source:         python-httpbin-%{version}.tar.xz
-# https://github.com/postmanlabs/httpbin/pull/555
+# PATCH-FIX-UPSTREAM werkzeug.patch -- gh#postmanlabs/httpbin#555
 Patch0:         werkzeug.patch
-# Based on https://github.com/postmanlabs/httpbin/pull/553
+# PATCH-FIX-UPSTREAM fix-setup-py.patch -- gh#postmanlabs/httpbin#553
 Patch1:         fix-setup-py.patch
+# PATCH-FIX-UPSTREAM httpbin-pr674-wekzeug2.1.patch -- gh#postmanlabs/httpbin#674
+Patch2:         httpbin-pr674-wekzeug2.1.patch
 BuildRequires:  %{python_module Brotli}
-BuildRequires:  %{python_module Flask}
+BuildRequires:  %{python_module Flask >= 2.1}
 BuildRequires:  %{python_module MarkupSafe}
 BuildRequires:  %{python_module Werkzeug >= 2.0}
 BuildRequires:  %{python_module blinker}
@@ -43,7 +47,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Brotli
-Requires:       python-Flask
+Requires:       python-Flask >= 2.1
 Requires:       python-MarkupSafe
 Requires:       python-Werkzeug >= 2.0
 Requires:       python-blinker
@@ -67,6 +71,7 @@ All endpoint responses are JSON-encoded.
 
 %prep
 %autosetup -p1
+chmod -x httpbin/templates/forms-post.html
 
 %build
 export LANG=en_US.UTF-8
@@ -83,6 +88,7 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/httpbin
+%{python_sitelib}/httpbin-%{internalversion}*-info
 
 %changelog

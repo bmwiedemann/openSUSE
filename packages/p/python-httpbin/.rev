@@ -54,4 +54,12 @@
   * Drop raven and fix brotli in setup.py</comment>
     <requestid>961776</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>d7255a3e5ac87876ad1c22a4ae03c40f</srcmd5>
+    <version>0.7.0+git20181107.f8ec666</version>
+    <time>1650735922</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>972290</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">python-httpbin</param>
-    <param name="url">git://github.com/postmanlabs/httpbin.git</param>
+    <param name="url">https://github.com/postmanlabs/httpbin.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="versionformat">0.7.0+git%cd.%h</param>

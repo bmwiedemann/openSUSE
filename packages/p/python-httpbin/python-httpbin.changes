@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 22 19:17:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- add httpbin-pr674-wekzeug2.1.patch for Werkzeug 2.1 compatibility
+  gh#postmanlabs/httpbin#674
+
+-------------------------------------------------------------------
+Tue Apr 12 20:36:37 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Truncate werkzeug.patch as Flask changed their behavior back to
+  returning relative URLs.
+- Update fix-setup-py.patch accordingly
+- Update _service file (rerun modifies the archive, but keeps same
+  tag)
+
+-------------------------------------------------------------------
 Tue Mar 15 04:57:06 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use of raven has been removed, drop it from {Build,}Requires. 
