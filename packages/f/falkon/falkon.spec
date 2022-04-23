@@ -2,8 +2,6 @@
 # spec file for package falkon
 #
 # Copyright (c) 2022 SUSE LLC
-# Copyright © 2015 Mariusz Fik <fisiu@opensuse.org>
-# Copyright © 2019 Markus S. <kamikazow@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,56 +18,61 @@
 
 %bcond_without released
 Name:           falkon
-Version:        3.2.0
+Version:        22.04.0
 Release:        0
 Summary:        Modern web browser
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://www.falkon.org/
-Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
-Source2:        %{name}.keyring
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
 # Search engine favicons.
 Source3:        obs.png
 Source4:        opensusesoftware.png
+# No QtWebEngine for other archs
+ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{mips} %{riscv}
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python3-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5CoreAddons) >= 5.54.0
-BuildRequires:  cmake(KF5Crash) >= 5.54.0
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO) >= 5.54.0
-BuildRequires:  cmake(KF5Purpose) >= 5.54.0
-BuildRequires:  cmake(KF5Wallet) >= 5.54.0
-BuildRequires:  cmake(Qt5Core) >= 5.9.0
-BuildRequires:  cmake(Qt5DBus) >= 5.9.0
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Purpose)
+BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  cmake(Qt5Network) >= 5.9.0
-BuildRequires:  cmake(Qt5PrintSupport) >= 5.9.0
-BuildRequires:  cmake(Qt5QuickWidgets) >= 5.9.0
-BuildRequires:  cmake(Qt5Sql) >= 5.9.0
-BuildRequires:  cmake(Qt5Test) >= 5.9.0
-BuildRequires:  cmake(Qt5WebChannel) >= 5.9.0
-BuildRequires:  cmake(Qt5WebEngine) >= 5.9.0
-BuildRequires:  cmake(Qt5WebEngineWidgets) >= 5.9.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.9.0
-BuildRequires:  cmake(Qt5X11Extras) >= 5.9.0
-BuildRequires:  pkgconfig(gnome-keyring-1)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5QuickWidgets)
+BuildRequires:  cmake(Qt5Sql)
+BuildRequires:  cmake(Qt5WebChannel)
+BuildRequires:  cmake(Qt5WebEngineCore)
+BuildRequires:  cmake(Qt5WebEngineWidgets)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5X11Extras)
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(xcb-util)
-Recommends:     %{name}-kde
+# It fails to build for the moment
+#BuildRequires:  cmake(PySide2)
+#BuildRequires:  cmake(Shiboken2)
+#BuildRequires:  python3-devel
 # it doesn't start without it (boo#1067547)
 Requires:       libQt5Sql5-sqlite
-Provides:       qupzilla = %{version}
+Recommends:     %{name}-kde
 Provides:       web_browser
+Provides:       qupzilla = %{version}
 Obsoletes:      qupzilla < %{version}
-
-%lang_package
+Provides:       falkon-gnome-keyring = %{version}
+Obsoletes:      falkon-gnome-keyring < %{version}
 
 %description
 Falkon is a web browser designed to well integrate with all
@@ -79,24 +82,12 @@ such as an integrated ad blocker.
 
 It was previously known as QupZilla.
 
-%package gnome-keyring
-Summary:        GNOME Keyring plugin for Falkon
-Group:          Productivity/Networking/Web/Browsers
-Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:gnome-keyring)
-Provides:       qupzilla-gnome-keyring = %{version}
-Obsoletes:      qupzilla-gnome-keyring < %{version}
-
-%description gnome-keyring
-Plugin for the Falkon browser that allows storing passwords in
-GNOME Keyring.
-
 %package kde
 Summary:        Plugin for tighter integration of KDE technologies
 Group:          Productivity/Networking/Web/Browsers
 Requires:       %{name} = %{version}
 Requires:       kwalletd5
-Supplements:    packageand(%{name}:kwalletd5)
+Supplements:    (%{name} and kwalletd5)
 Provides:       falkon-kwallet = %{version}
 Obsoletes:      falkon-kwallet < %{version}
 Provides:       qupzilla-kwallet = %{version}
@@ -106,47 +97,50 @@ Obsoletes:      qupzilla-kwallet < %{version}
 Plugin for the Falkon browser that allows tighter integration of KDE technologies,
 such as storing passwords in KWallet.
 
+%lang_package
+
 %prep
-%autosetup -p1 -n %{name}-%{version}
+%autosetup -p1
 
 # openSUSE icons.
 cp -f %{SOURCE3} %{SOURCE4} src/lib/data/icons/sites/
 
+# The plugins are not installed if PySide is not present at build time.
+find po/ -name "falkon_helloqml.po" -o -name "falkon_hellopython.po" -exec rm {} \;
+
+# Decrease the minimum CMake version for 15.3.
+# There's no technical reason for requiring CMake 3.18.
+sed -i 's/VERSION 3.18/VERSION 3.17/' CMakeLists.txt
+
 %build
-  export USE_WEBGL=true
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-
-%suse_update_desktop_file org.kde.falkon
-%fdupes %{buildroot}%{_kf5_sharedir}/
+%kf5_makeinstall -C build
 
 %if %{with released}
 %find_lang %{name} --all-name --with-qt
 %endif
 
-%post -p/sbin/ldconfig
+%suse_update_desktop_file org.kde.falkon
+%fdupes %{buildroot}%{_kf5_sharedir}/
 
+%post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %files
-%doc CHANGELOG README.md
 %license COPYING
-%exclude %{_kf5_plugindir}/falkon/GnomeKeyringPasswords.so
-%exclude %{_kf5_plugindir}/falkon/KDEFrameworksIntegration.so
-%{_kf5_applicationsdir}/org.kde.falkon.desktop
+%doc CHANGELOG README.md
 %{_kf5_appstreamdir}/org.kde.falkon.appdata.xml
 %{_kf5_bindir}/falkon
 %{_kf5_libdir}/libFalkonPrivate.so.*
 %{_kf5_plugindir}/falkon/
+%{_kf5_sharedir}/applications/org.kde.falkon.desktop
 %{_kf5_sharedir}/bash-completion/
 %{_kf5_sharedir}/falkon/
-%{_kf5_iconsdir}/hicolor/*/apps/falkon.*
-
-%files gnome-keyring
-%{_kf5_plugindir}/falkon/GnomeKeyringPasswords.so
+%{_kf5_sharedir}/icons/hicolor/*/apps/falkon.*
+%exclude %{_kf5_plugindir}/falkon/KDEFrameworksIntegration.so
 
 %files kde
 %{_kf5_plugindir}/falkon/KDEFrameworksIntegration.so
