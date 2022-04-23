@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           akonadi-mime
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        MIME email parser for KDE PIM
 License:        LGPL-2.1-or-later
@@ -116,12 +116,8 @@ in KDE PIM applications.
 %{_kf5_sharedir}/akonadi/plugins/serializer/akonadi_serializer_mail.desktop
 
 %files devel
-%dir %{_kf5_includedir}/Akonadi
-%dir %{_kf5_includedir}/akonadi
 %{_kf5_cmakedir}/KF5AkonadiMime/
-%{_kf5_includedir}/Akonadi/KMime/
-%{_kf5_includedir}/akonadi-mime_version.h
-%{_kf5_includedir}/akonadi/kmime/
+%{_kf5_includedir}/AkonadiMime/
 %{_kf5_libdir}/libKF5AkonadiMime.so
 
 %if %{with released}
