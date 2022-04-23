@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kdesdk-kioslaves
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        KDE SDK KIO slaves
 License:        GPL-2.0-only
@@ -56,7 +56,6 @@ This package contains additional KIO slaves.
 %package -n kio_perldoc
 Summary:        KDE KIO-Slave to browse Perl documentation
 Group:          System/GUI/KDE
-Recommends:     kio_perldoc-lang
 Recommends:     perl-doc
 # for users of the unstable repo
 Provides:       %{name} = %{version}
