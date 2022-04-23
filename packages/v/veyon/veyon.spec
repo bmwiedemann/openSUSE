@@ -17,7 +17,7 @@
 
 
 Name:           veyon
-Version:        4.7.2
+Version:        4.7.3
 Release:        0
 Summary:        Computer monitoring and classroom management
 License:        GPL-2.0-or-later
@@ -37,13 +37,26 @@ BuildRequires:  libgsasl
 BuildRequires:  libjpeg8-devel
 BuildRequires:  libpng16-compat-devel
 BuildRequires:  libpng16-devel
-BuildRequires:  libqca-qt5-plugins
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  procps-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-devel
+%if 0%{?suse_version} > 1500
+BuildRequires:  qca-qt6-plugins
+BuildRequires:  cmake(Qca-qt6)
+BuildRequires:  cmake(Qt6Concurrent)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6QuickControls2)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Xml)
+%else
+BuildRequires:  libqca-qt5-plugins
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
@@ -54,6 +67,8 @@ BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(qca2-qt5)
+%endif
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libfakekey)
 BuildRequires:  pkgconfig(libjpeg)
@@ -65,7 +80,6 @@ BuildRequires:  pkgconfig(libvncserver)
 BuildRequires:  pkgconfig(lzo2)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(polkit-agent-1)
-BuildRequires:  pkgconfig(qca2-qt5)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xkbcommon)
@@ -106,6 +120,9 @@ different languages. The user can:
         -DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=ON \
         -DCOTIRE_MINIMUM_NUMBER_OF_TARGET_SOURCES=9999 \
         -DWITH_PCH:BOOL=OFF \
+%if 0%{?suse_version} > 1500
+        -DWITH_QT6:BOOL=ON \
+%endif
 	. ../
 
 %cmake_build

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Apr 22 00:48:11 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.7.3
+  * Configuration: use remote view as default computer double click
+    feature
+  * Filesystem: expand %HOSTNAME% path variable
+  * Filesystem: add support for %DESKTOP%, %DOCUMENTS%, %DOWNLOADS%,
+    %PICTURES% and %VIDEOS% path variables
+  * VncClientProtocol: fix potential multiplication overflows
+  * Master
+    * Bundle implementations of required KItemModel classes to drop
+      dependency on 3rdparty sources
+  * AuthHelper: add account validity check
+  * Session: improve session path query mechanism to support systemd < 243
+  * Session: detect unspecified session type explicitly
+  * Service: do not start server for sessions with unspecified type
+  * UserFunctions: determine the user name preferably via
+    systemd-logind (use $USER as fallback only)
+  * UserFunctions: always use qualified usernames for authentication
+    and user info queries
+  * BuiltinX11VncServer: fix potential multiplication overflow in SHM
+    support checking code
+- Use QT6 on Factory
+
+-------------------------------------------------------------------
 Tue Mar  1 23:20:08 UTC 2022 - andy great <andythe_great@pm.me>
 
 - Update to version 4.7.2.
