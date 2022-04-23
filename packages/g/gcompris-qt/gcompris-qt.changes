@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 19 12:40:00 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to bugfix release 2.4
+  + Recompress image to webp (30% smaller)
+  + Fixes for qt 5.15
+
+-------------------------------------------------------------------
 Sun Mar 13 13:13:13 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to bugfix release 2.3

@@ -18,7 +18,7 @@
 
 
 Name:           gcompris-qt
-Version:        2.3
+Version:        2.4
 Release:        0
 Summary:        Multiactivity educational software for children aged 2–10 (Qt version)
 License:        AGPL-3.0-or-later
