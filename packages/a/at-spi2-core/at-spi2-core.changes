@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 21 21:16:40 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.4.41:
+  + Fix use after free when removing a hung process.
+  + Fix the build with X11 disabled.
+  + Fix crash when NULL is passed to some listener-related functions.
+  + impl_deregister_keystroke_listener: fix memory leak on
+    iteration error.
+
+-------------------------------------------------------------------
 Fri Mar 18 14:05:57 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.44.0:
