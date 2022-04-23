@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:52:07 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:20:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:14:34 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Drop superfluous KF5DBusAddons dependency
+  * Remove now unused Phonon dependency
+  * Fix compile without deprecated method
+  * Remove korgac and use the new shared reminder daemon instead
+  * Use new akonadi calendar install include
+  * Use new akonadi notes install include
+  * Use new KDE_INSTALL_KXMLGUIDIR
+  * Add D-Bus interface for the new reminder daemon
+  * Fix install headers
+  * Make compile with last libkdepim
+  * Fix phonon lib version (qt6 version when necessary)
+  * Fix build with GCC 12 (standard attributes in middle of decl-specifiers)
+  * Use directly QT_VERSION
+  * Adapt build system for building against qt6
+  * Use SingleMainWindow=true
+  * Install a desktop file for korgac
+  * Mark as single-instance using X-GNOME-SingleWindow key
+  * Remove 'Daemon' from application display name
+  * It's enabled by default in qt6
+  * Do not install desktop file for KPart
+  * Remove now unneeded desktop files
+  * Remove now unneeded desktop to json conversion code
+  * Convert desktop files to JSON
+  * Use Alarm::parentUid instead of the ETM specific custom property hack
+  * Compile without deprecated methods
+  * Modernize code
+  * Fix more prefixes on dependencies
+  * Correct prefix to other PIM repositories in .kde-ci.yml
+- Drop obsolete patch:
+  * korgac-autostart-default.patch
+
+-------------------------------------------------------------------
 Tue Mar  1 09:57:37 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
