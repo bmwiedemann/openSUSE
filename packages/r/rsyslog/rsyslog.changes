@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Apr 19 18:15:25 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Upgrade to rsyslog 8.2204.0
+  * 2022-04-18: gnutls bugfix: possibility of infinite loop
+  * 2022-04-17: core/bugfix: errorfile could grow over max configures size
+  * 2022-04-17: omkafka bugfix: potential misadressing
+  * 2022-04-06: added new "FullJSONFmt" standard template (with addtl fields)
+  * 2022-04-04: imfile: potential processing delay
+  * 2022-04-04: bugfix: cosmetic data races
+  * 2022-04-01: add property options to support ISO week/year number
+  * 2022-04-01: core bugfix: "action suspended" message was emitted even when turned off
+  * 2022-03-31: testbench: add more tests for rscript comparison operations
+  * 2022-03-31: core bugfix: make internal logs emitted during HUP procesing appear quicker
+  * 2022-03-20: refactor: Move the parser directive to the main config
+  * 2022-03-16: refactor: ake the main message queue part of the config
+  * regression bugfix: rsyslog may segfault during startup
+  * regression fix: script string comparison did not work correctly
+
+-------------------------------------------------------------------
 Mon Mar 14 09:40:44 UTC 2022 - Thomas Blume <thomas.blume@suse.com>
 
 - remove invalid dependencies from systemd service unit 
