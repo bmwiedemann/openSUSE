@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           calendarsupport
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        KDE PIM calendaring support library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -112,8 +112,6 @@ The development package for the calendarsupport libraries
 %files devel
 %{_kf5_cmakedir}/KF5CalendarSupport/
 %{_kf5_includedir}/CalendarSupport/
-%{_kf5_includedir}/calendarsupport/
-%{_kf5_includedir}/calendarsupport_version.h
 %{_kf5_libdir}/libKF5CalendarSupport.so
 %{_kf5_mkspecsdir}/qt_CalendarSupport.pri
 
