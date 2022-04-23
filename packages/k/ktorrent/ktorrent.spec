@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           ktorrent
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        KDE BitTorrent Client
 License:        GPL-2.0-or-later
@@ -74,7 +74,7 @@ BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Script)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(taglib)
-%ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
+%ifnarch ppc ppc64 ppc64le s390 s390x
 BuildRequires:  cmake(Qt5WebEngineWidgets)
 %endif
 
@@ -136,8 +136,26 @@ find %{buildroot} -name "*.py" -perm 0644 -exec grep -l '#!' {} + | \
 %{_kf5_mandir}/man1/ktorrent.1%{?ext_man}
 %{_kf5_mandir}/man1/ktupnptest.1%{?ext_man}
 %{_kf5_notifydir}/ktorrent.notifyrc
-%{_kf5_plugindir}/ktorrent/
-%ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
+%dir %{_kf5_plugindir}/ktorrent_plugins/
+%{_kf5_plugindir}/ktorrent_plugins/ktorrent_bwscheduler.so
+%{_kf5_plugindir}/ktorrent_plugins/ktorrent_downloadorder.so
+%{_kf5_plugindir}/ktorrent_plugins/ktorrent_infowidget.so
+%{_kf5_plugindir}/ktorrent_plugins/ktorrent_ipfilter.so
+%{_kf5_plugindir}/ktorrent_plugins/ktorrent_logviewer.so
+%{_kf5_plugindir}/ktorrent_plugins/ktorrent_magnetgenerator.so
+%{_kf5_plugindir}/ktorrent_plugins/ktorrent_mediaplayer.so
+%{_kf5_plugindir}/ktorrent_plugins/ktorrent_scanfolder.so
+%{_kf5_plugindir}/ktorrent_plugins/ktorrent_scanforlostfiles.so
+%{_kf5_plugindir}/ktorrent_plugins/ktorrent_shutdown.so
+%{_kf5_plugindir}/ktorrent_plugins/ktorrent_stats.so
+%{_kf5_plugindir}/ktorrent_plugins/ktorrent_upnp.so
+%{_kf5_plugindir}/ktorrent_plugins/ktorrent_zeroconf.so
+%ifnarch ppc ppc64 ppc64le s390 s390x
+%{_kf5_plugindir}/ktorrent_plugins/ktorrent_search.so
+%{_kf5_plugindir}/ktorrent_plugins/ktorrent_syndication.so
+%endif
+
+%ifnarch ppc ppc64 ppc64le s390 s390x
 %{_kf5_sharedir}/ktorrent/
 %endif
 

@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:52:21 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:20:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:14:46 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Fix missing include directory warnings.
+  * Drop now unneeded QOverload statements
+  * Port away from deprecated QDateTime methods
+  * Port away from deprecated KRun
+  * Port away from deprecated KUrlRequester::returnPressed signal overload
+  * Port away from deprecated QFontMetrics::width
+  * Port away from deprecated QLayout::setMargin
+  * Port away from deprecated KShortcutsDialog::configure
+  * Port away from deprecated KPluginLoader
+  * Compile without KF and Qt deprecations
+  * Convert desktop files to JSON
+  * Install plugins in "ktorrent_plugins" namespace
+  * Port away from KParts::Plugin
+  * Port from KPluginSelector to KPluginWidget class
+  * Add GitLab CI
+  * Simplify code using K_PLUGIN_CLASS_WITH_JSON macro
+  * Utilize kcoreaddons_add_plugin method
+
+-------------------------------------------------------------------
 Tue Mar  1 09:57:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
