@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:51:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:17:50 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:13:46 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * build: Pass release service version to project()
+  * Use new macro ecm_set_disabled_deprecation_versions
+  * Modernize code
+  * Use forward declaration
+  * exec key is not usefull now
+  * install kio plugin in kf<version>
+  * Make it compile against qt6
+  * Make doctool as optional
+  * remove unused flag
+  * Convert KCM Desktop files to JSON & install KCM in new namespace
+  * Add GitLab CI
+
+-------------------------------------------------------------------
 Tue Mar  1 09:56:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
