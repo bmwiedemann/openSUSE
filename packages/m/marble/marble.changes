@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:52:42 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:21:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:15:05 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Adding means to Marble QtQuick to determine the license.
+  * Fix blacklist and whitelist to also work for plugins that are not prefixed with "lib".
+  * Eliminate a "type qualifiers ignored on function return type" warning
+  * Eliminate "this statement may fall through" warnings
+  * Port deprecated QObject::trUtf8() -> tr()
+  * Eliminate a buffer size warning in EclSolar::getEclYearInfo()
+  * Port deprecated qVariantFromValue() -> QVariant::fromValue()
+  * Port deprecated QPixmap::grabWidget() -> QWidget::grab()
+  * Port deprecated QFileInfo::created() -> metadataChangeTime()
+  * Port deprecated QTime::elapsed() -> QElapsedTimer
+  * Port deprecated QStyleOptionViewItemV2 -> QStyleOptionViewItem
+  * Port deprecated QSet::fromList() -> QSet(begin,end)
+  * Port deprecated QSet::toList() -> values()
+  * Port deprecated QFlags(nullptr) -> QFlags()
+  * Port deprecated QFontMetrics::width() -> horizontalAdvance()
+  * Use KActionCollection::setDefaultShortcut() for marble-kde
+  * WMS: Allow redirection on the initial GetCapabilities request
+  * Use the real MIME type "application/gpx+xml" instead of an alias
+  * Add icon for the geo: URI handler
+  * Don't run Marble in a terminal when handling geo: URIs
+  * apps/marble-kde: Use heap memory allocation for MainWindow (kde#443144)
+
+-------------------------------------------------------------------
 Tue Mar  1 09:58:09 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
