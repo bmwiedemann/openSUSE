@@ -164,4 +164,12 @@ and that one is GPL3.</comment>
     <comment></comment>
     <requestid>970626</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>b103fb57573f5f45076bd56d87295de9</srcmd5>
+    <version>4.7.1</version>
+    <time>1650736019</time>
+    <user>dimstar_suse</user>
+    <comment>- Reenable use of system vulkan libraries on Tumbleweed.</comment>
+    <requestid>972295</requestid>
+  </revision>
 </revisionlist>

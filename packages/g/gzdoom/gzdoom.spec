@@ -33,6 +33,7 @@ Patch4:         gzdoom-sdlbug.patch
 Patch5:         gzdoom-vulkan.patch
 BuildRequires:  cmake >= 2.8.7
 BuildRequires:  gcc-c++
+BuildRequires:  glslang-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkg-config
 BuildRequires:  unzip
@@ -44,14 +45,8 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(sdl2) >= 2.0.6
+BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?sle_version} >= 150200
-BuildRequires:  glslang-devel >= 6.3
-BuildRequires:  pkgconfig(vulkan) >= 1.1.77
-%else
-Provides:       bundled(glslang) = 8.13.3559
-Provides:       bundled(vulkan) = 1.1.114
-%endif
 Suggests:       freedoom
 Provides:       qzdoom = 1.3.0
 Provides:       zdoom = 2.8.1
@@ -73,13 +68,13 @@ GZDoom is a port (a modification) of the original Doom source code, featuring:
 * Demo record/playback of classic and Boom demos is not supported.
 
 %prep
-%setup -qn %name-g%version
-%patch -P 1 -P 2 -P 3 -P 4 -p1
-%if 0%{?sle_version} >= 150200
-%patch -P 5 -p1
+%autosetup -n %name-g%version -p1
 rm -Rf glslang src/common/rendering/vulkan/thirdparty/vulkan
-%endif
 perl -i -pe 's{__DATE__}{""}g' src/common/platform/posix/sdl/i_main.cpp
+mkdir -p extra_include/glslang
+%if 0%{?suse_version} && 0%{?suse_version} < 1550
+touch extra_include/glslang/build_info.h
+%endif
 
 %build
 # There is handcrafted assembler, which LTO does not play nice with.
@@ -91,6 +86,7 @@ perl -i -pe 's{__DATE__}{""}g' src/common/platform/posix/sdl/i_main.cpp
 export CFLAGS="%optflags -msse -msse2"
 export CXXFLAGS="%optflags -msse -msse2"
 %endif
+export CXXFLAGS="$CXXFLAGS -I$PWD/extra_include"
 %cmake -DNO_STRIP=1 \
 	-DCMAKE_SHARED_LINKER_FLAGS="" \
 	-DCMAKE_EXE_LINKER_FLAGS="" -DCMAKE_MODULE_LINKER_FLAGS="" \

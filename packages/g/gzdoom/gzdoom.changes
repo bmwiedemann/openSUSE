@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Apr 23 01:04:05 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Reenable use of system vulkan libraries on Tumbleweed.
+
+-------------------------------------------------------------------
 Fri Apr 15 23:08:58 UTC 2022 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Drop unused nasm from buildrequires.
