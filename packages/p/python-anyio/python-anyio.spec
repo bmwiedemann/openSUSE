@@ -25,6 +25,8 @@ Summary:        High level compatibility layer for asynchronous event loop imple
 License:        MIT
 URL:            https://github.com/agronholm/anyio
 Source:         https://files.pythonhosted.org/packages/source/a/anyio/anyio-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM anyio-pytest7.patch -- gh#agronholm/anyio#420
+Patch1:         anyio-pytest7.patch
 BuildRequires:  %{python_module contextlib2 if %python-base < 3.7}
 BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
 BuildRequires:  %{python_module idna >= 2.8}
@@ -37,7 +39,7 @@ BuildRequires:  python-rpm-macros >= 20210127.3a18043
 # SECTION test requirements
 BuildRequires:  %{python_module hypothesis >= 4.0}
 BuildRequires:  %{python_module mock >= 4.0 if %python-base < 3.8}
-BuildRequires:  %{python_module pytest >= 6.0}
+BuildRequires:  %{python_module pytest >= 7.0}
 BuildRequires:  %{python_module pytest-mock >= 3.6.1}
 BuildRequires:  %{python_module trio >= 0.16}
 BuildRequires:  %{python_module trustme}
@@ -62,7 +64,7 @@ Asynchronous compatibility API that allows applications and libraries written
 against it to run unmodified on asyncio, curio and trio.
 
 %prep
-%setup -q -n anyio-%{version}
+%autosetup -p1 -n anyio-%{version}
 
 %build
 %python_build

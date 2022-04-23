@@ -110,4 +110,12 @@
     <comment>- skip some tests for older distros (lack of TLSv1.3 support)</comment>
     <requestid>955059</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>66d568141b7220292147cb0ef8ee3349</srcmd5>
+    <version>3.5.0</version>
+    <time>1650735912</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965303</requestid>
+  </revision>
 </revisionlist>
