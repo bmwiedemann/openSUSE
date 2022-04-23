@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -25,6 +24,8 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-mocket%{psuffix}
 Version:        3.10.4
 Release:        0
@@ -32,6 +33,8 @@ Summary:        Python socket mock framework
 License:        BSD-3-Clause
 URL:            https://github.com/mindflayer/python-mocket
 Source0:        https://files.pythonhosted.org/packages/source/m/mocket/mocket-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE recording-urllib3-brotli.patch -- our urllib has different default headers than upstreams test reference, code@bnavigator.de
+Patch0:         recording-urllib3-brotli.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -48,29 +51,23 @@ Suggests:       python-xxhash
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module PySocks}
+BuildRequires:  %{python_module aiohttp}
+BuildRequires:  %{python_module async_timeout}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module http-parser >= 0.9.0}
 BuildRequires:  %{python_module mock}
-%if 0%{suse_version} >= 1550
-# Optional pook is only available for Python 3, but in TW we will have more than one flavor
 BuildRequires:  %{python_module pook}
-%else
-BuildRequires:  python3-pook
-%endif
 BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-magic}
 BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module sure}
 BuildRequires:  %{python_module urllib3}
 BuildRequires:  %{python_module xxhash}
 BuildRequires:  ca-certificates-mozilla
-BuildRequires:  python3-aiohttp
-BuildRequires:  python3-async_timeout
 %endif
 %python_subpackages
 
@@ -82,7 +79,10 @@ included, with gevent/asyncio/SSL support.
 %setup -q -n mocket-%{version}
 sed -i '/cov/ d' setup.cfg
 sed -i '/pipenv/ d' setup.py
-sed -i 's/==.*$//' requirements.txt
+%if 0%{suse_version} >= 1550
+# urllib3 in TW accepts Brotli encoding by default
+%patch0 -p1
+%endif
 
 %build
 %if !%{with test}
@@ -101,13 +101,15 @@ export LANG=en_US.UTF-8
 %if %{with test}
 export LANG=en_US.UTF-8
 export SKIP_TRUE_HTTP=1
-pytest_python2_ignore="--ignore tests/tests35 --ignore tests/tests38 --ignore tests/main/test_pook.py"
-pytest_python36_ignore="--ignore tests/tests38"
-%if %{python3_version_nodots} < 38
-pytest_python3_ignore="--ignore tests/tests38"
+%if 0%{?suse_version} < 1550
+# Ignore tests which are not supported on Python 3.6
+pytest_python3_ignore="--ignore tests/tests37 --ignore tests/tests38"
 %endif
-# test_asyncio_record_replay requires DNS ("Temporary failure in name resolution")
-%pytest -k 'not RedisTestCase and not test_asyncio_record_replay' ${pytest_$python_ignore}
+# Requires a running Redis server
+donttest="TrueRedisTestCase"
+# Checks the ability to record a real request and response. Not available inside obs.
+donttest="$donttest or test_asyncio_record_replay"
+%pytest -k "not ($donttest)" ${pytest_$python_ignore}
 %endif
 
 %if !%{with test}
