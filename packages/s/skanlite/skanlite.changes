@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:52:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:22:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:15:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Don't use deprecated variable
+  * Add content rating to appdata
+  * Use forward declaration
+  * Fixed delete imageSaver
+  * Change button layout to match spectacle (kde#448327)
+  * Don't use help role for about button
+  * Change build system for building against qt6
+  * Don't use deprecated variable
+  * Remove unused include
+  * It's enabled by default in qt6
+  * Mark kdoctool as optional
+  * Make build autotest even if we use BUILD_TESTING
+  * do not search for new devices unconditionally
+  * Add CI
+  * use state config for scanner settings
+
+-------------------------------------------------------------------
 Tue Mar  1 09:58:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
