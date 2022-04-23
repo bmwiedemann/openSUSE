@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           itinerary
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Itinerary and boarding pass management application
 License:        LGPL-2.0-or-later
@@ -57,6 +57,10 @@ BuildRequires:  cmake(Qt5QuickCompiler)
 BuildRequires:  cmake(Qt5QuickControls2)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(zlib)
+%if 0%{?suse_version} <= 1500
+# variadic macro causes build issues
+BuildRequires:  gcc10-c++
+%endif
 # QML imports
 Requires:       kirigami2
 Requires:       prison-qt5-imports
@@ -74,6 +78,10 @@ Itinerary and boarding pass management application.
 %autosetup -p1
 
 %build
+%if 0%{?suse_version} <= 1500
+  export CXX=g++-10
+%endif
+
 %cmake_kf5 -d build -- -DBUILD_TESTING=ON
 %cmake_build
 
