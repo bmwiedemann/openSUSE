@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:52:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:20:27 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:14:38 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Fix a comment error.
+  * Fix more qt6 compile error
+  * Adapt build system for building against qt6
+  * Add missing include in qt6
+  * Fix some compile error when we build qtonly
+  * Simplify code using K_PLUGIN_CLASS_WITH_JSON
+  * Define X-KDE-ConfigModule for KCMs instead of KServiceTypeTrader querying
+  * Port away from deprecated plugin things
+
+-------------------------------------------------------------------
 Tue Mar  1 09:57:41 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3

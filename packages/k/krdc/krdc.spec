@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           krdc
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Remote Desktop Connection
 License:        GPL-2.0-or-later
@@ -105,8 +105,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_libdir}/libkrdccore.so.*
 %{_kf5_plugindir}/krdc/
 %{_kf5_servicesdir}/ServiceMenus/
-%{_kf5_servicesdir}/krdc_rdp_config.desktop
-%{_kf5_servicesdir}/krdc_vnc_config.desktop
 %{_kf5_servicetypesdir}/krdc_plugin.desktop
 %{_kf5_debugdir}/krdc.categories
 
