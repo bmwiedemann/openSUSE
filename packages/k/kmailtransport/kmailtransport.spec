@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kmailtransport
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        KDE PIM Libraries: Mailtransport layer
 License:        LGPL-2.1-or-later
@@ -105,12 +105,15 @@ to develop KDE PIM applications.
 %postun -p /sbin/ldconfig
 
 %files
+%dir %{_kf5_plugindir}/kf5/
+%dir %{_kf5_plugindir}/kf5/mailtransport/
 %{_kf5_configkcfgdir}/mailtransport.kcfg
 %{_kf5_debugdir}/kmailtransport.categories
 %{_kf5_debugdir}/kmailtransport.renamecategories
 %{_kf5_plugindir}/kcm_mailtransport.so
-%{_kf5_plugindir}/mailtransport/
 %{_kf5_servicesdir}/kcm_mailtransport.desktop
+%{_kf5_plugindir}/kf5/mailtransport/mailtransport_akonadiplugin.so
+%{_kf5_plugindir}/kf5/mailtransport/mailtransport_smtpplugin.so
 
 %files -n libKF5MailTransport5
 %license LICENSES/*
@@ -123,10 +126,6 @@ to develop KDE PIM applications.
 %{_kf5_cmakedir}/KF5MailTransport/
 %{_kf5_includedir}/MailTransport/
 %{_kf5_includedir}/MailTransportAkonadi/
-%{_kf5_includedir}/mailtransport/
-%{_kf5_includedir}/mailtransport_version.h
-%{_kf5_includedir}/mailtransportakonadi/
-%{_kf5_includedir}/mailtransportakonadi_version.h
 %{_kf5_libdir}/cmake/KF5MailTransportAkonadi/
 %{_kf5_libdir}/libKF5MailTransport.so
 %{_kf5_libdir}/libKF5MailTransportAkonadi.so
