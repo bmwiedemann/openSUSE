@@ -27,12 +27,12 @@ target_version: 1.18-next
  src/kdc/do_tgs_req.c | 5 +++++
  1 file changed, 5 insertions(+)
 
-diff --git a/src/kdc/do_tgs_req.c b/src/kdc/do_tgs_req.c
-index 6d244ffd4..39a504ca1 100644
---- a/src/kdc/do_tgs_req.c
-+++ b/src/kdc/do_tgs_req.c
-@@ -207,6 +207,11 @@ process_tgs_req(krb5_kdc_req *request, krb5_data *pkt,
-         status = "FIND_FAST";
+Index: krb5-1.19.3/src/kdc/do_tgs_req.c
+===================================================================
+--- krb5-1.19.3.orig/src/kdc/do_tgs_req.c
++++ krb5-1.19.3/src/kdc/do_tgs_req.c
+@@ -212,6 +212,11 @@ process_tgs_req(krb5_kdc_req *request, k
+         errcode = KRB5KDC_ERR_S_PRINCIPAL_UNKNOWN;
          goto cleanup;
      }
 +    if (sprinc == NULL) {
@@ -43,6 +43,3 @@ index 6d244ffd4..39a504ca1 100644
  
      errcode = get_local_tgt(kdc_context, &sprinc->realm, header_server,
                              &local_tgt, &local_tgt_storage, &local_tgt_key);
--- 
-2.33.0
-

@@ -13,11 +13,11 @@ configure scripts should be rebuilt.  Originally RT#6525
  src/man/kpropd.man | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/src/man/kpropd.man b/src/man/kpropd.man
-index 66de36813..9988dcdf3 100644
---- a/src/man/kpropd.man
-+++ b/src/man/kpropd.man
-@@ -67,7 +67,7 @@ the \fB/etc/inetd.conf\fP file which looks like this:
+Index: krb5-1.19.3/src/man/kpropd.man
+===================================================================
+--- krb5-1.19.3.orig/src/man/kpropd.man
++++ krb5-1.19.3/src/man/kpropd.man
+@@ -68,7 +68,7 @@ the \fB/etc/inetd.conf\fP file which loo
  .sp
  .nf
  .ft C
@@ -26,6 +26,3 @@ index 66de36813..9988dcdf3 100644
  .ft P
  .fi
  .UNINDENT
--- 
-2.25.0
-

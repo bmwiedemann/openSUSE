@@ -8,11 +8,11 @@ Import krb5-1.6.3-ktutil-manpage.dif
  src/man/ktutil.man | 12 ++++++++++++
  1 file changed, 12 insertions(+)
 
-diff --git a/src/man/ktutil.man b/src/man/ktutil.man
-index 233329468..915b41c6e 100644
---- a/src/man/ktutil.man
-+++ b/src/man/ktutil.man
-@@ -151,6 +151,18 @@ ktutil:
+Index: krb5-1.19.3/src/man/ktutil.man
+===================================================================
+--- krb5-1.19.3.orig/src/man/ktutil.man
++++ krb5-1.19.3/src/man/ktutil.man
+@@ -153,6 +153,18 @@ ktutil:
  .sp
  See kerberos(7) for a description of Kerberos environment
  variables.
@@ -31,6 +31,3 @@ index 233329468..915b41c6e 100644
  .SH SEE ALSO
  .sp
  kadmin(1), kdb5_util(8), kerberos(7)
--- 
-2.25.0
-

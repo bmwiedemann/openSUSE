@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr  9 11:31:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.19.3 (bsc#1189929, CVE-2021-37750):
+  * Fix a denial of service attack against the KDC [CVE-2021-37750].
+  * Fix KDC null deref on TGS inner body null server
+  * Fix conformance issue in GSSAPI tests
+
+-------------------------------------------------------------------
 Thu Jan 27 22:21:52 UTC 2022 - David Mulder <dmulder@suse.com>
 
 - Resolve "Credential cache directory /run/user/0/krb5cc does not
