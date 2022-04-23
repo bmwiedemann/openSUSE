@@ -24,9 +24,10 @@
 
 %define oldpython python
 %define skip_python2 1
+%define skip_python36 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask
-Version:        2.0.3
+Version:        2.1.1
 Release:        0
 Summary:        A microframework based on Werkzeug, Jinja2 and good intentions
 License:        BSD-3-Clause
@@ -35,8 +36,9 @@ URL:            https://flask.palletsprojects.com
 Source:         https://files.pythonhosted.org/packages/source/F/Flask/Flask-%{version}.tar.gz
 BuildRequires:  %{python_module Jinja2 >= 3.0}
 BuildRequires:  %{python_module Werkzeug >= 2.0}
-BuildRequires:  %{python_module click >= 7.1.2}
+BuildRequires:  %{python_module click >= 8.0.0}
 BuildRequires:  %{python_module contextvars}
+BuildRequires:  %{python_module importlib-metadata >= 3.6.0 if %python-base < 3.10}
 BuildRequires:  %{python_module itsdangerous >= 2.0}
 BuildRequires:  %{python_module pytest >= 6.2.4}
 BuildRequires:  %{python_module setuptools}
@@ -44,8 +46,12 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-Jinja2 >= 3.0
 Requires:       python-Werkzeug >= 2.0
-Requires:       python-click >= 7.1.2
+Requires:       python-click >= 8.0.0
 Requires:       python-itsdangerous >= 2.0
+%if 0%{?python_version_nodots} < 310
+Requires:       python-importlib-metadata >= 3.6.0
+%endif
+
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts
@@ -82,7 +88,7 @@ reference for python-Flask.
 %install
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/flask
-%fdupes %{buildroot}%{python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
