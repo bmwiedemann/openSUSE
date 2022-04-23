@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:51:18 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:17:57 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:13:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Too many changes since 21.12.3, only listing bugfixes:
+  * show documents as loaded from config (kde#353373)
+  * ensure some proper initial size (kde#450686)
+  * make config dialog scrollable (kde#445541)
+  * Handle SIGINT/SIGTERM to prevent accidental data loss (kde#445016)
+  * Fix crash when closing multiple tabs if limited number of tabs is enabled (kde#450873)
+  * Sort by url instead of comparing strings (kde#435334)
+  * Fix tab jumping with unlimited tabs (kde#440585, kde#435780)
+  * Fix LRU tab behaviour (kde#434062)
+  * S&R: Fix Look-ahead & behind highlighting & replace (kde#449545)
+  * Fix stashing not working when Kate is quit using Ctrl+Q (kde#449229)
+  * lspclient: also support some alternative WorkspaceEdit replies (kde#447640)
+  * Allow DND of tabs among viewspaces (kde#426768)
+  * Dont bring kate to front when files externally modified (kde#353712)
+  * Fix the check to also handle 0 doc views (kde#448847)
+  * Improve views closing in split view behaviour (kde#344374)
+  * Fix terminal focus action text when focusing/defocusing (kde#409813)
+  * step down warning level when LSP not found (kde#448549)
+  * filetree: Fix folders collapse after opening new file (kde#410143)
+  * Clear highlights if text field becomes empty (kde#436674)
+  * lspclient: only allow symbol view header toggle sort when applicable (kde#447653)
+  * Search: Utilize context lengths more efficiently (kde#438094)
+  * Fix search for unsaved files (kde#434287)
+  * Ignore rename if newName == oldName (kde#447951)
+  * SemanticTokens: Use size_t as argument for type (kde#447553)
+  * GDB: Use debug-run theme icon in stead of custom icon (kde#444670)
+  * do nothing if use canceled project open (kde#447194)
+  * fix sessions segfault because of invalid iterator (kde#446863)
+  * enable/disable project actions (kde#445494)
+- Use GCC 10 for building kate on Leap 15.
+
+-------------------------------------------------------------------
 Tue Mar  1 09:56:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3

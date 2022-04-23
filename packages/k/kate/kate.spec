@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kate
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Advanced Text Editor
 License:        GPL-3.0-or-later
@@ -63,6 +63,10 @@ BuildRequires:  cmake(Qt5Script)
 BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
+%if 0%{?suse_version} <= 1500
+# <charconv> is not available in GCC7
+BuildRequires:  gcc10-c++
+%endif
 Requires:       %{name}-plugins = %{version}
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
@@ -96,15 +100,19 @@ plugins and data files for Kate and KWrite editors.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%if 0%{?suse_version} <= 1500
+  export CXX=g++-10
+%endif
+
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
+%kf5_makeinstall -C build
+%if %{with released}
+  %find_lang %{name} --with-man --all-name
+  %{kf5_find_htmldocs}
+%endif
 
 %files
 %doc README*
