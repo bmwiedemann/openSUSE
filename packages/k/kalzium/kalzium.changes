@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:51:15 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:17:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:13:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Remove uncompiled plasmoid and qml files
+  * Fix warnings when opening the isotope viewer
+  * Improve the Isotope Table (kde#415736)
+  * const'ify + don't use const'ref for int
+  * Use not deprecated enum
+  * Use for(...:...) + const
+  * Port to for(...:...) + use nullptr
+  * Fix indent
+  * Add parent
+  * Const'ify method
+  * It's enabled by default in qt6
+  * Add CMakePreset support
+  * It's unused
+  * Remove commented line
+  * Remove unused pointer
+  * Use more debug categories
+  * Add debug categories
+  * Use Q_SLOTS
+  * Show headers in qt6
+  * Use Q_EMIT
+  * Use c++17
+  * add freebsd CI
+
+-------------------------------------------------------------------
 Tue Mar  1 09:56:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3

@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kalzium
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Periodic Table of Elements
 License:        GPL-2.0-or-later
@@ -103,6 +103,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_appstreamdir}/org.kde.kalzium.appdata.xml
 %{_kf5_bindir}/kalzium
 %{_kf5_configkcfgdir}/
+%{_kf5_debugdir}/kalzium.categories
 %{_kf5_iconsdir}/hicolor/*/apps/kalzium.*
 %{_kf5_kxmlguidir}/kalzium/
 %{_kf5_libdir}/libscience.so.*
