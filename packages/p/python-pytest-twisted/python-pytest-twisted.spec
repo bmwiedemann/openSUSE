@@ -27,6 +27,8 @@ URL:            https://github.com/pytest-dev/pytest-twisted
 Source:         https://github.com/pytest-dev/pytest-twisted/archive/v%{version}.tar.gz#/pytest-twisted-%{version}-gh.tar.gz
 # PATCH-FIX-OPENSUSE pytest-twisted-ignorepy310DeprecationWarnings.patch -- upstream wants this fixed in twisted itself -- gh#pytest-dev/pytest-twisted/146
 Patch0:         pytest-twisted-ignorepy310DeprecationWarnings.patch
+# PATCH-FIX-UPSTREAM pytest-twisted-pr148-pytest7.patch -- gh#pytest-dev/pytest-twisted#148
+Patch1:         https://github.com/pytest-dev/pytest-twisted/pull/148.patch#/pytest-twisted-pr148-pytest7.patch
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module greenlet}
