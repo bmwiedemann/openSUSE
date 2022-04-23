@@ -145,4 +145,14 @@ yesterday's tarball.</comment>
     fingers that can be interpreted as a swipe or a pinch.</comment>
     <requestid>919283</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>985af354d7a8ac7bbf1cf45892e5fd20</srcmd5>
+    <version>2022.1</version>
+    <time>1650735896</time>
+    <user>dimstar_suse</user>
+    <comment>- xorgproto 2022.1
+  * No changes to the actual protocols, just the additions of some
+    new keysyms provided by the Linux kernel.</comment>
+    <requestid>971274</requestid>
+  </revision>
 </revisionlist>

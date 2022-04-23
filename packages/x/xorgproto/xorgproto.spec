@@ -1,7 +1,7 @@
 #
 # spec file for package xorgproto
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xorgproto
-Version:        2021.5
+Version:        2022.1
 Release:        0
 Summary:        The X11 Protocol collection
 License:        MIT

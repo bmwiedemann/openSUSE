@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 21 02:20:44 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- xorgproto 2022.1
+  * No changes to the actual protocols, just the additions of some
+    new keysyms provided by the Linux kernel.
+
+-------------------------------------------------------------------
 Wed Sep 15 20:54:39 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - xorgproto 2021.5
