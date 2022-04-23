@@ -17,23 +17,23 @@
 
 
 Name:           foot
-Version:        1.11.0
+Version:        1.12.0
 Release:        0
 Summary:        A Wayland terminal emulator
 License:        MIT
 URL:            https://codeberg.org/dnkl/foot
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         foot-tests-missing-deps.patch
 Requires:       terminfo
-BuildRequires:  meson >= 0.54
+BuildRequires:  meson >= 0.58
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  scdoc
 BuildRequires:  pkgconfig(fcft) < 4.0.0
-BuildRequires:  pkgconfig(fcft) >= 3.0.0
+BuildRequires:  pkgconfig(fcft) >= 3.0.1
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(libutf8proc)
 BuildRequires:  pkgconfig(pixman-1)
+BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(tic)
 BuildRequires:  pkgconfig(tllist) >= 1.0.4
 BuildRequires:  pkgconfig(wayland-client)
@@ -65,10 +65,18 @@ This package contains popular themes for the foot terminal emulator providing
 users an easy way to theme foot.
 
 %prep
-%autosetup -n %{name} -p1
+%autosetup -n %{name}
 
 %build
-%meson -Db_lto=true -Dthemes=true
+%meson \
+	--sysconfdir "%{_distconfdir}" \
+	-Db_lto=true \
+	-Ddocs=enabled \
+	-Dgrapheme-clustering=enabled \
+	-Dime=true \
+	-Dterminfo=enabled \
+	-Dtests=false \
+	-Dthemes=true
 %meson_build
 
 %install
@@ -88,13 +96,15 @@ mv %{buildroot}/%{_datadir}/terminfo/f/foot-direct %{buildroot}/%{_datadir}/term
 %{_datadir}/doc/%{name}/
 %{_datadir}/fish/
 %{_datadir}/zsh/
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}/foot.ini
 %{_datadir}/icons/hicolor/
+%dir %{_distconfdir}/xdg/%{name}
+%{_distconfdir}/xdg/%{name}/foot.ini
 %{_mandir}/man1/foot.1.gz
 %{_mandir}/man1/footclient.1.gz
 %{_mandir}/man5/foot.ini.5.gz
 %{_mandir}/man7/foot-ctlseqs.7.gz
+%{_userunitdir}/foot-server@.service
+%{_userunitdir}/foot-server@.socket
 
 %files extra-terminfo
 %{_datadir}/terminfo/f/foot-extra

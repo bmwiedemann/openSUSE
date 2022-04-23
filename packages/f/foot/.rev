@@ -227,4 +227,32 @@
     <comment>- Split themes into foot-themes subpackage.</comment>
     <requestid>963768</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>76deb6621abdaee563d4c726135d1028</srcmd5>
+    <version>1.12.0</version>
+    <time>1650736017</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.12.0:
+  * foot.ini options:
+    * Added key-bindings.scrollback-home and .scrollback-end options.
+    * Added key-binding.show-urls-persistent option. This is similar to
+      show-urls-launch, but remains in URL mode after activating an URL.
+    * Added tweak.sixel option to allow disabling sixel support.
+    * Added csd.hide-when-maximized option to hide the CSD when maximized.
+  * Implemented socket activation support for foot --server, along with
+    sample systemd user session units.
+  * footclient now has a -E,--client-environment parameter to inherit
+    its environment from its parent process instead of the foot server.
+  * Implemented support for more terminal sequences.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.12.0 for more details.
+- Set all options and features explicitly instead of relying on auto-detection
+  to ensure build fails if dependencies change.
+- Upstream moved default foot.ini from $datadit/foot/foot.ini
+  to $sysconfdir/xdg/foot/foot.ini . Move it ourselves
+  to $distconfdir/xdg/foot/foot.ini in accordance with packaging guidelines
+  for new packages.
+- Patches:
+  * Drop foot-tests-missing-deps.patch</comment>
+    <requestid>972254</requestid>
+  </revision>
 </revisionlist>
