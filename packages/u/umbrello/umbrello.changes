@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:52:54 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:22:25 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:15:15 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Too many changes since 21.12.3, only listing bugfixes:
+  * Fix "Data type with modifiers are space sensitive" (kde#369464)
+  * Fix "request: restore undo/redo buttons missing in KF5 build" (kde#449662)
+  * Fix "User Interface: Text / line / fill color are reset to hard coded values" (kde#450472)
+  * Improve predictability/reliability of saving to the resource file" (kde#450470)
+  * Fix "C++ importer does not recognize 'final' keyword" (kde#397666)
+  * Fix "[C++ import] Type std::string is created multiple times" (kde#450196)
+  * Fix for "request: GUI improvement diagram toolbar" (kde#449629)
+  * Finalize "C#: Windows Forms classes are not imported" and fix "C# importer
+    doesn't support properties" (kde#449268)
+  * Fix 'Crashes on cancelling the creation of a new class with the "Creation"
+    tool in sequence diagram' (kde#443580)
+  * umlwidgets/associationwidget.{h,cpp}: Fix line attachments. (kde#449463)
+  * Fix "Python class functions return value wrong in class widget" (kde#449462)
+  * Fix "Code import wizard: python wrong function return" (kde#449297)
+  * Fix crash importing Pascal code via import wizard: (kde#449129)
+  * Completion of fix for "Diagram objects moved to inside enclosing
+    package become invisible" (kde#447661)
+- Drop patch, now upstream
+  * 0001-Make-QtWebKit-usage-in-WelcomePage-optional-with-QTe.patch
+
+-------------------------------------------------------------------
 Tue Mar  1 09:58:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
