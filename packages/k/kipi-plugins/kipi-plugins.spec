@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kipi-plugins
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        KDE Plug-Ins for Image Manipulation
 License:        GPL-2.0-or-later
@@ -67,11 +67,6 @@ applications.
 # Remove build time references so build-compare can do its work
 FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y')
 sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/g" common/libkipiplugins/tools/kpversion.h.cmake.in
-
-%if %{with released}
-# Workaround for kde#369517 - vkontakte installs translations even if not built
-rm po/*/kipiplugin_vkontakte.po
-%endif
 
 %build
 %cmake_kf5 -d build
