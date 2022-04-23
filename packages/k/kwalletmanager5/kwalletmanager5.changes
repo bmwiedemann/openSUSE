@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:52:30 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:21:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:14:54 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Modernize code
+  * Make KWalletManager DBusActivatable
+  * It needs to be ported to QRegularExpressionValidator
+  * It's enabled by default in qt6
+  * Fix includes
+  * Adapt build system for building against qt6
+  * Fix add_definitions
+
+-------------------------------------------------------------------
 Mon Mar  7 10:57:01 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %_libdir/libexec with %_libexecdir (boo#1174075)
