@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Apr 21 17:06:43 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Update to 0.8.1:
+  * This release adds JSR-269 support. In other words, verification
+    of bundles can be performed at compilation time. See the related
+    documentation for more details.
+  * Fix issue with Eclipse not finding existing resources. With 
+    release 0.8.1, Eclipse will find bundles located under 
+    "src/main/resources" but still fail to find bundles located 
+    under "src/test/resources/".
+  * When reading in bundles, the verify method in MessageKeyVerifier
+    now uses the locale passed as parameter instead of always 
+    Locale.FR. This bug was reported by Dale Wijnand who also 
+    provided the releavant patch. 
+
+- Update build.xml-0.7.7.tar.xz to build.xml-0.8.1.tar.xz with
+  references to version 0.8.1 to build correctly versioned jar
+  files.
+
+-------------------------------------------------------------------
 Thu Oct 18 09:14:38 UTC 2018 - Fridrich Strba <fstrba@suse.com>
 
 - Install the maven pom files in order to generate correctly the

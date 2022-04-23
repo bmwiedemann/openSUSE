@@ -1,7 +1,7 @@
 #
 # spec file for package cal10n
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           cal10n
-Version:        0.7.7
+Version:        0.8.1
 Release:        0
 Summary:        Compiler assisted localization library (CAL10N)
 License:        MIT
 Group:          Development/Libraries/Java
-Url:            http://cal10n.qos.ch
-Source0:        http://cal10n.qos.ch/dist/cal10n-%{version}.tar.gz
-Source1:        build.xml-0.7.7.tar.xz
+URL:            http://cal10n.qos.ch
+Source0:        https://github.com/qos-ch/cal10n/archive/refs/tags/v_%{version}.tar.gz#:/%{name}-%{version}.tar.gz
+Source1:        build.xml-0.8.1.tar.xz
 Patch0:         cal10n-0.7.7-sourcetarget.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
@@ -56,10 +56,10 @@ Group:          Development/Libraries/Java
 API documentation for %{name}.
 
 %prep
-%setup -q
+%setup -q -n %{name}-v_%{version}
 tar -xf %{SOURCE1}
 %patch0 -p1
-find . -name "*.jar" | xargs rm
+find . -name "*.jar" -exec rm -f {} \;
 
 # bnc#759912
 rm -rf docs cal10n-site
