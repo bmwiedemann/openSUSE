@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:50:56 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:17:25 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:13:38 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * port to native windows api
+  * Add windows installer to appstream artifacts
+  * Use ecm_set_disabled_deprecation_versions
+  * add keyword "drive"
+  * add keywords to desktop file
+  * Kdelibs4ConfigMigrator will be removed in qt6
+  * Add qt6 CI support
+  * Now Qt6Core5Compat is not necessary
+  * Adapt build system for building against qt6
+  * Fix compile error against qt6
+  * Reverse "next" and "previous" icons in RTL mode
+
+-------------------------------------------------------------------
 Tue Mar  1 09:56:41 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
