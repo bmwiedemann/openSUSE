@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:51:25 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:18:14 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:13:54 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Add CI qt6 support
+  * Make it compile against qt6
+  * It will be unused in qt6
+  * Use nullptr here
+  * Remove unused includes
+
+-------------------------------------------------------------------
 Tue Mar  1 09:56:57 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
