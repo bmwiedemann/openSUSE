@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           knotes
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Popup Notes
 License:        GPL-2.0-or-later
@@ -140,15 +140,6 @@ KNotes is a note taking application by KDE.
 %{_kf5_plugindir}/pim/kcms/summary/kcmknotessummary.so
 %dir %{_kf5_plugindir}/kontact5/
 %{_kf5_plugindir}/kontact5/kontact_knotesplugin.so
-%{_kf5_servicesdir}/kcmknotessummary.desktop
-%{_kf5_servicesdir}/kontact/
-%{_kf5_servicesdir}/kcm_knote_action.desktop
-%{_kf5_servicesdir}/kcm_knote_collection.desktop
-%{_kf5_servicesdir}/kcm_knote_display.desktop
-%{_kf5_servicesdir}/kcm_knote_editor.desktop
-%{_kf5_servicesdir}/kcm_knote_misc.desktop
-%{_kf5_servicesdir}/kcm_knote_network.desktop
-%{_kf5_servicesdir}/kcm_knote_print.desktop
 %{_kf5_sharedir}/knotes/
 %{_libdir}/libknotesprivate.so.*
 %{_libdir}/libnotesharedprivate.so.*
