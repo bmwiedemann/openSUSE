@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           baloo5-widgets
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Framework for searching and managing metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -82,7 +82,7 @@ Development package for baloo5-widgets
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING*
+%license LICENSES/*
 %dir %{_kf5_plugindir}/kf5/
 %dir %{_kf5_plugindir}/kf5/kfileitemaction
 %dir %{_kf5_plugindir}/kf5/propertiesdialog
