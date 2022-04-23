@@ -45,4 +45,12 @@ srm is a secure rm which overwrites files prior to rm.  Removed unused patch.</c
     <comment>1</comment>
     <requestid>293353</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>68702a7be43b4daabe1c1b2d7e8209e6</srcmd5>
+    <version>1.2.15</version>
+    <time>1650736033</time>
+    <user>dimstar_suse</user>
+    <comment>- switch source url to https</comment>
+    <requestid>972313</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package srm
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,8 +23,8 @@ Release:        0
 Summary:        A secure replacement for rm
 License:        SUSE-SGI-FreeB-2.0
 Group:          Hardware/Other
-Url:            http://srm.sf.net
-Source0:        http://sourceforge.net/projects/srm/files/%{version}/%{name}-%{version}.tar.gz
+URL:            http://srm.sf.net
+Source0:        https://sourceforge.net/projects/srm/files/%{version}/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
