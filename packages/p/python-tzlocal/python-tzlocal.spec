@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,20 +19,27 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname tzlocal
 Name:           python-%{modname}
-Version:        2.1
+Version:        4.2
 Release:        0
 Summary:        tzinfo object for the local timezone
 License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://github.com/regebro/tzlocal
 Source:         https://github.com/regebro/tzlocal/archive/%{version}.tar.gz
-BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytz-deprecation-shim}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python38-backports.zoneinfo
 Requires:       python-pytz
+Requires:       python-pytz-deprecation-shim
 BuildArch:      noarch
+%ifpython38
+Requires:       python38-backports.zoneinfo
+%endif
 %python_subpackages
 
 %description
@@ -62,7 +69,7 @@ file. However, if the timezone name is readily available it will be used.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest discover -v
+%pytest
 
 %files %{python_files}
 %license LICENSE.txt

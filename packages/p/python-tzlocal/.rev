@@ -106,4 +106,41 @@
     <comment></comment>
     <requestid>914742</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a4de106fd56faacaeca9c3796a98b14c</srcmd5>
+    <version>4.2</version>
+    <time>1650735897</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 4.2
+  4.2 (2022-04-02)
+  - If TZ environment variable is set to /etc/localhost, and that's a link to
+    a zoneinfo file, then tzlocal will now find the timezone name, and not
+    just return a localtime TZ object.
+  4.1 (2021-10-29)
+  - No changes from 4.1b1.
+  4.1b1 (2021-10-28)
+  - It turns out a lot of Linux distributions make the links between zoneinfo
+    aliases backwards, so instead of linking GB to Europe/London it actually
+    links the other way. When /etc/localtime then links to Europe/London, and you
+    also have a config file saying Europe/London, the code that checks if
+    /etc/localtime is a symlink ends up at GB instead of Europe/London and
+    we get an error, as it thinks GB and Europe/London are different zones.
+    So now we check the symlink of all timezones in the uniqueness test. We still
+    return the name in the config file, though, so you would only get GB or Zulu
+    returned as the time zone instead of Europe/London or UTC if your only
+    configuration is the /etc/localtime symlink, as that's checked last, and
+    tzlocal will return the first configuration found.
+  - The above change also means that GMT and UTC are no longer seen as synonyms,
+    as zoneinfo does not see them as synonyms. This might be controversial,
+    but you just have to live with it. Pick one and stay with it. ;-)
+  4.0.2 (2021-10-26)
+  - Improved the error message when you had a conflict including a
+    /etc/localtime symlink.
+  4.0.1 (2021-10-19)
+  - A long time bug in Ubuntu docker images seem to not get fixed,
+    so I added a workaround.
+  4.0.1b1 (2021-10-18)
+  - Handle UCT and Zulu as synonyms for UTC, while treating GMT and</comment>
+    <requestid>970819</requestid>
+  </revision>
 </revisionlist>
