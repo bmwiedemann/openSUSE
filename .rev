@@ -1357,4 +1357,14 @@ Also wanted for 13.1</comment>
     <comment>GNOME 42 - ready for impact</comment>
     <requestid>963617</requestid>
   </revision>
+  <revision rev="177" vrev="2">
+    <srcmd5>6fef1b367934c665246854c97a14ab94</srcmd5>
+    <version>1.50.0</version>
+    <time>1650735901</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gvfs-smb-ignore-EINVAL-kerberos-ccache.patch: ignore EINVAL
+  for kerberos/ccache login. Fixes inability to mount smb shares
+  with samba 4.16 (boo#1198718). (forwarded request 971872 from mgorse)</comment>
+    <requestid>972027</requestid>
+  </revision>
 </revisionlist>
