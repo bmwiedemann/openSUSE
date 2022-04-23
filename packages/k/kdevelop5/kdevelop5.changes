@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:51:34 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:18:38 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:14:02 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Too many changes since 21.12.3, only listing bugfixes:
+  * makebuilder: Change default number of jobs from 2 to 1 (kde#448251)
+  * Fix a crash when renaming a variable (in executeRenameAction) (kde#444567)
+  * Fix meson executable (kde#412477)
+  * DocumentParsePlan: don't cache often-invalidated cend() (kde#445699)
+  * Add some of the missing KTextEditor interface methods (kde#441908)
+
+-------------------------------------------------------------------
 Tue Mar  1 09:57:05 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3

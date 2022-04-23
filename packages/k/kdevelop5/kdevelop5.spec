@@ -17,10 +17,10 @@
 
 
 %define rname   kdevelop
-%define libkdev_major 57
+%define libkdev_major 58
 %bcond_without released
 Name:           kdevelop5
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Plugin-extensible IDE for C/C++ and other programming languages
 License:        GPL-2.0-or-later
@@ -79,7 +79,6 @@ BuildRequires:  cmake(Qt5WebEngineWidgets)
 BuildRequires:  cmake(Qt5Widgets)
 # contains the headers that are needed for the C++ parser to work (see boo#1119186)
 Requires:       clang%(rpm -q --qf '%''{version}' clang-devel | cut -d. -f1)
-Recommends:     %{name}-lang
 Recommends:     clazy
 Recommends:     cppcheck
 Recommends:     heaptrack-gui
@@ -114,7 +113,6 @@ Summary:        Base Package for Integrated Development Environments
 Group:          Development/Tools/IDE
 Requires:       libkdevplatform%{libkdev_major} = %{version}
 %requires_eq    grantlee5
-Recommends:     kdevplatform-lang
 Conflicts:      kdevplatform4
 Conflicts:      libkdevplatform4-devel
 
@@ -150,28 +148,26 @@ developments environments based on the KDevelop framework.
 Summary:        Translations for package %{name}
 Group:          System/Localization
 Requires:       %{name} = %{version}
-Supplements:    (bundle-lang-other and %{name})
-Conflicts:      kdevelop4-lang
 Provides:       %{name}-lang-all = %{version}
+Conflicts:      kdevelop4-lang
 # Available separately before, now included in kdevelop5 itself
 Provides:       kdevelop5-plugin-clang-tidy-lang = %{version}
 Obsoletes:      kdevelop5-plugin-clang-tidy-lang < %{version}
 BuildArch:      noarch
 
 %description lang
-Provides translations to the package %{name}
+Provides translations for the "kdevelop" package.
 
 %package -n kdevplatform-lang
 Summary:        Translations for package kdevplatform
 Group:          System/Localization
 Requires:       kdevplatform = %{version}
-Supplements:    (bundle-lang-other and kdevplatform)
 Conflicts:      kdevplatform4-lang
 Provides:       kdevplatform-lang-all = %{version}
 BuildArch:      noarch
 
 %description -n kdevplatform-lang
-Provides translations to the package kdevplatform
+Provides translations for the "kdevplatform" package.
 %endif
 
 %prep
