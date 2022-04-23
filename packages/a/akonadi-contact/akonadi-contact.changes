@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:50:35 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:16:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:13:27 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Use the new KContacts address formatting API
+  * Improve search element
+  * Fix compile without deprecated method
+  * Use @QT_VERSION@
+  * Fix includes
+  * normalize install header include (fix qt6 build)
+  * Fix compile error
+  * Make it compile against qt6
+  * Fix some qt6 compile error
+  * fix install dir (qt6 fix compile error)
+  * Remove unused config header file
+  * Use geo: URIs to show an address on a map
+  * Make sure helper apps we start are in path
+  * Prepare to port to KTextTemplate
+  * Prepare using future KF6TextTemplate
+  * Remove extra KIOCore
+  * Explicitely link to KCoreAddons
+  * Clean up include
+  * Fix build with GCC 12 (standard attributes in middle of decl-specifiers)
+  * Remove Kleo dependency
+  * We depend against kf5.90
+  * Adapt build system for building against qt6
+  * Fix duplicated MIME types
+  * Add previously missing dependency
+  * Correct prefix to other PIM repositories in .kde-ci.yml
+
+-------------------------------------------------------------------
 Tue Mar  1 09:56:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3

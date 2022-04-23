@@ -23,7 +23,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           akonadi-contact
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        KDE PIM Libraries for Akonadi Contacts
 License:        LGPL-2.1-or-later
@@ -166,16 +166,10 @@ to develop KDE PIM applications.
 %{_kf5_sharedir}/akonadi/plugins/serializer/akonadi_serializer_contactgroup.desktop
 
 %files devel
-%dir %{_kf5_includedir}/Akonadi
-%dir %{_kf5_includedir}/ContactEditor
-%dir %{_kf5_includedir}/akonadi
-%dir %{_kf5_includedir}/contacteditor
 %{_kf5_cmakedir}/KF5AkonadiContact/
 %{_kf5_cmakedir}/KF5ContactEditor/
-%{_kf5_includedir}/Akonadi/Contact/
-%{_kf5_includedir}/ContactEditor
-%{_kf5_includedir}/akonadi/contact/
-%{_kf5_includedir}/contacteditor
+%{_kf5_includedir}/AkonadiContact/
+%{_kf5_includedir}/AkonadiContactEditor/
 %{_kf5_libdir}/libKF5AkonadiContact.so
 %{_kf5_libdir}/libKF5ContactEditor.so
 %{_kf5_mkspecsdir}/qt_AkonadiContact.pri
