@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 22 00:31:38 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.3.0
+  * Thumbnailer: Remove epub support, it's handled by xapp-epub-thumbnailer.
+
+-------------------------------------------------------------------
 Mon Jan 10 17:43:48 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Removed unused -Dbus option.
