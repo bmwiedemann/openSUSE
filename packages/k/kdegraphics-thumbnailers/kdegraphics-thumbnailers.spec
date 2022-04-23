@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdegraphics-thumbnailers
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Graphics file thumbnail generators
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -38,7 +38,9 @@ BuildRequires:  xz
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5KDcraw)
 BuildRequires:  cmake(KF5KExiv2)
+BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(QMobipocket)
 BuildRequires:  cmake(Qt5Gui)
 
 %description
