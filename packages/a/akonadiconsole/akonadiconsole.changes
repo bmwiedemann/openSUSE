@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:50:35 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:16:47 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:13:26 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Fix Akonadi Search include
+  * Fix compile without deprecated method
+  * Fix includes path (help fixing qt6 build)
+  * Use new akonadi contact include
+  * code will be removed in qt6
+  * Fix compile against last libkdepim
+  * Adapt build system for building against qt6
+  * We don't translate it. => not necessary to try to install po file
+  * Correct prefix to other PIM repositories in .kde-ci.yml
+
+-------------------------------------------------------------------
 Tue Mar  1 09:56:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
