@@ -135,4 +135,12 @@ Last piece to fix boo#1011125</comment>
     <comment></comment>
     <requestid>961988</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>00d2bd80a833c8fadc52147f47dc09f7</srcmd5>
+    <version>2.4~20220419</version>
+    <time>1650736024</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>972306</requestid>
+  </revision>
 </revisionlist>
