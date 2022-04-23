@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,12 @@
 #
 
 
-# https://build.opensuse.org/request/show/926611#comment-1560144
-%bcond_with pytest_is_ready_for_alts
-%if 0%{?suse_version} > 1500 && %{with pytest_is_ready_for_alts}
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
 %endif
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -%{flavor}
@@ -33,23 +30,20 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-pytest%{psuffix}
-Version:        6.2.5
+Version:        7.1.1
 Release:        0
 Summary:        Simple powerful testing with Python
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest
 Source:         https://files.pythonhosted.org/packages/source/p/pytest/pytest-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM pytest-pr8664-py3.10-test_trial_error-fail.patch -- gh#pytest-dev/pytest#8664
-Patch0:         pytest-pr8664-py3.10-test_trial_error-fail.patch
-# PATCH-FIX-UPSTREAM pytest-pr9173-importlib-py310.patch -- gh#pytest-dev/pytest#9173
-Patch1:         pytest-pr9173-importlib-py310.patch
-# PATCH-FIX-UPSTREAM pytest-pr9417-py3.10.1-fail.patch -- gh#pytest-dev/pytest#9417
-Patch2:         pytest-pr9417-py3.10.1-fail.patch
-BuildRequires:  %{python_module setuptools >= 42.0}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module setuptools_scm >= 6}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module tomli >= 1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-attrs >= 19.2.0
@@ -59,8 +53,7 @@ Requires:       python-packaging
 Requires:       python-pluggy >= 0.12
 Requires:       python-py >= 1.8.2
 Requires:       python-setuptools
-Requires:       python-toml
-Requires:       python-wcwidth
+Requires:       python-tomli >= 1
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts
@@ -79,16 +72,13 @@ BuildRequires:  %{python_module hypothesis >= 3.56}
 # tests, when the package is not available.
 # BuildRequires:  %%{python_module nose}
 BuildRequires:  %{python_module pexpect}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pygments-pytest}
 BuildRequires:  %{python_module pytest >= %{version}}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module xmlschema}
 BuildRequires:  lsof
-BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
-%endif
-%if %{?python_version_nodots} < 36
-Requires:       python-pathlib2 >= 2.2.0
 %endif
 %python_subpackages
 
@@ -114,7 +104,8 @@ sed -i '/^\[metadata\]/ a version = %{version}' setup.cfg
 
 %check
 %if %{with test}
-%pytest
+# assert rewrite: gh#pytest-dev/pytest#9761
+%pytest -n auto -k "not (test_assertrewrite)"
 %endif
 
 %if ! %{with test}
