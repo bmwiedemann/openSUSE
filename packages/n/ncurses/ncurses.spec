@@ -535,7 +535,7 @@ export CFLAGS_SHARED
 	--with-dlsym		\
 	--with-default-terminfo-dir=%{_datadir}/terminfo \
 	--with-terminfo-dirs=%{_sysconfdir}/terminfo:%{_datadir}/terminfo \
-	--with-xterm-kbs=del	\
+	--with-xterm-kbs=DEL	\
 %if %{with usepcre2}
 	--with-pcre2		\
 %endif

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Apr 20 06:37:39 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20220416 (boo#1198627 for CVE-2022-29458)
+  + add a limit-check to guard against corrupt terminfo data
+    (report/testcase by NCNIPC of China).
+  + add check/warning in configure script if option --with-xterm-kbs is
+    missing or inconsistent (Arch #74379).
+  + add setlocale call to several test-programs.
+  + allow extended-color number in opts parameter of wattr_on.
+
+-------------------------------------------------------------------
+Tue Apr 19 10:18:14 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20220409
+  + add test/test_unget_wch.c
+
+-------------------------------------------------------------------
 Mon Apr  4 07:48:33 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20220402

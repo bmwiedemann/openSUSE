@@ -3596,4 +3596,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>968377</requestid>
   </revision>
+  <revision rev="212" vrev="16">
+    <srcmd5>c7d143ce97507c2b4565eca7915a3f4c</srcmd5>
+    <version>6.3.MACRO</version>
+    <time>1650735893</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20220416 (boo#1198627 for CVE-2022-29458)
+  + add a limit-check to guard against corrupt terminfo data
+    (report/testcase by NCNIPC of China).
+  + add check/warning in configure script if option --with-xterm-kbs is
+    missing or inconsistent (Arch #74379).
+  + add setlocale call to several test-programs.
+  + allow extended-color number in opts parameter of wattr_on.
+
+- Add ncurses patch 20220409
+  + add test/test_unget_wch.c</comment>
+    <requestid>970977</requestid>
+  </revision>
 </revisionlist>

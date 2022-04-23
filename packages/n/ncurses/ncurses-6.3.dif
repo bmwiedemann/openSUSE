@@ -177,7 +177,7 @@
  	do
  
  if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists "$cf_with_pcre2"; then
-@@ -14877,12 +14877,15 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14892,12 +14892,15 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
@@ -195,7 +195,7 @@
  	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -14892,7 +14895,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14907,7 +14910,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -204,7 +204,7 @@
  CF_EOF
  fi
  
-@@ -14932,7 +14935,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14947,7 +14950,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_so_strip \$TMP
  	fi
  	fi
@@ -213,7 +213,7 @@
  CF_EOF
  fi
  
-@@ -14941,23 +14944,23 @@ case "$MANPAGE_FORMAT" in
+@@ -14956,23 +14959,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -243,7 +243,7 @@
  				for cf_alias in \$aliases
  				do
  					if test "\$section" = 1 ; then
-@@ -14966,7 +14969,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14981,7 +14984,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f "\$cf_alias\${suffix}" ; then
@@ -252,7 +252,7 @@
  							then
  								continue
  							fi
-@@ -14976,18 +14979,18 @@ CF_EOF
+@@ -14991,18 +14994,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -274,7 +274,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_compress" ; then
-@@ -15007,9 +15010,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15022,9 +15025,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test "\$verb" = removing ; then
@@ -287,7 +287,7 @@
  		)
  		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -15029,6 +15032,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15044,6 +15047,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -811,7 +811,7 @@
  
 --- test/test.priv.h
 +++ test/test.priv.h	2022-02-21 08:55:21.212338812 +0000
-@@ -1037,12 +1037,12 @@ extern char *_nc_strstr(const char *, co
+@@ -1041,12 +1041,12 @@ extern char *_nc_strstr(const char *, co
  #endif
  
  /* out-of-band values for representing absent capabilities */
