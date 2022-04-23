@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:52:39 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:21:41 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:15:01 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Hide list options with only one option to choose from
+  * emit negative progress also during batch mode scanning
+  * build: Pass RELEASE_SERVICE_VERSION to project()
+  * fix setting list values
+  * Do not report error in KSaneWidget
+  * Make it compile against qt6
+  * IT builds fine without deprecated methods
+  * Remove duplicate header from .cpp/.h
+  * Time to increase version
+  * do not start FindDevicesThread unconditionally
+  * announce zero progress directly after the very first byte has been read
+
+-------------------------------------------------------------------
 Tue Mar  1 09:58:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
