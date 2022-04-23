@@ -1,0 +1,53 @@
+---
+ pytest.ini            |    3 +++
+ tests/test_serving.py |    5 +++++
+ 2 files changed, 8 insertions(+)
+
+--- /dev/null
++++ b/pytest.ini
+@@ -0,0 +1,3 @@
++[pytest]
++markers =
++    network: tests requiring network connection
+--- a/tests/test_serving.py
++++ b/tests/test_serving.py
+@@ -118,6 +118,7 @@ def test_windows_get_args_for_reloading(
+     assert rv == argv
+ 
+ 
++@pytest.mark.network
+ @pytest.mark.parametrize("find", [_find_stat_paths, _find_watchdog_paths])
+ def test_exclude_patterns(find):
+     # Imported paths under sys.prefix will be included by default.
+@@ -157,6 +158,7 @@ def test_port_is_int():
+         run_simple("127.0.0.1", "5000", None)
+ 
+ 
++@pytest.mark.network
+ @pytest.mark.filterwarnings("ignore::pytest.PytestUnraisableExceptionWarning")
+ @pytest.mark.parametrize("send_length", [False, True])
+ def test_chunked_request(monkeypatch, dev_server, send_length):
+@@ -241,6 +243,7 @@ def test_multiline_header_folding(standa
+     assert data["HTTP_XYZ"] == "first\tsecond\tthird"
+ 
+ 
++@pytest.mark.network
+ @pytest.mark.parametrize("endpoint", ["", "crash"])
+ def test_streaming_close_response(dev_server, endpoint):
+     """When using HTTP/1.0, chunked encoding is not supported. Fall
+@@ -252,6 +255,7 @@ def test_streaming_close_response(dev_se
+     assert r.data == "".join(str(x) + "\n" for x in range(5)).encode()
+ 
+ 
++@pytest.mark.network
+ def test_streaming_chunked_response(dev_server):
+     """When using HTTP/1.1, use Transfer-Encoding: chunked for streamed
+     responses, since it can distinguish the end of the response without
+@@ -264,6 +268,7 @@ def test_streaming_chunked_response(dev_
+     assert r.data == "".join(str(x) + "\n" for x in range(5)).encode()
+ 
+ 
++@pytest.mark.network
+ @pytest.mark.filterwarnings("ignore::pytest.PytestUnraisableExceptionWarning")
+ def test_streaming_chunked_truncation(dev_server):
+     """When using HTTP/1.1, chunked encoding allows the client to detect

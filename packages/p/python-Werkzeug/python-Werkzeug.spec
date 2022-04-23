@@ -18,16 +18,20 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-Werkzeug
-Version:        2.0.3
+Version:        2.1.1
 Release:        0
 Summary:        The Swiss Army knife of Python web development
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://werkzeug.palletsprojects.com
 Source:         https://files.pythonhosted.org/packages/source/W/Werkzeug/Werkzeug-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM no-network-testing.patch gh#pallets/werkzeug#2393 mcepl@suse.com
+# mark tests which require network access
+Patch0:         no-network-testing.patch
 BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
+BuildRequires:  %{python_module ephemeral-port-reserve}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pytest >= 6.2.4}
 BuildRequires:  %{python_module pytest-timeout}
@@ -38,9 +42,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sortedcontainers}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %python_version_nodots < 37
-Requires:       python-dataclasses
-%endif
 Recommends:     python-termcolor
 Recommends:     python-watchdog
 Obsoletes:      python-Werkzeug-doc < %{version}
@@ -67,7 +68,8 @@ on as many server environments as possible (such as blogs, wikis,
 bulletin boards, etc.).
 
 %prep
-%setup -q -n Werkzeug-%{version}
+%autosetup -p1 -n Werkzeug-%{version}
+
 sed -i "1d" examples/manage-{i18nurls,simplewiki,shorty,couchy,cupoftee,webpylike,plnt,coolmagic}.py # Fix non-executable scripts
 
 %build
@@ -81,7 +83,7 @@ sed -i "1d" examples/manage-{i18nurls,simplewiki,shorty,couchy,cupoftee,webpylik
 export LANG=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1
 # workaround pytest 6.2 (like https://github.com/pallets/werkzeug/commit/16718f461d016b88b6457d3ef63816b7df1f0d1f, but shorter)
-%pytest -k 'not test_reloader_sys_path and not test_chunked_encoding and not test_basic and not test_server and not test_ssl and not test_http_proxy and not test_500_error and not test_untrusted_host and not test_double_slash_path and not test_wrong_protocol and not test_content_type_and_length and not test_multiple_headers_concatenated and not test_multiline_header_folding'
+%pytest -k 'not (network or test_reloader_sys_path or test_chunked_encoding or test_basic or test_server or test_ssl or test_http_proxy or test_500_error or test_untrusted_host or test_double_slash_path or test_wrong_protocol or test_content_type_and_length or test_multiple_headers_concatenated or test_multiline_header_folding)'
 
 %files %{python_files}
 %license LICENSE.rst

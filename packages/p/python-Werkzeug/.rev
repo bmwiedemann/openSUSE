@@ -422,4 +422,113 @@
     correctly.</comment>
     <requestid>954652</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>e87f6c9fea357641cdb0a09ecfb94a24</srcmd5>
+    <version>2.1.1</version>
+    <time>1650735921</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.1:
+  - ResponseCacheControl.s_maxage converts its value to an int,
+    like max_age.
+  - Drop support for Python 3.6.
+  - Using gevent or eventlet requires greenlet&gt;=1.0 or
+    PyPy&gt;=7.3.7. werkzeug.locals and contextvars will not work
+    correctly with older versions.
+  - Remove previously deprecated code.
+     - Remove the non-standard shutdown function from the WSGI
+       environ when running the development server. See the docs
+       for alternatives.
+     - Request and response mixins have all been merged into the
+       Request and Response classes.
+     - The user agent parser and the useragents module is
+       removed. The user_agent module provides an interface that
+       can be subclassed to add a parser, such as ua-parser. By
+       default it only stores the whole string.
+     - The test client returns TestResponse instances and can no
+       longer be treated as a tuple. All data is available as
+       properties on the response.
+     - Remove locals.get_ident and related thread-local code from
+       locals, it no longer makes sense when moving to
+       a contextvars-based implementation.
+     - Remove the python -m werkzeug.serving CLI.
+     - The has_key method on some mapping datastructures; use key
+       in data instead.
+     - Request.disable_data_descriptor is removed, pass
+       shallow=True instead.
+     - Remove the no_etag parameter from Response.freeze().
+     - Remove the HTTPException.wrap class method.
+     - Remove the cookie_date function. Use http_date instead.
+     - Remove the pbkdf2_hex, pbkdf2_bin, and safe_str_cmp
+       functions. Use equivalents in hashlib and hmac modules
+       instead.
+     - Remove the Href class.
+     - Remove the HTMLBuilder class.
+     - Remove the invalidate_cached_property function. Use del
+       obj.attr instead.
+     - Remove bind_arguments and validate_arguments. Use
+       Signature.bind() and inspect.signature() instead.
+     - Remove detect_utf_encoding, it’s built-in to json.loads.
+     - Remove format_string, use string.Template instead.
+     - Remove escape and unescape. Use MarkupSafe instead.
+    - The multiple parameter of parse_options_header is
+      deprecated.
+    - Rely on PEP 538 and PEP 540 to handle decoding file names
+      with the correct filesystem encoding. The filesystem module
+      is removed.
+    - Default values passed to Headers are validated the same way
+      values added later are.
+    - Setting CacheControl int properties, such as max_age, will
+      convert the value to an int.
+    - Always use socket.fromfd when restarting the dev server.
+    - When passing a dict of URL values to Map.build, list values
+      do not filter out None or collapse to a single value.
+      Passing a MultiDict does collapse single items. This undoes
+      a previous change that made it difficult to pass a list, or
+      None values in a list, to custom URL converters.
+    - run_simple shows instructions for dealing with “address
+      already in use” errors, including extra instructions for
+      macOS.
+    - Extend list of characters considered always safe in URLs
+      based on RFC 3986.
+    - Optimize the stat reloader to avoid watching unnecessary
+      files in more cases. The watchdog reloader is still
+      recommended for performance and accuracy.
+    - The development server uses Transfer-Encoding: chunked for
+      streaming responses when it is configured for HTTP/1.1.
+    - The development server uses HTTP/1.1, which enables
+      keep-alive connections and chunked streaming responses,
+      when threaded or processes is enabled.
+    - cached_property works for classes with __slots__ if
+      a corresponding _cache_{name} slot is added.
+    - Refactor the debugger traceback formatter to use Python’s
+      built-in traceback module as much as possible.
+    - The TestResponse.text property is a shortcut for
+      r.get_data(as_text=True), for convenient testing against
+      text instead of bytes.
+    - safe_join ensures that the path remains relative if the
+      trusted directory is the empty string.
+    - Percent-encoded newlines (%0a), which are decoded by WSGI
+      servers, are considered when routing instead of terminating
+      the match early.
+    - The test client doesn’t set duplicate headers for
+      CONTENT_LENGTH and CONTENT_TYPE.
+    - append_slash_redirect handles PATH_INFO with internal
+      slashes.
+    - The default status code for append_slash_redirect is 308
+      instead of 301. This preserves the request body, and
+      matches a previous change to strict_slashes in routing.
+    - Fix ValueError: I/O operation on closed file. with the test
+      client when following more than one redirect.
+    - Response.autocorrect_location_header is disabled by
+      default. The Location header URL will remain relative, and
+      exclude the scheme and domain, by default.
+    - Request.get_json() will raise a 400 BadRequest error if the
+      Content-Type header is not application/json. This makes
+      a very common source of confusion more visible.
+- Add no-network-testing.patch to mark all tests requiring
+  network access (so they can be skipped by pytest test runner,
+  gh#pallets/werkzeug#2393).
+</comment>
+    <requestid>970992</requestid>
+  </revision>
 </revisionlist>
