@@ -2326,4 +2326,12 @@ See bugzilla 1167537 for the gory details.</comment>
     <comment>-&gt;</comment>
     <requestid>961665</requestid>
   </revision>
+  <revision rev="296" vrev="6">
+    <srcmd5>6ba620b6ab4ef6f007868e4fbc4c1efe</srcmd5>
+    <version>4.17.0</version>
+    <time>1650735895</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>971138</requestid>
+  </revision>
 </revisionlist>

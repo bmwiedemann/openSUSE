@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 30 08:54:50 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update zstdpool.diff in order to fix boo#1197643.
+
+-------------------------------------------------------------------
 Mon Mar 14 10:50:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - drop rpm-deptracking.patch, this is already upstream and

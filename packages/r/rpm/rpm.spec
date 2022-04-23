@@ -183,8 +183,8 @@ Requires:       findutils
 Requires:       gawk
 Requires:       gcc
 #Requires:       gcc-PIE
-Requires:       gettext-tools
 Requires:       /usr/bin/gzip
+Requires:       gettext-tools
 Requires:       glibc-devel
 Requires:       glibc-locale-base
 Requires:       grep
