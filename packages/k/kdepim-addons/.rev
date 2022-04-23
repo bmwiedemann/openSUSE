@@ -619,4 +619,12 @@ Newer versions will have the correct headers.</comment>
     <comment>KDE Gear 21.12.3</comment>
     <requestid>958830</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>e4375d96d179542c3ee3b841920d8b0a</srcmd5>
+    <version>22.04.0</version>
+    <time>1650752356</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 22.04.0</comment>
+    <requestid>971449</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdepim-addons
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Addons for KDE PIM applications
 License:        GPL-2.0-only
@@ -111,6 +111,8 @@ themes, and plugins providing extra or advanced functionality.
 %dir %{_kf5_libdir}/contacteditor
 %dir %{_kf5_libdir}/contacteditor/editorpageplugins
 %dir %{_kf5_plugindir}/akonadi
+%dir %{_kf5_plugindir}/kf5/
+%dir %{_kf5_plugindir}/kf5/mailtransport
 %dir %{_kf5_plugindir}/messageviewer
 %dir %{_kf5_plugindir}/messageviewer/bodypartformatter
 %dir %{_kf5_plugindir}/messageviewer/configuresettings
@@ -158,20 +160,23 @@ themes, and plugins providing extra or advanced functionality.
 %{_kf5_libdir}/libkmailconfirmbeforedeleting.so.5.*
 %{_kf5_libdir}/libscamconfiguresettings.so.5
 %{_kf5_libdir}/libscamconfiguresettings.so.5.*
+%{_kf5_libdir}/libopenurlwithconfigure.so.5
+%{_kf5_libdir}/libopenurlwithconfigure.so.5.*
 %{_kf5_plugindir}/akonadi/emailaddressselectionldapdialogplugin.so
 %{_kf5_plugindir}/importwizard/
 %{_kf5_plugindir}/kaddressbook/
+%{_kf5_plugindir}/kf5/mailtransport/mailtransport_sendplugin.so
 %{_kf5_plugindir}/kmail/
 %{_kf5_plugindir}/korg_datenums.so
 %{_kf5_plugindir}/korg_picoftheday.so
 %{_kf5_plugindir}/korg_thisdayinhistory.so
 %{_kf5_plugindir}/libksieve/
-%{_kf5_plugindir}/mailtransport/
 %{_kf5_plugindir}/messageviewer/bodypartformatter/messageviewer_bodypartformatter*.so
 %{_kf5_plugindir}/messageviewer/configuresettings/messageviewer_dkimconfigplugin.so
 %{_kf5_plugindir}/messageviewer/configuresettings/messageviewer_expireaccounttrashfolderconfigplugin.so
 %{_kf5_plugindir}/messageviewer/configuresettings/messageviewer_folderconfiguresettingsplugin.so
 %{_kf5_plugindir}/messageviewer/configuresettings/messageviewer_gravatarconfigplugin.so
+%{_kf5_plugindir}/messageviewer/configuresettings/messageviewer_openurlwithconfigplugin.so
 %{_kf5_plugindir}/messageviewer/grantlee/5.0/kitinerary_grantlee_extension.so
 %{_kf5_plugindir}/messageviewer/headerstyle/messageviewer_briefheaderstyleplugin.so
 %{_kf5_plugindir}/messageviewer/headerstyle/messageviewer_fancyheaderstyleplugin.so
