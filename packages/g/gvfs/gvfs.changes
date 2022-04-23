@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 21 15:34:47 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Add gvfs-smb-ignore-EINVAL-kerberos-ccache.patch: ignore EINVAL
+  for kerberos/ccache login. Fixes inability to mount smb shares
+  with samba 4.16 (boo#1198718).
+
+-------------------------------------------------------------------
 Fri Mar 18 12:27:54 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.50.0:

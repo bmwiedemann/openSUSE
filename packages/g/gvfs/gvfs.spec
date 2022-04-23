@@ -26,6 +26,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/gvfs
 Source0:        https://download.gnome.org/sources/gvfs/1.50/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM gvfs-smb-ignore-EINVAL-kerberos-ccache.patch boo#1198718 mgorse@suse.com -- ignore EINVAL for kerberos/ccache login.
+Patch0:         gvfs-smb-ignore-EINVAL-kerberos-ccache.patch
 
 ### NOTE: Please, keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gvfs-nds.patch ksamrat@novell.com -- Provides NDS browsing for nautilus
@@ -158,6 +160,7 @@ gvfs plugins.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %if 0%{?sle_version}
 %patch1000 -p1
