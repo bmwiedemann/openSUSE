@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kget
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Download Manager
 License:        GPL-2.0-or-later
@@ -92,7 +92,8 @@ An advanced download manager by KDE
 %license COPYING COPYING.DOC
 %doc README
 %doc %lang(en) %{_kf5_htmldir}/en/kget/
-%dir %{_kf5_servicesdir}/ServiceMenus
+%dir %{_kf5_sharedir}/kio
+%dir %{_kf5_sharedir}/kio/servicemenus
 %{_kf5_applicationsdir}/org.kde.kget.desktop
 %{_kf5_appstreamdir}/org.kde.kget.appdata.xml
 %{_kf5_bindir}/kget
@@ -102,17 +103,14 @@ An advanced download manager by KDE
 %{_kf5_kxmlguidir}/kget/
 %{_kf5_libdir}/libkgetcore.so*
 %{_kf5_notifydir}/kget.notifyrc
-%{_kf5_plugindir}/kcm_kget*.so
+%dir %{_kf5_plugindir}/kget/
+%dir %{_kf5_plugindir}/kget/kcms/
+%{_kf5_plugindir}/kget/kcms/kcm_kget*.so
 %{_kf5_plugindir}/kget/
-%{_kf5_plugindir}/kget_browser_integration.so
-%{_kf5_servicesdir}/ServiceMenus/kget_download.desktop
-%{_kf5_servicesdir}/kget_*.desktop
 %{_kf5_servicetypesdir}/kget_plugin.desktop
 %{_kf5_sharedir}/dbus-1/services/org.kde.kget.service
-%{_kf5_sharedir}/dolphinpart/
 %{_kf5_sharedir}/kget/
-%{_kf5_sharedir}/khtml/
-%{_kf5_sharedir}/kwebkitpart/
+%{_kf5_sharedir}/kio/servicemenus/kget_download.desktop
 
 %if %{with released}
 %files lang -f %{name}.lang
