@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:52:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:20:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:14:32 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Build without KGlobalAccel on Windows
+  * Show number of unseen nick mentions & query messages on launcher
+    entry (kde#398047)
+  * sound: Port away from Phonon
+  * Don't use a QWaitCondition to do a dummy sleep
+  * KStatusNotifierItem new API need to be guarded with KNotifications version
+  * Support code for monospace formatting
+  * Use SingleMainWindow=true now
+  * Store state data in separate config file (kde#441575)
+  * Update .gitignore
+  * Bump KF5 min version & define KDE_COMPILERSETTINGS_LEVEL
+  * Declare as DBusActivatable and install D-Bus service file
+  * Add GitLab CI
+
+-------------------------------------------------------------------
 Tue Mar  1 09:57:36 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3

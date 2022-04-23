@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           konversation
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        A graphical IRC client by KDE
 License:        GPL-2.0-or-later
@@ -59,9 +59,9 @@ BuildRequires:  cmake(KF5Solid) >= %{kf5_version}
 BuildRequires:  cmake(KF5Wallet) >= %{kf5_version}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
-BuildRequires:  cmake(Phonon4Qt5)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Multimedia)
 BuildRequires:  cmake(Qt5Widgets)
 
 %description
@@ -112,6 +112,7 @@ Features:
 %{_kf5_notifydir}/konversation.notifyrc
 %{_kf5_sharedir}/kconf_update/konversation*
 %{_kf5_sharedir}/konversation/
+%{_kf5_sharedir}/dbus-1/services/org.kde.konversation.service
 
 %if %{with released}
 %files lang -f %{name}.lang
