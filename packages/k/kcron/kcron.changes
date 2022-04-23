@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:51:26 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:18:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:13:55 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Write into crontab instead of replacing the file
+  * Use new kauth includes
+  * This doesn't need Auth, AuthCore is enough
+  * It compiles fine against qt6
+  * Make doctool as optional
+- Drop patch, now upstream:
+  * 0001-Write-into-crontab-instead-of-replacing-the-file.patch
+
+-------------------------------------------------------------------
 Mon Mar  7 10:44:53 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %_libdir/libexec with %_libexecdir (boo#1174075)
