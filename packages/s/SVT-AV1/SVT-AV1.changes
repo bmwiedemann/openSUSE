@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 22 21:47:04 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.0
+  * Added S-frames support
+  * Added CBR Rate control mode for low delay
+  * Added support for chroma position signaling
+  * Added support for skipping denoising pictures after film
+    grain synthesis
+  * Extend fast-decode support to cover presets M0-M10
+
+-------------------------------------------------------------------
 Wed Feb 16 10:01:52 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Disable forced realtime scheduler priority

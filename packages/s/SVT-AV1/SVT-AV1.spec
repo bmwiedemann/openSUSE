@@ -16,15 +16,14 @@
 #
 
 
-%define sover 0
 Name:           SVT-AV1
-Version:        0.9.0
+Version:        1.0.0
 Release:        0
 Summary:        An AV1 decoder/encoder for video streams
 License:        BSD-3-Clause-Clear
 Group:          Productivity/Multimedia/Other
 URL:            https://gitlab.com/AOMediaCodec/SVT-AV1
-Source:         https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v%{version}/SVT-AV1-v%{version}.tar.gz
+Source:         https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v%version/SVT-AV1-v%version.tar.gz
 BuildRequires:  cmake >= 3.5.1
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 5.4.0
@@ -40,22 +39,22 @@ a work-in-progress targeting performance levels applicable to both VOD and Live
 encoding / transcoding video applications. The SVT-AV1 decoder implementation
 is targeting future codec research activities.
 
-%package -n libSvtAv1Dec%{sover}
+%package -n libSvtAv1Dec0
 Summary:        An AV1 decoder/encoder for video streams
 Group:          System/Libraries
 
-%description -n libSvtAv1Dec%{sover}
+%description -n libSvtAv1Dec0
 The Scalable Video Technology for AV1 (SVT-AV1 Encoder and Decoder) is an
 AV1-compliant encoder/decoder library core. The SVT-AV1 encoder development is
 a work-in-progress targeting performance levels applicable to both VOD and Live
 encoding / transcoding video applications. The SVT-AV1 decoder implementation
 is targeting future codec research activities.
 
-%package -n libSvtAv1Enc%{sover}
+%package -n libSvtAv1Enc1
 Summary:        An AV1 decoder/encoder for video streams
 Group:          System/Libraries
 
-%description -n libSvtAv1Enc%{sover}
+%description -n libSvtAv1Enc1
 The Scalable Video Technology for AV1 (SVT-AV1 Encoder and Decoder) is an
 AV1-compliant encoder/decoder library core. The SVT-AV1 encoder development is
 a work-in-progress targeting performance levels applicable to both VOD and Live
@@ -63,10 +62,10 @@ encoding / transcoding video applications. The SVT-AV1 decoder implementation
 is targeting future codec research activities.
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Libraries/C and C++
-Requires:       libSvtAv1Dec%{sover} = %{version}
-Requires:       libSvtAv1Enc%{sover} = %{version}
+Requires:       libSvtAv1Dec0 = %version
+Requires:       libSvtAv1Enc1 = %version
 
 %description    devel
 An AV1 encoder for video streams from Intel.
@@ -74,55 +73,51 @@ An AV1 encoder for video streams from Intel.
 This package contains the header files for svt-av1.
 
 %prep
-%autosetup -p1 -n %{name}-v%{version}
+%autosetup -p1 -n %name-v%version
 
 %build
-# See https://gitlab.com/AOMediaCodec/SVT-AV1/-/issues/1714
-%cmake -DDISABLE_REALTIME=ON
+%cmake
 %cmake_build
 
 %install
 %cmake_install
 
 # Generate manpages
-install -d -m0755 %{buildroot}/%{_mandir}/man1
+install -d -m0755 %buildroot/%_mandir/man1
 
-LD_LIBRARY_PATH="%{buildroot}%{_libdir}" \
-help2man -N --help-option=-help --version-string=%{version} %{buildroot}%{_bindir}/SvtAv1DecApp > %{buildroot}%{_mandir}/man1/SvtAv1DecApp.1
+LD_LIBRARY_PATH="%buildroot%_libdir" \
+help2man -N --help-option=-help --version-string=%version %buildroot%_bindir/SvtAv1DecApp > %buildroot%_mandir/man1/SvtAv1DecApp.1
 
-LD_LIBRARY_PATH="%{buildroot}%{_libdir}" \
-help2man -N --help-option=-help --version-string=%{version} --no-discard-stderr %{buildroot}%{_bindir}/SvtAv1EncApp > %{buildroot}%{_mandir}/man1/SvtAv1EncApp.1
+LD_LIBRARY_PATH="%buildroot%_libdir" \
+help2man -N --help-option=-help --version-string=%version --no-discard-stderr %buildroot%_bindir/SvtAv1EncApp > %buildroot%_mandir/man1/SvtAv1EncApp.1
 
-b="%{buildroot}/%{_defaultdocdir}/%{name}"
+b="%buildroot/%_defaultdocdir/%name"
 mkdir -p "$b"
 cp -a Docs README.md "$b/"
-%fdupes %{buildroot}/%{_prefix}
+%fdupes %buildroot/%_prefix
 
-%post   -n libSvtAv1Dec%{sover} -p /sbin/ldconfig
-%postun -n libSvtAv1Dec%{sover} -p /sbin/ldconfig
-%post   -n libSvtAv1Enc%{sover} -p /sbin/ldconfig
-%postun -n libSvtAv1Enc%{sover} -p /sbin/ldconfig
+%post   -n libSvtAv1Dec0 -p /sbin/ldconfig
+%postun -n libSvtAv1Dec0 -p /sbin/ldconfig
+%post   -n libSvtAv1Enc1 -p /sbin/ldconfig
+%postun -n libSvtAv1Enc1 -p /sbin/ldconfig
 
-%files -n libSvtAv1Dec%{sover}
+%files -n libSvtAv1Dec0
 %license LICENSE.md PATENTS.md
-%{_libdir}/libSvtAv1Dec.so.%{sover}*
+%_libdir/libSvtAv1Dec.so.*
 
-%files -n libSvtAv1Enc%{sover}
+%files -n libSvtAv1Enc1
 %license LICENSE.md PATENTS.md
-%{_libdir}/libSvtAv1Enc.so.%{sover}*
+%_libdir/libSvtAv1Enc.so.*
 
 %files
-%{_bindir}/SvtAv1DecApp
-%{_bindir}/SvtAv1EncApp
-%{_mandir}/man1/SvtAv1DecApp.1%{?ext_man}
-%{_mandir}/man1/SvtAv1EncApp.1%{?ext_man}
-%doc %{_defaultdocdir}/%{name}/
+%_bindir/Svt*
+%_mandir/man1/Svt*
+%doc %_defaultdocdir/%name/
 
 %files devel
-%{_libdir}/libSvtAv1Dec.so
-%{_libdir}/libSvtAv1Enc.so
-%{_libdir}/pkgconfig/SvtAv1Dec.pc
-%{_libdir}/pkgconfig/SvtAv1Enc.pc
-%{_includedir}/svt-av1/
+%_libdir/libSvtAv1Dec.so
+%_libdir/libSvtAv1Enc.so
+%_libdir/pkgconfig/*.pc
+%_includedir/svt-av1/
 
 %changelog
