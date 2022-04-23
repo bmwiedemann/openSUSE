@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           khelpcenter5
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        KDE Documentation Application
 License:        GPL-2.0-or-later
@@ -73,7 +73,7 @@ Application to show KDE Applications' documentation.
     %{kf5_find_lang}
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file org.kde.Help Documentation Viewer
+  %suse_update_desktop_file org.kde.khelpcenter Documentation Viewer
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -82,13 +82,14 @@ Application to show KDE Applications' documentation.
 %license LICENSES/*
 %doc README*
 %doc %lang(en) %{_kf5_htmldir}/en/*/
-%{_kf5_applicationsdir}/org.kde.Help.desktop
-%{_kf5_appstreamdir}/org.kde.Help.appdata.xml
+%{_kf5_applicationsdir}/org.kde.khelpcenter.desktop
+%{_kf5_appstreamdir}/org.kde.khelpcenter.metainfo.xml
 %{_kf5_bindir}/khelpcenter
 %{_kf5_configkcfgdir}/khelpcenter.kcfg
 %{_kf5_debugdir}/khelpcenter.categories
 %{_kf5_servicesdir}/
 %{_kf5_sharedir}/kde4/
+%{_kf5_sharedir}/dbus-1/services/org.kde.khelpcenter.service
 %{_kf5_sharedir}/khelpcenter/
 %{_libexecdir}/khc_*
 

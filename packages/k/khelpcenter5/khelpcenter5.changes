@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:51:41 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:19:00 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:14:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Make KHelpCenter DBusActivatable
+  * Use org.kde.khelpcenter as desktop id (and appstream id)
+  * Add some keywords to desktop file to assist finding the app
+
+-------------------------------------------------------------------
 Mon Mar  7 10:50:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %_libdir/libexec with %_libexecdir (boo#1174075)
