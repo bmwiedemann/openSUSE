@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:52:34 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:21:27 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:14:57 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Fix missing KCoreAddons link
+  * build: Pass the version to project()
+  * Add 2 formats to KGameClock
+  * Port to KNS3::QtQuickDialogWrapper
+  * Fix hour calculation from seconds.
+  * Fix Qt version hereFix Qt version hereFix Qt version here
+  * Fix find_dep
+  * Adapt build system to build against qt6
+  * Fix some compile error against qt6
+  * Add include (qt6)
+
+-------------------------------------------------------------------
 Tue Mar  1 09:58:01 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
