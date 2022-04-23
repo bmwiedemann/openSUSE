@@ -22,7 +22,7 @@ Release:        0
 Summary:        Tools to Check ELF Files for Security Relevant Properties
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
-URL:            http://www.gentoo.org/proj/en/hardened/pax-utils.xml
+URL:            https://wiki.gentoo.org/wiki/Hardened/PaX_Utilities
 Source:         https://ftp.halifax.rwth-aachen.de/gentoo/distfiles/pax-utils-%{version}.tar.xz
 # backports
 # openSUSE patches
