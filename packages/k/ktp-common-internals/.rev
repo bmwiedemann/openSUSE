@@ -303,4 +303,12 @@
     <comment>Use %_libexecdir</comment>
     <requestid>960092</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>e68dc461b402d28f71ba543126d63632</srcmd5>
+    <version>22.04.0</version>
+    <time>1650752383</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 22.04.0</comment>
+    <requestid>971555</requestid>
+  </revision>
 </revisionlist>
