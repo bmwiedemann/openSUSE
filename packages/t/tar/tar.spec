@@ -1,7 +1,7 @@
 #
 # spec file for package tar
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,6 +48,7 @@ BuildRequires:  libselinux-devel
 Recommends:     %{name}-rmt = %{version}
 Recommends:     mt
 Recommends:     xz
+Recommends:     zstd
 Provides:       base:/bin/tar
 
 %description

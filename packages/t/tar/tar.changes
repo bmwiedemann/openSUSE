@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 13 02:38:42 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Add recommends to zstd, a modern fast compression type.
+
+-------------------------------------------------------------------
 Thu Oct 14 10:40:36 UTC 2021 - Bernhard Voelker <mail@bernhard-voelker.de>
 
 - tests-skip-time01-on-32bit-time_t.patch: Add patch to skip test
