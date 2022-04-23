@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:52:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:20:05 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:14:30 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Too many changes since 21.12.3, only listing bugfixes:
+  * Add support for DECSTR (Soft Terminal Reset) (kde#134892)
+  * Identify as VT2xx with DECCOLM and SIXEL (kde#450407)
+  * More robust reflow on zsh with semantic prompts (kde#447830)
+  * Switch focus when closing inactive tab with splits (kde#446830)
+  * Fix visual bell (kde#445520)
+  * Pass widget again to monitoring KNotifications (kde#443117)
+  * Pass widget again to KNotification on bell (kde#443117)
+  * Fix copying one single char (kde#448144)
+  * Make %w and %# work for bell notifications (kde#435644)
+  * Only enable maximize terminal button in split header bar when usable (kde#435029)
+  * Use tighter matching when finding the default profile file name (kde#447872)
+  * ViewSplitter will now consistently create even-spaced splits (kde#447074)
+  * TerminalPainter: Pass nextPos to hasSameWidth (kde#446655)
+  * Kate-like touchscreen scrolling support (kde#437553)
+  * Handle changing cursor shape property without creating a new profile (kde#445590)
+  * Disconnect view/session after drag-and-drop (kde#442238)
+  * Improve performance of outputting text to screen (kde#443885)
+
+-------------------------------------------------------------------
 Tue Mar  1 09:57:34 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3

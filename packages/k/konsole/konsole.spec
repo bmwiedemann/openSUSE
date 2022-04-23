@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           konsole
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        KDE Terminal
 License:        GPL-2.0-or-later
@@ -98,14 +98,13 @@ This package provides KPart of the Konsole application.
 Summary:        Translations for package %{name}
 Group:          System/Localization
 Requires:       %{name}-part = %{version}
-Supplements:    (bundle-lang-other and %{name}-part)
 Provides:       %{name}-lang = %{version}
 Obsoletes:      %{name}-lang < %{version}
 Provides:       %{name}-part-lang-all = %{version}
 BuildArch:      noarch
 
 %description -n %{name}-part-lang
-Provides translations for the "%{name}" package.
+Provides translations for the "konsole-part" package.
 %endif
 
 %prep
@@ -141,7 +140,10 @@ Provides translations for the "%{name}" package.
 %license COPYING
 %doc README.md
 %dir %{_kf5_plugindir}/konsoleplugins
-%dir %{_kf5_sharedir}/khotkeys
+%dir %{_kf5_sharedir}/kconf_update
+%dir %{_kf5_libdir}/kconf_update_bin
+%dir %{_kf5_sharedir}/kio
+%dir %{_kf5_sharedir}/kio/servicemenus
 %doc %lang(en) %{_kf5_htmldir}/en/konsole/
 %{_kf5_applicationsdir}/konsolesu.desktop
 %{_kf5_applicationsdir}/org.kde.konsole.desktop
@@ -150,10 +152,12 @@ Provides translations for the "%{name}" package.
 %{_kf5_bindir}/konsoleprofile
 %{_kf5_iconsdir}/hicolor/*/apps/utilities-terminal_su.png
 %{_kf5_knsrcfilesdir}/konsole.knsrc
+%{_kf5_plugindir}/konsoleplugins/konsole_quickcommandsplugin.so
 %{_kf5_plugindir}/konsoleplugins/konsole_sshmanagerplugin.so
-%{_kf5_servicesdir}/ServiceMenus/
-%{_kf5_sharedir}/khotkeys/konsole.khotkeys
 %{_kf5_libdir}/libkonsoleapp.so.*
+%{_kf5_sharedir}/kio/servicemenus/konsolerun.desktop
+%{_kf5_sharedir}/kconf_update/konsole_globalaccel.upd
+%{_kf5_libdir}/kconf_update_bin/konsole_globalaccel
 
 %files part
 %{_kf5_debugdir}/konsole.categories
