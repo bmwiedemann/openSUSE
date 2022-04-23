@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 19 11:17:08 UTC 2022 - lnussel@suse.de
+
+- Update to version 84.87+git20220419.bf51b75:
+  * add Yama LSM sysctl setting and description
+  * Stop lowering the inotify limit
+  * move DIR_COLORS to where ls.bash is
+
+-------------------------------------------------------------------
 Mon Apr 11 07:35:07 UTC 2022 - lnussel@suse.de
 
 - Update to version 84.87+git20220411.adfb912:

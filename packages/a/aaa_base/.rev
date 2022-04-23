@@ -4006,4 +4006,15 @@
   * move bash completion back to -extras (bsc#1187213)</comment>
     <requestid>968369</requestid>
   </revision>
+  <revision rev="488" vrev="1">
+    <srcmd5>f78f9e71bd8e32ac0d7c2034f0956993</srcmd5>
+    <version>84.87+git20220419.bf51b75</version>
+    <time>1650735888</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20220419.bf51b75:
+  * add Yama LSM sysctl setting and description
+  * Stop lowering the inotify limit
+  * move DIR_COLORS to where ls.bash is</comment>
+    <requestid>970751</requestid>
+  </revision>
 </revisionlist>
