@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:52:46 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:22:03 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:15:09 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Too many changes since 21.12.3, only listing bugfixes:
+  * Make refreshing devices more intuitive in the GUI. (kde#450355)
+  * Add an "Open in Partition Manager" solid Action (kde#446897)
+  * Accept devices starting with /dev (kde#446899)
+  * Improve tab focus order in create partition dialog. (kde#444698)
+  * Select device using a command line option (kde#43485)
+
+-------------------------------------------------------------------
 Fri Mar 11 10:52:42 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update license to GPL-3.0-or-later.

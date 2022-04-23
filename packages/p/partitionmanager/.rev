@@ -81,4 +81,12 @@
     <comment>- Update license to GPL-3.0-or-later.</comment>
     <requestid>961055</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5f67e737171399d604b542dadadc85f3</srcmd5>
+    <version>22.04.0</version>
+    <time>1650736005</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 22.04.0</comment>
+    <requestid>971599</requestid>
+  </revision>
 </revisionlist>

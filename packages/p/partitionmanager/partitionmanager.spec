@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           partitionmanager
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Easily manage disks, partitions and file systems on your KDE Desktop
 License:        GPL-3.0-or-later
@@ -48,6 +48,7 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
 # Update for each minor change
 BuildRequires:  cmake(KPMcore) >= 21.12
+BuildRequires:  cmake(PolkitQt5-1)
 BuildRequires:  cmake(Qt5Core) >= 5.14.0
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
@@ -86,12 +87,15 @@ systems.
 %doc README.md
 %license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/partitionmanager/
+%dir %{_kf5_sharedir}/solid
+%dir %{_kf5_sharedir}/solid/actions
 %{_kf5_applicationsdir}/org.kde.partitionmanager.desktop
 %{_kf5_appstreamdir}/org.kde.partitionmanager.appdata.xml
 %{_kf5_bindir}/partitionmanager
 %{_kf5_configkcfgdir}/partitionmanager.kcfg
 %{_kf5_iconsdir}/hicolor/*/apps/partitionmanager.svg
 %{_kf5_kxmlguidir}/partitionmanager/
+%{_kf5_sharedir}/solid/actions/open_in_partitionmanager.desktop
 
 %if %{with released}
 %files lang -f partitionmanager.lang
