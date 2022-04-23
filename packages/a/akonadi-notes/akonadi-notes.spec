@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           akonadi-notes
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Library to implement management of notes in Akonadi
 License:        LGPL-2.1-or-later
@@ -91,12 +91,8 @@ library in other applications.
 %{_kf5_libdir}/libKF5AkonadiNotes.so.*
 
 %files devel
-%dir %{_kf5_includedir}/Akonadi
-%dir %{_kf5_includedir}/akonadi
 %{_kf5_cmakedir}/KF5AkonadiNotes/
-%{_kf5_includedir}/Akonadi/Notes/
-%{_kf5_includedir}/akonadi-notes_version.h
-%{_kf5_includedir}/akonadi/notes/
+%{_kf5_includedir}/AkonadiNotes/
 %{_kf5_libdir}/libKF5AkonadiNotes.so
 %{_kf5_mkspecsdir}/qt_AkonadiNotes.pri
 
