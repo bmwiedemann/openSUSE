@@ -524,4 +524,41 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
     <comment></comment>
     <requestid>951391</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>a508b8ae1b3846aa18c0fd85df630dc3</srcmd5>
+    <version>9.1.0</version>
+    <time>1650735916</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 9.1.0:
+  * Fix loading FriBiDi on Alpine #6165
+  * Added setting for converting GIF P frames to RGB #6150
+  * Allow 1 mode images to be inverted #6034
+  * Raise ValueError when trying to save empty JPEG #6159
+  * Always save TIFF with contiguous planar configuration #5973
+  * Connected discontiguous polygon corners #5980
+  * Ensure Tkinter hook is activated for getimage() #6032
+  * Use screencapture arguments to crop on macOS #6152
+  * Do not mark L mode JPEG as 1 bit in PDF #6151
+  * Added support for reading I;16R TIFF images #6132
+  * If an error occurs after creating a file, remove the file #6134
+  * Fixed calling DisplayViewer or XVViewer without a title #6136
+  * Retain RGBA transparency when saving multiple GIF frames #6128
+  * Save additional ICO frames with other bit depths if supplied #6122
+  * Handle EXIF data truncated to just the header #6124
+  * Added support for reading BMP images with RLE8 compression #6102
+  * Support Python distributions where _tkinter is compiled in #6006
+  * Added support for PPM arbitrary maxval #6119
+  * Added BigTIFF reading #6097
+  * When converting, clip I;16 to be unsigned, not signed #6112
+  * Fixed loading L mode GIF with transparency #6086
+  * Improved handling of PPM header #5121
+  * Reset size when seeking away from &quot;Large Thumbnail&quot; MPO frame #6101
+  * Replace requirements.txt with extras #6072
+  * Added PyEncoder and support BLP saving #6069
+  * Handle TGA images with packets that cross scan lines #6087
+  * Added FITS reading #6056
+  * Added rawmode argument to Image.getpalette() #6061
+  * Fixed BUFR, GRIB and HDF5 stub saving #6071</comment>
+    <requestid>967882</requestid>
+  </revision>
 </revisionlist>
