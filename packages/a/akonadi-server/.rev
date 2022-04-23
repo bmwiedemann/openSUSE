@@ -766,4 +766,12 @@ Mainly intended for Leap 42.3 to prevent upgrade problems. (forwarded request 49
   * 0001-Apparmor-Also-look-in-usr-libexec.patch</comment>
     <requestid>961054</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>9636155d3e335ca13868d5d74e65ee65</srcmd5>
+    <version>22.04.0</version>
+    <time>1650752340</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 22.04.0</comment>
+    <requestid>971385</requestid>
+  </revision>
 </revisionlist>

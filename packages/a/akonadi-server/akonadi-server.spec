@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           akonadi-server
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later
@@ -34,8 +34,6 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 Source99:       akonadi-server-rpmlintrc
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Apparmor-Also-look-in-usr-libexec.patch
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
@@ -251,11 +249,11 @@ This package contains AppArmor profiles for Akonadi.
 %{_kf5_bindir}/akonadi2xml
 %{_kf5_cmakedir}/KF5Akonadi
 %{_kf5_dbusinterfacesdir}/org.freedesktop.Akonadi.*.xml
+%{_kf5_includedir}/Akonadi/
 %{_kf5_includedir}/AkonadiAgentBase/
 %{_kf5_includedir}/AkonadiCore/
 %{_kf5_includedir}/AkonadiWidgets/
 %{_kf5_includedir}/AkonadiXml/
-%{_kf5_includedir}/akonadi/
 %{_kf5_includedir}/akonadi_version.h
 %{_kf5_libdir}/libKF5AkonadiAgentBase.so
 %{_kf5_libdir}/libKF5AkonadiCore.so
@@ -267,8 +265,6 @@ This package contains AppArmor profiles for Akonadi.
 %{_kf5_mkspecsdir}/qt_AkonadiWidgets.pri
 %{_kf5_mkspecsdir}/qt_AkonadiXml.pri
 %{_kf5_plugindir}/designer/
-%dir %{_kf5_sharedir}/kdevappwizard/
-%{_kf5_sharedir}/kdevappwizard/templates/
 
 %files apparmor
 %config(noreplace) %{_sysconfdir}/apparmor.d/mariadbd_akonadi

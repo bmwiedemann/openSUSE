@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:50:33 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:16:43 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:13:24 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Apparmor: Also look in /usr/libexec
+  * Fix some qt6 compile error
+  * Fix compile without deprecated method
+  * Make it compile against qt6
+  * Fix install private includes (qt6 compile fix)
+  * Fix cmake variable
+  * Show missing header in qtc6
+  * Fix some qtc6 compile error
+  * Check executables exist in PATH before passing them to QProcess
+  * kaccounts-integration is Linux/FreeBSD only - so don't try to use it elsewhere
+  * Remove kplugindesigner dep
+  * Fix build with GCC 12 (standard attributes in middle of decl-specifiers)
+  * Fix compile error against qt6
+  * Change build system for building against qt6
+  * Remove dependence on Boost
+  * Update postgres paths
+  * Fix brackets issue
+  * Use capturedView directly
+  * Enable new CI on FreeBSD
+  * Switch to new GitLab CI tooling
+  * Fix kaccounts-integration dep
+  * Fix warning
+  * Port deprecated I18N_NOOP macro
+- Drop patch, now upstream:
+  * akonadi-server/0001-Apparmor-Also-look-in-usr-libexec.patch
+
+-------------------------------------------------------------------
 Fri Mar 11 10:38:21 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch:
