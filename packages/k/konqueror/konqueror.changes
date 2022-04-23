@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:52:02 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:20:02 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:14:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Remove qDebug
+  * Make it clearer where the user should enter the custom
+    start page (kde#449874)
+  * Clean up defunct opensearch classes
+  * Fix loading of searchbar plugin
+  * Fix search plugin not showing up in config dialog
+  * Remove unnecessary include
+  * Move wallet from WebEnginePage to WebEnginePart
+  * Inject scripts in parts created by WebEnginePage::createWindow
+  * Enable ScreenCapture attribute in WebEnginePart (kde#450386)
+  * Ignore query and fragment when checking permissions
+  * Port konqueror plugins to use embedded json metadata
+  * Avoid having more than one certificate error dialog at the same
+    time in the same window
+  * Perform spellchecker setup on creation (kde#434173)
+  * Fix speech getting cancelled early in ttsplugin
+  * kget plugin: Define the translation domain at the CMake level
+  * Add TryExec property to kget plugin
+  * Import kget plugin
+  * Port KPart plugins to custom KonqParts::Plugin
+  * Import KParts::Plugin class in LibKonq
+  * Port from KPluginSelector to KPluginWidget
+  * appstream: Remove duplicated release info
+  * This I18N_NOOP is not necessary here
+  * Add GitLab CI
+  * Avoid possible endless loops when opening URLs
+  * Remove check if KCMs are authorized
+
+-------------------------------------------------------------------
 Tue Mar  1 09:57:33 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3

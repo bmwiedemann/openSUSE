@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           konqueror
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        KDE File Manager and Browser
 # Note for legal: konqueror-17.04.2/webenginepart/autotests/webengine_testutils.h is Qt commercial OR GPL-3.0
@@ -138,11 +138,6 @@ Development package for the konqueror libraries.
 %dir %{_kf5_sharedir}/konqsidebartng/plugins
 %dir %{_kf5_sharedir}/kcontrol
 %dir %{_kf5_sharedir}/kcontrol/pics
-%dir %{_kf5_sharedir}/khtml
-%dir %{_kf5_sharedir}/khtml/kpartplugins
-%dir %{_kf5_sharedir}/kwebkitpart
-%dir %{_kf5_sharedir}/kwebkitpart/kpartplugins
-%dir %{_kf5_sharedir}/webenginepart/kpartplugins
 %dir %{_kf5_sharedir}/kxmlgui5
 %dir %{_kf5_plugindir}/konqueror_kcms
 %doc %lang(en) %{_kf5_htmldir}/en
@@ -195,7 +190,16 @@ Development package for the konqueror libraries.
 %dir %{_kf5_kxmlguidir}/fsview
 %dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/parts
-%dir %{_kf5_sharedir}/dolphinpart
+%dir %{_kf5_plugindir}/khtml
+%dir %{_kf5_plugindir}/khtml/kpartplugins
+%dir %{_kf5_plugindir}/dolphinpart
+%dir %{_kf5_plugindir}/dolphinpart/kpartplugins
+%dir %{_kf5_plugindir}/konqueror
+%dir %{_kf5_plugindir}/konqueror/kpartplugins
+%dir %{_kf5_plugindir}/kwebkitpart
+%dir %{_kf5_plugindir}/kwebkitpart/kpartplugins
+%dir %{_kf5_plugindir}/webenginepart
+%dir %{_kf5_plugindir}/webenginepart/kpartplugins
 %{_kf5_bindir}/fsview
 %{_kf5_bindir}/kcreatewebarchive
 %{_kf5_configkcfgdir}/kcreatewebarchive.kcfg
@@ -213,35 +217,53 @@ Development package for the konqueror libraries.
 %{_kf5_plugindir}/autorefresh.so
 %{_kf5_plugindir}/babelfishplugin.so
 %{_kf5_plugindir}/dirfilterplugin.so
+%{_kf5_plugindir}/khtmlttsplugin.so
 %{_kf5_plugindir}/konqueror_kcms/kcm_history.so
 %{_kf5_plugindir}/kf5/parts/fsviewpart.so
 %{_kf5_plugindir}/kf5/parts/konq_sidebar.so
 %{_kf5_plugindir}/khtmlsettingsplugin.so
-%{_kf5_plugindir}/khtmlttsplugin.so
-%{_kf5_plugindir}/kimgallery.so
-%{_kf5_plugindir}/konq_shellcmdplugin.so
 %{_kf5_plugindir}/konqsidebar_bookmarks.so
 %{_kf5_plugindir}/konqsidebar_history.so
 %{_kf5_plugindir}/konqsidebar_places.so
 %{_kf5_plugindir}/konqsidebar_tree.so
-%{_kf5_plugindir}/searchbarplugin.so
+%{_kf5_plugindir}/konqueror_kget_browser_integration.so
 %{_kf5_plugindir}/uachangerplugin.so
 %{_kf5_plugindir}/webarchiverplugin.so
 %{_kf5_plugindir}/webarchivethumbnail.so
-%{_kf5_servicesdir}/akregator_konqplugin.desktop
+%{_kf5_plugindir}/dolphinpart/kpartplugins/kimgallery.so
+%{_kf5_plugindir}/dolphinpart/kpartplugins/konq_shellcmdplugin.so
+%{_kf5_plugindir}/khtml/kpartplugins/akregatorkonqfeediconkhtml_kpartplugins.so
+%{_kf5_plugindir}/khtml/kpartplugins/autorefreshkhtml_kpartplugins.so
+%{_kf5_plugindir}/khtml/kpartplugins/babelfishpluginkhtml_kpartplugins.so
+%{_kf5_plugindir}/khtml/kpartplugins/dirfilterpluginkhtml_kpartplugins.so
+%{_kf5_plugindir}/khtml/kpartplugins/khtmlsettingspluginkhtml_kpartplugins.so
+%{_kf5_plugindir}/khtml/kpartplugins/khtmlttspluginkhtml_kpartplugins.so
+%{_kf5_plugindir}/khtml/kpartplugins/konqueror_kget_browser_integrationkhtml_kpartplugins.so
+%{_kf5_plugindir}/khtml/kpartplugins/uachangerpluginkhtml_kpartplugins.so
+%{_kf5_plugindir}/khtml/kpartplugins/webarchiverpluginkhtml_kpartplugins.so
+%{_kf5_plugindir}/konqueror/kpartplugins/searchbarplugin.so
+%{_kf5_plugindir}/kwebkitpart/kpartplugins/akregatorkonqfeediconkwebkitpart_kpartplugins.so
+%{_kf5_plugindir}/kwebkitpart/kpartplugins/autorefreshkwebkitpart_kpartplugins.so
+%{_kf5_plugindir}/kwebkitpart/kpartplugins/babelfishpluginkwebkitpart_kpartplugins.so
+%{_kf5_plugindir}/kwebkitpart/kpartplugins/dirfilterpluginkwebkitpart_kpartplugins.so
+%{_kf5_plugindir}/kwebkitpart/kpartplugins/khtmlsettingspluginkwebkitpart_kpartplugins.so
+%{_kf5_plugindir}/kwebkitpart/kpartplugins/khtmlttspluginkwebkitpart_kpartplugins.so
+%{_kf5_plugindir}/kwebkitpart/kpartplugins/konqueror_kget_browser_integrationkwebkitpart_kpartplugins.so
+%{_kf5_plugindir}/kwebkitpart/kpartplugins/uachangerpluginkwebkitpart_kpartplugins.so
+%{_kf5_plugindir}/kwebkitpart/kpartplugins/webarchiverpluginkwebkitpart_kpartplugins.so
+%{_kf5_plugindir}/webenginepart/kpartplugins/akregatorkonqfeediconwebenginepart_kpartplugins.so
+%{_kf5_plugindir}/webenginepart/kpartplugins/autorefreshwebenginepart_kpartplugins.so
+%{_kf5_plugindir}/webenginepart/kpartplugins/babelfishpluginwebenginepart_kpartplugins.so
+%{_kf5_plugindir}/webenginepart/kpartplugins/dirfilterpluginwebenginepart_kpartplugins.so
+%{_kf5_plugindir}/webenginepart/kpartplugins/khtmlsettingspluginwebenginepart_kpartplugins.so
+%{_kf5_plugindir}/webenginepart/kpartplugins/khtmlttspluginwebenginepart_kpartplugins.so
+%{_kf5_plugindir}/webenginepart/kpartplugins/konqueror_kget_browser_integrationwebenginepart_kpartplugins.so
+%{_kf5_plugindir}/webenginepart/kpartplugins/uachangerpluginwebenginepart_kpartplugins.so
+%{_kf5_plugindir}/webenginepart/kpartplugins/webarchiverpluginwebenginepart_kpartplugins.so
 %{_kf5_servicesdir}/fsview_part.desktop
 %{_kf5_servicesdir}/konq_sidebartng.desktop
 %{_kf5_servicesdir}/webarchivethumbnail.desktop
 %{_kf5_sharedir}/akregator/
-%{_kf5_sharedir}/dolphinpart/kpartplugins/
-%{_kf5_sharedir}/khtml/kpartplugins/akregator_konqfeedicon.*
-%{_kf5_sharedir}/khtml/kpartplugins/autorefresh.*
-%{_kf5_sharedir}/khtml/kpartplugins/khtmlsettingsplugin.*
-%{_kf5_sharedir}/khtml/kpartplugins/plugin_babelfish.*
-%{_kf5_sharedir}/khtml/kpartplugins/plugin_translator.*
-%{_kf5_sharedir}/khtml/kpartplugins/plugin_webarchiver.*
-%{_kf5_sharedir}/khtml/kpartplugins/khtmltts.*
-%{_kf5_sharedir}/khtml/kpartplugins/uachangerplugin.*
 %{_kf5_sharedir}/konqsidebartng/entries/bookmarks.desktop
 %{_kf5_sharedir}/konqsidebartng/entries/fonts.desktop
 %{_kf5_sharedir}/konqsidebartng/entries/history.desktop
@@ -254,22 +276,6 @@ Development package for the konqueror libraries.
 %{_kf5_sharedir}/konqsidebartng/plugins/konqsidebar_history.desktop
 %{_kf5_sharedir}/konqsidebartng/plugins/konqsidebar_places.desktop
 %{_kf5_sharedir}/konqsidebartng/plugins/konqsidebar_tree.desktop
-%{_kf5_sharedir}/kwebkitpart/kpartplugins/akregator_konqfeedicon.*
-%{_kf5_sharedir}/kwebkitpart/kpartplugins/autorefresh.*
-%{_kf5_sharedir}/kwebkitpart/kpartplugins/khtmlsettingsplugin.*
-%{_kf5_sharedir}/kwebkitpart/kpartplugins/plugin_babelfish.*
-%{_kf5_sharedir}/kwebkitpart/kpartplugins/plugin_translator.*
-%{_kf5_sharedir}/kwebkitpart/kpartplugins/plugin_webarchiver.*
-%{_kf5_sharedir}/kwebkitpart/kpartplugins/khtmltts.*
-%{_kf5_sharedir}/kwebkitpart/kpartplugins/uachangerplugin.*
-%{_kf5_sharedir}/webenginepart/kpartplugins/akregator_konqfeedicon.*
-%{_kf5_sharedir}/webenginepart/kpartplugins/autorefresh.*
-%{_kf5_sharedir}/webenginepart/kpartplugins/khtmlsettingsplugin.*
-%{_kf5_sharedir}/webenginepart/kpartplugins/plugin_babelfish.rc
-%{_kf5_sharedir}/webenginepart/kpartplugins/plugin_translator.desktop
-%{_kf5_sharedir}/webenginepart/kpartplugins/plugin_webarchiver.*
-%{_kf5_sharedir}/webenginepart/kpartplugins/khtmltts.*
-%{_kf5_sharedir}/webenginepart/kpartplugins/uachangerplugin.*
 
 %files devel
 %{_kf5_cmakedir}/KF5Konq/
