@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           akonadi-search
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Framework for searching and managing PIM metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -105,20 +105,19 @@ Development files for the AkonadiSearch library.
 %files
 %dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/krunner
+%dir %{_kf5_plugindir}/kf5/krunner/kcms
 %dir %{_kf5_sharedir}/akonadi
 %dir %{_kf5_sharedir}/akonadi/agents
 %{_kf5_bindir}/akonadi_indexing_agent
 %{_kf5_debugdir}/akonadi-search.categories
 %{_kf5_debugdir}/akonadi-search.renamecategories
 %{_kf5_plugindir}/akonadi/
-%{_kf5_plugindir}/kcm_krunner_pimcontacts.so
 %{_kf5_plugindir}/kf5/krunner/krunner_pimcontacts.so
-%{_kf5_servicesdir}/plasma-krunner-pimcontacts_config.desktop
+%{_kf5_plugindir}/kf5/krunner/kcms/kcm_krunner_pimcontacts.so
 %{_kf5_sharedir}/akonadi/agents/akonadiindexingagent.desktop
 
 %files devel
 %{_kf5_cmakedir}/KF5AkonadiSearch/
-%{_kf5_includedir}/*.h
 %{_kf5_includedir}/AkonadiSearch/
 %{_kf5_libdir}/libKF5AkonadiSearchCore.so
 %{_kf5_libdir}/libKF5AkonadiSearchDebug.so
