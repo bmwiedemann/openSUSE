@@ -1,0 +1,24 @@
+From 085b191e39eeaa25549d3ecea15f7aaca1f6d35d Mon Sep 17 00:00:00 2001
+From: Luca Beltrame <lbeltrame@kde.org>
+Date: Wed, 9 Mar 2022 06:15:22 +0100
+Subject: [PATCH] Make sure the reminder daemon is not started by default
+
+---
+ reminder-daemon/org.kde.kalendarac.desktop | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/reminder-daemon/org.kde.kalendarac.desktop b/reminder-daemon/org.kde.kalendarac.desktop
+index 0c175d4..e80f8da 100644
+--- a/reminder-daemon/org.kde.kalendarac.desktop
++++ b/reminder-daemon/org.kde.kalendarac.desktop
+@@ -44,6 +44,6 @@ GenericName[uk]=Клієнт фонової служби нагадувань
+ GenericName[x-test]=xxReminder Daemon Clientxx
+ Terminal=false
+ X-KDE-autostart-phase=2
+-X-KDE-autostart-condition=kalendaracrc:General:Autostart:true
++X-KDE-autostart-condition=kalendaracrc:General:Autostart:false
+ X-DBUS-StartupType=Unique
+ 
+-- 
+2.35.3
+

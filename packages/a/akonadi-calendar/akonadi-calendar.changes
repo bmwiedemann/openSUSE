@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:50:34 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:16:44 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:13:24 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Fix compile without deprecated method
+  * Move the reminder daemon from Kalendar here
+  * Explicitly link against MailTransport where needed
+  * Fix compile against qt6
+  * Fix include
+  * Use new akonadi calendar install include
+  * Make it compile against qt6
+  * Use properly namespaced includes from KIdentityManagement
+  * Use upper case includes
+  * Fix install headers
+  * Adapt build system for building against qt6
+  * Determine active alarms without copying incidences
+  * Fix cppcheck warning
+  * Correct invalid paths used to PIM projects
+
+--------------------------------------------------------------------
+Wed Mar  9 05:17:38 UTC 2022 - Luca Beltrame <lbeltrame@kde.org>
+
+- Add patch to disable the autostart of the new reminder daemon:
+  * 0001-Make-sure-the-reminder-daemon-is-not-started-by-defa.patch
+
+-------------------------------------------------------------------
 Tue Mar  1 09:56:28 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3

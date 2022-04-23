@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           akonadi-calendar
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Akonadi calendar integration
 License:        LGPL-2.1-or-later
@@ -32,6 +32,8 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-OPENSUSE
+Patch0:         0001-Make-sure-the-reminder-daemon-is-not-started-by-defa.patch
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5AkonadiContact)
@@ -43,6 +45,7 @@ BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IdentityManagement)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5MailTransport)
+BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Test)
@@ -68,6 +71,14 @@ Requires:       libKF5AkonadiCalendar5 = %{version}
 
 %description -n akonadi-plugin-calendar
 This package provides plugins required by PIM applications to read and write calendar data.
+
+%package -n kalendarac
+Summary:        Reminder daemon client
+# Moved from kalendar 1.0.0 to akonadi-calendar
+Conflicts:      kalendar = 1.0.0
+
+%description -n kalendarac
+Kalendarac is a reminder daemon client for calendar events.
 
 %package devel
 Summary:        KDE PIM Libraries: Build Environment
@@ -106,6 +117,7 @@ Development package for akonadi-calendar.
 %{_kf5_debugdir}/*.categories
 %{_kf5_debugdir}/*.renamecategories
 %{_kf5_libdir}/libKF5AkonadiCalendar.so.*
+%exclude %{_kf5_debugdir}/org_kde_kalendarac.categories
 
 %files -n akonadi-plugin-calendar
 %{_kf5_plugindir}/akonadi_serializer_kcalcore.so
@@ -114,13 +126,16 @@ Development package for akonadi-calendar.
 %dir %{_kf5_sharedir}/akonadi/plugins/serializer
 %{_kf5_sharedir}/akonadi/plugins/serializer/akonadi_serializer_kcalcore.desktop
 
+%files -n kalendarac
+%{_kf5_bindir}/kalendarac
+%{_kf5_configdir}/autostart/org.kde.kalendarac.desktop
+%{_kf5_debugdir}/org_kde_kalendarac.categories
+%{_kf5_notifydir}/kalendarac.notifyrc
+%{_kf5_sharedir}/dbus-1/services/org.kde.kalendarac.service
+
 %files devel
-%dir %{_kf5_includedir}/Akonadi
-%dir %{_kf5_includedir}/akonadi
 %{_kf5_cmakedir}/KF5AkonadiCalendar/
-%{_kf5_includedir}/Akonadi/Calendar/
-%{_kf5_includedir}/akonadi-calendar_version.h
-%{_kf5_includedir}/akonadi/calendar/
+%{_kf5_includedir}/AkonadiCalendar/
 %{_kf5_libdir}/libKF5AkonadiCalendar.so
 %{_kf5_mkspecsdir}/qt_AkonadiCalendar.pri
 
