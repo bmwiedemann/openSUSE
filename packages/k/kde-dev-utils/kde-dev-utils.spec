@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kde-dev-utils
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        KDE SDK Package
 License:        GPL-2.0-only AND GFDL-1.2-only AND LGPL-2.0-only
@@ -49,7 +49,6 @@ This package suggests the packages, built from the kde-dev-utils module.
 %package -n kpartloader
 Summary:        Development tool to test KParts
 Group:          System/GUI/KDE
-Recommends:     kpartloader-lang
 
 %description -n kpartloader
 kpartloader is a debugging tool used to test
@@ -61,7 +60,6 @@ loading of KParts.
 %package -n kuiviewer
 Summary:        UI Files Viewer
 Group:          Development/Tools/Other
-Recommends:     kuiviewer-lang
 
 %description -n kuiviewer
 Displays Qt Designer UI files
