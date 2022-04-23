@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kompare
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        File Comparator
 License:        GPL-2.0-only AND GFDL-1.2-only
@@ -92,7 +92,8 @@ export CFLAGS="%{optflags} -fPIC"
 %doc %lang(en) %{_kf5_htmldir}/en/*/
 %dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/parts
-%dir %{_kf5_servicesdir}/ServiceMenus
+%dir %{_kf5_sharedir}/kio
+%dir %{_kf5_sharedir}/kio/servicemenus
 %{_kf5_applicationsdir}/org.kde.kompare.desktop
 %{_kf5_appstreamdir}/org.kde.kompare.appdata.xml
 %{_kf5_bindir}/kompare
@@ -101,7 +102,7 @@ export CFLAGS="%{optflags} -fPIC"
 %{_kf5_libdir}/libkomparedialogpages.so.*
 %{_kf5_libdir}/libkompareinterface.so.*
 %{_kf5_plugindir}/kf5/parts/kompare*part.so
-%{_kf5_servicesdir}/ServiceMenus/kompare.desktop
+%{_kf5_sharedir}/kio/servicemenus/kompare.desktop
 %{_kf5_servicesdir}/kompare*.desktop
 %{_kf5_servicetypesdir}/kompare*.desktop
 
