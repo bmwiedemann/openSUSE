@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:52:47 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:22:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:15:09 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Use new KDE_INSTALL_KXMLGUIDIR
+  * Change default solved color from "gray-ish" to "blue-ish"
+  * Use "modern" connect syntax
+  * Q_DECL_OVERRIDE -> override
+  * 0 -> nullptr
+  * Always mark full lines with wrong streak sizes as completely unsatisfied (kde#435211)
+  * Fix difficulty of mobile phone level: "very easy" instead of "hard" (kde#418210)
+  * Remove Qt6 CI that doesn't pass
+  * Refresh stale time display in the status bar at end of game (kde#418857)
+  * Kdelibs4ConfigMigrator was removed in qt6
+  * Adapt build system for building against qt6
+  * Use QStringLiteral
+  * Prepare to build against qt6
+  * Migration code will be removed in qt6
+    + AA_UseHighDpiPixmaps is enabled by default in qt6
+
+-------------------------------------------------------------------
 Tue Mar  1 09:58:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
