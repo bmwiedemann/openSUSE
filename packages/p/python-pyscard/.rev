@@ -95,4 +95,12 @@
     <comment></comment>
     <requestid>929036</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>82438a641f3d2a284966d02bc527086b</srcmd5>
+    <version>2.0.2</version>
+    <time>1650736033</time>
+    <user>dimstar_suse</user>
+    <comment>- use https url</comment>
+    <requestid>972314</requestid>
+  </revision>
 </revisionlist>

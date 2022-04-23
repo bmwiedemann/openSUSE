@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 19 12:57:59 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- use https url
+
+-------------------------------------------------------------------
 Wed Nov  3 09:46:11 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro
