@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kpkpass
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Library to parse Passbook files
 License:        LGPL-2.1-or-later
@@ -43,7 +43,9 @@ commonly used for hotel and flight reservations.
 %package -n libKPimPkPass5
 Summary:        Library to parse Passbook files
 Group:          System/GUI/KDE
+%if %{pkg_vcmp shared-mime-info < 2.2}
 Requires:       %{name}
+%endif
 
 %description -n libKPimPkPass5
 kpkpass is a library to read and parse Apple Passbook files, such as the ones
@@ -73,13 +75,15 @@ to build programs that use the kpkpass library.
 %post -n libKPimPkPass5 -p /sbin/ldconfig
 %postun -n libKPimPkPass5 -p /sbin/ldconfig
 
+%if %{pkg_vcmp shared-mime-info < 2.2}
+%files
+%{_datadir}/mime/packages/application-vnd-apple-pkpass.xml
+%endif
+
 %files -n libKPimPkPass5
 %license LICENSES/*
 %{_kf5_libdir}/libKPimPkPass.so.*
 %{_kf5_debugdir}/*.categories
-
-%files
-%{_datadir}/mime/packages/application-vnd-apple-pkpass.xml
 
 %files devel
 %dir %{_includedir}/KPim/
