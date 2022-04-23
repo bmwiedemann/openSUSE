@@ -98,4 +98,12 @@
     <comment>Use %_libexecdir</comment>
     <requestid>960094</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>337b593771a588d04a5fad7e447ac855</srcmd5>
+    <version>22.04.0</version>
+    <time>1650736015</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix soversion (forwarded request 972105 from wolfi323)</comment>
+    <requestid>972109</requestid>
+  </revision>
 </revisionlist>

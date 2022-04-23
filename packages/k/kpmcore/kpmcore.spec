@@ -19,9 +19,9 @@
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
-%global sover 11
+%global sover 12
 Name:           kpmcore
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        KDE Partition Manager core library
 License:        GPL-3.0-only
@@ -32,22 +32,6 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# Upstream changes related to boo#1178848
-Patch0:         0001-Add-new-job-to-change-permission-of-the-newly-create.patch
-Patch1:         0001-Move-the-changePosixPermission-to-the-Filesystem.patch
-Patch2:         0001-Add-posix-permissions-on-filesystems-used-in-posix-s.patch
-Patch3:         0001-Allow-running-chmod-in-externalcommand-helper.patch
-Patch4:         0001-Add-support-for-copying-unknown-partitions.patch
-Patch5:         0001-Fix-davfs-entries-being-omitted-from-fstab-file.patch
-Patch6:         0001-Changing-swap-labels-while-swap-is-active-does-not-s.patch
-Patch7:         0001-Update-description-of-polkit-helper.patch
-Patch8:         0001-Fix-a-typo-in-definition-of-MiB-constant.patch
-Patch9:         0001-Set-false-as-the-default-return-value-and-change-it-.patch
-Patch10:        0001-Add-a-few-more-comments-explaining-copy-direction.patch
-Patch11:        0001-Rename-blockSize-to-chunkSize-to-avoid-confusion-wit.patch
-Patch12:        0001-Restrict-CreateFile-method-to-WriteFstab-method-in-p.patch
-Patch13:        0001-Rename-variables-into-more-appropriate-fstabPath-and.patch
-Patch14:        0001-Add-a-comment-about-WriteOnly.patch
 BuildRequires:  extra-cmake-modules
 %if 0%{?suse_version} <= 1500
 BuildRequires:  gcc10-c++
@@ -115,8 +99,7 @@ Main kpmcore library.
 
 %files
 %{_kf5_dbuspolicydir}/org.kde.kpmcore.*.conf
-%{_kf5_plugindir}/libpmdummybackendplugin.so
-%{_kf5_plugindir}/libpmsfdiskbackendplugin.so
+%{_kf5_plugindir}/kpmcore/
 %{_kf5_sharedir}/dbus-1/system-services/org.kde.kpmcore.helperinterface.service
 %{_kf5_sharedir}/polkit-1/actions/org.kde.kpmcore.externalcommand.policy
 %{_libexecdir}/kpmcore_externalcommand
@@ -124,7 +107,7 @@ Main kpmcore library.
 %files -n libkpmcore%{sover}
 %license LICENSES/*
 %{_kf5_libdir}/libkpmcore.so.%{sover}
-%{_kf5_libdir}/libkpmcore.so.%{version}
+%{_kf5_libdir}/libkpmcore.so.*
 
 %files devel
 %{_includedir}/kpmcore/

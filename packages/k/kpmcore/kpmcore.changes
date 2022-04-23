@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Apr 22 09:21:39 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Fix soversion
+
+-------------------------------------------------------------------
+Mon Apr 18 07:52:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:20:23 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:14:36 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Too many changes since 21.12.3, only listing bugfixes:
+  * Fix infinite recursion in dummy backend. (kde#432704)
+  * Fix davfs entries being omitted from fstab file. (kde#447961)
+  * Add support for copying unknown partitions. (kde#447784)
+  * Switch to ntfsinfo to read NTFS usage. (kde#447248)
+  * Fix broken fstab when mount point includes space. (kde#446218)
+- Drop patches, now upstream:
+  * 0001-Add-new-job-to-change-permission-of-the-newly-create.patch
+  * 0001-Move-the-changePosixPermission-to-the-Filesystem.patch
+  * 0001-Add-posix-permissions-on-filesystems-used-in-posix-s.patch
+  * 0001-Allow-running-chmod-in-externalcommand-helper.patch
+  * 0001-Add-support-for-copying-unknown-partitions.patch
+  * 0001-Fix-davfs-entries-being-omitted-from-fstab-file.patch
+  * 0001-Changing-swap-labels-while-swap-is-active-does-not-s.patch
+  * 0001-Update-description-of-polkit-helper.patch
+  * 0001-Fix-a-typo-in-definition-of-MiB-constant.patch
+  * 0001-Set-false-as-the-default-return-value-and-change-it-.patch
+  * 0001-Add-a-few-more-comments-explaining-copy-direction.patch
+  * 0001-Rename-blockSize-to-chunkSize-to-avoid-confusion-wit.patch
+  * 0001-Restrict-CreateFile-method-to-WriteFstab-method-in-p.patch
+  * 0001-Rename-variables-into-more-appropriate-fstabPath-and.patch
+  * 0001-Add-a-comment-about-WriteOnly.patch
+
+-------------------------------------------------------------------
 Mon Mar  7 10:51:41 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %_libdir/libexec with %_libexecdir (boo#1174075)
