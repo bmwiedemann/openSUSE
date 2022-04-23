@@ -20,7 +20,7 @@
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 Name:           kdeconnect-kde
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Integration of Android with Linux desktops
 License:        GPL-2.0-or-later
@@ -43,6 +43,7 @@ BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5KCMUtils)
@@ -159,7 +160,7 @@ install -D -m 0644 %{SOURCE101} \
 %{_datadir}/nautilus-python/extensions/
 %{_kf5_applicationsdir}/*.desktop
 %{_kf5_appstreamdir}/org.kde.kdeconnect.appdata.xml
-%{_kf5_appstreamdir}/org.kde.kdeconnect.kcm.appdata.xml
+%{_kf5_appstreamdir}/org.kde.kdeconnect.metainfo.xml
 %{_kf5_bindir}/kdeconnect-app
 %{_kf5_bindir}/kdeconnect-cli
 %{_kf5_bindir}/kdeconnect-handler

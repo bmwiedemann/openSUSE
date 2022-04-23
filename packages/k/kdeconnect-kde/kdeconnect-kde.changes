@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:51:27 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:18:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:13:56 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Too many changes since 21.12.3, only listing bugfixes:
+  * [Connectivity Report] Fixed crash if signalStrengths is
+    empty. (kde#449276)
+  * [SMS App] Prevent crash if a conversation doesn't have
+    any messages (kde#449719)
+  * Change tray icon so it is the right color on MacOS (kde#430226)
+  * Raise configuration window (MacOS bug) (kde#416050)
+  * plasmoid: Don't show redundant configure button in
+    placeholder message (kde#448457)
+  * Always show notification when receiving files (kde#417823)
+
+-------------------------------------------------------------------
 Mon Mar  7 10:48:44 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %_libdir/libexec with %_libexecdir (boo#1174075)
