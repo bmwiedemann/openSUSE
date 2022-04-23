@@ -546,4 +546,41 @@
     matching.</comment>
     <requestid>928316</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>bc70fcde837a0fbb124b473c3ee89182</srcmd5>
+    <version>1.26.9</version>
+    <time>1650735920</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded BuildRequires of mock. 
+
+- Remove unbundling off ssl.match_hostname.
+  * It was only done for the primary python3 flavor
+  * It is bundled for a reason gh#urllib3/urllib3#2439,
+    gh#urllib3/urllib3#2448
+  * The tests (and probably urllib3 users) use wildcard patterns
+    not supported by the stdlib
+- Fix undbundling of six for all flavors
+- Replace brotlipy recommendation and test with python-Brotli
+  (see release notes below)
+
+- update to 1.26.9:
+  * Changed ``urllib3[brotli]`` extra to favor installing Brotli libraries that are still
+    receiving updates like ``brotli`` and ``brotlicffi`` instead of ``brotlipy``.
+    This change does not impact behavior of urllib3, only which dependencies are installed.
+  * Fixed a socket leaking when ``HTTPSConnection.connect()`` raises an exception.
+  * Fixed ``server_hostname`` being forwarded from ``PoolManager`` to ``HTTPConnectionPool``
+    when requesting an HTTP URL. Should only be forwarded when requesting an HTTPS URL.
+
+- update to 1.26.8:
+  * Added extra message to``urllib3.exceptions.ProxyError`` when urllib3 detects that
+    a proxy is configured to use HTTPS but the proxy itself appears to only use HTTP.
+  * Added a mention of the size of the connection pool when discarding a
+    connection due to the pool being full.
+  * Added explicit support for Python 3.11.
+  * Deprecated the ``Retry.MAX_BACKOFF`` class property in favor of
+    ``Retry.DEFAULT_MAX_BACKOFF`` to better match the rest of the default parameter names.
+    ``Retry.MAX_BACKOFF`` is removed in v2.0.
+  * Changed location of the vendored ``ssl.match_hostname`` function from</comment>
+    <requestid>970661</requestid>
+  </revision>
 </revisionlist>
