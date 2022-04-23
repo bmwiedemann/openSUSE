@@ -1,7 +1,7 @@
 #
 # spec file for package gettext-csharp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ Source2:        suse-start-po-mode.el
 Source3:        gettext-linkdupes.sh
 Source4:        gettext-rpmlintrc
 Source5:        %{name}.keyring
-Patch:          gettext-0.12.1-sigfpe.patch
+Patch0:         gettext-0.12.1-sigfpe.patch
 Patch1:         gettext-0.19.3-fix-bashisms.patch
 Patch2:         gettext-0.12.1-gettextize.patch
 Patch3:         use-acinit-for-libtextstyle.patch
@@ -40,6 +40,7 @@ Patch4:         gettext-po-mode.diff
 Patch5:         gettext-initialize_vars.patch
 # PATCH-FIX-OPENSUSE gettext-dont-test-gnulib.patch -- coolo@suse.de
 Patch6:         gettext-dont-test-gnulib.patch
+Patch7:         gettext-0.21-jdk17.patch
 # PATCH-FIX-UPSTREAM boo#941629 -- pth@suse.com
 Patch11:        boo941629-unnessary-rpath-on-standard-path.patch
 # PATCH-FIX-SUSE Bug boo#1106843
@@ -87,6 +88,7 @@ reliably than 'resgen'.
 %patch4
 %patch5
 %patch6 -p1
+%patch7 -p1
 %patch11 -p1
 %patch13 -p1
 %patch14 -p1

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  8 15:05:10 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * gettext-0.21-jdk17.patch
+    + Build with java source and target levels 1.8
+    + Allows building with JDK17
+    + Fixes build in Factory
+
+-------------------------------------------------------------------
 Mon Nov 29 20:32:32 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Remove libcroco from BuildRequires: it is now bundled internally.

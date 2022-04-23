@@ -741,4 +741,12 @@ Using build service only atm, any additional work might take a while again... (f
     <comment></comment>
     <requestid>937737</requestid>
   </revision>
+  <revision rev="88" vrev="4">
+    <srcmd5>74450260fdca5d0e4fbff36fdf3f5d07</srcmd5>
+    <version>0.21</version>
+    <time>1650735892</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970778</requestid>
+  </revision>
 </revisionlist>
