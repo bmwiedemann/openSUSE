@@ -1,7 +1,7 @@
 #
 # spec file for package dtc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,18 @@
 
 %define         sover 1
 Name:           dtc
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        Device-tree compiler
 License:        GPL-2.0-or-later
 URL:            https://github.com/dgibson/dtc
 Source0:        https://mirrors.edge.kernel.org/pub/software/utils/dtc/dtc-%{version}.tar.gz
 Source1:        https://mirrors.edge.kernel.org/pub/software/utils/dtc/dtc-%{version}.tar.sign
-Source2:        baselibs.conf
+Source20:       baselibs.conf
+Source21:       dtc.keyring
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  libyaml-devel
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-BuildRequires:  swig
 
 %description
 PowerPC kernels are moving towards requiring a small Open
@@ -59,32 +57,17 @@ Obsoletes:      libfdt1-devel < %{version}-%{release}
 %description -n libfdt-devel
 This package provides development files for libfdt
 
-
-%package -n python3-libfdt
-Summary:        Python binding for Device Tree
-
-%description -n python3-libfdt
-libfdt is a library to process Open Firmware style device trees on various
-architectures.
-
-Python binding part.
-
 %prep
 %setup -q
 
 %build
-export EXTRA_CFLAGS="%{optflags} -pie"
-%make_build NO_PYTHON=1
-cd pylibfdt
-python3 setup.py build_ext
-%py3_build
+%make_build EXTRA_CFLAGS="%{optflags} -pie" LDFLAGS="%{optflags}"
 
 %install
-%make_install PREFIX=%{_prefix} LIBDIR=%{_libdir} NO_PYTHON=1
+%make_install PREFIX=%{_prefix} LIBDIR=%{_libdir} \
+    BINDIR=%{_bindir} NO_PYTHON=1
 install -p -m 644 libfdt/libfdt_env.h %{buildroot}/%{_includedir}
 rm -f %{buildroot}/%{_libdir}/*.a
-cd pylibfdt
-%python3_install
 
 %check
 export EXTRA_CFLAGS="%{optflags}"
@@ -105,17 +88,11 @@ export EXTRA_CFLAGS="%{optflags}"
 %postun -n libfdt%{sover} -p /sbin/ldconfig
 
 %files -n libfdt%{sover}
-%{_libdir}/libfdt-1.6.0.so
+%{_libdir}/libfdt-%{version}.so
 %{_libdir}/libfdt.so.*
 
 %files -n libfdt-devel
 %{_libdir}/libfdt.so
 %{_includedir}/*
-
-%files -n python3-libfdt
-%{python3_sitearch}/*.so
-%{python3_sitearch}/*.egg-info
-%{python3_sitearch}/__pycache__/*.pyc
-%{python3_sitearch}/libfdt.py
 
 %changelog

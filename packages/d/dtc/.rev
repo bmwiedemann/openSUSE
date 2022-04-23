@@ -296,4 +296,26 @@
   PIE-executables (bsc#1184122). (forwarded request 887271 from mgerstner)</comment>
     <requestid>887291</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>df5e8efd02b6c0ffeab4c505eaeb7a8d</srcmd5>
+    <version>1.6.1</version>
+    <time>1650735898</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.1:
+  * A number of bugfixes
+  * Fix many warnings with -Wsign-compare
+  * Add compilation with meson (not used by default so far)
+  * Yet another revamp of how we handle unaligned accesses
+  * Added a number of extra checks for common tree errors
+    * Checks for interrupt providers
+    * i2c reg properties
+    * Tighten checking of gpio properties
+  * Reduce dependencies when building libfdt only
+  * Allow libfdt.h header to be used from C++ more easily
+  * Accept .dtbo extension for overlays
+  * Update valid node and property characters to match current devicetree spec
+  * Add several checks for root node sanity in fdt_check_full()
+  * Somewhat more robust type labelling for the benefit of yaml output</comment>
+    <requestid>971936</requestid>
+  </revision>
 </revisionlist>

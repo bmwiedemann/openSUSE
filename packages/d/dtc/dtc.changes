@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Oct 16 13:06:58 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.1:
+  * A number of bugfixes
+  * Fix many warnings with -Wsign-compare
+  * Add compilation with meson (not used by default so far)
+  * Yet another revamp of how we handle unaligned accesses
+  * Added a number of extra checks for common tree errors
+    * Checks for interrupt providers
+    * i2c reg properties
+    * Tighten checking of gpio properties
+  * Reduce dependencies when building libfdt only
+  * Allow libfdt.h header to be used from C++ more easily
+  * Accept .dtbo extension for overlays
+  * Update valid node and property characters to match current devicetree spec
+  * Add several checks for root node sanity in fdt_check_full()
+  * Somewhat more robust type labelling for the benefit of yaml output 
+
+-------------------------------------------------------------------
 Wed Apr 21 10:28:05 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - explicitly pass -pie in CFLAGS, since the build system explicitly passes
