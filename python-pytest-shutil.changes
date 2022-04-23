@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 21 21:51:01 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fixup fallout from SUSE's crusade against mock in the
+  pytest-fixtures family
+  * Replace remove-mock.patch with
+    pytest-fixtures-pr171-remove-mock.patch
+  * gh#man-group/pytest-plugins#171
+  * Update build and runtime requirements
+
+-------------------------------------------------------------------
 Wed Mar 23 06:45:41 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-mock.patch:
