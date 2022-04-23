@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           messagelib
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        KDE PIM library for e-mail message parsing and display
 License:        GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-or-later
@@ -64,6 +64,7 @@ BuildRequires:  cmake(KF5MailTransport)
 BuildRequires:  cmake(KF5Mbox)
 BuildRequires:  cmake(KF5Mime)
 BuildRequires:  cmake(KF5NewStuff)
+BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5PimCommon)
 BuildRequires:  cmake(KF5PimTextEdit)
 BuildRequires:  cmake(KF5SyntaxHighlighting)
