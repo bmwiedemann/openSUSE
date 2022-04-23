@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:52:08 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:20:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:14:35 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Fill in missing country/state information based on the coordinate
+  * Port deprecated QStandardPaths::DataLocation
+  * Add basic translation for boolean-like tag values
+  * Port rental vehicle details to KLazyLocalizedString as well
+  * Port static message tables from I18N_NOOP to KLazyLocalizedString
+  * Translate title
+  * Setup Gitlab CI
+  * Try to activate new CI
+
+-------------------------------------------------------------------
 Tue Mar  1 09:57:38 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
