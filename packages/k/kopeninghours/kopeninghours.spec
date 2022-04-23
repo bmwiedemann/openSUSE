@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kopeninghours
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        OSM opening hours expression parser and evaluator
 License:        LGPL-2.0-or-later
