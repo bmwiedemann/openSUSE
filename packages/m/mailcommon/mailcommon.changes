@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:52:41 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:21:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:15:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Fix compile without deprecated method
+  * qt6 macro doesn't support 4 arguments it works fine as it
+  * Use new akonadi calendar install include
+  * Use new akonadi mime install include
+  * Replace the remaining boost::bind usages by lambdas
+  * Use uppercase include
+  * Fix includes
+  * Fix install headers
+  * Fix includes
+  * Remove kplugindesigner dep
+  * use correct phonon version
+  * Fix build with GCC 12 (standard attributes in middle of decl-specifiers)
+  * Install *_version.h in KF5/<module>
+  * Adapt build system for building against qt6
+  * Fix unity build
+  * Fix 446052: Drag&Drop Mails in Kmail does not work using git-master
+    snapshots since 2-3 days (kde#446052)
+  * Use = default and use {}
+  * Implement enable/disable drag&drop
+  * Use directly using namespace MailCommon
+  * Correct prefix to other PIM repositories in .kde-ci.yml
+  * Make compile without deprecated methods
+  * Remove deprecated I18N_NOOP macro
+  * Not necessary I18N_NOOP here
+  * Add some documentation for the HierarchicalFolderMatcher
+
+-------------------------------------------------------------------
 Tue Mar  1 09:58:08 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3

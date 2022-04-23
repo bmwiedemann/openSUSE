@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           mailcommon
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Base KDE PIM library for mail-handling applications
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -127,8 +127,6 @@ This package contains the development headers for the mailcommon library.
 %files devel
 %dir %{_kf5_plugindir}/designer
 %{_kf5_includedir}/MailCommon/
-%{_kf5_includedir}/mailcommon/
-%{_kf5_includedir}/mailcommon_version.h
 %{_kf5_libdir}/cmake/KF5MailCommon/
 %{_kf5_libdir}/libKF5MailCommon.so
 %{_kf5_mkspecsdir}/qt_MailCommon.pri
