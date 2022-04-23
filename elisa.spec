@@ -20,7 +20,7 @@
 %define kf5_version 5.64.0
 %bcond_without released
 Name:           elisa
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Music player and collection organizer
 License:        LGPL-3.0-or-later
@@ -101,6 +101,7 @@ built and played.
 %{_kf5_iconsdir}/hicolor/*/apps/elisa.*
 %{_kf5_libdir}/elisa/
 %{_kf5_qmldir}/org/kde/elisa/
+%{_kf5_sharedir}/dbus-1/services/org.kde.elisa.service
 
 %if %{with released}
 %files lang -f %{name}.lang

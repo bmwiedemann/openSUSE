@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:50:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:17:19 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:13:37 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Too many changes since 21.12.3, only listing bugfixes:
+  * Fix shortcut not working under non English locale (kde#424890)
+  * ViewSelector: don't overlap icons with scrollbar when being icon-only (kde#448066)
+  * Let clicking systray icon raise Elisa to the foreground (kde#430547)
+  * Fix single track insert when playlist is shuffled (kde#442272)
+  * Make more use of Kirigami stuff (kde#448461)
+  * Port Playlist inlinemessages to PassiveNotification (kde#447607)
+  * Fix metadata not updating when track is opened from Files-browser (kde#448043)
+  * Fix metadata view not updating when switching tabs (kde#436405)
+  * Fixes issue of metadata/lyrics not updating when switching tracks (kde#436405)
+  * Give Sort button an icon (kde#448097)
+  * MediaTrackMetadataView: Round folder icon size to nearest real size (kde#448272)
+  * Use standard icon and text for close/ok button on metadata window (kde#448210)
+  * Changed clear playlist icon to "undo" icon (kde#447826)
+  * Refactor and fix opening playlist files (kde#441544)
+  * Implement dropping music files from file manager onto Playlist (kde#404712)
+  * BUG 445357 Use media-default-album instead of media-optical-audio (kde#445357)
+
+-------------------------------------------------------------------
 Tue Mar  1 09:56:39 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
