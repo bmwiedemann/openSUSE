@@ -25,10 +25,9 @@ Summary:        A goodie-bag of unix shell and environment tools for pytest
 License:        MIT
 URL:            https://github.com/manahl/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-shutil/pytest-shutil-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Adapted from gh#man-group/pytest-plugins#66bf6670f3ce10106d57a77ff634a8e5c9c3a39a
-Patch0:         remove-mock.patch
+# PATCH-FEATURE-UPSTREAM pytest-fixtures-pr171-remove-mock.patch -- gh#man-group#pytest-plugins#171
+Patch1:         pytest-fixtures-pr171-remove-mock.patch
 BuildRequires:  %{python_module execnet}
-BuildRequires:  %{python_module path.py}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
@@ -37,15 +36,28 @@ BuildRequires:  %{python_module termcolor}
 BuildRequires:  fdupes
 %if %{with python2}
 BuildRequires:  python-contextlib2
+BuildRequires:  python-mock
+BuildRequires:  python-path.py
+%endif
+%if 0%{?suse_version} < 1550
+BuildRequires:  python3-path.py
+%else
+BuildRequires:  %{python_module path}
 %endif
 BuildRequires:  python-rpm-macros
 Requires:       python-execnet
+%if 0%{suse_version} < 1550
 Requires:       python-path.py
+%else
+Requires:       python-path
+%endif
 Requires:       python-pytest
 Requires:       python-six
 Requires:       python-termcolor
 %ifpython2
 Requires:       python-contextlib2
+Requires:       python-mock
+Requires:       python-path.py
 %endif
 BuildArch:      noarch
 
@@ -56,10 +68,7 @@ This library is a goodie-bag of Unix shell and environment management
 tools for automated tests.
 
 %prep
-%autosetup -p1 -n pytest-shutil-%{version}
-sed -i '/contextlib2/d' setup.py
-sed -i '/path.\py/d' setup.py
-sed -i '/mock/d' setup.py
+%autosetup -p2 -n pytest-shutil-%{version}
 
 %build
 %python_build
@@ -74,6 +83,7 @@ sed -i '/mock/d' setup.py
 %files %{python_files}
 %doc README.md CHANGES.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_shutil
+%{python_sitelib}/pytest_shutil-%{version}*-info
 
 %changelog
