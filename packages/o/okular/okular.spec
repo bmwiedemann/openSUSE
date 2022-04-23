@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           okular
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Document Viewer
 # GPL-3.0+ license used by a runtime plugin
@@ -64,6 +64,7 @@ BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5JS)
 BuildRequires:  cmake(KF5KExiv2)
 BuildRequires:  cmake(KF5KHtml)
+BuildRequires:  cmake(KF5Kirigami2)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Parts)
 BuildRequires:  cmake(KF5Pty)
