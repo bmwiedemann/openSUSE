@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           juk
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Jukebox
 License:        GPL-2.0-or-later
@@ -81,6 +81,8 @@ Jukebox and music manager by KDE
 %files
 %license COPYING
 %doc %lang(en) %{_kf5_htmldir}/en/juk/
+%dir %{_kf5_sharedir}/kio
+%dir %{_kf5_sharedir}/kio/servicemenus
 %{_kf5_applicationsdir}/org.kde.juk.desktop
 %{_kf5_appsdir}/juk/
 %{_kf5_appstreamdir}/org.kde.juk.appdata.xml
@@ -89,8 +91,7 @@ Jukebox and music manager by KDE
 %{_kf5_iconsdir}/hicolor/*/apps/juk.*
 %{_kf5_kxmlguidir}/juk
 %{_kf5_notifydir}/juk.notifyrc
-%dir %{_kf5_servicesdir}/ServiceMenus/
-%{_kf5_servicesdir}/ServiceMenus/jukservicemenu.desktop
+%{_kf5_sharedir}/kio/servicemenus/jukservicemenu.desktop
 
 %if %{with released}
 %files lang -f %{name}.lang
