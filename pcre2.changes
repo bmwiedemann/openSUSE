@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Apr 16 10:50:31 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- pcre2 10.40:
+  * Added support for Bidi_Class and a number of binary Unicode
+    properties, including Bidi_Control.
+  * A number of changes to script matching for \p and \P:
+    speed improvements, add the syntax \p{script:xxx} and
+    \p{script_extensions:xxx} (synonyms sc and scx), Changed
+    \p{scriptname} from being the same as \p{sc:scriptname} to
+    being the same as \p{scx:scriptname}, recognize the standard
+    Unicode 4-letter abbreviations for script names, implement 
+    Unicode and Perl's "loose matching" rules on property names
+
+-------------------------------------------------------------------
 Fri Nov  5 19:01:43 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - pcre2 10.39:

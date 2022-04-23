@@ -1,7 +1,7 @@
 #
 # spec file for package pcre2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 Name:           pcre2
-Version:        10.39
+Version:        10.40
 Release:        0
 Summary:        A library for Perl-compatible regular expressions
 License:        BSD-3-Clause
