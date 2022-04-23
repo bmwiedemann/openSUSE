@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           dragonplayer
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Multimedia Player
 License:        GPL-2.0-or-later
@@ -55,7 +55,6 @@ BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Phonon4Qt5)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 Dragon Player is a simple video player.
