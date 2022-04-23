@@ -42,7 +42,7 @@ BuildRequires:  makeinfo
 %define install_info sbin/install-info
 %define install_info_delete sbin/install-info --delete
 Requires(post): %install_info_prereq
-Requires(preun): %install_info_prereq
+Requires(preun):%install_info_prereq
 %endif
 %endif
 # bug437293
@@ -53,17 +53,17 @@ Obsoletes:      e2fsprogs-64bit
 %if %{build_mini}
 Conflicts:      e2fsprogs
 Conflicts:      e2fsprogs-devel
-Conflicts:      libext2fs2
-Conflicts:      libext2fs-devel
-Conflicts:      libcom_err2
 Conflicts:      libcom_err-devel
+Conflicts:      libcom_err2
+Conflicts:      libext2fs-devel
+Conflicts:      libext2fs2
 %else
 Conflicts:      e2fsprogs-mini
 Conflicts:      e2fsprogs-mini-devel
-Conflicts:      libext2fs2-mini
-Conflicts:      libext2fs-mini-devel
-Conflicts:      libcom_err2-mini
 Conflicts:      libcom_err-mini-devel
+Conflicts:      libcom_err2-mini
+Conflicts:      libext2fs-mini-devel
+Conflicts:      libext2fs2-mini
 %endif
 #
 Version:        1.46.5
@@ -120,6 +120,7 @@ Dummy development package for backwards compatibility.
 %if %{build_mini}
 %package -n e2fsprogs-scrub-mini
 %else
+
 %package -n e2fsprogs-scrub
 %endif
 Summary:        Ext2fs scrubbing scripts and service files
@@ -141,6 +142,7 @@ with ext2, ext3, and ext4 filesystems.
 %if %{build_mini}
 %package -n libext2fs2-mini
 %else
+
 %package -n libext2fs2
 %endif
 Summary:        Ext2fs library
@@ -150,6 +152,7 @@ Group:          System/Filesystems
 %if %{build_mini}
 %description -n libext2fs2-mini
 %else
+
 %description -n libext2fs2
 %endif
 The basic Ext2fs shared library.
@@ -157,6 +160,7 @@ The basic Ext2fs shared library.
 %if %{build_mini}
 %package -n libext2fs-mini-devel
 %else
+
 %package -n libext2fs-devel
 %endif
 Summary:        Development files for libext2fs
@@ -168,6 +172,7 @@ Requires:       libext2fs2 = %version
 %if %{build_mini}
 %description -n libext2fs-mini-devel
 %else
+
 %description -n libext2fs-devel
 %endif
 Development files for libext2fs.
@@ -188,6 +193,7 @@ Development files for libext2fs. Static libraries.
 %if %{build_mini}
 %package -n libcom_err2-mini
 %else
+
 %package -n libcom_err2
 %endif
 Summary:        E2fsprogs error reporting library
@@ -205,6 +211,7 @@ Obsoletes:      libcom_err <= 1.40
 %if %{build_mini}
 %description -n libcom_err2-mini
 %else
+
 %description -n libcom_err2
 %endif
 com_err is an error message display library.
@@ -212,6 +219,7 @@ com_err is an error message display library.
 %if %{build_mini}
 %package -n libcom_err-mini-devel
 %else
+
 %package -n libcom_err-devel
 %endif
 Summary:        Development files for libcom_err
@@ -228,6 +236,7 @@ Requires:       libcom_err2 = %version
 %if %{build_mini}
 %description -n libcom_err-mini-devel
 %else
+
 %description -n libcom_err-devel
 %endif
 Development files for the com_err error message display library.
@@ -321,6 +330,7 @@ done
 %if %{build_mini}
 %pre -n e2fsprogs-scrub-mini
 %else
+
 %pre -n e2fsprogs-scrub
 %endif
 %service_add_pre e2scrub@.service e2scrub_all.service e2scrub_all.timer e2scrub_fail@.service e2scrub_reap.service
@@ -339,6 +349,7 @@ done
 %if %{build_mini}
 %post -n e2fsprogs-scrub-mini
 %else
+
 %post -n e2fsprogs-scrub
 %endif
 %service_add_post e2scrub@.service e2scrub_all.service e2scrub_all.timer e2scrub_fail@.service e2scrub_reap.service
@@ -348,10 +359,11 @@ done
 %if %{build_mini}
 %preun -n e2fsprogs-scrub-mini
 %else
-%preun
 %if 0%{?suse_version} <= 1530
+%preun
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/libext2fs.info.gz
 %endif
+
 %preun -n e2fsprogs-scrub
 %endif
 %service_del_preun e2scrub@.service e2scrub_all.service e2scrub_all.timer e2scrub_fail@.service e2scrub_reap.service
@@ -367,6 +379,7 @@ done
 %if %{build_mini}
 %postun -n e2fsprogs-scrub-mini
 %else
+
 %postun -n e2fsprogs-scrub
 %endif
 %service_del_postun e2scrub@.service e2scrub_all.service e2scrub_all.timer e2scrub_fail@.service e2scrub_reap.service
@@ -445,7 +458,7 @@ done
 %{_sbindir}/resize2fs
 %{_sbindir}/tune2fs
 %{_sbindir}/e2image
-%{_sbindir}/logsave 
+%{_sbindir}/logsave
 %{_bindir}/chattr
 %{_bindir}/lsattr
 %{_sbindir}/mklost+found
@@ -470,6 +483,7 @@ done
 %if %{build_mini}
 %files -n e2fsprogs-scrub-mini
 %else
+
 %files -n e2fsprogs-scrub
 %endif
 %defattr(-,root,root)
@@ -489,6 +503,7 @@ done
 %if %{build_mini}
 %files -n libext2fs2-mini
 %else
+
 %files -n libext2fs2
 %endif
 %defattr(-, root, root)
@@ -502,6 +517,7 @@ done
 %if %{build_mini}
 %files -n libext2fs-mini-devel
 %else
+
 %files -n libext2fs-devel
 %endif
 %defattr(-, root, root)
@@ -515,6 +531,7 @@ done
 %if %{build_mini}
 %files -n libcom_err2-mini
 %else
+
 %files -n libcom_err2
 %endif
 %defattr(-, root, root)
@@ -528,6 +545,7 @@ done
 %if %{build_mini}
 %files -n libcom_err-mini-devel
 %else
+
 %files -n libcom_err-devel
 %endif
 %defattr(-, root, root)

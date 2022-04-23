@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 19 20:51:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- avoid empty preuninstall script 
+
+-------------------------------------------------------------------
 Fri Jan 28 15:40:35 UTC 2022 - Jan Kara <jack@suse.cz>
 
 - Update to 1.46.5:
