@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-benchmark
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-pytest-benchmark
-Version:        3.2.3
+Version:        3.4.1
 Release:        0
 Summary:        A py.test fixture for benchmarking code
 License:        BSD-2-Clause
@@ -36,25 +36,16 @@ BuildRequires:  %{python_module pytest >= 3.8}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  git-core
-%if %{with python2}
-BuildRequires:  python-mock
-BuildRequires:  python-pathlib2
-BuildRequires:  python-statistics
-%endif
 BuildRequires:  python-rpm-macros
 Requires:       python-py-cpuinfo
 Requires:       python-pytest >= 3.8
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-aspectlib
 Recommends:     python-elasticsearch
 Recommends:     python-pygal
 Recommends:     python-pygaljs
 BuildArch:      noarch
-%ifpython2
-Requires:       python-pathlib2
-Requires:       python-statistics
-%endif
 %python_subpackages
 
 %description
@@ -66,6 +57,8 @@ rounds that are calibrated to the chosen timer.
 %autopatch -p1
 # skip cli tests as we use update-alternatives
 rm -f tests/test_cli.py
+# Don't look for a test pass in the wrong place -- https://github.com/ionelmc/pytest-benchmark/issues/214
+sed -i -e '/test_fast PASSED/d' -e '/test_fast SKIPPED/d' tests/test_benchmark.py
 
 %build
 %python_build
@@ -78,7 +71,6 @@ rm -f tests/test_cli.py
 %python_clone -a %{buildroot}%{_bindir}/py.test-benchmark
 
 %check
-export PYTHONDONTWRITEBYTECODE=1
 %pytest tests
 
 %post
@@ -92,6 +84,7 @@ export PYTHONDONTWRITEBYTECODE=1
 %license LICENSE
 %python_alternative %{_bindir}/py.test-benchmark
 %python_alternative %{_bindir}/pytest-benchmark
-%{python_sitelib}/*
+%{python_sitelib}/pytest_benchmark
+%{python_sitelib}/pytest_benchmark-%{version}*-info
 
 %changelog

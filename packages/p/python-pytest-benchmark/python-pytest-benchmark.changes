@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Mar 28 21:07:02 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.4.1
+  * Disable progress indication unless --benchmark-verbose is used.
+    Contributed by Dimitris Rozakis in #149.
+  * Added Python 3.9, dropped Python 3.5. Contributed by Miroslav
+    Šedivý in #189.
+  * Changed the "cpu" data in the json output to include everything
+    that cpuinfo outputs, for better or worse as cpuinfo 6.0
+    changed some fields. Users should now ensure they are an
+    adequate cpuinfo package installed. MAY BE BACKWARDS
+    INCOMPATIBLE
+  * Changed behavior of --benchmark-skip and --benchmark-only to
+    apply early in the collection phase. This means skipped tests
+    won't make pytest run fixtures for said tests unnecessarily,
+    but unfortunately this also means the skipping behavior will be
+    applied to any tests that requires a "benchmark" fixture,
+    regardless if it would come from pytest-benchmark or not. MAY
+    BE BACKWARDS INCOMPATIBLE
+  * Added --benchmark-quiet - option to disable reporting and other
+    information output.
+  * Squelched unnecessary warning when --benchmark-disable and save
+    options are used. Fixes #199.
+  * PerformanceRegression exception no longer inherits
+    pytest.UsageError (apparently a final class).
+
+-------------------------------------------------------------------
 Wed Aug  5 21:31:21 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove pytest-xdist from build
