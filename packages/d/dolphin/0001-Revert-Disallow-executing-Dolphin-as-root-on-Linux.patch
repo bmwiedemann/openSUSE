@@ -10,11 +10,11 @@ desktop. So this patch is absolutely pointless for us.
  src/main.cpp | 13 -------------
  1 file changed, 13 deletions(-)
 
-Index: dolphin-19.11.70git.20210328T171136~9e8e58147/src/main.cpp
+Index: dolphin-19.11.70git.20220102T020350~f386f848d/src/main.cpp
 ===================================================================
---- dolphin-19.11.70git.20210328T171136~9e8e58147.orig/src/main.cpp	2021-03-30 06:58:11.172787035 +0200
-+++ dolphin-19.11.70git.20210328T171136~9e8e58147/src/main.cpp	2021-03-30 06:59:29.060316063 +0200
-@@ -32,26 +32,8 @@
+--- dolphin-19.11.70git.20220102T020350~f386f848d.orig/src/main.cpp	2022-01-02 09:31:36.170555336 +0100
++++ dolphin-19.11.70git.20220102T020350~f386f848d/src/main.cpp	2022-01-02 09:32:45.570093055 +0100
+@@ -33,31 +33,8 @@
  #include <QDBusConnectionInterface>
  #include <QSessionManager>
  
@@ -29,15 +29,20 @@ Index: dolphin-19.11.70git.20210328T171136~9e8e58147/src/main.cpp
 -    // Prohibit using sudo or kdesu (but allow using the root user directly)
 -    if (getuid() == 0) {
 -        if (!qEnvironmentVariableIsEmpty("SUDO_USER")) {
--            std::cout << "Executing Dolphin with sudo is not possible due to unfixable security vulnerabilities." << std::endl;
+-            std::cout << "Running Dolphin with sudo can cause bugs and expose you to security vulnerabilities. "
+-                         "Instead use Dolphin normally and you will be prompted for elevated privileges when "
+-                         "performing file operations that require them."
+-                      << std::endl;
 -            return EXIT_FAILURE;
 -        } else if (!qEnvironmentVariableIsEmpty("KDESU_USER")) {
--            std::cout << "Executing Dolphin with kdesu is not possible due to unfixable security vulnerabilities." << std::endl;
+-            std::cout << "Running Dolphin with kdesu can cause bugs and expose you to security vulnerabilities. "
+-                         "Instead use Dolphin normally and you will be prompted for elevated privileges when "
+-                         "performing file operations that require them."
+-                      << std::endl;
 -            return EXIT_FAILURE;
 -        }
 -    }
 -#endif
--
+ 
      /**
       * enable high dpi support
-      */

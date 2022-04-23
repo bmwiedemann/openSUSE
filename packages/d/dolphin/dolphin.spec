@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           dolphin
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        KDE File Manager
 License:        GPL-2.0-or-later
@@ -78,7 +78,6 @@ This package contains the default file manager of KDE Workspaces.
 Summary:        KDE File Manager
 Group:          Productivity/File utilities
 %requires_ge    kio
-Recommends:     %{name}-part-lang
 Obsoletes:      dolphin5-part
 
 %description part

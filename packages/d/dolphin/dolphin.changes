@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:50:46 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:17:14 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:13:35 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Too many changes since 21.12.3, only listing bugfixes:
+  * KItemListHeaderWidget: don't crash if widget == nullptr (kde#449238)
+  * Display Apply button in KCMs (kde#448352)
+  * [CompactView] Remove animation on file rename (kde#449179)
+  * KStandardItemListWidget: handle RtL drawing properly (kde#449211)
+  * Fix zooming animation (kde#449179)
+  * Expose konsolepart shortcuts in Dolphin's shortcuts view (kde#428265)
+  * Full row highlight implementation (kde#181438)
+  * Properly display parent folders when filtering is active and items
+    are added or refreshed (kde#442275)
+  * Move "Default" option to the front in "Select Remote Charset" menu (kde#445148)
+
+-------------------------------------------------------------------
 Tue Mar  1 09:56:38 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
