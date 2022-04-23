@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kitinerary
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Data model and extraction system for travel reservations
 License:        LGPL-2.1-or-later
@@ -97,12 +97,7 @@ to build programs that use the kitinerary library.
 %endif
 
 %check
-ctest \
-  --output-on-failure \
-  --force-new-ctest-process \
-  --test-dir build \
-  --parallel %{_smp_build_ncpus} \
-  --exclude-regex calendarhandlertest
+%ctest
 
 %post -n libKPimItinerary5 -p /sbin/ldconfig
 %postun -n libKPimItinerary5 -p /sbin/ldconfig

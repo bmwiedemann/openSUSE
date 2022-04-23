@@ -394,4 +394,12 @@
     <comment>- Exclude test known to fail with kcontacts 5.92.</comment>
     <requestid>961458</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>3fb479874d8dba4779abde6663f679b2</srcmd5>
+    <version>22.04.0</version>
+    <time>1650752363</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 22.04.0</comment>
+    <requestid>971488</requestid>
+  </revision>
 </revisionlist>
