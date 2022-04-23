@@ -16,47 +16,45 @@
 #
 
 
-%define kf5_version 5.88.0
+%define kf5_version 5.91.0
 %bcond_without released
 Name:           kalendar
-Version:        1.0.0
+Version:        22.04.0
 Release:        0
 Summary:        Calendar Application
 License:        GPL-3.0-only
 URL:            https://apps.kde.org/kalendar
-Source:         https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
-Source2:        kalendar.keyring
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Use-categorized-logging-in-the-reminder-daemon.patch
+# No QtWebEngine for other archs
+ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{mips} %{riscv}
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  cmake(KF5Akonadi) >= 5.19.0
 BuildRequires:  cmake(KF5AkonadiContact) >= 5.19.0
 BuildRequires:  cmake(KF5CalendarCore)
-BuildRequires:  cmake(KF5CalendarSupport) >= 5.18
+BuildRequires:  cmake(KF5CalendarSupport) >= 5.19.0
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5Contacts)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5EventViews) >= 5.18.0
+BuildRequires:  cmake(KF5EventViews) >= 5.19.0
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5ItemModels)
 BuildRequires:  cmake(KF5Kirigami2)
-BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5QQC2DesktopStyle)
-BuildRequires:  cmake(KF5Service)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Core) >= 5.15.2
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Location)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5QuickControls2)
 BuildRequires:  cmake(Qt5Svg)
+Requires:       kalendarac
 Requires:       kdepim-addons
 Requires:       kdepim-runtime
 # No automatic qmlimport requires for embedded resources :-/
@@ -91,13 +89,8 @@ Calendar application using Akonadi to sync with external services (NextCloud, GM
 %{_kf5_applicationsdir}/org.kde.kalendar.desktop
 %{_kf5_appstreamdir}/org.kde.kalendar.appdata.xml
 %{_kf5_bindir}/kalendar
-%{_kf5_bindir}/kalendarac
-%{_kf5_configdir}/autostart/org.kde.kalendarac.desktop
 %{_kf5_debugdir}/kalendar.categories
-%{_kf5_debugdir}/org_kde_kalendarac.categories
 %{_kf5_iconsdir}/hicolor/scalable/apps/org.kde.kalendar.svg
-%{_kf5_notifydir}/kalendarac.notifyrc
-%{_kf5_sharedir}/dbus-1/services/org.kde.kalendarac.service
 
 %if %{with released}
 %files lang -f %{name}.lang
