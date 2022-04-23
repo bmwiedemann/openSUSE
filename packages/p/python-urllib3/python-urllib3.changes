@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Apr 19 05:34:17 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires of mock. 
+
+-------------------------------------------------------------------
+Tue Apr  5 19:54:39 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Remove unbundling off ssl.match_hostname.
+  * It was only done for the primary python3 flavor
+  * It is bundled for a reason gh#urllib3/urllib3#2439,
+    gh#urllib3/urllib3#2448
+  * The tests (and probably urllib3 users) use wildcard patterns
+    not supported by the stdlib
+- Fix undbundling of six for all flavors
+- Replace brotlipy recommendation and test with python-Brotli
+  (see release notes below)
+
+-------------------------------------------------------------------
+Tue Mar 29 11:48:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.26.9:
+  * Changed ``urllib3[brotli]`` extra to favor installing Brotli libraries that are still
+    receiving updates like ``brotli`` and ``brotlicffi`` instead of ``brotlipy``.
+    This change does not impact behavior of urllib3, only which dependencies are installed.
+  * Fixed a socket leaking when ``HTTPSConnection.connect()`` raises an exception.
+  * Fixed ``server_hostname`` being forwarded from ``PoolManager`` to ``HTTPConnectionPool``
+    when requesting an HTTP URL. Should only be forwarded when requesting an HTTPS URL.
+
+-------------------------------------------------------------------
+Mon Jan 10 22:41:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.26.8:
+  * Added extra message to``urllib3.exceptions.ProxyError`` when urllib3 detects that
+    a proxy is configured to use HTTPS but the proxy itself appears to only use HTTP.
+  * Added a mention of the size of the connection pool when discarding a
+    connection due to the pool being full.
+  * Added explicit support for Python 3.11.
+  * Deprecated the ``Retry.MAX_BACKOFF`` class property in favor of
+    ``Retry.DEFAULT_MAX_BACKOFF`` to better match the rest of the default parameter names.
+    ``Retry.MAX_BACKOFF`` is removed in v2.0.
+  * Changed location of the vendored ``ssl.match_hostname`` function from
+    ``urllib3.packages.ssl_match_hostname`` to
+    ``urllib3.util.ssl_match_hostname`` to ensure Python 3.10+ compatibility after
+    being repackaged by downstream distributors.
+  * Fixed absolute imports, all imports are now relative.
+
+-------------------------------------------------------------------
 Tue Oct 26 21:02:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.26.7:
