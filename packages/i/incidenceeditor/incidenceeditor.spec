@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           incidenceeditor
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Incidenceeditor library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -107,8 +107,6 @@ The development package for the incidenceeditor libraries.
 %files devel
 %{_kf5_cmakedir}/KF5IncidenceEditor/
 %{_kf5_includedir}/IncidenceEditor/
-%{_kf5_includedir}/incidenceeditor/
-%{_kf5_includedir}/incidenceeditor_version.h
 %{_kf5_libdir}/libKF5IncidenceEditor.so
 %{_kf5_mkspecsdir}/qt_IncidenceEditor.pri
 
