@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kwave
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Sound editor by KDE
 License:        GPL-2.0-or-later
@@ -68,11 +68,7 @@ BuildRequires:  pkgconfig(mad)
 Recommends:     lame
 Recommends:     toolame
 Recommends:     twolame
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 BuildRequires:  rsvg-convert
-%else
-BuildRequires:  rsvg-view
-%endif
 
 %description
 Kwave is a sound editor by KDE.
