@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:52:08 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:20:19 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:14:35 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Fix rendering of the "You won message" on HiDpi (kde#450841)
+  * Use new API
+  * one -> won (kde#448346)
+  * Fix compile against qt6
+  * Disable disc cache strategy in KPat
+  * Fix cards flashing a bit when resizing
+  * Manupilate the KSharedDataCache only from one thread
+  * bool + mutex -> atomic_bool
+
+-------------------------------------------------------------------
 Tue Mar  1 09:57:38 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
