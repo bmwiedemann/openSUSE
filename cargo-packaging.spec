@@ -26,6 +26,7 @@ Group:          Development/Languages/Rust
 URL:            https://github.com/Firstyear/cargo-packaging
 Source0:        %{name}-%{version}.tar.xz
 Requires:       cargo
+Requires:       zstd
 
 Conflicts:      rust-packaging
 
