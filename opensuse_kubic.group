@@ -176,7 +176,7 @@
     <package name="bc" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-zypper -->
     <package name="bcache-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="biosdevname" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
-    <package name="boost-license1_78_0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
+    <package name="boost-license1_79_0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="branding-openSUSE" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="btrfsmaintenance" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="btrfsprogs" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
@@ -363,7 +363,7 @@
     <package name="libavahi-common3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="libbasicobjects0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
     <package name="libbluetooth3" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
-    <package name="libboost_thread1_78_0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
+    <package name="libboost_thread1_79_0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libbpf0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libbtrfs0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libcairo-gobject2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
@@ -498,7 +498,7 @@
     <package name="libslang2" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libslirp0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-container_runtime -->
     <package name="libslp1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-microdnf -->
-    <package name="libsnapper5" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
+    <package name="libsnapper6" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libsodium23" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubic_worker -->
     <package name="libsoftokn3" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libsolv-tools" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubic_worker -->
