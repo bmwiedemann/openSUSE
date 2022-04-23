@@ -1,7 +1,7 @@
 #
 # spec file for package kdepim-runtime
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdepim-runtime
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Akonadi resources for PIM applications
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -44,7 +44,6 @@ BuildRequires:  cmake(KF5AkonadiCalendar)
 BuildRequires:  cmake(KF5AkonadiContact)
 BuildRequires:  cmake(KF5AkonadiMime)
 BuildRequires:  cmake(KF5AkonadiNotes)
-BuildRequires:  cmake(KF5AlarmCalendar)
 BuildRequires:  cmake(KF5CalendarCore) >= %{kf5_version}
 BuildRequires:  cmake(KF5CalendarUtils)
 BuildRequires:  cmake(KF5Codecs) >= %{kf5_version}
@@ -81,12 +80,12 @@ BuildRequires:  cmake(Qt5TextToSpeech)
 BuildRequires:  cmake(Qt5WebEngineWidgets)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5XmlPatterns)
+Recommends:     kalendarac
 Requires:       akonadi-plugin-calendar
 Requires:       akonadi-plugin-contacts
-Requires:       akonadi-plugin-kalarmcal
 Requires:       akonadi-plugin-mime
 Requires(post): shared-mime-info
-Requires(postun):shared-mime-info
+Requires(postun): shared-mime-info
 Provides:       kio-pimlibs = %{version}
 Obsoletes:      kdepim4-runtime < %{version}
 Obsoletes:      kio-pimlibs < %{version}
