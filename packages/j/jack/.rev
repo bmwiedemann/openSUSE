@@ -609,4 +609,12 @@ Update the waf code to the 2.0 series in order to work under python3.7 taken fro
   * Official FreeBSD support</comment>
     <requestid>959810</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>3b426a6a8f4b68df85a6212492fe5fc6</srcmd5>
+    <version>1.9.21</version>
+    <time>1650735909</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>972221</requestid>
+  </revision>
 </revisionlist>

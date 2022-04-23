@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr 20 20:05:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.21:
+  * Add shell mode to ``jack_control`` (executes commands from stdin until EOF)
+  * The waf autooption ``--example-tools`` introduced in 1.9.20 is now off by default,
+    To get the previous behavior back pass ``--example-tools`` during build.
+    This flag (and the related tools and their code) are going to be removed in the next release.
+  * Fix alignas() on non-packed architectures
+  * Fix build of jack-example-tools man pages (1.9.20 regression)
+  * Fix compatibility with macOS 12
+  * Fix missing symbols from jack client library (error and info callback pointers)
+  * Fix potential memory corruption in midi_latency_test tool
+  * Fix JackWeakAPI on Windows
+  * Use predefined variables in pkg-config file (required for mingw)
+ 
+-------------------------------------------------------------------
 Tue Mar  1 17:17:07 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Disable the build of example-tools which are now built in a

@@ -22,7 +22,7 @@
 %define wdbus 1
 %define sonum 0
 Name:           jack
-Version:        1.9.20
+Version:        1.9.21
 Release:        0
 #to_be_filled_by_service
 Summary:        Jack-Audio Connection Kit
