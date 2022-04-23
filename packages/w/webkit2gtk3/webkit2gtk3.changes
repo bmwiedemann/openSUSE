@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 21 19:05:39 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.36.1:
+  + Fix the build with accessibility disabled.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
 Wed Apr  6 15:12:09 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Drop webkit2gtk3-gcc12.patch. It isn't needed anymore, since the
