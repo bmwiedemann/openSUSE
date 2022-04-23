@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           yakuake
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Drop-down terminal emulator based on Konsole technologies
 License:        GPL-2.0-or-later
