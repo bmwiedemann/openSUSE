@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:51:23 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:18:09 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:13:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Make qcgmain.cpp use the KDE org instead
+  * Fix QCG Mac bundle ID in qmake project
+  * Add CI
+  * Fix hang in line-break algorithm (kde#428917)
+
+-------------------------------------------------------------------
 Tue Mar  1 09:56:55 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
