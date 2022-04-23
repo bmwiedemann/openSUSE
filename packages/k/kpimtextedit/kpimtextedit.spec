@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kpimtextedit
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        KDE PIM Libraries: Text edit functionality
 License:        LGPL-2.1-or-later
@@ -103,7 +103,6 @@ to develop KDE PIM applications.
 %files devel
 %{_kf5_cmakedir}/KF5PimTextEdit/
 %{_kf5_includedir}/KPIMTextEdit/
-%{_kf5_includedir}/kpimtextedit_version.h
 %{_kf5_libdir}/libKF5PimTextEdit.so
 %{_kf5_mkspecsdir}/qt_KPIMTextEdit.pri
 %{_kf5_plugindir}/designer/kpimtexteditwidgets.so
