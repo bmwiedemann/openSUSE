@@ -187,7 +187,7 @@ mv custom_thumbnailers/folder-thumbnailer %{buildroot}%{_bindir}/
 %{_libdir}/tumbler-1/plugins/tumbler-odf-thumbnailer.so
 %{_libdir}/tumbler-1/plugins/tumbler-pixbuf-thumbnailer.so
 %{_libdir}/tumbler-1/plugins/tumbler-poppler-thumbnailer.so
-%{_libdir}/tumbler-1/plugins/tumbler-raw-thumbnailer.so
+#{_libdir}/tumbler-1/plugins/tumbler-raw-thumbnailer.so
 %{_libdir}/tumbler-1/plugins/tumbler-gepub-thumbnailer.so
 %dir %{_datadir}/dbus-1
 %dir %{_datadir}/dbus-1/services
