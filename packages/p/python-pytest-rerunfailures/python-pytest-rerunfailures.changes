@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Mar 28 20:58:33 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 10.2
+  * Allow recovery from crashed tests with pytest-xdist.
+  * Add support for Python 3.10 (as of Python 3.10.rc2). (Thanks to
+    @hugovk for the PR.)
+  * Allows using a str as condition for
+    @pytest.mark.flaky(condition) which gets evaluated dynamically
+    similarly to @pytest.mark.skipif(condition). (#162 provided by
+    @15klli)
+  * Drop support for Python 3.5.
+  * Drop support for pytest < 5.3.
+  * Add condition keyword argument to the re-run marker. (Thanks to
+    @BeyondEvil for the PR.)
+  * Add support for Python 3.9. (Thanks to @digitronik for the PR.)
+  * Add support for pytest 6.3. (Thanks to @bluetech for the PR.)
+  * Add compatibility with pytest-xdist >= 2.0. (Thanks to
+    @bluetech for the PR.)
+  * Check for the resultlog by feature and not by version as pytest
+    master does not provide a consistent version.
+
+-------------------------------------------------------------------
 Sat Nov  7 18:33:40 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 9.1.1
