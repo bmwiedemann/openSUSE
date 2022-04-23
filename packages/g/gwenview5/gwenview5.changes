@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:51:03 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:17:31 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:13:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Too many changes since 21.12.3, only listing bugfixes:
+  * Add a "Fit" button to the status bar (kde#441447)
+  * Fix Bug 445434: Gwenview crash when clicking "crop"
+    button (kde#445434)
+  * Add proper desktop file for importer (kde#446290)
+  * Use normal font size for sidebar text (kde#447287)
+  * Only switch to Qt::FastTransformation ("showing pixels")
+    at 500% zoom (kde#443010)
+  * Add "Print Preview" action (kde#236056)
+
+-------------------------------------------------------------------
 Tue Mar  1 09:56:43 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3

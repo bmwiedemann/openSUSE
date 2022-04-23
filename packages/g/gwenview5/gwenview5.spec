@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           gwenview5
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        Image Viewer by KDE
 License:        GPL-2.0-or-later
@@ -105,6 +105,7 @@ list window, providing navigation of file hierarchies.
 %dir %{_kf5_sharedir}/solid/actions
 %doc %lang(en) %{_kf5_htmldir}/en/gwenview/
 %{_kf5_applicationsdir}/org.kde.gwenview.desktop
+%{_kf5_applicationsdir}/org.kde.gwenview_importer.desktop
 %{_kf5_appstreamdir}/org.kde.gwenview.appdata.xml
 %{_kf5_bindir}/gwenview
 %{_kf5_bindir}/gwenview_importer
