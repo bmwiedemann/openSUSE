@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kio_audiocd
-Version:        21.12.3
+Version:        22.04.0
 Release:        0
 Summary:        KDE I/O Slave for Audio CDs
 License:        GPL-2.0-or-later
@@ -44,6 +44,7 @@ BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Cddb)
 BuildRequires:  cmake(Phonon4Qt5)
 
 %description
