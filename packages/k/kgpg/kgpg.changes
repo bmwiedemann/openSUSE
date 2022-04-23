@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:51:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:18:57 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:14:08 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Adapt to new akonadi include path
+  * Kdelibs4ConfigMigrator will be removed in qt6
+  * Install Dolphin service files namespaced with kgpg_
+  * fix many code quality warnings from CI
+  * tests: unify and prolong test timeouts
+
+-------------------------------------------------------------------
 Tue Mar  1 09:57:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
