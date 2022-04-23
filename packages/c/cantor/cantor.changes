@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:50:44 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:17:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:13:34 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+  * Minor changes
+  * [R] properly handle the case in the variable model when there is no variable value for
+    a given variable name (e.g. 'l = c()').
+  * [maxima] properly handle the switch to the Lisp mode.
+  * Small fixes required for the integration in LabPlot
+  * Fixed the signature of the virtual functions on luaexpression.h.
+  * Allow to enable/disable the LaTeX typesetting before the session login.
+  * Added missing virtual functions ins KAlgebraSession.
+  * Moved the functions parseOutput() and parseError() to the base class Expression
+  * [octave] code cleanup in OctaveSesson.
+  * [python] minor code cleanup and trying to fix a python test failing on CI.
+  * [R] parse the mime type 'image' before the type 'octet-stream' is parsed.
+  * Add content rating tag
+  * [octave] changed the default octave executable from 'octave-cli' to 'octave'
+  * Removed the border and reduced the margins of the LaTeX preview image. (kde#434812)
+  * [maxima] properly parse the output of the internal help
+  * Highlight the warning results differently to clearly separate them visually from
+    the normal output.
+  * Enable the copy action in the context menu of the text result item
+  * [maxima] in case a warning is produced, treat it as such
+  * Don't crash when openning an  invalid project file from an invalid URL.
+  * Fix the build.
+  * [octave] removed the usage of EPS and libspectre.
+  * Started removing the usage of libspectre.
+  * Fix build with julia 1.7
+  * Support older KF5 versions
+  * Remove not necessary I18N_NOOP
+
+-------------------------------------------------------------------
 Tue Mar  1 09:56:37 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
