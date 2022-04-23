@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 21 22:13:32 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2022
+  * fix cropped figures
+  * revert PreviewBorder to 0.5bp
+  * support download attribute for <A> tag
+  * remove meta tags for distribution, etc
+  * allow input filename with no extension
+- Remove outdated manual latex2html-manual.tar.bz2,
+  build up-to-date manual from source as part of the build process.
+- Drop latex2html-backref-workaround.diff, was a workaround for
+  perl 5.18 not used in any supported openSUSE version anymore.
+
+-------------------------------------------------------------------
 Tue Aug 10 07:08:56 UTC 2021 - pgajdos@suse.com
 
 - do not package test logs (WARNINGS in this case) [bsc#1188918]

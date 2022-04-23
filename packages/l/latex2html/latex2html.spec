@@ -1,7 +1,7 @@
 #
 # spec file for package latex2html
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,19 +19,21 @@
 %define share_dir %{_datadir}/latex2html
 %define _texmfmaindir   %{_datadir}/texmf
 Name:           latex2html
-Version:        2021.2
+Version:        2022
 Release:        0
 Summary:        LaTeX to HTML Converter
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Utilities
 URL:            https://github.com/latex2html/latex2html/
-Source0:        https://github.com/latex2html/latex2html/archive/v%{version}.tar.gz
-Source1:        latex2html-manual.tar.bz2
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE latex2html-share-dir.diff -- Fix latex2html share dir location, use /usr/share not /usr/share/lib
 Patch0:         latex2html-share-dir.diff
+# PATCH-FIX-UPSTREAM latex2html-perl-bindir.diff -- Fix shbang to use /usr/bin not /usr/local/bin
 Patch1:         latex2html-perl-bindir.diff
+# PATCH-FEATURE-UPSTREAM latex2html-dest-dir.diff -- Support DESTDIR variable while installing
 Patch2:         latex2html-dest-dir.diff
+# PATCH-FIX-UPSTREAM latex2html-binmode.diff -- Open files in binary mode, required for UTF-8 files
 Patch3:         latex2html-binmode.diff
-Patch4:         latex2html-backref-workaround.diff
 BuildRequires:  fdupes
 BuildRequires:  ghostscript-fonts-std
 BuildRequires:  ghostscript-x11
@@ -70,17 +72,21 @@ Group:          Productivity/Publishing/TeX/Utilities
 This subpackage contains the documentation for the Latex2HTML converter.
 
 %prep
-%setup -q -a 1
+%setup -q
 %patch0
 %patch1
 %patch2
 %patch3
-%patch4
 
 %build
 # Not autotools based configure
 ./configure --prefix=%{_prefix}
 %make_build
+# Build docs
+export LATEX2HTMLDIR=$(pwd)
+cd docs
+make L2H="../latex2html -nouse_pdftex -test_mode" html
+find manual -name "*.old" -delete
 
 %install
 %make_install
@@ -92,7 +98,7 @@ chmod 755 %{buildroot}%{_datadir}/%{name}/{cweb2html/makemake.pl,cweb2html/cweb2
 
 %check
 %make_build test
-find manual tests \( -name \*.log -o -name \*.aux -o -name WARNINGS \) -delete
+find docs/manual tests \( -name \*.log -o -name \*.aux -o -name WARNINGS \) -delete
 
 %files
 %doc Changes FAQ README.md TODO dot.latex2html-init
@@ -121,7 +127,7 @@ find manual tests \( -name \*.log -o -name \*.aux -o -name WARNINGS \) -delete
 %{share_dir}/icons/*.png
 
 %files doc
-%doc manual
+%doc docs/manual
 %doc tests
 %doc example
 

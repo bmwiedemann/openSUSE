@@ -422,4 +422,16 @@ A    latex2html-share-dir.diff</comment>
     <comment>- do not package test logs (WARNINGS in this case) [bsc#1188918]</comment>
     <requestid>911187</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>da6ce4a2c09c2fa01037553654c8d6c1</srcmd5>
+    <version>2022</version>
+    <time>1650735899</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2022
+- Remove outdated manual latex2html-manual.tar.bz2,
+  build up-to-date manual from source as part of the build process.
+- Drop latex2html-backref-workaround.diff, was a workaround for
+  perl 5.18 not used in any supported openSUSE version anymore. (forwarded request 971943 from susnux)</comment>
+    <requestid>971973</requestid>
+  </revision>
 </revisionlist>
