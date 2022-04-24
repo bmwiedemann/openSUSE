@@ -27,13 +27,13 @@ Group:          Development/Languages/Python
 URL:            https://github.com/audreyr/cookiecutter
 Source:         https://github.com/cookiecutter/cookiecutter/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # recent versions are not published on PyPI: https://github.com/cookiecutter/cookiecutter/issues/1636
-#Source:         https://files.pythonhosted.org/packages/source/c/cookiecutter/cookiecutter-%{version}.tar.gz
+#Source:         https://files.pythonhosted.org/packages/source/c/cookiecutter/cookiecutter-%%{version}.tar.gz
 Source1:        ccext.py
-# PATCH-FIX-UPSTREAM -- fix-setup-version.patch https://github.com/cookiecutter/cookiecutter/pull/1656
-Patch0:         https://github.com/cookiecutter/cookiecutter/pull/1656.patch#/fix-setup-version.patch
-BuildRequires:  %{python_module Jinja2 >= 2.7}
+# PATCH-FIX-UPSTREAM -- cookiecutter-fix-setup.patch https://github.com/cookiecutter/cookiecutter/pull/1656
+Patch0:         cookiecutter-fix-setup.patch
+BuildRequires:  %{python_module Jinja2 >= 2.7 with %python-Jinja2 < 4}
 BuildRequires:  %{python_module binaryornot >= 0.2.0}
-BuildRequires:  %{python_module click >= 7.0}
+BuildRequires:  %{python_module click >= 7 with %python-click < 9}
 BuildRequires:  %{python_module future >= 0.15.2}
 BuildRequires:  %{python_module jinja2-time >= 0.1.0}
 BuildRequires:  %{python_module poyo >= 0.1.0}
@@ -44,16 +44,16 @@ BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 Requires:       git-core
-Requires:       python-Jinja2 >= 2.7
 Requires:       python-PyYAML
 Requires:       python-binaryornot >= 0.2.0
-Requires:       python-click >= 7.0
 Requires:       python-future >= 0.15.2
 Requires:       python-jinja2-time >= 0.1.0
 Requires:       python-poyo >= 0.1.0
 Requires:       python-python-slugify
 Requires:       python-requests >= 2.18.0
 Requires:       python-whichcraft >= 0.4.0
+Requires:       (python-Jinja2 >= 2.7 with python-Jinja2 < 4)
+Requires:       (python-click >= 7 with python-click < 9)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -98,8 +98,7 @@ project template.
 This package contains the documentation for cookiecutter.
 
 %prep
-%setup -q -n cookiecutter-%{version}
-%patch0 -p1
+%autosetup -p1 -n cookiecutter-%{version}
 cp %{SOURCE1} docs
 # Remove pytest addopts:
 rm setup.cfg
@@ -139,7 +138,8 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %license LICENSE
 %python_alternative cookiecutter
-%{python_sitelib}/cookiecutter*
+%{python_sitelib}/cookiecutter
+%{python_sitelib}/cookiecutter-%{version}*-info
 
 %files -n cookiecutter-doc
 %license LICENSE

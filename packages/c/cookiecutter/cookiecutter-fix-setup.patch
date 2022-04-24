@@ -9,10 +9,10 @@ to wrong version numbers on the local installation
  setup.py | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/setup.py b/setup.py
-index d703c3c2..23a948ab 100644
---- a/setup.py
-+++ b/setup.py
+Index: cookiecutter-2.0.2/setup.py
+===================================================================
+--- cookiecutter-2.0.2.orig/setup.py
++++ cookiecutter-2.0.2/setup.py
 @@ -2,7 +2,7 @@
  """cookiecutter distutils configuration."""
  from setuptools import setup
@@ -22,3 +22,12 @@ index d703c3c2..23a948ab 100644
  
  with open('README.md', encoding='utf-8') as readme_file:
      readme = readme_file.read()
+@@ -10,7 +10,7 @@ with open('README.md', encoding='utf-8')
+ requirements = [
+     'binaryornot>=0.4.4',
+     'Jinja2>=2.7,<4.0.0',
+-    'click>=7.0,<8.0.0',
++    'click>=7.0,<9.0.0',
+     'pyyaml>=5.3.1',
+     'jinja2-time>=0.2.0',
+     'python-slugify>=4.0.0',
