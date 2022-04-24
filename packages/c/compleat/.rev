@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b60c0ea6e2b006530fd6ac9e73cd4ccf</srcmd5>
+    <version>1.0+git.20220402.ec8fccc</version>
+    <time>1650822336</time>
+    <user>dimstar_suse</user>
+    <comment>I want to add compleat ( https://github.com/mbrubeck/compleat ) to openSUSE:Factory. compleat is a program that allows generating command-line completions using a simple DSL. </comment>
+    <requestid>972294</requestid>
+  </revision>
+</revisionlist>

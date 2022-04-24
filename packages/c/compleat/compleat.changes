@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Mon Apr  4 13:19:53 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 1.0+git.20220402.ec8fccc
+  * Also read usage files from /usr/share/compleat.d
+- Only build on architectures where ghc is built
+- Correctly install the setup script for bash
+- Use %autosetup
+
+-------------------------------------------------------------------
+Fri Feb  4 22:22:14 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Create subpackages to install the setup scripts for fish and bash
+- Include "git" in the version
+- Install example *.usage files
+
+-------------------------------------------------------------------
+Thu Feb  3 22:31:13 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Simplify spec file
+
+-------------------------------------------------------------------
+Thu Dec  6 10:25:53 UTC 2018 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Use latest version
+
+-------------------------------------------------------------------
+Thu Dec  6 09:58:25 UTC 2018 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Use _service
+
+-------------------------------------------------------------------
+Fri Jun  1 21:17:38 UTC 2018 - jaime.marquinez.ferrandiz@fastmail.net
+
+- Add license file
+- Add rpm group
+- Add description
