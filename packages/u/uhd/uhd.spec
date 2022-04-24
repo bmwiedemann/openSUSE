@@ -15,9 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define libname libuhd4_1_0
+%define libname libuhd4_2_0
 Name:           uhd
-Version:        4.1.0.5
+Version:        4.2.0.0
 Release:        0
 Summary:        The driver for USRP SDR boards
 License:        GPL-3.0-or-later
