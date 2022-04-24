@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 24 01:49:33 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1650627339.b7e86d95b:
+  * Pin asciidoctor-pdf to a Ruby 2.5 compatible version
+  * Fix apparmor for job hooks
+
+-------------------------------------------------------------------
 Thu Apr 21 17:49:26 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1650557297.c7f8e5313:
