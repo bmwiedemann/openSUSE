@@ -1,7 +1,7 @@
 #
 # spec file for package python-stdeb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-stdeb
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        Python to Debian source package conversion utility
 License:        MIT
@@ -91,11 +91,13 @@ cp %{SOURCE1} .
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+cp test.sh test.sh.orig
 # There is also test2and3.sh which could be inlined here
 export PATH=/sbin:%{_prefix}/sbin:%{buildroot}/%{_bindir}:$PATH
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
 # update-alternatives: use available versioned binaries
-sed -i 's:\(_LOC=`which\s\+[-a-zA-Z0-9]\+\):\1-%{python_version}:' test.sh
+cp test.sh.orig test.sh
+sed -i 's:\(_LOC=`which\s\+[-a-zA-Z0-9]\+\):\1-%{$python_version}:' test.sh
 PYEXE=$python bash -x ./test.sh
 }
 
@@ -118,6 +120,6 @@ PYEXE=$python bash -x ./test.sh
 %python_alternative %{_bindir}/py2dsc-deb
 %python_alternative %{_bindir}/pypi-download
 %python_alternative %{_bindir}/pypi-install
-%{python_sitelib}/*
+%{python_sitelib}/*stdeb*
 
 %changelog

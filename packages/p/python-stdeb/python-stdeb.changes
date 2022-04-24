@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr 24 02:49:58 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Fixed %check by adding missing $
+- Update to v0.10.0
+  * The default Debian compat version has been changed from 7 to 9
+    as well as new
+- from v0.9.1
+  * A few improvements for Python 3 as well as new options.
+- Updated patches
+
+-------------------------------------------------------------------
 Tue May 19 08:03:03 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
