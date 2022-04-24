@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sun Apr 24 16:53:52 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.0.1
+  * Fix setup.py for PyPI upload
+  version 1.0.0:
+  * Add cancel handling to streams
+  * Remove outdated OpenGL examples from README
+  * Add event queue overflow handling
+  * Finish event infrastructure rework.
+  * Finish rewriting event infrastructure
+  * Continue reworking event infrastrucutre.
+  * Use mock.Mock to mock Xvfbwrapper on Windows
+  * Update event wrapper classes
+  * Remove deprecated libmpv API
+  * add albumart arg to video_add
+  * Windows test workaround
+  * Remove MpvSubApi wrapper
+  * Remove dropped mpv-2 api methods.
+  * Add some useful input commands
+  * Add keyword argument command interface
+  * setup.py: Update license information
+  * Update copyright headers
+  * Use upstream license
+  * tests: Suppress video output on wayland systems
+  * Add missing new event types
+  * Add future-based async command API
+  * mpv.py: add default error handler for failed async commands
+  * mpv.py: add support for asynchronous commands
+  * Default to node_command and rename old command to
+    string_command
+  * mpv.py: change mpv_detach_destroy to mpv_destroy
+  * porcelain: Add fancy wait_for_event/property future handling
+  * Bump minimum python version to 3.7
+  * README: Add skip silence example
+  * tests: Fix flaky sub_add test
+  * tests: Add wait_for_shutdown unit test
+  * tests: Switch to pytest, remove devnull hack
+  * Add timeouts and error forwarding to
+    wait_for_{property,event} condit…
+  * Fix segmentation fault in unit tests on wayland
+  * use daemon = True instead of setDaemon
+  * test_property_observer_decorator: bump sleep to 0.1s
+  * Fix handling of c_void_p args in MpvRenderParam.__init__()
+  * Update PyGObject example with locale fixup workaround
+  * mpv.py: update: Use ctypes.memmove to speed up
+  * Add dfaker's imgui/OpenGL demo
+  * README: Add Robozman's PyQt5/QML/OpenGL render context
+    example
+
+-------------------------------------------------------------------
 Wed Mar  2 15:50:32 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Dynamically add a dependency to the libmpv version that was

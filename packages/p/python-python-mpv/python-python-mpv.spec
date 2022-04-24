@@ -17,7 +17,7 @@
 
 
 Name:           python-python-mpv
-Version:        0.5.2
+Version:        1.0.1
 Release:        0
 Summary:        Python interface to the mpv media player
 License:        AGPL-3.0-or-later
