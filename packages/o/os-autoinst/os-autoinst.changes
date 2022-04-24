@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr 24 01:54:28 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1650611277.d0e275b8:
+  * Fix consoles::serial_screen:request_screen_update signatures
+  * Ignore external/ directory for tidy
+  * Use OpenQA::Test::PatchDeparse to avoid warnings
+  * git subrepo pull (merge) external/os-autoinst-common
+  * Sync tools/tidy with openQA
+  * t: Add unit test for consoles::amtSol
+  * t: Add test for consoles::sshVirtshSUT
+  * t: Add unit test for consoles::network_console
+  * Enlarge visible windows only in fullscreen method
+
+-------------------------------------------------------------------
 Thu Apr 21 18:04:34 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1650546937.fd12334c:
