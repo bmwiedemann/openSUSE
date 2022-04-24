@@ -1,4 +1,592 @@
 -------------------------------------------------------------------
+Fri Apr 22 12:38:25 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- CHANGES IN R 4.2.0:
+
+  SIGNIFICANT USER-VISIBLE CHANGES:
+
+    * The formula method of aggregate() now matches the generic in
+      naming its first argument x (resolving PR#18299 by Thomas
+      Soeiro).
+
+      This means that calling aggregate() with a formula as a named
+      first argument requires name formula in earlier versions of R and
+      name x now, so portable code should not name the argument (code
+      in many packages did).
+
+    * Calling && or || with either argument of length greater than one
+      now gives a warning (which it is intended will become an error).
+
+    * Calling if() or while() with a condition of length greater than
+      one gives an error rather than a warning.  Consequently,
+      environment variable _R_CHECK_LENGTH_1_CONDITION_ no longer has
+      any effect.
+
+    * Windows users should consult the WINDOWS section below for some
+      profound changes including
+
+        * Support for 32-bit builds has been dropped.
+
+        * UTF-8 locales are used where available.
+
+        * The default locations for the R installation and personal
+          library folder have been changed.
+
+      Thanks to Tomas Kalibera for months of work on the Windows port
+      for this release.
+
+  NEW FEATURES:
+
+    * matrix(x, n, m) now warns in more cases where length(x) differs
+      from n * m, as suggested by Abby Spurdle and Wolfgang Huber in
+      Feb 2021 on the R-devel mailing list.
+
+      This warning can be turned into an error by setting environment
+      variable _R_CHECK_MATRIX_DATA_ to TRUE: R CMD check --as-cran
+      does so unless it is already set.
+
+    * Function file_test() in package utils gains tests for symlinks,
+      readability and writability.
+
+    * capabilities("libxml") is now false.
+
+      The description of capabilities("http/ftp") now reflects that it
+      refers to the default method, no longer the internal one.
+
+    * simplify2array() gains an except argument for controlling the
+      exceptions used by sapply().
+
+    * Environment variables R_LIBS_USER and R_LIBS_SITE are both now
+      set to the R system default if unset or empty, and can be set to
+      NULL to indicate an empty list of user or site library
+      directories.
+
+    * The warning for axis()(-like) calls in cases of relatively small
+      ranges (typically in log-scale situations) is slightly improved
+      _and_ suppressed from explicit calls to .axisPars() as has always
+      been the intention.
+
+    * The contrasts setter function `contrasts<-` gains an explicit
+      default how.many = NULL rather than just using missing(how.many).
+
+    * grid.pretty() gains a new optional argument n = 5.
+
+    * There is a new function .pretty() with option bounds as a
+      technical-utility version of pretty().  It and pretty() gain a
+      new argument f.min with a better than back-compatible default.
+
+    * Function grDevices::axisTicks() and related functions such as
+      graphics::axis() work better, notably for the log scale; partly
+      because of the pretty() improvements, but also because care is
+      taken e.g., when ylim is finite but diff(ylim) is infinite.
+
+    * nclass.FD() gains a digits option.
+
+    * The R Mathlib internal C function bd0() (called indirectly from a
+      dozen probability density and distribution functions such as
+      dpois(), dbinom(), dgamma(), pgamma() _etc_) has been
+      complemented by a more sophisticated and (mostly) more accurate C
+      function ebd0(), currently called only by internal dpois_raw()
+      improving accuracy for R level dpois() and potentially others
+      calling it such as dnbinom(), dgamma() or pgamma().  (Thanks to
+      Morten Welinder's PR#15628.)
+
+    * write.ftable() gains sep = " " argument as suggested by Thomas
+      Soeiro.
+
+    * The names of the locale categories supported by R's
+      Sys.getlocale() and Sys.setlocale() are now provided by variable
+      .LC.categories in the base namespace.
+
+    * The Date and POSIXt methods for hist() and the histogram method
+      for plot() now also use the new default col = "lightgray" in
+      consistency with the corresponding change to hist()'s default for
+      R 4.0.0.
+
+    * hist.default() gains new fuzz argument, and the histogram plot
+      method no longer uses fractional axis ticks when displaying
+      counts ("Frequency").
+
+    * mapply() and hence Map() now also obey the "max-or-0-if-any"
+      recycling rule, such that, e.g., Map(`+`, 1:3, 1[0]) is valid
+      now.
+
+    * as.character(<obj>) for "hexmode" or "octmode" objects now
+      fulfils the important basic rule as.character(x)[j] ===
+      as.character(x[j]).
+
+    * The set utility functions, notably intersect() have been tweaked
+      to be more consistent and symmetric in their two set arguments,
+      also preserving a common mode.
+
+    * substr(ch, start,end) <- new now e.g., preserves names(ch); ditto
+      for substring(), thanks to a patch from Brodie Gaslam.
+
+    * plot(<lm>) gains a extend.ylim.f argument, in partial response to
+      PR#15285; further PR#17784 is fixed thanks to several
+      contributors and a patch by Elin Waring.  The Cook's dist
+      contours get customizable via cook.col and cook.lty with a
+      different default color and their legend is nicer by default and
+      customizable via cook.legendChanges.
+
+    * Attempting to subset an object that is not subsettable now
+      signals an error of class notSubsettableError. The
+      non-subsettable object is contained in the object field of the
+      error condition.
+
+    * Subscript-out-of-bounds errors are now signaled as errors of
+      class subscriptOutOfBoundsError.
+
+    * Stack-overflow errors are now signaled as errors inheriting from
+      class stackOverflowError. See ?stackOverflowError for more
+      details.
+
+    * New partly experimental Sys.setLanguage() utility, solving the
+      main problem of PR#18055.
+
+    * gettext() and gettextf() get a new option trim = TRUE which when
+      set to false allows translations for strings such as "Execution
+      halted\n" typical for C code.
+
+    * An experimental implementation of hash tables is now available.
+      See ?hashtab for more details.
+
+    * identical() gains a extptr.as.ref argument for requesting that
+      external pointer objects be compared as reference objects.
+
+    * reorder() gets an argument decreasing which it passes to sort()
+      for level creation; based on the wish and patch by Thomas Soeiro
+      in PR#18243.
+
+    * as.vector() gains a data.frame method which returns a simple
+      named list, also clearing a long standing 'FIXME' to enable
+      as.vector(<data.frame>, mode="list").  This breaks code relying
+      on as.vector(<data.frame>) to return the unchanged data frame.
+
+    * legend() is now vectorized for arguments cex, x.intersp, and
+      text.width.  The latter can now also be specified as a vector
+      (one element for each column of the legend) or as NA for
+      computing a proper column wise maximum value of strwidth(legend).
+      The argument y.intersp can be specified as a vector with one
+      entry for each row of the legend.
+
+      legend() also gains new arguments title.cex and title.font.
+      Thanks to Swetlana Herbrandt.
+
+    * Deparsing no longer remaps attribute names dim, dimnames, levels,
+      names and tsp to historical S-compatible names (which structure()
+      maps back).
+
+    * sample() and sample.int() have additional sanity checks on their
+      size and n arguments.
+
+      all.equal.numeric() gains a sanity check on its tolerance
+      argument - calling all.equal(a, b, c) for three numeric vectors
+      is a surprisingly common error.
+
+      mean(na.rm =), rank(na.last =), barplot(legend.text =),
+      boxplot(), contour(drawlabels =), polygon(border =) and
+      methods::is(class2 =) have more robust sanity checks on their
+      arguments.
+
+      R CMD Rd2pdf (used by R CMD check) has a more robust sanity check
+      on the format of \alias{} commands.
+
+    * psigamma(x, deriv) for negative x now also works for deriv = 4
+      and 5; their underlying C level dpsifn() is documented in
+      'Writing R Extensions'.
+
+    * The HTML help system now uses HTML5 (wish of PR#18149).
+
+    * ks.test() now provides exact p-values also with ties and MC
+      p-values in the two-sample (Smirnov) case.  By Torsten Hothorn.
+
+    * ks.test() gains a formula interface, with y ~ 1 for the
+      one-sample (Kolmogorov) test and y ~ group for the two-sample
+      (Smirnov) test.  Contributed by Torsten Hothorn.
+
+    * The return value from ks.test() now has class c("ks.test",
+      "htest") - packages using try() need to take care to use
+      inherits() and not == on the class.
+
+    * New functions psmirnov(), qsmirnov() and rsmirnov() in package
+      stats implementing the asymptotic and exact distributions of the
+      two-sample Smirnov statistic.
+
+    * iconv() now allows sub = "c99" to use C99-style escapes for UTF-8
+      inputs which cannot be converted to encoding to.
+
+    * In a forward pipe |> expression it is now possible to use a named
+      argument with the placeholder _ in the rhs call to specify where
+      the lhs is to be inserted.  The placeholder can only appear once
+      on the rhs.
+
+    * The included LAPACK sources have been updated to version 3.10.0,
+      except for the four Fortran 77 routines which 3.10.0 has
+      re-implemented in Fortran 90 (where the older versions have been
+      retained as the R build process does not support Fortran 90).
+
+    * path.expand() and most other uses of tilde expansion now warn if
+      a path would be too long if expanded.  (An exception is
+      file.exists(), which silently returns false.)
+
+    * trunc(<Date>, *) now supports units = "months" or "years" for
+      consistency with the POSIXt method, thanks to Dirk Eddelbuettel's
+      proposal in PR#18099.
+
+    * list2DF() now checks that its arguments are of the same length,
+      rather than use recycling.
+
+    * The HTML help system has several new features: LaTeX-like math
+      can be typeset using either KaTeX or MathJax, usage and example
+      code is highlighted using Prism, and for dynamic help the output
+      of examples and demos can be shown within the browser if the
+      knitr package is installed. These features can be disabled by
+      setting the environment variable _R_HELP_ENABLE_ENHANCED_HTML_ to
+      a false value.
+
+  GRAPHICS:
+
+    * The graphics engine version, R_GE_version, has been bumped to 15
+      and so packages that provide graphics devices should be
+      reinstalled.
+
+    * The grid package now allows the user to specify a "vector" of
+      pattern fills.  The fill argument to gpar() accepts a list of
+      gradients and/or patterns and the functions linearGradient(),
+      radialGradient(), and pattern() have a new group argument.
+
+      Points grobs (data symbols) can now also have a pattern fill.
+
+      The grobCoords() function now returns a more informative and
+      complex result.
+
+    * The grid package has new functions for drawing isolated groups:
+      grid.group(), grid.define(), and grid.use().  These functions add
+      compositing operators and affine transformations to R's graphics
+      capabilities.
+
+      The grid package also has new functions for stroking and filling
+      paths: grid.stroke(), grid.fill(), and grid.fillStroke().
+
+      A new function as.path() allows the user to specify the fill rule
+      for a path that is to be used for clipping, stroking, or filling;
+      available options are "winding" and "evenodd".  A new function
+      as.mask() allows the user to specify the type of a mask;
+      available options are "alpha" and "luminance".
+
+      These new features are only supported so far (at most) on the
+      Cairo-based graphics devices and on the pdf() device.
+
+    * dev.capabilities() reports on device support for the new
+      features.
+
+    * par() now warns about unnamed non-character arguments to prevent
+      misuse such as {usr <- par("usr"); par(usr)}.
+
+  INSTALLATION:
+
+    * Facilities for accessing ftp:// sites are no longer tested
+      (except _pro tem_ for curlGetHeaders()) as modern browsers have
+      removed support.
+
+    * R can now be built with DEFS = -DSTRICT_R_HEADERS .
+
+  PACKAGE INSTALLATION:
+
+    * R CMD INSTALL no longer tangles vignettes. This completes an R
+      CMD build change in R 3.0.0 and affects packages built before R
+      3.0.2. Such packages should be re-made with R CMD build to have
+      the tangled R code of vignettes shipped with the tarball.
+
+    * USE_FC_LEN_T will become the default: this uses the correct
+      prototypes for Fortran BLAS/LAPACK routines called from C/C++,
+      and requires adjustment of most such calls - see 'Writing R
+      Extensions' SS6.6.2.  (This has been supported since R 3.6.2.)
+
+    * Package installation speed for packages installed with
+      keep.source has been improved. This resolve the issue reported by
+      Ofek Shilon in PR#18236.
+
+  UTILITIES:
+
+    * R CMD check can optionally report files/directories left behind
+      in home, /tmp (even though TMPDIR is set) and other directories.
+      See the "R Internals" manual for details.
+
+    * R CMD check now reports byte-compilation errors during
+      installation.  These are not usually fatal but may result in
+      parts of the package not being byte-compiled.
+
+    * _R_CHECK_DEPENDS_ONLY_ can be applied selectively to examples,
+      tests and/or vignettes in R CMD check: see the "R Internals"
+      manual.
+
+    * _R_CHECK_SRC_MINUS_W_IMPLICIT_ now defaults to true: recent
+      versions of Apple clang on macOS have made implicit function
+      declarations in C into a compilation error.
+
+    * R CMD check --as-cran makes use of the environment variable
+      AUTORECONF.  See the "R Internals" manual SS8 for further details.
+
+    * R CMD check --use-valgrind also uses valgrind when re-building
+      vignettes as some non-Sweave vignettes unhelpfully comment out
+      all their code when R CMD check runs vignettes.
+
+    * Errors in re-building vignettes (unless there are LaTeX errors)
+      are reported by R CMD check as ERROR rather than WARNING when
+      running vignettes has been skipped (as it frequently is in CRAN
+      checks and by --as-cran).
+
+    * R CMD Rd2pdf gains a --quiet option that is used by R CMD build
+      when building the PDF package manual.
+
+    * R CMD Rd2pdf now always runs LaTeX in batch mode, consistent with
+      Texinfo >= 6.7. The --batch option is ignored.
+
+    * R CMD build and R CMD check now include the Rd file name and line
+      numbers in the error message of an \Sexpr evaluation failure.
+
+    * For packages using the \doi Rd macro (now an install-time \Sexpr)
+      but no other dynamic Rd content, R CMD build now produces a
+      smaller tarball and is considerably faster - skipping temporary
+      package installation.
+
+  C-LEVEL FACILITIES:
+
+    * The non-API header R_ext/R-ftp-http.h is no longer provided, as
+      the entry points it covered are now all defunct.
+
+    * A number of non-API declarations and macro definitions have been
+      moved from the installed header Rinternals.h to the internal
+      header Defn.h. Packages that only use entry points and
+      definitions documented to be part of the API as specified in
+      'Writing R Extensions' SS6 should not be affected.
+
+    * The macro USE_RINTERNALS no longer has any effect when compiling
+      package code.  Packages which also use R_NO_REMAP will need to
+      ensure that the remapped names are used for calls to API
+      functions that were formerly also made available as macros.
+
+    * The deprecated legacy S-compatibility macros PROBLEM, MESSAGE,
+      ERROR, WARN, WARNING, RECOVER, ... are no longer defined in
+      R_exts/RS.h (included by R.h).  Replace these by calls to
+      Rf_error and Rf_warning (defined in header R_ext/Error.h included
+      by R.h).
+
+      Header R_ext/RS.h no longer includes R_ext/Error.h.
+
+    * Header R_ext/Constants.h (included by R.h) when included from C++
+      now includes the C++ header cfloat rather than the C header
+      float.h (now possible as C++11 is required).
+
+    * The legacy S-compatibility macros DOUBLE_* in R_ext/Constants.h
+      (included by R.h) are deprecated.
+
+    * The deprecated S-compatibility macros SINGLE_* in
+      R_ext/Constants.h (included by R.h) have been removed.
+
+    * R_Calloc, R_Free and R_Realloc are preferred to their unprefixed
+      forms and error messages now use the prefix. These forms were
+      introduced in R 3.4.0 and are available even when
+      STRICT_R_HEADERS is defined.
+
+    * rmultinom has been documented in 'Writing R Extensions' SS6 so is
+      now part of the R API.
+
+    * Similarly, Rtanpi, called from R level tanpi() is now part of the
+      R API.
+
+    * The long-deprecated, undocumented and non-API entry point call_R
+      is no longer declared in R_ext/RS.h (included by R.h).
+
+    * The header S.h which has been unsupported since Jan 2016 has been
+      removed.  Use R.h instead.
+
+  DEPRECATED AND DEFUNCT:
+
+    * The (non-default and deprecated) method = "internal" for
+      download.file() and url() no longer supports http:// nor ftp://
+      URIs.  (It is used only for file:// URIs.)
+
+      On Windows, download.file(method = "wininet") no longer supports
+      ftp:// URIs.  (It is no longer the default method, which is
+      "libcurl" and does.)
+
+      On Windows, the deprecated method = "wininet" now gives a warning
+      for http:// and https:// URIs for both download.file() and url().
+      (It is no longer the default method.)
+
+    * On Windows, the command-line option --max-mem-size and
+      environment variable R_MAX_MEM_SIZE are defunct.  The memory
+      allocation limit was important for 32-bit builds, but these are
+      no longer supported.
+
+    * default.stringsAsFactors() is now formally deprecated, where that
+      was only mentioned on its regular help page, previously.  So it
+      now gives a warning if called.
+
+    * unix.time() is defunct now; it had been deprecated since R 3.4.0.
+
+  BUG FIXES:
+
+    * Setting digits = 0 in format(), print.default() (and hence
+      typically print()) or options() is again invalid.  Its behaviour
+      was platform-dependent, and it is unclear what "zero significant
+      digits" should mean (PR#18098).
+
+    * Messages from C code in the cairo section of package grDevices
+      are now also offered for translation, thanks to Michael Chirico's
+      PR#18123.
+
+    * mean(x) with finite x now is finite also without "long.double"
+      capability.
+
+    * R CMD Rd2pdf no longer leaves an empty build directory behind
+      when it aborts due to an already existing output file.  (Thanks
+      to Sebastian Meyer's PR#18141.)
+
+    * density(x, weights = w, na.rm = TRUE) when anyNA(x) is true, now
+      removes weights "in parallel" to x, fixing PR#18151, reported by
+      Matthias Gondan.  Additionally, it gets a subdensity option.
+
+    * Conversion of \Sexpr[]{<expR>} to LaTeX or HTML no longer
+      produces long blocks of empty lines when <expR> itself contains
+      several lines all producing empty output.  Thanks to a report and
+      patch by Ivan Krylov posted to R-devel.
+
+    * R CMD build no longer fails if a package vignette uses child
+      documents and inst/doc exists.  (Thanks to Sebastian Meyer's
+      PR#18156.)
+
+    * When an R documentation ('help' source) file man/foo.Rd in a
+      package has \donttest{..} examples with a syntax error, it is now
+      signalled as ERROR and with correct line numbers relating to the
+      *-Ex.R file, thanks to Duncan Murdoch and Sebastian Meyer's
+      reports and patch proposals in PR#17501.
+
+    * Improved determination of the correct translation domain in
+      non-base packages, addressing the combination of PR#18092 and
+      PR#17998 (#c6) with reports and _augmented_ patch #2904 by
+      Suharto Anggono.
+
+      Note that "R-base" is no longer the default domain e.g., for
+      top-level calls to gettext(); rather translation needs explicit
+      domain = * specification in such cases.
+
+    * identical(attrib.as.set=FALSE) now works correctly with data
+      frames with default row names (Thanks to Charlie Gao's PR#18179).
+
+    * txtProgressBar() now enforces a non-zero width for argument char,
+      without which no progress can be visible.
+
+    * dimnames(table(d)) is more consistent in the case where d is a
+      list with a single component, thanks to Thomas Soeiro's report to
+      R-devel.
+
+      Further, table(d1, d2) now gives an error when d1 and d2 are data
+      frames as suggested by Thomas in PR#18224.
+
+    * Fix for drawing semi-transparent lines and fills on the native
+      Windows graphics device (PR#18219 and PR#16694).  Thanks to Nick
+      Ray for helpful diagnosis on Bugzilla.
+
+    * The deparser now wraps sub-expressions such as if(A) ..  with
+      parentheses when needed; thanks to Duncan Murdoch's PR#18232 and
+      Lionel Henry's patches there.
+
+    * remove.packages() no longer tries to uninstall Priority: base
+      packages, thanks to a report and suggestions by Colin Fay in
+      PR#18227.
+
+    * win.metafile() now has xpinch and ypinch arguments so that the
+      user can override Windows' (potentially wrong) guess at device
+      dimensions.
+
+    * x[i] and x[[i]] for non-integer i should now behave in all cases
+      as always documented: the index used is equivalent to
+      as.integer(i) unless that would overflow where trunc(i) is used
+      instead; thanks to Suharto Anggono's report and patch proposals
+      in PR#17977.
+
+    * asOneSidedFormula() now associates the resulting formula with the
+      global environment rather than the evaluation environment created
+      for the call.
+
+    * <bibentry>$name now matches the field name case-insensitively,
+      consistent with bibentry() creation and the replacement method.
+
+    * cbind() failed to detect some length mismatches with a mixture of
+      time-series and non-time-series inputs.
+
+    * The default LaTeX style file Sweave.sty used by the RweaveLatex
+      driver no longer loads the obsolete ae package; thanks to a
+      report by Thomas Soeiro in PR#18271.  Furthermore, it now skips
+      \usepackage[T1]{fontenc} for engines other than pdfTeX (if
+      detected) or if the new [nofontenc] option is used.
+
+    * smooth.spline() now stores its logical cv argument more safely,
+      fixing a rare bug when printing, and also stores n.
+
+    * smooth.spline(x,y,*) now computes the cv.crit statistic
+      correctly, also when is.unsorted(x), fixing PR#18294.
+
+    * The data.frame method of rbind() now warns when binding
+      not-wholly-recycling vectors, by analogy to the default method
+      (for matrices).
+
+    * setAs() finds the correct class for name to when multiple
+      packages define a class with that name. Thanks to Gabor Csardi
+      for the report.
+
+    * Fix for detaching a package when two classes of the same name are
+      present in method signatures for the same generic. Thanks to
+      Gabor Csardi for the report.
+
+    * match.arg("", c("", "a", "B")) gives a better error message, in
+      part from PR#17959, thanks to Elin Waring.
+
+    * R CMD Sweave --clean no longer removes pre-existing files or
+      subdirectories (PR#18242).
+
+    * The quartz() device no longer splits polylines into subpaths.
+      That has caused narrowly-spaced lines with many points to always
+      look solid even when dashed line type was used due to dash phase
+      restarts.
+
+    * Deparsing constructs such as quote(1 + `!`(2) + 3) works again as
+      before R 3.5.0, thanks to the report and patch in PR#18284 by
+      Suharto Anggono.
+
+    * as.list(f) for a factor f now keeps names(f), fixing PR#18309.
+
+    * qbeta(.001, .9, .009) and analogous qf() calls now return a
+      correct value instead of NaN or wrongly 1, all with a warning;
+      thanks to the report by Ludger Goeminne in PR#18302.
+
+    * plot.lm() failed to produce the plot of residuals vs.  factor
+      levels (i.e., which=5 when leverages are constant) for models
+      with character predictors (PR#17840).
+
+    * interaction.plot(..., xtick = TRUE) misplaced the x-axis line
+      (PR#18305).
+
+    * Not strictly fixing a bug, format()ing and print()ing of
+      non-finite Date and POSIXt values NaN and +/-Inf no longer show
+      as NA but the respective string, e.g., Inf, for consistency with
+      numeric vector's behaviour, fulfilling the wish of PR#18308.
+
+    * R CMD check no longer runs test scripts generated from
+      corresponding .Rin files twice and now signals an ERROR if
+      processing an .Rin script fails.
+
+    * tools::Rd2txt() used for plain-text help pages now renders \hrefs
+      (if tools::Rd2txt_options(showURLs = TRUE)) and \urls with
+      percent-encoding and standards-compliant delimiting style (angle
+      brackets and no URL: prefix).  \email is now rendered with a
+      mailto: prefix.
+
+-------------------------------------------------------------------
 Fri Mar 11 07:54:58 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - CHANGES IN R 4.1.3:

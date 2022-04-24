@@ -1744,4 +1744,41 @@ CHANGES IN R 3.4.2:
       proposal by Hugh Parsonage to the R-devel list.</comment>
     <requestid>962175</requestid>
   </revision>
+  <revision rev="84" vrev="41">
+    <srcmd5>782205ee09cf6971d7bf7b7fa0a3c35f</srcmd5>
+    <version>unknown</version>
+    <time>1650822337</time>
+    <user>dimstar_suse</user>
+    <comment>- CHANGES IN R 4.2.0:
+  SIGNIFICANT USER-VISIBLE CHANGES:
+    * The formula method of aggregate() now matches the generic in
+      naming its first argument x (resolving PR#18299 by Thomas
+      Soeiro).
+      This means that calling aggregate() with a formula as a named
+      first argument requires name formula in earlier versions of R and
+      name x now, so portable code should not name the argument (code
+      in many packages did).
+    * Calling &amp;&amp; or || with either argument of length greater than one
+      now gives a warning (which it is intended will become an error).
+    * Calling if() or while() with a condition of length greater than
+      one gives an error rather than a warning.  Consequently,
+      environment variable _R_CHECK_LENGTH_1_CONDITION_ no longer has
+      any effect.
+    * Windows users should consult the WINDOWS section below for some
+      profound changes including
+        * Support for 32-bit builds has been dropped.
+        * UTF-8 locales are used where available.
+        * The default locations for the R installation and personal
+          library folder have been changed.
+      Thanks to Tomas Kalibera for months of work on the Windows port
+      for this release.
+  NEW FEATURES:
+    * matrix(x, n, m) now warns in more cases where length(x) differs
+      from n * m, as suggested by Abby Spurdle and Wolfgang Huber in
+      Feb 2021 on the R-devel mailing list.
+      This warning can be turned into an error by setting environment
+      variable _R_CHECK_MATRIX_DATA_ to TRUE: R CMD check --as-cran
+      does so unless it is already set.</comment>
+    <requestid>972315</requestid>
+  </revision>
 </revisionlist>
