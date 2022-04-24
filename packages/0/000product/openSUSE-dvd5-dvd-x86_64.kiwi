@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20220422" schemaversion="4.1">
+<image name="OBS__openSUSE___20220423" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220422</productvar>
+      <productvar name="VERSION">20220423</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220422,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220423,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220422/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220423/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -89,7 +89,6 @@
       <repopackage name="akonadi-notes-lang"/>
       <repopackage name="akonadi-plugin-calendar"/>
       <repopackage name="akonadi-plugin-contacts"/>
-      <repopackage name="akonadi-plugin-kalarmcal"/>
       <repopackage name="akonadi-plugin-mime"/>
       <repopackage name="akonadi-search"/>
       <repopackage name="akonadi-search-lang"/>
@@ -110,7 +109,6 @@
       <repopackage name="alsa-ucm-conf"/>
       <repopackage name="alsa-utils"/>
       <repopackage name="alts"/>
-      <repopackage name="amarok"/>
       <repopackage name="amavisd-milter"/>
       <repopackage name="amavisd-new"/>
       <repopackage name="amavisd-new-docs"/>
@@ -299,6 +297,9 @@
       <repopackage name="circuslinux"/>
       <repopackage name="ckermit"/>
       <repopackage name="clamav"/>
+      <repopackage name="clang-tools"/>
+      <repopackage name="clang14"/>
+      <repopackage name="clang14-doc"/>
       <repopackage name="clicfs"/>
       <repopackage name="clutter-gtk-lang"/>
       <repopackage name="clutter-lang"/>
@@ -317,6 +318,7 @@
       <repopackage name="cpio-mt"/>
       <repopackage name="cpp"/>
       <repopackage name="cpp11"/>
+      <repopackage name="cppcheck" arch="x86_64"/>
       <repopackage name="cpupower"/>
       <repopackage name="cpupower-lang"/>
       <repopackage name="cracklib"/>
@@ -548,7 +550,7 @@
       <repopackage name="gcab-lang"/>
       <repopackage name="gcal"/>
       <repopackage name="gcal-lang"/>
-      <repopackage name="gcc" arch="x86_64"/>
+      <repopackage name="gcc"/>
       <repopackage name="gcc11"/>
       <repopackage name="gcc11-info"/>
       <repopackage name="gcc11-locale"/>
@@ -876,6 +878,9 @@
       <repopackage name="hdparm"/>
       <repopackage name="health-checker"/>
       <repopackage name="health-checker-plugins-MicroOS"/>
+      <repopackage name="heaptrack"/>
+      <repopackage name="heaptrack-gui"/>
+      <repopackage name="heaptrack-lang"/>
       <repopackage name="hexchat" arch="x86_64"/>
       <repopackage name="hexchat-lang" arch="x86_64"/>
       <repopackage name="hfsutils"/>
@@ -1017,8 +1022,7 @@
       <repopackage name="kaddressbook"/>
       <repopackage name="kaddressbook-doc"/>
       <repopackage name="kaddressbook-lang"/>
-      <repopackage name="kalarmcal"/>
-      <repopackage name="kalarmcal-lang"/>
+      <repopackage name="kalendarac"/>
       <repopackage name="kalgebra"/>
       <repopackage name="kalgebra-lang"/>
       <repopackage name="kamera-lang"/>
@@ -1091,6 +1095,8 @@
       <repopackage name="kdepim-addons-lang"/>
       <repopackage name="kdepim-runtime"/>
       <repopackage name="kdepim-runtime-lang"/>
+      <repopackage name="kdevelop5"/>
+      <repopackage name="kdevelop5-lang"/>
       <repopackage name="kdevplatform"/>
       <repopackage name="kdevplatform-lang"/>
       <repopackage name="kdf"/>
@@ -1263,7 +1269,6 @@
       <repopackage name="kpeoplevcard"/>
       <repopackage name="kpimtextedit"/>
       <repopackage name="kpimtextedit-lang"/>
-      <repopackage name="kpkpass"/>
       <repopackage name="kqtquickcharts"/>
       <repopackage name="kquickcharts"/>
       <repopackage name="krb5"/>
@@ -1448,6 +1453,7 @@
       <repopackage name="libboost_filesystem1_79_0"/>
       <repopackage name="libboost_iostreams1_79_0"/>
       <repopackage name="libboost_locale1_79_0"/>
+      <repopackage name="libboost_program_options1_79_0"/>
       <repopackage name="libboost_python-py3-1_79_0"/>
       <repopackage name="libboost_thread1_79_0"/>
       <repopackage name="libbox2d2"/>
@@ -1469,6 +1475,10 @@
       <repopackage name="libbz2-1"/>
       <repopackage name="libbz2-1-32bit" arch="x86_64"/>
       <repopackage name="libbz2-devel" arch="x86_64"/>
+      <repopackage name="libc++-devel" arch="x86_64"/>
+      <repopackage name="libc++1" arch="x86_64"/>
+      <repopackage name="libc++abi-devel" arch="x86_64"/>
+      <repopackage name="libc++abi1" arch="x86_64"/>
       <repopackage name="libcaca0"/>
       <repopackage name="libcacard0"/>
       <repopackage name="libcairo-gobject2"/>
@@ -1517,6 +1527,8 @@
       <repopackage name="libcholmod3"/>
       <repopackage name="libchromaprint1"/>
       <repopackage name="libclamav9"/>
+      <repopackage name="libclang-cpp14"/>
+      <repopackage name="libclang13"/>
       <repopackage name="libclastfm0"/>
       <repopackage name="libcloudproviders0"/>
       <repopackage name="libclucene-contribs-lib1"/>
@@ -1811,9 +1823,6 @@
       <repopackage name="libgphoto2-6-lang"/>
       <repopackage name="libgphoto2_port12"/>
       <repopackage name="libgpm2"/>
-      <repopackage name="libgpod-lang"/>
-      <repopackage name="libgpod-tools"/>
-      <repopackage name="libgpod4"/>
       <repopackage name="libgps29"/>
       <repopackage name="libgraphene-1_0-0"/>
       <repopackage name="libGraphicsMagick++-Q16-12"/>
@@ -2002,6 +2011,8 @@
       <repopackage name="libkate1"/>
       <repopackage name="libkcddb"/>
       <repopackage name="libkcddb-lang"/>
+      <repopackage name="libkchart-lang"/>
+      <repopackage name="libKChart2"/>
       <repopackage name="libkColorPicker0"/>
       <repopackage name="libkcompactdisc-lang"/>
       <repopackage name="libkdecorations2-5"/>
@@ -2012,11 +2023,11 @@
       <repopackage name="libkdegames-qt5-imports"/>
       <repopackage name="libkdepim"/>
       <repopackage name="libkdepim-lang"/>
-      <repopackage name="libkdevplatform57"/>
+      <repopackage name="libkdevplatform58"/>
       <repopackage name="libkdsoap2"/>
       <repopackage name="libkeduvocdocument-lang"/>
       <repopackage name="libKEduVocDocument5"/>
-      <repopackage name="libkerfuffle21"/>
+      <repopackage name="libkerfuffle22"/>
       <repopackage name="libkeybinder-3_0-0"/>
       <repopackage name="libkeyutils1"/>
       <repopackage name="libkeyutils1-32bit" arch="x86_64"/>
@@ -2032,7 +2043,6 @@
       <repopackage name="libKF5AkonadiSearch"/>
       <repopackage name="libKF5AkonadiWidgets5"/>
       <repopackage name="libKF5AkonadiXml5"/>
-      <repopackage name="libKF5AlarmCalendar5"/>
       <repopackage name="libKF5Archive5"/>
       <repopackage name="libKF5Attica5"/>
       <repopackage name="libKF5Auth5"/>
@@ -2086,6 +2096,7 @@
       <repopackage name="libKF5IconThemes5"/>
       <repopackage name="libKF5IconThemes5-lang"/>
       <repopackage name="libKF5IdentityManagement5"/>
+      <repopackage name="libKF5IdentityManagementWidgets5"/>
       <repopackage name="libKF5IdleTime5"/>
       <repopackage name="libKF5IMAP5"/>
       <repopackage name="libKF5IncidenceEditor5"/>
@@ -2124,6 +2135,7 @@
       <repopackage name="libKF5NewStuff5"/>
       <repopackage name="libKF5NewStuff5-lang"/>
       <repopackage name="libKF5NewStuffCore5"/>
+      <repopackage name="libKF5NewStuffWidgets5"/>
       <repopackage name="libKF5Notifications5"/>
       <repopackage name="libKF5Notifications5-lang"/>
       <repopackage name="libKF5NotifyConfig5"/>
@@ -2215,7 +2227,6 @@
       <repopackage name="liblab_gamut1"/>
       <repopackage name="liblangtag1"/>
       <repopackage name="liblapack3"/>
-      <repopackage name="liblastfm5-1"/>
       <repopackage name="liblavfile-2_2-0"/>
       <repopackage name="liblavjpeg-2_2-0"/>
       <repopackage name="liblavplay-2_2-0"/>
@@ -2273,7 +2284,6 @@
       <repopackage name="libmalcontent-ui-0-0"/>
       <repopackage name="libmanette-0_2-0"/>
       <repopackage name="libmariadb3"/>
-      <repopackage name="libmariadbd19"/>
       <repopackage name="libmarkdown2"/>
       <repopackage name="libmatroska7"/>
       <repopackage name="libmaxminddb0"/>
@@ -2322,7 +2332,6 @@
       <repopackage name="libmusicbrainz5-1"/>
       <repopackage name="libmwaw-0_3-3"/>
       <repopackage name="libmxml1"/>
-      <repopackage name="libmygpo-qt5-1"/>
       <repopackage name="libmypaint-1_6-1"/>
       <repopackage name="libmypaint-lang"/>
       <repopackage name="libmysofa1"/>
@@ -2371,7 +2380,6 @@
       <repopackage name="libobjc4"/>
       <repopackage name="libodbc2"/>
       <repopackage name="libodfgen-0_1-1"/>
-      <repopackage name="libofa0"/>
       <repopackage name="libogg0"/>
       <repopackage name="libogg0-32bit" arch="x86_64"/>
       <repopackage name="liboggkate1"/>
@@ -2740,8 +2748,10 @@
       <repopackage name="libsss_nss_idmap0"/>
       <repopackage name="libstaroffice-0_0-0"/>
       <repopackage name="libstartup-notification-1-0"/>
+      <repopackage name="libstdc++-devel"/>
       <repopackage name="libstdc++6"/>
       <repopackage name="libstdc++6-32bit" arch="x86_64"/>
+      <repopackage name="libstdc++6-devel-gcc11"/>
       <repopackage name="libstdc++6-locale"/>
       <repopackage name="libstdc++6-pp"/>
       <repopackage name="libstdc++6-pp-32bit" arch="x86_64"/>
@@ -2756,7 +2766,7 @@
       <repopackage name="libsvn_auth_gnome_keyring-1-0"/>
       <repopackage name="libsvn_auth_kwallet-1-0"/>
       <repopackage name="libsvrcore0" arch="x86_64"/>
-      <repopackage name="libSvtAv1Enc0" arch="x86_64"/>
+      <repopackage name="libSvtAv1Enc1" arch="x86_64"/>
       <repopackage name="libswresample3_9"/>
       <repopackage name="libswresample4" arch="x86_64"/>
       <repopackage name="libswscale5_9"/>
@@ -2765,7 +2775,6 @@
       <repopackage name="libsysfs2"/>
       <repopackage name="libsystemd0"/>
       <repopackage name="libsystemd0-32bit" arch="x86_64"/>
-      <repopackage name="libtag-extras1"/>
       <repopackage name="libtag1"/>
       <repopackage name="libtag_c0"/>
       <repopackage name="libtalloc2"/>
@@ -3072,6 +3081,7 @@
       <repopackage name="libz-ng-compat1"/>
       <repopackage name="libz1"/>
       <repopackage name="libz1-32bit" arch="x86_64"/>
+      <repopackage name="libz3-4_8" arch="x86_64"/>
       <repopackage name="libzbar0"/>
       <repopackage name="libzck1"/>
       <repopackage name="libzebra1"/>
