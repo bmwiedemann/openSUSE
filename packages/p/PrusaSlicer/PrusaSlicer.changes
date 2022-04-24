@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 24 09:26:22 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add PrusaSlicer-boost1.79.patch avoiding the deprecation
+  of boost::filesystem::ofstream in Boost 1.79
+  * gh#prusa3d/PrusaSlicer#8238
+
+-------------------------------------------------------------------
 Tue Apr 12 12:59:51 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Use gcc version 10 for anything but Tumbleweed

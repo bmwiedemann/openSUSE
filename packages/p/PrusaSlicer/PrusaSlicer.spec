@@ -24,6 +24,8 @@ License:        AGPL-3.0-only
 Group:          Hardware/Printing
 URL:            https://www.prusa3d.com/prusaslicer/
 Source0:        https://github.com/prusa3d/PrusaSlicer/archive/version_%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM PrusaSlicer-boost1.79.patch -- gh#prusa3d/PrusaSlicer#8238
+Patch0:         PrusaSlicer-boost1.79.patch
 BuildRequires:  blosc-devel
 BuildRequires:  cereal-devel
 BuildRequires:  cgal-devel >= 4.13.2

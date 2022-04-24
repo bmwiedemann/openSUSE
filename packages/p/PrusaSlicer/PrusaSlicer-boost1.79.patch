@@ -1,0 +1,31 @@
+Index: PrusaSlicer-version_2.4.1/src/hints/HintsToPot.cpp
+===================================================================
+--- PrusaSlicer-version_2.4.1.orig/src/hints/HintsToPot.cpp
++++ PrusaSlicer-version_2.4.1/src/hints/HintsToPot.cpp
+@@ -1,4 +1,5 @@
+ #include <iostream>
++#include <fstream>
+ #include <vector>
+ #include <string>
+ #include <boost/filesystem.hpp>
+@@ -9,7 +10,7 @@
+ 
+ bool write_to_pot(boost::filesystem::path path, const std::vector<std::pair<std::string, std::string>>& data)
+ {
+-	boost::filesystem::ofstream file(std::move(path), std::ios_base::app);
++	std::ofstream file(std::move(path.string()), std::ios_base::app);
+ 	for (const auto& element : data)
+ 	{
+ 		//Example of .pot element 
+Index: PrusaSlicer-version_2.4.1/tests/fff_print/test_data.cpp
+===================================================================
+--- PrusaSlicer-version_2.4.1.orig/tests/fff_print/test_data.cpp
++++ PrusaSlicer-version_2.4.1/tests/fff_print/test_data.cpp
+@@ -9,6 +9,7 @@
+ 
+ #include <cstdlib>
+ #include <string>
++#include <fstream>
+ 
+ #include <boost/nowide/cstdio.hpp>
+ #include <boost/filesystem.hpp>
