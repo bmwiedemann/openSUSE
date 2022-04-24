@@ -34,7 +34,14 @@ Source1:        https://creativecommons.org/licenses/by/3.0/legalcode.txt#/CC-BY
 BuildRequires:  OpenEXR-devel
 BuildRequires:  OpenImageIO
 BuildRequires:  bison
-BuildRequires:  clang-devel >= 7
+%if 0%{suse_version} > 1500
+# llvm 13 removed some interfaces
+BuildRequires:  clang12-devel
+BuildRequires:  llvm12-devel
+%else
+BuildRequires:  clang-devel > 7
+BuildRequires:  llvm-devel > 7
+%endif
 BuildRequires:  cmake >= 3.12
 BuildRequires:  flex
 BuildRequires:  gcc-c++

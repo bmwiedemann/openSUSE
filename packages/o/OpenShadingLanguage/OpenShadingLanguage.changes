@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr 24 17:13:32 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix build by requiring llvm and clang 12 versions
+
+-------------------------------------------------------------------
 Sun Apr 10 10:06:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.11.17.0:
