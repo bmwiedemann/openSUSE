@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 24 16:45:03 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 1.17.0
+  Check:
+  https://github.com/ispc/ispc/blob/main/docs/ReleaseNotes.txt
+- Switch to default clang/llvm build
+
+-------------------------------------------------------------------
 Tue Oct 12 16:30:56 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to 1.16.1

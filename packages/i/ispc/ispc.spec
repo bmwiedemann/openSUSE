@@ -1,8 +1,8 @@
 #
 # spec file for package ispc
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2020-2021 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2020-2022 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           ispc
-Version:        1.16.1
+Version:        1.17.0
 Release:        0
 Summary:        C-based SPMD programming language compiler
 License:        BSD-3-Clause
@@ -27,12 +27,12 @@ URL:            https://ispc.github.io/
 Source:         https://github.com/%{name}/%{name}/archive/v%{version}/v-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 #!BuildIgnore:  clang13
 BuildRequires:  bison
-BuildRequires:  clang12-devel
+BuildRequires:  clang-devel
 BuildRequires:  cmake >= 3.13
 BuildRequires:  doxygen
 BuildRequires:  flex
 BuildRequires:  libomp-devel
-BuildRequires:  llvm12-devel
+BuildRequires:  llvm-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(python3)
