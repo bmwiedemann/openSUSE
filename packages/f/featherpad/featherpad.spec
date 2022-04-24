@@ -17,7 +17,7 @@
 
 
 Name:           featherpad
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        Qt5-based plaintext editor
 License:        GPL-3.0-only
@@ -26,17 +26,18 @@ URL:            https://github.com/tsujan/FeatherPad
 Source:         https://github.com/tsujan/FeatherPad/archive/V%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  hunspell-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Core) >= 5.15
+BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(x11)
 %if 0%{?suse_version} == 1315
 BuildRequires:  gcc7-c++

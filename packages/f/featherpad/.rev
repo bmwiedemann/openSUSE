@@ -429,4 +429,20 @@
     The default cmake compilation is still against Qt5.</comment>
     <requestid>944750</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>862e039af1a13a8a31f8a63d4dc8e409</srcmd5>
+    <version>1.2.0</version>
+    <time>1650822346</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.0:
+  * Try the file manager DBus interface when opening the containing folder
+  * Restore the view position on reloading, as precisely as possible.
+  * Fixed searching in unusually large documents.
+  * Select the text between spaces with Ctrl + double click.
+  * Added Rust syntax highlighting.
+  * Fixes and enhancement to XML and QML syntax highlighting.
+  * Bumped the minimum required version of Qt5 to 5.15.0.
+  * With Qt6, hide encodings that are not supported by Qt6.</comment>
+    <requestid>972360</requestid>
+  </revision>
 </revisionlist>
