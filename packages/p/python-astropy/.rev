@@ -1303,4 +1303,13 @@
     <comment></comment>
     <requestid>966483</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>bcd0b8c82d4a874ac43d64288a2686c1</srcmd5>
+    <version>5.0.4</version>
+    <time>1650825261</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable tests requiring Pytest 7
+</comment>
+    <requestid>972390</requestid>
+  </revision>
 </revisionlist>

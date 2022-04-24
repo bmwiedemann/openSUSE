@@ -136,8 +136,7 @@ BuildRequires:  libxml2-tools
 BuildRequires:  %{python_module astropy = %{version}}
 BuildRequires:  %{python_module ipython >= 4.2}
 BuildRequires:  %{python_module objgraph}
-# upstream declares pytest >= 7, but Tumbleweed is not ready for it (!)
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 7}
 BuildRequires:  %{python_module pytest-astropy >= 0.9}
 BuildRequires:  %{python_module pytest-doctestplus >= 0.12}
 BuildRequires:  %{python_module pytest-mpl}
@@ -212,11 +211,6 @@ donttest+=" or (test_standard_profile and test_main)"
   # gh#astropy/astropy#12017
   donttest+=" or test_stats"
 %endif
-# These require pytest >= 7: new pytest.warns API
-donttest+=" or (test_c_reader.py and range)"
-donttest+=" or (test_profiling and test_spectrum)"
-donttest+=" or (test_utils and test_noncelestial_scale and True)"
-#
 # http://docs.astropy.org/en/latest/development/testguide.html#running-tests
 # running pytest directly would require building the extensions inplace
 %{python_exec -B -c "
