@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Sun Apr 24 13:27:28 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.9.0
+  * matomo-org/matomo
+    - #15985 New segments for ‘Ecommerce Order Revenue’ and ‘Revenue left in cart’
+    - #18066 Detect when the website is a Single Page App (SPA) or a Progressive Web App (PWA) and link to the relevant guide
+    - #18934 Matomo knowledgebase discoverability improvements
+    - #18618 Improve performance in deleteLogDataForDeletedSites when deleting data for more than one site
+    - #18787 Clarify the Newsletter Opt-in message during installation
+    - #18865 Handle case only file name updates on case insensitive file systems
+    - #19006 Fix Sarawak and Terengganu on Visitors Interactive Map Widget
+    - #18806 Inline Help – show report generation date on “Overview” reports with Evolution Graphs
+    - #17738 Don’t log an error when not supported browser is used
+    - #17892 Don’t create test cookies when cookies are disabled
+    - #18902 Set the _pk_id in the past when deleting cookie.
+    - #18873 Remove subtable tooltip if rows are displayed expanded upon search
+    - #18990 Minor performance improvement for archive invalidator
+    - #18054 Multi server environment in maintenance mode shouldn’t result in 503 response
+    - #18790 Prevent archiving of data for time periods that start in the future
+    - #18852 Apply max execution query time to Live.getCounters API and queryAdjacentVisitorId method
+    - #18883 Migrate Dashboard directive/model to VueJS
+    - #18903 Fix PHP8 Trim Error
+    - #18926 Migrate custom dimension management
+    - #18931 Migrate LanguagesManager to VueJS
+    - #18932 Migrate live widget refresh to VueJS
+    - #18939 Migrate multisites plugin components to VueJS
+    - #18956 Rename dimensions and segments with Server time to Site Time/Time in UTC
+    - #18975 Migrate AnonymizeIpController to VueJS
+    - #18989 Migrate DoNotTrackPreferenceController to VueJS
+    - #18995 Fix issue where date ranges might include too many subperiods
+  * matomo-org/tag-manager
+    - #443 Add new option to Matomo Variable to disable browser feature detection in Matomo Tag
+    - #321 Improve tracking capabilities of visibility events
+    - #450 Fix bug preventing “0” value for trigger condition
+    - #423 Migrate version management to VueJS
+    - #424 Migrate container management to VueJS
+  * matomo-org/device-detector
+    - #5316 Add detection for new device type wearables
+    - #6989 Introduce browser client hint detection
+    - #7018 Detect devices for brands: Teclast, Readboy, Vivo, Xiaomi,
+      Conquest, Huawei, AllDocube, OPPO, Meizu, Newman, Lava, Hisense
+    - #7021 Detect new brands Angelcare, Hamlet, Vorcom and Detect devices for several existing brands
+    - #7022 Add engine for CCleaner and ToGate
+    - #7023 Improve version detection for Chrome OS
+    - #7025 Adds detection for ClearPHONE, Doppio, Jio, Point Mobile, Schok, Vios devices,
+      improves detection for Alcatel, Allview, AT&T, Blu, Crosscall, Digicel, Hipstreet,
+      Hisense, HTC, Huawei, Hurricane, Hyundai, iHunt, Kalley, Kodak, KRIP, LG, Logic,
+      Mione, Motorola, OnePlus, OpelMobile, Pantech, Positivo, Quantum, Realme, Sky, TCL,
+      Techwood, Tecno Mobile, Tigers, Vivo, Wiko, Wolki, Xiaomi, Yes, Yezz, ZTE devices,
+      adds detection for ClearOS Mobile
+    - #7027 Adds detection for CyBrowser, Hi Browser, Navegador, improves detection for Opera,
+      UC Browser, UC Browser Mini
+    - #7028 Adds detection for AdBlock Browser and YouCare
+    - #7029 Adds detection for Decentr browser
+    - #7030 Improve detection of Chromium GOST
+    - #7032 Adds detection for China OS, PocketBook Browser, improves detection for Linux, Android Browser, Tizen Browser
+    - #7033 Adds detection for various bots and libraries
+    - #7035 Detect new brands: Autan, UNNO, VDVD, Shanling, ecom and Detect devices for several existing brands
+    - #7036 Add Detection for Samsung Watch
+    - #7040 Add client hints fixture for Whale Browser
+    - #7045 Improves detection for CentOS, GNU/Linux, PCLinuxOS, Red Hat, adds detection for Amazon Linux,
+      TencentOS, adds detection for cPanel HTTP Client, ALittle Client, PHP cURL Class, SafeIP, NAVER Mail
+      and adds detection for various bots
+    - #7046 Add client hints fixture for Opera GX
+    - #7051 Detect new brands LOKMAT, Joy, iWaylink and Detect devices for several existing brands
+    - #7052 Adds detection for Bittium, EGL, Logic Instrument brands, improves detection for AllDocube,
+      Brondi, Hi, Hot Pepper, Energizer, Huawei, iPro, Sky, X-View brands, adds detection for Bliss OS
+    - #7055 Adds detection for GeoIP Update
+    - #7056 Adds detection for Dolphin Zero, Dolphin, OH Private Browser, Atlas, Jelly browsers
+    - #7057 Detect Flow Browser
+    - #7061 Detect browsers: UC Browser Mini, Soul Browser, Indian UC Mini Browser,
+      Opera, Opera Mini, Fast Explorer, Comfort Browser, CM Mini, SilverMob US
+    - #7062 Improves detection for Delta Browser, Monument Browser, Super Fast Browser
+      and adds detection for APUS Browser, Ask.com, Ayoba, Savannah Browser, SavySoda, SnapU2B,
+      Surf Browser, Ui Browser Mini
+    - #7063 Implement Blink version detection via Chrome/ token.
+    - #7064 Improves detection for generic bots
+    - #7066 TVs detected as smartphone
+    - #7067 Improves detection for EKO, Kogan, Sharp, Sony, Vodafone devices
+    - #7069 Detect new brands: YU Fly, VOGA, Haipai, Huagan, TD Tech and Detect devices for several existing brands
+    - #7070 Adds detection for CentOS Stream, improves detection for CentOS, Roku OS
+
+-------------------------------------------------------------------
 Wed Mar  9 06:09:00 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.8.0
