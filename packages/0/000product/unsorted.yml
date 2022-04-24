@@ -1287,7 +1287,7 @@ unsorted:
   - blasphemer 
   - bleachbit 
   - bleachbit-lang 
-  - blender: [x86_64] 
+  - blender: [x86_64] # suggested by dvd:suggested:patterns-kde-kde 
   - blender-demo: [x86_64] 
   - blender-lang: [x86_64] 
   - bless 
@@ -2237,6 +2237,9 @@ unsorted:
   - compizconfig-settings-manager 
   - compizconfig-settings-manager-common 
   - compizconfig-settings-manager-lang 
+  - compleat: [x86_64] 
+  - compleat-bash: [x86_64] 
+  - compleat-fish: [x86_64] 
   - complexity 
   - compsize 
   - compton 
@@ -14435,7 +14438,7 @@ unsorted:
   - libudunits2-0 
   - libuev-devel 
   - libuev3 
-  - libuhd4_1_0 
+  - libuhd4_2_0 
   - libuhttpmock-0_0-0 
   - libulfius2_7 
   - libulockmgr1 
@@ -21786,7 +21789,6 @@ unsorted:
   - python3-sss-murmur 
   - python3-sss_nss_idmap 
   - python3-sssd-config 
-  - python3-stdeb 
   - python3-stevedore 
   - python3-stp 
   - python3-subliminal 
@@ -24682,6 +24684,7 @@ unsorted:
   - python310-starlette 
   - python310-statsd 
   - python310-statsmodels 
+  - python310-stdeb 
   - python310-stestr 
   - python310-stomp.py 
   - python310-stomper 
@@ -27688,6 +27691,7 @@ unsorted:
   - python38-starlette 
   - python38-statsd 
   - python38-statsmodels 
+  - python38-stdeb 
   - python38-stestr 
   - python38-stomp.py 
   - python38-stomper 
@@ -30884,6 +30888,7 @@ unsorted:
   - python39-starlette 
   - python39-statsd 
   - python39-statsmodels 
+  - python39-stdeb 
   - python39-stestr 
   - python39-stomp.py 
   - python39-stomper 
