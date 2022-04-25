@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 25 15:21:25 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rename libatlascpp-0_6-1 subpackage to libatlascpp-0_6-3, making
+  the package name match the libraries provided.
+
+-------------------------------------------------------------------
 Mon Jun 18 20:12:48 UTC 2018 - antoine.belvire@opensuse.org
 
 - Update to version 0.6.4:

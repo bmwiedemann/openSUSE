@@ -1,7 +1,7 @@
 #
 # spec file for package atlascpp
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define soname 0_6-1
+%define soname 0_6-3
 Name:           atlascpp
 Version:        0.6.4
 Release:        0
 Summary:        Remote protocol for the Worldforge MMORPG system
-License:        LGPL-2.1-only AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-only
 Group:          Development/Languages/C and C++
-Url:            http://www.worldforge.org/index.php/components/atlas-cpp/
+URL:            http://www.worldforge.org/index.php/components/atlas-cpp/
 Source:         http://downloads.sourceforge.net/worldforge/Atlas-C++-%{version}.tar.bz2
 BuildRequires:  gcc-c++
 BuildRequires:  libbz2-devel
@@ -39,6 +39,8 @@ by the WorldForge project.
 %package -n lib%{name}-%{soname}
 Summary:        Remote protocol for the Worldforge MMORPG system
 Group:          System/Libraries
+# libatlasccp-0.6.so.3 was wrongly packaged in libatlascpp-0_6-1
+Conflicts:      libatlascpp-0_6-1 = 0.6.4
 
 %description -n lib%{name}-%{soname}
 This library implements the Atlas protocol for use in client-server
