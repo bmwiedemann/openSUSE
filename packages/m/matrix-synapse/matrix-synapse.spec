@@ -50,7 +50,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.56.0
+Version:        1.57.1
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -133,7 +133,7 @@ BuildRequires:  %{use_python}-pymacaroons >= 0.13.0
 %requires_peq   %{use_python}-pymacaroons
 BuildRequires:  %{use_python}-service_identity >= 18.1.0
 %requires_peq   %{use_python}-service_identity
-BuildRequires:  (%{use_python}-signedjson >= 1.1.0 with %{use_python}-signedjson <= 1.1.1)
+BuildRequires:  %{use_python}-signedjson >= 1.1.0
 %requires_peq   %{use_python}-signedjson
 BuildRequires:  %{use_python}-six >= 1.10
 %requires_peq   %{use_python}-six

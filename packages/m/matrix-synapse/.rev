@@ -473,4 +473,12 @@ mostly-working synapse than nothing at all) and the package has been update to
     <comment>- Update to 1.56.0</comment>
     <requestid>969160</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>250201bf549203ea06a9832942655614</srcmd5>
+    <version>1.57.1</version>
+    <time>1650922574</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.57.1</comment>
+    <requestid>972690</requestid>
+  </revision>
 </revisionlist>
