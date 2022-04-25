@@ -1,7 +1,7 @@
 #
 # spec file for package autojump
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,11 +21,12 @@ Version:        22.5.3
 Release:        0
 Summary:        A faster way to navigate the filesystem from a shell
 License:        GPL-3.0-or-later
-Group:          System/Console
-Url:            https://github.com/wting/autojump
+URL:            https://github.com/wting/autojump
 Source:         https://github.com/wting/autojump/archive/release-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# https://github.com/wting/autojump/pull/648
+Patch0:         autojump-no-mock.patch
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3
-BuildRequires:  python3-mock
 BuildRequires:  python3-pytest
 BuildArch:      noarch
 
@@ -38,6 +39,7 @@ Directories must be visited first before they can be jumped to.
 
 %prep
 %setup -q -n %{name}-release-v%{version}
+%patch0 -p1
 
 # Fix shebangs.
 sed -i 's/env python$/python3/' bin/%{name}

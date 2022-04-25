@@ -1,0 +1,14 @@
+diff --git a/tests/unit/autojump_utils_test.py b/tests/unit/autojump_utils_test.py
+index 07f67b3..386b4cd 100644
+--- a/tests/unit/autojump_utils_test.py
++++ b/tests/unit/autojump_utils_test.py
+@@ -3,7 +3,7 @@
+ import os
+ import sys
+ 
+-import mock
++from unittest import mock
+ import pytest
+ 
+ sys.path.append(os.path.join(os.getcwd(), 'bin'))  # noqa
+
