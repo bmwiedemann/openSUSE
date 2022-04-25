@@ -1002,8 +1002,6 @@ Prefer: kernel-default-devel
 # llvm exists in multiple versions
 Prefer: libclang13 libc++1 libc++abi1 libc++-devel libc++abi-devel
 
-Prefer: -liblinphone10
-
 Prefer: -wxWidgets-3_0-devel wxWidgets-3_2-devel
 Prefer: -libwx_baseu-suse-nostl3_0_5 -libwx_baseu-suse3_0_5
 Prefer: libopenssl-devel
