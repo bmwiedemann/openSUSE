@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr 22 11:37:58 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.3.4
+  * Removed Speexenc (SPX) encoder from MediaProfiles.
+  * Added opus encoder.
+  * Added suport for pipewiresrc plugin
+  * Removed support for Skype as the latest versions of Skype do not
+    support MPRIS2. 
+  * This will be the last version suporting Pulseaudio (pulsesrc). 
+  * Later, newer audio-recorder versions will run on Gstreamer and Pipewire.
+
+-------------------------------------------------------------------
 Mon Apr 26 11:29:57 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.2.3

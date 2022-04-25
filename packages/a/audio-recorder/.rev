@@ -118,4 +118,19 @@ Updated source. (forwarded request 729546 from ukbeast89)</comment>
   * Fixed a minor issue in settings-pipe.c (forwarded request 888470 from susnux)</comment>
     <requestid>888744</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5b3d84d7f94e143d3153f61fe3d15be4</srcmd5>
+    <version>3.3.4</version>
+    <time>1650922520</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.3.4
+  * Removed Speexenc (SPX) encoder from MediaProfiles.
+  * Added opus encoder.
+  * Added suport for pipewiresrc plugin
+  * Removed support for Skype as the latest versions of Skype do not
+    support MPRIS2. 
+  * This will be the last version suporting Pulseaudio (pulsesrc). 
+  * Later, newer audio-recorder versions will run on Gstreamer and Pipewire. (forwarded request 972170 from susnux)</comment>
+    <requestid>972513</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package audio-recorder
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define ubuntuversion jammy
 Name:           audio-recorder
-Version:        3.2.3
+Version:        3.3.4
 Release:        0
 Summary:        An audio recorder application for the GNOME 2/3
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Sound/Utilities
-Url:            https://launchpad.net/~audio-recorder
-Source:         https://launchpad.net/~audio-recorder/+archive/ubuntu/ppa/+sourcefiles/audio-recorder/%{version}~hirsute/audio-recorder_%{version}~hirsute.tar.gz
+URL:            https://launchpad.net/~audio-recorder
+Source:         %{url}/+archive/ubuntu/ppa/+sourcefiles/audio-recorder/%{version}~%{ubuntuversion}/audio-recorder_%{version}~%{ubuntuversion}.tar.gz
 # PATCH-FIX-OPENSUSE audio-recorder-correct-desktop-menu.patch badshah400@gmail.com -- Fixes the .desktop file by removing unity related tags from it.
 Patch0:         audio-recorder-correct-desktop-menu.patch
 BuildRequires:  autoconf
@@ -60,18 +61,11 @@ It has an advanced timer that can:
 * Start recording on voice or sound.
 * Stop or pause recording on "silence".
 
-The recording can be automatically controlled by:
-* RhythmBox audio player.
-* Banshee audio player.
-* Amarok and other MPRIS compatible players.
-* Skype. It can automatically record all your Skype calls without
-  any user interaction.
+The recording can be automatically controlled by all MPRIS2
+compatible players.
 
 This program supports several audio (output) formats such as Ogg Vorbis
-audio, FLAC, MP3 and WAV.
-
-User can also control the recorder from command line with
---command <arg> option.
+audio, FLAC, Opus, MP3 and WAV.
 
 %lang_package
 
@@ -82,7 +76,7 @@ User can also control the recorder from command line with
 %build
 autoreconf -fi
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
