@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 14 14:47:53 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Update _constraints: this requires more than 4gb of disk space
+  (bsc#1197717).
+
+-------------------------------------------------------------------
 Tue Jul 14 21:12:13 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 2.10.0, no changes overview provided.

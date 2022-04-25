@@ -358,4 +358,13 @@ Nobody knows why gimpmode would even be needed... (forwarded request 151527 from
     <comment></comment>
     <requestid>821428</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>f77983395200ede02773d185fa3442e6</srcmd5>
+    <version>2.10.0</version>
+    <time>1650922550</time>
+    <user>dimstar_suse</user>
+    <comment>- Update _constraints: this requires more than 4gb of disk space
+  (bsc#1197717). (forwarded request 970196 from mgorse)</comment>
+    <requestid>972595</requestid>
+  </revision>
 </revisionlist>
