@@ -1,7 +1,7 @@
 #
 # spec file for package sshuttle
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 %global pythons python3
 Name:           sshuttle
-Version:        1.0.5
+Version:        1.1.0
 Release:        0
 Summary:        VPN over an SSH tunnel
 License:        LGPL-2.1-only
@@ -34,7 +34,7 @@ Source2:        sysconfig.%{name}
 Patch0:         fix-pytest.patch
 Patch1:         fix-shebang.patch
 BuildRequires:  fdupes
-BuildRequires:  python3-mock
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
 BuildArch:      noarch

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 25 09:38:47 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.1.0
+  * Support the sudo use_pty option which is now the default in some operating systems. See #712.
+  * Support doas as well as sudo. See #708.
+  * for more details see
+    https://github.com/sshuttle/sshuttle/releases/
+- modified patches
+  % fix-shebang.patch (refreshed)
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Tue Dec  7 16:43:23 UTC 2021 - pgajdos@suse.com
 
 - do not require pytest-runner for build, it is not needed
