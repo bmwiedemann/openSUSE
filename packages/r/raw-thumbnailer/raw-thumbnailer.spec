@@ -1,7 +1,7 @@
 #
 # spec file for package raw-thumbnailer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,17 +22,17 @@ Release:        0
 Summary:        RAW images thumbnailer for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
-Url:            http://libopenraw.freedesktop.org
+URL:            http://libopenraw.freedesktop.org
 Source0:        http://libopenraw.freedesktop.org/download/%{name}-%{version}.tar.bz2
-Summary(ru):	Генератор миниатюр RAW изображений для GNOME
+Summary(ru):    Генератор миниатюр RAW изображений для GNOME
 # PATCH-FEATURE-UPSTREAM raw-thumbnailer-3.0.0-add-Panasonic.patch svalx@svalx.net -- Add support for image/x-panasonic-raw and image/x-panasonic-raw2.
 Patch0:         raw-thumbnailer-3.0.0-add-Panasonic.patch
 # PATCH-FIX-OPENSUSE raw-thumbnailer-3.0.0-mime-data-remove.patch svalx@svalx.net -- remove mime type definitions - it is duplicate of definition in shared-mime-info package.
 Patch1:         raw-thumbnailer-3.0.0-mime-data-remove.patch
 BuildRequires:  intltool
-BuildRequires:  libopenraw-devel
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(libopenraw-gnome-0.3)
 Requires:       shared-mime-info >= 0.90
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -44,15 +44,15 @@ A lightweight and fast thumbnailer used by Nautilus for digital camera RAW files
 
 %prep
 %setup -q
-if pkg-config --exists libopenraw-gnome-0.1; then
-  sed -i "s/libopenraw-gnome-1.0/libopenraw-gnome-0.1/g" configure*
+if pkg-config --exists libopenraw-gnome-0.3; then
+  sed -i "s/libopenraw-gnome-1.0/libopenraw-gnome-0.3/g" configure*
 fi
 %patch0
 %patch1
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

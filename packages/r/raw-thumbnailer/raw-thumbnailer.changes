@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 24 09:24:44 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update build system to use libopenraw-gnome-0.3 instead of
+  libopenraw-gnome-0.1.
+- Specifically require pkgconfig(libopenraw-gnome-0.3) for
+  building as we modify the build scripts to look for this and it
+  makes it easier to track build issues when libopenraw is updated
+  in the future.
+
+-------------------------------------------------------------------
 Wed Jun  5 07:19:55 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Replace pkgconfig(libopenraw-gnome-1.0) BuildRequires with
