@@ -1,7 +1,7 @@
 #
 # spec file for package ldc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define so_ver        96
+%define so_ver        99
 %define lname_jit     libldc-jit
 %define lname_runtime libdruntime-%{name}
 %define lname_phobos  libphobos2-%{name}
@@ -40,10 +40,11 @@
 %bcond_with ldc_tests
 
 Name:           ldc
-Version:        1.26.0
+Version:        1.29.0
 Release:        0
 Summary:        The LLVM D Compiler
-License:        BSD-3-Clause AND Artistic-1.0
+License:        Artistic-1.0 AND BSD-3-Clause
+Group:          Development/Languages/Other
 URL:            https://wiki.dlang.org/LDC
 Source0:        https://github.com/ldc-developers/ldc/releases/download/v%{version}/ldc-%{version}-src.tar.gz
 Source1:        %{name}-rpmlintrc
@@ -61,16 +62,16 @@ BuildRequires:  llvm7-devel
 BuildRequires:  llvm-clang >= 6.0
 BuildRequires:  llvm-devel >= 6.0
 %endif
+BuildRequires:  binutils-gold
 BuildRequires:  ncurses-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(bash-completion)
-BuildRequires:  binutils-gold
 # Should be installed, at least runtime
 Recommends:     ldc-phobos-devel = %{version}
-Recommends:     ldc-runtime-devel = %{version}
-Recommends:     ldc-jit-devel = %{version}
 Recommends:     %{name}-bash-completion
+Recommends:     ldc-jit-devel = %{version}
+Recommends:     ldc-runtime-devel = %{version}
 # Since version 1.13.0, ldc uses ld.gold by default
 Requires:       binutils-gold
 %if %{with ldc_bootstrap}
@@ -109,14 +110,17 @@ capabilities.
 
 %package -n %{lname_runtime}%{so_ver}
 Summary:        Minimal D runtime library
+Group:          System/Libraries
 
 %description -n %{lname_runtime}%{so_ver}
 The minimal runtime library required to support the D programming language.
 
 %package runtime-devel
 Summary:        Development files for the D runtime library
+Group:          Development/Libraries/Other
 Requires:       %{lname_runtime}%{so_ver} = %{version}
 Recommends:     ldc-phobos-devel = %{version}
+Group:          System/Libraries
 
 %description runtime-devel
 This package contains the druntime development files necessary for developing
@@ -124,18 +128,21 @@ with LDC.
 
 %package -n %{lname_phobos}%{so_ver}
 Summary:        The D standard library
+Group:          System/Libraries
 
 %description -n %{lname_phobos}%{so_ver}
 This package includes ldc's phobos library - The D standard library.
 
 %package -n %{lname_jit}%{so_ver}
 Summary:        The LDC jit library
+Group:          System/Libraries
 
 %description -n %{lname_jit}%{so_ver}
 This package includes ldc's jit library.
 
 %package jit-devel
 Summary:        Development files for the D standard library
+Group:          Development/Libraries/Other
 Requires:       %{lname_jit}%{so_ver} = %{version}
 
 %description jit-devel
@@ -143,6 +150,7 @@ This package contains the LDC jit development files.
 
 %package phobos-devel
 Summary:        Development files for the D standard library
+Group:          Development/Libraries/Other
 Requires:       %{lname_phobos}%{so_ver} = %{version}
 Requires:       %{name}-runtime-devel = %{version}
 
@@ -156,7 +164,6 @@ Requires:       bash-completion
 
 %description bash-completion
 Optional dependency offering bash completion for ldc2
-
 
 %prep
 %setup -q -n ldc-%{version}-src
@@ -294,6 +301,7 @@ rm -rf %{buildroot}%{_prefix}/lib/debug
 %files -n %{lname_runtime}%{so_ver}
 %{_libdir}/%{lname_runtime}-shared.so.*
 %{_libdir}/%{lname_runtime}-debug-shared.so.*
+%{_libdir}/ldc_rt.dso.o
 
 %files runtime-devel
 %{_libdir}/%{lname_runtime}-shared.so
@@ -301,6 +309,8 @@ rm -rf %{buildroot}%{_prefix}/lib/debug
 %dir %{_includedir}/d
 %{_includedir}/d/core
 %{_includedir}/d/ldc
+%{_includedir}/d/__builtins.di
+%{_includedir}/d/importc.h
 %{_includedir}/d/object.d
 
 %files -n %{lname_phobos}%{so_ver}

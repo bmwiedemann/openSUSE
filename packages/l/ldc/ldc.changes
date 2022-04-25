@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Apr 12 11:47:22 CEST 2022 - Chris Josten <chris+suse@netsoj.nl>
+
+- Update to 1.29.0:
+  * Frontend, druntime and Phobos are at version 2.099.1
+  * Support for LLVM 13 and LLVM 14
+  * New @hidden UDA (as counterpart of export).
+  * Support 'raw mangles' via leading \1 in pragma(mangle) strings, 
+    e.g., to access magic linker symbols on Mac.
+  * New @noSanitize UDA to selectively disable sanitizer 
+    instrumentation of functions.
+  * WebAssembly: Larger default stack size (1 MB) and protection 
+    against stack overflow overwriting global memory. 
+  * LDC doesn't default to the ld.gold linker anymore. The 
+    combination of LLVM 13+ and older gold linkers can apparently 
+    cause problems. We recommend using LLD, e.g., via -linker=lld 
+    or by setting your default /usr/bin/ld symlink; it's 
+    significantly faster too.
+  * -linkonce-templates is less aggressive by default now and 
+    IMHO production-ready.
+  * When linking manually (not via LDC) against shared druntime, it 
+    is now required to link the bundled lib/ldc_rt.dso.o[bj] object 
+    file into each binary. It replaces the previously 
+    Windows-specific dso_windows.obj.
+  * Basic compiler support for Newlib targets, i.e., triples 
+    like arm-none-newlibeabi.
+  * dcompute: Add support for OpenCL image I/O. 
+  * Revamped and improved -ftime-trace implementation for compiler 
+    profiling/tracing, now excluding LLVM-internal traces, adding 
+    frontend memory tracing, source file location infos etc
+  * Implement core.atomic.pause() for some architectures.
+  * Bug fixes:
+    * Linux: Make LTO work with LLD.
+    * Capture NRVO variable by ref for stack closures.
+    * -ftime-trace: JSON-escape filenames.
+    * RISC-V: Use 128-bit quadruple real.
+    * Linux x86/x64: Fix TLS range with static druntime and bfd/lld 
+      linkers.
+    * Support rdtscp in DMD-style inline assembly. 
+    * Fix dynamic casts across binary boundaries (DLLs etc.).
+    * Don't silently ignore invalid external tool specifications.
+    * LLVM v11.1: Add missing PGO ldc-profdata tool.
+    * ICE for 64-bit targets with 32-bit pointer size.
+  * Breaking ABI changes:
+    * extern(D): formal parameters of non-variadic functions aren't 
+     reversed anymore, in line with the spec.
+
+-------------------------------------------------------------------
 Mon May 17 13:49:15 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.26.0:
