@@ -17,16 +17,14 @@
 
 
 Name:           gtranslator
-Version:        41.0
+Version:        42.0
 Release:        0
 Summary:        A gettext po file editor for the GNOME desktop
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Gtranslator
-Source0:        https://download.gnome.org/sources/gtranslator/41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gtranslator/42/%{name}-%{version}.tar.xz
 Source99:       gtranslator-rpmlintrc
-# PATCH-FIX-UPSTREAM 7ac572cc8c8c37ca3826ecf0d395edd3c38e8e22.patch -- Fix build with meson 0.61 and newer
-Patch1:         https://gitlab.gnome.org/GNOME/gtranslator/-/commit/7ac572cc8c8c37ca3826ecf0d395edd3c38e8e22.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
@@ -48,6 +46,7 @@ BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.33.90
 BuildRequires:  pkgconfig(libgda-6.0) >= 6.0.0
 BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.12
 Requires:       gsettings-desktop-schemas
 Requires:       iso-codes
@@ -55,9 +54,7 @@ Requires:       libgda-sqlite >= 6.0.0
 Obsoletes:      gtranslator-devel <= 2.91.7
 
 %description
-Gtranslator is a ".po" file editor with many bells and whistles.
-It features many functions which aid in the work of translators of po
-files imminently.
+Gtranslator is an enhanced gettext PO file editor for the GNOME desktop environment. It handles all forms of gettext PO files and features many comfortable everyday usage features like find and replace functions, auto translation, and translation learning.
 
 %package doc
 Summary:        Documentation for %{name}
@@ -85,13 +82,14 @@ find %{buildroot} -type f -name "gtr-marshal.h" -delete -print
 %files
 %license COPYING
 %doc README.md
-%{_mandir}/man?/*
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %{_datadir}/applications/*.desktop
 %{_datadir}/glib-2.0/schemas/*.gschema.xml
+%{_datadir}/gtksourceview-4/language-specs/*.lang
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Gtranslator*.svg
 %{_datadir}/metainfo/org.gnome.Gtranslator.appdata.xml
+%{_mandir}/man?/*
 
 %files doc
 %doc AUTHORS MAINTAINERS NEWS THANKS

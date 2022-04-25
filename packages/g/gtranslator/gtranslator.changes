@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Apr 21 11:40:08 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move gtksourceview-4/language-specs to -devel package.
+
+-------------------------------------------------------------------
+Thu Apr 21 01:09:33 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
+
+- Changed %{name}.lang to *.lang.
+
+-------------------------------------------------------------------
+Mon Apr 11 23:53:56 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
+
+- Readded gtranslator-rpmlintrc to spec file
+
+-------------------------------------------------------------------
+Mon Apr 11 23:34:18 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
+
+- Removed Patch file 7ac572cc8c8c37ca3826ecf0d395edd3c38e8e22.patch
+
+-------------------------------------------------------------------
+Mon Apr 11 22:25:52 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
+
+- Updated spec file, added gtranslator.lang file to the spec file.
+
+-------------------------------------------------------------------
+Mon Apr 11 20:34:23 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
+
+- Update to version 42:
+  + Prepare code for Gtk4 migration.
+  + Shortcut ctrl-k for clearing.
+  + Some memory fixes.
+  + Fix DL downloaded file names.
+
+-------------------------------------------------------------------
 Tue Feb 22 08:41:29 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.0:
