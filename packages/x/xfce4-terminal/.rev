@@ -255,4 +255,15 @@
     <comment></comment>
     <requestid>970654</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>6a02223b80cdb404b3b992c9d1a3763d</srcmd5>
+    <version>1.0.2</version>
+    <time>1650922577</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.2
+  * Fix regression: MiscCycleTabs preference does not work for
+    accelerators
+  * Russian translation updates (forwarded request 972127 from susnux)</comment>
+    <requestid>972694</requestid>
+  </revision>
 </revisionlist>
