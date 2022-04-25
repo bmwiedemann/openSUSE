@@ -856,4 +856,12 @@ Most projects for this reason don't even carry the generated configure script in
     <comment></comment>
     <requestid>958521</requestid>
   </revision>
+  <revision rev="116" vrev="4">
+    <srcmd5>7dc5f656a737fa5b0ffb9935b97f6ebc</srcmd5>
+    <version>4.6</version>
+    <time>1650924027</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971957</requestid>
+  </revision>
 </revisionlist>

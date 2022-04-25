@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 21 23:43:35 UTC 2022 - Tony Jones <tonyj@suse.com>
+
+- Remove unnecessary patches.  Only patches specific to dtrace are needed. 
+
+-------------------------------------------------------------------
 Wed Mar  2 19:19:36 UTC 2022 - Tony Jones <tonyj@suse.com>
 
 - Add gcc12 support (bsc#1196583)
