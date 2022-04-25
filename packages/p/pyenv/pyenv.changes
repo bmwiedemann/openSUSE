@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr  5 07:39:13 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.2.5
+
+- Update to 2.2.5
+   - fix issue 2236 for CPython 3.6.15 and 3.7.12 by @fofoni in #2237
+   - python-build: add URL for get-pip for Python 3.6 by @fofoni in #2238
+   - Add pyston-2.3.2 by @dmrlawson in #2240
+   - CPython 3.11.0a5 by @saaketp in #2241
+   - CPython 3.11.0a6 by @saaketp in #2266
+   - Add miniconda 4.11.0 by @aphedges in #2268
+   - docs(pyenv-prefix): note support for multiple versions by @scop in #2270
+   - pypy 7.3.8 02/20/2022 release by @dand-oss in #2253
+
+
+-------------------------------------------------------------------
 Fri Feb 25 09:40:29 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Put fish completions in thr right directory.

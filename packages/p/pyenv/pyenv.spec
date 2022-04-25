@@ -19,15 +19,13 @@
 %define pyenv_dir      %{_libexecdir}/pyenv
 #
 Name:           pyenv
-Version:        2.2.4_1
-# We have to overcome weird version, temporarily.
-%define upver   2.2.4-1
+Version:        2.2.5
 Release:        0
 Summary:        Python Version Management
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pyenv/pyenv
-Source:         https://github.com/pyenv/pyenv/archive/refs/tags/v%{upver}.tar.gz#/pyenv-%{upver}.tar.gz
+Source:         https://github.com/pyenv/pyenv/archive/refs/tags/v%{version}.tar.gz#/pyenv-%{version}.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  fish
@@ -72,7 +70,7 @@ BuildArch:      noarch
 Zsh command line completion support for %{name}.
 
 %prep
-%autosetup -p1 -n %{name}-%{upver}
+%autosetup -p1 -n %{name}-%{version}
 
 sed -i -e '1s,^#!%{_bindir}/env bash,#!/bin/bash,' libexec/* pyenv.d/exec/pip-rehash/* plugins/python-build/bin/*
 
