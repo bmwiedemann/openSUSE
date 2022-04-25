@@ -16,7 +16,6 @@
 #
 
 
-%define libname libdcmtk3_6
 %define abiversion 16
 Name:           dcmtk
 Version:        3.6.6
@@ -51,18 +50,20 @@ parts the DICOM standard.
 %package devel
 Summary:        Development files for dcmtk
 Group:          Development/Libraries/C and C++
-Requires:       %{libname} = %{version}
+Requires:       libdcmtk%{abiversion} = %{version}
 Requires:       tcpd-devel
 
 %description devel
 This package provides development libraries and headers needed to build
 software using dcmtk.
 
-%package -n %{libname}
+%package -n libdcmtk%{abiversion}
 Summary:        DICOM Toolkit
 Group:          System/Libraries
+Provides:       libdcmtk3_6 = %{version}
+Obsoletes:      libdcmtk3_6 < %{version}
 
-%description -n %{libname}
+%description -n libdcmtk%{abiversion}
 DCMTK is a collection of libraries and applications implementing large
 parts the DICOM standard.
 
@@ -97,8 +98,8 @@ install -pm 0644 README %{buildroot}%{_docdir}/dcmtk/
 
 %fdupes -s %{buildroot}
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%post -n libdcmtk%{abiversion} -p /sbin/ldconfig
+%postun -n libdcmtk%{abiversion} -p /sbin/ldconfig
 
 %files
 %license COPYRIGHT
@@ -116,7 +117,7 @@ install -pm 0644 README %{buildroot}%{_docdir}/dcmtk/
 %{_libdir}/*.so
 %{_libdir}/cmake/dcmtk/
 
-%files -n %{libname}
+%files -n libdcmtk%{abiversion}
 %license COPYRIGHT
 %{_libdir}/*.so.%{abiversion}
 %{_libdir}/*.so.%{abiversion}.3.6*

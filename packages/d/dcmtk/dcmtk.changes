@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 25 16:42:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix the package soname
+
+-------------------------------------------------------------------
 Tue Apr 20 13:40:48 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 3.6.6. See DOCS/CHANGES.366 for more information
