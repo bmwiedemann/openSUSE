@@ -1,0 +1,611 @@
+diff -Nur motif-2.3.8/clients/mwm/Makefile.am new/clients/mwm/Makefile.am
+--- motif-2.3.8/clients/mwm/Makefile.am	2016-03-16 03:10:08.000000000 +0100
++++ new/clients/mwm/Makefile.am	2022-04-24 02:37:11.595728793 +0200
+@@ -9,7 +9,7 @@
+ rc_DATA = system.mwmrc
+ 
+ bin_PROGRAMS = mwm
+-mwm_LDADD = ./WmWsmLib/libWsm.a ../../lib/Xm/libXm.la 
++mwm_LDADD = ./WmWsmLib/libWsm.a ../../lib/Xm/libXm.la -lXt -lXext -lX11
+ 
+ INCLUDES = -DLARGECURSORS -DR2_COMPAT -DUNMAP_ON_RESTART \
+            -DCDE_INSTALLATION_TOP=\"@CDE_INSTALLATION_TOP@\" \
+diff -Nur motif-2.3.8/clients/uil/Makefile.am new/clients/uil/Makefile.am
+--- motif-2.3.8/clients/uil/Makefile.am	2016-03-16 03:10:08.000000000 +0100
++++ new/clients/uil/Makefile.am	2022-04-24 02:37:11.595728793 +0200
+@@ -11,9 +11,9 @@
+ UilParser.lo: UilParser.c
+ 	$(LTCOMPILE) -DCALLABLE -c UilParser.c
+ 
+-libUil_la_LIBADD = UilParser.lo ../../lib/Mrm/libMrm.la ../../lib/Xm/libXm.la 
++libUil_la_LIBADD = UilParser.lo ../../lib/Mrm/libMrm.la ../../lib/Xm/libXm.la -lXt
+ 
+-uil_LDADD = ../../lib/Mrm/libMrm.la ../../lib/Xm/libXm.la 
++uil_LDADD = ../../lib/Mrm/libMrm.la ../../lib/Xm/libXm.la -lXt
+ 
+ INCLUDES = -DINCDIR=\"@INCDIR@\" \
+            -DLIBDIR=\"@LIBDIR@\" \
+diff -Nur motif-2.3.8/clients/xmbind/Makefile.am new/clients/xmbind/Makefile.am
+--- motif-2.3.8/clients/xmbind/Makefile.am	2016-03-16 03:10:08.000000000 +0100
++++ new/clients/xmbind/Makefile.am	2022-04-24 02:37:11.595728793 +0200
+@@ -2,6 +2,6 @@
+ 
+ bin_PROGRAMS = xmbind
+ 
+-LDADD = ../../lib/Xm/libXm.la
++LDADD = ../../lib/Xm/libXm.la -lXt -lX11
+ 
+ INCLUDES = -I$(srcdir)/../../lib -I$(top_builddir)/lib ${X_CFLAGS}
+diff -Nur motif-2.3.8/demos/doc/programGuide/ch05/Scale/Makefile.am new/demos/doc/programGuide/ch05/Scale/Makefile.am
+--- motif-2.3.8/demos/doc/programGuide/ch05/Scale/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/doc/programGuide/ch05/Scale/Makefile.am	2022-04-24 02:37:11.595728793 +0200
+@@ -8,4 +8,4 @@
+ 
+ INCLUDES = -I$(top_builddir)/lib -I$(top_srcdir)/lib -I$(top_srcdir)/demos/lib $(X_CFLAGS)
+ 
+-LDADD = -L$(top_builddir)/demos/lib/Xmd -lXmd $(top_builddir)/lib/Xm/libXm.la
++LDADD = -L$(top_builddir)/demos/lib/Xmd -lXmd $(top_builddir)/lib/Xm/libXm.la -lXt -lX11
+diff -Nur motif-2.3.8/demos/doc/programGuide/ch06/combo_box/Makefile.am new/demos/doc/programGuide/ch06/combo_box/Makefile.am
+--- motif-2.3.8/demos/doc/programGuide/ch06/combo_box/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/doc/programGuide/ch06/combo_box/Makefile.am	2022-04-24 02:37:11.595728793 +0200
+@@ -9,4 +9,4 @@
+ 
+ INCLUDES = -I$(top_builddir)/lib -I$(top_srcdir)/lib -I$(top_srcdir)/demos/lib $(X_CFLAGS)
+ 
+-LDADD = -L$(top_builddir)/demos/lib/Xmd -lXmd $(top_builddir)/lib/Xm/libXm.la
++LDADD = -L$(top_builddir)/demos/lib/Xmd -lXmd $(top_builddir)/lib/Xm/libXm.la -lXt -lX11
+diff -Nur motif-2.3.8/demos/doc/programGuide/ch06/spin_box/Makefile.am new/demos/doc/programGuide/ch06/spin_box/Makefile.am
+--- motif-2.3.8/demos/doc/programGuide/ch06/spin_box/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/doc/programGuide/ch06/spin_box/Makefile.am	2022-04-24 02:37:11.595728793 +0200
+@@ -9,4 +9,4 @@
+ 
+ INCLUDES = -I$(top_builddir)/lib -I$(top_srcdir)/lib -I$(top_srcdir)/demos/lib $(X_CFLAGS)
+ 
+-LDADD = -L$(top_builddir)/demos/lib/Xmd -lXmd $(top_builddir)/lib/Xm/libXm.la
++LDADD = -L$(top_builddir)/demos/lib/Xmd -lXmd $(top_builddir)/lib/Xm/libXm.la -lXt -lX11
+diff -Nur motif-2.3.8/demos/doc/programGuide/ch08/Container/Makefile.am new/demos/doc/programGuide/ch08/Container/Makefile.am
+--- motif-2.3.8/demos/doc/programGuide/ch08/Container/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/doc/programGuide/ch08/Container/Makefile.am	2022-04-24 02:37:11.595728793 +0200
+@@ -8,4 +8,4 @@
+ 
+ INCLUDES = -I$(top_builddir)/lib -I$(top_srcdir)/lib -I$(top_srcdir)/demos/lib $(X_CFLAGS)
+ 
+-LDADD = -L$(top_builddir)/demos/lib/Xmd -lXmd $(top_builddir)/lib/Xm/libXm.la
++LDADD = -L$(top_builddir)/demos/lib/Xmd -lXmd $(top_builddir)/lib/Xm/libXm.la -lXt -lX11
+diff -Nur motif-2.3.8/demos/doc/programGuide/ch08/Notebook/Makefile.am new/demos/doc/programGuide/ch08/Notebook/Makefile.am
+--- motif-2.3.8/demos/doc/programGuide/ch08/Notebook/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/doc/programGuide/ch08/Notebook/Makefile.am	2022-04-24 02:37:11.595728793 +0200
+@@ -8,4 +8,4 @@
+ 
+ INCLUDES = -I$(top_builddir)/lib -I$(top_srcdir)/lib -I$(top_srcdir)/demos/lib $(X_CFLAGS)
+ 
+-LDADD = -L$(top_builddir)/demos/lib/Xmd -lXmd $(top_builddir)/lib/Xm/libXm.la
++LDADD = -L$(top_builddir)/demos/lib/Xmd -lXmd $(top_builddir)/lib/Xm/libXm.la -lXt -lX11
+diff -Nur motif-2.3.8/demos/doc/programGuide/ch16/Makefile.am new/demos/doc/programGuide/ch16/Makefile.am
+--- motif-2.3.8/demos/doc/programGuide/ch16/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/doc/programGuide/ch16/Makefile.am	2022-04-24 02:37:11.595728793 +0200
+@@ -9,4 +9,4 @@
+ 
+ INCLUDES = -I$(top_builddir)/lib -I$(top_srcdir)/lib -I$(top_srcdir)/demos/lib $(X_CFLAGS)
+ 
+-LDADD = -L$(top_builddir)/demos/lib/Xmd -lXmd $(top_builddir)/lib/Xm/libXm.la
++LDADD = -L$(top_builddir)/demos/lib/Xmd -lXmd $(top_builddir)/lib/Xm/libXm.la -lXt -lX11
+diff -Nur motif-2.3.8/demos/doc/programGuide/ch17/simple_drag/Makefile.am new/demos/doc/programGuide/ch17/simple_drag/Makefile.am
+--- motif-2.3.8/demos/doc/programGuide/ch17/simple_drag/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/doc/programGuide/ch17/simple_drag/Makefile.am	2022-04-24 02:37:11.595728793 +0200
+@@ -9,4 +9,4 @@
+ 
+ INCLUDES = -I$(top_builddir)/lib -I$(top_srcdir)/lib -I$(top_srcdir)/demos/lib $(X_CFLAGS)
+ 
+-LDADD = -L$(top_builddir)/demos/lib/Xmd -lXmd $(top_builddir)/lib/Xm/libXm.la
++LDADD = -L$(top_builddir)/demos/lib/Xmd -lXmd $(top_builddir)/lib/Xm/libXm.la -lXt -lX11
+diff -Nur motif-2.3.8/demos/doc/programGuide/ch17/simple_drop/Makefile.am new/demos/doc/programGuide/ch17/simple_drop/Makefile.am
+--- motif-2.3.8/demos/doc/programGuide/ch17/simple_drop/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/doc/programGuide/ch17/simple_drop/Makefile.am	2022-04-24 02:37:11.595728793 +0200
+@@ -9,4 +9,4 @@
+ 
+ INCLUDES = -I$(top_builddir)/lib -I$(top_srcdir)/lib -I$(top_srcdir)/demos/lib $(X_CFLAGS)
+ 
+-LDADD = -L$(top_builddir)/demos/lib/Xmd -lXmd $(top_builddir)/lib/Xm/libXm.la
++LDADD = -L$(top_builddir)/demos/lib/Xmd -lXmd $(top_builddir)/lib/Xm/libXm.la -lXt -lX11
+diff -Nur motif-2.3.8/demos/lib/Exm/wml/Makefile.am new/demos/lib/Exm/wml/Makefile.am
+--- motif-2.3.8/demos/lib/Exm/wml/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/lib/Exm/wml/Makefile.am	2022-04-24 02:37:11.595728793 +0200
+@@ -18,7 +18,7 @@
+ 	-I$(top_builddir)/clients/uil \
+ 	${X_CFLAGS} 
+ 
+-LDADD = $(top_builddir)/lib/Xm/libXm.la
++LDADD = $(top_builddir)/lib/Xm/libXm.la -lXt
+ 
+ DISTCLEANFILES = motif.wmd
+ 
+diff -Nur motif-2.3.8/demos/lib/Xmd/Makefile.am new/demos/lib/Xmd/Makefile.am
+--- motif-2.3.8/demos/lib/Xmd/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/lib/Xmd/Makefile.am	2022-04-24 02:37:11.595728793 +0200
+@@ -12,7 +12,7 @@
+ Print.h PrintP.h \
+ RegEdit.h RegEditI.h
+ 
+-LDADD = libXmd.a ../../../lib/Xm/libXm.la
++LDADD = libXmd.a ../../../lib/Xm/libXm.la -lXt
+ 
+ INCLUDES = -I$(top_builddir)/lib -I$(srcdir)/../../../lib ${X_CFLAGS} 
+ 
+diff -Nur motif-2.3.8/demos/programs/airport/Makefile.am new/demos/programs/airport/Makefile.am
+--- motif-2.3.8/demos/programs/airport/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/airport/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -8,5 +8,5 @@
+                   dragsource.h dropsite.h main.h
+ EXTRA_DIST = XmdAirport.ad README
+ data_DATA = $(airport_SOURCES) $(EXTRA_DIST)
+-LDADD = ../../../lib/Xm/libXm.la
++LDADD = ../../../lib/Xm/libXm.la -lXt -lX11
+ INCLUDES = -I$(srcdir)/../../../lib -I$(top_builddir)/lib ${X_CFLAGS} 
+diff -Nur motif-2.3.8/demos/programs/animate/Makefile.am new/demos/programs/animate/Makefile.am
+--- motif-2.3.8/demos/programs/animate/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/animate/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -17,7 +17,7 @@
+ 
+ bin_PROGRAMS = xmanimate
+ 
+-LDADD = ../../lib/Xmd/libXmd.a ../../../lib/Mrm/libMrm.la ../../../lib/Xm/libXm.la
++LDADD = ../../lib/Xmd/libXmd.a ../../../lib/Mrm/libMrm.la ../../../lib/Xm/libXm.la -lXt -lX11
+ 
+ INCLUDES = -I$(srcdir)/../../../lib \
+            -I$(srcdir)/../../lib \
+diff -Nur motif-2.3.8/demos/programs/ButtonBox/Makefile.am new/demos/programs/ButtonBox/Makefile.am
+--- motif-2.3.8/demos/programs/ButtonBox/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/ButtonBox/Makefile.am	2022-04-24 02:37:11.595728793 +0200
+@@ -8,6 +8,6 @@
+ bboxdemo_SOURCES = bboxdemo.c
+ data_DATA = $(EXTRA_DIST) $(bboxdemo_SOURCES)
+ TOPDIR = ../../..
+-LDADD = $(TOPDIR)/lib/Xm/libXm.la
++LDADD = $(TOPDIR)/lib/Xm/libXm.la -lXt
+ 
+ INCLUDES = -I$(TOPDIR)/lib -I$(srcdir)/$(TOPDIR)/lib ${X_CFLAGS} 
+diff -Nur motif-2.3.8/demos/programs/ColorSel/Makefile.am new/demos/programs/ColorSel/Makefile.am
+--- motif-2.3.8/demos/programs/ColorSel/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/ColorSel/Makefile.am	2022-04-24 02:37:11.595728793 +0200
+@@ -7,6 +7,6 @@
+ colordemo_SOURCES = util-c.c colordemo.c
+ EXTRA_DIST =
+ data_DATA = $(colordemo_SOURCES) $(EXTRA_DIST)
+-LDADD = $(TOPDIR)/lib/Xm/libXm.la
++LDADD = $(TOPDIR)/lib/Xm/libXm.la -lXt -lX11
+ TOPDIR = ../../..
+ INCLUDES = -I$(TOPDIR)/lib -I$(srcdir)/$(TOPDIR)/lib ${X_CFLAGS} 
+diff -Nur motif-2.3.8/demos/programs/Column/Makefile.am new/demos/programs/Column/Makefile.am
+--- motif-2.3.8/demos/programs/Column/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/Column/Makefile.am	2022-04-24 02:37:11.595728793 +0200
+@@ -8,5 +8,5 @@
+ EXTRA_DIST = Column.ad
+ data_DATA = $(EXTRA_DIST) $(column_SOURCES)
+ TOPDIR = ../../..
+-LDADD = $(TOPDIR)/lib/Xm/libXm.la
++LDADD = $(TOPDIR)/lib/Xm/libXm.la -lXt -lX11
+ INCLUDES = -I$(TOPDIR)/lib -I$(srcdir)/$(TOPDIR)/lib ${X_CFLAGS} 
+diff -Nur motif-2.3.8/demos/programs/Combo2/Makefile.am new/demos/programs/Combo2/Makefile.am
+--- motif-2.3.8/demos/programs/Combo2/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/Combo2/Makefile.am	2022-04-24 02:37:11.595728793 +0200
+@@ -8,5 +8,5 @@
+ combo_SOURCES = combo.c
+ data_DATA = $(EXTRA_DIST) $(combo_SOURCES)
+ TOPDIR = ../../..
+-LDADD = $(TOPDIR)/lib/Xm/libXm.la
++LDADD = $(TOPDIR)/lib/Xm/libXm.la -lXt
+ INCLUDES = -I$(TOPDIR)/lib -I$(srcdir)/$(TOPDIR)/lib ${X_CFLAGS} 
+diff -Nur motif-2.3.8/demos/programs/drag_and_drop/Makefile.am new/demos/programs/drag_and_drop/Makefile.am
+--- motif-2.3.8/demos/programs/drag_and_drop/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/drag_and_drop/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -10,6 +10,6 @@
+ simpledrop_SOURCES = simpledrop.c
+ data_DATA = $(EXTRA_DIST) $(DNDDemo_SOURCES) $(simpledrop_SOURCES)
+ noinst_HEADERS = DNDDemo.h
+-LDADD = ../../../lib/Xm/libXm.la
++LDADD = ../../../lib/Xm/libXm.la -lXt -lX11
+ 
+ INCLUDES = -I$(srcdir)/../../../lib -I$(top_builddir)/lib ${X_CFLAGS} 
+diff -Nur motif-2.3.8/demos/programs/draw/Makefile.am new/demos/programs/draw/Makefile.am
+--- motif-2.3.8/demos/programs/draw/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/draw/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -7,5 +7,5 @@
+ draw_SOURCES = draw.c
+ EXTRA_DIST = XmdDraw.ad README draw.help draw.man
+ data_DATA = $(EXTRA_DIST) $(draw_SOURCES)
+-LDADD = ../../lib/Xmd/libXmd.a ../../../lib/Xm/libXm.la
++LDADD = ../../lib/Xmd/libXmd.a ../../../lib/Xm/libXm.la -lXt -lX11
+ INCLUDES = -I$(srcdir)/../../lib -I$(srcdir)/../../../lib -I$(top_builddir)/lib ${X_CFLAGS} 
+diff -Nur motif-2.3.8/demos/programs/earth/Makefile.am new/demos/programs/earth/Makefile.am
+--- motif-2.3.8/demos/programs/earth/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/earth/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -7,5 +7,5 @@
+ earth_SOURCES = earth.c
+ EXTRA_DIST = terre.xbm earth.man README
+ data_DATA = $(EXTRA_DIST) $(earth_SOURCES)
+-LDADD = ../../../lib/Xm/libXm.la
++LDADD = ../../../lib/Xm/libXm.la -lXt -lXext -lX11
+ INCLUDES = -I$(srcdir)/../../../lib -I$(top_builddir)/lib ${X_CFLAGS} 
+diff -Nur motif-2.3.8/demos/programs/Exm/app_in_c/Makefile.am new/demos/programs/Exm/app_in_c/Makefile.am
+--- motif-2.3.8/demos/programs/Exm/app_in_c/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/Exm/app_in_c/Makefile.am	2022-04-24 02:37:11.595728793 +0200
+@@ -14,4 +14,4 @@
+            -I$(top_builddir)/lib \
+             ${X_CFLAGS} 
+ LDADD = ../../../lib/Exm/libExm.a \
+-	../../../../lib/Xm/libXm.la
++	../../../../lib/Xm/libXm.la -lXt -lXext -lX11
+diff -Nur motif-2.3.8/demos/programs/Exm/simple_app/Makefile.am new/demos/programs/Exm/simple_app/Makefile.am
+--- motif-2.3.8/demos/programs/Exm/simple_app/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/Exm/simple_app/Makefile.am	2022-04-24 02:37:11.595728793 +0200
+@@ -14,5 +14,6 @@
+            -I$(srcdir)/../../../lib \
+            -I$(top_builddir)/lib \
+            ${X_CFLAGS} 
+-LDADD = ../../../../lib/Xm/libXm.la \
+-        ../../../lib/Exm/libExm.a
++LDADD = ../../../lib/Exm/libExm.a \
++        ../../../../lib/Xm/libXm.la -lXt -lX11
++
+diff -Nur motif-2.3.8/demos/programs/Ext18List/Makefile.am new/demos/programs/Ext18List/Makefile.am
+--- motif-2.3.8/demos/programs/Ext18List/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/Ext18List/Makefile.am	2022-04-24 02:37:11.595728793 +0200
+@@ -10,6 +10,6 @@
+ EXTRA_DIST =
+ data_DATA = $(EXTRA_DIST) $(ext18list_SOURCES)
+ TOPDIR = ../../..
+-LDADD = $(TOPDIR)/lib/Xm/libXm.la
++LDADD = $(TOPDIR)/lib/Xm/libXm.la -lXt -lX11
+ 
+ INCLUDES = -I$(TOPDIR)/lib -I.. -I$(srcdir)/$(TOPDIR)/lib ${X_CFLAGS} 
+diff -Nur motif-2.3.8/demos/programs/filemanager/Makefile.am new/demos/programs/filemanager/Makefile.am
+--- motif-2.3.8/demos/programs/filemanager/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/filemanager/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -11,7 +11,7 @@
+            obj.xpm pix.xpm s_dir.xpm s_exec.xpm s_file.xpm \
+            s_none.xpm s_pix.xpm
+ data_DATA = $(EXTRA_DIST) $(filemanager_SOURCES)
+-LDADD = ../../lib/Xmd/libXmd.a ../../../lib/Xm/libXm.la
++LDADD = ../../lib/Xmd/libXmd.a ../../../lib/Xm/libXm.la -lXt -lX11
+ INCLUDES = -I$(srcdir)/../../lib -I$(srcdir)/../../../lib -I$(top_builddir)/lib ${X_CFLAGS} 
+ 
+ 
+diff -Nur motif-2.3.8/demos/programs/fileview/Makefile.am new/demos/programs/fileview/Makefile.am
+--- motif-2.3.8/demos/programs/fileview/Makefile.am	2016-03-16 03:10:08.000000000 +0100
++++ new/demos/programs/fileview/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -11,7 +11,7 @@
+ 
+ UILS= French.uil German.uil English.uil
+ 
+-LDADD = ../../../lib/Xm/libXm.la ../../../lib/Mrm/libMrm.la
++LDADD = ../../../lib/Xm/libXm.la ../../../lib/Mrm/libMrm.la -lXt -lX11
+ 
+ INCLUDES = -I$(srcdir)/../../../lib -I$(top_builddir)/lib ${X_CFLAGS} 
+ 
+diff -Nur motif-2.3.8/demos/programs/FontSel/Makefile.am new/demos/programs/FontSel/Makefile.am
+--- motif-2.3.8/demos/programs/FontSel/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/FontSel/Makefile.am	2022-04-24 02:37:11.595728793 +0200
+@@ -7,6 +7,6 @@
+ fontsel_SOURCES = callbacks-c.c creation-c.c fontsel.c fontsel.h
+ EXTRA_DIST =
+ data_DATA = $(EXTRA_DIST) $(fontsel_SOURCES)
+-LDADD = $(TOPDIR)/lib/Xm/libXm.la
++LDADD = $(TOPDIR)/lib/Xm/libXm.la -lXt
+ TOPDIR = ../../..
+ INCLUDES = -I$(TOPDIR)/lib -I$(srcdir)/$(TOPDIR)/lib ${X_CFLAGS} 
+diff -Nur motif-2.3.8/demos/programs/getsubres/Makefile.am new/demos/programs/getsubres/Makefile.am
+--- motif-2.3.8/demos/programs/getsubres/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/getsubres/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -7,5 +7,5 @@
+ EXTRA_DIST = getsubres.help getsubres.man README
+ getsubres_SOURCES = getsubres.c
+ data_DATA = $(EXTRA_DIST) $(getsubres_SOURCES)
+-LDADD = ../../lib/Xmd/libXmd.a ../../../lib/Xm/libXm.la
++LDADD = ../../lib/Xmd/libXmd.a ../../../lib/Xm/libXm.la -lXt -lX11
+ INCLUDES = -I$(srcdir)/../../lib -I$(srcdir)/../../../lib -I$(top_builddir)/lib ${X_CFLAGS} 
+diff -Nur motif-2.3.8/demos/programs/hellomotif/Makefile.am new/demos/programs/hellomotif/Makefile.am
+--- motif-2.3.8/demos/programs/hellomotif/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/hellomotif/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -7,7 +7,7 @@
+ EXTRA_DIST = hellomotif.uil README
+ hellomotif_SOURCES = hellomotif.c
+ data_DATA = $(EXTRA_DIST) $(hellomotif_SOURCES) hellomotif.uid
+-LDADD = ../../../lib/Xm/libXm.la ../../../lib/Mrm/libMrm.la
++LDADD = ../../../lib/Xm/libXm.la ../../../lib/Mrm/libMrm.la -lXt
+ INCLUDES = -I$(srcdir)/../../../lib -I$(top_builddir)/lib ${X_CFLAGS} 
+ 
+ all: hellomotif.uid
+diff -Nur motif-2.3.8/demos/programs/hellomotifi18n/Makefile.am new/demos/programs/hellomotifi18n/Makefile.am
+--- motif-2.3.8/demos/programs/hellomotifi18n/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/hellomotifi18n/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -12,7 +12,7 @@
+ helloint_DEPENDENCIES = helloint.uid C/uid/l_strings.uid english/uid/l_strings.uid french/uid/l_strings.uid hebrew/uid/l_strings.uid japan/uid/l_strings.uid japanese/uid/l_strings.uid swedish/uid/l_strings.uid
+ 
+ INCLUDES = -I$(top_srcdir)/lib -I$(top_builddir)/lib ${X_CFLAGS} 
+-LDADD = $(top_builddir)/lib/Mrm/libMrm.la $(top_builddir)/lib/Xm/libXm.la
++LDADD = $(top_builddir)/lib/Mrm/libMrm.la $(top_builddir)/lib/Xm/libXm.la -lXt
+ 
+ SUFFIXES = .uil .uid
+ 
+diff -Nur motif-2.3.8/demos/programs/i18ninput/Makefile.am new/demos/programs/i18ninput/Makefile.am
+--- motif-2.3.8/demos/programs/i18ninput/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/i18ninput/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -7,6 +7,6 @@
+ i18ninput_SOURCES = i18ninput.c input.c 
+ EXTRA_DIST = XmdI18nInput.ad README i18ninput.man i18ninput.help
+ data_DATA = $(EXTRA_DIST) $(i18ninput_SOURCES)
+-LDADD = ../../lib/Xmd/libXmd.a ../../../lib/Xm/libXm.la
++LDADD = ../../lib/Xmd/libXmd.a ../../../lib/Xm/libXm.la -lXt -lX11
+ 
+ INCLUDES = -I$(srcdir)/../../lib -I$(srcdir)/../../../lib -I$(top_builddir)/lib ${X_CFLAGS} 
+diff -Nur motif-2.3.8/demos/programs/IconB/Makefile.am new/demos/programs/IconB/Makefile.am
+--- motif-2.3.8/demos/programs/IconB/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/IconB/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -8,7 +8,7 @@
+ iconbuttondemo_SOURCES = misc.c  iconbuttondemo.c
+ data_DATA = $(iconbuttondemo_SOURCES) $(EXTRA_DIST)
+ TOPDIR = ../../..
+-LDADD = $(TOPDIR)/lib/Xm/libXm.la
++LDADD = $(TOPDIR)/lib/Xm/libXm.la -lXt -lX11
+ 
+ INCLUDES = -I$(TOPDIR)/lib -I$(srcdir)/.. \
+            -I$(srcdir)/$(TOPDIR)/lib \
+diff -Nur motif-2.3.8/demos/programs/Outline/Makefile.am new/demos/programs/Outline/Makefile.am
+--- motif-2.3.8/demos/programs/Outline/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/Outline/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -7,6 +7,6 @@
+ bin_PROGRAMS = outline
+ outline_SOURCES = outline.c
+ data_DATA = $(outline_SOURCES) $(EXTRA_DIST)
+-LDADD = $(TOPDIR)/lib/Xm/libXm.la
++LDADD = $(TOPDIR)/lib/Xm/libXm.la -lXt
+ TOPDIR = ../../..
+ INCLUDES = -I$(TOPDIR)/lib -I$(srcdir)/$(TOPDIR)/lib ${X_CFLAGS} 
+diff -Nur motif-2.3.8/demos/programs/Paned/Makefile.am new/demos/programs/Paned/Makefile.am
+--- motif-2.3.8/demos/programs/Paned/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/Paned/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -8,6 +8,6 @@
+ paned_SOURCES = creation-c.c paned.c
+ data_DATA = $(EXTRA_DIST) $(paned_SOURCES)
+ TOPDIR = ../../..
+-LDADD = $(TOPDIR)/lib/Xm/libXm.la
++LDADD = $(TOPDIR)/lib/Xm/libXm.la -lXt
+ 
+ INCLUDES = -I$(TOPDIR)/lib -I$(srcdir)/$(TOPDIR)/lib ${X_CFLAGS} 
+diff -Nur motif-2.3.8/demos/programs/panner/Makefile.am new/demos/programs/panner/Makefile.am
+--- motif-2.3.8/demos/programs/panner/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/panner/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -7,5 +7,5 @@
+ panner_SOURCES = panner.c
+ EXTRA_DIST = README panner.man
+ data_DATA = $(EXTRA_DIST) $(panner_SOURCES)
+-LDADD = ../../../lib/Xm/libXm.la
++LDADD = ../../../lib/Xm/libXm.la -lXt -lX11
+ INCLUDES = -I$(srcdir)/../../../lib -I$(top_builddir)/lib ${X_CFLAGS} 
+diff -Nur motif-2.3.8/demos/programs/periodic/Makefile.am new/demos/programs/periodic/Makefile.am
+--- motif-2.3.8/demos/programs/periodic/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/periodic/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -7,7 +7,7 @@
+ EXTRA_DIST = periodic.uil periodic_l.uil XmdPeriodic.ad README
+ periodic_SOURCES = periodic.c
+ data_DATA = $(EXTRA_DIST) $(periodic_SOURCES) periodic.uid
+-LDADD = ../../../lib/Xm/libXm.la ../../../lib/Mrm/libMrm.la
++LDADD = ../../../lib/Xm/libXm.la ../../../lib/Mrm/libMrm.la -lXt -lX11
+ 
+ INCLUDES = -I$(srcdir)/../../../lib -I$(top_builddir)/lib ${X_CFLAGS} 
+ 
+diff -Nur motif-2.3.8/demos/programs/piano/Makefile.am new/demos/programs/piano/Makefile.am
+--- motif-2.3.8/demos/programs/piano/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/piano/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -8,6 +8,6 @@
+ EXTRA_DIST = piano.images README Inv8_part1.piano Inv8_part2.piano \
+              piano.man
+ data_DATA  = $(EXTRA_DIST) $(piano_SOURCES) 
+-LDADD = ../../../lib/Xm/libXm.la -lm
++LDADD = ../../../lib/Xm/libXm.la -lm -lXt -lX11
+ 
+ INCLUDES = -I$(srcdir)/../../../lib -I$(top_builddir)/lib ${X_CFLAGS} 
+diff -Nur motif-2.3.8/demos/programs/popups/Makefile.am new/demos/programs/popups/Makefile.am
+--- motif-2.3.8/demos/programs/popups/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/popups/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -7,6 +7,6 @@
+ autopopups_SOURCES = autopopups.c
+ EXTRA_DIST = README autopopups.man
+ data_DATA = $(EXTRA_DIST) $(autopopups_SOURCES)
+-LDADD = ../../../lib/Xm/libXm.la
++LDADD = ../../../lib/Xm/libXm.la -lXt -lX11
+ 
+ INCLUDES = -I$(srcdir)/../../../lib -I$(top_builddir)/lib ${X_CFLAGS} 
+diff -Nur motif-2.3.8/demos/programs/sampler2_0/Makefile.am new/demos/programs/sampler2_0/Makefile.am
+--- motif-2.3.8/demos/programs/sampler2_0/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/sampler2_0/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -10,6 +10,6 @@
+ bin_PROGRAMS = sampler2_0
+ sampler2_0_SOURCES = sampler2_0.c
+ data_DATA = $(sampler2_0_SOURCES) $(EXTRA_DIST)
+-LDADD = ../../lib/Xmd/libXmd.a ../../../lib/Xm/libXm.la
++LDADD = ../../lib/Xmd/libXmd.a ../../../lib/Xm/libXm.la -lXt -lX11
+ 
+ INCLUDES = -I$(srcdir)/../../lib -I$(srcdir)/../../../lib -I$(top_builddir)/lib ${X_CFLAGS} 
+diff -Nur motif-2.3.8/demos/programs/setdate/Makefile.am new/demos/programs/setdate/Makefile.am
+--- motif-2.3.8/demos/programs/setdate/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/setdate/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -7,6 +7,6 @@
+ EXTRA_DIST = XmdSetDate.ad README setDate.man
+ setDate_SOURCES = setDate.c
+ data_DATA = $(EXTRA_DIST) $(setDate_SOURCES)
+-LDADD = ../../../lib/Xm/libXm.la
++LDADD = ../../../lib/Xm/libXm.la -lXt -lX11
+ 
+ INCLUDES = -I$(srcdir)/../../../lib -I$(top_builddir)/lib ${X_CFLAGS} 
+diff -Nur motif-2.3.8/demos/programs/TabStack/Makefile.am new/demos/programs/TabStack/Makefile.am
+--- motif-2.3.8/demos/programs/TabStack/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/TabStack/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -8,6 +8,6 @@
+ EXTRA_DIST =
+ data_DATA = $(tabstack_SOURCES) $(EXTRA_DIST)            
+ TOPDIR = ../../..
+-LDADD = $(TOPDIR)/lib/Xm/libXm.la
++LDADD = $(TOPDIR)/lib/Xm/libXm.la -lXt -lX11
+ 
+ INCLUDES = -I$(TOPDIR)/lib -I$(srcdir)/$(TOPDIR)/lib ${X_CFLAGS} 
+diff -Nur motif-2.3.8/demos/programs/todo/Makefile.am new/demos/programs/todo/Makefile.am
+--- motif-2.3.8/demos/programs/todo/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/todo/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -9,4 +9,4 @@
+ data_DATA = $(EXTRA_DIST) $(todo_SOURCES)
+ 
+ INCLUDES = -I$(srcdir)/../../../lib -I$(srcdir)/../../lib -I$(top_builddir)/lib ${X_CFLAGS} 
+-LDADD = -L../../lib/Xmd -lXmd -L../../lib/Exm -lExm ../../../lib/Xm/libXm.la 
++LDADD = -L../../lib/Xmd -lXmd -L../../lib/Exm -lExm ../../../lib/Xm/libXm.la -lXt -lXext -lX11
+diff -Nur motif-2.3.8/demos/programs/tooltips/Makefile.am new/demos/programs/tooltips/Makefile.am
+--- motif-2.3.8/demos/programs/tooltips/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/tooltips/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -7,6 +7,6 @@
+ bin_PROGRAMS = tooltips
+ tooltips_SOURCES = tooltips.c
+ data_DATA = $(tooltips_SOURCES) $(EXTRA_DIST)
+-LDADD = ../../../lib/Xm/libXm.la
++LDADD = ../../../lib/Xm/libXm.la -lXt
+ 
+ INCLUDES = -I$(srcdir)/../../../lib -I$(top_builddir)/lib ${X_CFLAGS} 
+diff -Nur motif-2.3.8/demos/programs/Tree/Makefile.am new/demos/programs/Tree/Makefile.am
+--- motif-2.3.8/demos/programs/Tree/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/Tree/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -8,6 +8,6 @@
+ tree_SOURCES = bxutil-c.c  tree.c
+ data_DATA = $(EXTRA_DIST) $(tree_SOURCES)
+ TOPDIR = ../../..
+-LDADD = $(TOPDIR)/lib/Xm/libXm.la
++LDADD = $(TOPDIR)/lib/Xm/libXm.la -lXt -lX11
+ 
+ INCLUDES = -I$(TOPDIR)/lib -I$(srcdir)/.. -I$(srcdir)/$(TOPDIR)/lib ${X_CFLAGS} 
+diff -Nur motif-2.3.8/demos/programs/workspace/Makefile.am new/demos/programs/workspace/Makefile.am
+--- motif-2.3.8/demos/programs/workspace/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/programs/workspace/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -11,4 +11,4 @@
+               wsm.h wsmSend.h wsmStruct.h wsm_ui.h xrmLib.h
+ data_DATA = $(wsm_SOURCES) $(EXTRA_DIST)
+ INCLUDES = -I$(srcdir)/../../../lib -I$(srcdir)/../../lib -I$(top_builddir)/lib ${X_CFLAGS} 
+-LDADD = ../../../lib/Xm/libXm.la -L../../lib/Wsm -lWsm
++LDADD = ../../../lib/Xm/libXm.la -L../../lib/Wsm -lWsm -lXt -lX11
+diff -Nur motif-2.3.8/demos/unsupported/aicon/Makefile.am new/demos/unsupported/aicon/Makefile.am
+--- motif-2.3.8/demos/unsupported/aicon/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/unsupported/aicon/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -2,7 +2,7 @@
+ 
+ noinst_PROGRAMS = aicon
+  
+-LDADD = -L../../lib/Xmd -lXmd ../../../lib/Xm/libXm.la 
++LDADD = -L../../lib/Xmd -lXmd ../../../lib/Xm/libXm.la -lXt -lX11
+ 
+ INCLUDES = -I$(srcdir)/../../../lib -I$(srcdir)/../../lib -I$(top_builddir)/lib ${X_CFLAGS} 
+ 
+diff -Nur motif-2.3.8/demos/unsupported/dainput/Makefile.am new/demos/unsupported/dainput/Makefile.am
+--- motif-2.3.8/demos/unsupported/dainput/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/unsupported/dainput/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -4,7 +4,7 @@
+ 
+ dainput_SOURCES = dainput.c dainput_dlg.c dainput_ui.c
+ 
+-LDADD = ../../../lib/Xm/libXm.la
++LDADD = ../../../lib/Xm/libXm.la -lXt -lX11
+ 
+ EXTRA_DIST =
+ 
+diff -Nur motif-2.3.8/demos/unsupported/dogs/Makefile.am new/demos/unsupported/dogs/Makefile.am
+--- motif-2.3.8/demos/unsupported/dogs/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/unsupported/dogs/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -15,7 +15,7 @@
+ 
+ dogs_DEPENDENCIES = dogs.uid
+ 
+-LDADD = $(top_builddir)/lib/Mrm/libMrm.la $(top_builddir)/lib/Xm/libXm.la
++LDADD = $(top_builddir)/lib/Mrm/libMrm.la $(top_builddir)/lib/Xm/libXm.la -lXt -lX11
+ 
+ INCLUDES = -I$(srcdir)/../../../lib -I$(top_builddir)/lib ${X_CFLAGS} 
+ 
+diff -Nur motif-2.3.8/demos/unsupported/hellomotif/Makefile.am new/demos/unsupported/hellomotif/Makefile.am
+--- motif-2.3.8/demos/unsupported/hellomotif/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/unsupported/hellomotif/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -4,7 +4,7 @@
+ 
+ SOURCES = hellomotif.c
+ 
+-LDADD = ../../../lib/Xm/libXm.la
++LDADD = ../../../lib/Xm/libXm.la -lXt
+ 
+ EXTRA_DIST =
+ 
+diff -Nur motif-2.3.8/demos/unsupported/motifshell/Makefile.am new/demos/unsupported/motifshell/Makefile.am
+--- motif-2.3.8/demos/unsupported/motifshell/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/unsupported/motifshell/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -4,7 +4,7 @@
+ 
+ SOURCES = motifshell.c
+ 
+-LDADD = ../../../lib/Xm/libXm.la
++LDADD = ../../../lib/Xm/libXm.la -lXt -lX11
+ 
+ EXTRA_DIST =
+ 
+diff -Nur motif-2.3.8/demos/unsupported/xmapdef/Makefile.am new/demos/unsupported/xmapdef/Makefile.am
+--- motif-2.3.8/demos/unsupported/xmapdef/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/unsupported/xmapdef/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -4,7 +4,7 @@
+ 
+ SOURCES = xmapdef.c
+ 
+-LDADD = ../../../lib/Xm/libXm.la
++LDADD = ../../../lib/Xm/libXm.la -lXt -lX11
+ 
+ EXTRA_DIST =
+ 
+diff -Nur motif-2.3.8/demos/unsupported/xmfonts/Makefile.am new/demos/unsupported/xmfonts/Makefile.am
+--- motif-2.3.8/demos/unsupported/xmfonts/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/unsupported/xmfonts/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -4,7 +4,7 @@
+ 
+ SOURCES = xmfonts.c
+ 
+-LDADD = ../../../lib/Xm/libXm.la
++LDADD = ../../../lib/Xm/libXm.la -lXt -lX11
+ 
+ EXTRA_DIST =
+ 
+diff -Nur motif-2.3.8/demos/unsupported/xmforc/Makefile.am new/demos/unsupported/xmforc/Makefile.am
+--- motif-2.3.8/demos/unsupported/xmforc/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/unsupported/xmforc/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -4,7 +4,7 @@
+ 
+ SOURCES = xmforc.c
+ 
+-LDADD = ../../../lib/Xm/libXm.la
++LDADD = ../../../lib/Xm/libXm.la -lXt
+ 
+ EXTRA_DIST =
+ 
+diff -Nur motif-2.3.8/demos/unsupported/xmform/Makefile.am new/demos/unsupported/xmform/Makefile.am
+--- motif-2.3.8/demos/unsupported/xmform/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/demos/unsupported/xmform/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -6,6 +6,6 @@
+ 
+ EXTRA_DIST =
+ 
+-LDADD = ../../../lib/Xm/libXm.la
++LDADD = ../../../lib/Xm/libXm.la -lXt
+ 
+ INCLUDES = -I$(srcdir)/../../../lib -I$(top_builddir)/lib ${X_CFLAGS}
+diff -Nur motif-2.3.8/tools/wml/Makefile.am new/tools/wml/Makefile.am
+--- motif-2.3.8/tools/wml/Makefile.am	2017-08-17 02:38:43.000000000 +0200
++++ new/tools/wml/Makefile.am	2022-04-24 02:37:11.599728793 +0200
+@@ -30,7 +30,7 @@
+ wml_LDADD = -L. -lwml
+ wml_DEPENDENCIES = libwml.a
+ 
+-wmldbcreate_LDADD = ../../lib/Xm/libXm.la
++wmldbcreate_LDADD = ../../lib/Xm/libXm.la -lXt
+ 
+ INCLUDES = -I../../lib -I$(srcdir)/../../lib -I$(srcdir)/../../include ${X_CFLAGS} 
+ 

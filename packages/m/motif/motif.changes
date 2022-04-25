@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sat Apr 23 23:55:13 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.3.8
+  * Fixed bug: TextField leaves a residual cursor shadow on focus lose
+  * Fixed bug: Many cases of typos in horizontal/vertical conditions in the code
+  * Fixed bug: motif does crash on OpenSuse Leap 42.2
+  * Fixed bug: TabStack with tabSelectColor and Right causes BadMatch Error
+  * Fixed bug: Open Motif build fails due to weak aliases on Darwin with cl
+  * Fixed bug: Motif 2.3.6 and 2.3.4 do not work with XQuartz 2.7.9 and later
+  * Fixed bug: Add support for more Cyrillic locales
+  * Fixed bug: Memory leak in DataF.c
+  * Fixed bug: Closing open menus with mouse click disables keyboard shortcut
+- Update to version 2.3.7
+  * Fixed segmentation faults associated with option menus or other popup windows
+- Update to version 2.3.6
+  * Fixed Rendering issues seen while scrolling window
+  * Fixed parallel building error
+- Update to version 2.3.5
+  * Reimplemented bugfix: The active window changes to inactive
+    when the drop down list is clicked
+  * Fixed XmList segfault when left-shift left-button click on
+    list item
+  * Fixed Label size computed wrong within a Form
+  * Fixed Using deprecated X functions
+  * Fixed Buffer overrun in FontS.c
+  * Fixed many compile-time bugs
+- Drop outdated patches:
+  * openmotif-2.3.3.diff, warn.patch, strcmp.diff,
+    openmotif-xpm.diff, sentinel.diff, openmotif-uil.diff,
+    openmotif-unaligned.diff, mwm.diff, openmotif-editres.diff,
+    openmotif-editres-prototype.patch, motif-avoid-empty-include.diff,
+    motif-sequence-points.diff, openmotif-2.3.1-suse-stipple.patch,
+    and motif-2.3.4-implicit-fortify-decl.patch
+- Added patches from upstream and alpine:
+  * fix-format-security.patch
+  * no-demos.patch
+  * fix_underlinking.patch
+  * fix_hardcoded_x11rgb_path.patch
+  * fix-undefined-use-of-sprintf.patch
+  * 18-option-main.patch
+
+-------------------------------------------------------------------
 Tue Feb 16 11:09:04 UTC 2016 - schwab@suse.de
 
 - motif-2.3.4-implicit-fortify-decl.patch: fix bad use of reserved

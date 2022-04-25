@@ -1,7 +1,7 @@
 #
 # spec file for package motif
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,35 +12,33 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           motif
-Version:        2.3.4
+Version:        2.3.8
 Release:        0
 Summary:        Motif Runtime Programs
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          System/Libraries
-Url:            http://motif.ics.com/
-Source0:        http://sourceforge.net/projects/motif/files/Motif%20%{version}%20Source%20Code/%{name}-%{version}-src.tgz
+URL:            https://motif.ics.com/
+Source0:        https://sourceforge.net/projects/motif/files/Motif%%20%{version}%%20Source%%20Code/motif-%{version}.tar.gz
 Source1:        mwm.desktop
 Source2:        baselibs.conf
-Patch0:         openmotif-2.3.3.diff
-Patch1:         warn.patch
-Patch2:         strcmp.diff
-Patch3:         openmotif-xpm.diff
-Patch4:         sentinel.diff
-Patch5:         openmotif-uil.diff
-Patch6:         openmotif-unaligned.diff
-Patch7:         mwm.diff
-Patch8:         openmotif-editres.diff
-Patch9:         openmotif-editres-prototype.patch
-Patch10:        motif-avoid-empty-include.diff
-Patch11:        motif-sequence-points.diff
-Patch12:        openmotif-2.3.1-suse-stipple.patch
-# PATCH-FIX-UPSTREAM fix implicit-fortify-decl errors
-Patch13:        motif-2.3.4-implicit-fortify-decl.patch
+# PATCH-FIX-UPSTREAM 02-fix-format-security.patch -- http://bugs.motifzone.net/show_bug.cgi?id=1574
+Patch0:         fix-format-security.patch
+# PATCH-FEATURE-UPSTREAM 03-no-demos.patch -- Disable demos if not needed
+Patch1:         no-demos.patch
+# PATCH-FIX-UPSTREAM fix_underlinking.patch -- http://bugs.motifzone.net/show_bug.cgi?id=1583
+Patch2:         fix_underlinking.patch
+# PATCH-FIX-UPSTEAM 13-fix_hardcoded_x11rgb_path.patch -- http://bugs.motifzone.net/show_bug.cgi?id=1585
+Patch3:         fix_hardcoded_x11rgb_path.patch
+# PATCH-FIX-UPSTREM 16-fix-undefined-use-of-sprintf.patch -- http://bugs.motifzone.net/show_bug.cgi?id=1628
+Patch4:         fix-undefined-use-of-sprintf.patch
+Patch5:         https://git.alpinelinux.org/aports/plain/community/motif/18-option-main.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  libjpeg-devel
@@ -117,46 +115,23 @@ This package provies the include files and libraries necessary for developing
 Motif applications.
 
 %prep
-%setup -q
-# remove all files that have strange licenses
-rm lib/Xm/regexp.c
-rm lib/Xm/regexpI.h
-rm localized/util/mkcatdefs.c
-rm tests/doc/Output/draft/ps/title.ps
-rm tests/doc/title.sm
-sed -e '/regexpI.h/d' -i lib/Xm/Makefile.am
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch -P 10 -P 11 -p1
-%patch12 -p1
-%patch13 -p1
-
+%autosetup -p1
+sed -i 's|{libdir}/X11|{datadir}/X11|' configure.ac
 %build
-./autogen.sh
-%ifarch %arm
-# miscompilation?
-RPM_OPT_FLAGS="%{optflags} -O1"
-%endif
+autoreconf -fi
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %configure \
     --disable-static \
+    --disable-demos \
+    --with-x11rgbdir="%{_datadir}/X11" \
     --enable-xft \
     --enable-jpeg \
     --enable-png \
     --with-pic
-# parallel make is broken
-make --jobs 1 MWMRCDIR=%{_sysconfdir}/X11
+%make_build MWMRCDIR=%{_sysconfdir}/X11 XMBINDDIR_FALLBACK=%{_datadir}/X11/bindings
 
 %install
-make install DESTDIR=%{buildroot} MWMRCDIR=%{_sysconfdir}/X11
+%make_install MWMRCDIR=%{_sysconfdir}/X11 XMBINDDIR_FALLBACK=%{_datadir}/X11
 
 install -D -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/xsessions/mwm.desktop
 %suse_update_desktop_file %{buildroot}%{_datadir}/xsessions/mwm.desktop
