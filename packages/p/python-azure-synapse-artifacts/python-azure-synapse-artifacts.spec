@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-synapse-artifacts
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        Microsoft Azure Synapse Artifacts Client Library for Python
 License:        MIT
@@ -38,7 +38,7 @@ BuildRequires:  unzip
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.20.1
+Requires:       python-azure-core >= 1.23.1
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-azure-synapse-nspkg >= 1.0.0
 Requires:       python-msrest >= 0.6.21
