@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr 24 20:11:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.94.3:
+  * Ensure idle mainloop before completing enumeration (fprintd#119)
+  * It is now possible to extend already enrolled prints
+  * elanspi: Fix timeout error with some hardware (#438)
+  * elanspi: Fix cancellation issues
+  * goodixmoc: Return matching device print; fixes duplicate checking (#444)
+  * goodixmoc: Support clearing the storage (usually unused)
+
+-------------------------------------------------------------------
 Tue Nov 16 18:54:58 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Update to version 1.94.2
