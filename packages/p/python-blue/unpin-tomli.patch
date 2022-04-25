@@ -1,8 +1,22 @@
-Index: blue-0.8.0/blue/__init__.py
-===================================================================
---- blue-0.8.0.orig/blue/__init__.py
-+++ blue-0.8.0/blue/__init__.py
-@@ -263,8 +263,8 @@ def parse_pyproject_toml(path_config: st
+---
+ blue/__init__.py |    9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+--- a/blue/__init__.py
++++ b/blue/__init__.py
+@@ -15,7 +15,10 @@ import black.strings
+ from black import Leaf, Path, click, token
+ from black.cache import user_cache_dir
+ from black.comments import ProtoComment, make_comment
+-from black.files import tomli
++try:
++    from black.files import tomli
++except ImportError:
++    from black.files import tomllib as tomli
+ from black.linegen import LineGenerator as BlackLineGenerator
+ from black.lines import Line
+ from black.nodes import (
+@@ -263,8 +266,8 @@ def parse_pyproject_toml(path_config: st
  
      If parsing fails, will raise a tomli.TOMLDecodeError
      """

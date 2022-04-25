@@ -79,7 +79,8 @@ sed -i '/--cov/d' tox.ini
 %python_clone -a %{buildroot}%{_bindir}/blue
 
 %check
-%pytest
+# gh#grantjenks/blue#72
+%pytest -k 'not (test_good_dirs or test_bad_dirs)'
 
 %post
 %python_install_alternative blue

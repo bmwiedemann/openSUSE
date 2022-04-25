@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr 23 18:57:58 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update unpin-tomli.patch to work with the current black package.
+- Skip failing tests (gh#grantjenks/blue#72)
+
+-------------------------------------------------------------------
 Sat Mar 19 10:29:26 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.8.0

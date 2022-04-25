@@ -49,4 +49,14 @@
     <comment></comment>
     <requestid>963039</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>285d43085c04482dedaefbb02dd6896e</srcmd5>
+    <version>0.8.0</version>
+    <time>1650922505</time>
+    <user>dimstar_suse</user>
+    <comment>- Update unpin-tomli.patch to work with the current black package.
+- Skip failing tests (gh#grantjenks/blue#72)
+</comment>
+    <requestid>972466</requestid>
+  </revision>
 </revisionlist>
