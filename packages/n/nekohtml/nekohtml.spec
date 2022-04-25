@@ -18,33 +18,26 @@
 
 
 Name:           nekohtml
-Version:        1.9.22
+Version:        1.9.22.noko2
 Release:        0
 Summary:        HTML scanner and tag balancer
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://nekohtml.sourceforge.net/
-# No upstream tarball for this release
-# svn export svn://svn.code.sf.net/p/nekohtml/code/branches/nekohtml-1.9.22 nekohtml-1.9.22
-# find nekohtml-1.9.22 -name '*.jar' -delete
-# tar cJf nekohtml-1.9.22.tar.xz nekohtml-1.9.22/
+URL:            https://github.com/sparklemotion/nekohtml
 Source0:        %{name}-%{version}.tar.xz
 Source2:        nekohtml-component-info.xml
-Source3:        https://repo1.maven.org/maven2/net/sourceforge/%{name}/%{name}/%{version}/%{name}-%{version}.pom
-Patch1:         0002-Jar-paths.patch
+Patch1:         0001-Jar-paths.patch
 # Add proper attributes to MANIFEST.MF file so bundle can be used by other OSGI bundles.
-Patch2:         0003-Add-OSGi-attributes.patch
+Patch2:         0002-Add-OSGi-attributes.patch
 BuildRequires:  ant
-BuildRequires:  ant-junit
 BuildRequires:  bcel
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  xerces-j2 >= 2.7.1
 BuildRequires:  xml-apis
-BuildRequires:  xmvn-install
-BuildRequires:  xmvn-resolve
 Requires:       bcel
+Requires:       javapackages-tools
 Requires:       xerces-j2 >= 2.7.1
 Requires:       xml-apis
 BuildArch:      noarch
@@ -88,44 +81,48 @@ sed -i 's/\r$//g' *.txt doc/*.html
 # cannonization test fails on some whitespace, TODO investigate
 rm data/meta/test-meta-encoding3.html
 
-%{mvn_alias} net.sourceforge.%{name}:%{name} %{name}:%{name}
-%{mvn_package} net.sourceforge.%{name}:%{name}-samples demo
-%{mvn_file} ':{*}' @1
-
 %build
-export CLASSPATH=$(build-classpath bcel xerces-j2 xml-apis)
+mkdir -p lib
+build-jar-repository -p -s lib bcel xerces-j2 xml-apis
 %{ant} \
     -Dcompile.source=1.8 -Dcompile.target=1.8 \
-    -Dbuild.sysclasspath=first \
-    -Dlib.dir=%{_javadir} \
     -Djar.file=%{name}.jar \
     -Djar.xni.file=%{name}-xni.jar \
     -Djar.samples.file=%{name}-samples.jar \
-    -Dbcel.javadoc=%{_javadocdir}/bcel \
-    -Dj2se.javadoc=%{_javadocdir}/java \
-    -Dxni.javadoc=%{_javadocdir}/xerces-j2-xni \
-    -Dxerces.javadoc=%{_javadocdir}/xerces-j2-impl \
     clean jar jar-xni doc
-# test - disabled because it makes the build failing
 
-%{mvn_artifact} %{SOURCE3} %{name}.jar
+%{mvn_artifact} pom.xml %{name}.jar
 %{mvn_artifact} net.sourceforge.%{name}:%{name}-xni:%{version} %{name}-xni.jar
 %{mvn_artifact} net.sourceforge.%{name}:%{name}-samples:%{version} %{name}-samples.jar
 
 %install
-%mvn_install -J build/doc/javadoc
+# jar
+install -dm 0755 %{buildroot}%{_javadir}
+install -pm 0644 %{name}.jar %{buildroot}%{_javadir}/%{name}.jar
+install -pm 0644 %{name}-xni.jar %{buildroot}%{_javadir}/%{name}-xni.jar
+install -pm 0644 %{name}-samples.jar %{buildroot}%{_javadir}/%{name}-samples.jar
+# pom
+install -dm 0755 %{buildroot}%{_mavenpomdir}/
+install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%add_maven_depmap %{name}.pom %{name}.jar -a %{name}:%{name}
+%add_maven_depmap net.sourceforge.%{name}:%{name}-xni:%{version} %{name}-xni.jar
+%add_maven_depmap net.sourceforge.%{name}:%{name}-samples:%{version} %{name}-samples.jar -f demo
+# javadoc
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+cp -pr build/doc/javadoc/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
 
 # Scripts
-%jpackage_script org.cyberneko.html.filters.Writer "" "" "nekohtml:xerces-j2" nekohtml-filter true
+%jpackage_script org.cyberneko.html.filters.Writer "" "" "nekohtml:xerces-j2" %{name}-filter true
 
 %files -f .mfiles
 %license LICENSE.txt
 %doc README.txt doc/*.html
 %{_bindir}/%{name}-filter
 
-%files javadoc -f .mfiles-javadoc
-
 %files demo -f .mfiles-demo
+
+%files javadoc
+%{_javadocdir}/%{name}
 
 %changelog

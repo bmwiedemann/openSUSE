@@ -1,17 +1,17 @@
-From 1cbc54dc98b762c4ba3b1daffc2cf5a1116732ef Mon Sep 17 00:00:00 2001
+From 93df8b4732f0fe801db62f268da4de0e3a87f993 Mon Sep 17 00:00:00 2001
 From: Michael Simacek <msimacek@redhat.com>
 Date: Tue, 14 Jul 2015 11:21:21 +0200
-Subject: [PATCH 3/3] Add OSGi attributes
+Subject: [PATCH 2/2] Add OSGi attributes
 
 ---
  build.xml | 4 ++++
  1 file changed, 4 insertions(+)
 
 diff --git a/build.xml b/build.xml
-index 1f00059..194b0bf 100644
+index 36b922b..ba0585f 100644
 --- a/build.xml
 +++ b/build.xml
-@@ -129,6 +129,10 @@
+@@ -116,6 +116,10 @@
    <jar jarfile='${jar.file}'>
  	<manifest>
      	<attribute name="Built-By" value="${author}"/>
@@ -23,5 +23,5 @@ index 1f00059..194b0bf 100644
  		  <attribute name="Specification-Title" value="Hyper-Text Markup Language (HTML)" />
      	  <attribute name="Specification-Version" value="4.01" />
 -- 
-2.1.0
+2.36.0
 

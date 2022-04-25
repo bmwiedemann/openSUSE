@@ -15,4 +15,12 @@
     <comment>Build with source and target levels 8</comment>
     <requestid>964177</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7bf0586fceda6261e9adfed524ffc803</srcmd5>
+    <version>1.9.22.noko2</version>
+    <time>1650922516</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1198739, CVE-2022-28366, bsc#1198404, CVE-2022-24839</comment>
+    <requestid>972549</requestid>
+  </revision>
 </revisionlist>
