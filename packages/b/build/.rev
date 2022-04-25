@@ -1468,4 +1468,18 @@ Changes:
 - smaller bugfixes</comment>
     <requestid>965580</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>1b91e67a6b4dfa4a7452e64545cc74d4</srcmd5>
+    <version>20220422</version>
+    <time>1650924027</time>
+    <user>dimstar_suse</user>
+    <comment>- Update SLE 15 SP4 and Leap 15.4 build config (bsc#1198740)
+- Use aio=io_uring if available (bsc#1197699) (build#814)
+- Add arm32 and loongarch definitions (build#808)
+- Add compatibility code to initvm
+- Use upstream way of binfmt argv0 preservation (bsc#1197298) (build#809)
+- Add template support for Build::SimpleJSON
+- minor documentation updates</comment>
+    <requestid>972021</requestid>
+  </revision>
 </revisionlist>
