@@ -17,17 +17,16 @@
 
 
 Name:           supermin
-Version:        5.2.1
+Version:        5.2.2
 Release:        0
 Summary:        Bootstrapping tool for creating supermin appliances
 License:        GPL-3.0-or-later
 Group:          System/Filesystems
 URL:            https://libguestfs.org/
-Source0:        https://download.libguestfs.org/supermin/5.2-stable/supermin-5.2.1.tar.gz
-Source1:        https://download.libguestfs.org/supermin/5.2-stable/supermin-5.2.1.tar.gz.sig
+Source0:        https://download.libguestfs.org/supermin/5.2-stable/supermin-5.2.2.tar.gz
+Source1:        https://download.libguestfs.org/supermin/5.2-stable/supermin-5.2.2.tar.gz.sig
 Source9:        supermin.keyring
 # Pending upstream review
-Patch0:         Avoid-lstat-Value-too-large-for-defined-data-type.patch
 Patch10:        suse_release.patch
 Patch11:        supermin-kernel_version_compressed.patch
 Patch12:        disable-test-if-newer-ext2.patch
@@ -63,10 +62,8 @@ Requires:       xmlstarlet
 Requires:       zypper
 Provides:       febootstrap
 %{?ocaml_preserve_bytecode}
-%if "%{?_ignore_exclusive_arch}" == ""
 # this must follow libguestfs, which is the only consumer of this pkg
-ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64 riscv64
-%endif
+ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64
 
 %description
 supermin is a tool for building supermin appliances. These are tiny

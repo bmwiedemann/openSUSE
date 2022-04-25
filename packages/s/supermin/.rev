@@ -127,4 +127,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>962538</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5025dae5dcef4e0b36b3bc64c3b4487f</srcmd5>
+    <version>5.2.2</version>
+    <time>1650922582</time>
+    <user>dimstar_suse</user>
+    <comment>Update to supermin version 5.2.2</comment>
+    <requestid>972720</requestid>
+  </revision>
 </revisionlist>

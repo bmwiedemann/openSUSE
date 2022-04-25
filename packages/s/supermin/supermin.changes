@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Apr 25 13:03:38 MDT 2022 - carnold@suse.com
+
+- Update to 5.2.2 bug fix release
+  * Open Unix.LargeFile to avoid "lstat: Value too large for
+    defined data type"
+  * pacman: Skip over detached signatures when unpacking
+  * ext2, rpm: Don't redefine Val_none or Some_val.
+  * Don't attempt to build man page if perldoc is not available
+  * Ignore zfcpdump kernel on s390x
+  * Ignore unbootable kernels in /lib/modules
+  * Ignore debug kernels
+  * maintainer: Add our usual maintainer rules
+- Drop
+  Avoid-lstat-Value-too-large-for-defined-data-type.patch
+
+-------------------------------------------------------------------
 Mon Mar  7 14:54:48 MST 2022 - carnold@suse.com
 
 - bsc#1187532 - virt-make-fs hangs forever
