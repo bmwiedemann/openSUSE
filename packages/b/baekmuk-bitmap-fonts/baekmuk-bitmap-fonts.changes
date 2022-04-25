@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Apr 23 00:19:36 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to upstream version 2.2
+  * No changelog available
+- Use SourceURL
+- Drop coditional parts of SPEC file for outdated versions
+- Add baekmuk-bdf-fonts-fix-fonts-alias.patch
+
+-------------------------------------------------------------------
+Fri Dec 18 12:47:15 UTC 2020 - Thomas Schraitle <thomas.schraitle@suse.com>
+
+- Create new 2.1.1 release
+- Fix bsc#1178540, download new archive
+  Replace buggy version 2.0 post tables with version 3.0 ones, which
+  indicate that the font doesn’t contain glyph names. This is common
+  for CJK fonts that are accessed by character code only.
+
+- Apply spec-cleaner
+
+-------------------------------------------------------------------
 Sat Apr 29 15:31:59 UTC 2017 - bwiedemann@suse.com
 
 - call gzip -n to make build fully reproducible
