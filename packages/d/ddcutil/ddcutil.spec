@@ -1,7 +1,7 @@
 #
 # spec file for package ddcutil
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,11 +50,13 @@ effect, e.g. red gain.  ddcutil allows color related settings to be saved at
 the time a monitor is calibrated, and then restored when the calibration is
 applied.
 
-%package -n libddcutil3
+%package -n libddcutil4
 Summary:        Shared library to query and update monitor settings
 Group:          System/Libraries
+# libddcutil.so.4 was wrongly packaged as libddcutil3 after the 1.x upgrade
+Conflicts:      libddcutil3 >= 1.0
 
-%description -n libddcutil3
+%description -n libddcutil4
 Shared library version of ddcutil, exposing a C API.
 
 ddcutil communicates with monitors implementing MCCS (Monitor Control Command
@@ -64,7 +66,7 @@ Device on USB.
 %package -n libddcutil-devel
 Summary:        Development files for libddcutil
 Group:          Development/Libraries/C and C++
-Requires:       libddcutil3 = %{version}
+Requires:       libddcutil4 = %{version}
 
 %description -n libddcutil-devel
 Header files and pkgconfig control file for libddcutil.
@@ -84,8 +86,8 @@ make %{?_smp_mflags} check
 %install
 %make_install
 
-%post   -n libddcutil3 -p /sbin/ldconfig
-%postun -n libddcutil3 -p /sbin/ldconfig
+%post   -n libddcutil4 -p /sbin/ldconfig
+%postun -n libddcutil4 -p /sbin/ldconfig
 
 %files
 %doc AUTHORS NEWS.md README.md CHANGELOG.md
@@ -97,9 +99,9 @@ make %{?_smp_mflags} check
 %{_mandir}/man1/ddcutil.1*
 %{_bindir}/ddcutil
 
-%files -n libddcutil3
+%files -n libddcutil4
 %license COPYING
-%{_libdir}/libddcutil.so.*
+%{_libdir}/libddcutil.so.4*
 
 %files -n libddcutil-devel
 %{_includedir}/ddcutil_types.h
