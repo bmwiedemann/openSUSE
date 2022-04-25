@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 13 03:07:41 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.999830
+   see /usr/share/doc/packages/perl-Math-BigInt/CHANGES
+
+  1.999830 2022-04-11
+
+   * Improve upgrading and downgrading. This work is not complete. Some methods
+     still don't downgrade when they should.
+
+-------------------------------------------------------------------
 Sat Jan  1 03:06:57 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.999829
