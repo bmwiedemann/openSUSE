@@ -579,4 +579,12 @@
     <comment></comment>
     <requestid>954390</requestid>
   </revision>
+  <revision rev="72" vrev="3">
+    <srcmd5>94ca5b99725939ddb86b1859deec6e01</srcmd5>
+    <version>2021.0.0</version>
+    <time>1650922538</time>
+    <user>dimstar_suse</user>
+    <comment>- Also set CMAKE_SKIP_INSTALL_RPATH=OFF (boo#1198785) (forwarded request 972527 from favogt)</comment>
+    <requestid>972541</requestid>
+  </revision>
 </revisionlist>

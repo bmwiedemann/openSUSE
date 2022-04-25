@@ -99,6 +99,7 @@ rm CMakeModules/FindZLIB.cmake
 	-DENABLE_LAPACK=%{?with_lapack:ON}%{!?with_lapack:OFF} \
 	-DBUILD_HSI=%{?with_hsi:ON}%{!?with_hsi:OFF} \
 	-DCMAKE_SKIP_RPATH:BOOL=OFF \
+	-DCMAKE_SKIP_INSTALL_RPATH:BOOL=OFF \
 	-DBUILD_WITH_EGL:BOOL=%{?with_egl:ON}%{!?with_egl:OFF} \
         -DUSE_GDKBACKEND_X11:BOOL=%{?with_egl:OFF}%{!?with_egl:ON}
 
