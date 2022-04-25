@@ -1176,4 +1176,19 @@ then, coreutils doesn't need this patch from the kernel v4.10-rc1. (forwarded re
     <comment>QA issues found/fixed</comment>
     <requestid>930890</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>af347331fa2464af324658e44b6eea74</srcmd5>
+    <version>9.1</version>
+    <time>1650924032</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>972506</requestid>
+  </revision>
+  <revision rev="144" vrev="3">
+    <srcmd5>2fdd7ab0eb22860a53f10e4cbb106252</srcmd5>
+    <version>9.0</version>
+    <time>1650924200</time>
+    <user>dimstar_suse</user>
+    <comment>disabled in rings? Somebody is kidding me; REVERT</comment>
+  </revision>
 </revisionlist>
