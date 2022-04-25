@@ -1,8 +1,8 @@
 #
 # spec file for package embree
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2019-2020 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2019-2022 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           embree
-Version:        3.13.2
+Version:        3.13.3
 Release:        0
 Summary:        Ray Tracing Kernels
 License:        Apache-2.0
