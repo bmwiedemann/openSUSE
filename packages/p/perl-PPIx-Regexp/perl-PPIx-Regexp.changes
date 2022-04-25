@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 17 03:06:30 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.085
+   see /usr/share/doc/packages/perl-PPIx-Regexp/Changes
+
+  0.085		2022-04-16	T. R. Wyant
+      Remove 'postderef' argument to PPIx::Regexp->new().  Postfix
+      dereference is always recognized.
+
+-------------------------------------------------------------------
 Wed Apr  6 03:13:41 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.084
