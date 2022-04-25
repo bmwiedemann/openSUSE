@@ -17,7 +17,7 @@
 
 
 Name:           epy
-Version:        2022.1.8+git.1641653565.c1f9b4e
+Version:        2022.4.18+git.1650237821.50dd4fa
 Release:        0
 Summary:        CLI ebook reader
 License:        GPL-3.0-only
@@ -25,12 +25,18 @@ URL:            https://github.com/wustho/epy
 # Source:         https://files.pythonhosted.org/packages/source/e/epy-reader/epy-reader-%%{version}.tar.gz#/epy-%%{version}.tar.gz
 Source:         epy-%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  python3-curses
 BuildRequires:  python3-mobi
+BuildRequires:  python3-pip
+BuildRequires:  python3-poetry-core
+BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
+Requires:       python3-curses
 Requires:       python3-mobi
-Suggests:       sdcv
 Suggests:       dictd
 Suggests:       mimic
+Suggests:       sdcv
 BuildArch:      noarch
 
 %description
@@ -45,7 +51,8 @@ CLI Ebook reader. Fork of epr with these extra features:
     Reading progress percentage
     Bookmarks
     External dictionary integration (sdcv or dict)
-    Inline formats: bold and italic (depend on terminal and font capability. Italic only supported in python>=3.7)
+    Inline formats: bold and italic (depend on terminal and font
+        capability. Italic only supported in python>=3.7)
     Text-to-Speech (with additional setup)
     Double Spread
 
@@ -53,13 +60,23 @@ CLI Ebook reader. Fork of epr with these extra features:
 %autosetup -p1 -n epy-%{version}
 
 # All those shebangs are just harmful
-find . -name \*.py -exec sed -i "1{/#!\/usr\/bin\/env python/d}" '{}' \;
+find . -name \*.py -print0 | while IFS= read -r -d $'\0' script; do
+    sed -i "1{/#!\s*\/usr\/bin\/\(env \)\?python/d}" "$script"
+    chmod -x "$script"
+done
 
 %build
-python3 setup.py build
+python3 -mpip wheel --no-deps --disable-pip-version-check --use-pep517 \
+    --no-build-isolation --progress-bar off --verbose . -w build/
 
 %install
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+python3 -mpip install --root %{buildroot} --no-warn-script-location \
+    --disable-pip-version-check --no-compile --no-deps --progress-bar off \
+    build/epy_reader-*-py3-none-any.whl
+
+%check
+export PYTHONPATH=%{buildroot}/%{python3_sitelib}
+pytest -v tests
 
 %files
 %doc README.md

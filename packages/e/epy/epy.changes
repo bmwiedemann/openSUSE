@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Apr 25 07:37:33 UTC 2022 - mcepl@cepl.eu
+
+- Update to version 2022.4.18+git.1650237821.50dd4fa:
+  * Bugfix #57: Unresolved relative path for epub contents
+  * Update dev env configurations
+  * Add wkdict to supported dict backends
+  * docs: define word setup (#55)
+  * Add signal handler
+  * Breakdown parse_cli_args into its own method
+  * Remove body: from workflow
+  * Move sponsor to FUNDING
+  * Update changelog in README
+  * Add debugger on parallel letter counting process
+  * Fix process.join() issue for unstarted process
+  * Bugfix #51: Stop/prevent scrolling at the end of ebook
+  * Add 'force_wait' for letters counting process
+  * Add library menu
+  * Verbose loader
+  * Fixed url parser with pathlib.PurePosixPath
+  * CLI help interface
+  * More explicit 'content_path'
+  * Hotfix: image location reference issue
+  * Hotfix: url meta window issue and update version
+  * URL early support
+  * Improve cli help interface
+  * New implementation of cli args parser
+  * Restructured tests
+  * Add vim config
+- Run tests
+
+-------------------------------------------------------------------
 Sat Jan 08 23:30:07 UTC 2022 - mcepl@cepl.eu
 
 - Update to version 2022.1.8+git.1641653565.c1f9b4e:
