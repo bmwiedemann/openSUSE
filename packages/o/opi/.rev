@@ -306,4 +306,16 @@
 - Update .NET SDK to 6.0</comment>
     <requestid>972187</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>66319e5e5693ecc1ed8cf8fade0cd0ac</srcmd5>
+    <version>2.4.7</version>
+    <time>1650922539</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.4.7
+- Fix release script
+- Fix numbering in --help
+- Update README.md
+- Add release helper script</comment>
+    <requestid>972524</requestid>
+  </revision>
 </revisionlist>
