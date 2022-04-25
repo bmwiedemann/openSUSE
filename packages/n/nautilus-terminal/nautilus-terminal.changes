@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 22 21:03:09 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update version 4.0.4
+  * Disable terminal audible bell
+  * Fix a typo in the GSettings schema
+
+-------------------------------------------------------------------
 Thu Jul  1 12:05:09 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 4.0.2

@@ -1,7 +1,7 @@
 #
 # spec file for package nautilus-terminal
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nautilus-terminal
-Version:        4.0.2
+Version:        4.0.4
 Release:        0
 Summary:        A terminal embedded in Nautilus, the GNOME's file browser
 License:        GPL-3.0-only
