@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr 25 07:08:30 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 34daa53a.patch: gnome module: properly fallback to
+  gtk-update-icon-cache.
+
+-------------------------------------------------------------------
+Sat Apr 23 11:35:57 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.61.4:
+  * Fixes for the ninja backend
+  * Fixes for the rust module
+  * Fixes for the gnome module: Fix incorrect lookup of nonexistent
+    dependencies
+
+-------------------------------------------------------------------
 Tue Mar 15 14:31:51 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.61.3:
