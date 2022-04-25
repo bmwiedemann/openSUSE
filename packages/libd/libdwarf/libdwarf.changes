@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Apr 24 20:07:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.0:
+  * Removed the unused Dwarf_Error argument from dwarf_return_empty_pubnames()
+    as the function can only return DW_DLV_OK. dwarf_xu_header_free() renamed
+    to dwarf_dealloc_xu_header().  dwarf_gdbindex_free() renamed
+    to dwarf_dealloc_gdbindex(). dwarf_loc_head_c_dealloc renamed to
+    dwarf_dealloc_loc_head_c().
+  * dwarf_get_location_op_value_d() renamed to dwarf_get_location_op_value_c(),
+    and 3 pointless arguments removed. The dwarf_get_location_op_value_d
+    version and the three arguments were added for DWARF5 in libdwarf20210528
+    but the change was a mistake. Now reverted to the previous version.
+  * The .debug_names section interfaces have changed. Added
+    dwarf_dnames_offsets() to provide details of facts useful in problems
+    reading the section. dwarf_dnames_name() now does work
+    and the interface was changed to make it easier to use. 
+
+-------------------------------------------------------------------
 Mon Feb 21 11:11:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - replace symlink by directory with hardlinks (bsc#1196198) 

@@ -17,13 +17,13 @@
 
 
 Name:           libdwarf
-Version:        0.3.3
+Version:        0.4.0
 Release:        0
 Summary:        Access DWARF debugging information
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://prevanders.net/dwarf.html
-Source:         https://github.com/davea42/libdwarf-code/releases/download/libdwarf-%{version}/libdwarf-%{version}.tar.xz
+Source:         https://github.com/davea42/libdwarf-code/releases/download/v%{version}/libdwarf-%{version}.tar.xz
 BuildRequires:  binutils-devel
 BuildRequires:  libelf-devel
 
