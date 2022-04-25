@@ -1,7 +1,7 @@
 #
 # spec file for package tiptop
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,13 @@ Release:        0
 Summary:        Performance monitoring tool using hardware counters
 License:        GPL-2.0-only
 Group:          System/Monitoring
-URL:            https://tiptop.gforge.inria.fr/
-Source:         http://tiptop.gforge.inria.fr/releases/tiptop-%{version}.tar.gz
+URL:            https://team.inria.fr/pacap/software/tiptop/
+Source:         https://files.inria.fr/pacap/tiptop/tiptop-%{version}.tar.gz
+# Fresh config.guess and config.sub files
+# wget -O config.guess 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD'
+Source1:        config.guess
+# wget -O config.sub 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD'
+Source2:        config.sub
 # PATCH-FIX-UPSTREAM reproducible.patch by bmwiedemann - override build date and build host (boo#1047218, boo#1084909) - sent upstream via email
 Patch0:         reproducible.patch
 BuildRequires:  autoconf >= 2.68
@@ -42,6 +47,7 @@ hardware counters.
 %prep
 %setup -q
 %patch0 -p1
+cp %{SOURCE1} %{SOURCE2} .
 
 %build
 export HOSTNAME=reproducible-openSUSE

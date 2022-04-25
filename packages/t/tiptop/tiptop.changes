@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 24 14:09:48 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Add config.sub and config.guess files to sources in order to fix
+  generation of configure from configure.ac in Factory
+- Fetch the tarball using a working link, since the link from the
+  spec file times out
+
+-------------------------------------------------------------------
 Mon Jan  4 10:35:24 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to override build date and build host
