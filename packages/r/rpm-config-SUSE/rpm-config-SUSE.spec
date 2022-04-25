@@ -18,7 +18,7 @@
 
 
 Name:           rpm-config-SUSE
-Version:        20220414
+Version:        20220421
 Release:        0
 Summary:        SUSE specific RPM configuration files
 License:        GPL-2.0-or-later
@@ -57,6 +57,14 @@ sed -e 's/@suse_version@/%{?suse_version}%{!?suse_version:0}/' \
     -e '/@sle_version@/d' \
 %endif
   < suse_macros.in > suse_macros
+
+%if 0%{?is_opensuse}
+cat <<EOF > macros.d/macros.opensuse
+# trim binary changelogs to include roughly 3 years
+# maxnum,cuttime,minnum
+%%_binarychangelogtrim 0,$(date -d "Jan 1 UTC 3 years ago" +%s),10
+EOF
+%endif
 
 cat <<EOF > macros.d/macros.sbat
 # Common SBAT values for secure boot

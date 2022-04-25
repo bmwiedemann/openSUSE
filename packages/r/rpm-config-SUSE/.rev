@@ -214,4 +214,14 @@
   * Explain that rpm-config-SUSE covers also openSUSE</comment>
     <requestid>970158</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>51008d15b4080da0cae42566a2d0d467</srcmd5>
+    <version>20220421</version>
+    <time>1650924025</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220421:
+  * Automatically trim opensuse changelogs to the last 3 years
+  * use zstd for tarball compression</comment>
+    <requestid>971813</requestid>
+  </revision>
 </revisionlist>
