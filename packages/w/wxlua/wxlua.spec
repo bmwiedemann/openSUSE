@@ -1,7 +1,7 @@
 #
 # spec file for package wxlua
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define binds webview;gl;xrc;xml;net;media;propgrid;richtext;aui;stc;html;adv;core;base
 %define sover 3_1_0_0
 Name:           wxlua
@@ -27,7 +28,6 @@ URL:            https://github.com/pkulchenko/wxlua
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  ccache
 BuildRequires:  cmake >= 2.8
-BuildRequires:  cppcheck
 BuildRequires:  desktop-file-utils
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
@@ -101,7 +101,6 @@ the Lua programming language. Nearly all of the functionality of wxWidgets is
 exposed to Lua, meaning that your programs can have windows, dialogs, menus,
 toolbars, controls, image loading and saving, drawing, sockets, streams,
 printing, clipboard access... and much more.
-
 
 %package devel
 Summary:        Development files of lib%{name}

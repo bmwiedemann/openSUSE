@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 25 10:55:05 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop cppcheck Buildrequires: seems not to be used.
+
+-------------------------------------------------------------------
 Wed Apr 21 13:11:01 UTC 2021 - gmbr3@opensuse.org
 
 - Update to version 3.1.0.0+27:
