@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Apr 25 08:23:26 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.2:
+  bugfixes:
+  * fix buffer overflow in audio buffer when calling reset_buffer
+    (used in fifo input)
+  * cavacore: fix segfault when setting 0Hz lower cut off
+  * framerate <= 1 msec wait was multiplied by 1000 instead of divided
+    improvements:
+  * cavacore: don't print to stdout or call exit, use error status
+    flag in cava_plan instead
+  * cavacore: add extern C construct for c++ compilers
+  * add license in cavacore header file
+  * remove build dependency on xxd, use incbin instead
+
+-------------------------------------------------------------------
+Wed Apr 20 18:58:45 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.1:
+  * fix critical bug where default config value caused always maxed
+    out bars #447
+
+-------------------------------------------------------------------
+Tue Apr 12 07:14:57 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.0:
+  breaking changes:
+  * split out core functionality in separate library cavacore
+    see CAVACORE.md for details
+  * removed ignore config option
+  * merge gravity and integral config option to "noise reduction"
+  improvements:
+  * use double precision all the way, improves details in visualization.
+  * increase buffer sizes for large sample rates 96k++
+  * noise filters should now scale better with resolution and framerate
+  * embed default config file and populate on first launch instead of installing it
+  * Add new output format, noritake VFD bitmap
+  bugfixes:
+  * fixed some potential buffer overflows
+  * fix some bugs in sdl output
+
+-------------------------------------------------------------------
 Tue Feb  1 13:18:53 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.7.5:
