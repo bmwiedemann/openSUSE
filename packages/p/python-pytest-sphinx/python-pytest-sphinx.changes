@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 25 06:23:43 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.4.0
+  * Drop python2.7 (Fixes #14)
+  * Drop python3.5 and python3.6
+  * Require pytest>=7.0
+
+-------------------------------------------------------------------
 Fri Aug 21 12:55:42 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.3.1
