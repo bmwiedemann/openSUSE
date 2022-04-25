@@ -2,7 +2,7 @@
 #
 # spec file for package faenza-icon-theme
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011 PAscal Bleser
 # Copyright (c) 2010 Nelson Marques
 #
@@ -20,24 +20,20 @@
 
 
 Name:           faenza-icon-theme
-Version:        1.3
+Version:        1.3.1
 Release:        0
 Summary:        Faenza Icon Theme
 License:        GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            http://tiheum.deviantart.com/art/Faenza-Icons-173323228
-## http://www.deviantart.com/download/173323228/faenza_icons_by_tiheum-d2v6x24.zip
-Source0:        https://faenza-icon-theme.googlecode.com/files/%{name}_%{version}.zip
+Source0:        http://ppa.launchpad.net/tiheum/equinox/ubuntu/pool/main/f/%{name}/%{name}_%{version}.tar.gz
 Source1:        http://gnome-look.org/CONTENT/content-files/132681-Faenza-Mint.tar.gz
 # script to rebrand and install stuff...
 Source2:        faenza-install
 BuildRequires:  fdupes
 BuildRequires:  python3-base
-%if 0%{?suse_version}
 # For all the icon themes macros
 BuildRequires:  hicolor-icon-theme
-%endif
-BuildRequires:  unzip
 # Inherits from GNOME icon theme
 Requires:       gnome-icon-theme
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -113,11 +109,7 @@ toolbars and buttons and colourful squared icons for devices,
 applications, folder, files and GNOME menu items.
 
 %prep
-%setup -q -c "%{name}-%{version}" -a 1
-
-for f in Faenza*.tar.gz; do
-    tar xzf "$f"
-done
+%setup -q -n %{name}-1.3 -a 1
 
 %build
 
@@ -126,7 +118,6 @@ python3 %{S:2} --install %{buildroot}%{_datadir}/icons/
 %fdupes %{buildroot}%{_datadir}/icons
 find %{buildroot}%{_datadir}/icons -type f -exec chmod 0644 {} \;
 
-%if 0%{?suse_version} > 1130
 %icon_theme_cache_create_ghost Faenza
 %icon_theme_cache_create_ghost Faenza-Ambiance
 %icon_theme_cache_create_ghost Faenza-Dark
@@ -134,11 +125,8 @@ find %{buildroot}%{_datadir}/icons -type f -exec chmod 0644 {} \;
 %icon_theme_cache_create_ghost Faenza-Darkest
 %icon_theme_cache_create_ghost Faenza-Radiance
 %icon_theme_cache_create_ghost Faenza-Mint
-%endif
 
-%if 0%{?suse_version} > 1130
 # No need for %%icon_theme_cache_postun in %%postun since the themes won't exist anymore
-
 %post
 %icon_theme_cache_post Faenza
 
@@ -159,56 +147,41 @@ find %{buildroot}%{_datadir}/icons -type f -exec chmod 0644 {} \;
 
 %post mint
 %icon_theme_cache_post Faenza-Mint
-%endif
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING README
+%doc debian/changelog debian/copyright
 %{_datadir}/icons/Faenza
-%if 0%{?suse_version} > 1130
 %ghost %{_datadir}/icons/Faenza/icon-theme.cache
-%endif
 
 %files ambiance
 %defattr(-,root,root)
 %{_datadir}/icons/Faenza-Ambiance
-%if 0%{?suse_version} > 1130
 %ghost %{_datadir}/icons/Faenza-Ambiance/icon-theme.cache
-%endif
 
 %files dark
 %defattr(-,root,root)
 %{_datadir}/icons/Faenza-Dark
-%if 0%{?suse_version} > 1130
 %ghost %{_datadir}/icons/Faenza-Dark/icon-theme.cache
-%endif
 
 %files darker
 %defattr(-,root,root)
 %{_datadir}/icons/Faenza-Darker
-%if 0%{?suse_version} > 1130
 %ghost %{_datadir}/icons/Faenza-Darker/icon-theme.cache
-%endif
 
 %files darkest
 %defattr(-,root,root)
 %{_datadir}/icons/Faenza-Darkest
-%if 0%{?suse_version} > 1130
 %ghost %{_datadir}/icons/Faenza-Darkest/icon-theme.cache
-%endif
 
 %files radiance
 %defattr(-,root,root)
 %{_datadir}/icons/Faenza-Radiance
-%if 0%{?suse_version} > 1130
 %ghost %{_datadir}/icons/Faenza-Radiance/icon-theme.cache
-%endif
 
 %files mint
 %defattr(-,root,root)
 %{_datadir}/icons/Faenza-Mint
-%if 0%{?suse_version} > 1130
 %ghost %{_datadir}/icons/Faenza-Mint/icon-theme.cache
-%endif
 
 %changelog
