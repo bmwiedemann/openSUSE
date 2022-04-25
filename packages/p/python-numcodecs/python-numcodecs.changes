@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 25 11:13:12 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Disable AVX2 to make package build reproducible (boo#1198818)
+
+-------------------------------------------------------------------
 Sat Apr 17 14:41:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to v0.7.3

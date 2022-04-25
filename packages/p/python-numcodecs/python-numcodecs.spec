@@ -59,6 +59,7 @@ rm -r c-blosc
 
 %build
 export CFLAGS="%{optflags}"
+export DISABLE_NUMCODECS_AVX2=1
 %python_build
 
 %install
