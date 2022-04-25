@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 23 16:49:56 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 7.7 development release
+  - More progress on the PE conversion of the X11 and OSS drivers.                                                                            
+  - Support for UTF-8 as default Ansi codepage.                                                                                               
+  - Theming support for control panel applets.                                                                                                
+  - Various bug fixes.                                                                                                                        
+- update staging to 7.7 release
+
+-------------------------------------------------------------------
 Wed Apr 13 07:32:06 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on aarch64 - boo#1197233

@@ -4411,4 +4411,17 @@
     <comment>- Fix build on aarch64 - boo#1197233 (forwarded request 969860 from Guillaume_G)</comment>
     <requestid>969865</requestid>
   </revision>
+  <revision rev="376" vrev="1">
+    <srcmd5>a6ebf9cdf41bee1539994b00d8b1dae2</srcmd5>
+    <version>7.7</version>
+    <time>1650922541</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.7 development release
+  - More progress on the PE conversion of the X11 and OSS drivers.                                                                            
+  - Support for UTF-8 as default Ansi codepage.                                                                                               
+  - Theming support for control panel applets.                                                                                                
+  - Various bug fixes.                                                                                                                        
+- update staging to 7.7 release</comment>
+    <requestid>972560</requestid>
+  </revision>
 </revisionlist>
