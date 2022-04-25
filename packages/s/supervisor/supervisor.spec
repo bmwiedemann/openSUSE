@@ -1,7 +1,7 @@
 #
 # spec file for package supervisor
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           supervisor
-Version:        4.1.0
+Version:        4.2.4
 Release:        0
 Summary:        A system for controlling process state under UNIX
 License:        SUSE-Repoze
@@ -28,7 +28,6 @@ Source2:        supervisord.conf
 Source3:        supervisord.service
 Source4:        supervisord-tmpfiles.conf
 BuildRequires:  fdupes
-BuildRequires:  python3-mock >= 0.5.0
 BuildRequires:  python3-pytest
 BuildRequires:  python3-rpm-macros
 BuildRequires:  python3-setuptools

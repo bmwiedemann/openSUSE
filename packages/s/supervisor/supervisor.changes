@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Mon Apr 25 09:50:14 UTC 2022 - pgajdos@suse.com
+
+- version update to 4.2.4
+  4.2.4 (2021-12-30)
+  ------------------
+  - Fixed a bug where the ``--identifier`` command line argument was ignored.
+    It was broken since at least 3.0a7 (released in 2009) and probably earlier.
+    Patch by Julien Le Cléach.
+  4.2.3 (2021-12-27)
+  ------------------
+  - Fixed a race condition where an ``rpcinterface`` extension that subscribed
+    to events would not see the correct process state if it accessed the
+    the ``state`` attribute on a ``Subprocess`` instance immediately in the
+    event callback.  Patch by Chao Wang.
+  - Added the ``setuptools`` package to the list of dependencies in
+    ``setup.py`` because it is a runtime dependency.  Patch by Louis Sautier.
+  - The web interface will now return a 404 Not Found response if a log file
+    is missing.  Previously, it would return 410 Gone.  It was changed because
+    410 is intended to mean that the condition is likely to be permanent.  A
+    log file missing is usually temporary, e.g. a process that was never started
+    will not have a log file but will have one as soon as it is started.
+  4.2.2 (2021-02-26)
+  ------------------
+  - Fixed a bug where ``supervisord`` could crash if a subprocess exited
+    immediately before trying to kill it.
+  - Fixed a bug where the ``stdout_syslog`` and ``stderr_syslog`` options
+    of a ``[program:x]`` section could not be used unless file logging for
+    the same program had also been configured.  The file and syslog options
+    can now be used independently.  Patch by Scott Stroupe.
+  - Fixed a bug where the ``logfile`` option in the ``[supervisord]``
+    section would not log to syslog when the special filename of
+    ``syslog`` was supplied, as is supported by all other log filename
+    options.  Patch by Franck Cuny.
+  - Fixed a bug where environment variables defined in ``environment=``
+    in the ``[supervisord]`` section or a ``[program:x]`` section could
+    not be used in ``%(ENV_x)s`` expansions.  Patch by MythRen.
+  - The  ``supervisorctl signal`` command now allows a signal to be sent
+    when a process is in the ``STOPPING`` state.  Patch by Mike Gould.
+  - ``supervisorctl`` and ``supervisord`` now print help when given ``-?``
+    in addition to the existing ``-h``/``--help``.
+  4.2.1 (2020-08-20)
+  ------------------
+  - Fixed a bug on Python 3 where a network error could cause ``supervisord``
+    to crash with the error ``<class 'TypeError'>:can't concat str to bytes``.
+    Patch by Vinay Sajip.
+  - Fixed a bug where a test would fail on systems with glibc 2.3.1 because
+    the default value of SOMAXCONN changed.
+  4.2.0 (2020-04-30)
+  ------------------
+  - When ``supervisord`` is run in the foreground, a new ``--silent`` option
+    suppresses the main log from being echoed to ``stdout`` as it normally
+    would.  Patch by Trevor Foster.
+  - Parsing ``command=`` now supports a new expansion, ``%(numprocs)d``, that
+    expands to the value of ``numprocs=`` in the same section.  Patch by
+    Santjago Corkez.
+  - Web UI buttons no longer use background images.  Patch by Dmytro Karpovych.
+  - The Web UI now has a link to view ``tail -f stderr`` for a process in
+    addition to the existing ``tail -f stdout`` link.  Based on a
+    patch by OuroborosCoding.
+  - The HTTP server will now send an ``X-Accel-Buffering: no`` header in
+    logtail responses to fix Nginx proxy buffering.  Patch by Weizhao Li.
+  - When ``supervisord`` reaps an unknown PID, it will now log a description
+    of the ``waitpid`` status.  Patch by Andrey Zelenchuk.
+  - Fixed a bug introduced in 4.0.3 where ``supervisorctl tail -f foo | grep bar``
+    would fail with the error ``NoneType object has no attribute 'lower'``.  This
+    only occurred on Python 2.7 and only when piped.  Patch by Slawa Pidgorny.
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Wed Nov 24 10:05:12 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
