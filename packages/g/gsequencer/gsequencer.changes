@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 25 06:12:38 UTC 2022 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.19.0 fixed potential SIGSEGV with
+  AgsExportWindow.
+- Show PDF handbook instead of HTML in gsequencer.
+- New dependency poppler-glib.
+- Removed dependency webkit2gtk-4.0.
+
+-------------------------------------------------------------------
 Tue Feb 22 12:25:41 UTC 2022 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.18.2 implemented AgsMetaDataWindow and hamburger

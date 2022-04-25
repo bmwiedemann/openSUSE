@@ -22,17 +22,22 @@
 # activated with --with run_functional_tests command line switch.
 %bcond_with run_functional_tests
 Name:           gsequencer
-Version:        3.18.2
+Version:        3.19.0
 Release:        0
 Summary:        Audio processing engine
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND GFDL-1.3-only
 Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://nongnu.org/gsequencer
-Source0:        https://download.savannah.gnu.org/releases/gsequencer/3.18.x/%{name}-%{version}.tar.gz
+Source0:        https://download.savannah.gnu.org/releases/gsequencer/3.19.x/%{name}-%{version}.tar.gz
 # improve glib-2.0 compatibility to version 2.54
 Patch1:         gsequencer.1-improved-glib-compatibility.patch
 BuildRequires:  gcc-c++
 BuildRequires:  cunit-devel
+BuildRequires:  dblatex
+BuildRequires:  texlive-latex
+BuildRequires:  texlive-fancybox
+BuildRequires:  texlive-collection-fontsrecommended
+BuildRequires:  texlive-jknapltx
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  dssi-devel
@@ -61,13 +66,13 @@ BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libinstpatch-1.0)
+BuildRequires:  pkgconfig(poppler-glib)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(uuid)
-BuildRequires:  pkgconfig(webkit2gtk-4.0)
 
 %description
 Advanced Gtk+ Sequencer is an audio
@@ -93,7 +98,7 @@ export LIBAGS_SERVER_CPPFLAGS='-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-secur
 #export LIBAGS_VST3_LIBS="-L/usr/%{_lib}/vst3sdk"
 export LIBAGS_AUDIO_CPPFLAGS='-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security'
 export LIBAGS_GUI_CPPFLAGS='-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security'
-export LIBGSEQUENCER_CPPFLAGS='-DAGS_CSS_FILENAME=\"'%{_datadir}'/gsequencer/styles/ags.css\" -DAGS_ANIMATION_FILENAME=\"'%{_datadir}'/gsequencer/images/gsequencer-800x450.png\" -DAGS_LOGO_FILENAME=\"'%{_datadir}'/gsequencer/images/ags.png\" -DAGS_LICENSE_FILENAME=\"'%{_datadir}'/licenses/gsequencer/COPYING\" -DAGS_ONLINE_HELP_START_FILENAME=\"file://'%{_docdir}'/gsequencer/html/index.html/\" -DAGS_REDUCE_RT_EVENTS=1 -DAGS_LIBRARY_SUFFIX=\".so\" -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security'
+export LIBGSEQUENCER_CPPFLAGS='-DAGS_CSS_FILENAME=\"'%{_datadir}'/gsequencer/styles/ags.css\" -DAGS_ANIMATION_FILENAME=\"'%{_datadir}'/gsequencer/images/gsequencer-800x450.png\" -DAGS_LOGO_FILENAME=\"'%{_datadir}'/gsequencer/images/ags.png\" -DAGS_LICENSE_FILENAME=\"'%{_datadir}'/licenses/gsequencer/COPYING\" -DAGS_ONLINE_HELP_PDF_FILENAME=\"'%{_docdir}'/gsequencer/pdf/user-manual.pdf\" -DAGS_REDUCE_RT_EVENTS=1 -DAGS_LIBRARY_SUFFIX=\".so\" -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security'
 #NOTE:JK: no --enable-vst3 passed to configure
 %configure \
 %if %{with run_functional_tests}
@@ -104,6 +109,7 @@ export LIBGSEQUENCER_CPPFLAGS='-DAGS_CSS_FILENAME=\"'%{_datadir}'/gsequencer/sty
 %make_build all
 %make_build html
 %make_build fix-local-html
+%make_build pdf
 
 %install
 %make_install
@@ -111,6 +117,8 @@ export LIBGSEQUENCER_CPPFLAGS='-DAGS_CSS_FILENAME=\"'%{_datadir}'/gsequencer/sty
 %make_install install-html-mkdir
 %make_install install-html-mkdir-links
 %make_install install-html
+%make_install install-pdf-mkdir
+%make_install install-pdf
 find %{buildroot} -type f -name "*.la" -delete -print
 rm -rf %{buildroot}%{_datadir}/doc-base/
 mkdir -p %{buildroot}%{_datadir}/doc/packages
@@ -130,6 +138,7 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/gsequencer.desktop
 %{_datadir}/gsequencer/
 %{_datadir}/xml/gsequencer/
 %{_docdir}/gsequencer/
+%{_docdir}/gsequencer/pdf/user-manual.pdf
 %{_datadir}/applications/gsequencer.desktop
 %{_datadir}/icons/hicolor/*/apps/gsequencer.png
 %{_datadir}/icons/hicolor/scalable/apps/gsequencer.svg
