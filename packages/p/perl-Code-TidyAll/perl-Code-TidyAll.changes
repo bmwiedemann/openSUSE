@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Apr 16 03:06:08 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.82
+   see /usr/share/doc/packages/perl-Code-TidyAll/Changes
+
+  0.82     2022-04-15
+
+  - Fixed git tests to ignore local Git configuration files, which may cause the
+    tests to fail. Implemented by Andreas Vögele. GH #109.
+
+  - The git tests nor run with LC_ALL set to C. Implemented by Andreas
+    Vögele. GH #109.
+
+-------------------------------------------------------------------
 Fri Feb 18 03:06:12 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.81
