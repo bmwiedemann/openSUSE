@@ -224,4 +224,17 @@
   * [unfiled] Correctly label new functions since 1.10</comment>
     <requestid>966791</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6cda0167effd0d606b939b04ba075398</srcmd5>
+    <version>1.10.2</version>
+    <time>1650922526</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.2:
+  * Added disclosure guidelines in SECURITY.md
+  * Fix huntr.dev: Null pointer dereference in libnsgif with crafted GIF file
+  * [unfiled] File magic would not effectively rule out internal loaders.
+  * [unfiled] Very big images could cause absurd allocation requests
+    triggering an abort in the loader.</comment>
+    <requestid>972507</requestid>
+  </revision>
 </revisionlist>

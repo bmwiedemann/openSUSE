@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 25 08:21:26 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.10.2:
+  * Added disclosure guidelines in SECURITY.md
+  * Fix huntr.dev: Null pointer dereference in libnsgif with crafted GIF file
+  * [unfiled] File magic would not effectively rule out internal loaders.
+  * [unfiled] Very big images could cause absurd allocation requests
+    triggering an abort in the loader.
+
+-------------------------------------------------------------------
 Mon Apr  4 10:37:27 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.10.1:
