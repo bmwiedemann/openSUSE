@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 22 16:49:40 CEST 2022 - hare@suse.de
+
+- Version bump to 1.7 (bsc#1198760). Some changes are
+  * Update authentication to support TLS and AMT 11.0.
+  * Add amtider tool to support IDE-redirection
+  * add note for newer machines to amtterm manpage
+  * fix memory leak
+  * fix typo in man page
+
+-------------------------------------------------------------------
 Mon Jul 23 13:31:44 UTC 2018 - mchandras@suse.de
 
 - Version bump to 1.6. Some of the changes are
