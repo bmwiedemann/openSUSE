@@ -3750,4 +3750,13 @@ oddjob-gpupdate isn't blocked)</comment>
   * Remove FIXME as we have a test for it.</comment>
     <requestid>970862</requestid>
   </revision>
+  <revision rev="397" vrev="1">
+    <srcmd5>ee0738d46d347fe0b5bbb061bef51b43</srcmd5>
+    <version>2.2.0+git20220422.43144bd</version>
+    <time>1650924032</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git20220422.43144bd:
+  * Improve executable-stack error.</comment>
+    <requestid>972286</requestid>
+  </revision>
 </revisionlist>
