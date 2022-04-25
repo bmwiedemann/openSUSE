@@ -19,7 +19,7 @@
 %define pkg_libname libaccel-config1
 %define src_name idxd-config-accel-config-v%{version}
 Name:           accel-config
-Version:        3.4.6.2
+Version:        3.4.6.3
 Release:        0
 Summary:        Configure accelerator subsystem devices
 License:        GPL-2.0-only
