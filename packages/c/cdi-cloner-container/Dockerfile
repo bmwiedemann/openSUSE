@@ -21,6 +21,7 @@ PREFIXEDLABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/cdi-cloner:%%PK
 
 RUN zypper -n install \
            containerized-data-importer-cloner \
+           tar \
            util-linux && \
     zypper clean -a
 
