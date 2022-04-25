@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr  8 00:24:32 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
+
+- Updated to version 16.0.42
+   + Build
+     - configure.ac: Update for 16.0.42
+     - data/gnome-radio.desktop.in.in: Update for 16.0.42
+     - data/gnome-radio.desktop.in: Update for 16.0.42
+     - data/screenshot.png: Update for 16.0.42
+     - gnome-radio.doap: Update for 16.0.42
+     - gnome-radio.spec.in: Update for 16.0.42
+   + XML: src/gnome-radio.xml: Update for 16.0.42
+
+-------------------------------------------------------------------
 Thu Mar 31 14:10:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 16.0.6:
