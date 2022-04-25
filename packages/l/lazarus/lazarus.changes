@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Apr 23 10:57:00 UTC 2022 - PragmaticLinux <info@pragmaticlinux.com>
+
+- Skip removing duplicates with fdupes. It removes important files,
+  causing "unit not found errors" during application development
+  (bug 1197651).
+- Corrected library directory in lazarus-Makefile_patch.diff.
+- Added creation of qt5 directory in lazarus-Makefile_patch.diff, 
+  needed when rebuilding the IDE using the QT5 widgetset.
+- Added gcc, make and binutils package requirements, needed when
+  the user rebuilds the IDE. 
+- Removed git ignore files to prevent version control files from 
+  being installed.
+- Fixed a few spurious executable permission RPM lint errors.
+- Cleaned up spec-file by removing support for obsolete distribution
+  versions.
+
+-------------------------------------------------------------------
 Wed Jan  5 11:56:21 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.2.0

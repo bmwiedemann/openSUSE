@@ -38,42 +38,27 @@ BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  fpc >= 3.0.0
 BuildRequires:  fpc-src >= 3.0.0
+Requires:       binutils
 Requires:       fpc
 Requires:       fpc-src
+Requires:       gcc
 Requires:       gdb
+Requires:       make
 Requires(post): desktop-file-utils
 Requires(post): shared-mime-info
 Requires(postun):desktop-file-utils
 Requires(postun):shared-mime-info
-%if 0%{?suse_version} > 1210
 BuildRequires:  desktop-file-utils
-%else
-BuildRequires:  update-desktop-files
-%endif
-%if 0%{?suse_version} >= 1140
 BuildRequires:  hicolor-icon-theme
-%endif
-%if 0%{?sles_version} == 11
-BuildRequires:  glib2-devel
-BuildRequires:  gtk2-devel
-%else
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gtk+-2.0)
-%endif
-%if 0%{?sle_version} >= 120200 || 0%{?suse_version} > 1320
 BuildRequires:  libqt5-qtbase-common-devel >= 5.6.0
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
-%endif
-%if 0%{?sles_version} == 11
-Requires:       glib2-devel
-Requires:       gtk2-devel
-%else
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gtk+-2.0)
 Requires:       pkgconfig(glib-2.0)
 Requires:       pkgconfig(gtk+-2.0)
-%endif
 
 %description
 Lazarus is a Rapid Application Development
@@ -127,15 +112,22 @@ dos2unix examples/trayicon/wndtray.*
 
 # fix rpmlint error "spurious-executable-perm"
 chmod 644 docs/booth/ProdProgEntwMitOpenSourceSystems2007.odp
+chmod 644 docs/html/build_lcl_chm.sh
+chmod 644 docs/xml/multi_makeskel.pl
+
+# reset source timestamps because they are embedded in compiled files
 if [ -n "$SOURCE_DATE_EPOCH" ] ; then
   datestr=$(date -u "-d@$SOURCE_DATE_EPOCH" +%Y/%m/%d)
   sed -i -e 's!{\$I %%date%%}!'"'$datestr'"'!' \
     ide/ideinfodlg.pas ide/aboutfrm.pas ide/idefpcinfo.pas
-  touch -d@"$SOURCE_DATE_EPOCH" ide/ideinfodlg.pas ide/aboutfrm.pas ide/idefpcinfo.pas # reset source timestamps because they are embedded in compiled files
+  touch -d@"$SOURCE_DATE_EPOCH" ide/ideinfodlg.pas ide/aboutfrm.pas ide/idefpcinfo.pas
 fi
 
 # fix shebang
 find . \( -name "*.sh" -o -name "*.pl" \) -exec sed -i '1s|#!%{_bindir}/env|%{_bindir}/|' {} +
+
+# remove git ignore files to prevent them from being installed to fix rpmlint error "version-control-internal-file"
+find . \( -name ".gitignore" \) -delete
 
 %build
 # Don't use -gs (use explicitly "stabs" debuginfo) for compiling lhelp but -g (use the default debuginfo type "dwarf") as in the rest of package's Makefiles
@@ -153,7 +145,6 @@ export LCL_PLATFORM=
 # build Qt4 interface
 make -C lcl/interfaces/qt all LCL_PLATFORM=qt OPT="-dQT_NATIVE_DIALOGS"
 
-%if 0%{?sle_version} >= 120200 || 0%{?suse_version} > 1320
 # build Qt5 interface
 make -C lcl/interfaces/qt5 all LCL_PLATFORM=qt5 OPT="-dQT_NATIVE_DIALOGS"
 
@@ -162,7 +153,6 @@ pushd lcl/interfaces/qt5/cbindings
 %qmake5
 make %{?_smp_mflags}
 popd
-%endif
 
 %install
 make install \
@@ -172,12 +162,10 @@ make install \
     LAZARUS_INSTALL_DIR=%{buildroot}%{_libdir}/%{name} \
     _LIB=%{_lib}
 
-%if 0%{?sle_version} >= 120200 || 0%{?suse_version} > 1320
 pushd lcl/interfaces/qt5/cbindings
 %qmake5_install
 install -Dpm 0644 qt5.pas %{buildroot}%{_datadir}/fpcsrc/packages/qt5/qt5.pas
 popd
-%endif
 
 # convenience links
 for f in lazarus lazbuild startlazarus; do
@@ -204,12 +192,7 @@ for f in 16 32 48 64 128 256; do
 done
 
 # menu-entry
-%if 0%{?suse_version} > 1210
 desktop-file-install install/lazarus.desktop
-%else
-install -Dpm 0644 install/lazarus.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
-%suse_update_desktop_file -n %{name} Development IDE
-%endif
 
 # mime info
 install -Dpm 0644 install/%{name}-mime.xml %{buildroot}%{_datadir}/mime/packages/%{name}.xml
@@ -225,33 +208,10 @@ sed <tools/install/linux/environmentoptions.xml -e "s#__LAZARUSDIR__#%{_libdir}/
 rm -rf %{buildroot}%{_libdir}/%{name}/install/man
 rm -f %{buildroot}%{_libdir}/%{name}/Makefile.fpc.orig
 rm -rf %{buildroot}%{_libdir}/%{name}/lcl/interfaces/qt5/cbindings
-%fdupes -s %{buildroot}
 
-%if 0%{?suse_version} <= 1320
-%post
-%if 0%{?suse_version} >= 1140
-%mime_database_post
-%icon_theme_cache_post
-%desktop_database_post
-%else
-%{_bindir}/update-mime-database %{_datadir}/mime &> /dev/null || :
-%endif
-
-%postun
-%if 0%{?suse_version} >= 1140
-%mime_database_postun
-%icon_theme_cache_postun
-%desktop_database_postun
-%else
-%{_bindir}/update-mime-database %{_datadir}/mime &> /dev/null || :
-%endif
-%endif
-
-%if 0%{?sle_version} >= 120200 || 0%{?suse_version} > 1320
 %post -n libQt5Pas%{sover} -p /sbin/ldconfig
 
 %postun -n libQt5Pas%{sover} -p /sbin/ldconfig
-%endif
 
 %files
 %defattr(-,root,root,-)
@@ -277,7 +237,6 @@ rm -rf %{buildroot}%{_libdir}/%{name}/lcl/interfaces/qt5/cbindings
 %dir %{_datadir}/appdata/
 %{_datadir}/appdata/%{name}.appdata.xml
 
-%if 0%{?sle_version} >= 120200 || 0%{?suse_version} > 1320
 %files -n libQt5Pas%{sover}
 %defattr(-,root,root,-)
 %license lcl/interfaces/qt5/cbindings/COPYING.TXT
@@ -291,6 +250,5 @@ rm -rf %{buildroot}%{_libdir}/%{name}/lcl/interfaces/qt5/cbindings
 %dir %{_datadir}/fpcsrc/packages/qt5
 %{_datadir}/fpcsrc/packages/qt5/qt5.pas
 %{_libdir}/libQt5Pas.so
-%endif
 
 %changelog

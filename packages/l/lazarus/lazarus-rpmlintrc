@@ -1,2 +1,4 @@
 addFilter("devel-file-in-non-devel-package .*/lazarus/components/codetools/examples/scanexamples/test.h")
 addFilter("devel-file-in-non-devel-package .*/lazarus/components/compilers/c/examples/test.c")
+# Do not use fdupes because a lot of duplicate files are actually needed when developing apps in Lazarus (bug 1197651).
+addFilter("files-duplicate")

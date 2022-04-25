@@ -7,7 +7,7 @@ Index: lazarus/Makefile.fpc
  [install]
  fpcpackage=n
 -basedir=share/lazarus
-+basedir=lib/lazarus
++basedir=$(_LIB)/lazarus
  
  [dist]
  destdir=$(BASEDIR)/dist
@@ -20,7 +20,7 @@ Index: lazarus/Makefile.fpc
  INSTALL_MAN_DIR=$(INSTALL_PREFIX)/share/man
  ifneq ($(findstring $(OS_TARGET),win32 win64),)
  LAZARUS_INSTALL_DIR=C:\lazarus
-@@ -271,8 +271,8 @@ installbase:
+@@ -287,8 +287,8 @@ installbase:
  ifneq ($(findstring $(OS_TARGET),win32 win64),)
  
  else
@@ -31,3 +31,11 @@ Index: lazarus/Makefile.fpc
  	$(MKDIR) $(INSTALL_PREFIX)/share/applications
  	$(MKDIR) $(INSTALL_PREFIX)/share/pixmaps
  	$(MKDIR) $(INSTALL_PREFIX)/share/mime/packages
+@@ -334,6 +334,7 @@ else
+ 	$(MKDIR) $(LAZARUS_INSTALL_DIR)/units/$(FULL_TARGET)/gtk
+ 	$(MKDIR) $(LAZARUS_INSTALL_DIR)/units/$(FULL_TARGET)/gtk2
+ 	$(MKDIR) $(LAZARUS_INSTALL_DIR)/units/$(FULL_TARGET)/qt
++	$(MKDIR) $(LAZARUS_INSTALL_DIR)/units/$(FULL_TARGET)/qt5
+ 	$(MKDIR) $(LAZARUS_INSTALL_DIR)/components/synedit/design/languages
+ endif
+ 
