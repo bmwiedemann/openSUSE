@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 25 10:43:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop cppcheck BuildRequires: it would only be used when
+  explicitly calling make cppcheck (which is not done;
+  additionally, cppcheck does not exist on all arches anymore)
+
+-------------------------------------------------------------------
 Tue Feb  1 13:13:23 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.7.3:

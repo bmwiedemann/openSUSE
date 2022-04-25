@@ -28,7 +28,6 @@ Patch0:         xdg-terminal.patch
 # Required version 0.11 is not yet in TW BuildRequires:  check-devel
 BuildRequires:  bison
 BuildRequires:  cairo-devel
-BuildRequires:  cppcheck
 BuildRequires:  flex >= 2.5.39
 BuildRequires:  libjpeg8-devel
 BuildRequires:  librsvg-devel
