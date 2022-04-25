@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 25 13:32:52 CEST 2022 - tiwai@suse.de
+
+- Drop superfluous dependency on kernel-firmware (bsc#1198795)
+
+-------------------------------------------------------------------
 Sun Mar 21 10:42:29 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix build on Leap which does not have %_firmwaredir

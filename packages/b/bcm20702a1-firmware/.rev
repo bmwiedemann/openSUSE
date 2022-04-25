@@ -63,4 +63,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>881727</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>771f2cf17801dba95f3c7ae98e45be78</srcmd5>
+    <version>1201650</version>
+    <time>1650922559</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop superfluous dependency on kernel-firmware (bsc#1198795)</comment>
+    <requestid>972638</requestid>
+  </revision>
 </revisionlist>

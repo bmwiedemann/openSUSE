@@ -1,7 +1,7 @@
 #
 # spec file for package bcm20702a1-firmware
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,6 @@ Release:        0
 Summary:        Firmware for BCM20702A1 based devices
 License:        MIT
 URL:            https://www.asus.com/Networking/USBBT400/
-BuildRequires:  kernel-firmware
-Requires:       kernel-firmware
 Requires(post): bluez
 Requires(post): coreutils
 Requires(post): unzip
@@ -47,6 +45,7 @@ laptops always over usb bridge.
 :
 
 %install
+mkdir -p %{buildroot}%{_firmwaredir}/brcm
 :
 
 %post
@@ -86,6 +85,7 @@ rm -rf "$OUT"
 exit 0
 
 %files
+%dir %{_firmwaredir}/brcm
 %ghost %{_firmwaredir}/brcm/BCM20702A1-0b05-17cb.hcd
 %ghost %{_firmwaredir}/brcm/BCM20702A1-0b05-17cf.hcd
 %ghost %{_firmwaredir}/brcm/BCM20702A1-05ac-21e1.hcd
