@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 25 09:00:53 UTC 2022 - Florian "sp1rit" <sp1ritCS@protonmail.com>
+
+- Ensured joycond-autoload owns /usr/lib/modules-load.d/ to prevent
+  build failure on Tumbleweed.
+
+-------------------------------------------------------------------
 Sat Jan 15 16:12:17 UTC 2022 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
 
 - Lessened reverse dependency of kmod(hid_nintendo), as otherwise

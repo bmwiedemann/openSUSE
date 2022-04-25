@@ -94,6 +94,7 @@ mv %{buildroot}/lib/udev/rules.d/{72,89}-joycond.rules %{buildroot}%{_udevrulesd
 %{_bindir}/%{name}
 
 %files autoload
+%dir %{_modulesloaddir}
 %{_modulesloaddir}/%{name}.conf
 
 %changelog
