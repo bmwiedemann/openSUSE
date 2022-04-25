@@ -18,7 +18,7 @@
 
 Name:           libcaes
 %define lname	libcaes1
-Version:        20210522
+Version:        20220424
 Release:        0
 Summary:        Library for AES encryption
 License:        LGPL-3.0-or-later
@@ -34,7 +34,7 @@ BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcerror) >= 20220101
 BuildRequires:  pkgconfig(openssl) >= 1.0
 %{python_subpackages}
 
