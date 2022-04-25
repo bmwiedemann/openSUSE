@@ -1,0 +1,15 @@
+diff --git a/data/41-nitrokey.rules b/data/41-nitrokey.rules
+index 52074c3..5b20054 100644
+--- a/data/41-nitrokey.rules
++++ b/data/41-nitrokey.rules
+@@ -31,6 +31,10 @@ KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="2581", ATTRS{idProduct
+ KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="20a0", ATTRS{idProduct}=="4287", TAG+="uaccess"
+ # Nitrokey FIDO2
+ KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="20a0", ATTRS{idProduct}=="42b1", TAG+="uaccess"
++# Nitrokey 3 NFC
++KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="20a0", ATTRS{idProduct}=="42b2", TAG+="uaccess"
++# Nitrokey 3 NFC Bootloader
++KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="20a0", ATTRS{idProduct}=="42dd", TAG+="uaccess"
+ 
+ 
+ LABEL="u2f_end"
