@@ -300,6 +300,7 @@
       <repopackage name="clang-tools"/>
       <repopackage name="clang14"/>
       <repopackage name="clang14-doc"/>
+      <repopackage name="clazy"/>
       <repopackage name="clicfs"/>
       <repopackage name="clutter-gtk-lang"/>
       <repopackage name="clutter-lang"/>
