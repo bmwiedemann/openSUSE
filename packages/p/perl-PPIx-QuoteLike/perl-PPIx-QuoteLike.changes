@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 16 03:07:08 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.022
+   see /usr/share/doc/packages/perl-PPIx-QuoteLike/Changes
+
+  0.022		2022-04-15	T. R. Wyant
+      Remove 'postderef' argument to new().  Postfix dereference is always
+      recognized.
+
+-------------------------------------------------------------------
 Wed Apr  6 03:13:00 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.021
