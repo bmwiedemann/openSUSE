@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 21 14:45:24 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Don't call 'mkinitrd' in the inst-sys (bsc#1197632)
+- 4.5.1
+
+-------------------------------------------------------------------
 Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.5.0 (bsc#1198109)
