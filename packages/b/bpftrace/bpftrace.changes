@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 22 07:35:09 UTC 2022 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update to 0.14.1
+  + Fix precedence of multiplicative operations
+- Add Detect-new-BTF-api-btf_dump__new-btf_dump__new_v0_6_0.patch to fix
+  compilation error when building with libbpf v0.6
+
+-------------------------------------------------------------------
 Tue Oct 26 07:46:27 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 - Update to 0.14.0
