@@ -18,8 +18,6 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-# dask does not support Python 3.10 yet
-%define         skip_python310 1
 Name:           python-intake
 Version:        0.6.5
 Release:        0
