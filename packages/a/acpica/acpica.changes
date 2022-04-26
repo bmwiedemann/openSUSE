@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 21 21:02:11 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update bundled wmidump to latest upstream 2021-10-11:
+  * Add support for '//' comments
+  * Print object_id or notify_id based on ACPI_WMI_EVENT flag
+    object_id and notify_id member are in one union. It depends on
+    ACPI_WMI_EVENT flag which member is stored in this union.
+    So print only one member based on ACPI_WMI_EVENT flag.
+- Add comment about origin of the wmidump sources
+
+-------------------------------------------------------------------
 Wed Apr 20 20:02:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 20220331:

@@ -29,7 +29,8 @@ Source:         https://acpica.org/sites/acpica/files/%{src_dir}.tar.gz
 Source1:        ec_access.c
 Source2:        acpi_genl.tar.bz2
 Source3:        acpi_validate
-Source4:        wmidump.tar.bz2
+# https://xf.iksaif.net/dev/wmidump.html
+Source4:        wmidump-20211011.tar.xz
 Patch1:         acpica-no-compiletime.patch
 Patch2:         wmidump_add_she_bang.patch
 Patch3:         do_not_use_build_date_and_time.patch
@@ -85,7 +86,7 @@ install -Dm 755 ec_access %{buildroot}%{_sbindir}/ec_access
 
 install -Dm 755 wmidump/wmidump %{buildroot}%{_bindir}/wmidump
 install -Dm 755 wmidump/wmixtract.py %{buildroot}%{_bindir}/wmixtract
-install -Dm 644 wmidump/README %{buildroot}/%{_docdir}/%{name}/README_wmidump
+install -Dm 644 wmidump/README.md %{buildroot}/%{_docdir}/%{name}/README_wmidump.md
 
 install -Dm 755 acpi_genl/acpi_genl %{buildroot}%{_sbindir}/acpi_genl
 install -Dm 644 acpi_genl/README %{buildroot}/%{_docdir}/%{name}/README_acpi_genl
