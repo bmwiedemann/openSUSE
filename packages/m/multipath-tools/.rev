@@ -1613,4 +1613,13 @@ see https://github.com/opensvc/multipath-tools/compare/2bdd3a14..79c3556f</comme
   * libmultipath: support host adapter name lookup for s390x ccw bus (forwarded request 955368 from mwilck)</comment>
     <requestid>955369</requestid>
   </revision>
+  <revision rev="141" vrev="2">
+    <srcmd5>b806f40f260c42dcb33316d55f8c38f8</srcmd5>
+    <version>0.8.8+64+suse.f265f7e0</version>
+    <time>1650996914</time>
+    <user>dimstar_suse</user>
+    <comment>- If multipath-tools is newly installed, load dm-multipath
+  (bsc#1196898)</comment>
+    <requestid>972557</requestid>
+  </revision>
 </revisionlist>

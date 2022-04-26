@@ -1,7 +1,7 @@
 #
 # spec file for package multipath-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -78,6 +78,8 @@ multipath maps. multipathd sets up multipath maps automatically,
 monitors path devices for failure, removal, or addition, and applies
 the necessary changes to the multipath maps to ensure continuous
 availability of the map devices.
+
+
 
 
 
@@ -193,6 +195,9 @@ install -m 644 -D %{SOURCE3} %{buildroot}/usr/lib/dracut/dracut.conf.d/dm-parts.
 %post
 [ -f /.buildenv ] && exit 0
 %service_add_post multipathd.socket multipathd.service
+if [ $1 -eq 1 ]; then
+    [ ! -x /sbin/modprobe ] || /sbin/modprobe dm_multipath || true
+fi
 %{?regenerate_initrd_post}
 exit 0
 

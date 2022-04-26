@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 28 12:54:15 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- If multipath-tools is newly installed, load dm-multipath
+  (bsc#1196898) 
+
+-------------------------------------------------------------------
 Wed Feb 16 13:24:47 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 0.8.8+64+suse.f265f7e0:
