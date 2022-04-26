@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 26 10:44:50 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.0.0
+  + New: Add a new platform-independent build_encrypted_persistence() API. (#87, #110)
+  + Remove: Old TokenCache API which has been deprecated for 2 years. (#110)
+  + Enhancement: Make all platform-dependent parameters optional (#103)
+  + Enhancement: Provide PersistenceEncryptError and PersistenceDecryptError,
+    currently raised when encryption on Windows fails. (#108)
+  + Enhancement: The data file will be created with 600 permission when
+    running in Unix-like systems. (#107)
+
+-------------------------------------------------------------------
 Mon Jan  3 15:05:19 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.3.1

@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-msal-extensions
-Version:        0.3.1
+Version:        1.0.0
 Release:        0
 Summary:        Microsoft Authentication Library (MSAL) for Python Extensions
 License:        MIT

@@ -46,4 +46,19 @@
   + Including license in release package (#76) (forwarded request 943618 from glaubitz)</comment>
     <requestid>943621</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c84a7ce105bcaeabf9c2d009b2fce6e9</srcmd5>
+    <version>1.0.0</version>
+    <time>1650996948</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.0
+  + New: Add a new platform-independent build_encrypted_persistence() API. (#87, #110)
+  + Remove: Old TokenCache API which has been deprecated for 2 years. (#110)
+  + Enhancement: Make all platform-dependent parameters optional (#103)
+  + Enhancement: Provide PersistenceEncryptError and PersistenceDecryptError,
+    currently raised when encryption on Windows fails. (#108)
+  + Enhancement: The data file will be created with 600 permission when
+    running in Unix-like systems. (#107) (forwarded request 972839 from glaubitz)</comment>
+    <requestid>972847</requestid>
+  </revision>
 </revisionlist>
