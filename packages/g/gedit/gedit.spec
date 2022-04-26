@@ -62,6 +62,9 @@ Obsoletes:      gedit2 < %{version}
 # See bnc#847114 - plugins generally depend on it
 Requires:       python3-gedit
 %endif
+# Throws "Settings schema 'org.gnome.desktop.interface' is not installed"
+#   in WSLg without this; see boo#1198312
+Requires:       gsettings-desktop-schemas
 
 %description
 Gedit is a UTF-8 text editor for the GNOME environment.

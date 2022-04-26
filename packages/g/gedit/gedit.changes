@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 22 16:05:37 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Add "Requires: gsettings-desktop-schemas" to alleviate schema
+  "is not installed" error after install in WSL. (boo#1198312)
+
+-------------------------------------------------------------------
 Fri Apr  1 20:38:07 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
 
 - Update to version 42.0:

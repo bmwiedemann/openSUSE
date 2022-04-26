@@ -1105,4 +1105,13 @@
   + Updated translations. (forwarded request 966480 from iznogood)</comment>
     <requestid>966827</requestid>
   </revision>
+  <revision rev="145" vrev="2">
+    <srcmd5>ceb5caefa3b22367fa7a0759907d727b</srcmd5>
+    <version>42.0</version>
+    <time>1650996909</time>
+    <user>dimstar_suse</user>
+    <comment>- Add &quot;Requires: gsettings-desktop-schemas&quot; to alleviate schema
+  &quot;is not installed&quot; error after install in WSL. (boo#1198312) (forwarded request 972227 from sbradnick)</comment>
+    <requestid>972516</requestid>
+  </revision>
 </revisionlist>
