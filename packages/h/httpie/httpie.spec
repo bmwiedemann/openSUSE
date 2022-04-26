@@ -1,7 +1,7 @@
 #
 # spec file for package httpie
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,6 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Pygments >= 2.5.2
 BuildRequires:  python3-charset-normalizer >= 2.0.0
 BuildRequires:  python3-defusedxml >= 0.6.0
-BuildRequires:  python3-mock
 BuildRequires:  python3-pytest
 BuildRequires:  python3-pytest-httpbin
 BuildRequires:  python3-requests >= 2.22.0

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 26 06:14:41 UTC 2022 - pgajdos@suse.com
+
+- python3-mock is not required for build
+
+-------------------------------------------------------------------
 Sun Oct 17 13:52:17 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.6.0
