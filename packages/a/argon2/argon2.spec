@@ -1,7 +1,7 @@
 #
 # spec file for package argon2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,19 +22,20 @@
 %define no_optimize 1
 %endif
 # for convenience
-%define make %__make OPTFLAGS="%{optflags}" OPTTEST=%no_optimize LIB_ST= LIBRARY_REL=%_lib
+%define make %__make %{?_smp_mflags} OPTFLAGS="%{optflags}" OPTTEST=%no_optimize LIB_ST= LIBRARY_REL=%_lib
 
 %define lname libargon2-1
 Name:           argon2
-Version:        0.0+git20190520.62358ba
+Version:        20190702
 Release:        0
 Summary:        The reference C implementation of Argon2
-License:        CC0-1.0 OR Apache-2.0
+License:        Apache-2.0 OR CC0-1.0
 Group:          Productivity/Networking/Security
 URL:            https://github.com/P-H-C/phc-winner-argon2
 Source:         %{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-Patch1:         optflags.patch
+# PATCH-FIX-OPENSUSE adjust-makefile.patch -- Allow setting optflags and file permissions of installed libraries
+Patch1:         adjust-makefile.patch
 BuildRequires:  pkgconfig
 BuildRequires:  sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -79,10 +80,10 @@ password hashing function that won the Password Hashing Competition
 %autosetup
 
 %build
-%make %{?_smp_mflags}
+%make
 
 %install
-%make DESTDIR=%{buildroot} install
+%make install DESTDIR=%{buildroot}
 
 install -D -m 644 man/argon2.1 %{buildroot}%{_mandir}/man1/argon2.1
 
