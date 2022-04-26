@@ -16,7 +16,7 @@
 #
 
 
-%define shlib lib%{name}21
+%define shlib lib%{name}22
 # octave >= 6 not supported
 %bcond_with octave
 
@@ -95,7 +95,8 @@ The LSC Algorithm Inference Library for gravitational wave data analysis.
 
 %package -n %{shlib}
 Summary:        Shared library for LAL Inference
-Group:          Productivity/Scientific/Physics
+Group:          System/Libraries
+Conflicts:      liblalinference21
 
 %description -n %{shlib}
 This package contains the shared-object libraries needed to run applications

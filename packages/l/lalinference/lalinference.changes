@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 26 10:44:09 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve rpmlint report "liblalinference21.x86_64: E:
+  shlib-policy-name-error SONAME: liblalinference.so.22, expected
+  package suffix: 22"
+
+-------------------------------------------------------------------
 Sun Jan 16 19:19:18 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add lalinference-import-MutableMapping.patch --
