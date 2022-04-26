@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 26 06:22:57 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.11.2:
+  * relay: Move Peer Service to Hubble Relay Enablement
+  * install: add support for AWS with CNI chaining
+  * install: Add Peer Service on Install
+  * build(deps): bump actions/checkout from 3.0.1 to 3.0.2
+  * update code of conduct email
+  * Transform flags context and namespace to be global for cilium-cli
+  * build(deps): bump actions/checkout from 3.0.0 to 3.0.1
+
+-------------------------------------------------------------------
 Thu Apr 14 19:37:24 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.11.1:
