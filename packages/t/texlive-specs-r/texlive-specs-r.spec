@@ -19,7 +19,7 @@
 %define texlive_version  2022
 %define texlive_previous 2021
 %define texlive_release  20220321
-%define texlive_noarch   191
+%define texlive_noarch   195
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -19985,10 +19985,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:57} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:58} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:59} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/pas-cours/macro-calculs.tex %{buildroot}%{_texmfdistdir}/tex/latex/pas-cours/macro-calculs.tex
-    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/pas-cours/macro-solides.tex %{buildroot}%{_texmfdistdir}/tex/latex/pas-cours/macro-solides.tex
     mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/pas-cours/macro-styles.tex %{buildroot}%{_texmfdistdir}/tex/latex/pas-cours/macro-styles.tex
     mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/pas-cours/macro-patrons.tex %{buildroot}%{_texmfdistdir}/tex/latex/pas-cours/macro-patrons.tex
+    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/pas-cours/macro-solides.tex %{buildroot}%{_texmfdistdir}/tex/latex/pas-cours/macro-solides.tex
+    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/pas-cours/macro-calculs.tex %{buildroot}%{_texmfdistdir}/tex/latex/pas-cours/macro-calculs.tex
     tar --use-compress-program=xz -xf %{S:60} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:61} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:62} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -20284,7 +20284,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	ed %{buildroot}/${scr} <<-'EOF'
 		1
 		i
-		#! /usr/bin/texlua
+		#! /usr/bin/luatex
 		.
 		w
 		q
@@ -20300,20 +20300,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:220} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:221} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:222} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    # Correct wrong luaTeX scripts if any
-    for scr in %{_texmfdistdir}/tex/generic/pgfplots/lua/prepcontour.lua \
-	       %{_texmfdistdir}/tex/generic/pgfplots/lua/prepcontour_cli.lua
-    do
-	test -e %{buildroot}/$scr || continue
-	ed %{buildroot}/${scr} <<-'EOF'
-		1
-		i
-		#! /usr/bin/texlua
-		.
-		w
-		q
-	EOF
-    done
     tar --use-compress-program=xz -xf %{S:223} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:224} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
@@ -20572,7 +20558,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	ed %{buildroot}/${scr} <<-'EOF'
 		1
 		i
-		#! /usr/bin/texlua
+		#! /usr/bin/luatex
 		.
 		w
 		q
