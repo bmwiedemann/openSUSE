@@ -457,4 +457,12 @@
   * translations: updated german</comment>
     <requestid>944046</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>5747f0cd93375cd9dd5a6bcf714b6443</srcmd5>
+    <version>2.5.28</version>
+    <time>1650996958</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>972880</requestid>
+  </revision>
 </revisionlist>

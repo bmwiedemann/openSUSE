@@ -23,7 +23,7 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  pkg-config
 BuildRequires:  popt-devel
 BuildRequires:  readline-devel
-URL:            http://gphoto.sourceforge.net
+URL:            https://gphoto.sourceforge.io/
 Summary:        A Digital Camera Utility
 License:        GPL-2.0-or-later
 Group:          Hardware/Camera
@@ -41,7 +41,7 @@ local hard drive. It does not support digital cameras based on the USB
 storage protocol, because those can be mounted by Linux directly. Find
 the list of supported cameras at the following URL:
 
-http://gphoto.org/proj/libgphoto2/support.php
+https://gphoto.sourceforge.io/proj/libgphoto2/support.php
 
 or by running
 
