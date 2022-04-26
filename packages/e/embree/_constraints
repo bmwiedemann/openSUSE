@@ -5,4 +5,14 @@
       <size unit="G">32</size>
     </memory>
   </hardware>
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">8</size>
+      </memory>
+    </hardware>
+  </overwrite>
 </constraints>
