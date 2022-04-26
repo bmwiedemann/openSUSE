@@ -19,18 +19,21 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-fastparquet
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        Python support for Parquet file format
 License:        Apache-2.0
 URL:            https://github.com/dask/fastparquet/
 Source:         https://github.com/dask/fastparquet/archive/%{version}.tar.gz#/fastparquet-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module cramjam >= 2.3.0}
 # version requirement not declared for runtime, but necessary for tests.
 BuildRequires:  %{python_module fsspec >= 2021.6.0}
 BuildRequires:  %{python_module numpy-devel >= 1.18}
 BuildRequires:  %{python_module pandas >= 1.1.0}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-lzo}
 BuildRequires:  %{python_module setuptools}
@@ -66,7 +69,7 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%pytest_arch --pyargs fastparquet --import-mode append
+%pytest_arch --pyargs fastparquet --import-mode append -n auto
 
 %files %{python_files}
 %doc README.rst
