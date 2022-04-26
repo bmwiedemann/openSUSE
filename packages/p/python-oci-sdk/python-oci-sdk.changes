@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Apr 26 09:49:49 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.64.0
+  * Support for the Stack Monitoring service
+  * Support for stack monitoring on external databases in the Database service
+  * Support for upgrading VM database systems in place in the Database service
+  * Support for viewing supported VMWare software versions when listing host
+    shapes in the VMWare Solution service
+  * Support for choosing compute shapes when creating SDDCs and ESXi hosts
+    in the VMWare Solution service
+  * Support for work requests on delete operations in the Vulnerability Scanning service
+  * Support for additional scan metadata in reports, including CVE descriptions,
+    in the Vulnerability Scanning service
+  * Support for redemption codes in the Usage service
+  * Param `type` in model `DiscoveryDetails` assumes the value of `UNKNOWN_ENUM_VALUE` if
+    it is assigned a value that is not of the allowed_values. It will not raise a `ValueError`.
+- from version 2.63.0
+  * Support for bringing your own IPv6 addresses in the Networking service
+  * Support for specifying database edition and maximum CPU core count when creating or
+    updating an autonomous database in the Database service
+  * Support for enabling and disabling data collection options when creating or updating
+    Exadata Cloud at Customer VM clusters in the Database service
+  * Support for retries by default on operations in the Identity service
+  * Support for retries by default on operations in the Operations Insights service
+- from version 2.62.1
+  * Fixed the lifecycle state values for target databases in the Data Safe service
+  * Support for content length and content type response headers when downloading
+    PDFs in the Account Management service
+  * Support for creating Enterprise Manager-based zLinux host targets, creating alarms,
+    and viewing top process analytics in the Operations Insights service
+  * Support for diagnostic reboots on VM instances in the Compute service
+- from version 2.62.0
+  * Support for returning the number of network ports as part of listing shapes
+    in the Compute service
+  * Support for Java runtime removal and custom logs in the Java Management service
+  * Support for new parameters for BGP admin state and enabling/disabling BFD
+    in the Networking service
+  * Support for private OKE clusters and blue-green deployments in the DevOps service
+  * Support for international customers to consume and launch third-party
+    paid listings in the Marketplace service
+  * Support for additional fields on entities, attributes, and folders
+    in the Data Catalog service
+  * Support for retries by default on operations in the Marketplace service
+- Refresh patches for new version
+  * ops_relax-python-depends.patch
+
+-------------------------------------------------------------------
 Mon Mar 28 10:08:46 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.61.0
