@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Apr 25 14:13:43 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop libscamperfile1 provides from the lib subpckage:
+  libscamperfile.so.2 is not a drop-in replacement for anything
+  that linked libscamperfile.so.1, and as such the provides is
+  invalid. The obsoletes is technically wrong, but is there to fix
+  the upgrade path of a wrongly-packaged libscamperfile.so.2 in a
+  libscamperfile1 package.
+
+-------------------------------------------------------------------
+Fri Feb 25 20:29:54 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- add provices/obsoletes for old libscamperfile1 sub-package.
+
+-------------------------------------------------------------------
+Sat Feb 12 18:37:04 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 20211212a:
+ - No changelog available.
+
+-------------------------------------------------------------------
+Tue Dec 14 17:50:16 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 20211212:
+ - scamper:
+  * in hostname code, handle nameserver lines with comments in them
+ - sc_remoted:
+  * fix logic to handle TLSv1.3 handshakes
+ - sc_hoiho:
+  * add the ability to learn regular expressions that extract
+    network names from router hostnames, documented in the
+    sc_hoiho man page 
+
+-------------------------------------------------------------------
 Wed Oct 27 18:47:44 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to 20211026:

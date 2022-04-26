@@ -1,7 +1,7 @@
 #
 # spec file for package scamper
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           scamper
-Version:        20211026
+Version:        20211212a
 Release:        0
 Summary:        Parallel Internet measurement utility
 License:        GPL-2.0-only
@@ -42,11 +42,12 @@ fragmentation required message is not returned to establish the PMTU
 to the next point in the network, followed by a TTL limited search to
 infer where the failure appears to occur.
 
-%package -n libscamperfile1
+%package -n libscamperfile2
 Summary:        File access library for scamper's binary dump format
-Group:          System/Libraries
+Group:          System/Libraries]
+Obsoletes:      libscamperfile1 < %{version}
 
-%description -n libscamperfile1
+%description -n libscamperfile2
 Scamper is a program that is able to conduct Internet measurement
 tasks to large numbers of IPv4 and IPv6 addresses, in parallel, to
 fill a specified packets-per-second rate. Currently, it supports the
@@ -59,7 +60,7 @@ files that scamper can produce in certain modes.
 %package -n libscamperfile-devel
 Summary:        Development headers for scamper's binary dump file access library
 Group:          Development/Libraries/Other
-Requires:       libscamperfile1 = %{version}-%{release}
+Requires:       libscamperfile2 = %{version}-%{release}
 
 %description -n libscamperfile-devel
 Scamper is a program that is able to conduct Internet measurement
@@ -82,8 +83,8 @@ make %{?_smp_mflags}
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post   -n libscamperfile1 -p /sbin/ldconfig
-%postun -n libscamperfile1 -p /sbin/ldconfig
+%post   -n libscamperfile2 -p /sbin/ldconfig
+%postun -n libscamperfile2 -p /sbin/ldconfig
 
 %files
 %license COPYING
@@ -92,7 +93,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/*
 %{_mandir}/man5/*
 
-%files -n libscamperfile1
+%files -n libscamperfile2
 %{_libdir}/libscamperfile.so.*
 
 %files -n libscamperfile-devel
