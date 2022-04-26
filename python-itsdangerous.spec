@@ -20,15 +20,13 @@
 %define skip_python2 1
 %global skip_python36 1
 Name:           python-itsdangerous
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        Various helpers to pass trusted data to untrusted environments and back
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://itsdangerous.palletsprojects.com
 Source:         https://files.pythonhosted.org/packages/source/i/itsdangerous/itsdangerous-%{version}.tar.gz
-# https://github.com/pallets/itsdangerous/pull/299
-Patch1:         32bit-handle-overflow.patch
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -52,7 +50,6 @@ Also I plan to add some extra things.  Work in progress.
 
 %prep
 %setup -q -n itsdangerous-%{version}
-%patch1 -p1
 
 %build
 %python_build

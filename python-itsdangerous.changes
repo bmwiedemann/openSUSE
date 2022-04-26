@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 22 20:36:41 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 2.1.2
+  * Handle date overflow in timed unsign on 32-bit systems. :pr:`299`
+- removed obsolete 32bit-handle-overflow.patch
+
+-------------------------------------------------------------------
 Thu Mar 24 11:57:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add 32bit-handle-overflow.patch 
