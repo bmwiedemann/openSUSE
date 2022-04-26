@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 24 20:37:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.18:
+  * Round bits up and target full pool size [Jason A. Donenfeld]
+  * Specify right kernel commit in README [Jason A. Donenfeld]
+
+-------------------------------------------------------------------
 Tue Feb 15 15:22:09 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Update to v1.9.17:

@@ -595,4 +595,12 @@ Updated sample spec file and other documentation changes. (forwarded request 174
     <comment>Update to v1.9.17 (forwarded request 955185 from ohollmann)</comment>
     <requestid>955204</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>0b6cfd6520cb480c1553069a2f4a381c</srcmd5>
+    <version>1.9.18</version>
+    <time>1650996898</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>972436</requestid>
+  </revision>
 </revisionlist>

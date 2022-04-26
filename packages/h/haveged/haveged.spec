@@ -18,7 +18,7 @@
 
 %{!?_udevrulesdir: %global _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d }
 Name:           haveged
-Version:        1.9.17
+Version:        1.9.18
 Release:        0
 Summary:        Daemon for feeding entropy into the random pool
 License:        GPL-3.0-only
@@ -40,7 +40,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 Requires(post): coreutils
-Requires(postun): coreutils
+Requires(postun):coreutils
 Enhances:       apache2
 Enhances:       gpg2
 Enhances:       openssl
