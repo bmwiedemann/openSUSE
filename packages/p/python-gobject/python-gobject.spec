@@ -1,7 +1,7 @@
 #
 # spec file for package python-gobject
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 %global __requires_exclude_from ^%{_libdir}/python.*/site-packages/gi/__init__.py$
 %define _name   pygobject
 Name:           python-gobject
-Version:        3.42.0
+Version:        3.42.1
 Release:        0
 Summary:        Python bindings for GObject
 License:        LGPL-2.1-or-later
@@ -52,7 +52,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
 # BuildRequires:  pkgconfig(gdk-3.0) >= 2.38.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.46.0
 # Trigger an automatic installation of python(2|3.*)-gobject when python and libgirepository are installed.
-Supplements:    packageand(python:%{introspection_real_package})
+Supplements:    (python and %{introspection_real_package})
 %python_subpackages
 
 %description
@@ -65,7 +65,7 @@ Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Requires:       %{name}-cairo = %{version}
 # See above
-#Supplements:    packageand(python-gobject:%%{gdk_real_package})
+#Supplements:    (python-gobject and %{gdk_real_package})
 
 %description Gdk
 Pygobjects is an extension module for python that gives you access to
@@ -77,7 +77,7 @@ This package contains the Python Gdk bindings for GObject.
 Summary:        Python bindings for GObject/Cairo
 Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
-Supplements:    packageand(python-gobject:%{cairo_real_package})
+Supplements:    (python-gobject and %{cairo_real_package})
 
 %description cairo
 Pygobjects is an extension module for python that gives you access to

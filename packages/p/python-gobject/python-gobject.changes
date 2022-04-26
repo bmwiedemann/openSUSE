@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 21 01:02:25 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
+
+- Update to version 3.42.1:
+  + Do not error out for unknown scopes.
+  + gtk overrides: restore Gtk.ListStore.insert_with_valuesv with
+    newer GTK4.
+  + gtk overrides: Do not override Treeview.enable_model_drag_xx
+    for GTK4.
+  + Implement DynamicImporter.find_spec() to silence deprecation
+    warning.
+  + Some test/CI fixes.
+
+-------------------------------------------------------------------
 Mon Sep 20 10:21:08 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.42.0:
