@@ -1,13 +1,16 @@
-Index: pciutils-3.6.4/lib/sysdep.h
-===================================================================
---- pciutils-3.6.4.orig/lib/sysdep.h
-+++ pciutils-3.6.4/lib/sysdep.h
-@@ -20,93 +20,8 @@
+--- pciutils-3.8.0/lib/sysdep.h.orig	2022-04-21 09:44:42.293087550 +0200
++++ pciutils-3.8.0/lib/sysdep.h	2022-04-21 09:48:40.958962299 +0200
+@@ -20,97 +20,10 @@
  typedef u8 byte;
  typedef u16 word;
  
 -#ifdef PCI_OS_WINDOWS
--#define strcasecmp strcmpi
+-#define strcasecmp _strcmpi
+-#define strncasecmp _strnicmp
+-#if defined(_MSC_VER) && _MSC_VER < 1900
+-#define snprintf _snprintf
+-#define vsnprintf _vsnprintf
+-#endif
 -#endif
 -
 -#ifdef PCI_HAVE_LINUX_BYTEORDER_H
@@ -52,7 +55,6 @@ Index: pciutils-3.6.4/lib/sysdep.h
 -  #define BIG_ENDIAN 4321
 -  #define LITTLE_ENDIAN	1234
 -  #define BYTE_ORDER LITTLE_ENDIAN
--  #define snprintf _snprintf
 -#endif
 -#endif
 -
@@ -80,7 +82,7 @@ Index: pciutils-3.6.4/lib/sysdep.h
 -{
 -  return (w << 8) | ((w >> 8) & 0xff);
 -}
--
+ 
 -static inline u32 swab32(u32 w)
 -{
 -  return ((w & 0xff000000) >> 24) |
@@ -94,9 +96,9 @@ Index: pciutils-3.6.4/lib/sysdep.h
 -#define le16_to_cpu(x) (x)
 -#define le32_to_cpu(x) (x)
 -#endif
--
--#endif
 +#define cpu_to_le16 htole16
 +#define cpu_to_le32 htole32
 +#define le16_to_cpu le16toh
 +#define le32_to_cpu le32toh
+ 
+-#endif

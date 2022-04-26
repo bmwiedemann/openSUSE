@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Apr 21 07:08:48 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.8.0:
+	* Filters can now match devices based on partially specified
+	  class code and also on the programming interface.
+	* Reporting of link speeds, power limits, and virtual function tags
+	  has been updated to the current PCIe specification.
+	* We decode the Data Object Exchange capability.
+	* Bus mapping mode works in non-zero domains.
+	* pci_fill_info() can fetch more fields: bridge bases, programming
+	  interface, revision, subsystem vendor and device ID, OS driver,
+	  and also parent bridge. Internally, the implementation was rewritten,
+	  significantly reducing the number of corner cases to be handled.
+  * If the configuration space is not readable for some reason
+	  (e.g., the cfgmgr32 back-end, but also badly implemented sleep mode
+	  of some devices), lspci prints only information provided by the OS.
+	* The Hurd back-end was greatly improved thanks to Joan Lledó.
+	* Various minor bug fixes and improvements.
+	* As usually, updated pci.ids to the current snapshot of the database.
+- Rebase pciutils-3.1.9_pkgconfig.patch
+- Rebase pciutils-ocloexec.patch
+- Rebase pciutils-endianh.patch
+- Drop pciutils-add-decode-support-for-RCECs.patch
+
+-------------------------------------------------------------------
 Sun Jan 23 14:56:10 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Set sbindir to /usr/bin to fix Steam issues

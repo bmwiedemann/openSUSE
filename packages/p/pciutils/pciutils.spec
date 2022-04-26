@@ -1,7 +1,7 @@
 #
 # spec file for package pciutils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname   libpci3
 Name:           pciutils
-Version:        3.7.0
+Version:        3.8.0
 Release:        0
 Summary:        PCI utilities for the Linux Kernel
 License:        GPL-2.0-or-later
@@ -28,12 +28,18 @@ Source:         https://www.kernel.org/pub/software/utils/%{name}/%{name}-%{vers
 Source1:        https://www.kernel.org/pub/software/utils/%{name}/%{name}-%{version}.tar.sign
 Source2:        baselibs.conf
 # https://mj.ucw.cz/pgp.html
-Source3:        https://mj.ucw.cz/pgpkey.txt#/%{name}.keyring
-Patch1:         pciutils-3.1.9_pkgconfig.patch
+#Source3:        https://mj.ucw.cz/pgpkey.txt#/%{name}.keyring
+# I checked with Martin, and this is the email I got:
+# BEGIN QUOTE
+# This is because the kernel.org archive does not have my new key yet,
+# so it refuses releases signed with the old one.
+# I plan to fix it and re-sign the release, but it will take some time.
+# END QUOTE
+# so I took the correct key from https://keys.openpgp.org/search?q=5558F9399CD7836850553C6EC28E7847ED70F82D
+Source3:        %{name}.keyring
+Patch0:         pciutils-3.1.9_pkgconfig.patch
+Patch1:         pciutils-endianh.patch
 Patch2:         pciutils-ocloexec.patch
-Patch3:         pciutils-endianh.patch
-# https://github.com/pciutils/pciutils/commit/e12bd01eea67ca8cf539263124843ba281eb6ecc
-Patch4:         pciutils-add-decode-support-for-RCECs.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libkmod)
 BuildRequires:  pkgconfig(zlib)
