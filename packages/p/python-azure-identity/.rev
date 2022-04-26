@@ -140,4 +140,18 @@
     CHANGELOG.md file provided with this package (forwarded request 967247 from glaubitz)</comment>
     <requestid>967281</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3551306bb565c195093e2c6678c95730</srcmd5>
+    <version>1.10.0b1</version>
+    <time>1651001517</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.10.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Add patch to relax Python dependencies in setup.py
+  + ai_relax-python-depends.patch
+- Update Requires from setup.py (forwarded request 972842 from glaubitz)</comment>
+    <requestid>972877</requestid>
+  </revision>
 </revisionlist>

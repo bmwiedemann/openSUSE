@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-identity
-Version:        1.9.0
+Version:        1.10.0b1
 Release:        0
 Summary:        Azure Identity client library for Python
 License:        MIT
@@ -29,6 +29,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-identity/azure-identity-%{version}.zip
 Source1:        LICENSE.txt
+Patch:          ai_relax-python-depends.patch
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -40,8 +41,8 @@ Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-cryptography >= 2.5
 Requires:       python-msal < 2.0.0
 Requires:       python-msal >= 1.12.0
-Requires:       python-msal-extensions < 1.0.0
-Requires:       python-msal-extensions >= 0.3.0
+Requires:       python-msal-extensions < 2.0.0
+Requires:       python-msal-extensions >= 1.0.0
 Requires:       python-six >= 1.12.0
 Conflicts:      python-azure-sdk <= 2.0.0
 BuildArch:      noarch
@@ -54,6 +55,7 @@ their requests.
 
 %prep
 %setup -q -n azure-identity-%{version}
+%patch0 -p1
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-identity-%{version}

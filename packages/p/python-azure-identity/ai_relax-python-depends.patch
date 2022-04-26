@@ -1,0 +1,11 @@
+--- azure-identity-1.10.0b1.orig/setup.py	2022-04-06 18:56:12.000000000 +0200
++++ azure-identity-1.10.0b1/setup.py	2022-04-26 12:56:04.945905031 +0200
+@@ -76,7 +76,7 @@
+         "azure-core<2.0.0,>=1.11.0",
+         "cryptography>=2.5",
+         "msal<2.0.0,>=1.12.0",
+-        "msal-extensions~=0.3.0",
++        "msal-extensions~=1.0.0",
+         "six>=1.12.0",
+     ],
+ )
