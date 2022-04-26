@@ -451,4 +451,17 @@
     <comment>Do not prefix Suggests by Requires</comment>
     <requestid>967805</requestid>
   </revision>
+  <revision rev="46" vrev="49">
+    <srcmd5>9b35c605f2cf3c1bdc00995e9c5a4708</srcmd5>
+    <version>unknown</version>
+    <time>1650996884</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a _constraints file to increase required disk size (boo#1198793)
+- Avoid doubled luatex/texlua shebangs (boo#1198790)
+- Do not bail out if local ls-R is not writable (boo#1194496)
+
+- Move luakeys-debug.tex from doc tree into load tree
+- Move dtk-logos.sty from doc tree into load tree</comment>
+    <requestid>972678</requestid>
+  </revision>
 </revisionlist>
