@@ -6,7 +6,7 @@
     <value>last_seen:
   boo#1172073: '20220107'
   boo#1176553: '20220311'
-  boo#1183454: '20220424'
+  boo#1183454: '20220425'
   boo#1189869: '20211207'
   boo#1190434: '20220424'
   boo#1190670: '20211128'
@@ -355,6 +355,12 @@ products:
   - go1.16-devel-container:
     - i586
     - x86_64
+  - go1.17-devel-container:
+    - i586
+    - x86_64
+  - go1.18-devel-container:
+    - i586
+    - x86_64
   - httpd-image:
     - i586
     - x86_64
@@ -520,7 +526,7 @@ set_snapshot_number: True</value>
     <value>failed: ''
 published: '20220424'
 publishing: '20220424'
-testing: '20220424'
+testing: '20220425'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
