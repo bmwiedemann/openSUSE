@@ -1,7 +1,7 @@
 #
 # spec file for package ima-evm-utils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,8 @@ Release:        0
 Summary:        IMA/EVM control utility
 License:        LGPL-2.1-or-later
 Group:          System/Base
-URL:            http://sourceforge.net/projects/linux-ima/
-Source0:        http://downloads.sourceforge.net/project/linux-ima/ima-evm-utils/%{name}-%{version}.tar.gz
+URL:            https://sourceforge.net/projects/linux-ima/
+Source0:        https://downloads.sourceforge.net/project/linux-ima/ima-evm-utils/%{name}-%{version}.tar.gz
 BuildRequires:  asciidoc
 BuildRequires:  attr
 BuildRequires:  autoconf
