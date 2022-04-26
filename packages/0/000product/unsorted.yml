@@ -3471,6 +3471,7 @@ unsorted:
   - espeak-ng-compat 
   - espeak-ng-compat-devel 
   - espeak-ng-devel 
+  - espeak-ng-vim 
   - espeakedit 
   - etc-update 
   - etcd: [x86_64] 
@@ -10184,7 +10185,7 @@ unsorted:
   - libcapi20-devel 
   - libcapi20-devel-32bit: [x86_64] 
   - libcapi20-mod_misdn 
-  - libcapnp-0_9 
+  - libcapnp-0_9_1 
   - libcapnp-devel 
   - libcapstone-devel 
   - libcapstone4 
@@ -11680,7 +11681,7 @@ unsorted:
   - libicu-devel 
   - libicu-devel-32bit: [x86_64] 
   - libicu-doc 
-  - libicu70-32bit: [x86_64] 
+  - libicu71-32bit: [x86_64] 
   - libicu71-bedata 
   - libid3-3_8-3 
   - libid3tag-devel 
@@ -11762,7 +11763,7 @@ unsorted:
   - libint-devel 
   - libint2-2 
   - libiodbc-devel 
-  - libiodbc3 
+  - libiodbc2 
   - libiodbcadm2 
   - libiomp5: [x86_64] 
   - libiomp5-gnu-hpc: [x86_64] 
@@ -11942,7 +11943,7 @@ unsorted:
   - libknet1-devel 
   - libknet1-plugins-all 
   - libknot12 
-  - libkokkos3: [x86_64] 
+  - libkokkos3_3_0: [x86_64] 
   - libkolabxml-devel 
   - libkomparediff2-devel 
   - libkonkretcmpi0 
@@ -11966,7 +11967,7 @@ unsorted:
   - liblal20: [x86_64] 
   - liblalburst6: [x86_64] 
   - liblalframe11: [x86_64] 
-  - liblalinference21: [x86_64] 
+  - liblalinference22: [x86_64] 
   - liblalinspiral16: [x86_64] 
   - liblalmetaio8: [x86_64] 
   - liblalpulsar23: [x86_64] 
@@ -13446,7 +13447,7 @@ unsorted:
   - libqtcurve-cairo1-32bit: [x86_64] 
   - libqtcurve-utils2 
   - libqtcurve-utils2-32bit: [x86_64] 
-  - libqtermwidget5-0 
+  - libqtermwidget5-1 
   - libqtolm-devel 
   - libquadmath0-32bit: [x86_64] 
   - libquadmath0-gcc10 
@@ -13817,7 +13818,7 @@ unsorted:
   - libscalapack2_2_1_0-gnu-openmpi4-hpc-devel 
   - libscalapack2_2_1_0-gnu-openmpi4-hpc-devel-static 
   - libscamperfile-devel 
-  - libscamperfile1 
+  - libscamperfile2 
   - libscca-devel 
   - libscca-tools 
   - libscca1 
@@ -13920,7 +13921,7 @@ unsorted:
   - libslang2-32bit: [x86_64] 
   - libsliplu1 
   - libslirp-devel 
-  - libslopy7_5 
+  - libslopy7_6 
   - libslurm37: [x86_64] 
   - libsmartcols-devel 
   - libsmartcols-devel-32bit: [x86_64] 
@@ -14002,6 +14003,7 @@ unsorted:
   - libspf2-apidocs 
   - libspf2-devel 
   - libspf2-tools 
+  - libsphinxad0 
   - libsphinxbase1 
   - libsphinxbase3 
   - libsphinxclient-0_0_1 
@@ -22770,6 +22772,7 @@ unsorted:
   - python310-dask-dot 
   - python310-databases 
   - python310-datadiff 
+  - python310-datashader 
   - python310-dateparser 
   - python310-dateutils 
   - python310-datrie 
@@ -23283,6 +23286,7 @@ unsorted:
   - python310-iniparse 
   - python310-injector 
   - python310-installer 
+  - python310-intake 
   - python310-interrogate 
   - python310-intervals 
   - python310-intervaltree 
@@ -24580,6 +24584,7 @@ unsorted:
   - python310-shodan 
   - python310-shortuuid 
   - python310-sidecar 
+  - python310-sidpy 
   - python310-sievelib 
   - python310-sigal 
   - python310-signedjson 
@@ -24761,6 +24766,7 @@ unsorted:
   - python310-textwrap3 
   - python310-thLib 
   - python310-thespian 
+  - python310-thewalrus: [x86_64] 
   - python310-threadpoolctl 
   - python310-three-merge 
   - python310-threevis 
@@ -26034,7 +26040,6 @@ unsorted:
   - python38-django-pipeline 
   - python38-django-polymorphic 
   - python38-django-push-notifications 
-  - python38-django-pyscss 
   - python38-django-qsessions 
   - python38-django-redis 
   - python38-django-registration 
@@ -29084,7 +29089,6 @@ unsorted:
   - python39-django-pipeline 
   - python39-django-polymorphic 
   - python39-django-push-notifications 
-  - python39-django-pyscss 
   - python39-django-qsessions 
   - python39-django-redis 
   - python39-django-registration 
@@ -33172,8 +33176,6 @@ unsorted:
   - sword 
   - sword-devel 
   - swtcalendar 
-  - swtchart 
-  - swtchart-javadoc 
   - swtpm-devel 
   - sxhkd 
   - sxiv 
