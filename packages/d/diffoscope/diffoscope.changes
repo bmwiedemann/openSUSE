@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 19 14:29:46 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- - update to version 210:
+ - Make sure that PATH is properly mangled for all diffoscope actions, not
+   just when running comparators.
+- update to version 209:
+ - Update R test fixture for R 4.2.x series. (Closes: #1008446)
+ - Update minimum version of Black to prevent test failure on Ubuntu jammy.
+
+-------------------------------------------------------------------
 Fri Apr  1 19:16:51 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - - update to version 209:
