@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 26 15:12:53 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use tarball from gitlab, to fix broken builds due to wrong
+  line endings in all files.
+
+-------------------------------------------------------------------
+Tue Apr 19 08:56:03 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.0.1:
+  * various bugs fixed
+  * pixel math improvements
+
+-------------------------------------------------------------------
 Wed Mar  9 12:01:08 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - Update to 1.0.0:
