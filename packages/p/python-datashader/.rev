@@ -173,4 +173,13 @@
     <comment></comment>
     <requestid>950552</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>0bf63a40ed179561ed31301ad94e8b77</srcmd5>
+    <version>0.13.0</version>
+    <time>1650996935</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove skip_python310, it is not needed anymore.
+</comment>
+    <requestid>972787</requestid>
+  </revision>
 </revisionlist>
