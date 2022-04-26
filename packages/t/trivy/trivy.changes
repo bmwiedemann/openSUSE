@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Apr 26 06:18:23 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.27.0:
+  * fix(go): fixed panic to scan gomod without version (#2038)
+  * docs(mariner): confirm it works with Mariner 2.0 VM (#2036)
+  * feat(secret): support enable rules (#2035)
+  * chore: app version 26.0 (#2030)
+  * docs(secret): add a demo movie (#2031)
+  * feat: support cache TTL in Redis (#2021)
+  * fix(go): skip system installed binaries (#2028)
+  * fix(go): check if go.sum is nil (#2029)
+  * feat: add secret scanning (#1901)
+  * chore: gh publish only with push the tag release (#2025)
+  * fix(fs): ignore permission errors (#2022)
+  * test(mod): using correct module inside test go.mod (#2020)
+  * feat(server): re-add proxy support for client/server communications (#1995)
+  * fix(report): truncate a description before escaping in ASFF template (#2004)
+  * fix(cloudformation): correct margin removal for empty lines (#2002)
+  * fix(template): correct check of old sarif template files (#2003)
+
+-------------------------------------------------------------------
 Sat Apr 16 09:04:55 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.26.0:
