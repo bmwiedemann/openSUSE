@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 25 08:07:56 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add a _constraints file to increase required disk size (boo#1198793)
+- Avoid doubled luatex/texlua shebangs (boo#1198790)
+- Do not bail out if local ls-R is not writable (boo#1194496)
+
+-------------------------------------------------------------------
 Tue Apr 19 07:11:14 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Move luakeys-debug.tex from doc tree into load tree

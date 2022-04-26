@@ -467,4 +467,14 @@
     <comment>Explicit do Provides tex(dtk-logos.sty)</comment>
     <requestid>971043</requestid>
   </revision>
+  <revision rev="46" vrev="49">
+    <srcmd5>e2872174db5b2768c4be28c7571309ee</srcmd5>
+    <version>unknown</version>
+    <time>1650996863</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a _constraints file to increase required disk size (boo#1198793)
+- Avoid doubled luatex/texlua shebangs (boo#1198790)
+- Do not bail out if local ls-R is not writable (boo#1194496)</comment>
+    <requestid>972661</requestid>
+  </revision>
 </revisionlist>
