@@ -16,7 +16,7 @@
 #
 
 
-%define lname	libicu70
+%define lname	libicu71
 %define amajor   71
 %define aversion 71
 %ifarch %armb hppa mips mips64 ppc ppc64 %sparc s390 s390x m68k
@@ -64,6 +64,9 @@ This subpackage contains the runtime programs for interacting with ICU.
 Summary:        International Components for Unicode
 Group:          System/Libraries
 Requires:       timezone
+%if "%lname" == "libicu71"
+Conflicts:      libicu70 = 71.1
+%endif
 Provides:       libicu = %version
 %if %be_platform
 Requires:       libicu%aversion-bedata = %version
@@ -79,9 +82,7 @@ This package contains the runtime libraries for ICU.
 %package -n libicu%aversion-bedata
 Summary:        Rule databases and tables for ICU
 Group:          System/Libraries
-%if 0%{?suse_version} >= 1210
 BuildArch:      noarch
-%endif
 
 %description -n libicu%aversion-bedata
 ICU is a set of C and C++ libraries that provide extensive Unicode
@@ -96,9 +97,7 @@ This subpackage contains these data tables, in big-endian format.
 %package -n libicu%aversion-ledata
 Summary:        Rule databases and tables for ICU
 Group:          System/Libraries
-%if 0%{?suse_version} >= 1210
 BuildArch:      noarch
-%endif
 
 %description -n libicu%aversion-ledata
 ICU is a set of C and C++ libraries that provide extensive Unicode
