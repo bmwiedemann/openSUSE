@@ -19,6 +19,10 @@
 %global longver 2022-04-01
 %global shortver %(echo %{longver}|sed 's|-||g')
 %define libname libre2-9
+%bcond_with test
+%ifnarch s390 s390x riscv64
+%bcond_without test
+%endif
 Name:           re2
 Version:        %{shortver}
 Release:        0
@@ -28,7 +32,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/google/re2
 Source0:        %{url}/archive/%{longver}/%{name}-%{longver}.tar.gz
 Source99:       baselibs.conf
-BuildRequires:  pkgconfig
+BuildRequires:  cmake
 %if %{?suse_version} < 1550
 BuildRequires:  gcc11-c++
 %else
@@ -82,21 +86,25 @@ you will need to install %{name}-devel.
 %if 0%{?suse_version} < 1550
 export CXX=g++-11
 %endif
-ARCH_FLAGS="`echo %{optflags} | sed -e 's/-O2/-O3/g'`"
-export CXXFLAGS="${ARCH_FLAGS}"
-%make_build
+%cmake
+%cmake_build
 
 %install
-%make_install includedir=%{_includedir} libdir=%{_libdir}
-
-# Suppress the static library
-find %{buildroot} -name '*.a' -delete -print
+%cmake_install
+# Install the pkgconfig file
+%make_build common-install DESTDIR=%{buildroot} includedir=%{_includedir} libdir=%{_libdir}
 
 %check
+# Test if created library is installed correctly
 %if 0%{?suse_version} < 1550
 export CXX=g++-11
 %endif
 %make_build shared-testinstall DESTDIR=%{buildroot} includedir=%{_includedir} libdir=%{_libdir}
+%if %{with test}
+# Actual functionality tests
+export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}:LD_LIBRARY_PATH
+%ctest
+%endif
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -111,5 +119,6 @@ export CXX=g++-11
 %{_includedir}/%{name}
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
+%{_libdir}/cmake/%{name}
 
 %changelog

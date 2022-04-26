@@ -380,4 +380,17 @@
 </comment>
     <requestid>967237</requestid>
   </revision>
+  <revision rev="45" vrev="46">
+    <srcmd5>dd09f5b6bcddd2b671817139fb622781</srcmd5>
+    <version>MACRO</version>
+    <time>1650996920</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable tests on ZSystems and RISCV
+- Switch build to CMake, otherwise CMake config is not installed.
+  Required for Apache ORC and arrow, and google-or-tools.
+  (https://github.com/google/re2/issues/304)
+- Run some real tests via CTest
+</comment>
+    <requestid>972798</requestid>
+  </revision>
 </revisionlist>

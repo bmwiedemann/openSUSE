@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 26 07:55:47 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Disable tests on ZSystems and RISCV
+
+-------------------------------------------------------------------
+Sun Apr 24 18:16:08 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Switch build to CMake, otherwise CMake config is not installed.
+  Required for Apache ORC and arrow, and google-or-tools.
+  (https://github.com/google/re2/issues/304)
+- Run some real tests via CTest
+
+-------------------------------------------------------------------
 Fri Apr  1 17:55:09 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2022-04-01:
