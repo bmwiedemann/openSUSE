@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 19 03:08:05 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.99034
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99034  Apr 18 2022    Alexander Nalobin
+      - .ink, .wiki, .design moved from centralnic
+
+  2.99033  Sep 29 2021    Alexander Nalobin
+      - utf8 encoding fix in pwhois script
+
+-------------------------------------------------------------------
 Thu Aug 19 03:06:38 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.99032
