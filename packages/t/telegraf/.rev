@@ -127,4 +127,13 @@ devel:languages:go/telegraf r7 (forwarded request 758639 from jfkw)</comment>
     <comment></comment>
     <requestid>948343</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c3bbd4d060365d9e59ad47ed97a6d61f</srcmd5>
+    <version>1.22.1</version>
+    <time>1650996924</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.22.1:
+- Refresh harden_telegraf.service.patch (forwarded request 972725 from jfkw)</comment>
+    <requestid>972726</requestid>
+  </revision>
 </revisionlist>

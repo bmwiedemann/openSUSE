@@ -1,8 +1,8 @@
-Index: telegraf-1.19.0/scripts/telegraf.service
-===================================================================
---- telegraf-1.19.0.orig/scripts/telegraf.service
-+++ telegraf-1.19.0/scripts/telegraf.service
-@@ -4,6 +4,19 @@ Documentation=https://github.com/influxd
+diff --git a/scripts/telegraf.service b/scripts/telegraf.service
+index c4eed38e..288dd806 100644
+--- a/scripts/telegraf.service
++++ b/scripts/telegraf.service
+@@ -4,6 +4,19 @@ Documentation=https://github.com/influxdata/telegraf
  After=network.target
  
  [Service]
@@ -18,7 +18,7 @@ Index: telegraf-1.19.0/scripts/telegraf.service
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
 +RestrictRealtime=true
-+# end of automatic additions 
++# end of automatic additions
+ Type=notify
  EnvironmentFile=-/etc/default/telegraf
  User=telegraf
- ExecStart=/usr/bin/telegraf -config /etc/telegraf/telegraf.conf -config-directory /etc/telegraf/telegraf.d $TELEGRAF_OPTS
