@@ -371,6 +371,7 @@ Patch845:       0001-mkimage-Fix-dangling-pointer-may-be-used-error.patch
 Patch846:       0002-Fix-Werror-array-bounds-array-subscript-0-is-outside.patch
 Patch847:       0003-reed_solomon-Fix-array-subscript-0-is-outside-array-.patch
 Patch848:       0001-grub-probe-Deduplicate-probed-partmap-output.patch
+Patch849:       0001-powerpc-do-CAS-in-a-more-compatible-way.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140

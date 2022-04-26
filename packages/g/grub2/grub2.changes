@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 21 09:35:15 UTC 2022 - Michael Chang <mchang@suse.com>
+
+- Fix Power10 LPAR error "The partition fails to activate as partition went
+  into invalid state" (bsc#1198714)
+  * 0001-powerpc-do-CAS-in-a-more-compatible-way.patch 
+
+-------------------------------------------------------------------
 Mon Apr 11 11:50:04 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
 
 - use common SBAT values (boo#1193282)
