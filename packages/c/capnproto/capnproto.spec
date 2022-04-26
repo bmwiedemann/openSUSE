@@ -1,7 +1,7 @@
 #
 # spec file for package capnproto
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define _libver 0_9
+%define _libver 0_9_1
 Name:           capnproto
 Version:        0.9.1
 Release:        0
@@ -39,6 +39,7 @@ RPC system.
 
 %package     -n libcapnp-%{_libver}
 Summary:        The Cap'n Proto data serialization library
+Conflicts:      libcapnp-0_9 = 0.9.1
 
 %description -n libcapnp-%{_libver}
 Cap'n Proto is a binary data interchange format and capability-based
@@ -57,13 +58,13 @@ RPC system.
 This package provides development headers for capnproto.
 
 %prep
-%setup -q -n %{name}-c++-%{version}
+%autosetup -n %{name}-c++-%{version}
 
 %build
 export CXX=g++
 test -x "$(type -p g++-7)" && export CXX=g++-7
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

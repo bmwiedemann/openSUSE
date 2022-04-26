@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 26 08:44:58 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Employ shared lib packaging guideline and resolve this rpmlint
+  report: "libcapnp-0_9.x86_64: E: shlib-policy-name-error
+  SONAME: libkj-0.9.1.so, expected package suffix: 0_9_1"
+
+-------------------------------------------------------------------
 Sun Sep 26 11:50:17 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.9.1
