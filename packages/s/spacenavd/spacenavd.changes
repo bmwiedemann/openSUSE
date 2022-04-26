@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Apr 26 10:34:54 UTC 2022 - Herbert Graeber <herbert@graeber-clan.de> 1.0
+
+- Fix spacenavd path in service file
+
+-------------------------------------------------------------------
+Mon Apr 25 14:43:00 UTC 2022 - Herbert Graeber <herbert@graeber-clan.de> 1.0
+
+- Readd spacenavd-fix-pidfile.patch
+
+-------------------------------------------------------------------
+Mon Apr 25 13:33:52 UTC 2022 - Herbert Graeber <herbert@graeber-clan.de> 1.0
+
+- Update to version 1.0
+  * Implemented hugely improved spacenav protocol v1. It includes future
+     expandability provisions, and adds support for a wealth of new capabilities
+     for clients, including:
+     + device information queries (number of buttons and axes, device identification...).
+     + configuration management (allows configuration tools like spnavcfg to be
+       regular clients without special priviledges).
+     + new events, with event selection mechanism (device change, config change,
+       raw axis, raw button).
+  * Improved configuration file handling. Spacenavd now saves changes to the file,
+    and does so while retaining user changes, including comments and empty lines,
+    and modifying existing lines when possible.
+  * Added device level axis remapping (non-configurable), to normalize axis
+    assignments across all known devices, to avoid having to change the configuration
+    every time a different device is connected.
+  * Added initial USB device support on FreeBSD.
+  * Added the ability to bind buttons to actions like sensitivity changes or axis muting.
+  * Added XTEST support for keyboard event injection, which works much more reliably.
+    Falls back to XSendEvent if XTEST is unavailable.
+  * Fixed serial magellan spacemouse compatibility over USB-serial converters with the PL2303 UART.
+  * Added --cfgdir= build option, to change the configuration file directory.
+  * Fixed MacOS X build.
+  * Fixed LED staying on on startup if it was configured otherwise.
+  * Fixed inconsistent handling of the logging method selection arguments.
+  * Fixed spacenavd terminating with SIGPIPE when clients disconnected ungracefully.
+  * Build fixes and improvements.
+- Remove spacenavd-fix-pidfile.patch
+
+-------------------------------------------------------------------
 Wed Nov 17 10:49:36 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

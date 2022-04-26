@@ -1,8 +1,7 @@
-Index: spacenavd-0.8/contrib/systemd/spacenavd.service
-===================================================================
---- spacenavd-0.8.orig/contrib/systemd/spacenavd.service
-+++ spacenavd-0.8/contrib/systemd/spacenavd.service
-@@ -3,6 +3,17 @@ Description=3Dconnexion Input Devices Us
+diff -ur spacenavd-1.0.orig/contrib/systemd/spacenavd.service spacenavd-1.0/contrib/systemd/spacenavd.service
+--- spacenavd-1.0.orig/contrib/systemd/spacenavd.service	2022-04-25 16:03:28.338795433 +0200
++++ spacenavd-1.0/contrib/systemd/spacenavd.service	2022-04-25 15:59:36.042588021 +0200
+@@ -3,9 +3,20 @@
  After=syslog.target
  
  [Service]
@@ -16,7 +15,10 @@ Index: spacenavd-0.8/contrib/systemd/spacenavd.service
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
 +RestrictRealtime=true
-+# end of automatic additions 
++# end of automatic additions
  Type=forking
  PIDFile=/run/spnavd.pid
- ExecStart=/usr/local/bin/spacenavd
+ ExecStart=/usr/sbin/spacenavd
+ StandardError=syslog
+ 
+ [Install]

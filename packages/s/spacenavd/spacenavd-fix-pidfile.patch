@@ -1,19 +1,21 @@
-diff -up spacenavd-0.7.1/contrib/systemd/spacenavd.service.fix-pidfile spacenavd-0.7.1/contrib/systemd/spacenavd.service
---- spacenavd-0.7.1/contrib/systemd/spacenavd.service.fix-pidfile	2020-03-22 16:10:42.581821273 +0100
-+++ spacenavd-0.7.1/contrib/systemd/spacenavd.service	2020-03-22 16:11:49.253400708 +0100
-@@ -4,7 +4,7 @@ After=syslog.target
+diff -ur spacenavd-1.0.orig/contrib/systemd/spacenavd.service spacenavd-1.0/contrib/systemd/spacenavd.service
+--- spacenavd-1.0.orig/contrib/systemd/spacenavd.service	2022-04-25 16:03:28.338795433 +0200
++++ spacenavd-1.0/contrib/systemd/spacenavd.service	2022-04-25 16:40:21.644561051 +0200
+@@ -4,8 +4,8 @@
  
  [Service]
  Type=forking
 -PIDFile=/var/run/spnavd.pid
+-ExecStart=/usr/local/bin/spacenavd
 +PIDFile=/run/spnavd.pid
- ExecStart=/usr/local/bin/spacenavd
++ExecStart=/usr/sbin/spacenavd
  StandardError=syslog
  
-diff -up spacenavd-0.7.1/init_script.fix-pidfile spacenavd-0.7.1/init_script
---- spacenavd-0.7.1/init_script.fix-pidfile	2020-03-22 16:10:57.213842900 +0100
-+++ spacenavd-0.7.1/init_script	2020-03-22 16:12:08.165156918 +0100
-@@ -30,7 +30,7 @@ start)
+ [Install]
+diff -ur spacenavd-1.0.orig/init_script spacenavd-1.0/init_script
+--- spacenavd-1.0.orig/init_script	2022-04-25 16:02:21.655184661 +0200
++++ spacenavd-1.0/init_script	2022-04-25 16:16:16.866098885 +0200
+@@ -30,7 +30,7 @@
  stop)
  	echo 'Stopping spacenavd daemon'
  	# detect daemon's process id
@@ -22,10 +24,10 @@ diff -up spacenavd-0.7.1/init_script.fix-pidfile spacenavd-0.7.1/init_script
  	if [ $? != 0 ]; then
  		pid=`ps -e | grep spacenavd | awk '{ print $1 }'`
  		if [ -z "$pid" ]; then
-diff -up spacenavd-0.7.1/spnavd_ctl.fix-pidfile spacenavd-0.7.1/spnavd_ctl
---- spacenavd-0.7.1/spnavd_ctl.fix-pidfile	2020-03-22 16:11:13.009768437 +0100
-+++ spacenavd-0.7.1/spnavd_ctl	2020-03-22 16:12:34.904713390 +0100
-@@ -32,7 +32,7 @@ else
+diff -ur spacenavd-1.0.orig/spnavd_ctl spacenavd-1.0/spnavd_ctl
+--- spacenavd-1.0.orig/spnavd_ctl	2022-04-25 16:02:21.655184661 +0200
++++ spacenavd-1.0/spnavd_ctl	2022-04-25 16:16:41.818036452 +0200
+@@ -32,7 +32,7 @@
  fi
  
  # detect daemon's process id
@@ -34,11 +36,11 @@ diff -up spacenavd-0.7.1/spnavd_ctl.fix-pidfile spacenavd-0.7.1/spnavd_ctl
  if [ $? != 0 ]; then
  	pid=`ps -e | grep spacenavd | awk '{ print $1 }'`
  	if [ -z "$pid" ]; then
-diff -up spacenavd-0.7.1/src/spnavd.h.fix-pidfile spacenavd-0.7.1/src/spnavd.h
---- spacenavd-0.7.1/src/spnavd.h.fix-pidfile	2020-03-22 16:11:26.161657639 +0100
-+++ spacenavd-0.7.1/src/spnavd.h	2020-03-22 16:14:26.920758060 +0100
-@@ -26,8 +26,8 @@ along with this program.  If not, see <h
- #define DEF_CFGFILE		"/etc/spnavrc"
+diff -ur spacenavd-1.0.orig/src/spnavd.h spacenavd-1.0/src/spnavd.h
+--- spacenavd-1.0.orig/src/spnavd.h	2022-04-25 16:02:21.655184661 +0200
++++ spacenavd-1.0/src/spnavd.h	2022-04-25 16:17:04.797947800 +0200
+@@ -26,8 +26,8 @@
+ #define DEF_CFGFILE		CFGDIR "/spnavrc"
  #define DEF_LOGFILE		"/var/log/spnavd.log"
  
 -#define SOCK_NAME	"/var/run/spnav.sock"

@@ -1,7 +1,7 @@
 #
 # spec file for package spacenavd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2009,2011,2013 Herbert Graeber
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           spacenavd
-Version:        0.8
+Version:        1.0
 Release:        0
 Summary:        Daemon for 3Dconnexion devices
 License:        GPL-3.0-or-later
@@ -28,8 +28,7 @@ Source:         https://github.com/FreeSpacenav/spacenavd/releases/download/v%{v
 Source1:        spacenavd.8.gz
 Source2:        spnavrc
 Source3:        xinitrc-%{name}
-Source4:        %{name}.service
-Patch1:         %{name}-fix-pidfile.patch
+Patch1:         spacenavd-fix-pidfile.patch
 Patch2:         harden_spacenavd.service.patch
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
@@ -79,7 +78,7 @@ ln -sf spacenavd.8.gz %{buildroot}%{_mandir}/man8/spnavd_ctl.8.gz
 install -D -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/spnavrc
 install -D -m 755 %{SOURCE3} %{buildroot}%{_sysconfdir}/X11/xinit/xinitrc.d/%{name}
 ln -sf service %{buildroot}%{_sbindir}/rc%{name}
-install -D -m 644 %{SOURCE4} %{buildroot}%{_unitdir}/%{name}.service
+install -D -m 644 contrib/systemd/%{name}.service %{buildroot}%{_unitdir}/%{name}.service
 
 %post
 %fillup_only -n %{name}
