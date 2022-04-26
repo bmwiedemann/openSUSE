@@ -27,6 +27,7 @@ URL:            https://github.com/freeswitch/spandsp
 
 Source:         %name-%version.tar.xz
 Source2:        baselibs.conf
+Patch1:         no-sse.diff
 Patch2:         spandsp-raise-traintime-tolerance.diff
 Patch3:         spandsp-handle-international-dialstring-prefix.diff
 BuildRequires:  docbook-xsl-stylesheets
@@ -90,18 +91,14 @@ This package contains documentation for the libspandsp API.
 
 %prep
 %autosetup -p1
+# The cpuid calls in the source code only apply to a test program.
+# The library itself is (was) statically enabling -msse during configure, which
+# is now removed.
 
 %build
 %define _lto_cflags %nil
 autoreconf -fiv
-# Enabling MMX could be safe.. I see cpuid calls in the source
 %configure \
-%ifarch i586 i686
-	--enable-mmx \
-%endif
-%ifarch x86_64
-	--enable-sse --enable-sse2 \
-%endif
 	--disable-static \
 	--enable-doc
 %make_build
