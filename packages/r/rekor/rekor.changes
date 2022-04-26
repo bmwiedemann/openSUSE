@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Tue Apr 26 09:41:49 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- Updated to rekor 0.6.0
+
+  - attempting to fix codeowners file by @bobcallaway in #653
+  - Update the warning text for the GA release. by @dlorenc in #654
+  - Add docs about API stability and deprecation policy by @priyawadhwa in #661
+  - update cross-build and dockerfile to use go 1.17.7 by @cpanato in #666
+  - Move k8s objects out of the default namespace by @k4leung4 in #674
+  - add securityContext to deployment. by @k4leung4 in #678
+  - Add intoto type documentation by @jspeed-meyers in #679
+  - create namespace for rekor config in yaml. by @k4leung4 in #680
+  - Set rekor-cli User-Agent header on requests by @bobcallaway in #684
+  - update security process link by @bobcallaway in #685
+  - explicitly set permissions for github actions by @k4leung4 in #687
+  - Add documentation about Alpine type by @jspeed-meyers in #697
+  - Add code coverage to pull requests. by @k4leung4 in #676
+  - Consistent parenthesis use in Makefile by @k4leung4 in #700
+  - Use logRangesFlag in API, route reads based on TreeID by @lkatalin in #671
+  - Generate release yaml for non-CI builds. by @k4leung4 in #702
+  - Mirror signed release images from GCR to GHCR as part of release by @k4leung4 in #701
+  - build trillian container to existing release. by @k4leung4 in #715
+  - Make the loginfo command a bit more future/backwards proof. by @dlorenc in #718
+  - Switch to using the swag library for pointer manipulation. by @dlorenc in #719
+  - Change TreeID to be of type string instead of int64 by @priyawadhwa in #712
+  - Add sharding e2e test to Github Actions by @priyawadhwa in #714
+  - fix merge conflict by @priyawadhwa in #720
+  - Clearer logging for createAndInitTree by @priyawadhwa in #724
+  - Return virtual index when creating and getting a log entry by @priyawadhwa in #725
+  - Fix copy/paste mistake in repo name. by @k4leung4 in #730
+  - Use reusuable release workflow in sigstore/sigstore by @k4leung4 in #729
+  - Get log proofs by Tree ID by @priyawadhwa in #733
+  - Refactor rekor-cli loginfo by @priyawadhwa in #734
+  - Update loginfo API endpoint to return information about inactive shards by @priyawadhwa in #738
+  - Replace trillian_log_server.log_id_ranges flag with a config file by @priyawadhwa in #742
+  - fix build date format for version command by @cpanato in #745
+  - Require tlog_id when log_id_ranges is passed in by @lkatalin in #739
+  - Use active tree on server startup by @lkatalin in #727
+  - Specify public key for inactive shards in shard config by @priyawadhwa in #746
+  - Add support for providing certificate chain for X509 signature types by @haydentherapper in #747
+  - fix typo in filename by @bobcallaway in #758
+  - Update release jobs and trillian images by @cpanato in #756
+  - Add the SHA256 digest of the intoto payload into the rekor entry by @bobcallaway in #764
+  - Add index to hashed intoto envelope by @asraa in #761
+  - Fix link in types README by @eddiezane in #765
+  - set p.Block after parsing in helm provenance type by @bobcallaway in #759
+  - Fix search without sha prefix by @eddiezane in #767
+  - Add in configmap to release for sharding config by @priyawadhwa in #766
+  - Search inactive trees for GET by UUID requests by @lkatalin in #750
+  - Create EntryID for new artifacts and return EntryID to user by @lkatalin in #623
+  - Update cloudbuild to not fail when copy the images by @cpanato in #773
+
+-------------------------------------------------------------------
 Fri Apr  1 15:13:27 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - Updated to rekor 0.5.0
