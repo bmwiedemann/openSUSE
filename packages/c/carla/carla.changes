@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 26 12:29:08 UTC 2022 - rpm@fthiessen.de
+
+- Update to version 2.4.3:
+  * Fix integration with internal Qt toolbar visibility state
+  * Fix plugin search
+  * Replace CARLA_EXPORT macro with separate API / PLUGIN export options
+  * Set new X-NSM-Exec desktop file property
+
+-------------------------------------------------------------------
 Sat Feb 26 12:55:23 UTC 2022 - edogawa@aon.at
 
 - refactored carla-remove-pkgconf-rpath.patch (changed file paths)
