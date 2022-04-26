@@ -38,6 +38,10 @@ Patch2:         CVE-2022-0240.patch
 Patch3:         CVE-2022-0080.patch
 # PATCH-FIX-UPSTREAM CVE-2022-0481.patch -- https://github.com/mruby/mruby/commit/ae3c99767a27f5c6c584162e2adc6a5d0eb2c54e
 Patch4:         CVE-2022-0481.patch
+# PATCH-FIX-UPSTREAM b1d0296a.patch -- CVE-2022-1286 boo#1198289 
+Patch5:         https://github.com/mruby/mruby/commit/b1d0296a.patch
+# PATCH-FIX-UPSTREAM CVE-2022-1212.patch -- https://github.com/mruby/mruby/commit/3cf291f72224715942beaf8553e42ba8891ab3c6
+Patch6:         CVE-2022-1212.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  pkgconfig

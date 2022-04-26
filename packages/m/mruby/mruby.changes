@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 26 18:57:21 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Add b1d0296a.patch: fixing CVE-2022-1286 / boo#1198289
+- Add CVE-2022-1212.patch: fixing CVE-2022-1212 / boo#1198089
+
+-------------------------------------------------------------------
 Mon Feb 21 11:32:34 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Install libmruby_core library, required by mruby binary
