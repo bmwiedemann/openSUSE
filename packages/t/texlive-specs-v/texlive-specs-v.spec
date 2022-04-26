@@ -19,7 +19,7 @@
 %define texlive_version  2022
 %define texlive_previous 2021
 %define texlive_release  20220321
-%define texlive_noarch   191
+%define texlive_noarch   195
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -27536,7 +27536,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	ed %{buildroot}/${scr} <<-'EOF'
 		1
 		i
-		#! /usr/bin/texlua
+		#! /usr/bin/luatex
 		.
 		w
 		q
