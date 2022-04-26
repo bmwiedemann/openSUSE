@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Tue Apr 26 09:50:07 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 1.7.2
+  - [Cosigned] Fix publicKey unmarshal by @DennyHoang in #1719
+  - fix: add permissions to patch events by @hectorj2f in #1722
+  - Make public all types required to use ValidatePolicy by @jdolitsky in #1727
+  - Add unit tests for IntotoAttestation verifier. by @vaikas in #1728
+  - Remove newline from download sbom output by @ribbybibby in #1732
+  - Fix packages name and binary in the packages by @cpanato in #1734
+  - Fix fulcioroots test and linter error by @haydentherapper in #1741
+  - Support non-ECDSA public keys in certificates by @haydentherapper in #1740
+  - bug: remove old fulcio root and fix fallback target code by @asraa in #1738
+- updated to 1.7.1
+  - pkcs11: fix build instructions by @rgerganov in #1550
+  - add definition for artifact hub to verify the ownership by @cpanato in #1563
+  - Add example using AWS Key Management Service (KMS) by @davivcgarcia in #1564
+  - Start of the necessary pieces to get #1418 and #1419 implemented by @vaikas in #1562
+  - Support deletion of ClusterImagePolicy by @vaikas in #1580
+  - 1417 policy validations by @kkavitha in #1548
+  - Don't lowercase input image refs, just fail by @imjasonh in #1586
+  - Fix #1583 #1582. Disallow regex now until implemented. by @vaikas in #1584
+  - Fix piping 'cosign verify' using fulcio/rekor by @marcofranssen in #1590
+  - Fix #1592 move authorities as siblings of images. by @vaikas in #1593
+  - Add ability to inline secrets from SecretRef to configmap. by @vaikas in #1595
+  - Fix copy/paste mistake in repo name. by @k4leung4 in #1600
+  - Use reusuable release workflow in sigstore/sigstore by @k4leung4 in #1599
+  - Add public key validation by @kkavitha in #1598
+  - Validate a public key in a secret is valid. by @vaikas in #1602
+  - Ensure entry is removed from CM on secret error. by @vaikas in #1605
+  - Add two env variables. One for using Rekor public key from OOB and one for fetching it from Rekor server by @vaikas in #1610
+  - Init entity from ociremote when signing a digest ref by @puerco in #1616
+  - rename ca-key to ca-cert. Fix 1608, 1613 by @vaikas in #1617
+  - improve cosigned validation error messages by @cpanato in #1618
+  - Use latest knative/pkg's configmap informer by @tcnghia in #1615
+  - Included OpenSSF Best Practices Badge by @naveensrinivasan in #1628
+  - FUN.md broke when RecordObj changed to HashedRecordObj by @MitchellJThomas in #1633
+  - update crane to v0.8.0 release by @cpanato in #1635
+  - push latest tag when building a release by @cpanato in #1636
+  - Add extra label and change the latest tag to unstable for non tagged releases by @cpanato in #1637
+  - Document Elastic container registry support by @mgreau in #1641
+  - Validate authority keys by @coyote240 in #1623
+  - feat: tree command utility by @developer-guy in #1603
+  - fix build date format for version command by @cpanato in #1644
+  - Add support for intermediate certificates when verifiying by @haydentherapper in #1631
+  - Prompt user before running cosign clean by @priyawadhwa in #1649
+  - Use ClusterImagePolicy with Keyless + e2e tests for CIP with kind by @vaikas in #1650
+  - KEYLESS.md: Shorten example OAuth URL by @tstromberg in #1661
+  - Use syscall.Stdin for input handle. Fixes #1153 by @mdp in #1657
+  - Add support for certificate chain to verify certificate by @haydentherapper in #1659
+  - First batch of followups to #1650 by @vaikas in #1664
+  - Add certificate chain flag for signing by @haydentherapper in #1656
+  - [attach]: Add specific suffixes mediaTypes to sboms by @hectorj2f in #1663
+  - update font when output the cosign version by @cpanato in #1668
+  - feat: add ability to override registry keychain by @noamichael in #1666
+  - remove replace directive by @cpanato in #1669
+  - Refactor based on discussions in #1650 by @vaikas in #1674
+  - Find all valid entries in verify-blob by @priyawadhwa in #1673
+  - Fix relative paths in Gitub OIDC blob test by @priyawadhwa in #1677
+  - Add support for cert and cert chain flags with PKCS11 tokens by @haydentherapper in #1671
+  - Use cosign @ HEAD for Github OIDC sign blob test by @priyawadhwa in #1678
+  - Make cosign copy copy metadata attached to child images. by @mattmoor in #1682
+  - change file_name_template to PackageName by @strongjz in #1683
+  - Update error message for verify/verify attestation by @haydentherapper in #1686
+  - cosign clean: Don't log failure if the registry responds with 404 by @imjasonh in #1687
+  - verify: add leaf hash verification for tlog entries by @asraa in #1688
+  - Fix handling of policy in verify-attestation by @lcarva in #1672
+  - Add e2e test for attest / verify-attestation by @vaikas in #1685
+  - verify: remove extra calls to rekor for verify and verify-blob by @asraa in #1694
+  - Remove the hardcoded sigstore audience by @mattmoor in #1698
+  - Use ValidatePubKey from sigstore/sigstore by @haydentherapper in #1676
+  - Use the github actions from sigstore/scaffolding. by @vaikas in #1699
+  - sign: set the oidc redirect uri by @hectorj2f in #1675
+  - add back the go mod proxy by @cpanato in #1701
+  - enable 1.23 tests (Test cosigned with ClusterImagePolicy) by @cpanato in #1702
+  - Fix incorrect unmarshalling of SCT response by @haydentherapper in #1704
+  - Make CLI flag for OIDC client secret take a path by @znewman01 in #1705
+  - cosigned: read the public key from the kms authority by @hectorj2f in #1706
+  - fix latest tag when running a release job by @cpanato in #1707
+  - [Cosigned] Parse and store publicKey data earlier by @DennyHoang in #1681
+  - Dont overwrite token set in keyOpts by @puerco in #1709
+  - refactor release job by @cpanato in #1710
+
+-------------------------------------------------------------------
 Fri Apr  1 14:46:30 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 1.6.0

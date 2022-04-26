@@ -17,14 +17,15 @@
 
 
 Name:           cosign
-Version:        1.6.0
+Version:        1.7.2
 Release:        0
-%define revision 4b2c3c0c8ee97f31b9dac3859b40e0a48b8648ee
+%define revision 1b1bca3280994eebe38d35e03bbd66af6214f0f1
 Summary:        Container Signing, Verification and Storage in an OCI registry
 License:        Apache-2.0
 URL:            https://github.com/sigstore/cosign
 Source:         https://github.com/sigstore/cosign/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.bz2
+BuildRequires:  go1.17
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API)
 %{go_nostrip}

@@ -105,4 +105,41 @@
   - convert release cosigned to also generate yaml artifact. by @k4leung4 in #1453 (forwarded request 966616 from msmeissn)</comment>
     <requestid>966617</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>91ae29be12d06234ba01488af038510b</srcmd5>
+    <version>1.7.2</version>
+    <time>1650996946</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.7.2
+  - [Cosigned] Fix publicKey unmarshal by @DennyHoang in #1719
+  - fix: add permissions to patch events by @hectorj2f in #1722
+  - Make public all types required to use ValidatePolicy by @jdolitsky in #1727
+  - Add unit tests for IntotoAttestation verifier. by @vaikas in #1728
+  - Remove newline from download sbom output by @ribbybibby in #1732
+  - Fix packages name and binary in the packages by @cpanato in #1734
+  - Fix fulcioroots test and linter error by @haydentherapper in #1741
+  - Support non-ECDSA public keys in certificates by @haydentherapper in #1740
+  - bug: remove old fulcio root and fix fallback target code by @asraa in #1738
+- updated to 1.7.1
+  - pkcs11: fix build instructions by @rgerganov in #1550
+  - add definition for artifact hub to verify the ownership by @cpanato in #1563
+  - Add example using AWS Key Management Service (KMS) by @davivcgarcia in #1564
+  - Start of the necessary pieces to get #1418 and #1419 implemented by @vaikas in #1562
+  - Support deletion of ClusterImagePolicy by @vaikas in #1580
+  - 1417 policy validations by @kkavitha in #1548
+  - Don't lowercase input image refs, just fail by @imjasonh in #1586
+  - Fix #1583 #1582. Disallow regex now until implemented. by @vaikas in #1584
+  - Fix piping 'cosign verify' using fulcio/rekor by @marcofranssen in #1590
+  - Fix #1592 move authorities as siblings of images. by @vaikas in #1593
+  - Add ability to inline secrets from SecretRef to configmap. by @vaikas in #1595
+  - Fix copy/paste mistake in repo name. by @k4leung4 in #1600
+  - Use reusuable release workflow in sigstore/sigstore by @k4leung4 in #1599
+  - Add public key validation by @kkavitha in #1598
+  - Validate a public key in a secret is valid. by @vaikas in #1602
+  - Ensure entry is removed from CM on secret error. by @vaikas in #1605
+  - Add two env variables. One for using Rekor public key from OOB and one for fetching it from Rekor server by @vaikas in #1610
+  - Init entity from ociremote when signing a digest ref by @puerco in #1616
+  - rename ca-key to ca-cert. Fix 1608, 1613 by @vaikas in #1617 (forwarded request 972815 from msmeissn)</comment>
+    <requestid>972838</requestid>
+  </revision>
 </revisionlist>
