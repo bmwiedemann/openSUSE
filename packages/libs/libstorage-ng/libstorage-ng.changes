@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Mon Apr 25 09:14:49 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#869
+- use some new features of parted 3.5 if available
+- coding style
+- 4.5.5
+
+--------------------------------------------------------------------
 Fri Apr 15 21:57:41 UTC 2022 - opensuse-packaging@opensuse.org
 
 - Translated using Weblate (Russian) (bsc#1149754)
