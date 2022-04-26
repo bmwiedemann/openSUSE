@@ -1,7 +1,7 @@
 #
 # spec file for package kokkos
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,12 +20,12 @@
 Name:           kokkos
 Version:        3.3.00
 Release:        0
-%define         sover 3
-Summary:        A C++ Performance Portability Programming
-#no support for 32-bit archs https://github.com/kokkos/kokkos/issues/2312
+%define         sover 3_3_0
+Summary:        A C++ Performance Portability Programming Library
 License:        BSD-3-Clause
 Group:          System/Libraries
-ExcludeArch:    %ix86 %arm
+#no support for 32-bit archs https://github.com/kokkos/kokkos/issues/2312
+ExcludeArch:    %ix86 %arm powerpc %sparc
 
 URL:            https://github.com/kokkos/kokkos
 Source0:        https://github.com/kokkos/kokkos/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -47,8 +47,9 @@ currently can use OpenMP, Pthreads and CUDA as backend programming models.
 %{kokkos_desc}
 
 %package -n libkokkos%sover
-Summary:        Kokkos library
+Summary:        A C++ Performance Portability Programming Library
 Group:          System/Libraries
+Conflicts:      libkokkos3 <= 3.3.00
 
 %description -n libkokkos%sover
 %{kokkos_desc}
@@ -56,8 +57,8 @@ Group:          System/Libraries
 This package contains the kokkos library.
 
 %package devel
-Summary:        Development package for  %{name} packages
-Group:          System/Libraries
+Summary:        Development package for %{name} packages
+Group:          Development/Libraries/C and C++
 Requires:       hwloc-devel
 Requires:       libkokkos%sover = %{version}-%{release}
 Conflicts:      trilinos-devel
@@ -68,7 +69,7 @@ Conflicts:      trilinos-devel
 This package contains the development files of %{name}.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %{cmake} \
@@ -101,7 +102,7 @@ export LD_LIBRARY_PATH="%{buildroot}/%{_libdir}:$PWD/build/core/unit_test:${LD_L
 %files -n libkokkos%sover
 %doc README.md
 %license LICENSE
-%{_libdir}/libkokkos*.so.%{sover}*
+%{_libdir}/libkokkos*.so.3.3.0
 
 %files devel
 %{_libdir}/libkokkos*.so

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 26 10:40:11 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve rpmlint report "libkokkos3.x86_64: E:
+  shlib-policy-name-error SONAME: libkokkoscontainers.so.3.3.0,
+  expected package suffix: 3_3_0"
+
+-------------------------------------------------------------------
 Tue Oct 12 22:41:31 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove random constraint adjustments again, and use a global
