@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 25 11:10:32 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 5.3.2
+  + Some documentation improvements
+  + Some code refactorings
+  + Mark public API with G_MODULE_EXPORT, not the custom
+    _AMTK_EXTERN macro.
+  + Update license from LGPLv2.1+ to LGPLv3+.
+  + Translation updates.
+
+-------------------------------------------------------------------
 Thu Jan 14 18:03:58 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 5.3.1:

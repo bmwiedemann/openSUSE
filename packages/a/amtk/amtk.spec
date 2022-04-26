@@ -1,7 +1,7 @@
 #
 # spec file for package amtk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2018 Luciano Santos, luc14n0@linuxmail.org.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,12 +20,12 @@
 %define api_ver 5
 %define libamtk libamtk-%{api_ver}-0
 Name:           amtk
-Version:        5.3.1
+Version:        5.3.2
 Release:        0
 Summary:        An Actions, Menus and Toolbars Kit
-License:        LGPL-2.1-or-later
+License:        LGPL-3.0-or-later
 Group:          Development/Libraries/GNOME
-URL:            https://wiki.gnome.org/Projects/Amtk
+URL:            https://gitlab.gnome.org/swilmet/amtk/
 Source0:        https://download.gnome.org/sources/amtk/5.3/%{name}-%{version}.tar.xz
 
 BuildRequires:  gobject-introspection-devel >= 1.42.0
@@ -100,15 +100,14 @@ with AMTK.
 %postun -n %{libamtk} -p /sbin/ldconfig
 
 %files -n %{libamtk}
-%license COPYING
-%doc NEWS
+%license LICENSES/*
 %{_libdir}/libamtk-%{api_ver}.so.*
 
 %files -n typelib-1_0-Amtk-%{api_ver}
 %{_libdir}/girepository-1.0/Amtk-%{api_ver}.typelib
 
 %files devel
-%doc HACKING
+%doc README.md NEWS
 %doc %{_datadir}/gtk-doc/html/%{name}-%{api_ver}
 %{_datadir}/gir-1.0/Amtk-%{api_ver}.gir
 %{_includedir}/amtk-%{api_ver}/
