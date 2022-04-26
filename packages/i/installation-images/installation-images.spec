@@ -74,7 +74,11 @@ ExclusiveArch:  do_not_build
 %if "%{the_version}" == ""
 %error "bad version string"
 %endif
+%ifarch %arm
+%define net_repo https://download.opensuse.org/ports/%{the_arch}/distribution/leap/%{the_version}/repo/oss
+%else
 %define net_repo https://download.opensuse.org/distribution/leap/%{the_version}/repo/oss
+%endif
 %else
 %define with_exfat 1
 %ifarch %arm aarch64 ppc64 ppc64le riscv64 s390x
@@ -691,7 +695,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.50
+Version:        17.51
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
