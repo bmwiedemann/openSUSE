@@ -204,4 +204,16 @@
     <comment>GNOME 42 - ready for impact</comment>
     <requestid>963622</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2d914498de3f4b917e7b75a8daf3cc9e</srcmd5>
+    <version>1.6.2</version>
+    <time>1650996907</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.2:
+  + Fix license in docs.
+  + Fix a Meson error when using as a subproject.
+  + Fix a typo in HdyStyleManager docs.
+  + Updated translations.</comment>
+    <requestid>972499</requestid>
+  </revision>
 </revisionlist>
