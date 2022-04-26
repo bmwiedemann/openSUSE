@@ -26,12 +26,12 @@
 %endif
 
 Name:           git-lfs
-Version:        3.1.2
+Version:        3.1.4
 Release:        0
 Summary:        Git extension for versioning large files
 License:        MIT
 Group:          Development/Tools/Version Control
-URL:            https://git-lfs.github.com/
+URL:            https://github.com/git-lfs/git-lfs
 Source0:        https://github.com/git-lfs/git-lfs/releases/download/v%{version}/git-lfs-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  curl
 BuildRequires:  fdupes
