@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 26 14:58:28 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix a rpmlint error:
+  * libqtermwidget5-0.x86_64: E: shlib-policy-name-error
+    SONAME: libqtermwidget5.so.1, expected package suffix: 1
+
+-------------------------------------------------------------------
 Mon Nov  8 10:08:12 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.0.0:

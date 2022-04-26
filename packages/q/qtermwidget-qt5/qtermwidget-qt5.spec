@@ -46,18 +46,20 @@ BuildRequires:  pkgconfig(Qt5Widgets) >= 5.15
 %description
 %{pack_desc}
 
-%package -n libqtermwidget%{qt_ver}-0
+%package -n libqtermwidget%{qt_ver}-1
 Summary:        %{pack_summ}
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-data >= %{version}
+# Renamed to fix a rpmlint error
+Conflicts:      libqtermwidget%{qt_ver}-0 = 1.0.0
 
-%description -n libqtermwidget%{qt_ver}-0
+%description -n libqtermwidget%{qt_ver}-1
 %{pack_desc}
 
 %package data
 Summary:        QTermWidget data package
 Group:          Development/Libraries/C and C++
-Requires:       libqtermwidget%{qt_ver}-0 = %{version}
+Requires:       libqtermwidget%{qt_ver}-1 = %{version}
 BuildArch:      noarch
 
 %description data
@@ -66,7 +68,7 @@ Data files for qtermwidget library.
 %package devel
 Summary:        QTermWidget devel package
 Group:          Development/Libraries/C and C++
-Requires:       libqtermwidget%{qt_ver}-0 = %{version}
+Requires:       libqtermwidget%{qt_ver}-1 = %{version}
 
 %description devel
 Development environment for qtermwidget library.
@@ -82,10 +84,10 @@ make V=1 %{?_smp_mflags}
 %install
 %cmake_install
 
-%post -n libqtermwidget%{qt_ver}-0 -p /sbin/ldconfig
-%postun -n libqtermwidget%{qt_ver}-0 -p /sbin/ldconfig
+%post -n libqtermwidget%{qt_ver}-1 -p /sbin/ldconfig
+%postun -n libqtermwidget%{qt_ver}-1 -p /sbin/ldconfig
 
-%files -n libqtermwidget%{qt_ver}-0
+%files -n libqtermwidget%{qt_ver}-1
 %license LICENSE
 %doc AUTHORS CHANGELOG README.md
 %{_libdir}/libqtermwidget*.so.*
