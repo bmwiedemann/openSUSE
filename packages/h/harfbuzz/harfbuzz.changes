@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr 24 11:28:52 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 4.2.1:
+  + Make sure hb_blob_create_from_file_or_fail() always returns
+    nullptr in case of failure and not empty blob sometimes
+  + Add --passthrough-tables option to hb-subset
+  + Reinstate a pause after basic features in Khmer shaper, fixing
+    a regression introduced in previous release
+  + Better handling of Regional_Indicator when shaped with RTL-
+    native scripts, reverting earlier fix that caused regressions
+    in AAT shaping
+
+-------------------------------------------------------------------
 Wed Mar 30 17:50:55 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 4.2.0:
