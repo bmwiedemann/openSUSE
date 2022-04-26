@@ -27,7 +27,7 @@
 %global lib_name libavif%{lib_soversion}
 
 Name:           libavif
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        Library for encoding and decoding .avif files
 License:        BSD-2-Clause
@@ -129,7 +129,7 @@ This package holds the development files for libavif.
 %files -n %{lib_name}
 %license LICENSE
 %{_libdir}/libavif.so.%{lib_soversion}
-%{_libdir}/libavif.so.%{lib_soversion}.0.0
+%{_libdir}/libavif.so.%{lib_soversion}.0.1
 
 %files devel
 %license LICENSE
