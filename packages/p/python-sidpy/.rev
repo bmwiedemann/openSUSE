@@ -55,4 +55,12 @@
     <comment></comment>
     <requestid>951932</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>3cf9475b4e8451ec17b5c45f45ab7619</srcmd5>
+    <version>0.0.8</version>
+    <time>1650996932</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove skip for Python 3.10, dask is now available.</comment>
+    <requestid>972763</requestid>
+  </revision>
 </revisionlist>

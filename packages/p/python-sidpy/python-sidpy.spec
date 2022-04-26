@@ -19,7 +19,6 @@
 %define packagename sidpy
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%define skip_python310 1
 Name:           python-sidpy
 Version:        0.0.8
 Release:        0
