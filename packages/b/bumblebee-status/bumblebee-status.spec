@@ -1,7 +1,7 @@
 #
 # spec file for package bumblebee-status
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,6 @@ BuildRequires:  %{python_module feedparser}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module i3ipc}
 BuildRequires:  %{python_module libvirt-python}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module netifaces}
 BuildRequires:  %{python_module power}
 BuildRequires:  %{python_module psutil}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 26 07:27:44 UTC 2022 - pgajdos@suse.com
+
+- python-mock is not required for build
+  https://github.com/tobi-wan-kenobi/bumblebee-status
+
+-------------------------------------------------------------------
 Tue Sep 14 11:01:28 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Replace systemd buildREquires with pkgconfig(systemd: Allow OBS
