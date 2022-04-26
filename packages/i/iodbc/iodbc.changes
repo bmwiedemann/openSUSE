@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 26 10:39:10 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve rpmlint report "libiodbc3.x86_64: E:
+  shlib-policy-name-error SONAME: libiodbc.so.2, expected package
+  suffix: 2"
+
+-------------------------------------------------------------------
 Mon May 31 16:04:11 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.52.14

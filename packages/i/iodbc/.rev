@@ -189,4 +189,12 @@ See COPYING file. Note that the only valid version of the LGPL for iodbc is the 
     <comment></comment>
     <requestid>896829</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>dc47dd8fe8e01b1c1a421e62b5b0941f</srcmd5>
+    <version>3.52.14</version>
+    <time>1650996946</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>972830</requestid>
+  </revision>
 </revisionlist>
