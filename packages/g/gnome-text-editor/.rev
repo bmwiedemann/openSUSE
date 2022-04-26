@@ -23,4 +23,17 @@
     <comment>GNOME 42 - ready for impact</comment>
     <requestid>963603</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5da0836183596a4a78c40d0898c52a24</srcmd5>
+    <version>42.1</version>
+    <time>1651001516</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 42.1:
+  + Improved preference dialog styling for libadwaita. 
+  + Build system fixes.
+  + Fix icons for zoom controls.
+  + Fix titles in save-changes dialog.
+  + Translation updates. (forwarded request 972479 from dimstar)</comment>
+    <requestid>972487</requestid>
+  </revision>
 </revisionlist>

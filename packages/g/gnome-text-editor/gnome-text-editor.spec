@@ -17,7 +17,7 @@
 
 
 Name:           gnome-text-editor
-Version:        42.0
+Version:        42.1
 Release:        0
 Summary:        GNOME Text Editor
 License:        GPL-3.0-or-later
@@ -33,7 +33,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(enchant-2) >= 2.2.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.69
 BuildRequires:  pkgconfig(gtk4) >= 4.3
-BuildRequires:  pkgconfig(gtksourceview-5) >= 5.3.1
+BuildRequires:  pkgconfig(gtksourceview-5) >= 5.4.1
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libadwaita-1)
 
