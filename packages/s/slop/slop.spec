@@ -18,7 +18,7 @@
 
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 Name:           slop
-%define lname	libslopy7_5
+%define lname	libslopy7_6
 Version:        7.6
 Release:        0
 Summary:        Tool to query for a screen region selection
@@ -48,6 +48,8 @@ dimensions to stdout.
 %package -n %{lname}
 Summary:        Screen region selection library
 Group:          System/Libraries
+# slop 7.6 wrongly called this package libslopy7_5
+Conflicts:      libslopy7_5 = 7.6
 
 %description -n %{lname}
 This library implements the slop utility's functionality to mark a

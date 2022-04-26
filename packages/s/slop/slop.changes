@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 25 14:10:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rename libslopy7_5 subpackage to libslopy7_6 to actually match
+  the soname of the library. Conflict wit the previously wrong
+  packaged version.
+
+-------------------------------------------------------------------
 Sun Mar 27 19:30:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.6:
