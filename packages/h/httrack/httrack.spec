@@ -1,7 +1,7 @@
 #
 # spec file for package httrack
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011 Malcolm Lewis malcolmlewis@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,9 +22,9 @@ Name:           httrack
 Version:        3.49.2
 Release:        0
 Summary:        Offline Browser Utility
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Utilities
-Url:            http://www.httrack.com/
+URL:            https://www.httrack.com/
 Source0:        https://mirror.httrack.com/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE httrack-fix-strict-aliasing-punning.patch malcolmlewis@opensuse.org -- Add -fno-strict-aliasing to DEFAULT_CFLAGS
 Patch0:         httrack-fix-strict-aliasing-punning.patch

@@ -82,4 +82,12 @@
 </comment>
     <requestid>560894</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>92a9f9fece6ab6010b77d04ac76fa7e0</srcmd5>
+    <version>3.49.2</version>
+    <time>1650996965</time>
+    <user>dimstar_suse</user>
+    <comment>- url -&gt; https</comment>
+    <requestid>972905</requestid>
+  </revision>
 </revisionlist>
