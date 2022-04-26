@@ -9788,7 +9788,7 @@ unsorted:
   - libatkmm-1_6-1-32bit: [x86_64] 
   - libatkmm-2_36-1 
   - libatkmm-2_36-1-32bit: [x86_64] 
-  - libatlascpp-0_6-1 
+  - libatlascpp-0_6-3 
   - libatomic1-32bit: [x86_64] 
   - libatomic1-gcc10 
   - libatomic1-gcc10-32bit: [x86_64] 
@@ -10544,11 +10544,11 @@ unsorted:
   - libdc1394-25-32bit: [x86_64] 
   - libdc1394-devel 
   - libdc1394-tools 
-  - libdcmtk3_6 
+  - libdcmtk16 
   - libdconf1-32bit: [x86_64] 
   - libddccontrol0 
   - libddcutil-devel 
-  - libddcutil3 
+  - libddcutil4 
   - libdde-file-manager5 
   - libdde-network-utils1 
   - libdde-wayland-client0 
@@ -10643,7 +10643,7 @@ unsorted:
   - libdrumstick-rt2-plugins 
   - libdrumstick-widgets-lang 
   - libdrumstick-widgets2 
-  - libdruntime-ldc96 
+  - libdruntime-ldc99 
   - libdrvproxy2 
   - libdtkcore5 
   - libdtkgui5 
@@ -12008,7 +12008,7 @@ unsorted:
   - libldapcpp-devel 
   - libldastoolsal7 
   - libldb-devel 
-  - libldc-jit96 
+  - libldc-jit99 
   - libldl-doc 
   - libldl2 
   - libldm-1_0-0: [i586] 
@@ -12571,6 +12571,9 @@ unsorted:
   - libnilfs0 
   - libnilfscleaner0 
   - libnilfsgc0 
+  - libnitrokey-devel 
+  - libnitrokey-udev 
+  - libnitrokey3 
   - libnjb 
   - libnjb-devel 
   - libnjb5 
@@ -13037,7 +13040,7 @@ unsorted:
   - libphdi-tools 
   - libphdi1 
   - libphobos2-0_98 
-  - libphobos2-ldc96 
+  - libphobos2-ldc99 
   - libphonenumber-devel 
   - libphysfs-devel 
   - libphysfs1 
@@ -14690,7 +14693,6 @@ unsorted:
   - libwayland-cursor0-32bit: [x86_64] 
   - libwayland-egl1-32bit: [x86_64] 
   - libwayland-server0-32bit: [x86_64] 
-  - libwaylandpp0 
   - libwbxml2-1 
   - libwbxml2-devel 
   - libwcs7 
@@ -22429,6 +22431,7 @@ unsorted:
   - python310-azure-mgmt-resourcehealth 
   - python310-azure-mgmt-resourcemover 
   - python310-azure-mgmt-scheduler 
+  - python310-azure-mgmt-scvmm 
   - python310-azure-mgmt-search 
   - python310-azure-mgmt-security 
   - python310-azure-mgmt-securityinsight 
@@ -23647,10 +23650,12 @@ unsorted:
   - python310-mutt-ics 
   - python310-mygpoclient 
   - python310-mypy 
+  - python310-mypy-protobuf 
   - python310-mypy_extensions 
   - python310-mysql-connector-python 
   - python310-mysql-to-sqlite3 
   - python310-mysqlclient 
+  - python310-myst-parser 
   - python310-nagiosplugin 
   - python310-napalm 
   - python310-napalm-arubaos-switch 
@@ -25604,6 +25609,7 @@ unsorted:
   - python38-azure-mgmt-resourcehealth 
   - python38-azure-mgmt-resourcemover 
   - python38-azure-mgmt-scheduler 
+  - python38-azure-mgmt-scvmm 
   - python38-azure-mgmt-search 
   - python38-azure-mgmt-security 
   - python38-azure-mgmt-securityinsight 
@@ -26735,8 +26741,10 @@ unsorted:
   - python38-mutt-ics 
   - python38-mygpoclient 
   - python38-mypy 
+  - python38-mypy-protobuf 
   - python38-mysql-connector-python 
   - python38-mysql-to-sqlite3 
+  - python38-myst-parser 
   - python38-nagiosplugin 
   - python38-napalm 
   - python38-napalm-arubaos-switch 
@@ -28623,6 +28631,7 @@ unsorted:
   - python39-azure-mgmt-resourcehealth 
   - python39-azure-mgmt-resourcemover 
   - python39-azure-mgmt-scheduler 
+  - python39-azure-mgmt-scvmm 
   - python39-azure-mgmt-search 
   - python39-azure-mgmt-security 
   - python39-azure-mgmt-securityinsight 
@@ -29842,10 +29851,12 @@ unsorted:
   - python39-mutt-ics 
   - python39-mygpoclient 
   - python39-mypy 
+  - python39-mypy-protobuf 
   - python39-mypy_extensions 
   - python39-mysql-connector-python 
   - python39-mysql-to-sqlite3 
   - python39-mysqlclient 
+  - python39-myst-parser 
   - python39-nagiosplugin 
   - python39-napalm 
   - python39-napalm-arubaos-switch 
@@ -42987,8 +42998,6 @@ unsorted:
   - wayland-devel 
   - wayland-devel-32bit: [x86_64] 
   - wayland-protocols-devel 
-  - waylandpp 
-  - waylandpp-devel 
   - wayshot 
   - wayvnc 
   - wbg 
