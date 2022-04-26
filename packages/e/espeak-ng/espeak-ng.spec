@@ -1,7 +1,7 @@
 #
 # spec file for package espeak-ng
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,23 @@
 
 %define sover   1
 Name:           espeak-ng
-Version:        1.50
+Version:        1.51
 Release:        0
 Summary:        Software speech synthesizer (text-to-speech)
-License:        GPL-3.0-or-later AND BSD-2-Clause AND Apache-2.0 AND Unicode-DFS-2015
+License:        Apache-2.0 AND BSD-2-Clause AND GPL-3.0-or-later AND Unicode-DFS-2015
 URL:            https://github.com/espeak-ng/espeak-ng
 Source0:        https://github.com/espeak-ng/espeak-ng/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch1:         espeak-ng-1.49.2-fix_no_return_nonvoid-in-configure.patch
-# PATCH-FIX-UPSTREAM espeak-ng-1.50-fix_gcc10_no_common.patch
-Patch2:         espeak-ng-1.50-fix_gcc10_no_common.patch
-# PATCH-FIX_UPSTREAM espeak-ng-1.50-fix_gcc10_no_common_2.patch
-Patch3:         espeak-ng-1.50-fix_gcc10_no_common_2.patch
+# PATCH-FIX_UPSTREAM fix-configure-1171.patch -- https://github.com/espeak-ng/espeak-ng/issues/1171
+Patch0:         https://github.com/espeak-ng/espeak-ng/commit/a25849e4d54a23ae1294b129d5696ca7e144ec8b.patch#/fix-configure-1171.patch
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 BuildRequires:  libtool >= 2.4.2
 BuildRequires:  pcaudiolib-devel
 BuildRequires:  pkgconfig
+BuildRequires:  rubygem(kramdown)
+#SECTION docs
+BuildRequires:  rubygem(ronn)
+#/SECTION
 
 %description
 The eSpeak NG (Next Generation) Text-to-Speech program is a speech
@@ -61,6 +63,7 @@ This package contains executables compatible with the original espeak.
 Summary:        Development files for espeak-ng compatible with espeak
 Requires:       %{name}-compat = %{version}
 Requires:       espeak-ng-devel = %{version}
+Requires:       libespeak-ng%{sover} = %{version}
 Conflicts:      espeak-devel
 
 %description    compat-devel
@@ -74,6 +77,15 @@ Summary:        Software speech synthesizer (text-to-speech)
 Software speech synthesizer (text-to-speech), support
 library.
 
+%package vim
+Summary:        Vim syntax highlighting for espeak-ng data files
+Requires:       %{name} = %{version}-%{release}
+Supplements:    (%{name} and vim)
+BuildArch:      noarch
+
+%description vim
+Optional files for syntax highlighting for espeak-ng data files in vim.
+
 %prep
 %autosetup -p1
 # let's have a versioned data dir
@@ -83,12 +95,10 @@ chmod -x espeak-ng-data/lang/tai/shn
 
 %build
 ./autogen.sh
-%configure \
-   --with-extdict-ru \
-   --with-extdict-zh \
-   --with-extdict-zhy
+%configure
 # build is not parallel-safe
-make V=1
+%make_build
+LC_ALL=C.UTF-8 make docs
 
 %install
 %make_install
@@ -96,17 +106,23 @@ find %{buildroot} \( -name *.a -o -name *.la -o -name libespeak-ng-test* \) -del
 pushd %{buildroot}%{_libdir}
 ln -s lib%{name}.so.%{sover} libespeak.so
 popd
+mv %{buildroot}%{_datadir}/vim/addons %{buildroot}%{_datadir}/vim/vimfiles
+rm -vrf %{buildroot}%{_datadir}/vim/registry
 %fdupes %{buildroot}
+
+%check
+ESPEAK_DATA_PATH=`pwd` LD_LIBRARY_PATH=src:${LD_LIBRARY_PATH} src/espeak-ng ...
 
 %post -n lib%{name}%{sover} -p /sbin/ldconfig
 %postun -n lib%{name}%{sover} -p /sbin/ldconfig
 
 %files
 %doc CHANGELOG.md README.md
-%license COPYING COPYING.APACHE COPYING.BSD2 COPYING.IEEE COPYING.UCD
+%license COPYING COPYING.APACHE COPYING.BSD2 COPYING.UCD
 %{_bindir}/espeak-ng
 %{_bindir}/speak-ng
-%{_datadir}/vim
+%{_mandir}/man1/speak-ng.1%{?ext_man}
+%{_mandir}/man1/espeak-ng.1%{?ext_man}
 
 %files devel
 %exclude %{_includedir}/espeak
@@ -125,5 +141,14 @@ popd
 %files -n lib%{name}%{sover}
 %{_datadir}/espeak-ng-data-%{version}
 %{_libdir}/lib%{name}.so.%{sover}*
+
+%files vim
+%dir %{_datadir}/vim
+%dir %{_datadir}/vim/vimfiles
+%dir %{_datadir}/vim/vimfiles/ftdetect
+%dir %{_datadir}/vim/vimfiles/syntax
+%{_datadir}/vim/vimfiles/ftdetect/espeakfiletype.vim
+%{_datadir}/vim/vimfiles/syntax/espeaklist.vim
+%{_datadir}/vim/vimfiles/syntax/espeakrules.vim
 
 %changelog

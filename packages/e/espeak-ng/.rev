@@ -60,4 +60,93 @@
     <comment>fixes boo#1160389</comment>
     <requestid>762568</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>08da8244c14558d2c2dff99a544e18ea</srcmd5>
+    <version>1.51</version>
+    <time>1650996892</time>
+    <user>dimstar_suse</user>
+    <comment>- added fix-configure-1171.patch to fix configure step
+- remove no longer needed patches:
+  - espeak-ng-1.49.2-fix_no_return_nonvoid-in-configure.patch
+  - espeak-ng-1.50-fix_gcc10_no_common.patch
+  - espeak-ng-1.50-fix_gcc10_no_common_2.patch
+- update to version 1.51:
+ -  Add support for speechPlayer.
+ -  Add more tests to check the various parts of espeak-ng.
+ -  Various changes to clean up the codebase (Juho Hiltunen)
+ -  Remove support for l_length_mods language option
+ -  Restructure &quot;option brackets&quot; language option to &quot;brackets&quot; and &quot;bracketsAnnounced&quot;
+ -  Restructure &quot;stressLength&quot; and &quot;stressAdd&quot; language option
+ -  New Language option: &quot;lowercaseSentence&quot; for ending a sentence if a period is followed by a lower case letter
+ -  Add voice variants
+ -  Rename zh to cmn (Mandarin)
+ -  Rename zhy to yue (Cantonese)
+ -  cmn (Mandarin) now assumes all latin characters all English text
+    Use cmn-latn-pinyin for interpreting latin characters as pinyin
+ -  Update list of voice varants for Android application
+ -  Add Chromium extension (guest271314)
+ -  Replace `ieee80.c` by a free software implementation (Ulrich Müller)
+ - bug fixes:
+ -  Fix reading malformed SSML (Christopher Brannon)
+ -  Fix memory allocation (Christopher Brannon)
+ -  Fix building and phoneme compilation (John Bowler)
+ -  Fix build scripts for Android (Peter Vágner, Minas Tirith Citizen)
+ - documentation:
+ - Add documentation about voice and language options.
+ - Add documentation about dictionary flags.
+ - updated languages:
+ -  ar (Arabic) -- king-dahmanus
+ -  ba (Bashkir) -- boracasli98, Valdis Vitolins, Juho Hiltunen
+ -  cmn (Mandarin) -- Silas S. Brown, Rongcui Dong, Icenowy Zheng, Juho Hiltunen
+ -  de (German) -- Karl Eick, Henry Krumb
+ -  el (Modern Greek) -- Reece Dunn (support for variant Greek letter forms)
+ -  en (English) -- Steven Presser, Ben Talagan
+ -  eo (Esperanto) -- AlsoScratch
+ -  eu (Basque) -- agonzalezd
+ -  fa (Farsi/Persian) -- Shadyar Khodayari
+ -  ga (Gaelic (Irish)) Chen, Chien-ting
+ -  grc (Ancient Greek) -- Reece Dunn (support for variant Greek letter forms)
+ -  hak (Hakka Chinese) -- Juho Hiltunen
+ -  haw (Hawaiian) -- Juho Hiltunen
+ -  ka (Georgian) -- Juho Hiltunen
+ -  kok (Konkani) -- Juho Hiltunen
+ -  nb (Norwegian Bokmål) -- Juho Hiltunen
+ -  nci (Classical Nahuatl) -- Juho Hiltunen
+ -  hy (Armenian) -- tigransimonyan
+ -  ia (Interlingua) -- nesrad
+ -  it (Italian) -- Christian Leo
+ -  ja (Japanese) -- fukuen, Juho Hiltunen
+ -  jbo (Lojban) -- Juho Hiltunen, xunsku
+ -  lv (Latvian) -- Valdis Vitolins
+ -  mi (Māori) -- boracasli98
+ -  py (Pyash) -- Andrii Logan Zvorygin
+ -  shn (Shan Tay Yai) -- ronaldaug
+ -  tr (Turkish) -- boracasli98, SeanTolstoyevski
+ -  ur (Urdu) -- Ejaz Shah
+ -  uz (Uzbek) -- boracasli98, Valdis Vitolins, Andiv06
+ -  yue (Cantonese) -- Andiv06
+ - new languages:
+ -  be (Belarusian) -- Sergei B
+ -  chr (Cherokee) -- Michael Conrad
+ -  cv (Chuvash) -- boracasli98, Valdis Vitolins
+ -  en-us-nyc (English, New York City) -- Richard Calvi
+ -  haw (Hawaiian) -- Valdis Vitolins
+ -  he (Hebrew) -- boracasli98, Valdis Vitolins
+ -  io (Ido) -- José Miguel López, Valdis Vitolins
+ -  lb (Luxembourgish) -- Marco Barnig, Valdis Vitolins
+ -  ltg (Latgalian) -- Valdis Vitolins
+ -  nog (Nogai) -- boracasli98, Valdis Vitolins
+ -  piqd (Klingon) -- Valdis Vitolins
+ -  qu (Quechua) -- Valdis Vitolins
+ -  qdb (Lang Belta) -- Da Def, Valdis Vitolins
+ -  qya (Quenya) -- Lucas Werkmeister
+ -  sjn (Sindarin) -- Lucas Werkmeister
+ -  smj (Lule Saami) -- Katri Hiovain, Sebastien Le Maguer
+ -  th (Thai) -- Valdis Vitolins
+ -  tk (Turkmen) -- boracasli98, Valdis Vitolins
+ -  ug (Uyghur) -- boracasli98, Valdis Vitolins
+ -  uk (Ukrainian) -- Valdis Vitolins
+</comment>
+    <requestid>972411</requestid>
+  </revision>
 </revisionlist>
