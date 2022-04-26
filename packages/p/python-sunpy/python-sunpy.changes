@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 26 10:33:52 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update sunpy-test-ignore-warnings.patch to include warnings
+  filter for Pillow 10 -- gh#sunpy/sunpy#6022
+
+-------------------------------------------------------------------
 Tue Apr  5 10:11:48 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add sunpy-test-ignore-warnings.patch

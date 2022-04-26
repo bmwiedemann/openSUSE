@@ -2,13 +2,15 @@ Index: sunpy-3.1.5/setup.cfg
 ===================================================================
 --- sunpy-3.1.5.orig/setup.cfg
 +++ sunpy-3.1.5/setup.cfg
-@@ -141,6 +141,9 @@ filterwarnings =
+@@ -141,6 +141,11 @@ filterwarnings =
  	ignore:invalid value encountered in less:RuntimeWarning
  	ignore:Please use `gaussian_filter` from the `scipy.ndimage` namespace:DeprecationWarning
  	ignore:Please use `laplace` from the `scipy.ndimage` namespace:DeprecationWarning
 +	ignore:The distutils.sysconfig module:DeprecationWarning
 +	ignore:leap-second file is expired:astropy.utils.iers.iers.IERSStaleWarning
 +	ignore:ERFA function.*dubious year:astropy.utils.exceptions.ErfaWarning
++	# This should be removed when astropy v5.0.5 is released (see astropy #13044)
++	ignore:FLIP_TOP_BOTTOM is deprecated and will be removed in Pillow 10:DeprecationWarning
  
  [pycodestyle]
  max_line_length = 110
