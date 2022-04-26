@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,9 +72,10 @@ test -d packaging.egg-info
 
 %if %{with test}
 %check
+%if "%{python_flavor}" >= "python362"
 # no-legacyversion-warning.patch causes these to fail
 %pytest -k "not (test_legacy_specifier_is_deprecated or test_legacy_version_is_deprecated)"
-
+%endif
 %endif # %%{with_test}
 
 %if !%{with test}
