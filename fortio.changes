@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 26 06:15:12 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.28.0:
+  * Track success vs failure, add that and details string for richer access log, visualize new errors histogram (#552)
+
+-------------------------------------------------------------------
 Wed Apr 20 05:47:11 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.27.0:
