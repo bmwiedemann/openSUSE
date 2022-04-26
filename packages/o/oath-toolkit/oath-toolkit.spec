@@ -1,7 +1,7 @@
 #
 # spec file for package oath-toolkit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Toolkit for one-time password authentication systems
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/Security
-URL:            http://www.nongnu.org/oath-toolkit/
+URL:            https://www.nongnu.org/oath-toolkit/
 Source:         https://download-mirror.savannah.gnu.org/releases/%{name}/%{name}-%{version}.tar.gz
 Source1:        https://download-mirror.savannah.gnu.org/releases/%{name}/%{name}-%{version}.tar.gz.sig
 Source99:       %{name}.keyring
