@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiobotocore
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-aiobotocore
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Async client for aws services
 License:        Apache-2.0
@@ -36,11 +36,12 @@ BuildRequires:  %{python_module Flask-Cors}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module aiohttp >= 3.3.1}
 BuildRequires:  %{python_module aioitertools >= 0.5.1}
-BuildRequires:  %{python_module botocore >= 1.23.24}
+BuildRequires:  %{python_module botocore >= 1.24.21}
 BuildRequires:  %{python_module dill}
 BuildRequires:  %{python_module docker}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module moto-all}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
@@ -48,10 +49,10 @@ BuildRequires:  %{python_module wrapt >= 1.10.10}
 # /SECTION
 Requires:       python-aiohttp >= 3.3.1
 Requires:       python-aioitertools >= 0.5.1
-Requires:       python-botocore >= 1.20.106
+Requires:       python-botocore >= 1.24.21
 Requires:       python-wrapt >= 1.10.10
-Recommends:     aws-cli >= 1.19.106
-Recommends:     python-boto3 >= 1.17.106
+Recommends:     aws-cli >= 1.22.76
+Recommends:     python-boto3 >= 1.21.21
 BuildArch:      noarch
 
 %python_subpackages
@@ -61,6 +62,8 @@ Async Python client for aws services.
 
 %prep
 %setup -q -n aiobotocore-%{version}
+# unpin and hope for the best
+sed -E 's/(botocore>=.*),<[0-9.]*/\1/' -i setup.py
 
 %build
 %python_build
@@ -73,12 +76,16 @@ Async Python client for aws services.
 # import tests from local dir
 export PYTHONPATH=":x"
 export BOTO_CONFIG=/dev/null
-# different version, different digest hash
-donttest="test_patches"
+# different versions, different digest hash
+donttest="test_patches or test_version"
 # docker image not successful
 donttest+=" or test_run_lambda"
 # no connection to httpbin.org
 donttest+=" or test_publish_to_http"
+# no awslambda dynamodb backend in mock available
+donttest+=" or test_dynamodb"
+# s3client fails with KeyError for resp['Contents'] -- https://github.com/spulec/moto/issues/5030
+donttest+=" or test_can_delete_urlencoded_object"
 %pytest -m moto -n auto -k "not ($donttest)"
 
 %files %{python_files}

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 25 16:27:29 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.2.0
+  * remove deprecated APIs
+  * bump to botocore 1.24.21
+  * re-enable retry of aiohttp.ClientPayloadError
+- Release 2.1.2
+  * fix httpsession close call 
+- Release 2.1.1
+  * implement asynchronous non-blocking adaptive retry strategy
+
+-------------------------------------------------------------------
 Tue Jan 11 21:35:55 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Remove obsolete python36 skip of tests
