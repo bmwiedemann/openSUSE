@@ -1984,4 +1984,12 @@ WANTED for 13.1 (forwarded request 202421 from RBrownCCB)</comment>
 - spec-cleaner reorderings (forwarded request 966455 from dirkmueller)</comment>
     <requestid>966824</requestid>
   </revision>
+  <revision rev="252" vrev="1">
+    <srcmd5>bd81b4efa4cb363940ea785f8872a29a</srcmd5>
+    <version>2.72.1</version>
+    <time>1650996902</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 972164 from dimstar)</comment>
+    <requestid>972482</requestid>
+  </revision>
 </revisionlist>

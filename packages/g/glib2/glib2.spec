@@ -30,7 +30,7 @@
 %define libgthread libgthread-%{libver}
 %bcond_without     systemtap
 Name:           glib2%{psuffix}
-Version:        2.72.0
+Version:        2.72.1
 Release:        0
 Summary:        General-Purpose Utility Library
 License:        LGPL-2.1-or-later
@@ -508,7 +508,6 @@ done
 %files tests-devel
 %license COPYING
 %{_libexecdir}/installed-tests
-%attr(0444 - -) %{_libexecdir}/installed-tests/glib/x-content/win32-software/autorun.exe
 %attr(0755 - -) %{_libexecdir}/installed-tests/glib/taptestrunner.py
 %attr(0755 - -) %{_libexecdir}/installed-tests/glib/x-content/unix-software/autorun.sh
 %{_datadir}/installed-tests
