@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 22 20:42:31 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Python package: Do not use C json parser on 32bit as large numbers
+  will overflow.
+
+-------------------------------------------------------------------
 Sun Apr  3 13:12:28 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Mention openvswitch-rpmlintrc as Source in spec file

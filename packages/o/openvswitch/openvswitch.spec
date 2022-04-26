@@ -402,6 +402,10 @@ export CPPFLAGS="-I %{buildroot}%{_includedir} -I %{buildroot}%{_includedir}/ope
 %python_build
 %python_install
 popd
+# Currently (version 2.17) the c parser for json is broken on 32bit (int overflow for number parsing)
+%ifarch i386 i586 i686
+%python_expand rm -v %{buildroot}%{$python_sitearch}/ovs/_json*.so
+%endif
 
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
