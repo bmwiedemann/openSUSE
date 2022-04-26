@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr 26 06:21:45 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.17.5:
+  * Bump goreleaser to v1.7.0
+  * Update v0.17.5 release notes (#824)
+  * Publish sealed-secret-controller in Dockerhub (#823)
+  * Enable goimports in golangci-lint (#816)
+  * Added a nosec comment to a deferred f.close call (#793)
+  * Format code with goimports (#815)
+  * Add a nosec directory to allow http.Dir("/") (#812)
+  * Include cosign public key (#814)
+  * Adding post-quantum analysis and recommendations (#801)
+  * Updated the distroless image verification to use a local key (#813)
+  * Add cosign verification for distroless image (#796)
+  * Crypto doc rewrite (#794)
+  * Chart: bump image version (#807)
+  * Update VIB pipeline (#809)
+  * Run CI with the last two Go releases (#805)
+
+-------------------------------------------------------------------
 Fri Apr 01 07:11:32 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.17.4:
