@@ -102,4 +102,13 @@
     <comment></comment>
     <requestid>928780</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6ac15b1e49868243a63d889a9ffc28fd</srcmd5>
+    <version>1.20.2</version>
+    <time>1650996911</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.20.2:
+- Adds compatibility for Gtk4 gnome-control-center (forwarded request 972432 from dkosovic)</comment>
+    <requestid>972518</requestid>
+  </revision>
 </revisionlist>
