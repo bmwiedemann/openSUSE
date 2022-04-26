@@ -1,7 +1,7 @@
 #
 # spec file for package tupitube
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2016 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -102,8 +102,12 @@ dos2unix src/shell/html/css/tupitube.css
 
 # Add path to ffmpeg
 ffmpeg_include=$(pkg-config --cflags-only-I libavutil)
+
+# Add Quazip path
+quazip_include=$(pkg-config --cflags-only-I quazip1-qt5)
+
 find . -type f -name \*.pro | while read f; do
-echo "QMAKE_CXXFLAGS += %{optflags} ${ffmpeg_include}" >> "$f"
+echo "QMAKE_CXXFLAGS += %{optflags} ${ffmpeg_include} ${quazip_include}" >> "$f"
 done
 
 # Remove shebang
