@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 24 20:14:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 1.6.2:
+  + Fix license in docs.
+  + Fix a Meson error when using as a subproject.
+  + Fix a typo in HdyStyleManager docs.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 18 21:55:36 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.6.1:
