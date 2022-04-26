@@ -1,7 +1,7 @@
 #
 # spec file for package lilv
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,28 @@
 #
 
 
+%bcond_with     docs
 %define sover 0
 %define sordversion %(pkg-config --modversion sord-0)
 %define serdversion %(pkg-config --modversion serd-0)
 Name:           lilv
-Version:        0.24.10
+Version:        0.24.12
 Release:        0
 Summary:        C library to make use of LV2 plugins
 License:        ISC
 Group:          Development/Libraries/C and C++
-URL:            https://drobilla.net/software/lilv
+URL:            https://drobilla.net/software/lilv.html
 Source0:        https://download.drobilla.net/lilv-%{version}.tar.bz2
-Source98:       baselibs.conf
 Source99:       lilv-rpmlintrc
+Source98:       baselibs.conf
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  pkgconfig
+%if %{with docs}
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-sphinx_lv2_theme
+%endif
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
 BuildRequires:  swig
@@ -89,8 +94,10 @@ python3 ./waf configure \
   --libdir=%{_libdir} \
   --docdir=%{_defaultdocdir} \
   --configdir=%{_sysconfdir} \
-  --test \
-  --docs
+%if %{with docs}
+  --docs \
+%endif
+  --test
 # waf only understands -j, so do not use smp_mflags
 python3 ./waf build -v %{?_smp_mflags}
 
@@ -100,6 +107,10 @@ if [ %{python3_sitelib} != %{python3_sitearch} ]; then
   mkdir -p %{buildroot}%{python3_sitearch}
   mv %{buildroot}%{python3_sitelib}/lilv.py %{buildroot}%{python3_sitearch}/
 fi
+# Fix E: filelist-forbidden-bashcomp-userdirs /etc/bash_completion.d/lilv
+mkdir -p %{buildroot}%{_datadir}/bash-completion/completions/
+mv %{buildroot}%{_sysconfdir}/bash_completion.d/lilv %{buildroot}%{_datadir}/bash-completion/completions/
+rmdir %{buildroot}%{_sysconfdir}/bash_completion.d
 
 %post -n liblilv-0-%{sover} -p /sbin/ldconfig
 %postun -n liblilv-0-%{sover} -p /sbin/ldconfig
@@ -114,18 +125,20 @@ fi
 %{_mandir}/man1/lv2info.1%{?ext_man}
 %{_mandir}/man1/lv2ls.1%{?ext_man}
 %{_mandir}/man1/lv2apply.1%{?ext_man}
-%{_sysconfdir}/bash_completion.d/lilv
+%{_datadir}/bash-completion/completions/%{name}
 
 %files -n liblilv-0-%{sover}
 %license COPYING
 %{_libdir}/liblilv-0.so.%{sover}*
 
 %files -n liblilv-0-devel
+%{_libdir}/pkgconfig/lilv-0.pc
 %{_libdir}/liblilv-0.so
 %{_includedir}/lilv-0/
-%{_libdir}/pkgconfig/lilv-0.pc
+%if %{with docs}
 %{_defaultdocdir}/lilv-0/
 %{_mandir}/man3/*
+%endif
 
 %files -n python3-lilv
 %{python3_sitearch}/lilv.py
