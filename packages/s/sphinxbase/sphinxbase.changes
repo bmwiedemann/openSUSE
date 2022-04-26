@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 26 11:14:45 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve rpmlint report "libsphinxbase1.x86_64: E:
+  shlib-policy-name-error SONAME: libsphinxad.so.0, expected
+  package suffix: 0".
+
+-------------------------------------------------------------------
 Thu Mar 26 15:34:45 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - sphinxbase-devel now conflicts with sphinxbase5-devel

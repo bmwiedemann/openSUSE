@@ -1,7 +1,7 @@
 #
 # spec file for package sphinxbase
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define sover 1
 Name:           sphinxbase
 Version:        0.8
 Release:        0
@@ -46,7 +45,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Cython
 BuildRequires:  python3-devel
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %if 0%{?suse_version} <= 1210
 BuildRequires:  liblapack3
 %else
@@ -57,21 +56,30 @@ BuildRequires:  lapack-devel
 CMU Sphinx toolkit is a speech recognition tool and has a number of packages for
 different tasks and applications.
 
-%package -n libsphinxbase%{sover}
+%package -n libsphinxbase1
 Summary:        Sphinxbase speech recognizer library
 Group:          System/Libraries
 
-%description -n libsphinxbase%{sover}
+%description -n libsphinxbase1
+CMU Sphinx toolkit is a speech recognition tool and has a number of packages for
+different tasks and applications.
+
+%package -n libsphinxad0
+Summary:        Sphinxbase speech recognizer library
+Group:          System/Libraries
+
+%description -n libsphinxad0
 CMU Sphinx toolkit is a speech recognition tool and has a number of packages for
 different tasks and applications.
 
 %package devel
 Summary:        Headers for support library required by Pocketsphinx
 Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
 Requires:       alsa-devel
 Requires:       lapack-devel
 Requires:       libsndfile-devel
+Requires:       libsphinxad0 = %{version}-%{release}
+Requires:       libsphinxbase1 = %{version}-%{release}
 Conflicts:      sphinxbase5-devel
 
 %description devel
@@ -84,8 +92,8 @@ different tasks and applications.
 Summary:        Python3 bindings for sphinxbase
 Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
-Conflicts:      python3-sphinxbase5
 Conflicts:      python3-pocketsphinx-python <= 0.1.3
+Conflicts:      python3-sphinxbase5
 
 %description -n python3-sphinxbase
 Python3 bindings for %{name}-%{version}
@@ -142,8 +150,10 @@ if [ ! -f %{_bindir}/sphinx_pitch ]; then
     update-alternatives --remove sphinx_pitch %{_bindir}/sphinx_pitch-%{version}
 fi
 
-%post   -n libsphinxbase%{sover} -p /sbin/ldconfig
-%postun -n libsphinxbase%{sover} -p /sbin/ldconfig
+%post   -n libsphinxad0 -p /sbin/ldconfig
+%postun -n libsphinxad0 -p /sbin/ldconfig
+%post   -n libsphinxbase1 -p /sbin/ldconfig
+%postun -n libsphinxbase1 -p /sbin/ldconfig
 
 %files
 %doc AUTHORS ChangeLog README NEWS
@@ -164,9 +174,11 @@ fi
 %{_bindir}/sphinx_cont_fileseg
 %{_bindir}/sphinx_lm_sort
 
-%files -n libsphinxbase%{sover}
-%{_libdir}/libsphinxbase.so.%{sover}*
+%files -n libsphinxad0
 %{_libdir}/libsphinxad.so.*
+
+%files -n libsphinxbase1
+%{_libdir}/libsphinxbase.so.*
 
 %files devel
 %{_libdir}/libsphinxbase.so
