@@ -1,10 +1,10 @@
 ---
  texmf-dist/scripts/texlive/fmtutil-sys.sh |    1 +
  texmf-dist/scripts/texlive/fmtutil.pl     |   20 ++++++++++++++------
- texmf-dist/scripts/texlive/mktexlsr.pl    |    2 +-
+ texmf-dist/scripts/texlive/mktexlsr.pl    |    9 +++++++--
  texmf-dist/scripts/texlive/updmap-sys.sh  |    1 +
  texmf-dist/scripts/texlive/updmap.pl      |   16 ++++++++++------
- 5 files changed, 27 insertions(+), 13 deletions(-)
+ 5 files changed, 33 insertions(+), 14 deletions(-)
 
 --- texmf-dist/scripts/texlive/fmtutil-sys.sh
 +++ texmf-dist/scripts/texlive/fmtutil-sys.sh	2018-05-11 10:51:14.298775065 +0000
@@ -71,8 +71,30 @@
      # The original script just skipped it but in TeX Live we expect that
      # all activated formats are also buildable, thus return failure.
 --- texmf-dist/scripts/texlive/mktexlsr.pl
-+++ texmf-dist/scripts/texlive/mktexlsr.pl	2021-12-09 13:52:58.586622149 +0000
-@@ -636,7 +636,7 @@ sub main {
++++ texmf-dist/scripts/texlive/mktexlsr.pl	2022-04-25 10:55:36.506971390 +0000
+@@ -126,6 +126,7 @@ package TeX::LSR;
+ use Cwd;
+ use File::Spec::Functions;
+ use File::Find;
++use File::Basename;
+ 
+ =pod
+ 
+@@ -354,8 +355,12 @@ sub write {
+     $self->setup_filename();
+     $fn = catfile($self->{'root'}, $self->{'filename'});
+   }
++  if (! -e $fn && ! -w dirname($fn)) {
++    warn "TeX::LSR: ls-R file does not exists, skipping: $fn\n" if $opt_verbose;
++    return 0;
++  }
+   if (-e $fn && ! -w $fn) {
+-    warn "TeX::LSR: ls-R file not writable, skipping: $fn\n";
++    warn "TeX::LSR: ls-R file not writable, skipping: $fn\n" if $opt_verbose;
+     return 0;
+   }
+   open (LSR, ">$fn") || die "TeX::LSR writable but cannot open??; $!";
+@@ -636,7 +641,7 @@ sub main {
          $lsr->write(sort => $opt_sort);
        }
      } else {
