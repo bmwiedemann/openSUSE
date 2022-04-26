@@ -2022,4 +2022,15 @@ Please do NOT put in Staging E - but different staging prj. This is against 3.12
     <comment>GNOME 42 - ready for impact</comment>
     <requestid>963563</requestid>
   </revision>
+  <revision rev="235" vrev="1">
+    <srcmd5>9fbf0482d9065bb0290712c88fa01755</srcmd5>
+    <version>3.44.1</version>
+    <time>1650996905</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.44.1:
+  + Bugs fixed:
+    - CalDAV: Free/Busy not working with Nextcloud.
+    - EWebDAVSession: Correct extract of href Location header. (forwarded request 972478 from dimstar)</comment>
+    <requestid>972486</requestid>
+  </revision>
 </revisionlist>
