@@ -19,7 +19,7 @@
 %define texlive_version  2022
 %define texlive_previous 2021
 %define texlive_release  20220321
-%define texlive_noarch   191
+%define texlive_noarch   195
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -21268,14 +21268,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:123} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:124} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    # Correct wrong luaTeX scripts if any
+    # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/doc/latex/greek-fontenc/lgr2licr.lua
     do
 	test -e %{buildroot}/$scr || continue
 	ed %{buildroot}/${scr} <<-'EOF'
 		1
-		i
-		#! /usr/bin/texlua
+		s@/env[[:blank:]]\+@/@
 		.
 		w
 		q
