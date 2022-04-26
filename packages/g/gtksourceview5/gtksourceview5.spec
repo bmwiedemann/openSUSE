@@ -18,7 +18,7 @@
 
 %define _name   gtksourceview
 Name:           gtksourceview5
-Version:        5.4.0
+Version:        5.4.1
 Release:        0
 Summary:        GTK+ Source Editing Widget
 License:        LGPL-2.1-or-later
