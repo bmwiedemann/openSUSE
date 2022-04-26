@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 21 07:25:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.1.11:
+  - Allow the user to get the runtime library version (Richard Hughes)
+  - Fix incorrect certtool being called on macOS (Richard Hughes)
+
+-------------------------------------------------------------------
 Sun Apr 10 13:27:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.1.10:
