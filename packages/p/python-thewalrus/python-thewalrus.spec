@@ -18,15 +18,12 @@
 
 %define packagename thewalrus
 %define skip_python2 1
-# no dask for python 3.10 yet
-%define skip_python310 1
 %{?!python_module:%define python_module() python3-%{**}}
 Name:           python-thewalrus
 Version:        0.18.0
 Release:        0
 Summary:        An open-source software architecture for photonic quantum computing
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/XanaduAI/thewalrus
 Source:         https://github.com/XanaduAI/thewalrus/archive/v%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
 BuildRequires:  %{python_module dask-delayed}

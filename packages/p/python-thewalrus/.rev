@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>951930</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e2be0b4a6bee61da1b79d7df1a584964</srcmd5>
+    <version>0.18.0</version>
+    <time>1650996931</time>
+    <user>dimstar_suse</user>
+    <comment>- No longer skip Python 3.10, dask is now available.</comment>
+    <requestid>972736</requestid>
+  </revision>
 </revisionlist>
