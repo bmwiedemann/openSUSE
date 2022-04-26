@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr 26 06:17:04 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.9.1:
+  * Revert "Add angle brackets around urls in requirementsTable"
+  * Generated example charts with new version
+
+-------------------------------------------------------------------
+Tue Apr 26 06:15:37 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.9.0:
+  * Updates alpine docker image to fix issue #124
+  * Add angle brackets around urls in requirementsTable
+  * Fix issue where an empty global object in a child chart would be listed in the root docs
+  * Warn about remote dependencies without erroring; Parse local file:// repositories
+  * Fix documented globals prefixed with the sub-chart alias
+  * Tolerate dependency charts without values.yaml
+  * New flag --document-dependency-values
+  * Runs newest helm-docs to update docs for example charts
+
+-------------------------------------------------------------------
 Mon Apr 04 07:00:38 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.8.1:

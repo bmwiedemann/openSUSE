@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           helm-docs
-Version:        1.8.1
+Version:        1.9.1
 Release:        0
 Summary:        A tool for automatically generating markdown documentation for helm charts
 License:        GPL-3.0-only
