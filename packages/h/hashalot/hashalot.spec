@@ -1,7 +1,7 @@
 #
 # spec file for package hashalot
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,10 +20,10 @@ Name:           hashalot
 Version:        0.3
 Release:        0
 Summary:        Read a passphrase and print a hash
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Base
-Url:            http://www.paranoiacs.org/~sluskyb/hacks/hashalot/
-Source:         http://www.paranoiacs.org/~sluskyb/hacks/hashalot/hashalot-%{version}.tar.gz
+URL:            https://www.paranoiacs.org/~sluskyb/hacks/hashalot/
+Source:         https://www.paranoiacs.org/~sluskyb/hacks/hashalot/hashalot-%{version}.tar.gz
 Patch10:        hashalot-fixes.diff
 Patch11:        hashalot-libgcrypt.diff
 Patch12:        hashalot-ctrl-d.diff

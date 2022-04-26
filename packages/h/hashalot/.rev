@@ -36,4 +36,12 @@
     <comment>1</comment>
     <requestid>291210</requestid>
   </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>c6ca7ac4158ae73bbc545597bfc75ac7</srcmd5>
+    <version>0.3</version>
+    <time>1650996966</time>
+    <user>dimstar_suse</user>
+    <comment>- use https url</comment>
+    <requestid>972906</requestid>
+  </revision>
 </revisionlist>
