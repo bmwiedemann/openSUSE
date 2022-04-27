@@ -1,7 +1,7 @@
 #
 # spec file for package ffcall
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%global somajor	0
 
 # This package uses assembly to do its work.  This is the entire list of
 # supported architectures understood by RPM, even those not currently supported
@@ -37,7 +35,10 @@ Source0:        https://ftp.gnu.org/gnu/libffcall/libffcall-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/libffcall/libffcall-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=libffcall&download=1#/%{name}.keyring
 Provides:       ffcall-devel
-Requires:       libffcall%{somajor} = %{version}
+Requires:       libavcall1 = %{version}-%{release}
+Requires:       libcallback1 = %{version}-%{release}
+Requires:       libffcall0 = %{version}-%{release}
+Requires:       libtrampoline1 = %{version}-%{release}
 ExclusiveArch:  %{ffcall_arches}
 
 %if ! %{defined _rpmmacrodir}
@@ -54,19 +55,48 @@ packages are:
  - callback: closures with variable arguments as first-class C functions
    (a reentrant combination of vacall and trampoline)
 
-%package -n libffcall%{somajor}
+%package -n libavcall1
+Summary:        FFI library for variadic argument functions
+Group:          System/Libraries
+Conflicts:      libffcall0 < %{version}-%{release}
+
+%description -n libavcall1
+A library for building foreign function call interfaces in embedded
+interpreters.
+This library allows calling C functions with variable argument
+prototypes.
+
+%package -n libcallback1
+Summary:        FFI library for closures with variable arguments
+Group:          System/Libraries
+Conflicts:      libffcall0 < %{version}-%{release}
+
+%description -n libcallback1
+A library for building foreign function call interfaces in embedded
+interpreters.
+
+This library allows for closures with variable arguments as
+first-class C functions (a reentrant combination of vacall and
+trampoline).
+
+%package -n libffcall0
 Summary:        Libraries for foreign function call interfaces
 Group:          System/Libraries
 
-%description -n libffcall%{somajor}
-This is a collection of four libraries which can be used to build
-foreign function call interfaces in embedded interpreters.  The four
-packages are:
- - avcall: calling C functions with variable arguments
- - vacall: C functions accepting variable argument prototypes
- - trampoline: closures as first-class C functions
- - callback: closures with variable arguments as first-class C functions
-   (a reentrant combination of vacall and trampoline)
+%description -n libffcall0
+A library for building foreign function call interfaces in embedded
+interpreters.
+
+%package -n libtrampoline1
+Summary:        FFI library for closures as first-class C functions
+Group:          System/Libraries
+Conflicts:      libffcall0 < %{version}-%{release}
+
+%description -n libtrampoline1
+A library for building foreign function call interfaces in embedded
+interpreters.
+This library allows using closures (lambdas) as first-class C
+functions.
 
 %prep
 %setup -q -n libffcall-%{version}
@@ -123,11 +153,16 @@ for page in *; do
   mv $page %{name}-$page
 done
 
-%post -n libffcall%{somajor} -p /sbin/ldconfig
-%postun -n libffcall%{somajor} -p /sbin/ldconfig
+%post   -n libavcall1 -p /sbin/ldconfig
+%postun -n libavcall1 -p /sbin/ldconfig
+%post   -n libcallback1 -p /sbin/ldconfig
+%postun -n libcallback1 -p /sbin/ldconfig
+%post   -n libffcall0 -p /sbin/ldconfig
+%postun -n libffcall0 -p /sbin/ldconfig
+%post   -n libtrampoline1 -p /sbin/ldconfig
+%postun -n libtrampoline1 -p /sbin/ldconfig
 
 %files -f list
-%defattr(-,root,root,-)
 %if 0%{?sle_version} > 120200 || 0%{?suse_version} > 1320
 %license COPYING
 %else
@@ -145,8 +180,16 @@ done
 %doc %{_mandir}/man*/*
 %{_rpmmacrodir}/macros.%{name}
 
-%files -n libffcall%{somajor}
-%defattr(-,root,root,-)
-%{_libdir}/*.so.*
+%files -n libavcall1
+%{_libdir}/libavcall.so.*
+
+%files -n libcallback1
+%{_libdir}/libcallback.so.*
+
+%files -n libffcall0
+%{_libdir}/libffcall.so.*
+
+%files -n libtrampoline1
+%{_libdir}/libtrampoline.so.*
 
 %changelog

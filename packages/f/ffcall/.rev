@@ -189,4 +189,14 @@
 - Remove unused ffcall-trampoline.patch (forwarded request 928559 from susnux)</comment>
     <requestid>929193</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>31e5afa8f7da49ed35a0d317331d9b99</srcmd5>
+    <version>2.4</version>
+    <time>1651088478</time>
+    <user>dimstar_suse</user>
+    <comment>- Resolve rpmlint report &quot;libffcall0.x86_64: E:
+  shlib-policy-name-error SONAME: libavcall.so.1, expected
+  package suffix: 1&quot; (forwarded request 973063 from jengelh)</comment>
+    <requestid>973065</requestid>
+  </revision>
 </revisionlist>
