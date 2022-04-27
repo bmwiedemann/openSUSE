@@ -1,7 +1,7 @@
 #
-# spec file for package vislcg3
+# spec file for package cg3
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           cg3
 %define lname	libcg3-1
-Version:        1.3.2
+Version:        1.3.6
 Release:        0
 Summary:        VISL Constraint Grammar implementation
-License:        GPL-3.0-or-later AND GPL-2.0-or-later and MIT and BSD-3-Clause
+License:        BSD-3-Clause AND GPL-2.0-or-later AND GPL-3.0-or-later AND MIT
 # src/icu_uoptions.cpp see license.icu.txt (MIT)
 Group:          Productivity/Scientific/Other
 URL:            https://visl.sdu.dk/cg3.html
 #Git-Clone:     https://github.com/GrammarSoft/cg3
 
 Source:         https://github.com/GrammarSoft/cg3/releases/download/v%version/%name-%version.tar.bz2
-BuildRequires:  libboost_headers-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig(icu-uc)
+BuildRequires:  libboost_headers-devel
 BuildRequires:  zstd
+BuildRequires:  pkgconfig(icu-uc)
 Requires:       perl(Digest::SHA1)
 Requires:       perl(File::Spec)
 Requires:       perl(Getopt::Long)
