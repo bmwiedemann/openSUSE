@@ -4,22 +4,24 @@ Date: Wed, 31 May 2017 13:44:36 +0200
 Subject: [PATCH 1/2] Avoid accidental javascript in javadoc
 
 ---
- src/main/java/org/testng/xml/TestNGContentHandler.java | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ src/main/java/org/testng/xml/TestNGContentHandler.java | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/src/main/java/org/testng/xml/TestNGContentHandler.java b/src/main/java/org/testng/xml/TestNGContentHandler.java
-index 450678f..11543e3 100644
+index b74572a..7c490e9 100644
 --- a/src/main/java/org/testng/xml/TestNGContentHandler.java
 +++ b/src/main/java/org/testng/xml/TestNGContentHandler.java
-@@ -245,7 +245,7 @@ public class TestNGContentHandler extends DefaultHandler {
+@@ -250,7 +250,9 @@ public class TestNGContentHandler extends DefaultHandler {
+     }
    }
  
-   /**
--   * Parse <script>
+-  /** Parse <script> */
++  /**
 +   * Parse &lt;script&gt;
-    */
++   */
    private void xmlScript(boolean start, Attributes attributes) {
      if (start) {
+       m_currentLanguage = attributes.getValue("language");
 -- 
-2.17.1
+2.20.1
 

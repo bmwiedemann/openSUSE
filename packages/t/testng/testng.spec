@@ -1,7 +1,7 @@
 #
 # spec file for package testng
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,15 @@
 
 
 Name:           testng
-Version:        6.14.3
+Version:        7.4.0
 Release:        0
 Summary:        Java-based testing framework
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://testng.org/
-# ./generate-tarball.sh
+URL:            https://testng.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        pom.xml
 Source2:        %{name}-build.xml
-# Remove bundled binaries to make sure we don't ship anything forbidden
-Source3:        generate-tarball.sh
 Patch0:         0001-Avoid-accidental-javascript-in-javadoc.patch
 Patch1:         0002-Replace-bundled-jquery-with-CDN-link.patch
 BuildRequires:  ant
@@ -40,8 +37,8 @@ BuildRequires:  javapackages-local
 BuildRequires:  jsr-305
 BuildRequires:  junit
 BuildRequires:  snakeyaml
-BuildRequires:  xmvn-install
-BuildRequires:  xmvn-resolve
+Requires:       mvn(com.beust:jcommander)
+Requires:       mvn(org.yaml:snakeyaml)
 BuildArch:      noarch
 
 %description
@@ -63,7 +60,7 @@ This package contains the API documentation for %{name}.
 %patch0 -p1
 %patch1 -p1
 
-cp %{SOURCE1} .
+sed 's/@VERSION@/%{version}/' %{SOURCE1} > pom.xml
 cp %{SOURCE2} build.xml
 
 # remove any bundled libs, but not test resources
@@ -75,32 +72,39 @@ find -name *.class -delete
 %pom_remove_plugin :maven-source-plugin .
 %pom_remove_plugin :maven-javadoc-plugin .
 
-%pom_remove_parent .
-
 sed -i -e 's/DEV-SNAPSHOT/%{version}/' src/main/java/org/testng/internal/Version.java
 
 cp -p ./src/main/java/*.dtd.html ./src/main/resources/.
 
-%{mvn_file} : %{name}
 # jdk15 classifier is used by some other packages
 %{mvn_alias} : :::jdk15:
 
 %build
 mkdir -p lib
 build-jar-repository -s lib ant/ant beust-jcommander bsh2/bsh google-guice jsr305 junit snakeyaml
-%ant jar javadoc
-
-%mvn_artifact pom.xml target/%{name}-%{version}.jar
+%{ant} jar javadoc
 
 %install
-%mvn_install
+# jar
+install -dm 0755 %{buildroot}%{_javadir}
+install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
+
+# pom
+install -dm 0755 %{buildroot}%{_mavenpomdir}
+install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%add_maven_depmap %{name}.pom %{name}.jar -a org.testng:testng::jdk15:
+
+# javadoc
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 %doc CHANGES.txt README.md
 %license LICENSE.txt
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE.txt
 
 %changelog
