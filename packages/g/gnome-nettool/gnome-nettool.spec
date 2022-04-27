@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-nettool
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           gnome-nettool
-Version:        3.8.1+20180208.1e8ca5d
+Version:        42.0
 Release:        0
 Summary:        GNOME Interface for Various Networking Tools
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            http://www.gnome.org
-#Source0:       http://download.gnome.org/sources/gnome-nettool/3.8/%%{name}-%%{version}.tar.xz
-Source:         %{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gnome-nettool/42/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM gnome-nettool-bnc866643-predictable-name.patch bnc#866643 glin@suse.com -- Detect the predictable network device name
 Patch1:         gnome-nettool-bnc866643-predictable-name.patch
 BuildRequires:  fdupes
