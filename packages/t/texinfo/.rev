@@ -608,4 +608,12 @@
   traslations from texinfo package.</comment>
     <requestid>956313</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>6d6cd12d57d9f72a0eaad855eb25fe0c</srcmd5>
+    <version>6.8</version>
+    <time>1651088457</time>
+    <user>dimstar_suse</user>
+    <comment>Fix factory issue with GPM (forwarded request 972890 from susnux)</comment>
+    <requestid>972891</requestid>
+  </revision>
 </revisionlist>

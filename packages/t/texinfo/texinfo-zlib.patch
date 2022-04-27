@@ -1,23 +1,6 @@
-Index: texinfo-6.6/install-info/Makefile.in
-===================================================================
----
- texinfo-6.6/install-info/Makefile.in    |    2 -
- texinfo-6.6/install-info/install-info.c |   54 ++++++++++++++++++++++++--------
- 2 files changed, 42 insertions(+), 14 deletions(-)
-
---- texinfo-6.6/install-info/Makefile.in
-+++ texinfo-6.6/install-info/Makefile.in	2019-09-27 08:03:19.381937177 +0000
-@@ -218,7 +218,7 @@ am__installdirs = "$(DESTDIR)$(bindir)"
- PROGRAMS = $(bin_PROGRAMS)
- am_ginstall_info_OBJECTS = install-info.$(OBJEXT)
- ginstall_info_OBJECTS = $(am_ginstall_info_OBJECTS)
--ginstall_info_LDADD = $(LDADD)
-+ginstall_info_LDADD = $(LDADD) -lzio
- am__DEPENDENCIES_1 =
- ginstall_info_DEPENDENCIES = $(top_builddir)/gnulib/lib/libgnu.a \
- 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
---- texinfo-6.6/install-info/install-info.c
-+++ texinfo-6.6/install-info/install-info.c	2019-09-27 08:52:36.071070583 +0000
+diff -Nur texinfo-6.8/install-info/install-info.c new/install-info/install-info.c
+--- texinfo-6.8/install-info/install-info.c	2021-06-15 22:02:27.000000000 +0200
++++ new/install-info/install-info.c	2022-04-25 12:38:13.573744683 +0200
 @@ -19,6 +19,7 @@
  #include <getopt.h>
  #include <regex.h>
@@ -26,20 +9,23 @@ Index: texinfo-6.6/install-info/Makefile.in
  
  #define TAB_WIDTH 8
  
-@@ -858,20 +859,33 @@ determine_file_type:
-     return 0;
+@@ -852,22 +853,33 @@
  
    if (*compression_program)
--    { /* It's compressed, so open a pipe.  */
+     {
+-      /* Redirect stdin to the file and fork the decompression process
+-         reading from stdin.  This allows shell metacharacters in filenames. */
 -      char *command = concat (*compression_program, " -d", "");
 -
-+    {
        if (fclose (f) < 0)
          return 0;
 -      f = freopen (*opened_filename, FOPEN_RBIN, stdin);
 -      if (!f)
 -        return 0;
 -      f = popen (command, "r");
+-      if (!f)
+-        {
++
 +      if (**compression_program == 'g' || **compression_program == 'z')
 +        f = fzopen (*opened_filename, "rg");
 +      if (**compression_program == 'b')
@@ -50,28 +36,24 @@ Index: texinfo-6.6/install-info/Makefile.in
 +        f = fzopen (*opened_filename, "rl");
 +      if (**compression_program == 'x')
 +        f = fzopen (*opened_filename, "rx");
-       if (!f)
--        {
--          /* Used for error message in calling code. */
--          *opened_filename = command;
--          return 0;
-+        { /* It's compressed, so open a pipe.  */
-+          char *command = concat (*compression_program, " -d", "");
-+
-+          f = freopen (*opened_filename, FOPEN_RBIN, stdin);
-+          if (!f)
-+            return 0;
-+          f = popen (command, "r");
-+          if (!f)
-+            {
-+              /* Used for error message in calling code. */
-+              *opened_filename = command;
-+              return 0;
-+            }
++      if (!f) {
++        /* Redirect stdin to the file and fork the decompression process
++           reading from stdin.  This allows shell metacharacters in filenames. */
++        char *command = concat (*compression_program, " -d", "");
++        f = freopen (*opened_filename, FOPEN_RBIN, stdin);
++        if (!f)
++          return 0;
++        f = popen (command, "r");
++        if (!f) {
+           /* Used for error message in calling code. */
+           *opened_filename = command;
+           return 0;
          }
++      }
      }
    else
-@@ -958,8 +972,22 @@ output_dirfile (char *dirfile, int dir_n
+     {
+@@ -957,8 +969,22 @@
  
    if (compression_program)
      {
@@ -79,20 +61,32 @@ Index: texinfo-6.6/install-info/Makefile.in
 -      output = popen (command, "w");
 +      output = NULL;
 +      if (*compression_program == 'g' || *compression_program == 'z')
-+	output = fzopen (dirfile, "wg");
++        output = fzopen (dirfile, "wg");
 +      if (*compression_program == 'b')
-+	output = fzopen (dirfile, "wb");
++        output = fzopen (dirfile, "wb");
 +      if (*compression_program == 'Z')
-+	output = fzopen (dirfile, "wZ");
++        output = fzopen (dirfile, "wZ");
 +      if (*compression_program == 'l')
-+	output = fzopen (dirfile, "wl");
++        output = fzopen (dirfile, "wl");
 +      if (*compression_program == 'x')
-+	output = fzopen (dirfile, "wx");
++        output = fzopen (dirfile, "wx");
 +      if (!output)
-+	{
-+	  char *command = concat (compression_program, ">", dirfile);
-+	  output = popen (command, "w");
-+	}
++      {
++        char *command = concat (compression_program, ">", dirfile);
++        output = popen (command, "w");
++      }
      }
    else
      output = fopen (dirfile, "w");
+diff -Nur texinfo-6.8/install-info/Makefile.in new/install-info/Makefile.in
+--- texinfo-6.8/install-info/Makefile.in	2021-07-03 11:13:01.000000000 +0200
++++ new/install-info/Makefile.in	2022-04-25 12:30:06.593744741 +0200
+@@ -239,7 +239,7 @@
+ PROGRAMS = $(bin_PROGRAMS)
+ am_ginstall_info_OBJECTS = install-info.$(OBJEXT)
+ ginstall_info_OBJECTS = $(am_ginstall_info_OBJECTS)
+-ginstall_info_LDADD = $(LDADD)
++ginstall_info_LDADD = $(LDADD) -lzio
+ am__DEPENDENCIES_1 =
+ ginstall_info_DEPENDENCIES = $(top_builddir)/gnulib/lib/libgnu.a \
+ 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)

@@ -1,0 +1,15 @@
+diff --git a/tp/Texinfo/XS/parsetexi/end_line.c b/tp/Texinfo/XS/parsetexi/end_line.c
+index a5bd0ce..c973cc1 100644
+--- a/tp/Texinfo/XS/parsetexi/end_line.c
++++ b/tp/Texinfo/XS/parsetexi/end_line.c
+@@ -778,8 +778,8 @@ kdbinputstyle_invalid:
+     case CM_headings:
+       {
+         if (!strcmp (line, "off") || !strcmp (line, "on")
+-            || !strcmp (line, "double") || !strcmp (line, "singleafter")
+-            || !strcmp (line, "doubleafter"))
++            || !strcmp (line, "single") || !strcmp (line, "double")
++            || !strcmp (line, "singleafter") || !strcmp (line, "doubleafter"))
+           {
+             ADD_ARG(line);
+           }

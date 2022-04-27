@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Apr 26 13:37:31 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Add 13a8894fe2.patch
+  * Fixing @headings: Add missing option value 'single'.
+    Resolved regression where gpm could not be build.
+
+-------------------------------------------------------------------
+Mon Apr 25 10:39:55 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 6.8
+  * new command @displaymath for formatting of mathematical notation
+  * new command @example takes an argument to specify the language
+  * Deprecate commands: @centerchap, @definfoenclose, @refill, @inforef
+  * new paper size @bsixpaper
+  * texi2any
+    * should be faster as Perl XS parser is enabled by default
+    * SHOW_MENU customization variable replaced by FORMAT_MENU.
+    * only check menu structure if CHECK_NORMAL_MENU_STRUCTURE
+      variable is set
+    * MathJax support for display of math.
+    * JavaScript License Web Labels support
+    * Use sectional tables of contents instead of menus by defaut
+    * Use section names in links by default
+    * CONTENTS_OUTPUT_LOCATION sets location of table of contents
+    * Document sections wrapped in <div> elements
+    * New variable USE_NODE_DIRECTIONS to use node or section structure
+      for node directions
+    * copiable anchor links for definitions
+    * Don't add an extra period before file extension given as
+      an argument to @image if image file is not found
+  * info: Support compressed dir files
+  * texi2dvi: Stop on first error in input file
+  * texinfo.tex:
+    * put logical page numbers into PDF's ('page labels')
+    * put chapter numbers in the PDF outline
+    * new Finnish translation
+- Rebased texinfo-zlib.patch
+
+-------------------------------------------------------------------
 Mon Feb 21 07:44:17 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Split locale text-domain to take care of package info 
