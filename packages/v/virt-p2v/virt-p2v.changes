@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 27 10:10:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use https urls
+- use gpg validation 
+
+-------------------------------------------------------------------
 Wed Feb 10 22:47:57 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove old specfile macros and constructs.

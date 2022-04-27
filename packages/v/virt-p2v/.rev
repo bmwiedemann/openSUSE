@@ -7,4 +7,13 @@
     <comment>Upstream has split virt-p2v from the libguestfs package to become a standalone package.</comment>
     <requestid>871274</requestid>
   </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>a74b3afb4506f20d95d39b68f5d554e6</srcmd5>
+    <version>1.42.0</version>
+    <time>1651088486</time>
+    <user>dimstar_suse</user>
+    <comment>- use https urls
+- use gpg validation</comment>
+    <requestid>973087</requestid>
+  </revision>
 </revisionlist>
