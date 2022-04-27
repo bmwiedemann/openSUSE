@@ -1,7 +1,7 @@
 #
 # spec file for package libcmpiutil
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,15 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libcmpiutil
+Version:        0.5.7
+Release:        0
+Summary:        Library of utility functions for CMPI providers
+License:        LGPL-2.1-or-later
+URL:            http://libvirt.org/CIM/
+Group:          Development/Libraries/C and C++
+Source:         %{name}-%{version}.tar.bz2
+Patch1:         fix-arm.patch
+Patch2:         0001-libcmpiutil-Fix-endianness-issues-in-embedded-object.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  libxml2-devel
-BuildRequires:  sblim-cmpi-devel
 %if 0%{?fedora_version} || 0%{?centos_version} || 0%{?rhel_version} || 0%{?fedora} || 0%{?rhel}
 BuildRequires:  pkgconfig
 %else
@@ -30,52 +38,41 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkg-config
 %endif
 %endif
-Url:            http://libvirt.org/CIM/
-Version:        0.5.7
-Release:        0
-Summary:        Library of utility functions for CMPI providers
-License:        LGPL-2.1+
-Group:          Development/Libraries/C and C++
-Source:         %{name}-%{version}.tar.bz2
-Patch1:         fix-arm.patch
-Patch2:         0001-libcmpiutil-Fix-endianness-issues-in-embedded-object.patch
+BuildRequires:  sblim-cmpi-devel
+# SLE11
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Libcmpiutil is a library of utility functions for CMPI providers.  The
 goal is to reduce the amount of repetitive work done in most CMPI
-providers by encapsulating common procedures with more "normal" APIs. 
+providers by encapsulating common procedures with more "normal" APIs.
 This extends from operations like getting typed instance properties to
 standardizing method dispatch and argument checking.
 
+%package -n libcmpiutil0
+Summary:        Library of utility functions for CMPI providers
+Group:          Development/Libraries/C and C++
+Obsoletes:      libcmpiutil < %{version}-%{release}
 
-
-Authors:
---------
-    Dan Smith <danms@us.ibm.com>
+%description -n libcmpiutil0
+Libcmpiutil is a library of utility functions for CMPI providers.  The
+goal is to reduce the amount of repetitive work done in most CMPI
+providers by encapsulating common procedures with more "normal" APIs.
+This extends from operations like getting typed instance properties to
+standardizing method dispatch and argument checking.
 
 %package devel
 Summary:        Library of utility functions for CMPI providers
 Group:          Development/Libraries/C and C++
+Requires:       libcmpiutil0 = %{version}-%{release}
 Requires:       sblim-cmpi-devel
-%if 0%{?fedora_version} || 0%{?centos_version} || 0%{?rhel_version} || 0%{?fedora} || 0%{?rhel}
-Requires:       pkgconfig
-%else
-%if 0%{?suse_version} < 920
-Requires:       pkgconfig
-%else
-Requires:       pkg-config
-%endif
-%endif
-Requires:       %{name} = %{version}-%{release}
 
 %description devel
 Libcmpiutil is a library of utility functions for CMPI providers.  The
 goal is to reduce the amount of repetitive work done in most CMPI
-providers by encapsulating common procedures with more "normal" APIs. 
+providers by encapsulating common procedures with more "normal" APIs.
 This extends from operations like getting typed instance properties to
 standardizing method dispatch and argument checking.
-
 
 %prep
 %setup -q
@@ -86,22 +83,22 @@ standardizing method dispatch and argument checking.
 chmod -x *.c *.y *.h *.l
 
 %build
-export CFLAGS="$RPM_OPT_FLAGS -fgnu89-inline"
+export CFLAGS="%{optflags} -fgnu89-inline"
 %configure --enable-static=no
-make
+%if 0%{?make_build:1}
+%make_build
+%else
+make %{?_smp_mflags}
+%endif
 
 %install
 %makeinstall
-%{__rm} -f $RPM_BUILD_ROOT%{_libdir}/*.{a,la}
+rm -f %{buildroot}/%{_libdir}/*.{a,la}
 
-%clean
-%{__rm} -rf $RPM_BUILD_ROOT
+%post   -n libcmpiutil0 -p /sbin/ldconfig
+%postun -n libcmpiutil0 -p /sbin/ldconfig
 
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
-
-%files 
+%files -n libcmpiutil0
 %defattr(-, root, root, -)
 %doc doc/doxygen.conf doc/mainpage README COPYING
 %{_libdir}/lib*.so.*

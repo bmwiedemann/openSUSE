@@ -166,4 +166,12 @@ differences with the systemsmanagement:wbem packages.
     <comment>1</comment>
     <requestid>311261</requestid>
   </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>9346b2f6fb2a32a491153a3d3c9b1311</srcmd5>
+    <version>0.5.7</version>
+    <time>1651088515</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>973112</requestid>
+  </revision>
 </revisionlist>

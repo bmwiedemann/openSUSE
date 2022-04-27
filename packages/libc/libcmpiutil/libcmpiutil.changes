@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 27 09:34:33 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve rpmlint report "libcmpiutil.x86_64: E:
+  shlib-policy-name-error SONAME: libcmpiutil.so.0, expected
+  package suffix: 0"
+- Throw out old specfile constructs
+
+-------------------------------------------------------------------
 Tue Jun  9 09:12:27 UTC 2015 - schwab@suse.de
 
 - Force gnu89 inline semantics
