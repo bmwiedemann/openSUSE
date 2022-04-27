@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 27 12:41:41 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220426T180022Z:
+  * Error message when update failing due to permissions (#4057)
+  * info: Add the count of total versions details (#4060)
+  * update minio/pkg to v1.1.22
+  * Remove cpuio as default in profiling (#4056)
+
+-------------------------------------------------------------------
 Wed Apr 20 05:50:37 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 20220416T211121Z:
