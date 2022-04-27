@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Apr 27 18:05:45 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 4.5.2+git20220421.ecc3a08:
+  * Added keycloak authentication
+- Switching UglifyJS source from npmjs source url to github source url.
+
+-------------------------------------------------------------------
+Tue Apr 19 18:55:04 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Updating uglifyjs to '3.15.4'.
+
+-------------------------------------------------------------------
+Tue Apr 19 18:51:58 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 4.5.2+git20220413.dc3077b:
+  * tell the server to use 'scroll' encoding less
+
+-------------------------------------------------------------------
 Tue Apr  5 15:56:55 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adjusting top copyright comments.

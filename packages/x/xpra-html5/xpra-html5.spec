@@ -16,19 +16,23 @@
 #
 
 
-%define uglifyjs_version 3.15.3
+%define uglifyjs_version 3.15.4
 %define minifier uglifyjs
 %define python python3
 
 Name:           xpra-html5
 Release:        0
-Version:        4.5.2+git20220322.82199bc
+Version:        4.5.2+git20220421.ecc3a08
 Summary:        HTML5 client for Xpra
 License:        GPL-2.0+ AND BSD-3-Clause AND LGPL-3.0+ AND MIT
 URL:            https://xpra.org/
 Source0:        xpra-html5-%{version}.tar.gz
-### To update, run 'npm pack uglify-js'
-Source1:        uglify-js-%{uglifyjs_version}.tgz
+### To update UglifyJS using npm release:
+###   npm pack uglify-js
+### To update UglifyJS using github release:
+###   osc service runall download_files
+#Source1:        https://registry.npmjs.org/uglify-js/-/uglify-js-%%{uglifyjs_ver}.tgz#/uglify-js-%%{uglifyjs_version}.tgz
+Source1:        https://github.com/mishoo/UglifyJS/archive/refs/tags/v%{uglifyjs_version}.tar.gz#/uglify-js-%{uglifyjs_version}.tar.gz
 #####
 BuildRequires:  fdupes
 BuildRequires:  git-core
@@ -65,9 +69,14 @@ echo -e "\nPATH: '$PATH'\n"
 echo -e "\nPWD: '$(pwd)'\n"
 echo -e "%{name} :: %{version}"
 find . -iname uglifyjs -exec ls -ld {} \;
-export PATH=$PATH:$(pwd)/package/bin
-chmod -v 755 %{_builddir}/%{name}-%{version}/package/bin/uglifyjs
-ls -l %{_builddir}/%{name}-%{version}/package/bin
+### Using npm download
+#export PATH=$PATH:$(pwd)/package/bin
+#chmod -v 755 %%{_builddir}/%%{name}-%%{version}/package/bin/uglifyjs
+#ls -l %%{_builddir}/%%{name}-%%{version}/package/bin
+#####
+export PATH=$PATH:$(pwd)/UglifyJS-%{uglifyjs_version}/bin
+chmod -v 755 %{_builddir}/%{name}-%{version}/UglifyJS-%{uglifyjs_version}/bin/uglifyjs
+ls -l %{_builddir}/%{name}-%{version}/UglifyJS-%{uglifyjs_version}/bin
 find . -iname uglifyjs -exec ls -ld {} \;
 echo -e "\nUGLIFYJS -check2 :: $(which uglifyjs)\n"
 #####

@@ -7,4 +7,19 @@
     <comment>Moving xpra-html5 to a separate package vs. including with baseline xpra, see boo#1195873.</comment>
     <requestid>967357</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>914c8269db4a3002b5be98286134718e</srcmd5>
+    <version>4.5.2+git20220421.ecc3a08</version>
+    <time>1651088464</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.5.2+git20220421.ecc3a08:
+  * Added keycloak authentication
+- Switching UglifyJS source from npmjs source url to github source url.
+
+- Updating uglifyjs to '3.15.4'.
+
+- Update to version 4.5.2+git20220413.dc3077b:
+  * tell the server to use 'scroll' encoding less</comment>
+    <requestid>973252</requestid>
+  </revision>
 </revisionlist>
