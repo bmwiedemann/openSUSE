@@ -1,7 +1,7 @@
 #
 # spec file for package bandwidth
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           bandwidth
-Version:        1.9.4
+Version:        1.11.2
 Release:        0
 Summary:        Memory and network benchmark program
 License:        GPL-2.0-only
@@ -25,7 +25,7 @@ Group:          System/Benchmark
 URL:            https://zsmith.co/bandwidth.php
 Source:         https://zsmith.co/archives/%{name}-%{version}.tar.gz
 BuildRequires:  nasm
-ExclusiveArch:  %{ix86} x86_64
+ExclusiveArch:  x86_64
 
 %description
 bandwidth is an artificial benchmark primarily for measuring memory bandwidth
@@ -37,16 +37,6 @@ and in the processor itself.
 %setup -q
 
 %build
-# currently fails with No rule to make target 'routines-arm-32bit.asm', needed by 'bandwidth-arm32'
-%ifarch %{arm}
-%make_build bandwidth-arm32
-%endif
-
-%ifarch %{ix86}
-%make_build bandwidth32 CFLAGS="%{optflags}"
-mv bandwidth32 %{name}
-%endif
-
 %ifarch x86_64
 %make_build bandwidth64 CFLAGS="%{optflags}"
 mv bandwidth64 %{name}

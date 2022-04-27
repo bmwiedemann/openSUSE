@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 27 09:28:49 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to 1.11.2:
+  * AVX-512 support. Improved fonts. Fixed Win64/Cygwin support.
+  * ARM64 (AArch64) support and improved ARM32 (AArch32) support.
+- Drop i586 architecture.
+
+-------------------------------------------------------------------
 Mon Sep 14 09:47:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.9.4:
