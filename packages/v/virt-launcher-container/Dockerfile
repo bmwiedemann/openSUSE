@@ -30,16 +30,14 @@ RUN zypper -n install \
               kubevirt-virt-launcher \
               libcap-progs \
               libvirt-client \
-              libvirt-daemon-driver-storage-core \
               libvirt-daemon-qemu \
               nftables \
               qemu-hw-usb-redirect \
               qemu-tools \
               socat \
-              systemd-container \
               tar \
               timezone \
-              vim \
+              vim-small \
               xorriso
 
 #!ArchExclusiveLine: x86_64
@@ -54,8 +52,7 @@ RUN if [ "$TARGETARCH" = "arm64" ]; then \
               qemu-uefi-aarch64 ; \
     fi;
 
-RUN zypper clean -a && \
-    mkdir -p /usr/share/kubevirt/virt-launcher
+RUN zypper clean -a
 
 RUN mkdir -p /usr/share/OVMF
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 15 10:50:30 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Install vim-small instread of vim
+- Cleanup redundant stuff
+
+-------------------------------------------------------------------
 Sun Mar  6 16:55:26 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Add _constraints (storage)
