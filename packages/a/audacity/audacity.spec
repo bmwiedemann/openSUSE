@@ -41,6 +41,7 @@ BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 #!BuildIgnore:  gstreamer-0_10-plugins-base
+BuildRequires:  carla-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libmp3lame-devel
 BuildRequires:  portmidi-devel
@@ -164,6 +165,8 @@ mv -f %{buildroot}%{_datadir}/pixmaps/gnome-mime-application-x-audacity-project.
   %{buildroot}%{_datadir}/icons/hicolor/48x48/mimetypes/application-x-audacity-project.xpm
 rm -rf %{buildroot}%{_datadir}/pixmaps/
 rm -rf %{buildroot}%{_datadir}/doc
+mv -v %{buildroot}%{_libdir}/%{name}/*so %{buildroot}%{_libdir}/
+chmod 0755 %{buildroot}%{_libdir}/*
 
 # Why make install installs these is a mystery
 rm -f %{buildroot}%{_libdir}/audacity/libwx_baseu-suse-nostl.so.*
@@ -175,19 +178,16 @@ rm -f %{buildroot}%{_libdir}/audacity/libwx_gtk3u_qa-suse-nostl.so.*
 rm -f %{buildroot}%{_prefix}/%{name}
 %find_lang %{name}
 
-%post
-ldconfig %{_libdir}/%{name}
-%end
+%post -p /sbin/ldconfig
 
-%postun
-ldconfig %{_libdir}/%{name}
-%end
+%postun -p /sbin/ldconfig
 
 %files
 %defattr(-,root,root)
 %doc README.txt
 %license LICENSE.txt LICENSE_NYQUIST.txt
 %{_bindir}/%{name}
+%{_libdir}/*.so
 %{_libdir}/%{name}
 %{_libdir}/%{name}/modules/mod-script-pipe.so
 %{_datadir}/%{name}/

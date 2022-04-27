@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 27 09:21:24 UTC 2022 - Dave Plater <davejplater@gmail.com>
+
+- Fix build with new carla by requiring carla-devel
+
+-------------------------------------------------------------------
+Tue Apr 26 05:46:26 UTC 2022 - Dave Plater <davejplater@gmail.com>
+
+- Really solve boo#1198551 by packaging audacitie's libraries in
+  _libdir
+
+-------------------------------------------------------------------
 Thu Apr 21 09:00:40 UTC 2022 - Dave Plater <davejplater@gmail.com>
 
 - Add ldconfig post and postun for audacity's own libs to solve
