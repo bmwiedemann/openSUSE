@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 27 07:38:23 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- added source url
+
+-------------------------------------------------------------------
 Tue Feb 15 12:58:17 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Properly install pam module to %_pam_moduledir instead of

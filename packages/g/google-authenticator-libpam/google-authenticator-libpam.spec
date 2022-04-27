@@ -23,7 +23,7 @@ Summary:        Google Authenticator PAM module
 License:        Apache-2.0
 Group:          Productivity/Security
 URL:            https://github.com/google/google-authenticator-libpam
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/google/google-authenticator-libpam/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  libtool
 BuildRequires:  pam-devel
