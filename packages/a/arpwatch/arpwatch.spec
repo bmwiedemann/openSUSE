@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           arpwatch
-Version:        3.2
+Version:        3.3
 Release:        0
 Summary:        Tool to keep track of Ethernet<->IP address pairings
 License:        BSD-3-Clause
