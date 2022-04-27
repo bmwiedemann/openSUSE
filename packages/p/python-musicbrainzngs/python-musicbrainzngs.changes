@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 27 02:31:39 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Re-enable the test suite, it uses fakes to avoid network access.
+- Switch to using pytest. 
+
+-------------------------------------------------------------------
 Wed Jan 22 15:13:34 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Update to version 0.7.1
