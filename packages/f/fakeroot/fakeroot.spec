@@ -33,7 +33,7 @@ BuildRequires:  automake
 BuildRequires:  fdupes
 # user(daemon)/group(sys) is required for t.tar testsuite
 BuildRequires:  intltool
-BuildRequires:  autoconf
+BuildRequires:  autoconf >= 2.71
 BuildRequires:  libacl-devel
 BuildRequires:  libcap-devel
 BuildRequires:  libcap-progs
