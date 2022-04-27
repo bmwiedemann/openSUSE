@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 27 01:58:15 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on mock. 
+
+-------------------------------------------------------------------
 Sun Dec 26 09:03:25 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Re-activate test suite
