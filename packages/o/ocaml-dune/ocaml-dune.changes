@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 19 19:19:19 UTC 2022 - ohering@suse.de
+
+- Update to version 3.1.1
+  see included CHANGES.md for details
+
+-------------------------------------------------------------------
 Sat Apr  9 12:34:56 UTC 2022 - ohering@suse.de
 
 - Adjust bootstrap of dune. Build the dune binary in the main

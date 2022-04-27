@@ -277,4 +277,12 @@ I will submit the packages one by one once this is accepted.</comment>
 - Remove subpackage bootstrap</comment>
     <requestid>968050</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>54d593cef55e5a540ce6cc3df926e403</srcmd5>
+    <version>3.1.1</version>
+    <time>1651088470</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>973024</requestid>
+  </revision>
 </revisionlist>
