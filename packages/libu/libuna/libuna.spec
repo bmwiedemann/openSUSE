@@ -34,6 +34,7 @@ URL:            https://github.com/libyal/libuna/
 Source:         https://github.com/libyal/libuna/releases/download/%version/libuna-alpha-%version.tar.gz
 Source2:        https://github.com/libyal/libuna/releases/download/%version/libuna-alpha-%version.tar.gz.asc
 Source3:        libuna.keyring
+Source99:       libuna-rpmlintrc
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
