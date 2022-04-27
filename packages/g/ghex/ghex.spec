@@ -19,13 +19,13 @@
 %define so_ver 4
 
 Name:           ghex
-Version:        4.beta.1
+Version:        42.2
 Release:        0
 Summary:        GNOME Binary Editor
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Ghex
-Source:         https://download.gnome.org/sources/ghex/4.beta.1/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/ghex/42/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
@@ -99,7 +99,9 @@ This package provides introspection bindings for ghex.
 %{_datadir}/icons/hicolor/*/apps/org.gnome.GHex*
 
 %files -n libgtkhex-%{so_ver}-0
+%dir %{_libdir}/gtkhex-4.0
 %{_libdir}/libgtkhex-%{so_ver}.so.*
+%{_libdir}/gtkhex-4.0/*.so
 
 %files -n typelib-1_0-Hex-%{so_ver}
 %{_libdir}/girepository-1.0/Hex-%{so_ver}.typelib

@@ -444,4 +444,12 @@ Proposed for 12.3, as having a patch addressing the same fix as was done in anot
     <comment></comment>
     <requestid>963382</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>303146edf688fa6c809c4bd19b608269</srcmd5>
+    <version>42.2</version>
+    <time>1651088495</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 42.2 (forwarded request 973141 from dimstar)</comment>
+    <requestid>973153</requestid>
+  </revision>
 </revisionlist>
