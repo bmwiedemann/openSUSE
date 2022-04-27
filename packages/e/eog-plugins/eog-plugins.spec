@@ -17,13 +17,13 @@
 
 
 Name:           eog-plugins
-Version:        42.0
+Version:        42.1
 Release:        0
 Summary:        A collection of plugins for Eye of GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            http://live.gnome.org/EyeOfGnome/Plugins
-Source:         http://download.gnome.org/sources/eog-plugins/42/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/eog-plugins/42/%{name}-%{version}.tar.xz
 Source99:       eog-plugins.SUSE
 
 BuildRequires:  fdupes
