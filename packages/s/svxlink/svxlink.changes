@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 26 10:47:38 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve rpmlint report "libasync.x86_64: E:
+  shlib-policy-name-error SONAME: libasyncaudio.so.1.6, expected
+  package suffix: 1_6".
+- Rename libecholink1_3-devel to libecholink-devel; there is no
+  versioning on the files that would support a versioned package.
+
+-------------------------------------------------------------------
 Wed Mar 10 19:56:51 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 19.09.2

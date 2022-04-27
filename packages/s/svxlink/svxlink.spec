@@ -1,7 +1,7 @@
 #
 # spec file for package svxlink
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -103,23 +103,25 @@ Group:          Productivity/Hamradio/Other
 %description -n libecholib1_3
 EchoLink communications library
 
-%package -n libecholib1_3-devel
+%package -n libecholib-devel
 Version:        %{ECHOLIB}
 Release:        0
 Summary:        Development files for the EchoLink
 Group:          Development/Libraries/Other
 Requires:       libecholib1_3 = %{version}
+Obsoletes:      libecholib1_3-devel < %{version}-%{release}
 
-%description -n libecholib1_3-devel
+%description -n libecholib-devel
 Development files for the EchoLink communications library
 
-%package -n libasync
+%package -n libasync1_6
 Version:        %{LIBASYNC}
 Release:        0
 Summary:        SvxLink Async libs
 Group:          Productivity/Hamradio/Other
+Conflicts:      libasync
 
-%description -n libasync
+%description -n libasync1_6
 The Async library files.
 
 %package -n libasync-devel
@@ -127,21 +129,21 @@ Version:        %{LIBASYNC}
 Release:        0
 Summary:        SvxLink Async development files
 Group:          Development/Libraries/Other
-Requires:       libasync = %{version}
+Requires:       libasync1_6 = %{version}
 
 %description -n libasync-devel
 The Async library development files
 
 %prep
-%setup -q
-tar -xjvf $RPM_SOURCE_DIR/svxlink-sounds-en_US-heather-16k-%{SOUNDS}.tar.bz2
+%autosetup
+tar -xjvf %{_sourcedir}/svxlink-sounds-en_US-heather-16k-%{SOUNDS}.tar.bz2
 
 %build
 cd src
 %cmake \
     -DLOCAL_STATE_DIR=%{_localstatedir}
 %make_jobs
-make %{?_smp_mflags} man
+%make_build man
 
 %install
 cd src
@@ -153,8 +155,8 @@ rm -f %{buildroot}/%{_libdir}/libsvxmisc.a
 
 %post -n libecholib1_3 -p /sbin/ldconfig
 %postun -n libecholib1_3 -p /sbin/ldconfig
-%post -n libasync -p /sbin/ldconfig
-%postun -n libasync -p /sbin/ldconfig
+%post -n libasync1_6 -p /sbin/ldconfig
+%postun -n libasync1_6 -p /sbin/ldconfig
 
 %files -n svxlink-server
 %doc src/svxlink/ChangeLog
@@ -202,12 +204,12 @@ rm -f %{buildroot}/%{_libdir}/libsvxmisc.a
 %doc src/echolib/ChangeLog
 %{_libdir}/libecholib.so.*
 
-%files -n libecholib1_3-devel
+%files -n libecholib-devel
 %dir %{_includedir}/svxlink
 %{_includedir}/svxlink/EchoLink*
 %{_libdir}/libecholib.so
 
-%files -n libasync
+%files -n libasync1_6
 %doc src/async/ChangeLog
 %{_libdir}/libasyncaudio.so.*
 %{_libdir}/libasynccore.so.*
