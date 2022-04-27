@@ -48,17 +48,19 @@ BuildRequires:  boost-devel >= 1.60.0
 %description
 libopenraw is a library that aim at decoding digital camera RAW files.
 
-%package -n libopenraw1
+%package -n libopenraw9
 Summary:        A library to decode digital camera RAW files
-Group:          Development/Libraries/C and C++
+Group:          System/Libraries
+# libopenraw.so.0, version 0.3.1, was wrongly packaged in libopenraw1
+Conflicts:      libopenraw1 >= 0.3
 
-%description -n libopenraw1
+%description -n libopenraw9
 libopenraw is a library that aim at decoding digital camera RAW files.
 
 %package -n gdk-pixbuf-loader-libopenraw
-Summary:        A library to decode digital camera RAW files -- gdk-pixbuf loader
-Group:          Development/Libraries/C and C++
-Supplements:    packageand(libopenraw1:gdk-pixbuf)
+Summary:        gdk-pixbuf loader for libopenraw
+Group:          System/Libraries
+Supplements:    packageand(libopenraw9:gdk-pixbuf)
 %{gdk_pixbuf_loader_requires}
 
 %description -n gdk-pixbuf-loader-libopenraw
@@ -71,14 +73,13 @@ Summary:        A library to decode digital camera RAW files
 Group:          Development/Libraries/C and C++
 #include gdk-pixbuf/gdk-pixbuf.h
 Requires:       gdk-pixbuf-devel
-Requires:       libopenraw1 = %{version}
+Requires:       libopenraw9 = %{version}-%{release}
 
 %description  -n libopenraw-devel
 libopenraw is a library that aim at decoding digital camera RAW files.
 
 %prep
-%setup -q
-%setup -q -T -D -a3
+%autosetup -a3
 mv vendor lib/mp4/
 cd lib/mp4
 sed -i 's/byteorder = "1.2.1"/byteorder = "1.2.2"/' mp4parse/Cargo.toml
@@ -92,20 +93,18 @@ directory = "vendor"
 EOF
 
 %build
-%configure \
-  --disable-static \
-  --with-pic
-make V=1 %{?_smp_mflags}
+%configure --disable-static
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
-%post -n libopenraw1 -p /sbin/ldconfig
-%postun -n libopenraw1 -p /sbin/ldconfig
+%post -n libopenraw9 -p /sbin/ldconfig
+%postun -n libopenraw9 -p /sbin/ldconfig
 
 %post -n gdk-pixbuf-loader-libopenraw
 %{gdk_pixbuf_loader_post}
@@ -113,15 +112,15 @@ make %{?_smp_mflags} check
 %postun -n gdk-pixbuf-loader-libopenraw
 %{gdk_pixbuf_loader_postun}
 
-%files -n libopenraw1
+%files -n libopenraw9
 %license COPYING
-%doc README TODO ChangeLog
 %{_libdir}/*.so.*
 
 %files -n gdk-pixbuf-loader-libopenraw
 %{_libdir}/gdk-pixbuf-2.0/*/loaders/libopenraw_pixbuf.so
 
 %files -n libopenraw-devel
+%doc README TODO ChangeLog
 %{_libdir}/*.so
 %dir %{_includedir}/libopenraw-0.3
 %{_includedir}/libopenraw-0.3/*

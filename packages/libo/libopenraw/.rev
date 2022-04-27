@@ -247,4 +247,20 @@
     <comment></comment>
     <requestid>972008</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>6a9b0008ba3db48bc169b3f7817f4a42</srcmd5>
+    <version>0.3.1</version>
+    <time>1651088521</time>
+    <user>dimstar_suse</user>
+    <comment>- Move documentation to where it's used: with the -devel subpackage.
+- Update descriptions, RPM groups
+- Trim --with-pic (only has effects for static libs)
+- Repair a bit more of libopenraw1-&gt;9
+
+- Rename libopenraw1 subpackage to libopenraw9, making the package
+  name the actual library provided.
+- Make libopenraw9 conflict with libopenraw1 &gt;= 0.3 to ease the
+  upgrade path from the wrongly named package.</comment>
+    <requestid>973236</requestid>
+  </revision>
 </revisionlist>
