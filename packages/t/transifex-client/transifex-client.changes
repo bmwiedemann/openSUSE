@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Apr 26 11:43:00 UTC 2022 - pgajdos@suse.com
+
+- fix tests on 32 bit arch
+- added patches
+  fix https://github.com/transifex/transifex-client/pull/316
+  + transifex-client-fix-test-on-32bit.patch
+
+-------------------------------------------------------------------
+Tue Apr 26 11:30:16 UTC 2022 - pgajdos@suse.com
+
+- version update to 0.14.4
+  * Patch issue 317
+  * Change download path when supplied language is source language
+  * Fix for CLI option of custom CA certificate bundle file
+  * Use authored date as git timestamp
+  * CLI option for custom CA certificate bundle file
+  * New flag to compare file timestamp through git and slugify update
+- do not require python-mock for build
+- added patches
+  fix https://github.com/transifex/transifex-client/pull/314
+  + transifex-client-no-mock.patch
+
+-------------------------------------------------------------------
 Wed Jan 12 08:01:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add python-rpm-macros dependency 

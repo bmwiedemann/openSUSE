@@ -17,16 +17,20 @@
 
 
 Name:           transifex-client
-Version:        0.13.9
+Version:        0.14.4
 Release:        0
 Summary:        Transifex Command-line Client
 License:        GPL-2.0-only
 Group:          Productivity/Text/Utilities
 URL:            https://github.com/transifex/transifex-client
 Source:         https://github.com/transifex/transifex-client/archive/%{version}.tar.gz
+# https://github.com/transifex/transifex-client/pull/314
+Patch0:         transifex-client-no-mock.patch
+# https://github.com/transifex/transifex-client/pull/316
+Patch1:         transifex-client-fix-test-on-32bit.patch
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-mock
-BuildRequires:  python3-mock >= 3.0.5
+BuildRequires:  python3-GitPython
+BuildRequires:  python3-pytest
 BuildRequires:  python3-python-slugify
 BuildRequires:  python3-requests >= 2.19.1
 BuildRequires:  python3-setuptools
@@ -52,8 +56,8 @@ easily and without much hassle.
 
 %prep
 %setup -q
-sed -i -e "s/slugify<.*/slugify/" requirements.txt
-sed -i -e "s/mock>=3.0.5,<4.0/mock>=3.0.5/" setup.py
+%patch0 -p1
+%patch1 -p1
 sed -i -e '1{\,^#!/usr/bin/env python,d}' txclib/cmdline.py
 
 %build
@@ -69,7 +73,8 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -s -f %{_sysconfdir}/alternatives/tx %{buildroot}%{_bindir}/tx
 
 %check
-python3 -m unittest
+# test_fetch_timestamp_from_git_tree: this is not a git tree
+pytest -k 'not test_fetch_timestamp_from_git_tree'
 
 %post
 %{_sbindir}/update-alternatives --install %{_bindir}/tx tx %{_bindir}/transifex-tx 20
