@@ -1003,4 +1003,12 @@
     <comment>KDE release gear 22.04.0</comment>
     <requestid>971387</requestid>
   </revision>
+  <revision rev="127" vrev="2">
+    <srcmd5>06af996116f19405a6ddbe9ffacdd870</srcmd5>
+    <version>22.04.0</version>
+    <time>1651088484</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the library soname</comment>
+    <requestid>973234</requestid>
+  </revision>
 </revisionlist>

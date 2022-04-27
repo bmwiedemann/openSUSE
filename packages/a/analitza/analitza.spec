@@ -16,6 +16,7 @@
 #
 
 
+%define soversion 8
 %define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
@@ -49,25 +50,29 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
-Requires:       libAnalitza5 = %{version}
+Requires:       libAnalitza%{soversion} = %{version}
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 
 %description
 The Analitza library lets developers add mathematical features to programs.
 
-%package -n libAnalitza5
+%package -n libAnalitza%{soversion}
 Summary:        A library to add mathematical features to programs
 Group:          System/Libraries
 Requires:       analitza = %{version}
+# Mistakenly contained libAnalitza6, 7 and 8
+%if %{soversion} == 8
+Conflicts:      libAnalitza5
+%endif
 
-%description -n libAnalitza5
+%description -n libAnalitza%{soversion}
 The Analitza library lets developers add mathematical features to programs.
 
 %package devel
 Summary:        Development files for analitza, a mathematical feature library
 Group:          Development/Libraries/C and C++
-Requires:       libAnalitza5 = %{version}
+Requires:       libAnalitza%{soversion} = %{version}
 Obsoletes:      analitza5-devel < %{version}
 
 %description devel
@@ -89,12 +94,12 @@ add mathematical features to programs.
     %find_lang %{name} --with-man --with-qt --all-name
   %endif
 
-%post -n libAnalitza5 -p /sbin/ldconfig
-%postun -n libAnalitza5 -p /sbin/ldconfig
+%post -n libAnalitza%{soversion} -p /sbin/ldconfig
+%postun -n libAnalitza%{soversion} -p /sbin/ldconfig
 
-%files -n libAnalitza5
+%files -n libAnalitza%{soversion}
 %license COPYING*
-%{_kf5_libdir}/libAnalitza*.so.*
+%{_kf5_libdir}/libAnalitza*.so.%{soversion}*
 
 %files devel
 %{_kf5_cmakedir}/Analitza5/
