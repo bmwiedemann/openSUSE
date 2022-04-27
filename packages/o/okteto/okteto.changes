@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Apr 27 12:40:40 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.2.0:
+  * fix: check gh releases e2e test (#2594)
+  * refactor: rewrite deprecation message (#2593)
+  * feat: add initv2 autocreate feature (#2579)
+  * Jlopezbarb/fix secrets on windows (#2584)
+  * fix: use 'okteto.dev' registry when image tagging to avoid authorization error (#2570)
+  * Fix #2505. Fix okteto deploy command within other okteto deploy execution (#2563)
+  * fix: paths on windows test (#2576)
+  * Added pod name check at okteto up integration (#2572)
+  * fix: deploy from file not found error (#2574)
+  * feat: if its docker extension enable detach mode (#2546)
+  * Jlopezbarb/fix variable expansion (#2564)
+  * fix: fail if port is already in use in local machine (#2565)
+  * Track restart cli command (#2560)
+  * fix: fix e2e flaky tests (#2562)
+  * fix: stream logs after up (#2561)
+  * fix: use busybox as dev image (#2559)
+  * Update broken links to follow the new docs layout (#2556)
+  * Remove "okteto manifest" command (#2557)
+  * Handle empty labels when adding "deployed-by" label (#2553)
+  * fix: check build section (#2549)
+  * Check okteto name env when manifest is compose (#2535)
+  * fix: syncthing was killing parent process (#2539)
+  * fix: dettached paths on windows (#2541)
+  * Have 2 separate context flows for different manifest versions (#2542)
+  * Only deploy endpoints and volumes specified in servicesToDeploy (#2528)
+  * feat: add dettached mode (#2538)
+  * Build with context (#2526)
+  * Update okteto logo in login static page (#2527)
+  * fix: remove previous running proccess (#2496)
+  * feat: add show ctx json (#2522)
+  * fix: windows e2e test (#2518)
+  * Fix envs from envfile (#2513)
+  * Support for export cache when build (#2499)
+  * build(deps): Bump actions/stale from 4 to 5 (#2520)
+  * fix: remote e2e tests (#2517)
+  * Agustin/2500-support-to-deploy-a-subset-of-docker-compose-services-in-the-okteto-manifest (#2512)
+  * fix: compose ports on dev manifest (#2510)
+  * Custom login html (and redirect) for "okteto context use" (#2508)
+  * test: add tests checking deploy output (#2400)
+  * Remove DinD sidecard support (#2484)
+
+-------------------------------------------------------------------
 Thu Apr 14 19:46:00 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.1.0:
