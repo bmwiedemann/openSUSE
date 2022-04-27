@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Apr 27 11:50:09 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.1.1:
+  + session-vnc: Don't leak the socket source
+  + hwaccel-nvidia: Degrade a warning to a normal message
+  + context: Initialize EGL thread when daemon is ready
+  + rdp: Perform basic error checking in SAM file creation
+  + session-rdp: Always check return values of API calls
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 25 09:10:38 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.1:
+  + vnc: Retrieve frame members before stealing frame pointer.
+  + rdp: Retrieve frame members before stealing frame pointer.
+  + daemon: Only start servers, when they are not started yet.
+  + settings: Don't crash, when parsing the credentials string
+    fails.
+  + egl: Use Wayland platform instead of surfaceless.
+  + session-rdp: Only show NSC disable message, when NSC is
+    available.
+  + session-rdp: Fix typo in warning message.
+  + systemd: Autostart as part of gnome-session.target.
+  + daemon: Handle SIGINT and SIGTERM signals properly.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Mar 22 09:14:28 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add explicit pkgconfig(libdrm), pgkconfig(gbm), and
