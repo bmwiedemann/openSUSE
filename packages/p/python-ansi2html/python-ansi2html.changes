@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Apr 27 11:41:26 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.7.0
+  1.7.0
+  -----
+  Minor Changes
+  ^^^^^^^^^^^^^
+  * Replace recommendation of using system packages with pip3  @ssbarnea
+  * Add truecolor support  @miltolstoy
+  * Generate documentation with Sphinx and use Read the Docs  @tristanlatr
+  * Adds support for OSC hyperlink sequences.  @hakonhagland
+  Bugfixes
+  ^^^^^^^^
+  * Add test coverage  @ziegenberg
+  * Replace pkg_resources with importlib.metadata  @ziegenberg
+  * fix including of CHANGELOG.rst  @ziegenberg
+  * Update linting dependencies  @ziegenberg
+  * Upgrade the build process  @ziegenberg
+  * Add type hinting  @ziegenberg
+  * Update CI badges in readme  @ssbarnea
+  * Bump setuptools-scm version  @ssbarnea
+  1.6.0
+  -----
+  Changes
+  ^^^^^^^
+  * Switching from nosetest to unittest  @paolostivanin
+  * Add dracula colorscheme  @ahmubashshir
+  * Refactor packaging by replacing old setup.py based packaging with modern pep517 based one 
+  * Replace travis with github actions  @ssbarnea
+  Bugfixes
+  ^^^^^^^^
+  * Correct author metadata  @ssbarnea
+  Deprecations
+  ^^^^^^^^^^^^
+  * Officialy retire support for python <= 3.6  @ssbarnea
+- deleted patches
+  - remove_nose.patch (upstreamed)
+
+-------------------------------------------------------------------
 Thu Mar 26 07:34:53 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add remove_nose.patch
