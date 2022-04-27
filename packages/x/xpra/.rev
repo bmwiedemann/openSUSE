@@ -449,4 +449,12 @@
   * don't store cython generated file</comment>
     <requestid>969483</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>c49f8174f615d0e2f1adff2516544a98</srcmd5>
+    <version>4.4+git20220419.138728c46</version>
+    <time>1651088462</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>972974</requestid>
+  </revision>
 </revisionlist>

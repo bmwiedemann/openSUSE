@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Tue Apr 19 19:07:27 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 4.4+git20220419.138728c46:
+  * #3524 allow the client to add and remove monitors
+  * always log the full backtrace
+  * #3524 handle individual monitor resizing
+  * #3524 doh: don't modify the event which may be used elsewhere
+  * #56 / #3524 allow multiple monitors in 'resize-display' option
+  * #3524 disentangle 'set-initial-position' and 'requested-position'
+  * use 'damage' logging
+  * pylint warnings
+  * #3524 multi monitor desktop mode
+  * #56 let the build auto-detect which variants should use Xdummy
+  * we need the dummy installed to check the version number
+  * #56 use Xdummy on Debian: add dependency
+  * discard invalid workarea values
+  * #56 we don't support multiple screens
+  * remove debug logging
+  * #56 let's hope that newer Debian versions no longer mess up the X11 server
+  * #56 ensure the commented out Xdummy command line is valid
+  * fix error if XDG_DATA_DIRS is not set
+  * #56 make get_monitor_properties reusable
+  * we don't support multiple screens, only monitors
+  * Fix shadow server test following changes in #3476
+  * oops: messed up patch context
+  * #56 add disconnect patch to dummy driver builds
+  * #56 enable the new exact monitor layout matching code
+  * #56 match monitors and outputs
+  * #56 try to disable unused crtc's outputs
+  * fix benncode error when cuda info is missing
+  * oops: using floats breaks backwards compatibility (bencode)
+  * #3518 ffplay is video
+  * #3519 use 'scroll' encoding more judiciously
+  * update patch has zero fuzz
+  * #56 keep track of primary monitor, prettify_plug_name
+  * #56 enable Xdummy on arm again
+  * build the dummy driver on arm64, always build xpra
+  * ffmpeg 5.0.1
+  * oops: we do still want those
+  * #56 build updated dummy driver for Debian distros
+  * simplify: don't enable by default on MacOS or MS Windows
+  * MacOS needs a Python interpreter to run the signal listener
+  * #3493 fix signal watcher libexec path on MacOS and MS Windows
+  * ship xpra_signal_listener on MacOS
+  * debug logging tweaks
+  * fix setting of monitor attributes
+  * provide XSync method, use it instead of (useless) XFlush
+  * make it easier to initialize DPI awareness without loading GTK
+  * latest pillow spits out warnings without this
+  * #56 hook up monitor virtualization in seamless server
+  * validate mapping size
+  * oops: missed during renaming
+  * remove unnecessary import
+  * use a stronger type for membuf
+  * #3504 use a MemBuf to quickly allocate host memory
+  * use correct value for bits-per-pixel
+  * #3504 make it clearer this is a CUDA buffer
+  * #3504 simplify: don't use a download callback
+  * explicitly unregister the CUDA RegisteredBuffer
+  * #1467 remove redundant pointer limits patch
+  * #56 oops: fix backwards compatibility for add_screen_size
+  * #56 add modes to output as needed
+  * add XSynchronize and XSync wrappers
+  * #3366 pixel data is a list of bytes
+  * re-use CurrentTime from pxd
+  * #56 configure crtcs, outputs and monitors
+  * #56 expose monitor info
+  * #56 expose primary output, hide gamma for disconnected outputs
+  * #56 also include gamma curves
+  * #56 set WIDTH_MM and HEIGHT_MM dummy output properties
+  * #56 skip irrelevant information
+  * #56 capture most crtc / output info
+  * #56 switch to milimeters everywhere
+  * fix memleak: add missing XRRFreeOutputInfo
+  * non ui clients may not have 'screen_sizes' defined
+  * make it easier to dump monitor info
+  * #56 make the legacy dummy dpi option optional
+  * allow a wider range of clocks
+  * #3504 free buffers as soon as possible, log alpha channel merge cost
+  * #56 oops, missed from a6248574105da32680a9cb2b624cc6d9cf896688
+  * #56 enable dynamic resolution matching with randr >= 1.6
+  * #56 with dummy 0.4.0 or later no need for pre-defined modelines
+  * minor path / extension fixups
+  * fix patch path, remove merged patch, use bz2 archive
+  * dummy v0.4.0
+  * fix 'jpega' decoding using plain 'jpeg' decoder
+  * #3504 add 'jpega' support
+  * also add jpeg / nvjpeg encoders
+  * pylint warning
+
+-------------------------------------------------------------------
 Fri Apr  8 22:57:54 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adding 'Recommends: lsb-release' so 'Information' -> 'Session Info'

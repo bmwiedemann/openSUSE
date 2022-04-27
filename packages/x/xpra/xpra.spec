@@ -28,7 +28,7 @@
 # -----
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        4.4+git20220404.1e56be683
+Version:        4.4+git20220419.138728c46
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
