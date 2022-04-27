@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 26 22:32:34 UTC 2022 - david@macemail.co.uk
+
+- Remove dependency on gconf2
+
+-------------------------------------------------------------------
 Tue Oct 05 21:37:46 UTC 2021 - david@macemail.co.uk
 
 - Rebase the dependencies of the generated spotify-client rpm from the debian package
