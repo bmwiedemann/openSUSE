@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr 26 07:53:48 UTC 2022 - Marco Strigl <marco.strigl@suse.com>
+
+- 0.177.0
+  * switch to python3 in osc-wrapper and make python3 explicit
+  * allow formatting of the sccache uri
+  * show repository state and details
+  * a few minor fixes and improvements in credentials handling
+  * order credential managers by priority
+  * kernel keyring is now supported as credential manager
+  * support regex based name filtering in core.get_prj_results()
+  * revision parsing parseRevisionOption(): cleanup and make logic consistent
+  * use sr_ids[0] for superseding (fixes issues with superseding requests
+    containing many packages
+  * download logs and metadata in subdirs named by packages when osc getbinaries
+    is issued on project level or in multibuild case
+
+- spec file:
+  * recommed python-keyring-keyutils for new kernel keyring backend 
+
+-------------------------------------------------------------------
 Mon Feb 28 17:34:00 UTC 2022 - Daniel Mach <daniel.mach@suse.com>
 
 - 0.176.0
