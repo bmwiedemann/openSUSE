@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 25 09:20:30 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.1:
+  + Meson templates updates.
+  + Fix failure to load project under certain symlink situations.
+  + Fix restore-cursor plugin.
+  + Improve newline handling with git diffs.
+  + Updated GJS snippets.
+  + Fixes for podman integration.
+  + Language Server Protocol enhancements.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Mar 19 05:21:04 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 42.0:

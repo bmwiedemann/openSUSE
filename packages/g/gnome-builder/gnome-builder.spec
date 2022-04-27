@@ -24,7 +24,7 @@
 %define basever 42
 
 Name:           gnome-builder
-Version:        42.0
+Version:        42.1
 Release:        0
 Summary:        A toolsmith for GNOME-based applications
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-3.0-or-later AND LGPL-2.1-or-later
@@ -191,7 +191,7 @@ rm -fr %{buildroot}%{_datadir}/doc/%{name}/*/.doctrees
 %{_datadir}/icons/hicolor/
 %{_includedir}/%{name}/
 %{_includedir}/%{name}-%{basever}/
-%{_libdir}/pkgconfig/gnome-builder-42.0.pc
+%{_libdir}/pkgconfig/gnome-builder-%{version}.pc
 %dir %{python3_sitelib}/gi
 %dir %{python3_sitelib}/gi/overrides
 %{python3_sitelib}/gi/overrides/*
