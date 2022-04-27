@@ -17,7 +17,7 @@
 
 
 Name:           gnumeric
-Version:        1.12.51
+Version:        1.12.52
 Release:        0
 Summary:        Spreadsheet Application
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -154,8 +154,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files
 %license COPYING COPYING-gpl2 COPYING-gpl3
 %doc AUTHORS BEVERAGES BUGS HACKING MAINTAINERS NEWS README ChangeLog
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/%{name}.appdata.xml
 %{_bindir}/*
 %{_libdir}/*.so
 %dir %{_libdir}/gnumeric
@@ -174,6 +172,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/glib-2.0/schemas/org.gnome.gnumeric.plugin.gschema.xml
 %{_datadir}/gnumeric/
 %{_datadir}/icons/hicolor/*/apps/gnumeric.*
+%{_datadir}/metainfo/gnumeric.appdata.xml
 %{_mandir}/man?/*%{ext_man}
 
 %files doc

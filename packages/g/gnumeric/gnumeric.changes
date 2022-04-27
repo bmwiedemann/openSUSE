@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Apr 19 20:09:16 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
+
+- Update to version 1.12.52
+  + Attach the verticle alignment selector to the toolbar.
+  + Improve the toolbar styling a bit.
+  + Fix toolbar overflow menu's labeling.
+  + Many improvements to verticle toolbars.
+  + Install appdata file in new location.
+  + Allow styling of cell extension indicators.
+  + Restore bolding of active sheet tab.
+  + Fix import of mildly broken print settings in xlsx files from OnlyOffice.
+  + Various --with-long-double fixes.
+  + Fix BITAND.
+  + Test improvements.
+  + Fix xlsx write for sheet objects with text contents.
+  + Fix leak.
+  + Fix old problem saving column widths. 
+  + Set default number of sheets to 1.
+  + Fix edge error case for SMALL and LARGE.
+  + Increase the default column width a bit.
+  + Fix xlsx import/export of default column width.
+  + Be less aggressive with automatic column widening.
+
+-------------------------------------------------------------------
 Thu Apr  7 07:03:52 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop autoreconf call, we do not have any patches currently.
