@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 13 20:43:39 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
+
+- Changes from 42.1.1: 
+  + Fix handling of non-char keyboard input. 
+
+-------------------------------------------------------------------
 Fri Apr  8 17:17:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.1.1:
