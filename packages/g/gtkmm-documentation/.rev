@@ -268,4 +268,21 @@
     <comment>GNOME 42 - ready for impact</comment>
     <requestid>963614</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>798c2527dca25693a88b7560ce376922</srcmd5>
+    <version>4.0.2</version>
+    <time>1651088503</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 4.0.2:
+  + Main menu example: Make the keyboard shortcuts work.
+  + Update the Basicis chapter.
+  + PO-files: added: why 'fuzzy' tag appears.
+  + Meson build:
+    - Add allow-network-access option.
+    - Require Meson &gt;=0.61.0
+    - Specify 'check' option in run_command
+    - Don't use gnome.yelp
+  + Updated translations. (forwarded request 969221 from dimstar)</comment>
+    <requestid>973144</requestid>
+  </revision>
 </revisionlist>

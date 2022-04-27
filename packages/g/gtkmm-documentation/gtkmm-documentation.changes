@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr  8 21:22:57 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
+
+- Updated to version 4.0.2:
+  + Main menu example: Make the keyboard shortcuts work.
+  + Update the Basicis chapter.
+  + PO-files: added: why 'fuzzy' tag appears.
+  + Meson build:
+    - Add allow-network-access option.
+    - Require Meson >=0.61.0
+    - Specify 'check' option in run_command
+    - Don't use gnome.yelp
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Dec 11 05:12:11 UTC 2021 - Luciano Santos <luc14n0@linuxmail.org>
 
 - Update to stable version 4.0.1:
