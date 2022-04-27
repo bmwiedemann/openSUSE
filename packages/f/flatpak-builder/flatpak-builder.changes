@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 14 10:34:48 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use system debugedit on TW
+  * Add BuildRequires debugedit
+  * Add Requires debugedit
+
+-------------------------------------------------------------------
 Fri Apr  8 12:03:24 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
 
 - Ensure flatpak >= 1.12.4 is a build and runtime dependency.

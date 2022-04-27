@@ -17,7 +17,10 @@
 
 
 %define flatpak_version 1.12.4
-
+%bcond_with system_debugedit
+%if 0%{?suse_version} >= 1550
+%bcond_without system_debugedit
+%endif
 Name:           flatpak-builder
 Version:        1.2.2
 Release:        0
@@ -52,6 +55,10 @@ Requires:       %{_bindir}/strip
 Requires:       %{_bindir}/tar
 Requires:       %{_bindir}/unzip
 Requires:       flatpak >= %{flatpak_version}
+%if %{with system_debugedit}
+BuildRequires:  debugedit
+Requires:       debugedit
+%endif
 
 %description
 Tool to build flatpaks from source.
@@ -63,6 +70,9 @@ See https://docs.flatpak.org/ for more information.
 %build
 %configure \
 	--enable-docbook-docs \
+%if %{with system_debugedit}
+	--with-system-debugedit \
+%endif
 	%{nil}
 %make_build
 
@@ -74,8 +84,10 @@ See https://docs.flatpak.org/ for more information.
 %doc NEWS README.md
 %doc %{_datadir}/doc/%{name}/
 %{_bindir}/flatpak-builder
-%{_libexecdir}/flatpak-builder-debugedit
 %{_mandir}/man1/flatpak-builder.1%{ext_man}
 %{_mandir}/man5/flatpak-manifest.5%{ext_man}
+%if %{without system_debugedit}
+%{_libexecdir}/flatpak-builder-debugedit
+%endif
 
 %changelog
