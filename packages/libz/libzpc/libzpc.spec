@@ -1,7 +1,7 @@
 #
 # spec file for package libzpc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        IBM Z Protected-key Crypto library
 License:        Apache-2.0
 Group:          Productivity/Security
 URL:            https://github.com/opencryptoki/libzpc
-Source:         libzpc-1.0.0.tar.gz
+Source:         https://github.com/opencryptoki/libzpc/archive/refs/tags/v%{version}.tar.gz#/libzpc-%{version}.tar.gz
 Patch0:         libzpc-sles15p4-mark-stack-nonexec.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  doxygen

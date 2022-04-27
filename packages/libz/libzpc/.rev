@@ -21,4 +21,12 @@
 - Added a BuildRequires for texlive-bibtex-bin</comment>
     <requestid>929077</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ca046bec73fde9006b9c0cd6cc4e4b68</srcmd5>
+    <version>1.0.0</version>
+    <time>1651088473</time>
+    <user>dimstar_suse</user>
+    <comment>- use source url</comment>
+    <requestid>973031</requestid>
+  </revision>
 </revisionlist>
