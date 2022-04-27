@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 27 12:45:21 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Drop unused package libvirt-client
+
+-------------------------------------------------------------------
 Thu Jan 20 10:10:32 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Symlink nsswitch.conf and nft rules to proper locations

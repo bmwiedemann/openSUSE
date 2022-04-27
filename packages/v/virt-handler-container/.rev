@@ -73,4 +73,12 @@
 - Install tar to allow kubectl cp ...</comment>
     <requestid>950002</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>95eb52278d8e7eb7010338e3ef468be5</srcmd5>
+    <version>unknown</version>
+    <time>1651088538</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>973241</requestid>
+  </revision>
 </revisionlist>

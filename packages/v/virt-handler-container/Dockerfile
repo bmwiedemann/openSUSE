@@ -26,7 +26,6 @@ RUN zypper -n install \
               iptables \
               kubevirt-container-disk \
               kubevirt-virt-handler \
-              libvirt-client \
               lsscsi \
               nftables \
               qemu-tools \
