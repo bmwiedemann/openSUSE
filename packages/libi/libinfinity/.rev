@@ -297,4 +297,15 @@
     <comment>Automatic systemd hardening effort by the security team. This has not been tested. For details please see https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort (forwarded request 923285 from jsegitz)</comment>
     <requestid>924748</requestid>
   </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>81c7413bb503311ee534bb50284981c4</srcmd5>
+    <version>0.7.2</version>
+    <time>1651088520</time>
+    <user>dimstar_suse</user>
+    <comment>- Resolve rpmlint error &quot;libinfinity-1_0-0.x86_64: E:
+  shlib-policy-name-error SONAME: libinfgtk-0.7.so.0, expected
+  package suffix: 0_7-0&quot;
+- Move documentation to subpackage with main applications (forwarded request 973178 from jengelh)</comment>
+    <requestid>973183</requestid>
+  </revision>
 </revisionlist>

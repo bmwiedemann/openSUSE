@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 27 12:28:56 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve rpmlint error "libinfinity-1_0-0.x86_64: E:
+  shlib-policy-name-error SONAME: libinfgtk-0.7.so.0, expected
+  package suffix: 0_7-0"
+- Move documentation to subpackage with main applications
+
+-------------------------------------------------------------------
 Mon Oct  4 15:07:22 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:

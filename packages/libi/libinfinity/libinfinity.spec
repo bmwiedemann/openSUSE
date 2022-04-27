@@ -1,7 +1,7 @@
 #
 # spec file for package libinfinity
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,13 +56,14 @@ GObject-based C. Infinote is a protocol for collaborative editing
 multiple documents and is portable to both Windows and Unix-like
 platforms.
 
-%package -n libinfinity-1_0-0
+%package -n libinfinity-0_7-0
 Summary:        Implementation of the Infinote collaborative editing protocol
-Group:          Development/Libraries/GNOME
+Group:          System/Libraries
 # Needed to make lang package installable
-Provides:       %{name} = %{version}
+Provides:       %{name} = %{version}-%{release}
+Conflicts:      libinfinity-1_0-0
 
-%description -n libinfinity-1_0-0
+%description -n libinfinity-0_7-0
 libinfinity is an implementation of the Infinote protocol written in
 GObject-based C. Infinote is a protocol for collaborative editing
 multiple documents and is portable to both Windows and Unix-like
@@ -73,7 +74,7 @@ Summary:        Implementation of the Infinote collaborative editing protocol
 Group:          Development/Libraries/GNOME
 Requires:       libgnutls-devel
 Requires:       libgsasl-devel
-Requires:       libinfinity-1_0-0 = %{version}
+Requires:       libinfinity-0_7-0 = %{version}-%{release}
 Requires:       pkgconfig(glib-2.0)
 Requires:       pkgconfig(gtk+-2.0)
 Requires:       pkgconfig(libxml-2.0)
@@ -96,8 +97,7 @@ Infinote protocol. It is typically used with Gobby as a client.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 # -fno-strict-aliasing added 2009-05-07. Need for 0.3.0 -- vuntz
@@ -106,7 +106,7 @@ CFLAGS="%{optflags} -fno-strict-aliasing"
       --disable-static \
       --with-systemd \
       --with-gio
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -132,8 +132,8 @@ mv %{buildroot}%{_bindir}/infinoted-%{_version} %{buildroot}%{_bindir}/infinoted
 mv %{buildroot}%{_mandir}/man1/infinoted-%{_version}.1 %{buildroot}%{_mandir}/man1/infinoted.1
 %fdupes %{buildroot}
 
-%post -n libinfinity-1_0-0 -p /sbin/ldconfig
-%postun -n libinfinity-1_0-0 -p /sbin/ldconfig
+%post   -n libinfinity-0_7-0 -p /sbin/ldconfig
+%postun -n libinfinity-0_7-0 -p /sbin/ldconfig
 
 %pre -n infinoted
 %service_add_pre infinoted.service
@@ -149,12 +149,9 @@ mv %{buildroot}%{_mandir}/man1/infinoted-%{_version}.1 %{buildroot}%{_mandir}/ma
 %postun -n infinoted
 %service_del_postun infinoted.service
 
-%files -n libinfinity-1_0-0
+%files -n libinfinity-0_7-0
 %license COPYING
-%doc AUTHORS ChangeLog NEWS TODO
 %{_libdir}/libinf*.so.*
-# Only needed for the test applications, it seems
-%exclude %{_datadir}/icons/hicolor/*/apps/infinote.*
 
 %files devel
 %{_includedir}/libinf*
@@ -163,6 +160,7 @@ mv %{buildroot}%{_mandir}/man1/infinoted-%{_version}.1 %{buildroot}%{_mandir}/ma
 %{_datadir}/gtk-doc/html/*
 
 %files -n infinoted
+%doc AUTHORS ChangeLog NEWS TODO
 %{_bindir}/infinoted
 %{_mandir}/man1/infinoted.1%{?ext_man}
 %{_libdir}/infinoted-%{_version}
@@ -174,6 +172,8 @@ mv %{buildroot}%{_mandir}/man1/infinoted-%{_version}.1 %{buildroot}%{_mandir}/ma
 %{_fillupdir}/sysconfig.infinoted
 %dir /srv/infinoted
 %{_unitdir}/infinoted.service
+# Only needed for the test applications, it seems
+%exclude %{_datadir}/icons/hicolor/*/apps/infinote.*
 
 %files lang -f %{name}-%{_version}.lang
 
