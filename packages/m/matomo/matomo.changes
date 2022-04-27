@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 27 05:32:51 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.9.1
+  * matomo-org/matomo
+    - #19106 Perform adblock test after page has finished loading, not immediately
+    - #19103 Fix PHP 8.1 deprecation warning
+    - #19110 [Vue] add polyfill for String.replaceAll
+    - #19102 Ensure required translations are loaded for Goal management
+    - #19094 Fix the saving of setting “Also use the Anonymized IP addresses when enriching visits.”
+
+-------------------------------------------------------------------
 Sun Apr 24 13:27:28 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.9.0
