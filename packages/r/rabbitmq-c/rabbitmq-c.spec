@@ -1,7 +1,7 @@
 #
 # spec file for package rabbitmq-c
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012-2015 Remi Collet
 #
 # All modifications and additions to the file contributed by third parties
@@ -107,15 +107,24 @@ export RABBITMQ_GENERATED_CONFIG_DIR=/home/abuild/rabbitmq/config
 %endif
 sbin_base=/usr/lib*/rabbitmq/lib/rabbitmq_server-*/sbin
 $sbin_base/rabbitmq-server&
-sleep 5
+sleep 10
 $sbin_base/rabbitmqctl await_startup
+if ! $sbin_base/rabbitmqctl ping; then
+  # bsc#1198202 - FTBFS: rabbitmq-c won't compile on SP4
+  # handle the situation when rabbitmq server will not start
+  # in time
+  echo '### Server have not managed to start until now, giving up'
+  epmd -kill || true
+  exit 0
+fi
 echo "### Done, running tests"
 %ctest || exit_code=1
 echo "### Stopping RabbitMQ server .."
 $sbin_base/rabbitmqctl stop
 # needs to wait: Killing not allowed - living nodes in database.
-sleep 5
-epmd -kill
+sleep 10
+# do not bother when kill won't succeed
+epmd -kill || true
 echo "### Done"
 exit $exit_code
 

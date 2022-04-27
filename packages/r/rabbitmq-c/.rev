@@ -49,4 +49,13 @@
     <comment>- %check: fix testsuite run</comment>
     <requestid>917000</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>371724fc029201f776fab6dd9d107004</srcmd5>
+    <version>0.11.0</version>
+    <time>1651088525</time>
+    <user>dimstar_suse</user>
+    <comment>- give up to run testsuite when the server will not start in time
+  [bsc#1198202]</comment>
+    <requestid>973171</requestid>
+  </revision>
 </revisionlist>
