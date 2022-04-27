@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 27 12:09:38 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add relevant version limit to pkgconfig(appstream) BuildRequires.
+
+-------------------------------------------------------------------
 Wed Apr  6 11:23:54 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 3.12.2:
