@@ -172,4 +172,12 @@
     <comment></comment>
     <requestid>943066</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>0108f2d8ede5d6b52eefc42533efa6d1</srcmd5>
+    <version>3.3.0</version>
+    <time>1651088531</time>
+    <user>dimstar_suse</user>
+    <comment>Remove parents</comment>
+    <requestid>973204</requestid>
+  </revision>
 </revisionlist>
