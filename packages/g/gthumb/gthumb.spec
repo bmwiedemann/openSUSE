@@ -38,7 +38,7 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(appstream)
+BuildRequires:  pkgconfig(appstream) >= 0.14.6
 BuildRequires:  pkgconfig(champlain-0.12) >= 0.12.0
 BuildRequires:  pkgconfig(champlain-gtk-0.12) >= 0.12.0
 BuildRequires:  pkgconfig(clutter-1.0) >= 1.12.0
