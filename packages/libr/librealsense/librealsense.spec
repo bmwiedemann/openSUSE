@@ -1,7 +1,7 @@
 #
 # spec file for package librealsense
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,17 @@
 #
 
 
-%define libver 2
+%define libver 2_50
 Name:           librealsense
-Version:        2.44.0
+Version:        2.50.0
 Release:        0
 Summary:        Library for Intel RealSense depth cameras
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/IntelRealSense/librealsense
 Source:         https://github.com/IntelRealSense/librealsense/archive/v%{version}.tar.gz
-Source1:        %{name}-rpmlintrc
+Patch0:         presets_path.patch
+Patch1:         disable-pedantic.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
@@ -45,8 +46,9 @@ depth aligned to color and vise-versa), and a built-in support for record and
 playback of streaming sessions.
 
 %package -n %{name}%{libver}
-Summary:        Library for librealsense
-Group:          Development/Libraries/C and C++
+Summary:        Library for Intel RealSense depth cameras
+Group:          System/Libraries
+Obsoletes:      librealsense2 < %{version}-%{release}
 
 %description -n %{name}%{libver}
 Library for librealsense applications.
@@ -54,7 +56,7 @@ Library for librealsense applications.
 %package devel
 Summary:        Headers and library for librealsense
 Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
+Requires:       %{name}%{libver} = %{version}-%{release}
 
 %description devel
 Headers and cmake project files for developing librealsense applications.
@@ -72,8 +74,11 @@ Examples from the librealsense library.
 
 %build
 %define __builder ninja
+# there is a *lot* of those warnings
+export CXXFLAGS='%optflags -Wno-reorder -Wno-unused-variable -Wno-sign-compare -Wno-unknown-pragmas'
 %cmake \
-	-DOpenGL_GL_PREFERENCE=GLVND
+	-DOpenGL_GL_PREFERENCE=GLVND \
+	-DCHECK_FOR_UPDATES=OFF
 %cmake_build
 
 %install
@@ -92,6 +97,9 @@ install -m 644 -t %{buildroot}/%{_udevrulesdir} config/99-realsense-libusb.rules
 %files
 %doc readme.md CONTRIBUTING.md code-of-conduct.md NOTICE
 %{_bindir}/realsense-viewer
+%dir %{_datadir}/librealsense2/
+%dir %{_datadir}/librealsense2/presets/
+%{_datadir}/librealsense2/presets/*.preset
 %{_udevrulesdir}/99-realsense-libusb.rules
 
 %files -n %{name}%{libver}

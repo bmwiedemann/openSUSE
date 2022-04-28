@@ -57,4 +57,21 @@ D435.</comment>
     <comment></comment>
     <requestid>895239</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>df9a729b5eb90937e01291c9c0747bac</srcmd5>
+    <version>2.50.0</version>
+    <time>1651180078</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.50.0
+  * see release notes here:
+    https://github.com/IntelRealSense/librealsense/releases/tag/v2.50.0
+- add
+  * disable-pedantic.patch
+  * presets_path.patch
+
+- Resolve rpmlint report &quot;librealsense2.x86_64: E:
+  shlib-policy-name-error SONAME: librealsense2-gl.so.2.44,
+  expected package suffix: 2_44&quot;</comment>
+    <requestid>973447</requestid>
+  </revision>
 </revisionlist>
