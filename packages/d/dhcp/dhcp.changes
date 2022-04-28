@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 26 10:48:39 UTC 2022 - Reinhard Max <max@suse.com>
+
+- bsc#1198657: properly handle DHCRELAY(6)_OPTIONS.
+
+-------------------------------------------------------------------
 Sat Apr 16 20:19:19 UTC 2022 - chris@computersalat.de
 
 - Update dhcpd.service: After: network-online.target

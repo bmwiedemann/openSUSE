@@ -1200,4 +1200,12 @@ a dhcpv6 server assert crash (bnc#767661), and other bugs
     <comment></comment>
     <requestid>971083</requestid>
   </revision>
+  <revision rev="134" vrev="10">
+    <srcmd5>629a888fcafa6c04859016a0c76649b4</srcmd5>
+    <version>4.4.2.P1</version>
+    <time>1651180027</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1198657: properly handle DHCRELAY(6)_OPTIONS.</comment>
+    <requestid>972892</requestid>
+  </revision>
 </revisionlist>

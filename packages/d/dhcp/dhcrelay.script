@@ -86,7 +86,7 @@ case "$1" in
 			DHCRELAY_INTERFACES_ARGS="$DHCRELAY_INTERFACES_ARGS -i $i"
 		done
 
-		DHCRELAY_ARGS="$DHCRELAY_INTERFACES_ARGS $DHCRELAY_SERVERS"
+		DHCRELAY_ARGS="$DHCRELAY_OPTIONS $DHCRELAY_INTERFACES_ARGS $DHCRELAY_SERVERS"
 	;;
 	-6)
 		DHCRELAY6_LOWER_INTERFACES_ARGS=''
@@ -104,7 +104,7 @@ case "$1" in
 			# service is not configured
 			exit 6;
 		fi
-		DHCRELAY_ARGS="$DHCRELAY6_LOWER_INTERFACES_ARGS $DHCRELAY6_UPPER_INTERFACES_ARGS"
+		DHCRELAY_ARGS="$DHCRELAY6_OPTIONS $DHCRELAY6_LOWER_INTERFACES_ARGS $DHCRELAY6_UPPER_INTERFACES_ARGS"
 	;;
 	esac
 	## Start daemon with startproc(8). If this fails
@@ -114,9 +114,9 @@ case "$1" in
 	# already running to match LSB spec.
 	if [ "$2" = "-v" ]; then
 		echo
-		echo -n "executing '$DAEMON_BIN $DHCPv_OPT $DHCRELAY_OPTIONS $DHCRELAY_ARGS'"
+		echo -n "executing '$DAEMON_BIN $DHCPv_OPT $DHCRELAY_ARGS'"
 	fi
-	startproc -q -l $STARTPROC_LOGFILE -p $DAEMON_PIDFILE $DAEMON_BIN $DHCPv_OPT $DHCRELAY_OPTIONS $DHCRELAY_ARGS >/dev/null 2>&1
+	startproc -q -l $STARTPROC_LOGFILE -p $DAEMON_PIDFILE $DAEMON_BIN $DHCPv_OPT $DHCRELAY_ARGS >/dev/null 2>&1
 	rc=$?
 	if ! [ $rc -eq 0 ]; then
 		## be verbose
