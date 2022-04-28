@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 28 07:18:05 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Drop baselibs.conf, unnecessary
+
+-------------------------------------------------------------------
+Thu Apr 28 00:01:38 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve rpmlint report "libqxmledit0.x86_64: E:
+  shlib-policy-name-error SONAME:
+  libQXmlEditSessions-0.9.16.so.0, expected package suffix:
+  0_9_16-0"
+
+-------------------------------------------------------------------
 Thu Sep 24 09:06:31 UTC 2020 - aloisio@gmx.com
 
 - Update to version 0.9.16

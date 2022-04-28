@@ -1,7 +1,7 @@
 #
 # spec file for package qxmledit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define major   0
+%define major   -0_9_16-0
 Name:           qxmledit
 Version:        0.9.16
 Release:        0
@@ -24,7 +24,6 @@ Summary:        XML Editor and XSD Viewer
 License:        LGPL-2.0-or-later AND LGPL-3.0-or-later
 URL:            http://qxmledit.org/
 Source:         https://github.com/lbellonda/qxmledit/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source99:       baselibs.conf
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -69,6 +68,8 @@ compare XML files. It can also few XSD files.
 
 %package -n libqxmledit%{major}
 Summary:        XML Editor Shared Libraries
+# It actually contained libqxmledit-0.9.16.so.0.9.16
+Conflicts:      libqxmledit0
 
 %description -n libqxmledit%{major}
 QXmlEdit is a XML editor written in Qt. It uses a tree-based
@@ -78,7 +79,7 @@ This package includes QXmlEdit shared libraries.
 
 %package devel
 Summary:        XML Editor Development Files
-Requires:       libqxmledit%{major} = %{version}
+Requires:       libqxmledit%{major} = %{version}-%{release}
 
 %description devel
 QXmlEdit is a XML editor written in Qt. It uses a tree-based
