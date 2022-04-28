@@ -19,7 +19,7 @@
 %define sle_version 0
 Name:           SDL2
 %define lname   libSDL2-2_0-0
-Version:        2.0.20
+Version:        2.0.22
 Release:        0
 Summary:        Simple DirectMedia Layer Library
 License:        Zlib
@@ -57,7 +57,7 @@ BuildRequires:  pkgconfig(libpulse-simple) >= 0.9
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(tslib)
 BuildRequires:  pkgconfig(udev)
-BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-client) >= 1.18
 BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-protocols)
@@ -108,6 +108,7 @@ library.
 %prep
 %autosetup -p1
 perl -i -pe 's{\r\n}{\n}g' *.txt README.md
+echo 'V_%version { global: *; };' >sdl2.sym
 
 %build
 %global _lto_cflags %_lto_cflags -ffat-lto-objects
