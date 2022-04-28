@@ -17,7 +17,7 @@
 
 
 Name:           yast2-firstboot
-Version:        4.5.1
+Version:        4.5.2
 Release:        0
 Summary:        YaST2 - Initial System Configuration
 License:        GPL-2.0-only
@@ -77,7 +77,7 @@ YaST2 firstboot settings for WSL images
 # lets explain this sed. At first it is address which match line with name
 # registration and +1 for next line and then here change false to true
 sed -i '/<name>registration/,+1s/false/true/' control/firstboot.xml
-sed -i '/<name>registration/,+1s/false/true/' wsl/firstboot.xml
+sed -i '/<name>registration/,+1s/false/true/' wsl/firstboot.ycontrol.xml
 %endif
 
 %install
@@ -88,7 +88,7 @@ mkdir -p %{buildroot}%{_datadir}/firstboot/scripts
 
 mkdir -p %{buildroot}%{yast_ydatadir}
 
-install -m 644 wsl/firstboot.xml %{buildroot}%{_sysconfdir}/YaST2/firstboot-wsl.xml
+install -m 644 wsl/firstboot.ycontrol.xml %{buildroot}%{_sysconfdir}/YaST2/firstboot-wsl.xml
 install -m 644 wsl/welcome.txt %{buildroot}%{yast_ydatadir}
 
 %check

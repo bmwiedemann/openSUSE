@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 26 15:46:12 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed POT file comments (bsc#1198220)
+- Removed .glade workaround for translations
+- 4.5.2
+
+-------------------------------------------------------------------
 Mon Apr 11 14:44:06 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Extract the translatable texts also from the wsl/firstboot.xml
