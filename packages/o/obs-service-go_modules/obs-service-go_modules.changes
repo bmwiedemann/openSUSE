@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 26 08:53:25 UTC 2022 - dmueller@suse.com
+
+- Update to version 0.4.0:
+  * don't ignore go mod command errors
+  * allow specifying source / vendor archive compression mode
+
+-------------------------------------------------------------------
 Mon Sep 02 14:40:52 UTC 2019 - jkowalczyk@suse.com
 
 - Update to version 0.3.0:
