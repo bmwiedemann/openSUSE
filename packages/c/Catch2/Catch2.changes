@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr 26 12:06:41 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 2.13.9
+  * Fixed issue with -# (filename-as-tag) flag when __FILE__ expands
+    into filename without directories
+  * Fixed CAPTURE macro not being variadic when disabled through
+    CATCH_CONFIG_DISABLE
+- Update to 2.13.8
+  * Fix: Made Approx::operator() const
+  * Improved pkg-config files
+  * The macro-generated names for things like TEST_CASE no longer
+    create reserved identifiers
+  * Clang-tidy should no longer warn about missing virtual dispatch
+    in FilterGenerator's constructor
+- Added fix-pragmas-old-gcc.patch
+
+-------------------------------------------------------------------
 Thu Aug  5 11:24:30 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.13.7
