@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 23 03:06:48 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.273
+   see /usr/share/doc/packages/perl-PPI/Changes
+
+  1.273   2022-04-22 15:58:31Z
+  	Summary:
+      - Whitespace in signatures is now preserved (GH#257)
+
+-------------------------------------------------------------------
 Thu Feb  3 03:06:27 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.272
