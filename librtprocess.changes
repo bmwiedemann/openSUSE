@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 28 06:20:11 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.12.0+20211228:
+  * Update amaze.cc
+  * Update CA_correct.cc
+  * Update rcd.cc
+  * Update markesteijn.cc
+  * Various small fixes
+- Drop add-missing-include.patch
+
+-------------------------------------------------------------------
 Mon May 31 06:04:11 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.12.0+20210408:
