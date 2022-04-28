@@ -30,8 +30,9 @@ Release:        0
 Summary:        The Syslog daemon
 License:        GPL-2.0-or-later
 Group:          System/Daemons
-URL:            http://www.infodrom.org/projects/sysklogd/
-Source:         http://www.infodrom.org/projects/sysklogd/download/sysklogd-%{version}.tar.gz
+URL:            https://www.infodrom.org/projects/sysklogd/
+Source:         https://www.infodrom.org/projects/sysklogd/download/sysklogd-%{version}.tar.gz
+Source4:        https://www.infodrom.org/projects/sysklogd/download/sysklogd-%{version}.tar.gz.asc
 Source1:        logrotate.syslog
 Source2:        sysconfig.syslogd
 Source3:        sysconfig.klogd

@@ -798,4 +798,12 @@
     <comment>- Switch from obsolete standard output type syslog over to journal (boo#1196467)</comment>
     <requestid>959335</requestid>
   </revision>
+  <revision rev="98" vrev="797">
+    <srcmd5>f336143d2b623a77cd63903969179fb0</srcmd5>
+    <version>unknown</version>
+    <time>1651180028</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>972926</requestid>
+  </revision>
 </revisionlist>

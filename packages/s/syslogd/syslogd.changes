@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 19 14:51:10 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- https urls, added gpg signature (but not the keyring, could not
+  find id)
+
+-------------------------------------------------------------------
 Fri Mar  4 07:22:27 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Switch from obsolete standard output type syslog over to journal (boo#1196467) 
