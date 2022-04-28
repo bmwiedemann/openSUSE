@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 26 13:31:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- autoconf 2.71 uses 'new configure' format, but does no longer
+  reference ac_site_file2.
+
+-------------------------------------------------------------------
 Tue Apr 20 13:45:43 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - libexec is back in use in TW

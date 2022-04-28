@@ -1,7 +1,7 @@
 #
 # spec file for package site-config
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -74,7 +74,11 @@ AC_INIT
 EOF
 autoconf
 # Extract site script loading parts of configure and apply some rewrite rules.
+%if %{pkg_vcmp autoconf >= 2.71}
+if true; then
+%else
 if grep ac_site_file2 configure ; then
+%endif
 	# new autoconf
 	sed -n <configure >ac_site_load_files '
 		s/  /\t/g
