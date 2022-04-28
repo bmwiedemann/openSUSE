@@ -17,7 +17,7 @@
 
 
 Name:           logback
-Version:        1.2.8
+Version:        1.2.11
 Release:        0
 Summary:        A Java logging library
 License:        EPL-1.0 OR LGPL-2.1-or-later
@@ -37,15 +37,12 @@ BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
 BuildRequires:  mvn(org.apache.tomcat:tomcat-catalina)
 BuildRequires:  mvn(org.apache.tomcat:tomcat-coyote)
-BuildRequires:  mvn(org.codehaus.gmavenplus:gmavenplus-plugin)
-BuildRequires:  mvn(org.codehaus.groovy:groovy-all)
 BuildRequires:  mvn(org.codehaus.janino:janino)
 BuildRequires:  mvn(org.eclipse.jetty:jetty-server)
 BuildRequires:  mvn(org.eclipse.jetty:jetty-util)
 BuildRequires:  mvn(org.fusesource.jansi:jansi)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.slf4j:slf4j-ext)
-#!BuildRequires: groovy-lib
 BuildArch:      noarch
 
 %description
@@ -108,12 +105,8 @@ rm -r %{name}-*/src/test/java/*
 
 # com.oracle:ojdbc14:10.2.0.1 com.microsoft.sqlserver:sqljdbc4:2.0
 %pom_xpath_remove "pom:project/pom:profiles/pom:profile[pom:id = 'host-orion']" %{name}-access
-%pom_xpath_remove "pom:project/pom:profiles" %{name}-classic
 
 %pom_xpath_remove "pom:project/pom:profiles/pom:profile[pom:id = 'javadocjar']"
-
-%pom_xpath_remove "pom:executions/pom:execution/pom:goals/pom:goal[text() = 'generateTestStubs']" logback-classic
-%pom_xpath_remove "pom:executions/pom:execution/pom:goals/pom:goal[text() = 'compileTests']" logback-classic
 
 # disable for now
 %pom_disable_module logback-site
@@ -125,14 +118,11 @@ rm -r %{name}-*/src/test/java/*
 
 %build
 
-# unavailable test dep maven-scala-plugin
-# slf4jJAR and org.apache.felix.main are required by logback-examples modules for maven-antrun-plugin
 %{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=8 \
+    -Dmaven.compiler.release=8 \
 %endif
-  -Dorg.slf4j:slf4j-api:jar=$(build-classpath slf4j/api) \
-  -Dorg.apache.felix:org.apache.felix.main:jar=$(build-classpath felix/org.apache.felix.main)
+    -Dsource=8 -Dproject.build.sourceEncoding=ISO-8859-1
 
 %install
 %mvn_install

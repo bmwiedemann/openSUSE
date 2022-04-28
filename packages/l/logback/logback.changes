@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Apr 28 04:54:39 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.2.11
+  * Backported fix for LOGBACK-1027.
+  * Fixed incorrect String cast in JNDIUtil. This corrects
+    LOGBACK-1604.
+  * In SMTPAppenderBase empty username parameter is now treated the
+    same way as  null. This fixes LOGBACK-1594.
+  * ContextInitializer no longer complains about missing
+    logback.groovy configuration file. This fixes LOGBACK-1601.
+  * In response to CVE-2021-42550 (aka LOGBACK-1591) the following
+    steps were made:
+    1) Hardened logback's JNDI lookup mechanism to only honor
+       requests in the java: namespace. All other types of requests
+       are ignored.
+    2) SMTPAppender was hardened.
+    3) Temporarily removed DB support for security reasons.
+    4) Removed Groovy configuration support. As logging is so
+       pervasive and configuration with Groovy is probably too
+       powerful, this feature is unlikely to be reinstated for
+       security reasons.
+    The aforementioned vulnerability requires write access to
+    logback's configuration file as a prerequisite. A successul
+    RCE attack with CVE-2021-42550 requires all of the following
+    conditions to be met:
+    + write access to logback.xml
+    + use of versions < 1.2.9
+    + reloading of poisoned configuration data, which implies
+      application restart or scan="true" set prior to attack
+- Set project.build.sourceEncoding property to ISO-8859-1 to
+  avoid the new maven-resources-plugin chocking on trying to filter
+  in UTF-8 encoding JKS (binary) resources
+
+-------------------------------------------------------------------
 Tue Feb 22 18:16:52 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build against the log4j12 packages
@@ -18,11 +52,11 @@ Thu Dec 16 16:21:39 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 - Upgrade to version 1.2.8 (bsc#1193795)
   * Changes of version 1.2.8
     + In response to LOGBACK-1591, all JNDI lookup code in logback
-	  has been disabled until further notice. This impacts
+      has been disabled until further notice. This impacts
       ContextJNDISelector and <insertFromJNDI> element in
       configuration files.
     + Also in response to LOGBACK-1591, all database (JDBC) related
-	  code in the project has been removed with no replacement.
+      code in the project has been removed with no replacement.
     + Note that the vulnerability mentioned in LOGBACK-1591 requires
       write access to logback's configuration file as a
       prerequisite. The log4Shell/CVE-2021-44228 and LOGBACK-1591
