@@ -2,7 +2,7 @@
 set -e -x
 test $# -eq 1
 test ! -d guice
-git clone git://github.com/google/guice.git
+git clone https://github.com/google/guice.git
 cd ./guice
 git checkout ${1}
 git branch unbundled-${1}

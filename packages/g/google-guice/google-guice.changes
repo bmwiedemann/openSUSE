@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 27 11:52:34 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Avoid using xmvn-resolve and xmvn-install in order to avoid
+  build cycles with new dependencies in dependent packages
+- Build only the NO_AOP version of the guice.jar and alias
+  accordingly so that it provides both
+
+-------------------------------------------------------------------
 Thu Jun 10 10:16:03 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patches:
