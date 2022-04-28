@@ -39,7 +39,7 @@
 %endif
 
 Name:           freerdp
-Version:        2.6.1
+Version:        2.7.0
 Release:        0
 Summary:        Remote Desktop Viewer Client
 License:        Apache-2.0

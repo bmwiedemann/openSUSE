@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr 26 06:02:24 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Upgraded to freerdp 2.7.0
+  * OpenSSL3 gateway support (#gh:FreeRDP/FreeRDP#7822)
+  * various NTLM fixes
+  * WINPR_ASSERT to ease future backports
+
+- Fixed issues:
+  * #gh:FreeRDP/FreeRDP#6786: Use /network:auto by default
+  * #gh:FreeRDP/FreeRDP#7714: Workaround for broken surface frame marker
+  * #gh:FreeRDP/FreeRDP#7733: Support 10bit X11 color (BGRX32 only)
+  * #gh:FreeRDP/FreeRDP#7745: GFX progressive double free
+  * #gh:FreeRDP/FreeRDP#7808: Disable websockets with /gt:rpc
+  * #gh:FreeRDP/FreeRDP#7815: RAIL expect LOGON_MSG_SESSION_CONTINUE
+
+-------------------------------------------------------------------
 Tue Mar  8 10:34:50 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Upgraded to freerdp 2.6.1 
