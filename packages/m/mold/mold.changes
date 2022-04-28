@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Apr 28 12:49:30 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 1.2.1
+  * Various bugs in --gdb-index have been fixed.
+  * mold now recognizes --thinlto-cache-dir and --thinlto-cache-policy
+    for the sake of compatibility with LLVM lld. (7ebd071)
+  * mold can now handle TLS common symbols. It looks like GCC
+    sometimes creates such symbol for a thread-local variable. (cf850f8)
+  * In some edge cases, mold created a non-versioned symbol and
+    a versioned one for the same symbol, even though if one symbol is versioned,
+    all symbols of the same name must be versioned.
+    This bug has been fixed. (8298c0a)
+  * mold used to write a PLT address of a symbol instead
+    of its address to .symtab. This bug has been fixed. (e088db7)
+  * mold can now handle an input file
+    with more than 219 symbols. (f1f2d40)
+  * /usr/local/libexec/mold/ld is now installed
+    as a relative symlink instead of an absolute symlink. (5803c3c)
+- Removed upstreamed fix-gdb-index.patch patch.
+
+-------------------------------------------------------------------
 Wed Apr 20 06:50:40 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Run test serially.

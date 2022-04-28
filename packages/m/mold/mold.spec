@@ -17,13 +17,12 @@
 
 
 Name:           mold
-Version:        1.2
+Version:        1.2.1
 Release:        0
 Summary:        A Modern Linker (mold)
 License:        AGPL-3.0-or-later
 URL:            https://github.com/rui314/mold
 Source:         https://github.com/rui314/mold/archive/v%{version}/mold-%{version}.tar.gz
-Patch0:         fix-gdb-index.patch
 ExclusiveArch:  x86_64 aarch64 riscv64
 BuildRequires:  cmake
 %if %{suse_version} < 1550
@@ -33,6 +32,7 @@ BuildRequires:  gcc10-c++
 BuildRequires:  gcc-c++
 BuildRequires:  clang
 BuildRequires:  libdwarf-tools
+BuildRequires:  llvm
 BuildRequires:  llvm-gold
 BuildRequires:  mimalloc-devel
 BuildRequires:  tbb-devel
@@ -40,6 +40,7 @@ BuildRequires:  tbb-devel
 BuildRequires:  gcc-32bit
 %endif
 %endif
+BuildRequires:  gdb
 BuildRequires:  glibc-devel-static
 BuildRequires:  openssl-devel
 BuildRequires:  xxhash-devel
