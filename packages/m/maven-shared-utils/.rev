@@ -15,4 +15,12 @@
     <comment>Build with source/target levels 8</comment>
     <requestid>963312</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>07debb775ef1a2ea08c9429a375eb59e</srcmd5>
+    <version>3.3.3</version>
+    <time>1651180093</time>
+    <user>dimstar_suse</user>
+    <comment>3.3.3; fixes bsc#1198833, CVE-2022-29599</comment>
+    <requestid>973672</requestid>
+  </revision>
 </revisionlist>

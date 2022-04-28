@@ -18,13 +18,13 @@
 
 %bcond_with tests
 Name:           maven-shared-utils
-Version:        3.2.1
+Version:        3.3.3
 Release:        0
 Summary:        Maven shared utility classes
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://maven.apache.org/shared/maven-shared-utils
-Source0:        http://repo1.maven.org/maven2/org/apache/maven/shared/%{name}/%{version}/%{name}-%{version}-source-release.zip
+URL:            https://maven.apache.org/shared/maven-shared-utils
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/shared/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.xml
 # XXX temporary for maven upgrade
 Patch0:         0001-Restore-compatibility-with-current-maven.patch
