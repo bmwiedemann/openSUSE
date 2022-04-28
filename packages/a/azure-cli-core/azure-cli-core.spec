@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-core
-Version:        2.35.0
+Version:        2.36.0
 Release:        0
 Summary:        Microsoft Azure CLI Core Module
 License:        MIT
@@ -30,7 +30,6 @@ BuildRequires:  azure-cli-nspkg
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-azure-nspkg >= 3.0.0
-BuildRequires:  python3-mock
 BuildRequires:  python3-setuptools
 Requires:       azure-cli-nspkg
 Requires:       azure-cli-telemetry >= 1.0.6
@@ -48,8 +47,8 @@ Requires:       python3-knack < 1.0.0
 Requires:       python3-knack >= 0.9.0
 Requires:       python3-msal < 2.0.0
 Requires:       python3-msal >= 1.17.0
-Requires:       python3-msal-extensions < 1.0.0
-Requires:       python3-msal-extensions >= 0.3.1
+Requires:       python3-msal-extensions < 2.0.0
+Requires:       python3-msal-extensions >= 1.0.0
 Requires:       python3-msrestazure < 0.7.0
 Requires:       python3-msrestazure >= 0.6.4
 Requires:       python3-packaging < 22.0
