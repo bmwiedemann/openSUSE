@@ -20,13 +20,13 @@
 %define torgroup %{name}
 %define home_dir %{_localstatedir}/lib/empty
 Name:           tor
-Version:        0.4.6.10
+Version:        0.4.7.7
 Release:        0
 Summary:        Anonymizing overlay network for TCP (The onion router)
 License:        BSD-3-Clause
 URL:            https://www.torproject.org/
 Source0:        https://www.torproject.org/dist/%{name}-%{version}.tar.gz
-# https://www.torproject.org/docs/signing-keys.html.en
+# https://support.torproject.org/little-t-tor/verify-little-t-tor/
 Source2:        tor.keyring
 Source3:        tor.service
 Source4:        tor.tmpfiles
@@ -77,7 +77,7 @@ strength of the anonymity provided. Tor is not presently suitable
 for high-stakes anonymity.
 
 %prep
-( cd $(dirname %SOURCE0) && echo "$(cat %SOURCE100 | cut -d' ' -f1) tor-%version.tar.gz" | sha256sum --check )
+( cd $(dirname %{SOURCE0}) && echo "$(cat %{SOURCE100} | cut -d' ' -f1) tor-%{version}.tar.gz" | sha256sum --check )
 %autosetup -p1
 
 %build
@@ -147,7 +147,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/tor.conf || :
 
 %files
 %license LICENSE
-%doc README ChangeLog doc/HACKING doc/man/*.html
+%doc README* ChangeLog doc/HACKING doc/man/*.html
 %{_mandir}/man*/*
 %{_bindir}/*
 %dir %{_datadir}/%{name}
