@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr 28 10:16:07 UTC 2022 - David Anes <david.anes@suse.com>
+
+- update to 6.4.30:
+  * Breaking changes:
+    - Bump wolfSSL minimum required version to 5.2.0 to pull in 
+      security fix.
+  * Changes:
+    - Using OpenSSL 1.* before 1.1.1n elicits a compile-time 
+      warning.
+    - Using OpenSSL 3.* before 3.0.2  elicits a compile-time 
+      warning.
+    - configure.ac was tweaked in order to hopefully fix 
+      cross-compilation issues  report, and different patch 
+      suggested
+  * Translations.:
+    - ro: Updated Romanian translation.
+
+-------------------------------------------------------------------
 Sat Apr  9 22:38:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.4.29:
