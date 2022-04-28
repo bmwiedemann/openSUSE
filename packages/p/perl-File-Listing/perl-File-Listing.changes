@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 18 03:13:16 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.15
+   see /usr/share/doc/packages/perl-File-Listing/Changes
+
+  6.15      2022-04-17 04:09:58 -0600
+    - Main git repository has now been detached from the original
+      repository (originally it was a fork).  The old repository
+      can be found at https://github.com/gisle/file-listing
+    - Adjust test suite to handle systems that cannot handle
+      year 2038+ dates (gh#24)
+
+-------------------------------------------------------------------
 Tue Dec  1 03:10:24 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.14
