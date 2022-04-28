@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Apr 26 19:23:10 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.8:
+  * ci: fix cache key creation on main (#2307)
+  * plan validation: abort if structures are not concrete
+  * ci: fix typo in bin output field
+  * build(deps-dev): bump cypress from 9.5.4 to 9.6.0 in /website
+  * ci: fix dockerfile (#2288)
+  * feat: pull-policy
+  * ci: scope cache to enhance speed
+  * fix: update tests with new package/binary name
+  * fix: rename duplicates Go modules
+  * fix: should show cue error details when WriteFile contents not set
+  * universe: Set bash.#Run entrypoint to `/bin/bash`
+  * docs: Fix contributing guide link in README
+  * validate plan concreteness before execution
+  * ci: stop printing all cue files when linting
+  * build(deps): bump google.golang.org/grpc from 1.45.0 to 1.46.0
+  * Add youtube video embed
+  * Update Jenkinsfile
+  * Fix FAQ broken links
+  * Avoid duplicate StringSlices when parsing flags
+  * Fixed bug for path without any actions
+  * docs: Update multi-stage example
+  * docs: Add embedding sample
+  * docs: Add embedding explanation
+  * docs: add connhelper instructions
+  * chore: Finish renaming service to socket
+  * chore: Rename service to socket
+  * filter out commandConn.CloseRead warning log message
+  * Add rust to universe
+  * docs: Update version
+  * ci: add lint error header in log
+  * ci: run go unit tests from the dagger plan
+  * build(deps): bump sass from 1.50.0 to 1.50.1 in /website
+  * docs: discard opentracing doc, using opentelemetry
+
+-------------------------------------------------------------------
 Wed Apr 20 05:47:44 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.2.7:
