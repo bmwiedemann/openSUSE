@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 15 11:01:36 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Call find_lang before fdupes: find_lang potentially deletes some
+  files which might, in worst case, be link targets identified by
+  fdupes.
+
+-------------------------------------------------------------------
 Wed Feb  2 09:29:57 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 158.patch: Fix build with meson 0.61.0 and newer.

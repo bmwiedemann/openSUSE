@@ -77,8 +77,8 @@ search results from documents.
 
 %install
 %meson_install
-%fdupes -s %{buildroot}%{_datadir}
 %find_lang %{name} %{?no_lang_C}
+%fdupes -s %{buildroot}%{_datadir}
 
 %files
 %license COPYING
