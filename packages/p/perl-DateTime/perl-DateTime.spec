@@ -18,7 +18,7 @@
 
 %define cpan_name DateTime
 Name:           perl-DateTime
-Version:        1.57
+Version:        1.58
 Release:        0
 License:        Artistic-2.0
 Summary:        Date and time object for Perl

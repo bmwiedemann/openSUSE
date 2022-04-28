@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 19 03:06:10 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.58
+   see /usr/share/doc/packages/perl-DateTime/Changes
+
+  1.58   2022-04-18
+
+  - Fixed tests so that they ignore the value set in the
+    `PERL_DATETIME_DEFAULT_TZ` env var, if one exists. Reported by Ian Gibbs. GH
+    #128.
+
+-------------------------------------------------------------------
 Fri Mar  4 03:06:10 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.57
