@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Apr 27 19:45:50 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to vedrsion 4.1.0
+  Performance Improvements
+  * Improve performance in Junos config_mode() and
+    check_config_mode() methods.
+  * Improve performance on disconnect() method.
+  * Improve slow NX-OS disconnect()
+  * Improve slow Junos disconnect()
+  Bug Fixes and other Improvements
+  * Update VyOS save_config()
+  * Fix read_timeout being excessively long in case where
+    check_config() fails
+  * Fix Huawei regular expression issue
+  * Fix Huawei login issue
+  * Improve Juniper enter_cli_mode()
+  * Fix issue with Nokia SROS MD-CLI having square bracket data
+    being removed
+  * Fix issue with 'write memory' on ubiquity edge switches
+  * Fix extreme exos read-only account issue
+  * Add Cisco WLC _send_command_w_yes() method
+  * Fix Cisco IOS, IOS-XE, and IOS-XR abbreviating prompt in
+    config mode
+  * Fix Aruba controller paging issue
+  * Fix fortigate autodetect
+  * Fixing HP Procurve session_preparation issue on repeated
+    connection
+  Python Version Support
+  * Remove PY3.6 Support
+  * Add PY3.10 Support
+
+-------------------------------------------------------------------
 Wed Mar 30 09:27:17 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to vedrsion 4.0.0
