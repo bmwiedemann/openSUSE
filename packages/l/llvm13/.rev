@@ -139,4 +139,12 @@
 </comment>
     <requestid>969598</requestid>
   </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>6c3f775aaf8ad543419eb8bf719f7518</srcmd5>
+    <version>13.0.1</version>
+    <time>1651180012</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't override default linker flags. (We were losing -Wl,-z,now.)</comment>
+    <requestid>972707</requestid>
+  </revision>
 </revisionlist>
