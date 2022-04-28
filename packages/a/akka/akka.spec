@@ -24,7 +24,7 @@ Version:        2.3.16
 Release:        0
 Summary:        Scalable real-time transaction processing
 License:        Apache-2.0
-URL:            http://akka.io/
+URL:            https://akka.io/
 Source0:        %{name}-%{version}.tar.xz
 # Default use sbt
 Source1:        akka-build.xml
