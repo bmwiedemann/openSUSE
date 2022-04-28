@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr 28 13:32:27 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.98.0:
+  * Some godoc adjustments and image struct renames
+  * tpl/crypto: Add FNV32a
+  * markup/goldmark: Fix attribute nilpointer
+  * deps: Update to gocloud.dev v0.24.0
+  * build(deps): bump github.com/mitchellh/mapstructure from 1.4.3 to 1.5.0
+  * deps: Update github.com/yuin/goldmark v1.4.11 => v1.4.12
+  * build(deps): bump github.com/evanw/esbuild from 0.14.36 to 0.14.38
+  * deps: Update github.com/tdewolff/minify/v2 v2.11.1 => v2.11.2
+  * tpl/lang: Handle nil values in lang.Merge
+  * resources/page: Mark some more interface methods as internal
+  * Deprecate page.Author and page.Authors
+
+-------------------------------------------------------------------
 Mon Apr 18 18:21:59 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 0.97.3:

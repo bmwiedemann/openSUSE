@@ -124,4 +124,23 @@
   * Revert &quot;Revert &quot;Fix PostProcess regression for hugo server&quot;&quot; (forwarded request 970630 from jfkw)</comment>
     <requestid>970631</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6249c74c3983d3d5e69b508563f08fe3</srcmd5>
+    <version>0.98.0</version>
+    <time>1651180100</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.98.0:
+  * Some godoc adjustments and image struct renames
+  * tpl/crypto: Add FNV32a
+  * markup/goldmark: Fix attribute nilpointer
+  * deps: Update to gocloud.dev v0.24.0
+  * build(deps): bump github.com/mitchellh/mapstructure from 1.4.3 to 1.5.0
+  * deps: Update github.com/yuin/goldmark v1.4.11 =&gt; v1.4.12
+  * build(deps): bump github.com/evanw/esbuild from 0.14.36 to 0.14.38
+  * deps: Update github.com/tdewolff/minify/v2 v2.11.1 =&gt; v2.11.2
+  * tpl/lang: Handle nil values in lang.Merge
+  * resources/page: Mark some more interface methods as internal
+  * Deprecate page.Author and page.Authors (forwarded request 973723 from jfkw)</comment>
+    <requestid>973725</requestid>
+  </revision>
 </revisionlist>
