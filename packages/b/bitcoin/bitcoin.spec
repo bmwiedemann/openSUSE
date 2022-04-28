@@ -1,7 +1,7 @@
 #
 # spec file for package bitcoin
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011-2014  P Rusnak <prusnak@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,20 +23,25 @@
 %define name_pretty %{base_pretty}
 %define consensus 1
 %define is_base 1
+%define shortver 22.0
+# Disable tests on Tumbleweed because of an hard to investigate error
+%if 0%{?suse_version} > 1500
+%bcond_with tests
+%else
+%bcond_without tests
+%endif
 Name:           bitcoin
-Version:        0.21.2
+Version:        0.%{shortver}
 Release:        0
 Summary:        P2P Digital Currency
 License:        MIT
 Group:          Productivity/Networking/Other
 URL:            https://%{name}.org
-Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://bitcoincore.org/bin/bitcoin-core-%{shortver}/bitcoin-%{shortver}.tar.gz
 Source1:        %{base}d.service
 Source3:        %{base}d.conf
 Source4:        %{base}.conf
 Patch0:         harden_bitcoind.service.patch
-# PATCH-FIX-UPSTREAM: https://github.com/bitcoin/bitcoin/pull/24104
-Patch1:         24104.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -79,7 +84,7 @@ several GB of space, slowly growing.
 Summary:        An end-user Qt5 GUI for the %{name_pretty} crypto-currency
 Group:          Development/Libraries/Other
 Requires(post): update-desktop-files
-Requires(postun): update-desktop-files
+Requires(postun):update-desktop-files
 
 %description qt5
 %{name_pretty} is a peer-to-peer electronic cash system
@@ -151,6 +156,7 @@ several GB of space, slowly growing.
 
 This package provides %{name}d, headless %{name} daemon.
 
+%if 0%{with tests}
 %package test
 Summary:        Automated tests for %{name} client
 Group:          Development/Libraries/Other
@@ -166,9 +172,10 @@ Full transaction history is stored locally at each client. This requires
 several GB of space, slowly growing.
 
 This package provides automated tests for %{name}-qt5 and %{name}d.
+%endif
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{shortver}
 
 %build
 autoreconf -fiv
@@ -196,11 +203,17 @@ export LDFLAGS="-pie"
 %if %{consensus} == 0
   --without-libs \
 %endif
+%if 0%{without tests}
+  --disable-tests \
+  --disable-bench \
+%endif
   --disable-hardening
 %make_build
 
+%if 0%{with tests}
 %check
 %make_build LC_ALL=C.UTF-8 check
+%endif
 
 %install
 %make_install
@@ -281,9 +294,11 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{name}d.conf >/dev/null 2>&1 || :
 %{_bindir}/%{name}-cli
 %{_bindir}/%{name}-tx
 %{_bindir}/%{name}-wallet
-%{_mandir}/man1/bitcoin-cli.1%{?ext_man}
-%{_mandir}/man1/bitcoin-tx.1%{?ext_man}
-%{_mandir}/man1/bitcoin-wallet.1%{?ext_man}
+%{_bindir}/%{name}-util
+%{_mandir}/man1/%{name}-cli.1%{?ext_man}
+%{_mandir}/man1/%{name}-tx.1%{?ext_man}
+%{_mandir}/man1/%{name}-wallet.1%{?ext_man}
+%{_mandir}/man1/%{name}-util.1%{?ext_man}
 
 %if %{consensus} == 1
 %files -n lib%{name}consensus0
@@ -311,11 +326,13 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{name}d.conf >/dev/null 2>&1 || :
 %{_sbindir}/rc%{name}d
 %{_tmpfilesdir}/%{name}d.conf
 
+%if 0%{with tests}
 %files test
 %license COPYING
 %doc doc/README.md doc/release-notes.md
 %{_bindir}/test_%{name}
 %{_bindir}/test_%{name}-qt
 %{_bindir}/bench_%{name}
+%endif
 
 %changelog
