@@ -1,7 +1,7 @@
 #
 # spec file for package source-highlight
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,9 @@ Summary:        Source Code Highlighter with Support for Many Languages
 License:        GPL-3.0-only
 Group:          Productivity/Publishing/Other
 URL:            https://www.gnu.org/software/src-highlite
-Source0:        ftp://ftp.gnu.org/gnu/src-highlite/source-highlight-%{version}.tar.gz
-#Source1:        ftp://ftp.gnu.org/gnu/src-highlite/source-highlight-%{version}.tar.gz.sig
-#Source2:        %{name}.keyring
+Source0:        https://ftp.gnu.org/gnu/src-highlite/source-highlight-%{version}.tar.gz
+Source1:        https://ftp.gnu.org/gnu/src-highlite/source-highlight-%{version}.tar.gz.sig
+Source2:        %{name}.keyring
 Source3:        baselibs.conf
 Source4:        source-highlight-apache2.conf
 Patch0:         source-highlight-doxygen_disable_timestamp_in_footer.patch
@@ -37,10 +37,12 @@ Patch2:         0001-Remove-throw-specifications.patch
 BuildRequires:  bison
 BuildRequires:  ctags
 BuildRequires:  doxygen
+BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz-gd
 BuildRequires:  help2man
+BuildRequires:  libboost_regex-devel
 BuildRequires:  libicu-devel
 BuildRequires:  libstdc++-devel
 BuildRequires:  libtool
@@ -48,8 +50,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  texinfo
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
-BuildRequires:  libboost_regex-devel
-BuildRequires:  fdupes
 
 %description
 Source-highlight reads source language specifications dynamically, thus it can

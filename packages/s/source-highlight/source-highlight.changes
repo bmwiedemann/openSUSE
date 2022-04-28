@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 26 07:51:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add gpg signature validation
+- use https:// as source reference
+
+-------------------------------------------------------------------
 Fri Dec 17 11:15:15 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Replace ctags hard requirement with a recommendation for
