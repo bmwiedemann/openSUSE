@@ -20,16 +20,15 @@
 # the test suite moved to a docker simulator which we cannot run inside an obs environment
 %bcond_with fulltest
 %define         skip_python2 1
-%define         ghversiontag 2022.02.0
 Name:           python-gcsfs
-Version:        2022.2.0
+Version:        2022.3.0
 Release:        0
 Summary:        Filesystem interface over GCS
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/fsspec/gcsfs
 # Use the GitHub tarball for test data
-Source:         https://github.com/fsspec/gcsfs/archive/refs/tags/%{ghversiontag}.tar.gz#/gcsfs-%{ghversiontag}-gh.tar.gz
+Source:         https://github.com/fsspec/gcsfs/archive/refs/tags/%{version}.tar.gz#/gcsfs-%{version}-gh.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -77,7 +76,7 @@ File-system interface for Google Cloud Storage.
 This package provides the optional FUSE interface.
 
 %prep
-%autosetup -p1 -n gcsfs-%{ghversiontag}
+%autosetup -p1 -n gcsfs-%{version}
 sed -i 's/--color=yes//' setup.cfg
 
 %build
