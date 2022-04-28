@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 27 19:19:51 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.12.1:
+  * foot.ini options:
+    * search-bindings.clipboard-paste now includes Ctrl-Shift-V and XF86Paste
+      by default.
+  * search-bindings.extend-to-word-boundary command no longer stops at
+    space-to-word boundaries.
+  * Fixed some issues related to scrollback search mode.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.12.1 for more details.
+
+-------------------------------------------------------------------
 Fri Apr 22 21:51:06 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to v1.12.0:
