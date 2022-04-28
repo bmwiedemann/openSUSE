@@ -84,4 +84,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>953953</requestid>
   </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>482537760376b5ffaa112fce1836b566</srcmd5>
+    <version>12.0.1</version>
+    <time>1651180016</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't override default linker flags. (We were losing -Wl,-z,now.)
+</comment>
+    <requestid>972708</requestid>
+  </revision>
 </revisionlist>
