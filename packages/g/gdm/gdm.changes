@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 26 14:32:28 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Ensure /run/gdm is created by tmpfiles.
+
+-------------------------------------------------------------------
 Fri Apr  1 02:10:00 UTC 2022 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add gdm-Fix-type-of-signal-connection-id.patch: backport upstream

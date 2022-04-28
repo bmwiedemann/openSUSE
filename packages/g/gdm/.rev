@@ -1869,4 +1869,12 @@
     <comment></comment>
     <requestid>966377</requestid>
   </revision>
+  <revision rev="244" vrev="3">
+    <srcmd5>3751461cb224212a14e25df80f8fecde</srcmd5>
+    <version>42.0</version>
+    <time>1651180032</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure /run/gdm is created by tmpfiles. (forwarded request 972918 from fcrozat)</comment>
+    <requestid>972933</requestid>
+  </revision>
 </revisionlist>
