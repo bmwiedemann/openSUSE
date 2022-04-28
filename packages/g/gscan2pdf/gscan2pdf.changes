@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 28 01:32:02 UTC 2022 - malcolmlewis@opensuse.org
+
+- Updated to version 2.12.6: 
+  * Fixed crash saving document with date before 1970,
+    (deb#1008724).
+  * Translation updates.
+
+-------------------------------------------------------------------
 Mon Feb 21 15:05:47 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.12.5
