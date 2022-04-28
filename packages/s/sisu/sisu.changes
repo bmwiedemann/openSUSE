@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 27 13:46:14 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Change to generate maven meta-data using the %%add_maven_depmap
+  * so that it can be built before the xmvn-tools
+
+-------------------------------------------------------------------
 Sun Mar 20 19:45:31 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 8

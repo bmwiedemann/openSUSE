@@ -50,8 +50,6 @@ BuildRequires:  plexus-utils
 BuildRequires:  slf4j
 BuildRequires:  testng
 BuildRequires:  unzip
-BuildRequires:  xmvn-install
-BuildRequires:  xmvn-resolve
 BuildRequires:  xz
 Provides:       bundled(objectweb-asm)
 BuildArch:      noarch
@@ -63,6 +61,7 @@ style dependency injection.
 %package        inject
 Summary:        Sisu inject
 Group:          Development/Libraries/Java
+Requires:       mvn(javax.enterprise:cdi-api)
 
 %description    inject
 This package contains %{summary}.
@@ -70,6 +69,10 @@ This package contains %{summary}.
 %package        plexus
 Summary:        Sisu Plexus
 Group:          Development/Libraries/Java
+Requires:       mvn(org.codehaus.plexus:plexus-classworlds)
+Requires:       mvn(org.codehaus.plexus:plexus-component-annotations)
+Requires:       mvn(org.codehaus.plexus:plexus-utils)
+Requires:       mvn(org.eclipse.sisu:org.eclipse.sisu.inject) = %{version}
 
 %description    plexus
 This package contains %{summary}.
@@ -99,11 +102,10 @@ cp %{SOURCE101} sisu-plexus/pom.xml
 
 for i in inject plexus; do
   %pom_xpath_set -r /pom:project/pom:version %{version} %{name}-${i}
+  %pom_remove_dep :::provided: %{name}-${i}
+  %pom_xpath_remove pom:project/pom:build %{name}-${i}
 done
-
-%{mvn_file} ":{*}" @1
-%{mvn_package} ":*{inject,plexus}" @1
-%{mvn_alias} :org.eclipse.sisu.plexus org.sonatype.sisu:sisu-inject-plexus
+%pom_change_dep :org.eclipse.sisu.inject org.eclipse.sisu:org.eclipse.sisu.inject:%{version} %{name}-plexus
 
 %build
 mkdir -p lib
@@ -122,13 +124,20 @@ build-jar-repository -s lib \
   testng
 %{ant} package javadoc
 
-for i in inject plexus; do
-  %{mvn_artifact} %{name}-${i}/pom.xml %{name}-${i}/target/org.eclipse.sisu.${i}-%{version}.jar
-done
-
 %install
-%mvn_install
+# jar
+install -dm 0755 %{buildroot}%{_javadir}
+install -pm 0644 %{name}-inject/target/org.eclipse.sisu.inject-%{version}.jar %{buildroot}%{_javadir}/org.eclipse.sisu.inject.jar
+install -pm 0644 %{name}-plexus/target/org.eclipse.sisu.plexus-%{version}.jar %{buildroot}%{_javadir}/org.eclipse.sisu.plexus.jar
 
+# pom
+install -dm 0755 %{buildroot}%{_mavenpomdir}
+install -pm 0644 %{name}-inject/pom.xml %{buildroot}%{_mavenpomdir}/org.eclipse.sisu.inject.pom
+%add_maven_depmap org.eclipse.sisu.inject.pom org.eclipse.sisu.inject.jar -f inject
+install -pm 0644 %{name}-plexus/pom.xml %{buildroot}%{_mavenpomdir}/org.eclipse.sisu.plexus.pom
+%add_maven_depmap org.eclipse.sisu.plexus.pom org.eclipse.sisu.plexus.jar -f plexus -a org.sonatype.sisu:sisu-inject-plexus
+
+# javadoc
 for i in inject plexus; do
   install -dm 0755 %{buildroot}%{_javadocdir}/%{name}/%{name}-${i}
   cp -pr %{name}-${i}/target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/%{name}-${i}/
