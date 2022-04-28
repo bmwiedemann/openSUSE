@@ -1,2 +1,3 @@
 # libreoffice devel package is de facto called libreoffice-sdk
 #addFilter("devel-file-in-non-devel-package")
+addFilter("binary-or-shlib-defines-rpath .*ORIGIN")

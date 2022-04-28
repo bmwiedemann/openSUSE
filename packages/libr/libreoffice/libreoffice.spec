@@ -115,6 +115,8 @@ Patch990:       install-with-hardlinks.diff
 Patch991:       libreoffice-no-destdircheck.patch
 # PATCH-FIX-UPSTRAM poppler-22-03-0.patch
 Patch992:       poppler-22-03-0.patch
+# PATCH-FIX-SUSE poppler-22-04-0.patch
+Patch993:       poppler-22-04-0.patch
 BuildRequires:  %{name}-share-linker
 BuildRequires:  ant
 BuildRequires:  autoconf
@@ -1025,6 +1027,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch990 -p1
 %patch991 -p1
 %patch992 -p1
+%patch993 -p1
 
 # Disable some of the failing tests (some are random)
 %if 0%{?suse_version} < 1330

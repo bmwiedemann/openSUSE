@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 27 09:22:38 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Filter out binary-or-shlib-defines-rpath with $ORIGIN argument.
+  It is pretty fine and it is newly reported by rpmlint.
+
+-------------------------------------------------------------------
+Tue Apr 26 15:34:26 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Add poppler-22-04-0.patch
+
+-------------------------------------------------------------------
 Tue Apr 19 10:40:59 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to version 7.3.3.1:

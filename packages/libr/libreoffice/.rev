@@ -3206,4 +3206,15 @@ Petr</comment>
     <comment></comment>
     <requestid>971126</requestid>
   </revision>
+  <revision rev="253" vrev="2">
+    <srcmd5>6b7f6582b173d9f48dbc1f677cbbb9a0</srcmd5>
+    <version>7.3.3.1</version>
+    <time>1651180040</time>
+    <user>dimstar_suse</user>
+    <comment>- Filter out binary-or-shlib-defines-rpath with $ORIGIN argument.
+  It is pretty fine and it is newly reported by rpmlint.
+
+- Add poppler-22-04-0.patch</comment>
+    <requestid>973229</requestid>
+  </revision>
 </revisionlist>
