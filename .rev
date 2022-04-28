@@ -60,4 +60,12 @@ should be accepted after, or in combination with that package.</comment>
     <comment>- Switch to Go 1.14 as Go 1.16 breaks the build</comment>
     <requestid>896984</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>07c2238e85d348f7114e5e72856ded95</srcmd5>
+    <version>2.11.0</version>
+    <time>1651180064</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>973264</requestid>
+  </revision>
 </revisionlist>
