@@ -105,6 +105,16 @@ BuildRequires:  openldap2-devel
 %if %{with libnsl}
 BuildRequires:  libnsl-devel
 %endif
+# /usr/lib/postfix/bin//post-install: line 667: ed: command not found
+Requires(pre):    ed
+Requires(preun):  ed
+Requires(post):   ed
+Requires(postun): ed
+# /usr/sbin/config.postfix needs perl
+Requires(pre):    perl
+Requires(preun):  perl
+Requires(post):   perl
+Requires(postun): perl
 
 %description
 Postfix aims to be an alternative to the widely-used sendmail program.
