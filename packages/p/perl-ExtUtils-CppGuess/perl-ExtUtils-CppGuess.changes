@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 22 03:09:00 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.26
+   see /usr/share/doc/packages/perl-ExtUtils-CppGuess/Changes
+
+  0.26 2022-04-21
+  - fix test-failure caused if CXX is set - thanks @hroncok for report
+
+  0.25 2022-04-20
+  - ignore environment variables CXXFLAGS, CXXLDFLAGS (#26) - thanks @hroncok for report
+
+  0.24 2022-04-19
+  - support environment variables CXX, CXXFLAGS, CXXLDFLAGS - thanks @dpryan79 for suggestion
+
+-------------------------------------------------------------------
 Tue Jun  1 03:06:30 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.23
