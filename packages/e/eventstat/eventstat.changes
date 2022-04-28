@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 28 07:39:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- udpate to 0.04.13:
+  * manual: update date, author email and copyright
+  * Add README.md file
+  * snapcraft: update to core20
+
+-------------------------------------------------------------------
 Thu Apr 29 11:47:22 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.04.12

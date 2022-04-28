@@ -1,7 +1,7 @@
 #
 # spec file for package eventstat
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           eventstat
-Version:        0.04.12
+Version:        0.04.13
 Release:        0
 Summary:        Kernel event states monitoring tool
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-URL:            https://kernel.ubuntu.com/~cking/eventstat/
-Source:         https://kernel.ubuntu.com/~cking/tarballs/%{name}/%{name}-%{version}.tar.gz
+URL:            https://github.com/ColinIanKing/eventstat
+Source:         https://github.com/ColinIanKing/eventstat/archive/refs/tags/V%{version}.tar.gz
 BuildRequires:  ncurses-devel
 
 %description
@@ -57,6 +57,7 @@ export CFLAGS="%{optflags}"
 
 %files
 %license COPYING
+%doc README.md
 %{_bindir}/eventstat
 %{_mandir}/man8/eventstat.8%{?ext_man}
 
