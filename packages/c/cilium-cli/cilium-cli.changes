@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 28 06:27:39 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.11.3:
+  * build(deps): bump google.golang.org/grpc from 1.45.0 to 1.46.0
+  * build(deps): bump nick-invision/retry from 2.6.0 to 2.7.0
+  * vendor: Update cilium/chart
+  * bug: Correct Peer Service Filename; Create Before Relay
+
+-------------------------------------------------------------------
 Tue Apr 26 06:22:57 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.11.2:
