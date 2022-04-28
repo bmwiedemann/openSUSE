@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 22 09:08:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add poppler 22.04.0 compability fix:
+  * Fix_build_poppler_22040.patch
+- Update Fix_build_poppler_22030.patch
+
+-------------------------------------------------------------------
 Thu Mar  3 19:02:54 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.1.2:

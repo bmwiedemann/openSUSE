@@ -33,7 +33,8 @@ Source98:       https://media.inkscape.org/media/resources/sigs/inkscape-%{_vers
 Source99:       https://inkscape.org/~MarcJeanmougin/gpg#/%name.keyring
 # PATCH-FIX-UPSTREAM Fix_build_poppler_22030.patch -- Fix build with poppler 22.03.0
 Patch0:         Fix_build_poppler_22030.patch
-
+# PATCH-FIX-UPSTREAM
+Patch1:         Fix_build_poppler_22040.patch
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
 BuildRequires:  fdupes
