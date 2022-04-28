@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-s3fs
-Version:        2022.2.0
+Version:        2022.3.0
 Release:        0
 Summary:        Python filesystem interface for S3
 License:        BSD-3-Clause
