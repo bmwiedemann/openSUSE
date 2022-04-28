@@ -26,9 +26,9 @@
 %bcond_with test
 %endif
 %define         skip_python2 1
-%define ghversion 2022.02.0
+%define ghversion 2022.3.0
 Name:           python-fsspec%{psuffix}
-Version:        2022.2.0
+Version:        2022.3.0
 Release:        0
 Summary:        Filesystem specification package
 License:        BSD-3-Clause
