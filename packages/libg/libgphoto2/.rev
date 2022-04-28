@@ -1576,4 +1576,12 @@
   * added romanian</comment>
     <requestid>959614</requestid>
   </revision>
+  <revision rev="133" vrev="2">
+    <srcmd5>727979aa1909fa5c97cb517fd4d39f29</srcmd5>
+    <version>2.5.29</version>
+    <time>1651180025</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>972881</requestid>
+  </revision>
 </revisionlist>

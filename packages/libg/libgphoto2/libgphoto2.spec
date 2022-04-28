@@ -39,7 +39,7 @@ BuildRequires:  pkgconfig(udev)
 %if 0%{?suse_version} > 1230
 BuildRequires:  systemd-rpm-macros
 %endif
-URL:            http://gphoto.org/
+URL:            https://gphoto.sourceforge.io/
 # bug437293
 %ifarch ppc64
 Obsoletes:      libgphoto2-64bit
@@ -95,7 +95,7 @@ storage protocol. Those can be mounted by Linux directly.
 
 As of this time, gPhoto supports around 1700 cameras, listed on:
 
-http://gphoto.org/proj/libgphoto2/support.php
+https://gphoto.sourceforge.io/proj/libgphoto2/support.php
 
 or by running
 
@@ -109,7 +109,7 @@ storage protocol as those can be mounted by Linux directly.
 
 As of this time, gPhoto supports around 1700 cameras, listed on:
 
-http://gphoto.org/proj/libgphoto2/support.php
+https://gphoto.sourceforge.io/proj/libgphoto2/support.php
 
 or by running
 
