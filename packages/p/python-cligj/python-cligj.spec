@@ -1,7 +1,7 @@
 #
 # spec file for package python-cligj
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,15 +13,16 @@
 # published by the Open Source Initiative.
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cligj
-Version:        0.5.0
+Version:        0.7.2
 Release:        0
 License:        BSD-3-Clause
 Summary:        Click params for commmand line interfaces to GeoJSON
-Url:            https://github.com/mapbox/cligj
+URL:            https://github.com/mapbox/cligj
 Group:          Development/Languages/Python
 # pypi source lack license and tests
 Source:         https://github.com/mapbox/cligj/archive/%{version}.tar.gz#/cligj-%{version}.tar.gz
@@ -34,7 +35,6 @@ BuildRequires:  %{python_module pytest}
 # /SECTION
 Requires:       python-click
 BuildArch:      noarch
-
 
 %python_subpackages
 
