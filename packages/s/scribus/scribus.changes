@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 22 08:33:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with poppler 22.04:
+  * 0001-Fix-build-with-poppler-22.04.0.patch
+
+-------------------------------------------------------------------
 Fri Mar  4 08:40:27 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream changes:
