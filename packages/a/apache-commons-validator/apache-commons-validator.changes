@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 28 08:04:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use https urls 
+
+-------------------------------------------------------------------
 Mon Mar 25 17:53:26 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Remove pom parent, since we don't use it when not building with
