@@ -149,7 +149,9 @@ Substitute: netcfg netcfg libnss_usrfiles2
 %endif
 
 # slsaprovenance - as described at https://slsa.dev/provenance/v0.2
-BuildFlags: slsaprovenance
+# slsaprovenance diabled on Apr 28 2022
+# 07:29 < adrianS> DimStar: the slsafiles get not correctly generated, please disable the prjconf setting for now
+#BuildFlags: slsaprovenance
 
 # switch to kiwi v8
 Prefer: python3-kiwi
