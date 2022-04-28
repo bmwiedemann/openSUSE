@@ -16,4 +16,19 @@ Please add to adi:56</comment>
     <comment></comment>
     <requestid>897929</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7fba5e948f2c09b22b3d3420ceee9aa6</srcmd5>
+    <version>0.12.0+20211228</version>
+    <time>1651180077</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.12.0+20211228:
+  * Update amaze.cc
+  * Update CA_correct.cc
+  * Update rcd.cc
+  * Update markesteijn.cc
+  * Various small fixes
+- Drop add-missing-include.patch
+</comment>
+    <requestid>973543</requestid>
+  </revision>
 </revisionlist>
