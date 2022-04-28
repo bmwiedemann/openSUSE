@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 22 03:09:54 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.000044
+   see /usr/share/doc/packages/perl-LWP-ConsoleLogger/Changes
+
+  0.000044  2022-04-21 14:20:07Z
+      - Document that Everywhere can be used with the -M switch (GH#22) (Olaf
+        Alders)
+
+-------------------------------------------------------------------
 Fri Mar  5 03:07:16 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.000043

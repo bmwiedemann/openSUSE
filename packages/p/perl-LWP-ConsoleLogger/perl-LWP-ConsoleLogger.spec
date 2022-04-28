@@ -1,7 +1,7 @@
 #
 # spec file for package perl-LWP-ConsoleLogger
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name LWP-ConsoleLogger
 Name:           perl-LWP-ConsoleLogger
-Version:        0.000043
+Version:        0.000044
 Release:        0
-Summary:        LWP tracing and debugging
 License:        Artistic-2.0
+Summary:        LWP tracing and debugging
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -58,15 +58,14 @@ BuildRequires:  perl(Ref::Util)
 BuildRequires:  perl(String::Trim)
 BuildRequires:  perl(Sub::Exporter)
 BuildRequires:  perl(Term::Size::Any)
-BuildRequires:  perl(Test::FailWarnings)
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::LWP::UserAgent)
 BuildRequires:  perl(Test::Most)
+BuildRequires:  perl(Test::Warnings)
 BuildRequires:  perl(Text::SimpleTable::AutoWidth) >= 0.09
 BuildRequires:  perl(Try::Tiny)
 BuildRequires:  perl(Types::Common::Numeric)
 BuildRequires:  perl(Types::Standard)
-BuildRequires:  perl(URI::Query)
 BuildRequires:  perl(URI::QueryParam)
 BuildRequires:  perl(URI::file)
 BuildRequires:  perl(WWW::Mechanize)
@@ -97,7 +96,6 @@ Requires:       perl(Text::SimpleTable::AutoWidth) >= 0.09
 Requires:       perl(Try::Tiny)
 Requires:       perl(Types::Common::Numeric)
 Requires:       perl(Types::Standard)
-Requires:       perl(URI::Query)
 Requires:       perl(URI::QueryParam)
 Requires:       perl(XML::Simple)
 Recommends:     perl(HTML::FormatText::Lynx) >= 23
