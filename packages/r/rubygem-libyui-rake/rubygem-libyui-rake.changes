@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  8 07:14:20 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Use Rubocop 1.24.1 (the old one does not work in Ruby 3)
+- Updated data in Gemspec
+- Updated submit data, added SLE15-SP5 target, "sle_latest" moved
+  to SLE15-SP5 (related to bsc#1198109)
+- 0.1.24
+
+-------------------------------------------------------------------
 Wed Mar 31 13:35:58 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Updated OBS build targets
