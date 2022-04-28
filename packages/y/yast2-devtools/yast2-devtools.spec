@@ -17,7 +17,7 @@
 
 
 Name:           yast2-devtools
-Version:        4.5.2
+Version:        4.5.3
 Release:        0
 Summary:        YaST2 - Development Tools
 License:        GPL-2.0-or-later
@@ -131,7 +131,7 @@ EOF
 %{_datadir}/YaST2/data/devtools/bin/ycp_puttext
 %{_datadir}/YaST2/data/devtools/data/rubocop*_yast_style.yml
 %dir %{_datadir}/YaST2/control/
-%{_datadir}/YaST2/control/control_to_glade.xsl
+%{_datadir}/YaST2/control/yast_control.its
 
 %files -n yast2-buildtools
 %{_rpmmacrodir}/macros.yast

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 21 12:32:14 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Generate correct source location for POT messages extracted
+  from XML files (bsc#1198261)
+- Allow extracting only the comments for translators, ignore e.g.
+  the license headers (bsc#1198220)
+- 4.5.3
+
+-------------------------------------------------------------------
 Wed Apr 13 08:45:45 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Fix for previous change, trim also the tabs (bsc#1197965)
