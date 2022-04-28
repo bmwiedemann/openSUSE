@@ -39,4 +39,12 @@
     <comment>Build with source/target levels 8</comment>
     <requestid>963963</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>19647513670fe1e00c090153906e276e</srcmd5>
+    <version>2.22.0</version>
+    <time>1651180060</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with testng 7.4.0 and maven-shared-utils 3.3.3</comment>
+    <requestid>973218</requestid>
+  </revision>
 </revisionlist>

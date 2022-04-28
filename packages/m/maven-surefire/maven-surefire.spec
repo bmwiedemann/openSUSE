@@ -31,7 +31,7 @@ Source2:        http://junit.sourceforge.net/cpl-v10.html
 Source10:       %{name}-build.tar.xz
 Patch0:         0001-Maven-3.patch
 Patch1:         0002-Port-to-current-doxia.patch
-Patch2:         0003-Port-to-TestNG-6.11.patch
+Patch2:         0003-Port-to-TestNG-7.4.0.patch
 Patch3:         0004-Port-to-current-maven-shared-utils.patch
 Patch10:        %{name}-bootstrap-resources.patch
 BuildRequires:  ant

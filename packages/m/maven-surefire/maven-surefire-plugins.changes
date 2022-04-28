@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 27 13:52:13 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patches:
+  * 0004-Port-to-current-maven-shared-utils.patch
+    + Add some try/catch blocks so that we catch new exceptions
+      potentially thrown by maven-shared-utils-3.3.x
+  * 0003-Port-to-TestNG-6.11.patch -> 0003-Port-to-TestNG-7.4.0.patch
+    + Allow building with the new testng 7.4.0
+
+-------------------------------------------------------------------
 Tue Mar 22 13:53:34 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source and target level 8

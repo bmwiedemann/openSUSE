@@ -1,15 +1,34 @@
-From 6f1e595890521c0c3448457f112c1598d8b9c7f9 Mon Sep 17 00:00:00 2001
-From: Michael Simacek <msimacek@redhat.com>
-Date: Fri, 16 Mar 2018 13:45:01 +0100
-Subject: [PATCH 4/4] Port to current maven-shared-utils
-
----
- .../surefire/report/StatelessXmlReporter.java    | 16 ++++++++++------
- pom.xml                                          |  2 +-
- 2 files changed, 11 insertions(+), 7 deletions(-)
-
-diff --git a/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/report/StatelessXmlReporter.java b/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/report/StatelessXmlReporter.java
-index dad9808..111b92b 100644
+--- a/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/booterclient/DefaultForkConfiguration.java	2022-04-26 11:44:38.061316377 +0200
++++ b/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/booterclient/DefaultForkConfiguration.java	2022-04-26 11:50:27.427430853 +0200
+@@ -130,14 +130,24 @@
+         String jvmArgLine = newJvmArgLine( forkNumber );
+         if ( !jvmArgLine.isEmpty() )
+         {
+-            cli.createArg()
+-                    .setLine( jvmArgLine );
++            try
++            {
++                cli.createArg().setLine( jvmArgLine );
++            }
++            catch (Exception e)
++            {
++            }
+         }
+ 
+         if ( getDebugLine() != null && !getDebugLine().isEmpty() )
+         {
+-            cli.createArg()
+-                    .setLine( getDebugLine() );
++            try
++            {
++                cli.createArg().setLine( getDebugLine() );
++            }
++            catch (Exception e)
++            {
++            }
+         }
+ 
+         resolveClasspath( cli, findStartClass( config ), config );
 --- a/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/report/StatelessXmlReporter.java
 +++ b/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/report/StatelessXmlReporter.java
 @@ -237,6 +237,10 @@ public class StatelessXmlReporter
@@ -77,8 +96,6 @@ index dad9808..111b92b 100644
      {
          xmlWriter.startElement( "properties" );
          for ( final Entry<String, String> entry : systemProperties.entrySet() )
-diff --git a/pom.xml b/pom.xml
-index efc9342..6492689 100644
 --- a/pom.xml
 +++ b/pom.xml
 @@ -91,7 +91,7 @@
@@ -86,10 +103,7 @@ index efc9342..6492689 100644
      <commonsLang3Version>3.5</commonsLang3Version>
      <commonsIoVersion>2.5</commonsIoVersion>
 -    <mavenSharedUtilsVersion>0.9</mavenSharedUtilsVersion>
-+    <mavenSharedUtilsVersion>3.2.1</mavenSharedUtilsVersion>
++    <mavenSharedUtilsVersion>3.3.3</mavenSharedUtilsVersion>
      <powermockVersion>2.0.0-beta.5</powermockVersion>
      <maven.surefire.scm.devConnection>scm:git:https://gitbox.apache.org/repos/asf/maven-surefire.git</maven.surefire.scm.devConnection>
      <maven.site.path>surefire-archives/surefire-LATEST</maven.site.path>
--- 
-2.17.1
-
