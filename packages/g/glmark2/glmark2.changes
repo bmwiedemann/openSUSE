@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 28 06:58:30 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20220214:
+  * github: Run apt-get update to get latest packages
+  * CanvasGeneric,CanvasAndroid: Display surface config info
+  * Options: Support --version command line argument
+  * libmatrix: Add missing <utility> include
+  * libmatrix: avoid -Wimplicit-fallthrough
+
+-------------------------------------------------------------------
 Tue Jan 18 07:55:52 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20211223:

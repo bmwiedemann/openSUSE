@@ -247,4 +247,17 @@
   * NativeStateDrm: Fix crash when we can't become DRM master</comment>
     <requestid>947123</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3a3244b06a91f930ecb840df8259d411</srcmd5>
+    <version>20220214</version>
+    <time>1651180085</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220214:
+  * github: Run apt-get update to get latest packages
+  * CanvasGeneric,CanvasAndroid: Display surface config info
+  * Options: Support --version command line argument
+  * libmatrix: Add missing &lt;utility&gt; include
+  * libmatrix: avoid -Wimplicit-fallthrough</comment>
+    <requestid>973566</requestid>
+  </revision>
 </revisionlist>
