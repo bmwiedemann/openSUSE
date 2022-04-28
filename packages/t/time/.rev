@@ -92,4 +92,12 @@
 - Use %license (boo#1082318)</comment>
     <requestid>586373</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>57cf1a75bcf57c895715e6f3549bf772</srcmd5>
+    <version>1.9</version>
+    <time>1651180027</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>972908</requestid>
+  </revision>
 </revisionlist>
