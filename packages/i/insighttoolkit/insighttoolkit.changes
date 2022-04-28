@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 27 09:24:42 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve rpmlint report "libinsighttoolkit5.x86_64: E:
+  shlib-policy-name-error SONAME: libitkvnl-5.2.so.1, expected
+  package suffix: 5_2-1"
+
+-------------------------------------------------------------------
 Thu Feb  3 09:32:31 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Do not use system eigen on aarch64 until fixed upstream:

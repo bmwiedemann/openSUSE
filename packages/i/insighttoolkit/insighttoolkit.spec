@@ -19,7 +19,7 @@
 
 %global __builder ninja
 %define tarname ITK
-%define libname lib%{name}5
+%define libname lib%{name}5_2-1
 
 # Do not use system eigen on aarch64 until fixed upstream:
 # https://github.com/InsightSoftwareConsortium/ITK/issues/2903
@@ -75,7 +75,7 @@ image processing, segmentation, and registration.
 
 %package devel
 Summary:        Development files for ITK
-Requires:       %{libname} = %{version}
+Requires:       %{libname} = %{version}-%{release}
 Requires:       dcmtk-devel
 Requires:       double-conversion-devel
 Requires:       fftw3-threads-devel
@@ -99,6 +99,7 @@ This package provides development files for the ITK library.
 
 %package -n %{libname}
 Summary:        Toolkit for scientific image processing, segmentation, and registration
+Conflicts:      libinsighttoolkit5
 
 %description -n %{libname}
 The Insight Toolkit (ITK) is a toolkit for N-dimensional scientific
