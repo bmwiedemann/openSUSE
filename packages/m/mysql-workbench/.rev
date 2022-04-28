@@ -463,4 +463,13 @@ So i make some changes:
     <comment></comment>
     <requestid>969719</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>ca66b92835058d82516764d9311d7ad9</srcmd5>
+    <version>8.0.28</version>
+    <time>1651180098</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop using ld.gold as it is deprecated and will be removed
+  in the future from openSUSE distribution. (forwarded request 973637 from marxin)</comment>
+    <requestid>973711</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 28 10:19:22 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Stop using ld.gold as it is deprecated and will be removed
+  in the future from openSUSE distribution.
+
+-------------------------------------------------------------------
 Fri Apr  8 10:46:14 UTC 2022 - Mykola Krachkovsky <w01dnick@gmail.com>
 
 - Updated to 8.0.28

@@ -57,7 +57,6 @@ Patch24:        mysql-workbench-unused-glx-call.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  ant
 BuildRequires:  antlr4-tool
-BuildRequires:  binutils-gold
 BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -145,9 +144,9 @@ sed -i "s|-Werror||g" CMakeLists.txt
 # fix building on Leap
 truncate -s0 library/base/boost_fix.cpp
 %cmake \
-  -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now -Wl,-fuse-ld=gold -pie" \
-  -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now -Wl,-fuse-ld=gold -pie" \
-  -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now -Wl,-fuse-ld=gold -pie" \
+  -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now -pie" \
+  -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now -pie" \
+  -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now -pie" \
   -DMYSQL_CONFIG_PATH=%{_bindir}/mysql_config \
   -DCMAKE_BUILD_TYPE=%{edition} \
   -DREAL_EXECUTABLE_DIR=%{_libdir}/%{name} \
