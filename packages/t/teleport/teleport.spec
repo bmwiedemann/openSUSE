@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           teleport
-Version:        9.0.4
+Version:        9.1.2
 Release:        0
 Summary:        Identity-aware, multi-protocol access proxy
 License:        Apache-2.0
@@ -29,6 +29,7 @@ Source1:        vendor.tar.gz
 Source2:        webassets.tar.gz
 Source3:        teleport.service
 Source4:        teleport.yaml
+Source5:        tbot.yaml
 BuildRequires:  git-core
 BuildRequires:  go >= 1.17
 BuildRequires:  pam-devel
@@ -60,6 +61,14 @@ License:        Apache-2.0
 %description -n teleport-tsh
 A tool that lets end users interact with Teleport nodes. This replaces ssh.
 
+%package -n teleport-tbot
+Summary:        CLI tool for Machine ID
+License:        Apache-2.0
+
+%description -n teleport-tbot
+Machine ID is a service that programmatically issues and renews short-lived certificates to any service account (e.g., a CI/CD server) by retrieving credentials from the Teleport Auth Service. This enables fine-grained role-based access controls and audit.
+tbot is the executable belonging to the Machine ID service.
+
 %prep
 %setup -q
 %setup -q -T -D -a 1
@@ -87,15 +96,27 @@ go build \
    -mod=vendor \
    -buildmode=pie \
    -ldflags="-w -s -X main.VERSION=%{version}" \
+   -o tbot ./tool/tbot
+
+go build \
+   -tags "pam" \
+   -mod=vendor \
+   -buildmode=pie \
+   -ldflags="-w -s -X main.VERSION=%{version}" \
    -o tctl ./tool/tctl
 
 %install
 # Install the binary.
 install -D -m 0755 tsh "%{buildroot}/%{_bindir}/tsh"
 install -D -m 0755 tctl "%{buildroot}/%{_bindir}/tctl"
+install -D -m 0755 tbot "%{buildroot}/%{_bindir}/tbot"
 install -D -m 0755 teleport "%{buildroot}/%{_sbindir}/teleport"
 install -D -m 644 %{SOURCE3} %{buildroot}%{_unitdir}/teleport.service
 install -D -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/teleport.yaml
+install -D -m 644 examples/systemd/machine-id/machine-id.service %{buildroot}%{_unitdir}/
+install -D -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/tbot.yaml
+
+# teleport service
 
 %pre -n teleport
 %service_add_pre teleport.service
@@ -108,6 +129,20 @@ install -D -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/teleport.yaml
 
 %postun -n teleport
 %service_del_postun teleport.service
+
+# machine-id service
+
+%pre -n teleport-tbot
+%service_add_pre machine-id.service
+
+%post -n teleport-tbot
+%service_add_post machine-id.service
+
+%preun -n teleport-tbot
+%service_del_preun machine-id.service
+
+%postun -n teleport-tbot
+%service_del_postun machine-id.service
 
 %files -n teleport
 %doc README.md
@@ -125,5 +160,12 @@ install -D -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/teleport.yaml
 %doc README.md
 %license LICENSE
 %{_bindir}/tctl
+
+%files -n teleport-tbot
+%doc README.md
+%license LICENSE
+%{_bindir}/tbot
+%{_unitdir}/machine-id.service
+%config(noreplace) %{_sysconfdir}/tbot.yaml
 
 %changelog

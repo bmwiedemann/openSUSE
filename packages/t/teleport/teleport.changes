@@ -1,4 +1,130 @@
 -------------------------------------------------------------------
+Wed Apr 27 17:14:24 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 9.1.2:
+  * Release 9.1.2 (#12259)
+  * Revert "Backport #11725 #11249 #11799 to branch/v9 (#11795)" (#12243)
+  * docker: Add lint-helm to build.assets Makefile (#12189)
+  * [v9] Regenerate host UUID of node if host_uuid is empty (#12222)
+  * Simplify user creation in database access guides (#12136) (#12235)
+  * bump to 9.1.1 in docs (#12210)
+
+-------------------------------------------------------------------
+Tue Apr 26 19:47:35 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 9.1.1:
+  * Release 9.1.1 (#12192)
+  * docs: Add example for label usage with `tsh ssh` (#12110) (#12158)
+  * [auto] Update webassets in branch/v9 (#12170)
+  * Added support for JumpCloud. (#11936)
+  * [v9] docs: Machine ID update (#12155)
+  * Ignore HTTP_PROXY for reverse tunnels (#11990) (#12035)
+  * Respect Firestore commit write limits (#12111) (#12177)
+  * updates meta-description (#11746)
+  * update latest 9 version (#12174)
+  * Update upcoming-releases.mdx (#12166)
+  * Update upcoming-releases.mdx
+  * Fix Download Link (#12132) (#12134)
+  * Prevent blocking forever when transport channel fails to open (#11875) (#12122)
+  * Mention ScopedBlock in the UI reference (#12085)
+  * Backport #12001 to branch/v9 (#12088)
+  * Backport #11419 to branch/v9 (#12091)
+  * Backport #11913 and #11826 to v9 (#12095)
+  * Fix flaky test - TestAuditOn (#12135)
+  * Fix ProxyKube not reporting its readiness (#12152)
+
+-------------------------------------------------------------------
+Tue Apr 26 18:54:52 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- introduce new executable tbot for new feature Machine ID
+  https://goteleport.com/docs/machine-id/getting-started/ 
+
+-------------------------------------------------------------------
+Tue Apr 26 06:24:53 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 9.1.0:
+  * Release 9.1.0 (#12020)
+  * Manually extract SSO redirect URL to preserve its own query params (#12100) (#12125)
+  * Allow setting additional traits in tctl users add command (#12102) (#12133)
+  * Fix reference to tbot start --oneshot (#12064) (#12112)
+  * [auto] Update webassets in branch/v9 (#12126)
+  * [v9] backport #12057 (panic in `CertAuthority.Clone`) (#12004)
+  * [v9] backport #11019 (`ListResources` in the webapi layer) (#12106)
+  * Add manual websocket pingloop (#11765) (#11915)
+  * Improve error handling in `tbot start` (#11756) (#12012)
+  * Pipe terminal stdin to session in kubernetes peer mode (#11288) (#11918)
+  * Allow requesting a join token with IAM method from the web api (#11339) (#12060)
+  * Fix globbing for Moderated Sessions join policies (#12067) (#12071)
+  * Make `tsh db ls` lists available db users. (#10458) (#11942)
+  * Switch to forked `httprouter` and enable `UseRawPath` option (#11068) (#12080)
+  * Prevent goroutine leak in oidc client (#11974) (#12078)
+  * docs: Don't lint external links when running in CI (#12058) (#12069)
+  * Fix flaky test - TestChaosUpload (#12052)
+  * Add JSON and YAML to several tsh commands (#11681)
+  * update prereqs for machineid ansible guide (#12066)
+  * fix(db): send initial heartbeat when there is no static dbs (#11160) (#12039)
+  * Generate database access credentials with tctl auth sign command (#10785) (#12042)
+  * Align atomics on ARM32 (#11822) (#11917)
+  * Correct note on node (#12045)
+  * Update linux-server.mdx (#11682) (#11815)
+  * fix docker example (#12027)
+  * update teleport cloud version to 8.3.7 in docs (#12017)
+  * Update installation docs (#11677) (#12013)
+  * Includes advisory for pages that are installing proxy, auth for cloud scope (#12030)
+  * Ensure Cache `types.WatchKinds` and `proto.WatchEvents` are in sync (#11692) (#11927)
+  * Backport #11381 to branch/v9 (#11969)
+  * Backport #10996 to branch/v9 (#11967)
+  * Backport #10759 to branch/v9 (#11966)
+  * Backport #10801 to branch/v9 (#11964)
+  * docs: Don't lint external links (#11940) (#11996)
+  * Prepare five guides for Cloud users (#11982)
+  * Document Okta OIDC provider workaround
+  * Extract tabbed Prerequisites into a partial (#11960)
+  * Backport #11801 to branch/v9 (#11965)
+  * Fix Okta OIDC (#11718)
+  * Remove references to authentication type 'false' from docs (#11621) (#11924)
+  * (v9) Delete app sessions on logout (#11956)
+  * helm: Set default second factor to "otp" in values (#11034) (#11923)
+  * helm: Add support for mounting existing TLS secrets with optional root CA (#11295) (#11922)
+  * Bump Go to 1.17.9 (#11932)
+  * Fix race condition in (*sess). broadcastResult() (#11851)
+  * Mention scoped Admonitions (#11900)
+  * Edit four docs guides for Cloud users (#11971)
+  * Edit four Access Controls guides for Cloud users (#11977)
+  * Update upcoming-releases.mdx
+  * Update upcoming-releases.mdx
+  * [v9] Add audit logging for more MySQL commands (#11914) (#11949)
+  * [auto] Update webassets in branch/v9 (#11951)
+  * Return error message if supplied auth connector name doesn't match registered names. (#11800) (#11884)
+  * change bash blocks to code to fix copy/paste and consistency (#11912)
+  * Updated Getting Started Machine ID Guide.
+  * Updated Ansible Machine ID Guide.
+  * Updated Jenkins Machine ID Guide.
+  * Update teleport-plugin guides to reference docker images for downloads (#11617) (#11934)
+  * SQL Backend Documentation (#11897)
+  * Move Cloud download binaries into tables (#11839)
+  * [v9] Rollup bugfix backport (#11890)
+  * NO_PROXY port support + special case for proxying via localhost (#11403)
+  * [v9] Replace session upload grace period with session tracker (#11853)
+  * Edit Database Access guides for Cloud users (#11846)
+  * [v9] Release pipeline improvements (#10707) (#11833)
+  * [v9] Make relogin attempts use the strongest auth method (#11781) (#11847)
+  * Mention Teleport is deployable in k8s (#11874)
+  * update golang version in docs config to 1.17 (#11869)
+  * [v9] helm: Backports (#11728)
+  * [v9] Access Control, K8s Cluster docs set scope and AWS first (#11761)
+  * Add client cert in insecure mode (#11758)
+  * Backport #11725 #11249 #11799 to branch/v9 (#11795)
+  * Add auth'd tunnel mode to tsh proxy db command (#11720) (#11808)
+  * [v9] Moderated Sessions rollup backport (#11803)
+  * Fix session leave + termination deadlock
+  * Backport #10880 to branch/v9 (#11442)
+  * Add grpc server and client metrics to Teleport (#11773)
+  * Fix key principals not being used when identity files are being used (#11793)
+  * update 9 release version to 9.0.4 (#11789)
+  * Document limitations with the Google OIDC connector and transitive group memberships (#11422)
+
+-------------------------------------------------------------------
 Thu Apr 14 19:37:37 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 9.0.4:
