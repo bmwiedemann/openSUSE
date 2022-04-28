@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 21 08:11:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.1:
+  * #3685: Fix the diff command
+  * #3681: Fix rclone (shimmed by Scoop) and sftp stopped working on Windows
+
+-------------------------------------------------------------------
 Sun Mar 27 20:01:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.13.0:

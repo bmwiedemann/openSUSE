@@ -20,7 +20,7 @@
 %define import_path github.com/restic/restic
 
 Name:           restic
-Version:        0.13.0
+Version:        0.13.1
 Release:        0
 Summary:        Backup program with deduplication and encryption
 License:        BSD-2-Clause
@@ -29,7 +29,7 @@ URL:            https://restic.net
 Source0:        https://github.com/restic/restic/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/restic/restic/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
-Source3:        vendor.tar.xz
+Source3:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  golang-packaging
 BuildRequires:  zsh
