@@ -19,12 +19,6 @@
 %global bundled_slf4j_version 1.7.25
 %global homedir %{_datadir}/%{name}%{?maven_version_suffix}
 %global confdir %{_sysconfdir}/%{name}%{?maven_version_suffix}
-%if 0%{?suse_version} > 1500
-%bcond_without libalternatives
-%else
-%bcond_with libalternatives
-%endif
-%bcond_with  logback
 Name:           maven
 Version:        3.8.4
 Release:        0
@@ -42,7 +36,6 @@ Source4:        https://downloads.apache.org/maven/KEYS#/%{name}.keyring
 Source10:       apache-%{name}-%{version}-build.tar.xz
 Patch1:         0001-Adapt-mvn-script.patch
 # Downstream-specific, avoids dependency on logback
-# Used only when %%without logback is in effect
 Patch2:         0002-Invoke-logback-via-reflection.patch
 Patch3:         qdox-2.0.1.patch
 Patch4:         0004-Use-non-shaded-HTTP-wagon.patch
@@ -105,16 +98,6 @@ Requires(post): aaa_base
 Requires(postun):aaa_base
 # maven-lib cannot be noarch because of the position of jansi-native.jar
 #BuildArch:      noarch
-%if %{with logback}
-BuildRequires:  mvn(ch.qos.logback:logback-classic)
-%endif
-%if %{with libalternatives}
-BuildRequires:  alts
-Requires:       alts
-%else
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
-%endif
 
 %description
 Maven is a software project management and comprehension tool. Based on the
@@ -132,14 +115,12 @@ Summary:        Core part of Maven
 # dependencies which are not generated automatically, but adding
 # everything seems to be easier.
 Group:          Development/Tools/Building
-Requires:       aopalliance
 Requires:       apache-commons-cli
 Requires:       apache-commons-codec
 Requires:       apache-commons-io
 Requires:       apache-commons-lang3
 Requires:       apache-commons-logging
 Requires:       atinject
-Requires:       cglib
 Requires:       glassfish-annotation-api
 Requires:       google-guice
 Requires:       guava
@@ -201,6 +182,7 @@ BuildArch:      noarch
 %setup -q -n apache-%{name}-%{version} -a10
 
 %patch1 -p1
+%patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
@@ -234,10 +216,7 @@ sed -i "s/distributionName=.*/distributionName=Apache\ Maven/" `find -name build
 
 %{mvn_package} :apache-maven __noinstall
 
-%if %{without logback}
 %pom_remove_dep -r :logback-classic
-%patch2 -p1
-%endif
 
 %{mvn_alias} :maven-resolver-provider :maven-aether-provider
 
@@ -317,9 +296,7 @@ chmod -x %{buildroot}%{homedir}/bin/*.cmd %{buildroot}%{homedir}/bin/*.conf
 
 # Transitive deps of wagon-http, missing because of unshading
 build-jar-repository -p %{buildroot}%{homedir}/lib \
-    aopalliance \
     objectweb-asm/asm \
-    cglib/cglib \
     commons-cli \
     commons-codec \
     commons-io \
@@ -376,49 +353,11 @@ ln -sf %{confdir}/settings.xml %{buildroot}%{homedir}/conf/settings.xml
 mv %{buildroot}%{homedir}/conf/logging %{buildroot}%{confdir}/
 ln -sf %{confdir}/logging %{buildroot}%{homedir}/conf
 
-install -d -m 755 %{buildroot}%{_bindir}/
+install -d -m 0755 %{buildroot}%{_bindir}
+ln -sf %{homedir}/bin/mvn %{buildroot}%{_bindir}/
+ln -sf %{homedir}/bin/mvnDebug %{buildroot}%{_bindir}/
 install -d -m 755 %{buildroot}%{_mandir}/man1/
-
-%if %{with libalternatives}
-ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/mvn
-mkdir -p %{buildroot}%{_datadir}/libalternatives/mvn
-cat > %{buildroot}%{_datadir}/libalternatives/mvn/%{?maven_alternatives_priority}1.conf <<EOF
-binary=%{homedir}/bin/mvn
-group=mvn, mvnDebug
-EOF
-ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/mvnDebug
-mkdir -p %{buildroot}%{_datadir}/libalternatives/mvnDebug
-cat > %{buildroot}%{_datadir}/libalternatives/mvnDebug/%{?maven_alternatives_priority}1.conf <<EOF
-binary=%{homedir}/bin/mvnDebug
-group=mvn, mvnDebug
-man=mvn.1
-EOF
-mv %{buildroot}%{homedir}/bin/mvn.1.gz %{buildroot}%{_mandir}/man1
-%endif
-
-%if ! %{with libalternatives}
-# Ghosts for alternatives
-touch %{buildroot}%{_bindir}/{mvn,mvnDebug}
-touch %{buildroot}%{_mandir}/man1/{mvn,mvnDebug}.1
-
-%post
-update-alternatives --install %{_bindir}/mvn mvn %{homedir}/bin/mvn %{?maven_alternatives_priority}0 \
---slave %{_bindir}/mvnDebug mvnDebug %{homedir}/bin/mvnDebug \
---slave %{_mandir}/man1/mvn.1.gz mvn1 %{homedir}/bin/mvn.1.gz \
---slave %{_mandir}/man1/mvnDebug.1.gz mvnDebug1 %{homedir}/bin/mvn.1.gz \
-
-%postun
-if [ $1 -eq 0 ]; then
-  update-alternatives --remove mvn %{homedir}/bin/mvn
-fi
-%else
-
-%pre
-# removing old update-alternatives entries
-if [ "$1" > 0 ] && [ -f %{_sbindir}/update-alternatives ] ; then
-  update-alternatives --remove mvn %{homedir}/bin/mvn
-fi
-%endif
+ln -sf %{homedir}/bin/mvn.1.gz %{buildroot}%{_mandir}/man1/
 
 %files lib -f .mfiles
 %doc README.md
@@ -431,22 +370,10 @@ fi
 %config(noreplace) %{confdir}/logging/simplelogger.properties
 
 %files
-%{_datadir}/bash-completion
-%if ! 0%{with libalternatives}
-%ghost %{_bindir}/mvn
-%ghost %{_bindir}/mvnDebug
-%ghost %{_mandir}/man1/mvn.1.gz
-%ghost %{_mandir}/man1/mvnDebug.1.gz
-%else
-%dir %{_datadir}/libalternatives
-%dir %{_datadir}/libalternatives/mvn
-%dir %{_datadir}/libalternatives/mvnDebug
-%{_datadir}/libalternatives/mvn/%{?maven_alternatives_priority}1.conf
-%{_datadir}/libalternatives/mvnDebug/%{?maven_alternatives_priority}1.conf
 %{_bindir}/mvn
 %{_bindir}/mvnDebug
+%{_datadir}/bash-completion
 %{_mandir}/man1/mvn.1%{?ext_man}
-%endif
 
 %files javadoc -f .mfiles-javadoc
 %license LICENSE NOTICE

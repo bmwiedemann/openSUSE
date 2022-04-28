@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 27 14:00:15 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Remove using of alternatives, since the symlinks are in a separate
+  package that one can decide not to install and this is the only
+  provider for mvn and mvnDebug links
+- Remove dependency on cglib and aopalliance, since the no_aop
+  version of guice does not really depend on them
+
+-------------------------------------------------------------------
 Fri Mar 11 12:11:36 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
