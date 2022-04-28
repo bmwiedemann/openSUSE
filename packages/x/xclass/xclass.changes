@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 26 12:53:05 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Copy config.guess and config.sub
+  from/usr/share/autoconf/build-aux (autoconf package) to source
+  dir. Allows to bootstrap with autoconf 2.71.
+
+-------------------------------------------------------------------
 Mon Oct  2 22:18:40 UTC 2017 - jengelh@inai.de
 
 - Avoid running fdupes across partition boundaries.

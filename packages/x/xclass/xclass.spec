@@ -1,7 +1,7 @@
 #
 # spec file for package xclass
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Name:           xclass
 Version:        0.9.2
 Release:        0
 Summary:        Library for Uniform Presentation of fvwm95 Programs
-License:        GPL-2.0+ and LGPL-2.1+
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://xclass.sourceforge.net/
+URL:            http://xclass.sourceforge.net/
 Source:         %{name}-%{version}.tar.bz2
 Patch0:         %{name}-%{version}-configs.patch
 Patch1:         %{name}-%{version}-gcc-3.1.patch
@@ -47,7 +47,7 @@ programs.
 
 %package -n %{lname}
 Summary:        Library for Uniform Presentation of fvwm95 Programs
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          System/Libraries
 Requires:       %name
 
@@ -57,7 +57,7 @@ programs.
 
 %package devel
 Summary:        Development files for xclass
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 Requires:       libstdc++-devel
@@ -76,6 +76,7 @@ This package contains development files for xclass library.
 %patch2
 %patch3
 %patch4 -p1
+cp /usr/share/autoconf/build-aux/config.{guess,sub} .
 
 %build
 autoconf
