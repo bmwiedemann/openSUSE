@@ -1142,7 +1142,7 @@ unsorted:
   - bamf-devel 
   - bamf-doc 
   - bananapir2-firmware 
-  - bandwidth 
+  - bandwidth: [x86_64] 
   - barcode 
   - barcode-devel 
   - baresip 
@@ -5989,6 +5989,7 @@ unsorted:
   - gnome-genius 
   - gnome-getting-started-docs 
   - gnome-getting-started-docs-lang 
+  - gnome-info-collect 
   - gnome-initial-setup 
   - gnome-initial-setup-lang 
   - gnome-internet-radio-locator 
@@ -9781,8 +9782,8 @@ unsorted:
   - libassuan0-32bit: [x86_64] 
   - libastro1 
   - libastylej3 
-  - libasync 
   - libasync-devel 
+  - libasync1_6 
   - libatasmart-devel 
   - libathemecore1 
   - libatk-bridge-2_0-0-32bit: [x86_64] 
@@ -9835,6 +9836,7 @@ unsorted:
   - libavc1394-devel 
   - libavc1394-devel-32bit: [x86_64] 
   - libavc1394-tools 
+  - libavcall1 
   - libavcodec58_134-32bit: [x86_64] 
   - libavcodec59: [i586] 
   - libavcodec59-32bit: [x86_64] 
@@ -10158,6 +10160,7 @@ unsorted:
   - libcal3d12 
   - libcalc2_14_1_0 
   - libcalcium0 
+  - libcallback1 
   - libcamd-doc 
   - libcamera-devel 
   - libcamera-suse7-32bit: [x86_64] 
@@ -10344,8 +10347,8 @@ unsorted:
   - libcmocka0-32bit: [x86_64] 
   - libcmpiCppImpl0 
   - libcmpisfcc1 
-  - libcmpiutil 
   - libcmpiutil-devel 
+  - libcmpiutil0 
   - libcmrt1 
   - libcmuclmtk-devel 
   - libcmuclmtk0 
@@ -10696,8 +10699,8 @@ unsorted:
   - libebml5-32bit: [x86_64] 
   - libebur128-1 
   - libebur128-devel 
+  - libecholib-devel 
   - libecholib1_3 
-  - libecholib1_3-devel 
   - libecm1 
   - libeconf-devel 
   - libeconf-utils 
@@ -11737,7 +11740,7 @@ unsorted:
   - libindilx200-1 
   - libinfinipath4 
   - libinfinipath4-32bit: [x86_64] 
-  - libinfinity-1_0-0 
+  - libinfinity-0_7-0 
   - libinfinity-devel 
   - libinfinity-lang 
   - libini_config-devel 
@@ -12278,6 +12281,7 @@ unsorted:
   - libminisat2 
   - libminiupnpc-devel 
   - libminiupnpc17-32bit: [x86_64] 
+  - libminizinc-devel 
   - libminizip1-32bit: [x86_64] 
   - libmirage-3_2 
   - libmirage-data 
@@ -12768,8 +12772,8 @@ unsorted:
   - libopenmpt0-32bit: [x86_64] 
   - libopenmpt_modplug1 
   - libopenraw-devel 
-  - libopenraw1 
-  - libopenraw1-32bit: [x86_64] 
+  - libopenraw9 
+  - libopenraw9-32bit: [x86_64] 
   - libopenscap25 
   - libopenscap_sce25 
   - libopenshot-audio-devel 
@@ -14349,6 +14353,7 @@ unsorted:
   - libtraceevent1-plugins 
   - libtracefs-devel 
   - libtracefs1 
+  - libtrampoline1 
   - libtranscript-devel 
   - libtranscript1 
   - libtree-sitter0 
@@ -16425,6 +16430,7 @@ unsorted:
   - minitube 
   - minitube-lang 
   - miniupnpc 
+  - minizinc 
   - minizip-devel 
   - minlog 
   - minlog-javadoc 
@@ -23174,6 +23180,7 @@ unsorted:
   - python310-grpc-google-iam-v1 
   - python310-grpcio 
   - python310-grpcio-gcp 
+  - python310-grpcio-status 
   - python310-grpcio-tools 
   - python310-gscholar 
   - python310-gsm0338 
@@ -26307,6 +26314,7 @@ unsorted:
   - python38-grpc-google-iam-v1 
   - python38-grpcio 
   - python38-grpcio-gcp 
+  - python38-grpcio-status 
   - python38-grpcio-tools 
   - python38-gscholar 
   - python38-gsm0338 
@@ -29378,6 +29386,7 @@ unsorted:
   - python39-grpc-google-iam-v1 
   - python39-grpcio 
   - python39-grpcio-gcp 
+  - python39-grpcio-status 
   - python39-grpcio-tools 
   - python39-gscholar 
   - python39-gsm0338 
