@@ -1,7 +1,7 @@
 #
 # spec file for package qpid-proton
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
-%global         qpid_proton_soversion 10
+%global         qpid_proton_soversion 11
+%global         qpid_proton_core_soversion 10
 %global         qpid_proton_cpp_soversion 12
 %global         qpid_proton_proactor_soversion 1
 # libqpid-proton dependency leaves detritus in __pycache__ on Red Hat which should be excluded from RPM
@@ -26,7 +27,7 @@
 %define _unpackaged_files_terminate_build 0
 %endif
 Name:           qpid-proton
-Version:        0.34.0
+Version:        0.37.0
 Release:        0
 Summary:        A messaging library
 License:        Apache-2.0
@@ -73,6 +74,16 @@ Proton is a messaging library. It can be used in brokers, client
 libraries, routers, bridges and proxies. Proton is based on the AMQP
 1.0 messaging standard.
 
+%package -n libqpid-proton-core%{qpid_proton_core_soversion}
+Summary:        Core library for Qpid Proton
+# Moved to its own package due to different so version
+Conflicts:      libqpid-proton10 <= 0.34.0
+
+%description -n libqpid-proton-core%{qpid_proton_core_soversion}
+Proton is a messaging library. It can be used in brokers, client
+libraries, routers, bridges and proxies. Proton is based on the AMQP
+1.0 messaging standard.
+
 %package -n qpid-proton-test
 Summary:        Test files for Qpid Proton
 Group:          Development/Libraries/C and C++
@@ -104,6 +115,7 @@ libraries, routers, bridges and proxies. Proton is based on the AMQP
 Summary:        Development libraries for writing messaging apps with Qpid Proton
 Group:          Development/Libraries/C and C++
 Requires:       libqpid-proton%{qpid_proton_soversion} = %{version}-%{release}
+Requires:       libqpid-proton-core%{qpid_proton_core_soversion} = %{version}-%{release}
 Requires:       libqpid-proton-cpp%{qpid_proton_cpp_soversion} = %{version}-%{release}
 
 %description devel
@@ -116,9 +128,7 @@ Summary:        Documentation for the C development libraries for Qpid Proton
 Group:          Documentation/Other
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
-%if 0%{?suse_version} >= 1120
 BuildArch:      noarch
-%endif
 
 %description devel-doc
 Proton is a messaging library.
@@ -195,6 +205,8 @@ mv %{buildroot}%{_datadir}/proton/docs/* %{buildroot}%{_docdir}/%{name}/
 
 %post -n libqpid-proton%{qpid_proton_soversion} -p /sbin/ldconfig
 %postun -n libqpid-proton%{qpid_proton_soversion} -p /sbin/ldconfig
+%post -n libqpid-proton-core%{qpid_proton_core_soversion} -p /sbin/ldconfig
+%postun -n libqpid-proton-core%{qpid_proton_core_soversion} -p /sbin/ldconfig
 %post -n libqpid-proton-cpp%{qpid_proton_cpp_soversion} -p /sbin/ldconfig
 %postun -n libqpid-proton-cpp%{qpid_proton_cpp_soversion} -p /sbin/ldconfig
 %post -n libqpid-proton-proactor%{qpid_proton_proactor_soversion} -p /sbin/ldconfig
@@ -202,6 +214,8 @@ mv %{buildroot}%{_datadir}/proton/docs/* %{buildroot}%{_docdir}/%{name}/
 
 %files -n libqpid-proton%{qpid_proton_soversion}
 %{_libdir}/libqpid-proton.so.*
+
+%files -n libqpid-proton-core%{qpid_proton_core_soversion}
 %{_libdir}/libqpid-proton-core.so.*
 
 %files -n libqpid-proton-cpp%{qpid_proton_cpp_soversion}

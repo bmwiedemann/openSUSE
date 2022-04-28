@@ -191,4 +191,12 @@
     <comment>disable tests for the while</comment>
     <requestid>893158</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4b8c2ac669052467af43b7487af6496d</srcmd5>
+    <version>0.37.0</version>
+    <time>1651180031</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>972930</requestid>
+  </revision>
 </revisionlist>

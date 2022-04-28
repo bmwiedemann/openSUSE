@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Apr 26 13:55:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Move libqpid-proton-core to a different package to fix a rpmlint
+  error (boo#1191783)
+- Update to 0.37.0. Changes since last release:
+  * [cpp] Add support for setting Dynamic Node Properties
+  * Add new internal API pn_buffer_free_memory to get direct
+    access to unused memory in buffer
+  * Implement a dumping AMQP values without using pn_data_t
+  * Remove unnecessary scratch string from pn_transport_t
+  * Generate correct relocatable pc files
+  * Reduce (ultimately eliminate) all use of the pn_data_t data
+    structure in AMQP frame processing
+  * [proton-python] Fix socket.socket type annotations
+    inconsistency found by MyPy
+  * Improve proactor read performance by actually resizing input
+    buffer
+  * [cpp] Improve constructor syntax for maps
+  * [C++] More work to use C++11 features now that we can
+  * segfault in epoll proactor shutdown
+  * c-threaderciser timed out on 32-core machine.
+  * [cpp] Seed in uuid.cpp can lead to duplicates
+  * [cpp] Use of reconnect_options::failover_urls triggers
+    -Wdeprecated-declarations in examples/cpp/reconnect_client.cpp
+  * TSAN race in epoll.c post_event with raw connection
+  * [cpp] Crash upon reconnect when user passed empty vector to
+    connection_options::failover_urls
+  * Workaround for bad use of pn_buffer_append in messenger library
+  * Bad example code was introduced in PROTON-2427
+  * Bugs found by os-fuzzer
+  * Fix some undefined behaviour found by ubsan
+  * assert epoll.c:2519: poller_do_epoll: Assertion
+    `!p->sched_ready_first' failed.
+  * Proactor can seem to read nonsense
+  * TSAN reported potential deadlock in epoll proactor when run via
+    Qpid Dispatch router.
+  * epoll proactor memory use after free
+  * [python] When tracing is active receiving a message with annotations
+    fails
+  * Python module linking on recent macOS fails with clang unable to
+    find -lssl
+  * Ruby binding fails to test with ruby 3.1
+  * [c] Memory leak found by fuzzing
+  * [python] Fatal Python error: deallocating None
+  * Error in decoding disposition frames
+  * The new C codec can misinterpret pn_data_t values resulting in
+    unintended wire data.
+
+-------------------------------------------------------------------
 Fri May 14 10:02:33 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Disable tests for the while as a stopgap solution for python
