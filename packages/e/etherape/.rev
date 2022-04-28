@@ -291,4 +291,13 @@ Apologies for the delay in fixing it. (forwarded request 212315 from dimstar)</c
   - merged link protocol and traffic timeouts. (forwarded request 949317 from wfrisch)</comment>
     <requestid>949411</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>dd53e0889727461b57ad9473d2eb6eaa</srcmd5>
+    <version>0.9.20</version>
+    <time>1651180089</time>
+    <user>dimstar_suse</user>
+    <comment>- fix homepage url
+- spec-cleaner (forwarded request 973579 from dirkmueller)</comment>
+    <requestid>973580</requestid>
+  </revision>
 </revisionlist>

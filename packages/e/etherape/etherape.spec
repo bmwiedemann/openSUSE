@@ -22,7 +22,7 @@ Release:        0
 Summary:        A Graphical Network Monitor
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Diagnostic
-URL:            https://etherape.sourceforge.net/
+URL:            https://etherape.sourceforge.io/
 Source0:        https://prdownloads.sourceforge.net/etherape/%{name}-%{version}.tar.gz
 Patch0:         etherape-0.9.12-desktop.patch
 BuildRequires:  docbook_4
@@ -33,12 +33,12 @@ BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(goocanvas-2.0)
 BuildRequires:  pkgconfig(popt)
-%if 0%{?is_opensuse}
-BuildRequires:  autoconf-archive
-%endif
 Requires(post): update-desktop-files
 Requires(postun):update-desktop-files
 Recommends:     %{name}-lang
+%if 0%{?is_opensuse}
+BuildRequires:  autoconf-archive
+%endif
 
 %description
 EtherApe is a graphical network monitor for Unix, modeled after
@@ -56,10 +56,10 @@ show and can read traffic from a file as well as live from the network.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 %make_install
@@ -76,15 +76,14 @@ make %{?_smp_mflags} check
 %endif
 
 %files
-%defattr(-, root, root)
-%doc COPYING TODO NEWS README* AUTHORS ABOUT-NLS
+%license COPYING
+%doc TODO NEWS README* AUTHORS ABOUT-NLS
 %{_bindir}/etherape
 %{_datadir}/applications/etherape.desktop
 %{_datadir}/etherape
-%{_mandir}/man1/etherape.1%{ext_man}
+%{_mandir}/man1/etherape.1%{?ext_man}
 %{_datadir}/pixmaps/etherape.png
 
 %files lang -f %{name}.lang
-%defattr(-,root,root)
 
 %changelog
