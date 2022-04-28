@@ -1,7 +1,7 @@
 #
-# spec file for package apache-commons-validator
+# spec file
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,8 @@ Release:        0
 Summary:        Apache Commons Validator
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://commons.apache.org/commons/
-Source0:        http://archive.apache.org/dist/commons/validator/source/%{short_name}-%{version}-src.tar.gz
+URL:            https://commons.apache.org/proper/commons-validator/
+Source0:        https://archive.apache.org/dist/commons/validator/source/%{short_name}-%{version}-src.tar.gz
 Patch0:         commons-validator-1.5.0-srcencoding.patch
 Patch1:         commons-validator-1.5.0-locale.patch
 BuildRequires:  ant
