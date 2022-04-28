@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 21 03:10:38 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.65
+   see /usr/share/doc/packages/perl-Prima/Changes
+
+  1.65 2022-04-18
+   - fixed 1.64 broken distro
+
+  1.64 2022-04-09
+   - Use libthai for Drawable.text_wrap
+   - PS/PDF font metric calculations simplified and fixed
+   - POD printing quality improved
+   - Support Drawable.alpha in the PDF backend
+
+-------------------------------------------------------------------
 Sat Sep 11 03:06:52 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.63
