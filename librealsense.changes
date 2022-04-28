@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr 28 05:40:43 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 2.50.0
+  * see release notes here:
+    https://github.com/IntelRealSense/librealsense/releases/tag/v2.50.0
+- add
+  * disable-pedantic.patch
+  * presets_path.patch
+
+-------------------------------------------------------------------
+Wed Apr 27 12:38:39 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve rpmlint report "librealsense2.x86_64: E:
+  shlib-policy-name-error SONAME: librealsense2-gl.so.2.44,
+  expected package suffix: 2_44"
+
+-------------------------------------------------------------------
 Tue May 25 05:08:40 UTC 2021 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Update to 2.44.0
