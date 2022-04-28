@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 27 20:26:43 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- do not add bundled libraries as rpm required libs boo#1198407
+
+-------------------------------------------------------------------
 Fri Apr 22 11:50:24 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - do not add bundled libraries as rpm provided libs boo#1198407
