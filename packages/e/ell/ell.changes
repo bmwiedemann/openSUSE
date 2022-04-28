@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 26 09:30:32 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.50
+  * dbus: Fix use-after-free crash when removing objects
+
+-------------------------------------------------------------------
 Fri Feb 25 07:33:24 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 0.49:
