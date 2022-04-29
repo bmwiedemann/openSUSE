@@ -299,8 +299,8 @@ products:
     - x86_64
   - opensuse-openldap-image:
     - x86_64
-  - opensuse-postfix-image:
-    - x86_64
+#  - opensuse-postfix-image:
+#    - x86_64
   - opensuse-redis-image:
     - x86_64
   - opensuse-registry-image:
@@ -526,7 +526,7 @@ set_snapshot_number: True</value>
     <value>failed: ''
 published: '20220427'
 publishing: '20220427'
-testing: '20220427'
+testing: '20220428'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
