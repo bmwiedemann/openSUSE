@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Wed Apr 27 14:22:43 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#139
+- fix sysconfig parsing (bsc#1198828)
+- 0.939
+
+--------------------------------------------------------------------
 Thu Apr 7 12:06:21 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/perl-bootloader#138
