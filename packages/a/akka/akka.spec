@@ -58,16 +58,9 @@ BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.uncommons.maths:uncommons-maths)
 # requires for akka-remote
 BuildRequires:  protobuf-devel
+BuildRequires:  xmvn-install
+BuildRequires:  xmvn-resolve
 Requires:       java-headless >= 1.8
-Requires:       mvn(com.google.protobuf:protobuf-java)
-Requires:       mvn(com.typesafe:config)
-Requires:       mvn(io.netty:netty:3)
-Requires:       mvn(org.osgi:osgi.cmpn)
-Requires:       mvn(org.osgi:osgi.core)
-Requires:       mvn(org.scala-lang:scala-library)
-Requires:       mvn(org.scala-stm:scala-stm_2.10)
-Requires:       mvn(org.slf4j:slf4j-api)
-Requires:       mvn(org.uncommons.maths:uncommons-maths)
 BuildArch:      noarch
 
 %description
@@ -111,56 +104,25 @@ chmod 644 LICENSE
 
 %{ant} dist doc
 
+%{mvn_artifact} %{SOURCE2} target/%{name}-actor.jar
+%{mvn_artifact} %{SOURCE3} target/%{name}-agent.jar
+%{mvn_artifact} %{SOURCE4} target/%{name}-cluster.jar
+%{mvn_artifact} %{SOURCE5} target/%{name}-dataflow.jar
+%{mvn_artifact} %{SOURCE6} target/%{name}-kernel.jar
+%{mvn_artifact} osgi-pom.xml target/%{name}-osgi.jar
+%{mvn_artifact} remote-pom.xml target/%{name}-remote.jar
+%{mvn_artifact} %{SOURCE9} target/%{name}-slf4j.jar
+%{mvn_artifact} %{SOURCE10} target/%{name}-transactor.jar
+
 %install
-
-mkdir -p %{buildroot}%{_javadir}/%{name}
-cp -p target/%{name}-actor.jar %{buildroot}%{_javadir}/%{name}/
-cp -p target/%{name}-agent.jar %{buildroot}%{_javadir}/%{name}/
-cp -p target/%{name}-cluster.jar %{buildroot}%{_javadir}/%{name}/
-cp -p target/%{name}-dataflow.jar %{buildroot}%{_javadir}/%{name}/
-cp -p target/%{name}-kernel.jar %{buildroot}%{_javadir}/%{name}/
-cp -p target/%{name}-osgi.jar %{buildroot}%{_javadir}/%{name}/
-cp -p target/%{name}-remote.jar %{buildroot}%{_javadir}/%{name}/
-cp -p target/%{name}-slf4j.jar %{buildroot}%{_javadir}/%{name}/
-cp -p target/%{name}-transactor.jar %{buildroot}%{_javadir}/%{name}/
-
-mkdir -p %{buildroot}%{_mavenpomdir}
-install -pm 644 %{SOURCE2} %{buildroot}%{_mavenpomdir}/JPP.%{name}-%{name}-actor.pom
-%add_maven_depmap JPP.%{name}-%{name}-actor.pom %{name}/%{name}-actor.jar
-
-install -pm 644 %{SOURCE3} %{buildroot}%{_mavenpomdir}/JPP.%{name}-%{name}-agent.pom
-%add_maven_depmap JPP.%{name}-%{name}-agent.pom %{name}/%{name}-agent.jar
-
-install -pm 644 %{SOURCE4} %{buildroot}%{_mavenpomdir}/JPP.%{name}-%{name}-cluster.pom
-%add_maven_depmap JPP.%{name}-%{name}-cluster.pom %{name}/%{name}-cluster.jar
-
-install -pm 644 %{SOURCE5} %{buildroot}%{_mavenpomdir}/JPP.%{name}-%{name}-dataflow.pom
-%add_maven_depmap JPP.%{name}-%{name}-dataflow.pom %{name}/%{name}-dataflow.jar
-
-install -pm 644 %{SOURCE6} %{buildroot}%{_mavenpomdir}/JPP.%{name}-%{name}-kernel.pom
-%add_maven_depmap JPP.%{name}-%{name}-kernel.pom %{name}/%{name}-kernel.jar
-
-install -pm 644 osgi-pom.xml %{buildroot}%{_mavenpomdir}/JPP.%{name}-%{name}-osgi.pom
-%add_maven_depmap JPP.%{name}-%{name}-osgi.pom %{name}/%{name}-osgi.jar
-
-install -pm 644 remote-pom.xml %{buildroot}%{_mavenpomdir}/JPP.%{name}-%{name}-remote.pom
-%add_maven_depmap JPP.%{name}-%{name}-remote.pom %{name}/%{name}-remote.jar
-
-install -pm 644 %{SOURCE9} %{buildroot}%{_mavenpomdir}/JPP.%{name}-%{name}-slf4j.pom
-%add_maven_depmap JPP.%{name}-%{name}-slf4j.pom %{name}/%{name}-slf4j.jar
-
-install -pm 644 %{SOURCE10} %{buildroot}%{_mavenpomdir}/JPP.%{name}-%{name}-transactor.pom
-%add_maven_depmap JPP.%{name}-%{name}-transactor.pom %{name}/%{name}-transactor.jar
-
-mkdir -p %{buildroot}%{_javadocdir}/%{name}
+%mvn_install -J target/apidocs/
 cp -rp target/apidocs/* %{buildroot}%{_javadocdir}/%{name}
 
 %files -f .mfiles
 %license LICENSE
 %doc CONTRIBUTING.md README.textile
 
-%files javadoc
-%{_javadocdir}/%{name}
+%files javadoc -f .mfiles-javadoc
 %license LICENSE
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 29 14:39:47 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Use %%mvn_artifact and %%mvn_install instead of %%add_maven_depmap
+  * Allow resolution against netty3 that uses compatibility versions
+
+-------------------------------------------------------------------
 Thu Apr 28 07:27:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use https url 
