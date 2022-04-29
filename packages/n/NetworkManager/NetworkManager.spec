@@ -287,7 +287,7 @@ mkdir -p %{buildroot}%{_localstatedir}/lib/NetworkManager
 mkdir -p %{buildroot}%{_prefix}/lib/NetworkManager/VPN
 touch %{buildroot}%{_localstatedir}/log/NetworkManager
 mkdir -p %{buildroot}%{_sysconfdir}/NetworkManager/system-connections
-install -m 0755 %{SOURCE1} %{buildroot}%{_sysconfdir}/NetworkManager/dispatcher.d/
+install -m 0755 %{SOURCE1} %{buildroot}%{_prefix}/lib/NetworkManager/dispatcher.d/
 install -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/NetworkManager/
 # Install RPM macros to be consumed by plugins
 mkdir -p %{buildroot}%{_rpmmacrodir}
@@ -358,7 +358,7 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %dir %{_sysconfdir}/NetworkManager/VPN
 %dir %{_sysconfdir}/NetworkManager/dispatcher.d
 %dir %{_sysconfdir}/NetworkManager/system-connections
-%attr(0755,root,root) %{_sysconfdir}/NetworkManager/dispatcher.d/nfs
+%attr(0755,root,root) %{_prefix}/lib/NetworkManager/dispatcher.d/nfs
 %{_unitdir}/NetworkManager.service
 %{_unitdir}/NetworkManager-dispatcher.service
 %{_unitdir}/NetworkManager-wait-online.service
