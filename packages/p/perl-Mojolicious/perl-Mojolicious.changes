@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 29 03:08:54 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 9.25
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  9.25  2022-04-25
+    - Improved Mojolicious::Renderer to throw an exception if rendering is attempted more than once.
+
+-------------------------------------------------------------------
 Tue Apr 19 03:07:23 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 9.24
