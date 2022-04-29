@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Apr 23 08:48:34 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with bouncycastle 1.71 and the new bcutil artifact
+
+-------------------------------------------------------------------
 Fri Mar 18 18:54:45 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source/target levels 8

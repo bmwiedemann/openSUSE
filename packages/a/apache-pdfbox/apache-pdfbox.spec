@@ -33,6 +33,7 @@ BuildRequires:  apache-commons-logging
 BuildRequires:  bouncycastle
 BuildRequires:  bouncycastle-mail
 BuildRequires:  bouncycastle-pkix
+BuildRequires:  bouncycastle-util
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
@@ -66,7 +67,7 @@ find -name '*.jar' -delete
 
 %build
 mkdir -p lib
-build-jar-repository -s lib bcmail bcpkix bcprov commons-logging
+build-jar-repository -s lib bcmail bcpkix bcprov bcutil commons-logging
 %ant -Dtest.skip=true package javadoc
 
 %install
