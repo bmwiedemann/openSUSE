@@ -488,4 +488,12 @@
     <comment>New stable releasE (forwarded request 966466 from iznogood)</comment>
     <requestid>966826</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>6cf6c7cad0e837dfa4fa0d068b7d63ea</srcmd5>
+    <version>3.42.1</version>
+    <time>1651272298</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 973164 from dimstar)</comment>
+    <requestid>973169</requestid>
+  </revision>
 </revisionlist>
