@@ -1,6 +1,8 @@
---- librepository-1.1.3/common_build.xml	2009-11-16 11:24:36.000000000 +0100
-+++ librepository-1.1.3/common_build.xml	2017-09-11 18:25:14.528557214 +0200
-@@ -1352,6 +1352,7 @@
+Index: librepository-1.1.6/common_build.xml
+===================================================================
+--- librepository-1.1.6.orig/common_build.xml
++++ librepository-1.1.6/common_build.xml
+@@ -1353,6 +1353,7 @@ TYPICAL TARGET SEQUENCE
               nodeprecatedlist="false"
               nodeprecated="false"
               packagenames="${javadoc.packagenames}"

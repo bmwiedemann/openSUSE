@@ -38,4 +38,12 @@
     <comment>Build with source/target levels 8</comment>
     <requestid>963354</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a15c1b8f6e545455c58282696db1ea46</srcmd5>
+    <version>1.1.6</version>
+    <time>1651272257</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>973661</requestid>
+  </revision>
 </revisionlist>
