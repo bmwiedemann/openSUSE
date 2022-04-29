@@ -87,4 +87,12 @@
     <comment>fix build against new ivy</comment>
     <requestid>965693</requestid>
   </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>3316c10d4e316cd936ee252dcf8121e9</srcmd5>
+    <version>0.13.18</version>
+    <time>1651272383</time>
+    <user>dimstar_suse</user>
+    <comment>fix build in some circumstances</comment>
+    <requestid>973968</requestid>
+  </revision>
 </revisionlist>

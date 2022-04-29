@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 29 16:39:37 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- For the sbt artifact version, since in some conditions, it is
+  not correctly resolved from ivy files
+
+-------------------------------------------------------------------
 Mon Mar 28 09:19:02 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
