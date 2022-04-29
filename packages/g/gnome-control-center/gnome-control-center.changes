@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Apr 27 11:31:19 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.1:
+  + Display:
+    - Various small behavior improvements.
+    - Fix monitor labels.
+  + Network: Improve handling of VPN connections.
+  + Online Accounts:
+    - Fix behavior of helper application on X11.
+    - Fix changes to online accounts services not applying
+      correctly.
+  + User Accounts: Various small polishments.
+  + Wacom: Properly translate various strings.
+  + Updated translations.
+- Drop upstream fixed patches:
+  + gnome-control-center-reload-vpn-plugins.patch
+  + gnome-control-center-goa-helper-on-X11.patch
+  + gnome-control-center-42.0-fix-sharing-panel-crash.patch
+  + 1283.patch
+
+-------------------------------------------------------------------
+Thu Apr 21 14:28:29 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 1283.patch: user-accounts: close password change dialog.
+  Addresses boo#1198235: Fail to change password on GNOME42.
+
+-------------------------------------------------------------------
 Wed Mar 30 05:25:34 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
 
 - Add gnome-control-center-42.0-fix-sharing-panel-crash.patch,
