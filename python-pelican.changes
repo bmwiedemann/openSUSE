@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 29 09:50:36 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- do not require pytest-pythonpath
+
+-------------------------------------------------------------------
 Wed Feb  9 21:15:59 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 4.7.2:
