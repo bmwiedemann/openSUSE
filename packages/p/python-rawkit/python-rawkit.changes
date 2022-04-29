@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 28 15:36:55 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+
+-------------------------------------------------------------------
 Wed Aug 21 14:39:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix test run

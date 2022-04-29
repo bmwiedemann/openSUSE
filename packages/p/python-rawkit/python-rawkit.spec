@@ -1,7 +1,7 @@
 #
 # spec file for package python-rawkit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/photoshell/rawkit
 Source0:        https://files.pythonhosted.org/packages/source/r/rawkit/rawkit-%{version}.tar.gz
 Patch0:         python37.patch
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -50,6 +49,9 @@ binding for Python inspired by the Wand API.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# This repository has been archived by the owner. It is now read-only.
+sed -i 's:import mock:from unittest import mock:' tests/unit/{bindings,raw,util}_test.py
+sed -i 's:from mock:from unittest.mock:' tests/unit/options_test.py
 %pytest
 
 %files %{python_files}
