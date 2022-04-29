@@ -1,7 +1,7 @@
 #
 # spec file for package maven-archetype
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +17,30 @@
 
 
 Name:           maven-archetype
-Version:        3.2.0
+Version:        3.2.1
 Release:        0
 Summary:        Maven project templating toolkit
 License:        Apache-2.0
 URL:            https://maven.apache.org/archetype/
-Source0:        https://downloads.apache.org/maven/archetype/%{name}-%{version}-source-release.zip
+Source0:        https://dlcdn.apache.org/maven/archetype/%{name}-%{version}-source-release.zip
+Patch1:         0001-Avoid-reliance-on-groovy.patch
+Patch2:         port-to-maven-script-interpreter-1_3.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  unzip
+BuildRequires:  mvn(com.ibm.icu:icu4j)
 BuildRequires:  mvn(commons-collections:commons-collections)
 BuildRequires:  mvn(commons-io:commons-io)
-BuildRequires:  mvn(jdom:jdom)
-BuildRequires:  mvn(net.sourceforge.jchardet:jchardet)
-BuildRequires:  mvn(org.apache.ant:ant-antlr)
-BuildRequires:  mvn(org.apache.ivy:ivy)
+BuildRequires:  mvn(org.apache.commons:commons-lang3)
+BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.shared:maven-artifact-transfer)
 BuildRequires:  mvn(org.apache.maven.shared:maven-invoker)
 BuildRequires:  mvn(org.apache.maven.shared:maven-script-interpreter)
 BuildRequires:  mvn(org.apache.maven.wagon:wagon-provider-api)
+BuildRequires:  mvn(org.apache.maven:maven-aether-provider)
+BuildRequires:  mvn(org.apache.maven:maven-archiver)
 BuildRequires:  mvn(org.apache.maven:maven-artifact)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-model)
@@ -47,13 +49,15 @@ BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.apache.maven:maven-settings)
 BuildRequires:  mvn(org.apache.maven:maven-settings-builder)
 BuildRequires:  mvn(org.apache.velocity:velocity)
-BuildRequires:  mvn(org.codehaus.groovy:groovy)
 BuildRequires:  mvn(org.codehaus.modello:modello-maven-plugin)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-archiver)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-component-annotations)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-component-metadata)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-interactivity-api)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-velocity)
+BuildRequires:  mvn(org.eclipse.aether:aether-impl)
+BuildRequires:  mvn(org.jdom:jdom2)
 BuildArch:      noarch
 
 %description
@@ -126,11 +130,54 @@ Summary:        Maven Plugin for using archetypes
 
 %prep
 %setup -q
+%patch1 -p1
+%patch2 -p1
 %pom_change_dep ant:ant-antlr org.apache.ant:ant-antlr archetype-common
+%pom_change_dep org.sonatype.aether: org.eclipse.aether: archetype-common
 
 # Pointless for rpm build
 %pom_remove_plugin -r org.apache.rat:apache-rat-plugin
 %pom_remove_plugin -r org.apache.maven.plugins:maven-enforcer-plugin
+
+# Add OSGI info to catalog and descriptor jars
+pushd archetype-models/archetype-catalog
+    %pom_xpath_remove "pom:project/pom:packaging"
+    %pom_xpath_inject "pom:project" "<packaging>bundle</packaging>"
+    %pom_xpath_inject "pom:build/pom:plugins" "
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <_nouses>true</_nouses>
+            <Export-Package>org.apache.maven.archetype.catalog.*</Export-Package>
+          </instructions>
+        </configuration>
+      </plugin>"
+popd
+pushd archetype-models/archetype-descriptor
+    %pom_xpath_remove "pom:project/pom:packaging"
+    %pom_xpath_inject "pom:project" "<packaging>bundle</packaging>"
+    %pom_xpath_inject "pom:build/pom:plugins" "
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <_nouses>true</_nouses>
+            <Export-Package>org.apache.maven.archetype.metadata.*</Export-Package>
+          </instructions>
+        </configuration>
+      </plugin>"
+popd
+
+# Remove ivy as a runtime dep
+%pom_remove_dep org.apache.ivy:ivy archetype-common
+
+# Disable processing of test resources using ant
+%pom_remove_plugin org.apache.maven.plugins:maven-antrun-plugin archetype-common
 
 %build
 %{mvn_package} :archetype-models maven-archetype
