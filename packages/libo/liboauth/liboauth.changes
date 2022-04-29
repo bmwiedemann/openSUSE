@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 21 09:39:57 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- urls switched to https
+
+-------------------------------------------------------------------
 Fri Aug 25 14:14:02 UTC 2017 - jengelh@inai.de
 
 - RPM group fixes. Remove redundant %clean section. Replace

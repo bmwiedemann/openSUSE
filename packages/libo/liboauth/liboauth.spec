@@ -21,14 +21,15 @@ Version:        1.0.3
 Release:        1
 License:        MIT
 Summary:        OAuth library
-Url:            http://liboauth.sourceforge.net/
+# also see https://github.com/x42/liboauth
+Url:            https://sourceforge.net/projects/liboauth/
 Group:          Development/Libraries/C and C++
 BuildRequires:  pkg-config
 BuildRequires:  libcurl-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libtool
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source0:        http://sourceforge.net/projects/liboauth/files/liboauth-%{version}.tar.gz
+Source0:        https://sourceforge.net/projects/liboauth/files/liboauth-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch0:         liboauth-openssl_1.1_compatibility.patch
 
