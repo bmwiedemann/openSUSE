@@ -17,7 +17,7 @@
 
 
 Name:           nautilus
-Version:        42.0
+Version:        42.1.1
 Release:        0
 Summary:        File Manager for the GNOME Desktop
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -47,7 +47,7 @@ BuildRequires:  pkgconfig(gmodule-no-export-2.0) >= 2.67.1
 BuildRequires:  pkgconfig(gnome-autoar-0) >= 0.3.0
 BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.0.0
 #BuildRequires:  pkgconfig(gnome-desktop-4) >= 1.0.0
-BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.8.0
+BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 42
 BuildRequires:  pkgconfig(gstreamer-tag-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.6
 BuildRequires:  pkgconfig(libhandy-1) >= 1.1.90

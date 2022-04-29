@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 25 08:43:58 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.1.1:
+  + Revert wrongly introduced dependency on unstable gnome-desktop.
+- Changes from version 42.1:
+  + Add HighContrast syle support.
+  + Preload dragged external file info in list view.
+  + Override dark mode wallpaper when not using portal.
+  + Avoid truncated popover in Compress dialog under X11.
+  + Add checkerboard background to transparent thumbnails.
+  + Style and scroll pathbar propperly in RTL languages.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Mar 20 08:32:00 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.0:
