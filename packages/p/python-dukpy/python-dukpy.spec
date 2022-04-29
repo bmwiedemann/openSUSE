@@ -1,7 +1,7 @@
 #
 # spec file for package python-dukpy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/amol-/dukpy
 Source:         https://github.com/amol-/dukpy/archive/%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module webassets}
@@ -55,6 +54,8 @@ chmod a-x dukpy/jsmodules/react/react-dom-server.js
 rm tests/test_webassets_filter.py
 # remove downloading tests
 rm tests/test_installer.py
+# https://github.com/amol-/dukpy/issues/60
+sed -i 's:import mock:from unittest import mock:' tests/test_evaljs.py
 
 %build
 export CFLAGS="%{optflags}"

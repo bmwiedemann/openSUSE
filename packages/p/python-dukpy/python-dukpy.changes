@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 28 15:05:56 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+
+-------------------------------------------------------------------
 Tue Jul 13 00:05:40 UTC 2021 - Jason Craig <os@jacraig.com>
 
 - Update to 0.2.3
