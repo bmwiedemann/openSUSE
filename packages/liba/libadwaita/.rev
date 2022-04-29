@@ -61,4 +61,12 @@
     <comment>GNOME 42 - ready for impact</comment>
     <requestid>963619</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c1bc879a65b7694ae160416c46d9fb34</srcmd5>
+    <version>1.1.1</version>
+    <time>1651272295</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.1: (forwarded request 973142 from dimstar)</comment>
+    <requestid>973155</requestid>
+  </revision>
 </revisionlist>
