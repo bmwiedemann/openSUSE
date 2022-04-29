@@ -16,45 +16,26 @@
 #
 
 
-%bcond_with tests
 Name:           maven-script-interpreter
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        Maven Script Interpreter
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://maven.apache.org/shared/maven-script-interpreter/
-Source0:        http://central.maven.org/maven2/org/apache/maven/shared/%{name}/%{version}/%{name}-%{version}-source-release.zip
+URL:            https://maven.apache.org/shared/maven-script-interpreter/
+Source0:        https://dlcdn.apache.org/maven/shared/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.xml
 BuildRequires:  ant
-BuildRequires:  apache-commons-cli
-BuildRequires:  atinject
+BuildRequires:  apache-commons-io
 BuildRequires:  bsh2
 BuildRequires:  fdupes
-BuildRequires:  google-guice
-BuildRequires:  guava
 BuildRequires:  javapackages-local
-BuildRequires:  jdom2
-BuildRequires:  maven-lib
-BuildRequires:  maven-shared-utils
-BuildRequires:  objectweb-asm
-BuildRequires:  plexus-classworlds
-BuildRequires:  plexus-cli
-BuildRequires:  plexus-containers-component-annotations
-BuildRequires:  plexus-metadata-generator
-BuildRequires:  plexus-utils
-BuildRequires:  qdox
-BuildRequires:  sisu-inject
-BuildRequires:  sisu-plexus
+BuildRequires:  slf4j
 BuildRequires:  unzip
-BuildRequires:  xbean
-BuildRequires:  xmvn-install
-BuildRequires:  xmvn-resolve
-BuildRequires:  mvn(org.apache.maven.shared:maven-shared-components:pom:)
+Requires:       mvn(commons-io:commons-io)
+Requires:       mvn(org.apache-extras.beanshell:bsh)
+Requires:       mvn(org.slf4j:slf4j-api)
 BuildArch:      noarch
-%if %{with tests}
-BuildRequires:  ant-junit
-%endif
 
 %description
 This component provides some utilities to interpret/execute some scripts for
@@ -73,6 +54,9 @@ API documentation for %{name}.
 %setup -q
 cp %{SOURCE1} build.xml
 
+%pom_remove_parent
+%pom_xpath_inject pom:project "<groupId>org.apache.maven.shared</groupId>"
+
 %pom_remove_dep :groovy
 rm src/main/java/org/apache/maven/shared/scriptinterpreter/GroovyScriptInterpreter.java
 rm src/test/java/org/apache/maven/shared/scriptinterpreter/GroovyScriptInterpreterTest.java
@@ -82,41 +66,35 @@ sed -i /GroovyScriptInterpreter/d src/main/java/org/apache/maven/shared/scriptin
 %build
 mkdir -p lib
 build-jar-repository -s lib \
-	atinject \
 	bsh2/bsh \
-	commons-cli \
-	guava/guava \
-	guice/google-guice-no_aop \
-	jdom2/jdom2 \
-	maven/maven-plugin-api \
-	maven-shared-utils/maven-shared-utils \
-	objectweb-asm/asm \
-	org.eclipse.sisu.inject \
-	org.eclipse.sisu.plexus \
-	plexus-classworlds \
-	plexus/cli \
-	plexus-containers/plexus-component-annotations \
-	plexus-metadata-generator \
-	plexus/utils \
-	qdox \
-	xbean/xbean-reflect
+	commons-io \
+    slf4j/api \
+    slf4j/simple
 
-%ant \
-	-Dtest.skip=true \
+%{ant} \
 	jar javadoc
 
-%{mvn_artifact} pom.xml target/%{name}-%{version}.jar
-
 %install
-%mvn_install
+# jar
+install -dm 0755 %{buildroot}%{_javadir}/%{name}
+install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
+
+# pom
+install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
+install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
+
+# javadoc
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
-%license LICENSE
-%doc DEPENDENCIES NOTICE
+%license LICENSE NOTICE
+%doc DEPENDENCIES
 
-%files javadoc -f .mfiles-javadoc
-%license LICENSE
-%doc NOTICE
+%files javadoc
+%{_javadocdir}/%{name}
+%license LICENSE NOTICE
 
 %changelog
