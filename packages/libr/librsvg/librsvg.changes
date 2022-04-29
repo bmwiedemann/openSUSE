@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 25 09:30:06 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.54.1:
+  + Fix oversight in the Minimum Supported Rust Version (MSRV):
+    this release requires Rust 1.56 or later.
+  + Make rst2man and gi-docgen optional.
+  + Fix documentation comments.
+
+-------------------------------------------------------------------
 Fri Mar 18 01:42:25 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.54.0:

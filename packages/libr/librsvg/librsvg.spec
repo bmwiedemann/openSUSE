@@ -22,14 +22,14 @@
 %define librsvg_sover 2
 
 Name:           librsvg
-Version:        2.54.0
+Version:        2.54.1
 Release:        0
 Summary:        A Library for Rendering SVG Data
 License:        Apache-2.0 AND GPL-2.0-or-later AND LGPL-2.0-or-later AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/LibRsvg
 Source:         %{name}-%{version}.tar.xz
-Source2:        vendor.tar.xz
+Source2:        vendor.tar.zst
 Source3:        cargo_config
 Source99:       baselibs.conf
 
