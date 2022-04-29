@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Apr 25 08:57:30 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.44.1:
+  + Bug Fixes:
+    - Cannot import PKCS12 certificate with non-ASCII or empty
+      password.
+    - icons: emblem-new hard to spot with adwaita-icon-theme 42.
+    - itip-formatter: Properly update content on message preview
+      reload.
+    - Mail: Preview uses wrong colors for HTML mail with dark
+      theme.
+    - Meeting attendees should default to Required Participants.
+    - attachment-reminder: Existing keyword lost on editing cancel.
+    - markdown-utils: Ignore character encoding hints in HTML when
+      converting to text.
+    - Flatpak: Attachments cannot be opened.
+    - Tasks: Cannot remove recurrence and Start date at the same
+      time.
+    - Composer: Markdown should preserve soft line breaks.
+    - Calendar: Show recurring information near event time in
+      preview/iTip.
+    - Show mailto: hyperlinks in the status bar percent-decoded.
+  + Miscellaneous:
+    - Calendar: Minicalendar shown after search in the List View.
+    - gal-view-instance: Do not crash on broken setup.
+    - Disable hardware acceleration for WebKitGTK.
+  + Updated translations.
+- Drop fix_annoying_html_email_background_color_issue.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Fri Apr 15 08:07:16 UTC 2022 - Arjan van der Veen <avdveen@palanthir.nl>
+
+- Add fix_annoying_html_email_background_color_issue.patch to fix
+  a bug in Evolution that displays html formatted emails without a
+  background settings, and while using a dark layout in the desktop
+  environment to display black text and a dark background.
+  (glgo#GNOME/evolution#1835)
+
+-------------------------------------------------------------------
 Fri Mar 18 09:53:36 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.44.0:
