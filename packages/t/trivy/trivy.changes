@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 27 12:40:06 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.27.1:
+  * chore(deps): bump github.com/CycloneDX/cyclonedx-go from 0.5.0 to 0.5.1 (#1926)
+  * refactor(fs): scanner options (#2050)
+  * feat(secret): truncate long line (#2052)
+  * docs: fix a broken bullets (#2042)
+  * feat(ubuntu): add 22.04 approx eol date (#2044)
+  * docs: update installation.md (#2027)
+  * docs: add Containerfile (#2032)
+
+-------------------------------------------------------------------
 Tue Apr 26 06:18:23 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.27.0:
