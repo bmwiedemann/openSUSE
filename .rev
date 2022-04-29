@@ -335,4 +335,38 @@
 </comment>
     <requestid>897519</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>8d8dbd46f59596fe1e48bff1fef122ba</srcmd5>
+    <version>7.45.1</version>
+    <time>1651272266</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.45.1:
+  * Fixed build against libcurl &lt; 7.64.1 (patch by Scott Talbert).
+  * Add CURLOPT_MAXLIFETIME_CONN (patch by fsbs).
+  * Easy handle duplication support (patch by fsbs).
+  * Support for unsetting a number of multi options (patch by fsbs).
+  * pycurl classes can now be subclassed (patch by fsbs).
+  * Multi callbacks' thread state management fixed (patch by fsbs).
+  * Add CURL_LOCK_DATA_PSL (patch by fsbs).
+  * Add support for SecureTransport SSL backend (MacOS)
+    (patch by Scott Talbert).
+  * Fixed Python thread initialization causing hangs on operations
+    (patch by Scott Talbert).
+  * getinfo(CURLINFO_FTP_ENTRY_PATH) now handles NULL return from
+    libcurl, returning None in this case.
+  * Python 3.9 is now officially supported (patch by Bill Collins).
+  * Added CURLOPT_DOH_URL (patch by resokou).
+  * Best effort Python 2 support has been reinstated.
+  * Added missing fields to curl_version_info struct (patch by Hasan).
+  * Added CURLINFO_CONDITION_UNMET (patch by Dima Tisnek).
+  * Exposed MAX_CONCURRENT_STREAMS in CurlMulti (patch by Alexandre Pion).
+  * Compilation fixed against Python 3.10 alpha (patch by Kamil Dudka).
+- Remove patch curl7770_compatibility.patch and remove_nose.patch:
+  * They have both merged upstream.
+- Modify patch disable_randomly_failing_tests.patch:
+  * Use pytest rather than nose methods.
+- Add patch curl-789-error-message.patch:
+  * Handle missing ! in a returned error message.</comment>
+    <requestid>973531</requestid>
+  </revision>
 </revisionlist>
