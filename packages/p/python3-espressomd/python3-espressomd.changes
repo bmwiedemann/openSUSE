@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr 16 00:24:21 UTC 2022 - Jean-Noel Grad <jgrad@icp.uni-stuttgart.de>
+
+- added rpath.patch to fix the failing Rpath checks (see
+  boo#1198352)
+
+-------------------------------------------------------------------
+Sat Apr 16 00:19:40 UTC 2022 - Jean-Noel Grad <jgrad@icp.uni-stuttgart.de>
+
+- added hdf5.patch to fix builds with H5MD (see
+  gh#espressomd/espresso#3543)
+
+-------------------------------------------------------------------
 Mon Jul 12 22:24:29 UTC 2021 - Christoph Junghans <junghans@votca.org>
 
 - added missing_size_t.patch, to workaround missing size_t (see

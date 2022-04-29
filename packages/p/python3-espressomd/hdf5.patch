@@ -1,0 +1,14 @@
+diff --git a/src/core/CMakeLists.txt b/src/core/CMakeLists.txt
+index c956b9de1..b68208eaa 100644
+--- a/src/core/CMakeLists.txt
++++ b/src/core/CMakeLists.txt
+@@ -189,6 +189,9 @@ endif(SCAFACOS)
+ # Subdirectories
+ add_subdirectory(io)
+ 
++if(H5MD)
++  target_link_libraries(EspressoCore PUBLIC ${HDF5_LIBRARIES})
++endif(H5MD)
+ 
+ if(WITH_UNIT_TESTS)
+   add_subdirectory(unit_tests)

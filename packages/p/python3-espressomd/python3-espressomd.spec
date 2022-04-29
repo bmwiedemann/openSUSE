@@ -1,7 +1,7 @@
 #
-# spec file for package python3-espressomd
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -46,6 +46,10 @@ Source:         https://github.com/%{modname}/%{pkgname}/releases/download/%{ver
 Patch0:         boost-1.74.patch
 # PATCH-FIX-OPENSUSE missing_size_t.patch gh#espressomd/espresso#4274
 Patch1:         missing_size_t.patch
+# PATCH-FIX-OPENSUSE hdf5.patch gh#espressomd/espresso#3543
+Patch2:         hdf5.patch
+# PATCH-FIX-OPENSUSE rpath.patch boo#1198352
+Patch3:         rpath.patch
 BuildRequires:  cmake
 BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
@@ -85,6 +89,8 @@ systems, for example DNA and lipid membranes.
 %setup -q -n %{pkgname}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
