@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 29 14:31:33 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to 1.11.2b:
+  * Built binary does not have executable stack.
+
+-------------------------------------------------------------------
 Wed Apr 27 09:28:49 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to 1.11.2:
