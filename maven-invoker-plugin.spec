@@ -1,7 +1,7 @@
 #
 # spec file for package maven-invoker-plugin
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,15 @@
 
 %bcond_with  groovy
 Name:           maven-invoker-plugin
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        Maven Invoker Plugin
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://maven.apache.org/plugins/maven-invoker-plugin/
-Source0:        http://repo2.maven.org/maven2/org/apache/maven/plugins/%{name}/%{version}/%{name}-%{version}-source-release.zip
+URL:            https://maven.apache.org/plugins/maven-invoker-plugin/
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{name}/%{version}/%{name}-%{version}-source-release.zip
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  unzip
 BuildRequires:  mvn(commons-io:commons-io)
@@ -39,7 +40,7 @@ BuildRequires:  mvn(org.apache.maven.reporting:maven-reporting-api)
 BuildRequires:  mvn(org.apache.maven.reporting:maven-reporting-impl)
 BuildRequires:  mvn(org.apache.maven.shared:maven-artifact-transfer)
 BuildRequires:  mvn(org.apache.maven.shared:maven-invoker)
-BuildRequires:  mvn(org.apache.maven.shared:maven-script-interpreter)
+BuildRequires:  mvn(org.apache.maven.shared:maven-script-interpreter) >= 1.3
 BuildRequires:  mvn(org.apache.maven:maven-artifact)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-model)
@@ -76,10 +77,11 @@ API documentation for %{name}.
 %endif
 
 %build
-%{mvn_build} -f \
+%{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=7
+    -Dmaven.compiler.release=8 \
 %endif
+    -Dsource=8
 
 %install
 %mvn_install
