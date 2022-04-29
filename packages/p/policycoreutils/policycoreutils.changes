@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 20 12:41:52 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix file list: package ru/man8/sepolgen.8 only in the devel
+  package (was in devel and main).
+
+-------------------------------------------------------------------
 Thu Nov 25 13:59:02 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - finish UsrMerge (bsc#1191089)

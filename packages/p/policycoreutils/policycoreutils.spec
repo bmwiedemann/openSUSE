@@ -1,7 +1,7 @@
 #
 # spec file for package policycoreutils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -269,7 +269,6 @@ mv %{buildroot}/sbin/* %{buildroot}/usr/sbin/
 %{_mandir}/ru/man8/semodule_link.8%{?ext_man}
 %{_mandir}/ru/man8/semodule_package.8%{?ext_man}
 %{_mandir}/ru/man8/semodule_unpackage.8%{?ext_man}
-%{_mandir}/ru/man8/sepolgen.8%{?ext_man}
 %{_mandir}/ru/man8/sestatus.8%{?ext_man}
 %{_mandir}/ru/man8/setfiles.8%{?ext_man}
 %{_mandir}/ru/man8/setsebool.8%{?ext_man}
