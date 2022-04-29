@@ -1,7 +1,7 @@
 #
 # spec file for package perl-File-Find-Rule
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,10 +21,10 @@ Version:        0.34
 Release:        0
 %define cpan_name File-Find-Rule
 Summary:        Alternative interface to File::Find
-License:        GPL-1.0+ or Artistic-1.0
+License:        GPL-1.0-or-later OR Artistic-1.0
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/File-Find-Rule/
-Source0:        http://www.cpan.org/authors/id/R/RC/RCLAMP/%{cpan_name}-%{version}.tar.gz
+URL:            https://search.cpan.org/dist/File-Find-Rule/
+Source0:        https://www.cpan.org/authors/id/R/RC/RCLAMP/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
