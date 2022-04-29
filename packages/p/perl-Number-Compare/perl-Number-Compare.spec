@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Number-Compare
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
 
 
 Name:           perl-Number-Compare
 Version:        0.03
-Release:        1
-License:        GPL-1.0+ or Artistic-1.0
+Release:        0
 %define cpan_name Number-Compare
 Summary:        Numeric comparisons
-Url:            http://search.cpan.org/dist/Number-Compare/
+License:        GPL-1.0-or-later OR Artistic-1.0
 Group:          Development/Libraries/Perl
-Source:         http://www.cpan.org/authors/id/R/RC/RCLAMP/%{cpan_name}-%{version}.tar.gz
+URL:            https://search.cpan.org/dist/Number-Compare/
+Source:         https://www.cpan.org/authors/id/R/RC/RCLAMP/%{cpan_name}-%{version}.tar.gz
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -42,7 +41,7 @@ magnitudes.
 The target value may use magnitudes of kilobytes ('k', 'ki'), megabytes
 ('m', 'mi'), or gigabytes ('g', 'gi'). Those suffixed with an 'i' use the
 appropriate 2**n version in accordance with the IEC standard:
-http://physics.nist.gov/cuu/Units/binary.html
+https://physics.nist.gov/cuu/Units/binary.html
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
