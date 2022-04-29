@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>072e3f0b1f7f21968fa20daa0db3f61d</srcmd5>
+    <version>0.3.0</version>
+    <time>1651272312</time>
+    <user>dimstar_suse</user>
+    <comment>Required to build the docs of xonsh (wasn't necessary before, but new dependencies were introduced with version 0.12).</comment>
+    <requestid>973589</requestid>
+  </revision>
+</revisionlist>
