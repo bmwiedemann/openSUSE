@@ -393,4 +393,14 @@
 </comment>
     <requestid>972798</requestid>
   </revision>
+  <revision rev="46" vrev="47">
+    <srcmd5>3c863b3e1d832d2d6d47acb3dfd5763f</srcmd5>
+    <version>MACRO</version>
+    <time>1651272308</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid sporadic failures by setting until-pass on CTest
+- Disable tests on ARMv6
+</comment>
+    <requestid>973764</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 28 20:59:00 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Avoid sporadic failures by setting until-pass on CTest
+
+-------------------------------------------------------------------
+Wed Apr 27 11:43:13 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Disable tests on ARMv6
+
+-------------------------------------------------------------------
 Tue Apr 26 07:55:47 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Disable tests on ZSystems and RISCV

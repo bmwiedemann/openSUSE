@@ -20,7 +20,7 @@
 %global shortver %(echo %{longver}|sed 's|-||g')
 %define libname libre2-9
 %bcond_with test
-%ifnarch s390 s390x riscv64
+%ifnarch s390 s390x riscv64 armv6l armv6hl
 %bcond_without test
 %endif
 Name:           re2
@@ -103,7 +103,7 @@ export CXX=g++-11
 %if %{with test}
 # Actual functionality tests
 export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}:LD_LIBRARY_PATH
-%ctest
+%ctest --repeat until-pass:9
 %endif
 
 %post -n %{libname} -p /sbin/ldconfig
