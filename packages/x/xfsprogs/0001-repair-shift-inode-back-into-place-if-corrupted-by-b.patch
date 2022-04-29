@@ -35,14 +35,12 @@ big problems.
 
 Signed-off-by: Jeff Mahoney <jeffm@suse.com>
 ---
- repair/dinode.c | 184 ++++++++++++++++++++++++++++++++++++++++++++++++++++++--
- 1 file changed, 178 insertions(+), 6 deletions(-)
+ repair/dinode.c |  186 ++++++++++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 180 insertions(+), 6 deletions(-)
 
-Index: xfsprogs-5.10.0/repair/dinode.c
-===================================================================
---- xfsprogs-5.10.0.orig/repair/dinode.c
-+++ xfsprogs-5.10.0/repair/dinode.c
-@@ -2179,6 +2179,160 @@ _("Bad %s nsec %u on inode %" PRIu64 ",
+--- a/repair/dinode.c
++++ b/repair/dinode.c
+@@ -2229,6 +2229,160 @@
  	}
  }
  
@@ -203,7 +201,7 @@ Index: xfsprogs-5.10.0/repair/dinode.c
  /*
   * returns 0 if the inode is ok, 1 if the inode is corrupt
   * check_dups can be set to 1 *only* when called by the
-@@ -2203,7 +2357,8 @@ process_dinode_int(xfs_mount_t *mp,
+@@ -2253,7 +2407,8 @@
  					 * duplicate blocks		*/
  		int extra_attr_check, /* 1 == do attribute format and value checks */
  		int *isa_dir,		/* out == 1 if inode is a directory */
@@ -213,10 +211,10 @@ Index: xfsprogs-5.10.0/repair/dinode.c
  {
  	xfs_rfsblock_t		totblocks = 0;
  	xfs_rfsblock_t		atotblocks = 0;
-@@ -2319,6 +2474,25 @@ process_dinode_int(xfs_mount_t *mp,
+@@ -2369,6 +2524,25 @@
  	 * memory and hence invalidated the CRC.
  	 */
- 	if (xfs_sb_version_hascrc(&mp->m_sb)) {
+ 	if (xfs_has_crc(mp)) {
 +		int good_uuid = 1;
 +
 +		if (platform_uuid_compare(&dino->di_uuid,
@@ -239,7 +237,7 @@ Index: xfsprogs-5.10.0/repair/dinode.c
  		if (be64_to_cpu(dino->di_ino) != lino) {
  			if (!uncertain)
  				do_warn(
-@@ -2329,8 +2503,7 @@ _("inode identifier %llu mismatch on ino
+@@ -2379,8 +2553,7 @@
  				return 1;
  			goto clear_bad_out;
  		}
@@ -249,7 +247,7 @@ Index: xfsprogs-5.10.0/repair/dinode.c
  			if (!uncertain)
  				do_warn(
  			_("UUID mismatch on inode %" PRIu64 "\n"), lino);
-@@ -2911,7 +3084,8 @@ process_dinode(
+@@ -2942,7 +3115,8 @@
  #endif
  	return process_dinode_int(mp, dino, agno, ino, was_free, dirty, used,
  				verify_mode, uncertain, ino_discovery,
@@ -259,7 +257,7 @@ Index: xfsprogs-5.10.0/repair/dinode.c
  }
  
  /*
-@@ -2938,7 +3112,7 @@ verify_dinode(
+@@ -2969,7 +3143,7 @@
  
  	return process_dinode_int(mp, dino, agno, ino, 0, &dirty, &used,
  				verify_mode, uncertain, ino_discovery,
@@ -268,7 +266,7 @@ Index: xfsprogs-5.10.0/repair/dinode.c
  }
  
  /*
-@@ -2964,5 +3138,5 @@ verify_uncertain_dinode(
+@@ -2995,5 +3169,5 @@
  
  	return process_dinode_int(mp, dino, agno, ino, 0, &dirty, &used,
  				verify_mode, uncertain, ino_discovery,

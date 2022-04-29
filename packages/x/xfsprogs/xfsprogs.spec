@@ -1,7 +1,7 @@
 #
 # spec file for package xfsprogs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 %define libname libhandle1
 Name:           xfsprogs
-Version:        5.14.2
+Version:        5.15.0
 Release:        0
 Summary:        Utilities for managing the XFS file system
 License:        GPL-2.0-or-later
@@ -37,7 +37,7 @@ Source2:        %{name}.keyring
 Source3:        module-setup.sh.in
 Source4:        dracut-fsck-help.txt
 Patch0:         xfsprogs-docdir.diff
-Patch2:         0001-repair-shift-inode-back-into-place-if-corrupted-by-b.patch
+Patch1:         0001-repair-shift-inode-back-into-place-if-corrupted-by-b.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libblkid-devel
@@ -110,7 +110,7 @@ on xfs filesystems.
 %prep
 %setup -q
 %patch0 -p1
-%patch2 -p1
+%patch1 -p1
 
 %build
 aclocal -I m4
@@ -189,6 +189,9 @@ install -m 0644 %{SOURCE4} %{buildroot}/%{_dracutmodulesdir}/95suse-xfs/
 %dir %{_dracutmodulesdir}/95suse-xfs/
 %{_dracutmodulesdir}/95suse-xfs/dracut-fsck-help.txt
 %{_dracutmodulesdir}/95suse-xfs/module-setup.sh
+%dir %{_prefix}/share/xfsprogs/
+%dir %{_prefix}/share/xfsprogs/mkfs
+%{_prefix}/share/xfsprogs/mkfs/*
 
 %files -n %{libname}
 %defattr(-,root,root,755)
