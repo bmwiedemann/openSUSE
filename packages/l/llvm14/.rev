@@ -32,4 +32,18 @@ disable the corresponding tests.
 * llvm-update-extract-section-script.patch</comment>
     <requestid>969600</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4b7d42a65bf75db3a23c0e8c4d26ee2a</srcmd5>
+    <version>14.0.1</version>
+    <time>1651272268</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 14.0.1.
+  * This release contains bug-fixes for the LLVM 14.0.0 release.
+    This release is API and ABI compatible with 14.0.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Drop obsolete patches:
+  * PPCISelLowering-Avoid-emitting-calls-to-__multi3.patch
+- Don't override default linker flags. (We were losing -Wl,-z,now.)</comment>
+    <requestid>972706</requestid>
+  </revision>
 </revisionlist>

@@ -16,14 +16,14 @@
 #
 
 
-%define _relver 14.0.0
+%define _relver 14.0.1
 %define _version %_relver%{?_rc:rc%_rc}
 %define _tagver %_relver%{?_rc:-rc%_rc}
 %define _minor  14.0
 %define _sonum  14
 %define _itsme14 1
 # Integer version used by update-alternatives
-%define _uaver  1400
+%define _uaver  1401
 %define _soclang 13
 %define _socxx  1
 
@@ -153,8 +153,6 @@ Patch26:        lld-default-sha1.patch
 Patch33:        CMake-Look-up-target-subcomponents-in-LLVM_AVAILABLE_LIBS.patch
 # Make link dependencies of clang-repl private (https://reviews.llvm.org/D122546).
 Patch34:        clang-repl-private-deps.patch
-# Fix build on ppc (boo#1197111, https://reviews.llvm.org/D122090)
-Patch35:        PPCISelLowering-Avoid-emitting-calls-to-__multi3.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
 BuildRequires:  fdupes
@@ -582,7 +580,6 @@ This package contains the development files for Polly.
 %patch24 -p1
 %patch25 -p2
 %patch33 -p2
-%patch35 -p2
 
 pushd clang-%{_version}.src
 %patch2 -p1
@@ -718,7 +715,7 @@ avail_mem=$(awk '/MemAvailable/ { print $2 }' /proc/meminfo)
 
 %define __builder ninja
 %define __builddir stage1
-# -z,now is breaking now, it needs to be fixed
+%define build_ldflags -Wl,--no-keep-memory
 %cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS:BOOL=OFF \
@@ -743,10 +740,7 @@ avail_mem=$(awk '/MemAvailable/ { print $2 }' /proc/meminfo)
     -DCOMPILER_RT_BUILD_SANITIZERS:BOOL=OFF \
     -DCOMPILER_RT_BUILD_XRAY:BOOL=OFF \
     -DCOMPILER_RT_USE_LIBCXX:BOOL=OFF \
-    -DLIBCXX_INCLUDE_BENCHMARKS:BOOL=OFF \
-    -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-keep-memory" \
-    -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-keep-memory" \
-    -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-keep-memory"
+    -DLIBCXX_INCLUDE_BENCHMARKS:BOOL=OFF
 ninja -v %{?_smp_mflags} clang llvm-tblgen clang-tblgen \
 %if %{with thin_lto}
     llvm-ar llvm-ranlib \
@@ -787,6 +781,7 @@ max_link_jobs=1
 %endif
 
 %define __builddir build
+%define build_ldflags -Wl,--build-id=sha1
 export PATH=${PWD}/stage1/bin:$PATH
 export CC=${PWD}/stage1/bin/clang
 export CXX=${PWD}/stage1/bin/clang++
@@ -802,7 +797,6 @@ export CLANG_TOOLS_EXTRA_DIR=${PWD}/tools/clang/tools/extra
 # The build occasionally uses tools linking against previously built
 # libraries (mostly libLLVM.so), but we don't want to set RUNPATHs.
 export LD_LIBRARY_PATH=${PWD}/build/%{_lib}
-# -z,now is breaking now, it needs to be fixed
 %cmake \
     -DBUILD_SHARED_LIBS:BOOL=OFF \
     -DLLVM_HOST_TRIPLE=%{host_triple} \
@@ -864,9 +858,6 @@ export LD_LIBRARY_PATH=${PWD}/build/%{_lib}
     -DLLDB_USE_SYSTEM_SIX:BOOL=ON \
 %endif
     -DCMAKE_SKIP_RPATH:BOOL=ON \
-    -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,--build-id=sha1" \
-    -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,--build-id=sha1" \
-    -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,--build-id=sha1" \
     -DLLVM_POLLY_LINK_INTO_TOOLS=OFF \
     -DPOLLY_BUNDLED_ISL:BOOL=ON
 

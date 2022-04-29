@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr 24 20:52:29 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 14.0.1.
+  * This release contains bug-fixes for the LLVM 14.0.0 release.
+    This release is API and ABI compatible with 14.0.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Drop obsolete patches:
+  * PPCISelLowering-Avoid-emitting-calls-to-__multi3.patch
+- Don't override default linker flags. (We were losing -Wl,-z,now.)
+
+-------------------------------------------------------------------
 Sun Apr  3 14:13:45 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 14.0.0.
@@ -24,7 +35,7 @@ Sun Apr  3 14:13:45 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 - Rebase patches:
   * lldb-cmake.patch
   * llvm-do-not-install-static-libraries.patch
-  * lvm-normally-versioned-libllvm.patch
+  * llvm-normally-versioned-libllvm.patch
 - Drop patches that have landed upstream:
   * llvm-update-extract-section-script.patch
 
