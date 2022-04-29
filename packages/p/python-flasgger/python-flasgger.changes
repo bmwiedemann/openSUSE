@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 28 07:23:15 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.9.5
+  * 'swag_from' supports 'pathlib.Path'
+  * Added support for OpenAPI3 parameter schema parsing
+  * Add support for custom validation_function and error_handler
+  * Ensure downward compatibility for werkzeug
+  * Changed jsonschema version supported to jsonschema>=3.0.1
+  * Changed json data to be parsed from request directly
+  * More changes, see upstream HISTORY
+
+-------------------------------------------------------------------
 Tue Aug  6 14:25:47 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.9.3
