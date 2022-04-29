@@ -9,7 +9,7 @@
     </physicalmemory>
     <disk>
       <!-- Needed when we may need to bundle llvm -->
-      <size unit="G">20</size>
+      <size unit="G">30</size>
     </disk>
   </hardware>
 <!-- aarch64:  X-Gene cpus are the only ones that work as there is a bug in others - select -->
