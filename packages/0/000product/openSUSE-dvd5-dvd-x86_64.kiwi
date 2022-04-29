@@ -109,7 +109,6 @@
       <repopackage name="alsa-ucm-conf"/>
       <repopackage name="alsa-utils"/>
       <repopackage name="alts"/>
-      <repopackage name="amarok"/>
       <repopackage name="amavisd-milter"/>
       <repopackage name="amavisd-new"/>
       <repopackage name="amavisd-new-docs"/>
@@ -1825,9 +1824,6 @@
       <repopackage name="libgphoto2-6-lang"/>
       <repopackage name="libgphoto2_port12"/>
       <repopackage name="libgpm2"/>
-      <repopackage name="libgpod-lang"/>
-      <repopackage name="libgpod-tools"/>
-      <repopackage name="libgpod4"/>
       <repopackage name="libgps29"/>
       <repopackage name="libgraphene-1_0-0"/>
       <repopackage name="libGraphicsMagick++-Q16-12"/>
@@ -2232,7 +2228,6 @@
       <repopackage name="liblab_gamut1"/>
       <repopackage name="liblangtag1"/>
       <repopackage name="liblapack3"/>
-      <repopackage name="liblastfm5-1"/>
       <repopackage name="liblavfile-2_2-0"/>
       <repopackage name="liblavjpeg-2_2-0"/>
       <repopackage name="liblavplay-2_2-0"/>
@@ -2290,7 +2285,6 @@
       <repopackage name="libmalcontent-ui-0-0"/>
       <repopackage name="libmanette-0_2-0"/>
       <repopackage name="libmariadb3"/>
-      <repopackage name="libmariadbd19"/>
       <repopackage name="libmarkdown2"/>
       <repopackage name="libmatroska7"/>
       <repopackage name="libmaxminddb0"/>
@@ -2339,7 +2333,6 @@
       <repopackage name="libmusicbrainz5-1"/>
       <repopackage name="libmwaw-0_3-3"/>
       <repopackage name="libmxml1"/>
-      <repopackage name="libmygpo-qt5-1"/>
       <repopackage name="libmypaint-1_6-1"/>
       <repopackage name="libmypaint-lang"/>
       <repopackage name="libmysofa1"/>
@@ -2388,7 +2381,6 @@
       <repopackage name="libobjc4"/>
       <repopackage name="libodbc2"/>
       <repopackage name="libodfgen-0_1-1"/>
-      <repopackage name="libofa0"/>
       <repopackage name="libogg0"/>
       <repopackage name="libogg0-32bit" arch="x86_64"/>
       <repopackage name="liboggkate1"/>
@@ -2629,8 +2621,8 @@
       <repopackage name="libreoffice-base"/>
       <repopackage name="libreoffice-branding-openSUSE"/>
       <repopackage name="libreoffice-calc"/>
-      <repopackage name="libreoffice-draw" arch="x86_64"/>
-      <repopackage name="libreoffice-filters-optional" arch="x86_64"/>
+      <repopackage name="libreoffice-draw"/>
+      <repopackage name="libreoffice-filters-optional"/>
       <repopackage name="libreoffice-gnome"/>
       <repopackage name="libreoffice-gtk3"/>
       <repopackage name="libreoffice-icon-themes"/>
@@ -2784,7 +2776,6 @@
       <repopackage name="libsysfs2"/>
       <repopackage name="libsystemd0"/>
       <repopackage name="libsystemd0-32bit" arch="x86_64"/>
-      <repopackage name="libtag-extras1"/>
       <repopackage name="libtag1"/>
       <repopackage name="libtag_c0"/>
       <repopackage name="libtalloc2"/>

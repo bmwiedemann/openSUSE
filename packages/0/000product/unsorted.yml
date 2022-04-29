@@ -496,6 +496,7 @@ unsorted:
   - alure 
   - alure-devel 
   - amanda 
+  - amarok: [x86_64] # suggested by dvd:suggested:patterns-kde-kde_multimedia 
   - amarok-lang 
   - amazon-ecs-init: [x86_64] 
   - amazon-ssm-agent: [x86_64] 
@@ -11287,6 +11288,9 @@ unsorted:
   - libgpm2-32bit: [x86_64] 
   - libgpod-devel 
   - libgpod-doc 
+  - libgpod-lang: [x86_64] 
+  - libgpod-tools: [x86_64] 
+  - libgpod4: [x86_64] 
   - libgpod4-32bit: [x86_64] 
   - libgrail6 
   - libgrail6-32bit: [x86_64] 
@@ -11983,6 +11987,7 @@ unsorted:
   - liblasso-devel 
   - liblasso3 
   - liblastfm-qt5-devel 
+  - liblastfm5-1: [x86_64] 
   - liblastfm5-1-32bit: [x86_64] 
   - liblastfm_fingerprint5-1 
   - liblastfm_fingerprint5-1-32bit: [x86_64] 
@@ -12165,6 +12170,7 @@ unsorted:
   - libmariadb3-32bit: [x86_64] 
   - libmariadb_plugins 
   - libmariadbd-devel 
+  - libmariadbd19: [x86_64] 
   - libmariadbprivate 
   - libmarisa0 
   - libmarisa0-32bit: [x86_64] 
@@ -12434,6 +12440,7 @@ unsorted:
   - libmwaw-devel-doc 
   - libmwaw-tools 
   - libmxml1-32bit: [x86_64] 
+  - libmygpo-qt5-1: [x86_64] 
   - libmygpo-qt5-devel 
   - libmypaint-devel 
   - libmypaint-gegl-devel 
@@ -12664,6 +12671,7 @@ unsorted:
   - libodraw-tools 
   - libodraw1 
   - libofa-devel 
+  - libofa0: [x86_64] 
   - libofa0-32bit: [x86_64] 
   - libofx 
   - libofx-devel 
@@ -13559,8 +13567,6 @@ unsorted:
   - libreoffice-base-drivers-postgresql 
   - libreoffice-branding-upstream 
   - libreoffice-calc-extensions 
-  - libreoffice-draw: [i586] 
-  - libreoffice-filters-optional: [i586] 
   - libreoffice-gdb-pretty-printers 
   - libreoffice-glade 
   - libreoffice-l10n-af 
@@ -14207,6 +14213,7 @@ unsorted:
   - libtachyon-devel 
   - libtag-devel 
   - libtag-doc 
+  - libtag-extras1: [x86_64] 
   - libtag1-32bit: [x86_64] 
   - libtag_c0-32bit: [x86_64] 
   - libtaginfo-devel 
