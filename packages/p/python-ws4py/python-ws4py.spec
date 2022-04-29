@@ -1,7 +1,7 @@
 #
-# spec file for package python-ws4py
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,6 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module greenlet}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tornado}
 BuildRequires:  %{python_module ws4py = %{version}}
@@ -67,6 +66,8 @@ rm test/test_cherrypy.py
 
 %if %{with test}
 %check
+# This repository has been archived by the owner. It is now read-only.
+sed -i 's:from mock:from unittest.mock:' test/test_*.py
 %pytest
 %endif
 

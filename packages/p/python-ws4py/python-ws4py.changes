@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 28 15:49:52 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+
+-------------------------------------------------------------------
 Mon Feb 17 22:28:45 UTC 2020 - Julio González Gil <jgonzalez@suse.com>
 
 - Fix license. Correct one is BSD-3-Clause.
