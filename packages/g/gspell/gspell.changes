@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 19 18:13:14 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
+
+- Update to version 1.10.0:
+  + Build from git: some updates, take newer version of autoconf-archive.
+  + Build: distribute more files in tarballs.
+  + Documentation improvements.
+  + Translation updates. 
+-------------------------------------------------------------------
 Fri Sep  4 14:00:54 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 1.8.4:

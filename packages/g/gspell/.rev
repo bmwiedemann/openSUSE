@@ -177,4 +177,12 @@
     <comment>Update to 1.8.4 (forwarded request 832122 from dimstar)</comment>
     <requestid>832500</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f40758ededcae70175e5ec98d6ea1283</srcmd5>
+    <version>1.10.0</version>
+    <time>1651272281</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 971098 from dimstar)</comment>
+    <requestid>973128</requestid>
+  </revision>
 </revisionlist>
