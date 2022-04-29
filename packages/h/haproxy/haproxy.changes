@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Tue Apr 26 21:59:04 UTC 2022 - mrueckert@suse.de
+
+- Update to version 2.5.6+git0.ba44b4312:
+  * [RELEASE] Released version 2.5.6
+  * REGTESTS: fix the race conditions in be2dec.vtc ad field.vtc
+  * BUG/MINOR: connection: "connection:close" header added despite 'close-spread-time'
+  * BUG/MINOR: sample: add missing use_backend/use-server contexts in smp_resolve_args
+  * Revert "CI: github actions: disable -Wno-deprecated"
+  * BUG/MINOR: rules: Fix check_capture() function to use the right rule arguments
+  * BUG/MEDIUM: rules: Be able to use captures defined in defaults section
+  * BUG/MINOR: rules: Forbid captures in defaults section if used by a backend
+  * DOC: remove my name from the config doc
+  * MEDIUM: queue: use tasklet_instant_wakeup() to wake tasks
+  * MINOR: task: add a new task_instant_wakeup() function
+  * BUG/MAJOR: connection: Never remove connection from idle lists outside the lock
+  * BUG/MINOR: cache: Disable cache if applet creation fails
+  * BUILD: calltrace: fix wrong include when building with TRACE=1
+  * SCRIPTS: announce-release: add shortened links to pending issues
+  * DOC: lua: update a few doc URLs
+  * SCRIPTS: announce-release: update the doc's URL
+  * BUG/MEDIUM: compression: Don't forget to update htx_sl and http_msg flags
+  * BUG/MEDIUM: fcgi-app: Use http_msg flags to know if C-L header can be added
+  * BUG/MEDIUM: stream: do not abort connection setup too early
+  * BUILD: compiler: use a more portable set of asm(".weak") statements
+  * BUILD: sched: workaround crazy and dangerous warning in Clang 14
+  * BUG/MEDIUM: mux-h1: Don't request more room on partial trailers
+  * BUG/MINOR: mux-h2: use timeout http-request as a fallback for http-keep-alive
+  * BUG/MINOR: mux-h2: do not use timeout http-keep-alive on backend side
+  * BUILD: debug: mark the __start_mem_stats/__stop_mem_stats symbols as weak
+  * BUG/MINOR: cache: do not display expired entries in "show cache"
+  * BUG/MINOR: mux-h2: do not send GOAWAY if SETTINGS were not sent
+  * CI: cirrus: switch to FreeBSD-13.0
+  * CI: github actions: disable -Wno-deprecated
+  * BUG/MINOR: stats: define the description' background color in dark color scheme
+  * CI: Update to actions/cache@v3
+  * CI: Update to actions/checkout@v3
+  * MEDIUM: global: Add a "close-spread-time" option to spread soft-stop on time window
+  * Revert "BUILD: opentracing: display warning in case of using OT_USE_VARS at compile time"
+  * MAJOR: opentracing: reenable usage of vars to transmit opentracing context
+  * DEBUG: opentracing: display the contents of the err variable after setting
+  * CLEANUP: opentracing: added FLT_OT_PARSE_INVALID_enum enum
+  * DEBUG: opentracing: show return values of all functions in the debug output
+  * MINOR: opentracing: improved normalization of context variable names
+  * CLEANUP: opentracing: added variable to store variable length
+  * CLEANUP: opentracing: added flt_ot_smp_init() function
+  * MINOR: opentracing: only takes the variables lock on shared entries
+  * Revert "MINOR: opentracing: change the scope of the variable 'ot.uuid' from 'sess' to 'txn'"
+  * CLEANUP: opentracing: removed unused function flt_ot_var_get()
+  * CLEANUP: opentracing: removed unused function flt_ot_var_unset()
+  * DOC: opentracing: corrected comments in function descriptions
+  * EXAMPLES: opentracing: refined shell scripts for testing filter performance
+  * BUG/BUILD: opentracing: fixed OT_DEFINE variable setting
+  * BUG/MINOR: opentracing: setting the return value in function flt_ot_var_set()
+  * BUG/MEDIUM: http-act: Don't replace URI if path is not found or invalid
+  * BUG/MEDIUM: http-conv: Fix url_enc() to not crush const samples
+  * BUG/MEDIUM: mux-h1: Set outgoing message to DONE when payload length is reached
+  * BUG/MEDIUM: promex: Be sure to never set EOM flag on an empty HTX message
+  * BUG/MEDIUM: hlua: Don't set EOM flag on an empty HTX message in HTTP applet
+  * BUG/MEDIUM: stats: Be sure to never set EOM flag on an empty HTX message
+  * BUG/MINOR: fcgi-app: Don't add C-L header on response to HEAD requests
+  * BUG/MINOR: httpclient: end callback in applet release
+  * BUG/MINOR: ssl/cli: Remove empty lines from CLI output
+  * CI: github actions: update OpenSSL to 3.0.2
+  * DOC: remove double blanks in configuration.txt
+  * BUG/MAJOR: mux_pt: always report the connection error to the conn_stream
+  * BUG/MINOR: cli/stream: fix "shutdown session" to iterate over all threads
+  * BUG/MINOR: samples: add missing context names for sample fetch functions
+  * REGTESTS: ssl: use X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY for cert check
+  * BUG/MEDIUM: mux-h1: Properly detect full buffer cases during message parsing
+  * BUG/MEDIUM: mux-fcgi: Properly handle return value of headers/trailers parsing
+  * DOC: reflect H2 timeout changes
+  * BUG/MINOR: tools: url2sa reads too far when no port nor path
+  * DOC: config: Explictly add supported MQTT versions
+  * MEDIUM: mqtt: support mqtt_is_valid and mqtt_field_value converters for MQTTv3.1
+  * BUG/MINOR: rules: Initialize the list element when allocating a new rule
+  * BUG/MEDIUM: mux-h2: make use of http-request and keep-alive timeouts
+  * MEDIUM: mux-h2: slightly relax timeout management rules
+  * BUG/MEDIUM: trace: avoid race condition when retrieving session from conn->owner
+  * BUG/MEDIUM: stream-int: do not rely on the connection error once established
+  * BUG/MEDIUM: mux-h1: only turn CO_FL_ERROR to CS_FL_ERROR with empty ibuf
+  * CI: github actions: switch to LibreSSL-3.5.1
+  * BUG/MINOR: httpclient: CF_SHUTW_NOW should be tested with channel_is_empty()
+  * BUG/MINOR: httpclient: process the response when received before the end of the request
+  * BUG/MINOR: httpclient: only check co_data() instead of HTTP_MSG_DATA
+  * BUG/MINOR: server/ssl: free the SNI sample expression
+  * BUILD: httpclient: fix build without SSL
+  * BUG/MINOR: httpclient: send the SNI using the host header
+  * MINOR: server: export server_parse_sni_expr() function
+  * BUG/MINOR: httpclient/lua: stuck when closing without data
+  * BUG/MINOR: tools: fix url2sa return value with IPv4
+
+-------------------------------------------------------------------
 Mon Mar 14 17:11:09 UTC 2022 - mrueckert@suse.de
 
 - Update to version 2.5.5+git0.384c5c59a:

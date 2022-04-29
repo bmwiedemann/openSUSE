@@ -1162,4 +1162,12 @@
     <comment>- Update to version 2.5.5+git0.384c5c59a:</comment>
     <requestid>961725</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>d9afd192a7be9714c54bb01ea6655046</srcmd5>
+    <version>2.5.6+git0.ba44b4312</version>
+    <time>1651272273</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.5.6+git0.ba44b4312:</comment>
+    <requestid>972982</requestid>
+  </revision>
 </revisionlist>
