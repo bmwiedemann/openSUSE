@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Apr 25 09:17:13 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 1.56.0:
+  - add google/api/error_reason.proto (62c04b8)
+  - add google/api/visibility.proto (62c04b8)
+  - add google/type/decimal.proto (62c04b8)
+  - add google/type/interval.proto (62c04b8)
+  - add google/type/localized_text.proto (62c04b8)
+  - add google/type/phone_number.proto (62c04b8)
+  - update all protos and pb2 files (62c04b8)
+  - expose all names in longrunning _pb2's (#90) (09e9ccd)
+  - re-generate pb2 files (#87) (6260547)
+  - re-generate pb2 files using grpcio-tools<1.44.0 (#93) (76bb9f6)
+  - remove deprecated fields aliases and features from google/api/endpoint.proto (62c04b8)
+- Upgrade to 1.55.0:
+  - add location proto files. (#84) (9a33e56)
+- Upgrade to 1.54.0:
+  - add extended_operations.proto (#77) (bc85849)
+  - add google/api/routing.proto (#75) (1ae0bbc)
+- Upgrade to 1.53.0:
+  - add google.api.ResourceDescriptor.Style (4ce679c)
+  - add API method signatures to longrunning operations (8de7ae2)
+  - add gapic_metadata_pb2 (#38) (8de7ae2)
+  - add UNORDERED_LIST to field options (8de7ae2)
+  - add WaitOperation method to longrunning operations (8de7ae2)
+  - add google.api.ResourceDescriptor.Style (4ce679c)
+  - require python >=3.6 and (#31) (4ce679c)
+  - add create_key to FieldDescriptors (4ce679c)
+  - Generate gRPC files for long-running operations (#13) (a9ce288)
+  - add link to PyPI (#10) (3f79402)
+  - add create_key to FieldDescriptors (4ce679c)
+  - Generate gRPC files for long-running operations (#13) (a9ce288)
+  - add link to PyPI (#10) (3f79402)
+
+-------------------------------------------------------------------
 Wed Sep 23 13:16:52 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.52.0
