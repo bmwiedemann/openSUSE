@@ -296,4 +296,12 @@ view</comment>
     <comment>Standalone JavaEE inconditionally</comment>
     <requestid>965938</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>9dd1caa69751a44cea2df4c019794ed8</srcmd5>
+    <version>1.71</version>
+    <time>1651272259</time>
+    <user>dimstar_suse</user>
+    <comment>1.71</comment>
+    <requestid>973708</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,340 @@
 -------------------------------------------------------------------
+Fri Apr 22 21:24:48 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Version update to 1.71
+  * Defects Fixed
+    - In line with GPG the PGP API now attempts to preserve
+      comments containing non-ascii UTF8 characters.
+    - An accidental partial dependency on Java 1.7 has been removed
+      from the TLS API.
+    - JcaPKIXIdentityBuilder would fail to process File objects
+      correctly. This is now fixed.
+    - Some byte[] parameters to the CMP API were not being
+      defensively cloned to prevent accidental changes. Extra
+      defensive cloning has been added.
+    - CMS primitives would sometimes convert ASN.1 definite-length
+      encodings into indefinite-length encodings. The primitives
+      will now try and preserve the original encoding where possible.
+    - CMSSignedData.getAttributeCertificates() now properly
+      restricts the tag values checked to just 1 (the obsolete
+      v1 tag) and 2 (for the more current v2 certificates).
+    - BCJSSE now tries to validate a custom KeyManager selection
+      in order to catch errors around a key manager ignoring
+      key type early.
+    - Compressed streams in PGP ending with zero length partial
+      packets could cause failure on parsing the OpenPGP API.
+      This has been fixed.
+    - The fallback mode for JceAsymmetricKeyWrapper/Unwrapper
+      would lose track of any algorithm parameters generated
+      in the initial attempt. The algorithm parameters are now
+      propagated.
+    - An accidental regression introduced by a fix for another
+      issue in PKIXCertPathReviewer around use of the
+      AuthorityKeyIdentifier extension and it failing to match
+      a certificate uniquely when the serial number field
+      is missing has been fixed.
+    - An error was found in the creation of TLS 1.3 Export Keying
+      Material which could cause compatibility issues. This has
+      been fixed.
+  * Additional Features and Functionality
+    - Support has been added for OpenPGP regular expression
+      signature packets.
+    - Support has been added for OpenPGP PolicyURI signature
+      packets.
+    - A utility method has been added to PGPSecretKeyRing to allow
+      for inserting or replacing a PGPPublicKey.
+    - The NIST PQC Finalist, Classic McEliece has been added to the
+      low level API and the BCPQC provider.
+    - The NIST PQC Alternate Candidate, SPHINCS+ has been added to
+      the BCPQC provider.
+    - The NIST PQC Alternate Candidate, FrodoKEM has been added to
+      the low level API and the BCPQC provider.
+    - The NIST PQC Finalist, SABER has been added to the low level
+      API and the BCPQC provider.
+    - KMAC128, KMAC256 has been added to the BC provider (empty
+      customization string).
+    - TupleHash128, TupleHash256 has been added to the BC provider
+      (empty customization string).
+    - ParallelHash128, ParallelHash256 has been added to the BC
+      provider (empty customization string, block size 1024 bits).
+    - Two new properties: "org.bouncycastle.rsa.max_size" (default
+      15360) and "org.bouncycastle.ec.fp_max_size" (default 1042)
+      have been added to cap the maximum size of RSA and EC keys.
+    - RSA modulus are now checked to be provably composite using
+      the enhanced MR probable prime test.
+    - Imported EC Fp basis values are now validated against the MR
+      prime number test before use. The certainty level of the
+      prime test can be determined by
+      "org.bouncycastle.ec.fp_certainty" (default 100).
+    - The BC entropy thread now has a specific name:
+      "BC-ENTROPY-GATHERER".
+    - Utility methods have been added for joining/merging PGP
+      public keys and signatures.
+    - Blake3-256 has been added to the BC provider.
+    - DTLS: optimisation to delayed handshake hash.
+    - Further additions to the ETSI 102 941 support in the ETSI/ITS
+      package: certification request, signed message generation and
+      verification now supported.
+    - CMSSignedDataGenerator now supports the direct generation of
+      definite-length data.
+    - The NetscapeCertType class now has a hasUsages() method on it
+      for querying usage settings on its bit string.
+    - Support for additional input has been added for deterministic
+      (EC)DSA.
+    - The OpenPGP API provides better support for subkey
+      generation.
+    - BCJSSE: Added boolean system properties
+      "org.bouncycastle.jsse.client.dh.disableDefaultSuites" and
+      "org.bouncycastle.jsse.server.dh.disableDefaultSuites".
+      Default "false". Set to "true" to disable inclusion of DH
+      cipher suites in the default cipher suites for client/server
+      respectively.
+  * Notes
+    - The deprecated QTESLA implementation has been removed from
+      the BCPQC provider.
+    - The submission update to SPHINCS+ has been added. This
+      changes the generation of signatures - particularly
+      deterministic ones.
+- Version update to 1.70
+  * Defects Fixed
+    - Blake 3 output limit is enforced.
+    - The PKCS12 KeyStore was relying on default precedence for its
+      key Cipher implementation so was sometimes failing if used
+      from the keytool. The KeyStore class now makes sure it uses
+      the correct Cipher implementation.
+    - Fixed bzip2 compression for empty contents (GH #993).
+    - ASN.1: More robust handling of high tag numbers and
+      definite-length forms.
+    - BCJSSE: Fix a concurrent modification issue in session
+      contexts (GH#968).
+    - BCJSSE: Don't log sensitive system property values (GH#976).
+    - BCJSSE: Fixed a priority issue amongst imperfect-match
+      credentials in KeyManager classes.
+    - The IES AlgorithmParameters object has been re-written to
+      properly support all the variations of IESParameterSpec.
+    - getOutputSize() for ECIES has been corrected to avoid
+      occassional underestimates.
+    - The lack of close() in the ASN.1 Dump command line utility
+      was triggering false positives in some code analysis tools. A
+      close() call has been added.
+    - PGPPublicKey.getBitStrength() now properly recognises EdDSA
+      keys.
+  * Additional Features and Functionality
+    - Missing PGP CRC checksums can now be optionally ignored using
+      setDetectMissingCRC() (default false) on ArmoredInputStream.
+    - PGPSecretKey.copyWithNewPassword() now has a variant which
+      uses USAGE_SHA1 for key protection if a PGPDigestCalculator
+      is passed in.
+    - PGP ASCII armored data now skips "\t", "\v", and "\f".
+    - PKCS12 files with duplicate localKeyId attributes on
+      certificates will now have the incorrect attributes filtered
+      out, rather than the duplicate causing an exception.
+    - PGPObjectFactory will now ignore packets representing
+      unrecognised signature versions in the input stream.
+    - The X.509 extension generator will now accumulate some
+      duplicate X.509 extensions into a single extension where it
+      is possible to do so.
+    - Removed support for maxXofLen in Kangaroo digest.
+    - Ignore marker packets in PGP Public and Secret key ring
+      collection.
+    - An implementation of LEA has been added to the low-level API.
+    - Access, recovery, and direct use for PGP session keys has
+      been added to the OpenPGP API for processing encrypted data.
+    - A PGPCanonicalizedDataGenerator has been added which converts
+      input into canonicalized literal data for text and UTF-8
+      mode.
+    - A getUserKeyingMaterial() method has been added to the
+      KeyAgreeRecipientInformation class.
+    - ASN.1: Tagged objects (and parsers) now support all tag
+      classes. Special code for ApplicationSpecific has been
+      deprecated and re-implemented in terms of TaggedObject.
+    - ASN.1: Improved support for nested tagging.
+    - ASN.1: Added support for GraphicString, ObjectDescriptor,
+      RelativeOID.
+    - ASN.1: Added support for constructed BitString encodings,
+      including efficient parsing for large values.
+    - TLS: Added support for external PSK handshakes.
+    - TLS: Check policy restrictions on key size when determining
+      cipher suite support.
+    - A performance issue in KeccakDigest due to left over debug
+      code has been identified and dealt with.
+    - BKS key stores can now be used for collecting protected keys
+      (note: any attempt to store such a store will cause an
+      exception).
+    - A method for recovering user keying material has been added
+      to KeyAgreeRecipientInformation.
+    - Support has been added to the CMS API for SHA-3 based
+      PLAIN-ECDSA.
+    - The low level BcDefaultDigestProvider now supports the SHAKE
+      family of algorithms and the SM3 alogirthm.
+    - PGPKeyRingGenerator now supports creation of key-rings with
+      direct-key identified keys.
+    - The PQC NIST candidate, signature algorithm SPHINCS+ has been
+      added to the low-level API.
+    - ArmoredInputStream now explicitly checks for a '\n' if in
+      crLF mode.
+    - Direct support for NotationDataOccurances, Exportable,
+      Revocable, IntendedRecipientFingerPrints, and AEAD algorithm
+      preferences has been added to PGPSignatureSubpacketVector.
+    - Further support has been added for keys described using
+      S-Expressions in GPG 2.2.X.
+    - Support for OpenPGP Session Keys from the (draft) Stateless
+      OpenPGP CLI has been added.
+    - Additional checks have been added for PGP marker packets in
+      the parsing of PGP objects.
+    - A CMSSignedData.addDigestAlgorithm() has been added to allow
+      for adding additional digest algorithm identifiers to CMS
+      SignedData structures when required.
+    - Support has been added to CMS for the LMS/HSS signature
+      algorithm.
+    - The system property
+      "org.bouncycastle.jsse.client.assumeOriginalHostName"
+      (default false) has been added for dealing with SNI problems
+      related to the host name not being propagate by the JVM.
+    - The JcePKCSPBEOutputEncryptorBuilder now supports SCRYPT with
+      ciphers that do not have algorithm parameters (e.g. AESKWP).
+    - Support is now added for certificates using ETSI TS 103 097,
+      "Intelligent Transport Systems (ITS)" in the bcpkix package.
+  * Notes.
+    - While this release should maintain source code compatibility,
+      developers making use of some parts of the ASN.1 library will
+      find that some classes need recompiling. Apologies for the
+      inconvenience.
+- Version update to 1.69
+  * Defects Fixed
+    - Lightweight and JCA conversion of Ed25519 keys in the PGP API
+      could drop the leading byte as it was zero. This has been
+      fixed.
+    - Marker packets appearing at the start of PGP public key rings
+      could cause parsing failure. This has been fixed.
+    - ESTService could fail for some valid Content-Type headers.
+      This has been fixed.
+    - Originator key algorithm parameters were being passed as NULL
+      in key agreement recipients. The parameters now reflect the
+      value of the parameters in the key's SubjectPublicKeyInfo.
+    - ContentType on encapsulated data was not been passed through
+      correctly for authenticated and enveloped data. This has been
+      fixed.
+    - NTRUEncryptionParameters and
+      NTRUEncryptionKeyGenerationParameters were not correctly
+      cloning the contained message digest. This has been fixed.
+    - CertificateFactory.generateCertificates()/generateCRLs()
+      would throw an exception if extra data was found at the end
+      of a PEM file even if valid objects had been found. Extra
+      data is now ignored providing at least one object found.
+    - Internal class PKIXCRLUtil could throw a NullPointerException
+      for CRLs with an absent nextUpdate field. This has been
+      fixed.
+    - PGP ArmoredInputStream now fails earlier on malformed
+      headers.
+    - The McElieceKobaraImaiCipher was randomly throwing "Bad
+      Padding: invalid ciphertext" exception while decrypting due
+      to leading zeroes been missed during processing of the cipher
+      text. This has been fixed.
+    - Ed25519 keys being passed in via OpenSSH key spec are now
+      validated in the KeyFactory.
+    - Blowfish keys are now range checked on cipher construction.
+    - In some cases PGPSecretKeyRing was failing to search its
+      extraPubKeys list when searching for public keys.
+    - The BasicConstraintsValidation class in the BC cert path
+      validation tools has improved conformance to RFC 5280.
+    - AlgorithmIdentifiers involving message digests now attempt to
+      follow the latest conventions for the parameters field
+      (basically DER NULL appears less).
+    - Fix various conversions and interoperability for XDH and
+      EdDSA between BC and SunEC providers.
+    - TLS: Prevent attempts to use KeyUpdate mechanism in versions
+      before TLS 1.3.
+  * Additional Features and Functionality
+    - GCM-SIV has been added to the lightweight API and the
+      provider.
+    - Blake3 has been added to the lightweight API.
+    - The OpenSSL PEMParser can now be extended to add specialised
+      parsers.
+    - Base32 encoding has now been added, the default alphabet is
+      from RFC 4648.
+    - The KangarooTwelve message digest has been added to the
+      lightweight API.
+    - An implementation of the two FPE algorithms, FF1 and FF3-1 in
+      SP 800-38G has been added to the lightweight API and the JCE
+      provider.
+    - An implementation of ParallelHash has been added to the
+      lightweight API.
+    - An implementation of TupleHash has been added to the
+      lightweight API.
+    - RSA-PSS now supports the use of SHAKE128 and SHAKE256 as the
+      mask generation function and digest.
+    - ECDSA now supports the use of SHAKE128 and SHAKE256.
+    - PGPPBEEncryptedData will now reset the stream if the initial
+      checksum fails so another password can be tried.
+    - Iterators on public and secret key ring collections in PGP
+      now reflect the original order of the public/secret key rings
+      they contain.
+    - KeyAgreeRecipientInformation now has a getOriginator() method
+      for retrieving the underlying orginator information.
+    - PGPSignature now has a getDigestPrefix() method for people
+      wanting exposure to the signature finger print details.
+    - The old BKS-V1 format keystore is now disabled by default. If
+      you need to use BKS-V1 for legacy reasons, it can be
+      re-enabled by adding: org.bouncycastle.bks.enable_v1=true to
+      the java.security file. We would be interested in hearing
+      from anyone that needs to do this.
+    - PLAIN-ECDSA now supports the SHA3 digests.
+    - Some highlevel support for RFC 4998 ERS has been added for
+      ArchiveTimeStamp and EvidenceRecord. The new classes are in
+      the org.bouncycastle.tsp.ers package.
+    - ECIES has now also support SHA256, SHA384, and SHA512.
+    - digestAlgorithms filed in CMS SignedData now includes counter
+      signature digest algorithms where possible.
+    - A new property "org.bouncycastle.jsse.config" has been added
+      which can be used to configure the BCJSSE provider when it is
+      created using the no-args constructor.
+    - In line with changes in OpenSSL 1.1.0,
+      OpenSSLPBEParametersGenerator can now be configured with a
+      digest.
+    - PGPKeyRingGenerator now includes a method for adding a subkey
+      with a primary key binding signature.
+    - Support for ASN.1 PRIVATE tags has been added.
+    - Performance enhancements to Nokeon, AES, GCM, and
+      SICBlockCipher.
+    - Support for ecoding/decoding McElieceCCA2 keys has been added
+      to the PQC API
+    - BCJSSE: Added support for jdk.tls.maxCertificateChainLength
+      system property (default is 10).
+    - BCJSSE: Added support for jdk.tls.maxHandshakeMessageSize
+      system property (default is 32768).
+    - BCJSSE: Added support for jdk.tls.client.enableCAExtension
+      (default is 'false').
+    - BCJSSE: Added support for jdk.tls.client.cipherSuites system
+      property.
+    - BCJSSE: Added support for jdk.tls.server.cipherSuites system
+      property.
+    - BCJSSE: Extended ALPN support via standard JSSE API to JDK 8
+      versions after u251/u252.
+    - BCJSSE: Key managers now support EC credentials for use with
+      TLS 1.3 ECDSA signature schemes (including brainpool).
+    - TLS: Add TLS 1.3 support for brainpool curves per RFC 8734.
+  * Notes
+    - There is a small API change in the PKIX package to the
+      DigestAlgorithmIdentifierFinder interface as a find() method
+      that takes an ASN1ObjectIdentifier has been added to it. For
+      people wishing to extend their own implementations, see
+      DefaultDigestAlgorithmIdentifierFinder for a sample
+      implementation.
+    - A version of the bcmail API supporting Jakarta Mail has now
+      been added (see bcjmail jar).
+    - Some work has been done on moving out code that does not need
+      to be in the provider jar. This has reduced the size of the
+      provider jar and should also make it easier for developers to
+      patch the classes involved as they no longer need to be
+      signed. bcpkix and bctls are both dependent on the new bcutil
+      jar.
+- Add build dependencies on
+  mvn(jakarta.activation:jakarta.activation-api) and
+  mvn(jakarta.mail:jakarta.mail-api)
+- Remove unneeded script bouncycastle_getpoms.sh from sources
+
+-------------------------------------------------------------------
 Wed Mar 30 10:27:18 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build against the standalone JavaEE modules inconditionally

@@ -16,13 +16,13 @@
 #
 
 
-%global ver  1.68
-%global shortver 168
-%global gittag r1rv68
-%global archivever jdk15on-%{shortver}
+%global ver_major 1
+%global ver_minor 71
+%global gittag r%{ver_major}rv%{ver_minor}
+%global archivever jdk18on-%{ver_major}%{ver_minor}
 %global classname org.bouncycastle.jce.provider.BouncyCastleProvider
 Name:           bouncycastle
-Version:        %{ver}
+Version:        %{ver_major}.%{ver_minor}
 Release:        0
 Summary:        Bouncy Castle Cryptography APIs for Java
 License:        Apache-2.0 AND MIT
@@ -30,18 +30,21 @@ Group:          Development/Libraries/Java
 URL:            https://www.bouncycastle.org
 Source0:        https://github.com/bcgit/bc-java/archive/%{gittag}.tar.gz
 # POMs from Maven Central
-Source1:        https://repo1.maven.org/maven2/org/%{name}/bcprov-jdk15on/%{version}/bcprov-jdk15on-%{version}.pom
-Source2:        https://repo1.maven.org/maven2/org/%{name}/bcpkix-jdk15on/%{version}/bcpkix-jdk15on-%{version}.pom
-Source3:        https://repo1.maven.org/maven2/org/%{name}/bcpg-jdk15on/%{version}/bcpg-jdk15on-%{version}.pom
-Source4:        https://repo1.maven.org/maven2/org/%{name}/bcmail-jdk15on/%{version}/bcmail-jdk15on-%{version}.pom
-Source5:        https://repo1.maven.org/maven2/org/%{name}/bctls-jdk15on/%{version}/bctls-jdk15on-%{version}.pom
-Source6:        bouncycastle_getpoms.sh
+Source1:        https://repo1.maven.org/maven2/org/%{name}/bcprov-jdk18on/%{version}/bcprov-jdk18on-%{version}.pom
+Source2:        https://repo1.maven.org/maven2/org/%{name}/bcpkix-jdk18on/%{version}/bcpkix-jdk18on-%{version}.pom
+Source3:        https://repo1.maven.org/maven2/org/%{name}/bcpg-jdk18on/%{version}/bcpg-jdk18on-%{version}.pom
+Source4:        https://repo1.maven.org/maven2/org/%{name}/bcmail-jdk18on/%{version}/bcmail-jdk18on-%{version}.pom
+Source5:        https://repo1.maven.org/maven2/org/%{name}/bctls-jdk18on/%{version}/bctls-jdk18on-%{version}.pom
+Source6:        https://repo1.maven.org/maven2/org/%{name}/bcutil-jdk18on/%{version}/bcutil-jdk18on-%{version}.pom
+Source7:        https://repo1.maven.org/maven2/org/%{name}/bcjmail-jdk18on/%{version}/bcjmail-jdk18on-%{version}.pom
 Patch0:         bouncycastle-javadoc.patch
 Patch1:         bouncycastle-osgi.patch
 BuildRequires:  ant
 BuildRequires:  ant-junit
 BuildRequires:  fdupes
 BuildRequires:  glassfish-activation-api
+BuildRequires:  jakarta-activation
+BuildRequires:  jakarta-mail
 BuildRequires:  javamail
 BuildRequires:  javapackages-local
 Requires(post): javapackages-tools
@@ -59,6 +62,7 @@ Summary:        Bouncy Castle PKIX, CMS, EAC, TSP, PKCS, OCSP, CMP, and CRMF API
 License:        MIT
 Group:          Development/Libraries/Java
 Requires:       %{name} = %{version}
+Requires:       %{name}-util = %{version}
 
 %description pkix
 The Bouncy Castle Java APIs for CMS, PKCS, EAC, TSP, CMP, CRMF, OCSP, and
@@ -73,9 +77,8 @@ Group:          Development/Libraries/Java
 Requires:       %{name} = %{version}
 
 %description pg
-The Bouncy Castle Java API for handling the OpenPGP protocol. This jar
-contains the OpenPGP API for JDK 1.5 to JDK 1.8. The APIs can be used in
-conjunction with a JCE/JCA provider such as the one provided with the
+The Bouncy Castle Java API for handling the OpenPGP protocol.The APIs can be
+used in conjunction with a JCE/JCA provider such as the one provided with the
 Bouncy Castle Cryptography APIs.
 
 %package mail
@@ -84,12 +87,29 @@ License:        MIT
 Group:          Development/Libraries/Java
 Requires:       %{name} = %{version}
 Requires:       %{name}-pkix = %{version}
+Requires:       %{name}-util = %{version}
 
 %description mail
+The Bouncy Castle Java S/MIME APIs for handling S/MIME protocols. The APIs can
+be used in conjunction with a JCE/JCA provider such as the one provided with
+the Bouncy Castle Cryptography APIs. The JavaMail API and the Java activation
+framework will also be needed.
+
+%package jmail
+Summary:        Bouncy Castle Jakarta S/MIME API
+License:        MIT
+Group:          Development/Libraries/Java
+Requires:       %{name} = %{version}
+Requires:       %{name}-pkix = %{version}
+Requires:       %{name}-util = %{version}
+Requires:       jakarta-activation
+Requires:       jakarta-mail
+
+%description jmail
 The Bouncy Castle Java S/MIME APIs for handling S/MIME protocols. This jar
-contains S/MIME APIs for JDK 1.5 to JDK 1.8. The APIs can be used in
-conjunction with a JCE/JCA provider such as the one provided with the Bouncy
-Castle Cryptography APIs. The JavaMail API and the Java activation framework
+contains S/MIME APIs for JDK 1.8 and up. The APIs can be used in conjunction
+with a JCE/JCA provider such as the one provided with the Bouncy Castle
+Cryptography APIs. The Jakarta Mail API and the Jakarta activation framework
 will also be needed.
 
 %package tls
@@ -97,10 +117,21 @@ Summary:        Bouncy Castle JSSE provider and TLS/DTLS API
 License:        MIT
 Group:          Development/Libraries/Java
 Requires:       %{name} = %{version}
+Requires:       %{name}-util = %{version}
 
 %description tls
 The Bouncy Castle Java APIs for TLS and DTLS, including a provider for the
 JSSE.
+
+%package util
+Summary:        Bouncy Castle ASN.1 Extension and Utility APIs
+License:        MIT
+Group:          Development/Libraries/Java
+Requires:       %{name} = %{version}
+
+%description util
+The Bouncy Castle Java APIs for ASN.1 extension and utility APIs used to
+support bcpkix and bctls.
 
 %package javadoc
 Summary:        Javadoc for %{name}
@@ -122,16 +153,18 @@ find . -type f -name "*.jar" -exec rm -f {} \;
 %build
 echo "package.version:\ %{version}" >> bc-build.properties
 echo "bundle.version:\ %{version}.0" >> bc-build.properties
-ant -f ant/jdk15+.xml \
+ant -f ant/jdk18+.xml \
   -Dbc.javac.source=8 -Dbc.javac.target=8 \
   -Djunit.jar.home=$(build-classpath junit) \
   -Dmail.jar.home=$(build-classpath javax.mail) \
+  -Djmail.jar.home=$(build-classpath jakarta-mail) \
   -Dactivation.jar.home=$(build-classpath glassfish-activation-api) \
+  -Djactivation.jar.home=$(build-classpath jakarta-activation) \
   -Drelease.debug=true \
   clean build-provider build
 
 # Not shipping the "lcrypto" jar, so don't ship the javadoc for it
-rm -rf build/artifacts/jdk1.5/javadoc/lcrypto
+rm -rf build/artifacts/jdk1.8/javadoc/lcrypto
 
 %install
 install -dm 755 %{buildroot}%{_sysconfdir}/java/security/security.d
@@ -139,14 +172,14 @@ touch %{buildroot}%{_sysconfdir}/java/security/security.d/2000-%{classname}
 
 install -dm 0755 %{buildroot}%{_javadir}
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-for bc in bcprov bcpkix bcpg bcmail bctls ; do
-  install -pm 0644 build/artifacts/jdk1.5/jars/$bc-%{archivever}.jar %{buildroot}%{_javadir}/$bc.jar
-  install -pm 0644 %{_sourcedir}/$bc-jdk15on-%{version}.pom %{buildroot}%{_mavenpomdir}/$bc.pom
-  %add_maven_depmap $bc.pom $bc.jar -a "org.bouncycastle:$bc-jdk16,org.bouncycastle:$bc-jdk15,org.bouncycastle:$bc-jdk15to18" -f $bc
+for bc in bcprov bcpkix bcpg bcmail bctls bcutil bcjmail ; do
+  install -pm 0644 build/artifacts/jdk1.8/jars/$bc-%{archivever}.jar %{buildroot}%{_javadir}/$bc.jar
+  install -pm 0644 %{_sourcedir}/$bc-jdk18on-%{version}.pom %{buildroot}%{_mavenpomdir}/$bc.pom
+  %add_maven_depmap $bc.pom $bc.jar -a "org.bouncycastle:$bc-jdk18,org.bouncycastle:$bc-jdk16,org.bouncycastle:$bc-jdk15on,org.bouncycastle:$bc-jdk15,org.bouncycastle:$bc-jdk15to18" -f $bc
 done
 
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
-cp -r build/artifacts/jdk1.5/javadoc/* %{buildroot}%{_javadocdir}/%{name}/
+cp -r build/artifacts/jdk1.8/javadoc/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %post
@@ -198,21 +231,27 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %files -f .mfiles-bcprov
-%license build/artifacts/jdk1.5/bcprov-jdk15on-*/LICENSE.html
+%license build/artifacts/jdk1.8/bcprov-jdk18on-*/LICENSE.html
 %doc docs/ *.html
 %config(noreplace) %{_sysconfdir}/java/security/security.d/2000-%{classname}
 
 %files pkix -f .mfiles-bcpkix
-%license build/artifacts/jdk1.5/bcpkix-jdk15on-*/LICENSE.html
+%license build/artifacts/jdk1.8/bcpkix-jdk18on-*/LICENSE.html
 
 %files pg -f .mfiles-bcpg
-%license build/artifacts/jdk1.5/bcpg-jdk15on-*/LICENSE.html
+%license build/artifacts/jdk1.8/bcpg-jdk18on-*/LICENSE.html
 
 %files mail -f .mfiles-bcmail
-%license build/artifacts/jdk1.5/bcmail-jdk15on-*/LICENSE.html
+%license build/artifacts/jdk1.8/bcmail-jdk18on-*/LICENSE.html
+
+%files jmail -f .mfiles-bcjmail
+%license build/artifacts/jdk1.8/bcjmail-jdk18on-*/LICENSE.html
 
 %files tls -f .mfiles-bctls
-%license build/artifacts/jdk1.5/bctls-jdk15on-*/LICENSE.html
+%license build/artifacts/jdk1.8/bctls-jdk18on-*/LICENSE.html
+
+%files util -f .mfiles-bcutil
+%license build/artifacts/jdk1.8/bcutil-jdk18on-*/LICENSE.html
 
 %files javadoc
 %{_javadocdir}/%{name}
