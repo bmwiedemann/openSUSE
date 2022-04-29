@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 25 14:23:15 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rename libgupnp-av-1_0-2 subpackage to libgupnp-av-1_0-3,
+  correcting the package name to match the provided library.
+- Conflict with the wrongly provided libgupnp-av-1_0-2.
+
+-------------------------------------------------------------------
 Mon Sep 20 11:31:29 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.14.0:

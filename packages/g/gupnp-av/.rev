@@ -324,4 +324,14 @@
     <comment>Scripted push from GNOME:Next (forwarded request 920962 from dimstar)</comment>
     <requestid>921641</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>117e722ab9a3c018ee24ef4eca059f9a</srcmd5>
+    <version>0.14.0</version>
+    <time>1651272287</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename libgupnp-av-1_0-2 subpackage to libgupnp-av-1_0-3,
+  correcting the package name to match the provided library.
+- Conflict with the wrongly provided libgupnp-av-1_0-2. (forwarded request 972642 from dimstar)</comment>
+    <requestid>973138</requestid>
+  </revision>
 </revisionlist>

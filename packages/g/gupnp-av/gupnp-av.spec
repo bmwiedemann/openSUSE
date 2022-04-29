@@ -1,7 +1,7 @@
 #
 # spec file for package gupnp-av
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,12 +35,14 @@ BuildRequires:  pkgconfig(vapigen)
 GUPnP A/V is a small utility library that aims to ease the handling and
 implementation of UPnP A/V profiles.
 
-%package -n libgupnp-av-1_0-2
+%package -n libgupnp-av-1_0-3
 Summary:        Library to ease the handling and implementation of UPnP A/V profiles
 Group:          Development/Libraries/C and C++
 Requires:       %{name} >= %{version}
+# Version 0.13 0.14 wrongly provided libgupnp-av-1.0.so.3 in libgupnp-av-1_0-2
+Conflicts:      libgupnp-av-1_0-2 > 0.13
 
-%description -n libgupnp-av-1_0-2
+%description -n libgupnp-av-1_0-3
 GUPnP A/V is a small utility library that aims to ease the handling and
 implementation of UPnP A/V profiles.
 
@@ -57,7 +59,7 @@ This package provides the GObject Introspection bindings for GUPnP A/V.
 %package -n libgupnp-av-devel
 Summary:        Library to ease the handling and implementation of UPnP A/V profiles - Development Files
 Group:          Development/Libraries/C and C++
-Requires:       libgupnp-av-1_0-2 = %{version}
+Requires:       libgupnp-av-1_0-3 = %{version}
 Requires:       typelib-1_0-GUPnPAV-1_0 = %{version}
 
 %description -n libgupnp-av-devel
@@ -77,13 +79,13 @@ implementation of UPnP A/V profiles.
 %check
 %meson_test
 
-%post -n libgupnp-av-1_0-2 -p /sbin/ldconfig
-%postun -n libgupnp-av-1_0-2 -p /sbin/ldconfig
+%post -n libgupnp-av-1_0-3 -p /sbin/ldconfig
+%postun -n libgupnp-av-1_0-3 -p /sbin/ldconfig
 
 %files
 %{_datadir}/gupnp-av/
 
-%files -n libgupnp-av-1_0-2
+%files -n libgupnp-av-1_0-3
 %license COPYING
 %doc AUTHORS NEWS
 %{_libdir}/*.so.*
