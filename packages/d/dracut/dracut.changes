@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 28 06:54:43 UTC 2022 - antonio.feijoo@suse.com
+
+- Update to version 056+suse.280.g8dd85003:
+  * fix(suse-initrd): avoid use with systemd-boot (bsc#1198681)
+  * fix(man): add missing default paths (bsc#1198681)
+  * fix(lsinitrd.sh): add missing default paths (bsc#1198681)
+  * fix(dracut.sh): add missing default output file paths (bsc#1198681)
+
+-------------------------------------------------------------------
 Fri Apr 22 08:01:44 UTC 2022 - antonio.feijoo@suse.com
 
 - Update to version 056+suse.275.g4ce7a6a7:

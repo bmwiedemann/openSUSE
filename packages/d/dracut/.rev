@@ -2068,4 +2068,12 @@ and stuff that has no relevance to the end user (i.e CI related commits) (forwar
     <comment></comment>
     <requestid>972188</requestid>
   </revision>
+  <revision rev="190" vrev="1">
+    <srcmd5>e45f772a1c5e7c64fc20726e2f250a73</srcmd5>
+    <version>056+suse.280.g8dd85003</version>
+    <time>1651272251</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>973619</requestid>
+  </revision>
 </revisionlist>
