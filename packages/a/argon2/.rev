@@ -71,4 +71,12 @@ The package contains the tool and the libraries.</comment>
 2. Fix rpmlint error: shared-library-not-executable (forwarded request 972318 from susnux)</comment>
     <requestid>972474</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>361d7d59a1df0dffc868fdca2143ffb3</srcmd5>
+    <version>20190702</version>
+    <time>1651272277</time>
+    <user>dimstar_suse</user>
+    <comment>- use a source url</comment>
+    <requestid>973100</requestid>
+  </revision>
 </revisionlist>

@@ -32,7 +32,7 @@ Summary:        The reference C implementation of Argon2
 License:        Apache-2.0 OR CC0-1.0
 Group:          Productivity/Networking/Security
 URL:            https://github.com/P-H-C/phc-winner-argon2
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/P-H-C/phc-winner-argon2/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 # PATCH-FIX-OPENSUSE adjust-makefile.patch -- Allow setting optflags and file permissions of installed libraries
 Patch1:         adjust-makefile.patch
@@ -77,7 +77,8 @@ password hashing function that won the Password Hashing Competition
 (PHC) in 2015.
 
 %prep
-%autosetup
+%setup -n phc-winner-argon2-%version
+%patch1 -p1
 
 %build
 %make
