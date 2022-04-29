@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 28 11:22:27 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
+
+- Mark properly help text in tmpfs widget for localization
+  (bsc#1198192)
+- 4.5.4
+
+-------------------------------------------------------------------
 Mon Apr 18 09:01:42 UTC 2022 - Martin Vidner <mvidner@suse.com>
 
 - Fix empty help in some Partitioner dialogs (bsc#1194274)
