@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 29 08:44:05 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.10.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Drop patches for issues fixed upstream
+  + ai_relax-python-depends.patch
+- Override upstream version with 1.10.0.0 to ensure
+  proper upgrade from previous version 1.10.0b1
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Apr 26 10:58:02 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

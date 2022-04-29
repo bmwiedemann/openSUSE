@@ -154,4 +154,20 @@
 - Update Requires from setup.py (forwarded request 972842 from glaubitz)</comment>
     <requestid>972877</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e879f9b23ab73c971f080a6c41f3ccf1</srcmd5>
+    <version>1.10.0.0</version>
+    <time>1651272370</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.10.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Drop patches for issues fixed upstream
+  + ai_relax-python-depends.patch
+- Override upstream version with 1.10.0.0 to ensure
+  proper upgrade from previous version 1.10.0b1
+- Update Requires from setup.py (forwarded request 973883 from glaubitz)</comment>
+    <requestid>973916</requestid>
+  </revision>
 </revisionlist>
