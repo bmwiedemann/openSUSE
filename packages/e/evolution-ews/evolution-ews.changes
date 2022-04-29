@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 25 09:09:31 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.44.1:
+  + Bug Fix: Correct display of folder size.
+  + Miscellaneous: Address some of the static analyzers warnings.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 18 09:55:12 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.44.0:
