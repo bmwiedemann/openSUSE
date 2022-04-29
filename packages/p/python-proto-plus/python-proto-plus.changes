@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 25 17:45:27 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.20.3:
+  - additional logic to mitigate collisions with reserved terms
+  - dir(proto.Message) does not raise
+  - mitigate collisions in field names
+  - add custom dir for messages and message classes
+  - workaround for buggy pytest
+- Add pytest-staticmethod.patch which works around Pytest bug
+  gh#pytest-dev/pytest#9637.
+
+-------------------------------------------------------------------
 Mon Jan 31 15:13:44 UTC 2022 - Matthias Fehring <buschmann23@opensuse.org>
 
 - update to 0.19.9

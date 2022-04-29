@@ -28,15 +28,19 @@
 %define skip_python2 1
 %define modname proto-plus
 Name:           python-proto-plus%{psuffix}
-Version:        1.19.9
+Version:        1.20.3
 Release:        0
 Summary:        Pythonic Protocol Buffers
 License:        Apache-2.0
 URL:            https://github.com/googleapis/proto-plus-python
 Source0:        https://files.pythonhosted.org/packages/source/p/%{modname}/%{modname}-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+# PATCH-FIX-UPSTREAM pytest-staticmethod.patch gh#pytest-dev/pytest#9637 mcepl@suse.com
+# workaround for the problem with pytest 7.0
+Patch0:         pytest-staticmethod.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module protobuf >= 3.12.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 %if %{with test}
@@ -57,7 +61,7 @@ This library provides protocol buffer message classes and objects
 that largely behave like native Python types.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%autosetup -p1 -n %{modname}-%{version}
 
 %build
 %python_build
@@ -70,14 +74,16 @@ that largely behave like native Python types.
 
 %check
 %if %{with test}
-%pytest
+# gh#googleapis/proto-plus-python#311
+%pytest -k 'not (test_fields_mitigate_collision or test_dir or test_dir_message_base)'
 %endif
 
 %if !%{with test}
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/proto
+%{python_sitelib}/proto_plus-%{version}*-info
 %endif
 
 %changelog
