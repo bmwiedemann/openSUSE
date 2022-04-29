@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Wed Apr 27 16:30:56 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#871
+- handle parted version numbers from git checkouts
+- 4.5.6
+
+--------------------------------------------------------------------
 Mon Apr 25 09:14:49 UTC 2022 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#869
