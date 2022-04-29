@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-pycurl%{psuffix}
-Version:        7.43.0.6
+Version:        7.45.1
 Release:        0
 Summary:        PycURL -- cURL library module
 License:        LGPL-2.1-or-later AND MIT
@@ -37,16 +37,12 @@ Source:         https://files.pythonhosted.org/packages/source/p/pycurl/pycurl-%
 Patch0:         increase_test_timeout.diff
 # PATCH-FIX-UPSTREAM handle difference between libssh and libssh2
 Patch1:         pycurl-libssh.patch
-Patch3:         disable_randomly_failing_tests.patch
-# PATCH-FEATURE-UPSTREAM remove_nose.patch gh#pycurl/pycurl#655 mcepl@suse.com
-# remove dependency on nose
-Patch4:         remove_nose.patch
+Patch2:         disable_randomly_failing_tests.patch
 # PATCH-FIX-OPENSUSE make-leap15-compat.patch mcepl@suse.com
 # Make tests passing with Leap 15.2
-Patch5:         make-leap15-compat.patch
-# PATCH-FIX-UPSTREAM curl7770_compatibility.patch gh#pycurl/pycurl#689 mcepl@suse.com
-# Provide compatiblity with curl 7.77.0+
-Patch6:         curl7770_compatibility.patch
+Patch3:         make-leap15-compat.patch
+# PATCH-FIX-OPENSUSE Handle missing ! in a returned error message
+Patch4:         curl-789-error-message.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -79,8 +75,7 @@ This module provides bindings for the cURL library.
 This package contains documentation and examples.
 
 %prep
-%setup -q -n pycurl-%{version}
-%autopatch -p1
+%autosetup -p1 -n pycurl-%{version}
 
 # temporarily remove a failing test-case until the issue is
 # fixed in curl: https://github.com/curl/curl/issues/6615
