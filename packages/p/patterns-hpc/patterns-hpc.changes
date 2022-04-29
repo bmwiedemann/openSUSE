@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 29 09:06:34 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Remove occurrances of openmpi2 - which is obsolete
+- Replaced occurrances of openmpi3 with openmpi4 (bsc#1199013).
+
+-------------------------------------------------------------------
 Tue Jan 25 14:50:56 UTC 2022 - Christian Goll <cgoll@suse.com>
 
 - removed missing packages (bsc#1194956) 

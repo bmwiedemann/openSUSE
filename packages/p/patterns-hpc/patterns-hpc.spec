@@ -40,6 +40,7 @@ This particular package contains all the HPC related patterns.
 
 
 ################################################################################
+
 %package compute_node
 %pattern_serverfunctions
 Summary:        HPC Basic Compute Node
