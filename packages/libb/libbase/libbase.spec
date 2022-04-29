@@ -17,20 +17,17 @@
 
 
 Name:           libbase
-Version:        1.1.3
+Version:        1.1.6
 Release:        0
 Summary:        JFree Base Services
 License:        LGPL-2.0-only
 Group:          Development/Libraries/Java
 URL:            http://reporting.pentaho.org/
-#Original source: http://downloads.sourceforge.net/jfreereport/%%{name}-%%{version}.zip
-#unzip, find . -name "*.jar" -exec rm {} \;
-#to simplify the licensing
-Source:         %{name}-%{version}-jarsdeleted.zip
+Source:         http://downloads.sourceforge.net/jfreereport/%{name}-%{version}.zip
 Source99:       libbase-rpmlintrc
 #PATCH-FIX-UPSTREAM, fix some properties for build
-Patch0:         libbase-1.1.2.build.patch
-Patch1:         libbase-1.1.3-sourcetarget.patch
+Patch0:         libbase-1.1.6.build.patch
+Patch1:         libbase-1.1.6-sourcetarget.patch
 BuildRequires:  ant
 BuildRequires:  ant-contrib >= 1.0b3
 BuildRequires:  apache-commons-logging

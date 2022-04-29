@@ -1,6 +1,8 @@
---- libbase-1.1.3/common_build.xml	2017-09-08 13:22:37.354835655 +0200
-+++ libbase-1.1.3/common_build.xml	2017-09-08 13:23:39.750836720 +0200
-@@ -136,8 +136,8 @@
+Index: libbase-1.1.6/common_build.xml
+===================================================================
+--- libbase-1.1.6.orig/common_build.xml
++++ libbase-1.1.6/common_build.xml
+@@ -136,8 +136,8 @@ TYPICAL TARGET SEQUENCE
    <property name="javac.deprecation"
              value="true"
              description="Indicates whether source should be compiled with deprecation information" />
