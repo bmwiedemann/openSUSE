@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 14 13:36:16 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
+
+- When a zero-width or zero-height image is given, a divide-by-zero
+  occurs. This patch checks for this and produces a zero-sized
+  output.
+  [bsc1197028-correctly-handle-zero-width-or-height-images.patch,
+   CVE-2022-0856, bsc#1197028]
+
+-------------------------------------------------------------------
 Fri Apr 16 15:57:48 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
 
 - The problem is due to the fact that the images in the POC have

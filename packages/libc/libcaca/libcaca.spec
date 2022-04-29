@@ -1,7 +1,7 @@
 #
 # spec file for package libcaca
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,8 @@ Patch12:        Bug1120502-add_cast_to_prevent_overflow.patch
 Patch13:        Bug1143286_libcaca_configure_ac_chg_for_lto.patch
 Patch14:        libcaca-bsc1182731-prevent-overflow.patch
 Patch99:        bsc1184751-add-space-for-NUL-byte.patch
+# PATCH-FIX-UPSTREAM correctly-handle-zero-width-or-height-images.patch bsc#1197028
+Patch100:       bsc1197028-correctly-handle-zero-width-or-height-images.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
@@ -146,6 +148,7 @@ drawing, triangle filling and sprite blitting.
 %patch13 -p1
 %patch14 -p1
 %patch99 -p1
+%patch100 -p1
 RUBY="ruby-`echo %{rb_ver} | sed 's|\.[^\.]*$||'`"
 find . -type f -exec sed -i "s|ruby-1.9|$RUBY|" \{\} \;
 pushd python
