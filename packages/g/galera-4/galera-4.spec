@@ -44,6 +44,7 @@ BuildRequires:  glibc-devel
 BuildRequires:  mariadb >= %{mariadb_version}
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-tools
+%sysusers_requires
 BuildRequires:  pkgconfig(systemd)
 Requires:       %{name}-wsrep-provider
 Conflicts:      galera-3
@@ -64,6 +65,7 @@ BuildRequires:  openssl-devel
 %if %{defined fedora}
 BuildRequires:  python
 %endif
+Requires(post): %fillup_prereq
 
 %description
 Galera is a fast synchronous multimaster wsrep provider (replication engine)
@@ -100,6 +102,7 @@ This package provides the libgalera_smm library.
 %autosetup -p1
 
 %build
+%sysusers_generate_pre %{SOURCE2} garb garb-user.conf
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
 %if 0%{?suse_version} > 1320
@@ -110,7 +113,6 @@ export CXXFLAGS="$CXXFLAGS -Wno-implicit-fallthrough"
        -DCMAKE_INSTALL_LIBEXECDIR:PATH=%{_libexecdir} \
        -DCMAKE_INSTALL_DOCDIR:PATH=%{_datarootdir}/doc/packages/%{name}
 %cmake_build
-%sysusers_generate_pre %{SOURCE2} garb garb-user.conf
 
 %install
 %cmake_install
@@ -130,7 +132,7 @@ cat > %{buildroot}%{_sysconfdir}/my.cnf.d/51-%{name}-wsrep-provider.cnf <<EOF
 wsrep_provider=%{_libdir}/libgalera_smm.so
 EOF
 
-sed -e 's;/usr/libexec;%{_libexecdir};' %{buildroot}%{_unitdir}/garb.service
+sed -e 's;/usr/libexec;%{_libexecdir};' -i %{buildroot}%{_unitdir}/garb.service
 
 %files
 # common
@@ -157,7 +159,7 @@ sed -e 's;/usr/libexec;%{_libexecdir};' %{buildroot}%{_unitdir}/garb.service
 %{_libdir}/libgalera_smm.so
 %config %{_sysconfdir}/my.cnf.d/51-%{name}-wsrep-provider.cnf
 
-%pre
+%pre -f garb.pre
 %service_add_pre garb.service
 
 %preun
@@ -165,6 +167,7 @@ sed -e 's;/usr/libexec;%{_libexecdir};' %{buildroot}%{_unitdir}/garb.service
 
 %post
 %service_add_post garb.service
+%fillup_only -n garb
 
 %postun
 %service_del_postun garb.service

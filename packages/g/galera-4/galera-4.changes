@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr 28 08:18:32 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fill sysconfig configuration file
+
+-------------------------------------------------------------------
+Thu Apr 28 07:51:59 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix sysusers generation
+
+-------------------------------------------------------------------
+Wed Apr 27 15:09:57 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Commit sed changes to file
+- Use default shell for garb user ("-" which is replaced by /usr/sbin/nologin)
+  * garb-user.conf
+- Add sysusers macro
+
+-------------------------------------------------------------------
 Fri Feb 18 12:31:14 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 26.4.11
