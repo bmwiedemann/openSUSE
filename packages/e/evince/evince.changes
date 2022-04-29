@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 19 17:03:43 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
+
+- Update to version 42.1
+  + Fix use-after-free. 
+  + Updated translations. 
+
+-------------------------------------------------------------------
 Sat Mar 19 13:51:15 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.1:
