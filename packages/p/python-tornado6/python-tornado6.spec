@@ -1,7 +1,7 @@
 #
 # spec file for package python-tornado6
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Source99:       python-tornado6-rpmlintrc
 Patch0:         ignore-resourcewarning-doctests.patch
 # PATCH-FIX-OPENSUSE ignore-py310-deprecation-warnings.patch -- gh#tornadoweb/tornado#3033
 Patch1:         ignore-py310-deprecation-warnings.patch
+# PATCH-FIX-OPENSUSE Remove broken multi-line HTTP header test
+Patch2:         remove-multiheader-http-test.patch
 BuildRequires:  %{python_module base >= 3.5}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pycares}

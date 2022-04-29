@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 28 07:13:53 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-multiheader-http-test.patch:
+  * Do not test multi-line headers. 
+
+-------------------------------------------------------------------
 Sat Dec 11 16:16:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Filter Python 3.10 deprecation warnings during testing

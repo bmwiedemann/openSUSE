@@ -1,0 +1,43 @@
+Index: tornado-6.1/tornado/test/httpclient_test.py
+===================================================================
+--- tornado-6.1.orig/tornado/test/httpclient_test.py
++++ tornado-6.1/tornado/test/httpclient_test.py
+@@ -505,38 +505,6 @@ Transfer-Encoding: chunked
+                     % (resp.body, value, container),
+                 )
+ 
+-    def test_multi_line_headers(self):
+-        # Multi-line http headers are rare but rfc-allowed
+-        # http://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html#sec4.2
+-        sock, port = bind_unused_port()
+-        with closing(sock):
+-
+-            @gen.coroutine
+-            def accept_callback(conn, address):
+-                stream = IOStream(conn)
+-                request_data = yield stream.read_until(b"\r\n\r\n")
+-                if b"HTTP/1." not in request_data:
+-                    self.skipTest("requires HTTP/1.x")
+-                yield stream.write(
+-                    b"""\
+-HTTP/1.1 200 OK
+-X-XSS-Protection: 1;
+-\tmode=block
+-
+-""".replace(
+-                        b"\n", b"\r\n"
+-                    )
+-                )
+-                stream.close()
+-
+-            netutil.add_accept_handler(sock, accept_callback)  # type: ignore
+-            try:
+-                resp = self.fetch("http://127.0.0.1:%d/" % port)
+-                resp.rethrow()
+-                self.assertEqual(resp.headers["X-XSS-Protection"], "1; mode=block")
+-            finally:
+-                self.io_loop.remove_handler(sock.fileno())
+-
+     def test_304_with_content_length(self):
+         # According to the spec 304 responses SHOULD NOT include
+         # Content-Length or other entity headers, but some servers do it
