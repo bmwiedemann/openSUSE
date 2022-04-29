@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Fri Apr 29 18:30:51 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.2:
+  - Intorduce --markup option
+  - use clap to parse arguments
+
+-------------------------------------------------------------------
+Sat Apr 10 19:07:32 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging of sway-marker 0.1
