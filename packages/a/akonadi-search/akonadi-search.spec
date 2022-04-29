@@ -16,6 +16,7 @@
 #
 
 
+%define soversion 5
 %define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
@@ -54,18 +55,23 @@ Obsoletes:      baloo-pim < %{version}
 %description
 AkonadiSearch is a framework for searching and managing PIM metadata
 
-%package -n libKF5AkonadiSearch
+%package -n libKF5AkonadiSearch%{soversion}
 Summary:        Core libraries for AkonadiSearch
 Group:          System/Libraries
+# Renamed to fix a rpmlint error
+# TODO: Remove the 'Conflicts' line when 22.04.1 is out
+Conflicts:      libKF5AkonadiSearch = 22.04.0
+Provides:       libKF5AkonadiSearch = 22.04.0
+Obsoletes:      libKF5AkonadiSearch < 22.04.0
 
-%description -n libKF5AkonadiSearch
+%description -n libKF5AkonadiSearch%{soversion}
 AkonadiSearch is a framework for searching and managing PIM metadata.
 This package contains the core libraries
 
 %package devel
-Summary:        Development package for baloo5
+Summary:        Development package for AkonadiSearch
 Group:          Development/Libraries/KDE
-Requires:       libKF5AkonadiSearch = %{version}
+Requires:       libKF5AkonadiSearch%{soversion} = %{version}
 Requires:       cmake(KF5Akonadi)
 Requires:       cmake(KF5AkonadiMime)
 Requires:       cmake(KF5CalendarCore)
@@ -92,15 +98,15 @@ Development files for the AkonadiSearch library.
     %find_lang %{name} --with-man --all-name
   %endif
 
-%post -n libKF5AkonadiSearch -p /sbin/ldconfig
-%postun -n libKF5AkonadiSearch -p /sbin/ldconfig
+%post -n libKF5AkonadiSearch%{soversion} -p /sbin/ldconfig
+%postun -n libKF5AkonadiSearch%{soversion} -p /sbin/ldconfig
 
-%files -n libKF5AkonadiSearch
+%files -n libKF5AkonadiSearch%{soversion}
 %license LICENSES/*
-%{_kf5_libdir}/libKF5AkonadiSearchCore.so.*
-%{_kf5_libdir}/libKF5AkonadiSearchDebug.so.*
-%{_kf5_libdir}/libKF5AkonadiSearchPIM.so.*
-%{_kf5_libdir}/libKF5AkonadiSearchXapian.so.*
+%{_kf5_libdir}/libKF5AkonadiSearchCore.so.%{soversion}*
+%{_kf5_libdir}/libKF5AkonadiSearchDebug.so.%{soversion}*
+%{_kf5_libdir}/libKF5AkonadiSearchPIM.so.%{soversion}*
+%{_kf5_libdir}/libKF5AkonadiSearchXapian.so.%{soversion}*
 
 %files
 %dir %{_kf5_plugindir}/kf5

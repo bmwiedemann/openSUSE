@@ -655,4 +655,12 @@
     <comment>KDE release gear 22.04.0</comment>
     <requestid>971383</requestid>
   </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>d71e279535de6253735fc4412fe22b38</srcmd5>
+    <version>22.04.0</version>
+    <time>1651272193</time>
+    <user>dimstar_suse</user>
+    <comment>- Append the soname to libKF5AkonadiSearch</comment>
+    <requestid>973253</requestid>
+  </revision>
 </revisionlist>
