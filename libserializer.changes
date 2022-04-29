@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 20 15:38:38 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Update to 1.1.6.
+- Updated and rebased patches:
+  * libserializer-1.1.2.build.patch -> libserializer-1.1.6.build.patch
+  * libserializer-1.1.2-sourcetarget.patch -> libserializer-1.1.6-sourcetarget.patch   
+
+-------------------------------------------------------------------
 Sun Mar 20 08:59:17 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:

@@ -17,28 +17,25 @@
 
 
 Name:           libserializer
-Version:        1.1.2
+Version:        1.1.6
 Release:        0
 Summary:        JFreeReport General Serialization Framework
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Java
 URL:            http://reporting.pentaho.org
-#Original source: http://downloads.sourceforge.net/jfreereport/libserializer-%%{version}.zip
-#unzip, find . -name "*.jar" -exec rm {} \;
-#to simplify the licensing
-Source:         libserializer-%{version}-jarsdeleted.zip
+Source0:        http://downloads.sourceforge.net/jfreereport/%{name}-%{version}.zip
 Source99:       %{name}-rpmlintrc
-Patch0:         libserializer-1.1.2.build.patch
-Patch1:         libserializer-1.1.2-sourcetarget.patch
+Patch0:         libserializer-1.1.6.build.patch
+Patch1:         libserializer-1.1.6-sourcetarget.patch
 BuildRequires:  ant
 BuildRequires:  ant-contrib
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  jpackage-utils
-BuildRequires:  libbase >= 1.1.2
+BuildRequires:  libbase >= 1.1.6
 BuildRequires:  unzip
 Requires:       java
 Requires:       jpackage-utils
-Requires:       libbase >= 1.1.2
+Requires:       libbase >= 1.1.6
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
