@@ -17,30 +17,27 @@
 
 
 Name:           libloader
-Version:        1.1.3
+Version:        1.1.6
 Release:        0
 Summary:        Resource Loading Framework
 License:        LGPL-2.0-only
 Group:          Development/Libraries/Java
 URL:            http://reporting.pentaho.org/
-#Original source: http://downloads.sourceforge.net/jfreereport/%%{name}-%%{version}.zip
-#unzip, find . -name "*.jar" -exec rm {} \;
-#to simplify the licensing
-Source:         %{name}-%{version}-jarsdeleted.zip
+Source:         http://downloads.sourceforge.net/jfreereport/%{name}-%{version}.zip
 Source99:       %{name}-rpmlintrc
 #PATCH-FIX-UPSTREAM, fix some properties for build
-Patch0:         libloader-1.1.2.build.patch
-Patch1:         libloader-1.1.3-sourcetarget.patch
-Patch2:         libloader-1.1.3-javadoc.patch
+Patch0:         libloader-1.1.6.build.patch
+Patch1:         libloader-1.1.6-sourcetarget.patch
+Patch2:         libloader-1.1.6-javadoc.patch
 BuildRequires:  ant
 BuildRequires:  ant-contrib
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  jpackage-utils
-BuildRequires:  libbase >= 1.1.3
+BuildRequires:  libbase >= 1.1.6
 BuildRequires:  unzip
 Requires:       java
 Requires:       jpackage-utils
-Requires:       libbase >= 1.1.3
+Requires:       libbase >= 1.1.6
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
