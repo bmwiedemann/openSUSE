@@ -1,0 +1,18 @@
+The macro htmladdnormallink is gone
+
+---
+ fpcdocs/fpc.sty |    3 +++
+ 1 file changed, 3 insertions(+)
+
+--- fpcdocs/fpc.sty
++++ fpcdocs/fpc.sty	2022-04-29 09:11:29.089605046 +0000
+@@ -235,6 +235,9 @@
+ }%
+ \makeatother
+ \fi
++\ifdefined\htmladdnormallink\relax\else%
++\def\htmladdnormallink#1#2{\href{#2}{#1}}
++\fi
+ %
+ % Fake Latex2Html support, so latex2html is not required
+ %

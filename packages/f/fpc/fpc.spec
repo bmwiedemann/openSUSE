@@ -88,6 +88,8 @@ Patch4:         fpc-fix-library-paths-on-ppc64.patch
 Patch5:         fpc-3.2.0-glibc-2.34.patch
 # PATCH-FIX-UPSTREAM fpc-3.2.2-ppc64le-toc-fixes.patch solves https://gitlab.com/freepascal.org/fpc/source/-/issues/39542
 Patch6:         fpc-3.2.2-ppc64le-toc-fixes.patch
+# PATCH-FIX-UPSTREAM - boo#1199007
+Patch7:         hyperref-2022.patch
 BuildRequires:  binutils
 %if 0%{?suse_version}
 BuildRequires:  fdupes
@@ -161,6 +163,7 @@ documentation or automatical-code generation purposes.
 %patch5 -p1
 %endif
 %patch6 -p1
+%patch7 -p0
 
 %if %{with bootstrap}
 %if "%{flavor}" == ""
@@ -271,8 +274,8 @@ SYSFPDIRBASE=%{buildroot}%{_libdir}/fpc/`$NEWPP -iV`/ide/text
 ${FPCMKCFGBIN} -p -d "basepath=$FPCPATH" -o %{buildroot}%{_sysconfdir}/fpc.cfg
 ${FPCMKCFGBIN} -p -1 -d "basepath=$FPCPATH" -o ${SYSFPDIRBASE}/fp.cfg
 ${FPCMKCFGBIN} -p -2 -o ${SYSFPDIRBASE}/fp.ini
-${FPCMKCFGBIN} -p -3 -d CompilerConfigDir=%{_sysconfdir}/fppkg -o %{buildroot}%{_sysconfdir}/fppkg.cfg
-${FPCMKCFGBIN} -p -4 -d "GlobalPrefix=$FPCGLOBALPREFIX" -o %{buildroot}%{_sysconfdir}/fppkg/default
+${FPCMKCFGBIN} -p -3 -d "CompilerConfigDir=%{_sysconfdir}/fppkg" -d "GlobalPrefix=%{_prefix}" -d "GlobalPath=%{_libdir}/fpc/{CompilerVersion}/" -o %{buildroot}%{_sysconfdir}/fppkg.cfg
+${FPCMKCFGBIN} -p -4 -d "FpcBin=%{_bindir}/fpc" -o %{buildroot}%{_sysconfdir}/fppkg/default
 # Add support for "build ID" in binaries (for debuginfo support)
 echo -e \
 "\n# ----------------------\n\

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 29 09:29:06 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix build of doc with latest LaTex on Tumbleweed:
+  * hyperref-2022.patch - boo#1199007
+
+-------------------------------------------------------------------
+Tue Apr 26 17:59:19 UTC 2022 - PragmaticLinux <info@pragmaticlinux.com>
+
+- Corrected fppkg configuration - boo#1197651
+
+-------------------------------------------------------------------
 Sun Mar  6 18:25:52 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Add fpc-3.2.2-ppc64le-toc-fixes.patch (fixes lazarus 2.2.0

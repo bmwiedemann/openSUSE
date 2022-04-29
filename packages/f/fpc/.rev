@@ -131,4 +131,15 @@
     <comment></comment>
     <requestid>959822</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>03c68029ae3a8759b56945529841f28a</srcmd5>
+    <version>3.2.2</version>
+    <time>1651272329</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build of doc with latest LaTex on Tumbleweed:
+  * hyperref-2022.patch - boo#1199007
+- Corrected fppkg configuration - boo#1197651
+</comment>
+    <requestid>973889</requestid>
+  </revision>
 </revisionlist>
