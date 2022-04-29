@@ -1,7 +1,7 @@
 #
 # spec file for package direnv
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Environment switcher for shells
 License:        MIT
 Group:          Productivity/File utilities
-URL:            http://direnv.net/
+URL:            https://direnv.net/
 Source0:        https://github.com/direnv/direnv/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  fish
@@ -50,10 +50,10 @@ clutter the "~/.profile" file.
 
 %files
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1%{ext_man}
-%{_mandir}/man1/%{name}-stdlib.1%{ext_man}
-%{_mandir}/man1/%{name}.toml.1%{ext_man}
-%{_mandir}/man1/%{name}-fetchurl.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man1/%{name}-stdlib.1%{?ext_man}
+%{_mandir}/man1/%{name}.toml.1%{?ext_man}
+%{_mandir}/man1/%{name}-fetchurl.1%{?ext_man}
 # Fish environment config
 %{_datadir}/fish/vendor_conf.d/direnv.fish
 
