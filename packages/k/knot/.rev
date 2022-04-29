@@ -89,4 +89,13 @@ https://www.knot-dns.cz/</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>967254</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>58db6226b50758192ad173d6ad33fd8a</srcmd5>
+    <version>3.1.8</version>
+    <time>1651272322</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.1.8, see:
+  https://www.knot-dns.cz/2022-04-28-version-318.html</comment>
+    <requestid>973772</requestid>
+  </revision>
 </revisionlist>
