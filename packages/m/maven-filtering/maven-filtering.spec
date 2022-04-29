@@ -17,16 +17,17 @@
 
 
 Name:           maven-filtering
-Version:        3.1.1
+Version:        3.2.0
 Release:        0
 Summary:        Shared component providing resource filtering
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://maven.apache.org/shared/%{name}/index.html
-Source0:        http://repo1.maven.org/maven2/org/apache/maven/shared/%{name}/%{version}/%{name}-%{version}-source-release.zip
+URL:            https://maven.apache.org/shared/%{name}/index.html
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/shared/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  apache-commons-cli
+BuildRequires:  apache-commons-io
 BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  google-guice
@@ -48,7 +49,6 @@ BuildRequires:  qdox
 BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
 BuildRequires:  unzip
-BuildRequires:  xbean
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
 BuildRequires:  mvn(org.apache.maven.shared:maven-shared-components:pom:)
@@ -73,32 +73,32 @@ cp %{SOURCE1} build.xml
 %build
 mkdir -p lib
 build-jar-repository -s lib \
+    maven/maven-core \
+    maven/maven-model \
+    maven/maven-settings \
+    org.eclipse.sisu.plexus \
+    plexus-containers/plexus-component-annotations \
+    maven-shared-utils/maven-shared-utils \
+    plexus/utils \
+    plexus/interpolation \
+    plexus/plexus-build-api \
+    commons-io \
+    jsr-305 \
+    \
     atinject \
     commons-cli \
     guava/guava \
     guice/google-guice-no_aop \
     jdom2/jdom2 \
-    jsr-305 \
-    maven/maven-core \
-    maven/maven-model \
-    maven/maven-settings \
-    maven-shared-utils/maven-shared-utils \
     objectweb-asm/asm \
     org.eclipse.sisu.inject \
-    org.eclipse.sisu.plexus \
     plexus-classworlds \
-    plexus/cli \
-    plexus-containers/plexus-component-annotations \
-    plexus/interpolation \
     plexus-metadata-generator \
-    plexus/plexus-build-api \
-    plexus/utils \
-    qdox \
-    xbean/xbean-reflect
+    plexus/cli \
+    qdox
 
 # Tests use a package that is no longer present in plexus-build-api (v0.0.7)
 %{ant} \
-  -Dtest.skip=true \
   jar javadoc
 
 %{mvn_artifact} pom.xml target/%{name}-%{version}.jar

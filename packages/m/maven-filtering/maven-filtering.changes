@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 28 11:53:54 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.2.0
+  * needed by maven-resources-plugin 3.2.0
+
+-------------------------------------------------------------------
 Sun Mar 20 20:12:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source and target levels 8
