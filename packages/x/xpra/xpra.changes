@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Apr 28 16:02:03 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 4.4+git20220428.94954180d:
+  * #3533 newer versions of Firefox use smaller max-size
+  * make socket info more resilient
+  * only query ioctl if we have a valid file descriptor
+  * move command lookup by pid to window model
+  * #3530 don't send pixels for windows that don't overlap the screen
+  * #3530 add 'unityhub' as browser content type
+  * #3514 fix launch error on systems without X11
+  * fix tabulation
+  * log failures to undock systrays
+  * #3530 crop the damage area if the window is now smaller
+  * add the v4l2 source to the codec loader tool
+  * #3371 guess the session if the environment has it
+  * parse when called, don't return a generator
+  * #3384 pass shadow geometry options to remote server
+  * fix generic subcommand substitution
+  * file should have been removed as part of 0b23cc0e59fd55047e5e73df7a4d39439584fb2d
+  * make the code easier to parse using context managers
+  * log the previous dimensions
+  * use xsync context manager
+  * #3530 use a UI context manager for freeing X11 images
+  * don't use xsync context manager on MacOS
+  * import X11 error handlers from the correct place
+  * #3530 cleaning up the xshm handle may raise X11 errors
+  * #3530 add more context checks
+  * #3530 call context check when XShm resources are freed
+  * lintian hangs on aarch64, skip it
+  * #3524 don't modify the monitors when the client connects
+  * remove debug logging
+  * #3524 make monitor windows fullscreen when desktop-fullscreen is set
+  * #3524 remove functions identical in base class
+  * #3524 doh: modify the monitor we're setting properties on
+  * #3524 better debug logging
+  * #3524 refresh all monitors on layout changes
+  * #3524 add 'monitor' subcommand
+  * #3524 reconfigure monitor models on external resize event
+  * #3524 add stub for handling monitor resizing via xrandr
+  * add missing context check, XRRSelectInput wrapper
+  * #3486 style fixups
+  * Refactoring for PR
+  * Refactoring for PR
+  * #3524 fixups, cleanups, etc
+  * cast is not necessary here
+  * Refactoring for PR
+  * Added keycloak authentication
+
+-------------------------------------------------------------------
 Tue Apr 19 19:07:27 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version 4.4+git20220419.138728c46:
