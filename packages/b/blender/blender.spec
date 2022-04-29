@@ -182,11 +182,9 @@ BuildRequires:  libomp-devel
 %endif
 %if %{with lld}
 BuildRequires:  lld
-#!BuildIgnore:  binutils-gold
 #!BuildIgnore:  gcc-c++
 %endif
 %else
-BuildRequires:  binutils-gold
 BuildRequires:  gcc%{?force_gcc_version}-c++
 %endif
 %if 0%{?suse_version} > 1500
