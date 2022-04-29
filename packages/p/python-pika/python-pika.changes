@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 28 15:23:41 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.2.1
+  1.2.1 2022-04-27
+  `GitHub milestone <https://github.com/pika/pika/milestone/18?closed=1>`_
+  1.2.0 2021-02-04
+  `GitHub milestone <https://github.com/pika/pika/milestone/17?closed=1>`_
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Fri Apr 17 08:48:25 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Switch from using nosetest runner to pytest

@@ -199,4 +199,17 @@
     <comment>- Switch from using nosetest runner to pytest</comment>
     <requestid>794817</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e7912287496ad070658ebeb8fe2b6081</srcmd5>
+    <version>1.2.1</version>
+    <time>1651272321</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 1.2.1
+  1.2.1 2022-04-27
+  `GitHub milestone &lt;https://github.com/pika/pika/milestone/18?closed=1&gt;`_
+  1.2.0 2021-02-04
+  `GitHub milestone &lt;https://github.com/pika/pika/milestone/17?closed=1&gt;`_
+- python-mock is not required for build</comment>
+    <requestid>973774</requestid>
+  </revision>
 </revisionlist>
