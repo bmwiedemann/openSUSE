@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20220427" schemaversion="4.1">
+<image name="OBS__openSUSE___20220428" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220427</productvar>
+      <productvar name="VERSION">20220428</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220427,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220428,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220427/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220428/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -109,6 +109,7 @@
       <repopackage name="alsa-ucm-conf"/>
       <repopackage name="alsa-utils"/>
       <repopackage name="alts"/>
+      <repopackage name="amarok"/>
       <repopackage name="amavisd-milter"/>
       <repopackage name="amavisd-new"/>
       <repopackage name="amavisd-new-docs"/>
@@ -1824,6 +1825,9 @@
       <repopackage name="libgphoto2-6-lang"/>
       <repopackage name="libgphoto2_port12"/>
       <repopackage name="libgpm2"/>
+      <repopackage name="libgpod-lang"/>
+      <repopackage name="libgpod-tools"/>
+      <repopackage name="libgpod4"/>
       <repopackage name="libgps29"/>
       <repopackage name="libgraphene-1_0-0"/>
       <repopackage name="libGraphicsMagick++-Q16-12"/>
@@ -2228,6 +2232,7 @@
       <repopackage name="liblab_gamut1"/>
       <repopackage name="liblangtag1"/>
       <repopackage name="liblapack3"/>
+      <repopackage name="liblastfm5-1"/>
       <repopackage name="liblavfile-2_2-0"/>
       <repopackage name="liblavjpeg-2_2-0"/>
       <repopackage name="liblavplay-2_2-0"/>
@@ -2285,6 +2290,7 @@
       <repopackage name="libmalcontent-ui-0-0"/>
       <repopackage name="libmanette-0_2-0"/>
       <repopackage name="libmariadb3"/>
+      <repopackage name="libmariadbd19"/>
       <repopackage name="libmarkdown2"/>
       <repopackage name="libmatroska7"/>
       <repopackage name="libmaxminddb0"/>
@@ -2333,6 +2339,7 @@
       <repopackage name="libmusicbrainz5-1"/>
       <repopackage name="libmwaw-0_3-3"/>
       <repopackage name="libmxml1"/>
+      <repopackage name="libmygpo-qt5-1"/>
       <repopackage name="libmypaint-1_6-1"/>
       <repopackage name="libmypaint-lang"/>
       <repopackage name="libmysofa1"/>
@@ -2381,6 +2388,7 @@
       <repopackage name="libobjc4"/>
       <repopackage name="libodbc2"/>
       <repopackage name="libodfgen-0_1-1"/>
+      <repopackage name="libofa0"/>
       <repopackage name="libogg0"/>
       <repopackage name="libogg0-32bit" arch="x86_64"/>
       <repopackage name="liboggkate1"/>
@@ -2472,7 +2480,7 @@
       <repopackage name="libpoppler-cpp0"/>
       <repopackage name="libpoppler-glib8"/>
       <repopackage name="libpoppler-qt5-1"/>
-      <repopackage name="libpoppler119"/>
+      <repopackage name="libpoppler120"/>
       <repopackage name="libpopt0"/>
       <repopackage name="libpopt0-32bit" arch="x86_64"/>
       <repopackage name="libportal-1"/>
@@ -2621,8 +2629,8 @@
       <repopackage name="libreoffice-base"/>
       <repopackage name="libreoffice-branding-openSUSE"/>
       <repopackage name="libreoffice-calc"/>
-      <repopackage name="libreoffice-draw"/>
-      <repopackage name="libreoffice-filters-optional"/>
+      <repopackage name="libreoffice-draw" arch="x86_64"/>
+      <repopackage name="libreoffice-filters-optional" arch="x86_64"/>
       <repopackage name="libreoffice-gnome"/>
       <repopackage name="libreoffice-gtk3"/>
       <repopackage name="libreoffice-icon-themes"/>
@@ -2776,6 +2784,7 @@
       <repopackage name="libsysfs2"/>
       <repopackage name="libsystemd0"/>
       <repopackage name="libsystemd0-32bit" arch="x86_64"/>
+      <repopackage name="libtag-extras1"/>
       <repopackage name="libtag1"/>
       <repopackage name="libtag_c0"/>
       <repopackage name="libtalloc2"/>
