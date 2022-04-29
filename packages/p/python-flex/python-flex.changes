@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 27 13:41:23 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Remove pytest-pythonpath and fix build
+
+-------------------------------------------------------------------
 Sun Aug 29 22:33:20 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Problems with gh#pipermerriam/flex#234 are not isolated just to

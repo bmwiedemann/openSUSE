@@ -1,7 +1,7 @@
 #
 # spec file for package python-flex
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,6 @@ BuildRequires:  %{python_module click >= 3.3}
 BuildRequires:  %{python_module factory_boy >= 2.4.1}
 BuildRequires:  %{python_module jsonpointer >= 1.7}
 BuildRequires:  %{python_module pytest-httpbin}
-BuildRequires:  %{python_module pytest-pythonpath >= 0.3}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.4.3}
 BuildRequires:  %{python_module responses >= 0.5.1}
@@ -71,6 +70,10 @@ Validation tooling for Swagger 2.0 specifications.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+PYTHONPATH=.
+# gh#pipermerriam/flex#236
+sed -i 's/werkzeug.wrappers.BaseRequest/werkzeug.wrappers.Request/' flex/http.py
+sed -i 's/werkzeug.wrappers.BaseResponse/werkzeug.wrappers.Response/' flex/http.py
 # gh#pipermerriam/flex#234
 %pytest -k "not (donttestdummyprefix or (test_request_parameter_array_extraction and tsv))"
 
