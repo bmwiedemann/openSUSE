@@ -1,7 +1,7 @@
 #
 # spec file for package tint
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2010 Guido Berhoerster <guido+opensuse.org@berhoerster.name>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           tint
-Version:        0.06
+Version:        0.07
 Release:        0
 Summary:        A Clone of the Original Tetris Game
 License:        BSD-3-Clause

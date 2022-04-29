@@ -1,6 +1,6 @@
-diff -urN tint-0.04.orig/tint.c tint-0.04/tint.c
---- tint-0.04.orig/tint.c	2010-06-23 13:16:32.000000000 +0200
-+++ tint-0.04/tint.c	2010-07-21 19:25:49.000000000 +0200
+diff -Nur tint-0.07/tint.c new/tint.c
+--- tint-0.07/tint.c	2022-02-06 17:57:02.000000000 +0100
++++ new/tint.c	2022-04-18 15:02:10.167998669 +0200
 @@ -32,13 +32,13 @@
  #include <string.h>
  #include <time.h>
@@ -16,9 +16,9 @@ diff -urN tint-0.04.orig/tint.c tint-0.04/tint.c
  #include "engine.h"
  
  /*
-@@ -69,10 +69,14 @@
- /* This calculates the real (displayed) value of the score */
- #define GETSCORE(score) ((score) / SCOREFACTOR)
+@@ -76,10 +76,14 @@
+       while (((ch = getchar()) != EOF) && (ch != '\n')); \
+    }
  
 +/* Name of the scorefile */
 +#define SCOREFILENAME "tint.scores"
@@ -31,7 +31,7 @@ diff -urN tint-0.04.orig/tint.c tint-0.04/tint.c
  
  /*
   * Functions
-@@ -568,8 +572,21 @@
+@@ -582,8 +586,21 @@
     bool finished;
     int ch;
     engine_t engine;
@@ -53,7 +53,7 @@ diff -urN tint-0.04.orig/tint.c tint-0.04/tint.c
     engine_init (&engine,score_function);	/* must be called before using engine.curshape */
     finished = shownext = FALSE;
     memset (shapecount,0,NUMSHAPES * sizeof (int));
-@@ -678,6 +695,7 @@
+@@ -693,6 +710,7 @@
  		showplayerstats (&engine);
  		savescores (GETSCORE (engine.score));
  	 }
@@ -61,9 +61,9 @@ diff -urN tint-0.04.orig/tint.c tint-0.04/tint.c
     exit (EXIT_SUCCESS);
  }
  
-diff -urN tint-0.04.orig/utils.c tint-0.04/utils.c
---- tint-0.04.orig/utils.c	2001-12-07 16:49:19.000000000 +0100
-+++ tint-0.04/utils.c	2010-07-21 19:26:42.000000000 +0200
+diff -Nur tint-0.07/utils.c new/utils.c
+--- tint-0.07/utils.c	2022-02-06 17:57:02.000000000 +0100
++++ new/utils.c	2022-04-18 15:02:10.167998669 +0200
 @@ -28,6 +28,7 @@
   */
  
@@ -115,9 +115,9 @@ diff -urN tint-0.04.orig/utils.c tint-0.04/utils.c
 +   return scorefile_path;
 +}
 +
-diff -urN tint-0.04.orig/utils.h tint-0.04/utils.h
---- tint-0.04.orig/utils.h	2001-12-07 16:49:35.000000000 +0100
-+++ tint-0.04/utils.h	2010-07-21 19:00:45.000000000 +0200
+diff -Nur tint-0.07/utils.h new/utils.h
+--- tint-0.07/utils.h	2022-02-06 17:57:02.000000000 +0100
++++ new/utils.h	2022-04-18 15:02:10.167998669 +0200
 @@ -47,4 +47,10 @@
   */
  bool str2int (int *i,const char *str);

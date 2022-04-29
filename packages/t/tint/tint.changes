@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 18 13:00:49 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.07
+  * Sanitize input after fgets()
+  * Fix deprecated function usage
+  * Make room for printing a 32 bit integer
+- Rebased tint-0.04-per-user-highscore.patch
+
+-------------------------------------------------------------------
 Thu Apr 22 15:51:13 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Resolve ambiguity about original closeness in description.
