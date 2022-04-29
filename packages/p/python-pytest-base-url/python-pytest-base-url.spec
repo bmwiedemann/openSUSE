@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-base-url
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,25 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-pytest-base-url
-Version:        1.4.2
+Version:        2.0.0
 Release:        0
 Summary:        Pytest plugin for URL based testing
 License:        MPL-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pytest-base-url
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-base-url/pytest-base-url-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytest >= 2.7.3
+Requires:       python-pytest >= 3.0.0
 Requires:       python-requests >= 2.9
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest >= 2.7.3}
+BuildRequires:  %{python_module pytest >= 3.0.0}
 BuildRequires:  %{python_module pytest-localserver}
 BuildRequires:  %{python_module requests >= 2.9}
 # /SECTION
@@ -46,17 +47,17 @@ pytest plugin for URL based testing.
 %setup -q -n pytest-base-url-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
 %files %{python_files}
-%doc CHANGES.rst README.rst
+%doc README.rst
 %license LICENSE
 %{python_sitelib}/*
 
