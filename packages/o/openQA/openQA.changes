@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 29 07:26:24 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1651126518.925dec9:
+  * Allow mailx in apparmor
+  * Dependency cron 2022-04-27
+  * Add simple command to generate HTML documentation
+  * Only tidy lib/, t/, tools/ and script/ directory
+  * Use OpenQA::Test::PatchDeparse from os-autoinst-common
+  * git subrepo pull (merge) external/os-autoinst-common
+  * Dependency cron 2022-04-26
+  * Allow python3.6 in apparmor
+  * Reduce retention of temporary files created by the web UI
+
+-------------------------------------------------------------------
 Sun Apr 24 01:49:33 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1650627339.b7e86d95b:
