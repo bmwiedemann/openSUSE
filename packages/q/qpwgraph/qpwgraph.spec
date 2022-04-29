@@ -17,7 +17,7 @@
 
 
 Name:           qpwgraph
-Version:        0.2.5
+Version:        0.2.6
 Release:        0
 Summary:        PipeWire Graph Qt GUI Interface
 License:        GPL-2.0-or-later
@@ -33,6 +33,7 @@ BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6Linguist)
 BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6Svg)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  pkgconfig(alsa)
