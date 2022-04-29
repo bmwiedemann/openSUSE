@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1650611277.d0e275b8
+Version:        4.6.1651143156.4d81dfa
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -92,6 +92,8 @@ Recommends:     tesseract-ocr
 Recommends:     perl(Inline::Python)
 # Optional dependency for crop.py
 Recommends:     python3-Pillow-tk
+# Optional dependency for QEMU's built-in samba service (enabled via QEMU_ENABLE_SMBD=1)
+Recommends:     samba
 Requires(pre):  %{_bindir}/getent
 Requires(pre):  %{_sbindir}/useradd
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
