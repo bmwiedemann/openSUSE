@@ -18,14 +18,14 @@
 
 %define c_lib   libvc0
 Name:           libvc
-Version:        009
+Version:        011
 Release:        0
 Summary:        Library to read and write vcard files
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libvc/libvc
 Source0:        https://github.com/libvc/libvc/archive/v%{version}.tar.gz
-BuildRequires:  autoconf
+BuildRequires:  autoconf >= 2.71
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  byacc

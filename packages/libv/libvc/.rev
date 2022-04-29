@@ -44,4 +44,21 @@
   * This version fixes minor warnings from libtoolize</comment>
     <requestid>869689</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c1bd5faa256e9c31862114e205a0b679</srcmd5>
+    <version>011</version>
+    <time>1651272358</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 011:
+  * Improved parsing of large vCard files
+- Update to 010:
+  * Remove the calls to exit() in the shared library
+  * Extend API with called vc_get_error_message, that can be used
+    to retrieve the message of the last error encountered.
+  * The functions parse_vcard_file, vc_new, and vc_param_new return
+    NULL upon error. It is the responsibility of the calling code
+    to check the error message.
+</comment>
+    <requestid>973884</requestid>
+  </revision>
 </revisionlist>
