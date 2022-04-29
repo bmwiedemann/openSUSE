@@ -1,7 +1,7 @@
 #
 # spec file for package libxcam
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -86,6 +86,10 @@ developing applications that use %{name}.
 %autosetup -p1 -n %{name}-release_%{version}
 
 %build
+%ifarch ppc64le
+export CXXFLAGS="$CXXFLAGS -std=gnu++11"
+%endif
+
 autoreconf -fiv
 %configure \
    --disable-static \

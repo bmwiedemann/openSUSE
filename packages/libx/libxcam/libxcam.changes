@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 29 04:50:51 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use -std=gnu++11 in ppc64le to work around a bug in gcc7 which
+  redefines bool in altivec.h thus making all code that uses bool
+  fail to build (boo#1195517)
+
+-------------------------------------------------------------------
 Fri Dec 17 22:27:31 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Really build against OpenCV4 (on TW), add
