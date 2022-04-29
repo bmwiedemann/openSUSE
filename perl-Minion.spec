@@ -18,10 +18,10 @@
 
 %define cpan_name Minion
 Name:           perl-Minion
-Version:        10.23
+Version:        10.24
 Release:        0
-Summary:        Job queue
 License:        Artistic-2.0
+Summary:        Job queue
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SR/SRI/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
