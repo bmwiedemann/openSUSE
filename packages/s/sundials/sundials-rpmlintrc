@@ -1,0 +1,2 @@
+# guideline does not cover multibuild/flavor cases
+addFilter("libsundials.*(openmpi|mvapich).*\S+: E: shlib-policy-name-error SONAME:.*")

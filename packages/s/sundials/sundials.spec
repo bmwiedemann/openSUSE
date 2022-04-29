@@ -1,7 +1,7 @@
 #
-# spec file for package sundials
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -113,6 +113,7 @@ Summary:        Suite of nonlinear solvers
 License:        BSD-3-Clause
 URL:            https://computation.llnl.gov/projects/sundials/
 Source0:        https://computation.llnl.gov/projects/sundials/download/%{pname}-%{version}.tar.gz
+Source99:       sundials-rpmlintrc
 # PATCH-FIX-UPSTREAM sundials-link-pthread.patch badshah400@gmail.com -- Explicitly link against pthread to fix linking errors when `-Wl,--no-undefined` is added to the linker flags
 Patch0:         sundials-link-pthread.patch
 BuildRequires:  blas-devel
