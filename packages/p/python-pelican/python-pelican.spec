@@ -46,7 +46,6 @@ BuildRequires:  %{python_module livereload}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-pythonpath}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
@@ -122,6 +121,7 @@ done
 
 %check
 export LC_ALL=C.utf8
+export PYTHONPATH=.
 # gh#getpelican/pelican#2846
 %pytest -k 'not (test_basic_generation_works or test_custom_generation_works or test_custom_locale_generation_works)'
 
