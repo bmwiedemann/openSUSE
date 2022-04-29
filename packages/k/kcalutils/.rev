@@ -647,4 +647,13 @@
     <comment>KDE release gear 22.04.0</comment>
     <requestid>971438</requestid>
   </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>d3c44b778f959ea92c72a0c085381546</srcmd5>
+    <version>22.04.0</version>
+    <time>1651272274</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream change to fix calendar invitations (kde#452480):
+  * 0001-Fix-Bug-452480-Kmail-doesn-t-display-calendar-invite.patch (forwarded request 973050 from cgiboudeaux)</comment>
+    <requestid>973056</requestid>
+  </revision>
 </revisionlist>

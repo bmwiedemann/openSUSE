@@ -32,6 +32,8 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-Bug-452480-Kmail-doesn-t-display-calendar-invite.patch
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(Grantlee5)
@@ -108,8 +110,7 @@ to develop applications wanting to use kcalutils.
 %{_kf5_mkspecsdir}/qt_KCalUtils.pri
 
 %files
-%dir %{_libdir}/KTextTemplate
-%{_libdir}/KTextTemplate/kcalendar_grantlee_plugin.so
+%{_libdir}/grantlee/
 
 %if %{with released}
 %files lang -f %{name}.lang
