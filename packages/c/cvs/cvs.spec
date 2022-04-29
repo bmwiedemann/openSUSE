@@ -1,7 +1,7 @@
 #
 # spec file for package cvs
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           cvs
 Version:        1.12.13
 Release:        0
 Summary:        Concurrent Versions System
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Development/Tools/Version Control
-Url:            http://www.nongnu.org/cvs/
+URL:            https://www.nongnu.org/cvs/
 Source:         http://ftp.gnu.org/non-gnu/%{name}/source/feature/%{version}/%{name}-%{version}.tar.bz2
 Source1:        http://www.does-not-exist.org/roessler/cvslock-0.2.tar.gz
 Source3:        cvs.sh
@@ -53,17 +53,18 @@ Patch27:        cvs-fix_printf_format.diff
 Patch28:        cvs-gnulib.diff
 Patch29:        cvs-CVE-2012-0804.patch
 Patch30:        cvs-Bug-1053364-disallow-dash.patch
+Patch31:        compile-with-Wformat-security.patch
 BuildRequires:  automake
 BuildRequires:  gdbm-devel
 BuildRequires:  groff
 BuildRequires:  krb5-devel
 BuildRequires:  openssh
-Requires:       openssh
 BuildRequires:  zlib-devel
 Requires:       %{_bindir}/csh
 Requires:       /bin/mktemp
+Requires:       openssh
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 
 %description
 CVS is a front-end to the rcs (Revision Control System) included in the
@@ -106,6 +107,7 @@ Development with CVS, 2nd Edition".
 %patch28
 %patch29
 %patch30 -p1
+%patch31 -p1
 
 %build
 autoreconf -fvi
@@ -117,9 +119,9 @@ export CFLAGS="%{optflags} -pipe -D_GNU_SOURCE -std=gnu99"
 cd cvslock-*
 %configure
 cd -
-make %{?_smp_mflags}
+%make_build
 cd cvslock-*
-make %{?_smp_mflags}
+%make_build
 cd -
 
 %install
@@ -166,7 +168,6 @@ install -m 0644 contrib/rcs2log.1 %{buildroot}/%{_mandir}/man1
 %service_del_postun cvs.target cvs.socket
 
 %files
-%defattr(-,root,root)
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/contrib
 %config(noreplace) %{_sysconfdir}/profile.d/cvs.sh
@@ -200,9 +201,8 @@ install -m 0644 contrib/rcs2log.1 %{buildroot}/%{_mandir}/man1
 %{_mandir}/man8/*%{ext_man}
 
 %files doc
-%defattr(-,root,root)
 %dir %{_defaultdocdir}/%{name}
-%{_infodir}/*.info*
+%{_infodir}/*.info*%{?ext_info}
 %doc %{_datadir}/%{name}/contrib/intro.doc
 %doc %{_defaultdocdir}/%{name}/OpenSourceDevWithCVS_2E.pdf
 

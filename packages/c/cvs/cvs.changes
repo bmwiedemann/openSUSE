@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 21 15:05:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add compile-with-Wformat-security.patch 
+
+-------------------------------------------------------------------
 Wed Sep 19 15:32:59 UTC 2018 - josef.moellers@suse.com
 
 - Upgrade to 1.12.13
