@@ -17,7 +17,7 @@
 
 
 Name:           pango
-Version:        1.50.4
+Version:        1.50.7
 Release:        0
 Summary:        Library for Layout and Rendering of Text
 License:        LGPL-2.1-or-later
@@ -133,8 +133,7 @@ to develop applications that require these.
 mkdir -p %{buildroot}%_rpmmacrodir
 cp %{SOURCE2} %{buildroot}%_rpmmacrodir
 
-%post -n libpango-1_0-0 -p /sbin/ldconfig
-%postun -n libpango-1_0-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libpango-1_0-0
 
 %files -n libpango-1_0-0
 %license COPYING
