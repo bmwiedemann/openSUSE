@@ -613,4 +613,12 @@
     <comment>version update</comment>
     <requestid>953416</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>fca13b24d6ac2c67fdc01b79b0df663b</srcmd5>
+    <version>2.17.1.1</version>
+    <time>1651272357</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>973879</requestid>
+  </revision>
 </revisionlist>
