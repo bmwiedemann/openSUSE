@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 27 13:31:36 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Don't rely on install.inf availability #(bsc#1198560)
+- 4.5.2
+
+-------------------------------------------------------------------
+Wed Apr 27 11:24:44 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed migration summary in Leap -> SLES migration (bsc#1198562)
+
+-------------------------------------------------------------------
 Thu Apr  7 11:28:48 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Show package downloads in the global progress bar during package
@@ -9,7 +20,7 @@ Thu Apr  7 11:28:48 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
 -------------------------------------------------------------------
 Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
-- Bump version to 4.5.0 (#bsc1198109)
+- Bump version to 4.5.0 (bsc#1198109)
 
 -------------------------------------------------------------------
 Thu Mar 31 15:52:11 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
