@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Apr 28 20:56:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.17:
+  * check:
+    * repair wrong num_devices in superblock
+    * recognize overly long xattr names
+    * fix wrong total bytes check for seed device
+  * auto-repair on read on RAID56
+  * property set: unify handling of empty value to mean default, changed meaning
+    for property 'compression' to allow reset to default and to set NOCOMPRESS,
+    since kernel 5.14
+  * fixes:
+    * dump-tree: print fs-verity items
+    * fix location of system chunk on zoned filesystem
+    * do not allow setting seeding flag on a filesystem with dirty log
+    * mkfs and subpage support: use sectorsize as nodesize fallback for mixed
+      profiles
+  * preparatory work for extent tree v2, global roots
+  * experimental feature (unstable interface, not built by default,
+    do not use for production):
+    * btrfstune: option --csum to switch checksum algorithm
+  * other:
+    * cleanups, refactoring
+    * update documentation build, remove asciidocs leftovers
+    * update fssum to consider xattrs
+    * add fsstress
+
+-------------------------------------------------------------------
+Wed Apr 27 11:10:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.16.2:
+  * mkfs: fix detection of profile type for zoned mode when creating DUP
+  * build:
+    * add missing stub for zoned mode helper when zoned mode not enabled
+    * fix 64bit types on MIPS and PowerPC
+    * improved zoned mode support autodetection, for systems with existing
+      blkzone.h header but missing support for zone capacity
+  * other:
+    * doc updates
+    * test updates
+- add gpg signature validation
+
+-------------------------------------------------------------------
 Wed Feb  9 00:00:00 CET 2022 - dsterba@suse.cz
 
 - Update to 5.16.1

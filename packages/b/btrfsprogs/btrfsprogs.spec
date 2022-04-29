@@ -34,15 +34,17 @@
 %define _dracutmodulesdir %(pkg-config --variable dracutmodulesdir dracut)
 
 Name:           btrfsprogs
-Version:        5.16.1
+Version:        5.17
 Release:        0
 Summary:        Utilities for the Btrfs filesystem
 License:        GPL-2.0-only
 Group:          System/Filesystems
-URL:            https://btrfs.wiki.kernel.org/index.php/Main_Page
+URL:            https://btrfs.wiki.kernel.org/
 #Git-Web:	http://git.kernel.org/cgit/linux/kernel/git/kdave/btrfs-progs.git
 #Git-Clone:	git://git.kernel.org/pub/scm/linux/kernel/git/kdave/btrfs-progs
 Source:         https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v%{version}.tar.gz
+Source100:      https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v%{version}.tar.sign
+Source101:      btrfsprogs.keyring
 # support for mkinitrd in < 13.1
 Source1:        boot-btrfs.sh
 Source2:        module-setup.sh.in
@@ -55,7 +57,7 @@ Provides:       btrfs-progs(%_arch) = %{version}-%{release}
 Patch1:         mkfs-default-features.patch
 
 %if %build_docs
-BuildRequires:  asciidoc
+BuildRequires:  python3-Sphinx
 %endif
 BuildRequires:  autoconf
 BuildRequires:  automake
