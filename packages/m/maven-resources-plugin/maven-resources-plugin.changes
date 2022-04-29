@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 28 11:51:20 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.2.0
+- Modified patch:
+  * maven-resources-plugin-bootstrap-resources.patch
+    + regenerate with current version of tools against the current
+      version of package
+
+-------------------------------------------------------------------
 Tue Mar 22 13:44:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 8

@@ -23,7 +23,7 @@
 %bcond_with bootstrap
 %endif
 %global base_name maven-resources-plugin
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Maven Resources Plugin
 License:        Apache-2.0
@@ -33,10 +33,11 @@ Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{base_n
 Source1:        %{base_name}-build.xml
 Patch0:         %{base_name}-bootstrap-resources.patch
 BuildRequires:  apache-commons-io
+BuildRequires:  apache-commons-lang3
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  maven-filtering
+BuildRequires:  maven-filtering >= 1.3
 BuildRequires:  maven-lib
 BuildRequires:  maven-plugin-annotations
 BuildRequires:  plexus-interpolation
@@ -94,6 +95,7 @@ cp %{SOURCE1} build.xml
 mkdir -p lib
 build-jar-repository -s lib \
     commons-io \
+    commons-lang3 \
     maven-filtering/maven-filtering \
     maven/maven-core \
     maven/maven-model \

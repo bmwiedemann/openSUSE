@@ -13,16 +13,16 @@
   <property name="project.description"
             value="The Resources Plugin handles the copying of project resources to the output
     directory. There are two different kinds of resources: main resources and test resources. The
-    difference is that the main resources are the resources associated to the main
-    source code while the test resources are associated to the test source code.
+    difference is that the main resources are the resources associated with the main
+    source code while the test resources are associated with the test source code.
     Thus, this allows the separation of resources for the main source code and its
     unit tests."/>
   <property name="project.groupId" value="org.apache.maven.plugins"/>
   <property name="project.artifactId" value="maven-resources-plugin"/>
-  <property name="project.version" value="3.1.0"/>
+  <property name="project.version" value="3.2.0"/>
   <property name="project.organization.name" value="The Apache Software Foundation"/>
 
-  <property name="spec.version" value="3.1"/>
+  <property name="spec.version" value="3.2"/>
 
   <property name="compiler.source" value="1.8"/>
   <property name="compiler.target" value="${compiler.source}"/>
