@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 25 08:54:10 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.50.1:
+  + dav:
+    - Drop user from URI as a workaround for Nextcloud bug.
+    - Port DNS-SD resolver to async API to fix hangs when mounting.
+    - Rewrite to libsoup async API to fix crashes.
+    - Do not lose userinfo when copying URIs.
+  + smb: Ignore EINVAL for kerberos/ccache login.
+- Drop gvfs-smb-ignore-EINVAL-kerberos-ccache.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Thu Apr 21 15:34:47 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Add gvfs-smb-ignore-EINVAL-kerberos-ccache.patch: ignore EINVAL
