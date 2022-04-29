@@ -794,4 +794,12 @@
     <comment>Update to 5.15.9 (forwarded request 967609 from cgiboudeaux)</comment>
     <requestid>967733</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>d4aa9493949291d6a4e41fa7e15a115c</srcmd5>
+    <version>5.15.9</version>
+    <time>1651272248</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>973537</requestid>
+  </revision>
 </revisionlist>

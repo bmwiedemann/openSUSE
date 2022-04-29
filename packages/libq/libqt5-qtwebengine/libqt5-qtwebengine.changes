@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 27 07:34:23 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add libqt5-qtwebengine-rpmlintrc to silence the
+  'shlib-policy-name-error' rpmlint error
+
+-------------------------------------------------------------------
 Wed Apr 06 14:41:04 UTC 2022 - christophe@krop.fr
 
 - Update to version 5.15.9:

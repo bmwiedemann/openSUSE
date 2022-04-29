@@ -40,6 +40,7 @@ URL:            https://www.qt.io
 %define so_version 5.15.9
 %define tar_version qtwebengine-everywhere-src-%{version}
 Source:         %{tar_version}.tar.xz
+Source99:       libqt5-qtwebengine-rpmlintrc
 # PATCH-FIX-UPSTREAM armv6-ffmpeg-no-thumb.patch - Fix ffmpeg configuration for armv6
 Patch0:         armv6-ffmpeg-no-thumb.patch
 # PATCH-FIX-OPENSUSE disable-gpu-when-using-nouveau-boo-1005323.diff
