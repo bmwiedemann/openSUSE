@@ -13,12 +13,11 @@ This prevents exploiting https://www.openwall.com/lists/oss-security/2022/04/08/
  1 file changed, 59 insertions(+)
  create mode 100644 profiles/apparmor.d/zgrep
 
-diff --git a/profiles/apparmor.d/zgrep b/profiles/apparmor.d/zgrep
-new file mode 100644
-index 000000000..0bf0765d1
+Index: apparmor-3.0.4/profiles/apparmor.d/zgrep
+===================================================================
 --- /dev/null
-+++ b/profiles/apparmor.d/zgrep
-@@ -0,0 +1,60 @@
++++ apparmor-3.0.4/profiles/apparmor.d/zgrep
+@@ -0,0 +1,62 @@
 +# ------------------------------------------------------------------
 +#
 +#    Copyright (C) 2021 Christian Boltz
@@ -50,6 +49,7 @@ index 000000000..0bf0765d1
 +  /usr/bin/xz Cx -> helper,
 +  /usr/bin/xzgrep r,
 +  /usr/bin/zgrep Cx -> helper,
++  /usr/bin/zstd Cx -> helper,
 +  owner /tmp/zgrep* rw,
 +  /usr/bin/zgrep r,
 +
@@ -66,6 +66,7 @@ index 000000000..0bf0765d1
 +    /usr/bin/grep mr,
 +    /usr/bin/gzip mr,
 +    /usr/bin/xz mr,
++    /usr/bin/zstd mr,
 +    /{,**} r,
 +
 +  }

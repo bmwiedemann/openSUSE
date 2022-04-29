@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 27 10:07:47 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Enhance zgrep-profile-mr870.diff to also allow/support zstd
+  (boo#1198922).
+
+-------------------------------------------------------------------
 Sat Apr 16 20:33:13 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
 
 - update zgrep-profile-mr870.diff to allow executing 'expr' (boo#1198531)

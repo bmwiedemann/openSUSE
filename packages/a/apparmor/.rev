@@ -2328,4 +2328,13 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
     <comment>- update zgrep-profile-mr870.diff to allow executing 'expr' (boo#1198531) (forwarded request 970465 from cboltz)</comment>
     <requestid>970466</requestid>
   </revision>
+  <revision rev="170" vrev="7">
+    <srcmd5>b47a978192d9f02cdd35fc8562a2ca07</srcmd5>
+    <version>3.0.4</version>
+    <time>1651272300</time>
+    <user>dimstar_suse</user>
+    <comment>- Enhance zgrep-profile-mr870.diff to also allow/support zstd
+  (boo#1198922). (forwarded request 973084 from dimstar)</comment>
+    <requestid>973180</requestid>
+  </revision>
 </revisionlist>
