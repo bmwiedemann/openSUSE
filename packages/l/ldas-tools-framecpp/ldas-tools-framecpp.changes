@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 27 09:49:40 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve rpmlint report "libframecpp.x86_64: E:
+  shlib-policy-name-error SONAME: libframecpp.so.12, expected
+  package suffix: 12" and similar.
+- Run fdupes over more files.
+
+-------------------------------------------------------------------
 Fri Oct 23 07:41:48 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add ldas-tools-framecpp-fix-pkgconfig.patch -- Fix paths in

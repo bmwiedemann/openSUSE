@@ -1,7 +1,7 @@
 #
 # spec file for package ldas-tools-framecpp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define _lto_cflags %{nil}
-%define shlib   libframecpp
-%define shlibc  libframecppc3
 Name:           ldas-tools-framecpp
 Version:        2.7.0
 Release:        0
@@ -39,8 +38,8 @@ BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(ldastoolscmake)
 BuildRequires:  pkgconfig(ldastoolsal)
+BuildRequires:  pkgconfig(ldastoolscmake)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
 
@@ -51,19 +50,89 @@ tools abstraction toolkit for LDAS.
 
 This package provides C++ bindings for libframe for dealing with frame files.
 
-%package -n %{shlib}
-Summary:        Shared lib for %{name} - C++ bindings for dealing with frame data
-Group:          Productivity/Scientific/Physics
+%package -n libframecpp12
+Summary:        C++ bindings for ldas-tools
+Group:          System/Libraries
+Conflicts:      libframecpp
 
-%description -n %{shlib}
-This package provides the shared library for %{name} - a toolkit providing C++
+%description -n libframecpp12
+This package provides a shared library for %{name} - a toolkit providing C++
+bindings for working with frame data.
+
+%package -n libframecpp3-6
+Summary:        C++ bindings for ldas-tools
+Group:          System/Libraries
+Conflicts:      libframecpp
+
+%description -n libframecpp3-6
+This package provides a shared library for %{name} - a toolkit providing C++
+bindings for working with frame data.
+
+%package -n libframecpp4-8
+Summary:        C++ bindings for ldas-tools
+Group:          System/Libraries
+Conflicts:      libframecpp
+
+%description -n libframecpp4-8
+This package provides a shared library for %{name} - a toolkit providing C++
+bindings for working with frame data.
+
+%package -n libframecpp6-8
+Summary:        C++ bindings for ldas-tools
+Group:          System/Libraries
+Conflicts:      libframecpp
+
+%description -n libframecpp6-8
+This package provides a shared library for %{name} - a toolkit providing C++
+bindings for working with frame data.
+
+%package -n libframecpp7-4
+Summary:        C++ bindings for ldas-tools
+Group:          System/Libraries
+Conflicts:      libframecpp
+
+%description -n libframecpp7-4
+This package provides a shared library for %{name} - a toolkit providing C++
+bindings for working with frame data.
+
+%package -n libframecpp8-7
+Summary:        C++ bindings for ldas-tools
+Group:          System/Libraries
+Conflicts:      libframecpp
+
+%description -n libframecpp8-7
+This package provides a shared library for %{name} - a toolkit providing C++
+bindings for working with frame data.
+
+%package -n libframecppc3
+Summary:        C bindings for ldas-tools
+Group:          System/Libraries
+
+%description -n libframecppc3
+This package provides a shared library for %{name} - a toolkit providing C
+bindings for working with frame data.
+
+%package -n libframecppcmn11
+Summary:        C++ bindings for ldas-tools
+Group:          System/Libraries
+Conflicts:      libframecpp
+
+%description -n libframecppcmn11
+This package provides a shared library for %{name} - a toolkit providing C++
 bindings for working with frame data.
 
 %package devel
 Summary:        Headers and source files for developing with %{name}
 Group:          Development/Libraries/C and C++
-Requires:       %{shlib} = %{version}
 Requires:       libboost_program_options-devel
+Requires:       libframecpp12 = %{version}-%{release}
+Requires:       libframecpp3-6 = %{version}-%{release}
+Requires:       libframecpp4-8 = %{version}-%{release}
+Requires:       libframecpp6-8 = %{version}-%{release}
+Requires:       libframecpp7-4 = %{version}-%{release}
+Requires:       libframecpp8-7 = %{version}-%{release}
+Requires:       libframecppc3 = %{version}-%{release}
+Requires:       libframecppcmn11 = %{version}-%{release}
 Requires:       pkgconfig(ldastoolsal)
 Requires:       pkgconfig(openssl)
 Requires:       pkgconfig(zlib)
@@ -72,17 +141,10 @@ Requires:       pkgconfig(zlib)
 This package provides the headers and sources needed for developing programs
 using %{name} - a toolkit providing C++ bindings for libframe.
 
-%package -n %{shlibc}
-Summary:        Shared lib for C bindings for %{name}
-Group:          Productivity/Scientific/Physics
-
-%description -n %{shlibc}
-This package provides the shared library for the C wrappers of %{name}.
-
 %package c-devel
 Summary:        Headers and source files for developing with %{name}'s in C
 Group:          Development/Libraries/C and C++
-Requires:       %{shlibc} = %{version}
+Requires:       libframecppc3 = %{version}-%{release}
 
 %description c-devel
 This package provides the headers and sources needed for developing programs
@@ -98,6 +160,7 @@ This package provides command line tools  for use with framecpp.
 %package doc
 Summary:        HTML documentation for %{name} API
 Group:          Documentation/HTML
+BuildArch:      noarch
 
 %description doc
 This package provides the API documentation for %{name} in HTML format.
@@ -135,21 +198,51 @@ make VERBOSE=1 %{?_smp_mflags}
 find %{buildroot} -type f -name "*.la" -delete -print
 find %{buildroot}%{_libdir} -name "*.a" -delete -print
 
-%fdupes %{buildroot}%{_docdir}/%{name}
+%fdupes %{buildroot}/%{_prefix}
 
-%post -n %{shlib} -p /sbin/ldconfig
-%postun -n %{shlib} -p /sbin/ldconfig
-%post -n %{shlibc} -p /sbin/ldconfig
-%postun -n %{shlibc} -p /sbin/ldconfig
+%post   -n libframecpp12 -p /sbin/ldconfig
+%postun -n libframecpp12 -p /sbin/ldconfig
+%post   -n libframecpp3-6 -p /sbin/ldconfig
+%postun -n libframecpp3-6 -p /sbin/ldconfig
+%post   -n libframecpp4-8 -p /sbin/ldconfig
+%postun -n libframecpp4-8 -p /sbin/ldconfig
+%post   -n libframecpp6-8 -p /sbin/ldconfig
+%postun -n libframecpp6-8 -p /sbin/ldconfig
+%post   -n libframecpp7-4 -p /sbin/ldconfig
+%postun -n libframecpp7-4 -p /sbin/ldconfig
+%post   -n libframecpp8-7 -p /sbin/ldconfig
+%postun -n libframecpp8-7 -p /sbin/ldconfig
+%post   -n libframecppc3 -p /sbin/ldconfig
+%postun -n libframecppc3 -p /sbin/ldconfig
+%post   -n libframecppcmn11 -p /sbin/ldconfig
+%postun -n libframecppcmn11 -p /sbin/ldconfig
 
-%files -n %{shlib}
+%files -n libframecpp12
 %{_libdir}/libframecpp.so.*
+
+%files -n libframecppcmn11
 %{_libdir}/libframecppcmn.so.*
+
+%files -n libframecpp3-6
 %{_libdir}/libframecpp3.so.*
+
+%files -n libframecpp4-8
 %{_libdir}/libframecpp4.so.*
+
+%files -n libframecpp6-8
 %{_libdir}/libframecpp6.so.*
+
+%files -n libframecpp7-4
 %{_libdir}/libframecpp7.so.*
+
+%files -n libframecpp8-7
 %{_libdir}/libframecpp8.so.*
+
+%files -n libframecppc3
+%{_libdir}/libframecppc.so.*
+
+%files -n libframecppcmn11
+%{_libdir}/libframecppcmn.so.*
 
 %files devel
 %{_includedir}/framecpp/
@@ -162,9 +255,6 @@ find %{buildroot}%{_libdir} -name "*.a" -delete -print
 %{_libdir}/libframecpp8.so
 %exclude %{_libdir}/pkgconfig/framecppc.pc
 %{_libdir}/pkgconfig/*.pc
-
-%files -n %{shlibc}
-%{_libdir}/libframecppc.so.*
 
 %files c-devel
 %{_includedir}/framecppc/
