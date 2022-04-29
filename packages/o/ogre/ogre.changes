@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Apr  6 22:07:10 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 13.3.4
+  * GL3+: improved performance by 10% when draw-call bound
+  * Codec_Assimp: allow loading glTF2 meshes
+  * RTSS: PBR material support
+  * Improved Gamepad Support via Bites
+  * Bites: also scale button events on OSX
+  * RTSS: PSSM3 - use projective space splits to allow reversed-Z
+  * Vulkan: implement Reversed Depth mode
+- Remove upstream merged patches
+  * 0001-Fix-plugins-not-installed-into-OGRE_PLUGINS_PATH.patch
+  * ff55ef7b272fa0fb5be935ac41af67f5d6e15bf4.patch
+  * fix-assimp-cmake.patch
+- python3-sitelib.patch is now openSUSE specific, upstream voted
+  against it.
+- Rebased 0001-Vulkan-Use-find_package-to-support-system-wide-insta.patch
+
+-------------------------------------------------------------------
 Tue Dec 21 18:53:03 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Use update-alternatives for plugin.cfg

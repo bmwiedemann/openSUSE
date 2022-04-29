@@ -17,7 +17,7 @@
 
 
 %define major 13
-%define minor 2
+%define minor 3
 %define third 4
 %define sover  %{major}.%{minor}
 %define soname %{major}_%{minor}
@@ -38,14 +38,8 @@ URL:            https://www.ogre3d.org/
 Source0:        https://github.com/OGRECave/ogre/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/ocornut/imgui/archive/v%{im_version}.tar.gz#/imgui-%{im_version}.tar.gz
 Source99:       %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM python3-sitelib.patch -- https://github.com/OGRECave/ogre/pull/2317
+# PATCH-FIX-OPENSUSE python3-sitelib.patch -- Fix python path detected on build time
 Patch0:         python3-sitelib.patch
-# PATCH-FIX-UPSTREAM fix-assimp-cmake.patch -- https://github.com/OGRECave/ogre/pull/2318
-Patch1:         fix-assimp-cmake.patch
-# PATCH-FIX-UPSTREAM ff55ef7b272fa0fb5be935ac41af67f5d6e15bf4.patch -- Fix linking with no-undefined set
-Patch2:         https://github.com/OGRECave/ogre/commit/ff55ef7b272fa0fb5be935ac41af67f5d6e15bf4.patch
-# PATCH-FIX-UPSTREAM 0001-Fix-plugins-not-installed-into-OGRE_PLUGINS_PATH.patch -- https://github.com/OGRECave/ogre/pull/2320
-Patch3:         0001-Fix-plugins-not-installed-into-OGRE_PLUGINS_PATH.patch
 # PATCH-FEAT-UPSTREAM 0001-Vulkan-Use-find_package-to-support-system-wide-insta.patch
 Patch4:         0001-Vulkan-Use-find_package-to-support-system-wide-insta.patch
 BuildRequires:  cmake >= 3.10
@@ -682,7 +676,6 @@ fi
 %exclude %{_datadir}/OGRE/Media/Terrain/
 %{_datadir}/OGRE/GLX_backdrop.png
 %{_datadir}/OGRE/samples.cfg
-%{_datadir}/OGRE/tests.cfg
 
 %files -n ogre-demos-devel
 %{_datadir}/OGRE/Samples
