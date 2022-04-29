@@ -25,4 +25,12 @@
     <comment>GNOME 42 - ready for impact</comment>
     <requestid>963644</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4bd3af48217d4bdaa519ad94b1bf6aab</srcmd5>
+    <version>42.1</version>
+    <time>1651272297</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 973163 from dimstar)</comment>
+    <requestid>973168</requestid>
+  </revision>
 </revisionlist>

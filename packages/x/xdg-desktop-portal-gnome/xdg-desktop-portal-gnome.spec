@@ -17,12 +17,12 @@
 
 
 Name:           xdg-desktop-portal-gnome
-Version:        42.0.1
+Version:        42.1
 Release:        0
 Summary:        A backend implementation for xdg-desktop-portal
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome
-Source:         https://download.gnome.org/sources/%{name}/42/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/xdg-desktop-portal-gnome/42/%{name}-%{version}.tar.xz
 
 BuildRequires:  c_compiler
 BuildRequires:  fontconfig
