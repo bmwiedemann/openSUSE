@@ -605,4 +605,16 @@
   * Changed stderr to stdout on non-error output when exiting goaccess.</comment>
     <requestid>966435</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8acfb6219755e53dc9ff4e8ed88b325a</srcmd5>
+    <version>1.5.7</version>
+    <time>1651272328</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.7:
+  * Updated Caddy's JSON format. This should address CADDY's v2.5.0 change.
+  * Updated GeoIP module so it defaults to native language name (i18n) or
+    fall-back to English.
+  * Updated translations</comment>
+    <requestid>973802</requestid>
+  </revision>
 </revisionlist>

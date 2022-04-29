@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 29 05:17:11 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.5.7:
+  * Updated Caddy's JSON format. This should address CADDY's v2.5.0 change.
+  * Updated GeoIP module so it defaults to native language name (i18n) or
+    fall-back to English.
+  * Updated translations
+
+-------------------------------------------------------------------
 Fri Apr  1 13:31:35 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.5.6:
