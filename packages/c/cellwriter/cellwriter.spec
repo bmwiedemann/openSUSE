@@ -1,7 +1,7 @@
 #
 # spec file for package cellwriter
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Character-based handwriting input panel
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
-URL:            http://risujin.org/cellwriter/
+URL:            https://github.com/risujin/cellwriter
 Source0:        https://github.com/risujin/cellwriter/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Fix-build-failure-with-GCC10.patch
