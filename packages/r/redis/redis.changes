@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Apr 27 21:17:06 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- redis 6.2.7:
+  * CVE-2022-24736: An attacker attempting to load a specially
+    crafted Lua script can cause NULL pointer dereference which
+    will result with a crash of the redis-server process
+    (boo#1198953)
+  * CVE-2022-24735: By exploiting weaknesses in the Lua script
+    execution environment, an attacker with access to Redis can
+    inject Lua code that will execute with the (potentially higher)
+    privileges of another Redis user (boo#1198952)
+  * LPOP/RPOP with count against non-existing list return null array
+  * LPOP/RPOP used to produce wrong replies when count is 0
+  * Speed optimization in command execution pipeline
+  * Fix regression in Z[REV]RANGE commands (by-rank) introduced in
+    Redis 6.2
+  * Fix OpenSSL 3.0.x related issues
+  * Bug fixes
+
+-------------------------------------------------------------------
 Mon Nov 15 12:57:13 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
