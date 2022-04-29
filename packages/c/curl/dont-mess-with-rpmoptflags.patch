@@ -1,8 +1,8 @@
-Index: configure.ac
+Index: curl-7.82.0/configure.ac
 ===================================================================
---- configure.ac.orig	2013-02-07 11:55:15.150276599 +0100
-+++ configure.ac	2013-02-07 11:55:15.167277116 +0100
-@@ -288,10 +288,6 @@ dnl platform/compiler/architecture speci
+--- curl-7.82.0.orig/configure.ac
++++ curl-7.82.0/configure.ac
+@@ -395,10 +395,6 @@ dnl platform/compiler/architecture speci
  dnl **********************************************************************
  
  CURL_CHECK_COMPILER

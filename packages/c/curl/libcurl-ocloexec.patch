@@ -7,10 +7,10 @@ To make it portable you have to test O_CLOEXEC support at *runtime*
 compile time is not enough.
 
 
-Index: curl-7.79.0/lib/file.c
+Index: curl-7.82.0/lib/file.c
 ===================================================================
---- curl-7.79.0.orig/lib/file.c
-+++ curl-7.79.0/lib/file.c
+--- curl-7.82.0.orig/lib/file.c
++++ curl-7.82.0/lib/file.c
 @@ -194,7 +194,7 @@ static CURLcode file_connect(struct Curl
      return CURLE_URL_MALFORMAT;
    }
@@ -29,11 +29,11 @@ Index: curl-7.79.0/lib/file.c
    if(fd < 0) {
      failf(data, "Can't open %s for writing", file->path);
      return CURLE_WRITE_ERROR;
-Index: curl-7.79.0/lib/if2ip.c
+Index: curl-7.82.0/lib/if2ip.c
 ===================================================================
---- curl-7.79.0.orig/lib/if2ip.c
-+++ curl-7.79.0/lib/if2ip.c
-@@ -202,7 +202,7 @@ if2ip_result_t Curl_if2ip(int af, unsign
+--- curl-7.82.0.orig/lib/if2ip.c
++++ curl-7.82.0/lib/if2ip.c
+@@ -204,7 +204,7 @@ if2ip_result_t Curl_if2ip(int af,
    if(len >= sizeof(req.ifr_name))
      return IF2IP_NOT_FOUND;
  
@@ -42,11 +42,11 @@ Index: curl-7.79.0/lib/if2ip.c
    if(CURL_SOCKET_BAD == dummy)
      return IF2IP_NOT_FOUND;
  
-Index: curl-7.79.0/lib/connect.c
+Index: curl-7.82.0/lib/connect.c
 ===================================================================
---- curl-7.79.0.orig/lib/connect.c
-+++ curl-7.79.0/lib/connect.c
-@@ -1598,7 +1598,9 @@ CURLcode Curl_socket(struct Curl_easy *d
+--- curl-7.82.0.orig/lib/connect.c
++++ curl-7.82.0/lib/connect.c
+@@ -1622,7 +1622,9 @@ CURLcode Curl_socket(struct Curl_easy *d
    }
    else
      /* opensocket callback not set, so simply create the socket now */
@@ -57,11 +57,11 @@ Index: curl-7.79.0/lib/connect.c
  
    if(*sockfd == CURL_SOCKET_BAD)
      /* no socket, no connection */
-Index: curl-7.79.0/configure.ac
+Index: curl-7.82.0/configure.ac
 ===================================================================
---- curl-7.79.0.orig/configure.ac
-+++ curl-7.79.0/configure.ac
-@@ -297,6 +297,8 @@ AC_DEFINE_UNQUOTED(OS, "${host}", [cpu-m
+--- curl-7.82.0.orig/configure.ac
++++ curl-7.82.0/configure.ac
+@@ -320,6 +320,8 @@ AC_DEFINE_UNQUOTED(OS, "${host}", [cpu-m
  # Silence warning: ar: 'u' modifier ignored since 'D' is the default
  AC_SUBST(AR_FLAGS, [cr])
  
@@ -70,10 +70,10 @@ Index: curl-7.79.0/configure.ac
  dnl This defines _ALL_SOURCE for AIX
  CURL_CHECK_AIX_ALL_SOURCE
  
-Index: curl-7.79.0/lib/hostip.c
+Index: curl-7.82.0/lib/hostip.c
 ===================================================================
---- curl-7.79.0.orig/lib/hostip.c
-+++ curl-7.79.0/lib/hostip.c
+--- curl-7.82.0.orig/lib/hostip.c
++++ curl-7.82.0/lib/hostip.c
 @@ -49,7 +49,7 @@
  #ifdef HAVE_PROCESS_H
  #include <process.h>

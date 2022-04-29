@@ -1,4 +1,155 @@
 -------------------------------------------------------------------
+Fri Apr 22 11:39:46 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Patches rework:
+  * Refreshed all patches as -p1.
+  * Use autopatch macro.
+  * Renamed: 
+    - dont-mess-with-rpmoptflags.diff -> dont-mess-with-rpmoptflags.patch
+  * Removed (already upstream):
+    - curl-fix-verifyhost.patch
+
+- Update to 7.83.0:
+  * Security fixes:
+    - (bsc#1198766, CVE-2022-27776) Auth/cookie leak on redirect
+    - (bsc#1198723, CVE-2022-27775) Bad local IPv6 connection reuse
+    - (bsc#1198608, CVE-2022-27774) Credential leak on redirect
+    - (bsc#1198614, CVE-2022-22576) OAUTH2 bearer bypass in connection re-use
+  * Changes:
+    - curl: add %header{name} experimental support in -w handling
+    - curl: add %{header_json} experimental support in -w handling
+    - curl: add --no-clobber
+    - curl: add --remove-on-error
+    - header api: add curl_easy_header and curl_easy_nextheader
+    - msh3: add support for QUIC and HTTP/3 using msh3 
+  * Bugfixes:
+    - appveyor: add Cygwin build
+    - appveyor: only add MSYS2 to PATH where required
+    - BearSSL: add CURLOPT_SSL_CIPHER_LIST support
+    - BearSSL: add CURLOPT_SSL_CTX_FUNCTION support
+    - BINDINGS.md: add Hollywood binding
+    - CI: Do not use buildconf. Instead, just use: autoreconf -fi
+    - CI: install Python package impacket to run SMB test 1451
+    - configure.ac: move -pthread CFLAGS setting back where it used to be
+    - configure: bump the copyright year range int the generated output
+    - conncache: include the zone id in the "bundle" hashkey
+    - connecache: remove duplicate connc->closure_handle check
+    - connect: make Curl_getconnectinfo work with conn cache from share handle
+    - connect: use TCP_KEEPALIVE only if TCP_KEEPIDLE is not defined
+    - cookie.d: clarify when cookies are sent
+    - cookies: improve errorhandling for reading cookiefile
+    - curl/system.h: update ifdef condition for MCST-LCC compiler
+    - curl: error out if -T and -d are used for the same URL
+    - curl: error out when options need features not present in libcurl
+    - curl: escape '?' in generated --libcurl code
+    - curl: fix segmentation fault for empty output file names.
+    - curl_easy_header: fix typos in documentation
+    - CURLINFO_PRIMARY_PORT.3: clarify which port this is
+    - CURLOPT*TLSAUTH.3: they only work with OpenSSL or GnuTLS
+    - CURLOPT_DISALLOW_USERNAME_IN_URL.3: use uppercase URL
+    - CURLOPT_PREQUOTE.3: only works for FTP file transfers, not dirs
+    - CURLOPT_PROGRESSFUNCTION.3: fix typo in example
+    - CURLOPT_UNRESTRICTED_AUTH.3: extended explanation
+    - CURLSHOPT_UNLOCKFUNC.3: fix the callback prototype
+    - docs/HYPER.md: updated to reflect current hyper build needs
+    - docs/opts: Mention Schannel client cert type is P12
+    - docs: Fix missing semicolon in example code
+    - docs: lots of minor language polish
+    - English: use American spelling consistently
+    - fail.d: tweak the description
+    - firefox-db2pem.sh: make the shell script safer
+    - ftp: fix error message for partial file upload
+    - gen.pl: change wording for mutexed options
+    - GHA: add openssl3 jobs moved over from zuul
+    - GHA: build hyper with nightly rustc
+    - GHA: move bearssl jobs over from zuul
+    - gha: move the event-based test over from Zuul
+    - gtls: fix build for disabled TLS-SRP
+    - http2: handle DONE called for the paused stream
+    - http2: RST the stream if we stop it on our own will
+    - http: avoid auth/cookie on redirects same host diff port
+    - http: close the stream (not connection) on time condition abort
+    - http: reject header contents with nul bytes
+    - http: return error on colon-less HTTP headers
+    - http: streamclose "already downloaded"
+    - hyper: fix status_line() return code
+    - hyper: fix tests 580 and 581 for hyper
+    - hyper: no h2c support
+    - infof: consistent capitalization of warning messages
+    - ipv4/6.d: clarify that they are about using IP addresses
+    - json.d: fix typo (overriden -> overridden)
+    - keepalive-time.d: It takes many probes to detect brokenness
+    - lib/warnless.[ch]: only check for WIN32 and ignore _WIN32
+    - lib670: avoid double check result
+    - lib: #ifdef on USE_HTTP2 better
+    - lib: fix some misuse of curlx_convert_wchar_to_UTF8
+    - lib: remove exclamation marks
+    - libssh2: compare sha256 strings case sensitively
+    - libssh2: make the md5 comparison fail if wrong length
+    - libssh: fix build with old libssh versions
+    - libssh: fix double close
+    - libssh: Improve fix for missing SSH_S_ stat macros
+    - libssh: unstick SFTP transfers when done event-based
+    - macos: set .plist version in autoconf
+    - mbedtls: remove 'protocols' array from backend when ALPN is not used
+    - mbedtls: remove server_fd from backend
+    - mk-ca-bundle.pl: Use stricter logic to process the certificates
+    - mk-ca-bundle.vbs: delete this script in favor of mk-ca-bundle.pl
+    - mlc_config.json: add file to ignore known troublesome URLs
+    - mqtt: better handling of TCP disconnect mid-message
+    - ngtcp2: add client certificate authentication for OpenSSL
+    - ngtcp2: avoid busy loop in low CWND situation
+    - ngtcp2: deal with sub-millisecond timeout
+    - ngtcp2: disconnect the QUIC connection proper
+    - ngtcp2: enlarge H3_SEND_SIZE
+    - ngtcp2: fix HTTP/3 upload stall and avoid busy loop
+    - ngtcp2: fix memory leak
+    - ngtcp2: fix QUIC_IDLE_TIMEOUT
+    - ngtcp2: make curl 1ms faster
+    - ngtcp2: remove remote_addr which is not used in a meaningful way
+    - ngtcp2: update to work after recent ngtcp2 updates
+    - ngtcp2: use token when detecting :status header field
+    - nonblock: restore setsockopt method to curlx_nonblock
+    - openssl: check SSL_get_peer_cert_chain return value
+    - openssl: enable CURLOPT_SSL_EC_CURVES with BoringSSL
+    - openssl: fix CN check error code
+    - options: remove mistaken space before paren in prototype
+    - perl: removed a double semicolon at end of line
+    - pop3/smtp: return *WEIRD_SERVER_REPLY when not understood
+    - projects/README: converted to markdown
+    - projects: Update VC version names for VS2017, VS2022
+    - rtsp: don't let CSeq error override earlier errors
+    - runtests: add 'bearssl' as testable feature
+    - runtests: make 'oldlibssh' be before 0.9.4
+    - schannel: remove dead code that will never run
+    - scripts/copyright.pl: ignore the new mlc_config.json file
+    - scripts: move three scripts from lib/ to scripts/
+    - test1135: sync with recent API updates
+    - test1459: disable for oldlibssh
+    - test375: fix line endings on Windows
+    - test386: Fix an incorrect test markup tag
+    - test718: edited slightly to return better HTTP
+    - tests/server/util.h: align WIN32 condition with util.c
+    - tests: refactor server/socksd.c to support --unix-socket
+    - timediff.[ch]: add curlx helper functions for timeval conversions
+    - tls: make mbedtls and NSS check for h2, not nghttp2
+    - tool and tests: force flush of all buffers at end of program
+    - tool_cb_hdr: Turn the Location: into a terminal hyperlink
+    - tool_getparam: error out on missing -K file
+    - tool_listhelp.c: uppercase URL
+    - tool_operate: fix a scan-build warning
+    - tool_paramhlp: use feof(3) to identify EOF correctly when using fread(3)
+    - transfer: redirects to other protocols or ports clear auth
+    - unit1620: call global_init before calling Curl_open
+    - url: check sasl additional parameters for connection reuse.
+    - vtls: provide a unified APLN-disagree string for all backends
+    - vtls: use a backend standard message for "ALPN: offers %s"
+    - vtls: use a generic "ALPN, server accepted" message
+    - winbuild/README.md: fixup dead link
+    - winbuild: Add a Visual Studio example to the README
+    - wolfssl: fix compiler error without IPv6 
+
+-------------------------------------------------------------------
 Fri Mar 11 16:36:50 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix: openssl: fix CN check error code
