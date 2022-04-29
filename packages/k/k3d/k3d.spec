@@ -1,5 +1,7 @@
+#
 # spec file for package k3d
 #
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021 Orville Q. Song <orville@anislet.dev>
 #
 # All modifications and additions to the file contributed by third parties
@@ -14,6 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global k3s_tag     v1.21.7-k3s1
 
 %global provider        github
@@ -24,14 +27,14 @@
 %global import_path     %{provider_prefix}/%{repo}
 
 Name:           k3d
-Version:        5.2.2
+Version:        5.4.1
 Release:        0
 Summary:        Little helper to run Rancher Lab's k3s in Docker
 License:        MIT
 Group:          System/Management
 URL:            https://github.com/rancher/k3d
-Source0:        %{name}-%{version}.tar.xz
-Source1:        %{name}-vendor.tar.xz
+Source0:        %{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.16
 

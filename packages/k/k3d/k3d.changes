@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue Apr 26 06:47:17 UTC 2022 - guillaume.gardet@opensuse.org
+
+- Update to version 5.4.1:
+  * chore: update dependencies
+  * change/readme: rancher -> k3d-io in go module shield
+  * v5.4.0: compatibility notes
+  * Release/v5.4.0 (#1035)
+  * change: no default image for node creation in local cluster where image should be copied from existing nodes (#1034)
+  * [CHORE] change: update docs requirements and re-run docgen for commands (#1033)
+  * add: node create --k3s-arg flag (#1032)
+  * [FIX] store hostAliases in label to persist them across cluster stop/start (#1029)
+  * [FIX] GetGatewayIP for host.k3d.internal should error out if there's no gateway defined (#1027)
+  * hotfix: switch default for image import to original tools-node mode, because direct mode failed fairly often
+  * [Enhancement] Github Actions: new Release job (#1024)
+  * ghactions: add new github release job
+  * [Enhancement] GitHub Actions (#977)
+  * Do not defer goroutine to delete tools node, as this leads to errors (fixes #1006)
+  * install.sh: Invoke curl with secure defaults (#999)
+  * fix zsh completion output (#1014)
+  * fix unit test translate node to container
+  * Add Connect section to k3d.io (#988)
+  * docs: Podman (rootful/rootless) usage docs (#987)
+  * fix: Use bridge as the default networking mode (#986)
+  * Update readme with k3s-io (#985)
+  * docs: add config file tips section telling about env var expansion
+  * docs/faq: longhorn
+  * ci/action/arch: Switch from absolute Arch docker version to a more relaxed one (#966)
+  * fix: volume shortcuts not working because clusterconfig was not being processed
+  * fix: order of format options in volume deletion warning
+  * [Migration] search and replace rancher/k3d with k3d-io/k3d in most places (#976)
+  * Create FUNDING.yml
+  * add gh action for release
+  * docs: add compatibility subpage
+  * v5.3.0: Changelog + Compatibility Docs
+  * fix: invert logic for LOG_LEVEL parsing (#958)
+  * fix: clusterDelete: properly parse config file to avoid failure on v1alpha4
+  * [Enhancement] Compatibility Tests (#956)
+  * ci/gha: docker matrix
+  * [Fix] detect '--disable=coredns' and conditionally disable injection (#955)
+  * fix: ensure labels on serverlb
+  * fix: mutex on ensureToolsNode to avoid duplicate container name causing error (#952)
+  * add env var LOG_COLORS=[1|true|0|false] to toggle colored log output (enabled by default) (#951)
+  * Fix typo in node.go (#949)
+  * fix: serverlb should be created before using and restarted unless stopped (#948)
+  * docs: add erikgb as a contributor for code (#946)
+  * [FEATURE] Config file compatible with Kustomize (#945)
+  * [Feature] Config v1alpha4 (#944)
+  * license: time range everywhere
+  * license: - 2022
+  * add: schema versions in-repo to link to from schemastore.org (#942)
+  * [Feature] add: config options to configure extra hosts (#938)
+  * [FEATURE] host pid mode support for k3s-server and k3s-agent (#929)
+  * tests/e2e: allow option E2E_DIND_VERSION to test with different Docker versions
+  * chore: update deps
+  * chore: update direct dependencies
+  * docs: update docker/runc requirement note
+  * [Feature] Volume Shortcuts and k3d-managed volumes (#916)
+  * tests/e2e: output runtime info for debugging purposes
+  * nodeCreate: do not copy memory limit from node of different role (fixes #893)
+
+-------------------------------------------------------------------
 Sun Dec 19 11:48:18 UTC 2021 - Orville Q. Song <orville@anislet.dev>
 
 - Update to version 5.2.2:
