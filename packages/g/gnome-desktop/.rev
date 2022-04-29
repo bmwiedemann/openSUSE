@@ -1320,4 +1320,16 @@
     <comment></comment>
     <requestid>963974</requestid>
   </revision>
+  <revision rev="177" vrev="1">
+    <srcmd5>7602969b741f1139553fddb9498d1741</srcmd5>
+    <version>42.1</version>
+    <time>1651272264</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 42.1:
+  + Fix build_gtk4 option.
+  + Updated translations.
+- Drop a3ed548d92b160245b79978ae362d47091ad8dad.patch: fixed
+  upstream. (forwarded request 973710 from dimstar)</comment>
+    <requestid>973713</requestid>
+  </revision>
 </revisionlist>

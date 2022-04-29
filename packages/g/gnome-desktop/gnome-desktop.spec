@@ -17,7 +17,7 @@
 
 
 Name:           gnome-desktop
-Version:        42.0
+Version:        42.1
 Release:        0
 Summary:        The GNOME Desktop API Library
 License:        LGPL-2.1-or-later
@@ -27,8 +27,6 @@ Source0:        https://download.gnome.org/sources/gnome-desktop/42/%{name}-%{ve
 
 # PATCH-FIX-OPENSUSE gnome-desktop-switch-Japanese-default-input-to-mozc.patch bnc#1029083 boo#1056289 qzhao@suse.com -- Switch new user's default input engine from "anthy" to "mozc" in gnome-desktop with Japanese language and ibus input frame-work condition.
 Patch1:         gnome-desktop-switch-Japanese-default-input-to-mozc.patch
-# PATCH-FIX-UPSTREAM a3ed548d92b160245b79978ae362d47091ad8dad.patch -- meson: Fix build_gtk4 option
-Patch2:         https://gitlab.gnome.org/GNOME/gnome-desktop/-/commit/a3ed548d92b160245b79978ae362d47091ad8dad.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel

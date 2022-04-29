@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 28 11:15:31 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
+
+- Update to version 42.1:
+  + Fix build_gtk4 option.
+  + Updated translations.
+- Drop a3ed548d92b160245b79978ae362d47091ad8dad.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Tue Mar 22 08:00:53 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.0:
