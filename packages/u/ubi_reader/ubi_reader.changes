@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 28 19:51:32 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.0
+  * Fixed: Handling of 0x00 blocks at start of file.
+
+-------------------------------------------------------------------
 Mon Jan 17 21:34:21 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.7.2
