@@ -186,4 +186,15 @@
   (jsc#SLE-21105). (forwarded request 919961 from sbrabec)</comment>
     <requestid>920293</requestid>
   </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>4ad65b726e4c8af05843675278e4a927</srcmd5>
+    <version>0.4.6</version>
+    <time>1651272280</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename libepc-1_0-2 subpackage to libepc-1_0-3, matching the
+  actual libraries provided.
+- Conflict libepc-1_0-3 with libepc-1_0-2 &gt;= 0.4: version 0.4 was
+  wrongly packaged, the conflict aids with the migrations path. (forwarded request 972643 from dimstar)</comment>
+    <requestid>973127</requestid>
+  </revision>
 </revisionlist>

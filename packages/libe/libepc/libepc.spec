@@ -1,7 +1,7 @@
 #
 # spec file for package libepc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2009 Dominique Leuenberger, Almere, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -42,13 +42,15 @@ The Easy Publish and Consume library provides methods to publish
 data via HTTPS, announce data via DNS-SD, re-find and consume this
 data.
 
-%package 1_0-2
+%package 1_0-3
 Summary:        Easy Publish and Consume Library
 Group:          System/Libraries
 # For lang package to be installable:
 Provides:       %{name} = %{version}
+# Version 0.4.x wrongly packaged libepc-1.0.so.3 in libepc-1_0-2
+Conflicts:      libepc-1_0-2 >= 0.4
 
-%description 1_0-2
+%description 1_0-3
 The Easy Publish and Consume library provides methods to publish
 data via HTTPS, announce data via DNS-SD, re-find and consume this
 data.
@@ -59,7 +61,7 @@ network, using encryption, authentication and service discovery.
 %package devel
 Summary:        Easy Publish and Consume Library
 Group:          Development/Libraries/GNOME
-Requires:       %{name}-1_0-2 = %{version}
+Requires:       %{name}-1_0-3 = %{version}
 
 %description devel
 Development headers for libepc.
@@ -82,10 +84,10 @@ data.
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}
 
-%post 1_0-2 -p /sbin/ldconfig
-%postun 1_0-2 -p /sbin/ldconfig
+%post 1_0-3 -p /sbin/ldconfig
+%postun 1_0-3 -p /sbin/ldconfig
 
-%files 1_0-2
+%files 1_0-3
 %{_libdir}/%{name}*.so.*
 
 %files devel
