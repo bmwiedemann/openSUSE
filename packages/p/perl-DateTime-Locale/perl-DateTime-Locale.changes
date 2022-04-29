@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Apr 24 03:06:18 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.35
+   see /usr/share/doc/packages/perl-DateTime-Locale/Changes
+
+  1.35     2022-04-23
+
+  - The code passed to DateTime::Locale->load is now validated and untainted
+    before using it to load and eval data from the filesystem. I don't think
+    there were any security issues without this, as the load method would only
+    attempt to load data from disk if the code was already known. This means
+    that attempting to pass in any sort of arbitrary path to the load method
+    would simply result in an error that the code was invalid, and there would
+    be no attempt to read from disk. Based on GH #30. Implemented by James
+    Raspass.
+
+-------------------------------------------------------------------
 Sat Apr  9 03:06:18 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.34
