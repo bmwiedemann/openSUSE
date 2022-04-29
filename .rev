@@ -1367,4 +1367,12 @@ Also wanted for 13.1</comment>
   with samba 4.16 (boo#1198718). (forwarded request 971872 from mgorse)</comment>
     <requestid>972027</requestid>
   </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>c2611e0840b121fcf10690d04351aebe</srcmd5>
+    <version>1.50.1</version>
+    <time>1651272290</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 972574 from dimstar)</comment>
+    <requestid>973151</requestid>
+  </revision>
 </revisionlist>
