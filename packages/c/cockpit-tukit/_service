@@ -1,0 +1,30 @@
+<services>
+  <!-- The copy of this file in the OBS package needs to be manually updated from the one in git repo. -->
+  <service name="tar_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/openSUSE/cockpit-tukit.git</param>
+    <param name="revision">master</param>
+    <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
+    <param name="changesgenerate">enable</param>
+    <param name="package-meta">yes</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">cockpit-tukit*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="extract_file" mode="manual">
+    <param name="archive">cockpit-tukit*.tar.xz</param>
+    <param name="files">cockpit-tukit-*/package-lock.json</param>
+  </service>
+  <service name="node_modules" mode="manual">
+    <param name="cpio">node_modules.obscpio</param>
+    <param name="output">node_modules.spec.inc</param>
+    <param name="source-offset">1000</param>
+  </service>
+  <service name="extract_file" mode="manual">
+    <param name="archive">cockpit-tukit*.tar.xz</param>
+    <param name="files">cockpit-tukit*/cockpit-tukit.spec.in</param>
+    <param name="outfilename">cockpit-tukit.spec</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+</services>

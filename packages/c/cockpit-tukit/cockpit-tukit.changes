@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Fri Apr 29 13:33:46 UTC 2022 - jan.suse@zerebecki.de
+
+- Initial package with version 0.0.3~git0.d4aa7e9:
+  * Switch to ExecuteAndReboot
+  * Add no-reboot actions to snapshot menus
+  * Add some "write" actions
+  * Disable actions during updates checking
+  * Add updates error to status
+  * Add _service file comment
+  * Add OBS service definition
+  * Fix license and files in spec
+  * Switch cockpit-devel lib to last stable
+  * Add missing global variables
+
