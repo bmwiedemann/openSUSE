@@ -16,36 +16,27 @@
 #
 
 
-%bcond_with tests
 Name:           maven-invoker
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        An API for firing a maven build in a clean environment
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://maven.apache.org/shared/maven-invoker/
-Source0:        http://repo1.maven.org/maven2/org/apache/maven/shared/%{name}/%{version}/%{name}-%{version}-source-release.zip
+URL:            https://maven.apache.org/shared/maven-invoker/
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/shared/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.xml
 # Patch rejected upstream
 Patch1:         %{name}-MSHARED-279.patch
 BuildRequires:  ant
+BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
-BuildRequires:  maven-shared-utils
-BuildRequires:  plexus-containers-component-annotations
-BuildRequires:  plexus-metadata-generator
-BuildRequires:  plexus-utils
+BuildRequires:  maven-shared-utils >= 3.3.3
+BuildRequires:  sisu-inject
 BuildRequires:  unzip
 Requires:       mvn(org.apache.maven.shared:maven-shared-utils)
-Requires:       mvn(org.codehaus.plexus:plexus-component-annotations)
-Requires:       mvn(org.codehaus.plexus:plexus-utils)
+Requires:       mvn(org.eclipse.sisu:org.eclipse.sisu.inject)
 BuildArch:      noarch
-%if %{with tests}
-BuildRequires:  ant-junit
-BuildRequires:  maven-local
-BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-clean-plugin)
-%endif
 
 %description
 This API is concerned with firing a Maven build in a new JVM. It accomplishes
@@ -67,23 +58,18 @@ API documentation for %{name}.
 
 %prep
 %setup -q
+sed -i 's/\r$//' src/main/java/org/apache/maven/shared/invoker/MavenCommandLineBuilder.java
 cp %{SOURCE1} build.xml
 %patch1 -p1
+%pom_change_dep javax.inject:javax.inject:1  org.eclipse.sisu:org.eclipse.sisu.inject
 
 %pom_remove_parent .
 %pom_xpath_inject pom:project "<groupId>org.apache.maven.shared</groupId>" .
 
 %build
 mkdir -p lib
-build-jar-repository -s lib plexus/utils plexus-containers/plexus-component-annotations maven-shared-utils/maven-shared-utils
-%if %{with tests}
-  export M2_HOME=%{_datadir}/xmvn
-%endif
-%{ant} \
-%if %{without tests}
-  -Dtest.skip=true \
-%endif
-  jar javadoc
+build-jar-repository -s lib maven-shared-utils org.eclipse.sisu.inject atinject
+%{ant} jar javadoc
 
 %install
 # jar
