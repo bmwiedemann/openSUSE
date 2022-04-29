@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonschema
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,35 +22,53 @@
 %bcond_with libalternatives
 %endif
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-jsonschema
-Version:        3.2.0
+Version:        4.4.0
 Release:        0
 Summary:        An implementation of JSON-Schema validation for Python
 License:        MIT
-URL:            https://github.com/Julian/jsonschema
+URL:            https://github.com/python-jsonschema/jsonschema
 Source:         https://files.pythonhosted.org/packages/source/j/jsonschema/jsonschema-%{version}.tar.gz
-Patch0:         webcolors.patch
-BuildRequires:  %{python_module Twisted}
-BuildRequires:  %{python_module attrs >= 17.4.0}
-BuildRequires:  %{python_module idna}
-BuildRequires:  %{python_module importlib-metadata}
-BuildRequires:  %{python_module jsonpointer > 1.13}
-BuildRequires:  %{python_module pyrsistent >= 0.14.0}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module rfc3987}
+# SECTION build
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.11.0}
-BuildRequires:  %{python_module strict-rfc3339}
-BuildRequires:  %{python_module webcolors}
+BuildRequires:  %{python_module tomli}
+BuildRequires:  %{python_module wheel}
+# /SECTION
+# SECTION runtime
+BuildRequires:  %{python_module attrs >= 17.4.0}
+BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
+BuildRequires:  %{python_module importlib-resources >= 1.4.0 if %python-base < 3.9}
+BuildRequires:  %{python_module pyrsistent >= 0.14.0}
+BuildRequires:  %{python_module typing-extensions if %python-base < 3.8}
+# SECTION test
+BuildRequires:  %{python_module pytest}
+# /SECTION
+# SECTION extras (if available)
+#BuildRequires:  %%{python_module fqdn}
+BuildRequires:  %{python_module idna}
+#BuildRequires:  %%{python_module isoduration}
+BuildRequires:  %{python_module jsonpointer > 1.13}
+#BuildRequires:  %%{python_module rfc3339-validator}
+BuildRequires:  %{python_module rfc3987}
+#BuildRequires:  %%{python_module uri_template}
+BuildRequires:  %{python_module webcolors >= 1.11}
+# /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-attrs >= 17.4.0
-Requires:       python-importlib-metadata
 Requires:       python-pyrsistent >= 0.14.0
-Requires:       python-six >= 1.11.0
+%if 0%{python_version_nodots} < 38
+Requires:       python-importlib-metadata
+Requires:       python-typing-extensions
+%endif
+%if 0%{python_version_nodots} < 39
+Requires:       python-importlib-resources >= 1.4.0
+%endif
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts
@@ -67,13 +85,12 @@ for Python (supporting 2.6+ including Python 3).
 
 %prep
 %setup -q -n jsonschema-%{version}
-%patch0 -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 # Remove benchmark tests
 %{python_expand rm -r %{buildroot}%{$python_sitelib}/jsonschema/benchmarks %{buildroot}%{$python_sitelib}/jsonschema/tests
 %fdupes %{buildroot}%{$python_sitelib}
