@@ -18,7 +18,9 @@
 
 
 # Do not build LaTeX docs on SLES.
-%if 0%{?is_opensuse}
+# Also don't build on Tumbleweed. Seems that tabu broke with TeXlive 2022.
+# https://github.com/metamath/metamath-book/issues/235.
+%if 0%{?is_opensuse} && 0%{?suse_version} <= 1500
 %bcond_without  latex_doc
 %else
 %bcond_with     latex_doc
@@ -41,17 +43,18 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc
 %if %{with latex_doc}
-BuildRequires:  texlive-amsfonts
-BuildRequires:  texlive-anysize
 BuildRequires:  texlive-bibtex-bin
-BuildRequires:  texlive-breqn
-BuildRequires:  texlive-hyperref
 BuildRequires:  texlive-latex-bin
-BuildRequires:  texlive-makecell
 BuildRequires:  texlive-makeindex-bin
-BuildRequires:  texlive-microtype
-BuildRequires:  texlive-needspace
-BuildRequires:  texlive-tabu
+BuildRequires:  tex(amssymb.sty)
+BuildRequires:  tex(anysize.sty)
+BuildRequires:  tex(breqn.sty)
+BuildRequires:  tex(hyperref.sty)
+BuildRequires:  tex(longtable.sty)
+BuildRequires:  tex(makecell.sty)
+BuildRequires:  tex(microtype.sty)
+BuildRequires:  tex(needspace.sty)
+BuildRequires:  tex(tabu.sty)
 Suggests:       %{name}-book = %{book_version}
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

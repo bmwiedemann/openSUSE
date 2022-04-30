@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 30 12:04:31 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Disable build of metamath-book on Tumbleweed: it doesn't build
+  with TeXlive 2022 because of what seems to be a bug in
+  texlive-tabu. (gh#metamath/metamath-book#235)
+- Use symbolic dependencies for required TeX packages.
+
+-------------------------------------------------------------------
 Sat Jan 15 20:44:21 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 0.198.

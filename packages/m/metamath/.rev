@@ -67,4 +67,16 @@ versioned alongside the program.
 - Only suggest the book to install.</comment>
     <requestid>946709</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>4578e02175dbaba99241bade774e9348</srcmd5>
+    <version>unknown</version>
+    <time>1651351986</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable build of metamath-book on Tumbleweed: it doesn't build
+  with TeXlive 2022 because of what seems to be a bug in
+  texlive-tabu. (gh#metamath/metamath-book#235)
+- Use symbolic dependencies for required TeX packages.
+</comment>
+    <requestid>974104</requestid>
+  </revision>
 </revisionlist>
