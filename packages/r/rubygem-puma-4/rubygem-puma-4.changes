@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 28 05:42:04 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 4.3.12
+ see installed History.md
+
+  ## 4.3.12 / 2022-03-30
+  
+  * Security
+    * Close several HTTP Request Smuggling exploits (CVE-2022-24790)
+  
+
+-------------------------------------------------------------------
 Tue Feb 15 07:34:38 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 4.3.11
