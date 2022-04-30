@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr 26 07:16:29 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.187:
+  * debuginfod: Support -C option for connection thread pooling.
+  * debuginfod-client: Negative cache file are now zero sized instead of
+                     no-permission files.
+  * addr2line: The -A, --absolute option, which shows file names including
+             the full compilation directory is now the default.  To get the
+             old behavior use the new option --relative.
+  * readelf, elflint: Recognize FDO Packaging Metadata ELF notes
+  * libdw, debuginfo-client: Load libcurl lazily only when files need to
+                           be fetched remotely. libcurl is now never
+                           loaded when DEBUGINFOD_URLS is unset. And when
+                           DEBUGINFOD_URLS is set, libcurl is only loaded
+                           when the debuginfod_begin function is called.
+
+-------------------------------------------------------------------
 Wed Apr 13 15:15:25 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Change to systemd-sysusers
@@ -12,7 +29,7 @@ Fri Feb 25 19:36:08 UTC 2022 - Tony Jones <tonyj@suse.com>
 -------------------------------------------------------------------
 Thu Nov 11 08:56:25 UTC 2021 - Martin Liška <mliska@suse.cz>
 
-- Update to version 0.185:
+- Update to version 0.186:
   debuginfod-client: Default $DEBUGINFOD_URLS is computed from drop-in files
                      etc/debuginfod*.urls rather than hardcoded into the
                      /etc/profile.d/debuginfod* scripts.

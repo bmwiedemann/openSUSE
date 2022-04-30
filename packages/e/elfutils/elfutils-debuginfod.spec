@@ -17,7 +17,7 @@
 
 
 Name:           elfutils-debuginfod
-Version:        0.186
+Version:        0.187
 Release:        0
 Summary:        Debuginfod server provided by elfutils
 License:        GPL-3.0-or-later
@@ -34,8 +34,8 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  bsdtar
-BuildRequires:  sysuser-tools
 BuildRequires:  procps
+BuildRequires:  sysuser-tools
 # For the run-debuginfod-find.sh test case in %%check for /usr/sbin/ss
 BuildRequires:  curl
 BuildRequires:  flex
