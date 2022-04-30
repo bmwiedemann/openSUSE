@@ -1485,4 +1485,12 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
     <comment></comment>
     <requestid>969998</requestid>
   </revision>
+  <revision rev="127" vrev="5">
+    <srcmd5>bf7d7288ad44d350f6fd724d935a10a0</srcmd5>
+    <version>5.41</version>
+    <time>1651351917</time>
+    <user>dimstar_suse</user>
+    <comment>- Try to solve 32bit import dependency problems (boo#1198788)</comment>
+    <requestid>972801</requestid>
+  </revision>
 </revisionlist>

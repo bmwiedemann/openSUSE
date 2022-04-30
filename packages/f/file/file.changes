@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 26 09:03:32 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Try to solve 32bit import dependency problems (boo#1198788)
+
+-------------------------------------------------------------------
 Wed Apr 13 20:41:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update file-5.41-cache-regexps.patch to fix cache offset
