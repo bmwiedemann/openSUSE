@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-jekyll
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 %define mod_name jekyll
 %define mod_full_name %{mod_name}-%{version}
