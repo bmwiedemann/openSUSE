@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,14 @@
 # there are more fancy ways to define a package name using magic
 # macros but OBS and the bots that rely on parser information from
 # OBS can't deal with all of them
-%define flavor @BUILD_FLAVOR@%{nil}
-%bcond_with ringdisabled
+%global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" != ""
-%define name_suffix -%{flavor}
-%if %{with ringdisabled}
-ExclusiveArch:  do_not_build
+%define psuffix -%{flavor}
+%else
+%define psuffix %{nil}
 %endif
-%endif
-Name:           coreutils%{?name_suffix}
-Version:        9.0
+Name:           coreutils%{psuffix}
+Version:        9.1
 Release:        0
 Summary:        GNU Core Utilities
 License:        GPL-3.0-or-later
@@ -59,11 +57,11 @@ Patch303:       coreutils-tests-shorten-extreme-factor-tests.patch
 Patch304:       coreutils-use-python3.patch
 Patch500:       coreutils-disable_tests.patch
 Patch501:       coreutils-test_without_valgrind.patch
-# Upstream patch - remove with version >9.0:
-# chmod: fix exit status when ignoring symlinks
-Patch800:       coreutils-chmod-fix-exit-status-ign-symlinks.patch
+# Downstream patch to skip a test failing on OBS.
 # tests: skip tests/rm/ext3-perf.sh temporarily as it hangs on OBS.
 Patch810:       coreutils-skip-tests-rm-ext3-perf.patch
+# Upstream patch - remove with version >9.1:
+Patch850:       gnulib-simple-backup-fix.patch
 BuildRequires:  automake
 BuildRequires:  gmp-devel
 BuildRequires:  libacl-devel
@@ -134,7 +132,7 @@ This package contains the documentation for the GNU Core Utilities.
 
 %prep
 %setup -q -n coreutils-%{version}
-%patch4
+%patch4 -p1
 %patch1
 %patch3
 %patch8
@@ -157,8 +155,8 @@ This package contains the documentation for the GNU Core Utilities.
 %patch500
 %patch501
 
-%patch800
 %patch810
+%patch850
 
 # ================================================
 %build

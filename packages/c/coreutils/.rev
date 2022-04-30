@@ -1191,4 +1191,41 @@ then, coreutils doesn't need this patch from the kernel v4.10-rc1. (forwarded re
     <user>dimstar_suse</user>
     <comment>disabled in rings? Somebody is kidding me; REVERT</comment>
   </revision>
+  <revision rev="145" vrev="2">
+    <srcmd5>98a0dc1a96c03883ad1814e2b378a6da</srcmd5>
+    <version>9.1</version>
+    <time>1651351915</time>
+    <user>dimstar_suse</user>
+    <comment>- remove builddisabled conditions for rings - will be done now as
+  BuildFlags: excludebuilds
+
+- gnulib-simple-backup-fix.patch: Add patch to make simple backups in correct
+  directory; broken in 9.1.  See https://bugs.gnu.org/55029
+
+- update to 9.1:
+  * chmod -R no longer exits with error status when encountering symlinks.
+    All files would be processed correctly, but the exit status was incorrect.
+  * If 'cp -Z A B' checks B's status and some other process then removes B,
+    cp no longer creates B with a too-generous SELinux security context
+    before adjusting it to the correct value.
+  * 'cp --preserve=ownership A B' no longer ignores the umask when creating B.
+    Also, 'cp --preserve-xattr A B' is less likely to temporarily chmod u+w B.
+  * 'id xyz' now uses the name 'xyz' to determine groups, instead of xyz's uid.
+  * 'ls -v' and 'sort -V' no longer mishandle corner cases like &quot;a..a&quot; vs &quot;a.+&quot;
+    or lines containing NULs.  Their behavior now matches the documentation
+    for file names like &quot;.m4&quot; that consist entirely of an extension,
+    and the documentation has been clarified for unusual cases.
+  * 'mv -T --backup=numbered A B/' no longer miscalculates the backup number
+    for B when A is a directory, possibly inflooping.
+  * cat now uses the copy_file_range syscall if available, when doing
+    simple copies between regular files.  This may be more efficient, by avoiding
+    user space copies, and possibly employing copy offloading or reflinking.
+  * chown and chroot now warn about usages like &quot;chown root.root f&quot;,
+    which have the nonstandard and long-obsolete &quot;.&quot; separator that
+    causes problems on platforms where user names contain &quot;.&quot;.
+    Applications should use &quot;:&quot; instead of &quot;.&quot;.
+  * cksum no longer allows abbreviated algorithm names,
+    so that forward compatibility and robustness is improved.</comment>
+    <requestid>972793</requestid>
+  </revision>
 </revisionlist>

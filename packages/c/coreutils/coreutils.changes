@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Tue Apr 26 08:21:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- remove builddisabled conditions for rings - will be done now as
+  BuildFlags: excludebuilds
+
+-------------------------------------------------------------------
+Sun Apr 24 09:49:04 UTC 2022 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- gnulib-simple-backup-fix.patch: Add patch to make simple backups in correct
+  directory; broken in 9.1.  See https://bugs.gnu.org/55029
+
+-------------------------------------------------------------------
+Thu Apr 21 20:58:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.1:
+  * chmod -R no longer exits with error status when encountering symlinks.
+    All files would be processed correctly, but the exit status was incorrect.
+  * If 'cp -Z A B' checks B's status and some other process then removes B,
+    cp no longer creates B with a too-generous SELinux security context
+    before adjusting it to the correct value.
+  * 'cp --preserve=ownership A B' no longer ignores the umask when creating B.
+    Also, 'cp --preserve-xattr A B' is less likely to temporarily chmod u+w B.
+  * 'id xyz' now uses the name 'xyz' to determine groups, instead of xyz's uid.
+  * 'ls -v' and 'sort -V' no longer mishandle corner cases like "a..a" vs "a.+"
+    or lines containing NULs.  Their behavior now matches the documentation
+    for file names like ".m4" that consist entirely of an extension,
+    and the documentation has been clarified for unusual cases.
+  * 'mv -T --backup=numbered A B/' no longer miscalculates the backup number
+    for B when A is a directory, possibly inflooping.
+  * cat now uses the copy_file_range syscall if available, when doing
+    simple copies between regular files.  This may be more efficient, by avoiding
+    user space copies, and possibly employing copy offloading or reflinking.
+  * chown and chroot now warn about usages like "chown root.root f",
+    which have the nonstandard and long-obsolete "." separator that
+    causes problems on platforms where user names contain ".".
+    Applications should use ":" instead of ".".
+  * cksum no longer allows abbreviated algorithm names,
+    so that forward compatibility and robustness is improved.
+  * date +'%-N' now suppresses excess trailing digits, instead of always
+    padding them with zeros to 9 digits.  It uses clock_getres and
+    clock_gettime to infer the clock resolution.
+  * dd conv=fsync now synchronizes output even after a write error,
+    and similarly for dd conv=fdatasync.
+  * dd now counts bytes instead of blocks if a block count ends in "B".
+    For example, 'dd count=100KiB' now copies 100 KiB of data, not
+    102,400 blocks of data.  The flags count_bytes, skip_bytes and
+    seek_bytes are therefore obsolescent and are no longer documented,
+    though they still work.
+  * ls no longer colors files with capabilities by default, as file-based
+    capabilties are very rarely used, and lookup increases processing per file by
+    about 30%.  It's best to use getcap [-r] to identify files with capabilities.
+  * ls no longer tries to automount files, reverting to the behavior
+    before the statx() call was introduced in coreutils-8.32.
+  * stat no longer tries to automount files by default, reverting to the
+    behavior before the statx() call was introduced in coreutils-8.32.
+    Only `stat --cached=never` will continue to automount files.
+  * timeout --foreground --kill-after=... will now exit with status 137
+    if the kill signal was sent, which is consistent with the behavior
+    when the --foreground option is not specified.  This allows users to
+    distinguish if the command was more forcefully terminated.
+  * dd now supports the aliases iseek=N for skip=N, and oseek=N for seek=N,
+    like FreeBSD and other operating systems.
+  * dircolors takes a new --print-ls-colors option to display LS_COLORS
+    entries, on separate lines, colored according to the entry color code.
+  * dircolors will now also match COLORTERM in addition to TERM environment
+    variables.  The default config will apply colors with any COLORTERM set.
+  * cp, mv, and install now use openat-like syscalls when copying to a directory.
+  * This avoids some race conditions and should be more efficient.
+  * The new 'date' option --resolution outputs the timestamp resolution.
+  * With conv=fdatasync or conv=fsync, dd status=progress now reports
+    any extra final progress just before synchronizing output data,
+    since synchronizing can take a long time.
+  * printf now supports printing the numeric value of multi-byte characters.
+  * sort --debug now diagnoses issues with --field-separator characters
+    that conflict with characters possibly used in numbers.
+  * 'tail -f file | filter' now exits on Solaris when filter exits.
+   * root invoked coreutils, that are built and run in single binary mode,
+     now adjust /proc/$pid/cmdline to be more specific to the utility
+     being run, rather than using the general "coreutils" binary name.
+- coreutils-i18n.patch: Re-sync the patch with Fedora.
+- drop coreutils-chmod-fix-exit-status-ign-symlinks.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Oct  4 22:15:01 UTC 2021 - Bernhard Voelker <mail@bernhard-voelker.de>
 
 - coreutils-i18n.patch: Re-sync the patch with Fedora.
