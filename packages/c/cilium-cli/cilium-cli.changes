@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Apr 30 15:45:07 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.11.4:
+  * hubble: Log Creation of Peer Service
+  * uninstall: Add Chart Directory Opt for Uninstall and Disable
+  * hubble: Log Deletion of Peer Service
+  * install: Wait for test pods to be cleaned up
+  * Extract all deamonsets of Cilium
+  * Add option to automatically detect the pid of the gops agent
+  * install: add encryption.enabled when encryption wireguard is used
+  * build(deps): bump docker/setup-buildx-action from 1.6.0 to 1.7.0
+
+-------------------------------------------------------------------
 Thu Apr 28 06:27:39 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.11.3:
