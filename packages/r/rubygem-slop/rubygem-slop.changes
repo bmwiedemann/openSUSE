@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 28 05:51:32 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 4.9.2
+ see installed CHANGELOG.md
+
+  v4.9.2 (2022-03-26)
+  -------------------
+  
+  Bug fixes:
+    * Handle flag arguments that contain equals character [#275](https://github.com/leejarvis/slop/pull/275) (ConnorWGarvey)
+  
+
+-------------------------------------------------------------------
 Thu Jun 24 18:01:30 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 4.9.1
