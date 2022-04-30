@@ -1,7 +1,7 @@
 #
 # spec file for package arc-gtk-theme
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,16 @@
 %define _theme  Arc
 %define _name   arc
 Name:           arc-gtk-theme
-Version:        20210412
+Version:        20220405
 Release:        0
 Summary:        Arc GTK theme
 License:        GPL-3.0-or-later
 URL:            https://github.com/jnsh/arc-theme
-Source:         %{_name}-theme-%{version}.tar.xz
+Source:         https://github.com/jnsh/arc-theme/releases/download/%{version}/arc-theme-%{version}.tar.xz
 BuildRequires:  cinnamon
 BuildRequires:  fdupes
 BuildRequires:  gnome-shell
-BuildRequires:  inkscape
-BuildRequires:  meson
+BuildRequires:  meson >= 0.53
 BuildRequires:  optipng
 BuildRequires:  pkgconfig
 BuildRequires:  sassc
@@ -77,9 +76,20 @@ It supports MATE, GNOME, Budgie, Xfce, and Cinnamon.
 
 This package contains the GTK 3 theme.
 
+%package -n gtk4-metatheme-%{_name}
+Summary:        Arc GTK 4 Theme
+Requires:       gtk4
+Requires:       metatheme-%{_name}-common = %{version}
+Supplements:    (metatheme-%{_name}-common and gtk4)
+
+%description -n gtk4-metatheme-%{_name}
+Arc is a flat theme with transparent elements.
+It supports MATE, GNOME, Budgie, Xfce, and Cinnamon.
+
+This package contains the GTK 4 theme.
+
 %prep
 %setup -q -n %{_name}-theme-%{version}
-sed -i 's/^\(IconTheme=\).*$/\1Adwaita/' common/index/*/index.theme
 
 %build
 %meson
@@ -105,5 +115,10 @@ sed -i 's/^\(IconTheme=\).*$/\1Adwaita/' common/index/*/index.theme
 %license COPYING
 %doc AUTHORS README.md
 %{_datadir}/themes/%{_theme}*/gtk-3.0/
+
+%files -n gtk4-metatheme-%{_name}
+%license COPYING
+%doc AUTHORS README.md
+%{_datadir}/themes/%{_theme}*/gtk-4.0/
 
 %changelog
