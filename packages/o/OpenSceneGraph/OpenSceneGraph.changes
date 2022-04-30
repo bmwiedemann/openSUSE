@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 28 00:14:40 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve rpmlint report "libOpenSceneGraph158.x86_64: E:
+  shlib-policy-name-error SONAME: libosg.so.161, expected package
+  suffix: 161"
+
+-------------------------------------------------------------------
 Tue Aug 10 14:14:01 UTC 2021 - pgajdos@suse.com
 
 - fix build with openexr3: remove redundant BuildRequires (pkgconfig(IlmBase))

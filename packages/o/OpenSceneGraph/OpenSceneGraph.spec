@@ -1,7 +1,7 @@
 #
 # spec file for package OpenSceneGraph
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define _osg_so_nr	158
+%define _osg_so_nr	161
 %define _opt_so_nr	21
 %if 0%{?is_opensuse}
 %bcond_without gdal
@@ -112,9 +112,10 @@ development of graphics applications.
 
 %package -n libOpenSceneGraph%{_osg_so_nr}
 Summary:        Shared libraries for OpenSceneGraph
-# try to cover up past mistakes
 Group:          System/Libraries
-Obsoletes:      libOpenSceneGraph100
+# try to cover up past mistakes
+Conflicts:      libOpenSceneGraph100
+Conflicts:      libOpenSceneGraph158
 
 %description -n libOpenSceneGraph%{_osg_so_nr}
 The OpenSceneGraph is a graphics toolkit for the development of
@@ -131,7 +132,7 @@ Group:          Development/Libraries/C and C++
 Requires:       curl-devel
 Requires:       freeglut-devel
 Requires:       giflib-devel
-Requires:       libOpenSceneGraph%{_osg_so_nr} = %{version}
+Requires:       libOpenSceneGraph%{_osg_so_nr} = %{version}-%{release}
 Requires:       libOpenThreads-devel = %{version}
 Requires:       libjpeg-devel
 Requires:       libpng-devel
