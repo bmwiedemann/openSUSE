@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-actiontext-7.0
-Version:        7.0.2.3
+Version:        7.0.2.4
 Release:        0
 %define mod_name actiontext
 %define mod_full_name %{mod_name}-%{version}
