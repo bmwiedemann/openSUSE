@@ -31,4 +31,12 @@
     <comment>- Perform multipython builds.</comment>
     <requestid>948102</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>92457003fb182043624a7d9b27bf2be7</srcmd5>
+    <version>20220430</version>
+    <time>1651351981</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220430</comment>
+    <requestid>974089</requestid>
+  </revision>
 </revisionlist>

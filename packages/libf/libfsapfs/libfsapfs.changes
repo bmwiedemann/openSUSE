@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 30 07:57:12 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20220430
+  * Unspecified updates to extended attributes, snapshot
+    support and Python bindings
+
+-------------------------------------------------------------------
 Sat Jan 22 11:22:37 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Perform multipython builds.

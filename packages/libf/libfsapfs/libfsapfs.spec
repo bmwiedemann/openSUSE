@@ -17,13 +17,14 @@
 
 
 Name:           libfsapfs
-Version:        20210513
+Version:        20220430
 Release:        0
 Summary:        Library and tools to access the Apple File System (APFS)
 License:        LGPL-3.0-only
 Group:          System/Filesystems
 URL:            https://github.com/libyal/libfsapfs
-Source:         %name-%version.tar.xz
+Source:         https://github.com/libyal/libfsapfs/releases/download/%version/libfsapfs-experimental-%version.tar.gz
+Source2:        https://github.com/libyal/libfsapfs/releases/download/%version/libfsapfs-experimental-%version.tar.gz.asc
 Patch1:         system-libs.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
@@ -32,22 +33,22 @@ BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fuse) >= 2.6
-BuildRequires:  pkgconfig(libbfio) >= 20201229
-BuildRequires:  pkgconfig(libcaes) >= 20201012
-BuildRequires:  pkgconfig(libcdata) >= 20200509
-BuildRequires:  pkgconfig(libcerror) >= 20201121
-BuildRequires:  pkgconfig(libcfile) >= 20201229
-BuildRequires:  pkgconfig(libclocale) >= 20200913
-BuildRequires:  pkgconfig(libcnotify) >= 20200913
-BuildRequires:  pkgconfig(libcpath) >= 20200623
-BuildRequires:  pkgconfig(libcsplit) >= 20200703
-BuildRequires:  pkgconfig(libcthreads) >= 20200508
-BuildRequires:  pkgconfig(libfcache) >= 20200708
-BuildRequires:  pkgconfig(libfdata) >= 20201129
-BuildRequires:  pkgconfig(libfdatetime) >= 20180910
-BuildRequires:  pkgconfig(libfguid) >= 20180724
-BuildRequires:  pkgconfig(libhmac) >= 20200104
-BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(libbfio) >= 20220120
+BuildRequires:  pkgconfig(libcaes) >= 20220424
+BuildRequires:  pkgconfig(libcdata) >= 20220115
+BuildRequires:  pkgconfig(libcerror) >= 20220101
+BuildRequires:  pkgconfig(libcfile) >= 20210409
+BuildRequires:  pkgconfig(libclocale) >= 20220107
+BuildRequires:  pkgconfig(libcnotify) >= 20220108
+BuildRequires:  pkgconfig(libcpath) >= 20220108
+BuildRequires:  pkgconfig(libcsplit) >= 20220109
+BuildRequires:  pkgconfig(libcthreads) >= 20220102
+BuildRequires:  pkgconfig(libfcache) >= 20220110
+BuildRequires:  pkgconfig(libfdata) >= 20211023
+BuildRequires:  pkgconfig(libfdatetime) >= 20220112
+BuildRequires:  pkgconfig(libfguid) >= 20220113
+BuildRequires:  pkgconfig(libhmac) >= 20220425
+BuildRequires:  pkgconfig(libuna) >= 20220102
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(zlib) >= 1.2.5
