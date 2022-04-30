@@ -18,7 +18,7 @@
 
 
 Name:           lbreakouthd
-Version:        1.0.9
+Version:        1.0.10
 Release:        0
 Summary:        Classic Breakout-Style Game
 License:        GPL-2.0-or-later
