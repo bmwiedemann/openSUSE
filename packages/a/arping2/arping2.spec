@@ -1,7 +1,7 @@
 #
 # spec file for package arping2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           arping2
-Version:        2.22
+Version:        2.23
 Release:        0
 Summary:        Layer-2 Ethernet pinger
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Diagnostic
-URL:            http://www.habets.pp.se/synscan/programs.php?prog=arping
+URL:            https://www.habets.pp.se/synscan/programs.php?prog=arping
 #Git-Clone:	git://github.com/ThomasHabets/arping
-Source:         http://www.habets.pp.se/synscan/files/arping-%version.tar.gz
-Source2:        http://www.habets.pp.se/synscan/files/arping-%version.tar.gz.asc
+Source:         https://www.habets.pp.se/synscan/files/arping-%version.tar.gz
+Source2:        https://www.habets.pp.se/synscan/files/arping-%version.tar.gz.asc
 Source3:        %name.keyring
 BuildRequires:  libnet-devel
 BuildRequires:  libpcap-devel

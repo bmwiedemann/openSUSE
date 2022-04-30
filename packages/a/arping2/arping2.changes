@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 30 10:21:06 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to release 2.23
+  * Work around VLAN bug in libpcap 1.7-1.9.0
+  * Experimental support for seccomp (off by default)
+  * Made -P set target MAC address (-t)
+
+-------------------------------------------------------------------
 Sat Jul 10 08:03:31 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.22
