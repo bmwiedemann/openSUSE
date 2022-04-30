@@ -596,4 +596,12 @@ So preferably for 13.1 as well.</comment>
     <comment>New stable release (forwarded request 944937 from iznogood)</comment>
     <requestid>945294</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>c54910bae1905dd7867a4597f2c8749d</srcmd5>
+    <version>43.2</version>
+    <time>1651351922</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 972592 from dimstar)</comment>
+    <requestid>973126</requestid>
+  </revision>
 </revisionlist>

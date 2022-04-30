@@ -17,14 +17,17 @@
 
 
 Name:           deja-dup
-Version:        43.1
+Version:        43.2
 Release:        0
 Summary:        Simple backup tool and frontend for duplicity
 License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Backup
 URL:            https://wiki.gnome.org/Apps/DejaDup
 Source0:        https://gitlab.gnome.org/World/deja-dup/-/archive/%{version}/%{name}-%{version}.tar.bz2
-
+# PATCH-FIX-UPSTREAM 60856db.patch dimstar@opensuse.org -- Fix build with vala 0.56.1
+Patch0:         https://gitlab.gnome.org/World/deja-dup/-/commit/60856db.patch
+# PATCH-FIX-UPSTREAM 9c17deb0526b.patch dimstar@opensuse.org -- Fix build by adding proper lib dependencies
+Patch1:         https://gitlab.gnome.org/World/deja-dup/-/commit/9c17deb0526b.patch
 BuildRequires:  appstream-glib
 BuildRequires:  dbus-1
 BuildRequires:  desktop-file-utils
