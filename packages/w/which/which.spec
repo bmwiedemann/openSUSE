@@ -1,7 +1,7 @@
 #
 # spec file for package which
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,8 +22,9 @@ Release:        0
 Summary:        Displays where a particular program in your path is located
 License:        GPL-3.0-or-later
 Group:          System/Base
-Url:            https://savannah.gnu.org/projects/which/
-Source0:        http://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.gz
+URL:            https://savannah.gnu.org/projects/which/
+Source0:        https://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.gz
+Source1:        https://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.gz.sig
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
 Provides:       util-linux:%{_bindir}/which

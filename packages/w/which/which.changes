@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 19 13:48:33 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- https urls, added signature (but did not find the public key)
+
+-------------------------------------------------------------------
 Mon Mar 19 11:57:56 CET 2018 - kukuk@suse.de
 
 - Use %license instead of %doc [bsc#1082318]
