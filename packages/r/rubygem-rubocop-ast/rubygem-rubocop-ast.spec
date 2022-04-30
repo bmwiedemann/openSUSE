@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rubocop-ast
-Version:        1.16.0
+Version:        1.17.0
 Release:        0
 %define mod_name rubocop-ast
 %define mod_full_name %{mod_name}-%{version}
