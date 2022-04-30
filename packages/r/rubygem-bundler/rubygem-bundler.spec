@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-bundler
-Version:        2.3.8
+Version:        2.3.12
 Release:        0
 %define mod_name bundler
 %define mod_full_name %{mod_name}-%{version}
