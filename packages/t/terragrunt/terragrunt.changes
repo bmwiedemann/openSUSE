@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Sat Apr 30 15:45:50 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.36.9:
+  * git_functions: propegate the opts.Env for git commands (#2086)
+  * Fix get_path_from_repo_root typo (#2035)
+
+-------------------------------------------------------------------
+Thu Apr 28 06:28:01 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.36.8:
+  * Bump sops from v3.7.0 to v3.7.2 (#2083)
+  * Failing tests fixes (#2073)
+  * Clarify behavior of terragrunt-tfpath override with respect to dependencies (#2077)
+
+-------------------------------------------------------------------
+Sat Apr 16 09:05:37 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.36.7:
+  * Additional known transient error handling (#2066)
+  * Update inputs.md (#2053)
+
+-------------------------------------------------------------------
+Fri Mar 18 10:23:58 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.36.6:
+  * fix: use correct slashes for repo root functions (#2042)
+
+-------------------------------------------------------------------
+Wed Mar 16 18:02:37 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.36.5:
+  * Enable public access blocking for access logs S3 bucket as well, if configured (#2040)
+
+-------------------------------------------------------------------
+Wed Mar 16 18:01:24 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.36.4:
+  * #1971 Added caching of IAM roles parsed from HCL files (#2010)
+  * Removed empty list item (#2030)
+
+-------------------------------------------------------------------
+Thu Mar 03 09:41:18 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.36.3:
+  * Add get_repo_root() built-in (#2027)
+
+-------------------------------------------------------------------
+Thu Mar 03 09:39:19 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.36.2:
+  * Add merge strategies for mock outputs with state (#1936)
+  * Update cli-options.md to mention silent auto-approve on run-all. (#1992)
+
+-------------------------------------------------------------------
+Tue Feb 01 07:05:48 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.36.1:
+  * Handle relative paths correctly when fetching tfr (#2005)
+  * CI Build fix (#2001)
+  * Add 1.1.x to version compatibility table (#1991)
+
+-------------------------------------------------------------------
+Wed Jan 26 07:34:16 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package terragrunt at version 0.36.0
