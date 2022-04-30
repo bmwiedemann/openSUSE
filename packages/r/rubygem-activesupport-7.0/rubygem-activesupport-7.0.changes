@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr 28 05:16:26 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.2.4
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.2.4 (April 26, 2022) ##
+  
+  *   Fix and add protections for XSS in `ActionView::Helpers` and `ERB::Util`.
+  
+      Add the method `ERB::Util.xml_name_escape` to escape dangerous characters
+      in names of tags and names of attributes, following the specification of XML.
+  
+      *Álvaro Martín Fraguas*
+  
+
+-------------------------------------------------------------------
 Thu Mar 10 13:23:17 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 7.0.2.3
