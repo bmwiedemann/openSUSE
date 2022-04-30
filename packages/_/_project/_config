@@ -1101,7 +1101,7 @@ Ignore: autoyast2:yast2-schema
 # not during build
 Ignore: yast2-x11:sax2-libsax-perl
 Ignore: openslp-devel:openssl-devel
-Ignore: tetex:xorg-x11-libs,expat,fontconfig,freetype2,libjpeg,ghostscript-x11,xaw3d,gd,dialog,ed
+Ignore: tetex:xorg-x11-libs,expat,fontconfig,freetype2,libjpeg,ghostscript-x11,xaw3d,gd,dialog
 Ignore: texlive-bin:ghostscript-x11
 Ignore: texlive-bin-omega:ghostscript-x11
 Ignore: yast2-country:yast2-trans-stats
