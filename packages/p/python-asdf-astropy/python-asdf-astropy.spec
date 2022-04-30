@@ -28,7 +28,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-asdf-astropy%{psuffix}
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 Summary:        ASDF serialization support for astropy
 License:        BSD-3-Clause
@@ -47,7 +47,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-asdf >= 2.8.0
 Requires:       python-asdf-coordinates-schemas
 Requires:       python-asdf-transform-schemas >= 0.2.2
-Requires:       python-astropy
+Requires:       python-astropy >= 5.0.4
 Requires:       python-numpy
 Requires:       python-packaging >= 16.0
 %if 0%{?python_version_nodots} < 39

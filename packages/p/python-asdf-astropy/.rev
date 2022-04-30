@@ -26,4 +26,12 @@
 This is just to get rid of the build failure in d:l:p. It is not suitable for an update of the 15.4 package as it cannot fulfil the requirements</comment>
     <requestid>963918</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>94317beb969636bf223ea09208cbb55f</srcmd5>
+    <version>0.2.1</version>
+    <time>1651351925</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>973222</requestid>
+  </revision>
 </revisionlist>
