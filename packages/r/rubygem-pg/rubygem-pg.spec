@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-pg
-Version:        1.3.4
+Version:        1.3.5
 Release:        0
 %define mod_name pg
 %define mod_full_name %{mod_name}-%{version}
@@ -33,7 +33,7 @@ BuildRequires:  openssl-devel
 BuildRequires:  postgresql-devel
 # /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{rubydevel >= 2.2}
+BuildRequires:  %{rubydevel >= 2.5}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
@@ -46,27 +46,10 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Ruby
 
 %description
-Pg is the Ruby interface to the {PostgreSQL
-RDBMS}[http://www.postgresql.org/].
-It works with {PostgreSQL 9.2 and
-later}[http://www.postgresql.org/support/versioning/].
-A small example usage:
-#!/usr/bin/env ruby
-require 'pg'
-# Output a table of current connections to the DB
-conn = PG.connect( dbname: 'sales' )
-conn.exec( "SELECT * FROM pg_stat_activity" ) do |result|
-puts "     PID | User             | Query"
-result.each do |row|
-puts " %7d | %-16s | %s " %
-row.values_at('procpid', 'usename', 'current_query')
-end
-end.
+Pg is the Ruby interface to the PostgreSQL RDBMS. It works with PostgreSQL 9.3
+and later.
 
 %prep
-%gem_unpack
-find -type f -print0 | xargs -0 touch -r %{S:0}
-%gem_build
 
 %build
 
