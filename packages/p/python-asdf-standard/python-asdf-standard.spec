@@ -1,5 +1,5 @@
 #
-# spec file for package python-asdf-standard
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -27,13 +28,13 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-asdf-standard%{psuffix}
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        The ASDF Standard schemas
 License:        BSD-3-Clause
 URL:            https://github.com/asdf-format/asdf-standard
 Source:         https://files.pythonhosted.org/packages/source/a/asdf-standard/asdf_standard-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module importlib_resources >= 3 if %python-base < 3.9}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -43,14 +44,14 @@ BuildRequires:  python-rpm-macros
 Requires:       python-importlib_resources >= 3
 %endif
 %if %{with test}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module asdf >= 2.8.0}
 BuildRequires:  %{python_module asdf-standard = %{version}}
-BuildRequires:  %{python_module astropy}
+BuildRequires:  %{python_module astropy >= 5.0.4}
 BuildRequires:  %{python_module gwcs}
 BuildRequires:  %{python_module packaging >= 16.0}
 BuildRequires:  %{python_module pytest-sugar}
+BuildRequires:  %{python_module pytest}
 %endif
 BuildArch:      noarch
 Provides:       python-asdf_standard = %{version}-%{release}
