@@ -396,4 +396,12 @@ now with changed patch tag, even though the patch might be accepted by upstream 
     <comment></comment>
     <requestid>795530</requestid>
   </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>d689633adb78356679054686fd5e559a</srcmd5>
+    <version>4.3</version>
+    <time>1651351918</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>972907</requestid>
+  </revision>
 </revisionlist>

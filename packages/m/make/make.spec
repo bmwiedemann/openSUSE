@@ -1,7 +1,7 @@
 #
 # spec file for package make
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,9 @@ Release:        0
 Summary:        GNU make
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
-URL:            http://www.gnu.org/software/make/make.html
-Source:         http://ftp.gnu.org/gnu/make/make-%{version}.tar.gz
-Source1:        http://ftp.gnu.org/gnu/make/make-%{version}.tar.gz.sig
+URL:            https://www.gnu.org/software/make/make.html
+Source:         https://ftp.gnu.org/gnu/make/make-%{version}.tar.gz
+Source1:        https://ftp.gnu.org/gnu/make/make-%{version}.tar.gz.sig
 # keyring downloaded from https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=make&download=1
 Source2:        %{name}.keyring
 Patch1:         make-testcases_timeout.diff
