@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-api-core
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,20 +27,26 @@
 %endif
 %define         skip_python2 1
 Name:           python-google-api-core
-Version:        2.0.1
+Version:        2.7.2
 Release:        0
 Summary:        Google API client core library
 License:        Apache-2.0
 URL:            https://github.com/googleapis/python-api-core
 Source:         https://files.pythonhosted.org/packages/source/g/google-api-core/google-api-core-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 373-KeyError-in-test.patch gh#googleapis/python-api-core#372 mcepl@suse.com
+# fix KeyError in test_rest_streaming.py
+Patch0:         373-KeyError-in-test.patch
 BuildRequires:  %{python_module google-auth >= 1.25.0}
-BuildRequires:  %{python_module googleapis-common-protos >= 1.6.0}
+BuildRequires:  %{python_module googleapis-common-protos >= 1.53.0}
 BuildRequires:  %{python_module grpcio >= 1.33.2}
 BuildRequires:  %{python_module grpcio-gcp >= 0.2.2}
+BuildRequires:  %{python_module grpcio-status >= 1.33.2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module protobuf >= 3.12.0}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests >= 2.18.0}
 BuildRequires:  %{python_module setuptools >= 40.3.0}
+BuildRequires:  %{python_module wheel}
 # START TESTING SECTION
 %if %{with test}
 BuildRequires:  %{python_module google-api-core >= %{version}}
@@ -53,8 +59,9 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-google-auth >= 1.25.0
-Requires:       python-googleapis-common-protos >= 1.6.0
+Requires:       python-googleapis-common-protos >= 1.53.0
 Requires:       python-grpcio >= 1.33.2
+Requires:       python-grpcio-status >= 1.33.2
 Requires:       python-protobuf >= 3.12.0
 Requires:       python-pytz
 Requires:       python-requests >= 2.18.0
@@ -67,14 +74,14 @@ BuildArch:      noarch
 Core Library for Google Client Libraries.
 
 %prep
-%setup -q -n google-api-core-%{version}
+%autosetup -p1 -n google-api-core-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -83,11 +90,15 @@ Core Library for Google Client Libraries.
 %pytest
 %endif
 
+%clean
+
 %if !%{with test}
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/google/api_core
+%{python_sitelib}/google_api_core-%{version}*-nspkg.pth
+%{python_sitelib}/google_api_core-%{version}*-info
 %endif
 
 %changelog

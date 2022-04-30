@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Apr 25 12:30:45 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.7.2:
+  - allow grpc without grpcio-status
+  - remove dependency on pkg_resources
+- Add 373-KeyError-in-test.patch to allow tests to run
+  (gh#googleapis/python-api-core#372)
+
+-------------------------------------------------------------------
+Thu Apr  7 12:20:32 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.7.1
+  Bug Fixes
+  * add more context to error message. (#340)
+- from version 2.7.0
+  Features
+  * expose extra fields in ExtendedOperation (#351)
+- from version 2.6.1
+  Bug Fixes
+  * Remove py2 tag from wheel (#343)
+- from version 2.6.0
+  Features
+  * initial support for Extended Operations (#344)
+- from version 2.5.0
+  Features
+  * add api_key to client options (#248)
+  Bug Fixes
+  * **deps:** remove setuptools from dependencies (#339)
+  Documentation
+  * fix typo in library name (#332)
+- from version 2.4.0
+  Features
+  * add support for 'error_info' (#315)
+  * iterator for processing JSON responses in REST streaming. (#317)
+- from version 2.3.2
+  Bug Fixes
+  * address broken wheels in version 2.3.1
+- from version 2.3.1
+  Bug Fixes
+  * exclude function target from retry deadline exceeded exception message (#318)
+- from version 2.3.0
+  Features
+  * add operations rest client to support long-running operations. (#311)
+  Bug Fixes
+  * handle bare 'grpc.Call' in 'from_grpc_error' (#298)
+- from version 2.2.2
+  Bug Fixes
+  * make 'gapic_v1.method.DEFAULT' a typed object (#292)
+- from version 2.2.1
+  Bug Fixes
+  * revert "fix: do not error on LROs with no response or error" (#294)
+- from version 2.2.0
+  Features
+  * add 'GoogleAPICallError.error_details' property (#286)
+- from version 2.1.1
+  Bug Fixes
+  * add mypy checking + 'py.typed' file (#290)
+- from version 2.1.0
+  Features
+  * add grpc transcoding + tests (#259)
+  * Add helper function to format query_params for rest transport. (#275)
+  * add support for Python 3.10 (#284)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Sep  7 11:04:50 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - To avoid a build cycle, switch to multibuild. 
