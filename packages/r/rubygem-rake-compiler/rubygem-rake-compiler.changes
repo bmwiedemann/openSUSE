@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 28 05:44:31 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.2.0
+ see installed History.md
+
+  ### 1.2.0 / 2022-04-15
+  
+  * Enhancements:
+    * Defer requiring `yaml`.
+      [ruby/stringio#21](https://github.com/ruby/stringio/issues/21)
+  
+
+-------------------------------------------------------------------
 Tue Jan 25 07:24:56 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.1.9
