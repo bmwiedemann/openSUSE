@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Apr 28 05:49:47 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.3.2
+ see installed CHANGELOG.md
+
+  2.3.2
+  =====
+  
+  * #184 Add support for rdoc 6.4.0 [@p8](https://github.com/p8)
+  
+  2.3.1
+  =====
+  
+  * #183 Remove unsupported browser detection  [@p8](https://github.com/p8)
+  * #182 Use window.location instead of Turbolinks.visit if protocol is 'file:' [@p8](https://github.com/p8)
+  
+  2.3.0
+  =====
+  
+  * #178 Don't use rdoc 6.4.0 for now [@p8](https://github.com/p8)
+  * #177 Remove rake version constraint for ruby head [@p8](https://github.com/p8)
+  * #176 Make sidepanel work with relative paths/URLs [@p8](https://github.com/p8)
+  * #175 Avoid displaying source toggler for ghost methods [Robin Dupret](https://github.com/robin850)
+  * #174 Suppress unused variable warnings [Masataka Pocke Kuwabara](https://github.com/pocke)
+  
+
+-------------------------------------------------------------------
 Thu Jun 24 17:58:13 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.2.0
