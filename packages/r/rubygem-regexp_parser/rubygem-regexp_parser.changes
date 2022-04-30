@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Apr 28 05:45:28 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.3.1
+ see installed CHANGELOG.md
+
+  ## [Unreleased]
+  
+  ## [2.3.1] - 2022-04-24 - [Janosch Müller](mailto:janosch84@gmail.com)
+  
+  ### Fixed
+  
+  - removed five inexistent unicode properties from `Syntax#features`
+    - these were never supported by Ruby but incorrectly accepted by the parser
+    - thanks to [Markus Schirp](https://github.com/mbj) for the report
+  
+  ## [2.3.0] - 2022-04-08 - [Janosch Müller](mailto:janosch84@gmail.com)
+  
+  ### Added
+  
+  - improved parsing performance through `Syntax` refactoring
+    - instead of fresh `Syntax` instances, pre-loaded constants are now re-used
+    - this approximately doubles the parsing speed for simple regexps
+  - added methods to `Syntax` classes to show relative feature sets
+    - e.g. `Regexp::Syntax::V3_2_0.added_features`
+  - support for new unicode properties of Ruby 3.2 / Unicode 14.0
+  
+
+-------------------------------------------------------------------
 Tue Feb 15 07:39:10 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.2.1
