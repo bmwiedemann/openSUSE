@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Apr 28 05:48:21 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.19.1
+ see installed History.rdoc
+
+  === 3.19.1 / 2022-04-05
+  
+  * 2 bug fixes:
+  
+    * Added comments to endless defn and defs. (mvz)
+    * Fixed endless method bug handling attrset names.
+  
+  === 3.19.0 / 2022-03-29
+  
+  * 1 major enhancement:
+  
+    * Added tentative 3.1 support.
+  
+  * 7 minor enhancements:
+  
+    * 3.1: bare RHS assoc: { y: } => s(:hash, s(:lit, :y), nil)
+    * 3.1: calls w/ unnamed block args (bare &)
+    * 3.1: endless defn/defs w/ paren-less calls (aka commands)
+    * 3.1: pattern capture to nonlocal vars, eg: ^@a, ^$b, ^@@c
+    * 3.1: pattern: ^(expr) => expr
+    * Improved steps for adding new versions.
+    * Improved steps for running gauntlets.
+  
+  * 2 bug fixes:
+  
+    * Bumped 2.6+ cached versions for rake compare.
+    * Skip test_regexp_esc_C_slash on ruby 3.1.0 because of MRI bug.
+  
+
+-------------------------------------------------------------------
 Tue Jan 25 07:33:04 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 3.18.1

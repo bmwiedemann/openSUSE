@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-ruby_parser
-Version:        3.18.1
+Version:        3.19.1
 Release:        0
 %define mod_name ruby_parser
 %define mod_full_name %{mod_name}-%{version}
@@ -64,7 +64,10 @@ Tested against 801,039 files from the latest of all rubygems (as of 2013-05):
 * 1.8 parser is at 99.9739% accuracy, 3.651 sigma
 * 1.9 parser is at 99.9940% accuracy, 4.013 sigma
 * 2.0 parser is at 99.9939% accuracy, 4.008 sigma
-* 2.6 parser is at 99.9972% accuracy, 4.191 sigma.
+* 2.6 parser is at 99.9972% accuracy, 4.191 sigma
+* 3.0 parser has a 100% parse rate.
+* Tested against 2,672,412 unique ruby files across 167k gems.
+* As do all the others now, basically.
 
 %prep
 
