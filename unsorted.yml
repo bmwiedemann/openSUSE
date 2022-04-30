@@ -1405,10 +1405,12 @@ unsorted:
   - bottom 
   - bouncycastle 
   - bouncycastle-javadoc 
+  - bouncycastle-jmail 
   - bouncycastle-mail 
   - bouncycastle-pg 
   - bouncycastle-pkix 
   - bouncycastle-tls 
+  - bouncycastle-util 
   - bowtie: [x86_64] 
   - bowtie2: [x86_64] 
   - bpftool 
@@ -2134,6 +2136,7 @@ unsorted:
   - cockpit-storaged 
   - cockpit-system: [i586] 
   - cockpit-tests 
+  - cockpit-tukit 
   - cockpit-ws 
   - codec2-devel 
   - codec2-examples 
@@ -9059,26 +9062,26 @@ unsorted:
   - libOSMesa8 
   - libOSMesa8-32bit: [x86_64] 
   - libOgreBites-devel 
-  - libOgreBites13_2 
-  - libOgreBitesQt13_2 
+  - libOgreBites13_3 
+  - libOgreBitesQt13_3 
   - libOgreMain-devel 
-  - libOgreMain13_2 
-  - libOgreMain13_2-codecs 
-  - libOgreMain13_2-plugins 
+  - libOgreMain13_3 
+  - libOgreMain13_3-codecs 
+  - libOgreMain13_3-plugins 
   - libOgreMeshLodGenerator-devel 
-  - libOgreMeshLodGenerator13_2 
+  - libOgreMeshLodGenerator13_3 
   - libOgreOverlay-devel 
-  - libOgreOverlay13_2 
+  - libOgreOverlay13_3 
   - libOgrePaging-devel 
-  - libOgrePaging13_2 
+  - libOgrePaging13_3 
   - libOgreProperty-devel 
-  - libOgreProperty13_2 
+  - libOgreProperty13_3 
   - libOgreRTShaderSystem-devel 
-  - libOgreRTShaderSystem13_2 
+  - libOgreRTShaderSystem13_3 
   - libOgreTerrain-devel 
-  - libOgreTerrain13_2 
+  - libOgreTerrain13_3 
   - libOgreVolume-devel 
-  - libOgreVolume13_2 
+  - libOgreVolume13_3 
   - libOpenCL1 
   - libOpenCL1-32bit: [x86_64] 
   - libOpenCOLLADABaseUtils0_3 
@@ -10734,7 +10737,7 @@ unsorted:
   - libenet7 
   - libeot-devel 
   - libeot-tools 
-  - libepc-1_0-2 
+  - libepc-1_0-3 
   - libepc-devel 
   - libepc-lang 
   - libepoxy-devel 
@@ -10956,8 +10959,14 @@ unsorted:
   - libfprint-doc 
   - libframe6 
   - libframe6-32bit: [x86_64] 
-  - libframecpp 
+  - libframecpp12 
+  - libframecpp3-6 
+  - libframecpp4-8 
+  - libframecpp6-8 
+  - libframecpp7-4 
+  - libframecpp8-7 
   - libframecppc3 
+  - libframecppcmn11 
   - libframel8 
   - libfreebl3-32bit: [x86_64] 
   - libfreebl3-hmac-32bit: [x86_64] 
@@ -23564,6 +23573,7 @@ unsorted:
   - python310-manuel 
   - python310-manuel-doc 
   - python310-marathon 
+  - python310-markdown-it-py 
   - python310-markdown-math 
   - python310-markdown2 
   - python310-marshmallow 
@@ -23592,6 +23602,7 @@ unsorted:
   - python310-md2workflow 
   - python310-md2workflow-plugins-jira 
   - python310-md2workflow-plugins-redmine 
+  - python310-mdit-py-plugins 
   - python310-mdurl 
   - python310-mechanize 
   - python310-mediafile 
@@ -26666,6 +26677,7 @@ unsorted:
   - python38-manuel 
   - python38-manuel-doc 
   - python38-marathon 
+  - python38-markdown-it-py 
   - python38-markdown-math 
   - python38-markdown2 
   - python38-marshmallow 
@@ -26691,6 +26703,7 @@ unsorted:
   - python38-md2workflow 
   - python38-md2workflow-plugins-jira 
   - python38-md2workflow-plugins-redmine 
+  - python38-mdit-py-plugins 
   - python38-mdurl 
   - python38-mechanize 
   - python38-mediafile 
@@ -29771,6 +29784,7 @@ unsorted:
   - python39-manuel 
   - python39-manuel-doc 
   - python39-marathon 
+  - python39-markdown-it-py 
   - python39-markdown-math 
   - python39-markdown2 
   - python39-marshmallow 
@@ -29798,6 +29812,7 @@ unsorted:
   - python39-md2workflow 
   - python39-md2workflow-plugins-jira 
   - python39-md2workflow-plugins-redmine 
+  - python39-mdit-py-plugins 
   - python39-mdurl 
   - python39-mechanize 
   - python39-mediafile 
@@ -33160,6 +33175,7 @@ unsorted:
   - sway-branding-upstream 
   - sway-contrib 
   - sway-launcher-desktop 
+  - sway-marker 
   - swaybar 
   - swaybg 
   - swayidle 
@@ -42359,6 +42375,7 @@ unsorted:
   - typelib-1_0-GUdev-1_0 
   - typelib-1_0-GUsb-1_0 
   - typelib-1_0-GVncPulse-1_0 
+  - typelib-1_0-GWeather-3_0 
   - typelib-1_0-GXPS-0_1 
   - typelib-1_0-GcrUi-3 
   - typelib-1_0-Gda-6_0 
