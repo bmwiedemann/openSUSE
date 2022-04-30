@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Apr 28 05:29:52 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.3.0
+ see installed changelog.md
+
+  2.3.0 03/08/2022
+  ==========================================================
+  
+  - fix v2.2.4 changelog
+  - bump actions/stale
+  - bump actions/checkout
+  - avoid loading unnecessary service via autoload
+  - update ruby.yml
+  - continue tests dispite head errors
+  - bump actions/checkout
+  - bump formatador requirement
+  - utilize reusable actions workflows
+  - bump reusable actions
+  - fix cache test for ruby 3.1+
+  - tweak format of reusable workflows
+  
+
+-------------------------------------------------------------------
 Thu Jun 24 17:22:45 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.2.4
