@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Apr 28 05:39:14 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.0.1
+ see installed CHANGELOG.md
+
+  ## 1.0.1 - 2022-03-10
+  
+  ### Added
+  - Output granted scopes in credentials block of the auth hash.
+  - Migrated to GitHub actions.
+  
+  ### Deprecated
+  - Nothing.
+  
+  ### Removed
+  - Nothing.
+  
+  ### Fixed
+  - Overriding the `redirect_uri` via params or JSON request body.
+  
+
+-------------------------------------------------------------------
 Thu Jun 24 17:42:08 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.0.0
