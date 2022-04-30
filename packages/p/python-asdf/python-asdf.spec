@@ -28,7 +28,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-asdf%{psuffix}
-Version:        2.10.1
+Version:        2.11.1
 Release:        0
 Summary:        Python tools to handle ASDF files
 License:        BSD-2-Clause AND BSD-3-Clause
@@ -44,7 +44,7 @@ Requires:       python-PyYAML >= 3.10
 Requires:       python-asdf-standard >= 1.0.1
 Requires:       python-asdf-transform-schemas >= 0.2.2
 Requires:       python-jmespath >= 0.6.2
-Requires:       python-jsonschema >= 3.0.2
+Requires:       python-jsonschema >= 4.0.1
 Requires:       python-numpy >= 1.10
 Requires:       python-packaging >= 16.0
 Requires:       python-semantic_version >= 2.8
@@ -58,12 +58,13 @@ BuildArch:      noarch
 # SECTION test requirements
 %if %{with test}
 BuildRequires:  %{python_module asdf = %{version}}
-BuildRequires:  %{python_module astropy}
+BuildRequires:  %{python_module astropy >= 5.0.4}
 BuildRequires:  %{python_module gwcs}
 BuildRequires:  %{python_module lz4}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest-doctestplus}
 BuildRequires:  %{python_module pytest-openfiles >= 0.3.1}
+BuildRequires:  %{python_module pytest-remotedata}
 BuildRequires:  %{python_module pytest-sugar}
 BuildRequires:  %{python_module pytest}
 %endif
@@ -96,8 +97,9 @@ sed -i '/addopts/ s/--color=yes//' setup.cfg
 %check
 %if %{with test}
 export LANG=en_US.UTF-8
-export PY_IGNORE_IMPORTMISMATCH=1
-%pytest
+# remove source directory in order to avoid import mismatches
+mv asdf asdf.moved
+%pytest --pyargs asdf --remote-data=none
 %endif
 
 %post
