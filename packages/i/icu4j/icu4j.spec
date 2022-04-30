@@ -17,7 +17,7 @@
 #
 
 
-%global majorver 70
+%global majorver 71
 %global minorver 1
 Name:           icu4j
 Version:        %{majorver}.%{minorver}
@@ -89,20 +89,18 @@ API documentation for %{name}.
 sed -i 's/\r//' APIChangeReport.html
 sed -i 's/\r//' readme.html
 
-sed --in-place "s/ .*bootclasspath=.*//g" build.xml
-sed --in-place "s/<date datetime=.*when=\"after\"\/>//" build.xml
-sed --in-place "/javac1.3/d" build.xml
-sed --in-place "s:%{_prefix}/lib:%{_libdir}:g" build.xml
+sed -i "s/ .*bootclasspath=.*//g" build.xml
+sed -i "s:%{_prefix}/lib:%{_libdir}:g" build.xml
 
 rm tools/build/src/com/ibm/icu/dev/tool/docs/ICUTaglet*
 
 # The versions in build.properties were not updated since some time
 rm build.properties
-echo "api.doc.version=%{version}" >> build.properties
+#echo "api.doc.version=%%{version}" >> build.properties
 echo "maven.pom.ver=%{version}" >> build.properties
-echo "release.file.ver=%{majorver}_%{minorver}" >> build.properties
-echo "api.report.version=%{majorver}" >> build.properties
-echo "api.report.prev.version=%{oldmajorver}" >> build.properties
+#echo "release.file.ver=%%{majorver}_%%{minorver}" >> build.properties
+#echo "api.report.version=%%{majorver}" >> build.properties
+#echo "api.report.prev.version=%%{oldmajorver}" >> build.properties
 echo "jar.spec.version=%{majorver}" >> build.properties
 echo "jar.impl.version=%{version}" >> build.properties
 echo "jar.impl.version.string=%{version}.0" >> build.properties

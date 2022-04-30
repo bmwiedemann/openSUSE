@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Apr 29 11:55:45 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Upgrade to version 71.1
+  * Updates to CLDR 41 locale data with various additions and
+    corrections.
+  * Adds phrase-based line breaking for Japanese. Existing line
+    breaking methods follow standards and conventions for body text
+    but do not work well for short Japanese text, such as in titles
+    and headings. This new feature is optimized for these use
+    cases.
+  * Adds support for Hindi written in Latin letters (hi_Latn). The
+    CLDR data for this increasingly popular locale has been
+    significantly revised and expanded. Note that based on user
+    expectations, hi_Latn incorporates a large amount of English,
+    and can also be referred to as “Hinglish”.
+  * ICU 71 and CLDR 41 are minor releases, mostly focused on bug
+    fixes and small enhancements.
+  * Updates to the time zone data version 2022a. Note that pre-1970
+    data for a number of time zones has been removed, as has been
+    the case in the upstream tzdata release since 2021b.
+- Remove obsolete stuff from spec file
+- Reformat the changes file to fit to 67 chars width
+
+-------------------------------------------------------------------
 Thu Mar 24 14:17:28 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to verison 70.1
@@ -26,18 +50,27 @@ Thu Apr 23 08:32:58 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
     + New languages at Basic coverage: Fulah (Adlam), Maithili,
       Manipuri, Santali, Sindhi (Devanagari), Sundanese
     + Region containment: EU no longer includes GB
-    + Unicode 13 root collation data and Chinese data for collation and transliteration
-  * DateTimePatternGenerator now obeys the "hc" preference in the locale identifier (ICU-20442)
+    + Unicode 13 root collation data and Chinese data for collation
+      and transliteration
+  * DateTimePatternGenerator now obeys the "hc" preference in the
+    locale identifier (ICU-20442)
   * Various other improvements for ECMA-402 conformance
-  * Number skeletons have a new "concise" form that can be used in MessageFormat strings (ICU-20418)
-  * Currency formatting options for formal and other currency display name variants (ICU-20854)
-  * ListFormatter: new public API to select the style & type (ICU-12863)
-  * ListFormatter now selects the proper “and”/“or” form for Spanish & Hebrew (ICU-21016)
-  * Locale ID canonicalization upgraded to implement the complete CLDR spec (ICU-20834, ICU-20272)
-  * LocaleMatcher: New option to ignore one-way matches (ICU-20936),
-    and other tweaks to the code (ICU-20916, ICU-20917) and data (from CLDR)
+  * Number skeletons have a new "concise" form that can be used in
+    MessageFormat strings (ICU-20418)
+  * Currency formatting options for formal and other currency
+    display name variants (ICU-20854)
+  * ListFormatter: new public API to select the style & type
+    (ICU-12863)
+  * ListFormatter now selects the proper “and”/“or” form for
+    Spanish & Hebrew (ICU-21016)
+  * Locale ID canonicalization upgraded to implement the complete
+    CLDR spec (ICU-20834, ICU-20272)
+  * LocaleMatcher: New option to ignore one-way matches
+    (ICU-20936), and other tweaks to the code (ICU-20916,
+    ICU-20917) and data (from CLDR)
   * acceptLanguage() reimplemented via LocaleMatcher (ICU-20700)
-  * Data build tool: tzdbNames.res moved from the "zone_tree" category to the "zone_supplemental" category (ICU-21073)
+  * Data build tool: tzdbNames.res moved from the "zone_tree"
+    category to the "zone_supplemental" category (ICU-21073)
 
 -------------------------------------------------------------------
 Thu Apr  2 08:32:08 UTC 2020 - Fridrich Strba <fstrba@suse.com>
@@ -85,7 +118,7 @@ Thu Nov 22 12:23:04 UTC 2018 - Fridrich Strba <fstrba@suse.com>
     corrections, and some new languages. 
   * adds API for number and currency range formatting, and API for
     additional Unicode properties and for constructing custom
-	properties.
+    properties.
   * includex data for testing readiness for the upcoming Japanese
     calendar era.
 
@@ -189,34 +222,39 @@ Sat Feb  2 15:42:06 UTC 2013 - p.drouand@gmail.com
 
 - Update to version 50.1:
   * Common Changes
-    - Unicode 6.2: Turkish Lira Sign, improved word & line segmentation
+    - Unicode 6.2: Turkish Lira Sign, improved word & line
+      segmentation
     (BreakIterator) for symbols
-    - CLDR 22.1: Data coverage & quality improved across all major languages;
-      new short width type for weekday names; new zhuyin (Bopomofo) collation
-      for Chinese; improved data for CompactDecimalFormat & RBNF
+    - CLDR 22.1: Data coverage & quality improved across all major
+      languages; new short width type for weekday names; new zhuyin
+      (Bopomofo) collation for Chinese; improved data for
+      CompactDecimalFormat & RBNF
     - Time zone data: 2012h
     - Ordinal-number support in MessageFormat & PluralRules (#9132)
     - Deprecate setLocale(locale) in PluralFormat (#9249)
     - Dictionary-based break iterators (word segmentation):
-      * Support Chinese & Japanese, use more compact dictionary format,
-        port all but Khmer support to Java (#9353)
+      * Support Chinese & Japanese, use more compact dictionary
+        format, port all but Khmer support to Java (#9353)
       * Update Khmer dictionary (#9311)
-    - Change Java util.ListFormat to text.ListFormatter and other updates,
-      use CLDR data (#9369, #9420), port to C++ (#7168)
+    - Change Java util.ListFormat to text.ListFormatter and other
+      updates, use CLDR data (#9369, #9420), port to C++ (#7168)
     - Add updated IBM-eucJP and IBM-5233 converter (#9262, #9259)
   * ICU4C Specific Changes
     - Improve number formatting performance (#9258)
-    - C++ GenderInfo: Effective combined gender of a list of people's genders
-      (#9598) (ported from Java)
+    - C++ GenderInfo: Effective combined gender of a list of
+      people's genders (#9598) (ported from Java)
     - Thread safety support cannot be removed (see the Readme)
-    - Default compilers: Clang is now used if available (see the Readme)
-    - C++ Collator API cleanup (#9346, #9406, #9460), subclassing-API-breaking
-      changes (see the Readme)
-    - Add option to genrb tool for writing java resource bundle files (#9271)
+    - Default compilers: Clang is now used if available (see the
+      Readme)
+    - C++ Collator API cleanup (#9346, #9406, #9460),
+      subclassing-API-breaking changes (see the Readme)
+    - Add option to genrb tool for writing java resource bundle
+      files (#9271)
     - Time zone format APIs (#9338)
   * ICU4J Specific Changes
-    - class DictionaryBasedBreakIterator was removed as part of the improvements
-      for dictionary-based break iteration; see the note in the readme
+    - class DictionaryBasedBreakIterator was removed as part of the
+      improvements for dictionary-based break iteration; see the
+      note in the readme
     - Dangi (Korean Lunisolar) calendar (#9255)
 - Remove external manifest file: icu4j has moved to the IBM api
 - Add with_ecplise macros; working on it
@@ -225,31 +263,42 @@ Sat Feb  2 15:42:06 UTC 2013 - p.drouand@gmail.com
 Wed Nov 28 08:50:17 UTC 2012 - p.drouand@gmail.com
 
 - Update to 4.8.1.1 :
-  * CLDR 2.0: The CLDR 2.0 release contains numerous improvements and
-    bug fixes approved by the CLDR committee, including much additional data for many languages.
-  * Explicit parent locale support in data imported from CLDR (#8031)
-  * MessageFormat and related classes (choice/plural/select) have been reimplemented, 
-    with several improvements and some incompatible changes. See the detail section below.
-  * Extended PluralFormat pattern syntax supports explicit-value forms and offsets. (#7858)
-  * Utility APIs in PluralRules (get some/all/unique keyword values)
-  * Time zone API to return a list of available canonical system time zone IDs (#8278)
+  * CLDR 2.0: The CLDR 2.0 release contains numerous improvements
+    and bug fixes approved by the CLDR committee, including much
+    additional data for many languages.
+  * Explicit parent locale support in data imported from CLDR
+    (#8031)
+  * MessageFormat and related classes (choice/plural/select) have
+    been reimplemented, with several improvements and some
+    incompatible changes. See the detail section below.
+  * Extended PluralFormat pattern syntax supports explicit-value
+    forms and offsets. (#7858)
+  * Utility APIs in PluralRules (get some/all/unique keyword
+    values)
+  * Time zone API to return a list of available canonical system
+    time zone IDs (#8278)
   * Time zone API to return a region (#8279)
-  * Collation: Full implementation & public API for script reordering
+  * Collation: Full implementation & public API for script
+    reordering
   * Dictionary-type trie (#8167)
   * GB18030-2005 update (#8274)
   * Alphabetic Index support ported from ICU4J (#7538)
   * X11 Compound Text encoding support ported from ICU4J (#7959)
   * Appendable interface (#8314)
-  *Technology Preview: APIs for region information. The new class 
-   com.ibm.icu.util.Region provides mapping across different region/territory codes and 
-   containment relationship. (#8347)
-  * JDK Locale conversion to support JDK 7 new Locale fields (#8078)
-  * Technology Preview: TimeZoneFormat and TimeZoneNames. New classes designed for 
-    supporting CLDR time zone display name algorithm and data through public APIs. (#8342)  
+  * Technology Preview: APIs for region information. The new class 
+    com.ibm.icu.util.Region provides mapping across different
+    region/territory codes and containment relationship. (#8347)
+  * JDK Locale conversion to support JDK 7 new Locale fields
+    (#8078)
+  * Technology Preview: TimeZoneFormat and TimeZoneNames. New
+    classes designed for supporting CLDR time zone display name
+    algorithm and data through public APIs. (#8342)
   * Known Issues
-    #8535 & #8537 (C only) Prebuilt binaries are usable on MinGW but the MinGW build is broken
-    #8571 (C only) U_HIDE_DRAFT_API does not operate on the correct set of APIs; might also affect 
-    U_HIDE_DEPRECATED_API, U_HIDE_INTERNAL_API and U_HIDE_SYSTEM_API
+    + #8535 & #8537 (C only) Prebuilt binaries are usable on MinGW
+      but the MinGW build is broken
+    + #8571 (C only) U_HIDE_DRAFT_API does not operate on the
+      correct set of APIs; might also affect U_HIDE_DEPRECATED_API,
+      U_HIDE_INTERNAL_API and U_HIDE_SYSTEM_API
 - Deleted files :
   * icu4j-4.4.2.pom : Now icu4j is enterly based on IBM Api
 -------------------------------------------------------------------
