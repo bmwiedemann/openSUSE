@@ -1,7 +1,7 @@
 #
-# spec file for package apache-commons-imaging
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Release:        0
 Summary:        Apache Commons Imaging
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            https://commons.apache.org/proper/commons-csv/
+URL:            https://commons.apache.org/proper/%{short_name}/
 Source0:        http://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{base_ver}-%{pre_ver}-src.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
