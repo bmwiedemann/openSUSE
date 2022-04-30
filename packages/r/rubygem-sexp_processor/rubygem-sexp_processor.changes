@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 28 05:50:13 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 4.16.1
+ see installed History.rdoc
+
+  === 4.16.1 / 2022-04-09
+  
+  * 1 minor enhancement:
+  
+    * Reworked ParseTreeTestCase's notion of versions to make it easier to extend.
+  
+
+-------------------------------------------------------------------
 Tue Jan 25 07:35:50 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 4.16.0
