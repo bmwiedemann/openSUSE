@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Apr 28 05:35:21 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.16.0
+ see installed CHANGELOG.md
+
+  ## 2.16.0 / 2022-04-01
+  
+  ### Features
+  
+  * Allow MathML elements `menclose` and `ms`, and MathML attributes `dir`, `href`, `lquote`, `mathsize`, `notation`, and `rquote`. [[#231](https://github.com/flavorjones/loofah/issues/231)] (Thanks, [@nick-desteffen](https://github.com/nick-desteffen)!)
+  
+  
+  ## 2.15.0 / 2022-03-14
+  
+  ### Features
+  
+  * Expand set of allowed protocols to include `sms:`. [[#228](https://github.com/flavorjones/loofah/issues/228)] (Thanks, [@brendon](https://github.com/brendon)!)
+  
+  
+
+-------------------------------------------------------------------
 Thu Mar  3 08:22:28 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.14.0
