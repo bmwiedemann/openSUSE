@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr 28 05:37:28 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.5.1
+ see installed ChangeLog
+
+  2022-04-07 version 1.5.1:
+  
+  * Fix bug about packing/unpacking ext type objects with the recursive option
+  
+  2022-04-06 version 1.5.0:
+  
+  * Add recursive option on Factory#register_type to operate Packer/Unpacker manually
+  * Add oversized_integer_extension option on Factory#register_type to pack/unpack bigint using ext types
+  * Add Factory#pool method and Factory::Pool class to provide pooled Packer and Unpacker instances
+  
+
+-------------------------------------------------------------------
 Mon Feb 21 11:33:12 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.4.5
