@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr 28 05:34:07 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.2.3
+ see installed CHANGELOG.md
+
+  ## v2.2.4
+  
+  * Fix rails engine loading if sprockets is not in Gemfile. Fixes [#294](https://github.com/railsware/js-routes/issues/294)
+  
+  ## v2.2.3
+  
+  * Fixed NIL module type namespace defintion [#297](https://github.com/railsware/js-routes/issues/297).
+    * The patch may cause a problem with nested `namespace` option 
+    * Ex. Value like `MyProject.Routes` requires to define `window.MyProject` before importing the routes file
+  
+
+-------------------------------------------------------------------
 Tue Feb 15 07:31:20 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.2.2
