@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 20 19:09:51 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.11.0
+  * Fixed build scripts for GLib 2.71.1
+
+-------------------------------------------------------------------
 Fri Nov  5 15:42:21 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.10.0:

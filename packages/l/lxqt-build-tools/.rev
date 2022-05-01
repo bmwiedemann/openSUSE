@@ -99,4 +99,14 @@
   * Set the minimum required version of Qt to 5.15.</comment>
     <requestid>929697</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ee95470657a4086eb0a998a61850fa19</srcmd5>
+    <version>0.11.0</version>
+    <time>1651424051</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.0
+  * Fixed build scripts for GLib 2.71.1
+</comment>
+    <requestid>974197</requestid>
+  </revision>
 </revisionlist>
