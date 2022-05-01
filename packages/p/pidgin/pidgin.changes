@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Apr 29 11:03:13 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.14.9:
+  + Security
+    * Remove _xmppconnect support (CVE-2022-26491, boo#1199025).
+  + libpurple
+    * Fix a GLib CRITICAL message with typing time outs.
+    * Fix an issue where the unit tests for purple_str_to_time
+      would fail.
+  + Pidgin
+    * Fix a memory leak in pidgin_conversations_set_tab_colors.
+    * Fix the majority of the infinite resizing issues in the
+      input box.
+    * Add transient-buddy back which is used to show some context
+      menus and other things.
+  + Translations
+    * Fix a typo in the German translations.
+    * Synchronised all of the translations with Transifex.
+  + IRC
+    * Fix file transfers failing at 99% on IRC.
+    * Default realname and ident name in IRC to the username
+      (nickname) of the account.
+    * Add an advanced account option to IRC accounts for
+      explicitly setting the SASL login name.
+    * Add a rate limiter that should make it impossible to excess
+      flood.
+  + SIMPLE
+    * Fix an issue with the CSeq numbers in SIMPLE.
+  + XMPP
+    * Fix XMPP attention messages being sent to incorrect JIDs.
+- Drop rb1342.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Wed Mar 23 10:21:56 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Fix the infinite resizing freeze
