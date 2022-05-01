@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 27 22:10:35 UTC 2022 - schubi@suse.com
+
+- Update to version 0.4.6+git20220427.3016f4e:
+  * econftool:
+    ** Parsing error: Reporting file and line nr.
+    ** --delimeters=spaces Taking all kind of spaces for delimiter 
+  * libeconf:
+    Fixed bsc#1198165: Parsing files correctly which have space characters
+    AND none space characters as delimiters.
+
+-------------------------------------------------------------------
 Wed Apr 06 21:23:48 UTC 2022 - schubi@suse.com
 
 - Update to version 0.4.5+git20220406.c9658f2:
