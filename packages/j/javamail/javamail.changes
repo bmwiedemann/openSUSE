@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 29 12:22:31 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Add alias to com.sun.mail:jakarta.mail needed by ant-javamail
+
+-------------------------------------------------------------------
 Sat Apr  9 14:24:08 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Remove all parents, since this package is not built with maven

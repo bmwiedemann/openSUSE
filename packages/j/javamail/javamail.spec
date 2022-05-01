@@ -127,7 +127,7 @@ done
 install -pm 0644 mail/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/$(get_name mail/pom.xml).pom
 pompart=%{name}/$(get_name mail/pom.xml).pom
 jarpart=%{name}/$(get_name mail/pom.xml).jar
-%add_maven_depmap ${pompart} ${jarpart} -a javax.mail:mail,org.eclipse.jetty.orbit:javax.mail.glassfish
+%add_maven_depmap ${pompart} ${jarpart} -a javax.mail:mail,org.eclipse.jetty.orbit:javax.mail.glassfish,com.sun.mail:jakarta.mail
 install -pm 0644 mailapi/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/$(get_name mailapi/pom.xml).pom
 pompart=%{name}/$(get_name mailapi/pom.xml).pom
 jarpart=%{name}/$(get_name mailapi/pom.xml).jar
