@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May  1 10:57:21 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 5.3.5
+  * Added copper rocks near the initial copper deposits for the
+    Lorraine Plain map
+  * Adjusted the lumber and furniture production efficiency for the
+    Dwarven Miner population type
+  * Updated epithets
+  * Minor update to settlement ownership history
+  * Decreased the text area top margin for the dialogue dialog if
+    an icon button is present
+
+-------------------------------------------------------------------
 Mon Dec  6 12:35:55 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 5.2.4
