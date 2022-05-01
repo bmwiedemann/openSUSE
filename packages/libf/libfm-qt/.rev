@@ -258,4 +258,19 @@
   * Fixed two small memory leaks.</comment>
     <requestid>930092</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a2e8638b0f14d9acdf45948c302a0693</srcmd5>
+    <version>1.1.0</version>
+    <time>1651431079</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * Prepared libfm-qt for implementing &quot;Recent Files&quot;.
+  * Prevented memory leak in searching.
+  * Miscellaneous fixes for search:///.
+  * Fixed moving of bookmarks in Bookmarks context menu and added some icons to the menu.
+  * Fixed file association in a rare case, where XDG_CURRENT_DESKTOP was empty.
+  * Fixed launching of apps in terminal emulators that do not have a special option for execution (like Kitty).
+</comment>
+    <requestid>973869</requestid>
+  </revision>
 </revisionlist>

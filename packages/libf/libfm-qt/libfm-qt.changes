@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 27 19:26:08 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.1.0:
+  * Prepared libfm-qt for implementing "Recent Files".
+  * Prevented memory leak in searching.
+  * Miscellaneous fixes for search:///.
+  * Fixed moving of bookmarks in Bookmarks context menu and added some icons to the menu.
+  * Fixed file association in a rare case, where XDG_CURRENT_DESKTOP was empty.
+  * Fixed launching of apps in terminal emulators that do not have a special option for execution (like Kitty).
+
+-------------------------------------------------------------------
 Mon Nov  8 09:21:12 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.0.0:
