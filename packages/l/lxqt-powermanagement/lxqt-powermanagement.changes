@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 29 05:56:39 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.1.0:
+  * Three tray icons are added, with the charge percentage inside them.
+    Now, the built-in tray icon can be circular or shaped like a battery.
+
+-------------------------------------------------------------------
 Mon Nov  8 09:50:34 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.0.0:

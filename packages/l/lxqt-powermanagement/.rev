@@ -461,4 +461,15 @@
     minutes to 4 hours.</comment>
     <requestid>930105</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bb9c5769de40434b95c12262d97b03af</srcmd5>
+    <version>1.1.0</version>
+    <time>1651431070</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * Three tray icons are added, with the charge percentage inside them.
+    Now, the built-in tray icon can be circular or shaped like a battery.
+</comment>
+    <requestid>973858</requestid>
+  </revision>
 </revisionlist>
