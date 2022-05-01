@@ -1321,4 +1321,22 @@ comply with openSUSE policy
     <comment></comment>
     <requestid>966516</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>74522da02178d4a13092458d173ac0f8</srcmd5>
+    <version>1.1.0</version>
+    <time>1651431072</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * Added a simple option for global screen scaling.
+  * Set Clearlooks as the default LXQt theme and changed the default
+    icon theme to Breeze.
+  * Add NetBSD support.
+  * Prevented cut text in the header of Environment page of LXQt
+    Session Settings.
+- Remove lxqt-session-icontheme.patch: 
+  Upstream is using breeze now by default.
+  Patch was added for bsc#1112961 bsc#1159958
+</comment>
+    <requestid>973861</requestid>
+  </revision>
 </revisionlist>

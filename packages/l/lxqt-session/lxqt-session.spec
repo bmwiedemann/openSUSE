@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-session
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        LXQt Session Manager
 License:        LGPL-2.1-or-later
@@ -28,14 +28,12 @@ Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{n
 Source2:        %{name}.keyring
 # FIX-OPENSUSE mvetter@suse.com bsc#1099800
 Patch0:         lxqt-0.13.0-xdg-config-dir.patch
-# mvetter@suse.com bsc#1112961 bsc#1159958 - Nicer icons - theme gets required by patterns-lxqt
-Patch1:         lxqt-session-icontheme.patch
 # mvetter@suse.com bsc#1127043 - Use Openbox as default WM
-Patch2:         lxqt-session-default_wm.patch
+Patch1:         lxqt-session-default_wm.patch
 BuildRequires:  cmake >= 3.0.2
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.10.0
+BuildRequires:  lxqt-build-tools-devel >= 0.11.0
 BuildRequires:  pkgconfig
 BuildRequires:  xdg-user-dirs
 BuildRequires:  cmake(KF5WindowSystem) >= 5.36.0
@@ -44,7 +42,7 @@ BuildRequires:  pkgconfig(Qt5Xdg)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libprocps)
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(lxqt) >= 1.0.0
+BuildRequires:  pkgconfig(lxqt) >= 1.1.0
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 Requires(post): update-alternatives
@@ -65,7 +63,6 @@ use when a user logs out and to restart them the next time the user logs in.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 # Changing LXQt into X-LXQt in desktop files to be freedesktop compliant and shut rpmlint warnings
 #find -name '*desktop.in*' -exec sed -ri 's/(LXQt;)/X-\1/' {} +
 
@@ -95,8 +92,6 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 %files
 %license LICENSE
 %doc AUTHORS
-%dir %{_datadir}/kdm/
-%dir %{_datadir}/kdm/sessions/
 %{_bindir}/lxqt-config-session
 %{_bindir}/lxqt-session
 %{_bindir}/lxqt-leave
@@ -104,7 +99,6 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 %{_mandir}/man?/lxqt-*%{ext_man}
 %config %{_sysconfdir}/xdg/autostart/lxqt-xscreensaver-autostart.desktop
 %{_bindir}/startlxqt
-%{_datadir}/kdm/sessions/lxqt.desktop
 %{_mandir}/man1/startlxqt.1%{?ext_man}
 %{_datadir}/xsessions/lxqt.desktop
 %config %{_datadir}/lxqt/lxqt.conf

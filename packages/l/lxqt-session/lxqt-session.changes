@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 29 05:58:38 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.1.0:
+  * Added a simple option for global screen scaling.
+  * Set Clearlooks as the default LXQt theme and changed the default
+    icon theme to Breeze.
+  * Add NetBSD support.
+  * Prevented cut text in the header of Environment page of LXQt
+    Session Settings.
+- Remove lxqt-session-icontheme.patch: 
+  Upstream is using breeze now by default.
+  Patch was added for bsc#1112961 bsc#1159958
+
+-------------------------------------------------------------------
 Sat Apr  2 07:38:13 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.0.1:
