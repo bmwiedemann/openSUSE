@@ -124,4 +124,14 @@
   * Bumped minimum required Qt version to 5.15.</comment>
     <requestid>930123</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>67fd993192f9a7301672f54175b3ba69</srcmd5>
+    <version>1.1.0</version>
+    <time>1651431076</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * Cleaned up the code and updated translations.
+</comment>
+    <requestid>973865</requestid>
+  </revision>
 </revisionlist>
