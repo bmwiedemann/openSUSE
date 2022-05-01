@@ -282,4 +282,14 @@
   * Used the C++11 override specifier in some places.</comment>
     <requestid>930095</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a49187e537edb7e33744a2c0ed8a2589</srcmd5>
+    <version>1.1.0</version>
+    <time>1651431071</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * Bumped the version to 1.1.0 and updated the dependencies.
+</comment>
+    <requestid>973859</requestid>
+  </revision>
 </revisionlist>
