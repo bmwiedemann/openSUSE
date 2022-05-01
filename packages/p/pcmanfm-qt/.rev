@@ -533,4 +533,12 @@
   * Disabled tab DND under Wayland (because of Wayland's limitations).</comment>
     <requestid>930093</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c0ae51c51545e322fda75b80528ed61f</srcmd5>
+    <version>1.1.0</version>
+    <time>1651431077</time>
+    <user>dimstar_suse</user>
+    <comment>pcmanfm</comment>
+    <requestid>973866</requestid>
+  </revision>
 </revisionlist>

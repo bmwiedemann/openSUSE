@@ -1,11 +1,11 @@
-diff -urEbwB pcmanfm-qt-0.14.1/config/pcmanfm-qt/lxqt/settings.conf.in pcmanfm-qt-0.14.1.new/config/pcmanfm-qt/lxqt/settings.conf.in
---- pcmanfm-qt-0.14.1/config/pcmanfm-qt/lxqt/settings.conf.in	2019-02-24 01:16:13.000000000 +0100
-+++ pcmanfm-qt-0.14.1.new/config/pcmanfm-qt/lxqt/settings.conf.in	2019-03-05 14:24:18.471605115 +0100
-@@ -15,7 +15,7 @@
- 
+diff -urEbw pcmanfm-qt-1.1.0/config/pcmanfm-qt/lxqt/settings.conf.in pcmanfm-qt-1.1.0.new/config/pcmanfm-qt/lxqt/settings.conf.in
+--- pcmanfm-qt-1.1.0/config/pcmanfm-qt/lxqt/settings.conf.in	2022-04-16 02:59:21.000000000 +0200
++++ pcmanfm-qt-1.1.0.new/config/pcmanfm-qt/lxqt/settings.conf.in	2022-04-27 23:45:23.911770193 +0200
+@@ -17,7 +17,7 @@
  [Desktop]
+ DesktopShortcuts=Home, Trash, Computer, Network
  WallpaperMode=stretch
--Wallpaper=@LXQT_SHARE_DIR@/themes/frost/lxqt-origami-light.png
+-Wallpaper=@LXQT_SHARE_DIR@/wallpapers/waves-logo.png
 +Wallpaper=/usr/share/wallpapers/openSUSEdefault/contents/images/5120x3200.jpg
  BgColor=#000000
  FgColor=#ffffff
