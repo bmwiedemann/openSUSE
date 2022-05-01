@@ -25,6 +25,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://sourceforge.net/p/ruamel-yaml
 Source:         https://files.pythonhosted.org/packages/source/r/ruamel.yaml/ruamel.yaml-%{version}.tar.gz
+Patch0:         0000-fix-big-endian-issues.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -38,6 +39,7 @@ of comments, seq/map flow style, and map key order.
 
 %prep
 %setup -q -n ruamel.yaml-%{version}
+%patch0 -p1
 rm -rf *egg-info
 
 %build

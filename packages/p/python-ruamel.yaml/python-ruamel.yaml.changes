@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 28 15:21:16 UTC 2022 - Jan Baier <jbaier@suse.com>
+
+- add 0000-fix-big-endian-issues.patch to workaround issue 360 on big endian systems
+
+-------------------------------------------------------------------
 Mon Jan 10 22:47:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.17.20:
@@ -21,17 +26,17 @@ Sat Oct 16 22:32:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
   - fix issue 397, insert comment before key when a comment between key and value exists
   - fix issue 396, inserting key/val in merged-in dictionary
   - minor fix in attr handling
-  - fix issue with anchor on registered class not preserved and those classes using package 
+  - fix issue with anchor on registered class not preserved and those classes using package
     attrs with `@attr.s()`
   - fix error baseclass for ``DuplicateKeyErorr`` (reported by `Łukasz Rogalski
-  - fix typo in reader error message, causing `KeyError` during reader error 
- 
+  - fix typo in reader error message, causing `KeyError` during reader error
+
 -------------------------------------------------------------------
 Sat Jul 17 13:53:25 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.17.10:
   - fix issue 388, token with old comment structure != two elements
-  - fix issue with updating CommentedMap 
+  - fix issue with updating CommentedMap
   - fix for issue 387 where templated anchors on tagged object did get set
     resulting in potential id reuse.
   - issue 385 also affected other deprecated loaders
@@ -39,7 +44,7 @@ Sat Jul 17 13:53:25 UTC 2021 - Dirk Müller <dmueller@suse.com>
   - deprecated round_trip_loader function not working
   - wasted a few hours getting rid of mypy warnings/errors
   - fix for issue 384 !!set with aliased entry resulting in broken YAML on rt
- 
+
 -------------------------------------------------------------------
 Sun May  2 14:52:46 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
 
@@ -95,12 +100,12 @@ Fri Sep  6 06:54:38 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
  * move setting of version based on YAML directive to scanner, allowing to
     check for file version during TAG directive scanning
  * preserve YAML and TAG directives on roundtrip, correctly output # in URL
-    for YAML 1.2 
+    for YAML 1.2
 
 -------------------------------------------------------------------
 Mon Aug 12 12:37:27 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- ruamel.yaml.clib is now harddep 
+- ruamel.yaml.clib is now harddep
 
 -------------------------------------------------------------------
 Thu Aug  8 13:27:29 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -224,7 +229,7 @@ Fri Aug 31 10:53:13 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.15.64
  * support round-trip of tagged sequences: !Arg [a, {b: 1}]
- * fix issue when roundtripping floats starting with a dot such as .5 
+ * fix issue when roundtripping floats starting with a dot such as .5
  * C based reader/scanner & emitter now allow setting of 1.2 as YAML version
 
 -------------------------------------------------------------------
@@ -240,7 +245,7 @@ Tue Aug 28 13:20:10 UTC 2018 - mimi.vx@gmail.com
  * fix issue with python -O optimizing away code
  * unmade CommentedSeq a subclass of list.
  * fix issue where a comment could pop-up twice in the output
- * fix issue where JSON object (mapping) without spaces was not parsed properly 
+ * fix issue where JSON object (mapping) without spaces was not parsed properly
  * ix issue where comments after empty flow-style mappings were not emitted
  * fix issue with flow style mapping with comments gobbled newline
  * fix issue where single ‘+’ under YAML 1.2 was interpreted as integer, erroring out
@@ -302,7 +307,7 @@ Thu Oct 12 11:59:03 UTC 2017 - mimi.vx@gmail.com
  * allow setting of boolean representation (false, true)
 	 by using: yaml.boolean_representation = [u'False', u'True']
  * fix for round_tripping integers on 2.7.X > sys.maxint
- * fix for round_tripping singe excl. mark tags doubling 
+ * fix for round_tripping singe excl. mark tags doubling
  * fix for writing unicode in new API,
  * added object constructor for rt, decorator yaml_object to replace YAMLObject.
  * fix for problem using load_all with Path() instance

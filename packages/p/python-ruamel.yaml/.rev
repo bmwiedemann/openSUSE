@@ -316,4 +316,12 @@
   - fix 411, indent error comment between key empty seq value</comment>
     <requestid>945435</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>75905ab401a108709c560f1f829fcbbc</srcmd5>
+    <version>0.17.20</version>
+    <time>1651424012</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>973893</requestid>
+  </revision>
 </revisionlist>

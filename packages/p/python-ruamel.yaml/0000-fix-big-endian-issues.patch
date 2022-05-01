@@ -1,0 +1,33 @@
+Author: Michael R. Crusoe <crusoe@debian.org>
+Description: Default to pure python parsing on big endian systems
+Forwarded: not-needed
+
+As the cpython code has an endianness bug https://sourceforge.net/p/ruamel-yaml/tickets/360/
+
+Thanks to Rebecca N. Palmer for the tip about sys.byteorder!
+
+Index: ruamel.yaml/main.py
+===================================================================
+--- ruamel.yaml.orig/main.py	2021-10-14 00:10:27.265523204 +0200
++++ ruamel.yaml/main.py	2021-10-14 00:11:02.469504291 +0200
+@@ -51,7 +51,7 @@
+ 
+ 
+ class YAML:
+-    def __init__(self, *, typ=None, pure=False, output=None, plug_ins=None):  # input=None,
++    def __init__(self, *, typ=None, pure=None, output=None, plug_ins=None):  # input=None,
+         # type: (Any, Optional[Text], Any, Any, Any) -> None
+         """
+         typ: 'rt'/None -> RoundTripLoader/RoundTripDumper,  (default)
+@@ -64,6 +64,11 @@
+         """
+ 
+         self.typ = ['rt'] if typ is None else (typ if isinstance(typ, list) else [typ])
++        if pure is None:
++            if sys.byteorder == 'big':
++                pure = True
++            else:
++                pure = False
+         self.pure = pure
+ 
+         # self._input = input
