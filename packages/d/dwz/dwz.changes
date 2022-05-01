@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 28 10:08:03 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Drop binutils-gold dependency for testsuite as binutils-gold
+  is deprecated and will be removed in the future.
+
+-------------------------------------------------------------------
 Wed Feb  2 09:20:10 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Silent warnings for tramp3d compilation.

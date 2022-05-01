@@ -65,9 +65,6 @@ BuildRequires:  xz
 BuildRequires:  dejagnu
 BuildRequires:  elfutils
 BuildRequires:  gdb
-%ifnarch riscv64
-BuildRequires:  binutils-gold
-%endif
 %endif
 
 %if !%{build_main}
