@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Sun May  1 06:55:30 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- remove home-in-%post filter in helix-rpmlintrc
+- fix LICENSE string
+
+-------------------------------------------------------------------
+Fri Apr 22 11:42:02 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- fix build errors
+
+-------------------------------------------------------------------
+Fri Apr 22 01:50:09 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- copy README.SUSE to doc
+
+-------------------------------------------------------------------
+Thu Apr 21 23:31:06 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- change to %{SOURCE4} in %doc section
+
+-------------------------------------------------------------------
+Thu Apr 21 16:38:20 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- add README.SUSE
+- remove %post message from spec file
+
+-------------------------------------------------------------------
+Thu Apr 21 12:13:46 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- add helix-rpmlintrc:
+  * filters duplicate errors
+  * filters home in %post errors when actually it is just a message
+
+-------------------------------------------------------------------
+Thu Apr 21 09:24:59 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- fix potential bashism in rpmlint
+
+-------------------------------------------------------------------
+Wed Apr 20 00:48:45 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for helix (22.03~0)
