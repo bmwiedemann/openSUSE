@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 7.0.0
+%define real_version 7.0.1
 %define short_version 7.0
 %define tar_name qt-creator-opensource-src
 %define tar_suffix %{nil}
@@ -39,11 +39,6 @@ ExclusiveArch:  do_not_build
   %define qtc_docdir %{_qt6_docdir}
 %endif
 #
-# Enable the clangcodemodel plugin on openSUSE TW and Leap 15.3+, which have LLVM >= 10
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
-%global build_clang_backend 1
-%endif
-
 %global libexecdirname libexec
 %if "%{_libexecdir}" == "%{_prefix}/lib"
 %global libexecdirname lib
@@ -56,7 +51,7 @@ ExclusiveArch:  do_not_build
 %global __requires_exclude_from %{_datadir}/qtcreator/qml/qmlpuppet/
 
 Name:           %{pkgname_prefix}-creator
-Version:        7.0.0
+Version:        7.0.1
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -74,7 +69,6 @@ Patch11:        fix-application-output.patch
 Patch12:        0001-Disable-some-plugins.patch
 ##
 BuildRequires:  cmake
-%if 0%{?build_clang_backend}
 # clang-devel in Leap 15.3 points to clang7...
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} == 150300
 BuildRequires:  clang11-devel
@@ -178,7 +172,6 @@ Conflicts:      qt5-qtcreator
 Requires:       hicolor-icon-theme
 # clangcodemodel hardcodes clang include paths: QTCREATORBUG-21972
 %requires_eq    libclang%{_llvm_sonum}
-%endif
 
 %description
 Qt Creator is an integrated development environment (IDE) designed to
@@ -220,6 +213,7 @@ rm -r src/shared/qbs
 #   the clangpchmanagerbackend and clangrefactoringbackend builds
 %if 0%{?qt5}
 %cmake \
+  -DCMAKE_SKIP_INSTALL_RPATH:BOOL=OFF \
 %else
 %cmake_qt6 \
 %endif
@@ -251,11 +245,9 @@ cmake --build . -t docs
 # Install files needed to develop qtcreator plugins.
 DESTDIR=%{buildroot} cmake --install build --component Devel
 
-%if 0%{?build_clang_backend}
 if [ ! -f %{buildroot}%{_libexecdir}/qtcreator/clangbackend ]; then
   echo 'ERROR: The Clang backend was not built. Check the build requirements' ; exit 1
 fi
-%endif
 
 # The upstream scripts should not be needed for plugins development
 rm -r %{buildroot}%{_datadir}/qtcreator/scripts
@@ -317,9 +309,7 @@ rm -r %{buildroot}%{_datadir}/qtcreator/fonts
 %{_libdir}/qtcreator/*.so.*
 %{_libdir}/qtcreator/plugins/
 %{_libexecdir}/qtcreator/buildoutputparser
-%if 0%{?build_clang_backend}
 %{_libexecdir}/qtcreator/clangbackend
-%endif
 %{_libexecdir}/qtcreator/cpaster
 %{_libexecdir}/qtcreator/perf2text
 %{_libexecdir}/qtcreator/perfparser

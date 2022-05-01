@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May  1 08:39:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Don't let the %cmake macro ignore the install rpath (boo#1198281)
+
+-------------------------------------------------------------------
+Wed Apr 27 09:34:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 7.0.1. Bugfix release:
+  * https://www.qt.io/blog/qt-creator-7.0.1-released
+- Remove obsolete version check
+
+-------------------------------------------------------------------
 Mon Apr 11 16:00:27 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Fix the plugin-devel package (boo#1197978)
