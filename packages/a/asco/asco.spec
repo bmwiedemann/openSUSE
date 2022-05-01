@@ -1,7 +1,7 @@
 #
 # spec file for package asco
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,15 @@
 
 
 Name:           asco
-Version:        0.4.10
+Version:        0.4.11
 Release:        0
 Summary:        A SPICE Circuit Optimizer
 License:        GPL-2.0-only
 Group:          Productivity/Scientific/Electronics
 URL:            http://asco.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/asco/ASCO-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM asco-0.4.10-fix-implicit-declaration.patch
-Patch0:         asco-0.4.10-fix-implicit-declaration.patch
 # PATCH-FIX-OPENSUSE asco_unbuffered.patch -- patch from QUCS team
-Patch1:         asco_unbuffered.patch
+Patch0:         asco_unbuffered.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -54,17 +52,15 @@ This package provides documentation for ASCO in PDF format.
 %prep
 %setup -qn ASCO-%{version}
 %patch0 -p1
-%patch1 -p1
 tar -zxf Autotools.tar.gz
-touch NEWS
 
 %build
 # workaround for GCC10 build failure
-export CFLAGS="%(echo %{optflags}) -fcommon"
+export CFLAGS="%{optflags} -fcommon"
 export CXXFLAGS="$CFLAGS"
 autoreconf -fi
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -72,8 +68,8 @@ install -Dm 644 doc/ASCO.pdf %{buildroot}/%{_docdir}/%{name}/ASCO.pdf
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog README
 %license LICENSE
+%doc ChangeLog README
 %exclude %{_docdir}/%{name}/ASCO.pdf
 %{_bindir}/alter
 %{_bindir}/asco

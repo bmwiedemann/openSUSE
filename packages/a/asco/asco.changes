@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 30 12:30:33 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.4.11
+  * Minor improvements to work/warn about changes in simulators
+    output format.
+  * Improvements in Spectre support.
+  * Bug fixes.
+- Drop upstream fixed asco-0.4.10-fix-implicit-declaration.patch
+
+-------------------------------------------------------------------
 Thu Jun 11 11:17:44 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add -fcommon to allow building against GCC10 
@@ -6,7 +16,7 @@ Thu Jun 11 11:17:44 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 -------------------------------------------------------------------
 Sun Jun 10 08:37:45 UTC 2018 - antoine.belvire@opensuse.org
 
-- Update to version 0.9.10:
+- Update to version 0.4.10:
   * Simulation re-runs are now supported in Spectre during an
     optimization.
   * Minor enhancements in the RF module.
