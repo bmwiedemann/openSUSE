@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-lxqt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,6 +64,7 @@ Requires:       lxqt-themes
 Requires:       oxygen5-icon-theme
 Requires:       pattern() = x11
 Recommends:     pattern() = multimedia
+Recommends:     xdg-desktop-portal-lxqt
 # non core packages belonging to LXQt organization
 Recommends:     pcmanfm-qt
 Recommends:     lxqt-archiver

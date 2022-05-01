@@ -93,4 +93,13 @@
     <comment>- Add new lxqt-archiver to recommends</comment>
     <requestid>806112</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>c1c1e70c83e44f3bc66afe774ddc2cae</srcmd5>
+    <version>20170319</version>
+    <time>1651431075</time>
+    <user>dimstar_suse</user>
+    <comment>- Recommend xdg-desktop-portal-lxqt (new with LXQt 1.1.0)
+</comment>
+    <requestid>973864</requestid>
+  </revision>
 </revisionlist>
