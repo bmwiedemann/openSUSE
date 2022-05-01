@@ -117,6 +117,7 @@ Recommends:     pattern() = x11_yast
 #
 # Official upstream
 #
+Recommends:     bijiben
 # no longer need to hard require cheese for g-c-c user panel
 Recommends:     cheese
 Recommends:     dconf-editor
@@ -185,7 +186,6 @@ Requires:       gnome-user-share
 #
 # #544192
 Recommends:     baobab
-Recommends:     bijiben
 Recommends:     file-roller
 Recommends:     gcr-viewer
 Recommends:     gedit

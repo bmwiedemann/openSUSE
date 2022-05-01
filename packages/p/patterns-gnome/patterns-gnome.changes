@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 28 03:17:13 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
+
+- Enable bijiben for default installation on SLE as well
+  (bsc#1192326).
+
+-------------------------------------------------------------------
 Fri Mar 25 10:00:48 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Recommend systemd-icon-branding by gnome_x11: try to get the
