@@ -35,7 +35,8 @@ Patch1:         Fix-Freetype-and-FontConfig-Linkage.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         Fix-some-more-warnings.patch
 # PATCH-FIX-UPSTREAM
-Patch3:         poppler-22.03.0.patch
+Patch3:         poppler-22.04_1.patch
+Patch4:         poppler-22.04_2.patch
 BuildRequires:  OpenEXR-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes

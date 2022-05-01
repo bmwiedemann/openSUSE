@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May  1 08:52:41 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add the monthly poppler compatibility fixes. Replace
+  poppler-22.03.0.patch with:
+  * poppler-22.04_1.patch
+  * poppler-22.04_2.patch
+
+-------------------------------------------------------------------
 Thu Mar 10 17:07:10 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add poppler-22.03.0.patch to fix build with poppler-22.03.0

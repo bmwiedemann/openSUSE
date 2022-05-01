@@ -691,4 +691,15 @@ It will replace Koffice in O:F</comment>
     <comment></comment>
     <requestid>960910</requestid>
   </revision>
+  <revision rev="83" vrev="7">
+    <srcmd5>20e5b4a28a39c0af790a03653c04faed</srcmd5>
+    <version>3.2.1</version>
+    <time>1651424031</time>
+    <user>dimstar_suse</user>
+    <comment>- Add the monthly poppler compatibility fixes. Replace
+  poppler-22.03.0.patch with:
+  * poppler-22.04_1.patch
+  * poppler-22.04_2.patch</comment>
+    <requestid>974171</requestid>
+  </revision>
 </revisionlist>
