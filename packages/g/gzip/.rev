@@ -496,4 +496,12 @@ though it did make builds reproducible, it would lose some optimizations (forwar
 - refresh zdiff.diff, zgrep.diff, zmore.diff</comment>
     <requestid>968010</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>14eef2174befb6566a15a1d97d3462b1</srcmd5>
+    <version>1.12</version>
+    <time>1651423996</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>973075</requestid>
+  </revision>
 </revisionlist>

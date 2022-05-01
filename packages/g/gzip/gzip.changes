@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 27 08:53:53 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rename xz_lzma.patch xz_lzma_zstd.patch and expand the patch to
+  supprt zstd compression (boo#1198922).
+
+-------------------------------------------------------------------
 Sat Apr  9 11:45:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12 (CVE-2022-1271,bsc#1198062):

@@ -32,7 +32,7 @@ Patch2:         zmore.diff
 Patch3:         non-exec-stack.diff
 Patch6:         zdiff.diff
 # PATCH FIX OPENSUSE BNC#799561 - zgrep silently fails on LZMA compressed files
-Patch7:         xz_lzma.patch
+Patch7:         xz_lzma_zstd.patch
 Patch8:         manpage-no-date.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
