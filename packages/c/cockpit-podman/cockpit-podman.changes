@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 22 11:49:35 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- Remove translate-toolkit which is not available in SLE
+
+-------------------------------------------------------------------
 Mon Dec 20 17:00:13 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Add source-offest to _service to fix build error in Leap.

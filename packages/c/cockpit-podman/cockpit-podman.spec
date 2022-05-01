@@ -1,7 +1,7 @@
 #
 # spec file for package cockpit-podman
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,6 @@ Requires:       podman >= 2.0.4
 BuildRequires:  cockpit-devel >= 237
 BuildRequires:  local-npm-registry
 BuildRequires:  sassc
-BuildRequires:  translate-toolkit
 
 %description
 Cockpit component for managing Podman containers
