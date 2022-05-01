@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 28 12:36:09 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Move the "sle_latest" build target to SLE15-SP5 (bsc#1198977)
+- 0.2.46
+
+-------------------------------------------------------------------
 Thu Jan 27 12:58:16 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Fixed "rake actions:run" to replace the "${{ matrix.<value> }}"
