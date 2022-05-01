@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 29 06:12:35 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.1.0:
+  * Now the legacy tray icons are shown inside Status Notifier when
+    the System Tray plugin is enabled. That removes some problems
+    of the old tray widget.
+  * Reset buttons are fixed in config dialogs.
+  * Desktop names are shown in the context menus of task buttons.
+  * The panel config dialog is split into 3 sections, for having a sleeker GUI.
+  * The clash between the main menu shortcut and the built-in
+    shortcuts of the search entry is fixed.
+  * Added options for the button label and style of Directory Menu.
+  * Fixed resetting of System Statistics graph on auto-hiding panels.
+
+-------------------------------------------------------------------
 Mon Nov  8 09:56:54 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.0.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-panel
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-panel
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Desktop Panel for LXQt
 License:        GPL-2.0-or-later
@@ -31,7 +31,7 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libsensors4-devel
-BuildRequires:  lxqt-build-tools-devel >= 0.9.0
+BuildRequires:  lxqt-build-tools-devel >= 0.11.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Solid) >= 5.36.0
 BuildRequires:  cmake(KF5WindowSystem) >= 5.36.0
@@ -45,13 +45,14 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbusmenu-qt5)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libstatgrab)
-BuildRequires:  pkgconfig(lxqt) >= 0.17.0
-BuildRequires:  pkgconfig(lxqt-globalkeys) >= 0.17.0
+BuildRequires:  pkgconfig(lxqt) >= 1.1.0
+BuildRequires:  pkgconfig(lxqt-globalkeys) >= 1.1.0
 BuildRequires:  pkgconfig(lxqt-globalkeys-ui)
 BuildRequires:  pkgconfig(sysstat-qt5)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-damage)
+BuildRequires:  pkgconfig(xcb-image)
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xcb-xkb)
 BuildRequires:  pkgconfig(xcomposite)
@@ -59,6 +60,7 @@ BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xkbcommon-x11)
 BuildRequires:  pkgconfig(xrender)
+BuildRequires:  pkgconfig(xtst)
 Requires:       lxmenu-data
 Recommends:     %{name}-lang
 
@@ -100,6 +102,8 @@ export CXXFLAGS="%{optflags} $(pkg-config --cflags xkbcommon-x11)"
 %dir %{_sysconfdir}/xdg/autostart
 %dir %{_sysconfdir}/xdg/menus
 %config %{_sysconfdir}/xdg/menus/lxqt-applications.menu
+%config %{_sysconfdir}/xdg/menus/lxqt-applications-compact.menu
+%config %{_sysconfdir}/xdg/menus/lxqt-applications-simple.menu
 %{_libdir}/%{name}
 %{_datadir}/lxqt/lxqt-panel
 %{_mandir}/man1/lxqt-panel.1%{?ext_man}

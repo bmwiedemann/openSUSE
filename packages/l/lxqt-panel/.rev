@@ -1156,4 +1156,23 @@
   * Removed special treatment of Openbox and Compton configs.</comment>
     <requestid>930110</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2d25c5616515dea5905fd8ce259cd93c</srcmd5>
+    <version>1.1.0</version>
+    <time>1651431069</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * Now the legacy tray icons are shown inside Status Notifier when
+    the System Tray plugin is enabled. That removes some problems
+    of the old tray widget.
+  * Reset buttons are fixed in config dialogs.
+  * Desktop names are shown in the context menus of task buttons.
+  * The panel config dialog is split into 3 sections, for having a sleeker GUI.
+  * The clash between the main menu shortcut and the built-in
+    shortcuts of the search entry is fixed.
+  * Added options for the button label and style of Directory Menu.
+  * Fixed resetting of System Statistics graph on auto-hiding panels.
+</comment>
+    <requestid>973857</requestid>
+  </revision>
 </revisionlist>
