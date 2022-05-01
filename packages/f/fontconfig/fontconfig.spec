@@ -18,24 +18,25 @@
 
 Name:           fontconfig
 %define lname   libfontconfig1
-Version:        2.13.1
+Version:        2.14.0
 Release:        0
 Summary:        Library for Font Configuration
 License:        MIT
 Group:          System/Libraries
-URL:            http://fontconfig.org/
-Source0:        http://fontconfig.org/release/%{name}-%{version}.tar.bz2
+URL:            https://www.freedesktop.org/wiki/Software/fontconfig/
+Source0:        https://www.freedesktop.org/software/fontconfig/release/fontconfig-%{version}.tar.xz
 Source4:        baselibs.conf
 Source5:        local.conf
-# PATCH-FIX-UPSTREAM fontconfig-do-not-remove-UUID-file.patch boo#1124816 badshah400@gmail.com -- Removing .uuid files caused frequent rescanning of all system fonts causing intermittent CPU usage surges, for example, when browsing using firefox; patch taken from upstream commit
-Patch0:         fontconfig-do-not-remove-UUID-file.patch
+Patch1:         skip-network-test.patch
 BuildRequires:  automake >= 1.11
 BuildRequires:  gperf
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(uuid)
+BuildRequires:  python3-base
 Provides:       ipa-fonts-config = 003.02
 Obsoletes:      ipa-fonts-config < 003.02
 Provides:       IPA-fonts-config = 003.02
@@ -91,8 +92,7 @@ HTML documentation and manual pages for developers using the
 fontconfig library.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 # use suse-specific doc path:
 find -name \*.1 -o -name \*.sgml -exec sed -i -e 's/usr\/share\/doc\/fontconfig/usr\/share\/doc\/packages\/fontconfig/g' {} +
 

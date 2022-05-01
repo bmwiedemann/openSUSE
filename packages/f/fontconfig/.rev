@@ -804,4 +804,12 @@ As we probably don't want a prerelease in 13.1, please checkin there also (forwa
     <comment>- adding bug reference to this changelog [bsc#1172301]</comment>
     <requestid>949611</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>72ae8c054b37a09a7d20fd6a147c5c85</srcmd5>
+    <version>2.14.0</version>
+    <time>1651424001</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>973728</requestid>
+  </revision>
 </revisionlist>

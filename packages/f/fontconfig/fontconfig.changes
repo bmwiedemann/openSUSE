@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Apr 28 11:05:51 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- Seems we now need python3 for building
+
+-------------------------------------------------------------------
+Fri Apr 15 00:44:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.14.0:
+  * Fix endianness on generating MD5 cache name
+  * Fix a typo in the description of FcWeightFromOpenTypeDouble
+  * fc-validate: returns an error code when missing some glyphs
+  * Fallback uuid-based name to read a cache if no MD5-based cache
+  * fc-cache: Show font directories to generate cache with -v
+  * Replace UUID file mechanism with per-directory 'map' attribute [v2]
+  * memleak fixes
+- drop fontconfig-do-not-remove-UUID-file.patch (obsolete)
+- add skip-network-test.patch
+
+-------------------------------------------------------------------
 Thu Jan 27 16:14:14 UTC 2022 - pgajdos@suse.com
 
 - adding bug reference to this changelog [bsc#1172301]
