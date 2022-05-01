@@ -67,4 +67,20 @@
   * Many problems are fixed in most themes, especially with dark widgets styles.</comment>
     <requestid>930114</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>18a995150315bbf3442c2d101c4d62bf</srcmd5>
+    <version>1.1.0</version>
+    <time>1651431074</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * New wallpapers are added and all wallpapers are put inside a
+    single directory.
+  * A new theme is added (Valendas).
+  * Palettes that match some LXQt themes are added. They can be
+    applied in LXQt Appearance Configuration → Widget Style → Qt Palette.
+  * Several fixes are made in all themes.
+  * Menu arrows are added for RTL layouts.
+</comment>
+    <requestid>973863</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-themes
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,10 @@
 
 
 Name:           lxqt-themes
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Themes, graphics and icons for LXQt
+# FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/LXQt
 URL:            https://github.com/lxqt/lxqt-themes
@@ -30,7 +31,7 @@ BuildRequires:  cmake >= 3.1.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  lxqt-build-tools-devel >= 0.10.0
+BuildRequires:  lxqt-build-tools-devel >= 0.11.0
 BuildArch:      noarch
 
 %description
@@ -41,7 +42,7 @@ Themes, graphics and icons for LXQt.
 
 %build
 %cmake
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
@@ -51,9 +52,13 @@ make %{?_smp_mflags}
 %license COPYING
 %doc CHANGELOG README.md
 %dir %{_datadir}/lxqt
+%dir %{_datadir}/lxqt/palettes
+%dir %{_datadir}/lxqt/wallpapers
 %{_datadir}/lxqt/graphics
 %{_datadir}/lxqt/themes
 %{_datadir}/icons/hicolor/*/places/*.??g
 %{_datadir}/icons/hicolor/*/apps/*.??g
+%{_datadir}/lxqt/palettes/*
+%{_datadir}/lxqt/wallpapers/*
 
 %changelog

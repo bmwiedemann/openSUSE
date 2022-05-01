@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr 29 06:23:52 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.1.0:
+  * New wallpapers are added and all wallpapers are put inside a
+    single directory.
+  * A new theme is added (Valendas).
+  * Palettes that match some LXQt themes are added. They can be
+    applied in LXQt Appearance Configuration → Widget Style → Qt Palette.
+  * Several fixes are made in all themes.
+  * Menu arrows are added for RTL layouts.
+
+-------------------------------------------------------------------
 Mon Nov  8 10:02:49 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.0.0:
