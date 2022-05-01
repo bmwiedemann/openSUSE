@@ -19,12 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-paramiko
-Version:        2.10.3
+Version:        2.10.4
 Release:        0
 Summary:        SSH2 protocol library
 License:        LGPL-2.1-or-later
 Group:          Documentation/Other
-URL:            http://www.paramiko.org/
+URL:            https://www.paramiko.org/
 Source0:        https://files.pythonhosted.org/packages/source/p/paramiko/paramiko-%{version}.tar.gz
 Patch0:         paramiko-test_extend_timeout.patch
 # PATCH-FIX-UPSTREAM paramiko-pr1655-remove-pytest-relaxed.patch gh#paramiko/paramiko#1655 -- pytest-relaxed is broken

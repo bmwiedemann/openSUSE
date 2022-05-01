@@ -566,4 +566,21 @@
     <comment></comment>
     <requestid>967774</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>bc692b9d46a1cb0a394c831069082e8b</srcmd5>
+    <version>2.10.4</version>
+    <time>1651424007</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.10.4:
+  * Servers offering certificate variants of hostkey algorithms (eg
+    ssh-rsa-cert-v01@openssh.com) could not have their host keys verified by
+    Paramiko clients, as it only ever considered non-cert key types for that
+    part of connection handshaking. This has been fixed.
+  * gq PKey instances’ __eq__ did not have the usual safety guard in place to
+    ensure they were being compared to another PKey object, causing occasional
+    spurious BadHostKeyException (among other things). This has been fixed.
+  * Update camelCase method calls against the threading module to be snake_case;
+    this and related tweaks should fix some deprecation warnings under Python 3.10.</comment>
+    <requestid>973836</requestid>
+  </revision>
 </revisionlist>

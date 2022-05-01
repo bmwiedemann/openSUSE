@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 28 21:26:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10.4:
+  * Servers offering certificate variants of hostkey algorithms (eg
+    ssh-rsa-cert-v01@openssh.com) could not have their host keys verified by
+    Paramiko clients, as it only ever considered non-cert key types for that
+    part of connection handshaking. This has been fixed.
+  * gq PKey instances’ __eq__ did not have the usual safety guard in place to
+    ensure they were being compared to another PKey object, causing occasional
+    spurious BadHostKeyException (among other things). This has been fixed.
+  * Update camelCase method calls against the threading module to be snake_case;
+    this and related tweaks should fix some deprecation warnings under Python 3.10.
+
+-------------------------------------------------------------------
 Fri Apr  8 07:44:16 UTC 2022 - pgajdos@suse.com
 
 - do not require python-mock for build
