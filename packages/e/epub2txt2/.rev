@@ -26,4 +26,17 @@
 </comment>
     <requestid>965784</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9f637b87b037baea0aa45819a6da0ca3</srcmd5>
+    <version>2.04</version>
+    <time>1651424030</time>
+    <user>dimstar_suse</user>
+    <comment>- remove patches:
+  * bmwiedemann-sort.patch
+  * LICENSE.patch
+- update helix.spec
+- Update epub2text2 to version 2.04 (commit hash: 02f69e6243d6c96f78da45fb710a265e5aee2fb5)
+</comment>
+    <requestid>974167</requestid>
+  </revision>
 </revisionlist>
