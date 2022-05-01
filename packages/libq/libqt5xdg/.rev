@@ -409,4 +409,15 @@
   * Handle relative paths in qtxdg-desktop-file-start.</comment>
     <requestid>929698</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>14fac81d0890e515d727369af5e18a5e</srcmd5>
+    <version>3.9.0</version>
+    <time>1651431081</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.9.0:
+  * String literals are supported in Exec keys of desktop entries.
+  * Enhancements to qtxdg-mat.
+</comment>
+    <requestid>973871</requestid>
+  </revision>
 </revisionlist>
