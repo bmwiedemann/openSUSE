@@ -17,7 +17,7 @@
 
 
 Name:           desktop-translations
-Version:        84.87.20220316.9301f89b
+Version:        84.87.20220427.80cb897f
 Release:        0
 Summary:        Desktop Files Translations
 License:        MIT
