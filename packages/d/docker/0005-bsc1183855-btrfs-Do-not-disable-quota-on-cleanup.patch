@@ -1,7 +1,7 @@
-From a6aa2a591d31f43e01ba29abdf73658b34fded49 Mon Sep 17 00:00:00 2001
+From 98822d2010c709e64d5e86d7ec8e054861080a53 Mon Sep 17 00:00:00 2001
 From: Michal Rostecki <mrostecki@opensuse.org>
 Date: Thu, 8 Apr 2021 14:42:02 +0100
-Subject: [PATCH 5/5] bsc1183855: btrfs: Do not disable quota on cleanup
+Subject: [PATCH 5/6] bsc1183855: btrfs: Do not disable quota on cleanup
 
 Before this change, cleanup of the btrfs driver (occuring on each daemon
 shutdown) resulted in disabling quotas. It was done with an assumption
@@ -140,5 +140,5 @@ index 8fd2854a2673..32c4f07c620d 100644
  			}
  			if err := subvolLimitQgroup(dir, size); err != nil {
 -- 
-2.33.1
+2.35.1
 

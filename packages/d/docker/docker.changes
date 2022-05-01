@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 29 02:51:43 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+- Add patch to update golang.org/x/crypto for CVE-2021-43565 and CVE-2022-27191.
+  bsc#1193930 bsc#1197284
+  * 0006-bsc1193930-vendor-update-golang.org-x-crypto.patch
+- Rebase patches:
+  * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  * 0003-PRIVATE-REGISTRY-add-private-registry-mirror-support.patch
+  * 0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  * 0005-bsc1183855-btrfs-Do-not-disable-quota-on-cleanup.patch
+
+-------------------------------------------------------------------
 Thu Apr 14 04:09:58 UTC 2022 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 20.10.14-ce. See upstream changelog online at

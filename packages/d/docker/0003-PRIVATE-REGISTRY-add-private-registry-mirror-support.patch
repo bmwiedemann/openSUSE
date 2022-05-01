@@ -1,7 +1,7 @@
-From 4914111dcaf1257a9dd3f9f7a089de17c7dc6752 Mon Sep 17 00:00:00 2001
+From 098dd769a226407da7a695ae44cf2e41a5d13a4a Mon Sep 17 00:00:00 2001
 From: Valentin Rothberg <vrothberg@suse.com>
 Date: Mon, 2 Jul 2018 13:37:34 +0200
-Subject: [PATCH 3/5] PRIVATE-REGISTRY: add private-registry mirror support
+Subject: [PATCH 3/6] PRIVATE-REGISTRY: add private-registry mirror support
 
 NOTE: This is a backport/downstream patch of the upstream pull-request
       for Moby, which is still subject to changes.  Please visit
@@ -444,10 +444,10 @@ index c8ddd4c5cfcd..b17e9d25d6c2 100644
  		return err
  	}
 diff --git a/distribution/pull_v2.go b/distribution/pull_v2.go
-index 023ee2e71efd..e14cdd16b410 100644
+index 123abf6b497a..097ead45d0fd 100644
 --- a/distribution/pull_v2.go
 +++ b/distribution/pull_v2.go
-@@ -431,7 +431,7 @@ func (p *v2Puller) pullV2Tag(ctx context.Context, ref reference.Named, platform
+@@ -432,7 +432,7 @@ func (p *v2Puller) pullV2Tag(ctx context.Context, ref reference.Named, platform
  	// the other side speaks the v2 protocol.
  	p.confirmedV2 = true
  
@@ -1142,5 +1142,5 @@ index 3e3a5b41ffbd..451a6f874bc1 100644
  
  	endpoints = []APIEndpoint{
 -- 
-2.33.1
+2.35.1
 
