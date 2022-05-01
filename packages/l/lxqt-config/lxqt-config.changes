@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 29 05:48:46 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.1.0:
+  * Added a separate page for GTK style settings to LXQt Appearance
+    Configuration.
+  * Fixed manual editing of combo boxes in LXQt Locale Configuration.
+  * Small enhancements and code cleanup.
+
+-------------------------------------------------------------------
 Mon Nov  8 09:43:29 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.0.0:

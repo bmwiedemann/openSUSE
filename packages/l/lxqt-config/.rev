@@ -540,4 +540,17 @@ this patch makes lxqt-config also include desktop files with the x-lxqt category
   * Added support for saving and loading of Qt palettes.</comment>
     <requestid>930100</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8d8683ab804689c6f9c0b93cfdadcabe</srcmd5>
+    <version>1.1.0</version>
+    <time>1651431084</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * Added a separate page for GTK style settings to LXQt Appearance
+    Configuration.
+  * Fixed manual editing of combo boxes in LXQt Locale Configuration.
+  * Small enhancements and code cleanup.
+</comment>
+    <requestid>973875</requestid>
+  </revision>
 </revisionlist>
