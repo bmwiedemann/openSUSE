@@ -98,6 +98,7 @@ Source11:       ncurses.keyring
 Patch0:         ncurses-6.3.dif
 Patch1:         ncurses-5.9-ibm327x.dif
 Patch2:         ncurses-5.7-tack.dif
+Patch3:         FORTIFY_SOURCE_3-fix.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _miscdir    %{_datadir}/misc
 %global         _incdir     %{_includedir}
@@ -350,6 +351,7 @@ mv tack-* tack
 %patch1 -p0 -b .327x
 %patch2 -p0 -b .hs
 %patch0 -p0 -b .p0
+%patch3 -p1
 %if ! %{with xtermdsl}
 sed -ri '/^xterm-suse/,/use=/{s/use=xterm-new/use=xterm-p370/;}' misc/terminfo.src
 %endif

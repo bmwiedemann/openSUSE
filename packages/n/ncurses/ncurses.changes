@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr 27 12:47:05 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Include FORTIFY_SOURCE_3-fix.patch as the patch
+  is needed for upcoming -D_FORTIFY_SOURCE=3 $optflag.
+  We discussed the change with upstream, but the project
+  disagrees about stricter rules used with -D_FORTIFY_SOURCE=3.
+
+-------------------------------------------------------------------
+Mon Apr 25 07:40:05 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20220423
+  + in-progress work on invalid_merge(), disable it (cf: 20220402).
+  + fix memory leak in _nc_tic_dir() when called from _nc_set_writedir().
+  + fix memory leak in tic when "-c" option is used.
+
+-------------------------------------------------------------------
 Wed Apr 20 06:37:39 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20220416 (boo#1198627 for CVE-2022-29458)

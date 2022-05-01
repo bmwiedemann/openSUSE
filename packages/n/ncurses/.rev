@@ -3613,4 +3613,20 @@
   + add test/test_unget_wch.c</comment>
     <requestid>970977</requestid>
   </revision>
+  <revision rev="213" vrev="17">
+    <srcmd5>ff84a5a61a56a9db1343d1fa297260e5</srcmd5>
+    <version>6.3.MACRO</version>
+    <time>1651423997</time>
+    <user>dimstar_suse</user>
+    <comment>- Include FORTIFY_SOURCE_3-fix.patch as the patch
+  is needed for upcoming -D_FORTIFY_SOURCE=3 $optflag.
+  We discussed the change with upstream, but the project
+  disagrees about stricter rules used with -D_FORTIFY_SOURCE=3.
+
+- Add ncurses patch 20220423
+  + in-progress work on invalid_merge(), disable it (cf: 20220402).
+  + fix memory leak in _nc_tic_dir() when called from _nc_set_writedir().
+  + fix memory leak in tic when &quot;-c&quot; option is used.</comment>
+    <requestid>973227</requestid>
+  </revision>
 </revisionlist>
