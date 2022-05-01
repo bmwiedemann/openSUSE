@@ -380,4 +380,14 @@
     libx11 1.7.3.1.</comment>
     <requestid>946076</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ff3bce243919f1e469199c07c7348353</srcmd5>
+    <version>1.1.0</version>
+    <time>1651431085</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * Update translations
+</comment>
+    <requestid>973876</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-globalkeys
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        Global keyboard shortcuts registration
 License:        LGPL-2.1-or-later
@@ -28,14 +28,14 @@ Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.10.0
+BuildRequires:  lxqt-build-tools-devel >= 0.11.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5WindowSystem) >= 5.36.0
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5UiTools) >= 5.15.0
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(lxqt) >= 1.0.0
+BuildRequires:  pkgconfig(lxqt) >= 1.1.0
 Requires(post): desktop-file-utils
 Requires(pre):  desktop-file-utils
 Obsoletes:      lxqt-globalkeys-qt5 < %{version}
