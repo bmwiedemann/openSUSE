@@ -1,7 +1,7 @@
 #
 # spec file for package libmypaint
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,11 @@
 
 
 %define geglshlib %{name}-gegl0
-%define sonum 1.6
-%define libver %(echo "%sonum" | tr "." "_")
-%define shlib %{name}-%{libver}-1
-
+%define sonum  0
+%define girver 1.6
+%define shlib %{name}%{sonum}
 Name:           libmypaint
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        A brushstroke creation library
 License:        ISC
@@ -55,7 +54,7 @@ This package provides the shared libraries for %{name}.
 Summary:        Header files for %{name}, a brushstroke creation library
 Group:          Development/Libraries/C and C++
 Requires:       %{shlib} = %{version}
-Requires:       typelib-1_0-MyPaint-%{libver} = %{version}
+Requires:       typelib-1_0-MyPaint-%{girver} = %{version}
 Provides:       mypaint-devel = %{version}
 Obsoletes:      mypaint-devel < %{version}
 
@@ -65,11 +64,11 @@ which is used by MyPaint and other projects.
 This package provides the header needed for developing
 applications using %{name}.
 
-%package -n typelib-1_0-MyPaint-%{libver}
+%package -n typelib-1_0-MyPaint-%{girver}
 Summary:        A brushstroke creation library -- Introspection bindings
 Group:          System/Libraries
 
-%description -n typelib-1_0-MyPaint-%{libver}
+%description -n typelib-1_0-MyPaint-%{girver}
 libmypaint, a.k.a. "brushlib", is a library for making brushstrokes
 which is used by MyPaint and other projects.
 
@@ -80,7 +79,7 @@ Summary:        Header files for %{name}, a brushstroke creation library
 Group:          Development/Libraries/C and C++
 Requires:       %{geglshlib} = %{version}
 Requires:       %{shlib} = %{version}
-Requires:       typelib-1_0-MyPaintGegl-%{libver} = %{version}
+Requires:       typelib-1_0-MyPaintGegl-%{girver} = %{version}
 
 %description gegl-devel
 libmypaint, a.k.a. "brushlib", is a library for making brushstrokes which
@@ -96,11 +95,11 @@ libmypaint, a.k.a. "brushlib", is a library for making brushstrokes which is
 used by MyPaint and other projects. This package provides the shared libraries
 for %{name}'s GEGL bindings.
 
-%package -n typelib-1_0-MyPaintGegl-%{libver}
+%package -n typelib-1_0-MyPaintGegl-%{girver}
 Summary:        A brushstroke creation library with gegl support -- Introspection bindings
 Group:          System/Libraries
 
-%description -n typelib-1_0-MyPaintGegl-%{libver}
+%description -n typelib-1_0-MyPaintGegl-%{girver}
 libmypaint, a.k.a. "brushlib", is a library for making brushstrokes
 which is used by MyPaint and other projects.
 
@@ -120,7 +119,7 @@ chmod -x README.md
 	--enable-gegl \
 	--enable-openmp \
 	%{nil}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -133,7 +132,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n %{geglshlib} -p /sbin/ldconfig
 
 %files -n %{shlib}
-%{_libdir}/%{name}-%{sonum}.so.*
+%{_libdir}/%{name}.so.*
 
 %files lang -f %{name}.lang
 
@@ -143,7 +142,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/libmypaint.pc
 %{_includedir}/%{name}/
-%{_datadir}/gir-1.0/MyPaint-%{sonum}.gir
+%{_datadir}/gir-1.0/MyPaint-%{girver}.gir
 
 %files -n %{geglshlib}
 %{_libdir}/%{name}-gegl.so.*
@@ -152,12 +151,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/%{name}-gegl.so
 %{_libdir}/pkgconfig/libmypaint-gegl.pc
 %{_includedir}/%{name}-gegl/
-%{_datadir}/gir-1.0/MyPaintGegl-%{sonum}.gir
+%{_datadir}/gir-1.0/MyPaintGegl-%{girver}.gir
 
-%files -n typelib-1_0-MyPaint-%{libver}
-%{_libdir}/girepository-1.0/MyPaint-%{sonum}.typelib
+%files -n typelib-1_0-MyPaint-%{girver}
+%{_libdir}/girepository-1.0/MyPaint-%{girver}.typelib
 
-%files -n typelib-1_0-MyPaintGegl-%{libver}
-%{_libdir}/girepository-1.0/MyPaintGegl-%{sonum}.typelib
+%files -n typelib-1_0-MyPaintGegl-%{girver}
+%{_libdir}/girepository-1.0/MyPaintGegl-%{girver}.typelib
 
 %changelog
