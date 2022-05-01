@@ -49,4 +49,16 @@
   * Fixed listing RAR archive contents with encrypted file list.</comment>
     <requestid>930097</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2a815d8e1059baf34242737b39c8abe0</srcmd5>
+    <version>0.6.0</version>
+    <time>1651431083</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.0:
+  * Allow changing of the view icon size and remember it.
+  * Allow sorting by any column (but only sort by the first column at startup).
+  * Forget the password (if any) on reloading the archive.
+</comment>
+    <requestid>973874</requestid>
+  </revision>
 </revisionlist>

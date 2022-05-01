@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 28 20:14:45 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.0:
+  * Allow changing of the view icon size and remember it.
+  * Allow sorting by any column (but only sort by the first column at startup).
+  * Forget the password (if any) on reloading the archive.
+
+-------------------------------------------------------------------
 Mon Nov  8 09:36:17 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.0:
