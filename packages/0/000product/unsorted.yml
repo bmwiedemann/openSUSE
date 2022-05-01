@@ -6588,6 +6588,7 @@ unsorted:
   - gtk4-devel-tools 
   - gtk4-docs 
   - gtk4-metatheme-adapta 
+  - gtk4-metatheme-arc 
   - gtk4-metatheme-matcha 
   - gtk4-metatheme-plata 
   - gtk4-metatheme-yaru-mate 
@@ -9099,7 +9100,7 @@ unsorted:
   - libOpenImageIO2_3 
   - libOpenImageIO_Util2_3 
   - libOpenSceneGraph-devel 
-  - libOpenSceneGraph158 
+  - libOpenSceneGraph161 
   - libOpenThreads-devel 
   - libOpenThreads21 
   - libOyranosSynnefo-devel 
@@ -14894,7 +14895,6 @@ unsorted:
   - libwxlua_bind-wx31-3_1_0_0 
   - libwxlua_debug-wx31-3_1_0_0 
   - libwxlua_debugger-wx31-3_1_0_0 
-  - libwxstedit-wx30gtk2u-1_6_0 
   - libwxsvg-devel 
   - libwxsvg3 
   - libx86-1 
@@ -16250,7 +16250,6 @@ unsorted:
   - metallb-controller: [x86_64] 
   - metallb-speaker: [x86_64] 
   - metamath 
-  - metamath-book 
   - metatheme-adapta-common 
   - metatheme-ambiance-common 
   - metatheme-arc-common 
@@ -24321,6 +24320,7 @@ unsorted:
   - python310-python-jose 
   - python310-python-json-logger 
   - python310-python-jsonschema-objects 
+  - python310-python-keycloak 
   - python310-python-louvain 
   - python310-python-lsp-black 
   - python310-python-lsp-jsonrpc 
@@ -27364,6 +27364,7 @@ unsorted:
   - python38-python-jose 
   - python38-python-json-logger 
   - python38-python-jsonschema-objects 
+  - python38-python-keycloak 
   - python38-python-louvain 
   - python38-python-lsp-black 
   - python38-python-lsp-jsonrpc 
@@ -30533,6 +30534,7 @@ unsorted:
   - python39-python-jose 
   - python39-python-json-logger 
   - python39-python-jsonschema-objects 
+  - python39-python-keycloak 
   - python39-python-louvain 
   - python39-python-lsp-black 
   - python39-python-lsp-jsonrpc 
@@ -32253,7 +32255,6 @@ unsorted:
   - ruby3.1-doc 
   - ruby3.1-doc-ri 
   - ruby3.1-rubygem-rspec-rails-3.9 
-  - ruby3.1-rubygem-sinatra 
   - rubygem-docker-api 
   - rubygem-docker-api-doc 
   - rubygem-docker-api-testsuite 
@@ -33440,6 +33441,7 @@ unsorted:
   - terraform-provider-openstack: [x86_64] 
   - terraform-provider-template: [x86_64] 
   - terraform-provider-vsphere: [x86_64] 
+  - terragrunt 
   - teseq 
   - tesla-polyglot 
   - tesla-polyglot-atom 
@@ -43199,8 +43201,6 @@ unsorted:
   - wxmp3gain 
   - wxmp3gain-lang 
   - wxsqlite3-devel 
-  - wxstedit 
-  - wxstedit-devel 
   - wxsvg 
   - wyrmgus 
   - wyrmgus-devel 
