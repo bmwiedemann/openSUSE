@@ -18,27 +18,23 @@
 
 %define vncgroup vnc
 %define vncuser vnc
-
 %define tlskey  %{_sysconfdir}/vnc/tls.key
 %define tlscert %{_sysconfdir}/vnc/tls.cert
-
 %if 0%{?suse_version} >= 1500
 %define use_firewalld 1
 %else
 %define use_firewalld 0
 %endif
-
 %if 0%{?suse_version} < 1550
-%define _distconfdir /etc
+%define _distconfdir %{_sysconfdir}
 %endif
-
 Name:           tigervnc
 Version:        1.12.0
 Release:        0
-URL:            http://tigervnc.org/
 Summary:        An implementation of VNC
 License:        GPL-2.0-only AND MIT
 Group:          System/X11/Servers/XF86_4
+URL:            https://tigervnc.org/
 Source1:        https://github.com/TigerVNC/tigervnc/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source4:        10-libvnc.conf
 Source5:        vnc-server.susefirewall
@@ -194,10 +190,10 @@ configuration.
 %package -n xorg-x11-Xvnc-novnc
 Summary:        NoVNC service for Xvnc
 Group:          System/X11/Servers/XF86_4
-BuildArch:      noarch
 Requires:       novnc
 Requires:       python3-websockify
 Requires:       xorg-x11-Xvnc
+BuildArch:      noarch
 %{?systemd_requires}
 
 %description -n xorg-x11-Xvnc-novnc
@@ -232,8 +228,8 @@ Xvnc extension allows X clients to read and change VNC configuration.
 Summary:        Wrapper that starts x0vncserver
 Group:          System/X11/Servers/XF86_4
 Requires:       xorg-x11-Xvnc
-Provides:       x11vnc
 Conflicts:      x11vnc
+Provides:       x11vnc
 BuildArch:      noarch
 
 %description x11vnc
@@ -421,15 +417,15 @@ fi
 %service_del_postun xvnc-novnc.service xvnc-novnc.socket
 
 %post -n libXvnc1 -p /sbin/ldconfig
-
 %postun -n libXvnc1 -p /sbin/ldconfig
 
 %files -f %{name}.lang
 %ghost %{_bindir}/vncviewer
 %{_bindir}/vncviewer-tigervnc
-%doc LICENCE.TXT README.rst
+%license LICENCE.TXT
+%doc README.rst
 %ghost %{_mandir}/man1/vncviewer.1.gz
-%doc %{_mandir}/man1/vncviewer-tigervnc.1.gz
+%{_mandir}/man1/vncviewer-tigervnc.1%{?ext_man}
 %if 0%{?suse_version} >= 1315
 %ghost %{_sysconfdir}/alternatives/vncviewer
 %ghost %{_sysconfdir}/alternatives/vncviewer.1.gz
@@ -454,7 +450,8 @@ fi
 %{_datadir}/applications/vncviewer.desktop
 
 %files -n xorg-x11-Xvnc
-%doc LICENCE.TXT README.rst vnc.reg
+%license LICENCE.TXT
+%doc README.rst vnc.reg
 %doc unix/vncserver/HOWTO.md
 
 %{_bindir}/Xvnc
@@ -468,12 +465,12 @@ fi
 %{_libexecdir}/vncsession-start
 
 %exclude %{_mandir}/man1/Xserver.1*
-%{_mandir}/man1/Xvnc.1*
-%{_mandir}/man1/vncconfig.1*
-%{_mandir}/man1/vncpasswd.1*
-%{_mandir}/man1/x0vncserver.1*
-%{_mandir}/man8/vncserver.8*
-%{_mandir}/man8/vncsession.8*
+%{_mandir}/man1/Xvnc.1%{?ext_man}
+%{_mandir}/man1/vncconfig.1%{?ext_man}
+%{_mandir}/man1/vncpasswd.1%{?ext_man}
+%{_mandir}/man1/x0vncserver.1%{?ext_man}
+%{_mandir}/man8/vncserver.8%{?ext_man}
+%{_mandir}/man8/vncsession.8%{?ext_man}
 
 %{_unitdir}/vncserver@.service
 %{_unitdir}/xvnc@.service
