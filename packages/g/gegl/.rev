@@ -531,4 +531,12 @@
   + Operations: The npd operation fixed with multiple threads.</comment>
     <requestid>958288</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>e2d9d2e61742dfcb739ace63e404c454</srcmd5>
+    <version>0.4.36</version>
+    <time>1651424014</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>973906</requestid>
+  </revision>
 </revisionlist>

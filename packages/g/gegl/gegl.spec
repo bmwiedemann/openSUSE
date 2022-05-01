@@ -56,8 +56,9 @@ BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(lcms2) >= 2.8
 BuildRequires:  pkgconfig(lensfun)
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavcodec) < 59
+BuildRequires:  pkgconfig(libavformat) < 59
+BuildRequires:  pkgconfig(libavutil) < 57
 BuildRequires:  pkgconfig(libavutil) >= 55.92.100
 BuildRequires:  pkgconfig(libpng) >= 1.6.0
 BuildRequires:  pkgconfig(libraw) >= 0.15.4
