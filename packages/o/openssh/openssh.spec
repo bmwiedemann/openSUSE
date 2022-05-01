@@ -191,6 +191,17 @@ also be forwarded over the secure channel.
 This package contains the Secure Shell daemon, which allows clients to
 securely connect to your server.
 
+%package server-config-rootlogin
+Summary:        Config to permit root logins to sshd
+Group:          Productivity/Networking/SSH
+Requires:       %{name}-server = %{version}-%{release}
+
+%description server-config-rootlogin
+The openssh-server package by default disallows password based
+root logins. This package provides a config that does. It's useful
+to temporarily have a password based login to be able to use
+ssh-copy-id(1).
+
 %package clients
 Summary:        SSH (Secure Shell) client applications
 Group:          Productivity/Networking/SSH
@@ -321,10 +332,11 @@ install -m 644 contrib/ssh-copy-id.1 %{buildroot}%{_mandir}/man1
 sed -i -e s@%{_prefix}/libexec@%{_libexecdir}@g %{buildroot}%{_sysconfdir}/ssh/sshd_config
 
 # Move /etc to /usr/etc/ssh
-mkdir -p %{buildroot}%{_distconfdir}/ssh
+mkdir -p %{buildroot}%{_distconfdir}/ssh/ssh{,d}_config.d
 mv %{buildroot}%{_sysconfdir}/ssh/moduli %{buildroot}%{_distconfdir}/ssh/
 mv %{buildroot}%{_sysconfdir}/ssh/ssh_config %{buildroot}%{_distconfdir}/ssh/
 mv %{buildroot}%{_sysconfdir}/ssh/sshd_config %{buildroot}%{_distconfdir}/ssh/
+echo "PermitRootLogin yes" > %{buildroot}%{_distconfdir}/ssh/sshd_config.d/50-permit-root-login.conf
 
 %if 0%{?suse_version} < 1550
 # install firewall definitions
@@ -419,6 +431,7 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 %doc README.SUSE README.kerberos README.FIPS ChangeLog OVERVIEW README TODO CREDITS
 %attr(0755,root,root) %dir %{_sysconfdir}/ssh
 %attr(0755,root,root) %dir %{_distconfdir}/ssh
+%attr(0755,root,root) %dir /usr/etc/ssh/ssh_config.d
 %attr(0600,root,root) %{_distconfdir}/ssh/moduli
 %attr(0444,root,root) %{_mandir}/man1/ssh-keygen.1*
 %attr(0444,root,root) %{_mandir}/man5/moduli.5*
@@ -431,6 +444,7 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 %dir %attr(0755,root,root) %{_localstatedir}/lib/sshd
 %dir %attr(0755,root,root) %{_sysconfdir}/ssh/sshd_config.d
 %attr(0755,root,root) %dir %{_distconfdir}/ssh
+%attr(0755,root,root) %dir /usr/etc/ssh/sshd_config.d
 %attr(0640,root,root) %{_distconfdir}/ssh/sshd_config
 %if %{defined _distconfdir}
 %attr(0644,root,root) %{_distconfdir}/pam.d/sshd
@@ -451,6 +465,9 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 %dir %{_fwdefdir}
 %config %{_fwdefdir}/sshd
 %endif
+
+%files server-config-rootlogin
+%{_distconfdir}/ssh/sshd_config.d/50-permit-root-login.conf
 
 %files clients
 %dir %attr(0755,root,root) %{_sysconfdir}/ssh/ssh_config.d

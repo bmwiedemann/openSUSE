@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 28 15:00:52 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
+
+- read ssh and sshd config file also from /usr/etc
+- add openssh-server-config-rootlogin subpackage that enabled PermitRootLogin
+
+-------------------------------------------------------------------
 Mon Mar  7 18:00:09 UTC 2022 - Hans Petter Jansson <hpj@suse.com>
 
 - Version update to 8.9p1:
