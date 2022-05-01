@@ -317,4 +317,15 @@
   * The do-not-disturb mode is added.</comment>
     <requestid>930102</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>8e1f02ff3d0c9c7d2e16d8880e0d7705</srcmd5>
+    <version>1.0.0</version>
+    <time>1651431085</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * The configuration GUI is polished.
+  * The notification icon is updated when global settings are changed.
+</comment>
+    <requestid>973877</requestid>
+  </revision>
 </revisionlist>
