@@ -301,4 +301,14 @@
   * Visible names are used to sort items.</comment>
     <requestid>930111</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8fb6c0b2cfeaffa3a52ffcaf174e3e60</srcmd5>
+    <version>1.1.0</version>
+    <time>1651431071</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * Prevented redundant writings of dialog width to the config file.
+</comment>
+    <requestid>973860</requestid>
+  </revision>
 </revisionlist>
