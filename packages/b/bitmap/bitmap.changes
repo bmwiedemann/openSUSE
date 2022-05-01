@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun May  1 08:12:18 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to version 1.1.0
+  * Use _CONST_X_STRING to make libXt declare String as const char *
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Build xz tarballs instead of bzip2
+  * Move bitmaps into a new bitmaps directory
+  * test: add round-trip-test for atobm & bmtoa
+  * atobm: accept single character lines
+  * atobm: close memory leaks
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * bitmap: Fix a crash with underspecified dimensions
+
+-------------------------------------------------------------------
 Mon Feb 11 11:10:08 UTC 2019 - sndirsch@suse.com
 
 - update to version 1.0.9:
