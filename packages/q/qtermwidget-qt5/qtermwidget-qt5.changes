@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 26 16:17:25 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.1.0:
+  * Handled the zero history size.
+  * Added API documentation and followed the naming convention in some
+  places of the code.
+  * Return focus to the terminal on closing the search bar.
+  * Code cleanup and enhancement.
+
+-------------------------------------------------------------------
 Tue Apr 26 14:58:28 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Fix a rpmlint error:

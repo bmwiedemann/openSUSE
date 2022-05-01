@@ -209,4 +209,17 @@
     <comment></comment>
     <requestid>972946</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>83603e3e146b14e97e69ec83c49a6ded</srcmd5>
+    <version>1.1.0</version>
+    <time>1651431087</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * Handled the zero history size.
+  * Added API documentation and followed the naming convention in some
+  places of the code.
+  * Return focus to the terminal on closing the search bar.
+  * Code cleanup and enhancement.</comment>
+    <requestid>974196</requestid>
+  </revision>
 </revisionlist>
