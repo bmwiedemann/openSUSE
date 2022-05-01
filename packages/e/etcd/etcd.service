@@ -23,7 +23,7 @@ WorkingDirectory=/var/lib/etcd/
 EnvironmentFile=-/etc/sysconfig/etcd
 User=etcd
 # set GOMAXPROCS to number of processors
-ExecStart=/bin/bash -c "GOMAXPROCS=$(nproc) /usr/sbin/etcd"
+ExecStart=/bin/bash -c "GOMAXPROCS=$(nproc) /usr/sbin/etcd $ETCD_OPTIONS"
 Restart=on-failure
 LimitNOFILE=65536
 Nice=-10

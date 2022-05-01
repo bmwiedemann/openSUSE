@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 28 13:35:37 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- add variable ETCD_OPTIONS to both service unit and configuration file
+  this allows the user to easily add things like "--enable-v2=true"
+
+-------------------------------------------------------------------
 Wed Apr 20 13:18:23 UTC 2022 - eroca@suse.com
 
 - Update to version 3.5.3:
