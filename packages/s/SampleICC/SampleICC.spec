@@ -1,7 +1,7 @@
 #
 # spec file for package SampleICC
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011-2014 Kai-Uwe Behrmann
 #
 # All modifications and additions to the file contributed by third parties
@@ -35,21 +35,22 @@ BuildRequires:  libtiff-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  pkgconfig
 
-%package -n lib%{name}1
+%package -n lib%{name}2
 Summary:        Colour Management System Libraries
-Group:          Development/Libraries/Other
+Group:          System/Libraries
+Obsoletes:      libSampleICC1 < %{version}-%{release}
 
 %package      -n lib%{name}-devel
 Summary:        Headers, Configuration and static Libs + Documentation
-Group:          Development/Libraries/Other
-Requires:       lib%{name}1 = %{version}
+Group:          Development/Libraries/C and C++
+Requires:       lib%{name}2 = %{version}-%{release}
 
 %description
 SampleICC is a C++ library for reading, writing, manipulating, and
 applying ICC profiles along with applications that make use of this
 library.
 
-%description -n lib%{name}1
+%description -n lib%{name}2
 SampleICC is a C++ library for reading, writing, manipulating, and
 applying ICC profiles along with applications that make use of this
 library.
@@ -59,26 +60,26 @@ Header files, libraries and documentation for development of Color Management
 applications.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %configure
 
 %install
-make  %{?_smp_mflags}
+%make_build
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n lib%{name}1 -p /sbin/ldconfig
-%postun -n lib%{name}1 -p /sbin/ldconfig
+%post -n lib%{name}2 -p /sbin/ldconfig
+%postun -n lib%{name}2 -p /sbin/ldconfig
 
 %files
 %license COPYING
 %doc AUTHORS ChangeLog README
 %{_bindir}/*
 
-%files -n lib%{name}1
+%files -n lib%{name}2
 %license COPYING
 %doc AUTHORS ChangeLog README
 %{_libdir}/lib%{name}.so.*
