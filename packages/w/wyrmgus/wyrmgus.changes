@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun May  1 10:39:45 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 5.3.5
+  * Added check to ensure all map template units have a position
+    less than the map template's size
+  * Fixed crash with the civilization group scripted condition if
+    a unit had no civilization
+  * Fixed parameter unused warning
+  * Write the titled names of factions which use a definite article
+    correctly (e.g. "Kingdom of the Netherlands" instead of
+    "Kingdom of Netherlands")
+  * Added support for dialogue nodes to have a player color
+    delineated for their icon
+  * https://github.com/Andrettin/Wyrmgus/compare/v5.2.4...v5.3.5
+- Drop upstream resolved patches
+  * Wyrmgus-5.2.3_missing_include.patch
+  * Wyrmgus-5.2.4_non_void_return.patch
+
+-------------------------------------------------------------------
 Mon Dec  6 13:01:38 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 5.2.4

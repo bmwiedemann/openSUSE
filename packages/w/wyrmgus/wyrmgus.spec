@@ -1,7 +1,7 @@
 #
 # spec file for package wyrmgus
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,13 @@
 
 
 Name:           wyrmgus
-Version:        5.2.4
+Version:        5.3.5
 Release:        0
 Summary:        Game engine for Wyrmsun
 License:        GPL-2.0-only
 Group:          Amusements/Games/Strategy/Real Time
 URL:            https://andrettin.github.io/
 Source:         https://github.com/Andrettin/Wyrmgus/archive/v%{version}/Wyrmgus-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM missing include file - https://github.com/Andrettin/Wyrmgus/issues/179
-Patch0:         Wyrmgus-5.2.3_missing_include.patch
-# PATCH-FIX-UPSTREAM Wyrmgus-5.2.4_non_void_return.patch -- https://github.com/Andrettin/Wyrmgus/issues/181
-Patch1:         Wyrmgus-5.2.4_non_void_return.patch
 BuildRequires:  boost-devel >= 1.69.0
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
