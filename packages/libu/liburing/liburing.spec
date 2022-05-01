@@ -27,7 +27,8 @@ URL:            https://git.kernel.dk/cgit/liburing
 Source:         https://git.kernel.dk/cgit/liburing/snapshot/%{name}-%{version}.tar.bz2
 BuildRequires:  gcc
 BuildRequires:  pkgconfig
-Requires:       kernel-default >= 5.1
+# Kernel part has landed in 5.1
+Conflicts:      kernel < 5.1
 
 %description
 Provides native async IO for the Linux kernel, in a fast and efficient

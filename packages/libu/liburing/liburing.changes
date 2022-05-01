@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 29 06:53:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- avoid requiring kernel-default (bsc#1193522) 
+
+-------------------------------------------------------------------
 Thu Feb 10 13:32:35 UTC 2022 - David Disseldorp <ddiss@suse.com>
 
 - add explicit liburing2-devel alias to reflect SLE/LEAP 15.4+ naming
