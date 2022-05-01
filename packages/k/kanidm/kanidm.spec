@@ -19,7 +19,7 @@
 %global rustflags -Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2
 
 Name:           kanidm
-Version:        1.1.0~alpha7~git0.c8468199
+Version:        1.1.0~alpha8~git0.b6be0524
 Release:        0
 Summary:        A identity management service and clients.
 License:        ( Apache-2.0 OR BSL-1.0 ) AND ( Apache-2.0 OR ISC OR MIT ) AND ( Apache-2.0 OR MIT ) AND ( Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT ) AND ( CC0-1.0 OR Apache-2.0 ) AND ( MIT OR Apache-2.0 OR Zlib ) AND ( Unlicense OR MIT ) AND ( Zlib OR Apache-2.0 OR MIT ) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT AND MPL-2.0 AND MPL-2.0+
@@ -33,8 +33,9 @@ ExcludeArch:    %ix86 s390x ppc ppc64 ppc64le armhfp armv6l armv7l armv7hl
 BuildRequires:  cargo
 BuildRequires:  libudev-devel
 BuildRequires:  pam-devel
-BuildRequires:  rust >= 1.52.1
+BuildRequires:  rust >= 1.59.0
 BuildRequires:  sqlite-devel
+BuildRequires:  zstd
 
 %if 0%{?rhel} > 7 || 0%{?fedora}
 BuildRequires:  openssl-devel
@@ -189,7 +190,6 @@ install -m 0644 %{_builddir}/%{name}-%{version}/kanidm_book/src/ssh_key_dist.md 
 install -m 0644 %{_builddir}/%{name}-%{version}/kanidm_book/src/why_tls.md %{buildroot}%{_datadir}/kanidm/docs/why_tls.md
 
 ## TODO: Add /usr/share/kanidm/ui/pkg
-install -m 0644 %{_builddir}/%{name}-%{version}/kanidmd_web_ui/pkg/bundle.js %{buildroot}%{_datadir}/kanidm/ui/pkg/bundle.js
 install -m 0644 %{_builddir}/%{name}-%{version}/kanidmd_web_ui/pkg/style.css %{buildroot}%{_datadir}/kanidm/ui/pkg/style.css
 install -m 0644 %{_builddir}/%{name}-%{version}/kanidmd_web_ui/pkg/kanidmd_web_ui.js %{buildroot}%{_datadir}/kanidm/ui/pkg/kanidmd_web_ui.js
 install -m 0644 %{_builddir}/%{name}-%{version}/kanidmd_web_ui/pkg/kanidmd_web_ui_bg.wasm %{buildroot}%{_datadir}/kanidm/ui/pkg/kanidmd_web_ui_bg.wasm
