@@ -1,7 +1,7 @@
 #
 # spec file for package drpm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -63,7 +63,10 @@ BuildRequires:  pkgconfig(libzstd)
 # valgrind behaves oddly on SUSE Linux 15
 # aarch64 fails on m_debuginfo/readdwarf.c:2544 (copy_convert_CfiExpr_tree): Assertion 'Unimplemented functionality' failed.
 %ifnarch s390 aarch64
-BuildRequires:  valgrind
+
+# Disable valgrind for now due to the following false positive:
+# https://bugs.kde.org/show_bug.cgi?id=453084
+# BuildRequires:  valgrind
 %endif
 %endif
 
