@@ -24,6 +24,8 @@ License:        LGPL-2.1-or-later
 Group:          Productivity/Publishing/HTML/Tools
 URL:            https://michaelrsweet.github.io/htmldoc/index.html
 Source:         https://github.com/michaelrsweet/htmldoc/releases/download/v%{version}/htmldoc-%{version}-source.tar.gz
+# CVE-2022-28085 [bsc#1198933], Heap buffer overflow in function pdf_write_names in ps-pdf.cxx
+Patch0:         htmldoc-CVE-2022-28085.patch
 BuildRequires:  fltk-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -40,7 +42,7 @@ HTMLDOC converts HTML source files into indexed HTML, PostScript, or
 Portable Document Format (PDF) files that can be viewed online or printed.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %configure \
