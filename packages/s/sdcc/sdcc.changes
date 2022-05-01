@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 28 09:56:56 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Adjust rpmlint filter:
+  + binaryinfo-readelf-failed.* => readelf-failed.*
+  + Filter out ar-failed /usr/share/sdcc/: file format not recognized
+  + Drop files-duplicated-waste filter: no duplicate files existing
+
+-------------------------------------------------------------------
 Tue May  4 21:41:49 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
-- fixed build for Tumbleweed 
+- fixed build for Tumbleweed
 
 -------------------------------------------------------------------
 Sun Apr  4 22:32:58 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
