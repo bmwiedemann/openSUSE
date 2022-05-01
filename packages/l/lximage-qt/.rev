@@ -368,4 +368,18 @@
   * Added option to disable image smoothing on zooming.</comment>
     <requestid>930096</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>73050754b73653384820dce1c70d655a</srcmd5>
+    <version>1.1.0</version>
+    <time>1651431081</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * Restore maximized state (if any) on un-fullscreening.
+  * Fixed capturing of an area of a screen that isn't positioned
+    at the top left.
+  * Removed the desktop file for taking screenshots (the screenshot
+    functionality is kept, but LXQt's screenshot utility is Screengrab).
+</comment>
+    <requestid>973872</requestid>
+  </revision>
 </revisionlist>

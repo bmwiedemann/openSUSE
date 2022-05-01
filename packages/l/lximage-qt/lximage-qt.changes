@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 28 08:41:26 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.1.0:
+  * Restore maximized state (if any) on un-fullscreening.
+  * Fixed capturing of an area of a screen that isn't positioned
+    at the top left.
+  * Removed the desktop file for taking screenshots (the screenshot
+    functionality is kept, but LXQt's screenshot utility is Screengrab).
+
+-------------------------------------------------------------------
 Mon Nov  8 09:31:05 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.0.0:

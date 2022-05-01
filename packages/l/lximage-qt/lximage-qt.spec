@@ -1,7 +1,7 @@
 #
 # spec file for package lximage-qt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lximage-qt
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        LXQt Image Viewer
 License:        GPL-2.0-or-later
@@ -29,7 +29,7 @@ Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.10.0
+BuildRequires:  lxqt-build-tools-devel >= 0.11.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5WindowSystem)
@@ -64,7 +64,6 @@ Image Viewer for LXQt and Thumbnail Generator for PCManFM-Qt
 %cmake_install
 
 %suse_update_desktop_file -r %{name} Graphics Viewer RasterGraphics 2DGraphics Photography
-%suse_update_desktop_file -r %{name}-screenshot Utility DesktopUtility
 
 %fdupes %{buildroot}%{_datadir}/%{name}
 
@@ -76,6 +75,7 @@ Image Viewer for LXQt and Thumbnail Generator for PCManFM-Qt
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}*.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.??g
+%{_datadir}/metainfo/lximage-qt.metainfo.xml
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/%{name}
