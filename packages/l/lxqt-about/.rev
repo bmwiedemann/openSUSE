@@ -284,4 +284,14 @@
   * Bumped version to 1.0.0 and made miscellaneous updates.</comment>
     <requestid>930099</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2bce7a2ddc2867e0b6a26097e7d9218f</srcmd5>
+    <version>1.1.0</version>
+    <time>1651431082</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * Added lxqt-about icon and used it instead of the help-about icon.
+</comment>
+    <requestid>973873</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-about
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,10 @@
 
 
 Name:           lxqt-about
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        LXQt About Dialog
+# FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/LXQt
 URL:            http://www.lxqt.org
@@ -27,7 +28,7 @@ Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{n
 Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.1.0
-BuildRequires:  lxqt-build-tools-devel >= 0.10.0
+BuildRequires:  lxqt-build-tools-devel >= 0.11.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  pkgconfig(Qt5UiTools)
@@ -49,7 +50,7 @@ About dialog for LXQt
 
 %build
 %cmake -DPULL_TRANSLATIONS=No
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
@@ -61,8 +62,9 @@ make %{?_smp_mflags}
 %doc AUTHORS
 %{_bindir}/%{name}
 %{_datadir}/applications/*.desktop
+%{_datadir}/icons/hicolor/scalable/apps/lxqt-about.svg
 
-%files lang -f %{name}.lang 
+%files lang -f %{name}.lang
 %dir %{_datadir}/lxqt
 %dir %{_datadir}/lxqt/translations
 %dir %{_datadir}/lxqt/translations/lxqt-about
