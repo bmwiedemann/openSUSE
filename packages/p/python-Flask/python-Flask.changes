@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 28 18:49:06 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 2.1.2
+  * Fix type annotation for json.loads, it accepts str or bytes. #4519
+  * The --cert and --key options on flask run can be given in either order. #4459
+
+-------------------------------------------------------------------
 Tue Apr 12 20:25:45 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update the build and runtime requirements.
