@@ -17,12 +17,13 @@
 
 
 Name:           xdmbgrd
-Version:        0.7
+Version:        0.8
 Release:        0
 Summary:        SUSE Linux background
 License:        GPL-2.0-or-later
 Group:          System/X11/Displaymanagers
-Source:         xdmbgrd-0.7.tar.bz2
+Source:         xdmbgrd-%{version}.tar.bz2
+Source1:        xdmbgrd-rpmlintrc
 BuildRequires:  pkgconfig
 BuildRequires:  xdm
 BuildRequires:  pkgconfig(x11)

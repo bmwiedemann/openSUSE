@@ -153,4 +153,15 @@
   * Fix bsc#1195664, that is use /etc/os-release to detect openSUSE</comment>
     <requestid>952717</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>537be8510d689a8bfc3ce39e780a943d</srcmd5>
+    <version>0.8</version>
+    <time>1651424021</time>
+    <user>dimstar_suse</user>
+    <comment>- Move forward to version 0.8
+  * Do not use executable stack
+
+- Stop rpmlint warning about features of this tools</comment>
+    <requestid>973941</requestid>
+  </revision>
 </revisionlist>

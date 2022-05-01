@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 29 12:59:51 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Move forward to version 0.8
+  * Do not use executable stack
+
+-------------------------------------------------------------------
+Wed Feb  9 08:04:54 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Stop rpmlint warning about features of this tools 
+
+-------------------------------------------------------------------
 Tue Feb  8 14:34:02 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Move forward to version 0.7
