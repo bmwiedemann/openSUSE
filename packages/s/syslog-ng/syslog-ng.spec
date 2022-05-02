@@ -61,7 +61,7 @@ Release:        0
 Summary:        Enhanced system logging daemon
 License:        GPL-2.0-only
 Group:          System/Daemons
-URL:            http://syslog-ng.org/
+URL:            https://syslog-ng.org/
 Source0:        https://github.com/balabit/syslog-ng/releases/download/syslog-ng-%{version}/%{name}-%{version}.tar.gz
 Source1:        syslog-ng.sysconfig
 Source2:        syslog-ng.conf.default

@@ -933,4 +933,12 @@ From syslog-ng OSE only 3.3 beta1+ is affected. (forwarded request 80925 from cz
     <comment></comment>
     <requestid>960481</requestid>
   </revision>
+  <revision rev="116" vrev="4">
+    <srcmd5>04e9e33cbfdc51fcad3325810e60174c</srcmd5>
+    <version>3.35.1</version>
+    <time>1651501567</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>974402</requestid>
+  </revision>
 </revisionlist>
