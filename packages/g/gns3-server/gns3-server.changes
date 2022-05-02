@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 24 19:42:04 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.31
+  * qemu_vm.py Linked node test.
+  * Fix dead link in README.rst
+- Add patch:
+  * gns3-server-fix-requirements.patch
+
+-------------------------------------------------------------------
 Fri Mar 18 02:41:36 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove python3-raven from BuildRequires, it hasn't been needed since

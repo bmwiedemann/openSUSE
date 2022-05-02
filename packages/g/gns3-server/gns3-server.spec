@@ -23,7 +23,7 @@
 %define gns3_group _gns3
 %define gns3_home %{_sharedstatedir}/gns3
 Name:           gns3-server
-Version:        2.2.28
+Version:        2.2.31
 Release:        0
 Summary:        A graphical network simulator
 License:        GPL-3.0-or-later
@@ -32,6 +32,7 @@ URL:            https://gns3.com/
 Source0:        https://github.com/GNS3/gns3-server/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Source2:        %{name}.service
+Patch1:         gns3-server-fix-requirements.patch
 BuildRequires:  busybox
 BuildRequires:  fdupes
 BuildRequires:  python3-pip
@@ -41,18 +42,18 @@ Requires:       cpulimit
 Requires:       docker
 Requires:       dynamips >= 0.2.11
 Requires:       iouyap
-Requires:       python3-Jinja2 >= 2.7.3
+Requires:       python3-Jinja2 >= 3.0.3
 Requires:       python3-aiofiles >= 0.5.0
 Requires:       python3-aiohttp >= 3.6.2
 Requires:       python3-aiohttp_cors >= 0.7.0
 Requires:       python3-async_generator
 Requires:       python3-async_timeout >= 3.0.1
-Requires:       python3-distro >= 1.3.0
+Requires:       python3-distro >= 1.6.0
 Requires:       python3-docker-py >= 1.4.0
 Requires:       python3-prompt_toolkit1
-Requires:       python3-psutil >= 5.6.6
-Requires:       python3-py-cpuinfo >= 7.0.0
-Requires:       python3-sentry-sdk >= 0.14.4
+Requires:       python3-psutil >= 5.9.0
+Requires:       python3-py-cpuinfo >= 8.0.0
+Requires:       python3-sentry-sdk >= 1.5.4
 Requires:       python3-zipstream >= 1.1.3
 Requires:       qemu
 Requires:       ubridge >= 0.9.14
@@ -78,7 +79,7 @@ Clients like the GNS3 GUI controls the server using a JSON-RPC API over Websocke
 You will need the new GNS3 GUI (gns3-gui repository) to control the server.
 
 %prep
-%setup -q
+%autosetup -p1
 find . -type f -name "*.py" -exec sed -i 's/^#!\/usr\/bin\/env python3/#!\/usr\/bin\/python3/' {} +
 find . -type f -name "*.py" -exec sed -i 's/^#!\/usr\/bin\/env python/#!\/usr\/bin\/python3/' {} +
 ## Relax requirements
