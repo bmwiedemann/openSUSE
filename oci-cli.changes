@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Tue Apr 26 10:27:10 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.7.3
+  * Support for choosing compute shapes when creating SDDCs
+    and ESXi hosts in the VMWare Solution service
+    * ``oci ocvs esxi-host create --host-ocpu-count, --host-shape-name``
+    * ``oci ocvs sddc create --initial-host-ocpu-count, --initial-host-shape-name``
+  * Database service
+      * Support for stack monitoring on external databases
+        * ``oci db external-cdb disable-external-container-database-stack-monitoring``
+        * ``oci db external-cdb enable-external-container-database-stack-monitoring``
+        * ``oci db external-non-cdb disable-external-non-container-database-stack-monitoring``
+        * ``oci db external-non-cdb enable-external-non-container-database-stack-monitoring``
+        * ``oci db external-pdb disable-external-pluggable-database-stack-monitoring``
+        * ``oci db external-pdb enable-external-pluggable-database-stack-monitoring``
+      * Support for upgrading VM database systems in place
+        * ``oci db system upgrade``
+        * ``oci db db-system-upgrade-history get``
+        * ``oci db db-system-upgrade-history list``
+  * Support for the Stack Monitoring service
+    * ``oci stack-monitoring``
+- from version 3.7.2
+  * Database service
+    * Support for enabling and disabling data collection options during create and
+      update operations on VM clusters on Exadata Cloud
+      * ``oci db vm-cluster create --data-collection-options ``
+      * ``oci db vm-cluster update --data-collection-options ``
+    * Support for new fields --database-edition and --max-cpu-core-count
+      to create and update an autonomous database
+      * ``oci db autonomous-database create --database-edition, --max-cpu-core-count``
+      * ``oci db autonomous-database create-adb-cross-region-data-guard-details
+        --database-edition, --max-cpu-core-count``
+      * ``oci db autonomous-database create-from-backup-id --database-edition, --max-cpu-core-count``
+      * ``oci db autonomous-database create-from-backup-timestamp --database-edition, --max-cpu-core-count``
+      * ``oci db autonomous-database create-from-clone --database-edition, --max-cpu-core-count``
+      * ``oci db autonomous-database create-refreshable-clone --database-edition, --max-cpu-core-count``
+      * ``oci db autonomous-database create-virtual-clone --database-edition, --max-cpu-core-count``
+      * ``oci db autonomous-database update --database-edition, --max-cpu-core-count``
+  * Network service
+    * Support for using Ipv6 cidr block in the below commands
+      * ``oci network byoip-range create --ipv6-cidr-block``
+      * ``oci network subnet create --ipv6-cidr-blocks``
+      * ``oci network subnet update --ipv6-cidr-blocks``
+      * ``oci network subnet add-ipv6-subnet-cidr``
+      * ``oci network subnet remove-ipv6-subnet-cidr``
+      * ``oci network vcn add-ipv6-vcn-cidr``
+      * ``oci network vcn remove-ipv6-vcn-cidr``
+      * ``oci network vnic assign-ipv6 --ipv6-subnet-cidr``
+    * Support for the parameters --ipv6-private-cidr-block, --is-oracle-gua-allocation-enabled,
+      --byoipv6-cidr-detail in the below command
+      * ``oci network vcn create --byoipv6-cidr-details, --is-oracle-gua-allocation-enabled,
+        --ipv6-private-cidr-blocks``
+  * Parameter --cidr-block has been made optional in the Network service
+    * ``oci network byoip-range create --cidr-block``
+- from version 3.7.1
+  * Support viewing top process analytics in the Operations Insights service
+    * ``oci opsi host-insights summarize-top-processes-usage-trend``
+  * Support for creating Enterprise Manager-based zLinux host targets for ``--platform-type``
+    in the Operations Insights service
+    * ``oci opsi host-insights list --platform-type``
+- from version 3.7.0
+  * Support for --type-key on entities, attributes, and folders in the Data Catalog service
+    * ``oci data-catalog attribute create --type-key``
+    * ``oci data-catalog folder create --type-key``
+  * DevOps service
+    * Support for the below commands
+      * ``oci devops repository get-repo-file-diff``
+      * ``oci devops repository get-repo-file-lines``
+    * Support for blue green and canary stages and single stage redeployment
+      * oci devops deploy-stage create-deploy-compute-instance-group-blue-green-stage
+      * oci devops deploy-stage create-compute-instance-group-blue-green-traffic-shift-stage
+      * oci devops deploy-stage create-deploy-compute-instance-group-canary-stage
+      * oci devops deploy-stage create-compute-instance-group-canary-traffic-shift-stage
+      * oci devops deploy-stage create-compute-instance-group-canary-approval-stage
+      * oci devops deployment create-single-stage-redeployment
+      * oci devops deploy-stage update-deploy-compute-instance-group-blue-green-stage
+      * oci devops deploy-stage update-compute-instance-group-blue-green-traffic-shift-stage
+      * oci devops deploy-stage update-deploy-compute-instance-group-canary-stage
+      * oci devops deploy-stage update-compute-instance-group-canary-traffic-shift-stage
+      * oci devops deploy-stage update-compute-instance-group-canary-approval-stage
+      * oci devops deployment update-single-stage-redeployment
+    * Support for optional parameter --network-channel to support private oke cluster
+      * ``oci devops deploy-environment create-oke-cluster-environment --network-channel``
+      * ``oci devops deploy-environment update-oke-cluster-environment --network-channel``
+  * Support for new parameters``--bgp-admin-state`` and ``--is-bfd-enabled`` in the Networking service.
+    * ``oci network virtual-circuit create --bgp-admin-state --is-bfd-enabled``
+    * ``oci network virtual-circuit update --bgp-admin-state --is-bfd-enabled``
+  * Java Management service
+    * Support for listing and removing of Java Runtime installations
+      * ``oci jms installation-site-summary list-installation-sites``
+      * ``oci jms installation-site-summary remove``
+    * Support for work request detail status of LCM operation.
+      * ``oci jms work-item-summary list-work-items --work-request-id``
+      * ``oci jms work-request cancel --work-request-id``
+    * Support for JMS blocklist
+      * ``oci jms blocklist create``
+      * ``oci jms blocklist delete``
+      * ``oci jms blocklist list``
+    * Support for listing work requests in a fleet.
+      * ``oci jms work-request list --fleet-id``
+    * Support for Fleets to use custom logs for inventory and operation
+      * ``oci jms fleet create --inventory-log --operation-log``
+      * ``oci jms fleet update --inventory-log --operation-log``
+  * DevOps service
+    * [BREAKING] Optional parameter --repository-type has been made required
+      * oci devops repository create --repository-type
+- Refresh patches for new version
+    + oc_relax-python-depends.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
+Tue Apr 26 06:54:58 UTC 2022 - pgajdos@suse.com
+
+- removing python-mock from Factory
+  https://trello.com/c/S6eADbii/64-remove-python-mock
+- testsuite is not being run, thus python-mock is not required;
+  testsuite is half-migrated to unittest.mock in upstream
+
+-------------------------------------------------------------------
 Mon Mar 28 13:19:05 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.6.2

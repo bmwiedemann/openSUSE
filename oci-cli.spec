@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           oci-cli%{psuffix}
-Version:        3.6.2
+Version:        3.7.3
 Release:        0
 Summary:        Oracle Cloud Infrastructure CLI
 License:        Apache-2.0
@@ -59,7 +59,6 @@ BuildRequires:  python3-Sphinx >= 1.6.4
 BuildRequires:  python3-appdirs >= 1.4.3
 BuildRequires:  python3-cffi >= 1.9.1
 BuildRequires:  python3-coverage >= 4.5.2
-BuildRequires:  python3-mock >= 2.0.0
 BuildRequires:  python3-ndg-httpsclient >= 0.4.2
 BuildRequires:  python3-packaging >= 20.2
 BuildRequires:  python3-pluggy >= 0.13.0
