@@ -59,4 +59,12 @@ See related SR https://build.opensuse.org/request/show/615279</comment>
     <comment></comment>
     <requestid>924369</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>15ef71b36a84c5db19675799a57024cf</srcmd5>
+    <version>1.22.1</version>
+    <time>1651501483</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>974061</requestid>
+  </revision>
 </revisionlist>
