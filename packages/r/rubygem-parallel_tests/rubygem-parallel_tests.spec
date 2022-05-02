@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-parallel_tests
-Version:        3.7.3
+Version:        3.8.1
 Release:        0
 %define mod_name parallel_tests
 %define mod_full_name %{mod_name}-%{version}
