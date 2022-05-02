@@ -1799,16 +1799,16 @@ unsorted:
   - carla: [x86_64] 
   - carla-devel: [x86_64] 
   - carla-vst: [x86_64] 
-  - casacore: [x86_64] 
-  - casacore-devel: [x86_64] 
-  - casacore-openmpi1: [x86_64] 
-  - casacore-openmpi1-devel: [x86_64] 
-  - casacore-openmpi2: [x86_64] 
-  - casacore-openmpi2-devel: [x86_64] 
-  - casacore-openmpi3: [x86_64] 
-  - casacore-openmpi3-devel: [x86_64] 
-  - casacore-openmpi4: [x86_64] 
-  - casacore-openmpi4-devel: [x86_64] 
+  - casacore 
+  - casacore-devel 
+  - casacore-openmpi1 
+  - casacore-openmpi1-devel 
+  - casacore-openmpi2 
+  - casacore-openmpi2-devel 
+  - casacore-openmpi3 
+  - casacore-openmpi3-devel 
+  - casacore-openmpi4 
+  - casacore-openmpi4-devel 
   - caslon-fonts 
   - casync 
   - catalan-pos-dict 
@@ -3870,6 +3870,9 @@ unsorted:
   - flickrnet-devel 
   - flint-devel 
   - flnews 
+  - flocq 
+  - flocq-devel 
+  - flocq-doc 
   - florence 
   - florence-devel 
   - florence-lang 
@@ -6740,6 +6743,9 @@ unsorted:
   - hashcat 
   - hashcat-devel 
   - hashdeep 
+  - hashlink 
+  - hashlink-devel 
+  - hashlink-hdlls 
   - haveged-devel 
   - hawkey-man 
   - hawknl-devel 
@@ -10198,11 +10204,11 @@ unsorted:
   - libcapstone4 
   - libcares2-32bit: [x86_64] 
   - libcaribou0 
-  - libcasacore6: [x86_64] 
-  - libcasacore6-openmpi1: [x86_64] 
-  - libcasacore6-openmpi2: [x86_64] 
-  - libcasacore6-openmpi3: [x86_64] 
-  - libcasacore6-openmpi4: [x86_64] 
+  - libcasacore6 
+  - libcasacore6-openmpi1 
+  - libcasacore6-openmpi2 
+  - libcasacore6-openmpi3 
+  - libcasacore6-openmpi4 
   - libcblas3-32bit: [x86_64] 
   - libcbor-devel 
   - libcbor-doc 
@@ -10680,7 +10686,7 @@ unsorted:
   - libdwarf-devel-static 
   - libdwarf-doc 
   - libdwarf-tools 
-  - libdwarf1 
+  - libdwarf0 
   - libdwarves-devel 
   - libdwarves-devel-32bit: [x86_64] 
   - libdwarves1 
@@ -11148,7 +11154,7 @@ unsorted:
   - libgf2x3 
   - libgfapi0 
   - libgfchangelog0 
-  - libgflags2 
+  - libgflags2_2 
   - libgfortran4 
   - libgfortran4-32bit: [x86_64] 
   - libgfortran5-32bit: [x86_64] 
@@ -11217,11 +11223,12 @@ unsorted:
   - libgme-devel 
   - libgme0-32bit: [x86_64] 
   - libgmic-devel 
-  - libgmic1 
+  - libgmic3 
   - libgmime-3_0-0-32bit: [x86_64] 
   - libgmpxx4 
   - libgmpxx4-32bit: [x86_64] 
   - libgmsh4_9 
+  - libgmxapi0 
   - libgnome-bluetooth13 
   - libgnome-desktop-3-devel 
   - libgnome-desktop-4-devel 
@@ -11310,7 +11317,7 @@ unsorted:
   - libgraphene-1_0-0-32bit: [x86_64] 
   - libgraphene-devel 
   - libgravatar-devel 
-  - libgromacs4 
+  - libgromacs6 
   - libgroove-devel 
   - libgroove4 
   - libgroovefingerprinter-devel 
@@ -11641,6 +11648,7 @@ unsorted:
   - libhinawa-devel 
   - libhinawa2 
   - libhivex0: [i586] 
+  - libhl1 
   - libhmac-devel 
   - libhmac-tools 
   - libhmac1 
@@ -12100,7 +12108,7 @@ unsorted:
   - liblog4c-doc 
   - liblog4c3 
   - liblog4c3-32bit: [x86_64] 
-  - liblog4cplus-1_2-5 
+  - liblog4cplus-2_0-3 
   - liblog4cpp5 
   - liblog4cxx-devel 
   - liblog4cxx11 
@@ -12470,6 +12478,7 @@ unsorted:
   - libnbd-bash-completion 
   - libnbd-devel 
   - libnbd0 
+  - libnblib0 
   - libnco-5_0_6 
   - libnco-devel 
   - libnco_c++-5_0_6 
@@ -12929,6 +12938,7 @@ unsorted:
   - libout123-0 
   - libout123-0-32bit: [x86_64] 
   - libovf-glib-devel 
+  - libovn-21_09-0 
   - libowncloudsync-devel 
   - libowncloudsync0 
   - liboyranos-alpha-devel 
@@ -18506,6 +18516,7 @@ unsorted:
   - orthanc-gdcm 
   - orthanc-indexer 
   - orthanc-mysql 
+  - orthanc-neuro 
   - orthanc-postgresql 
   - orthanc-python 
   - orthanc-source 
@@ -18590,6 +18601,13 @@ unsorted:
   - otter-browser 
   - otter-browser-lang 
   - ovmf-tools: [x86_64] 
+  - ovn 
+  - ovn-central 
+  - ovn-devel 
+  - ovn-doc 
+  - ovn-docker 
+  - ovn-host 
+  - ovn-vtep 
   - owasp-modsecurity-crs 
   - owasp-modsecurity-crs-base_rules 
   - owasp-modsecurity-crs-experimental_rules 
@@ -24505,6 +24523,7 @@ unsorted:
   - python310-rfc6555 
   - python310-rich 
   - python310-rjsmin 
+  - python310-rnc2rng 
   - python310-rnginline 
   - python310-robot-detection 
   - python310-robotframework 
@@ -27538,6 +27557,7 @@ unsorted:
   - python38-rfc6555 
   - python38-rich 
   - python38-rjsmin 
+  - python38-rnc2rng 
   - python38-rnginline 
   - python38-robot-detection 
   - python38-robotframework 
@@ -30722,6 +30742,7 @@ unsorted:
   - python39-rfc6555 
   - python39-rich 
   - python39-rjsmin 
+  - python39-rnc2rng 
   - python39-rnginline 
   - python39-robot-detection 
   - python39-robotframework 
