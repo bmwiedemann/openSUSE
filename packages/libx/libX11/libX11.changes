@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 29 17:56:04 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.8
+  * The highlight of this release is that we now try to initialize
+    thread safety ourselves, rather than hope the application does it.
+    This should resolve a number of long-standing bugs with the libxcb
+    integration, since the socket handoff mechanism essentially has to
+    be thread-safe.
+
+-------------------------------------------------------------------
 Sun Apr  3 18:37:48 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.7.4
