@@ -31,12 +31,13 @@ BuildRequires:  libelf-devel
 libdwarf is a library of functions to provide read/write DWARF
 debugging records.
 
-%package -n libdwarf1
+%package -n libdwarf0
 Summary:        Library to access DWARF information in object files
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
+Conflicts:      libdwarf1
 
-%description -n libdwarf1
+%description -n libdwarf0
 Library of functions to provide creation of DWARF debugging
 information records, DWARF line number information, DWARF address
 range and pubnames information, weak names information, and DWARF
@@ -46,7 +47,7 @@ frame description information.
 Summary:        Development files for libdwarf
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libdwarf1 = %{version}
+Requires:       libdwarf0 = %{version}
 Requires:       libelf-devel
 
 %description devel
@@ -100,10 +101,10 @@ CFLAGS="$CFLAGS -fPIC" LDFLAGS="-pie" %configure --enable-shared
 mkdir %{buildroot}%{_includedir}/libdwarf
 cp -l %{buildroot}%{_includedir}/libdwarf-0/*.h %{buildroot}%{_includedir}/libdwarf
 
-%post -n libdwarf1 -p /sbin/ldconfig
-%postun -n libdwarf1 -p /sbin/ldconfig
+%post -n libdwarf0 -p /sbin/ldconfig
+%postun -n libdwarf0 -p /sbin/ldconfig
 
-%files -n libdwarf1
+%files -n libdwarf0
 %license src/lib/libdwarf/LIBDWARFCOPYRIGHT src/lib/libdwarf/LGPL.txt
 %{_libdir}/libdwarf.so.0*
 
