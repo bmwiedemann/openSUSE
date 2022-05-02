@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May  1 04:53:23 UTC 2022 - Sebastian Ross <sebastianfross1@gmail.com>
+
+- Added new BuildRequires libmpdclient-devel: build requirement for mpd support 
+
+-------------------------------------------------------------------
 Fri Apr  8 06:20:56 UTC 2022 - Mateusz Mielczarek <mateusz.mielczarek2@gmail.com>
 
 - Update to 3.6.2:

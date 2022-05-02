@@ -28,6 +28,7 @@ BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.5
 BuildRequires:  i3
 BuildRequires:  i3-devel
+BuildRequires:  libmpdclient-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-xml
