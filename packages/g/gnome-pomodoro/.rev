@@ -274,4 +274,13 @@ doesn't work anyway. (forwarded request 796279 from develop7)</comment>
     <comment></comment>
     <requestid>966866</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b1d50492d6885d1beaeb9e99a02dcb00</srcmd5>
+    <version>0.21.1</version>
+    <time>1651501558</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.21.1:
+  * Fixed break overlay geting stuck at 0:01 on GNOME 42 (forwarded request 974332 from jubalh)</comment>
+    <requestid>974363</requestid>
+  </revision>
 </revisionlist>
