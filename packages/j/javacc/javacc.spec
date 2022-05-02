@@ -24,13 +24,15 @@
 %bcond_with bootstrap
 %endif
 %global base_name javacc
-Version:        7.0.4
+Version:        7.0.11
 Release:        0
 Summary:        A Parser and Scanner Generator for Java
 License:        BSD-3-Clause
 Group:          Development/Libraries/Java
 URL:            https://javacc.org
-Source0:        https://github.com/javacc/javacc/archive/%{version}.tar.gz
+Source0:        https://github.com/javacc/javacc/archive/refs/tags/%{base_name}-%{version}.tar.gz
+Patch0:         0001-Generate-max.-one-deprecated-annotation-per-method.patch
+Patch1:         0002-Fix-annotations-for-JavaCharStream.patch
 BuildRequires:  ant
 BuildRequires:  java-devel >= 1.8
 BuildArch:      noarch
@@ -82,21 +84,23 @@ Group:          Documentation/HTML
 This package contains the API documentation for %{name}.
 
 %prep
-%setup -q -n %{base_name}-%{version}
+%setup -n %{base_name}-%{base_name}-%{version}
+%patch0 -p1
+%patch1 -p1
 rm -f lib/*.jar
 %if %{without bootstrap}
 rm -f bootstrap/javacc.jar
 build-jar-repository -s -p bootstrap javacc
 
 find ./examples -type f -exec sed -i 's/\r//' {} \;
+rm examples/JavaGrammars/cpp/.gitignore
 
 # The pom dependencies are wrong
 %pom_xpath_remove pom:project/pom:dependencies
 %endif
 
 %build
-%{ant} \
-  -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
+%{ant} -Dant.build.javac.{source,target}=8 \
 %if %{with bootstrap}
   jar
 %else
@@ -105,20 +109,20 @@ find ./examples -type f -exec sed -i 's/\r//' {} \;
 
 %install
 # jar
-install -dm 0755 %{buildroot}%{_javadir}
-install -pm 0644 target/%{base_name}-%{version}.jar %{buildroot}%{_javadir}/%{base_name}.jar
+install -dm0755 %{buildroot}%{_javadir}
+install -pm0644 target/%{base_name}-%{version}.jar %{buildroot}%{_javadir}/%{base_name}.jar
 
 %if %{without bootstrap}
 
 # pom
-install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{base_name}.pom
+install -dm0755 %{buildroot}%{_mavenpomdir}
+install -pm0644 pom.xml %{buildroot}%{_mavenpomdir}/%{base_name}.pom
 %add_maven_depmap %{base_name}.pom %{base_name}.jar
 # javadoc
-install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+install -dm0755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr target/javadoc/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
-%fdupes -s www
+%fdupes -s docs
 %fdupes -s examples
 
 %jpackage_script javacc '' '' javacc javacc true
@@ -140,11 +144,11 @@ ln -s %{_bindir}/javacc %{buildroot}%{_bindir}/javacc.sh
 %{_bindir}/jjtree
 %endif
 %license LICENSE
-%doc README
+%doc README.md
 
 %if %{without bootstrap}
 %files manual
-%doc www/*
+%doc docs/*
 
 %files demo
 %doc examples

@@ -159,4 +159,12 @@
     <comment>Build with source/target levels 8</comment>
     <requestid>962941</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f9e973dc3b0c6aec74133a03d318079b</srcmd5>
+    <version>7.0.11</version>
+    <time>1651501488</time>
+    <user>dimstar_suse</user>
+    <comment>7.0.11</comment>
+    <requestid>974110</requestid>
+  </revision>
 </revisionlist>
