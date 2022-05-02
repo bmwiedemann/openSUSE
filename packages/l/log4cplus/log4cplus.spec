@@ -16,7 +16,7 @@
 #
 
 
-%define soname  1_2-5
+%define soname  2_0-3
 Name:           log4cplus
 Version:        2.0.7
 Release:        0
@@ -37,8 +37,9 @@ configuration. It is modeled after the Java log4j API.
 
 %package -n lib%{name}-%{soname}
 Summary:        C++ logging library
-Group:          Development/Libraries/C and C++
+Group:          System/Libraries
 Provides:       %{name} = %{version}
+Conflicts:      liblog4cplus-1_2-5
 
 %description -n lib%{name}-%{soname}
 log4cplus is a simple to use C++ logging API providing thread-safe,
@@ -48,18 +49,18 @@ configuration. It is modeled after the Java log4j API.
 %package devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
-Requires:       lib%{name}-%{soname} = %{version}
+Requires:       lib%{name}-%{soname} = %{version}-%{release}
 
 %description devel
 This package provides development libraries and headers needed to
 build software making use of %{name}
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure  --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
