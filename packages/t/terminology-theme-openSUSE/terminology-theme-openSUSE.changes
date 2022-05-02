@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May  1 10:59:29 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- 20220430.1.26 - Major change to theme based off new Dimensions theme. 
+
+-------------------------------------------------------------------
 Fri Feb 25 09:43:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire python3-base instead of python3: the cheaper build

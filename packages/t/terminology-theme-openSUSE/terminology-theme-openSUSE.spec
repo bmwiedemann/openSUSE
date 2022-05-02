@@ -17,7 +17,7 @@
 
 
 Name:           terminology-theme-openSUSE
-Version:        20220219.1.26
+Version:        20220430.1.26
 Release:        0
 Summary:        openSUSE theme for Terminology
 License:        BSD-2-Clause AND LGPL-2.1-only AND CC-BY-SA-3.0

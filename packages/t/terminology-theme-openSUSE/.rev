@@ -65,4 +65,12 @@ Fix previously incorrect licensing</comment>
     <comment></comment>
     <requestid>957559</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a1246f4df728dd306fb5037d39decba3</srcmd5>
+    <version>20220430.1.26</version>
+    <time>1651501528</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974288</requestid>
+  </revision>
 </revisionlist>
