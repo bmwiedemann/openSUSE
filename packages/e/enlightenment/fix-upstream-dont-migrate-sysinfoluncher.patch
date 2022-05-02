@@ -1,0 +1,70 @@
+commit 582cbf8af86f29ffcdd871b79f6b1dcf1b877c64
+Author: Carsten Haitzler <raster@rasterman.com>
+Date:   Fri Apr 15 11:02:27 2022 +0100
+
+    e config - remove upgrade blocks for luncher + sysinfo
+    
+    these are not even around so... dont enable them if going from a very
+    old cfg
+    
+    @fix
+
+diff --git a/src/bin/e_config.c b/src/bin/e_config.c
+index e7f091453..746a677a7 100644
+--- a/src/bin/e_config.c
++++ b/src/bin/e_config.c
+@@ -1627,52 +1627,10 @@ e_config_load(void)
+                e_config_save_queue();
+             }
+           CONFIG_VERSION_CHECK(22)
+-            {
+-               Eina_List *l;
+-               E_Config_Module *em, *module;
+-               Eina_Bool ibar_en = EINA_FALSE, luncher_en = EINA_FALSE;
+-
+-               CONFIG_VERSION_UPDATE_INFO(22);
+-
+-               EINA_LIST_FOREACH(e_config->modules, l, em)
+-                 {
+-                    if (!em->enabled) continue;
+-                    if (eina_streq(em->name, "ibar"))
+-                    ibar_en = EINA_TRUE;
+-                    else if (eina_streq(em->name, "luncher"))
+-                    luncher_en = EINA_TRUE;
+-                 }
+-               if (ibar_en && !luncher_en)
+-                 {
+-                    module = E_NEW(E_Config_Module, 1);
+-                    module->name = eina_stringshare_add("luncher");
+-                    module->enabled = 1;
+-                    e_config->modules = eina_list_append(e_config->modules, module);
+-                 }
+-               e_config_save_queue();
++            { // added luncher - not around anymore
+             }
+           CONFIG_VERSION_CHECK(23)
+-            {
+-               Eina_List *l;
+-               E_Config_Module *em, *module;
+-               Eina_Bool sysinfo_en = EINA_FALSE;
+-
+-               CONFIG_VERSION_UPDATE_INFO(23);
+-
+-               EINA_LIST_FOREACH(e_config->modules, l, em)
+-                 {
+-                    if (!em->enabled) continue;
+-                    if (eina_streq(em->name, "sysinfo"))
+-                      sysinfo_en = EINA_TRUE;
+-                 }
+-               if (!sysinfo_en)
+-                 {
+-                    module = E_NEW(E_Config_Module, 1);
+-                    module->name = eina_stringshare_add("sysinfo");
+-                    module->enabled = 1;
+-                    e_config->modules = eina_list_append(e_config->modules, module);
+-                 }
+-               e_config_save_queue();
++            { // added sysinfo - not around anymore
+             }
+           CONFIG_VERSION_CHECK(24)
+             {

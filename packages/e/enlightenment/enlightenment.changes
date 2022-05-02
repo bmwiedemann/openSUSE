@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 15 10:45:26 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- boo#1197326 - Don't Enable modules that don't exist in profile 
+  migration. 
+  * fix-upstream-dont-migrate-sysinfoluncher.patch
+
+-------------------------------------------------------------------
 Mon Feb 28 05:10:27 UTC 2022 - Simon Lees <sflees@suse.de>
 
 - Allow Branding >= 0.1 (I made 0.2 the other day)

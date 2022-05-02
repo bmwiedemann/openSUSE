@@ -311,4 +311,12 @@ Also includes sleep_walkers changes to enable wayland support which won't really
     <comment></comment>
     <requestid>957933</requestid>
   </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>9b225802731445dd91fb8662a923d135</srcmd5>
+    <version>0.25.3</version>
+    <time>1651501518</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974282</requestid>
+  </revision>
 </revisionlist>

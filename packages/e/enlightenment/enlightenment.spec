@@ -45,6 +45,8 @@ Patch3:         feature-wizard-auto-lang.patch
 Patch4:         feature-wizard-keylayout-from-sys.patch
 Patch5:         feature-qt-apps-gtk2-theme.patch
 Patch6:         feature-openSUSE-log-to-journal.patch
+# boo#1197326 Don't Enable modules that don't exist in profile migration.
+Patch7:         fix-upstream-dont-migrate-sysinfoluncher.patch
 BuildRequires:  alsa-devel
 BuildRequires:  cmake
 BuildRequires:  doxygen
