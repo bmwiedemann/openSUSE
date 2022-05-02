@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 29 05:39:28 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Gama 2.19:
+  * Fix a bug in HTML output of adjustment results for GNSS vectors
+    in inconsistent coordinate systems
+
+-------------------------------------------------------------------
 Fri Apr 15 14:38:39 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU gama 2.18:
