@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr 24 19:46:17 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.31
+  * Fix int() call. Ref #3283
+  * Fix QPoint() as unexpected type 'float'. Fixes #3283
+  * Fix painter.drawRect() has unexpected type 'float'. Fixes #3282
+  * Fix SpinBox.setValue() requires integer. Fixes #3281
+  * Clear cache when opening symbol selection dialog. Fixes #3256
+  * Fix @ in username issue with HTTP authentication. Fixes #3275
+  * Use '//' operator instead of int()
+  * Fix create drawing item calls since mapToScene() returns a QPointF
+  * Fixed QPoint called with floats
+
+-------------------------------------------------------------------
 Mon Dec 20 14:30:36 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.28

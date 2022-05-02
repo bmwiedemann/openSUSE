@@ -1,7 +1,7 @@
 #
 # spec file for package gns3-gui
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gns3-gui
-Version:        2.2.28
+Version:        2.2.31
 Release:        0
 Summary:        GNS3 graphical interface for the GNS3 server
 License:        GPL-3.0-or-later
@@ -37,10 +37,10 @@ Requires:       python3-jsonschema >= 3.2.0
 Requires:       python3-jsonschema < 3
 Requires:       python3-jsonschema >= 2.4.0
 %endif
-Requires:       python3-distro >= 1.3.0
+Requires:       python3-distro >= 1.6.0
 Requires:       python3-psutil >= 2.2.1
 Requires:       python3-qt5
-Requires:       python3-sentry-sdk >= 0.14.4
+Requires:       python3-sentry-sdk >= 1.5.4
 Recommends:     gns3-server
 Recommends:     libcap-progs
 Recommends:     sudo
