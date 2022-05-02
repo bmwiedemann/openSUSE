@@ -42,7 +42,7 @@
 %define manpages translatetoolkit %binaries_and_manpages
 
 Name:           translate-toolkit%{psuffix}
-Version:        3.5.3
+Version:        3.6.1
 Release:        0
 Summary:        Tools and API to assist with translation and software localization
 License:        GPL-2.0-or-later
@@ -80,7 +80,7 @@ Recommends:     iso-codes
 Recommends:     python-Levenshtein >= 0.12
 Recommends:     python-aeidon >= 1.10.1
 Recommends:     python-beautifulsoup4 >= 4.3
-Recommends:     python-chardet >= 4.0.0
+Recommends:     python-charset-normalizer
 Recommends:     python-cheroot >= 8.3.0
 Recommends:     python-iniparse >= 0.5
 Recommends:     python-phply >= 1.2.5

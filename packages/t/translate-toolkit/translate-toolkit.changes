@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 29 12:12:34 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.6.1
+  * Dropped support for Python 3.6
+  * Added support for Python 3.10
+  * Switch to charset-normalizer from chardet for more reliable detection
+
+-------------------------------------------------------------------
 Tue Feb  1 20:38:55 UTC 2022 - Luiz Fernando Ranghetti <elchevive@opensuse.org>
 
 - update to 3.5.3:
