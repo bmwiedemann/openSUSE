@@ -18,7 +18,7 @@
 
 %define libname libfcft4
 Name:           fcft
-Version:        3.0.1
+Version:        3.1.1
 Release:        0
 Summary:        A library for font loading and glyph rasterization using FreeType/pixman
 License:        MIT
@@ -29,12 +29,12 @@ Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc11
 BuildRequires:  python3-dataclasses
 %endif
-BuildRequires:  meson >= 0.54
+BuildRequires:  meson >= 0.58
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  scdoc
 BuildRequires:  pkgconfig(fontconfig)
-BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(freetype2) >= 2.12
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(libutf8proc)
 BuildRequires:  pkgconfig(pixman-1)
@@ -68,7 +68,13 @@ of FontConfig, FreeType2 and pixman.
 %if 0%{?sle_version} >= 150400
 export CC=gcc-11
 %endif
-%meson
+%meson \
+	-Ddocs=enabled \
+	-Dexamples=false \
+	-Dgrapheme-shaping=enabled \
+	-Drun-shaping=enabled \
+	-Dsvg-backend=nanosvg \
+	-Dtest-text-shaping=false
 %meson_build
 
 %install

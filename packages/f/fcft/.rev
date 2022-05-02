@@ -138,4 +138,20 @@
     <comment></comment>
     <requestid>955690</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ebf3945b5e90f0e561843935e3c5d056</srcmd5>
+    <version>3.1.1</version>
+    <time>1651501500</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.1:
+  * Added OT-SVG support using a bundled nanosvg as backend.
+    FCFT_CAPABILITY_SVG has been added to fcft_capabilities to detect this.
+  * Fixed fcft_font::name, and fcft_glyph::font_name not being set correctly
+    for font collections (e.g. *.ttc files).
+  * Fixed assertion inside HarfBuzz with fcft_rasterize_grapheme_ut32
+    when rasterizing a glyph fails.
+- Set all options and features explicitly instead of relying on auto-detection
+  to ensure build fails if dependencies change.</comment>
+    <requestid>974220</requestid>
+  </revision>
 </revisionlist>

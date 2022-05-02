@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May  1 20:11:17 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 3.1.1:
+  * Added OT-SVG support using a bundled nanosvg as backend.
+    FCFT_CAPABILITY_SVG has been added to fcft_capabilities to detect this.
+  * Fixed fcft_font::name, and fcft_glyph::font_name not being set correctly
+    for font collections (e.g. *.ttc files).
+  * Fixed assertion inside HarfBuzz with fcft_rasterize_grapheme_ut32
+    when rasterizing a glyph fails.
+- Set all options and features explicitly instead of relying on auto-detection
+  to ensure build fails if dependencies change.
+
+-------------------------------------------------------------------
 Wed Feb 16 09:19:13 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Leap 15.4 uses python3.6 so the python3-dataclasses is
