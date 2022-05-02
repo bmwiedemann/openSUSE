@@ -699,7 +699,7 @@ avail_mem=$(awk '/MemAvailable/ { print $2 }' /proc/meminfo)
 
 %define __builder ninja
 %define __builddir stage1
-# -z,now is breaking now, it needs to be fixed
+%define build_ldflags -Wl,--no-keep-memory
 %cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS:BOOL=OFF \
@@ -725,9 +725,6 @@ avail_mem=$(awk '/MemAvailable/ { print $2 }' /proc/meminfo)
     -DCOMPILER_RT_BUILD_SANITIZERS:BOOL=OFF \
     -DCOMPILER_RT_BUILD_XRAY:BOOL=OFF \
     -DLLDB_DISABLE_PYTHON=ON \
-    -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-keep-memory" \
-    -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-keep-memory" \
-    -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-keep-memory" \
     -DPYTHON_EXECUTABLE:FILEPATH=%{_bindir}/python3
 %if %{with thin_lto}
 ninja -v %{?_smp_mflags} clang llvm-tblgen clang-tblgen llvm-ar llvm-ranlib LLVMgold
@@ -750,6 +747,7 @@ mem_per_compile_job=500000
 %set_jobs compile $mem_per_compile_job
 
 %define __builddir build
+%define build_ldflags -Wl,--build-id=sha1
 export PATH=${PWD}/stage1/bin:$PATH
 export CC=${PWD}/stage1/bin/clang
 export CXX=${PWD}/stage1/bin/clang++
@@ -762,7 +760,6 @@ export CLANG_TABLEGEN=${PWD}/stage1/bin/clang-tblgen
 # The build occasionally uses tools linking against previously built
 # libraries (mostly libLLVM.so), but we don't want to set RUNPATHs.
 export LD_LIBRARY_PATH=${PWD}/build/%{_lib}
-# -z,now is breaking now, it needs to be fixed
 %cmake \
     -DBUILD_SHARED_LIBS:BOOL=OFF \
     -DLLVM_BUILD_LLVM_DYLIB:BOOL=ON \
@@ -810,9 +807,6 @@ export LD_LIBRARY_PATH=${PWD}/build/%{_lib}
     -DLLDB_DISABLE_PYTHON=ON \
 %endif
     -DCMAKE_SKIP_RPATH:BOOL=ON \
-    -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,--build-id=sha1" \
-    -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,--build-id=sha1" \
-    -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,--build-id=sha1" \
     -DPYTHON_EXECUTABLE:FILEPATH=%{_bindir}/python3 \
     -DLLVM_POLLY_LINK_INTO_TOOLS=OFF \
     -DPOLLY_BUNDLED_ISL:BOOL=ON
