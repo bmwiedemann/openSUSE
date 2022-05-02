@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Sat Apr 30 20:41:40 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Move the libraries to subpackages and don't reference the devel subpackage from the main package
+- Include the license in the devel subpackage
+
+-------------------------------------------------------------------
+Mon Feb 28 21:46:42 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- 0001-Disable-the-JIT-tests-on-arm-architectures.patch : Add reference to pull request
+
+-------------------------------------------------------------------
+Fri Feb 25 17:08:43 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Add 0001-Disable-the-JIT-tests-on-arm-architectures.patch to disable JIT tests on ARM
+
+-------------------------------------------------------------------
+Sat Feb 19 20:38:09 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Use cmake to build the project
+- Add 0001-cmake-Link-sdl.hdll-with-OpenGL.patch to fix linking with OpenGL
+- Add 0001-cmake-Install-hlc_main.c-with-hl.h-and-hlc.h.patch to install hlc_main.c
+
+-------------------------------------------------------------------
+Fri Feb 18 22:41:39 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Initial version

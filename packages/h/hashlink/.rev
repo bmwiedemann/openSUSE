@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b03243679daf53dd93e2dc1164c4a8c1</srcmd5>
+    <version>1.11</version>
+    <time>1651501491</time>
+    <user>dimstar_suse</user>
+    <comment>
+
+I want to add HashLink ( https://hashlink.haxe.org/ ) to openSUSE:Factory
+
+HashLink is a virtual machine for Haxe.
+Haxe supports two modes of compilation for HashLink:
+* Compilation to HashLink bytecode. This mode has a very fast compilation time,
+so it is suitable for daily development.
+* Compilation to HashLink/C code, compiled with a native compiler to a regular
+executable. This mode results in the best performance, so it is suitable for
+final releases.
+</comment>
+    <requestid>974127</requestid>
+  </revision>
+</revisionlist>
