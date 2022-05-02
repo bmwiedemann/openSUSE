@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May  2 08:00:02 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.0.1
+  * This version supports pytest 4.0 to 6.2 on Python 3.6 to 3.10
+  * Support list/tuple argnames for mark.parametrize
+  * Made markers consistent with pytest's defaults
+
+-------------------------------------------------------------------
 Sat Aug  8 05:11:26 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Initial spec for v1.0.0
