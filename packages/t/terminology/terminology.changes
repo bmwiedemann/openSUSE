@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May  2 09:43:38 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- Removed debug code accidently left in
+
+-------------------------------------------------------------------
+Sun May  1 12:45:39 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- Build "Flat" colorscheme as part of build process so that it gets
+  the right name and is useable.
+  * feature-flat-colorscheme.patch 
+
+-------------------------------------------------------------------
 Thu Feb 17 12:30:29 UTC 2022 - Simon Lees <sflees@suse.de>
 
 - The default theme is now Flat, Dark will come back in a new package

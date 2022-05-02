@@ -31,7 +31,9 @@ Group:          System/X11/Terminals
 URL:            http://enlightenment.org
 Source:         https://download.enlightenment.org/rel/apps/terminology/%{name}-%{version}.tar.xz
 Patch0:         fix-desktop.patch
-Patch1:         fix-colorscheme-name-typo.patch
+# Creates a "Flat" colorscheme so we can ship the "Default" from branding packages
+Patch1:         feature-flat-colorscheme.patch
+Patch2:         fix-colorscheme-name-typo.patch
 BuildRequires:  ImageMagick
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.40.1
@@ -124,7 +126,7 @@ sed -i 's/.png[[:blank:]]*$//' %{buildroot}%{_datadir}/applications/%{name}.desk
 
 # make 2 copys of default for branding
 cp %{buildroot}%{_datadir}/%{name}/themes/default.edj %{buildroot}%{_datadir}/%{name}/themes/Flat.edj
-cp %{buildroot}%{_datadir}/%{name}/colorschemes/Default.eet %{buildroot}%{_datadir}/%{name}/colorschemes/Flat.eet
+# Colorscheme done with a patch
 
 %find_lang %{name}
 %if 0%{?suse_version}
