@@ -1,7 +1,7 @@
 #
 # spec file for package python-encore
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,6 @@ BuildRequires:  python-rpm-macros
 Recommends:     python-requests
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 %if %{with python2}
@@ -81,6 +80,8 @@ Packages:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# https://github.com/enthought/encore/issues/112
+sed -i 's:import mock:from unittest import mock:' encore/events/tests/test_event_manager.py
 %pytest
 
 %files %{python_files}

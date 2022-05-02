@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May  2 10:31:23 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+
+-------------------------------------------------------------------
 Tue May 18 09:51:20 UTC 2021 - pgajdos@suse.com
 
 - use %pytest macro
