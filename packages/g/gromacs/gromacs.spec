@@ -1,7 +1,7 @@
 #
 # spec file for package gromacs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2015-2019 Christoph Junghans <junghans@votca.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,6 @@ Name:           gromacs
 Version:        2021.2
 Release:        0
 %define uversion %{version}
-%define sover   4
 Summary:        Molecular Dynamics Package
 License:        Apache-2.0 AND LGPL-2.1-or-later AND BSD-3-Clause
 Group:          Productivity/Scientific/Chemistry
@@ -39,72 +38,81 @@ BuildRequires:  opencl-headers
 BuildRequires:  openmpi-macros-devel
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(fftw3)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-GROMACS is a versatile and extremely well optimized package to perform
-molecular dynamics computer simulations and subsequent trajectory analysis.
-It is developed for biomolecules like proteins, but the extremely high
-performance means it is used also in several other field like polymer chemistry
-and solid state physics.
+GROMACS is a package to perform molecular dynamics computer
+simulations and subsequent trajectory analysis. It is developed for
+biomolecules like proteins, but it can be used in several other field
+like polymer chemistry and solid state physics.
 
 %package devel
 Summary:        Molecular dynamics package
 Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
+Requires:       libgmxapi0 = %{version}-%{release}
+Requires:       libgromacs6 = %{version}-%{release}
+Requires:       libnblib0 = %{version}-%{release}
 
 %description devel
-GROMACS is a versatile and extremely well optimized package to perform
-molecular dynamics computer simulations and subsequent trajectory analysis.
-It is developed for biomolecules like proteins, but the extremely high
-performance means it is used also in several other field like polymer chemistry
-and solid state physics.
+GROMACS is a package to perform molecular dynamics computer
+simulations.
 
 This package contains development libraries and header for GROMACS
 
-%package -n libgromacs%sover
+%package -n libgromacs6
 Summary:        Libraries for Gromacs
 Group:          System/Libraries
+Conflicts:      libgromacs4
 
-%description -n libgromacs%sover
-GROMACS is a versatile and extremely well optimized package to perform
-molecular dynamics computer simulations and subsequent trajectory analysis.
-It is developed for biomolecules like proteins, but the extremely high
-performance means it is used also in several other field like polymer chemistry
-and solid state physics.
+%description -n libgromacs6
+GROMACS is a package to perform molecular dynamics computer
+simulations.
 
 This package contains libraries for Gromacs
+
+%package -n libgmxapi0
+Summary:        Libraries for Gromacs
+Group:          System/Libraries
+Conflicts:      libgromacs4
+
+%description -n libgmxapi0
+GROMACS is a package to perform molecular dynamics computer
+simulations.
+
+This package contains libraries for Gromacs.
+
+%package -n libnblib0
+Summary:        Libraries for Gromacs
+Group:          System/Libraries
+Conflicts:      libgromacs4
+
+%description -n libnblib0
+GROMACS is a package to perform molecular dynamics computer
+simulations.
+
+This package contains libraries for Gromacs.
 
 %package bash-completion
 Summary:        Bash completion for Gromacs
 Group:          Productivity/Other
-Requires:       %{name} = %{version}-%{release}
-Requires:       bash-completion
+Supplements:    (bash-completion and %{name})
 BuildArch:      noarch
 Provides:       %{name}-bash = %{version}
 Obsoletes:      %{name}-bash < %{version}
 
 %description bash-completion
-GROMACS is a versatile and extremely well optimized package to perform
-molecular dynamics computer simulations and subsequent trajectory analysis.
-It is developed for biomolecules like proteins, but the extremely high
-performance means it is used also in several other field like polymer chemistry
-and solid state physics.
+GROMACS is a package to perform molecular dynamics computer
+simulations.
 
 This package contains bash completion support for gromacs.
 
 %package doc
 Summary:        Documentation for Gromacs
 Group:          Productivity/Scientific/Chemistry
-Requires:       %{name} = %{version}-%{release}
 BuildArch:      noarch
 
 %description doc
-GROMACS is a versatile and extremely well optimized package to perform
-molecular dynamics computer simulations and subsequent trajectory analysis.
-It is developed for biomolecules like proteins, but the extremely high
-performance means it is used also in several other field like polymer chemistry
-and solid state physics.
+GROMACS is a package to perform molecular dynamics computer
+simulations.
 
 This package contains documentation for gromacs.
 
@@ -115,16 +123,15 @@ Requires:       %{name} = %{version}
 %openmpi_requires
 
 %description openmpi
-GROMACS is a versatile and extremely well optimized package to perform
-molecular dynamics computer simulations and subsequent trajectory analysis.
-It is developed for biomolecules like proteins, but the extremely high
-performance means it is used also in several other field like polymer chemistry
-and solid state physics.
+GROMACS is a package to perform molecular dynamics computer
+simulations and subsequent trajectory analysis. It is developed for
+biomolecules like proteins, but it can be used in several other field
+like polymer chemistry and solid state physics.
 
 This package contains the openmpi version of GROMACS.
 
 %prep
-%setup -q -n %{name}-%{uversion}
+%autosetup -n %{name}-%{uversion}
 tar -xzf %{S:2}
 
 %build
@@ -220,8 +227,10 @@ cp %{S:1} %{buildroot}%{_datadir}/gromacs
 %make_build -C openmpi/build check
 %endif
 
-%post   -n libgromacs%sover -p /sbin/ldconfig
-%postun -n libgromacs%sover -p /sbin/ldconfig
+%post   -n libgromacs6 -p /sbin/ldconfig
+%postun -n libgromacs6 -p /sbin/ldconfig
+%post   -n libgmxapi0 -p /sbin/ldconfig
+%postun -n libgmxapi0 -p /sbin/ldconfig
 
 %files
 %{_bindir}/gmx
@@ -235,8 +244,14 @@ cp %{S:1} %{buildroot}%{_datadir}/gromacs
 %endif
 %{_mandir}/man1/*
 
-%files -n libgromacs%sover
-%{_libdir}/lib*.so.*
+%files -n libgromacs6
+%{_libdir}/libgromacs.so.*
+
+%files -n libgmxapi0
+%{_libdir}/libgmxapi.so.*
+
+%files -n libnblib0
+%{_libdir}/libnblib.so.*
 
 %files doc
 %doc %{_datadir}/gromacs/*.pdf

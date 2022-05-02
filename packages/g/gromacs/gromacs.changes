@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 27 09:08:43 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim boasting from package descriptions.
+- Trim descriptions in less important subpackages for length.
+- Resolve rpmlint reports:
+  * "libgromacs4.x86_64: E: shlib-policy-name-error SONAME:
+    libgmxapi.so.0, expected package suffix: 0"
+  * "libgromacs4.x86_64: E: shlib-policy-name-error SONAME:
+    libgromacs.so.6, expected package suffix: 6"
+
+-------------------------------------------------------------------
 Sun Dec  5 18:13:09 UTC 2021 - Max Lin <mlin@suse.com>
 
 - Update license to "LGPL-2.1-or-later AND Apache-2.0 AND BSD-3-Clause"
