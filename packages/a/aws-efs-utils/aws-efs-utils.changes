@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 27 06:39:41 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.32.1
+  * Enable watchdog to check stunnel health periodically and restart
+    hanging stunnel process when necessary.
+- do not require python-mock for build
+  https://trello.com/c/S6eADbii/64-remove-python-mock
+
+-------------------------------------------------------------------
 Wed Mar  9 11:47:22 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Remove redundant python3 dependency from Requires

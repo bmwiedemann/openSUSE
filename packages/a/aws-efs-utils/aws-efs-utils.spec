@@ -17,13 +17,13 @@
 
 
 Name:           aws-efs-utils
-Version:        1.31.3
+Version:        1.32.1
 Release:        0
 Summary:        Utilities for using the EFS file systems
 License:        MIT
 Group:          System/Management
 URL:            https://github.com/aws/efs-utils
-Source0:        efs-utils-%{version}.tar.gz
+Source0:        https://github.com/aws/efs-utils/archive/refs/tags/v%{version}.tar.gz#/efs-utils-%{version}.tar.gz
 Patch0:         disable_mount_efs_test.patch
 Patch1:         harden_amazon-efs-mount-watchdog.service.patch
 Patch2:         skip-styletest.patch
@@ -34,7 +34,6 @@ BuildRequires:  python3-coverage >= 4.5.4
 #BuildRequires:  python3-flake8 >= 3.7.9
 BuildRequires:  python3-flake8
 BuildRequires:  python3-mccabe >= 0.6.1
-BuildRequires:  python3-mock >= 2.0.0
 BuildRequires:  python3-pbr >= 3.1.1
 BuildRequires:  python3-pluggy >= 0.13.0
 BuildRequires:  python3-py >= 1.10.0
@@ -66,6 +65,8 @@ find . -name "*.py" -exec sed -i 's/env python3/python3/' {} +
 # No build required
 
 %check
+# https://github.com/aws/efs-utils/issues/131
+sed -i 's:from mock:from unittest.mock:' test/*/test_*.py
 make test
 
 %install
