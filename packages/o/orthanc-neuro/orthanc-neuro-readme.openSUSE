@@ -1,0 +1,19 @@
+README: Orthanc-Neuro for openSUSE
+==================================
+
+Orthanc is a RESTful DICOM server for healthcare and medical research.
+
+This package provides the plugin for neuroimaging file formats (NIfTI and BIDS) for Orthanc.
+
+Once Orthanc is installed, you must add a section in the Orthanc configuration file 
+/etc/orthanc/Configuration.json that specifies the details of the Plugin. 
+
+/usr/share/orthanc/plugins/libOrthancNeuro.so
+
+Please note that the plugins are located in 
+/usr/share/orthanc/plugins/
+
+Check out http://book.orthanc-server.com/plugins/neuro.html for additional information!
+
+Have fun
+Axel Braun <DocB@openSUSE.org> Sat Apr 30 16:09:01 UTC 2022
