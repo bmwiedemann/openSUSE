@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Apr 27 15:02:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.5.1
+  * Fix build with GCC>=11.3 (workaround for GCC#105406)
+  * Fix ODR violation when building with GCC and LTO enabled
+    (workaround for GCC#101118)
+- Don't run tests for now. Random timeouts happen.
+
+-------------------------------------------------------------------
+Wed Apr 27 05:59:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.5.0
+  * .then() continuation for Task<T>
+  * Fixed namespace scoping
+  * Fixed QCoro::waitFor() getting stuck when coroutine returns
+    synchronously
+  * Fixed -pthread usage in CMake
+  * Produce QMake config files (.pri) for each module
+  * Fix build on platforms where -latomic must be linked explicitly
+  * Return Task<T> from all operations
+  * Add QCoro wrapper for QThread
+  * Many documentation updates
+
+-------------------------------------------------------------------
 Mon Mar 14 16:12:18 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 0.4.0
