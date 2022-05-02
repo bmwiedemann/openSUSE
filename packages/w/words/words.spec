@@ -21,13 +21,13 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 Name:           words
-Version:        2015.02.15
+Version:        2020.12.07
 Release:        0
 Summary:        An English words dictionary
 License:        SUSE-Public-Domain
 Group:          Productivity/Office/Dictionary
 URL:            http://wordlist.sourceforge.net/
-Source0:        http://prdownloads.sourceforge.net/wordlist/scowl-2015.02.15.tar.gz
+Source0:        https://prdownloads.sourceforge.net/wordlist/scowl-%{version}.tar.gz
 Source1:        sysconfig.words
 Source2:        SuSEconfig.words
 BuildRequires:  glibc-locale

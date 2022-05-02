@@ -219,4 +219,12 @@
     <comment>- buildrequire glibc-locale to always have en_GB.* locale available (forwarded request 949888 from dirkmueller)</comment>
     <requestid>950750</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>ac380d5f8e1fe458756c034070572201</srcmd5>
+    <version>2020.12.07</version>
+    <time>1651501570</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>974416</requestid>
+  </revision>
 </revisionlist>
