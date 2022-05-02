@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Apr 27 16:08:56 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 21.11.1
+  * acl: add missing C++ guards
+  * app/compress-perf: Various bug fixes
+  * app/dumpcap: check for failure to set promiscuous
+  * app/fib: fix division by zero
+  * app/pdump: abort on multi-core capture limit
+  * app/regex: fix number of matches
+  * app/testpmd: Various bug fixes
+  * baseband/acc100: avoid out-of-bounds access
+  * bpf: add missing C++ guards
+  * bus/pci: assign driver pointer before mapping
+  * common/cnxk: Various bug fixes
+  * common/mlx5: Various bug fixes
+  * common/sfc_efx/base: fix recirculation ID set in outer rules
+  * compressdev: fix missing space in log macro
+  * eal/linux:
+    * fix device monitor stop return
+    * fix illegal memory access in uevent handler
+    * log hugepage create errors with filename
+  * Full change log can be found online:
+    http://doc.dpdk.org/guides-21.11/rel_notes/release_21_11.html#fixes
+- Rebased 0001-build-try-to-get-kernel-version-from-kernel-source.patch
+- Dropped upstream fixed fix-buildsystem-python36.patch
+
+-------------------------------------------------------------------
 Sat Feb 26 17:45:33 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to LTS version 21.11.

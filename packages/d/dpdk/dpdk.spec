@@ -48,7 +48,7 @@
 %bcond_without tools
 #
 Name:           dpdk%{name_tag}
-Version:        21.11
+Version:        21.11.1
 Release:        0
 Summary:        Set of libraries and drivers for fast packet processing
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
@@ -59,8 +59,6 @@ Source1:        preamble
 # PATCH-FIX-OPENSUSE PATCH-FEATURE-UPSTREAM
 Patch0:         0001-build-try-to-get-kernel-version-from-kernel-source.patch
 Patch1:         0002-SLE15-SP3-compatibility-patch-for-kni.patch
-# PATCH-FIX-OPENSUSE fix-buildsystem-python36.patch -- Fix building with python36
-Patch2:         fix-buildsystem-python36.patch
 BuildRequires:  binutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -179,7 +177,7 @@ The DPDK Kernel NIC Interface (KNI) allows userspace applications access to the 
 
 %prep
 # can't use %%{name} because of dpdk-thunderx
-%autosetup -p1 -n dpdk-%{version}
+%autosetup -p1 -n dpdk-stable-%{version}
 
 # Skip not supported examples
 sed -i "/performance-thread/d" examples/meson.build

@@ -15,14 +15,13 @@ Signed-off-by: Ferdinand Thiessen <rpm@fthiessen.de>
  1 file changed, 12 insertions(+), 6 deletions(-)
 
 diff --git a/kernel/linux/meson.build b/kernel/linux/meson.build
-index d8fb20c1c3..78f28ffb0c 100644
---- a/kernel/linux/meson.build
-+++ b/kernel/linux/meson.build
+--- dpdk-stable-21.11.1/kernel/linux/meson.build	2022-04-26 12:21:45.000000000 +0200
++++ mew/kernel/linux/meson.build	2022-04-27 18:17:06.676254482 +0200
 @@ -11,7 +11,17 @@
-
+ 
  if not meson.is_cross_build()
      # native build
--    kernel_version = run_command('uname', '-r').stdout().strip()
+-    kernel_version = run_command('uname', '-r', check: true).stdout().strip()
 +    kernel_version = ''
 +    if kernel_source_dir != ''
 +        # Try kernel makefile first
@@ -37,6 +36,3 @@ index d8fb20c1c3..78f28ffb0c 100644
      kernel_install_dir = '/lib/modules/' + kernel_version + '/extra/dpdk'
      if kernel_build_dir == ''
          # use default path for native builds
--- 
-2.35.1
-
