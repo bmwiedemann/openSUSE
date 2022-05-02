@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 29 06:37:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.1.0. No changelog.
+- Rebase patches:
+  * krita5.patch
+- Add patch to keep using CMake when building gmic-qt:
+  * 0001-Find-the-local-gmic-library.patch
+- Drop patch, no longer needed:
+  * 0001-Remove-unneeded-CImg-include.patch
+
+-------------------------------------------------------------------
 Mon Feb  7 10:11:38 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 3.0.2. No changelog.
@@ -57,7 +68,7 @@ Fri Jan 14 18:41:47 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Fri Jan 14 17:39:09 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
-- Remove unneeded BuildRequires fftw3-devel and cmake(KF5CoreAddons) 
+- Remove unneeded BuildRequires fftw3-devel and cmake(KF5CoreAddons)
 
 -------------------------------------------------------------------
 Fri Jan 14 17:31:52 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
@@ -84,7 +95,7 @@ Fri Jan 14 11:01:21 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 Thu Jan 13 22:27:47 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - enable opencv support xshm support
-  - Add BuildRequires xorg-x11-devel 
+  - Add BuildRequires xorg-x11-devel
 
 -------------------------------------------------------------------
 Thu Jan 13 22:26:56 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
@@ -180,7 +191,7 @@ Mon Feb 10 23:56:42 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 -------------------------------------------------------------------
 Fri Jan 24 08:19:13 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
-- update to 2.8.3. No changelog 
+- update to 2.8.3. No changelog
 
 -------------------------------------------------------------------
 Tue Jan 14 20:44:14 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
@@ -350,10 +361,10 @@ Mon Jul  6 18:04:16 CEST 2015 - kurt@garloff.de
 -------------------------------------------------------------------
 Wed Jul  1 23:23:18 CEST 2015 - kurt@garloff.de
 
-- Update to gmic-1.6.5.0: 
+- Update to gmic-1.6.5.0:
   * https://www.flickr.com/groups/gmic/discuss/72157653514140862/
   * New commands: -label3d, -head, -files
-  * Improvements -repeat, -axes, -warn, -displacement, -files2video, 
+  * Improvements -repeat, -axes, -warn, -displacement, -files2video,
     -apply_files
   * Math parser now supports sqr()
   * Bugfixes: Iain Fergusson denoising with selections and new layers,
@@ -376,8 +387,8 @@ Thu Apr 30 17:58:26 CEST 2015 - kurt@garloff.de
   * https://www.flickr.com/groups/gmic/discuss/72157651409869115/
   * New commands -apply_timeout, -boxfilter, -serialize, -unserialize,
     -fps, -transition.
-  * New filters Sequences / Spatial transition, Colors / Transfer colors 
-    [advanced] 
+  * New filters Sequences / Spatial transition, Colors / Transfer colors
+    [advanced]
   * Improved error message line numbers in -if .. -endif block.
   * Improved -blur, -displacement, - input, -warp
   * Compressed storage of custom commands
@@ -397,12 +408,12 @@ Thu Apr 30 17:58:26 CEST 2015 - kurt@garloff.de
 - Udpate to gmic-1.6.0.4:
   * https://www.flickr.com/groups/gmic/discuss/72157649713920459/
   * New commands -array3d, -size3d, -imagegrid_hexagonal
-  * New filters Arrays & tiles / Grid [hexagonal], Arrays & Tiles / 
+  * New filters Arrays & tiles / Grid [hexagonal], Arrays & Tiles /
     Ministeck, Patterns / Crystal
   * New command -delaunay3d, filter Artistic / Polygonize [delaunay]
   * Improved -rgb2lab , -frame, -remove_pixels, -hostigram,
     -equalize.
-  * Bugfixes for bbox with very very large images in -select and 
+  * Bugfixes for bbox with very very large images in -select and
     -display.
 -------------------------------------------------------------------
 Thu Jan  8 14:57:41 CET 2015 - kurt@garloff.de
@@ -424,7 +435,7 @@ Thu Jan  8 14:57:41 CET 2015 - kurt@garloff.de
   * New --guided, -cumulate
   * New -apply_video, -video2files, -files2video, -average_video
   * New -dct and -idct
-  * Improvements to -parallel 
+  * Improvements to -parallel
   * Improving -fitscreen and tiff -output
   * Improvements for -snapshot3d, -text, -fft, -ifft, -blur
   * Major ZArt update
@@ -462,11 +473,11 @@ Sat Sep  6 23:59:57 CEST 2014 - kurt@garloff.de
   * New filters for zart.
   * Only support image datatypes with floats (thus remove -type),
     but optionally do conversion in -input and -output.
-  * Supply boundary values in -map derived with 
+  * Supply boundary values in -map derived with
     neumann/dirichlet/periodic.
   * More -blend paramaters.
   * -apply_pose3d renamed to -pose3d.
-  * Remove -background3d (use enahnced -display3d and -snapshot3d 
+  * Remove -background3d (use enahnced -display3d and -snapshot3d
     to replace).
   * Better exception handling (-onfail).
   * gmic -h command suggests corrections for misspelled cmds.
@@ -513,10 +524,10 @@ Sat Sep  6 23:59:57 CEST 2014 - kurt@garloff.de
   * @{-1,t} now always returns a string
   * Disable sharing global vars between threads
   * -uncommand and -command improvements
-- Update to gmic-1.5.8.5  	
+- Update to gmic-1.5.8.5
   * Support for PANDORE-5 (.pan) output files.
   * Improve and optmize -replace-seq.
-  * Support for is_binary_data and maximum_sequence_length in 
+  * Support for is_binary_data and maximum_sequence_length in
     -compress-rle.
   * Recoded and improved -text.
   * Bugfixes for -output and math expressions starting with < or >.
@@ -537,7 +548,7 @@ Sat Mar  8 19:47:38 CET 2014 - kurt@garloff.de
   * New output modes for Arrays & tiles / Extract objects.
   * More imporvements to -inpaint.
   * Fix line number displayed when error in .gmic file found.
-  * Fix thread destruction with non-wait mode and sub-commands. 
+  * Fix thread destruction with non-wait mode and sub-commands.
 
 -------------------------------------------------------------------
 Fri Feb 14 12:10:02 CET 2014 - kurt@garloff.de
@@ -553,7 +564,7 @@ Thu Feb 13 15:42:00 CET 2014 - kurt@garloff.de
 - Update to 1.5.8.3:
   * New plug-in filter Frames / Frame[blur]
   * Improvements: Less warnings on TIFFs, valgrind found bugfixes,
-    OS name in plug-in titlebar, slightly better -inpaint_patch, 
+    OS name in plug-in titlebar, slightly better -inpaint_patch,
     more options for -taquin, significantly better -inpaint
   * Fixed invalid mem access when reading command files
   * Update reference manual.
@@ -578,17 +589,17 @@ Fri Jan 10 10:04:17 CET 2014 - kurt@garloff.de
   * Bugfixes, Optimizations, and Improvements
   * Small API changes
 - Update to 1.5.7.2:
-  * New commands -output_ggr, -at_line, -x_metaballs, -cubes3d, 
+  * New commands -output_ggr, -at_line, -x_metaballs, -cubes3d,
     -color_med, -x_bouncing, -mutex
   * Fast marching algo available in -distance
   * New substituion $"*" which does quoting to protect whitespace
-  * GIMP plugin filters Rendering/Gradient [custom shape] and 
+  * GIMP plugin filters Rendering/Gradient [custom shape] and
     [from line]
   * Improvements for -display, -ball and documentation
   * Fix CPU eating of gmic display
   * Compilation improvements (for clang++)
 - Update to 1.5.7.1:
-  * Improve parallelization (-fft, -apply_parallel, 
+  * Improve parallelization (-fft, -apply_parallel,
     -apply_parallel_overlap)
 
 
@@ -600,26 +611,26 @@ Fri Sep 13 17:09:48 CEST 2013 - kurt@garloff.de
     -parallel, -apply_parallel, -apply_parallel{2,4,8} to use
     it. Smoothing and sharpening filters use it already ...
   * New: -image_integral, -autocrop_components, -bilateral
-  * Bugfixes: Added more randomness to the PRNG (gimp plugin), bug 
+  * Bugfixes: Added more randomness to the PRNG (gimp plugin), bug
     in -polygon, in -output (% symbol), valgrind warings (false
     positives actually)
 - Update to 1.5.6.1:
   * New filters 'Lights & Shadows / Drop shadow 3d', 'Colors /
     Colorize comics'
   * New commands '-pack_sprites', '-rprogress'
-  * Converted native commands '-haar' and '-ihaar' as custom 
+  * Converted native commands '-haar' and '-ihaar' as custom
     commands, re-organized filter tree sections (gimp), volumetric
     images zoom in viewer keeps displaying z-coords.
   * Bugfixes: raw files now correctly use unsigned int when requested
     so (instead of unsigned short), -polygon, gimp non-interactive
     mode.
 - Update to 1.5.6.0:
-  * New command (and filter) -bokeh 
+  * New command (and filter) -bokeh
   * Math parser accepts 'j(dx,_dy,_dz,_dc,_interpolation,_boundary)'
-  * Commands '-deblur_richardsonlucy' and '-deblur_goldmeinel' 
+  * Commands '-deblur_richardsonlucy' and '-deblur_goldmeinel'
     integrated into trunk.
   * gimp plug-in external filter source management, optimiztion of
-    math parser, replace native -resize2x and 3x with custom 
+    math parser, replace native -resize2x and 3x with custom
     -scale2x and 3x, -blend_median recoded
   * Integrate external filters in gimp plugin
   * Bugfix: 3d rendering with parallel projection
@@ -627,7 +638,7 @@ Fri Sep 13 17:09:48 CEST 2013 - kurt@garloff.de
 -------------------------------------------------------------------
 Tue May 14 06:37:54 CEST 2013 - kurt@garloff.de
 
-- Disable GraphicsMagick features again (dependency hell). 
+- Disable GraphicsMagick features again (dependency hell).
 
 -------------------------------------------------------------------
 Tue May 14 06:02:43 CEST 2013 - kurt@garloff.de
@@ -638,7 +649,7 @@ Tue May 14 06:02:43 CEST 2013 - kurt@garloff.de
 Tue May 14 05:39:29 CEST 2013 - kurt@garloff.de
 
 - Require same lib version from -devel package.
-- Enable openmp, xshm, xrandr, opencv and magick features. 
+- Enable openmp, xshm, xrandr, opencv and magick features.
 
 -------------------------------------------------------------------
 Sun May 12 00:55:20 CEST 2013 - kurt@garloff.de
@@ -657,12 +668,12 @@ Fri May 10 01:16:53 CEST 2013 - kurt@garloff.de
   * opencv allows requesting specific resolution for camera capture
   * -alert box display
   * improve image resolution for pdf files
-  * -richardson_lucy was a misnomer and is now called -deblur  
+  * -richardson_lucy was a misnomer and is now called -deblur
   * Various bugfixes
 - Update to 1.5.4.0:
   * Spanish translations
   * Colors/Recolorize added
-  * -weave 
+  * -weave
   * -compose_* deprecated, use -blend instead
   * bugfixes
 - Update to 1.5.3.0:
@@ -720,7 +731,7 @@ Wed Oct 19 15:37:32 CEST 2011 - garloff@suse.de
 - Update to 1.5.0.1:
   * New features: -output_pink3d, -ripple.
   * Improvements: Remove 'beta' marker from man pages, reading BMP.
-  * Bug fixes: -convolve, -autocrop, modulo corrected for negative 
+  * Bug fixes: -convolve, -autocrop, modulo corrected for negative
     numbers, -label (high connectivity mode).
 - Update to 1.5.0.0:
   * New features: -x_shadebobs, multi-line text parameter widget (plug-in),
@@ -739,8 +750,8 @@ Wed Oct 19 15:37:32 CEST 2011 - garloff@suse.de
   * Improvements: Kuwahara filter, more robust faves, GPT filter,
     prefix for saved files in visualization module is now gmic_.
 - Update to 1.4.9.4:
-  * New features: -distance (new mode), -gmicky, -minimal_path, 
-    -x_minimal_path, -kuwahara, 
+  * New features: -distance (new mode), -gmicky, -minimal_path,
+    -x_minimal_path, -kuwahara,
   * Improvements: -pointcloud3d, diplay start and end of shortened messages,
     -input and -command now accept URLs, -select.
   * Bug fixes: -ffast-math now safer, -pointcloud precision, remove update
@@ -750,7 +761,7 @@ Wed Oct 19 15:37:32 CEST 2011 - garloff@suse.de
     3d colored object filter, -otsu, -hough, -x_hough, -houghsketchbw.
   * Improvements: g++-4.6 compatibility, -quotify renamed to -quote,
     -pointcloud, decrease verbosity in substitutions, -hardsketchbw,
-    -pointcloud3d. 
+    -pointcloud3d.
 - Update to 1.4.9.2:
   * Improvments: package libgmic and header in .deb package, -flood, -label.
   * Bug fixes: -round, 'Mirrored array' filter.
@@ -789,7 +800,7 @@ Wed Oct 19 15:37:32 CEST 2011 - garloff@suse.de
     for very small images.
 - Update to 1.4.7.4:
   * New features: -distance with custom metric, -label threshold, interactive
-    navigation through image lists, HSV equalizer. 
+    navigation through image lists, HSV equalizer.
   * Improvements: Auto-completion, class name for windows, -display_array,
     -append.
   * Bug fixes: Manage mouse wheel again in -animate.
@@ -802,7 +813,7 @@ Wed Oct 19 15:37:32 CEST 2011 - garloff@suse.de
   * G'MIC interpreter: Substitution expressions '${>}' and '${' and '$<',
     '@*', command line with spaces in filenames handling, large 3d object
     handling.
-  * G'MIC commands: -split improvement, .off 3D file handling, new 
+  * G'MIC commands: -split improvement, .off 3D file handling, new
     -pointcloud3d, -colorcube3d, updated -histogram3d, -primitive3d,
     -primitives3d. Bugfix for -primitive3d, -resize, -graph. New -gpt.
 - Update to 1.4.7.1:
@@ -819,7 +830,7 @@ Fri Dec 10 10:32:44 CET 2010 - garloff@suse.de
 - Update to 1.4.5.0:
   * New command '-display_graph' that renders a graph plot
   * New in GIMP plug-in : 'Rendering/Equation plot'
-  * Bugfixes: '-convolve', '-correlate', '-erode', '-dilate'. 
+  * Bugfixes: '-convolve', '-correlate', '-erode', '-dilate'.
     Added boolean parameter for the computation of normalized versions.
   * Bugifixes: small bugs in '-grid', '-graph' and '-plot'.
   * New in GIMP plug-in: 'Various/Do nothing', 'Polka dots'
@@ -837,9 +848,9 @@ Fri Dec 10 10:32:44 CET 2010 - garloff@suse.de
   * Some new options in the 3d objects filters.
 - Update to 1.4.1.0:
   * Bugfixes: Display of 3d objects containing point primitives,
-    bad memory access in command '-input', typos in various 
+    bad memory access in command '-input', typos in various
     error/warning messages.
-  * Features: '-gyroid3d', '-texturize3d', new default colormaps 
+  * Features: '-gyroid3d', '-texturize3d', new default colormaps
     for '-map' and '-index' (8 in total) : hot, jet, cube, ...,
     '-label_points3d'
   * New in the GIMP plug-in : sphere and gyroid.
@@ -847,7 +858,7 @@ Fri Dec 10 10:32:44 CET 2010 - garloff@suse.de
   - New native commands '-trisolve', '-camera', '-rotation3d'
   - New custom commands ('-tunnel','-apply_camera','-function1d',
     'chessboard',...). New internal timer with a ms precision.
-  - New in the GIMP plug-in: RGB/YCbCr/Lab curves, Tunnel effect, 
+  - New in the GIMP plug-in: RGB/YCbCr/Lab curves, Tunnel effect,
     Tone Mapping and Chessboard filters.
   - The command line version of G'MIC can now manage the webcam,
     through the use of the OpenCV library.
@@ -867,7 +878,7 @@ Fri Dec 10 10:32:44 CET 2010 - garloff@suse.de
   - Bugfixes
 * Update to 1.3.6.0:
   - Small improvements and optimizations: Better substitution mechanism
-    (with labels, making filter writing more comfortable), new ('-grid') 
+    (with labels, making filter writing more comfortable), new ('-grid')
     and improved commands
   - Demo for new label mechanism: gmic -x_jawbreaker
 
@@ -894,7 +905,7 @@ Fri Jun 25 10:59:01 CEST 2010 - garloff@suse.de
   * Layers/Shape average
   * Internal changes and optimizations
 - Update to 1.3.4.1:
-  * Minor bug fixes 
+  * Minor bug fixes
 
 -------------------------------------------------------------------
 Sun Mar 21 15:40:07 CET 2010 - garloff@suse.de
@@ -918,13 +929,13 @@ Fri Mar 19 01:20:57 CET 2010 - garloff@suse.de
 -------------------------------------------------------------------
 Mon Nov 23 08:48:32 CET 2009 - garloff@suse.de
 
-- Parallel make. 
+- Parallel make.
 
 -------------------------------------------------------------------
 Sun Nov 22 22:02:20 CET 2009 - garloff@suse.de
 
 - Update to 1.3.2.9:
-  * Non-interactive mode possible 
+  * Non-interactive mode possible
   * Bug fixes and new modes
 
 -------------------------------------------------------------------

@@ -1,0 +1,39 @@
+From 66475044c5ebed112d75cb51af925f9643b20d18 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Sat, 30 Apr 2022 09:23:31 +0200
+Subject: [PATCH] Find the local gmic library
+
+GMic's working build system was replaced by a Makefile for unknown reasons
+(the gmic author doesn't add messages to his commits).
+
+To keep using CMake in gmic-qt, we need to teach it where the libgmic library is located.
+---
+ gmic-qt/CMakeLists.txt | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/gmic-qt/CMakeLists.txt b/gmic-qt/CMakeLists.txt
+index 3d4b109..fd360ba 100644
+--- a/gmic-qt/CMakeLists.txt
++++ b/gmic-qt/CMakeLists.txt
+@@ -119,6 +119,9 @@ if (NOT ENABLE_SYSTEM_GMIC)
+   if (NOT(${GMIC_VERSION} EQUAL ${CIMG_VERSION}))
+   message(FATAL_ERROR "\nVersion numbers of files 'gmic.h' (" ${GMIC_VERSION} ") and 'CImg.h' (" ${CIMG_VERSION} ") mismatch")
+   endif()
++
++  # find the 'gmic' library built using 'make lib' in the top folder
++  find_library(gmic NAMES gmic PATHS "${CMAKE_CURRENT_SOURCE_DIR}/../src")
+ endif()
+ 
+ 
+@@ -567,7 +570,7 @@ if(ENABLE_DYNAMIC_LINKING)
+   set(CMAKE_SKIP_RPATH TRUE)
+   set(gmic_qt_LIBRARIES
+     ${gmic_qt_LIBRARIES}
+-    "gmic"
++    ${gmic}
+     )
+   if (NOT ENABLE_SYSTEM_GMIC)
+     link_directories(${GMIC_LIB_PATH})
+-- 
+2.36.0
+

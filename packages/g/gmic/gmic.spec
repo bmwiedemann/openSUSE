@@ -35,12 +35,12 @@
 %define hostapps gimp%{?gimp_suffix} krita
 %endif
 
-%define gmic_qt_options -DENABLE_SYSTEM_GMIC=OFF -DENABLE_DYNAMIC_LINKING=ON -DGMIC_PATH=%{_builddir}/%{name}-%{version}/src -DGMIC_LIB_PATH=%{_builddir}/%{name}-%{version}/build
+%define gmic_qt_options -DENABLE_SYSTEM_GMIC=OFF -DENABLE_DYNAMIC_LINKING=ON
 
 %define gmic_datadir %{_datadir}/gmic
 
 Name:           gmic
-Version:        3.0.2
+Version:        3.1.0
 Release:        0
 Summary:        GREYC's Magick for Image Computing (denoise and others)
 # gmic-qt is GPL-3.0-or-later, zart is CECILL-2.0, libgmic and cli program are
@@ -50,25 +50,26 @@ Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://gmic.eu
 # Git URL:      https://github.com/dtschump/gmic
 Source0:        https://gmic.eu/files/source/gmic_%{version}.tar.gz
-Source1:        gmic_qt.png
 # PATCH-FIX-UPSTREAM gmic-qt-make-it-work-without-gmic-cpp.patch - https://github.com/c-koi/gmic-qt/pull/134
 Patch0:         gmic-qt-make-it-work-without-gmic-cpp.patch
 # PATCH-FIX-UPSTREAM krita.patch - Will be sent upstream soon. For now https://github.com/darix/gmic-qt/tree/krita5
 Patch1:         krita5.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-Remove-unneeded-CImg-include.patch
-BuildRequires:  cmake >= 3.14.0
-BuildRequires:  fftw3-threads-devel
+# PATCH-FEATURE-OPENSUSE
+Patch2:         0001-Find-the-local-gmic-library.patch
 #
-# BR for pkg_vcmp
+# SECTION pkg_vcmp
 #
 # Those 2 are used for the pkg_vcmp conditionals above and also the rich expressions in the BuildRequires below
 #
 BuildRequires:  gimp
 BuildRequires:  krita
 #
-#/BR for pkg_vcmp
+# /SECTION
 #
+BuildRequires:  cmake >= 3.14.0
+BuildRequires:  dos2unix
+BuildRequires:  fftw3-threads-devel
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-devel
@@ -86,8 +87,10 @@ BuildRequires:  pkgconfig(GraphicsMagick++)
 BuildRequires:  pkgconfig(OpenEXR)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libheif)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(xcb-shm)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(zlib)
 # gmic first looks for opencv 4 and falls back to opencv 3 if not found.
@@ -111,7 +114,7 @@ several different user interfaces to convert/manipulate/filter/visualize
 generic image datasets, from 1d scalar signals to 3d+t sequences of
 multi-spectral volumetric images.
 
-%package -n libgmic1
+%package -n libgmic3
 Summary:        Shared library that belongs to gmic
 License:        CECILL-2.1
 Group:          Productivity/Graphics/Bitmap Editors
@@ -120,9 +123,9 @@ Group:          Productivity/Graphics/Bitmap Editors
 Summary:        Header and library from gmic for use in other C++ projects
 License:        CECILL-2.1
 Group:          Development/Libraries/C and C++
-Requires:       libgmic1 = %{version}
+Requires:       libgmic3 = %{version}
 
-%description -n libgmic1
+%description -n libgmic3
 Shared library allows you to use gmic functionality from other
 programs.
 
@@ -175,18 +178,25 @@ BuildArch:      noarch
 This package contains shared data files for the various gmic frontends.
 
 %prep
-%autosetup -p1
+%setup -q
+dos2unix src/{gmic_libc.*,use_libcgmic.c}
+%autopatch -p1
 
 %build
 # Build gmic
-%cmake \
-    -DENABLE_DYNAMIC_LINKING=ON \
-    -DBUILD_LIB_STATIC=OFF \
-    -DENABLE_OPENCV:BOOL=ON \
-    -DENABLE_XSHM:BOOL=ON
-%cmake_build
+# Starting with gmic 3.1.0, the gmic dev replaced their CMake build system with a non-configurable Makefile...
+sed -i 's#LIB = lib#LIB = %{_lib}#' src/Makefile
 
-cd ..
+# Breaks compilation for a couple archs
+sed -i 's#-mtune=generic##' src/Makefile
+
+# Broken rpath
+sed -i 's# -Wl,-rpath,.##' src/Makefile
+
+# The file is moved post-install in a directory not owned by gimp
+sed -i 's#/usr/lib/gimp/2.0/plug-ins#%{gmic_datadir}#' src/gmic_stdlib.gmic
+
+EXTRA_CFLAGS='%{optflags}' NOSTRIP=1 make lib cli_shared
 
 # Build gmic{_gimp|_krita}_qt
 pushd gmic-qt
@@ -213,7 +223,16 @@ cd ..
 popd
 
 %install
-%cmake_install
+DESTDIR=%{buildroot} make install
+
+# As planned, only providing a Makefile partially works...
+install -m 0644 src/CImg.h %{buildroot}%{_includedir}
+
+# Install icons
+for size in 16 32 48 64; do
+    install -Dm 0644 gmic-qt/icons/application/${size}-gmic_qt.png %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/gmic_qt.png
+done
+install -Dm 0644 gmic-qt/icons/application/gmic_qt.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/gmic_qt.svg
 
 %if %{with krita5}
 DESTDIR=%{buildroot} cmake --install gmic-qt/plugin-build
@@ -222,8 +241,6 @@ DESTDIR=%{buildroot} cmake --install gmic-qt/plugin-build
 install -m 0755 gmic-qt/build/gmic_krita_qt %{buildroot}%{_bindir}/gmic_krita_qt
 %endif
 
-install -D -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/pixmaps/gmic_qt.png
-
 %suse_update_desktop_file -c gmic_qt "G'Mic Qt" "G'MIC Qt GUI" "gmic_qt %%F" gmic_qt "Qt;Graphics;Photography;"
 
 # Film color lookup tables
@@ -231,9 +248,13 @@ install -d -m 0755 \
     %{buildroot}%{_gimpplugindir} \
     %{buildroot}%{gmic_datadir}/
 
+# Move gmic plugins out of the gimp plugin dir
 for file in gmic_cluts.gmz gmic_denoise_cnn.gmz ; do
-    install -m 0644 resources/${file} %{buildroot}%{gmic_datadir}/${file}
+    mv %{buildroot}%{_libdir}/gimp/2.0/plug-ins/${file} %{buildroot}%{gmic_datadir}/
 done
+
+# This manpage isn't translated
+rm %{buildroot}%{_mandir}/fr/man1/gmic.1*
 
 # qt_gmic
 pushd gmic-qt
@@ -243,43 +264,40 @@ install -m 0755 build/gmic_qt %{buildroot}%{_bindir}/gmic_qt
 install -m 0755 build/gmic_gimp_qt %{buildroot}%{_gimpplugindir}/gmic_gimp_qt
 popd
 
-%post -n libgmic1 -p /sbin/ldconfig
-%postun -n libgmic1 -p /sbin/ldconfig
+%post -n libgmic3 -p /sbin/ldconfig
+%postun -n libgmic3 -p /sbin/ldconfig
 
 %files
-%license COPYING
 %doc README gmic-qt/README.md
 %{_bindir}/gmic
 %{_bindir}/gmic_qt
 %{_mandir}/man1/gmic.1%{?ext_man}
 %{_datadir}/applications/gmic_qt.desktop
-%{_datadir}/pixmaps/gmic_qt.png
+%{_datadir}/icons/hicolor/*/apps/gmic_qt.png
+%{_datadir}/icons/hicolor/scalable/apps/gmic_qt.svg
 
 %files data
-%license COPYING
 %{gmic_datadir}/
 
 %files -n gimp-plugin-gmic
-%license COPYING
 %{_gimpplugindir}/
 
 %files -n krita-plugin-gmic
-%license COPYING
 %if %{with krita5}
 %{_kf5_libdir}/kritaplugins/krita_gmic_qt.so
 %else
 %{_bindir}/gmic_krita_qt
 %endif
 
-%files -n libgmic1
+%files -n libgmic3
 %license COPYING
 %{_libdir}/libgmic.so.*
 
 %files -n libgmic-devel
 %{_includedir}/CImg.h
 %{_includedir}/gmic.h
+%{_includedir}/gmic_libc.h
 %{_libdir}/libgmic.so
-%{_libdir}/cmake/gmic/
 
 %files bash-completion
 %dir %{_datadir}/bash-completion/completions

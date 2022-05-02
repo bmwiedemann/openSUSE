@@ -1,13 +1,13 @@
 diff --git a/gmic-qt/CMakeLists.txt b/gmic-qt/CMakeLists.txt
-index 8bba11e..6137f59 100644
+index 61d2b9c..3d4b109 100644
 --- a/gmic-qt/CMakeLists.txt
 +++ b/gmic-qt/CMakeLists.txt
 @@ -22,7 +22,7 @@ endif()
  
  message("Build type is " ${CMAKE_BUILD_TYPE})
  
--set (GMIC_QT_HOST "gimp" CACHE STRING "Define for which host qmic-qt will be built: gimp, gimp3 (experimental), krita, none, paintdotnet or 8bf.")
-+set (GMIC_QT_HOST "gimp" CACHE STRING "Define for which host qmic-qt will be built: gimp, gimp3 (experimental), krita, krita-plugin, none, paintdotnet or 8bf.")
+-set (GMIC_QT_HOST "gimp" CACHE STRING "Define for which host gmic-qt will be built: gimp, gimp3 (experimental), krita, none, paintdotnet or 8bf.")
++set (GMIC_QT_HOST "gimp" CACHE STRING "Define for which host gmic-qt will be built: gimp, gimp3 (experimental), krita, krita-plugin, none, paintdotnet or 8bf.")
  if (${GMIC_QT_HOST} STREQUAL "none")
    message("Building standalone version.")
  else()
@@ -292,10 +292,10 @@ index 0a32a65..b12058d 100644
    _grid->addWidget(_slider, row, 1, 1, 1);
    _grid->addWidget(_spinBox, row, 2, 1, 1);
 diff --git a/gmic-qt/src/FilterParameters/NoteParameter.cpp b/gmic-qt/src/FilterParameters/NoteParameter.cpp
-index 34d3424..bd1df33 100644
+index 3b71c19..24e7b58 100644
 --- a/gmic-qt/src/FilterParameters/NoteParameter.cpp
 +++ b/gmic-qt/src/FilterParameters/NoteParameter.cpp
-@@ -87,14 +87,14 @@ bool NoteParameter::initFromText(const QString & filterName, const char * text,
+@@ -87,14 +87,14 @@ bool NoteParameter::initFromText(const QString & /* filterName */, const char *
    _text = list[1].trimmed(); // Notes are never translated
    _text.remove(QRegExp("^\"")).remove(QRegExp("\"$")).replace(QString("\\\""), "\"");
    _text.replace(QString("\\n"), "<br/>");
@@ -313,7 +313,7 @@ index 34d3424..bd1df33 100644
    _text.replace(QRegExp("foreground\\s*=\\s*\""), QString("style=\"color:"));
    _text = HtmlTranslator::fromUtf8Escapes(_text);
 diff --git a/gmic-qt/src/FilterParameters/SeparatorParameter.cpp b/gmic-qt/src/FilterParameters/SeparatorParameter.cpp
-index 40347f7..941b280 100644
+index 0bacffb..623b5d9 100644
 --- a/gmic-qt/src/FilterParameters/SeparatorParameter.cpp
 +++ b/gmic-qt/src/FilterParameters/SeparatorParameter.cpp
 @@ -58,9 +58,11 @@ bool SeparatorParameter::addTo(QWidget * widget, int row)
@@ -329,7 +329,7 @@ index 40347f7..941b280 100644
    return true;
  }
 diff --git a/gmic-qt/src/FilterSelector/FiltersPresenter.cpp b/gmic-qt/src/FilterSelector/FiltersPresenter.cpp
-index e39270f..18e722e 100644
+index 5406eb1..2481bc2 100644
 --- a/gmic-qt/src/FilterSelector/FiltersPresenter.cpp
 +++ b/gmic-qt/src/FilterSelector/FiltersPresenter.cpp
 @@ -416,7 +416,7 @@ void FiltersPresenter::expandFaveFolder()
@@ -996,7 +996,7 @@ index e18f31f..8c6f8f2 100644
      }
    }
 diff --git a/gmic-qt/src/MainWindow.cpp b/gmic-qt/src/MainWindow.cpp
-index 33db6e4..9311901 100644
+index d89aa7e..56b4bec 100644
 --- a/gmic-qt/src/MainWindow.cpp
 +++ b/gmic-qt/src/MainWindow.cpp
 @@ -184,8 +184,12 @@ MainWindow::MainWindow(QWidget * parent) : QMainWindow(parent), ui(new Ui::MainW
@@ -1037,7 +1037,7 @@ index 33db6e4..9311901 100644
    }
  
    _filtersPresenter->toggleSelectionMode(withVisibility);
-@@ -477,7 +483,7 @@ void MainWindow::onStartupFiltersUpdateFinished(int status)
+@@ -478,7 +484,7 @@ void MainWindow::onStartupFiltersUpdateFinished(int status)
    } else if (status == (int)Updater::UpdateStatus::NotNecessary) {
    }
  
@@ -1046,7 +1046,7 @@ index 33db6e4..9311901 100644
      _gtkFavesShouldBeImported = false;
    } else {
      _gtkFavesShouldBeImported = askUserForGTKFavesImport();
-@@ -494,7 +500,7 @@ void MainWindow::onStartupFiltersUpdateFinished(int status)
+@@ -495,7 +501,7 @@ void MainWindow::onStartupFiltersUpdateFinished(int status)
    }
  
    // Retrieve and select previously selected filter
@@ -1055,7 +1055,7 @@ index 33db6e4..9311901 100644
    if (_newSession || !_lastExecutionOK) {
      hash.clear();
    }
-@@ -559,7 +565,9 @@ void MainWindow::onEscapeKeyPressed()
+@@ -560,7 +566,9 @@ void MainWindow::onEscapeKeyPressed()
      } else {
        _processor.cancel();
        ui->previewWidget->displayOriginalImage();
@@ -1065,7 +1065,7 @@ index 33db6e4..9311901 100644
      }
    }
  }
-@@ -671,7 +679,9 @@ void MainWindow::onPreviewUpdateRequested(bool synchronous)
+@@ -672,7 +680,9 @@ void MainWindow::onPreviewUpdateRequested(bool synchronous)
      ui->previewWidget->displayOriginalImage();
      return;
    }
@@ -1075,7 +1075,7 @@ index 33db6e4..9311901 100644
  
    const FiltersPresenter::Filter currentFilter = _filtersPresenter->currentFilter();
    GmicProcessor::FilterContext context;
-@@ -733,7 +743,9 @@ void MainWindow::onPreviewImageAvailable()
+@@ -736,7 +746,9 @@ void MainWindow::onPreviewImageAvailable()
    }
    ui->previewWidget->setPreviewImage(_processor.previewImage());
    ui->previewWidget->enableRightClick();
@@ -1085,7 +1085,7 @@ index 33db6e4..9311901 100644
    if (_pendingActionAfterCurrentProcessing == ProcessingAction::Close) {
      close();
    }
-@@ -743,7 +755,9 @@ void MainWindow::onPreviewError(const QString & message)
+@@ -746,7 +758,9 @@ void MainWindow::onPreviewError(const QString & message)
  {
    ui->previewWidget->setPreviewErrorMessage(message);
    ui->previewWidget->enableRightClick();
@@ -1095,7 +1095,7 @@ index 33db6e4..9311901 100644
    if (_pendingActionAfterCurrentProcessing == ProcessingAction::Close) {
      close();
    }
-@@ -969,7 +983,7 @@ void MainWindow::saveCurrentParameters()
+@@ -973,7 +987,7 @@ void MainWindow::saveCurrentParameters()
  
  void MainWindow::saveSettings()
  {
@@ -1104,7 +1104,7 @@ index 33db6e4..9311901 100644
  
    _filtersPresenter->saveSettings(settings);
  
-@@ -1010,7 +1024,7 @@ void MainWindow::saveSettings()
+@@ -1014,7 +1028,7 @@ void MainWindow::saveSettings()
  
  void MainWindow::loadSettings()
  {
@@ -1113,7 +1113,7 @@ index 33db6e4..9311901 100644
    _filtersPresenter->loadSettings(settings);
  
    _lastExecutionOK = settings.value("LastExecution/ExitedNormally", true).toBool();
-@@ -1026,9 +1040,11 @@ void MainWindow::loadSettings()
+@@ -1030,9 +1044,11 @@ void MainWindow::loadSettings()
    if (settings.value("Config/PreviewPosition", "Left").toString() == "Left") {
      setPreviewPosition(PreviewPosition::Left);
    }
@@ -1125,7 +1125,7 @@ index 33db6e4..9311901 100644
    if (!DialogSettings::logosAreVisible()) {
      ui->logosLabel->hide();
    }
-@@ -1068,7 +1084,7 @@ void MainWindow::loadSettings()
+@@ -1072,7 +1088,7 @@ void MainWindow::loadSettings()
      ui->splitter->setSizes(sizes);
    }
  
@@ -1134,7 +1134,7 @@ index 33db6e4..9311901 100644
  }
  
  void MainWindow::setPreviewPosition(MainWindow::PreviewPosition position)
-@@ -1130,7 +1146,7 @@ void MainWindow::setPreviewPosition(MainWindow::PreviewPosition position)
+@@ -1134,7 +1150,7 @@ void MainWindow::setPreviewPosition(MainWindow::PreviewPosition position)
  void MainWindow::adjustVerticalSplitter()
  {
    QList<int> sizes;
@@ -1143,7 +1143,7 @@ index 33db6e4..9311901 100644
    sizes.push_back(settings.value(QString("Config/ParamsVerticalSplitterSizeTop"), -1).toInt());
    sizes.push_back(settings.value(QString("Config/ParamsVerticalSplitterSizeBottom"), -1).toInt());
    const int splitterHeight = ui->verticalSplitter->height();
-@@ -1251,12 +1267,16 @@ void MainWindow::showEvent(QShowEvent * event)
+@@ -1255,12 +1271,16 @@ void MainWindow::showEvent(QShowEvent * event)
    Updater::setOutputMessageMode(DialogSettings::outputMessageMode());
    int ageLimit;
    {
@@ -1162,7 +1162,7 @@ index 33db6e4..9311901 100644
  }
  
  void MainWindow::resizeEvent(QResizeEvent * e)
-@@ -1273,17 +1293,19 @@ bool MainWindow::askUserForGTKFavesImport()
+@@ -1277,17 +1297,19 @@ bool MainWindow::askUserForGTKFavesImport()
                           QMessageBox::Yes | QMessageBox::No, this);
    messageBox.setDefaultButton(QMessageBox::Yes);
    QCheckBox * cb = new QCheckBox(tr("Don't ask again"));
@@ -1303,3 +1303,6 @@ index 8345152..17d8bb8 100644
           <property name="title">
            <string>Theme</string>
           </property>
+-- 
+2.36.0
+
