@@ -26,7 +26,7 @@
 %bcond_without doc
 %endif
 Name:           dynare
-Version:        5.0
+Version:        5.1
 Release:        0
 Summary:        A platform for handling a wide class of economic models
 License:        GPL-3.0-or-later
@@ -34,11 +34,13 @@ URL:            https://www.dynare.org/
 Source:         https://www.dynare.org/release/source/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM dynare-no-return-in-non-void-function.patch badshah400@gmail.com -- Return trivial value from a function that is not declared as returning void
 Patch0:         dynare-no-return-in-non-void-function.patch
+Patch1:         dynare-octave7-compat.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc%{gccver}-c++
 BuildRequires:  gcc%{gccver}-fortran
 BuildRequires:  lapack-devel
 BuildRequires:  libboost_headers-devel
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  suitesparse-devel
 BuildRequires:  pkgconfig(gsl)
@@ -81,6 +83,7 @@ This package provides documentation for %{name} in HTML format.
 %autosetup -p1
 
 %build
+autoreconf -fvi
 %if 0%{?suse_version} < 1550
 export CXX=g++-%{gccver}
 export CXXFLAGS+=' -std=c++17'
