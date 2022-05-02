@@ -18,9 +18,11 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define pythons python3
+%define skip_python2 1
+%define skip_python36 1
 
 Name:           solaar
-Version:        1.1.2
+Version:        1.1.3
 Release:        0
 Summary:        Linux devices manager for the Logitech Unifying Receiver
 License:        GPL-2.0-or-later
@@ -117,7 +119,7 @@ ln -s solaar %{buildroot}%{_bindir}/solaar-cli
 /usr/bin/udevadm trigger --subsystem-match=hidraw --action=add
 
 %files
-%doc ChangeLog COPYRIGHT
+%doc ChangeLog.md COPYRIGHT README.md Release_Notes.md
 %license COPYING
 %{_bindir}/%{name}
 %{_bindir}/%{name}-cli
@@ -125,11 +127,11 @@ ln -s solaar %{buildroot}%{_bindir}/solaar-cli
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/solaar.svg
 %{_datadir}/metainfo/io.github.pwr_solaar.solaar.metainfo.xml
-%{python3_sitelib}/hidapi
-%{python3_sitelib}/logitech_receiver
-%{python3_sitelib}/keysyms
-%{python3_sitelib}/solaar
-%{python3_sitelib}/solaar-*
+%{python_sitelib}/hidapi
+%{python_sitelib}/logitech_receiver
+%{python_sitelib}/keysyms
+%{python_sitelib}/solaar
+%{python_sitelib}/solaar-*
 
 %files udev
 %{_udevrulesdir}/42-logitech-unify-permissions.rules
