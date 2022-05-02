@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun May  1 10:18:31 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 2.15.5
+  * Added Esperanto translation
+  * Added a credits screen
+  * Added support for copying trade routes for trade ships
+  * Added a copy trade route button when hovering the mouse over
+    units in the trade report
+  * Added a request builder button when a building is selected
+  * Improved stability of starting a multiplayer game
+  * Improved AI's handling of combat mission at sea
+  * Improved formatting of the game manual
+  * Improved idle-attack detection when there are many units in the game
+  * Improved the AI's ability to send help to an ally
+  * Improved Fryhtan AI to help an Ordo under attack
+  * Reduced load of crc checking in multiplayer
+  * Reset powered attack type when line-of-sight is broken
+  * Do not cycle powered attack when the target moves,
+    correcting the usage behavior of Egyptian fire arrows
+  * More trade report improvements
+  * Set the default for mobilizing civilians to non-aggressive mode
+    to prevent inadvertently sending them to their death
+  * Corrected building linkage when buildings are densely placed
+  * Corrected AI related bugs
+  * Fixed wrongly applied leadership gain when the leader was not in range
+  * Fixed more crashes
+  * Fixed UI regression in setting auto taxing
+  * Fixed incorrect pathing when unit is in a building or on a ship
+  * Fixed crashes related to bullets
+  * Fixed spy vision of a spy on a ship
+  * Fixed spy vision of a spy assigned to building for construction or repair  
+- Drop upstream resolved patches
+  * gcc6_char_cast.patch
+  * 7kaa-no-return-in-nonvoid-function.patch
+
+-------------------------------------------------------------------
 Tue Apr 27 22:55:46 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Fixed music version requirement (align with music package)

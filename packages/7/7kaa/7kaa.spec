@@ -1,7 +1,7 @@
 #
 # spec file for package 7kaa
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define base_version 2.15
 Name:           7kaa
-Version:        %{base_version}.4p1
+Version:        %{base_version}.5
 Release:        0
 Summary:        Seven Kingdoms: Ancient Adversaries
 License:        GPL-2.0-only
@@ -27,10 +27,6 @@ URL:            https://7kfans.com/
 Source0:        https://github.com/the3dfxdude/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        %{name}.png
 Source2:        %{name}.desktop
-# PATCH-FIX-UPSTREAM - gcc6_char_cast.patch -- https://github.com/the3dfxdude/7kaa/issues/63
-Patch0:         gcc6_char_cast.patch
-# PATCH-FIX-UPSTREAM - 7kaa-no-return-in-nonvoid-function.patch -- gh#the3dfxdude/7kaa#192
-Patch1:         7kaa-no-return-in-nonvoid-function.patch
 BuildRequires:  curl-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -60,8 +56,6 @@ the GPL v2.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 export CXXFLAGS="%{optflags} -fno-strict-aliasing"
