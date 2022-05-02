@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rspec-mocks
-Version:        3.11.0
+Version:        3.11.1
 Release:        0
 %define mod_name rspec-mocks
 %define mod_full_name %{mod_name}-%{version}
