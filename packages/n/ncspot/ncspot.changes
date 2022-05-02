@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun May  1 20:48:16 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Update to version 0.9.8
+  Maintenance
+  * Disable compat feature in futures
+  * Remove webbrowser crate
+  * Only download cover image when flag enabled
+  * Fix: do not crash DBus on invalid Spotify URIs
+  Features
+  * Add playback_state config option
+  * Add option to play track from context menu dialog
+- Do not strip binary via Cargo
+
+-------------------------------------------------------------------
+Thu Apr  7 17:58:37 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Format spec file via osc service
+
+-------------------------------------------------------------------
 Thu Mar 24 20:49:46 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
 
 - Update to version 0.9.6

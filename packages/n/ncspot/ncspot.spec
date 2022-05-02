@@ -1,6 +1,7 @@
 #
 # spec file for package ncspot
 #
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +18,7 @@
 
 
 Name:           ncspot
-Version:        0.9.7
+Version:        0.9.8
 Release:        0
 Summary:        Ncurses Spotify client
 License:        BSD-2-Clause
@@ -27,13 +28,13 @@ Source:         https://github.com/hrkfdn/ncspot/archive/refs/tags/v%{version}.t
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo >= 1.58
+BuildRequires:  libpulse-devel
+BuildRequires:  libxcb-devel
+BuildRequires:  ncurses5-devel
+BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  rust
 BuildRequires:  pkgconfig(dbus-1) >= 1.6
-BuildRequires:  ncurses5-devel
-BuildRequires:  openssl-devel
-BuildRequires:  libpulse-devel
-BuildRequires:  libxcb-devel
 
 %description
 Cross-platform ncurses Spotify client written in Rust, inspired
