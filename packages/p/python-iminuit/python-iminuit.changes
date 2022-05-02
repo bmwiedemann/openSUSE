@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun May  1 19:11:29 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.11.2:
+  * Fixed wording in cost function tutorial
+- Changes from version 2.11.1:
+  * Fixed a failure of util.make_with_signature in some
+    situations.
+  * Raise numpy.VisibleDeprecationWarning instead of
+    warnings.DeprecationWarning.
+  * util.propagate is deprecated in favour of jacobi.propagate
+    from the jacobi library.
+- Changes from version 2.11.0:
+  * All builtin cost functions now support multidimensional data
+  * Matrix.to_dict was added for symmetry with
+    BasicValueView.to_dict
+  * For long-running fits, total runtime is now shown in FMin
+    display and total runtime can be accessed via property
+    FMin.time
+  * In binned fits when ndof is zero, show reduced chi2 = nan in
+    the FMin display instead of raising a ZeroDivisionError
+  * Tutorials and studies are now listed separately
+  * Tutorial for fits of multivariate data were added
+  * The cost function tutorial was improved
+  * Studies in regard to performance were added, including a
+    comparison with RooFit
+
+-------------------------------------------------------------------
 Sat Mar  5 15:40:18 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.10.0:
