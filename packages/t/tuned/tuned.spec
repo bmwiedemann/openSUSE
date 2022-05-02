@@ -272,6 +272,8 @@ sed -i 's|.*/\([^/]\+\)/[^\.]\+\.conf|\1|' %{_sysconfdir}/tuned/active_profile
 %{_mandir}/man8/tuned*
 %dir %{_datadir}/tuned
 %ghost %dir /run/tuned
+%dir %{_prefix}/lib/kernel
+%dir %{_prefix}/lib/kernel/install.d
 %{_prefix}/lib/kernel/install.d/92-tuned.install
 
 %files gtk

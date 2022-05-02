@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 26 12:40:25 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Own %{_prefix}/lib/kernel and subdirectories: fix build on
+  Factory.
+
+-------------------------------------------------------------------
 Tue Mar 15 12:09:24 UTC 2022 - trenn@suse.de
 
 - Add new openshift platform profiles
