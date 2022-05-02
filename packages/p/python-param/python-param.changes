@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun May  1 18:58:42 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.12.1:
+  * Fixed description of shared_parameters (gh#holoviz/param#568).
+  * Improve the error messages of Date and DateRange
+    (gh#holoviz/param#579).
+  * Clarified step error messages and other docs and links
+    (gh#holoviz/param#604).
+  * Make iscoroutinefunction more robust (gh#holoviz/param#572).
+  * Fix for handling misspelled parameter (gh#holoviz/param#575).
+  * Handle None serialization for Date, CalendarDate, Tuple,
+    Array, and DataFrame (gh#holoviz/param#582).
+  * Support async coroutines in param.depends
+    (gh#holoviz/param#591).
+  * Handle async functions in depends with watch=True
+    (gh#holoviz/param#611).
+  * Avoid equality check on Watcher (gh#holoviz/param#612).
+  * Fix binder (gh#holoviz/param#564).
+  * Fixed description of shared_parameters (gh#holoviz/param#568).
+
+-------------------------------------------------------------------
 Tue Feb 15 23:11:44 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.12.0:
