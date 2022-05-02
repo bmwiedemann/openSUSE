@@ -20,7 +20,7 @@
 # PYTHON2 NOT SUPPORTED BY UPSTREAM
 %define         skip_python2 1
 Name:           python-grpcio
-Version:        1.44.0
+Version:        1.45.0
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
@@ -29,6 +29,8 @@ URL:            https://grpc.io
 Source:         https://files.pythonhosted.org/packages/source/g/grpcio/grpcio-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM python-grpcio-disable-boring-ssl.patch gh#grpc/grpc#24498 badshah400@gmail.com -- Make enabling system ssl disable boring ssl; patch taken from upstream PR
 Patch0:         python-grpcio-disable-boring-ssl.patch
+# PATCH-FIX-UPSTREAM grpc-no-return-from-non-void-function.patch badshah400@gmail.com -- Return a default string from a function defined to return a string (patch mirrored from obs://devel:tools/grpc)
+Patch1:         grpc-no-return-from-non-void-function.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -39,6 +41,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libcares)
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(re2)
 BuildRequires:  pkgconfig(zlib)
 Requires:       ca-certificates
 Requires:       python-six >= 1.5.2
@@ -60,6 +63,7 @@ export CFLAGS="%{optflags}"
 export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=true
 export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=true
 export GRPC_PYTHON_BUILD_SYSTEM_CARES=true
+export GRPC_PYTHON_BUILD_SYSTEM_RE2=true
 %python_build
 
 %install
