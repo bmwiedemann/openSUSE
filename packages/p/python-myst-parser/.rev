@@ -7,4 +7,14 @@
     <comment>package is required for update of xonsh (docs)</comment>
     <requestid>972554</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6ff202585a9037a4715d294c366955a0</srcmd5>
+    <version>0.17.2</version>
+    <time>1651501571</time>
+    <user>dimstar_suse</user>
+    <comment>- activate tests
+- fix requires
+</comment>
+    <requestid>974413</requestid>
+  </revision>
 </revisionlist>
