@@ -19,7 +19,7 @@ Thu Feb 17 11:35:41 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 -------------------------------------------------------------------
 Thu Feb 17 11:32:16 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
-- Update HNV implementation (bsc#1195404 ltc#196259).
+- Update HNV implementation (bsc#1195404 ltc#196259 jsc#SLE-23855).
    + 0001-Validate-connection-manager-and-add-option-to-trace-.patch
    + 0002-Factor-out-NetworkManager-nmcli-code.patch
    * 0003-Add-new-wicked-functions-from-suse-to-manage-bonding.patch
@@ -114,7 +114,7 @@ Wed Jan  5 19:10:13 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 - Add support for vnic backup device for HNV (jsc#SLE-23097).
    + 0001-hcnmgr-Support-vNIC-as-backup-device.patch
    + 0002-hcnmgr-Remove-some-dead-code.patch
-- Add support for NVMf devices (jsc#SLE-18643).
+- Add support for NVMf devices (jsc#SLE-18643, bsc#1198728, ltc#197650).
    + 0003-ofpathname-Fix-nvme-support-in-ANA-mode.patch
    + 0004-ofpathname-Add-support-for-NVMf-devices.patch
 
