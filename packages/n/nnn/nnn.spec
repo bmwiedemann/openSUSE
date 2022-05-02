@@ -1,7 +1,7 @@
 #
 # spec file for package nnn
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           nnn
-Version:        4.4
+Version:        4.5
 Release:        0
 Summary:        Terminal based file browser
 License:        BSD-2-Clause
 Group:          Productivity/File utilities
 URL:            https://github.com/jarun/nnn#nnn
-Source0:        https://github.com/jarun/nnn/archive/v%{version}.tar.gz#/v%{version}.tar.gz
+Source0:        https://github.com/jarun/nnn/releases/download/v%{version}/%{name}-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        https://github.com/jarun/nnn/releases/download/v%{version}/%{name}-%{version}.tar.gz.sig
+Source99:       nnn.keyring
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 Recommends:     sshfs

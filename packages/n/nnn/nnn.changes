@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon May  2 10:28:41 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix URL to source tarball
+- Add also tarball signature and keyring to the source files.
+
+-------------------------------------------------------------------
+Thu Apr 28 05:59:54 UTC 2022 - stigpro@outlook.fr
+
+- Update to version v4.5:
+  * Prepare for release v4.5 Cachaça
+  * Fix patch conflicts and rebase
+  * Use bold forward arrowhead for current
+  * Add 2 spaces after icons for better visibility
+  * Fix #1345: allow symlink name '@' in single file case
+  * quitcd script for Elvish shell > 0.17.0
+  * Handle broken window if started in type-to-nav
+  * Bind ^J with toggle auto-jump on open
+  * Replace ^J with + to (un)select
+  * consistently use ELEMENTS macro
+
+-------------------------------------------------------------------
 Wed Nov 24 06:11:37 UTC 2021 - Nicolas FORMICHELLA <stigpro@outlook.fr>
 
 - support macOS iterm2 in plugin preview-tui (#1196)
