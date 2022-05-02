@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May  1 22:01:33 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.20.1:
+  * Particle class: More tests of PDGID functions for special
+    particles.
+  * Experiment-specific modules: particle.lhcb simplified.
+  * Miscellaneous: Minor cleanup and updates.
+  * Tests: Now included in the SDist (MANIFEST.in updated).
+
+-------------------------------------------------------------------
 Thu Jan 20 17:31:09 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.20.0:
