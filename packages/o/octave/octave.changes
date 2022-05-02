@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Apr 10 21:30:11 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 7.1.0:
+  * Long list of changes, see
+    <https://www.gnu.org/software/octave/NEWS-7.html>.
+- Drop upstreamed patches:
+  * octave-fullscreen-with-multiple-monitors.patch
+  * 0001-Use-reentrant-libqhull_r.patch
+  * octave-qhull_r-fixes.patch
+- New BuildRequires: Mesa-dri (needed for a test),
+  pkgconfig(RapidJSON) (for JSON R/W support).
+- Minor rebase of octave_tools_pie.patch to apply cleanly.
+- Update _constraints: At least 8 GB disk space needed for 64-bit
+  archs (x86_64 and aarch64).
+
+-------------------------------------------------------------------
 Tue Mar  8 13:32:58 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add octave-fullscreen-with-multiple-monitors.patch -- fix

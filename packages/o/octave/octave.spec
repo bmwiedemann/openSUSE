@@ -16,9 +16,9 @@
 #
 
 
-%define apiver  v56
+%define apiver  v57
 # Required for RC builds, in this case version contains ~rc, src_ver -rc
-%define pkg_ver 6.4.0
+%define pkg_ver 7.1.0
 %define src_ver %{pkg_ver}
 
 # Use native graphics or gnuplot
@@ -63,12 +63,6 @@ Source3:        octave.macros
 Patch0:         octave_tools_pie.patch
 # PATCH-FIX-UPSTREAM - https://savannah.gnu.org/bugs/?54607
 Patch1:         0001-Disable-signal-handler-thread-avoid-duplicate-signal.patch
-# PATCH-FIX-UPSTREAM - https://savannah.gnu.org/bugs/?60016 - updated to cope with octave-6.3.0
-Patch2:         0001-Use-reentrant-libqhull_r.patch
-# PATCH-FIX-UPSTREAM - https://savannah.gnu.org/bugs/?60016 - complements patch2 to cope with QHULL_R_* flags
-Patch3:         octave-qhull_r-fixes.patch
-# PATCH-FIX-UPSTREAM octave-fullscreen-with-multiple-monitors.patch badshah400@gmail.com -- fix maximized start on systems with two monitors (https://savannah.gnu.org/bugs/?61172)
-Patch4:         octave-fullscreen-with-multiple-monitors.patch
 BuildRequires:  arpack-ng-devel
 # Required for Patch0
 BuildRequires:  autoconf
@@ -104,6 +98,7 @@ BuildRequires:  readline-devel
 BuildRequires:  suitesparse-devel
 BuildRequires:  sundials-devel
 BuildRequires:  termcap
+BuildRequires:  pkgconfig(RapidJSON)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(zlib)
 # GUI build requires
@@ -144,6 +139,7 @@ BuildRequires:  llvm-devel
 # Native graphics build requires
 %if %{with native_graphics}
 BuildRequires:  Mesa-devel
+BuildRequires:  Mesa-dri
 BuildRequires:  fltk-devel
 BuildRequires:  gl2ps-devel
 BuildRequires:  pkgconfig(fontconfig)
@@ -223,9 +219,6 @@ This package contains documentation for Octave.
 %setup -q -n %{name}-%{src_ver}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 %build
 

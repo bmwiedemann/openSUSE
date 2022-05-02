@@ -620,4 +620,17 @@ http://hg.savannah.gnu.org/hgweb/octave/rev/122d3f62e179 (forwarded request 1845
     <comment></comment>
     <requestid>960590</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>a2e477d9de5276829897612ac5350faf</srcmd5>
+    <version>7.1.0</version>
+    <time>1651501495</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7.1.0.
+- Drop upstreamed patches:
+- New BuildRequires: Mesa-dri (needed for a test), pkgconfig(RapidJSON) (for JSON R/W support).
+- Minor rebase of octave_tools_pie.patch to apply cleanly.
+- Update _constraints: At least 8 GB disk space needed for 64-bit archs (x86_64 and aarch64).
+</comment>
+    <requestid>974195</requestid>
+  </revision>
 </revisionlist>
