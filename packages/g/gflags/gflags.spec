@@ -1,7 +1,7 @@
 #
 # spec file for package gflags
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-Requires:       libgflags2 = %{version}
+Requires:       libgflags2_2 = %{version}
 
 %description
 The gflags package contains a library that implements commandline
@@ -35,10 +35,11 @@ increased flexibility, including built-in support for C++ types like
 string, and the ability to define flags in the source file in which
 they're used.
 
-%package -n libgflags2
+%package -n libgflags2_2
 Summary:        Library for commandline flag processing
+Conflicts:      libgflags2
 
-%description -n libgflags2
+%description -n libgflags2_2
 The gflags package contains a library that implements commandline
 flags processing. As such, it is a replacement for getopt(). It has
 increased flexibility, including built-in support for C++ types like
@@ -47,7 +48,7 @@ they're used.
 
 %package devel
 Summary:        Development files for gflags library
-Requires:       libgflags2 = %{version}
+Requires:       libgflags2_2 = %{version}
 
 %description devel
 This package contains headers and build system meta files.
@@ -60,7 +61,7 @@ Requires:       %{name}-devel = %{version}
 This package contains the static libraries for gflags.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -85,15 +86,15 @@ rm -rf %{buildroot}/home/
 export LD_LIBRARY_PATH=`pwd`/build/lib
 %ctest
 
-%post -n libgflags2 -p /sbin/ldconfig
-%postun -n libgflags2 -p /sbin/ldconfig
+%post -n libgflags2_2 -p /sbin/ldconfig
+%postun -n libgflags2_2 -p /sbin/ldconfig
 
 %files
 %license COPYING.txt
 %doc AUTHORS.txt ChangeLog.txt README.md
 %{_bindir}/%{name}_completions.sh
 
-%files -n libgflags2
+%files -n libgflags2_2
 %license COPYING.txt
 %{_libdir}/libgflags.so.*
 %{_libdir}/libgflags_nothreads.so.*

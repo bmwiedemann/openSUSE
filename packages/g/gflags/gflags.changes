@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 27 09:04:01 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve rpmlint report "libgflags2.x86_64: E:
+  shlib-policy-name-error SONAME: libgflags.so.2.2, expected
+  package suffix: 2_2"
+
+-------------------------------------------------------------------
 Sun Aug  9 20:57:54 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 2.2.2
