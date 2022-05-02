@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun May  1 23:32:22 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.2.2:
+  * Add SCI_GETSTYLEINDEXAT API to return styles over 127 as
+    positive integers. Feature #1431.
+  * On GTK, scroll horizontally with shift + scroll wheel.
+  * Fix crash with unexpected right-to-left text on GTK. Bug
+    #2309.
+  * Fix position of end-of-line annotation when fold display text
+    is visible. Bug #2320.
+  * On Direct2D, support per-monitor text rendering parameters.
+    Feature #1432. 
+
+-------------------------------------------------------------------
 Thu Feb 24 21:37:58 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.2.1:
