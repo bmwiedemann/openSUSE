@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 19 19:34:53 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.10.0:
+  * raft snapshots no longer copy the whole database, but the WAL
+    for a smaller size
+
+-------------------------------------------------------------------
 Sun Mar 13 14:46:07 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.9.1:
