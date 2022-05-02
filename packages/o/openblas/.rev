@@ -574,4 +574,14 @@
   - Handle the change from directories to soft links properly (forwarded request 968024 from eeich)</comment>
     <requestid>968025</requestid>
   </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>d8ced787af76c06a7a6bef1af8f2d6a6</srcmd5>
+    <version>0.3.20</version>
+    <time>1651501480</time>
+    <user>dimstar_suse</user>
+    <comment>- For non-HPC builds create links (bsc#1198885):
+  %_lib/libopenblas_&lt;flavor&gt;.so[.0] -&gt;
+  		 %_lib/openblas-&lt;flavor&gt;/libopenblas.so[.0] (forwarded request 973974 from eeich)</comment>
+    <requestid>973980</requestid>
+  </revision>
 </revisionlist>

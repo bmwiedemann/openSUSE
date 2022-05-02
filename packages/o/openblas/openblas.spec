@@ -425,6 +425,8 @@ ln -sf %{_sysconfdir}/alternatives/liblapack.so.3 %{buildroot}/%{_libdir}/liblap
 ln -sf %{_sysconfdir}/alternatives/liblapacke.so.3 %{buildroot}/%{_libdir}/liblapacke.so.3
 ln -sf %{_sysconfdir}/alternatives/openblas-default %{buildroot}/%{_libdir}/openblas-default
 ln -s lib%{pname}.so.%{so_v} %{buildroot}%{p_libdir}/lib%{pname}.so
+ln -s %{p_libdir}/lib%{pname}.so.%{so_v} %{buildroot}/%{_libdir}/lib%{name}.so.%{so_v}
+ln -s %{p_libdir}/lib%{pname}.so %{buildroot}/%{_libdir}/lib%{name}.so
 ln -s %{_libdir}/openblas-default %{buildroot}%{_sysconfdir}/alternatives/openblas-default
 ln -s %{_sysconfdir}/alternatives/openblas-default/lib%{pname}.so.%{so_v} %{buildroot}%{_libdir}/lib%{pname}.so.%{so_v}
 %if 0%{?build_devel}
@@ -533,6 +535,7 @@ fi
 %if %{without hpc}
 %dir %{p_libdir}
 %{_libdir}/openblas-default
+%{_libdir}/lib%{name}.so.%{so_v}
 %{_libdir}/lib%{pname}.so.%{so_v}
 %ghost %{_libdir}/libblas.so.3
 %ghost %{_libdir}/libcblas.so.3
@@ -558,6 +561,7 @@ fi
 %hpc_pkgconfig_file
 %{p_includedir}/
 %else
+%{_libdir}/lib%{name}.so
 %dir %{p_libdir}/cmake
 %dir %{p_libdir}/pkgconfig
 %{p_libdir}/pkgconfig

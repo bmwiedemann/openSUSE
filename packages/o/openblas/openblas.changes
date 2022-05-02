@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 29 16:36:57 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- For non-HPC builds create links (bsc#1198885):
+  %_lib/libopenblas_<flavor>.so[.0] ->
+  		 %_lib/openblas-<flavor>/libopenblas.so[.0]
+
+-------------------------------------------------------------------
 Sat Apr  9 06:13:09 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Fix issues in update paths from earlier versions introduced by
