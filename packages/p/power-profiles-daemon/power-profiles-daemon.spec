@@ -1,7 +1,7 @@
 #
 # spec file for package power-profiles-daemon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           power-profiles-daemon
-Version:        0.10.1
+Version:        0.11
 Release:        0
 Summary:        Power profiles handling over D-Bus
 License:        GPL-3.0-or-later
@@ -25,8 +25,6 @@ URL:            https://gitlab.freedesktop.org/hadess/power-profiles-daemon
 Source:         %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
 # PATCH-FEATURE-OPENSUSE hold-profile-hardening.patch boo#1189900 -- Hardening of HoldProfile D-Bus method
 Patch0:         hold-profile-hardening.patch
-# PATCH-FIX-UPSTREAM fd1664dfe26f13f8c8cd7b44483cd872dfdede36.patch -- main: Error out on D-Bus communication errors
-Patch1:         https://gitlab.freedesktop.org/hadess/power-profiles-daemon/-/commit/fd1664dfe26f13f8c8cd7b44483cd872dfdede36.patch
 
 BuildRequires:  c_compiler
 BuildRequires:  gtk-doc

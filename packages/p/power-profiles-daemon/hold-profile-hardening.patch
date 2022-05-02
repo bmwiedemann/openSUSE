@@ -1,8 +1,8 @@
-Index: power-profiles-daemon-0.10.1/src/power-profiles-daemon.c
+Index: power-profiles-daemon-0.11/src/power-profiles-daemon.c
 ===================================================================
---- power-profiles-daemon-0.10.1.orig/src/power-profiles-daemon.c
-+++ power-profiles-daemon-0.10.1/src/power-profiles-daemon.c
-@@ -531,6 +531,29 @@ holder_disappeared (GDBusConnection *con
+--- power-profiles-daemon-0.11.orig/src/power-profiles-daemon.c
++++ power-profiles-daemon-0.11/src/power-profiles-daemon.c
+@@ -537,6 +537,29 @@ holder_disappeared (GDBusConnection *con
    g_ptr_array_free (cookies, TRUE);
  }
  
@@ -32,7 +32,7 @@ Index: power-profiles-daemon-0.10.1/src/power-profiles-daemon.c
  static void
  hold_profile (PpdApp                *data,
                GVariant              *parameters,
-@@ -553,6 +576,18 @@ hold_profile (PpdApp                *dat
+@@ -559,6 +582,18 @@ hold_profile (PpdApp                *dat
      return;
    }
  

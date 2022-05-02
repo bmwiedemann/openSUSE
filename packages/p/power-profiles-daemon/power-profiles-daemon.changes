@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun May  1 17:32:18 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.11:
+  * Fixes problems on Intel machines when the CPUs didn't support
+    turbo at all, or the performance scaling governor was built as
+    default in the kernel.
+  * Add better end-user documentation.
+  * Fixes in the command-line tool to not cause bug report tools
+    to popup on not-uncommon errors.
+  * Bug fix for running on some systems with controllable charge
+    speeds.
+- Drop fd1664dfe26f13f8c8cd7b44483cd872dfdede36.patch: upstreamed.
+
+-------------------------------------------------------------------
 Fri Nov 19 15:29:11 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add fd1664dfe26f13f8c8cd7b44483cd872dfdede36.patch: main: Error
