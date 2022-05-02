@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May  1 00:48:49 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- fix build with new boost, add:
+  01-fix-boost-include.patch
+
+-------------------------------------------------------------------
 Sat May 15 00:18:19 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 4.8.5

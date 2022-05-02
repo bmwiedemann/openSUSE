@@ -1,0 +1,10 @@
+--- src/general_settings_ui.cpp.orig	2021-03-15 03:42:56.000000000 +1000
++++ src/general_settings_ui.cpp	2022-05-01 10:43:35.189139334 +1000
+@@ -21,6 +21,7 @@
+ #include <giomm/file.h>
+ #include <glibmm.h>
+ #include <boost/filesystem.hpp>
++#include <boost/filesystem/fstream.hpp>
+ #include "util.hpp"
+ 
+ namespace {
