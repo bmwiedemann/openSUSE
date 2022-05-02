@@ -29,7 +29,7 @@
 %define skip_python36 1
 %define modname panel
 Name:           python-panel%{psuffix}
-Version:        0.12.6
+Version:        0.13.0
 Release:        0
 Summary:        A high level app and dashboarding solution for Python
 License:        BSD-3-Clause
@@ -159,7 +159,7 @@ donttest+=" or test_server_async_callbacks"
 
 %files -n jupyter-panel
 %license LICENSE.txt
-%{_jupyter_servextension_confdir}/panel-client-jupyter.json
+%{_jupyter_server_confdir}/panel-client-jupyter.json
 
 %endif
 
