@@ -21,12 +21,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 
 Name:           python-scitokens
-Version:        1.6.2
+Version:        1.7.0
 Release:        0
 Summary:        SciToken reference implementation library
 License:        Apache-2.0
 URL:            https://scitokens.org
-Source:         https://github.com/scitokens/scitokens/archive/refs/tags/v1.6.2.tar.gz#/%{bname}-%{version}.tar.gz
+Source:         https://github.com/scitokens/scitokens/archive/refs/tags/v%{version}.tar.gz#/%{bname}-%{version}.tar.gz
 BuildRequires:  %{python_module PyJWT}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
