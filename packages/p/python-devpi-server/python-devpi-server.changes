@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon May  2 09:29:09 UTC 2022 - pgajdos@suse.com
+
+- version update to 6.5.1
+  6.5.1 (2022-04-25)
+  ==================
+  Bug Fixes
+  ---------
+  - Fix traceback when trying to delete already deleted release or toxresult.
+  - Preserve index config settings of plugins during import instead of aborting, even if the plugin isn't installed during import.
+  6.5.0 (2022-03-18)
+  ==================
+  Features
+  --------
+  - Added ``--no-checksum`` option to ``devpi-fsck`` to skip checksum validation and only check for file existence.
+  - Split keyfs cache into a small changelog cache and a relpath cache, this lowers overall memory usage and prevents cache trashing.
+  - Lower memory usage by avoiding to read release files into memory and instead use existing file objects.
+  - Switch to ``platformdirs`` from ``appdirs``.
+  - Add streaming replica protocol, which is faster and uses less memory, especially when rebuilding a replica.
+  - Better logging and handling if a thread unexpectedly dies.
+  Bug Fixes
+  ---------
+  - Fix #871: authentication info in ``mirror_url`` wasn't passed on to release links anymore.
+  - Open database connection after file was downloaded during replication to avoid conflicts and locking.
+  - Avoid hashing data twice when writing to storage.
+  - Close HTTP responses and sessions when done to free resources as early as possible instead of waiting for garbage collection.
+  6.4.0 (2022-01-24)
+  ==================
+  Deprecations and Removals
+  -------------------------
+  - As announced with 6.0.0, support for Python 3.6 has been dropped, because it has reached its end of life.
+  Features
+  --------
+  - When an installer user agent is detected the full list of projects is returned unsorted and with less info to improve performance and reduce memory usage.
+  Bug Fixes
+  ---------
+  - Use ``__slots__`` for some classes to reduce memory usage.
+  - Fix exceptions related to logging for some edge cases.
+  6.3.1 (2021-12-07)
+  ==================
+  Bug Fixes
+  ---------
+  - Fix #864: enable settings from ``~/.netrc`` and ``HTTP_PROXY``/``HTTPS_PROXY`` env vars for aiohttp.
+  6.3.0 (2021-11-19)
+  ==================
+  Features
+  --------
+  - Use aiohttp (asyncio) for fetching release links from mirrors to return stale links immediately in case of a timeout, but update the database in the background for the next request.
+  Bug Fixes
+  ---------
+  - fix #853: prevent duplicate mirror indexes in sro method when there are multiple inheritance chains to the same mirror
+  - fix #860: don't check for existing files and validate them during mirror links update, the operation is way to expensive and there is a low possibility for errors.
+  - Add missing `lazy` package dependency. Previously this was only a transitive dependency coming from the devpi-common package.
+
+-------------------------------------------------------------------
 Mon Nov  8 11:58:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.2.0:

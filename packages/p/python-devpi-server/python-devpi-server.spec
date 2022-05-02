@@ -1,7 +1,7 @@
 #
 # spec file for package python-devpi-server
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define commands export fsck gen-config import init passwd server gen-secret
 %define skip_python2 1
 Name:           python-devpi-server
-Version:        6.2.0
+Version:        6.5.1
 Release:        0
 Summary:        Private PyPI caching server
 License:        MIT
@@ -30,6 +30,7 @@ Source:         https://files.pythonhosted.org/packages/source/d/devpi-server/de
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-aiohttp
 Requires:       python-appdirs
 Requires:       python-argon2-cffi >= 16.2
 Requires:       python-attrs
@@ -39,6 +40,7 @@ Requires:       python-execnet >= 1.2
 Requires:       python-itsdangerous >= 0.24
 Requires:       python-lazy
 Requires:       python-passlib
+Requires:       python-platformdirs
 Requires:       python-pluggy >= 0.6.0
 Requires:       python-py >= 1.4.23
 Requires:       python-pyramid >= 2
@@ -53,10 +55,10 @@ Suggests:       nginx
 Suggests:       python-WebTest
 Suggests:       python-beautifulsoup4
 # https://github.com/devpi/devpi/issues/705
-Suggests:       python-mock
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module WebTest}
+BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module argon2-cffi >= 16.2}
 BuildRequires:  %{python_module attrs}
@@ -66,8 +68,8 @@ BuildRequires:  %{python_module devpi-common >= 3.3.0}
 BuildRequires:  %{python_module execnet >= 1.2}
 BuildRequires:  %{python_module itsdangerous >= 0.24}
 BuildRequires:  %{python_module lazy}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module passlib}
+BuildRequires:  %{python_module platformdirs}
 BuildRequires:  %{python_module pluggy >= 0.6.0}
 BuildRequires:  %{python_module py >= 1.4.23}
 BuildRequires:  %{python_module pyramid >= 2}
