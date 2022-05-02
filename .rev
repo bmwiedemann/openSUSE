@@ -403,4 +403,17 @@ additions, including new UTF-8 compose sequences for:
 - supersedes p_khmer-compose.diff</comment>
     <requestid>966679</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>279c086ea6647d45d60f4fdbc750a9fc</srcmd5>
+    <version>1.8</version>
+    <time>1651501478</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8
+  * The highlight of this release is that we now try to initialize
+    thread safety ourselves, rather than hope the application does it.
+    This should resolve a number of long-standing bugs with the libxcb
+    integration, since the socket handoff mechanism essentially has to
+    be thread-safe.</comment>
+    <requestid>973978</requestid>
+  </revision>
 </revisionlist>
