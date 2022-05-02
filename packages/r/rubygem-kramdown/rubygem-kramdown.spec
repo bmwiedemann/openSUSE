@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-kramdown
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-kramdown
-Version:        2.3.1
+Version:        2.4.0
 Release:        0
 %define mod_name kramdown
 %define mod_full_name %{mod_name}-%{version}
@@ -52,6 +52,7 @@ using a strict syntax definition and supporting several common extensions.
 
 %install
 %gem_install \
+  --no-rdoc --no-ri \
   --symlink-binaries \
   --doc-files="COPYING README.md" \
   -f
