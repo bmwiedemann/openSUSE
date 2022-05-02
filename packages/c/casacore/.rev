@@ -23,4 +23,15 @@
     <comment></comment>
     <requestid>876061</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e1b3a3fddb91c624b76f9f935b889915</srcmd5>
+    <version>3.4.0</version>
+    <time>1651501515</time>
+    <user>dimstar_suse</user>
+    <comment>- Add casacore-link-math.patch: Explicitly link to math library when building mirlab [gh#casacore/casacore#1190].
+- Drop ExcludeArch: %ix86 to allow building for related 32-bit systems in light of previous commit.
+- Add an rpmlintrc for shlib-policy-name-error
+- Add upstream patch to fix build on 32-bit architectures: 1129.patch</comment>
+    <requestid>974246</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Apr 29 11:57:45 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add casacore-link-math.patch: Explicitly link to math library
+  when building mirlab [gh#casacore/casacore#1190].
+- Drop ExcludeArch: %ix86 to allow building for related 32-bit
+  systems in light of previous commit (Fri Mar 11 10:04:22 UTC
+  2022).
+
+-------------------------------------------------------------------
+Wed Apr 27 08:33:04 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add an rpmlintrc for shlib-policy-name-error
+
+-------------------------------------------------------------------
+Fri Mar 11 10:04:22 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add upstream patch to fix build on 32-bit architectures:
+  * 1129.patch
+
+-------------------------------------------------------------------
 Thu Feb 25 21:11:59 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.4.0:

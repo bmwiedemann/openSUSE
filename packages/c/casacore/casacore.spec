@@ -1,7 +1,7 @@
 #
-# spec file for package casacore
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -86,8 +86,13 @@ Summary:        A suite of C++ libraries for radio astronomy data processing
 License:        LGPL-2.0-or-later
 URL:            https://github.com/casacore/casacore
 Source:         https://github.com/casacore/casacore/archive/v%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
+Source99:       casacore-rpmlintrc
 # PATCH-FIX-UPSTREAM casacore-fitsio-header.patch badshah400@gmail.com -- Fix location of cfitsio headers used in sources
-Patch2:         casacore-fitsio-header.patch
+Patch1:         casacore-fitsio-header.patch
+# PATCH-FIX-UPSTREAM - https://github.com/casacore/casacore/pull/1129
+Patch2:         1129.patch
+# PATCH-FIX-UPSTREAM casacore-link-math.patch badshah400@gmail.com -- Explicitly link to math library when building mirlab
+Patch3:         casacore-link-math.patch
 BuildRequires:  bison
 BuildRequires:  blas-devel
 BuildRequires:  cmake
@@ -107,7 +112,6 @@ BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(wcslib)
 BuildRequires:  pkgconfig(zlib)
-ExcludeArch:    %ix86
 %if %{with mpi}
 BuildRequires:  %{mpi_flavor}%{?mpi_vers}-config
 BuildRequires:  %{mpi_flavor}%{?mpi_vers}-devel
