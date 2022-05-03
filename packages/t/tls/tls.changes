@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 27 09:15:51 UTC 2022 - munix9@googlemail.com
+
+- Add certs-tests.patch, cipher-tests.patch, fall-through.patch,
+      hostname-tests.patch, openssl3.patch
+  (according to see https://src.fedoraproject.org/rpms/tcltls
+                and https://salsa.debian.org/tcltk-team/tcltls)
+- Remove tls-test-certs.tar.gz (replaced by certs-tests.patch)
+- Clean up spec file
+
+-------------------------------------------------------------------
 Tue Apr 20 13:01:00 UTC 2021 - Reinhard Max <max@suse.com>
 
 - Update to version 1.7.22

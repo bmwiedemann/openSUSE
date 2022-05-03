@@ -1,0 +1,27 @@
+--- a/tls.c
++++ b/tls.c
+@@ -1424,7 +1424,7 @@
+ 		channelName = Tcl_GetStringFromObj(objv[2], NULL);
+ 		break;
+ 	    }
+-	    /* else fall... */
++	    /* else fall-through ... */
+ 	default:
+ 	    Tcl_WrongNumArgs(interp, 1, objv, "?-local? channel");
+ 	    return TCL_ERROR;
+--- a/tlsBIO.c
++++ b/tlsBIO.c
+@@ -231,9 +231,12 @@
+ 	switch (cmd) {
+ 		case BIO_CTRL_RESET:
+ 			dprintf("Got BIO_CTRL_RESET");
+-			num = 0;
++			ret = 0;
++			break;
+ 		case BIO_C_FILE_SEEK:
+ 			dprintf("Got BIO_C_FILE_SEEK");
++			ret = 0;
++			break;
+ 		case BIO_C_FILE_TELL:
+ 			dprintf("Got BIO_C_FILE_TELL");
+ 			ret = 0;

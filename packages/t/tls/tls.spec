@@ -1,7 +1,7 @@
 #
 # spec file for package tls
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,19 @@
 
 
 Name:           tls
+Version:        1.7.22
+Release:        0
 Summary:        Tcl Binding for the OpenSSL Library
 License:        BSD-3-Clause
 Group:          Development/Libraries/Tcl
-Version:        1.7.22
-Release:        0
 URL:            https://core.tcl-lang.org/tcltls
-Source0:        https://core.tcl-lang.org/tcltls/uv/tcltls-%version.tar.gz
-Source1:        %name-test-certs.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source0:        https://core.tcl-lang.org/tcltls/uv/tcltls-%{version}.tar.gz
+Patch0:         https://salsa.debian.org/tcltk-team/tcltls/-/raw/master/debian/patches/hostname-tests.patch
+Patch1:         https://salsa.debian.org/tcltk-team/tcltls/-/raw/master/debian/patches/cipher-tests.patch
+Patch2:         https://salsa.debian.org/tcltk-team/tcltls/-/raw/master/debian/patches/certs-tests.patch
+Patch3:         https://salsa.debian.org/tcltk-team/tcltls/-/raw/master/debian/patches/fall-through.patch
+Patch4:         https://salsa.debian.org/tcltk-team/tcltls/-/raw/master/debian/patches/openssl3.patch
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(tcl)
 
@@ -36,32 +40,24 @@ exactly the same as channels created using Tcl's built-in socket
 command with additional options for controlling the SSL session.
 
 %prep
-%setup -q -a 1 -n tcl%name-%version
+%autosetup -n tcl%{name}-%{version} -p1
 
 %build
 %configure \
-	--enable-deterministic \
-	--enable-ssl-fastpath
-make %{?_smp_mflags}
-
-%check
-cat > known-failures <<EOF
-ciphers-1.4
-ciphers-1.3
-tls-bug58-1.0
-EOF
-make test 2>&1 | tee testresults
-grep FAILED testresults | grep -Fqvf known-failures && exit 1 ||:
+	--disable-rpath		\
+	--enable-deterministic	\
+	--with-ssl-dir=%{_prefix}
+%make_build
 
 %install
-make install \
-	DESTDIR=%buildroot \
-	PKG_HEADERS= \
-	libdir=%_libdir/tcl
+%make_install libdir=%{_libdir}/tcl
+
+%check
+%make_build test
 
 %files
-%defattr(-,root,root,-)
-%doc ChangeLog README.txt license.terms tls.htm
-%_libdir/tcl
+%license license.terms
+%doc ChangeLog README.txt tls.htm
+%{_libdir}/tcl
 
 %changelog

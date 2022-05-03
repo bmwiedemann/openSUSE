@@ -1,0 +1,20 @@
+Author: Sergei Golovan
+Description: Patch disables tests which list available SSL ciphers
+ because in Debian OpenSSL is built using options which differ from
+ ones assumed by the authors of TclTLS.
+ .
+ This patch is a Debian-specific hack and isn't supposed to be
+ forwarded upstream.
+Last-Modified: Mon, 02 Apr 2018 14:52:19 +0300
+
+--- a/tests/ciphers.test
++++ b/tests/ciphers.test
+@@ -23,7 +23,7 @@
+ # tls was compiled against. (RSA BSAFE SSL-C or OpenSSL).
+ #
+ set ::tcltest::testConstraints(rsabsafe) 0
+-set ::tcltest::testConstraints(openssl) [string match "OpenSSL*" [tls::version]]
++set ::tcltest::testConstraints(openssl) 0
+ 
+ set ::EXPECTEDCIPHERS(rsabsafe) {
+     EDH-DSS-RC4-SHA
