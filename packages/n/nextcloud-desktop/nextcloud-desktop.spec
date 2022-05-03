@@ -19,7 +19,7 @@
 %define soname  libnextcloudsync
 %define sover   0
 Name:           nextcloud-desktop
-Version:        3.4.4
+Version:        3.5.0
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
@@ -45,7 +45,7 @@ BuildRequires:  qtkeychain-qt5-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5KIO) >= 5.16
-BuildRequires:  cmake(Qt5Keychain)
+###BuildRequires:  cmake(Qt5Keychain)
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core) >= 5.15
 BuildRequires:  pkgconfig(Qt5DBus)
@@ -73,7 +73,9 @@ Provides:       nextcloud-client-lang = %{version}
 Obsoletes:      nextcloud-client-lang < %{version}
 %if 0%{?is_opensuse}
 BuildRequires:  doxygen
+#BuildRequires:  python3-MarkupSafe
 BuildRequires:  python3-Sphinx
+#BuildRequires:  python3-importlib-metadata
 Suggests:       %{name}-doc = %{version}
 %endif
 

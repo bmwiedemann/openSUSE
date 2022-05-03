@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Tue May  3 11:36:28 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.5.0
+  - desktop#3714 Require cmake 3.16
+  - desktop#4135 Add testing for ActivityListModel
+  - desktop#4154 Check for dbus-1 when building with cloudproviders
+  - desktop#4162 Add ability to copy internal link from share dialog
+  - desktop#4186 Feature/improve activity buttons
+  - desktop#4189 Add thumbnails for files in the activity view
+  - desktop#4191 Use proper API to dehydrate a placeholder file
+  - desktop#4200 Feature/Talk Reply v1
+  - desktop#4205 Ensure we emit a rename command for renamed files
+  - desktop#4212 Remove Hirsute, add Jammy
+  - desktop#4216 Allow account menu to scroll when content height is larger than menu height
+  - desktop#4217 Always build with updater. Use 'beta/stable' channel selector in 'General Settins' dialog with default 'stable'.
+  - desktop#4218 Cmake option to disable proxy
+  - desktop#4237 Add support for server color theming
+  - desktop#4247 No longer assume status bar height, calculate, fixing notch borking on new MacBook Pro
+  - desktop#4251 Add a dark mode
+  - desktop#4252 Generates pot files automatically.
+  - desktop#4257 Add headers in cmake files to get them properly detected
+  - desktop#4263 Ensure that bulk upload network job errors are handled
+  - desktop#4268 Do not remove a folder that has files that were not uploaded yet during propagation
+  - desktop#4272 L10n: Change to lowercase
+  - desktop#4279 Simplify currentScreen in systray.cpp
+  - desktop#4283 Fix warn colour in dark mode
+  - desktop#4292 Do not remove files from a Group folder and its nested folders when it is renamed or removed while not allowed.
+  - desktop#4303 Rollback local move on server move failure
+  - desktop#4316 Implement local socket to communicate with finder extension
+  - desktop#4319 Bugfix/prevent overflow with mtime
+  - desktop#4320 L10n: Changed spelling
+  - desktop#4322 Add 'Help' action back.
+  - desktop#4326 Ensure file activity dialog appears in centre of screen
+  - desktop#4329 Increase maximum text line count in tray activity items to two lines
+  - desktop#4334 Fix file activity dialog
+  - desktop#4340 Properly ask Qt to create qml opengl surface with proper options
+  - desktop#4351 Old submodule url does not work anylonger
+  - desktop#4359 Old submodule url does not work anylonger
+  - desktop#4360 Prepare for 3.5.0-rc1
+  - desktop#4363 Fix icon color and highlight color issues
+  - desktop#4364 Fix for VFS crashes due to mimetype checking for thumbnails
+  - desktop#4371 Fix various dark mode bugs
+  - desktop#4372 Add a new yml github issue template for bug reports.
+  - desktop#4379 Ensure we only store update channel not localized in settings
+  - desktop#4385 Improve talk reply
+  - desktop#4392 Prepare for 3.5.0-rc2
+  - desktop#4393 Bugfix/talk reply part 2
+  - desktop#4398 Darkmode. Fix crash on exit.
+  - desktop#4399 Avoid deleting renamed file with spaces in name
+  - desktop#4403 More dark mode fixes
+  - desktop#4408 Ensure we do properly failed hydration jobs
+  - desktop#4414 Fix build of appimage for branded clients
+  - desktop#4418 Prepare for 3.5.0-rc3
+  - desktop#4420 Feature/files lock
+  - desktop#4426 Add call notification dialog.
+  - desktop#4428 Fix thumbnails for new files made while client open
+  - desktop#4430 Increase time between connection tries
+  - desktop#4437 Improve contrast on server color themed elements
+  - desktop#4438 Fix positioning of activities in the activities list
+  - desktop#4441 Bugfix/activities fetch server overload
+  - desktop#4447 Realigned and resized thumbnails
+  - desktop#4465 Add user avatars in talk notifications in activity list
+  - desktop#4466 Fix sparkle implementation in the desktop client
+  - desktop#4470 Prepare 3.5.0-rc4
+  - desktop#4471 Prepare final 3.5.0 release
+
+-------------------------------------------------------------------
 Fri Mar 18 15:07:25 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.4.4
