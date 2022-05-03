@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  3 12:42:04 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.0.4
+  * Fix libexecdir expansion for usbauth-notifier.desktop
+
+-------------------------------------------------------------------
 Sun Dec 27 18:24:10 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 1.0.2:

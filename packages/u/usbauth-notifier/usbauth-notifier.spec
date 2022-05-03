@@ -1,7 +1,7 @@
 #
 # spec file for package usbauth-notifier
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017-2018 Stefan Koch <stefan.koch10@gmail.com>
 # Copyright (c) 2015 SUSE LLC. All Rights Reserved.
 # Author: Stefan Koch <skoch@suse.de>
@@ -19,14 +19,15 @@
 #
 
 
+%define _name   usbauth-all
 Name:           usbauth-notifier
-Version:        1.0.2
+Version:        1.0.4
 Release:        0
 Summary:        Notifier for USB Firewall to use with desktop environments
 License:        GPL-2.0-only
 Group:          System/X11/Utilities
-URL:            https://github.com/kochstefan/usbauth-all/tree/master/usbauth-notifier
-Source0:        %{name}-%{version}.tar.xz
+URL:            https://github.com/kochstefan/usbauth-all/
+Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{_name}-%{version}.tar.gz
 Requires(pre):  permissions
 Requires:       usbauth
 BuildRequires:  gettext-runtime
@@ -44,9 +45,10 @@ A notifier for the usbauth firewall against BadUSB attacks. The user could manua
 %lang_package
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{_name}-%{version}
 
 %build
+cd %{name}
 autoreconf -f -i
 %configure
 %make_build
@@ -56,11 +58,12 @@ if ! getent group usbauth>/dev/null; then groupadd -r usbauth; fi
 if ! getent group usbauth-notifier>/dev/null; then groupadd -r usbauth-notifier; fi
 
 %install
-%make_install
+%make_install -C %{name}
 %find_lang %{name}
 
 %files
-%doc COPYING README
+%doc %{name}/README %{name}/CHANGELOG.md
+%license %{name}/COPYING
 %dir /etc/xdg/autostart
 /etc/xdg/autostart/usbauth-notifier.desktop
 %verify(not mode) %attr(04750,root,usbauth) %{_libexecdir}/usbauth-npriv
