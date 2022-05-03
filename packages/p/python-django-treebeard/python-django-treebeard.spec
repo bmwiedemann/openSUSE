@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-treebeard
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,6 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module pytest-django >= 4.0}
-BuildRequires:  %{python_module pytest-pythonpath >= 0.7}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -74,6 +73,7 @@ EOF
 %python_expand cp -r treebeard/tests/ %{buildroot}%{$python_sitelib}/treebeard/
 
 export DJANGO_SETTINGS_MODULE=treebeard.tests.settings
+PYTHONPATH=.
 # Exclusions because of gh#django-treebeard/django-treebeard#241
 %pytest -k 'not (test_result_filtered or test_result_tree or test_result_tree_list or test_result_tree_list_with_action or test_result_tree_list_with_get or test_unicode_result_tree)'
 
