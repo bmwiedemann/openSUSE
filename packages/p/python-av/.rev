@@ -127,4 +127,12 @@
   * Fix setting CodecContext.extradata (:issue:`801`).</comment>
     <requestid>945472</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a69b624259f4b2e60ceb71edf0f730bc</srcmd5>
+    <version>9.2.0</version>
+    <time>1651605580</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974760</requestid>
+  </revision>
 </revisionlist>

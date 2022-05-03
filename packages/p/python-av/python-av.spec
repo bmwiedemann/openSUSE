@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-av
-Version:        8.1.0
+Version:        9.2.0
 Release:        0
 Summary:        Python bindings for FFmpeg's libraries
 License:        BSD-3-Clause
@@ -71,7 +71,18 @@ sed -Ei 's/(from .common import .*), fate_suite(, .*)?/\1\2\ndef fate_suite(*a):
 %check
 mv av .av
 # Skipping tests requiring mpeg4 codec
-%pytest_arch tests -k 'not (test_codec_mpeg4 or test_encoding_with_pts or test_stream_index or test_video_default_options or test_codec_tag or test_decoder_extradata or test_encoder_extradata)'
+export disabled_tests="test_video_default_options or \
+  test_decode_video_corrupt or \
+  test_encoding_with_pts or \
+  test_decoder_extradata or \
+  test_encoder_extradata or \
+  test_encoder_pix_fmt or \
+  test_default_options or \
+  test_stream_probing or \
+  test_stream_index or \
+  test_codec_mpeg4 or \
+  test_codec_tag"
+%pytest_arch tests -k "not ($disabled_tests)"
 mv .av av
 
 %files %{python_files}
