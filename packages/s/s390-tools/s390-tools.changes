@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May  3 18:10:58 UTC 2022 - Mark Post <mpost@suse.com>
+
+- Added s390-tools-sles15sp4-zdump-fix-segfault-due-to-double-free.patch
+  for bsc#1199128. zgetdump --info may lead to a core dump when
+  issued for the device node (not a partition) right after
+  installing multi-volume dump tool (without taking actual dump).
+
+-------------------------------------------------------------------
 Thu Apr 14 13:57:12 UTC 2022 - Mark Post <mpost@suse.com>
 
 - Updated the cputype script to include the model number of IBM's

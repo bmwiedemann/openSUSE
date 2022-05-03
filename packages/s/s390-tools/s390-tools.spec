@@ -1,7 +1,7 @@
 #
 # spec file for package s390-tools
 #
-# Copyright (c) 2021-2022 SUSE LLC
+# Copyright (c) 2001-2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -100,6 +100,7 @@ Patch004:       s390-tools-sles15sp4-zdev-Fix-path-resolution-for-multi-mount-po
 Patch005:       s390-tools-sles15sp4-01-genprotimg-remove-DigiCert-root-CA-pinning.patch
 Patch006:       s390-tools-sles15sp4-02-genprotimg-check_hostkeydoc-relax-default-issuer-che.patch
 Patch007:       s390-tools-sles15sp4-libseckey-Fix-re-enciphering-of-EP11-secure-key.patch
+Patch008:       s390-tools-sles15sp4-zdump-fix-segfault-due-to-double-free.patch
 
 # SUSE patches
 Patch900:       s390-tools-sles12-zipl_boot_msg.patch
