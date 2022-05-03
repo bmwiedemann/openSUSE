@@ -158,4 +158,27 @@
     <comment></comment>
     <requestid>949117</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>755b4c38fee69dbbbb35c160210dfb06</srcmd5>
+    <version>2.6.0</version>
+    <time>1651605543</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.6.0
+  * Widgets: Fluidsynth soundfonts dialog, updated filters
+  * RT: Fluidsynth backend initialization: failure report for
+    invalid soundfonts
+  * Utils: fixed loading translations, program names and messages
+  * cmake buildsystem: run qt::lupdate after building targets
+  * Widgets: pianokeybd internal raw computer keyboard input
+    processing
+  * Utils: vpiano gets and uses a new raw keyboard menu option
+  * Widgets: fixed pianokeybd's touchscreen input on Linux,
+    including X11 and Wayland.
+  * Utils: vpiano new menu options to allow enabling keyboard,
+    mouse and touchscreen input.
+  * Widgets: pianokeybd has 2 new functions, setUsingNativeFilter()
+    and isUsingNativeFilter().
+  * Utils: vpiano note labels font stability fix.</comment>
+    <requestid>974457</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon May  2 16:26:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.6.0
+  * Widgets: Fluidsynth soundfonts dialog, updated filters
+  * RT: Fluidsynth backend initialization: failure report for
+    invalid soundfonts
+  * Utils: fixed loading translations, program names and messages
+  * cmake buildsystem: run qt::lupdate after building targets
+  * Widgets: pianokeybd internal raw computer keyboard input
+    processing
+  * Utils: vpiano gets and uses a new raw keyboard menu option
+  * Widgets: fixed pianokeybd's touchscreen input on Linux,
+    including X11 and Wayland.
+  * Utils: vpiano new menu options to allow enabling keyboard,
+    mouse and touchscreen input.
+  * Widgets: pianokeybd has 2 new functions, setUsingNativeFilter()
+    and isUsingNativeFilter().
+  * Utils: vpiano note labels font stability fix.
+
+-------------------------------------------------------------------
 Tue Jan 25 16:37:04 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Enable fluidsynth support on Leap 15.4 too, fluidsynth was

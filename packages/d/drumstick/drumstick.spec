@@ -18,7 +18,7 @@
 
 
 Name:           drumstick
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        MIDI Sequencer C++ Library Bindings
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -158,9 +158,9 @@ make %{?_smp_mflags} doxygen
 
 %install
 %cmake_install
-%suse_update_desktop_file -n drumstick-drumgrid Midi
-%suse_update_desktop_file -n drumstick-guiplayer Midi
-%suse_update_desktop_file -n drumstick-vpiano Midi
+%suse_update_desktop_file -n net.sourceforge.drumstick-drumgrid Midi
+%suse_update_desktop_file -n net.sourceforge.drumstick-guiplayer Midi
+%suse_update_desktop_file -n net.sourceforge.drumstick-vpiano Midi
 
 %post -p /sbin/ldconfig
 
@@ -179,9 +179,10 @@ make %{?_smp_mflags} doxygen
 %license COPYING
 %doc AUTHORS NEWS TODO ChangeLog
 %{_bindir}/%{name}-*
-%{_datadir}/applications/%{name}-*.desktop
+%{_datadir}/applications/net.sourceforge.drumstick-*.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svgz
+%{_datadir}/metainfo/net.sourceforge.drumstick-*.xml
 %{_mandir}/man1/%{name}-*.1%{?ext_man}
 
 %files lang
