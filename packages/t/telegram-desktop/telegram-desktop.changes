@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Apr 26 15:20:13 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.7.3
+  * Fix a crash in the pinned bar bot button refresh.
+- Update to version 3.7.2
+  * Fix mute period selector values.
+  * Fix a crash in repeated context menu item selection.
+  * Fix context menu item selection of systems without a compositor.
+- Update to version 3.7.1
+  * Hardware accelerated video decoding off by default.
+  * Fix several crashes.
+- Update to version 3.7.0
+  * NO SUPPORT FOR QT5 ON LINUX ANYMORE! USE QT6!
+  * Use any short music file or voice message as a notification sound.
+  * Right click audio files in chats to add them to your list of
+    sounds - or use 'Upload Sound' in the Notifications menu.
+  * Click on Mute notifications > Select sound in a chat's (...)
+    menu to change its notification sound.
+  * Set custom tones for notifications in Settings > Notifications > Play sound.
+  * Click on Mute notifications in a chat's (...) menu to manage
+    its notifications.
+  * Choose 'Mute for...' to turn off notifications for a
+    preset period, like 1 hour or 1 day.
+  * Quickly configure Auto-Delete settings from any chat info page.
+  * Click (...) to turn on Auto-Delete, then select a specific duration.
+  * Replies are now preserved when forwarding messages,
+    making forwarded conversations easier to read.
+  * Bots can now open detailed pages directly in the chat.
+  * Use these streamlined interfaces to buy real-world goods
+    and services without leaving the app.
+  * Open a bot's profile to add it to your group or channel.
+  * Instantly configure a bot's rights and permissions when adding it.
+  * Bots can send a new type of button that lets you add them to
+    your group or channel.
+- Added fix-unused-variable-error.patch
+-------------------------------------------------------------------
 Fri Apr  8 07:53:51 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 3.6.1

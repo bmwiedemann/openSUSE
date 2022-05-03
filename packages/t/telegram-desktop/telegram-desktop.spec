@@ -27,7 +27,7 @@
 %define _dwz_max_die_limit     200000000
 
 Name:           telegram-desktop
-Version:        3.6.1
+Version:        3.7.3
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -48,6 +48,8 @@ Patch3:         0003-revert-webrtc-cmake-target-file.patch
 Patch4:         0004-use-dynamic-x-libraries.patch
 # PATCH-FIX-OPENSUSE
 Patch5:         0005-add-wayland-include-path.patch
+# PATCH-FIX-OPENSUSE
+Patch6:         fix-unused-variable-error.patch
 # There is an (incomplete) patch available for part of the source:
 # https://github.com/desktop-app/lib_base.git 3582bca53a1e195a31760978dc41f67ce44fc7e4
 # but tdesktop itself still falls short, and it looks to be something
@@ -62,16 +64,13 @@ BuildRequires:  enchant-devel
 BuildRequires:  ffmpeg-devel
 BuildRequires:  freetype-devel
 BuildRequires:  glibc-devel
-BuildRequires:  libQt5Core-private-headers-devel >= 5.15
-BuildRequires:  libQt5Gui-private-headers-devel >= 5.15
 BuildRequires:  libjpeg-devel
 BuildRequires:  liblz4-devel
-BuildRequires:  libqt5-qtbase-common-devel >= 5.15
-BuildRequires:  libqt5-qtimageformats-devel >= 5.15
-BuildRequires:  libqt5-qtwayland-private-headers-devel >= 5.15
 BuildRequires:  libwebrtc_audio_processing-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+BuildRequires:  qt6-gui-private-devel
+BuildRequires:  qt6-waylandclient-private-devel
 BuildRequires:  unzip
 BuildRequires:  wayland-devel
 BuildRequires:  webkit2gtk3-devel
@@ -80,11 +79,15 @@ BuildRequires:  xxhash-devel
 BuildRequires:  xz
 BuildRequires:  yasm
 BuildRequires:  cmake(KF5Wayland)
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.15
-BuildRequires:  pkgconfig(Qt5Network) >= 5.15
-BuildRequires:  pkgconfig(Qt5Svg) >= 5.15
-BuildRequires:  pkgconfig(Qt5WaylandClient) >= 5.15
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.15
+BuildRequires:  cmake(Qt6Concurrent)
+BuildRequires:  cmake(Qt6Core5Compat)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6OpenGL)
+BuildRequires:  cmake(Qt6OpenGLWidgets)
+BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6WaylandClient)
+BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbusmenu-qt5)
 BuildRequires:  pkgconfig(expat)
@@ -165,6 +168,7 @@ The service also provides APIs to independent developers.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 cd ../
 unzip -q %{S:2}
@@ -199,7 +203,7 @@ cd %{_builddir}/tdesktop-%{version}-full
 %cmake \
       -DCMAKE_INSTALL_PREFIX=%{_prefix} \
       -DCMAKE_BUILD_TYPE=Release \
-      -DDESKTOP_APP_QT6=OFF \
+      -DDESKTOP_APP_QT6=ON \
       -DTDESKTOP_API_ID=611335 \
       -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c \
       -DDESKTOP_APP_USE_GLIBC_WRAPS=OFF \
