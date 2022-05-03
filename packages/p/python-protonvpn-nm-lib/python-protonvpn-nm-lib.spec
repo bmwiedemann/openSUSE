@@ -35,10 +35,10 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       NetworkManager-openvpn
 Requires:       dbus-1-x11
+Requires:       python-Jinja2
 Requires:       python-dbus-python
 Requires:       python-distro
 Requires:       python-gobject
-Requires:       python-jinja2
 Requires:       python-keyring
 Requires:       python-proton-client >= 0.5.0
 Requires:       python-pyxdg

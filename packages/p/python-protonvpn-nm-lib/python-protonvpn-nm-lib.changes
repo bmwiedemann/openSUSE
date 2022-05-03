@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  3 10:38:34 UTC 2022 - Max Lin <mlin@suse.com>
+
+- Requiring python-Jinja2 instead of python-jinja2
+
+-------------------------------------------------------------------
 Thu Mar  3 15:07:18 UTC 2022 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Update to 3.7.0
