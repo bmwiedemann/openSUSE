@@ -32,10 +32,13 @@ Patch0:         python-junos-eznc-remove-nose.patch
 # replace deprecated yamlordereddictloader by yamlloader
 # https://github.com/Juniper/py-junos-eznc/pull/1078
 Patch1:         python-junos-eznc-remove-yamlordereddictloader.patch
+# https://github.com/Juniper/py-junos-eznc/commit/96f25bb8aa006e12e48902a91a1dc6ff595bdd2d
+Patch2:         python-junos-eznc-fix-unittests.patch
+# https://github.com/Juniper/py-junos-eznc/issues/1176
+Patch3:         python-junos-eznc-no-mock.patch
 BuildRequires:  %{python_module Jinja2 >= 2.7.1}
 BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module lxml >= 3.2.4}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module ncclient >= 0.6.9}
 BuildRequires:  %{python_module netaddr}
 BuildRequires:  %{python_module ntc-templates}
