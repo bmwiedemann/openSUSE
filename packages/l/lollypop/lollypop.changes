@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 02 17:41:10 UTC 2022 - antoine.belvire@opensuse.org
+
+- Update to version 1.4.34:
+  * Make dconf's dark mode option override system's settings
+    (glgo#World/lollypop#2912).
+
+-------------------------------------------------------------------
 Fri Apr 15 10:18:00 UTC 2022 - antoine.belvire@opensuse.org
 
 - Update to version 1.4.33:
