@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Mon May  2 17:02:13 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 16.0.0
+  * Added Rust syntax highlight
+  * Added new Rust plugin
+  * Added new Remote plugin which allows user to load a remote
+    "File System Workspace" over SSH
+  * LSP: support completion item's doc implemented inside MarkupContent
+  * Git Commit List dialog: layout changes. Make the diff window
+    occupy half of the dialog
+  * clToolBar: honour the wxTB_NODIVIDER style flag
+  * use a more sensible colours for highligthing text in the various
+    tree / list controls
+  * Implemented a custom Menu Bar
+    Task view removed. It is now part of the Find In Files dialog
+  * Colours and fonts dialog: updating the text selection colours is
+    now done for all the languages supported for the currently active theme
+  * Fixed: be more tolerant for language server implementations that
+    do not implement the protocol as is (e.g. rust)
+  * Fixed: externally modified files are not reloaded
+  * Remove redundant file system scan
+  * Fixed: always pass RootURI when sending Initialize request to the
+    LSP server, even if the user did not provide one
+  * Fixed: JSON encoding issue
+  * Fixed: codelite-terminal does not apply environment variables when
+    generating compile_flags.txt file required by clangd
+  * Fixed: Linux: Move tab right / left with the keyboard does not work
+  * Fixed: file system workspace: in some cases, system scan is not
+    working as intended and only scans the top level
+  * Fixed: code formatter regression which caused CodeLite to
+    override the user's settings
+  * Fixed: GTK: right click on tab causes a weird behavior of
+    selecting random file
+  * Fixed: Implement All Un-Implemented Functions not working when
+    header and source are not placed in the same directory
+  * Fixed: wxCrafter: "Insert into new Sizer" should not be
+    visible for wxAuiManager
+  * Fixed: CodeLite Makefile Generator - UNIX: Windows resource
+    files are not compiled
+  * Fixed: Word completion is broken if a word contains letters
+    with diacritics
+  * Fixed: "Closed other tabs" -> send "close event" for every
+    closed tab
+  * Fixed: PHP workspace: allow user to include the workspace or
+    project folder when selecting `Find In Folder` from the context menu
+  * Fixed: PHP workspace: make it multiple selection
+  * Fixed: make sure that the editor folder exists before writing
+  * Fixed: C++ workspace: post/pre build events: ignore empty commands
+  * Fixed: Feature request: include file extensions for Drupal projects
+  * Fixed: Fix Output View multi-byte text handling (rlbxku1r)
+  * Fixed: PHP settings: post parse-workspace event only when a
+    PHP workspace is opened
+  * Fixed: spell checker: when calling "Check" on a file,
+    do not uncheck the option of the 'continuous checking' 
+  * General performance & stability fixes
+
+-------------------------------------------------------------------
 Fri Apr  8 13:38:00 UTC 2022 - Peter Conrad <conrad@quisquis.de>
 
 - Upgrade to upstream 15.0.11

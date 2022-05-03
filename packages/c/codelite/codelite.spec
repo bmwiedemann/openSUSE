@@ -17,7 +17,7 @@
 #
 
 
-%define short_ver 15.0
+%define short_ver 16.0
 # Only available on x86_64 and %%arm (see lldb package)
   %ifarch %{arm} x86_64
     %bcond_without lldb
@@ -27,7 +27,7 @@
     %bcond_without clang
   %endif
 Name:           codelite
-Version:        15.0.11
+Version:        16.0.0
 Release:        0
 Summary:        Code editor for C, C++, PHP and Node.js
 # parts of package contain LGPL-3.0 licenced code thus license needs to be
