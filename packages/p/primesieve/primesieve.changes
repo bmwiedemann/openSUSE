@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 03 11:25:00 UTC 2022 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primesieve-7.9
+- Reduced memory usage and faster initialization
+- Reduced branch mispredictions by up to 30%
+- Improved nth prime approximation
+- Increase max sieve array size to 8 KiB
+
+-------------------------------------------------------------------
 Sun Jan 30 12:08:00 UTC 2022 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primesieve-7.8
