@@ -128,4 +128,12 @@
   * Revert `six` &amp; `requests` Requirements Changes. GH-768</comment>
     <requestid>925733</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>9a71ccda10d3b0907c5f90b118a3eee0</srcmd5>
+    <version>0.11.2</version>
+    <time>1651605548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974474</requestid>
+  </revision>
 </revisionlist>

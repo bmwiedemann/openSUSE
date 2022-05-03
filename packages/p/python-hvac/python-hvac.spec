@@ -1,7 +1,7 @@
 #
 # spec file for package python-hvac
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        HashiCorp Vault API client
 License:        BSD-3-Clause
 URL:            https://github.com/ianunruh/hvac
 Source:         https://github.com/hvac/hvac/archive/v%{version}.tar.gz
+# https://github.com/hvac/hvac/issues/582
+Patch0:         python-hvac-no-mock.patch
 BuildRequires:  %{python_module Authlib}
 BuildRequires:  %{python_module Flask-SQLAlchemy}
 BuildRequires:  %{python_module Flask}
@@ -50,6 +52,7 @@ HashiCorp Vault API client for Python 2/3
 
 %prep
 %setup -q -n hvac-%{version}
+%patch0 -p1
 # doctests and ldap need set up ldap server and that is quite an effort
 rm -r tests/doctest/
 rm tests/integration_tests/api/auth_methods/test_ldap.py
