@@ -1,7 +1,7 @@
 #
 # spec file for package guitarix
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_without ladspa
 
 Name:           guitarix
-Version:        0.42.1
+Version:        0.44.1
 Release:        0
 Summary:        Simple Linux amplifier for jack
 License:        GPL-2.0-or-later
@@ -74,8 +74,8 @@ BuildRequires:  pkgconfig(sndfile)
 Requires:       meterbridge
 Requires:       vorbis-tools
 Requires:       (jack or pipewire-libjack-0_3)
-Recommends:     lv2-%{name}
 Recommends:     bestplugins
+Recommends:     lv2-%{name}
 %if %{with ladspa}
 Recommends:     ladspa-%{name}
 %endif
@@ -193,11 +193,7 @@ rm -f "%{buildroot}/%{_libdir}/"*.so
 %doc changelog README
 %license COPYING
 %dir %{_datadir}/gx_head
-%dir %{_datadir}/gx_head/builder
-%dir %{_datadir}/gx_head/skins
-%dir %{_datadir}/gx_head/sounds/
 %{_bindir}/%{name}
-%{_datadir}/gx_head/builder/*.glade
 %{_datadir}/gx_head/*
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/gx_head*.png
@@ -212,6 +208,7 @@ rm -f "%{buildroot}/%{_libdir}/"*.so
 %{_datadir}/pixmaps/insert_on.png
 %{_datadir}/pixmaps/jackd_off.png
 %{_datadir}/pixmaps/jackd_on.png
+%{_datadir}/metainfo/org.guitarix.guitarix.metainfo.xml
 
 %files -n libgxw0
 %defattr(-,root,root)

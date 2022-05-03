@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon May  2 23:06:18 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- update .spec
+- update to version 44.1
+    Fix race condition when build with Faust
+
+  Changelog for 0.44.0:
+    Fix save behavior under NSM control
+    Fix allow changing base frequency for tuner
+    Re-enable gainline edit for convolver
+    Remove dependency on glibmm for LV2 plugs (by Hubert Figuière)
+    Fix build when LTO is in use
+    Fix wrong max value for Tube Model in gx_amp LV2 plugins (by kramlie)
+    Fix build with new glib version (issue with volatile keyword)
+    Update to new Faust version 2.40.0
+    Please use the attached guitarix2-0.44.1.tar.xz
+  
+ Changelog for 0.43.1
+    Fix Install metainfo in prefix (by Hubert Figuière)
+    Fix GxAmplifierX produces weird noise after buffer size changes
+ 
+ Changelog for 0.43.0
+    Fix build on gcc 11
+    Add Fizz Remover
+    Implement option to enable jack session support (--jack-session)
+    Fix Unnatural decay at high gain (palm mutes)
+    Fix Fuzz Face Mayer
+    Add 41 tet tuner option (by Tristan Tarrant)
+    Fix GxAmplifiers cycling through cabinets/pre-amps/tubes is skipping items
+    Remove glibmm dependency from LV2 plugs
+    Update used faust version to 2.37.3
+    Add option in GxAmplifiers to allow switch between Bass/Guitar input
+    Add metadat.xml file
+    Add X-NSM-Capable entry in .desktop file
+
+-------------------------------------------------------------------
 Fri May 28 06:56:42 UTC 2021 - Mark Trompell <mark@marktrompell.de>
 
 - Add pipewire-libjack-0_3 as an alternative requirement
