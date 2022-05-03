@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
 %define so_version 37
-%define ver 21.08.5
+%define ver 21.08.7
 %define _ver _21_08
 %define dl_ver %{ver}
 # so-version is 0 and seems to be stable
@@ -1110,6 +1110,7 @@ exit 0
 %{_libdir}/slurm/gres_gpu.so
 %{_libdir}/slurm/gres_mps.so
 %{_libdir}/slurm/gres_nic.so
+%{_libdir}/slurm/hash_k12.so
 %{_libdir}/slurm/jobacct_gather_cgroup.so
 %{_libdir}/slurm/jobacct_gather_linux.so
 %{_libdir}/slurm/jobacct_gather_none.so
