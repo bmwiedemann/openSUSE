@@ -901,4 +901,53 @@
 </comment>
     <requestid>955094</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d3f20341a59d20952a06fa606a33a0f2</srcmd5>
+    <version>4.12.4</version>
+    <time>1651605552</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.12.4:
+  - Fix for SpaceBattles using an attr on noscript tags now.
+  - add chapter date metadata to RoyalRoadAdapter
+  - Address Storiesonline.net &quot;Click to Load text...&quot;
+  - adapter_storiesonlinenet py2 fixes
+  - Update translations.
+  - Py2 vs py3 fix #828
+  - adapter_phoenixsongnet: Remove login code and changes for
+    static author links.
+  - adapter_webnovelcom: Fixes for site changes.
+  - adapter_fictionhuntcom: Fixes for site changes.
+  - Xenforo2 status Ongoing==In-Progress
+  - Apply connect_timeout setting to network requests.
+  - adapter_webnovelcom: Unescape &amp; too.
+  - Detect and error on adjusted chapter list &lt; 1.
+  - adapter_webnovelcom: Read chapter text from json in &lt;script&gt;
+    tag.
+  - Add --mozilla-cookies CLI option.
+  - use large cover images on royalroad
+  - PI: Check for existing anthology ebook on new anthology from
+    series URL.
+  - ffnet: Add meta_from_last_chapter option.
+  - adapter_literotica: add ...$ to story URL search for when
+    /xyz-pt1 and /xyz are different stories.
+  - fix wuxiaworldco: www =&gt; m
+  - Adding fandom/category parsing to
+    adapter_fictionhuntcom--more than just HP now.
+  - Update translations.
+  - adapter_quotevcom: Additional chapter image parsing.
+  - royalroad: Recognize and normalize various chapter url
+    formats
+  - Change base_xenforoforum reveal_invisible_text feature to
+    also add class=invisible_text.
+  - adapter_fastnovelnet: Update to redirected Story URL.
+  - adapter_fastnovelnet: 'Normalize' chapter URLs to current
+    storyId URL--site is changing it frequently
+  - base_efiction - narrow chapter search more--for merengo.hu.
+  - Stop looking for FFDL settings--it's been 7 years.
+  - Look for story URLs in pasted mime as well as dropped.
+  - adapter_storiesonlinenet: fix for dateUpdated when 'Last
+    Activity'
+</comment>
+    <requestid>974505</requestid>
+  </revision>
 </revisionlist>
