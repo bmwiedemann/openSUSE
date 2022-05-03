@@ -30,7 +30,6 @@ Patch0:         remove-app-dependency.patch
 Patch1:         python-acitoolkit-python-310.patch
 BuildRequires:  %{python_module graphviz}
 BuildRequires:  %{python_module jsonschema}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
