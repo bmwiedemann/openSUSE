@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  2 16:24:52 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 1.0.0.
+  Changelog: https://foss.heptapod.net/mercurial/hg-git/-/tags/1.0.0
+- Remove "fix-tests-expecting-different-git-output.patch".
+
+-------------------------------------------------------------------
 Fri Mar 18 15:28:51 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 
 - Obsolete python3-hg-git as it is not the Factory package anymore

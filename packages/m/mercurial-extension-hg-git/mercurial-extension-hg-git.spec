@@ -23,14 +23,13 @@
 %endif
 
 Name:           mercurial-extension-hg-git
-Version:        0.10.4
+Version:        1.0.0
 Release:        0
 Summary:        Hg-Git Mercurial plugin
 License:        GPL-2.0-only
 Group:          Development/Tools/Version Control
 URL:            http://foss.heptapod.net/mercurial/hg-git
 Source0:        https://files.pythonhosted.org/packages/source/h/hg-git/hg-git-%{version}.tar.gz
-Patch:          fix-tests-expecting-different-git-output.patch
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  mercurial
@@ -53,7 +52,6 @@ The Hg-Git plugin can convert commits/changesets losslessly from one system to a
 
 %prep
 %setup -q -n hg-git-%{version}
-%patch -p1
 
 %build
 %python3_build
