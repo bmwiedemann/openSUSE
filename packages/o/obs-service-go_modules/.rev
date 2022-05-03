@@ -19,4 +19,13 @@
   * Return non-zero exit codes on failure (forwarded request 972797 from dirkmueller)</comment>
     <requestid>973508</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2599cba8d8fd68629099a840a1e40d66</srcmd5>
+    <version>0.4.1</version>
+    <time>1651605541</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.1:
+  * Fix compression parameter default value usage (forwarded request 974350 from dirkmueller)</comment>
+    <requestid>974449</requestid>
+  </revision>
 </revisionlist>
