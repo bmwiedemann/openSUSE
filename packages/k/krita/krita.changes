@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May  2 07:15:14 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 5.0.6
+  * See https://krita.org/en/item/krita-5-0-6-released/
+  * Fix crash when working with vector layers or vector selections
+    and using undo a lot (kde#447985)
+  * Fix crash deleting a vector layer with an animated transparency
+    mask (kde#452396)
+
+-------------------------------------------------------------------
 Thu Apr 14 09:28:12 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 5.0.5

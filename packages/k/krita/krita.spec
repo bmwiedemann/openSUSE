@@ -24,7 +24,7 @@
 %bcond_with vc
 %endif
 Name:           krita
-Version:        5.0.5
+Version:        5.0.6
 Release:        0
 Summary:        Digital Painting Application
 License:        BSD-2-Clause AND GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND CC0-1.0 AND LGPL-2.0-only
@@ -51,7 +51,6 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  liblcms2-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libpoppler-qt5-devel
-BuildRequires:  libquazip-qt5-devel
 BuildRequires:  libraw-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  openjpeg2-devel
@@ -87,6 +86,7 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  cmake(QuaZip-Qt5)
 BuildRequires:  pkgconfig(OpenColorIO)
 BuildRequires:  pkgconfig(libmypaint)
 BuildRequires:  pkgconfig(libwebp)
