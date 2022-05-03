@@ -17,6 +17,7 @@
 
 
 %define requires_peq() %(echo '%*' | LC_ALL=C xargs -r rpm -q --whatprovides --qf 'Requires: %%{name} = %%{epoch}:%%{version}\\n' | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
+%define pythons python3
 
 # These come from matrix-synapse's CONDITIONAL_REQUIREMENTS.
 # missing deps
@@ -50,7 +51,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.57.1
+Version:        1.58.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -67,12 +68,15 @@ Source51:       matrix-synapse-generate-config.sh
 # to clean up your working copy afterwards: git reset --hard ; rm -rv .pc patches
 Source99:       series
 Patch:          matrix-synapse-1.4.1-paths.patch
-Patch1:         dont-bump-cryptography-with-system-openssl.patch
+Patch1:         bump-dependencies.patch
 # https://github.com/matrix-org/synapse/pull/10719
 # disable by marking as source until we get a decision upstream
 Source100:      10719-Fix-instert-of-duplicate-key-into-event_json.patch
 BuildRequires:  %{use_python}-base >= 3.8
+BuildRequires:  %{use_python}-pip
+BuildRequires:  %{use_python}-poetry
 BuildRequires:  %{use_python}-setuptools
+BuildRequires:  %{use_python}-wheel
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  systemd-rpm-macros
@@ -93,7 +97,7 @@ BuildRequires:  %{use_python}-PyYAML >= 3.11
 %requires_peq   %{use_python}-PyYAML
 BuildRequires:  %{use_python}-Twisted >= 20.3.0
 %requires_peq   %{use_python}-Twisted
-BuildRequires:  ((%{use_python}-attrs >= 19.2.0 with %{use_python}-attrs < 21.1.0) or %{use_python}-attrs > 21.1.0)
+BuildRequires:  %{use_python}-attrs > 21.1.0
 %requires_peq   %{use_python}-attrs
 BuildRequires:  %{use_python}-bcrypt >= 3.2.0
 %requires_peq   %{use_python}-bcrypt
@@ -212,17 +216,19 @@ find ./ -type f \
 sed -i 's|@PYTHON_FLAVOR@|%{__python3}|g' %{S:50}
 
 %build
-%python3_build
+%pyproject_wheel
 %sysusers_generate_pre %{SOURCE47} %{name}
 
 %install
 cp %{S:48} README.SUSE
 # We install scripts into /usr/lib to avoid silly conflicts with other pkgs.
 install -d -m 0755 %{buildroot}%{_libexecdir}/%{pkgname}
-%python3_install "--install-scripts=%{_libexecdir}/%{pkgname}/"
+%pyproject_install
 
+install -d -m 0755 %{buildroot}%{_bindir} %{buildroot}%{_libexecdir}/%{pkgname}/
+# move scripts to the old place.
+mv %{buildroot}%{_bindir}/* %{buildroot}%{_libexecdir}/%{pkgname}/
 # While we provide a systemd service, link synctl so it's simpler to use.
-install -d -m 0755 %{buildroot}%{_bindir}
 ln -s %{_libexecdir}/%{pkgname}/synctl %{buildroot}%{_bindir}/synctl
 
 # Install default matrix-synapse configuration.
@@ -274,7 +280,6 @@ install -d -m 0750 %{buildroot}%{_localstatedir}/log/%{pkgname}
 %dir %attr(0750,%{modname},%{modname}) %{_localstatedir}/lib/%{pkgname}
 %dir %attr(0750,%{modname},%{modname}) %{_localstatedir}/log/%{pkgname}
 %{python3_sitelib}/%{modname}
-%{python3_sitelib}/synmark
 %{python3_sitelib}/%{eggname}-*-info
 # Python helper scripts.
 %{_bindir}/synctl
