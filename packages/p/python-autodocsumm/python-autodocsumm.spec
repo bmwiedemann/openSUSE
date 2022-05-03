@@ -1,7 +1,7 @@
 #
 # spec file for package python-autodocsumm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-autodocsumm
-Version:        0.2.6
+Version:        0.2.8
 Release:        0
 Summary:        Extended sphinx autodoc including automatic autosummaries
 License:        GPL-2.0-only
@@ -29,10 +29,11 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Sphinx >= 2.2
+Requires:       (python-Sphinx >= 2.2 and python-Sphinx < 5.0)
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Sphinx >= 2.2}
+BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sphinx-testing}
 # /SECTION

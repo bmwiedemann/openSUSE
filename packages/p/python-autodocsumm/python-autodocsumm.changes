@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  2 21:38:13 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.2.8
+  * Fix: no links generated in summary table
+  * Fix: Sphinx dependencies
+
+-------------------------------------------------------------------
 Sat Jul 10 11:38:27 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.2.6:
