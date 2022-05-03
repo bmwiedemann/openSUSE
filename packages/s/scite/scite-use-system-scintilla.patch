@@ -1,7 +1,7 @@
-Index: scite-5.2.0/scite/gtk/makefile
+Index: scite-5.2.2/scite/gtk/makefile
 ===================================================================
---- scite-5.2.0.orig/scite/gtk/makefile
-+++ scite-5.2.0/scite/gtk/makefile
+--- scite-5.2.2.orig/scite/gtk/makefile
++++ scite-5.2.2/scite/gtk/makefile
 @@ -8,6 +8,7 @@
  
  srcdir ?= .
@@ -26,7 +26,7 @@ Index: scite-5.2.0/scite/gtk/makefile
  DEFINES += -DGTK
  DEFINES += -DPIXMAP_PATH=\"$(pixmapdir)\" -DSYSCONF_PATH=\"$(SYSCONF_PATH)\"
  
-@@ -155,7 +156,7 @@ SRC_OBJS = \
+@@ -156,7 +157,7 @@ SRC_OBJS = \
  	Utf8_16.o
  
  $(PROG): SciTEGTK.o Strips.o GUIGTK.o Widget.o DirectorExtension.o $(SRC_OBJS) $(LUA_OBJS)
@@ -35,7 +35,7 @@ Index: scite-5.2.0/scite/gtk/makefile
  
  # Automatically generate header dependencies with "make depend"
  include deps.mak
-@@ -168,7 +169,6 @@ install:
+@@ -169,7 +170,6 @@ install:
  	$(INSTALL) -m 755 -d $(DESTDIR)$(libdir)
  
  	$(INSTALL) -m 755 $(PROG) $(DESTDIR)$(bindir)
@@ -43,7 +43,7 @@ Index: scite-5.2.0/scite/gtk/makefile
  	$(INSTALL) -m 755 $(LEXILLA) $(DESTDIR)$(libdir)
  
  	for files in $(srcdir)/../src/*.properties $(srcdir)/../doc/*.html $(srcdir)/../doc/SciTEIco.png $(srcdir)/../doc/PrintHi.png $(srcdir)/../doc/SciTEIndicators.png; \
-@@ -184,7 +184,6 @@ endif
+@@ -185,7 +185,6 @@ endif
  
  uninstall:
  	rm -f $(DESTDIR)$(bindir)/SciTE
@@ -51,10 +51,10 @@ Index: scite-5.2.0/scite/gtk/makefile
  	rm -f $(DESTDIR)$(libdir)/liblexilla.so
  	rm -rf $(DESTDIR)$(SYSCONF_PATH)
  ifdef gnomeprefix
-Index: scite-5.2.0/lexilla/src/makefile
+Index: scite-5.2.2/lexilla/src/makefile
 ===================================================================
---- scite-5.2.0.orig/lexilla/src/makefile
-+++ scite-5.2.0/lexilla/src/makefile
+--- scite-5.2.2.orig/lexilla/src/makefile
++++ scite-5.2.2/lexilla/src/makefile
 @@ -38,6 +38,7 @@ else
      BASE_FLAGS += -fvisibility=hidden
  endif
