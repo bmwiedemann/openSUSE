@@ -21,7 +21,7 @@
 %define registry_group registry
 
 Name:           docker-distribution
-Version:        2.8.0
+Version:        2.8.1
 Release:        0
 Summary:        The Docker toolset to pack, ship, store, and deliver content
 License:        Apache-2.0
