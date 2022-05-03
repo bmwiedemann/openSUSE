@@ -1,7 +1,7 @@
 #
 # spec file for package python-jenkinsapi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/salimfadhley/jenkinsapi
 Source:         https://files.pythonhosted.org/packages/source/j/jenkinsapi/jenkinsapi-%{version}.tar.gz
+# https://github.com/pycontribs/jenkinsapi/issues/819
+Patch0:         python-jenkinsapi-no-mock.patch
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests}
@@ -37,7 +39,6 @@ Requires:       python-six >= 1.10.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module astroid >= 1.4.8}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-kerberos}
@@ -70,6 +71,7 @@ and has
 
 %prep
 %setup -q -n jenkinsapi-%{version}
+%patch0 -p1
 
 %build
 %python_build
