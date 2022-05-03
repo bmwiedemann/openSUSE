@@ -1,7 +1,7 @@
 #
 # spec file for package python-distutils-extra
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-distutils-extra
-Version:        2.39
+Version:        2.45
 Release:        0
 Summary:        Distutils/Setuptools Adapter
 License:        GPL-2.0-only
 Group:          Development/Libraries/Python
-Url:            https://launchpad.net/python-distutils-extra
-Source:         http://launchpad.net/python-distutils-extra/trunk/%{version}/+download/python-distutils-extra-%{version}.tar.gz
+URL:            https://salsa.debian.org/python-team/packages/python-distutils-extra
+Source:         %{url}/-/archive/%{version}/python-distutils-extra-%{version}.tar.bz2
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  python-rpm-macros
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 
@@ -50,7 +50,7 @@ This includes the following:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%doc doc/*
+%doc debian/changelog doc/*
 %license LICENSE
 %{python_sitelib}/*
 

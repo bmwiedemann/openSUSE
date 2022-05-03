@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon May  2 22:34:44 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.45
+  * Run unittest.main() only when running script directly.
+  * Fix install_auto command with --skip-build
+    python-distutils-extra seems to rely on a very bad practice of modifying
+    internal state (file lists) in middle of `build` commands.  As a result,
+    if the package is installed via `build` command followed by `install
+    --skip-build` (since everything was built already!), most of the files
+    are not installed.
+- Update to version 2.44
+  * Drop python2 support
+- Update to version 2.43
+  * Fix minor typo.
+- Update to version 2.42
+  * Adjust dependency calculation for Python 3.7.
+    For builtin modules, their __file__ attribute is now None instead of
+    absent.
+    Make the `test/auto.py T.test_apport_hook` stricter and fail more
+    usefully.
+  * Fix pyflakes3 errors and check it during build
+- Move to new debian maintained upstream
+
+-------------------------------------------------------------------
 Fri Sep 18 07:39:36 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Add fdupes
