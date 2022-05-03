@@ -1,7 +1,7 @@
 #
 # spec file for package python-altgraph
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-altgraph
-Version:        0.17
+Version:        0.17.2
 Release:        0
 Summary:        Python graph (network) package
 License:        MIT
 URL:            https://github.com/ronaldoussoren/altgraph/
 Source:         https://files.pythonhosted.org/packages/source/a/altgraph/altgraph-%{version}.tar.gz
+BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -47,11 +48,10 @@ graphviz output.
 
 %prep
 %setup -q -n altgraph-%{version}
-rm doc/_build/html/.buildinfo
-sed -i 's/\r$//' doc/_build/html/_static/jquery.js
 
 %build
 %python_build
+cd doc && make html
 
 %install
 %python_install
