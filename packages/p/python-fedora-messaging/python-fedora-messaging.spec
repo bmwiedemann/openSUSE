@@ -1,7 +1,7 @@
 #
 # spec file for package python-fedora-messaging
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fedora-messaging
-Version:        2.0.2
+Version:        3.0.0
 Release:        0
 Summary:        Python tools for Fedora's messaging infrastructure
 License:        GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/fedora-infra/fedora-messaging
 Source:         https://files.pythonhosted.org/packages/source/f/fedora_messaging/fedora_messaging-%{version}.tar.gz
-Patch0:         https://github.com/fedora-infra/fedora-messaging/pull/232.patch#/pr_232.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -68,7 +67,6 @@ A set of Python tools for using Fedora's messaging infrastructure.
 
 %prep
 %setup -q -n fedora_messaging-%{version}
-%patch0 -p1
 
 %build
 %python_build
@@ -90,6 +88,7 @@ A set of Python tools for using Fedora's messaging infrastructure.
 export PATH=$PATH:%{buildroot}%{_bindir}
 export PYTHONDONTWRITEBYTECODE=1
 export LANG=en_US.UTF-8
+sed -i 's:. Perhaps you forgot a comma?::' fedora_messaging/tests/unit/test_cli.py
 # test_consume_unexpected_crash or test_consume_successful_halt are intermittent
 # and only relevant for improved handling of an unexpected failure/halt
 %pytest -k 'not (test_consume_unexpected_crash or test_consume_successful_halt)'
