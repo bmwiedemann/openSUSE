@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue May  3 16:57:56 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 5.13.3
+  + Warn users when a PR contains some characters
+  + srcfpo theme:
+    + Change "Packages" link to new packages website
+    + left-align the lines in description
+  + fas user url updated for new accounts system
+  + Change fas link from admin.fp.o to accounts.fp.o
+  + Remove message about 60 day key length
+  + Escape $ to fix Jenkins interpolation warning
+  + Fix another invalid <img> width/height attribute
+  + Fix missing space before src in <script>
+  + Remove duplicate class attribute from Clone dropdown
+  + Fix invalid <img> height (no px is allowed here)
+  + Add Translation status link on repo_info page at src.fp.o
+  + Update fedmsg homepage
+  + Add support for noggin with the FAS auth backend
+  + Update collaborator access level descriptions
+  + Fix a type, add missing work hand
+  + Fix Pagure's overview page verbatim error
+
+-------------------------------------------------------------------
 Thu Sep 16 21:23:15 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Drop unused dependency on nose

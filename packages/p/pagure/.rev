@@ -538,4 +538,12 @@
     <comment>- Drop unused dependency on nose</comment>
     <requestid>919592</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b1e631e924d2609cfb9c6a9bfb3145ac</srcmd5>
+    <version>5.13.3</version>
+    <time>1651605576</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974749</requestid>
+  </revision>
 </revisionlist>
