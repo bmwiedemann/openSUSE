@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue May  3 08:30:26 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.42.0
+  * New features
+    - E-book viewer: Ignore accents when doing a search
+    - Book list searching: Ignore punctuation when searching.
+      So that, for example, Gravitys will match Gravity's
+    - Show the text used for marking books in the tooltip
+  * Bug fixes
+    - Edit book: Reduce memory consumption by the checkpoint system
+      when doing operations that involve parsing all book files
+    - Amazon metadata download: Fix titles starting with [ being
+      ignored
+    - Edit metadata dialog: Undo not working correctly in
+      identifiers field
+    - Fix viewing LRF files not working
+    - PDF Output: Fix an error on some invalid CSS in the input
+      document
+    - Linux binary: Workaround for Qt WebEngine not working on
+      systems with glibc > 2.33
+  * New news sources
+    - Caravan Magazine (Hindi) by Areet Mahadevan
+    - LWN (Free) by yodha8
+    - IEEE Spectrum Magazine by yodha8
+    - Financial Times by Kovid Goyal
+    - Cosmos Magazine by yodha8
+  * Improved news sources
+    - New Yorker
+    - OMG! Ubuntu!
+    - ACM Queue
+    - CACM
+    - Science News
+    - Quanta Magazine
+    - Outlook Magazine
+    - Indian Express
+
+-------------------------------------------------------------------
 Sun Apr 24 08:34:47 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.41.0
