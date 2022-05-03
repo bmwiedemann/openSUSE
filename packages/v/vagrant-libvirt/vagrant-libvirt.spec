@@ -62,8 +62,8 @@ BuildRequires:  %{rubygem rake}
 
 # s.add_runtime_dependency 'fog-libvirt', '>= 0.6.0'
 Requires:       %{rubygem fog-libvirt >= 0.6.}
-# s.add_runtime_dependency 'fog-core', '~> 2.1'
-Requires:       %{rubygem fog-core:2 >= 2.1}
+# s.add_runtime_dependency 'fog-core', '~> 2'
+Requires:       %{rubygem fog-core:2}
 # s.add_runtime_dependency 'nokogiri', '~> 1.6'
 Requires:       %{rubygem nokogiri:1 >= 1.6 }
 
@@ -101,10 +101,9 @@ This package contains the documentation for the Libvirt provider to Vagrant.
 # remove dropped or unneeded dependencies
 sed -i '/simplecov/d' %{mod_full_name}.gemspec
 
-# this is essentially https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1330
+# this is essentially https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1487
 # FIXME: drop this on the next upstream release
-sed -i 's/\["~> 3.5.0"\]/\[">= 3.5"\]/' %{mod_full_name}.gemspec
-%autopatch -p1
+sed -i 's/\["~> 2.1"\]/\[">= 2"\]/' %{mod_full_name}.gemspec
 
 %build
 %gem_build
