@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon May  2 20:02:46 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 5.1.0
+  * Modules in the apptools.undo subpackage are modified to import
+    from pyface.undo rather than redefining the classes.
+    This should help ease the transition to using pyface.undo in
+    place of the now deprecated apptool.undo.
+  * Deprecations:
+    * Import from pyface.undo.* instead of redefining classes in
+      apptools.undo.*
+  * Add module docstrings to the various api modules in apptools
+    subpackages
+- Add python310.patch
+
+-------------------------------------------------------------------
+Mon May  2 18:59:26 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 5.0.0
+  * Support for Python versions < 3.6 have been dropped
+  * Deprecate apptools.undo subpackage
+  * Removed deprected subpackages
+    * Remove appscripting subpackage
+    * Remove template subpackage
+    * Remove permission subpackage
+    * Remove lru_cache subpackage
+    * Remove the apptools.sweet_pickle subpackage.
+      Users of sweet_pickle can in some cases transition to using
+      apptools.persistence and pickle from the python standard library
+    * Remove help subpackage
+    * Remove NullHandler from apptools.logger
+    * Remove apptools.logger.filtering_handler and
+      apptools.logger.util submodules
+    * Remove deprecated create_log_file_handler function
+    * Remove use of apptools.type_manager from apptools.naming.
+      Then, remove apptools.type_manager entirely. Finally, remove
+      apptools.naming.adapter.
+    * Remove apptools.persistence.spickle submodule
+    * Remove apptools.naming.ui sub package
+  * Update documentation for Preferences
+  * Add a brief section to documentation for apptools.naming
+  * Document the apptools.io and apptools.io.h5 sub packages
+  * Fix a few broken links in the documentation
+  * Fix SyntaxWarning in persistence.file_path
+  * Fix container items change event being saved in preferences
+  * Fix synchronizing preference trait with name _items
+
+-------------------------------------------------------------------
 Mon Feb  7 07:20:43 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pytest to run the testsuite, not nose. 

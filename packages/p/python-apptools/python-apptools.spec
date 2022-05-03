@@ -18,9 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         X_display         ":98"
+%define         skip_python2      1
+%ifarch ppc ppc64 ppc64le s390x
 %bcond_with     test
+%else
+%bcond_without  test
+%endif
 Name:           python-apptools
-Version:        4.5.0
+Version:        5.1.0
 Release:        0
 Summary:        Application tools in Python
 # Source code is under BSD but images are under different licenses
@@ -28,6 +33,8 @@ Summary:        Application tools in Python
 License:        BSD-3-Clause AND LGPL-2.1-only AND LGPL-3.0-only
 URL:            https://github.com/enthought/apptools
 Source:         https://files.pythonhosted.org/packages/source/a/apptools/apptools-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python310.patch -- Add python3.10 support gh#enthought/apptools#303
+Patch0:         python310.patch
 BuildRequires:  %{python_module configobj}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module traits}
@@ -56,22 +63,18 @@ that is commonly needed by many applications.
 Part of the Enthought Tool Suite (ETS).
 
 %prep
-%setup -q -n apptools-%{version}
-# Fix wrong-script-interpreter
-sed -i "s|#!%{_bindir}/env python|#!%__python3|" examples/permissions/server/*.py
-%fdupes examples/
+%autosetup -p1 -n apptools-%{version}
 
 %build
 %python_build
+# Remove duplicates now so we can let rpm install it later
+%fdupes examples/
 
 %install
 %python_install
-%{python_expand chmod a+x %{buildroot}%{$python_sitelib}/apptools/lru_cache/tests/test_lru_cache.py
-sed -i "s|^#!%{_bindir}/env python$|#!%__$python|" %{buildroot}%{$python_sitelib}/apptools/lru_cache/tests/test_lru_cache.py
-%fdupes %{buildroot}%{$python_sitelib}
-$python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/apptools/
+%{python_expand $python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/apptools/
 $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/apptools/
-%fdupes %{buildroot}%{$python_sitelib}/apptools/lru_cache/tests/
+%fdupes %{buildroot}%{$python_sitelib}
 }
 
 %if %{with test}
@@ -81,15 +84,11 @@ Xvfb %{X_display} >& Xvfb.log &
 trap "kill $! || true" EXIT
 sleep 10
 
-%{python_expand mkdir tester_%{$python_bin_suffix}
-pushd tester_%{$python_bin_suffix}
-%pytest
-popd
-}
+%pyunittest -v
 %endif
 
 %files %{python_files}
-%doc README.rst TODO.txt CHANGES.txt
+%doc README.rst CHANGES.txt
 %doc examples/
 %license LICENSE.txt image_LICENSE*.txt
 %{python_sitelib}/apptools/
