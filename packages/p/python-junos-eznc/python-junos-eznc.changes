@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May  3 11:54:14 UTC 2022 - pgajdos@suse.com
+
+- added patches
+  fix https://github.com/Juniper/py-junos-eznc/issues/1176
+  + python-junos-eznc-no-mock.patch
+
+-------------------------------------------------------------------
+Tue May  3 11:48:41 UTC 2022 - pgajdos@suse.com
+
+- added patches
+  fix https://github.com/Juniper/py-junos-eznc/commit/96f25bb8aa006e12e48902a91a1dc6ff595bdd2d
+  + python-junos-eznc-fix-unittests.patch
+
+-------------------------------------------------------------------
 Tue Jan 11 20:48:52 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - remove selectors2 build requirement: It's unmaintained and pulled
