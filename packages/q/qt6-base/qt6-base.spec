@@ -91,8 +91,8 @@ BuildRequires:  pkgconfig(mtdev)
 BuildRequires:  pkgconfig(odbc)
 BuildRequires:  pkgconfig(opengl)
 BuildRequires:  pkgconfig(openssl) >= 1.1.1
-BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(sm)
+BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(tslib)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(wayland-client)
@@ -353,7 +353,7 @@ Development files for the Qt 6 Network library.
 Summary:        Non-ABI stable API for the Qt 6 Network library
 Requires:       qt6-core-private-devel = %{version}
 Requires:       cmake(Qt6Network) = %{real_version}
-Requires:       pkgconfig(openssl) >= 1.1.1
+%requires_ge %(rpm -q --whatprovides "pkgconfig(openssl)" | grep -v noarch)
 
 %description -n qt6-network-private-devel
 This package provides private headers of libQt6Network that do not have any

@@ -147,4 +147,14 @@
     <comment>Qt 6.3.0 (forwarded request 970780 from cgiboudeaux)</comment>
     <requestid>970785</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>a556029add487b4e383e3555ccaedffa</srcmd5>
+    <version>6.3.0</version>
+    <time>1651605573</time>
+    <user>dimstar_suse</user>
+    <comment>- Require the SSL devel package it was built with, not just any
+  pkgconfig(openssl). Otherwise it is satisfied with libressl-devel
+  even if it was built with openssl-devel. (forwarded request 974678 from cgiboudeaux)</comment>
+    <requestid>974679</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  3 11:25:01 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Require the SSL devel package it was built with, not just any
+  pkgconfig(openssl). Otherwise it is satisfied with libressl-devel
+  even if it was built with openssl-devel.
+
+-------------------------------------------------------------------
 Fri Apr  8 11:56:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.3.0:
