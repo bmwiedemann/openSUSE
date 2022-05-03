@@ -17,7 +17,7 @@
 
 
 Name:           freeciv
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        Free Civilization Clone
 License:        GPL-2.0-or-later
@@ -141,10 +141,11 @@ rm %{buildroot}%{_docdir}/freeciv/COPYING
 %{_datadir}/icons/hicolor/*x*/apps/freeciv-ruledit.png
 %{_datadir}/pixmaps/freeciv-client.png
 %{_datadir}/pixmaps/freeciv-manual.png
+%{_datadir}/pixmaps/freeciv-modpack.png
+%{_datadir}/pixmaps/freeciv-ruledit.png
 %{_datadir}/pixmaps/%{name}.png
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/freeciv-server.appdata.xml
-%{_datadir}/appdata/freeciv-ruledit.appdata.xml
+%{_datadir}/metainfo/freeciv-server.appdata.xml
+%{_datadir}/metainfo/freeciv-ruledit.appdata.xml
 
 %files lang -f %{name}-core.lang -f %{name}-nations.lang -f %{name}-ruledit.lang
 
@@ -152,13 +153,13 @@ rm %{buildroot}%{_docdir}/freeciv/COPYING
 %{_bindir}/freeciv-gtk3
 %{_bindir}/freeciv-mp-gtk3
 %{_datadir}/applications/org.freeciv.gtk3.desktop
-%{_datadir}/appdata/freeciv-gtk3.appdata.xml
+%{_datadir}/metainfo/freeciv-gtk3.appdata.xml
 %{_datadir}/applications/org.freeciv.mp.gtk3.desktop
-%{_datadir}/appdata/freeciv-mp-gtk3.appdata.xml
+%{_datadir}/metainfo/freeciv-mp-gtk3.appdata.xml
 
 %files qt
 %{_bindir}/freeciv-qt
 %{_datadir}/applications/org.freeciv.qt.desktop
-%{_datadir}/appdata/freeciv-qt.appdata.xml
+%{_datadir}/metainfo/freeciv-qt.appdata.xml
 
 %changelog
