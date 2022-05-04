@@ -1540,4 +1540,21 @@
     <comment></comment>
     <requestid>970082</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>69c250b5789e897166ab891a6e4584e0</srcmd5>
+    <version>4.11.0+git8.2351f1d4</version>
+    <time>1651669823</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.11.0+git8.2351f1d4:
+  * oracle: Improve the error message if monpassword was not set. (#1767)
+  * spec: remove redhat-lsb-core dependency (lsb_release)
+  * podman: add podman parameter error judgment (#1764)
+  * ethmonitor,ovsmonitor,mariadb: check for bc binary
+  * ocivip: fix spelling errors
+  * build: update ChangeLog for 4.11.0
+  * storage-mon,ldirectord: fix spelling errors
+  * db2: fix bashism
+  * openstack-info: fix bashism</comment>
+    <requestid>974232</requestid>
+  </revision>
 </revisionlist>

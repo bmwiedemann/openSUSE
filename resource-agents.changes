@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun May 01 22:04:58 UTC 2022 - varkoly@suse.com
+
+- Update to version 4.11.0+git8.2351f1d4:
+  * oracle: Improve the error message if monpassword was not set. (#1767)
+  * spec: remove redhat-lsb-core dependency (lsb_release)
+  * podman: add podman parameter error judgment (#1764)
+  * ethmonitor,ovsmonitor,mariadb: check for bc binary
+  * ocivip: fix spelling errors
+  * build: update ChangeLog for 4.11.0
+  * storage-mon,ldirectord: fix spelling errors
+  * db2: fix bashism
+  * openstack-info: fix bashism
+
+-------------------------------------------------------------------
 Wed Apr  6 13:57:27 UTC 2022 - Roger Zhou <zzhou@suse.com>
 
 - Drop obs resource-agents.conf and reuse the one in upstream commit 826c5532
