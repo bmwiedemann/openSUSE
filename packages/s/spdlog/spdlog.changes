@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Apr 18 19:47:37 UTC 2022 - Bernd Ritter <comrad@posteo.de>
+
+- Update to version 1.10.0
+  * Bump fmt to version 8.1.1.
+  * Added file event handlers.
+  * Fixed rotating file sink: when disk is full log rotation resulted zero size log files.
+  * Added new udp_sink.
+  * Improved file name for hourly file sink.
+  * Added code location information for error handler.
+  * Fixed qt_sinks ctor.
+  * List Debian instructions in the README.
+  * Updated to latest Travis CI Build Status.
+  * Fixed unhandled errors in udp sink.
+  * CMake improvement regarding cmake_minimum_required and policy. 
+  * Fixed mongo_sink compile in older gcc versions.
+  * Remove mutable keyword from mutex_ member in of sinks.
+  * Fix typos.
+  * Fixed udp sink build on FreeBSD
+  * Avoid c-style casting in stdout sinks. 
+  * Fixed tweakme.h compile error under msvcs when SPDLOG_FUNCTION is defined #2182. Thanks @Light3039 .
+  * Fixed compiling errors on AIX #2181. Thanks @lisr .
+  * Fixed runtime when build with -fsanitize=cfi #1972. Thanks @bansan85 .
+  * Remove extraneous semicolon #2190. Thanks @sylveon.
+  * Added example how to replace default logger.
+  * Fixed usage of ranges and to_hex in the same compile unit.
+  * Reduce warnings with pedantic compiler -Wuseless-cast.
+  * Support using std::span in to_hex.
+  * Reset current size if rotated files on open #2234.
+  * Allow forward-declaration of level_enum.
+  * Call localtime() only if pattern_formatter really needs it.
+  * Removed unneeded spaces from code.
+  * Added a few missing files/directories to the gitignore.
+  * Fixed issue #2201 (Pattern width is not applied for missing source information).
+  * Limit max number of rotating files to 200000.
+  * pattern_formatter: fix reorder-ctor warning.
+  * Fixed spdlogConfig.cmake when built with SPDLOG_FMT_EXTERNAL_HO.
+  * Fixed fopen_s(..) error handling when PREVENT_CHILD_FD is defined.
+  * Fixed compiler error when building on Windows with #define UNICODE.
+  * Added option to enable formatting of systemd sink.
+  * Added optional "ident" argument to systemd sink constructor.
+  * Removed spdlog-1.9.1-use_system_catch2.patch, as it is no longer necessary (after consultation with Luigi Baldoni on this issue).
+
+-------------------------------------------------------------------
 Tue Nov  2 16:05:55 UTC 2021 - Imo Hester <vortex@z-ray.de>
 
 - Added baselibs.conf for bi-arch support

@@ -1,7 +1,7 @@
 #
 # spec file for package spdlog
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,13 @@
 
 %define _sover  1
 Name:           spdlog
-Version:        1.9.2
+Version:        1.10.0
 Release:        0
 Summary:        C++ logging library
 License:        MIT
 URL:            https://github.com/gabime/spdlog
 Source0:        https://github.com/gabime/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE spdlog-1.9.1-use_system_catch2.patch use system catch2 to fix problem with glibc 2.3.4 -- aloisio@gmx.com
 Source99:       baselibs.conf
-Patch0:         spdlog-1.9.1-use_system_catch2.patch
-BuildRequires:  benchmark-devel >= 1.4.0
 BuildRequires:  cmake >= 3.10
 %if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++ >= 8
