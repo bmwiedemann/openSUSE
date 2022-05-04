@@ -1,0 +1,12 @@
+diff -upr schema-0.7.5.orig/test_schema.py schema-0.7.5/test_schema.py
+--- schema-0.7.5.orig/test_schema.py	2022-05-04 11:01:08.770513691 +0200
++++ schema-0.7.5/test_schema.py	2022-05-04 11:01:08.774513716 +0200
+@@ -10,7 +10,7 @@ from collections import defaultdict, nam
+ from functools import partial
+ from operator import methodcaller
+ 
+-from mock import Mock
++from unittest.mock import Mock
+ from pytest import mark, raises
+ 
+ from schema import (

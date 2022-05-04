@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May  4 09:07:11 UTC 2022 - pgajdos@suse.com
+
+- version update to 0.7.5
+  * Full subclass support for nested schemas.
+  * Don't double-format errors. fixes #240 (#247) [Leif Ryge]
+  * Fix "Unknown format code" in Python 3.8 (#245) [Denis Blanchette]
+  * JSON Schema: Allow using $ref when schema is not a dict (#244) [Denis Blanchette]
+  * JSON Schema: Set additionalProperties true when dict contains str as key (#243) [Denis Blanchette]
+- do not require python-mock for build
+- added patches
+  fix https://github.com/keleshev/schema/pull/273
+  + python-schema-no-mock.patch
+
+-------------------------------------------------------------------
 Thu Sep 10 12:17:04 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 0.7.3
