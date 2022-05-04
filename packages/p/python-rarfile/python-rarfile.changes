@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  4 06:25:49 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Add patch help.patch and enable Python 3.10
+  * https://github.com/markokr/rarfile/pull/85
+
+-------------------------------------------------------------------
 Wed Feb 16 20:35:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - skip python 3.10 build - not yet supported 

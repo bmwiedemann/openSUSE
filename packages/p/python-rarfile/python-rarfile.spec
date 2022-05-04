@@ -17,7 +17,6 @@
 
 
 %define skip_python2 1
-%define skip_python310 1
 Name:           python-rarfile
 Version:        4.0
 Release:        0
@@ -25,6 +24,8 @@ Summary:        RAR Archive Reader for Python
 License:        ISC
 URL:            https://rarfile.readthedocs.org/
 Source0:        https://files.pythonhosted.org/packages/source/r/rarfile/rarfile-%{version}.tar.gz
+# https://github.com/markokr/rarfile/pull/85
+Patch0:         help.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  bsdtar
@@ -55,6 +56,7 @@ This package contains technical documentation.
 
 %prep
 %setup -q -n rarfile-%{version}
+%autopatch -p1
 
 %build
 %python_build
