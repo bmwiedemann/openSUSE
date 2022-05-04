@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  4 05:46:39 UTC 2022 - pgajdos@suse.com
+
+- added patches
+  fix https://bugs.launchpad.net/python-jenkins/+bug/1971524
+  + python-python-jenkins-no-mock.patch
+
+-------------------------------------------------------------------
 Mon Mar 15 15:45:33 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - we don't need stestr to run tests

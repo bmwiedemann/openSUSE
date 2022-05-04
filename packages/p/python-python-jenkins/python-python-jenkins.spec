@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-jenkins
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014 Thomas Bechtold <thomasbechtold@jpberlin.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,8 +26,9 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://opendev.org/jjb/python-jenkins
 Source:         https://files.pythonhosted.org/packages/source/p/python-jenkins/python-jenkins-%{version}.tar.gz
+# https://bugs.launchpad.net/python-jenkins/+bug/1971524
+Patch0:         python-python-jenkins-no-mock.patch
 BuildRequires:  %{python_module cmd2}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module multi_key_dict}
 BuildRequires:  %{python_module pbr >= 0.8.2}
 BuildRequires:  %{python_module requests-mock >= 1.4}
@@ -54,7 +55,7 @@ API. It currently supports management of:
  * Slave node configuration
 
 %prep
-%setup -q -n python-jenkins-%{version}
+%autosetup -p1 -n python-jenkins-%{version}
 
 %build
 %python_build

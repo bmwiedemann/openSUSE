@@ -1,0 +1,343 @@
+diff -upr python-jenkins-1.7.0.orig/tests/base.py python-jenkins-1.7.0/tests/base.py
+--- python-jenkins-1.7.0.orig/tests/base.py	2022-05-03 14:48:58.234141501 +0200
++++ python-jenkins-1.7.0/tests/base.py	2022-05-03 14:48:58.242141551 +0200
+@@ -1,6 +1,6 @@
+ import sys
+ 
+-import mock
++from unittest import mock
+ from testscenarios import TestWithScenarios
+ 
+ import jenkins
+diff -upr python-jenkins-1.7.0.orig/tests/helper.py python-jenkins-1.7.0/tests/helper.py
+--- python-jenkins-1.7.0.orig/tests/helper.py	2022-05-03 14:48:58.234141501 +0200
++++ python-jenkins-1.7.0/tests/helper.py	2022-05-03 14:48:58.242141551 +0200
+@@ -4,7 +4,7 @@ from multiprocessing import Process
+ from multiprocessing import Queue
+ import traceback
+ 
+-from mock import Mock
++from unittest.mock import Mock
+ import requests
+ from six.moves import socketserver
+ 
+diff -upr python-jenkins-1.7.0.orig/tests/jobs/test_assert.py python-jenkins-1.7.0/tests/jobs/test_assert.py
+--- python-jenkins-1.7.0.orig/tests/jobs/test_assert.py	2022-05-03 14:48:58.238141526 +0200
++++ python-jenkins-1.7.0/tests/jobs/test_assert.py	2022-05-03 14:48:58.246141576 +0200
+@@ -1,5 +1,5 @@
+ import json
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from tests.jobs.base import JenkinsJobsTestBase
+diff -upr python-jenkins-1.7.0.orig/tests/jobs/test_build.py python-jenkins-1.7.0/tests/jobs/test_build.py
+--- python-jenkins-1.7.0.orig/tests/jobs/test_build.py	2022-05-03 14:48:58.238141526 +0200
++++ python-jenkins-1.7.0/tests/jobs/test_build.py	2022-05-03 14:48:58.246141576 +0200
+@@ -1,5 +1,5 @@
+ # -*- coding: utf-8 -*-
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from six.moves.urllib.parse import quote
+diff -upr python-jenkins-1.7.0.orig/tests/jobs/test_config.py python-jenkins-1.7.0/tests/jobs/test_config.py
+--- python-jenkins-1.7.0.orig/tests/jobs/test_config.py	2022-05-03 14:48:58.238141526 +0200
++++ python-jenkins-1.7.0/tests/jobs/test_config.py	2022-05-03 14:48:58.246141576 +0200
+@@ -1,4 +1,4 @@
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from tests.jobs.base import JenkinsJobsTestBase
+diff -upr python-jenkins-1.7.0.orig/tests/jobs/test_copy.py python-jenkins-1.7.0/tests/jobs/test_copy.py
+--- python-jenkins-1.7.0.orig/tests/jobs/test_copy.py	2022-05-03 14:48:58.238141526 +0200
++++ python-jenkins-1.7.0/tests/jobs/test_copy.py	2022-05-03 14:48:58.246141576 +0200
+@@ -1,5 +1,5 @@
+ import json
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from tests.jobs.base import JenkinsJobsTestBase
+diff -upr python-jenkins-1.7.0.orig/tests/jobs/test_count.py python-jenkins-1.7.0/tests/jobs/test_count.py
+--- python-jenkins-1.7.0.orig/tests/jobs/test_count.py	2022-05-03 14:48:58.238141526 +0200
++++ python-jenkins-1.7.0/tests/jobs/test_count.py	2022-05-03 14:48:58.246141576 +0200
+@@ -1,5 +1,5 @@
+ import json
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from tests.jobs.base import JenkinsJobsTestBase
+diff -upr python-jenkins-1.7.0.orig/tests/jobs/test_create.py python-jenkins-1.7.0/tests/jobs/test_create.py
+--- python-jenkins-1.7.0.orig/tests/jobs/test_create.py	2022-05-03 14:48:58.238141526 +0200
++++ python-jenkins-1.7.0/tests/jobs/test_create.py	2022-05-03 14:48:58.246141576 +0200
+@@ -1,5 +1,5 @@
+ import json
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from tests.jobs.base import JenkinsJobsTestBase
+diff -upr python-jenkins-1.7.0.orig/tests/jobs/test_debug.py python-jenkins-1.7.0/tests/jobs/test_debug.py
+--- python-jenkins-1.7.0.orig/tests/jobs/test_debug.py	2022-05-03 14:48:58.238141526 +0200
++++ python-jenkins-1.7.0/tests/jobs/test_debug.py	2022-05-03 14:48:58.246141576 +0200
+@@ -1,5 +1,5 @@
+ import json
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from tests.jobs.base import JenkinsJobsTestBase
+diff -upr python-jenkins-1.7.0.orig/tests/jobs/test_delete.py python-jenkins-1.7.0/tests/jobs/test_delete.py
+--- python-jenkins-1.7.0.orig/tests/jobs/test_delete.py	2022-05-03 14:48:58.238141526 +0200
++++ python-jenkins-1.7.0/tests/jobs/test_delete.py	2022-05-03 14:48:58.246141576 +0200
+@@ -1,5 +1,5 @@
+ import json
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from tests.jobs.base import JenkinsJobsTestBase
+diff -upr python-jenkins-1.7.0.orig/tests/jobs/test_disable.py python-jenkins-1.7.0/tests/jobs/test_disable.py
+--- python-jenkins-1.7.0.orig/tests/jobs/test_disable.py	2022-05-03 14:48:58.238141526 +0200
++++ python-jenkins-1.7.0/tests/jobs/test_disable.py	2022-05-03 14:48:58.246141576 +0200
+@@ -1,5 +1,5 @@
+ import json
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from tests.jobs.base import JenkinsJobsTestBase
+diff -upr python-jenkins-1.7.0.orig/tests/jobs/test_enable.py python-jenkins-1.7.0/tests/jobs/test_enable.py
+--- python-jenkins-1.7.0.orig/tests/jobs/test_enable.py	2022-05-03 14:48:58.238141526 +0200
++++ python-jenkins-1.7.0/tests/jobs/test_enable.py	2022-05-03 14:48:58.246141576 +0200
+@@ -1,5 +1,5 @@
+ import json
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from tests.jobs.base import JenkinsJobsTestBase
+diff -upr python-jenkins-1.7.0.orig/tests/jobs/test_getall.py python-jenkins-1.7.0/tests/jobs/test_getall.py
+--- python-jenkins-1.7.0.orig/tests/jobs/test_getall.py	2022-05-03 14:48:58.238141526 +0200
++++ python-jenkins-1.7.0/tests/jobs/test_getall.py	2022-05-03 14:48:58.246141576 +0200
+@@ -1,5 +1,5 @@
+ import json
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from tests.jobs.base import JenkinsGetJobsTestBase
+diff -upr python-jenkins-1.7.0.orig/tests/jobs/test_get.py python-jenkins-1.7.0/tests/jobs/test_get.py
+--- python-jenkins-1.7.0.orig/tests/jobs/test_get.py	2022-05-03 14:48:58.238141526 +0200
++++ python-jenkins-1.7.0/tests/jobs/test_get.py	2022-05-03 14:48:58.246141576 +0200
+@@ -1,5 +1,5 @@
+ import json
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from tests.helper import build_response_mock
+diff -upr python-jenkins-1.7.0.orig/tests/jobs/test_info.py python-jenkins-1.7.0/tests/jobs/test_info.py
+--- python-jenkins-1.7.0.orig/tests/jobs/test_info.py	2022-05-03 14:48:58.238141526 +0200
++++ python-jenkins-1.7.0/tests/jobs/test_info.py	2022-05-03 14:48:58.246141576 +0200
+@@ -1,5 +1,5 @@
+ import json
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from tests.helper import build_response_mock
+diff -upr python-jenkins-1.7.0.orig/tests/jobs/test_name.py python-jenkins-1.7.0/tests/jobs/test_name.py
+--- python-jenkins-1.7.0.orig/tests/jobs/test_name.py	2022-05-03 14:48:58.238141526 +0200
++++ python-jenkins-1.7.0/tests/jobs/test_name.py	2022-05-03 14:48:58.246141576 +0200
+@@ -1,5 +1,5 @@
+ import json
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from tests.jobs.base import JenkinsJobsTestBase
+diff -upr python-jenkins-1.7.0.orig/tests/jobs/test_reconfig.py python-jenkins-1.7.0/tests/jobs/test_reconfig.py
+--- python-jenkins-1.7.0.orig/tests/jobs/test_reconfig.py	2022-05-03 14:48:58.238141526 +0200
++++ python-jenkins-1.7.0/tests/jobs/test_reconfig.py	2022-05-03 14:48:58.246141576 +0200
+@@ -1,5 +1,5 @@
+ import json
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from tests.jobs.base import JenkinsJobsTestBase
+diff -upr python-jenkins-1.7.0.orig/tests/jobs/test_rename.py python-jenkins-1.7.0/tests/jobs/test_rename.py
+--- python-jenkins-1.7.0.orig/tests/jobs/test_rename.py	2022-05-03 14:48:58.238141526 +0200
++++ python-jenkins-1.7.0/tests/jobs/test_rename.py	2022-05-03 14:48:58.246141576 +0200
+@@ -1,5 +1,5 @@
+ import json
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from tests.jobs.base import JenkinsJobsTestBase
+diff -upr python-jenkins-1.7.0.orig/tests/jobs/test_set_next_build_number.py python-jenkins-1.7.0/tests/jobs/test_set_next_build_number.py
+--- python-jenkins-1.7.0.orig/tests/jobs/test_set_next_build_number.py	2022-05-03 14:48:58.238141526 +0200
++++ python-jenkins-1.7.0/tests/jobs/test_set_next_build_number.py	2022-05-03 14:48:58.246141576 +0200
+@@ -1,4 +1,4 @@
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from tests.jobs.base import JenkinsJobsTestBase
+diff -upr python-jenkins-1.7.0.orig/tests/test_build.py python-jenkins-1.7.0/tests/test_build.py
+--- python-jenkins-1.7.0.orig/tests/test_build.py	2022-05-03 14:48:58.234141501 +0200
++++ python-jenkins-1.7.0/tests/test_build.py	2022-05-03 14:48:58.242141551 +0200
+@@ -1,7 +1,7 @@
+ import json
+ 
+ import collections
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from tests.base import JenkinsTestBase
+diff -upr python-jenkins-1.7.0.orig/tests/test_check_jenkinsfile_syntax.py python-jenkins-1.7.0/tests/test_check_jenkinsfile_syntax.py
+--- python-jenkins-1.7.0.orig/tests/test_check_jenkinsfile_syntax.py	2022-05-03 14:48:58.234141501 +0200
++++ python-jenkins-1.7.0/tests/test_check_jenkinsfile_syntax.py	2022-05-03 14:48:58.246141576 +0200
+@@ -1,4 +1,4 @@
+-from mock import patch
++from unittest.mock import patch
+ 
+ from tests.base import JenkinsTestBase
+ from tests.helper import build_response_mock
+diff -upr python-jenkins-1.7.0.orig/tests/test_credential.py python-jenkins-1.7.0/tests/test_credential.py
+--- python-jenkins-1.7.0.orig/tests/test_credential.py	2022-05-03 14:48:58.234141501 +0200
++++ python-jenkins-1.7.0/tests/test_credential.py	2022-05-03 14:48:58.242141551 +0200
+@@ -1,5 +1,5 @@
+ import json
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from tests.base import JenkinsTestBase
+diff -upr python-jenkins-1.7.0.orig/tests/test_info.py python-jenkins-1.7.0/tests/test_info.py
+--- python-jenkins-1.7.0.orig/tests/test_info.py	2022-05-03 14:48:58.238141526 +0200
++++ python-jenkins-1.7.0/tests/test_info.py	2022-05-03 14:48:58.246141576 +0200
+@@ -1,5 +1,5 @@
+ import json
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from tests.base import JenkinsTestBase
+diff -upr python-jenkins-1.7.0.orig/tests/test_jenkins.py python-jenkins-1.7.0/tests/test_jenkins.py
+--- python-jenkins-1.7.0.orig/tests/test_jenkins.py	2022-05-03 14:48:58.234141501 +0200
++++ python-jenkins-1.7.0/tests/test_jenkins.py	2022-05-03 14:48:58.246141576 +0200
+@@ -1,7 +1,7 @@
+ import json
+ import socket
+ 
+-from mock import patch
++from unittest.mock import patch
+ import six
+ 
+ from tests.base import JenkinsTestBase
+diff -upr python-jenkins-1.7.0.orig/tests/test_job_folder.py python-jenkins-1.7.0/tests/test_job_folder.py
+--- python-jenkins-1.7.0.orig/tests/test_job_folder.py	2022-05-03 14:48:58.234141501 +0200
++++ python-jenkins-1.7.0/tests/test_job_folder.py	2022-05-03 14:48:58.242141551 +0200
+@@ -1,4 +1,4 @@
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from tests.base import JenkinsTestBase
+diff -upr python-jenkins-1.7.0.orig/tests/test_node.py python-jenkins-1.7.0/tests/test_node.py
+--- python-jenkins-1.7.0.orig/tests/test_node.py	2022-05-03 14:48:58.234141501 +0200
++++ python-jenkins-1.7.0/tests/test_node.py	2022-05-03 14:48:58.242141551 +0200
+@@ -1,5 +1,5 @@
+ import json
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ import requests_mock
+diff -upr python-jenkins-1.7.0.orig/tests/test_plugins.py python-jenkins-1.7.0/tests/test_plugins.py
+--- python-jenkins-1.7.0.orig/tests/test_plugins.py	2022-05-03 14:48:58.234141501 +0200
++++ python-jenkins-1.7.0/tests/test_plugins.py	2022-05-03 14:48:58.242141551 +0200
+@@ -32,7 +32,7 @@
+ 
+ 
+ import json
+-from mock import patch
++from unittest.mock import patch
+ from testscenarios.scenarios import multiply_scenarios
+ 
+ import jenkins
+diff -upr python-jenkins-1.7.0.orig/tests/test_promotion.py python-jenkins-1.7.0/tests/test_promotion.py
+--- python-jenkins-1.7.0.orig/tests/test_promotion.py	2022-05-03 14:48:58.234141501 +0200
++++ python-jenkins-1.7.0/tests/test_promotion.py	2022-05-03 14:48:58.242141551 +0200
+@@ -1,5 +1,5 @@
+ import json
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from tests.base import JenkinsTestBase
+diff -upr python-jenkins-1.7.0.orig/tests/test_queue.py python-jenkins-1.7.0/tests/test_queue.py
+--- python-jenkins-1.7.0.orig/tests/test_queue.py	2022-05-03 14:48:58.234141501 +0200
++++ python-jenkins-1.7.0/tests/test_queue.py	2022-05-03 14:48:58.246141576 +0200
+@@ -1,5 +1,5 @@
+ import json
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from tests.base import JenkinsTestBase
+diff -upr python-jenkins-1.7.0.orig/tests/test_quiet_down.py python-jenkins-1.7.0/tests/test_quiet_down.py
+--- python-jenkins-1.7.0.orig/tests/test_quiet_down.py	2022-05-03 14:48:58.238141526 +0200
++++ python-jenkins-1.7.0/tests/test_quiet_down.py	2022-05-03 14:48:58.246141576 +0200
+@@ -1,5 +1,5 @@
+ import json
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from tests.base import JenkinsTestBase
+diff -upr python-jenkins-1.7.0.orig/tests/test_script.py python-jenkins-1.7.0/tests/test_script.py
+--- python-jenkins-1.7.0.orig/tests/test_script.py	2022-05-03 14:48:58.234141501 +0200
++++ python-jenkins-1.7.0/tests/test_script.py	2022-05-03 14:48:58.242141551 +0200
+@@ -1,4 +1,4 @@
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from tests.base import JenkinsTestBase
+diff -upr python-jenkins-1.7.0.orig/tests/test_version.py python-jenkins-1.7.0/tests/test_version.py
+--- python-jenkins-1.7.0.orig/tests/test_version.py	2022-05-03 14:48:58.234141501 +0200
++++ python-jenkins-1.7.0/tests/test_version.py	2022-05-03 14:48:58.246141576 +0200
+@@ -1,4 +1,4 @@
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from tests.base import JenkinsTestBase
+diff -upr python-jenkins-1.7.0.orig/tests/test_view.py python-jenkins-1.7.0/tests/test_view.py
+--- python-jenkins-1.7.0.orig/tests/test_view.py	2022-05-03 14:48:58.238141526 +0200
++++ python-jenkins-1.7.0/tests/test_view.py	2022-05-03 14:48:58.246141576 +0200
+@@ -1,5 +1,5 @@
+ import json
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from tests.base import JenkinsTestBase
+diff -upr python-jenkins-1.7.0.orig/tests/test_whoami.py python-jenkins-1.7.0/tests/test_whoami.py
+--- python-jenkins-1.7.0.orig/tests/test_whoami.py	2022-05-03 14:48:58.234141501 +0200
++++ python-jenkins-1.7.0/tests/test_whoami.py	2022-05-03 14:48:58.242141551 +0200
+@@ -1,5 +1,5 @@
+ import json
+-from mock import patch
++from unittest.mock import patch
+ 
+ import jenkins
+ from tests.base import JenkinsTestBase
