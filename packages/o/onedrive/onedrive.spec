@@ -28,7 +28,7 @@
 %endif
 
 Name:           onedrive
-Version:        2.4.16
+Version:        2.4.17
 Release:        0
 Summary:        Client for One Drive Service for Linux
 License:        GPL-3.0-only
@@ -102,6 +102,7 @@ make %{?_smp_mflags} %{name}
 %make_install
 install -D -m 0644 config %{buildroot}%{_sysconfdir}/%{name}/%{name}.conf
 install -d -m 0755 %{buildroot}%{_localstatedir}/log/%{name}
+rm %{buildroot}%{_docdir}/%{name}/LICENSE
 
 %pre
 %service_add_pre %{name}@.service
@@ -122,7 +123,7 @@ install -d -m 0755 %{buildroot}%{_localstatedir}/log/%{name}
 %files
 %defattr(-,root,root)
 %license LICENSE
-%doc USAGE.md SharePoint-Shared-Libraries.md INSTALL.md Docker.md CHANGELOG.md config README.md BusinessSharedFolders.md LICENSE advanced-usage.md
+%doc USAGE.md SharePoint-Shared-Libraries.md INSTALL.md Docker.md CHANGELOG.md config README.md BusinessSharedFolders.md advanced-usage.md
 %config(noreplace) %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %{_bindir}/%{name}

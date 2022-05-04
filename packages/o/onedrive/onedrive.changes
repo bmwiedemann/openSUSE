@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed May 04 07:31:32 UTC 2022 - egotthold@suse.com
+
+- Update to version 2.4.17:
+  * Release files for 2.4.17 (#1941)
+  * Update ubuntu-package-install.md (#1940)
+  * Fix logging output when download failed (#1894)
+  * Improve when the local database integrity check is performed and on what frequency (#1938)
+  * Remove ambiguity on how to access 'help' for the client (#1936)
+  * Update INSTALL.md
+  * Update local folder creation timestamp with timestamp from OneDrive (#1934)
+  * Update inotify logging output (#1930)
+  * Update Internet connect disruption retry handling (#1909)
+  * Update INSTALL.md
+  * Fix crash when trying to sync broken symbolic link (#1917)
+  * Update ubuntu-package-install.md
+  * Update USAGE.md
+  * Update ubuntu-package-install.md
+  * Update bug_report.yml
+  * Update INSTALL.md
+  * Fix docker build, by add missing git (#1895)
+  * Update README.md
+
+-------------------------------------------------------------------
 Thu Mar 10 01:36:22 UTC 2022 - hpj@urpla.net
 
 - Update to version 2.4.16:
