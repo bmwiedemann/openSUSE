@@ -1,7 +1,7 @@
 #
 # spec file for package opencv
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,6 +47,10 @@ Source0:        https://github.com/opencv/opencv/archive/%{version}.tar.gz#/%{na
 Source1:        https://github.com/opencv/opencv_contrib/archive/%{version}.tar.gz#/opencv_contrib-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-highgui-Fix-unresolved-OpenGL-functions-for-Qt-backe.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         https://github.com/opencv/opencv/pull/21754.patch#/videoio_initial_FFmpeg_5_0_support.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         https://github.com/opencv/opencv/commit/271f7df3435c619ceba9261f88dcfbb0714b0b0d.patch#/videoio_ffmpeg_avoid_memory_leaks.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libeigen3-devel
@@ -213,6 +217,7 @@ Summary:        Development files for using the OpenCV library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 Requires:       %{libname}%{soname} = %{version}
+Requires:       libopencv_aruco%{soname} = %{version}
 Requires:       libopencv_face%{soname} = %{version}
 Requires:       libopencv_highgui%{soname} = %{version}
 Requires:       libopencv_imgcodecs%{soname} = %{version}
@@ -283,7 +288,7 @@ cp opencv_contrib-%{version}/LICENSE LICENSE.contrib
 rm -f doc/packaging.txt
 
 %build
-%limit_build -m 1700
+%limit_build -m 1800
 
 # openCV does not understand the standard RelWithDebinfo,
 #   but has a separate variable for it

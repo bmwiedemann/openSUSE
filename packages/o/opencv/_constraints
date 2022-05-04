@@ -7,5 +7,10 @@
     <memory>
       <size unit="M">5700</size>
     </memory>
+    <memoryperjob>
+      <!-- This is the max available on all archs -->
+      <!-- The actual requirement is enforced with limit_build -->
+      <size unit="M">1200</size>
+    </memoryperjob>
   </hardware>
 </constraints>
