@@ -1,4 +1,180 @@
 -------------------------------------------------------------------
+Thu Apr 21 15:34:00 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.15.1
+  * bcftools annotate: New -H, --header-line convenience option to
+    pass a header line on command line
+  * bcftools csq: A list of consequence types supported by bcftools
+    csq has been added to the manual page.
+  * bcftools +fill-tags: 
+    * Extend generalized functions so that FORMAT tags can be filled
+      as well
+    * Allow multiple custom functions in a single run.
+  * bcftools norm:
+    * Fix an assertion failure triggered when a faulty VCF file with
+      a '-' character in the REF allele was used with bcftools
+      norm --atomize.
+    * Fix the loss of phasing in half-missing genotypes in variant
+      atomization
+  * bcftools roh: Fix a bug that could result in an endless loop or
+    incorrect AF estimate when missing genotypes are present and
+    the --estimate-AF - option was used
+  * bcftools +split-vep: VEP fields with characters disallowed in
+    VCF tag names by the specification couldn't be queried.
+- Update to version 1.15
+  * New bcftools head subcommand for conveniently displaying the
+    headers of a VCF or BCF file.
+  * The -T, --targets-file option had the following bug originating
+    in HTSlib code
+  * bcftools annotate:
+    * In addition to --rename-annots, which requires a file with
+      name mappings, it is now possible to do the same on the
+      command line -c NEW_TAG:=OLD_TAG
+    * Add new option --min-overlap which allows to specify the
+      minimum required overlap of intersecting regions
+    * Allow to transfer ALT from VCF with or without replacement
+  * bcftools convert:
+    * Revamp of --gensample, --hapsample and --haplegendsample
+      family of options
+    * New --3N6 option to output/input the new version of the .gen
+      file format
+    * Deprecate the --chrom option in favor of --3N6.
+    * The CHROM:POS_REF_ALT IDs which are used to detect strand
+      swaps are required and must appear either in the "SNP ID"
+      column or the "rsID" column.
+  * bcftools csq: Allow GFF files with phase column unset
+  * bcftools filter: New --mask, --mask-file and --mask-overlap
+    options to soft filter variants in regions
+  * bcftools +fixref
+    * The -m id option now works also for non-dbSNP ids
+    * New -m flip-all mode for flipping all sites
+  * bcftools isec: Prevent segfault on sites filtered with -i/-e
+    in all files
+  * bcftools mpileup: More flexible read filtering using the options
+  * bcftools query: Make the --samples and --samples-file options
+    work also in the --list-samples mode.
+  * bcftools +setGT: Fix a bug in -t q -e EXPR logic applied on
+    FORMAT fields, sites with all samples failing the expression
+    EXPR were incorrectly skipped.
+  * bcftools sort: make use of the TMPDIR environment variable
+    when defined
+  * bcftools +trio-dnm2: The --use-NAIVE mode now also adds the
+    de novo allele in FORMAT/VA
+- Update to version 1.14
+  * New --regions-overlap and --targets-overlap options which
+    address a long-standing design problem with subsetting VCF
+    files by region.
+  * The --output-type option can be used to override the default
+    compression level
+  * bcftools annotate:
+    * when --set-id and --remove are combined, --set-id cannot use
+      tags deleted by --remove.
+    * while non-symbolic variation are uniquely identified by
+      POS,REF,ALT, symbolic alleles starting at the same position
+      were indistinguishable.
+    * add a new . modifier to control whether missing values should
+      be carried over from a tab-delimited file or not.
+  * bcftools +check-ploidy: by default missing genotypes are not
+    used when determining ploidy.
+  * bcftools concat: new --ligate-force and --ligate-warn options
+    for finer control of -l, --ligate behavior in imperfect overlaps.
+  * bcftools consensus: Apply mask even when the VCF has no notion
+    about the chromosome.
+  * bcftools +contrast: support for chunking within map/reduce
+    framework allowing to collect NASSOC counts even for empty
+    case/control sample sets
+  * bcftools csq:
+    * bug fix, compound indels were not recognised in some cases
+    * compound variants were incorrectly marked as 'inframe' even when
+      stop codon would occur before the frame was restored
+    * bug fix, FORMAT/BCSQ bitmasks could have been assigned incorrectly
+      to some samples at multiallelic sites, a superset of the correct
+      consequences would have been set
+    * bug fix, the upstream stop could be falsely assigned to all samples
+      in a multi-sample VCF even if the stop was relevant for a single
+      sample only
+    * further improve the detection of mismatching chromosome naming
+      (e.g. "chrX" vs "X") in the GFF, VCF and fasta files
+  * bcftools merge: keep (sum) INFO/AN,AC values when merging VCFs
+    with no samples
+  * bcftools mpileup: new --indel-size option which allows to increase
+    the maximum considered indel size considered, large deletions in
+    long read data are otherwise lost.
+  * bcftools norm:
+    * atomization now supports Number=A,R string annotations
+    * assign as many alternate alleles to genotypes at multiallelic
+      sites in the-m + mode, disregarding the phase.
+  * bcftools sort: increase accuracy of the --max-mem option limit,
+    previously the limit could be exceeded by more than 20%
+  * bcftools +trio-dnm: new --with-pAD option to allow processing of
+    VCFs without FORMAT/QS.
+  * bcftools view: the functionality of the option --compression-level
+    lost in 1.12 has been restored
+- Update to version 1.13
+  * bcftools annotate:
+    * Fix rare a bug when INFO/END is present, all INFO fields are
+      removed with bcftools annotate -x INFO and BCF output is produced.
+    * Support for matching annotation line by ID, in addition to
+      CHROM,POS,REF, and ALT
+  * bcftools csq:
+    * When GFF and VCF/fasta use a different chromosome naming convention
+      no consequences would be added.
+    * Parametrize brief-predictions parameter to allow explicit number
+      of amino acids to be printed.
+  * bcftools +fill-tags:
+    * Generalization and better support for custom functions that allow
+      adding new INFO tags based on arbitrary -i, --include type of expressions.
+    * When FORMAT/GT is not present, the INFO/AF tag will be newly
+      calculated from INFO/AC and INFO/AN.
+  * bcftools gtcheck:
+    * Switch between FORMAT/GT or FORMAT/PL when one is (implicitly)
+      requested but only the other is available
+    * Improve diagnostics, printing warnings when a line cannot be
+      matched and the number of lines skipped for various reasons
+  * bcftools index: The program now accepts both data file name and
+    the index file name.
+  * bcftools isec: Always generate sites.txt with isec -p
+  * bcftools +mendelian: Consider only complete trios,
+    do not crash on sample name typos
+  * bcftools mpileup:
+    * New --seed option for reproducibility of subsampling code in HTSlib
+    * The SCR annotation which shows the number of soft-clipped reads
+      now correctly pools reads together regardless of the variant type.
+    * Major revamp of BAQ.
+    * Modified scale of Mann-Whitney U tests.
+      Newly INFO/*Z annotations will be printed
+  * bcftools norm:
+    * Fix Type=Flag output in norm --atomize
+    * Atomization must not discard ALT=. records
+    * Atomization of AD and QS tags now correctly updates occurrences
+      of duplicate alleles within different haplotypes
+    * Fix a bug in atomization of Number=A,R tags
+  * bcftools reheader: Add -T, --temp-prefix option
+  * bcftools +setGT: A wider range of genotypes can be set by the
+    plugin by allowing specifying custom genotypes.
+  * bcftools +split-vep:
+    * New -u, --allow-undef-tags option
+    * Better handling of ambiguous keys such as INFO/AF and CSQ/AD.
+    * Some consequence field names may not constitute a valid tag name,
+      such as "pos(1-based)".
+  * bcftools +tag2tag: New --QR-QA-to-QS option to convert annotations
+    generated by Freebayes to QS used by BCFtools
+  * bcftools +trio-dnm:
+    * Add support for sites with more than four alleles.
+    * New --use-NAIVE option for a naive DNM calling based solely on
+      FORMAT/GT and expected Mendelian inheritance.
+    * Fix behaviour to match the documentation, the --dnm-tag DNG option
+      now correctly outputs log scaled values by default, not phred scaled.
+    * Fix bug in VAF calculation, homozygous de novo variants were
+      incorrectly reported as having VAF=50%
+    * Fix arithmetic underflow which could lead to imprecise scores
+      and improve sensitivity in high coverage regions
+    * Allow combining --pn and --pns to set the noise thresholds independently
+- Rebased use_python3.patch
+- Drop python3 and perl build requirements, not needed, shbang of
+  executables can be patched anyway.
+
+-------------------------------------------------------------------
 Fri May 14 10:42:08 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.12

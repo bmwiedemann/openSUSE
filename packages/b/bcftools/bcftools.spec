@@ -1,7 +1,7 @@
 #
 # spec file for package bcftools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           bcftools
-Version:        1.12
+Version:        1.15.1
 Release:        0
 %define minor   %(cut -d '.' -f 1,2 <<< %{version})
 Summary:        Tools for manipulating variant calls in the Variant Call Format (VCF)
@@ -33,8 +33,6 @@ BuildRequires:  gsl-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  libhts-devel >= %{minor}
 BuildRequires:  lzma-devel
-BuildRequires:  perl
-BuildRequires:  python3-base
 BuildRequires:  zlib-devel
 Requires:       bgzip
 Requires:       htsfile
@@ -61,11 +59,8 @@ make USE_GSL=1 %{?_smp_mflags}
 %make_install prefix=%{_prefix} libexecdir=%{_libdir} libdir=%{_libdir}
 
 # CONVERT env HASHBANGS TO USE DIRECT EXECUTABLE
-perlbin=`which perl`
-sed -i "s:/usr/bin/env perl:${perlbin}:" %{buildroot}/%{_bindir}/*.pl
-sed -i "s:/usr/bin/env perl:${perlbin}:" %{buildroot}/%{_bindir}/plot-vcfstats
-pybin=`which python3`
-sed -i -E "s:/usr/bin/env python3?:${pybin}:" %{buildroot}/%{_bindir}/*.py
+sed -i "s:/usr/bin/env perl:%{_bindir}/perl:" %{buildroot}/%{_bindir}/*.pl %{buildroot}/%{_bindir}/plot-vcfstats
+sed -i -E "s:/usr/bin/env python3?:%{_bindir}/python3:" %{buildroot}/%{_bindir}/*.py
 
 %files
 %license LICENSE
