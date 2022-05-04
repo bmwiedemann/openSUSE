@@ -355,4 +355,12 @@ and packages them up for the RPi firmware to use.</comment>
     <comment></comment>
     <requestid>958402</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>0b70991f240d432bc2ee98c29134b1cc</srcmd5>
+    <version>2022.04.24</version>
+    <time>1651670252</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974415</requestid>
+  </revision>
 </revisionlist>

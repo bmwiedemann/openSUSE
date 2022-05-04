@@ -22,7 +22,7 @@ TOPDIR=$(pwd)
 # Copy device tree files
 SOURCES="COPYING arch/arm/boot/dts arch/arm64/boot/dts/broadcom/*bcm27* scripts/dtc/include-prefixes/ include"
 cd linux
-LINE=$(git log --format=format:"%h %ai" -- ${SOURCES}|head -n 1)
+LINE=$(git log --format=format:"%h %ci" -- ${SOURCES}|head -n 1)
 set -- $LINE
 REV=$1
 DATE=$2

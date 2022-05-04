@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Apr 27 13:17:53 UTC 2022 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- Use last patch commit date instead patch creation date when creating
+  device tree archive and package version. Patch creation date could be
+  much earlier than patch commit date, which could mislead which patches
+  are included inside the package.
+
+  For example:
+
+    commit 7e72dd813a175ea7bf166655217ce60fbd7d4a21
+    Author:     Dom Cobley <popcornmix@gmail.com>
+    AuthorDate: Tue Oct 19 14:15:45 2021 +0100
+    Commit:     Dom Cobley <popcornmix@gmail.com>
+    CommitDate: Mon Nov 29 16:26:09 2021 +0000
+
+	dt: Move VEC clock to clk-raspberrypi
+
+  Package which contain this commit was named 2021.11.19 while obviously it
+  has changes from 2021.11.29.
+
+- Update to da91801ca1 (2022-04-24)
+  * overlays: Fix pitft28/35-resistive rotate params
+  * ARM: dts: Add i2c0mux node to Model B rev 1
+  * overlays: Add "drm" parameter to pitft28-resistive
+  * overlays: mipi-dbi-spi: width-mm and height-mm are mandatory
+  * Add support for the AudioInjector.net bare i2s sound card
+  * dtoverlays: Add overlay for Sony IMX258 image sensor
+  * ARM: dts: Enable PMU on Cortex-A72 in AArch32 state
+  * overlays/rpi-display: Add support for DRM driver
+  * Revert "update rpi-display-overlay.dts pins for 5.10+"
+  * overlays: Add overlay for MIPI DBI displays
+  * dtoverlays: Connect the backlight to the pitft35 display
+  * overlays: iqs550: Enable interrupt pull-down
+  * CM1&3 cam1_reg and cam1_reg_gpio fix
+  * dtoverlay: Add VCM option to ov5647 overlay
+  * dtoverlays: Add VCM option to imx219
+  * ARM: dts: bcm2711-rpi-ds: Disable the BCM2835 STC
+
+-------------------------------------------------------------------
 Wed Mar  2 08:01:22 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 8dd9f663bd7c (2022-02-25):
