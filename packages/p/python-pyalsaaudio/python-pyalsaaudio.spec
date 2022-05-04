@@ -17,16 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_with     test
 Name:           python-pyalsaaudio
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        ALSA bindings for Python
 License:        Python-2.0
-Group:          Development/Languages/Python
 URL:            https://larsimmisch.github.io/pyalsaaudio/
 Source:         https://files.pythonhosted.org/packages/source/p/pyalsaaudio/pyalsaaudio-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  alsa-devel
 BuildRequires:  fdupes
@@ -48,14 +47,12 @@ export CFLAGS="%{optflags}"
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
-%if %{with test}
 %check
-%python_exec setup.py test
-%endif
+%pytest_arch test.py -k 'not (testMixerAll or testMixerClose or testPCMAll or testPCMClose or testPCMDeprecated)'
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGES
+%doc doc/*.rst
 %{python_sitearch}/*
 
 %changelog

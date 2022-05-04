@@ -25,4 +25,17 @@
   * Unlimited setperiod buffer size when reading frames</comment>
     <requestid>965068</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bfb965817d89c9ce4989e39270683995</srcmd5>
+    <version>0.9.1</version>
+    <time>1651669863</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.1:
+  * Support decibel, percentage, and raw volumes in getvolume, setvolume,
+    and getrange (#109 from @chrisdiamand):
+- Use pytest for running the testsuite, and skip tests that require a
+  sound card. Remove the bcond so the testsuite runs. 
+- Update docs shipped to be more documentation-like.</comment>
+    <requestid>974811</requestid>
+  </revision>
 </revisionlist>
