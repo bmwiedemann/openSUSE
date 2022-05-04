@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May  3 14:55:52 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- version 0.10.1
+  * Add support for Python 3.10
+  * Support directive applying to itself
+  * Keep tail of directive
+  * Use unittest discover
+
+-------------------------------------------------------------------
 Thu Sep 16 06:56:49 UTC 2021 - pgajdos@suse.com
 
 - python_alternative relatorio-render

@@ -1,8 +1,8 @@
 #
 # spec file for package python-relatorio
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2016-2021 Dr. Axel Braun
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2016-2022 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         mod_name relatorio
 Name:           python-relatorio
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        Python module to create reports from Python objects
 License:        GPL-3.0-or-later
@@ -74,7 +74,8 @@ mv relatorio relatorio_hide
 %files %{python_files}
 %license LICENSE
 %doc README COPYRIGHT README
-%{python_sitelib}/*
 %python_alternative %{_bindir}/relatorio-render
+%{python_sitelib}/relatorio
+%{python_sitelib}/relatorio-%{version}*-info
 
 %changelog
