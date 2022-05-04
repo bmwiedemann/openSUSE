@@ -88,6 +88,7 @@ A set of Python tools for using Fedora's messaging infrastructure.
 export PATH=$PATH:%{buildroot}%{_bindir}
 export PYTHONDONTWRITEBYTECODE=1
 export LANG=en_US.UTF-8
+# https://github.com/fedora-infra/fedora-messaging/issues/255
 sed -i 's:. Perhaps you forgot a comma?::' fedora_messaging/tests/unit/test_cli.py
 # test_consume_unexpected_crash or test_consume_successful_halt are intermittent
 # and only relevant for improved handling of an unexpected failure/halt
