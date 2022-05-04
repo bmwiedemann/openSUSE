@@ -635,4 +635,14 @@ Please forward to Factory and 13.1
     <comment></comment>
     <requestid>967699</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>d17e8e0e97b4c8444d0d196edfd2531b</srcmd5>
+    <version>2.12.2</version>
+    <time>1651669884</time>
+    <user>dimstar_suse</user>
+    <comment>- Starting amavis.service gives Unit var-run.mount not found.
+  var-run.mount is not needed
+  (bsc#1198783)</comment>
+    <requestid>974902</requestid>
+  </revision>
 </revisionlist>
