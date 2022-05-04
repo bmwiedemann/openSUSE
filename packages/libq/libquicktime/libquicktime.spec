@@ -1,7 +1,7 @@
 #
 # spec file for package libquicktime
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,7 @@ BuildRequires:  libvorbis-devel
 BuildRequires:  pkgconfig
 BuildRequires:  schroedinger-devel
 BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavcodec) < 59
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(x11)

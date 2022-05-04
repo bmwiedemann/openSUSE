@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 29 07:52:21 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update BuildRequires to reflect it does not work with ffmpeg5
+  at this time.
+
+-------------------------------------------------------------------
 Tue Feb 25 21:00:07 UTC 2020 - Ignaz Forster <iforster@suse.com>
 
 - Build 32bit compatibility packages also for plugin libraries.
