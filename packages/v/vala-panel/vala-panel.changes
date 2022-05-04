@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May  3 13:11:11 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.5.0
+  * Fixed item removal bug.
+  * Inital Wayland support based on layer-shell
+- Drop upstream fixed vala-panel-0.4.91-libm.patch
+- Add upstream patch 52f40ce779cfa224266dd427cfe57afd83a28362.diff
+
+-------------------------------------------------------------------
 Sat Feb 22 15:48:43 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Split vala-cmake-modules into a separate source package.

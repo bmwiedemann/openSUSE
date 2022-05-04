@@ -1,7 +1,7 @@
 #
 # spec file for package vala-panel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,26 @@
 
 %define _rev    741b80c641591494e9f0ccc4cd19b0cd
 Name:           vala-panel
-Version:        0.4.91
+Version:        0.5.0
 Release:        0
 Summary:        A Gtk3 desktop panel based on Vala
 License:        GPL-3.0-or-later
 URL:            https://gitlab.com/vala-panel-project/vala-panel
-Source:         https://gitlab.com/vala-panel-project/vala-panel/uploads/%{_rev}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM vala-panel-0.4.91-libm.patch marguerite@opensuse.org -- Fix linking with libm.
-Patch0:         vala-panel-0.4.91-libm.patch
-BuildRequires:  cmake >= 3.3
+Source:         %{url}/-/archive/%{version}/vala-panel-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM 52f40ce779cfa224266dd427cfe57afd83a28362.diff -- Fix duplicate language target
+Patch0:         https://gitlab.com/vala-panel-project/vala-panel/-/commit/52f40ce779cfa224266dd427cfe57afd83a28362.diff
 BuildRequires:  fdupes
 BuildRequires:  gettext
+BuildRequires:  meson >= 0.51
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.34
-BuildRequires:  vala-cmake-modules
-BuildRequires:  pkgconfig(glib-2.0) >= 2.56.0
+BuildRequires:  pkgconfig(gdk-wayland-3.0)
+BuildRequires:  pkgconfig(gdk-x11-3.0)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.52.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(gtk-layer-shell-0)
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.14.0
-BuildRequires:  pkgconfig(libwnck-3.0) >= 3.4.0
+BuildRequires:  pkgconfig(libwnck-3.0) >= 3.4.7
 Recommends:     %{name}-lang
 Recommends:     %{name}-plugin-sntray
 Recommends:     %{name}-plugins-base = %{version}
@@ -98,14 +100,11 @@ system tray, and others.
 %autosetup -p1
 
 %build
-%cmake \
-  -DCMAKE_INSTALL_SYSCONFDIR=%{_sysconfdir} \
-  -DCMAKE_SHARED_LINKER_FLAGS=""            \
-  -DGSETTINGS_COMPILE=OFF
-%cmake_build
+%meson -Dwnck=enabled
+%meson_build
 
 %install
-%cmake_install
+%meson_install
 %find_lang %{name}
 %fdupes %{buildroot}%{_datadir}/
 
@@ -125,9 +124,8 @@ system tray, and others.
 %{_datadir}/vala-panel/
 %{_datadir}/glib-2.0/schemas/org.valapanel.toplevel.gschema.xml
 %{_datadir}/applications/org.valapanel.application.desktop
-%{_datadir}/icons/hicolor/*/apps/vala-panel.*
-%dir %{_datadir}/metainfo/
-%{_datadir}/metainfo/org.valapanel.application.appdata.xml
+%{_datadir}/icons/hicolor/scalable/apps/panel.svg
+%{_datadir}/appdata/org.valapanel.application.appdata.xml
 %{_mandir}/man?/vala-panel.?%{?ext_man}
 
 %files lang -f %{name}.lang
