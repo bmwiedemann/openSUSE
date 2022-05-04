@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr 29 16:54:16 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add upstream patches for FFmpeg 5.0 support, add
+  * videoio_initial_FFmpeg_5_0_support.patch
+  * videoio_ffmpeg_avoid_memory_leaks.patch
+
+-------------------------------------------------------------------
+Sat Apr  9 17:42:50 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Restore memoryperjob constraint, avoid being scheduled on a 16
+  core system and use less than half of it.
+- Adjust %limit_build to 1800, to avoid recurrent build failures
+  on aarch64. (People should not care for their pet architecture
+  only, but also carefully check if they break others.)
+- Add missing libopencv_aruco dependency in devel package.
+
+-------------------------------------------------------------------
 Mon Jan 10 11:08:32 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Remove the memoryperjob constraint which doesn't work as one
