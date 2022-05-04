@@ -1954,4 +1954,13 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment>GNOME 42 - ready for impact</comment>
     <requestid>963597</requestid>
   </revision>
+  <revision rev="221" vrev="2">
+    <srcmd5>cb5c444bc66e5d8c4ed726a1b9437cd4</srcmd5>
+    <version>42.0</version>
+    <time>1651669830</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gnome-shell-42.0-fix-switching-configuration.patch: Fix
+  monitor switching configuration (glgo#GNOME/gnome-shell#5217). (forwarded request 974128 from 1Antoine1)</comment>
+    <requestid>974344</requestid>
+  </revision>
 </revisionlist>

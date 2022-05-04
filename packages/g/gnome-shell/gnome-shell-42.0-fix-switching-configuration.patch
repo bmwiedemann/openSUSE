@@ -1,0 +1,70 @@
+From 6c44162c17033fa8cbd2bcd58be9b2d3bb9a714a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Florian=20M=C3=BCllner?= <fmuellner@gnome.org>
+Date: Sat, 19 Mar 2022 16:53:59 +0100
+Subject: [PATCH] switchMonitor: Fix switching configuration
+
+Since commit 37271ffe709fc957, we pass an explicit `switchType` instead
+of the selected item's index to select a configuration. Alas, the item
+use `switchMode` as property name, so we always end up passing `undefined`.
+
+Change both to `configType` which matches the API on the other end.
+
+https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/5217
+
+Part-of: <https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/2245>
+---
+ js/ui/switchMonitor.js | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/js/ui/switchMonitor.js b/js/ui/switchMonitor.js
+index 7338582188..10b4a50cde 100644
+--- a/js/ui/switchMonitor.js
++++ b/js/ui/switchMonitor.js
+@@ -18,7 +18,7 @@ class SwitchMonitorPopup extends SwitcherPopup.SwitcherPopup {
+              * Try to keep it under around 15 characters.
+              */
+             label: _('Mirror'),
+-            switchMode: Meta.MonitorSwitchConfigType.ALL_MIRROR,
++            configType: Meta.MonitorSwitchConfigType.ALL_MIRROR,
+         });
+ 
+         items.push({
+@@ -27,7 +27,7 @@ class SwitchMonitorPopup extends SwitcherPopup.SwitcherPopup {
+              * Try to keep it under around 15 characters.
+              */
+             label: _('Join Displays'),
+-            switchMode: Meta.MonitorSwitchConfigType.ALL_LINEAR,
++            configType: Meta.MonitorSwitchConfigType.ALL_LINEAR,
+         });
+ 
+         if (global.backend.get_monitor_manager().has_builtin_panel) {
+@@ -37,7 +37,7 @@ class SwitchMonitorPopup extends SwitcherPopup.SwitcherPopup {
+                  * Try to keep it under around 15 characters.
+                  */
+                 label: _('External Only'),
+-                switchMode: Meta.MonitorSwitchConfigType.EXTERNAL,
++                configType: Meta.MonitorSwitchConfigType.EXTERNAL,
+             });
+             items.push({
+                 icon: 'computer-symbolic',
+@@ -45,7 +45,7 @@ class SwitchMonitorPopup extends SwitcherPopup.SwitcherPopup {
+                  * Try to keep it under around 15 characters.
+                  */
+                 label: _('Built-in Only'),
+-                switchMode: Meta.MonitorSwitchConfigType.BUILTIN,
++                configType: Meta.MonitorSwitchConfigType.BUILTIN,
+             });
+         }
+ 
+@@ -86,7 +86,7 @@ class SwitchMonitorPopup extends SwitcherPopup.SwitcherPopup {
+         const monitorManager = global.backend.get_monitor_manager();
+         const item = this._items[this._selectedIndex];
+ 
+-        monitorManager.switch_config(item.switchType);
++        monitorManager.switch_config(item.configType);
+     }
+ });
+ 
+-- 
+GitLab
+

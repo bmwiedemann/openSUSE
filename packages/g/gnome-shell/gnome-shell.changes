@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr 30 21:25:55 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Add gnome-shell-42.0-fix-switching-configuration.patch: Fix
+  monitor switching configuration (glgo#GNOME/gnome-shell#5217).
+
+-------------------------------------------------------------------
 Sun Mar 13 09:19:34 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.0:
