@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  4 11:33:04 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- Starting amavis.service gives Unit var-run.mount not found.
+  var-run.mount is not needed
+  (bsc#1198783) 
+
+-------------------------------------------------------------------
 Wed Mar 30 07:45:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.12.2:

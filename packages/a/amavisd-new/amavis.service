@@ -1,3 +1,4 @@
+server:mail/amavisd-new/amavis.service
 # This file is part of package amavisd-new.
 #
 # Copyright (c) 2011 SuSE LINUX Products GmbH, Germany.
@@ -14,9 +15,8 @@
 
 [Unit]
 Description=Amavisd-new Virus Scanner interface
-Requires=var-run.mount
 Wants=nss-lookup.target network.target remote-fs.target time-sync.target
-After=var-run.mount nss-lookup.target network.target remote-fs.target time-sync.target
+After=nss-lookup.target network.target remote-fs.target time-sync.target
 Wants=named.service clamd.service network-online.target
 After=named.service clamd.service
 Before=mail-transfer-agent.target
