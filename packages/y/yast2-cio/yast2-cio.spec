@@ -24,7 +24,7 @@
 ######################################################################
 
 Name:           yast2-cio
-Version:        4.5.0
+Version:        4.5.1
 Release:        0
 Summary:        YaST2 - IO Channel management
 License:        GPL-2.0-only OR GPL-3.0-only
