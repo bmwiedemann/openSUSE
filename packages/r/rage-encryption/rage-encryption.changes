@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 03 00:27:46 UTC 2022 - william.brown@suse.com
+
+- Update to version 0.8.0+0:
+  * v0.8.0
+  * age: Allow ciphertexts that encrypt the empty plaintext
+  * Update Italian translation
+  * Don't allow -i/--identity with passphrase-encrypted files
+  * age: Require the last STREAM chunk to be non-empty
+  * age: Return correct response encoding for `confirm` command
+  * age: Base64-decode metadata arguments to "confirm" message
+  * age: Extract "confirm" command handling into a helper function
+
+-------------------------------------------------------------------
 Tue Apr  5 05:38:22 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Automatic update of vendored dependencies
