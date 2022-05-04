@@ -24,6 +24,7 @@ Wed Apr 27 16:08:56 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
     http://doc.dpdk.org/guides-21.11/rel_notes/release_21_11.html#fixes
 - Rebased 0001-build-try-to-get-kernel-version-from-kernel-source.patch
 - Dropped upstream fixed fix-buildsystem-python36.patch
+- fixes CVE-2022-0669 [bsc#1198964], CVE-2021-3839 [bsc#1198963
 
 -------------------------------------------------------------------
 Sat Feb 26 17:45:33 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
