@@ -1012,4 +1012,12 @@ For more please read usr/share/doc/packages/gpsd/NEWS
     <comment></comment>
     <requestid>926295</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>52240ebed74e392e04e6d8d377666073</srcmd5>
+    <version>3.24</version>
+    <time>1651669836</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974365</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Apr 28 07:25:07 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.24
+  * NTRIP 2.0 now works.  But still only plain HTML, not RTP, etc.
+  * Remove ntrip option and NTRIP_ENABLE.  Always build.
+  * Remove passthrough option and PASSTHROUGH_ENABLE. Always build.
+  * Remove nmea0183 option and NMEA0183_ENABLE. Always build.
+  * Remove netfeed option and NETFEED_ENABLE. Always build.
+  * gpsd will retry ntrip:// and tcp:// connections
+  * cgps can expand to show more sats. Added --rtk option.
+  * maidenhead() checks for input errors.
+  * Better SHM logs.
+  * PPS and TOFF JSON now include shm used, and real precision.
+  * Add initial, untested, TSIPv1 support
+  * split debug messages into different syslog() levels.
+  * New ppscheck options, and can use /dev/ppsX devices.
+  * First try at TSIPv1 protocol decodes.
+  * Decode Quectel $PQVERNO for firmware version
+  * Decode Skytrak PX1172RH_DS messages.
+- Update gpsd.keyring (0C898D47 -> DD3DD9BB)
+
+-------------------------------------------------------------------
 Tue Oct 19 08:20:38 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Re-enable LTO on aarch64
