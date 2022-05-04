@@ -22,7 +22,7 @@
 %define sonum 30
 %global so_suffix -3_1
 Name:           openexr
-Version:        3.1.4
+Version:        3.1.5
 Release:        0
 Summary:        Utilities for working with HDR images in OpenEXR format
 License:        BSD-3-Clause

@@ -723,4 +723,29 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
 - drop openexr-CVE-2021-45942.patch (upstream) (forwarded request 954404 from dirkmueller)</comment>
     <requestid>954468</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>11dc003990c91e2244039cc846d773bf</srcmd5>
+    <version>3.1.5</version>
+    <time>1651669838</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.5:
+  * Add backwards-compatibilty flags to the core library to match
+    original behavior of the the c++ library. Fixes reading of certain
+    files by the new core.
+  * Fix build failures on MSVC14 and MSVC 2022
+  * Fix build failure on latest 64-bit Ubuntu 
+  * Documentation refers to primary branch as &quot;main&quot;
+  * Update the CI workflow matrix to VFX-CY2022
+  * Update auto-fetch Imath version to v3.1.5
+  Specific OSS-fuzz issues:
+  * OSS-fuzz [46309](https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=46309)
+  Heap-buffer-overflow in Imf_3_1::memstream_read
+  * OSS-fuzz [46083](https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=46083)
+  Out-of-memory in openexr_exrcheck_fuzzer
+  * OSS-fuzz [45899](https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=45899)
+  Integer-overflow in internal_exr_compute_chunk_offset_size
+  * OSS-fuzz [44084](https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=44084)
+  Out-of-memory in openexr_exrcheck_fuzzer (forwarded request 974389 from dirkmueller)</comment>
+    <requestid>974400</requestid>
+  </revision>
 </revisionlist>
