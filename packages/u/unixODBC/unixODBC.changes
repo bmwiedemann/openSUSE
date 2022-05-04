@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon May  2 13:43:57 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.3.10:
+  * Add connection pooling via wide connection functions
+  * Remove "#define VERSION" from unixodbc_conf.h
+  * Call driver functions through prototypes
+  * Add connection pool limit option
+  * Add fseeko support in cursor lib
+  * Try and prevent logging buffer overflow
+  * Add 'echo' option to isql/iusql
+  * Alter isql/iusql buffering
+  * Alter unicode to ascii conversion in SQLGetDiagField
+  * Fix pooling problem when user name and or password is not provided
+  * Fix a couple of reported buffer overflow conditions
+  * Fix iconv leak with timeout in pooled connection
+- Remove upstreamed patches:
+  * unixODBC-doc-drivers.patch
+  * unixODBC-doc-website.patch
+- Remove unixODBC-2.3.1-libodbcinst-exports.patch:
+  Upstream exports more symbols now. In our patch there were
+  still a couple more of them but we decided to drop them.
+  See https://github.com/lurcher/unixODBC/issues/50 and
+  https://github.com/lurcher/unixODBC/issues/8 for the discussion.
+- For the future be aware of different tarball content/confusing
+  git tag for this release. Resulting in different content from
+  tarball from website vs GitHub.
+  See https://github.com/lurcher/unixODBC/issues/107
+
+-------------------------------------------------------------------
 Tue Nov 16 14:55:18 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - SLE-20556 Expand documentation:

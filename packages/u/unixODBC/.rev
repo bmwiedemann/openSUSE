@@ -355,4 +355,12 @@
   * unixODBC-doc-drivers.patch</comment>
     <requestid>931801</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>4d3002c6d7af8e11c947afd74f264fb8</srcmd5>
+    <version>2.3.10</version>
+    <time>1651670258</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974444</requestid>
+  </revision>
 </revisionlist>
