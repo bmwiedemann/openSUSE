@@ -16,14 +16,14 @@
 #
 
 
-%define _relver 14.0.1
+%define _relver 14.0.3
 %define _version %_relver%{?_rc:rc%_rc}
 %define _tagver %_relver%{?_rc:-rc%_rc}
 %define _minor  14.0
 %define _sonum  14
 %define _itsme14 1
 # Integer version used by update-alternatives
-%define _uaver  1401
+%define _uaver  1403
 %define _soclang 13
 %define _socxx  1
 
@@ -40,7 +40,7 @@
 %endif
 
 # We use gold where we want to use ThinLTO, but where lld isn't supported (well).
-%ifarch %{ix86} ppc64 s390x
+%ifarch ppc64 s390x
 %bcond_without gold
 %else
 %bcond_with gold

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 30 12:32:33 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 14.0.3.
+  * This release contains bug-fixes for the LLVM 14.0.0 release.
+    This release is API and ABI compatible with 14.0.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Use ThinLTO with lld on i586.
+
+-------------------------------------------------------------------
 Sun Apr 24 20:52:29 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 14.0.1.
