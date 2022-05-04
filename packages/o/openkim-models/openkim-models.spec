@@ -1,7 +1,7 @@
 #
 # spec file for package openkim-models
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2018--2019 Christoph Junghans, Ryan S. Elliott
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,12 +17,12 @@
 #
 
 
-%define         uversion 2021-01-28
+%define         uversion 2021-08-11
 Name:           openkim-models
-Version:        2021.01.28
+Version:        2021.08.11
 Release:        0
 Summary:        Open Knowledgebase of Interatomic Models
-License:        CDDL-1.0 AND Apache-2.0 AND MPL-2.0 AND GPL-3.0-only AND LGPL-3.0-only
+License:        Apache-2.0 AND CDDL-1.0 AND MPL-2.0 AND GPL-3.0-only AND LGPL-3.0-only
 Group:          Productivity/Scientific/Chemistry
 URL:            https://openkim.org
 Source0:        https://s3.openkim.org/archives/collection/openkim-models-%{uversion}.txz
