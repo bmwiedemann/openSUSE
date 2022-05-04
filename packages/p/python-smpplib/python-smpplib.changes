@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  4 07:55:32 UTC 2022 - pgajdos@suse.com
+
+- added patches
+  fix https://github.com/python-smpplib/python-smpplib/issues/200
+  + python-smpplib-no-mock.patch
+
+-------------------------------------------------------------------
 Mon Nov 22 11:07:55 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.1

@@ -1,7 +1,7 @@
 #
 # spec file for package python-smpplib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2016-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,12 +27,13 @@ Group:          Development/Languages/Python
 URL:            https://pypi.org/project/smpplib/
 #Git-Clone:     https://github.com/python-smpplib/python-smpplib.git
 Source:         https://github.com/python-smpplib/python-smpplib/archive/%{version}.tar.gz#/smpplib-%{version}.tar.gz
+# https://github.com/python-smpplib/python-smpplib/issues/200
+Patch0:         python-smpplib-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module mock}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-six
@@ -47,6 +48,7 @@ allows you to send and receive SMS to an SMS gateway or SMSC.
 
 %prep
 %setup -q -n python-smpplib-%{version}
+%patch0 -p1
 
 %build
 %python_build

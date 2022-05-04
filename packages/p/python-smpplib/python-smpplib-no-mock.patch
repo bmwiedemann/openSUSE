@@ -1,0 +1,22 @@
+diff -upr python-smpplib-2.2.1.orig/smpplib/tests/test_client.py python-smpplib-2.2.1/smpplib/tests/test_client.py
+--- python-smpplib-2.2.1.orig/smpplib/tests/test_client.py	2022-05-04 09:38:34.127959320 +0200
++++ python-smpplib-2.2.1/smpplib/tests/test_client.py	2022-05-04 09:38:34.147959444 +0200
+@@ -1,6 +1,6 @@
+ import warnings
+ import pytest
+-from mock import Mock, call
++from unittest.mock import Mock, call
+ 
+ from smpplib.client import Client
+ from smpplib.smpp import make_pdu
+diff -upr python-smpplib-2.2.1.orig/smpplib/tests/test_gsm.py python-smpplib-2.2.1/smpplib/tests/test_gsm.py
+--- python-smpplib-2.2.1.orig/smpplib/tests/test_gsm.py	2022-05-04 09:38:34.127959320 +0200
++++ python-smpplib-2.2.1/smpplib/tests/test_gsm.py	2022-05-04 09:38:34.147959444 +0200
+@@ -1,6 +1,6 @@
+ # -*- coding: utf8 -*-
+ 
+-import mock
++from unittest import mock
+ from pytest import mark, raises
+ 
+ from smpplib import consts
