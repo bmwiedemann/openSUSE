@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
 #               2006-2018 Wolfgang Rosenauer
-#               2018-2021 Tristan Miller
+#               2018-2022 Tristan Miller
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,9 +63,9 @@ BuildRequires:  git
 BuildRequires:  nasm >= 2.13
 Provides:       web_browser
 Provides:       browser(npapi)
-Version:        2.53.11.1
+Version:        2.53.12
 Release:        0
-%define releasedate 20220325000000
+%define releasedate 20220504000000
 Summary:        An integrated web browser, composer, mail/news client, and IRC client
 License:        MPL-2.0
 Group:          Productivity/Networking/Web/Browsers
@@ -421,8 +421,7 @@ rm -rf %{_tmppath}/translations.*
 %{progdir}/plugin-container
 %{progdir}/%{progname}.sh
 %{progdir}/seamonkey-bin
-%dir %{progdir}/gtk2
-%{progdir}/gtk2/libmozgtk.so
+%{progdir}/libmozgtk.so
 %{_datadir}/applications/*.desktop
 %{_datadir}/pixmaps/*.png
 %dir %{_datadir}/appdata

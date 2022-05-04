@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri May 04 09:25:16 UTC 2022 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- update to SeaMonkey 2.53.12
+  * Format Toolbar forgets its hidden status when switching to other
+    view modes bug 1719020.
+  * Remove obsolete plugin code from SeaMonkey bug 1762733.
+  * Fix a few strict warnings in SeaMonkey bug 1755553.
+  * Remove Run Flash from Site permissions and page info bug 1758289.
+  * Use fixIterator and replace use of removeItemAt in
+    FilterListDialog bug 1756359.
+  * Remove RDF usage in tabmail.js bug 1758282.
+  * Implement 'Edit Template' and 'New Message From Template' commands
+    and UI bug 1759376.
+  * [SM] Implement 'Edit Draft' command and hide it when not in a
+    draft folder (port Thunderbird bug 1106412) bug 1256716.
+  * Messages in Template folder need "Edit Template" button in header
+    (like for Drafts) bug 80280.
+  * Refactor and simplify the feed Subscribe dialog options updates
+    bug 1420473.
+  * Add system memory and disk size and placeDB page limit to
+    about:support bug 1753729.
+  * Remove warning about missing plugins in SeaMonkey 2.53 and 2.57
+    bug 1755558.
+  * SeaMonkey 2.53.12 uses the same backend as Firefox and contains
+    the relevant Firefox 60.8 security fixes.
+  * SeaMonkey 2.53.12 shares most parts of the mail and news code with
+    Thunderbird. Please read the Thunderbird 60.8.0 release notes for
+    specific security fixes in this release.
+  * Additional important security fixes up to Current Firefox 91.9 and
+    Thunderbird 91.9 ESR plus many enhancements have been
+    backported. We will continue to enhance SeaMonkey security in
+    subsequent 2.53.x beta and release versions as fast as we are able
+    to.
+- remove/update references to obsolete gtk2 directory
+- requested inclusion in Leap 15.3:
+  https://bugzilla.opensuse.org/show_bug.cgi?id=xxx
+
+-------------------------------------------------------------------
 Fri Mar 25 09:53:04 UTC 2022 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - update to SeaMonkey 2.53.11.1
