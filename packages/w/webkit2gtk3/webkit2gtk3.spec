@@ -69,11 +69,6 @@ ExclusiveArch:  do-not-build
 %define _usesoup2 0
 %endif
 
-# gold linker not available on old s390/s390x
-%define _gold_linker 0
-%ifarch ppc ppc64le s390
-%define _gold_linker 0
-%endif
 Name:           webkit2%{_gtknamesuffix}
 Version:        2.36.1
 Release:        0
@@ -171,9 +166,6 @@ BuildRequires:  pkgconfig(wpe-1.0) >= 1.3.0
 BuildRequires:  pkgconfig(wpebackend-fdo-1.0) >= 1.6.0
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(zlib)
-%if %{_gold_linker}
-BuildRequires:  binutils-gold
-%endif
 
 %description
 WebKit is a web content engine, derived from KHTML and KJS from KDE,
@@ -359,11 +351,7 @@ fi
 
 export PYTHON=%{_bindir}/python3
 # Use linker flags to reduce memory consumption
-%if %{_gold_linker}
-%global optflags %(echo %{optflags} -Wl,--no-keep-memory | sed 's/-g /-g1 /')
-%else
 %global optflags %(echo %{optflags} -Wl,--no-keep-memory -Wl,--reduce-memory-overheads | sed 's/-g /-g1 /')
-%endif
 %cmake \
   -GNinja \
   -DCMAKE_BUILD_TYPE=Release \

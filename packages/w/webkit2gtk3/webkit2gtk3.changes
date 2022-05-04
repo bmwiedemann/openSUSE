@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  2 08:24:28 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Remove dependency on binutils-gold as the package will be removed
+  in the future. Gold linker is unmaintained by the upstream project. 
+
+-------------------------------------------------------------------
 Thu Apr 21 19:05:39 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.36.1:

@@ -1259,4 +1259,13 @@
     <comment>- Update to version 2.36.1 (forwarded request 971930 from mgorse)</comment>
     <requestid>972029</requestid>
   </revision>
+  <revision rev="144" vrev="2">
+    <srcmd5>d7a50e444b9037a124c9c170998d83ec</srcmd5>
+    <version>2.36.1</version>
+    <time>1651669832</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove dependency on binutils-gold as the package will be removed
+  in the future. Gold linker is unmaintained by the upstream project. (forwarded request 974345 from marxin)</comment>
+    <requestid>974348</requestid>
+  </revision>
 </revisionlist>
