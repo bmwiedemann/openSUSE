@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr  1 19:50:32 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fixes for the new wrapper:
+  * Order duplicates by name, to get a reproducible file set
+    (boo#1197484).
+  * Remove redundant order parameter from fdupes invocation.
+  * Modernize code, significantly reduce allocations.
+  * Exit immediately when mandatory parameters are missing.
+  * Remove obsolete buildroot parameter
+  * Add some tests for the wrapper
+
+-------------------------------------------------------------------
 Tue Mar 15 07:41:35 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - A more correct approach to creating symlinks (old bug actually):

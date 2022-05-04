@@ -4,19 +4,16 @@
  *
  * Copyright 2022 Jiri Slaby <jslaby@suse.cz>
  *           2022 Stephan Kulow <coolo@suse.de>
+ *           2022 Stefan Brüns <stefan.bruens@rwth-aachen.de>
  *
  * SPDX-License-Identifier: MIT
  */
 
 #include <algorithm>
-#include <array>
 #include <iostream>
-#include <list>
-#include <map>
 #include <string>
 #include <sys/param.h>
 #include <sys/stat.h>
-#include <tuple>
 #include <unistd.h>
 #include <utility>
 #include <vector>
@@ -24,8 +21,22 @@
 
 using namespace std;
 
-typedef std::map<ino_t, std::vector<std::string>> dups_map;
-typedef std::pair<ino_t, size_t> nlink_pair;
+struct file_entry
+{
+    ino_t inode;
+    nlink_t link_count;
+    string path;
+
+    file_entry(ino_t i, nlink_t n, string&& p)
+    : inode(i), link_count(n), path(move(p)) {}
+};
+using dup_set = vector<file_entry>;
+
+enum class Operation {
+    Symlink,
+    Hardlink,
+    DryRun,
+};
 
 vector<string> split_paths(const string& path)
 {
@@ -42,7 +53,7 @@ vector<string> split_paths(const string& path)
     return paths;
 }
 
-string merge_paths(vector<string> paths)
+string merge_paths(const vector<string>& paths)
 {
     string path;
     for (const auto& s : paths) {
@@ -79,33 +90,18 @@ string relative(const string& p1, const string& p2)
     return merge_paths(paths);
 }
 
-bool cmp_nlink(const nlink_pair& a, const nlink_pair& b)
-{
-    return a.second > b.second;
-}
-
-void sort_by_count(const dups_map& in, std::vector<ino_t>& out)
-{
-    out.clear();
-    std::list<nlink_pair> nlinks;
-    for (auto it = in.cbegin(); it != in.cend(); ++it) {
-        nlinks.push_back(std::make_pair(it->first, it->second.size()));
-    }
-    nlinks.sort(cmp_nlink);
-    for (auto it = nlinks.cbegin(); it != nlinks.cend(); ++it) {
-        out.push_back(it->first);
-    }
-}
-
-void link_file(const std::string& file, const std::string& target, bool symlink)
+void link_file(const std::string& file, const std::string& target, Operation op)
 {
     std::cout << "Linking " << file << " -> " << target << std::endl;
+    if (op == Operation::DryRun)
+        return;
+
     if (unlink(file.c_str())) {
         std::cerr << "Removing '" << file << "' failed." << std::endl;
         exit(1);
     }
     int ret;
-    if (symlink) {
+    if (op == Operation::Symlink) {
         ret = ::symlink(target.c_str(), file.c_str());
     } else {
         ret = link(target.c_str(), file.c_str());
@@ -116,44 +112,65 @@ void link_file(const std::string& file, const std::string& target, bool symlink)
     }
 }
 
-std::string target_for_link(string target, const std::string &file, bool symlink) 
+std::string target_for_link(string target, const std::string &file, Operation op)
 {
-    if (!symlink) // hardlinks don't care  
+    if (op == Operation::Hardlink) // hardlinks don't care
         return target;
-    
+
     return relative(file, target);
 }
 
-void handle_dups(const dups_map& dups, const std::string& buildroot, bool symlink)
+void handle_dups(dup_set& dups, Operation op)
 {
-    // all are hardlinks to the same data
-    if (dups.size() < 2)
-        return;
-    std::vector<ino_t> sorted;
-    sort_by_count(dups, sorted);
-    auto inodes = sorted.begin();
-    std::string target = dups.at(*inodes).front();
-
-    for (++inodes; inodes != sorted.end(); ++inodes) {
-        const std::vector<std::string> files = dups.at(*inodes);
-        for (auto it = files.begin(); it != files.end(); ++it) {
-            link_file(*it, target_for_link(target, *it, symlink), symlink);
+    // calculate number of hardlinked duplicates found, for each file
+    // this may be different than the st_nlink value
+    std::sort(dups.begin(), dups.end(), [](const file_entry& a, const file_entry& b) {
+        return a.inode < b.inode;
+    });
+    auto first = dups.begin();
+    while (first != dups.end()) {
+        auto r = equal_range(first, dups.end(), *first, [](const file_entry& a, const file_entry& b) {
+            return a.inode < b.inode;
+        });
+        for (auto i = r.first; i != r.second; ++i) {
+            i->link_count = std::distance(r.first, r.second);
         }
+        first = r.second;
+    }
+
+    // use the file with most hardlinks as target
+    // in case of ties, sort by name to get a stable order for reproducible builds
+    std::sort(dups.begin(), dups.end(), [](const file_entry& a, const file_entry& b) {
+        if (a.link_count == b.link_count)
+            return a.path > b.path;
+        return a.link_count > b.link_count;
+    });
+
+    const string& target = dups[0].path;
+
+    for (const file_entry& e : dups) {
+        // skip duplicates hardlinked to first entry
+        if (e.inode == dups[0].inode)
+            continue;
+
+        link_file(e.path, target_for_link(target, e.path, op), op);
     }
 }
 
 int main(int argc, char** argv)
 {
-    bool symlink = false;
+    Operation op = Operation::Hardlink;
     std::vector<std::string> roots;
-    std::string buildroot;
     while (1) {
-        int result = getopt(argc, argv, "sb:");
+        int result = getopt(argc, argv, "sn");
         if (result == -1)
             break; /* end of list */
         switch (result) {
         case 's':
-            symlink = true;
+            op = Operation::Symlink;
+            break;
+        case 'n':
+            op = Operation::DryRun;
             break;
         default: /* unknown */
             break;
@@ -170,17 +187,17 @@ int main(int argc, char** argv)
 
     if (roots.empty()) {
         std::cerr << "Missing directory argument.";
+        return 1;
     }
     /* fdupes options used:
        -q: hide progress indicator
        -p: don't consider files with different owner/group or permission bits as duplicates
        -n: exclude zero-length files from consideration
-       -o name: output order of duplicates
        -r: follow subdirectories
        -H: also report hard links as duplicates
     */
-    std::string command = "fdupes -q -p -r -n -o name";
-    if (!symlink) {
+    std::string command = "fdupes -q -p -r -n";
+    if (op != Operation::Symlink) {
         /* if we create symlinks, avoid looking at hard links being duplicated. This way
            fdupes is faster and won't break them up anyway */
         command += " -H";
@@ -192,12 +209,14 @@ int main(int argc, char** argv)
     if (!pipe) {
         throw std::runtime_error("popen() failed!");
     }
-    std::array<char, MAXPATHLEN> buffer;
-    dups_map dups;
+    std::vector<char> buffer;
+    buffer.resize(MAXPATHLEN);
+
+    dup_set dups;
     while (fgets(buffer.data(), buffer.size(), pipe) != nullptr) {
         std::string line = buffer.data();
         if (line.length() < 2) {
-            handle_dups(dups, buildroot, symlink);
+            handle_dups(dups, op);
             dups.clear();
             continue;
         }
@@ -212,7 +231,7 @@ int main(int argc, char** argv)
             std::cerr << "Stat on '" << buffer.data() << "' failed" << std::endl;
             return 1;
         }
-        dups[sb.st_ino].push_back(line);
+        dups.emplace_back(sb.st_ino, 0, std::move(line));
     }
     pclose(pipe);
 

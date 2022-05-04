@@ -53,6 +53,26 @@ install -D -m755 fdupes_wrapper  %{buildroot}/usr/lib/rpm/fdupes_wrapper
 ./%{name} --recurse testdir
 ./%{name} --size testdir
 
+# Check wrapper
+PATH=`pwd`:$PATH
+(cd testdir; md5sum ./* ./*/* > ../testdir.md5 || true)
+for operation in '-n' '-s' ' '; do
+  cp -R testdir "testdir${operation}"
+  ./fdupes_wrapper ${operation} "testdir${operation}"
+  (cd "testdir${operation}"; md5sum --check ../testdir.md5)
+done
+# Check order does not depend on creation order - x should be target
+mkdir testdir_order
+for t in "a b x" "x a b" "a x b"; do
+  pushd testdir_order
+  for f in $t ; do cp ../testdir.md5 $f; done
+  ../fdupes_wrapper -s ./
+  test -h ./a
+  test -h ./b
+  rm *
+  popd
+done
+
 %files
 %doc CHANGES
 %{_bindir}/%{name}
