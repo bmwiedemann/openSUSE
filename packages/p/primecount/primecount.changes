@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May  3 16:19:00 UTC 2022 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primecount-7.3 (API & ABI are backwards compatible).
+- Improved big.Little CPU detection.
+- Improved nth prime performance for small n.
+- Reduced the number of memory allocations.
+- Many CMake build system improvements.
+
+-------------------------------------------------------------------
 Wed Dec  8 08:15:00 UTC 2021 - Kim Walisch <kim.walisch@gmail.com>
 
 - Add pkg-config/pkgconf support (primecount.pc).
