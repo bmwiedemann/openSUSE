@@ -106,10 +106,10 @@ BuildRequires:  openldap2-devel
 BuildRequires:  libnsl-devel
 %endif
 # /usr/lib/postfix/bin//post-install: line 667: ed: command not found
-Requires(pre):    ed
-Requires(preun):  ed
-Requires(post):   ed
-Requires(postun): ed
+Requires(pre):    /usr/bin/ed
+Requires(preun):  /usr/bin/ed
+Requires(post):   /usr/bin/ed
+Requires(postun): /usr/bin/ed
 # /usr/sbin/config.postfix needs perl
 Requires(pre):    perl
 Requires(preun):  perl
