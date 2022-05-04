@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May  2 09:51:21 UTC 2022 - jlee@suse.com
+
+- Respin amd-sev and amd-sev-es features
+  After more testing, we found that not all descriptors can support
+  both amd-sev with amd-sev-es. So we removed all amd-sev and amd-sev-es
+  feature tags but only keep them in ovmf-x86_64-2m.json and
+  60-ovmf-x86_64.json. (bsc#1198246#c75)
+
+-------------------------------------------------------------------
 Sat Mar 26 05:57:17 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Add GCC 12 workaround (ovmf-ignore-spurious-GCC-12-warning.patch)
