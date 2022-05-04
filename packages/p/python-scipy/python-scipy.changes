@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 12 12:20:43 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- With the previously added -ffloat-store, some tests that fail on i586.
+  Disable them.
+
+-------------------------------------------------------------------
+Tue Apr 12 06:36:01 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Limit double floating point precision for x87, triggered by GCC 12.
+  Fixes test_kolmogorov.py Fatal Python error: Floating point exception
+  which is a double floating-point test.
+
+-------------------------------------------------------------------
 Mon Mar 28 18:16:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.8.0

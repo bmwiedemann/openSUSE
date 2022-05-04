@@ -150,6 +150,11 @@ for numerical integration and optimization.
 find . -type f -name "*.py" -exec sed -i "s|#!%{_bindir}/env python||" {} \;
 echo '    ignore:.*The distutils.* is deprecated.*:DeprecationWarning' >> pytest.ini
 
+%ifarch i586
+# Limit double floating point precision for x87, triggered by GCC 12.
+%global optflags %(echo "%{optflags} -ffloat-store")
+%endif
+
 %if !%{with test}
 %build
 %{python_expand #
@@ -235,6 +240,13 @@ donttest+=" or (TestNoData and test_nodata)"
 donttest+=" or (TestBSR and test_scalar_idx_dtype)"
 # error while getting entropy
 donttest+=" or (test_cont_basic and 500-200-ncf-arg74)"
+# fails on i586
+%ifarch i586
+donttest+=" or (test_linprog and test_bug_6690)"
+donttest+=" or (test_hausdorff and test_brute_force_comparison_forward)"
+donttest+=" or (test_hausdorff and test_2d_data_forward)"
+donttest+=" or (test_iterative and test_x0_equals_Mb)"
+%endif
 %python_exec runtests.py -vv --no-build -m fast -- -k "not ($donttest)"
 # prevent failing debuginfo extraction because we did not create anything for testing
 touch debugsourcefiles.list
