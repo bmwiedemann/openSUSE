@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May  2 04:07:18 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- Enable acpid (boo#1196609), its not installed by default on most
+  systems anymore but the enlightenment desktop still uses its
+  events to trigger various bindings and shows an error dialog
+  when acpid is not running.
+
+-------------------------------------------------------------------
 Mon Jul 19 13:19:00 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Enable storeBackup (bsc#1115457).
