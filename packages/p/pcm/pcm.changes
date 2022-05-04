@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May  4 09:23:50 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 202203:
+  * Add experimental pcm csv data plot and background collection scripts
+  * Print 4 digits for MPI metrics
+  * Uncore linux perf event robustness enhancements
+  * pcm-raw: additional overhead reduction for multi-group collection
+  * general overhead reduction (skip restoring thread affinity when not required)
+  * pcm-numa, pcm-tsx: add -pid option
+  * Fix compilation of examples on old gcc
+  * Fix: restore affinity for caller process
+  * Fixed race condition in resctrl (when not available)
+
+-------------------------------------------------------------------
 Fri Jan 28 12:25:00 UTC 2022 - Roman Dementiev <roman.dementiev@intel.com>
 
 - Update to 202201 upstream version:

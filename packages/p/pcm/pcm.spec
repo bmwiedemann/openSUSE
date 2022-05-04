@@ -1,7 +1,7 @@
 #
 # spec file for package pcm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           pcm
-Version:        202201
+Version:        202203
 Release:        0
 Summary:        Processor Counter Monitor
 License:        BSD-3-Clause
 URL:            https://github.com/opcm/pcm
-Source:         https://github.com/opcm/pcm/archive/%{version}.tar.gz
+Source:         https://github.com/opcm/pcm/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  make
-BuildRequires:  cmake
 ExclusiveArch:  %{ix86} x86_64
 
 %description
@@ -37,14 +37,13 @@ of Intel Core, Xeon, Atom and Xeon Phi processors.
 %setup -q
 
 %build
-export CFLAGS="%{optflags}"
-export CXXFLAGS="%{optflags}"
 %cmake -DCMAKE_BUILD_TYPE=CUSTOM -DCMAKE_INSTALL_PREFIX=%{_prefix}
 %{!?cmake_build:%define cmake_build %{__cmake}}
 %cmake_build
 
 %install
 %cmake_install
+rm -rf %{buildroot}%{_datadir}/doc/%{name}
 
 %files
 %license LICENSE
@@ -72,5 +71,6 @@ export CXXFLAGS="%{optflags}"
 %{_datadir}/pcm/opCode-106.txt
 %{_datadir}/pcm/opCode-85.txt
 %{_datadir}/pcm/opCode-134.txt
+%{_datadir}/pcm/PMURegisterDeclarations
 
 %changelog
