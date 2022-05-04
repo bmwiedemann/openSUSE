@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May  4 08:58:29 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update 1.1.0:
+  * The bookmark functionality is improved a lot. An example
+    bookmarks file is also added.
+  * Several (old) issues in the drop-down mode are fixed.
+  * A shortcut entry is added for the drop-down shortcut.
+  * Problems in closing of the last tab with prompt are fixed.
+  * Fixed updating of shortcuts on tab switching/removal/creation.
+  * Fixed right clicking of an empty area of tabbar.
+  * Now selecting an unlimited history in Terminal settings
+    disables the history size spin-box.
+
+-------------------------------------------------------------------
 Mon Nov  8 10:09:44 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.0.0:

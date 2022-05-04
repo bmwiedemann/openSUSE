@@ -1,7 +1,7 @@
 #
 # spec file for package qterminal
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qterminal
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        A Qt-based terminal emulator
 License:        GPL-2.0-only
@@ -69,8 +69,9 @@ The lightweight Qt terminal emulator.
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/applications/%{name}-drop.desktop
-%{_datadir}/appdata/qterminal.appdata.xml
 %{_datadir}/icons/hicolor/64x64/apps/qterminal.png
+%{_datadir}/metainfo/qterminal.metainfo.xml
+%{_datadir}/qterminal/qterminal_bookmarks_example.xml
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/qterminal

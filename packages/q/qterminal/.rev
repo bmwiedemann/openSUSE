@@ -203,4 +203,21 @@
   * Added a workaround for wrong menu positions under Wayland.</comment>
     <requestid>930119</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3a40b1cf0d956d8d446a27ff5304369c</srcmd5>
+    <version>1.1.0</version>
+    <time>1651669870</time>
+    <user>dimstar_suse</user>
+    <comment>- Update 1.1.0:
+  * The bookmark functionality is improved a lot. An example
+    bookmarks file is also added.
+  * Several (old) issues in the drop-down mode are fixed.
+  * A shortcut entry is added for the drop-down shortcut.
+  * Problems in closing of the last tab with prompt are fixed.
+  * Fixed updating of shortcuts on tab switching/removal/creation.
+  * Fixed right clicking of an empty area of tabbar.
+  * Now selecting an unlimited history in Terminal settings
+    disables the history size spin-box.</comment>
+    <requestid>974854</requestid>
+  </revision>
 </revisionlist>
