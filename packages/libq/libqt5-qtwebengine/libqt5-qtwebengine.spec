@@ -59,7 +59,6 @@ BuildRequires:  fdupes
 BuildRequires:  flac-devel
 BuildRequires:  flex
 BuildRequires:  gperf
-BuildRequires:  binutils-gold
 BuildRequires:  git-core
 BuildRequires:  krb5
 BuildRequires:  krb5-devel

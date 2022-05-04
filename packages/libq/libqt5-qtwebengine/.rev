@@ -802,4 +802,13 @@
     <comment></comment>
     <requestid>973537</requestid>
   </revision>
+  <revision rev="80" vrev="3">
+    <srcmd5>f4dcfa5be65627a84cc582b7e3bd8259</srcmd5>
+    <version>5.15.9</version>
+    <time>1651669837</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove dependency on binutils-gold as the package will be removed
+  in the future. Gold linker is unmaintained by the upstream project. (forwarded request 974346 from marxin)</comment>
+    <requestid>974366</requestid>
+  </revision>
 </revisionlist>
