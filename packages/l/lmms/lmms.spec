@@ -1,7 +1,7 @@
 #
 # spec file for package lmms
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,13 @@
 #
 
 
-# Since 42.2 RPM creates a hard requirement on a build time library (libvstbase), the requirement is unnecessary and bad
-#%%global __requires_exclude_from ^%%{_libdir}/lmms/.*\\.so$
-
 # The revision numbers for rpmalloc and qt5-x11embed come from accessing them via
 # https://github.com/LMMS/lmms/tree/v%%{version}/src/3rdparty/qt5-x11embed and
 # https://github.com/LMMS/lmms/tree/v1.2.1/src/3rdparty/rpmalloc/rpmalloc (two directories not a mistake)
 %define rpmallocrev b5bdc18051bb74a22f0bde4bcc90b01cf590b496
 %define qt5x11embedrev 022b39a1d496d72eb3e5b5188e5559f66afca957
 
-%bcond_without  carla
+%bcond_with     carla
 %bcond_without  crippled_stk
 %bcond_without  wine
 %if 0%{?suse_version} <= 1500
@@ -126,7 +123,7 @@ ExclusiveArch:  x86_64
 # also needed (contains libcarla_standalone2 library)
 # to enable internal Carla plugin host
 BuildRequires:  carla
-BuildRequires:  pkgconfig(carla-standalone)
+BuildRequires:  pkgconfig(carla-native-plugin)
 Requires:       carla = %carlavers
 %endif
 
@@ -206,7 +203,12 @@ export CFLAGS="$CFLAGS -fPIC"
   -DWANT_QT5=ON \
   -DCMAKE_SHARED_LINKER_FLAGS="" \
   -DCMAKE_EXE_LINKER_FLAGS:STRING="$LDFLAGS -pie" \
-  -DCMAKE_SKIP_RPATH=OFF \
+  -DCMAKE_SKIP_RPATH=ON \
+%if %{with carla}
+  -DCARLA_VERSION_HEX=0x010911 \
+%else
+ -DWANT_CARLA:BOOL=OFF \
+%endif
   -Wno-dev
 export PATH=$PATHBU
 %if 0%{?suse_version} > 1501 || 0%{?sle_version} > 150300

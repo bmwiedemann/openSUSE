@@ -389,4 +389,12 @@ Require: filesystem</comment>
     <comment></comment>
     <requestid>970137</requestid>
   </revision>
+  <revision rev="39" vrev="7">
+    <srcmd5>1f95c01881ff8fe132eb7281ae8dc35b</srcmd5>
+    <version>1.2.2</version>
+    <time>1651669867</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974833</requestid>
+  </revision>
 </revisionlist>
