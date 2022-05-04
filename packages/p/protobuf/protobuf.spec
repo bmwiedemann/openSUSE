@@ -17,7 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define sover 30
+%define sover 31
 %define tarname protobuf
 %define src_install_dir %{_prefix}/src/%{name}
 %define extra_java_flags -source 7 -target 7
@@ -27,7 +27,7 @@
 %bcond_without python2
 %bcond_without python3
 Name:           protobuf
-Version:        3.19.4
+Version:        3.20.1
 Release:        0
 Summary:        Protocol Buffers - Google's data interchange format
 License:        BSD-3-Clause
@@ -36,6 +36,10 @@ URL:            https://github.com/protocolbuffers/protobuf
 Source0:        https://github.com/protocolbuffers/protobuf/archive/v%{version}.tar.gz#/%{tarname}-%{version}.tar.gz
 Source1:        manifest.txt.in
 Source2:        baselibs.conf
+# PATCH-FIX-UPSTREAM change_desc_db.patch gh#googleapis/python-api-core#372 mcepl@suse.com
+# Remove leading dot from database entries, probably just a poor workaround
+# Reported to upstream as gh#protocolbuffers/protobuf#9867
+Patch0:         change_desc_db.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
@@ -163,7 +167,7 @@ This package contains the Python bindings for Google Protocol Buffers.
 %endif
 
 %prep
-%autosetup -n %{tarname}-%{version}
+%autosetup -p1 -n %{tarname}-%{version}
 mkdir gmock
 
 %if %{with python2} || %{with python3}
