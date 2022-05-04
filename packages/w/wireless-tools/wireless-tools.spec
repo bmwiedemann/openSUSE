@@ -1,7 +1,7 @@
 #
 # spec file for package wireless-tools
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150300
+# systemd-rpm-macros is wrong in 15.3 and below
+%define _modprobedir /lib/modprobe.d
+%endif
+%global modprobe_d_files 50-ipw2200.conf 50-iwl3945.conf 50-prism54.conf
+
 %define _udevdir %(pkg-config --variable=udevdir udev)
 
 Name:           wireless-tools
@@ -24,8 +30,8 @@ Release:        0
 Summary:        Tools for a wireless LAN
 License:        GPL-2.0-only
 Group:          Hardware/Wifi
-URL:            http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html
-Source:         http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/wireless_tools.%{version}.tar.gz
+URL:            https://hewlettpackard.github.io/wireless-tools/
+Source:         https://hewlettpackard.github.io/wireless-tools/wireless_tools.30.pre9.tar.gz
 Source2:        suse-files.tar.gz
 Source4:        ipw2200.modprobe
 Source5:        prism54.modprobe
@@ -91,10 +97,10 @@ tar -xvzf %{SOURCE2}
 install -m755 install_intersil_firmware %{buildroot}%{_sbindir}
 install -m755 install_acx100_firmware %{buildroot}%{_sbindir}
 install -m755 ../lwepgen/lwepgen %{buildroot}%{_sbindir}
-mkdir -p %{buildroot}%{_sysconfdir}/modprobe.d
-install -m644 %{SOURCE4} %{buildroot}%{_sysconfdir}/modprobe.d/50-ipw2200.conf
-install -m644 %{SOURCE10} %{buildroot}%{_sysconfdir}/modprobe.d/50-iwl3945.conf
-install -m644 %{SOURCE5} %{buildroot}%{_sysconfdir}/modprobe.d/50-prism54.conf
+mkdir -p %{buildroot}%{_modprobedir}
+install -m644 %{SOURCE4} %{buildroot}%{_modprobedir}/50-ipw2200.conf
+install -m644 %{SOURCE10} %{buildroot}%{_modprobedir}/50-iwl3945.conf
+install -m644 %{SOURCE5} %{buildroot}%{_modprobedir}/50-prism54.conf
 
 mkdir -p %{buildroot}%{_udevdir}
 install -m755 %{SOURCE8} %{buildroot}%{_udevdir}/iwlwifi-led.sh
@@ -103,14 +109,28 @@ install -m644 %{SOURCE9} %{buildroot}%{_udevrulesdir}/99-iwlwifi-led.rules
 sed -i -e "s|@UDEVDIR@|%{_udevdir}|g" %{buildroot}%{_udevrulesdir}/99-iwlwifi-led.rules
 %find_lang %{name} --with-man --all-name
 
+%pre
+# Avoid restoring outdated stuff in posttrans
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -f "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}.rpmsave.old" || :
+done
+
+%posttrans
+# Migration of modprobe.conf files to _modprobedir
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -fv "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}" || :
+done
+
 %post -n libiw30 -p /sbin/ldconfig
 %postun -n libiw30 -p /sbin/ldconfig
 
 %files -f %{name}.lang
 %doc CHANGELOG.h PCMCIA.txt README*
-%dir %{_sysconfdir}/modprobe.d
+%dir %{_modprobedir}
 %{_sbindir}/*
-%config %{_sysconfdir}/modprobe.d/*
+%{_modprobedir}/*
 %{_udevdir}
 %{_udevdir}/iwlwifi-led.sh
 %dir %{_mandir}/cs
