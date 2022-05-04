@@ -1,7 +1,38 @@
 -------------------------------------------------------------------
+Tue Mar  8 18:44:15 UTC 2022 - Julio González Gil <julio@juliogonzalez.es>
+
+- Update to version 1.91 (bsc#1198900)
+  * Fix RowFlush can not upload last part smaller than 5MB using NoCacheMultipartPost
+  * Fix IAM role retrieval from IMDSv2
+  * Add option to allow unsigned payloads
+  * Fix mixupload return EntityTooSmall while a copypart is less than 5MB after split
+  * Allow compilation on Windows via MSYS2
+  * Handle utimensat UTIME_NOW and UTIME_OMIT special values
+  * Preserve sub-second precision in more situations
+  * Always flush open files with O_CREAT flag
+  * Fixed not to call Flush even if the file size is increased
+  * Include climits to support musl libc
+
+-------------------------------------------------------------------
 Mon Aug  9 23:35:11 UTC 2021 - Julio González Gil <julio@juliogonzalez.es>
 
 - Update to version 1.90
+  + Don't ignore nomultipart when storage is low
+  + Fix POSIX compatibility issues found by pjdfstest
+  + Fail CheckBucket when S3 returns PermanentRedirect
+  + Do not create zero-byte object when creating file
+  + Allow arbitrary size AWS secret keys
+  + Fix race conditions
+  + Set explicit Content-Length: 0 when initiating MPU
+  + Set CURLOPT_UNRESTRICTED_AUTH when authenticating
+  + Add jitter to avoid thundering herd
+  + Loosen CheckBucket to check only the bucket
+  + Add support for AWS-style environment variables
+
+-------------------------------------------------------------------
+Mon Aug  9 23:35:11 UTC 2021 - Julio González Gil <julio@juliogonzalez.es>
+
+- Update to version 1.90 (bsc#1193236)
   + Don't ignore nomultipart when storage is low
   + Fix POSIX compatibility issues found by pjdfstest
   + Fail CheckBucket when S3 returns PermanentRedirect
