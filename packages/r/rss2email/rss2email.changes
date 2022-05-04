@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 26 05:44:30 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- No longer skip python310, feedparser is now available. 
+
+-------------------------------------------------------------------
 Sat Feb  5 16:55:56 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
 
 - Skip python310: no sgmlli3k and thus no feedparser for Python3.10

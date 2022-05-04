@@ -18,8 +18,6 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-# no feedparser for Python 3.10
-%define skip_python310 1
 Name:           rss2email
 Version:        3.13.1
 Release:        0
