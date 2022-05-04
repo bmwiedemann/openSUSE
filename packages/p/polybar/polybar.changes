@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May  4 09:27:41 UTC 2022 - Mateusz Mielczarek <mateusz.mielczarek2@gmail.com>
+
+- Update to 3.6.3:
+  * custom/script: Output clearing when exec-if fails (#2674)
+  * internal/battery: poll-interval not working (#2649, #2677)
+  * ipc: Polybar failing to open IPC channel after another user already ran polybar, if XDG_RUNTIME_DIR is not set (#2683, #2684)
+  * No overlines/underlines being drawn when using offsets (#2685)
+  * Update struts (_NET_WM_STRUT_PARTIAL) when hiding the bar (#2702)
+  * internal/pulseaudio: Hanging during startup (#2707, #2709)
+  * internal/xworkspaces: Updates of _NET_DESKTOP_VIEWPORT being ignored (#2693, #2698) 
+
+-------------------------------------------------------------------
 Sun May  1 04:53:23 UTC 2022 - Sebastian Ross <sebastianfross1@gmail.com>
 
 - Added new BuildRequires libmpdclient-devel: build requirement for mpd support 
