@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 21 23:48:17 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.2
+  * Recognize software rendering as such now that it is done with
+    gallium llvmpipe, rather then the classic software renderer
+  * Add a new hasDri function to opengl-game-functions.sh
+- Add use-posix-shell.patch
+- Use SourceURLs
+
+-------------------------------------------------------------------
 Fri Jul 29 15:33:52 UTC 2016 - rpm@fthiessen.de
 
 - Ported to be compatible with POSIX-shell instead of bash.

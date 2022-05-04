@@ -1,7 +1,7 @@
 #
 # spec file for package opengl-games-utils
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           opengl-games-utils
-Version:        0.1
+Version:        0.2
 Release:        0
 Summary:        Utilities to check proper 3d support before launching 3d games
 License:        SUSE-Public-Domain
 Group:          Amusements/Games/3D/Other
-Url:            http://fedoraproject.org/wiki/SIGs/Games
-Source0:        opengl-game-wrapper.sh
-Source1:        opengl-game-functions.sh
-Source2:        README
+URL:            http://fedoraproject.org/wiki/SIGs/Games
+Source0:        https://src.fedoraproject.org/rpms/opengl-games-utils/raw/rawhide/f/opengl-game-wrapper.sh
+Source1:        https://src.fedoraproject.org/rpms/opengl-games-utils/raw/rawhide/f/opengl-game-functions.sh
+Source2:        https://src.fedoraproject.org/rpms/opengl-games-utils/raw/rawhide/f/README
+Patch0:         use-posix-shell.patch
 Requires:       %{_bindir}/glxinfo
 Requires:       zenity
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -39,7 +40,8 @@ by other packages and is not intended for direct end user use!
 
 %prep
 %setup -q -c -T
-cp %{SOURCE2} .
+cp %{SOURCE0} %{SOURCE1} %{SOURCE2} .
+%patch0
 
 %build
 # nothing to build
@@ -47,8 +49,8 @@ cp %{SOURCE2} .
 %install
 mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_datadir}/%{name}
-install -p -m 755 %{SOURCE0} %{buildroot}%{_bindir}
-install -p -m 644 %{SOURCE1} %{buildroot}%{_datadir}/%{name}
+install -p -m 755 opengl-game-wrapper.sh %{buildroot}%{_bindir}
+install -p -m 644 opengl-game-functions.sh %{buildroot}%{_datadir}/%{name}
 
 %files
 %defattr(-,root,root,-)

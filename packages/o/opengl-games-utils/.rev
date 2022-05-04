@@ -46,4 +46,12 @@ Fixed requires for glxinfo and rpm category since we're at it.</comment>
     <comment>Ported so no bash is required, POSIX-shell is sufficient. (forwarded request 415879 from susnux)</comment>
     <requestid>415888</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0acb11c0e1b3ae69cac1d05aa0ce5c64</srcmd5>
+    <version>0.2</version>
+    <time>1651669866</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974830</requestid>
+  </revision>
 </revisionlist>

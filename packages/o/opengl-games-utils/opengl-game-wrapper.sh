@@ -1,10 +1,9 @@
-#!/bin/sh -e
+#!/bin/bash
 
 . /usr/share/opengl-games-utils/opengl-game-functions.sh
 
-game=$(basename $0)
-game="${game%%-wrapper*}"
+GAME=`basename $0 | sed 's/-wrapper.*//'`
 
-checkDriOK "$game"
+checkDriOK $GAME
 
-exec "$game" "$@"
+exec $GAME "$@"
