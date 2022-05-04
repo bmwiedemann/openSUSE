@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Wed Apr 20 19:32:52 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Use system provided libhtscodecs
+- Update to version 1.15.1
+  * Security fix: Fixed broken error reporting in the sam_cap_mapq()
+    function, due to a missing hts_log() parameter.
+    Prior to this fix it was possible to abuse the log message format
+    string by passing a specially crafted alignment record to
+    this function.
+  * Fixed excessive memory used by multi-threaded SAM output on long
+    reads.
+  * Fixed a bug where tabix would misinterpret region specifiers
+    starting at position 0.
+  * The VCF header parser will now issue a warning if it finds an
+    INFO header with Type=Flag but Number not equal to 0.
+- Update to version 1.15
+  * Bgzip now has a --keep option to not remove the input file
+    after compressing.
+  * Improved file format detection so some BED files are no longer
+    detected as FASTQ or FASTA.
+  * Added xz (lzma), zstd and D4 formats to the file type detection
+    functions. We don't actively support reading these data types,
+    but function calls and htsfile can detect them.
+  * CRAM now also uses libdeflate for read-names if the libdeflate
+    version is new enough (1.9 onwards). Previously we used zlib for
+    this due to poor performance of libdeflate.
+  * The VCF and BCF readers will now issue a warning if contig,
+    INFO or FORMAT IDs do not match the formats described in the
+    VCFv4.3 specification.
+  * Bug fixes
+- Update to version 1.14
+  * Added a keep option to bgzip to leave the original file untouched.
+  * endpos has been added to the filter language, giving the position
+    of the rightmost mapped base as measured by the CIGAR string.
+  * Interfaces have been added to interpret the new base modification
+    tags added to the SAMtags document in samtools/hts-specs#418.
+  * New API functions hts_flush()/sam_flush()/bcf_flush() for
+    flushing output htsFile/samFile/vcfFile streams.
+  * The synced_bcf_reader now sorts lines with symbolic alleles by
+    END tag as well as POS.
+  * Added synced_bcf_reader options BCF_SR_REGIONS_OVERLAP and
+    BCF_SR_TARGETS_OVERLAP for better control of records that start
+    outside the desired region but overlap it are handled.
+  * HTSlib will now accept long-cigar CG:B: tags made by htsjdk which
+    don't quite follow the specification properly
+  * The FASTA and FASTQ readers get an option to skip over the first
+    item on the header line, and use the second as the read name.
+  * HTSlib is now more strict when parsing the VCF samples line
+  * HTSlib will now warn if it looks like the header has been
+    corrupted by diagnostic messages from the program that made it.
+  * File format detection will now recognise signatures for
+    XZ, Zstd and D4 files (note that HTSlib will not read them yet).
+  * Bug fixes
+- Update to version 1.13
+  * In case a PG header line has multiple ID tags supplied by other
+    applications, the header API now selects the first one encountered
+    as the identifying tag and issues a warning when detecting
+    subsequent ID tags.
+  * VCF header reading function (vcf_hdr_read) no longer tries to
+    download a remote index file by default.
+  * Support reading and writing FASTQ format in the same way as SAM,
+    BAM or CRAM. Records read from a FASTQ file will be treated as
+    unmapped data.
+  * Added GCP requester pays bucket access.
+  * Made mpileup's overlap removal choose which copy to remove at
+    random instead of always removing the second one.
+  * It is now possible to use platform specific BAQ parameters.
+  * A new hts_bin_level API function has been added, to compute the
+    level of a given bin in the binning index.
+  * Related to the above, a new API method, hts_idx_nseq,
+    now returns the total number of contigs from an index.
+  * Added bracket handling to bcf_hdr_parse_line,
+    for use with ##META lines.
+  * Bug fixes
+
+-------------------------------------------------------------------
 Wed Apr 28 16:03:54 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.12:

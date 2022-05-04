@@ -1,7 +1,7 @@
 #
 # spec file for package libhts
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libhts
-Version:        1.12
+Version:        1.15.1
 Release:        0
 %define   sonum 3
 Summary:        C library for high-throughput sequencing data formats
@@ -27,6 +27,7 @@ URL:            https://github.com/samtools/htslib/
 Source0:        https://github.com/samtools/htslib/releases/download/%{version}/htslib-%{version}.tar.bz2
 Source100:      baselibs.conf
 BuildRequires:  gcc-c++
+BuildRequires:  htscodecs-devel >= 1.2.2
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(liblzma)
@@ -114,12 +115,15 @@ Header files and libraries of the HTSlib project for compiling against %{name}.
 %setup -q -n htslib-%{version}
 
 %build
-%configure
-make %{?_smp_mflags}
+%configure --with-external-htscodecs --disable-static
+%make_build
 
 %install
 %make_install
+# remove static library
 rm %{buildroot}%{_libdir}/libhts.a
+# fix permissions
+chmod 0755 %{buildroot}%{_libdir}/libhts.so.*
 
 %post   -n libhts%{sonum} -p /sbin/ldconfig
 %postun -n libhts%{sonum} -p /sbin/ldconfig
@@ -146,8 +150,7 @@ rm %{buildroot}%{_libdir}/libhts.a
 %{_mandir}/man7/*
 
 %files devel
-%{_includedir}/htslib/.
-%{_includedir}/htslib/*.h
+%{_includedir}/htslib
 %{_libdir}/libhts.so
 %{_libdir}/pkgconfig/htslib.pc
 
