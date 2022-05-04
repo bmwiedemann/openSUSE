@@ -19,10 +19,10 @@
 %define soname  libbelcard
 %define sover   1
 Name:           belcard
-Version:        5.0.67
+Version:        5.1.12
 Release:        0
 Summary:        C++ library to manipulate vCard standard format files
-License:        GPL-3.0-only
+License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 URL:            https://linphone.org/
 Source:         https://gitlab.linphone.org/BC/public/belcard/-/archive/%{version}/%{name}-%{version}.tar.bz2
