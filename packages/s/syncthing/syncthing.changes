@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May  3 15:29:06 UTC 2022 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.20.0
+  * Bugfixes:
+    #7855: Watching for changes using too many system resources on BSDs (kqueue)
+    #8020: Dangling symlink prevents filesystem watcher on Solaris
+    #8232: Missing include file endlessly spams log
+    #8258: The latest version does not support go1.18 compilation!!
+    #8261: TypeError: Cannot read properties of null (reading 'status') in the GUI after killing Syncthing
+
+  * Enhancements:
+    #8202: Indicate folders / devices where the remote end has not accepted sharing.
+    #8282: Change default log format to include date
+
+  * Other issues:
+    #8279: Simplify tests using T.TempDir
+
+-------------------------------------------------------------------
 Tue Apr  5 09:25:52 UTC 2022 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.19.2
