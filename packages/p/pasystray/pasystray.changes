@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May  3 18:17:39 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.8.0
+  * volume: calculate notify value to always be between 0-100
+    fixes volume-max not working
+  * Fix null unref in pulseaudio_terminate
+  * Prefer symbolic icons, use microphone sensitivity icons.
+  * Import X11 volume control key grabber from pa-applet and
+    use for volume control
+  * Use volume max for icon instead of avg
+  * Listen to activate events of menu items
+    The new `activate` handlers substitute the current click
+    handlers for default left click events
+
+-------------------------------------------------------------------
 Thu Feb 25 14:39:49 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Keep Requires: pulseaudio when building on SLE/Leap before 15.3.

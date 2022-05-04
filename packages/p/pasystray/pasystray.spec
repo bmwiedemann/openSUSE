@@ -1,7 +1,7 @@
 #
 # spec file for package pasystray
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,14 @@
 #
 
 
-%if 0%{?suse_version} == 1315
-%define build_wayland_backend 0
-%define stdc99 1
-%else
-%define build_wayland_backend 1
-%define stdc99 0
-%endif
 Name:           pasystray
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        PulseAudio system tray
 License:        LGPL-2.1-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/christophgysin/pasystray
-Source:         https://github.com/christophgysin/pasystray/archive/pasystray-%{version}.tar.gz
+Source:         https://github.com/christophgysin/pasystray/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  automake
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -40,10 +33,12 @@ BuildRequires:  pkgconfig(gail-3.0)
 BuildRequires:  pkgconfig(gdk-3.0)
 BuildRequires:  pkgconfig(gdk-broadway-3.0)
 BuildRequires:  pkgconfig(gdk-x11-3.0)
+BuildRequires:  pkgconfig(gdk-wayland-3.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk+-broadway-3.0)
 BuildRequires:  pkgconfig(gtk+-unix-print-3.0)
 BuildRequires:  pkgconfig(gtk+-x11-3.0)
+BuildRequires:  pkgconfig(gtk+-wayland-3.0)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
@@ -57,10 +52,6 @@ Suggests:       paman
 Suggests:       paprefs
 Suggests:       pavucontrol
 Suggests:       pavumeter
-%if %{build_wayland_backend}
-BuildRequires:  pkgconfig(gdk-wayland-3.0)
-BuildRequires:  pkgconfig(gtk+-wayland-3.0)
-%endif
 
 %description
 A replacement for the deprecated padevchooser
@@ -68,15 +59,12 @@ A replacement for the deprecated padevchooser
 Pasystray allows setting the default PulseAudio source/sink and moving streams on the fly between sources/sinks without restarting the client applications.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
+%setup -q
 
 %build
-%if %{stdc99}
-export CFLAGS="%{optflags} --std=c99"
-%endif
 autoreconf -fi
 %configure --sysconfdir=%{_sysconfdir}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
