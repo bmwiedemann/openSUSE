@@ -1,7 +1,7 @@
 #
-# spec file for package asciidoc
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,35 @@
 #
 
 
-Name:           asciidoc
-Version:        9.1.0
+%define flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" != ""
+%define name_suffix -%{flavor}
+%endif
+
+Name:           asciidoc%{?name_suffix}
+Version:        10.1.4
 Release:        0
 Summary:        Text-Based Document Generation
 License:        GPL-2.0-or-later
-URL:            https://github.com/asciidoc/asciidoc-py3
-Source0:        https://github.com/%{name}/%{name}-py3/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://asciidoc-py.github.io/
+Source0:        https://github.com/asciidoc-py/asciidoc-py/releases/download/%{version}/asciidoc-%{version}.tar.gz
 Patch0:         asciidoc.version.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest-mock >= 3.3
+BuildRequires:  python3-setuptools
 BuildRequires:  python3-xml
 Requires:       docbook-xsl-stylesheets
 Requires:       python3-xml
-Recommends:     dblatex
+Recommends:     %{name}-latex-backend
 # a2x needs /usr/bin/xsltproc
 Recommends:     libxslt
 BuildArch:      noarch
+%if "%{flavor}" == "latextest"
+BuildRequires:  asciidoc-latex-backend
+%endif
 
 %description
 AsciiDoc is a text document format for writing short documents,
@@ -46,34 +57,71 @@ Summary:        Examples and Documents for asciidoc
 %description examples
 This package contains examples and documents of asciidoc.
 
-%prep
-%autosetup -p1 -n %{name}-py-%{version}
+%package latex-backend
+Summary:        Provide latex backend dependencies
+Requires:       %{name} = %{version}
+Requires:       dblatex
+# some of them are actually required by dblatex, but it's easier to keep them all in here
+Requires:       texlive-metafont-bin
+Requires:       tex(8r.enc)
+Requires:       tex(fancybox.sty)
+Requires:       tex(mathrsfs.sty)
+Requires:       tex(pcrr8c.tfm)
+Requires:       tex(phvr8t.tfm)
+Requires:       tex(ptmr8t.tfm)
+Requires:       tex(ptmri7t.tfm)
+Requires:       tex(rsfs10.tfm)
+Requires:       tex(upquote.sty)
+Requires:       tex(zptmcm7v.tfm)
+Requires:       tex(zptmcm7y.tfm)
 
+%description latex-backend
+AsciiDoc can generate pdf from asciidoc format through dblatex. For that it needs quite some
+latex dependencies that we don't want to have by default. So this package is optional.
+
+%prep
+%setup -q -n asciidoc-%{version}
 # do not use env
-find ./ -name \*.py -exec sed -i -e 's:%{_bindir}/env\ :%{_bindir}/:g' {} \;
+find ./ -name \*.py -exec sed -i -e 's:/usr/bin/env\ :%{_bindir}/:g' {} \;
+
+%if "%{flavor}" == "latextest"
+%build
+a2x --verbose --xsltproc-opts --nonet --attribute=badges --attribute=external_title -a toc -a numbered --attribute=pdf_format --format=pdf -a docinfo1 doc/a2x.1.txt
+
+%else
 
 %build
-autoreconf -fiv
-%configure
+%python3_build
 
 %install
-%make_install
+%python3_install
+mkdir -p %{buildroot}%{_mandir}/man1/
+cp -a doc/*.1 %{buildroot}%{_mandir}/man1/
 
-# Strip .py extension from binaries
-pushd %{buildroot}%{_bindir}
-	mv %{name}.py %{name}
-	mv a2x.py a2x
-popd
+%fdupes %{buildroot}%{python3_sitelib}/%{name}
+
+%check
+export PYTHONPATH="$PYTHONPATH:%{buildroot}%{python3_sitelib}"
+export PYTHONDONTWRITEBYTECODE=1
+python3 -m asciidoc.asciidoc --doctest
+python3 -m pytest --ignore=_build.python3 -v
+python3 tests/testasciidoc.py run
 
 %files
-%license COPYRIGHT
-%doc README.asciidoc BUGS.txt CHANGELOG.txt
-%config %{_sysconfdir}/%{name}
+%license COPYRIGHT LICENSE
+%doc README.md BUGS.adoc CHANGELOG.adoc
+%{python3_sitelib}/asciidoc
+%{python3_sitelib}/asciidoc-%{version}*
 %{_bindir}/%{name}
 %{_bindir}/a2x
 %{_mandir}/man1/*
 
 %files examples
-%doc doc website
+%doc doc
+
+%files latex-backend
+%license COPYRIGHT
+
+%endif
 
 %changelog
