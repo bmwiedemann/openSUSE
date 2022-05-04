@@ -33,6 +33,10 @@ Summary:        Python HTTP client with async support
 License:        BSD-3-Clause
 URL:            https://github.com/encode/httpx
 Source:         https://github.com/encode/httpx/archive/%{version}.tar.gz#/httpx-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM CVE-2021-41945 gh#encode/httpx#2084 including changes
+# from gh#encode/httpx#2185
+# Don't leak data in httpx.URL.copy_with
+Patch0:         CVE-2021-41945-copy_with-data-leak.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -81,7 +85,7 @@ BuildRequires:  %{python_module uvloop}
 Python HTTP client with async support.
 
 %prep
-%setup -q -n httpx-%{version}
+%autosetup -p1 -n httpx-%{version}
 rm setup.cfg
 
 %build

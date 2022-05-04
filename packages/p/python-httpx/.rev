@@ -60,4 +60,13 @@
     <comment></comment>
     <requestid>953911</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>e1d5c0746c2cf0273743a6cf5ff743ce</srcmd5>
+    <version>0.22.0</version>
+    <time>1651669824</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch CVE-2021-41945-copy_with-data-leak.patch:
+  * Do not leak data in httpx.URL.copy_with (bsc#1199002, CVE-2021-41945)</comment>
+    <requestid>974250</requestid>
+  </revision>
 </revisionlist>
