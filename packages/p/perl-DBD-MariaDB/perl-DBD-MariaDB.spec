@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DBD-MariaDB
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,18 @@
 #
 
 
-Name:           perl-DBD-MariaDB
-Version:        1.21
-Release:        0
 %define cpan_name DBD-MariaDB
-Summary:        MariaDB and MySQL driver for the Perl5 Database Interface (DBI)
+Name:           perl-DBD-MariaDB
+Version:        1.22
+Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        MariaDB and MySQL driver for the Perl5 Database Interface (DBI)
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PA/PALI/%{cpan_name}-%{version}.tar.gz
 Source1:        test-setup.sh
 Source2:        test-clean.sh
 Source3:        cpanspec.yml
 Patch0:         perl-DBD-MariaDB-fix_c_32x_test.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(DBI) >= 1.608
@@ -79,8 +77,7 @@ provided by this programming API are supported. Some rarely used functions
 are missing, mainly because no-one ever requested them.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0 -p1
+%autosetup  -n %{cpan_name}-%{version} -p1
 
 %build
 # fails to detect the paths since perl 5.32
@@ -100,7 +97,6 @@ HARNESS_OPTIONS=j4 make %{?_smp_mflags} test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes Changes.historic
 %license LICENSE
 

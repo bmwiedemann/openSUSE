@@ -13,25 +13,11 @@ index 6eb2cf1..4938ad9 100644
  
 @@ -77,7 +77,8 @@ my $error_handler_called = 0;
  $dbh->{HandleError} = sub { $error_handler_called = 1; die $_[0]; };
- eval { $dbh->prepare("USE " . $dbh->quote_identifier($test_db)) };
+ eval { $dbh->prepare($non_preparable_statement); };
  $dbh->{HandleError} = undef;
--ok($error_handler_called, 'USE is not supported with mariadb_server_prepare_disable_fallback=1');
+-ok($error_handler_called, "Non-preparable statement '$non_preparable_statement' is not supported with mariadb_server_prepare_disable_fallback=1");
 +
-+# ok($error_handler_called, 'USE is not supported with mariadb_server_prepare_disable_fallback=1');
++# ok($error_handler_called, "Non-preparable statement '$non_preparable_statement' is not supported with mariadb_server_prepare_disable_fallback=1");
  
  $dbh->{mariadb_server_prepare_disable_fallback} = 0;
  my $sth4;
-diff --git a/t/45bind_no_backslash_escapes.t b/t/45bind_no_backslash_escapes.t
-index 13dce12..f4fccb9 100644
---- a/t/45bind_no_backslash_escapes.t
-+++ b/t/45bind_no_backslash_escapes.t
-@@ -18,7 +18,8 @@ if ($dbh->{mariadb_serverversion} < 50001) {
-     plan skip_all => "Servers < 5.0.1 do not support sql_mode NO_BACKSLASH_ESCAPES";
- }
- 
--if ($dbh->{mariadb_clientversion} < 50001) {
-+# As from mariadb-connect-c 3.2.x version number for mariadb_clientversion is 3020x
-+if ($dbh->{mariadb_clientversion} < 50001 && $dbh->{mariadb_serverversion} < 50001) {
-     $id2_quoted_no_backslash = q(X'737472696E675C737472696E6722737472696E6727737472696E67');
- }
- 

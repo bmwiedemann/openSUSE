@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Apr 25 11:15:13 UTC 2022 - Tina Müller <tina.mueller@suse.com>
+
+- Update patch perl-DBD-MariaDB-fix_c_32x_test.patch
+
+-------------------------------------------------------------------
+Fri Apr 22 03:06:56 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.22
+   see /usr/share/doc/packages/perl-DBD-MariaDB/Changes
+
+  1.22 2022-04-22
+   - Disable usage of libmysqld.a from MySQL 8.x series
+   - Install README.pod into DBD/MariaDB/ subdirectory
+     (https://github.com/gooddata/DBD-MariaDB/issues/146)
+   - Do not export driver private C functions
+   - Fix typo in error message
+   - Fix compatibility with new MariaDB client and server versions
+     (https://github.com/perl5-dbi/DBD-MariaDB/issues/164)
+     (https://github.com/perl5-dbi/DBD-MariaDB/issues/167)
+     (https://github.com/perl5-dbi/DBD-mysql/issues/333)
+
+-------------------------------------------------------------------
 Wed Oct  6 09:18:36 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix regression test failures:
