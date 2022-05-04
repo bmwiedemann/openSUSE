@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 03 19:21:47 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1651605690.58b11fb:
+  * Do not let schedule_iso jobs expire
+  * cache service: Emit download rate only if known
+  * Avoid unhandled output in openqa-clone-job tests
+  * Allow exporting openqa-clone-job's API call for posting jobs
+  * Fix fullstack test
+  * Deal with unknown git revision
+  * Deal with cleaned up vars.json on investigation tab
+  * Dependency cron 2022-05-01
+  * Fix controller reuse bug in 03-auth.t
+  * Allow sendmail related things in apparmor
+
+-------------------------------------------------------------------
 Fri Apr 29 07:26:24 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1651126518.925dec9:
