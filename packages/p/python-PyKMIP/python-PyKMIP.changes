@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  4 09:55:17 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+- added patches
+  fix https://github.com/OpenKMIP/PyKMIP/issues/668
+  + python-PyKMIP-no-mock.patch
+
+-------------------------------------------------------------------
 Fri Sep 24 22:07:08 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Remove SQL-issues.patch with the patch

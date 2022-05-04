@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyKMIP
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,10 +29,11 @@ Source:         https://files.pythonhosted.org/packages/source/P/PyKMIP/PyKMIP-%
 # PATCH-FIX-UPSTREAM fix-tests-SQLAlchemy-140.patch gh#OpenKMIP/PyKMIP#656 mcepl@suse.com
 # fix tests to work with SQLAlchemy >= 1.4.0
 Patch0:         fix-tests-SQLAlchemy-140.patch
+# https://github.com/OpenKMIP/PyKMIP/issues/668
+Patch1:         python-PyKMIP-no-mock.patch
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
