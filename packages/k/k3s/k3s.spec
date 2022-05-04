@@ -1,7 +1,7 @@
 #
 # spec file for package k3s
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,9 +40,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  golang(API) >= 1.16
 BuildRequires:  pkgconfig(sqlite3)
-%ifarch aarch64
-BuildRequires:  binutils-gold
-%endif
 Requires:       cni-plugins
 Requires:       conntrack-tools
 Requires:       containerd
