@@ -2054,4 +2054,14 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
 </comment>
     <requestid>973279</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>dab74f52ad07331b10fae828fb0a53ee</srcmd5>
+    <version>14.0.3</version>
+    <time>1651669821</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 14.0.3.
+  * This release contains bug-fixes for the LLVM 14.0.0 release.
+    This release is API and ABI compatible with 14.0.0.</comment>
+    <requestid>974223</requestid>
+  </revision>
 </revisionlist>

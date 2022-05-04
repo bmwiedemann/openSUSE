@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 30 12:32:33 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 14.0.3.
+  * This release contains bug-fixes for the LLVM 14.0.0 release.
+    This release is API and ABI compatible with 14.0.0.
+
+-------------------------------------------------------------------
 Wed Apr 27 10:35:17 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 14.0.1.
