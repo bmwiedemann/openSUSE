@@ -12,6 +12,7 @@ Fri Apr  1 08:00:10 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 Thu Mar 31 09:40:46 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 2.8.9 (jsc#SLE-24261)
+  * fixes bsc#1199064, CVE-2022-25647
 - Removed patch:
   * sun-misc.patch
     + integrated upstream

@@ -39,4 +39,12 @@
     <comment>build as a modular jar</comment>
     <requestid>966358</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>11356a8b49da26198d2f474b5af3f438</srcmd5>
+    <version>2.8.9</version>
+    <time>1651669839</time>
+    <user>dimstar_suse</user>
+    <comment>Add bug id to the changelog</comment>
+    <requestid>974450</requestid>
+  </revision>
 </revisionlist>
