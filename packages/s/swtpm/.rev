@@ -139,4 +139,16 @@
     <comment>- Cheery-pick upstream patch allow-FORTIFY_SOURCE=3.patch. (forwarded request 967210 from marxin)</comment>
     <requestid>967242</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>baf83926784ee234a5c09a4d6c47d430</srcmd5>
+    <version>0.7.3</version>
+    <time>1651670257</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 0.7.3:
+  - swtpm:
+    - Use uint64_t in tlv_data_append() to avoid integer overflows
+    - Use uint64_t to avoid integer wrap-around when adding a uint32_t
+- removed allow-FORTIFY_SOURCE=3.patch (upstreamed) (forwarded request 973850 from msmeissn)</comment>
+    <requestid>974426</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 29 07:41:51 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- Updated to version 0.7.3:
+  - swtpm:
+    - Use uint64_t in tlv_data_append() to avoid integer overflows
+    - Use uint64_t to avoid integer wrap-around when adding a uint32_t
+- removed allow-FORTIFY_SOURCE=3.patch (upstreamed)
+
+-------------------------------------------------------------------
 Wed Apr  6 07:55:48 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Cheery-pick upstream patch allow-FORTIFY_SOURCE=3.patch.

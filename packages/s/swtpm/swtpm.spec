@@ -24,7 +24,7 @@
 %define modulename2 swtpm_svirt
 %define modulename3 swtpmcuse
 Name:           swtpm
-Version:        0.7.2
+Version:        0.7.3
 Release:        0
 Summary:        Software TPM emulator
 License:        BSD-3-Clause
@@ -32,7 +32,6 @@ Group:          System/Base
 URL:            https://github.com/stefanberger/swtpm
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source100:      swtpm-rpmlintrc
-Patch0:         allow-FORTIFY_SOURCE=3.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  expect
