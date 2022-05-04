@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  4 09:36:16 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+- added patches
+  fix https://github.com/codrsquad/setupmeta/issues/75
+  + python-setupmeta-no-mock.patch
+
+-------------------------------------------------------------------
 Wed Feb 23 11:29:52 UTC 2022 - pgajdos@suse.com
 
 - version update to 3.3.0

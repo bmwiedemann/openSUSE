@@ -25,7 +25,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/zsimic/setupmeta
 Source:         https://files.pythonhosted.org/packages/source/s/setupmeta/setupmeta-%{version}.tar.gz
-BuildRequires:  %{python_module mock}
+# https://github.com/codrsquad/setupmeta/issues/75
+Patch0:         python-setupmeta-no-mock.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
@@ -44,6 +45,7 @@ Simplify your setup.py.
 
 %prep
 %setup -q -n setupmeta-%{version}
+%patch0 -p1
 
 %build
 %python_build
