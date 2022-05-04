@@ -18,17 +18,12 @@
 
 %define lname   libpipeline1
 Name:           libpipeline
-Version:        1.5.5
+Version:        1.5.6
 Release:        0
 Summary:        A pipeline manipulation library
 License:        GPL-3.0-or-later
 Group:          System/Libraries
 URL:            https://www.nongnu.org/libpipeline/
-#
-# Back to download from savannah.nongnu.org for a fully bootstrapped
-# tar ball without the need of autoconfig and gl
-# Compare       https://gitlab.com/cjwatson/libpipeline/-/releases
-#
 Source0:        https://download.savannah.nongnu.org/releases/%{name}/%{name}-%{version}.tar.gz
 Source1:        https://download.savannah.nongnu.org/releases/%{name}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring

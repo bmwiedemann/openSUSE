@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 28 18:56:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.6:
+  * Fix handling of leading whitespace in `pipecmd_new_argstr` and
+   `pipecmd_argstr`.
+
+-------------------------------------------------------------------
 Tue Jan 11 08:03:36 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Update to 1.5.5:

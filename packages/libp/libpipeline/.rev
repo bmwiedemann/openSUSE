@@ -131,4 +131,14 @@
   * Developmed moved to Gitlab</comment>
     <requestid>945521</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>dbe571b83e68e919bcbf61b11a5b7ac0</srcmd5>
+    <version>1.5.6</version>
+    <time>1651670256</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.6:
+  * Fix handling of leading whitespace in `pipecmd_new_argstr` and
+   `pipecmd_argstr`. (forwarded request 973755 from dirkmueller)</comment>
+    <requestid>974422</requestid>
+  </revision>
 </revisionlist>
