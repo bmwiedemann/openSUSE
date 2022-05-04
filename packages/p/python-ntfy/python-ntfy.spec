@@ -26,10 +26,11 @@ License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/dschep/ntfy
 Source:         ntfy-%{version}.tar.xz
+# https://github.com/dschep/ntfy/issues/247
+Patch0:         python-ntfy-no-mock.patch
 BuildRequires:  %{python_module appdirs}
 # test requirements
 BuildRequires:  %{python_module emoji}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
@@ -41,7 +42,7 @@ Requires:       python-appdirs
 Requires:       python-requests
 Requires:       python-ruamel.yaml
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Suggests:       python-dnspython3
 Suggests:       python-emoji
 Suggests:       python-instapush
@@ -67,7 +68,7 @@ Quickstart
     $ ntfy done sleep 10
 
 %prep
-%autosetup -n ntfy-%{version}
+%autosetup -p1 -n ntfy-%{version}
 
 %build
 %python_build

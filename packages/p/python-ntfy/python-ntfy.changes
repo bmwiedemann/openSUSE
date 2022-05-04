@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  3 12:39:50 UTC 2022 - pgajdos@suse.com
+
+- added patches
+  fix https://github.com/dschep/ntfy/issues/247
+  + python-ntfy-no-mock.patch
+
+-------------------------------------------------------------------
 Thu Feb 17 08:53:36 UTC 2022 - Matthias Bach <marix@marix.org> - 2.7.0
 
 - Switch test execution to pytest to allow for deselecting tests of

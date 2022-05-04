@@ -1,0 +1,148 @@
+diff -upr ntfy-2.7.0.orig/tests/test_cli.py ntfy-2.7.0/tests/test_cli.py
+--- ntfy-2.7.0.orig/tests/test_cli.py	2022-05-03 14:30:38.755237565 +0200
++++ ntfy-2.7.0/tests/test_cli.py	2022-05-03 14:30:38.763237615 +0200
+@@ -1,7 +1,7 @@
+ from time import time
+ from unittest import TestCase, main
+ 
+-from mock import MagicMock, Mock, patch
++from unittest.mock import MagicMock, Mock, patch
+ from ntfy.cli import main as ntfy_main
+ from ntfy.cli import auto_done, run_cmd
+ 
+diff -upr ntfy-2.7.0.orig/tests/test_config.py ntfy-2.7.0/tests/test_config.py
+--- ntfy-2.7.0.orig/tests/test_config.py	2022-05-03 14:30:38.755237565 +0200
++++ ntfy-2.7.0/tests/test_config.py	2022-05-03 14:30:38.763237615 +0200
+@@ -3,7 +3,7 @@ from os import environ
+ from sys import version_info
+ from unittest import TestCase, main, skipIf
+ 
+-from mock import mock_open, patch
++from unittest.mock import mock_open, patch
+ from ntfy.config import DEFAULT_CONFIG, load_config
+ 
+ py = version_info.major
+diff -upr ntfy-2.7.0.orig/tests/test_integration.py ntfy-2.7.0/tests/test_integration.py
+--- ntfy-2.7.0.orig/tests/test_integration.py	2022-05-03 14:30:38.755237565 +0200
++++ ntfy-2.7.0/tests/test_integration.py	2022-05-03 14:30:38.763237615 +0200
+@@ -1,7 +1,7 @@
+ from sys import modules, version_info
+ from unittest import TestCase, main
+ 
+-from mock import MagicMock, mock_open, patch
++from unittest.mock import MagicMock, mock_open, patch
+ from ntfy.cli import main as ntfy_main
+ 
+ py = version_info.major
+diff -upr ntfy-2.7.0.orig/tests/test_notifico.py ntfy-2.7.0/tests/test_notifico.py
+--- ntfy-2.7.0.orig/tests/test_notifico.py	2022-05-03 14:30:38.755237565 +0200
++++ ntfy-2.7.0/tests/test_notifico.py	2022-05-03 14:30:38.763237615 +0200
+@@ -2,7 +2,7 @@ from unittest import TestCase, main
+ 
+ from requests import HTTPError, Response
+ 
+-from mock import patch
++from unittest.mock import patch
+ from ntfy.backends.notifico import notify
+ 
+ 
+diff -upr ntfy-2.7.0.orig/tests/test_ntfy.py ntfy-2.7.0/tests/test_ntfy.py
+--- ntfy-2.7.0.orig/tests/test_ntfy.py	2022-05-03 14:30:38.755237565 +0200
++++ ntfy-2.7.0/tests/test_ntfy.py	2022-05-03 14:30:38.763237615 +0200
+@@ -1,7 +1,7 @@
+ from unittest import TestCase
+ 
+ import ntfy
+-from mock import patch
++from unittest.mock import patch
+ from ntfy import notify
+ 
+ 
+diff -upr ntfy-2.7.0.orig/tests/test_prowl.py ntfy-2.7.0/tests/test_prowl.py
+--- ntfy-2.7.0.orig/tests/test_prowl.py	2022-05-03 14:30:38.755237565 +0200
++++ ntfy-2.7.0/tests/test_prowl.py	2022-05-03 14:30:38.763237615 +0200
+@@ -1,6 +1,6 @@
+ from unittest import TestCase, main
+ 
+-from mock import patch
++from unittest.mock import patch
+ from ntfy.backends.prowl import API_URL, NTFY_API_KEY, notify
+ from ntfy.config import USER_AGENT
+ 
+diff -upr ntfy-2.7.0.orig/tests/test_pushalot.py ntfy-2.7.0/tests/test_pushalot.py
+--- ntfy-2.7.0.orig/tests/test_pushalot.py	2022-05-03 14:30:38.755237565 +0200
++++ ntfy-2.7.0/tests/test_pushalot.py	2022-05-03 14:30:38.763237615 +0200
+@@ -1,6 +1,6 @@
+ from unittest import TestCase, main
+ 
+-from mock import patch
++from unittest.mock import patch
+ from ntfy.backends.pushalot import notify
+ from ntfy.config import USER_AGENT
+ 
+diff -upr ntfy-2.7.0.orig/tests/test_pushbullet.py ntfy-2.7.0/tests/test_pushbullet.py
+--- ntfy-2.7.0.orig/tests/test_pushbullet.py	2022-05-03 14:30:38.755237565 +0200
++++ ntfy-2.7.0/tests/test_pushbullet.py	2022-05-03 14:30:38.763237615 +0200
+@@ -1,6 +1,6 @@
+ from unittest import TestCase, main
+ 
+-from mock import patch
++from unittest.mock import patch
+ from ntfy.backends.pushbullet import notify
+ from ntfy.config import USER_AGENT
+ 
+diff -upr ntfy-2.7.0.orig/tests/test_pushjet.py ntfy-2.7.0/tests/test_pushjet.py
+--- ntfy-2.7.0.orig/tests/test_pushjet.py	2022-05-03 14:30:38.755237565 +0200
++++ ntfy-2.7.0/tests/test_pushjet.py	2022-05-03 14:30:38.763237615 +0200
+@@ -1,6 +1,6 @@
+ from unittest import TestCase
+ 
+-from mock import patch
++from unittest.mock import patch
+ from ntfy.backends.pushjet import notify
+ from ntfy.config import USER_AGENT
+ 
+diff -upr ntfy-2.7.0.orig/tests/test_pushover.py ntfy-2.7.0/tests/test_pushover.py
+--- ntfy-2.7.0.orig/tests/test_pushover.py	2022-05-03 14:30:38.755237565 +0200
++++ ntfy-2.7.0/tests/test_pushover.py	2022-05-03 14:30:38.763237615 +0200
+@@ -1,6 +1,6 @@
+ from unittest import TestCase, main
+ 
+-from mock import patch
++from unittest.mock import patch
+ from ntfy.backends.pushover import notify
+ from ntfy.config import USER_AGENT
+ 
+diff -upr ntfy-2.7.0.orig/tests/test_simplepush.py ntfy-2.7.0/tests/test_simplepush.py
+--- ntfy-2.7.0.orig/tests/test_simplepush.py	2022-05-03 14:30:38.755237565 +0200
++++ ntfy-2.7.0/tests/test_simplepush.py	2022-05-03 14:30:38.763237615 +0200
+@@ -1,6 +1,6 @@
+ from unittest import TestCase
+ 
+-from mock import patch
++from unittest.mock import patch
+ from ntfy.backends.simplepush import notify
+ from ntfy.config import USER_AGENT
+ 
+diff -upr ntfy-2.7.0.orig/tests/test_systemlog.py ntfy-2.7.0/tests/test_systemlog.py
+--- ntfy-2.7.0.orig/tests/test_systemlog.py	2022-05-03 14:30:38.755237565 +0200
++++ ntfy-2.7.0/tests/test_systemlog.py	2022-05-03 14:30:38.763237615 +0200
+@@ -1,6 +1,6 @@
+ from unittest import TestCase, skipIf
+ 
+-from mock import call, patch
++from unittest.mock import call, patch
+ 
+ try:
+     import syslog
+diff -upr ntfy-2.7.0.orig/tests/test_xmpp.py ntfy-2.7.0/tests/test_xmpp.py
+--- ntfy-2.7.0.orig/tests/test_xmpp.py	2022-05-03 14:30:38.755237565 +0200
++++ ntfy-2.7.0/tests/test_xmpp.py	2022-05-03 14:30:38.767237640 +0200
+@@ -1,6 +1,6 @@
+ from unittest import TestCase
+ 
+-from mock import MagicMock, patch
++from unittest.mock import MagicMock, patch
+ from ntfy.backends.xmpp import NtfySendMsgBot, notify
+ from ntfy.config import USER_AGENT
+ 
