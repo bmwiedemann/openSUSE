@@ -27,7 +27,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-mocket%{psuffix}
-Version:        3.10.4
+Version:        3.10.5
 Release:        0
 Summary:        Python socket mock framework
 License:        BSD-3-Clause
