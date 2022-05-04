@@ -1,7 +1,7 @@
 #
 # spec file for package samtools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           samtools
-Version:        1.12
+Version:        1.15.1
 Release:        0
 Summary:        Tools for manipulating next-generation sequencing data
 License:        MIT
@@ -40,7 +40,7 @@ SAM, BAM, and CRAM formats, including indexing, variant calling (in conjunction
 with bcftools), and a simple alignment viewer.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 %build
 %configure --with-htslib=system

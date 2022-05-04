@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Wed Apr 20 20:13:07 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.15.1
+  * Samtools mpileup VCF and BCF output (deprecated in release 1.9)
+    has been removed. Please use bcftools mpileup instead.
+  * Added --min-BQ and --min-MQ options to depth.
+  * Improved automatic file type detection with view -u or
+    view -1.
+  * For markdup optical duplicate marking add regex options for
+    custom coordinates.
+  * New samtools consensus subcommand for generating consensus
+    from SAM, BAM or CRAM files based on the contents of the
+    alignment records.
+  * New samtools view --fetch-pairs option.
+  * New samtools head subcommand for conveniently displaying
+    the headers of a SAM, BAM, or CRAM file.
+  * Bug fixes
+- Update to version 1.14
+  * The legacy samtools API has been removed:
+    libbam.a, bam_endian.h, sam.h and most of bam.h
+  * New samtools samples command to list the samples used in a
+    SAM/BAM/CRAM file.
+  * mpileup now supports base modifications via the SAM Mm/MM
+    auxiliary tag. Please see the --output-mods option.
+  * Added mpileup --output-BP-5 option to output the BP field in
+    5' to 3' order instead of left to right.
+  * Added samtools view --rf option as an additional FLAG
+    filtering method.
+  * New samtools import -N option to use the second word on
+    a FASTQ header line, matching the SRA/ENA FASTQ variant.
+  * Improve view -x option to simplify specifying multiple tags,
+    and added the reverse --keep-tag option to include rather
+    than exclude.
+  * Switched the processing order of view -x (tag filtering)
+    and -e (expression) handling.
+  * Added filter expression endpos keyword.
+  * samtools view errors now appear after any SAM output,
+    improving their visibility.
+  * Improved samtools sort use of temporary files, both tidying
+    up if it fails and recovery when facing pre-existing
+    temporary files.
+  * Filtering in samtools view now sets the UNMAP BAM flag
+    when given the -p option.
+  * Make CRAM references shared during samtools merge so
+    merging many files has a lower memory usage.
+  * Bug fixes
+- Update to version 1.13
+  * Fixed samtools view FILE REGION, mpileup -r REGION,
+    coverage -r REGION and other region queries
+  * Added options to set and clear flags to samtools view
+  * samtools view now has long option equivalents for most of its
+    single-letter options
+  * A new tool, samtools import, has been added.
+    It reads one or more FASTQ files and converts them into unmapped
+    SAM, BAM or CRAM.
+  * Fixed samtools coverage error message when the target region name#
+    is not present in the file header.
+  * Made samtools coverage ASCII mode produce true ASCII output.
+  * samtools coverage now allows setting the maximum depth,
+    using the -d/--depth option.
+  * samtools flags now accepts any number of command line arguments,
+    allowing multiple SAM flag combinations to be converted at once.
+  * samtools ampliconclip, ampliconstats and plot-ampliconstats now support
+    inputs that list more than one reference.
+  * samtools ampliconclip now accepts the --tolerance option,
+    which allows the user to set the number of bases within which a region
+    is matched.
+  * Fixed negative depth values in ampliconstats output.
+  * samtools addreplacerg now allows for updating (replacing) an
+    existing @RG line in the output header, if a new @RG line is provided
+    in the command line, via the -r argument.
+  * Stopped samtools cat from outputting multiple CRAM EOF markers.
+  * Three new counts have been added to samtools flagstat:
+    primary, mapped primary and duplicate primary.
+  * samtools merge now accepts a -o FILE option specifying the output file,
+    similarly to most other subcommands.
+
+-------------------------------------------------------------------
 Wed Apr 28 15:57:19 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.12
