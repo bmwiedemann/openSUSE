@@ -1037,4 +1037,13 @@
     <comment>Scripted push from GNOME:Next (forwarded request 972569 from dimstar)</comment>
     <requestid>973148</requestid>
   </revision>
+  <revision rev="124" vrev="2">
+    <srcmd5>8c17526f1c9841a990545e2a2f86822a</srcmd5>
+    <version>3.44.1</version>
+    <time>1651669829</time>
+    <user>dimstar_suse</user>
+    <comment>- Add evolution-ews-fix-gtk-linkage.patch: fix for gnome-contacts
+  being unable to launch. (forwarded request 973986 from mgorse)</comment>
+    <requestid>974343</requestid>
+  </revision>
 </revisionlist>

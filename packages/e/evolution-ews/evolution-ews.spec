@@ -27,6 +27,8 @@ License:        LGPL-2.1-only
 Group:          Productivity/Networking/Email/Clients
 URL:            https://wiki.gnome.org/Apps/Evolution
 Source0:        https://download.gnome.org/sources/evolution-ews/3.44/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM evolution-ews-fix-gtk-linkage.patch mgorse@suse.com -- fix for gnome-contacts being unable to launch.
+Patch0:         evolution-ews-fix-gtk-linkage.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  cmake

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 29 20:06:32 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Add evolution-ews-fix-gtk-linkage.patch: fix for gnome-contacts
+  being unable to launch.
+
+-------------------------------------------------------------------
 Mon Apr 25 09:09:31 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.44.1:
