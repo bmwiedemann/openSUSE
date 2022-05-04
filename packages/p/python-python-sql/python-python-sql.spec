@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define         skip_python2 1
 %define base_name python-sql
 Name:           python-%{base_name}
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Library to write SQL queries
 License:        BSD-3-Clause
