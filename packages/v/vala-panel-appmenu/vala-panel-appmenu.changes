@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May  3 17:34:42 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to stable release 0.7.6
+  * Fix: Separators in dynamically updated Qt menus cause segfault
+  * Add alternative wnck backend
+  * libwnck: fix desktop
+
+-------------------------------------------------------------------
 Thu Jan 20 17:17:01 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add vala-panel-appmenu-LINGUAS.patch: Fix build by not listing

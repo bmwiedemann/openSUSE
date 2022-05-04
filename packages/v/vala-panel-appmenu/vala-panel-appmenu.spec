@@ -16,44 +16,58 @@
 #
 
 
+# Select the backend wnck vs bamf3
+#%%define       backend    bamf
+%define         backend    wnck
 Name:           vala-panel-appmenu
-Version:        0.7.5~git20200915.1e8791e
+Version:        0.7.6
 Release:        0
 Summary:        AppMenu plugin for xfce4-panel, mate-panel and vala-panel
 License:        LGPL-3.0-or-later
 Group:          System/GUI/Other
-URL:            https://github.com/rilian-la-te/vala-panel-appmenu
-Source:         %{name}-%{version}.tar.xz
+URL:            https://gitlab.com/vala-panel-project/vala-panel-appmenu/
+Source:         %{url}/-/archive/%{version}/vala-panel-appmenu-%{version}.tar.bz2
 Patch0:         vala-panel-appmenu-LINGUAS.patch
 BuildRequires:  bamf-daemon
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.24
+BuildRequires:  pkgconfig(budgie-1.0)
 BuildRequires:  pkgconfig(dbusmenu-glib-0.4)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.44
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.44
-BuildRequires:  pkgconfig(glib-2.0) >= 2.44
-BuildRequires:  pkgconfig(gmodule-2.0) >= 2.44
-BuildRequires:  pkgconfig(gthread-2.0) >= 2.44
+BuildRequires:  pkgconfig(gio-2.0) >= 2.52.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.52.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.52.0
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.52.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.52.0
 BuildRequires:  pkgconfig(gtk+-2.0) >= 2.24
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(harfbuzz)
-BuildRequires:  pkgconfig(libbamf3) >= 0.5.0
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.2
-BuildRequires:  pkgconfig(libwnck-3.0) >= 3.4.0
 BuildRequires:  pkgconfig(libxfce4panel-2.0)
 BuildRequires:  pkgconfig(libxfconf-0)
 BuildRequires:  pkgconfig(systemd)
-%if 0%{?suse_version} > 1320 || (0%{?sle_version} >= 120300 && 0%{?is_opensuse})
 BuildRequires:  pkgconfig(libmatepanelapplet-4.0)
 BuildRequires:  pkgconfig(vala-panel) >= 0.3.7
+%if "bamf" == "%backend"
+BuildRequires:  pkgconfig(libbamf3) >= 0.5.0
+%else
+BuildRequires:  pkgconfig(libwnck-3.0) >= 3.4.8
 %endif
 
 %description
 This is Global Menu plugin for using with Xfce Panel, MATE Panel
 and Vala Panel.
+
+%package -n budgie-appmenu-applet
+Summary: Application Menu plugin for budgie
+Group:          System/GUI/Other
+Supplements: budgie
+
+%description -n budgie-appmenu-applet
+This is Global Menu plugin for using with BUDGIE Panel.
 
 %package -n appmenu-gtk3-module
 Summary:        GtkMenuShell D-Bus exporter (GTK+ 3)
@@ -140,21 +154,19 @@ com.canonical.AppMenu.Registrar provider
 Summary:        Languages for package vala-panel-appmenu
 Group:          System/Localization
 Suggests:       xfce4-panel-plugin-appmenu = %{version}
-Supplements:    packageand(bundle-lang-other:xfce4-panel-plugin-appmenu)
+Supplements:    (bundle-lang-other and xfce4-panel-plugin-appmenu)
+Supplements:    (bundle-lang-other and mate-applet-appmenu)
+Supplements:    (bundle-lang-other and vala-panel-plugin-appmenu)
 Provides:       %{name}-lang-all = %{version}
 Provides:       xfce4-panel-plugin-appmenu-lang = %{version}
 Provides:       xfce4-panel-plugin-appmenu-lang-all = %{version}
-BuildArch:      noarch
-%if 0%{?suse_version} > 1320 || (0%{?sle_version} >= 120300 && 0%{?is_opensuse})
-Suggests:       mate-applet-appmenu = %{version}
-Suggests:       vala-panel-plugin-appmenu = %{version}
-Supplements:    packageand(bundle-lang-other:mate-applet-appmenu)
-Supplements:    packageand(bundle-lang-other:vala-panel-plugin-appmenu)
 Provides:       mate-applet-appmenu-lang = %{version}
 Provides:       mate-applet-appmenu-lang-all = %{version}
 Provides:       vala-panel-plugin-appmenu-lang = %{version}
 Provides:       vala-panel-plugin-appmenu-lang-all = %{version}
-%endif
+BuildArch:      noarch
+Suggests:       mate-applet-appmenu = %{version}
+Suggests:       vala-panel-plugin-appmenu = %{version}
 
 %description lang
 Provides translations to the packages xfce4-panel-plugin-appmenu,
@@ -174,7 +186,6 @@ Provides:       xfce4-vala-panel-appmenu-plugin = %{version}
 %description -n xfce4-panel-plugin-appmenu
 This is Global Menu plugin for using with Xfce Panel.
 
-%if 0%{?suse_version} > 1320 || (0%{?sle_version} >= 120300 && 0%{?is_opensuse})
 %package -n mate-applet-appmenu
 Summary:        AppMenu (Global Menu) plugin for mate-panel
 Group:          System/GUI/Other
@@ -202,7 +213,6 @@ Provides:       vala-panel-appmenu = %{version}
 
 %description -n vala-panel-plugin-appmenu
 This is Global Menu plugin for using with Vala Panel.
-%endif
 
 %prep
 %autosetup -p1
@@ -210,14 +220,14 @@ This is Global Menu plugin for using with Vala Panel.
 %build
 export CFLAGS="$CFLAGS -I/usr/include/harfbuzz"
 export CXXFLAGS="$CXXFLAGS -I/usr/include/harfbuzz"
-meson --prefix=%{_prefix} build
-meson compile -C build
+%meson -Dwm_backend=%backend -Dregistrar=enabled
+%meson_build
 
 %install
-DESTDIR=%{buildroot} meson install -C build --no-rebuild
+%meson_install
 rm -rf %{buildroot}%{_datadir}/{appmenu-gtk-module,vala-panel-appmenu}/doc
-%find_lang %{name}
 %fdupes %{buildroot}%{_datadir}/
+%find_lang %{name}
 
 %post -n libappmenu-gtk2-parser0 -p /sbin/ldconfig
 %postun -n libappmenu-gtk2-parser0 -p /sbin/ldconfig
@@ -293,10 +303,14 @@ rm -rf %{buildroot}%{_datadir}/{appmenu-gtk-module,vala-panel-appmenu}/doc
 
 %files -n appmenu-registrar
 %defattr(-,root,root)
-%dir %{_prefix}/libexec
-%dir %{_prefix}/libexec/vala-panel
-%{_prefix}/libexec/vala-panel/appmenu-registrar
+%dir %{_libexecdir}/vala-panel
+%{_libexecdir}/vala-panel/appmenu-registrar
 %{_datadir}/dbus-1/services/com.canonical.AppMenu.Registrar.service
+
+%files -n budgie-appmenu-applet
+%doc README.md
+%license LICENSE
+%{_libdir}/budgie-desktop/plugins/budgie-appmenu-plugin
 
 %files -n xfce4-panel-plugin-appmenu
 %defattr(-,root,root)
@@ -305,7 +319,6 @@ rm -rf %{buildroot}%{_datadir}/{appmenu-gtk-module,vala-panel-appmenu}/doc
 %{_libdir}/xfce4/panel/plugins/libappmenu-xfce.so
 %{_datadir}/xfce4/panel/plugins/appmenu.desktop
 
-%if 0%{?suse_version} > 1320 || (0%{?sle_version} >= 120300 && 0%{?is_opensuse})
 %files -n mate-applet-appmenu
 %defattr(-,root,root)
 %doc README.md
@@ -327,6 +340,5 @@ rm -rf %{buildroot}%{_datadir}/{appmenu-gtk-module,vala-panel-appmenu}/doc
 %{_datadir}/vala-panel/applets/org.valapanel.appmenu.plugin
 %{_libdir}/vala-panel/applets/libappmenu.so
 %{_datadir}/glib-2.0/schemas/org.valapanel.appmenu.gschema.xml
-%endif
 
 %changelog
