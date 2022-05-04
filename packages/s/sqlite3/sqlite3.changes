@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 28 05:54:02 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 3.38.3:
+  * Fix a case of the query planner be overly aggressive with
+    optimizing automatic-index and Bloom-filter construction,
+    using inappropriate ON clause terms to restrict the size of the
+    automatic-index or Bloom filter, and resulting in missing rows
+    in the output.
+  * Other minor patches. See the timeline for details. 
+
+-------------------------------------------------------------------
 Tue Mar 29 08:21:26 UTC 2022 - Reinhard Max <max@suse.com>
 
 - update to 3.38.2:
