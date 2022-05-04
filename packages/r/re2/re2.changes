@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May  1 20:13:09 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use Release config so O3 is used
+
+-------------------------------------------------------------------
 Thu Apr 28 20:59:00 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Avoid sporadic failures by setting until-pass on CTest

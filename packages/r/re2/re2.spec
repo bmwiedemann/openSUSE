@@ -86,7 +86,7 @@ you will need to install %{name}-devel.
 %if 0%{?suse_version} < 1550
 export CXX=g++-11
 %endif
-%cmake
+%cmake -DCMAKE_BUILD_TYPE=Release
 %cmake_build
 
 %install
