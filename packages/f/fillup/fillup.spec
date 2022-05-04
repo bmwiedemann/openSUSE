@@ -1,7 +1,7 @@
 #
 # spec file for package fillup
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Release:        0
 Summary:        Tool for Merging Config Files
 License:        GPL-2.0-or-later
 Group:          System/Base
-URL:            http://github.com/openSUSE/fillup
+URL:            https://github.com/openSUSE/fillup
 Source:         fillup-%{version}.tar.bz2
 Patch0:         fillup-optflags.patch
 Patch1:         fillup-warnings.dif
