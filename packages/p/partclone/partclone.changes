@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  3 18:10:04 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.3.20:
+  * Fix apfs support
+  * Add stdout support
+
+-------------------------------------------------------------------
 Mon Mar 28 08:02:51 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.3.19:
