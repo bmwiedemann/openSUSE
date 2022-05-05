@@ -3,4 +3,6 @@
                 <param name="url">https://github.com/andikleen/mcelog</param>
               <param name="changesrevision">ee90ff20ce6a4d5e016aa249ce8b37f359f9fda4</param></service><service name="tar_scm">
                 <param name="url">git://git.kernel.org/pub/scm/utils/cpu/mce/mcelog.git</param>
-              <param name="changesrevision">c133a744e9ee6a2f40cbec4cfb0182d3ed1a792a</param></service></servicedata>
+              <param name="changesrevision">a4edca25ef3bd8780ae1dc54bc203973ec7f1640</param></service><service name="tar_scm">
+                <param name="url">https://github.com/andikleen/mcelog.git</param>
+              <param name="changesrevision">a4edca25ef3bd8780ae1dc54bc203973ec7f1640</param></service></servicedata>

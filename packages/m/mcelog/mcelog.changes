@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue May 03 11:32:42 UTC 2022 - moritz.kodytek@suse.com
+
+- Update to version 181:
+  * mcelog: Add support for Raptorlake
+- Adopt patches to latest git version
+M    Start-consolidating-AMD-specific-stuff.patch
+M    add-f10h-support.patch
+M    add-f11h-support.patch
+M    add-f12h-support.patch
+M    add-f14h-support.patch
+M    add-f15h-support.patch
+M    add-f16h-support.patch
+M    email.patch
+M    fix_setgroups_missing_call.patch
+M    mcelog_invert_prefill_db_warning.patch
+- Use Python3 shebang instead of python
+A    python3_shebang
+- Use Github URL
+
+-------------------------------------------------------------------
+Wed Apr 13 12:44:57 UTC 2022 - moritz.kodytek@suse.com
+
+- Update to version 180:
+  * Fix warnings in sysfs.c
+  * mcelog: Change "DDR4" string to "DDR" for i10nm platforms
+  * Fix logrotate syntax
+  * remove outdated mcelog.conf.5 manual file
+  * add furture print function for Python2
+  * fix python errors in genconfig.py
+  * fix the buf not freed in read_field
+  * mcelog: Print warning for locked down kernel
+  * mcelog: Handle sysfs files without length
+  * Fix make test fail
+
+-------------------------------------------------------------------
 Wed Sep 01 14:30:27 UTC 2021 - trenn@suse.de
 
 - Update to version 178:

@@ -18,9 +18,11 @@ Signed-off-by: Borislav Petkov <bp@suse.de>
  rename k8.c => amd.c (97%)
  rename k8.h => amd.h (79%)
 
---- a/Makefile
-+++ b/Makefile
-@@ -31,7 +31,7 @@
+Index: mcelog-181/Makefile
+===================================================================
+--- mcelog-181.orig/Makefile
++++ mcelog-181/Makefile
+@@ -31,7 +31,7 @@ all: mcelog
  
  .PHONY: install clean depend FORCE
  
@@ -29,8 +31,10 @@ Signed-off-by: Borislav Petkov <bp@suse.de>
         nehalem.o dunnington.o tulsa.o config.o memutil.o msg.o   \
         eventloop.o leaky-bucket.o memdb.o server.o trigger.o 	 \
         client.o cache.o sysfs.o yellow.o page.o rbtree.o 	 \
+Index: mcelog-181/amd.c
+===================================================================
 --- /dev/null
-+++ b/amd.c
++++ mcelog-181/amd.c
 @@ -0,0 +1,282 @@
 +/* Based on K8 decoding code written for the 2.4 kernel by Andi Kleen and 
 + * Eric Morton. Hacked and extended for mcelog by AK.
@@ -314,8 +318,10 @@ Signed-off-by: Borislav Petkov <bp@suse.de>
 +	} 
 +	return 1;
 +}
+Index: mcelog-181/amd.h
+===================================================================
 --- /dev/null
-+++ b/amd.h
++++ mcelog-181/amd.h
 @@ -0,0 +1,14 @@
 +char *k8_bank_name(unsigned num);
 +void decode_amd_mc(enum cputype, struct mce *mce, int *ismemerr);
@@ -331,7 +337,9 @@ Signed-off-by: Borislav Petkov <bp@suse.de>
 +
 +#define CASE_AMD_CPUS \
 +	case CPU_K8
---- a/k8.c
+Index: mcelog-181/k8.c
+===================================================================
+--- mcelog-181.orig/k8.c
 +++ /dev/null
 @@ -1,281 +0,0 @@
 -/* Based on K8 decoding code written for the 2.4 kernel by Andi Kleen and 
@@ -615,7 +623,9 @@ Signed-off-by: Borislav Petkov <bp@suse.de>
 -	} 
 -	return 1;
 -}
---- a/k8.h
+Index: mcelog-181/k8.h
+===================================================================
+--- mcelog-181.orig/k8.h
 +++ /dev/null
 @@ -1,11 +0,0 @@
 -char *k8_bank_name(unsigned num);
@@ -629,8 +639,10 @@ Signed-off-by: Borislav Petkov <bp@suse.de>
 -#define K8_MCELOG_THRESHOLD_LINK     (4 * 9 + 1)
 -#define K8_MCELOG_THRESHOLD_L3_CACHE (4 * 9 + 2)
 -#define K8_MCELOG_THRESHOLD_FBDIMM   (4 * 9 + 3)
---- a/mcelog.c
-+++ b/mcelog.c
+Index: mcelog-181/mcelog.c
+===================================================================
+--- mcelog-181.orig/mcelog.c
++++ mcelog-181/mcelog.c
 @@ -41,7 +41,7 @@
  #include <fnmatch.h>
  #include "mcelog.h"
@@ -640,7 +652,7 @@ Signed-off-by: Borislav Petkov <bp@suse.de>
  #include "intel.h"
  #include "p4.h"
  #include "dmi.h"
-@@ -451,9 +451,9 @@
+@@ -453,9 +453,9 @@ static void dump_mce(struct mce *m, unsi
  		time_t t = m->time;
  		Wprintf("TIME %llu %s", m->time, ctime(&t));
  	} 
