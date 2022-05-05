@@ -7,10 +7,10 @@ Subject: [PATCH] Warning for FlatHub
  .../backends/FlatpakBackend/FlatpakSourcesBackend.cpp      | 14 +++++++++++++-
  1 file changed, 13 insertions(+), 1 deletion(-)
 
-Index: discover-5.17.80git.20210404T011831~f9348542/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp
+Index: discover-5.24.5/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp
 ===================================================================
---- discover-5.17.80git.20210404T011831~f9348542.orig/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp	2021-04-05 10:10:15.785178715 +0200
-+++ discover-5.17.80git.20210404T011831~f9348542/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp	2021-04-05 10:12:16.117507702 +0200
+--- discover-5.24.5.orig/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp
++++ discover-5.24.5/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp
 @@ -12,6 +12,8 @@
  #include <KLocalizedString>
  #include <KSharedConfig>
@@ -20,22 +20,22 @@ Index: discover-5.17.80git.20210404T011831~f9348542/libdiscover/backends/Flatpak
  #include <QNetworkAccessManager>
  #include <QNetworkReply>
  
-@@ -53,8 +55,18 @@
+@@ -86,7 +88,17 @@ FlatpakSourcesBackend::FlatpakSourcesBac
      m_flathubAction->setObjectName(QStringLiteral("flathub"));
      m_flathubAction->setToolTip(i18n("Makes it possible to easily install the applications listed in https://flathub.org"));
      connect(m_flathubAction, &DiscoverAction::triggered, this, [this]() {
+-        addSource(QStringLiteral("https://flathub.org/repo/flathub.flatpakrepo"));
 +        auto *warnBox = new QMessageBox(QMessageBox::Information, i18n("Adding a third-party source"),
 +                            i18n("FlatHub is not part of the openSUSE distribution.\n"
 +                                 "It contains packages of unknown quality which might not be tested to work correctly "
-+                                 "on openSUSE. Prefer to install software from the official openSUSE repository."),
++                                 "on openSUSE."),
 +                            QMessageBox::Ok | QMessageBox::Abort);
 +        connect(warnBox, &QMessageBox::buttonClicked, this, [this, warnBox](QAbstractButton *button) {
 +            if (warnBox->standardButton(button) == QMessageBox::Ok)
-         addSource(QStringLiteral("https://flathub.org/repo/flathub.flatpakrepo"));
-     });
++                addSource(QStringLiteral("https://flathub.org/repo/flathub.flatpakrepo"));
++        });
 +        warnBox->setAttribute(Qt::WA_DeleteOnClose);
 +        warnBox->show();
-+    });
-     for (auto installation : installations) {
-         if (!listRepositories(installation)) {
-             qWarning() << "Failed to list repositories from installation" << installation;
+     });
+ 
+     m_noSourcesItem->setEnabled(false);

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May  3 13:00:18 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.5
+- Changes since 5.24.4:
+  * flatpak: Fix state change emits (kde#451111)
+  * flatpak: Improve stability of different sources integration
+  * flatpak: Centralise remote integration in FlatpakBackend (kde#443745)
+  * pk: Consider multiple package ids for one upgradeable resource (kde#444600)
+  * Don't use the appdata version in the installed version string if empty
+  * libdiscover: Fix Discover doesn't show license or description of local package (kde#452150)
+- Refresh patch and drop part of the message which might sound a
+  bit too harsh and is mostly redundant anyway:
+  * 0001-Warning-for-FlatHub.patch
+
+-------------------------------------------------------------------
 Tue Mar 29 16:04:36 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.4
