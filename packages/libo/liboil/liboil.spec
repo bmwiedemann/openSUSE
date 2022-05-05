@@ -1,7 +1,7 @@
 #
 # spec file for package liboil
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,8 +21,8 @@ Version:        0.3.17
 Release:        0
 Summary:        Library of Optimized Inner Loops
 License:        BSD-2-Clause
-Group:          System/Libraries
-Url:            http://liboil.freedesktop.org/wiki/
+Group:          Development/Libraries/C and C++
+URL:            http://liboil.freedesktop.org/wiki/
 Source0:        http://liboil.freedesktop.org/download/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch0:         ppc-asm.patch
@@ -31,72 +31,56 @@ Patch1:         reproducible.patch
 Patch2:         s390-asm.patch
 BuildRequires:  glib2-devel
 BuildRequires:  gtk-doc
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-Liboil is a library of simple functions that are optimized for various
-CPUs. These functions are generally loops implementing simple
+Liboil is a library of functions that are optimized for various
+CPUs. These functions are generally loops implementing
 algorithms, such as converting an array of N integers to floating-point
 numbers or multiplying and summing an array of N numbers. Such
 functions are candidates for significant optimization using various
 techniques, especially by using extended instructions provided by
 modern CPUs (Altivec, MMX, SSE, etc.).
 
-Many multimedia applications and libraries already do similar things
-internally. The goal of this project is to consolidate some of the code
-used by various multimedia projects and also make optimizations easier
-to use by a broader range of applications.
+%package -n liboil-0_3-0
+Summary:        Library of Optimized Inner Loops
+Group:          System/Libraries
+Obsoletes:      liboil < %{version}-%{release}
+
+%description -n liboil-0_3-0
+Liboil is a library of functions that are optimized for various
+CPUs. These functions are generally loops implementing
+algorithms, such as converting an array of N integers to floating-point
+numbers or multiplying and summing an array of N numbers. Such
+functions are candidates for significant optimization using various
+techniques, especially by using extended instructions provided by
+modern CPUs (Altivec, MMX, SSE, etc.).
 
 %package devel
-Summary:        Library of Optimized Inner Loops
+Summary:        Headers for the library of Optimized Inner Loops
 Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
 Requires:       glibc-devel
+Requires:       liboil-0_3-0 = %{version}-%{release}
 
 %description devel
-Liboil is a library of simple functions that are optimized for various
-CPUs. These functions are generally loops implementing simple
-algorithms, such as converting an array of N integers to floating-point
-numbers or multiplying and summing an array of N numbers. Such
-functions are candidates for significant optimization using various
-techniques, especially by using extended instructions provided by
-modern CPUs (Altivec, MMX, SSE, etc.).
-
-Many multimedia applications and libraries already do similar things
-internally. The goal of this project is to consolidate some of the code
-used by various multimedia projects, and also make optimizations easier
-to use by a broader range of applications.
+Liboil is a library of functions that are optimized for various
+CPUs.
 
 %package doc
-Summary:        Library of optimized inner loops
-Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
+Summary:        Documentation for the library of Optimized Inner Loops
+Group:          Documentation/HTML
+BuildArch:      noarch
 
 %description doc
-This package provides documentation for liboil, a library of simple
-functions that are optimized for various CPUs. These functions are
-generally loops implementing simple algorithms, such as converting an
-array of N integers to floating-point numbers or multiplying and
-summing an array of N numbers. Such functions are candidates for
-significant optimization using various techniques, especially by using
-extended instructions provided by modern CPUs (Altivec, MMX, SSE,
-etc.).
-
-Many multimedia applications and libraries already do similar things
-internally. The goal of this project is to consolidate some of the code
-used by various multimedia projects, and also make optimizations easier
-to use by a broader range of applications.
+This package provides documentation for liboil, a library of
+functions that are optimized for various CPUs.
 
 %prep
-%setup -q
-%patch0
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 %define _lto_cflags %{nil}
-%configure --disable-static --with-pic
-make %{?_smp_mflags}
+%configure --disable-static
+%make_build
 # Do NOT! disable running the testsuite or make failures
 # non-fatal for the build!
 
@@ -105,31 +89,27 @@ make %{?_smp_mflags}
 # Test passed during the local build. The test for ppc64 will be
 # reenabled once we'll have solution for it.
 %ifnarch %{power64}
-make %{?_smp_mflags} check
+%make_build check
 %endif
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -p /sbin/ldconfig
+%post   -n liboil-0_3-0 -p /sbin/ldconfig
+%postun -n liboil-0_3-0 -p /sbin/ldconfig
 
-%postun -p /sbin/ldconfig
-
-%files
-%defattr (-, root, root)
+%files -n liboil-0_3-0
 %doc AUTHORS NEWS README
 %{_libdir}/*.so.*
 
 %files devel
-%defattr (-, root, root)
 %{_bindir}/oil-bugreport
 %{_includedir}/liboil-*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 
 %files doc
-%defattr (-, root, root)
 %{_datadir}/gtk-doc/html/liboil
 
 %changelog

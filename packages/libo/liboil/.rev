@@ -213,4 +213,16 @@ Use SPDX format (and coincidentally make compatible with how Fedora declare the 
     <comment></comment>
     <requestid>697768</requestid>
   </revision>
+  <revision rev="32" vrev="26">
+    <srcmd5>edc25f644518b5d3c3d859889c5e2e60</srcmd5>
+    <version>0.3.17</version>
+    <time>1651784734</time>
+    <user>dimstar_suse</user>
+    <comment>- Implement shlib packaging policy; resolve rpmlint report
+  &quot;liboil.x86_64: E: shlib-policy-name-error SONAME:
+  liboil-0.3.so.0, expected package suffix: 0_3-0&quot;
+- Drop useless --with-pic (only has meaning for static libs)
+- Refresh ppc-asm.patch from -p0 to -p1</comment>
+    <requestid>975066</requestid>
+  </revision>
 </revisionlist>

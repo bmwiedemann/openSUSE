@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 27 12:33:12 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Implement shlib packaging policy; resolve rpmlint report
+  "liboil.x86_64: E: shlib-policy-name-error SONAME:
+  liboil-0.3.so.0, expected package suffix: 0_3-0"
+- Drop useless --with-pic (only has meaning for static libs)
+- Refresh ppc-asm.patch from -p0 to -p1
+
+-------------------------------------------------------------------
 Wed Apr 24 17:13:35 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Disable LTO (boo#1133238).
