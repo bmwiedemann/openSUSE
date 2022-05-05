@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  5 08:32:33 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.10.3:
+  * Improved input validation in the XWD loader.
+  * huntr.dev: Buffer over-read when compiled with -O0 or non-x86 target
+
+-------------------------------------------------------------------
 Mon Apr 25 08:21:26 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.10.2:

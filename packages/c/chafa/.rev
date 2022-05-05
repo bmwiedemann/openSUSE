@@ -237,4 +237,14 @@
     triggering an abort in the loader.</comment>
     <requestid>972507</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0e9f1d6f1b2673e4d3ab4609935804da</srcmd5>
+    <version>1.10.3</version>
+    <time>1651784821</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.3:
+  * Improved input validation in the XWD loader.
+  * huntr.dev: Buffer over-read when compiled with -O0 or non-x86 target</comment>
+    <requestid>975093</requestid>
+  </revision>
 </revisionlist>
