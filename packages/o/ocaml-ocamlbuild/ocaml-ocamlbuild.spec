@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-ocamlbuild
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ocaml-ocamlbuild
-Version:        0.14.0
+Version:        0.14.1
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Generic build tool for building OCaml library and programs
-License:        LGPL-2.0
+License:        LGPL-2.0-only WITH OCaml-LGPL-linking-exception
 Group:          Development/Languages/OCaml
-Url:            https://github.com/ocaml/ocamlbuild
-Source:         %{name}-%{version}.tar.xz
+URL:            https://opam.ocaml.org/packages/ocamlbuild
+Source:         %name-%version.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-rpm-macros >= 20210409
-Requires:       %{name}-devel = %{version}
+BuildRequires:  ocaml-rpm-macros >= 20220409
+Requires:       %name-devel = %version
 
 %description
 OCamlbuild is a generic build tool, that has built-in rules for
@@ -38,42 +38,42 @@ OCaml versions between 3.10.0 and 4.02.3. Starting from OCaml
 4.03, it is now released separately.
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Requires:       %name = %version
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
 %autosetup -p1
 
 %build
-tee %{name}.sh <<'_EOF_'
+tee %name.sh <<'_EOF_'
 set -x
 exec \
 make \
-PREFIX=%{_prefix} \
+PREFIX=%_prefix \
 OCAML_NATIVE_TOOLS=true \
 OCAML_NATIVE=true \
 "$@"
 _EOF_
-sh %{name}.sh -f configure.make
-sh %{name}.sh configure
-sh %{name}.sh %{?_smp_mflags}
+sh %name.sh -f configure.make
+sh %name.sh configure
+sh %name.sh %{?_smp_mflags}
 
 %install
-sh %{name}.sh \
+sh %name.sh \
 install \
-DESTDIR=%{buildroot} %{?_smp_mflags}
+DESTDIR=%buildroot %{?_smp_mflags}
 %ocaml_create_file_list
 
-%files -f %{name}.files
+%files -f %name.files
 %doc Changes
-%{_bindir}/*
-%{_mandir}/man*/*
+%_bindir/*
+%_mandir/man*/*
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 
 %changelog

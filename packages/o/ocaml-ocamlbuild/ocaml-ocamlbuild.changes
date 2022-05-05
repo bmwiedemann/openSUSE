@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 26 14:48:44 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.14.1
+  * Add OCaml 5.00 support
+  * Fix race conditions when invoking ocamlbuild in parallel from
+    a makefile
+
+-------------------------------------------------------------------
 Fri Apr  9 09:09:09 UTC 2021 - ohering@suse.de
 
 - Require current ocaml-rpm-macros
