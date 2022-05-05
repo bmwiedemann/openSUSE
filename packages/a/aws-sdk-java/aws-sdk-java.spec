@@ -816,7 +816,7 @@ dos2unix src/samples/AmazonEC2SpotInstances-Advanced/CreateSecurityGroupApp.java
 # Tests require networking and unavailable test deps:
 # com.github.tomakehurst:wiremock:1.55
 # nl.jqno.equalsverifier:equalsverifier:1.7.5
-%{mvn_build} -sf -- -Dsource=8
+%{mvn_build} -sfj -- -Dsource=8 org.apache.maven.plugins:maven-javadoc-plugin:aggregate
 
 %install
 %mvn_install
