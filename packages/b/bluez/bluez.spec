@@ -160,6 +160,7 @@ Summary:        Configuration that automatically enables all bluetooth devices
 License:        GPL-2.0-or-later
 Group:          Hardware/Mobile
 BuildArch:      noarch
+Requires(post): systemd
 
 %description auto-enable-devices
 Contains configuration that automatically enables all bluetooth devices

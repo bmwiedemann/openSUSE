@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 26 17:24:48 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- add Requires(post): systemd for bluez-auto-enable-devices
+   * fixes boo#1198906
+
+-------------------------------------------------------------------
 Sun Mar 20 10:22:08 UTC 2022 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - update to version 5.64:
