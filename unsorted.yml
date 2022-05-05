@@ -788,6 +788,7 @@ unsorted:
   - as10k1 
   - asciidoc 
   - asciidoc-examples 
+  - asciidoc-latex-backend 
   - asciinema 
   - asclock 
   - asco 
@@ -1481,6 +1482,7 @@ unsorted:
   - buckygen 
   - budgie-app-launcher-applet 
   - budgie-applications-menu-applet 
+  - budgie-appmenu-applet 
   - budgie-brightness-controller-applet 
   - budgie-calendar-applet 
   - budgie-calendar-applet-lang 
@@ -1598,7 +1600,6 @@ unsorted:
   - busybox-cpio 
   - busybox-diffutils 
   - busybox-dos2unix 
-  - busybox-ed 
   - busybox-hostname: [i586] 
   - busybox-iproute2 
   - busybox-iputils 
@@ -6970,6 +6971,7 @@ unsorted:
   - htmlcxx-devel 
   - htmldoc 
   - htop 
+  - htscodecs-devel 
   - htsfile 
   - http-builder 
   - http-builder-javadoc 
@@ -11664,6 +11666,8 @@ unsorted:
   - libhts-devel-32bit: [x86_64] 
   - libhts3 
   - libhts3-32bit: [x86_64] 
+  - libhtscodecs2 
+  - libhtscodecs2-32bit: [x86_64] 
   - libhttp_parser2_9 
   - libhttp_parser2_9-32bit: [x86_64] 
   - libhttrack2 
@@ -13207,13 +13211,13 @@ unsorted:
   - libpromises-devel 
   - libpromises3 
   - libprotobuf-c-devel 
-  - libprotobuf-lite30-32bit: [x86_64] 
+  - libprotobuf-lite31-32bit: [x86_64] 
   - libprotobuf-mutator-devel 
   - libprotobuf-mutator0 
   - libprotobuf-nanopb0 
-  - libprotobuf30-32bit: [x86_64] 
-  - libprotoc30 
-  - libprotoc30-32bit: [x86_64] 
+  - libprotobuf31-32bit: [x86_64] 
+  - libprotoc31 
+  - libprotoc31-32bit: [x86_64] 
   - libproxy-devel 
   - libproxy-sharp 
   - libproxy-tools 
@@ -24464,6 +24468,8 @@ unsorted:
   - python310-radon 
   - python310-railroad-diagrams 
   - python310-random2 
+  - python310-rarfile 
+  - python310-rarfile-doc 
   - python310-ravello-sdk 
   - python310-rawkit 
   - python310-rcssmin 
@@ -24540,6 +24546,7 @@ unsorted:
   - python310-rpyc 
   - python310-rq 
   - python310-rsa 
+  - python310-rss2email 
   - python310-rst.linker 
   - python310-rstcheck 
   - python310-rt 

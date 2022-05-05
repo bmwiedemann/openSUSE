@@ -236,6 +236,7 @@
     <package name="bubblewrap-zsh-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="busybox" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="busybox-coreutils" supportstatus="unsupported"/> <!-- reason: dvd:grub2-systemd-sleep-plugin -->
+    <package name="busybox-ed" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="busybox-findutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="busybox-gawk" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="busybox-grep" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -401,7 +402,7 @@
     <package name="e2fsprogs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="e2fsprogs-scrub" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ebtables" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
-    <package name="ed" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="ed" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="edict2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="eekboard" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="efont-unicode-bitmap-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
@@ -2405,8 +2406,8 @@
     <package name="libprocps8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libprojectM3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libprotobuf-c1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libprotobuf-lite30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libprotobuf30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libprotobuf-lite31" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libprotobuf31" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libproxy1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libproxy1-config-gnome3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libproxy1-config-kde" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
