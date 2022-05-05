@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May  2 05:05:16 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Port rpmlintrc format to rpmlint 2.x.
+
+-------------------------------------------------------------------
 Mon Jun  7 11:28:44 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop --with-pic (no effect with --disable-static)
