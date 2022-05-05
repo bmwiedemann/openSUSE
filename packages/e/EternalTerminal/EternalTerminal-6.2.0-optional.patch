@@ -1,0 +1,23 @@
+Index: EternalTerminal-et-v6.2.0/src/terminal/UserTerminalHandler.hpp
+===================================================================
+--- EternalTerminal-et-v6.2.0.orig/src/terminal/UserTerminalHandler.hpp
++++ EternalTerminal-et-v6.2.0/src/terminal/UserTerminalHandler.hpp
+@@ -1,6 +1,8 @@
+ #ifndef __ET_USER_TERMINAL_HANDLER__
+ #define __ET_USER_TERMINAL_HANDLER__
+ 
++#include <optional>
++
+ #include "Headers.hpp"
+ 
+ #include "SocketHandler.hpp"
+Index: EternalTerminal-et-v6.2.0/src/terminal/UserJumphostHandler.hpp
+===================================================================
+--- EternalTerminal-et-v6.2.0.orig/src/terminal/UserJumphostHandler.hpp
++++ EternalTerminal-et-v6.2.0/src/terminal/UserJumphostHandler.hpp
+@@ -1,3 +1,5 @@
++#include <optional>
++
+ #include "Headers.hpp"
+ 
+ #include "ClientConnection.hpp"

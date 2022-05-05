@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  5 08:30:38 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.2.0:
+  * Several security and stability improvements.
+- Add EternalTerminal-6.2.0-return.patch
+  See https://github.com/MisterTea/EternalTerminal/pull/518
+- Add EternalTerminal-6.2.0-optional.patch
+
+-------------------------------------------------------------------
 Thu Jan 13 14:21:27 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 6.1.11:

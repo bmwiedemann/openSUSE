@@ -18,20 +18,22 @@
 
 %global _firewalld_dir %{_prefix}/lib/firewalld
 Name:           EternalTerminal
-Version:        6.1.11
+Version:        6.2.0
 Release:        0
 Summary:        Remote shell that survives IP roaming and disconnect
 License:        Apache-2.0
 URL:            https://mistertea.github.io/EternalTerminal/
 Source0:        https://github.com/MisterTea/EternalTerminal/archive/et-v%{version}.tar.gz
 Source1:        et.xml
-#Patch0:         et-limits.patch
+# https://github.com/MisterTea/EternalTerminal/pull/518
+Patch0:         EternalTerminal-6.2.0-return.patch
+Patch1:         EternalTerminal-6.2.0-optional.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  curl-devel
 BuildRequires:  firewall-macros
 BuildRequires:  firewalld
-BuildRequires:  gcc-c++
+BuildRequires:  gcc12-c++
 BuildRequires:  gflags-devel
 BuildRequires:  libopenssl-1_1-devel
 BuildRequires:  libsodium-devel
