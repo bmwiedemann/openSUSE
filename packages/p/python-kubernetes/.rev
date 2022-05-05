@@ -164,4 +164,17 @@
     - `spec.additionalPrinterColumns` is removed in v1; use `spec.versions[*].additionalPrinterColumns` instead</comment>
     <requestid>857126</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3c8b221da0031ef4c530803137002b08</srcmd5>
+    <version>23.3.0</version>
+    <time>1651784676</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 23.3.0
+  too many changes, see CHANGELOG.md in documentation or at
+  https://github.com/kubernetes-client/python/blob/master/CHANGELOG.md
+- Add python-kubernetes-no-mock.patch to allow building and use
+  without external mock package dependency.
+</comment>
+    <requestid>974767</requestid>
+  </revision>
 </revisionlist>
