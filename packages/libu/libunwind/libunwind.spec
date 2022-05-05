@@ -1,7 +1,7 @@
 #
 # spec file for package libunwind
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libunwind
-Version:        1.5.0
+Version:        1.6.2
 Release:        0
 Summary:        Call chain detection library
 License:        MIT
@@ -30,7 +30,6 @@ Source3:        baselibs.conf
 BuildRequires:  gcc-c++
 BuildRequires:  lzma-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(atomic_ops)
 ExcludeArch:    s390 riscv64
 
 %description
