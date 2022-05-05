@@ -19,8 +19,6 @@
 %define packagename pyUSID
 %{?!python_module:%define python_module() python-%{**}}
 %define         skip_python2 1
-# no dask for python 3.10 yet
-%define         skip_python310 1
 Name:           python-pyUSID
 Version:        0.0.10
 Release:        0
@@ -28,6 +26,9 @@ Summary:        Framework for processing scientific data (USID)
 License:        MIT
 URL:            https://pycroscopy.github.io/pyUSID/
 Source0:        https://github.com/pycroscopy/pyUSID/archive/%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM abc_iterable.patch gh#pycroscopy/pyUSID#81 mcepl@suse.com
+# Iterable goes from collections.abc not directly from collections
+Patch0:         abc_iterable.patch
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module cytoolz}
 BuildRequires:  %{python_module dask >= 0.10}
@@ -66,7 +67,8 @@ Framework for storing, visualizing, and processing Universal Spectroscopic
 and Imaging Data (USID).
 
 %prep
-%setup -q -n %{packagename}-%{version}
+%autosetup -p1 -n %{packagename}-%{version}
+
 # https://pycroscopy.github.io/pyUSID/
 sed -i 's:pytest-runner:pytest:' setup.py
 
@@ -78,7 +80,8 @@ sed -i 's:pytest-runner:pytest:' setup.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# gh#pycroscopy/pyUSID#80 for skips
+%pytest -k 'not (test_custom_interp or test_single_default_interp or test_tuple_default_interp or test_normalize_and_default_interp)'
 
 %files %{python_files}
 %doc README.rst

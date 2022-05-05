@@ -1,0 +1,24 @@
+---
+ pyUSID/io/hdf_utils/simple.py |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/pyUSID/io/hdf_utils/simple.py
++++ b/pyUSID/io/hdf_utils/simple.py
+@@ -968,7 +968,7 @@ def check_for_matching_attrs(h5_obj, new
+             break
+ 
+         if isinstance(old_value, np.ndarray):
+-            if not isinstance(new_parms[key], collections.Iterable):
++            if not isinstance(new_parms[key], collections.abc.Iterable):
+                 if verbose:
+                     print('New parm: {} \t- new parm not iterable unlike old parm *****'.format(key))
+                 tests.append(False)
+@@ -992,7 +992,7 @@ def check_for_matching_attrs(h5_obj, new
+                     print('New parm: {} \t- match: {}'.format(key, answer))
+                 tests.append(answer)
+         else:
+-            """if isinstance(new_parms[key], collections.Iterable):
++            """if isinstance(new_parms[key], collections.abc.Iterable):
+                 if verbose:
+                     print('New parm: {} \t- new parm is iterable unlike old parm *****'.format(key))
+                 tests.append(False)
