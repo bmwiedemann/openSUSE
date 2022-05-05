@@ -1,7 +1,7 @@
 #
 # spec file for package libofx
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,16 @@
 
 
 Name:           libofx
-Version:        0.10.3
+Version:        0.10.5
 Release:        0
 Summary:        OFX Command Parser and API
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/Other
 URL:            https://github.com/libofx/libofx
-Source:         https://github.com/libofx/libofx/archive/%{version}.tar.gz
+Source:         https://github.com/libofx/libofx/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  automake
 BuildRequires:  curl-devel
+BuildRequires:  dos2unix
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -69,11 +70,9 @@ This subpackage contains the header files for the C API.
 %prep
 %setup -q
 chmod -x doc/ofx_sample_files/ofx_spec160_stmtrs_example.sgml
+dos2unix doc/ofx_sample_files/*.ofx
 
 %build
-# Leap 15 has gengetopt 2.22 and needs the typo
-sed -i 's#unnamed-opts#unamed-opts#' {ofxconnect,ofxdump}/Makefile.am
-
 # lto causes build issues on leap and armv7l
 %define _lto_cflags %{nil}
 

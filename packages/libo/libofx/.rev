@@ -306,4 +306,12 @@ Not sure I solved this one the best way possible, comments wanted. (forwarded re
     <comment></comment>
     <requestid>930485</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>4cdcc8ed99b53dc63be12e8a994fa379</srcmd5>
+    <version>0.10.5</version>
+    <time>1651784827</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975136</requestid>
+  </revision>
 </revisionlist>

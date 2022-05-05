@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May  5 09:31:02 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.10.5
+  * Fix missing include for ptrdiff_t on Homebrew
+  * Fix parallel builds by fixing the man-page build
+  * Remove all "using namespace std" directives
+  * Fix some minor memory leaks
+  * Revert typos fixes
+
+-------------------------------------------------------------------
 Tue Nov  9 14:50:42 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Require libofx7 from the devel package: requiring the library as
