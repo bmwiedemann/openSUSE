@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu May  5 06:21:51 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.8.2
+- Add patch:
+  * 0001-Replace-tabs-with-spaces-in-domain_all_settings.xml.patch (https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1489)
+
+# Changelog
+
+## [0.8.2](https://github.com/vagrant-libvirt/vagrant-libvirt/tree/0.8.2) (2022-05-04)
+
+[Full Changelog](https://github.com/vagrant-libvirt/vagrant-libvirt/compare/0.8.1...0.8.2)
+
+**Closed issues:**
+
+- Network configuration overwrites values set during provisioning since version 0.8.0 [\#1479](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1479)
+- Bringing up all boxes in multi-box configuration fails with Ruby 3.1 [\#1445](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1445)
+
+**Merged pull requests:**
+
+- unrestrict fog-core version to ~\> 2 [\#1487](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1487) ([dcermak](https://github.com/dcermak))
+- Update steps in the addtional notes [\#1486](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1486) ([r0x0d](https://github.com/r0x0d))
+- Use require for HandleBox, SyncedFolders, WaitForCommunicator [\#1485](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1485) ([tserong](https://github.com/tserong))
+- Ensure provisioner runs when performing a reload [\#1484](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1484) ([twouters](https://github.com/twouters))
+- Guest PCI address options for passthrough devices [\#1481](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1481) ([jamie01](https://github.com/jamie01))
+
+-------------------------------------------------------------------
 Mon May  2 12:55:19 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - Unrestrict fog-core version
