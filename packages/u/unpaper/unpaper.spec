@@ -1,7 +1,7 @@
 #
 # spec file for package unpaper
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           unpaper
-Summary:        Post-Processing Tool for Scanned Text Pages
-License:        GPL-2.0+
-Group:          Productivity/Graphics/Other
-Version:        6.1
+Version:        7.0.0
 Release:        0
-Url:            https://www.flameeyes.eu/projects/unpaper
+Summary:        Post-Processing Tool for Scanned Text Pages
+License:        GPL-2.0-or-later
+Group:          Productivity/Graphics/Other
+URL:            https://www.flameeyes.eu/projects/unpaper
 Source:         https://www.flameeyes.eu/files/%{name}-%{version}.tar.xz
+BuildRequires:  %{python_module Sphinx >= 3.4}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  libavcodec-devel
 BuildRequires:  libavformat-devel
 BuildRequires:  libavutil-devel
 BuildRequires:  libxslt-tools
-BuildRequires:  pkg-config
+BuildRequires:  meson
+BuildRequires:  pkgconfig
 
 %description
 The unpaper command line tool helps with post-processing scanned text
@@ -40,16 +43,14 @@ aligns the centering of pages.
 %setup -q
 
 %build
-%configure --docdir=%{_docdir}/%{name}
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-make DESTDIR=%{buildroot} install
+%meson_install
 
 %files
-%defattr(-, root, root)
-%{_docdir}/%{name}
-%{_bindir}/*
-%{_mandir}/man1/%{name}.1.gz
+%{_bindir}/unpaper
+%{_mandir}/man1/unpaper.1%{?ext_man}
 
 %changelog
