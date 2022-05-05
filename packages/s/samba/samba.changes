@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue May  3 07:38:02 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 4.16.1
+  * Share and server swapped in smbget password prompt; (bso#14831);
+  * Durable handles won't reconnect if the leased file is written to;
+    (bso#15022);
+  * rmdir silently fails if directory contains unreadable files and
+    hide unreadable is yes; (bso#15023);
+  * SMB2_CLOSE_FLAGS_FULL_INFORMATION fails to return information
+    on renamed file handle; (bso#15038);
+  * Need to describe --builtin-libraries= better (compare with
+    --bundled-libraries); (bso#8731);
+  * vfs_shadow_copy2 breaks "smbd async dosmode" sync fallback;
+    (bso#14957);
+  * shadow_copy2 fails listing snapshotted dirs with shadow:fixinodes;
+    (bso#15035);
+  * PAM Kerberos authentication incorrectly fails with a clock skew
+    error; (bso#15046);
+  * Username map - samba erroneously applies unix group memberships
+    to user account entries; (bso#15041);
+  * KVNO off by 100000; (bso#14951);
+  * Uninitialized litemask in variable in vfs_gpfs module; (bso#15027);
+  * vfs_gpfs recalls=no option prevents listing files; (bso#15055);
+  * smbd doesn't handle UPNs for looking up names; (bso#15054);
+
+-------------------------------------------------------------------
+Wed Apr 20 09:00:49 UTC 2022 - Noel Power <nopower@suse.com>
+
+- Update update-apparmor-samba-profile script, replace
+  non-printable delimiter with more human readable separator as
+  sed can accept separators that can appear in the input data.
+
+-------------------------------------------------------------------
 Wed Apr 13 15:33:22 UTC 2022 - Noel Power <nopower@suse.com>
 
 - Fix update-apparmor-samba-profile script, sed doesn't like
