@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue May  3 13:00:25 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.5
+- Changes since 5.24.4:
+  * [lookandfeel] Fix collapsed width of a volume/brightness OSD on a lock screen (kde#446185)
+  * xdgactivation: Make sure we don't call setStartupId with an x11 token
+  * Convert old-style Favorites resources in KActivities DB (kde#385814)
+  * runners/baloo: Add missing category "text" to file search results
+  * applets/digital-clock: Fix date drift (kde#452554)
+  * systemtray: Fix race in DBusServiceObserver (kde#422111)
+  * systemdialog: also consider buttonbox for dimensions
+  * Fix not working applet with same compact/full representation when hiding
+  * shell/scripting: Consider current activity in `desktopForScreen` (kde#452561)
+  * Set a sane minimum size
+  * SystemDialog: re-add removed public properties
+  * kcm/colors: don't dull accent colour on dark themes in colorsapplicator (kde#442820)
+  * wallpapers/image: Use onActivated instead of onCurrentIndexChanged
+  * appmenu: Use existing menu in compact represenation (kde#438467)
+  * Change the text color when appmenu is selected or hovered
+  * Don't use forceActiveFocus to set search field focus
+  * applets/clipboard: Don't forward input to filter if it's disabled
+  * Avoid memory leaks by misusing HistoryItem::mimeData()
+  * A better fix for BUG 431673
+  * Revert "Trim very long text strings in Klipper history view"
+  * Revert "[klipper] Use full text for DBus return values"
+  * Revert "Fix Klipper Actions content truncation"
+  * Revert "klipper: Add FullTextRole to get untruncated text"
+  * Revert "klipper: Add `testTrimmedText`"
+  * Revert "applets/clipboard: Use FullTextRole in EditPage"
+  * Revert "applets/clipboard: Use FullTextRole in SortFilterModel"
+  * Revert "applets/clipboard: Generate QR code from full text"
+
+-------------------------------------------------------------------
 Tue Mar 29 16:04:40 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.4
