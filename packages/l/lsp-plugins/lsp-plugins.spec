@@ -1,7 +1,7 @@
 #
 # spec file for package lsp-plugins
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %define _lto_cflags %{nil}
 %endif
 Name:           lsp-plugins
-Version:        1.1.31
+Version:        1.2.1
 Release:        0
 Summary:        Linux Studio Plugins Project (Stand-alone)
-License:        LGPL-3.0-or-later AND Zlib
+License:        LGPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://lsp-plug.in/
-Source0:        https://github.com/sadko4u/lsp-plugins/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/sadko4u/lsp-plugins/releases/download/%{version}/%{name}-src-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ladspa
@@ -59,6 +59,7 @@ Common files for lsp-plugins.
 %package        doc
 Summary:        Linux Studio Plugins Documents
 Group:          Documentation/HTML
+BuildArch:      noarch
 
 %description    doc
 Documents for Linux Studio Plugins Project
@@ -105,27 +106,37 @@ the GNU/Linux platform.
 
 This is the LADSPA version of the plugins.
 
+%package devel
+Summary:        Linux Studio Plugins Development files
+Group:          Productivity/Multimedia/Sound/Utilities
+Requires:       %{name}-common = %{version}
+
+%description devel
+
+Development files for Linux Studio Plugins
+
 %prep
-%setup -q
+%setup -qn %{name}
 
 %build
-export PREFIX="%{_prefix}" DOC_PATH="%{_docdir}" LIB_PATH="%{_libdir}"
+#export PREFIX="%{_prefix}" DOC_PATH="%{_docdir}" LIB_PATH="%{_libdir}"
 export CFLAGS="%{optflags}" CXXFLAGS="%{optflags}"
-%make_build SHELL="$(which bash) -x"
+make config PREFIX="%{_prefix}" LIBDIR="%{_libdir}" SHAREDDIR=%{_datadir} FEATURES='lv2 vst2 doc jack ladspa xdg'
+%make_build
 
 %install
-export PREFIX="%{_prefix}" DOC_PATH="%{_docdir}" LIB_PATH="%{_libdir}"
+#export PREFIX="%{_prefix}" DOC_PATH="%{_docdir}" LIB_PATH="%{_libdir}"
 %make_install
-%make_install install_xdg
 
-for desktop in %{buildroot}%{_datadir}/applications/*.desktop; do
-%suse_update_desktop_file ${desktop} Mixer
-done
+mkdir -p %{buildroot}/%{_docdir}
+mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}/%{_docdir}/
 
 %fdupes -s %{buildroot}%{_libdir}
 
 %files
 %{_bindir}/%{name}-*
+%dir %{_libdir}/%{name}
+%{_libdir}/%{name}/liblsp*
 %dir %{_datadir}/desktop-directories
 %dir %{_sysconfdir}/xdg
 %dir %{_sysconfdir}/xdg/menus
@@ -136,12 +147,15 @@ done
 %config %{_sysconfdir}/xdg/menus/applications-merged/lsp-plugins.menu
 
 %files common
-%license LICENSE.txt
-%dir %{_libdir}/%{name}
-%{_libdir}/%{name}/%{name}*
+%license COPYING COPYING.LESSER
+%{_libdir}/liblsp-*.so
+
+%files devel
+%{_libdir}/pkgconfig/*.pc
+%{_libdir}/liblsp-*.a
 
 %files -n ladspa-%{name}
-%{_libdir}/ladspa/%{name}-ladspa.so
+%{_libdir}/ladspa/%{name}-ladspa-%{version}.so
 
 %files -n lv2-%{name}
 %dir %{_libdir}/lv2
@@ -149,7 +163,7 @@ done
 
 %files -n vst-%{name}
 %dir %{_libdir}/vst
-%{_libdir}/vst/%{name}-lxvst-%{version}
+%{_libdir}/vst/%{name}
 
 %files doc
 %{_docdir}/%{name}
