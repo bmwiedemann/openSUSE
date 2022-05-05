@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May  5 13:24:07 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- do not load libcrypto/libssl dynamically, just link against them (bsc#1199047)
+
+-------------------------------------------------------------------
 Fri Oct 22 08:11:26 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.15

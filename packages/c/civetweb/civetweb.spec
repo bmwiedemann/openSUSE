@@ -1,7 +1,7 @@
 #
 # spec file for package civetweb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ Source0:        https://github.com/civetweb/civetweb/archive/v%{version}.tar.gz#
 Source1:        civetweb.conf
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  openssl-devel
+BuildRequires:  libopenssl-devel
 
 %description
 civetweb is a C/C++ embeddable web server with optional CGI, SSL and Lua support.
@@ -76,7 +76,8 @@ rm .git* .clan*
 rm -rf build
 %cmake -DWITH_ALL=1 \
        -DCIVETWEB_BUILD_TESTING=OFF \
-       -DCIVETWEB_ENABLE_CXX=ON
+       -DCIVETWEB_ENABLE_CXX=ON \
+       -DCIVETWEB_ENABLE_SSL_DYNAMIC_LOADING=OFF
 
 %cmake_build %{?_smp_mflags}
 
