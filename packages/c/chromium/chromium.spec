@@ -49,7 +49,7 @@
 # Chromium built with GCC 11 and LTO enabled crashes (boo#1194055)
 %bcond_with lto
 Name:           chromium
-Version:        100.0.4896.127
+Version:        101.0.4951.54
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -102,12 +102,11 @@ Patch84:        chromium-third_party-symbolize-missing-include.patch
 Patch85:        chromium-fix-swiftshader-template.patch
 Patch86:        chromium-97-arm-tflite-cast.patch
 Patch87:        chromium-98-gtk4-build.patch
-Patch89:        chromium-100-GLImplementationParts-constexpr.patch
 Patch90:        chromium-100-InMilliseconds-constexpr.patch
-Patch91:        chromium-100-SCTHashdanceMetadata-move.patch
-Patch92:        chromium-100-macro-typo.patch
 Patch93:        chromium-missing-include-tuple.patch
 Patch94:        chromium-webrtc-stats-missing-vector.patch
+Patch95:        chromium-101-libxml-unbundle.patch
+Patch96:        chromium-101-segmentation_platform-type.patch
 Patch101:       chromium-86-fix-vaapi-on-intel.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch102:       chromium-prop-codecs.patch
@@ -399,7 +398,6 @@ keeplibs=(
     third_party/dav1d
     third_party/dawn
     third_party/dawn/third_party
-    third_party/dawn/third_party/tint/src/ast
     third_party/depot_tools
     third_party/depot_tools/third_party/six
     third_party/devscripts

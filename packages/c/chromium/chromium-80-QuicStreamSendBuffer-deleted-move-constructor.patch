@@ -15,16 +15,16 @@ PiperOrigin-RevId: 241800134
 Change-Id: I4e3c97d6e5895d85340e8c1b740e6196d9104066
 ---
 
-diff --git a/net/third_party/quiche/src/quic/core/quic_stream_send_buffer.h b/net/third_party/quiche/src/quic/core/quic_stream_send_buffer.h
-index e34514b..74e9d0d 100644
---- a/net/third_party/quiche/src/quic/core/quic_stream_send_buffer.h
-+++ b/net/third_party/quiche/src/quic/core/quic_stream_send_buffer.h
-@@ -62,7 +62,7 @@
+Index: chromium-101.0.4951.41/net/third_party/quiche/src/quic/core/quic_stream_send_buffer.h
+===================================================================
+--- chromium-101.0.4951.41.orig/net/third_party/quiche/src/quic/core/quic_stream_send_buffer.h
++++ chromium-101.0.4951.41/net/third_party/quiche/src/quic/core/quic_stream_send_buffer.h
+@@ -65,7 +65,7 @@ class QUIC_EXPORT_PRIVATE QuicStreamSend
   public:
-   explicit QuicStreamSendBuffer(QuicBufferAllocator* allocator);
+   explicit QuicStreamSendBuffer(quiche::QuicheBufferAllocator* allocator);
    QuicStreamSendBuffer(const QuicStreamSendBuffer& other) = delete;
 -  QuicStreamSendBuffer(QuicStreamSendBuffer&& other) = delete;
 +  QuicStreamSendBuffer(QuicStreamSendBuffer&& other) = default;
    ~QuicStreamSendBuffer();
  
-   // Save |data_length| of data starts at |iov_offset| in |iov| to send buffer.
+   // Save |data| to send buffer.
