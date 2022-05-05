@@ -1,7 +1,7 @@
 #
 # spec file for package xrootd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %define __builder ninja
 
 Name:           xrootd
-Version:        4.12.8
+Version:        4.12.9
 Release:        0
 %define plugver 4
 Summary:        An eXtended Root Daemon
@@ -36,10 +36,10 @@ Group:          System/Daemons
 URL:            http://xrootd.org/
 Source0:        https://github.com/xrootd/xrootd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source100:      xrootd-rpmlintrc
-Patch0:	harden_cmsd@.service.patch
-Patch1:	harden_frm_purged@.service.patch
-Patch2:	harden_frm_xfrd@.service.patch
-Patch3:	harden_xrootd@.service.patch
+Patch0:         harden_cmsd@.service.patch
+Patch1:         harden_frm_purged@.service.patch
+Patch2:         harden_frm_xfrd@.service.patch
+Patch3:         harden_xrootd@.service.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  doxygen
 BuildRequires:  fdupes
