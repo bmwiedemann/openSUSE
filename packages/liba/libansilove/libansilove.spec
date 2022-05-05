@@ -20,7 +20,7 @@
 %global sover   1
 %global libname %{name}%{sover}
 Name:           libansilove
-Version:        1.2.9
+Version:        1.3.1
 Release:        0
 Summary:        Library for converting ANSI, ASCII, and other formats to PNG
 License:        BSD-2-Clause
@@ -76,6 +76,9 @@ make %{?_smp_mflags}
 
 %install
 %cmake_install
+
+# Only keep the shared library
+rm %{buildroot}%{_libdir}/libansilove-static.a
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
