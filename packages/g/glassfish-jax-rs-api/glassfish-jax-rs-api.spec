@@ -1,7 +1,7 @@
 #
 # spec file for package glassfish-jax-rs-api
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        JAX-RS API Specification (JSR 339)
 License:        EPL-2.0 OR GPL-2.0-only WITH Classpath-exception-2.0
 URL:            https://github.com/eclipse-ee4j/jaxrs-api
-Source0:        https://github.com/eclipse-ee4j/jaxrs-api/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/jakartaee/rest/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
@@ -40,7 +40,7 @@ Summary:        Javadoc for %{name}
 This package contains API documentation for %{name}.
 
 %prep
-%setup -q -n jaxrs-api-%{version}
+%setup -q -n rest-%{version}
 find . -name '*.jar' -delete
 find . -name '*.class' -delete
 
@@ -60,29 +60,25 @@ find . -name '*.class' -delete
 rm -f jaxrs-api/src/main/java/module-info.java
 
 %build
-(
-cd jaxrs-api
+pushd jaxrs-api
 # Compatibility symlink
 %{mvn_file} :{*} @1 %{name}
 
 # Compatibility alias
 %{mvn_alias} : javax.ws.rs:javax.ws.rs-api
 
-%{mvn_build} -f \
+%{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=8
-%else
-	-- -Dmaven.compiler.source=8 -Dmaven.compiler.target=8 -Dsource=8
+	-Dmaven.compiler.release=8 \
 %endif
-
-)
+    -Dsource=8
+popd
 
 %install
-(
-cd jaxrs-api
+pushd jaxrs-api
 %mvn_install
+popd
 %fdupes -s %{buildroot}%{_javadocdir}
-)
 
 %files -f jaxrs-api/.mfiles
 %license LICENSE.md NOTICE.md
