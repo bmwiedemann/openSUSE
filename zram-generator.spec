@@ -19,7 +19,7 @@
 %global _systemd_util_dir /usr/lib/systemd
 
 Name:           zram-generator
-Version:        1.1.1~git6.6923dc2
+Version:        1.1.2
 Release:        0
 Summary:        Systemd unit generator for zram swap devices
 License:        MIT
