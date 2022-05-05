@@ -1,7 +1,7 @@
 #
 # spec file for package jetty-build-support
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,24 +22,25 @@ Release:        0
 Summary:        Jetty build support files
 License:        Apache-2.0 OR EPL-1.0
 Group:          Development/Libraries/Java
-URL:            http://www.eclipse.org/jetty/
+URL:            https://www.eclipse.org/jetty/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 Source2:        http://www.eclipse.org/org/documents/epl-v10.html
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
+BuildRequires:  xz
 BuildRequires:  mvn(org.apache.maven.enforcer:enforcer-api)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-shade-plugin)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-source-plugin)
 BuildRequires:  mvn(org.apache.maven:maven-artifact)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.apache.maven:maven-project)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-shade-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-source-plugin)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-container-default)
 BuildRequires:  mvn(org.eclipse.jetty.toolchain:jetty-toolchain:pom:)
 BuildRequires:  mvn(org.junit.jupiter:junit-jupiter-engine)
 BuildRequires:  mvn(org.junit.jupiter:junit-jupiter-params)
-BuildRequires:  xz
 BuildArch:      noarch
 
 %description
@@ -58,7 +59,7 @@ cp %{SOURCE1} .
 cp %{SOURCE2} .
 
 %build
-%{mvn_build} -f -- -Dsource=6
+%{mvn_build} -f -- -Dsource=8
 
 %install
 %mvn_install
