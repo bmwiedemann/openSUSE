@@ -17,16 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global skip_python310 1
 Name:           python-PyECLib
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        Simple interface for implementing erasure codes
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://git.openstack.org/cgit/openstack/pyeclib/
 Source:         https://files.pythonhosted.org/packages/source/p/pyeclib/pyeclib-%{version}.tar.gz
-Source99:       https://opendev.org/openstack/pyeclib/raw/branch/master/License.txt
+Source99:       https://opendev.org/openstack/pyeclib/raw/branch/master/LICENSE
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -61,7 +59,7 @@ cp %{SOURCE99} .
 
 %files %{python_files}
 %doc README.rst
-%license License.txt
+%license LICENSE
 %{python_sitearch}/pyeclib*
 
 %changelog
