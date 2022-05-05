@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 26 12:58:24 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.20.1
+  * Fix warning 9 [missing-record-field-pattern] in generated OCaml code
+  * Remove naked pointers from the Dl library
+  * Avoid running a full GC cycle on every FFI closure allocation
+  * Fix use of CAMLdrop in generated code
+  * Drop compatibility with 4.02, and improve compatibility with
+    Multicore OCaml
+
+-------------------------------------------------------------------
 Sat Sep 11 12:34:56 UTC 2021 - ohering@suse.de
 
 - Require dune 2.6+
