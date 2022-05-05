@@ -1,7 +1,7 @@
 #
 # spec file for package re2c
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           re2c
-Version:        2.2
+Version:        3.0
 Release:        0
 Summary:        Tool for generating C-based recognizers from regular expressions
 License:        SUSE-Public-Domain
@@ -54,7 +54,7 @@ terms of size and speed.
 %make_install
 
 %check
-make check %{?_smp_mflags}
+%make_build check
 
 %files
 %license README.md
@@ -62,8 +62,10 @@ make check %{?_smp_mflags}
 %doc examples/
 %{_bindir}/re2c
 %{_bindir}/re2go
+%{_bindir}/re2rust
 %{_mandir}/man1/re2c.1%{?ext_man}
-%{_mandir}/man1/re2go.1.gz
+%{_mandir}/man1/re2go.1%{?ext_man}
+%{_mandir}/man1/re2rust.1%{?ext_man}
 %dir %{_datadir}/re2c
 %dir %{_datadir}/re2c/stdlib
 %{_datadir}/re2c/stdlib/unicode_categories.re
