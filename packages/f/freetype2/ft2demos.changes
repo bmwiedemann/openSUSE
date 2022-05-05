@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May  2 09:04:23 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 2.12.1:
+  * Fix clang++ warnings.
+  * [ftsdf] Fix segmentation fault.
+  * Replace header macros with file names.
+  * [ftview] Handle foreground COLR.
+  * (Print_Array): New function.
+  * (Print_FontInfo_Dictionary, Print_FontPrivate_Dictionary): New functions.
+  * [ftgrid] Minor tweaks.
+  * [ftgrid] Implement embedded bitmap toggle.
+  * Prototype SVG support.
+
+-------------------------------------------------------------------
 Fri Jul 23 07:12:47 UTC 2021 - Ismail Dönmez <ismail@i10z.com>
 
 - Update to version 2.11.0

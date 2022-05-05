@@ -16,9 +16,9 @@
 #
 
 
-%define doc_version 2.12.0
+%define doc_version 2.12.1
 Name:           freetype2
-Version:        2.12.0
+Version:        2.12.1
 Release:        0
 Summary:        A TrueType Font Library
 License:        GPL-2.0-or-later OR SUSE-Freetype
@@ -37,9 +37,6 @@ Patch1:         don-t-mark-libpng-as-required-library.patch
 Patch2:         enable-long-family-names-by-default.patch
 Patch3:         enable-subpixel-rendering.patch
 Patch4:         enable-infinality-subpixel-hinting.patch
-Patch5:         freetype-2.12.0-cff_slot_load-segfault.patch
-Patch6:         https://gitlab.freedesktop.org/freetype/freetype/-/commit/079a22da037835daf5be2bd9eccf7bc1eaa2e783.patch
-Patch7:         revert-ft212-subpixel-hinting-change.patch
 BuildRequires:  gawk
 BuildRequires:  libbz2-devel
 BuildRequires:  libpng-devel

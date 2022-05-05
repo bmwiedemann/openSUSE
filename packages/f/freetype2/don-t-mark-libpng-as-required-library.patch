@@ -1,8 +1,8 @@
-Index: freetype-2.12.0/builds/unix/configure
+Index: freetype-2.12.1/builds/unix/configure
 ===================================================================
---- freetype-2.12.0.orig/builds/unix/configure
-+++ freetype-2.12.0/builds/unix/configure
-@@ -16214,7 +16214,6 @@ fi
+--- freetype-2.12.1.orig/builds/unix/configure
++++ freetype-2.12.1/builds/unix/configure
+@@ -16368,7 +16368,6 @@ fi
  # entries in Requires.private are separated by commas
  PKGCONFIG_REQUIRES_PRIVATE="$zlib_reqpriv,     \
                              $bzip2_reqpriv,    \
@@ -10,7 +10,7 @@ Index: freetype-2.12.0/builds/unix/configure
                              $harfbuzz_reqpriv, \
                              $brotli_reqpriv"
  # beautify
-@@ -16242,7 +16241,6 @@ PKGCONFIG_LIBS_PRIVATE=`echo "$PKGCONFIG
+@@ -16396,7 +16395,6 @@ PKGCONFIG_LIBS_PRIVATE=`echo "$PKGCONFIG
  LIBSSTATIC_CONFIG="-lfreetype               \
                     $zlib_libsstaticconf     \
                     $bzip2_libsstaticconf    \
@@ -18,11 +18,11 @@ Index: freetype-2.12.0/builds/unix/configure
                     $harfbuzz_libsstaticconf \
                     $brotli_libsstaticconf   \
                     $ft2_extra_libs"
-Index: freetype-2.12.0/builds/unix/configure.raw
+Index: freetype-2.12.1/builds/unix/configure.raw
 ===================================================================
---- freetype-2.12.0.orig/builds/unix/configure.raw
-+++ freetype-2.12.0/builds/unix/configure.raw
-@@ -987,7 +987,6 @@ fi
+--- freetype-2.12.1.orig/builds/unix/configure.raw
++++ freetype-2.12.1/builds/unix/configure.raw
+@@ -999,7 +999,6 @@ fi
  # entries in Requires.private are separated by commas
  PKGCONFIG_REQUIRES_PRIVATE="$zlib_reqpriv,     \
                              $bzip2_reqpriv,    \
@@ -30,7 +30,7 @@ Index: freetype-2.12.0/builds/unix/configure.raw
                              $harfbuzz_reqpriv, \
                              $brotli_reqpriv"
  # beautify
-@@ -1015,7 +1014,6 @@ PKGCONFIG_LIBS_PRIVATE=`echo "$PKGCONFIG
+@@ -1027,7 +1026,6 @@ PKGCONFIG_LIBS_PRIVATE=`echo "$PKGCONFIG
  LIBSSTATIC_CONFIG="-lfreetype               \
                     $zlib_libsstaticconf     \
                     $bzip2_libsstaticconf    \
