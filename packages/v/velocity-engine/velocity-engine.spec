@@ -168,8 +168,6 @@ sed -i 's:template:xtemplate:g' \
 %files -n velocity-custom-parser-example -f .mfiles-velocity-custom-parser-example
 %license LICENSE NOTICE
 
-%if ! 0%{?rhel}
 %files javadoc -f .mfiles-javadoc
-%endif
 
 %changelog
