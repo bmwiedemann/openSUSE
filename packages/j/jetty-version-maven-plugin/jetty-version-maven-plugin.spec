@@ -1,7 +1,7 @@
 #
 # spec file for package jetty-version-maven-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,10 @@ Release:        0
 Summary:        Jetty version management Maven plugin
 License:        Apache-2.0 OR EPL-1.0
 Group:          Development/Libraries/Java
-URL:            http://www.eclipse.org/jetty/
+URL:            https://www.eclipse.org/jetty/
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  xz
 BuildRequires:  mvn(org.apache.commons:commons-lang3)
@@ -53,7 +54,7 @@ sed -i 's|edu.emory.mathcs.backport.||' \
     src/main/java/org/eclipse/jetty/toolchain/version/Release.java
 
 %build
-%{mvn_build} -f -- -Dsource=6
+%{mvn_build} -f -- -Dsource=8
 
 %install
 %mvn_install
