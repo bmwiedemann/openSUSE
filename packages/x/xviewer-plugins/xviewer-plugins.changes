@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May  1 12:34:06 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.4.1
+  * Remove fit-to-width plugin, is now supported by native
+    xviewer 3.2.1
+- Update to version 1.4.0
+  * Update map plugin
+  * Fix send-by-mail
+  * Use symbolic icons
+
+-------------------------------------------------------------------
 Tue Nov  8 13:01:41 UTC 2016 - sor.alexei@meowr.ru
 
 - Update to version 1.2.0:

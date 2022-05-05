@@ -1,7 +1,7 @@
 #
 # spec file for package xviewer-plugins
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define _name   xviewer
 Name:           xviewer-plugins
-Version:        1.2.0
+Version:        1.4.1
 Release:        0
-# FIXME: Add postr BuildRequires when we have a package.
 Summary:        A collection of plugins for xviewer
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
-Url:            https://github.com/linuxmint/xviewer-plugins
+URL:            https://github.com/linuxmint/xviewer-plugins
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.SUSE
 BuildRequires:  fdupes
 BuildRequires:  gnome-common
 BuildRequires:  pkgconfig
-BuildRequires:  python3 >= 3.2
+BuildRequires:  python3
 BuildRequires:  pkgconfig(champlain-gtk-0.12) >= 0.9.0
 BuildRequires:  pkgconfig(clutter-gtk-1.0) >= 1.1.2
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
@@ -44,7 +43,6 @@ Requires:       %{_name}
 Recommends:     %{name}-lang
 Suggests:       %{_name}-plugin-exif-display
 Suggests:       %{_name}-plugin-exif-export-to-folder
-Suggests:       %{_name}-plugin-exif-fit-to-width
 Suggests:       %{_name}-plugin-exif-light-theme
 Suggests:       %{_name}-plugin-exif-map
 Suggests:       %{_name}-plugin-exif-postasa
@@ -83,15 +81,6 @@ Provides:       %{_name}-plugins:%{_libdir}/%{_name}/plugins/export-to-folder.pl
 
 %description -n %{_name}-plugin-export-to-folder
 xviewer export to directory plugin
-
-%package -n %{_name}-plugin-fit-to-width
-Summary:        Xviewer fit to width plugin
-Group:          Productivity/Graphics/Viewers
-Requires:       %{name}-data = %{version}
-Provides:       %{_name}-plugins:%{_libdir}/%{_name}/plugins/fit-to-width.plugin
-
-%description -n %{_name}-plugin-fit-to-width
-xviewer fit to width plugin
 
 %package -n %{_name}-plugin-light-theme
 Summary:        Xviewer light-theme plugin
@@ -178,12 +167,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n %{_name}-plugin-export-to-folder
 %glib2_gsettings_schema_post
 
-%post -n %{_name}-plugin-fit-to-width
-%glib2_gsettings_schema_post
-
-%postun -n %{_name}-plugin-fit-to-width
-%glib2_gsettings_schema_post
-
 %post -n %{_name}-plugin-pythonconsole
 %glib2_gsettings_schema_post
 
@@ -225,15 +208,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/glib-2.0/schemas/org.x.viewer.plugins.export-to-folder.gschema.xml
 %dir %{_datadir}/appdata/
 %{_datadir}/appdata/%{_name}-export-to-folder.metainfo.xml
-
-%files -n %{_name}-plugin-fit-to-width
-%defattr(-,root,root)
-%dir %{_libdir}/%{_name}/
-%dir %{_libdir}/%{_name}/plugins/
-%{_libdir}/%{_name}/plugins/fit-to-width.plugin
-%{_libdir}/%{_name}/plugins/libfit-to-width.so
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/%{_name}-fit-to-width.metainfo.xml
 
 %files -n %{_name}-plugin-light-theme
 %defattr(-,root,root)
