@@ -1068,4 +1068,15 @@
 </comment>
     <requestid>974783</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>146dba320fb8306d1e73fc5373223060</srcmd5>
+    <version>1.20.1</version>
+    <time>1651784787</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.20.1
+  * Bugfixes:
+    #8320: Spurious failure of new connections (&quot;unknown (newer?) version of the protocol&quot; etc)
+</comment>
+    <requestid>974974</requestid>
+  </revision>
 </revisionlist>

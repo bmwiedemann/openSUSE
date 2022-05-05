@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  4 16:36:34 UTC 2022 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.20.1
+  * Bugfixes:
+    #8320: Spurious failure of new connections ("unknown (newer?) version of the protocol" etc)
+
+-------------------------------------------------------------------
 Tue May  3 15:29:06 UTC 2022 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.20.0
