@@ -57,4 +57,12 @@ It is a dependency of opam.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>921280</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c70e5c9da192e4f63b0c44a56b6c76c0</srcmd5>
+    <version>1.10.4</version>
+    <time>1651784840</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>975187</requestid>
+  </revision>
 </revisionlist>

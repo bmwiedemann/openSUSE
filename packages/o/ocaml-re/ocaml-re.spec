@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-re
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,32 +16,32 @@
 #
 
 
-%define build_flavor @BUILD_FLAVOR@%{nil}
-%if "%{build_flavor}" == "testsuite"
+%define build_flavor @BUILD_FLAVOR@%nil
+%if "%build_flavor" == "testsuite"
 %define nsuffix -testsuite
 %else
-%define nsuffix %{nil}
+%define nsuffix %nil
 %endif
 
 %define     pkg ocaml-re
-Name:           %{pkg}%{nsuffix}
-Version:        1.10.3
+Name:           %pkg%nsuffix
+Version:        1.10.4
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Pure OCaml regular expressions
 License:        LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/re
-Source0:        %{pkg}-%{version}.tar.xz
+Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 2.0
-BuildRequires:  ocaml-rpm-macros >= 20210911
+BuildRequires:  ocaml-rpm-macros >= 20220409
 %if 1
 BuildRequires:  ocamlfind(seq)
 BuildRequires:  ocamlfind(str)
 %endif
 
-%if "%{build_flavor}" == "testsuite"
+%if "%build_flavor" == "testsuite"
 BuildRequires:  ocamlfind(oUnit)
 BuildRequires:  ocamlfind(re)
 %endif
@@ -50,39 +50,39 @@ BuildRequires:  ocamlfind(re)
 Pure OCaml regular expressions, with support for Perl and POSIX-style strings.
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}-%{release}
+Requires:       %name = %version-%release
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
-%autosetup -p1 -n %{pkg}-%{version}
+%autosetup -p1 -n %pkg-%version
 
 %build
 dune_release_pkgs='re'
 %ocaml_dune_setup
-%if "%{build_flavor}" == ""
+%if "%build_flavor" == ""
 %ocaml_dune_build
 %endif
 
 %install
-%if "%{build_flavor}" == ""
+%if "%build_flavor" == ""
 %ocaml_dune_install
 %ocaml_create_file_list
 %endif
 
-%if "%{build_flavor}" == "testsuite"
+%if "%build_flavor" == "testsuite"
 %check
 %ocaml_dune_test
 %endif
 
-%if "%{build_flavor}" == ""
-%files -f %{name}.files
+%if "%build_flavor" == ""
+%files -f %name.files
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 
 %endif
 
