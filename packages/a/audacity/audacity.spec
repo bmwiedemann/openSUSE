@@ -41,7 +41,9 @@ BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 #!BuildIgnore:  gstreamer-0_10-plugins-base
+%ifarch x86_64
 BuildRequires:  carla-devel
+%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libmp3lame-devel
 BuildRequires:  portmidi-devel

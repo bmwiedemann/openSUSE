@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May  2 15:40:23 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on non-x86_64 by not requiring carla-devel
+
+-------------------------------------------------------------------
 Wed Apr 27 09:21:24 UTC 2022 - Dave Plater <davejplater@gmail.com>
 
 - Fix build with new carla by requiring carla-devel
