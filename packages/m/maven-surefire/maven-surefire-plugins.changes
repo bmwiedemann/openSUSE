@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  5 10:46:11 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Clean and simplify the spec file in order to be able to generate
+  the javadoc with either maven-javadoc-plugin or xmvn javadoc mojo
+
+-------------------------------------------------------------------
 Wed Apr 27 13:52:13 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patches:

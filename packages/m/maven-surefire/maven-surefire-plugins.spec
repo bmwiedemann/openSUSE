@@ -116,10 +116,6 @@ cp -p %{SOURCE2} .
 # Disable strict doclint
 sed -i /-Xdoclint:all/d pom.xml
 
-%pom_disable_module surefire-shadefire
-
-%pom_disable_module surefire-junit-platform surefire-providers
-
 %pom_remove_dep -r org.apache.maven.surefire:surefire-shadefire
 
 # Help plugin is needed only to evaluate effective Maven settings.
@@ -155,6 +151,21 @@ find . -name dependency-reduced-pom.xml -delete
 %pom_add_dep org.apache.commons:commons-lang3::runtime maven-surefire-plugin
 %pom_add_dep commons-io:commons-io::runtime maven-surefire-plugin
 
+# Disable all modules besides the 3 plugins
+for module in \
+    surefire-logger-api \
+    surefire-api \
+    surefire-shadefire \
+    surefire-booter \
+    surefire-grouper \
+    surefire-providers \
+    maven-surefire-common \
+    surefire-report-parser \
+    surefire-setup-integration-tests \
+    surefire-its; do
+  %pom_disable_module ${module}
+done
+
 %build
 %{mvn_package} ":*tests*" __noinstall
 %{mvn_package} ":{surefire,surefire-providers}" __noinstall
@@ -162,25 +173,11 @@ find . -name dependency-reduced-pom.xml -delete
 %{mvn_package} ":*junit-platform*" junit5
 %{mvn_package} ":*{junit,testng,failsafe-plugin,report-parser}*"  @1
 
-%{mvn_artifact} pom.xml
-mkdir -p target/site/apidocs
-for i in \
-    maven-failsafe-plugin \
-    maven-surefire-plugin \
-    maven-surefire-report-plugin; do
-  pushd ${i}
-    %{mvn_build} -f -- \
+%{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
     -Dmaven.compiler.release=8 \
 %endif
     -Dsource=8
-
-  popd
-  %{mvn_artifact} ${i}/pom.xml ${i}/target/${i}-%{version}.jar
-  if [ -d ${i}/target/site/apidocs ]; then
-    cp -r ${i}/target/site/apidocs target/site/apidocs/${i}
-  fi
-done
 
 %install
 %mvn_install
