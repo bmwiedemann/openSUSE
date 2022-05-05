@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 05 06:37:34 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.36.10:
+  * fix bug where strict validation wasn't always respected (#2056)
+  * fix(docs): missing cli options on the summary (#2088)
+
+-------------------------------------------------------------------
 Sat Apr 30 15:45:50 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.36.9:

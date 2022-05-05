@@ -7,4 +7,12 @@
     <comment>new package terragrunt: Terragrunt is a thin wrapper for Terraform that provides extra tools for working with multiple Terraform modules.</comment>
     <requestid>974116</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>80f6e45f631d1c81b6c762573ffdf848</srcmd5>
+    <version>0.36.10</version>
+    <time>1651784855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975228</requestid>
+  </revision>
 </revisionlist>
