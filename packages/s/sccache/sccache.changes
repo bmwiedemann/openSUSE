@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed May 04 23:39:03 UTC 2022 - william.brown@suse.com
+
+- Update to version 0.3.0~git0.f6e36e6:
+  * (cargo-release) version 0.3.0
+  * Rewrite dist client interface to uniformly use async (#1166)
+  * Use clang -fminimize-whitespace to increase cache hits. (#1162)
+  * Replace usages of blocking `reqwest` to be async instead (#1164)
+  * Verify if a compile input is pure rlib or mixed rlib+staticlib before trimming (#1159)
+  * Handle new 'rustc -Z ls' output lines (#1157)
+  * Mark -std and -pedantic as pass-through flags for MSVC (#1151)
+  * Ignore lockfiles of test crates used in the integration tests (#1149)
+  * nvcc: support -ccbin / --compiler-bindir (#1147)
+  * Revert "Automatically remove "awaiting response" label on-comment (#1129)" (#1142)
+
+-------------------------------------------------------------------
+Thu Apr 21 23:28:32 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Change sources to zst compression
+
+-------------------------------------------------------------------
 Tue Apr  5 05:31:37 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Automatic update of vendored dependencies
