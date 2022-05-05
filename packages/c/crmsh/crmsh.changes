@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 05 02:12:49 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.0+20220505.a3a00365:
+  * Dev: unittest: Adjust unit test for previous changes
+  * Fix: crm report: Read data in a save way, to avoid UnicodeDecodeError(bsc#1198180)
+
+-------------------------------------------------------------------
 Mon Apr 18 06:48:42 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.0+20220418.cbf7a09e:
