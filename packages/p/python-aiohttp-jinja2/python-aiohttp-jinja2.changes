@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  5 07:26:15 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.5
+  * Drop support for jinaj2 <3. Add support for 3+.
+  * Don't require typing_extensions on Python 3.8+.
+- Drop merged stdlib-typing_extensions.patch
+
+-------------------------------------------------------------------
 Mon May 31 06:19:55 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add stdlib-typing_extensions.patch to avoid necessity for BR
