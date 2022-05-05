@@ -1208,4 +1208,12 @@ This should work now, I hope... ;-) (forwarded request 570364 from wolfi323)</co
     <comment>Plasma 5.24.4 - untested (forwarded request 965768 from Vogtinator)</comment>
     <requestid>965923</requestid>
   </revision>
+  <revision rev="145" vrev="6">
+    <srcmd5>4dd44d9278e8571d667c816afe37b845</srcmd5>
+    <version>84.87~git20220116T220745~fffd234</version>
+    <time>1651784706</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.24.5. Usual version bump + discover patch change (forwarded request 974667 from Vogtinator)</comment>
+    <requestid>974719</requestid>
+  </revision>
 </revisionlist>
