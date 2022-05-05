@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May  3 13:00:21 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.5
+- Changes since 5.24.4:
+  * backends/drm: reduce "max bpc" to what is actually used (kde#449906)
+  * Fix unlocking wayland sessions (kde#447705)
+  * effects/kscreen: don't use xcb on Wayland (kde#450564)
+  * AbstractClient: Fix the current VD being always added to the plasma interface (kde#452171)
+  * Do not send overlay geometry to text input.
+  * backends/drm: don't permanently disable VRR when the test commit fails
+  * backends/drm: fetch immutable blobs in DrmProperty
+  * waylandserver: move LockScreenPresentationWatcher to the correct place
+  * xdgactivation: Demand attention when a process fails to resolve its token
+  * waylandserver: only signal lockScreenShown once it has actually been shown
+  * Add a way to ignore devices for tablet mode
+
+-------------------------------------------------------------------
 Tue Mar 29 16:04:38 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.4
