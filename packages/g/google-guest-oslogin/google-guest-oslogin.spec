@@ -16,6 +16,8 @@
 #
 
 
+%{!?_pam_moduledir: %define _pam_moduledir %{_pamdir}}
+
 Name:           google-guest-oslogin
 Version:        20220324.00
 Release:        0
@@ -55,7 +57,7 @@ make %{?_smp_mflags} LDLIBS='-lcurl -ljson-c -lboost_regex' VERSION=%{version}
 %endif
 
 %install
-make install DESTDIR=%{buildroot} LIBDIR=/%{_libdir} PAMDIR=/%{_lib}/security SYSTEMDDIR=%{_unitdir} PRESETDIR=%{_presetdir} VERSION=%{version}
+make install DESTDIR=%{buildroot} LIBDIR=/%{_libdir} PAMDIR=%{_pam_moduledir} SYSTEMDDIR=%{_unitdir} PRESETDIR=%{_presetdir} VERSION=%{version}
 mkdir -p %{buildroot}%{_sbindir}
 for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.service' $srv_name); ln -s service %{buildroot}%{_sbindir}/rc$rc_name; done
 
@@ -82,7 +84,7 @@ for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.se
 %attr(0755,root,root) %{_bindir}/google_oslogin_nss_cache
 %{_mandir}/man8/*
 %{_libdir}/libnss*
-/%{_lib}/security/*
+%{_pam_moduledir}/*
 %{_presetdir}/*
 %{_sbindir}/*
 %{_unitdir}/*

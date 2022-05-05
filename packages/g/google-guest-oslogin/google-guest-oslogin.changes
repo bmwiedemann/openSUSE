@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  4 19:37:21 UTC 2022 - Robert Schweikert <rjschwei@suse.com>
+
+- use pam_moduledir (boo#1191036)
+  * Support UsrMerge project
+
+-------------------------------------------------------------------
 Thu Apr 14 11:12:56 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20220411.00
