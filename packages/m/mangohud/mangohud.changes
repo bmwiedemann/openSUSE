@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 04 20:25:47 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 0.6.7:
+  * Show highest cpu freq instead of the cumulative average
+  * Using sysfs scaling_cur_freq instead of /proc/cpuinfo for cpu core frequencies
+  * Added EADesktop.exe and EALauncher.exe to blacklist
+  * Logger writes a summary by default
+  * Using gpu_metrics sysfs binary for amdgpu metrics
+  * Showing min and max frametime for the period
+  * Battery param shows a plug icon when plugged in
+  * Improved amdgpu metrics accuracy by polling 100times per period
+  * Fixed splitgate crashing on amd gpu's
+  * Fixed not reporting amd cpu power when using the zenpower module
+  * Fixed regression in hardware info updater
+  * Fixed bug where setting cpu cores to offline would crash mangohud/mangoapp
+
+-------------------------------------------------------------------
 Sun Mar 13 10:49:22 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 0.6.6 & 0.6.6.1:
