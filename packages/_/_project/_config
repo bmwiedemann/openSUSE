@@ -173,6 +173,8 @@ FileProvides: /bin/sh bash-sh busybox-sh
 FileProvides: /usr/bin/sh bash-sh busybox-sh
 Prefer: bash-sh
 FileProvides: /bin/csh tcsh
+FileProvides: /usr/bin/ed ed busybox-ed
+Prefer: -busybox-ed
 FileProvides: /bin/hostname hostname busybox-hostname
 Prefer: -busybox-hostname
 FileProvides: /usr/bin/hostname hostname busybox-hostname
