@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May  3 08:43:12 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop patch to fix the reminder daemon not starting on login.
+  The autostart key is not automatically set to true here, so it was
+  effectively disabled completely. The daemon tries to not start
+  akonadi unless configured, so the patch can be dropped:
+  * 0001-Make-sure-the-reminder-daemon-is-not-started-by-defa.patch
+
+-------------------------------------------------------------------
 Mon Apr 18 07:50:34 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 22.04.0
