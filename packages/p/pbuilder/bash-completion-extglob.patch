@@ -1,9 +1,8 @@
-Index: pbuilder-0.210/bash_completion.d/pbuilder
-===================================================================
---- pbuilder-0.210.orig/bash_completion.d/pbuilder
-+++ pbuilder-0.210/bash_completion.d/pbuilder
-@@ -61,11 +61,12 @@ _pbuilder()
-                 --compressprog --debootstrapopts --save-after-login --save-after-exec \
+diff -Nur pbuilder-0.231/bash_completion.d/pbuilder new/bash_completion.d/pbuilder
+--- pbuilder-0.231/bash_completion.d/pbuilder	2020-02-15 17:49:39.000000000 +0100
++++ new/bash_completion.d/pbuilder	2022-05-04 12:26:13.339197900 +0200
+@@ -61,11 +61,12 @@
+                 --compressprog --debootstrapopts --save-after-login --save-after-exec
                  --debootstrap' \
                  -- "$cur" ) )
 -            if [[ $prev = @(--aptcache|--hookdir) ]]; then

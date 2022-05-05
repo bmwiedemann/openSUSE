@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed May  4 08:53:02 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.231
+  * Set the debconf value for man-db/auto-update to false to save
+    time in the package installing phase.
+  * pdebuild: With --auto-debsign try to sign both _${arch}.changes
+    and _source.changes if available.
+  * buildpackage: Allow resolving the local hostname too.
+  * bash-completion: Add --binary-indep to the completion.
+  * pbuilderrc: Default to SOURCE_ONLY_CHANGES=yes.
+  * satisfydepends-funcs: Fix parsing of build profiles when there
+    is a << version restriction before the build profile marker.
+  * autopkgtest:
+    * Replace deprecated ADTTMP variable with AUTOPKGTEST_TMP.
+    * Properly use of `tr` to lowercase strings.
+    * Only delete the temporary directory when not running through
+      autopkgtest.
+    * Stop explicitly requiring the archive signing key, since that is very
+      likely to already be installed anyway. 
+- Update to 0.230
+  * createbuildenv:
+    * Only try to print debootstrap.log if the file really exists.
+    * Properly handle the case of a disabled internal cache.
+    * Use packages from APTCACHE during debootstrap.
+  * buildpackage-funcs: Fix whitespace handling in .dsc paths.
+  * modules: Always call `systemctl stop` if using systemd's cgroups,
+    preventing stray slices from being left behind.
+  * buildpackage-funcs:
+    * While setting up the cross-build env, only look at installed bin:gcc,
+      not all available ones.
+    * Print a useful error if GCC version detection fails.
+    * Handle minor GCC versions and unversioned GCC dependencies.
+  * checkparams: Use systemd-escape(1) to escape the package name
+    in the slice name.
+    * Add a --no-source-only-changes option to override a configured
+      SOURCE_ONLY_CHANGES=yes.  Closes: #904716
+    * Add more information in the slice name and scope description
+      to ease the life of those running many pbuilder instances.
+- Update to 0.229
+  * pbuilder-modules: make bind mounts private on Linux.
+  * modules: Support bind-mounting files.
+  * satisfydepends-funcs:
+    * Normalize restriction formulae.
+    * Handle / separator for spaces from -classic.
+  *createbuildenv:
+    * Print a tail of debootstrap.log when debootstrap fails
+  * buildpackage:
+    * Ignore the R³ field if the installed dpkg is too old to appropriately
+      deal with it.
+    * Add support for Rules-Requires-Root.
+      When R³:no fakeroot is not installed in the chroot.
+- Drop bash-completion-have.patch, fixed upstream
+- Drop pbuilderrc.patch, test-suite.patch
+- Rebased bash-completion-extglob.patch, pbuilder-ppc.patch,
+  pdebuild-double-checkbuilddeps.patch
+
+-------------------------------------------------------------------
 Sat Aug 23 19:04:08 UTC 2014 - dvlaeev@suse.com
 
 - Update pbuilder-ppc.patch to include ppc64el architecture 

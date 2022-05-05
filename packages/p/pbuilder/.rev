@@ -93,4 +93,12 @@ See http://lists.opensuse.org/opensuse-factory/2012-05/msg00164.html for a littl
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6fcae64d6e875dd1846a1feb8da133c0</srcmd5>
+    <version>0.231</version>
+    <time>1651784823</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975105</requestid>
+  </revision>
 </revisionlist>

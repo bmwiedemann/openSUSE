@@ -1,13 +1,12 @@
-Index: pbuilder-0.211/pbuilder-apt-config
-===================================================================
---- pbuilder-0.211.orig/pbuilder-apt-config
-+++ pbuilder-0.211/pbuilder-apt-config
-@@ -67,7 +67,7 @@ guess_dist_arch_archive() {
+diff -Nur pbuilder-0.231/pbuilder-apt-config new/pbuilder-apt-config
+--- pbuilder-0.231/pbuilder-apt-config	2019-03-15 15:29:22.000000000 +0100
++++ new/pbuilder-apt-config	2022-05-04 12:31:14.112668307 +0200
+@@ -67,7 +67,7 @@
            amd64|i386)
              echo "ubuntu"
            ;;
--          armel|armhf|hppa|ia64|lpia|powerpc|sparc)
-+          armel|armhf|hppa|ia64|lpia|powerpc|sparc|ppc|ppc64|ppc64el|arm64)
+-          arm64|armel|armhf|hppa|ia64|lpia|powerpc|ppc64el|s390x|sparc)
++          arm64|armel|armhf|hppa|ia64|lpia|powerpc|ppc64el|s390x|sparc|ppc|ppc64)
              echo "ubuntu-ports"
            ;;
            *)

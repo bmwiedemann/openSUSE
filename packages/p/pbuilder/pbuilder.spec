@@ -1,7 +1,7 @@
 #
 # spec file for package pbuilder
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Frank Lichtenheld <frank@lichtenheld.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,30 +13,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           pbuilder
-Version:        0.215
+Version:        0.231
 Release:        0
 Summary:        Personal package builder for .deb packages
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
-Url:            http://pbuilder.alioth.debian.org
-Source0:        http://ftp.de.debian.org/debian/pool/main/p/pbuilder/%{name}_%{version}.tar.gz
+URL:            https://pbuilder-team.pages.debian.net/pbuilder
+Source0:        http://deb.debian.org/debian/pool/main/p/pbuilder/pbuilder_%{version}.tar.xz
 Patch0:         Makefile.patch
-Patch1:         pbuilderrc.patch
-Patch2:         pdebuild-double-checkbuilddeps.patch
-Patch3:         bash-completion-have.patch
-Patch4:         bash-completion-extglob.patch
-Patch5:         test-suite.patch
-Patch6:         pbuilder-ppc.patch
+Patch1:         pdebuild-double-checkbuilddeps.patch
+Patch2:         bash-completion-extglob.patch
+Patch3:         pbuilder-ppc.patch
 Requires:       debootstrap
 Requires:       dpkg
 Requires:       wget
 %if 0%{?suse_version}
-Recommends:     deb fakeroot sudo
+Recommends:     deb
+Recommends:     fakeroot
+Recommends:     sudo
 %endif
 BuildRequires:  dpkg
 BuildRequires:  man
@@ -64,59 +63,46 @@ Authors:
     Junichi Uekawa
 
 %prep
-%setup
+%setup -q
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
 
 %build
-%{__make} %{?jobs:-j%jobs}
+%make_build
 
 %install
-%{__make} install DESTDIR=%{?buildroot}
+%make_install
 
-mv %{buildroot}/etc/bash_completion.d/pbuilder{,.sh}
+mkdir -p %{buildroot}/%{_defaultdocdir}
+mv %{buildroot}/usr/share/doc/pbuilder %{buildroot}/%{_defaultdocdir}
 
-for man in debuild-pbuilder.1 pbuilder.8 pbuilderrc.5 pbuilder-uml.conf.5 pbuilder-user-mode-linux.1 pdebuild.1 pdebuild-user-mode-linux.1; do
+for man in debuild-pbuilder.1 pbuilderrc.5 pbuilder.8 pdebuild.1; do
   category=${man: -1}
   install -D -m644 $man %{buildroot}%{_mandir}/man$category/$man
   gzip -9 %{buildroot}%{_mandir}/man$category/$man
 done
 
-for doc in ChangeLog README COPYING AUTHORS THANKS; do
-  install -D -m644 $doc %{buildroot}%{_defaultdocdir}/%{name}/$doc
-done
-
-if [ "%{buildroot}/usr/share/doc/pbuilder" != "%{buildroot}%{_defaultdocdir}/%{name}" ]; then
-  mv %{buildroot}/usr/share/doc/pbuilder/* %{buildroot}%{_defaultdocdir}/%{name}/
-fi
-
 for dir in build result aptcache ccache; do
   install -d %buildroot/var/cache/pbuilder/$dir
 done
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %check
 %{__make} check
 
 %files
-%defattr(-,root,root,0755)
-%doc %{_defaultdocdir}/%{name}/
-%config /etc/bash_completion.d/pbuilder.sh
-%config /etc/pbuilder
-%{_mandir}/man1/*
-%{_mandir}/man5/*
-%{_mandir}/man8/*
+%license COPYING AUTHORS
+%doc ChangeLog README THANKS
+%doc %{_defaultdocdir}/%{name}/examples
+%dir    /etc/pbuilder
+%config /etc/pbuilder/buildd-config.sh
+%{_mandir}/man?/*
 /usr/sbin/*
 /usr/bin/*
 /usr/lib/pbuilder
 /usr/share/pbuilder
 /var/cache/pbuilder
+%{_datadir}/bash-completion/completions/%{name}
 
 %changelog
