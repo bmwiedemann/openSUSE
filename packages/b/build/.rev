@@ -1482,4 +1482,13 @@ Changes:
 - minor documentation updates</comment>
     <requestid>972021</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>ba835d11c92465550be9547e387ef836</srcmd5>
+    <version>20220429</version>
+    <time>1651784661</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop building aarch64_ilp32 baselibs for aarch64
+- avod aio=io_uring for now on SLE15-SP4 workers</comment>
+    <requestid>973940</requestid>
+  </revision>
 </revisionlist>
