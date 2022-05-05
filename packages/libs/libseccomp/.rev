@@ -327,4 +327,12 @@
     <user>dimstar_suse</user>
     <comment>osc copypac from project:openSUSE:Factory package:libseccomp revision:33, using expand</comment>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>65f0ca08b69f40e3aa7e83cac48d27c2</srcmd5>
+    <version>2.5.4</version>
+    <time>1651784668</time>
+    <user>dimstar_suse</user>
+    <comment>- Deactive python3 by default, it's just not a good idea for ring0.</comment>
+    <requestid>974367</requestid>
+  </revision>
 </revisionlist>

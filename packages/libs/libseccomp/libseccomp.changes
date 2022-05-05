@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Apr 30 16:42:48 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Deactive python3 by default, it's just not a good idea for ring0.
+
+-------------------------------------------------------------------
+Thu Apr 21 21:23:08 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.5.4
+  * Update the syscall table for Linux v5.17.
+  * Fix minor issues with binary tree testing and with empty
+    binary trees.
+  * Minor documentation improvements including retiring the
+    mailing list.
+
+-------------------------------------------------------------------
+Mon Jan 17 11:08:28 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- buildrequire python-rpm-macros
+
+-------------------------------------------------------------------
+Thu Dec  2 12:09:38 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- reenable python bindings at least for the distro default python3
+  package:
+  - adds make-python-build.patch
+
+-------------------------------------------------------------------
 Sun Nov  7 13:23:22 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.5.3

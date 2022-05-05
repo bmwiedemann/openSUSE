@@ -1,7 +1,7 @@
 #
 # spec file for package libseccomp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname   libseccomp2
 Name:           libseccomp
-Version:        2.5.3
+Version:        2.5.4
 Release:        0
 Summary:        A Seccomp (mode 2) helper library
 License:        LGPL-2.1-only
@@ -28,11 +28,17 @@ Source:         https://github.com/seccomp/libseccomp/releases/download/v%versio
 Source2:        https://github.com/seccomp/libseccomp/releases/download/v%version/libseccomp-%version.tar.gz.asc
 Source3:        %name.keyring
 Source99:       baselibs.conf
+Patch1:         make-python-build.patch
 BuildRequires:  autoconf
 BuildRequires:  automake >= 1.11
 BuildRequires:  fdupes
 BuildRequires:  libtool >= 2
 BuildRequires:  pkgconfig
+%bcond_with python
+%if 0%{?with python}
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-Cython >= 0.29
+%endif
 
 %description
 The libseccomp library provides an interface to the Linux Kernel's
@@ -73,6 +79,17 @@ syscall filtering mechanism, seccomp.
 
 This subpackage contains debug utilities for the seccomp interface.
 
+%package -n python3-seccomp
+Summary:        Python 3 bindings for seccomp
+Group:          Development/Tools/Debuggers
+Requires:       python3-Cython >= 0.29
+
+%description -n python3-seccomp
+The libseccomp library provides an interface to the Linux Kernel's
+syscall filtering mechanism, seccomp.
+
+This subpackage contains the python3 bindings for seccomp.
+
 %prep
 %autosetup -p1
 
@@ -84,23 +101,25 @@ echo 'int main () { return 0; }' >tests/52-basic-load.c
 %endif
 
 %build
-if [ ! -f configure ]; then
-	perl -i -pe 's{\QAC_INIT([libseccomp], [0.0.0])\E}{AC_INIT([libseccomp], [%version])}' configure.ac
-fi
 autoreconf -fiv
 %configure \
     --includedir="%_includedir/%name" \
+%if %{with python}
+    --enable-python \
+%endif
     --disable-static \
     --disable-silent-rules \
     GPERF=/bin/true
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 find "%buildroot/%_libdir" -type f -name "*.la" -delete
+rm -fv %buildroot/%python3_sitearch/install_files.txt
 %fdupes %buildroot/%_prefix
 
 %check
+export LD_LIBRARY_PATH="$PWD/src/.libs"
 make check
 
 %post   -n %lname -p /sbin/ldconfig
@@ -119,5 +138,11 @@ make check
 %files tools
 %_bindir/scmp_sys_resolver
 %_mandir/man1/scmp_sys_resolver.1*
+
+%if %{with python}
+%files -n python3-seccomp
+%python3_sitearch/seccomp-%version-py*.egg-info
+%python3_sitearch/seccomp.cpython*.so
+%endif
 
 %changelog
