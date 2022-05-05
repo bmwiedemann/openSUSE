@@ -438,7 +438,7 @@ Patch7:         hdf5-mpi.patch
 Patch8:         Disable-phdf5-tests.patch
 # boo#1179521, boo#1196682, gh#HDFGroup/hdf5#1494
 Patch9:         hdf5-1.10.8-pr1494-fix-release-check-version.patch
-# Imported from Fedora, strip flags from h5cc wrapper 
+# Imported from Fedora, strip flags from h5cc wrapper
 Patch10:        hdf5-wrappers.patch
 BuildRequires:  fdupes
 %if 0%{?use_sz2}
@@ -760,6 +760,7 @@ export MPICXX=mpicxx
 %hpc_configure \
 %define hpc_exec_prefix %{expand:%_hpc_exec_prefix}
 %endif # ?hpc
+  --disable-hltools \
   --disable-dependency-tracking \
   --enable-fortran \
   --enable-unsupported \

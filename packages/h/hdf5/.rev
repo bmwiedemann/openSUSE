@@ -751,4 +751,14 @@ fixed baselibs.conf compared to previous version</comment>
     <comment></comment>
     <requestid>969150</requestid>
   </revision>
+  <revision rev="76" vrev="4">
+    <srcmd5>a688ed1b65f729305448e44571db7380</srcmd5>
+    <version>1.10.8</version>
+    <time>1651784766</time>
+    <user>dimstar_suse</user>
+    <comment>* CVE-2018-17234: Memory leak in the H5O__chunk_deserialize() 
+  * CVE-2018-17434: A SIGFPE signal is raised in function apply_filters()
+  of h5repack_filters.c (bsc#1109566) (forwarded request 975081 from eeich)</comment>
+    <requestid>975082</requestid>
+  </revision>
 </revisionlist>

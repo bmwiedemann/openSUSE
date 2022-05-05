@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May  4 06:39:53 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Security Fix:
+  Add configure option --disable-hltools to disable GIF tools as
+  recommended in the 1.10.8 release:
+  CVE-2018-17433 (bsc#1109565),
+  CVE-2018-17436 (bsc#1109568),
+  CVE-2020-10809 (bsc#1167404).
+
+-------------------------------------------------------------------
 Thu Apr  7 23:51:05 UTC 2022 - Christoph Junghans <junghans@votca.org>
 
 - add hdf5-wrappers.patch from Fedora, so strip flags from
@@ -58,14 +68,16 @@ Wed Feb 16 11:18:17 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
   * h5repack added help text for user-defined filters.
   * Doxygen documentation is available when configured and
     generated.
-  * Fixed CVE-2018-17432
+  * Fixed CVE-2018-17432 (bsc#1109564)
   * Fixed a segmentation fault
   * Detection of simple data transform function "x"
   * Fixed CVE-2020-10810 - an invalid read and memory leak when
-    parsing
-  * Fixed CVE-2018-14460
-  * Fixed CVE-2018-11206
-  * Fixed CVE-2018-14033 (same issue as CVE-2020-10811)
+    parsing (bsc#1167401)
+  * Fixed CVE-2018-14460 (bsc#1102175)
+  * Fixed CVE-2018-11206 (bsc#1093657)
+    (same issue as CVE-2018-14032 (bsc#1101474))
+  * Fixed CVE-2018-14033 (bsc#1101471)
+    (same issue as CVE-2020-10811 (bsc#1167405))
   * Remove underscores on header file guards
   * H5FArray.java class:
     - Convert the entire byte array into a 1-d array of the
@@ -201,7 +213,8 @@ Fri Nov  6 10:41:02 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
   * CVE-2018-13869: memcpy parameter overlap in the function 
     H5O_link_decode in H5Olink.c (bsc#1101495)
   * CVE-2018-17438:  A SIGFPE signal is raised in the function 
-    H5D__select_io() of H5Dselect.c in the HDF HDF5 through 1.10.3 
+    H5D__select_io() of H5Dselect.c in the HDF HDF5 through 1.10.3
+    (bsc#1109570)
     library during an attempted parse of a crafted HDF file, 
     because of incorrect protection against division
     (bsc#1109570)
@@ -287,10 +300,14 @@ Fri Aug 23 09:58:01 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 - Security bugs fixed: 
   * CVE-2018-17233: A SIGFPE signal is raised in the function 
   H5D__create_chunk_file_map_hyper. (bsc#1109166)
-  * CVE-2018-17434: Memory leak in the H5O__chunk_deserialize() 
+  * CVE-2018-17234: Memory leak in the H5O__chunk_deserialize() 
   function in H5Ocache.c (bsc#1109167)
-  * CVE-2018-17437: A SIGFPE signal is raised in the function 
-  H5D__chunk_set_info_real. (bsc#1109168)
+  * CVE-2018-17434: A SIGFPE signal is raised in function apply_filters()
+  of h5repack_filters.c (bsc#1109566)
+  * CVE-2018-17437: Memory leak in the H5O_dtype_decode_helper() function
+  in H5Odtype.c. (bsc#1109569)
+  * CVE-2018-17237: A SIGFPE signal is raised in the function 
+  H5D__chunk_set_info_real (bsc#1109168) (commit 4e31361d).
 - Bump fortran library soname, sonum_F from 100 to 102.
 - Adjust library installation path, use %hpc_prefix/lib64 in x86_64 
   and %hpc_libdir in all other cases
