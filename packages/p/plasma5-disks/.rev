@@ -239,4 +239,12 @@
     <comment>Plasma 5.24.4 - untested (forwarded request 965768 from Vogtinator)</comment>
     <requestid>965919</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>29caff2b805d334ad5fd852c0ffe863b</srcmd5>
+    <version>5.24.5</version>
+    <time>1651784725</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.24.5. Usual version bump + discover patch change (forwarded request 974667 from Vogtinator)</comment>
+    <requestid>974715</requestid>
+  </revision>
 </revisionlist>
