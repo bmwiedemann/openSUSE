@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon May  2 21:03:25 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Update to 2.9.14:
+  * Security:
+    + [CVE-2022-29824] Integer overflow in xmlBuf and xmlBuffer
+    + Fix potential double-free in xmlXPtrStringRangeFunction
+    + Fix memory leak in xmlFindCharEncodingHandler
+    + Normalize XPath strings in-place
+    + Prevent integer-overflow in htmlSkipBlankChars() and 
+      xmlSkipBlankChars()
+    + Fix leak of xmlElementContent
+
+  * Bug fixes:
+    + Fix parsing of subtracted regex character classes
+    + Fix recursion check in xinclude.c
+    + Reset last error in xmlCleanupGlobals
+    + Fix certain combinations of regex range quantifiers
+    + Fix range quantifier on subregex
+
+  * Improvements:
+    + Fix recovery from invalid HTML start tags
+
+  * Build system, portability:
+    + Define LFS macros before including system headers
+    + Initialize XPath floating-point globals
+    + configure: check for icu DEFS 
+    + configure.ac: produce tar.xz only (GNOME policy)
+    + CMakeLists.txt: Fix LIBXML_VERSION_NUMBER
+    + Fix build with older Python versions
+    + Fix --without-valid build
+
+-------------------------------------------------------------------
 Fri Mar 18 09:46:03 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Build python bindings in a 2nd run, using multibuild: otherwise,
