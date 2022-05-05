@@ -27,6 +27,10 @@ Source0:        https://archive.apache.org/dist/httpcomponents/httpasyncclient/s
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
+%if 0%{?rhel} >= 9
+BuildRequires:  xmvn-tools
+BuildRequires:  xmvn-minimal
+%endif
 BuildRequires:  mvn(commons-logging:commons-logging)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.httpcomponents:httpclient)
@@ -76,7 +80,8 @@ find . -name "*.jar" -type f -delete
 # Unwanted
 %pom_remove_plugin :maven-site-plugin
 %pom_remove_plugin :maven-source-plugin
-# Unavalable
+%pom_remove_plugin -r :maven-javadoc-plugin
+# Unavailable
 %pom_remove_plugin :clirr-maven-plugin
 
 %pom_disable_module httpasyncclient-osgi
