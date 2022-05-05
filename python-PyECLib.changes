@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May  5 04:58:38 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.6.1:
+  * Deprecate Jerasure support
+  * Use Py_ssize_t when calling PyArg_Parse
+  * Test against Python 3.8 - 3.10
+  * Use the Python Stable ABI
+  * Various other minor bugs fixes and improvements 
+- Stop skipping Python 3.10
+- Update the license file location
+
+-------------------------------------------------------------------
 Tue Jan 11 10:14:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - skip python 3.10 for now 

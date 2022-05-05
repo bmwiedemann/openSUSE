@@ -43,4 +43,19 @@
     <comment>- skip python 3.10 for now</comment>
     <requestid>945557</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>23ed4b4c49a9e88ed9e45931c58b83a1</srcmd5>
+    <version>1.6.1</version>
+    <time>1651784812</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.1:
+  * Deprecate Jerasure support
+  * Use Py_ssize_t when calling PyArg_Parse
+  * Test against Python 3.8 - 3.10
+  * Use the Python Stable ABI
+  * Various other minor bugs fixes and improvements 
+- Stop skipping Python 3.10
+- Update the license file location</comment>
+    <requestid>975027</requestid>
+  </revision>
 </revisionlist>
