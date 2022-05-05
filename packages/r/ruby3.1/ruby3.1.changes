@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 29 13:25:14 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Do not depend on binutils-gold as it will be removed
+  in the future as it's obsoleted. Use lld instead of it
+  for clang build.
+
+-------------------------------------------------------------------
 Wed Apr 13 13:41:18 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - use rb_soname instead of hard coding the ruby package name

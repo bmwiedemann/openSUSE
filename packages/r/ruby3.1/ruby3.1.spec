@@ -90,8 +90,8 @@ Source99:       %{rb_soname}-rpmlintrc
 Patch:          use-pie.patch
 BuildRequires:  ruby-bundled-gems-rpmhelper
 %if %{with clang}
-BuildRequires:  binutils-gold
 BuildRequires:  clang
+BuildRequires:  lld
 BuildRequires:  llvm-devel
 %endif
 BuildRequires:  gmp-devel
@@ -108,9 +108,9 @@ BuildRequires:  update-alternatives
 %if "%{flavor}" == "testsuite"
 #!BuildIgnore: ruby
 #!BuildIgnore: ruby-common
+BuildRequires:  %{rb_soname}
 BuildRequires:  netcfg
 BuildRequires:  procps
-BuildRequires:  %{rb_soname}
 BuildRequires:  timezone
 %endif
 BuildRequires:  readline-devel
@@ -300,7 +300,7 @@ export LC_CTYPE="en_US.UTF-8"
 %if %{with clang}
 export CC="clang"
 export CXX="clang++"
-export LD="ld.gold"
+export LD="lld"
 %endif
 # iseq.c needs -fno-strict-aliasing
 export CFLAGS="%{optflags} -fno-strict-aliasing -std=gnu99"
