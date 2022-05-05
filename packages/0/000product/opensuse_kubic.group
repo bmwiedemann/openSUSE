@@ -476,7 +476,7 @@
     <package name="libpolkit-agent-1-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-packagekit -->
     <package name="libpolkit-gobject-1-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-packagekit -->
     <package name="libprocps8" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
-    <package name="libprotobuf-lite30" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubic_worker -->
+    <package name="libprotobuf-lite31" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubic_worker -->
     <package name="libproxy1" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubic_worker -->
     <package name="libpwquality-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="libpwquality1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
