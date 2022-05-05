@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May 05 06:36:44 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.19.1:
+  * Bump github.com/open-policy-agent/opa from 0.39.0 to 0.40.0 (#265)
+  * Bump github.com/spf13/viper from 1.10.1 to 1.11.0 (#262)
+  * Bump k8s.io/apimachinery from 0.23.5 to 0.23.6 (#261)
+  * Bump golang from 1.17.7-alpine to 1.18.1-alpine (#264)
+  * Bump alpine from 3.15.3 to 3.15.4 (#263)
+  * Fix Go linter check (#266)
+  * Bump actions/upload-artifact from 2 to 3 (#260)
+  * Bump actions/download-artifact from 2 to 3 (#259)
+  * Bump actions/setup-go from 2 to 3 (#258)
+  * Include test/ folder in e2e tests (#257)
+
+-------------------------------------------------------------------
 Thu Apr 14 19:51:36 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.19.0:
