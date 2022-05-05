@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May  3 13:00:23 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.5
+- Changes since 5.24.4:
+  * Remove unneeded check for comic Dataengine being valid (kde#452596)
+
+-------------------------------------------------------------------
 Tue Mar 29 16:04:39 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.4

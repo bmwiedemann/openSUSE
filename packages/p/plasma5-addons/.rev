@@ -1072,4 +1072,12 @@ Fri Sep 26 09:09:31 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Plasma 5.24.4 - untested (forwarded request 965768 from Vogtinator)</comment>
     <requestid>965917</requestid>
   </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>e591d9e31f78518478c6a81ca98e24ff</srcmd5>
+    <version>5.24.5</version>
+    <time>1651784704</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.24.5. Usual version bump + discover patch change (forwarded request 974667 from Vogtinator)</comment>
+    <requestid>974713</requestid>
+  </revision>
 </revisionlist>
