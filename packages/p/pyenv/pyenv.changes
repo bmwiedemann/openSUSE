@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed May  4 15:43:51 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.0
+
+- Update to 2.3.0
+  - Bump openssl 1.1 to 1.1.1n for CPython 3.7 3.8 3.9 by @tuzi3040 in #2276
+  - Doc Fix: Escape a hash character causing unwanted GitHub Issue linking by @edrogers in #2282
+  - Add CPython 3.9.12 by @saaketp in #2296
+  - Add CPython 3.10.4 by @saaketp in #2295
+  - Add patch for 3.6.15 to support Xcode 13.3 by @nshine in #2288
+  - Add patch for 3.7.12 to support Xcode 13.3 by @samdoran in #2292
+  - Add CONTRIBUTING.md by @native-api in #2287
+  - Add PyPy 7.3.9 release 2022-03-30 by @dand-oss in #2308
+  - Add Pyston 2.3.3 by @scop in #2316
+  - Add CPython 3.11.0a7 by @illia-v in #2315
+  - Add "nogil" Python v3.9.10 by @colesbury in #2342
+  - Support XCode 13.3 in all releases that officially support MacOS 11 by @native-api in #2344
+  - Add GraalPython 22.1.0 by @msimacek in #2346
+  - Make PYENV_DEBUG imply -v for pyenv install by @native-api in #2347
+  - Simplify init scheme by @native-api in #2310
+  - Don't use Homebrew outside of MacOS by @native-api in #2349
+  - Add :latest syntax to documentation for the install command by @hay in #2351
+
+
+-------------------------------------------------------------------
 Tue Apr  5 07:39:13 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.2.5
 
 - Update to 2.2.5
