@@ -1,7 +1,7 @@
 #
 # spec file for package openconnect
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %define libname libopenconnect5
 Name:           openconnect
-Version:        8.10
+Version:        8.20
 Release:        0
-Summary:        Open client for Cisco AnyConnect VPN
+Summary:        Client for Cisco AnyConnect VPN
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Security
 URL:            http://www.infradead.org/openconnect.html
+#Git-Web:       https://gitlab.com/openconnect/openconnect
 Source0:        ftp://ftp.infradead.org/pub/%{name}/%{name}-%{version}.tar.gz
 Source1:        vpnc-script
 Source98:       ftp://ftp.infradead.org/pub/%{name}/%{name}-%{version}.tar.gz.asc#/%{name}-%{version}.tar.gz.sig
@@ -46,48 +47,50 @@ BuildRequires:  pkgconfig(stoken)
 BuildRequires:  pkgconfig(uid_wrapper)
 
 %description
-This package provides a client for Cisco's "AnyConnect" VPN, which uses
-HTTPS and DTLS protocols.  AnyConnect is supported by the ASA5500 Series,
-by IOS 12.4(9)T or later on Cisco SR500, 870, 880, 1800, 2800, 3800,
-7200 Series and Cisco 7301 Routers, and probably others.
+This package provides a multi-protocol client for a number of SSL
+VPNs, such as:
+
+* Cisco's "AnyConnect" VPN (HTTPS/DTLS) supported by the ASA5500 Series,
+  by IOS 12.4(9)T or later on Cisco SR500, 870, 880, 1800, 2800, 3800,
+  7200 Series and Cisco 7301 Routers, and probably others.
+* Array Networks AG SSL VPN
+* Juniper SSL VPN
+* Pulse Connect Secure
+* Palo Alto Networks GlobalProtect SSL VPN
+* F5 Big-IP SSL VPN
+* Fortinet Fortigate SSL VPN
 
 %package -n %{libname}
 Summary:        Libraries for %{name}
 Group:          System/Libraries
 
 %description -n %{libname}
-This package provides libraries for Cisco's "AnyConnect" VPN, which uses
-HTTPS and DTLS protocols.  AnyConnect is supported by the ASA5500 Series,
-by IOS 12.4(9)T or later on Cisco SR500, 870, 880, 1800, 2800, 3800,
-7200 Series and Cisco 7301 Routers, and probably others.
+This package provides a multi-protocol client for a number of SSL
+VPNs, including Cisco's "AnyConnect" VPN.
 
 %package devel
 Summary:        Development files and headers for %{name}
 Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
-Recommends:     pkgconfig
+Requires:       %{libname} = %{version}
 
 %description devel
-This package provides a client for Cisco's "AnyConnect" VPN, which uses
-HTTPS and DTLS protocols.  AnyConnect is supported by the ASA5500 Series,
-by IOS 12.4(9)T or later on Cisco SR500, 870, 880, 1800, 2800, 3800,
-7200 Series and Cisco 7301 Routers, and probably others.
+This package provides a multi-protocol client for a number of SSL
+VPNs, including Cisco's "AnyConnect" VPN.
 
 This packages provides development files and headers needed to build
-packages against openconnect
+packages against openconnect.
 
 %package doc
 Summary:        Documentation for %{name}
-Group:          Development/Libraries/C and C++
+Group:          Documentation/HTML
 Recommends:     %{name} = %{version}
+BuildArch:      noarch
 
 %description doc
-This package provides a client for Cisco's "AnyConnect" VPN, which uses
-HTTPS and DTLS protocols.  AnyConnect is supported by the ASA5500 Series,
-by IOS 12.4(9)T or later on Cisco SR500, 870, 880, 1800, 2800, 3800,
-7200 Series and Cisco 7301 Routers, and probably others.
+This package provides a multi-protocol client for a number of SSL
+VPNs, including Cisco's "AnyConnect" VPN.
 
-This packages provides documentation and help files for openconnect
+This packages provides documentation and help files for openconnect.
 
 %package bash-completion
 Summary:        Bash Completion for %{name}
@@ -105,7 +108,7 @@ Bash completion script for %{name}.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
@@ -121,7 +124,7 @@ Bash completion script for %{name}.
   --with-libpcsclite \
   --with-libpskc \
   --with-gssapi
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -135,7 +138,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig

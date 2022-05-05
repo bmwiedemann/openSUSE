@@ -361,4 +361,12 @@ No LGPL-2.1 &quot;only&quot; licenses found. Fedora also uses LGPL-2.1 &quot;or 
   * This brings a lot of improvements for non-trivial network setups, IPv6 etc</comment>
     <requestid>935128</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>1f0a62992f92c52dda2929eba0066d08</srcmd5>
+    <version>8.20</version>
+    <time>1651784713</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974476</requestid>
+  </revision>
 </revisionlist>

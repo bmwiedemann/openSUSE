@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Apr 18 07:39:45 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.20:
+  * Support non-AEAD ciphersuites in DTLSv1.2 with AnyConnect.
+  * Emulated a newer version of GlobalProtect official clients,
+    5.1.5-8; was 4.0.2-19
+  * Support Juniper login forms containing both password and 2FA
+    token
+  * Explicitly disable 3DES and RC4, unless enabled with
+    --allow-insecure-crypto
+  * Allow protocols to delay tunnel setup and shutdown (!117)
+  * Support for GlobalProtect IPv6
+  * SIGUSR1now causes OpenConnect to log detailed connection
+    information and statistics
+  * Allow --servercert to be specified multiple times in order to
+    accept server certificates matching more than one possible
+    fingerprint
+  * Demangle default routes sent as split routes by GlobalProtect
+  * Support more Juniper login forms, including some SSO forms
+  * Restore compatibility with newer Cisco servers, by no longer
+    sending them the X-AnyConnect-Platform header
+  * Add support for PPP-based protocols, currently over TLS only.
+  * Add support for two PPP-based protocols, F5 with
+    --protocol=f5 and Fortinet with --protocol=fortinet.
+  * Add support for Array Networks SSL VPN.
+  * Support TLSv1.3 with TPMv2 EC and RSA keys, add test cases
+    for swtpm and hardware TPM.
+
+-------------------------------------------------------------------
 Tue Nov 23 20:22:50 UTC 2021 - Robert Munteanu <rombert@apache.org>
 
 - Import the latest version of the vpnc-script, revision
