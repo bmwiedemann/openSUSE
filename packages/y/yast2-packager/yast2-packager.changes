@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May  3 06:50:36 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Run the package solver after selecting additional system
+  packages, fixes possible broken package dependencies after system
+  upgrade (bsc#1195828)
+- 4.5.3
+
+-------------------------------------------------------------------
 Wed Apr 27 13:31:36 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Don't rely on install.inf availability #(bsc#1198560)
