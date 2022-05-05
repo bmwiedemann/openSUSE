@@ -20,8 +20,6 @@
 %define skip_python2 1
 # Tumbleweed does not have a python36-numpy anymore: NEP 29 dropped Python 3.6 for NumPy 1.20
 %define skip_python36 1
-# onnx 1.10.2 is not yet ready for python 3.10
-%define skip_python310 1
 Name:           python-onnx
 Version:        1.10.2
 Release:        0
@@ -30,7 +28,9 @@ License:        MIT
 URL:            https://onnx.ai/
 Source0:        https://github.com/onnx/onnx/archive/v%{version}.tar.gz#/onnx-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-Patch1:         no-python2.patch
+# PATCH-FIX-UPSTREAM 3734-enable-python310.patch gh#onnx/onnx#3734 mcepl@suse.com
+# Make the package Python 3.10 compatible
+Patch0:         3734-enable-python310.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module protobuf}
@@ -102,9 +102,14 @@ This packages includes the data for testing the backend.
 
 %prep
 %setup -q -n onnx-%{version}
+
 # avoid bundles
 rm -rf third_party
 %autopatch -p1
+
+# fix shebang
+sed -i "s|^#!\s*%{_bindir}/env python|#!%{_bindir}/python3|" tools/protoc-gen-mypy.py
+
 # build inside python_expand shuffled build dir also used by the cmake macro instead of upstream's custom dirname
 sed -i "/^CMAKE_BUILD_DIR = / s/TOP_DIR, '.setuptools-cmake-build'/TOP_DIR, 'build'/" setup.py
 # do not require extra pytest modules
