@@ -1,0 +1,6 @@
+<package name="lite-xl-plugins" project="openSUSE:Factory">
+  <title></title>
+  <description>Plugins for the Lite XL editor</description>
+  <devel project="editors" package="lite-xl-plugins"/>
+  <url>https://github.com/lite-xl/lite-xl-plugins</url>
+</package>

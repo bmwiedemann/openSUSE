@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Mon May 02 15:26:39 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version git20220501.7bee960:
+  * Update language_rivet.lua
+  * `selectionhighlight`: Don't draw box around the selection
+  * `selectionhighlight`: Draw frame after drawing line body
+  * A plugin for generating dummy lorem ipsum text
+
+-------------------------------------------------------------------
+Wed Apr 27 18:56:29 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version git20220425.e1f7c35:
+  * Reorganize README.md
+  * Update README.md
+  * docs: add my plugins
+  * Update README.md
+  * Add how to request plugins
+  * Reorganize README.md
+  * Add plugin install instructions
+  * fix
+  * Add files via upload
+  * Delete language_glaz.lua
+  * Update README.md
+  * Update README.md
+  * Modified README
+
+-------------------------------------------------------------------
+Fri Apr 22 16:50:36 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding nonicons config options for:
+  * .vim
+  * .j2
+  * .ini
+  * .bash
+  * .fish
+
+-------------------------------------------------------------------
+Thu Apr 21 14:56:52 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version git20220419.2fc43f7:
+  * Align `language_cpp` plugin with the one from lite-xl/lite-xl
+
+-------------------------------------------------------------------
+Thu Apr 14 03:03:42 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Seems to use 'gitdiff_highlight' not 'gitdiff-highlight'.
+
+-------------------------------------------------------------------
+Thu Apr 14 02:48:16 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding .patch files for datetimestamps & nonicons
+- Adding 'gitdiff-highligh' setup.
+
+-------------------------------------------------------------------
+Wed Apr 13 21:41:01 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Swapping out USERDIR for DATADIR so nonicons works by default.
+  * Otherwise, each user would need to do something like:
+    ln -s /usr/share/lite-xl/fonts/nonicons.ttf ~/.config/lite-xl/fonts/
+
+-------------------------------------------------------------------
+Wed Apr 13 18:14:26 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Fixing up 'console','indentguide','nonicons' plugins.
+- Adding 'words' Recommends.
+
+-------------------------------------------------------------------
+Wed Apr 13 15:43:55 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding license and readme files to package.
+
+-------------------------------------------------------------------
+Tue Apr 12 21:44:35 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version git20220404.81289cb:
+  * Reorganize README.md
+  * [language_glaz] add keyword \`vec\`
+  * Added lsp and widget to README
+  * add treeview-menu-extender plugin (#36)
+  * typingspeed: added typingspeed plugin (#47)
+  * Reorganize README.md
+  * update `language_glaz`
+  * Improve `smoothcaret` plugin (#46)
+  * minimap: don't show on non DocView's
+  * fix pattern for `glaz.proj` files
+
+-------------------------------------------------------------------
+Tue Apr 12 21:43:56 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Initial version from upstream.

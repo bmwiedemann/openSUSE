@@ -1,0 +1,13 @@
+--- plugins/datetimestamps.lua.orig	2022-04-13 22:27:41.894859189 -0400
++++ plugins/datetimestamps.lua	2022-04-13 22:28:01.190831090 -0400
+@@ -26,8 +26,8 @@
+ %%	the character `%´
+ --]]
+ config.plugins.datetimestamps = {
+-  format_datestamp = "%Y%m%d"
+-  format_datetimestamp = "%Y%m%d_%H%M%S"
++  format_datestamp = "%Y%m%d",
++  format_datetimestamp = "%Y%m%d_%H%M%S",
+   format_timestamp = "%H%M%S"
+ }
+ 

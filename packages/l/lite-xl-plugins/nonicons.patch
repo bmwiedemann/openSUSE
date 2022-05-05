@@ -1,0 +1,11 @@
+--- plugins/nonicons.lua.orig	2022-04-13 22:32:51.934432426 -0400
++++ plugins/nonicons.lua	2022-04-13 22:33:05.838412622 -0400
+@@ -5,7 +5,7 @@
+ local TreeView = require "plugins.treeview"
+ 
+ 
+-local icon_font = renderer.font.load(USERDIR.."/fonts/nonicons.ttf", 15 * SCALE)
++local icon_font = renderer.font.load(DATADIR.."/fonts/nonicons.ttf", 15 * SCALE)
+ local extension_icons = {
+   [".lua"] = { "#51a0cf", "" },
+   [".md"]  = { "#519aba", "" }, -- Markdown
