@@ -1,7 +1,7 @@
 #
 # spec file for package xwmfs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ BuildRequires:  fuse-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libX11-devel
 Requires:       fuse
-Version:        0.90
+Version:        0.91
 Release:        0
 URL:            https://github.com/gerstner-hub/xwmfs
 Summary:        A file system for accessing X server and window manager features

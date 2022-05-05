@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 05 07:53:47 UTC 2022 - matthias.gerstner@suse.com
+
+- Update to version v0.91:
+  * autotools: only add increased warning flags if --enable-dev is set
+  * configure.ac: update to current autotools versions
+  * Mutex.cxx: fix invalid stack access in DEBUG_MUTEX case
+  * test base: use unpredictable temporary directory for testing
+  * test base: try from a list of X11 programs for testing, otherwise fail
+  * global: python scripts: adjust coding style to Python PIP
+  * ILogger: fix warn() wrapper to return actual m_warn, no m_err
+
+-------------------------------------------------------------------
 Mon Apr 12 08:53:43 UTC 2021 - matthias.gerstner@suse.com
 
 - Update to version v0.90:
