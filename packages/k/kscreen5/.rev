@@ -1043,4 +1043,12 @@ If possible, please copy to 13.2 - many thanks!
     <comment>Plasma 5.24.4 - untested (forwarded request 965768 from Vogtinator)</comment>
     <requestid>965899</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>19ac17ce2d6575595c85303c7a19d49f</srcmd5>
+    <version>5.24.5</version>
+    <time>1651784692</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.24.5. Usual version bump + discover patch change (forwarded request 974667 from Vogtinator)</comment>
+    <requestid>974695</requestid>
+  </revision>
 </revisionlist>
