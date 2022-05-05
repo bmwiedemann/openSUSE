@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May  3 13:00:24 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.5
+- Changes since 5.24.4:
+  * SpeakerTest: Fix subwoofer test (kde#445523)
+
+-------------------------------------------------------------------
 Tue Mar 29 16:04:39 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.4
