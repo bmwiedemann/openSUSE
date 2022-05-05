@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-collections
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,6 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            http://commons.apache.org/commons-collections/
 Source0:        http://www.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
-Source1:        commons-collections-testframework.pom
 Patch0:         jakarta-commons-collections-javadoc-nonet.patch
 Patch1:         commons-collections-3.2-build_xml.patch
 # PATCH-FIX-UPSTREAM build with jdk8
@@ -69,7 +68,6 @@ Lists and Maps for fast access
 %package testframework
 Summary:        Test framework for %{name}
 Group:          Development/Libraries/Java
-Requires:       %{name} = %{version}-%{release}
 
 %description testframework
 %{summary}.
@@ -98,10 +96,6 @@ sed -i 's/\r//' LICENSE.txt PROPOSAL.html README.txt NOTICE.txt
 %patch4 -p1
 %patch5 -p1
 
-# Substitute version into testframework pom
-cp -p %{SOURCE1} pom-testframework.xml
-sed -i 's/@VERSION@/%{version}/' pom-testframework.xml
-
 %pom_remove_parent .
 
 %build
@@ -114,15 +108,16 @@ ant \
 %install
 # jars
 install -d -m 755 %{buildroot}%{_javadir}
-install -m 644 build/%{short_name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
-install -m 644 build/%{short_name}-testframework-%{version}.jar %{buildroot}%{_javadir}/%{name}-testframework.jar
-(cd %{buildroot}%{_javadir} && for jar in *; do ln -sf ${jar} `echo $jar| sed  "s|apache-||g"`; done)
+install -m 644 build/%{short_name}-%{version}.jar %{buildroot}%{_javadir}/%{short_name}.jar
+ln -sf %{short_name}.jar %{buildroot}%{_javadir}/%{name}.jar
+install -m 644 build/%{short_name}-testframework-%{version}.jar %{buildroot}%{_javadir}/%{short_name}-testframework.jar
+ln -sf %{short_name}-testframework.jar %{buildroot}%{_javadir}/%{name}-testframework.jar
 
 # poms
-install -Dpm 644 pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{short_name}.pom
-install -Dpm 644 pom-testframework.xml %{buildroot}%{_mavenpomdir}/JPP-%{short_name}-testframework.pom
-%add_maven_depmap JPP-%{short_name}.pom %{short_name}.jar -a "org.apache.commons:%{short_name}"
-%add_maven_depmap JPP-%{short_name}-testframework.pom %{short_name}-testframework.jar -f "testframework" -a "org.apache.commons:%{short_name}-testframework"
+install -d -m 0755 %{buildroot}%{_mavenpomdir}
+install -pm 644  pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}.pom
+%add_maven_depmap %{short_name}.pom %{short_name}.jar -a "org.apache.commons:%{short_name}"
+%add_maven_depmap %{short_name}:%{short_name}-testframework:%{version} %{short_name}-testframework.jar -f "testframework" -a "org.apache.commons:%{short_name}-testframework"
 
 # javadoc
 install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
