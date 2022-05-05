@@ -16,7 +16,7 @@
 #
 
 Name:           barrel
-Version:        0.1.1
+Version:        0.1.2
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         barrel-%{version}.tar.xz
@@ -39,6 +39,7 @@ BuildRequires:  readline-devel
 
 Requires:       libstorage-ng1 >= 4.4.76
 Recommends:     %{name}-lang
+Recommends:     logrotate
 
 Summary:        Tool for storage management
 Url:            http://github.com/openSUSE/barrel
@@ -77,6 +78,7 @@ make %{?_smp_mflags} check VERBOSE=1
 %doc %dir %{_docdir}/%{name}
 %doc %{_docdir}/%{name}/AUTHORS
 %doc %{_mandir}/*/barrel.8*
+%config(noreplace) %{_sysconfdir}/logrotate.d/barrel
 %license %{_docdir}/%{name}/LICENSE
 
 %package lang
