@@ -1,0 +1,82 @@
+-------------------------------------------------------------------
+Mon May 02 15:18:02 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 2.0.5+git20220502.d3c38d6:
+  * Added in log to show total time.
+  * Add typeahead to `CommandView` (#963)
+  * Send `mouseleft` event when the mouse leaves the window (#928)
+  * Added plugin load-time log.
+  * Check if `USERDIR` doesn't exist in `core.delete_temp_files`
+
+-------------------------------------------------------------------
+Wed Apr 27 18:52:42 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 2.0.5+git20220427.3950406:
+  * Catch mouse clicks if `contextmenu` is open
+  * TreeView Changes (#898)
+  * Clamp scroll position when dragging the scrollbar without animations
+  * Make sure pipes are closed on exec.
+  * Asynchronous Reads for Dirmonitor (#930)
+  * Fixed windows dirmonitor issues.
+  * Don't animate scrolling by dragging the scroll bar (#940)
+  * Allow functions in `keymap` (#948)
+  * Add utf8 support to tokenizer (#945)
+  * Fix `ren_font_group_get_tab_size` returning unexpected values
+  * Add animation categories to enable finer transitions control (#941)
+
+-------------------------------------------------------------------
+Sun Apr 24 17:20:34 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Swapping out 'BuildRequires: git' for 'BuildRequires: git-core'.
+
+-------------------------------------------------------------------
+Thu Apr 21 14:49:17 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 2.0.5+git20220421.b995713:
+  * Add `launchable` tag to AppStream xml
+  * Improve performance of `ren_draw_rect` (#935)
+  * Set the correct working directory for the AppImage version (#937)
+  * Update SDL to 2.0.20 (#884)
+  * Add `DATADIR` and `USERDIR` explanation in created user module
+  * Add triple single quotes multiline strings to `language_python`
+  * Cleanup (#826)
+  * Added in check in case of nil.
+  * Fix missing pixel in scrollbar
+  * Show `arrow` cursor when hovering `DocView` scrollbar track
+  * Add scrollbar "track" and resize on hover
+  * Fix `DocView:on_mouse_released` not considering all parameters
+  * Avoid calling `View:scrollbar_overlaps_point` uselessly
+
+-------------------------------------------------------------------
+Wed Apr 13 19:25:49 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding 'lite-xl-colors' as a Recommends.
+
+-------------------------------------------------------------------
+Wed Apr 13 18:17:25 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding 'lite-xl-plugins' as a Recommends.
+
+-------------------------------------------------------------------
+Wed Apr 13 15:47:38 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding readme file to package.
+
+-------------------------------------------------------------------
+Tue Apr 12 21:20:34 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 2.0.5+git20220411.16fcb2e:
+  * Add syntax symbols for auto-complete
+  * Early `break` if `autocomplete` needs to update
+  * Consider last document line to gather `autocomplete` symbols
+  * Changed calculation to use ascender, which should work better. (#912)
+  * Fix keeping scroll position when restoring a `DocView` (#910)
+  * language_md: remove extra empty line
+  * syntax: remove pattern re-ordering on optimization
+  * core: fixes and changes to temp files
+  * statusview: added functions for easy custom item ordering
+
+-------------------------------------------------------------------
+Tue Apr 12 21:03:58 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Initial version from upstream.

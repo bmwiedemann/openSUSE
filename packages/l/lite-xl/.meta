@@ -1,0 +1,6 @@
+<package name="lite-xl" project="openSUSE:Factory">
+  <title></title>
+  <description>A lightweight text editor written in Lua</description>
+  <devel project="editors" package="lite-xl"/>
+  <url>https://github.com/lite-xl/lite-xl</url>
+</package>
