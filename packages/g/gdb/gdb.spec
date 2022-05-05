@@ -552,14 +552,16 @@ BuildRequires:  glibc-devel-static
 BuildRequires:  gcc-go
 %endif
 
-%if %{with fpc}
-%if 0%{?suse_version} >= 1500 && 0%{?is_opensuse}
+%if %{with fpc} && 0%{?is_opensuse}
 %ifarch x86_64 aarch64 armv7l
+# Tumbleweed and Leap 15.x.
+%if 0%{?suse_version} >= 1500
 BuildRequires:  fpc
 %endif
 %ifarch %{ix86}
-# fpc is (currently?) unavailable for Leap 15.3/i586.
-%if 0%{?sle_version} != 150300 && 0%{?is_opensuse}
+# Tumbleweed and Leap 15.{0,1,2}.
+# fpc seems to be unavailable for Leap 15.{3,4}/i586.
+%if 0%{?suse_version} > 1500 || (0%{?sle_version} >= 150000 && 0%{?sle_version} <= 150200)
 BuildRequires:  fpc
 %endif
 %endif
@@ -570,18 +572,6 @@ BuildRequires:  fpc
 %ifnarch s390
 # s390 (for SLE12) doesn't have valgrind
 BuildRequires:  valgrind
-%endif
-%endif
-
-%ifarch s390x
-%if 0%{?suse_version} >= 1500
-# s390x (for SLE12 and earlier) doesn't have binutils-gold
-BuildRequires:  binutils-gold
-%endif
-%else
-# SLE-10 doesn't have binutils-gold.
-%if 0%{suse_version} >= 1110
-BuildRequires:  binutils-gold
 %endif
 %endif
 
