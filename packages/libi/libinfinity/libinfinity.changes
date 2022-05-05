@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  5 07:28:05 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop libinfinity-1_0-0 requires from infinoted package: the dep
+  is wrong since the library package was changed to correctly
+  follow SLPP. Additionally, the library is dependency is
+  auto-detected.
+
+-------------------------------------------------------------------
 Wed Apr 27 12:28:56 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Resolve rpmlint error "libinfinity-1_0-0.x86_64: E:

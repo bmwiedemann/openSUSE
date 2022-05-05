@@ -88,7 +88,6 @@ platforms.
 %package -n infinoted
 Summary:        Server for Collaborative Document Edition
 Group:          Development/Libraries/GNOME
-Requires:       libinfinity-1_0-0 = %{version}
 
 %description -n infinoted
 Infinoted is a server for collaborative edition of documents via the

@@ -308,4 +308,15 @@
 - Move documentation to subpackage with main applications (forwarded request 973178 from jengelh)</comment>
     <requestid>973183</requestid>
   </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>62bb81cd4a06435aef8f4e3b70420502</srcmd5>
+    <version>0.7.2</version>
+    <time>1651784815</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop libinfinity-1_0-0 requires from infinoted package: the dep
+  is wrong since the library package was changed to correctly
+  follow SLPP. Additionally, the library is dependency is
+  auto-detected.</comment>
+    <requestid>975062</requestid>
+  </revision>
 </revisionlist>
