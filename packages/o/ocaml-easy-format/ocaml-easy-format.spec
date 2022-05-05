@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-easy-format
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,18 +18,17 @@
 
 
 Name:           ocaml-easy-format
-Version:        1.3.2
+Version:        1.3.3
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Data pretty printing made easy
 License:        BSD-3-Clause
 Group:          Development/Languages/OCaml
-Url:            https://github.com/ocaml-community/easy-format
-Source0:        %{name}-%{version}.tar.xz
-Patch0:         %{name}.patch
+URL:            https://opam.ocaml.org/packages/easy-format
+Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-dune >= 2.9
+BuildRequires:  ocaml-rpm-macros >= 20220409
 
 %description
 This module offers a high-level and functional interface to the Format module
@@ -48,14 +47,14 @@ model any sequence of items such as arrays of data or lists of definitions that
 are labelled with something like "int main", "let x =" or "x:".
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Requires:       %name = %version
 Provides:       ocamlfind(easy-format)
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
 %autosetup -p1
@@ -72,8 +71,8 @@ dune_release_pkgs='easy-format'
 %check
 %ocaml_dune_test
 
-%files -f %{name}.files
+%files -f %name.files
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 
 %changelog

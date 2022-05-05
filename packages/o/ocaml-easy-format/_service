@@ -1,10 +1,13 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">https://github.com/ocaml-community/easy-format.git</param>
-    <param name="scm">git</param>
-    <param name="versionformat">1.3.2</param>
-    <param name="revision">1.3.2</param>
     <param name="filename">ocaml-easy-format</param>
+    <param name="revision">56c57e69ef067d1cc4e31029d31e77e55b46be95</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/ocaml-community/easy-format.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
