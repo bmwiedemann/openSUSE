@@ -1,7 +1,7 @@
 #
 # spec file for package python-poppler-qt5
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011 LISA GmbH, Bingen, Germany.
 # Copyright (c) 2012 Johannes Engel <jcnengel@gmail.com>
 #
@@ -18,30 +18,19 @@
 #
 
 
-%if 0%{suse_version} < 1550
-%{?!use_sip4:%define use_sip4 1}
-%endif
-
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-poppler-qt5
-Version:        21.1.0
+Version:        21.3.0
 Release:        0
 Summary:        Python binding to poppler-qt5
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Python
 URL:            https://pypi.org/project/python-poppler-qt5/
 Source0:        https://files.pythonhosted.org/packages/source/p/python-poppler-qt5/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM python-poppler-qt5-mapqvector.patch -- gh#frescobaldi/python-poppler-qt5#45
-Patch0:         https://github.com/frescobaldi/python-poppler-qt5/pull/45.patch#/python-poppler-qt5-mapqvector.patch
-BuildRequires:  %{python_module qt5-devel}
-%if 0%{?use_sip4}
-BuildRequires:  %{python_module sip4-devel}
-Requires:       python-sip(api) = %{python_sip_api_ver}
-%else
 BuildRequires:  %{python_module pyqt-builder}
+BuildRequires:  %{python_module qt5-devel}
 BuildRequires:  %{python_module sip-devel > 5.3}
-%endif
 BuildRequires:  libpoppler-qt5-devel
 BuildRequires:  python-pyqt-rpm-macros
 BuildRequires:  python-rpm-macros
@@ -67,27 +56,16 @@ and for being actively maintained.
 This package contains the SIP and Qscintilla API files to build
 python packages using python-poppler
 
-
 %prep
 %autosetup -p1
 # use the aliased keyword for subprocess.check_call() that is also known by Python 3.6 gh#frescobaldi/python-poppler-qt5#44
 sed -i 's/text=True/universal_newlines=True/' project.py
 
 %build
-%if 0%{?use_sip4}
-export PATH=%{_libdir}/qt5/bin:$PATH
-%python_build
-%else
 %pyqt_build
-%endif
 
 %install
-%if 0%{?use_sip4}
-export PATH=%{_libdir}/qt5/bin:$PATH
-%python_install
-%else
 %pyqt_install
-%endif
 
 %check
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -c 'import popplerqt5; print(popplerqt5.version())'
@@ -98,11 +76,9 @@ export PATH=%{_libdir}/qt5/bin:$PATH
 %{python_sitearch}/popplerqt5*.so
 %{python_sitearch}/python_poppler_qt5-%{version}*-info
 
-%if ! 0%{?use_sip4}
 %files %{python_files devel}
 %license LICENSE
 %{python_sitearch}/PyQt5/bindings/popplerqt5
 %{_libqt5_datadir}/qsci/api/python_%{python_bin_suffix}/python-poppler-qt5.api
-%endif
 
 %changelog

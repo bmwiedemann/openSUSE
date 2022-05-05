@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May  5 19:36:17 UTC 2022 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 21.3.0:
+  Fix #43: Building 21.1.0 fails with unsupported function return type
+  by Ben Greiner
+- Drop patch merged upstream:
+  * python-poppler-qt5-mapqvector.patch
+- Drop support for sip4, which means only 15.4 and higher are now
+  supported (also solves boo#1198526)
+
+-------------------------------------------------------------------
 Tue Feb 23 17:10:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 21.1.0

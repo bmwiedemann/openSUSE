@@ -72,4 +72,18 @@
     <comment></comment>
     <requestid>874709</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>39d129f0c277e8f1e447474f8ef502f6</srcmd5>
+    <version>21.3.0</version>
+    <time>1651784862</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 21.3.0:
+  Fix #43: Building 21.1.0 fails with unsupported function return type
+  by Ben Greiner
+- Drop patch merged upstream:
+  * python-poppler-qt5-mapqvector.patch
+- Drop support for sip4, which means only 15.4 and higher are now
+  supported (also solves boo#1198526)</comment>
+    <requestid>975260</requestid>
+  </revision>
 </revisionlist>
