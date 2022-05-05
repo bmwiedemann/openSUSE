@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Wed May  4 23:12:36 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- add fzf to Recommends
+  * sad does not come with a UI, it uses fzf to perform selection.
+
+-------------------------------------------------------------------
+Wed May  4 13:25:52 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial working spec for sad (0.4.20~0)
