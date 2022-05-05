@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 22 08:10:13 UTC 2022 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+* Update to version 2.11.0
+
+- Enable Go 1.18 in the ci and release workflows
+- Fix the lint action after upgrade (#790)
+- chore(deps): update all dependencies (#789)
+- Add a recursive flag -r to skip specifying ./... path
+- Adds directory traversal for Http.Dir("/")
+
+-------------------------------------------------------------------
 Wed Mar  2 07:35:25 UTC 2022 - Felix Niederwanger <felix.niederwanger@suse.com>
 
 * Update to version 2.10.0:

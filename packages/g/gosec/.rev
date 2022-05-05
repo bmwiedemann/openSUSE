@@ -15,4 +15,13 @@
     <comment>Update to v2.10.0 (forwarded request 958397 from ph03nix)</comment>
     <requestid>958490</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8fc4b390b96289d92775917004e20a39</srcmd5>
+    <version>2.11.0</version>
+    <time>1651784773</time>
+    <user>dimstar_suse</user>
+    <comment>* Use build-linux target on x86_64 to include git tag and version (for `gosec -version`)
+* Add additional build check (forwarded request 974534 from ph03nix)</comment>
+    <requestid>974964</requestid>
+  </revision>
 </revisionlist>

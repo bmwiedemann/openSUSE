@@ -12,5 +12,7 @@
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>
-  <service name="go_modules" mode="disabled"/>
+  <service name="go_modules" mode="disabled">
+    <param name="compression">gz</param>
+  </service>
 </services>
