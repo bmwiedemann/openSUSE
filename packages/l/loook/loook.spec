@@ -1,7 +1,7 @@
 #
 # spec file for package loook
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           loook
-Version:        0.8.4
+Version:        0.9.0
 Release:        0
 Summary:        Search strings in ODF documents
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
-Url:            http://mechtilde.de/Loook/
-Source0:        http://mechtilde.de/Loook/Downloads/%{name}-%{version}-sources.zip
+URL:            https://mechtilde.de/Loook/
+Source0:        http://mechtilde.de/Loook/Downloads/%{name}-%{version}.tar.gz
 # PATCH-FEATURE-UPSTREAM loook-loook.desktop.patch (email)
 Patch0:         %{name}-%{name}.desktop.patch
-%if 0%{?suse_version}
 BuildRequires:  update-desktop-files
-%endif
-BuildRequires:  unzip
 Requires:       python3-base
 Requires:       python3-tk
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This program is a program written in Python that searches for strings
@@ -44,8 +40,7 @@ also search in documents created by Microsoft Word, Excel or PowerPoint
 from the 2007 version in an OOXML format.
 
 %prep
-%setup -q
-%patch0
+%autosetup -c
 
 %build
 
@@ -72,18 +67,16 @@ install -Dm 0644 %{name}.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
 # install Desktop file
 install -Dm 0644 %{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 
-%if 0%{?suse_version}
-    %suse_update_desktop_file %{name}
-%endif
+%suse_update_desktop_file %{name}
 
 %files -f %{name}.lang
-%defattr(-,root,root,-)
-%doc Changelog Copyright
+%license Copyright
+%doc Changelog
 %{_bindir}/%{name}
+%{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
-%{_mandir}/de/man1/%{name}.1%{ext_man}
-%{_mandir}/man1/%{name}.1%{ext_man}
-%{_datadir}/%{name}
+%{_mandir}/man1/%{name}.1%{?ext_man}
+%lang (de) %{_mandir}/de/man1/%{name}.1%{?ext_man}
 
 %changelog
