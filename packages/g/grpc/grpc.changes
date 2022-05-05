@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May  5 09:26:50 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.46
+  * Added HTTP/1.1 support in httpcli
+  * HTTP2: Add graceful goaway
+
+-------------------------------------------------------------------
+Sun May  1 11:37:46 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.45.2
+  * Various fixes related to XDS
+  * HTTP2: Should not run cancelling logic on servers when
+    receiving GOAWAY
+
+-------------------------------------------------------------------
 Sat Apr  2 17:25:07 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.45.1
