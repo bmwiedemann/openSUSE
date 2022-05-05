@@ -1,0 +1,15 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/CodeNarc/CodeNarc.git</param>
+		<param name="revision">v1.4</param>
+		<param name="versionformat">1.4</param>
+		<param name="filename">codenarc</param>
+		<param name="exclude">gradle/wrapper</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>
