@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 28 00:16:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve rpmlint report "libOpenIPMI0.x86_64: E:
+  shlib-policy-name-error SONAME: libOpenIPMIui.so.1, expected
+  package suffix: 1"
+- Trim manual library Provides. Prospective users (packages) ought
+  to let rpm find the dependencies (and their name is usually
+  "libIPMIlanserv.so.0()(64bit)" not "libIPMIlanserv".
+
+-------------------------------------------------------------------
 Tue Oct 12 19:22:34 UTC 2021 - Thomas Renninger <trenn@suse.de>
 
 - Fix file conflict with old python2 version (bsc#1190999):

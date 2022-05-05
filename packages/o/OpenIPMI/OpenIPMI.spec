@@ -1,7 +1,7 @@
 #
 # spec file for package OpenIPMI
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -110,11 +110,16 @@ receive messages.
 %package -n libOpenIPMI0
 Summary:        User-level library for accessing IPMI services
 Group:          System/Libraries
-Provides:       libIPMIlanserv
-Provides:       libOpenIPMI
-Provides:       libOpenIPMIui
 
 %description -n libOpenIPMI0
+The user-level library that provides a higher-level abstraction of
+IPMI and generic services.
+
+%package -n libOpenIPMIui1
+Summary:        User-level library for accessing IPMI services
+Group:          System/Libraries
+
+%description -n libOpenIPMIui1
 The user-level library that provides a higher-level abstraction of
 IPMI and generic services.
 
@@ -122,7 +127,8 @@ IPMI and generic services.
 Summary:        Development files for OpenIPMI
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
-Requires:       libOpenIPMI0 = %{version}
+Requires:       libOpenIPMI0 = %{version}-%{release}
+Requires:       libOpenIPMIui1 = %{version}-%{release}
 
 %description devel
 These libraries are needed to get full access to the OpenIPMI
@@ -142,8 +148,7 @@ The Python parts provide an OpenIPMI Python library and a GUI, openipmigui,
 that makes use of it.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 rm -rf ./libedit
 
@@ -160,7 +165,7 @@ chmod 755 %{SOURCE4}
            --with-tcl=yes \
            --with-tcllibs=-ltcl%{tcl_version} \
            --with-tkinter=yes
-make %{?_smp_mflags}
+%make_build
 %if 0%{?doc_build}
 cd doc
 make IPMI.pdf
@@ -208,6 +213,8 @@ done
 
 %post   -n libOpenIPMI0 -p /sbin/ldconfig
 %postun -n libOpenIPMI0 -p /sbin/ldconfig
+%post   -n libOpenIPMIui1 -p /sbin/ldconfig
+%postun -n libOpenIPMIui1 -p /sbin/ldconfig
 
 %files
 %license COPYING COPYING.BSD COPYING.LIB
@@ -253,7 +260,15 @@ done
 
 %files -n libOpenIPMI0
 %{_libdir}/libIPMIlanserv.so.*
-%{_libdir}/libOpenIPMI*.so.*
+%{_libdir}/libOpenIPMI.so.*
+%{_libdir}/libOpenIPMIcmdlang.so.*
+%{_libdir}/libOpenIPMIglib.so.*
+%{_libdir}/libOpenIPMIposix.so.*
+%{_libdir}/libOpenIPMIpthread.so.*
+%{_libdir}/libOpenIPMIutils.so.*
+
+%files -n libOpenIPMIui1
+%{_libdir}/libOpenIPMIui.so.*
 
 %files devel
 %{_includedir}/*
