@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 29 11:48:14 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
+
+- add php8-fpm-mr876.patch so that php8 php-fpm can read its config
+  (boo#1186267#c11)
+- parser: add conflict with apparmor-utils < 3.0 to avoid aa-status
+  file conflict on upgrade (boo#1198958)
+- utils: add missing dependency on apparmor-parser (boo#1198958#c4)
+
+-------------------------------------------------------------------
 Wed Apr 27 10:07:47 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Enhance zgrep-profile-mr870.diff to also allow/support zstd
@@ -17,7 +26,7 @@ Wed Apr 13 13:38:29 UTC 2022 - Noel Power <nopower@suse.com>
   modify the existing smbd/winbind profiles and additionally add a
   new set of profiles to cater for the new functionality;
   (bnc#1198309);
-  
+
 -------------------------------------------------------------------
 Mon Apr 11 14:34:51 UTC 2022 - Noel Power <nopower@suse.com>
 

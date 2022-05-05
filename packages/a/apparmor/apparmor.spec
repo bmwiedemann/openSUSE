@@ -77,24 +77,32 @@ Patch5:         apparmor-lessopen-nfs-workaround.diff
 
 # make <apache2.d> include in apache extra profile optional to make openQA happy (boo#1178527)
 Patch6:         apache-extra-profile-include-if-exists.diff
+
 # bsc#1196850 add rule to deal with 'DENIED' open of /proc/{pid}/fd
-# see (https://gitlab.com/apparmor/apparmor/-/merge_requests/860)
+# merged upstream 3.0+master 2022-03-14 https://gitlab.com/apparmor/apparmor/-/merge_requests/860
 # bsc#1195463 add rule to allow reading of openssl.cnf
-# see (https://gitlab.com/apparmor/apparmor/-/merge_requests/862)
+# merged upstream (2.12..master) 2022-03-13 https://gitlab.com/apparmor/apparmor/-/merge_requests/862
 Patch7:         update-samba-bgqd.diff
+
 # bsc#1195463 add rule to allow reading of openssl.cnf
-# see (https://gitlab.com/apparmor/apparmor/-/merge_requests/862)
+# merged upstream (2.12..master) 2022-03-13 https://gitlab.com/apparmor/apparmor/-/merge_requests/862
 Patch8:         update-usr-sbin-smbd.diff
 
-# add zgrep and xzgrep profile (submitted upstream 2022-04-10 https://gitlab.com/apparmor/apparmor/-/merge_requests/870 + 2022-04-16 https://gitlab.com/apparmor/apparmor/-/merge_requests/873)
+# add zgrep and xzgrep profile (merged upstream 2022-04-12 https://gitlab.com/apparmor/apparmor/-/merge_requests/870 + 2022-04-18 https://gitlab.com/apparmor/apparmor/-/merge_requests/873 - master only)
 Patch9:         zgrep-profile-mr870.diff
-# squash noisy setsockopt calls https://gitlab.com/apparmor/apparmor/-/merge_requests/867
+
+# squash noisy setsockopt calls - merged upstream master+3.0 2022-04-12 https://gitlab.com/apparmor/apparmor/-/merge_requests/867
 # bsc#1196850
 Patch10:        samba_deny_net_admin.patch
+
 # support for new dcerpcd subsytem in >= samba-4.16
-# https://gitlab.com/apparmor/apparmor/-/merge_requests/871
+# merged upstream 2022-04-15 3.0+master https://gitlab.com/apparmor/apparmor/-/merge_requests/871
 # bsc#1198309
 Patch11:        samba-new-dcerpcd.patch
+
+# allow php8 php-fpm to read its config (from upstream master+3.0 https://gitlab.com/apparmor/apparmor/-/merge_requests/876)
+Patch12:        php8-fpm-mr876.patch
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define apparmor_bin_prefix %{?usrmerged:/usr}/lib/apparmor
@@ -135,6 +143,7 @@ BuildRequires:  tomcat6
 Summary:        AppArmor userlevel parser utility
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
+Conflicts:      apparmor-utils < 3.0
 Obsoletes:      libimnxcert < 2.9
 Obsoletes:      subdomain-leaf-cert < 2.9
 Obsoletes:      subdomain-parser < 2.9
@@ -281,6 +290,7 @@ SubDomain.
 Summary:        AppArmor User-Level Utilities Useful for Creating AppArmor Profiles
 License:        GPL-2.0-only AND LGPL-2.1-or-later
 Group:          Productivity/Security
+Requires:       apparmor-parser
 Requires:       libapparmor1 = %{version}
 Requires:       python3-apparmor = %{version}
 Requires:       python3-base
@@ -362,6 +372,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
+%patch12 -p1
 
 %build
 %define _lto_cflags %{nil}
