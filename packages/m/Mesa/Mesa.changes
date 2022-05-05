@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May  5 08:13:13 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 22.0.3
+  * bugfix release with fixes for most of the major drivers
+
+-------------------------------------------------------------------
+Tue May  3 08:21:55 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- _constraints: 
+  * raised requirements to 9 GB disk space and added aarch64
+    architecture (bsc#1199040)
+
+-------------------------------------------------------------------
 Fri Apr 22 09:06:31 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 22.0.2

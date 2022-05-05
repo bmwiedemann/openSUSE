@@ -1,6 +1,7 @@
 <constraints>
   <overwrite>
     <conditions>
+      <arch>aarch64</arch>
       <arch>ppc</arch>
       <arch>ppc64</arch>
       <arch>ppc64le</arch>
@@ -9,7 +10,7 @@
     </conditions>
     <hardware>
       <disk>
-        <size unit="G">7</size>
+        <size unit="G">9</size>
       </disk>
     </hardware>
   </overwrite>

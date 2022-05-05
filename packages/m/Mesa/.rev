@@ -4828,4 +4828,17 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   * bugfix release with almost all nominated patches</comment>
     <requestid>972113</requestid>
   </revision>
+  <revision rev="437" vrev="309">
+    <srcmd5>ebc70a785e58252252b2b66a4a0f82f0</srcmd5>
+    <version>unknown</version>
+    <time>1651784722</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 22.0.3
+  * bugfix release with fixes for most of the major drivers
+
+- _constraints: 
+  * raised requirements to 9 GB disk space and added aarch64
+    architecture (bsc#1199040)</comment>
+    <requestid>975094</requestid>
+  </revision>
 </revisionlist>
