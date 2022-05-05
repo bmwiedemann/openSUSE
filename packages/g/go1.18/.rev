@@ -129,4 +129,17 @@
   * go#51665 go/types, types2: gopls crash in recordTypeAndValue (forwarded request 969623 from jfkw)</comment>
     <requestid>969626</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>15432d63fb3fee348479e77750eb247b</srcmd5>
+    <version>1.18.1</version>
+    <time>1651784717</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove remaining use of gold linker when bootstrapping with
+  gccgo. The binutils-gold package will be removed in the future.
+  * History: go1.8.3 2017-06-18 added conditional if gccgo defined
+    BuildRequires: binutils-gold for arches other than s390x
+  * No information available why binutils-gold was used initially
+  * Unrelated to upstream recent hardcoded gold dependency for ARM (forwarded request 974489 from jfkw)</comment>
+    <requestid>974492</requestid>
+  </revision>
 </revisionlist>
