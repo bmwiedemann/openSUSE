@@ -273,4 +273,13 @@
 - disable python310 build (not yet supported)</comment>
     <requestid>955483</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>10d54f6e2f6c297061639d46be3a50f4</srcmd5>
+    <version>1.9.16</version>
+    <time>1651784794</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove skip_python310, it is not needed anymore.
+</comment>
+    <requestid>974994</requestid>
+  </revision>
 </revisionlist>

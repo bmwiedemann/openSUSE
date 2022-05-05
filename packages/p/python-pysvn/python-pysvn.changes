@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  4 19:29:05 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Remove skip_python310, it is not needed anymore.
+
+-------------------------------------------------------------------
 Wed Feb 16 20:15:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.16:

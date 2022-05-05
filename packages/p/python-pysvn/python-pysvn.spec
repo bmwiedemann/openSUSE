@@ -18,7 +18,6 @@
 
 %define packagename pysvn
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python310 1
 Name:           python-pysvn
 Version:        1.9.16
 Release:        0
