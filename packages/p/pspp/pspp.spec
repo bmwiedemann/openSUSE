@@ -32,8 +32,8 @@ Summary:        A program for statistical analysis of sampled data
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://www.gnu.org/software/pspp/
-Source0:        ftp://ftp.gnu.org/pub/gnu/pspp/pspp-%{version}.tar.gz
-Source1:        ftp://ftp.gnu.org/pub/gnu/pspp/pspp-%{version}.tar.gz.sig
+Source0:        https://ftp.gnu.org/pub/gnu/pspp/pspp-%{version}.tar.gz
+Source1:        https://ftp.gnu.org/pub/gnu/pspp/pspp-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=245#/%{name}.keyring
 Source3:        https://translationproject.org/PO-files/lt/pspp-%{version}.lt.po
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 28 18:59:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use https:// for Source urls 
+
+-------------------------------------------------------------------
 Mon May 17 08:34:09 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not own filesystem owned directories like
