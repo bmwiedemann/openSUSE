@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May 05 06:36:13 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.11.5:
+  * vendor: Pick up the latest cilium/chart
+  * sysdump: Add support for Ingress, CCWEC, CEV
+  * vendor: Add cilium/proxy package
+  * vendor: Bump cilium version to v1.12.0-rc1
+  * ingress: Add steps to create role and rolebinding
+  * ingress: Add step to create secret namespace
+  * Add support to collect CNI config fiels from the system
+  * build(deps): bump azure/login from 1.4.3 to 1.4.4
+  * install: don't repeat log message when waiting for test namespace to be deleted
+  * k8s/client: Detect version as "latest" if image has no tag
+  * install: Fix --image-suffix and --image-tag handling
+  * Clean up RELEASE.md
+
+-------------------------------------------------------------------
 Sat Apr 30 15:45:07 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.11.4:
