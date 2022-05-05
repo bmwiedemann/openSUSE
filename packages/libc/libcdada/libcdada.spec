@@ -19,14 +19,14 @@
 
 %define sover 0
 Name:           libcdada
-Version:        0.3.4
+Version:        0.4.0
 Release:        0
 Summary:        Basic data structures in C (libstdc++ wrapper)
 License:        BSD-2-Clause
 Group:          Development/Languages/C and C++
 URL:            https://msune.github.io/libcdada/
 #Git-Clone:     https://github.com/msune/libcdada.git
-Source:         https://github.com/msune/libcdada/archive/v%{version}.tar.gz#/%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/msune/libcdada/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
