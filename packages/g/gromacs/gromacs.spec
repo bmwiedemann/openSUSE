@@ -50,6 +50,8 @@ Summary:        Molecular dynamics package
 Group:          Development/Libraries/C and C++
 Requires:       libgmxapi0 = %{version}-%{release}
 Requires:       libgromacs6 = %{version}-%{release}
+# cmake files refer to /usr/bin/gmx, too
+Requires:       %{name} = %{version}-%{release}
 Requires:       libnblib0 = %{version}-%{release}
 
 %description devel
