@@ -1,7 +1,7 @@
 #
 # spec file for package nfs4-acl-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +45,8 @@ export LDFLAGS="-pie"
 %make_build
 
 %install
+# Don't try to chown/chgrp as we build as non-root
+export CHOWNPROG=: CHGRPPROG=:
 %make_install
 
 %files
