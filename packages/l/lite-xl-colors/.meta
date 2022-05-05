@@ -1,0 +1,6 @@
+<package name="lite-xl-colors" project="openSUSE:Factory">
+  <title></title>
+  <description>Themes for the Lite XL editor</description>
+  <devel project="editors" package="lite-xl-colors"/>
+  <url>https://github.com/lite-xl/lite-xl-colors</url>
+</package>

@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Wed Apr 13 19:22:59 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version git20220310.8e1cc27:
+  * onedark: added missing color to operators from official pallete.
+  * Add github-dark-dimmed colorscheme
+  * Add 'plasma' color theme
+  * Place SVGs directly in previews folder
+  * Removed preview suffix from SVGs
+  * Update all previews to SVGs
+  * Generate svg preview instead of png
+  * Update README.md
+  * Create gruvbox_light.lua
+  * Update README.md
+
+-------------------------------------------------------------------
+Wed Apr 13 19:20:16 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Initial version from upstream.
