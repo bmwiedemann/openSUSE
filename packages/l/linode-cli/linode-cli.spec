@@ -1,7 +1,7 @@
 #
 # spec file for package linode-cli
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,11 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define cli_name    linode-cli
 %bcond_without python2
 
 Name:           linode-cli
-Version:        5.17.1
+Version:        5.19.0
 Release:        0
 Summary:        The Linode command-line interface
 License:        BSD-3-Clause
@@ -28,21 +29,21 @@ Source:         https://github.com/linode/linode-cli/archive/refs/tags/%{version
 Source1:        openapi.yaml
 # PATCH-FIX-OPENSUSE 0001-Remove-shebang-from-non-executable-files.patch
 Patch:          0001-Remove-shebang-from-non-executable-files.patch
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module terminaltables}
-BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module terminaltables}
+BuildRequires:  python-rpm-macros
 %if %{with python2}
-BuildRequires:  python2-future
 BuildRequires:  python-enum34
+BuildRequires:  python2-future
 %endif
-Requires:       python-terminaltables
-Requires:       python-requests
 Requires:       python-PyYAML
+Requires:       python-requests
+Requires:       python-terminaltables
 %ifpython2
-Requires:       python2-future
 Requires:       python-enum34
+Requires:       python2-future
 %endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -52,10 +53,10 @@ Requires(postun):update-alternatives
 The Linode Command Line interface
 
 %package -n %{name}-bash-completion
-Summary: Bash completion for linode-cli
-Group:   System/Shells
-Supplements: %{python_module linode-cli and bash-completion}
-BuildArch: noarch
+Summary:        Bash completion for linode-cli
+Group:          System/Shells
+Supplements:    %{python_module linode-cli and bash-completion}
+BuildArch:      noarch
 
 %description -n %{name}-bash-completion
 

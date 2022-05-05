@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 03 12:52:14 UTC 2022 - rombert@apache.org
+
+- Update to version 5.19.0:
+  * Make LKE test work through version rotations
+
+-------------------------------------------------------------------
 Tue Feb 15 14:55:30 UTC 2022 - rombert@apache.org
 
 - Update to version 5.17.1:
