@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed May  4 06:07:47 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.2.9:
+  * Don't redact secret if it's an empty string. 
+  * Fix tty log panic issue 
+  * Revert specific case to handle dockerfile actions 
+  * Support for async start/stop execs. 
+  * Use progress group to track components of vertices. 
+  * adding kapp as package (@renuy)
+  * cache: Error out if GHA used w/out token or url. 
+  * check vendored package versions and prompt users to upgrade 
+  * client: use lock file to dedupe buildkitd creation. 
+  * core.#Nop: fix return value (@aluzzardi)
+  * do: add experimental --dry-run flag (@aluzzardi)
+  * feat: Allow marking client: env variables as optional
+  * feat: Print action outputs to console 
+  * feat: Use client: network address as a default 
+  * feat: add kustomize package (@lyzhang1999)
+  * feat: improved yarn package (experimental) 
+  * feat: kapp support (@renuy)
+  * feat:add discord webhook support (@hardy4yooz)
+  * fix plan validation for generated fields (@aluzzardi)
+  * fix: Fix DecodeSecret output type (@helderco)
+  * fix: Fix generated attributes (@helderco)
+  * fix: Remove entrypoint from bash.#Run (@helderco)
+  * improve OpenTracing coverage (@aluzzardi)
+  * link to core actions reference docs rather than repo 
+  * plan validation: fix structure navigation (@aluzzardi)
+  * solver: fix duplicate logs on export (@sipsma)
+  * tty logger: fix group status for hidden sub-actions 
+
+-------------------------------------------------------------------
 Tue Apr 26 19:23:10 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.2.8:
