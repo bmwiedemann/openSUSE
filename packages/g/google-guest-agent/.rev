@@ -144,4 +144,12 @@
   * enable routes for ipv6 (#160) (forwarded request 969873 from glaubitz)</comment>
     <requestid>969885</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c76f59b71c0680514dd736c4e5cfd529</srcmd5>
+    <version>20220429.00</version>
+    <time>1651784846</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975194</requestid>
+  </revision>
 </revisionlist>

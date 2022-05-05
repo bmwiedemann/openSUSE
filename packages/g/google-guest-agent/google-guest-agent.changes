@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  5 12:37:36 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20220429.00
+  * Move some functionality to a utils module (#162)
+
+-------------------------------------------------------------------
 Wed Apr 13 12:40:04 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20220412.00
