@@ -1,7 +1,7 @@
 #
 # spec file for package indriya
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,7 +61,7 @@ Group:          Documentation/HTML
 
 find . -name "*.java" | xargs sed -i s,'tec.uom.lib.common','tech.uom.lib.common',g
 
-%{mvn_build} -f
+%{mvn_build} -f -- -Dsource=8
 
 %install
 %mvn_install

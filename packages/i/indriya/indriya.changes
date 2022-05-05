@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May  5 09:59:52 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Generate javadoc with source=8
+
+-------------------------------------------------------------------
 Wed Jul 28 07:35:33 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - There is no java-devel with version 8, but 1.8
