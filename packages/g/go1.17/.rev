@@ -234,4 +234,17 @@
   * go#50611 internal/poll: deadlock in Read on arm64 when an FD is closed (forwarded request 969622 from jfkw)</comment>
     <requestid>969625</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>15c392d9acc94c2ffae48951e38cff30</srcmd5>
+    <version>1.17.9</version>
+    <time>1651784716</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove remaining use of gold linker when bootstrapping with
+  gccgo. The binutils-gold package will be removed in the future.
+  * History: go1.8.3 2017-06-18 added conditional if gccgo defined
+    BuildRequires: binutils-gold for arches other than s390x
+  * No information available why binutils-gold was used initially
+  * Unrelated to upstream recent hardcoded gold dependency for ARM (forwarded request 974490 from jfkw)</comment>
+    <requestid>974491</requestid>
+  </revision>
 </revisionlist>

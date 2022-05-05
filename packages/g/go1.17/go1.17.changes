@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May  2 08:43:22 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Remove remaining use of gold linker when bootstrapping with
+  gccgo. The binutils-gold package will be removed in the future.
+  * History: go1.8.3 2017-06-18 added conditional if gccgo defined
+    BuildRequires: binutils-gold for arches other than s390x
+  * No information available why binutils-gold was used initially
+  * Unrelated to upstream recent hardcoded gold dependency for ARM
+
+-------------------------------------------------------------------
 Tue Apr 12 17:42:46 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.17.9 (released 2022-04-12) includes security fixes to the

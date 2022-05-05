@@ -164,9 +164,6 @@ Patch8:         gcc-go.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # boostrap
 %if %{with gccgo}
-%ifnarch s390 s390x
-BuildRequires:  binutils-gold
-%endif
 BuildRequires:  gcc%{gcc_go_version}-go
 %else
 # no gcc-go
