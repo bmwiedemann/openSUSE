@@ -2334,4 +2334,15 @@ See bugzilla 1167537 for the gory details.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>971138</requestid>
   </revision>
+  <revision rev="297" vrev="7">
+    <srcmd5>cf372c7d9a416d8664aef9cb62b355d5</srcmd5>
+    <version>4.17.0</version>
+    <time>1651784657</time>
+    <user>dimstar_suse</user>
+    <comment>- update rpm-shorten-changelog.diff: fix shortening of changelog,
+  the non-primary binary packages had the full changelog
+- update macrosin.diff: remove binarychangelog cutoff setting,
+  this comes from rpm-config-SUSE now</comment>
+    <requestid>973837</requestid>
+  </revision>
 </revisionlist>

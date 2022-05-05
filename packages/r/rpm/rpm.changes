@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 21 13:39:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update rpm-shorten-changelog.diff: fix shortening of changelog,
+  the non-primary binary packages had the full changelog
+- update macrosin.diff: remove binarychangelog cutoff setting,
+  this comes from rpm-config-SUSE now
+
+-------------------------------------------------------------------
 Wed Mar 30 08:54:50 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update zstdpool.diff in order to fix boo#1197643.

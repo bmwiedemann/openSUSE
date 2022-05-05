@@ -79,17 +79,6 @@
  
  #
  # Use internal dependency generator rather than external helpers?
-@@ -554,6 +570,10 @@ package or when debugging this package.\
- # Directories whose contents should be considered as documentation.
- %__docdir_path %{_datadir}/doc:%{_datadir}/man:%{_datadir}/info:%{_datadir}/gtk-doc/html:%{_datadir}/gnome/help:%{?_docdir}:%{?_mandir}:%{?_infodir}:%{?_javadocdir}:/usr/doc:/usr/man:/usr/info:/usr/X11R6/man
- 
-+# maxnum,cuttime,minnum
-+# 2014/10/13 (SLES12 GA)
-+%_binarychangelogtrim 0,1413151200,10
-+
- #
- # Path to scripts to autogenerate package dependencies,
- #
 @@ -564,6 +584,7 @@ package or when debugging this package.\
  %__find_requires	%{_rpmconfigdir}/find-requires
  #%__find_conflicts	???
