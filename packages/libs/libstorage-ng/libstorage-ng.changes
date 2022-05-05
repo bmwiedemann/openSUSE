@@ -1,4 +1,30 @@
 --------------------------------------------------------------------
+Wed May 4 13:57:19 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#873
+- extended documentation
+- consistently save and log partition id in hex
+- 4.5.9
+
+--------------------------------------------------------------------
+Tue May 3 10:31:29 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#872
+- moved check of image-filename from create to check function
+- added logging of pbkdf
+- added const
+- coding style
+- updated documentation
+- 4.5.8
+
+--------------------------------------------------------------------
+Tue May 3 09:30:29 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#870
+- LUKS2: add AEAD integrity option (PM-3419)
+- 4.5.7
+
+--------------------------------------------------------------------
 Wed Apr 27 16:30:56 UTC 2022 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#871
