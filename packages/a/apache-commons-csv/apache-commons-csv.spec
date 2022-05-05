@@ -28,6 +28,7 @@ URL:            https://commons.apache.org/proper/commons-csv/
 Source0:        https://dlcdn.apache.org/commons/csv/source/commons-csv-%{version}-src.tar.gz
 Source1000:     apache-commons-csv.rpmlintrc
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.commons:commons-parent:pom:)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
@@ -47,7 +48,7 @@ This package contains the API documentation for %{name}.
 %setup -q -n commons-csv-%{version}-src
 
 %build
-%{mvn_build} -f -- -Dsource=7
+%{mvn_build} -f -- -Dsource=8
 
 %install
 %mvn_install
