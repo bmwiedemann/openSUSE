@@ -26,7 +26,6 @@ License:        GPL-3.0-only
 Group:          Productivity/Telephony/Utilities
 URL:            https://linphone.org/technical-corner/mediastreamer2
 Source:         https://gitlab.linphone.org/BC/public/mediastreamer2/-/archive/%{version}/%{name}-%{version}.tar.bz2
-Source99:       baselibs.conf
 Patch0:         mediastreamer2-fix-pkgconfig.patch
 Patch1:         fix-srtp2-linphone.patch
 BuildRequires:  bcmatroska2-devel >= 0.23.1
@@ -39,7 +38,6 @@ BuildRequires:  graphviz
 BuildRequires:  libgsm-devel
 BuildRequires:  libjpeg-turbo >= 2.0.0
 BuildRequires:  libpcap-devel
-BuildRequires:  libsrtp-devel
 BuildRequires:  libsrtp2-linphone-devel
 BuildRequires:  libv4l-devel
 BuildRequires:  libvpx-devel

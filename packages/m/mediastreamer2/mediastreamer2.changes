@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  4 12:44:40 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Stop using SRTP1
+- Drop baselibs.conf (no further library appears to use it)
+
+-------------------------------------------------------------------
 Mon May  2 08:43:09 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.1.20:
