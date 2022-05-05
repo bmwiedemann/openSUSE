@@ -17,16 +17,13 @@
 #
 
 
-%define tag_offset +56
-%define revision 2a13c0d131225f1aa7704e16ef66ebe8c24635a9
-
 Name:           manpages-l10n
-Version:        4.13%{?tag_offset}
+Version:        4.14.0
 Release:        0
 Summary:        Translation of man pages
 License:        GPL-3.0-or-later
 URL:            https://manpages-l10n-team.pages.debian.net/manpages-l10n
-Source0:        https://salsa.debian.org/manpages-l10n-team/manpages-l10n/-/archive/%{revision}/%{name}-v%{version}.tar.bz2
+Source0:        https://salsa.debian.org/manpages-l10n-team/manpages-l10n/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source1:        macros.%{name}
 BuildRequires:  po4a
 BuildArch:      noarch
@@ -53,10 +50,11 @@ This package provides translations of man pages in multiple languages.
 %man_lang_package ro Romanian
 %man_lang_package sr Serbian
 %man_lang_package sv Swedish
+%man_lang_package uk Ukrainian
 %man_lang_package vi Vietnamese
 
 %prep
-%setup -q -n %{name}-%{revision}
+%setup -q
 
 %build
 %configure --enable-distribution=%{distribution_id}

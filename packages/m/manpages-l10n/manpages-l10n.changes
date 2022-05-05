@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  4 19:10:16 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 4.14.0:
+  * New language: Ukrainian.
+  * Updated many translations.
+- Remove unused argument in %man_lang_package macro definition.
+
+-------------------------------------------------------------------
 Sat Feb 26 12:36:39 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 4.13+56:

@@ -5,7 +5,7 @@
 # 1. language code
 # 2. language name
 #
-%man_lang_package(o:)\
+%man_lang_package()\
 %package -n man-pages-%{1}\
 Summary:       Translation of man pages in %{2}\
 Requires:      man-pages\
