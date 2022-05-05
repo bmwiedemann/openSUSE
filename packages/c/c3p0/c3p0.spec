@@ -68,6 +68,7 @@ Javadoc documentation for c3p0.
 %prep
 %setup -q -n %{name}-%{version}.src
 %patch1 -p1
+%{mvn_file} :c3p0 %{name}/%{name} %{name}
 
 %build
 export CLASSPATH=
