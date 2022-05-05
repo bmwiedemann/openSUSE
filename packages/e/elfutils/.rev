@@ -939,4 +939,12 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
     <comment></comment>
     <requestid>972781</requestid>
   </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>d6b9617df5daf6397eaee4887679509f</srcmd5>
+    <version>0.187</version>
+    <time>1651784664</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not set DEBUGINFOD_URLS for anything older than Tumbleweed.</comment>
+    <requestid>974309</requestid>
+  </revision>
 </revisionlist>

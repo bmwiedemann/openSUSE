@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May  2 07:30:54 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Do not set DEBUGINFOD_URLS for anything older than Tumbleweed.
+
+-------------------------------------------------------------------
 Tue Apr 26 07:16:29 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to version 0.187:

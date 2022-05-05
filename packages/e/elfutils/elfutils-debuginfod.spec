@@ -124,7 +124,10 @@ CFLAGS+=" -fPIC"
 autoreconf -fi
 # some patches create new test scripts, which are created 644 by default
 chmod a+x tests/run*.sh
-%configure --enable-debuginfod-urls=https://debuginfod.opensuse.org/ \
+%configure \
+%if %{suse_version} > 1500
+  --enable-debuginfod-urls=https://debuginfod.opensuse.org/ \
+%endif
   --program-prefix=eu-
 %make_build
 
