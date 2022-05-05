@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 29 20:53:29 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Restore sdl2-symvers.patch to full symbol list to facilitate
+  application installation with Leap 15.x's SDL2.
+
+-------------------------------------------------------------------
 Mon Apr 25 21:54:48 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.0.22

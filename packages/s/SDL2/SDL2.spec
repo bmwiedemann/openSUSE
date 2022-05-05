@@ -108,7 +108,6 @@ library.
 %prep
 %autosetup -p1
 perl -i -pe 's{\r\n}{\n}g' *.txt README.md
-echo 'V_%version { global: *; };' >sdl2.sym
 
 %build
 %global _lto_cflags %_lto_cflags -ffat-lto-objects
