@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Apr 28 06:31:12 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to release 3.5.2:
+  * New Features:
+  * The RFC 3779 API was ported from OpenSSL. Many bugs were
+    fixed, regression tests were added and the code was cleaned
+    up.
+  * Certificate Transparency was ported from OpenSSL. Many
+    internal improvements were made, resulting in cleaner and
+    safer code. Regress coverage was added. libssl does not yet
+    make use of it.
+  * Portable Improvements:
+  * Fixed various POSIX compliance and other portability issues
+    found by the port to the Sortix operating system.
+  * Compatibility Changes:
+  * Most structs that were previously defined in the following
+    headers are now opaque as they are in OpenSSL 1.1: bio.h,
+    bn.h, comp.h, dh.h, dsa.h, evp.h, hmac.h, ocsp.h, rsa.h,
+    x509.h, x509v3.h, x509_vfy.h
+  * Switch TLSv1.3 cipher names from AEAD- to OpenSSL's TLS_
+    OpenSSL added the TLSv1.3 ciphersuites with "RFC names"
+    instead of using something consistent with the previous
+    naming. Various test suites expect these names (instead of
+    checking for the much more sensible cipher numbers). The old
+    names are still accepted as aliases.
+  * Subject alternative names and name constraints are now
+    validated when they are added to certificates. Various
+    interoperability problems with stacks that validate
+    certificates more strictly than OpenSSL can be avoided this
+    way.
+  * Attempt to opportunistically use the host name for SNI in
+    s_client
+- Rebase des-fcrypt.diff
+- Rebase extra-symver.diff
+
+-------------------------------------------------------------------
 Wed Mar 16 21:52:29 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.4.3

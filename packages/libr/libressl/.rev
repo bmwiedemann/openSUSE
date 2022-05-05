@@ -490,4 +490,17 @@
     <comment>- Update to release 3.4.3</comment>
     <requestid>963474</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>b388b28cba151754407d495e32aa9c7e</srcmd5>
+    <version>3.5.2</version>
+    <time>1651784772</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.5.2:
+  * The RFC 3779 API was ported from OpenSSL.
+  * Most structs that were previously defined in the following
+    headers are now opaque as they are in OpenSSL 1.1
+  * Switch TLSv1.3 cipher names from AEAD- to OpenSSL's TLS_
+    OpenSSL added the TLSv1.3 ciphersuites with &quot;RFC names&quot;</comment>
+    <requestid>974957</requestid>
+  </revision>
 </revisionlist>
