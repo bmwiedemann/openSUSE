@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May  2 09:12:04 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.58.1:
+  * webdav: Don't override Referer if user sets it 
+  * sftp: Fix OpenSSH 8.8+ RSA keys incompatibility
+  * s3: Add ChinaMobile EOS to provider list
+  * s3: Sync providers in config description with providers
+  * onedrive: Note that sharepoint also changes web files (.html, .aspx) 
+  * jottacloud: Fix scope in token request 
+  * GCS: Use the s3 pacer to speed up transactions 
+  * GCS: pacer: Default the Google pacer to a burst of 100 to fix gcs pacing 
+  * dropbox: Fix retries of multipart uploads with incorrect_offset error
+  * VFS: Remove wording which suggests VFS is only for mounting
+  * mount: Fix --devname and fusermount: unknown option 'fsname' when mounting via rc 
+  * Fix timezone of --min-age/-max-age from UTC to local as documented
+  * rc/js: Correct RC method names
+
+-------------------------------------------------------------------
 Sat Mar 19 11:22:05 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 1.58.0
