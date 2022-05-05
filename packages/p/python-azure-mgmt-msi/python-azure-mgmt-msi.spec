@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-msi
-Version:        6.0.0
+Version:        6.0.1
 Release:        0
 Summary:        Microsoft Azure MSI Management Client Library
 License:        MIT
