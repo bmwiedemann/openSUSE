@@ -34,9 +34,10 @@
 %else
 %bcond_with kdeintegration
 %endif
-# Use system gpgme on TW and SLE15-SP4 or newer
+# Use system gpgme and curl on TW and SLE15-SP4 or newer
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 %bcond_without system_gpgme
+%bcond_without system_curl
 %else
 # Hack in the bundled libs to not pop up on requires/provides to avoid
 # faking libreoffice provide some system packages
@@ -44,10 +45,11 @@
 %global __requires_exclude_from ^%{_libdir}/libreoffice/program/lib(gpg|assuan).*\\.so.*$
 %global __requires_exclude ^libgpgmepp\\.so.*$
 %bcond_with system_gpgme
+%bcond_with system_curl
 %endif
 %bcond_with firebird
 Name:           libreoffice
-Version:        7.3.3.1
+Version:        7.3.3.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -126,8 +128,7 @@ BuildRequires:  bison
 BuildRequires:  bsh2
 BuildRequires:  commons-logging
 BuildRequires:  cups-devel
-# Use bundled curl on SLE-12-SP5
-%if 0%{suse_version} >= 1500
+%if %{with system_curl}
 BuildRequires:  curl-devel >= 7.68.0
 %else
 Source2013:     %{external_url}/curl-7.79.1.tar.xz
@@ -1174,6 +1175,10 @@ export NOCONFIGURE=yes
 %endif
 %if 0%{?suse_version} < 1500
         --without-system-icu \
+%endif
+%if %{with system_curl}
+        --with-system-curl \
+%else
         --without-system-curl \
 %endif
         --enable-evolution2 \

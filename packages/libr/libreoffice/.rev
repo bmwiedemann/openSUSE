@@ -3217,4 +3217,18 @@ Petr</comment>
 - Add poppler-22-04-0.patch</comment>
     <requestid>973229</requestid>
   </revision>
+  <revision rev="254" vrev="1">
+    <srcmd5>dd6b407ef1ea7f29a2dff7f3676520cf</srcmd5>
+    <version>7.3.3.2</version>
+    <time>1651856341</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7.3.3.2:
+  You can find the complete release notes here:
+  https://wiki.documentfoundation.org/Releases/7.3.3/RC2
+- Add system_curl build condition
+
+- Revert: Filter out binary-or-shlib-defines-rpath with $ORIGIN argument,
+  $ORIGIN is interpreted by rpmlint now.</comment>
+    <requestid>975204</requestid>
+  </revision>
 </revisionlist>
