@@ -1,7 +1,7 @@
 #
 # spec file for package python-sure
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,14 +25,14 @@ License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/gabrielfalcao/sure
 Source:         https://files.pythonhosted.org/packages/source/s/sure/sure-%{version}.tar.gz
+# https://github.com/gabrielfalcao/sure/pull/161
+Patch0:         python-sure-no-mock.patch
 BuildRequires:  %{python_module mock >= 2.0.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.10.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# regarding mock: https://github.com/gabrielfalcao/sure/pull/161
-Requires:       python-mock >= 2.0.0
 Requires:       python-six >= 1.10.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -45,6 +45,7 @@ heavily inspired by should.js
 
 %prep
 %setup -q -n sure-%{version}
+%patch0 -p1
 sed -i '/^#!/d' sure/*.py
 sed -i 's/--cov=sure//' setup.cfg
 

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  4 08:38:45 UTC 2022 - pgajdos@suse.com
+
+- do not require mock for build nor runtime
+- added patches
+  fix https://github.com/gabrielfalcao/sure/pull/161
+  + python-sure-no-mock.patch
+
+-------------------------------------------------------------------
 Sun Dec 12 16:15:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.0.0

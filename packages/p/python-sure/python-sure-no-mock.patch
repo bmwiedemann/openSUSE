@@ -1,0 +1,23 @@
+--- a/sure/core.py
++++ b/sure/core.py
+@@ -21,7 +21,10 @@
+ try:
+     from mock import _CallList
+ except ImportError:
+-    from mock.mock import _CallList
++    try:
++        from mock.mock import _CallList
++    except ImportError:
++        from unittest.mock import _CallList
+ 
+ import inspect
+ from six import (
+@@ -40,6 +43,7 @@ class Anything(object):
+     def __eq__(self, _):
+         return True
+ 
++
+ anything = Anything()
+ 
+ 
+
