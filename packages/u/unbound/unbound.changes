@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Tue Apr 19 15:41:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- drop python2 packages
+- update to 1.15.0:
+  This release has bug fixes for crashes that happened on heavy network
+  usage. The default for the aggressive-nsec option has changed, it is now
+  enabled.
+
+  The ratelimit logic had to be reworked for the crash fixes. As a result,
+  there are new options to control the behaviour of ratelimiting.
+  The ratelimit-backoff and ip-ratelimit-backoff options can be used to
+  control how severe the backoff is when the ratelimit is exceeded.
+
+  The rpz-signal-nxdomain-ra option can be used to unset the RA flag, for
+  NXDOMAIN answers from RPZ. That is used by some clients to detect that
+  the domain is externally blocked. The RPZ option for-downstream can be
+  used like for auth zones, this allows the RPZ zone information to be queried.
+  That can be useful for monitoring scripts.
+
+  Features
+  - Fix #596: unset the RA bit when a query is blocked by an unbound
+    RPZ nxdomain reply. The option rpz-signal-nxdomain-ra allows to
+    signal that a domain is externally blocked to clients when it
+    is blocked with NXDOMAIN by unsetting RA.
+  - Add rpz: for-downstream: yesno option, where the RPZ zone is
+    authoritatively answered for, so the RPZ zone contents can be
+    checked with DNS queries directed at the RPZ zone.
+  - Merge PR #616: Update ratelimit logic. It also introduces
+    ratelimit-backoff and ip-ratelimit-backoff configuration options.
+  - Change aggressive-nsec default to yes.
+
+  Bug Fixes
+  - Fix compile warning for if_nametoindex on windows 64bit.
+  - Merge PR #581 from fobser: Fix -Wmissing-prototypes and -Wshadow
+    warnings in rpz.
+  - Fix validator debug output about DS support, print correct algorithm.
+  - Add code similar to fix for ldns for tab between strings, for
+    consistency, the test case was not broken.
+  - Allow local-data for classes other than IN to inherit a configured
+    local-zone's type if possible, instead of defaulting to type
+    transparent as per the implicit rule.
+  - Fix to pick up other class local zone information before unlock.
+  - Add missing configure flags for optional features in the
+    documentation.
+  - Fix Unbound capitalization in the documentation.
+  - Fix #591: Unbound-anchor manpage links to non-existent license file.
+  - contrib/aaaa-filter-iterator.patch file renewed diff content to
+    apply cleanly to the current coderepo for the current code version.
+  - Fix to add test for rpz-signal-nxdomain-ra.
+  - Fix #596: only unset RA when NXDOMAIN is signalled.
+  - Fix that RPZ does not set RD flag on replies, it should be copied
+    from the query.
+  - Fix for #596: fix that rpz return message is returned and not just
+    the rcode from the iterator return path. This fixes signal unset RA
+    after a CNAME.
+  - Fix unit tests for rpz now that the AA flag returns successfully from
+    the iterator loop.
+  - Fix for #596: add unit test for nsdname trigger and signal unset RA.
+  - Fix for #596: add unit test for nsip trigger and signal unset RA.
+  - Fix #598: Fix unbound-checkconf fatal error: module conf
+    'respip dns64 validator iterator' is not known to work.
+  - Fix for #596: Fix rpz-signal-nxdomain-ra to work for clientip
+    triggered operation.
+  - Merge #600 from pemensik: Change file mode before changing file
+    owner.
+  - Fix prematurely terminated TCP queries when a reply has the same ID.
+  - For #602: Allow the module-config "subnetcache validator cachedb
+    iterator".
+  - Fix EDNS to upstream where the same option could be attached
+    more than once.
+  - Add a region to serviced_query for allocations.
+  - For dnstap, do not wakeupnow right there. Instead zero the timer to
+    force the wakeup callback asap.
+  - Fix #610: Undefine-shift in sldns_str2wire_hip_buf.
+  - Fix #588: Unbound 1.13.2 crashes due to p->pc is NULL in
+    serviced_udp_callback.
+  - Merge PR #612: TCP race condition.
+  - Test for NSID in SERVFAIL response due to DNSSEC bogus.
+  - Fix #599: [FR] RFC 9156 (obsoletes RFC 7816), by noting the new RFC
+    document.
+  - Fix tls-* and ssl-* documented alternate syntax to also be available
+    through remote-control and unbound-checkconf.
+  - Better cleanup on failed DoT/DoH listening socket creation.
+  - iana portlist update.
+  - Fix review comment for use-after-free when failing to send UDP out.
+  - Merge PR #603 from fobser: Use OpenSSL 1.1 API to access DSA and RSA
+    internals.
+  - Merge PR #532 from Shchelk: Fix: buffer overflow bug.
+  - Merge PR #617: Update stub/forward-host notation to accept port and
+    tls-auth-name.
+  - Update stream_ssl.tdir test to also use the new forward-host
+    notation.
+  - Fix header comment for doxygen for authextstrtoaddr.
+  - please clang analyzer for loop in test code.
+  - Fix docker splint test to use more portable uname.
+  - Update contrib/aaaa-filter-iterator.patch with diff for current
+    software version.
+  - Fix for #611: Integer overflow in sldns_wire2str_pkt_scan. 
+
+-------------------------------------------------------------------
+Fri Dec 31 23:18:09 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change to systemd-sysusers
+
+-------------------------------------------------------------------
 Thu Dec  9 11:14:33 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - update to 1.14.0

@@ -1,7 +1,7 @@
 #
 # spec file for package unbound
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,41 +21,31 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
-%bcond_without python2
 %bcond_without python3
 %bcond_without munin
 %bcond_without hardened_build
 %bcond_without dnstap
 %bcond_without systemd
 
-#
 %define _sharedstatedir /var/lib/
 %define ldns_version 1.6.16
 
-#
 %define piddir /run
 
 Name:           unbound
-Version:        1.14.0
+Version:        1.15.0
 Release:        0
-#
-#
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  flex
 BuildRequires:  ldns-devel >= %{ldns_version}
 BuildRequires:  libevent-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libsodium-devel
 BuildRequires:  openssl-devel
+BuildRequires:  sysuser-tools
 %if %{with dnstap}
 BuildRequires:  libfstrm-devel
 BuildRequires:  libprotobuf-c-devel >= 1.0.0
 BuildRequires:  protobuf-c >= 1.0.0
-%endif
-%if %{with python2}
-BuildRequires:  python-rpm-macros
-BuildRequires:  python2-devel
-BuildRequires:  swig
 %endif
 %if %{with python3}
 BuildRequires:  python-rpm-macros
@@ -64,7 +54,6 @@ BuildRequires:  swig
 %endif
 # needed for dns over https
 BuildRequires:  pkgconfig(libnghttp2)
-
 Requires:       ldns >= %{ldns_version}
 # until we figured something else out for the unbound-anchor part in the systemd unit file
 Requires:       sudo
@@ -72,7 +61,6 @@ Requires:       sudo
 BuildRequires:  pkgconfig(libsystemd)
 %{?systemd_requires}
 %endif
-#
 URL:            https://www.unbound.net/
 Source:         https://www.unbound.net/downloads/unbound-%{version}.tar.gz
 Source1:        unbound.service
@@ -93,6 +81,7 @@ Source14:       unbound.sysconfig
 Source15:       unbound-anchor.timer
 Source16:       unbound-munin.README
 Source18:       unbound-anchor.service
+Source19:       unbound.sysusers
 
 Summary:        Validating, recursive, and caching DNS(SEC) resolver
 License:        BSD-3-Clause
@@ -155,7 +144,7 @@ This package holds the development files to work with libunbound.
 #
 Summary:        Unbound Anchor cert management tools
 Group:          Productivity/Networking/DNS/Servers
-Requires(pre):  shadow
+%sysusers_requires
 
 %description anchor
 Unbound is a validating, recursive, and caching DNS(SEC) resolver.
@@ -176,27 +165,11 @@ Unbound is a validating, recursive, and caching DNS(SEC) resolver.
 This package holds the Python modules and extensions for unbound.
 %endif
 
-%if %{with python2}
-%package -n python2-unbound
-Summary:        Python modules and extensions for unbound
-Group:          Applications/System
-Requires:       %{libname} = %{version}
-
-%description -n python2-unbound
-Unbound is a validating, recursive, and caching DNS(SEC) resolver.
-
-This package holds the Python modules and extensions for unbound.
-%endif
-
 %prep
 %setup
-%if %{with python2}
-pushd ..
-cp -pr %{name}-%{version} p2
-popd
-%endif
 
 %build
+%sysusers_generate_pre %{SOURCE19} anchor unbound.conf
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
 
@@ -257,12 +230,6 @@ popd
 make %{?_smp_mflags} all streamtcp
 
 %install
-%if %{with python2}
-pushd ../p2
-%make_install
-popd
-%endif
-
 %make_install
 
 install -d -m 0750                %{buildroot}/var/lib/unbound
@@ -323,18 +290,15 @@ install -m 0640 -p %{SOURCE11} %{buildroot}%{_sysconfdir}/unbound/local.d/
 # Link unbound-control-setup.8 manpage to unbound-control.8
 echo ".so man8/unbound-control.8" > %{buildroot}/%{_mandir}/man8/unbound-control-setup.8
 
+# sysusers.d
+install -Dm0644 %{SOURCE19} %{buildroot}%{_sysusersdir}/unbound.conf
+
 %check
 # it currently fails in the ldns unit test. which is weird as both come from the same project
 make check ||:
 
-%pre anchor
-%if %{with systemd}
+%pre anchor -f anchor.pre
 %service_add_pre  unbound-anchor.service unbound-anchor.timer
-%endif
-getent group unbound >/dev/null || groupadd -r unbound
-getent passwd unbound >/dev/null || \
-	useradd -g unbound -s /bin/false -r -c "unbound caching DNS server" \
-	-d /var/lib/unbound unbound
 
 %if %{with systemd}
 %pre
@@ -382,8 +346,8 @@ systemd-tmpfiles --create  %{_tmpfilesdir}/unbound.conf  || :
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
-%doc doc/README doc/CREDITS doc/LICENSE doc/FEATURES
+%license doc/LICENSE
+%doc doc/README doc/CREDITS doc/FEATURES
 %attr(0755,unbound,unbound) %ghost %dir %{piddir}/%{name}
 %attr(0640,root,unbound)    %config(noreplace) %{_sysconfdir}/%{name}/unbound.conf
 %dir %attr(-,root,unbound)                     %{_sysconfdir}/%{name}/keys.d
@@ -420,23 +384,13 @@ systemd-tmpfiles --create  %{_tmpfilesdir}/unbound.conf  || :
 
 %if %{with python3}
 %files -n python3-unbound
-%defattr(-,root,root,-)
 %{python3_sitearch}/*
 %doc libunbound/python/examples/*
 %doc pythonmod/examples/*
 %endif
 
-%if %{with python2}
-%files -n python2-unbound
-%defattr(-,root,root,-)
-%{python2_sitearch}/*
-%doc ../p2/libunbound/python/examples/*
-%doc ../p2/pythonmod/examples/*
-%endif
-
 %if %{with munin}
 %files munin
-%defattr(-,root,root,-)
 %dir               %{_sysconfdir}/munin/
 %dir               %{_sysconfdir}/munin/plugin-conf.d/
 %config(noreplace) %{_sysconfdir}/munin/plugin-conf.d/unbound
@@ -447,7 +401,6 @@ systemd-tmpfiles --create  %{_tmpfilesdir}/unbound.conf  || :
 %endif
 
 %files devel
-%defattr(-,root,root,-)
 %{_includedir}/unbound.h
 %{_includedir}/unbound-event.h
 %{_libdir}/libunbound.so
@@ -457,12 +410,12 @@ systemd-tmpfiles --create  %{_tmpfilesdir}/unbound.conf  || :
 %{_mandir}/man3/ub_*.3*
 
 %files anchor
-%defattr(-,root,root,-)
 %dir %{_sysconfdir}/%{name}/
 %{_sbindir}/unbound-anchor
 %config %{_sysconfdir}/%{name}/icannbundle.pem
 %{_unitdir}/unbound-anchor.timer
 %{_unitdir}/unbound-anchor.service
+%{_sysusersdir}/unbound.conf
 %dir %attr(-,unbound,unbound) %{_sharedstatedir}/%{name}
 %attr(0644,unbound,unbound) %config(noreplace) %{_sharedstatedir}/%{name}/root.key
 %attr(0644,root,unbound)    %config(noreplace) %{_sysconfdir}/%{name}/dlv.isc.org.key
