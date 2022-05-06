@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  4 17:16:26 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.3.11:
+  * Add missing files to 2.3.10
+- See https://github.com/lurcher/unixODBC/issues/107
+
+-------------------------------------------------------------------
 Mon May  2 13:43:57 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.3.10:

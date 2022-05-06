@@ -363,4 +363,14 @@
     <comment></comment>
     <requestid>974444</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>84a881b9d3b6dbd1ce17eda3a494e7f8</srcmd5>
+    <version>2.3.11</version>
+    <time>1651856337</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.11:
+  * Add missing files to 2.3.10
+- See https://github.com/lurcher/unixODBC/issues/107</comment>
+    <requestid>974978</requestid>
+  </revision>
 </revisionlist>
