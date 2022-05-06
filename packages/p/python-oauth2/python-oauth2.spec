@@ -1,7 +1,7 @@
 #
-# spec file for package python-oauth2
+# spec file
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,12 +30,13 @@ Source:         https://files.pythonhosted.org/packages/source/o/oauth2/%{modnam
 Patch0:         oauth2-drop-tests-with-net-access.patch
 Patch1:         hidePythonRequires.patch
 Patch2:         addTestPath.patch
+# https://github.com/joestump/python-oauth2/issues/243
+Patch3:         python-oauth2-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Test requirements:
 BuildRequires:  %{python_module httplib2}
-BuildRequires:  %{python_module mock}
 BuildArch:      noarch
 Requires:       python-httplib2
 %python_subpackages
@@ -51,6 +52,7 @@ the project was taken over by Daniel Holmes the current maintainer
 %patch0
 %patch1
 %patch2
+%patch3 -p1
 
 %build
 %python_build
