@@ -1,7 +1,7 @@
 #
 # spec file for package xcb-proto
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define dirsuffix 1.14.1
+%define dirsuffix 1.15
 %if 0%{?suse_version} >= 1500
 %bcond_with python2
 %else
@@ -113,6 +113,7 @@ make %{?_smp_mflags}
 %doc COPYING
 %{python_sitelib}/xcbgen/
 %else
+
 %files -n python3-xcb-proto-devel
 %license COPYING
 %{python3_sitelib}/xcbgen/

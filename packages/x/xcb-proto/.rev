@@ -139,4 +139,22 @@
     were removed in Python 3.9.</comment>
     <requestid>840399</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>632b15f3aeeb087d656ca4e9fa785732</srcmd5>
+    <version>7.6_1.15</version>
+    <time>1651856334</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.15
+  * xproto.xml: Update doc text for GrabKey
+  * Fix python version check from 65169c1af7893882c21d1e2a544903212b8d6fb0
+  * Adjust to automake 1.16.4 changes
+  * xfixes: Add ClientDisconnectMode
+  * glx,xprint: place explicit padding between lists
+  * Add element to specify expression that defines length of a struct
+  * xinput: Add length specification for DeviceClass struct
+  * xinput: Add XI v2.4
+  * Add missing fields to errors
+  * Use xml.etree.cElementTree where appropriate</comment>
+    <requestid>974943</requestid>
+  </revision>
 </revisionlist>

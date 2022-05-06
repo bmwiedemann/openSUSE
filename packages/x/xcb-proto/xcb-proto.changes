@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May  3 22:02:01 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.15
+  * xproto.xml: Update doc text for GrabKey
+  * Fix python version check from 65169c1af7893882c21d1e2a544903212b8d6fb0
+  * Adjust to automake 1.16.4 changes
+  * xfixes: Add ClientDisconnectMode
+  * glx,xprint: place explicit padding between lists
+  * Add element to specify expression that defines length of a struct
+  * xinput: Add length specification for DeviceClass struct
+  * xinput: Add XI v2.4
+  * Add missing fields to errors
+  * Use xml.etree.cElementTree where appropriate
+
+-------------------------------------------------------------------
 Fri Oct  9 08:15:40 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.14.1
