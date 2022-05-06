@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri May  6 06:09:30 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire go1.17
+
+-------------------------------------------------------------------
+Thu May 05 15:23:32 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 6.0.0:
+  * Added Mutation webhook  (#755)
+  * update release process (#744)
+  * update go modules (#743)
+  * Add fix command to mutate and update IaC  (#746)
+  * Managed by Terraform
+  * fix kinds (#752)
+  * Save last podspec when walking owner hierarchy (#748)
+  * Bump alpine from 3.15.3 to 3.15.4 (#745)
+  * Added more mutations and refactor test to test each mutation separately (#734)
+
+-------------------------------------------------------------------
 Thu Apr 14 19:55:05 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 5.2.0:

@@ -19,14 +19,14 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           polaris
-Version:        5.2.0
+Version:        6.0.0
 Release:        0
 Summary:        Validation of best practices in your Kubernetes clusters
 License:        Apache-2.0
 URL:            https://github.com/FairwindsOps/polaris
 Source:         polaris-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.16
+BuildRequires:  go >= 1.17
 
 %description
 Best Practices for Kubernetes Workload Configuration
