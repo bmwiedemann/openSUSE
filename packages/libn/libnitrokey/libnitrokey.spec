@@ -1,7 +1,7 @@
 #
 # spec file for package libnitrokey
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@
 %define lib_name %{name}3
 
 Name:           libnitrokey
-Version:        3.6
+Version:        3.7
 Release:        0
 Summary:        Communicate with Nitrokey stick devices in a clean and easy manner
 License:        LGPL-3.0-only
@@ -30,7 +30,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/Nitrokey/libnitrokey
 Source:         https://github.com/Nitrokey/libnitrokey/releases/download/v%{version}/libnitrokey-v%{version}.tar.gz
 Source1:        https://github.com/Nitrokey/libnitrokey/releases/download/v%{version}/libnitrokey-v%{version}.tar.gz.sig
-Patch1:         udev-rules-add-nitrokey3.patch
 BuildRequires:  cmake
 BuildRequires:  gcc%{?force_gcc_version}-c++ >= 5
 %if 0%{?force_gcc_version}
@@ -38,9 +37,9 @@ BuildRequires:  gcc%{?force_gcc_version}-c++ >= 5
 %endif
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
-BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(hidapi-libusb)
 BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(udev)
 
 %description
 Libnitrokey is a project to communicate with Nitrokey Pro and Storage devices
@@ -57,11 +56,11 @@ in a clean and easy manner.
 
 This package holds the shared library.
 
-
 %package udev
 Summary:        udev rules for libnitrokey
 Group:          Development/Libraries/C and C++
 BuildArch:      noarch
+
 %description udev
 Libnitrokey is a project to communicate with Nitrokey Pro and Storage devices
 in a clean and easy manner.
@@ -81,7 +80,6 @@ This package holds the development files.
 
 %prep
 %setup -q -n %{name}-v%{version}
-%patch1 -p1
 
 %build
 %if 0%{?force_gcc_version}

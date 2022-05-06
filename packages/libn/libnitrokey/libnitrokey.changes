@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May  3 05:57:51 UTC 2022 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to 3.7
+  * Nitrokey Pro v0.14 support;
+  * Udev rules update;
+  * Stability fixes.
+- drop udev-rules-add-nitrokey3.patch which is now upstream
+
+-------------------------------------------------------------------
 Mon Apr 25 08:34:36 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - switch buildrequires udev to pkgconfig(udev).
