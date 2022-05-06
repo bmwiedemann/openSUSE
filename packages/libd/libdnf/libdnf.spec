@@ -1,7 +1,7 @@
 #
 # spec file for package libdnf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -34,7 +34,7 @@
 %define devname %{name}-devel
 
 Name:           libdnf
-Version:        0.66.0
+Version:        0.67.0
 Release:        0
 Summary:        Library providing C and Python APIs atop libsolv
 License:        LGPL-2.1-or-later
@@ -164,7 +164,6 @@ repository configuration files set for Zypper.
 
 %lang_package
 
-
 %prep
 %autosetup -p1
 
@@ -203,9 +202,7 @@ popd
 mkdir -p %{buildroot}%{_sysconfdir}/zypp/repos.d
 ln -sr %{buildroot}%{_sysconfdir}/zypp/repos.d %{buildroot}%{_sysconfdir}/distro.repos.d
 
-
 %ldconfig_scriptlets -n %{libname}
-
 
 %files -n %{libname} -f %{name}.lang
 %license COPYING

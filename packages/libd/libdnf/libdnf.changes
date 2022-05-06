@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  4 06:08:09 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.67.0:
+  * Add 'loongarch' support
+  * Use dnf solv userdata to check versions and checksum (rh#2027445)
+  * context: Substitute all repository config options (rh#2076853)
+
+-------------------------------------------------------------------
 Sun Mar 27 21:25:17 UTC 2022 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 0.66.0
