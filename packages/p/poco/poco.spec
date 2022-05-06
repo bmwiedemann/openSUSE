@@ -1,7 +1,7 @@
 #
 # spec file for package poco
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define sover  71
+%define sover  82
 # disabled for now as 4 of them fail
 %bcond_with tests
 Name:           poco
-Version:        1.10.1
+Version:        1.11.2
 Release:        0
 Summary:        C++ Framework for Network-based Applications
 License:        BSL-1.0
@@ -77,6 +77,14 @@ Provides:       libpoco-devel = %{version}
 %description -n poco-devel
 C++ class libraries and frameworks for building
 network- and Internet-based applications.
+
+%package -n libPocoActiveRecord%{sover}
+Summary:        POCO C++ Active Record
+Group:          System/Libraries
+
+%description -n libPocoActiveRecord%{sover}
+ActiveRecord is a simple and lightweight object-relational mapping (ORM)
+framework based on the Active Record pattern and the Data library.
 
 %package -n poco-cpspc
 Summary:        POCO C++ Server Page Compiler
@@ -239,7 +247,6 @@ Provides:       poco-zip = %{version}
 C++ class libraries and frameworks for building
 network- and Internet-based applications.
 
-
 %package -n libPocoJWT%{sover}
 Summary:        C++ Framework for Network-based Applications
 Group:          System/Libraries
@@ -285,6 +292,7 @@ network- and Internet-based applications.
 
 %install
 %cmake_install
+mv %{buildroot}/%{_bindir}/arc %{buildroot}/%{_bindir}/poco-arc
 rm -rf %{buildroot}%{_libdir}/cmake/Poco/V*
 %fdupes -s %{buildroot}/%{_libdir}/cmake/Poco
 
@@ -293,6 +301,12 @@ rm -rf %{buildroot}%{_libdir}/cmake/Poco/V*
 export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}:$(pwd)/build/lib:$LD_LIBRARY_PATH
 %ctest
 %endif
+
+%files -n libPocoActiveRecord%{sover}
+%{_libdir}/libPocoActiveRecord.so.%{sover}
+
+%post   -n libPocoActiveRecord%{sover} -p /sbin/ldconfig
+%postun -n libPocoActiveRecord%{sover} -p /sbin/ldconfig
 
 %files -n libPocoCrypto%{sover}
 %{_libdir}/libPocoCrypto.so.%{sover}
@@ -406,6 +420,7 @@ export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}:$(pwd)/build/lib:$LD_LIBRARY_PATH
 %license LICENSE
 %doc CHANGELOG CONTRIBUTORS NEWS README
 %{_includedir}/Poco
+%{_bindir}/poco-arc
 %{_libdir}/libPoco*.so
 %dir %{_libdir}/cmake/Poco/
 %{_libdir}/cmake/Poco/*.cmake

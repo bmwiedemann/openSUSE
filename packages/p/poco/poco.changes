@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue Apr 19 12:41:20 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.11.2
+  * Handle negative DST offset
+  * Poco redis command set have a bug when you want to set nx ex
+    or expireTime
+  * NamedMutex does not work on Linux distributions where
+    fs.protected_regular=1
+  * Basic support for OpenSSL 3.0.0
+  * encryptString() crash on redhat/centos 8 with FIPS enabled
+    using md5 default digest
+  * bug in JSON ParseHandler.cpp (RFC 7159 should be valid)
+  * Sandbox all iFrames in PocoDoc
+  * OpenSSL 3 compatibility
+  * JSON::PrintHandler.value(bool) prints incorrect value
+  * Reference counting for bound configuration in Util::Option
+    is broken
+  * #3507: Fix bound configuration reference counting in
+    Poco::Util::Option.
+  * fix dst and utcOffset handling for Dublin time zone
+  * NetSSL_OpenSSL Testsuite: testInterop() and testProxy()
+    fail due to changed certificate
+  * Expat version check in #defines incorrect.
+  * Bad management of file in case of OpenSSLException in
+    X509Certificate::readPEM and X509Certificate::writePEM
+  * Add back NIOS2 double conversion detection to fix compile
+    errors
+  * Poco::Data::PostgreSQL - DateTime extraction truncates
+    fractional seconds
+- Update to version 1.11.1
+  * error: implicit conversion from 'int' to 'float' changes
+    value from 2147483647 to 2147483648
+  * SocketReactor loads one core of CPU up to 100%
+  * Poco::Data::ODBC::ODBCStatementImpl causes crash
+  * XML error when build 1.11.0
+  * [bug] MacOS bundle destination path is not set
+  * The definition POCO_NO_FORK_EXEC is not respected or
+    something like this
+  * fix fork option
+  * Add POCO_PGSQL_{INCLUDE,LIB} variables
+  * Fixed compilation error with MongoDB::Connection and
+    Util::Application
+  * DNS::hostByAddress not thread-safe
+  * Fix crash due to X.509 certificates with Subject Alternative
+    Name other than DNS Host
+  * fix std::localtime not thread safe
+  * fix missing expat definition
+  * Fixed suspend/resumeEvents pair in DirectoryWatcher
+- package /usr/bin/arc as /usr/bin/poco-arc to prevent an naming
+  clash
+
+-------------------------------------------------------------------
+Mon Jun 28 11:01:46 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.11.0
+  * This release introduces ActiveRecord, a simple and lightweight
+    object-relational mapping (ORM) framework based on the Active
+    Record pattern and the Data library.
+  * Over 100 issues have been closed with this release.
+
+-------------------------------------------------------------------
 Sat May  2 08:46:19 UTC 2020 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Add missed requires to poco-devel.
