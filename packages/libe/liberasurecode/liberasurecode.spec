@@ -18,7 +18,7 @@
 
 %define libsoname liberasurecode1
 Name:           liberasurecode
-Version:        1.6.2
+Version:        1.6.3
 Release:        0
 Summary:        Erasure Code API library with pluggable Erasure Code backends
 License:        BSD-3-Clause
@@ -68,11 +68,7 @@ Development files for the Unified Erasure Coding interface.
 %postun -n %{libsoname} -p /sbin/ldconfig
 
 %files -n %{libsoname}
-%if 0%{?suse_version} > 1315
 %license COPYING
-%else
-%license COPYING
-%endif
 %doc ChangeLog README.md
 %{_libdir}/libXorcode.so.*
 %{_libdir}/liberasurecode.so.*

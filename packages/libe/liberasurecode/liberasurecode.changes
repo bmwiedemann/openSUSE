@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  5 06:33:30 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.6.3
+  * Fixed an underflow error when using flat_xor_hd.
+  * Added a build option to allow a suffix to be added to library
+    names passed to dlopen()
+
+-------------------------------------------------------------------
 Sun Feb 28 18:02:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.2:
