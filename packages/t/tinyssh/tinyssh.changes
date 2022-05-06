@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu May  5 07:05:47 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 20220311:
+  * fixed build on big-endian platforms
+  * use PACKET_LIMIT/2 as incoming maximum packet size,
+    it's workaround for packets with miscalculated packet_length
+  * add tinysshnoneauthd #29
+  * fixed return error message when second channel is requested
+  * man/tinysshd-{make,print}key.1 -> man/tinysshd-{make,print}key.8
+  * add tools/tinyssh-convert
+  * fix log error messages
+  * honor "max packet size" requested from the client
+  * removed sntrup4591761x25519-sha512@tinyssh.org
+  * added sntrup761x25519-sha512@openssh.com
+
+-------------------------------------------------------------------
 Tue Jan  1 21:38:17 UTC 2019 - Karol Babioch <kbabioch@suse.de>
 
 - Update to version 20190101

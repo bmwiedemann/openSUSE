@@ -1,7 +1,7 @@
 #
 # spec file for package tinyssh
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tinyssh
-Version:        20190101
+Version:        20220311
 Release:        0
 Summary:        A minimalistic SSH server which implements only a subset of SSHv2 features
 License:        CC0-1.0
@@ -39,21 +39,23 @@ use dynamic memory allocation (no allocation failures, etc.)
 echo %{optflags} > conf-cflags
 echo %{_sbindir} > conf-bin
 echo %{_mandir} > conf-man
-echo %{__cc} > conf-cc
+echo gcc > conf-cc
 
 %build
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %files
-%doc README* LICENCE
+%license LICENCE
+%doc README*
 %{_sbindir}/tinysshd
 %{_sbindir}/tinysshd-makekey
 %{_sbindir}/tinysshd-printkey
-%{_mandir}/man1/tinysshd-makekey.1%{ext_man}
-%{_mandir}/man1/tinysshd-printkey.1%{ext_man}
-%{_mandir}/man8/tinysshd.8%{ext_man}
+%{_mandir}/man8/tinysshd-makekey.8%{?ext_man}
+%{_mandir}/man8/tinysshd-printkey.8%{?ext_man}
+%{_mandir}/man8/tinysshd.8%{?ext_man}
+%{_mandir}/man8/tinysshnoneauthd.8%{?ext_man}
 
 %changelog
