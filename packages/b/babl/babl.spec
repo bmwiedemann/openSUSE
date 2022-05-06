@@ -27,6 +27,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://gegl.org/babl/
 Source0:        https://download.gimp.org/pub/babl/0.1/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+Patch0:         https://gitlab.gnome.org/GNOME/babl/-/commit/b05b2826.patch
+Patch1:         https://gitlab.gnome.org/GNOME/babl/-/commit/2dc7fc40.patch
 
 BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
