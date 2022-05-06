@@ -112,4 +112,12 @@
   distributions</comment>
     <requestid>941270</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ad09e73ed8df4392749e6bb861eb4f70</srcmd5>
+    <version>6.13.0</version>
+    <time>1651856404</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>975394</requestid>
+  </revision>
 </revisionlist>

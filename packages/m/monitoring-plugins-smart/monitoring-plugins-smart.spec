@@ -17,7 +17,7 @@
 
 
 Name:           monitoring-plugins-smart
-Version:        6.12.2
+Version:        6.13.0
 Release:        0
 Summary:        Check SMART status of a given disk
 License:        SUSE-Public-Domain

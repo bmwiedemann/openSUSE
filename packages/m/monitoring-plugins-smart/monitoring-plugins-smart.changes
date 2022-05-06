@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 29 10:37:51 UTC 2022 - lars@linux-schulserver.de - 6.13.0
+
+- Update to 6.13.0
+  + Allow skip temperature check, introduces new parameter --skip-temp-check
+  + Improved handling of missing or non-executable smartctl command
+
+-------------------------------------------------------------------
 Fri Dec 17 16:14:32 UTC 2021 - lars@linux-schulserver.de - 6.12.2
 
 - Update to 6.12.2:
