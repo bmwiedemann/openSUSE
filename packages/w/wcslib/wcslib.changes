@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu May  5 20:07:33 UTC 2022 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Update to version 7.11:
+  * C library
+    - In tabini(), the default index array should contain a
+      1-relative sequence: {1, 2,... N}.  Previously it was
+      0-relative.
+  From version 7.10:
+  * C library
+    - In tabcpy(), collapse degenerate table index arrays if they
+      are collapsed in the source struct.  Minor fix for output
+      formatting in tabprt().
+    - In the C test suite, added calls to wcstrim() in twcsfix to
+      tidy the structs before printing.
+  * Utilities
+    - The default option in wcsware now trims the wcsprm struct
+      before printing it.  Use the '-p' option to print the
+      untrimmed struct.
+  From version 7.9:
+  * C library
+    - In wcsset(), bug fix for identifying time coordinate axes.
+      Reported by Mihai Cara with patch.
+  From version 7.8:
+  * C library
+    - In wcssub(), bug fix for tabular coordinates that change axis
+      number, thus requiring tabprm::map to be updated.  Reported
+      by Mihai Cara with patch.
+      Also in wcssub():
+      - check that all axes of a multi-dimensional table are
+        extracted together,
+      - fixed potential memory leaks for tabular coordinate axes
+        when an attempt to subimage non-separable axes fails,
+      - the error messages for non-separable coordinate systems are
+        generally more informative,
+      - subimage extraction by coordinate type now recognises time
+        coordinate axis types via WCSSUB_TIME.
+    - wcsset() now identifies time coordinate axes in
+      wcsprm::types.
+    - Extended test program twcssub to test the above
+      modifications.
+  * Installation
+    - Bug fix in the utils makefile for creating $(MANDIR)/man1.
+      Reported by Aleksander Kurek.
+    - Bug fix in the Fortran makefile for compiling and using
+      'tofits'. Reported by Stefan Br�ns.
+  * User manual
+    - Documentation generation moved to doxygen 1.9.3 (was 1.9.1).
+- Removed 0001-Fix-utils-tofits-location-in-Fortran-GNUmakefile.patch
+  (fixed upstream).
+- Don't use %configure macro for building i586 package (it makes
+  tests fail).
+
+-------------------------------------------------------------------
 Wed Nov 10 21:35:28 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 7.7, for details see:

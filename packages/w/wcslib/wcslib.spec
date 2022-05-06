@@ -1,7 +1,7 @@
 #
 # spec file for package wcslib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %define libver  7
 Name:           wcslib
-Version:        7.7
+Version:        7.11
 Release:        0
 Summary:        An implementation of the FITS WCS standard
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.atnf.csiro.au/people/mcalabre/WCS/wcslib/
 Source0:        ftp://ftp.atnf.csiro.au/pub/software/wcslib/%{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM -- fix building of tofits util in Fortran tests
-Patch0:         0001-Fix-utils-tofits-location-in-Fortran-GNUmakefile.patch
 BuildRequires:  cfitsio-devel
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -88,7 +86,12 @@ opened with %{name}.
 %autosetup -p1
 
 %build
+# Additional FLAGS from %%configure macro makes tests ("make check") fail in i586. So don't use them for now.
+%ifarch %ix86
+./configure --prefix=%{_prefix} -docdir=%{_docdir}/%{name} --without-pgplot
+%else
 %configure --docdir=%{_docdir}/%{name} --without-pgplot
+%endif
 %make_build
 
 %install
