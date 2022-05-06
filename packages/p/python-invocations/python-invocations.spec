@@ -27,10 +27,11 @@ URL:            https://github.com/pyinvoke/invocations
 Source:         https://github.com/pyinvoke/invocations/archive/%{version}.tar.gz#/invocations-%{version}.tar.gz
 Patch0:         invocations-no-bundled.patch
 Patch1:         invocations-py3.patch
+# https://github.com/pyinvoke/invocations/issues/31
+Patch2:         python-invocations-no-mock.patch
 BuildRequires:  %{python_module blessings >= 1.6}
 BuildRequires:  %{python_module invoke >= 1.6}
 BuildRequires:  %{python_module lexicon}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-relaxed}
 BuildRequires:  %{python_module releases >= 1.2}
 BuildRequires:  %{python_module semantic_version >= 2.4}
@@ -73,9 +74,7 @@ Invocations is currently in pre-alpha status and is unsupported. Please follow
 the Invoke project's communication channels for updates. Thanks!
 
 %prep
-%setup -q -n invocations-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n invocations-%{version}
 
 %build
 %python_build

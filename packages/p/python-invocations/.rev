@@ -73,4 +73,12 @@
     <comment>- pytest-relaxed now supports pytest 6, so test on all python versions.</comment>
     <requestid>960647</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>0903506e8dd3bbb4d3608bcd291dbddf</srcmd5>
+    <version>2.3.0</version>
+    <time>1651856338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974983</requestid>
+  </revision>
 </revisionlist>

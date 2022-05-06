@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  4 12:25:51 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+- added patches
+  fix https://github.com/pyinvoke/invocations/issues/31
+  + python-invocations-no-mock.patch
+
+-------------------------------------------------------------------
 Thu Mar 10 06:25:34 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - pytest-relaxed now supports pytest 6, so test on all python versions. 
