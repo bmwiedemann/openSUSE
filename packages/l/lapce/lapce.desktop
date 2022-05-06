@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Lapce
+GenericName=Text Editor
+Comment=Performant and light editor
+TryExec=lapce.sh
+Exec=lapce.sh %F
+Icon=lapce
+Type=Application
+Keywords=Text;editor;Lapce
+Categories=TextEditor;Development;IDE;
+MimeType=text/english;text/plain;text/x-makefile;text/x-c++hdr;text/x-c++src;text/x-chdr;text/x-csrc;text/x-java;text/x-moc;text/x-pascal;text/x-tcl;text/x-tex;application/x-shellscript;text/x-c;text/x-c++
