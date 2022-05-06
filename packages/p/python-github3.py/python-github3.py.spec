@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-github3.py
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Python wrapper for the GitHub API
 License:        BSD-3-Clause
@@ -43,7 +44,6 @@ BuildRequires:  %{python_module betamax >= 0.8.0}
 BuildRequires:  %{python_module PyJWT >= 2.3.0}
 BuildRequires:  %{python_module betamax-matchers >= 0.1.0}
 BuildRequires:  %{python_module jwcrypto >= 0.5.0}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest > 2.3.5}
 BuildRequires:  %{python_module python-dateutil >= 2.6.0}
 BuildRequires:  %{python_module requests >= 2.18}
