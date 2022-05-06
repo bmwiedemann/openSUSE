@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May  4 20:28:27 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2022.04.26:
+  * Ensure that we don't call "delete[]" on an uninitialized
+    pointer.
+- Changes from version 2022.04.15:
+  * Fixed a "fprintf()" argument-order-evaluation bug in the
+    "mikeyParse" demo application.
+- Changes from version 2022.04.12:
+  * Updated the "openRTSP" application (RTSP command-line client)
+    to add an option '-L', meaning: receive only an "application"
+    (e.g., 'metadata') track, if present, outputting the data to
+    'stdout'.
+
+-------------------------------------------------------------------
 Tue Feb 15 15:50:24 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2022.02.07:

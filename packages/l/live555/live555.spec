@@ -20,7 +20,7 @@
 %define lmdmaj 106
 
 Name:           live555
-Version:        2022.02.07
+Version:        2022.04.26
 Release:        0
 Summary:        LIVE555 Streaming Media
 License:        LGPL-2.1-only
@@ -105,6 +105,9 @@ make %{?_smp_mflags}
 
 %install
 %make_install PREFIX=%{_prefix} LIBDIR=%{_libdir}
+
+# rpmlint: 'E: shared-library-not-executable'
+find %{buildroot}%{_libdir} -type f -exec chmod +x {} \;
 
 # creates support file for pkg-config
 mkdir -p %{buildroot}/%{_libdir}/pkgconfig
