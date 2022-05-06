@@ -17,12 +17,13 @@
 
 
 Name:           pax-utils
-Version:        1.3.3
+Version:        1.3.4
 Release:        0
 Summary:        Tools to Check ELF Files for Security Relevant Properties
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
 URL:            https://wiki.gentoo.org/wiki/Hardened/PaX_Utilities
+# Git-Clone:    https://gitweb.gentoo.org/proj/pax-utils.git
 Source:         https://ftp.halifax.rwth-aachen.de/gentoo/distfiles/pax-utils-%{version}.tar.xz
 # backports
 # openSUSE patches
@@ -39,13 +40,14 @@ non-executable stack.
 
 %build
 %configure
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
 
 %files
 %defattr(-,root,root)
+%license COPYING
 %doc README.md TODO BUGS
 %{_bindir}/*
 %{_mandir}/man1/*

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May  4 08:42:45 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.3.4
+  * paxelf: add LoongArch to recognized ELF machine types
+  * lddtree: add argcomplete support if available
+  * lddtree: add --skip-missing
+    Allow explicitly ignoring missing files.
+  * seccomp: allow madvise() call (glibc 2.35+)
+  * seccomp: mark arrays const+static
+    This generates better code, although it doesn't super matter since
+    this is only used at build time.
+
+-------------------------------------------------------------------
 Thu Apr 21 09:52:11 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated url to https
