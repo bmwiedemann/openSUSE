@@ -2388,7 +2388,7 @@
     <package name="libply-splash-graphics5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libply5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libpng16-16" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libpodofo0_9_7" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libpodofo0_9_8" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libpolkit-agent-1-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpolkit-gobject-1-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpolkit-qt5-1-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
