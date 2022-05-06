@@ -96,4 +96,19 @@
 </comment>
     <requestid>840262</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cb5b5629d50f3038e07dd535fc523ed8</srcmd5>
+    <version>3.2.2</version>
+    <time>1651856289</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.2:
+  * Fixed packaging of ``py.typed`` files in wheels so that ``mypy`` works.
+  * Added support for compilation on z/OS
+  * The next release of ``bcrypt`` with be 4.0 and it will require Rust at
+    compile time, for users building from source. There will be no additional
+    requirement for users who are installing from wheels. Users on most
+    platforms will be able to obtain a wheel by making sure they have an up to
+    date ``pip``. The minimum supported Rust version will be 1.56.0.</comment>
+    <requestid>974991</requestid>
+  </revision>
 </revisionlist>

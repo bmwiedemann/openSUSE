@@ -1,7 +1,7 @@
 #
 # spec file for package python-bcrypt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-bcrypt
-Version:        3.2.0
+Version:        3.2.2
 Release:        0
 Summary:        BSD type 2a and 2b password hashing
 License:        Apache-2.0

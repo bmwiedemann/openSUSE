@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May  4 19:20:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.2:
+  * Fixed packaging of ``py.typed`` files in wheels so that ``mypy`` works.
+  * Added support for compilation on z/OS
+  * The next release of ``bcrypt`` with be 4.0 and it will require Rust at
+    compile time, for users building from source. There will be no additional
+    requirement for users who are installing from wheels. Users on most
+    platforms will be able to obtain a wheel by making sure they have an up to
+    date ``pip``. The minimum supported Rust version will be 1.56.0.
+
+-------------------------------------------------------------------
 Thu Oct  8 10:13:31 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Don't use deprecated 'python setup.py test', use pytest directly.
