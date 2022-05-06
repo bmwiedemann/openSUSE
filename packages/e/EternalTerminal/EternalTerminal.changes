@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May  6 07:56:55 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.2.1:
+  * Fix build issues
+- Remove upstreamed patches:
+  * EternalTerminal-6.2.0-return.patch                                                                                                        
+  * EternalTerminal-6.2.0-optional.patch 
+
+-------------------------------------------------------------------
 Thu May  5 08:30:38 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 6.2.0:

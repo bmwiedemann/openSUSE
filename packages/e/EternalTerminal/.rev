@@ -148,4 +148,16 @@
 - Add EternalTerminal-6.2.0-optional.patch</comment>
     <requestid>975216</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6b615447ecef4087fde0c19d1e46e64b</srcmd5>
+    <version>6.2.1</version>
+    <time>1651856391</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.2.1:
+  * Fix build issues
+- Remove upstreamed patches:
+  * EternalTerminal-6.2.0-return.patch                                                                                                        
+  * EternalTerminal-6.2.0-optional.patch</comment>
+    <requestid>975351</requestid>
+  </revision>
 </revisionlist>
