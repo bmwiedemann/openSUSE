@@ -18,10 +18,10 @@
 
 %define cpan_name App-cpanminus
 Name:           perl-App-cpanminus
-Version:        1.7045
+Version:        1.7046
 Release:        0
-Summary:        Get, unpack, build and install modules from CPAN
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Get, unpack, build and install modules from CPAN
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/%{cpan_name}-%{version}.tar.gz
 Source1:        fatunpack
@@ -69,8 +69,8 @@ BuildRequires:  perl(version)
 BuildRequires:  perl(warnings::register)
 # YAML not needed for compilation
 # Tests:
-BuildRequires:  perl(Pod::Select)
 BuildRequires:  perl(Test::More)
+BuildRequires:  perl(Pod::Select)
 # Current dependency generator cannot parse compressed code. Use PPI to find
 # them, and list them manually:
 # Archive::Tar is optional

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 28 03:06:11 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.7046
+   see /usr/share/doc/packages/perl-App-cpanminus/Changes
+
+  1.7046  2022-04-26 23:00:56 PDT
+     [Documentation]
+        - Remove git.io URL that's going to be deprecated.
+
+-------------------------------------------------------------------
 Fri Jan 28 03:06:10 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.7045
