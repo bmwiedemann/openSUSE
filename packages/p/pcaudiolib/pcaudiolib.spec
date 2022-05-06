@@ -1,7 +1,7 @@
 #
 # spec file for package pcaudiolib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define sover   0
 Name:           pcaudiolib
-Version:        1.1
+Version:        1.2
 Release:        0
 Summary:        Portable C Audio Library
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://reecedunn.co.uk/espeak-for-android
+URL:            https://reecedunn.co.uk/espeak-for-android
 Source:         https://github.com/espeak-ng/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -55,7 +55,7 @@ The Portable C Audio Library (pcaudiolib) provides a C API to different audio de
 %build
 ./autogen.sh
 %configure --disable-static --disable-silent-rules
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
