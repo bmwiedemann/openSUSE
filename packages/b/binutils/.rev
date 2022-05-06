@@ -2034,4 +2034,19 @@ contain it.
   recognition of 'z16' name for 'arch14' on s390.  [bsc#1198237]</comment>
     <requestid>969239</requestid>
   </revision>
+  <revision rev="157" vrev="5">
+    <srcmd5>3cb89137a75ccc92a2243b87929da8c4</srcmd5>
+    <version>2.38</version>
+    <time>1651856284</time>
+    <user>dimstar_suse</user>
+    <comment>- Renumber Sources.
+
+- Fix ExcludeArch for ppc.
+
+- Make multibuild utilize only the main binutils.spec file.
+- Remove not needed README.First-for.SUSE.packagers, pre_checkin.sh.
+
+- Start using _multibuild for cross binutils.</comment>
+    <requestid>974908</requestid>
+  </revision>
 </revisionlist>

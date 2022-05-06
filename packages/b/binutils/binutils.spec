@@ -16,7 +16,33 @@
 #
 
 
+%define flavor @BUILD_FLAVOR@%{nil}
+
+%if "%{flavor}" != ""
+%define cross 1
+%define targetarch %(echo %flavor | sed -e 's/i.86/i586/;s/ppc/powerpc/')
+%define TARGET %targetarch
+
+# Spec parsing does not support execution of external command,
+# that's why we use the if-else chain.
+%if "%{flavor}" == "i386"
+ExcludeArch:    %ix86
+%else
+%if "%{flavor}" == "arm"
+ExcludeArch:    %arm
+%else
+ExcludeArch:    %{flavor}
+%endif
+%endif
+
+%endif
+
+%if "%{flavor}" == ""
 Name:           binutils
+%else
+Name:           cross-%{flavor}-binutils
+%endif
+
 BuildRequires:  bc
 BuildRequires:  bison
 BuildRequires:  dejagnu
@@ -88,11 +114,9 @@ Summary:        GNU Binutils
 License:        GFDL-1.3-only AND GPL-3.0-or-later
 Group:          Development/Tools/Building
 Source:         binutils-%{version}.tar.bz2
-Source4:        binutils-%{version}.tar.bz2.sig
-Source5:        binutils.keyring
-Source1:        pre_checkin.sh
-Source2:        README.First-for.SUSE.packagers
-Source3:        baselibs.conf
+Source2:        binutils-%{version}.tar.bz2.sig
+Source3:        binutils.keyring
+Source4:        baselibs.conf
 Patch1:         binutils-2.38-branch.diff.gz
 Patch3:         binutils-skip-rpaths.patch
 Patch4:         s390-biarch.diff
