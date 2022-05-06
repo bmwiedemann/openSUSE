@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun May  1 21:31:01 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 100.0
+  * subtitle support in PiP
+  * spell checking supports multiple languages in parallel
+  * more details here
+    https://www.mozilla.org/en-US/firefox/100.0/releasenotes
+  MFSA 2022-16 (boo#1198970)
+  * CVE-2022-29914 (bmo#1746448)
+    Fullscreen notification bypass using popups
+  * CVE-2022-29909 (bmo#1755081)
+    Bypassing permission prompt in nested browsing contexts
+  * CVE-2022-29916 (bmo#1760674)
+    Leaking browser history with CSS variables
+  * CVE-2022-29911 (bmo#1761981)
+    iframe Sandbox bypass
+  * CVE-2022-29912 (bmo#1692655)
+    Reader mode bypassed SameSite cookies
+  * CVE-2022-29910 (bmo#1757138)
+    Firefox for Android forgot HTTP Strict Transport Security
+    settings
+  * CVE-2022-29915 (bmo#1751678)
+    Leaking cross-origin redirect through the Performance API
+  * CVE-2022-29917 (bmo#1684739, bmo#1706441, bmo#1753298,
+    bmo#1762614, bmo#1762620, bmo#1764778)
+    Memory safety bugs fixed in Firefox 100 and Firefox ESR 91.9
+  * CVE-2022-29918 (bmo#1744043, bmo#1747178, bmo#1753535,
+    bmo#1754017, bmo#1755847, bmo#1756172, bmo#1757477,
+    bmo#1758223, bmo#1760160, bmo#1761481, bmo#1761771)
+    Memory safety bugs fixed in Firefox 100
+- requires NSS 3.77
+
+-------------------------------------------------------------------
 Tue Apr 12 19:30:30 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 99.0.1
