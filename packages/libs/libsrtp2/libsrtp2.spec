@@ -1,7 +1,7 @@
 #
 # spec file for package libsrtp2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,9 +29,6 @@ Source:         https://github.com/cisco/libsrtp/archive/v%version.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(openssl) >= 1.0.1
-# srtp was last used in openSUSE 13.1.
-Provides:       srtp = %version
-Obsoletes:      srtp < %version
 
 %description
 libsrtp is an implementation of the Secure Real-time Transport
@@ -70,18 +67,6 @@ This subpackage contains the development headers.
 
 %install
 %make_install
-
-# Same post-install modifications as for libsrtp v1.
-#
-# Including of files with generic names and quotes is unsafe and can cause include clashes.
-# Do it in install phase, because rewriting of the source code before building would require deeper changes.
-# %%_includedir is included automatically, so we don't modify .pc file. (bnc#839475#c2)
-echo "Rewriting #include \"{foo}.h\" to #include <srtp/{foo}.h>..."
-sed -i 's|\( *# *include *\)"\([^"]*\.h\)"|\1 <srtp/\2>|' %buildroot/%_includedir/srtp2/*.h
-
-# Rewrite FOO_H just to make things consistent and prevent name clashes.
-echo "Rewriting header include check tags from {FOO_H} to SRTP_{FOO_H}..."
-sed -i 's|\(# *\(ifdef\|ifndef\|define\|endif */\*\) *\)\([A-Z0-9_]*_H\)\($\| *\*/\)|\1SRTP_\3\4|' %buildroot/%_includedir/srtp2/*.h
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig

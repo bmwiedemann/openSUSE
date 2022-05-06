@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  4 12:39:03 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove include header editing; the issue once present in
+  libsrtp 2.0.0 seems reasonably resolved in current 2.4.2
+  [boo#1198887]
+
+-------------------------------------------------------------------
 Tue Sep 21 19:13:21 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.4.2
