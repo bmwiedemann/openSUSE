@@ -1,7 +1,7 @@
 #
 # spec file for package python-nose2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,6 @@ Patch0:         remove_unittest2.patch
 Patch1:         fix-mock-dep.patch
 Patch2:         ignore-warnings-doctests.patch
 BuildRequires:  %{python_module coverage >= 4.4.1}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.1}
 BuildRequires:  fdupes

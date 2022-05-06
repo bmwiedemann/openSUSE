@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  4 11:04:22 UTC 2022 - pgajdos@suse.com
+
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Thu Oct  7 14:35:00 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro
