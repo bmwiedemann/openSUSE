@@ -19,7 +19,7 @@
 %bcond_with	clammspack
 %bcond_with	valgrind
 Name:           clamav
-Version:        0.103.5
+Version:        0.103.6
 Release:        0
 Summary:        Antivirus Toolkit
 License:        GPL-2.0-only
@@ -39,7 +39,6 @@ Patch1:         clamav-conf.patch
 Patch5:         clamav-obsolete-config.patch
 Patch6:         clamav-disable-yara.patch
 Patch12:        clamav-fips.patch
-Patch13:        clamav-ck_assert_msg.patch
 Patch14:        clamav-document-maxsize.patch
 
 BuildRequires:  autoconf
@@ -148,7 +147,6 @@ that want to make use of libclamav.
 %patch5
 %patch6
 %patch12
-%patch13 -p1
 %patch14 -p1
 
 %build
