@@ -151,6 +151,7 @@ sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = yes/g' /etc/zypp
 #--------------------------------------
 serialconsole='console=ttyS0,115200'
 [[ "$kiwi_profiles" == *"RaspberryPi2" ]] && serialconsole='console=ttyAMA0,115200'
+[[ "$kiwi_profiles" == *"Rock64" ]] && serialconsole='console=ttyS2,1500000'
 
 grub_cmdline=('quiet' 'systemd.show_status=yes' "${serialconsole}" 'console=tty0')
 rpm -q wicked && grub_cmdline+=('net.ifnames=0')
