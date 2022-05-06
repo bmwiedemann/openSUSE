@@ -151,4 +151,12 @@
     <comment>- Update to version 4.1.0~alpha1.</comment>
     <requestid>811517</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3c7b6acab70317d5e8f0612a1bc0aefe</srcmd5>
+    <version>4.1.1</version>
+    <time>1651856408</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975409</requestid>
+  </revision>
 </revisionlist>

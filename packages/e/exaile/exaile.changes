@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri May  6 11:44:08 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.1.1
+  * Restored Python 3.6 compatibility, broken since 4.1.0-beta1
+  * The last playlist export directory is now saved between calls
+    and between sessions
+  * Added tooltip text to the Clear buttons in the Properties dialog
+  * Plugins:
+    * console: When encountering a very long "word", the console will
+       now wrap between characters instead of widening the window to
+       fit the word.
+    * grouptagger: Fixed i18n issues in some strings. Translations
+       for these strings may be broken until they are updated.
+  * Translation updates: Catalan, Croatian, Greek, Sinhala, Spanish.
+
+-------------------------------------------------------------------
+Sun Feb 21 13:58:39 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.1.0 (changes since 4.1.0~alpha1):
+  * Fix an issue causing the Track Properties dialogue to
+    (very rarely) fail to open.
+  * The seek time display now ignores GtkProgressBar's text
+    formatting. On Adwaita, this makes the text easier to read
+    (higher contrast, bigger).
+  * The Track Properties dialogue now correctly sets the parent
+    window when opened from a panel.
+  * Collection Manager now displays local paths when possible
+    instead of always URIs.
+  * Collection Manager now prevents adding the same library
+    location twice.
+  * The Track Properties dialogue no longer changes the
+    capitalisation of known tag names (for example, ISRC used to be
+    displayed as Isrc).
+  * Fix an issue causing errors when running Exaile on Python 3.9.
+  * Fix a bug preventing the Device Manager window from opening.
+  * Fix running the test suite on non-English locales.
+  * Plugins:
+    + daapclient: Now uses python-zeroconf instead of Avahi for
+      share auto-discovery.
+    + ipconsole: Compatibility fixes for recent IPython versions.
+    + screensaverpause: Xfce Screensaver is now supported.
+    + moodbar: Restore compatibility with the previewdevice plugin.
+    + moodbar: Make this work again.
+    + notify: Fix incompatibility with Python >= 3.8.
+    + console plugin: Fix a bug causing the expression printing to
+      only work once.
+  * Update translations.
+
+-------------------------------------------------------------------
 Thu Jun  4 12:34:14 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 4.1.0~alpha1 (changes since 4.0.2):

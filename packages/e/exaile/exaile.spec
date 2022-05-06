@@ -1,7 +1,7 @@
 #
 # spec file for package exaile
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %define __requires_exclude typelib\\((GtkosxApplication)\\)
 %define _name   Exaile
-%define _version 4.1.0-alpha1
 Name:           exaile
-Version:        4.1.0~alpha1
+Version:        4.1.1
 Release:        0
 Summary:        GTK Amarok-like music player
 License:        GPL-3.0-or-later
 URL:            https://www.exaile.org/
-Source:         https://github.com/exaile/exaile/releases/download/%{_version}/%{name}-%{_version}.tar.gz
+Source:         https://github.com/exaile/exaile/releases/download/%{version}/%{name}-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE exaile-no-splash-default.patch sor.alexei@meowr.ru -- Do not show splash screen on startup by default.
 Patch0:         %{name}-no-splash-default.patch
 # PATCH-FEATURE-OPENSUSE exaile-mate-screensaver.patch sor.alexei@meowr.ru -- Make the screensaverpause plugin work with MATE Screensaver.
@@ -54,6 +53,7 @@ Recommends:     gstreamer-plugins-ugly
 Recommends:     python3-CDDB
 Recommends:     python3-Pillow
 Recommends:     python3-gpod
+Recommends:     python3-zeroconf
 Recommends:     udisks2
 BuildArch:      noarch
 
@@ -76,7 +76,7 @@ fretplay.com, and submitting played tracks on your iPod to last.fm.
 %lang_package
 
 %prep
-%autosetup -n %{name}-%{_version} -p1
+%autosetup -p1
 chmod a-x COPYING README.md
 
 %build
