@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 19 19:22:33 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add upstream patch autogen-avoid-GCC-code-analysis-bug.patch
+  in order to support -D_FORTIFY_SOURCE=3 with GCC 12.
+- Use autosetup.
+
+-------------------------------------------------------------------
 Wed Jun 10 11:53:58 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Set MAN_PAGE_DATE to normalize man page date (boo#1047218)

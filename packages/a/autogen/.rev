@@ -433,4 +433,14 @@
     <comment></comment>
     <requestid>816329</requestid>
   </revision>
+  <revision rev="53" vrev="7">
+    <srcmd5>7acf074dd35f803c7f566f08dcdc65c9</srcmd5>
+    <version>5.18.16</version>
+    <time>1651856336</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch autogen-avoid-GCC-code-analysis-bug.patch
+  in order to support -D_FORTIFY_SOURCE=3 with GCC 12.
+- Use autosetup. (forwarded request 970897 from marxin)</comment>
+    <requestid>974971</requestid>
+  </revision>
 </revisionlist>

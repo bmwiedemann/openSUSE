@@ -1,7 +1,7 @@
 #
 # spec file for package autogen
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,13 +36,14 @@ Patch4:         sprintf-overflow.patch
 Patch5:         gcc9-fix-wrestrict.patch
 # PATCH-FIX-UPSTREAM Allow building with guile 3.0
 Patch6:         guile-version.patch
+Patch7:         autogen-avoid-GCC-code-analysis-bug.patch
 BuildRequires:  fdupes
 BuildRequires:  guile-devel
 BuildRequires:  makeinfo
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pkgconfig(libxml-2.0)
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 
 %description
 AutoGen is a tool designed for generating program files that contain
@@ -85,13 +86,7 @@ file options, and the documentation that should go with your program as
 well.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+%autosetup -p1
 touch aclocal.m4 configure Makefile.in config-h.in
 
 %build
