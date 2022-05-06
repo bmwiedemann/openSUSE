@@ -92,4 +92,15 @@
     <comment>Fixed SPEC file: Replaced broken URL and minor cleanup (forwarded request 888107 from susnux)</comment>
     <requestid>888372</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f6c4692167d80df233f05524e0fd7ab9</srcmd5>
+    <version>1.1.10</version>
+    <time>1651856379</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.10
+  + Fixed bug in genotpurl on platforms with signed &quot;char&quot; (pr #46)
+  + Added &quot;-K&quot; flag to genotpurl tool to specify key length (pr #43)
+  + Update spec file description to include genotpurl(1) (forwarded request 975208 from archie172)</comment>
+    <requestid>975327</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  4 15:00:44 UTC 2022 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Update to version 1.1.10
+  + Fixed bug in genotpurl on platforms with signed "char" (pr #46)
+  + Added "-K" flag to genotpurl tool to specify key length (pr #43)
+  + Update spec file description to include genotpurl(1)
+
+-------------------------------------------------------------------
 Fri Apr 23 20:57:38 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Fixed SPEC file: Replaced broken URL and minor cleanup

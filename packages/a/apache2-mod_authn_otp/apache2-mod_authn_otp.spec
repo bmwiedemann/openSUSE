@@ -1,7 +1,7 @@
 #
-# spec file for package apache2-mod_authn_otp
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Archie L. Cobbs <archie@dellroad.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,12 +19,12 @@
 
 %define mod_name           mod_authn_otp
 Name:           apache2-%{mod_name}
-Version:        1.1.9
+Version:        1.1.10
 Release:        0
 Summary:        Apache module for one-time password authentication
 License:        Apache-2.0
 Group:          Productivity/Networking/Web/Servers
-Url:            https://github.com/archiecobbs/mod-authn-otp
+URL:            https://github.com/archiecobbs/mod-authn-otp
 Source:         https://s3.amazonaws.com/archie-public/mod-authn-otp/%{mod_name}-%{version}.tar.gz
 BuildRequires:  apache-rex
 BuildRequires:  apache-rpm-macros
@@ -58,9 +58,11 @@ that require more security than simple username/password authentication
 yet also don't require users to install special VPN software, and is
 compatible with software tokens that run on cell phones.
 
-Also included is otptool, a one-time password command line utility.
-otptool can be used on a simple call-out basis to integrate two-factor
-authentication into any existing authentication solution.
+Also included are two command line utilities, otptool and genotpurl.
+otptool is a one-time password command line utility. It can be used
+on a simple call-out basis to integrate two-factor authentication
+into any existing authentication solution. genotpurl generates URLs
+for the Google Authenticator app.
 
 %prep
 %setup -q -n %{mod_name}-%{version}
