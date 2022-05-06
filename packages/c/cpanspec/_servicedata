@@ -1,6 +1,6 @@
 <servicedata>
  <service name="tar_scm">
-  <param name="url">git://github.com/openSUSE/cpanspec</param>
-  <param name="changesrevision">5af26bbce689d5ba075935014ebe361c028060c3</param>
+  <param name="url">https://github.com/openSUSE/cpanspec</param>
+  <param name="changesrevision">5f389d1772eea9e8bf093dfafca149fd090adb16</param>
  </service>
 </servicedata>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 05 09:30:08 UTC 2022 - Tina Müller <tina.mueller@suse.com>
+
+- Update to version 1.82.02.1651742438.5f389d1:
+  * v1.82.02
+  * Deal with missing MYMETA files (#34)
+
+-------------------------------------------------------------------
 Fri Mar 11 11:41:02 UTC 2022 - Tina Müller <tina.mueller@suse.com>
 
 - Add a call to `cpanspec -h` for testing
