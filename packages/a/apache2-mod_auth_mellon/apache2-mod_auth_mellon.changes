@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May  5 17:38:16 UTC 2022 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Wrap default config in <IfModule> to avoid reload error
+
+-------------------------------------------------------------------
 Thu Sep 10 14:19:03 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - Update to 0.17.0
