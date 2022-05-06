@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  5 13:36:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.1
+  * Allow building on uclinux
+
+-------------------------------------------------------------------
 Wed Oct 14 00:09:56 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Modernize specfile constructs.
