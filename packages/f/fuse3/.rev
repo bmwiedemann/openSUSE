@@ -172,4 +172,14 @@
     <comment>- Update to release 3.10.5</comment>
     <requestid>917131</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>818aaa5a4f19d47daaf25388a159f29c</srcmd5>
+    <version>3.11.0</version>
+    <time>1651856296</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.11.0:
+  * Add support for flag FOPEN_NOFLUSH for avoiding flush on close.
+  * Fixed returning an error condition to ioctl(2) (forwarded request 975065 from polslinux)</comment>
+    <requestid>975132</requestid>
+  </revision>
 </revisionlist>
