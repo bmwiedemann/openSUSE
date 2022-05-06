@@ -1,7 +1,7 @@
 #
 # spec file for package libnetfilter_cthelper
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,19 @@
 
 Name:           libnetfilter_cthelper
 %define lname	%{name}0
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Userspace library for the Netfilter Conntrack Helper extension
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
 URL:            https://netfilter.org/projects/libnetfilter_cthelper/
 
-#Git-Clone:	git://git.netfilter.org/libnetfilter_cthelper
-#DL-URL:	http://netfilter.org/projects/libnetfilter_cthelper/files/
-Source:         http://netfilter.org/projects/libnetfilter_cthelper/files/%name-%version.tar.bz2
-Source2:        http://netfilter.org/projects/libnetfilter_cthelper/files/%name-%version.tar.bz2.sig
+#Git-Web:       https://git.netfilter.org/libnetfilter_cthelper/
+#Git-Clone:     git://git.netfilter.org/libnetfilter_cthelper
+Source:         https://www.netfilter.org/pub/libnetfilter_cthelper/libnetfilter_cthelper-%version.tar.bz2
+Source2:        https://www.netfilter.org/pub/libnetfilter_cthelper/libnetfilter_cthelper-%version.tar.bz2.sig
 Source3:        baselibs.conf
 Source4:        %name.keyring
-Patch1:         fix_h_expect_policy_free.patch
-#BuildRequires:  autoconf
-#BuildRequires:  automake >= 1.6
-#BuildRequires:  libtool >= 2
 BuildRequires:  pkgconfig(libmnl) >= 1.0.0
 
 %description

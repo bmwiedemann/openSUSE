@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May  5 13:38:58 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.1
+  * Allow build on uclinux
+  * Resolve use-after-free in nfct_helper_free()
+  * Resolve double free in nfct-helper-add example
+  * Fixed incorrect netlink message building with multiple nfct
+    helper policies
+- Drop fix_h_expect_policy_free.patch (merged)
+
+-------------------------------------------------------------------
 Wed Oct 14 00:09:08 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Modernize specfile constructs.
