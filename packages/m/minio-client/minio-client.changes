@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 06 06:19:04 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220504T060755Z:
+  * update golang.org/x/crypto (#4068)
+  * fix: support autocompletion for command aliases (#4070)
+  * Document setting multiple policies (#4065)
+  * Fix client-s3 Stat() for prefix with parallel lower prefixes (#4069)
+  * fix: README.md rename config to alias (#4062)
+
+-------------------------------------------------------------------
 Wed Apr 27 12:41:41 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 20220426T180022Z:
