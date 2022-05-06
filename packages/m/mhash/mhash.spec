@@ -1,7 +1,7 @@
 #
 # spec file for package mhash
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        A Library for Working with Strong Hashes
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://mhash.sourceforge.net/
-Source:         http://sourceforge.net/projects/%{name}/files/%{name}/%{version}/%{name}-%{version}.tar.bz2
+Source:         https://sourceforge.net/projects/%{name}/files/%{name}/%{version}/%{name}-%{version}.tar.bz2
 Patch0:         %{name}-%{version}-shared.diff
 # PATCH-FIX-UPSTREAM fix-for-upstream-sources.patch sourceforge#2908478
 Patch1:         mhash_remove_premature_free.patch

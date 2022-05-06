@@ -179,4 +179,12 @@
   - add patch mhash-0.9.9-no-free-before-use.patch (forwarded request 765878 from oertel)</comment>
     <requestid>765879</requestid>
   </revision>
+  <revision rev="26" vrev="31">
+    <srcmd5>5e5e088bcf192c90aa4c32847fe94cbd</srcmd5>
+    <version>0.9.9.9</version>
+    <time>1651856400</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>975391</requestid>
+  </revision>
 </revisionlist>
