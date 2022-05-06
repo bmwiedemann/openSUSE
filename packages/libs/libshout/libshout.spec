@@ -1,7 +1,7 @@
 #
 # spec file for package libshout
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libshout
-Version:        2.4.5
+Version:        2.4.6
 Release:        0
 Summary:        Library for communcating with Icecast servers
 License:        LGPL-2.1-or-later
@@ -66,10 +66,10 @@ autoreconf --force --install
 %install
 %make_install
 # remove unneeded files
-rm -f "%buildroot/%_libdir"/*.la
-rm -rf "%buildroot/%_datadir/doc/%name"
+find %buildroot -type f -name "*.la" -delete -print
+rm -r "%buildroot/%_datadir/doc/%name"
 # remove (possibly) unused ckport definitions (use libabigail instead?)
-rm -Rf "%buildroot/%_libdir/ckport"
+rm -R "%buildroot/%_libdir/ckport"
 
 %post   -n libshout3 -p /sbin/ldconfig
 %postun -n libshout3 -p /sbin/ldconfig
