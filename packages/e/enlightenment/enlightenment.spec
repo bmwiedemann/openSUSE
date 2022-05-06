@@ -44,6 +44,7 @@ Patch1:         dont_offer_updates.patch
 Patch3:         feature-wizard-auto-lang.patch
 Patch4:         feature-wizard-keylayout-from-sys.patch
 Patch5:         feature-qt-apps-gtk2-theme.patch
+# We'd rather log to the journal then e's log file.
 Patch6:         feature-openSUSE-log-to-journal.patch
 # boo#1197326 Don't Enable modules that don't exist in profile migration.
 Patch7:         fix-upstream-dont-migrate-sysinfoluncher.patch
@@ -136,6 +137,8 @@ Requires:       systemd
 %endif
 %if 0%{?suse_version}
 Recommends:     NetworkManager-appindicator
+# For acpid bindings
+Recommends:     acpid
 Recommends:     alsa-plugins-pulse
 # Recommended to make NetworkManager Intergration work
 Recommends:     gnome-keyring
@@ -299,11 +302,6 @@ rm %{buildroot}%{_libdir}/enlightenment/modules/wizard/*/page_180.so
 
 # remove files from not wanted place
 rm %{buildroot}%{_datadir}/enlightenment/{COPYING,AUTHORS}
-
-%if %{enable_wayland}
-unlink %{buildroot}/%{_datadir}/xsessions/enlightenment.desktop
-mv %{buildroot}/%{_datadir}/wayland-sessions/enlightenment.desktop %{buildroot}/%{_datadir}/xsessions/enlightenment.desktop
-%endif
 
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop

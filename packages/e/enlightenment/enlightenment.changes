@@ -1,9 +1,17 @@
 -------------------------------------------------------------------
+Thu May  5 12:28:03 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- Recommend acpid for bindings (Should now remove popup) [boo#1196609]
+- system.conf allow all users, this is required because we no
+  longer automatically add people to the users group. [boo#1196609]
+
+-------------------------------------------------------------------
 Fri Apr 15 10:45:26 UTC 2022 - Simon Lees <sflees@suse.de>
 
-- boo#1197326 - Don't Enable modules that don't exist in profile 
-  migration. 
+- boo#1197326,1196609 - Don't Enable modules that don't exist in profile
+  migration.
   * fix-upstream-dont-migrate-sysinfoluncher.patch
+- Recommend acpid for bindings
 
 -------------------------------------------------------------------
 Mon Feb 28 05:10:27 UTC 2022 - Simon Lees <sflees@suse.de>
