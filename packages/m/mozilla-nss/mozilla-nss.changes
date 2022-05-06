@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Apr 28 20:40:04 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.77
+  * Bug 1762244 - resolve mpitests build failure on Windows.
+  * bmo#1761779 - Fix link to TLS page on wireshark wiki
+  * bmo#1754890 - Add two D-TRUST 2020 root certificates.
+  * bmo#1751298 - Add Telia Root CA v2 root certificate.
+  * bmo#1751305 - Remove expired explicitly distrusted certificates
+                  from certdata.txt.
+  * bmo#1005084 - support specific RSA-PSS parameters in mozilla::pkix
+  * bmo#1753535 - Remove obsolete stateEnd check in SEC_ASN1DecoderUpdate.
+  * bmo#1756271 - Remove token member from NSSSlot struct.
+  * bmo#1602379 - Provide secure variants of mpp_pprime and mpp_make_prime.
+  * bmo#1757279 - Support UTF-8 library path in the module spec string.
+  * bmo#1396616 - Update nssUTF8_Length to RFC 3629 and fix buffer overrun.
+  * bmo#1760827 - Add a CI Target for gcc-11.
+  * bmo#1760828 - Change to makefiles for gcc-4.8.
+  * bmo#1741688 - Update googletest to 1.11.0
+  * bmo#1759525 - Add SetTls13GreaseEchSize to experimental API.
+  * bmo#1755264 - TLS 1.3 Illegal legacy_version handling/alerts.
+  * bmo#1755904 - Fix calculation of ECH HRR Transcript.
+  * bmo#1758741 - Allow ld path to be set as environment variable.
+  * bmo#1760653 - Ensure we don't read uninitialized memory in ssl gtests.
+  * bmo#1758478 - Fix DataBuffer Move Assignment.
+  * bmo#1552254 - internal_error alert on Certificate Request with
+                  sha1+ecdsa in TLS 1.3
+  * bmo#1755092 - rework signature verification in mozilla::pkix
+
+-------------------------------------------------------------------
 Sun Apr 10 18:32:41 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Require nss-util in nss.pc and subsequently remove -lnssutil3
