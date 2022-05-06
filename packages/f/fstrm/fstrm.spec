@@ -1,7 +1,7 @@
 #
 # spec file for package fstrm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define c_lib   libfstrm0
 Name:           fstrm
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        Frame Streams implementation in C
 License:        MIT
@@ -71,7 +71,7 @@ This packages holds the development files.
 
 %build
 %configure --disable-silent-rules --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -86,9 +86,9 @@ rm %{buildroot}%{_libdir}/libfstrm.la
 %{_bindir}/fstrm_capture
 %{_bindir}/fstrm_dump
 %{_bindir}/fstrm_replay
-%{_mandir}/man1/fstrm_capture.1*
-%{_mandir}/man1/fstrm_dump.1*
-%{_mandir}/man1/fstrm_replay.1*
+%{_mandir}/man1/fstrm_capture.1%{?ext_man}
+%{_mandir}/man1/fstrm_dump.1%{?ext_man}
+%{_mandir}/man1/fstrm_replay.1%{?ext_man}
 
 %files -n %{c_lib}
 %license COPYRIGHT LICENSE

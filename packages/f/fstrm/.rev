@@ -31,4 +31,12 @@
     <comment>- Update to 0.6.0</comment>
     <requestid>791581</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a3492601192c799dcc8f0476e1bcea95</srcmd5>
+    <version>0.6.1</version>
+    <time>1651856328</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>974885</requestid>
+  </revision>
 </revisionlist>

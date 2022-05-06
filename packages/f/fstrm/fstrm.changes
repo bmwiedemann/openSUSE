@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 16 20:27:53 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.1:
+  * fstrm_capture: ignore SIGPIPE, which will cause the
+    interrupted connections to generate an EPIPE instead.
+  * Fix truncation in snprintf calls in argument processing.
+  * fstrm_capture: Fix output printf format. 
+
+-------------------------------------------------------------------
 Sun Apr  5 21:11:31 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.6.0 
