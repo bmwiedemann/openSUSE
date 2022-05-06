@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  2 08:35:46 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Remove dependency on binutils-gold as the package will be removed
+  in the future. Gold linker is unmaintained by the upstream project.
+
+-------------------------------------------------------------------
 Thu Oct 21 11:57:03 UTC 2021 - Robert Munteanu <rombert@apache.org>
 
 - Use SOURCE_DATE_EPOCH for the build date

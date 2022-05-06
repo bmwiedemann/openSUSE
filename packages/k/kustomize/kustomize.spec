@@ -1,7 +1,7 @@
 #
 # spec file for package kustomize
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,9 +28,6 @@ Source1:        vendor.tar.xz
 BuildRequires:  golang(API) = 1.13
 ExcludeArch:    s390
 ExcludeArch:    %{ix86}
-%ifarch %arm aarch64
-BuildRequires:  binutils-gold
-%endif
 
 %description
 kustomize customizes raw, template-free kubernetes YAML files for
