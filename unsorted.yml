@@ -3468,6 +3468,7 @@ unsorted:
   - erlang-src 
   - erlang-wx 
   - erlang-wx-src 
+  - erldash: [x86_64] 
   - esc 
   - espeak-devel 
   - espeak-ng 
@@ -9105,6 +9106,7 @@ unsorted:
   - libOpenEXRUtil-3_1-30 
   - libOpenEXRUtil-3_1-30-32bit: [x86_64] 
   - libOpenIPMI0 
+  - libOpenIPMIui1 
   - libOpenImageDenoise1: [x86_64] 
   - libOpenImageIO2_3 
   - libOpenImageIO_Util2_3 
@@ -10440,8 +10442,8 @@ unsorted:
   - libcroco-devel 
   - libcrossguid0 
   - libcryptmount-devel 
-  - libcrypto47 
-  - libcrypto47-32bit: [x86_64] 
+  - libcrypto49 
+  - libcrypto49-32bit: [x86_64] 
   - libcryptopp-devel 
   - libcryptopp8_6_0 
   - libcryptopp8_6_0-32bit: [x86_64] 
@@ -11328,9 +11330,9 @@ unsorted:
   - libgrooveloudness4 
   - libgrooveplayer-devel 
   - libgrooveplayer4 
-  - libgrpc++1_45 
-  - libgrpc23 
-  - libgrpc_plugin_support1_45 
+  - libgrpc++1_46 
+  - libgrpc24 
+  - libgrpc_plugin_support1_46 
   - libgsasl-devel 
   - libgsequencer0 
   - libgsettings-qt1 
@@ -12254,7 +12256,6 @@ unsorted:
   - libmediainfo0 
   - libmediainfo0-32bit: [x86_64] 
   - libmediastreamer11 
-  - libmediastreamer11-32bit: [x86_64] 
   - libmediawiki-devel 
   - libmedimport0: [x86_64] 
   - libmeep27 
@@ -12706,8 +12707,8 @@ unsorted:
   - liboggz-doc 
   - liboggz2 
   - liboggz2-32bit: [x86_64] 
-  - liboil 
-  - liboil-32bit: [x86_64] 
+  - liboil-0_3-0 
+  - liboil-0_3-0-32bit: [x86_64] 
   - liboil-devel 
   - liboil-doc 
   - liboldX-devel 
@@ -14064,8 +14065,8 @@ unsorted:
   - libssh2-1-32bit: [x86_64] 
   - libssh2-devel 
   - libssh4-32bit: [x86_64] 
-  - libssl50 
-  - libssl50-32bit: [x86_64] 
+  - libssl52 
+  - libssl52-32bit: [x86_64] 
   - libssr-glinject 
   - libssr-glinject-32bit: [x86_64] 
   - libsss_certmap-devel 
@@ -14338,8 +14339,8 @@ unsorted:
   - libtinyxml0 
   - libtinyxml2-9 
   - libtirpc-devel 
-  - libtls22 
-  - libtls22-32bit: [x86_64] 
+  - libtls25 
+  - libtls25-32bit: [x86_64] 
   - libtntdb-devel 
   - libtntdb5 
   - libtolua++-5_1-1 
@@ -14496,7 +14497,7 @@ unsorted:
   - libunshield0 
   - libunwind-32bit: [x86_64] 
   - libunwind-devel 
-  - libupb23 
+  - libupb24 
   - libupm1 
   - libupnp-devel 
   - libupnp17-32bit: [x86_64] 
@@ -15255,6 +15256,9 @@ unsorted:
   - lirc-drv-ftdi 
   - lirc-tools-gui 
   - listres 
+  - lite-xl 
+  - lite-xl-colors 
+  - lite-xl-plugins 
   - litetran 
   - littleb-devel 
   - littleb-examples 
@@ -15458,6 +15462,7 @@ unsorted:
   - lshw-lang 
   - lsp-plugins 
   - lsp-plugins-common 
+  - lsp-plugins-devel 
   - lsp-plugins-doc 
   - lswt 
   - lsyncd 
@@ -15812,6 +15817,7 @@ unsorted:
   - man-pages-ro 
   - man-pages-sr 
   - man-pages-sv 
+  - man-pages-uk 
   - man-pages-vi 
   - manaplus 
   - manaplus-lang 
@@ -21993,6 +21999,7 @@ unsorted:
   - python310-PyChromecast 
   - python310-PyCondor 
   - python310-PyDispatcher 
+  - python310-PyECLib 
   - python310-PyFxA 
   - python310-PyGithub 
   - python310-PyHamcrest 
@@ -22547,6 +22554,7 @@ unsorted:
   - python310-bashate 
   - python310-basictracer 
   - python310-bcrypt 
+  - python310-beartype 
   - python310-beautifulsoup4 
   - python310-before-after 
   - python310-behave 
@@ -23791,6 +23799,7 @@ unsorted:
   - python310-olefile 
   - python310-oletools 
   - python310-olm 
+  - python310-onnx 
   - python310-opcodes 
   - python310-openTSNE 
   - python310-openapi-codec 
@@ -24026,6 +24035,7 @@ unsorted:
   - python310-pyRFC3339 
   - python310-pyRXP 
   - python310-pyScss 
+  - python310-pyUSID 
   - python310-pyVows 
   - python310-pyacoustid 
   - python310-pyaes 
@@ -24211,6 +24221,7 @@ unsorted:
   - python310-pysrt 
   - python310-pyssim 
   - python310-pystache 
+  - python310-pysvn 
   - python310-pytaglib 
   - python310-pyte 
   - python310-pytesseract 
@@ -25736,6 +25747,7 @@ unsorted:
   - python38-base58 
   - python38-bashate 
   - python38-basictracer 
+  - python38-beartype 
   - python38-before-after 
   - python38-behave 
   - python38-bencode 
@@ -28765,6 +28777,7 @@ unsorted:
   - python39-bashate 
   - python39-basictracer 
   - python39-bcrypt 
+  - python39-beartype 
   - python39-beautifulsoup4 
   - python39-before-after 
   - python39-behave 
@@ -32325,6 +32338,7 @@ unsorted:
   - sablot-devel 
   - sac-javadoc 
   - sacad 
+  - sad 
   - safeeyes 
   - safeeyes-lang 
   - saidar 
@@ -32558,6 +32572,7 @@ unsorted:
   - scummvm 
   - scummvm-extra 
   - scummvm-tools 
+  - sd 
   - sd-mux-ctrl 
   - sdbus-cpp-devel 
   - sdbus-cpp-devel-doc 
@@ -43704,7 +43719,6 @@ unsorted:
   - xviewer-lang 
   - xviewer-plugin-exif-display 
   - xviewer-plugin-export-to-folder 
-  - xviewer-plugin-fit-to-width 
   - xviewer-plugin-light-theme 
   - xviewer-plugin-map 
   - xviewer-plugin-postasa 
