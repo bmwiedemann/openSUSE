@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Thu May  5 05:50:02 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging effort for nptyping 2.0.1.
+- Add use_system_packages.patch to allow use of system packages
+  in venv (gh#ramonhagenaars/nptyping#72).
+- Add skip_on_other_archs.patch skipping
+  test_instance_check_performance on some architectures
+  (gh#ramonhagenaars/nptyping#73).

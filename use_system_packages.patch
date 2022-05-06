@@ -1,0 +1,20 @@
+---
+ tests/test_wheel.py |    9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+--- a/tests/test_wheel.py
++++ b/tests/test_wheel.py
+@@ -93,10 +93,9 @@ class WheelTest(TestCase):
+ 
+     def test_wheel_can_be_installed(self):
+         with working_dir(Path(self.temp_dir.name)):
+-            venv.create(_VENV_NAME, with_pip=False)
+-            # For some reason, with_pip=True fails, so we do it separately.
+-            subprocess.check_output(
+-                f"{self.py} -m ensurepip --upgrade --default-pip", shell=True
++            venv.create(_VENV_NAME, system_site_packages=True, with_pip=True)
++            print(
++                f"{self.pip} install {_ROOT / 'dist' / _WHEEL_NAME}"
+             )
+             subprocess.check_output(
+                 f"{self.pip} install {_ROOT / 'dist' / _WHEEL_NAME}", shell=True
