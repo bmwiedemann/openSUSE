@@ -1,7 +1,7 @@
 #
 # spec file for package podofo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,17 @@
 #
 
 
-%define libver 0_9_7
+%define libver 0_9_8
 Name:           podofo
-Version:        0.9.7
+Version:        0.9.8
 Release:        0
 Summary:        Tools to work with PDF files
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/PDF
 URL:            http://podofo.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/podofo/%{name}-%{version}.tar.gz
+Source0:        https://downloads.sourceforge.net/podofo/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://src.fedoraproject.org/rpms/podofo/tree/rawhide
 Patch0:         podofo-gcc12.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         podofo-CVE-2019-10723.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         podofo-CVE-2018-12983.patch
 BuildRequires:  cmake >= 2.6
 BuildRequires:  doxygen
 BuildRequires:  fdupes

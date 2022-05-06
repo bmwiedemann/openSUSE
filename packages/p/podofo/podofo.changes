@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed May  4 09:11:26 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- source url switched to https
+
+-------------------------------------------------------------------
+Wed May  4 08:31:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.9.8. No changelog. This version ships security
+  fixes:
+  * Check that /DecodeParams values are in range
+    (boo#1127514, CVE-2018-20797)
+  * CVE-2019-10723 - Excessive memory allocation crash at
+    PdfPagesTreeCache (boo#1131544)
+  * CVE-2018-12983 - stack-based buffer over-read in
+    PdfEncryptMD5Base::ComputeEncryptionKey() (boo#1099719)
+- Drop patches, now upstream:
+  * podofo-CVE-2019-10723.patch
+  * podofo-CVE-2018-12983.patch
+
+-------------------------------------------------------------------
 Wed Feb 16 15:00:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add GCC12 compatibility fix from Fedora (boo#1194962):
@@ -366,17 +386,17 @@ Sun Oct 05 00:00:00 CEST 2008 - hub@figuiere.net
 - Package closer to policies: split.
 
 -------------------------------------------------------------------
-Mon Jul 05 00:00:00 CEST 2008 - mrdocs at opensuse.org
-
-- 0.6 release
-
-
--------------------------------------------------------------------
 Sat Jul 12 00:00:00 CEST 2008 - mrdocs at opensuse.org
 
 - new svn snapshot of upcoming 0.6.0 
 - add openssl-devel dependency
 - 64 bit builds fixed
+
+
+-------------------------------------------------------------------
+Mon Jul 05 00:00:00 CEST 2008 - mrdocs at opensuse.org
+
+- 0.6 release
 
 
 -------------------------------------------------------------------

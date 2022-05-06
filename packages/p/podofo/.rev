@@ -352,4 +352,22 @@ drop patches upstreamed</comment>
     <comment></comment>
     <requestid>955585</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>52d6f86f0c70cd766de52b8d7a9336b3</srcmd5>
+    <version>0.9.8</version>
+    <time>1651856323</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.8. No changelog. This version ships security
+  fixes:
+  * Check that /DecodeParams values are in range
+    (boo#1127514, CVE-2018-20797)
+  * CVE-2019-10723 - Excessive memory allocation crash at
+    PdfPagesTreeCache (boo#1131544)
+  * CVE-2018-12983 - stack-based buffer over-read in
+    PdfEncryptMD5Base::ComputeEncryptionKey() (boo#1099719)
+- Drop patches, now upstream:
+  * podofo-CVE-2019-10723.patch
+  * podofo-CVE-2018-12983.patch (forwarded request 974851 from cgiboudeaux)</comment>
+    <requestid>974857</requestid>
+  </revision>
 </revisionlist>
