@@ -77,4 +77,12 @@
     <comment></comment>
     <requestid>944971</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>3c9d037a9ba1a8fbde343516de2963c4</srcmd5>
+    <version>21.1</version>
+    <time>1651856375</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded BuildRequires on mock.</comment>
+    <requestid>975316</requestid>
+  </revision>
 </revisionlist>
