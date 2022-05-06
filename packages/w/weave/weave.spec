@@ -31,7 +31,6 @@ Source3:        weave-rpmlintrc
 Patch0:         Makefile.diff
 Patch1:         disable-iptables-setup.patch
 Patch2:         0001-cni-Add-cniVersion-to-Result.patch
-BuildRequires:  binutils-gold
 BuildRequires:  libpcap-devel
 BuildRequires:  golang(API) >= 1.15
 ExcludeArch:    s390 %{ix86}
