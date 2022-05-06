@@ -81,4 +81,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>968123</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a4044ea5e267c6f9928eec5d5ed58566</srcmd5>
+    <version>2.3.5</version>
+    <time>1651856385</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 2.3.5 for CVE-2022-24828 (forwarded request 975231 from susnux)</comment>
+    <requestid>975329</requestid>
+  </revision>
 </revisionlist>
