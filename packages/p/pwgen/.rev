@@ -178,4 +178,12 @@
 - Use macros more extensively in spec file (forwarded request 539759 from avindra)</comment>
     <requestid>539827</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>97e948ae1283ef7f6d8097472debc23b</srcmd5>
+    <version>2.08</version>
+    <time>1651856401</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>975392</requestid>
+  </revision>
 </revisionlist>
