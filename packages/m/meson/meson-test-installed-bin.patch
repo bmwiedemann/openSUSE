@@ -1,8 +1,7 @@
-Index: meson-0.59.0/run_tests.py
-===================================================================
---- meson-0.59.0.orig/run_tests.py
-+++ meson-0.59.0/run_tests.py
-@@ -163,18 +163,10 @@ def get_meson_script() -> str:
+diff -Nur meson-0.62.1/run_tests.py new/run_tests.py
+--- meson-0.62.1/run_tests.py	2022-04-23 11:53:34.000000000 +0200
++++ new/run_tests.py	2022-04-23 14:30:53.079730407 +0200
+@@ -175,18 +175,10 @@
      Also used by run_unittests.py to determine what meson to run when not
      running in-process (which is the default).
      '''
@@ -23,7 +22,7 @@ Index: meson-0.59.0/run_tests.py
  
  def get_backend_args_for_dir(backend: Backend, builddir: str) -> T.List[str]:
      '''
-@@ -345,12 +337,12 @@ def main():
+@@ -356,12 +348,12 @@
      # Can't pass arguments to unit tests, so set the backend to use in the environment
      env = os.environ.copy()
      if not options.cross:

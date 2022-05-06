@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Apr 26 12:49:05 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Added 0001-gnome-Use-doc-install_tag-for-gnome.yelp.patch
+  * Upstream reported feature to add files created by `gnome.yelp`
+    to the `doc` install_tag, similar to `gnome.gtk_doc` this
+    allows installing created files using the `meson --tags doc`
+    syntax. Simplifies packaging of various packages, esp. gtk-doc.
+- Rebased meson-distutils.patch to also install required data files
+  (mesonbuild/dependencies/data/*.txt).
+- Drop conditionals for outdated openSUSE versions (older than Leap 15.x)
+
+-------------------------------------------------------------------
+Mon Apr 25 18:48:43 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.62.1
+  * Bash completion scripts sourced in meson devenv
+    If bash-completion scripts are being installed and the shell is bash,
+    they will be automatically sourced.
+  * Setup GDB auto-load for meson devenv
+    When GDB helper scripts are installed with a library name that
+    matches one being built, Meson adds the needed auto-load commands
+    into <builddir>/.gdbinit file.
+  * Print modified environment variables with meson devenv --dump
+  * New custom dependency for libdl, will now check for the
+    functionality of libdl.so
+  * pkgconfig.generate will now include variables for builtin
+    directories when referenced
+  * New keyword argument verbose for tests and benchmarks
+  * CMake support for versions <3.17.0 is deprecated
+  * Removal of the RPM module
+  * CMake server API support is removed
+  * The return value of find_program() can now check the exact
+    version of the found program
+  * XML files can now be translated easier by using itstool
+    via i18n.itstool_join().
+  * JNI system dependency now supports a modules keyword (jvm, awt)
+  * New unstable wayland module
+  * Meson has a new command env2mfile to convert
+    "environment variable based" cross and native compilation
+    environments to Meson machine files.
+  * This system will detect if the _FOR_BUILD environment
+    variables are enabled and then uses them as needed.
+  * Added optional '--allow-dirty' flag for the 'dist' command
+  * Meson now supports the TI MSP430 and ARM toolchains.
+  * Deprecated java.generate_native_header() in favor of the
+    new java.generate_native_headers()
+  * New option to choose python installation environment
+  * JDK System Dependency Renamed from jdk to jni
+  * New custom dependency for OpenSSL
+  * The default install path for dataonly pkgconfig files has
+    changed from ${libdir}/pkgconfig to ${datadir}/pkgconfig.
+  * JAR default install dir changed from libdir to datadir/java.
+- Rebased meson-test-installed-bin.patch
+- Drop upstream fixed 34daa53a.patch
+
+-------------------------------------------------------------------
 Mon Apr 25 07:08:30 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 34daa53a.patch: gnome module: properly fallback to

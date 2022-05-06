@@ -24,11 +24,12 @@
 %define name_ext %{nil}
 %bcond_with test
 %endif
+
+%bcond_with     setuptools
 %define _name   mesonbuild
 %{!?vim_data_dir:%global vim_data_dir %{_datadir}/vim}
-%bcond_with     setuptools
 Name:           meson%{name_ext}
-Version:        0.61.4
+Version:        0.62.1
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
@@ -37,25 +38,23 @@ URL:            https://mesonbuild.com/
 Source:         https://github.com/%{_name}/meson/releases/download/%{version}/meson-%{version}.tar.gz
 Source1:        https://github.com/%{_name}/meson/releases/download/%{version}/meson-%{version}.tar.gz.asc
 Source2:        meson.keyring
-# PATCH-FIX-UPSTREAM 34daa53a.patch dimstar@opensuse.org -- gnome module: properly fallback to gtk-update-icon-cache
-Patch0:         https://github.com/mesonbuild/meson/commit/34daa53a.patch
 # PATCH-FIX-OPENSUSE meson-test-installed-bin.patch dimstar@opensuse.org -- We want the test suite to run against /usr/bin/meson coming from our meson package.
-Patch1:         meson-test-installed-bin.patch
-# PATCH-FEATURE-OPENSUSE meson-distutils.patch tchvatal@suse.com -- build and install using distutils instead of full setuptools
+Patch0:         meson-test-installed-bin.patch
+# PATCH-FEATURE-UPSTREAM 0001-gnome-Use-doc-install_tag-for-gnome.yelp.patch -- https://github.com/mesonbuild/meson/pull/10304
+Patch1:         0001-gnome-Use-doc-install_tag-for-gnome.yelp.patch
+# PATCH-FIX-OPENSUSE meson-distutils.patch -- meson is ring0 and therefor setuptools is not available
 Patch2:         meson-distutils.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-base
-%if "%{flavor}" != "test"
-BuildArch:      noarch
-%endif
+BuildRequires:  python3-base >= 3.7
 %if %{with setuptools}
 BuildRequires:  python3-setuptools
 Requires:       python3-setuptools
 %endif
-%if !%{with test}
-Requires:       ninja >= 1.7
-Requires:       python3-base
+%if "%{flavor}" != "test"
+BuildArch:      noarch
+Requires:       ninja >= 1.8.2
+Requires:       python3-base >= 3.7
 # meson-gui was last used in openSUSE Leap 42.1.
 Provides:       meson-gui = %{version}
 Obsoletes:      meson-gui < %{version}
@@ -75,6 +74,12 @@ BuildRequires:  gmock
 BuildRequires:  gnustep-make
 BuildRequires:  googletest-devel
 BuildRequires:  itstool
+BuildRequires:  java-headless
+BuildRequires:  libboost_log-devel
+BuildRequires:  libboost_python3-devel
+BuildRequires:  libboost_system-devel
+BuildRequires:  libboost_test-devel
+BuildRequires:  libboost_thread-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  libqt5-qtbase-common-devel
@@ -84,8 +89,11 @@ BuildRequires:  llvm-devel
 BuildRequires:  meson = %{version}
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+BuildRequires:  python3-devel
 BuildRequires:  python3-gobject
 BuildRequires:  python3-pytest-xdist
+BuildRequires:  rust
+BuildRequires:  wxWidgets-any-devel
 BuildRequires:  zlib-devel-static
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
@@ -96,37 +104,19 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(ncurses)
-BuildRequires:  pkgconfig(python3) >= 3.5
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?suse_version} <= 1500
-BuildRequires:  python2-PyYAML
-%endif
 %if 0%{?suse_version} < 1550
+# Leap / SLE 15.x
+BuildRequires:  python2-PyYAML
+BuildRequires:  libboost_python-devel
 BuildRequires:  python2-devel
 %endif
-%if 0%{?suse_version} >= 1500
-BuildRequires:  java-headless
-BuildRequires:  libboost_log-devel
-BuildRequires:  libboost_python3-devel
-BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_test-devel
-BuildRequires:  libboost_thread-devel
-BuildRequires:  rust
-BuildRequires:  wxWidgets-any-devel
-%if 0%{?suse_version} < 1550
-BuildRequires:  libboost_python-devel
-%endif
-# csharp is not on s390 machines
 %ifnarch s390x
+# csharp is not on s390 machines
 BuildRequires:  mono(csharp)
-%endif
-%else
-BuildRequires:  boost-devel
-BuildRequires:  mono-core
-BuildRequires:  wxWidgets-devel
 %endif
 %endif
 # meson makes use of macros that were only defined with rpm 4.15
@@ -210,8 +200,8 @@ install -Dpm 0644 data/syntax-highlighting/vim/syntax/meson.vim \
 mkdir -p %{buildroot}%{_bindir}
 echo """#!%{_bindir}/python3
 import sys
-
 from mesonbuild.mesonmain import main
+
 sys.exit(main())
 """ > %{buildroot}%{_bindir}/%{name}
 chmod +x %{buildroot}%{_bindir}/%{name}
@@ -219,6 +209,13 @@ chmod +x %{buildroot}%{_bindir}/%{name}
 # ensure egg-info is a directory
 rm %{buildroot}%{python3_sitelib}/*.egg-info
 cp -r meson.egg-info %{buildroot}%{python3_sitelib}/meson-%{version}-py%{python3_version}.egg-info
+# Fix missing data files with distutils
+while read line; do
+  if [[ "$line" = %{_name}/* ]]; then
+    [[ "$line" = *.py ]] && continue
+    cp "$line" "%{buildroot}%{python3_sitelib}/$line"
+  fi
+done < meson.egg-info/SOURCES.txt
 %endif
 %endif
 
