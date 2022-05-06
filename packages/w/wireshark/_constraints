@@ -1,5 +1,10 @@
 <?xml version="1.0"?>
 <constraints>
+  <hardware>
+    <disk>
+      <size unit="G">5</size>
+    </disk>
+  </hardware>
   <overwrite>
     <conditions>
       <arch>ppc</arch>

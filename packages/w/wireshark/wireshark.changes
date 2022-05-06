@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May  5 07:20:21 UTC 2022 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 3.6.5 and 3.6.4: 
+  * The 3.6.5 release fixes an installation issue on Windows which was introduced in the 3.6.4 release
+  * Build failure with GCC 7.5, Linux.
+  * RDP dissected as SSL.
+  * IPFIX/cflow dissector asserts when varlen field length is zero.
+  * 802.11ax HE PHY "Device Class" dissected incorrectly.
+  * DHCPv6 Option 15 User-Class incorrectly parsed in Wireshark.
+  * ICMPv6 dissector: PREF64 option parsing only works for prefix length 96.
+  * Switch macOS updater to Sparkle 2.
+  * CQL timestamp dissector displays the wrong timestamp.
+  * Unable to dissect 802.11ax Target Wake Time (TWT) packets.
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-3.6.4.html
+
+-------------------------------------------------------------------
 Thu Mar 24 08:08:33 UTC 2022 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 3.6.3: 
