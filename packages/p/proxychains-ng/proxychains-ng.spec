@@ -1,7 +1,7 @@
 #
 # spec file for package proxychains-ng
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           proxychains-ng
-Version:        4.14
+Version:        4.16
 Release:        0
 Summary:        Redirect connection through proxy servers
 License:        GPL-2.0-only
@@ -49,7 +49,7 @@ with
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install install-config
@@ -59,6 +59,7 @@ install -Dm 0755 src/proxyresolv %{buildroot}%{_bindir}/proxyresolv4
 %doc AUTHORS README TODO
 %license COPYING
 %{_bindir}/proxychains4
+%{_bindir}/proxychains4-daemon
 %{_bindir}/proxyresolv4
 %{_libdir}/libproxychains4.so
 %config %{_sysconfdir}/proxychains.conf
