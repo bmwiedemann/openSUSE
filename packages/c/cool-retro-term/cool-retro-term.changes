@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May  6 09:04:25 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.2.0
+  * Migrated QtQuickControls from 1.x to 2.x
+  * Fixed a lot of issues with MacOS build
+  * Added support for blinking cursor
+  * Added sub-pixel rasteration
+  * Updated qtermwidget engine
+  * Updated many fonts to the latest version
+
+-------------------------------------------------------------------
 Wed Jan 23 22:38:09 UTC 2019 - mardnh@gmx.de
 
 - Package man page

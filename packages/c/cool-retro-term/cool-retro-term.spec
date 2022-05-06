@@ -1,7 +1,7 @@
 #
 # spec file for package cool-retro-term
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2015, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,12 +13,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           cool-retro-term
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        Terminal emulator which mimics old screens
 License:        GPL-3.0-or-later
@@ -31,11 +31,11 @@ BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
-BuildRequires:  pkgconfig(Qt5Quick)
+BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Widgets)
 Requires:       libqt5-qtgraphicaleffects
-Requires:       libqt5-qtquickcontrols
+Requires:       libqt5-qtquickcontrols2
 Requires:       qmltermwidget >= 0.2.0
 Recommends:     int10h-oldschoolpc-fonts
 
