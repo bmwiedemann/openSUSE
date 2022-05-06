@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  6 06:15:52 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on mock. 
+
+-------------------------------------------------------------------
 Sun Jan  9 01:19:18 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Add test dependency coreapi

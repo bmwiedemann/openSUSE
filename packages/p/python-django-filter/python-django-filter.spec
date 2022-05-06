@@ -30,7 +30,6 @@ BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module coreapi}
 BuildRequires:  %{python_module django-crispy-forms}
 BuildRequires:  %{python_module djangorestframework}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -55,7 +54,7 @@ requires Python 2.7 or higher. For usage and installation instructions, consult 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec runtests.py -v 2 
+%python_exec runtests.py -v 2
 
 %files %{python_files}
 %license LICENSE
