@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Fri May 06 06:43:30 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 9.2.1:
+  * Release 9.2.1 (#12472)
+  * Database agents to share same IAM policy (#11320) (#12457)
+  * Only acquire semaphore lease if maxconnections is configured (#12462) (#12468)
+  * [v9] Add roles needed in dynamic reg app and db docs (#12469)
+  * Add hint message when removing access requests. (#11963) (#12435)
+  * Update help message for `add token` command and allow token removal from the `rm` command. (#12118) (#12439)
+  * [v9] Add nil check for billing mode in AWS DynamoDB events driver (#12461)
+  * Update docs version to 9.2.0 for teleport (#12442)
+
+-------------------------------------------------------------------
+Thu May 05 15:11:02 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 9.2.0:
+  * Release 9.2.0 (#12427)
+  * Add a partial for agent installs in Teleport Cloud (#12366)
+  * reduce verbosity of missing kernel support warning for secure symlink (#12396) (#12423)
+  * [auto] Update webassets in branch/v9 (#12422)
+  * Allow users to request database certificates in Machine ID (#11904) (#12195)
+  * Fix tunnel mode for CockroachDB (#12400)
+  * Deflake TestTSHSSH (#12402)
+  * [auto] Update webassets in branch/v9 (#12338)
+  * Update docs version to 9.1.3 self-hosted, 9.1.2 for cloud (#12382)
+  * set cloud version in user pre (#12386)
+  * Add context.Context to GetReverseTunnels (#12393)
+  * Fix lingerAndDie race condition (#12376)
+  * Update DBeaver guides to use authenticated local proxy. (#12037) (#12384)
+  * [v9] Rollup backport (#12360)
+  * [v9] Disallow malformed U2F facets (#12208)
+  * moved status page cloud question up in faq order (#12354)
+  * Updated release dates in Machine ID documentation.
+
+-------------------------------------------------------------------
+Thu May 05 13:11:30 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 9.1.3:
+  * Release 9.1.3 (#12343)
+  * Never use `--tlsUseSystemCA` and `--tlsCAFile` together with `mongosh` (#12363)
+  * [v9] Advertise correct MySQL server version (#12340)
+  * Updated scaling limits.
+  * Improve error message for resource predicate query (#12262) (#12339)
+  * Prevent relative expiry from emitting more events than can be processed (#12002) (#12247)
+  * [v9] Specify the `NodeName` in `auth.ReRegister` (#12333)
+  * Gracefully degrade `tsh db ls` in case fetching roles fails. (#12320)
+  * added diagrams and install instuctions for db and app guides, getting started (#12313)
+  * Connect: Use SSHAgentLogin when second_factor is set to optional or on (#12322) (#12323)
+  * Upcoming releases: Replace Terminal with Connect (#12317)
+  * [auto] Update webassets in branch/v9 (#12316)
+  * Connect: Refresh leaf cluster certs before fetching certs for database (#12293) (#12315)
+  * Backport Teleport Connect gateway changes from #11720 (#12297)
+  * escape pipe char in table cell (#12280)
+  * Dial only application servers that serve the requested application (#12217) (#12300)
+  * SSH Session fixes (#12286)
+  * Add `proxy_host` and temporary `actual_name` fields to the cluster response object (#12291)
+  * Update predicate doc example to use bracket notation (#12237) (#12271)
+  * Update upcoming-releases.mdx (#12276)
+  * Create remote site cache based on remote auth version (#12130) (#12251)
+  * Speed up TestAppServersHA (#12128) (#12253)
+  * update docs version to 9.1.2 (#12278)
+  * give direct link to cloud signup (#12219)
+  * Add flags to `teleport configure` command (#11766) (#12267)
+  * Teleport Connect: Accept database name when setting up proxy (#12173) (#12228)
+  * Expose RoleSet.EnumerateDatabaseUsers to Teleport Terminal  (#12070) (#12207)
+  * [v9] Backport quoting Postgres connection string & generating DB CLI commands for Teleport Connect (#12206)
+  * [v9] Backport initial Teleport Connect PR + fixes (#12205)
+
+-------------------------------------------------------------------
 Wed Apr 27 17:14:24 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 9.1.2:
