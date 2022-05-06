@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  5 07:53:54 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-mock.patch:
+  * Use unittest.mock in the functional tests. 
+
+-------------------------------------------------------------------
 Sat Mar 12 05:50:55 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:

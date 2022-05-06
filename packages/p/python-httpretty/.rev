@@ -164,4 +164,13 @@
     <comment></comment>
     <requestid>961644</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>d938e7ed26761c695c034833cbefc395</srcmd5>
+    <version>1.1.4</version>
+    <time>1651856293</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch remove-mock.patch:
+  * Use unittest.mock in the functional tests.</comment>
+    <requestid>975077</requestid>
+  </revision>
 </revisionlist>

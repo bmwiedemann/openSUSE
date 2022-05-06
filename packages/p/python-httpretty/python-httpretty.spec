@@ -23,9 +23,9 @@ Version:        1.1.4
 Release:        0
 Summary:        HTTP client mocking tool for Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/gabrielfalcao/HTTPretty
 Source:         https://files.pythonhosted.org/packages/source/h/httpretty/httpretty-%{version}.tar.gz
+Patch0:         remove-mock.patch
 BuildRequires:  %{python_module eventlet}
 BuildRequires:  %{python_module fakeredis}
 BuildRequires:  %{python_module freezegun}
@@ -46,7 +46,7 @@ unit tests.
 It is similar to Ruby's FakeWeb.
 
 %prep
-%setup -q -n httpretty-%{version}
+%autosetup -p1 -n httpretty-%{version}
 # no test coverage check needed
 sed -i -e '/cover/ d' setup.cfg
 # no color printout for tests
