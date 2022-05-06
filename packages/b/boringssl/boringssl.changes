@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  4 10:55:00 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- 0001-Compile-for-RISC-V.patch: add support for RISC-V
+- enable build on riscv64
+
+-------------------------------------------------------------------
 Mon May 17 09:56:04 UTC 2021 - mrostecki@suse.com
 
 - Update to version 20200921 (fixes bsc#1183836, bsc#1181866):

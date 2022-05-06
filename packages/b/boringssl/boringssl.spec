@@ -1,7 +1,7 @@
 #
 # spec file for package boringssl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Patch0:         0002-crypto-Fix-aead_test-build-on-aarch64.patch
 Patch1:         0003-enable-s390x-builds.patch
 Patch2:         0004-fix-alignment-for-ppc64le.patch
 Patch3:         0005-fix-alignment-for-arm.patch
+Patch4:         0001-Compile-for-RISC-V.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -38,7 +39,7 @@ BuildRequires:  go
 BuildRequires:  libunwind-devel
 BuildRequires:  ninja
 BuildRequires:  patchelf
-ExclusiveArch:  %{ix86} x86_64 aarch64 s390x ppc64le %arm
+ExclusiveArch:  %{ix86} x86_64 aarch64 s390x ppc64le %arm riscv64
 
 %description
 BoringSSL is an implementation of the Secure Sockets Layer (SSL) and
@@ -76,6 +77,9 @@ Source files for BoringSSL implementation
 
 %build
 %cmake \
+%ifarch riscv64
+  -DOPENSSL_NO_ASM=1 \
+%endif
   -DCMAKE_SHARED_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,-z,now"
 %cmake_build
 

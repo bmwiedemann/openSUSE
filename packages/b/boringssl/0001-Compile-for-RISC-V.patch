@@ -1,0 +1,29 @@
+From 565226278d6b863672bb5c3f24197d8bb6e58b50 Mon Sep 17 00:00:00 2001
+From: Adam Langley <agl@google.com>
+Date: Thu, 25 Feb 2021 14:58:53 -0800
+Subject: [PATCH] Compile for RISC-V.
+
+Change-Id: I85f0364b83440469c0d15c32dd96607be31fc1b7
+Reviewed-on: https://boringssl-review.googlesource.com/c/boringssl/+/45904
+Commit-Queue: Adam Langley <agl@google.com>
+Commit-Queue: David Benjamin <davidben@google.com>
+Reviewed-by: David Benjamin <davidben@google.com>
+---
+ include/openssl/base.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+Index: boringssl-20200921/src/include/openssl/base.h
+===================================================================
+--- boringssl-20200921.orig/src/include/openssl/base.h
++++ boringssl-20200921/src/include/openssl/base.h
+@@ -108,6 +108,10 @@ extern "C" {
+ #elif defined(__mips__) && defined(__LP64__)
+ #define OPENSSL_64_BIT
+ #define OPENSSL_MIPS64
++#elif defined(__riscv) && __SIZEOF_POINTER__ == 8
++#define OPENSSL_64_BIT
++#elif defined(__riscv) && __SIZEOF_POINTER__ == 4
++#define OPENSSL_32_BIT
+ #elif defined(__pnacl__)
+ #define OPENSSL_32_BIT
+ #define OPENSSL_PNACL
