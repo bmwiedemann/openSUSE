@@ -1,7 +1,7 @@
 #
 # spec file for package libxcb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_without python2
 %endif
 Name:           libxcb
-Version:        1.14
+Version:        1.15
 Release:        0
 Summary:        X11 core protocol C library
 License:        MIT
@@ -44,7 +44,7 @@ BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(check) >= 0.9.4
 BuildRequires:  pkgconfig(pthread-stubs)
 BuildRequires:  pkgconfig(xau) >= 0.99.2
-BuildRequires:  pkgconfig(xcb-proto) >= 1.12
+BuildRequires:  pkgconfig(xcb-proto) >= 1.15
 BuildRequires:  pkgconfig(xorg-macros) >= 1.18
 %if %{with python2}
 BuildRequires:  python-base >= 2.6
