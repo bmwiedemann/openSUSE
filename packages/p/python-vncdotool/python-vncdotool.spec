@@ -1,7 +1,7 @@
 #
 # spec file for package python-vncdotool
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ URL:            https://github.com/sibson/vncdotool
 Source:         https://files.pythonhosted.org/packages/source/v/vncdotool/vncdotool-%{version}.tar.gz
 Patch0:         remove-nose.patch
 Patch1:         fix-mocking.patch
+# https://github.com/sibson/vncdotool/issues/218
+Patch2:         python-vncdotool-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -38,7 +40,6 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module Twisted}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -50,7 +51,6 @@ Command line VNC client.
 %prep
 %setup -q -n vncdotool-%{version}
 %autopatch -p1
-sed -i 's/from unittest.mock import /from mock.mock import /' tests/unit/helpers.py
 
 %build
 %python_build
