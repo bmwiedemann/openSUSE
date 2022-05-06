@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon May  2 06:34:51 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 91.9.0
+  * A warning is now displayed if an OpenPGP key has unsafe
+    attributes that are ignored
+  * OpenPGP integration in Thunderbird 91.8.0 and 91.8.1 did not
+    allow SHA-1 key signatures
+  * CalDAV calendars were marked read-only on startup
+  MFSA 2022-18 (bsc#1198970)
+  * CVE-2022-1520 (bmo#1745019)
+    Incorrect security status shown after viewing an attached
+    email
+  * CVE-2022-29914 (bmo#1746448)
+    Fullscreen notification bypass using popups
+  * CVE-2022-29909 (bmo#1755081)
+    Bypassing permission prompt in nested browsing contexts
+  * CVE-2022-29916 (bmo#1760674)
+    Leaking browser history with CSS variables
+  * CVE-2022-29911 (bmo#1761981)
+    iframe sandbox bypass
+  * CVE-2022-29912 (bmo#1692655)
+    Reader mode bypassed SameSite cookies
+  * CVE-2022-29913 (bmo#1764778)
+    Speech Synthesis feature not properly disabled
+  * CVE-2022-29917 (bmo#1684739, bmo#1706441, bmo#1753298,
+    bmo#1762614, bmo#1762620)
+    Memory safety bugs fixed in Thunderbird 91.9
+
+-------------------------------------------------------------------
 Sat Apr 16 11:36:34 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 91.8.1
