@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Fri May  6 10:28:55 UTC 2022 - pgajdos@suse.com
+
+- version update to 2.3.0
+  2.3.0
+  -----
+  * Release 2.3.0
+  * Drop Python 3.5, 3.6 support, add 3.10
+  * Create git-blame-ignore-revs file
+  * Blackify code
+  * requirements: Uncap docs requirements
+  * CI: Add missing anchors
+  2.2.3
+  -----
+  * Release 2.2.3
+  * CI: Generate release
+  * rpm: Add README for RPM specs
+  * requirements: Uncap test requirements
+  * rpm: Yet more spec file changes
+  2.2.2
+  -----
+  * Release 2.2.2
+  * Add missing runtime dependencies
+  * rpm: Modify changelog
+  2.2.1
+  -----
+  * Release 2.2.1
+  * requirements: Remove all upper constraint caps
+  * rpm: Add pytest as dependency
+  2.2.0
+  -----
+  * Release 2.2.0
+  * rpm: Spec updates
+  * Replace mock with unittest.mock
+  * Add missing PyYAML type stubs package
+  * utils: Add support for 'yaml' formatter
+  * trivial: Style fixes
+  * README: Update docs for Patchwork 3.0
+  * README: Use python3 variants of packages
+  * CI: Stop publishing to test.pypi.org
+  2.1.2
+  -----
+  * Release 2.1.2
+  * requirements: Add support for click 8.x
+  * tests: Unset PAGER env when testing fallback
+  * docs: Update doc name
+  * utils: Convert prints to logging calls
+  * utils: Log subprocess calls
+  2.1.1
+  -----
+  * man: Update man pages
+  2.1.0
+  -----
+  * Add release note for new 'bundle download' options
+  * Fix the setup.py warning
+  * Allow downloading of series patches to separate files
+  * utils: Remove unnecessary future import
+  * README: Re-add build status
+  * Remove references to Travis
+  * Switch to GitHub Actions
+  * tox: Add missing 'typing' stubs
+  * tox: Fix default Python versions
+  * Convert to Python 3-style type hints
+  * Add release note for read-only auth change
+  * Do not require authentication for GET requests
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Wed Jul 29 06:47:47 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.0.0:

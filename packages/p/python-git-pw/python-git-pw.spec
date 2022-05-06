@@ -1,7 +1,7 @@
 #
 # spec file for package python-git-pw
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define modname git-pw
 %define skip_python2 1
 Name:           python-git-pw
-Version:        2.0.0
+Version:        2.3.0
 Release:        0
 Summary:        A tool for integrating Git with Patchwork
 License:        MIT
@@ -29,8 +29,8 @@ Source:         https://files.pythonhosted.org/packages/source/g/%{modname}/%{mo
 BuildArch:      noarch
 BuildRequires:  %{python_module arrow >= 0.10}
 BuildRequires:  %{python_module click >= 6.0}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pyaml >= 5.1}
 BuildRequires:  %{python_module pytest >= 3.0}
 BuildRequires:  %{python_module requests > 2.0}
 BuildRequires:  %{python_module setuptools}
@@ -42,13 +42,14 @@ BuildRequires:  python-rpm-macros
 Requires:       git-core
 Requires:       python-arrow >= 0.10
 Requires:       python-click >= 6.0
+Requires:       python-pyaml >= 5.1
 Requires:       python-requests > 2.0
 Requires:       python-six >= 1.12
 Requires:       python-tabulate >= 0.8
 Provides:       %{modname} = %{version}
 Obsoletes:      %{modname} < %{version}
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
