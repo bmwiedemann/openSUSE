@@ -889,4 +889,30 @@ Remove 0001-fix-sqlite3.10.0-test.patch. Applied upstream.</comment>
     <comment></comment>
     <requestid>971122</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>c53a418c8efca3ef37b4f3e617b061ad</srcmd5>
+    <version>1.4.36</version>
+    <time>1651856291</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.36:
+  * details on https://docs.sqlalchemy.org/en/14/changelog/changelog_14.html#change-1.4.36
+  * Fixed regression where the change made for #7861, released in version
+    1.4.33, that brought the Insert construct to be partially recognized as an
+    ORM-enabled statement
+  * Modified the DeclarativeMeta metaclass to pass cls.__dict__ into the
+    declarative scanning process to look for attributes, rather than the
+    separate dictionary passed to the type’s __init__() method
+  * Fixed a memory leak in the C extensions which could occur when calling upon
+    named members of Row when the member does not exist under Python 3
+  * Added a warning regarding a bug which exists in the Result.columns() method
+    when passing 0 for the index in conjunction with a Result that will return
+    a single ORM entity, which indicates that the current behavior of
+    Result.columns() is broken in this case as the Result object will yield scalar
+    values and not Row objects
+  * Fixed bug where ForeignKeyConstraint naming conventions using the
+    referred_column_0 naming convention key would not work if the foreign key
+    constraint were set up as a ForeignKey object rather than an explicit
+    ForeignKeyConstraint object.</comment>
+    <requestid>975001</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define oldpython python
 Name:           python-SQLAlchemy
-Version:        1.4.35
+Version:        1.4.36
 Release:        0
 Summary:        Database Abstraction Library
 License:        MIT
