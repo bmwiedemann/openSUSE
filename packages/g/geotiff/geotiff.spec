@@ -19,13 +19,13 @@
 %define sover   5
 %define libname lib%{name}%{sover}
 Name:           geotiff
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        Library to handle georeferenced TIFF
 License:        MIT AND SUSE-Public-Domain
 Group:          Productivity/Scientific/Other
 URL:            https://github.com/OSGeo/libgeotiff
-Source0:        https://download.osgeo.org/%{name}/lib%{name}/lib%{name}-%{version}.tar.gz
+Source0:        https://github.com/OSGeo/libgeotiff/releases/download/%{version}/libgeotiff-%{version}.tar.gz
 # UPSTREAM Patch (geotif) to be used with gdal 2.4.1
 # Patch0:         https://github.com/OSGeo/libgeotiff/commit/f4956251.patch
 BuildRequires:  gcc-c++
@@ -70,16 +70,6 @@ GeoTIFF keys in new files.
 
 %setup -q -n lib%{name}-%{version}
 #%%autopatch -p2
-
-for f in `find . -type f`
-do
-  if file $f | grep -q CRLF ; then
-	echo "Fix line ends for $f"
-	set -x
-	sed -i -e 's|\r||g' $f
-	set +x
- fi
-done
 
 %build
 export CFLAGS="%{optflags} $CFLAGS -g -fstack-protector -fno-strict-aliasing -D _BSD_SOURCE"
