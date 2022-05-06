@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May  6 09:33:34 UTC 2022 - Christian Goll <cgoll@suse.com>
+
+- Update to 21.08.8 which fixes CVE-2022-29500, CVE-2022-29501
+  and CVE-2022-29502
+- Added 'CommunicationParameters=block_null_hash' to slurm.conf, please
+  add this parameter to existing configurations.
+
+-------------------------------------------------------------------
 Mon May  2 14:12:59 UTC 2022 - Christian Goll <cgoll@suse.com>
  - Update to 21.08.7 with following changes:
   * openapi/v0.0.37 - correct calculation for bf_queue_len_mean in /diag.

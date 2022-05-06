@@ -18,7 +18,7 @@
 
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
 %define so_version 37
-%define ver 21.08.7
+%define ver 21.08.8
 %define _ver _21_08
 %define dl_ver %{ver}
 # so-version is 0 and seems to be stable
@@ -650,6 +650,8 @@ sed -i -e '/^ControlMachine=/i# Ordered List of Control Nodes' \
     -e '/.*ControlAddr=.*/d' \
     -e '/.*BackupAddr=.*/d'  %{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf
 cat >>%{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf <<EOF
+# Potential exploit mitigation CVE-2022-29500
+CommunicationParameters=block_null_hash
 # SUSE default configuration
 PropagateResourceLimitsExcept=MEMLOCK
 NodeName=linux State=UNKNOWN
