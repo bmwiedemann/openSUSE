@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May  6 05:19:17 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-mock.patch:
+  * Use stdlib mock.
+- Remove BuildRequires on mock
+- Add patch support-werkzeug-2-1.patch:
+  * Support Werkzeug >= 2.1.0 
+
+-------------------------------------------------------------------
 Sun Jan  9 02:37:08 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Relax dependency on optional dependency pip to allow building on

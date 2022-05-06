@@ -143,4 +143,16 @@
     <comment></comment>
     <requestid>945466</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d8d090705546da8c3783a652a95f0e42</srcmd5>
+    <version>3.1.5</version>
+    <time>1651856372</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch remove-mock.patch:
+  * Use stdlib mock.
+- Remove BuildRequires on mock
+- Add patch support-werkzeug-2-1.patch:
+  * Support Werkzeug &gt;= 2.1.0</comment>
+    <requestid>975280</requestid>
+  </revision>
 </revisionlist>

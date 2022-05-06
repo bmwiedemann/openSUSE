@@ -26,6 +26,9 @@ URL:            https://github.com/django-extensions/django-extensions
 Source:         https://github.com/django-extensions/django-extensions/archive/%{version}.tar.gz#/django-extensions-%{version}.tar.gz
 # https://github.com/django-extensions/django-extensions/pull/1698
 Patch0:         pr_1698.patch
+Patch1:         remove-mock.patch
+# https://github.com/django-extensions/django-extensions/pull/1718
+Patch2:         support-werkzeug-2-1.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 Requires:       python-Django >= 2.2
@@ -49,7 +52,6 @@ BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module django-json-widget}
 BuildRequires:  %{python_module djangorestframework >= 3.0.0}
 BuildRequires:  %{python_module factory_boy}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pydot}
 BuildRequires:  %{python_module pygraphviz}
@@ -66,8 +68,7 @@ Django-extensions bundles several useful
 additions for Django projects.
 
 %prep
-%setup -q -n django-extensions-%{version}
-%patch0 -p1
+%autosetup -p1 -n django-extensions-%{version}
 rm setup.cfg
 
 # Most PipCheckerTests tests fail when using network to connect to PyPI

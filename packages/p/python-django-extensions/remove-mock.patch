@@ -1,0 +1,59 @@
+Index: django-extensions-3.1.5/tests/db/fields/test_uniq_field_mixin_compat.py
+===================================================================
+--- django-extensions-3.1.5.orig/tests/db/fields/test_uniq_field_mixin_compat.py
++++ django-extensions-3.1.5/tests/db/fields/test_uniq_field_mixin_compat.py
+@@ -1,10 +1,6 @@
+ # -*- coding: utf-8 -*-
+-try:
+-    from unittest import mock
+-except ImportError:
+-    import mock
++from unittest import mock
+ 
+-import six
+ from django.db import models
+ from django.test import TestCase
+ from tests.testapp.models import (
+@@ -20,7 +16,7 @@ class UniqFieldMixinCompatTestCase(TestC
+ 
+         class MockField(UniqueFieldMixin):
+             def __init__(self, **kwargs):
+-                for key, value in six.iteritems(kwargs):
++                for key, value in kwargs.items():
+                     setattr(self, key, value)
+ 
+         self.uniq_field = MockField(
+Index: django-extensions-3.1.5/tests/management/commands/test_clear_cache.py
+===================================================================
+--- django-extensions-3.1.5.orig/tests/management/commands/test_clear_cache.py
++++ django-extensions-3.1.5/tests/management/commands/test_clear_cache.py
+@@ -1,5 +1,5 @@
+ # -*- coding: utf-8 -*-
+-import mock
++from unittest import mock
+ import os
+ from io import StringIO
+ 
+Index: django-extensions-3.1.5/tests/test_management_command.py
+===================================================================
+--- django-extensions-3.1.5.orig/tests/test_management_command.py
++++ django-extensions-3.1.5/tests/test_management_command.py
+@@ -1,6 +1,6 @@
+ # -*- coding: utf-8 -*-
+ import os
+-import mock
++from unittest import mock
+ import logging
+ import importlib
+ 
+Index: django-extensions-3.1.5/tests/test_sqldiff.py
+===================================================================
+--- django-extensions-3.1.5.orig/tests/test_sqldiff.py
++++ django-extensions-3.1.5/tests/test_sqldiff.py
+@@ -1,5 +1,5 @@
+ # -*- coding: utf-8 -*-
+-import mock
++from unittest import mock
+ import pytest
+ from io import StringIO
+ 

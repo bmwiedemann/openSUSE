@@ -1,0 +1,47 @@
+From 9214d5ff5b7ef608c7264a42593c93befacb3a94 Mon Sep 17 00:00:00 2001
+From: David Schmitt <david@cloudsmith.com>
+Date: Thu, 14 Apr 2022 10:27:58 +0100
+Subject: [PATCH] Fix KeyError: 'werkzeug.server.shutdown' in runserver_plus
+
+Exception:
+
+```
+Exception happened during processing of request from ('172.20.0.5', 34456)
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/socketserver.py", line 650, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.7/socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.7/socketserver.py", line 720, in __init__
+    self.handle()
+  File "/opt/cloudsmith/deps/venv/lib/python3.7/site-packages/werkzeug/serving.py", line 347, in handle
+    super().handle()
+  File "/usr/lib/python3.7/http/server.py", line 426, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.7/http/server.py", line 414, in handle_one_request
+    method()
+  File "/opt/cloudsmith/deps/venv/lib/python3.7/site-packages/werkzeug/serving.py", line 243, in run_wsgi
+    self.environ = environ = self.make_environ()
+  File "/opt/cloudsmith/deps/venv/lib/python3.7/site-packages/django_extensions/management/commands/runserver_plus.py", line 326, in make_environ
+    del environ['werkzeug.server.shutdown']
+KeyError: 'werkzeug.server.shutdown'
+```
+
+Fixes: #1715, https://github.com/pallets/werkzeug/issues/2387
+---
+ django_extensions/management/commands/runserver_plus.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/django_extensions/management/commands/runserver_plus.py b/django_extensions/management/commands/runserver_plus.py
+index 2c9af4384..867e85fb4 100644
+--- a/django_extensions/management/commands/runserver_plus.py
++++ b/django_extensions/management/commands/runserver_plus.py
+@@ -322,7 +322,7 @@ def inner_run(self, options):
+         class WSGIRequestHandler(_WSGIRequestHandler):
+             def make_environ(self):
+                 environ = super().make_environ()
+-                if not options['keep_meta_shutdown_func']:
++                if not options['keep_meta_shutdown_func'] and 'werkzeug.server.shutdown' in environ:
+                     del environ['werkzeug.server.shutdown']
+                 return environ
+ 
