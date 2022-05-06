@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 26 09:33:18 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve rpmlint report "libcdk5.x86_64: E:
+  shlib-policy-name-error SONAME: libcdk.so.6.2.4, expected
+  package suffix: 6_2_4"
+
+-------------------------------------------------------------------
 Mon May  3 18:24:40 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 5.0.20210324

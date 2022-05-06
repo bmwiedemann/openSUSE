@@ -1,7 +1,7 @@
 #
 # spec file for package cdk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define lname lib%{name}5
+%define lname lib%{name}6_2_4
 %define mainver 5.0
 %define datever 20210324
 
@@ -45,6 +45,7 @@ menu, a radio list, a viewer widget, and a dialog box.
 %package -n %lname
 Summary:        The Runtime for the Curses Development Kit - Shared library
 Group:          Development/Libraries/C and C++
+Conflicts:      libcdk5
 
 %description -n %lname
 CDK is a widget set developed on top of the basic curses library. It
@@ -105,7 +106,6 @@ rm -rf %{buildroot}%{_datadir}/doc
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %if %{defined license}
 %license COPYING
 %doc EXPANDING NOTES TODO README CHANGES VERSION
@@ -115,7 +115,6 @@ rm -rf %{buildroot}%{_datadir}/doc
 %{_libdir}/libcdk*.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_bindir}/cdk*5-config
 %{_libdir}/libcdk*.so
 %{_includedir}/%{name}
