@@ -603,4 +603,13 @@ Remove ancient Obsoletes/provides (forwarded request 232571 from sumski)</commen
     <comment></comment>
     <requestid>957065</requestid>
   </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>52d68f692d617255775e8846e8940be8</srcmd5>
+    <version>0.26.7</version>
+    <time>1651856405</time>
+    <user>dimstar_suse</user>
+    <comment>- Add okteta-rpmlintrc to silence the'shlib-policy-name-error'
+  rpmlint error (forwarded request 973607 from cgiboudeaux)</comment>
+    <requestid>975398</requestid>
+  </revision>
 </revisionlist>

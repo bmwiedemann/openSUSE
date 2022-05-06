@@ -1,7 +1,7 @@
 #
 # spec file for package okteta
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ Source0:        https://download.kde.org/stable/okteta/%{version}/src/okteta-%{v
 Source1:        https://download.kde.org/stable/okteta/%{version}/src/okteta-%{version}.tar.xz.sig
 Source2:        okteta.keyring
 %endif
+Source99:       okteta-rpmlintrc
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules >= 5.48.0
 BuildRequires:  kf5-filesystem
