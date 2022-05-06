@@ -276,4 +276,12 @@
     <comment>- exclude arm32 bit builds as well</comment>
     <requestid>965813</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>1dbc4d0d7712782bea37d153ffcc54b3</srcmd5>
+    <version>1.1.9</version>
+    <time>1651856376</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975318</requestid>
+  </revision>
 </revisionlist>

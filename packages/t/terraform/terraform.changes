@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May  4 06:07:40 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.1.9:
+  * cli: Fix crash when using sensitive values in sets. (#30825)
+  * cli: Fix double-quoted map keys when rendering a diff. (#30855)
+  * core: Prevent errors when handling a data source with incompatible schema changes (#30830)
+  * cli: Fix missing identifying attributes (e.g. "id", "name") when displaying plan diffs with nested objects. (#30685)
+  * functions: Fix error when sum() function is called with a collection of string-encoded numbers, such as sum(["1", "2", "3"]). (#30684)
+  * When rendering a diff, Terraform now quotes the name of any object attribute whose string representation is not a valid identifier. (#30766)
+  * Terraform will no longer crash in the terraform apply phase if an error occurs during backend configuration. (#30780)
+  * terraform show -json: Improve performance for deeply-nested object values. The previous implementation was accidentally quadratic, which could result in very long execution time for generating JSON plans, and timeouts on Terraform Cloud and Terraform Enterprise. (#30561)
+  * cloud: Update go-slug for terraform.tfstate exclusion to prevent a user from getting an error
+after migrating state to TFC.
+
+-------------------------------------------------------------------
 Wed Mar 30 06:54:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - exclude arm32 bit builds as well 
