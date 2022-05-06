@@ -141,4 +141,12 @@
     <comment></comment>
     <requestid>971341</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6467a61c6bb370284af9b431ca335dce</srcmd5>
+    <version>20220506</version>
+    <time>1651856415</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220506</comment>
+    <requestid>975452</requestid>
+  </revision>
 </revisionlist>
