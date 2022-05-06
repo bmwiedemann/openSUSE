@@ -18,8 +18,6 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-# onnx is not yet ready for python 3.10
-%define skip_python310 1
 Name:           python-onnxconverter-common
 Version:        1.9.0
 Release:        0
