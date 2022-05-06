@@ -19,7 +19,7 @@
 %define gs_plugin_api 17
 
 Name:           gnome-software
-Version:        42.0
+Version:        42.1
 Release:        0
 Summary:        GNOME Software Store
 License:        GPL-2.0-or-later
@@ -30,8 +30,6 @@ Source0:        https://download.gnome.org/sources/gnome-software/42/%{name}-%{v
 # PATCH-FIX-OPENSUSE gnome-software-launch-gpk-update-viewer-for-updates.patch bsc#1077332 boo#1090042 sckang@suse.com -- Don't launch gnome-software when clicking the updates notification. Launch gpk-update-viewer instead.
 Patch0:         gnome-software-launch-gpk-update-viewer-for-updates.patch
 %endif
-# PATCH-FIX-UPSTREAM 8cbce25.patch dimstar@opensuse.org -- Fix repeating notification "Software updates failed"
-Patch1:         https://gitlab.gnome.org/GNOME/gnome-software/-/commit/8cbce25.patch
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.47.0
@@ -113,10 +111,6 @@ mv %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.Software.desktop %{buildro
 %license COPYING
 %doc NEWS README.md
 %{_bindir}/%{name}
-%dir %{_datadir}/app-info
-%dir %{_datadir}/app-info/xmls
-%{_datadir}/app-info/xmls/org.gnome.Software.Featured.xml
-%{_datadir}/app-info/xmls/org.gnome.Software.Popular.xml
 %{_datadir}/metainfo/org.gnome.Software.appdata.xml
 %{_datadir}/metainfo/org.gnome.Software.Plugin.Flatpak.metainfo.xml
 %{_datadir}/metainfo/org.gnome.Software.Plugin.Fwupd.metainfo.xml
@@ -130,14 +124,18 @@ mv %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.Software.desktop %{buildro
 %{_datadir}/gnome-shell/search-providers/org.gnome.Software-search-provider.ini
 %{_datadir}/icons/hicolor/*/*/*.svg
 %dir %{_libdir}/gnome-software
-%dir %{_libdir}/gnome-software/plugins-%{gs_plugin_api}
-%{_libdir}/gnome-software/libgnomesoftware.so.%{gs_plugin_api}
-%{_libdir}/gnome-software/plugins-%{gs_plugin_api}/*.so
 %{_libexecdir}/gnome-software-cmd
 %{_libexecdir}/gnome-software-restarter
 %{_mandir}/man1/%{name}.1%{?ext_man}
-#%%{_sysconfdir}/xdg/autostart/org.gnome.Software.desktop
 %{_distconfdir}/xdg/autostart/org.gnome.Software.desktop
+
+%dir %{_libdir}/gnome-software/plugins-18/
+%{_libdir}/gnome-software/plugins-18/*.so
+%{_libdir}/gnome-software/libgnomesoftware.so.18
+%dir %{_datadir}/swcatalog/
+%dir %{_datadir}/swcatalog/xml/
+%{_datadir}/swcatalog/xml/org.gnome.Software.Featured.xml
+%{_datadir}/swcatalog/xml/org.gnome.Software.Popular.xml
 
 %files devel
 %doc AUTHORS

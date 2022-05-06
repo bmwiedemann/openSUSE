@@ -853,4 +853,12 @@ cd - (forwarded request 199127 from Zaitor)</comment>
   &quot;Software updates failed&quot;. (forwarded request 967812 from dimstar)</comment>
     <requestid>967859</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>210da511b751698240b5e93359bc783f</srcmd5>
+    <version>42.1</version>
+    <time>1651856292</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 974418 from dimstar)</comment>
+    <requestid>975076</requestid>
+  </revision>
 </revisionlist>
