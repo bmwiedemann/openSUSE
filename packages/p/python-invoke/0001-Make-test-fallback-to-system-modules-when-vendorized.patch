@@ -13,10 +13,10 @@ Subject: [PATCH] Make test fallback to system modules when vendorized one are
  tests/watchers.py    | 5 ++++-
  6 files changed, 25 insertions(+), 6 deletions(-)
 
-Index: invoke-1.1.1/tests/_util.py
+Index: invoke-1.7.0/tests/_util.py
 ===================================================================
---- invoke-1.1.1.orig/tests/_util.py
-+++ invoke-1.1.1/tests/_util.py
+--- invoke-1.7.0.orig/tests/_util.py
++++ invoke-1.7.0/tests/_util.py
 @@ -8,7 +8,10 @@ except ImportError:
      termios = None
  from contextlib import contextmanager
@@ -29,10 +29,10 @@ Index: invoke-1.1.1/tests/_util.py
  
  from mock import patch, Mock
  from pytest import skip
-Index: invoke-1.1.1/tests/concurrency.py
+Index: invoke-1.7.0/tests/concurrency.py
 ===================================================================
---- invoke-1.1.1.orig/tests/concurrency.py
-+++ invoke-1.1.1/tests/concurrency.py
+--- invoke-1.7.0.orig/tests/concurrency.py
++++ invoke-1.7.0/tests/concurrency.py
 @@ -1,4 +1,7 @@
 -from invoke.vendor.six.moves.queue import Queue
 +try:
@@ -42,10 +42,10 @@ Index: invoke-1.1.1/tests/concurrency.py
  
  from invoke.util import ExceptionWrapper, ExceptionHandlingThread as EHThread
  
-Index: invoke-1.1.1/tests/conftest.py
+Index: invoke-1.7.0/tests/conftest.py
 ===================================================================
---- invoke-1.1.1.orig/tests/conftest.py
-+++ invoke-1.1.1/tests/conftest.py
+--- invoke-1.7.0.orig/tests/conftest.py
++++ invoke-1.7.0/tests/conftest.py
 @@ -3,7 +3,11 @@ import os
  import sys
  import termios
@@ -59,11 +59,11 @@ Index: invoke-1.1.1/tests/conftest.py
  import pytest
  from mock import patch
  
-Index: invoke-1.1.1/tests/runners.py
+Index: invoke-1.7.0/tests/runners.py
 ===================================================================
---- invoke-1.1.1.orig/tests/runners.py
-+++ invoke-1.1.1/tests/runners.py
-@@ -6,7 +6,10 @@ import types
+--- invoke-1.7.0.orig/tests/runners.py
++++ invoke-1.7.0/tests/runners.py
+@@ -9,7 +9,10 @@ import types
  from io import BytesIO
  from itertools import chain, repeat
  
@@ -75,10 +75,10 @@ Index: invoke-1.1.1/tests/runners.py
  
  from pytest import raises, skip
  from pytest_relaxed import trap
-Index: invoke-1.1.1/tests/watchers.py
+Index: invoke-1.7.0/tests/watchers.py
 ===================================================================
---- invoke-1.1.1.orig/tests/watchers.py
-+++ invoke-1.1.1/tests/watchers.py
+--- invoke-1.7.0.orig/tests/watchers.py
++++ invoke-1.7.0/tests/watchers.py
 @@ -1,6 +1,9 @@
  from threading import Thread, Event
  

@@ -1,7 +1,7 @@
 #
 # spec file for package python-invoke
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-invoke
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Pythonic Task Execution
 License:        BSD-2-Clause
@@ -30,8 +30,6 @@ URL:            http://www.pyinvoke.org
 Source:         https://files.pythonhosted.org/packages/source/i/invoke/invoke-%{version}.tar.gz
 Patch0:         0001-Make-test-fallback-to-system-modules-when-vendorized.patch
 Patch1:         pytest4.patch
-# PATCH-FIX-OPENSUSE fix-yaml-loader.patch -- we devendorize PyYAML, which requires the Loader flag now. code@bnavigator.de
-Patch2:         fix-yaml-loader.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,7 +45,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module fluidity-sm}
 BuildRequires:  %{python_module lexicon}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pexpect}
 # pytest < 6.1 to resolve pytest-relaxed constraint
 # https://github.com/bitprophet/pytest-relaxed/issues/12
