@@ -1,7 +1,7 @@
 #
 # spec file for package sc-controller
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sc-controller
-Version:        0.4.8.6
+Version:        0.4.8.7
 Release:        0
 Summary:        User-mode driver and GTK3-based GUI for the Steam Controller
 License:        GPL-2.0-only
@@ -29,6 +29,7 @@ BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
+BuildRequires:  python3-setuptools
 BuildRequires:  shared-mime-info
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(python3)

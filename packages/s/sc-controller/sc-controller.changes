@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri May  6 18:11:50 UTC 2022 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 0.4.8.7
+  * AppImage tested on Ubuntu 22.04 LTS, Fedora 35, Fedora 33,
+    Manjaro, and PopOS 21.10
+  * Updated AppImage scripts for setuptools behavior changes and
+    library path changes
+  * Migrate setup.py script to use setuptools rather than distutils.
+    Try to comply with PEP 632 regarding the deprecation of distutils
+  * Fixed Turn Off Controller option for BLE connected controller.
+    Contribution by labsin
+  * Changed feel of rumble emulation support. Period and amplitude of
+    haptics change depending on data in ff_rumble event struct.
+    I find that it feels better
+  * Fixed long packet support for BLE reader. 3 input packet payloads
+    now work in BLE reader
+  * Fixed hotplug detection for BT connected Steam Controller
+  * Added report ID 3 to feature report packets to allow BLE support to
+    work again. Needed to make BLE support work with later versions of BlueZ (5.64)
+  * Fixes to allow Bluetooth evdev and HID controllers to appear in
+    controller registration list. Contribution by chewi
+  * Fixed some HID driver and evdev driver crashes. Contribution by Alastor27
+  * Fixed popup positioning and layering (somewhat) on Wayland.
+    Contribution by Supreeeme
+  * Allow deadzone calculations for analog trigger output.
+    Full usable analog trigger range
+  * Fixed Mouse Region output
+  * Small fixes for HID report parsing
+  * Added lowercase VDF button aliases to button dictionary
+  * Properly clamp rotated touchpad coordinates to s16 range
+  * Use proper limits for output 360 axes
+  * Add DS4 v.1 detection to ds4drv driver
+  * Fix display names for mapped X and Y buttons due to busted Linux aliases
+
+-------------------------------------------------------------------
 Thu Sep  9 20:30:22 UTC 2021 - Jannik Seiler <seil0@mosad.xyz>
 
 - Update to 0.4.8.6
