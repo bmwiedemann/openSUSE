@@ -1,7 +1,7 @@
 #
 # spec file for package converseen
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           converseen
-Version:        0.9.9.0
+Version:        0.9.9.5
 Release:        0
 Summary:        Batch Image Conversion Tool
 License:        GPL-3.0-or-later
@@ -59,7 +59,7 @@ chmod -x README.md COPYING
 
 %build
 %cmake
-make %{?_smp_mflags} VERBOSE=1
+%cmake_build
 
 %install
 # Create desktop file because the original one is incorrect.
@@ -95,14 +95,6 @@ for size in 256x256 128x128 96x96 64x64 48x48 32x32 22x22 16x16 ; do
 done
 %find_lang %{name} --with-qt
 %suse_update_desktop_file %{name}
-
-%if 0%{?suse_version} && 0%{?suse_version} < 1330
-%post
-%icon_theme_cache_post
-
-%postun
-%icon_theme_cache_postun
-%endif
 
 %files
 %license COPYING

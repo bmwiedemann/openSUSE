@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu May  5 15:53:34 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.9.9.5
+  * Added scaling/support for HiDPI Displays
+  * Various Bugfixes
+  * Additional changes included in version 0.9.9.4
+    * Fixed Overwrite Option
+    * Updated Some Languages
+  * Additional changes included in version 0.9.9.3
+    * Added Simplified Chinese Translation
+  * Additional changes included in version 0.9.9.2
+    * Added PDF conversion instructions
+    * Minor Updates
+  * Additional changes included in version 0.9.9.1
+    * Added JFIF support
+    * Fixed settings data location
+    * Various Minor Updates
+
+-------------------------------------------------------------------
 Mon Mar  8 13:24:07 UTC 2021 - Kyrill Detinov <lazy.kent@opensuse.org>
 
 - Update to 0.9.9.0.
