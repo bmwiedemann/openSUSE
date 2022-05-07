@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May  6 07:16:26 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 10.1.0.3
+  * fix a pull-request. Und das war damit auch der letzte
+    Pull-Request, den ich in meinem Leben angenommen habe.
+  * use JSON::XS in Interface.pm to avoid misleading UNKNOWN error
+    message
+  * suppress unknown arista sensors which are not marked as faulty
+
+-------------------------------------------------------------------
 Thu Feb 24 20:41:06 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 10.1.0.1
