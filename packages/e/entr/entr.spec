@@ -1,7 +1,7 @@
 #
 # spec file for package entr
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2016 Daniel Lichtenberger
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           entr
-Version:        5.1
+Version:        5.2
 Release:        0
 Summary:        A utility for running arbitrary commands when files change
 License:        ISC

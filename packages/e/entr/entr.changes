@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May  7 13:18:32 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.2
+  * Update copy of strlcpy(3) for Linux
+  * Detect file deletion from directories on Linux
+  * Print the signal that terminated a child when using '-s'
+  * Return 128+signal that terminated a child when using '-z'
+  * Ensure terminal settings are reset when '-z' is set
+
+-------------------------------------------------------------------
 Tue Dec 28 17:28:11 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.1
