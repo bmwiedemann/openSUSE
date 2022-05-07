@@ -2,7 +2,7 @@
 # spec file for package libyang
 #
 # Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2019-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global sover 2
 
 Name:           libyang
-Version:        2.0.164
+Version:        2.0.194
 Release:        0
 Summary:        Parser toolkit for IETF YANG data modeling
 License:        BSD-3-Clause
