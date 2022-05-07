@@ -1,7 +1,7 @@
 #
 # spec file for package pidgin-birthday-reminder
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011 Christoph Miebach <christoph.miebach@web.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,19 +13,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           pidgin-birthday-reminder
-Version:        1.12
+Version:        1.13
 Release:        0
 Summary:        Pidgin plugin to remind you of the birthdays of your buddies
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Instant Messenger
-Url:            https://github.com/kgraefe/pidgin-birthday-reminder
+URL:            https://github.com/kgraefe/pidgin-birthday-reminder
 Source:         https://github.com/kgraefe/pidgin-birthday-reminder/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/kgraefe/pidgin-birthday-reminder/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
+# https://kgraefe.paktolos.net/pgp/
 Source2:        %{name}.keyring
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
@@ -59,7 +60,7 @@ Skype and XMPP protocols.
 
 %build
 %configure --disable-static
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -68,11 +69,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}
 
 %files -n pidgin-plugin-birthday-reminder
-%if 0%{?suse_version} >= 1500
 %license COPYING
-%else
-%doc COPYING
-%endif
 %doc AUTHORS.md CHANGES.md
 %{_libdir}/pidgin/birthday_reminder.so
 %{_datadir}/pixmaps/pidgin/birthday_reminder/
@@ -82,5 +79,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/appdata/%{name}.metainfo.xml
 
 %files -n pidgin-plugin-birthday-reminder-lang -f %{name}.lang
+%license COPYING
 
 %changelog
