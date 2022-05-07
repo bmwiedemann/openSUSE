@@ -1,6 +1,6 @@
-diff -Nru oci-cli-3.7.3.orig/requirements.txt oci-cli-3.7.3/requirements.txt
---- oci-cli-3.7.3.orig/requirements.txt	2022-04-19 21:29:12.000000000 +0200
-+++ oci-cli-3.7.3/requirements.txt	2022-04-26 11:57:51.721710523 +0200
+diff -Nru oci-cli-3.8.0.orig/requirements.txt oci-cli-3.8.0/requirements.txt
+--- oci-cli-3.8.0.orig/requirements.txt	2022-04-26 20:33:37.000000000 +0200
++++ oci-cli-3.8.0/requirements.txt	2022-05-03 14:25:34.963726116 +0200
 @@ -2,40 +2,40 @@
  # (https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format),
  # you may need to use the --extra-index-url option instead.
@@ -18,7 +18,7 @@ diff -Nru oci-cli-3.7.3.orig/requirements.txt oci-cli-3.7.3/requirements.txt
 -jmespath==0.10.0
 -ndg-httpsclient==0.4.2
 -mock==2.0.0
--oci==2.64.0
+-oci==2.65.0
 -packaging==20.2
 -pluggy==0.13.0
 -py==1.10.0
@@ -37,7 +37,7 @@ diff -Nru oci-cli-3.7.3.orig/requirements.txt oci-cli-3.7.3/requirements.txt
 +jmespath>=0.10.0
 +ndg-httpsclient>=0.4.2
 +mock>=2.0.0
-+oci>=2.64.0
++oci>=2.65.0
 +packaging>=20.2
 +pluggy>=0.13.0
 +py>=1.10.0
@@ -73,3 +73,38 @@ diff -Nru oci-cli-3.7.3.orig/requirements.txt oci-cli-3.7.3/requirements.txt
 +pytest-forked>=1.0.2
 +PyYAML>=5.4
 +docutils>=0.15.2
+diff -Nru oci-cli-3.8.0.orig/setup.py oci-cli-3.8.0/setup.py
+--- oci-cli-3.8.0.orig/setup.py	2022-04-26 20:33:37.000000000 +0200
++++ oci-cli-3.8.0/setup.py	2022-05-03 14:26:13.576112998 +0200
+@@ -29,22 +29,22 @@
+     readme = f.read()
+ 
+ requires = [
+-    'oci==2.65.0',
++    'oci>=2.65.0',
+     'arrow>=1.0.0',
+     'certifi',
+-    'click==7.1.2',
+-    'cryptography>=3.2.1,<=3.4.7',
+-    'jmespath==0.10.0',
+-    'python-dateutil>=2.5.3,<3.0.0',
++    'click>=7.1.2',
++    'cryptography>=3.2.1',
++    'jmespath>=0.10.0',
++    'python-dateutil>=2.5.3',
+     'pytz>=2016.10',
+     'six>=1.15.0',
+-    'terminaltables==3.1.0',
+-    'pyOpenSSL==19.1.0',
+-    'PyYAML>=5.4,<6'
++    'terminaltables>=3.1.0',
++    'pyOpenSSL>=19.1.0',
++    'PyYAML>=5.4'
+ ]
+ 
+ extras = {
+-    'db': ['cx_Oracle==8.3']
++    'db': ['cx_Oracle>=8.3']
+ }
+ 
+ fips_libcrypto_file = os.getenv("OCI_CLI_FIPS_LIBCRYPTO_FILE")
