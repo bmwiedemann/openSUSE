@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 22 20:07:58 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.9.3+git20220401.391f061c:
+  * doc: Add draw.io dependency to man page
+  * README: Add draw.io dependency
+  * scope: Fix draw.io width and enable by default
+  * scope: Move draw.io preview to handle_image
+  * Makefile: Drop README.md from man page requisites
+  * doc: Split lines in man page
+  * doc: Add openscad dependency to man page
+  * doc: Fix manpage for name filter_stack filter
+  * fix indent
+  * better textual preview for jupyter notebooks
+
+-------------------------------------------------------------------
 Tue Dec 31 16:33:50 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.9.3

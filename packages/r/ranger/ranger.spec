@@ -1,8 +1,7 @@
 #
 # spec file for package ranger
 #
-# Copyright (c) 2019 SUSE LLC
-# Copyright (c) 2013 Pascal Bleser <pascal.bleser@opensuse.org>
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +15,21 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%define short_version 1.9.3
 
 Name:           ranger
-Version:        1.9.3
+Version:        1.9.3+git20220401.391f061c
 Release:        0
 Summary:        Console File Manager
 License:        GPL-3.0-or-later
 Group:          Productivity/File utilities
-URL:            https://ranger.github.io
-Source:         https://github.com/ranger/ranger/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/ranger/ranger
+Source:         %{name}-%{version}.tar.gz
 Source99:       ranger-rpmlintrc
 # PATCH-FIX-UPSTREAM ranger.desktop.patch -- Add missing GenericName
 Patch0:         ranger.desktop.patch
 BuildRequires:  python3-devel
+BuildRequires:	python3-setuptools
 BuildRequires:  update-desktop-files
 Requires:       file
 Requires:       python3-curses
@@ -58,8 +59,8 @@ python3 ./setup.py build
 
 %install
 python3 ./setup.py install \
-    --prefix="%{_prefix}" \
-    --root=%{buildroot}
+  --prefix="%{_prefix}" \
+  --root=%{buildroot}
 
 rm -rf "%{buildroot}%{_datadir}/doc/ranger"
 
@@ -79,7 +80,7 @@ rm -rf "%{buildroot}%{_datadir}/doc/ranger"
 %doc examples
 %{_bindir}/ranger
 %{_bindir}/rifle
-%{python3_sitelib}/ranger_fm-%{version}-*.egg-info
+%{python3_sitelib}/ranger_fm-%{short_version}-*.egg-info
 %{python3_sitelib}/ranger
 %{_mandir}/man1/ranger.1%{ext_man}
 %{_mandir}/man1/rifle.1%{ext_man}
