@@ -483,4 +483,29 @@
 </comment>
     <requestid>970464</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>07f107199c2e4c70ed4b7b012860eab9</srcmd5>
+    <version>15.3.0</version>
+    <time>1652039561</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v15.3.0
+  * Changes of version 15.3.0
+    = Add characters (#1337):
+      ~ SUMMATION TOP (U+23B2);
+      ~ SUMMATION BOTTOM (U+23B3);
+      ~ BLACK RIGHT-POINTING DOUBLE TRIANGLE (U+23E9);
+      ~ BLACK LEFT-POINTING DOUBLE TRIANGLE (U+23EA);
+      ~ BLACK UP-POINTING DOUBLE TRIANGLE (U+23EB);
+      ~ BLACK DOWN-POINTING DOUBLE TRIANGLE (U+23EC);
+      ~ BLACK RIGHT-POINTING DOUBLE TRIANGLE WITH VERTICAL BAR
+        (U+23ED);
+      ~ BLACK LEFT-POINTING DOUBLE TRIANGLE WITH VERTICAL BAR
+        (U+23EE);
+      ~ BLACK RIGHT-POINTING TRIANGLE WITH DOUBLE VERTICAL BAR
+        (U+23EF);
+    = Enlarged U+02BE and U+02BF to match the dimensions of other
+      quotes (#1346).
+</comment>
+    <requestid>975620</requestid>
+  </revision>
 </revisionlist>
