@@ -1,7 +1,7 @@
 #
 # spec file for package libqmi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define _soname libqmi-glib5
 Name:           libqmi
-Version:        1.30.4
+Version:        1.30.6
 Release:        0
 # NOTE: The file headers state LESSER GPL, which is a mistake. The upstream intended license is LIBRARY GPL 2.0+
 Summary:        Library to control QMI devices
@@ -29,15 +29,14 @@ URL:            https://www.freedesktop.org/wiki/Software/libqmi/
 Source0:        https://www.freedesktop.org/software/libqmi/%{name}-%{version}.tar.xz
 Source1:        https://www.freedesktop.org/software/libqmi/%{name}-%{version}.tar.xz.asc
 Source98:       libqmi.keyring
-Source99:       libqmi-rpmlintrc
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.36
+BuildRequires:  pkgconfig(glib-2.0) >= 2.56
 BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gudev-1.0) >= 147
-BuildRequires:  pkgconfig(mbim-glib) >= 1.14
+BuildRequires:  pkgconfig(gudev-1.0) >= 232
+BuildRequires:  pkgconfig(mbim-glib) >= 1.18
 
 %description
 libqmi is a glib-based library for talking to WWAN modems and devices
@@ -78,7 +77,7 @@ This package contains files required to link sources against libqmi.
 
 %build
 # Do not rely on env for choosing python
-sed -i "s|env python|python3|g" build-aux/qmi-codegen/*
+sed -i "s|env python$|python3|g" build-aux/qmi-codegen/*
 %configure \
   --disable-static
 %make_build

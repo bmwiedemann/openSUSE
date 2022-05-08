@@ -1,5 +1,0 @@
-# The main package is called libqmi but is not shared lib.. elimintate false warning.
-addFilter("libqmi-tools\..*: W: shlib-policy-missing-lib");
-addFilter("libqmi-tools\..*: W: shlib-policy-nonversioned-dir");
-# Devel package have the correct deps, elimintate false warning.
-addFilter("no-dependency-on");

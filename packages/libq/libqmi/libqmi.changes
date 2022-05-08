@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  5 09:47:12 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.30.6
+  * meson: fix 'export_packages' in GIR setup.
+  * net-port-manager: use unaligned netlink attribute length.
+- Drop the unneeded rpmlintrc file
+
+-------------------------------------------------------------------
 Mon Feb 14 23:17:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.30.4:
