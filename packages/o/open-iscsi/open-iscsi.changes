@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May  6 18:03:09 UTC 2022 - Lee Duncan <lduncan@suse.com>
+
+- Updated to latest upstream version, tagged 2.1.7. Changes
+  included:
+  * updated/fixed test script
+  * updated build system
+  * several bug fixes, including one for bsc#1199264
+
+-------------------------------------------------------------------
 Wed Apr  6 17:02:04 UTC 2022 - Lee Duncan <lduncan@suse.com>
 
 - Updated to latest upstream, including bug fixes and cleanups.
