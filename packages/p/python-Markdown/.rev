@@ -343,4 +343,17 @@
   * Fix a dependency issue</comment>
     <requestid>933589</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>594a67241588b63fcc5463fddfa7d5f9</srcmd5>
+    <version>3.3.7</version>
+    <time>1652039539</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up the SPEC file.
+- update to version 3.3.7: bug-fix release
+  * Disallow square brackets in reference link ids (#1209)
+  * Retain configured pygments_style after first code block (#1240)
+  * Ensure fenced code attributes are properly escaped (#1247)
+</comment>
+    <requestid>975264</requestid>
+  </revision>
 </revisionlist>

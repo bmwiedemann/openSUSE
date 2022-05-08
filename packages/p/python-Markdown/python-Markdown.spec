@@ -1,7 +1,7 @@
 #
 # spec file for package python-Markdown
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-Markdown
-Version:        3.3.6
+Version:        3.3.7
 Release:        0
 Summary:        Python implementation of Markdown
 License:        BSD-3-Clause
@@ -30,7 +30,9 @@ Source:         https://files.pythonhosted.org/packages/source/M/Markdown/Markdo
 Patch0:         markdown-3.0-python37.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module importlib-metadata >= 4.4}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -49,20 +51,19 @@ on what exactly is supported and what is not. Additional features are
 supported by the [Available Extensions][].
 
 %prep
-%setup -q -n Markdown-%{version}
-%autopatch -p1
+%autosetup -p1 -n Markdown-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/markdown_py
 
 %check
-%python_exec -m unittest discover
+%pyunittest discover -v
 
 %post
 %python_install_alternative markdown_py
@@ -74,7 +75,7 @@ supported by the [Available Extensions][].
 %license LICENSE.md
 %doc README.md docs/*
 %python_alternative %{_bindir}/markdown_py
-%{python_sitelib}/Markdown-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/Markdown-%{version}*-info
 %{python_sitelib}/markdown
 
 %changelog
