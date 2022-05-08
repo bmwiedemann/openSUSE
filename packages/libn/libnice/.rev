@@ -327,4 +327,24 @@
     <comment>- Update descriptions to be closer to the other GNOME packages. (forwarded request 880310 from jengelh)</comment>
     <requestid>880362</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>630f2eb63a490ffb8960cb750daa718e</srcmd5>
+    <version>0.1.19</version>
+    <time>1652039544</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.19:
+  * Allow incoming connchecks before remote candidates are set,
+    allows for connection based on received bind requests
+  * Implement RFC 7675 for Consent Freshness
+  * Use a single server reflexive and local relay candidate,
+    reduces useless duplicated local candidates
+  * Improved ICE restart implementation
+  * Use Windows native crypto API, removing the need for OpenSSL
+  * Add bytestream ICE-TCP and improve ICE-TCP
+  * Add API to know if a NiceAddress is link-local
+  * Add API to extact the relay address from a relayed NiceAddress
+  * Improve support for detection addresses on Android, iOS, macOS
+  * A number of bug fixes (forwarded request 975128 from cgiboudeaux)</comment>
+    <requestid>975332</requestid>
+  </revision>
 </revisionlist>

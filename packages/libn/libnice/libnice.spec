@@ -1,7 +1,7 @@
 #
 # spec file for package libnice
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           libnice
-Version:        0.1.18
+Version:        0.1.19
 Release:        0
 Summary:        Interactive Connectivity Establishment implementation
 License:        LGPL-2.1-only OR MPL-1.1
-Group:          Developemnt/Libraries/GNOME
-URL:            http://nice.freedesktop.org/
-Source:         http://nice.freedesktop.org/releases/%{name}-%{version}.tar.gz
+Group:          Development/Libraries/GNOME
+URL:            https://nice.freedesktop.org/
+Source:         https://nice.freedesktop.org/releases/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  libgupnp-igd-devel
@@ -49,7 +49,7 @@ Connectivity Establishment standard (ICE).
 %package -n gstreamer-libnice
 Summary:        GStreamer plugin for the Interactive Connectivity Establishment
 Group:          System/Libraries
-Supplements:    packageand(libnice10:gstreamer)
+Supplements:    (libnice10 and gstreamer)
 
 %description -n gstreamer-libnice
 libnice is an implementation of the IETF's draft Interactive
