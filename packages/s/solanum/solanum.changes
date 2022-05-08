@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 30 23:01:25 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 0~ch560 (48a06ae3)
+  * Support more human friendly k/d/x-line duration format
+  * Make opers talking through +g controllable by user mode +M
+  * Apply cmode C to replies
+
+-------------------------------------------------------------------
 Tue May  4 06:23:22 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Move to Solanum codebase/Update to snapshot (3ff5a12e)

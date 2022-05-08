@@ -1,7 +1,7 @@
 #
 # spec file for package solanum
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           solanum
-Version:        0~ch448
+Version:        0~ch560
 Release:        0
 Summary:        Scalable IRCv3.2 compliant chat daemon
 License:        GPL-2.0-or-later
@@ -32,11 +32,11 @@ BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  sqlite3-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libcrypto) >= 0.9.7
 BuildRequires:  pkgconfig(libssl) >= 0.9.7
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  sqlite3-devel
 Requires(pre):  shadow
 Obsoletes:      charybdis
 
@@ -53,6 +53,7 @@ network in the world.
 %autosetup -p1 -n %name-%version
 
 %build
+mkdir libltdl
 autoreconf -fiv
 %configure --sysconfdir="%_sysconfdir/%name" \
 	--with-logdir="%_localstatedir/log/%name" \
