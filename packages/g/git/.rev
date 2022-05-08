@@ -2450,4 +2450,12 @@ git 2.12.3
     <comment></comment>
     <requestid>970899</requestid>
   </revision>
+  <revision rev="278" vrev="1">
+    <srcmd5>c1e18a2aaf9121d7c2c1460afadae06a</srcmd5>
+    <version>2.36.1</version>
+    <time>1652039532</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975550</requestid>
+  </revision>
 </revisionlist>
