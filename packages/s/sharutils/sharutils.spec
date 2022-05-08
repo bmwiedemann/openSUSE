@@ -1,7 +1,7 @@
 #
 # spec file for package sharutils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,20 +22,20 @@ Release:        0
 Summary:        GNU shar utilities
 License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Compression
-URL:            http://www.gnu.org/software/sharutils/
-Source0:        ftp://ftp.gnu.org/gnu/sharutils/sharutils-%{version}.tar.xz
-Source1:        ftp://ftp.gnu.org/gnu/sharutils/sharutils-%{version}.tar.xz.sig
+URL:            https://www.gnu.org/software/sharutils/
+Source0:        https://ftp.gnu.org/gnu/sharutils/sharutils-%{version}.tar.xz
+Source1:        https://ftp.gnu.org/gnu/sharutils/sharutils-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 Patch0:         sharutils-testsuite.diff
 Patch1:         sharutils-CVE-2018-1000097-fix_buffer_overflow.patch
 Patch2:         gnulib-libio.patch
+Patch3:         sharutils-4.14.2-Pass-compilation-with-Werror-format-security.patch
 BuildRequires:  libopenssl-devel
 BuildRequires:  xz
 Requires(pre):  %{install_info_prereq}
 Requires(pre):  coreutils
 Provides:       sharutil = %{version}
 Obsoletes:      sharutil < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This is the set of GNU shar utilities.
@@ -55,6 +55,7 @@ bytes.	uudecode does the converse transformation.
 %patch0
 %patch1
 %patch2 -p1
+%patch3 -p1
 chmod +w src/scripts.x
 
 %build
@@ -65,13 +66,13 @@ PATH=$PWD/../bin:$PATH
 %configure \
 	--with-openssl
 
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 %find_lang %{name}
 
 %post
@@ -81,10 +82,8 @@ make DESTDIR=%{buildroot} install %{?_smp_mflags}
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
 %files lang -f %{name}.lang
-%defattr(-, root, root)
 
 %files
-%defattr(-, root, root)
 %doc README NEWS THANKS
 %license COPYING
 %{_bindir}/*

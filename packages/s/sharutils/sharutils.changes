@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 20 20:54:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add sharutils-4.14.2-Pass-compilation-with-Werror-format-security.patch
+
+-------------------------------------------------------------------
 Fri Jan 31 23:48:25 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - No longer recommend -lang: supplements are in use.
