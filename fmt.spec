@@ -51,7 +51,7 @@ Development files for fmt, a formatting library for C++.
 
 %build
 %cmake -DCMAKE_INSTALL_INCLUDEDIR:PATH=%{_includedir}
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install

@@ -1,9 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 30 12:01:50 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace obsolete macro %make_jobs by %cmake_build
+
+-------------------------------------------------------------------
 Fri Jan  7 08:36:43 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 8.1.1
   * Restored ABI compatibility with version 8.0.x
-  * Fixed chorno formatting on big endian systems
+  * Fixed chrono formatting on big-endian systems
 
 -------------------------------------------------------------------
 Mon Jan  3 10:11:22 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
