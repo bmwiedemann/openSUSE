@@ -1963,4 +1963,37 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   monitor switching configuration (glgo#GNOME/gnome-shell#5217). (forwarded request 974128 from 1Antoine1)</comment>
     <requestid>974344</requestid>
   </revision>
+  <revision rev="222" vrev="1">
+    <srcmd5>f768c6cc995acbd98309ea7c458f861f</srcmd5>
+    <version>42.1</version>
+    <time>1652039555</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 42.1:
+  + Limit unfullscreen gesture to not interfere with overview.
+  + Properly hide the second (real) cursor when magnified.
+  + Fix various style glitches.
+  + Fix creating default application folders.
+  + Fix switching monitor configuration.
+  + Add Home/End keynav in app grid.
+  + Handle monitor changes during startup animation.
+  + Fix fractional timezone offsets in world clock.
+  + Default to right text-align in RTL locales.
+  + calendar: Fix alignment of world clocks header in RTL.
+  + Rely on symbolic icons instead of 'HighContrast' icon theme.
+  + Fix moving windows from secondary monitor to non-active workspace.
+  + Make sure startup animation completes.
+  + Fix Swiss on-screen keyboard layouts.
+  + Add Austrian-German on-screen keyboard layout.
+  + Fix on-screen keyboard in modal dialogs and lock screen.
+  + Fix menus in pad OSD.
+  + Sync default colors with libadwaita.
+  + Fix grab regressions when entering overview.
+  + Scale calendar with text size.
+  + Allow more intermediate icon sizes in app grid.
+  + Fixed crash.
+  + Plugged memory leak.
+- Remove gnome-shell-42.0-fix-switching-configuration.patch (merged
+  upstream). (forwarded request 975366 from fcrozat)</comment>
+    <requestid>975407</requestid>
+  </revision>
 </revisionlist>

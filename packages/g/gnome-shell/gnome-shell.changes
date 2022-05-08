@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri May  6 08:41:37 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to version 42.1:
+  + Limit unfullscreen gesture to not interfere with overview.
+  + Properly hide the second (real) cursor when magnified.
+  + Fix various style glitches.
+  + Fix creating default application folders.
+  + Fix switching monitor configuration.
+  + Add Home/End keynav in app grid.
+  + Handle monitor changes during startup animation.
+  + Fix fractional timezone offsets in world clock.
+  + Default to right text-align in RTL locales.
+  + calendar: Fix alignment of world clocks header in RTL.
+  + Rely on symbolic icons instead of 'HighContrast' icon theme.
+  + Fix moving windows from secondary monitor to non-active workspace.
+  + Make sure startup animation completes.
+  + Fix Swiss on-screen keyboard layouts.
+  + Add Austrian-German on-screen keyboard layout.
+  + Fix on-screen keyboard in modal dialogs and lock screen.
+  + Fix menus in pad OSD.
+  + Sync default colors with libadwaita.
+  + Fix grab regressions when entering overview.
+  + Scale calendar with text size.
+  + Allow more intermediate icon sizes in app grid.
+  + Fixed crash.
+  + Plugged memory leak.
+- Remove gnome-shell-42.0-fix-switching-configuration.patch (merged
+  upstream).
+
+-------------------------------------------------------------------
 Sat Apr 30 21:25:55 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Add gnome-shell-42.0-fix-switching-configuration.patch: Fix
