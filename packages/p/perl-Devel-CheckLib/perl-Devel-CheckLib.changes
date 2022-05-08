@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May  5 03:06:11 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.16
+   see /usr/share/doc/packages/perl-Devel-CheckLib/CHANGES
+
+  1.16    2022-05-04      Stop all the tests that require a working compiler from
+                          skipping on AIX
+
+  1.15    2022-05-04      Refactor, stop GCC optimising away test code
+
+-------------------------------------------------------------------
 Thu Nov 14 09:24:33 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 1.14
