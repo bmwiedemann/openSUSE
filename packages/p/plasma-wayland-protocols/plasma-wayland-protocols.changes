@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May  7 14:10:36 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 1.7.0:
+  * Add destructor for primary output global
+  * Add AppletPanel window type to the org_kde_plasma_surface interface.
+  * plasma_surface: Add open_under_cursor request
+  * Rename screencast.xml to match the protocol name
+  * Add resourceName to plasma windowmanagement
+  * screencast: Introduce stream_region
+
+-------------------------------------------------------------------
 Thu Jan 13 14:30:22 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 1.6.0:
