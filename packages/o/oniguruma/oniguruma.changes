@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May  5 18:46:10 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 6.9.8
+  - Update Unicode version 14.0.0
+  - Whole options
+    - (?C) : ONIG_OPTION_DONT_CAPTURE_GROUP
+    - (?I) : ONIG_OPTION_IGNORECASE_IS_ASCII
+    - (?L) : ONIG_OPTION_FIND_LONGEST
+  - Fixed some problems found by OSS-Fuzz
+
+-------------------------------------------------------------------
 Thu Jun  3 15:31:15 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 6.9.7.1
@@ -11,7 +22,7 @@ Thu Jun  3 15:31:15 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 -------------------------------------------------------------------
 Thu Nov  5 15:57:25 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 6.9.6 
+- Update to 6.9.6
   - When using configure script, if you have the POSIX API enabled
     in an earlier version (disabled by default in 6.9.5) and you
     need application binary compatibility with the POSIX API,
