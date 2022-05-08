@@ -33,6 +33,8 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://libtorrent.org/
 Source:         %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM libtorrent-rasterbar-2.0.6-fix_pkgconfig_creation.patch
+Patch0:         libtorrent-rasterbar-2.0.6-fix_pkgconfig_creation.patch
 BuildRequires:  cmake >= 3.12.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -135,10 +137,6 @@ install -Dm0755 build/examples/dump_torrent build/examples/make_torrent \
 %endif
 
 %fdupes %{buildroot}%{python3_sitearch}
-
-# quick and dirty fix until upstream gh#arvidn/libtorrent#6830 is addressed
-sed -e 's/\-l\-pthread/\-pthread/' \
-    -i %{buildroot}%{_libdir}/pkgconfig/%{name}.pc
 
 %if %{with tests}
 %check
