@@ -3,6 +3,9 @@
 REMOVE_DIRS=( 
 src/VBox/Additions/WINNT 
 src/VBox/Additions/os2 
+src/VBox/Runtime/r3/darwin
+src/VBox/Runtime/r0drv/darwin
+src/VBox/Runtime/darwin
 kBuild/bin
 kBuild/msgstyles
 kBuild/tools

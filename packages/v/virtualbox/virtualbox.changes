@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Apr 20 17:51:18 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
+
+- Version bump to 6.1.34 (released March 22 2022) by Oracle
+
+  This is a maintenance release. The following items were fixed and/or added:
+
+  VMM: Fix instruction emulation for "cmpxchg16b"
+  GUI: Improved GUI behavior on macOS Big Sur and later when kernel extensions are not loaded
+  EHCI: Addressed an issue with handling short packets (bug #20726)
+  Storage: Fixed a potential hang during disk I/O when the host I/O cache is disabled (bug #20875)
+  NVMe: Fixed loading saved state when nothing is attached to it (bug #20791)
+  DevPcBios: Addressed an issue which resulted in rejecting the detected LCHS geometry when the head count was above 16
+  virtio-scsi: Improvements
+  E1000: Improve descriptor handling
+  VBoxManage: Fixed handling of command line arguments with incomplete quotes (bug #20740)
+  VBoxManage: Improved 'natnetwork list' output
+  VBoxManage: NATNetwork: Provide an option (--ipv6-prefix) to set IPv6 prefix
+  VBoxManage: NATNetwork: Provide an option (--ipv6-default) to advertise default IPv6 route (bug #20714)
+  VBoxManage: Fix documentation of "usbdevsource add" (bug #20849)
+  Networking: General improvements in IPv4 and IPv6 area (bug #20714)
+  OVF Import: Allow users to specify a different storage controller and/or controller port for hard disks when importing a VM
+  Unattended install: Improvements
+  Shared Clipboard: Improved HTML clipboard handling for Windows host
+  Linux host and guest: Introduced initial support for kernel 5.17
+  Solaris package: Fixes for API access from Python
+  Solaris IPS package: Suppress dependency on libpython2.7.so.*
+  Linux host and guest: Fixes for Linux kernel 5.14
+  Linux Guest Additions: Fixed guest screen resize for older guests which are running libXrandr older than version 1.4
+  Linux Guest Additions: Introduced initial support for RHEL 8.6 kernels (bug #20877)
+  Windows guest: Make driver install smarter
+  Solaris guest: Addressed an issue which prevented VBox GAs 6.1.30 or 6.1.32 from being removed in Solaris 10 guests (bug #20780)
+  EFI: Fixed booting from FreeBSD ISO images (bug #19910)
+
+  Removed file "fixes_for_kernel_5.17.patch" - fixed upstream.
+
+  Fixes CVE-2022-21465 (boo#1198676), CVE-2022-21471 (boo#1198677), CVE-2022-21491 (boo#1198680), CVE-2022-21487 (boo#1198678), and CVE-2022-21488 (boo#1198679).
+
+  Fixed boo#1198703 - package virtualbox-websrv needs sysvinit-tools
+
+-------------------------------------------------------------------
 Tue Mar 29 19:01:11 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
 
 - Add fixes for kernel 5.17 - file "fixes_for_kernel_5.17.patch" added

@@ -1,18 +1,87 @@
-Index: VirtualBox-6.1.32/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.c
+Index: VirtualBox-6.1.34/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.c
 ===================================================================
---- VirtualBox-6.1.32.orig/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.c
-+++ VirtualBox-6.1.32/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.c
-@@ -2314,8 +2314,13 @@ int  vboxNetFltPortOsXmit(PVBOXNETFLTINS
-             {
+--- VirtualBox-6.1.34.orig/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.c
++++ VirtualBox-6.1.34/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.c
+@@ -2311,7 +2311,13 @@ int  vboxNetFltPortOsXmit(PVBOXNETFLTINS
                  vboxNetFltDumpPacket(pSG, true, "host", (fDst & INTNETTRUNKDIR_WIRE) ? 0 : 1);
                  Log6(("vboxNetFltPortOsXmit: pBuf->cb dump:\n%.*Rhxd\n", sizeof(pBuf->cb), pBuf->cb));
-+# if RTLNX_VER_MAX(5, 18, 0)
                  Log6(("vboxNetFltPortOsXmit: netif_rx_ni(%p)\n", pBuf));
-                 err = netif_rx_ni(pBuf);
-+#else
-+                Log6(("vboxNetFltPortOsXmit: netif_rx(%p)\n", pBuf));
++#if RTLNX_VER_MIN(5,18,0)
++                local_bh_disable();
 +                err = netif_rx(pBuf);
++                local_bh_enable();
++#else
+                 err = netif_rx_ni(pBuf);
 +#endif
                  if (err)
                      rc = RTErrConvertFromErrno(err);
              }
+Index: VirtualBox-6.1.34/src/VBox/HostDrivers/Support/SUPDrv.cpp
+===================================================================
+--- VirtualBox-6.1.34.orig/src/VBox/HostDrivers/Support/SUPDrv.cpp
++++ VirtualBox-6.1.34/src/VBox/HostDrivers/Support/SUPDrv.cpp
+@@ -1742,7 +1742,15 @@ static int supdrvIOCtlInnerUnrestricted(
+ 
+             /* execute */
+             pReq->u.Out.cFunctions = RT_ELEMENTS(g_aFunctions);
++
++            /* In 5.18.0, memcpy became a wrapper which does fortify checks
++             * before triggering __underlying_memcpy() call. We do not pass these checks here,
++             * so bypass them for now.  */
++#if RTLNX_VER_MIN(5,18,0)
++             __underlying_memcpy(&pReq->u.Out.aFunctions[0], g_aFunctions, sizeof(g_aFunctions));
++#else
+             memcpy(&pReq->u.Out.aFunctions[0], g_aFunctions, sizeof(g_aFunctions));
++#endif
+             pReq->Hdr.rc = VINF_SUCCESS;
+             return 0;
+         }
+Index: VirtualBox-6.1.34/src/VBox/HostDrivers/Support/SUPLib.cpp
+===================================================================
+--- VirtualBox-6.1.34.orig/src/VBox/HostDrivers/Support/SUPLib.cpp
++++ VirtualBox-6.1.34/src/VBox/HostDrivers/Support/SUPLib.cpp
+@@ -505,7 +505,7 @@ static int supInitFake(PSUPDRVSESSION *p
+     if (g_pSupFunctions)
+     {
+         g_pSupFunctions->u.Out.cFunctions = RT_ELEMENTS(s_aFakeFunctions);
+-        memcpy(&g_pSupFunctions->u.Out.aFunctions[0], &s_aFakeFunctions[0], sizeof(s_aFakeFunctions));
++	memcpy(&g_pSupFunctions->u.Out.aFunctions, &s_aFakeFunctions[0], sizeof(s_aFakeFunctions));
+         g_pSession = (PSUPDRVSESSION)(void *)g_pSupFunctions;
+         if (ppSession)
+             *ppSession = g_pSession;
+Index: VirtualBox-6.1.34/src/VBox/Additions/linux/sharedfolders/regops.c
+===================================================================
+--- VirtualBox-6.1.34.orig/src/VBox/Additions/linux/sharedfolders/regops.c
++++ VirtualBox-6.1.34/src/VBox/Additions/linux/sharedfolders/regops.c
+@@ -3823,7 +3823,9 @@ struct address_space_operations vbsf_reg
+     .readpage       = vbsf_readpage,
+     .writepage      = vbsf_writepage,
+     /** @todo Need .writepages if we want msync performance...  */
+-#if RTLNX_VER_MIN(2,5,12)
++#if RTLNX_VER_MIN(5,18,0)
++    .dirty_folio    = block_dirty_folio,
++#elif RTLNX_VER_MIN(2,5,12)
+     .set_page_dirty = __set_page_dirty_buffers,
+ #endif
+ #if RTLNX_VER_MIN(5,14,0)
+Index: VirtualBox-6.1.34/Config.kmk
+===================================================================
+--- VirtualBox-6.1.34.orig/Config.kmk
++++ VirtualBox-6.1.34/Config.kmk
+@@ -4502,11 +4502,14 @@ ifeq ($(VBOX_LDR_FMT),elf)
+ TEMPLATE_VBoxR0_TOOL                = $(VBOX_GCC_TOOL)
+ TEMPLATE_VBoxR0_CFLAGS              = -fno-pie -nostdinc -g $(VBOX_GCC_pipe) $(VBOX_GCC_WERR) $(VBOX_GCC_PEDANTIC_C) \
+ 	$(VBOX_GCC_Wno-variadic-macros) $(VBOX_GCC_R0_OPT) $(VBOX_GCC_R0_FP) -fno-strict-aliasing -fno-exceptions \
+-	$(VBOX_GCC_fno-stack-protector) -fno-common $(VBOX_GCC_fvisibility-hidden) -std=gnu99 $(VBOX_GCC_IPRT_FMT_CHECK)
++	$(VBOX_GCC_fno-stack-protector) -fno-common -ffreestanding $(VBOX_GCC_fvisibility-hidden) -std=gnu99 $(VBOX_GCC_IPRT_FMT_CHECK)
+ TEMPLATE_VBoxR0_CXXFLAGS            = -fno-pie -nostdinc -g $(VBOX_GCC_pipe) $(VBOX_GCC_WERR) $(VBOX_GCC_PEDANTIC_CXX) \
+ 	$(VBOX_GCC_Wno-variadic-macros) $(VBOX_GCC_R0_OPT) $(VBOX_GCC_R0_FP) -fno-strict-aliasing -fno-exceptions \
+ 	$(VBOX_GCC_fno-stack-protector) -fno-common $(VBOX_GCC_fvisibility-inlines-hidden) $(VBOX_GCC_fvisibility-hidden) \
+ 	-fno-rtti $(VBOX_GCC_IPRT_FMT_CHECK)
++ if $(VBOX_GCC_VERSION_CC) >= 40500 # 4.1.2 complains, 4.5.2 is okay, didn't check which version inbetween made it okay with g++.
++	TEMPLATE_VBoxR0_CXXFLAGS           += -ffreestanding
++ endif
+ TEMPLATE_VBoxR0_CFLAGS.amd64        = -m64 -mno-red-zone -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -fasynchronous-unwind-tables -ffreestanding
+ TEMPLATE_VBoxR0_CXXFLAGS.amd64      = -m64 -mno-red-zone -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -fasynchronous-unwind-tables
+ TEMPLATE_VBoxR0_CXXFLAGS.freebsd    = -ffreestanding
+
