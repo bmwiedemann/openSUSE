@@ -1,7 +1,7 @@
 #
 # spec file for package gpg2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gpg2
-Version:        2.3.4
+Version:        2.3.6
 Release:        0
 Summary:        File encryption, decryption, signature creation and verification utility
 License:        GPL-3.0-or-later
@@ -26,7 +26,7 @@ URL:            https://www.gnupg.org
 Source:         https://gnupg.org/ftp/gcrypt/gnupg/gnupg-%{version}.tar.bz2
 Source2:        https://gnupg.org/ftp/gcrypt/gnupg/gnupg-%{version}.tar.bz2.sig
 # https://www.gnupg.org/signature_key.html
-Source3:        %{name}.keyring
+Source3:        https://gnupg.org/signature_key.asc#/%{name}.keyring
 Source4:        scdaemon.udev
 Source99:       %{name}.changes
 Patch1:         gnupg-gpg-agent-ulimit.patch

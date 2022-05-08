@@ -3,11 +3,11 @@
  g10/gpg.c    |    9 +++++++++
  2 files changed, 27 insertions(+)
 
-Index: gnupg-2.3.4/doc/gpg.texi
+Index: gnupg-2.3.5/doc/gpg.texi
 ===================================================================
---- gnupg-2.3.4.orig/doc/gpg.texi
-+++ gnupg-2.3.4/doc/gpg.texi
-@@ -2196,6 +2196,24 @@ implies, this option is for experts only
+--- gnupg-2.3.5.orig/doc/gpg.texi
++++ gnupg-2.3.5/doc/gpg.texi
+@@ -2197,6 +2197,24 @@ implies, this option is for experts only
  understand the implications of what it allows you to do, leave this
  off. @option{--no-expert} disables this option.
  
@@ -32,19 +32,19 @@ Index: gnupg-2.3.4/doc/gpg.texi
  @end table
  
  
-Index: gnupg-2.3.4/g10/gpg.c
+Index: gnupg-2.3.5/g10/gpg.c
 ===================================================================
---- gnupg-2.3.4.orig/g10/gpg.c
-+++ gnupg-2.3.4/g10/gpg.c
-@@ -442,6 +442,7 @@ enum cmd_and_opt_values
-     oChUid,
+--- gnupg-2.3.5.orig/g10/gpg.c
++++ gnupg-2.3.5/g10/gpg.c
+@@ -443,6 +443,7 @@ enum cmd_and_opt_values
      oForceSignKey,
      oForbidGenKey,
+     oRequireCompliance,
 +    oSetLegacyFips,
  
      oNoop
    };
-@@ -877,6 +878,7 @@ static gpgrt_opt_t opts[] = {
+@@ -878,6 +879,7 @@ static gpgrt_opt_t opts[] = {
    ARGPARSE_s_s (oDigestAlgo, "digest-algo", "@"),
    ARGPARSE_s_s (oCertDigestAlgo, "cert-digest-algo", "@"),
    ARGPARSE_s_n (oOverrideComplianceCheck, "override-compliance-check", "@"),
@@ -52,8 +52,8 @@ Index: gnupg-2.3.4/g10/gpg.c
  
  
    ARGPARSE_header (NULL, N_("Options for unattended use")),
-@@ -3725,6 +3727,14 @@ main (int argc, char **argv)
-             mopt.forbid_gen_key = 1;
+@@ -3737,6 +3739,14 @@ main (int argc, char **argv)
+             opt.flags.require_compliance = 1;
              break;
  
 +         case oSetLegacyFips:

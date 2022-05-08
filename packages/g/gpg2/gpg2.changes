@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 25 19:09:32 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GnuPG 2.3.6:
+  * Up to five times faster verification of detached signatures, 
+    doubled detached signing speed, threefold decryption speedup
+    for large files, nearly double the AES256.OCB encryption speed
+  * Add support for GeNUA cards
+  * Added and improved options for crypto options, and all-around 
+    bug fixes
+
+-------------------------------------------------------------------
 Wed Dec 22 16:08:08 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GnuPG 2.3.4:
