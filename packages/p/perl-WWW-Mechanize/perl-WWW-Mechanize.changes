@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 30 03:08:47 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.07
+   see /usr/share/doc/packages/perl-WWW-Mechanize/Changes
+
+  2.07      2022-04-29 15:39:17Z
+      [FIXED]
+      - Don't follow redirects in some tests (GH#326) (Olaf Alders)
+
+-------------------------------------------------------------------
 Tue Oct 26 03:08:05 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.06

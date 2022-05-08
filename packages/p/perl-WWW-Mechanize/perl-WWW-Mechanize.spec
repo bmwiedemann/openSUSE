@@ -1,7 +1,7 @@
 #
 # spec file for package perl-WWW-Mechanize
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name WWW-Mechanize
 Name:           perl-WWW-Mechanize
-Version:        2.06
+Version:        2.07
 Release:        0
-Summary:        Handy web browsing in a Perl object
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Handy web browsing in a Perl object
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
