@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 30 05:36:09 UTC 2022 - Cliff Zhao <qzhao@suse.com>
+
+- Add plymouth-log-on-default.patch: Enable plymouth log by default, 
+  help to resolve random appear problems (bsc#1193736).
+- Pick back patch information for label-ft.
+
+-------------------------------------------------------------------
 Tue Apr 05 01:26:27 UTC 2022 - Cliff Zhao <qzhao@suse.com>
 
 - Update to version 0.9.5~git20210406.e554475:

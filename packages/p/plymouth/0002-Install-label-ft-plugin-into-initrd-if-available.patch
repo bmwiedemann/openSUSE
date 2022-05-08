@@ -1,3 +1,15 @@
+From 2c4145e4b7e146541ba8e33aee5e0125423d97bc Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fvogt@suse.com>
+Date: Wed, 20 Jan 2016 14:03:18 +0100
+Subject: [PATCH 2/2] Install label-ft plugin into initrd, if available
+
+It is small and useful enough to include it by default.
+
+Signed-off-by: Fabian Vogt <fvogt@suse.com>
+---
+ scripts/plymouth-populate-initrd.in | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
 diff -Nura plymouth-0.9.5+git20200921+20778f2/scripts/plymouth-populate-initrd.in plymouth-0.9.5+git20200921+20778f2_new/scripts/plymouth-populate-initrd.in
 --- plymouth-0.9.5+git20200921+20778f2/scripts/plymouth-populate-initrd.in	2020-10-05 23:05:13.055563514 +0800
 +++ plymouth-0.9.5+git20200921+20778f2_new/scripts/plymouth-populate-initrd.in	2020-10-05 23:08:35.098420945 +0800

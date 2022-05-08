@@ -1,3 +1,25 @@
+From 04fd53750abc1f792ab6d5bdf7416bd7c42451b2 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fvogt@suse.com>
+Date: Mon, 25 Jan 2016 08:58:03 +0100
+Subject: [PATCH 1/2] Add label-ft plugin
+
+This adds a FreeType-based label plugin with minimal dependencies.
+Is is a replacement for the label plugin, except that it lacks support for
+Unicode and different fonts families.
+It's purpose is to be included in the initrd, which isn't easily possible
+with the label plugin due to it's massive dependency list.
+
+Signed-off-by: Fabian Vogt <fvogt@suse.com>
+---
+ configure.ac                              |  10 +
+ src/libply-splash-graphics/ply-label.c    |   5 +
+ src/plugins/controls/Makefile.am          |   6 +-
+ src/plugins/controls/label-ft/Makefile.am |  22 ++
+ src/plugins/controls/label-ft/plugin.c    | 501 ++++++++++++++++++++++++++++++
+ 5 files changed, 543 insertions(+), 1 deletion(-)
+ create mode 100644 src/plugins/controls/label-ft/Makefile.am
+ create mode 100644 src/plugins/controls/label-ft/plugin.c
+
 diff -Nura plymouth-0.9.5+git20200921+20778f2/configure.ac plymouth-0.9.5+git20200921+20778f2_new/configure.ac
 --- plymouth-0.9.5+git20200921+20778f2/configure.ac	2020-10-05 21:49:25.578220035 +0800
 +++ plymouth-0.9.5+git20200921+20778f2_new/configure.ac	2020-10-05 22:07:57.754186183 +0800

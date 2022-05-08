@@ -48,6 +48,8 @@ Patch6:         plymouth-install-label-library-and-font-file-to-initrd.patch
 Patch7:         plymouth-quiet-dracut-build-info.patch
 # PATCH-FIX-OPENSUSE plymouth-watermark-config.patch bsc#1189613 qzhao@suse.com -- Add two-step water mark config support.
 Patch9:         plymouth-watermark-config.patch
+# PATCH-FIX-OPENSUSE plymouth-log-on-default.patch bsc#1193736 qzhao@suse.com -- Enable plymouth log by default, help to resolve random appear problems.
+Patch10:        plymouth-log-on-default.patch
 # PATCH-FIX-UPSTREAM 0001-Add-label-ft-plugin.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
 Patch1000:      0001-Add-label-ft-plugin.patch
 # PATCH-FIX-UPSTREAM 0002-Install-label-ft-plugin-into-initrd-if-available.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
