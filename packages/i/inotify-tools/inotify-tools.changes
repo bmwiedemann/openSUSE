@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May  7 12:48:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.22.1.0:
+  * print to stderr if you fail to fopen file
+  * Properly terminate escaped CSV strings. (#158)
+  * Fix printing of filename when watching a file
+
+-------------------------------------------------------------------
 Sat Oct 16 15:13:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.21.9.6 (jsc#SLE-21025):

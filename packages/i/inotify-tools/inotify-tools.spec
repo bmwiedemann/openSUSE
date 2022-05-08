@@ -1,7 +1,7 @@
 #
 # spec file for package inotify-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           inotify-tools
-Version:        3.21.9.6
+Version:        3.22.1.0
 Release:        0
 Summary:        Tools for inotify
 License:        GPL-2.0-only

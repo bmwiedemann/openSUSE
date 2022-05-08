@@ -87,4 +87,15 @@
     <comment>- update to 3.21.9.6 (jsc#SLE-21025):</comment>
     <requestid>930621</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6d1b5e12817268a97f995df50833354a</srcmd5>
+    <version>3.22.1.0</version>
+    <time>1652039528</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.22.1.0:
+  * print to stderr if you fail to fopen file
+  * Properly terminate escaped CSV strings. (#158)
+  * Fix printing of filename when watching a file</comment>
+    <requestid>975529</requestid>
+  </revision>
 </revisionlist>
