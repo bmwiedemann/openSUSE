@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Thu May  5 17:34:21 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.14.4:
+  + fix regression introduced in 1.14.0 which caused invalid
+    autostart files to be generated
+
+-------------------------------------------------------------------
 Sat Apr 16 18:16:20 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- update to 1.14.2:
+- update to 1.14.3:
   + remote-desktop: Fix a memory corruption that was causing
     segfaults
 

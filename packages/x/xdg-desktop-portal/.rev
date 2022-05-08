@@ -301,4 +301,12 @@
     <comment>xdg-desktop-portal 1.14.2 (forwarded request 970457 from AndreasStieger)</comment>
     <requestid>971095</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e9166f2b77e134fb6ec079758f8cece0</srcmd5>
+    <version>1.14.4</version>
+    <time>1652039546</time>
+    <user>dimstar_suse</user>
+    <comment>xdg-desktop-portal 1.14.4 (forwarded request 975248 from AndreasStieger)</comment>
+    <requestid>975334</requestid>
+  </revision>
 </revisionlist>
