@@ -102,6 +102,8 @@ Patch17:        php-date-regenerate-lexers.patch
 Patch19:        php-build-reproducible-phar.patch
 # https://github.com/php/php-src/commit/b3646440b1808abf0874b6f89027ce53ec5da03f
 Patch20:        php7-gd-removed-unused-constants.patch
+# https://github.com/php/php-src/commit/771dbdb319fa7f90584f6b2cc2c54ccff570492d
+Patch21:        php7-signedness-php_filter_validate_domain.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  autoconf
 BuildRequires:  bison
@@ -964,6 +966,7 @@ cp %{SOURCE5} .
 %patch17 -p1
 %patch19 -p1
 %patch20 -p1
+%patch21 -p1
 
 # use system pcre2
 rm -r ext/pcre/pcre2lib

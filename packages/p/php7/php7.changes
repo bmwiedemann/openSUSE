@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May  6 09:38:30 UTC 2022 - pgajdos@suse.com
+
+- security update [bsc#1197644]
+- added patches
+  fix https://github.com/php/php-src/commit/771dbdb319fa7f90584f6b2cc2c54ccff570492d
+  + php7-signedness-php_filter_validate_domain.patch
+
+-------------------------------------------------------------------
 Wed Apr 20 17:49:17 UTC 2022 - pgajdos@suse.com
 
 - version update to 7.4.29:

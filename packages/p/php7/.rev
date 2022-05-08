@@ -1250,4 +1250,15 @@ file with an '_' (PHP loads extensions in alphabetical order) (forwarded request
     Updated to latest IANA timezone database (2022a).</comment>
     <requestid>971313</requestid>
   </revision>
+  <revision rev="115" vrev="2">
+    <srcmd5>d834b7743b03e87a62d05a15492e2031</srcmd5>
+    <version>7.4.29</version>
+    <time>1652039551</time>
+    <user>dimstar_suse</user>
+    <comment>- security update [bsc#1197644]
+- added patches
+  fix https://github.com/php/php-src/commit/771dbdb319fa7f90584f6b2cc2c54ccff570492d
+  + php7-signedness-php_filter_validate_domain.patch</comment>
+    <requestid>975375</requestid>
+  </revision>
 </revisionlist>
