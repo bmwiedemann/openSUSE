@@ -210,4 +210,12 @@
     <comment></comment>
     <requestid>845451</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>cfe73f8913fc3e6830d33cdc58141ee6</srcmd5>
+    <version>1.15</version>
+    <time>1652039536</time>
+    <user>dimstar_suse</user>
+    <comment>Remove alias to oneself</comment>
+    <requestid>975236</requestid>
+  </revision>
 </revisionlist>

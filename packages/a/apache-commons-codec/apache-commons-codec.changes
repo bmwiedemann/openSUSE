@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May  5 16:01:16 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not alias the artifact to itself
+
+-------------------------------------------------------------------
 Tue Oct 27 07:51:13 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.15

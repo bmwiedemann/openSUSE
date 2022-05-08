@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-codec
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2000-2010, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,10 +26,10 @@ Release:        0
 Summary:        Apache Commons Codec Package
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://commons.apache.org/codec/
-Source0:        http://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
-Source2:        http://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz.asc
-Source1:        %{name}-build.xml
+URL:            https://commons.apache.org/codec/
+Source0:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
+Source1:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz.asc
+Source2:        %{name}-build.xml
 # Data in DoubleMetaphoneTest.java originally has an inadmissible license.
 # The author gives MIT in e-mail communication.
 Source100:      aspell-mail.txt
@@ -69,7 +69,7 @@ Javadoc for %{name}.
 
 %prep
 %setup -q -n %{short_name}-%{version}-src
-cp %{SOURCE1} build.xml
+cp %{SOURCE2} build.xml
 cp %{SOURCE100} aspell-mail.txt
 
 #fixes eof encoding
@@ -98,7 +98,7 @@ ln -sf %{short_name}.jar %{buildroot}%{_javadir}/%{name}.jar
 # Install pom file
 install -d -m 755 %{buildroot}%{_mavenpomdir}
 install -p -m 644 pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}.pom
-%add_maven_depmap %{short_name}.pom %{short_name}.jar -a "%{short_name}:%{short_name}"
+%add_maven_depmap %{short_name}.pom %{short_name}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
