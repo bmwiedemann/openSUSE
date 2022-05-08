@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Apr 30 08:21:29 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.9.6
+  * Support for labeled IPsec with IKEv2
+    (draft-ietf-ipsecme-labeled-ipsec) has been added. Two modes
+    are currently supported.
+  * The secrets used for generating COOKIE payloads are now
+    switched based on a time limit (2 minutes) and not the
+    previous usage limit (10'000 generated cookies).
+  * Actively initiating duplicate CHILD_SAs within the same
+    IKE_SA is now largely prevented.
+  * If the source address is unknown when initiating an IKEv2 SA,
+    a NAT situation is now forced for IPv4 (for IPv6, NAT-T is
+    disabled) to avoid causing asymmetric enabling of
+    UDP-encapsulation.
+  * The main two steps of the IKEv2 key derivation (PRF/prf+)
+    have been modularized. In particular, prf+ is now provided by
+    a plugin.
+- Drop prf-plus-modularization.patch
+
+-------------------------------------------------------------------
 Wed Mar 16 12:57:46 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - prf-plus-modularization.patch: updated from upstream branch

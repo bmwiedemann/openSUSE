@@ -17,7 +17,7 @@
 
 
 Name:           strongswan
-Version:        5.9.5
+Version:        5.9.6
 Release:        0
 %define         upstream_version     %{version}
 %define         strongswan_docdir    %{_docdir}/%{name}
@@ -81,8 +81,6 @@ Patch3:         %{name}_fipscheck.patch
 %endif
 Patch5:         0005-ikev1-Don-t-retransmit-Aggressive-Mode-response.patch
 Patch6:		harden_strongswan.service.patch
-Patch7:		prf-plus-modularization.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bison
 BuildRequires:  curl-devel
 BuildRequires:  flex
@@ -270,7 +268,6 @@ sed -e 's|@IPSEC_DIR@|%{_libexecdir}/ipsec|g' \
      > _fipscheck
 %endif
 %patch6 -p1
-%patch7 -p1
 
 %build
 CFLAGS="%{optflags} -W -Wall -Wno-pointer-sign -Wno-strict-aliasing -Wno-unused-parameter"
@@ -371,7 +368,7 @@ autoreconf --force --install
 	--enable-curl \
 	--enable-bypass-lan \
 	--disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 install -d -m755              %{buildroot}/%{_sbindir}/
@@ -513,14 +510,12 @@ fi
 %endif
 
 %files
-%defattr(-,root,root)
 %dir %{strongswan_docdir}
 %{strongswan_docdir}/README.SUSE
 
 %if %{with fipscheck}
 
 %files hmac
-%defattr(-,root,root)
 %dir %{strongswan_configs}
 %dir %{strongswan_configs}/charon
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/zzz_fips-enforce.conf
@@ -537,7 +532,6 @@ fi
 %endif
 
 %files ipsec
-%defattr(-,root,root)
 %config(noreplace) %attr(600,root,root) %{_sysconfdir}/ipsec.conf
 %config(noreplace) %attr(600,root,root) %{_sysconfdir}/ipsec.secrets
 %config(noreplace) %attr(600,root,root) %{_sysconfdir}/swanctl/swanctl.conf
@@ -592,7 +586,6 @@ fi
 %{strongswan_plugins}/libstrongswan-updown.so
 
 %files doc
-%defattr(-,root,root)
 %dir %{strongswan_docdir}
 %{strongswan_docdir}/TODO
 %{strongswan_docdir}/NEWS
@@ -606,7 +599,6 @@ fi
 %{_mandir}/man8/swanctl.8.*
 
 %files libs0
-%defattr(-,root,root)
 %if %{with systemd}
 %{_tmpfilesdir}/%{name}.conf
 %endif
@@ -966,7 +958,6 @@ fi
 %if %{with nm}
 
 %files nm
-%defattr(-,root,root)
 %dir %{_libexecdir}/ipsec
 %dir %{strongswan_plugins}
 %{_libexecdir}/ipsec/charon-nm
@@ -976,7 +967,6 @@ fi
 %if %{with mysql}
 
 %files mysql
-%defattr(-,root,root)
 %dir %{strongswan_libdir}
 %dir %{strongswan_plugins}
 %{strongswan_plugins}/libstrongswan-mysql.so
@@ -997,7 +987,6 @@ fi
 %if %{with sqlite}
 
 %files sqlite
-%defattr(-,root,root)
 %dir %{strongswan_libdir}
 %dir %{strongswan_plugins}
 %{strongswan_plugins}/libstrongswan-sqlite.so
@@ -1017,7 +1006,6 @@ fi
 %if %{with tests}
 
 %files tests
-%defattr(-,root,root)
 %dir %{strongswan_configs}
 %dir %{strongswan_configs}/charon
 %{strongswan_configs}/charon/load-tester.conf
