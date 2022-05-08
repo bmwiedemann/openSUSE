@@ -1,4 +1,140 @@
 -------------------------------------------------------------------
+Fri May  6 09:48:06 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.4877, fixes the following problems
+- fixes CVE-2022-1381 ( boo#1198596 )
+  * Using wrong flag for using bell in the terminal.
+  * Supercollider filetype not recognized.
+  * No filetype override for .sys files.
+  * Cannot use an imported function in a mapping.
+  * <script> is not expanded in autocmd context.
+  * Small pieces of dead code.
+  * Mapping <SID>name.Func does not work for script in autoload directory.
+  * Wrong 'statusline' value can cause illegal memory access.
+  * Error from setting an option is silently ignored.
+  * Still using cached values after unsetting some known environment variables.
+  * Cannot use <SID>FuncRef in completion spec.
+  * Build error without the +eval feature.
+  * List of libraries to suppress lsan errors is outdated.
+  * When using an LSP channel want to get the message ID.
+  * CurSearch highlight does not work for multi-line match.
+  * Using matchfuzzy() on a long list can take a while.
+  * Documentation for using LSP messages is incomplete.
+  * Using freed memory when using synstack() and synID() in WinEnter.
+  * Using invalid pointer with "V:" in Ex mode.
+  * CI uses an older gcc version.
+  * Function matchfuzzy() sorts too many items.
+  * KRL files using "deffct" not recognized.
+  * Openscad files are not recognized.
+  * CI: codecov upload sometimes does not work.
+  * Build warning with UCRT.
+  * Cannot easily mix expression and heredoc.
+  * Coverity warns for not checking return value.
+  * Old Coverity warning for not checking ftell() return value.
+  * Build failure without the +eval feature.
+  * Crash when using a number for lambda name.
+  * SpellBad highlighting does not work in Konsole.
+  * GTK: 'lines' and 'columns' may change during startup.
+  * Screendump tests fail because of a redraw.
+  * Pacman files use dosini filetype.
+  * lsan suppression is too version specific.
+  * Parsing an LSP message fails when it is split.
+  * Maxima files are not recognized.
+  * Accessing freed memory.
+  * Coverity warns for leaking memory.
+  * Lamba test with timer is flaky.
+  * Visual mode not stopped early enough if win_gotoid() goes to another
+  buffer. (Sergey Vlasov)
+  * Test for win_gotoid() in Visual mode fails on Mac.
+  * prop_find() does not find the right property.
+  * Large payload for LSP message not tested.
+  * The cursor may be in the in wrong place when using :redraw while editing
+  the cmdline.
+  * Lilypond filetype not recognized.
+  * Indent operator creates an undo entry for every line.
+  * Recognizing Maxima filetype even though it might be another.
+  * Compiler warning for not initialized variable.
+  * 'cursorbind' scrolling depends on whether 'cursorline' is set.
+  * File left behind after running cursorline tests.
+  * getwininfo() may get oudated values.
+  * t_8u option was reset even when set by the user.
+  * Popup does not use correct topline.
+  * Missing test update for adjusted t_8u behavior.
+  * Fix for cursorbind fix not fully tested.
+  * WinScrolled not always triggered when scrolling with the mouse.
+  * Expression in heredoc doesn't work for compiled function.
+  * CurSearch used for all matches in current line.
+  * A mapping using <LeftDrag> does not start Select mode.
+  * Processing key eveints in Win32 GUI is not ideal.
+  * Unused item in engine struct.
+  * Various things not properly tested.
+  * Missing changes in one file.
+  * Unused struct item.
+  * Pasting text while indent folding may mess up folds.
+  * Possible to leave a popup window with win_gotoid().
+  * Cannot build with older GTK version.
+  * Still using older codecov app in some places of CI.
+  * No test for what 8.2.4806 fixes.
+  * Unmapping simplified keys also deletes other mapping.
+  * Not simple programmatic way to find a specific mapping.
+  * Crash when imported autoload script was deleted.
+  * Setting ufunc to NULL twice.
+  * Concatenating more than 2 strings in a :def function is inefficient.
+  * Expression is evaluated multiple times.
+  * Can only get a list of mappings.
+  * .cshtml files are not recognized.
+  * Typo in variable name. (Gabriel Dupras)
+  * Fix for unmapping simplified key not fully tested.
+  * A key may be simplified to NUL.
+  * Possible endless loop if there is unused typahead.
+  * Crash when using maparg() and unmapping simplified keys.
+  * Passing zero instead of NULL to a pointer argument.
+  * Failure of mapping not checked for.
+  * Vim9: some lines not covered by tests.
+  * Modifiers not simplified when timed out or using feedkeys() with 'n" flag.
+  * Checking for absolute path is not trivial.
+  * Compiler warning for unused argument.
+  * Heredoc expression evaluated even when skipping.
+  * Empty string considered an error for expand() when 'verbose' is
+  set. (Christian Brabandt)
+  * expand("%:p") is not empty when there is no buffer name.
+  Bender)
+  * <C-S-I> is simplified to <S-Tab>.
+  * Duplicate code.
+  * Termcodes test fails.
+  * Crash when using uninitialized function pointer.
+  * Local completion with mappings and simplification not working.
+  * Gleam filetype not detected.
+  * Mksession mixes up "tabpages" and "curdir" arguments.
+  * Compiler warning for uninitialized variable.
+  * ANSI color index to RGB value not correct.
+  * CI with FreeBSD is a bit outdated.
+  * Array size does not match usage.
+  * Robot files are not recognized.
+  * MinGW compiler complains about unknown escape sequence.
+  * Yaml indent for multiline is wrong.
+  * K_SPECIAL may be escaped twice.
+  * wget2 files are not recognized.
+  * It is not easy to restore saved mappings.
+  * Vim9: test may fail when run with valgrind.
+  * Accessing freed memory in test without the +channel feature. (Dominique
+  Pellé)
+  * Vim9: script test fails.
+  * :startinsert right after :stopinsert does not work when popup menu is
+  still visible.
+  * Duplicate code in "get" functions.
+  * Listing of mapping with K_SPECIAL is wrong.
+  * When closing help window autocmds triggered for the wrong window.
+  * Expression in command block does not look after NL.
+  * Vim9: expression in :substitute is not compiled.
+  * Vim9: in :def function no error for using a range with a command that
+  does not accept one.
+  * Vim9: no error for using an expression only at the script level when
+  followed by an empty line.
+  * Vim9: using "else" differs from using "endif/if !cond".
+  * Win32 GUI: horizontal scroll wheel not handled properly.
+
+-------------------------------------------------------------------
 Tue Apr 19 21:19:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - skip empty post/postun on gvim for SLE15+ 

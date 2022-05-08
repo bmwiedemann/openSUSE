@@ -5802,4 +5802,41 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>971085</requestid>
   </revision>
+  <revision rev="308" vrev="1">
+    <srcmd5>a700060ed367d8fc397759e9ca1d620d</srcmd5>
+    <version>8.2.4877</version>
+    <time>1652039552</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.4877, fixes the following problems
+- fixes CVE-2022-1381 ( boo#1198596 )
+  * Using wrong flag for using bell in the terminal.
+  * Supercollider filetype not recognized.
+  * No filetype override for .sys files.
+  * Cannot use an imported function in a mapping.
+  * &lt;script&gt; is not expanded in autocmd context.
+  * Small pieces of dead code.
+  * Mapping &lt;SID&gt;name.Func does not work for script in autoload directory.
+  * Wrong 'statusline' value can cause illegal memory access.
+  * Error from setting an option is silently ignored.
+  * Still using cached values after unsetting some known environment variables.
+  * Cannot use &lt;SID&gt;FuncRef in completion spec.
+  * Build error without the +eval feature.
+  * List of libraries to suppress lsan errors is outdated.
+  * When using an LSP channel want to get the message ID.
+  * CurSearch highlight does not work for multi-line match.
+  * Using matchfuzzy() on a long list can take a while.
+  * Documentation for using LSP messages is incomplete.
+  * Using freed memory when using synstack() and synID() in WinEnter.
+  * Using invalid pointer with &quot;V:&quot; in Ex mode.
+  * CI uses an older gcc version.
+  * Function matchfuzzy() sorts too many items.
+  * KRL files using &quot;deffct&quot; not recognized.
+  * Openscad files are not recognized.
+  * CI: codecov upload sometimes does not work.
+  * Build warning with UCRT.
+  * Cannot easily mix expression and heredoc.
+  * Coverity warns for not checking return value.
+  * Old Coverity warning for not checking ftell() return value.</comment>
+    <requestid>975380</requestid>
+  </revision>
 </revisionlist>
