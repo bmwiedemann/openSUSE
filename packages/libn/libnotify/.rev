@@ -298,4 +298,18 @@ No GPL-2.0+ files found in the package. The Fedora package is also licensed unde
     <comment></comment>
     <requestid>792298</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>d7109b0b1daefd70b9aa5a07fb654f46</srcmd5>
+    <version>0.7.11</version>
+    <time>1652039545</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.11
+  * Fix potential build errors with old glib version we require
+  * notify-send: Add support for boolean hints
+  * notify-send: Support passing any hint value, by parsing
+    variant strings
+  * notify-send: Add explicit option to create transient
+    notifications (forwarded request 975131 from cgiboudeaux)</comment>
+    <requestid>975333</requestid>
+  </revision>
 </revisionlist>

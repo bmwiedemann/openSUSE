@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May  5 09:24:05 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.7.11
+  * Fix potential build errors with old glib version we require
+  * notify-send: Add support for boolean hints
+  * notify-send: Support passing any hint value, by parsing
+    variant strings
+  * notify-send: Add explicit option to create transient
+    notifications
+
+-------------------------------------------------------------------
 Sun Apr  5 22:02:35 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Remove service files.
