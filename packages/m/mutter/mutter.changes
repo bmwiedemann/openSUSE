@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri May 06 08:22:25 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to version 42.1:
+  + Send correct LEAVE events when entering windows.
+  + Be more forgiving with wrongly sized clients.
+  + Add ClutterInputCapabilities enum and device property.
+  + Fall back if COPY_MODE_SECONDARY_GPU fails to init.
+  + Fix missing root window properties after XWayland start.
+  + wayland/shm: Add support for ABGR8888 and XBGR8888 formats.
+  + Keep actors dirty if a redraw was queued up during paint().
+  + Fix overview painting of shaped texture with layer snippets.
+  + Survive missing GAMMA_LUT KMS property.
+  + Record current event when going through event filters.
+  + Pass events to pointer a11y before going through filters.
+  + Update cursor when scaled or transformed.
+  + Fix screen cast when DMA buffer fails or can't be used.
+  + Repick when pointer actor goes unmapped.
+  + Improve IM support.
+  + Allow using dumb buffers for cursor sprites.
+  + wayland/dma-buf: Only advertise supported formats.
+  + Fix screen cast cursor metadata with unthrottled input.
+  + Fixed crashes.
+  + Plugged memory leak.
+- Drop mutter-bail-out-on-reentry-into-map-unmap.patch and
+  mutter-42.0-fix-top-bar-elements-hovering-effect.patch (merged
+  upstream).
+
+-------------------------------------------------------------------
 Sun Mar 27 05:38:39 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
 
 - Add mutter-42.0-fix-top-bar-elements-hovering-effect.patch based
