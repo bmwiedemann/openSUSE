@@ -97,7 +97,7 @@ for f in ~/.jupyter/nbconfig/*.json ; do
     install -Dm 644 ${f} %{buildroot}%{_jupyter_nb_confdir}/${tdir}.d/nbextensions_configurator.json
 done
 
-%{fdupes %{buildroot}%{_jupyter_prefix} %{buildroot}%{_jupyter_confdir}}
+%fdupes %{buildroot}%{_jupyter_prefix}
 
 %files %{python_files}
 %doc README.md
@@ -108,7 +108,7 @@ done
 %files -n jupyter-jupyter_nbextensions_configurator
 %license LICENSE.txt
 %{_bindir}/jupyter-nbextensions_configurator
-%config %{_jupyter_nb_notebook_confdir}/nbextensions_configurator.json
-%config %{_jupyter_nb_tree_confdir}/nbextensions_configurator.json
+%_jupyter_config %{_jupyter_nb_notebook_confdir}/nbextensions_configurator.json
+%_jupyter_config %{_jupyter_nb_tree_confdir}/nbextensions_configurator.json
 
 %changelog

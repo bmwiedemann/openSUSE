@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May  7 22:34:41 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
+
+- fix fdupes and confdir errors (is distconfdir now)
+
+-------------------------------------------------------------------
 Fri Oct 23 15:06:25 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add remove_nose.patch to remove dependency on nose.
