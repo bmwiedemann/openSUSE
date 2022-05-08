@@ -1456,4 +1456,28 @@
  * Stop relying on a compiler implementation detail in Rust HgPath</comment>
     <requestid>970254</requestid>
   </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>bf8d6f5d484e7fd18faf774d9f14d5b4</srcmd5>
+    <version>6.1.2</version>
+    <time>1652039535</time>
+    <user>dimstar_suse</user>
+    <comment>- removed _service in favour of running download_files manually
+- Mercurial 6.1.2:
+  * Improve Windows test suite
+  * Fix `debuglock` not ignoring a missing lockfile when forcing a lock
+  * Improve help of `ui.large-file-limit`
+  * Set the large-file-limit to 10MB (from 10MiB) for clarity
+  * While rewriting desc hashes, ignore ambiguous prefix &quot;hashes&quot;
+  * Fix a crash in partial amend with copies
+  * Fix a py3 compatiblity bug
+  * **Fix incorrect metadata causing dirstate-v2 data loss in edge case (dd2503a63d33)**
+  * Fix cleanup of old dirstate-v2 data files when using `rhg`
+  * Make reference to `.hg/last_message.txt` relative in commit
+  * Fix an infinite hang when `rhg` is used in the background
+  * Fix Python DLL loading bug in Windows
+  * Add `--docket` flag to `debugstate` to check out dirstate-v2 metadata
+  * Remove `debugdirstateignorepatternhash` in favor of `debugstate --docket`
+  * Fix incorrect metadata causing systematic complete dirstate-v2 rewrite (forwarded request 975576 from develop7)</comment>
+    <requestid>975577</requestid>
+  </revision>
 </revisionlist>

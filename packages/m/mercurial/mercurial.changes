@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat May  7 14:50:39 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
+
+- removed _service in favour of running download_files manually
+
+- Mercurial 6.1.2:
+
+  * Improve Windows test suite
+  * Fix `debuglock` not ignoring a missing lockfile when forcing a lock
+  * Improve help of `ui.large-file-limit`
+  * Set the large-file-limit to 10MB (from 10MiB) for clarity
+  * While rewriting desc hashes, ignore ambiguous prefix "hashes"
+  * Fix a crash in partial amend with copies
+  * Fix a py3 compatiblity bug
+  * **Fix incorrect metadata causing dirstate-v2 data loss in edge case (dd2503a63d33)**
+  * Fix cleanup of old dirstate-v2 data files when using `rhg`
+  * Make reference to `.hg/last_message.txt` relative in commit
+  * Fix an infinite hang when `rhg` is used in the background
+  * Fix Python DLL loading bug in Windows
+  * Add `--docket` flag to `debugstate` to check out dirstate-v2 metadata
+  * Remove `debugdirstateignorepatternhash` in favor of `debugstate --docket`
+  * Fix incorrect metadata causing systematic complete dirstate-v2 rewrite
+
+-------------------------------------------------------------------
 Fri Apr 15 00:07:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - udpate to 6.1.1:
