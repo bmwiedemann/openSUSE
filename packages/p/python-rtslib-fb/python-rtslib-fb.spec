@@ -25,7 +25,7 @@
 %define dbdir %{_sysconfdir}/target
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rtslib-fb
-Version:        2.1.74
+Version:        2.1.75
 Release:        0%{?dist}
 Summary:        API for Linux kernel SCSI target (aka LIO)
 License:        Apache-2.0
@@ -50,7 +50,7 @@ Requires:       alts
 BuildRequires:  alts
 %else
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %endif
 Provides:       python-rtslib = %{version}-%{release}
 Obsoletes:      python-rtslib < %{version}

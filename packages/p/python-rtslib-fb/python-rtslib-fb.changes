@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri May 06 16:54:21 UTC 2022 - lduncan@suse.com
+
+- Update to version v2.1.75:
+  * version 2.1.75
+  * rtslib: fix missing ':' after else statement
+  * dbroot: let the user change the dbroot directory freely.
+  * handle target kernel module new attribute cpus_allowed_list
+  * fix "This _Backstore already exists in configFS" exception
+  * Check whether the enable attribute exists before fread
+  * Filter fabric wwns by reading driver name
+  * Add support of efct fabric driver
+  * tcmu: add support for config param data_pages_per_blk
+  * Relax restrictions on TPG Tag range
+  * rtslib: Use O_RDWR for sg devices alone.
+
+-------------------------------------------------------------------
 Sun Jan 30 17:07:00 UTC 2022 - Mykola Golub <mgolub@suse.com>
 
 - Update parameters description in rbd-support.patch
