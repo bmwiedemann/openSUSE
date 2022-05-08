@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May  7 12:51:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2021.1.5:
+  * Reworked synchronization mechanism to reduce contention when multiple
+    task_arena’s are used concurrently.
+  * Fixed sporadic memory corruption.
+  * Enabled Microsoft Visual Studio* 2022 and Python 3.9 support.
+  * Extended task_group interface with a new run_and_wait overload to accept
+    task_handle.
+  * Fixed possible correctness issue in queuing_rw_mutex on non-Intel platforms.
+  * Fixed sporadic memory corruption. 
+
+-------------------------------------------------------------------
 Tue Apr  5 14:34:05 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - For 32-bit systems, rename tbb32.pc (default upstream for

@@ -1,7 +1,7 @@
 #
 # spec file for package tbb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@
 %bcond_with python3
 %endif
 Name:           tbb
-Version:        2021.4.0
+Version:        2021.5.0
 Release:        0
 Summary:        Threading Building Blocks (TBB)
 License:        Apache-2.0
@@ -225,7 +225,7 @@ rm -r %{buildroot}%{_datadir}/doc/TBB
 
 # Rename tbb32.pc to tbb.pc (same as 64-bit) so that applications depending on tbb
 # do not have to call different pkgconfig modules based on arch
-test -f %{buildroot}%{_libdir}/pkgconfig/tbb32.pc && mv %{buildroot}%{_libdir}/pkgconfig/tbb32.pc %{buildroot}%{_libdir}/pkgconfig/tbb.pc 
+test -f %{buildroot}%{_libdir}/pkgconfig/tbb32.pc && mv %{buildroot}%{_libdir}/pkgconfig/tbb32.pc %{buildroot}%{_libdir}/pkgconfig/tbb.pc
 
 %check
 %if %{with test}
