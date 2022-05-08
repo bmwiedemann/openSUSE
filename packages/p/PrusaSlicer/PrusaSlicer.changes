@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sun May  8 10:03:57 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.4.2
+  * SLA mode incorrectly handled 3MFs from 3rd party software,
+    resulting in misplaced SLA support points and holes in some
+    cases (#6100, #7359, #7189, #7826, #7659). This is very old
+    issue.
+  * Vase mode preview did not show in cases when Custom Start
+    G-Code lacked moves in Z #8032
+  * When loading a 3rd party 3MF using drag and drop. PrusaSlicer
+    no longer asks if the 3MF shall be loaded as a project (which
+    makes no sense since it contains no config) and loads the
+    geometry only
+  * Using the Layer Height Modifier with the wipe tower was
+    impossible with multiple objects. The wipe tower reported that
+    the layer height profile is different, even though it was in
+    fact set the same on all objects (#7711, #7903, #8044)
+  * Fixed a crash on "Convert from/to units" when several objects
+    were selected
+  * Automatic color change for logo crashed PrusaSlicer in certain
+    cases (when a one-layer object was present) #8156
+  * Linux specific: Fixed a crash on opening projects in some cases
+    (#8078, #8097)
+  * Added Snapmaker bundle (Snapmaker A250, Snapmaker A350). Based
+    on https://github.com/nivekmai/snapmaker-prusa by @nivekmai,
+    @WilliamBosacker, @mrworf
+  * Added profiles for Zonestar printers (Z5, Z6, Z5X, Z8, Z9),
+    based on slic3r/slic3r-profiles#19 by @ZONESTAR3D
+  * Fixed a crash when Unsaved Changes dialog attempted to show a
+    modified config option which is not available in current mode
+    (e.g. Start G-Code in Simple mode). #7905
+  * Fixed a bug that when the user was closing the application and
+    replied 'Yes' in the dialog asking about unsaved project while
+    also checking 'Remember my choice', it made it impossible to
+    close PrusaSlicer in the next runs when there were no objects
+    in the plater #8076, #8122
+  * Loading of a G-Code in G-Code Viewer or loading config from
+    G-Code file sometimes failed because of a bug in parsing of the
+    configuration block at the end.
+  * Fixed incorrect rendering of some characters used in the
+    recently updated Simplified Chinese translation #8171
+  * Fixed incorrect number of toolchanges reported in "Sliced Info"
+    box when wipe tower was used. The annotations of toolchanges in
+    G-Code were also numbered wrong #8186
+  * Fixed a crash when using the "Import SL1 Archive" function and
+    either cancelling the dialog or confirming a non-existing file
+    #8175
+  * Recycling symbols in Shape Gallery were mirrored so the user
+    does not have to flip them when using them as negative volumes
+    at the base of the print (which is the usual use case). Also,
+    PLA recycling symbol was added #7800
+
+-------------------------------------------------------------------
 Mon Apr 25 11:27:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Refresh PrusaSlicer-boost1.79.patch with upstream's fix
