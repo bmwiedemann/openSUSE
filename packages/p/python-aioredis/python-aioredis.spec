@@ -40,7 +40,6 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module coverage >= 6.2}
 BuildRequires:  %{python_module flake8 >= 4.0.1}
 BuildRequires:  %{python_module hiredis >= 2.0.0}
-BuildRequires:  %{python_module mock >= 4.0.3}
 BuildRequires:  %{python_module pytest >= 6.2.5}
 BuildRequires:  %{python_module pytest-asyncio >= 0.16.0}
 BuildRequires:  %{python_module pytest-cov >= 3.0.0}
