@@ -1,7 +1,7 @@
 #
 # spec file for package libsmbios
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,8 @@
 #
 
 
-%define libname libsmbios_c2
+%define sonum 2
+%define libname libsmbios_c%{sonum}
 Name:           libsmbios
 Version:        2.4.3.3.gf01a217
 Release:        0
@@ -25,10 +26,8 @@ License:        GPL-2.0-or-later OR OSL-2.1
 Group:          Hardware/Other
 URL:            https://github.com/dell/libsmbios
 Source:         %{name}-%{version}.tar.gz
-Source1:        %{name}-rpmlintrc
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  chrpath
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -119,6 +118,8 @@ programs against libsmbios.
 
 %prep
 %autosetup -p1
+# That conflicts with --disable-static
+sed -i"" "s/ -static//" src/bin/Makefile.am
 
 %build
 autoreconf -fvi
@@ -136,9 +137,6 @@ export LDFLAGS="-pie"
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-
-# remove rpath from binaries
-chrpath --replace '$ORIGIN' %{buildroot}%{_sbindir}/smbios-sys-info-lite
 
 # python3 duplicates
 %fdupes %{buildroot}%{python3_sitearch}
@@ -168,6 +166,7 @@ ln -s smbios-lcd-brightness %{buildroot}/%{_sbindir}/dellLcdBrightness
 %files -n %{libname}
 %license COPYING-GPL COPYING-OSL
 %license src/bin/getopts_LICENSE.txt
+%{_libdir}/libsmbios_c.so.%{sonum}
 %{_libdir}/libsmbios_c.so.*
 %{_datadir}/locale/en/
 

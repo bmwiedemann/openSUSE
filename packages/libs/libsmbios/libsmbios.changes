@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  3 07:24:33 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Replace invalid use of chrpath with patching out -static (boo#1199134)
+- Mention the sonum in %files
+- Drop meanwhile unnecessary libsmbios-rpmlintrc
+
+-------------------------------------------------------------------
 Fri Jul 09 12:52:41 UTC 2021 - trenn@suse.de
 
 - Add _service magic
