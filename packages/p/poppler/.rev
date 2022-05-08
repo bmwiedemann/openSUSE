@@ -1816,4 +1816,23 @@ New upstream release</comment>
     <comment></comment>
     <requestid>971115</requestid>
   </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>5be2937d1b086741a7eaf54a85585c94</srcmd5>
+    <version>22.05.0</version>
+    <time>1652039531</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 22.05.0:
+  * Annotations: Make sure we embed fonts for the FreeText annots
+  * Forms: Make sure we embedd fonts as needed
+  * Signatures: Make sure we embed the needed fonts
+  * CairoOutputDev: color type 3 fonts
+  * fix two bugs in multiline find_text()
+  * code improvements
+  * pdftotext: added TSV mode
+  * HtmlOutputDev: don't use png.h
+  * Use time_t for time
+  * Add page_transition::durationReal
+  * Pass leftFontSize down to `FormWidgetSignature::signDocumentWithAppearence`</comment>
+    <requestid>975545</requestid>
+  </revision>
 </revisionlist>
