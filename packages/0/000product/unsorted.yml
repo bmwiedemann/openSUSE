@@ -23762,7 +23762,7 @@ unsorted:
   - python310-notify2 
   - python310-nox 
   - python310-npTDMS 
-  - python310-nptyping: [x86_64] 
+  - python310-nptyping 
   - python310-nss 
   - python310-ntc-templates 
   - python310-ntfy 
@@ -26863,7 +26863,7 @@ unsorted:
   - python38-notebook-lang 
   - python38-nox 
   - python38-npTDMS 
-  - python38-nptyping: [x86_64] 
+  - python38-nptyping 
   - python38-nss 
   - python38-ntc-templates 
   - python38-ntfy 
@@ -29986,7 +29986,7 @@ unsorted:
   - python39-notify2 
   - python39-nox 
   - python39-npTDMS 
-  - python39-nptyping: [x86_64] 
+  - python39-nptyping 
   - python39-nss 
   - python39-ntc-templates 
   - python39-ntfy 
