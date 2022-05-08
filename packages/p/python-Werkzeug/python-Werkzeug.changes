@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 28 16:25:37 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Replace no-network-testing.patch with the upstream solution
+  2402-dev_server.patch from gh#pallets/werkzeug#2402.
+- Add moved_root.patch to make test test_exclude_patterns with
+  different PYTHONPATH.
+
+-------------------------------------------------------------------
 Tue Apr 19 18:54:06 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 2.1.1:
