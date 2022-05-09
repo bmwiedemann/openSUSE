@@ -420,4 +420,17 @@
 </comment>
     <requestid>973871</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d2ec878ddcb68a2a435ce276dd48a439</srcmd5>
+    <version>3.9.1</version>
+    <time>1652114670</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.9.1:
+  For making it possible to have Qt5 and Qt6 installations of
+  libqtxdg alongside each other in near future, two changes are
+  made to this point release:
+  * qtxdg-mat has been separated from libqtxdg and put into qtxdg-tools.
+  * The installation of config files has been made optional.</comment>
+    <requestid>975830</requestid>
+  </revision>
 </revisionlist>

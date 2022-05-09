@@ -18,7 +18,7 @@
 
 %define _name libqtxdg
 Name:           libqt5xdg
-Version:        3.9.0
+Version:        3.9.1
 Release:        0
 Summary:        Qt implementation of xdg specs for lxqt
 License:        GPL-3.0-only
@@ -79,13 +79,6 @@ Requires:       libQt5XdgIconLoader3 = %{version}
 %description -n libQt5XdgIconLoader-devel
 Development files for QtXDG icon loader libraries used in LXQt
 
-%package -n qtxdg-tools
-Summary:        Tools for QtXdg
-Group:          System/X11/Utilities
-
-%description -n qtxdg-tools
-Tools for QtXdg.
-
 %prep
 %setup -q -n %{_name}-%{version}
 
@@ -106,9 +99,8 @@ Tools for QtXdg.
 %license COPYING
 %doc AUTHORS
 %{_libdir}/libQt5Xdg.so.*
-%dir %{_datadir}/lxqt
-%{_datadir}/lxqt/lxqt-qtxdg.conf
-%{_datadir}/lxqt/qtxdg.conf
+%{_sysconfdir}/xdg/lxqt-qtxdg.conf
+%{_sysconfdir}/xdg/qtxdg.conf
 
 %files devel
 %{_datadir}/cmake/qt5xdg
@@ -135,8 +127,5 @@ Tools for QtXdg.
 %{_datadir}/cmake/qt5xdgiconloader/qt5xdgiconloader-config.cmake
 %{_datadir}/cmake/qt5xdgiconloader/qt5xdgiconloader-targets-*.cmake
 %{_datadir}/cmake/qt5xdgiconloader/qt5xdgiconloader-targets.cmake
-
-%files -n qtxdg-tools
-%{_bindir}/qtxdg-mat
 
 %changelog
