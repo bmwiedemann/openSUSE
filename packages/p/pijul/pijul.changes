@@ -1,13 +1,32 @@
 -------------------------------------------------------------------
+Mon May  9 06:41:34 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update upstream version 1.0.0-beta.2:
+  * Improve "pijul key" documentation.
+  * "pijul pull" does not open $EDITOR anymore when given a list
+    of changes.
+  * Fix a bug with name conflicts.
+  * Fix a few panic/unwraps problems.
+  * Fix a bug where a zombile file could be deleted by
+    "pijul unrecord" but its contents would stay zombie.
+  * Update regex dependency to prevent CVE-2022-24713
+    (bsc#1196972).
+
+- Changes from version 1.0.0-beta.1:
+  * Fixed a failed assertion in the patch text format.
+  * Fixed a "merged vertices" bug when moving and editing them in
+    the same patch.
+
+-------------------------------------------------------------------
 Tue Jan 25 06:13:01 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
-- Update to upstream version 1.0.0~beta:
+- Update to upstream version 1.0.0-beta:
   * Add --force to "add" to include ignored files.
   * Fix conflict identifiers.
   * Remove the --tag option from "push/pull".
   * Fix "log" filters.
 
-- Changes from version 1.0.0~alpha.57:
+- Changes from version 1.0.0-alpha.57:
   * Add support for tags.
   * Fix path crashes related to the non-null roots.
   * Prioritise moving a file over undeletion.

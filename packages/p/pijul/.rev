@@ -119,4 +119,28 @@
 </comment>
     <requestid>948976</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3d9f8f2c18da90af416dc7d147020e7d</srcmd5>
+    <version>1.0.0~beta.2</version>
+    <time>1652114656</time>
+    <user>dimstar_suse</user>
+    <comment>- Update upstream version 1.0.0-beta.2:
+  * Improve &quot;pijul key&quot; documentation.
+  * &quot;pijul pull&quot; does not open $EDITOR anymore when given a list
+    of changes.
+  * Fix a bug with name conflicts.
+  * Fix a few panic/unwraps problems.
+  * Fix a bug where a zombile file could be deleted by
+    &quot;pijul unrecord&quot; but its contents would stay zombie.
+  * Update regex dependency to prevent CVE-2022-24713
+    (bsc#1196972).
+- Changes from version 1.0.0-beta.1:
+  * Fixed a failed assertion in the patch text format.
+  * Fixed a &quot;merged vertices&quot; bug when moving and editing them in
+    the same patch.
+
+- Update to upstream version 1.0.0-beta:
+- Changes from version 1.0.0-alpha.57:</comment>
+    <requestid>975746</requestid>
+  </revision>
 </revisionlist>
