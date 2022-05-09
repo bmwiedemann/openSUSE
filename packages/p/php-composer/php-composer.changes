@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  5 15:29:30 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.10.26
+  * Security: Fixed command injection vulnerability in
+    HgDriver/GitDriver: CVE-2022-24828
+
+-------------------------------------------------------------------
 Fri Feb 25 13:40:36 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.10.25
