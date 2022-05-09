@@ -28,7 +28,6 @@ URL:            https://github.com/lukaszb/django-guardian
 Source:         https://files.pythonhosted.org/packages/source/d/django-guardian/django-guardian-%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module django-environ}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
