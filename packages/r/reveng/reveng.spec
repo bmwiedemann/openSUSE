@@ -18,7 +18,7 @@
 
 
 Name:           reveng
-Version:        3.0.1
+Version:        3.0.3
 Release:        0
 Summary:        An arbitrary-precision CRC calculator and algorithm finder
 License:        GPL-3.0-or-later

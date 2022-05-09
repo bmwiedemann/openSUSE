@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May  8 15:47:48 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.3
+  * Added algorithm CRC-16/M17 from the CRC Catalogue.
+- Update to version 3.0.2
+  * Reading a file which exceeds the size limit of polynomials
+    causes an error.
+
+-------------------------------------------------------------------
 Tue Jan 11 21:54:16 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.1
