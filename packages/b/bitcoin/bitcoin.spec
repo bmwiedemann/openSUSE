@@ -23,7 +23,6 @@
 %define name_pretty %{base_pretty}
 %define consensus 1
 %define is_base 1
-%define shortver 22.0
 # Disable tests on Tumbleweed because of an hard to investigate error
 %if 0%{?suse_version} > 1500
 %bcond_with tests
@@ -31,13 +30,13 @@
 %bcond_without tests
 %endif
 Name:           bitcoin
-Version:        0.%{shortver}
+Version:        22.0
 Release:        0
 Summary:        P2P Digital Currency
 License:        MIT
 Group:          Productivity/Networking/Other
 URL:            https://%{name}.org
-Source0:        https://bitcoincore.org/bin/bitcoin-core-%{shortver}/bitcoin-%{shortver}.tar.gz
+Source0:        https://bitcoincore.org/bin/bitcoin-core-%{version}/bitcoin-%{version}.tar.gz
 Source1:        %{base}d.service
 Source3:        %{base}d.conf
 Source4:        %{base}.conf
@@ -175,7 +174,7 @@ This package provides automated tests for %{name}-qt5 and %{name}d.
 %endif
 
 %prep
-%autosetup -p1 -n %{name}-%{shortver}
+%autosetup -p1
 
 %build
 autoreconf -fiv
