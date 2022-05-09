@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun May  1 11:10:02 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to current stable release 4.1 ga13:
+  * Added a macros menu to c3270 and wc3270.
+  * Corrected support for the macros resource without a qualifying host name.
+  * The entire list of command-line options is now displayed only
+    with the --help command-line option, not for every unknown option.
+  * Changed the default for unlockDelay in all emulators from
+    true to false. This is a very significant change.
+  * When input from the String() action overflows a field,
+    the cursor now lands in the correct location.
+  * When a host has multiple addresses, the emulators (except pr3287)
+    will now reliably try up to four of them.
+  * Errors from the OpenSSL library are now displayed correctly.
+  * When a connection fails to a TLS-tunnel host (one specified with
+    the L: prefix), the correct error message is now displayed.
+  * Fixed a c3270 crash when a connection is opened from a remote
+    source (HTTP server or script port) while at the c3270> prompt.
+  * Fixed a c3270 crash when the -secure and -trace command-line
+    options are used together.
+  * A key typed into a full field in insert mode no longer overwrites
+    the character under the cursor.
+- Drop upstream resolved patches:
+  * x3270-missing-file.patch
+  * x3270-missing-include.patch
+
+-------------------------------------------------------------------
 Mon May 31 13:18:05 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Use https for URL and Source

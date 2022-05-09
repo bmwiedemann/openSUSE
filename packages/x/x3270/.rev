@@ -322,4 +322,12 @@
 - Update to ga14 of 4.0 series (forwarded request 897582 from susnux)</comment>
     <requestid>905252</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>3f486baf12c30c53d61a3b2e38f55b41</srcmd5>
+    <version>4.1</version>
+    <time>1652114625</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>975628</requestid>
+  </revision>
 </revisionlist>

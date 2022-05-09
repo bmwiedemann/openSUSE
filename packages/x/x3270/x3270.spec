@@ -1,7 +1,7 @@
 #
 # spec file for package x3270
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define _suffix ga14
+%define _suffix ga13
 %define _fullname suite3270-%{version}%{_suffix}
 %define _x026ver 1.2
 Name:           x3270
-Version:        4.0
+Version:        4.1
 Release:        0
 Summary:        A Family of IBM 3270 Terminal Emulators
 License:        MIT
@@ -33,8 +33,6 @@ Source2:        x3270.desktop
 Patch0:         mknod.patch
 Patch100:       usr_local_bin.patch
 Patch102:       x026-offset.diff
-Patch105:       x3270-missing-include.patch
-Patch106:       x3270-missing-file.patch
 BuildRequires:  bdftopcf
 BuildRequires:  fdupes
 BuildRequires:  fontpackages-devel
@@ -113,8 +111,8 @@ x026 is a fun toy which emulates an x026 puncher.
 %patch0
 %patch100
 %patch102
-%patch105 -p1
-%patch106 -p1
+
+find . -name ".gitignore" -delete
 
 %build
 export CFLAGS="%{optflags}"
@@ -143,8 +141,6 @@ cd ..
 export LIBX3270DIR=%{_sysconfdir}/x3270
 # create the default directory structure in the build root
 mkdir --parents %{buildroot}{%{_bindir},%{_mandir}/{man1,man5}}
-chmod -x x3270/html/Keymap.html
-chmod -x s3270/Examples/cms_cmd.expect
 make DESTDIR=%{buildroot} LIBX3270DIR=${LIBX3270DIR} install
 make DESTDIR=%{buildroot} LIBX3270DIR=${LIBX3270DIR} install.man
 # the IBM 026 keypunch emulator
@@ -196,7 +192,6 @@ install -D -m 0644 %{SOURCE2} %{buildroot}%{_datadir}/applications/x3270.desktop
 %config(noreplace) %{_sysconfdir}/x3270/ibm_hosts
 %{_mandir}/man5/ibm_hosts.5%{?ext_man}
 %{_mandir}/man1/x3270if.1%{?ext_man}
-%{_mandir}/man1/x3270-script.1%{?ext_man}
 %{_bindir}/x3270if
 # x3270
 %{_bindir}/x3270
