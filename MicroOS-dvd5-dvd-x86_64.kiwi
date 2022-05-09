@@ -54,7 +54,6 @@
       <repopackage name="skelcd-openSUSE" medium="0" removearch="src,nosrc" onlyarch="x86_64"/>
     </metadata>
     <repopackages>
-      <repopackage name=" patterns-microos-desktop-kde uninstallable: nothing provides libpoppler.so.121()(64bit) needed by libpoppler-qt5-1-22.05.0-1.1.x86_64" arch="x86_64"/>
       <repopackage name="aaa_base"/>
       <repopackage name="accountsservice" arch="x86_64"/>
       <repopackage name="adobe-sourcecodepro-fonts" arch="x86_64"/>
@@ -66,11 +65,17 @@
       <repopackage name="apparmor-parser" arch="x86_64"/>
       <repopackage name="apparmor-profiles" arch="x86_64"/>
       <repopackage name="apparmor-utils" arch="x86_64"/>
+      <repopackage name="AppStream" arch="x86_64"/>
+      <repopackage name="appstream-glib" arch="x86_64"/>
       <repopackage name="argyllcms" arch="x86_64"/>
       <repopackage name="at-spi2-core" arch="x86_64"/>
+      <repopackage name="attica-qt5" arch="x86_64"/>
       <repopackage name="attr" arch="x86_64"/>
       <repopackage name="audit" arch="x86_64"/>
       <repopackage name="avahi" arch="x86_64"/>
+      <repopackage name="baloo5-imports" arch="x86_64"/>
+      <repopackage name="baloo5-kioslaves" arch="x86_64"/>
+      <repopackage name="baloo5-widgets" arch="x86_64"/>
       <repopackage name="bash"/>
       <repopackage name="bash-completion" arch="x86_64"/>
       <repopackage name="bash-sh"/>
@@ -78,12 +83,21 @@
       <repopackage name="bcache-tools" arch="x86_64"/>
       <repopackage name="biosdevname" arch="x86_64"/>
       <repopackage name="blog" arch="x86_64"/>
+      <repopackage name="bluedevil5" arch="x86_64"/>
       <repopackage name="bluez" arch="x86_64"/>
       <repopackage name="bluez-auto-enable-devices" arch="x86_64"/>
       <repopackage name="bluez-cups" arch="x86_64"/>
       <repopackage name="bluez-firmware" arch="x86_64"/>
+      <repopackage name="bluez-qt-imports" arch="x86_64"/>
+      <repopackage name="bluez-qt-udev" arch="x86_64"/>
       <repopackage name="boost-license1_79_0" arch="x86_64"/>
       <repopackage name="branding-openSUSE" arch="x86_64"/>
+      <repopackage name="breeze" arch="x86_64"/>
+      <repopackage name="breeze5-cursors" arch="x86_64"/>
+      <repopackage name="breeze5-decoration" arch="x86_64"/>
+      <repopackage name="breeze5-icons" arch="x86_64"/>
+      <repopackage name="breeze5-style" arch="x86_64"/>
+      <repopackage name="breeze5-wallpapers" arch="x86_64"/>
       <repopackage name="btrfsmaintenance" arch="x86_64"/>
       <repopackage name="btrfsprogs" arch="x86_64"/>
       <repopackage name="btrfsprogs-udev-rules" arch="x86_64"/>
@@ -148,16 +162,23 @@
       <repopackage name="dhcp" arch="x86_64"/>
       <repopackage name="dhcp-client" arch="x86_64"/>
       <repopackage name="diffutils"/>
+      <repopackage name="discover" arch="x86_64"/>
+      <repopackage name="discover-backend-flatpak" arch="x86_64"/>
+      <repopackage name="discover-backend-packagekit" arch="x86_64"/>
+      <repopackage name="discover-notifier" arch="x86_64"/>
       <repopackage name="distribution-logos-openSUSE-icons" arch="x86_64"/>
       <repopackage name="distribution-logos-openSUSE-MicroOS" arch="x86_64"/>
       <repopackage name="dmidecode" arch="x86_64"/>
       <repopackage name="dnf-data" arch="x86_64"/>
       <repopackage name="docbook_4" arch="x86_64"/>
+      <repopackage name="dolphin" arch="x86_64"/>
+      <repopackage name="dolphin-part" arch="x86_64"/>
       <repopackage name="dosfstools" arch="x86_64"/>
       <repopackage name="dracut"/>
       <repopackage name="dracut-ima" arch="x86_64"/>
       <repopackage name="dracut-mkinitrd-deprecated"/>
       <repopackage name="dracut-transactional-update" arch="x86_64"/>
+      <repopackage name="drkonqi5" arch="x86_64"/>
       <repopackage name="e2fsprogs" arch="x86_64"/>
       <repopackage name="efibootmgr" arch="x86_64"/>
       <repopackage name="elfutils"/>
@@ -176,11 +197,13 @@
       <repopackage name="flatpak" arch="x86_64"/>
       <repopackage name="fontconfig" arch="x86_64"/>
       <repopackage name="fonts-config" arch="x86_64"/>
+      <repopackage name="frameworkintegration-plugin" arch="x86_64"/>
       <repopackage name="fuse-overlayfs" arch="x86_64"/>
       <repopackage name="fuse3" arch="x86_64"/>
       <repopackage name="fwupd" arch="x86_64"/>
       <repopackage name="fwupd-efi" arch="x86_64"/>
       <repopackage name="gawk"/>
+      <repopackage name="gcab" arch="x86_64"/>
       <repopackage name="gcr-data" arch="x86_64"/>
       <repopackage name="gcr-prompter" arch="x86_64"/>
       <repopackage name="gcr-ssh-askpass" arch="x86_64"/>
@@ -205,6 +228,7 @@
       <repopackage name="glibc"/>
       <repopackage name="glibc-locale" arch="x86_64"/>
       <repopackage name="glibc-locale-base" arch="x86_64"/>
+      <repopackage name="gmenudbusmenuproxy" arch="x86_64"/>
       <repopackage name="gnome-bluetooth" arch="x86_64"/>
       <repopackage name="gnome-branding-MicroOS" arch="x86_64"/>
       <repopackage name="gnome-color-manager" arch="x86_64"/>
@@ -273,6 +297,7 @@
       <repopackage name="gweather-data" arch="x86_64"/>
       <repopackage name="gweather4-data" arch="x86_64"/>
       <repopackage name="gzip" arch="x86_64"/>
+      <repopackage name="hack-fonts" arch="x86_64"/>
       <repopackage name="health-checker" arch="x86_64"/>
       <repopackage name="health-checker-plugins-MicroOS" arch="x86_64"/>
       <repopackage name="hicolor-icon-theme" arch="x86_64"/>
@@ -282,6 +307,7 @@
       <repopackage name="hwdata" arch="x86_64"/>
       <repopackage name="hwinfo" arch="x86_64"/>
       <repopackage name="hyper-v" arch="x86_64"/>
+      <repopackage name="iio-sensor-proxy" arch="x86_64"/>
       <repopackage name="iproute2" arch="x86_64"/>
       <repopackage name="ipset" arch="x86_64"/>
       <repopackage name="iptables" arch="x86_64"/>
@@ -289,10 +315,25 @@
       <repopackage name="irqbalance" arch="x86_64"/>
       <repopackage name="iscsiuio" arch="x86_64"/>
       <repopackage name="iso-codes" arch="x86_64"/>
+      <repopackage name="iso-codes-lang" arch="x86_64"/>
       <repopackage name="iso_ent" arch="x86_64"/>
       <repopackage name="issue-generator" arch="x86_64"/>
+      <repopackage name="kactivities5-imports" arch="x86_64"/>
+      <repopackage name="kactivitymanagerd" arch="x86_64"/>
+      <repopackage name="kate" arch="x86_64"/>
+      <repopackage name="kate-plugins" arch="x86_64"/>
       <repopackage name="kbd"/>
       <repopackage name="kbd-legacy"/>
+      <repopackage name="kconf_update5" arch="x86_64"/>
+      <repopackage name="kdbusaddons-tools" arch="x86_64"/>
+      <repopackage name="kde-cli-tools5" arch="x86_64"/>
+      <repopackage name="kde-gtk-config5" arch="x86_64"/>
+      <repopackage name="kde-gtk-config5-gtk3" arch="x86_64"/>
+      <repopackage name="kde-print-manager" arch="x86_64"/>
+      <repopackage name="kdeclarative-components" arch="x86_64"/>
+      <repopackage name="kded" arch="x86_64"/>
+      <repopackage name="kdelibs4support" arch="x86_64"/>
+      <repopackage name="kdialog" arch="x86_64"/>
       <repopackage name="kdump"/>
       <repopackage name="kernel-default"/>
       <repopackage name="kernel-default-base" arch="x86_64"/>
@@ -337,10 +378,45 @@
       <repopackage name="keylime-tpm_cert_store" arch="x86_64"/>
       <repopackage name="keylime-verifier" arch="x86_64"/>
       <repopackage name="keyutils" arch="x86_64"/>
+      <repopackage name="kfilemetadata5" arch="x86_64"/>
+      <repopackage name="kgamma5" arch="x86_64"/>
+      <repopackage name="kglobalaccel5" arch="x86_64"/>
+      <repopackage name="khotkeys5" arch="x86_64"/>
+      <repopackage name="kinfocenter5" arch="x86_64"/>
+      <repopackage name="kinit" arch="x86_64"/>
+      <repopackage name="kio" arch="x86_64"/>
+      <repopackage name="kio-core" arch="x86_64"/>
+      <repopackage name="kio-extras5" arch="x86_64"/>
+      <repopackage name="kirigami2" arch="x86_64"/>
+      <repopackage name="kitemmodels-imports" arch="x86_64"/>
+      <repopackage name="kmenuedit5" arch="x86_64"/>
       <repopackage name="kmod"/>
+      <repopackage name="knewstuff" arch="x86_64"/>
+      <repopackage name="knewstuff-imports" arch="x86_64"/>
+      <repopackage name="konsole" arch="x86_64"/>
+      <repopackage name="konsole-part" arch="x86_64"/>
+      <repopackage name="kpackage" arch="x86_64"/>
       <repopackage name="kpartx" arch="x86_64"/>
+      <repopackage name="kpeople5" arch="x86_64"/>
+      <repopackage name="kquickcharts" arch="x86_64"/>
       <repopackage name="krb5"/>
+      <repopackage name="kscreen5" arch="x86_64"/>
+      <repopackage name="kscreenlocker" arch="x86_64"/>
+      <repopackage name="kservice" arch="x86_64"/>
+      <repopackage name="ksysguardsystemstats-data" arch="x86_64"/>
+      <repopackage name="ksystemstats5" arch="x86_64"/>
+      <repopackage name="ktexteditor" arch="x86_64"/>
+      <repopackage name="kuserfeedback-imports" arch="x86_64"/>
+      <repopackage name="kwalletd5" arch="x86_64"/>
+      <repopackage name="kwalletmanager5" arch="x86_64"/>
+      <repopackage name="kwayland" arch="x86_64"/>
+      <repopackage name="kwayland-integration" arch="x86_64"/>
+      <repopackage name="kwin5" arch="x86_64"/>
+      <repopackage name="kwrited5" arch="x86_64"/>
+      <repopackage name="layer-shell-qt5" arch="x86_64"/>
       <repopackage name="less" arch="x86_64"/>
+      <repopackage name="libaccounts-glib0" arch="x86_64"/>
+      <repopackage name="libaccounts-qt5-1" arch="x86_64"/>
       <repopackage name="libaccountsservice0" arch="x86_64"/>
       <repopackage name="libacl1"/>
       <repopackage name="libadwaita-1-0" arch="x86_64"/>
@@ -350,6 +426,7 @@
       <repopackage name="libapparmor1"/>
       <repopackage name="libappstream-glib8" arch="x86_64"/>
       <repopackage name="libappstream4" arch="x86_64"/>
+      <repopackage name="libAppStreamQt2" arch="x86_64"/>
       <repopackage name="libarchive13" arch="x86_64"/>
       <repopackage name="libargon2-1"/>
       <repopackage name="libasm1"/>
@@ -370,6 +447,7 @@
       <repopackage name="libavahi-core7" arch="x86_64"/>
       <repopackage name="libavahi-glib1" arch="x86_64"/>
       <repopackage name="libavcodec58_134" arch="x86_64"/>
+      <repopackage name="libavformat58_76" arch="x86_64"/>
       <repopackage name="libavif14" arch="x86_64"/>
       <repopackage name="libavutil56_70" arch="x86_64"/>
       <repopackage name="libbasicobjects0" arch="x86_64"/>
@@ -389,6 +467,7 @@
       <repopackage name="libbluray2" arch="x86_64"/>
       <repopackage name="libboost_thread1_79_0" arch="x86_64"/>
       <repopackage name="libbpf0" arch="x86_64"/>
+      <repopackage name="libbreezecommon5-5" arch="x86_64"/>
       <repopackage name="libbrotlicommon1"/>
       <repopackage name="libbrotlidec1"/>
       <repopackage name="libbsd0" arch="x86_64"/>
@@ -423,6 +502,7 @@
       <repopackage name="libconfig11" arch="x86_64"/>
       <repopackage name="libcontainers-common" arch="x86_64"/>
       <repopackage name="libcrack2" arch="x86_64"/>
+      <repopackage name="libcreaterepo_c0" arch="x86_64"/>
       <repopackage name="libcrypt1"/>
       <repopackage name="libcryptsetup12"/>
       <repopackage name="libcryptui-data" arch="x86_64"/>
@@ -438,13 +518,17 @@
       <repopackage name="libdb-4_8" arch="x86_64"/>
       <repopackage name="libdbus-1-3"/>
       <repopackage name="libdbus-glib-1-2" arch="x86_64"/>
+      <repopackage name="libdbusmenu-qt5-2" arch="x86_64"/>
       <repopackage name="libdconf1" arch="x86_64"/>
       <repopackage name="libdevmapper-event1_03" arch="x86_64"/>
       <repopackage name="libdevmapper1_03"/>
       <repopackage name="libdhash1" arch="x86_64"/>
+      <repopackage name="libdmtx0" arch="x86_64"/>
       <repopackage name="libdnf-plugin-txnupd" arch="x86_64"/>
       <repopackage name="libdnf-repo-config-zypp" arch="x86_64"/>
       <repopackage name="libdnf2" arch="x86_64"/>
+      <repopackage name="libdolphinvcs5" arch="x86_64"/>
+      <repopackage name="libdouble-conversion3" arch="x86_64"/>
       <repopackage name="libdrm2" arch="x86_64"/>
       <repopackage name="libdrm_amdgpu1" arch="x86_64"/>
       <repopackage name="libdrm_intel1" arch="x86_64"/>
@@ -463,13 +547,16 @@
       <repopackage name="libedataserver-1_2-26" arch="x86_64"/>
       <repopackage name="libedataserverui-1_2-3" arch="x86_64"/>
       <repopackage name="libedit0"/>
+      <repopackage name="libeditorconfig0" arch="x86_64"/>
       <repopackage name="libefivar1" arch="x86_64"/>
       <repopackage name="libelf1"/>
       <repopackage name="libell0" arch="x86_64"/>
       <repopackage name="libenchant-2-2" arch="x86_64"/>
       <repopackage name="libepoxy0" arch="x86_64"/>
+      <repopackage name="libepub0" arch="x86_64"/>
       <repopackage name="libesmtp6"/>
       <repopackage name="libevdev2" arch="x86_64"/>
+      <repopackage name="libevent-2_1-7" arch="x86_64"/>
       <repopackage name="libexempi8" arch="x86_64"/>
       <repopackage name="libexif12" arch="x86_64"/>
       <repopackage name="libexiv2-27" arch="x86_64"/>
@@ -534,8 +621,10 @@
       <repopackage name="libgomp1" arch="x86_64"/>
       <repopackage name="libgpg-error0"/>
       <repopackage name="libgpgme11" arch="x86_64"/>
+      <repopackage name="libgpgmepp6" arch="x86_64"/>
       <repopackage name="libgphoto2-6" arch="x86_64"/>
       <repopackage name="libgphoto2_port12" arch="x86_64"/>
+      <repopackage name="libgps29" arch="x86_64"/>
       <repopackage name="libgraphene-1_0-0" arch="x86_64"/>
       <repopackage name="libgraphite2-3" arch="x86_64"/>
       <repopackage name="libgsf-1-114" arch="x86_64"/>
@@ -547,6 +636,7 @@
       <repopackage name="libgstfft-1_0-0" arch="x86_64"/>
       <repopackage name="libgstgl-1_0-0" arch="x86_64"/>
       <repopackage name="libgstpbutils-1_0-0" arch="x86_64"/>
+      <repopackage name="libgstphotography-1_0-0" arch="x86_64"/>
       <repopackage name="libgstplay-1_0-0" arch="x86_64"/>
       <repopackage name="libgstplayer-1_0-0" arch="x86_64"/>
       <repopackage name="libgstreamer-1_0-0" arch="x86_64"/>
@@ -566,6 +656,7 @@
       <repopackage name="libhandy-1-0" arch="x86_64"/>
       <repopackage name="libharfbuzz-gobject0" arch="x86_64"/>
       <repopackage name="libharfbuzz-icu0" arch="x86_64"/>
+      <repopackage name="libharfbuzz-subset0" arch="x86_64"/>
       <repopackage name="libharfbuzz0" arch="x86_64"/>
       <repopackage name="libhidapi-hidraw0"/>
       <repopackage name="libhogweed6" arch="x86_64"/>
@@ -580,7 +671,11 @@
       <repopackage name="libicu71" arch="x86_64"/>
       <repopackage name="libicu71-ledata" arch="x86_64"/>
       <repopackage name="libidn2-0"/>
+      <repopackage name="libIex-3_1-30" arch="x86_64"/>
+      <repopackage name="libIlmThread-3_1-30" arch="x86_64"/>
       <repopackage name="libimaevm3" arch="x86_64"/>
+      <repopackage name="libimagequant0" arch="x86_64"/>
+      <repopackage name="libImath-3_1-29" arch="x86_64"/>
       <repopackage name="libimobiledevice-1_0-6" arch="x86_64"/>
       <repopackage name="libimobiledevice-glue-1_0-0" arch="x86_64"/>
       <repopackage name="libini_config5" arch="x86_64"/>
@@ -601,9 +696,87 @@
       <repopackage name="libjpeg8" arch="x86_64"/>
       <repopackage name="libjson-c5"/>
       <repopackage name="libjson-glib-1_0-0" arch="x86_64"/>
+      <repopackage name="libkaccounts2" arch="x86_64"/>
+      <repopackage name="libkdecorations2-5" arch="x86_64"/>
+      <repopackage name="libkdecorations2private9" arch="x86_64"/>
+      <repopackage name="libkdsoap2" arch="x86_64"/>
       <repopackage name="libkeyutils1"/>
+      <repopackage name="libKF5Activities5" arch="x86_64"/>
+      <repopackage name="libKF5ActivitiesStats1" arch="x86_64"/>
+      <repopackage name="libKF5Archive5" arch="x86_64"/>
+      <repopackage name="libKF5Attica5" arch="x86_64"/>
+      <repopackage name="libKF5Auth5" arch="x86_64"/>
+      <repopackage name="libKF5AuthCore5" arch="x86_64"/>
+      <repopackage name="libKF5Baloo5" arch="x86_64"/>
+      <repopackage name="libKF5BalooEngine5" arch="x86_64"/>
+      <repopackage name="libKF5BluezQt6" arch="x86_64"/>
+      <repopackage name="libKF5Bookmarks5" arch="x86_64"/>
+      <repopackage name="libKF5CalendarEvents5" arch="x86_64"/>
+      <repopackage name="libKF5Codecs5" arch="x86_64"/>
+      <repopackage name="libKF5Completion5" arch="x86_64"/>
+      <repopackage name="libKF5ConfigCore5" arch="x86_64"/>
+      <repopackage name="libKF5ConfigGui5" arch="x86_64"/>
+      <repopackage name="libKF5ConfigWidgets5" arch="x86_64"/>
+      <repopackage name="libKF5CoreAddons5" arch="x86_64"/>
+      <repopackage name="libKF5Crash5" arch="x86_64"/>
+      <repopackage name="libKF5DBusAddons5" arch="x86_64"/>
+      <repopackage name="libKF5Declarative5" arch="x86_64"/>
+      <repopackage name="libKF5DNSSD5" arch="x86_64"/>
+      <repopackage name="libKF5DocTools5" arch="x86_64"/>
+      <repopackage name="libKF5GlobalAccel5" arch="x86_64"/>
+      <repopackage name="libKF5GlobalAccelPrivate5" arch="x86_64"/>
+      <repopackage name="libKF5GuiAddons5" arch="x86_64"/>
+      <repopackage name="libKF5Holidays5" arch="x86_64"/>
+      <repopackage name="libKF5I18n5" arch="x86_64"/>
+      <repopackage name="libKF5IconThemes5" arch="x86_64"/>
+      <repopackage name="libKF5IdleTime5" arch="x86_64"/>
+      <repopackage name="libKF5ItemModels5" arch="x86_64"/>
+      <repopackage name="libKF5ItemViews5" arch="x86_64"/>
+      <repopackage name="libKF5JobWidgets5" arch="x86_64"/>
+      <repopackage name="libKF5KCMUtils5" arch="x86_64"/>
+      <repopackage name="libKF5KDELibs4Support5" arch="x86_64"/>
+      <repopackage name="libKF5Kirigami2-5" arch="x86_64"/>
+      <repopackage name="libKF5ModemManagerQt6" arch="x86_64"/>
+      <repopackage name="libKF5NetworkManagerQt6" arch="x86_64"/>
+      <repopackage name="libKF5NewStuff5" arch="x86_64"/>
+      <repopackage name="libKF5NewStuffCore5" arch="x86_64"/>
+      <repopackage name="libKF5Notifications5" arch="x86_64"/>
+      <repopackage name="libKF5NotifyConfig5" arch="x86_64"/>
+      <repopackage name="libKF5Parts5" arch="x86_64"/>
+      <repopackage name="libKF5Plasma5" arch="x86_64"/>
+      <repopackage name="libKF5Prison5" arch="x86_64"/>
+      <repopackage name="libKF5Pty5" arch="x86_64"/>
+      <repopackage name="libKF5Purpose5" arch="x86_64"/>
+      <repopackage name="libKF5PurposeWidgets5" arch="x86_64"/>
+      <repopackage name="libKF5QuickAddons5" arch="x86_64"/>
+      <repopackage name="libKF5Runner5" arch="x86_64"/>
+      <repopackage name="libKF5Screen7" arch="x86_64"/>
+      <repopackage name="libKF5Solid5" arch="x86_64"/>
+      <repopackage name="libKF5SonnetCore5" arch="x86_64"/>
+      <repopackage name="libKF5SonnetUi5" arch="x86_64"/>
+      <repopackage name="libKF5Style5" arch="x86_64"/>
+      <repopackage name="libKF5Su5" arch="x86_64"/>
+      <repopackage name="libKF5Syndication5" arch="x86_64"/>
+      <repopackage name="libKF5SyntaxHighlighting5" arch="x86_64"/>
+      <repopackage name="libKF5TextWidgets5" arch="x86_64"/>
+      <repopackage name="libKF5ThreadWeaver5" arch="x86_64"/>
+      <repopackage name="libKF5UnitConversion5" arch="x86_64"/>
+      <repopackage name="libKF5Wallet5" arch="x86_64"/>
+      <repopackage name="libKF5WidgetsAddons5" arch="x86_64"/>
+      <repopackage name="libKF5WindowSystem5" arch="x86_64"/>
+      <repopackage name="libKF5XmlGui5" arch="x86_64"/>
+      <repopackage name="libkioarchive5" arch="x86_64"/>
       <repopackage name="libkmod2"/>
       <repopackage name="libksba8" arch="x86_64"/>
+      <repopackage name="libkscreen2-plugin" arch="x86_64"/>
+      <repopackage name="libKScreenLocker5" arch="x86_64"/>
+      <repopackage name="libksysguard5" arch="x86_64"/>
+      <repopackage name="libksysguard5-imports" arch="x86_64"/>
+      <repopackage name="libKSysGuardSystemStats1" arch="x86_64"/>
+      <repopackage name="libKUserFeedbackCore1" arch="x86_64"/>
+      <repopackage name="libKUserFeedbackWidgets1" arch="x86_64"/>
+      <repopackage name="libkwalletbackend5-5" arch="x86_64"/>
+      <repopackage name="libKWaylandServer5" arch="x86_64"/>
       <repopackage name="liblcms2-2" arch="x86_64"/>
       <repopackage name="libldac2" arch="x86_64"/>
       <repopackage name="libldap2"/>
@@ -626,6 +799,7 @@
       <repopackage name="libmd0" arch="x86_64"/>
       <repopackage name="libmetalink3" arch="x86_64"/>
       <repopackage name="libmfx1" arch="x86_64"/>
+      <repopackage name="libminizip1" arch="x86_64"/>
       <repopackage name="libmm-glib0" arch="x86_64"/>
       <repopackage name="libmnl0" arch="x86_64"/>
       <repopackage name="libmodulemd2" arch="x86_64"/>
@@ -636,6 +810,7 @@
       <repopackage name="libmpc3" arch="x86_64"/>
       <repopackage name="libmpdec3" arch="x86_64"/>
       <repopackage name="libmpfr6"/>
+      <repopackage name="libmpg123-0" arch="x86_64"/>
       <repopackage name="libmspack0" arch="x86_64"/>
       <repopackage name="libmtdev1" arch="x86_64"/>
       <repopackage name="libmtp-udev" arch="x86_64"/>
@@ -664,8 +839,11 @@
       <repopackage name="libnvme1" arch="x86_64"/>
       <repopackage name="liboauth0" arch="x86_64"/>
       <repopackage name="libogg0" arch="x86_64"/>
+      <repopackage name="libopenal1" arch="x86_64"/>
+      <repopackage name="libOpenEXR-3_1-30" arch="x86_64"/>
       <repopackage name="libopeniscsiusr0_2_0" arch="x86_64"/>
       <repopackage name="libopenjp2-7" arch="x86_64"/>
+      <repopackage name="libopenmpt0" arch="x86_64"/>
       <repopackage name="libopenssl1_1"/>
       <repopackage name="libopus0" arch="x86_64"/>
       <repopackage name="liborc-0_4-0" arch="x86_64"/>
@@ -675,6 +853,7 @@
       <repopackage name="libostree-1-1" arch="x86_64"/>
       <repopackage name="libp11-kit0"/>
       <repopackage name="libpackagekit-glib2-18" arch="x86_64"/>
+      <repopackage name="libpackagekitqt5-1" arch="x86_64"/>
       <repopackage name="libpango-1_0-0" arch="x86_64"/>
       <repopackage name="libpangomm-1_4-1" arch="x86_64"/>
       <repopackage name="libparted-fs-resize0" arch="x86_64"/>
@@ -683,10 +862,12 @@
       <repopackage name="libpci3" arch="x86_64"/>
       <repopackage name="libpciaccess0" arch="x86_64"/>
       <repopackage name="libpcre1"/>
+      <repopackage name="libpcre2-16-0" arch="x86_64"/>
       <repopackage name="libpcre2-8-0"/>
       <repopackage name="libpeas-1_0-0" arch="x86_64"/>
       <repopackage name="libpgm-5_2-0" arch="x86_64"/>
       <repopackage name="libphonenumber8" arch="x86_64"/>
+      <repopackage name="libphonon4qt5" arch="x86_64"/>
       <repopackage name="libpipewire-0_3-0" arch="x86_64"/>
       <repopackage name="libpixman-1-0" arch="x86_64"/>
       <repopackage name="libpkcs11-helper1" arch="x86_64"/>
@@ -695,10 +876,13 @@
       <repopackage name="libpng16-16" arch="x86_64"/>
       <repopackage name="libpolkit-agent-1-0" arch="x86_64"/>
       <repopackage name="libpolkit-gobject-1-0" arch="x86_64"/>
+      <repopackage name="libpolkit-qt5-1-1" arch="x86_64"/>
       <repopackage name="libpoppler-cpp0" arch="x86_64"/>
       <repopackage name="libpoppler-glib8" arch="x86_64"/>
-      <repopackage name="libpoppler120" arch="x86_64"/>
+      <repopackage name="libpoppler-qt5-1" arch="x86_64"/>
+      <repopackage name="libpoppler121" arch="x86_64"/>
       <repopackage name="libpopt0"/>
+      <repopackage name="libportaudio2" arch="x86_64"/>
       <repopackage name="libprocps8" arch="x86_64"/>
       <repopackage name="libprotobuf-c1" arch="x86_64"/>
       <repopackage name="libprotobuf-lite31" arch="x86_64"/>
@@ -710,9 +894,48 @@
       <repopackage name="libpwquality-tools" arch="x86_64"/>
       <repopackage name="libpwquality1" arch="x86_64"/>
       <repopackage name="libpython3_8-1_0" arch="x86_64"/>
+      <repopackage name="libqaccessibilityclient-qt5-0" arch="x86_64"/>
+      <repopackage name="libqalculate22" arch="x86_64"/>
+      <repopackage name="libqca-qt5-2" arch="x86_64"/>
       <repopackage name="libqmi-glib5" arch="x86_64"/>
       <repopackage name="libqpdf28" arch="x86_64"/>
+      <repopackage name="libqrencode4" arch="x86_64"/>
+      <repopackage name="libqt5-qdbus" arch="x86_64"/>
+      <repopackage name="libqt5-qtgraphicaleffects" arch="x86_64"/>
+      <repopackage name="libqt5-qtpaths" arch="x86_64"/>
+      <repopackage name="libqt5-qtquickcontrols" arch="x86_64"/>
+      <repopackage name="libqt5-qtquickcontrols2" arch="x86_64"/>
+      <repopackage name="libqt5-qtvirtualkeyboard" arch="x86_64"/>
+      <repopackage name="libqt5-qtwayland" arch="x86_64"/>
+      <repopackage name="libqt5-qtwebengine" arch="x86_64"/>
+      <repopackage name="libQt5Concurrent5" arch="x86_64"/>
+      <repopackage name="libQt5Core5" arch="x86_64"/>
+      <repopackage name="libQt5DBus5" arch="x86_64"/>
+      <repopackage name="libQt5Gui5" arch="x86_64"/>
+      <repopackage name="libQt5Multimedia5" arch="x86_64"/>
+      <repopackage name="libQt5Network5" arch="x86_64"/>
+      <repopackage name="libQt5OpenGL5" arch="x86_64"/>
+      <repopackage name="libQt5Positioning5" arch="x86_64"/>
+      <repopackage name="libQt5PrintSupport5" arch="x86_64"/>
+      <repopackage name="libQt5QuickControls2-5" arch="x86_64"/>
+      <repopackage name="libQt5QuickTemplates2-5" arch="x86_64"/>
+      <repopackage name="libQt5Sensors5" arch="x86_64"/>
+      <repopackage name="libQt5Sql5" arch="x86_64"/>
+      <repopackage name="libQt5Sql5-sqlite" arch="x86_64"/>
+      <repopackage name="libQt5Svg5" arch="x86_64"/>
+      <repopackage name="libQt5Test5" arch="x86_64"/>
+      <repopackage name="libQt5TextToSpeech5" arch="x86_64"/>
+      <repopackage name="libQt5VirtualKeyboard5" arch="x86_64"/>
+      <repopackage name="libQt5WaylandClient5" arch="x86_64"/>
+      <repopackage name="libQt5WaylandCompositor5" arch="x86_64"/>
+      <repopackage name="libQt5WebChannel5" arch="x86_64"/>
+      <repopackage name="libQt5WebChannel5-imports" arch="x86_64"/>
+      <repopackage name="libQt5Widgets5" arch="x86_64"/>
+      <repopackage name="libQt5X11Extras5" arch="x86_64"/>
+      <repopackage name="libQt5Xml5" arch="x86_64"/>
+      <repopackage name="libQtQuick5" arch="x86_64"/>
       <repopackage name="librav1e0" arch="x86_64"/>
+      <repopackage name="libre2-9" arch="x86_64"/>
       <repopackage name="libreadline8"/>
       <repopackage name="libref_array1" arch="x86_64"/>
       <repopackage name="libreiserfscore0" arch="x86_64"/>
@@ -731,6 +954,7 @@
       <repopackage name="libserd-0-0" arch="x86_64"/>
       <repopackage name="libsgutils2-1_47-2" arch="x86_64"/>
       <repopackage name="libsigc-2_0-0" arch="x86_64"/>
+      <repopackage name="libsignon-qt5-1" arch="x86_64"/>
       <repopackage name="libslang2" arch="x86_64"/>
       <repopackage name="libslirp0" arch="x86_64"/>
       <repopackage name="libslp1" arch="x86_64"/>
@@ -751,6 +975,7 @@
       <repopackage name="libspeex1" arch="x86_64"/>
       <repopackage name="libsqlite3-0" arch="x86_64"/>
       <repopackage name="libsratom-0-0" arch="x86_64"/>
+      <repopackage name="libsrt1_4" arch="x86_64"/>
       <repopackage name="libssh-config"/>
       <repopackage name="libssh4"/>
       <repopackage name="libsss_certmap0" arch="x86_64"/>
@@ -762,6 +987,7 @@
       <repopackage name="libSvtAv1Enc1" arch="x86_64"/>
       <repopackage name="libswresample3_9" arch="x86_64"/>
       <repopackage name="libsystemd0"/>
+      <repopackage name="libtag1" arch="x86_64"/>
       <repopackage name="libtalloc2" arch="x86_64"/>
       <repopackage name="libtasn1-6" arch="x86_64"/>
       <repopackage name="libtdb1" arch="x86_64"/>
@@ -778,6 +1004,7 @@
       <repopackage name="libtirpc3" arch="x86_64"/>
       <repopackage name="libtotem-plparser18" arch="x86_64"/>
       <repopackage name="libtracker-sparql-3_0-0" arch="x86_64"/>
+      <repopackage name="libts0" arch="x86_64"/>
       <repopackage name="libtss2-esys0" arch="x86_64"/>
       <repopackage name="libtss2-fapi1" arch="x86_64"/>
       <repopackage name="libtss2-mu0" arch="x86_64"/>
@@ -835,17 +1062,29 @@
       <repopackage name="libx86emu3" arch="x86_64"/>
       <repopackage name="libXau6" arch="x86_64"/>
       <repopackage name="libXaw7" arch="x86_64"/>
+      <repopackage name="libxcb-composite0" arch="x86_64"/>
+      <repopackage name="libxcb-cursor0" arch="x86_64"/>
+      <repopackage name="libxcb-damage0" arch="x86_64"/>
+      <repopackage name="libxcb-dpms0" arch="x86_64"/>
       <repopackage name="libxcb-dri2-0" arch="x86_64"/>
       <repopackage name="libxcb-dri3-0" arch="x86_64"/>
       <repopackage name="libxcb-glx0" arch="x86_64"/>
+      <repopackage name="libxcb-icccm4" arch="x86_64"/>
+      <repopackage name="libxcb-image0" arch="x86_64"/>
+      <repopackage name="libxcb-keysyms1" arch="x86_64"/>
       <repopackage name="libxcb-present0" arch="x86_64"/>
       <repopackage name="libxcb-randr0" arch="x86_64"/>
+      <repopackage name="libxcb-record0" arch="x86_64"/>
+      <repopackage name="libxcb-render-util0" arch="x86_64"/>
       <repopackage name="libxcb-render0" arch="x86_64"/>
       <repopackage name="libxcb-res0" arch="x86_64"/>
+      <repopackage name="libxcb-shape0" arch="x86_64"/>
       <repopackage name="libxcb-shm0" arch="x86_64"/>
       <repopackage name="libxcb-sync1" arch="x86_64"/>
       <repopackage name="libxcb-util1" arch="x86_64"/>
       <repopackage name="libxcb-xfixes0" arch="x86_64"/>
+      <repopackage name="libxcb-xinerama0" arch="x86_64"/>
+      <repopackage name="libxcb-xinput0" arch="x86_64"/>
       <repopackage name="libxcb-xkb1" arch="x86_64"/>
       <repopackage name="libxcb1" arch="x86_64"/>
       <repopackage name="libXcomposite1" arch="x86_64"/>
@@ -875,6 +1114,7 @@
       <repopackage name="libXpm4" arch="x86_64"/>
       <repopackage name="libXrandr2" arch="x86_64"/>
       <repopackage name="libXrender1" arch="x86_64"/>
+      <repopackage name="libXRes1" arch="x86_64"/>
       <repopackage name="libxshmfence1" arch="x86_64"/>
       <repopackage name="libxslt-tools" arch="x86_64"/>
       <repopackage name="libxslt1" arch="x86_64"/>
@@ -883,6 +1123,7 @@
       <repopackage name="libxtables12" arch="x86_64"/>
       <repopackage name="libXtst6" arch="x86_64"/>
       <repopackage name="libXv1" arch="x86_64"/>
+      <repopackage name="libXxf86dga1" arch="x86_64"/>
       <repopackage name="libXxf86vm1" arch="x86_64"/>
       <repopackage name="libxxhash0" arch="x86_64"/>
       <repopackage name="libyajl2" arch="x86_64"/>
@@ -892,9 +1133,12 @@
       <repopackage name="libz-ng-compat1"/>
       <repopackage name="libz1" arch="x86_64"/>
       <repopackage name="libzck1" arch="x86_64"/>
+      <repopackage name="libzip5" arch="x86_64"/>
       <repopackage name="libzmq5" arch="x86_64"/>
       <repopackage name="libzstd1"/>
+      <repopackage name="libZXing1" arch="x86_64"/>
       <repopackage name="libzypp" arch="x86_64"/>
+      <repopackage name="libzypp-plugin-appdata" arch="x86_64"/>
       <repopackage name="lockdev" arch="x86_64"/>
       <repopackage name="login_defs" arch="x86_64"/>
       <repopackage name="logrotate" arch="x86_64"/>
@@ -904,6 +1148,7 @@
       <repopackage name="malcontent" arch="x86_64"/>
       <repopackage name="mdadm" arch="x86_64"/>
       <repopackage name="Mesa" arch="x86_64"/>
+      <repopackage name="Mesa-demo-x" arch="x86_64"/>
       <repopackage name="Mesa-dri" arch="x86_64"/>
       <repopackage name="Mesa-gallium" arch="x86_64"/>
       <repopackage name="Mesa-libEGL1" arch="x86_64"/>
@@ -914,7 +1159,9 @@
       <repopackage name="MicroOS-release"/>
       <repopackage name="MicroOS-release-appliance"/>
       <repopackage name="microos-tools" arch="x86_64"/>
+      <repopackage name="milou5" arch="x86_64"/>
       <repopackage name="mobile-broadband-provider-info" arch="x86_64"/>
+      <repopackage name="mobipocket" arch="x86_64"/>
       <repopackage name="ModemManager" arch="x86_64"/>
       <repopackage name="mokutil" arch="x86_64"/>
       <repopackage name="mozilla-nspr" arch="x86_64"/>
@@ -966,6 +1213,7 @@
       <repopackage name="patterns-containers-container_runtime" arch="x86_64"/>
       <repopackage name="patterns-gnome-gnome_basic" arch="x86_64"/>
       <repopackage name="patterns-gnome-gnome_basis" arch="x86_64"/>
+      <repopackage name="patterns-kde-kde_plasma" arch="x86_64"/>
       <repopackage name="patterns-microos-alt_onlyDVD" arch="x86_64"/>
       <repopackage name="patterns-microos-apparmor" arch="x86_64"/>
       <repopackage name="patterns-microos-base" arch="x86_64"/>
@@ -978,6 +1226,7 @@
       <repopackage name="patterns-microos-defaults" arch="x86_64"/>
       <repopackage name="patterns-microos-desktop-common" arch="x86_64"/>
       <repopackage name="patterns-microos-desktop-gnome" arch="x86_64"/>
+      <repopackage name="patterns-microos-desktop-kde" arch="x86_64"/>
       <repopackage name="patterns-microos-hardware" arch="x86_64"/>
       <repopackage name="patterns-microos-ima_evm" arch="x86_64"/>
       <repopackage name="patterns-microos-onlyDVD" arch="x86_64"/>
@@ -985,6 +1234,7 @@
       <repopackage name="patterns-microos-ra_verifier" arch="x86_64"/>
       <repopackage name="patterns-microos-selinux" arch="x86_64"/>
       <repopackage name="patterns-microos-sssd_ldap" arch="x86_64"/>
+      <repopackage name="pciutils" arch="x86_64"/>
       <repopackage name="perl" arch="x86_64"/>
       <repopackage name="perl-base"/>
       <repopackage name="perl-Bootloader"/>
@@ -1010,8 +1260,10 @@
       <repopackage name="perl-XML-Twig" arch="x86_64"/>
       <repopackage name="permissions"/>
       <repopackage name="permissions-config"/>
+      <repopackage name="phonon4qt5-backend-gstreamer" arch="x86_64"/>
       <repopackage name="pigz"/>
       <repopackage name="pinentry" arch="x86_64"/>
+      <repopackage name="pinentry-qt5" arch="x86_64"/>
       <repopackage name="pipewire" arch="x86_64"/>
       <repopackage name="pipewire-alsa" arch="x86_64"/>
       <repopackage name="pipewire-modules-0_3" arch="x86_64"/>
@@ -1023,18 +1275,38 @@
       <repopackage name="pkgconf"/>
       <repopackage name="pkgconf-m4"/>
       <repopackage name="pkgconf-pkg-config"/>
+      <repopackage name="plasma-browser-integration" arch="x86_64"/>
+      <repopackage name="plasma-framework" arch="x86_64"/>
+      <repopackage name="plasma-framework-components" arch="x86_64"/>
+      <repopackage name="plasma-nm5" arch="x86_64"/>
+      <repopackage name="plasma5-addons" arch="x86_64"/>
+      <repopackage name="plasma5-defaults-openSUSE" arch="x86_64"/>
+      <repopackage name="plasma5-desktop" arch="x86_64"/>
+      <repopackage name="plasma5-integration-plugin" arch="x86_64"/>
+      <repopackage name="plasma5-pa" arch="x86_64"/>
+      <repopackage name="plasma5-session" arch="x86_64"/>
+      <repopackage name="plasma5-session-wayland" arch="x86_64"/>
+      <repopackage name="plasma5-theme-openSUSE" arch="x86_64"/>
+      <repopackage name="plasma5-workspace" arch="x86_64"/>
+      <repopackage name="plasma5-workspace-libs" arch="x86_64"/>
+      <repopackage name="pngquant" arch="x86_64"/>
       <repopackage name="podman" arch="x86_64"/>
       <repopackage name="podman-cni-config" arch="x86_64"/>
       <repopackage name="policycoreutils" arch="x86_64"/>
       <repopackage name="policycoreutils-python-utils" arch="x86_64"/>
       <repopackage name="polkit" arch="x86_64"/>
       <repopackage name="polkit-default-privs" arch="x86_64"/>
+      <repopackage name="polkit-kde-agent-5" arch="x86_64"/>
+      <repopackage name="powerdevil5" arch="x86_64"/>
+      <repopackage name="prison-qt5-imports" arch="x86_64"/>
       <repopackage name="procps" arch="x86_64"/>
       <repopackage name="psmisc" arch="x86_64"/>
       <repopackage name="pulseaudio-setup" arch="x86_64"/>
       <repopackage name="purge-kernels-service" arch="x86_64"/>
+      <repopackage name="purpose" arch="x86_64"/>
       <repopackage name="python3-apparmor" arch="x86_64"/>
       <repopackage name="python3-audit" arch="x86_64"/>
+      <repopackage name="python3-createrepo_c" arch="x86_64"/>
       <repopackage name="python3-cupshelpers" arch="x86_64"/>
       <repopackage name="python3-policycoreutils" arch="x86_64"/>
       <repopackage name="python3-selinux" arch="x86_64"/>
@@ -1049,6 +1321,7 @@
       <repopackage name="python38-certifi" arch="x86_64"/>
       <repopackage name="python38-cffi" arch="x86_64"/>
       <repopackage name="python38-charset-normalizer" arch="x86_64"/>
+      <repopackage name="python38-cmdln" arch="x86_64"/>
       <repopackage name="python38-configobj" arch="x86_64"/>
       <repopackage name="python38-cryptography" arch="x86_64"/>
       <repopackage name="python38-dbus-python" arch="x86_64"/>
@@ -1106,7 +1379,10 @@
       <repopackage name="python38-wcwidth" arch="x86_64"/>
       <repopackage name="python38-zhon" arch="x86_64"/>
       <repopackage name="python38-zipp" arch="x86_64"/>
+      <repopackage name="qca-qt5" arch="x86_64"/>
       <repopackage name="qemu-guest-agent" arch="x86_64"/>
+      <repopackage name="qqc2-desktop-style" arch="x86_64"/>
+      <repopackage name="qtdeclarative-imports-provides-qt5" arch="x86_64"/>
       <repopackage name="read-only-root-fs" arch="x86_64"/>
       <repopackage name="rebootmgr" arch="x86_64"/>
       <repopackage name="rpm"/>
@@ -1119,6 +1395,9 @@
       <repopackage name="samba-client" arch="x86_64"/>
       <repopackage name="samba-client-libs" arch="x86_64"/>
       <repopackage name="samba-libs" arch="x86_64"/>
+      <repopackage name="sddm" arch="x86_64"/>
+      <repopackage name="sddm-branding-openSUSE" arch="x86_64"/>
+      <repopackage name="sddm-theme-openSUSE" arch="x86_64"/>
       <repopackage name="seahorse-daemon" arch="x86_64"/>
       <repopackage name="sed"/>
       <repopackage name="selinux-policy" arch="x86_64"/>
@@ -1131,9 +1410,17 @@
       <repopackage name="shadow" arch="x86_64"/>
       <repopackage name="shared-mime-info" arch="x86_64"/>
       <repopackage name="shim" arch="x86_64"/>
+      <repopackage name="signon-plugin-oauth2" arch="x86_64"/>
+      <repopackage name="signon-plugins" arch="x86_64"/>
+      <repopackage name="signon-ui" arch="x86_64"/>
+      <repopackage name="signond" arch="x86_64"/>
+      <repopackage name="signond-libs" arch="x86_64"/>
       <repopackage name="slirp4netns" arch="x86_64"/>
       <repopackage name="snapper" arch="x86_64"/>
       <repopackage name="snmp-mibs" arch="x86_64"/>
+      <repopackage name="solid-imports" arch="x86_64"/>
+      <repopackage name="sonnet" arch="x86_64"/>
+      <repopackage name="sonnet-imports" arch="x86_64"/>
       <repopackage name="sound-theme-freedesktop" arch="x86_64"/>
       <repopackage name="spice-vdagent" arch="x86_64"/>
       <repopackage name="sssd" arch="x86_64"/>
@@ -1141,6 +1428,7 @@
       <repopackage name="sssd-ldap" arch="x86_64"/>
       <repopackage name="sudo" arch="x86_64"/>
       <repopackage name="suse-module-tools"/>
+      <repopackage name="syntax-highlighting" arch="x86_64"/>
       <repopackage name="sysconfig" arch="x86_64"/>
       <repopackage name="sysconfig-netconfig" arch="x86_64"/>
       <repopackage name="system-config-printer-common" arch="x86_64"/>
@@ -1161,6 +1449,7 @@
       <repopackage name="systemd-presets-branding-MicroOS"/>
       <repopackage name="systemd-presets-common-SUSE"/>
       <repopackage name="systemd-rpm-macros"/>
+      <repopackage name="systemsettings5" arch="x86_64"/>
       <repopackage name="sysuser-shadow"/>
       <repopackage name="sysvinit-tools" arch="x86_64"/>
       <repopackage name="tallow" arch="x86_64"/>
@@ -1230,7 +1519,9 @@
       <repopackage name="util-linux-systemd"/>
       <repopackage name="vim-data-common" arch="x86_64"/>
       <repopackage name="vim-small" arch="x86_64"/>
+      <repopackage name="vulkan-tools" arch="x86_64"/>
       <repopackage name="wallpaper-branding-openSUSE" arch="x86_64"/>
+      <repopackage name="wayland-utils" arch="x86_64"/>
       <repopackage name="webkit2gtk-4_0-injected-bundles" arch="x86_64"/>
       <repopackage name="webkit2gtk-4_1-injected-bundles" arch="x86_64"/>
       <repopackage name="wget" arch="x86_64"/>
@@ -1248,10 +1539,13 @@
       <repopackage name="xdg-desktop-portal" arch="x86_64"/>
       <repopackage name="xdg-desktop-portal-gnome" arch="x86_64"/>
       <repopackage name="xdg-desktop-portal-gtk" arch="x86_64"/>
+      <repopackage name="xdg-desktop-portal-kde" arch="x86_64"/>
       <repopackage name="xdg-user-dirs" arch="x86_64"/>
       <repopackage name="xdg-user-dirs-gtk" arch="x86_64"/>
       <repopackage name="xdg-utils" arch="x86_64"/>
       <repopackage name="xdm" arch="x86_64"/>
+      <repopackage name="xdpyinfo" arch="x86_64"/>
+      <repopackage name="xembedsniproxy" arch="x86_64"/>
       <repopackage name="xen-libs" arch="x86_64"/>
       <repopackage name="xf86-input-libinput" arch="x86_64"/>
       <repopackage name="xfsprogs" arch="x86_64"/>
@@ -1264,9 +1558,11 @@
       <repopackage name="xorg-x11-fonts-core" arch="x86_64"/>
       <repopackage name="xorg-x11-server" arch="x86_64"/>
       <repopackage name="xorg-x11-server-Xvfb" arch="x86_64"/>
+      <repopackage name="xprop" arch="x86_64"/>
       <repopackage name="xrdb" arch="x86_64"/>
       <repopackage name="xset" arch="x86_64"/>
       <repopackage name="xsetroot" arch="x86_64"/>
+      <repopackage name="xsettingsd" arch="x86_64"/>
       <repopackage name="xtables-plugins" arch="x86_64"/>
       <repopackage name="xterm-bin" arch="x86_64"/>
       <repopackage name="xterm-resize" arch="x86_64"/>
