@@ -1,17 +1,28 @@
 -------------------------------------------------------------------
+Sat May  7 07:36:51 UTC 2022 - Ilgaz Öcal <ilgaz.nsa@gmail.com>
+
+- Added Recommends: gnome-keyring since very critical functionality
+  of this browser (saving passwords&syncing with firefox) depends
+  on it. Otherwise it complains "provider for
+  org.freedesktop.secrets not found" to console or on top of
+  firefox sync window. gnome-keyring is naturally installed on a
+  typical gnome desktop environment but on a foreign DE such as
+  KDE/LXQT it isn't there (glgo#GNOME/epiphany#1755
+
+-------------------------------------------------------------------
 Fri Apr 22 10:27:49 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
 
 - Updated to version 42.2:
   + Fix Save As context menu items.
   + Fix CVE-2022-29536.
- 
+
 -------------------------------------------------------------------
 Wed Apr 13 23:02:23 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
 
 - Updated to version 42.1:
   + Fix regressions in "ask on download" dialog.
-  + Fix bookmarks tag label alignment. 
-  + Fix blurry favicons in bookmarks popover. 
+  + Fix bookmarks tag label alignment.
+  + Fix blurry favicons in bookmarks popover.
 
 -------------------------------------------------------------------
 Thu Mar 17 22:51:01 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>

@@ -1511,4 +1511,21 @@ MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme
     <comment>Scripted push from GNOME:Next (forwarded request 973161 from dimstar)</comment>
     <requestid>973166</requestid>
   </revision>
+  <revision rev="192" vrev="2">
+    <srcmd5>699fe59970b939c637aca9056053d510</srcmd5>
+    <version>42.2</version>
+    <time>1652114654</time>
+    <user>dimstar_suse</user>
+    <comment>- Added Recommends: gnome-keyring since very critical functionality
+  of this browser (saving passwords&amp;syncing with firefox) depends
+  on it. Otherwise it complains &quot;provider for
+  org.freedesktop.secrets not found&quot; to console or on top of
+  firefox sync window. gnome-keyring is naturally installed on a
+  typical gnome desktop environment but on a foreign DE such as
+  KDE/LXQT it isn't there (glgo#GNOME/epiphany#1755
+
+  + Fix bookmarks tag label alignment.
+  + Fix blurry favicons in bookmarks popover.</comment>
+    <requestid>975725</requestid>
+  </revision>
 </revisionlist>

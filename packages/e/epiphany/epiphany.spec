@@ -57,6 +57,7 @@ BuildRequires:  pkgconfig(webkit2gtk-web-extension-4.1) >= 2.33.2
 Requires:       %{name}-branding = %{version}
 Requires:       iso-codes
 Recommends:     ca-certificates
+Recommends:     gnome-keyring
 Recommends:     gstreamer-plugins-rs
 
 %description
