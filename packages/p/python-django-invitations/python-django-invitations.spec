@@ -27,10 +27,11 @@ URL:            https://github.com/bee-keeper/django-invitations
 Source:         https://github.com/bee-keeper/django-invitations/archive/%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gh#bee-keeper/django-invitations#169
 Patch0:         django-4.0.patch
+# https://github.com/jazzband/django-invitations/blob/master/tests/basic/tests.py#L4
+Patch1:         python-django-invitations-no-mock.patch
 BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module django-allauth}
 BuildRequires:  %{python_module freezegun >= 0.3.5}
-BuildRequires:  %{python_module mock >= 1.3.0}
 BuildRequires:  %{python_module pytest >= 3.0.7}
 BuildRequires:  %{python_module pytest-django >= 3.1.2}
 BuildRequires:  %{python_module setuptools}

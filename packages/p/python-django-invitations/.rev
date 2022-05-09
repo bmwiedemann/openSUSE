@@ -42,4 +42,12 @@
   * Support Django 4.0</comment>
     <requestid>958357</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>829c4534ead03ef34fa2a4b68ad5f94b</srcmd5>
+    <version>1.9.3</version>
+    <time>1652114681</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975866</requestid>
+  </revision>
 </revisionlist>
