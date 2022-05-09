@@ -100,4 +100,13 @@
 </comment>
     <requestid>957366</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4ee4e1c60e842de3d8b5592d63c8a720</srcmd5>
+    <version>8.0.7</version>
+    <time>1652114673</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.0.7 (no changelog)
+</comment>
+    <requestid>975828</requestid>
+  </revision>
 </revisionlist>
