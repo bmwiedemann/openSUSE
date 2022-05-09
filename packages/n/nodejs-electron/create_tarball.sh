@@ -3,6 +3,8 @@
 #
 # Copyright (c) 2021 Andreas Schneider <asn@cryptomilk.org>
 # License: GPLv3
+#
+# dnf install python3-base git-core npm16 yarn python2-base
 
 ELECTRON_PKGVERSION="$(rpmspec -P ./*.spec | grep Version | sed -e 's/Version:[ ]*//g')"
 ELECTRON_PKGNAME="electron"
@@ -57,7 +59,7 @@ solutions = [
 EOF
 
 echo ">>>>>> Downloading electron-${ELECTRON_PKGVERSION}"
-gclient sync --jobs 4 --nohooks --with_branch_heads --with_tags --revision=v"${ELECTRON_PKGVERSION}"
+gclient sync --jobs 4 --nohooks --no-history --shallow --revision=v"${ELECTRON_PKGVERSION}"
 if [ $? -ne 0 ]; then
     echo "ERROR: gclient sync failed"
     cleanup_and_exit 1

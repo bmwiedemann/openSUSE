@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun May  8 18:58:12 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Update to 17.4.3:
+  * Fixed child_process.spawn ENOENT error with cwd option.
+  * Apply senderFrame details to ipcMain port event.
+  * Added BrowserWindow method to change the button color,
+    symbol color, and height of a window with WCO enabled.
+  * Fixed a potential crash in Browser.getFocusedWindow() when child windows are closed.
+  * Fixed an issue where the the window bounds would incorrectly change 
+    if BrowserWindow.unmaximize was called on a window whose user bounds were maximized.
+  * Fixed incorrect return value of app.requestSingleInstanceLock()
+    when setting non-existent user data folder.
+  * Fixed issues with frameless window animations and styling.
+  * Backported security fixes: CVE-2022-1478, CVE-2022-1479,
+    CVE-2022-1480, CVE-2022-1482, CVE-2022-1483, CVE-2022-1485,
+    CVE-2022-1492, CVE-2022-1305, CVE-2022-1308, CVE-2022-1310,
+    CVE-2022-1314, CVE-2022-1364, CVE-2022-1306, CVE-2022-1134,
+    CVE-2022-1138, CVE-2022-23308.
+
+-------------------------------------------------------------------
 Fri Apr 22 09:47:33 UTC 2022 - Dominik Heidler <dheidler@suse.de>
 
 - Build against nodejs16 on tumbleweed

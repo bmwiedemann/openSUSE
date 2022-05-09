@@ -74,7 +74,7 @@ ExcludeArch:    %{ix86} %{arm}
 %endif
 %bcond_without system_ffmpeg
 Name:           nodejs-electron
-Version:        17.3.1
+Version:        17.4.3
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        MIT
