@@ -84,7 +84,7 @@ for f in ~/.jupyter/nbconfig/*.json ; do
     install -Dm 644 ${f} %{buildroot}%{_jupyter_nb_confdir}/${tdir}.d/latex_envs.json
 done
 
-%{fdupes %{buildroot}%{_jupyter_prefix} %{buildroot}%{_jupyter_confdir}}
+%fdupes %{buildroot}%{_jupyter_prefix}
 
 %files %{python_files}
 %doc README.rst
@@ -95,6 +95,6 @@ done
 %files -n jupyter-jupyter_latex_envs
 %license LICENSE.txt
 %{_jupyter_nbextension_dir}/latex_envs/
-%config %{_jupyter_nb_notebook_confdir}/latex_envs.json
+%_jupyter_config %{_jupyter_nb_notebook_confdir}/latex_envs.json
 
 %changelog

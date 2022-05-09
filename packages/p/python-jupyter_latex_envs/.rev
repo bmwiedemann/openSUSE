@@ -51,4 +51,13 @@
 </comment>
     <requestid>792284</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>a083842a7b4b5ac77d75c714f1b836d6</srcmd5>
+    <version>1.4.6</version>
+    <time>1652114622</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes and distcondig related errors
+</comment>
+    <requestid>975592</requestid>
+  </revision>
 </revisionlist>
