@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 24 16:55:14 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Add initial support for TI PRU architecture. This is used for real-time
+  coprocessor of BeagleBone Black (JeOS-beaglebone)
+
+-------------------------------------------------------------------
 Sun Dec 19 17:14:21 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Build also nano variants of the libraries. The flags/features
