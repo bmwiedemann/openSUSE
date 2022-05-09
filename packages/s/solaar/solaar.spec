@@ -20,7 +20,6 @@
 %define pythons python3
 %define skip_python2 1
 %define skip_python36 1
-
 Name:           solaar
 Version:        1.1.3
 Release:        0
@@ -32,12 +31,6 @@ Source0:        Solaar-%{version}.tar.gz
 #PATCH-FIX-OPENSUSE solaar-fix-desktop-categories.patch malcolmlewis@opensuse.org -- Fix desktop categories as per openSUSE desktop file specification.
 Patch0:         solaar-fix-desktop-categories.patch
 #
-BuildRequires:  fdupes
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  python-rpm-macros
-BuildRequires:  update-desktop-files
-#
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module evdev}
 BuildRequires:  %{python_module gobject-Gdk}
@@ -45,18 +38,26 @@ BuildRequires:  %{python_module gobject}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module python-xlib}
 BuildRequires:  %{python_module pyudev}
+BuildRequires:  %{python_module setuptools}
+#
+BuildRequires:  fdupes
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  python-rpm-macros
 BuildRequires:  typelib-1_0-Gtk-3_0
-
+BuildRequires:  update-desktop-files
 Requires:       python3-PyYAML
+%if 0%{?suse_version} <= 1500
+Requires:       python3-dataclasses
+%endif
 Requires:       python3-evdev
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-psutil
 Requires:       python3-python-xlib
 Requires:       python3-pyudev
-Requires:       typelib-1_0-Gtk-3_0
 #
 Requires:       solaar-udev >= %{version}
+Requires:       typelib-1_0-Gtk-3_0
 #
 Obsoletes:      solaar-cli < %{version}
 Provides:       solaar-cli = %{version}
@@ -99,7 +100,7 @@ Rules that users are able to access Logitech Unifying Receiver.
 sed -i '/yield autostart_path/d' setup.py
 
 %build
-sed -i 's#/usr/bin/env python##' lib/solaar/gtk.py lib/solaar/tasks.py
+sed -i 's#%{_bindir}/env python##' lib/solaar/gtk.py lib/solaar/tasks.py
 %python_build
 
 %install
@@ -116,7 +117,7 @@ ln -s solaar %{buildroot}%{_bindir}/solaar-cli
 %posttrans udev
 # This is needed to apply permissions to existing devices when the package is
 # installed.
-/usr/bin/udevadm trigger --subsystem-match=hidraw --action=add
+%{_bindir}/udevadm trigger --subsystem-match=hidraw --action=add
 
 %files
 %doc ChangeLog.md COPYRIGHT README.md Release_Notes.md
@@ -137,7 +138,6 @@ ln -s solaar %{buildroot}%{_bindir}/solaar-cli
 %{_udevrulesdir}/42-logitech-unify-permissions.rules
 
 %files doc
-%defattr(-,root,root)
 %doc docs/*
 
 %changelog

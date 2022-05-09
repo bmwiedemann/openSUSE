@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon May  9 08:35:40 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Added python-dataclasses again. Without dataclasses solaar does
+  not run under Leap.
+  And python 3.6 is not deprecated in Leap 15.3 and 15.4.
+  Suse support only python 3.6 as standard in Leap.
+
+-------------------------------------------------------------------
+Mon May  9 07:54:08 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Drop python3-dataclasses which is only needed for Pyhton 3.6 and
+  upstream doesn't support that python version anymore.
+
+-------------------------------------------------------------------
+Sat May  7 07:29:26 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Fix needed dependencies.
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
 Mon May  2 05:56:53 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 1.1.3:
