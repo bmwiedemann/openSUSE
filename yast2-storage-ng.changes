@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  9 11:28:26 UTC 2022 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Handle the new libstorage-ng "storage feature" for NILFS2
+  (gh#openSUSE/libstorage-ng#874)
+- 4.5.5
+
+-------------------------------------------------------------------
 Thu Apr 28 11:22:27 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
 
 - Mark properly help text in tmpfs widget for localization
