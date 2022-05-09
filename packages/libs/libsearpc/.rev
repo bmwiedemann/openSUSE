@@ -44,4 +44,15 @@
 </comment>
     <requestid>939133</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>685d9cad8daef8400cdb0660e3e3b7b3</srcmd5>
+    <version>3.2.0.20220425</version>
+    <time>1652114674</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.0.20220425, no changelog
+- Rebase 01-fix-includes.patch
+- Drop libsearpc-fix-compilation-glib2_68.patch
+</comment>
+    <requestid>975836</requestid>
+  </revision>
 </revisionlist>
