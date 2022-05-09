@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat May  7 20:09:48 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.31.0
+  * Don't load .env files by default
+  * Allow skipping .env autoload
+  * stdlib: add `env_vars_required`
+  * FIX: version: trim surrounding spaces
+  * FIX: ignore .envrc and .env if they are not files
+  * bump actions/setup-go from 2.1.4 to 2.1.5
+- Update to version 2.30.0
+  * Add automatic .env load
+  * Resolve symlinks during direnv deny
+  * stdlib: use_flake handle no layout dir (#861)
+  * go mod update
+- Update to version 2.29.0
+  * stdlib: add use_flake function
+  * Updated conditional for zsh hook to be more forgiving
+  * Add -r flag for matching Git branches with a regexp
+  * Enable syntax hilights to the quick demo code
+  * Fixed extra quotes for lower alpha characters
+  * Remove noisy warning about PS1 again
+
+-------------------------------------------------------------------
 Thu Apr 28 07:36:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use https homepage 
