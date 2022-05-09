@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May  8 19:19:19 UTC 2022 - olaf@aepfle.de
+
+- Update to version 2.52.1
+  * Remove rsh:// URI scheme
+  * Significant bugfixes and minor improvements
+
+-------------------------------------------------------------------
 Mon Apr  4 04:04:04 UTC 2022 - olaf@aepfle.de
 
 - Update to version 2.52.0
