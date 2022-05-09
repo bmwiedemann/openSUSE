@@ -1446,6 +1446,7 @@ unsorted:
   - broadvoice32 
   - broadvoice32-32bit: [x86_64] 
   - broadvoice32-devel 
+  - broot 
   - brotli 
   - browserpass-native 
   - brp-check-suse 
@@ -22200,6 +22201,7 @@ unsorted:
   - python310-argcomplete 
   - python310-argh 
   - python310-argon2-cffi 
+  - python310-argon2-cffi-bindings 
   - python310-argparse-manpage 
   - python310-args 
   - python310-arrow 
@@ -22358,6 +22360,7 @@ unsorted:
   - python310-azure-mgmt-apimanagement 
   - python310-azure-mgmt-app 
   - python310-azure-mgmt-appconfiguration 
+  - python310-azure-mgmt-appcontainers 
   - python310-azure-mgmt-applicationinsights 
   - python310-azure-mgmt-appplatform 
   - python310-azure-mgmt-attestation 
@@ -24644,6 +24647,7 @@ unsorted:
   - python310-shinyutils 
   - python310-shodan 
   - python310-shortuuid 
+  - python310-show-in-file-manager 
   - python310-sidecar 
   - python310-sidpy 
   - python310-sievelib 
@@ -25405,6 +25409,7 @@ unsorted:
   - python38-arf 
   - python38-argcomplete: [i586] 
   - python38-argh 
+  - python38-argon2-cffi-bindings 
   - python38-argparse-manpage: [i586] 
   - python38-args 
   - python38-arrow 
@@ -25555,6 +25560,7 @@ unsorted:
   - python38-azure-mgmt-apimanagement 
   - python38-azure-mgmt-app 
   - python38-azure-mgmt-appconfiguration 
+  - python38-azure-mgmt-appcontainers 
   - python38-azure-mgmt-applicationinsights 
   - python38-azure-mgmt-appplatform 
   - python38-azure-mgmt-attestation 
@@ -27669,6 +27675,7 @@ unsorted:
   - python38-shinyutils 
   - python38-shodan 
   - python38-shortuuid 
+  - python38-show-in-file-manager 
   - python38-sidecar 
   - python38-sidpy 
   - python38-sievelib 
@@ -28426,6 +28433,7 @@ unsorted:
   - python39-argcomplete 
   - python39-argh 
   - python39-argon2-cffi 
+  - python39-argon2-cffi-bindings 
   - python39-argparse-manpage 
   - python39-args 
   - python39-arrow 
@@ -28584,6 +28592,7 @@ unsorted:
   - python39-azure-mgmt-apimanagement 
   - python39-azure-mgmt-app 
   - python39-azure-mgmt-appconfiguration 
+  - python39-azure-mgmt-appcontainers 
   - python39-azure-mgmt-applicationinsights 
   - python39-azure-mgmt-appplatform 
   - python39-azure-mgmt-attestation 
@@ -30868,6 +30877,7 @@ unsorted:
   - python39-shinyutils 
   - python39-shodan 
   - python39-shortuuid 
+  - python39-show-in-file-manager 
   - python39-sidecar 
   - python39-sidpy 
   - python39-sievelib 
@@ -32303,7 +32313,6 @@ unsorted:
   - ruby3.1-devel-extra 
   - ruby3.1-doc 
   - ruby3.1-doc-ri 
-  - ruby3.1-rubygem-rspec-rails-3.9 
   - rubygem-docker-api 
   - rubygem-docker-api-doc 
   - rubygem-docker-api-testsuite 
