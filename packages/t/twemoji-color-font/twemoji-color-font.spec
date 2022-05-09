@@ -18,13 +18,13 @@
 #
 
 Name:           twemoji-color-font
-Version:        13.0.1
+Version:        13.1.0
 Release:        0
 Summary:        Font using Twitter’s color emoji
 License:        CC-BY-4.0
 Group:          System/X11/Fonts
 Url:            https://github.com/eosrei/twemoji-color-font
-Source:         TwitterColorEmoji-SVGinOT-Linux-%{version}.tar.gz
+Source:         %{url}/releases/download/v%{version}/TwitterColorEmoji-SVGinOT-Linux-%{version}.tar.gz
 BuildRequires:  fontpackages-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch

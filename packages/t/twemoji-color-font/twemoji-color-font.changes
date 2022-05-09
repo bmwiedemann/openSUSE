@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May  7 17:44:06 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 13.1.0
+  * Updates for Emoji Version 13.1
+  * Additions include mixed skin tone support for all variations
+    of 💏 Kiss and 💑 Couple with Heart, which until this release
+    were only available in default yellow on most major platforms.
+
+-------------------------------------------------------------------
 Wed Jan 27 18:01:39 UTC 2021 - Markus S <kamikazow@opensuse.org>
 
 - Update to twemoji 13.0.1 - 117 new Emoji
