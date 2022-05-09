@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May  9 10:16:02 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+- added patches
+  fix https://github.com/KristianOellegaard/django-health-check/issues/323
+  + python-django-health-check-no-mock.patch
+
+-------------------------------------------------------------------
 Fri Jan  7 03:47:57 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Skip Tumbleweed Python 3.6 incompatible with Django 4

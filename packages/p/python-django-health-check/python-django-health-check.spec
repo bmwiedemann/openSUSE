@@ -26,10 +26,11 @@ Summary:        Run checks on Django and is dependent services
 License:        MIT
 URL:            https://github.com/KristianOellegaard/django-health-check
 Source:         https://github.com/KristianOellegaard/django-health-check/archive/%{version}.tar.gz#/django-health-check-%{version}.tar.gz
+# https://github.com/KristianOellegaard/django-health-check/issues/323
+Patch0:         python-django-health-check-no-mock.patch
 BuildRequires:  %{python_module Django >= 1.11}
-BuildRequires:  %{python_module django-codemod}
 BuildRequires:  %{python_module celery}
-BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module django-codemod}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module redis}
@@ -49,6 +50,7 @@ Services checked include databases, caches, queue servers, celery processes, etc
 
 %prep
 %setup -q -n django-health-check-%{version}
+%patch0 -p1
 # setuptools-scm fails for GitHub archives
 sed -i 's/use_scm_version=True/version="%{version}"/' setup.py
 
@@ -77,6 +79,7 @@ cp health_check/templates/health_check/index.html %{buildroot}%{$python_sitelib}
 }
 
 %check
+rm -rf /tmp/testenv
 mkdir /tmp/testenv
 mv tests /tmp/testenv
 cd /tmp/testenv
