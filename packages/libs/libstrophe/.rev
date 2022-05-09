@@ -162,4 +162,41 @@
   Remove static library manually.</comment>
     <requestid>959376</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8f02615583c2a6f8cc43fae39e4fc40b</srcmd5>
+    <version>0.12.0</version>
+    <time>1652114682</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  * Fix potential infinite loop in resolver (#200)
+  * Prevent potential memory leak in xmpp_stanza_new_from_string() (#205)
+  * Do proper SO versioning
+  * Add code coverage support (#188)
+  * Add support for password-protected TLS key &amp; PKCS#12/PFX files (#195, #205)
+  * Stream-Management support - XEP-0198 (#184)
+  * New API:
+    + xmpp_conn_send_queue_len()
+    + xmpp_conn_send_queue_drop_element()
+    + xmpp_conn_get_sm_state()
+    + xmpp_conn_set_sm_state()
+    + xmpp_free_sm_state()
+    + xmpp_conn_get_keyfile()
+    + xmpp_conn_set_password_callback()
+    + xmpp_conn_set_password_retries()
+    + xmpp_stanza_get_child_by_path()
+    + xmpp_conn_set_sockopt_callback()
+    + xmpp_sockopt_cb_keepalive()
+  * The following APIs were public in the shared library, but
+    not in strophe.h. Now they are officially public API:
+    + xmpp_rand_new()
+    + xmpp_rand_free()
+    + xmpp_rand()
+    + xmpp_rand_bytes()
+    + xmpp_rand_nonce()
+    + xmpp_rand_bytes()
+  * The following APIs were public in the shared library, but
+    not in strophe.h.  In a future version of the library they
+    will be private without replacement:</comment>
+    <requestid>975881</requestid>
+  </revision>
 </revisionlist>
