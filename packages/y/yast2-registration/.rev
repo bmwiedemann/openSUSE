@@ -2018,4 +2018,12 @@
     <comment>submit new version 4.5.1</comment>
     <requestid>972214</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>cadd3ce2b102f02cab86f4e6538ccdb7</srcmd5>
+    <version>4.5.3</version>
+    <time>1652114616</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.5.3</comment>
+    <requestid>975338</requestid>
+  </revision>
 </revisionlist>

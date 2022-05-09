@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May  6 07:14:08 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Import the SSL certificate from the <reg_server_cert> AutoYaST
+  data also in the self-update step (bsc#1199091)
+- 4.5.3
+
+-------------------------------------------------------------------
+Thu May  5 06:04:55 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed importing SSL certificates (bsc#1195220)
+  (by jacek.tomasiak@gmail.com)
+- 4.5.2
+
+-------------------------------------------------------------------
 Fri Apr 22 10:32:15 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Reload the SUSEConnect cache after importing a SSL certificate
