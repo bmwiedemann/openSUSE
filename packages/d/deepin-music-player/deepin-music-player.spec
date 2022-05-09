@@ -24,7 +24,7 @@
 %endif
 
 Name:           deepin-music-player
-Version:        6.2.12
+Version:        6.2.13
 Release:        0
 Summary:        Deepin Music Player
 License:        GPL-3.0-or-later
@@ -33,8 +33,6 @@ URL:            https://github.com/linuxdeepin/deepin-music
 Source0:        https://github.com/linuxdeepin/deepin-music/archive/%{version}/deepin-music-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM Fix-library-link.patch hillwood@opensuse.org - Fix library link
 Patch0:         Fix-library-link.patch
-# PATCH-FIX-UPSTREAM recompile-with-fPIC.patch hillwood@opensuse.org - Fix link failed on 64bit
-# Patch2:         recompile-with-fPIC.patch
 %ifarch ppc ppc64 ppc64le s390 s390x
 BuildRequires:  deepin-desktop-base
 %else
@@ -103,6 +101,9 @@ src/libmusic-plugin/CMakeLists.txt
 
 find %{buildroot} -type f -name "*.a" -delete -print
 
+# openSUSE does not provide deepin-aiassistant, the deepin-aiassistant plugin is invaild
+rm -rf %{buildroot}%{_libdir}/deepin-aiassistant
+
 %suse_update_desktop_file -r deepin-music Audio Player
 %fdupes %{buildroot}%{_datadir}
 
@@ -114,9 +115,9 @@ find %{buildroot} -type f -name "*.a" -delete -print
 %{_datadir}/applications/deepin-music.desktop
 %{_datadir}/icons/hicolor/scalable/apps/deepin-music.svg
 %{_datadir}/deepin-manual/manual-assets/application/deepin-music
-%dir %{_libdir}/deepin-aiassistant
-%dir %{_libdir}/deepin-aiassistant/serivce-plugins
-%{_libdir}/deepin-aiassistant/serivce-plugins/libmusic-plugin.so
+# %dir %{_libdir}/deepin-aiassistant
+# %dir %{_libdir}/deepin-aiassistant/serivce-plugins
+# %{_libdir}/deepin-aiassistant/serivce-plugins/libmusic-plugin.so
 
 %files lang
 %defattr(-,root,root,-)
