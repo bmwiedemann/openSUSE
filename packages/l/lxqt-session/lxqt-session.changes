@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  9 11:30:35 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.1.1:
+  * qtxdg-tools is added as a dependency, to be used by xdg-utils
+    under LXQt Session (in near future).
+
+-------------------------------------------------------------------
 Fri Apr 29 05:58:38 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.1.0:

@@ -1339,4 +1339,14 @@ comply with openSUSE policy
 </comment>
     <requestid>973861</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>8b7064232f4e356aa6ac210f80740967</srcmd5>
+    <version>1.1.1</version>
+    <time>1652114669</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.1:
+  * qtxdg-tools is added as a dependency, to be used by xdg-utils
+    under LXQt Session (in near future).</comment>
+    <requestid>975829</requestid>
+  </revision>
 </revisionlist>
