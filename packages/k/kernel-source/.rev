@@ -5874,4 +5874,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.17.4 &amp; config changes</comment>
     <requestid>971282</requestid>
   </revision>
+  <revision rev="640" vrev="1">
+    <srcmd5>d7e47c895d4f5fdd1c56f4be38bc9bd1</srcmd5>
+    <version>5.17.5</version>
+    <time>1652114612</time>
+    <user>dimstar_suse</user>
+    <comment>5.17.5 &amp; other fixes</comment>
+    <requestid>975414</requestid>
+  </revision>
 </revisionlist>

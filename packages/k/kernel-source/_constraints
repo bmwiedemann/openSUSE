@@ -120,7 +120,7 @@
 <package>kernel-zfcpdump</package>
     </conditions>
     <hardware>
-      <processors>8</processors>
+      <jobs>8</jobs>
     </hardware>
   </overwrite>
 
@@ -140,7 +140,7 @@
 <package>kernel-zfcpdump</package>
     </conditions>
     <hardware>
-      <processors>4</processors>
+      <jobs>4</jobs>
     </hardware>
   </overwrite>
 
@@ -160,7 +160,7 @@
 <package>kernel-zfcpdump</package>
     </conditions>
     <hardware>
-      <processors>2</processors>
+      <jobs>2</jobs>
     </hardware>
   </overwrite>
 

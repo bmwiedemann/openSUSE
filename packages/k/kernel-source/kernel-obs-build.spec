@@ -19,7 +19,7 @@
 
 #!BuildIgnore: post-build-checks
 
-%define patchversion 5.17.4
+%define patchversion 5.17.5
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -45,7 +45,7 @@ BuildRequires:  util-linux
 %endif
 %endif
 %endif
-BuildRequires:  kernel%kernel_flavor-srchash-75e9961c635cc70f47cb1ad5049982f16917bb87
+BuildRequires:  kernel%kernel_flavor-srchash-e57ab05ef22d72206bfe1c6747357ce415bec0f8
 
 %if 0%{?rhel_version}
 BuildRequires:  kernel
@@ -64,9 +64,9 @@ BuildRequires:  dracut
 Summary:        package kernel and initrd for OBS VM builds
 License:        GPL-2.0-only
 Group:          SLES
-Version:        5.17.4
+Version:        5.17.5
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g75e9961
+Release:        <RELEASE>.ge57ab05
 %else
 Release:        0
 %endif
@@ -151,6 +151,7 @@ ROOT=""
                -m "$KERNEL_MODULES" \
                -k /boot/%{kernel_name}-*-default -M /boot/System.map-*-default -i /tmp/initrd.kvm -B
 %else
+# --host-only mode is needed for unlimited TasksMax workaround (boo#965564)
 dracut --reproducible --host-only --no-hostonly-cmdline \
 	--no-early-microcode --nofscks --strip --hardlink \
 	--drivers="$KERNEL_MODULES" --force /tmp/initrd.kvm \

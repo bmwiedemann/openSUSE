@@ -1,4 +1,359 @@
 -------------------------------------------------------------------
+Thu May  5 12:06:09 CEST 2022 - jslaby@suse.cz
+
+- Revert "build initrd without systemd" (bsc#1195775)"
+  This reverts commit 3a2140fa2acded48224e1438ac9b4775340c94c2. Again,
+  this breaks many packages as:
+  * iproute2 is missing, and
+  * kernel-obs-qa fails with:
+  Timed out waiting for device /dev/disk/by-id/virtio-0.
+- commit e57ab05
+
+-------------------------------------------------------------------
+Wed May  4 06:59:47 CEST 2022 - jslaby@suse.cz
+
+- io_uring: fix uninitialized field in rw io_kiocb (bsc#1199087
+  CVE-2022-29968).
+- commit 8ca9274
+
+-------------------------------------------------------------------
+Tue May  3 09:10:27 CEST 2022 - jslaby@suse.cz
+
+- Revert "Revert "build initrd without systemd" (bsc#1195775)"
+  This reverts commit e962fefb4c9cd553921cf49c24f9d0e1d16f90b3.
+  d9a821b1f81a from packaging should fix this. So let's try.
+- commit 3a2140f
+
+-------------------------------------------------------------------
+Tue May  3 08:43:43 CEST 2022 - jslaby@suse.cz
+
+- Revert "Revert "Revert "build initrd without systemd" (bsc#1195775)""
+  This reverts commit ac62a28013491cd72dd4a81604454658314e4ba5. It's still
+  not ready:
+- some packages need iproute2
+- osc shell is still defunct
+- commit e962fef
+
+-------------------------------------------------------------------
+Fri Apr 29 17:55:47 CEST 2022 - mkubecek@suse.cz
+
+- Update
+  patches.kernel.org/5.17.2-0822-net-x25-Fix-null-ptr-deref-caused-by-x25_disc.patch
+  references (add CVE-2022-1516 bsc#1199012).
+- commit af2638d
+
+-------------------------------------------------------------------
+Wed Apr 27 18:54:10 CEST 2022 - jslaby@suse.cz
+
+- Linux 5.17.5 (bsc#1012628).
+- etherdevice: Adjust ether_addr* prototypes to silence
+  -Wstringop-overead (bsc#1012628).
+- perf tools: Fix segfault accessing sample_id xyarray
+  (bsc#1012628).
+- drm/amd/display: Only set PSR version when valid (bsc#1012628).
+- block/compat_ioctl: fix range check in BLKGETSIZE (bsc#1012628).
+- gfs2: assign rgrp glock before compute_bitstructs (bsc#1012628).
+- scsi: ufs: core: scsi_get_lba() error fix (bsc#1012628).
+- net/sched: cls_u32: fix netns refcount changes in u32_change()
+  (bsc#1012628).
+- ALSA: usb-audio: Clear MIDI port active flag after draining
+  (bsc#1012628).
+- ALSA: usb-audio: add mapping for MSI MAG X570S Torpedo MAX
+  (bsc#1012628).
+- ALSA: hda/realtek: Add quirk for Clevo NP70PNP (bsc#1012628).
+- ASoC: atmel: Remove system clock tree configuration for
+  at91sam9g20ek (bsc#1012628).
+- ASoC: topology: Correct error handling in
+  soc_tplg_dapm_widget_create() (bsc#1012628).
+- ASoC: rk817: Use devm_clk_get() in rk817_platform_probe
+  (bsc#1012628).
+- ASoC: msm8916-wcd-digital: Check failure for
+  devm_snd_soc_register_component (bsc#1012628).
+- ASoC: codecs: wcd934x: do not switch off SIDO Buck when codec
+  is in use (bsc#1012628).
+- dmaengine: idxd: fix device cleanup on disable (bsc#1012628).
+- dmaengine: imx-sdma: Fix error checking in sdma_event_remap
+  (bsc#1012628).
+- dmaengine: mediatek:Fix PM usage reference leak of
+  mtk_uart_apdma_alloc_chan_resources (bsc#1012628).
+- dmaengine: dw-edma: Fix unaligned 64bit access (bsc#1012628).
+- spi: spi-mtk-nor: initialize spi controller after resume
+  (bsc#1012628).
+- firmware: cs_dsp: Fix overrun of unterminated control name
+  string (bsc#1012628).
+- esp: limit skb_page_frag_refill use to a single page
+  (bsc#1012628).
+- spi: cadence-quadspi: fix incorrect supports_op() return value
+  (bsc#1012628).
+- igc: Fix infinite loop in release_swfw_sync (bsc#1012628).
+- igc: Fix BUG: scheduling while atomic (bsc#1012628).
+- igc: Fix suspending when PTM is active (bsc#1012628).
+- ice: allow creating VFs for !CONFIG_NET_SWITCHDEV (bsc#1012628).
+- ice: fix crash in switchdev mode (bsc#1012628).
+- ice: Fix memory leak in ice_get_orom_civd_data() (bsc#1012628).
+- ALSA: hda/hdmi: fix warning about PCM count when used with SOF
+  (bsc#1012628).
+- rxrpc: Restore removed timer deletion (bsc#1012628).
+- net/smc: Fix sock leak when release after smc_shutdown()
+  (bsc#1012628).
+- net/packet: fix packet_sock xmit return value checking
+  (bsc#1012628).
+- ip6_gre: Avoid updating tunnel->tun_hlen in __gre6_xmit()
+  (bsc#1012628).
+- ip6_gre: Fix skb_under_panic in __gre6_xmit() (bsc#1012628).
+- net: restore alpha order to Ethernet devices in config
+  (bsc#1012628).
+- net/sched: cls_u32: fix possible leak in u32_init_knode()
+  (bsc#1012628).
+- l3mdev: l3mdev_master_upper_ifindex_by_index_rcu should be
+  using netdev_master_upper_dev_get_rcu (bsc#1012628).
+- ipv6: make ip6_rt_gc_expire an atomic_t (bsc#1012628).
+- can: isotp: stop timeout monitoring when no first frame was sent
+  (bsc#1012628).
+- net: dsa: hellcreek: Calculate checksums in tagger
+  (bsc#1012628).
+- net: mscc: ocelot: fix broken IP multicast flooding
+  (bsc#1012628).
+- netlink: reset network and mac headers in netlink_dump()
+  (bsc#1012628).
+- drm/i915/display/psr: Unset enable_psr2_sel_fetch if other
+  checks in intel_psr2_config_valid() fails (bsc#1012628).
+- RISC-V: KVM: Remove 's' & 'u' as valid ISA extension
+  (bsc#1012628).
+- RISC-V: KVM: Restrict the extensions that can be disabled
+  (bsc#1012628).
+- net: stmmac: Use readl_poll_timeout_atomic() in atomic state
+  (bsc#1012628).
+- dmaengine: idxd: match type for retries var in idxd_enqcmds()
+  (bsc#1012628).
+- dmaengine: idxd: fix retry value to be constant for duration
+  of function call (bsc#1012628).
+- dmaengine: idxd: add RO check for wq max_batch_size write
+  (bsc#1012628).
+- dmaengine: idxd: add RO check for wq max_transfer_size write
+  (bsc#1012628).
+- dmaengine: idxd: skip clearing device context when device is
+  read-only (bsc#1012628).
+- selftests: mlxsw: vxlan_flooding: Prevent flooding of unwanted
+  packets (bsc#1012628).
+- selftests: mlxsw: vxlan_flooding_ipv6: Prevent flooding of
+  unwanted packets (bsc#1012628).
+- userfaultfd: mark uffd_wp regardless of VM_WRITE flag
+  (bsc#1012628).
+- arm64: mm: fix p?d_leaf() (bsc#1012628).
+- XArray: Disallow sibling entries of nodes (bsc#1012628).
+- drm/msm/gpu: Rename runtime suspend/resume functions
+  (bsc#1012628).
+- drm/msm/gpu: Remove mutex from wait_event condition
+  (bsc#1012628).
+- ARM: vexpress/spc: Avoid negative array index when !SMP
+  (bsc#1012628).
+- reset: renesas: Check return value of reset_control_deassert()
+  (bsc#1012628).
+- reset: tegra-bpmp: Restore Handle errors in BPMP response
+  (bsc#1012628).
+- platform/x86: samsung-laptop: Fix an unsigned comparison which
+  can never be negative (bsc#1012628).
+- ALSA: usb-audio: Fix undefined behavior due to shift overflowing
+  the constant (bsc#1012628).
+- drm/msm/disp: check the return value of kzalloc() (bsc#1012628).
+- selftests: KVM: Free the GIC FD when cleaning up in arch_timer
+  (bsc#1012628).
+- ALSA: hda: intel-dsp-config: update AlderLake PCI IDs
+  (bsc#1012628).
+- arm64: dts: imx: Fix imx8*-var-som touchscreen property sizes
+  (bsc#1012628).
+- vxlan: fix error return code in vxlan_fdb_append (bsc#1012628).
+- cifs: Check the IOCB_DIRECT flag, not O_DIRECT (bsc#1012628).
+- net: atlantic: Avoid out-of-bounds indexing (bsc#1012628).
+- mt76: Fix undefined behavior due to shift overflowing the
+  constant (bsc#1012628).
+- brcmfmac: sdio: Fix undefined behavior due to shift overflowing
+  the constant (bsc#1012628).
+- dpaa_eth: Fix missing of_node_put in dpaa_get_ts_info()
+  (bsc#1012628).
+- drm/msm/mdp5: check the return of kzalloc() (bsc#1012628).
+- KVM: x86: hyper-v: Avoid writing to TSC page without an active
+  vCPU (bsc#1012628).
+- net: macb: Restart tx only if queue pointer is lagging
+  (bsc#1012628).
+- scsi: iscsi: Release endpoint ID when its freed (bsc#1012628).
+- scsi: iscsi: Merge suspend fields (bsc#1012628).
+- scsi: iscsi: Fix NOP handling during conn recovery
+  (bsc#1012628).
+- scsi: qedi: Fix failed disconnect handling (bsc#1012628).
+- stat: fix inconsistency between struct stat and struct
+  compat_stat (bsc#1012628).
+- VFS: filename_create(): fix incorrect intent (bsc#1012628).
+- nvme: add a quirk to disable namespace identifiers
+  (bsc#1012628).
+- nvme-pci: disable namespace identifiers for the MAXIO
+  MAP1002/1202 (bsc#1012628).
+- nvme-pci: disable namespace identifiers for Qemu controllers
+  (bsc#1012628).
+- irq_work: use kasan_record_aux_stack_noalloc() record callstack
+  (bsc#1012628).
+- EDAC/synopsys: Read the error count from the correct register
+  (bsc#1012628).
+- mm/memory-failure.c: skip huge_zero_page in memory_failure()
+  (bsc#1012628).
+- memcg: sync flush only if periodic flush is delayed
+  (bsc#1012628).
+- mm, hugetlb: allow for "high" userspace addresses (bsc#1012628).
+- oom_kill.c: futex: delay the OOM reaper to allow time for
+  proper futex cleanup (bsc#1012628).
+- mm/mmu_notifier.c: fix race in mmu_interval_notifier_remove()
+  (bsc#1012628).
+- ata: pata_marvell: Check the 'bmdma_addr' beforing reading
+  (bsc#1012628).
+- dma: at_xdmac: fix a missing check on list iterator
+  (bsc#1012628).
+- dmaengine: imx-sdma: fix init of uart scripts (bsc#1012628).
+- net: atlantic: invert deep par in pm functions, preventing
+  null derefs (bsc#1012628).
+- drm/radeon: fix logic inversion in radeon_sync_resv
+  (bsc#1012628).
+- io_uring: free iovec if file assignment fails (bsc#1012628).
+- Input: omap4-keypad - fix pm_runtime_get_sync() error checking
+  (bsc#1012628).
+- scsi: sr: Do not leak information in ioctl (bsc#1012628).
+- sched/pelt: Fix attach_entity_load_avg() corner case
+  (bsc#1012628).
+- perf/core: Fix perf_mmap fail when CONFIG_PERF_USE_VMALLOC
+  enabled (bsc#1012628).
+- drm/panel/raspberrypi-touchscreen: Avoid NULL deref if not
+  initialised (bsc#1012628).
+- drm/panel/raspberrypi-touchscreen: Initialise the bridge in
+  prepare (bsc#1012628).
+- powerpc/time: Always set decrementer in timer_interrupt()
+  (bsc#1012628).
+- KVM: PPC: Fix TCE handling for VFIO (bsc#1012628).
+- drm/vc4: Use pm_runtime_resume_and_get to fix
+  pm_runtime_get_sync() usage (bsc#1012628).
+- powerpc/perf: Fix power9 event alternatives (bsc#1012628).
+- powerpc/perf: Fix power10 event alternatives (bsc#1012628).
+- arm/xen: Fix some refcount leaks (bsc#1012628).
+- perf script: Always allow field 'data_src' for auxtrace
+  (bsc#1012628).
+- perf report: Set PERF_SAMPLE_DATA_SRC bit for Arm SPE event
+  (bsc#1012628).
+- fs: fix acl translation (bsc#1012628).
+- cifs: fix NULL ptr dereference in refresh_mounts()
+  (bsc#1012628).
+- cifs: use correct lock type in cifs_reconnect() (bsc#1012628).
+- xtensa: patch_text: Fixup last cpu should be master
+  (bsc#1012628).
+- xtensa: fix a7 clobbering in coprocessor context load/store
+  (bsc#1012628).
+- openvswitch: fix OOB access in reserve_sfa_size() (bsc#1012628).
+- ASoC: rt5682: fix an incorrect NULL check on list iterator
+  (bsc#1012628).
+- ASoC: soc-dapm: fix two incorrect uses of list iterator
+  (bsc#1012628).
+- e1000e: Fix possible overflow in LTR decoding (bsc#1012628).
+- codecs: rt5682s: fix an incorrect NULL check on list iterator
+  (bsc#1012628).
+- ARC: entry: fix syscall_trace_exit argument (bsc#1012628).
+- drm/vmwgfx: Fix gem refcounting and memory evictions
+  (bsc#1012628).
+- arm_pmu: Validate single/group leader events (bsc#1012628).
+- KVM: x86/pmu: Update AMD PMC sample period to fix guest
+  NMI-watchdog (bsc#1012628).
+- KVM: x86: Don't re-acquire SRCU lock in complete_emulated_io()
+  (bsc#1012628).
+- KVM: x86: Pend KVM_REQ_APICV_UPDATE during vCPU creation to
+  fix a race (bsc#1012628).
+- KVM: nVMX: Defer APICv updates while L2 is active until L1 is
+  active (bsc#1012628).
+- KVM: SVM: Simplify and harden helper to flush SEV guest page(s)
+  (bsc#1012628).
+- KVM: SVM: Flush when freeing encrypted pages even on
+  SME_COHERENT CPUs (bsc#1012628).
+- ext4: fix fallocate to use file_modified to update permissions
+  consistently (bsc#1012628).
+- ext4: fix symlink file size not match to file content
+  (bsc#1012628).
+- ext4: fix use-after-free in ext4_search_dir (bsc#1012628).
+- ext4: limit length to bitmap_maxbytes - blocksize in punch_hole
+  (bsc#1012628).
+- ext4, doc: fix incorrect h_reserved size (bsc#1012628).
+- ext4: fix overhead calculation to account for the reserved
+  gdt blocks (bsc#1012628).
+- ext4: force overhead calculation if the s_overhead_cluster
+  makes no sense (bsc#1012628).
+- ext4: update the cached overhead value in the superblock
+  (bsc#1012628).
+- jbd2: fix a potential race while discarding reserved buffers
+  after an abort (bsc#1012628).
+- spi: atmel-quadspi: Fix the buswidth adjustment between spi-mem
+  and controller (bsc#1012628).
+- ASoC: SOF: topology: cleanup dailinks on widget unload
+  (bsc#1012628).
+- io_uring: fix leaks on IOPOLL and CQE_SKIP (bsc#1012628).
+- arm64: dts: qcom: add IPA qcom,qmp property (bsc#1012628).
+- Update config files.
+- commit fd20f5f
+
+-------------------------------------------------------------------
+Wed Apr 27 08:21:29 CEST 2022 - jslaby@suse.cz
+
+- Refresh
+  patches.suse/simplefb-Enable-boot-time-VESA-graphic-mode-selectio.patch.
+  Update upstream status.
+- commit 749ae03
+
+-------------------------------------------------------------------
+Wed Apr 27 08:03:46 CEST 2022 - jslaby@suse.cz
+
+- Refresh
+  patches.suse/gpio-Request-interrupts-after-IRQ-is-initialized.patch.
+  Update upstream status.
+- commit 90a0e50
+
+-------------------------------------------------------------------
+Mon Apr 25 13:36:03 CEST 2022 - msuchanek@suse.de
+
+- pahole 1.22 required for full BTF features.
+  also recommend pahole for kernel-source to make the kernel buildable
+  with standard config
+- commit 364f54b
+
+-------------------------------------------------------------------
+Mon Apr 25 06:57:58 CEST 2022 - jslaby@suse.cz
+
+- Update config files.
+  Just running oldconfig after 5.17.4.
+- commit 2e251f8
+
+-------------------------------------------------------------------
+Mon Apr 25 06:51:48 CEST 2022 - jslaby@suse.cz
+
+- Revert "Revert "build initrd without systemd" (bsc#1195775)"
+  This reverts commit 5d1f5d2e7552fcd3d37c11eb714944859e92e7b4. A fix is
+  to be merged via packaging.
+- commit ac62a28
+
+-------------------------------------------------------------------
+Fri Apr 22 16:37:17 CEST 2022 - tiwai@suse.de
+
+- gpio: Request interrupts after IRQ is initialized (bsc#1198697).
+- commit 283f2c7
+
+-------------------------------------------------------------------
+Fri Apr 22 15:35:01 CEST 2022 - dmueller@suse.com
+
+- use jobs not processors in the constraints
+  jobs is the number of vcpus available to the build, while processors
+  is the total processor count of the machine the VM is running on.
+- commit a6e141d
+
+-------------------------------------------------------------------
+Thu Apr 21 08:39:08 CEST 2022 - jslaby@suse.cz
+
+- scripts: dummy-tools, add pahole (bsc#1198388).
+- commit 1fe0032
+
+-------------------------------------------------------------------
 Wed Apr 20 09:43:03 CEST 2022 - jslaby@suse.cz
 
 - Linux 5.17.4 (bsc#1012628).
@@ -400,6 +755,18 @@ Tue Apr 19 07:59:57 CEST 2022 - jslaby@suse.cz
   (bsc#1012628 bsc#1198330 CVE-2022-28893).
   Update upstream status.
 - commit a0f1f93
+
+-------------------------------------------------------------------
+Fri Apr 15 00:19:33 CEST 2022 - dmueller@suse.com
+
+- Update config files (bsc#1198722, bsc#1197746).
+  Enable compiled in LSMs on boot
+  * landlock: optional ability for user land applications to sandbox
+  themselves
+  * yama: optional restrict of use of ptrace for nonprivileged users
+  * default to apparmor, list selinux before bpf to avoid bsc#1197746
+  * bpf: create eBPF based LSMs dynamically
+- commit 5506937
 
 -------------------------------------------------------------------
 Thu Apr 14 23:49:56 CEST 2022 - dmueller@suse.com
@@ -4278,6 +4645,12 @@ Sun Feb 27 21:50:19 CET 2022 - mkubecek@suse.cz
 - commit 22f5560
 
 -------------------------------------------------------------------
+Sun Feb 27 10:18:31 CET 2022 - dmueller@suse.com
+
+- rpm/kernel-obs-build.spec.in: add systemd-initrd and terminfo dracut module (bsc#1195775)
+- commit d9a821b
+
+-------------------------------------------------------------------
 Thu Feb 24 06:07:05 CET 2022 - jslaby@suse.cz
 
 - Update config files.
@@ -5098,6 +5471,15 @@ Wed Feb 16 10:56:42 CET 2022 - dmueller@suse.com
 
 - config: Disable CONFIG_READ_ONLY_THP_FOR_FS (bsc#1195774)
 - commit 4a5d464
+
+-------------------------------------------------------------------
+Tue Feb 15 23:08:44 CET 2022 - dmueller@suse.com
+
+- rpm/kernel-obs-build.spec.in: use default dracut modules (bsc#1195926,
+  bsc#1198484)
+  Let's iron out the reduced initrd optimisation in Tumbleweed.
+  Build full blown dracut initrd with systemd for SLE15 SP4.
+- commit ea76821
 
 -------------------------------------------------------------------
 Tue Feb 15 22:49:32 CET 2022 - dmueller@suse.com

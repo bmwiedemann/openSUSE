@@ -17,7 +17,7 @@
 
 
 %define srcversion 5.17
-%define patchversion 5.17.4
+%define patchversion 5.17.5
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -31,9 +31,9 @@
 %endif
 
 Name:           kernel-source
-Version:        5.17.4
+Version:        5.17.5
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g75e9961
+Release:        <RELEASE>.ge57ab05
 %else
 Release:        0
 %endif
@@ -50,7 +50,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-75e9961c635cc70f47cb1ad5049982f16917bb87
+Provides:       %name-srchash-e57ab05ef22d72206bfe1c6747357ce415bec0f8
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
@@ -129,6 +129,10 @@ Recommends:     bison
 Recommends:     flex
 Recommends:     libelf-devel
 Recommends:     openssl-devel
+# pahole needed for BTF
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
+Recommends:     dwarves >= 1.22
+%endif
 # dracut no longer carries installkernel
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
 Recommends:     kernel-install-tools
