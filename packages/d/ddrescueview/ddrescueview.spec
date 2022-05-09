@@ -1,7 +1,7 @@
 #
 # spec file for package ddrescueview
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,14 @@
 #
 
 
-%define         upstream_version_1  0.4%%20alpha%%204
-%define         upstream_version_2  0.4%%7Ealpha4
 Name:           ddrescueview
-Version:        0.4~alpha4
+Version:        0.4.5
 Release:        0
 Summary:        Graphical viewer for GNU ddrescue mapfiles
 License:        GPL-3.0-only
 Group:          Productivity/Archiving/Backup
 URL:            https://sourceforge.net/projects/ddrescueview/
-Source:         https://sourceforge.net/projects/ddrescueview/files/Test%%20builds/v%{upstream_version_1}/ddrescueview-source-%{upstream_version_2}.tar.xz/download#/%{name}-%{version}.tar.xz
+Source:         https://sourceforge.net/projects/ddrescueview/files/Test%20builds/v%{version}/ddrescueview-source-%{version}.tar.xz/download#/%{name}-%{version}.tar.xz
 BuildRequires:  gtk2-devel
 BuildRequires:  lazarus
 BuildRequires:  libQt5Pas-devel
