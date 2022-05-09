@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May  7 14:00:06 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.17.3
+  * fix regression: spurious warning message after reading config
+
+-------------------------------------------------------------------
 Thu Mar 31 14:59:12 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.17.2
