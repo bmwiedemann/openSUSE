@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May  7 09:11:02 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5.0
+  * capture: add support for IP-IP encapsulation
+  * capture: add support for IPv6 fragments reassembly
+  * hep: add support for saving HEP received packets to PCAP
+  * tls: check client TLS version in gnutls code
+  * ui: fixed a crash when leaving ncurses screens
+
+-------------------------------------------------------------------
 Thu Nov 25 23:07:04 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.4.10

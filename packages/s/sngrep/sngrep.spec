@@ -1,8 +1,8 @@
 #
 # spec file for package sngrep
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2018-2021, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2018-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           sngrep
-Version:        1.4.10
+Version:        1.5.0
 Release:        0
 Summary:        Ncurses SIP Messages flow viewer
 License:        GPL-3.0-or-later
