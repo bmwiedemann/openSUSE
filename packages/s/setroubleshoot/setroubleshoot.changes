@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May  8 16:40:53 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
+
+- Switch runtime requirement of server package from ancient
+  PyGObject 2 to the current version. Build requirement was already
+  current.
+
+-------------------------------------------------------------------
 Thu Nov 11 09:50:33 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Drop build requirement for gtk2-devel

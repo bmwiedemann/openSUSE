@@ -76,7 +76,7 @@ Requires:       python3-audit
 Requires:       python3-dasbus
 Requires:       python3-dbus-python
 Requires:       policycoreutils-python
-Requires:       python3-gobject2
+Requires:       python3-gobject
 Requires:       python3-selinux
 Requires:       python3-rpm
 Requires:       python3-setools
