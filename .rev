@@ -1151,4 +1151,12 @@ PubCloud:
 </comment>
     <requestid>969900</requestid>
   </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>3eeaa3b1ee4cb8ca769facd6506faa79</srcmd5>
+    <version>2.8.0</version>
+    <time>1652114678</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>975850</requestid>
+  </revision>
 </revisionlist>
