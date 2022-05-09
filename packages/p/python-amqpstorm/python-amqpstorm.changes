@@ -1,7 +1,23 @@
 -------------------------------------------------------------------
+Mon May  9 04:55:21 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.10.4
+  * Fixed a potential deadlock when opening a channel with a broken connection [#97]
+  * Added support for custom Message implementations
+  * Added Pagination and Filtering support to Management list calls
+  * Updated to use pytest framework instead of nose for testing.
+  * Fixed bug with UriConnection not handling amqps:// properly.
+  * Fixed bad socket fd causing high cpu usage [#110]
+- Get new pamqp3.patch from https://github.com/eandersson/amqpstorm/pull/95,
+  which should be in v3 (which is somehow not tagged yet)
+  * rebased it to the new codestream
+- Do not require mock
+  * mock.patch
+
+-------------------------------------------------------------------
 Mon Apr 19 13:03:19 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
-- Upadte to 2.8.4
+- Update to 2.8.4
   * Added getter/setter methods for Message properties expiration, message_type and user_id
   * Fixed pip sdist circular dependency
   * Fixed basic.consume argument type in documentation

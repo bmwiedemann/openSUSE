@@ -1,7 +1,7 @@
 #
 # spec file for package python-amqpstorm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-amqpstorm
-Version:        2.8.4
+Version:        2.10.4
 Release:        0
 Summary:        Thread-safe Python RabbitMQ Client & Management library
 License:        MIT
 URL:            https://github.com/eandersson/amqpstorm
 Source:         https://files.pythonhosted.org/packages/source/A/AMQPStorm/AMQPStorm-%{version}.tar.gz
 Patch0:         pamqp3.patch
-BuildRequires:  %{python_module mock}
+Patch1:         mock.patch
 BuildRequires:  %{python_module pamqp >= 3.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
@@ -50,7 +50,6 @@ When using a SSL connection, TLSv1 or higher is required.
 %prep
 %setup -q -n AMQPStorm-%{version}
 %autopatch -p1
-sed -i -e "s/'pamqp>=2.0.0,<3.0'/'pamqp>=3.0'/" setup.py
 
 %build
 export LANG="en_US.UTF8"
@@ -69,7 +68,7 @@ export LANG="en_US.UTF8"
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst examples
+%doc README.rst
 %{python_sitelib}/*
 
 %changelog
