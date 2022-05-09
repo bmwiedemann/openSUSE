@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun May  8 16:02:18 UTC 2022 - wbauer@tmo.at
+
+- update to version 4.2.5
+  * Easier building of FormLayouts
+  * Allow multiple entries for exclusions in Favorites
+  * Layout improvements
+  * Use height instead of width for time buttons spread
+  * Disabled context menu items should not be shown in program info
+  * Allow disabling of sub sub context menu entries
+  * Always use newest instance of program to show in ProgramInfo
+  * Reminders not updated after data update
+  * Add option to show info when test version of TV-Browser is available
+  * Show info when using outdated TV-Browser version
+  * Unify handling of properties for all type of plugins, add automated
+    backup
+  * Allow creation of new filter in filter selection panel
+  * Add option to highlight programs of filter
+  * Add option to show plugin actions in context menu of tabs and toolbar
+    buttons
+  * Easier access for editing filter components
+  * Add option to not show download dialog again in the running session
+  * Linkify additional plugin program infos
+  * Possible NPE at creating program text for additional plugin infos
+  * Transportable version doesn't find import directory under Linux
+  * Order settings in groups
+  * Last line of description missing
+
+-------------------------------------------------------------------
 Wed Dec 22 19:38:14 UTC 2021 - wbauer@tmo.at
 
 - update to version 4.2.4
