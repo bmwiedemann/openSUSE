@@ -4424,4 +4424,17 @@
 - update staging to 7.7 release</comment>
     <requestid>972560</requestid>
   </revision>
+  <revision rev="377" vrev="1">
+    <srcmd5>9d47cce0e9685470f55d6c65cc4c10ec</srcmd5>
+    <version>7.8</version>
+    <time>1652114627</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.8 development release
+  - X11 and OSS drivers converted to PE.
+  - WoW64 support in the sound drivers.
+  - Number formatting using the new locale database.
+  - Various bug fixes.
+- update staging to 7.8 release</comment>
+    <requestid>975633</requestid>
+  </revision>
 </revisionlist>
