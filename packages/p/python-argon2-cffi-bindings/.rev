@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c3899d0609f7e35fb685de00e589009b</srcmd5>
+    <version>21.2.0</version>
+    <time>1652114634</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-argon2-cffi</comment>
+    <requestid>975665</requestid>
+  </revision>
+</revisionlist>
