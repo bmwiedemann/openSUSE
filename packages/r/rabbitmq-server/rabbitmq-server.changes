@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May  8 01:07:34 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 3.10.0
+  * See https://github.com/rabbitmq/rabbitmq-server/blob/v3.10.x/release-notes/3.10.0.md
+    for the full changelog.
+  * Potentially breaking changes
+    - Messages delivered by a quorum queue and negatively acknowledged
+      with a requeue will be added to the back of the queue until the
+      queue has redelivery limit set. With a redelivery limit, requeueing
+      will use the original position of the message if possible.
+    - idle_since field now uses RFC 3339 format.
+
+-------------------------------------------------------------------
 Fri Mar 25 01:32:07 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 3.9.14
