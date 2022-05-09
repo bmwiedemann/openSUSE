@@ -18,7 +18,7 @@
 
 %define sover 4_8
 Name:           z3
-Version:        4.8.15
+Version:        4.8.17
 Release:        0
 Summary:        Theorem prover from Microsoft Research
 License:        MIT
@@ -26,7 +26,7 @@ Group:          Productivity/Scientific/Other
 URL:            https://github.com/Z3Prover/z3/wiki
 Source0:        https://github.com/Z3Prover/z3/archive/z3-%{version}.tar.gz
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
+BuildRequires:  gcc-c++ >= 6.0
 BuildRequires:  gmp-devel
 BuildRequires:  ninja
 BuildRequires:  pkg-config

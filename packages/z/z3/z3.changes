@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May  6 09:24:23 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 4.8.17
+  * fix breaking bug in python interface for user propagator pop
+  * Various fixes for z3str3
+  * Initial support for nested algebraic datatypes with sequences
+  * Initiate map/fold operators on sequences
+  * Initiate maxdiff/mindiff on arrays
+- Update to version 4.8.16
+  * Initial support for Darwin Arm64 (for M1, M2, .. users)
+  * Added functionality to user propagator decisions.
+  * Added options for rc2 and maxres-bin to maxsat
+  * Improved search for mutex constraints (at-most-1 constraints)
+    among soft constraints for maxsat derived from approach used
+    in rc2 sample.
+  * Various other bugfixes
+
+-------------------------------------------------------------------
 Thu Apr 14 13:41:09 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 4.8.15:
