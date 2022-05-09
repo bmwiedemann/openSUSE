@@ -17,7 +17,7 @@
 
 
 Name:           FAudio
-Version:        22.02
+Version:        22.05
 Release:        0
 Summary:        A reimplementation of the XNA Game Studio libraries
 License:        Zlib
@@ -51,7 +51,7 @@ Requires:       libFAudio0 = %{version}
 FNA is a reimplementation of the Microsoft XNA Game Studio 4.0 Refresh libraries.
 
 %prep
-%setup
+%setup -q
 %if 0%{?suse_version} < 1550
 %patch0 -p1
 %endif

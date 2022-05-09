@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  9 14:44:25 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.05. Changes since 22.02:
+  * FACT: Clamp SoundBank Q factor to ignore the 0.67 case, for now
+  * CMake: Remove some uicommon files that no longer exist
+
+-------------------------------------------------------------------
 Tue Feb 15 17:08:34 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
 
 - update to 22.02:

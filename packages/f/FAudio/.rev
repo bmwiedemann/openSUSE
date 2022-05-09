@@ -289,4 +289,14 @@
     stb_vorbis_get_samples_float_interleaved. (forwarded request 955067 from ukbeast89)</comment>
     <requestid>955172</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ad73b9c666d087060015c4feedc01830</srcmd5>
+    <version>22.05</version>
+    <time>1652114680</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 22.05. Changes since 22.02:
+  * FACT: Clamp SoundBank Q factor to ignore the 0.67 case, for now
+  * CMake: Remove some uicommon files that no longer exist (forwarded request 975857 from cgiboudeaux)</comment>
+    <requestid>975858</requestid>
+  </revision>
 </revisionlist>
