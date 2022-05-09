@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May  9 13:40:37 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.5.0:
+  - Current nvim master is still reading $NVIM_LISTEN_ADDRESS,
+    but it is considered obsolete and could be removed soon in
+    favor of --listen.
+
+-------------------------------------------------------------------
 Sun Jan 31 08:22:30 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Switch to using update-alternatives(1) to avoid collisions.

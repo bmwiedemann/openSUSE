@@ -50,4 +50,16 @@
 </comment>
     <requestid>868124</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e163eface51ae477b89d0d174e40adfa</srcmd5>
+    <version>2.5.0</version>
+    <time>1652114677</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.0:
+  - Current nvim master is still reading $NVIM_LISTEN_ADDRESS,
+    but it is considered obsolete and could be removed soon in
+    favor of --listen.
+</comment>
+    <requestid>975846</requestid>
+  </revision>
 </revisionlist>
