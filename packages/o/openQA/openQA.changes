@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 08 17:42:36 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1651880189.cec0be3:
+  * Install rsync to worker container image
+
+-------------------------------------------------------------------
 Fri May 06 09:42:35 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1651759358.c19bce8:
