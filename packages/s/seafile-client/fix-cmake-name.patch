@@ -1,6 +1,8 @@
---- seafile-client-8.0.6/CMakeLists.txt.orig	2022-02-24 14:13:48.182261633 +0100
-+++ seafile-client-8.0.6/CMakeLists.txt	2022-02-24 14:14:04.466332241 +0100
-@@ -133,7 +133,7 @@
+Index: seafile-client-8.0.7/CMakeLists.txt
+===================================================================
+--- seafile-client-8.0.7.orig/CMakeLists.txt
++++ seafile-client-8.0.7/CMakeLists.txt
+@@ -133,7 +133,7 @@ ENDIF()
  ####################
  ###### BEGIN: QT configuration
  ####################

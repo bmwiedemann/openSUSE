@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  9 12:19:30 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 8.0.7 (no changelog)
+- Rebase 01-fix-no-return-in-nonvoid.patch
+- Rebase fix-cmake-name.patch
+
+-------------------------------------------------------------------
 Thu Feb 24 13:09:40 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 8.0.6 (no changelog)

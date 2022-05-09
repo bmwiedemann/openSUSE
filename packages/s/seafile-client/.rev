@@ -99,4 +99,15 @@
 </comment>
     <requestid>957369</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c64bd07a70f97c8756de8da6e129eda4</srcmd5>
+    <version>8.0.7</version>
+    <time>1652114675</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.0.7 (no changelog)
+- Rebase 01-fix-no-return-in-nonvoid.patch
+- Rebase fix-cmake-name.patch
+</comment>
+    <requestid>975837</requestid>
+  </revision>
 </revisionlist>
