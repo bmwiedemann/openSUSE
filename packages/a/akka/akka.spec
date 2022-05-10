@@ -48,7 +48,7 @@ BuildRequires:  javapackages-tools
 BuildRequires:  mvn(com.google.protobuf:protobuf-java)
 # typesafe-config
 BuildRequires:  mvn(com.typesafe:config)
-BuildRequires:  mvn(io.netty:netty:3)
+BuildRequires:  mvn(io.netty:netty)
 BuildRequires:  mvn(org.osgi:osgi.cmpn)
 BuildRequires:  mvn(org.osgi:osgi.core)
 BuildRequires:  mvn(org.scala-lang:scala-compiler)
@@ -88,9 +88,7 @@ sed -i "s|@VERSION@|%{namedversion}|" build.xml
 %endif
 
 # handle compatibility netty jar
-sed -i -e "s|netty[.]jar|$(basename %{_javadir}/netty3-*.jar)|" build.xml
-cp -p %{SOURCE8} remote-pom.xml
-%pom_xpath_set "pom:project/pom:dependencies/pom:dependency[pom:artifactId='netty']/pom:version" 3 remote-pom.xml
+sed -i -e "s|netty[.]jar|$(basename %{_javadir}/netty3.jar)|" build.xml
 
 # use osgi 7.x apis
 cp -p %{SOURCE7} osgi-pom.xml
@@ -110,7 +108,7 @@ chmod 644 LICENSE
 %{mvn_artifact} %{SOURCE5} target/%{name}-dataflow.jar
 %{mvn_artifact} %{SOURCE6} target/%{name}-kernel.jar
 %{mvn_artifact} osgi-pom.xml target/%{name}-osgi.jar
-%{mvn_artifact} remote-pom.xml target/%{name}-remote.jar
+%{mvn_artifact} %{SOURCE8} target/%{name}-remote.jar
 %{mvn_artifact} %{SOURCE9} target/%{name}-slf4j.jar
 %{mvn_artifact} %{SOURCE10} target/%{name}-transactor.jar
 
