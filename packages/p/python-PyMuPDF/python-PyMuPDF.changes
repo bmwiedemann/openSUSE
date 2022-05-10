@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 10 00:26:53 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file.
+- Switch to pip/wheel-based build.
+
+-------------------------------------------------------------------
 Sun Mar  6 12:27:52 UTC 2022 - Hsiu-Ming Chang <cges30901@gmail.com>
 
 - Update to v1.19.6
@@ -360,7 +366,7 @@ Sat Apr 10 12:56:40 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
   * Added `Tools.unset_quad_corrections` to suppress character quad
     corrections (occasionally required for erroneous fonts).
 
--------------------------------------------------------------------
+--------------------------------------------------------------------
 Sat Feb 27 00:04:25 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Revised License to be AGPL-3.0-only
@@ -386,8 +392,8 @@ Sat Feb 27 00:04:25 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
     of the `warn` parameter to no longer print a warning message
     in overflow situations.
   * Added a utility function `recover_quad`, which computes the
-    quadrilateral of a span. This function can be used for correctly
-    marking text extracted with the "dict" or "rawdict"
+    quadrilateral of a span. This function can be used when
+    quadrilaterals for text extracted with the "dict" or "rawdict"
     options of `Page.get_text`.
 
 -------------------------------------------------------------------
@@ -424,7 +430,7 @@ Mon Feb  8 06:24:36 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
   * Added :meth:`Document.has_annots and Document.has_links to check
     whether these object types are present anywhere in a PDF.
   * Added expert low-level functions to simplify inquiry and
-    modification of PDF object sources:
+    modification of PDF object sources: 
     + Document.xref_get_keys lists the keys of object `xref`
     + Document.xref_get_key returns type and content of a key
     + Document.xref_set_key modifies the key's value
@@ -608,6 +614,15 @@ Mon Feb  8 06:24:36 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
     Pixmap.yres values
 
 -------------------------------------------------------------------
+Sat Dec 12 13:56:56 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- update to 1.18.4:
+  - Improved PDF Optional Content support
+  - Started overhaul of method and attribute naming
+  - Introduced support of Popup annotations
+  - Implemented other bug fixes.
+
+-------------------------------------------------------------------
 Wed Sep 23 12:34:51 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.17.4:
@@ -639,7 +654,7 @@ Fri Mar 27 09:27:34 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
   * Added method which returns a list of Form XObjects of the page.
   * Added advanced graphics features to control the anti-aliasing values
   * Added :meth:`Document.scrub` which removes potentially sensitive data from a PDF.
-  * Changed text marker annotations to accept parameters beyond just
+  * Changed text marker annotations to accept parameters beyond just 
     quadrilaterals such that now text lines between two given points can be marked.
   * Added :meth:`Annot.setBlendMode` to set the annotation's blend mode.
 
@@ -654,7 +669,7 @@ Tue Feb 25 12:22:02 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 Wed Jan 15 11:54:42 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.16.10
-  * PyMuPDF can also be used as a module in the commandline using
+  * PyMuPDF can also be used as a module in the commandline using 
     "python -m fitz"
   * Support for Python 3.4 has been dropped.
 
@@ -665,7 +680,7 @@ Wed Oct  2 11:25:50 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
   * significant performance improvements for dict / rawdict text
     extraction
   * Page.getText() now support text extraction for "blocks" and
-    "words"
+    "words" 
 
 -------------------------------------------------------------------
 Tue Sep 17 21:26:39 UTC 2019 - Yunhe Guo <i@guoyunhe.me>

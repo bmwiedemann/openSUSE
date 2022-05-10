@@ -1,7 +1,7 @@
 #
-# spec file for package python-PyMuPDF
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# Python 3 only syntax
+# Python 2 build fails always
 %define skip_python2 1
 %define pypi_name PyMuPDF
 Name:           python-%{pypi_name}
@@ -29,10 +29,11 @@ Group:          Development/Libraries/Python
 URL:            https://github.com/pymupdf/PyMuPDF
 Source:         https://files.pythonhosted.org/packages/source/P/PyMuPDF/PyMuPDF-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module distro}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  dos2unix
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  jbig2dec-devel
 BuildRequires:  mupdf-devel-static < 1.20.0
@@ -40,6 +41,7 @@ BuildRequires:  mupdf-devel-static >= 1.19.0
 BuildRequires:  openSUSE-release
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
+BuildRequires:  swig
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gumbo)
 BuildRequires:  pkgconfig(harfbuzz)
@@ -56,24 +58,24 @@ book formats. PyMuPDF can also access files with extensions *.pdf,
 *.xps, *.oxps, *.epub, *.cbz or *.fb2 from Python scripts.
 
 %prep
-%setup -q -n %{pypi_name}-%{version}
-dos2unix README.md changes.txt
+%autosetup -p1 -n %{pypi_name}-%{version}
 
 %build
-%python_build
+export CFLAGS="%{optflags} -I/usr/include/freetype2"
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# https://github.com/pymupdf/PyMuPDF/issues/1002 requests a better test sequence
 cd /tmp
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -c 'import fitz'
 
 %files %{python_files}
 %license COPYING
-%doc README.md changes.txt
-%{python_sitearch}/*
+%doc README.md
+%{python_sitearch}/PyMuPDF-%{version}*-info
+%{python_sitearch}/fitz
 
 %changelog
