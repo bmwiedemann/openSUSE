@@ -1,7 +1,7 @@
 #
 # spec file for package cluster-glue
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 # Directory where we install documentation
 %global glue_docdir %{_defaultdocdir}/%{name}
 Name:           cluster-glue
-Version:        1.0.12+v1.git.1622055853.1753f5e0
+Version:        1.0.12+v1.git.1650454062.1fbde71c
 Release:        0
 Summary:        Reusable cluster components
 License:        GPL-2.0-only AND LGPL-2.1-or-later

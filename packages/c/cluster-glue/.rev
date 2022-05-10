@@ -623,4 +623,12 @@ New since previous SR: added patches to .changes file.</comment>
     <comment></comment>
     <requestid>942217</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>c329cc717c3385c0163b6b0753cae115</srcmd5>
+    <version>1.0.12+v1.git.1650454062.1fbde71c</version>
+    <time>1652188286</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>975765</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 02 09:29:54 UTC 2022 - varkoly@suse.com
+
+- Update to version 1.0.12+v1.git.1650454062.1fbde71c:
+  * bugfix for comment in external/ec2
+  * Update external/ec2 to support IMDSv2
+  * ec2: add the action parameter to the getinfo_xml function
+  * drac3_command: check for truncated url
+  * wti_mpc: fix metadata mib-version description
+  * net-snmp "remote_port" is unused and deprecated since decades
+  * fix for spurious compiler warning -Werror=stringop-overflow=
+  * ipmilan_test: fix for -Werror=uninitialized
+  * fix for -Werror=sizeof-pointer-memaccess
+  * spec: drop /man1/ from file list, no longer used
+
+-------------------------------------------------------------------
 Thu Dec 23 07:35:03 UTC 2021 - XinLiang <XLiang@suse.com>
 
 - hb_report.in: Add a warning for hb_report command is deprecated, guide user to use "crm report" directly (jsc#SLE-22499)  

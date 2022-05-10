@@ -1,6 +1,6 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">git://github.com/ClusterLabs/cluster-glue.git</param>
+    <param name="url">https://github.com/ClusterLabs/cluster-glue.git</param>
     <param name="scm">git</param>
     <param name="filename">cluster-glue</param>
     <param name="versionformat">1.0.12+v1.git.%ct.%h</param>

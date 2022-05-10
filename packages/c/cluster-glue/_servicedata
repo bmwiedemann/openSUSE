@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
             <param name="url">git://github.com/ClusterLabs/cluster-glue.git</param>
-          <param name="changesrevision">958bd9035b926871171198c2c7fd2778bc4c371c</param></service></servicedata>
+          <param name="changesrevision">958bd9035b926871171198c2c7fd2778bc4c371c</param></service><service name="tar_scm">
+                <param name="url">https://github.com/ClusterLabs/cluster-glue.git</param>
+              <param name="changesrevision">d80753e9390dd50d3b281221040095ddeae5e102</param></service></servicedata>
