@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-mailman3
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,6 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 # mailman is built only for primary python3 flavor
 %define pythons python3
+%define modname django_mailman3
 Name:           python-django-mailman3
 Version:        1.3.7
 Release:        0
@@ -42,7 +43,6 @@ BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module django-allauth}
 BuildRequires:  %{python_module django-gravatar2 >= 1.0.6}
 BuildRequires:  %{python_module mailmanclient}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytz}
 # /SECTION
 %if 0%{python3_version_nodots} == 38
@@ -67,11 +67,12 @@ Django library to help interaction with Mailman.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH='.' $python -m django test -v2 --settings=django_mailman3.tests.settings_test
+%python_expand PYTHONPATH='%{buildroot}%{$python_sitelib}' $python -m django test -v2 --settings=django_mailman3.tests.settings_test
 
 %files %{python_files}
 %doc README.rst
 %license COPYING.txt
-%{python_sitelib}/*
+%{python_sitelib}/%{modname}-%{version}*-info
+%{python_sitelib}/%{modname}
 
 %changelog

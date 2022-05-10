@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May  9 20:55:06 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Clean up the SPEC file.
+
+-------------------------------------------------------------------
+Mon May  9 15:56:27 UTC 2022 - pgajdos@suse.com
+
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Sun Dec 26 22:49:13 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Add dj40.patch for Django 4.0 compatibility
