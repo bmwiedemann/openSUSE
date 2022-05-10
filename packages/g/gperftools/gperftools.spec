@@ -1,7 +1,7 @@
 #
 # spec file for package gperftools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,9 +36,9 @@ Obsoletes:      google-perftools < %{version}
 Requires:       pprof
 # based on basictypes.h in the source tree
 ExclusiveArch:  %{ix86} x86_64 ppc ppc64 ppc64le %{arm} aarch64 mips s390x riscv64
-%ifnarch s390x s390 riscv64
+%ifnarch s390x s390
 BuildRequires:  pkgconfig(libunwind)
-%ifarch %{ix86} x86_64 %{arm} aarch64 mips
+%ifarch %{ix86} x86_64 %{arm} aarch64 mips riscv64
 BuildRequires:  pkgconfig(libunwind-coredump)
 %endif
 BuildRequires:  pkgconfig(libunwind-generic)
@@ -108,10 +108,10 @@ Requires:       %{name} = %{version}
 Requires:       libprofiler0 = %{version}
 Requires:       libstdc++-devel
 Requires:       libtcmalloc4 = %{version}
+Requires:       libtcmalloc_and_profiler4 = %{version}
 Requires:       libtcmalloc_debug4 = %{version}
 Requires:       libtcmalloc_minimal4 = %{version}
 Requires:       libtcmalloc_minimal_debug4 = %{version}
-Requires:       libtcmalloc_and_profiler4 = %{version}
 Provides:       google-perftools-devel = %{version}
 Obsoletes:      google-perftools-devel < %{version}
 
@@ -136,7 +136,6 @@ BuildArch:      noarch
 %description doc
 Documentation for gperftools package which contains some utilities to improve and analyze the
 performance of C++ programs
-
 
 %prep
 %autosetup -p1

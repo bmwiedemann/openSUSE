@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May  9 08:57:17 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Enable use of libunwind on riscv64
+
+-------------------------------------------------------------------
 Sat May 22 19:21:49 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Follow shared library packaging policy
