@@ -1,7 +1,7 @@
 #
 # spec file for package culmus-fonts
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,13 +20,13 @@
 %define upstream_name  culmus
 
 Name:           culmus-fonts
-Version:        0.132
+Version:        0.133
 Release:        0
 Summary:        A set of Hebrew fonts
 License:        GPL-2.0-or-later
 Group:          System/X11/Fonts
-Url:            http://culmus.sourceforge.net/
-Source0:        %{upstream_name}-%{version}.tar.gz
+URL:            https://culmus.sourceforge.io/
+Source0:        https://sourceforge.net/projects/culmus/files/culmus/%{version}/culmus-%{version}.tar.gz
 BuildRequires:  fontpackages-devel
 %reconfigure_fonts_prereq
 Provides:       locale(he)
@@ -58,7 +58,8 @@ install -c -m 644 fonts.scale-type1 \
 
 %files
 %defattr(-, root,root)
-%doc CHANGES fonts.scale-ttf culmus.conf GNU-GPL LICENSE LICENSE-BITSTREAM
+%doc CHANGES fonts.scale-ttf culmus.conf
+%license GNU-GPL LICENSE LICENSE-BITSTREAM
 %type1dir
 %_ttfontsdir
 
