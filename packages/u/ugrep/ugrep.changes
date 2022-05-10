@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 10 04:33:22 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.7.10:
+  * -Z (--fuzzy) can now be combined with -U (--binary) to fuzzy
+    match bytes instead of Unicode characters
+
+-------------------------------------------------------------------
 Fri Apr  8 09:49:39 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.7.9:
