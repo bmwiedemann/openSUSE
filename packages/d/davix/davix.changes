@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon May  9 05:53:44 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.8.1:
+  * Epic
+    - [DMC-1267] - Davix with libcurl backend
+    - Huge refactoring to accommodate both libneon and libcurl backends,
+      as well as improved testing
+  * Bug fixes
+    - [D-MC-1259] - Gfal2-python pread(offset, count): Partial Content
+      request not working against EOS storage
+    - [DMC-1279] - Davix with libcurl backend does not load certificate
+      via callback functions
+    - [DMC-1291] - Davix fails to parse IPv6-format hostname during
+      certificate verification
+    - [davix/issues/71] - davix-get failing auth with DAVIX_USE_LIBCURL
+    - [DMC-1209] - Davix Redirection Cache causes Segfault when
+      encountering relative path
+    - [DMC-1243] - Davix hangs if url starts with 'https' is used with
+      S3/Swift credentials in command
+    - [davix/pull/54] - Really add '\0' after printed X.509 data 
+    - [davix/pull/66] - Initialize session factory members 
+    - [davix/pull/70] - Fix return value of HttpIO::readFull
+  * New Features
+    - [DMC-1221] - Introduce a filter to avoid exposing sensitive
+      information (such as bearer tokens) in Davix debug output
+    - [DMC-1238] - Add SWIFT support in Davix
+    - [DMC-1268] - Add CS3API support in Davix
+  * Changes
+    - [davix/pull/83] - Remove reva-specific credentials management
+  * Improvements
+    - [DMC-1025] - Allow HEAD-free open through posix API
+    - [DMC-1245] - Add leading 0 to Adler32 checksum format in Davix
+* Drop davix-non-void-function.patch
+* Drop davix-link-against-libdl.patch
+
+-------------------------------------------------------------------
 Tue May 12 22:29:44 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.7.6:
