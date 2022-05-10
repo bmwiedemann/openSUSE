@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May 05 13:11:15 UTC 2022 - schwab@linux-m68k.org
+
+- Switch to APEL-LB from Wanderlust
+- Update to version 10.8+80+g6947dc4:
+  * Fold docstring within 80 characters
+  * Fix fontset-pixel-size failure
+  * Revive poe.el's dependency on pym.el
+  * Remove conditional definition of functions and variable.
+  * Remove codes for old platforms.
+  * Update package description file for MELPA.
+  * * product.el: Remove unneeded dependency on pym.el.
+  * Don't use defun-maybe for mime-charset-list
+- apel-10.8-040_make-temp-file-for-Emacs-24.3.50.patch,
+  apel-emacs-escape-fix.patch, emacs-apel-fix-old-backquote.patch,
+  prevent-fontset-error.patch: Remote obsolete patches
+
+-------------------------------------------------------------------
 Mon Sep 28 11:42:59 UTC 2020 - Marguerite Su <i@marguerite.su>
 
 - add emacs-apel-fix-old-backquote.patch

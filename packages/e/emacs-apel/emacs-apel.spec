@@ -17,20 +17,14 @@
 
 
 Name:           emacs-apel
-Version:        10.8
+Version:        10.8+80+g6947dc4
 Release:        0
 Summary:        A Portable Emacs Library
 License:        GPL-2.0-or-later
 Group:          Productivity/Editors/Emacs
-URL:            http://git.chise.org/elisp/apel
-Source:         http://git.chise.org/elisp/dist/apel/apel-%{version}.tar.gz
+URL:            https://github.com/wanderlust/apel
+Source:         apel-%{version}.tar.gz
 Source1:        suse-start-apel.el
-Patch0:         prevent-fontset-error.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         apel-10.8-040_make-temp-file-for-Emacs-24.3.50.patch
-Patch2:         apel-emacs-escape-fix.patch
-#PATCH-FIX-UPSTREAM use new style backquotes
-Patch3:         https://src.fedoraproject.org/rpms/emacs-apel/raw/master/f/emacs-apel-fix-old-backquote.patch
 BuildRequires:  emacs-nox
 Requires:       emacs
 Requires:       emacs_program
@@ -44,15 +38,7 @@ A Portable Emacs Library
 
 %prep
 %setup -q -n apel-%{version}
-%patch0 -p1
-%if 0%{?suse_version} > 1310
-%patch1 -p1
-%endif
-%patch2 -p1
-%patch3 -p1
 cp -p %{SOURCE1} .
-iconv -fiso2022jp -tutf-8 README.ja > README.ja.new
-mv README.ja.new README.ja
 
 %build
 make "CFLAGS=%{optflags}" LDFLAGS=-s EMACS=emacs PREFIX=%{_prefix} %{?_smp_mflags}
@@ -64,7 +50,7 @@ install -m 644 suse-start-apel.el %{buildroot}%{_datadir}/emacs/site-lisp/
 
 %files
 %defattr(-,root,root)
-%doc README.en README.ja ChangeLog
+%doc README.en README.ja
 %{_datadir}/emacs/site-lisp/suse-start-apel.el
 %{_datadir}/emacs/site-lisp/emu
 %{_datadir}/emacs/site-lisp/apel
