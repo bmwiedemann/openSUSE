@@ -5,9 +5,10 @@ Subject: [PATCH] gpk-update-viewer: offer to install signatures if needed
 
 https://bugzilla.gnome.org/show_bug.cgi?id=756991
 ---
-diff -urp gnome-packagekit-3.21.91.orig/src/gpk-update-viewer.c gnome-packagekit-3.21.91/src/gpk-update-viewer.c
---- gnome-packagekit-3.21.91.orig/src/gpk-update-viewer.c	2016-08-25 03:30:50.000000000 -0500
-+++ gnome-packagekit-3.21.91/src/gpk-update-viewer.c	2016-09-07 15:30:15.846880448 -0500
+Index: gnome-packagekit-3.32.0/src/gpk-update-viewer.c
+===================================================================
+--- gnome-packagekit-3.32.0.orig/src/gpk-update-viewer.c
++++ gnome-packagekit-3.32.0/src/gpk-update-viewer.c
 @@ -60,6 +60,7 @@ static	GCancellable		*cancellable = NULL
  static	GSettings		*settings = NULL;
  static	GPtrArray		*update_array = NULL;
@@ -27,7 +28,7 @@ diff -urp gnome-packagekit-3.21.91.orig/src/gpk-update-viewer.c gnome-packagekit
  
  enum {
  	GPK_UPDATES_COLUMN_TEXT,
-@@ -2264,6 +2269,168 @@ gpk_update_viewer_packages_to_ids (GPtrA
+@@ -2294,6 +2299,168 @@ gpk_update_viewer_packages_to_ids (GPtrA
  }
  
  static void
@@ -196,7 +197,7 @@ diff -urp gnome-packagekit-3.21.91.orig/src/gpk-update-viewer.c gnome-packagekit
  gpk_update_viewer_get_updates_cb (PkClient *client, GAsyncResult *res, gpointer user_data)
  {
  	g_autoptr(PkResults) results = NULL;
-@@ -2283,6 +2450,7 @@ gpk_update_viewer_get_updates_cb (PkClie
+@@ -2313,6 +2480,7 @@ gpk_update_viewer_get_updates_cb (PkClie
  	g_autoptr(PkError) error_code = NULL;
  	GtkWindow *window;
  	PkInfoEnum info;
@@ -204,7 +205,7 @@ diff -urp gnome-packagekit-3.21.91.orig/src/gpk-update-viewer.c gnome-packagekit
  
  	/* get the results */
  	results = pk_client_generic_finish (client, res, &error);
-@@ -2292,6 +2460,14 @@ gpk_update_viewer_get_updates_cb (PkClie
+@@ -2322,6 +2490,14 @@ gpk_update_viewer_get_updates_cb (PkClie
  		return;
  	}
  
@@ -219,7 +220,7 @@ diff -urp gnome-packagekit-3.21.91.orig/src/gpk-update-viewer.c gnome-packagekit
  	/* check error code */
  	error_code = pk_results_get_error_code (results);
  	if (error_code != NULL) {
-@@ -2644,6 +2820,7 @@ gpk_update_viewer_get_distro_upgrades_cb
+@@ -2674,6 +2850,7 @@ gpk_update_viewer_get_distro_upgrades_cb
  	GtkWidget *widget;
  	g_autoptr(PkError) error_code = NULL;
  	GtkWindow *window;
@@ -227,7 +228,7 @@ diff -urp gnome-packagekit-3.21.91.orig/src/gpk-update-viewer.c gnome-packagekit
  
  	/* get the results */
  	results = pk_client_generic_finish (client, res, &error);
-@@ -2653,6 +2830,14 @@ gpk_update_viewer_get_distro_upgrades_cb
+@@ -2683,6 +2860,14 @@ gpk_update_viewer_get_distro_upgrades_cb
  		return;
  	}
  
@@ -242,7 +243,7 @@ diff -urp gnome-packagekit-3.21.91.orig/src/gpk-update-viewer.c gnome-packagekit
  	/* check error code */
  	error_code = pk_results_get_error_code (results);
  	if (error_code != NULL) {
-@@ -2736,6 +2921,53 @@ gpk_update_viewer_activate_cb (GtkApplic
+@@ -2766,6 +2951,53 @@ gpk_update_viewer_activate_cb (GtkApplic
  }
  
  static void
@@ -270,7 +271,7 @@ diff -urp gnome-packagekit-3.21.91.orig/src/gpk-update-viewer.c gnome-packagekit
 +
 +	/* get UI */
 +	builder_signature = gtk_builder_new ();
-+	retval = gtk_builder_add_from_file (builder_signature, PKGDATADIR "/gpk-signature.ui", &error);
++    retval = gtk_builder_add_from_resource (builder_signature, "/org/gnome/packagekit/gpk-signature.ui", &error);
 +	if (retval == 0) {
 +		g_warning ("failed to load ui: %s", error->message);
 +		g_error_free (error);
@@ -296,7 +297,7 @@ diff -urp gnome-packagekit-3.21.91.orig/src/gpk-update-viewer.c gnome-packagekit
  gpk_update_viewer_application_startup_cb (GtkApplication *_application, gpointer user_data)
  {
  	GtkWidget *main_window;
-@@ -2786,6 +3018,8 @@ gpk_update_viewer_application_startup_cb
+@@ -2816,6 +3048,8 @@ gpk_update_viewer_application_startup_cb
  		return;
  	}
  

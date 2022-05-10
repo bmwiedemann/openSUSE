@@ -1048,4 +1048,13 @@ Also for 12.3 (optical only / making the launchers 'findable')</comment>
     <comment>Scripted push from GNOME:Factory</comment>
     <requestid>930905</requestid>
   </revision>
+  <revision rev="138" vrev="9">
+    <srcmd5>53c0001f2ee7cde775bec0a95bf9455f</srcmd5>
+    <version>3.32.0</version>
+    <time>1652188287</time>
+    <user>dimstar_suse</user>
+    <comment>- Modify bnc-946886-install-signatures-in-viewer.patch: Fix runtime
+  error to make it work as before(bsc#1198801). (forwarded request 975520 from JonathanKang)</comment>
+    <requestid>975773</requestid>
+  </revision>
 </revisionlist>

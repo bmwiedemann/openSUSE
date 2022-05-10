@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May  7 08:47:21 UTC 2022 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Modify bnc-946886-install-signatures-in-viewer.patch: Fix runtime
+  error to make it work as before(bsc#1198801).
+
+-------------------------------------------------------------------
 Thu Sep 16 01:46:52 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add gnome-packagekit-drop-NEWEST-on-get-updates.patch: Don't use
