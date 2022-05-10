@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  6 07:37:13 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Switch gcc to default 12.
+- Remove 2 Ada binaries.
+
+-------------------------------------------------------------------
 Mon Apr  4 07:44:16 UTC 2022 - Richard Biener <rguenther@suse.com>
 
 - Rename libgccjit0-devel to libgccjit-devel.

@@ -43,9 +43,9 @@ Name:           gcc
 %endif
 %define libgccjit_sover 0
 URL:            http://gcc.gnu.org/
-%define gcc_version 11
-%define gcc_suffix 11
-Version:        11
+%define gcc_version 12
+%define gcc_suffix 12
+Version:        12
 Release:        0
 Summary:        The system GNU C Compiler
 License:        GPL-3.0-or-later
@@ -130,6 +130,7 @@ PreReq:         gcc%{gcc_version}-info
 
 %description -n gcc-info
 The system GNU Compiler documentation.
+
 
 
 
@@ -416,8 +417,8 @@ for program in \
         gfortran \
 	gccgo \
 %if %{build_ada}
-	gnat gnatbind gnatchop gnatclean gnatfind gnatkr \
-	gnatlink gnatls gnatmake gnatname gnatprep gnatxref \
+	gnat gnatbind gnatchop gnatclean gnatkr \
+	gnatlink gnatls gnatmake gnatname gnatprep \
 %endif
 %if %{build_d}
 	gdc \
@@ -556,14 +557,12 @@ fi
 %{_prefix}/bin/gnatbind
 %{_prefix}/bin/gnatchop
 %{_prefix}/bin/gnatclean
-%{_prefix}/bin/gnatfind
 %{_prefix}/bin/gnatkr
 %{_prefix}/bin/gnatlink
 %{_prefix}/bin/gnatls
 %{_prefix}/bin/gnatmake
 %{_prefix}/bin/gnatname
 %{_prefix}/bin/gnatprep
-%{_prefix}/bin/gnatxref
 %endif
 
 %files -n libstdc++-devel
