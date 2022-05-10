@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  9 12:04:01 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 4.8.1:
+  * Upgrade to SQLite3 Multiple Ciphers version 1.4.3 (based on SQLite 3.38.5)
+
+-------------------------------------------------------------------
 Mon May 31 12:35:16 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 4.7.2
