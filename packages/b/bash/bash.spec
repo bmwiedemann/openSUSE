@@ -40,8 +40,8 @@ Summary:        The GNU Bourne-Again Shell
 License:        GPL-3.0-or-later
 Group:          System/Shells
 URL:            https://www.gnu.org/software/bash/bash.html
-# Git:          http://git.savannah.gnu.org/cgit/bash.git
-Source0:        ftp://ftp.gnu.org/gnu/bash/bash-%{bversion}%{bextend}.tar.gz
+# Git:          https://git.savannah.gnu.org/cgit/bash.git
+Source0:        https://ftp.gnu.org/gnu/bash/bash-%{bversion}%{bextend}.tar.gz
 Source1:        bash-%{bversion}-patches.tar.bz2
 Source2:        get_version_number.sh
 Source4:        run-tests
@@ -50,9 +50,9 @@ Source6:        dot.profile
 Source7:        bash-rpmlintrc
 Source8:        baselibs.conf
 # Remember unsafe method, compare with
-# http://lists.gnu.org/archive/html/bug-bash/2011-03/msg00070.html
-# http://lists.gnu.org/archive/html/bug-bash/2011-03/msg00071.html
-# http://lists.gnu.org/archive/html/bug-bash/2011-03/msg00073.html
+# https://lists.gnu.org/archive/html/bug-bash/2011-03/msg00070.html
+# https://lists.gnu.org/archive/html/bug-bash/2011-03/msg00071.html
+# https://lists.gnu.org/archive/html/bug-bash/2011-03/msg00073.html
 Source9:        bash-4.2-history-myown.dif.bz2
 Source10:       https://ftp.gnu.org/gnu/bash/bash-%{bversion}%{bextend}.tar.gz.sig
 # GPG key 7C0135FB088AAF6C66C650B9BB5869F064EA74AB Chet Ramey

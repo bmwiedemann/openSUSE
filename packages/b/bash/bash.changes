@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 28 19:00:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use https:// for source urls 
+
+-------------------------------------------------------------------
 Thu Mar 24 14:37:18 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Do use old legacy PreReq to get bash installed before bash-sh 
