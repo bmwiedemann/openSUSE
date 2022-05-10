@@ -1,5 +1,5 @@
 Prefer: yast2-schema-default
-%define gcc_version 11
+%define gcc_version 12
 
 # testing new cycle algorithm
 BuildFlags: genmetaalgo:1
@@ -1538,7 +1538,7 @@ Macros:
 %product_libs_gcc_ver_libgo19 11
 %product_libs_gcc_ver_libgphobos2 11
 %product_libs_gcc_ver_libgdruntime2 11
-%gcc_version 11
+%gcc_version 12
 
 %ext_info .gz
 %ext_man .gz
