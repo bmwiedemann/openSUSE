@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define modname authlib
 
 Name:           python-Authlib
 Version:        1.0.1
@@ -25,11 +26,26 @@ Release:        0
 Summary:        Python library for building OAuth and OpenID Connect servers
 License:        BSD-3-Clause
 URL:            https://authlib.org/
-Source:         https://files.pythonhosted.org/packages/source/A/Authlib/Authlib-%{version}.tar.gz
+Source:         https://github.com/lepture/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
+BuildRequires:  %{python_module anyio}
+BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module Flask-SQLAlchemy}
+BuildRequires:  %{python_module Flask}
+BuildRequires:  %{python_module SQLAlchemy}
+BuildRequires:  %{python_module Werkzeug}
+BuildRequires:  %{python_module cachelib}
 BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module httpx}
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module starlette}
+BuildRequires:  %{python_module typing_extensions}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-cryptography
@@ -41,7 +57,7 @@ BuildArch:      noarch
 A Python library for building OAuth and OpenID Connect servers.
 
 %prep
-%setup -q -n Authlib-%{version}
+%setup -q -n %{modname}-%{version}
 
 %build
 %python_build
@@ -50,9 +66,22 @@ A Python library for building OAuth and OpenID Connect servers.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%check
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib} PYTHONDONTWRITEBYTECODE=1
+$python -mpytest tests/core
+$python -mpytest tests/flask
+# gh#lepture/authlib#456
+$python -mpytest tests/jose -k 'not (test_dir_alg_xc20p or test_xc20p_content_encryption_decryption)'
+export DJANGO_SETTINGS_MODULE=tests.clients.test_django.settings
+$python -mpytest tests/clients
+# export DJANGO_SETTINGS_MODULE=tests.django.settings
+# $python -mpytest tests/django
+}
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/%{modname}
+%{python_sitelib}/Authlib-%{version}*-info
 
 %changelog

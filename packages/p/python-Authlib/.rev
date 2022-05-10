@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>971767</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>52424bc73c8dd9c3c65656763463fab7</srcmd5>
+    <version>1.0.1</version>
+    <time>1652188327</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix tests.
+</comment>
+    <requestid>975956</requestid>
+  </revision>
 </revisionlist>
