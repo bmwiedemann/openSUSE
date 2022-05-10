@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat May  7 14:38:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.95.0:
+  * Update perl scripts for the past few decades of progress
+  * Drop LSOF_CCDATE across all dialects to ensure reproducible builds
+  * Fix FD field description.
+  * Adjust alignment of buffer passed to stat().
+  * Clean up source code and documents.
+    - remove trailing whitespace,
+    - fix some issues in scripts found through shellcheck, and
+    - fix spelling
+  * man page: fix hyphen issues
+  * Fix broken LSOF_CFLAGS_OVERRIDE.
+  * [linux] Remove sysvlegacy function.
+  * [linux] use close_range instead of calling close repeatedly
+  * Add -Q option for adjusting exit status when failed to find a
+    search item (#129)
+- drop lsof-no-build-date-etc.patch (obsolete)
+
+-------------------------------------------------------------------
 Thu Jul  8 16:28:33 UTC 2021 - danilo.spinella@suse.com
 
 - Update to 4.94.0:

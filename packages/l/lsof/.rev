@@ -298,4 +298,12 @@ lsof license is most similar to Zlib (also use SPDX format) (forwarded request 1
 - Remove lsof_4.81-fmt.patch as it is not needed anymore</comment>
     <requestid>906149</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>388d2263244c5d35bb2274091b9c456e</srcmd5>
+    <version>4.95.0</version>
+    <time>1652188280</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975728</requestid>
+  </revision>
 </revisionlist>

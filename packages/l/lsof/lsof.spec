@@ -1,7 +1,7 @@
 #
 # spec file for package lsof
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           lsof
-Version:        4.94.0
+Version:        4.95.0
 Release:        0
 Summary:        A Program That Lists Information about Files Opened by Processes
 License:        Zlib
 Group:          System/Monitoring
 URL:            https://github.com/lsof-org/lsof
-Source:         lsof_%{version}.linux.tar.bz2
-Patch0:         lsof-no-build-date-etc.patch
+Source:         https://github.com/lsof-org/lsof/releases/download/%{version}/lsof_%{version}.linux.tar.bz2
 BuildRequires:  libselinux-devel
 BuildRequires:  xz
 
@@ -37,8 +36,7 @@ specific  file or all the files in a file system may be selected by
 path.
 
 %prep
-%setup -qn %{name}_%{version}.linux
-%patch0
+%setup -q -n %{name}_%{version}.linux
 
 %build
 ./Configure -n linux
