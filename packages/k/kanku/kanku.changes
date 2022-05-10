@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 09 13:19:00 UTC 2022 - FSchreiner@suse.com
+
+- Update to version 0.12.4:
+  * [util] enable cache=unsafe for all disk images
+  * [web] fixed 'scroll to top' button
+
+-------------------------------------------------------------------
 Mon Mar 14 08:38:10 UTC 2022 - FSchreiner@suse.com
 
 - Update to version 0.12.3:
