@@ -17,7 +17,7 @@
 
 
 Name:           univocity-parsers
-Version:        2.5.5
+Version:        2.9.1
 Release:        0
 Summary:        Collection of parsers for Java
 License:        Apache-2.0
@@ -25,7 +25,7 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/uniVocity/univocity-parsers
 Source0:        https://github.com/uniVocity/univocity-parsers/archive/v%{version}.tar.gz
 Source1:        %{name}-build.xml
-Patch0:         ambiguous-Record.patch
+Patch0:         0001-Resolve-import-clash-with-OpenJDK-17.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
