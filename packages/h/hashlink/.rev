@@ -18,4 +18,23 @@ final releases.
 </comment>
     <requestid>974127</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>59806a7a66a5c2c53d1f05c268931288</srcmd5>
+    <version>1.12</version>
+    <time>1652188322</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.12
+  * support for hot reload
+  * added native int64 support (for x64 only, compile with -D hl-legacy32 to keep hl32 i64 emulation)
+  * added field name to null access exceptions
+  * added hl.Api.compact to compact a set of values into a single GC block
+  * better stack primitives for faster haxe throw
+  * added 16 bits PNG decoding (fmt)
+  * added captured stack for closures (when debugger connected)
+  * added ftell2/fseek2 for large file support
+  * added optional library support @:native(&quot;?lib&quot;,&quot;name&quot;) static function foo() : Void allowing runtime detection of libraries (as well as hl.Api.isPrimLoaded)
+  * changed Windows binary to use VS2015 (was VS2013)
+</comment>
+    <requestid>975947</requestid>
+  </revision>
 </revisionlist>

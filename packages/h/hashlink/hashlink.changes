@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May  5 13:58:54 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 1.12
+  * support for hot reload
+  * added native int64 support (for x64 only, compile with -D hl-legacy32 to keep hl32 i64 emulation)
+  * added field name to null access exceptions
+  * added hl.Api.compact to compact a set of values into a single GC block
+  * better stack primitives for faster haxe throw
+  * added 16 bits PNG decoding (fmt)
+  * added captured stack for closures (when debugger connected)
+  * added ftell2/fseek2 for large file support
+  * added optional library support @:native("?lib","name") static function foo() : Void allowing runtime detection of libraries (as well as hl.Api.isPrimLoaded)
+  * changed Windows binary to use VS2015 (was VS2013)
+
+-------------------------------------------------------------------
 Sat Apr 30 20:41:40 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Move the libraries to subpackages and don't reference the devel subpackage from the main package

@@ -1,5 +1,5 @@
 #
-# spec file for package HashLink
+# spec file for package hashlink
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -17,7 +17,7 @@
 
 
 Name:           hashlink
-Version:        1.11
+Version:        1.12
 Release:        0
 Summary:        A virtual machine for Haxe
 License:        MIT
@@ -32,11 +32,11 @@ Patch03:        0001-Disable-the-JIT-tests-on-arm-architectures.patch
 BuildRequires:  cmake
 BuildRequires:  haxe >= 4.0
 BuildRequires:  mbedtls-devel
+BuildRequires:  cmake(sdl2)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libturbojpeg)
 BuildRequires:  pkgconfig(libuv)
 BuildRequires:  pkgconfig(openal)
-BuildRequires:  cmake(sdl2)
 BuildRequires:  pkgconfig(vorbis)
 Requires:       %{name}-hdlls = %{version}
 Enhances:       haxe
@@ -64,8 +64,8 @@ This subpackage provides the hdll libraries for HashLink.
 
 %package devel
 Summary:        Development files for %{name}
-Requires:       libhl1  = %{version}
 Requires:       %{name}-hdlls  = %{version}
+Requires:       libhl1  = %{version}
 
 %description devel
 Contains the files required to compile to a native executable the HashLink/C
