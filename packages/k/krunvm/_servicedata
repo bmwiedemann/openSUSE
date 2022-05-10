@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/containers/krunvm.git</param>
+              <param name="changesrevision">eedd4054ed1a987b9927b228ebe57a16558c0e71</param></service></servicedata>

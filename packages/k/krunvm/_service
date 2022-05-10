@@ -1,7 +1,7 @@
 <services>
   <service name="obs_scm" mode="disabled">
     <param name="scm">git</param>
-    <param name="revision">5add8c5da7c17cb3cff69f8b3ea54062ae2951bb</param>
+    <param name="revision">refs/tags/v0.1.5</param>
     <param name="url">https://github.com/containers/krunvm.git</param>
     <param name="versionformat">@PARENT_TAG@+git%h</param>
     <param name="changesgenerate">enable</param>
