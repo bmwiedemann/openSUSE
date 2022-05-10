@@ -22,6 +22,11 @@
 %global version_previous 1.59.0
 # This has to be kept lock step to the rust version.
 %global llvm_version 14
+%if 0%{?sle_version} <= 150300 && 0%{?suse_version} < 1599
+# We may need a minimum gcc version for some linker flags
+# This is especially true on leap/sle
+%global gcc_version 7
+%endif
 
 %define obsolete_rust_versioned() \
 Obsoletes:      %{1}1.59%{?2:-%{2}} \
@@ -115,6 +120,19 @@ ExcludeArch:    armv6hl
 # aarch64 - fails due to an invalid linker flag
 #
 %bcond_with llvmtools
+
+# Depending on our environment, we may need to configure our linker in a different manner.
+
+# If we elect for llvm, always use clang.
+%if %{with llvmtools}
+%define rust_linker clang
+%else
+%if 0%{?gcc_version} != 0
+%define rust_linker gcc-%{gcc_version}
+%else
+%define rust_linker cc
+%endif
+%endif
 
 # === Enable wasm on t1 targets ===
 %if 0%{?is_opensuse} == 1 && 0%{?suse_version} >= 1550
@@ -213,6 +231,7 @@ Source209:      %{dl_url}/rust-%{version_current}-riscv64gc-unknown-linux-gnu.ta
 Source1000:     README.suse-maint
 # PATCH-FIX-OPENSUSE: edit src/librustc_llvm/build.rs to ignore GCC incompatible flag
 Patch0:         ignore-Wstring-conversion.patch
+BuildRequires:  chrpath
 BuildRequires:  curl
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -228,7 +247,13 @@ BuildRequires:  sccache
 %else
 BuildRequires:  ccache
 %endif
-BuildRequires:  cmake
+
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 150200
+# In these distros cmake is 2.x, or 3.X < 3.13, so we need cmake3 for building llvm.
+BuildRequires:  cmake3 > 3.13.4
+%else
+BuildRequires:  cmake > 3.13.4
+%endif
 
 # For linking to platform
 Requires:       glibc-devel
@@ -244,9 +269,13 @@ BuildRequires:  lld
 Requires:       clang
 Requires:       lld
 %else
+%if 0%{?gcc_version} != 0
+BuildRequires:  gcc%{gcc_version}-c++
+Requires:       gcc%{gcc_version}
+%else
 BuildRequires:  gcc-c++
-# To allow linking to occur by default. This is a recommends so it can be ignored if desired.
 Requires:       gcc
+%endif
 # Clang gives better errors than gcc during a compilation, and it keeps everything
 # within llvm ecosystem.
 Suggests:       clang
@@ -425,27 +454,37 @@ EOF
 # everything will be rebuilt during installation!
 
 %if %{with llvmtools}
-%if %{with sccache}
-cat > .env.sh <<EOF
-export CC="/usr/bin/sccache /usr/bin/clang"
-export CXX="/usr/bin/sccache /usr/bin/clang++"
-# export LD="/usr/bin/ld.lld"
-EOF
-%else
 cat > .env.sh <<EOF
 export CC="/usr/bin/clang"
 export CXX="/usr/bin/clang++"
-# export LD="/usr/bin/ld.lld"
+EOF
+%else
+
+%if 0%{?gcc_version} != 0
+cat > .env.sh <<EOF
+export CC="/usr/bin/gcc-%{gcc_version}"
+export CXX="/usr/bin/g++-%{gcc_version}"
+EOF
+%else
+cat > .env.sh <<EOF
+export CC="gcc"
+export CXX="g++"
 EOF
 %endif
+
 %endif
 
 # -Clink-arg=-B{_prefix}/lib/rustlib/{rust_triple}/bin/gcc-ld/"
 # -Clink-arg=-B{rust_root}/lib/rustlib/{rust_triple}/bin/gcc-ld/"
 
+%if %{with sccache}
+export CC="/usr/bin/sccache ${CC}"
+export CXX="/usr/bin/sccache ${CXX}"
+%endif
+
 cat >> .env.sh <<EOF
 export PATH="%{_prefix}/lib/rustlib/%{rust_triple}/bin/:${PATH}"
-export RUSTFLAGS="%{rustflags}"
+export RUSTFLAGS="%{rustflags} -Clinker=%{rust_linker}"
 export LD_LIBRARY_PATH="%{rust_root}/lib"
 export SCCACHE_IDLE_TIMEOUT="3000"
 export DESTDIR=%{buildroot}
@@ -490,7 +529,8 @@ RUSTC_LOG=rustc_codegen_ssa::back::link=info %{rust_root}/bin/rustc -C link-args
   %{!?with_test: --local-rust-root=%{rust_root} --disable-rpath} \
   %{!?with_bundled_llvm: --llvm-root=%{_prefix} --enable-llvm-link-shared} \
   %{?with_bundled_llvm: --disable-llvm-link-shared --set llvm.link-jobs=0} \
-  %{?with_llvmtools: --set rust.use-lld=true --set llvm.use-linker=lld --default-linker=clang} \
+  %{?with_llvmtools: --set rust.use-lld=true --set llvm.use-linker=lld} \
+  --default-linker=%{rust_linker} \
   --set rust.lld=true \
   --enable-optimize \
   %{?with_sccache: --enable-sccache} \
@@ -517,6 +557,9 @@ df -h
 . ./.env.sh
 
 python3 ./x.py install
+
+# bsc#1199126 - rust-lld contains an rpath, which is invalid.
+chrpath -d %{buildroot}%{rustlibdir}/%{rust_triple}/bin/rust-lld
 
 # To facilitate tests when we aren't using system LLVM, we need filecheck available.
 install -m 0755 %{_builddir}/rustc-%{version}-src/build/%{rust_triple}/llvm/bin/FileCheck %{buildroot}%{rustlibdir}/%{rust_triple}/bin/FileCheck
@@ -557,8 +600,13 @@ if [ ! -f %{buildroot}%{_libexecdir}/cargo-credential-1password ] &&
     %{buildroot}%{_libexecdir}/cargo-credential-1password
 fi
 
+# Silence any duplicate library warnings.
+%fdupes %{buildroot}/%{common_libdir}
+
 # Remove llvm installation
 rm -rf %{buildroot}/home
+
+# End ! with test
 %endif
 
 %if %{with test}

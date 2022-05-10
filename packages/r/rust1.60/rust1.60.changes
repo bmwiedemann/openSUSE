@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  9 05:57:59 UTC 2022 - William Brown <william.brown@suse.com>
+
+- bsc#1199126 - resolve issue with rpath being embedded into rust-lld
+- Support changing gcc version for leap/sle
+
+-------------------------------------------------------------------
 Wed Apr 27 23:49:38 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Increase builder disk constraint

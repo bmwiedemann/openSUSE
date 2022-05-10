@@ -14,8 +14,12 @@ addFilter("no-soname.*/usr/lib/lib*")
 # Rustc driver calls exit, this is fine
 # addFilter(".*shared-lib-calls-exit.*/usr/lib/librustc_driver.*")
 addFilter("potential-bashisms.*/usr/bin/rust-lldb")
-addFilter("position-independent-executable-suggested.*/usr/bin/rust-llvm-dwp")
+# addFilter("position-independent-executable-suggested.*/usr/bin/rust-llvm-dwp")
 
 addFilter("non-devel-file-in-devel-package /usr/lib/.*so")
-addFilter("non-devel-file-in-devel-package /usr/lib/rustlib/.*")
+# addFilter("non-devel-file-in-devel-package /usr/lib/rustlib/.*")
+
+## Sssshhh warnings, we know. This is intentional so that linking
+# works properly during users build times.
+addFilter("devel-dependency glibc-devel")
 
