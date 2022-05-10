@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 10 11:20:57 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+- added patches
+  fix no mock
+  + python-django-oidc-provider-no-mock.patch
+
+-------------------------------------------------------------------
 Fri Feb 25 18:30:29 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Replace django3.patch with django4.patch from
