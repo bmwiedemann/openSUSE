@@ -127,7 +127,7 @@ BuildRequires:  xmvn-install
 BuildRequires:  xmvn-subst
 BuildRequires:  mvn(org.codehaus.jcsp:jcsp)
 BuildRequires:  mvn(org.codehaus.jsr166-mirror:extra166y)
-BuildRequires:  mvn(org.jboss.netty:netty:3)
+BuildRequires:  mvn(org.jboss.netty:netty)
 BuildRequires:  mvn(org.multiverse:multiverse-core)
 
 Requires:       ant

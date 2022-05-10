@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr 30 16:11:23 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- The org.jboss.netty:netty artifact does not exist any more under
+  compatibility versions
+
+-------------------------------------------------------------------
 Mon Mar 14 05:26:06 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Regenerate to account for maven-resolver upgrade to 1.7.3
