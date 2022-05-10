@@ -114,4 +114,18 @@
 - remove remove_unittest2.patch (upstream)</comment>
     <requestid>925759</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>dd4638c341bf7e37e7c8f12a978ea896</srcmd5>
+    <version>1.4.0+git.1643134405.a629de4</version>
+    <time>1652188196</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.0+git.1643134405.a629de4:
+  * Explicitly invoke python3.
+  * Check minimum version of Python in configure.ac.
+  * Add testing for Python 3.10
+  * Stop using io imports from testtools
+  * Remove logic for Python &lt; 3.6
+  * Drop support for Python 2.7, 3.5</comment>
+    <requestid>975704</requestid>
+  </revision>
 </revisionlist>

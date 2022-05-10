@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 09 06:19:54 UTC 2022 - mcepl@cepl.eu
+
+- Update to version 1.4.0+git.1643134405.a629de4:
+  * Explicitly invoke python3.
+  * Check minimum version of Python in configure.ac.
+  * Add testing for Python 3.10
+  * Stop using io imports from testtools
+  * Remove logic for Python < 3.6
+  * Drop support for Python 2.7, 3.5
+
+-------------------------------------------------------------------
 Sat Oct 16 21:33:15 UTC 2021 - mcepl@cepl.eu
 
 - Update to version 1.4.0+git.1627548288.c87ffbd:

@@ -1,7 +1,7 @@
 #
 # spec file for package subunit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %global majver  1.4
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           subunit
-Version:        1.4.0+git.1627548288.c87ffbd
+Version:        1.4.0+git.1643134405.a629de4
 Release:        0
 Summary:        C library for the subunit testing protocol
 License:        Apache-2.0 OR BSD-3-Clause
