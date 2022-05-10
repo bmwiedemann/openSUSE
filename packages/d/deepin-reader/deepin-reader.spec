@@ -1,8 +1,8 @@
 #
 # spec file for package deepin-reader
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2021 Hillwood Yang <hillwood@opensuse.org>
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2022 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,7 +61,7 @@ BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(chardet)
-Requires:       libdeepin-pdfium%{sover}
+# Requires:       libdeepin-pdfium%{sover}
 # Qt5WebEngineWidgets is invalid on these arches
 ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -85,6 +85,7 @@ The package provide pdf library for deepin-reader
 %autosetup -p1
 sed -i "s/lrelease/lrelease-qt5/g" translate_generation.sh updateTranslation.sh
 sed -i "s/system(lrelease/system(lrelease-qt5/g" reader/reader.pro
+sed -i "/#include <map>/a#include <cstdint>" tests/include/gtest/stub.h
 
 %build
 %qmake5 DAPP_VERSION=%{version} \
@@ -105,6 +106,8 @@ find %{buildroot}%{_datadir}/deepin-manual -name '*.md' -type f -print -exec chm
 find %{buildroot}%{_datadir}/deepin-manual -name '*.txt' -type f -print -exec chmod -x {} \;
 
 %suse_update_desktop_file -r %{name} Office Viewer
+
+%fdupes %{buildroot}%{_datadir}
 
 %post -n libdeepin-pdfium%{sover} -p /sbin/ldconfig
 %postun -n libdeepin-pdfium%{sover} -p /sbin/ldconfig

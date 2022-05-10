@@ -15,4 +15,12 @@
     <comment> (forwarded request 971861 from hillwood)</comment>
     <requestid>971862</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>319fbceaf43942583bfd610d8da6ee04</srcmd5>
+    <version>5.10.13</version>
+    <time>1652188331</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on ARM</comment>
+    <requestid>975961</requestid>
+  </revision>
 </revisionlist>
