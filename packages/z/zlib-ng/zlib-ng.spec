@@ -60,6 +60,7 @@ Summary:        Development files for %{name}
 Requires:       libz-ng%{?compat_suffix}%{soversion} = %{version}-%{release}
 %if %{with zlib_compat}
 Conflicts:      zlib-devel
+Provides:       zlib-devel
 %endif
 
 %description    devel
@@ -76,7 +77,6 @@ developing application that use %{name}.
 %ifarch %{arm}
   -DCMAKE_C_FLAGS=-mfloat-abi=hard \
 %endif
-  -DWITH_SANITIZERS=ON \
 %if %{with zlib_compat}
   -DZLIB_COMPAT=ON \
 %endif

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  9 04:48:04 UTC 2022 - Lubos Lunak <l.lunak@centrum.cz>
+
+- Add 'Provides: zlib-devel' to the compat package
+- Remove useless mis-typed '-DWITH_SANITIZERS=ON'
+
+-------------------------------------------------------------------
 Thu Mar 17 08:58:41 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 2.0.6:
