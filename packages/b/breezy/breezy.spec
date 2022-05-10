@@ -1,7 +1,7 @@
 #
 # spec file for package breezy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,6 @@ Requires:       python3-configobj
 Requires:       python3-dulwich >= 0.19.11
 Requires:       python3-fastimport >= 0.9.8
 Requires:       python3-patiencediff
-Requires:       python3-six >= 1.9.0
 Suggests:       python3-launchpadlib >= 1.6.3
 Provides:       bzr = %{version}
 Obsoletes:      bzr < %{version}
@@ -47,7 +46,6 @@ BuildRequires:  python3-fastimport >= 0.9.8
 BuildRequires:  python3-fixtures >= 1.3.0
 BuildRequires:  python3-patiencediff
 BuildRequires:  python3-python-subunit
-BuildRequires:  python3-six >= 1.9.0
 BuildRequires:  python3-testtools
 # /SECTION
 

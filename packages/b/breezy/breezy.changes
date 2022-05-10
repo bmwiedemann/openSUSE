@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 10 05:26:43 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded {Build,}Requires on python3-six. 
+
+-------------------------------------------------------------------
 Wed Jul 14 17:22:36 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.2.1:
