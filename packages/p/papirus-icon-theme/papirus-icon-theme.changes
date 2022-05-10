@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Tue May 10 01:19:21 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20220508
+* Added icons:
+
+  * DuckDuckGo #3012
+  * Betterbird #3011
+  * Ensembles #2996
+  * Smile
+  * Flowtime
+  * Bugdom
+  * OpenJDK 18
+  * KakaoTalk
+  * GNOME 42 Settings application
+  * Keep Talking and Nobody Explodes #2816
+  * ro.go.hmlendea.DL-Desktop
+  * Qtractor #3071
+  * Vivaldi-Snapshot #3066
+  * Java JDK
+  * list-drag-handle-symbolic #3050
+  * NeoChat (tray) #3060
+  * Amberol
+  * Tracks
+  * Cider
+  * Lapce #3030
+  * Kakoune #3029
+  * application-octet-stream (mime) #3027
+  * Ayatana Keyboard Indicator (tray) #3053
+  * ModernDeck (app & tray)
+  * Google Chat Linux (app & tray)
+  * VirusTotal #3015
+  * io.github.mimbrero.WhatsAppDesktop #3062
+  * tinyMediaManager #3023
+  * Roam Research #3031
+  * Athens #3032
+  * Crunchyroll #3044
+  * Jack Mixer #3048
+  * ProtonVPN GUI tray icons #3052
+  * d-tracker #3057
+  * Factor #3064
+  * Hoppscotch #3074
+  * Tracks
+  * Do
+  * Dynamic Wallpaper
+  * Iotas
+  * Warsow game #3073
+  * music-artist-symbolic #3098
+  * music-playlist-symbolic #3098
+  * selection-mode-symbolic #3098
+  * Microsoft Edge #3094
+  * Zettlr #3095
+  * Oh My SVG #3077
+  * Hypatia #3078
+
+* Updated Icons:
+
+  * QuteBrowser #3010
+  * GNOME Dictionary
+  * GNOME Console #3014
+  * Bustle
+  * KDEConnect trusted icons #3061
+  * CopyQ #3051
+
+* Changes and fixes:
+
+  * fix spinner icon size #3055
+  * fix Ensembles (48px)
+  * fix tvdisconnected
+
+-------------------------------------------------------------------
 Wed Apr 20 18:41:16 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 20220302
