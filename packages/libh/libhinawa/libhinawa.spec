@@ -1,7 +1,7 @@
 #
 # spec file for package libhinawa
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libhinawa
-Version:        2.2.0
+Version:        2.4.0
 Release:        0
 Summary:        I/O library for IEEE 1394 asynchronous transactions
 License:        LGPL-2.1-or-later
