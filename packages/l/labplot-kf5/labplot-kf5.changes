@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May  4 18:42:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.9.0. Check the Changelog file for the full list
+  of changes. Bugs fixed since the last version:
+  * Fitting: Fix missing locale support in evaluating range of
+    fit function
+  * Fitting: Fix pseudovoigt model
+  * Fix crash in convolution and correlation
+  * Windows: use breeze as default for better dark mode
+  * Properly save the geometry of visible windows in the project
+  * Interpolation: avoid crash when x data contains invalid data
+    points or is not strictly increasing
+  * HDF5: Fix reading attribute strings and better handle strings
+    in compound data
+
+-------------------------------------------------------------------
 Tue Mar 30 10:02:31 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to version 2.8.2

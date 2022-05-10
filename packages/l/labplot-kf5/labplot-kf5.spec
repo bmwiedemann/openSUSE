@@ -1,7 +1,7 @@
 #
 # spec file for package labplot-kf5
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define _kf5_appstreamdir %{_kf5_sharedir}/appdata
 %endif
 Name:           labplot-kf5
-Version:        2.8.2
+Version:        2.9.0
 Release:        0
 Summary:        KDE Framework 5 data analysis and visualization application
 License:        GPL-2.0-or-later
@@ -50,10 +50,7 @@ BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Parts)
 BuildRequires:  cmake(KF5Service)
-%if 0%{?suse_version} >= 1500 || 0%{?sle_version} >= 120300
-# only available since Leap 42.3
 BuildRequires:  cmake(KF5SyntaxHighlighting)
-%endif
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
@@ -66,8 +63,12 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(cfitsio)
+BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(gsl)
+BuildRequires:  pkgconfig(libcerf)
 BuildRequires:  pkgconfig(liblz4)
+BuildRequires:  pkgconfig(liborigin)
+BuildRequires:  pkgconfig(matio)
 BuildRequires:  pkgconfig(netcdf)
 BuildRequires:  pkgconfig(poppler-qt5)
 BuildRequires:  pkgconfig(shared-mime-info)
@@ -89,8 +90,8 @@ This version is based on KDE Frameworks 5
 %setup -q -n labplot-%{version}
 
 %build
-%cmake_kf5 -d build
-%make_jobs
+%cmake_kf5 -d build -- -DENABLE_READSTAT:BOOL=OFF -DREPRODUCIBLE_BUILD:BOOL=ON
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
@@ -102,7 +103,7 @@ This version is based on KDE Frameworks 5
 %kf5_post_install
 
 %files
-%license COPYING
+%license LICENSES/*
 %doc AUTHORS ChangeLog README.md
 %{_kf5_bindir}/labplot2
 %{_kf5_appsdir}/labplot2/
@@ -126,7 +127,7 @@ This version is based on KDE Frameworks 5
 
 %files lang -f labplot2.lang
 %{_kf5_htmldir}/*/labplot2/
-## These belong in the main package
+## These belong to the main package
 %exclude %{_kf5_htmldir}/en/labplot2/
 
 %changelog
