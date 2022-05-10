@@ -204,4 +204,12 @@ Not source compatible. Installable in parallel with all packages.</comment>
     <comment></comment>
     <requestid>970771</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>f376520cf7d246c29b6a4ed2a1d27c37</srcmd5>
+    <version>10.40</version>
+    <time>1652188178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975361</requestid>
+  </revision>
 </revisionlist>
