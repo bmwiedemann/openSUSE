@@ -23,4 +23,12 @@
     <comment>Build with source and target levels 8 + force java &lt;= 15</comment>
     <requestid>964341</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>3cbcbe136c22cec8f480aebc62b613de</srcmd5>
+    <version>1.2.1</version>
+    <time>1652188307</time>
+    <user>dimstar_suse</user>
+    <comment>netty3 does not have compat version any more</comment>
+    <requestid>975897</requestid>
+  </revision>
 </revisionlist>

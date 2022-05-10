@@ -34,7 +34,7 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  mvn(org.codehaus.groovy:groovy-all)
 BuildRequires:  mvn(org.codehaus.jcsp:jcsp)
 BuildRequires:  mvn(org.codehaus.jsr166-mirror:extra166y)
-BuildRequires:  mvn(org.jboss.netty:netty:3)
+BuildRequires:  mvn(org.jboss.netty:netty)
 BuildRequires:  mvn(org.multiverse:multiverse-core)
 BuildConflicts: java >= 16
 BuildConflicts: java-devel >= 16
