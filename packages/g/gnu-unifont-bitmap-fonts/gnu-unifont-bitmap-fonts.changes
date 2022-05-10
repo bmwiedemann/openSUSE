@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat May  7 15:31:10 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 14.0.03
+  * Updates some glyphs
+- Update to version 14.0.02
+  * This release updates several glyphs from the previous release.
+  * Plane 0: Updated Hebrew, Cherokee, Tagalog, Teletext and
+    Latin Extended-E
+  * Plane 1: Updated Cypro-Minoan, Brahmi, Miao,
+    Znamenny Musical Notation and Teletext
+
+-------------------------------------------------------------------
 Sun Sep 19 11:16:13 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 14.0.01:
