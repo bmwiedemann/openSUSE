@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon May  9 10:53:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.11.3:
+  * #372: Removed cast of path items in FastPath, not needed.
+  * #369: Fixed bug where ``EntryPoint.extras`` was returning
+    match objects and not the extras strings.
+  * #367: In ``Distribution.requires`` for egg-info, if ``requires.txt``
+    is empty, return an empty list.
+  * bpo-46246: Added ``__slots__`` to ``EntryPoints``.
+  * #365 and bpo-46546: Avoid leaking ``method_name`` in
+    ``DeprecatedList``.
+
+-------------------------------------------------------------------
+Mon Jan 31 20:04:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.10.1:
+  - #361: Avoid potential REDoS in ``EntryPoint.pattern``. 
+
+-------------------------------------------------------------------
+Fri Dec 31 12:51:32 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 4.10.0:
+  - #354: Removed Distribution._local factory. This
+    functionality was created as a demonstration of the possible
+    implementation. Now, the pep517 package provides this
+    functionality directly through pep517.meta.load.
+  - Require Python 3.7 or later.
+  - #357: Fixed requirement generation from egg-info when a URL
+    requirement is given.
+
+-------------------------------------------------------------------
 Mon Dec  6 09:40:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.8.2:

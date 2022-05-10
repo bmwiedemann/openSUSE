@@ -104,4 +104,32 @@ It does NOT conflict with python38 standard library (see upstream description)</
   * #353: Fixed discovery of distributions when path is empty.</comment>
     <requestid>935953</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>37c0a5739ef1ba599959804f26ce76de</srcmd5>
+    <version>4.11.3</version>
+    <time>1652188293</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.11.3:
+  * #372: Removed cast of path items in FastPath, not needed.
+  * #369: Fixed bug where ``EntryPoint.extras`` was returning
+    match objects and not the extras strings.
+  * #367: In ``Distribution.requires`` for egg-info, if ``requires.txt``
+    is empty, return an empty list.
+  * bpo-46246: Added ``__slots__`` to ``EntryPoints``.
+  * #365 and bpo-46546: Avoid leaking ``method_name`` in
+    ``DeprecatedList``.
+
+- update to 4.10.1:
+  - #361: Avoid potential REDoS in ``EntryPoint.pattern``. 
+
+- Update to 4.10.0:
+  - #354: Removed Distribution._local factory. This
+    functionality was created as a demonstration of the possible
+    implementation. Now, the pep517 package provides this
+    functionality directly through pep517.meta.load.
+  - Require Python 3.7 or later.
+  - #357: Fixed requirement generation from egg-info when a URL
+    requirement is given.</comment>
+    <requestid>975783</requestid>
+  </revision>
 </revisionlist>

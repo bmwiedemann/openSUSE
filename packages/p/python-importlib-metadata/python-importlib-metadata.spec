@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,9 @@
 %endif
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-importlib-metadata%{psuffix}
-Version:        4.8.2
+Version:        4.11.3
 Release:        0
 Summary:        Read metadata from Python packages
 License:        Apache-2.0
@@ -64,9 +65,8 @@ This package supplies third-party access to the functionality of
 importlib.metadata including improvements added to subsequent Python versions.
 
 %prep
-%setup -q -n importlib_metadata-%{version}
-# don't import from sourcedir during testing
-sed -i -e 's/norecursedirs.*/& importlib_metadata/' pytest.ini
+%autosetup -p1 -n importlib_metadata-%{version}
+echo "import setuptools; setuptools.setup()" > setup.py
 
 %build
 %python_build
