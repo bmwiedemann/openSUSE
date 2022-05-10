@@ -19,13 +19,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python36 1
 Name:           python-django-mailer
-Version:        2.1
+Version:        2.2
 Release:        0
 Summary:        A reusable Django app for queuing the sending of email
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pinax/django-mailer/
 Source:         https://files.pythonhosted.org/packages/source/d/django-mailer/django-mailer-%{version}.tar.gz
+# https://github.com/pinax/django-mailer/issues/157
+Patch0:         python-django-mailer-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -36,7 +38,6 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module lockfile >= 0.8}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages
@@ -47,6 +48,7 @@ consolidation of multiple notifications into single emails and logging of mail f
 
 %prep
 %setup -q -n django-mailer-%{version}
+%patch0 -p1
 
 %build
 %python_build

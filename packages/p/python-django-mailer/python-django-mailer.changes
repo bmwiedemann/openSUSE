@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May  9 15:45:01 UTC 2022 - pgajdos@suse.com
+
+- version update to 2.2
+  * Migrate models ``id`` fields to ``BigAutoField``.
+  * Add ``runmailer`` management command. This command starts a loop that
+  * Added ``runmailer`` management command. This command starts a loop that
+    frequently checks the database for new emails. The wait time between
+    checks can be controlled using the ``MAILER_EMPTY_QUEUE_SLEEP`` setting.
+- added patches
+  fix https://github.com/pinax/django-mailer/issues/157
+  + python-django-mailer-no-mock.patch
+
+-------------------------------------------------------------------
 Fri Jan  7 03:47:57 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Skip Tumbleweed Python 3.6 incompatible with Django 4
