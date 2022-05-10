@@ -1,7 +1,7 @@
 #
 # spec file for package python-argon2-cffi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,32 +20,24 @@
 %define skip_python2 1
 
 Name:           python-argon2-cffi
-Version:        21.1.0
+Version:        21.3.0
 Release:        0
 Summary:        The Argon2 password hashing algorithm for Python
 License:        MIT
 URL:            https://github.com/hynek/argon2_cffi
 Source:         https://files.pythonhosted.org/packages/source/a/argon2-cffi/argon2-cffi-%{version}.tar.gz
-BuildRequires:  %{python_module cffi >= 1.0.0}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools >= 6.0}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
-BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libargon2)
-Requires:       python-cffi >= 1.0.0
+# For test
+BuildRequires:  %{python_module argon2-cffi-bindings}
+Requires:       python-argon2-cffi-bindings
 Requires:       python-six
 Provides:       python-argon2_cffi
 Obsoletes:      python-argon2_cffi
-%if %{with python2}
-BuildRequires:  python-enum34
-%endif
-%ifpython2
-Requires:       python-enum34
-%endif
 %python_subpackages
 
 %description
@@ -57,19 +49,19 @@ C library.
 
 %build
 export ARGON2_CFFI_USE_SYSTEM=1
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_argument_ranges - randomly fails
-%pytest_arch -k 'not test_argument_ranges'
+%pytest
 
 %files %{python_files}
-%doc README.rst CHANGELOG.rst FAQ.rst
+%doc README.rst AUTHORS.rst FAQ.rst
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitelib}/argon2
+%{python_sitelib}/argon2_cffi-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May  6 12:54:25 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 21.3.0
+  * Feature: Full type hints.
+  * Adjusted defaults to RFC 9106 and support for pre-configured profiles.
+  * Python 3.5 is not supported anymore.
+  * The CFFI bindings have been extracted into a separate project:
+    argon2-cffi-bindings
+  * Added: argon2.Parameters.from_parameters() together with the
+    argon2.profiles module that offers easy access to the RFC-recommended
+    configuration parameters and then some.
+  * The CLI interface now has a --profile option that takes any name
+    from argon2.profiles.
+  * argon2.PasswordHasher now uses the RFC 9106 low-memory profile
+    by default. The old defaults are available as argon2.profiles.PRE_21_2.
+
+-------------------------------------------------------------------
 Sun Nov 14 23:14:06 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Update to 21.1.0
