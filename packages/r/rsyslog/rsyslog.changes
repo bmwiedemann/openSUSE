@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May  8 13:50:31 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- rsyslog 8.2204.1:
+  * CVE-2022-24903: potential buffer overrun in imptcp, imtcp,
+    imgssapi and others (boo#1199061)
+
+-------------------------------------------------------------------
 Tue Apr 19 18:15:25 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Upgrade to rsyslog 8.2204.0

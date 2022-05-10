@@ -21,11 +21,14 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
+# drop this with next release when doc tarball version lines up
+%define rsyslog_major 8.2204
+%define rsyslog_patch 1
 Name:           rsyslog
 Summary:        The enhanced syslogd for Linux and Unix
 License:        Apache-2.0 AND GPL-3.0-or-later
 Group:          System/Daemons
-Version:        8.2204.0
+Version:        %{rsyslog_major}.%{rsyslog_patch}
 Release:        0
 %bcond_with     udpspoof
 %bcond_with     dbi
@@ -206,7 +209,7 @@ Source6:        usr.sbin.rsyslogd
 Source7:        module-mysql
 Source8:        module-snmp
 Source9:        module-udpspoof
-Source14:       https://www.rsyslog.com/files/download/rsyslog/rsyslog-doc-%{version}.tar.gz
+Source14:       https://www.rsyslog.com/files/download/rsyslog/rsyslog-doc-%{rsyslog_major}.0.tar.gz
 Source16:       journald-rsyslog.conf
 Source17:       acpid.frule
 Source18:       firewall.frule
