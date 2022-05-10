@@ -18,14 +18,13 @@
 
 %define lname	libjemalloc2
 Name:           jemalloc
-Version:        5.2.1
+Version:        5.3.0
 Release:        0
 Summary:        General-purpose scalable concurrent malloc implementation
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
 URL:            http://jemalloc.net/
 Source:         https://github.com/jemalloc/jemalloc/releases/download/%version/jemalloc-%version.tar.bz2
-Patch0:         use-volatile-to-workaround-buffer-overflow-false-pos.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libxslt
 BuildRequires:  pkgconfig

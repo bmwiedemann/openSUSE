@@ -761,4 +761,25 @@ in future runs if it turned out to be implemented incorrectly).</comment>
   upstream patch that supports -D_FORTIFY_SOURCE=3.</comment>
     <requestid>969561</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>ea5d11bcab100ebf175c04745558098d</srcmd5>
+    <version>5.3.0</version>
+    <time>1652188278</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.3.0
+  * Added the thread.idle mallctl which hints that the calling
+    thread will be idle for a nontrivial period of time.
+  * Allow small size classes to be the maximum size class to
+    cache in the thread-specific cache, through the
+    opt.[lg_]tcache_max option.
+  * Make the behavior of realloc(ptr, 0) configurable with
+    opt.zero_realloc.
+  * Support C++17 over-aligned allocation.
+  * Add the thread.peak mallctl for approximate per-thread peak
+    memory tracking.
+  * Add high resolution timestamp support for profiling.
+- Drop use-volatile-to-workaround-buffer-overflow-false-pos.patch
+  (merged)</comment>
+    <requestid>975721</requestid>
+  </revision>
 </revisionlist>
