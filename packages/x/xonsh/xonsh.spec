@@ -16,21 +16,22 @@
 #
 
 
+%define pythons python3
 Name:           xonsh
-Version:        0.11.0
+Version:        0.12.2
 Release:        0
 Summary:        A general purpose, Python-powered shell
 License:        BSD-3-Clause AND BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://xon.sh/
 Source0:        https://github.com/xonsh/xonsh/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-4550.patch -- fix doc build error, from https://github.com/xonsh/xonsh/issues/4550#issue-1056650555-permalink
-Patch0:         https://github.com/xonsh/xonsh/pull/4559.patch#/fix-4550.patch
 # SECTION docs
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-cloud-sptheme
 BuildRequires:  python3-numpydoc
+BuildRequires:  python3-myst-parser
 BuildRequires:  python3-runthis-sphinxext
+BuildRequires:  python3-markdown-it-py
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python3-base >= 3.5
@@ -58,22 +59,20 @@ HTML documentation on the API and examples for %name.
 
 %prep
 %setup -q -n xonsh-%{version}
-%autopatch -p1
 sed -i '1s/^#!.*//' xonsh/xoreutils/_which.py xonsh/webconfig/main.py
 
 %build
-python3 setup.py build
-# Temporarily disabled building docs because of error https://github.com/xonsh/xonsh/issues/4551
+%python_build
 pushd docs
 LANG=C.UTF-8 PYTHONPATH=.. setarch -R make html
 # work around a rpmlint error file-contains-buildroot
-sed -i 's#/home/abuild/rpmbuild/BUILD#_WORKDIR_#g' _build/html/api/platform.html
+find _build -name '*.doctree' -exec sed -i 's#/home/abuild/rpmbuild/BUILD#_WORKDIR_#g' {} \+
 rm _build/html/.buildinfo
 rm -r _build/doctrees
 popd
 
 %install
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%python_install
 %fdupes %{buildroot}
 %fdupes -s docs/
 %fdupes -s docs/_build/html/
@@ -83,12 +82,13 @@ python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 %{_bindir}/xonsh
 %{_bindir}/xonsh-cat
 %{_bindir}/xon.sh
+%{_bindir}/xonsh-uptime
+%{_bindir}/xonsh-uname
 %doc README.rst logo.txt CHANGELOG.rst
 %doc xontrib
 %license license
 
 %files -n %{name}-doc
-%doc docs
 %doc docs/_build/html
 
 %changelog
