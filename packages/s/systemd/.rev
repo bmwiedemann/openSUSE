@@ -6006,4 +6006,17 @@ handle manual pages that consist only of a .so directive such as
     <comment></comment>
     <requestid>971023</requestid>
   </revision>
+  <revision rev="358" vrev="1">
+    <srcmd5>2daee7b0236b21af54735bb0effeeb58</srcmd5>
+    <version>250.5</version>
+    <time>1652188281</time>
+    <user>dimstar_suse</user>
+    <comment>- Import commit 0d950479e58dd3af007eb3780d600a5446aac519 (merge of v250.5)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/736db5a59f1ab1317ef64ec6e7dc394250178146...0d950479e58dd3af007eb3780d600a5446aac519
+
+- Call pam_loginuid when creating user@.service (bsc#1198507)
+  It's a backport of upstream commit 1000522a60ceade446773c67031b47a566d4a70d.</comment>
+    <requestid>975732</requestid>
+  </revision>
 </revisionlist>

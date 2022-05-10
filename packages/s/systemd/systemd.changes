@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May  6 12:44:36 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Import commit 0d950479e58dd3af007eb3780d600a5446aac519 (merge of v250.5)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/736db5a59f1ab1317ef64ec6e7dc394250178146...0d950479e58dd3af007eb3780d600a5446aac519
+
+-------------------------------------------------------------------
+Fri Apr 29 12:37:00 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Call pam_loginuid when creating user@.service (bsc#1198507)
+
+  It's a backport of upstream commit 1000522a60ceade446773c67031b47a566d4a70d.
+
+-------------------------------------------------------------------
 Wed Apr 20 07:59:23 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
 
 - spec: sign the systemd-boot efi binary (boo#1198586)
