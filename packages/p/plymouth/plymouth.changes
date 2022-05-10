@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  9 06:15:39 UTC 2022 - Cliff Zhao <qzhao@suse.com>
+
+- Update plymouth.spec: change configure options --with-shutdown-tty
+  from 1 to 7: Make sure shutdown display could show out
+  (bsc#1141749).
+
+-------------------------------------------------------------------
 Sat Apr 30 05:36:09 UTC 2022 - Cliff Zhao <qzhao@suse.com>
 
 - Add plymouth-log-on-default.patch: Enable plymouth log by default, 

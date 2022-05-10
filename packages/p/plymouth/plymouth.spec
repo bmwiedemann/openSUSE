@@ -379,7 +379,7 @@ autoreconf -ivf
 %endif
            --with-release-file=%{_sysconfdir}/os-release         \
            --with-boot-tty=/dev/tty7                             \
-           --with-shutdown-tty=/dev/tty1                         \
+           --with-shutdown-tty=/dev/tty7                         \
            --with-background-start-color-stop=0x1A3D1F           \
            --with-background-end-color-stop=0x4EA65C             \
            --with-background-color=0x3391cd                      \
