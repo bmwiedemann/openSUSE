@@ -1,7 +1,7 @@
 #
 # spec file for package tiff
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,12 +25,20 @@ Summary:        Tools for Converting from and to the Tagged Image File Format
 License:        HPND
 Group:          Productivity/Graphics/Convertors
 URL:            http://www.simplesystems.org/libtiff/
-Source:         http://download.osgeo.org/libtiff/tiff-%{version}.tar.gz
+Source:         https://download.osgeo.org/libtiff/tiff-%{version}.tar.gz
 Source2:        README.SUSE
 Source3:        baselibs.conf
 Patch0:         tiff-4.0.3-seek.patch
 # http://bugzilla.maptools.org/show_bug.cgi?id=2442
 Patch1:         tiff-4.0.3-compress-warning.patch
+Patch2:         tiff-CVE-2022-1056,CVE-2022-0891.patch
+Patch3:         tiff-CVE-2022-0908.patch
+Patch4:         tiff-CVE-2022-0924.patch
+Patch5:         tiff-CVE-2022-0909.patch
+Patch6:         tiff-CVE-2022-0865.patch
+Patch7:         tiff-CVE-2022-0562.patch
+Patch8:         tiff-CVE-2022-0561.patch
+Patch9:         tiff-CVE-2022-0907.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libjbig-devel
 BuildRequires:  libjpeg-devel
@@ -70,6 +78,14 @@ the libtiff library.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
 
 %build
 CFLAGS="%{optflags} -fPIE"

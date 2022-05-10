@@ -726,4 +726,35 @@ D    tiff-4.0.3-test-jpeg-turbo.patch</comment>
     <comment></comment>
     <requestid>888526</requestid>
   </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>241c9cbecaf168320c5a01d6c781dd63</srcmd5>
+    <version>4.3.0</version>
+    <time>1652188289</time>
+    <user>dimstar_suse</user>
+    <comment>- security update:
+  * CVE-2022-0907 [bsc#1197070]
+    + tiff-CVE-2022-0907.patch
+
+- security update
+  * CVE-2022-0561 [bsc#1195964]
+    + tiff-CVE-2022-0561.patch
+  * CVE-2022-0562 [bsc#1195965]
+    + tiff-CVE-2022-0562.patch
+  * CVE-2022-0865 [bsc#1197066]
+    + tiff-CVE-2022-0865.patch
+  * CVE-2022-0909 [bsc#1197072]
+    + tiff-CVE-2022-0909.patch
+  * CVE-2022-0924 [bsc#1197073]
+    + tiff-CVE-2022-0924.patch
+  * CVE-2022-0908 [bsc#1197074]
+    + tiff-CVE-2022-0908.patch
+
+- security update
+  * CVE-2022-1056 [bsc#1197631]
+  * CVE-2022-0891 [bsc#1197068]
+    + tiff-CVE-2022-1056,CVE-2022-0891.patch
+
+- switch source url to https</comment>
+    <requestid>975780</requestid>
+  </revision>
 </revisionlist>

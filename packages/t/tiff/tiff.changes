@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon May  9 10:50:34 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- security update:
+  * CVE-2022-0907 [bsc#1197070]
+    + tiff-CVE-2022-0907.patch
+
+-------------------------------------------------------------------
+Mon May  9 10:42:53 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- security update
+  * CVE-2022-0561 [bsc#1195964]
+    + tiff-CVE-2022-0561.patch
+  * CVE-2022-0562 [bsc#1195965]
+    + tiff-CVE-2022-0562.patch
+  * CVE-2022-0865 [bsc#1197066]
+    + tiff-CVE-2022-0865.patch
+  * CVE-2022-0909 [bsc#1197072]
+    + tiff-CVE-2022-0909.patch
+  * CVE-2022-0924 [bsc#1197073]
+    + tiff-CVE-2022-0924.patch
+  * CVE-2022-0908 [bsc#1197074]
+    + tiff-CVE-2022-0908.patch
+
+-------------------------------------------------------------------
+Fri May  6 09:08:09 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- security update
+  * CVE-2022-1056 [bsc#1197631]
+  * CVE-2022-0891 [bsc#1197068]
+    + tiff-CVE-2022-1056,CVE-2022-0891.patch
+
+-------------------------------------------------------------------
+Wed May  4 08:39:39 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- switch source url to https
+
+-------------------------------------------------------------------
 Mon Apr 26 11:37:21 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - version update to 4.3.0
