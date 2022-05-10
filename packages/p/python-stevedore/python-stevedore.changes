@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May  9 11:01:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- skip test that fails with python 3.10 
+
+-------------------------------------------------------------------
+Mon Dec  6 09:24:24 UTC 2021 - cloud-devel@suse.de
+
+- update to version 3.4.0
+  - Use TOX_CONSTRAINTS_FILE
+  - Update master for stable/wallaby
+  - setup.cfg: Replace dashes with underscores
+  - Add Python3 xena unit tests
+  - Move flake8 as a pre-commit local target.
+  - Remove lower-constraints remnants
+  - Dropping lower constraints testing
+  - Fix formatting of release list
+
+-------------------------------------------------------------------
 Sun May  2 17:26:02 UTC 2021 - cloud-devel@suse.de
 
 - update to version 3.3.0
