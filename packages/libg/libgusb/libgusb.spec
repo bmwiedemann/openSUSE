@@ -1,7 +1,7 @@
 #
 # spec file for package libgusb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libgusb
-Version:        0.3.9
+Version:        0.3.10
 Release:        0
 Summary:        GObject-based library for libusb1
 License:        LGPL-2.1-or-later
