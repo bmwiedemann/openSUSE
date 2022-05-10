@@ -1,18 +1,6 @@
-From c119c7d20b46c91f2c661e4f3789194041c4ba16 Mon Sep 17 00:00:00 2001
-From: Michael Simacek <msimacek@redhat.com>
-Date: Tue, 4 Apr 2017 16:56:33 +0200
-Subject: [PATCH] Fix compatibility with javacc 7
-
----
- build.xml                                        | 16 +++++++++++++++-
- src/main/java/freemarker/core/TokenMgrError.java |  5 +++++
- 2 files changed, 20 insertions(+), 1 deletion(-)
-
-Index: freemarker-2.3.31/build.xml
-===================================================================
---- freemarker-2.3.31.orig/build.xml
-+++ freemarker-2.3.31/build.xml
-@@ -146,13 +146,26 @@
+--- freemarker-2.3.31/build.xml	2022-04-30 08:33:06.203800972 +0200
++++ freemarker-2.3.31/build.xml	2022-04-30 08:33:37.727960663 +0200
+@@ -146,18 +146,26 @@
  
      <mkdir dir="${_javaccOutputDir}" />
      <ivy:retrieve conf="parser" pattern="build/javacc-home.tmp/[artifact].[ext]" />
@@ -32,12 +20,15 @@ Index: freemarker-2.3.31/build.xml
      <delete dir="build/javacc-home.tmp" />
 -    
 +    <!-- undo template keyword replacement -->
-+    <replace
+     <replace
+-      file="${_javaccOutputDir}/FMParser.java"
+-      token="private final LookaheadSuccess"
+-      value="private static final LookaheadSuccess"
 +      dir="${_javaccOutputDir}"
 +      token="xtemplate"
 +      value="template"
-+    />
+     />
 +
      <replace
-       file="${_javaccOutputDir}/FMParser.java"
-       token="private final LookaheadSuccess"
+       file="${_javaccOutputDir}/FMParserConstants.java"
+       token="public interface FMParserConstants"

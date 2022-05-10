@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 30 06:38:13 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * javacc-7.patch
+    + fix build with javacc 7.0.11
+
+-------------------------------------------------------------------
 Thu Feb 10 07:38:04 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v2.3.31

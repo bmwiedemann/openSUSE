@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>953270</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1c38d88a2ae8acf7703739e58c42e55d</srcmd5>
+    <version>2.3.31</version>
+    <time>1652188305</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with newer javacc</comment>
+    <requestid>975896</requestid>
+  </revision>
 </revisionlist>
