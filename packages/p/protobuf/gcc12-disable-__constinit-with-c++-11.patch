@@ -1,0 +1,16 @@
+diff --git a/src/google/protobuf/port_def.inc b/src/google/protobuf/port_def.inc
+index 1e360cc..e0283fe 100644
+--- a/src/google/protobuf/port_def.inc
++++ b/src/google/protobuf/port_def.inc
+@@ -609,7 +609,11 @@
+ #define PROTOBUF_CONSTINIT [[clang::require_constant_initialization]]
+ #define PROTOBUF_CONSTEXPR constexpr
+ #elif PROTOBUF_GNUC_MIN(12, 0)
++#if PROTOBUF_CPLUSPLUS_MIN(201703L)
+ #define PROTOBUF_CONSTINIT __constinit
++#else
++#define PROTOBUF_CONSTINIT
++#endif
+ #define PROTOBUF_CONSTEXPR constexpr
+ #else
+ #define PROTOBUF_CONSTINIT

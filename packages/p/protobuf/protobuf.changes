@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May  5 10:54:05 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add temporary patch gcc12-disable-__constinit-with-c++-11.patch
+  that addresses gh#protocolbuffers/protobuf#9916.
+
+-------------------------------------------------------------------
+Thu May  5 05:25:44 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Remove change_desc_db.patch, because underlying bug in
+  gh#googleapis/python-api-core#372 has been fixed.
+
+-------------------------------------------------------------------
 Mon Apr 25 13:01:22 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.20.1:

@@ -36,10 +36,7 @@ URL:            https://github.com/protocolbuffers/protobuf
 Source0:        https://github.com/protocolbuffers/protobuf/archive/v%{version}.tar.gz#/%{tarname}-%{version}.tar.gz
 Source1:        manifest.txt.in
 Source2:        baselibs.conf
-# PATCH-FIX-UPSTREAM change_desc_db.patch gh#googleapis/python-api-core#372 mcepl@suse.com
-# Remove leading dot from database entries, probably just a poor workaround
-# Reported to upstream as gh#protocolbuffers/protobuf#9867
-Patch0:         change_desc_db.patch
+Patch0:         gcc12-disable-__constinit-with-c++-11.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
