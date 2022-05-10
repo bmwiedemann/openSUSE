@@ -360,4 +360,23 @@ seemed okay with the last submission. *fingers crossed*</comment>
     <comment></comment>
     <requestid>940123</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>bc6a239880668ab6bbe7481e6e1c1fb4</srcmd5>
+    <version>5.1</version>
+    <time>1652188362</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to LXD 5.1. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-5-1-has-been-released/13956
+  boo#1199216
+  + Sysinfo system call interception
+  + lxc cluster role sub-command
+  * lxc storage volume info shows volume total size
+  + Configurable host network interface naming pattern
+  * Overrideable evacuation mode
+  * Setting profiles during an image copy
+- Backport upstream patch to fix build on x32 systems.
+  + 0001-lxd-secommp-Fix-sysinfo-syscall-interception-on-32-b.patch
+- Make CRIU a Recommends so that we can still use LXD on 32-bit openSUSE.</comment>
+    <requestid>976038</requestid>
+  </revision>
 </revisionlist>

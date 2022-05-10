@@ -1,7 +1,7 @@
 #
 # spec file for package lxd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@
 %endif
 
 Name:           lxd
-Version:        4.21
+Version:        5.1
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0
@@ -51,6 +51,8 @@ Source101:      %{name}-config.yml
 # Additional runtime configuration.
 Source200:      %{name}.sysctl
 Source201:      %{name}.dnsmasq
+# OPENSUSE-UPSTREAM-FIX: Backport of <https://github.com/lxc/lxd/pull/10348>.
+Patch1:         0001-lxd-secommp-Fix-sysinfo-syscall-interception-on-32-b.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  libacl-devel
@@ -61,19 +63,19 @@ BuildRequires:  pkg-config
 BuildRequires:  rsync
 BuildRequires:  sqlite3-devel >= 3.25
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(lxc) >= 3.0.0
+BuildRequires:  pkgconfig(lxc) >= 4.0.0
 # Due to a limitation in openSUSE's Go packaging we cannot have a BuildRequires
-# for 'golang(API) >= 1.14' here, so just require 1.14 exactly. bsc#1172608
-BuildRequires:  golang(API) = 1.15
+# for 'golang(API) >= 1.18' here, so just require 1.18 exactly. bsc#1172608
+BuildRequires:  golang(API) = 1.18
 # Needed to build dqlite and raft.
 BuildRequires:  autoconf
 BuildRequires:  libtool
 BuildRequires:  pkgconfig(libuv) >= 1.8.0
+Requires:       kernel-base >= 5.4
 # Bits required for images and other things at runtime.
 Requires:       acl
 Requires:       ebtables
 BuildRequires:  dnsmasq
-Requires:       criu >= 2.0
 Requires:       dnsmasq
 Requires:       lxcfs
 Requires:       lxcfs-hooks-lxc
@@ -93,10 +95,10 @@ Requires:       qemu-ui-spice-core
 Requires:       qemu-ui-spice-app
 %endif
 %ifarch %ix86 x86_64
-Requires:       qemu-x86
+Requires:       qemu-x86 >= 6.0
 %endif
 %ifarch aarch64 %arm
-Requires:       qemu-arm
+Requires:       qemu-arm >= 6.0
 %endif
 %endif
 # Storage backends -- we don't recommend ZFS since it's not *technically* a
@@ -104,6 +106,9 @@ Requires:       qemu-arm
 Recommends:     lvm2
 Recommends:     btrfsprogs
 Recommends:     thin-provisioning-tools
+# CRIU is used for certain operations but is not necessary (and is no longer
+# shipped on 32-bit openSUSE).
+Recommends:     criu >= 2.0
 Suggests:       zfs
 
 %description
@@ -122,6 +127,8 @@ Bash command line completion support for %{name}.
 
 %prep
 %setup -q
+# https://github.com/lxc/lxd/pull/10348
+%patch1 -p1
 
 %build
 # Make sure any leftover go build caches are gone.

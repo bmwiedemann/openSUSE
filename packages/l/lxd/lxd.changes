@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu May  5 04:27:43 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 5.1. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-5-1-has-been-released/13956
+  boo#1199216
+
+  + Sysinfo system call interception
+  + lxc cluster role sub-command
+  * lxc storage volume info shows volume total size
+  + Configurable host network interface naming pattern
+  * Overrideable evacuation mode
+  * Setting profiles during an image copy
+- Backport upstream patch to fix build on x32 systems.
+  + 0001-lxd-secommp-Fix-sysinfo-syscall-interception-on-32-b.patch
+- Make CRIU a Recommends so that we can still use LXD on 32-bit openSUSE.
+
+-------------------------------------------------------------------
+Thu May  5 03:31:24 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 4.24. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-4-24-has-been-released/13550
+  boo#1199215
+
+  This is the last release before LXD 5.0 (which does not support the Leap 15.3
+  kernel -- LXD 5.0 requires kernel 5.4 or newer). Thus this will be the last
+  LXD release for Leap 15.3.
+
+  + lxc file mount and new files API
+  + Cluster event hub role
+  * Reworked lxc storage volume info
+  + AppArmor profiles for image extractors
+  + Grafana dashboard
+  + Degraded startup (missing disk)
+  + restricted.containers.interception project option
+  + core.metrics_authentication server option
+  + Network interface name and MTU in virtual machines
+  + I/O uring support for VM storage
+  + ipv4.neighbor_probe and ipv6.neighbor_probe NIC options
+
+-------------------------------------------------------------------
 Mon Dec 13 02:46:02 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 4.21. The full upstream changelog is available from:
