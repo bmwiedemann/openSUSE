@@ -30,7 +30,7 @@ Source3:        baselibs.conf
 BuildRequires:  gcc-c++
 BuildRequires:  lzma-devel
 BuildRequires:  pkgconfig
-ExcludeArch:    s390 riscv64
+ExcludeArch:    s390
 
 %description
 A C programming interface (API) to determine the call chain of a program.
@@ -52,10 +52,8 @@ A C programming interface (API) to determine the call chain of a program.
 %make_build
 
 %check
-%if ! 0%{?qemu_user_space_build}
 # run-coredump-unwind fails
 %make_build check || :
-%endif
 
 %install
 %make_install
