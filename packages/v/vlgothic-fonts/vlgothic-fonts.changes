@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat May  7 15:14:29 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2020/07/20
+  * Fixed interchanged glyphs for U+23F4 and U+23F5
+  * Fixed wrong glyph for 🙃 U+1F643 UPSIDE-DOWN FACE
+  * Fixed wrong glyph for 🐿 U+1F43F CHIPMUNK
+  * Fixed incorrect character widths of several latin1 symbols
+  * Fixed wrong glyphs fror U+2BF2 and U+2BF3
+  * add/fix some Greek Letter
+    * Add Greek Capital Letter Yot (U+037F)
+    * Fix Greek Small Letter Digamma (U+03dd)
+    * Fix Small Digamma misplacing
+- Update to version 2020/07/19
+  * Fixed glyphs U+9304 and U+32FF
+- Update to version 2014/12/06
+  * Add Miscellaneous Symbols and Arrows U+2B60〜2BA7
+
+-------------------------------------------------------------------
 Thu Sep 17 08:11:04 UTC 2015 - pgajdos@suse.com
 
 - fix build for sle11

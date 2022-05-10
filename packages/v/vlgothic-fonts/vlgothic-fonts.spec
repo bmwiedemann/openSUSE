@@ -1,7 +1,7 @@
 #
 # spec file for package vlgothic-fonts
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           vlgothic-fonts
-Version:        20140801
+Version:        20200720
 Release:        0
 Summary:        VL-Gothic TrueType font family
-License:        BSD-3-Clause and SUSE-mplus
+License:        BSD-3-Clause AND SUSE-mplus
 Group:          System/X11/Fonts
-Url:            http://dicey.org/vlgothic/
-Source0:        VLGothic-%{version}.tar.xz
+URL:            http://dicey.org/vlgothic/
+Source0:        https://en.osdn.net/dl/vlgothic/VLGothic-%{version}.tar.xz
 BuildRequires:  fontpackages-devel
 BuildRequires:  xz
 Provides:       scalable-font-ja
@@ -54,7 +54,8 @@ done
 
 %files
 %defattr(-,root,root)
-%doc README* LICENSE* Changelog*
+%license LICENSE*
+%doc README* Changelog*
 %{_ttfontsdir}
 
 %changelog
