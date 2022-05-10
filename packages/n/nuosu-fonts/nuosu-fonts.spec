@@ -1,7 +1,7 @@
 #
 # spec file for package nuosu-fonts
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,34 +12,34 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define src_name ttf-sil-nuosusil
 
+%define src_name NuosuSIL
 Name:           nuosu-fonts
-Version:        2.1.1
+Version:        2.200
 Release:        0
 Summary:        SIL Yi Font
 License:        OFL-1.1
 Group:          System/X11/Fonts
-Url:            http://www.sil.org/resources/software_fonts/nuosu-sil
-Source0:        %{src_name}-%{version}.tar.gz
+URL:            https://software.sil.org/nuosu/
+Source0:        https://software.sil.org/downloads/r/nuosu/%{src_name}-%{version}.zip
 BuildRequires:  dos2unix
 BuildRequires:  fontpackages-devel
-%reconfigure_fonts_prereq
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  unzip
 BuildArch:      noarch
+%reconfigure_fonts_prereq
 
 %description
-The Nuosu SIL Font is a single Unicode font for the standardized 
+The Nuosu SIL Font is a single Unicode font for the standardized
 Yi script used by a large ethnic group in southwestern China.
 
 %prep
-%setup -q -c -T -a0
+%setup -q -n %{src_name}-%{version}
 
 %build
-dos2unix OFL.txt doc/FONTLOG.txt
+dos2unix *.txt
 
 %install
 mkdir -p %{buildroot}%{_ttfontsdir}
@@ -48,8 +48,8 @@ install -m 0644 *.ttf %{buildroot}%{_ttfontsdir}/
 %reconfigure_fonts_scriptlets
 
 %files
-%defattr(-,root,root)
-%doc OFL*.txt doc
+%license OFL.txt
+%doc README.txt FONTLOG.txt OFL-FAQ.txt
 %{_ttfontsdir}
 
 %changelog
