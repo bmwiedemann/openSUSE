@@ -16,12 +16,12 @@
 #
 
 
-%global platform_version 1.5.2
+%global platform_version 1.8.2
 %global jupiter_version %{version}
 %global vintage_version %{version}
 %bcond_without console
 Name:           junit5
-Version:        5.5.2
+Version:        5.8.2
 Release:        0
 Summary:        Java regression testing framework
 License:        EPL-2.0
@@ -39,15 +39,16 @@ Source205:      https://repo1.maven.org/maven2/org/junit/platform/junit-platform
 Source206:      https://repo1.maven.org/maven2/org/junit/platform/junit-platform-runner/%{platform_version}/junit-platform-runner-%{platform_version}.pom
 Source207:      https://repo1.maven.org/maven2/org/junit/platform/junit-platform-suite-api/%{platform_version}/junit-platform-suite-api-%{platform_version}.pom
 Source208:      https://repo1.maven.org/maven2/org/junit/platform/junit-platform-reporting/%{platform_version}/junit-platform-reporting-%{platform_version}.pom
+Source209:      https://repo1.maven.org/maven2/org/junit/platform/junit-platform-suite-commons/%{platform_version}/junit-platform-suite-commons-%{platform_version}.pom
 # Jupiter POMs
+Source300:      https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter/%{jupiter_version}/junit-jupiter-%{jupiter_version}.pom
 Source301:      https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-api/%{jupiter_version}/junit-jupiter-api-%{jupiter_version}.pom
 Source302:      https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-engine/%{jupiter_version}/junit-jupiter-engine-%{jupiter_version}.pom
 Source303:      https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-migrationsupport/%{jupiter_version}/junit-jupiter-migrationsupport-%{jupiter_version}.pom
 Source304:      https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-params/%{jupiter_version}/junit-jupiter-params-%{jupiter_version}.pom
-Source305:      https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter/%{jupiter_version}/junit-jupiter-%{jupiter_version}.pom
 # Vintage POM
 Source400:      https://repo1.maven.org/maven2/org/junit/vintage/junit-vintage-engine/%{vintage_version}/junit-vintage-engine-%{vintage_version}.pom
-# Bom
+# BOM POM
 Source500:      https://repo1.maven.org/maven2/org/junit/junit-bom/%{version}/junit-bom-%{version}.pom
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
@@ -60,8 +61,6 @@ BuildRequires:  mvn(org.opentest4j:opentest4j)
 BuildArch:      noarch
 %if %{with console}
 BuildRequires:  mvn(info.picocli:picocli)
-# Explicit requires for javapackages-tools since junit5 script
-# uses /usr/share/java-utils/java-functions
 Requires:       javapackages-tools
 %endif
 
@@ -104,14 +103,16 @@ cp -p %{SOURCE205} junit-platform-launcher/pom.xml
 cp -p %{SOURCE206} junit-platform-runner/pom.xml
 cp -p %{SOURCE207} junit-platform-suite-api/pom.xml
 cp -p %{SOURCE208} junit-platform-reporting/pom.xml
+cp -p %{SOURCE209} junit-platform-suite-commons/pom.xml
+cp -p %{SOURCE300} junit-jupiter/pom.xml
 cp -p %{SOURCE301} junit-jupiter-api/pom.xml
 cp -p %{SOURCE302} junit-jupiter-engine/pom.xml
 cp -p %{SOURCE303} junit-jupiter-migrationsupport/pom.xml
 cp -p %{SOURCE304} junit-jupiter-params/pom.xml
-cp -p %{SOURCE305} junit-jupiter/pom.xml
 cp -p %{SOURCE400} junit-vintage-engine/pom.xml
+cp -p %{SOURCE500} junit-bom/pom.xml
 
-for pom in $(find -mindepth 2 -name pom.xml); do
+for pom in $(find -mindepth 2 -name pom.xml | grep -v tests/); do
     # Set parent to aggregator
     %pom_xpath_inject pom:project "<parent><groupId>org.fedoraproject.xmvn.junit5</groupId><artifactId>aggregator</artifactId><version>1.0.0</version></parent>" $pom
     # OSGi BSN
@@ -119,14 +120,14 @@ for pom in $(find -mindepth 2 -name pom.xml); do
     %pom_xpath_inject pom:project "<properties><osgi.bsn>${bsn}</osgi.bsn></properties>" $pom
     # Incorrect scope - API guardian is just annotation, needed only during compilation
     %pom_xpath_set -f "pom:dependency[pom:artifactId='apiguardian-api']/pom:scope" provided $pom
+    sed -i s/runtime/compile/ $pom
 done
+
+%pom_remove_parent junit-bom
 
 # Add deps which are shaded by upstream and therefore not present in POMs.
 %pom_add_dep info.picocli:picocli:4.0.4 junit-platform-console
-%pom_add_dep com.univocity:univocity-parsers:2.5.4 junit-jupiter-params
-
-# Incorrect scope - Junit4 is needed for compilation too, not only runtime.
-%pom_xpath_set "pom:dependency[pom:artifactId='junit']/pom:scope" compile junit-vintage-engine
+%pom_add_dep com.univocity:univocity-parsers:2.9.1 junit-jupiter-params
 
 %if %{without console}
 # Disable the console modules
@@ -136,8 +137,6 @@ done
 
 %{mvn_package} :aggregator __noinstall
 %{mvn_package} :junit-bom bom
-
-cp -p %{SOURCE500} junit-bom/pom.xml
 
 %build
 %{mvn_build} -f -- -Dencoding=utf-8 -Dsource=8
@@ -153,7 +152,7 @@ ln -s ../../javadoc/junit5 documentation/src/docs/api
 %fdupes -s documentation/src/docs/
 
 %if %{with console}
-%jpackage_script org/junit/platform/console/ConsoleLauncher "" "" junit5:junit:opentest4j:jopt-simple %{name} true
+%jpackage_script org/junit/platform/console/ConsoleLauncher "" "" junit5:junit:opentest4j:picocli %{name} true
 %endif
 
 %files -f .mfiles
