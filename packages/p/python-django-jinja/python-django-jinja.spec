@@ -17,10 +17,11 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
 %define skip_python36 1
+%define modname django_jinja
+%bcond_without python2
 Name:           python-django-jinja
-Version:        2.6.0
+Version:        2.10.0
 Release:        0
 Summary:        Jinja2 templating language integrated in Django
 License:        BSD-3-Clause
@@ -32,12 +33,12 @@ BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with python2}
-BuildRequires:  python2-mock
-%endif
 Requires:       python-Django >= 1.11
 Requires:       python-Jinja2 >= 2.5
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python2-mock
+%endif
 %python_subpackages
 
 %description
@@ -54,13 +55,12 @@ Simple and nonobstructive jinja2 integration with Django.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Tests require old pipeline package, while upstream does not support it
-# anymore and it is hardwired so we can't just run the tests without it...
-#%%python_expand PYTHONPATH="%{buildroot}%{$python_sitelib}" $python testing/runtests.py
+%python_expand PYTHONPATH="%{buildroot}%{$python_sitelib}" $python testing/runtests.py
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst CHANGES.adoc
-%{python_sitelib}/*
+%{python_sitelib}/%{modname}
+%{python_sitelib}/%{modname}-%{version}*-info
 
 %changelog
