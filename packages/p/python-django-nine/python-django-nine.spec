@@ -19,17 +19,18 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python36 1
 Name:           python-django-nine
-Version:        0.2.3
+Version:        0.2.5
 Release:        0
 Summary:        Compatibility library for Django
 License:        GPL-2.0-only OR LGPL-2.1-or-later
 URL:            https://github.com/barseghyanartur/django-nine/
 Source:         https://files.pythonhosted.org/packages/source/d/django-nine/django-nine-%{version}.tar.gz
+# https://github.com/barseghyanartur/django-nine/issues/8
+Patch0:         python-django-nine-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module Django}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-django}
 # /SECTION
 BuildRequires:  fdupes
@@ -41,7 +42,7 @@ BuildArch:      noarch
 Version checking library for Django.
 
 %prep
-%setup -q -n django-nine-%{version}
+%autosetup -p1 -n django-nine-%{version}
 chmod a-x LICENSE_* CHANGELOG.rst README.rst
 
 # Remove backwards compatibility layer
