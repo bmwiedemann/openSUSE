@@ -1,7 +1,7 @@
 #
 # spec file for package lato-fonts
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           lato-fonts
-Version:        2.0
+Version:        2.015
 Release:        0
 Summary:        High-Quality Open Source Font Family
 License:        OFL-1.1
 Group:          System/X11/Fonts
-Url:            http://www.latofonts.com/
-Source:         Lato2OFL.zip
+URL:            https://www.latofonts.com/
+Source:         https://www.latofonts.com/download/lato2ofl-zip/#/Lato2OFL.zip
 BuildRequires:  dos2unix
-BuildRequires:  unzip
 BuildRequires:  fontpackages-devel
+BuildRequires:  unzip
 %reconfigure_fonts_prereq
 Obsoletes:      google-lato-fonts < %{version}
 Provides:       google-lato-fonts = %{version}
@@ -48,19 +48,19 @@ kerning of the family have been revised and four additional weights were created
 %setup -q -n Lato2OFL
 
 %build
-# Nothing to do
+find . -type f -exec chmod 0644 \{\} +
+dos2unix *.txt
 
 %install
 mkdir -p %{buildroot}/%{_datadir}/fonts/truetype
 install -m 0644 *.ttf %{buildroot}/%{_datadir}/fonts/truetype
-chmod 644 *.txt
-dos2unix *.txt
 
 %reconfigure_fonts_scriptlets
 
 %files
 %defattr(-,root,root)
-%doc *.txt
+%license OFL.txt
+%doc README.txt
 %{_datadir}/fonts/truetype
 
 %changelog
