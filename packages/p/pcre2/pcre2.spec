@@ -171,9 +171,8 @@ API.
 autoreconf -fiv
 export LDFLAGS="-Wl,-z,relro,-z,now"
 %configure \
-%ifarch %{ix86} x86_64 aarch64 %{arm} ppc ppc64 ppc64le mips sparc
+%ifarch %{ix86} x86_64 aarch64 %{arm} ppc ppc64 ppc64le mips sparc s390x
 	    --enable-jit \
-        --enable-jit-sealloc \
 %endif
 	    --enable-static \
 	    --with-link-size=2 \
