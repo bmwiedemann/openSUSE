@@ -79,4 +79,12 @@
     <comment>Sync with sle15-sp2</comment>
     <requestid>967930</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>223db3e3e1f83c06b9ea6c52e7905553</srcmd5>
+    <version>3.10.6</version>
+    <time>1652188301</time>
+    <user>dimstar_suse</user>
+    <comment>No need to have this a compat version</comment>
+    <requestid>975890</requestid>
+  </revision>
 </revisionlist>

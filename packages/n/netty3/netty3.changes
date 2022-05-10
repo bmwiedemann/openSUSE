@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr 30 16:07:02 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Remove the compat versions, since the io.netty:netty artifact
+  coordinates exist only in version 3.x
+
+-------------------------------------------------------------------
 Fri Apr  8 21:33:50 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build against the provider of mvn(log4j:log4j:1.2.16) instead of

@@ -140,7 +140,6 @@ sed -i s/org.jboss.netty.util.internal.jzlib/com.jcraft.jzlib/ \
 # adapting to excluded dep
 rm -v src/main/java/org/jboss/netty/handler/ssl/JettyNpnSslEngine.java
 
-%{mvn_compat_version} : %{version} 3.9.3 %{namedversion} 3.9.3.Final 3
 %{mvn_alias} : org.jboss.netty:
 %{mvn_file}  : %{name}
 
