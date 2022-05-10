@@ -24,13 +24,17 @@
 
 %define soname  2
 Name:           portmidi
-Version:        2.0.2
+Version:        2.0.3
 Release:        0
 Summary:        Real-time MIDI input/output audio tools
 License:        MIT
 Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://github.com/PortMidi/portmidi
 Source:         https://github.com/PortMidi/portmidi/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM  -- post-2.0.3 fixes
+Patch0:         0001-Add-missing-return-type.patch
+Patch1:         0001-changing-path-to-pm_common-directory-in-file-pm_comm.patch
+Patch2:         0001-Adding-missing-file-to-repo.patch
 BuildRequires:  alsa-devel >= 0.9
 BuildRequires:  cmake >= 3.21
 BuildRequires:  gcc-c++
@@ -118,6 +122,7 @@ chmod a+rx %{buildroot}%{_bindir}/pmdefaults
 %{_bindir}/portmidi-midithru
 %{_bindir}/portmidi-mm
 %{_bindir}/portmidi-multivirtual
+%{_bindir}/portmidi-pmlist
 %{_bindir}/portmidi-qtest
 %{_bindir}/portmidi-recvvirtual
 %{_bindir}/portmidi-sendvirtual

@@ -1,0 +1,25 @@
+From e8f8c1f98fc1e3934f88b1dd295edcebff777b7c Mon Sep 17 00:00:00 2001
+From: nidefawl <637382+nidefawl@users.noreply.github.com>
+Date: Sun, 8 May 2022 05:39:44 +0200
+Subject: [PATCH] Add missing return type
+
+---
+ pm_win/pmwinmm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pm_win/pmwinmm.c b/pm_win/pmwinmm.c
+index aebc97c..579d4bb 100755
+--- a/pm_win/pmwinmm.c
++++ b/pm_win/pmwinmm.c
+@@ -253,7 +253,7 @@ static unsigned int winmm_check_host_error(PmInternal *midi)
+ }
+ 
+ 
+-static improve_winerr(int pm_hosterror, char *message)
++static void improve_winerr(int pm_hosterror, char *message)
+ {
+     if (pm_hosterror == MMSYSERR_NOMEM) {
+         /* add explanation to Window's confusing error message */
+-- 
+2.36.0
+

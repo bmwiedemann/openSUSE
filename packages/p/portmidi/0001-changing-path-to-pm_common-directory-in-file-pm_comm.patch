@@ -1,0 +1,26 @@
+From e5e733711aea97993c419183f02e973fd27a13ef Mon Sep 17 00:00:00 2001
+From: Antoine <antoine@lses-MacBook-Pro-2.local>
+Date: Thu, 14 Apr 2022 09:43:35 +0200
+Subject: [PATCH] changing path to pm_common directory in file
+ pm_commom/CMakeLists.txt so that project compiles
+
+---
+ pm_common/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pm_common/CMakeLists.txt b/pm_common/CMakeLists.txt
+index 8c55f1f..79f1045 100644
+--- a/pm_common/CMakeLists.txt
++++ b/pm_common/CMakeLists.txt
+@@ -47,7 +47,7 @@ set_target_properties(portmidi PROPERTIES
+                       "MultiThreaded$<$<CONFIG:Debug>:Debug>${MSVCRT_DLL}"
+                       WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
+ target_include_directories(portmidi PUBLIC
+-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/pm_common>
++  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
+ 
+ 
+-- 
+2.36.0
+

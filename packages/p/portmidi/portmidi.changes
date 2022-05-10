@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May  9 18:20:07 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.0.3
+  * This version allows multiple hardware devices to have the same
+    name.
+- Add upstream changes:
+  * 0001-Adding-missing-file-to-repo.patch
+  * 0001-changing-path-to-pm_common-directory-in-file-pm_comm.patch
+  * 0001-Add-missing-return-type.patch
+
+-------------------------------------------------------------------
 Mon Jan  3 20:44:42 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.0.2
