@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May  7 19:02:01 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.7:
+  * Improved display of multiple-member gzip files
+  * Better gzip compatibility and bug fixes
+- add pigz-2.7-NOTHREAD-tests.patch to fix tests
+
+-------------------------------------------------------------------
 Sun Feb  7 23:27:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6:

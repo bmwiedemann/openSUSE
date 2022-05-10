@@ -1,0 +1,61 @@
+From 67fd6e436f4f479aead529a719e24d6864cf1dfa Mon Sep 17 00:00:00 2001
+From: Mark Adler <madler@alumni.caltech.edu>
+Date: Sun, 16 Jan 2022 09:23:07 -0800
+Subject: [PATCH] Fix NOTHREAD compile error for combination code.
+
+The ability to combine CRCs is needed for the new summary line
+when listing multiple gzip members.
+---
+ pigz.c | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/pigz.c b/pigz.c
+index 01e50e0..f915c4a 100644
+--- a/pigz.c
++++ b/pigz.c
+@@ -558,9 +558,7 @@ local struct {
+     int procs;              // maximum number of compression threads (>= 1)
+     int setdict;            // true to initialize dictionary in each thread
+     size_t block;           // uncompressed input size per thread (>= 32K)
+-#ifndef NOTHREAD
+     crc_t shift;            // pre-calculated CRC-32 shift for length block
+-#endif
+ 
+     // saved gzip/zip header data for decompression, testing, and listing
+     time_t stamp;           // time stamp from gzip header
+@@ -1338,9 +1336,6 @@ local long zlib_vernum(void) {
+     return left < 2 ? num << (left << 2) : -1;
+ }
+ 
+-#ifndef NOTHREAD
+-// -- threaded portions of pigz --
+-
+ // -- check value combination routines for parallel calculation --
+ 
+ #define COMB(a,b,c) (g.form == 1 ? adler32_comb(a,b,c) : crc32_comb(a,b,c))
+@@ -1421,6 +1416,9 @@ local unsigned long adler32_comb(unsigned long adler1, unsigned long adler2,
+     return sum1 | (sum2 << 16);
+ }
+ 
++#ifndef NOTHREAD
++// -- threaded portions of pigz --
++
+ // -- pool of spaces for buffer management --
+ 
+ // These routines manage a pool of spaces. Each pool specifies a fixed size
+@@ -4337,11 +4335,11 @@ local void defaults(void) {
+     ZopfliInitOptions(&g.zopts);
+ #endif
+     g.block = 131072UL;             // 128K
++    g.shift = x2nmodp(g.block, 3);
+ #ifdef NOTHREAD
+     g.procs = 1;
+ #else
+     g.procs = nprocs(8);
+-    g.shift = x2nmodp(g.block, 3);
+ #endif
+     g.rsync = 0;                    // don't do rsync blocking
+     g.setdict = 1;                  // initialize dictionary each thread
+-- 
+2.36.0
+
