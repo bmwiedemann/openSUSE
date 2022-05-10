@@ -1,7 +1,7 @@
 #
 # spec file for package barrel
 #
-# Copyright (c) 2021 SUSE LLC, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,45 +12,43 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-Name:           barrel
-Version:        0.1.2
-Release:        0
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source:         barrel-%{version}.tar.xz
 
-%if 0%{?fedora_version}
-BuildRequires:  boost-devel
-BuildRequires:  json-c-devel
-BuildRequires:  docbook-style-xsl
-%else
-BuildRequires:  libboost_headers-devel
-BuildRequires:  libboost_test-devel
-BuildRequires:  libjson-c-devel
-BuildRequires:  docbook-xsl-stylesheets
-%endif
+Name:           barrel
+Version:        0.1.3
+Release:        0
+Summary:        Tool for storage management
+License:        GPL-2.0-only
+Group:          System/Packages
+URL:            https://github.com/openSUSE/barrel
+Source:         barrel-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  libstorage-ng-devel >= 4.4.76
 BuildRequires:  libtool
 BuildRequires:  libxslt
 BuildRequires:  readline-devel
 
-Requires:       libstorage-ng1 >= 4.4.76
+Requires:       libstorage-ng1 >= 4.5.10
 Recommends:     %{name}-lang
 Recommends:     logrotate
-
-Summary:        Tool for storage management
-Url:            http://github.com/openSUSE/barrel
-License:        GPL-2.0-only
-Group:          System/Packages
+%if 0%{?fedora_version}
+BuildRequires:  boost-devel
+BuildRequires:  docbook-style-xsl
+BuildRequires:  json-c-devel
+%else
+BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  libboost_headers-devel
+BuildRequires:  libboost_test-devel
+BuildRequires:  libjson-c-devel
+%endif
 
 %description
 barrel is a command line tool for storage management.
 
 %prep
-%setup
+%setup -q
 
 %build
 export CFLAGS="%{optflags} -DNDEBUG"
@@ -92,6 +90,5 @@ BuildArch:      noarch
 Provides translations to the package %{name}
 
 %files lang -f barrel.lang
-%defattr(-,root,root)
 
 %changelog
