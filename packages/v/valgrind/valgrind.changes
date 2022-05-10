@@ -404,7 +404,7 @@ Tue Apr 25 07:57:46 UTC 2017 - mliska@suse.cz
 -------------------------------------------------------------------
 Tue Dec 27 21:48:56 UTC 2016 - foss@grueninger.de
 
-- update to 3.12.0 (bsc#1017016, FATE#321455)
+- update to 3.12.0 (bsc#1017016, FATE#321455, bsc#987635, CVE-2016-6131)
   * 3.12.0 is a feature release with many improvements and the usual
   collection of bug fixes. The full changelog can be found at
   http://valgrind.org/docs/manual/dist.news.html
