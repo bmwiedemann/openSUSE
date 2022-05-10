@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May  9 12:43:12 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to 1.4.5:
+  + CRIU: add support for different manage cgroups modes.
+  + linux: the hook processes inherit the crun process
+    environment if there is no environment block specified in the
+    OCI configuration.
+  ° exec: fix double free when using --apparmor and 
+    --process-label.
+
+-------------------------------------------------------------------
 Tue Apr 12 08:59:23 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - It'd be nice to run the test suite with %check. It however, still
