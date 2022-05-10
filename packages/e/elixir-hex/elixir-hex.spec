@@ -1,7 +1,7 @@
 #
 # spec file for package elixir-hex
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,17 @@
 
 
 %define app_name hex
-Name:           elixir-%{app_name}
-Version:        0.20.5
-Release:        0
 %define app_ver %(echo "%{version}" | cut -d "+" -f1)
+Name:           elixir-%{app_name}
+Version:        1.0.1
+Release:        0
 Summary:        Package manager for the Erlang VM
 License:        Apache-2.0
 Group:          Development/Libraries/Other
 URL:            https://github.com/hexpm/hex
 Source:         %{app_name}-v%{version}.tar.bz2
-Requires:       elixir
 BuildRequires:  elixir
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       elixir
 BuildArch:      noarch
 
 %description
@@ -52,7 +51,6 @@ for dir in ebin ; do
 done
 
 %files
-%defattr(-,root,root)
 %doc README.md CHANGELOG.md
 %dir %{elixir_libdir}/%{app_name}
 %dir %{elixir_libdir}/%{app_name}/ebin

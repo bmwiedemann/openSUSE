@@ -1,4 +1,150 @@
 -------------------------------------------------------------------
+Tue May 03 08:46:37 UTC 2022 - mvetter@suse.com
+
+- Update to version v1.0.1:
+  * Release v1.0.1
+  * Fix OTP compatibility (#934)
+  * Bump v1.0.1-dev
+  * Release v1.0.0
+  * Remove retire warning (#929)
+  * Error if building packge with app: false dependency (#928)
+  * Add support for reading credentials from .netrc files (#925)
+  * Disable OTP master on CI (#927)
+  * Fix OTP deprecation warnings (#926)
+  * Fix missing yes?/2 callback warning
+  * Add scripts directory
+  * Validate oss licenses (#915)
+  * Exit with 1 when hex fails to publish package (#912)
+  * Ensure internal timeout check is hit before external
+  * Ensure package names are unique in tests (#913)
+  * Fix resolver of top level dependency (#909)
+  * Do not fail if could not verify auth key (#911)
+  * Update to setup-beam v1.9 (#908)
+  * Update release docs
+  * Release v0.21.3
+  * Add backtrack check based on version requirement (#907)
+  * Add overridden_deps/1 and remove unnecessary resolver state (#905)
+  * fix typo (#904)
+  * Print hint if resolver is slow (#900)
+  * Check hex timeout (#896)
+  * Update Mix task docs (#897)
+  * Remove unused function
+  * Hide accidentally exposes functions
+  * Add mix hex.repo show NAME --key task (#893)
+  * Use Elixir 1.12 for checking formatting (#895)
+  * Remove rebar3 that is included in the base image (#894)
+  * Format
+  * Add a tip to run `mix hex.sponsor` if a package with sponsor gets downloaded (#887)
+  * Add sample usage to hex.retire moduledoc (#891)
+  * Update rebar release script
+  * Revert "Mention sponsors when packages with them are fetched (#884)"
+  * Mention sponsors when packages with them are fetched (#884)
+  * Adds new config: no_short_urls (#881)
+  * mix hex.registry: Add updated_at to /names resource (#877)
+  * Update hex_core to use high-level registry API (#878)
+  * Update release.sh
+  * Release v0.21.2
+  * Store correct password after confirmation failure (#875)
+  * Update CHANGELOG
+  * Update ssl opts for host validation on redirect (#874)
+  * Use setup-beam@v1.7 (#873)
+  * Build of rebar3 and upload for specific Elixir versions (#870)
+  * Fix building hex registry, closes #866
+  * Fix registry build crash on versions with hyphens (#865)
+  * Adds support for `mix hex.package fetch PACKAGE` without version (#861)
+  * Update CA store docs (#863)
+  * Use erlef/setup-elixir action (#860)
+  * Start Hex before building the registry, closes #859
+  * Clarify using packages from self-hosted instances
+  * Gracefully handle missing hex metadata in sponsor task (#855)
+  * Bump to v0.21.2-dev
+  * Release v0.21.1
+  * Disallow API writes on ssl-10.2
+  * Warn when using ssl-10.2
+  * Remove --fetch-public-key from `mix hex.repo set` docs, closes #852
+  * Unload hex application to fix compatability between Hex versions
+  * Fix {:error, :bad_directory} when installing on Elixir 1.0
+  * Fix filenames in release script
+  * Bump to v0.21.1-dev
+  * Release v0.21.0
+  * Show MIX_XDG and HEX_HOME as sources on mix hex.config (#851)
+  * Add tests for mix xdg (#849)
+  * Document MIX_XDG (#848)
+  * Update CHANGELOG.md
+  * replaces xdg_config_home and xdg_cache_home with mix_xdg (#841)
+  * Fix crypto compatibility for OTP 24 (#847)
+  * Introduce Hex.Crypto.hmac/3 function (#845)
+  * Re-fetch package if registry checksum changed (#843)
+  * Fix mix hex.install (#842)
+  * handle no_proxy edge cases (#840)
+  * Add `mix hex.registry` build (#836)
+  * Fix leaking of test config into global config (#837)
+  * Add :integration tag to IntegarationCase
+  * Vendor hex_core v0.7.1
+  * Add missing hex_core file
+  * Update CHANGELOG.md
+  * Raise error for sponsor task when outside Mix project (#832)
+  * Add `mix hex.sponsor` (#827)
+  * Add `mix hex.package diff APP VERSION` (#819)
+  * Update CI badge (#831)
+  * Fix build by not linking the process that starts the server
+  * Simplify setting up hexpm once for integration tests
+  * Add HexTest.IntegrationCase that starts hexpm on demand (#830)
+  * Update hex.config.ex
+  * rm lib/.DS_Store
+  * Clarify `mix hex.publish --revert` docs (#826)
+  * Support no_proxy environment variable (#818)
+  * Test against elixir master (#825)
+  * Update CI
+  * Fix flaky divergereq test (#823)
+  * Update CHANGELOG
+  * Use docker images for Hex release (#822)
+  * Bump to v0.21.0-dev and update changelog
+  * Update release.sh for Elixir v1.11
+  * Vendor hex_core v0.7.0
+  * Fix warning
+  * non-zero exit when package or release are not found (#817)
+  * do not unpack tarball when flag is not passed (#816)
+  * Add `--fetch-public-key FINGERPRINT` to `mix hex.repo add` (#814)
+  * Revert "Support TLS 1.3"
+  * Support TLS 1.3
+  * Add `--within-requirements` flag (#765)
+  * Use tarball outer checksum to check cache freshness (#812)
+  * Add note about updatable packages to hex.outdated task
+  * Always add *.DS_Store to :exclude_patterns (#750)
+  * Fix backtracking on single parent (#810)
+  * Move functions out of Hex module (#809)
+  * Do not pass --canonical to docs task (#808)
+  * Use API for dependency config in mix hex.info (#804)
+  * Customize hostname check to allow also wildcard certificates (#798)
+  * Fix spelling errors (#800)
+  * Make `mix hex.package diff` more CLI-friendly (#795)
+  * Add --repo flag to mix hex.package task (#791)
+  * Updates docs to use main instead of master (#790)
+  * Fix documentation updates limitation docs
+  * changes 2 columns into 1 status column with 3 possible values (#786)
+  * Fix mix hex.repo remove command doc (#785)
+  * Document latest branch
+  * Fix typo (#783)
+  * adds link to diffs page in footer of hex.outdated (#779)
+  * mix hex.install is a private take
+  * Add ./vendor_hex_core.sh
+  * Follow xdg base dir specification (#760)
+  * remove reliance on colors for hex.outdated (#775)
+  * Clarify publish message around ownership (#773)
+  * Add locked version to `mix hex.info <package>`
+  * Move application callback (#764)
+  * Fix stacktrace warning (#763)
+  * Fix order of organizations
+  * supports --epub option for opening epub version of docs offline (#755)
+  * Fix unused variable
+  * Add test for :divergedreq (#757)
+  * Fix Hex.Server.should_warn_registry_version?/0 (#754)
+  * adds replace option for publish (#734)
+  * Removes duuplicate release from publish test
+  * Bump to v0.20.6-dev
+
+-------------------------------------------------------------------
 Tue Dec 15 13:12:05 UTC 2020 - jbreuer@suse.de
 
 - Update to version v0.20.5:
