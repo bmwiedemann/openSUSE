@@ -1,0 +1,27 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Mon, 9 May 2022 10:51:08 +0200
+Subject: check_free: declare is_percent_p_print before use
+Patch-mainline: no
+References: warnings fix
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ check_free.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/check_free.c b/check_free.c
+index ec3202ab..20fbc44f 100644
+--- a/check_free.c
++++ b/check_free.c
+@@ -52,6 +52,8 @@ static int is_freed(struct expression *expr)
+ 	return 0;
+ }
+ 
++bool is_percent_p_print(struct expression *expr);
++
+ static void match_symbol(struct expression *expr)
+ {
+ 	struct expression *parent;
+-- 
+2.34.1
+

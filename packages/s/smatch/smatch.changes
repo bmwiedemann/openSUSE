@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon May 09 08:32:16 UTC 2022 - jslaby@suse.cz
+
+- Update to version 1.72+20220506:
+  * logical_instead_of_bitwise: add some more warnings
+  * uninitialized: fix checking for fake calls and don't save global states
+  * assigned_expr: don't modify the expression until later
+  * rosenberg,assigned_expr: don't store pointless global data
+  * uninitialized: fix false positive "passing uninitialized" warnings
+  * data/kernel.ignore_uninitialized_param: add more functions
+  * free: don't warn about %p printing of freed pointers
+  * free: do not warn when freed pointers are part of a condition
+  * function_hooks: export is_condition_call()
+  * comparison: fix copying comparisons
+- switch to obs_scm
+- switch versioning to include version number
+- add
+  * Makefile-allow-CFLAGS-to-be-redefined.patch (fix build)
+  * Makefile-use-CFLAGS-when-linking.patch (improve build)
+  * check_free-declare-is_percent_p_print-before-use.patch (fix warnings)
+
+-------------------------------------------------------------------
 Tue Jun 09 07:42:58 UTC 2020 - jslaby@suse.com
 
 - Update to version 20200608+git.e92d9e00:

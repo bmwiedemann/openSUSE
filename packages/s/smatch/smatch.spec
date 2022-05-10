@@ -1,7 +1,7 @@
 #
 # spec file for package smatch
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,16 @@
 
 
 Name:           smatch
-Version:        20200608+git.e92d9e00
+Version:        1.72+20220506
 Release:        0
 Summary:        Static analysis tool for C
 License:        GPL-2.0-only
 Group:          Development/Tools/Building
 URL:            http://smatch.sf.net
 Source:         %{name}-%{version}.tar.xz
+Patch0:         Makefile-allow-CFLAGS-to-be-redefined.patch
+Patch1:         Makefile-use-CFLAGS-when-linking.patch
+Patch2:         check_free-declare-is_percent_p_print-before-use.patch
 BuildRequires:  gcc
 BuildRequires:  make
 BuildRequires:  openssl-devel
@@ -36,10 +39,10 @@ Smatch is a static analysis tool for C. Most of the checks are for the linux
 kernel. Please write checks for your project. It's fun and easy!
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-make %{?_smp_mflags} V=1 CFLAGS="%{optflags}" \
+make %{?_smp_mflags} V=1 CFLAGS="%{optflags} -Wno-unused-result -Wno-abi" \
 	INSTALL_PREFIX=%{_prefix} \
 	LIBDIR=%{_libdir} \
 	PKGCONFIGDIR=%{_datadir}/pkgconfig \
