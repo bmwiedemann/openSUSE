@@ -2349,4 +2349,14 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
 - utils: add missing dependency on apparmor-parser (boo#1198958#c4)</comment>
     <requestid>974768</requestid>
   </revision>
+  <revision rev="172" vrev="9">
+    <srcmd5>3fdd97771e99479b58b94f9dfb7d29f5</srcmd5>
+    <version>3.0.4</version>
+    <time>1652188190</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python310-help-mr848.patch so that Tumbleweed can switch
+  python3 to Python 3.10
+  (https://gitlab.com/apparmor/apparmor/-/merge_requests/848) (forwarded request 975634 from bnavigator)</comment>
+    <requestid>975636</requestid>
+  </revision>
 </revisionlist>

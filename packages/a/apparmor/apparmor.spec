@@ -103,6 +103,9 @@ Patch11:        samba-new-dcerpcd.patch
 # allow php8 php-fpm to read its config (from upstream master+3.0 https://gitlab.com/apparmor/apparmor/-/merge_requests/876)
 Patch12:        php8-fpm-mr876.patch
 
+# allow python 3.10 --help output (from the branch-3.0 backport of https://gitlab.com/apparmor/apparmor/-/merge_requests/848)
+Patch13:        python310-help-mr848.patch
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define apparmor_bin_prefix %{?usrmerged:/usr}/lib/apparmor
@@ -373,6 +376,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
+%patch13 -p1
 
 %build
 %define _lto_cflags %{nil}
