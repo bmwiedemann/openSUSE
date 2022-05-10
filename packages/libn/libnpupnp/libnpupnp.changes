@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  9 17:16:37 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 4.2.2
+  * Partial sanitizing of the static library object name space.
+
+-------------------------------------------------------------------
 Sun Mar 20 09:43:57 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.2.1:

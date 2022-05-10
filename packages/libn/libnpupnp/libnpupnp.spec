@@ -18,7 +18,7 @@
 
 %define so_ver  4
 Name:           libnpupnp
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Summary:        A C++ base UPnP library, derived from Portable UPnP, a.k.a libupnp
 License:        GPL-2.0-or-later
