@@ -1,7 +1,7 @@
 #
 # spec file for package alsa-firmware
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,60 +19,58 @@
 %if 0%{?suse_version} < 1550
 %define _firmwaredir /lib/firmware
 %endif
-
-Name:           alsa-firmware
-URL:            http://www.alsa-project.org/
-Summary:        Firmware Data Files for ALSA
-# BuildRequires:  automake
-License:        GPL-2.0-or-later
-Group:          Hardware/Other
-BuildRequires:  fdupes
-%if 0%{?suse_version} > 1220
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(udev)
-%endif
-Version:        1.2.4
-Release:        0
-Source:         ftp://ftp.alsa-project.org/pub/firmware/alsa-firmware-%{version}.tar.bz2
-Source1:        usx2yaudio.rules
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildArch:      noarch
-Requires:       alsa
-# for asihpi
-Supplements:    modalias(pci:v0000104Cd0000AC60sv0000175Csd*bc*sc*i*)
-Supplements:    modalias(pci:v0000104Cd0000A106sv0000175Csd*bc*sc*i*)
-# for ca0132
-Supplements:    modalias(pci:v00001102d00000010sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001102d00000012sv*sd*bc*sc*i*)
-# for cs46xx
-Supplements:    modalias(pci:v00001013d00006004sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001013d00006003sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001013d00006001sv*sd*bc*sc*i*)
-# for echoaudio
-Supplements:    modalias(pci:v00001057d00001801sv0000ECC0sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001057d00003410sv0000ECC0sd*bc*sc*i*)
-# for emu10k1
-Supplements:    modalias(pci:v00001102d00000008sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001102d00000004sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001102d00000002sv*sd*bc*sc*i*)
-# for hdsp
-Supplements:    modalias(pci:v000010EEd00003FC5sv*sd*bc*sc*i*)
-# for mixart
-Supplements:    modalias(pci:v00001057d00000003sv*sd*bc*sc*i*)
-# for pcxhr
-Supplements:    modalias(pci:v000010B5d00009056sv00001369sd*bc*sc*i*)
-# for usx2y
-Supplements:    modalias(usb:v1604p8005d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v1604p8007d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v1604p8001d*dc*dsc*dp*ic*isc*ip*in*)
-# for vx
-Supplements:    modalias(pci:v000010B5d00009030sv00001369sd*bc*sc*i*)
-Supplements:    modalias(pci:v000010B5d00009050sv00001369sd*bc*sc*i*)
-
 %if 0%{?suse_version} > 1220
 %define _udevdir %(pkg-config --variable=udevdir udev)
 %else
-%define _udevdir /etc/udev
+%define _udevdir %{_sysconfdir}/udev
+%endif
+Name:           alsa-firmware
+Version:        1.2.4
+Release:        0
+Summary:        Firmware Data Files for ALSA
+License:        GPL-2.0-or-later
+Group:          Hardware/Other
+URL:            https://www.alsa-project.org/
+Source:         https://www.alsa-project.org/files/pub/firmware/alsa-firmware-%{version}.tar.bz2
+Source1:        usx2yaudio.rules
+Source100:      https://www.alsa-project.org/files/pub/firmware/alsa-firmware-%{version}.tar.bz2.sig
+Source101:      alsa-firmware.keyring
+BuildRequires:  fdupes
+Requires:       alsa
+Supplements:    modalias(pci:v00001013d00006001sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001013d00006003sv*sd*bc*sc*i*)
+# for cs46xx
+Supplements:    modalias(pci:v00001013d00006004sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v0000104Cd0000A106sv0000175Csd*bc*sc*i*)
+# for asihpi
+Supplements:    modalias(pci:v0000104Cd0000AC60sv0000175Csd*bc*sc*i*)
+# for mixart
+Supplements:    modalias(pci:v00001057d00000003sv*sd*bc*sc*i*)
+# for echoaudio
+Supplements:    modalias(pci:v00001057d00001801sv0000ECC0sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001057d00003410sv0000ECC0sd*bc*sc*i*)
+# for vx
+Supplements:    modalias(pci:v000010B5d00009030sv00001369sd*bc*sc*i*)
+Supplements:    modalias(pci:v000010B5d00009050sv00001369sd*bc*sc*i*)
+# for pcxhr
+Supplements:    modalias(pci:v000010B5d00009056sv00001369sd*bc*sc*i*)
+# for hdsp
+Supplements:    modalias(pci:v000010EEd00003FC5sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001102d00000002sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001102d00000004sv*sd*bc*sc*i*)
+# for emu10k1
+Supplements:    modalias(pci:v00001102d00000008sv*sd*bc*sc*i*)
+# for ca0132
+Supplements:    modalias(pci:v00001102d00000010sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001102d00000012sv*sd*bc*sc*i*)
+Supplements:    modalias(usb:v1604p8001d*dc*dsc*dp*ic*isc*ip*in*)
+# for usx2y
+Supplements:    modalias(usb:v1604p8005d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v1604p8007d*dc*dsc*dp*ic*isc*ip*in*)
+BuildArch:      noarch
+%if 0%{?suse_version} > 1220
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(udev)
 %endif
 
 %description
@@ -87,10 +85,10 @@ Various firmware data files for ALSA drivers.
     --enable-loader \
     --enable-hotplug \
     --with-hotplug-dir=%{_firmwaredir}
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR="%{buildroot}" install
+%make_install
 # remove duplicated entries that are already in kernel-firmware package
 rm -f %{buildroot}%{_firmwaredir}/ctefx.bin
 rm -f %{buildroot}%{_firmwaredir}/ctspeq.bin
@@ -144,7 +142,6 @@ install -D -c -m 0644 %{SOURCE1} %{buildroot}%{_udevdir}/rules.d/52-usx2yaudio.r
 %fdupes -s %{buildroot}
 
 %files
-%defattr(-, root, root)
 %doc %{_docdir}/%{name}
 %license %{_licensedir}/%{name}
 %{_firmwaredir}/*

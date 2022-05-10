@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 26 16:11:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- refresh spec file
+- add gpg validation, use https 
+
+-------------------------------------------------------------------
 Thu Nov 26 13:51:31 CET 2020 - tiwai@suse.de
 
 - Fix build with older distros without %_firmwaredir
