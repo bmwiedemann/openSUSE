@@ -22,14 +22,6 @@
 %define gcc_target_glibc 1
 # nospeccleaner
 
-# In the staging/ring projects, we don't want to build the unneeded
-#  cross-* packages, but by default, we do:
-%bcond_with ringdisabled
-
-%if "%{cross_arch}" != "arm-none" && "%{cross_arch}" != "arm" && "%{cross_arch}" != "aarch64" && "%{cross_arch}" != "riscv64" && %{with ringdisabled}
-ExclusiveArch:  do-not-build
-%endif
-
 %define build_cp 0%{!?gcc_accel:1}
 %if 0%{?gcc_libc_bootstrap:1}
 %define build_cp 0
@@ -109,7 +101,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        12.0.1+git192423
+Version:        12.1.0+git27
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -135,7 +127,6 @@ Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
 Patch18:        gcc10-amdgcn-llvm-as.patch
 Patch19:        gcc11-gdwarf-4-default.patch
 Patch20:        gcc11-amdgcn-disable-hot-cold-partitioning.patch
-Patch21:        gcc12-d-workaround.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -304,6 +295,11 @@ This is a package that is necessary for bootstrapping another package
 only, it is not intended for any other use.
 %endif
 
+%if 0%{suse_version} >= 1500
+# Synchronize output by lines, useful for configure output
+%define make_output_sync -Oline
+%endif
+
 %prep
 %if 0%{?nvptx_newlib:1}%{?amdgcn_newlib:1}
 %setup -q -n gcc-%{version} -a 5
@@ -333,8 +329,6 @@ cd ..
 # In SLE15 and earlier default to dwarf4, not dwarf5
 %if %{suse_version} < 1550
 %patch19 -p1
-# FIXME: remove the patch once gcc11 got updated (D bug)
-%patch21 -p1
 %endif
 %patch51
 %patch60 -p1
@@ -615,10 +609,6 @@ amdgcn-amdhsa,\
 	--enable-fix-cortex-a53-835769 \
 	--enable-fix-cortex-a53-843419 \
 %endif
-%if "%{TARGET_ARCH}" == "powerpc" || "%{TARGET_ARCH}" == "powerpc64" || "%{TARGET_ARCH}" == "powerpc64le"
-%if "%{TARGET_ARCH}" == "powerpc"
-        --with-cpu=default32 \
-%endif
 %if "%{TARGET_ARCH}" == "powerpc64le"
 %if %{suse_version} >= 1350
 	--with-cpu=power8 \
@@ -632,15 +622,23 @@ amdgcn-amdhsa,\
 	--with-tune=power7 \
 %endif
 %endif
+%if %{suse_version} > 1500
+	--with-long-double-format=ieee \
 %else
-	--with-cpu-64=power4 \
+	--with-long-double-format=ibm \
 %endif
 	--enable-secureplt \
 	--with-long-double-128 \
-%if "%{TARGET_ARCH}" == "powerpc64le"
 	--enable-targets=powerpcle-linux \
 	--disable-multilib \
 %endif
+%if "%{TARGET_ARCH}" == "powerpc" || "%{TARGET_ARCH}" == "powerpc64"
+%if "%{TARGET_ARCH}" == "powerpc"
+        --with-cpu=default32 \
+%endif
+	--with-cpu-64=power4 \
+	--enable-secureplt \
+	--with-long-double-128 \
 %endif
 %if "%{TARGET_ARCH}" == "sparc64"
 	--with-cpu=ultrasparc \
@@ -708,9 +706,9 @@ amdgcn-amdhsa,\
   }
 
 %if 0%{!?gcc_icecream:1}
-make %{?_smp_mflags}
+make %{?make_output_sync} %{?_smp_mflags}
 %else
-make %{?_smp_mflags} all-host
+make %{?make_output_sync} %{?_smp_mflags} all-host
 %endif
 
 %if 0%{?gcc_icecream:%gcc_icecream}

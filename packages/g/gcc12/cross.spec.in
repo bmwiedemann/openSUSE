@@ -1,13 +1,5 @@
 # nospeccleaner
 
-# In the staging/ring projects, we don't want to build the unneeded
-#  cross-* packages, but by default, we do:
-%bcond_with ringdisabled
-
-%if "%{cross_arch}" != "arm-none" && "%{cross_arch}" != "arm" && "%{cross_arch}" != "aarch64" && "%{cross_arch}" != "riscv64" && %{with ringdisabled}
-ExclusiveArch: do-not-build
-%endif
-
 %define build_cp 0%{!?gcc_accel:1}
 %if 0%{?gcc_libc_bootstrap:1}
 %define build_cp 0
@@ -216,9 +208,9 @@ only, it is not intended for any other use.
 # BUILD-COMMON-BEGIN
 # BUILD-COMMON-END
 %if 0%{!?gcc_icecream:1}
-make %{?_smp_mflags}
+make %{?make_output_sync} %{?_smp_mflags}
 %else
-make %{?_smp_mflags} all-host
+make %{?make_output_sync} %{?_smp_mflags} all-host
 %endif
 
 
