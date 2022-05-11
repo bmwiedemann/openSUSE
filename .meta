@@ -1,6 +1,10 @@
 <package name="xmvn-connector-gradle" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="openSUSE:Factory" package="xmvn"/>
-  <bcntsynctag>xmvn</bcntsynctag>
+  <title>XMvn Connector for Gradle</title>
+  <description>This package provides XMvn Connector for Gradle, which provides
+integration of Gradle with XMvn.  It provides an adapter which allows
+XMvn resolver to be used as Gradle resolver.
+
+</description>
+  <devel project="Java:packages" package="xmvn-connector-gradle"/>
+  <url>https://fedora-java.github.io/xmvn/</url>
 </package>
