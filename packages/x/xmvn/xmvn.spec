@@ -1,7 +1,7 @@
 #
 # spec file for package xmvn
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           xmvn
-Version:        3.1.0
+Version:        4.0.0
 Release:        0
 Summary:        Local Extensions for Apache Maven
 License:        Apache-2.0
 Group:          Development/Tools/Building
 URL:            https://fedora-java.github.io/xmvn/
 BuildRequires:  %{name}-api = %{version}
-BuildRequires:  %{name}-connector-aether = %{version}
+BuildRequires:  %{name}-connector = %{version}
 BuildRequires:  %{name}-core = %{version}
 BuildRequires:  %{name}-subst
 BuildRequires:  javapackages-tools
@@ -42,7 +42,7 @@ creating RPM packages containing Maven artifacts.
 Summary:        Dependency-reduced version of XMvn
 Group:          Development/Tools/Building
 Requires:       %{name}-api = %{version}
-Requires:       %{name}-connector-aether = %{version}
+Requires:       %{name}-connector = %{version}
 Requires:       %{name}-core = %{version}
 %requires_eq    maven-lib
 
@@ -63,7 +63,7 @@ maven_home=%{_datadir}/maven
 install -d -m 755 %{buildroot}%{_datadir}/%{name}
 cp -aL ${maven_home}/* %{buildroot}%{_datadir}/%{name}/
 
-for i in api core connector-aether; do
+for i in api core connector; do
     ln -s $(build-classpath %{name}/%{name}-${i}) %{buildroot}%{_datadir}/%{name}/lib/ext/
 done
 

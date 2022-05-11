@@ -55,4 +55,12 @@
     <comment>Set maven_home manually and fix build with libalternatives-enabled maven</comment>
     <requestid>926898</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6d0391a89540ece740318479d5f6e674</srcmd5>
+    <version>4.0.0</version>
+    <time>1652253613</time>
+    <user>dimstar_suse</user>
+    <comment>4.0.0 + a complicated package layout change</comment>
+    <requestid>976065</requestid>
+  </revision>
 </revisionlist>

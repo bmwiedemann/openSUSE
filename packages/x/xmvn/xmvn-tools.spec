@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global parent xmvn
 %global subname tools
 Name:           %{parent}-%{subname}
-Version:        3.1.0
+Version:        4.0.0
 Release:        0
 Summary:        Local Extensions for Apache Maven
 License:        Apache-2.0
@@ -27,9 +27,13 @@ Group:          Development/Tools/Building
 URL:            https://fedora-java.github.io/xmvn/
 Source0:        https://github.com/fedora-java/xmvn/releases/download/%{version}/%{parent}-%{version}.tar.xz
 Source1:        %{parent}-build.tar.xz
-Patch1:         0001-Prefer-namespaced-metadata-when-duplicates-are-found.patch
-Patch2:         0002-Make-xmvn-subst-honor-settings-for-ignoring-duplicat.patch
-Patch3:         0003-Fix-requires-generation-for-self-depending-packages.patch
+Patch1:         0001-Mimic-maven-javadoc-plugin-for-source-and-release.patch
+Patch2:         0002-module-path-not-allowed-with-release-8.patch
+Patch3:         0001-Simple-implementation-of-toolchains-https-github.com.patch
+Patch4:         0001-Restore-possibility-to-build-with-Java-8.patch
+Patch5:         0002-Revert-Update-compiler-source-target-to-JDK-11.patch
+Patch6:         0003-Revert-Use-new-Collection-methods-added-in-Java-9.patch
+Patch7:         0004-Add-a-jdk9-profile-to-assure-that-we-are-jdk8-compat.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-compress
 BuildRequires:  beust-jcommander
@@ -86,19 +90,6 @@ Basically it's just an interface to artifact resolution mechanism
 implemented by XMvn Core.  The primary intended use case of XMvn
 Resolver is debugging local artifact repositories.
 
-%package -n %{parent}-bisect
-Summary:        XMvn Bisect
-# Explicit javapackages-tools requires since scripts use
-# /usr/share/java-utils/java-functions
-Group:          Development/Tools/Building
-Requires:       beust-jcommander
-Requires:       javapackages-tools
-Requires:       maven-invoker
-
-%description -n %{parent}-bisect
-This package provides XMvn Bisect, which is a debugging tool that can
-diagnose build failures by using bisection method.
-
 %package -n %{parent}-subst
 Summary:        XMvn Subst
 # Explicit javapackages-tools requires since scripts use
@@ -143,13 +134,7 @@ This package provides %{summary}.
 %prep
 %setup -q -n %{parent}-%{version} -a1
 
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-
-# Bisect IT has no chances of working in local, offline mode, without
-# network access - it needs to access remote repositories.
-find -name BisectIntegrationTest.java -delete
+%autopatch -p1
 
 # Resolver IT won't work either - it tries to execute JAR file, which
 # relies on Class-Path in manifest, which is forbidden in Fedora...
@@ -182,7 +167,7 @@ for i in api core; do
 	 <version>%{version}</version>" %{parent}-${i}
   %pom_remove_parent %{parent}-${i}
 done
-for i in bisect install resolve subst; do
+for i in install resolve subst; do
   %pom_xpath_inject "pom:project" "
      <groupId>org.fedoraproject.xmvn</groupId>
 	 <version>%{version}</version>" %{parent}-tools/%{parent}-${i}
@@ -204,7 +189,7 @@ install -dm 0755 %{buildroot}%{_javadir}/%{parent}
 for i in api core; do
   install -pm 0644 %{parent}-${i}/target/%{parent}-${i}-%{version}.jar %{buildroot}%{_javadir}/%{parent}/%{parent}-${i}.jar
 done
-for i in bisect install resolve subst; do
+for i in install resolve subst; do
   install -pm 0644 %{parent}-tools/%{parent}-${i}/target/%{parent}-${i}-%{version}.jar %{buildroot}%{_javadir}/%{parent}/%{parent}-${i}.jar
 done
 
@@ -214,7 +199,7 @@ for i in api core; do
   install -pm 0644 %{parent}-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{parent}/%{parent}-${i}.pom
   %add_maven_depmap %{parent}/%{parent}-${i}.pom %{parent}/%{parent}-${i}.jar -f ${i}
 done
-for i in bisect install resolve subst; do
+for i in install resolve subst; do
   install -pm 0644 %{parent}-tools/%{parent}-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{parent}/%{parent}-${i}.pom
   %add_maven_depmap %{parent}/%{parent}-${i}.pom %{parent}/%{parent}-${i}.jar -f ${i}
 done
@@ -225,14 +210,13 @@ for i in api core; do
   install -dm 0755 %{buildroot}%{_javadocdir}/%{parent}/${i}
   cp -pr %{parent}-${i}/target/site/apidocs/* %{buildroot}%{_javadocdir}/%{parent}/${i}/
 done
-for i in bisect install resolve subst; do
+for i in install resolve subst; do
   install -dm 0755 %{buildroot}%{_javadocdir}/%{parent}/${i}
   cp -pr %{parent}-tools/%{parent}-${i}/target/site/apidocs/* %{buildroot}%{_javadocdir}/%{parent}/${i}/
 done
 %fdupes -s %{buildroot}%{_javadocdir}
 
 # helper scripts
-%jpackage_script org.fedoraproject.xmvn.tools.bisect.BisectCli "" "-Dxmvn.home=%{_datadir}/%{name}" %{parent}/%{parent}-bisect:beust-jcommander:maven-invoker:plexus/utils %{parent}-bisect
 %jpackage_script org.fedoraproject.xmvn.tools.install.cli.InstallerCli "" "" %{parent}/%{parent}-install:%{parent}/%{parent}-api:%{parent}/%{parent}-core:beust-jcommander:slf4j/api:slf4j/simple:objectweb-asm/asm:commons-compress %{parent}-install
 %jpackage_script org.fedoraproject.xmvn.tools.resolve.ResolverCli "" "" %{parent}/%{parent}-resolve:%{parent}/%{parent}-api:%{parent}/%{parent}-core:beust-jcommander %{parent}-resolve
 %jpackage_script org.fedoraproject.xmvn.tools.subst.SubstCli "" "" %{parent}/%{parent}-subst:%{parent}/%{parent}-api:%{parent}/%{parent}-core:beust-jcommander %{parent}-subst
@@ -245,9 +229,6 @@ done
 
 %files -n %{parent}-resolve -f .mfiles-resolve
 %{_bindir}/%{parent}-resolve
-
-%files -n %{parent}-bisect -f .mfiles-bisect
-%{_bindir}/%{parent}-bisect
 
 %files -n %{parent}-subst -f .mfiles-subst
 %{_bindir}/%{parent}-subst

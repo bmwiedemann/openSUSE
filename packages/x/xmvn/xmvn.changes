@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 10 12:36:15 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 4.0.0
+
+-------------------------------------------------------------------
 Fri Oct 22 09:15:52 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Specify maven_home manually since the diversity of alternatives

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue May 10 12:36:15 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 4.0.0
+- Removed patches:
+  * xmvn-gradle_4_4_1.patch
+  * 0001-Fix-resolution-of-aliases-registered-by-add_maven_de.patch
+    + Patches the inexisting xmvn-connector-gradle module
+  * 0001-Prefer-namespaced-metadata-when-duplicates-are-found.patch
+  * 0002-Make-xmvn-subst-honor-settings-for-ignoring-duplicat.patch
+  * 0003-Fix-requires-generation-for-self-depending-packages.patch
+    + Integrated upstream
+- Added patches:
+  * 0001-Mimic-maven-javadoc-plugin-for-source-and-release.patch
+  * 0002-module-path-not-allowed-with-release-8.patch
+    + make Xmvn Javadoc Mojo respect release and source arguments
+  * 0001-Simple-implementation-of-toolchains-https-github.com.patch
+    + consider toolchains if specifies in Xmvn Javadoc Mojo
+  * 0001-Restore-possibility-to-build-with-Java-8.patch
+  * 0002-Revert-Update-compiler-source-target-to-JDK-11.patch
+  * 0003-Revert-Use-new-Collection-methods-added-in-Java-9.patch
+  * 0004-Add-a-jdk9-profile-to-assure-that-we-are-jdk8-compat.patch
+    + different fixes to be able to build with JDK8
+
+-------------------------------------------------------------------
 Thu Nov 21 14:21:16 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.1.0

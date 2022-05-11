@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,38 +17,48 @@
 
 
 %global parent xmvn
-%global subname connector-gradle
+%global subname connector
+%bcond_with tests
 Name:           %{parent}-%{subname}
-Version:        3.1.0
+Version:        4.0.0
 Release:        0
-Summary:        XMvn Connector for Gradle
+Summary:        XMvn Connector for Maven Resolver
 License:        Apache-2.0
 Group:          Development/Tools/Building
 URL:            https://fedora-java.github.io/xmvn/
 Source0:        https://github.com/fedora-java/%{parent}/releases/download/%{version}/%{parent}-%{version}.tar.xz
-Patch0:         0001-Fix-resolution-of-aliases-registered-by-add_maven_de.patch
-# Backport to gradle 4.4.1
-Patch1:         xmvn-gradle_4_4_1.patch
+Source1:        %{parent}-build.tar.xz
+Patch1:         0001-Mimic-maven-javadoc-plugin-for-source-and-release.patch
+Patch2:         0002-module-path-not-allowed-with-release-8.patch
+Patch3:         0001-Simple-implementation-of-toolchains-https-github.com.patch
+Patch4:         0001-Restore-possibility-to-build-with-Java-8.patch
+Patch5:         0002-Revert-Update-compiler-source-target-to-JDK-11.patch
+Patch6:         0003-Revert-Use-new-Collection-methods-added-in-Java-9.patch
+Patch7:         0004-Add-a-jdk9-profile-to-assure-that-we-are-jdk8-compat.patch
+BuildRequires:  %{parent}-api = %{version}
+BuildRequires:  %{parent}-core = %{version}
+BuildRequires:  ant
 BuildRequires:  fdupes
-# Build this one with the bootstrap package in order to avoid build cycles
-BuildRequires:  maven-local
-BuildRequires:  mvn(javax.inject:javax.inject)
-BuildRequires:  mvn(org.apache.ivy:ivy)
-BuildRequires:  mvn(org.codehaus.groovy:groovy-all)
-BuildRequires:  mvn(org.fedoraproject.xmvn:xmvn-api)
-BuildRequires:  mvn(org.gradle:gradle-base-services) >= 4.4.1
-BuildRequires:  mvn(org.gradle:gradle-base-services-groovy) >= 4.4.1
-BuildRequires:  mvn(org.gradle:gradle-core) >= 4.4.1
-BuildRequires:  mvn(org.gradle:gradle-dependency-management) >= 4.4.1
-BuildRequires:  mvn(org.gradle:gradle-resources) >= 4.4.1
-BuildRequires:  mvn(org.slf4j:slf4j-api)
-#!BuildRequires: gradle-bootstrap groovy-bootstrap gpars-bootstrap
+BuildRequires:  guava
+BuildRequires:  javapackages-local
+BuildRequires:  maven-lib
+BuildRequires:  maven-resolver-api
+BuildRequires:  plexus-containers-component-annotations
+BuildRequires:  plexus-metadata-generator
+BuildRequires:  plexus-utils
+BuildRequires:  sisu-inject
+BuildRequires:  sisu-plexus
+BuildRequires:  xmvn-install
+BuildRequires:  xmvn-resolve
+Provides:       %{name}-aether = %{version}
+Obsoletes:      %{name}-aether < %{version}
 BuildArch:      noarch
 
 %description
-This package provides XMvn Connector for Gradle, which provides
-integration of Gradle with XMvn.  It provides an adapter which allows
-XMvn resolver to be used as Gradle resolver.
+This package provides XMvn Connector for Maven Resolver, which
+provides integration of Maven Resolver with XMvn.  It provides an
+adapter which allows XMvn resolver to be used as Maven workspace
+reader.
 
 %package javadoc
 Summary:        API documentation for %{name}
@@ -58,13 +68,9 @@ Group:          Documentation/HTML
 This package provides %{summary}.
 
 %prep
-%setup -q -n %{parent}-%{version}
-%patch0 -p1
-%patch1 -p1
+%setup -q -n %{parent}-%{version} -a1
 
-# Bisect IT has no chances of working in local, offline mode, without
-# network access - it needs to access remote repositories.
-find -name BisectIntegrationTest.java -delete
+%autopatch -p1
 
 # Resolver IT won't work either - it tries to execute JAR file, which
 # relies on Class-Path in manifest, which is forbidden in Fedora...
@@ -93,8 +99,40 @@ pushd %{name}
 popd
 
 %build
+mkdir -p lib
+build-jar-repository -s lib \
+    atinject \
+    commons-cli \
+    guava/guava \
+    guice/google-guice-no_aop \
+    jdom2/jdom2 \
+    maven/maven-artifact \
+    maven/maven-core \
+    maven/maven-model \
+    maven/maven-model-builder \
+    maven/maven-plugin-api \
+    maven-resolver/maven-resolver-api \
+    objectweb-asm/asm \
+    org.eclipse.sisu.inject \
+    org.eclipse.sisu.plexus \
+    plexus-classworlds \
+    plexus/cli \
+    plexus-containers/plexus-component-annotations \
+    plexus-metadata-generator \
+    plexus/utils \
+    qdox \
+    xbean/xbean-reflect \
+    %{parent}/%{parent}-api
+
 pushd %{name}
-  %{mvn_build} -f -- -Dsource=8
+  %{ant} \
+%if %{without tests}
+  -Dtest.skip=true \
+%endif
+  package javadoc
+
+%{mvn_artifact} pom.xml target/%{name}-%{version}.jar
+
 popd
 
 %install
