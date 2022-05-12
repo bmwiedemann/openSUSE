@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 11 06:40:30 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20220510:
+  * Cleaned up the wording and formatting
+  * Clarified 3rd party workaround stuff; fixed #1559
+  * Add gov.nl (#1558)
+  * util: gTLD data autopull updates for 2022-04-30T15:14:45 UTC (#1564)
+
+-------------------------------------------------------------------
 Tue Apr 19 07:43:55 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20220415:

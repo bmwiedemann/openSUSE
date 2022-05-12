@@ -1160,4 +1160,16 @@ Now with build cycle removed.</comment>
   * add support for scaleway subdomains (#1507)</comment>
     <requestid>970683</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>195436fe32459b962142a4581ee638fd</srcmd5>
+    <version>20220510</version>
+    <time>1652389082</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220510:
+  * Cleaned up the wording and formatting
+  * Clarified 3rd party workaround stuff; fixed #1559
+  * Add gov.nl (#1558)
+  * util: gTLD data autopull updates for 2022-04-30T15:14:45 UTC (#1564)</comment>
+    <requestid>976208</requestid>
+  </revision>
 </revisionlist>
