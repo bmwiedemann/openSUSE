@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May  9 16:41:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add OpenIPMI-autoconf-m4-ax-python-devel-serial25.patch
+  which updates m4/ax_python_devel.m4 to serial25, retaining
+  upstreams PYTHON_VERSION addition, before the bootstrap runs
+  automake, because the new serial 25 can deal with
+  Python 3.10 version strings and deprecation of distutils.
+
+-------------------------------------------------------------------
 Thu Apr 28 00:16:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Resolve rpmlint report "libOpenIPMI0.x86_64: E:

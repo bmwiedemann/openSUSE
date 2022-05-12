@@ -58,6 +58,10 @@ Patch7:         fix_dia_version_detection.patch
 Patch8:         use_python3_shebang
 Patch9:         lanserv-Add-the-judgment-on-the-validity-of-length-in-emu_cmd.c-and-session-in-lanserv_ipmi.c.patch
 Patch10:        unix_thread-Remove-the-fd-handler-sets-before-it-s-set-up.patch
+# PATCH-FIX-UPSTREAM OpenIPMI-autoconf-m4-ax-python-devel-serial25.patch
+# replace autoconf script serial18 addtion by serial 25 capable of finding python3.10
+# retains upstream change https://sourceforge.net/p/openipmi/code/ci/53d2b36b58383d155e2410cae3b30975a92f417d
+Patch11:        OpenIPMI-autoconf-m4-ax-python-devel-serial25.patch
 
 BuildRequires:  autoconf-archive
 BuildRequires:  gd-devel
