@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 10 07:01:41 UTC 2022 - Martin Vidner <mvidner@suse.com>
+
+- Mention YAST_SUBMIT in the 'rake -T' task list (bsc#1199371)
+- 0.2.47
+
+-------------------------------------------------------------------
 Thu Apr 28 12:36:09 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Move the "sle_latest" build target to SLE15-SP5 (bsc#1198977)
