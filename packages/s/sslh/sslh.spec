@@ -1,7 +1,7 @@
 #
 # spec file for package sslh
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 by Lars Vogdt
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@ Summary:        SSL/SSH multiplexer
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/SSH
 URL:            https://www.rutschle.net/tech/sslh.shtml
-Source:         http://www.rutschle.net/tech/%{name}/%{name}-v%{version}.tar.gz
+Source:         https://www.rutschle.net/tech/%{name}/%{name}-v%{version}.tar.gz
 Source1:        %{name}.init
 Source2:        %{name}.sysconfig
 Source3:        %{name}.conf.d

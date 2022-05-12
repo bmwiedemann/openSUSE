@@ -95,4 +95,12 @@
   * Test aborted connections (#285)</comment>
     <requestid>916996</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>95789f5186e646d5d4b5e6b65668bd64</srcmd5>
+    <version>1.22c</version>
+    <time>1652389100</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>976089</requestid>
+  </revision>
 </revisionlist>
