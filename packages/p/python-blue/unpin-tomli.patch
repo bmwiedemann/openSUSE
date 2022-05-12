@@ -1,10 +1,10 @@
 ---
- blue/__init__.py |    9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
+ blue/__init__.py |    5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
 --- a/blue/__init__.py
 +++ b/blue/__init__.py
-@@ -15,7 +15,10 @@ import black.strings
+@@ -70,7 +70,10 @@ import black.strings
  from black import Leaf, Path, click, token
  from black.cache import user_cache_dir
  from black.comments import ProtoComment, make_comment
@@ -16,14 +16,3 @@
  from black.linegen import LineGenerator as BlackLineGenerator
  from black.lines import Line
  from black.nodes import (
-@@ -263,8 +266,8 @@ def parse_pyproject_toml(path_config: st
- 
-     If parsing fails, will raise a tomli.TOMLDecodeError
-     """
--    with open(path_config, encoding="utf8") as f:
--        pyproject_toml = tomli.load(f)  # type: ignore  # due to deprecated API usage
-+    with open(path_config, mode='rb') as f:
-+        pyproject_toml = tomli.load(f)
-     config = pyproject_toml.get("tool", {}).get("blue", {})
-     return {k.replace("--", "").replace("-", "_"): v for k, v in config.items()}
- 

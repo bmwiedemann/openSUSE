@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  4 17:28:34 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 0.9.0:
+  - Fix test suite failures due to a confluence of problems
+  - Upgrade dependency on Black to 22.1.0 to support Python 3.10
+  - Add link to demo site at https://iblueit.dev
+
+-------------------------------------------------------------------
 Sat Apr 23 18:57:58 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update unpin-tomli.patch to work with the current black package.

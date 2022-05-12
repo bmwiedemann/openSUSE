@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-blue
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        A code formatter written in, and written for Python
 License:        MIT
@@ -67,6 +67,7 @@ HTML Documentation and examples for %name.
 
 %prep
 %autosetup -p1 -n blue-%{version}
+
 # avoid pytest addopts for coverage checks
 sed -i '/--cov/d' tox.ini
 
