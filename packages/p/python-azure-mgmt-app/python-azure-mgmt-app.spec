@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-app
-Version:        1.0.0b1
+Version:        1.0.0b2
 Release:        0
 Summary:        Microsoft Azure App Management Client Library for Python
 License:        MIT
@@ -51,7 +51,7 @@ BuildArch:      noarch
 %description
 This is the Microsoft Azure App Management Client Library.
 
-This package has been tested with Python 3.6+. 
+This package has been tested with Python 3.6+.
 
 %prep
 %setup -q -n azure-mgmt-app-%{version}
