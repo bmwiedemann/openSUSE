@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 10 10:04:49 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not limit to kdumptool MaxLow when using fadump (related
+  to jsc#SLE-21644).
+- 4.5.1
+
+-------------------------------------------------------------------
 Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.5.0 (bsc#1198109)
