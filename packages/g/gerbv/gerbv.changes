@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May  4 09:09:00 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Change the source URL
+- Update to 2.8.2. Changes since 2.7.0:
+  * Fix CVE-2021-40393: RS-274X format aperture macro variables
+    out-of-bounds write vulnerability (boo#1194035)
+  * Adjust autotool related files due warnings by autoconf
+  * Fix CVE-2021-40391: Gerbv drill format T-code tool number
+    out-of-bounds write vulnerability (boo#1192949)
+  * Fix double-freeing memory
+  * Fix casting pointer to different size integer
+  * Fix crash when opening/saving files
+- Drop patch, now upstream:
+  * 0001-Fix-enum-declarations.patch
+
+-------------------------------------------------------------------
 Tue Jan 12 16:03:06 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix duplicate symbol error due to wrong syntax in declaration:

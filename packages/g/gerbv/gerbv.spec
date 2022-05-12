@@ -1,7 +1,7 @@
 #
 # spec file for package gerbv
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,14 @@
 
 Name:           gerbv
 %define libname lib%{name}
-Version:        2.7.0
+Version:        2.8.2
 Release:        0
 %define somajor 1
 Summary:        Gerber File Viewer that supports the RS-274X Standard
 License:        GPL-2.0-only
 Group:          Productivity/Scientific/Electronics
 URL:            http://gerbv.geda-project.org/
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM -- https://sourceforge.net/p/gerbv/patches/80/
-Patch0:         0001-Fix-enum-declarations.patch
+Source0:        https://github.com/gerbv/gerbv/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  gtk2-devel
 BuildRequires:  libpng-devel
@@ -69,6 +67,7 @@ that use gerbv library.
 %autosetup -p1
 
 %build
+./autogen.sh
 %configure  \
             --disable-static \
             --enable-unit-mm \
