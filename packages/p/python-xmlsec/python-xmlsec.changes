@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 11 12:39:21 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.3.12:
+  - Added support for registering custom xmlsec IO callbacks
+  - Added support for building without MD5 transforms
+  - Added support for PEP 539 for Python 3.7 and newer
+  - Using lxml-stubs package instead of custom LXML stubs
+- Add avoid_lxml_tests_failing.patch (help working
+  around the lxml issue lp#1880251 and lp#1887848, from
+  gh#mehcode/python-xmlsec#84).
+- Switch off building on Python 3.10 and %ix86
+  (gh#mehcode/python-xmlsec#204).
+
+-------------------------------------------------------------------
 Thu Jun 10 09:15:51 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Upgrade to 1.3.11:

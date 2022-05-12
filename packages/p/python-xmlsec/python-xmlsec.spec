@@ -1,7 +1,7 @@
 #
 # spec file for package python-xmlsec
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,29 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# gh#mehcode/python-xmlsec#204 and gh#mehcode/python-xmlsec#210
+%define skip_python310 1
 Name:           python-xmlsec
-Version:        1.3.11
+Version:        1.3.12
 Release:        0
 Summary:        Python bindings for the XML Security Library
 License:        MIT
 URL:            https://github.com/mehcode/python-xmlsec
 Source:         https://files.pythonhosted.org/packages/source/x/xmlsec/xmlsec-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM avoid_lxml_tests_failing.patch gh#mehcode/python-xmlsec#84 mcepl@suse.com
+# work around the lxml issue
+Patch0:         avoid_lxml_tests_failing.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module lxml >= 3.0}
 BuildRequires:  %{python_module lxml-devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pkgconfig}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -50,23 +57,33 @@ Requires:       python-pkgconfig
 Python bindings for the XML Security Library
 
 %prep
-%setup -q -n xmlsec-%{version}
+%autosetup -p1 -n xmlsec-%{version}
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# Tests coredump gh#mehcode/python-xmlsec#183
 # %%pytest_arch tests/
+%ifarch %ix86
+export skip_tests="not test_reinitialize_module"
+%else
+export skip_tests=""
+%endif
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch} PYTHONDONTWRITEBYTECODE=1
+rm -rf .hypothesis/ .pytest_cache/
+$python -mpytest --ignore=_build.python39 --ignore=_build.python310 --ignore=_build.python38 -v -k "$skip_tests" tests/
+}
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/xmlsec
+%{python_sitearch}/xmlsec-%{version}*-info
+%{python_sitearch}/xmlsec*.so
 
 %changelog
