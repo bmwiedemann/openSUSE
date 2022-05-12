@@ -18,7 +18,7 @@
 
 %define cpan_name PPI
 Name:           perl-PPI
-Version:        1.273
+Version:        1.274
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Parse, Analyze and Manipulate Perl (without perl)
@@ -34,7 +34,6 @@ BuildRequires:  perl(List::Util) >= 1.33
 BuildRequires:  perl(Params::Util) >= 1.00
 BuildRequires:  perl(Storable) >= 2.17
 BuildRequires:  perl(Task::Weaken)
-BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::NoWarnings)
 BuildRequires:  perl(Test::Object) >= 0.07
