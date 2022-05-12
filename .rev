@@ -359,4 +359,12 @@ Date separators added for better orientation in the program lists of the plugins
     <comment></comment>
     <requestid>975786</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>bf075fbca8e3564edd7d132032f8c978</srcmd5>
+    <version>4.2.6</version>
+    <time>1652389246</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>976555</requestid>
+  </revision>
 </revisionlist>

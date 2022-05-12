@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 11 18:12:46 UTC 2022 - wbauer@tmo.at
+
+- update to version 4.2.6
+  * Filter highlighting not saved
+  * Import directory of version is questioned before selecting of
+    import directory for transportable version
+  * Reminders are not imported
+
+-------------------------------------------------------------------
 Sun May  8 16:02:18 UTC 2022 - wbauer@tmo.at
 
 - update to version 4.2.5
