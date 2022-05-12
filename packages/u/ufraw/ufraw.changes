@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  4 08:40:31 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- switched source url to https
+
+-------------------------------------------------------------------
 Fri Mar  4 13:40:59 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Pkgconfig'fy spec: Align with what configure actually checks for:

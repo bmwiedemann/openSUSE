@@ -26,7 +26,7 @@ Summary:        Application to read and manipulate raw images from digital camer
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            http://ufraw.sourceforge.net/
-Source:         http://downloads.sourceforge.net/project/ufraw/ufraw/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source:         https://downloads.sourceforge.net/project/ufraw/ufraw/%{name}-%{version}/%{name}-%{version}.tar.gz
 
 Patch0:         %{name}-desktop.patch
 Patch1:         %{name}-boundary.patch
