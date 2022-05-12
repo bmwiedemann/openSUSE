@@ -16,27 +16,48 @@
 #
 
 
+%global base_ver 3.0.0
+%global milestone M2
+%bcond_with tests
 Name:           maven-deploy-plugin
-Version:        2.8.2
+Version:        %{base_ver}~%{milestone}
 Release:        0
 Summary:        Maven Deploy Plugin
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/plugins/maven-deploy-plugin/
-Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{name}/%{version}/%{name}-%{version}-source-release.zip
+Source0:        https://github.com/apache/%{name}/archive/refs/tags/%{name}-%{base_ver}-%{milestone}.tar.gz
+Source1:        https://www.apache.org/licenses/LICENSE-2.0.txt
+Patch0:         0001-MDEPLOY-291-Update-POM-parent-and-Maven-22.patch
+Patch1:         0002-Fix-tests-with-Java-16.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
-BuildRequires:  unzip
+BuildRequires:  mvn(commons-io:commons-io)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugins:pom:)
-BuildRequires:  mvn(org.apache.maven:maven-artifact:2.2.1)
-BuildRequires:  mvn(org.apache.maven:maven-model:2.2.1)
+BuildRequires:  mvn(org.apache.maven.shared:maven-artifact-transfer)
+BuildRequires:  mvn(org.apache.maven:maven-artifact)
+BuildRequires:  mvn(org.apache.maven:maven-core)
+BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
-BuildRequires:  mvn(org.apache.maven:maven-project)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
+BuildRequires:  mvn(org.eclipse.aether:aether-api)
+BuildRequires:  mvn(org.eclipse.aether:aether-util)
+BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildArch:      noarch
+%if %{with tests}
+BuildRequires:  mvn(junit:junit)
+BuildRequires:  mvn(org.apache.maven.plugin-testing:maven-plugin-testing-harness)
+BuildRequires:  mvn(org.apache.maven:maven-aether-provider)
+BuildRequires:  mvn(org.apache.maven:maven-compat)
+BuildRequires:  mvn(org.eclipse.aether:aether-connector-basic)
+BuildRequires:  mvn(org.eclipse.aether:aether-transport-file)
+BuildRequires:  mvn(org.eclipse.aether:aether-transport-http)
+BuildRequires:  mvn(org.mockito:mockito-core)
+BuildRequires:  mvn(org.slf4j:slf4j-nop)
+%endif
 
 %description
 Uploads the project artifacts to the internal remote repository.
@@ -49,17 +70,19 @@ Group:          Documentation/HTML
 API documentation for %{name}.
 
 %prep
-%setup -q
-
-%pom_add_plugin :maven-plugin-plugin . "
-        <configuration>
-          <helpPackageName>org.apache.maven.plugin.deploy</helpPackageName>
-        </configuration>"
+%setup -q -n %{name}-%{name}-%{base_ver}-%{milestone}
+cp %{SOURCE1} LICENSE
+%autopatch -p1
 
 %build
 
 %{mvn_file} :%{name} %{name}
-%{mvn_build} -f -- \
+
+%{mvn_build} \
+%if %{without tests}
+    -f \
+%endif
+    -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
     -Dmaven.compiler.release=8 \
 %endif
@@ -71,10 +94,8 @@ API documentation for %{name}.
 
 %files -f .mfiles
 %license LICENSE
-%doc DEPENDENCIES NOTICE
 
 %files javadoc -f .mfiles-javadoc
 %license LICENSE
-%doc NOTICE
 
 %changelog
