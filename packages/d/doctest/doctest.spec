@@ -1,7 +1,7 @@
 #
 # spec file for package doctest
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,12 @@
 
 
 Name:           doctest
-Version:        2.4.6
+Version:        2.4.8
 Release:        0
 Summary:        Single-header testing framework
 License:        MIT
-URL:            http://bit.ly/doctest-docs
-Source0:        https://github.com/onqtam/doctest/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-build-with-GCC-11.patch
+URL:            https://github.com/doctest/doctest
+Source0:        https://github.com/doctest/doctest/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
