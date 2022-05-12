@@ -22,7 +22,7 @@ Name:           frescobaldi
 Summary:        Lilypond editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
-Version:        3.1.3
+Version:        3.2
 Release:        0
 URL:            http://www.frescobaldi.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -37,6 +37,7 @@ BuildRequires:  python3-devel
 BuildRequires:  update-desktop-files
 Requires:       lilypond
 Requires:       python3-poppler-qt5
+Requires:       python3-qpageview
 Requires:       python3-qt5
 Requires:       python3-qt5-sip
 Requires:       python3-qtwebengine-qt5

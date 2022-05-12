@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat May  7 12:04:33 UTC 2022 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 3.2:
+  * Make frescobaldi work with python 3.10
+  * New preference feature: music view preference for "Strict
+    Paging": when enabled, the pageup/pagedown keys always page to
+    the previous or next page instead of simply scrolling a
+    screenful
+  * Improvements to the Score Wizard, contributed by Benjamin
+    Johnson (#1343):
+    - Various new instruments, mostly guitar, synth and bass
+      related
+    - New command File->New->Score Wizard from current document,
+      which reads some properties and score setup from the current
+      document
+  * qpageview is not an separate package
+  * Bugfixes
+  * Translation updates
+- Added python3-qpageview to Requires
+
+-------------------------------------------------------------------
 Tue Mar 29 17:47:49 UTC 2022 - Cor Blom <cornelis@solcon.nl>
 
 - lilypond is not available on i586, so exclude that arch

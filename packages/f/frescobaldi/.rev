@@ -188,4 +188,12 @@
     <comment>- lilypond is not available on i586, so exclude that arch</comment>
     <requestid>965745</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>0a7e30cf6dea645255575bb4b5889328</srcmd5>
+    <version>3.2</version>
+    <time>1652389169</time>
+    <user>dimstar_suse</user>
+    <comment>for this version the new package python-qpageview is required</comment>
+    <requestid>976262</requestid>
+  </revision>
 </revisionlist>
