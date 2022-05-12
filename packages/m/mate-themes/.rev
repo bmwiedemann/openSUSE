@@ -300,4 +300,12 @@
     <comment>Update to version 3.22.22 (forwarded request 896472 from susnux)</comment>
     <requestid>896709</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>f3990a2886e7afd51fc5429dfabbbbf6</srcmd5>
+    <version>3.22.23</version>
+    <time>1652389103</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>976119</requestid>
+  </revision>
 </revisionlist>

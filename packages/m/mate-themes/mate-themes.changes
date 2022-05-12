@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 10 16:36:47 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.22.23
+  * Translations update
+  * Add YaruOK and YaruGreen
+  * BlackMATE fixes for CSD apps
+    Also fix window buttons in metacity, mutter, gnome-shell
+  * TOK/TG: Fix: checkboxes and radio buttons are little and blurry
+  * all themes: adjustments for headerbars
+  * border-radius fixes for double headerbars
+  * separator fixes and height fixes
+
+-------------------------------------------------------------------
 Tue Jun  1 00:21:34 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.22.22
