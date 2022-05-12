@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed May 11 08:16:42 UTC 2022 - tiwai@suse.com
+
+- Update to version 20220509 (git commit b19cbdca78ab):
+  * mediatek: Update mt8183 SCP firmware
+  * ice: Update package to 1.3.28.0
+  * i915: Add DMC v2.06 for DG2
+  * rtl_bt: Update RTL8852A BT USB firmware to 0xDBB7_C1D9
+  * amdgpu: update psp_13_0_8 firmware
+  * amdgpu: update gc_10_3_7_rlc firmware
+  * amdgpu: update dcn_3_1_6_dmcub firmware
+  * ath11k: QCA6390 hw2.0: update to WLAN.HST.1.0.1-05266-QCAHSTSWPLZ_V2_TO_X86-1
+  * qcom: add firmware files for Adreno a420 & related generations
+  * qcom: add firmware files for Adreno a330
+  * qcom: add firmware files for Adreno a220
+  * i915: Add GuC v70.1.2 for DG2
+  * rtw89: 8852c: add new firmware v0.27.20.0 for RTL8852C
+  * Mellanox: Add lc_ini_bundle for xx.2010.1006
+  * Mellanox: xx.2010.1502: Distribute non-xz-compressed lc_ini_bundle
+  * ath10k: QCA9984 hw1.0: update board-2.bin
+  * ath10k: QCA9984 hw1.0: update firmware-5.bin to 10.4-3.9.0.2-00156
+  * ath10k: QCA9888 hw2.0: update board-2.bin
+  * ath10k: QCA9888 hw2.0: update firmware-5.bin to 10.4-3.9.0.2-00156
+  * ath10k: QCA6174 hw3.0: update board-2.bin
+  * ath10k: QCA6174 hw3.0: update firmware-6.bin to WLAN.RM.4.4.1-00288-QCARMSWPZ-1
+  * ath10k: QCA4019 hw1.0: update board-2.bin
+  * ath10k: QCA99X0 hw2.0: add board-2.bin
+  * ath11k: WCN6855 hw2.0: update to WLAN.HSP.1.1-03125-QCAHSPSWPL_V1_V2_SILICONZ_LITE-3.6510.7
+  * ath11k: WCN6750 hw1.0: add to WLAN.MSL.1.0.1-00887-QCAMSLSWPLZ-1
+  * ath11k: WCN6750 hw1.0: add board-2.bin
+  * ath11k: QCN9074 hw1.0: add to WLAN.HK.2.5.0.1-01208-QCAHKSWPL_SILICONZ-1
+  * ath11k: QCN9074 hw1.0: add board-2.bin
+  * ath11k: QCA6390 hw2.0: update board-2.bin
+  * ath11k: IPQ8074 hw2.0: update to WLAN.HK.2.5.0.1-01208-QCAHKSWPL_SILICONZ-1
+  * ath11k: IPQ8074 hw2.0: update board-2.bin
+  * ath11k: IPQ6018 hw1.0: update to WLAN.HK.2.5.0.1-01208-QCAHKSWPL_SILICONZ-1
+  * ath11k: IPQ6018 hw1.0: update board-2.bin
+  * Mellanox: Add new mlxsw_spectrum firmware xx.2010.1502
+  * amdgpu: update yellow carp DMCUB firmware
+  * linux-firmware: update firmware for mediatek bluetooth chip (MT7922)
+  * linux-firmware: update firmware for MT7922 WiFi device
+  * mediatek: Add mt8195 SCP firmware
+  * qcom: apq8096: add modem firmware
+  * qcom: apq8096: add aDSP firmware
+  * rtl_bt: Add firmware and config files for RTL8852C
+  * i915: Add GuC v70.1.1 for all platforms
+- Update aliases
+
+-------------------------------------------------------------------
 Mon Apr 11 13:47:37 UTC 2022 - tiwai@suse.com
 
 - Update to version 20220411 (git commit f219d616f42b):
