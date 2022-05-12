@@ -1,7 +1,7 @@
 #
 # spec file for package mate-menu
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _name   mate_menu
 
 Name:           mate-menu
-Version:        20.04.3
+Version:        22.04.2
 Release:        0
 Summary:        Advanced MATE menu
 License:        GPL-2.0-or-later

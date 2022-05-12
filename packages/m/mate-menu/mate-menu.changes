@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 10 16:32:32 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 22.04.2
+  * Sync translations
+  * applications: Allow disabling category hover
+
+-------------------------------------------------------------------
 Mon Aug 16 13:40:48 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Fix crash (boo#1189452)
