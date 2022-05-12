@@ -17,7 +17,6 @@
 
 
 %define binaries stackalytics2sh mozilla2sh mailmap2sh grimoirelab2sh gitdm2sh eclipse2sh sortinghat sh2mg mg2sh
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
@@ -139,7 +138,7 @@ done
 
 %postun
 for b in %{binaries}; do
-  %python_uninstall_alternative stackalytics2sh
+  %python_uninstall_alternative $b
 done
 
 %files %{python_files}
