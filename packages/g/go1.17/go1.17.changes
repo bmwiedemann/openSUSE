@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May 10 22:25:54 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.17.10 (released 2022-05-10) includes security fixes to the
+  syscall package, as well as bug fixes to the compiler, runtime,
+  and the crypto/x509 and net/http/httptest packages.
+  Refs boo#1190649 go1.17 release tracking
+  CVE-2022-29526
+  * boo#1199413 go#52313 CVE-2022-29526
+  * go#52439 syscall: Faccessat checks wrong group
+  * go#51858 crypto/x509: x509 certificate with issuerUniqueID and/or subjectUniqueID parse error
+  * go#52095 cmd/compile: fails to compile very long files starting go1.17
+  * go#52148 syscall: TestGroupCleanupUserNamespace failure on linux-s390x-ibm
+  * go#52306 sync: TestWaitGroupMisuse2 is flaky
+  * go#52374 runtime: executable compiled under Go 1.17.7 will occasionally wedge
+  * go#52455 net/http/httptest: race in Close
+  * go#52705 net: TestDialCancel is not compatible with new macOS ARM64 builders
+
+-------------------------------------------------------------------
 Mon May  2 08:43:22 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Remove remaining use of gold linker when bootstrapping with
