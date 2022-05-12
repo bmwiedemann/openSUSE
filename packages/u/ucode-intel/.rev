@@ -793,4 +793,41 @@
     - | APL            | E0       | 06-5c-0a/03 | 00000024 | 00000028 | Atom x5-E39xx</comment>
     <requestid>971361</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>fa2b933d3c10abf07b6f3c901ac70cb2</srcmd5>
+    <version>20220510</version>
+    <time>1652389095</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to Intel CPU Microcode 20220510 release. (bsc#20220510)
+  - CVE-2022-21151: Security updates for [INTEL-SA-000617](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00617.html)
+  - Update for functional issues. Refer to [Second Generation Intel Xeon Processor Scalable Family Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/338848) for details.
+  - Update for functional issues. Refer to [Intel Xeon Processor Scalable Family Specification Update](https://www.intel.com/content/www/us/en/processors/xeon/scalable/xeon-scalable-spec-update.html?wapkw=processor+specification+update) for details.
+  - Update for functional issues. Refer to [Intel Atom C3000 Processor Product Family Specification Update](https://www.intel.com/content/www/us/en/processors/atom/atom-c3000-family-spec-update.html?wapkw=processor+specification+update) for details.
+  - Update for functional issues. Refer to [Intel Atom Processor E3900 Specification Update Addendum](https://cdrdv2.intel.com/v1/dl/getContent/612204) for details.
+  - New Platforms:
+  | Processor      | Stepping | F-M-S/PI    | Old Ver  | New Ver  | Products
+  |:---------------|:---------|:------------|:---------|:---------|:---------
+  | ADL            | C0       | 06-97-02/03 |          | 0000001f | Core Gen12
+  | ADL            | C0       | 06-97-05/03 |          | 0000001f | Core Gen12
+  | ADL            | L0       | 06-9a-03/80 |          | 0000041c | Core Gen12
+  | ADL            | L0       | 06-9a-04/80 |          | 0000041c | Core Gen12
+  | ADL            | C0       | 06-bf-02/03 |          | 0000001f | Core Gen12
+  | ADL            | C0       | 06-bf-02/03 |          | 0000001f | Core Gen12
+  - Updated Platforms:
+  | Processor      | Stepping | F-M-S/PI    | Old Ver  | New Ver  | Products
+  |:---------------|:---------|:------------|:---------|:---------|:---------
+  | VLV            | D0       | 06-37-09/0F | 0000090c | 0000090d | Atom E38xx
+  | SKL-U/Y        | D0       | 06-4e-03/c0 | 000000ec | 000000f0 | Core Gen6 Mobile
+  | SKX-SP         | B1       | 06-55-03/97 | 0100015c | 0100015d | Xeon Scalable
+  | SKX-SP         | H0/M0/U0 | 06-55-04/b7 | 02006c0a | 02006d05 | Xeon Scalable
+  | SKX-D          | M1       | 06-55-04/b7 | 02006c0a | 02006d05 | Xeon D-21xx
+  | CLX-SP         | B0       | 06-55-06/bf | 0400320a | 04003302 | Xeon Scalable Gen2
+  | CLX-SP         | B1       | 06-55-07/bf | 0500320a | 05003302 | Xeon Scalable Gen2
+  | CPX-SP         | A1       | 06-55-0b/bf | 07002402 | 07002501 | Xeon Scalable Gen3
+  | APL            | D0       | 06-5c-09/03 | 00000046 | 00000048 | Pentium N/J4xxx, Celeron N/J3xxx, Atom x5/7-E39xx
+  | APL            | E0       | 06-5c-0a/03 | 00000024 | 00000028 | Atom x5-E39xx
+  | SKL-H/S        | R0/N0    | 06-5e-03/36 | 000000ec | 000000f0 | Core Gen6; Xeon E3 v5
+  | DNV            | B0       | 06-5f-01/01 | 00000036 | 00000038 | Atom C Series</comment>
+    <requestid>976300</requestid>
+  </revision>
 </revisionlist>
