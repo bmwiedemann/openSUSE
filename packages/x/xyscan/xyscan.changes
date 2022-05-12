@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun May  1 11:38:28 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 4.6.4 (4.64):
+  * xyscan is now build using Qt6.3 which includes the QtPdf module
+    again. This makes loading PDFs faster and easier to maintain.
+  * The xyscan build is now universal supporting Intel and Apple M1
+    architectures.
+  * Fixed issue related to saving data points in a ROOT macro that
+    caused a value of 0 to be saved instead of the correct value.
+  * When loading a second plot in xyscan the data table was not
+    properly reset. This is fixed now.
+  * New is the path measuring tool that allows for the measurement
+    of polylines in maps and technical drawings.
+  * A bug in storing scanned data as ROOT macro when no error bars
+    were present was fixed.
+  * Various bug fixes. 
+- Rebased no-build-date.patch
+- Added allow-qt6-also-on-non-mac.patch (reported upstream by email)
+- Upstream still supports QT5 for (only) Linux, so for Leap we stick
+  with QT5 and for Factory we use QT6 for smooth transition.
+
+-------------------------------------------------------------------
 Fri Sep  4 20:57:08 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.5.0 (4.50):
