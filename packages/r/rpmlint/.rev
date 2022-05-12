@@ -3759,4 +3759,28 @@ oddjob-gpupdate isn't blocked)</comment>
   * Improve executable-stack error.</comment>
     <requestid>972286</requestid>
   </revision>
+  <revision rev="398" vrev="1">
+    <srcmd5>eb1bb3d8fac0c57ccac7d6b7aff6fddb</srcmd5>
+    <version>2.2.0+git20220509.ea27381</version>
+    <time>1652389065</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git20220509.ea27381:
+  * Fix wrong git merge conflict resolution.
+  * ErlangCheck: remove unneeded str() from the test
+
+- Update to version 2.2.0+git20220506.414c402:
+  * Temporarily disable binary-or-shlib-defines-rpath once boo#1199268 gets fixed
+  * dbus-services: update tukitd config hash to latest reviewed version
+
+- Update to version 2.2.0+git20220503.b807a0d:
+  * dbus-services.toml: adjust whitelisting for switcheroo-control (bsc#1199065)
+
+- Update to version 2.2.0+git20220502.c9ee67e:
+  * Resolve $ORIGIN in binary-or-shlib-defines-rpath check.
+  * Remove empty lines after for loops.
+
+- Update to version 2.2.0+git20220425.0078554:
+  * Fix up binary-or-shlib-defines-rpath error</comment>
+    <requestid>975722</requestid>
+  </revision>
 </revisionlist>
