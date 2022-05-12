@@ -1,7 +1,7 @@
 #
 # spec file for package libpng12
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,13 @@
 %define libname libpng%{branch}-0
 
 Name:           libpng12
-Url:            http://www.libpng.org/pub/png/libpng.html
+URL:            http://www.libpng.org/pub/png/libpng.html
 Version:        %{major}.%{minor}.%{micro}
 Release:        0
 Summary:        Library for the Portable Network Graphics Format (PNG)
 License:        Zlib
 Group:          Development/Libraries/C and C++
-Source:         http://downloads.sourceforge.net/project/libpng/%{name}/%{version}/libpng-%{version}.tar.xz
+Source:         https://downloads.sourceforge.net/project/libpng/%{name}/%{version}/libpng-%{version}.tar.xz
 Source2:        baselibs.conf
 Patch0:         libpng-1.2.51-CVE-2013-7353.patch
 Patch1:         libpng-1.2.51-CVE-2013-7354.patch

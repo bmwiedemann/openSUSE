@@ -357,4 +357,12 @@
     due to truncated iTXt or zTXt chunk.</comment>
     <requestid>715992</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>fc10d5858f2fdbe27385353ad56ab1fd</srcmd5>
+    <version>1.2.59</version>
+    <time>1652389165</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>976250</requestid>
+  </revision>
 </revisionlist>
