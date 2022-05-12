@@ -59,6 +59,7 @@ Requires:       %{name}-activities = %{version}
 Requires:       libQt5Multimedia5 >= 5.9.0
 Requires:       libQt5Svg5 >= 5.9.0
 Requires:       libqt5-qtgraphicaleffects >= 5.9.0
+Requires:       libqt5-qtimageformats >= 5.9.0
 Requires:       libqt5-qtquickcontrols >= 5.9.0
 Requires:       qml-box2d
 Recommends:     %{name}-voices = %{version}

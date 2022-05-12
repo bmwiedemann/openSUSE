@@ -209,4 +209,13 @@ Should be build &amp; tested in par with gcompris-qt-voices</comment>
     <comment></comment>
     <requestid>972305</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>1ba8a357f14f5fc3a8750435a090cc9a</srcmd5>
+    <version>2.4</version>
+    <time>1652389248</time>
+    <user>dimstar_suse</user>
+    <comment>Add libqt5-qtimageformats as requirements to be sure to open new webp encoded images 
+</comment>
+    <requestid>976568</requestid>
+  </revision>
 </revisionlist>

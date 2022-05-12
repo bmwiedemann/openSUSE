@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 11 15:21:03 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Add libqt5-qtimageformats as requirements to be sure to open
+  new webp encoded images 
+
+-------------------------------------------------------------------
 Tue Apr 19 12:40:00 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to bugfix release 2.4
