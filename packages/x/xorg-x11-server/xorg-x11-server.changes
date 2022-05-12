@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 10 13:04:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add n_raise_default_clients.patch 
+
+-------------------------------------------------------------------
 Wed Mar 30 12:36:36 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - disable -z now linking for now, as there are some missing symbol

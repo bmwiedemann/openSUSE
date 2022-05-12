@@ -199,6 +199,7 @@ Patch1:         N_default-module-path.diff
 Patch2:         N_zap_warning_xserver.diff
 Patch3:         N_driver-autoconfig.diff
 Patch4:         N_fix_fglrx_screendepth_issue.patch
+Patch5:         n_raise_default_clients.patch
 Patch6:         N_fix-dpi-values.diff
 Patch7:         N_Install-Avoid-failure-on-wrapper-installation.patch
 Patch8:         u_xorg-wrapper-Drop-supplemental-group-IDs.patch
@@ -363,6 +364,7 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch2 -p1
 %patch3 -p0
 %patch4 -p0
+%patch5 -p1
 %patch6 -p0
 %patch7 -p1
 %patch8 -p1
