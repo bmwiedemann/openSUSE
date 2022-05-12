@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-image
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define octpkg  image
 Name:           octave-forge-%{octpkg}
-Version:        2.12.0
+Version:        2.14.0
 Release:        0
 Summary:        Image Processing for Octave
-License:        GPL-3.0-or-later AND BSD-2-Clause AND MIT
+License:        BSD-2-Clause AND GPL-3.0-or-later AND MIT
 Group:          Productivity/Scientific/Math
 URL:            https://octave.sourceforge.io/%{octpkg}/index.html
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
