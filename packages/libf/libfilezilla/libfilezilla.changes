@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 12 10:24:54 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.37.2
+  * New features:
+    - Added a null_logger that doesn't do anything
+  * Bugfixes and minor changes:
+    - MSW: fz::mkdir with restricted permissions now uses
+      inheritable ACLs
+    - MSW: Minor performance improvements reading from fz::process
+      and explicit cancellation of pending I/O when killing child
+      processes.
+
+-------------------------------------------------------------------
 Fri Apr  8 18:36:58 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.37.1
