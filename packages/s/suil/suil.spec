@@ -1,7 +1,7 @@
 #
 # spec file for package suil
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,12 +29,12 @@ If Suil supports a particular toolkit, then all hosts that use Suil will\
 support that toolkit.
 
 Name:           suil
-Version:        0.10.6
+Version:        0.10.10
 Release:        0
 Summary:        Lightweight C library for loading and wrapping LV2 plugin UIs
 License:        ISC
 Group:          Development/Libraries/C and C++
-URL:            https://drobilla.net/software/suil/
+URL:            https://drobilla.net/software/suil.html
 Source:         https://download.drobilla.net/suil-%{version}.tar.bz2
 BuildRequires:  gcc-c++
 BuildRequires:  gtk2-devel
@@ -42,7 +42,8 @@ BuildRequires:  gtk3-devel >= 3.14.0
 BuildRequires:  lv2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.1.0
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5X11Extras)
 
 %description
 %{_description}
@@ -68,7 +69,7 @@ Summary:        Shared object for GTK2 hosts displaying Qt5 LV2 GUIs
 Group:          System/Libraries
 Requires:       gtk2-tools
 Requires:       libsuil-0-0 = %{version}
-Supplements:    packageand(gtk2:lv2)
+Supplements:    (gtk2 and lv2)
 
 %description -n suil-plugin-gtk2-in-qt5
 Module plugin for:
@@ -78,7 +79,7 @@ Module plugin for:
 Summary:        Shared object for Qt5 hosts displaying GTK2 LV2 GUIs
 Group:          System/Libraries
 Requires:       libsuil-0-0 = %{version}
-Supplements:    packageand(libQt5Widgets5:lv2)
+Supplements:    (libQt5Widgets5 and lv2)
 
 %description -n suil-plugin-qt5-in-gtk2
 Module plugin for:
@@ -88,7 +89,7 @@ Module plugin for:
 Summary:        Shared object for Qt5 hosts displaying GTK3 LV2 GUIs
 Group:          System/Libraries
 Requires:       libsuil-0-0 = %{version}
-Supplements:    packageand(libQt5Widgets5:lv2)
+Supplements:    (libQt5Widgets5 and lv2)
 
 %description -n suil-plugin-qt5-in-gtk3
 Module plugin for:
@@ -98,7 +99,7 @@ Module plugin for:
 Summary:        Shared object for X11 LV2 GUIs
 Group:          System/Libraries
 Requires:       libsuil-0-0 = %{version}
-Supplements:    packageand(libX116:lv2)
+Supplements:    (libX116 and lv2)
 
 %description -n suil-plugin-x11
 Module plugin for:
@@ -109,7 +110,7 @@ Summary:        Shared object for GTK2 hosts displaying X11 LV2 GUIs
 Group:          System/Libraries
 Requires:       gtk2-tools
 Requires:       libsuil-0-0 = %{version}
-Supplements:    packageand(gtk2:lv2)
+Supplements:    (gtk2 and lv2)
 Obsoletes:      libsuil-x11-in-gtk2 < %{version}
 Provides:       libsuil-x11-in-gtk2 = %{version}
 
@@ -122,7 +123,7 @@ Summary:        Shared object for GTK3 hosts displaying X11 LV2 GUIs
 Group:          System/Libraries
 Requires:       gtk3-tools
 Requires:       libsuil-0-0 = %{version}
-Supplements:    packageand(gtk3:lv2)
+Supplements:    (gtk3 and lv2)
 
 %description -n suil-plugin-x11-in-gtk3
 Module plugin for:
@@ -132,7 +133,7 @@ Module plugin for:
 Summary:        Shared object for Qt5 hosts displaying X11 LV2 GUIs
 Group:          System/Libraries
 Requires:       libsuil-0-0 = %{version}
-Supplements:    packageand(libQt5Widgets5:lv2)
+Supplements:    (libQt5Widgets5 and lv2)
 
 %description -n suil-plugin-x11-in-qt5
 Module plugin for:
@@ -141,8 +142,8 @@ Module plugin for:
 %prep
 %setup -q
 # run waf with python 3
-find waflib -type f -name *.py -exec sed -i 's|/usr/bin/env python|%{_bindir}/python3|' {} \;
-sed -i 's|/usr/bin/env python|%{_bindir}/python3|' wscript waf waflib/waf
+find waflib -type f -name *.py -exec sed -i 's|/usr/bin/env python$|%{_bindir}/python3|' {} \;
+sed -i 's|/usr/bin/env python$|%{_bindir}/python3|' wscript waf waflib/waf
 
 %build
 ./waf configure --prefix=%{_prefix} --libdir=%{_libdir}

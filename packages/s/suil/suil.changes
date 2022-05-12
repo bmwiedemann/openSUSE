@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May  9 18:37:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.10.10
+  * Clean up minor code issues
+  * Remove the need for a generated configuration header
+- Spec cleanup
+
+-------------------------------------------------------------------
 Sat Aug 15 20:48:23 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.10.6:
