@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-tables2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ Summary:        Table/data-grid framework for Django
 License:        BSD-2-Clause
 URL:            https://github.com/jieter/django-tables2/
 Source:         https://github.com/jieter/django-tables2/archive/v%{version}.tar.gz#/django-tables2-%{version}.tar.gz
+# https://github.com/jieter/django-tables2/issues/843
+Patch0:         python-django-tables2-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -37,7 +39,6 @@ BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module django-filter >= 2.3.0}
 BuildRequires:  %{python_module fudge}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module psycopg2}
 BuildRequires:  %{python_module tablib}
 # /SECTION
@@ -50,6 +51,7 @@ does for HTML forms.
 
 %prep
 %setup -q -n django-tables2-%{version}
+%patch0 -p1
 
 %build
 %python_build

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 12 07:27:41 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+- added patches
+  fix https://github.com/jieter/django-tables2/issues/843
+  + python-django-tables2-no-mock.patch
+
+-------------------------------------------------------------------
 Fri Dec 24 04:34:19 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Prevent building on Leap Python 3.6
