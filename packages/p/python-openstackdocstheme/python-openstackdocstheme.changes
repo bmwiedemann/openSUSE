@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 10 11:28:28 UTC 2022 - cloud-devel@suse.de
+
+- update to version 2.4.0
+  - Fix OpenStack project "Search" pages
+  - Updated Nav Menu
+
+-------------------------------------------------------------------
 Tue Oct 26 22:06:25 UTC 2021 - cloud-devel@suse.de
 
 - removed 0001-sphinx-4.0-Fix-sphinx.ext.extlinks.make_link_role-ca.patch
