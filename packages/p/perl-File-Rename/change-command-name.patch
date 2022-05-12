@@ -3,8 +3,10 @@ Name the command `file-rename` so as not to conflict with the command provided b
 This is not only the upstream's choice of an alternative name, but also makes us compatible with Debian
 (see https://salsa.debian.org/perl-team/modules/packages/rename/-/blob/master/debian/rules )
 
---- a/Build.PL	2021-03-23 00:23:07.000000000 +0100
-+++ b/Build.PL	2022-01-07 12:51:51.209121400 +0100
+diff --git a/Build.PL b/Build.PL
+index 8912e96..7692ec4 100644
+--- a/Build.PL
++++ b/Build.PL
 @@ -1,9 +1,7 @@
  use strict;
  use Module::Build;
@@ -16,10 +18,11 @@ This is not only the upstream's choice of an alternative name, but also makes us
  
  Module::Build -> new (
  	license		=> 'perl',	
-
---- a/t/testlib.pl	2021-08-02 18:14:10.000000000 +0200
-+++ b/t/testlib.pl	2022-01-07 14:20:21.696859600 +0100
-@@ -130,7 +130,7 @@
+diff --git a/t/testlib.pl b/t/testlib.pl
+index 34dcb64..fa5256a 100644
+--- a/t/testlib.pl
++++ b/t/testlib.pl
+@@ -130,7 +130,7 @@ sub is_windows {
  } 
  
  sub script_name {

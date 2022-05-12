@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 10 16:34:50 UTC 2022 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 1.31
+   * No user-visible changes
+- Update change-command-name.patch (upstream files were converted to
+  dos line endings)
+
+-------------------------------------------------------------------
 Tue Jan 11 19:58:53 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 1.30
 
 - Initial packaging of version 1.30 for openSUSE

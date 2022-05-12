@@ -18,7 +18,7 @@
 
 %define cpan_name File-Rename
 Name:           perl-File-Rename
-Version:        1.30
+Version:        1.31
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl extension for renaming multiple files
@@ -30,7 +30,7 @@ Patch0:         change-command-name.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build)
+BuildRequires:  perl(Module::Build) >= 0.400000
 %{perl_requires}
 
 %description
