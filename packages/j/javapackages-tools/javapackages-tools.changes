@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 29 10:21:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patches:
+  * 0001-Let-maven_depmap.py-generate-metadata-with-dependenc.patch
+  * 0002-Do-not-try-to-construct-POM-from-maven-coordinate-st.patch
+  * 0003-Fix-tests-after-the-recent-maven_depmap.py-changes.patch
+    + Let maven_depmap.py generate metadata with dependencies under
+      certain circumstances
+
+-------------------------------------------------------------------
 Thu Dec 30 11:49:00 UTC 2021 - David Anes <david.anes@suse.com>
 
 - Fix typo in suse-use-libdir.patch:

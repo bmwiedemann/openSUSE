@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +45,10 @@ Patch1:         python-optional.patch
 #PATCH-FIX-SUSE: SUSE did not bump epoch of openjdk packages, whereas Fedora did
 #               Avoid generating unresolvable requires
 Patch2:         suse-no-epoch.patch
+#PATCH-FIX-SUSE: Let maven_depmap.py generate metadata with dependencies under certain circumstances
+Patch3:         0001-Let-maven_depmap.py-generate-metadata-with-dependenc.patch
+Patch4:         0002-Do-not-try-to-construct-POM-from-maven-coordinate-st.patch
+Patch5:         0003-Fix-tests-after-the-recent-maven_depmap.py-changes.patch
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  perl
