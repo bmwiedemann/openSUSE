@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-agent
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Patch1:         agent-no-auto-update.patch
 Patch6:         paa_force_py3_sle15.patch
 Patch11:        proper_dhcp_config_set.patch
 Patch12:        sle_hpc-is-sles.patch
+Patch13:        reset-dhcp-deprovision.patch
 BuildRequires:  dos2unix
 
 BuildRequires:  distribution-release
@@ -123,6 +124,7 @@ Unit tests for python-azure-agent.
 %endif
 %patch11
 %patch12 -p1
+%patch13
 
 %build
 %if 0%{?suse_version} && 0%{?suse_version} > 1315
@@ -200,7 +202,7 @@ cp -r tests %{buildroot}/%{python_sitelib}/azurelinuxagent
 %files
 %defattr(0644,root,root,0755)
 %doc Changelog NOTICE README.md
-%license LICENSE.txt 
+%license LICENSE.txt
 %{_sbindir}/rcwaagent
 %attr(0755,root,root) %{_sbindir}/waagent
 %attr(0755,root,root) %{_sbindir}/waagent2.0

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  5 12:13:47 UTC 2022 - Robert Schweikert <rjschwei@suse.com>
+
+- Add reset-dhcp-deprovision.patch (bsc#1198258)
+  + Reset the dhcp config when deprovisioning and instance to ensure
+    instances from aVM image created from that instance send host information
+    to the DHCP server.
+
+-------------------------------------------------------------------
 Sat Jan 30 11:25:56 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
 
 - Add sysvinit-tools as dependency (bsc#1181600, bsc#1181601)
