@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 10 10:24:26 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 1.3
+  * configure: remove old code, make llvm-config lookup more flexible,
+    set to Python3, remove trailing whitespace
+  * switch to https; fallback to curl when wget not available
+  * Correcting use of 'lookForNew'
+  * Add a message when the bitcode compiler is specified via CC
+- add extra-locale-Makefile-don-t-always-require-curl-wget.patch to
+  fix build
+
+-------------------------------------------------------------------
 Tue Oct 19 09:21:11 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - Switch to LLVM 13.
