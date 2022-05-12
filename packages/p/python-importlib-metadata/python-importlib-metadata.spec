@@ -26,7 +26,6 @@
 %endif
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
 Name:           python-importlib-metadata%{psuffix}
 Version:        4.11.3
 Release:        0
@@ -34,10 +33,12 @@ Summary:        Read metadata from Python packages
 License:        Apache-2.0
 URL:            http://importlib-metadata.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/i/importlib_metadata/importlib_metadata-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module tomli}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zipp >= 0.5}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -51,12 +52,10 @@ BuildArch:      noarch
 BuildRequires:  %{python_module importlib_resources >= 1.3 if %python-base < 3.9}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pep517}
-BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyfakefs}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module typing_extensions >= 3.6.4 if %python-base < 3.8}
-BuildRequires:  %{python_module wheel}
 %endif
 %python_subpackages
 
@@ -66,14 +65,13 @@ importlib.metadata including improvements added to subsequent Python versions.
 
 %prep
 %autosetup -p1 -n importlib_metadata-%{version}
-echo "import setuptools; setuptools.setup()" > setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 

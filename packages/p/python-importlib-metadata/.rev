@@ -132,4 +132,12 @@ It does NOT conflict with python38 standard library (see upstream description)</
     requirement is given.</comment>
     <requestid>975783</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>f17b9ea96ee72253d0a65bd7436f8211</srcmd5>
+    <version>4.11.3</version>
+    <time>1652389071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>976127</requestid>
+  </revision>
 </revisionlist>
