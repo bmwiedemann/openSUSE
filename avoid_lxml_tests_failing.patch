@@ -1,0 +1,23 @@
+---
+ tests/base.py              |    1 +
+ tests/test_doc_examples.py |    2 ++
+ 2 files changed, 3 insertions(+)
+
+--- a/tests/base.py
++++ b/tests/base.py
+@@ -99,6 +99,7 @@ class TestMemoryLeaks(unittest.TestCase)
+ 
+     def load_xml(self, name, xpath=None):
+         """returns xml.etree"""
++        etree.set_default_parser(parser=etree.XMLParser())
+         root = etree.parse(self.path(name)).getroot()
+         if xpath is None:
+             return root
+--- a/tests/test_doc_examples.py
++++ b/tests/test_doc_examples.py
+@@ -42,3 +42,5 @@ def test_doc_example(example):
+     """
+     with cd(example.parent):
+         runpy.run_path(str(example))
++    from lxml import etree
++    etree.set_default_parser(parser=etree.XMLParser())
