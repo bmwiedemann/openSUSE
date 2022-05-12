@@ -218,11 +218,13 @@ ant -f build.xml
 cp -a %{_sourcedir}/build-sources.xml .
 
 %build
+%mvn_package : __noinstall
 %{mvn_build} -f -- -Dbuild.java.arch=%{archinstall} -Dproject.build.sourceEncoding=UTF-8
 
 ant -f build-sources.xml
 
 %install
+%mvn_install
 install -d -m 755 %{buildroot}%{openjfxdir}
 mkdir -p %{buildroot}%{openjfxdir}/bin
 mkdir -p %{buildroot}%{openjfxdir}/lib
@@ -252,9 +254,6 @@ install -m 644 modules/fxpackager/src/main/man/man1/* %{buildroot}%{_mandir}/man
 
 install -m 644 javafx-src.zip %{buildroot}%{openjfxdir}/javafx-src.zip
 
-install -d 755 %{buildroot}%{_javadocdir}/%{name}
-cp -a target/site/apidocs/. %{buildroot}%{_javadocdir}/%{name}
-
 mkdir -p %{buildroot}%{_bindir}
 ln -s %{openjfxdir}/bin/javafxpackager %{buildroot}%{_bindir}
 ln -s %{openjfxdir}/bin/javapackager %{buildroot}%{_bindir}
@@ -280,8 +279,7 @@ ln -s %{openjfxdir}/bin/javapackager %{buildroot}%{_bindir}
 %files src
 %{openjfxdir}/javafx-src.zip
 
-%files javadoc
-%{_javadocdir}/%{name}
+%files javadoc -f .mfiles-javadoc
 %license LICENSE
 
 %changelog

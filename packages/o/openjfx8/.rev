@@ -48,4 +48,12 @@
     <comment>Fix build with maven-antrun-plugin 3.x</comment>
     <requestid>963673</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>cc559d379c7c2669737baac1baa73476</srcmd5>
+    <version>8.0.202</version>
+    <time>1652389212</time>
+    <user>dimstar_suse</user>
+    <comment>Let xmvn detect where generate javadoc is</comment>
+    <requestid>976414</requestid>
+  </revision>
 </revisionlist>

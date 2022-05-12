@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 11 13:57:59 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Install the javadoc using %%mvn_install, so that this package
+  works eventually also with XMvn Javadoc Mojo that puts the
+  documentation to different directory then maven-javadoc-plugin's
+  aggregate task
+
+-------------------------------------------------------------------
 Mon Mar 21 12:11:34 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with maven-antrun-plugin 3.x
