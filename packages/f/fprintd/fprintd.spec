@@ -17,7 +17,7 @@
 
 
 Name:           fprintd
-Version:        1.94.1
+Version:        1.94.2
 Release:        0
 Summary:        D-Bus service for Fingerprint reader access
 License:        GPL-2.0-or-later
@@ -25,12 +25,6 @@ Group:          Productivity/Security
 URL:            https://fprint.freedesktop.org/
 Source0:        https://gitlab.freedesktop.org/libfprint/fprintd/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM f4256533d1ffdc203c3f8c6ee42e8dcde470a93f.patch -- Fix build with meson 0.60.x and newer
-Patch0:         https://gitlab.freedesktop.org/libfprint/fprintd/-/commit/f4256533d1ffdc203c3f8c6ee42e8dcde470a93f.patch
-# PATCH-FIX-UPSTREAM 2c34cef5ef2004d8479475db5523c572eb409a6b.patch -- Fix build with meson 0.60.x and newer
-Patch1:         https://gitlab.freedesktop.org/libfprint/fprintd/-/commit/2c34cef5ef2004d8479475db5523c572eb409a6b.patch
-
-BuildRequires:  cmake
 BuildRequires:  gobject-introspection
 BuildRequires:  gtk-doc >= 1.3
 BuildRequires:  intltool
@@ -63,9 +57,9 @@ Summary:        PAM module for fingerprint authentication
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
 Requires:       %{name} = %{version}
-Requires(postun): coreutils
-Requires(postun): pam
-Requires(postun): pam-config
+Requires(postun):coreutils
+Requires(postun):pam
+Requires(postun):pam-config
 # on biarch platforms we need to have it before the call of pam-config
 Supplements:    modalias(usb:v045Ep00BBd*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v045Ep00BCd*dc*dsc*dp*ic*isc*ip*)
