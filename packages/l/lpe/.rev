@@ -37,4 +37,36 @@ editor since it has very quick save/quit and sed/awk/shell interface.</comment>
     <comment>- multiple_definitions.patch: fix build with GCC10</comment>
     <requestid>869469</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>199e7532892733d582a4b4acd7f550b5</srcmd5>
+    <version>1.2.8</version>
+    <time>1652389227</time>
+    <user>dimstar_suse</user>
+    <comment>- multiple_definitions.patch: fix build with GCC10
+- Rework description.
+- Use original tarfiles from github rather than Debian.
+- Change RPM group to Productivity/Editors/Other: put the editor
+  next to all the others (bsc#1086063)
+- New upstream version 1.2.8
+- Drop upstreamed patches:
+  + buffer_overflow.patch
+  + po_makefile.patch
+  + makefile.patch
+  + lpe-1.2.7_install_manpages.patch
+- Drop gettext version requirements
+  + drop_gettext_version.patch
+- Do not use parallel install since we don't install many files
+  anyway
+- Whitespace fixes in .spec file - use tabs only not spaces, per
+  rpmlint
+- Add lpe to Application/Editors group
+- Improve localization in the package by using %find_lang instead of
+  manually handling all languages.
+- po_makefile.patch - allow installations relative to DESTDIR
+- Initial import
+   + buffer_overflow.patch - fix overflow in command line parsing
+   
+</comment>
+    <requestid>976468</requestid>
+  </revision>
 </revisionlist>
