@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri May  6 03:06:18 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.28
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  4.28 2022-05-05 (rurban)
+          - Validate the JSON struct which might get corrupted by wrong FREEZE/THAW
+            methods, or other serializers, or corrupting our magic object. (GH #192)
+          - Improve our DESTROY and END methods to avoid NULL dereferences.
+            Fixes perl-compiler/#438
+          - Fix 3 tests in t/20_unknown.t with the latest 5.35.10 bool enhancements
+            and JSON::PP (GH #194)
+          - Fix t/118_type.t with Windows ivtype long long. (GH #178)
+          - Added github actions
+
+-------------------------------------------------------------------
 Fri Oct 15 03:06:08 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.27
