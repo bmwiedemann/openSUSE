@@ -109,4 +109,16 @@
     <comment></comment>
     <requestid>960818</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fa69a90bbe7420e72deb2e23a35afe4f</srcmd5>
+    <version>12.7.0</version>
+    <time>1652389191</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.7.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 976239 from glaubitz)</comment>
+    <requestid>976373</requestid>
+  </revision>
 </revisionlist>
