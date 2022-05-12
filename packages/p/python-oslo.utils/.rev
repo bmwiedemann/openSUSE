@@ -469,4 +469,25 @@
   - strutils: Stop masking encryption_key_id</comment>
     <requestid>939542</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e04afa7c6af4e828e6e54dc81d0ef156</srcmd5>
+    <version>4.13.0</version>
+    <time>1652389179</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.13.0
+  - Add backing file format to the output
+  - Fix formatting of release list
+  - Update master for stable/yoga
+  - Update python testing classifier
+  - Update master for stable/xena
+  - Fix regex used to mask password
+  - QemuImgInfo: Fix inconsistent value format of encrypted
+  - Add Python3 zed unit tests
+  - Add Python3 yoga unit tests
+  - setup.cfg: Replace dashes with underscores
+  - fix strutils password regex
+  - Use LOG.warning instead of deprecated LOG.warn
+  - Changed minversion in tox to 3.18.0</comment>
+    <requestid>976290</requestid>
+  </revision>
 </revisionlist>
