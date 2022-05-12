@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu May 05 01:57:15 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.031:
+  * Do not search mirrors for small files with local root (#271)
+  * Improve detection of https behind proxy (#271)
+
+-------------------------------------------------------------------
+Thu Apr 28 04:52:32 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.030:
+  * Local publisher origin in metalink (#267)
+  * Ignore work requested by rclone (#268)
+  * Use random mirror for unknown countries (#269)
+  * Collect statistics for bot activity (#270)
+
+-------------------------------------------------------------------
+Thu Apr 21 01:42:59 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.029:
+  * Add support for MariaDB (#265)
+  * Fix occasional SQL error when mirrorlist for unknown country (#264)
+  * Fix scheduling folder scan if were not accessed for more than month (#263)
+
+-------------------------------------------------------------------
 Wed Mar 30 15:00:05 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.028:
