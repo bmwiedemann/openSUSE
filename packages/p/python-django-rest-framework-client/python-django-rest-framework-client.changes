@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 12 08:20:41 UTC 2022 - pgajdos@suse.com
+
+- to not require python-mock for build
+- added patches
+  fix https://github.com/dkarchmer/django-rest-framework-client/issues/7
+  + python-django-rest-framework-client-no-mock.patch
+
+-------------------------------------------------------------------
 Fri Jan  7 03:47:57 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Skip Tumbleweed Python 3.6 incompatible with Django 4

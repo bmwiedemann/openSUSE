@@ -26,14 +26,17 @@ Summary:        Python client for a Django REST Framework based web site
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/dkarchmer/django-rest-framework-client
+# newer versions exist on pypi, but without test packaged, see
+# https://github.com/dkarchmer/django-rest-framework-client/issues/7
 Source:         https://github.com/dkarchmer/django-rest-framework-client/archive/v%{version}.tar.gz#/django-rest-framework-client-%{version}.tar.gz
 # fake dependency, https://github.com/dkarchmer/django-rest-framework-client/pull/2
 Patch0:         python-django-rest-framework-client-no-unittest2.patch
+# https://github.com/dkarchmer/django-rest-framework-client/issues/7
+Patch1:         python-django-rest-framework-client-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module Django}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module requests}
@@ -54,6 +57,7 @@ Python client for a Django REST Framework based web site.
 %prep
 %setup -q -n django-rest-framework-client-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %python_build
