@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May 10 16:41:54 UTC 2022 - Jean Delvare <jdelvare@suse.de>
+
+- fix-swapping-fake-lines-in-pch_swap.patch: Fix swapping fake
+  lines in pch_swap. This bug was causing a double free leading to
+  a crash (boo#1080985 CVE-2018-6952).
+- abort-when-cleaning-up-fails.patch: Abort when cleaning up fails.
+  This bug could cause an infinite loop when a patch wouldn't
+  apply, leading to a segmentation fault (boo#1111572).
+- dont-follow-symlinks-unless-asked.patch: Don't follow symlinks
+  unless --follow-symlinks is given. This increases the security
+  against malicious patches (boo#1142041 CVE-2019-13636).
+- pass-the-correct-stat-to-backup-files.patch: Pass the correct
+  stat to backup files. This bug would occasionally cause backup
+  files to be missing when all hunks failed to apply (boo#1198106).
+
+-------------------------------------------------------------------
 Wed Sep 29 10:33:36 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not query %{verbose} to add V=1 or not: verbose changed

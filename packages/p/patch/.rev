@@ -339,4 +339,23 @@
     <comment></comment>
     <requestid>922373</requestid>
   </revision>
+  <revision rev="45" vrev="5">
+    <srcmd5>88c1ebfcd51007b2bc085ba1a2a9bcdd</srcmd5>
+    <version>2.7.6</version>
+    <time>1652389043</time>
+    <user>dimstar_suse</user>
+    <comment>- fix-swapping-fake-lines-in-pch_swap.patch: Fix swapping fake
+  lines in pch_swap. This bug was causing a double free leading to
+  a crash (boo#1080985 CVE-2018-6952).
+- abort-when-cleaning-up-fails.patch: Abort when cleaning up fails.
+  This bug could cause an infinite loop when a patch wouldn't
+  apply, leading to a segmentation fault (boo#1111572).
+- dont-follow-symlinks-unless-asked.patch: Don't follow symlinks
+  unless --follow-symlinks is given. This increases the security
+  against malicious patches (boo#1142041 CVE-2019-13636).
+- pass-the-correct-stat-to-backup-files.patch: Pass the correct
+  stat to backup files. This bug would occasionally cause backup
+  files to be missing when all hunks failed to apply (boo#1198106).</comment>
+    <requestid>976181</requestid>
+  </revision>
 </revisionlist>
