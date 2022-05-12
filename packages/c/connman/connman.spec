@@ -95,6 +95,7 @@ Provides HH2Serial GPS device support for Connman (Connection Manager).
 %package plugin-openconnect
 Summary:        OpenConnect plugin for connman
 Group:          System/Daemons
+BuildRequires:  openconnect
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(openconnect)
 Requires:       %{name} >= %{version}

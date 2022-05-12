@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 12 08:28:34 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Explicitly BuildRequire openconnect: configure is looking for the
+  binaries, not only the devel parts. The devel package though does
+  not pull in the daemon (which is not used in most cases to
+  develop).
+
+-------------------------------------------------------------------
 Tue Feb 01 12:57:25 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to 1.41: (bsc#1194177, bsc#1194176, bsc#1194175)
