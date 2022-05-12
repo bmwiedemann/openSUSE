@@ -1388,4 +1388,11 @@ is not needed.
     <user>dimstar_suse</user>
     <comment>shrink dvd</comment>
   </revision>
+  <revision rev="194" vrev="192">
+    <srcmd5>b5bf5f7bfe453a9185e85fe61704981b</srcmd5>
+    <version>unknown</version>
+    <time>1652355655</time>
+    <user>dimstar_suse</user>
+    <comment>Drop gcc11 from the DVD - we have gcc12 now</comment>
+  </revision>
 </revisionlist>
