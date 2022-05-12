@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 11 21:05:41 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 17.4.4:
+  * Fixed an OSR crash happening when input select items were rendered.
+  * Backported security fixes: CVE-2022-1477, CVE-2022-1497
+
+-------------------------------------------------------------------
 Sun May  8 18:58:12 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - Update to 17.4.3:
   * Fixed child_process.spawn ENOENT error with cwd option.
