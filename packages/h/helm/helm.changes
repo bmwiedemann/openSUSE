@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon May 09 11:20:29 UTC 2022 - dmueller@suse.com
+
+- Update to version 3.8.2:
+  * Bump oras.land/oras-go from 1.1.0 to 1.1.1
+  * Fixing downloader plugin error handling
+  * Simplify testdata charts
+  * Simplify testdata charts
+  * Add tests for multi-level dependencies.
+  * Fix value precedence
+  * Bumping Kubernetes package versions
+  * Updating vcs to latest version
+  * Dont modify provided transport
+  * Pass http getter as pointer in tests
+  * Add docs block
+  * Add transport option and tests
+  * Reuse http transport
+  * Updating Kubernetes libs to 0.23.4 (latest)
+  * fix: remove deadcode
+  * fix: helm package tests
+  * fix: helm package with dependency update for charts with OCI dependencies
+  * Fix typo Unset the env var before func return in Unit Test
+  * add legal name check
+  * maint: fix syntax error in deploy.sh
+  * linting issue fixed
+  * only apply overwrite if version is canary
+  * overwrite flag added to az storage blob upload-batch
+  * Avoid querying for OCI tags can explicit version provided in chart dependencies
+  * Management of bearer tokens for tag listing
+  * Updating Kubernetes packages to 1.23.3
+  * refactor: use `os.ReadDir` for lightweight directory reading
+  * Add IngressClass to manifests to be (un)installed
+  * feat(comp): Shell completion for OCI
+  * Fix install memory/goroutine leak
+
+-------------------------------------------------------------------
 Wed Mar  9 16:06:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - avoid CGO to workaround missing gold dependency (bsc#1183043) 
