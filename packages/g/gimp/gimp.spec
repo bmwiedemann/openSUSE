@@ -36,8 +36,8 @@ Release:        0
 Summary:        The GNU Image Manipulation Program
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Bitmap Editors
-URL:            http://www.gimp.org/
-Source:         http://download.gimp.org/pub/gimp/v2.10/%{name}-%{version}.tar.bz2
+URL:            https://www.gimp.org/
+Source:         https://download.gimp.org/pub/gimp/v2.10/%{name}-%{version}.tar.bz2
 Source1:        macros.gimp
 # openSUSE palette file
 Source2:        openSUSE.gpl
