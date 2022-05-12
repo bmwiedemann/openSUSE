@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 11 08:19:59 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.1.0
+  * Switch to prebuilt (federated) extension model
+  * Fix bug with icons visibility in the dark theme
+- Release 3.0.0
+  * Update to JupyterLab 3.0
+  * Add LaTeX file menu
+  * Add download PDF button
+- Release 2.0.0
+  * Update to JupyterLab 2.0
+
+-------------------------------------------------------------------
 Sun Jan 12 19:09:03 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use pyproject_install macro (boo#1094323)

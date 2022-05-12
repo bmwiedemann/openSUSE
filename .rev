@@ -35,4 +35,20 @@
     <comment></comment>
     <requestid>764697</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>33953d59abed8f4cc20682851ff1f768</srcmd5>
+    <version>3.1.0</version>
+    <time>1652389160</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.0
+  * Switch to prebuilt (federated) extension model
+  * Fix bug with icons visibility in the dark theme
+- Release 3.0.0
+  * Update to JupyterLab 3.0
+  * Add LaTeX file menu
+  * Add download PDF button
+- Release 2.0.0
+  * Update to JupyterLab 2.0</comment>
+    <requestid>976236</requestid>
+  </revision>
 </revisionlist>
