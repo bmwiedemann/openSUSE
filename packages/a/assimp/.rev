@@ -133,4 +133,12 @@
     <comment>Update to 5.2.3 (forwarded request 963186 from cgiboudeaux)</comment>
     <requestid>963187</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>4cd2d8b65ecf30af89f4936fa5608182</srcmd5>
+    <version>5.2.3</version>
+    <time>1652389218</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use -Werror to prevent build issues with GCC 12</comment>
+    <requestid>976440</requestid>
+  </revision>
 </revisionlist>

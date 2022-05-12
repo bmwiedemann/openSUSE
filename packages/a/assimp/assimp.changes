@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 11 15:37:28 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Don't use -Werror to prevent build issues with GCC 12
+
+-------------------------------------------------------------------
 Sun Mar 20 07:34:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.2.3:

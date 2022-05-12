@@ -71,6 +71,9 @@ engine-specific format for easy and fast every-day-loading.
 %prep
 %autosetup -p1
 
+# Breaks the build with gcc12 (gh#assimp/assimp#4433)
+sed -i '/Werror/d' code/CMakeLists.txt
+
 %build
 %cmake
 
