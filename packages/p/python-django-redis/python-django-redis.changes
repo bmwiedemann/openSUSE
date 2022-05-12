@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 11 11:04:57 UTC 2022 - pgajdos@suse.com
+
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Fri Mar 12 12:00:39 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Fix recent build failure with clean-cache.patch

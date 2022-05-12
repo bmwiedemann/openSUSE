@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-redis
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,6 @@ Source:         https://files.pythonhosted.org/packages/source/d/django-redis/dj
 Patch0:         clean-cache.patch
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module lz4 >= 0.15}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module msgpack >= 0.4.6}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module redis >= 2.10.0}
