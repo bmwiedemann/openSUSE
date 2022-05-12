@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May  7 23:07:31 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fix fdupes and distconfig errors
+
+-------------------------------------------------------------------
 Wed Apr  8 02:27:24 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Don't use post and preun scriptlets to avoid dependency issues.

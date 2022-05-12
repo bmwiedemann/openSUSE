@@ -58,4 +58,13 @@
     <comment></comment>
     <requestid>792290</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>c4af94f33e43e026718770599c41830e</srcmd5>
+    <version>0.2.0</version>
+    <time>1652389157</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes and distconfig errors
+</comment>
+    <requestid>976216</requestid>
+  </revision>
 </revisionlist>

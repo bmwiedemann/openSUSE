@@ -77,7 +77,7 @@ for f in ~/.jupyter/nbconfig/*.json ; do
     install -Dm 644 ${f} %{buildroot}%{_jupyter_nb_confdir}/${tdir}.d/highlight_selected_word.json
 done
 
-%{fdupes %{buildroot}%{_jupyter_prefix} %{buildroot}%{_jupyter_confdir}}
+%fdupes %{buildroot}%{_jupyter_prefix}
 
 %files %{python_files}
 %doc README.md
@@ -88,6 +88,6 @@ done
 %files -n jupyter-jupyter_highlight_selected_word
 %license LICENSE.txt
 %{_jupyter_nbextension_dir}/highlight_selected_word/
-%config %{_jupyter_nb_notebook_confdir}/highlight_selected_word.json
+%_jupyter_config %{_jupyter_nb_notebook_confdir}/highlight_selected_word.json
 
 %changelog
