@@ -1,7 +1,7 @@
 #
 # spec file for package exempi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,21 @@
 
 %define sonum 8
 Name:           exempi
-Version:        2.5.2
+Version:        2.6.1
 Release:        0
 Summary:        XMP support library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-URL:            https://libopenraw.freedesktop.org/wiki/Exempi
-Source0:        http://libopenraw.freedesktop.org/download/%{name}-%{version}.tar.bz2
-Source1:        http://libopenraw.freedesktop.org/download/%{name}-%{version}.tar.bz2.asc
+URL:            https://libopenraw.freedesktop.org/exempi/
+Source0:        https://libopenraw.freedesktop.org/download/%{name}-%{version}.tar.bz2
+Source1:        https://libopenraw.freedesktop.org/download/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 BuildRequires:  gcc-c++
 BuildRequires:  libexpat-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
-%if 0%{?suse_version} > 1325
 BuildRequires:  libboost_test-devel
-%else
-BuildRequires:  boost-devel >= 1.33.0
-%endif
 
 %description
 Exempi is a library for XMP parsing and I/O. XMP is a kind of
@@ -97,18 +93,16 @@ find %{buildroot} -type f -name "*.a" -delete -print
 
 %files -n libexempi%{sonum}
 %license COPYING
-%doc README ChangeLog
+%doc README.md NEWS
 %{_libdir}/lib*.so.*
 
 %files tools
 %license COPYING
-%doc README ChangeLog
 %{_bindir}/exempi
 %{_mandir}/man1/exempi.1%{?ext_man}
 
 %files -n libexempi-devel
 %license COPYING
-%doc README ChangeLog
 %{_libdir}/lib*.so
 %{_includedir}/exempi-2.0
 %{_libdir}/pkgconfig/*.pc

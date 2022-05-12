@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May  9 15:29:18 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.6.1:
+  * Update XMPCore to Adobe XMP SDK v2021.10
+  * Some fixes previously done in Exempi are now upstream
+- Install the NEWS file instead of the obsolete ChangeLog one
+
+-------------------------------------------------------------------
 Fri Mar 19 15:29:58 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Update baselibs.conf to reflect new sonum.
