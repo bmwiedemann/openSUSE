@@ -3336,4 +3336,17 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
 - drop ImageMagick-s390-disable-tests.patch - the tests no longer fail</comment>
     <requestid>970975</requestid>
   </revision>
+  <revision rev="250" vrev="1">
+    <srcmd5>38916ca4468ed2d3d72a8f0dceee0027</srcmd5>
+    <version>7.1.0.33</version>
+    <time>1652389067</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.1.0.33
+  see the upstream changelog:
+  * https://github.com/ImageMagick/Website/blob/main/ChangeLog.md
+- modified patches
+  % ImageMagick-configuration-SUSE.patch (refreshed)
+  % ImageMagick-library-installable-in-parallel.patch (refreshed)</comment>
+    <requestid>976084</requestid>
+  </revision>
 </revisionlist>

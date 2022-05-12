@@ -20,7 +20,7 @@
 %define asan_build     0
 %define maj            7
 %define mfr_version    %{maj}.1.0
-%define mfr_revision   30
+%define mfr_revision   33
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        10
@@ -513,7 +513,7 @@ fi
 
 %files
 %license LICENSE
-%doc ChangeLog.md NEWS.txt
+%doc NEWS.txt
 %{_bindir}/[^MW]*
 %{_mandir}/man1/*
 %exclude %{_mandir}/man1/*-config.1%{ext_man}

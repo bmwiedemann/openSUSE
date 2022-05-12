@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 10 14:08:48 UTC 2022 - pgajdos@suse.com
+
+- version update to 7.1.0.33
+  see the upstream changelog:
+  * https://github.com/ImageMagick/Website/blob/main/ChangeLog.md
+- modified patches
+  % ImageMagick-configuration-SUSE.patch (refreshed)
+  % ImageMagick-library-installable-in-parallel.patch (refreshed)
+
+-------------------------------------------------------------------
 Tue Apr 19 13:37:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - version update to 7.1.0.30:

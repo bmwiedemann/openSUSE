@@ -1,8 +1,8 @@
-Index: ImageMagick-7.0.11-5/configure
+Index: ImageMagick-7.1.0-33/configure
 ===================================================================
---- ImageMagick-7.0.11-5.orig/configure	2021-03-28 17:25:01.000000000 +0200
-+++ ImageMagick-7.0.11-5/configure	2021-03-31 10:43:15.013707778 +0200
-@@ -33198,7 +33198,9 @@ fi
+--- ImageMagick-7.1.0-33.orig/configure
++++ ImageMagick-7.1.0-33/configure
+@@ -33042,7 +33042,9 @@ fi
  
  
  # Subdirectory to place architecture-dependent configuration files
