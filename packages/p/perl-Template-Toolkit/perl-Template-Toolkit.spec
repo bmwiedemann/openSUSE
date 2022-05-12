@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Template-Toolkit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,22 @@
 
 %define cpan_name Template-Toolkit
 Name:           perl-Template-Toolkit
-Version:        3.010
+Version:        3.100
 Release:        0
-Summary:        Template Processing System
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Comprehensive template processing system
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/T/TO/TODDR/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(AppConfig) >= 1.56
-BuildRequires:  perl(CGI) >= 4.11
 BuildRequires:  perl(Test::LeakTrace)
 Requires:       perl(AppConfig) >= 1.56
 %{perl_requires}
 
 %description
-Template Processing System
+comprehensive template processing system
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}

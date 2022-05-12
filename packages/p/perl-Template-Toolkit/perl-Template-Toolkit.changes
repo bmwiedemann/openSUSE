@@ -1,11 +1,20 @@
 -------------------------------------------------------------------
-Tue Dec 14 03:06:38 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+Wed May 11 16:32:06 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
 
-- updated to 3.010
+- updated to 3.100
    see /usr/share/doc/packages/perl-Template-Toolkit/Changes
 
-  # Version 3.010 - 13th December 2021
-  #------------------------------------------------------------------------
+  Improvements:
+  * Template::Plugin::CGI removed to be used as a separate distro. (Sawyer X)
+
+- trim package changelog
+
+-------------------------------------------------------------------
+Tue Dec 14 03:06:38 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.010 - 13th December 2021
+   see /usr/share/doc/packages/perl-Template-Toolkit/Changes
+
   Bug Fixes:
   * Fix breakage when VMethods is loaded before Stash. (Felipe Gasper)
   * Fix unicode issues in Plugin::Date (Nicolas R)
@@ -25,20 +34,14 @@ Tue Dec 14 03:06:38 UTC 2021 - Tina Müller <timueller+perl@suse.de>
   * Update README.md (philip r brenan)
   * Add support group to README and Template.pm. (Johan Vromans)
   * Make the process() documentation clearer. (Dave Cross)
-  #-----------------------------------------------------------------------
 
 -------------------------------------------------------------------
 Tue Jul 14 03:18:10 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
-- updated to 3.009
+- updated to 3.009 - 13th July 2020
    see /usr/share/doc/packages/perl-Template-Toolkit/Changes
 
-  # Version 3.009 - 13th July 2020
-  #------------------------------------------------------------------------
-
   * Revert "Allow SET to have FILTER used in it"
-
-  #-----------------------------------------------------------------------
 
 -------------------------------------------------------------------
 Tue Mar 31 03:09:55 UTC 2020 -  <timueller+perl@suse.de>
@@ -51,36 +54,24 @@ Tue Jan 28 03:11:44 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 3.007
    see /usr/share/doc/packages/perl-Template-Toolkit/Changes
-
-  # Version 3.007 - TBA 
-  #------------------------------------------------------------------------
   
   * Fixes cpanm by adding VERSION to Template/Toolkit.pm
-  
-  #-----------------------------------------------------------------------
 
 -------------------------------------------------------------------
 Fri Jan 17 03:10:19 UTC 2020 -  <timueller+perl@suse.de>
 
-- updated to 3.006
+- updated to 3.006 - 16th January 2020
    see /usr/share/doc/packages/perl-Template-Toolkit/Changes
 
-  # Version 3.006 - 16th January 2020
-  #------------------------------------------------------------------------
-  
   * Fix t/date.t timezone issue introduced when adding '%z' support
   
-  #-----------------------------------------------------------------------
   # Version 3.005 - 15th January 2020
-  #------------------------------------------------------------------------
   
   * Add encoding option to Datafile plugin
   * Add support for '%z' in Date plugin.
   * Fix for WHILE_MAX which was stopping one iteration earlier.
   * Refresh contributor list
   * Update Copyrights for year 2020
-  
-  #-----------------------------------------------------------------------
 
 -------------------------------------------------------------------
 Tue Jan 14 03:12:38 UTC 2020 -  <timueller+perl@suse.de>
@@ -97,168 +88,107 @@ Sat Dec 28 03:12:26 UTC 2019 -  <timueller+perl@suse.de>
 -------------------------------------------------------------------
 Tue Apr 30 05:34:12 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
-- updated to 2.29
+- updated to 2.29 - 29th April 2019
    see /usr/share/doc/packages/perl-Template-Toolkit/Changes
 
-  # Version 2.29 - 29th April 2019
-  #------------------------------------------------------------------------
-  
   * G. Flohr fixed multiple weaken cyclic reference
-  
-  #-----------------------------------------------------------------------
 
 -------------------------------------------------------------------
 Thu Nov  8 06:58:36 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
-- updated to 2.28
+- updated to 2.28 - 11th October 2018
    see /usr/share/doc/packages/perl-Template-Toolkit/Changes
 
   * Matthew Somerville stopped a list import from printing an ARRAY(...) string.
     https://github.com/abw/Template2/issues/33
-  
-  
-  #-----------------------------------------------------------------------
-  # Unreleased
-  #------------------------------------------------------------------------
-  
-  #-----------------------------------------------------------------------
-  # Version 2.28 - 11th October 2018
-  #------------------------------------------------------------------------
-  
   * Add and enable Travis CI to track GitHub Pull Requests
-  
   * Template is now using GitHub as the official Bug Tracker
-  
   * Nicolas R. fixed a circular reference in Template::Plugin::Filter
     https://github.com/abw/Template2/issues/152
-  
   * Nicolas R. adjusted group regexes to not be greedy
     https://github.com/abw/Template2/issues/94
-  
   * Nicolas R. added unit tests to cover regression from RT 91172
     https://github.com/abw/Template2/issues/122
-  
   * Nicolas R. added support for template files having mtime=0
     https://github.com/abw/Template2/issues/102
-  
   * Todd Rinaldo fixed rand calls with no args in Math plugin
     https://github.com/abw/Template2/issues/155
-  
   * Todd Rinaldo corrected ttree 2.22 logic change
     https://github.com/abw/Template2/issues/148
-  
   * Todd Rinaldo turned off automated testing for tests using optional modules
     https://github.com/abw/Template2/issues/156
-  
   * Nicolas R. adjusted unit tests to not force Stash::XS
-  
   * Nicolas R. added a pre allocated buffer in Stash.xs to avoid malloc/free
     https://github.com/abw/Template2/issues/82
-  
   * Nicolas R. optmized Template::Parser by avoiding a dummy sub
     https://github.com/abw/Template2/issues/83
-  
   * Nicolas R. optimized Template:Directive by using index
     https://github.com/abw/Template2/issues/84
-  
   * Nicolas R. adjust _dotop logic in Stash for perl 5.28 and earlier
     https://github.com/abw/Template2/issues/81
-  
   * Todd Rinaldo documented VMethod method called 'item'
     https://github.com/abw/Template2/issues/90
-  
   * Nicolas R. adjusted t/filter.t after recent switch to RFC3986
     https://github.com/abw/Template2/issues/179
-  
   * Nicolas R. fixed warnings from t/cgi.t
     https://github.com/abw/Template2/issues/178
-  
   * Ivan Krylov added STRICT option to ttree
     https://github.com/abw/Template2/issues/81
-  
   * Kent Fredric fixed relative path handling in templates on Perl 5.26+
     https://github.com/abw/Template2/issues/80
-  
   * Tom Delmas fixed some typo from documentation
     https://github.com/abw/Template2/issues/76
-  
   * Matthew Somerville switched uri/url to use RFC3986
     updated the documentation to match the history.
     https://github.com/abw/Template2/issues/35
-  
   * Sebastien Deseille used remove_tree helper to remove directories
     https://github.com/abw/Template2/issues/67
-  
   * Nick Hibma - Add Sortkeys to DUMPER_ARGS
     https://github.com/abw/Template2/issues/64
-  
   * E. Choroba added a warn on duplicate block name
     https://github.com/abw/Template2/issues/61
-  
   * Jason Lewis fixed some typo in ttree.pod
     https://github.com/abw/Template2/issues/58
 
 -------------------------------------------------------------------
 Sun Apr 16 06:37:14 UTC 2017 - coolo@suse.com
 
-- updated to 2.27
+- updated to 2.27 - 13th December 2016
    see /usr/share/doc/packages/perl-Template-Toolkit/Changes
-
-  # Version 2.27 - 13th December 2016
-  #------------------------------------------------------------------------
   
   * Ghost fixed the regex in the uri/url filters, removing double quotes
     to make it RFC3986 compliant.
     https://github.com/abw/Template2/issues/35
-  
   * Sean Zellmer added testrules.yml to always run compile*.t sequentially
     https://github.com/abw/Template2/pull/45
-  
   * Simon Dawson added 'empty' vmethods for scalar, list and hash
     https://github.com/abw/Template2/pull/46
-  
   * Dennis Clark added --envvars option to tpage
     https://github.com/abw/Template2/pull/49
-  
   * Yanick Champoux made Template::Toolkit a module
     https://github.com/abw/Template2/pull/51
-  
   * Various warnings silenced and typos fixed.
-  
-  
-  #-----------------------------------------------------------------------
 
 -------------------------------------------------------------------
 Sun May 10 08:25:32 UTC 2015 - coolo@suse.com
 
-- updated to 2.26
+- updated to 2.26 - 17th September 2014
    see /usr/share/doc/packages/perl-Template-Toolkit/Changes
-
-  # Version 2.26 - 17th September 2014
-  #------------------------------------------------------------------------
   
   * Andy Wardley added outline directives. See Template::Manual::Syntax and
     Template::Manual::Config for details of the OUTLINE_TAG option and new
     'outline' TAG_STYLE.  See t/outline.t for examples.
-  
   * Andy Wardley improved the handling of keywords when the ANYCASE option
     is in use.  See t/anycase.t for examples.
-  
   * Chromatic fixed UTF-8 encoding in URLs in URL plugin.
     https://github.com/abw/Template2/pull/31
-  
   * Brian Fraser added support for platforms without LC_ALL/setlocale.
     https://github.com/abw/Template2/pull/34
-  
   * Amiri Barksdale fixed RT46691 to plug filter memory leaks
     https://github.com/abw/Template2/pull/36
-  
   * John Lightsey fixed RT59208 to improve SET
     https://github.com/abw/Template2/pull/38
     UPDATE: This had to be reverted as it cause a subtle breakage elsewhere
-  
-  
-  #-----------------------------------------------------------------------
 
 -------------------------------------------------------------------
 Tue Jul 30 05:06:51 UTC 2013 - coolo@suse.com
@@ -552,4 +482,3 @@ Fri Nov 29 15:41:31 CET 2002 - freitag@suse.de
 Fri Nov 29 09:59:10 CET 2002 - freitag@suse.de
 
 - initial version 2.08, needed by bugzilla and very powerfull. 
-
