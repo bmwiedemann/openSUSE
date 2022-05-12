@@ -18,16 +18,17 @@
 
 %bcond_with tests
 Name:           maven-artifact-transfer
-Version:        0.11.0
+Version:        0.13.1
 Release:        0
 Summary:        Apache Maven Artifact Transfer
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://maven.apache.org/shared/maven-artifact-transfer
-Source0:        http://repo1.maven.org/maven2/org/apache/maven/shared/%{name}/%{version}/%{name}-%{version}-source-release.zip
+URL:            https://maven.apache.org/shared/maven-artifact-transfer
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/shared/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.xml
 Patch0:         0001-Compatibility-with-Maven-3.0.3-and-later.patch
-Patch1:         %{name}-blocked.patch
+Patch1:         0002-Remove-support-for-maven-3.0.X.patch
+Patch2:         0003-Port-to-maven-3.8.1.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-cli
 BuildRequires:  apache-commons-codec
@@ -60,6 +61,9 @@ BuildRequires:  mvn(org.apache.maven.shared:maven-shared-components:pom:)
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
+BuildRequires:  cglib
+BuildRequires:  mockito
+BuildRequires:  objenesis
 %endif
 
 %description
@@ -77,10 +81,10 @@ This package provides %{summary}.
 cp %{SOURCE1} build.xml
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %pom_remove_plugin :maven-shade-plugin
 %pom_remove_plugin :apache-rat-plugin
-%pom_remove_plugin :maven-enforcer-plugin
 %pom_remove_plugin :animal-sniffer-maven-plugin
 
 # We don't want to support legacy Maven versions (older than 3.1)
@@ -90,6 +94,11 @@ find -name Maven30\*.java -delete
 %build
 mkdir -p lib
 build-jar-repository -s lib \
+%if %{with tests}
+    cglib/cglib \
+    mockito/mockito-core \
+    objenesis/objenesis \
+%endif
 	atinject \
 	commons-cli \
 	commons-codec \

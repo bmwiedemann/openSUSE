@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 11 13:25:18 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 0.13.1
+- Modified patches:
+  * 0001-Compatibility-with-Maven-3.0.3-and-later.patch
+    + rebase to the new context
+  * maven-artifact-transfer-blocked.patch ->
+    0003-Port-to-maven-3.8.1.patch
+    + rebase for consistency
+- Removed patch:
+  * 0002-Remove-support-for-maven-3.0.X.patch
+    + remove the old org.sonatype.aether dependencies, since
+      we don't need maven 3.0.x
+
+-------------------------------------------------------------------
 Sun Mar 20 20:07:20 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source and target levels 8
