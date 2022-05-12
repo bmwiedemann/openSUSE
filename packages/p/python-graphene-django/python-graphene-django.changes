@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 12 10:10:00 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+- added patches
+  fix https://github.com/graphql-python/graphene-django/issues/1321
+  + python-graphene-django-no-mock.patch
+
+-------------------------------------------------------------------
 Tue Jan 11 10:45:59 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Loosen depencencies to allow graphene v3.0.0

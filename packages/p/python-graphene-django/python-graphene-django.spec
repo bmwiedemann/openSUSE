@@ -26,6 +26,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/graphql-python/graphene-django
 Source:         https://github.com/graphql-python/graphene-django/archive/v%{version}.tar.gz#/graphene-django-%{version}.tar.gz
+# https://github.com/graphql-python/graphene-django/issues/1321
+Patch0:         python-graphene-django-no-mock.patch
 BuildRequires:  %{python_module django-codemod}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -48,7 +50,6 @@ BuildRequires:  %{python_module djangorestframework >= 3.6.3}
 BuildRequires:  %{python_module graphene >= 2.9.9}
 BuildRequires:  %{python_module graphql-core >= 3.1.0}
 BuildRequires:  %{python_module graphql-relay}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module promise >= 2.1}
 BuildRequires:  %{python_module psycopg2}
 BuildRequires:  %{python_module pytest-django >= 3.3.2}
@@ -62,6 +63,7 @@ Graphene Django integration.
 
 %prep
 %setup -q -n graphene-django-%{version}
+%patch0 -p1
 rm setup.cfg
 sed -i '/pytest-runner/d' setup.py
 
