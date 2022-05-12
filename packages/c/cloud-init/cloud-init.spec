@@ -53,7 +53,6 @@ BuildRequires:  python3-PyYAML
 BuildRequires:  python3-configobj >= 5.0.2
 BuildRequires:  python3-httpretty
 BuildRequires:  python3-jsonpatch
-BuildRequires:  python3-mock
 BuildRequires:  python3-netifaces
 BuildRequires:  python3-oauthlib
 BuildRequires:  python3-pytest

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 26 09:44:55 UTC 2022 - pgajdos@suse.com
+
+- python-mock is not required for build
+  https://trello.com/c/S6eADbii/64-remove-python-mock
+
+-------------------------------------------------------------------
 Fri Feb 18 19:08:21 UTC 2022 - Robert Schweikert <rjschwei@suse.com>
 
 - Update to version 21.4 (bsc#1192343, jsc#PM-3181)
