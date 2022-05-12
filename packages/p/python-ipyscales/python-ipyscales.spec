@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipyscales
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define mainver 0.4.0
-%define labver  3.0.0
+%{?!python_module:%define python_module() python3-%{**}}
+%define mainver 0.6.0
+%define labver  3.2.0
 %define         skip_python2 1
-%define         skip_python36 1
 Name:           python-ipyscales
 Version:        %{mainver}
 Release:        0
 Summary:        A widget library for scales
 License:        BSD-3-Clause
 URL:            https://github.com/vidartf/ipyscales
-Source:         https://files.pythonhosted.org/packages/py2.py3/i/ipyscales/ipyscales-%{mainver}-py2.py3-none-any.whl
-BuildRequires:  %{python_module notebook}
+Source0:        https://files.pythonhosted.org/packages/py2.py3/i/ipyscales/ipyscales-%{mainver}-py2.py3-none-any.whl
+BuildRequires:  %{python_module base >= 3.5}
 BuildRequires:  %{python_module pip}
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  jupyter-jupyterlab-filesystem
 BuildRequires:  python-rpm-macros
@@ -37,15 +37,14 @@ Requires:       jupyter-ipyscales = %{version}
 Requires:       python-ipywidgets >= 7.0.0
 Requires:       python-numpy
 Recommends:     python-ipydatawidgets
-Provides:       python-jupyter_ipyscales = %{version}
-Obsoletes:      python-jupyter_ipyscales < %{version}
+Provides:       python-jupyter_ipyscales = %{version}-%{release}
+Obsoletes:      python-jupyter_ipyscales < %{version}-%{release}
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module ipywidgets >= 7.0.0}
-BuildRequires:  %{python_module ipydatawidgets}
+BuildRequires:  %{python_module ipywidgets >= 7.6}
+BuildRequires:  %{python_module ipydatawidgets >= 4.2}
 BuildRequires:  %{python_module nbval}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -75,8 +74,8 @@ Version:        %{labver}
 Summary:        A JupyterLab widget library for scales
 Requires:       jupyter-jupyterlab
 Requires:       python3-ipyscales = %{mainver}
-Provides:       python3-jupyter_ipyscales_jupyterlab = %{labver}
-Obsoletes:      python3-jupyter_ipyscales_jupyterlab < %{labver}
+Provides:       python3-jupyter_ipyscales_jupyterlab = %{labver}-%{release}
+Obsoletes:      python3-jupyter_ipyscales_jupyterlab < %{labver}-%{release}
 
 %description -n jupyter-jupyterlab-ipyscales
 A Jupyter/IPython widget library for scales.
@@ -90,37 +89,36 @@ jupyter labextension install @jupyter-widgets/jupyterlab-manager
 %setup -q -c -T
 
 %build
-# Not Needed
 
 %install
-%{python_expand pip%{$python_bin_suffix} install --root=%{buildroot} %{SOURCE0}
-find %{buildroot}%{$python_sitelib}/ipyscales/ -name '*.py' -exec sed -i 's/\r$//' {} \;
-find %{buildroot}%{$python_sitelib}/ipyscales/ -name '*.py' -exec sed -i sed -i -e '/^#!\//, 1d'  {} \;
-$python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/ipyscales/
+%pyproject_install %{SOURCE0}
+%{python_expand #
+find %{buildroot}%{$python_sitelib} -name '*.py' \
+  -exec dos2unix '{}' ';' \
+  -exec sed -i '1{/env python/ d}' '{}' ';'
+%fdupes %{buildroot}%{$python_sitelib}
 }
 
 %{jupyter_move_config}
 cp %{buildroot}%{python3_sitelib}/ipyscales-%{mainver}.dist-info/LICENSE.txt .
-%{fdupes %{buildroot}%{_jupyter_prefix} %{buildroot}%{python3_sitelib}}
+%fdupes %{buildroot}%{_jupyter_prefix}
 
 %check
-export PYTHONDONTWRITEBYTECODE=1
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-py.test-%{$python_bin_suffix} -l --pyargs ipyscales
-}
+%pytest --pyargs ipyscales
 
 %files %{python_files}
-%license %{python_sitelib}/ipyscales-%{mainver}.dist-info/LICENSE.txt
-%{python_sitelib}/ipyscales/
+%license LICENSE.txt
+%{python_sitelib}/ipyscales
 %{python_sitelib}/ipyscales-%{mainver}.dist-info/
 
 %files -n jupyter-ipyscales
 %license LICENSE.txt
 %{_jupyter_nbextension_dir}/jupyter-scales/
-%config %{_jupyter_nb_notebook_confdir}/jupyter-scales.json
+%_jupyter_config %{_jupyter_nb_notebook_confdir}/jupyter-scales.json
 
 %files -n jupyter-jupyterlab-ipyscales
 %license LICENSE.txt
 %{_jupyter_labextensions_dir}/jupyter-scales-%{labver}.tgz
+%{_jupyter_labextensions_dir3}/jupyter-scales
 
 %changelog
