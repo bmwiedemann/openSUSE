@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May  5 18:33:27 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.58.1
+  This patch release includes a fix to the Debian packages,
+  installing the systemd and cache_memory extra package groups,
+  which were incorrectly omitted in v1.58.0. This primarily
+  prevented Synapse from starting when the
+  systemd.journal.JournalHandler log handler was configured. See
+  #12631 for further information.
+
+  Otherwise, no significant changes since 1.58.0. 
+
+-------------------------------------------------------------------
 Tue May  3 11:14:28 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.58.0

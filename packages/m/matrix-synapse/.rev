@@ -489,4 +489,12 @@ mostly-working synapse than nothing at all) and the package has been update to
     <comment></comment>
     <requestid>974668</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>d5587fcb53bac6150895e6fef41eebac</srcmd5>
+    <version>1.58.1</version>
+    <time>1652389265</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>976930</requestid>
+  </revision>
 </revisionlist>
