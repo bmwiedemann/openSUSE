@@ -44,9 +44,10 @@ Release:        0
 Summary:        A message broker supporting AMQP, STOMP and MQTT
 License:        MPL-2.0
 Group:          System/Daemons
-URL:            http://www.rabbitmq.com/
+URL:            https://www.rabbitmq.com/
 Source:         https://github.com/rabbitmq/rabbitmq-server/releases/download/v%{version}/rabbitmq-server-%{version}.tar.xz
 Source1:        https://github.com/rabbitmq/rabbitmq-server/releases/download/v%{version}/rabbitmq-server-%{version}.tar.xz.asc
+Source2:        https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc#/%{name}.keyring
 Source3:        https://raw.githubusercontent.com/rabbitmq/rabbitmq-packaging/v%{version}/RPMS/Fedora/rabbitmq-server.logrotate
 Source4:        rabbitmq-env.conf
 Source6:        rabbitmq-server.service
