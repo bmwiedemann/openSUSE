@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Wed May 11 09:03:37 UTC 2022 - rombert@apache.org
+
+- Update to version 2.10.1:
+  * Hide retention-period flag (#5607)
+  * Merge pull request #5504 from greggroth/gregg/retention-period
+  * repo clone: document the upstream remote (#5466)
+  * auth: respect GH_BROWSER, `browser` config, avoid opening non-HTTP URLs
+  * repo list: add `--visibility internal` filter (#5564)
+  * Fix nil pointer exception in codespace selection
+  * add devcontainer (#5592)
+  * Ensure stable presentation of FORBIDDEN errors
+  * :nail_care: optimize fetches
+  * Ignore FORBIDDEN errors for `gh status`
+  * status: exclude results from archived repositories
+  * Add `exclude-drafts` flag to `gh release list`
+  * Upgrade to go 1.18 (#5542)
+  * Update order
+  * Handle star in display name
+  * Dis-ambiguate "currentBranch"
+  * :nail_care:
+  * Add `--json` support to `label list` (#5567)
+  * Add Display Name to the list command
+  * Remove empty return
+  * Fix non-working `gh issue view` usage example (#5563)
+  * Fix: 5501 - Added examples of negated qualifiers to search commands (#5562)
+  * Add label list sorting and delete command (#5503)
+  * Add the ability to pass teams to `review-requested` (#5538)
+  * Document linux distribution updating  (#5531)
+  * Consistent version format in version upgrade notice
+  * Fix grammar in `repo create` prompt (#5557)
+  * issue comment: support quotes and arguments in EDITOR value
+  * Remove mention of function
+  * Use named return values
+  * Use safeClose instead of Close
+  * Update auth error message
+  * Remove `Stringer` from `ghrepo.Interface` (#5536)
+  * Bump github.com/google/go-cmp from 0.5.7 to 0.5.8 (#5533)
+  * Add progress indicator to `gist create` (#5526)
+  * Clarify `label edit --name` switch (#5525)
+  * Bump github.com/cpuguy83/go-md2man/v2 from 2.0.1 to 2.0.2
+  * Add autocomplete descriptions for aliases and extensions (#5447)
+  * Replace ioutil with io and os (#5498)
+  * Add `label edit` command (#5519)
+  * Properly handle issue and pr state options when building search queries (#5513)
+  * Add `label clone` command (#5452)
+  * Don't error on list commands when no results found (#5479)
+  * refactor merge command
+  * Bump github/codeql-action from 1 to 2
+  * Avoid crash when deleting gist with no owner
+  * Add context to errors
+  * Resolve feedback
+  * Remove function return
+  * PR feedback
+  * Fix displayed header for search prs command (#5488)
+  * add ls alias to gh repo list (#5480)
+  * Clarify session helper
+  * Clean up more errors
+  * Clean up errors
+  * Fix -c option
+  * Print JupyterLab URL
+  * Fix name of RPC service
+  * Clean up Jupyter code
+  * Fix tests
+  * Final copy and behavior update for prompt
+  * go fmt
+  * Change the way we parse list-devcontainers response
+  * Fix tests
+  * Change some copy per product's suggestions
+  * Refactor liveshare setup to a new function
+  * Clean up code
+  * Fix RPC call
+  * Add cs jupyter
+  * Rename test
+  * Add interactive prompt to choose from list of available devcontainer files
+  * Add devcontainer_path API param as an option
+
+-------------------------------------------------------------------
 Thu Mar 10 16:24:09 UTC 2022 - chris@computersalat.de
 
 - Update to 2.5.2
