@@ -30,9 +30,9 @@ BuildRequires:  python3-setuptools
 Requires:       jupyter-notebook >= 5.1
 Requires(post): jupyter-notebook >= 5.1
 Requires(preun): jupyter-notebook >= 5.1
-Provides:       python3-jupyter_full_width = %{version}
-Obsoletes:      python3-jupyter_full_width <= %{version}
-Provides:       python3-jupyter-full-width = %{version}
+Provides:       python3-jupyter_full_width = %{version}-%{release}
+Obsoletes:      python3-jupyter_full_width < %{version}-%{release}
+Provides:       python3-jupyter-full-width = %{version}-%{release}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  jupyter-notebook >= 5.1
@@ -52,7 +52,8 @@ browser width.
 %python3_install
 
 %{jupyter_nbextension_install full_width}
-%{fdupes %{buildroot}%{_jupyter_prefix} %{buildroot}%{python3_sitelib}}
+%fdupes %{buildroot}%{_jupyter_prefix}
+%fdupes %{buildroot}%{python3_sitelib}
 
 %post
 %{jupyter_nbextension_enable full_width}
@@ -62,7 +63,7 @@ browser width.
 
 %files
 %doc full_width/jupyter/readme.md
-%{python3_sitelib}/jupyter_full_width-*-py*.egg-info
+%{python3_sitelib}/jupyter_full_width-%{version}*-info
 %{python3_sitelib}/full_width/
 %{_jupyter_nbextension_dir}/full_width/
 
