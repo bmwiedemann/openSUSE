@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 29 03:09:52 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.61
+   see /usr/share/doc/packages/perl-Text-Template/Changes
+
+  1.61  2022-04-28
+    - Skip taint tests if perl was compiled with taint disabled.  (Thanks Neil Bowers) [GitHub PR #20]
+
+-------------------------------------------------------------------
 Sat Sep  4 03:07:16 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.60
