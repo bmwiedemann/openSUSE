@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 11 09:42:59 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Add 36398fb.patch from upstream to fix build with gcc 12
+
+-------------------------------------------------------------------
+Sun May  8 20:16:14 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fix build with new poco version (1.11.2), added 73d8a4d5.patch
+
+-------------------------------------------------------------------
 Sat Apr 16 13:09:07 UTC 2022 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - do not include 32-bit libmumbleoverlay.x86.so in 64bit build

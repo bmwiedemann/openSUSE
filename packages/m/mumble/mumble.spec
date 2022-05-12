@@ -43,6 +43,9 @@ Source3:        murmur.apparmor
 Source4:        https://raw.githubusercontent.com/mumble-voip/mumble-gpg-signatures/master/mumble-auto-build-2022.asc#/%{name}.keyring
 Source5:        mumble-server.service
 Source6:        baselibs.conf
+#PATCH-FIX-UPSTREAM 73d8a4d5.patch -- https://github.com/mumble-voip/mumble/commit/73d8a4d5
+Patch0:         73d8a4d5.patch
+Patch1:         https://github.com/mumble-voip/mumble/commit/36398fb.patch
 BuildRequires:  cmake >= 3.15
 BuildRequires:  gcc-c++
 BuildRequires:  libcap-devel
@@ -133,10 +136,10 @@ characters, and has echo cancellation so the sound from your loudspeakers
 won't be audible to other players.
 
 %prep
-%setup -q -n %{name}-%{version}.src
+%autosetup -p1 -n %{name}-%{version}.src
 
 %build
-%cmake .. \
+%cmake \
         -Dupdate:BOOL=OFF \
         -Doverlay-xcompile:BOOL=OFF \
         -Dsymbols:BOOL=ON \
@@ -161,7 +164,7 @@ won't be audible to other players.
 %endif
 
 # build fails for high -j so we overwrite with 1 here
-%make_build -j1
+%cmake_build -j1
 
 %install
 %cmake_install

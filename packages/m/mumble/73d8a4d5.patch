@@ -1,0 +1,22 @@
+diff -Nur mumble-1.4.230.src/src/mumble/CMakeLists.txt new/src/mumble/CMakeLists.txt
+--- mumble-1.4.230.src/src/mumble/CMakeLists.txt	2022-01-18 02:00:00.342013800 +0100
++++ new/src/mumble/CMakeLists.txt	2022-05-08 22:19:05.007999852 +0200
+@@ -383,12 +383,17 @@
+ 		"${PLUGINS_DIR}"
+ )
+ 
+-find_pkg(Poco COMPONENTS Zip)
++find_pkg(Poco
++	COMPONENTS
++		XML
++		Zip
++)
+ 
+ if(TARGET Poco::Zip)
+ 	target_link_libraries(mumble
+ 		PRIVATE
+ 			Poco::Zip
++                        Poco::XML
+ 	)
+ else()
+ 	message(STATUS "Regular Poco search failed - looking for Poco include dir manually...")
