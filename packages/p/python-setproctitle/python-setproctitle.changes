@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 11 10:43:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.3:
+  * Added Python 3.10 packages (issue #102).
+  * Added Wheel packages for macOS (issue #96).
+
+-------------------------------------------------------------------
 Thu Jan 28 23:04:25 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.2:

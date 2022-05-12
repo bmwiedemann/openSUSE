@@ -249,4 +249,14 @@
   - Added wheel packages for aarch64 (issues #95).</comment>
     <requestid>867595</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>6d8a2fdb9b2264ba80d4a6ab17e94995</srcmd5>
+    <version>1.2.3</version>
+    <time>1652389182</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.3:
+  * Added Python 3.10 packages (issue #102).
+  * Added Wheel packages for macOS (issue #96).</comment>
+    <requestid>976286</requestid>
+  </revision>
 </revisionlist>
