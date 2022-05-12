@@ -36,7 +36,6 @@
 %endif
 
 %if %{with_fcitx5}
-%define fcitx5_icon_dir %{_datadir}/pixmaps/
 %define fcitx5_addon_dir %{_datadir}/fcitx5/addon/
 %define fcitx5_inputmethod_dir %{_datadir}/fcitx5/inputmethod/
 %define fcitx5_lib_dir %{_libdir}/fcitx5/
@@ -51,7 +50,7 @@
 %define makebazelcache() mkdir -p %{bz_cachdir}/content_addressable/sha256/%{?2:%2}%{?!2:$(sha256sum %1 | cut -f 1 -d ' ')}/; cp %1 %{bz_cachdir}/content_addressable/sha256/%{?2:%2}%{?!2:$(sha256sum %1 | cut -f 1 -d ' ')}/file ;
 
 Name:           mozc
-Version:        2.26.4660.102
+Version:        2.28.4715.102
 Release:        0
 Summary:        Mozc - Japanese Input Method for Chromium OS, Mac and Linux
 License:        Apache-2.0 AND BSD-3-Clause AND SUSE-Public-Domain
@@ -93,7 +92,7 @@ Source12:       material-design-icons.tar.xz
 # https://github.com/fcitx/mozc/tree/fcitx/src/unix/fcitx{,5}
 # Run ./make_archive.sh to make tar.xz
 %if %{with_fcitx4} || %{with_fcitx5}
-Source20:       fcitx-mozc-b423557b.tar.xz
+Source20:       fcitx-mozc-27a5bd7e.tar.xz
 Source21:       fcitx-mozc-icons.tar.gz
 Patch20:        fcitx-mozc-bazel-build.patch
 %endif
@@ -382,28 +381,38 @@ do
 done
 install -m755 -d %{buildroot}%{fcitx5_addon_dir}
 install -m755 -d %{buildroot}%{fcitx5_inputmethod_dir}
-install -m755 -d %{buildroot}%{fcitx5_icon_dir}
 install -m755 -d %{buildroot}%{fcitx5_lib_dir}
 install -m 755 %{output_dir}/unix/fcitx5/fcitx5-mozc.so %{buildroot}%{fcitx5_lib_dir}/mozc.so
 install -m 644 src/unix/fcitx5/mozc-addon.conf %{buildroot}%{fcitx5_addon_dir}/mozc.conf
 install -m 644 src/unix/fcitx5/mozc.conf %{buildroot}%{fcitx5_inputmethod_dir}
-install -m 644 src/data/images/product_icon_32bpp-128.png %{buildroot}%{fcitx5_icon_dir}/mozc.png
-install -m 644 src/data/images/unix/ui-alpha_full.png %{buildroot}%{fcitx5_icon_dir}/mozc-alpha_full.png
-install -m 644 src/data/images/unix/ui-alpha_half.png %{buildroot}%{fcitx5_icon_dir}/mozc-alpha_half.png
-install -m 644 src/data/images/unix/ui-direct.png %{buildroot}%{fcitx5_icon_dir}/mozc-direct.png
-install -m 644 src/data/images/unix/ui-hiragana.png %{buildroot}%{fcitx5_icon_dir}/mozc-hiragana.png
-install -m 644 src/data/images/unix/ui-katakana_full.png %{buildroot}%{fcitx5_icon_dir}/mozc-katakana_full.png
-install -m 644 src/data/images/unix/ui-katakana_half.png %{buildroot}%{fcitx5_icon_dir}/mozc-katakana_half.png
-install -m 644 src/data/images/unix/ui-dictionary.png %{buildroot}%{fcitx5_icon_dir}/mozc-dictionary.png
-install -m 644 src/data/images/unix/ui-properties.png %{buildroot}%{fcitx5_icon_dir}/mozc-properties.png
-install -m 644 src/data/images/unix/ui-tool.png %{buildroot}%{fcitx5_icon_dir}/mozc-tool.png
 
-# fix mozc icons. they're too ugly that even lose face for openSUSE.
-cp -r %{SOURCE21} ./
-tar -xzf fcitx-mozc-icons.tar.gz
-cp -r fcitx-mozc-icons/* %{buildroot}%{fcitx5_icon_dir}/
-rm -rf fcitx-mozc-icons
-rm -rf fcitx-mozc-icons.tar.gz
+unzip -d icons %{output_dir}/unix/icons.zip
+install -D -m 644 src/data/images/product_icon_32bpp-128.png "%{buildroot}%{_datadir}/icons/hicolor/128x128/apps/org.fcitx.Fcitx5.fcitx-mozc.png"
+install -D -m 644 src/data/images/unix/ime_product_icon_opensource-32.png "%{buildroot}%{_datadir}/icons/hicolor/32x32/apps/org.fcitx.Fcitx5.fcitx-mozc.png"
+install -D -m 644 icons/mozc.svg "%{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.fcitx.Fcitx5.fcitx-mozc.svg"
+install -D -m 644 icons/alpha_full.png "%{buildroot}%{_datadir}/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-alpha-full.png"
+install -D -m 644 icons/alpha_half.png "%{buildroot}%{_datadir}/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-alpha-half.png"
+install -D -m 644 icons/direct.png "%{buildroot}%{_datadir}/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-direct.png"
+install -D -m 644 icons/hiragana.png "%{buildroot}%{_datadir}/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-hiragana.png"
+install -D -m 644 icons/katakana_full.png "%{buildroot}%{_datadir}/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-katakana-full.png"
+install -D -m 644 icons/katakana_half.png "%{buildroot}%{_datadir}/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-katakana-half.png"
+install -D -m 644 icons/dictionary.png "%{buildroot}%{_datadir}/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-dictionary.png"
+install -D -m 644 icons/properties.png "%{buildroot}%{_datadir}/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-properties.png"
+install -D -m 644 icons/tool.png "%{buildroot}%{_datadir}/icons/hicolor/48x48/apps/org.fcitx.Fcitx5.fcitx-mozc-tool.png"
+
+ln -sf org.fcitx.Fcitx5.fcitx-mozc.png "%{buildroot}%{_datadir}/icons/hicolor/128x128/apps/fcitx-mozc.png"
+ln -sf org.fcitx.Fcitx5.fcitx-mozc.png "%{buildroot}%{_datadir}/icons/hicolor/32x32/apps/fcitx-mozc.png"
+ln -sf org.fcitx.Fcitx5.fcitx-mozc.svg "%{buildroot}%{_datadir}/icons/hicolor/scalable/apps/fcitx-mozc.svg"
+ln -sf org.fcitx.Fcitx5.fcitx-mozc-alpha-full.png "%{buildroot}%{_datadir}/icons/hicolor/48x48/apps/fcitx-mozc-alpha-full.png"
+ln -sf org.fcitx.Fcitx5.fcitx-mozc-alpha-half.png "%{buildroot}%{_datadir}/icons/hicolor/48x48/apps/fcitx-mozc-alpha-half.png"
+ln -sf org.fcitx.Fcitx5.fcitx-mozc-direct.png "%{buildroot}%{_datadir}/icons/hicolor/48x48/apps/fcitx-mozc-direct.png"
+ln -sf org.fcitx.Fcitx5.fcitx-mozc-hiragana.png "%{buildroot}%{_datadir}/icons/hicolor/48x48/apps/fcitx-mozc-hiragana.png"
+ln -sf org.fcitx.Fcitx5.fcitx-mozc-katakana-full.png "%{buildroot}%{_datadir}/icons/hicolor/48x48/apps/fcitx-mozc-katakana-full.png"
+ln -sf org.fcitx.Fcitx5.fcitx-mozc-katakana-half.png "%{buildroot}%{_datadir}/icons/hicolor/48x48/apps/fcitx-mozc-katakana-half.png"
+ln -sf org.fcitx.Fcitx5.fcitx-mozc-dictionary.png "%{buildroot}%{_datadir}/icons/hicolor/48x48/apps/fcitx-mozc-dictionary.png"
+ln -sf org.fcitx.Fcitx5.fcitx-mozc-properties.png "%{buildroot}%{_datadir}/icons/hicolor/48x48/apps/fcitx-mozc-properties.png"
+ln -sf org.fcitx.Fcitx5.fcitx-mozc-tool.png "%{buildroot}%{_datadir}/icons/hicolor/48x48/apps/fcitx-mozc-tool.png"
+
 %endif
 
 %if %{install_mozc}
@@ -492,16 +501,7 @@ chmod 644 src/data/installer/credits_*.html
 %{fcitx5_addon_dir}/mozc.conf
 %dir %{fcitx5_inputmethod_dir}
 %{fcitx5_inputmethod_dir}/mozc.conf
-%{fcitx5_icon_dir}/mozc.png
-%{fcitx5_icon_dir}/mozc-alpha_full.png
-%{fcitx5_icon_dir}/mozc-alpha_half.png
-%{fcitx5_icon_dir}/mozc-direct.png
-%{fcitx5_icon_dir}/mozc-hiragana.png
-%{fcitx5_icon_dir}/mozc-katakana_full.png
-%{fcitx5_icon_dir}/mozc-katakana_half.png
-%{fcitx5_icon_dir}/mozc-dictionary.png
-%{fcitx5_icon_dir}/mozc-properties.png
-%{fcitx5_icon_dir}/mozc-tool.png
+%{_datadir}/icons/hicolor/
 %endif
 
 %changelog

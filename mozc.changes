@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu May  5 07:28:39 UTC 2022 - Fuminobu Takeyama <ftake@geeko.jp> - 2.28.4715.102
+
+- Upstream update to 2.28.4715.102
+  * Update dictionaries
+  * Enable Qt candidate window on Wayland session 
+- Update fcitx5-mozc
+  * Improve system tray menus
+- Fix fcitx5-mozc cannot find icons
+- Use icons from Mozc for Fcitx5 since their quality is now
+  improved
+- Update postcode dictionaries
+- Refresh add-sha256sum-for-zipcode-archives.patch
+- Refresh fcitx-mozc-bazel-build.patch
+- Fix icon path in ibus-setup-mozc-jp.desktop 
+
+-------------------------------------------------------------------
 Tue Apr  5 11:09:34 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Exclude build on i586: bazel is not supported on i586, thus we
