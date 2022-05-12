@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 14 21:13:13 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.46.0:
+  * Many changes, see
+    <https://sourceforge.net/p/maxima/code/ci/master/tree/changelogs/ChangeLog-5.46.md>
+- Merge the different lang packages into a single lang package;
+  maintaining a package for each lang will eventually become
+  difficult as upstream adds more and more translations.
+- Update packageand based Supplements to rpm boolean ones.
+- Drop maxima-rpmlintrc file: None of the suppressed warnings are
+  used any more.
+- Rebase maxima-python3.patch to keep up with updated version.
+
+-------------------------------------------------------------------
 Mon Jun 21 00:09:43 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.45.1:

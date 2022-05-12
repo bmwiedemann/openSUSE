@@ -1,7 +1,7 @@
 #
 # spec file for package maxima
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,13 +33,12 @@
 %define __os_install_post %{_prefix}/lib/rpm/brp-suse
 
 Name:           maxima
-Version:        5.45.1
+Version:        5.46.0
 Release:        0
 Summary:        Symbolic Computation Program/Computer Algebra System
 License:        GPL-2.0-or-later
 URL:            http://maxima.sourceforge.net/
 Source0:        http://download.sourceforge.net/maxima/%{name}-%{version}.tar.gz
-Source1:        maxima-rpmlintrc
 Source2:        README.SUSE.packaging
 # PATCH-FIX-UPSTREAM maxima-python3.patch badshah400@gmail.com -- Use python3 instead of python(2) when importing vtk modules and building help; this allows maxima to be built with python3 instead of python2.
 Patch0:         maxima-python3.patch
@@ -103,7 +102,7 @@ Xmaxima is written in the Tcl/Tk language.
 %package        exec-clisp
 Summary:        Maxima compiled with clisp
 Requires:       clisp
-Supplements:    packageand(maxima:clisp)
+Supplements:    (maxima and clisp)
 Provides:       maxima_exec = %{version}
 
 %description exec-clisp
@@ -113,7 +112,7 @@ Maxima compiled with Common Lisp.
 %if %{with cmucl}
 %package exec-cmucl
 Summary:        Maxima compiled with CMUCL
-Supplements:    packageand(maxima:cmucl)
+Supplements:    (maxima and cmucl)
 Provides:       maxima_exec = %{version}
 
 %description    exec-cmucl
@@ -123,7 +122,7 @@ Maxima compiled with CMUCL.
 %if %{with sbcl}
 %package exec-sbcl
 Summary:        Maxima compiled with SBCL
-Supplements:    packageand(maxima:sbcl)
+Supplements:    (maxima and sbcl)
 Provides:       maxima_exec = %{version}
 %requires_eq    sbcl
 
@@ -134,60 +133,29 @@ Maxima compiled with SBCL.
 %if %{with gcl}
 %package exec-gcl
 Summary:        Maxima compiled with GCL
-Supplements:    packageand(maxima:gcl)
+Supplements:    (maxima and gcl)
 Provides:       maxima_exec = %{version}
 
 %description exec-gcl
 Maxima compiled with Gnu Common Lisp.
 %endif
 
-%package lang-de-utf8
-Summary:        Maxima German UTF-8 language pack
-Requires:       maxima = %{version}
-Provides:       locale(maxima:de)
-%if 0%{?suse_version} <= 1500
-Requires(post): /sbin/install-info
-Requires(postun):/sbin/install-info
-%endif
+# Note: Cannot use the lang_package macro since we need to provide the old lang-utf packages
+%package lang
+Summary:        Translations for package %{name}
+Requires:       %{name} = %{version}
+Obsoletes:      maxima-lang-de-utf8 < %{version}
+Provides:       maxima-lang-de-utf8 = %{version}
+Obsoletes:      maxima-lang-es-utf8 < %{version}
+Provides:       maxima-lang-es-utf8 = %{version}
+Obsoletes:      maxima-lang-pt-utf8 < %{version}
+Provides:       maxima-lang-pt-utf8 = %{version}
+Obsoletes:      maxima-lang-pt_BR-utf8 < %{version}
+Provides:       maxima-lang-pt_BR-utf8 = %{version}
+BuildArch:      noarch
 
-%description lang-de-utf8
-Maxima German language support (in UTF-8).
-
-%package lang-es-utf8
-Summary:        Maxima Spanish UTF-8 language pack
-Requires:       maxima = %{version}
-Provides:       locale(maxima:es)
-%if 0%{?suse_version} <= 1500
-Requires(post): /sbin/install-info
-Requires(postun):/sbin/install-info
-%endif
-
-%description lang-es-utf8
-Maxima Spanish language support (in UTF-8).
-
-%package lang-pt-utf8
-Summary:        Maxima Portuguese UTF-8 language pack
-Requires:       maxima = %{version}
-Provides:       locale(maxima:pt)
-%if 0%{?suse_version} <= 1500
-Requires(post): /sbin/install-info
-Requires(postun):/sbin/install-info
-%endif
-
-%description lang-pt-utf8
-Maxima Portuguese language support (in UTF-8).
-
-%package lang-pt_BR-utf8
-Summary:        Maxima Brazilian Portuguese UTF-8 language pack
-Requires:       maxima = %{version}
-Provides:       locale(maxima:pt_BR)
-%if 0%{?suse_version} <= 1500
-Requires(post): /sbin/install-info
-Requires(postun):/sbin/install-info
-%endif
-
-%description lang-pt_BR-utf8
-Maxima Brazilian Portuguese language support (in UTF-8).
+%description lang
+Provides translations for the %{name} package.
 
 %prep
 %setup -q
@@ -199,31 +167,33 @@ Maxima Brazilian Portuguese language support (in UTF-8).
             %{?with_gcl:--enable-gcl} \
             %{?with_clisp:--enable-clisp} \
             --enable-gettext \
-            --enable-lang-de-utf8 \
-            --enable-lang-es-utf8 \
-            --enable-lang-pt-utf8 \
-            --enable-lang-pt_BR-utf8 \
             --disable-recode \
+            --enable-lang-de \
+            --enable-lang-ja \
+            --enable-lang-es \
+            --enable-lang-pt \
+            --enable-lang-pt_BR \
+            --enable-lang-ru \
             --enable-mathjax
 %make_build
 
 %install
 %makeinstall install-info
-  make \
-    prefix=%{?buildroot:%{buildroot}}%{_prefix} \
-    exec_prefix=%{?buildroot:%{buildroot}}%{_prefix} \
-    bindir=%{?buildroot:%{buildroot}}%{_bindir} \
-    sbindir=%{?buildroot:%{buildroot}}%{_sbindir} \
-    sysconfdir=%{?buildroot:%{buildroot}}%{_sysconfdir} \
-    datadir=%{?buildroot:%{buildroot}}%{_datadir} \
-    includedir=%{?buildroot:%{buildroot}}%{_includedir} \
-    libdir=%{?buildroot:%{buildroot}}%{_libdir} \
-    libexecdir=%{?buildroot:%{buildroot}}%{_libexecdir} \
-    localstatedir=%{?buildroot:%{buildroot}}%{_localstatedir} \
-    sharedstatedir=%{?buildroot:%{buildroot}}%{_sharedstatedir} \
-    mandir=%{?buildroot:%{buildroot}}%{_mandir} \
-    infodir=%{?buildroot:%{buildroot}}%{_infodir} \
-  install-info
+make \
+  prefix=%{?buildroot:%{buildroot}}%{_prefix} \
+  exec_prefix=%{?buildroot:%{buildroot}}%{_prefix} \
+  bindir=%{?buildroot:%{buildroot}}%{_bindir} \
+  sbindir=%{?buildroot:%{buildroot}}%{_sbindir} \
+  sysconfdir=%{?buildroot:%{buildroot}}%{_sysconfdir} \
+  datadir=%{?buildroot:%{buildroot}}%{_datadir} \
+  includedir=%{?buildroot:%{buildroot}}%{_includedir} \
+  libdir=%{?buildroot:%{buildroot}}%{_libdir} \
+  libexecdir=%{?buildroot:%{buildroot}}%{_libexecdir} \
+  localstatedir=%{?buildroot:%{buildroot}}%{_localstatedir} \
+  sharedstatedir=%{?buildroot:%{buildroot}}%{_sharedstatedir} \
+  mandir=%{?buildroot:%{buildroot}}%{_mandir} \
+  infodir=%{?buildroot:%{buildroot}}%{_infodir} \
+install-info
 
 #  Deal with info/dir
 rm -f %{buildroot}%{_infodir}/dir
@@ -238,6 +208,8 @@ gzip %{buildroot}%{_mandir}/*/man1/maxima.1
 %fdupes %{buildroot}/%{_datadir}/
 
 %suse_update_desktop_file net.sourceforge.maxima.xmaxima
+
+%find_lang %{name} %{?no_lang_C}
 
 # FIXME CHECKS TAKE TOO LONG AND TIME-OUT (LAST CHECK: VERSION 5.45.0)
 #%%check
@@ -261,29 +233,6 @@ gzip %{buildroot}%{_mandir}/*/man1/maxima.1
 %mime_database_postun
 %desktop_database_postun
 
-%post lang-de-utf8
-%install_info --info-dir=%{_infodir} %{_infodir}/de.utf8/maxima.info
-
-%postun lang-de-utf8
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/de.utf8/maxima.info
-
-%post lang-es-utf8
-%install_info --info-dir=%{_infodir} %{_infodir}/es.utf8/maxima.info
-
-%postun lang-es-utf8
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/es.utf8/maxima.info
-
-%post lang-pt-utf8
-%install_info --info-dir=%{_infodir} %{_infodir}/pt.utf8/maxima.info
-
-%postun lang-pt-utf8
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/pt.utf8/maxima.info
-
-%post lang-pt_BR-utf8
-%install_info --info-dir=%{_infodir} %{_infodir}/pt_BR.utf8/maxima.info
-
-%postun lang-pt_BR-utf8
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/pt_BR.utf8/maxima.info
 %endif
 
 %files
@@ -298,11 +247,6 @@ gzip %{buildroot}%{_mandir}/*/man1/maxima.1
 %dir %{_libexecdir}/maxima
 %endif
 %{_datadir}/maxima/%{version}/*
-%exclude %{_datadir}/maxima/%{version}/xmaxima
-%exclude %{_datadir}/maxima/%{version}/doc/html/de.utf8
-%exclude %{_datadir}/maxima/%{version}/doc/html/es.utf8
-%exclude %{_datadir}/maxima/%{version}/doc/html/pt.utf8
-%exclude %{_datadir}/maxima/%{version}/doc/html/pt_BR.utf8
 %{_libdir}/maxima/%{version}
 %if %{with clisp}
 %exclude %{_libdir}/maxima/%{version}/binary-clisp
@@ -318,11 +262,8 @@ gzip %{buildroot}%{_mandir}/*/man1/maxima.1
 %endif
 %dir %{_libexecdir}/maxima/%{version}
 %{_libexecdir}/maxima/%{version}/mgnuplot
-%{_infodir}/*
-%exclude %{_infodir}/de.utf8
-%exclude %{_infodir}/es.utf8
-%exclude %{_infodir}/pt.utf8
-%exclude %{_infodir}/pt_BR.utf8
+%{_infodir}/*.info*
+%{_infodir}/*.lisp
 %{_bindir}/maxima
 %{_bindir}/rmaxima
 %{_datadir}/bash-completion/completions/maxima
@@ -330,6 +271,10 @@ gzip %{buildroot}%{_mandir}/*/man1/maxima.1
 %dir %{_datadir}/emacs
 %dir %{_datadir}/emacs/site-lisp
 %{_datadir}/emacs/site-lisp/*
+%exclude %{_datadir}/maxima/%{version}/xmaxima
+# Included in lang package
+%exclude %{_datadir}/maxima/%{version}/doc/html/*/*
+%exclude %{_infodir}/*/*
 
 %files xmaxima
 %dir %{_datadir}/maxima/%{version}/xmaxima
@@ -362,22 +307,13 @@ gzip %{buildroot}%{_mandir}/*/man1/maxima.1
 %{_libdir}/maxima/%{version}/binary-gcl/
 %endif
 
-%files lang-de-utf8
-%doc %{_datadir}/maxima/%{version}/doc/html/de.utf8
-%{_infodir}/de.utf8
-
-%files lang-es-utf8
-%doc %{_datadir}/maxima/%{version}/doc/html/es.utf8
-%{_datadir}/locale/es/LC_MESSAGES/maxima.mo
-%{_infodir}/es.utf8
-
-%files lang-pt-utf8
-%doc %{_datadir}/maxima/%{version}/doc/html/pt.utf8
-%{_datadir}/locale/pt/LC_MESSAGES/maxima.mo
-%{_infodir}/pt.utf8
-
-%files lang-pt_BR-utf8
-%doc %{_datadir}/maxima/%{version}/doc/html/pt_BR.utf8
-%{_infodir}/pt_BR.utf8
+%files lang -f %{name}.lang
+%doc %{_datadir}/maxima/%{version}/doc/html/*/
+%{_infodir}/de/
+%{_infodir}/es/
+%{_infodir}/ja/
+%{_infodir}/pt/
+%{_infodir}/pt_BR/
+%{_infodir}/ru/
 
 %changelog

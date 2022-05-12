@@ -1,8 +1,0 @@
-# Compressed info files break maxima's internal help
-addFilter("infopage-not-gzipped")
-# clisp has no devel package!
-addFilter("useless-explicit-requires.*clisp")
-# *.mac files are maxima program files and no mac readme's
-addFilter("non-linux-readme.*\.mac")
-# no need to cry: this info page is only used by programs
-addFilter("wrong-file-end-of-line-encoding.*/usr/share/info/maxima-index.lisp")
