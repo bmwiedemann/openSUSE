@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May  9 19:56:32 UTC 2022 - Lee Duncan <lduncan@suse.com>
+
+- Update to latest upstream, including:
+  * Added 'distclean' to Makefile targets
+  * Ensure Makefile '.PHONY' targets set up correctly
+  * fix an iscsid logout bug generating a false error
+    and cleanup logout error messages
+
+-------------------------------------------------------------------
 Fri May  6 18:03:09 UTC 2022 - Lee Duncan <lduncan@suse.com>
 
 - Updated to latest upstream version, tagged 2.1.7. Changes
