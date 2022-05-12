@@ -1,0 +1,146 @@
+From ad9b30a420fbbd509b232ac5fbba317605970c2c Mon Sep 17 00:00:00 2001
+From: Mikolaj Izdebski <mizdebsk@redhat.com>
+Date: Fri, 31 May 2019 11:09:13 +0200
+Subject: [PATCH] Port to Maven 3
+
+---
+ pom.xml                                        | 11 +++--------
+ .../remote/RemoteResourcesMojoTest.java        |  8 ++++++++
+ .../resources/remote/stub/ArtifactStub.java    |  6 ------
+ .../remote/stub/MavenProjectBasicStub.java     | 18 +++++++++---------
+ 4 files changed, 20 insertions(+), 23 deletions(-)
+
+diff --git a/pom.xml b/pom.xml
+index dc43173..6c3dbfe 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -68,7 +68,7 @@ under the License.
+   </distributionManagement>
+ 
+   <properties>
+-    <mavenVersion>2.2.1</mavenVersion>
++    <mavenVersion>3.6.2</mavenVersion>
+     <javaVersion>7</javaVersion>
+     <mavenFilteringVersion>3.1.1</mavenFilteringVersion>
+     <sitePluginVersion>3.3</sitePluginVersion>
+@@ -98,7 +98,7 @@ under the License.
+     </dependency>
+     <dependency>
+       <groupId>org.apache.maven</groupId>
+-      <artifactId>maven-project</artifactId>
++      <artifactId>maven-compat</artifactId>
+       <version>${mavenVersion}</version>
+     </dependency>
+     <dependency>
+@@ -119,11 +119,6 @@ under the License.
+       <artifactId>maven-archiver</artifactId>
+       <version>3.5.0</version>
+     </dependency>
+-    <dependency>
+-      <groupId>org.apache.maven.shared</groupId>
+-      <artifactId>maven-artifact-resolver</artifactId>
+-      <version>1.0</version>
+-    </dependency>
+     <dependency>
+       <groupId>org.apache.maven.shared</groupId>
+       <artifactId>maven-common-artifact-filters</artifactId>
+@@ -174,7 +169,7 @@ under the License.
+     <dependency>
+       <groupId>org.apache.maven.plugin-testing</groupId>
+       <artifactId>maven-plugin-testing-harness</artifactId>
+-      <version>1.3</version>
++      <version>3.3.0</version>
+       <scope>test</scope>
+     </dependency>
+     <dependency>
+diff --git a/src/test/java/org/apache/maven/plugin/resources/remote/RemoteResourcesMojoTest.java b/src/test/java/org/apache/maven/plugin/resources/remote/RemoteResourcesMojoTest.java
+index 24c928f..3294d4b 100644
+--- a/src/test/java/org/apache/maven/plugin/resources/remote/RemoteResourcesMojoTest.java
++++ b/src/test/java/org/apache/maven/plugin/resources/remote/RemoteResourcesMojoTest.java
+@@ -25,6 +25,7 @@ import org.apache.maven.artifact.repository.ArtifactRepository;
+ import org.apache.maven.artifact.versioning.VersionRange;
+ import org.apache.maven.execution.MavenSession;
+ import org.apache.maven.execution.ReactorManager;
++import org.apache.maven.plugin.LegacySupport;
+ import org.apache.maven.plugin.resources.remote.stub.MavenProjectBuildStub;
+ import org.apache.maven.plugin.resources.remote.stub.MavenProjectResourcesStub;
+ import org.apache.maven.plugin.testing.AbstractMojoTestCase;
+@@ -39,10 +40,12 @@ import java.net.URL;
+ import java.util.ArrayList;
+ import java.util.Arrays;
+ import java.util.Calendar;
++import java.util.Collections;
+ import java.util.Properties;
+ import java.util.jar.JarOutputStream;
+ import java.util.zip.ZipEntry;
+ import org.codehaus.plexus.util.IOUtil;
++import org.eclipse.aether.DefaultRepositorySystemSession;
+ 
+ 
+ /**
+@@ -301,6 +304,8 @@ public class RemoteResourcesMojoTest
+         setupDefaultProject( project );
+ 
+         ArtifactRepository repo = (ArtifactRepository) getVariableValueFromObject( mojo, "localRepository" );
++        MavenSession session = (MavenSession) getVariableValueFromObject( mojo, "mavenSession" );
++        session.getRequest().setLocalRepository( repo );
+         String path = repo.pathOf( new DefaultArtifact( "test",
+                                                         "test",
+                                                         VersionRange.createFromVersion( "1.1" ),
+@@ -505,6 +510,9 @@ public class RemoteResourcesMojoTest
+                                     project.getBasedir().toString(),
+                                     new Properties(),
+                                     Calendar.getInstance().getTime() );
++        session.setProjects( Collections.singletonList( project ) );
++        setVariableValueToObject( session, "repositorySession", new DefaultRepositorySystemSession() );
++        lookup( LegacySupport.class ).setSession( session );
+ 
+         setVariableValueToObject( mojo, "project", project );
+         setVariableValueToObject( mojo, "outputDirectory", new File( project.getBuild().getOutputDirectory() ) );
+diff --git a/src/test/java/org/apache/maven/plugin/resources/remote/stub/ArtifactStub.java b/src/test/java/org/apache/maven/plugin/resources/remote/stub/ArtifactStub.java
+index 5f59c9a..fc52d6f 100644
+--- a/src/test/java/org/apache/maven/plugin/resources/remote/stub/ArtifactStub.java
++++ b/src/test/java/org/apache/maven/plugin/resources/remote/stub/ArtifactStub.java
+@@ -376,10 +376,4 @@ public class ArtifactStub
+         return 0;
+     }
+ 
+-    @Override
+-    public ArtifactMetadata getMetadata( Class<?> metadataClass )
+-    {
+-        return null;
+-    }
+-
+ }
+diff --git a/src/test/java/org/apache/maven/plugin/resources/remote/stub/MavenProjectBasicStub.java b/src/test/java/org/apache/maven/plugin/resources/remote/stub/MavenProjectBasicStub.java
+index 0107561..6e9a8b0 100644
+--- a/src/test/java/org/apache/maven/plugin/resources/remote/stub/MavenProjectBasicStub.java
++++ b/src/test/java/org/apache/maven/plugin/resources/remote/stub/MavenProjectBasicStub.java
+@@ -154,15 +154,15 @@ public class MavenProjectBasicStub
+     {
+         // the pom should be located in the isolated dummy root
+         super.setFile( new File( getBasedir(), "pom.xml" ) );
+-        super.setDependencyArtifacts( new HashSet<>() );
+-        super.setArtifacts( new HashSet<>() );
+-        super.setPluginArtifacts( new HashSet<>() );
+-        super.setReportArtifacts( new HashSet<>() );
+-        super.setExtensionArtifacts( new HashSet<>() );
+-        super.setRemoteArtifactRepositories( new LinkedList<>() );
+-        super.setPluginArtifactRepositories( new LinkedList<>() );
+-        super.setCollectedProjects( new LinkedList<>() );
+-        super.setActiveProfiles( new LinkedList<>() );
++        super.setDependencyArtifacts( new HashSet() );
++        super.setArtifacts( new HashSet() );
++        super.setPluginArtifacts( new HashSet() );
++        super.setReportArtifacts( new HashSet() );
++        super.setExtensionArtifacts( new HashSet() );
++        super.setRemoteArtifactRepositories( new LinkedList() );
++        super.setPluginArtifactRepositories( new LinkedList() );
++        super.setCollectedProjects( new LinkedList() );
++        super.setActiveProfiles( new LinkedList() );
+         super.setOriginalModel( null );
+         super.setExecutionProject( this );
+         super.setArtifact( artifact );
+-- 
+2.25.4
+

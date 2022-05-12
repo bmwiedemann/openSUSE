@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 11 06:47:20 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.7.0
+- Added patch:
+  * 0001-Port-to-Maven-3.patch
+    + port tests to modern maven framework
+- Add with tests option
+
+-------------------------------------------------------------------
 Tue Mar 22 13:36:36 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source and target levels 8
