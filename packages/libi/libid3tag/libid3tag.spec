@@ -16,9 +16,9 @@
 #
 
 
-%define lver 0_16_1
+%define lver 0_16_2
 Name:           libid3tag
-Version:        0.16.1
+Version:        0.16.2
 Release:        0
 Summary:        ID3 Tag Manipulation Library
 License:        GPL-2.0-or-later
@@ -26,11 +26,10 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/tenacityteam/libid3tag
 Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-Patch0:         id3_ucs4_length-sanity-check.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  gperf
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -56,7 +55,6 @@ develop applications with libid3tag.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %cmake

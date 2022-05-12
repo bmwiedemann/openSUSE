@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May  9 17:01:41 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.16.2
+  * Fix null pointer dereference in id3_ucs4_length
+    (boo#1081962, CVE-2017-11550)
+- Drop id3_ucs4_length-sanity-check.patch. Merged upstream.
+
+-------------------------------------------------------------------
 Fri Apr  8 13:46:43 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Add id3_ucs4_length-sanity-check.patch as Patch0.
