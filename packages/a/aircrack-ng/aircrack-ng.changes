@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Wed May 11 08:06:23 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7
+  Airdecap-ng
+  * Endianness fixes.
+  * Output PCAP as little endian.
+  Airodump-ng
+  * Fixed blank encryption field when APs have TKIP (and/or CCMP)
+    with WPA2.
+  * Updated encryption filter (-t/--encrypt) for WPA3 and OWE.
+  * Fixed out-of-order timestamp captures.
+  * Ignore NULL PMKID.
+  * Fixed dropping management frames with zeroed timestamp.
+  * Fixed sorting where sometimes it started with a different field
+  * Allow setting colors only in AP selection mode.
+  * Fix crash on 4K Linux console.
+  * Fixed issue where existing clients not linked to an AP become
+    hidden when hitting 'o'.
+  * Allow use of WiFi 6E 6GHz frequencies.
+  * Look for oui.txt in /usr/share/hwdata.
+  Airgraph-ng
+  * Fixed graphviz package conflict.
+  * Fixed downloading OUI with python3.
+  * Ensure support/ directory is created when installing.
+  Aircrack-ng
+  * Fix handshake replay counter logic.
+  * Handle timeout when parsing EAPOL.
+  * Fixed WEP display.
+  * Fixed spurious EXIT messages.
+  * Improved handshake selection by fixing EAPOL timing and
+    clearing state.
+  * Ignore NULL PMKID.
+  * Added Apple M1 detection.
+  Aireplay-ng
+  * In test mode, detect tampering of sequence number b
+    firmware/driver.
+  * Fixed incorrectly rewritten loops affecting fragmentation
+    attack, and in some cases, SKA fake auth.
+  * Fixed a bunch of instances where packets had their
+    duration updated instead of the sequence number.
+  Airmon-ng
+  * Fix avahi killing.
+  * rewrite service stopping entirely.
+  * Codestyle fixes and code cleanup.
+  * Added a few Raspberry Pi hardware revisions.
+  * Fixes for 8812au driver.
+  * Fix iwlwifi firmware formatting.
+  * Remove broken KVM detection.
+  * Show regdomain in verbose mode.
+  * Document frequency usage.
+  * Add a sleep to help predictable names due to udev sometimes
+    renaming interface.
+  * Added warning for broken radiotap headers in kernel 5.15
+    to 5.15.4
+  * shellcheck fixes.
+  * support systemctl as some systems don't support 'service'
+    anymore.
+  * Fixes for pciutils 3.8, backward compatible.
+  Airbase-ng
+  * use enum for frame type/subtype.
+  * remove a few IE in association responses.
+  Besside-ng
+  * Support and detect all channels in 5GHz in Auto-Channel mode.
+  OSdep
+  * Search additional IE for channel information
+  Airgraph-ng
+  * switch airodump-join to Python 3
+  General
+  * Fix compilation with LibreSSL 3.5.
+  * Add Linux uclibc support.
+  * Shell script fixes thanks to shellcheck.
+  * Fixes for GCC 10 and 11.
+  * Fixed cross-compilation.
+  * Code refactoring, deduplication, cleanup, and misc code
+    improvements.
+  * Coverity Scan fixes, which includes memory leaks, race
+    conditions, division by 0, and other issues.
+- Remove patch:
+  * conflict.patch (not longer needed)
+
+-------------------------------------------------------------------
 Sun Jul  5 07:22:00 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix build with gcc10 (gh#2138)

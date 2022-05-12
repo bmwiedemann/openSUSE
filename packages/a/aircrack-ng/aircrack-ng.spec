@@ -1,7 +1,7 @@
 #
 # spec file for package aircrack-ng
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_without sqlite
 %bcond_with asan
 Name:           aircrack-ng
-Version:        1.6
+Version:        1.7
 Release:        0
 Summary:        A set of tools for auditing wireless networks
 License:        GPL-2.0-or-later
@@ -28,7 +28,6 @@ Group:          Productivity/Networking/Security
 URL:            https://www.aircrack-ng.org/
 Source0:        https://download.aircrack-ng.org/%{name}-%{version}.tar.gz
 Source1:        README.SUSE
-Patch0:         conflict.patch
 BuildRequires:  autoconf
 BuildRequires:  ethtool
 BuildRequires:  expect
@@ -67,7 +66,6 @@ Development files for %{name}.
 
 %prep
 %setup -q
-%patch0 -p1
 find patches/ -type f -exec sed -i 's|\r||g' {} +
 cp "%{SOURCE1}" .
 # Force python3 interpreter
@@ -92,14 +90,12 @@ autoreconf -fiv
            --enable-libnl
 %make_build
 
-
 %install
 %make_install
 rm patches/old/ieee80211_inject.patch
 find %{buildroot} -type f \( -name "*.la" -o -name "*.a" \) -delete -print
 %if %{with unstable}
 rm %{buildroot}%{_prefix}/local/lib/python3*/site-packages/aircrack-ng/air*-install_files.txt
-mkdir %{buildroot}%{_datadir}/airgraph-ng/
 %endif
 
 %check
