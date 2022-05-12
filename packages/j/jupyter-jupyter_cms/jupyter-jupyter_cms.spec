@@ -71,7 +71,8 @@ This package adds the following features to Jupyter Notebook:
 %python3_install
 
 %{jupyter_nbextension_install jupyter_cms}
-%{fdupes %{buildroot}%{python3_sitelib} %{buildroot}%{_jupyter_nbextension_dir}}
+%fdupes %{buildroot}%{python3_sitelib}
+%fdupes %{buildroot}%{_jupyter_nbextension_dir}
 
 %post
 %{jupyter_serverextension_enable jupyter_cms}
