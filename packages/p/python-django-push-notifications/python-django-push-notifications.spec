@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-push-notifications
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-push-notifications
-Version:        2.0.0
+Version:        3.0.0
 Release:        0
 Summary:        Django package to send push notifications to mobile devices
 License:        MIT
@@ -34,12 +34,14 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module apns2}
-BuildRequires:  %{python_module djangorestframework >= 3.7}
 BuildRequires:  %{python_module django-codemod}
-BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module djangorestframework >= 3.7}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pywebpush >= 1.3.0}
+BuildRequires:  %{python_module wheel}
 # /SECTION
 %python_subpackages
 
@@ -52,10 +54,10 @@ to WebPush (Chrome, Firefox and Opera) in Django.
 djcodemod run --removed-in 4.0 push_notifications/{admin,fields,models}.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
