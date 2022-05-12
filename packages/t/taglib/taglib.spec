@@ -119,6 +119,7 @@ This package contains the taglib API Documentation in HTML format.
 %cmake \
   -DWITH_ASF:BOOL=ON \
   -DWITH_MP4:BOOL=ON \
+  -DCMAKE_SKIP_BUILD_RPATH=ON \
 %if %{with tests}
   -DBUILD_TESTS:BOOL=ON \
   -DBUILD_EXAMPLES:BOOL=OFF \

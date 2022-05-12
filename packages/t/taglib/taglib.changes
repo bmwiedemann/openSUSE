@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May  9 19:05:54 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove build rpath from executables (boo#1199058)
+
+-------------------------------------------------------------------
 Thu Mar 18 17:18:24 CET 2021 - tiwai@suse.de
 
 - Add missing zlib dependency in devel package
