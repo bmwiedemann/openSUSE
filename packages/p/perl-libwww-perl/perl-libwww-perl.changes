@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 27 03:08:23 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.64
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+
+  6.64      2022-04-26 13:16:03Z
+      - Remove unused variable introduced in 9d73bc422 (GH#411) (Olaf Alders)
+
+  6.63      2022-04-25 15:24:10Z
+      - Redirect on meta refresh (GH#409) (grr)
+
+-------------------------------------------------------------------
 Wed Apr  6 03:15:16 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.62
