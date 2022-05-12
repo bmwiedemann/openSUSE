@@ -99,4 +99,60 @@
     <comment></comment>
     <requestid>943000</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>136a4f4e0a67bd5bd1bad393d0429f56</srcmd5>
+    <version>1.18.1</version>
+    <time>1652389093</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to multibuild to break build cycles.
+- Upgrade to 1.18.1:
+  - Fix mocked module import not working when used as guarded
+    import
+  - Support and require nptyping&gt;=2
+  - Handle UnionType
+  - Mark it as requiring nptyping&lt;2
+  - Add typehints_use_rtype option
+  - Handles TypeError when getting source code via inspect
+  - Add support for type subscriptions with multiple elements,
+    where one or more elements are tuples; e.g.,
+    nptyping.NDArray[(Any, ...), nptyping.Float]
+  - Fix bug for arbitrary types accepting singleton
+    subscriptions; e.g., nptyping.Float[64]
+  - Resolve forward references
+  - Expand and better handle TypeVar
+  - Add intershpinx reference link for ... to Ellipsis (as is
+    just an alias)
+  - Prevents reaching inner blocks that contains if TYPE_CHECKING
+  - Log a warning instead of crashing when a type guard import
+    fails to resolve
+  - When resolving type guard imports if the target module does
+    not have source code (such is the case for C-extension
+    modules) do nothing instead of crashing
+  - Fix fully_qualified should be typehints_fully_qualified
+  - Resolve type guard imports before evaluating annotations for
+    objects
+  - Remove set_type_checking_flag flag as this is now done by
+    default
+  - Fix crash when the inspect module returns an invalid python
+    syntax source
+  - Made formatting function configurable using the option
+    typehints_formatter
+  - Fixed normalize_source_lines() messing with the indentation
+    of methods with decorators that have parameters starting with
+    def.
+  - Handle ValueError or TypeError being raised when signature of
+    an object cannot be determined
+  - Fix KeyError being thrown when argument is not documented
+    (e.g. cls argument for class methods, and self for methods)
+  - Added typehints_defaults config option allowing to
+    automatically annotate parameter defaults.
+  - Fixed NewType inserts a reference as first argument instead
+    of a string
+  - Dropped Python 3.6 support
+  - Python 3.10 support
+  - Normalize async functions properly
+  - Allow py310 style annotations (PEP-563)
+</comment>
+    <requestid>976276</requestid>
+  </revision>
 </revisionlist>
