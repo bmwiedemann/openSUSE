@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu May 12 07:05:15 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.12.3
+  General
+  -------
+  - Add support for Python 3.10 (`#1078`_)
+  S3
+  --
+  - Re-raise non-404 errors in ``.exists()`` (`#1084`_, `#1085`_)
+  Azure
+  -----
+  - Fix using ``AZURE_CUSTOM_DOMAIN`` with an account key credential (`#1082`_, `#1083`_)
+  SFTP
+  ----
+  - Catch ``FileNotFoundError`` instead of ``OSerror`` in ``.exists()`` to prevent swallowing ``socket.timeout`` exceptions (`#1064`_, `#1087`_)
+  Azure
+  -----
+  - Add ``parameters`` kwarg to ``AzureStorage.url`` to configure blob properties in the SAS token (`#1071`_)
+  - Fix regression where ``AZURE_CUSTOM_DOMAIN`` was interpreted as a replacement of ``blob.core.windows.net`` rather than as a full domain
+    (`#1073`_, `#1076`_)
+
+-------------------------------------------------------------------
 Tue Oct 12 13:28:10 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.12.1
