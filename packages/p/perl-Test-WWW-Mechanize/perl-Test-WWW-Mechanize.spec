@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-WWW-Mechanize
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,22 @@
 #
 
 
-Name:           perl-Test-WWW-Mechanize
-Version:        1.54
-Release:        0
 %define cpan_name Test-WWW-Mechanize
-Summary:        Testing-specific WWW::Mechanize subclass
+Name:           perl-Test-WWW-Mechanize
+Version:        1.58
+Release:        0
 License:        Artistic-2.0
-Group:          Development/Libraries/Perl
+Summary:        Testing-specific WWW::Mechanize subclass
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Carp::Assert::More) >= 1.16
 BuildRequires:  perl(HTML::Form)
 BuildRequires:  perl(HTML::TokeParser)
+BuildRequires:  perl(HTTP::Message) >= 6.29
 BuildRequires:  perl(HTTP::Server::Simple) >= 0.42
 BuildRequires:  perl(HTTP::Server::Simple::CGI)
 BuildRequires:  perl(LWP) >= 6.02
@@ -45,6 +44,7 @@ BuildRequires:  perl(parent)
 Requires:       perl(Carp::Assert::More) >= 1.16
 Requires:       perl(HTML::Form)
 Requires:       perl(HTML::TokeParser)
+Requires:       perl(HTTP::Message) >= 6.29
 Requires:       perl(HTTP::Server::Simple) >= 0.42
 Requires:       perl(HTTP::Server::Simple::CGI)
 Requires:       perl(LWP) >= 6.02
@@ -60,11 +60,11 @@ Requires:       perl(parent)
 Testing-specific WWW::Mechanize subclass
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -75,7 +75,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README.md
 
 %changelog

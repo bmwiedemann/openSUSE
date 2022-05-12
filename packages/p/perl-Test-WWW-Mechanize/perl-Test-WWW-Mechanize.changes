@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Apr 30 03:08:05 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.58
+   see /usr/share/doc/packages/perl-Test-WWW-Mechanize/Changes
+
+  1.58    Fri Apr 29 11:23:39 CDT 2022
+  ------------------------------------
+  [ENHANCEMENTS]
+  Failed get_ok, post_ok, head_ok, put_ok, delete_ok calls now show the URL
+  as a diagnostic if there's a problem accessing the URL.  This apply to
+  functions like submit_form_ok() and follow_link_ok() that are wrappers
+  around these methods.
+  1.56    Tue Apr 26 22:14:12 CDT 2022
+  ------------------------------------
+  This version of Test::WWW::Mechanize requires Perl 5.10.
+  [ENHANCEMENTS]
+  Add check_all_images_ok(). (GH #17)  Thanks, Julien Fiegehenn.
+  This is the first version of this function, and its functionality may
+  change in the near future.
+  [DOCUMENTATION]
+  Fixed some incorrect docs. Thanks, Daniel Böhmer.
+  [INTERNALS]
+  Require Perl 5.10.
+  Explicitly requires HTTP::Message 6.29 or higher.
+
+-------------------------------------------------------------------
 Fri Dec 11 03:08:55 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.54
