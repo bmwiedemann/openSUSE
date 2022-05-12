@@ -27,7 +27,6 @@ License:        MIT
 URL:            https://github.com/gintas/django-picklefield
 Source:         https://github.com/gintas/django-picklefield/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 1.11}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 1.11
