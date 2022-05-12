@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  4 08:46:42 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- switch source url to https
+
+-------------------------------------------------------------------
 Mon Apr 25 07:49:55 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Also set CMAKE_SKIP_INSTALL_RPATH=OFF (boo#1198785)

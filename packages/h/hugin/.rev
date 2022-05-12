@@ -587,4 +587,12 @@
     <comment>- Also set CMAKE_SKIP_INSTALL_RPATH=OFF (boo#1198785) (forwarded request 972527 from favogt)</comment>
     <requestid>972541</requestid>
   </revision>
+  <revision rev="73" vrev="4">
+    <srcmd5>a3c9890023ea4ceb71853fe053d10a84</srcmd5>
+    <version>2021.0.0</version>
+    <time>1652389165</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>976249</requestid>
+  </revision>
 </revisionlist>

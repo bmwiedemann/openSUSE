@@ -29,7 +29,7 @@ Summary:        Toolchain for Stitching of Images and Creating Panoramas
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            http://hugin.sourceforge.net/
-Source:         http://downloads.sourceforge.net/project/%{name}/%{name}/%{name}-%{mversion}/%{name}-%{version}.tar.bz2
+Source:         https://downloads.sourceforge.net/project/%{name}/%{name}/%{name}-%{mversion}/%{name}-%{version}.tar.bz2
 Patch0:         hugin.appdata.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  OpenEXR-devel
