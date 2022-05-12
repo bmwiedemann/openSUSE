@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 11 12:30:36 UTC 2022 - pgajdos@suse.com
+
+- do not use python-mock for build
+- added patches
+  fix https://github.com/django-tastypie/django-tastypie/issues/1635
+  + python-django-tastypie-no-mock.patch
+
+-------------------------------------------------------------------
 Fri Feb 25 21:59:18 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.14.4:
