@@ -71,6 +71,8 @@ BuildRequires:  sysuser-tools
 # net-snmp-devel is needed to build the snmp ldap-agent
 BuildRequires:  net-snmp-devel >= 5.1.2
 BuildRequires:  openldap2-devel
+# Libressl is incompatible with our rust cryptographic needs.
+BuildRequires:  openssl-devel
 # pam-devel is required by the pam passthru auth plug-in
 BuildRequires:  %use_python-argcomplete
 BuildRequires:  %use_python-argparse-manpage
@@ -84,6 +86,7 @@ BuildRequires:  %use_python-six
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
+BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libcap)
@@ -92,7 +95,6 @@ BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(nspr)
 BuildRequires:  pkgconfig(nss)
-BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(systemd)
 %if %{use_tcmalloc}
 BuildRequires:  pkgconfig(libtcmalloc)

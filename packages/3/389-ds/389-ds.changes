@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 12 03:39:04 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Add missing devel library on zlib for log compression
+- Force openssl as libressl is not compatible with rust ssl needs
+
+-------------------------------------------------------------------
 Thu Apr 21 04:15:58 UTC 2022 - william.brown@suse.com
 
 - bsc#1196526 - Add systemd override to correct ordering with krb components
