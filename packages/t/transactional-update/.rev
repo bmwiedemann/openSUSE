@@ -891,4 +891,22 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
 </comment>
     <requestid>963875</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>825773d322f40acbc753ebd60f3a87f3</srcmd5>
+    <version>4.0.0~rc3</version>
+    <time>1652389063</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.0.0~rc3
+  - Add Snapshot interface
+  - Reworked signal handling: All public signals are sent from the
+    main thread now, keeping the same sender for everything
+  - Implement D-Bus call &quot;Execute&quot; for Transactions
+  - Implement interface for listing Snapshots
+  - Implement Reboot interface
+  - Fix bug when using --continue on old snapshots
+  - Fix hypothetical integer overflow in snapshot list [bsc#1196826]
+  - Fix wrong sort order in status command
+    [gh#openSUSE/transactional-update#80] </comment>
+    <requestid>974853</requestid>
+  </revision>
 </revisionlist>
