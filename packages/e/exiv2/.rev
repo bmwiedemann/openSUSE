@@ -619,4 +619,12 @@
   * Minor bugs and fixes</comment>
     <requestid>931277</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>f19882dbdd571a6815d97b367bc3c35a</srcmd5>
+    <version>0.27.5</version>
+    <time>1652389059</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.27.4 (bsc#1186053, CVE-2021-29623):</comment>
+    <requestid>976052</requestid>
+  </revision>
 </revisionlist>
