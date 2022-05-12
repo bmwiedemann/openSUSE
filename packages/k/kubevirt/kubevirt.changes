@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May  9 15:18:55 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 0.53.0
+  Release notes https://github.com/kubevirt/kubevirt/releases/tag/v0.53.0
+
+-------------------------------------------------------------------
+Thu Apr 28 06:21:51 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Build and pack virt-freezer and virt-probe helpers
+- Increase storage requirements in _constraints
+
+-------------------------------------------------------------------
 Mon Apr 11 07:30:43 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Update to version 0.52.0

@@ -17,7 +17,7 @@
 
 
 Name:           kubevirt
-Version:        0.52.0
+Version:        0.53.0
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -185,13 +185,16 @@ KUBEVIRT_GIT_VERSION='v%{version}' \
 KUBEVIRT_GIT_TREE_STATE="clean" \
 build_tests="true" \
 ./hack/build-go.sh install \
-    cmd/virtctl \
     cmd/virt-api \
-    cmd/virt-controller \
     cmd/virt-chroot \
+    cmd/virt-controller \
+    cmd/virt-freezer \
     cmd/virt-handler \
     cmd/virt-launcher \
+    cmd/virt-launcher-monitor \
     cmd/virt-operator \
+    cmd/virt-probe \
+    cmd/virtctl \
     %{nil}
 
 env DOCKER_PREFIX=$reg_path DOCKER_TAG=%{version}-%{release} KUBEVIRT_NO_BAZEL=true ./hack/build-manifests.sh
@@ -206,6 +209,9 @@ install -p -m 0755 _out/cmd/virt-controller/virt-controller %{buildroot}%{_bindi
 install -p -m 0755 _out/cmd/virt-chroot/virt-chroot %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/virt-handler/virt-handler %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/virt-launcher/virt-launcher %{buildroot}%{_bindir}/
+install -p -m 0755 _out/cmd/virt-launcher-monitor/virt-launcher-monitor %{buildroot}%{_bindir}/
+install -p -m 0755 _out/cmd/virt-freezer/virt-freezer %{buildroot}%{_bindir}/
+install -p -m 0755 _out/cmd/virt-probe/virt-probe %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/virt-operator/virt-operator %{buildroot}%{_bindir}/
 install -p -m 0755 _out/tests/tests.test %{buildroot}%{_bindir}/virt-tests
 install -p -m 0755 cmd/virt-launcher/node-labeller/node-labeller.sh %{buildroot}%{_bindir}/
@@ -271,6 +277,9 @@ install -m 0644 %{S:2} %{buildroot}%{_prefix}/lib/obs/service
 %license LICENSE
 %doc README.md
 %{_bindir}/virt-launcher
+%{_bindir}/virt-launcher-monitor
+%{_bindir}/virt-freezer
+%{_bindir}/virt-probe
 %{_bindir}/node-labeller.sh
 
 %files virt-operator
