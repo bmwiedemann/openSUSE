@@ -1,7 +1,7 @@
 #
 # spec file for package prometheus-postgres_exporter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021 Silvio Moioli <moio@suse.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,6 +15,8 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 %if 0%{?rhel}
 # Fix ERROR: No build ID note found in
 %undefine _missing_build_ids_terminate_build
@@ -29,10 +31,10 @@
 
 %define project github.com/prometheus-community/postgres_exporter
 Name:           prometheus-postgres_exporter
-Obsoletes:      golang-github-wrouesnel-postgres_exporter < %version-%release
-Provides:       golang-github-wrouesnel-postgres_exporter = %version-%release
 Version:        0.10.0
 Release:        0
+Obsoletes:      golang-github-wrouesnel-postgres_exporter < %version-%release
+Provides:       golang-github-wrouesnel-postgres_exporter = %version-%release
 Summary:        Prometheus exporter for PostgreSQL
 License:        Apache-2.0
 Group:          System/Management
@@ -75,8 +77,8 @@ install -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/prometheus-postgres_export
 install -D -m 0645 %{SOURCE3} %buildroot%{_fillupdir}/sysconfig.prometheus-postgres_exporter
 %fdupes %{buildroot}
 
-%pre
 %if 0%{?suse_version}
+%pre
 %service_add_pre %{name}.service
 %endif
 

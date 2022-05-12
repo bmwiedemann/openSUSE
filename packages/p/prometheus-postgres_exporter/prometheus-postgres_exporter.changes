@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 11 17:27:07 UTC 2022 - Stefan Bluhm <stefan.bluhm@clacee.eu>
+
+- Version/release lines above first usage of those macros.
+  gh#uyuni-project/uyuni#5418
+
+-------------------------------------------------------------------
+Tue May 10 13:44:24 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Prevent empty %pre section
+
+-------------------------------------------------------------------
 Fri Apr 22 08:15:18 UTC 2022 - Martin Seidl <mseidl@suse.de>
 
 - Exclude s390 builds 
