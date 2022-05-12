@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May 11 13:49:05 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream verson 3.0.0 milestone M1
+- Added patches:
+  * 0001-MINSTALL-143-Remove-a-lot-of-checksum-related-dead-c.patch
+  * 0002-MINSTALL-171-Update-plugin-requires-Maven-3.2.5.patch
+    + Backport upstream fixes to avoid the org.sonatype.aether
+      dependencies
+  * 0003-Fix-tests-with-modular-javas.patch
+    + Add a maven profile to open needed modules to unnamed module
+    + Fixes tests with Java 17
+  * 0004-Fix-tests-with-maven-resolver-1.7.3.patch
+    + maven-resolver 1.7.x had an incompatible change
+    + This fix allows us to use the maven-resolver 1.7.3
+
+-------------------------------------------------------------------
 Tue Mar 22 13:07:25 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 8
