@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue May 10 22:25:54 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.18.2 (released 2022-05-10) includes security fixes to the
+  syscall package, as well as bug fixes to the compiler, runtime,
+  the go command, and the crypto/x509, go/types, net/http/httptest,
+  reflect, and sync/atomic packages.
+  Refs boo#1193742 go1.18 release tracking
+  CVE-2022-29526
+  * boo#1199413 go#52313 CVE-2022-29526
+  * go#52440 syscall: Faccessat checks wrong group
+  * go#51738 runtime: wrong type assertion result when using generic types
+  * go#51798 cmd/go: add (and default to) -buildvcs=auto
+  * go#51859 crypto/x509: x509 certificate with issuerUniqueID and/or subjectUniqueID parse error
+  * go#51897 net/http/httptest: race in Close
+  * go#52028 go/types: documentation on instance de-duplication is unclear about guarantees
+  * go#52149 syscall: TestGroupCleanupUserNamespace failure on linux-s390x-ibm
+  * go#52244 go/types, types2: go generic assert compile escape
+  * go#52305 runtime: doAllThreadsSyscall has an unaligned atomic load on 32-bit architectures
+  * go#52366 cmd/compile/internal/ssa: occurred the wrong rewrite cycle detection
+  * go#52375 runtime: executable compiled under Go 1.17.7 will occasionally wedge
+  * go#52386 reflect: can set map elem with string key of a different string type
+  * go#52441 cmd/compile: incorrect handling of iota in 1.18
+  * go#52468 cmd/go: go run -mod=mod [files...] does not update go.mod and go.sum
+  * go#52558 cmd/compile: cannot convert v (variable of type *Bar[T]) to type *Foo[T]
+  * go#52606 cmd/compile: internal compiler error: weird package in name: .dict0 => .dict0 from "", not "test/p"
+  * go#52615 sync/atomic: compare and swap of inconsistently typed values with uninitialized Value
+  * go#52691 cmd/compile: generic function appears to use incorrect type descriptor
+  * go#52699 runtime: support debugCall on arm64
+  * go#52706 net: TestDialCancel is not compatible with new macOS ARM64 builders
+  * go#52804 go/types: NewMethodSet doesn't terminate for recursively embedded generics
+
+-------------------------------------------------------------------
 Mon May  2 08:43:22 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Remove remaining use of gold linker when bootstrapping with
