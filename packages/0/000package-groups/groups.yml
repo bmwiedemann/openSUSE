@@ -34,7 +34,6 @@ common_locks:
   - kernel-vanilla: [locked]
   - kernel-kvmsmall: [locked]
   - kernel-debug: [locked]
-  - gcc11: [locked]
   - libLLVM13: [locked]
 
 dvd:
