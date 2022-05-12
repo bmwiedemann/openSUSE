@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  4 09:21:59 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- switch source urls to https
+
+-------------------------------------------------------------------
 Wed Mar 30 11:38:49 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Strip excess blank fields from librecad.desktop:MimeType

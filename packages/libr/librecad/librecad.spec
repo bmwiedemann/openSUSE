@@ -30,9 +30,9 @@ URL:            http://librecad.org/
 Source:         https://github.com/LibreCAD/LibreCAD/archive/%{tar_version}.tar.gz#/librecad-%{tar_version}.tar.gz
 # Version is actually 8, not 3 (it is 3 in the filename due to how MediaWiki
 # works -- see http://wiki.librecad.org/index.php/File:Architect3-LCAD.zip)
-Source2:        http://wiki.librecad.org/images/d/d9/Architect3-LCAD.zip
-Source3:        http://wiki.librecad.org/images/7/70/Electronics3-LCAD.zip
-Source4:        http://wiki.librecad.org/images/9/9d/Electrical1-LCAD.zip
+Source2:        https://wiki.librecad.org/images/d/d9/Architect3-LCAD.zip
+Source3:        https://wiki.librecad.org/images/7/70/Electronics3-LCAD.zip
+Source4:        https://wiki.librecad.org/images/9/9d/Electrical1-LCAD.zip
 Source10:       ttf2lff.1
 Source20:       %name-rpmlintrc
 Patch0:         0001-fixed-1488-getDirectoryList-failed-on-Linux-when-lib.patch
