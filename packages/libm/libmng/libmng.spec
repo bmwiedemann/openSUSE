@@ -1,7 +1,7 @@
 #
 # spec file for package libmng
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,8 +23,8 @@ Release:        0
 Summary:        Library for Support of MNG and JNG Formats
 License:        Zlib
 Group:          Development/Libraries/C and C++
-Url:            http://www.libmng.com/
-Source0:        http://downloads.sourceforge.net/project/%{name}/%{name}-devel/%{version}/%{name}-%{version}.tar.xz
+URL:            https://www.libmng.com/
+Source0:        https://downloads.sourceforge.net/project/%{name}/%{name}-devel/%{version}/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 Patch0:         libmng-1.0.9-dont-leak-zlib-streams.diff
 BuildRequires:  cmake
