@@ -1221,4 +1221,34 @@ build with uclibc</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>964255</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>2ce0e7dc698c3e4b1e60a0d5eed613e9</srcmd5>
+    <version>2.3+20220506</version>
+    <time>1652389155</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3+20220506:
+  * Switch to newer KLEE uClibc release
+  * Updated tests to use ktest-randgen instead of gen-random-bout
+  * Renamed gen-random-bout to ktest-randgen
+  * Updated tests to use ktest-gen instead of gen-bout
+  * Updated klee-zesti to use ktest-gen instead of gen-bout
+  * Renamed gen-bout to ktest-gen
+  * cl flags: document default values, remove dead option:
+    --replay-keep-symbolic
+  * Make Uclibc support a runtime option, not a compile-time one.
+  * use mallinfo2 if available
+  * Remove unnecessary call to deprecated function sqlite3_enable_shared_cache
+  * Add LLVM 9 and LLVM 11 patches to build with newer Linux kernel versions
+  * Build libcxx in parallel if possible
+  * Clearly separate between LLVM, a bitcode compiler, and sanitizer compiler
+  * Add support to `sudo` if necessary
+  * Removed/updated obsolete Doxygen configuration options
+  * Disabled Doxygen by default
+  * ADT/Ref.h: remove header
+  * Updated test MemoryLimit.c to use FileCheck, and formatted the file
+  * Document that GetTotalMallocUsage returns the usage in bytes
+- add shlib-policy-name-error filter to rpmlint (for 15.4)
+</comment>
+    <requestid>976213</requestid>
+  </revision>
 </revisionlist>

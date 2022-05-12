@@ -31,7 +31,7 @@ Name:           klee
 Summary:        LLVM Execution Engine
 License:        NCSA
 Group:          Development/Languages/Other
-Version:        2.2+20220311
+Version:        2.3+20220506
 Release:        0
 URL:            http://klee.github.io/
 Source0:        %{name}-%{version}.tar.xz
@@ -129,13 +129,13 @@ ninja check
 %defattr(-,root,root)
 %doc NEWS README.md
 %license LICENSE.TXT
-%{_bindir}/gen-bout
-%{_bindir}/gen-random-bout
 %{_bindir}/kleaver
 %{_bindir}/klee
 %{_bindir}/klee-replay
 %{_bindir}/klee-stats
 %{_bindir}/klee-zesti
+%{_bindir}/ktest-gen
+%{_bindir}/ktest-randgen
 %{_bindir}/ktest-tool
 %{_includedir}/klee/
 %{_libdir}/libkleeRuntest.so*
