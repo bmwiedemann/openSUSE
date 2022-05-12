@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed May 11 07:11:50 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Update to 7.83.1:
+  * Security fixes:
+    - (bsc#1199225, CVE-2022-30115) HSTS bypass via trailing dot 
+    - (bsc#1199224, CVE-2022-27782) TLS and SSH connection too eager reuse
+    - (bsc#1199223, CVE-2022-27781) CERTINFO never-ending busy-loop
+    - (bsc#1199222, CVE-2022-27780) percent-encoded path separator in URL host
+    - (bsc#1199221, CVE-2022-27779) cookie for trailing dot TLD
+    - (bsc#1199220, CVE-2022-27778) removes wrong file on error
+  * Bugfixes:
+    - altsvc: fix host name matching for trailing dots
+    - cirrus: Update to FreeBSD 12.3
+    - cirrus: Use pip for Python packages on FreeBSD
+    - conn: fix typo 'connnection' -> 'connection' in two function names
+    - cookies: make bad_domain() not consider a trailing dot fine
+    - curl: free resource in error path
+    - curl: guard against size_t wraparound in no-clobber code
+    - CURLOPT_DOH_URL.3: mention the known bug
+    - CURLOPT_HSTS*FUNCTION.3: document the involved structs as well
+    - CURLOPT_SSH_AUTH_TYPES.3: fix the default
+    - data/test376: set a proper name
+    - GHA/mbedtls: enabled nghttp2 in the build
+    - gha: build msh3
+    - gskit: fixed bogus setsockopt calls
+    - gskit: remove unused function set_callback
+    - hsts: ignore trailing dots when comparing hosts names
+    - HTTP-COOKIES: add missing CURLOPT_COOKIESESSION
+    - http: move Curl_allow_auth_to_host()
+    - http_proxy/hyper: handle closed connections
+    - hyper: fix test 357
+    - Makefile: fix "make ca-firefox"
+    - mbedtls: bail out if rng init fails
+    - mbedtls: fix compile when h2-enabled
+    - mbedtls: fix some error messages
+    - misc: use "autoreconf -fi" instead buildconf
+    - msh3: get msh3 version from MsH3Version
+    - msh3: print boolean value as text representation
+    - msh3: psss remote_port to MsH3ConnectionOpen
+    - ngtcp2: add ca-fallback support for OpenSSL backend
+    - nss: return error if seemingly stuck in a cert loop
+    - openssl: define HAVE_SSL_CTX_SET_EC_CURVES for libressl
+    - post_per_transfer: remove the updated file name
+    - sectransp: bail out if SSLSetPeerDomainName fails
+    - tests/server: declare variable 'reqlogfile' static
+    - tests: fix markdown formatting in README
+    - test{898,974,976}: add 'HTTP proxy' keywords
+    - tls: check more TLS details for connection reuse
+    - url: check SSH config match on connection reuse
+    - urlapi: address (harmless) UndefinedBehavior sanitizer warning
+    - urlapi: reject percent-decoding host name into separator bytes
+    - x509asn1: make do_pubkey handle EC public keys 
+
+-------------------------------------------------------------------
 Fri Apr 22 11:39:46 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Patches rework:
