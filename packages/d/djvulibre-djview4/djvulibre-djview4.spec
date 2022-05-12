@@ -1,7 +1,7 @@
 #
 # spec file for package djvulibre-djview4
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        Portable DjVu Qt4 Based Viewer and Browser Plugin
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            http://djvu.sourceforge.net/djview4.html
-Source:         http://downloads.sourceforge.net/djvu/djview-%{version}.tar.gz
+Source:         https://downloads.sourceforge.net/djvu/djview-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
 BuildRequires:  libqt5-linguist

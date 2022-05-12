@@ -262,4 +262,12 @@
 * Only run post(un) scriptlets for openSUSE &amp;lt; 1550; they are void for newer openSUSE and directly handled by file triggers. (forwarded request 857892 from badshah400)</comment>
     <requestid>858978</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>6450bce77c699242a3494798d95c44ac</srcmd5>
+    <version>4.12</version>
+    <time>1652389171</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>976270</requestid>
+  </revision>
 </revisionlist>
