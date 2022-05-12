@@ -595,4 +595,15 @@ fix a jira reference in the changelog.
   - Add all new APIs and constants in libvirt 8.2.0</comment>
     <requestid>966488</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>6326194e7c80276e22776081f99ec5bc</srcmd5>
+    <version>8.3.0</version>
+    <time>1652389050</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 8.3.0.
+
+- Update to 8.3.0
+  - Add all new APIs and constants in libvirt 8.3.0</comment>
+    <requestid>975933</requestid>
+  </revision>
 </revisionlist>

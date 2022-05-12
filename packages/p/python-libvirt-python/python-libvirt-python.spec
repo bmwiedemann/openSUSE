@@ -23,7 +23,7 @@
 %define srcname libvirt-python
 Name:           python-libvirt-python
 URL:            https://libvirt.org/
-Version:        8.2.0
+Version:        8.3.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -34,8 +34,8 @@ BuildRequires:  libvirt-devel = %{version}
 BuildRequires:  python-rpm-macros
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module xml}
 %ifpython2
 Provides:       libvirt-python = %{version}
 Obsoletes:      libvirt-python < %{version}
