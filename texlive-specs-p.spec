@@ -6325,7 +6325,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/mft/base/plain.mft
 
 %package -n texlive-mgltex
-Version:        %{texlive_version}.%{texlive_noarch}.4.2svn41676
+Version:        %{texlive_version}.%{texlive_noarch}.4.2svn63213
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        High-quality graphics from MGL scripts embedded in LaTeX documents
@@ -6380,7 +6380,7 @@ its own scripting language, called MGL, which can be used
 independently.
 
 %package -n texlive-mgltex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.4.2svn41676
+Version:        %{texlive_version}.%{texlive_noarch}.4.2svn63213
 Release:        0
 Summary:        Documentation for texlive-mgltex
 License:        GPL-2.0-or-later
@@ -6412,12 +6412,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-mgltex-doc
 %defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/mgltex/README
-%{_texmfdistdir}/doc/latex/mgltex/Recompilation_decision.eps
-%{_texmfdistdir}/doc/latex/mgltex/Recompilation_decision.pdf
+%{_texmfdistdir}/doc/latex/mgltex/README.TEXLIVE
 %{_texmfdistdir}/doc/latex/mgltex/Recompilation_decision.svg
-%{_texmfdistdir}/doc/latex/mgltex/mgltex.pdf
-%{_texmfdistdir}/doc/latex/mgltex/sample.pdf
-%{_texmfdistdir}/doc/latex/mgltex/sample.tex
 
 %files -n texlive-mgltex
 %defattr(-,root,root,755)
