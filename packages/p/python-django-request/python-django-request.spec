@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 Name:           python-django-request
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        Django statistics app
 License:        BSD-2-Clause
@@ -26,6 +26,8 @@ URL:            https://github.com/django-request/django-request
 Source:         https://github.com/django-request/django-request/archive/%{version}.tar.gz#/django-request-%{version}.tar.gz
 # gh#django-request/django-request#241
 Patch0:         set-timezone-for-day-tests.patch
+# https://github.com/django-request/django-request/issues/245
+Patch1:         python-django-request-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -33,7 +35,6 @@ Requires:       python-Django >= 2.2
 Requires:       python-python-dateutil
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module python-dateutil}
 # /SECTION
@@ -60,7 +61,7 @@ export DJANGO_SETTINGS_MODULE=tests.test_settings
 %python_exec -m django test -v 2
 
 %files %{python_files}
-%doc CHANGELOG.md README.md
+%doc CHANGELOG.md README.rst
 %license LICENSE
 %{python_sitelib}/*
 
