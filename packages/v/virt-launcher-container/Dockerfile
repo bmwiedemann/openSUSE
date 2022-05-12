@@ -76,4 +76,10 @@ COPY augconf /augconf
 RUN augtool -f /augconf
 RUN cd /var && rm -rf run && ln -s ../run .
 
+# Setup permissions and capabilities for non-root VMIs. KubeVirt sets
+# XDG_* directories to /var/run.
+RUN setcap 'cap_net_bind_service,cap_sys_ptrace=+ep' /usr/bin/virt-launcher && \
+    chmod 0755 /etc/libvirt && \
+    chown qemu:qemu /var/run
+
 ENTRYPOINT [ "/usr/bin/virt-launcher" ]

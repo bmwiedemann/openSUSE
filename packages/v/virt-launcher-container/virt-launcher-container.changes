@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 27 16:30:17 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Setup permissions and capabilities for non-root VMIs
+
+-------------------------------------------------------------------
 Fri Apr 15 10:50:30 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Install vim-small instread of vim
