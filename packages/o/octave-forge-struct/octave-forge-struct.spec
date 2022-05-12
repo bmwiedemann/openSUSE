@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-struct
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define octpkg  struct
 Name:           octave-forge-%{octpkg}
-Version:        1.0.17
+Version:        1.0.18
 Release:        0
 Summary:        Additional Structure manipulations functions for Octave
 License:        GPL-3.0-or-later

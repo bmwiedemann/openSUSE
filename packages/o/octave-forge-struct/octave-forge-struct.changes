@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Fri May  6 18:26:15 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.0.18:
+  * Installation fixes and adaption to changes in current
+    development version 8.0 of Octave.
+
+-------------------------------------------------------------------
 Sat Mar 13 13:45:20 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
-- Update to version 1.0.17:
   * Build fixes and adaption to changes in Octave 6.1.
 
 -------------------------------------------------------------------
