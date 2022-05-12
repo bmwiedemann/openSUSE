@@ -539,4 +539,22 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>975271</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>837d82a89ca1aec811b51d29cd329c22</srcmd5>
+    <version>2.1.2</version>
+    <time>1652389094</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.2:
+  * The development server does not set ``Transfer-Encoding: chunked``
+    for 1xx, 204, 304, and HEAD responses. :issue:`2375`
+  * Response HTML for exceptions and redirects starts with
+    ``&lt;!doctype html&gt;`` and ``&lt;html lang=en&gt;``. :issue:`2390`
+  * Fix ability to set some ``cache_control`` attributes to ``False``.
+    :issue:`2379`
+  * Disable ``keep-alive`` connections in the development server, which
+    are not supported sufficiently by Python's ``http.server``.
+    :issue:`2397` 
+- drop 2402-dev_server.patch (upstream)</comment>
+    <requestid>976285</requestid>
+  </revision>
 </revisionlist>

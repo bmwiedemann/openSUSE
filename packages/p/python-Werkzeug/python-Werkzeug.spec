@@ -20,17 +20,13 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-Werkzeug
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        The Swiss Army knife of Python web development
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://werkzeug.palletsprojects.com
 Source:         https://files.pythonhosted.org/packages/source/W/Werkzeug/Werkzeug-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 2402-dev_server.patch gh#pallets/werkzeug#2393 mcepl@suse.com
-# upstream solution to mark tests which require development server
-# from https://github.com/pallets/werkzeug/pull/2402
-Patch0:         2402-dev_server.patch
 # PATCH-FIX-UPSTREAM moved_root.patch bsc#[0-9]+ mcepl@suse.com
 # this patch makes things totally awesome
 Patch1:         moved_root.patch
