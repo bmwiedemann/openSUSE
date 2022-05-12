@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May  7 19:52:39 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.13.04
+  * Added 'bar_gfx' property to menus/enemy.txt for setting the "fill" image
+  * Fix crash when trying to read a non-existent file with INCLUDE
+  * Fix passive powers not being correctly re-applied after death
+  * Improve performance of WidgetListBox by caching all items
+    instead of just the visible ones
+
+-------------------------------------------------------------------
 Sat Feb  5 15:56:05 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Version update to 1.13

@@ -17,7 +17,7 @@
 
 
 Name:           flare
-Version:        1.13
+Version:        1.13.04
 Release:        0
 Summary:        Free Libre Action Roleplaying Engine
 License:        (CC-BY-SA-3.0 OR CC-BY-SA-4.0) AND GPL-3.0-or-later
@@ -35,8 +35,8 @@ BuildRequires:  pkgconfig(SDL2_ttf)
 Requires:       %{name}-game = %{version}
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
-Requires(postun): hicolor-icon-theme
-Requires(postun): update-desktop-files
+Requires(postun):hicolor-icon-theme
+Requires(postun):update-desktop-files
 Recommends:     python
 Provides:       %{name}-engine = %{version}
 
@@ -63,7 +63,7 @@ sed -i 's/@FLARE_EXECUTABLE_PATH@/%{name}/g' distribution/flare.desktop.in
     -DDATADIR="share/flare" \
     -DCMAKE_BUILD_TYPE="Release" \
     -DCMAKE_INSTALL_PREFIX="%{_prefix}"
-%make_build
+%cmake_build
 
 %install
 %cmake_install
