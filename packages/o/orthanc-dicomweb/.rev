@@ -63,4 +63,16 @@
     <comment></comment>
     <requestid>915796</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e179eb7a41d434d8c5e8fc799266aaa4</srcmd5>
+    <version>1.8</version>
+    <time>1652389233</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.8
+* Show an error message when trying to send studies &gt; 4GB via STOW-RS
+* Optimized QIDO-RS to build its responses from DB if tags are saved in &quot;ExtraMainDicomTags&quot;.
+* New configuration &quot;PublicRoot&quot; 
+</comment>
+    <requestid>976467</requestid>
+  </revision>
 </revisionlist>
