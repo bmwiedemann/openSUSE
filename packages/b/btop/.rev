@@ -160,4 +160,12 @@
   * fix: title_left symbol between auto and zero in the net box is not displayed</comment>
     <requestid>970907</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e03839adf9ff1c6eaeb793c2b9c1ae1a</srcmd5>
+    <version>1.2.6+git20220505.841941a</version>
+    <time>1652389264</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>976929</requestid>
+  </revision>
 </revisionlist>

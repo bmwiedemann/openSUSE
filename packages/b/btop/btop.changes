@@ -1,25 +1,35 @@
 -------------------------------------------------------------------
-Tue Apr 19 15:04:27 UTC 2022 - scott.bradnick@suse.com
+Thu May 05 18:56:57 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.2.6+git20220505.841941a:
+  * Include ZFS ARC in cached/available memory on Linux
+  * Fixed: Disk IO stats for individual partitions instead of whole disk
+  * Update snapcraft.yaml
+  * Update snapcraft.yaml
+  * Update snapcraft.yaml
+  * Update snapcraft.yaml
+  * Update snapcraft.yaml
+  * removed unneeded plugin
+
+-------------------------------------------------------------------
+Thu Apr 14 17:03:31 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version 1.2.6+git20220414.9abf849:
   * Update snapcraft.yaml
 
 -------------------------------------------------------------------
-Wed Apr 13 15:54:02 UTC 2022 - scott.bradnick@suse.com
+Wed Apr 13 15:59:21 UTC 2022 - scott.bradnick@suse.com
 
-- Update to version v1.2.6+git20220413.4bae3c4:
+- Update to version 1.2.6+git20220413.4bae3c4:
   * Update continuous-build-linux.yml
   * v1.2.6 Bug fixes
   * Changed: Enter symbol to a more common variant
   * updated robin_hood.h to v3.11.5
   * Fixed: Use cpu cores avarage temp if missing cpu package temp for FreeBSD
   * Fixed: Wrong memory unit when shorten and size is less than 10
-  * v1.2.5 Bug fixes
-  * Fixed: Mouse mappings for net box
-  * fix: title_left symbol between auto and zero in the net box is not displayed
 
 -------------------------------------------------------------------
-Mon Mar  7 16:21:05 UTC 2022 - scott.bradnick@suse.com
+Mon Mar  7 16:21:05 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to upstream release 1.2.5:
   * Fixed: Fallback to less accurate UTF8 char count if conversion to
@@ -31,7 +41,7 @@ Mon Mar  7 16:21:05 UTC 2022 - scott.bradnick@suse.com
   * Fixed: Mouse mappings for net box
 
 -------------------------------------------------------------------
-Mon Feb 28 16:23:44 UTC 2022 - scott.bradnick@suse.com
+Mon Feb 28 16:23:44 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to upstream release 1.2.4:
   * Optimization: Proc::draw()
@@ -41,7 +51,7 @@ Mon Feb 28 16:23:44 UTC 2022 - scott.bradnick@suse.com
   * Added: add "g" and "G" to vim keys, by @mohi001
 
 -------------------------------------------------------------------
-Tue Feb 15 18:31:34 UTC 2022 - scott.bradnick@suse.com
+Tue Feb 15 18:31:34 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to upstream release 1.2.3:
   * Changed: floating_humanizer() now show fractions when shortened and value
@@ -50,7 +60,7 @@ Tue Feb 15 18:31:34 UTC 2022 - scott.bradnick@suse.com
   * Fixed: string to wstring conversion crash when string is too big
 
 -------------------------------------------------------------------
-Mon Feb 14 20:32:36 UTC 2022 - scott.bradnick@suse.com
+Mon Feb 14 20:32:36 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to upstream release 1.2.2:
   * Changed: Reverted uncolor() back to using regex to fix delay in opening
@@ -59,7 +69,7 @@ Mon Feb 14 20:32:36 UTC 2022 - scott.bradnick@suse.com
   * Added: Clarification on signal screen that number can be manually entered
 
 -------------------------------------------------------------------
-Fri Feb 11 19:13:10 UTC 2022 - scott.bradnick@suse.com
+Fri Feb 11 19:13:10 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to upstream release 1.2.1:
   * Added: Arrow only after use of "f" when filtering processes, by @NavigationHazard
@@ -72,7 +82,7 @@ Fri Feb 11 19:13:10 UTC 2022 - scott.bradnick@suse.com
   * Fixed: Battery meter draw fix
 
 -------------------------------------------------------------------
-Tue Jan 18 15:13:31 UTC 2022 - scott.bradnick@suse.com
+Tue Jan 18 15:13:31 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to upstream release 1.2.0:
   * Added: Support for FreeBSD, by @joske and @aristocratos
@@ -81,7 +91,7 @@ Tue Jan 18 15:13:31 UTC 2022 - scott.bradnick@suse.com
   * Added: Option for base 10 bytes/bits
 
 -------------------------------------------------------------------
-Wed Dec 29 21:39:39 UTC 2021 - scott.bradnick@suse.com
+Wed Dec 29 21:39:39 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to upstream release 1.1.4:
   * Fixed: Create dependency files in build directory when compiling, by @stwnt
@@ -90,7 +100,7 @@ Wed Dec 29 21:39:39 UTC 2021 - scott.bradnick@suse.com
   * Fixed: in_avail() can always be zero, by @pg83
 
 -------------------------------------------------------------------
-Mon Dec 13 15:14:51 UTC 2021 - scott.bradnick@suse.com
+Mon Dec 13 15:14:51 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to upstream release 1.1.3:
   * Added: New theme ayu, by @AlphaNecron
@@ -101,7 +111,7 @@ Mon Dec 13 15:14:51 UTC 2021 - scott.bradnick@suse.com
   * Fixed: Suspected possibility of very rare stall in Input::clear()
 
 -------------------------------------------------------------------
-Sun Nov 28 21:25:30 UTC 2021 - scott.bradnick@suse.com
+Sun Nov 28 21:25:30 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to upstream release 1.1.2:
   * Fixed: SISEGV on macos Mojave, by @mgradowski
@@ -112,7 +122,7 @@ Sun Nov 28 21:25:30 UTC 2021 - scott.bradnick@suse.com
   * Fixed: coretemp ordering
 
 -------------------------------------------------------------------
-Tue Nov 16 16:47:50 UTC 2021 - scott.bradnick@suse.com
+Tue Nov 16 16:47:50 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to upstream release 1.1.1:
   * Added: Partial static build (libgcc, libstdc++) for macos
@@ -120,13 +130,13 @@ Tue Nov 16 16:47:50 UTC 2021 - scott.bradnick@suse.com
   * Changed: Release binaries for macos switched to OSX 12 (Monterey) and partial static build
 
 -------------------------------------------------------------------
-Mon Nov 15 21:11:28 UTC 2021 - scott.bradnick@suse.com
+Mon Nov 15 21:11:28 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to upstream release 1.1.0:
   * Added: Support for OSX, by @joske and @aristocratos
 
 -------------------------------------------------------------------
-Tue Nov  9 14:57:37 UTC 2021 - scott.bradnick@suse.com
+Tue Nov  9 14:57:37 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to upstream release 1.0.24:
   * Changed: Collection ordering
@@ -140,13 +150,13 @@ Tue Nov  9 14:57:37 UTC 2021 - scott.bradnick@suse.com
   * Fixed: Inconsistent behaviour of "q" key in the menus
 
 -------------------------------------------------------------------
-Thu Nov  4 14:31:35 UTC 2021 - scott.bradnick@suse.com
+Thu Nov  4 14:31:35 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to upstream release 1.0.22:
   * Fixed: Bad values for disks and network on 32-bit
 
 -------------------------------------------------------------------
-Tue Nov  2 20:43:52 UTC 2021 - scott.bradnick@suse.com
+Tue Nov  2 20:43:52 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to upstream release 1.0.21:
   * Fixed: Removed extra spaces in cpu name
@@ -154,7 +164,7 @@ Tue Nov  2 20:43:52 UTC 2021 - scott.bradnick@suse.com
   * Fixed: Security issue when running with SUID bit set
 
 -------------------------------------------------------------------
-Wed Oct 27 15:15:27 UTC 2021 - scott.bradnick@suse.com
+Wed Oct 27 15:15:27 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to upstream release 1.0.20:
   * Added: Improved cpu sensor detection for Ryzen Mobile, by @adnanpri
@@ -163,13 +173,13 @@ Wed Oct 27 15:15:27 UTC 2021 - scott.bradnick@suse.com
   * Changed: Removed all use of regex with dedicated string functions
 
 -------------------------------------------------------------------
-Thu Oct 21 16:03:46 UTC 2021 - scott.bradnick@suse.com
+Thu Oct 21 16:03:46 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to upstream release 1.0.19:
   * Fixed: Makefile now tests compiler flag compatibility
 
 -------------------------------------------------------------------
-Tue Oct 19 15:40:53 UTC 2021 - scott.bradnick@suse.com
+Tue Oct 19 15:40:53 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to upstream release 1.0.18:
   * Fixed: Makefile g++ -dumpmachine failure to get platform on some distros
@@ -181,17 +191,17 @@ Tue Oct 19 15:40:53 UTC 2021 - scott.bradnick@suse.com
   * Fixed: Battery error if non existent battery named is entered
 
 -------------------------------------------------------------------
-Mon Oct 18 17:33:44 UTC 2021 - scott.bradnick@suse.com
+Mon Oct 18 17:33:44 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Updating to version 1.0.16 ...
 
 -------------------------------------------------------------------
-Wed Oct 13 15:50:02 UTC 2021 - scott.bradnick@suse.com
+Wed Oct 13 15:50:02 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Updating to version 1.0.15 ...
 
 -------------------------------------------------------------------
-Thu Oct  7 13:57:15 UTC 2021 - scott.bradnick@suse.com
+Thu Oct  7 13:57:15 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Updating to version 1.0.14 ...
 
@@ -202,46 +212,46 @@ Sat Oct  2 09:54:55 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
 - improve filelist (no more "files listed twice...")
 
 -------------------------------------------------------------------
-Wed Sep 29 20:57:08 UTC 2021 - scott.bradnick@suse.com
+Wed Sep 29 20:57:08 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Updating to version 1.0.11 ...
 
 -------------------------------------------------------------------
-Tue Sep 28 18:07:45 UTC 2021 - scott.bradnick@suse.com
+Tue Sep 28 18:07:45 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Updating to version 1.0.10 ...
 
 -------------------------------------------------------------------
-Tue Sep 28 13:36:12 UTC 2021 - scott.bradnick@suse.com
+Tue Sep 28 13:36:12 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Cleaning commented lines and changelog entries from spec file.
 
 -------------------------------------------------------------------
-Mon Sep 27 12:34:55 UTC 2021 - scott.bradnick@suse.com
+Mon Sep 27 12:34:55 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Updating to version 1.0.9 ...
 
 -------------------------------------------------------------------
-Fri Sep 24 14:28:18 UTC 2021 - scott.bradnick@suse.com
+Fri Sep 24 14:28:18 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Updating to version 1.0.6 ...
 
 -------------------------------------------------------------------
-Thu Sep 23 14:05:47 UTC 2021 - scott.bradnick@suse.com
+Thu Sep 23 14:05:47 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Updating to version 1.0.5 ...
 
 -------------------------------------------------------------------
-Wed Sep 22 15:19:38 UTC 2021 - scott.bradnick@suse.com
+Wed Sep 22 15:19:38 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Updating to version 1.0.4 ...
 
 -------------------------------------------------------------------
-Tue Sep 21 14:59:00 UTC 2021 - scott.bradnick@suse.com
+Tue Sep 21 14:59:00 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Updating to version 1.0.2 ...
 
 -------------------------------------------------------------------
-Mon Sep 20 14:35:47 UTC 2021 - scott.bradnick@suse.com
+Mon Sep 20 14:35:47 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Initial commit for version 1.0.1 ...
