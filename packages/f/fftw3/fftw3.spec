@@ -1,5 +1,5 @@
 #
-# spec file for package fftw3
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #

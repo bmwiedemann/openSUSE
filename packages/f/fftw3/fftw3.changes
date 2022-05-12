@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 27 08:41:39 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update rpmlintrc for shlib-policy-name-error
+
+-------------------------------------------------------------------
 Tue Jan 18 17:01:55 CET 2022 - tiwai@suse.de
 
 - Don't install half-baked cmake files (bsc#1194728):
