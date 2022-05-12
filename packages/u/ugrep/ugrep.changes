@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 11 04:22:53 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.7.11:
+  * New -Zbest (--fuzzy=best) option argument best to only output
+    the best matching patterns
+
+-------------------------------------------------------------------
 Tue May 10 04:33:22 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.7.10:
