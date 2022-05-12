@@ -23,4 +23,12 @@
     <comment>- Update to release 1.8</comment>
     <requestid>845179</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b200a7a5f4d165e42361b4bc69cf83e4</srcmd5>
+    <version>1.8</version>
+    <time>1652389167</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>976254</requestid>
+  </revision>
 </revisionlist>

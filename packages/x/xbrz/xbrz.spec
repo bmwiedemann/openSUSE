@@ -1,7 +1,7 @@
 #
 # spec file for package xbrz
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://sourceforge.net/projects/xbrz/
 
-Source:         http://downloads.sf.net/xbrz/xBRZ_%version.zip
+Source:         https://downloads.sf.net/xbrz/xBRZ_%version.zip
 BuildRequires:  c++_compiler
 BuildRequires:  unzip
 
