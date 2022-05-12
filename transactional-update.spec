@@ -26,14 +26,14 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           transactional-update
-Version:        4.0.0~rc2
+Version:        4.0.0~rc3
 Release:        0
 Summary:        Transactional Updates with btrfs and snapshots
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Base
 URL:            https://github.com/openSUSE/transactional-update
 #Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
-Source0:        transactional-update-4.0.0~rc2.tar.gz
+Source0:        transactional-update-4.0.0~rc3.tar.gz
 Source1:        transactional-update.check
 
 BuildRequires:  autoconf

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May  3 10:21:35 UTC 2022 - Ignaz Forster <iforster@suse.com>
+
+- Version 4.0.0~rc3
+  - Add Snapshot interface
+  - Reworked signal handling: All public signals are sent from the
+    main thread now, keeping the same sender for everything
+  - Implement D-Bus call "Execute" for Transactions
+  - Implement interface for listing Snapshots
+  - Implement Reboot interface
+  - Fix bug when using --continue on old snapshots
+  - Fix hypothetical integer overflow in snapshot list [bsc#1196826]
+  - Fix wrong sort order in status command
+    [gh#openSUSE/transactional-update#80] 
+
+-------------------------------------------------------------------
 Sun Mar  6 17:46:14 UTC 2022 - Ignaz Forster <iforster@suse.com>
 
 - Version 4.0.0~rc2
