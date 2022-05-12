@@ -18,7 +18,7 @@
 
 
 Name:           racket
-Version:        8.4
+Version:        8.5
 Release:        0
 Summary:        Scheme implementation with teaching tools
 License:        Apache-2.0 OR MIT
@@ -34,6 +34,7 @@ BuildRequires:  chrpath
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ghostscript-fonts-std
+BuildRequires:  google-roboto-fonts
 BuildRequires:  libexpat1
 BuildRequires:  libjpeg-devel
 BuildRequires:  librsvg-devel

@@ -1,7 +1,48 @@
+-------------------------------------------------------------------------
+Sun May 8 18:26:11 UTC 2022 - Fred Fu <moonsolo@gmail.com>
+- Update to 8.5:
+  * Racket's new `-y` flag automatically keeps compiled files up to date,
+    reducing subsequent load times.
+  
+  * Error-message realms allow Racket-hosted languages to adapt and
+    rewrite error messages to make sense in a particular context.
+  
+  * Nonprivileged users can control package installation scope using an
+    "other-version" directory in the addon-dir.
+  
+  * Racket CS runs on platforms where native-code generation is not
+    currently supported (e.g., s390x or ppc64). See "README.txt" in the
+    source distribution for more information on the --enable-pb flag to
+    configure.
+  
+  * DrRacket's new 'Reopen Closed Tab' file menu item will open previously
+    closed tabs.
+  
+  * Typed Racket has support for the `xml` library; use `typed/xml`.
+  
+  * Rackunit reports source locations for failed test cases in the
+    Typed Racket language.
+  
+  * Plot has violin plots and improved box-and-whisker plots.
+  
+  * Boxes are supported alongside lists, vectors etc. in place-channel
+    messages.
+  
+  * Those who manually configure Racket CS to use Zlib compression for
+    compiled code should be aware of CVE-2018-25032; the next release and
+    the current snapshot builds use a newer, safer version of zlib.
+  
+  * The release includes many other repairs and changes!
+
+- Spec changes:
+  * add google-roboto-fonts to the build dependencies. Fonts are required for
+  the following two cases: 1. making scribble documents 2. compiling programs
+  that depend on font-related library (e.g. racket/draw) at compile time.
+
 -------------------------------------------------------------------
 Sat Apr 16 15:26:11 UTC 2022 - Fred Fu <moonsolo@gmail.com>
 - Fix bug for boo#1198475
-  * Added a new build dependency, `ncurses-devel`, to enable `expeditor`
+  * add a new build dependency, `ncurses-devel`, to enable `expeditor`
   
 -------------------------------------------------------------------
 Sun Mar 6 15:26:11 UTC 2022 - Fred Fu <moonsolo@gmail.com>
