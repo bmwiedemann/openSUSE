@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-generate_html
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define octpkg  generate_html
 Name:           octave-forge-%{octpkg}
-Version:        0.3.2
+Version:        0.3.3
 Release:        0
 Summary:        Generate HTML web page from help texts
 License:        GPL-3.0-or-later
