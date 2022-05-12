@@ -1,6 +1,8 @@
---- src/global/mail_queue.c-orig	2019-04-01 14:37:54.136169772 +0200
-+++ src/global/mail_queue.c	2019-04-01 14:42:35.191382999 +0200
-@@ -363,6 +363,14 @@
+Index: src/global/mail_queue.c
+===================================================================
+--- src/global/mail_queue.c.orig
++++ src/global/mail_queue.c
+@@ -363,6 +363,14 @@ VSTREAM *mail_queue_enter(const char *qu
  	    break;
  	if (errno == EEXIST || errno == EISDIR)
  	    continue;

@@ -1,7 +1,7 @@
-Index: postfix-3.6.2/postfix-SUSE/postfix.service
+Index: postfix-SUSE/postfix.service
 ===================================================================
---- postfix-3.6.2.orig/postfix-SUSE/postfix.service
-+++ postfix-3.6.2/postfix-SUSE/postfix.service
+--- postfix-SUSE/postfix.service.orig
++++ postfix-SUSE/postfix.service
 @@ -19,6 +19,24 @@ After=amavis.service mysql.service cyrus
  Conflicts=sendmail.service exim.service
  

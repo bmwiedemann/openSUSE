@@ -184,7 +184,7 @@ maps with Postfix, you need this.
 %patch9
 %patch10
 %patch11
-%patch12 -p1
+%patch12
 
 # ---------------------------------------------------------------------------
 

@@ -38,7 +38,7 @@ Index: src/util/sys_defs.h
  #define ALIAS_DB_MAP	DEF_DB_TYPE ":/etc/aliases"
  #ifndef NO_NIS
  #define HAS_NIS
-@@ -841,7 +841,7 @@ extern int initgroups(const char *, int)
+@@ -844,7 +844,7 @@ extern int initgroups(const char *, int)
  #define DEF_MAILBOX_LOCK "dotlock"	/* verified RedHat 3.03 */
  #define HAS_FSYNC
  #define HAS_DB
@@ -47,7 +47,7 @@ Index: src/util/sys_defs.h
  #define ALIAS_DB_MAP	DEF_DB_TYPE ":/etc/aliases"
  #ifndef NO_NIS
  #define HAS_NIS
-@@ -874,7 +874,7 @@ extern int initgroups(const char *, int)
+@@ -877,7 +877,7 @@ extern int initgroups(const char *, int)
  #define DEF_MAILBOX_LOCK "fcntl, dotlock"	/* RedHat >= 4.x */
  #define HAS_FSYNC
  #define HAS_DB
@@ -56,7 +56,7 @@ Index: src/util/sys_defs.h
  #define ALIAS_DB_MAP	DEF_DB_TYPE ":/etc/aliases"
  #ifndef NO_NIS
  #define HAS_NIS
-@@ -1199,7 +1199,7 @@ extern int opterr;			/* XXX use <getopt.
+@@ -1202,7 +1202,7 @@ extern int opterr;			/* XXX use <getopt.
  #define INTERNAL_LOCK	MYFLOCK_STYLE_FCNTL
  #define DEF_MAILBOX_LOCK "fcntl, dotlock"
  #define HAS_FSYNC
@@ -69,7 +69,7 @@ Index: src/global/mail_params.h
 ===================================================================
 --- src/global/mail_params.h.orig
 +++ src/global/mail_params.h
-@@ -2923,7 +2923,7 @@ extern int var_vrfy_pend_limit;
+@@ -2953,7 +2953,7 @@ extern int var_vrfy_pend_limit;
  extern char *var_verify_service;
  
  #define VAR_VERIFY_MAP			"address_verify_map"
@@ -78,7 +78,7 @@ Index: src/global/mail_params.h
  extern char *var_verify_map;
  
  #define VAR_VERIFY_POS_EXP		"address_verify_positive_expire_time"
-@@ -3691,7 +3691,7 @@ extern char *var_multi_cntrl_cmds;
+@@ -3721,7 +3721,7 @@ extern char *var_multi_cntrl_cmds;
    * postscreen(8)
    */
  #define VAR_PSC_CACHE_MAP	"postscreen_cache_map"

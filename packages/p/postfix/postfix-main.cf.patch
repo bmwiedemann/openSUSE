@@ -50,7 +50,7 @@ Index: conf/main.cf
  
  # PARALLEL DELIVERY TO THE SAME DESTINATION
  #
-@@ -673,4 +674,148 @@ sample_directory =
+@@ -673,4 +674,151 @@ sample_directory =
  # readme_directory: The location of the Postfix README files.
  #
  readme_directory =
@@ -133,6 +133,7 @@ Index: conf/main.cf
 +smtp_use_tls = no
 +#smtp_tls_loglevel = 0
 +smtp_enforce_tls = no
++smtp_tls_security_level = 
 +smtp_tls_CAfile = 
 +smtp_tls_CApath = 
 +smtp_tls_cert_file = 
@@ -143,6 +144,8 @@ Index: conf/main.cf
 +
 +smtpd_use_tls = no
 +#smtpd_tls_loglevel = 0
++smtpd_enforce_tls = no
++smtpd_tls_security_level = 
 +smtpd_tls_CAfile = 
 +smtpd_tls_CApath = 
 +smtpd_tls_cert_file = 
