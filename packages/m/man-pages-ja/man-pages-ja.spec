@@ -1,7 +1,7 @@
 #
 # spec file for package man-pages-ja
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           man-pages-ja
-Version:        20211115
-Release:        1.1
+Version:        20220415
+Release:        0
 Summary:        LDP Manual Pages (Japanese)
 License:        BSD-3-Clause AND GPL-2.0-only AND GFDL-1.1-only AND GFDL-1.2-only AND GFDL-1.3-only
 Group:          Documentation/Man
@@ -70,12 +70,14 @@ mkdir -p %{buildroot}%{_mandir}/ja
 # prefer ypbind over ypbind-mt
 for dir in \
     shadow \
+    GNU_automake \
     GNU_coreutils \
     gnumaniak \
     GNU_bash \
     GNU_bc \
     GNU_binutils \
     GNU_cpio \
+    GNU_dejagnu \
     GNU_ed \
     GNU_fileutils \
     GNU_findutils \

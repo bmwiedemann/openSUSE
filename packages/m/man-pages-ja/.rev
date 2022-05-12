@@ -292,4 +292,13 @@
   * added and improved manual pages</comment>
     <requestid>940168</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>c0ce90dbc9d8dd43c3bfc83357f98af6</srcmd5>
+    <version>20220415</version>
+    <time>1652389118</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220415
+  * Added and improved manual pages (forwarded request 976112 from susnux)</comment>
+    <requestid>976201</requestid>
+  </revision>
 </revisionlist>
