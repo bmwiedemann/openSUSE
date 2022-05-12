@@ -178,4 +178,13 @@
     <comment></comment>
     <requestid>951846</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0a8d46a802b752a8a27cee650eebd475</srcmd5>
+    <version>1.13.04</version>
+    <time>1652389229</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.13.04 - bugfix release
+</comment>
+    <requestid>976556</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           flare-game
-Version:        1.13
+Version:        1.13.04
 Release:        0
 Summary:        Free Libre Action Roleplaying Engine — Game
 License:        CC-BY-SA-3.0+
