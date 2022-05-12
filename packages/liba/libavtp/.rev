@@ -32,4 +32,12 @@ will be required in the next version of alsa-lib plugin.</comment>
     <comment></comment>
     <requestid>843569</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c5182b0b470d5398d5fa1a9b4013e8fd</srcmd5>
+    <version>0.2.0</version>
+    <time>1652389055</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>976019</requestid>
+  </revision>
 </revisionlist>

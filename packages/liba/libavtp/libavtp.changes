@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May  9 16:13:27 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.2.0
+  * Raw Video Format support
+  * libavtp can now be used as meson subproject
+  * Building tests is now optional
+  * gcc 9 fixes
+
+-------------------------------------------------------------------
 Fri Oct 23 07:44:00 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add baselibs.conf
