@@ -1,7 +1,7 @@
 #
 # spec file for package optipng
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        A PNG File Compressor
 License:        Zlib
 Group:          Productivity/Archiving/Compression
 URL:            http://optipng.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/project/optipng/OptiPNG/optipng-%{version}/optipng-%{version}.tar.gz
+Source0:        https://downloads.sourceforge.net/project/optipng/OptiPNG/optipng-%{version}/optipng-%{version}.tar.gz
 Source1:        macros.optipng
 BuildRequires:  libpng-devel
 BuildRequires:  zlib-devel
