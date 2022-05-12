@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  9 14:38:54 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.2.7
+  * Several code clean-ups.
+  * Several build and portability fixes/updates.
+
+-------------------------------------------------------------------
 Mon Oct 28 15:53:58 CET 2019 - tiwai@suse.de
 
 - Drop sourceforge download URL that doesn't work any longer...
