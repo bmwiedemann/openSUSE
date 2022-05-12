@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  4 18:41:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- depend on setuptools_scm also on older dists 
+
+-------------------------------------------------------------------
 Mon Apr 25 09:38:47 UTC 2022 - pgajdos@suse.com
 
 - version update to 1.1.0

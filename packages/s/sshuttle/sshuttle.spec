@@ -16,11 +16,11 @@
 #
 
 
+%global pythons python3
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-%global pythons python3
 Name:           sshuttle
 Version:        1.1.0
 Release:        0
@@ -37,14 +37,12 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-setuptools_scm
+Requires(post): %fillup_prereq
 BuildArch:      noarch
 %if (0%{?suse_version} >= 1320 || 0%{?suse_version} == 1310)
 BuildRequires:  python3-Sphinx
 %endif
-%if 0%{?suse_version} >= 1550
-BuildRequires:  python3-setuptools_scm
-%endif
-Requires(post): %fillup_prereq
 
 %description
 Transparent proxy server that works as a poor man's VPN. Forwards over ssh.
@@ -61,7 +59,7 @@ sshuttle is a program that solves the following case:
   TCP-over-TCP, which has terrible performance.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 %patch0
 %patch1 -p1
 
