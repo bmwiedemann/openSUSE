@@ -19,15 +19,16 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-maturin
-Version:        0.12.9
+Version:        0.12.15
 Release:        0
 Summary:        Rust/Python Interoperability
 License:        Apache-2.0 OR MIT
 URL:            https://github.com/PyO3/maturin
 Source:         https://files.pythonhosted.org/packages/source/m/maturin/maturin-%{version}.tar.gz
 Source1:        vendor.tar.xz
+Source2:        cargo_config
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module tomli}
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -41,11 +42,12 @@ as well as rust binaries as python packages.
 
 This project is a zero-configuration replacement for
 setuptools-rust milksnake. It supports building wheels for Python
-3.5+, can upload them to PyPI and has basic PyPy support.
+3.6+, can upload them to PyPI and has basic PyPy support.
 
 %prep
-%setup -q -n maturin-%{version}
-tar -xf %{SOURCE1}
+%autosetup -a1 -n maturin-%{version}
+mkdir .cargo
+cp %{SOURCE2} .cargo/config
 
 %build
 %python_build

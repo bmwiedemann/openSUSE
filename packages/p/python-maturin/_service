@@ -1,4 +1,8 @@
 <services>
-  <service name="cargo_audit" mode="disabled">
+  <service name="cargo_vendor" mode="disabled">
+    <param name="srctar">maturin-0.12.15.tar.gz</param>
+    <param name="compression">xz</param>
+    <param name="update">true</param>
   </service>
+  <service name="cargo_audit" mode="disabled"></service>
 </services>

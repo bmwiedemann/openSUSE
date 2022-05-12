@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed May 11 10:33:54 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.12.15
+  * fix: Only set RUSTFLAGS when absolutely neccessary
+  * Update rust dependencies
+  * Remove unused libs_dir field from PythonInterpreter
+  * Remove target field from PythonInterpreter struct
+  * Add support for PYO3_CONFIG_FILE
+- Update to 0.12.12
+  * Change mixed rust/python template project layout
+  * Accept multiple values for --interpreter option
+  * Update rust dependencies
+- Update to 0.12.11
+  * Switch back to toml_edit
+  * Add -r option as a short alias for --release
+- Update to 0.12.10
+  * Support pyo3-ffi
+  * Migrate Python dependency uiri/toml to tomllib / hukkin/tomli
+  * Use dynamic Python minor version for pyo3 bindings based on
+    its verison by
+  * Update rust dependencies
+
+-------------------------------------------------------------------
 Sat Feb 12 01:48:01 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.12.9
