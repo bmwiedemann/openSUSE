@@ -94,4 +94,14 @@
   * Added a :PEP:`561` ``py.typed`` file to declare typing support.</comment>
     <requestid>876091</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d5039bc7bed8097362e48794ab572311</srcmd5>
+    <version>3.3.2</version>
+    <time>1652389094</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.2:
+  * Fixed a deprecation warning with jeepney 0.8.
+    Thanks to Sam McKelvie for the pull request!</comment>
+    <requestid>976282</requestid>
+  </revision>
 </revisionlist>
