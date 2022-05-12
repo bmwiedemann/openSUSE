@@ -1,7 +1,7 @@
 #
 # spec file for package distcc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -121,7 +121,7 @@ ln -sf %{_bindir}/%{name} %{buildroot}%{_libexecdir}/%{name}/bin/clang++
 rm -rf %{buildroot}%{_docdir}/%{name}/{INSTALL,COPYING}
 # cleanups
 %suse_update_desktop_file -r distccmon-gnome Development Building
-%fdupes ${buildroot}
+%fdupes %{buildroot}
 
 %pre server
 %service_add_pre distccd.service

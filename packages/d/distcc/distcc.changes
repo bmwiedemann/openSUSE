@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 12 17:00:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- fix fdupes call 
+
+-------------------------------------------------------------------
 Wed Oct  6 04:19:43 UTC 2021 - Neil Brown <nfbrown@suse.com>
 
 - Remove dependency on libgssglue.  It is no longer needed
