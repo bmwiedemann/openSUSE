@@ -194,4 +194,30 @@
     <comment></comment>
     <requestid>949353</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8a63eebd29b20d304e449d43a88522da</srcmd5>
+    <version>4.0.0</version>
+    <time>1652389082</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.0:
+  * Document more changes since 3.0.0
+  * Mention extra in another place in README
+  * Move testtools requirement to a &quot;streams&quot; extra
+  * Stop using testtools.helpers.try_import
+  * Fix MockPatchMultiple.DEFAULT
+  * Fix YAML type confusion
+  * Add support for Python 3.10
+  * Mark README as rST
+  * setup.cfg: Replace dashes with underscores
+  * Drop support for Python &lt; 3.6, add 3.7 - 3.9
+  * Add possibility to reset the FakeLogger
+  * Add missing APIs to FakeProcess, making it match Popen (LP #1373224)
+- Remove patch fixtures-pr36-py39.patch:
+  * Included upstream.
+- Add patch handle-no-external-mock.patch:
+  * Skip a testcase if mock is not available. 
+- Bump required versions of pbr and testtools.
+- Correct URL.</comment>
+    <requestid>976202</requestid>
+  </revision>
 </revisionlist>

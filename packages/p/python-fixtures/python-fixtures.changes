@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed May 11 06:35:26 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.0.0:
+  * Document more changes since 3.0.0
+  * Mention extra in another place in README
+  * Move testtools requirement to a "streams" extra
+  * Stop using testtools.helpers.try_import
+  * Fix MockPatchMultiple.DEFAULT
+  * Fix YAML type confusion
+  * Add support for Python 3.10
+  * Mark README as rST
+  * setup.cfg: Replace dashes with underscores
+  * Drop support for Python < 3.6, add 3.7 - 3.9
+  * Add possibility to reset the FakeLogger
+  * Add missing APIs to FakeProcess, making it match Popen (LP #1373224)
+- Remove patch fixtures-pr36-py39.patch:
+  * Included upstream.
+- Add patch handle-no-external-mock.patch:
+  * Skip a testcase if mock is not available. 
+- Bump required versions of pbr and testtools.
+- Correct URL.
+
+-------------------------------------------------------------------
 Wed Jan 26 18:55:28 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Add missing BuildRequire on python-setuptools

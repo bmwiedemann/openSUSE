@@ -19,27 +19,24 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-fixtures
-Version:        3.0.0
+Version:        4.0.0
 Release:        0
 Summary:        Fixtures, reusable state for writing clean tests and more
 License:        Apache-2.0 OR BSD-3-Clause
-URL:            https://github.com/testing-cabal
+URL:            https://github.com/testing-cabal/fixtures
 Source:         https://files.pythonhosted.org/packages/source/f/fixtures/fixtures-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fixtures-pr36-py39.patch -- gh#testing-cabal/fixtures#46
-Patch0:         fixtures-pr36-py39.patch
-BuildRequires:  %{python_module pbr >= 0.11}
+Patch0:         handle-no-external-mock.patch
+BuildRequires:  %{python_module pbr >= 5.7.0}
 BuildRequires:  %{python_module setuptools}
-# explicitly wants to test the backport mock
 #TESTS
 BuildRequires:  %{python_module extras}
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module testtools >= 0.9.22}
+BuildRequires:  %{python_module testtools >= 2.5.0}
 #/TESTS
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-extras
-Requires:       python-pbr >= 0.11
-Requires:       python-testtools >= 0.9.22
+Requires:       python-pbr >= 5.7.0
+Requires:       python-testtools >= 2.5.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -65,7 +62,7 @@ compatible test cases easy and straight forward.
 
 %files %{python_files}
 %license COPYING
-%doc Apache-2.0 BSD NEWS README
+%doc Apache-2.0 BSD NEWS README.rst
 %{python_sitelib}/fixtures
 %{python_sitelib}/fixtures-%{version}-py%{python_version}.egg-info
 
