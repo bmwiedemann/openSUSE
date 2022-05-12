@@ -41,7 +41,7 @@ BuildRequires:  readline-devel
 Recommends:     %{name}-tools
 Recommends:     unzip
 # bsc#1193627
-Suggests:       myspell-en_US
+Requires:       myspell-en_US
 
 %description
 Hunspell is a spell checker and morphological analyzer library and

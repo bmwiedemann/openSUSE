@@ -457,4 +457,14 @@ SPDX syntax describing the COPYING file statesments (forwarded request 96657 fro
     <comment>- suggests  english directory [bsc#1193627]</comment>
     <requestid>944507</requestid>
   </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>c5f8b1bde393175897b048c5d36a71e4</srcmd5>
+    <version>1.7.0</version>
+    <time>1652389062</time>
+    <user>dimstar_suse</user>
+    <comment>- requires english dictionary [bsc#1199209]
+
+- suggests english dictionary [bsc#1193627]</comment>
+    <requestid>976068</requestid>
+  </revision>
 </revisionlist>
