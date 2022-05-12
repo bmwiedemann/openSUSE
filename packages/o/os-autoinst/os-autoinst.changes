@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 10 10:41:17 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1652179270.790b61c:
+  * VNC console: Test more types of messages and encodings
+  * VNC console: Add comments for certain magic numbers
+  * VNC console: Test receiving color map
+  * VNC console: Test cutting text
+  * VNC console: Test security handshake
+  * VNC console: Remove unreachable die and test changing RFB version
+  * VNC console: Test updating frame buffer
+  * Simplify quote subroutine in osutils
+  * Use proper perl "signatures" in common files - osutils
+
+-------------------------------------------------------------------
 Fri May 06 10:12:16 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1651738707.516ced4:
