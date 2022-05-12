@@ -1,7 +1,7 @@
 #
 # spec file for package ecryptfs-utils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,8 +29,8 @@ Release:        0
 Summary:        Userspace Utilities for ecryptfs
 License:        GPL-2.0-only
 Group:          Productivity/Security
-URL:            http://ecryptfs.org/
-Source0:        http://launchpad.net/ecryptfs/trunk/%{version}/+download/ecryptfs-utils_%{version}.orig.tar.gz
+URL:            https://ecryptfs.org/
+Source0:        https://launchpad.net/ecryptfs/trunk/%{version}/+download/ecryptfs-utils_%{version}.orig.tar.gz
 Source1:        baselibs.conf
 Source2:        ecryptfs-mount-private.png
 # PATCH-FIX-OPENSUSE fix for systemd and no UUID in fstab
