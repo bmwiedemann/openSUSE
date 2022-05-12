@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May  9 09:33:15 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Disable a test failing to compile with junit5 5.8.x
+
+-------------------------------------------------------------------
 Tue Feb 22 19:15:02 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build against the log4j12 packages, use the new reload4j

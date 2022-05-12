@@ -391,6 +391,9 @@ rm  src/tests/junit/org/apache/tools/mail/MailMessageTest.java \
     src/tests/junit/org/apache/tools/ant/taskdefs/TestProcess.java
 %endif
 
+# Test relies on internal JUnit 5 API that was changed
+rm src/tests/junit/org/apache/tools/ant/taskdefs/optional/junitlauncher/LegacyXmlResultFormatterTest.java
+
 #install jars
 %if %{with junit} || %{with junit5}
 build-jar-repository -s -p lib/optional junit4
