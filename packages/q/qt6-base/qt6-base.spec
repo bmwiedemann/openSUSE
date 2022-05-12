@@ -40,6 +40,9 @@ Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
 Patch0:         0001-CMake-Don-t-hardcode-the-library-directory-name.patch
+Patch1:         0001-XCB-fix-GCC-12-warning-about-uninitialized-variable-.patch
+Patch2:         0001-Fix-build-with-GCC12-avoid-QCborStreamReader-prepars.patch
+Patch3:         0001-QtOpenGL-Fix-build-with-GCC-12-qt_imageForBrush-is-i.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       0001-Tell-the-truth-about-private-API.patch
 %if 0%{?suse_version} == 1500
