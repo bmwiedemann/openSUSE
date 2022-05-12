@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 10 12:30:07 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Do not use mimalloc, use system glibc allocator.
+
+-------------------------------------------------------------------
+Thu May  5 11:17:01 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add valgrind as BuildRequire argument.
+
+-------------------------------------------------------------------
 Thu Apr 28 12:49:30 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to version 1.2.1

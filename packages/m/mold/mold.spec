@@ -34,7 +34,6 @@ BuildRequires:  clang
 BuildRequires:  libdwarf-tools
 BuildRequires:  llvm
 BuildRequires:  llvm-gold
-BuildRequires:  mimalloc-devel
 BuildRequires:  tbb-devel
 %ifarch x86_64
 BuildRequires:  gcc-32bit
@@ -43,14 +42,15 @@ BuildRequires:  gcc-32bit
 BuildRequires:  gdb
 BuildRequires:  glibc-devel-static
 BuildRequires:  openssl-devel
+BuildRequires:  valgrind
 BuildRequires:  xxhash-devel
 BuildRequires:  zlib-devel
 PreReq:         update-alternatives
 
 %if %{suse_version} < 1550
-%define build_args STRIP=true SYSTEM_XXHASH=1
+%define build_args STRIP=true SYSTEM_XXHASH=1 USE_MIMALLOC=0
 %else
-%define build_args STRIP=true SYSTEM_TBB=1 SYSTEM_XXHASH=1 SYSTEM_MIMALLOC=1
+%define build_args STRIP=true SYSTEM_TBB=1 SYSTEM_XXHASH=1 USE_MIMALLOC=0
 %endif
 
 %description

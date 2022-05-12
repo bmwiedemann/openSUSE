@@ -147,4 +147,14 @@
 - Removed upstreamed fix-gdb-index.patch patch.</comment>
     <requestid>973715</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>15f3b07ff878bfec7632fb24d2d406a3</srcmd5>
+    <version>1.2.1</version>
+    <time>1652389097</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not use mimalloc, use system glibc allocator.
+
+- Add valgrind as BuildRequire argument.</comment>
+    <requestid>976062</requestid>
+  </revision>
 </revisionlist>
