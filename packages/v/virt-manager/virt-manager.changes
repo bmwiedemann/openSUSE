@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 30 09:06:33 MDT 2022 - carnold@suse.com
+
+- bsc#1196806 - [jsc#SLE-18834][virt-install] ERROR SEV launch
+  security requires a Q35 UEFI machine (epic: jsc#SLE-18732)
+  virtman-add-sev-memory-support.patch
+- Add firmware features to description tooltip when mouse hovers
+  over the selected firmware file.
+  virtman-add-tooltip-to-firmware.patch
+
+-------------------------------------------------------------------
 Wed Mar  2 21:11:58 MST 2022 - carnold@suse.com
 
 - bsc#1196202 - virt-install crashes on a time-of-check time-of-use

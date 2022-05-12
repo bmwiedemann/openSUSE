@@ -44,6 +44,7 @@ Patch76:        virtinst-set-qemu-emulator.patch
 Patch103:       virtman-load-stored-uris.patch
 Patch104:       virtman-add-tooltip-to-firmware.patch
 Patch105:       virtman-modify-gui-defaults.patch
+Patch106:       virtman-add-sev-memory-support.patch
 Patch120:       virtinst-default-xen-to-qcow2-format.patch
 Patch121:       virtinst-detect-oes-distros.patch
 Patch122:       virtinst-vol-default-nocow.patch
@@ -86,6 +87,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define verrel %{version}-%{release}
 Requires:       dbus-1-x11
 Requires:       dconf
+Requires:       gstreamer-plugins-good
 Requires:       gtk3
 Requires:       python3-gobject
 # For console widget
@@ -168,6 +170,7 @@ machine).
 %patch103 -p1
 %patch104 -p1
 %patch105 -p1
+%patch106 -p1
 %patch120 -p1
 %patch121 -p1
 %patch122 -p1

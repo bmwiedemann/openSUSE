@@ -1822,4 +1822,12 @@
     <comment>Update to virt-manager 4.0.0 with various fixes and features. Corrected Jira number.</comment>
     <requestid>959256</requestid>
   </revision>
+  <revision rev="231" vrev="2">
+    <srcmd5>62cb7c994e0d65941a20f53590725539</srcmd5>
+    <version>4.0.0</version>
+    <time>1652389071</time>
+    <user>dimstar_suse</user>
+    <comment>Add support in virt-manager for enabling launch security (SEV) on AMD compatible hardware (jsc#SLE-18732).</comment>
+    <requestid>976118</requestid>
+  </revision>
 </revisionlist>
