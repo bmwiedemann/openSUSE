@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 11 06:33:01 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 101.0.4951.64 (boo#1199409)
+  * CVE-2022-1633: Use after free in Sharesheet
+  * CVE-2022-1634: Use after free in Browser UI
+  * CVE-2022-1635: Use after free in Permission Prompts
+  * CVE-2022-1636: Use after free in Performance APIs
+  * CVE-2022-1637: Inappropriate implementation in Web Contents
+  * CVE-2022-1638: Heap buffer overflow in V8 Internationalization
+  * CVE-2022-1639: Use after free in ANGLE
+  * CVE-2022-1640: Use after free in Sharing
+  * CVE-2022-1641: Use after free in Web UI Diagnostics
+
+-------------------------------------------------------------------
 Wed May  4 09:34:58 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Chromium 101.0.4951.54 (boo#1199118)
