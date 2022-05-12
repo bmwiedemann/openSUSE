@@ -2,7 +2,7 @@
 # spec file for package orthanc
 #
 # Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2019-2021 Dr. Axel Braun
+# Copyright (c) 2019-2022 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 
 Name:           orthanc
-Version:        1.10.1
+Version:        1.11.0
 Release:        0
 Summary:        RESTful DICOM server for healthcare and medical research
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Visualization/Other
-URL:            http://www.orthanc-server.com/
-Source0:        http://www.orthanc-server.com/downloads/get.php?path=/orthanc/Orthanc-%{version}.tar.gz
+URL:            https://www.orthanc-server.com/
+Source0:        https://www.orthanc-server.com/downloads/get.php?path=/orthanc/Orthanc-%{version}.tar.gz
 Source1:        orthanc.service
 Source2:        orthanc-readme.SUSE
 Source3:        serve-folders.json
@@ -33,10 +33,10 @@ Source5:        index.html
 Source7:        orthanc-rpmlintrc
 Source8:        Configuration.json
 # Sources for plugin - need a defined version, so taking them from orthanc-server
-Source10:       http://orthanc.osimis.io/ThirdPartyDownloads/dicom-web/bootstrap-4.3.1.zip
-Source11:       http://orthanc.osimis.io/ThirdPartyDownloads/dicom-web/axios-0.19.0.tar.gz
-Source12:       http://orthanc.osimis.io/ThirdPartyDownloads/jquery-3.4.1.min.js
-Source13:       http://orthanc.osimis.io/ThirdPartyDownloads/dicom-web/vuejs-2.6.10.tar.gz
+Source10:       https://orthanc.osimis.io/ThirdPartyDownloads/dicom-web/bootstrap-4.3.1.zip
+Source11:       https://orthanc.osimis.io/ThirdPartyDownloads/dicom-web/axios-0.19.0.tar.gz
+Source12:       https://orthanc.osimis.io/ThirdPartyDownloads/jquery-3.4.1.min.js
+Source13:       https://orthanc.osimis.io/ThirdPartyDownloads/dicom-web/vuejs-2.6.10.tar.gz
 
 BuildRequires:  civetweb-devel
 BuildRequires:  cmake >= 2.8.0
