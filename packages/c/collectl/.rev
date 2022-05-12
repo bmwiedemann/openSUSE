@@ -325,4 +325,17 @@
     <comment></comment>
     <requestid>920407</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>4b72efa77ac08b6cdfc1c2ece87ce990</srcmd5>
+    <version>4.3.3</version>
+    <time>1652389243</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.3.3
+  * Minor fix for HCA stats with Mellanox HCA's
+- Update to version 4.3.2
+  * Fix: The last command in perfquery is not in a loop and prevents
+    the collectl daemon from starting via the service.
+</comment>
+    <requestid>976548</requestid>
+  </revision>
 </revisionlist>

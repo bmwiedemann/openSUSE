@@ -1,7 +1,7 @@
 #
 # spec file for package collectl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           collectl
-Version:        4.3.1
+Version:        4.3.3
 Release:        0
 Summary:        System status data collection utility
 License:        Artistic-1.0 AND GPL-2.0-or-later
@@ -48,7 +48,7 @@ information. It features:
 * API for importing additional data
 
 %prep
-%setup -q
+%setup -q -n %{name}
 %patch0 -p1
 
 %build
@@ -90,11 +90,7 @@ install -d -m 0755 %{buildroot}%{_var}/log/%{name}
 %service_del_postun %{name}.service
 
 %files
-%if 0%{?sle_version} <= 120200
-%doc COPYING ARTISTIC GPL
-%else
 %license COPYING ARTISTIC GPL
-%endif
 %doc docs/* README RELEASE-collectl
 %{_unitdir}/collectl.service
 %{_fillupdir}/sysconfig.collectl

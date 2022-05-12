@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May  2 17:37:21 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.3.3
+  * Minor fix for HCA stats with Mellanox HCA's
+- Update to version 4.3.2
+  * Fix: The last command in perfquery is not in a loop and prevents
+    the collectl daemon from starting via the service.
+
+-------------------------------------------------------------------
 Mon Aug 30 08:10:32 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s). Added patch(es):
