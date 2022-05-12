@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-czerwonk-ping_exporter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{go_nostrip}
 
 Name:           golang-github-czerwonk-ping_exporter
@@ -27,9 +28,10 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        ping_exporter.yaml
 Source3:        ping_exporter.service
-Patch0:	harden_ping_exporter.service.patch
+Patch0:         harden_ping_exporter.service.patch
 BuildRequires:  golang-packaging
 Requires(post): %fillup_prereq
+ExcludeArch:    s390
 %systemd_ordering
 
 %description
@@ -74,4 +76,3 @@ install -Dm 0644 %{SOURCE3} %{buildroot}%{_unitdir}/ping_exporter.service
 %{_unitdir}/ping_exporter.service
 
 %changelog
-
