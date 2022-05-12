@@ -250,40 +250,49 @@ Index: libraries/vendor_config.php
 ===================================================================
 --- libraries/vendor_config.php.orig
 +++ libraries/vendor_config.php
-@@ -24,31 +24,31 @@ define('AUTOLOAD_FILE', ROOT_PATH . 'ven
- /**
-  * Directory where cache files are stored.
-  */
--define('TEMP_DIR', ROOT_PATH . 'tmp' . DIRECTORY_SEPARATOR);
-+define('TEMP_DIR', '@tmpdir@' . DIRECTORY_SEPARATOR);
+@@ -22,38 +22,38 @@ return [
+     /**
+      * Directory where cache files are stored.
+      */
+-    'tempDir' => ROOT_PATH . 'tmp' . DIRECTORY_SEPARATOR,
++    'tempDir' => '@tmpdir@' . DIRECTORY_SEPARATOR,
  
- /**
-  * Path to changelog file, can be gzip compressed. Useful when you want to
-  * have documentation somewhere else, eg. /usr/share/doc.
-  */
--define('CHANGELOG_FILE', ROOT_PATH . 'ChangeLog');
-+define('CHANGELOG_FILE', '@docdir@' . DIRECTORY_SEPARATOR . 'ChangeLog');
+     /**
+      * Path to changelog file, can be gzip compressed.
+      * Useful when you want to have documentation somewhere else, e.g. /usr/share/doc.
+      */
+-    'changeLogFile' => ROOT_PATH . 'ChangeLog',
++    'changeLogFile' => '@docdir@' . DIRECTORY_SEPARATOR . 'ChangeLog',
  
- /**
-  * Path to license file. Useful when you want to have documentation somewhere
-  * else, eg. /usr/share/doc.
-  */
--define('LICENSE_FILE', ROOT_PATH . 'LICENSE');
-+define('LICENSE_FILE', '@docdir@' . DIRECTORY_SEPARATOR . 'LICENSE');
+     /**
+      * Path to license file. Useful when you want to have documentation somewhere else, e.g. /usr/share/doc.
+      */
+-    'licenseFile' => ROOT_PATH . 'LICENSE',
++    'licenseFile' => '@docdir@' . DIRECTORY_SEPARATOR . 'LICENSE',
  
- /**
-  * Directory where SQL scripts to create/upgrade configuration storage reside.
-  */
--define('SQL_DIR', ROOT_PATH . 'sql' . DIRECTORY_SEPARATOR);
-+define('SQL_DIR', '@docdir@' . DIRECTORY_SEPARATOR . 'sql' . DIRECTORY_SEPARATOR);
+     /**
+      * Directory where SQL scripts to create/upgrade configuration storage reside.
+      */
+-    'sqlDir' => ROOT_PATH . 'sql' . DIRECTORY_SEPARATOR,
++    'sqlDir' => '@docdir@' . DIRECTORY_SEPARATOR . 'sql' . DIRECTORY_SEPARATOR,
  
- /**
-  * Directory where configuration files are stored.
-  * It is not used directly in code, just a convenient
-  * define used further in this file.
-  */
--define('CONFIG_DIR', ROOT_PATH);
-+define('CONFIG_DIR', '@sysconfdir@' . DIRECTORY_SEPARATOR);
+     /**
+      * Filename of a configuration file.
+      */
+-    'configFile' => ROOT_PATH . 'config.inc.php',
++    'configFile' => '@sysconfdir@' . DIRECTORY_SEPARATOR . 'config.inc.php',
  
- /**
-  * Filename of a configuration file.
+     /**
+      * Filename of custom header file.
+      */
+-    'customHeaderFile' => ROOT_PATH . 'config.header.inc.php',
++    'customHeaderFile' => '@sysconfdir@' . DIRECTORY_SEPARATOR . 'config.header.inc.php',
+ 
+     /**
+      * Filename of custom footer file.
+      */
+-    'customFooterFile' => ROOT_PATH . 'config.footer.inc.php',
++    'customFooterFile' => '@sysconfdir@' . DIRECTORY_SEPARATOR . 'config.footer.inc.php',
+ 
+     /**
+      * Default value for check for version upgrades.

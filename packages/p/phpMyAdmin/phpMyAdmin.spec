@@ -25,7 +25,7 @@
 %define apache_group    nogroup
 %endif
 Name:           phpMyAdmin
-Version:        5.1.3
+Version:        5.2.0
 Release:        0
 Summary:        Administration of MySQL over the web
 License:        GPL-2.0-or-later
@@ -137,7 +137,7 @@ find . ! -name '*.sh' ! -name '*-query' -type f -exec chmod 644 {} \;
 %install
 #%%{__install} -d -m0750 $RPM_BUILD_ROOT%%{_sysconfdir}/%%{name}
 install -d -m0755 %{buildroot}%{ap_docroot}/%{name}
-cp -dR *.css *.php *.ico *.txt js libraries locale themes templates vendor \
+cp -dR *.php *.ico *.txt js libraries locale themes templates vendor \
   %{buildroot}%{ap_docroot}/%{name}
 # install config to config dir
 install -D -m0640 %{buildroot}%{ap_docroot}/%{name}/config.sample.inc.php \
