@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu May 12 06:39:30 UTC 2022 - pgajdos@suse.com
+
+- version update to 4.3.0
+  * Jazzband: Synced file(s) with jazzband/.github by @jazzband-bot in #518
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #520
+  * Fix installation instructions in README by @side2k in #521
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #523
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #524
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #526
+  * Add Python 3.10 compatibility by @hramezani in #527
+  * Django main by @hramezani in #528
+  * Remove unneeded dependency Pygments by @jayvdb in #532
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #533
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #535
+  * Replace assertDictContainsSubset by @albertyw in #536
+  * Use correct db in a multi db setup by @glujan in #538
+  * Update django version by @eduzen in #544
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #552
+  * Some tests misusing assertTrue for comparisons fix by @code-review-doctor in #550
+  * Standardize supported django versions by @albertyw in #553
+  * Drop support for python 3.6 by @albertyw in #554
+  * Remove duplicate requirements.txt dependencies by @albertyw in #555
+  * Pin dependencies in requirements.txt by @albertyw in #556
+  * Release version v4.3.0 by @albertyw in #557
+- python-mock is not required for build
+- deleted patches
+  - 2610f91.patch (upstreamed)
+
+-------------------------------------------------------------------
 Sun Dec 26 09:52:54 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Replace no-longer necessary _service with PyPI tarball
