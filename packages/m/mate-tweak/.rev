@@ -223,4 +223,12 @@
     <comment>- Update to version 21.04.3.</comment>
     <requestid>893500</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e917bf6a4a328f39a2b39b25888c398f</srcmd5>
+    <version>22.04.8</version>
+    <time>1652389218</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>976439</requestid>
+  </revision>
 </revisionlist>

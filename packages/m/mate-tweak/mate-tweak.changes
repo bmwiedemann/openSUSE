@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed May 11 09:48:24 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 22.04.8
+  * Sync translations.
+  * Fix GLib-GIO-ERROR when 'org.mate.maximus' settings schema is not
+  * Use predictable path for checking ayatana-indicator-application
+    is installed
+  * Replace compton support with picom
+  * Update mate-tweak to use several personalities provided by marco-wrapper
+    * Exposes Xrender, GLX and xr_glx_hybrid backends from picom.
+  * Add a fallback marco-compton for users migrating from earlier
+    versions of MATE Tweak.
+  * Make picom window shadows more consistent with CSD windows
+  * Make sure outgoing window managers and compositors are killed
+  * Use 'ldd' to determine which compositor is enabled in Marco
+  * Refactor detection of picom wrappers
+  * Add migration fallback for marco-picom
+  * Make mate-tweak compatible with all Yaru themes
+  * Update mate-tweak.desktop to use tweaks-app icon
+  * Be explicit when looking for libXpresent
+  * Refactor replace_panel_layout() to make switching robust
+  * Check if dock is running to determine if it needs starting
+  * Refactor replace_panel_layout() to start/stop keyboard LED
+  * Prevent the dock from being started if it is not running
+  * Refactor replace_panel_layout() to make it more reliable.
+
+-------------------------------------------------------------------
 Wed Mar 31 12:22:30 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 21.04.3:

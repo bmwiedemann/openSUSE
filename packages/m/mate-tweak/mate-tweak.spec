@@ -1,7 +1,7 @@
 #
 # spec file for package mate-tweak
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name   mate_tweak
 Name:           mate-tweak
-Version:        21.04.3
+Version:        22.04.8
 Release:        0
 Summary:        MATE desktop tweak tool
 License:        GPL-2.0-or-later
@@ -99,8 +99,10 @@ ln -s %{_bindir}/%{name} %{buildroot}%{_prefix}/lib/%{name}/%{name}.py
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/applications/marco-*.desktop
 %{_mandir}/man?/%{name}.?%{?ext_man}
-%{_mandir}/man?/*-compton.?%{?ext_man}
 %{_mandir}/man?/*-no-composite.?%{?ext_man}
+%{_mandir}/man?/marco-glx.?%{?ext_man}
+%{_mandir}/man?/marco-xr_glx_hybrid.?%{?ext_man}
+%{_mandir}/man?/marco-xrender.?%{?ext_man}
 
 %files lang -f %{name}.lang
 
