@@ -16,8 +16,9 @@
 #
 
 
-# Internal QML imports of examples
-%global __requires_exclude qmlimport\\((FrequencyMonitor|qmlvideofilter).*
+# Internal QML imports of examples, internal library used by an example
+%global __requires_exclude qmlimport\\((FrequencyMonitor|qmlvideofilter).*|libfftreal.so
+%global __provides_exclude libfftreal.so
 
 %define qt5_snapshot 1
 %define libname libQt5Multimedia5

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May  2 06:57:36 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Drop libqt5-qtmultimedia-rpmlintrc, rpmlint allows this case now
+
+-------------------------------------------------------------------
+Wed Apr 27 09:08:57 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Deal with an example shipping a dynamic library:
+  * Ignore it in provides/requires
+  * Add libqt5-qtmultimedia-rpmlintrc
+
+-------------------------------------------------------------------
 Tue Jun 22 19:33:55 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Switch to KDE's maintenance branch
