@@ -16,29 +16,27 @@
 #
 
 
-%define realversion 1.0.0
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-schemaregistry
-Version:        1.0.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Microsoft Azure Schema Registry Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-schemaregistry/azure-schemaregistry-%{realversion}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-schemaregistry/azure-schemaregistry-%{version}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-azure-core >= 1.20.0
+Requires:       python-azure-core >= 1.23.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.5.0
+Requires:       python-msrest >= 0.6.21
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
@@ -52,10 +50,10 @@ by serializers to reduce payload size while describing payload structure with
 schema identifiers rather than full schemas.
 
 %prep
-%setup -q -n azure-schemaregistry-%{realversion}
+%setup -q -n azure-schemaregistry-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-schemaregistry-%{realversion}
+install -m 644 %{SOURCE1} %{_builddir}/azure-schemaregistry-%{version}
 %python_build
 
 %install
