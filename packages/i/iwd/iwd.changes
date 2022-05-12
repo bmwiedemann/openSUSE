@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 10 11:15:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.27:
+  * Fix issue with hidden networks on connection error.
+  * Fix issue with directed roams if already trying to roam.
+  * Fix issue with checking for connected in FT frame event.
+
+-------------------------------------------------------------------
 Tue Apr 19 11:20:16 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Update to 1.26:
