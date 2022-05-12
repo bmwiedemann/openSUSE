@@ -35,7 +35,7 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/matrix-org/python-canonicaljson
 Source:         https://github.com/matrix-org/python-canonicaljson/archive/v%{version}.tar.gz
-BuildRequires:  %{python_module frozendict >= 1.0}
+BuildRequires:  %{python_module frozendict >= 2.1.3}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module simplejson >= 3.14.0}
 BuildRequires:  fdupes
@@ -78,7 +78,7 @@ RFC 7159.
 # exclude tests on older SLE+Leap due to
 # ImportError: cannot import name inf
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
-%python_exec -m unittest discover
+%pyunittest discover -v
 %endif
 %endif
 
@@ -86,7 +86,9 @@ RFC 7159.
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%pycache_only %{python_sitelib}/__pycache__/%{short_name}*.pyc
+%{python_sitelib}/%{short_name}.py
+%{python_sitelib}/%{short_name}-%{version}*-info
 %endif
 
 %changelog

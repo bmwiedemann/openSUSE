@@ -74,4 +74,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>946543</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>6d5fd63fe8ae8c6e5384da0215034da2</srcmd5>
+    <version>1.5.0</version>
+    <time>1652389174</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump required version of frozendict to work with Python 3.10
+  (gh#matrix-org/python-canonicaljson#45).
+- Clean up SPEC.
+</comment>
+    <requestid>976275</requestid>
+  </revision>
 </revisionlist>
