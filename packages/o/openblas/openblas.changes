@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  5 11:56:20 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Dynamically generate baselibs.conf for openblas flavors; this
+  will fix the unresolvables down the chain for arpack-ng 32-bit
+  bi-arch packages.
+
+-------------------------------------------------------------------
 Fri Apr 29 16:36:57 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - For non-HPC builds create links (bsc#1198885):

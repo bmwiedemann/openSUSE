@@ -305,6 +305,16 @@ cp %{SOURCE1} .
 cp %{SOURCE2} .
 %endif
 
+# create baselibs.conf based on flavor
+cat >  %{_sourcedir}/baselibs.conf <<EOF
+lib%{name}%{?so_v}
+    +%{p_libdir}/libopenblas.*\.so\.*
+lib%{name}-devel
+    +%{p_libdir}/libopenblas\.so
+    requires -%{name}-<targettype>
+    requires "lib%{name}%{?so_v}-<targettype> = <version>"
+EOF
+
 %build
 
 # Limit lto jobs to 1 - -flto=auto together with make -j<m>
