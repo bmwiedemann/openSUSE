@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  4 09:10:44 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- switch source url to https
+
+-------------------------------------------------------------------
 Thu May  6 06:43:17 UTC 2021 - pgajdos@suse.com
 
 - install rpm macros in %{_rpmmacrodir} [bsc#1185661]

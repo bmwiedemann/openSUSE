@@ -680,4 +680,12 @@
 - call spec-cleaner</comment>
     <requestid>890905</requestid>
   </revision>
+  <revision rev="45" vrev="4">
+    <srcmd5>fa0e5f721ba9ac18f694462c00281e55</srcmd5>
+    <version>1.6.37</version>
+    <time>1652389092</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>976272</requestid>
+  </revision>
 </revisionlist>

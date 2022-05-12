@@ -1,7 +1,7 @@
 #
 # spec file for package libpng16
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ Summary:        Library for the Portable Network Graphics Format (PNG)
 License:        Zlib
 Group:          Development/Libraries/C and C++
 URL:            http://www.libpng.org/pub/png/libpng.html
-Source0:        http://prdownloads.sourceforge.net/libpng/libpng-%{version}.tar.xz
+Source0:        https://prdownloads.sourceforge.net/libpng/libpng-%{version}.tar.xz
 Source2:        libpng16.keyring
 Source3:        rpm-macros.libpng-tools
 Source4:        baselibs.conf
