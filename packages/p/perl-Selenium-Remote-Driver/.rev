@@ -281,4 +281,16 @@
     <comment></comment>
     <requestid>936024</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>5fc4231bf74aafe91ebca3a2d02ec4c5</srcmd5>
+    <version>1.47</version>
+    <time>1652389221</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.47
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+  1.47 2022-05-02 TEODESIAN
+      - Add DWIM to inputs accepted by ActionChains send_keys, key_up &amp; key_down, and add some docu
+</comment>
+    <requestid>976453</requestid>
+  </revision>
 </revisionlist>

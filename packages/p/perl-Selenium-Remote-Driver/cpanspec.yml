@@ -36,3 +36,4 @@ skip_noarch: 1
 #custom_test: |-
 #startserver && make test
 #ignore_requires: Bizarre::Module
+skip_doc: diff.out

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May  6 03:08:23 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.47
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+
+  1.47 2022-05-02 TEODESIAN
+      - Add DWIM to inputs accepted by ActionChains send_keys, key_up & key_down, and add some docu
+
+-------------------------------------------------------------------
 Sun Dec  5 03:08:10 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.46
