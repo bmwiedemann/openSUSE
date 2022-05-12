@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Apr 26 03:06:24 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.93
+   see /usr/share/doc/packages/perl-Devel-CheckOS/CHANGELOG
+
+  1.93    2022-04-25
+  - No functional changes, just changes to where dependencies are declared
+    https://github.com/DrHyde/perl-modules-Devel-CheckOS/issues/27
+  1.92    2022-04-24
+  - Fix bugs in new alias and case-insensitivity features which meant everything
+    broke in taint-mode. The new features now no longer work in taint-mode but
+    everything else should.
+  1.91    2022-04-21
+  - Fix tests for platforms where the OS is detected as something that is
+    a family, but not as anything more specific, such as Fedora Linux
+  1.90    2022-04-20
+  - Matches are now case-insensitive
+  - Add support for OS aliases
+  - Deprecated the list_* functions being context sensitive, they now warn
+    when called inappropriately. They will stop being context-sensitive some
+    time after April 2024.
+
+-------------------------------------------------------------------
 Wed May 26 03:06:29 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.87
