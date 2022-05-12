@@ -18,7 +18,6 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-%define         skip_python36 1
 Name:           python-qgrid
 Version:        1.3.1
 Release:        0
@@ -78,7 +77,7 @@ for f in ~/.jupyter/nbconfig/*.json ; do
     install -Dm 644 ${f} %{buildroot}%{_jupyter_nb_confdir}/${tdir}.d/qgrid.json
 done
 
-%{fdupes %{buildroot}%{_jupyter_prefix} %{buildroot}%{_jupyter_confdir}}
+%fdupes %{buildroot}%{_jupyter_prefix}
 
 %check
 # test_period_object_column - fails on serialization
@@ -93,6 +92,6 @@ done
 %files -n jupyter-qgrid
 %license LICENSE
 %{_jupyter_nbextension_dir}/qgrid/
-%config %{_jupyter_nb_notebook_confdir}/qgrid.json
+%_jupyter_config %{_jupyter_nb_notebook_confdir}/qgrid.json
 
 %changelog

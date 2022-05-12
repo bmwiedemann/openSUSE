@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May  7 23:05:38 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fix fdupes and distconfig errors
+
+-------------------------------------------------------------------
 Sat Apr 10 20:24:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Skip python36 build: no python36-pandas in Tumbleweed
