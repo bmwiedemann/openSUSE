@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-lusitaniae-apache_exporter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019 João Cavalheiro <jcavalheiro@suse.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,6 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{?rhel}
 %global debug_package %{nil}
 # Fix ERROR: No build ID note found in
@@ -29,14 +30,15 @@
 %define	serviceuser   prometheus
 
 Name:           golang-github-lusitaniae-apache_exporter
-Version:        0.7.0
+Version:        0.11.0
 Release:        0
 Summary:        Apache Exporter for Prometheus
 License:        MIT
 Group:          System/Management
 URL:            http://%{githubrepo}
 Source:         %{upstreamname}-%{version}.tar.gz
-Source1:        %{targetname}.service
+Source1:        vendor.tar.gz
+Source2:        %{targetname}.service
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  xz
@@ -54,20 +56,16 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Exports apache mod_status statistics via HTTP for Prometheus consumption.
 
 %prep
-%setup -q -n %{upstreamname}-%{version}
+%autosetup -a1 -n %{upstreamname}-%{version}
 
 %build
 %goprep %{githubrepo}
-%if 0%{?rhel}
-# Fix automatic versioning
-export GO111MODULE=auto
-%endif
-%gobuild
+%gobuild -mod=vendor "" ...
 
 %install
 install -D -m0755 %{_builddir}/go/bin/%{upstreamname} %{buildroot}/%{_bindir}/%{targetname}
 install -d -m 0755 %{buildroot}%{_unitdir}
-install -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}
+install -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}
 install -d -m 0755 %{buildroot}%{_sbindir}
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rc%{targetname}
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar 13 12:42:00 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to upstream release 0.11.0
+
+-------------------------------------------------------------------
 Fri Jan 21 20:09:39 UTC 2022 - Stefan Bluhm <stefan.bluhm@clacee.eu>
 
 - Adapted to build on Enterprise Linux 8
@@ -9,9 +14,13 @@ Mon Mar  8 09:40:42 UTC 2021 - Witek Bedyk <witold.bedyk@suse.com>
 - Require building with Go 1.15
 
 -------------------------------------------------------------------
-Wed Jan  1 15:04:14 UTC 2020 - Michael Ströder <michael@stroeder.com>
+Tue Nov 19 15:18:13 UTC 2019 - Joao Cavalheiro <jcavalheiro@suse.com>
 
-- update to upstream release 0.7.0
+- Update to 0.7
+  * Handle OS TERM signals
+
+- Changes from 0.6
+  * Add option to override host name
 
 -------------------------------------------------------------------
 Thu Jun  6 09:26:16 UTC 2019 - jmc <jcavalheiro@suse.com>
