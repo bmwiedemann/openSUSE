@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-data-tables
-Version:        12.3.0
+Version:        12.4.0
 Release:        0
 Summary:        Microsoft Azure Azure Data Tables Client Library for Python
 License:        MIT
