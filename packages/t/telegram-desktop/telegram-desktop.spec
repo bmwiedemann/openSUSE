@@ -149,11 +149,11 @@ BuildRequires:  pkgconfig(zlib)
 # Runtime requirements
 Requires:       hicolor-icon-theme
 Requires:       icu
-Requires:       libqt5-qtimageformats
+Requires:       qt6-imageformats
 # TDesktop can fall back to a simple GTK file picker but prefers the portal
 Recommends:     xdg-desktop-portal
 Recommends:     google-opensans-fonts
-Recommends:     libqt5-qtwayland
+Recommends:     qt6-wayland
 
 %description
 Telegram is a non-profit cloud-based instant messaging service.
@@ -171,7 +171,7 @@ The service also provides APIs to independent developers.
 %patch6 -p1
 
 cd ../
-unzip -q %{S:2}
+unzip -q %{SOURCE2}
 mkdir Libraries
 mv tg_owt-master Libraries/tg_owt
 %patch2 -p2 -d Libraries/tg_owt

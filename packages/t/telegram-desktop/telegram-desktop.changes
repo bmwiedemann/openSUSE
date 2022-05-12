@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 10 19:07:11 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+
+- Fixed requirements for Qt6 (boo#1199323).
+
+-------------------------------------------------------------------
 Tue Apr 26 15:20:13 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.7.3
@@ -34,6 +39,7 @@ Tue Apr 26 15:20:13 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
   * Bots can send a new type of button that lets you add them to
     your group or channel.
 - Added fix-unused-variable-error.patch
+
 -------------------------------------------------------------------
 Fri Apr  8 07:53:51 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
@@ -1354,13 +1360,13 @@ Fri May 25 06:04:47 UTC 2018 - i@xuzhao.net
     Replacement no longer happens when pasting text.
 
 -------------------------------------------------------------------
-Mon Apr 16 18:32:29 UTC 2018 - ilya@ilya.pp.ua
+Mon Apr 16 18:32:29 UTC 2018 - ilya@ilya.cf
 
 - Update to 1.2.17
   * Bug fixes and other minor improvements.
 
 -------------------------------------------------------------------
-Wed Mar 28 22:52:16 UTC 2018 - ilya@ilya.pp.ua
+Wed Mar 28 22:52:16 UTC 2018 - ilya@ilya.cf
 
 - Update to 1.2.15
   * Discover new stickers. Type one emoji to see suggestions from
@@ -1373,7 +1379,7 @@ Wed Mar 28 22:52:16 UTC 2018 - ilya@ilya.pp.ua
     Ctrl+Down.
 
 -------------------------------------------------------------------
-Tue Mar 20 21:31:30 UTC 2018 - ilya@ilya.pp.ua
+Tue Mar 20 21:31:30 UTC 2018 - ilya@ilya.cf
 
 - Refresh spec-file via spec-cleaner and manual optimizations.
   * Add %license and %doc macros.
@@ -1600,4 +1606,3 @@ Mon Jul  4 19:36:46 UTC 2016 - i@xuzhao.net
 Mon May 16 17:40:37 UTC 2016 - i@xuzhao.net
 
 - 0.9.48 Initial Commit.
-
