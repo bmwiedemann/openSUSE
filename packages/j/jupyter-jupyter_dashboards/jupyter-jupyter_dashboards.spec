@@ -1,7 +1,7 @@
 #
 # spec file for package jupyter-jupyter_dashboards
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Extension for using Jupyter Notebooks as dynamic dashboards
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            https://github.com/jupyter/dashboards
+URL:            https://github.com/jupyter-attic/dashboards
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_dashboards/jupyter_dashboards-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  jupyter-notebook >= 4.0
@@ -33,8 +33,8 @@ Requires:       jupyter-notebook >= 4.0
 Requires:       python3-certifi
 Requires(post): jupyter-notebook >= 4.0
 Requires(preun):jupyter-notebook >= 4.0
-Provides:       python3-jupyter_dashboards = %{version}
-Obsoletes:      python3-jupyter_dashboards <= %{version}
+Provides:       python3-jupyter_dashboards = %{version}-%{release}
+Obsoletes:      python3-jupyter_dashboards < %{version}-%{release}
 BuildArch:      noarch
 
 %description
@@ -74,7 +74,8 @@ rm -rf jupyter_dashboards/__pycache__/
 %python3_install
 
 %{jupyter_nbextension_install jupyter_dashboards}
-%{fdupes %{buildroot}%{python3_sitelib} %{buildroot}%{_jupyter_nbextension_dir}}
+%fdupes %{buildroot}%{python3_sitelib}
+%fdupes %{buildroot}%{_jupyter_nbextension_dir}
 
 %post
 %{jupyter_nbextension_enable jupyter_dashboards}
@@ -89,7 +90,7 @@ rm -rf jupyter_dashboards/__pycache__/
 %license LICENSE.md
 %{_bindir}/jupyter-dashboards
 %{python3_sitelib}/jupyter_dashboards/
-%{python3_sitelib}/jupyter_dashboards-%{version}-py*.egg-info
+%{python3_sitelib}/jupyter_dashboards-%{version}*-info
 %{_jupyter_nbextension_dir}/jupyter_dashboards/
 
 %changelog
