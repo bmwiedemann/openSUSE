@@ -2710,4 +2710,12 @@
     <comment>Update to Xen version 4.16.1</comment>
     <requestid>969996</requestid>
   </revision>
+  <revision rev="317" vrev="2">
+    <srcmd5>f65363d33cd837f3f74aee47eb300ce5</srcmd5>
+    <version>4.16.1_02</version>
+    <time>1652389069</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>976117</requestid>
+  </revision>
 </revisionlist>

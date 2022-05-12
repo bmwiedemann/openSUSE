@@ -231,7 +231,7 @@ Patch99996:     xen.stubdom.newlib.patch
 Patch99997:     gcc12-fixes.patch
 URL:            http://www.cl.cam.ac.uk/Research/SRG/netos/xen/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%define pyver %(python3 -c "import sys; print(sys.version[:3])")
+%define pyver %(python3 -c "import sys; print(sys.version.rpartition('.')[0])")
 
 %description
 Xen is a virtual machine monitor for x86 that supports execution of

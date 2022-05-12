@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 10 16:08:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- fix python3 >= 3.10 version detection 
+
+-------------------------------------------------------------------
 Wed Apr 13 08:54:02 MDT 2022 - carnold@suse.com
 
 - Update to Xen 4.16.1 bug fix release (bsc#1027519)
