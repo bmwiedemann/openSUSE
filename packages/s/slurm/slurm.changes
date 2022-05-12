@@ -1,8 +1,14 @@
 -------------------------------------------------------------------
+Tue May 10 10:26:02 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Add a comment about the CommunicationParameters=block_null_hash
+  option warning users who migrate - just in case.
+
+-------------------------------------------------------------------
 Fri May  6 09:33:34 UTC 2022 - Christian Goll <cgoll@suse.com>
 
-- Update to 21.08.8 which fixes CVE-2022-29500, CVE-2022-29501
-  and CVE-2022-29502
+- Update to 21.08.8 which fixes CVE-2022-29500 (bsc#1199278),
+  CVE-2022-29501 (bsc#1199279), and CVE-2022-29502 (bsc#1199281).
 - Added 'CommunicationParameters=block_null_hash' to slurm.conf, please
   add this parameter to existing configurations.
 

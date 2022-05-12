@@ -872,4 +872,16 @@
     <comment></comment>
     <requestid>975440</requestid>
   </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>d6814495c7d56e9b86989665ecd0ea98</srcmd5>
+    <version>21.08.8</version>
+    <time>1652389175</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a comment about the CommunicationParameters=block_null_hash
+  option warning users who migrate - just in case.
+
+- Update to 21.08.8 which fixes CVE-2022-29500 (bsc#1199278),
+  CVE-2022-29501 (bsc#1199279), and CVE-2022-29502 (bsc#1199281).</comment>
+    <requestid>976280</requestid>
+  </revision>
 </revisionlist>

@@ -651,6 +651,8 @@ sed -i -e '/^ControlMachine=/i# Ordered List of Control Nodes' \
     -e '/.*BackupAddr=.*/d'  %{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf
 cat >>%{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf <<EOF
 # Potential exploit mitigation CVE-2022-29500
+# When upgrading from a version without this fix
+# enable only after all daemons have been upgraded
 CommunicationParameters=block_null_hash
 # SUSE default configuration
 PropagateResourceLimitsExcept=MEMLOCK
