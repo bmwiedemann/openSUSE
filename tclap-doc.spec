@@ -1,7 +1,7 @@
 #
 # spec file for package tclap-doc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        API Documentation for %{name}
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            http://tclap.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/tclap/tclap-%{version}.tar.gz
+Source0:        https://downloads.sourceforge.net/tclap/tclap-%{version}.tar.gz
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
