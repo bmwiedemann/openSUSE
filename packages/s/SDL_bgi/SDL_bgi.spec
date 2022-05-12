@@ -27,7 +27,7 @@ Group:          Development/Libraries/X11
 URL:            http://libXbgi.sf.net/
 
 #Git-Web:       https://github.com/genpfault/sdl-bgi
-Source:         http://downloads.sf.net/libxbgi/%name-%version.tar.gz
+Source:         https://downloads.sf.net/libxbgi/%name-%version.tar.gz
 Source9:        %name-rpmlintrc
 Patch1:         sdlbgi-cmake.diff
 BuildRequires:  cmake
