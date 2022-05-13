@@ -74,7 +74,7 @@
           <arg file="${build.mdoOutputDir}"/> <!-- output directory -->
           <arg value="@{version}"/> <!-- model version -->
           <arg value="false"/> <!-- package with version -->
-          <arg value="true"/> <!-- use Java 5 -->
+          <arg value="8"/> <!-- java source -->
         </exec>
       </sequential>
     </macrodef>

@@ -32,7 +32,7 @@ BuildRequires:  javapackages-local
 BuildRequires:  maven-lib
 BuildRequires:  maven-shared-io
 BuildRequires:  maven-shared-utils
-BuildRequires:  modello
+BuildRequires:  modello >= 2.0.0
 BuildRequires:  plexus-containers-container-default
 BuildRequires:  plexus-utils
 BuildRequires:  unzip
