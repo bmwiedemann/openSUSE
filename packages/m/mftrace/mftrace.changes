@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  6 13:41:30 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- switch urls to https
+
+-------------------------------------------------------------------
 Thu Jun 17 04:50:33 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unnecessary BuildRequires on python-devel. 

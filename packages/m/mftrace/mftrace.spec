@@ -1,7 +1,7 @@
 #
 # spec file for package mftrace
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,8 @@ Release:        0
 Summary:        Scalable PostScript Fonts for MetaFont
 License:        GPL-2.0-only
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://lilypond.org/mftrace/
-Source0:        http://lilypond.org/download/sources/mftrace/%{name}-%{version}.tar.gz
+URL:            https://lilypond.org/mftrace/
+Source0:        https://lilypond.org/download/sources/mftrace/%{name}-%{version}.tar.gz
 Source1:        gf2pbm.1
 BuildRequires:  autoconf
 BuildRequires:  automake
