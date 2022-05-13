@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 26 21:26:11 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add an rpmlintrc for shlib-policy-name-error
+
+-------------------------------------------------------------------
 Wed Feb  2 00:38:08 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add fix_tautological_compare_321.patch
