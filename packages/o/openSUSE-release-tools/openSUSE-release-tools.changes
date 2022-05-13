@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May 12 07:30:21 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220512.551f2f3e:
+  * Fix packages released to containers repo
+  * Add annotations to the dashboard
+  * Add annotation datasources
+  * Add annotations for Leap 15.4
+  * Update product pattern for Leap 15.4
+  * Recreate the database on each run
+
+-------------------------------------------------------------------
+Wed May 11 09:06:33 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220511.d5ce68f7:
+  * dashboard: Add openSUSE:Leap:Micro:5.2:Images
+
+-------------------------------------------------------------------
 Tue May 10 15:48:42 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220510.47294604:
