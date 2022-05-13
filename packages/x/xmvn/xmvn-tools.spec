@@ -41,7 +41,7 @@ BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  maven-invoker >= 3.0
-BuildRequires:  modello
+BuildRequires:  modello >= 2.0.0
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-containers-component-annotations
 BuildRequires:  plexus-containers-container-default

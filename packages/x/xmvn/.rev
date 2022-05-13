@@ -63,4 +63,12 @@
     <comment>4.0.0 + a complicated package layout change</comment>
     <requestid>976065</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>611657aecf10ef82d35466e2e12e3a61</srcmd5>
+    <version>4.0.0</version>
+    <time>1652475800</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with modello-2.0.0</comment>
+    <requestid>977025</requestid>
+  </revision>
 </revisionlist>
