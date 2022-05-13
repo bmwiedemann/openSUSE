@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  5 08:41:02 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Use same %description as openssl-3 (describe the software,
+  not the project).
+
+-------------------------------------------------------------------
 Tue Mar 15 17:41:47 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.1.1n release

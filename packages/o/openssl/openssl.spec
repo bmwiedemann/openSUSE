@@ -1,7 +1,7 @@
 #
 # spec file for package openssl
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,10 +21,10 @@ Name:           openssl
 Version:        1.1.1n
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
-# Yes there is no license but to not confuse people keep it aligned to the pkg
+# Yes there is no license. But, to not confuse people, keep it aligned to the pkg
 License:        OpenSSL
 Group:          Productivity/Networking/Security
-Url:            https://www.openssl.org/
+URL:            https://www.openssl.org/
 Source0:        README.SUSE
 Source99:       baselibs.conf
 BuildRequires:  libopenssl%{_sonum} = %{version}
@@ -35,16 +35,13 @@ BuildArch:      noarch
 Provides:       openssl(cli)
 
 %description
-The OpenSSL Project is a collaborative effort to develop a robust,
-commercial-grade, full-featured, and open source toolkit implementing
-the Secure Sockets Layer (SSL v2/v3) and Transport Layer Security (TLS
-v1) protocols with full-strength cryptography. The project is managed
-by a worldwide community of volunteers that use the Internet to
-communicate, plan, and develop the OpenSSL toolkit and its related
-documentation.
+OpenSSL is a software library to be used in applications that need to
+secure communications over computer networks against eavesdropping or
+need to ascertain the identity of the party at the other end.
+OpenSSL contains an implementation of the SSL and TLS protocols.
 
 %package -n libopenssl-devel
-Summary:        Include Files and Libraries mandatory for Development
+Summary:        Development files for OpenSSL
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       libopenssl%{_sonum} = %{version}
@@ -58,8 +55,9 @@ Provides:       pkgconfig(libcrypto) = %{version}
 Provides:       pkgconfig(openssl) = %{version}
 
 %description -n libopenssl-devel
-This package contains all necessary include files and libraries needed
-to develop applications that require these.
+This package is a dummy package that always depends on the
+version of corresponding openssl packages that openSUSE
+currently supports.
 
 %prep
 cp %{SOURCE0} .
@@ -71,11 +69,9 @@ cp %{SOURCE0} .
 :
 
 %files
-%defattr(-, root, root)
 %doc README.SUSE
 
 %files -n libopenssl-devel
-%defattr(-, root, root)
 %doc README.SUSE
 
 %changelog
