@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-videoanalyzer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,12 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-videoanalyzer
-Version:        1.0.0b3
+Version:        1.0.0b4
 Release:        0
 Summary:        Microsoft Azure Video Analyzer Management Client Library for Python
 License:        MIT
@@ -37,7 +38,7 @@ BuildRequires:  unzip
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
 Requires:       python-azure-mgmt-core < 2.0.0
-Requires:       python-azure-mgmt-core >= 1.2.0
+Requires:       python-azure-mgmt-core >= 1.3.0
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-msrest >= 0.6.21
