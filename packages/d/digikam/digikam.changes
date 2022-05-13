@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 13 06:46:48 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add Fix-build-with-akonadi-contacts-22.04.patch to fix build with
+  the latest Akonadi versions
+
+-------------------------------------------------------------------
 Mon Mar  7 10:17:39 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 7.6.0

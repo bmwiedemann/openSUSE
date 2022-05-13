@@ -33,6 +33,8 @@ Source2:        %{name}.keyring
 %endif
 # PATCH-FIX-OPENSUSE -- Lower minimum exiv2 version to 0.26
 Patch0:         0001-Revert-Exiv2-is-now-released-with-exported-targets-u.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         Fix-build-with-akonadi-contacts-22.04.patch
 # QtWebEngine is not available on ppc and zSystems
 ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{mips} %{riscv}
 BuildRequires:  QtAV-devel >= 1.12
@@ -171,6 +173,7 @@ The main digikam libraries that are being shared between showfoto and digikam
 # Leap 15 only has exiv2 0.26
 %patch0 -p1
 %endif
+%patch1 -p1
 
 %build
 %cmake_kf5 -d build -- -DENABLE_APPSTYLES=ON -DENABLE_MEDIAPLAYER=ON
