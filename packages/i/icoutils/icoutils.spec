@@ -1,7 +1,7 @@
 #
 # spec file for package icoutils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,8 @@ Summary:        Extracting and Converting Microsoft Icon and Cursor Files
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Convertors
 URL:            https://www.nongnu.org/icoutils/
-Source0:        http://savannah.nongnu.org/download/icoutils/%{name}-%{version}.tar.bz2
-Source1:        http://savannah.nongnu.org/download/icoutils/%{name}-%{version}.tar.bz2.sig
+Source0:        https://savannah.nongnu.org/download/icoutils/%{name}-%{version}.tar.bz2
+Source1:        https://savannah.nongnu.org/download/icoutils/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libpng)
