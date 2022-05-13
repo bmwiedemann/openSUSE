@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 13 18:43:59 UTC 2022 - cloud-devel@suse.de
+
+- update to version 2.3.0
+  - tox: Don't use distutils entrypoint for coverage
+  - Drop support for Sphinx < 4.x
+  - Remove six
+  - Fix exception logging
+
+-------------------------------------------------------------------
 Sat Nov  6 18:24:32 UTC 2021 - cloud-devel@suse.de
 
 - removed 0001-Replace-add_stylesheet-add_javascript.patch

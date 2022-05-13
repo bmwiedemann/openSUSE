@@ -186,4 +186,16 @@
   - Stop install unnecessary packages when run tox -edocs</comment>
     <requestid>929914</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>36d6cc06a2d28dd79c00896defd1d320</srcmd5>
+    <version>2.3.0</version>
+    <time>1652475819</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.3.0
+  - tox: Don't use distutils entrypoint for coverage
+  - Drop support for Sphinx &lt; 4.x
+  - Remove six
+  - Fix exception logging</comment>
+    <requestid>977080</requestid>
+  </revision>
 </revisionlist>
