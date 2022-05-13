@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May  9 09:42:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Use python310 flavor explicitly, irrespective of the primary
+  python3 flavor du jour.
+
+-------------------------------------------------------------------
+Sat May  7 23:29:36 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Migration of primary Python interpreter to 3.10
+  * update stdlib.txt: encoding, importlib, lib-dynload,
+    dataclasses, ast
+  * Remove deprecated stdlib distutils from the venv
+    (not used by rpmlint)
+  * Do not install+delete pip in the venv
+- Update URL
+- Explicit BuildRequires: python-rpm-macros -- sitelib macros
+  are used.
+
+-------------------------------------------------------------------
 Sat Mar  5 10:52:37 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Enable --time-report.

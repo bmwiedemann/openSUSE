@@ -939,4 +939,12 @@ undo bootstrap workaround</comment>
     <comment>- Enable --time-report.</comment>
     <requestid>959593</requestid>
   </revision>
+  <revision rev="113" vrev="6">
+    <srcmd5>d23b020cb39d395fa4c7e383423935e0</srcmd5>
+    <version>MACRO</version>
+    <time>1652475782</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975796</requestid>
+  </revision>
 </revisionlist>
