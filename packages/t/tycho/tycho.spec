@@ -135,6 +135,7 @@ Name:           tycho
 # or when the Eclipse that is present is not compatible
 %if %{with bootstrap}
 Source10:       eclipse-bootstrap-2019-12.tar.xz
+Source11:       fakepom.xml
 %endif
 %if %{with junit5}
 BuildRequires:  mvn(org.apache.maven.surefire:surefire-junit-platform)
@@ -273,6 +274,7 @@ tar -xf %{SOURCE10}
 # Install OSGi bundles into local repo to override any incompatible system version
 # that may be already installed
 pushd bootstrap
+xmvn -o install:install-file -Dfile=%{SOURCE11} -DpomFile=%{SOURCE11} -Dmaven.repo.local=$(pwd)/../.m2
 for f in usr/lib/eclipse/plugins/org.eclipse.osgi.compatibility.state_*.jar \
          usr/lib/eclipse/plugins/org.eclipse.osgi.services_*.jar \
          usr/lib/eclipse/plugins/org.eclipse.osgi.util_*.jar \
@@ -382,6 +384,8 @@ for b in org.eclipse.osgi \
          org.eclipse.osgi.compatibility.state ; do
   osgiJarPath=$(find .m2/org/eclipse/tycho/$b/*/ -name "*.jar")
   osgiPomPath=$(find .m2/org/eclipse/tycho/$b/*/ -name "*.pom")
+  %pom_remove_parent $osgiPomPath
+  %pom_xpath_set "pom:project/pom:groupId" "org.eclipse.tycho" $osgiPomPath
   %{mvn_artifact} $osgiPomPath $osgiJarPath
 done
 %endif
