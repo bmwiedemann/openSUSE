@@ -3,7 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
+  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -12751,12 +12751,20 @@ unsorted:
   - libopenblas-pthreads-gnu-hpc 
   - libopenblas-pthreads-gnu-hpc-devel 
   - libopenblas-pthreads_0_3_20-gnu-hpc 
+  - libopenblas-pthreads_0_3_20-gnu-hpc-32bit: [x86_64] 
   - libopenblas-pthreads_0_3_20-gnu-hpc-devel 
+  - libopenblas-pthreads_0_3_20-gnu-hpc-devel-32bit: [x86_64] 
   - libopenblas_0_3_20-gnu-hpc 
+  - libopenblas_0_3_20-gnu-hpc-32bit: [x86_64] 
   - libopenblas_0_3_20-gnu-hpc-devel 
+  - libopenblas_0_3_20-gnu-hpc-devel-32bit: [x86_64] 
   - libopenblas_openmp-devel 
+  - libopenblas_openmp-devel-32bit: [x86_64] 
   - libopenblas_openmp0 
+  - libopenblas_openmp0-32bit: [x86_64] 
   - libopenblas_pthreads-devel 
+  - libopenblas_pthreads-devel-32bit: [x86_64] 
+  - libopenblas_pthreads0-32bit: [x86_64] 
   - libopenblas_serial-devel 
   - libopenblas_serial0 
   - libopencascade7 
@@ -16181,10 +16189,7 @@ unsorted:
   - maxima 
   - maxima-exec-clisp 
   - maxima-exec-sbcl 
-  - maxima-lang-de-utf8 
-  - maxima-lang-es-utf8 
-  - maxima-lang-pt-utf8 
-  - maxima-lang-pt_BR-utf8 
+  - maxima-lang 
   - maxima-xmaxima 
   - mayavi 
   - mayavi-doc 
@@ -22915,6 +22920,7 @@ unsorted:
   - python310-django-mathfilters 
   - python310-django-minio-storage 
   - python310-django-model-utils 
+  - python310-django-money 
   - python310-django-nine 
   - python310-django-oauth-toolkit 
   - python310-django-oidc-provider 
@@ -23749,7 +23755,6 @@ unsorted:
   - python310-node-semver 
   - python310-nodeenv 
   - python310-nornir 
-  - python310-nose 
   - python310-nose2 
   - python310-notebook 
   - python310-notebook-lang 
@@ -24439,6 +24444,7 @@ unsorted:
   - python310-q 
   - python310-qet_tb_generator 
   - python310-qgrid 
+  - python310-qpageview 
   - python310-qrcode 
   - python310-qscintilla-qt5 
   - python310-qstylizer 
@@ -24691,6 +24697,7 @@ unsorted:
   - python310-sparse 
   - python310-speaklater 
   - python310-sphinx-argparse 
+  - python310-sphinx-autodoc-typehints 
   - python310-sphinx-book-theme 
   - python310-sphinx-bootstrap-theme 
   - python310-sphinx-click 
@@ -25041,7 +25048,6 @@ unsorted:
   - python310-xlwt 
   - python310-xmldiff 
   - python310-xmlschema 
-  - python310-xmlsec 
   - python310-xmltodict 
   - python310-xpybutil 
   - python310-xsge_gui 
@@ -26085,6 +26091,7 @@ unsorted:
   - python38-django-mathfilters 
   - python38-django-minio-storage 
   - python38-django-model-utils 
+  - python38-django-money 
   - python38-django-nine 
   - python38-django-oauth-toolkit 
   - python38-django-oidc-provider 
@@ -26853,7 +26860,6 @@ unsorted:
   - python38-node-semver 
   - python38-nodeenv 
   - python38-nornir 
-  - python38-nose 
   - python38-nose2 
   - python38-notebook 
   - python38-notebook-lang 
@@ -27486,6 +27492,7 @@ unsorted:
   - python38-q 
   - python38-qet_tb_generator 
   - python38-qgrid 
+  - python38-qpageview 
   - python38-qrcode 
   - python38-qscintilla-qt5 
   - python38-qstylizer 
@@ -29146,6 +29153,7 @@ unsorted:
   - python39-django-mathfilters 
   - python39-django-minio-storage 
   - python39-django-model-utils 
+  - python39-django-money 
   - python39-django-nine 
   - python39-django-oauth-toolkit 
   - python39-django-oidc-provider 
@@ -29978,7 +29986,6 @@ unsorted:
   - python39-node-semver 
   - python39-nodeenv 
   - python39-nornir 
-  - python39-nose 
   - python39-nose2 
   - python39-notebook 
   - python39-notebook-lang 
@@ -30668,6 +30675,7 @@ unsorted:
   - python39-q 
   - python39-qet_tb_generator 
   - python39-qgrid 
+  - python39-qpageview 
   - python39-qrcode 
   - python39-qscintilla-qt5 
   - python39-qstylizer 
@@ -32317,6 +32325,7 @@ unsorted:
   - ruqola 
   - ruqola-lang 
   - rust 
+  - rust-analyzer 
   - rust-cbindgen 
   - rust-packaging 
   - rust-srpm-macros 
@@ -32609,6 +32618,7 @@ unsorted:
   - sedutil: [x86_64] 
   - segment 
   - segment-javadoc 
+  - seidl 
   - selinux-policy-devel 
   - selinux-policy-doc 
   - selinux-policy-minimum 
