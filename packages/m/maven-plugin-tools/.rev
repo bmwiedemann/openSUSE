@@ -40,4 +40,12 @@
     <comment>no reason to force java 8</comment>
     <requestid>959848</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>3ac85e0ce2f23ea15e7944ba17bacdac</srcmd5>
+    <version>3.6.0</version>
+    <time>1652475803</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with modello-2.0.0</comment>
+    <requestid>977032</requestid>
+  </revision>
 </revisionlist>

@@ -42,7 +42,7 @@ BuildRequires:  jtidy
 BuildRequires:  junit
 BuildRequires:  maven-lib
 BuildRequires:  maven-reporting-api
-BuildRequires:  modello
+BuildRequires:  modello >= 2.0.0
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-ant-factory
 BuildRequires:  plexus-archiver

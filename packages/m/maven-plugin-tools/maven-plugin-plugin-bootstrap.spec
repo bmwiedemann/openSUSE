@@ -46,7 +46,7 @@ BuildRequires:  maven-plugin-tools-api
 BuildRequires:  maven-plugin-tools-generators
 BuildRequires:  maven-reporting-api
 BuildRequires:  maven-reporting-impl
-BuildRequires:  modello
+BuildRequires:  modello >= 2.0.0
 BuildRequires:  plexus-containers-container-default
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-velocity

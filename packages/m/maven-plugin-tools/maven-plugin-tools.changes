@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 13 09:16:46 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with modello 2.0.0
+
+-------------------------------------------------------------------
 Mon Mar  7 11:01:23 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not force building with java-1_8_0-openjdk, since the package
