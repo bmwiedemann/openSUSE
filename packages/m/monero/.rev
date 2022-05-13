@@ -116,4 +116,26 @@
     <comment></comment>
     <requestid>961059</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>374ef0d277150c745db9cd749e52b776</srcmd5>
+    <version>0.17.3.2</version>
+    <time>1652475792</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.17.3.2:
+  * add a sanity check to RPC input data size
+  * build: prepare v0.17.3.2
+  * randomx: update submodule
+  * Added support for Ledger Nano S Plus
+  * [release-v0.17] Don't require --rpc-login with --rpc-access-control-origins
+  * replace erciccione's seednode with one on haveno's infrastructure
+  * wallet2: update stagenet rollback blocks
+  * multisig key exchange update and refactor
+  * simplewallet: rename duplicate amount headers for clarity
+  * support authentication in monero-wallet-rpc set_daemon
+  * Balance includes unconfirmed transfers to self
+  * wallet inits cache if file and blob missing
+  * Balance includes unconfirmed payments
+  * Update net_node.inl to to replace seed node</comment>
+    <requestid>976977</requestid>
+  </revision>
 </revisionlist>
