@@ -19,7 +19,7 @@
 %global parent modello
 %global subname maven-plugin
 Name:           %{parent}-%{subname}
-Version:        1.11
+Version:        2.0.0
 Release:        0
 Summary:        Modello Maven Plugin
 License:        Apache-2.0 AND MIT
@@ -38,17 +38,13 @@ BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.codehaus.modello:modello-core) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-converters) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-dom4j) = %{version}
-BuildRequires:  mvn(org.codehaus.modello:modello-plugin-jackson) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-java) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-jdom) = %{version}
-BuildRequires:  mvn(org.codehaus.modello:modello-plugin-jsonschema) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-sax) = %{version}
-BuildRequires:  mvn(org.codehaus.modello:modello-plugin-snakeyaml) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-stax) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-xdoc) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-xpp3) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-xsd) = %{version}
-BuildRequires:  mvn(org.codehaus.plexus:plexus-container-default)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(org.sonatype.plexus:plexus-build-api)
 #!BuildRequires: maven-compiler-plugin-bootstrap
@@ -80,23 +76,21 @@ API documentation for %{name}.
 %prep
 %setup -q -n %{parent}-%{version}
 cp -p %{SOURCE1} LICENSE
-# We don't generate site; don't pull extra dependencies.
+
 %pom_remove_plugin :maven-site-plugin
-# Avoid using Maven 2.x APIs
-sed -i s/maven-project/maven-core/ modello-maven-plugin/pom.xml
+
+%pom_remove_dep :jackson-bom
 
 %pom_disable_module modello-plugin-jackson modello-plugins
 %pom_disable_module modello-plugin-jsonschema modello-plugins
+%pom_disable_module modello-plugin-snakeyaml modello-plugins
 %pom_remove_dep :modello-plugin-jackson modello-maven-plugin
 %pom_remove_dep :modello-plugin-jsonschema modello-maven-plugin
+%pom_remove_dep :modello-plugin-snakeyaml modello-maven-plugin
 
 %build
 pushd %{name}
-%{mvn_build} -f -- \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-    -Dmaven.compiler.release=8 \
-%endif
-    -Dmaven.version=3.1.1 -Dsource=8
+%{mvn_build} -f -- -Dsource=8
 popd
 
 %install
