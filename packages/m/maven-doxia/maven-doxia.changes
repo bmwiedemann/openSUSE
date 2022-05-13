@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 13 09:03:45 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with modello 2.0.0
+
+-------------------------------------------------------------------
 Tue Feb 22 18:20:02 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build against the log4j12 packages

@@ -58,4 +58,12 @@
     <comment>Build against reload4j</comment>
     <requestid>957076</requestid>
   </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>3a56d51d4f45a52cbb291031ed9fb182</srcmd5>
+    <version>1.9.1</version>
+    <time>1652475801</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with modello-2.0.0</comment>
+    <requestid>977026</requestid>
+  </revision>
 </revisionlist>

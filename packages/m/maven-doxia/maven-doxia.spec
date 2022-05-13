@@ -39,7 +39,7 @@ BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
 BuildRequires:  javapackages-local
 BuildRequires:  jdom2
-BuildRequires:  modello
+BuildRequires:  modello >= 2.0.0
 BuildRequires:  objectweb-asm
 BuildRequires:  parboiled
 BuildRequires:  pegdown
