@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 12 19:47:52 UTC 2022 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Added a patch "gcc12_fix.patch" to fix compilation with GCC12.
+
+-------------------------------------------------------------------
 Tue Mar 15 21:28:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - adjust license declaration to be BSD-3-Clause only based on

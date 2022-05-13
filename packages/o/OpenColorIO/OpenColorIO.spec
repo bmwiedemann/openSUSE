@@ -39,6 +39,8 @@ License:        BSD-3-Clause
 Group:          Productivity/Graphics/Other
 URL:            https://opencolorio.org/
 Source0:        https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gcc12_fix.patch asterios.dramis@gmail.com -- Fix compilation with GCC12
+Patch0:         gcc12_fix.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
@@ -114,6 +116,7 @@ This package contains python bindings for OpenColorIO.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
+%patch0 -p1
 
 # Fix library install location
 sed -i 's|DESTINATION lib|DESTINATION %{_lib}|' src/OpenColorIO/CMakeLists.txt
@@ -140,7 +143,7 @@ rm -f %{buildroot}%{_prefix}/lib/libOpenColorIOoiiohelpers.a
 mkdir -p %{buildroot}%{_docdir}/%{pkg_name}
 cp *.md  %{buildroot}%{_docdir}/%{pkg_name}
 
-# this shouldn't be needed
+# This shouldn't be needed
 rm %{buildroot}%{_datadir}/ocio/setup_ocio.sh
 
 %if %{without ocio_tools}
@@ -164,7 +167,6 @@ rm -rv %{buildroot}%{_libdir} %{buildroot}%{_includedir}
 
 %files -n %{pkg_name}-doc
 %{_docdir}/%{pkg_name}/html/
-
 %else
 
 %files devel
