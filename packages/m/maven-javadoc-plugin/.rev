@@ -64,4 +64,12 @@
     <comment>Fix builds in non-utf-8 locales with utf-8 encoded sources</comment>
     <requestid>961693</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>91b9c3aea92f8dec6bedffbdf387f90b</srcmd5>
+    <version>3.3.2</version>
+    <time>1652475805</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with modello-2.0.0</comment>
+    <requestid>977035</requestid>
+  </revision>
 </revisionlist>

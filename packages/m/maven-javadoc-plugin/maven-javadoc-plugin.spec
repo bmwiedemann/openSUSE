@@ -80,7 +80,7 @@ BuildArch:      noarch
 %if %{with bootstrap}
 Name:           %{base_name}-bootstrap
 BuildRequires:  ant
-BuildRequires:  modello
+BuildRequires:  modello >= 2.0.0
 BuildRequires:  plexus-metadata-generator
 %else
 Name:           %{base_name}
