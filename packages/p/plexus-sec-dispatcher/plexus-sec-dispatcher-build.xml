@@ -65,30 +65,32 @@
 
   <target name="gen-src" description="Generate sources from mdo files">
     <mkdir dir="${build.mdoOutputDir}"/>
-    <exec executable="modello" failonerror="true">
-      <arg value="${build.mdoDir}/settings-security.mdo"/>
-      <arg value="java"/>
-      <arg value="${build.mdoOutputDir}"/>
-      <arg value="1.0.0"/>
-      <arg value="false"/>
-      <arg value="true"/>
-    </exec>
-    <exec executable="modello" failonerror="true">
-      <arg value="${build.mdoDir}/settings-security.mdo"/>
-      <arg value="xpp3-reader"/>
-      <arg value="${build.mdoOutputDir}"/>
-      <arg value="1.0.0"/>
-      <arg value="false"/>
-      <arg value="true"/>
-    </exec>
-    <exec executable="modello" failonerror="true">
-      <arg value="${build.mdoDir}/settings-security.mdo"/>
-      <arg value="xpp3-writer"/>
-      <arg value="${build.mdoOutputDir}"/>
-      <arg value="1.0.0"/>
-      <arg value="false"/>
-      <arg value="true"/>
-    </exec>
+    <macrodef name="modello-single-mode">
+      <attribute name="file"/>
+      <attribute name="mode"/>
+      <attribute name="version"/>
+      <sequential>
+        <exec executable="modello" failonerror="true">
+          <arg file="@{file}"/> <!-- model file -->
+          <arg value="@{mode}"/> <!-- output type -->
+          <arg file="${build.mdoOutputDir}"/> <!-- output directory -->
+          <arg value="@{version}"/> <!-- model version -->
+          <arg value="false"/> <!-- package with version -->
+          <arg value="8"/> <!-- javaSource -->
+        </exec>
+      </sequential>
+    </macrodef>
+    <macrodef name="modello">
+      <attribute name="file"/>
+      <attribute name="version" default="1.0.0"/>
+      <sequential>
+        <echo taskname="modello" message="Generating sources for @{file}"/>
+        <modello-single-mode file="@{file}" version="@{version}" mode="java"/>
+        <modello-single-mode file="@{file}" version="@{version}" mode="xpp3-reader"/>
+        <modello-single-mode file="@{file}" version="@{version}" mode="xpp3-writer"/>
+      </sequential>
+    </macrodef>
+    <modello file="${build.mdoDir}/settings-security.mdo"/>
   </target>
 
   <!-- ====================================================================== -->

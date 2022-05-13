@@ -32,7 +32,7 @@ BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.7
 BuildRequires:  javapackages-local
-BuildRequires:  modello
+BuildRequires:  modello >= 2.0.0
 BuildRequires:  plexus-cipher
 BuildRequires:  plexus-containers-container-default
 BuildRequires:  plexus-metadata-generator
