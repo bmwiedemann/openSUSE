@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 12 12:38:27 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.8:
+  * Add button ID "0" to cursor bindings. This pseudo-button is
+    triggered whenever feh observes a cursor movement.
+    It does not have a default binding.
+  * Support hexadecimal IDs in --window-id
+  * Disable --auto-rotate in feh builds compiled with Imlib2 1.7.5
+    or later. Imlib2 1.7.5 introduces transparent EXIF-based image
+    orientation adjustment, so --auto-rotate is no longer needed
+
+-------------------------------------------------------------------
 Mon Nov  1 12:48:00 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.7.2:

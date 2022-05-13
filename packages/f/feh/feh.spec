@@ -1,7 +1,7 @@
 #
 # spec file for package feh
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           feh
-Version:        3.7.2
+Version:        3.8
 Release:        0
 Summary:        X11 image viewer
-License:        MIT AND LGPL-2.0-or-later
+License:        LGPL-2.0-or-later AND MIT
 URL:            https://feh.finalrewind.org/
 Source:         https://feh.finalrewind.org/%{name}-%{version}.tar.bz2
 Source1:        https://feh.finalrewind.org/%{name}-%{version}.tar.bz2.asc
@@ -46,8 +46,8 @@ Requires:       imlib2-loaders
 Requires:       libjpeg-turbo
 Requires(post): desktop-file-utils
 Requires(post): hicolor-icon-theme
-Requires(postun): desktop-file-utils
-Requires(postun): hicolor-icon-theme
+Requires(postun):desktop-file-utils
+Requires(postun):hicolor-icon-theme
 
 %description
 feh is an X11 image viewer aimed mostly at console users. It does not
