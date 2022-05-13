@@ -3629,4 +3629,12 @@
   + fix memory leak in tic when &quot;-c&quot; option is used.</comment>
     <requestid>973227</requestid>
   </revision>
+  <revision rev="214" vrev="18">
+    <srcmd5>84678431d060dff0f65319e1ca2b571e</srcmd5>
+    <version>6.3.MACRO</version>
+    <time>1652475780</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>975718</requestid>
+  </revision>
 </revisionlist>

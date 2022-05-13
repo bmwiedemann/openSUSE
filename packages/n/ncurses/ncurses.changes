@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon May  2 06:22:03 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch  20220501
+  + build-fix for debug-traces (report/patch by Chris Clayton).
+- Add ncurses patch 20220430
+  + modify samples for xterm mouse 1002/1003 modes to use 1006 mode, and
+    also provide for focus in/out responses -TD
+  + modify default case in handle_wheel() to always report button-release
+    events, e.g., for xterm mouse mode 1003 (patch by Leonid S Usov).
+  + improve valid_entryname() to disallow characters used in terminfo
+    syntax: '#', '=', '|', '\'.
+  + alter copy_termtype() to allocate new str_table and ext_str_table
+    data rather than relying upon its callers.
+  + use calloc in _nc_init_entry() when allocating stringbuf, to ensure
+    it is initialized.
+  + add library-level TYPE_CALLOC for consistency with TYPE_MALLOC.
+  + add some debug-traces for tic/infocmp.
+- Correct offsets of patches
+  * ncurses-5.9-ibm327x.dif
+  * ncurses-6.3.dif
+
+-------------------------------------------------------------------
 Wed Apr 27 12:47:05 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Include FORTIFY_SOURCE_3-fix.patch as the patch
