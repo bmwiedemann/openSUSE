@@ -150,4 +150,18 @@
     <comment></comment>
     <requestid>850979</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e6f49033b7b7da7207213e3aa6a3425c</srcmd5>
+    <version>2.2.0</version>
+    <time>1652475789</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.2.0
+  - Correct a typo in the document
+  - [community goal] Update contributor documentation
+  - Use py3 as the default runtime for tox
+  - drop mock from lower-constraints and requirements
+  - Add support for Jinja2 3.x filters
+  - Switch to OFTC</comment>
+    <requestid>976982</requestid>
+  </revision>
 </revisionlist>

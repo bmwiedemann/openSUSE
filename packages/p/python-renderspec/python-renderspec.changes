@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 13 07:22:29 UTC 2022 - cloud-devel@suse.de
+
+- update to version 2.2.0
+  - Correct a typo in the document
+  - [community goal] Update contributor documentation
+  - Use py3 as the default runtime for tox
+  - drop mock from lower-constraints and requirements
+  - Add support for Jinja2 3.x filters
+  - Switch to OFTC
+
+-------------------------------------------------------------------
 Tue Nov 17 05:11:36 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v2.1.0

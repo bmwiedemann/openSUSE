@@ -1,7 +1,7 @@
 #
 # spec file for package python-renderspec
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global oldpython python
 Name:           python-renderspec
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Generate spec files from Jinja2 templates
 License:        Apache-2.0
@@ -42,7 +42,6 @@ and follow their policies and processes.
 
 %package -n python3-renderspec
 Summary:        Generate spec files from Jinja2 templates
-Group:          Development/Languages/Python
 Requires:       python3-Jinja2 >= 2.10
 Requires:       python3-PyYAML >= 3.10
 Requires:       python3-packaging >= 16.5
@@ -57,7 +56,6 @@ and follow their policies and processes.
 
 %package -n python-renderspec-doc
 Summary:        Documentation for the renderspec utility
-Group:          Development/Languages/Python
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
 Requires:       python3-renderspec = %{version}
@@ -67,13 +65,13 @@ Documentation for the renderspec tool which is a tool to convert
 a spec.j2 Jinja2 template into a rpm .spec file.
 
 %prep
-%autosetup -p 1 -n renderspec-2.1.0
+%autosetup -p 1 -n renderspec-2.2.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
-PBR_VERSION=2.1.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=2.2.0 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
