@@ -72,7 +72,7 @@ BuildRequires:  maven-wagon-file
 BuildRequires:  maven-wagon-http
 BuildRequires:  maven-wagon-http-shared
 BuildRequires:  maven-wagon-provider-api
-BuildRequires:  modello >= 1.10
+BuildRequires:  modello >= 2.0.0
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-cipher >= 2.0
 BuildRequires:  plexus-classworlds

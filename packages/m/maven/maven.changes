@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 13 09:01:43 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with modello-2.0.0
+
+-------------------------------------------------------------------
 Wed Apr 27 14:00:15 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Remove using of alternatives, since the symlinks are in a separate
