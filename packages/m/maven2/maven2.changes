@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 13 09:10:46 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with modello 2.0.0
+
+-------------------------------------------------------------------
 Sun Mar 20 20:14:53 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source and target levels 8

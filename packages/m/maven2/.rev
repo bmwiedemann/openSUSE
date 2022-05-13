@@ -15,4 +15,12 @@
     <comment>Build with source and target levels 8</comment>
     <requestid>964424</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>317e615814c0a4fbd3e91c26485d978b</srcmd5>
+    <version>2.2.1</version>
+    <time>1652475802</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with modello-2.0.0</comment>
+    <requestid>977028</requestid>
+  </revision>
 </revisionlist>

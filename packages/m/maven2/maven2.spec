@@ -37,7 +37,7 @@ BuildRequires:  fdupes
 BuildRequires:  javapackages-local
 BuildRequires:  maven-lib
 BuildRequires:  maven-wagon-provider-api
-BuildRequires:  modello
+BuildRequires:  modello >= 2.0.0
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-containers-component-annotations
 BuildRequires:  plexus-containers-container-default
