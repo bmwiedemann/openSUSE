@@ -450,4 +450,12 @@
     <comment>- Update to release 11.14</comment>
     <requestid>960939</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>0cae5a074dca585a75558fff174e247c</srcmd5>
+    <version>11.15</version>
+    <time>1652475817</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 11.15</comment>
+    <requestid>977073</requestid>
+  </revision>
 </revisionlist>

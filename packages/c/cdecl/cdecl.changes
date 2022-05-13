@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 13 15:37:51 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.15
+  * _Atomic arrays are now correctly forbidden.
+  * New "CDECLRC" environment variable.
+  * Alignment of enums is now correctly allowed in C11 mode.
+
+-------------------------------------------------------------------
 Thu Mar 10 19:40:00 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.14
