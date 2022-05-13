@@ -1,7 +1,7 @@
 #
 # spec file for package intel-opencl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/intel/compute-runtime
 Source0:        https://github.com/intel/compute-runtime/archive/%{version}/compute-runtime-%{version}.tar.gz
+Patch0:         0001-Include-memory-in-generate_cpp_array.cpp.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libigc-devel
@@ -45,10 +46,16 @@ Requires:       %{name} = %{version}-%{release}
 Development package for Intel Graphics Compute Runtime for OpenCL.
 
 %prep
-%autosetup -n compute-runtime-%{version}
+%autosetup -p1 -n compute-runtime-%{version}
 
 %build
 %define __builder ninja
+
+# Needed for gcc12+
+%if 0%{?suse_version} > 1500
+export CXXFLAGS="-Wno-error=maybe-uninitialized -Wno-error=mismatched-new-delete"
+%endif
+
 %cmake \
   -DSKIP_UNIT_TESTS=1
 %cmake_build

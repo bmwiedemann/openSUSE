@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 13 06:29:01 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- 0001-Include-memory-in-generate_cpp_array.cpp.patch
+  * Include <memory> in generate_cpp_array.cpp 
+
+-------------------------------------------------------------------
+Thu May 12 20:31:30 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- gcc12 introduced new warnings that must not be treated as errors
+- Include <memory> in generate_cpp_array.cpp
+
+-------------------------------------------------------------------
 Thu Nov 11 13:19:48 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 21.43.21438 
