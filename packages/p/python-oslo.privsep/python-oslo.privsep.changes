@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May 13 18:30:02 UTC 2022 - cloud-devel@suse.de
+
+- update to version 2.8.0
+  - Fix formatting of release list
+  - Add note explaining max_buffer_size value
+  - Update master for stable/yoga
+  - Remove unnecessary unicode prefixes
+  - Bump max_buffer_size for Deserializer
+  - Add Python3 yoga unit tests
+  - Add Python3 zed unit tests
+  - Remove six
+  - Update master for stable/xena
+
+-------------------------------------------------------------------
 Tue Oct 26 22:10:01 UTC 2021 - cloud-devel@suse.de
 
 - update to version 2.6.2
