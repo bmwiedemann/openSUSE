@@ -49,7 +49,7 @@ BuildRequires:  maven-doxia-sink-api
 BuildRequires:  maven-lib
 BuildRequires:  maven-project
 BuildRequires:  maven-reporting-api
-BuildRequires:  modello
+BuildRequires:  modello >= 2.0.0
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-cli
