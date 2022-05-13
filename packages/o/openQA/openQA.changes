@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 13 09:42:34 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1652425252.aca9f0c:
+  * Dependency cron 2022-05-13
+  * Prevent job_done_hooks not knowing that jobs will be retried
+  * Fix comment event names in AuditLog plugin
+  * Fix the force execution mode in fetchneedles script
+  * scripts: Do not hard-code assetdir in openqa-clone-job
+  * docs: Update audit event names according to implementation
+
+-------------------------------------------------------------------
 Wed May 11 01:42:37 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1652174357.038f320:
