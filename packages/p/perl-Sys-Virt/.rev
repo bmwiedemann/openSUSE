@@ -901,4 +901,15 @@ new request.</comment>
   - Add all new APIs and constants in libvirt 8.1.0</comment>
     <requestid>959277</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>4d950f42d47c76c841179b45e3d942bb</srcmd5>
+    <version>8.3.0</version>
+    <time>1652475784</time>
+    <user>dimstar_suse</user>
+    <comment>Updated perl bindings for libvirt 8.3.0.
+
+- Update to 8.3.0
+  - Add all new APIs and constants in libvirt 8.3.0</comment>
+    <requestid>975888</requestid>
+  </revision>
 </revisionlist>
