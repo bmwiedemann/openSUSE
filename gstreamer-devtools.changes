@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  9 11:18:57 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.20.1:
+  + meson: provide gobject-cast-checks, glib-checks and
+    glib-asserts options at top level as well
+
+-------------------------------------------------------------------
 Fri Mar 18 07:56:21 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.20.1:
