@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri May 13 15:02:43 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.10:
+  * Improve start/stop test.
+  * ci: addresses @aluzzardi comments: move to test subkey, compile dagger bin with -race
+  * universe: python: Use official python image
+  * build(deps): bump github.com/moby/buildkit from 0.10.2 to 0.10.3
+  * universe: Add kubernetes package
+  * ci: bump github action to latest (#2411)
+  * plan: unquote actions names
+  * docs: Fix persistent cache doc id
+  * ci: use same source everywhere
+  * ci: move core-integration tests to dagger
+  * ci: integration: fixed sops dependency + added jq
+  * ci: test: disabled file check that relies on a directory outside of the tests directory
+  * ci: added docker client dependency and reworked the packages+mods install
+  * ci: added dagger binary to bats
+  * ci: cue fmt
+  * ci: implemented bats support
+  * ci: ignore build output dir
+  * ci test: split each dagger do to own test name
+  * ci: sops cleanup: point to the key directly rather than copying it around (#2400)
+  * Update docs to 0.2.9
+  * docs: Fix docker cache-registry container port
+  * fix: Missing import, uid & type in experimental kubernetes package
+  * feat: initial kubectl apply
+  * Upgrade to cue v0.4.3
+  * docs: Add new commits prefix `fix` and `feat`
+  * Fail if unknown flag is specified (#2391)
+  * universe: Add Terraform package (#2192)
+  * docs: Reverse doc orders and improve docs
+  * feat(universe-x): ansible package
+  * docs: Add tests file for persistent cache
+  * docs: Fix typo found
+  * docs: Add documentation on GitHub action cache export
+  * docs: Add documentation on registry cache export
+  * docs: Add documentation on local cache export
+
+-------------------------------------------------------------------
 Wed May  4 06:07:47 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.2.9:
