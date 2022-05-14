@@ -1,7 +1,7 @@
 #
 # spec file for package switcheroo-control
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           switcheroo-control
-Version:        2.4
+Version:        2.5
 Release:        0
 Summary:        D-Bus service to check the availability of dual-GPU
 License:        GPL-3.0-only
@@ -25,7 +25,7 @@ Group:          Hardware/Other
 URL:            https://gitlab.freedesktop.org/hadess/switcheroo-control
 Source0:        https://gitlab.freedesktop.org/hadess/switcheroo-control/-/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-Patch0:	harden_switcheroo-control.service.patch
+Patch0:         harden_switcheroo-control.service.patch
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.50
 BuildRequires:  pkgconfig
@@ -91,10 +91,7 @@ This package contains the documentation for %{name}.
 %{_mandir}/man1/switcherooctl.1%{?ext_man}
 %{_unitdir}/switcheroo-control.service
 %{_udevhwdbdir}/30-pci-intel-gpu.hwdb
-# Own dirs to avoid depending on dbus while building.
-%dir %{_sysconfdir}/dbus-1
-%dir %{_sysconfdir}/dbus-1/system.d
-%config %{_sysconfdir}/dbus-1/system.d/net.hadess.SwitcherooControl.conf
+%{_datadir}/dbus-1/system.d/net.hadess.SwitcherooControl.conf
 
 %files doc
 %doc %{_datadir}/gtk-doc/html/%{name}/
