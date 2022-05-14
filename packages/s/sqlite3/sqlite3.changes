@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May  8 10:00:51 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.38.5:
+  * Fix a blunder in the CLI of the 3.38.4 release
+- includes changes from 3.38.4:
+  * fix a byte-code problem in the Bloom filter pull-down
+    optimization added by release 3.38.0 in which an error in the
+    byte code causes the byte code engine to enter an infinite loop
+    when the pull-down optimization encounters a NULL key   
+
+-------------------------------------------------------------------
 Thu Apr 28 05:54:02 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 3.38.3:
