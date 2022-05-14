@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May  9 11:05:11 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.20.2:
+  + video decoders: fix frame leak on negotiation error
+  + Fix build on systems without C++ compiler
+  + avviddec: Remove vc1/wmv3 override (fixing crash with FFmpeg 5
+  + Segfaults on ASF/WMV files with FFMPEG 5.0+
+
+-------------------------------------------------------------------
 Wed Apr 20 12:27:14 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Change the license to LGPL-2.1-or-later as specified in
