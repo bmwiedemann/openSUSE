@@ -164,7 +164,8 @@ This package contains the Python bindings for Google Protocol Buffers.
 %endif
 
 %prep
-%autosetup -p1 -n %{tarname}-%{version}
+%setup -n %{tarname}-%{version}
+%patch0 -p1
 mkdir gmock
 
 %if %{with python2} || %{with python3}

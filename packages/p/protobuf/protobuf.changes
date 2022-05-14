@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 11 14:13:04 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not use %%autosetup, but %%setup and %%patch on other line
+  * Allows building on SLE-12-SP5
+
+-------------------------------------------------------------------
 Thu May  5 10:54:05 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Add temporary patch gcc12-disable-__constinit-with-c++-11.patch
