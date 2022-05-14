@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 12 10:33:20 UTC 2022 - Reinhard Max <max@suse.com>
+
+- Upgrade to 14.3:
+  * bsc#1199475, CVE-2022-1552: Confine additional operations
+    within "security restricted operation" sandboxes.
+  * https://www.postgresql.org/docs/14/release-14-3.html
+
+-------------------------------------------------------------------
 Wed Apr 13 12:17:48 UTC 2022 - Reinhard Max <max@suse.com>
 
 - bsc#1198166: Pin to llvm13 until the next patchlevel update.

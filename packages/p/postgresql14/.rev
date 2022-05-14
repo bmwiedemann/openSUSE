@@ -55,4 +55,15 @@ Also for older PostgreSQL versions to keep the packaging consistent.</comment>
   as a workaround</comment>
     <requestid>969861</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fe9b76556543e429e6e6b6a0df9a1566</srcmd5>
+    <version>14.3</version>
+    <time>1652561687</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 14.3:
+  * bsc#1199475, CVE-2022-1552: Confine additional operations
+    within &quot;security restricted operation&quot; sandboxes.
+  * https://www.postgresql.org/docs/14/release-14-3.html</comment>
+    <requestid>977049</requestid>
+  </revision>
 </revisionlist>
