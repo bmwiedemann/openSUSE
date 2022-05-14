@@ -22,10 +22,10 @@
 %define libappstream_sover 4
 %define libAppStreamQt_sover 2
 Name:           AppStream
-Version:        0.15.1
+Version:        0.15.3
 Release:        0
 Summary:        Tools and libraries to work with AppStream metadata
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.freedesktop.org/software/appstream/docs/
 Source0:        http://www.freedesktop.org/software/appstream/releases/%{name}-%{version}.tar.xz
@@ -34,11 +34,8 @@ Source2:        %{name}.keyring
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gettext
 BuildRequires:  gperf
-BuildRequires:  meson >= 0.48
-%if %{with vala}
-BuildRequires:  vala
-%endif
 BuildRequires:  itstool
+BuildRequires:  meson >= 0.62
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(Qt5Core)
@@ -50,6 +47,9 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(xmlb) >= 0.3.6
 BuildRequires:  pkgconfig(yaml-0.1)
+%if %{with vala}
+BuildRequires:  vala
+%endif
 Recommends:     curl
 
 %description
@@ -88,6 +88,7 @@ compile and link applications using the Qt bindings for AppStream.
 Summary:        Header files for AppStream development
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
+Requires:       %{name} = %{version}
 Requires:       libappstream%{libappstream_sover} = %{version}
 
 %description devel
@@ -158,7 +159,7 @@ rm -r %{buildroot}%{_datadir}/installed-tests
 %{_mandir}/man1/appstreamcli.*
 
 %files -n libappstream%{libappstream_sover}
-%license LICENSE*
+%license COPYING AUTHORS
 %{_libdir}/libappstream.so.%{libappstream_sover}
 %{_libdir}/libappstream.so.%{version}
 

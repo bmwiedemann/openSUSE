@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Apr 25 17:47:50 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.15.3
+  * qt: Include enums for VcsBrowser and Contribute
+  * Add vcs-browser and contribute URL type
+  * validate: Improve validation of desktop files alongside metainfo data
+  * its: Mark deprecated rules as deprecated
+  * Implement l10n support for metainfo keyword tags
+  * validator: Perform basic validation of keywords in metainfo data
+  * compose: Prefer metainfo keywords over desktop-entry keywords
+  * Specification:
+    * docs: Document keywords for metainfo files as well
+    * docs: Spell it metainfo, not meta-info if referencing metainfo.xml files
+    * spec: Document how keywords in metainfo files should be translated
+  * Multiple Bugfixes
+- Update to version 0.15.2
+  * Relicense remaining GPL-2.0 code to LGPL-2.1+
+  * compose: Allow setting a custom CAInfo file
+  * qt: Always use C library for enum-to-string conversions
+  * compose: Allow any amount of release entries for OS components
+  * compose: Implement more flexible icon policy
+  * validator: Ensure component-ID has no punctuation prefix
+  * validator: Check existence of version and date release properties
+  * Implement component-wide end-of-life date attribute
+  * compose: Build API documentation
+  * Support the new swcatalog catalog metadata location and add app-info fallback
+  * When finding components by ID, use provided IDs if no exact matches were found
+  * ascli: Fix install/remove commands, add Flatpak support
+  * Implement XML & YAML read/write of the "branding" tag group
+  * Handle embedded lists in YAML release info paragraphs
+  * Specification:
+    * spec: Specify a "date_eol" property for the component itself
+    * spec: Specify the new "branding" tag
+    * docs: Update links to API reference pages
+    * spec: Require that branding colours start with a hash symbol
+    * docs: Clarify license and ship license copies
+    * docs: Document media_baseurl property of components
+  * Multiple bugfixes
+
+-------------------------------------------------------------------
+Tue Mar 22 20:25:15 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add Appstream Requires to Appstream-devel package, a devel
+  package should require it's own binary and config.
+
+-------------------------------------------------------------------
 Fri Mar  4 09:38:33 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Don't refresh the system cache in %post. The user metadata cache
