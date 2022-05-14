@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 10 09:48:02 UTC 2022 - moritz.kodytek@suse.com
+
+- Update to version 2.0.14.39.g8b18345:
+  * numa(3): Fix typos and punctuation
+  * Avoid libnuma.so dependency on util.o
+  * test/prefered: add test cases for new 'preferred-many' policy
+  * test/prefered: fix compiling problem
+  * numa(3): Update the man page
+  * Update to support multiple nodes
+  * numademo: Add a new test for multiple-preferred-nodes policy
+  * numactl: Simplify preferred selection
+  * libnuma: Export interface to set/get preferred nodes
+  * util: Add new preferred-many type
+
+-------------------------------------------------------------------
 Wed Sep 01 14:24:59 UTC 2021 - trenn@suse.de
 
 - Update to version 2.0.14.20.g4ee5e0c:
