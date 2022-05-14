@@ -165,4 +165,17 @@
   - ignore reno generated artifacts</comment>
     <requestid>935945</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5c0fb8785b5eef8541399e996d417690</srcmd5>
+    <version>2.4.1</version>
+    <time>1652561831</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.4.1
+  - Update CI to use unversioned jobs template
+  - trivial: Remove unnecessary 'coding' lines
+  - Remove six
+  - Remove pbr from requirements.txt
+  - tox: Trivial cleanups</comment>
+    <requestid>977251</requestid>
+  </revision>
 </revisionlist>
