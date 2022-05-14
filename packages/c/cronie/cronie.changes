@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 11 09:17:27 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 1.6.1:
+  * Fix a regression in handling ranges (x-y) in crontab
+- Remove upstreamed patch:
+  * bsc1198265.patch
+
+-------------------------------------------------------------------
 Thu Apr 14 13:19:35 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Fix bsc#1198265 Regression in handling 1-5 crontab entries

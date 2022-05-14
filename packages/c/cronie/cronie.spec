@@ -22,7 +22,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           cronie
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        Cron Daemon
 License:        BSD-3-Clause AND GPL-2.0-only AND MIT
@@ -46,9 +46,6 @@ Patch5:         cronie-crond_pid.diff
 # PATCH-FIX-SUSE the first occurance of "/etc/anacrontab" was replaced by "/etc/crontab"
 # in manpage file because the /etc/crontab is still used in SUSE.
 Patch13:        fix-manpage-replace-anacrontab-with-crontab.patch
-# PATCH-FIX-UPSTREAM Fix regression in handling 1-5 crontab entries bsc#1198265
-# https://github.com/cronie-crond/cronie/commit/62e53f1cdb9c1e12a01ee7814c92cd937d50328d
-Patch14:        bsc1198265.patch
 BuildRequires:  audit-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -107,7 +104,6 @@ overloaded in settings.
 %patch5 -p1
 cp %{SOURCE7} ./cron_to_cronie.README
 %patch13 -p1
-%patch14 -p1
 
 %build
 # fill macro CRON_VERSION it is used in top three lines of crontab file,should be reworked
