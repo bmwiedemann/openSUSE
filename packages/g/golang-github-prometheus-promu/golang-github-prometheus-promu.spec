@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{?rhel}
 # Fix ERROR: No build ID note found in
 %undefine _missing_build_ids_terminate_build
@@ -31,6 +32,7 @@ Group:          System/Management
 URL:            https://github.com/prometheus/promu
 Source:         promu-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Patch1:         0001-Set-build-date-from-SOURCE_DATE_EPOCH.patch
 BuildRequires:  golang-packaging
 %if 0%{?rhel}
 BuildRequires:  golang >= 1.15
@@ -44,8 +46,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 The Prometheus Utility Tool is used by the Prometheus project to build other components.
 
 %prep
-%setup -q -n promu-%{version}
-%setup -q -T -D -a 1 -n promu-%{version}
+%autosetup -a1 -p1 -n promu-%{version}
 
 %build
 %goprep github.com/prometheus/promu
