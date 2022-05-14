@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 13 13:24:37 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 11.1.0:
+  * Added inv_opts::no_ugly option to inv() and inv_sympd() to
+    disallow inverses of poorly conditioned matrices.
+  * More efficient handling of rank-deficient matrices via
+    inv_opts::allow_approx option in inv() and inv_sympd().
+  * Better detection of rank deficient matrices by solve().
+  * Faster handling of symmetric and diagonal matrices by cond().
+
+-------------------------------------------------------------------
 Mon Apr 18 14:43:41 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 11.0.1:
