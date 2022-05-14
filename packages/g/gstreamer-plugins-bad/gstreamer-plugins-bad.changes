@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon May  9 11:01:14 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.20.2:
+  + av1parse: Fix several issues about the colorimetry.
+  + av1parse: fix up various possible logic errors
+  + dashsink: fix missing mutex unlock in error code path when
+    failing to get content
+  + d3d11videosink: Fix for unhandled mouse double click events
+  + interlace: Also handle a missing "interlace-mode" field as
+    progressive
+  + msdk: fix build with MSVC
+  + mxfdemux: Fix issues at EOS
+  + mxfdemux: Handle empty VANC packets
+  + nvh264dec, nvh265dec: Fix broken key-unit trick and reverse
+    playback
+  + nvvp9sldec: Increase DPB size to cover render delay
+  + rvsg: fix cairo include
+  + tsdemux: Fix AC-4 detection in MPEG-TS
+  + tsdemux: Handle "empty" PMT gracefully
+  + va: pool: don't advertise the
+    GST_BUFFER_POOL_OPTION_VIDEO_ALIGNMENT option any more
+  + v4l2codecs: Fix memory leak
+  + v4l2videodec: set frame duration according to framerate
+  + webrtcbin: Update documentation of 'get-stats' action signal
+  + webrtcbin: Check data channel transport for notifying
+    'ice-gathering-state'
+  + webrtcbin: Avoid access of freed memory
+  + wpe: Reintroduce persistent WebContext
+  + Build: use CMake to find some openssl and exr deps
+  + Fix multiple "unused-but-set variable" compiler warnings
+- Drop patch already included in 1.20.2:
+  + 8440e2a373e5ce681d15f5880cb2f2562be332cf.patch
+
+-------------------------------------------------------------------
 Thu Apr 21 12:09:16 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Disable ldacBT on ppc64: ldacBT is not available there.
