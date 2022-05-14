@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May  9 11:06:24 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.20.2:
+  + rtspclientsink: fix possible shutdown deadlock in
+    collect_streams()
+  + Minor spelling fixes
+
+-------------------------------------------------------------------
 Wed Apr  6 07:06:41 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Remove BuildRequires: hotdoc and disable the doc generation. 
