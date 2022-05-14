@@ -673,4 +673,12 @@ Needs KF 5.59 and SR 710707</comment>
     <comment>KDE release gear 22.04.0</comment>
     <requestid>971567</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>8ebcb2689d1aa5296844caa51ac2cf6b</srcmd5>
+    <version>22.04.1</version>
+    <time>1652561605</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 22.04.1</comment>
+    <requestid>976875</requestid>
+  </revision>
 </revisionlist>
