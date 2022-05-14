@@ -187,4 +187,12 @@
     <comment>- Update to release 1.26</comment>
     <requestid>966552</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>686ba71a5b4139dfc56d44c83983a3aa</srcmd5>
+    <version>1.26</version>
+    <time>1652561826</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>977243</requestid>
+  </revision>
 </revisionlist>

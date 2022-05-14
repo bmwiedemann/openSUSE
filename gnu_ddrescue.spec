@@ -23,8 +23,8 @@ Summary:        I/O error aware data recovery and copying utility
 License:        GPL-2.0-or-later
 Group:          System/Base
 URL:            https://gnu.org/software/ddrescue/ddrescue.html
-Source:         http://download.savannah.gnu.org/releases/ddrescue/ddrescue-%version.tar.lz
-Source2:        http://download.savannah.gnu.org/releases/ddrescue/ddrescue-%version.tar.lz.sig
+Source:         https://download.savannah.gnu.org/releases/ddrescue/ddrescue-%version.tar.lz
+Source2:        https://download.savannah.gnu.org/releases/ddrescue/ddrescue-%version.tar.lz.sig
 Source3:        %name.keyring
 BuildRequires:  gcc-c++
 BuildRequires:  lzip
