@@ -249,4 +249,12 @@ Fixed buffer-overflow CVE-2021-20308 ( boo#1184424 ) (forwarded request 896478 f
     <comment></comment>
     <requestid>973947</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>183223d79696e2aea41db79605d0b9bb</srcmd5>
+    <version>1.9.15</version>
+    <time>1652561511</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>976398</requestid>
+  </revision>
 </revisionlist>

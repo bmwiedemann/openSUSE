@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 11 07:35:17 UTC 2022 - pgajdos@suse.com
+
+- security update
+- added patches
+  fix CVE-2022-27114 [bsc#1199370], image_load_jpeg can cause integer overflow
+  + htmldoc-CVE-2022-27114.patch
+
+-------------------------------------------------------------------
 Fri Apr 29 06:02:30 UTC 2022 - pgajdos@suse.com
 
 - security update
