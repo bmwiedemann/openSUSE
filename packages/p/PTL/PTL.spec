@@ -19,7 +19,7 @@
 %define sover 2
 %define libname libptl%{sover}
 Name:           PTL
-Version:        2.3.1
+Version:        2.3.3
 Release:        0
 Summary:        C++11 mutilthreading tasking system
 License:        MIT
