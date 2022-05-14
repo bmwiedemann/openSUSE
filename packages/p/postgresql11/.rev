@@ -291,4 +291,15 @@ Upgrade to version 11.11:
   as a workaround</comment>
     <requestid>969864</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b09cd57c9b9a5ed6da693c55de41def7</srcmd5>
+    <version>11.16</version>
+    <time>1652561683</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 11.16:
+  * bsc#1199475, CVE-2022-1552: Confine additional operations
+    within &quot;security restricted operation&quot; sandboxes.
+  * https://www.postgresql.org/docs/11/release-11-16.html</comment>
+    <requestid>977046</requestid>
+  </revision>
 </revisionlist>
