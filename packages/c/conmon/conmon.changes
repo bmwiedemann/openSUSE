@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu May  5 15:46:07 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.1.0
+  * logging: buffer partial messages to journald
+  * exit: close all fds >= 3
+  * fix: cgroup: Free memory_cgroup_file_path if open fails.
+    Call g_free instead of free.
+- Update to version 2.0.32
+  * Fix: Avoid mainfd_std{in,out} sharing the same file descriptor.
+  *exit_command: Fix: unset subreaper attribute before running exit command
+- Update to version 2.0.31
+  * logging: new mode -l passthrough
+  * ctr_logs: use container name or ID as SYSLOG_IDENTIFIER for journald
+  * conmon: Fix: free userdata files before exec cleanup
+
+-------------------------------------------------------------------
 Fri Sep 24 07:31:03 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 2.0.30:
