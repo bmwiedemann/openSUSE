@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycadf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        DMTF Cloud Audit (CADF) data model
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/pycadf
+URL:            https://docs.openstack.org/pycadf
 Source0:        https://files.pythonhosted.org/packages/source/p/pycadf/pycadf-3.1.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-fixtures
@@ -40,7 +40,6 @@ DMTF Cloud Audit (CADF) data model
 
 %package -n python3-pycadf
 Summary:        DMTF Cloud Audit (CADF) data model
-Group:          Development/Languages/Python
 Requires:       python-pycadf-common
 Requires:       python3-debtcollector >= 1.2.0
 Requires:       python3-oslo.config >= 5.2.0
@@ -55,7 +54,6 @@ This package contains the Python 3.x module.
 
 %package -n python-pycadf-doc
 Summary:        Documentation for the DMTF Cloud Audit (CADF) data model
-Group:          Development/Languages/Python
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
 BuildRequires:  python3-sphinxcontrib-apidoc
@@ -65,7 +63,6 @@ Documentation for the DMTF Cloud Audit (CADF) data model.
 
 %package -n python-pycadf-common
 Summary:        Common files for the DMTF Cloud Audit (CADF) data model
-Group:          Development/Languages/Python
 
 %description -n python-pycadf-common
 Configuration files for the DMTF Cloud Audit (CADF) data model.
@@ -95,7 +92,7 @@ python3 -m stestr.cli run
 %doc README.rst
 %license LICENSE
 %{python3_sitelib}/pycadf
-%{python3_sitelib}/pycadf-*-py?.?.egg-info
+%{python3_sitelib}/pycadf-*-py?.*.egg-info
 
 %files -n python-pycadf-common
 %license LICENSE
