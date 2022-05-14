@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon May  9 10:55:50 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.20.2:
+  + appsrc: Clarify buffer ref semantics in signals documentation
+  + appsrc: fix annotations for bindings
+  + typefind: Skip extension parsing for data:// URIs, fixing
+    regression with mp4 files serialised to data uris
+  + playbin3: various fixes
+  + playbin3: fix missing lock when unknown stream type in
+    pad-removed cb
+  + decodebin3: fix collection leaks
+  + decodebin3: Don't duplicate stream selections
+  + discoverer: chain up to parent finalize methods in all our
+    types to fix memory leaks
+  + glmixerbin: slightly better pad/element creation
+  + gltransformation: let graphene alloc its structures memory
+    aligned
+  + ogg: fix possible buffer overrun
+  + rtpbasepayload: Don't write header extensions if there's no
+    corresponding...
+  + rtpbasepayload: always store input buffer meta before
+    negotiation
+  + rtpbasepayload: fix transfer annotation for push and push_list
+  + subparse: don't try to index string with -1
+  + riff-media: fix memory leak after usage for g_strjoin()
+  + playbin/playbin3: Allow setting a NULL URI
+  + playsink: Complete reconfiguration on pad release.
+  + parsebin: Expose streams of unknown type
+  + pbutils: Fix wmv screen description detection
+  + subparse: don't deref a potentially NULL variable
+  + rawvideoparse: set format from caps in
+    gst_raw_video_parse_set_config_from_caps
+  + videodecoder: release stream lock after handling gap events
+  + videorate: fix assertion when pushing last and only buffer
+    without duration
+  + videorate: Revert "don't reset on segment update" to fix
+    segment handling regressions
+  + gst-play-1.0, gst-launch-1.0: Enable win32 high-resolution
+    timer also for MinGW build
+- Drop patch already included in 1.20.2:
+  + 5a074a11f90e3d70b24bf0c535ab0480fad9e701.patch
+
+-------------------------------------------------------------------
 Sat Mar 26 17:25:23 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 5a074a11f90e3d70b24bf0c535ab0480fad9e701.patch: playsink:

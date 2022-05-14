@@ -20,7 +20,7 @@
 %define gst_branch 1.0
 %define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 Name:           gstreamer-plugins-base
-Version:        1.20.1
+Version:        1.20.2
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -32,8 +32,6 @@ Source2:        baselibs.conf
 
 Patch4:         add_wayland_dep_to_tests.patch
 Patch5:         MR-221-video-anc-add-two-new-CEA-608-caption-formats.patch
-# PATCH-FIX-UPSTREAM 5a074a11f90e3d70b24bf0c535ab0480fad9e701.patch -- playsink: Complete reconfiguration on pad release
-Patch6:         https://gitlab.freedesktop.org/gstreamer/gstreamer/-/commit/5a074a11f90e3d70b24bf0c535ab0480fad9e701.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  cdparanoia-devel
@@ -494,7 +492,6 @@ to compile and link applications that use gstreamer-plugins-base.
 %autosetup -n %{_name}-%{version} -N
 %patch4 -p1
 %patch5 -p1
-%patch6 -p3
 
 %build
 export PYTHON=%{_bindir}/python3
