@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  3 23:49:37 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- turn off jemalloc again until we figure out how to do the dlopen
+  on libruby properly like vim and yast do
+
+-------------------------------------------------------------------
 Fri Apr 29 13:25:14 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Do not depend on binutils-gold as it will be removed

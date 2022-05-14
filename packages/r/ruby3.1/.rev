@@ -77,4 +77,13 @@
     <comment></comment>
     <requestid>974653</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>c47592a301a0a2747a21359f0282bc4f</srcmd5>
+    <version>3.1.2</version>
+    <time>1652561688</time>
+    <user>dimstar_suse</user>
+    <comment>- turn off jemalloc again until we figure out how to do the dlopen
+  on libruby properly like vim and yast do</comment>
+    <requestid>977064</requestid>
+  </revision>
 </revisionlist>

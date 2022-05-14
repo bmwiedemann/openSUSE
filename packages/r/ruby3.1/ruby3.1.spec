@@ -73,7 +73,7 @@ Release:        0
 %endif
 %bcond_without build_docs
 %if 0%{?suse_version} >= 1500
-%bcond_without jemalloc
+%bcond_with    jemalloc
 %else
 %bcond_with    jemalloc
 %endif
