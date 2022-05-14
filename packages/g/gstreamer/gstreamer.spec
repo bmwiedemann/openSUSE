@@ -19,7 +19,7 @@
 %define gst_branch 1.0
 
 Name:           gstreamer
-Version:        1.20.1
+Version:        1.20.2
 Release:        0
 Summary:        Streaming-Media Framework Runtime
 License:        LGPL-2.1-or-later
@@ -59,7 +59,7 @@ Requires:       libgstreamer-1_0-0 >= %{version}
 Requires(pre):  permissions
 # Generic name, never used in SuSE:
 Provides:       gstreamer-doc = %{version}
-%define libunwind_archs %{ix86} ia64 x86_64 %{arm} ppc ppc64 ppc64le aarch64
+%define libunwind_archs %{ix86} ia64 x86_64 %{arm} ppc ppc64 ppc64le aarch64 riscv64
 %ifarch %{libunwind_archs}
 BuildRequires:  pkgconfig(libunwind)
 %endif

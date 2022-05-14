@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon May  9 08:58:55 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Enable use of libunwind on riscv64
+
+-------------------------------------------------------------------
+Mon May  9 08:53:18 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 1.20.2
+  + Highlighted bugfixes:
+    - avviddec: Remove vc1/wmv3 override and fix crashes on WMV
+      files with FFMPEG 5.0+
+    - macOS: fix plugin discovery for GStreamer installed via brew
+      and fix loading of Rust plugins
+    - rtpbasepayload: various header extension handling fixes
+    - rtpopusdepay: fix regression in stereo input handling if
+      sprop-stereo is not advertised
+    - rtspclientsink: fix possible shutdown deadlock
+    - mpegts: gracefully handle "empty" program maps and fix AC-4
+      detection
+    - mxfdemux: Handle empty VANC packets and fix EOS handling
+    - playbin3: various playbin3, uridecodebin3, and playsink fixes
+    - ptpclock: fix initial sync-up with certain devices
+    - gltransformation: let graphene alloc its structures memory
+      aligned
+    - webrtcbin fixes and webrtc sendrecv example improvements
+    - video4linux2: various fixes including some fixes for
+      Raspberry Pi users
+    - videorate segment handling fixes and other fixes
+    - nvh264dec, nvh265dec: Fix broken key-unit trick modes and
+      reverse playback
+    - wpe: Reintroduce persistent WebContext
+    - cerbero: Make it easier to consume 1.20.1 macOS GStreamer
+      .pkgs
+    - build fixes and gobject annotation fixes
+    - bug fixes, security fixes, memory leak fixes, and other
+      stability and reliability improvements
+  + gstreamer:
+    - devicemonitor: clean up signal handlers and hidden providers
+      list
+    - Leaks tracer: fix pthread_atfork return value check leading
+      to bogus warning in log
+    - Rust plugins: Not picked up by the plugin loader on macOS
+    - Failed to use plugins of latest GStreamer version 1.20.x
+      installed by brew on macOS
+    - ptpclock: Allow at least 100ms delay between Sync/Follow_Up
+      and Delay_Req/Delay_Resp messages. Fixes problems acquiring
+      initial sync with certain devices
+    - meson: Add -Wl,-rpath,${libdir} on macOS
+    - registry: skip Rust dep builddirs when searching for plugins
+      recursively
+
+-------------------------------------------------------------------
 Fri Mar 18 07:25:21 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.20.1:
