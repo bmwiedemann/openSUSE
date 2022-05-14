@@ -874,4 +874,12 @@ I would be grateful.
     <comment>KDE release gear 22.04.0</comment>
     <requestid>971630</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>f50c9ca3c5f0da70a42bd8a5ac03c2db</srcmd5>
+    <version>22.04.1</version>
+    <time>1652561732</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 22.04.1</comment>
+    <requestid>976762</requestid>
+  </revision>
 </revisionlist>
