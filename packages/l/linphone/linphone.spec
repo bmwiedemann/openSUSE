@@ -17,14 +17,19 @@
 
 
 %define ldaplibdir %{buildroot}%{_libexecdir}/%{name}
-%define sover   10
+#use_system_ldap set to 0 because liblinphone 5.x fails to build with system ldap
+%define use_system_ldap 0
+%define static_ldap 1
+%if !0%{?static_ldap}
 %define __provides_exclude ^(libldap\\.so.*|liblber\\.so.*)$
 %define __requires_exclude ^(libldap\\.so.*|liblber\\.so.*)$
+%endif
+%define sover   10
 Name:           linphone
-Version:        5.0.70
+Version:        5.1.24
 Release:        0
 Summary:        Web Phone
-License:        GPL-3.0-only
+License:        GPL-3.0-or-later
 Group:          Productivity/Telephony/SIP/Clients
 URL:            https://linphone.org/technical-corner/liblinphone/
 Source:         https://gitlab.linphone.org/BC/public/liblinphone/-/archive/%{version}/liblinphone-%{version}.tar.bz2
@@ -45,11 +50,10 @@ BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
+BuildRequires:  jsoncpp-devel
 BuildRequires:  libeXosip2-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  lime-devel >= 5.0.0
-#BuildRequires:  openldap2-devel
-BuildRequires:  jsoncpp-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  python3-pystache
@@ -79,10 +83,13 @@ BuildRequires:  pkgconfig(ortp) >= 5.0.0
 BuildRequires:  pkgconfig(speex) >= 1.1.6
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(xerces-c)
-#for openldap
+%if 0%{?use_system_ldap}
+BuildRequires:  openldap2-devel
+%else
 BuildRequires:  chrpath
 BuildRequires:  db-devel
 BuildRequires:  openslp-devel
+%endif
 
 %description
 Linphone is a Web phone with a Qt interface. It lets you make
@@ -187,12 +194,19 @@ with high speed connections as well as 28k modems.
 %setup -q -n liblinphone-%{version} -D -T -a 1
 
 %build
+%if !0%{?use_system_ldap}
 #START build belledonne's libldap
 mkdir aux
 tar fx %{SOURCE3} -C aux
 cd aux/openldap-bc
 LDFLAGS="-Wl,-rpath,%ldaplibdir" ./configure \
+%if 0%{?static_ldap}
+  --enable-static=yes \
+  --enable-shared=no \
+  --with-pic         \
+%else
   --enable-static=no \
+%endif
   --enable-slapd=no  \
   --enable-wrappers=no \
   --enable-spasswd   \
@@ -214,12 +228,19 @@ cd ../..
 #END build belledonne's libldap
 #find and use belledonne's libldap
 sed -i "/OPENLDAP_INCLUDE_DIRS/,/LDAP_LIB/s@\${CMAKE_INSTALL_PREFIX}@$PWD/aux@;s@\${CMAKE_INSTALL_PREFIX}@%{ldaplibdir}@;s@include/openldap@include@" cmake/FindOpenLDAP.cmake
+%endif
 %cmake \
   -DPYTHON_EXECUTABLE="%{_bindir}/python3" \
   -DENABLE_CXX_WRAPPER=ON      \
+%if !0%{?use_system_ldap}
   -DOPENLDAP_INCLUDE_DIRS=$PWD/../aux/include \
+%if 0%{?static_ldap}
+  -DLDAP_LIB=%{ldaplibdir}/libldap.a \
+%else
   -DLDAP_LIB=%{ldaplibdir}/libldap.so \
+%endif
   -DCMAKE_SHARED_LINKER_FLAGS="-Wl,-rpath,%{ldaplibdir}" \
+%endif
   -DENABLE_DOC=ON              \
   -DCMAKE_BUILD_TYPE=Release   \
   -DENABLE_ROOTCA_DOWNLOAD=OFF \
@@ -233,13 +254,17 @@ sed -i "/OPENLDAP_INCLUDE_DIRS/,/LDAP_LIB/s@\${CMAKE_INSTALL_PREFIX}@$PWD/aux@;s
 %cmake_build
 
 %install
+%if !0%{?use_system_ldap}
 #START reinstall belledonne's libldap
 cd aux/openldap-bc
 make install
 cd ../..
 cp aux/openldap-bc/LICENSE LICENSE.openldap
 #END reinstall belledonne's libldap
+%endif
 %cmake_install
+%if !0%{?use_system_ldap}
+%if !0%{?static_ldap}
 #remove unnecessary files
 rm %{ldaplibdir}/*.{la,so}
 #fix rpath in openldap libs and make them executable
@@ -248,6 +273,10 @@ find %{ldaplibdir} -type f -exec chrpath -r %{_libexecdir}/%{name} {} \; -exec c
 find %{buildroot}%{_libdir} -type f -name "liblinphone*" -exec chrpath -r %{_libexecdir}/%{name} {} \;
 # Remove openldap pkgconfig files.
 rm -r %{ldaplibdir}/pkgconfig
+%else
+rm -r %{ldaplibdir}
+%endif
+%endif
 
 # Install the manual.
 mkdir -p %{buildroot}%{_datadir}/gnome/help/
@@ -268,8 +297,12 @@ export NO_BRP_CHECK_RPATH=true
 
 %files -n lib%{name}%{sover}
 %{_libdir}/lib%{name}.so.%{sover}*
+%if !0%{?use_system_ldap}
+%if !0%{?static_ldap}
 %dir %{_libexecdir}/%{name}
 %{_libexecdir}/%{name}/
+%endif
+%endif
 
 %files -n lib%{name}-lang -f %{name}.lang
 %dir %{_datadir}/gnome/
@@ -279,7 +312,10 @@ export NO_BRP_CHECK_RPATH=true
 %{_libdir}/lib%{name}++.so.%{sover}*
 
 %files -n lib%{name}-data
-%license LICENSE.txt LICENSE.openldap
+%license LICENSE.txt
+%if !0%{?use_system_ldap}
+%license LICENSE.openldap
+%endif
 %doc CHANGELOG.md README.md
 %{_datadir}/%{name}/
 %{_datadir}/sounds/%{name}/
@@ -295,6 +331,6 @@ export NO_BRP_CHECK_RPATH=true
 %{_libdir}/pkgconfig/%{name}.pc
 %{_datadir}/Linphone/
 %{_datadir}/LinphoneCxx/
-%{_datadir}/doc/lib%{name}-5.0.0/
+%{_datadir}/doc/lib%{name}-5.1.0/
 
 %changelog

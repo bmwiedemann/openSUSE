@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May  7 15:00:10 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- Update to version 5.1.24:
+  * LinphoneRecorder API added to record voice messages
+  * A recommended video definitions list that filter the supported video definitions list.
+  * LDAP connectivity into LinphoneMagicSearch API (to lookup contacts by number or name).
+  * Java wrapper no longer catches app exceptions that happen in listeners.
+  * linphone_core_enable_mic() is changed to be persistent accross calls and conference.
+  * To protect against "SIP digest leak", MD5 and digestion without qop=auth can be disabled 
+    by configuration
+- build static libldap boo#1198407
+- revert license tag change
+
+-------------------------------------------------------------------
 Wed Apr 27 20:26:43 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - do not add bundled libraries as rpm required libs boo#1198407
