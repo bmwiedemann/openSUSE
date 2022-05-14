@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 13 19:42:00 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.6.5:
+  * Escape quotes in username, password, responseType for an auth request
+
+-------------------------------------------------------------------
 Fri Mar 25 09:13:04 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.6.4:
