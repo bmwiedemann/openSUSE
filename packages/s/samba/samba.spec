@@ -142,7 +142,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.16.1+git.235.f435da606f7
+Version:        4.16.1+git.237.1d04c5f421f
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -567,7 +567,13 @@ libraries.
 Summary:        Samba LDB modules
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Samba
-Requires:       libldb2 = %{ldb_version}
+# The ldb modules provided by this package check their own version matches
+# the libldb2 version. It the version do not match (e.g. libldb2 version
+# is updated and samba-dsdb-modules is not rebuilt against it) programs using
+# libldb2 won't start. The requires_eq macro will require the libldb2 version
+# available at build time without having to manually maintain the global
+# ldb_version variable in this spec file (bsc#1118508, bsc#1199362)
+%requires_eq libldb2
 Requires:       samba-ldb-ldap = %{version}
 Requires(post): /sbin/ldconfig
 Requires(postun):/sbin/ldconfig
