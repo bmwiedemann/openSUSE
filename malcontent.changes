@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 10 16:20:08 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.10.4
+  + Remove superfluous arguments to i18n.merge_file.
+  + Updated translations.
+- Drop upstream resolved patch:
+  + f433aaf8c8f82f0aeaedee664f08bc6fcad47b0d.patch
+
+-------------------------------------------------------------------
 Tue Feb  1 12:58:52 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.10.3:

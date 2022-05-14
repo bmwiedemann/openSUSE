@@ -17,15 +17,12 @@
 
 
 Name:           malcontent
-Version:        0.10.3
+Version:        0.10.4
 Release:        0
 Summary:        Parental control system
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://gitlab.freedesktop.org/pwithnall/malcontent
 Source:         https://tecnocode.co.uk/downloads/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM https://gitlab.freedesktop.org/pwithnall/malcontent/-/commit/f433aaf8c8f82f0aeaedee664f08bc6fcad47b0d.patch -- Fix build with meson 0.61.0
-Patch:          https://gitlab.freedesktop.org/pwithnall/malcontent/-/commit/f433aaf8c8f82f0aeaedee664f08bc6fcad47b0d.patch
-
 BuildRequires:  itstool
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pam-devel
