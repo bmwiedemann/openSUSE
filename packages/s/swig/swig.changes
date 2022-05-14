@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May  8 18:12:21 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add swig-python310.patch -- gh#swig/swig#2064, Fix swig test
+  suite with Python 3.10
+
+-------------------------------------------------------------------
 Wed Jan 19 09:23:35 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Add fix-gcc12-error.patch in order to fix GCC 12 compilation error.

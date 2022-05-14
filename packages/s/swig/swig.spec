@@ -42,6 +42,8 @@ Source1:        %{name}.rpmlintrc
 # PATCH-FIX-UPSTREAM swig-octave-6.patch gh#swig/swig#2020 badshah400@gmail.com -- Allow swig to work with octave 6 and above; patch part of upstream merge request
 Patch0:         swig-octave-6.patch
 Patch1:         fix-gcc12-error.patch
+# PATCH-FIX-UPSTREAM swig-python310.patch -- gh#swig/swig#2064, Fix swig test suite with python310
+Patch2:         swig-python310.patch
 Patch308:       swig308-isfinite.diff
 
 BuildRequires:  autoconf
