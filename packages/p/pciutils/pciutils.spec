@@ -15,8 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%define lname   libpci3
+%define sover   3
+%define lname   libpci%{sover}
 Name:           pciutils
 Version:        3.8.0
 Release:        0
@@ -82,6 +82,7 @@ development using the PCI utilities.
 make install PREFIX=%{buildroot}%{_prefix} SBINDIR=%{buildroot}%{_bindir} \
              ROOT=%{buildroot} MANDIR=%{buildroot}%{_mandir} STRIP="" \
 	     SHARED="yes" LIBDIR=%{buildroot}%{_libdir}
+chmod 0755 %{buildroot}%{_libdir}/libpci.so.%{sover}
 mkdir -p %{buildroot}%{_includedir}/pci
 cp -p lib/{pci,header,config,types}.h %{buildroot}%{_includedir}/pci
 rm -rf %{buildroot}%{_datadir}/pci.ids*
