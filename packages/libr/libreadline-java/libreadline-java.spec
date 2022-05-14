@@ -17,7 +17,7 @@
 
 
 Name:           libreadline-java
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        Java Wrapper for the EditLine Library
 License:        LGPL-2.1-or-later
@@ -28,7 +28,6 @@ Source1:        baselibs.conf
 Patch0:         libreadline-java-ncurses.patch
 Patch1:         libreadline-java-libdir.patch
 Patch3:         libreadline-java-0.8.0-jdk10.patch
-Patch4:         libreadline-java-0.8.0-sourcetarget.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
@@ -57,7 +56,6 @@ wrapper. This package contains the javadoc documentation for it.
 %patch0
 %patch1
 %patch3 -p1
-%patch4 -p1
 find . -name "*.jar" -exec rm -f {} \;
 sed -i 's|@LIBDIR@|%{_libdir}|' src/org/gnu/readline/Readline.java
 
@@ -87,7 +85,7 @@ cp -a api/* %{buildroot}%{_javadocdir}/%{name}
 
 %files
 %license COPYING.LIB
-%doc ChangeLog NEWS README README.1st VERSION
+%doc NEWS README README.1st VERSION
 %dir %{_libdir}/%{name}
 %attr(-,root,root) %{_libdir}/%{name}/*
 

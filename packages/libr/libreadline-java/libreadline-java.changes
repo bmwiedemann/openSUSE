@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May  9 14:32:42 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Version bump to release 0.8.3:
+  * added support for building with newer JDKs.
+
+- Updated patches:
+  * Rebased: libreadline-java-0.8.0-jdk10.patch
+  * Removed: libreadline-java-0.8.0-sourcetarget.patch
+
+-------------------------------------------------------------------
 Fri Mar 18 16:39:52 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:
