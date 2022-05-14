@@ -95,7 +95,7 @@
  }
  
  static char *
-@@ -1267,9 +1266,7 @@ newcode :
+@@ -1275,9 +1274,7 @@ newcode :
  #ifndef _ostype_
      ostype = "unknown";
  #endif

@@ -887,4 +887,15 @@
   11. Update config.guess and config.sub so arm64 is recognized</comment>
     <requestid>950890</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>569823584492d98734b16879d5c2020a</srcmd5>
+    <version>6.24.01</version>
+    <time>1652561676</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to tcsh 6.24.01
+  2. Fix quoting of ! characters in history recall (Kimmo Suominen)
+  1. Fix return status of which (Jamie Landeg-Jones)
+- Remove tcsh-6.24.00-which.dif now upstream</comment>
+    <requestid>976987</requestid>
+  </revision>
 </revisionlist>

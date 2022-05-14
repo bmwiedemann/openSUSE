@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 13 08:11:25 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Update to tcsh 6.24.01
+  2. Fix quoting of ! characters in history recall (Kimmo Suominen)
+  1. Fix return status of which (Jamie Landeg-Jones)
+- Remove tcsh-6.24.00-which.dif now upstream
+
+-------------------------------------------------------------------
 Thu Feb  3 07:56:15 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch tcsh-6.24.00-which.dif from upstream mailing list
