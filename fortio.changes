@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat May 14 11:44:13 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.30.0:
+  Same release as 1.29.0 to avoid a change in binary URLs (there was an extra v in 1.29.0 release)
+
+-------------------------------------------------------------------
+Sat May 14 11:40:59 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.29.0:
+  * 1.29 and go 1.18 base + #566 (round robin dns) + #564 (revamp of build through go install module buildinfo) (#560)
+  * fix spurious dns change message when dns isn't changing (#565)
+  * no need to put :8079 for default grpc port without TLS
+  * also allow main echo/http port to be disabled; so a server can be sta… (#559)
+  * Switch to demo.fortio.org for live demo, use new logo for browse/report mode
+  * Add more visibility to IP address resolution when using DNS and stdclient socket count (#556)
+  * fix up the tag name used
+  * fixing manual build try #2
+  * adding manual build for next time ci fails in the middle mysteriously (#555)
+
+-------------------------------------------------------------------
 Tue Apr 26 06:15:12 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.28.0:

@@ -3,10 +3,11 @@
     <param name="url">https://github.com/fortio/fortio</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v1.28.0</param>
+    <param name="revision">v1.30.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="match-tag">v*</param>
   </service>
   <service name="set_version" mode="disabled">
     <param name="basename">fortio</param>
@@ -16,6 +17,6 @@
     <param name="compression">gz</param>
   </service>
   <service name="go_modules" mode="disabled">
-    <param name="archive">fortio-1.28.0.tar.gz</param>
+    <param name="archive">fortio-1.30.0.tar.gz</param>
   </service>
 </services>
