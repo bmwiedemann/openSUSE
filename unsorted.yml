@@ -1215,8 +1215,6 @@ unsorted:
   - bees 
   - beets 
   - beforelight 
-  - beignet 
-  - beignet-devel 
   - belcard-data 
   - belcard-devel 
   - belle-sip-data 
@@ -12766,7 +12764,9 @@ unsorted:
   - libopenblas_pthreads-devel-32bit: [x86_64] 
   - libopenblas_pthreads0-32bit: [x86_64] 
   - libopenblas_serial-devel 
+  - libopenblas_serial-devel-32bit: [x86_64] 
   - libopenblas_serial0 
+  - libopenblas_serial0-32bit: [x86_64] 
   - libopencascade7 
   - libopencl-clang11: [x86_64] 
   - libopencsd1 
