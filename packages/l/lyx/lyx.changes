@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 14 14:28:50 UTC 2022 - Cor Blom <cornelis@solcon.nl>
+
+- Add lyx-2.3.6-fix-gcc12.patch to fix build with gcc-12
+- Use autosetup
+
+-------------------------------------------------------------------
 Mon May 31 19:30:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Stop owning directories provided by the filesystem package

@@ -1,7 +1,7 @@
 #
 # spec file for package lyx
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,8 @@ Patch0:         correct-shebang.patch
 # PATCH-FIX-UPSTREAM remove_python_shebang.patch mcepl@suse.com
 # remove all instances of python2 shebang lines
 Patch1:         remove_python_shebang.patch
+# Fix build with gcc-12
+Patch2:         lyx-2.3.6-fix-gcc12.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bc
@@ -141,9 +143,7 @@ BuildArch:      noarch
 A collection of Math symbol fonts for LyX.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 #./autogen.sh

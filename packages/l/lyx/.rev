@@ -853,4 +853,13 @@
     <comment></comment>
     <requestid>896460</requestid>
   </revision>
+  <revision rev="105" vrev="4">
+    <srcmd5>77e7fd93dfe120b2db7387a00844ea02</srcmd5>
+    <version>2.3.6.1</version>
+    <time>1652561827</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lyx-2.3.6-fix-gcc12.patch to fix build with gcc-12
+- Use autosetup</comment>
+    <requestid>977248</requestid>
+  </revision>
 </revisionlist>
