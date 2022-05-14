@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon May  9 10:59:42 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.20.2:
+  + deinterlace: silence unused-but-set werror from imported code
+  + qtdemux: fix leak of channel_mapping
+  + rtpopusdepay: missing sprop-stereo should not assume mono
+  + rtpjitterbuffer: Fix invalid memory access in
+    rtp_jitter_buffer_pop()
+  + rtpptdemux: fix leak of caps when ignoring a pt
+  + rtpredenc: quieten warning about ignoring header extensions
+  + soup: Fix pre-processor macros in souploader for libsoup-3.0
+  + twcc: Note that twcc-stats packet loss counts reordering as
+    loss + add some logging
+  + video4linux2: Manual backports for RPi users
+  + wavparse: handle URI query in any parse state, fixing audio
+    track selection issue in GES
+  + wavparse: Unset DISCONT buffer flag for divided into multiple
+    buffers in push mode
+
+-------------------------------------------------------------------
 Fri Mar 18 07:32:13 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.20.1:
