@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat May 14 11:38:40 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.11.6:
+  * Upgrade hubble relay with cli
+  * ci: bump golangci-lint to v1.46.0
+  * sysdump: Log cilium-cli version and arguments
+  * build(deps): bump golangci/golangci-lint-action from 3.1.0 to 3.2.0
+  * crds: Bump cilium version for cec v2
+  * Update default Cilium version to 1.11.4
+  * Update Go to 1.18.2
+  * Add friendly error message for failed service wait
+  * Perform DNS check earlier in the tests
+  * clustermesh: Run `cilium` with sudo in VM install script
+  * build(deps): bump docker/setup-buildx-action from 1.7.0 to 2
+  * Pin kubectl version
+  * build(deps): bump docker/login-action from 1.14.1 to 2
+  * improve status performance
+  * build(deps): bump docker/build-push-action from 2.10.0 to 3
+  * build(deps): bump github.com/google/gops from 0.3.22 to 0.3.23
+  * Add doc comment to perfDeploymentNameManager
+  * Add scenario to performance test summary outuput
+  * Modify names of host-net perf deploys.
+  * Rename host network related variables for clarity
+  * Add host network scenario in pod-to-pod perf test
+
+-------------------------------------------------------------------
 Thu May 05 06:36:13 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.11.5:
