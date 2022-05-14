@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat May 14 12:26:14 UTC 2022 - cloud-devel@suse.de
+
+- update to version 3.10.1
+  - Removing modindex link from docs
+  - Automatically page interactive root help output
+
+-------------------------------------------------------------------
+Fri May 13 22:33:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- remove six dependency 
+
+-------------------------------------------------------------------
+Tue Oct 26 22:13:33 UTC 2021 - cloud-devel@suse.de
+
+- update to version 3.9.0
+  - Add Python3 xena unit tests
+  - Replace getargspec with getfullargspec
+  - Handle SIGPIPE exit gracefully
+  - setup.cfg: Replace dashes with underscores
+  - Update unit test to satisfy python3.10+
+  - Add conflict_handler parameter as attribut in Command class
+  - Use py3 as the default runtime for tox
+  - Colourise and automatically page help output
+
+-------------------------------------------------------------------
 Sun May  2 17:15:03 UTC 2021 - cloud-devel@suse.de
 
 - update to version 3.7.0

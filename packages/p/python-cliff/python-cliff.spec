@@ -1,7 +1,7 @@
 #
 # spec file for package python-cliff
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,32 +17,26 @@
 
 
 Name:           python-cliff
-Version:        3.7.0
+Version:        3.10.1
 Release:        0
 Summary:        Command Line Interface Formulation Framework
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/cliff
-Source0:        https://files.pythonhosted.org/packages/source/c/cliff/cliff-3.7.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/c/cliff/cliff-3.10.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable
 BuildRequires:  python3-PyYAML
+BuildRequires:  python3-autopage
 BuildRequires:  python3-cmd2
 BuildRequires:  python3-docutils
 BuildRequires:  python3-fixtures
-BuildRequires:  python3-mock
 BuildRequires:  python3-pbr
 BuildRequires:  python3-pytest
 BuildRequires:  python3-python-subunit
 BuildRequires:  python3-stevedore
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
-Requires:       python3-PrettyTable
-Requires:       python3-PyYAML
-Requires:       python3-cmd2
-Requires:       python3-pyparsing
-Requires:       python3-six
-Requires:       python3-stevedore
 BuildArch:      noarch
 
 %description
@@ -54,9 +48,9 @@ other extensions.
 Summary:        Command Line Interface Formulation Framework
 Requires:       python3-PrettyTable
 Requires:       python3-PyYAML
+Requires:       python3-autopage
 Requires:       python3-cmd2
 Requires:       python3-pyparsing
-Requires:       python3-six
 Requires:       python3-stevedore
 
 %description -n python3-cliff
@@ -80,12 +74,12 @@ other extensions.
 This package contains documentation files for %{name}.
 
 %prep
-%autosetup -p1 -n cliff-3.7.0
+%autosetup -p1 -n cliff-3.10.1
 %py_req_cleanup
 
 %build
 %py3_build
-PBR_VERSION=3.7.0 PYTHONPATH=. %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=3.10.1 PYTHONPATH=. %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
