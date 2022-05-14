@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu May 12 11:01:23 UTC 2022 - Reinhard Max <max@suse.com>
+
+- Update to 10.21:
+  * bsc#1199475, CVE-2022-1552: Confine additional operations
+    within "security restricted operation" sandboxes.
+  * https://www.postgresql.org/docs/10/release-10-21.html
+
+-------------------------------------------------------------------
+Tue Feb  8 16:34:47 UTC 2022 - Reinhard Max <max@suse.com>
+
+- bsc#1195680: Upgrade to 10.20:
+  * https://www.postgresql.org/docs/10/release-10-20.html
+  * Reindexing might be needed after applying this upgrade, so
+    please read the release notes carefully.
+- boo#1190740: Add constraints file with 12GB of memory for s390x
+  as a workaround
+
+-------------------------------------------------------------------
 Thu Nov 25 11:02:15 UTC 2021 - Reinhard Max <max@suse.com>
 
 - Add a llvmjit-devel subpackage to pull in the right versions

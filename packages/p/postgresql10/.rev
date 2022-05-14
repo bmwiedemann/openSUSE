@@ -633,4 +633,22 @@
 - Update the BuildIgnore section.</comment>
     <requestid>935208</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>0d7c52d1ea354e409dfdd29b2fee8acc</srcmd5>
+    <version>10.21</version>
+    <time>1652561681</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 10.21:
+  * bsc#1199475, CVE-2022-1552: Confine additional operations
+    within &quot;security restricted operation&quot; sandboxes.
+  * https://www.postgresql.org/docs/10/release-10-21.html
+
+- bsc#1195680: Upgrade to 10.20:
+  * https://www.postgresql.org/docs/10/release-10-20.html
+  * Reindexing might be needed after applying this upgrade, so
+    please read the release notes carefully.
+- boo#1190740: Add constraints file with 12GB of memory for s390x
+  as a workaround</comment>
+    <requestid>977045</requestid>
+  </revision>
 </revisionlist>
