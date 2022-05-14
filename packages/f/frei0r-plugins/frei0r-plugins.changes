@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May  9 15:50:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.8.0
+  * Consolidated opencv4 support
+  * spelling fixes
+  * using the void keyword in function declaration
+  * Add FX aech0r . Aim to simulate an analog video echo.
+  * Fix build for opencv4
+  * Fill uninitialized gaps between grid images
+  * Avoid destructing alpha channel.
+  * pixeliz0r: Limit the blocksize to a minimum of 1 pixel
+  * edgeglow: Fix hsl to rgb conversion
+- Drop 0001-Port-facebl0r-to-OpenCV-C-API.patch, merged upstream
+
+-------------------------------------------------------------------
 Wed Jan  1 16:59:46 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.7.0

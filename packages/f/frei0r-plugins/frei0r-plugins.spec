@@ -17,7 +17,7 @@
 
 
 Name:           frei0r-plugins
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Collection of video sources and filters plugins
 # Upstream says 2.0+ but quite few of their plugins are GPL-3.0+
@@ -25,8 +25,6 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://frei0r.dyne.org/
 Source0:        https://files.dyne.org/frei0r/releases/frei0r-plugins-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM -- https://github.com/dyne/frei0r/pull/97
-Patch0:         0001-Port-facebl0r-to-OpenCV-C-API.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -59,8 +57,7 @@ parameters. The intent is to solve the recurring reimplementation or
 adaptation issue of standard effects.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake
