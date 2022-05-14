@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Thu Apr 28 09:47:16 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Update to 8.0.29: 
+  Functionality added or changed:
+    * Historically, MySQL has used utf8 as an alias for utf8mb3. 
+      Since release 8.0.29, utf8mb3 has become a recognized (though 
+      deprecated) character set on its own for MySQL Server. 
+      Therefore, Connector/J has added utf8mb3 to its character set 
+      mapping, and users are encouraged to update to 
+      Connector/J 8.0.29 to avoid potential issues when working with 
+      MySQL Server 8.0.29 or later. (Bug #33850155)
+    * A new connection property socksProxyRemoteDns has been added, 
+      which, when set to true, makes the SocksProxySocketFactory 
+      execute its own connect() implementation that passes the 
+      unresolved InetSocketAddress of a MySQL Server host to the 
+      created proxy socket, instead of having the address resolved 
+      locally. (Bug #77924, Bug #25710160)
+    * The code for prepared statements has been refactored to make 
+      the code simpler and the logic for binding more consistent 
+      between ServerPreparedStatement and ClientPreparedStatement.
+    * Connector/J now supports Fast Identity Online (FIDO) 
+      Authentication. See Connecting Using Fast Identity Online 
+      (FIDO) Authentication for details. 
+  Bugs fixed:
+    * X DevAPI: If the connection property xdevapi.ssl-mode was set
+      to DISABLED (or xdevapi.ssl-mode was not set, but the value 
+      was picked up from the sslMode setting), specifying some of 
+      the security properties caused Connector/J to throw an error. 
+      With this fix, even when encryption is turned off and 
+      irrelevant security properties are set, Connector/J does not 
+      throw an error.
+    * DatabaseMetaData.getDefaultTransactionIsolation() returned a 
+      wrong value. It now returns the correct value of 
+      Connection.TRANSACTION_REPEATABLE_READ. (Bug #33723611)
+    * Statement executions failed for replication connections when 
+      useCursorFetch was true and defaultFetchSize was greater than 
+      0. (Bug #25701740)
+    * Prepared statements were parsed incorrectly sometimes when 
+      they contained comments marked by /* and */. (Bug #21978230)
+    * A connection did not maintain the correct autocommit state 
+      when it was used in a pool with useLocalSessionState=true. 
+      (Bug #106435, Bug #33850099)
+    * References: This issue is a regression of: Bug #33054827.
+    * A spelling error in the error message for the buffer length 
+      being less than the expected payload length has been corrected. 
+      Thanks to Jianjian Song for contributing the fix. 
+      (Bug #106397, Bug #33893591)
+    * When using client-side prepared statements, if the VALUES 
+      clause came after the ON DUPLICATE KEY UPDATE clause or it 
+      came at the end of the statement, a StringIndexOutOfBoundsException 
+      was thrown. This patch refactors the query parser to fix the 
+      problem behind the issue, and also to improve the parser's 
+      performance. (Bug #106240, Bug #33781440)
+    * An unnecessary boxing has been removed from findColumn() in 
+      the ResultSetImpl class. Thanks to Pei Pei Ning for 
+      contributing this improvement. (Bug #106171, Bug #33757217)
+    * When decoding decimals, the constructor used for creating the 
+      BigDecimal object has been changed from BigDecimal(String) to 
+      BigDecimal(char[]) in order to save memory. Thanks to Chen Yi 
+      for contributing to this improvement. 
+      (Bug #106065, Bug #33726184)
+    * When inserting BigDecimal values into a database using 
+      rewritable server-side prepared statements with cursor-based 
+      fetching, the values suffered precision loss. (Bug #105915, 
+      Bug #33678490)
+    * When the Connector/J logger level was at TRACE, a null bind 
+      value for a PreparedStatement resulted in a NullPointerException
+      when the logger tried to read the value. This patch added a 
+      null check to avoid the exception to be thrown under the 
+      situation. (Bug #104349, Bug #33563548)
+    * When the connection property rewriteBatchedStatements was set 
+      to true, inserting a BLOB using a prepared statement and 
+      executeBatch() resulted in a NullPointerException. 
+      (Bug #85317, Bug #25672958)
+    * ResultSetMetaData and DatabaseMetaData returned Types.DATE for 
+      a YEAR table column even when yearIsDateType=false. With this 
+      fix, Types.SMALLINT was returned correctly in the situation. 
+      (Bug #82084, Bug #23743938)
+    * A PreparedStatement could not be rewritten for batch insert if 
+      any table column involved contained "select" as a substring in 
+      the column name. (Bug #81468, Bug #23312764)
+    * When using server-side prepared statements and the connection 
+      property profileSQL was set to true, setting a parameter of 
+      type LONGTEXT using a StringReader() resulted in a j
+      ava.io.NotSerializableException. (Bug #62006, Bug #16714956)
+    * Data truncation occurred for INOUT type parameters of data 
+      type BIT(1) for stored procedures. (Bug #38954, Bug #11749415)
+
+-------------------------------------------------------------------
 Fri Feb 25 20:40:59 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Build now from GitHub official repo:

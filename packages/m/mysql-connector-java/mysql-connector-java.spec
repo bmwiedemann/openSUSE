@@ -17,7 +17,7 @@
 
 
 Name:           mysql-connector-java
-Version:        8.0.28
+Version:        8.0.29
 Release:        0
 Summary:        Official JDBC Driver for MySQL
 License:        GPL-2.0-or-later
@@ -25,7 +25,9 @@ URL:            https://dev.mysql.com/downloads/connector/j/
 Source0:        https://github.com/mysql/mysql-connector-j/archive/refs/tags/%{version}.tar.gz#:/%{name}-%{version}.tar.gz
 Group:          Development/Languages/Java
 Patch0:         javac-check.patch
-# TODO: Oracle OCI is not packaged yet
+# NOTE: Oracle OCI is not packaged yet
+#   The patch doesn't remove the file AuthenticationOciClient.java
+#   therefore it's removed during prep phase
 Patch1:         %{name}-remove-oci-support.patch
 BuildRequires:  ant
 BuildRequires:  ant-contrib
@@ -63,6 +65,9 @@ set that supports the capabilities of MySQL.
 %setup -q -n mysql-connector-j-%{version}
 %patch0 -p1
 %patch1 -p1
+
+# remove OCI support
+rm -rf src/main/protocol-impl/java/com/mysql/cj/protocol/a/authentication/AuthenticationOciClient.java
 
 # extra libs
 mkdir -p lib
