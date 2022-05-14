@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed May 11 19:33:16 UTC 2022 - Anthony Iliopoulos <ailiopoulos@suse.com>
+
+- update to 5.16.0:
+  - libxfs: remove kernel stubs from xfs_shared.h
+  - debian: Generate .gitcensus instead of .census
+  - libxfs changes merged from kernel 5.16
+  - mkfs: increase the min log size to 64MB when possible
+  - xfs_scrub: retry items that are ok except for XFAIL
+  - xfs_scrub: fix xfrog_scrub_metadata error reporting
+  - mkfs: enable inobtcount and bigtime by default
+  - mkfs: prevent corruption of suboption string values
+  - mkfs: document sample configuration file location
+  - mkfs: add configuration files for a few LTS kernels
+  - mkfs: add a config file for x86_64 pmem filesystems
+  - xfs_quota: don't exit on "project" cmd failure
+  - xfs_repair: don't guess about failure reason in phase6
+  - xfs_repair: update 2ndary superblocks after upgrades
+  - xfs_scrub: fix reporting if we can't open devices
+  - xfs_scrub: report optional features in version
+  - libxcmd: use emacs mode for command history editing
+  - libfrog: always use the kernel GETFSMAP definitions
+  - mkfs.xfs(8): fix default inode allocator description
+  - xfs_quota(8): fix up dump and report documentation
+  - xfs_quota(8): document units in limit command
+  - misc: add a crc32c self test to mkfs and repair
+
+-------------------------------------------------------------------
 Tue Apr 26 23:22:02 UTC 2022 - Anthony Iliopoulos <ailiop@suse.com>
 
 - update to 5.15.0:

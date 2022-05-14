@@ -1,4 +1,4 @@
-From 73ef905b37bbf4cd1b13f3aaa4da5457f793d1ac Mon Sep 17 00:00:00 2001
+From e2239ef552a48edd33740fec8a005a7ac12dcc80 Mon Sep 17 00:00:00 2001
 From: Jeffrey Mahoney <jeffm@suse.com>
 Date: Tue, 21 Aug 2018 13:41:20 -0400
 Subject: [PATCH] repair: shift inode back into place if corrupted by bad log
@@ -35,17 +35,19 @@ big problems.
 
 Signed-off-by: Jeff Mahoney <jeffm@suse.com>
 ---
- repair/dinode.c |  186 ++++++++++++++++++++++++++++++++++++++++++++++++++++++--
+ repair/dinode.c | 186 ++++++++++++++++++++++++++++++++++++++++++++++--
  1 file changed, 180 insertions(+), 6 deletions(-)
 
+diff --git a/repair/dinode.c b/repair/dinode.c
+index 8ea919698d14..81238568ac8e 100644
 --- a/repair/dinode.c
 +++ b/repair/dinode.c
-@@ -2229,6 +2229,160 @@
+@@ -2239,6 +2239,160 @@ _("Bad extent size hint %u on inode %" PRIu64 ", "),
  	}
  }
  
 +static int
-+check_shifted_uuid(xfs_dinode_t *dino, xfs_mount_t *mp)
++check_shifted_uuid(struct xfs_dinode *dino, xfs_mount_t *mp)
 +{
 +	uint64_t tmp64;
 +	char tmpuuid[16];
@@ -66,9 +68,9 @@ Signed-off-by: Jeff Mahoney <jeffm@suse.com>
 + * documented below.
 + */
 +static void
-+repair_inode_with_bad_atomic(xfs_dinode_t *dino, xfs_mount_t *mp)
++repair_inode_with_bad_atomic(struct xfs_dinode *dino, xfs_mount_t *mp)
 +{
-+	xfs_dinode_t fixed;
++	struct xfs_dinode fixed;
 +	struct xfs_legacy_timestamp *lts;
 +	uint64_t tmp64;
 +	uint32_t tmp32;
@@ -147,20 +149,20 @@ Signed-off-by: Jeff Mahoney <jeffm@suse.com>
 +}
 +
 +static int
-+process_dinode_int(xfs_mount_t *mp, xfs_dinode_t *dino, xfs_agnumber_t agno,
++process_dinode_int(xfs_mount_t *mp, struct xfs_dinode *dino, xfs_agnumber_t agno,
 +		   xfs_agino_t ino, int was_free, int *dirty, int *used,
 +		   int verify_mode, int uncertain, int ino_discovery,
 +		   int check_dups, int extra_attr_check, int *isa_dir,
 +		   xfs_ino_t *parent, int recurse);
 +
 +static int
-+handle_malformed_inode(xfs_mount_t *mp, xfs_dinode_t *dino,
++handle_malformed_inode(xfs_mount_t *mp, struct xfs_dinode *dino,
 +		       xfs_agnumber_t agno, xfs_agino_t ino, int was_free,
 +		       int *dirty, int *used, int verify_mode, int uncertain,
 +		       int ino_discovery, int check_dups, int extra_attr_check,
 +		       int *isa_dir, xfs_ino_t *parent)
 +{
-+	xfs_dinode_t save;
++	struct xfs_dinode save;
 +	int retval;
 +	xfs_ino_t lino = XFS_AGINO_TO_INO(mp, agno, ino);
 +
@@ -201,7 +203,7 @@ Signed-off-by: Jeff Mahoney <jeffm@suse.com>
  /*
   * returns 0 if the inode is ok, 1 if the inode is corrupt
   * check_dups can be set to 1 *only* when called by the
-@@ -2253,7 +2407,8 @@
+@@ -2263,7 +2417,8 @@ process_dinode_int(xfs_mount_t *mp,
  					 * duplicate blocks		*/
  		int extra_attr_check, /* 1 == do attribute format and value checks */
  		int *isa_dir,		/* out == 1 if inode is a directory */
@@ -211,7 +213,7 @@ Signed-off-by: Jeff Mahoney <jeffm@suse.com>
  {
  	xfs_rfsblock_t		totblocks = 0;
  	xfs_rfsblock_t		atotblocks = 0;
-@@ -2369,6 +2524,25 @@
+@@ -2379,6 +2534,25 @@ process_dinode_int(xfs_mount_t *mp,
  	 * memory and hence invalidated the CRC.
  	 */
  	if (xfs_has_crc(mp)) {
@@ -237,7 +239,7 @@ Signed-off-by: Jeff Mahoney <jeffm@suse.com>
  		if (be64_to_cpu(dino->di_ino) != lino) {
  			if (!uncertain)
  				do_warn(
-@@ -2379,8 +2553,7 @@
+@@ -2389,8 +2563,7 @@ _("inode identifier %llu mismatch on inode %" PRIu64 "\n"),
  				return 1;
  			goto clear_bad_out;
  		}
@@ -247,7 +249,7 @@ Signed-off-by: Jeff Mahoney <jeffm@suse.com>
  			if (!uncertain)
  				do_warn(
  			_("UUID mismatch on inode %" PRIu64 "\n"), lino);
-@@ -2942,7 +3115,8 @@
+@@ -2952,7 +3125,8 @@ process_dinode(
  #endif
  	return process_dinode_int(mp, dino, agno, ino, was_free, dirty, used,
  				verify_mode, uncertain, ino_discovery,
@@ -257,7 +259,7 @@ Signed-off-by: Jeff Mahoney <jeffm@suse.com>
  }
  
  /*
-@@ -2969,7 +3143,7 @@
+@@ -2979,7 +3153,7 @@ verify_dinode(
  
  	return process_dinode_int(mp, dino, agno, ino, 0, &dirty, &used,
  				verify_mode, uncertain, ino_discovery,
@@ -266,10 +268,13 @@ Signed-off-by: Jeff Mahoney <jeffm@suse.com>
  }
  
  /*
-@@ -2995,5 +3169,5 @@
+@@ -3005,5 +3179,5 @@ verify_uncertain_dinode(
  
  	return process_dinode_int(mp, dino, agno, ino, 0, &dirty, &used,
  				verify_mode, uncertain, ino_discovery,
 -				check_dups, 0, &isa_dir, &parent);
 +				check_dups, 0, &isa_dir, &parent, 0);
  }
+-- 
+2.36.1
+
