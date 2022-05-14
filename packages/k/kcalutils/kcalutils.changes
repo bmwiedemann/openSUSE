@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 10 16:29:47 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.1/
+- Drop 0001-Fix-Bug-452480-Kmail-doesn-t-display-calendar-invite.patch.
+  Merged upstream.
+
+-------------------------------------------------------------------
 Wed Apr 27 08:13:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream change to fix calendar invitations (kde#452480):
