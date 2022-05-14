@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 11 13:18:07 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fetch sources using source service from ch.qos git
+- Upgrade to the 10th commit after 0.8.1 calling it 0.8.1.10
+- Redo completely the packaging including the possibility to run
+  tests if --with tests is specified
+- Add the cal10n-ant-task to built artifacts
+- Removed patch:
+  * cal10n-0.7.7-sourcetarget.patch
+    + changes factored into the build system
+
+-------------------------------------------------------------------
 Thu Apr 21 17:06:43 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Update to 0.8.1:
