@@ -1,4 +1,13 @@
 --------------------------------------------------------------------
+Thu May 12 13:20:38 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#875
+- do not add zoned disks to pools
+- extended documentation
+- tiny cleanup
+- 4.5.11
+
+--------------------------------------------------------------------
 Fri May 6 07:10:16 UTC 2022 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#874
