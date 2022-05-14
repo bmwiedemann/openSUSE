@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 11 10:30:34 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Filter out rpmlint error that is valid for qemu, but will
+  have its badness increased in the future.
+
+-------------------------------------------------------------------
 Tue Apr 19 15:24:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - enable aio=io_uring on all kvm architectures (bsc#1197699) 
