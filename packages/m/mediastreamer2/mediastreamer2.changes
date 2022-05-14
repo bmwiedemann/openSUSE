@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May  7 14:54:28 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- Update to version 5.1.29:
+  * use ticker_synchronizer to fix audio delay when switching audio route
+  * fixed issue with OpenSLES sound card refs & capabilities
+- revert license tag change
+
+-------------------------------------------------------------------
 Wed May  4 12:44:40 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Stop using SRTP1

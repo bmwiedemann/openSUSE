@@ -19,10 +19,10 @@
 %define sobase  libmediastreamer
 %define sover   11
 Name:           mediastreamer2
-Version:        5.1.20
+Version:        5.1.29
 Release:        0
 Summary:        Audio/Video real-time streaming
-License:        GPL-3.0-only
+License:        GPL-3.0-or-later
 Group:          Productivity/Telephony/Utilities
 URL:            https://linphone.org/technical-corner/mediastreamer2
 Source:         https://gitlab.linphone.org/BC/public/mediastreamer2/-/archive/%{version}/%{name}-%{version}.tar.bz2
