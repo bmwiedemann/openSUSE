@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat May 14 08:25:49 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.37.1:
+  * Update remote state docs to recommend generate first (#2106)
+
+-------------------------------------------------------------------
+Sat May 14 08:20:02 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.37.0:
+  * fix config remote state s3 and update if needs (#2063)
+
+-------------------------------------------------------------------
+Fri May 13 19:58:52 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.36.12:
+  * Allow v0.36 to define disable_bucket_update to make it easier to transition to v0.37 (#2105)
+
+-------------------------------------------------------------------
+Fri May 13 19:40:56 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.36.11:
+  * Bump github.com/hashicorp/go-getter from 1.5.7 to 1.5.11 (#2095)
+
+-------------------------------------------------------------------
 Thu May 05 06:37:34 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.36.10:
