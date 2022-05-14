@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri May 13 14:54:38 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 9.2.3:
+  * Release 9.2.3 (#12623)
+
+-------------------------------------------------------------------
+Fri May 13 14:52:56 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 9.2.2:
+  * Release 9.2.2 (#12621)
+  * Update upcoming-releases.mdx
+  * [v9] Add Session tracker to DB, App, and Windows Desktop Sessions; Fix make grpc
+  * [v9] Refactor non-interactive sessions out of proxy/sess.go (#12541)
+  * Update to Go 1.17.10 (#12607)
+  * add --format flag to 'token add' and make the same flag visible for 'token ls' (#12588)
+  * docs: mention new desktop label for OU (#12548)
+  * Revert "Adds optional deployment key for CI (#10506) (#12590)" (#12603)
+  * Ignore HTTP_PROXY in reverse tunnels, part 2 (#12335)
+  * Stop loading the enitre node set into memory per tsh ssh connection (#12014) (#12573)
+  * [v9] Fix user mismatch in postgres backend (#12553)
+  * include groups example for role in k8s controls docs (#12563)
+  * Adds optional deployment key for CI (#10506) (#12590)
+  * App access JWT header improvements (#12589)
+  * [v9] Includes Audit Log into common sso Troubleshooting (#12565)
+  * Make the Installation guide more usable (#12369)
+  * Add a UI reference entry for code blocks (#12428)
+  * feat(helm): add priorityClassName and extraLabels to kube-agent (#12559) (#12568)
+  * add pam tag back to tctl build (#12572)
+  * Add new config templates to `tbot` for databases and identity files (#11596) (#12500)
+  * Re-add grace period to Upload completer for backwards compatibility. (#12535)
+  * Disable ssh_service for app config (#12539)
+  * [v9] Upgrade gravitational/kingpin to latest master (8b7839c62700) (#12511)
+  * Desktop access: add teleport.dev/ou label (#12502)
+  * helm: Buddy merge for #11368 (Enable persistence in custom mode) (#11993) (#12218)
+  * Make the Troubleshooting guide more usable (#12431)
+  * Fix RDS Redshift dynamic resources registration logic (#11868) (#12451)
+  * update version in docs to 9.2.1 (#12476)
+
+-------------------------------------------------------------------
 Fri May 06 06:43:30 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 9.2.1:
