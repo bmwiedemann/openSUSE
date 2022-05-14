@@ -1468,4 +1468,12 @@ https://www.kde.org/announcements/announce-applications-16.08.2.php
     <comment>KDE release gear 22.04.0</comment>
     <requestid>971613</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>2a78e74535a99bfedb6ec5d8c5513887</srcmd5>
+    <version>22.04.1</version>
+    <time>1652561810</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 22.04.1</comment>
+    <requestid>976921</requestid>
+  </revision>
 </revisionlist>
