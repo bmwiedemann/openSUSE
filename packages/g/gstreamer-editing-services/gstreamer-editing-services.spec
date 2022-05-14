@@ -20,10 +20,10 @@
 %define _name gst-editing-services
 
 Name:           gstreamer-editing-services
-Version:        1.20.1
+Version:        1.20.2
 Release:        0
 Summary:        GStreamer Editing Services
-License:        GPL-3.0-or-later AND LGPL-2.1-or-later
+License:        LGPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer-editing-services/html/ges-architecture.html
 Source0:        https://gstreamer.freedesktop.org/src/gstreamer-editing-services/%{_name}-%{version}.tar.xz
