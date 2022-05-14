@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 12 10:45:07 UTC 2022 - Reinhard Max <max@suse.com>
+
+- Upgrade to 13.7:
+  * bsc#1199475, CVE-2022-1552: Confine additional operations
+    within "security restricted operation" sandboxes.
+  * https://www.postgresql.org/docs/13/release-13-7.html
+
+-------------------------------------------------------------------
 Wed Apr 13 12:17:48 UTC 2022 - Reinhard Max <max@suse.com>
 
 - bsc#1198166: Pin to llvm13 until the next patchlevel update.
@@ -30,7 +38,7 @@ Wed Nov 10 18:04:28 UTC 2021 - Reinhard Max <max@suse.com>
     encryption handshake (CVE-2021-23214).
   * Make libpq reject extraneous data after an SSL or GSS
     encryption handshake (CVE-2021-23222).
-  * https://www.postgresql.org/docs/13/release-13-4.html
+  * https://www.postgresql.org/docs/13/release-13-5.html
 
 -------------------------------------------------------------------
 Mon Sep 27 13:58:17 UTC 2021 - Reinhard Max <max@suse.com>

@@ -16,7 +16,7 @@
 #
 
 
-%define pgversion 13.6
+%define pgversion 13.7
 %define pgmajor 13
 %define pgsuffix %pgmajor
 %define buildlibs 0
@@ -114,9 +114,9 @@ BuildRequires:  libicu-devel
 BuildRequires:  libselinux-devel
 %endif
 %if %{with llvm}
-BuildRequires:  clang13
+BuildRequires:  clang
 BuildRequires:  gcc-c++
-BuildRequires:  llvm13-devel
+BuildRequires:  llvm-devel
 %endif
 BuildRequires:  libxslt-devel
 BuildRequires:  openldap2-devel
