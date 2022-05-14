@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 12 03:09:51 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Clean up of specfile - use without macro
+
+-------------------------------------------------------------------
 Mon May  9 05:57:59 UTC 2022 - William Brown <william.brown@suse.com>
 
 - bsc#1199126 - resolve issue with rpath being embedded into rust-lld

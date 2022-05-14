@@ -105,6 +105,8 @@ ExcludeArch:    armv6hl
 # ⚠️   SLE/LEAP 15.3 LLVM is too old!
 # ⚠️   1.59 breaks codegen with distro llvm!!!
 # ⚠️   1.60 llvm too old
+# ⚠️   Wasm requires rust-lld, which depends on bundled LLVM. Rather than add more variables
+#     to the build, keep everything consistent.
 
 %if 0%{?is_opensuse} == 1 && 0%{?suse_version} >= 1550 && "%{version_suffix}" != "1.60"
 # Can proceed with pinned llvm.
@@ -204,7 +206,7 @@ Group:          Development/Languages/Rust
 URL:            https://www.rust-lang.org
 Source0:        %{dl_url}/rustc-%{version}-src.tar.xz
 Source1:        rust.keyring
-%if ! %{with test}
+%if %{without test}
 Source99:       %{name}-rpmlintrc
 %endif
 Source100:      %{dl_url}/rust-%{version_current}-x86_64-unknown-linux-gnu.tar.xz
@@ -298,7 +300,7 @@ BuildRequires:  rust%{version_suffix} = %{version}
 # Static linking tests need this.
 BuildRequires:  glibc-devel-static
 
-%if ! %{with bundled_llvm}
+%if %{without bundled_llvm}
 # For FileCheck
 BuildRequires:  llvm%{llvm_version}-devel
 %endif
@@ -322,7 +324,7 @@ Conflicts:      rust-gdb < %{version}
 Obsoletes:      rust-gdb < %{version}
 Provides:       rust-gdb = %{version}
 
-%if ! %{with test}
+%if %{without test}
 # Restrict the architectures as building rust relies on being
 # initially bootstrapped before we can build the n+1 release
 ExclusiveArch:  x86_64 %{arm} aarch64 ppc ppc64 ppc64le s390x %{ix86} riscv64
@@ -363,7 +365,7 @@ Provides:       rust+cargo = %{version}
 Cargo downloads dependencies of Rust projects and compiles it.
 
 %prep
-%if ! %{with test}
+%if %{without test}
 %ifarch x86_64
 %setup -q -T -b 100 -n rust-%{version_current}-%{rust_triple}
 %endif
@@ -409,7 +411,7 @@ rm -rf src/tools/lldb
 # CI tooling won't be used
 rm -rf src/ci
 
-%if !%{with bundled_llvm}
+%if %{without bundled_llvm}
 rm -rf src/llvm/
 %endif
 
@@ -500,7 +502,7 @@ EOF
 env
 
 # Check our rustroot works as we expect
-%if ! %{with test}
+%if %{without test}
 cat >> main.rs <<EOF
 fn main() {}
 EOF
@@ -544,7 +546,7 @@ RUSTC_LOG=rustc_codegen_ssa::back::link=info %{rust_root}/bin/rustc -C link-args
   --tools="cargo" \
   --release-channel="stable"
 
-%if ! %{with test}
+%if %{without test}
 python3 ./x.py build
 # Debug for post build
 free -h
@@ -553,7 +555,7 @@ df -h
 
 %install
 # Reread exports file
-%if ! %{with test}
+%if %{without test}
 . ./.env.sh
 
 python3 ./x.py install
@@ -625,7 +627,7 @@ python3 ./x.py test --target=%{rust_triple}
 # End with test
 %endif
 
-%if ! %{with test}
+%if %{without test}
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
