@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May  8 16:07:38 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- remove Python 3 code from specfile: not compatible with
+  Python 3.10
+
+-------------------------------------------------------------------
 Mon Mar 23 13:29:38 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use python2_sitearch to fix build without extra macros

@@ -16,14 +16,8 @@
 #
 
 
-%define build_for_python3 0
-%if %{build_for_python3}
-%define local_py_requires Requires: python(abi) = %{py3_ver}
-%define local_py_sitedir  %{python3_sitearch}
-%else
 %define local_py_requires %py_requires
 %define local_py_sitedir  %{python2_sitearch}
-%endif
 %define _name   pygobject
 Name:           python-gobject2
 Version:        2.28.7
@@ -36,14 +30,9 @@ BuildRequires:  fdupes
 BuildRequires:  glib2-devel
 BuildRequires:  libffi-devel
 %{local_py_requires}
-%if %{build_for_python3}
-BuildRequires:  python3-cairo-devel
-BuildRequires:  python3-devel
-%else
 BuildRequires:  python-cairo-devel
 BuildRequires:  python-devel
 Provides:       python2-gobject2 = %{version}
-%endif
 
 %description
 Pygobjects is an extension module for python that gives you access to
@@ -64,14 +53,9 @@ This package contains the Python Cairo bindings for GObject.
 %package devel
 Summary:        Python bindings for GObject
 Requires:       %{name} = %{version}
-%if %{build_for_python3}
-# Several files are conflicting between python2 and python3 builds
-Conflicts:      python-gobject2-devel
-%else
 Provides:       python-gobject2-doc = %{version}
 Obsoletes:      python-gobject2-doc < %{version}
 Provides:       python2-gobject2-devel = %{version}
-%endif
 
 %description devel
 This package contains files required to build wrappers for gobject
@@ -81,9 +65,6 @@ addon libraries such as pygtk.
 %setup -q -n %{_name}-%{version}
 
 %build
-%if %{build_for_python3}
-export PYTHON=python3
-%endif
 %configure --disable-static --disable-introspection
 %make_build
 
@@ -110,11 +91,9 @@ rm examples/Makefile*
 %{_includedir}/pygtk-2.0/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/pygobject-2.0.pc
-%if !%{build_for_python3}
 ## codegen
 %{_bindir}/pygobject-codegen-2.0
 %{_datadir}/%{_name}/2.0/codegen/
-%endif
 # we explicitly list the directories here to be sure we don't include something
 # that should live in the main package
 %dir %{_datadir}/%{_name}
