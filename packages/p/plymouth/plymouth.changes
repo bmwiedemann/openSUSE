@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 13 10:45:07 UTC 2022 - Cliff Zhao <qzhao@suse.com>
+
+- plymouth-screen-twice-scale-on-160DPI-higher.patch: 
+  When screen DPI > 160, display will scale output twice
+  (boo#1183425 boo#1184309).
+
+-------------------------------------------------------------------
 Mon May  9 06:15:39 UTC 2022 - Cliff Zhao <qzhao@suse.com>
 
 - Update plymouth.spec: change configure options --with-shutdown-tty
