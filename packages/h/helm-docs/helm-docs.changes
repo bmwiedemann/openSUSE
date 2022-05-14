@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May 14 11:41:14 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.10.0:
+  * fix: types on nil values
+  * Add support for custom notation type
+  * Generated example charts with new version
+
+-------------------------------------------------------------------
 Tue Apr 26 06:17:04 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.9.1:
