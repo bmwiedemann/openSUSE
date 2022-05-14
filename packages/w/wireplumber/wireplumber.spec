@@ -16,13 +16,13 @@
 #
 
 
-%define pipewire_minimum_version 0.3.43
+%define pipewire_minimum_version 0.3.48
 %define apiver 0.4
 %define apiver_str 0_4
 %define sover 0
 %define libwireplumber libwireplumber-%{apiver_str}-%{sover}
 Name:           wireplumber
-Version:        0.4.9
+Version:        0.4.10
 Release:        0
 Summary:        Session / policy manager implementation for PipeWire
 License:        MIT
@@ -30,12 +30,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/pipewire/wireplumber
 Source0:        wireplumber-%{version}.tar.xz
 Source1:        split-config-file.py
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-src-setlocale-in-main-for-tools-and-the-daemon.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-scripts-policy-device-profile-clear-tables-when-devices-removed.patch
-# PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
-Patch100:       reduce-meson-required-version.patch
+# PATCH-FIX-OPENSUSE reduce-meson-required-version.patch
+Patch0:         reduce-meson-required-version.patch
 # docs
 BuildRequires:  doxygen
 BuildRequires:  graphviz
@@ -76,6 +72,8 @@ WirePlumber is a modular session / policy manager for PipeWire and
 a GObject-based high-level library that wraps PipeWire's API,
 providing convenience for writing the daemon's modules as well as
 external tools for managing PipeWire.
+
+%lang_package
 
 %package audio
 Summary:        Session / policy manager implementation for PipeWire (audio support)
@@ -134,7 +132,10 @@ This package provides the GObject Introspection bindings for
 the wireplumber shared library.
 
 %prep
-%autosetup -p1
+%autosetup -N
+%if 0%{?sle_version} == 150300
+%patch0 -p1
+%endif
 
 pushd src/config/main.lua.d
 python3 %{SOURCE1}
@@ -153,6 +154,7 @@ export CC=gcc-9
 %install
 %meson_install
 %fdupes -s %{buildroot}/%{_datadir}/doc/pipewire/html
+%find_lang %{name} %{?no_lang_C}
 
 %ifnarch %ix86 ppc64
 %check
@@ -198,6 +200,8 @@ export XDG_RUNTIME_DIR=/tmp
 %{_userunitdir}/wireplumber@.service
 %{_datadir}/wireplumber
 %exclude %{_datadir}/wireplumber/main.lua.d/90-2-1-enable-alsa.lua
+
+%files lang -f %{name}.lang
 
 %files audio
 %{_datadir}/wireplumber/main.lua.d/90-2-1-enable-alsa.lua

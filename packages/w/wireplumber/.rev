@@ -87,4 +87,41 @@
     <comment></comment>
     <requestid>966061</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8e40387541305071ec524899a0a8a745</srcmd5>
+    <version>0.4.10</version>
+    <time>1652561675</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.10:
+  * Changes
+    - Add i18n support to be able to translate some user-visible
+      strings.
+    - wpctl now supports using
+      @DEFAULT_{AUDIO_,VIDEO_,}{SINK,SOURCE}@ as ID, almost like
+      pactl. Additionally, it supports a --pid flag for changing
+      volume and mute state by specifying a process ID, applying
+      the state to all nodes of a specific client process.
+    - The Lua engine now supports loading Lua libraries. These can
+      be placed either in the standard Lua libraries path or in
+      the &quot;lib&quot; subdirectory of WirePlumber's &quot;scripts&quot; directory
+      and can be loaded with ``require()``
+    - The Lua engine's sandbox has been relaxed to allow more
+      functionality in scripts (the debug &amp; coroutine libraries
+      and some other previously disabled functions)
+    - Lua scripts are now wrapped in special WpPlugin objects,
+      allowing them to load asynchronously and declare when they
+      have finished their loading
+    - Add a new script that provides the same functionality as
+      module-fallback-sink from PipeWire, but also takes endpoints
+      into account and can be customised more easily. Disabled by
+      default for now to avoid conflicts.
+  * Policy
+    - Add an optional experimental feature that allows filter-like
+      streams (like echo-cancel or filter-node) to match the
+      channel layout of the device they connect to, on both sides
+      of the filter; that means that if, for instance, a sink has
+      6 channels and the echo-cancel's source stream is linked to
+      that sink, then the virtual sink presented by echo-cancel</comment>
+    <requestid>976983</requestid>
+  </revision>
 </revisionlist>
