@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May 14 17:22:37 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.6.7~1:
+  * amdgpu: Prefer sysfs temp over gpu_metrics.
+  * amdgpu: Fix incorrect gpu load for some GPUs.
+  * amdgpu: If gpu_metrics is from v1_0, ignore it and
+    use sysfs instead.
+  * Fixed on screen benchmark not matching summary file.
+  * Fixed zink detection.
+  * disabled throttling_status by default for nvidia as it causes 
+    lag on 3000 series.
+
+-------------------------------------------------------------------
 Wed May 04 20:25:47 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 0.6.7:

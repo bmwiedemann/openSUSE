@@ -16,14 +16,14 @@
 #
 
 
-%define internal_ver 0.6.7
+%define internal_ver 0.6.7-1
 %define imgui_ver 1.81
 %define imgui_wrap 1
 %define spdlog_ver 1.8.5
 %define spdlog_wrap 1
 
 Name:           mangohud
-Version:        0.6.7
+Version:        0.6.7~1
 Release:        0
 Summary:        A Vulkan and OpenGL overlay for monitoring
 License:        MIT
