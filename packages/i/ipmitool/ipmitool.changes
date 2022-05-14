@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 10 08:12:53 UTC 2022 - moritz.kodytek@suse.com
+
+- Update to version 1.8.18.249.g4d25a93:
+  * man: Update the text for -C option
+  * chassis restart_cause: Add new causes
+  * sel: Remove redundant "Reserve SEL"
+  * sdr: Fix modifier unit
+  * Refactor bridging level detection to dedicated function
+  * Fix double bridge detection in get_max_(req|rsp)_data_size()
+
+-------------------------------------------------------------------
 Wed Aug 11 10:10:52 UTC 2021 - trenn@suse.de
 
 - Update to version 1.8.18.238.gb7adc1d:
