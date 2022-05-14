@@ -1,7 +1,7 @@
 #
 # spec file for package genromfs
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,10 +20,10 @@ Name:           genromfs
 Version:        0.5.2
 Release:        0
 Summary:        Utility for Creating romfs File Systems
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Boot
-Url:            http://romfs.sourceforge.net
-Source:         http://downloads.sf.net/romfs/%{name}-%{version}.tar.gz
+URL:            http://romfs.sourceforge.net
+Source:         https://downloads.sf.net/romfs/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
