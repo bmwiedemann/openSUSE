@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri May 13 09:56:10 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop libnotify-rpmlintrc: no longer needed, all rpmlint issues
+  are fixed.
+
+-------------------------------------------------------------------
+Fri May  6 11:45:55 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
+
+- Update to version 0.7.12:
+  + docs/notify-send: Add --transient option to manpage.
+  + notify-send: Move server capabilities check to a separate
+    function.
+  + notify-send: Add debug message about server not supporting
+    persistence.
+  + notification: Include sender-pid hint by default if not
+    provided.
+  + Delete unused notifynotification.xml.
+  + notification: Bookend calling NotifyActionCallback
+    with temporary reference.
+
+-------------------------------------------------------------------
 Thu May  5 09:24:05 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 0.7.11

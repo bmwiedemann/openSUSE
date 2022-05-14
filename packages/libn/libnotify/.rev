@@ -312,4 +312,25 @@ No GPL-2.0+ files found in the package. The Fedora package is also licensed unde
     notifications (forwarded request 975131 from cgiboudeaux)</comment>
     <requestid>975333</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>89dac9cbef78a91428c62f74100bef03</srcmd5>
+    <version>0.7.12</version>
+    <time>1652561679</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop libnotify-rpmlintrc: no longer needed, all rpmlint issues
+  are fixed.
+
+- Update to version 0.7.12:
+  + docs/notify-send: Add --transient option to manpage.
+  + notify-send: Move server capabilities check to a separate
+    function.
+  + notify-send: Add debug message about server not supporting
+    persistence.
+  + notification: Include sender-pid hint by default if not
+    provided.
+  + Delete unused notifynotification.xml.
+  + notification: Bookend calling NotifyActionCallback
+    with temporary reference.</comment>
+    <requestid>977008</requestid>
+  </revision>
 </revisionlist>

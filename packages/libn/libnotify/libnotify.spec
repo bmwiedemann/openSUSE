@@ -17,14 +17,13 @@
 
 
 Name:           libnotify
-Version:        0.7.11
+Version:        0.7.12
 Release:        0
 Summary:        Notifications Library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/X11
 URL:            https://galago-project.org/
 Source:         https://download.gnome.org/sources/libnotify/0.7/%{name}-%{version}.tar.xz
-Source98:       libnotify-rpmlintrc
 Source99:       baselibs.conf
 BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  gobject-introspection-devel
