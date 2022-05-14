@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May  6 09:28:56 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 3.0.4
+  * colorspace: fix ARIB STD-B67 constant-luminance EOTF
+  * colorspace: filter negative values from sRGB-like transfer functions
+  * common: compilation fixes on esoteric architectures
+  * graph: fix active region with chroma subsampling
+- Added e29571.patch from upstream to fix arm unittests
+
+-------------------------------------------------------------------
 Wed Sep 22 17:19:43 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Update to 3.0.3:

@@ -1,7 +1,7 @@
 #
 # spec file for package zimg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         sover 2
 Name:           zimg
-Version:        3.0.3
+Version:        3.0.4
 Release:        0
 Summary:        Scaling, colorspace conversion, and dithering library
 License:        WTFPL
@@ -27,6 +27,8 @@ URL:            https://github.com/sekrit-twc/zimg
 Source0:        zimg-%{version}.tar.xz
 Source99:       baselibs.conf
 Patch0:         zimg-s390x-unit-tests.patch
+# PATCH-FIX-UPSTREAM e29571.patch -- Fix unittests on ARM
+Patch1:         https://github.com/sekrit-twc/zimg/commit/e29571.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cmake
@@ -56,8 +58,7 @@ The libzimg-devel package contains libraries and header files for
 developing applications that use libzimg%{sover}.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv
