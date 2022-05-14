@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libkleo
-Version:        22.04.0
+Version:        22.04.1
 Release:        0
 Summary:        Base package of Kleopatra, a key manager by KDE
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -31,8 +31,6 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         gcc12-fix.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  libboost_headers-devel
