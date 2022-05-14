@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 11 22:43:51 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+- Update to runc v1.1.2. Upstream changelog is available from
+  https://github.com/opencontainers/runc/releases/tag/v1.1.2.
+  CVE-2022-24769
+
+ * A bug was found in runc where runc exec --cap executed processes with
+   non-empty inheritable Linux process capabilities, creating an atypical Linux
+   environment. For more information, see [GHSA-f3fp-gc8g-vw66][] and
+   CVE-2022-29162.
+ * `runc spec` no longer sets any inheritable capabilities in the created
+   example OCI spec (`config.json`) file.
+
+-------------------------------------------------------------------
 Tue Mar 29 03:33:30 UTC 2022 - Aleksa Sarai <asarai@suse.com>
 
 - Update to runc v1.1.1. Upstream changelog is available from
