@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           akonadi-search
-Version:        22.04.0
+Version:        22.04.1
 Release:        0
 Summary:        Framework for searching and managing PIM metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -59,8 +59,6 @@ AkonadiSearch is a framework for searching and managing PIM metadata
 Summary:        Core libraries for AkonadiSearch
 Group:          System/Libraries
 # Renamed to fix a rpmlint error
-# TODO: Remove the 'Conflicts' line when 22.04.1 is out
-Conflicts:      libKF5AkonadiSearch = 22.04.0
 Provides:       libKF5AkonadiSearch = 22.04.0
 Obsoletes:      libKF5AkonadiSearch < 22.04.0
 
