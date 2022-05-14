@@ -107,7 +107,7 @@ Suggests:       openvswitch-kmp
 # We need to be a bit strict with the dpdk version since
 # it's very possible for DPDK to change it's API between
 # releases.
-BuildRequires:  dpdk-devel <= 21.11
+BuildRequires:  dpdk-devel <= 21.12
 BuildRequires:  dpdk-devel >= 20.11.0
 BuildRequires:  libmnl-devel
 BuildRequires:  libnuma-devel

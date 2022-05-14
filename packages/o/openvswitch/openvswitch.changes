@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 13 15:52:24 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Allow dpdk version 21.11.
+
+-------------------------------------------------------------------
 Fri Apr 22 20:42:31 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Python package: Do not use C json parser on 32bit as large numbers
