@@ -1192,4 +1192,15 @@
     <comment></comment>
     <requestid>972111</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>b34081108a27c5d67c1096cab3f61621</srcmd5>
+    <version>22.04.1</version>
+    <time>1652561625</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches to fix issues caused by p7zip replacement in
+  openSUSE (boo#1199190):
+  * 0001-remove-l-flag-to-7z-a.patch
+  * 0001-Support-7zip-as-well-as-p7zip.patch (forwarded request 976991 from cgiboudeaux)</comment>
+    <requestid>976997</requestid>
+  </revision>
 </revisionlist>
