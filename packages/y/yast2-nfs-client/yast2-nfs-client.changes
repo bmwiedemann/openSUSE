@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Wed May 11 13:12:14 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix localization of NFS Version widget values (bsc#1198076)
+- 4.5.1
+
+-------------------------------------------------------------------
 Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
-- Bump version to 4.5.0 (#bsc1198109)
+- Bump version to 4.5.0 (bsc#1198109)
 
 -------------------------------------------------------------------
 Fri Feb  4 13:54:00 UTC 2022 - José Iván López González <jlopez@suse.com>
