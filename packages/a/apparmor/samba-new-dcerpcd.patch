@@ -26,7 +26,7 @@ Index: apparmor-3.0.4/profiles/apparmor.d/samba-dcerpcd
 ===================================================================
 --- /dev/null
 +++ apparmor-3.0.4/profiles/apparmor.d/samba-dcerpcd
-@@ -0,0 +1,29 @@
+@@ -0,0 +1,31 @@
 +# ------------------------------------------------------------------
 +#
 +#    Copyright (C) 2022 SUSE LLC
@@ -46,6 +46,8 @@ Index: apparmor-3.0.4/profiles/apparmor.d/samba-dcerpcd
 +  include <abstractions/samba-rpcd>
 +
 +  @{run}/samba/samba-dcerpcd.pid wk,
++
++  /usr/lib*/samba/samba-dcerpcd m,
 +
 +  /usr/lib*/samba/rpcd_{mdssvc,epmapper,rpcecho,fsrvp,lsad,winreg} Px -> samba-rpcd,
 +  /usr/lib*/samba/rpcd_classic Px -> samba-rpcd-classic,
@@ -95,7 +97,7 @@ Index: apparmor-3.0.4/profiles/apparmor.d/samba-rpcd
 ===================================================================
 --- /dev/null
 +++ apparmor-3.0.4/profiles/apparmor.d/samba-rpcd
-@@ -0,0 +1,20 @@
+@@ -0,0 +1,21 @@
 +# ------------------------------------------------------------------
 +#
 +#    Copyright (C) 2022 SUSE LLC
@@ -113,6 +115,7 @@ Index: apparmor-3.0.4/profiles/apparmor.d/samba-rpcd
 +
 +profile samba-rpcd /usr/lib*/samba/rpcd_{mdssvc,epmapper,rpcecho,fsrvp,lsad,winreg} {
 +  include <abstractions/samba-rpcd>
++  /usr/lib*/samba/rpcd_{mdssvc,epmapper,rpcecho,fsrvp,lsad,winreg} m,
 +  # Site-specific additions and overrides. See local/README for details.
 +  include if exists <local/samba-rpcd>
 +}
@@ -120,7 +123,7 @@ Index: apparmor-3.0.4/profiles/apparmor.d/samba-rpcd-classic
 ===================================================================
 --- /dev/null
 +++ apparmor-3.0.4/profiles/apparmor.d/samba-rpcd-classic
-@@ -0,0 +1,22 @@
+@@ -0,0 +1,24 @@
 +# ------------------------------------------------------------------
 +#
 +#    Copyright (C) 2022 SUSE LLC
@@ -140,6 +143,8 @@ Index: apparmor-3.0.4/profiles/apparmor.d/samba-rpcd-classic
 +  include <abstractions/samba-rpcd>
 +  include <abstractions/wutmp>
 +
++  /usr/lib*/samba/rpcd_classic m,
++
 +  # Site-specific additions and overrides. See local/README for details.
 +  include if exists <local/samba-rpcd-classic>
 +}
@@ -147,7 +152,7 @@ Index: apparmor-3.0.4/profiles/apparmor.d/samba-rpcd-spoolss
 ===================================================================
 --- /dev/null
 +++ apparmor-3.0.4/profiles/apparmor.d/samba-rpcd-spoolss
-@@ -0,0 +1,23 @@
+@@ -0,0 +1,24 @@
 +# ------------------------------------------------------------------
 +#
 +#    Copyright (C) 2022 SUSE LLC
@@ -166,6 +171,7 @@ Index: apparmor-3.0.4/profiles/apparmor.d/samba-rpcd-spoolss
 +profile samba-rpcd-spoolss /usr/lib*/samba/rpcd_spoolss {
 +  include <abstractions/samba-rpcd>
 +
++  /usr/lib*/samba/rpcd_spoolss m,
 +  /usr/lib*/samba/samba-bgqd Px -> samba-bgqd,
 +
 +  # Site-specific additions and overrides. See local/README for details.

@@ -97,6 +97,7 @@ Patch10:        samba_deny_net_admin.patch
 
 # support for new dcerpcd subsytem in >= samba-4.16
 # merged upstream 2022-04-15 3.0+master https://gitlab.com/apparmor/apparmor/-/merge_requests/871
+# merged upstream 2022-05-11 3.0+master https://gitlab.com/apparmor/apparmor/-/merge_requests/880
 # bsc#1198309
 Patch11:        samba-new-dcerpcd.patch
 

@@ -2359,4 +2359,13 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
   (https://gitlab.com/apparmor/apparmor/-/merge_requests/848) (forwarded request 975634 from bnavigator)</comment>
     <requestid>975636</requestid>
   </revision>
+  <revision rev="173" vrev="10">
+    <srcmd5>f00b74a4ddc5449dfb38f0b02dcb9309</srcmd5>
+    <version>3.0.4</version>
+    <time>1652561535</time>
+    <user>dimstar_suse</user>
+    <comment>- Update samba-new-dcerpcd.patch for aarch64 which needs some
+  additional rules; (bnc#1198309). (forwarded request 976576 from npower)</comment>
+    <requestid>976602</requestid>
+  </revision>
 </revisionlist>
