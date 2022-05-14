@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  3 13:35:13 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add gnu-efi-add-GNU-stack-section.patch in order to add .note.GNU-stack
+  sections, fixes upstream issue:
+  https://sourceforge.net/p/gnu-efi/bugs/28/
+
+-------------------------------------------------------------------
 Mon Oct 18 09:57:26 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Update to gnu-efi 3.0.14

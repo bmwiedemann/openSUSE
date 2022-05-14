@@ -1,7 +1,7 @@
 #
 # spec file for package gnu-efi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://sourceforge.net/projects/gnu-efi
 Source:         https://download.sourceforge.net/project/gnu-efi/gnu-efi-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
 Patch1:         gnu-efi-bsc1182057-support-sbat-section.patch
+Patch2:         gnu-efi-add-GNU-stack-section.patch
 BuildRequires:  kernel-source
 ExclusiveArch:  ia64 %{ix86} x86_64 aarch64 %{arm} riscv64
 
@@ -37,6 +38,7 @@ environment.
 %prep
 %setup -q
 %patch1 -p1
+%patch2 -p1
 
 %build
 ##########################
