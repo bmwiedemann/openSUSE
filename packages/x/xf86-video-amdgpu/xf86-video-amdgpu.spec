@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-amdgpu
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,8 +28,7 @@ License:        MIT
 Group:          System/X11/Servers/XF86_4
 URL:            https://xorg.freedesktop.org/
 Source:         https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.gz
-### Alex Deucher's GPG key currently unknown; for now verified sha512sum manually
-#Source1:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2.sig
+Source1:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Source3:        amdgpu.ids
 Patch1:         N_amdgpu-present-Check-tiling-for-newer-versions-too.patch
@@ -68,6 +67,9 @@ Its autodetects whether your hardware has a CI or newer AMD Graphics Card
 %patch1 -p1
 
 %build
+# We have some -z now related errors during X default startup (boo#1197994):
+# this is directly visible on startup, so easy to test later on.
+export SUSE_ZNOW=0
 autoreconf -fiv
 %configure
 %make_build
