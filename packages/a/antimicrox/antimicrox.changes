@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Apr 25 04:35:29 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.2.3
+  - Fixed bug: auto profile not saved when exe path is not defined
+  - Added missing license for SDL_GameControllerDB
+  - Many updates in translations:
+    - Added Finnish translation by heidiwenger
+    - Added Norwegian Bokmål translation bu comradekingu
+    - Updated German, French, Italian and Polish translations
+    - update translation files
+  - Always show battery level in joystick status window
+    (even when unknown)
+  - Multiple refactors and cleanups removing deprecated code
+- Add License Zlib: missing license for SDL_GameControllerDB
+
+-------------------------------------------------------------------
 Fri Feb 25 17:21:12 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.2.2
