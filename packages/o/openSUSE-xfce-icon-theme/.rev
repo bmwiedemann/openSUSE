@@ -42,4 +42,27 @@
     <comment></comment>
     <requestid>961774</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>87a495f77c4bc1f84ea7927f5a3afa35</srcmd5>
+    <version>4.16.1+git.6.2345514</version>
+    <time>1652634065</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.16.1+git.6.2345514:
+  * Added new home and education icons
+  * Included temporary fix for trash icon alpha
+- Remove deprecated macros from spec
+- Update Upstream URL
+- Update to version 4.16.1+git5.e82fd05:
+  * Remove unused entries (boo#1183828)
+- Update to version 4.16.1+git4.47431fc:
+  * Add temporary fix for missing file-roller icon
+- Update to version 4.16.1+git3.8e4f919:
+  * Several icon improvements
+- Update to version 4.16.1+git2.9271140:
+  * Added category icons
+- Update to version 4.16.1+git0.6fe51ec:
+  * Added missing icon for package-update-indicator
+- Version 4.16.0 Initial package (forwarded request 977328 from mauriziogalli)</comment>
+    <requestid>977334</requestid>
+  </revision>
 </revisionlist>

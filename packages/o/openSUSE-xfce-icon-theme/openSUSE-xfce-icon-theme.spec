@@ -18,7 +18,7 @@
 
 %define theme_name openSUSE-Xfce
 Name:           openSUSE-xfce-icon-theme
-Version:        4.16.1+git.5.e82fd05
+Version:        4.16.1+git.6.2345514
 Release:        0
 Summary:        openSUSE Xfce Default Icon Theme
 License:        GPL-2.0-only
