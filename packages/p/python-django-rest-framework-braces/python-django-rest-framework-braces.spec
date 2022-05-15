@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-rest-framework-braces
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/dealertrack/django-rest-framework-braces
 Source:         https://files.pythonhosted.org/packages/source/d/django-rest-framework-braces/django-rest-framework-braces-%{version}.tar.gz
+Patch0:         pr_34.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -52,6 +53,9 @@ Collection of utilities for working with Django REST Framework (DRF).
 
 %prep
 %setup -q -n django-rest-framework-braces-%{version}
+%patch0 -p1
+sed -i 's/from collections import Mapping/from collections.abc import Mapping/' drf_braces/renderers.py
+
 sed -i '/argparse/d' setup.* requirements*
 sed -i '/\.admin/d' tests/settings.py
 
@@ -71,6 +75,6 @@ export DJANGO_SETTINGS_MODULE=tests.settings
 %files %{python_files}
 %doc AUTHORS.rst README.rst
 %license LICENSE.rst
-%{python_sitelib}/*
+%{python_sitelib}/*braces*/
 
 %changelog
