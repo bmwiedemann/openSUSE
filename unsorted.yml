@@ -10155,6 +10155,7 @@ unsorted:
   - libbz2-devel-32bit: [x86_64] 
   - libbzrtp0 
   - libbzrtp0-32bit: [x86_64] 
+  - libc4core0_1_8 
   - libcaca-devel 
   - libcaca-ruby 
   - libcaca0-32bit: [x86_64] 
@@ -11856,6 +11857,7 @@ unsorted:
   - libjbig2dec0 
   - libjbig2dec0-32bit: [x86_64] 
   - libjcat-devel 
+  - libjemalloc2 
   - libjim0_75 
   - libjitterentropy3 
   - libjitterentropy3-32bit: [x86_64] 
@@ -13777,6 +13779,7 @@ unsorted:
   - librygel-renderer-2_6-2 
   - librygel-renderer-gst-2_6-2 
   - librygel-ruih-2_0-1 
+  - libryml0_4_1 
   - libs3-4 
   - libs3-devel 
   - libs3-tools 
@@ -14597,6 +14600,7 @@ unsorted:
   - libvdpau_radeonsi-32bit: [x86_64] 
   - libvdpau_trace1 
   - libvdpau_trace1-32bit: [x86_64] 
+  - libvdpau_va_gl1 
   - libvdpau_va_gl1-32bit: [x86_64] 
   - libventrilo3-0 
   - libventrilo3-devel 
@@ -22920,6 +22924,7 @@ unsorted:
   - python310-django-nine 
   - python310-django-oauth-toolkit 
   - python310-django-oidc-provider 
+  - python310-django-opentracing 
   - python310-django-oscar 
   - python310-django-pandas 
   - python310-django-parler 
@@ -22934,6 +22939,7 @@ unsorted:
   - python310-django-redis 
   - python310-django-registration 
   - python310-django-request 
+  - python310-django-rest-framework-braces 
   - python310-django-rest-framework-client 
   - python310-django-rest-framework-social-oauth2 
   - python310-django-rest-invitations 
@@ -22948,6 +22954,7 @@ unsorted:
   - python310-django-storages 
   - python310-django-tables2 
   - python310-django-tagging 
+  - python310-django-tagulous 
   - python310-django-tastypie 
   - python310-django-timezone-field 
   - python310-django-treebeard 
@@ -26091,6 +26098,7 @@ unsorted:
   - python38-django-nine 
   - python38-django-oauth-toolkit 
   - python38-django-oidc-provider 
+  - python38-django-opentracing 
   - python38-django-oscar 
   - python38-django-pandas 
   - python38-django-parler 
@@ -26120,6 +26128,7 @@ unsorted:
   - python38-django-storages 
   - python38-django-tables2 
   - python38-django-tagging 
+  - python38-django-tagulous 
   - python38-django-tastypie 
   - python38-django-timezone-field 
   - python38-django-treebeard 
@@ -29153,6 +29162,7 @@ unsorted:
   - python39-django-nine 
   - python39-django-oauth-toolkit 
   - python39-django-oidc-provider 
+  - python39-django-opentracing 
   - python39-django-oscar 
   - python39-django-parler 
   - python39-django-perf-rec 
@@ -29181,6 +29191,7 @@ unsorted:
   - python39-django-storages 
   - python39-django-tables2 
   - python39-django-tagging 
+  - python39-django-tagulous 
   - python39-django-tastypie 
   - python39-django-timezone-field 
   - python39-django-treebeard 
@@ -31972,6 +31983,7 @@ unsorted:
   - rapid-photo-downloader 
   - rapid-photo-downloader-lang 
   - rapidjson-devel 
+  - rapidyaml-devel 
   - raptor 
   - rasdaemon 
   - rash 
@@ -32109,7 +32121,6 @@ unsorted:
   - retro-gtk-devel 
   - retroarch 
   - retroarch-assets 
-  - retroarch-joypad-autoconfig 
   - reuse 
   - revelation 
   - revelation-lang 
