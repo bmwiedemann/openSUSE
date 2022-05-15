@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May 06 15:37:46 UTC 2022 - michael@stroeder.com
+
+- Update to version 0.5.4:
+  * Fix username check when a token is present.
+  * Improve the performance of AES in CTR mode.
+  * Tweak detection of keyframes with H.264.
+
+-------------------------------------------------------------------
+Mon Apr 25 14:58:48 UTC 2022 - michael@stroeder.com
+
+- Update to version 0.5.3:
+  * Remove a forgotten "replace" that prevented 0.5.2 from compiling
+    unless "pion/ice" was downloaded manually.
+  * Fix a race condition in the rate estimator.
+  * Update pion/ice to a version that handles aggressive nomination; this
+    avoids broken connection in some (fairly rare) cases.
+
+-------------------------------------------------------------------
 Wed Apr 20 18:13:56 UTC 2022 - michael@stroeder.com
 
 - Update to version 0.5.2:
