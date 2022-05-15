@@ -18,10 +18,10 @@
 
 %define _name   linphone
 Name:           linphoneqt
-Version:        4.3.2
+Version:        4.4.1
 Release:        0
 Summary:        Qt interface for Linphone
-License:        GPL-3.0-only
+License:        GPL-3.0-or-later
 Group:          Productivity/Telephony/SIP/Clients
 URL:            https://linphone.org/technical-corner/linphone
 Source:         https://gitlab.linphone.org/BC/public/linphone-desktop/-/archive/%{version}/%{_name}-desktop-%{version}.tar.bz2
@@ -85,10 +85,10 @@ echo '#define LINPHONE_QT_GIT_VERSION "${PROJECT_VERSION}"' >> linphone-app/src/
 echo "project(linphoneqt VERSION %{version})" > linphone-app/linphoneqt_version.cmake
 
 %build
-sed -i '/^add_custom_command/s@${CMAKE_INSTALL_PREFIX}/include/@%{buildroot}%{_includedir}/@;/^add_custom_command/s@${CMAKE_INSTALL_PREFIX}/lib/@%{buildroot}%{_libdir}/@' linphone-app/CMakeLists.txt
-#fix install error for 4.3.2
-if [[ %version = 4.3.2 ]]; then
-    sed -i '/install(DIRECTORY.*linphone/d' linphone-app/cmake_builder/linphone_package/CMakeLists.txt
+if [[ %version = 4.4.? ]]; then
+    sed -i '/^add_custom_command/s@${CMAKE_INSTALL_PREFIX}/include/@%{buildroot}%{_includedir}/@;/^add_custom_command/s@${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/@%{buildroot}%{_libdir}/@' linphone-app/CMakeLists.txt
+    sed -i '/\/ui/s@${qml_dir}@${CMAKE_CURRENT_SOURCE_DIR}/../&@' linphone-app/cmake_builder/linphone_package/CMakeLists.txt
+    mkdir -p build/linphone-sdk/desktop/share/{,sounds}/linphone
 fi
 %cmake \
   -DCMAKE_CXX_FLAGS="-fpermissive" \

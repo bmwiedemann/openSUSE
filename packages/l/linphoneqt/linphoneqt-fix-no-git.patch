@@ -11,7 +11,7 @@
 --- a/linphone-app/src/app/AppController.cpp
 +++ b/linphone-app/src/app/AppController.cpp
 @@ -26,6 +26,10 @@
- #include "config.h"
+ 
  #include "gitversion.h"
  
 +#ifdef LINPHONE_QT_GIT_VERSION
@@ -22,14 +22,14 @@
  
  #include "components/other/desktop-tools/DesktopTools.hpp"
 @@ -52,7 +56,7 @@ AppController::AppController (int &argc,
-   // The EXECUTABLE_NAME will be used in qt standard paths. It's our goal.
-   QCoreApplication::setApplicationName(EXECUTABLE_NAME);
-   QApplication::setOrganizationDomain(EXECUTABLE_NAME);
--  QCoreApplication::setApplicationVersion(LINPHONE_QT_GIT_VERSION);
-+  QCoreApplication::setApplicationVersion(APPLICATION_VERSION);
- 
-   mApp = new App(argc, argv);
-   
+ 	// The EXECUTABLE_NAME will be used in qt standard paths. It's our goal.
+ 	QCoreApplication::setApplicationName(EXECUTABLE_NAME);
+ 	QApplication::setOrganizationDomain(EXECUTABLE_NAME);
+-	QCoreApplication::setApplicationVersion(LINPHONE_QT_GIT_VERSION);
++	QCoreApplication::setApplicationVersion(APPLICATION_VERSION);
+ #ifdef ENABLE_APP_WEBVIEW
+ #if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
+ 	mApp = new App(argc, argv);
 --- a/linphone-app/src/config.h.cmake
 +++ b/linphone-app/src/config.h.cmake
 @@ -23,6 +23,7 @@
