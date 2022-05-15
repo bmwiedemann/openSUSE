@@ -1,0 +1,5 @@
+<package name="rapidyaml" project="openSUSE:Factory">
+  <title>Rapid YAML</title>
+  <description>Or ryml, for short. ryml is a C++ library to parse and emit YAML, and do it fast, on everything from x64 to bare-metal chips without operating system. (If you are looking to use your programs with a YAML tree as a configuration tree with override facilities, take a look at c4conf).</description>
+  <devel project="devel:libraries:c_c++" package="rapidyaml"/>
+</package>
