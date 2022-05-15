@@ -1,7 +1,7 @@
 #
 # spec file for package libvdpau-va-gl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,7 +53,7 @@ available) to accelerate video decoding.
 %package -n %{soname}%{sover}
 Summary:        VDPAU driver with OpenGL/VAAPI backend
 Group:          System/Libraries
-Supplements:    xf86-video-intel
+Supplements:    modalias(pci:v00008086d*sv*sd*bc03sc*i*)
 Provides:       %{soname} = %{version}
 
 %description -n %{soname}%{sover}

@@ -72,4 +72,12 @@
   /usr/etc/profiles.d on TW (boo#1173040)</comment>
     <requestid>830259</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>8bf85ae3a5cfc3eee22c8f7911835822</srcmd5>
+    <version>0.4.2</version>
+    <time>1652628406</time>
+    <user>dimstar_suse</user>
+    <comment>- move to hardware supplements</comment>
+    <requestid>977272</requestid>
+  </revision>
 </revisionlist>
