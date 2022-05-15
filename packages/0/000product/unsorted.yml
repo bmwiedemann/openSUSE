@@ -15300,7 +15300,7 @@ unsorted:
   - lldb13: [x86_64] 
   - lldb13-devel: [x86_64] 
   - lldb14: [x86_64] 
-  - lldb14-devel: [x86_64] # devel package of dvd:clang-tools 
+  - lldb14-devel: [x86_64] # devel package of dvd:libLLVM14 
   - lldb7: [x86_64] 
   - lldb7-devel: [x86_64] 
   - lldb9: [x86_64] 
@@ -20969,7 +20969,6 @@ unsorted:
   - postgresql-docs 
   - postgresql-jdbc 
   - postgresql-jdbc-javadoc 
-  - postgresql-llvmjit 
   - postgresql-llvmjit-devel 
   - postgresql-plperl 
   - postgresql-plpython 
@@ -21057,7 +21056,6 @@ unsorted:
   - postgresql14-devel 
   - postgresql14-devel-mini 
   - postgresql14-docs 
-  - postgresql14-llvmjit 
   - postgresql14-llvmjit-devel 
   - postgresql14-pg_cron 
   - postgresql14-pgagent 
@@ -21665,8 +21663,6 @@ unsorted:
   - python3-gmconfig 
   - python3-gmsh 
   - python3-gnucash 
-  - python3-gobject2 
-  - python3-gobject2-devel 
   - python3-gom 
   - python3-gpiod 
   - python3-gpsd 
