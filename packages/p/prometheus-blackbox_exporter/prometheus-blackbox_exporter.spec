@@ -1,7 +1,7 @@
 #
 # spec file for package prometheus-blackbox_exporter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,8 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 %if 0%{?rhel} == 8
 %global debug_package %{nil}
 %endif
@@ -36,8 +38,8 @@ Source2:        prometheus-blackbox_exporter.service
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 %if 0%{?rhel}
-BuildRequires:  libcap
 BuildRequires:  golang >= 1.14
+BuildRequires:  libcap
 %else
 BuildRequires:  libcap-progs
 BuildRequires:  golang(API) >= 1.14
@@ -70,13 +72,12 @@ install -D -m0644 %{_builddir}/blackbox_exporter-%{version}/blackbox.yml %{build
 rm -f %{buildroot}/usr/lib/debug/%{_bindir}/blackbox_exporter-%{version}-*.debug
 
 %pre
-%if 0%{?suse_version}
-%service_add_pre %{name}.service
-%endif
 %if 0%{?rhel}
 %define serviceuser   prometheus
 getent group %{serviceuser} >/dev/null || %{_sbindir}/groupadd -r %{serviceuser}
 getent passwd %{serviceuser} >/dev/null || %{_sbindir}/useradd -r -g %{serviceuser} -d %{_localstatedir}/lib/%{serviceuser} -M -s /sbin/nologin %{serviceuser}
+%else
+%service_add_pre %{name}.service
 %endif
 
 %post
