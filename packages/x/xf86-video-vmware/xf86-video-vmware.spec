@@ -54,6 +54,9 @@ vmware is an Xorg driver for VMware virtual video cards.
 %autosetup -p1
 
 %build
+# We have some -z now related errors during X default startup (boo#1197994):
+# this is directly visible on startup, so easy to test later on.
+export SUSE_ZNOW=0
 NOCONFIGURE=1 ./autogen.sh
 %configure
 %make_build

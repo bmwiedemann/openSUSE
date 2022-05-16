@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May 14 17:40:52 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- set SUSE_ZNOW to 0 (boo#1197994)
+
+-------------------------------------------------------------------
 Wed Feb 23 09:26:07 UTC 2022 - bjorn.lie@gmail.com
 
 - Update to version 13.3.0+12:

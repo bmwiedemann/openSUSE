@@ -260,4 +260,12 @@
     <comment></comment>
     <requestid>957024</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>d6826451624fc9ed4664e83b8e6aa66b</srcmd5>
+    <version>13.3.0+12</version>
+    <time>1652717258</time>
+    <user>dimstar_suse</user>
+    <comment>- set SUSE_ZNOW to 0 (boo#1197994)</comment>
+    <requestid>977264</requestid>
+  </revision>
 </revisionlist>
