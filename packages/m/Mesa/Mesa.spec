@@ -599,7 +599,7 @@ This package contains the VDPAU state tracker for Nouveau.
 %package -n libvdpau_r300
 Summary:        XVMC state tracker for R300
 Group:          System/Libraries
-Supplements:    xf86-video-ati
+Supplements:    modalias(pci:v00001002d*sv*sd*bc03sc*i*)
 
 %description -n libvdpau_r300
 This package contains the VDPAU state tracker for R300.
@@ -607,7 +607,7 @@ This package contains the VDPAU state tracker for R300.
 %package -n libvdpau_r600
 Summary:        XVMC state tracker for R600
 Group:          System/Libraries
-Supplements:    xf86-video-ati
+Supplements:    modalias(pci:v00001002d*sv*sd*bc03sc*i*)
 
 %description -n libvdpau_r600
 This package contains the VDPAU state tracker for R600.
@@ -615,7 +615,7 @@ This package contains the VDPAU state tracker for R600.
 %package -n libvdpau_radeonsi
 Summary:        XVMC state tracker for radeonsi
 Group:          System/Libraries
-Supplements:    xf86-video-ati
+Supplements:    modalias(pci:v00001002d*sv*sd*bc03sc*i*)
 
 %description -n libvdpau_radeonsi
 This package contains the VDPAU state tracker for radeonsi.

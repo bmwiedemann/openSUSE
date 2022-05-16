@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 14 20:51:44 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- autoselect libvdpau_r300/libvdpau_r600/libvdpau_radeonsi packages
+  via hardware supplements on AMD GPUs
+
+-------------------------------------------------------------------
 Thu May  5 08:13:13 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 22.0.3

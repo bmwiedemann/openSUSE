@@ -4841,4 +4841,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     architecture (bsc#1199040)</comment>
     <requestid>975094</requestid>
   </revision>
+  <revision rev="438" vrev="310">
+    <srcmd5>e446d2b1d9bbffcb37fc78ed4b43c3a4</srcmd5>
+    <version>unknown</version>
+    <time>1652717259</time>
+    <user>dimstar_suse</user>
+    <comment>- autoselect libvdpau_r300/libvdpau_r600/libvdpau_radeonsi packages
+  via hardware supplements on AMD GPUs</comment>
+    <requestid>977269</requestid>
+  </revision>
 </revisionlist>
