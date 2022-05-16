@@ -1,7 +1,7 @@
 #
 # spec file for package cryptctl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,13 @@
 %endif
 
 Name:           cryptctl
-Version:        2.3
+Version:        2.4
 Release:        0
 Summary:        A utility for setting up LUKS-based disk encryption
 License:        GPL-3.0-only
 Group:          System/Management
 URL:            https://www.suse.com/products/sles-for-sap
-Source0:        %{name}-%{version}.tgz
+Source0:        %{name}.tar.xz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  go
 BuildRequires:  pkgconfig(systemd)
@@ -42,8 +42,7 @@ Requires:       xfsprogs
 ExclusiveArch:  x86_64 ppc64le
 %{?systemd_requires}
 
-%define GONS github.com/HouzuoGuo
-%define SRCDIR  src/%{GONS}/%{name}
+%define SRCDIR  src/github.com/SUSE
 
 %description
 A disk encryption utility that helps setting up LUKS-based disk encryption using
@@ -56,13 +55,13 @@ tar xf %{S:0}
 
 %build
 export GOPATH=$(pwd)
-cd %{SRCDIR}
+cd %{SRCDIR}/%{name}
 gzip ospackage/man/cryptctl.8
 go mod init
 go build -buildmode=pie
 
 %install
-cd %{SRCDIR}
+cd %{SRCDIR}/%{name}
 mkdir -p %{buildroot}/%{_sbindir}
 install -m 0755 %{name} %{buildroot}/%{_sbindir}/
 
@@ -119,6 +118,6 @@ install -d -m 0700 %{buildroot}/%{_sysconfdir}/%{name}/servertls
 %{_unitdir}/cryptctl-client.service
 %{_unitdir}/cryptctl-auto-unlock@.service
 %{_udevrulesdir}/99-cryptctl-auto-unlock.rules
-%doc %{SRCDIR}/LICENSE
+%doc %{SRCDIR}/%{name}/LICENSE
 
 %changelog

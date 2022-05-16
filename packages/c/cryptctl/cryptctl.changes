@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May  9 16:55:47 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- Update to version 2.4:
+  * (bsc#1186226) - (CVE-2019-18906) client side password hashing is equivalent to clear text password storage
+  * Fix authentication on all places.
+  * Fix sysconfig variable name.
+  * First step to use plain text password instead of hashed password.
+  * Move repository into the SUSE github organization
+  * decorate readme with more usage instructions
+  * in RPC server, if client comes from localhost, remember its ipv4 localhost address instead of ipv6 address
+  * Test clear expired commands in TestDB_UpdateSeenFlag
+  * tell a record to clear expired pending commands upon saving a command result; introduce pending commands RPC test case
+  * avoid hard coding 127.0.0.1 in host ID of alive message test; let system administrator mount and unmount disks by issuing these two commands on key server. 
+
+-------------------------------------------------------------------
 Wed Jul 21 16:02:08 UTC 2021 - Paolo Perego <paolo.perego@suse.com>
 
 - Fixed build errors adding a "go mod init"

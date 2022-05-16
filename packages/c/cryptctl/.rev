@@ -194,4 +194,12 @@ Index: cryptctl.changes
   Implement fate#320367. (forwarded request 907570 from pperego)</comment>
     <requestid>907695</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9da6571981774e33c20cff5c5b1f40be</srcmd5>
+    <version>2.4</version>
+    <time>1652717324</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977474</requestid>
+  </revision>
 </revisionlist>
