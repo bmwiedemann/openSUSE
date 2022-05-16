@@ -1,7 +1,7 @@
 #
 # spec file for package nut
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,10 @@
 #
 
 
-%define CGIPATH		%{apache_serverroot}/cgi-bin
-%define HTMLPATH	%{apache_serverroot}/htdocs
+%bcond_with texdoc
+
+%define CGIPATH		%{apache_serverroot}/cgi-bin/nut
+%define HTMLPATH	%{apache_serverroot}/htdocs/nut
 %define MODELPATH	%{_libexecdir}/ups/driver
 %define STATEPATH	%{_localstatedir}/lib/ups
 %define CONFPATH	%{_sysconfdir}/ups
@@ -98,13 +100,6 @@ Supplements:    %{USBNONHIDDRIVERS}
 Provides:       nut-classic = %{version}
 Obsoletes:      nut-classic < %{version}
 Obsoletes:      nut-hal < %{version}
-# Obsolete all the docu stuff with now disabled tex dependency
-Obsoletes:      %{name}-devel-doc-html
-Obsoletes:      %{name}-devel-doc-pdf
-Obsoletes:      %{name}-doc-asciidoc
-Obsoletes:      %{name}-doc-html
-Obsoletes:      %{name}-doc-images
-Obsoletes:      %{name}-doc-pdf
 %{?systemd_requires}
 BuildRequires:  pkgconfig(bash-completion)
 %ifarch %{ix86} x86_64 ia64
@@ -112,6 +107,13 @@ BuildRequires:  pkgconfig(libfreeipmi)
 %endif
 %if 0%{?suse_version} >= 1500
 Requires(pre):  user(upsd)
+%endif
+%if %{with texdoc}
+BuildRequires:  asciidoc-latex-backend
+%else
+# Obsolete all the docu stuff with disabled tex dependencies
+Obsoletes:      %{name}-devel-doc-pdf <= %{version}
+Obsoletes:      %{name}-doc-pdf <= %{version}
 %endif
 
 %description
@@ -133,11 +135,34 @@ together with nut to provide UPS networking support.
 Network UPS Tools is a collection of programs which provide a common
 interface for monitoring and administering UPS hardware.
 
-%package -n libupsclient1
+%package -n libnutclient0
 Summary:        Network UPS Tools Library (Uninterruptible Power Supply Monitoring)
 Group:          System/Libraries
+Conflicts:      libupsclient1
 
-%description -n libupsclient1
+%description -n libnutclient0
+Shared library for the Network UPS Tools.
+
+Network UPS Tools is a collection of programs which provide a common
+interface for monitoring and administering UPS hardware.
+
+%package -n libnutscan1
+Summary:        Network UPS Tools Library (Uninterruptible Power Supply Monitoring)
+Group:          System/Libraries
+Conflicts:      libupsclient1
+
+%description -n libnutscan1
+Shared library for the Network UPS Tools.
+
+Network UPS Tools is a collection of programs which provide a common
+interface for monitoring and administering UPS hardware.
+
+%package -n libupsclient4
+Summary:        Network UPS Tools Library (Uninterruptible Power Supply Monitoring)
+Group:          System/Libraries
+Conflicts:      libupsclient1
+
+%description -n libupsclient4
 Shared library for the Network UPS Tools.
 
 Network UPS Tools is a collection of programs which provide a common
@@ -161,12 +186,102 @@ interface for monitoring and administering UPS hardware.
 %package devel
 Summary:        Network UPS Tools (Uninterruptible Power Supply Monitoring)
 Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
+Requires:       libnutclient0 = %{version}-%{release}
+Requires:       libnutscan1 = %{version}-%{release}
+Requires:       libupsclient4 = %{version}-%{release}
 Requires:       openssl-devel
 
 %description devel
 Network UPS Tools is a collection of programs which provide a common
 interface for monitoring and administering UPS hardware.
+
+%package doc-asciidoc
+Summary:        Network UPS Tools - Documentation in AsciiDoc Format
+Group:          Documentation/Other
+Requires:       %{name}-doc-images = %{version}
+Recommends:     %{name} = %{version}
+Enhances:       %{name}
+BuildArch:      noarch
+
+%description doc-asciidoc
+NUT manuals in AsciiDoc format (human readable source).
+
+Network UPS Tools is a collection of programs which provide a common
+interface for monitoring and administering UPS hardware.
+
+%package devel-doc-html
+Summary:        Network UPS Tools - Documentation in HTML
+# For CSS files:
+Group:          Documentation/HTML
+Requires:       %{name}-doc-html = %{version}
+Requires:       %{name}-doc-images = %{version}
+Recommends:     %{name} = %{version}
+Enhances:       %{name}
+BuildArch:      noarch
+
+%description devel-doc-html
+Developer manual in HTML format.
+
+Network UPS Tools is a collection of programs which provide a common
+interface for monitoring and administering UPS hardware.
+
+%package doc-html
+Summary:        Network UPS Tools - Documentation in HTML
+Group:          Documentation/HTML
+Requires:       %{name}-doc-images = %{version}
+Recommends:     %{name} = %{version}
+Enhances:       %{name}
+BuildArch:      noarch
+
+%description doc-html
+User manual in HTML format.
+
+Network UPS Tools is a collection of programs which provide a common
+interface for monitoring and administering UPS hardware.
+
+%package doc-images
+Summary:        Network UPS Tools - Images for Documentation
+Group:          Documentation/Other
+Requires:       %{name}-doc-images = %{version}
+Recommends:     %{name} = %{version}
+Enhances:       %{name}
+BuildArch:      noarch
+
+%description doc-images
+Images for the documentation. It is a supplementary package for some NUT
+documentation packages.
+
+Network UPS Tools is a collection of programs which provide a common
+interface for monitoring and administering UPS hardware.
+
+%if %{with texdoc}
+%package doc-pdf
+Summary:        Network UPS Tools - Documentation in PDF
+Group:          Documentation/Other
+Recommends:     %{name} = %{version}
+Enhances:       %{name}
+BuildArch:      noarch
+
+%description doc-pdf
+User manual in PDF format.
+
+Network UPS Tools is a collection of programs which provide a common
+interface for monitoring and administering UPS hardware.
+
+%package devel-doc-pdf
+Summary:        Network UPS Tools - Documentation in PDF
+Group:          Documentation/Other
+Recommends:     %{name} = %{version}
+Enhances:       %{name}
+BuildArch:      noarch
+
+%description devel-doc-pdf
+Developer manual in PDF format.
+
+Network UPS Tools is a collection of programs which provide a common
+interface for monitoring and administering UPS hardware.
+
+%endif
 
 %prep
 %setup -q
@@ -198,7 +313,11 @@ export CXXFLAGS="%{optflags} -std=gnu++14"
 	--sysconfdir=%{CONFPATH} \
 	--datadir=%{_datadir}/nut \
 	--with-all \
-	--without-doc \
+%if %{with texdoc}
+	--with-doc \
+%else
+	--with-doc="html-single html-chunked" \
+%endif
 	--with-ssl \
 	--with-openssl \
 	--without-nss \
@@ -237,13 +356,19 @@ rename .sample "" %{buildroot}%{_sysconfdir}/ups/*.sample
 install -d %{buildroot}/usr/lib/systemd/system-sleep
 install nut.system-sleep %{buildroot}/usr/lib/systemd/system-sleep/%{name}.sh
 
-# Rename web pages to not conflict with apache2-example-pages or user home page:
-mkdir %{buildroot}%{HTMLPATH}/nut %{buildroot}%{CGIPATH}/nut
-mv %{buildroot}%{HTMLPATH}/*.{html,png} %{buildroot}%{HTMLPATH}/nut/
-mv %{buildroot}%{CGIPATH}/*.cgi %{buildroot}%{CGIPATH}/nut
-
 mkdir -p %{buildroot}%{bashcompletionsdir}
 install -m0644 scripts/misc/nut.bash_completion %{buildroot}%{bashcompletionsdir}/nut
+
+# Documentation
+mkdir -p %{buildroot}%{_docdir}/%{name}
+cp -a docs/*.txt docs/cables docs/images %{buildroot}%{_docdir}/%{name}/
+cp -a docs/*.css docs/*.html %{buildroot}%{_docdir}/%{name}/
+%if %{with texdoc}
+cp -a docs/*.pdf %{buildroot}%{_docdir}/%{name}/
+%endif
+
+# Not needed for packaged contents:
+rm %{buildroot}%{_docdir}/%{name}/packager-guide.*
 
 # Create symlinks for man pages
 %fdupes -s %{buildroot}%{_mandir}
@@ -285,8 +410,12 @@ udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
 %postun
 %service_del_postun nut-driver.service nut-server.service nut-monitor.service
 
-%post -n libupsclient1 -p /sbin/ldconfig
-%postun -n libupsclient1 -p /sbin/ldconfig
+%post   -n libnutclient0 -p /sbin/ldconfig
+%postun -n libnutclient0 -p /sbin/ldconfig
+%post   -n libnutscan1 -p /sbin/ldconfig
+%postun -n libnutscan1 -p /sbin/ldconfig
+%post   -n libupsclient4 -p /sbin/ldconfig
+%postun -n libupsclient4 -p /sbin/ldconfig
 
 %files
 %doc AUTHORS ChangeLog MAINTAINERS NEWS README README.SUSE UPGRADING
@@ -326,12 +455,18 @@ udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
 %{_mandir}/man8/netxml-ups*%{ext_man}
 %{_mandir}/man8/snmp-ups*%{ext_man}
 
-%files -n libupsclient1
-%{_libdir}/*.so.*
+%files -n libnutclient0
+%{_libdir}/libnutclient.so.*
+
+%files -n libnutscan1
+%{_libdir}/libnutscan.so.*
+
+%files -n libupsclient4
+%{_libdir}/libupsclient.so.*
 
 %files cgi
-%{CGIPATH}/nut
-%{HTMLPATH}/nut
+%{CGIPATH}
+%{HTMLPATH}
 %config(noreplace) %{CONFPATH}/upsstats-single.html
 %config(noreplace) %{CONFPATH}/upsstats.html
 
@@ -340,5 +475,36 @@ udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_mandir}/man3/*%{ext_man}
+
+%files doc-asciidoc
+%doc %dir %{_docdir}/%{name}
+%{_docdir}/%{name}/*.txt
+%{_docdir}/%{name}/cables
+
+%files devel-doc-html
+%{_docdir}/%{name}/developer-guide.html
+
+%files doc-html
+%{_docdir}/%{name}/FAQ.html
+%{_docdir}/%{name}/cables.html
+%{_docdir}/%{name}/user-manual.html
+%{_docdir}/%{name}/*.css
+
+%files doc-images
+%doc %dir %{_docdir}/%{name}
+%{_docdir}/%{name}/images
+
+%if %{with texdoc}
+%files doc-pdf
+%doc %dir %{_docdir}/%{name}
+%{_docdir}/%{name}/FAQ.pdf
+%{_docdir}/%{name}/cables.pdf
+%{_docdir}/%{name}/user-manual.pdf
+
+%files devel-doc-pdf
+%doc %dir %{_docdir}/%{name}
+%{_docdir}/%{name}/developer-guide.pdf
+
+%endif
 
 %changelog

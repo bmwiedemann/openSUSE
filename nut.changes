@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 11 23:01:34 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
+
+- Build the basic documentation again (bsc#1197789#c7).
+- Make possible to build PDF documentation.
+
+-------------------------------------------------------------------
+Wed Apr 27 12:54:07 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve rpmlit reports
+  * libupsclient1.x86_64: E: shlib-policy-name-error SONAME:
+    libnutclient.so.0, expected package suffix: 0
+  * libupsclient1.x86_64: E: shlib-policy-name-error SONAME:
+    libupsclient.so.4, expected package suffix: 4
+
+-------------------------------------------------------------------
 Fri Dec 24 08:09:40 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use --with-pidpath to set PIDFile to /run in the service file and
