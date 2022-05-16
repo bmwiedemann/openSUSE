@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Apr 22 13:33:49 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.24.0:
+  + Support for kernel up to 5.16
+  + bcc tools: update for trace.py, sslsniff.py, tcptop.py, hardirqs.py, etc.
+  + new libbpf tools: bashreadline
+  + allow specify wakeup_events for perf buffer
+  + support BPF_MAP_TYPE_{INODE, TASK}_STORAGE maps
+  + remove all deprecated libbpf function usage
+  + remove P4/B language support
+  + major test infra change, using github actions now
+  + doc update, bug fixes and other tools improvement
+- Changes from version 0.23.0:
+  + Support for kernel up to 5.15
+  + bcc tools: update for kvmexit.py, tcpv4connect.py, cachetop.py, cachestat.py, etc.
+  + libbpf tools: update for update for mountsnoop, ksnoop, gethostlatency, etc.
+  + fix renaming of task_struct->state
+  + get pid namespace properly for a number of tools
+  + initial work for more libbpf utilization (less section names)
+  + doc update, bug fixes and other tools improvement
+- Drop Do-not-export-USDT-function-when-ENABLE_USDT-is-OFF.patch:
+  fixed upstream.
+
+-------------------------------------------------------------------
 Wed Feb 16 22:41:35 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Move kernel{,-devel} requirements to libbcc0 for deduplication.

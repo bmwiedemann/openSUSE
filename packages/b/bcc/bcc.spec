@@ -1,7 +1,7 @@
 #
 # spec file for package bcc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,15 +27,13 @@
 %endif
 
 Name:           bcc
-Version:        0.22.0
+Version:        0.24.0
 Release:        0
 Summary:        BPF Compiler Collection (BCC)
 License:        Apache-2.0
 Group:          Development/Tools/Other
 URL:            https://github.com/iovisor/bcc
 Source:         https://github.com/iovisor/bcc/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/iovisor/bcc/pull/3642
-Patch1:         Do-not-export-USDT-function-when-ENABLE_USDT-is-OFF.patch
 ExcludeArch:    ppc s390
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.7
@@ -136,7 +134,6 @@ Documentation on how to write programs with the BPF Compiler Collection.
 
 %prep
 %setup -q
-%autopatch -p1
 
 %build
 # Prevent the cpp examples from compilation and installation
