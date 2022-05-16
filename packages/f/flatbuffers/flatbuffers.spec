@@ -1,7 +1,7 @@
 #
 # spec file for package flatbuffers
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 %define   sonum 2
 Name:           flatbuffers
-Version:        2.0.0
+Version:        2.0.6
 Release:        0
 Summary:        Memory Efficient Serialization Library
 License:        Apache-2.0
@@ -85,7 +85,9 @@ mkdir -p %{buildroot}/%{_datadir}/cmake/Modules
 install -Dm0644 CMake/*FlatBuffers.cmake %{buildroot}%{_datadir}/cmake/Modules/
 
 %check
-%ctest
+# does not support out-of-tree builds, see https://github.com/google/flatbuffers/issues/7009
+#%%ctest
+%{__builddir}/flattests
 
 %post   -n libflatbuffers%{sonum} -p /sbin/ldconfig
 %postun -n libflatbuffers%{sonum} -p /sbin/ldconfig
