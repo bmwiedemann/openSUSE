@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue May 10 08:17:57 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.94.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.94.0
+- Changes since 5.93.0:
+  * Add QML API for the sun and moon computations
+  * restore deleted parts from merge
+  * New function for plasma to generate holidays without astro seasons (kde#445324)
+  * Correct version since added version
+  * Report intermediate lunar phases as well
+  * Add windows CI
+  * Spelling of test output corrected
+  * correct spelling mistake
+  * rearranged assignment of results to temp variable
+  * add tests to testfile
+  * typos, correct Version when fuction added
+  * add only overloaded function holidays
+  * remove debug messages
+  * rebuild parseHoliday with category
+  * Category added as parameter
+  * Add functions for holiday only
+  * Shift testfiles form 2010 to 2020
+  * Remove double entries and correct indian- national calendar (kde#441275)
+
+-------------------------------------------------------------------
 Sun Apr  3 10:47:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.93.0
