@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May  7 12:17:24 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- switch to https urls
+
+-------------------------------------------------------------------
 Mon Mar 21 14:50:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - drop reenable-nfsv2.patch (poo#106679) 

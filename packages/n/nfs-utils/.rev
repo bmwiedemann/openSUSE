@@ -1619,4 +1619,12 @@
     <comment>- drop reenable-nfsv2.patch (poo#106679)</comment>
     <requestid>963727</requestid>
   </revision>
+  <revision rev="170" vrev="31">
+    <srcmd5>a8f8a9c09324e74ba076153d2a74b2f8</srcmd5>
+    <version>unknown</version>
+    <time>1652717253</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>977244</requestid>
+  </revision>
 </revisionlist>

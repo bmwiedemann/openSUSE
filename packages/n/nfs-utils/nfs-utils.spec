@@ -27,8 +27,8 @@ Release:        0
 Summary:        Support Utilities for Kernel nfsd
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/NFS
-URL:            http://kernel.org/pub/linux/utils/nfs-utils/
-Source0:        http://kernel.org/pub/linux/utils/nfs-utils/%{version}/nfs-utils-%{version}.tar.xz
+URL:            https://kernel.org/pub/linux/utils/nfs-utils/
+Source0:        https://kernel.org/pub/linux/utils/nfs-utils/%{version}/nfs-utils-%{version}.tar.xz
 Source4:        sysconfig.nfs
 Source11:       idmapd.conf
 Source12:       statd-user.conf
