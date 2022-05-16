@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 16 09:27:21 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2022.5
+  See http://plantuml.com/de/changes for all changes
+  * Fix CVE-2022-1379 (bsc#1199557)
+- Update patch
+  * build-with-javac-utf8-encoding.patch
+
+-------------------------------------------------------------------
 Tue Apr 19 13:15:44 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2022.4
