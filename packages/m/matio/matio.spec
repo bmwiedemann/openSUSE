@@ -1,7 +1,7 @@
 #
 # spec file for package matio
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define libname lib%{name}
 %define major   11
 Name:           matio
-Version:        1.5.21
+Version:        1.5.23
 Release:        0
 Summary:        Library for reading and writing MATLAB MAT files
 License:        BSD-2-Clause
