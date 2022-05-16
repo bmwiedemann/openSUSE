@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun May 15 19:45:28 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 3.0.3:
+  * Fixed license.html being installed twice
+  * Partially worked around a libsword bug which limited download durations to
+    10 seconds
+  * Fixed bug which made it impossible to active toolbar buttons using keyboard
+  * Fixed some out-of-bounds memory read
+  * Fixed a number of input parsing and output generation errors, including
+    invalid memory reads
+  * Fixed search scopes not being properly translated
+  * Fixed version information in installed metadata files
+  * Updated translations
+
+-------------------------------------------------------------------
 Mon Aug 30 20:16:11 UTC 2021 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 3.0.2:

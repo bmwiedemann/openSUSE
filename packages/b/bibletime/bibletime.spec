@@ -1,7 +1,7 @@
 #
 # spec file for package bibletime
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012-2014 Lars Vogdt
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %global __requires_exclude qmlimport\\(BibleTime.*
 
 Name:           bibletime
-Version:        3.0.2
+Version:        3.0.3
 Release:        0
 Summary:        A Bible study tool
 License:        GPL-2.0-or-later
