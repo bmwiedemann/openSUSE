@@ -1,7 +1,7 @@
 #
 # spec file for package thunar-plugin-archive
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define plugin_name thunar-archive-plugin
 
 Name:           thunar-plugin-archive
-Url:            http://users.xfce.org/~benny/projects/thunar-archive-plugin/
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
-Source0:        http://archive.xfce.org/src/thunar-plugins/thunar-archive-plugin/0.4/%{plugin_name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM thunar-archive-plugin-0.3.0-fix-file-roller-extract-here.patch gber@opensuse.org -- Make file-roller really extract files to the current directory to match the behavior of xarchiver
-Patch0:         thunar-archive-plugin-0.3.0-fix-file-roller-extract-here.patch
+URL:            https://docs.xfce.org/xfce/thunar/archive
+Source0:        https://archive.xfce.org/src/thunar-plugins/%{plugin_name}/0.5/%{plugin_name}-%{version}.tar.bz2
 Summary:        Thunar Plugin Providing Integration with Archive Managers
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
@@ -36,7 +34,6 @@ Requires:       thunar >= 1.7.0
 Recommends:     %{name}-lang = %{version}
 Provides:       %{plugin_name} = %{version}
 Obsoletes:      %{plugin_name} < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The Thunar Archive Plugin allows for creating and extracting archive files
@@ -48,11 +45,10 @@ different archive managers.
 
 %prep
 %setup -q -n %{plugin_name}-%{version}
-%patch0 -p1
 
 %build
 %configure --disable-static
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install

@@ -127,4 +127,12 @@
     <comment>update to version 0.4.0 (forwarded request 617408 from seife)</comment>
     <requestid>617418</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>297d579ec4ab8c22b8b626bb9c444782</srcmd5>
+    <version>0.5.0</version>
+    <time>1652717270</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977336</requestid>
+  </revision>
 </revisionlist>

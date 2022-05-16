@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May 10 19:55:03 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.5.0
+  * Fix for ark (gxo#thunar-plugins/thunar-archive-plugin#g4)
+  * automake: INCLUDES -> AM_CPPFLAGS
+  * preserve callbacks in tap-provider
+  * remove GSpawnChildSetupFunc usage from tap_backend_run
+  * Adds new README.md
+  * updates AM_INIT_AUTOMAKE macro with foreign option
+  * Add basic GitLab pipeline
+  * Allow zip files (i.e. odt, docx...) to be compressed
+    (gxo#thunar-plugins/thunar-archive-plugin#g15295)
+  * Start archive application from file's directory
+    (gxo#thunar-plugins/thunar-archive-plugin#g14773)
+  * Replace AC_PROG_LIBTOOL with IT_PROG_INTLTOOL
+  * Add support for archive manager for MATE
+  * Translation Updates
+- Remove thunar-archive-plugin-0.3.0-fix-file-roller-extract-here.patch
+
+-------------------------------------------------------------------
 Fri Jun 15 09:44:57 UTC 2018 - seife+obs@b1-systems.com
 
 - update to version 0.4.0
