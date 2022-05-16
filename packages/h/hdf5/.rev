@@ -761,4 +761,12 @@ fixed baselibs.conf compared to previous version</comment>
   of h5repack_filters.c (bsc#1109566) (forwarded request 975081 from eeich)</comment>
     <requestid>975082</requestid>
   </revision>
+  <revision rev="77" vrev="5">
+    <srcmd5>ba7014de9d51bb6b7c022c7fb5d331ea</srcmd5>
+    <version>1.10.8</version>
+    <time>1652717225</time>
+    <user>dimstar_suse</user>
+    <comment>- set higher constraints for succesfull mpich tests (boo#1133222)</comment>
+    <requestid>977433</requestid>
+  </revision>
 </revisionlist>
