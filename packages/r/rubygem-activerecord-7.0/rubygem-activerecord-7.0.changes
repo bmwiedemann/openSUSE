@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sun May 15 15:19:24 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 7.0.3
+
+  *   Some internal housekeeping on reloads could break custom `respond_to?`
+      methods in class objects that referenced reloadable constants. See
+      [#44125](https://github.com/rails/rails/issues/44125) for details.
+
+      *Xavier Noria*
+
+  *   Fixed MariaDB default function support.
+
+      Defaults would be written wrong in "db/schema.rb" and not work correctly
+      if using `db:schema:load`. Further more the function name would be
+      added as string content when saving new records.
+
+      *kaspernj*
+
+  *   Fix `remove_foreign_key` with `:if_exists` option when foreign key actually exists.
+
+      *fatkodima*
+
+  *   Remove `--no-comments` flag in structure dumps for PostgreSQL
+
+      This broke some apps that used custom schema comments. If you don't want
+      comments in your structure dump, you can use:
+
+      ```ruby
+      ActiveRecord::Tasks::DatabaseTasks.structure_dump_flags = ['--no-comments']
+      ```
+
+      *Alex Ghiculescu*
+
+  *   Use the model name as a prefix when filtering encrypted attributes from logs.
+
+      For example, when encrypting `Person#name` it will add `person.name` as a filter
+      parameter, instead of just `name`. This prevents unintended filtering of parameters
+      with a matching name in other models.
+
+      *Jorge Manrubia*
+
+  *   Fix quoting of `ActiveSupport::Duration` and `Rational` numbers in the MySQL adapter.
+
+      *Kevin McPhillips*
+
+  *   Fix `change_column_comment` to preserve column's AUTO_INCREMENT in the MySQL adapter
+
+      *fatkodima*
+
+-------------------------------------------------------------------
 Thu Apr 28 05:14:19 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 7.0.2.4
