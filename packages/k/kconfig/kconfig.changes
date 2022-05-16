@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 10 08:17:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.94.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.94.0
+- Changes since 5.93.0:
+  * KConfigGroup: fix writePathEntry/readPathEntry roundtrip for symlinks
+  * autotests: skip KStandardShortcutWatcherTest on Windows
+  * Support storing QUuid
+  * Add windows CI
+
+-------------------------------------------------------------------
 Sun Apr  3 10:47:03 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.93.0
