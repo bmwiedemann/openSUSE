@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5GuiAddons5
-%define _tar_path 5.93
+%define _tar_path 5.94
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           kguiaddons
-Version:        5.93.0
+Version:        5.94.0
 Release:        0
 Summary:        Utilities for graphical user interfaces
 License:        LGPL-2.1-or-later
@@ -46,6 +46,7 @@ BuildRequires:  cmake(Qt5Test) >= 5.15.0
 BuildRequires:  cmake(Qt5WaylandClient) >= 5.15.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
 BuildRequires:  cmake(Qt5X11Extras) >= 5.15.0
+BuildRequires:  cmake(PlasmaWaylandProtocols)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
@@ -101,11 +102,7 @@ of colors, fonts, text, images, keyboard input. Development files.
 %files -n %{lname}
 %license LICENSES/*
 %doc README*
-%dir %{_kf5_plugindir}/kf5/
-%dir %{_kf5_plugindir}/kf5/kguiaddons
-%dir %{_kf5_plugindir}/kf5/kguiaddons/kmodifierkey
 %{_kf5_libdir}/libKF5GuiAddons.so.*
-%{_kf5_plugindir}/kf5/kguiaddons/kmodifierkey/kmodifierkey_xcb.so
 %{_kf5_debugdir}/kguiaddons.categories
 
 %files devel
