@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 10 08:18:00 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.94.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.94.0
+- Too many changes since 5.93.0, only listing bugfixes:
+  * KFileWidget: allow icon sizes to go up to 512 (kde#452139)
+  * dropjob: Extract Ark data in ctor (kde#453390)
+  * Don't put job/ioworker on hold after getting the mimetype (kde#452729)
+  * [KUrlNavigatorPlacesSelector] Do storage setup also when requesting a new tab (kde#452923)
+  * KFilePlacesView: use animations only if QStyle::SH_Widget_Animation_Duration > 0 (kde#448802)
+  * KUrlNavigator: offer open in new window action too (kde#451809)
+
+-------------------------------------------------------------------
 Sun Apr  3 10:47:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.93.0
