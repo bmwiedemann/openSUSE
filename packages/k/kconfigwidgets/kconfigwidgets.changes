@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue May 10 08:17:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.94.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.94.0
+- Changes since 5.93.0:
+  * KCommandBar: remove installed event filter in destructor (kde#452527)
+  * [kcolorschememanager] Rework and improve auto theme switching (kde#452091)
+  * [kcolorschememanager] Pass explicit role to data()
+  * [kcolorschememanager] Use bespoke role names instead of generic Qt ones
+  * [kcolorschememanager] Rename method call that was missed before
+  * [kcolorschememanager] Rename method for clarity
+  * [kcolorschememanager] Don't save colors on application start
+  * fix: KRecentFilesAction saveEntries and loadEntries use the correct group when no group is passed
+  * Move kstatefulbrush implementation to its own file
+  * More conventional memory managment for KStatefulBrushPrivate
+  * Add windows CI
+  * Fix copy and paste mistake
+  * Fix finding data for KLanguageNameTest on Windows
+  * Add move constructor and assignment operator for KColorScheme
+  * Default copy constructor, assignment operator and destructor
+  * Make it clear that KStandardAction::name gives you ascii
+
+-------------------------------------------------------------------
 Sun Apr  3 10:47:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.93.0
