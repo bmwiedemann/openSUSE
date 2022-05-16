@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun May 15 15:40:12 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.18.0
+
+  ### Features
+
+  * Allow CSS property `aspect-ratio`. [[#236](https://github.com/flavorjones/loofah/issues/236)] (Thanks, [@louim](https://github.com/louim)!)
+
+  ## 2.17.0 / 2022-04-28
+
+  ### Features
+
+  * Allow ARIA attributes. [[#232](https://github.com/flavorjones/loofah/issues/232), [#233](https://github.com/flavorjones/loofah/issues/233)] (Thanks, [@nick-desteffen](https://github.com/nick-desteffen)!)
+
+-------------------------------------------------------------------
 Thu Apr 28 05:35:21 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.16.0
