@@ -1,7 +1,7 @@
 #
 # spec file for package sca-patterns-sle15
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,12 +25,12 @@
 %define category SLE
 
 Name:           sca-patterns-sle15
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Supportconfig Analysis Patterns for SLE15
 License:        GPL-2.0-only
-Group:          System/Monitoring
 URL:            https://github.com/g23guy/sca-patterns-sle15
+Group:          System/Monitoring
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 Requires:       sca-patterns-base >= 1.5.0
@@ -38,7 +38,7 @@ BuildArch:      noarch
 
 %description
 Supportconfig Analysis (SCA) appliance patterns to identify known
-issues relating to all versions of SLE15. 
+issues relating to all versions of SLE15.
 
 See %{_docdir}/sca-patterns-base/COPYING.GPLv2
 

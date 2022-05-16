@@ -167,4 +167,12 @@
     <comment>Converted from python2 to python3 bsc#1191005 (forwarded request 929480 from jrecord)</comment>
     <requestid>929481</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8102828b53663df063402262037e7712</srcmd5>
+    <version>1.5.1</version>
+    <time>1652717265</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>977078</requestid>
+  </revision>
 </revisionlist>
