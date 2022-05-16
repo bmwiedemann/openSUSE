@@ -490,4 +490,12 @@
     <comment>KDE Frameworks 5.93.0</comment>
     <requestid>968206</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>b85a725b84e3da6ed2fcb65514d5cd56</srcmd5>
+    <version>5.94.0</version>
+    <time>1652717245</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.94.0</comment>
+    <requestid>977214</requestid>
+  </revision>
 </revisionlist>
