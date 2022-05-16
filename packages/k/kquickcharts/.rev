@@ -241,4 +241,12 @@ Another accidental omission in the KDE Frameworks update...</comment>
     <comment>KDE Frameworks 5.93.0</comment>
     <requestid>968188</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>99f7ec2fb6a02b42eec2cde7170c92ff</srcmd5>
+    <version>5.94.0</version>
+    <time>1652717228</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.94.0</comment>
+    <requestid>977196</requestid>
+  </revision>
 </revisionlist>
