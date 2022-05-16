@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 20 17:57:48 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * no-cpp17-tests.patch
+    + do not run cpp17 tests when building on SLE12
+
+-------------------------------------------------------------------
 Sat Jul 10 12:00:26 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.2.1

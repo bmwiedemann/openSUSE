@@ -1,7 +1,7 @@
 #
 # spec file for package utfcpp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,8 @@ Summary:        A library for handling UTF-8 encoded strings
 License:        BSL-1.0
 URL:            https://github.com/nemtrif/utfcpp
 Source:         %{name}-%{version}.tar.xz
-BuildRequires:  cmake >= 3.8
+Patch0:         no-cpp17-tests.patch
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 
 %description
@@ -36,7 +37,10 @@ Summary:        A library for handling UTF-8 encoded strings
 A C++ library for handling UTF-8 encoded strings.
 
 %prep
-%autosetup -p1
+%setup -q
+%if 0%{?suse_version} < 1320
+%patch0 -p1
+%endif
 
 %build
 %cmake
