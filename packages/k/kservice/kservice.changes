@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 10 08:18:09 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.94.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.94.0
+- Changes since 5.93.0:
+  * Add missing KCoreAddons and KConfig to tests
+  * Add windows CI
+  * KService: Do not link KCoreAddons and KConfig publicly when building without deprecations
+  * kservice.h: Wrap public KCoreAddons includes in deprecation macros
+  * Add Android to supported platforms in repo metadata
+
+-------------------------------------------------------------------
 Sun Apr  3 10:47:26 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.93.0
