@@ -201,4 +201,12 @@
   * fixes build aginst xorg-server 21.1</comment>
     <requestid>927989</requestid>
   </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>f9aa0d02f962899f8c438e5ec63ee7e5</srcmd5>
+    <version>1.0.17</version>
+    <time>1652717256</time>
+    <user>dimstar_suse</user>
+    <comment>- set SUSE_ZNOW to 0 (boo#1197994)</comment>
+    <requestid>977260</requestid>
+  </revision>
 </revisionlist>

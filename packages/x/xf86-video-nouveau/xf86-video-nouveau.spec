@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-nouveau
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Group:          System/X11/Servers/XF86_4
 URL:            https://nouveau.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
 Patch0:         N_xf86-video-nouveau_nva3-noaccel-info.patch
-Patch1:         U_nouveau-fixup-driver-for-new-X-server-ABI.patch 
+Patch1:         U_nouveau-fixup-driver-for-new-X-server-ABI.patch
 BuildRequires:  libtool
 BuildRequires:  pciutils-devel
 BuildRequires:  pkgconfig
@@ -51,6 +51,9 @@ cards. “Nouveau” [nuvo] is the French word for “new”.
 %patch1 -p1
 
 %build
+# We have some -z now related errors during X default startup (boo#1197994):
+# this is directly visible on startup, so easy to test later on.
+export SUSE_ZNOW=0
 autoreconf -fi
 %configure
 %make_build

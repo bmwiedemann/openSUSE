@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May 14 16:53:50 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- set SUSE_ZNOW to 0 (boo#1197994) 
+
+-------------------------------------------------------------------
 Thu Oct 28 14:40:59 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_nouveau-fixup-driver-for-new-X-server-ABI.patch 
