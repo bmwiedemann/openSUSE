@@ -7,4 +7,12 @@
     <comment>A very useful utility to watch for dropped network packages. I'd like to maintain it in Factory.</comment>
     <requestid>807706</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3c70e41ff4ca1f8e6aa2d9b7ed006806</srcmd5>
+    <version>1.5.4</version>
+    <time>1652717323</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977478</requestid>
+  </revision>
 </revisionlist>

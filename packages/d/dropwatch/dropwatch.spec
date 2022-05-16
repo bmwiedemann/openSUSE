@@ -1,7 +1,7 @@
 #
 # spec file for package dropwatch
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           dropwatch
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        Kernel dropped packet monitor
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Diagnostic
 URL:            https://github.com/nhorman/dropwatch
 Source:         https://github.com/nhorman/dropwatch/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch1:         old-readline.diff
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  binutils-devel
@@ -39,6 +40,9 @@ are dropped by the kernel
 
 %prep
 %setup -q
+%if 0%{?suse_version} <= 1590
+%patch1 -p1
+%endif
 ./autogen.sh
 %configure
 
