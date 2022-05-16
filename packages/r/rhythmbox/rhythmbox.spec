@@ -1,7 +1,7 @@
 #
 # spec file for package rhythmbox
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,30 @@
 
 
 Name:           rhythmbox
-Version:        3.4.4
+Version:        3.4.5
 Release:        0
 Summary:        GNOME Music Management Application
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://wiki.gnome.org/Apps/Rhythmbox
 Source:         https://download.gnome.org/sources/rhythmbox/3.4/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM meson.patch, glgo#GNOME/rhythmbox#1976
+Patch0:         meson.patch
 
 BuildRequires:  fdupes
-BuildRequires:  gobject-introspection-devel >= 0.10.0
+
 BuildRequires:  intltool
 BuildRequires:  lirc-devel
+BuildRequires:  meson >= 0.59
 BuildRequires:  pkgconfig
+BuildRequires:  python3-gobject
+BuildRequires:  python3-gobject-Gdk
 BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.18.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(grilo-0.3) >= 0.3.0
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 0.11.92
 BuildRequires:  pkgconfig(gstreamer-audio-1.0) >= 0.11.02
@@ -91,25 +97,12 @@ This package contains the development requirements to extend rhythmbox.
 %build
 export MOZILLA_PLUGINDIR=%{_libdir}/browser-plugins
 export PYTHON=%{_bindir}/python3
-%configure \
-	--with-gudev \
-	--with-ipod \
-	--with-mtp \
-	--with-libsecret \
-	--with-brasero \
-	--disable-static \
-	--disable-hal \
-	--enable-lirc \
-	--enable-python \
-	--enable-daap \
-	--enable-vala \
-	%{nil}
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
-%suse_update_desktop_file %{name} Player
-%suse_update_desktop_file rhythmbox-device
+%meson_install
+
 %find_lang %{name} %{?no_lang_C}
 find %{buildroot} -type f -name "*.la" -delete -print
 # Disabled as it pulls old webkit, needs fixing upstream
@@ -129,9 +122,9 @@ rm -rf %{buildroot}%{_libdir}/rhythmbox/plugins/rbzeitgeist/
 %{_bindir}/rhythmbox
 %{_bindir}/rhythmbox-client
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/rhythmbox.appdata.xml
-%{_datadir}/applications/rhythmbox.desktop
-%{_datadir}/applications/rhythmbox-device.desktop
+%{_datadir}/applications/org.gnome.Rhythmbox3.desktop
+%{_datadir}/applications/org.gnome.Rhythmbox3.device.desktop
+%{_datadir}/metainfo/org.gnome.Rhythmbox3.appdata.xml
 %{_datadir}/dbus-1/services/org.gnome.Rhythmbox3.service
 %{_datadir}/glib-2.0/schemas/org.gnome.rhythmbox.gschema.xml
 %{_datadir}/icons/hicolor/scalable/apps/org.gnome.Rhythmbox*.svg
@@ -159,7 +152,6 @@ rm -rf %{buildroot}%{_libdir}/rhythmbox/plugins/rbzeitgeist/
 %{_libdir}/rhythmbox/plugins/listenbrainz/
 %{_libdir}/rhythmbox/plugins/lyrics/
 %{_libdir}/rhythmbox/plugins/magnatune/
-%{_libdir}/rhythmbox/plugins/mmkeys/
 %{_libdir}/rhythmbox/plugins/mpris/
 %{_libdir}/rhythmbox/plugins/mtpdevice/
 %{_libdir}/rhythmbox/plugins/notification/
@@ -168,7 +160,6 @@ rm -rf %{buildroot}%{_libdir}/rhythmbox/plugins/rbzeitgeist/
 %{_libdir}/rhythmbox/plugins/rb/
 %{_libdir}/rhythmbox/plugins/rblirc/
 %{_libdir}/rhythmbox/plugins/replaygain/
-%{_libdir}/rhythmbox/plugins/soundcloud/
 %{_libdir}/rhythmbox/plugins/webremote/
 %{_libexecdir}/rhythmbox-metadata
 %{_mandir}/man1/rhythmbox.1%{ext_man}
@@ -176,11 +167,11 @@ rm -rf %{buildroot}%{_libdir}/rhythmbox/plugins/rbzeitgeist/
 
 %files devel
 %{_datadir}/gir-1.0/*.gir
-%doc %{_datadir}/gtk-doc/html/rhythmbox/
 %{_includedir}/rhythmbox/
 %{_libdir}/pkgconfig/rhythmbox.pc
 %{_libdir}/librhythmbox-core.so
-%{_libdir}/rhythmbox/sample-plugins/
+%{_datadir}/vala/vapi/rb.vapi
+%{_datadir}/vala/vapi/rhythmdb.vapi
 
 %files lang -f %{name}.lang
 

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri May  6 13:16:22 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
+
+- Update to version 3.4.5:
+   + Switched to Meson build system.
+   + Rewritten podcast downloader with better resume and retry.
+   + Uses podcast episode GUIDs to handle episode URL changes.
+   + Preserves original order of episodes in podcasts even if
+     episodes have the same publication date.
+   + Soundcloud plugin removed (no longer works due to API
+     restrictions).
+   + mmkeys plugin removed (no longer useful).
+   + DAAP plugin now supports libdmapsharing 4 API.
+   + Crossfading player backend works much better with network
+     streams now.
+   + Better reporting of progress when transferring to Android
+     or MTP devices.
+   + Bugs fixed: #1634, #1690, #1743, #1744, #1746, #1749, #1750, 
+     #1751, #1758, #1759, #1760, #1762, #1763, #1764, #1767, #1769,
+     #1771, #1772, #1773, #1775, #1780, #1781, #1782, #1787, #1795
+     #1796, #1803, #1822, #1829, #1844, #1845, #1846, #1849, #1876
+     #1883, #1909, #1923, #1934, #1944, #1963 
+   + Updated translations.
+- Patched meson build system, include meson.patch
+-------------------------------------------------------------------
 Mon Sep 20 20:19:58 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

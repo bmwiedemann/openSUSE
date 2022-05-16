@@ -773,4 +773,12 @@
   (jsc#SLE-21105). (forwarded request 920439 from sbrabec)</comment>
     <requestid>920558</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>aedad513f7373d7a13fd40d82838e812</srcmd5>
+    <version>3.4.5</version>
+    <time>1652717328</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 977052 from dimstar)</comment>
+    <requestid>977495</requestid>
+  </revision>
 </revisionlist>
