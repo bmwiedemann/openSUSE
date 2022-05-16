@@ -362,4 +362,13 @@
     <comment> (forwarded request 769119 from iznogood)</comment>
     <requestid>769939</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>734668b19ee9f234b461368366e78521</srcmd5>
+    <version>0.3.96</version>
+    <time>1652717329</time>
+    <user>dimstar_suse</user>
+    <comment>- Set URL to https://gitlab.gnome.org/GNOME/evolution-rss: the old
+  one leads to a 404 - page not found. (forwarded request 977071 from dimstar)</comment>
+    <requestid>977494</requestid>
+  </revision>
 </revisionlist>

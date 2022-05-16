@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 13 14:45:35 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Set URL to https://gitlab.gnome.org/GNOME/evolution-rss: the old
+  one leads to a 404 - page not found.
+
+-------------------------------------------------------------------
 Fri Jan 31 19:06:58 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 0.3.96:

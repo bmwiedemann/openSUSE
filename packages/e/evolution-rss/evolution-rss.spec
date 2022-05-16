@@ -1,7 +1,7 @@
 #
 # spec file for package evolution-rss
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ Release:        0
 Summary:        Evolution Plugin for RSS Feeds Support
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Clients
-URL:            http://gnome.eu.org/evo/index.php/Evolution_RSS_Reader_Plugin
+URL:            https://gitlab.gnome.org/GNOME/evolution-rss
 Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM evolution-rss-drop-gconf-for-good.patch -- Drop gconf2 for good.
 Patch:          evolution-rss-drop-gconf-for-good.patch
