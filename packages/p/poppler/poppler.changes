@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 14 11:30:35 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add poppler-cairo_font_face_t-incorrect-cacheing.patch -- Fix
+  missing symbols after reloading some pdf files; patch taken from
+  upstream merge request [glfo#poppler/poppler#1247].
+
+-------------------------------------------------------------------
 Sat May  7 13:48:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.05.0:

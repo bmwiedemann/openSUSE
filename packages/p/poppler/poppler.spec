@@ -40,6 +40,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://poppler.freedesktop.org
 Source:         %{url}/%{sname}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM poppler-cairo_font_face_t-incorrect-cacheing.patch badshah400@gmail.com -- CairoFontEngine: cairo_font_face_t cache should only cache external fonts
+Patch0:         poppler-cairo_font_face_t-incorrect-cacheing.patch
 BuildRequires:  cmake >= 3.10
 %if 0%{?suse_version} < 1550
 BuildRequires:  gcc11-c++
@@ -210,6 +212,7 @@ developed by Derek Noonburg of Glyph and Cog, LLC.
 
 %prep
 %setup -q -n poppler-%{version}
+%patch0 -p1
 
 %build
 %if "%{flavor}" == "qt5"
