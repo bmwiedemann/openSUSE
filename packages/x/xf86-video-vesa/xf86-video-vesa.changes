@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May 14 10:49:06 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- set SUSE_ZNOW to 0 (boo#1197994)
+
+-------------------------------------------------------------------
 Thu Mar 10 08:26:25 CET 2022 - tiwai@suse.de
 
 - Refuse vesa driver on the system with simpledrmfb (bsc#1193539):

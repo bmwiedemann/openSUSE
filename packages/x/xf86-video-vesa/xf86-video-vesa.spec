@@ -61,6 +61,9 @@ supports depths 8, 15 16 and 24.
 %patch4 -p1
 
 %build
+# We have some -z now related errors during X default startup (boo#1197994):
+# this is directly visible on startup, so easy to test later on.
+export SUSE_ZNOW=0
 %configure
 %make_build
 
