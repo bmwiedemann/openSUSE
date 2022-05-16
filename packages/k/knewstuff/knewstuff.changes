@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue May 10 08:18:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.94.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.94.0
+- Changes since 5.93.0:
+  * Action: simplify expression for engine property
+  * Deprecate KNS3::QtQuickDialogWrapper::exec
+  * Port away from using KNS3::QtQuickDialogWrapper::exec internally (kde#450702)
+  * qtquickdialogwrapper: Fix memory leak caused by `QQmlComponent::create`
+  * Add missing include
+  * Use Kirigami.LoadingPlaceholder component
+  * Delete our own custom PlaceholderMessage
+  * Add windows CI
+  * Dialog: Port to Layouts
+  * Dialog: Remove unnecessary background rectangle
+  * Dialog: use a real ToolBar for the footer instead of a homemade one
+  * Dialog: Add a little separator line between footer and content
+  * Convey lack of hotness visually in placeholder message
+
+-------------------------------------------------------------------
 Sun Apr  3 10:47:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.93.0
