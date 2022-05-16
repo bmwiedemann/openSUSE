@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May 10 08:18:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.94.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.94.0
+- Changes since 5.93.0:
+  * autotests: skip kde-global settings changes on Windows (no DBus)
+  * ui_standards.rc: add tag so kate can insert a menu between Edit and View
+  * Add autotests for autosaving in combination with separate state config
+  * Fix saving of state config if one has autosave enabled (kde#451725)
+  * Add windows CI
+  * Port away from QObject::sender()
+  * KToolBar: code refactoring
+  * Replace OS-specific system information code with QSysInfo (kde#450862)
+
+-------------------------------------------------------------------
 Sun Apr  3 10:47:30 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.93.0
