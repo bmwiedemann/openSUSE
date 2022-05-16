@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon May 16 06:08:42 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.10.0
+  * matomo-org/matomo
+    - #18884 Data protection: Hide visitor id in visits log if profile is disabled
+    - #19157 Make Widgetize page translatable
+    - #18947 Fix console command to disable 2FA for a user
+    - #19125 Fix display issue with z-index for widgets that use tables with embedded dashboards
+    - #18810 Ensure JS tracker unload event is triggered in edge cases to make sure tracking requests are sent
+    - #18128 Make JSON config / package static files unreachable via a GET request
+    - #18967 System check – don’t request private directories when disabled
+    - #19118 Fix error when setting license key from command line
+    - #19124 Fix error when adding new goals if no previous goals exist for website/measurable
+    - #19127 PHP8.1 compatibility fixes in referrers plugin
+    - #19088 Create assets folder if it is missing when writing Report
+    - #19102 Ensure required translations are loaded for Goal management
+    - #19113 Add languageName property to PiwikGlobal type
+    - #19156 Rename MenuDropdown component to avoid any case mismatches
+  * matomo-org/tag-manager
+    - #271 Tag Manager: Change the location of Preview window
+    - #473 Fix typo in getAvailableContainerVariables
+    - #474 Updated MatomoTagDescription to remove piwik
+    - #475 Use TemplateParameters instead of raw window in PageHostname var
+  * matomo-org/device-detector
+    - #7089 Improves detection for generic bots
+    - #7091 Adds detection for Amazon ELB bot
+    - #7093 Detect new brands: X-AGE, QLink and devices for several existing brands
+    - #7095 Detect Open Browser
+    - #7097 Detect browsers: BrowseHere, Midori Lite, Pure Lite Browser,
+      Berry Browser, Fulldive, Hi Browser, SuperFast Browser. Amaze Browser,
+      Smart Search & Web Browser, Aloha Browser Lite
+    - #7098 Detect new brands: Aoro, EBEN, VUCATIMES and Detect devices for several existing brands
+    - #7100 Detect new brands: Zonko, Zeeker, TJC, HOTREALS and Detect devices for several existing brands
+  * matomo-org/referrer-spam-list
+    - #1313 Add socialine.net
+    - #1314 Add glktfw.net
+    - #1315 Add advertisefree.co.uk
+    - #1316 Add hilaryblog.top
+    - #1317 Add goodcoffeepremium.com
+    - #1319 Add kimblog.top
+
+-------------------------------------------------------------------
 Wed Apr 27 05:32:51 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.9.1
