@@ -69,6 +69,6 @@ python3 setup.py test
 %exclude %{_sysconfdir}/alternatives/*.pyc
 %exclude %{_sysconfdir}/alternatives/*.pyo
 %{python3_sitelib}/openstackdocstheme
-%{python3_sitelib}/openstackdocstheme-*-py?.?.egg-info
+%{python3_sitelib}/openstackdocstheme-*-py?.*.egg-info
 
 %changelog

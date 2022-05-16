@@ -302,4 +302,12 @@
   - Updated Nav Menu</comment>
     <requestid>976051</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>1ac351ae96da50ec0a6fb52f99405578</srcmd5>
+    <version>2.4.0</version>
+    <time>1652717251</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build against python 3.10</comment>
+    <requestid>977088</requestid>
+  </revision>
 </revisionlist>
