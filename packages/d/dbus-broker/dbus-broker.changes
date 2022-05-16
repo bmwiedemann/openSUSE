@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon May 16 10:27:31 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 31
+  * Fix assertion failures in the user accounting, uncovered by
+    the changes to accounting in v30.
+  * Fix a memory leak in service-file re-loading, in particular
+    in the command-line argument handling.
+
+-------------------------------------------------------------------
+Tue May 10 11:10:02 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 30
+  * Failed service activations now report more detailed information
+    on the activation failure back through the activating client.
+  * The broker now runs in `session.slice` if applicable.
+  * The `GetStats()` call on `org.freedeskop.DBus.Debug` now
+    properly returns reply-owner statistics. Before, those were
+    always set to 0.
+
+-------------------------------------------------------------------
 Wed Jun  2 13:23:40 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 29
