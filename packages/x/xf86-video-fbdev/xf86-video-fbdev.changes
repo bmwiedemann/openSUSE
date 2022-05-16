@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May 14 10:44:09 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- set SUSE_ZNOW to 0 (boo#1197994)
+
+-------------------------------------------------------------------
 Wed Apr 21 09:03:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec file:
