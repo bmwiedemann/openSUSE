@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat May 14 18:38:17 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220509T040826Z:
+  * Prefix version suspension (#4064)
+  * doc: Fix broken link (#4072)
+  * avoid cascading deletes for active-active setups (#4079)
+  * Fix example for `mc admin replicate edit` (#4080)
+  * Add admin prometheus metrics (#4049)
+  * Use latest version of madmin-go (1.3.13) (#4075)
+  * Add support for minio warm tier (#4009)
+
+-------------------------------------------------------------------
 Fri May 06 06:19:04 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 20220504T060755Z:
