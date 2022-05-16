@@ -17,11 +17,8 @@
 
 
 %{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
-%define         skip_python36 1
-
 Name:           python-weasyprint
-Version:        54.0
+Version:        55.0
 Release:        0
 Summary:        Python module to convert web documents to PDF
 License:        BSD-3-Clause
@@ -29,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Kozea/WeasyPrint
 Source:         https://files.pythonhosted.org/packages/source/w/weasyprint/weasyprint-%{version}.tar.gz
 Source100:      python-weasyprint-rpmlintrc
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 39.2.0}
@@ -38,13 +36,14 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Requires:       libgobject-2_0-0
 Requires:       pango
+Requires:       python-base >= 3.7
 Requires:       python-Pillow >= 4.0.0
 Requires:       python-Pyphen >= 0.9.1
 Requires:       python-cffi >= 0.6
 Requires:       python-cssselect2 >= 0.1
-Requires:       python-html5lib >= 1.0.1
+Requires:       python-html5lib >= 1.1
 Requires:       python-pydyf >= 0.0.3
-Requires:       python-tinycss2 >= 1.0.0
+Requires:       python-tinycss2 >= 1.1.0
 # SECTION fonttools[woff]
 Requires:       python-FontTools
 Requires:       python-Brotli >= 1.0.1
@@ -58,10 +57,10 @@ BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module Pyphen >= 0.9.1}
 BuildRequires:  %{python_module cffi >= 0.6}
 BuildRequires:  %{python_module cssselect2 >= 0.1}
-BuildRequires:  %{python_module html5lib >= 1.0.1}
+BuildRequires:  %{python_module html5lib >= 1.1}
 BuildRequires:  %{python_module pydyf >= 0.0.3}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module tinycss2 >= 1.0.0}
+BuildRequires:  %{python_module tinycss2 >= 1.1.0}
 BuildRequires:  %{python_module zopfli >= 0.1.4}
 BuildRequires:  dejavu-fonts
 BuildRequires:  gs
@@ -95,8 +94,7 @@ export PYTHONPATH=$PWD
 %python_clone -a %{buildroot}%{_bindir}/weasyprint
 
 %check
-# gh#Kozea/WeasyPrint#1503
-%pytest -k 'not (test_relative_links_missing_base_link or test_links)' tests
+%pytest tests
 
 %post
 %python_install_alternative weasyprint

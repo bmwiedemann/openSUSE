@@ -39,4 +39,53 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>947061</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dffea4b7d8ff6176c62b032539269a88</srcmd5>
+    <version>55.0</version>
+    <time>1652717336</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 55.0 
+  Python 3.7 is now the minimum requirement
+  - Features
+    - #1534: Support word-break: break-all
+    - #489, #1619: Support column breaks
+    - #1553: Allow reproducible PDF generation
+    - #1547: Handle break-inside: avoid on tr tags
+  - Bugfixes
+    - #1626, 3802f88: Fix the vertical position and available height of absolute boxes
+    - 9641098, e5e6b88: Minor fixes for multi-column layout
+    - 0fcc7de: Don’t stop rendering SVG when CSS parsing fails
+    - #1636: Fix sequential footnotes that could disappear when overflowing
+    - #1637: Fix position of absolute boxes with right-to-left direction
+    - #1641: Fix relative paths for SVG files stored as data URLs
+    - #1007, #1524: Handle inherit in shorthand properties
+    - #1539, #1541: Space out no-repeat patterns
+    - #1554: Avoid invalid PDF operators when drawing SVG text
+    - #1564, #1566, #1570: Don’t output footnotes before their call sites
+    - #1020, #1597: Prevent infinite loops in multi-column layout
+    - #1512, #1613: Fix position of absolute boxes in right-to-left contexts
+    - #1093: Draw borders around absolute replaced boxes
+    - #984, #1604: Fix skip stacks for columns
+    - #1621: Better support of nested text-decoration properties
+    - fe1f3d9: Fix absolute blocks in lines
+    - 4650b70: Clear adjoining margins when a container’s child doesn’t fit
+    - #1588 Support position: absolute in footnotes
+    - #1586 Fix discarded text-align values
+    - #1575: Always store parent blocks children as lists
+    - #1574, #1559: Fix float rounding errors
+    - #1571: Ignore unknown glyphs
+    - #1561, #1562: Fix line break when breaks occur between a nbsp and an inline block
+    - #1560: Always set the child index
+    - #1558: Fix patterns with use tags
+    - #1540, #1239: Handle absolute children in running elements
+    - #1538: Handle invalid values in text-align
+    - #1536: Handle absolute flex boxes
+  - Performance
+    - #1548: Improve tests speed
+    - 3b0ae92, #1457: Improve fonts management
+    - #1597: Improve column layout speed
+    - #1587, #1607, #1608: Cache ch and ex units calculations
+</comment>
+    <requestid>977518</requestid>
+  </revision>
 </revisionlist>
