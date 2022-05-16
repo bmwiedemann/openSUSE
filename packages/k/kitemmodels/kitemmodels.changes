@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 10 08:18:01 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.94.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.94.0
+- Changes since 5.93.0:
+  * Fix assertions in KDescendantsProxyModel (kde#452043)
+  * Clean up proxymodeltestapp CMakeLists.txt
+  * Clean up optional dependencies for tests
+  * Add windows CI
+  * Fix punctuation/whitespace of runtime rate-limited deprecation warnings
+
+-------------------------------------------------------------------
 Sun Apr  3 10:47:18 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.93.0
