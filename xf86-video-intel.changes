@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May 14 17:38:39 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- set SUSE_ZNOW to 0 (boo#1197994) 
+
+-------------------------------------------------------------------
 Mon Aug  2 15:27:25 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - no longer require libXfont(1)

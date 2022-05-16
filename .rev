@@ -991,4 +991,12 @@ why not just update to this version instead? O.o (forwarded request 207632 from 
     <comment>- no longer require libXfont(1)</comment>
     <requestid>909825</requestid>
   </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>5100578dbdc5cb01e23629888e11f160</srcmd5>
+    <version>2.99.917.916_g31486f40</version>
+    <time>1652717257</time>
+    <user>dimstar_suse</user>
+    <comment>- set SUSE_ZNOW to 0 (boo#1197994)</comment>
+    <requestid>977262</requestid>
+  </revision>
 </revisionlist>
