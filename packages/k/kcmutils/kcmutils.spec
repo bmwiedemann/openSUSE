@@ -15,16 +15,18 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+# Internal QML import
+%global __requires_exclude qmlimport\\(org\\.kde\\.kcmutils\\.private.*\\)
 
 %define lname   libKF5KCMUtils5
-%define _tar_path 5.93
+%define _tar_path 5.94
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kcmutils
-Version:        5.93.0
+Version:        5.94.0
 Release:        0
 Summary:        Classes to work with KCModules
 License:        LGPL-2.1-or-later
@@ -56,6 +58,12 @@ BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
 KCMUtils provides various classes to work with KCModules. KCModules can be
 created with the KConfigWidgets framework.
 
+%package -n libKF5KCMUtilsCore5
+Summary:        Core library of classes to work with KCModules
+
+%description -n libKF5KCMUtilsCore5
+KCMUtils provides various classes to work with KCModules. This package provides the main core library.
+
 %package -n %{lname}
 Summary:        Classes to work with KCModules
 Group:          System/GUI/KDE
@@ -65,9 +73,20 @@ Obsoletes:      libKF5KCMUtils4
 KCMUtils provides various classes to work with KCModules. KCModules can be
 created with the KConfigWidgets framework.
 
+%package imports
+Summary:        QtQuick bindings for classes to work with KCModules
+Requires:       %{lname} = %{version}
+Requires:       libKF5KCMUtilsCore5 = %{version}
+
+%description imports
+KCMUtils provides various classes to work with KCModules. KCModules can be
+created with the KConfigWidgets framework. This package provides QtQuick bindings
+for the KCMUtils libraries.
+
 %package devel
 Summary:        Build environment for kcmutils, a set of classes to work with KCModules
 Group:          Development/Libraries/KDE
+Requires:       libKF5KCMUtilsCore5 = %{version}
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(KF5ConfigWidgets) >= %{_kf5_bugfix_version}
@@ -97,6 +116,9 @@ created with the KConfigWidgets framework. Development files.
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
+%post -n libKF5KCMUtilsCore5 -p /sbin/ldconfig
+%postun -n libKF5KCMUtilsCore5 -p /sbin/ldconfig
+
 %if %{with released}
 %files -n %{lname}-lang -f %{name}5.lang
 %endif
@@ -110,10 +132,20 @@ created with the KConfigWidgets framework. Development files.
 %{_kf5_servicetypesdir}/kcmoduleinit.desktop
 %{_kf5_debugdir}/kcmutils.categories
 
+%files -n libKF5KCMUtilsCore5
+%{_kf5_libdir}/libKF5KCMUtilsCore.so.*
+
+%files imports
+%dir %{_kf5_qmldir}/org
+%dir %{_kf5_qmldir}/org/kde/
+%{_kf5_qmldir}/org/kde/kcmutils/
+
 %files devel
 %{_kf5_libdir}/libKF5KCMUtils.so
+%{_kf5_libdir}/libKF5KCMUtilsCore.so
 %{_kf5_libdir}/cmake/KF5KCMUtils/
 %{_kf5_includedir}/KCMUtils/
+%{_kf5_includedir}/KCMUtilsCore/
 %{_kf5_mkspecsdir}/qt_KCMUtils.pri
 
 %changelog
