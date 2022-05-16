@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 10 16:15:41 UTC 2022 - Jordi Massaguer <jmassaguerpla@suse.com>
+
+- Exclude s390 arch 
+
+-------------------------------------------------------------------
 Sun Jan 23 19:25:55 UTC 2022 - Stefan Bluhm <stefan.bluhm@clacee.eu>
 
 - Adapted to build on Enterprise Linux.

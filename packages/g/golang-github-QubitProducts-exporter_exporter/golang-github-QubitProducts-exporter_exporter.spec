@@ -1,7 +1,7 @@
 #
-# spec file for package golang-github-QubitProducts-exporter_exporter
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,6 +49,7 @@ BuildRequires:  golang >= 1.14
 %if 0%{?suse_version}
 Requires(post): %fillup_prereq
 Requires(pre):  shadow
+ExcludeArch:    s390
 %endif
 %{?systemd_ordering}
 
