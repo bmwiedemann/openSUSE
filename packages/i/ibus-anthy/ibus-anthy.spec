@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-anthy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,15 +21,15 @@ BuildRequires:  anthy-devel
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  python3-gobject
-BuildRequires:  python3-gobject2-devel
+BuildRequires:  python3-gobject >= 3
 BuildRequires:  swig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(ibus-1.0) >= 1.4.99
 BuildRequires:  pkgconfig(python3)
 Requires:       anthy
-Version:        1.5.12
+Requires:       python3-gobject >= 3
+Version:        1.5.14
 Release:        0
 Summary:        The Anthy engine for IBus input platform
 License:        GPL-2.0-or-later

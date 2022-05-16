@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun May  8 13:50:50 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.5.14
+  * data: Update era.t with 2021
+  * tests: Check python3-pycotap.rpm in Fedora instead of pip
+  * travis: git config pull.rebase false
+  * Update translations
+- Release 1.5.13
+  * tests: Output info to stderr instead of StringIO
+  * Fix covscan result
+  * data/gschema: Remove Ctrl+period in circle_kana_mode (#23)
+- Remove obsolete build dependency on python3-gobject2 but declare
+  the forgotten runtime dependency on python3-gobject >= 3
+
+-------------------------------------------------------------------
 Sat May  8 11:05:57 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.5.12
