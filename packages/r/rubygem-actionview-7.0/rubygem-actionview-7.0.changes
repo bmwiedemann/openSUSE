@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 15 15:17:47 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 7.0.3
+
+  *   Ensure models passed to `form_for` attempt to call `to_model`.
+
+      *Sean Doyle*
+
+-------------------------------------------------------------------
 Thu Apr 28 05:10:47 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 7.0.2.4
