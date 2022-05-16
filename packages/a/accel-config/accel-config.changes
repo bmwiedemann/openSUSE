@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 16 09:24:48 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 3.4.6.4:
+  * Init IAA test and add No-op operation
+  * Separate common codes from DSA source code file
+  * Bug fixes
+
+-------------------------------------------------------------------
 Thu Apr 21 21:40:01 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.4.6.3:
