@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  9 18:41:36 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- add the Libera chat network to the default configuration to
+  improve the new user experience - irssi-1.2.3-add-libera.patch
+
+-------------------------------------------------------------------
 Fri Apr  9 14:48:52 UTC 2021 - Ailin Nemui <ailin.nemui@gmail.com>
 
 - update to 1.2.3 (boo#1184848)

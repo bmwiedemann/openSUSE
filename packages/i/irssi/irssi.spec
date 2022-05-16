@@ -1,7 +1,7 @@
 #
 # spec file for package irssi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,16 +33,10 @@ Source4:        %{name}.keyring
 Source99:       irssi-rpmlintrc
 # PATCH-FIX-OPENSUSE irssi-0.8.16_missing_prototype_warnings.patch
 Patch1:         irssi-0.8.16_missing_prototype_warnings.patch
+Patch2:         irssi-1.2.3-add-libera.patch
 BuildRequires:  glib2-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  openssl-devel
-# the OTR module is optional but the libotr version is too old
-%if 0%{?suse_version} > 1330
-BuildRequires:  libotr-devel
-%endif
-%if 0%{?suse_version} > 1330 && 0%{?sle_version} == 0
-BuildRequires:  utf8proc-devel
-%endif
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  pkgconfig
@@ -50,6 +44,13 @@ BuildRequires:  xz
 Conflicts:      %{name}-snapshot
 %{perl_requires}
 %{?libperl_requires}
+# the OTR module is optional but the libotr version is too old
+%if 0%{?suse_version} > 1330
+BuildRequires:  libotr-devel
+%endif
+%if 0%{?suse_version} > 1330 && 0%{?sle_version} == 0
+BuildRequires:  utf8proc-devel
+%endif
 %if %{with socks}
 BuildRequires:  dante-devel
 %endif
@@ -79,6 +80,7 @@ compile plugins for the irssi package.
 %prep
 %setup -q
 %patch1
+%patch2 -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing -DGLIB_DISABLE_DEPRECATION_WARNINGS"
@@ -103,7 +105,7 @@ export LDFLAGS="-pie"
     --with-otr=module   \
     %endif
     --with-perl-lib=vendor
-make %{?_smp_mflags} all V=1
+%make_build all
 
 %install
 %make_install docdir=%{_docdir}/%{name} V=1
