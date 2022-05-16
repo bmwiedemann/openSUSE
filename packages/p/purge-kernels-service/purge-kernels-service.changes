@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 13 13:08:14 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Change service type to exec (boo#1198668).
+
+-------------------------------------------------------------------
 Thu May  6 14:05:53 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
 
 - Add ZYPP_LOCK_TIMEOUT=-1 to keep waiting for the lock (boo#1184399).

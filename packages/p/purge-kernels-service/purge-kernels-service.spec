@@ -1,7 +1,7 @@
 #
 # spec file for package purge-kernels-service
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,10 +40,13 @@ install -m 644 -D -t %{buildroot}/%{_unitdir}/ %{SOURCE0}
 
 %pre
 %service_add_pre purge-kernels.service
+
 %post
 %service_add_post purge-kernels.service
+
 %preun
 %service_del_preun purge-kernels.service
+
 %postun
 %service_del_postun purge-kernels.service
 

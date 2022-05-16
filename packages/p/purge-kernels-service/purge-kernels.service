@@ -5,7 +5,7 @@ ConditionPathExists=/boot/do_purge_kernels
 ConditionPathIsReadWrite=/
 
 [Service]
-Type=oneshot
+Type=exec
 Nice=19
 IOSchedulingClass=idle
 Environment=ZYPP_LOCK_TIMEOUT=-1
