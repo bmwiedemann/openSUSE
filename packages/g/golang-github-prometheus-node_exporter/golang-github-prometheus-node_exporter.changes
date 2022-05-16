@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 10 16:01:08 UTC 2022 - Jordi Massaguer <jmassaguerpla@suse.com>
+
+- Exclude s390 arch. 
+
+-------------------------------------------------------------------
 Wed Apr 13 08:17:29 UTC 2022 - Tatjana Dehler <tdehler@suse.com>
 
 - Update spec file in order to make --version work (bsc#1196652)

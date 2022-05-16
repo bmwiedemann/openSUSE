@@ -43,6 +43,7 @@ Requires(pre):  shadow
 %{go_provides}
 Provides:       node_exporter
 Provides:       prometheus(node_exporter)
+ExcludeArch:    s390
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir /var/adm/fillup-templates
