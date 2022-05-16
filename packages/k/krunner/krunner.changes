@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 10 08:18:09 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.94.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.94.0
+- Changes since 5.93.0:
+  * Require unit tests to pass on CI
+  * Fix Qt6 build unit tests
+  * Fix FreeBSD runnercontexttest on GitlabCI
+  * Make Qt::Gui dependency for deprecation free builds internal
+  * Deprecate public KConfigGroup include of AbstractRunner class
+
+-------------------------------------------------------------------
 Sun Apr  3 10:47:25 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.93.0
