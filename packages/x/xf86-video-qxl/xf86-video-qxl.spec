@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-qxl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,6 @@ BuildRequires:  pkgconfig(xfont2)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.4
 BuildRequires:  pkgconfig(xorg-server) >= 1.0.99.901
 BuildRequires:  pkgconfig(xproto)
-Supplements:    modalias(xorg-x11-server:pci:v00001B36d*sv*sd*bc03sc*i*)
 # This was part of the xorg-x11-driver-video package up to version 7.6
 Conflicts:      xorg-x11-driver-video <= 7.6
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

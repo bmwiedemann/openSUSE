@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May 14 21:26:10 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- remove "hardware" supplements; modeset is used now with KMS driver
+
+-------------------------------------------------------------------
 Mon Nov  1 10:19:06 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_fix-build-against-xserver-21_1.patch

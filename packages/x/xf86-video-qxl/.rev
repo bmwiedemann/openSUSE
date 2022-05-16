@@ -230,4 +230,12 @@
        hw: Rename boolean config value field from bool to boolean</comment>
     <requestid>928538</requestid>
   </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>d62c827a26f76dcaed59635f0ca820b8</srcmd5>
+    <version>0.1.5</version>
+    <time>1652717263</time>
+    <user>dimstar_suse</user>
+    <comment>- remove &quot;hardware&quot; supplements; modeset is used now with KMS driver</comment>
+    <requestid>977273</requestid>
+  </revision>
 </revisionlist>
