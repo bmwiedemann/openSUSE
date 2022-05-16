@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 10 08:18:07 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.94.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.94.0
+- Changes since 5.93.0:
+  * KPtryProcess: call childProcessModifier() of parent class first
+
+-------------------------------------------------------------------
 Sun Apr  3 10:47:24 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.93.0
