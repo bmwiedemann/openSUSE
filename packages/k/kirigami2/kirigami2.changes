@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue May 10 08:18:01 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.94.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.94.0
+- Changes since 5.93.0:
+  * ScrollablePage: Stop duck-typing QML types
+  * SwipeListItem: Expose the width of overlayLoader
+  * Dialog: Unbreak standardButton() method
+  * ApplicationItem: Fix Shortcut's warning about sequence vs. sequences
+  * ApplicationItem: Clean it up a bit
+  * columnview: Fix memory leak caused by `QQmlComponent::create`
+  * columnview: Remove m_attachedObjects
+  * AbstractApplicationItem: Fix copy-pasta mistake
+  * AbstractApplicationItem: Clean up JavaScript part of QML
+  * Fix trailing whitespaces
+  * correctly hide the bottom floating buttons when there is a page footer
+  * ToolBarPageHeader: Do not assign undefined to real values
+  * ColumnView notifies for contentChildren when page is removed (kde#452883)
+  * ActionToolBar: fix moreButton visibility (kde#449031)
+  * LoadingPlaceholder: remove redundant explanation
+  * Improve ListItemDragHandle
+  * Add LoadingPlaceholder component
+  * AboutPage: Prevent infinite loop (kde#447958)
+  * PlaceholderMessage: add types
+  * Add windows CI
+  * Introduce TabletModeChangedEvent
+  * [doc]: Remove double inheritance arrow for Kirigami.PagePoolAction
+
+-------------------------------------------------------------------
 Sun Apr  3 10:47:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.93.0
