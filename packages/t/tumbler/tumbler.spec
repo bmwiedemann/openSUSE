@@ -1,7 +1,7 @@
 #
 # spec file for package tumbler
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -187,7 +187,9 @@ mv custom_thumbnailers/folder-thumbnailer %{buildroot}%{_bindir}/
 %{_libdir}/tumbler-1/plugins/tumbler-odf-thumbnailer.so
 %{_libdir}/tumbler-1/plugins/tumbler-pixbuf-thumbnailer.so
 %{_libdir}/tumbler-1/plugins/tumbler-poppler-thumbnailer.so
-#{_libdir}/tumbler-1/plugins/tumbler-raw-thumbnailer.so
+%if %{?suse_version} == 1500
+%{_libdir}/tumbler-1/plugins/tumbler-raw-thumbnailer.so
+%endif
 %{_libdir}/tumbler-1/plugins/tumbler-gepub-thumbnailer.so
 %dir %{_datadir}/dbus-1
 %dir %{_datadir}/dbus-1/services
