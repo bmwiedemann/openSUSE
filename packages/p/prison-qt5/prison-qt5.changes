@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May 10 08:18:15 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.94.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.94.0
+- Changes since 5.93.0:
+  * Remove duplicate header between .h/.cpp file
+  * Fix out-of-bounds read on the Aztec special char table
+  * Enable macOS support
+  * Fix PrisonScanner target name
+  * Consider flipped video frames when computing the barcode positioon
+  * Add barcode scanner component for barcode scanning from live video
+  * Add windows CI
+
+-------------------------------------------------------------------
 Sun Apr  3 10:47:32 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.93.0
