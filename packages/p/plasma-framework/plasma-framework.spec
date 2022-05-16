@@ -1,7 +1,7 @@
 #
 # spec file for package plasma-framework
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 %define lname libKF5Plasma5
-%define _tar_path 5.93
+%define _tar_path 5.94
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma-framework
-Version:        5.93.0
+Version:        5.94.0
 Release:        0
 Summary:        Plasma library and runtime components based upon KF5 and Qt5
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -35,11 +35,6 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         b62d83bef7733e4943e6f66787166b41198d1359.patch
-Patch1:         0001-Fix-osd-dialog-position.patch
-Patch2:         0002-Keep-PlasmaComponents.Highlight-on-its-former-behavi.patch
-Patch3:         0003-Fix-check-for-argument-length-in-DataEngine-loader.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -180,7 +175,6 @@ fi
 %{_kf5_bindir}/*
 %{_kf5_plugindir}/
 %{_kf5_plasmadir}/
-%{_kf5_servicesdir}/
 %{_kf5_servicetypesdir}/
 %{_kf5_mandir}/man1/plasmapkg*.*
 

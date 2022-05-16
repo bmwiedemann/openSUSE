@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May 10 08:18:14 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.94.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.94.0
+- Too many changes since 5.93.0, only listing bugfixes:
+  * Fix use-after-free in ContainmentInterface (kde#451267)
+  * Fix osd dialog position (kde#452648)
+  * Fix check for argument length in DataEngine loader (kde#452596)
+  * Keep PlasmaComponents.Highlight on its former behaviour (kde#452555)
+  * Dialog: Do not update layout parameters while hidden (kde#452512)
+  * PC3 toggle controls: fix odd heights misaligning indicators (kde#447977)
+- Drop upstream patches:
+  * b62d83bef7733e4943e6f66787166b41198d1359.patch
+  * 0001-Fix-osd-dialog-position.patch
+  * 0002-Keep-PlasmaComponents.Highlight-on-its-former-behavi.patch
+  * 0003-Fix-check-for-argument-length-in-DataEngine-loader.patch
+
+-------------------------------------------------------------------
 Wed Apr 20 17:55:09 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Backport some patches:
