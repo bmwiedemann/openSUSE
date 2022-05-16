@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 10 08:17:44 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.94.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.94.0
+- Changes since 5.93.0:
+  * Require unittests to pass for CI jobs to pass
+
+-------------------------------------------------------------------
 Sun Apr  3 10:46:58 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.93.0
