@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat May 14 16:34:40 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.94.4
+  * Fixed getting stuck with loading plaque upon attempting to
+    load a bad save from the menu
+  * Fixed SZ_GetSpace server crashes, e.g. in ad_magna or
+    ad_mountain.
+  * Fixed intermission camera angles during demo playback.
+  * Don't reset onground flag on every new server message..
+  * Re-enabled title demos by default (turn off with
+    cl_startdemos 0).
+  * Don't autoplay next demo after a timedemo.
+  * Fixed bad parsing of cdtrack in hipdemo1 from Scourge of
+    Armagon.
+  * Fixed serverinfo off-by-one nummodels/numsounds for
+    protocol 15.
+  * Support for Quake 2021 update 3.
+  * Implemented quad/pentagram dlights for Quake 2021 rerelease.
+  * Implemented 2021 rerelease localsound builtin &
+    svc_localsound (56).
+  * Several other improvements to Quake 2021 rerelease support.
+  * Several other small fixes and improvements all over the code.
+  * Updated third party code (SDL, lodepng, miniz, some of the
+    codecs, etc.).
+
+-------------------------------------------------------------------
 Mon Dec  6 21:37:11 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.94.3
