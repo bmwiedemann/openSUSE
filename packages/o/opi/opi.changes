@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 16 15:08:38 UTC 2022 - Dominik Heidler <dheidler@suse.de>
+
+- Version 2.5.0
+- Improve testsuite when ran locally
+- Fix 01_install_from_packman.py test for leap
+- Fix 02_install_from_home.py test for leap
+- Run ci for both tumbleweed and leap
+- Use $releasever in repo creation on Leap
+- Run "osc up" in release.sh
+
+-------------------------------------------------------------------
 Mon Apr 25 08:55:19 UTC 2022 - Dominik Heidler <dheidler@suse.de>
 
 - Version 2.4.7

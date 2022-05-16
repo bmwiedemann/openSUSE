@@ -318,4 +318,12 @@
 - Add release helper script</comment>
     <requestid>972524</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d716b916a3807f9d18bb39ec741e0912</srcmd5>
+    <version>2.5.0</version>
+    <time>1652717342</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.5.0</comment>
+    <requestid>977555</requestid>
+  </revision>
 </revisionlist>
