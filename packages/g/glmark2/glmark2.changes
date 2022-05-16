@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 16 09:27:05 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20220513:
+  * GLStateEGL,GLStateGLX: Use SwapInterval 1 for FIFO swap mode
+  * NativeStateDrm: Implement swap interval 0
+
+-------------------------------------------------------------------
 Thu Apr 28 06:58:30 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20220214:

@@ -260,4 +260,14 @@
   * libmatrix: avoid -Wimplicit-fallthrough</comment>
     <requestid>973566</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e92a66b8e14a19a27c64f93498379c08</srcmd5>
+    <version>20220513</version>
+    <time>1652717330</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220513:
+  * GLStateEGL,GLStateGLX: Use SwapInterval 1 for FIFO swap mode
+  * NativeStateDrm: Implement swap interval 0</comment>
+    <requestid>977498</requestid>
+  </revision>
 </revisionlist>
