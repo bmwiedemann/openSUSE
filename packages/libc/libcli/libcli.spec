@@ -1,7 +1,7 @@
 #
 # spec file for package libcli
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define	sover	1_9
+%define	sover	1_10
 %define libname %{name}%{sover}
 Name:           libcli
-Version:        1.9.7+git.20161026
+Version:        1.10.7+git.20211009
 Release:        0
 Summary:        Cisco-like telnet command-line library
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/dparrish/libcli
+URL:            https://github.com/dparrish/libcli
 Source:         %{name}-%{version}.tar.xz
 Patch0:         libcli-Makefile-lib64.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -72,7 +72,8 @@ rm %{buildroot}%{_libdir}/libcli.a
 
 %files -n %{libname}
 %defattr(-, root, root)
-%doc COPYING README
+%doc README.md
+%license COPYING
 %{_libdir}/libcli.so.*
 
 %files devel

@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon May 09 07:04:14 UTC 2022 - info@paolostivanin.com
+
+- Update to version 1.10.7+git.20211009:
+  * Fix memory leak in help line wrapper code
+  * Allow compile time choice of 'select()' or 'poll()' when monitoring the libcli
+    command file descriptor in cli_loop(). 
+  * If the 'select()' call is chosen above, do a range validation to ensure the file
+    descriptor is less than FD_SETSIZE
+  * Fix incorrect help message if there is a validation problem for the value of
+    an optional argument.
+  * Fix confusing help message shown if there is a parsing problem for a subcommand
+  * Fix a number of possible issues identified by static code analysis. As a result,
+    the 'full' name of all commands is generated in cli_register_command(),
+    instead of on the fly as was done before
+  * Fix formatting of 'long' commands. If a command name is longer than 22 characters
+    the help message will start indented on a new line, instead of being appended
+    immediately behind the command name with no separation.
+  * Some minor changes to clitest.c to show correct behavior due to above changes.
+  * Fix segfault issue during tab/help processing
+  * Minor cosmetic change to how help messages are generated, minor edits
+    to some comments, minor cosmetic change to clitest demo code
+  * Tweak to buildmode to only show optargs 'after' the point at
+    which buildmode was entered.
+  * Add new 'cli_dump_optargs_and_args() function for development/debug
+    Designed to be called from a callback to show output of optarg and
+    argument processing.
+  * Updated CLI_CMD_OPTIONAL_FLAG parsing to use an validator function
+    (if provided) to determine if the word being looked is a match for
+    the optional flag. If no validator function is provided then the
+    word much match the name of the optional flag exactly.
+  * Enhance how cli_parse_line handles quotes when parsine the command
+    line. This includs mixed single/double quotes, embedded quoted
+    substrings, and handling 'escaped' quotes using the '' character.
+  * Ensure that buildmode preserves 'empty' strings
+    (ex: "", or '') when regenerating the cmdline after the user 'executes'
+    the command.
+- Rebase libcli-Makefile-lib64.diff
+
+-------------------------------------------------------------------
 Thu Jul  6 09:17:14 UTC 2017 - jengelh@inai.de
 
 - Fix RPM groups
