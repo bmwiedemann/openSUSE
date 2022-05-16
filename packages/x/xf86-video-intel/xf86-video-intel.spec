@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-intel
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -85,25 +85,25 @@ Supplements:    modalias(xorg-x11-server:pci:v00008086d*sv*sd*bc03sc*i*)
 %else
 # Intel Gen <= 3 (i810/i1815, i830, 845, 855, 865, 915, 945, G33)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00007121sv*sd*bc*sc*i*)
-Supplements:    modalias(xorg-x11-server:pci:v00008086d00007123sv*sd*bc*sc*i*)
-Supplements:    modalias(xorg-x11-server:pci:v00008086d00007125sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00001132sv*sd*bc*sc*i*)
-Supplements:    modalias(xorg-x11-server:pci:v00008086d00003577sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00002562sv*sd*bc*sc*i*)
-Supplements:    modalias(xorg-x11-server:pci:v00008086d0000358Esv*sd*bc*sc*i*)
-Supplements:    modalias(xorg-x11-server:pci:v00008086d00003582sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00002572sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00002582sv*sd*bc*sc*i*)
-Supplements:    modalias(xorg-x11-server:pci:v00008086d00002592sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d0000258Asv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00002592sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00002772sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d000027A2sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d000027AEsv*sd*bc*sc*i*)
-Supplements:    modalias(xorg-x11-server:pci:v00008086d0000A011sv*sd*bc*sc*i*)
-Supplements:    modalias(xorg-x11-server:pci:v00008086d0000A001sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d000029B2sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d000029C2sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d000029D2sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00003577sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00003582sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d0000358Esv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00007123sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d00007125sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d0000A001sv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v00008086d0000A011sv*sd*bc*sc*i*)
 %endif
 # This was part of the xorg-x11-driver-video package up to version 7.6
 Conflicts:      xorg-x11-driver-video <= 7.6
@@ -136,6 +136,9 @@ the 830M and later.
 %setup -q -n %{name}-%{_version}
 
 %build
+# We have some -z now related errors during X default startup (boo#1197994):
+# this is directly visible on startup, so easy to test later on.
+export SUSE_ZNOW=0
 %define _lto_cflags %{nil}
 autoreconf -fvi
 %configure \
