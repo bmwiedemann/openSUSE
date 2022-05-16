@@ -557,4 +557,15 @@ Just leave it pending if you dont want it 'till 13.1 (forwarded request 150617 f
     <comment>- Added patch u_kscreen-rotation-fix.patch (boo#1193145).</comment>
     <requestid>952762</requestid>
   </revision>
+  <revision rev="42" vrev="6">
+    <srcmd5>ae65071333efa733878528656d0a04f5</srcmd5>
+    <version>19.1.0</version>
+    <time>1652717262</time>
+    <user>dimstar_suse</user>
+    <comment>- remove hardware supplements for AMD GPUs; i.e. no longer install
+  by default on AMD hardware; instead use &quot;modeset&quot; driver
+
+- set SUSE_ZNOW to 0 (boo#1197994)</comment>
+    <requestid>977270</requestid>
+  </revision>
 </revisionlist>

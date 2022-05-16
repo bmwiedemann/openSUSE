@@ -50,7 +50,6 @@ BuildRequires:  pkgconfig(xf86driproto)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 BuildRequires:  pkgconfig(xorg-server) >= 1.15
 BuildRequires:  pkgconfig(xproto)
-Supplements:    modalias(xorg-x11-server:pci:v00001002d*sv*sd*bc03sc*i*)
 # This was part of the xorg-x11-driver-video package up to version 7.6
 Conflicts:      xorg-x11-driver-video <= 7.6
 ExcludeArch:    s390 s390x
@@ -71,6 +70,9 @@ driver as appropriate.
 %autosetup -p1
 
 %build
+# We have some -z now related errors during X default startup (boo#1197994):
+# this is directly visible on startup, so easy to test later on.
+export SUSE_ZNOW=0
 autoreconf -fiv
 %configure \
   --enable-glamor

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May 14 20:57:24 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- remove hardware supplements for AMD GPUs; i.e. no longer install
+  by default on AMD hardware; instead use "modeset" driver
+
+-------------------------------------------------------------------
+Sat May 14 17:36:22 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- set SUSE_ZNOW to 0 (boo#1197994) 
+
+-------------------------------------------------------------------
 Thu Feb  3 06:46:11 UTC 2022 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Added patch u_kscreen-rotation-fix.patch (boo#1193145).
