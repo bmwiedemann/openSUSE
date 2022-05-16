@@ -279,4 +279,12 @@ Let somebody more skillfull review it. (forwarded request 195612 from DarkSS)</c
   * Resolve websocket uri only via https</comment>
     <requestid>965192</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ff244ac8b13e1691cdc4626f8b684544</srcmd5>
+    <version>3.0.1</version>
+    <time>1652717343</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977569</requestid>
+  </revision>
 </revisionlist>

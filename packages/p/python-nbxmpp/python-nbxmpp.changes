@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat May 14 21:39:58 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 3.0.1 (changes since 2.0.6):
+  * Add Roster module.
+  * Add Last Activity module.
+  * Add EntityTime module.
+  * Bookmarks: Add extensions support.
+  * Add Message Moderation.
+  * Implement SCRAM-SHA-512.
+  * AdHoc: Improve XEP-0050 Compliance.
+  * Correctly handle RSM count request.
+  * Correction: Ignore messages where message id == replace id.
+  * Blocking: Don’t abort processing after parsing unblocks.
+  * Handle multiple stanza-id elements.
+  * Many breaking changes to methods and structs.
+- The minimal required version of Python is 3.9.
+
+-------------------------------------------------------------------
 Sun Mar 27 11:14:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.6:
