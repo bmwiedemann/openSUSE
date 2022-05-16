@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 13 07:57:39 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.0.3
+  * Consume KeyEvents when activating a TAB accelerator.
+  * Fix Regression: Scrollbar position setting does not work if you
+    start  with a hidden scrollbar (gxo#apps/xfce4-terminal#192)
+  * Fix Regression: broken scroll-on-output and change the
+    default value (gxo#apps/xfce4-terminal#191)
+
+-------------------------------------------------------------------
 Fri Apr 22 01:52:03 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.0.2
