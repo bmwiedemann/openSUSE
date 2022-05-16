@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 16 07:56:26 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.18.0
+
+  ### New features
+
+  * [#233](https://github.com/rubocop-hq/rubocop-ast/pull/233): Make parse from Ruby 1.9 to 2.3 available. ([@koic][])
+
+-------------------------------------------------------------------
 Thu Apr 28 05:47:10 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.17.0
