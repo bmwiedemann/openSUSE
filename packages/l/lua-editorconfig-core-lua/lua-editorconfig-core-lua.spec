@@ -1,7 +1,7 @@
 #
-# spec file for package lua-editorconfig-core-lua
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,7 +55,9 @@ as the Editorconfig C Core library.
 %setup -q -n %{mod_name}-%{version}
 
 %build
-%cmake -DECL_LIBDIR:PATH=%{lua_archdir}
+%cmake -DECL_LIBDIR:PATH=%{lua_archdir} \
+    -DLUA_LIBRARY:PATH=%{lua_archdir} \
+    -DLUA_INCLUDE_DIR:PATH=%{lua_incdir}
 
 %install
 %cmake_install
