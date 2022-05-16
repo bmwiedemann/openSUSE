@@ -1,7 +1,7 @@
 #
 # spec file for package rasdaemon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rasdaemon
-Version:        0.6.7.18.git+7ccf12f
+Version:        0.6.8.0.git+c225517
 Release:        0
 Summary:        Utility to receive RAS error tracings
 License:        GPL-2.0-only

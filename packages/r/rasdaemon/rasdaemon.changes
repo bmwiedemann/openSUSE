@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May 10 09:21:05 UTC 2022 - moritz.kodytek@suse.com
+
+- Update to version 0.6.8.0.git+c225517:
+  * Bump version to 0.6.8
+  * misc/rasdaemon.spec.in: fix some issues on it
+  * Makefile.am: clean output from misc/*.in
+  * rasdaemon: Add some modules supported by hisi common error section
+  * rasdaemon: Fix some print format issues for hisi common error section
+  * rasdaemon: Fix the issue of command option -r for hip08
+  * rasdaemon: Fix the issue of sprintf data type mismatch in uuid_le()
+  * rasdaemon.service.in: comment out syslog.target
+  * add labels for asrock x570 motherboard
+  * Update ras-mc-ctl manpage to match current options
+  * rasdaemon: ras-mc-ctl: Fix script to parse dimm sizes
+  * rasdaemon: fix compile against musl libc
+
+-------------------------------------------------------------------
 Thu Oct 14 09:33:08 UTC 2021 - Thomas Renninger <trenn@suse.de>
 
 - Fix systemd service file pointing to fillup file instead of

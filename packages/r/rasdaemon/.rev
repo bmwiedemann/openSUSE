@@ -146,4 +146,12 @@ changelog entry. (forwarded request 546107 from eeich)</comment>
   /etc/sysconfig/rasdaemon</comment>
     <requestid>925227</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8abce08c82ef5014f0c70e9bad58243b</srcmd5>
+    <version>0.6.8.0.git+c225517</version>
+    <time>1652717297</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977356</requestid>
+  </revision>
 </revisionlist>
