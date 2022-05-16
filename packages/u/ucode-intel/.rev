@@ -830,4 +830,12 @@
   | DNV            | B0       | 06-5f-01/01 | 00000036 | 00000038 | Atom C Series</comment>
     <requestid>976300</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>af03cc924143b7c508c8e468c7b06656</srcmd5>
+    <version>20220510</version>
+    <time>1652717227</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to Intel CPU Microcode 20220510 release. (bsc#1199423)</comment>
+    <requestid>977435</requestid>
+  </revision>
 </revisionlist>

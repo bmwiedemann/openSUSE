@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Wed May 11 10:53:51 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
-- Updated to Intel CPU Microcode 20220510 release. (bsc#20220510)
+- Updated to Intel CPU Microcode 20220510 release. (bsc#1199423)
   - CVE-2022-21151: Security updates for [INTEL-SA-000617](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00617.html)
   - Update for functional issues. Refer to [Second Generation Intel Xeon Processor Scalable Family Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/338848) for details.
   - Update for functional issues. Refer to [Intel Xeon Processor Scalable Family Specification Update](https://www.intel.com/content/www/us/en/processors/xeon/scalable/xeon-scalable-spec-update.html?wapkw=processor+specification+update) for details.
