@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 10 07:39:30 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Use gcc-d (gdc) for bootstrapping as recommended by upstream.
+  Only gdc is needed for bootstrapping instead of various older ldc
+  versions, which also allows to use newer versions of LLVM
+  (boo#1199054). On top of that, this allows ldc to use the shared
+  runtime built with itself.
+- Drop use of binutils-gold, 1.29.0 does not use it by default anymore
+- Mention %so_ver in %files
+
+-------------------------------------------------------------------
 Tue Apr 12 11:47:22 CEST 2022 - Chris Josten <chris+suse@netsoj.nl>
 
 - Update to 1.29.0:

@@ -22,22 +22,27 @@
 %define lname_phobos  libphobos2-%{name}
 %define _bashcompletionsdir %{_datadir}/bash-completion/completions
 
-# llvm7 does not support -flto=4 flag
-%define _lto_cflags %{nil}
-
-# Do bootstrap (even in Tumbleweed, and Leap 15+), otherwise LDC will build
-# against old installed .so instead of new built one
+# With bootstrap enabled (the default), gdc is used (through the gdmd wrapper)
+# to build ldc (and shared runtime), then the built ldc is used to build ldc
+# itself again. The final ldc with shared runtime is then installed.
+# With bootstrap disabled, ldc from the ldc package is used directly to build
+# the new ldc. Note that the resulting ldc is linked against the old ldc's
+# runtime, which might not be compatible with the newly built one!
 %bcond_without ldc_bootstrap
 
-%ifarch %{ix86} %arm
-# 32-bit needs 1.12.0 intermediate build due to: https://github.com/ldc-developers/ldc/issues/2947
-# And 1.26+ needs a more recent intermediate compiler: https://github.com/ldc-developers/ldc/issues/3729
-%bcond_without ldc_intermediate
+%bcond_with ldc_tests
+
+# Dynamic compiling is not supported with LLVM >= 12
+%if %{pkg_vcmp llvm-devel >= 12}
+%global jit_support 0
 %else
-%bcond_with ldc_intermediate
+%global jit_support 1
 %endif
 
-%bcond_with ldc_tests
+# LLVM LTO is too much for 32bit ARM
+%ifarch %arm
+%define _lto_cflags %nil
+%endif
 
 Name:           ldc
 Version:        1.29.0
@@ -54,15 +59,8 @@ BuildRequires:  help2man
 BuildRequires:  libconfig++-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libstdc++-devel
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
-# Use clang7/llvm7 on Tumbleweed due to https://github.com/ldc-developers/ldc/issues/3109
-BuildRequires:  clang7
-BuildRequires:  llvm7-devel
-%else
 BuildRequires:  llvm-clang >= 6.0
 BuildRequires:  llvm-devel >= 6.0
-%endif
-BuildRequires:  binutils-gold
 BuildRequires:  ncurses-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  zlib-devel
@@ -72,30 +70,24 @@ Recommends:     ldc-phobos-devel = %{version}
 Recommends:     %{name}-bash-completion
 Recommends:     ldc-jit-devel = %{version}
 Recommends:     ldc-runtime-devel = %{version}
-# Since version 1.13.0, ldc uses ld.gold by default
-Requires:       binutils-gold
 %if %{with ldc_bootstrap}
-# v0.17.6 is the last version buildable with a C++ compiler, so use it for bootstrapping
-Source10:       https://github.com/ldc-developers/ldc/releases/download/v0.17.6/ldc-0.17.6-src.tar.gz
-%if %{with ldc_intermediate}
-# 1.12.0 is needed to build on 32-bit: https://github.com/ldc-developers/ldc/issues/2947
-Source11:       https://github.com/ldc-developers/ldc/releases/download/v1.12.0/ldc-1.12.0-src.tar.gz
-Source12:       https://github.com/ldc-developers/ldc/releases/download/v1.25.1/ldc-1.25.1-src.tar.gz
+# Use GDC 10, available on 15.3+
+%if 0%{?suse_version} < 1550
+%global gdc_version 10
+%global gdc_suffix -%{gdc_version}
 %endif
-%endif
-%if %{with ldc_tests}
-BuildRequires:  gcc-c++
-BuildRequires:  gdb
-%endif
-%if %{without ldc_bootstrap}
+# Clang uses the newest gcc to find headers and libs
+BuildRequires:  gcc%{?gdc_version}-c++
+BuildRequires:  gdmd%{?gdc_suffix}
+%else
 BuildRequires:  ldc
 BuildRequires:  ldc-phobos-devel
 BuildRequires:  ldc-runtime-devel
 %endif
 %if %{with ldc_tests}
+BuildRequires:  gcc-c++
+BuildRequires:  gdb
 BuildRequires:  python
-%endif
-%if %{with ldc_tests}
 BuildRequires:  timezone
 BuildRequires:  unzip
 %endif
@@ -120,7 +112,6 @@ Summary:        Development files for the D runtime library
 Group:          Development/Libraries/Other
 Requires:       %{lname_runtime}%{so_ver} = %{version}
 Recommends:     ldc-phobos-devel = %{version}
-Group:          System/Libraries
 
 %description runtime-devel
 This package contains the druntime development files necessary for developing
@@ -166,86 +157,36 @@ Requires:       bash-completion
 Optional dependency offering bash completion for ldc2
 
 %prep
-%setup -q -n ldc-%{version}-src
-%patch0 -p1
-%if %{with ldc_bootstrap}
-tar xf %{SOURCE10}
-pushd ldc-0.17.6-src
-popd
-%if %{with ldc_intermediate}
-tar xf %{SOURCE11}
-pushd ldc-1.12.0-src
-%patch0 -p1
-popd
-tar xf %{SOURCE12}
-pushd ldc-1.25.1-src
-%patch0 -p1
-popd
-%endif
-%endif
+%autosetup -p1 -n ldc-%{version}-src
 
 %build
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
-%ifarch aarch64
-# llvm7 does not support '-mbranch-protection=standard' option
-export CFLAGS=`echo "%{optflags}" |sed 's/-mbranch-protection=standard//'`
-export CXXFLAGS=`echo "%{optflags}" |sed 's/-mbranch-protection=standard//'`
-%endif
-%endif
 %if %{with ldc_bootstrap}
-pushd ldc-0.17.6-src
+# Work around gdc bug with stdin (https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105544)
+echo "pragma(msg, int(__VERSION__));" > feVer.d
+sed -i "s# - -o-# \"$PWD/feVer.d\" -o-#" cmake/Modules/FindDCompiler.cmake
+
+%define __builddir build-bootstrap
+
 #Needs to be compiled with clang, but opensuse_rules.cmake forces gcc so disable rule
-touch ./no-suse-rules
-mkdir build && pushd build
-# FIXME: you should use %%cmake macros
-cmake \
+touch no-suse-rules
+%cmake \
     -DCMAKE_USER_MAKE_RULES_OVERRIDE=./no-suse-rules \
     -DCMAKE_C_COMPILER="%{_bindir}/clang" \
     -DCMAKE_CXX_COMPILER="%{_bindir}/clang++" \
     -DINCLUDE_INSTALL_DIR:PATH=%{_includedir}/d \
-    -DCMAKE_CXX_FLAGS="-std=c++11" \
-    -DCMAKE_C_FLAGS="-fPIC" \
-    ..
+    -DD_COMPILER:PATH=%{_bindir}/gdmd%{?gdc_suffix} \
+    -DCMAKE_CXX_FLAGS="-std=c++11"
 %make_build
-popd
-popd
-%if %{with ldc_intermediate}
-pushd ldc-1.12.0-src
-#Needs to be compiled with clang, but opensuse_rules.cmake forces gcc so disable rule
-touch ./no-suse-rules
-mkdir build && pushd build
-# FIXME: you should use %%cmake macros
-cmake \
-    -DCMAKE_USER_MAKE_RULES_OVERRIDE=./no-suse-rules \
-    -DCMAKE_C_COMPILER="%{_bindir}/clang" \
-    -DCMAKE_CXX_COMPILER="%{_bindir}/clang++" \
-    -DINCLUDE_INSTALL_DIR:PATH=%{_includedir}/d \
-    -DD_COMPILER:PATH=`pwd`/../../ldc-0.17.6-src/build/bin/ldmd2 \
-    -DCMAKE_CXX_FLAGS="-std=c++11" \
-    -DCMAKE_C_FLAGS="-fPIC" \
-    ..
-%make_build
-popd
-popd
-pushd ldc-1.25.1-src
-#Needs to be compiled with clang, but opensuse_rules.cmake forces gcc so disable rule
-touch ./no-suse-rules
-mkdir build && pushd build
-# FIXME: you should use %%cmake macros
-cmake \
-    -DCMAKE_USER_MAKE_RULES_OVERRIDE=./no-suse-rules \
-    -DCMAKE_C_COMPILER="%{_bindir}/clang" \
-    -DCMAKE_CXX_COMPILER="%{_bindir}/clang++" \
-    -DINCLUDE_INSTALL_DIR:PATH=%{_includedir}/d \
-    -DD_COMPILER:PATH=`pwd`/../../ldc-1.12.0-src/build/bin/ldmd2 \
-    -DCMAKE_CXX_FLAGS="-std=c++11" \
-    -DCMAKE_C_FLAGS="-fPIC" \
-    ..
-%make_build
-popd
-popd
+# The bootstrap compiler is used in-place instead of installed and will
+# thus set an rpath on generated executables. The next/final stage will be
+# installed and should use its own libs, so explicitly disable the rpath.
+sed -i '/rpath/d' bin/ldc2.conf
+export LD_LIBRARY_PATH="$PWD/%_lib"
+cd ..
+
+%define __builddir build
 %endif
-%endif
+
 #Needs to be compiled with clang, but opensuse_rules.cmake forces gcc so disable rule
 touch no-suse-rules
 %cmake \
@@ -254,11 +195,7 @@ touch no-suse-rules
     -DCMAKE_CXX_COMPILER="%{_bindir}/clang++" \
     -DINCLUDE_INSTALL_DIR:PATH=%{_includedir}/d \
 %if %{with ldc_bootstrap}
-%if %{with ldc_intermediate}
-    -DD_COMPILER:PATH=`pwd`/../ldc-1.25.1-src/build/bin/ldmd2 \
-%else
-    -DD_COMPILER:PATH=`pwd`/../ldc-0.17.6-src/build/bin/ldmd2 \
-%endif
+    -DD_COMPILER:PATH=$PWD/../build-bootstrap/bin/ldmd2 \
 %endif
     -DCMAKE_CXX_FLAGS="-std=c++11"
 %make_build
@@ -266,6 +203,8 @@ touch no-suse-rules
 %if %{with ldc_tests}
 %check
 pushd build/
+# Make sure it can find its own libs
+export LD_LIBRARY_PATH="$PWD/%_lib"
 %make_build test
 popd
 %endif
@@ -276,6 +215,8 @@ popd
 install -d %{buildroot}%{_bashcompletionsdir}
 mv %{buildroot}%{_sysconfdir}/bash_completion.d/ldc2 %{buildroot}%{_bashcompletionsdir}
 rmdir %{buildroot}%{_sysconfdir}/bash_completion.d/
+# Make sure it can find its own libs (help2man runs the binaries)
+export LD_LIBRARY_PATH="$PWD/build/%_lib"
 # Build man pages
 help2man %{buildroot}%{_bindir}/ldc2  > ldc2.1  && gzip ldc2.1
 help2man %{buildroot}%{_bindir}/ldmd2 > ldmd2.1 && gzip ldmd2.1
@@ -299,7 +240,9 @@ rm -rf %{buildroot}%{_prefix}/lib/debug
 %{_bindir}/ldmd2
 
 %files -n %{lname_runtime}%{so_ver}
+%{_libdir}/%{lname_runtime}-shared.so.%{so_ver}
 %{_libdir}/%{lname_runtime}-shared.so.*
+%{_libdir}/%{lname_runtime}-debug-shared.so.%{so_ver}
 %{_libdir}/%{lname_runtime}-debug-shared.so.*
 %{_libdir}/ldc_rt.dso.o
 
@@ -314,15 +257,20 @@ rm -rf %{buildroot}%{_prefix}/lib/debug
 %{_includedir}/d/object.d
 
 %files -n %{lname_phobos}%{so_ver}
+%{_libdir}/%{lname_phobos}-shared.so.%{so_ver}
 %{_libdir}/%{lname_phobos}-shared.so.*
+%{_libdir}/%{lname_phobos}-debug-shared.so.%{so_ver}
 %{_libdir}/%{lname_phobos}-debug-shared.so.*
 
+%if %jit_support
 %files -n %{lname_jit}%{so_ver}
+%{_libdir}/%{lname_jit}.so.%{so_ver}
 %{_libdir}/%{lname_jit}.so.*
 
 %files jit-devel
 %{_libdir}/%{lname_jit}-rt.a
 %{_libdir}/%{lname_jit}.so
+%endif
 
 %files phobos-devel
 %{_libdir}/%{lname_phobos}-shared.so

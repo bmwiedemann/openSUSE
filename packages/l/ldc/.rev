@@ -237,4 +237,18 @@
     <comment>- Update to 1.29.0</comment>
     <requestid>972624</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>224b406bf070849984cd85bac8d81454</srcmd5>
+    <version>1.29.0</version>
+    <time>1652717264</time>
+    <user>dimstar_suse</user>
+    <comment>- Use gcc-d (gdc) for bootstrapping as recommended by upstream.
+  Only gdc is needed for bootstrapping instead of various older ldc
+  versions, which also allows to use newer versions of LLVM
+  (boo#1199054). On top of that, this allows ldc to use the shared
+  runtime built with itself.
+- Drop use of binutils-gold, 1.29.0 does not use it by default anymore
+- Mention %so_ver in %files</comment>
+    <requestid>976651</requestid>
+  </revision>
 </revisionlist>
