@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue May 10 08:17:59 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.94.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.94.0
+- Changes since 5.93.0:
+  * avif: prepare for breaking change in libavif
+  * XCF: Support to QImageIOHandler::Size option
+  * Support to QImageIOHandler::Size option
+  * QByteArray resize removal
+  * psd: Fix crash on broken files
+  * psd: duotone read
+  * psd: Don't crash with broken images
+  * psd: Header depth has to be 8 for CM_INDEXED color_mode
+  * psd: Protect against broken images
+  * psd: Don't abort on broken images
+  * avif: lossless support
+  * psd: Don't assert on broken files
+  * Add windows CI
+  * PSD: Performance improvements and support to missing common formats
+
+-------------------------------------------------------------------
 Sun Apr  3 10:47:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.93.0
