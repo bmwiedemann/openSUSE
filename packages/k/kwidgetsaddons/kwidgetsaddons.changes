@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue May 10 08:18:12 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.94.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.94.0
+- Changes since 5.93.0:
+  * KDateComboBox: Add test for date picker integration
+  * KDateComboBox: Add a test app for KDateComboBox
+  * Use KDatePickerPopup in KDateComboBox
+  * Add support for custom date word maps, as done in KDateComboBox
+  * Share date range support between KDateComboBox and KDatePickerPopup
+  * KDateComboBoxPrivate does not need a virtual dtor
+  * Allow to change KDatePickerPopup modes at runtime
+  * Implement date word actions as done in KDateCombobox
+  * Build the date picker menu dynamically on demand
+  * Add KDatePickerPopup
+  * Add windows CI
+  * KPageDialog: Add a new face type with a flat list of small icons
+
+-------------------------------------------------------------------
 Sun Apr  3 10:47:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.93.0
