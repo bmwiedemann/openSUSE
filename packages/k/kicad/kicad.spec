@@ -20,8 +20,8 @@
 # symbol libraries from version 6.0.0
 %define compatversion 6.0.0
 Name:           kicad
-Version:        6.0.4
-%define file_version 6.0.4
+Version:        6.0.5
+%define file_version 6.0.5
 Release:        0
 Summary:        EDA software suite for the creation of schematics and PCB
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later
@@ -35,9 +35,9 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
 BuildRequires:  glm-devel >= 0.9.8
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_test-devel
+BuildRequires:  libboost_filesystem-devel-impl
+BuildRequires:  libboost_system-devel-impl >= 1.71
+BuildRequires:  libboost_test-devel-impl
 BuildRequires:  libngspice-devel
 BuildRequires:  occt-devel
 BuildRequires:  pkg-config
@@ -119,6 +119,8 @@ Provides translations for the "%{name}" package.
 
 %build
 %cmake \
+    -DCMAKE_SKIP_RPATH:BOOL=OFF \
+    -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
     -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-undefined -Wl,-z,now -pie" \
     -DKICAD_DOCS:PATH=%{_docdir}/kicad \
     -DPYTHON_SITE_PACKAGE_PATH=%{python3_sitearch} \

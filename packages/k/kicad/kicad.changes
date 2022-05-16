@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 13 19:39:26 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 6.0.5
+  See https://www.kicad.org/blog/2022/05/KiCad-6.0.5-Release/ for details.
+- Use Boost >= 1.71 on Leap.
+
+-------------------------------------------------------------------
 Sat Mar 19 03:17:58 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 6.0.4
