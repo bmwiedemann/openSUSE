@@ -1,7 +1,7 @@
 #
 # spec file for package pcsc-lite
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %define PKG_USER	scard
 %define PKG_GROUP	scard
 Name:           pcsc-lite
-Version:        1.9.5
+Version:        1.9.7
 Release:        0
 Summary:        PC/SC Smart Cards Library
 License:        BSD-3-Clause AND GPL-3.0-or-later
@@ -42,6 +42,7 @@ Source8:        %{name}.keyring
 Source9:        %{name}.sysusers
 Patch0:         systemd-service.patch
 Patch1:         harden_pcscd.service.patch
+BuildRequires:  flex
 BuildRequires:  gcc
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -124,7 +125,7 @@ cp -a %{SOURCE1} %{SOURCE2} %{SOURCE6} .
 	--enable-polkit \
 	--enable-filter \
 	--disable-static
-make %{?_smp_mflags}
+	make %{?_smp_mflags}
 
 %install
 %make_install
