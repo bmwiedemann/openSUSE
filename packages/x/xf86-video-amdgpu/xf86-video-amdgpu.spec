@@ -51,7 +51,6 @@ BuildRequires:  pkgconfig(xf86driproto)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 BuildRequires:  pkgconfig(xorg-server) >= 1.16
 BuildRequires:  pkgconfig(xproto)
-Supplements:    modalias(xorg-x11-server:pci:v00001002d*sv*sd*bc03sc*i*)
 # This was part of the xorg-x11-driver-video package up to version 7.6
 Conflicts:      xorg-x11-driver-video <= 7.6
 ExcludeArch:    s390 s390x

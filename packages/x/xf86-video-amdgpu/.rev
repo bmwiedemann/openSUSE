@@ -351,4 +351,13 @@
     <comment></comment>
     <requestid>977125</requestid>
   </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>9e7050cd592a5e8bb9ed22bd350f011c</srcmd5>
+    <version>22.0.0</version>
+    <time>1652717262</time>
+    <user>dimstar_suse</user>
+    <comment>- remove hardware supplements for AMD GPUs; i.e. no longer install
+  by default on AMD hardware; instead use &quot;modeset&quot; driver</comment>
+    <requestid>977271</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 14 20:59:19 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- remove hardware supplements for AMD GPUs; i.e. no longer install
+  by default on AMD hardware; instead use "modeset" driver
+
+-------------------------------------------------------------------
 Fri May 13 22:28:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - set SUSE_ZNOW to 0
