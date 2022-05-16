@@ -1,7 +1,7 @@
 #
 # spec file for package sysvinit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,9 +37,9 @@ BuildRequires:  blog-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #!BuildIgnore:  sysvinit-tools
 URL:            https://savannah.nongnu.org/projects/sysvinit/
-Source:         http://download.savannah.nongnu.org/releases/sysvinit/sysvinit-%{SIVER}.tar.xz
+Source:         https://download.savannah.nongnu.org/releases/sysvinit/sysvinit-%{SIVER}.tar.xz
 Source1:        https://github.com/bitstreamout/killproc/archive/v%{KPVER}.tar.gz#/killproc-%{KPVER}.tar.gz
-Source2:        http://download.savannah.nongnu.org/releases/sysvinit/startpar-%{START}.tar.xz
+Source2:        https://download.savannah.nongnu.org/releases/sysvinit/startpar-%{START}.tar.xz
 Patch:          %{name}-2.90.dif
 Patch2:         %{name}-2.88dsf-suse.patch
 Patch9:         %{name}-2.90-no-kill.patch
