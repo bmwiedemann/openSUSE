@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 10 08:18:09 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.94.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.94.0
+- Too many changes since 5.93.0, only listing bugfixes:
+  * avoid cursor move on insert of line at EOF on save (kde#453252)
+  * Fix crash when ModeMenuList wasn't init but we try to reload it (kde#452282)
+
+-------------------------------------------------------------------
 Sun Apr  3 10:47:26 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.93.0
