@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat May 14 21:39:58 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.4.0:
+  * Rework GUI (Main Window and Chat).
+  * Integrate Plugin Installer.
+  * Integrate Image Preview Plugin.
+  * Integrate Syntax Highlight Plugin.
+  * Integrate AppIndicator Plugin.
+  * Allow customising Shortcuts.
+  * Support Message Moderation in Group Chats.
+  * Allow administrators to define setting overrides.
+  * Drop zeroconf support.
+  * Remove History Manager.
+  * Remove Single Message Dialogue.
+  * Group Chat: Move many menu options into details dialogue.
+  * Bug fixes:
+    See https://dev.gajim.org/gajim/gajim/-/blob/gajim-1.4.0/ChangeLog#L23
+
+-------------------------------------------------------------------
 Tue Jan 18 08:50:42 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Plugins sub-folder must be owned by a package

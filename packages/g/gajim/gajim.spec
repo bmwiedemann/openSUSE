@@ -16,45 +16,48 @@
 #
 
 
+%global __requires_exclude ^typelib\\(AppIndicator3\\)
+# Requires at least python 3.9
+%define py3ver 3.10
+%define py3pkg python310
+%define py3pkg_sitelib %{_prefix}/lib/python%{py3ver}/site-packages
 Name:           gajim
-Version:        1.3.3
+Version:        1.4.0
 Release:        0
-Summary:        XMPP client written in Python and Gtk3
+Summary:        XMPP client written in Python and Gtk
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Talk/Clients
 URL:            https://gajim.org/
-Source:         https://gajim.org/downloads/1.3/gajim-%{version}.tar.gz
+Source:         https://gajim.org/downloads/1.4/gajim-%{version}.tar.gz
+BuildRequires:  %{py3pkg}-nbxmpp >= 3.0
+BuildRequires:  %{py3pkg}-precis-i18n >= 1.0.0
+BuildRequires:  %{py3pkg}-setuptools
 BuildRequires:  ca-certificates-mozilla
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  p11-kit-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python3 >= 3.7.0
-BuildRequires:  python3-nbxmpp >= 2.0.4
-BuildRequires:  python3-precis-i18n >= 1.0.0
-BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
+Requires:       %{py3pkg}-base
+Requires:       %{py3pkg}-css-parser
+Requires:       %{py3pkg}-gobject-Gdk
+Requires:       %{py3pkg}-gobject-cairo
+Requires:       %{py3pkg}-keyring
+Requires:       %{py3pkg}-nbxmpp >= 3.0
+Requires:       %{py3pkg}-precis-i18n >= 1.0.0
+Requires:       %{py3pkg}-pyOpenSSL >= 16.2
+Requires:       %{py3pkg}-pycairo >= 1.16.0
 Requires:       ca-certificates-mozilla
-Requires:       python3 >= 3.7.0
-Requires:       python3-css-parser
-Requires:       python3-gobject-Gdk
-Requires:       python3-gobject-cairo
-Requires:       python3-keyring
-Requires:       python3-nbxmpp >= 2.0.1
-Requires:       python3-precis-i18n >= 1.0.0
-Requires:       python3-pyOpenSSL >= 16.2
-Requires:       python3-pycairo >= 1.16.0
+Requires:       typelib(GtkSource) = 3.0
 Requires:       typelib(Soup) = 2.4
+# WebP avatars.
+Recommends:     %{py3pkg}-Pillow
+# gajim-remote
+Recommends:     %{py3pkg}-dbus-python
 # OMEMO encryption
 Recommends:     gajim-plugin-omemo
-Recommends:     python3-axolotl
-# WebP avatars.
-Recommends:     python3-Pillow
-# gajim-remote
-Recommends:     python3-dbus-python
-# zeroconf support.
-Suggests:       dbus-1-glib
+Recommends:     %{py3pkg}-axolotl
 BuildArch:      noarch
 
 %description
@@ -83,22 +86,19 @@ Features:
 %lang_package
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
+%setup -q
 sed -i '/^Keywords/d' data/org.gajim.Gajim.desktop.in
 
 %build
-python3 setup.py build
+python%{py3ver} setup.py build
 
 %install
-python3 setup.py install \
+python%{py3ver} setup.py install \
   --root=%{buildroot} --prefix=%{_prefix}
 
 mkdir -p %{buildroot}%{_datadir}/
-mv %{buildroot}{%{python3_sitelib}/%{name}/data,%{_datadir}/%{name}}/
-ln -s %{_datadir}/%{name} %{buildroot}%{python3_sitelib}/%{name}/data
-
-# Plugins sub-folder must be owned by a package
-mkdir %{buildroot}%{_datadir}/%{name}/plugins
+mv %{buildroot}{%{py3pkg_sitelib}/%{name}/data,%{_datadir}/%{name}}/
+ln -s %{_datadir}/%{name} %{buildroot}%{py3pkg_sitelib}/%{name}/data
 
 %suse_update_desktop_file -r org.gajim.Gajim Network InstantMessaging
 %fdupes %{buildroot}%{_prefix}/
@@ -108,8 +108,8 @@ mkdir %{buildroot}%{_datadir}/%{name}/plugins
 %license COPYING
 %{_bindir}/%{name}*
 %{_datadir}/%{name}/
-%{python3_sitelib}/%{name}/
-%{python3_sitelib}/%{name}-*
+%{py3pkg_sitelib}/%{name}/
+%{py3pkg_sitelib}/%{name}-*
 %{_datadir}/applications/*%{name}*.desktop
 %{_datadir}/icons/hicolor/*/apps/*%{name}*.*
 %dir %{_datadir}/metainfo/

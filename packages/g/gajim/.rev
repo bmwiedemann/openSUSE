@@ -331,4 +331,12 @@
     <comment></comment>
     <requestid>947241</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>3998c535e47fee79be56a431a7b6f159</srcmd5>
+    <version>1.4.0</version>
+    <time>1652801043</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.0.</comment>
+    <requestid>977285</requestid>
+  </revision>
 </revisionlist>
