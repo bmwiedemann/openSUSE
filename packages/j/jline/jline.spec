@@ -26,11 +26,10 @@ URL:            https://github.com/jline/jline2
 Source0:        https://github.com/jline/jline2/archive/jline-%{version}.tar.gz
 Source1:        %{name}-build.xml
 Patch0:         jline-java8compat.patch
+Patch1:         jline-jansi2.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  hawtjni-runtime
 BuildRequires:  jansi
-BuildRequires:  jansi-native
 BuildRequires:  javapackages-local
 #!BuildIgnore:  ant-antlr
 Requires:       mvn(org.fusesource.jansi:jansi)
@@ -52,6 +51,7 @@ This package contains the API documentation for %{name}.
 %prep
 %setup -q -n jline2-jline-%{version}
 %patch0 -p1
+%patch1 -p1
 %pom_change_dep org.fusesource.jansi:jansi org.fusesource.jansi:jansi:1.12
 cp %{SOURCE1} build.xml
 mkdir -p lib
@@ -70,7 +70,7 @@ mkdir -p lib
 %pom_remove_parent
 
 %build
-build-jar-repository -s lib jansi jansi-native hawtjni/hawtjni-runtime
+build-jar-repository -s lib jansi
 %{ant} package javadoc
 
 %install

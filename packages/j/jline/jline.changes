@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 16 11:09:38 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jline-jansi2.patch
+    + fix jline build against jansi 2.4.x
+- Remove dependency on jansi-native and hawtjni-runtime
+
+-------------------------------------------------------------------
 Sun Mar 20 13:12:08 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source and target levels 8
