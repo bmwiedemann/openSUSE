@@ -1391,6 +1391,7 @@
     <package name="libKF5JobWidgets5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5KCMUtils5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5KCMUtils5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKF5KCMUtilsCore5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5KDEGames7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5KDELibs4Support5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5KDcraw5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2705,9 +2706,6 @@
     <package name="libvcdinfo0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libvdeplug3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libvdpau1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libvdpau_r300" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libvdpau_r600" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libvdpau_radeonsi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libverto1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libvidstab1_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libvirglrenderer1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->

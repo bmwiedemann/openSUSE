@@ -4287,6 +4287,7 @@ unsorted:
   - gdm-branding-upstream 
   - gdm-devel 
   - gdm-systemd 
+  - gdmd 
   - gdouros-abydos-fonts 
   - gdouros-abydos-fonts-doc 
   - gdouros-aegean-fonts 
@@ -7262,7 +7263,6 @@ unsorted:
   - installation-images-debuginfodeps-Kubic: [x86_64] 
   - installation-images-debuginfodeps-MicroOS: [x86_64] 
   - installation-images-debuginfodeps-openSUSE 
-  - installation-images-extras 
   - installation-images-openSUSE 
   - instlux 
   - instsource-susedata 
@@ -8054,6 +8054,7 @@ unsorted:
   - kcalutils-devel 
   - kcm_fcitx5 
   - kcmutils-devel 
+  - kcmutils-imports 
   - kcodecs-devel 
   - kcompletion-devel 
   - kconfig-devel 
@@ -8732,7 +8733,6 @@ unsorted:
   - ldb-tools 
   - ldc 
   - ldc-bash-completion 
-  - ldc-jit-devel 
   - ldc-phobos-devel 
   - ldc-runtime-devel 
   - ldirectord 
@@ -10334,7 +10334,7 @@ unsorted:
   - libclc 
   - libcld2-0 
   - libcli-devel 
-  - libcli1_9 
+  - libcli1_10 
   - libclingo4 
   - libcliquer1 
   - libclocale-devel 
@@ -12035,7 +12035,6 @@ unsorted:
   - libldapcpp-devel 
   - libldastoolsal7 
   - libldb-devel 
-  - libldc-jit99 
   - libldl-doc 
   - libldl2 
   - libldm-1_0-0: [i586] 
@@ -12656,6 +12655,8 @@ unsorted:
   - libnumbertext-devel 
   - libnumbertext-tools 
   - libnuspell5 
+  - libnutclient0 
+  - libnutscan1 
   - libnvidia-container-devel: [x86_64] 
   - libnvidia-container-static: [x86_64] 
   - libnvidia-container-tools: [x86_64] 
@@ -14510,7 +14511,7 @@ unsorted:
   - libupnpp-devel 
   - libupnpp11 
   - libupower-glib-devel 
-  - libupsclient1 
+  - libupsclient4 
   - liburcu-devel 
   - liburcu8-32bit: [x86_64] 
   - liburfkill-glib-devel 
@@ -14595,8 +14596,11 @@ unsorted:
   - libvdpau1-32bit: [x86_64] 
   - libvdpau_nouveau 
   - libvdpau_nouveau-32bit: [x86_64] 
+  - libvdpau_r300 
   - libvdpau_r300-32bit: [x86_64] 
+  - libvdpau_r600 
   - libvdpau_r600-32bit: [x86_64] 
+  - libvdpau_radeonsi 
   - libvdpau_radeonsi-32bit: [x86_64] 
   - libvdpau_trace1 
   - libvdpau_trace1-32bit: [x86_64] 
@@ -17759,6 +17763,10 @@ unsorted:
   - nut 
   - nut-cgi 
   - nut-devel 
+  - nut-devel-doc-html 
+  - nut-doc-asciidoc 
+  - nut-doc-html 
+  - nut-doc-images 
   - nut-drivers-net 
   - nvdock 
   - nvidia-texture-tools 
@@ -26843,8 +26851,6 @@ unsorted:
   - python38-nbsphinx 
   - python38-nbsphinx-link 
   - python38-nbval 
-  - python38-nbxmpp 
-  - python38-nbxmpp-doc 
   - python38-ncclient 
   - python38-ndg-httpsclient 
   - python38-neovim 
@@ -32120,7 +32126,6 @@ unsorted:
   - retro-gtk 
   - retro-gtk-devel 
   - retroarch 
-  - retroarch-assets 
   - reuse 
   - revelation 
   - revelation-lang 
