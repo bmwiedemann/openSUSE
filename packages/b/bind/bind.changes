@@ -1,4 +1,178 @@
 -------------------------------------------------------------------
+Mon May 16 08:14:55 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add upstream patch bind-prevent-buffer-overflow.patch.
+
+-------------------------------------------------------------------
+Thu May 12 14:25:28 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
+
+- The named-checkconf had been moved from /usr/sbin to /usr/bin
+  but that had not been reflected in scripts that called this,
+  eg named.prep. So these scripts failed.
+  Some installations still have "createNamedConfInclude" in the
+  NAMED_INITIALIZE_SCRIPTS in /etc/sysconfig/named. The named.prep
+  will now report this but continue.
+  [bsc#1199044, vendor-files.tar.bz2]
+
+-------------------------------------------------------------------
+Mon Apr 25 06:56:58 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to 9.18.2:
+  Most important bugs fixed:
+  * The "starting maxtime timer" message related to outgoing
+    zone transfers was incorrectly logged at the ERROR level
+    instead of DEBUG(1).
+  * Ensure that zone maintenance queries have a retry limit.
+  * When using both the `+qr` and `+y` options `dig` could
+    crash if the connection to the first server was not
+    successful.
+  * dig could hang in some cases involving multiple servers
+    in a lookup, when a request fails and the next one
+    refuses to start for some reason, for example if it was
+    an IPv4 mapped IPv6 address.
+  * dig +nssearch was hanging until manually interrupted.
+  * When an UPDATE targets a zone that is not configured,
+    the requested zone name is now logged in the "not
+    authoritative" error message, so that it is easier to
+    track down problematic update clients.
+  * Quote the dns64 prefix in error messages that complain
+    about problems with it, to avoid confusion with the
+    following dns64 ACLs.
+  * When encountering socket error while trying to initiate
+    a TCP connection to a server, dig could hang
+    indefinitely, when there were more servers to try.
+  * When timing-out or having other types of socket errors
+    during a query, dig wasn't trying to perform the lookup
+    using other servers, in case they exist.
+  * Resending a UDP request in the result of a timeout
+    could cause an assertion failure when the resent
+    query's result was SERVFAIL.
+  * Replace single TCP write timer with per-TCP write
+    timers.
+  * Invalid dnssec-policy definitions were being accepted
+    where the defined keys did not cover both KSK and ZSK
+    roles for a given algorithm.  This is now checked for
+    and the dnssec-policy is rejected if both roles are
+    not present for all algorithms in use.
+  * Fix query context management issues in the TCP part
+    of dig.
+
+  Noteworthy functional changes:
+  * Add new "reuseport" option to enable/disable load
+    balancing of sockets.
+  * Set the minimum MTU on UDPv6 and TCPv6 sockets and
+    limit TCP maximum segment size (TCP_MAXSEG) to (1220)
+    for both TCPv4 and TCPv6 sockets.
+  
+  Needed to define two macros in contrib code:
+  FALLTHOUGH is a copy of how it is defined in <isc/util.h>
+
+  UNREACHABLE follows the model used in MacOS /usr/include/c++/v1/cstdlib
+  to determine if __builtin_ureachable is available
+  [bind-9.18.2.tar.xz, bind-9.18.2.tar.xz.sha512.asc,
+  bind-define-local-instances-of-FALLTHROUGH-and-UNREACHABLE.patch]
+
+-------------------------------------------------------------------
+Thu Mar 17 07:28:25 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
+
+- * When using forwarders, bogus NS records supplied by, or via, those
+    forwarders may be cached and used by named if it needs to recurse
+    for any reason, causing it to obtain and pass on potentially
+    incorrect answers. [CVE-2021-25220]
+  * TCP connection slots may be consumed for an indefinite time frame
+    via a specifically crafted TCP stream sent from a client.
+    This issue can only be triggered on BIND servers which have
+    keep-response-order enabled, which is not the default configuration.
+    The keep-response-order option is an ACL block, and as such, any
+    hosts specified within it will be able to trigger this issue on
+    affected versions. [CVE-2022-0396]
+  * The RFC 8198 Aggressive Use of DNSSEC-Validated Cache feature
+    (synth-from-dnssec) had been refactored and the default has been
+    changed so that is now automatically enabled for dnssec-validating
+    resolvers. Subsequently it was found that repeated patterns of
+    specific queries to servers with this feature enabled could cause
+    an INSIST failure in query.c:query_dname which causes named to
+    terminate unexpectedly.
+    The vulnerability affects BIND resolvers running 9.18.0 that have
+    both dnssec-validation and synth-from-dnssec enabled. (Note that
+    dnssec-validation auto; is the default setting unless configured
+    otherwise in named.conf and that enabling dnssec-validation
+    automatically enables synth-from-dnssec unless explicitly disabled)
+    [CVE-2022-0635]
+  * The refactoring of the recursive client code introduced a
+    "backstop lifetime timer."
+    While BIND is processing a request for a DS record that needs to be
+    forwarded, it waits until this processing is complete or until the
+    backstop lifetime timer has timed out. When the resume_dslookup() function
+    is called as a result of such a timeout, the function does not test
+    whether the fetch has previously been shut down. This introduces the
+    possibility of triggering an assertion failure, which could cause the BIND
+    process to terminate. [CVE-2022-0667]
+  * Reset client TCP connection when data received cannot
+    be parsed as a valid DNS request.
+  For a complete list of changes, see
+  * Bind Release Notes
+    https://downloads.isc.org/isc/bind9/9.18.1/doc/arm/html/notes.html
+  * The CHANGES file in the source RPM
+  This obsoletes bind-define-missing-threads.patch
+  Also, removed bind-python3 from the spec file as it is not build
+  any longer.
+  [bind.spec, bind-9.18.1.tar.xz, bind-9.18.1.tar.xz.sha512.asc,
+   bind-define-missing-threads.patch]
+
+-------------------------------------------------------------------
+Mon Jan 31 13:49:51 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
+
+- Update to new MAJOR VERSION 9.18.0.
+  This has many enhnancements, bug fixes and changes.
+  The spec file also has mechanisms to run the integrated test suite.
+
+  MAJOR CHANGES:
+  * Support for securing DNS traffic using Transport Layer Security (TLS).
+    TLS is used by both DNS-over-TLS (DoT) and DNS-over-HTTPS (DoH).
+  * Support for zone transfers over TLS (XFR-over-TLS, XoT) for both
+    incoming and outgoing zone transfers.
+  * The dig tool is now able to send DoT queries (+tls option).
+  * Support for OpenSSL 3.0 APIs was added. 
+
+  A number of utilities have been removed: dnssec-checkds,
+  dnssec-coverage, dnssec-keymgr, which have been deprecated in
+  favor of dnssec-policy feature, as well as python support
+  (package python3-bind). 
+  A number of utilities have been moved from (/usr)/sbin to (/usr)/bin
+  The DLZ modules have been put into seperate sub-packages
+  to keep unwanted dependencies out of the main package:
+  * bind-modules-perl: dlz_perl_driver.so
+  * bind-modules-mysql: dlz_mysql_dynamic.so, dlz_mysqldyn_mod.so
+  * bind-modules-ldap: dlz_ldap_dynamic.so
+  * bind-modules-bdbhpt: dlz_bdbhpt_dynamic.so
+  * bind-modules-sqlite3: dlz_sqlite3_dynamic.so
+  * bind-modules-generic: dlz_filesystem_dynamic.so, dlz_wildcard_dynamic.so
+  For a complete list of changes, see
+  * Bind Release Notes
+    https://downloads.isc.org/isc/bind9/9.18.0/doc/arm/html/notes.html
+  * The CHANGES file in the source RPM
+  [bind.spec, bind-9.18.0.tar.xz, bind-9.18.0.tar.xz.sha512.asc,
+   bind-avoid-fallthrough-warning-error.patch,
+   bind-contrib-pthread.patch, named-bootconf.diff, bind-define-missing-threads.patch]
+
+-------------------------------------------------------------------
+Mon Jan 24 13:18:35 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
+
+- Old-style DLZ drivers have been deprecated in favor of
+  DLZ modules. The DLZ drivers configuration option will
+  be removed from the next major BIND 9 release.
+
+  The option to use the DLZ modules is already available
+  in BIND 9; please see the ARM section on DLZ modules.
+
+  The dynamically lodable driver modules are stored in
+  /usr/lib64/bind-plugins
+  Example configurations for ldap and mysql are provided in
+  named.conf.
+  [bind.spec, vendor-files/config/named.conf]
+
+-------------------------------------------------------------------
 Fri Jan 21 16:24:16 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add now working CONFIG parameter to sysusers generator

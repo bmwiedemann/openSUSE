@@ -17,6 +17,16 @@
 
 
 %define _buildshell /bin/bash
+%bcond_with check
+
+# DLZ modules
+%bcond_without modules_bdbhpt
+%bcond_without modules_ldap
+%bcond_without modules_mysql
+%bcond_without modules_sqlite3
+%bcond_without modules_perl
+%bcond_without modules_generic
+# end DLZ modules
 
 %define	VENDOR SUSE
 %if 0%{?suse_version} >= 1500
@@ -46,7 +56,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           bind
-Version:        9.16.25
+Version:        9.18.2
 Release:        0
 Summary:        Domain Name System (DNS) Server (named)
 License:        MPL-2.0
@@ -64,24 +74,24 @@ Source60:       dlz-schema.txt
 Source70:       bind.conf
 # configuation file for systemd-sysusers
 Source72:       named.conf
-Patch52:        named-bootconf.diff
 Patch56:        bind-ldapdump-use-valid-host.patch
-Patch57:        bind-avoid-fallthrough-warning-error.patch
+Patch57:        bind-define-local-instances-of-FALLTHROUGH-and-UNREACHABLE.patch
+Patch58:        bind-prevent-buffer-overflow.patch
 BuildRequires:  libcap-devel
-BuildRequires:  libmysqlclient-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libtool
-BuildRequires:  openldap2-devel
 BuildRequires:  openssl
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-ply
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(jemalloc)
 BuildRequires:  pkgconfig(json)
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libidn2)
 BuildRequires:  pkgconfig(libmaxminddb)
+BuildRequires:  pkgconfig(libnghttp2)
 BuildRequires:  pkgconfig(libuv)
 BuildRequires:  pkgconfig(libxml-2.0)
 Requires:       %{name}-utils
@@ -125,7 +135,6 @@ includes also the BIND Administrator Reference Manual (ARM).
 Summary:        Libraries for "bind" and utilities to query and test DNS
 # Needed for dnssec parts
 Group:          Productivity/Networking/DNS/Utilities
-Requires:       python3-bind = %{version}
 Provides:       bind9-utils
 Provides:       bindutil
 Provides:       dns_utils
@@ -140,15 +149,81 @@ test and query the Domain Name System (DNS) and also the libraries rquired
 for the base "bind" package. The Berkeley Internet
 Name Domain (BIND) DNS server is found in the package named bind.
 
-%package -n python3-bind
-Summary:        A module allowing rndc commands to be sent from Python programs
-Group:          Development/Languages/Python
-Requires:       python3
-Requires:       python3-ply
-BuildArch:      noarch
+%if %{with_modules_perl}
+%package modules-perl
+Summary:        A dynamically loadable zone (DLZ) plugin embedding a Perl interpreter in BIND
+Group:          Productivity/Networking/DNS/Servers
+BuildRequires:  perl
 
-%description -n python3-bind
-This package provides a module which allows commands to be sent to rndc directly from Python programs.
+%description modules-perl
+This package includes a dynamically loadable zone (DLZ) plugin
+embedding a Perl interpreter in BIND, allowing Perl scripts
+to be written to integrate with BIND and serve DNS data.
+%endif
+
+%if %{with_modules_mysql}
+%package modules-mysql
+Summary:        DLZ modules which store zone data in a MySQL database
+Group:          Productivity/Networking/DNS/Servers
+BuildRequires:  libmysqlclient-devel
+
+%description modules-mysql
+This package includes dynamically loadable zone (DLZ) plugins
+which store zone data in a MySQL database
+The dlz_mysql_dynamic.so plugin does not support dynamic updates
+the dlz_mysqldyn_mod.so plugin is a dynamically loadable zone (DLZ)
+plugin that uses a fixed-schema MySQL database for back-end storage.
+It allows zone data to be updated via dynamic DNS updates, and
+sends DNS NOTIFY packets to other name servers when appropriate.
+%endif
+
+%if %{with_modules_ldap}
+%package modules-ldap
+Summary:        A DLZ module which stores zone data in an LDAP directory
+Group:          Productivity/Networking/DNS/Servers
+BuildRequires:  openldap2-devel
+
+%description modules-ldap
+This package provides the externally loadable ldap DLZ module, without
+update support
+%endif
+
+%if %{with_modules_bdbhpt}
+%package modules-bdbhpt
+Summary:        A DLZ module which stores zone data in a BerkeleyDB
+Group:          Productivity/Networking/DNS/Servers
+BuildRequires:  libdb-4_8-devel
+
+%description modules-bdbhpt
+This package provides the externally loadable bdbhpt DLZ driver, without
+update support
+%endif
+
+%if %{with_modules_sqlite3}
+%package modules-sqlite3
+Summary:        A DLZ module which stores zone data in an sqlite3 db
+Group:          Productivity/Networking/DNS/Servers
+BuildRequires:  sqlite3-devel
+
+%description modules-sqlite3
+This package provides the externally loadable SQLitee DLZ module, without
+update support.
+%endif
+
+%if %{with_modules_generic}
+%package modules-generic
+Summary:        DLZ module which store zone data in plain files
+Group:          Productivity/Networking/DNS/Servers
+
+%description modules-generic
+This package provides the externally loadable filesystem DLZ module, without
+update support and the externally loadable wildcard DLZ module.
+The "wildcard" DLZ module provides a "template" zone for domains matching
+a wildcard name.
+For any zone name matching the wildcard, it would return the data from
+the template.  "$zone$" is replaced with zone name: i.e., the shortest
+possible string of labels in the query name that matches the wildcard.
+%endif
 
 %prep
 %autosetup -p1 -a2
@@ -192,23 +267,25 @@ export LDFLAGS="-pie"
 	--enable-threads \
 	--with-libtool \
 	--with-libxml2 \
-	--with-libjson \
+	--with-dlz_filesystem \
+	--with-json-c \
 	--with-libidn2 \
-	--with-dlz-mysql \
-	--with-dlz-ldap \
 	--with-randomdev=/dev/urandom \
 	--enable-ipv6 \
 	--with-pic \
 	--disable-openssl-version-check \
 	--with-tuning=large \
 	--with-maxminddb \
-	--with-dlopen \
+	--with-dlopen=auto \
 	--with-gssapi=yes \
 	--disable-isc-spnego \
 	--enable-fixed-rrset \
 	--enable-filter-aaaa \
 %if %{with_systemd}
         --with-systemd \
+%endif
+%if %{with check}
+	--enable-querytrace \
 %endif
 	--enable-full-report
 # disable rpath
@@ -224,6 +301,10 @@ done
 %if %{with_systemd}
 %sysusers_generate_pre %{SOURCE72} named named.conf
 %endif
+# special build for the plugins
+for d in contrib/dlz/modules/*; do
+	[ -e $d/Makefile ] && make -C $d
+done
 
 %install
 mkdir -p \
@@ -245,12 +326,32 @@ mkdir -p \
 mkdir -p %{buildroot}/%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services
 %endif
 %make_install
-install -m 0644 .clang-format.headers %{buildroot}/%{_defaultdocdir}/bind
 # remove useless .h files
 rm -rf %{buildroot}%{_includedir}
 
+# Install the plugins
+mkdir -p %{buildroot}/%{_libdir}/bind-plugins
+%if %{with_modules_perl}
+    install -m 0644 contrib/dlz/modules/perl/*.so %{buildroot}/%{_libdir}/bind-plugins
+%endif
+%if %{with_modules_mysql}
+    install -m 0644 contrib/dlz/modules/mysql/*.so %{buildroot}/%{_libdir}/bind-plugins
+    install -m 0644 contrib/dlz/modules/mysqldyn/*.so %{buildroot}/%{_libdir}/bind-plugins
+%endif
+%if %{with_modules_ldap}
+    install -m 0644 contrib/dlz/modules/ldap/*.so %{buildroot}/%{_libdir}/bind-plugins
+%endif
+%if %{with_modules_bdbhpt}
+    install -m 0644 contrib/dlz/modules/bdbhpt/*.so %{buildroot}/%{_libdir}/bind-plugins
+%endif
+%if %{with_modules_sqlite3}
+    install -m 0644 contrib/dlz/modules/sqlite3/*.so %{buildroot}/%{_libdir}/bind-plugins
+%endif
+%if %{with_modules_generic}
+    install -m 0644 contrib/dlz/modules/{filesystem,wildcard}/*.so %{buildroot}/%{_libdir}/bind-plugins
+%endif
 # remove useless .la files
-rm -f %{buildroot}/%{_libdir}/lib*.{la,a}
+rm -f %{buildroot}/%{_libdir}/lib*.{la,a} %{buildroot}/%{_libdir}/bind/*.la
 mv vendor-files/config/named.conf %{buildroot}/%{_sysconfdir}
 mv vendor-files/config/bind.reg %{buildroot}/%{_sysconfdir}/slp.reg.d
 mv vendor-files/config/rndc-access.conf %{buildroot}/%{_sysconfdir}/named.d
@@ -286,21 +387,24 @@ done
 %if %{with_sfw2}
 install -m 644 vendor-files/sysconfig/SuSEFirewall.named %{buildroot}/%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/bind
 %endif
+%if ! %{with check}
 # Cleanup doc
 rm doc/misc/Makefile*
 find doc/arm -type f ! -name '*.html' -delete
+%endif
 # Create doc as we want it in bind and not bind-doc
 for file in vendor-files/docu/README*; do
 	basename=$( basename ${file})
 	cp -a ${file} %{buildroot}/%{_defaultdocdir}/bind/${basename}.%{VENDOR}
 done
-mkdir -p vendor-files/config/ISC-examples
-cp -a bin/tests/*.conf* vendor-files/config/ISC-examples
+# mkdir -p vendor-files/config/ISC-examples
+# cp -a bin/tests/*.conf* vendor-files/config/ISC-examples
 for d in arm; do
 	cp -a doc/${d}/_build %{buildroot}/%{_defaultdocdir}/bind/${d}
 	echo "%doc %{_defaultdocdir}/bind/${d}" >>filelist-bind-doc
 done
-for file in CHANGES COPYRIGHT README version contrib doc/misc vendor-files/config; do
+for file in CHANGES COPYRIGHT README* version contrib/README* doc/misc vendor-files/config; do
+	[ -r ${file} ] || continue
 	basename=$( basename ${file})
 	cp -a ${file} %{buildroot}/%{_defaultdocdir}/bind/${basename}
 	echo "%doc %{_defaultdocdir}/bind/${basename}" >>filelist-bind-doc
@@ -313,16 +417,25 @@ install -m 0644 bind.keys %{buildroot}%{_localstatedir}/lib/named/named.root.key
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 644 %{SOURCE72} %{buildroot}%{_sysusersdir}/
 %endif
+find %{buildroot}/usr/share/doc/packages/bind -name cfg_test* -exec rm {} \;
+rm -rf %{buildroot}/usr/share/doc/packages/bind/misc/.libs
 
 %if %{with_systemd}
 %pre -f named.pre
 %service_add_pre named.service
 %else
+
 %pre
 %{GROUPADD_NAMED}
 %{USERADD_NAMED}
 # Might be an update.
 %{USERMOD_NAMED}
+%endif
+
+%if %{with check}
+%check
+sudo bin/tests/system/ifconfig.sh up
+make test
 %endif
 
 %preun
@@ -365,7 +478,7 @@ fi
 %dir %{_sysconfdir}/slp.reg.d
 %attr(0644,root,root) %config /%{_sysconfdir}/slp.reg.d/bind.reg
 %if %{with_systemd}
-%config %{_unitdir}/named.service
+%{_unitdir}/named.service
 %{_prefix}/lib/tmpfiles.d/bind.conf
 %{_sysusersdir}/named.conf
 %{_datadir}/factory
@@ -378,17 +491,21 @@ fi
 %{_bindir}/named-rrchecker
 %{_sbindir}/rcnamed
 %{_sbindir}/named
-%{_sbindir}/named-checkconf
-%{_sbindir}/named-checkzone
-%{_sbindir}/named-compilezone
-%dir %{_libdir}/named
-%{_libdir}/named/filter-aaaa.so
+%{_bindir}/named-checkconf
+%{_bindir}/named-checkzone
+%{_bindir}/named-compilezone
+%{_bindir}/named-journalprint
+%{_bindir}/nsec3hash
+%dir %{_libdir}/bind
+%{_libdir}/bind/filter-aaaa.so
+%{_libdir}/bind/filter-a.so
 %{_mandir}/man1/named-rrchecker.1%{ext_man}
 %{_mandir}/man5/named.conf.5%{ext_man}
-%{_mandir}/man8/named-checkconf.8%{ext_man}
-%{_mandir}/man8/named-checkzone.8%{ext_man}
+%{_mandir}/man1/named-checkconf.1%{ext_man}
+%{_mandir}/man1/named-checkzone.1%{ext_man}
 %{_mandir}/man8/named.8%{ext_man}
 %{_mandir}/man8/filter-aaaa.8%{ext_man}
+%{_mandir}/man8/filter-a.8%{ext_man}
 %dir %{_datadir}/bind
 %{_datadir}/bind/ldapdump
 %ghost %{_rundir}/named
@@ -403,6 +520,34 @@ fi
 %config %{_var}/lib/named/named.root.key
 %dir %{_libexecdir}/bind
 %{_libexecdir}/bind/named.prep
+%dir %{_libdir}/bind-plugins
+
+%if %{with_modules_perl}
+%files modules-perl
+%{_libdir}/bind-plugins/dlz_perl_driver.so
+%endif
+%if %{with_modules_mysql}
+%files modules-mysql
+%{_libdir}/bind-plugins/dlz_mysql_dynamic.so
+%{_libdir}/bind-plugins/dlz_mysqldyn_mod.so
+%endif
+%if %{with_modules_ldap}
+%files modules-ldap
+%{_libdir}/bind-plugins/dlz_ldap_dynamic.so
+%endif
+%if %{with_modules_bdbhpt}
+%files modules-bdbhpt
+%{_libdir}/bind-plugins/dlz_bdbhpt_dynamic.so
+%endif
+%if %{with_modules_sqlite3}
+%files modules-sqlite3
+%{_libdir}/bind-plugins/dlz_sqlite3_dynamic.so
+%endif
+%if %{with_modules_generic}
+%files modules-generic
+%{_libdir}/bind-plugins/dlz_filesystem_dynamic.so
+%{_libdir}/bind-plugins/dlz_wildcard_dynamic.so
+%endif
 
 %files doc -f filelist-bind-doc
 %dir %doc %{_defaultdocdir}/bind
@@ -424,27 +569,19 @@ fi
 %{_bindir}/nsupdate
 %{_bindir}/genDDNSkey
 %{_bindir}/arpaname
+%{_bindir}/dnssec-dsfromkey
+%{_bindir}/dnssec-importkey
+%{_bindir}/dnssec-keyfromlabel
+%{_bindir}/dnssec-keygen
+%{_bindir}/dnssec-revoke
+%{_bindir}/dnssec-settime
+%{_bindir}/dnssec-signzone
+%{_bindir}/dnssec-verify
+%{_bindir}/dnssec-cds
 %{_sbindir}/ddns-confgen
-%{_sbindir}/dnssec-dsfromkey
-%{_sbindir}/dnssec-importkey
-%{_sbindir}/dnssec-keyfromlabel
-%{_sbindir}/dnssec-keygen
-%{_sbindir}/dnssec-revoke
-%{_sbindir}/dnssec-settime
-%{_sbindir}/dnssec-signzone
-%{_sbindir}/dnssec-verify
-%{_sbindir}/dnssec-checkds
-%{_sbindir}/dnssec-coverage
-%{_sbindir}/dnssec-keymgr
-%{_sbindir}/dnssec-cds
-# %%{_sbindir}/genrandom
-# %%{_sbindir}/isc-hmac-fixup
-%{_sbindir}/named-journalprint
-%{_sbindir}/nsec3hash
 %{_sbindir}/rndc
 %{_sbindir}/rndc-confgen
 %{_sbindir}/tsig-keygen
-# Library files, formerly in their own, separate packages:
 %{_libdir}/libbind9-%{version}.so
 %{_libdir}/libdns-%{version}.so
 %{_libdir}/libirs-%{version}.so
@@ -461,7 +598,6 @@ fi
 %{_libdir}/libns.so
 %dir %doc %{_defaultdocdir}/bind
 %{_defaultdocdir}/bind/README*.%{VENDOR}
-%{_defaultdocdir}/bind/.clang-format.headers
 %{_mandir}/man1/arpaname.1%{ext_man}
 %{_mandir}/man1/delv.1%{ext_man}
 %{_mandir}/man1/dig.1%{ext_man}
@@ -469,33 +605,22 @@ fi
 %{_mandir}/man1/mdig.1%{ext_man}
 %{_mandir}/man1/nslookup.1%{ext_man}
 %{_mandir}/man1/nsupdate.1%{ext_man}
-# %%{_mandir}/man1/dnstap-read.1%%{ext_man}
+%{_mandir}/man1/dnssec-dsfromkey.1%{ext_man}
+%{_mandir}/man1/dnssec-importkey.1%{ext_man}
+%{_mandir}/man1/dnssec-keyfromlabel.1%{ext_man}
+%{_mandir}/man1/dnssec-keygen.1%{ext_man}
+%{_mandir}/man1/dnssec-revoke.1%{ext_man}
+%{_mandir}/man1/dnssec-settime.1%{ext_man}
+%{_mandir}/man1/dnssec-signzone.1%{ext_man}
+%{_mandir}/man1/dnssec-verify.1%{ext_man}
+%{_mandir}/man1/dnssec-cds.1%{ext_man}
+%{_mandir}/man1/named-compilezone.1%{ext_man}
+%{_mandir}/man1/named-journalprint.1%{ext_man}
+%{_mandir}/man1/nsec3hash.1%{ext_man}
 %{_mandir}/man5/rndc.conf.5%{ext_man}
 %{_mandir}/man8/ddns-confgen.8%{ext_man}
-%{_mandir}/man8/dnssec-dsfromkey.8%{ext_man}
-%{_mandir}/man8/dnssec-importkey.8%{ext_man}
-%{_mandir}/man8/dnssec-keyfromlabel.8%{ext_man}
-%{_mandir}/man8/dnssec-keygen.8%{ext_man}
-%{_mandir}/man8/dnssec-revoke.8%{ext_man}
-%{_mandir}/man8/dnssec-settime.8%{ext_man}
-%{_mandir}/man8/dnssec-signzone.8%{ext_man}
-%{_mandir}/man8/dnssec-verify.8%{ext_man}
-%{_mandir}/man8/dnssec-checkds.8%{ext_man}
-%{_mandir}/man8/dnssec-coverage.8%{ext_man}
-%{_mandir}/man8/dnssec-keymgr.8%{ext_man}
-%{_mandir}/man8/dnssec-cds.8%{ext_man}
-# %%{_mandir}/man8/named-nzd2nzf.8%%{ext_man}
-# %%{_mandir}/man8/genrandom.8%%{ext_man}
-# %%{_mandir}/man8/isc-hmac-fixup.8%%{ext_man}
-%{_mandir}/man8/named-journalprint.8%{ext_man}
-%{_mandir}/man8/nsec3hash.8%{ext_man}
 %{_mandir}/man8/rndc.8%{ext_man}
 %{_mandir}/man8/rndc-confgen.8%{ext_man}
-%{_mandir}/man8/named-compilezone.8%{ext_man}
 %{_mandir}/man8/tsig-keygen.8%{ext_man}
-
-%files -n python3-bind
-%{python3_sitelib}/isc
-%{python3_sitelib}/isc-*.egg-info
 
 %changelog
