@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %global fullversion %{version}
 %global release_repository http://nexus.scala-tools.org/content/repositories/releases
 %global snapshot_repository http://nexus.scala-tools.org/content/repositories/snapshots
-%global jansi_jar %{_javadir}/jansi/jansi.jar
+%global jansi_jar %{_jnidir}/jansi/jansi.jar
 %global jline2_jar %{_javadir}/jline/jline.jar
 %global scaladir %{_datadir}/scala
 %global base_name scala
@@ -77,7 +77,6 @@ Requires:       java-headless >= 1.7
 # /usr/share/java-utils/java-functions
 Requires:       javapackages-tools
 Requires:       jline >= 2.10
-BuildArch:      noarch
 %if %{with bootstrap}
 Source100:      scala-compiler.jar
 Source101:      scala-library.jar
@@ -103,6 +102,7 @@ is also interoperable with Java.
 Summary:        Documentation for the Scala programming language
 Group:          Documentation/HTML
 Obsoletes:      %{base_name}-bootstrap-apidoc
+BuildArch:      noarch
 
 %description apidoc
 Scala is a general purpose programming language for the JVM that blends
@@ -115,6 +115,7 @@ Summary:        The swing library for the Scala programming languages
 Group:          Development/Libraries/Java
 Requires:       %{name} = %{version}-%{release}
 Requires:       java >= 1.7
+BuildArch:      noarch
 %if %{without bootstrap}
 Obsoletes:      %{base_name}-bootstrap-swing
 %endif
@@ -130,6 +131,7 @@ Summary:        Development files for Scala
 Group:          Development/Libraries/Java
 Requires:       ant
 Requires:       scala = %{version}-%{release}
+BuildArch:      noarch
 %if %{without bootstrap}
 Obsoletes:      ant-%{base_name}-bootstrap
 %endif
