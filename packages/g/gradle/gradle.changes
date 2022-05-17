@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 16 12:37:31 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build against jansi 2.x
+- Remove the jansi-native and hawtjni-runtime dependencies, since
+  jansi 2.x does not depend on them
+- Modified patch:
+  * 0013-Add-missing-transitive-dependencies.patch
+    + jansi does not have transitive dependencies any more
+- Added patch:
+  * gradle-jansi.patch
+    + port to use jansi 2.x
+
+-------------------------------------------------------------------
 Wed Mar 23 16:30:46 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Force building with java <= 11

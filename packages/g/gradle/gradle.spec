@@ -55,6 +55,7 @@ Patch0017:      0017-Set-core-api-source-level-to-8.patch
 Patch100:       gradle-CVE-2019-16370.patch
 
 Patch200:       gradle-4.4.1-asm7.patch
+Patch201:       gradle-jansi.patch
 
 Patch300:       java11-compatibility.patch
 Patch301:       java8-compatibility.patch
@@ -176,9 +177,7 @@ BuildRequires:  mvn(org.eclipse.jetty:jetty-xml)
 BuildRequires:  mvn(org.eclipse.jgit:org.eclipse.jgit)
 BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.inject)
 BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.plexus)
-BuildRequires:  mvn(org.fusesource.hawtjni:hawtjni-runtime)
 BuildRequires:  mvn(org.fusesource.jansi:jansi)
-BuildRequires:  mvn(org.fusesource.jansi:jansi-native)
 BuildRequires:  mvn(org.jsoup:jsoup)
 BuildRequires:  mvn(org.mozilla:rhino)
 BuildRequires:  mvn(org.objenesis:objenesis)
@@ -247,14 +246,12 @@ Requires:       google-gson
 Requires:       google-guice
 Requires:       groovy-lib
 Requires:       guava
-Requires:       hawtjni-runtime
 Requires:       httpcomponents-client
 Requires:       httpcomponents-core
 Requires:       jackson-annotations
 Requires:       jackson-core
 Requires:       jackson-databind
 Requires:       jansi
-Requires:       jansi-native
 Requires:       jatl
 Requires:       jcifs
 Requires:       jcip-annotations

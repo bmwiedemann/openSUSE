@@ -148,4 +148,12 @@
     <comment>Force building with java 11</comment>
     <requestid>964333</requestid>
   </revision>
+  <revision rev="19" vrev="12">
+    <srcmd5>0169ce02970b9414cbea344219fd2244</srcmd5>
+    <version>4.4.1</version>
+    <time>1652801047</time>
+    <user>dimstar_suse</user>
+    <comment>maven 3.8.5 / jansi 2.4.0 and fixes for building with them</comment>
+    <requestid>977557</requestid>
+  </revision>
 </revisionlist>

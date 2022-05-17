@@ -24,15 +24,13 @@ index 96ff6f58fee..bbf10217798 100755
  libraries.commons_cli = 'commons-cli:commons-cli:1.2@jar'
  libraries.commons_io = dependencies.module(versions.commons_io)
  libraries.commons_lang = 'commons-lang:commons-lang:2.6@jar'
-@@ -102,8 +105,10 @@ libraries += [
+@@ -102,8 +105,8 @@ libraries += [
      equalsVerifier: 'nl.jqno.equalsverifier:equalsverifier:2.1.6',
      xbean: 'org.apache.xbean:xbean-reflect:3.4@jar', //required by maven3 classes
      nativePlatform: 'net.rubygrapefruit:native-platform:0.14',
 -    jansi: dependencies.module('org.fusesource.jansi:jansi:1.14'),
 -    xerces: "xerces:xercesImpl:2.11.0",
-+    jansi: dependencies.module('org.fusesource.jansi:jansi:1.14') {
-+        dependency "org.fusesource.jansi:jansi-native:1.14"
-+    },
++    jansi: dependencies.module('org.fusesource.jansi:jansi:2.4.0'),
 +    xerces: "xerces:xercesImpl:2.9.1",
      objenesis: 'org.objenesis:objenesis:1.2@jar',
      jsoup: 'org.jsoup:jsoup:1.6.3',
