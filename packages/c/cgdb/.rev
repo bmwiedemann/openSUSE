@@ -159,4 +159,12 @@
   * Fix issue #129. CGDB with old versions of ncurses (5.6 or before)</comment>
     <requestid>827862</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b0ca47f14e9fe9c085bbe98bd44a7520</srcmd5>
+    <version>0.8.0</version>
+    <time>1652801083</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977726</requestid>
+  </revision>
 </revisionlist>

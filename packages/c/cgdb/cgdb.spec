@@ -1,7 +1,7 @@
 #
 # spec file for package cgdb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cgdb
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        Curses debugger
 License:        GPL-2.0-or-later
@@ -32,7 +32,7 @@ BuildRequires:  ncurses-devel
 BuildRequires:  readline-devel
 Requires:       gdb
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 
 %description
 CGDB is a curses (terminal-based) interface to the GNU Debugger (GDB). Its goal

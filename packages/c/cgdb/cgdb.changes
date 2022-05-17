@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue May 17 09:18:52 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.8.0:
+  * CGDB now exits when gdb exits, previously if gdb exited but the
+    inferior, or child of the inferior was still running, cgdb would
+    possibly continue running in a non responsive state.
+    Now cgdb exits when gdb does.
+  * Single stepping through disassembly without debug symbols does not
+    move arrow in source window. Now the arrow moves in the source
+    window as expected.
+  * Fix CGDB freezes when pressing "o" to open the file dialog
+  * Fix breakpoint handling is broken in disasembly view
+  * Fix CGDB would not process commands after F5, F6, etc
+  * CGDB implements a virtual terminal in the GDB window
+    * The GDB scroller is now a virtual terminal (using libvterm)
+    * The scrollback buffer has been reimplemented using libvterm
+      The cursor row/col position is now known, rather than just the row
+    * Searching in the scrollback buffer is improved
+    * The scrollback buffer size is configurable with a new option,
+      scrollbackbuffersize (sbbs) and is defaulted to 10000.
+    * Mark commands in the GDB scroller have been removed
+    * Unicode is now fully supported in the gdb window
+    * libvterm does not support reflow yet, so resizing the terminal or
+      switching the window orientation (winsplitorientation) after startup
+      may cause the text in the GDB window to not be as expected
+    * Colors in the GDB window are not fully supported yet.
+      Ncurses is difficult to work with, considering switching.
+      RGB vterm colors are unsupported at the moment.
+  * CGDB implements GDB/MI in favor of GDB/Annotations
+  * Add the nexti and stepi configuration commands
+  * Fix ANSI escape issues with GDB-9
+  * Fix auto source reload issue
+  * CGDB works again with newer versions of GDB (gdb 8.3 and above)
+  * CGDB now supports a configurable home directory.
+
+-------------------------------------------------------------------
 Wed Aug 19 10:02:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.7.1:
