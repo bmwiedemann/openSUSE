@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Sat May 14 09:35:23 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 4.1.22
+  * add missing call to set_mode_afc in Save/Restore AFC by mode
+- Update to version 4.1.21
+  * IPC log report: change logging date report to date ON vice date OFF
+  xmlrpc methods
+  * add new methods all data in ADIF 3.1.2 compliant format:
+    + logbook.last_record
+    + logbook.all_records
+  * add new methods as ADIF 3.1.2 compliant strings:
+    + modem.get_mode
+    + modem.get_submode
+  * add new date-time methods
+      . log.get_time_on
+      . log.get_date_on
+      . log.get_time_off
+      . log.get_date_off
+   * date-time correctly synchronized and in ZULU time
+  CW h/w weight
+  * provide control to control keying weight for DTR/RTS keying.
+  build m4 script
+  * correction to m4 build script for libmbedtls test
+  TRX FFT
+  * Add fft monitoring of transmitted signal
+  flrig poll
+  * provide user configurable poll interval
+  CW/FSK
+  * update flrig cw/rtty code
+  * update rigcat FSK code
+    - separate all bit timing from main thread
+    - adjust sleep method for OS-X performance
+    - adjust sleep method for Windows OS
+  * add missing FSK commport control initialization
+  * update cwio DTR/RTS rigcat keying
+    - replace bit timing with high resolution interval timer
+    - deprecate timing compensation
+    - test satisfactory on Linux, 5 to 100 WPM
+  log macro
+  * fix parsing bug when a trailing <HS, <LOCK etc is in macro text
+  psk reporter
+  * update to report generation logic
+  FFT Monitor update
+  * Add complex signal processing to FFT usage
+  CW multi-channel
+  * changed cw viewer multi-decoder filtering to use independent
+    fir bandpass filter centered on 50 Hz intervals
+    . out-of-band reject 60 dB between adjacent channels
+  * add right click clears channel to cw viewer
+  FSK keying
+  * add ability to key xcvr in FSK using either
+    . a DTR or RTS serial signal line (default RTS).
+    . serial port can be shared with rigio or a separate port
+  * SPACE always sent as LETTERS character
+  * 100% functional on Linux including Pi3/4
+  * 100% functional on on macOS 11.6, 10.13.6, and 10.7.5
+  * 100% functional on Win-10
+  * BUG - fixed excessive CPU usage while Tx without text (idle)
+  * TIMING - tune timing loop for slow cpu's such as Pi3
+  * update to accu_sleep
+    . improved function performance
+    . move accu_sleep to util.cxx
+  * update to baudot generator
+  * add flrig / FSK interface
+  xmlrpc QSY
+  * add enable/disable QSY xmlrpc command for server
+  dxcluster
+  * bug - do not change mode if comments do not contain
+    a valid ADIF mode name
+  * set correct mode based on dxline contents
+  * qsy to rf/sweetspot for identified mode Mode Parameters
+  * save squelch settings by mode and reapply when
+    mode selected: squelch value, squelch button
+    . setting saved in file squelch_by_mode.prefs located
+      in the fldigi main files folder. prefs files are
+      user editable text format which are read during
+      program start up.
+  * save and reapply AFC state by mode
+  * save and reapply TX level attenuator by mode
+  * initialize all values to current states on first
+    execution, or when file mode_state.prefs is deleted.
+  Documentation update
+  * add/update documentation for Domino-EX Micro, OFDM modes,
+    Thor Micro, Thor 25/50/100, 8 psk modes
+  Polish translation update
+  * update to pl.po provided by Roman Baginski, SP4JEU
+  synop event reporting
+  * changed default event reporting to VERBOSE to reduce event
+    log noise for users not operating SYNOP
+  using namespace std
+  + remove all use of "using namespace std"
+  + add explicit "std::" predecessor for every standard lib reference
+
+-------------------------------------------------------------------
 Sun Aug 15 09:43:36 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 4.1.20
