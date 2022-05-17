@@ -98,6 +98,7 @@ Source71:       %{sbt_ivy_artifact sbt}
 Source134:      %{sbt_ivy_descriptor compiler-interface}
 Source171:      %{sbt_ivy_descriptor sbt}
 Patch0:         sbt-%{sbt_version}-build-sbt.patch
+Patch1:         sbt-maven385.patch
 Patch2:         sbt-0.13.17-lines.patch
 Patch3:         sbt-new-ivy.patch
 Patch4:         sbt-0.13.13-sxr.patch
@@ -151,9 +152,7 @@ Requires:       apache-ivy
 Requires:       atinject
 Requires:       guava
 Requires:       hamcrest-core
-Requires:       hawtjni-runtime
 Requires:       jansi
-Requires:       jansi-native
 Requires:       javapackages-tools
 Requires:       jawn-json4s
 Requires:       jawn-parser
@@ -223,7 +222,6 @@ Source59:       %{sbt_ivy_artifact logging}
 Source60:       %{sbt_ivy_artifact compile}
 Source61:       %{sbt_ivy_artifact process}
 Source62:       %{sbt_ivy_artifact actions}
-Source63:       %{sbt_ivy_artifact sbt-launch}
 Source65:       %{sbt_ivy_artifact tracking}
 Source66:       %{sbt_ivy_artifact tasks}
 Source67:       %{sbt_ivy_artifact completion}
@@ -255,7 +253,6 @@ Source159:      %{sbt_ivy_descriptor logging}
 Source160:      %{sbt_ivy_descriptor compile}
 Source161:      %{sbt_ivy_descriptor process}
 Source162:      %{sbt_ivy_descriptor actions}
-Source163:      %{sbt_ivy_descriptor sbt-launch}
 Source165:      %{sbt_ivy_descriptor tracking}
 Source166:      %{sbt_ivy_descriptor tasks}
 Source167:      %{sbt_ivy_descriptor completion}
@@ -325,6 +322,7 @@ sbt is the simple build tool for Scala and Java projects.
 %patch0 -p1
 %endif
 
+%patch1 -p1
 %patch2 -p1
 %patch3 -p1
 
@@ -341,10 +339,6 @@ cp %{SOURCE16} .
 cp %{SOURCE17} .
 
 mkdir %{ivy_local_dir}
-
-%if %{with bootstrap}
-cp %{SOURCE63} .
-%endif
 
 ./climbing-nemesis.py org.scala-lang scala-library %{ivy_local_dir} --version %{scala_version}
 ./climbing-nemesis.py org.scala-lang scala-compiler %{ivy_local_dir} --version %{scala_version}
@@ -366,8 +360,6 @@ cp %{SOURCE63} .
 ./climbing-nemesis.py org.typelevel jawn-parser_%{scala_short_version} %{ivy_local_dir} --version 0.14.1
 ./climbing-nemesis.py org.typelevel jawn-json4s_%{scala_short_version} %{ivy_local_dir} --version 0.14.1
 ./climbing-nemesis.py org.typelevel jawn-util_%{scala_short_version} %{ivy_local_dir} --version 0.14.1
-./climbing-nemesis.py org.fusesource.jansi jansi-native %{ivy_local_dir} --version 1.8
-./climbing-nemesis.py org.fusesource.hawtjni hawtjni-runtime %{ivy_local_dir} --version 1.16
 ./climbing-nemesis.py org.apache.ivy ivy %{ivy_local_dir} --version 2.4.0
 
 ./climbing-nemesis.py org.scala-sbt launcher-interface %{ivy_local_dir} --version %{sbt_launcher_version}
@@ -391,12 +383,17 @@ cp %{SOURCE63} .
 ./climbing-nemesis.py org.apache.maven.resolver maven-resolver-util %{ivy_local_dir} --version 1.7.3
 ./climbing-nemesis.py org.apache.maven maven-model %{ivy_local_dir}  --version 3.2.3
 ./climbing-nemesis.py org.apache.maven maven-model %{ivy_local_dir}  --version 3.8.4
+./climbing-nemesis.py org.apache.maven maven-model %{ivy_local_dir}  --version 3.8.5
 ./climbing-nemesis.py org.apache.maven maven-model-builder %{ivy_local_dir} --version 3.2.3
 ./climbing-nemesis.py org.apache.maven maven-model-builder %{ivy_local_dir} --version 3.8.4
+./climbing-nemesis.py org.apache.maven maven-model-builder %{ivy_local_dir} --version 3.8.5
 ./climbing-nemesis.py org.apache.maven maven-repository-metadata %{ivy_local_dir} --version 3.2.3
 ./climbing-nemesis.py org.apache.maven maven-repository-metadata %{ivy_local_dir} --version 3.8.4
+./climbing-nemesis.py org.apache.maven maven-repository-metadata %{ivy_local_dir} --version 3.8.5
 ./climbing-nemesis.py org.apache.maven maven-builder-support %{ivy_local_dir} --version 3.8.4
+./climbing-nemesis.py org.apache.maven maven-builder-support %{ivy_local_dir} --version 3.8.5
 ./climbing-nemesis.py org.apache.maven maven-artifact %{ivy_local_dir} --version 3.8.4
+./climbing-nemesis.py org.apache.maven maven-artifact %{ivy_local_dir} --version 3.8.5
 ./climbing-nemesis.py org.codehaus.plexus plexus-utils %{ivy_local_dir} --version 3.3.0
 ./climbing-nemesis.py org.codehaus.plexus plexus-interpolation %{ivy_local_dir} --version 1.26
 ./climbing-nemesis.py org.eclipse.sisu org.eclipse.sisu.inject %{ivy_local_dir} --version 0.3.0.M1 --ignore "cdi-api"
@@ -574,9 +571,10 @@ done
 %if %{with bootstrap}
 java \
   -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled \
+  -cp $(build-classpath scala ivy sbt-launcher) \
   -Dfedora.sbt.ivy.dir=$PWD/%{ivy_local_dir} -Dfedora.sbt.boot.dir=$PWD/sbt-boot-dir/ \
   -Divy.checksums='""' -Dsbt.boot.properties=$PWD/rpmbuild-sbt.boot.properties -Dsbt.log.noformat=true \
-  -jar sbt-launch-%{sbt_bootstrap_version}.jar package "set publishTo in Global := Some(Resolver.file(\"published\", file(\"published\"))(Resolver.ivyStylePatterns) ivys \"$(pwd)/published/[organization]/[module]/[revision]/ivy.xml\" artifacts \"$(pwd)/published/[organization]/[module]/[revision]/[artifact]-[revision].[ext]\")" publish makePom
+  xsbt.boot.Boot package "set publishTo in Global := Some(Resolver.file(\"published\", file(\"published\"))(Resolver.ivyStylePatterns) ivys \"$(pwd)/published/[organization]/[module]/[revision]/ivy.xml\" artifacts \"$(pwd)/published/[organization]/[module]/[revision]/[artifact]-[revision].[ext]\")" publish makePom
 %else
 export SBT_IVY_DIR=$PWD/%{ivy_local_dir}
 export SBT_BOOT_DIR=$PWD/sbt-boot-dir/
