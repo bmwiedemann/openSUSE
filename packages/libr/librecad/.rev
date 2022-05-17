@@ -250,4 +250,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>976273</requestid>
   </revision>
+  <revision rev="31" vrev="7">
+    <srcmd5>91685b932f29e8d0c94373231de41631</srcmd5>
+    <version>2.2.0~rc3</version>
+    <time>1652801067</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Added-bounds-checking-to-CDataMoji-in-jww-parser.patch [boo#1195105] [CVE-2021-45341]
+- Add 0001-Added-bounds-check-to-CDataList-in-JWW-parser.patch [boo#1195122] [CVE-2021-45342]</comment>
+    <requestid>977618</requestid>
+  </revision>
 </revisionlist>

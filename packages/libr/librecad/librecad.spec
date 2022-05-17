@@ -41,6 +41,8 @@ Patch5:         librecad-use-system-libdxfrw.patch
 Patch6:         librecad-install.diff
 Patch7:         librecad-plugindir.diff
 Patch8:         librecad-use-system-shapelib.patch
+Patch9:         0001-Added-bounds-checking-to-CDataMoji-in-jww-parser.patch
+Patch10:        0001-Added-bounds-check-to-CDataList-in-JWW-parser.patch
 BuildRequires:  fdupes
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++ >= 4.7

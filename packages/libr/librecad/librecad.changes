@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 16 20:31:43 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-Added-bounds-checking-to-CDataMoji-in-jww-parser.patch
+  [boo#1195105] [CVE-2021-45341]
+- Add 0001-Added-bounds-check-to-CDataList-in-JWW-parser.patch
+  [boo#1195122] [CVE-2021-45342]
+
+-------------------------------------------------------------------
 Wed May  4 09:21:59 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - switch source urls to https
