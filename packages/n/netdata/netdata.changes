@@ -1,4 +1,321 @@
 -------------------------------------------------------------------
+Mon May 16 11:27:01 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.34.1 (go.d.plugin 0.32.3)
+Collectors
+  * New collectors
+    + Add CPU throttling charts (cgroups.plugin)
+      (gh#netdata/netdata#12591)
+    + Add clock status chart (timex.plugin)
+      (gh#netdata/netdata#12501)
+    + Add Asterisk configuration file with synthetic charts
+      (statsd.plugin)
+      (gh#netdata/netdata#12381)
+    + Add new chart for process states metrics (apps.plugin)
+      (gh#netdata/netdata#12305)
+    + Add thermal zone metrics collection (go.d/wmi)
+      (gh#netdata/netdata#667)
+    + Add SNMP data collector (go.d/snmp)
+      (gh#netdata/netdata#644)
+  * Improvements
+    + Add 'locust' to apps_groups.conf
+      (gh#netdata/netdata#12498)
+    + Enable timex plugin for non-linux systems (timex.plugin)
+      (gh#netdata/netdata#12489)
+    + Prefer 'blkio.*_recursive' files when available
+      (cgroups.plugin)
+      (gh#netdata/netdata#12462)
+    + Add 'stress-ng' and 'gremlin' to apps_groups.conf
+      (apps.plugin)
+      (gh#netdata/netdata#12165)
+    + Add Apple Filing Protocol daemons into 'afp' group
+      (apps.plugin)
+      (gh#netdata/netdata#12078)
+    + Show the number of processes/threads for empty apps groups
+      (apps.plugin)
+      (gh#netdata/netdata#11834)
+    + Add a configuration option to set application
+      (go.d/prometheus)
+      (gh#netdata/netdata#669)
+  * Bug fixes
+    + Fix collecting data when 'ntp_adjtime' call fails
+      (timex.plugin)
+      (gh#netdata/netdata#12667)
+    + Fix chart titles with instance-specific information
+      (gh#netdata/netdata#12644)
+    + Fix CPU utilization calculation (cgroups.plugin)
+      (gh#netdata/netdata#12622)
+    + Fix cgroup version detection with systemd (cgroups.plugin)
+      (gh#netdata/netdata#12553)
+    + Fix network charts context (cgroups.plugin)
+      (gh#netdata/netdata#12454)
+    + Fix charts context (cups.plugin)
+      (gh#netdata/netdata#12444)
+    + Fix recursion in apcupsd_check (charts.d/apcupsd)
+      (gh#netdata/netdata#12418)
+    + Fix double host prefix when Netdata running in a podman
+      container (cgroups.plugin)
+      (gh#netdata/netdata#12380)
+    + Fix config file check in stock config directory
+      (ioping.plugin)
+      (gh#netdata/netdata#12327)
+    + Fix setting of 'time offset' configuration option
+      (timex.plugin)
+      (gh#netdata/netdata#12281)
+    + Fix logical drive data parsing error (python.d/hpssa)
+      (gh#netdata/netdata#12206)
+    + Fix getting username when UID is unknown on the host
+      (python.d/nvisia_smi)
+      (gh#netdata/netdata#12184)
+    + Fix a typo in ZFS ARC Cache size info
+      (gh#netdata/netdata#12138)
+    + Fix collecting of renamed metrics (go.d/k8s_kubelet)
+      (gh#netdata/netdata#674)
+    + Fix reading stock configuration files in k8s (go.d.plugin)
+      (gh#netdata/netdata#670)
+    + Fix runtime chart context hard coding (go.d.plugin)
+      (gh#netdata/netdata#668)
+    + Fix failed check because of invalid metric type
+      (go.d/prometheus)
+      (gh#netdata/netdata#665)
+    + Fix handling of replica set charts dimensions (go.d/mongodb)
+      (gh#netdata/netdata#646)
+
+eBPF
+  * Improvements
+    + Improve chart titles and dashboard info
+      (gh#netdata/netdata#12665)
+    + Update eBPF dashboard info
+      (gh#netdata/netdata#12617)
+    + Update links in the dashboard info
+      (gh#netdata/netdata#12581)
+    + Add monitoring for inbound and outbound connections
+      (gh#netdata/netdata#12532)
+    + Improve eBPF dashboard info
+      (gh#netdata/netdata#12467)
+    + Add CO-RE support for eBPF plugin
+      (gh#netdata/netdata#12318)
+    + Update libbpf version and adjust eBPF modules for using
+      new version of libbpf
+      (gh#netdata/netdata#12190)
+  * Bug fixes
+    + Fix missing chart context for cgroups charts
+      (gh#netdata/netdata#12671)
+    + Fix eBFP plugin crash on exit
+      (gh#netdata/netdata#12590)
+    + Fix unnecessary error log lines for proc and sys files
+      (gh#netdata/netdata#12385)
+    + Fix removing pid file on exit
+      (gh#netdata/netdata#12379)
+
+Dashboard
+  * Change color of Netdata logo on left sidebar
+    (gh#netdata/netdata#12607)
+  * Update Community section and the links for opening a new issue
+    on GitHub in 'Need Help?' modal
+    (gh#netdata/netdata#12607)
+  * Add 'Netdata Cloud connection status' modal
+    (gh#netdata/netdata#12407)
+
+Streaming
+  * Fix parsing of 'os_name' for older agent versions streaming to
+    a parent
+    (gh#netdata/netdata#12425)
+  * Deactivate streaming compression at runtime in case of a
+    compressor buffer overflow
+    (gh#netdata/netdata#12037)
+
+Exporting
+  * Remove backends subsystem
+    (gh#netdata/netdata#12146)
+
+Health
+  * Fix ioping_disk_latency alarm green/red thresholds
+    (gh#netdata/netdata#12351)
+  * Fix ioping_disk_latency alarm lookup value
+    (gh#netdata/netdata#12329)
+  * Adjust 10s_ipv4_tcp_resets_sent alarm warn expression
+    (gh#netdata/netdata#12320)
+  * Add alarms for charts.d/nut collector
+    (gh#netdata/netdata#12285)
+  * Fix respecting of 'delay' parameter when using 'repeat' feature
+    (gh#netdata/netdata#12164)
+
+ML
+  * Fix training/prediction stats charts context
+    (gh#netdata/netdata#12610)
+  * Enable streaming of anomaly_detection.* charts
+    (gh#netdata/netdata#12606)
+  * Update ML-related charts
+    (gh#netdata/netdata#12574)
+  * Reduce min 'dbengine anomaly rate every' from 60s to 30s
+    (gh#netdata/netdata#12543)
+  * ML-related changes to address issue/discussion comments.
+    (gh#netdata/netdata#12494)
+  * Skip 'foreach' alarms for dimensions of anomaly rate chart.
+    (gh#netdata/netdata#12441)
+  * Prepend context in anomaly rate dimension id
+    (gh#netdata/netdata#12342)
+  * Skip training of constant metrics
+    (gh#netdata/netdata#12212)
+  * Track anomaly rates with DBEngine
+    (gh#netdata/netdata#12083)
+
+Other notable changes
+  * Improvements
+    + Add a chart label filter parameter in context data queries
+      (gh#netdata/netdata#12652)
+    + Add a timeout parameter to data queries
+      (gh#netdata/netdata#12649)
+    + Add k8s cluster name to host labels (GKE only)
+      (gh#netdata/netdata#12638)
+    + Add cloud providers info to host labels and /api/v1/info
+      (gh#netdata/netdata#12613)
+    + Reduce logging on child reconnect
+      (gh#netdata/netdata#12594)
+    + Improve ACLK sync logging
+      (gh#netdata/netdata#12534)
+    + Add more info to netdatacli 'aclk-state'
+      (gh#netdata/netdata#12458)
+    + Remove "web files" options leftovers
+      (gh#netdata/netdata#12403)
+    + Improve agent to cloud synchronization performance
+      (gh#netdata/netdata#12348)
+    + Remove owner check from webserver
+      (gh#netdata/netdata#12339)
+    + Change default OOM score and scheduling policy to behave
+      more sanely
+      (gh#netdata/netdata#12271)
+    + Add more info to aclk-state API call
+      (gh#netdata/netdata#12231)
+    + Add -W keepopenfds option
+      (gh#netdata/netdata#12211)
+    + Remove chart specific configuration from netdata.conf
+      except enabled
+      (gh#netdata/netdata#12209)
+    + Improve cleaning up of orphan hosts
+      (gh#netdata/netdata#12201)
+    + Add install method to /api/v1/info as label
+      (gh#netdata/netdata#12040)
+    + Add all query types to aclk_processed_query_type
+      (gh#netdata/netdata#12036)
+    + Create a removed alert event if chart goes obsolete
+      (gh#netdata/netdata#12021)
+    + Add chart for incoming proto msgs in new cloud protocol
+      (gh#netdata/netdata#11969)
+
+  * Bug fixes
+    + Fix deadlock when deleting a child instance host and ML
+      training is running
+      (gh#netdata/netdata#12681)
+    + Fix Netdata crash during anomaly calculation
+      (gh#netdata/netdata#12672)
+    + Fix not clean ACLK shutdown when agent is shutting down
+      (gh#netdata/netdata#12625)
+    + Fix shutting down the agent when the creation of the
+      management API key file failed
+      (gh#netdata/netdata#12623)
+    + Fix respecting of dimension hidden option when executing a
+      query
+      (gh#netdata/netdata#12570)
+    + Fix Agent crash on api/v1/info call
+      (gh#netdata/netdata#12565)
+    + Fix CPU frequency detection in system-info.sh
+      (gh#netdata/netdata#12550)
+    + Fix sending alert events with missing timezone data
+      (gh#netdata/netdata#12547)
+    + Fix invalid pointer reference when executing agent CLI
+      commands
+      (gh#netdata/netdata#12540)
+    + Fix memory leaks on Netdata exit
+      (gh#netdata/netdata#12511)
+    + Fix wrong 'metrics-count' in /api/v1/info
+      (gh#netdata/netdata#12504)
+    + Fix issue with charts not properly synchronized with the
+      cloud
+      (gh#netdata/netdata#12451)
+    + Fix high CPU usage for unclaimed agents
+      (gh#netdata/netdata#12449)
+    + Fix a case when claim_id is sent in uppercase
+      (gh#netdata/netdata#12423)
+    + Fix crash when netdatacli command output too long
+      (gh#netdata/netdata#12393)
+    + Fix Netdata crash on ACLK alerts streaming
+      (gh#netdata/netdata#12392)
+    + Fix build info output when dbengine is not compiled
+      (gh#netdata/netdata#12354)
+    + Fix container virtualization detection with
+      systemd-detect-virt
+      (gh#netdata/netdata#12338)
+    + Fix returning 0 for unknown CPU frequency in system-info.sh
+      (gh#netdata/netdata#12323)
+    + Fix CPU frequency detection for containers
+      (gh#netdata/netdata#12306)
+    + Fix long timeouts on the cloud because the agent does not
+      respond for failed queries with a failed message
+      (gh#netdata/netdata#12277)
+    + Fix registration of child nodes in the cloud through the
+      parent
+      (gh#netdata/netdata#12241)
+    + Fix node information send to the cloud for older agent
+      versions
+      (gh#netdata/netdata#12223)
+    + Fix Netdata crash on ACLK alerts streaming when 'info' field
+      is missing
+      (gh#netdata/netdata#12210)
+    + Fix claiming with wget
+      (gh#netdata/netdata#12163)
+    + Fix CPU frequency calculation in system-info.sh
+      (gh#netdata/netdata#12162)
+    + Fix data query option allow_past to correctly work in memory
+      mode ram and save
+      (gh#netdata/netdata#12136)
+    + Fix the format=array output in context queries
+      (gh#netdata/netdata#12129)
+    + Fix Netdata crash when there are charts with ids which differ
+      only by symbols that are not '_' or alphanumeric and no
+      unique names are provided
+      (gh#netdata/netdata#12067)
+
+Deprecation notice
+The following items will be removed in our next minor release
+(v1.35.0):
+Patch releases (if any) will not be affected.
+
+Component                 Type        Replaced by
+=========================================================
+node.d                    plugin      -
+node.d/snmp               collector   go.d/snmp
+python.d/apache           collector   go.d/apache
+python.d/couchdb          collector   go.d/couchdb
+python.d/dns_query_time   collector   go.d/dnsquery
+python.d/dnsdist          collector   go.d/dnsdist
+python.d/elasticsearch    collector   go.d/elasticsearch
+python.d/energid          collector   go.d/energid
+python.d/freeradius       collector   go.d/freeradius
+python.d/httpcheck        collector   go.d/httpcheck
+python.d/isc_dhcpd        collector   go.d/isc_dhcpd
+python.d/mysql            collector   go.d/mysql
+python.d/nginx            collector   go.d/nginx
+python.d/phpfpm           collector   go.d/phpfpm
+python.d/portcheck        collector   go.d/portcheck
+python.d/powerdns         collector   go.d/powerdns
+python.d/redis            collector   go.d/redis
+python.d/web_log          collector   go.d/weblog
+
+Deprecated in this release:
+
+
+Component                 Type        Replaced by
+=========================================================
+backends                  subsystem   exporting engine
+node.d/fronius            collector   -
+node.d/sma_webbox         collector   -
+node.d/stiebeleltron      collector   -
+node.d/named              collector   go.d/bind
+
+
+-------------------------------------------------------------------
 Wed Feb 16 04:45:42 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.33.1

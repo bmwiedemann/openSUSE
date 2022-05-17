@@ -3484,4 +3484,41 @@ Other notable changes
   (gh#netdata/netdata#12065)</comment>
     <requestid>955145</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>8c2f8d0c8908a203114ebb374e315681</srcmd5>
+    <version>1.34.1</version>
+    <time>1652801045</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.34.1 (go.d.plugin 0.32.3)
+Collectors
+  * New collectors
+    + Add CPU throttling charts (cgroups.plugin)
+      (gh#netdata/netdata#12591)
+    + Add clock status chart (timex.plugin)
+      (gh#netdata/netdata#12501)
+    + Add Asterisk configuration file with synthetic charts
+      (statsd.plugin)
+      (gh#netdata/netdata#12381)
+    + Add new chart for process states metrics (apps.plugin)
+      (gh#netdata/netdata#12305)
+    + Add thermal zone metrics collection (go.d/wmi)
+      (gh#netdata/netdata#667)
+    + Add SNMP data collector (go.d/snmp)
+      (gh#netdata/netdata#644)
+  * Improvements
+    + Add 'locust' to apps_groups.conf
+      (gh#netdata/netdata#12498)
+    + Enable timex plugin for non-linux systems (timex.plugin)
+      (gh#netdata/netdata#12489)
+    + Prefer 'blkio.*_recursive' files when available
+      (cgroups.plugin)
+      (gh#netdata/netdata#12462)
+    + Add 'stress-ng' and 'gremlin' to apps_groups.conf
+      (apps.plugin)
+      (gh#netdata/netdata#12165)
+    + Add Apple Filing Protocol daemons into 'afp' group
+      (apps.plugin)
+      (gh#netdata/netdata#12078)</comment>
+    <requestid>977544</requestid>
+  </revision>
 </revisionlist>

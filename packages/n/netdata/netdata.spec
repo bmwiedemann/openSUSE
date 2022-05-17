@@ -18,9 +18,9 @@
 
 %define netdata_user    netdata
 %define netdata_group   netdata
-%define godplugin_version 0.31.2
+%define godplugin_version 0.32.3
 Name:           netdata
-Version:        1.33.1
+Version:        1.34.1
 Release:        0
 Summary:        A system for distributed real-time performance and health monitoring
 # netdata is GPL-3.0+, other licenses refer to included third-party software (see REDISTRIBUTED.md)
