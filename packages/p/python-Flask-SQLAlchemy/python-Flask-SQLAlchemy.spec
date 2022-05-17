@@ -25,6 +25,8 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/mitsuhiko/flask-sqlalchemy
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-SQLAlchemy/Flask-SQLAlchemy-%{version}.tar.gz
+# https://github.com/pallets-eco/flask-sqlalchemy/commit/20864ddfe4f9b70f20d38e5dc3f8d49c1ca99207
+Patch0:         python-Flask-SQLAlchemy-no-mock.patch
 # BR krb5 - the test suite falis with krb5-mini (and users in any case will only ever get krb5, never krb5-mini)
 BuildRequires:  krb5
 BuildRequires:  %{python_module setuptools}
@@ -36,7 +38,6 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Flask >= 0.10}
 BuildRequires:  %{python_module SQLAlchemy >= 0.8.0}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -46,6 +47,7 @@ Adds SQLAlchemy support to your Flask application.
 
 %prep
 %setup -q -n Flask-SQLAlchemy-%{version}
+%patch0 -p1
 
 %build
 %python_build

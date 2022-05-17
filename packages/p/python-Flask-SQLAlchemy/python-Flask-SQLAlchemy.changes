@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 17 11:46:36 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+- added patches
+  fix https://github.com/pallets-eco/flask-sqlalchemy/commit/20864ddfe4f9b70f20d38e5dc3f8d49c1ca99207
+  + python-Flask-SQLAlchemy-no-mock.patch
+
+-------------------------------------------------------------------
 Thu Mar  3 11:35:08 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Work around test suite failure inside OBS: BuildRequire krb5.
