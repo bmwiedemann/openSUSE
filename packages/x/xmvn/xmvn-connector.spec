@@ -35,6 +35,7 @@ Patch4:         0001-Restore-possibility-to-build-with-Java-8.patch
 Patch5:         0002-Revert-Update-compiler-source-target-to-JDK-11.patch
 Patch6:         0003-Revert-Use-new-Collection-methods-added-in-Java-9.patch
 Patch7:         0004-Add-a-jdk9-profile-to-assure-that-we-are-jdk8-compat.patch
+Patch8:         0001-Port-to-Maven-3.8.5.patch
 BuildRequires:  %{parent}-api = %{version}
 BuildRequires:  %{parent}-core = %{version}
 BuildRequires:  ant

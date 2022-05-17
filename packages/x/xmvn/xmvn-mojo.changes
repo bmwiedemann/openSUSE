@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 16 15:56:00 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0001-Port-to-Maven-3.8.5.patch
+    + Allow buiding against unpatched maven 3.8.5
+
+-------------------------------------------------------------------
 Tue May 10 12:36:15 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 4.0.0
