@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May  9 08:00:48 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 5.0.1:
+  * Multithread support for Linux and Windows
+  * Fix NFS4 behavior of chmod/chown/utimes
+  * Add marshalling / unmarshalling of various NFSv4.1 structures (but not 4.1 support)
+  * PS3 support
+  * PS2 EE support
+  * Support escaped characters in the URL
+
+-------------------------------------------------------------------
 Wed Jul 24 15:18:59 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.0.0:

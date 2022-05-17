@@ -1,7 +1,7 @@
 #
 # spec file for package libnfs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2015 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,13 +17,13 @@
 #
 
 
-%define sover   13
+%define sover   14
 
 Name:           libnfs
-Version:        4.0.0
+Version:        5.0.1
 Release:        0
 Summary:        Client library for accessing NFS shares over a network
-License:        LGPL-2.1-or-later AND BSD-2-Clause AND GPL-3.0-or-later
+License:        BSD-2-Clause AND LGPL-2.1-or-later AND GPL-3.0-or-later
 Group:          Productivity/Networking/NFS
 URL:            https://github.com/sahlberg/libnfs
 Source0:        %{url}/archive/libnfs-%{version}.tar.gz
