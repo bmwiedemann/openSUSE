@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Mon May 16 14:26:42 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.8.5
+  * Bug
+    + [MNG-5180] - Versioning's snapshot version list is not
+      included in metadata merge
+    + [MNG-5561] - Plugin relocation loses configuration
+    + [MNG-5982] - The POM for ... is invalid, transitive
+      dependencies ... while property was overriden
+    + [MNG-6326] - Build continues when core extensions aren't
+      found
+    + [MNG-6727] - Using version range in parent and CI Friendly
+      Version fails
+    + [MNG-6802] - FileProfileActivator changes
+      FileProfileActivator.exists which lets flattened
+      resolveCiFriendliesOnly depending fail activating profile
+    + [MNG-7156] - Parallel build can cause issues between clean
+      and forked goals
+    + [MNG-7335] - [Regression] Parallel build fails due to missing
+      JAR artifacts in compilePath
+    + [MNG-7347] - SessionScoped beans should be singletons for a
+      given session
+    + [MNG-7357] - All Maven Core JARs have unusual entry order
+    + [MNG-7362] - DefaultArtifactResolver has spurious "Failure
+      detected" INFO log
+    + [MNG-7374] - Mutating RelocatedArtifact does not retain type
+    + [MNG-7386] - ModelMerger$MergingList is not serializable
+    + [MNG-7402] - BuildListCalculator never detaches the
+      classloader
+    + [MNG-7417] - Several classes do not set properties properly
+      for building requests
+  * New Feature
+    + [MNG-7395] - Support interpolation in extensions.xml
+    + [MNG-7407] - Introduce a ModelVersionProcessor component to
+      make CI Friendly Versions pluggable
+  * Improvement
+    + [MNG-6960] - Use RuntimeInformation instead of reading
+      properties
+    + [MNG-7349] - Limit relocation warning message to direct
+      dependencies only
+    + [MNG-7380] - Don't log non-threadsafe warning if only
+      building a single module
+    + [MNG-7381] - Shorten parallel builder thread name to
+      artifactId, conditionally with groupId
+    + [MNG-7385] - Improve documentation on repository metadata
+    + [MNG-7400] - Allow more WorkspaceReaders to participate
+    + [MNG-7408] - Explain reporting plugin version automatic
+      selection (in Maven 3)
+  * Dependency upgrade
+    + [MNG-7370] - Upgrade Maven Wagon to 3.5.1
+    + [MNG-7384] - Upgrade Maven JAR Plugin to 3.2.2
+    + [MNG-7428] - Upgrade Maven Parent to 35
+- Modified patches:
+  * 0001-Adapt-mvn-script.patch
+  * 0002-Invoke-logback-via-reflection.patch
+  * 0005-Port-to-maven-resolver-1.7.2.patch
+  * 0004-Use-non-shaded-HTTP-wagon.patch ->
+    0003-Use-non-shaded-HTTP-wagon.patch
+    + rebase
+  * qdox-2.0.1.patch -> 0007-Fix-build-with-qdox-2.0.1.patch
+    + rebase using git
+- Added patches:
+  * 0004-Remove-dependency-on-powermock.patch
+    + Remove the non-interpolated tests that require powermock
+  * 0006-Restore-DefaultModelValidator-compatibility-with-Mav.patch
+    + XMvn was relying on default constructor for the 
+      org.apache.maven.model.validation.DefaultModelValidator,
+      which is not generated, since a non-default one is defined.
+    + This adds the no-parameter constructor back implicitely
+
+-------------------------------------------------------------------
 Fri May 13 09:01:43 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with modello-2.0.0

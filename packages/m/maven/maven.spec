@@ -20,7 +20,7 @@
 %global homedir %{_datadir}/%{name}%{?maven_version_suffix}
 %global confdir %{_sysconfdir}/%{name}%{?maven_version_suffix}
 Name:           maven
-Version:        3.8.4
+Version:        3.8.5
 Release:        0
 Summary:        Java project management and project comprehension tool
 # maven itself is ASL 2.0
@@ -31,15 +31,15 @@ URL:            https://maven.apache.org/
 Source0:        http://archive.apache.org/dist/%{name}/%{name}-3/%{version}/source/apache-%{name}-%{version}-src.tar.gz
 Source1:        maven-bash-completion
 Source2:        mvn.1
-Source3:        http://archive.apache.org/dist/%{name}/%{name}-3/%{version}/source/apache-%{name}-%{version}-src.tar.gz.asc
-Source4:        https://downloads.apache.org/maven/KEYS#/%{name}.keyring
 Source10:       apache-%{name}-%{version}-build.tar.xz
 Patch1:         0001-Adapt-mvn-script.patch
 # Downstream-specific, avoids dependency on logback
 Patch2:         0002-Invoke-logback-via-reflection.patch
-Patch3:         qdox-2.0.1.patch
-Patch4:         0004-Use-non-shaded-HTTP-wagon.patch
+Patch3:         0003-Use-non-shaded-HTTP-wagon.patch
+Patch4:         0004-Remove-dependency-on-powermock.patch
 Patch5:         0005-Port-to-maven-resolver-1.7.2.patch
+Patch6:         0006-Restore-DefaultModelValidator-compatibility-with-Mav.patch
+Patch7:         0007-Fix-build-with-qdox-2.0.1.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-cli
 BuildRequires:  apache-commons-codec
@@ -47,17 +47,17 @@ BuildRequires:  apache-commons-io
 BuildRequires:  apache-commons-lang3
 BuildRequires:  apache-commons-logging
 BuildRequires:  atinject
+BuildRequires:  cdi-api
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  glassfish-annotation-api
 BuildRequires:  google-guice
 BuildRequires:  guava
-BuildRequires:  hawtjni-runtime
 BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
 BuildRequires:  jansi
-BuildRequires:  jansi-native
 BuildRequires:  javapackages-local
+BuildRequires:  jboss-interceptors-1.2-api
 BuildRequires:  jcl-over-slf4j
 BuildRequires:  jdom2
 BuildRequires:  maven-resolver-api
@@ -96,7 +96,7 @@ BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
 Requires:       %{name}-lib = %{version}-%{release}
 Requires(post): aaa_base
 Requires(postun):aaa_base
-# maven-lib cannot be noarch because of the position of jansi-native.jar
+# maven-lib cannot be noarch because of the position of jansi.jar
 #BuildArch:      noarch
 
 %description
@@ -124,12 +124,11 @@ Requires:       atinject
 Requires:       glassfish-annotation-api
 Requires:       google-guice
 Requires:       guava
-Requires:       hawtjni-runtime
 Requires:       httpcomponents-client
 Requires:       httpcomponents-core
 Requires:       jansi
-Requires:       jansi-native
 Requires:       javapackages-tools
+Requires:       jboss-interceptors-1.2-api
 Requires:       jcl-over-slf4j
 Requires:       junit
 Requires:       maven-resolver-api
@@ -186,6 +185,8 @@ BuildArch:      noarch
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
+%patch7 -p1
 
 # not really used during build, but a precaution
 find -name '*.jar' -not -path '*/test/*' -delete
@@ -220,9 +221,6 @@ sed -i "s/distributionName=.*/distributionName=Apache\ Maven/" `find -name build
 
 %{mvn_alias} :maven-resolver-provider :maven-aether-provider
 
-# xmvn depends on this version, so we want to avoid duplicate apache-commons-lang3 jars in xmvn
-%pom_xpath_set pom:project/pom:properties/pom:commonsLangVersion "3.8.1"
-
 %build
 mkdir -p lib
 build-jar-repository -s lib \
@@ -232,6 +230,7 @@ build-jar-repository -s lib \
     commons-io \
     guava/guava \
     guice/google-guice-no_aop \
+    jboss-interceptors-1.2-api \
     jdom2/jdom2 \
     maven-resolver/maven-resolver-api \
     maven-resolver/maven-resolver-impl \
@@ -282,7 +281,7 @@ for i in \
 done
 
 %install
-%{mvn_install}
+%mvn_install
 %fdupes %{buildroot}%{_javadocdir}
 
 install -d -m 755 %{buildroot}%{homedir}/boot
@@ -296,25 +295,21 @@ chmod -x %{buildroot}%{homedir}/bin/*.cmd %{buildroot}%{homedir}/bin/*.conf
 
 # Transitive deps of wagon-http, missing because of unshading
 build-jar-repository -p %{buildroot}%{homedir}/lib \
-    objectweb-asm/asm \
+    cdi-api/cdi-api \
     commons-cli \
     commons-codec \
     commons-io \
     apache-commons-lang3 \
-    commons-logging \
     guava/guava \
     guice/google-guice-no_aop \
-    hamcrest/core \
-    hawtjni/hawtjni-runtime \
     httpcomponents/httpclient \
     httpcomponents/httpcore \
     jansi/jansi \
-    jansi-native/jansi-linux \
-    jansi-native/jansi-native \
+    jboss-interceptors-1.2-api \
+    jsoup/jsoup \
     atinject \
     slf4j/jcl-over-slf4j \
     glassfish-annotation-api \
-    junit \
     maven-resolver/maven-resolver-api \
     maven-resolver/maven-resolver-connector-basic \
     maven-resolver/maven-resolver-impl \
@@ -334,9 +329,12 @@ build-jar-repository -p %{buildroot}%{homedir}/lib \
     slf4j/api \
     maven-wagon/file \
     maven-wagon/http \
+    maven-wagon/http-shared \
     maven-wagon/provider-api
 
 cp %{buildroot}%{_javadir}/%{name}/*.jar %{buildroot}%{homedir}/lib/
+
+ln -sf %{_libdir}/jansi/libjansi.so %{buildroot}%{homedir}/lib/jansi-native/
 
 build-jar-repository -p %{buildroot}%{homedir}/boot \
     plexus-classworlds
