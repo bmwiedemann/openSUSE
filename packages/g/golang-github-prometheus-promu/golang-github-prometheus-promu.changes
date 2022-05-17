@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 10 15:22:43 UTC 2022 - Jordi Massaguer <jmassaguerpla@suse.com>
+
+- Exclude s390 architecture.
+
+-------------------------------------------------------------------
 Tue Apr 26 17:13:58 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Set build date from last changelog modification (boo#1047218)

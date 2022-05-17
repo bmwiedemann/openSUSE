@@ -40,6 +40,7 @@ BuildRequires:  golang >= 1.15
 BuildRequires:  golang(API) = 1.15
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+ExcludeArch:    s390
 %{go_provides}
 
 %description
