@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 11 01:12:29 UTC 2022 - wbrown@suse.de
+
+- Update to version 20220511:
+  * Assigned RUSTSEC-2022-0022 to hyper (#1235)
+  * add hyper advisory (#1232)
+  * Assigned RUSTSEC-2022-0019 to crossbeam-channel, RUSTSEC-2022-0020 to crossbeam, RUSTSEC-2022-0021 to crossbeam-queue (#1233)
+  * add crossbeam advisories for incorrect (unsound) zeroed memory (#1231)
+  * Assigned RUSTSEC-2022-0018 to totp-rs (#1230)
+  * Possible timing attack in totp-rs (#1229)
+  * HOWTO_UNMAINTAINED.md: guide for unmaintained crate advisories (#1192)
+  * Assigned RUSTSEC-2022-0017 to array-macro (#1225)
+  * Add advisory for using impure constants in array-macro (#1224)
+  * Add patch version for fruity (#1223)
+
+-------------------------------------------------------------------
 Thu Apr 28 02:57:45 UTC 2022 - wbrown@suse.de
 
 - Update to version 20220428:
