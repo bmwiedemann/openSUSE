@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 16 10:11:13 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix a crash when opening the main dialog (bsc#1199552).
+- 4.5.3
+
+-------------------------------------------------------------------
+Wed May 11 09:51:04 UTC 2022 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Internal cleanup in several parts to turn the auto-converted YCP
+  code into something closer to common Ruby.
+- Enable iscsiuio during installation only if there is any card in
+  the system using the bnx2i or qedi modules (bsc#1194432).
+- 4.5.2
+
+-------------------------------------------------------------------
 Mon Apr 11 12:04:00 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Use $PATH, not absolute paths for calling external programs
