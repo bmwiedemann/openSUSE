@@ -64,14 +64,12 @@ BuildRequires:  glassfish-servlet-api
 BuildRequires:  google-gson
 BuildRequires:  google-guice
 BuildRequires:  guava
-BuildRequires:  hawtjni-runtime
 BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
 BuildRequires:  jackson-annotations
 BuildRequires:  jackson-core
 BuildRequires:  jackson-databind
 BuildRequires:  jansi
-BuildRequires:  jansi-native
 BuildRequires:  jatl
 BuildRequires:  javapackages-local
 BuildRequires:  jcifs
@@ -155,14 +153,12 @@ Requires:       glassfish-servlet-api
 Requires:       google-gson
 Requires:       google-guice
 Requires:       guava
-Requires:       hawtjni-runtime
 Requires:       httpcomponents-client
 Requires:       httpcomponents-core
 Requires:       jackson-annotations
 Requires:       jackson-core
 Requires:       jackson-databind
 Requires:       jansi
-Requires:       jansi-native
 Requires:       jatl
 Requires:       javapackages-tools
 Requires:       jcifs
@@ -272,8 +268,6 @@ not have yet gradle, groovy and gpars built.
 %prep
 %setup -q -c -n %{short_name}-%{gradle_version}
 cp %{SOURCE200} gpars-pom.xml
-
-%pom_change_dep org.jboss.netty:netty:: ::3: gpars-pom.xml
 %pom_change_dep :jsr166y:: :extra166y:: gpars-pom.xml
 
 %build

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 16 12:19:47 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Adapt to the change in jline/jansi dependencies of gradle
+
+-------------------------------------------------------------------
 Sat Apr 30 16:11:23 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - The org.jboss.netty:netty artifact does not exist any more under
