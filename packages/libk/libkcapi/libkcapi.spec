@@ -1,7 +1,7 @@
 #
 # spec file for package libkcapi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           libkcapi
-Version:        1.2.0
+Version:        1.4.0
 Release:        0
 Summary:        Linux Kernel Crypto API User Space Interface Library
 License:        GPL-2.0-only
 Group:          Productivity/Security
-URL:            http://www.chronox.de/libkcapi.html
+URL:            https://www.chronox.de/libkcapi.html
 Source:         https://www.chronox.de/libkcapi/libkcapi-%{version}.tar.xz
 Source1:        https://www.chronox.de/libkcapi/libkcapi-%{version}.tar.xz.asc
 Source2:        libkcapi.keyring
@@ -73,7 +73,7 @@ Group:          Development/Tools/Other
 libkcapi user space tools to access certain hash algorithms.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf -i
@@ -89,7 +89,7 @@ autoreconf -i
 make %{?_smp_mflags}
 
 %install
-make install DESTDIR=%{buildroot} LIBDIR="%{_libdir}" BINDIR=/%{_libexecdir}/libkcapi/ %{?_smp_mflags} 
+make install DESTDIR=%{buildroot} LIBDIR="%{_libdir}" BINDIR=/%{_libexecdir}/libkcapi/ %{?_smp_mflags}
 rm %{buildroot}/%_libdir/libkcapi.la
 
 mkdir -p %{buildroot}/%{_libexecdir}/libkcapi/

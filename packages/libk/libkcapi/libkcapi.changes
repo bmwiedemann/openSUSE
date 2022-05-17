@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Apr 26 12:45:21 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- Update to version 1.4.0
+  * fix: ensure that LTO is supported (by Simo Sorce)
+  * fix: add LTO regression testing (by Ondrej Mosnacek)
+  * enhancement: add sm3sum, sm3hmac tools, add APIs kcapi_md_sm3, kcapi_md_hmac_sm3
+  * enhancement: add SM4 convenience functions
+  * fix: support AEAD encryption of arbitrary size with kcapi-enc
+- removed libkcapi-fix-lto.patch (upstream)
+
+-------------------------------------------------------------------
+Tue Apr 26 12:44:40 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- use https url
+
+-------------------------------------------------------------------
+Tue Jul 27 08:03:48 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.3.1
+  * fix: fix -Wconversion warnings (by Ondrej Mosnacek)
+  * fix: fix bad data types in _kcapi_common_send_meta (by Ondrej Mosnacek)
+  * fix: Version symbols to maintain ABI compatibility (by Simo Sorce)
+  * fix: disable io_getevents on systems that do not support it (by Khem Raj)
+  * fix: remove prctl PR_SET_DUMPABLE to allow library to be debugged - as the
+    library does not store any sensitive data in data structures it owns, such
+    security precautions may not be necessary considering the benefit of
+    allowing regular debugging
+  * fix: ensure that sendmsg is always used as fallback when vmsplice cannot be
+    used
+  * enhancement: add kcapi_set_maxsplicesize and kcapi_get_maxsplicesize
+  * enhancement: the variable types are changed from int32_t to ssize_t and
+    from uint32_t to size_t to match common POSIX and Linux APIs
+- Added libkcapi-fix-lto.patch
+
+-------------------------------------------------------------------
 Mon Aug 31 13:30:58 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.2.0:
