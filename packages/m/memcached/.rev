@@ -488,4 +488,12 @@ bsc#1007869) (CVE-2016-8706)</comment>
   * core: remove cdefs include from queue.h</comment>
     <requestid>956355</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>799391d8b6abdea7881ea38d3e74731d</srcmd5>
+    <version>1.6.15</version>
+    <time>1652801033</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977521</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Apr 19 14:34:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.15:
+  * proxy: Fix buffer overflow and prevent recv() of 0 byte
+  * proxy: allow await() to be called recursively
+  * proxy: mcp.request(cmd, [val | resp])
+  * proxy: hacky method of supporting noreply/quiet
+  * proxy: add ring_hash builtin
+  * proxy: fix logger entry memory corruption
+  * storage: parameterize the compaction thread sleep
+  * proxy: pull chunks into individual c files
+  * proxy: documentation updates
+  * proxy: "stats settings" for proxy
+  * proxy: await improvements
+  * proxy: trivial support for SO_KEEPALIVE on backend
+  * mcmc: upstream update for SO_KEEPALIVE
+  * proxy: fix crash on stats proxy sans user stats
+  * proxy: enable backend_total stat
+  * proxy: track in-flight requests
+  * proxy: add some basic logging for backend errors
+  * proxy: logging improvements + lua mcp.log()
+  * proxy: add stats for commands seen
+
+-------------------------------------------------------------------
 Sun Feb 20 22:06:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.14:
