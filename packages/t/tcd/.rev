@@ -29,4 +29,12 @@
     <comment>- Drop gpg-offline build-time requirement</comment>
     <requestid>251754</requestid>
   </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>d963532395167f859b75bbda306319da</srcmd5>
+    <version>2.2.0</version>
+    <time>1652801076</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernize specfile. Switch to pkgconfig(sdl) to get sdl12_compat.</comment>
+    <requestid>977671</requestid>
+  </revision>
 </revisionlist>

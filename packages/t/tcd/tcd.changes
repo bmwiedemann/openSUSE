@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 17 08:18:50 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Modernize specfile. Switch to pkgconfig(sdl) to get sdl12_compat.
+
+-------------------------------------------------------------------
 Tue Sep 23 10:00:07 UTC 2014 - jengelh@inai.de
 
 - Drop gpg-offline build-time requirement; this is now handled by

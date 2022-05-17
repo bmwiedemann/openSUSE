@@ -1,7 +1,7 @@
 #
 # spec file for package tcd
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           tcd
-Summary:        Ncurses-based CD-DA player
-License:        GPL-2.0+
-Group:          Productivity/Multimedia/Sound/Players
 Version:        2.2.0
 Release:        0
-Url:            http://nongnu.org/tcd/
+Summary:        Ncurses-based CD-DA player
+License:        GPL-2.0-or-later
+Group:          Productivity/Multimedia/Sound/Players
+URL:            http://nongnu.org/tcd/
 
 #DL-URL:	http://download.savannah.gnu.org/releases/tcd/
 Source:         http://download.savannah.gnu.org/releases/tcd/%name-%version.tar.bz2
@@ -30,30 +30,27 @@ Source2:        http://download.savannah.gnu.org/releases/tcd/%name-%version.tar
 Source3:        %name.keyring
 Patch1:         tcd-linkorder.diff
 Patch2:         tcd-discid.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf >= 2.67
 BuildRequires:  automake
-BuildRequires:  libSDL-devel >= 1.2.0
 BuildRequires:  ncurses-devel
+BuildRequires:  pkgconfig(sdl)
 
 %description
 tcd is a tiny cd player for a text terminal. It uses ncurses for
 drawing and SDL for playing audio CDs.
 
 %prep
-%setup -q
-%patch -P 1 -P 2 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 
 %files
-%defattr(-,root,root)
 %_bindir/tcd
 %_mandir/man1/tcd*
 %doc COPYING
