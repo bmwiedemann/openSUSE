@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-concurrent-ruby
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-concurrent-ruby
-Version:        1.1.9
+Version:        1.1.10
 Release:        0
 %define mod_name concurrent-ruby
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 1.9.3}
+BuildRequires:  %{ruby >= 2.2}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            http://www.concurrent-ruby.com
