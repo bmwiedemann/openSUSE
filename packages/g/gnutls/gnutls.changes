@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 11 09:19:52 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- disable kcapi usage for now, as kernel-obs-build not adjusted
+  to contain the algorithms. bsc#1189283
+
+-------------------------------------------------------------------
 Fri Mar 18 18:31:06 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - FIPS: Additional PBKDF2 requirements for KAT [bsc#1184669]

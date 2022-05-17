@@ -27,7 +27,9 @@
 %endif
 # Enable Linux kernel AF_ALG based acceleration
 %if 0%{?suse_version} >= 1550
-%bcond_without kcapi
+# disable for now, as our OBS builds do not work with it. Marcus 20220511
+#bcond_without kcapi
+%bcond_with kcapi
 %else
 %bcond_with kcapi
 %endif
@@ -103,9 +105,9 @@ of the IETF's TLS working group.
 
 %package -n libgnutls%{gnutls_sover}
 Summary:        The GNU Transport Layer Security Library
+# install libgnutls and libgnutls-hmac close together (bsc#1090765)
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-# install libgnutls and libgnutls-hmac close together (bsc#1090765)
 Suggests:       libgnutls%{gnutls_sover}-hmac = %{version}-%{release}
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 Requires:       crypto-policies

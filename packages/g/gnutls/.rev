@@ -1512,4 +1512,13 @@ bsc#901857 (forwarded request 493933 from AndreasStieger)</comment>
     <comment></comment>
     <requestid>964662</requestid>
   </revision>
+  <revision rev="136" vrev="2">
+    <srcmd5>d3f35e2d162c7d0778e8271a8601a263</srcmd5>
+    <version>3.7.4</version>
+    <time>1652801041</time>
+    <user>dimstar_suse</user>
+    <comment>- disable kcapi usage for now, as kernel-obs-build not adjusted
+  to contain the algorithms. bsc#1189283 (forwarded request 976267 from msmeissn)</comment>
+    <requestid>977461</requestid>
+  </revision>
 </revisionlist>
