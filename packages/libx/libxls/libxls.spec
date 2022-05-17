@@ -1,7 +1,7 @@
 #
 # spec file for package libxls
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libxls/libxls
 Source:         https://github.com/libxls/libxls/releases/download/v%version/libxls-%version.tar.gz
+Patch1:         0001-Fixes-94-possible-null-ptr-deref.patch
 BuildRequires:  pkg-config
 
 %description

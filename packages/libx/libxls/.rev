@@ -39,4 +39,12 @@
     <comment>add bugref</comment>
     <requestid>895300</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>24a8e48ac01ee704a000151b925fdd96</srcmd5>
+    <version>1.6.2</version>
+    <time>1652801070</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Fixes-94-possible-null-ptr-deref.patch [boo#1192323] [CVE-2021-27836]</comment>
+    <requestid>977612</requestid>
+  </revision>
 </revisionlist>

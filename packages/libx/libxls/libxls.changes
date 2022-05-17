@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 16 20:51:17 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-Fixes-94-possible-null-ptr-deref.patch
+  [boo#1192323] [CVE-2021-27836]
+
+-------------------------------------------------------------------
 Tue Jan 26 11:30:00 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.6.2
