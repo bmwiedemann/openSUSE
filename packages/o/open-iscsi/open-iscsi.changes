@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 13 20:53:23 UTC 2022 - Lee Duncan <lduncan@suse.com>
+
+- Set initiatorname in %post (at end of install), for cases
+  where root is read-only at startup time (bsc#1198457)
+
+-------------------------------------------------------------------
 Mon May  9 19:56:32 UTC 2022 - Lee Duncan <lduncan@suse.com>
 
 - Update to latest upstream, including:

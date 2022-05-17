@@ -143,6 +143,9 @@ mv %{buildroot}%{_sysconfdir}/logrotate.d/iscsiuiolog %{buildroot}%{_sysconfdir}
 
 %post
 %{?regenerate_initrd_post}
+if [ ! -f %{_sysconfdir}/iscsi/initiatorname.iscsi ] ; then
+    %{_sbindir}/iscsi-gen-initiatorname
+fi
 %service_add_post iscsi.service iscsid.service iscsid.socket
 
 %posttrans
