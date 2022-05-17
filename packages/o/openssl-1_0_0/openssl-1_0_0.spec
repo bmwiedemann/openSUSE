@@ -42,6 +42,7 @@ Source42:       https://www.%{_rname}.org/source/%{_rname}-%{version}.tar.gz.asc
 # https://www.openssl.org/about/
 # http://pgp.mit.edu:11371/pks/lookup?op=get&search=0xA2D29B7BF295C759#/openssl.keyring
 Source43:       %{_rname}.keyring
+Source98:       openssl-1_0_0-rpmlintrc
 Source99:       showciphers.c
 Patch0:         merge_from_0.9.8k.patch
 Patch1:         openssl-1.0.0-c_rehash-compat.diff
