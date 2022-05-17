@@ -19,12 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-cassandra-driver
-Version:        3.23.0
+Version:        3.25.0
 Release:        0
 Summary:        Python driver for Cassandra
 License:        Apache-2.0
 URL:            https://github.com/datastax/python-driver
 Source:         https://github.com/datastax/python-driver/archive/%{version}.tar.gz
+# https://datastax-oss.atlassian.net/browse/PYTHON-1299
+Patch0:         python-cassandra-driver-no-mock.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Twisted}
@@ -32,7 +34,6 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module eventlet}
 BuildRequires:  %{python_module geomet >= 0.1}
 BuildRequires:  %{python_module gevent}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pure-sasl}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
@@ -65,6 +66,7 @@ A list of features may be found at https://github.com/datastax/python-driver#fea
 
 %prep
 %setup -q -n python-driver-%{version}
+%patch0 -p1
 # do not run integration tests
 rm -rf tests/integration
 rm -rf tests/stress_tests
@@ -74,6 +76,8 @@ rm -rf tests/unit/cython
 rm -f tests/unit/test_types.py
 # fix hardcoded cython dep
 sed -i -e 's:Cython>=0.20,!=0.25,<0.29:Cython:g' setup.py
+# https://datastax-oss.atlassian.net/browse/PYTHON-1300
+rm -f tests/unit/test_host_connection_pool.py
 
 %build
 export CFLAGS="%{optflags}"
