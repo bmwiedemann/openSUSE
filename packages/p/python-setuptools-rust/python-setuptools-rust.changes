@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 15 19:16:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.0:
+  * Increase minimum `setuptools` version to 58.
+  * Fix crash when `python-distutils-extra` linux package is installed.
+  * Fix sdist built with vendored dependencies on Windows having incorrect cargo config.
+  * Drop support for Python 3.6.
+
+-------------------------------------------------------------------
 Fri Feb  4 22:05:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.2:
