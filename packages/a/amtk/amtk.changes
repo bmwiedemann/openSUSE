@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Tue May 17 08:32:10 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 5.4.0:
+  + Version bump only.
+
+-------------------------------------------------------------------
 Mon Apr 25 11:10:32 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
-- Update to version 5.3.2
+- Update to version 5.3.2:
   + Some documentation improvements
   + Some code refactorings
   + Mark public API with G_MODULE_EXPORT, not the custom

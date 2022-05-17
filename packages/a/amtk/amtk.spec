@@ -20,13 +20,13 @@
 %define api_ver 5
 %define libamtk libamtk-%{api_ver}-0
 Name:           amtk
-Version:        5.3.2
+Version:        5.4.0
 Release:        0
 Summary:        An Actions, Menus and Toolbars Kit
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://gitlab.gnome.org/swilmet/amtk/
-Source0:        https://download.gnome.org/sources/amtk/5.3/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/amtk/5.4/%{name}-%{version}.tar.xz
 
 BuildRequires:  gobject-introspection-devel >= 1.42.0
 BuildRequires:  gtk-doc >= 1.25
