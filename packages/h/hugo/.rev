@@ -143,4 +143,35 @@
   * Deprecate page.Author and page.Authors (forwarded request 973723 from jfkw)</comment>
     <requestid>973725</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4f303db5f20d239d28250aa6d5e4ae74</srcmd5>
+    <version>0.99.0</version>
+    <time>1652801060</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.99.0:
+  * server: Refresh the error template
+  * server: Fix SIGINT handling after loading bad configuration
+  * Improve SASS errors
+  * postcss: Fix import error handling
+  * build(deps): bump github.com/fsnotify/fsnotify from 1.5.3 to 1.5.4
+  * common/herrors: Remove unused struct
+  * build(deps): bump github.com/evanw/esbuild from 0.14.38 to 0.14.39
+  * errors: Misc improvements
+  * server: Always rebuild the files involved in an error
+  * postcss: Fix line numbers in error messages
+  * Update CONTRIBUTING.md
+  * js: Bump test dependency
+  * deps: Update github.com/spf13/cast v1.4.1 =&gt; v1.5.0
+  * hugolib: Check for nil in shouldRender
+  * Revise the use of htime.Since/htime.Now
+  * tpl/collections: Make sort stable
+  * docs: Regen CLI docs
+  * Use configured timeZone for the clock
+  * Add `clock` cli flag
+  * Improve error messages, esp. when the server is running
+  * tpl: Improve godoc
+  * github: Add permissions to test action
+  * tpl/crypto: Add example for FNV32a (forwarded request 977580 from jfkw)</comment>
+    <requestid>977590</requestid>
+  </revision>
 </revisionlist>
