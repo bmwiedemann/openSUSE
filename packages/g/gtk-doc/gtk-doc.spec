@@ -1,7 +1,7 @@
 #
-# spec file for package gtk-doc
+# spec file
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 
 Name:           gtk-doc%{?psuffix}
-Version:        1.32
+Version:        1.33.2
 Release:        0
 %if "%{flavor}" == ""
 Summary:        GTK+ Documentation Generator
@@ -37,18 +37,20 @@ License:        GFDL-1.1-or-later
 Group:          Documentation/HTML
 %endif
 URL:            http://www.gtk.org/gtk-doc/
-# When updating this package, please don't forget to update the gtk-doc.m4 Source in glib2.
-Source0:        https://download.gnome.org/sources/gtk-doc/1.32/gtk-doc-%{version}.tar.xz
+Source0:        https://gitlab.gnome.org/GNOME/gtk-doc/-/archive/%{version}/gtk-doc-%{version}.tar.bz2
 
 BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  libtool
 BuildRequires:  libxml2-tools
+BuildRequires:  meson >= 0.62
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
+BuildRequires:  python3-pygments
 BuildRequires:  sgml-skel
 %if %{with doc}
 BuildRequires:  fdupes
 BuildRequires:  yelp-tools
+BuildRequires:  pkgconfig(glib-2.0)
+BuildArch:      noarch
 # gtk-doc-manual was split from the main package
 Provides:       gtk-doc:%{_datadir}/help/C/gtk-doc-manual/index.docbook
 Conflicts:      gtk-doc < %{version}-%{release}
@@ -64,7 +66,7 @@ Requires:       xsltproc
 Recommends:     gtk-doc-manual
 # Old for <= 10.2 & CODE10
 Provides:       gtkdoc = %{version}
-Obsoletes:      gtkdoc
+Obsoletes:      gtkdoc < %{version}
 %endif
 
 %if "%{flavor}" == ""
@@ -76,13 +78,14 @@ Java-doc.  It is used to generate the documentation for GLib,
 Gtk+, and GNOME.
 
 %else
+
 %description
 User manual for Gtkdoc
 %endif
 
 %package mkpdf
 Summary:        Gtkdoc PDF Generator
-Supplements:    packageand(gtk-doc:dblatex)
+Supplements:    (gtk-doc and dblatex)
 Requires:       %{name} = %{version}
 Requires:       dblatex
 
@@ -95,19 +98,23 @@ PDF generator for Gtkdoc.
 %autosetup -p1 -n gtk-doc-%{version}
 
 %build
-autoreconf
-%configure PYTHON=%{_bindir}/python3 \
-  DBLATEX=%{_bindir}/dblatex
-make %{?_smp_mflags}
+%meson \
+%if %{with doc}
+  -Dyelp_manual=true \
+  -Dcmake_support=false
+%else
+  -Dyelp_manual=false \
+  -Dtests=false
+%endif
+%meson_build
 
 %install
+%meson_install \
 %if "%{flavor}" == ""
-%make_install
+  %{nil}
 mkdir -p %{buildroot}%{_datadir}/gtk-doc/html
-%endif
-
-%if %{with doc}
-%make_install -C help
+%else
+  --tags doc
 %fdupes %{buildroot}%{_datadir}/help/[a-z]*
 %find_lang gtk-doc-manual %{?no_lang_C}
 %endif
@@ -124,11 +131,8 @@ mkdir -p %{buildroot}%{_datadir}/gtk-doc/html
 %{_datadir}/gtk-doc/
 %exclude %{_datadir}/gtk-doc/python/gtkdoc/mkpdf*
 %{_datadir}/pkgconfig/gtk-doc.pc
-%dir %{_datadir}/cmake
-%dir %{_datadir}/cmake/GtkDoc
-%{_datadir}/cmake/GtkDoc/GtkDocConfig.cmake
-%{_datadir}/cmake/GtkDoc/GtkDocConfigVersion.cmake
-%{_datadir}/cmake/GtkDoc/GtkDocScanGObjWrapper.cmake
+%dir %{_libdir}/cmake
+%{_libdir}/cmake/GtkDoc
 
 %files mkpdf
 %{_bindir}/gtkdoc-mkpdf

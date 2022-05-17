@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Apr 23 01:04:42 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.33.2
+  + Stop using anytree
+  + Python3 fixes for depscan
+- Update to version 1.33.1
+  + Build GObject scanner with asan
+  + Ignore deprecations in the GObject scanner
+  + Translation updates
+- Update to version 1.33.0
+  + Support documenting GTK actions
+  + Recognize GDK_DECLARE_ macros
+  + Better table styling in html output
+  + Use plain C types for basic types
+  + Translation updates
+- Build package using meson instead of autotools
+- Build -manual subpackage as noarch
+
+-------------------------------------------------------------------
 Sat Jan 25 14:14:11 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
