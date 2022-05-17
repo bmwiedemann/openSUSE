@@ -18,19 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Fabric
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        A Pythonic tool for remote execution and deployment
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            http://fabfile.org
 Source:         https://files.pythonhosted.org/packages/source/f/fabric/fabric-%{version}.tar.gz
-# fix executable in tests
+# PATCH-FIX-UPSTREAM gh#fabric/fabric#2209
 Patch0:         fix-executable.patch
+# PATCH-FIX-UPSTREAM gh#fabric/fabric#2210
+Patch1:         remove-mock.patch
 BuildRequires:  %{python_module cryptography >= 1.1}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module invoke >= 1.3}
-BuildRequires:  %{python_module mock >= 2.0.0}
 BuildRequires:  %{python_module paramiko >= 2.4}
 BuildRequires:  %{python_module pytest-relaxed}
 BuildRequires:  %{python_module setuptools}
@@ -72,10 +72,9 @@ suite at a higher level than that provided by e.g. Paramiko (which
 Fabric itself leverages).
 
 %prep
-%setup -q -n fabric-%{version}
+%autosetup -p1 -n fabric-%{version}
 # fix all imports:
 sed -i 's/from invoke.vendor\./from\ /' fabric/connection.py fabric/group.py integration/concurrency.py tests/config.py tests/transfer.py tests/_util.py tests/connection.py tests/runners.py
-%patch0 -p1
 
 %build
 %python_build

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 17 05:29:37 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.7.0:
+  * Add ~fabric.connection.Connection.shell, a belated port of the v1
+    open_shell() feature.
+  * Forward local terminal resizes to the remote end, when applicable.
+    (For the technical: this means we now turn SIGWINCH into SSH
+    window-change messages.)
+  * Update ~fabric.connection.Connection temporarily so that it doesn't
+    incidentally apply replace_env=True to local shell commands, only
+    remote ones.
+- Add patch remove-mock.patch:
+  * Use unittest.mock, instead of mock
+
+-------------------------------------------------------------------
 Thu Mar 10 06:31:30 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - pytest-relaxed now supports pytest 6, so test on all python versions. 
