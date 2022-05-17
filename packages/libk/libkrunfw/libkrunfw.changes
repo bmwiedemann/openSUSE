@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 16 17:08:46 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix the build with gcc12
+* Patches added:
+  fix-build-with-gcc12.patch
+
+-------------------------------------------------------------------
 Fri Aug  6 13:28:37 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
 
 - Don't try follow library policy, libkrunfw is a plugin.

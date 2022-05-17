@@ -1,7 +1,7 @@
 #
 # spec file for package libkrunfw
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        A dynamic library bundling a Linux kernel in a convenient storag
 License:        GPL-2.0-only AND LGPL-2.1-only
 URL:            https://github.com/containers/libkrunfw
 Source0:        https://github.com/containers/libkrunfw/archive/v%{version}.tar.gz#/libkrunfw-%{version}.tar.gz
-Source1:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.10.tar.xz
+Source1:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.116.tar.xz
 ExclusiveArch:  x86_64 aarch64
 BuildRequires:  bc
 BuildRequires:  binutils
@@ -36,8 +36,10 @@ BuildRequires:  hostname
 BuildRequires:  libelf-devel
 BuildRequires:  net-tools
 BuildRequires:  python3-pyelftools
-Conflicts:      libkrunfw0 <= 0.7
 Conflicts:      libkrunfw-devel <= 0.7
+Conflicts:      libkrunfw0 <= 0.7
+
+Patch1:         fix-build-with-gcc12.patch
 
 %description
 libkrunfw is a library bundling a Linux kernel in a dynamic library in a way that can be easily consumed by libkrun.
