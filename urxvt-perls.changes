@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 17 09:57:10 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.3
+  * keyboard-select: Y mapping, copy cursor line and quit
+  * keyboard-select: Use the same copy method for all selection modes
+  * Deprecate clipboard
+  * Deprecate url-select
+  * Use highlightColor in selection renderings
+  * Scroll before drawing the selection when refreshing
+  * Make Ctrl-m work as Return in selection
+  * Allow Home/End keys in selection mode
+  * Add option for copying to clipboard too 
+
+-------------------------------------------------------------------
 Thu Nov 19 16:34:44 UTC 2015 - tampakrap@opensuse.org
 
 - Version bump 2.2, no upstream changelog, see:

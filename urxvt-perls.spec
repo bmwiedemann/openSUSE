@@ -1,7 +1,7 @@
 #
 # spec file for package urxvt-perls
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           urxvt-perls
-Version:        2.2
+Version:        2.3
 Release:        0
 Summary:        Perl extensions for the rxvt-unicode terminal emulator
 License:        GPL-2.0
 Group:          System/X11/Utilities
 Url:            https://github.com/muennich/urxvt-perls
-Source:         https://github.com/muennich/%{name}/archive/%{version}.tar.gz
+Source:         https://github.com/muennich/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Requires:       xsel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -40,13 +40,14 @@ to paste the clipboard contents (optionally escaping all special characters).
 %build
 
 %install
-install -D -m 644 clipboard %{buildroot}%{_libdir}/urxvt/perl/clipboard
+install -D -m 644 deprecated/clipboard %{buildroot}%{_libdir}/urxvt/perl/clipboard
 install -D -m 644 keyboard-select %{buildroot}%{_libdir}/urxvt/perl/keyboard-select
-install -D -m 644 url-select %{buildroot}%{_libdir}/urxvt/perl/url-select
+install -D -m 644 deprecated/url-select %{buildroot}%{_libdir}/urxvt/perl/url-select
 
 %files
 %defattr(-,root,root)
-%doc README.md LICENSE
+%doc README.md
+%license LICENSE
 %dir %{_libdir}/urxvt
 %dir %{_libdir}/urxvt/perl
 %{_libdir}/urxvt/perl/clipboard
