@@ -47,6 +47,8 @@ Group:          Development/Libraries/C and C++
 URL:            http://libproxy.github.io/libproxy/
 Source:         https://github.com/libproxy/libproxy/releases/download/%{version}/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-OPENSUSE libproxy-python-310.patch dimstar@opensuse.org -- Detect python 3.10. upstream has more sophisticated changes already in the queue
+Patch0:         libproxy-python-310.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 # netcfg is needed for the test suite.
