@@ -191,4 +191,12 @@
   ipvsadm-PIE.patch</comment>
     <requestid>891079</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3e7e939572ec85792e7b264d511d7821</srcmd5>
+    <version>1.31</version>
+    <time>1652801024</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977477</requestid>
+  </revision>
 </revisionlist>

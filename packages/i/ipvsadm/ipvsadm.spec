@@ -1,7 +1,7 @@
 #
 # spec file for package ipvsadm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,14 +31,13 @@ BuildRequires:  pkgconfig(libnl-genl-3.0)
 Summary:        A Utility for Administering the Linux Virtual Server
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/System
-Version:        1.29
+Version:        1.31
 Release:        0
 URL:            http://www.linuxvirtualserver.org/
 Source0:        https://www.kernel.org/pub/linux/utils/kernel/ipvsadm/%{name}-%{version}.tar.xz
 Source1:        ipvsadm.service
-Patch1:         ipvsadm-1.26.diff
-Patch2:         ipvsadm-print_largenum.diff
-Patch3:         ipvsadm-PIE.patch
+Patch0:         ipvsadm-makefile.patch
+Patch1:         ipvsadm-print_largenum.patch
 Provides:       %{name}-%{version}
 Requires:       grep
 Requires(pre):  %fillup_prereq
@@ -49,7 +48,7 @@ ipvsadm is a utility for administering the IP virtual server services
 offered by the Linux kernel with Linux Virtual Server support.
 
 %prep
-%setup -q
+%autosetup
 # This files are embedded here instead of being another source in order
 # to the prefix directory
 cat >sysconfig.ipvsadm <<EOFF
@@ -68,9 +67,6 @@ cat >ipvsadm.rules <<EOFF
 # Please insert your ipvs-rules here
 #
 EOFF
-%patch1
-%patch2
-%patch3 -p1
 
 %build
 make POPT_LIB="-lpopt" CFLAGS="%{optflags} -fPIC -DHAVE_POPT -DLIBIPVS_USE_NL -I%{_includedir}/libnl3"

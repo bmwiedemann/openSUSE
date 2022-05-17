@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Apr 23 23:38:34 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.31
+  * This release add support for configuring tunneling with
+    GRE or GUE encapsulation. See manpage ipvsadm(8) for --tun-type
+    and --tun-info, plus more specific --tun-xxxx options for adjustments.
+  * Some manpage adjustments.
+- Update to version 1.30
+  * Adding the missing userspace side for the schedulers MH, FO and OVF.
+- Replaced and rebased ipvsadm-1.26.diff and ipvsadm-PIE.patch with
+  ipvsadm-makefile.patch
+- Rebased ipvsadm-print_largenum.diff as ipvsadm-print_largenum.patch
+
+-------------------------------------------------------------------
 Mon Apr 19 17:28:52 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Hardening: link as position independent executable (bsc#1184988).

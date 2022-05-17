@@ -1,6 +1,7 @@
---- Makefile
-+++ Makefile	2011/02/08 14:48:13
-@@ -38,9 +38,9 @@ RPMSPECDIR	= $(shell rpm --eval '%_specd
+diff -Nur ipvsadm-1.31/Makefile new/Makefile
+--- ipvsadm-1.31/Makefile	2019-12-24 14:20:30.000000000 +0100
++++ new/Makefile	2022-04-24 01:42:51.839729180 +0200
+@@ -38,9 +38,9 @@
  CC		= gcc
  INCLUDE		=
  SBIN		= $(BUILD_ROOT)/sbin
@@ -12,7 +13,16 @@
  MKDIR		= mkdir
  INSTALL		= install
  STATIC_LIBS	= libipvs/libipvs.a
-@@ -109,7 +109,7 @@ install:        all
+@@ -87,7 +87,7 @@
+ 		make -C libipvs
+ 
+ ipvsadm:	$(OBJS) $(STATIC_LIBS)
+-		$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
++		$(CC) $(CFLAGS) -pie -o $@ $^ $(LIBS)
+ 
+ install:        all
+ 		if [ ! -d $(SBIN) ]; then $(MKDIR) -p $(SBIN); fi
+@@ -99,7 +99,7 @@
  		$(INSTALL) -m 0644 ipvsadm-save.8 $(MAN)
  		$(INSTALL) -m 0644 ipvsadm-restore.8 $(MAN)
  		[ -d $(INIT) ] || $(MKDIR) -p $(INIT)
