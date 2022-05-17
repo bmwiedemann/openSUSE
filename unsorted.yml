@@ -1246,6 +1246,12 @@ unsorted:
   - bibtool 
   - bibview 
   - bin86 
+  - bind-modules-bdbhpt 
+  - bind-modules-generic 
+  - bind-modules-ldap 
+  - bind-modules-mysql 
+  - bind-modules-perl 
+  - bind-modules-sqlite3 
   - bindfs 
   - bing 
   - binutils-devel 
@@ -2015,9 +2021,6 @@ unsorted:
   - clang13-devel 
   - clang13-doc 
   - clang14-devel 
-  - clang7 
-  - clang7-devel 
-  - clang7-devel-32bit: [x86_64] 
   - clang9 
   - clang9-devel 
   - clang9-devel-32bit: [x86_64] 
@@ -4283,7 +4286,7 @@ unsorted:
   - gdl-devel 
   - gdl-lang 
   - gdlmm-devel 
-  - gdm-branding-MicroOS: [i586] 
+  - gdm-branding-MicroOS 
   - gdm-branding-upstream 
   - gdm-devel 
   - gdm-systemd 
@@ -5732,6 +5735,7 @@ unsorted:
   - gimp-help-sv 
   - gimp-help-zh 
   - gimp-lang 
+  - gimp-plugin-aa 
   - gimp-plugin-dds 
   - gimp-plugin-dds-doc 
   - gimp-plugin-gmic 
@@ -5961,7 +5965,7 @@ unsorted:
   - gnome-bluetooth-devel 
   - gnome-boxes 
   - gnome-boxes-lang 
-  - gnome-branding-MicroOS: [i586] 
+  - gnome-branding-MicroOS 
   - gnome-builder 
   - gnome-builder-doc 
   - gnome-builder-lang 
@@ -6077,7 +6081,7 @@ unsorted:
   - gnome-todo-lang 
   - gnome-tour 
   - gnome-tour-lang 
-  - gnome-usage: [i586] 
+  - gnome-usage 
   - gnome-usage-lang 
   - gnome-user-docs-lang 
   - gnome-video-effects-devel 
@@ -6588,7 +6592,7 @@ unsorted:
   - gtk3-metatheme-yaru-mate 
   - gtk3-metatheme-yuyo 
   - gtk3-tools-32bit: [x86_64] 
-  - gtk4-branding-upstream 
+  - gtk4-branding-openSUSE 
   - gtk4-devel 
   - gtk4-devel-tools 
   - gtk4-docs 
@@ -6700,6 +6704,8 @@ unsorted:
   - guvcview-qt5-lang 
   - gv 
   - gvfs-32bit: [x86_64] 
+  - gvfs-backend-samba 
+  - gvfs-backends 
   - gvfs-devel 
   - gvim: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - gwenhywfar 
@@ -7416,6 +7422,8 @@ unsorted:
   - iwd 
   - iwidgets 
   - iwpmd 
+  - j2objc-annotations 
+  - j2objc-annotations-javadoc 
   - jack 
   - jack-32bit: [x86_64] 
   - jack-example-tools 
@@ -8906,6 +8914,7 @@ unsorted:
   - libArcus-devel 
   - libArcus3 
   - libAvogadro1 
+  - libBasicUsageEnvironment1 
   - libBulletFileLoader3_17 
   - libBulletInverseDynamicsUtils3_17 
   - libBulletWorldImporter3_17 
@@ -9038,8 +9047,6 @@ unsorted:
   - libLLVM13 
   - libLLVM13-32bit: [x86_64] 
   - libLLVM14-32bit: [x86_64] 
-  - libLLVM7 
-  - libLLVM7-32bit: [x86_64] 
   - libLLVM9 
   - libLLVM9-32bit: [x86_64] 
   - libLTO10 
@@ -9050,8 +9057,6 @@ unsorted:
   - libLTO12-32bit: [x86_64] 
   - libLTO13 
   - libLTO14 
-  - libLTO7 
-  - libLTO7-32bit: [x86_64] 
   - libLTO9 
   - libLTO9-32bit: [x86_64] 
   - libLimeSuite20_10-1 
@@ -9466,6 +9471,7 @@ unsorted:
   - libSILLY1 
   - libSM-devel: [i586] # devel package of common_locks:libSM6 
   - libSM-devel-32bit: [x86_64] 
+  - libSPIRV-Tools-suse25: [i586] 
   - libSPIRV-Tools-suse25-32bit: [x86_64] 
   - libSampleICC-devel 
   - libSampleICC2 
@@ -9489,6 +9495,7 @@ unsorted:
   - libUil4 
   - libUil4-32bit: [x86_64] 
   - libUnitTest++-2_0_0 
+  - libUsageEnvironment3 
   - libVFlib3-10 
   - libVSyntaxHighlighting1 
   - libVTextEdit1 
@@ -9615,6 +9622,7 @@ unsorted:
   - liba2ps1 
   - liba52-0-32bit: [x86_64] 
   - liba52-devel 
+  - libaa1 
   - libaa1-32bit: [x86_64] 
   - libaal-1_0-7 
   - libaal-devel 
@@ -10240,6 +10248,7 @@ unsorted:
   - libcdio-paranoia-devel 
   - libcdio19-32bit: [x86_64] 
   - libcdio_cdda2-32bit: [x86_64] 
+  - libcdio_paranoia2: [i586] 
   - libcdio_paranoia2-32bit: [x86_64] 
   - libcdirectory-devel 
   - libcdirectory1 
@@ -10284,6 +10293,7 @@ unsorted:
   - libchipcard6 
   - libchm0-32bit: [x86_64] 
   - libchromaprint-devel 
+  - libchromaprint1 
   - libchromaprint1-32bit: [x86_64] 
   - libcilkrts5 
   - libcilkrts5-32bit: [x86_64] 
@@ -10323,8 +10333,6 @@ unsorted:
   - libclang11-32bit: [x86_64] 
   - libclang12 
   - libclang12-32bit: [x86_64] 
-  - libclang7 
-  - libclang7-32bit: [x86_64] 
   - libclang9 
   - libclang9-32bit: [x86_64] 
   - libclastfm-devel 
@@ -10676,6 +10684,7 @@ unsorted:
   - libdv4-32bit: [x86_64] 
   - libdvbpsi-0-devel 
   - libdvbpsi-devel 
+  - libdvbpsi10 
   - libdvbpsi10-32bit: [x86_64] 
   - libdvbpsi7 
   - libdvbpsi7-32bit: [x86_64] 
@@ -10683,6 +10692,7 @@ unsorted:
   - libdvbv5-0-32bit: [x86_64] 
   - libdvbv5-devel 
   - libdvdnav-devel 
+  - libdvdnav4 
   - libdvdnav4-32bit: [x86_64] 
   - libdvdread-devel 
   - libdvdread8-32bit: [x86_64] 
@@ -10712,6 +10722,7 @@ unsorted:
   - libeantic1 
   - libeb16 
   - libebml-devel 
+  - libebml5 
   - libebml5-32bit: [x86_64] 
   - libebur128-1 
   - libebur128-devel 
@@ -11329,6 +11340,7 @@ unsorted:
   - libgrooveloudness4 
   - libgrooveplayer-devel 
   - libgrooveplayer4 
+  - libgroupsock30 
   - libgrpc++1_46 
   - libgrpc24 
   - libgrpc_plugin_support1_46 
@@ -11837,6 +11849,7 @@ unsorted:
   - libiw-devel 
   - libixion-devel 
   - libixion-tools 
+  - libixml11 
   - libixml11-32bit: [x86_64] 
   - libjack-devel-32bit: [x86_64] 
   - libjack0-32bit: [x86_64] 
@@ -11857,7 +11870,6 @@ unsorted:
   - libjbig2dec0 
   - libjbig2dec0-32bit: [x86_64] 
   - libjcat-devel 
-  - libjemalloc2 
   - libjim0_75 
   - libjitterentropy3 
   - libjitterentropy3-32bit: [x86_64] 
@@ -12082,12 +12094,12 @@ unsorted:
   - liblirc_driver0 
   - liblirc_driver0-32bit: [x86_64] 
   - liblittleb0 
+  - libliveMedia106 
   - liblldb10: [x86_64] 
   - liblldb11: [x86_64] 
   - liblldb12: [x86_64] 
   - liblldb13: [x86_64] 
   - liblldb14: [x86_64] 
-  - liblldb7: [x86_64] 
   - liblldb9: [x86_64] 
   - liblldp_clif1: [i586] 
   - liblldpctl4 
@@ -12224,6 +12236,7 @@ unsorted:
   - libmatio-devel 
   - libmatio11 
   - libmatroska-devel 
+  - libmatroska7 
   - libmatroska7-32bit: [x86_64] 
   - libmaxminddb-devel 
   - libmaxminddb0-32bit: [x86_64] 
@@ -12581,6 +12594,7 @@ unsorted:
   - libnfnetlink-devel 
   - libnfnetlink0-32bit: [x86_64] 
   - libnfs-devel 
+  - libnfs14 
   - libnfsidmap-sss 
   - libnftnl-devel 
   - libnghttp2-14-32bit: [x86_64] 
@@ -12722,7 +12736,6 @@ unsorted:
   - libomp12-devel 
   - libomp13-devel 
   - libomp14-devel 
-  - libomp7-devel 
   - libomp9-devel 
   - libonnx 
   - libonnx_proto 
@@ -13091,6 +13104,7 @@ unsorted:
   - libpkcs11-helper1-32bit: [x86_64] 
   - libpkgconf-devel 
   - libplacebo-devel 
+  - libplacebo192 
   - libplanarity0 
   - libplank1 
   - libplayerctl2 
@@ -13216,6 +13230,7 @@ unsorted:
   - libprimesieve9 
   - libprofiler0 
   - libproj22 
+  - libprojectM3 
   - libpromises-devel 
   - libpromises3 
   - libprotobuf-c-devel 
@@ -13862,6 +13877,7 @@ unsorted:
   - libscg-devel 
   - libschily-devel 
   - libschily-devel-doc 
+  - libschroedinger-1_0-0 
   - libschroedinger-1_0-0-32bit: [x86_64] 
   - libscintilla-devel 
   - libscintilla5 
@@ -13904,6 +13920,7 @@ unsorted:
   - libsfml2-2_5-32bit: [x86_64] 
   - libsgutils-devel 
   - libsha1detectcoll-devel 
+  - libshaderc_shared1: [i586] 
   - libshaderc_shared1-32bit: [x86_64] 
   - libshadowdive0_0_0-suse 
   - libshadowsocks-libev2 
@@ -14507,6 +14524,7 @@ unsorted:
   - libupb24 
   - libupm1 
   - libupnp-devel 
+  - libupnp17 
   - libupnp17-32bit: [x86_64] 
   - libupnpp-devel 
   - libupnpp11 
@@ -14565,6 +14583,7 @@ unsorted:
   - libva-glx2-32bit: [x86_64] 
   - libva-utils 
   - libva-vdpau-driver 
+  - libva-wayland2 
   - libva-wayland2-32bit: [x86_64] 
   - libva-x11-2-32bit: [x86_64] 
   - libva2-32bit: [x86_64] 
@@ -14579,7 +14598,7 @@ unsorted:
   - libvamp-sdk2-32bit: [x86_64] 
   - libvapoursynth-54 
   - libvapoursynth-script0 
-  - libvarnishapi2 
+  - libvarnishapi3 
   - libvbr2 
   - libvc-devel 
   - libvc0 
@@ -14657,6 +14676,8 @@ unsorted:
   - libvkd3d-utils1-32bit: [x86_64] 
   - libvkd3d1 
   - libvkd3d1-32bit: [x86_64] 
+  - libvlc5 
+  - libvlccore9 
   - libvma: [x86_64] 
   - libvma-devel: [x86_64] 
   - libvma9: [x86_64] 
@@ -15295,7 +15316,6 @@ unsorted:
   - lld12 
   - lld13 
   - lld14 
-  - lld7 
   - lld9 
   - lldb: [x86_64] 
   - lldb-devel: [x86_64] 
@@ -15309,8 +15329,6 @@ unsorted:
   - lldb13-devel: [x86_64] 
   - lldb14: [x86_64] 
   - lldb14-devel: [x86_64] # devel package of dvd:libLLVM14 
-  - lldb7: [x86_64] 
-  - lldb7-devel: [x86_64] 
   - lldb9: [x86_64] 
   - lldb9-devel: [x86_64] 
   - lldpd 
@@ -15378,16 +15396,6 @@ unsorted:
   - llvm14-polly 
   - llvm14-polly-devel 
   - llvm14-vim-plugins 
-  - llvm7 
-  - llvm7-LTO-devel 
-  - llvm7-LTO-devel-32bit: [x86_64] 
-  - llvm7-devel 
-  - llvm7-devel-32bit: [x86_64] 
-  - llvm7-gold 
-  - llvm7-opt-viewer 
-  - llvm7-polly 
-  - llvm7-polly-devel 
-  - llvm7-vim-plugins 
   - llvm9 
   - llvm9-LTO-devel 
   - llvm9-LTO-devel-32bit: [x86_64] 
@@ -17216,6 +17224,7 @@ unsorted:
   - nbdkit-tar-filter 
   - nbdkit-tmpdisk-plugin 
   - nbdkit-xz-filter 
+  - nbsdgames 
   - ncat 
   - ncdu 
   - ncmpcpp 
@@ -18911,6 +18920,7 @@ unsorted:
   - patterns-media-rest_cd_kde 
   - patterns-media-rest_cd_x11 
   - patterns-media-rest_core_dvd 
+  - patterns-microos-desktop-gnome: [x86_64] 
   - patterns-openSUSEway 
   - patterns-rpm-macros 
   - patterns-server-dhcp_dns_server-32bit 
@@ -21734,7 +21744,6 @@ unsorted:
   - python3-lldb12: [x86_64] 
   - python3-lldb13: [x86_64] 
   - python3-lldb14: [x86_64] 
-  - python3-lldb7: [x86_64] 
   - python3-lldb9: [x86_64] 
   - python3-logreduce 
   - python3-lttngust 
@@ -42999,9 +43008,15 @@ unsorted:
   - vkeybd 
   - vkmark: [x86_64] 
   - vkquake 
+  - vlc 
+  - vlc-codec-gstreamer 
   - vlc-devel 
   - vlc-jack 
+  - vlc-lang 
+  - vlc-noX 
   - vlc-opencv 
+  - vlc-qt 
+  - vlc-vdpau 
   - vm-dump-metrics 
   - vmaf-devel 
   - vms-empire 
@@ -43488,6 +43503,7 @@ unsorted:
   - xfs 
   - xfsinfo 
   - xfsprogs-devel 
+  - xfsprogs-scrub: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - xfstests 
   - xfwm4-branding-upstream 
   - xfwm4-theme-adapta 
