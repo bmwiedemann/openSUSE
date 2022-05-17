@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 16 13:39:55 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Because SDL2 was pulled in by fluidsynth, openttd opportunistically
+  built itself with SDL2, ignoring the SDL1 BuildRequire. Now make
+  SDL2 explicit.
+
+-------------------------------------------------------------------
 Thu Apr  7 16:25:43 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Fix building for openSUSE Leap, using gcc10-c++

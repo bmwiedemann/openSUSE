@@ -28,7 +28,7 @@ URL:            https://openttd.org/
 Source:         https://cdn.openttd.org/openttd-releases/%{version}/%{name}-%{version}-source.tar.xz
 # PATCH-FEATURE-UPSTREAM https://bugs.openttd.org/task/6490
 Source2:        openttd.appdata.xml
-BuildRequires:  SDL-devel
+BuildRequires:  SDL2-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
 %if 0%{?suse_version} <= 1500
