@@ -352,4 +352,41 @@
     <comment></comment>
     <requestid>952059</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>bc5bf9ebb0837224c4751b4e14218e12</srcmd5>
+    <version>2.12.0</version>
+    <time>1652801012</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.12.0:
+  - Added lexers:
+    * Cplint (#2045)
+    * Macaulay2 (#1791)
+    * Minecraft (#2107)
+    * Qlik (#1925)
+    * ``UnixConfigLexer`` for &quot;colon-separated&quot; config files, like ``/etc/passwd`` (#2112)
+  - Updated lexers:
+    * Agda: Update keyword list (#2017)
+    * C family: Fix identifiers after ``case`` statements (#2084)
+    * Clojure: Highlight ratios (#2042)
+    * Csound: Update to 6.17 (#2064)
+    * CSS: Update the list of properties (#2113)
+    * Elpi:
+      - Fix catastrophic backtracking (#2053, #2061)
+      - Fix handling of ``-&gt;`` (#2028)
+    * Futhark: Add missing tokens (#2118)
+    * Gherkin: Add ``But`` (#2046)
+    * Inform6: Update to 6.36 (#2050)
+    * LilyPond:
+      - Fix incorrect lexing of names containing a built-in (#2071)
+      - Fix properties containing dashes (#2099)
+    * PHP: Update builtin function and keyword list (#2054, #2056)
+    * Scheme: Various improvements (#2060)
+    * Spice: Update the keyword list, add new types (#2063, #2067)
+    * Terraform:
+      - Support non-idiomatic comments (#2065, #2066)
+      - Fix class name lexing (#2097)
+  - Add ``plugins`` argument to ``get_all_lexers()``.
+  - Bump minimal Python version to 3.6 (#2059)</comment>
+    <requestid>977386</requestid>
+  </revision>
 </revisionlist>

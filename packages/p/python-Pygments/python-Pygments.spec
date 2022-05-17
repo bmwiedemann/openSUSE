@@ -26,15 +26,13 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Pygments
-Version:        2.11.2
+Version:        2.12.0
 Release:        0
 Summary:        A syntax highlighting package written in Python
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            http://pygments.org
 Source:         https://files.pythonhosted.org/packages/source/P/Pygments/Pygments-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM -- backported from dbd7931f9d60
-Patch1:         elpi_fix_catastrophic_backtracking.patch
 BuildRequires:  %{python_module base >= 3.5}
 # We need pytest just because of its test runner, it seems even
 # python3 stdlib unittest runner doesn't work

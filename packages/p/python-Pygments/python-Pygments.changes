@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun May 15 18:58:34 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.12.0:
+  - Added lexers:
+    * Cplint (#2045)
+    * Macaulay2 (#1791)
+    * Minecraft (#2107)
+    * Qlik (#1925)
+    * ``UnixConfigLexer`` for "colon-separated" config files, like ``/etc/passwd`` (#2112)
+  - Updated lexers:
+    * Agda: Update keyword list (#2017)
+    * C family: Fix identifiers after ``case`` statements (#2084)
+    * Clojure: Highlight ratios (#2042)
+    * Csound: Update to 6.17 (#2064)
+    * CSS: Update the list of properties (#2113)
+    * Elpi:
+      - Fix catastrophic backtracking (#2053, #2061)
+      - Fix handling of ``->`` (#2028)
+    * Futhark: Add missing tokens (#2118)
+    * Gherkin: Add ``But`` (#2046)
+    * Inform6: Update to 6.36 (#2050)
+    * LilyPond:
+      - Fix incorrect lexing of names containing a built-in (#2071)
+      - Fix properties containing dashes (#2099)
+    * PHP: Update builtin function and keyword list (#2054, #2056)
+    * Scheme: Various improvements (#2060)
+    * Spice: Update the keyword list, add new types (#2063, #2067)
+    * Terraform:
+      - Support non-idiomatic comments (#2065, #2066)
+      - Fix class name lexing (#2097)
+  - Add ``plugins`` argument to ``get_all_lexers()``.
+  - Bump minimal Python version to 3.6 (#2059)
+  - Fix multiple lexers marking whitespace as ``Text`` (#2025)
+  - Remove various redundant uses of ``re.UNICODE`` (#2058)
+  - Associate ``.resource`` with the Robot framework (#2047)
+  - Associate ``.cljc`` with Clojure (#2043)
+  - Associate ``.tpp`` with C++ (#2031)
+  - Remove traces of Python 2 from the documentation (#2039)
+  - The ``native`` style was updated to meet the WCAG AAA contrast guidelines (#2038)
+  - Fix various typos (#2030)
+  - Fix ``Groff`` formatter not inheriting token styles correctly (#2024)
+  - Various improvements to the CI (#2036)
+  - The Ada lexer has been moved to a separate file (#2117)
+- drop elpi_fix_catastrophic_backtracking.patch: upstream
+
+-------------------------------------------------------------------
 Sun Feb  6 21:20:22 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
 
 - backport elpi_fix_catastrophic_backtracking.patch:
