@@ -1,0 +1,27 @@
+From a6fb4c7de13eed9d90237388113425413bf4d733 Mon Sep 17 00:00:00 2001
+From: Christian Boltz <kde-bugs@cboltz.de>
+Date: Sun, 15 May 2022 15:16:06 +0200
+Subject: [PATCH] Fix typos in AppArmor target profile name
+
+---
+ apparmor/usr.bin.akonadiserver | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/apparmor/usr.bin.akonadiserver b/apparmor/usr.bin.akonadiserver
+index 83b654abd..5c05f351d 100644
+--- a/apparmor/usr.bin.akonadiserver
++++ b/apparmor/usr.bin.akonadiserver
+@@ -45,8 +45,8 @@ abi <abi/3.0>,
+   /usr/libexec/drkonqi PUx,
+   /usr/bin/mariadb-admin PUx -> mariadbd_akonadi,
+   /usr/bin/mariadb-check PUx -> mariadbd_akonadi,
+-  /usr/bin/mariadb-install-db PUx -> mariaddbd_akonadi,
+-  /usr/{,s}bin/mariadbd PUx -> mariaddbd_akonadi,
++  /usr/bin/mariadb-install-db PUx -> mariadbd_akonadi,
++  /usr/{,s}bin/mariadbd PUx -> mariadbd_akonadi,
+   /usr/bin/mysql_install_db PUx -> mysqld_akonadi,
+   /usr/bin/mysqladmin PUx -> mysqld_akonadi,
+   /usr/bin/mysqlcheck PUx -> mysqld_akonadi,
+-- 
+GitLab
+

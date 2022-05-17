@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 15 13:27:13 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
+
+- Add akonadiserver-apparmor-typos-mr94.patch to ensure mariadbd_akonadi
+  AppArmor profile actually gets used
+
+-------------------------------------------------------------------
 Tue May 10 16:29:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 22.04.1

@@ -1,7 +1,7 @@
 #
 # spec file for package akonadi-server
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 Source99:       akonadi-server-rpmlintrc
+# PATCH-FIX-UPSTREAM https://invent.kde.org/pim/akonadi/-/merge_requests/94
+Patch1:         akonadiserver-apparmor-typos-mr94.patch
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
 BuildRequires:  extra-cmake-modules >= %{kf5_version}

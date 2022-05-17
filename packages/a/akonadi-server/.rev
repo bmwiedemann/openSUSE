@@ -782,4 +782,13 @@ Mainly intended for Leap 42.3 to prevent upgrade problems. (forwarded request 49
     <comment>KDE Gear 22.04.1</comment>
     <requestid>976699</requestid>
   </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>7a99cc61caec8c25b16573f6311540bc</srcmd5>
+    <version>22.04.1</version>
+    <time>1652801014</time>
+    <user>dimstar_suse</user>
+    <comment>- Add akonadiserver-apparmor-typos-mr94.patch to ensure mariadbd_akonadi
+  AppArmor profile actually gets used</comment>
+    <requestid>977390</requestid>
+  </revision>
 </revisionlist>
