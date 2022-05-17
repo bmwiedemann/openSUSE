@@ -7,4 +7,20 @@
     <comment>Required for upgrade to IPython 8.0</comment>
     <requestid>946626</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ffcbf00c416f97c6b1c4862dcc7471c8</srcmd5>
+    <version>0.2.0</version>
+    <time>1652801034</time>
+    <user>dimstar_suse</user>
+    <comment>For Staging:E
+
+- Update to 0.2.0:
+  - Fallback to basic Source.pieces when there is no Source.tree.
+  - Handle nodes inside f-strings missing location info from
+    asttokens
+- Add 29-Pygments-2-12.patch (gh#alexmojaki/stack_data#29) making
+  the package compabile with Pygments 2.12.
+</comment>
+    <requestid>977523</requestid>
+  </revision>
 </revisionlist>

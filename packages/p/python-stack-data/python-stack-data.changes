@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 16 12:18:16 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.2.0:
+  - Fallback to basic Source.pieces when there is no Source.tree.
+  - Handle nodes inside f-strings missing location info from
+    asttokens
+- Add 29-Pygments-2-12.patch (gh#alexmojaki/stack_data#29) making
+  the package compabile with Pygments 2.12.
+
+-------------------------------------------------------------------
 Fri Jan 14 21:54:31 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Initial effort to package stack-data 0.1.3.
