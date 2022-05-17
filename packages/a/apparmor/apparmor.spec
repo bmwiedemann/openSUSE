@@ -107,6 +107,9 @@ Patch12:        php8-fpm-mr876.patch
 # allow python 3.10 --help output (from the branch-3.0 backport of https://gitlab.com/apparmor/apparmor/-/merge_requests/848)
 Patch13:        python310-help-mr848.patch
 
+# extend dovecot profiles for latest dovecot (boo 1199535, submitted upstream https://gitlab.com/apparmor/apparmor/-/merge_requests/881)
+Patch14:        dovecot-profiles-boo1199535-mr881.diff
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define apparmor_bin_prefix %{?usrmerged:/usr}/lib/apparmor
@@ -378,6 +381,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch11 -p1
 %patch12 -p1
 %patch13 -p1
+%patch14 -p1
 
 %build
 %define _lto_cflags %{nil}

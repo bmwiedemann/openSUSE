@@ -2368,4 +2368,13 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
   additional rules; (bnc#1198309). (forwarded request 976576 from npower)</comment>
     <requestid>976602</requestid>
   </revision>
+  <revision rev="174" vrev="11">
+    <srcmd5>2e8049e80f2f061a1d643c7e01778f9c</srcmd5>
+    <version>3.0.4</version>
+    <time>1652801015</time>
+    <user>dimstar_suse</user>
+    <comment>- add dovecot-profiles-boo1199535-mr881.diff: update dovecot profiles
+  for latest dovecot (boo#1199535) (forwarded request 977391 from cboltz)</comment>
+    <requestid>977392</requestid>
+  </revision>
 </revisionlist>

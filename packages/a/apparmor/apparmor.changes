@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 15 18:59:47 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
+
+- add dovecot-profiles-boo1199535-mr881.diff: update dovecot profiles
+  for latest dovecot (boo#1199535)
+
+-------------------------------------------------------------------
 Wed May 11 14:41:17 UTC 2022 - Noel Power <nopower@suse.com>
 
 - Update samba-new-dcerpcd.patch for aarch64 which needs some
