@@ -2258,4 +2258,12 @@
     SLE-Classic in GNOME 42, please find the reason in (boo#1197907). (forwarded request 967336 from qkzhu)</comment>
     <requestid>967854</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>531dd9d5369e4d67b8286f22609dc6fa</srcmd5>
+    <version>42.1</version>
+    <time>1652801026</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 975719 from dimstar)</comment>
+    <requestid>977492</requestid>
+  </revision>
 </revisionlist>

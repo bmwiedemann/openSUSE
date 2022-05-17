@@ -19,7 +19,7 @@
 
 %global __requires_exclude typelib\\(Meta\\)
 Name:           gnome-shell-extensions
-Version:        42.0
+Version:        42.1
 Release:        0
 Summary:        A collection of extensions for GNOME Shell
 License:        GPL-2.0-or-later
@@ -52,7 +52,7 @@ Requires:       gnome-shell
 Obsoletes:      gnome-shell-extension-alternate-tab < %{version}
 Obsoletes:      gnome-shell-extension-apps-menu < %{version}
 Obsoletes:      gnome-shell-extension-auto-move-windows < %{version}
-Obsoletes:      gnome-shell-extension-dock
+Obsoletes:      gnome-shell-extension-dock < %{version}
 Obsoletes:      gnome-shell-extension-drive-menu < %{version}
 Obsoletes:      gnome-shell-extension-gajim < %{version}
 Obsoletes:      gnome-shell-extension-native-window-placement < %{version}
@@ -72,7 +72,7 @@ Summary:        A collection of extensions for Gnome-shell classic
 Group:          System/GUI/GNOME
 Requires:       gnome-shell-extension-desktop-icons
 Requires:       gnome-shell-extensions-common
-Obsoletes:      gnome-shell-classic-session
+Obsoletes:      gnome-shell-classic-session < %{versoin}
 BuildArch:      noarch
 
 %description -n gnome-shell-classic
@@ -143,12 +143,7 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %dir %{_datadir}/gnome-shell/modes
 %{_datadir}/gnome-shell/modes/classic.json
 %dir %{_datadir}/gnome-shell/theme/
-%{_datadir}/gnome-shell/theme/calendar-today.svg
 %{_datadir}/gnome-shell/theme/classic-process-working.svg
-%{_datadir}/gnome-shell/theme/classic-toggle-off-intl.svg
-%{_datadir}/gnome-shell/theme/classic-toggle-off-us.svg
-%{_datadir}/gnome-shell/theme/classic-toggle-on-intl.svg
-%{_datadir}/gnome-shell/theme/classic-toggle-on-us.svg
 %{_datadir}/gnome-shell/theme/gnome-classic-high-contrast.css
 %{_datadir}/gnome-shell/theme/gnome-classic.css
 %dir %{_datadir}/wayland-sessions
