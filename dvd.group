@@ -3603,6 +3603,7 @@
     <package name="python38-bcrypt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-beautifulsoup4" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python38-black" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
+    <package name="python38-boto3" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python38-botocore" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python38-brotlicffi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-brotlipy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
