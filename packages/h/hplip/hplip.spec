@@ -1,7 +1,7 @@
 #
 # spec file for package hplip
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define pyexe %{_bindir}/python3
 %global use_qt5 1
 Name:           hplip
-Version:        3.21.10
+Version:        3.22.4
 Release:        0
 Summary:        HP's Printing, Scanning, and Faxing Software
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
@@ -70,8 +70,6 @@ Patch112:       ui5-systemtray-wait-only-10s-for-system-tray.patch
 Patch300:       pcardext-python3-fixes.patch
 Patch301:       hplip-misc-missing-includes-and-definitions.patch
 Patch302:       hp_ipp.h-add-missing-prototypes.patch
-# Fix import error for pcardext
-Patch303:       photocard-fix-import-error-for-pcardext.patch
 # bsc#1159240, lp#1859179
 Patch304:       hp-sendfax-avoid-crash-if-python-reportlab-is-missin.patch
 # bsc#1166623, hp-toolbox crashes without python3-distro module
@@ -316,7 +314,6 @@ This sub-package is only required by developers.
 %patch300 -p1 -b .pcardext-python3
 %patch301 -p1 -b .misc-headers
 %patch302 -p1 -b .hp_ipp_missing_prototypes
-%patch303 -p1 -b .photocard_import
 %patch304 -p1
 %patch305 -p1
 %patch306 -p1

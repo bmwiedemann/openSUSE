@@ -1282,4 +1282,12 @@
 - Replace pool.sks-keyservers.net by keys.openpgp.org (bsc#1193656)</comment>
     <requestid>940502</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>c1629e2456355698d27f487d770fe61a</srcmd5>
+    <version>3.22.4</version>
+    <time>1652801029</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>977508</requestid>
+  </revision>
 </revisionlist>

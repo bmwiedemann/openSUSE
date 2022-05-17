@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Mon May  9 10:05:36 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.22.4
+  Added support for following new Distro's:
+  * Manjaro 21.2
+  Added support for the following new Printers:
+  * HP LaserJet Pro 4001ne
+  * HP LaserJet Pro 4001n
+  * HP LaserJet Pro 4001dne
+  * HP LaserJet Pro 4001dn
+  * HP LaserJet Pro 4001dwe
+  * HP LaserJet Pro 4001dw
+  * HP LaserJet Pro 4001d
+  * HP LaserJet Pro 4001de
+  * HP LaserJet Pro 4002ne
+  * HP LaserJet Pro 4002n
+  * HP LaserJet Pro 4002dne
+  * HP LaserJet Pro 4002dn
+  * HP LaserJet Pro 4002dwe
+  * HP LaserJet Pro 4002dw
+  * HP LaserJet Pro 4002d
+  * HP LaserJet Pro 4002de
+  * HP LaserJet Pro 4003dn
+  * HP LaserJet Pro 4003dw
+  * HP LaserJet Pro 4003n	
+  * HP LaserJet Pro 4003d
+  * HP LaserJet Pro 4004d
+  * HP LaserJet Pro 4004dn
+  * HP LaserJet Pro 4004dw
+  * HP LaserJet Pro MFP 4101dwe
+  * HP LaserJet Pro MFP 4101dw
+  * HP LaserJet Pro MFP 4101fdn	
+  * HP LaserJet Pro MFP 4101fdne
+  * HP LaserJet Pro MFP 4101fdw
+  * HP LaserJet Pro MFP 4101fdwe
+  * HP LaserJet Pro MFP 4102dwe
+  * HP LaserJet Pro MFP 4102dw
+  * HP LaserJet Pro MFP 4102fdn
+  * HP LaserJet Pro MFP 4102fdw
+  * HP LaserJet Pro MFP 4102fdwe
+  * HP LaserJet Pro MFP 4102fdne
+  * HP LaserJet Pro MFP 4102fnw
+  * HP LaserJet Pro MFP 4102fnwe
+  * HP LaserJet Pro MFP 4103dw
+  * HP LaserJet Pro MFP 4103dn
+  * HP LaserJet Pro MFP 4103fdn
+  * HP LaserJet Pro MFP 4103fdw
+  * HP LaserJet Pro MFP 4104dw
+  * HP LaserJet Pro MFP 4104fdw
+  * HP LaserJet Pro MFP 4104fdn
+  * HP ScanJet Pro 3600 f1
+  * HP ScanJet Pro N4600 fnw1
+  * HP ScanJet Pro 2600 f1
+  * HP ScanJet Enterprise Flow N6600 fnw1
+- Changes from 3.22.2
+  Added support for following new Distro's:
+  * Elementary OS 6.1
+  * RHEL 8.5
+  * Linux Mint 20.3
+  Added support for the following new Printers:
+  * HP LaserJet Tank MFP 1602a
+  * HP LaserJet Tank MFP 1602w
+  * HP LaserJet Tank MFP 1604w
+  * HP LaserJet Tank MFP 2602dn
+  * HP LaserJet Tank MFP 2602sdn
+  * HP LaserJet Tank MFP 2602sdw
+  * HP LaserJet Tank MFP 2602dw
+  * HP LaserJet Tank MFP 2604dw
+  * HP LaserJet Tank MFP 2604sdw
+  * HP LaserJet Tank MFP 2603dw
+  * HP LaserJet Tank MFP 2603sdw
+  * HP LaserJet Tank MFP 2605sdw
+  * HP LaserJet Tank MFP 2606dn
+  * HP LaserJet Tank MFP 2606sdn
+  * HP LaserJet Tank MFP 2606sdw
+  * HP LaserJet Tank MFP 2606dw
+  * HP LaserJet Tank MFP 2606dc
+  * HP LaserJet Tank MFP 1005
+  * HP LaserJet Tank MFP 1005w
+  * HP LaserJet Tank MFP 1005nw
+  * HP LaserJet Tank 1502a
+  * HP LaserJet Tank 1502w
+  * HP LaserJet Tank 1504w
+  * HP LaserJet Tank 2502dw
+  * HP LaserJet Tank 2502dn
+  * HP LaserJet Tank 2504dw
+  * HP LaserJet Tank 2503dw
+  * HP LaserJet Tank 2506dw
+  * HP LaserJet Tank 2506d
+  * HP LaserJet Tank 2506dn
+  * HP LaserJet Tank 1020
+  * HP LaserJet Tank 1020w
+  * HP LaserJet Tank 1020nw
+- Changes from 3.21.12
+  Added support for following new Distro's:
+  * MX Linux 21
+  * Elementary OS 6
+  * Fedora 35
+- Drop photocard-fix-import-error-for-pcardext.patch,
+  because now in upstream.
+- Rebase Use-lsb_release-fallback-code-if-import-distro-fails.patch,
+  bacause some is in upstream now.
+- Reabse hplip-missing-drivers.patch
+
+-------------------------------------------------------------------
 Tue Dec 14 14:43:11 UTC 2021 - Martin Wilck <mwilck@suse.com>
 
 - Replace keys.openpgp.org with pgp.surf.nl (bsc#1193656) 
