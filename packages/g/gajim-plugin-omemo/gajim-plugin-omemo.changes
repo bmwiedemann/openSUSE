@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May 14 21:39:58 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.8.13 (changes since 2.7.14):
+  * Fix attribute access.
+  * Correctly decrypt encoded URIs.
+  * Don’t fail on missing dependencies.
+  * Improve QR code.
+  * Raise unacknowledged count.
+
+-------------------------------------------------------------------
 Mon May 17 16:02:56 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 2.7.14

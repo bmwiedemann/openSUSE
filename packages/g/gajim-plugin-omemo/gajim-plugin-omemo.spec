@@ -1,7 +1,7 @@
 #
 # spec file for package gajim-plugin-omemo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,28 @@
 #
 
 
+# Requires at least python 3.9
+%define py3ver 3.10
+%define py3pkg python310
 %define _name   omemo
 Name:           gajim-plugin-omemo
-Version:        2.7.14
+Version:        2.8.13
 Release:        0
 Summary:        Gajim plugin for OMEMO Multi-End Message and Object Encryption
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Talk/Clients
 URL:            https://dev.gajim.org/gajim/gajim-plugins/wikis/OmemoGajimPlugin
 Source:         https://ftp.gajim.org/plugins_releases/omemo_%{version}.zip
-BuildRequires:  gajim >= 1.2.91
-BuildRequires:  python3-protobuf
+BuildRequires:  %{py3pkg}-protobuf
+BuildRequires:  gajim >= 1.4.0
 BuildRequires:  unzip
+Requires:       %{py3pkg}-axolotl
+Requires:       %{py3pkg}-base
+Requires:       %{py3pkg}-cryptography
+Requires:       %{py3pkg}-protobuf
 Requires:       gajim
-Requires:       python3-axolotl
-Requires:       python3-cryptography
-Requires:       python3-protobuf
 # Verification QR Codes
-Recommends:     python3-qrcode
+Recommends:     %{py3pkg}-qrcode
 BuildArch:      noarch
 
 %description
@@ -50,13 +54,10 @@ encryption based on Double Ratchet and PEP.
 %install
 mkdir -p %{buildroot}%{_datadir}/gajim/plugins/%{_name}/
 cp -aT . %{buildroot}%{_datadir}/gajim/plugins/%{_name}/
-for f in CHANGELOG COPYING; do
-    rm "%{buildroot}%{_datadir}/gajim/plugins/%{_name}/$f"
-done
+rm %{buildroot}%{_datadir}/gajim/plugins/%{_name}/COPYING
 
 %files
 %license COPYING
-%doc CHANGELOG
 %{_datadir}/gajim/plugins/%{_name}/
 
 %changelog
