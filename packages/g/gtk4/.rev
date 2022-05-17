@@ -447,4 +447,12 @@
     <comment>Move and split (forwarded request 966460 from iznogood)</comment>
     <requestid>966825</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>251bf72d1a5cf6fe201b3193fc612a2c</srcmd5>
+    <version>4.6.4</version>
+    <time>1652801027</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 977084 from iznogood)</comment>
+    <requestid>977506</requestid>
+  </revision>
 </revisionlist>

@@ -22,7 +22,7 @@
 %define _name gtk
 
 Name:           gtk4
-Version:        4.6.2
+Version:        4.6.4
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
@@ -34,8 +34,6 @@ Source2:        settings.ini
 Source3:        macros.gtk4
 Source99:       gtk4-rpmlintrc
 
-# PATCH-FIX-UPSTREAM gtkimmulticontext-Handle-switches-between-displays.patch glgo#GNOME/gtk#4805 -- gtkimmulticontext: Handle switches between displays
-Patch1:         gtkimmulticontext-Handle-switches-between-displays.patch
 
 BuildRequires:  cups-devel >= 2.0
 # We do not support building against cups 2.3 betas
