@@ -41,6 +41,7 @@ Patch8:         groovy-buildscan.patch
 Patch9:         groovy-java11.patch
 Patch10:        groovy-source-levels.patch
 Patch11:        groovy-ambiguous-functions-calls.patch
+Patch12:        groovy-2.4.21-jansi.patch
 BuildRequires:  ant
 BuildRequires:  ant-antlr
 BuildRequires:  antlr
@@ -253,6 +254,7 @@ find \( -name *.jar -o -name *.class \) -delete
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
+%patch12 -p1
 
 %{mvn_package} ':groovy::indy:'
 %{mvn_package} ':groovy-{*}' @1

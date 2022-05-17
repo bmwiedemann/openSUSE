@@ -63,4 +63,12 @@
     <comment>source/target 8 + build with java &lt;= 15</comment>
     <requestid>964344</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>f4844013074266666dbf7673dd456478</srcmd5>
+    <version>2.4.21</version>
+    <time>1652801050</time>
+    <user>dimstar_suse</user>
+    <comment>maven 3.8.5 / jansi 2.4.0 and fixes for building with them</comment>
+    <requestid>977559</requestid>
+  </revision>
 </revisionlist>

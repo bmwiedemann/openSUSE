@@ -1,0 +1,554 @@
+--- groovy-2.4.21/src/main/org/codehaus/groovy/tools/shell/IO.java	2022-05-13 01:20:10.870359670 +0200
++++ groovy-2.4.21/src/main/org/codehaus/groovy/tools/shell/IO.java	2022-05-13 01:21:28.170851904 +0200
+@@ -18,8 +18,8 @@
+  */
+ package org.codehaus.groovy.tools.shell;
+ 
++import org.codehaus.groovy.runtime.InvokerHelper;
+ import org.codehaus.groovy.tools.shell.util.Preferences;
+-import org.fusesource.jansi.AnsiRenderWriter;
+ 
+ import java.io.Closeable;
+ import java.io.IOException;
+@@ -36,6 +36,8 @@
+  */
+ public class IO implements Closeable
+ {
++    private static final String ANSI_RENDER_WRITER = "org.fusesource.jansi.AnsiRenderWriter";
++
+     /** Raw input stream. */
+     public final InputStream inputStream;
+ 
+@@ -55,6 +57,11 @@
+     public final PrintWriter err;
+ 
+     /**
++     * Whether ansi support is available
++     */
++    public final boolean ansiSupported;
++
++    /**
+      * Construct a new IO container.
+      */
+     public IO(final InputStream inputStream, final OutputStream outputStream, final OutputStream errorStream) {
+@@ -67,8 +74,36 @@
+         this.errorStream = errorStream;
+ 
+         this.in = new InputStreamReader(inputStream);
+-        this.out = new AnsiRenderWriter(outputStream, true);
+-        this.err = new AnsiRenderWriter(errorStream, true);
++        boolean ansiSupported = false;
++        try {
++            Class.forName(ANSI_RENDER_WRITER, false, IO.class.getClassLoader());
++            ansiSupported = true;
++        } catch (ClassNotFoundException ignore) {
++        }
++        this.ansiSupported = ansiSupported;
++        PrintWriter out = null;
++        PrintWriter err = null;
++        if (ansiSupported) {
++            out = tryConstructRenderWriter(outputStream);
++            err = tryConstructRenderWriter(errorStream);
++        }
++        if (out == null) {
++            out = new PrintWriter(outputStream, true);
++        }
++        if (err == null) {
++            err = new PrintWriter(errorStream, true);
++        }
++        this.out = out;
++        this.err = err;
++    }
++
++    protected PrintWriter tryConstructRenderWriter(OutputStream stream) {
++        // load via reflection to avoid hard-coded dependency on jansi jar
++        try {
++            return (PrintWriter) InvokerHelper.invokeConstructorOf(ANSI_RENDER_WRITER, new Object[]{stream, true});
++        } catch (ClassNotFoundException ignore) {
++            return null;
++        }
+     }
+ 
+     /**
+--- groovy-2.4.21/src/main/org/codehaus/groovy/tools/shell/util/Logger.java	2022-05-13 01:20:10.870359670 +0200
++++ groovy-2.4.21/src/main/org/codehaus/groovy/tools/shell/util/Logger.java	2022-05-13 01:21:28.170851904 +0200
+@@ -60,13 +60,12 @@
+             }
+         }
+ 
+-        Color color = GREEN;
+-        if (WARN.equals(level) || ERROR.equals(level)) {
+-            color = RED;
++        if (io.ansiSupported) {
++            logWithAnsi(level, msg);
++        } else {
++            logDefault(level, msg);
+         }
+ 
+-        io.out.println(ansi().a(INTENSITY_BOLD).fg(color).a(level).reset().a(" [").a(name).a("] ").a(msg));
+-
+         if (cause != null) {
+             cause.printStackTrace(io.out);
+         }
+@@ -74,6 +73,18 @@
+         io.flush();
+     }
+     
++    private void logDefault(String level, Object msg) {
++        io.out.println(level + " [" + name + "] " + msg);
++    }
++
++    private void logWithAnsi(String level, Object msg) {
++        Color color = GREEN;
++        if (WARN.equals(level) || ERROR.equals(level)) {
++            color = RED;
++        }
++        io.out.println(ansi().a(INTENSITY_BOLD).fg(color).a(level).reset().a(" [").a(name).a("] ").a(msg));
++    }
++
+     //
+     // Level helpers
+     //
+--- groovy-2.4.21/subprojects/groovy-groovysh/src/main/groovy/org/codehaus/groovy/tools/shell/InteractiveShellRunner.groovy	2022-05-13 01:20:10.938360103 +0200
++++ groovy-2.4.21/subprojects/groovy-groovysh/src/main/groovy/org/codehaus/groovy/tools/shell/InteractiveShellRunner.groovy	2022-05-13 01:21:28.174851930 +0200
+@@ -20,6 +20,8 @@
+ 
+ import jline.console.ConsoleReader
+ import jline.console.completer.AggregateCompleter
++import jline.console.completer.CandidateListCompletionHandler
++import jline.console.completer.CompletionHandler
+ import jline.console.history.FileHistory
+ import org.codehaus.groovy.tools.shell.completion.CustomClassSyntaxCompletor
+ import org.codehaus.groovy.tools.shell.completion.FileNameCompleter
+@@ -53,8 +55,16 @@
+ 
+         this.prompt = prompt
+         this.wrappedInputStream = new WrappedInputStream(shell.io.inputStream)
+-        this.reader = new PatchedConsoleReader(wrappedInputStream, shell.io.outputStream)
+-        this.reader.setCompletionHandler(new PatchedCandidateListCompletionHandler())
++        this.reader = new ConsoleReader(wrappedInputStream, shell.io.outputStream)
++
++        CompletionHandler currentCompletionHandler = this.reader.getCompletionHandler()
++        if (currentCompletionHandler instanceof CandidateListCompletionHandler) {
++            // have to downcast because methods not part of the interface
++            ((CandidateListCompletionHandler) currentCompletionHandler).setStripAnsi(true)
++            ((CandidateListCompletionHandler) currentCompletionHandler).setPrintSpaceAfterFullCompletion(false)
++        }
++
++
+         // expand events ia an advanced feature of JLine that clashes with Groovy syntax (e.g. invoke "2!=3")
+         this.reader.expandEvents = false
+ 
+--- groovy-2.4.21/subprojects/groovy-groovysh/src/main/groovy/org/codehaus/groovy/tools/shell/Main.groovy	2022-05-13 01:20:10.938360103 +0200
++++ groovy-2.4.21/subprojects/groovy-groovysh/src/main/groovy/org/codehaus/groovy/tools/shell/Main.groovy	2022-05-13 01:23:33.135645959 +0200
+@@ -22,7 +22,6 @@
+ import jline.UnixTerminal
+ import jline.UnsupportedTerminal
+ import jline.WindowsTerminal
+-import org.codehaus.groovy.tools.shell.util.HelpFormatter
+ import org.codehaus.groovy.tools.shell.util.Logger
+ import org.codehaus.groovy.tools.shell.util.MessageSource
+ import org.codehaus.groovy.tools.shell.util.NoExitSecurityManager
+@@ -66,8 +64,9 @@
+      * @param main must have a Groovysh member that has an IO member.
+      */
+     static void main(final String[] args) {
+-        CliBuilder cli = new CliBuilder(usage: 'groovysh [options] [...]', formatter: new HelpFormatter(), stopAtNonOption: false)
+         MessageSource messages = new MessageSource(Main)
++        CliBuilder cli = new CliBuilder(usage: 'groovysh [options] [...]', stopAtNonOption: false,
++                header: messages['cli.option.header'])
+         cli.with {
+             classpath(messages['cli.option.classpath.description'])
+             cp(longOpt: 'classpath', messages['cli.option.cp.description'])
+--- groovy-2.4.21/subprojects/groovy-groovysh/src/main/groovy/org/codehaus/groovy/tools/shell/PatchedCandidateListCompletionHandler.groovy	2022-05-13 01:20:10.938360103 +0200
++++ groovy-2.4.21/subprojects/groovy-groovysh/src/main/groovy/org/codehaus/groovy/tools/shell/PatchedCandidateListCompletionHandler.groovy	1970-01-01 01:00:00.000000000 +0100
+@@ -1,112 +0,0 @@
+-/*
+- *  Licensed to the Apache Software Foundation (ASF) under one
+- *  or more contributor license agreements.  See the NOTICE file
+- *  distributed with this work for additional information
+- *  regarding copyright ownership.  The ASF licenses this file
+- *  to you under the Apache License, Version 2.0 (the
+- *  "License"); you may not use this file except in compliance
+- *  with the License.  You may obtain a copy of the License at
+- *
+- *    http://www.apache.org/licenses/LICENSE-2.0
+- *
+- *  Unless required by applicable law or agreed to in writing,
+- *  software distributed under the License is distributed on an
+- *  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+- *  KIND, either express or implied.  See the License for the
+- *  specific language governing permissions and limitations
+- *  under the License.
+- */
+-package org.codehaus.groovy.tools.shell
+-
+-import groovy.transform.CompileStatic
+-import jline.console.ConsoleReader
+-import jline.console.CursorBuffer
+-import jline.console.completer.CandidateListCompletionHandler
+-import org.codehaus.groovy.tools.shell.util.JAnsiHelper
+-
+-/**
+- * jline completion handler displays ANSIfied candidates nicely,
+- * but does not de-ANSIfy when adding to the prompt :-(
+- *
+- * So this class just adds this functionality.
+- *
+- * See https://github.com/jline/jline2/issues/132
+- */
+-@CompileStatic
+-class PatchedCandidateListCompletionHandler extends CandidateListCompletionHandler {
+-
+-    public boolean complete(final ConsoleReader reader, final List<CharSequence> candidates, final int pos) throws
+-            IOException
+-    {
+-        CursorBuffer buf = reader.getCursorBuffer();
+-        final List<CharSequence> deAnsifiedcandidates = candidates.collect({CharSequence candidate -> JAnsiHelper.stripAnsi(candidate) })
+-
+-        // if there is only one completion, then fill in the buffer
+-        if (candidates.size() == 1) {
+-            CharSequence value = deAnsifiedcandidates.get(0);
+-
+-            // fail if the only candidate is the same as the current buffer
+-            if (value.equals(buf.toString())) {
+-                return false;
+-            }
+-
+-            setBuffer(reader, value, pos);
+-
+-            return true;
+-        }
+-        else if (candidates.size() > 1) {
+-            String value = this.getUnambiguousCompletions(deAnsifiedcandidates);
+-            setBuffer(reader, value, pos);
+-        }
+-
+-        printCandidates(reader, candidates);
+-
+-        // redraw the current console buffer
+-        reader.drawLine();
+-
+-        return true;
+-    }
+-
+-    /**
+-     * copied from CandidateListCompletionHandler because it was private :-(
+-     * Returns a root that matches all the {@link String} elements of the specified {@link List},
+-     * or null if there are no commonalities. For example, if the list contains
+-     * <i>foobar</i>, <i>foobaz</i>, <i>foobuz</i>, the method will return <i>foob</i>.
+-     */
+-    private String getUnambiguousCompletions(final List<CharSequence> candidates) {
+-        if (candidates == null || candidates.isEmpty()) {
+-            return null;
+-        }
+-
+-        // convert to an array for speed
+-        String[] strings = candidates.toArray(new String[candidates.size()]);
+-
+-        String first = strings[0];
+-        StringBuilder candidate = new StringBuilder();
+-
+-        for (int i = 0; i < first.length(); i++) {
+-            if (startsWith(first.substring(0, i + 1), strings)) {
+-                candidate.append(first.charAt(i));
+-            }
+-            else {
+-                break;
+-            }
+-        }
+-
+-        return candidate.toString();
+-    }
+-
+-    /**
+-     * copied from CandidateListCompletionHandler because it was private :-(
+-     * @return true is all the elements of <i>candidates</i> start with <i>starts</i>
+-     */
+-    private boolean startsWith(final String starts, final String[] candidates) {
+-        for (String candidate : candidates) {
+-            if (!candidate.startsWith(starts)) {
+-                return false;
+-            }
+-        }
+-
+-        return true;
+-    }
+-}
+--- groovy-2.4.21/subprojects/groovy-groovysh/src/main/groovy/org/codehaus/groovy/tools/shell/PatchedConsoleReader.groovy	2022-05-13 01:20:10.938360103 +0200
++++ groovy-2.4.21/subprojects/groovy-groovysh/src/main/groovy/org/codehaus/groovy/tools/shell/PatchedConsoleReader.groovy	1970-01-01 01:00:00.000000000 +0100
+@@ -1,107 +0,0 @@
+-/*
+- *  Licensed to the Apache Software Foundation (ASF) under one
+- *  or more contributor license agreements.  See the NOTICE file
+- *  distributed with this work for additional information
+- *  regarding copyright ownership.  The ASF licenses this file
+- *  to you under the Apache License, Version 2.0 (the
+- *  "License"); you may not use this file except in compliance
+- *  with the License.  You may obtain a copy of the License at
+- *
+- *    http://www.apache.org/licenses/LICENSE-2.0
+- *
+- *  Unless required by applicable law or agreed to in writing,
+- *  software distributed under the License is distributed on an
+- *  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+- *  KIND, either express or implied.  See the License for the
+- *  specific language governing permissions and limitations
+- *  under the License.
+- */
+-package org.codehaus.groovy.tools.shell
+-
+-import groovy.transform.CompileStatic
+-import jline.console.ConsoleReader
+-import jline.internal.Log
+-import org.codehaus.groovy.tools.shell.util.JAnsiHelper
+-
+-@CompileStatic
+-class PatchedConsoleReader extends ConsoleReader {
+-
+-
+-    public PatchedConsoleReader(final InputStream inStream, final OutputStream out) throws IOException {
+-        super(inStream, out);
+-    }
+-
+-    /**
+-     * copied from jline2.0 and modified to invoke stripAnsi() for length calculations
+-     * Output the specified {@link Collection} in proper columns.
+-     * See https://github.com/jline/jline2/issues/132
+-     */
+-    public void printColumns(final Collection<? extends CharSequence> items) throws IOException {
+-        if (items == null || items.isEmpty()) {
+-            return;
+-        }
+-
+-        int width = getTerminal().getWidth();
+-        int height = getTerminal().getHeight();
+-
+-        int maxWidth = 0;
+-        for (CharSequence item : items) {
+-            maxWidth = Math.max(maxWidth, JAnsiHelper.stripAnsi(item).length());
+-        }
+-        maxWidth = maxWidth + 3;
+-        Log.debug("Max width: ", maxWidth);
+-
+-        int showLines;
+-        if (isPaginationEnabled()) {
+-            showLines = height - 1; // page limit
+-        }
+-        else {
+-            showLines = Integer.MAX_VALUE;
+-        }
+-
+-        StringBuilder buff = new StringBuilder();
+-        int realLength = 0;
+-        for (CharSequence item : items) {
+-            if ((realLength + maxWidth) > width) {
+-                println(buff);
+-                buff.setLength(0);
+-                realLength = 0;
+-
+-                if (--showLines == 0) {
+-                    // Overflow
+-                    print(resources.getString("DISPLAY_MORE"));
+-                    flush();
+-                    int c = readCharacter();
+-                    if (c == '\r' || c == '\n') {
+-                        // one step forward
+-                        showLines = 1;
+-                    }
+-                    else if (c != 'q') {
+-                        // page forward
+-                        showLines = height - 1;
+-                    }
+-
+-                    back(resources.getString("DISPLAY_MORE").length());
+-                    if (c == 'q') {
+-                        // cancel
+-                        break;
+-                    }
+-                }
+-            }
+-
+-            // NOTE: toString() is important here due to AnsiString being retarded
+-            buff.append(item.toString());
+-            int strippedItemLength = JAnsiHelper.stripAnsi(item).length()
+-            realLength += strippedItemLength
+-            for (int i = 0; i < (maxWidth - strippedItemLength); i++) {
+-                buff.append(' ');
+-            }
+-            realLength += maxWidth - strippedItemLength;
+-        }
+-
+-        if (buff.length() > 0) {
+-            println(buff);
+-        }
+-    }
+-
+-}
+--- groovy-2.4.21/subprojects/groovy-groovysh/src/main/groovy/org/codehaus/groovy/tools/shell/util/HelpFormatter.groovy	2022-05-13 01:20:10.938360103 +0200
++++ groovy-2.4.21/subprojects/groovy-groovysh/src/main/groovy/org/codehaus/groovy/tools/shell/util/HelpFormatter.groovy	1970-01-01 01:00:00.000000000 +0100
+@@ -1,119 +0,0 @@
+-/*
+- *  Licensed to the Apache Software Foundation (ASF) under one
+- *  or more contributor license agreements.  See the NOTICE file
+- *  distributed with this work for additional information
+- *  regarding copyright ownership.  The ASF licenses this file
+- *  to you under the Apache License, Version 2.0 (the
+- *  "License"); you may not use this file except in compliance
+- *  with the License.  You may obtain a copy of the License at
+- *
+- *    http://www.apache.org/licenses/LICENSE-2.0
+- *
+- *  Unless required by applicable law or agreed to in writing,
+- *  software distributed under the License is distributed on an
+- *  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+- *  KIND, either express or implied.  See the License for the
+- *  specific language governing permissions and limitations
+- *  under the License.
+- */
+-package org.codehaus.groovy.tools.shell.util
+-
+-import jline.Terminal
+-import org.apache.commons.cli.Option
+-import org.apache.commons.cli.Options
+-
+-//
+-// NOTE: Some code duplicated and augmented from commons-cli (1.0) sources to
+-//       properly render options w/arguments.
+-//
+-
+-
+-/**
+- * Custom CLI help formatter to render things correctly.
+- *
+- * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
+- */
+-class HelpFormatter
+-    extends org.apache.commons.cli.HelpFormatter
+-{
+-    HelpFormatter() {
+-        leftPadding = 2
+-        descPadding = 4
+-    }
+-
+-    // Detect the terminal width late
+-    int getDefaultWidth() {
+-        return Terminal.terminal.terminalWidth - 1
+-    }
+-
+-    @Override
+-    protected StringBuffer renderOptions(final StringBuffer sb, final int width, final Options options, final int leftPad, final int descPad) {
+-        assert sb != null
+-        assert options
+-
+-        List<StringBuffer> prefixes = []
+-        String lpad = ' ' * leftPad
+-
+-        List<Option> opts = options.shortOpts.values().sort {Option a, Option b ->
+-            return (a.opt == ' ' ? a.longOpt : a.opt) <=> (b.opt == ' ' ? b.longOpt : b.opt)
+-        }
+-
+-        // Render the prefixes (-X,--xxxx muck)
+-        opts.each {Option option ->
+-            StringBuffer buff = new StringBuffer(8)
+-
+-            if (option.opt == ' ') {
+-                buff << "${lpad}    ${longOptPrefix}${option.longOpt}"
+-            }
+-            else {
+-                buff << "${lpad}${optPrefix}${option.opt}"
+-
+-                if (option.hasLongOpt()) {
+-                    buff << ", ${longOptPrefix}${option.longOpt}"
+-                }
+-            }
+-
+-            if (option.hasArg()) {
+-                if (option.hasArgName()) {
+-                    if (option.hasOptionalArg()) {
+-                        buff << "[=${option.argName}]"
+-                    }
+-                    else {
+-                        buff << "=${option.argName}"
+-                    }
+-                }
+-                else {
+-                    buff << ' '
+-                }
+-            }
+-
+-            prefixes << buff
+-        }
+-
+-        // Figure out how long the biggest prefix is
+-        int maxPrefix = prefixes.max {StringBuffer a, StringBuffer b -> a.size() <=> b.size() }.size()
+-
+-        String dpad = ' ' * descPad
+-
+-        // And then render each option's prefix with its description
+-        opts.eachWithIndex {Option option, int i ->
+-            def buff = new StringBuffer(prefixes[i].toString())
+-
+-            if (buff.size() < maxPrefix) {
+-                buff << ' ' * (maxPrefix - buff.size())
+-            }
+-            buff << dpad
+-
+-            int nextLineTabStop = maxPrefix + descPad
+-            String text = buff << option.description
+-
+-            renderWrappedText(sb, width, nextLineTabStop, text)
+-
+-            if (i < opts.size() - 1) {
+-                sb << newLine
+-            }
+-        }
+-
+-        return sb
+-    }
+-}
+--- groovy-2.4.21/subprojects/groovy-groovysh/src/main/groovy/org/codehaus/groovy/tools/shell/util/JAnsiHelper.groovy	2022-05-13 01:20:10.938360103 +0200
++++ groovy-2.4.21/subprojects/groovy-groovysh/src/main/groovy/org/codehaus/groovy/tools/shell/util/JAnsiHelper.groovy	1970-01-01 01:00:00.000000000 +0100
+@@ -1,42 +0,0 @@
+-/*
+- *  Licensed to the Apache Software Foundation (ASF) under one
+- *  or more contributor license agreements.  See the NOTICE file
+- *  distributed with this work for additional information
+- *  regarding copyright ownership.  The ASF licenses this file
+- *  to you under the Apache License, Version 2.0 (the
+- *  "License"); you may not use this file except in compliance
+- *  with the License.  You may obtain a copy of the License at
+- *
+- *    http://www.apache.org/licenses/LICENSE-2.0
+- *
+- *  Unless required by applicable law or agreed to in writing,
+- *  software distributed under the License is distributed on an
+- *  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+- *  KIND, either express or implied.  See the License for the
+- *  specific language governing permissions and limitations
+- *  under the License.
+- */
+-package org.codehaus.groovy.tools.shell.util
+-
+-import groovy.transform.CompileStatic
+-import org.fusesource.jansi.AnsiOutputStream
+-
+-@CompileStatic
+-class JAnsiHelper {
+-
+-    /**
+-     * copied from jline2 ConsoleReader
+-     */
+-    static CharSequence stripAnsi(final CharSequence str) {
+-        if (str == null) return ''
+-        try {
+-            ByteArrayOutputStream baos = new ByteArrayOutputStream()
+-            AnsiOutputStream aos = new AnsiOutputStream(baos)
+-            aos.write(str.toString().bytes)
+-            aos.flush()
+-            return baos.toString()
+-        } catch (IOException e) {
+-            return str
+-        }
+-    }
+-}

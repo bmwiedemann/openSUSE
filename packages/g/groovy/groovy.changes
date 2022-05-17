@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 16 11:55:21 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * groovy-2.4.21-jansi.patch
+    + port to build against jansi 2.4.0
+
+-------------------------------------------------------------------
 Wed Mar 23 17:05:03 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Force building with JDK <= 15, since gradle does not work with
