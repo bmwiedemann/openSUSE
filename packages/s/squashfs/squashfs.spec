@@ -47,7 +47,7 @@ squashfs images.
 %build
 %define _lto_cflags %{nil}
 sed -i -e "s|-O2|%{optflags}|" squashfs-tools/Makefile
-%make_build -C squashfs-tools XZ_SUPPORT=1 LZO_SUPPORT=1 \
+%make_build -C squashfs-tools LZMA_XZ_SUPPORT=1 XZ_SUPPORT=1 LZO_SUPPORT=1 \
 %if %{?suse_version} > 1315
    LZ4_SUPPORT=1 \
 %endif
