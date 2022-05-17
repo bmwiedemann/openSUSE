@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Sun Feb 13 23:43:55 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
-- Update to release 0.12.5
+- Update to release 0.12.5 [boo#1193372] [CVE-2021-28237]
   * Restricted accepted DXF objects to all stable and unstable
     classes, minus MATERIAL, ARC_DIMENSION, SUN, PROXY*. I.e.
     most unstable objects do not allow unknown DXF codes anymore.

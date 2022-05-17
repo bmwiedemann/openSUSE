@@ -113,4 +113,12 @@
     <comment>- Update to release 0.12.5</comment>
     <requestid>954132</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>2dc0affc9351bbd65ac35bd2903b431b</srcmd5>
+    <version>0.12.5</version>
+    <time>1652801051</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.12.5 [boo#1193372] [CVE-2021-28237]</comment>
+    <requestid>977604</requestid>
+  </revision>
 </revisionlist>
