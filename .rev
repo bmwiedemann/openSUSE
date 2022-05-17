@@ -103,4 +103,12 @@
     <comment>https://software.opensuse.org/package/vkquake maintenance</comment>
     <requestid>955858</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b6c2acc8633ee46e90131637c708eb37</srcmd5>
+    <version>1.13.1</version>
+    <time>1652801078</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977684</requestid>
+  </revision>
 </revisionlist>
