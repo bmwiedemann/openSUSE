@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 16 11:00:15 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade the latest upstream release 2.4.0
+  * Integrates jansi-native libraries
+  * Does not depend on jansi-native and hawtjni-runtime
+- Make the jansi package archful since it installs a native
+  library and jni jar
+- Added patch:
+  * jansi-jni.patch
+    + Give a possibility to load the native libjansi.so from
+      system
+
+-------------------------------------------------------------------
 Wed Mar 23 23:34:23 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 8

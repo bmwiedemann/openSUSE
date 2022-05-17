@@ -37,4 +37,12 @@
     <comment>Build with source and target levels 8</comment>
     <requestid>964413</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c0556921b94f0735d8a740f6fd445202</srcmd5>
+    <version>2.4.0</version>
+    <time>1652801052</time>
+    <user>dimstar_suse</user>
+    <comment>maven 3.8.5 / jansi 2.4.0 and fixes for building with them</comment>
+    <requestid>977561</requestid>
+  </revision>
 </revisionlist>

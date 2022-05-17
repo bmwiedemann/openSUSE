@@ -16,27 +16,20 @@
 #
 
 
-%bcond_with tests
 Name:           jansi
-Version:        1.17.1
+Version:        2.4.0
 Release:        0
 Summary:        Java library for generating and interpreting ANSI escape sequences
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://fusesource.github.io/jansi/
-Source0:        https://github.com/fusesource/jansi/archive/jansi-project-%{version}.tar.gz
+URL:            https://fusesource.github.io/jansi/
+Source0:        https://github.com/fusesource/jansi/archive/jansi-%{version}.tar.gz
 Source1:        %{name}-build.xml
+Patch0:         %{name}-jni.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  hawtjni-runtime
-BuildRequires:  jansi-native
+BuildRequires:  gcc
 BuildRequires:  javapackages-local
-%if %{with tests}
-BuildRequires:  ant-junit
-%endif
-Requires:       mvn(org.fusesource.hawtjni:hawtjni-runtime)
-Requires:       mvn(org.fusesource.jansi:jansi-native)
-BuildArch:      noarch
 
 %description
 Jansi is a java library that allows you to use ANSI escape sequences
@@ -47,68 +40,84 @@ when output is being sent to output devices which cannot support ANSI sequences.
 %package javadoc
 Summary:        Javadocs for %{name}
 Group:          Documentation/HTML
+BuildArch:      noarch
 
 %description javadoc
 This package contains the API documentation for %{name}.
 
 %prep
-%setup -q -n jansi-jansi-project-%{version}
-cp %{SOURCE1} .
+%setup -q -n jansi-jansi-%{version}
+cp %{SOURCE1} build.xml
 
-%pom_disable_module example
+%pom_remove_parent
+
+# We don't need the Fuse JXR skin
 %pom_xpath_remove "pom:build/pom:extensions"
 
-%pom_remove_plugin -r :maven-site-plugin
+# Plugins not needed for an RPM build
+%pom_remove_plugin :maven-gpg-plugin
+%pom_remove_plugin :maven-javadoc-plugin
+%pom_remove_plugin :nexus-staging-maven-plugin
 
-# No maven-uberize-plugin
-%pom_remove_plugin -r :maven-uberize-plugin
+# We don't want GraalVM support in Fedora
+%pom_remove_plugin :exec-maven-plugin
+%pom_remove_dep :picocli-codegen
 
-# Remove unnecessary deps for jansi-native builds
-pushd jansi
-%pom_remove_dep :jansi-windows32
-%pom_remove_dep :jansi-windows64
-%pom_remove_dep :jansi-osx
-%pom_remove_dep :jansi-freebsd32
-%pom_remove_dep :jansi-freebsd64
-# it's there only to be bundled in uberjar and we disable uberjar generation
-%pom_remove_dep :jansi-linux32
-%pom_remove_dep :jansi-linux64
-popd
+# Build for JDK 1.8 at a minimum
+%pom_xpath_set "//pom:properties/pom:jdkTarget" 1.8
 
-%pom_remove_parent jansi
-%pom_xpath_inject pom:project "
-  <groupId>org.fusesource.jansi</groupId>
-  <version>%{version}</version>" jansi
-%pom_change_dep ::\${jansi-native-version} ::1.8 jansi
+# Remove prebuilt shared objects
+rm -fr src/main/resources/org/fusesource/jansi/internal
+
+# Unbundle the JNI headers
+rm src/main/native/inc_linux/*.h
+ln -s %{java_home}/include/jni.h src/main/native/inc_linux
+ln -s %{java_home}/include/linux/jni_md.h src/main/native/inc_linux
+
+# Set the JNI path
+sed -i 's,@LIBDIR@,%{_libdir},' \
+    src/main/java/org/fusesource/jansi/internal/JansiLoader.java
+# Filtering complicated with ant
+sed -i 's,\${project.version},%{version},' \
+    src/main/resources/org/fusesource/jansi/jansi.properties
 
 %build
-mkdir -p jansi/lib
-build-jar-repository -s jansi/lib \
-	hawtjni/hawtjni-runtime jansi-native/jansi-native
-%{ant} -f %{name}-build.xml \
-%if %{without tests}
-	-Dtest.skip=true \
-%endif
-	jar javadoc
+# Build the native artifact
+CFLAGS="$CFLAGS -I. -I%{java_home}/include -I%{java_home}/include/linux -fPIC -fvisibility=hidden"
+pushd src/main/native
+%__cc $CFLAGS -c jansi.c
+%__cc $CFLAGS -c jansi_isatty.c
+%__cc $CFLAGS -c jansi_structs.c
+%__cc $CFLAGS -c jansi_ttyname.c
+%__cc $CFLAGS $LDFLAGS -shared -o libjansi.so *.o -lutil
+popd
+
+# Build the Java artifacts
+%{ant} jar javadoc
 
 %install
+# Install the native artifact
+install -dm 0755 %{buildroot}%{_libdir}/%{name}
+install -pm 0755 src/main/native/libjansi.so %{buildroot}%{_libdir}/%{name}
+
 # jar
-install -dm 0755 %{buildroot}%{_javadir}/%{name}
-install -pm 0644 jansi/target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
+install -dm 0755 %{buildroot}%{_jnidir}/%{name}
+install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_jnidir}/%{name}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 jansi/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
 %add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
 # javadoc
 %fdupes -s %{buildroot}%{_javadocdir}
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
-cp -pr jansi/target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}
+cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 %license license.txt
 %doc readme.md changelog.md
+%{_libdir}/%{name}
 
 %files javadoc
 %{_javadocdir}/%{name}
