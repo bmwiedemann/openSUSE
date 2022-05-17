@@ -21,7 +21,7 @@
 #%%define skip_python310 1
 
 Name:           python-pivy
-Version:        0.6.6
+Version:        0.6.7
 Release:        0
 Summary:        Coin Binding for Python
 # GPL only applies to some examples
@@ -29,8 +29,6 @@ License:        GPL-2.0-only AND ISC
 Group:          Development/Libraries/Python
 URL:            https://github.com/FreeCAD/pivy
 Source0:        https://github.com/FreeCAD/pivy/archive/%{version}.tar.gz#/pivy-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         https://github.com/coin3d/pivy/pull/92.patch#/fix_python_installdir.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  cmake
 BuildRequires:  fdupes
