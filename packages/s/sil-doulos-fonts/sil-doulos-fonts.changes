@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue May 17 10:15:46 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 6.101
+  * The font now supports SIL TypeTuner
+  * New locl OpenType feature that supports Macedonian Cyrillic alternates
+  * Serbian and Macedonian alternates are also available through
+    a new OpenType feature (cv84) for applications that do not support
+    language-specific locl features
+  * Characters have been added to support Unicode versions up to 14.0.0
+  * The special-purpose modified fonts have been updated to be based on
+    the current version.
+- Update to version 6.001
+  * Reverted font Postscript name to that used in v5 and earlier to
+    avoid problems with unrecognized fonts when opening older documents
+- Update to version 6.000
+  * Removed DSIGs added in version 5.000. These have now been removed to
+    reflect current best practice font development guidance.
+  * Graphite has been removed. Application and OS support for OpenType
+    has greatly improved, so the need for Graphite in this font is greatly reduced.
+  * Removed the “Show Invisibles” feature.
+  * Removed support for nine-level pitch contours.
+    These will be replaced by a standalone pitch contours font in the future.
+  * Characters added to support Unicode versions 7.0-13.0,
+    including feature support (e.g. small caps)
+  * First release that uses a UFO-based design and production workflow
+  * Feature to support side-by-side rendering of U+0300 plus U+0301
+  * Tone letter features (cv91 & cv92) now supported through OpenType
+  * Width of typographic spaces have been made more consistent to reflect
+  * Fixed some small capital correspondences, including added support for clicks
+  * Fixed problems with spacing of tone letters
+  * Fixes and improvements to various glyphs
+
+-------------------------------------------------------------------
 Wed Mar 25 00:27:16 UTC 2015 - p.drouand@gmail.com
 
 - Update to version 5.000

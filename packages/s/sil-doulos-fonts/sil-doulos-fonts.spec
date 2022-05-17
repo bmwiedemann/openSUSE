@@ -1,7 +1,7 @@
 #
 # spec file for package sil-doulos-fonts
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,13 +20,13 @@
 
 Name:           sil-doulos-fonts
 # Provides:       locale(vi)
-Version:        5.000
+Version:        6.101
 Release:        0
 Summary:        Doulos SIL Fonts Similar to Times
 License:        OFL-1.1
 Group:          System/X11/Fonts
-Url:            http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=FontDownloadsDoulos
-Source0:        %{fontname}SIL-%{version}.zip
+URL:            https://software.sil.org/doulos
+Source0:        https://software.sil.org/downloads/r/doulos/DoulosSIL-%{version}.zip
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
 %reconfigure_fonts_prereq
@@ -50,10 +50,6 @@ for i in *.txt; do
  sed -i 's/.$//' $i
 done
 
-if [[ -e documentation ]]; then
- cp -v documentation/*.{txt,pdf} .
-fi
-
 %build
 
 %install
@@ -63,8 +59,8 @@ install -c -m 644 *.ttf %{buildroot}%{_ttfontsdir}
 %reconfigure_fonts_scriptlets
 
 %files
-%defattr(-, root,root)
-%doc *.txt *.pdf
+%license OFL*.txt
+%doc README.txt documentation/pdf/*.pdf
 %{_ttfontsdir}
 
 %changelog
