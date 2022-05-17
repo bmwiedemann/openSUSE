@@ -243,18 +243,17 @@ BuildRequires:  bc
 BuildRequires:  bison
 # Arndale board needs DTC >= 1.4
 BuildRequires:  dtc >= 1.4.0
-# gnutls/gnutls.h required for tools/mkeficapsule.c
-BuildRequires:  libgnutls-devel
 BuildRequires:  flex
-# u-boot-clearfog (tools/kwbimage.c) needs openssl to build
-BuildRequires:  libopenssl-devel
-# uuid/uuid.h required for tools/mkeficapsule.c
-BuildRequires:  libuuid-devel
 BuildRequires:  pkgconfig
+# gnutls/gnutls.h required for tools/mkeficapsule.c
+BuildRequires:  pkgconfig(gnutls)
+# u-boot-clearfog (tools/kwbimage.c) needs openssl to build
+BuildRequires:  pkgconfig(openssl)
+# uuid/uuid.h required for tools/mkeficapsule.c
+BuildRequires:  pkgconfig(uuid)
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  swig
-BuildRequires:  pkgconfig(sdl)
 Conflicts:      u-boot-loader
 Provides:       u-boot-loader
 %if "%_project" == "hardware:boot" || "%_project" == "hardware:boot:staging" || "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:ARM" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:RISCV" || "%_project" == "openSUSE:Leap:15.2" || "%_project" == "openSUSE:Leap:15.2:ARM" || "%_project" == "openSUSE:Leap:15.2:PowerPC"
@@ -391,7 +390,7 @@ This package contains documentation for U-Boot firmware.
 # needed for include/config/auto.conf
 make defconfig
 make syncconfig
-make %{?_smp_mflags} CFLAGS="%{optflags}" tools-only
+make %{?_smp_mflags} CFLAGS="%{optflags}" tools-only NO_SDL=y
 
 %else
 %if 0%{?is_a64} || 0%{?is_h5}

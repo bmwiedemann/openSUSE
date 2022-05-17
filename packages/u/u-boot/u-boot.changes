@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 16 11:04:46 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Remove build dependency on SDL, none of the installed tools need that
+- Use pkgconfig dependencies for gnutls, uuid, openssl
+
+-------------------------------------------------------------------
 Fri Apr 15 16:42:49 UTC 2022 - Frank Kunz <mailinglists@kunz-im-inter.net>
 
 - socfpga: Fix regression that dropped the install binary from package
