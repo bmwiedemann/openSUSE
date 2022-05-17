@@ -560,4 +560,12 @@
     <comment>lircd: allow input device access in lircd.service again (forwarded request 931284 from ldreier)</comment>
     <requestid>966660</requestid>
   </revision>
+  <revision rev="75" vrev="8">
+    <srcmd5>ad02241c7d974c80dd1dee70091cfe53</srcmd5>
+    <version>0.10.1</version>
+    <time>1652801019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977446</requestid>
+  </revision>
 </revisionlist>

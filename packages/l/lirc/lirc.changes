@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May  8 18:45:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add lirc-autoconf-py310.patch: Output of autoreconf in order to
+  find the correct python version when Tumbleweed switches to
+  Python 3.10.
+
+-------------------------------------------------------------------
 Wed Nov 24 13:00:26 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add pyyaml-60-compatibility.patch to make the package

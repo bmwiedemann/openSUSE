@@ -1,7 +1,7 @@
 #
 # spec file for package lirc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,8 @@ Patch4:         harden_lircmd.service.patch
 # PATCH-FIX-UPSTREAM pyyaml-60-compatibility.patch sht#lirc#365 mcepl@suse.com
 # Makes the package compatible with PyYAML 6.0+
 Patch5:         pyyaml-60-compatibility.patch
+# PATCH-FIX-OPENSUSE lirc-autoconf-py310.patch, ran autoreconf for finding python 3.10
+Patch6:         lirc-autoconf-py310.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection
@@ -207,6 +209,9 @@ Some seldom used X11-based tools for debugging lirc configurations.
 sed -i -e 's|/usr/local/etc/|%{_sysconfdir}/|' contrib/irman2lirc
 sed -i -e 's/#effective-user/effective-user /' lirc_options.conf
 sed -i -e '/^effective-user/s/=$/= lirc/' lirc_options.conf
+sed -i -e "1{s|/usr/bin/env bash|$(which bash)|}" \
+  tools/lirc-config-tool \
+  tools/lirc-make-devinput
 
 %build
 %configure --enable-devinput
@@ -268,17 +273,17 @@ getent passwd lirc >/dev/null || \
 usermod -a -G dialout lirc &> /dev/null || :
 usermod -a -G lock lirc &> /dev/null || :
 usermod -a -G input lirc &> /dev/null || :
-%service_add_pre lircd.service lircmd.service lircd-uinput.service lircd.socket irexec.service
+%service_add_pre lircd.service lircmd.service lircd-uinput.service lircd-setup.service lircd.socket irexec.service
 
 %post core
-%service_add_post lircd.service lircmd.service lircd-uinput.service lircd.socket irexec.service
+%service_add_post lircd.service lircmd.service lircd-uinput.service lircd-setup.service lircd.socket irexec.service
 %tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 
 %preun core
-%service_del_preun lircd.service lircmd.service lircd-uinput.service lircd.socket irexec.service
+%service_del_preun lircd.service lircmd.service lircd-uinput.service lircd-setup.service lircd.socket irexec.service
 
 %postun core
-%service_del_postun lircd.service lircmd.service lircd-uinput.service lircd.socket irexec.service
+%service_del_postun lircd.service lircmd.service lircd-uinput.service lircd-setup.service lircd.socket irexec.service
 
 %files core
 %license COPYING
@@ -287,8 +292,6 @@ usermod -a -G input lirc &> /dev/null || :
 %doc contrib
 %dir %{_datadir}/%{name}
 %dir %{_libdir}/%{name}
-%dir %{_sysconfdir}/%{name}
-%dir %{_sysconfdir}/%{name}/lircd.conf.d
 %dir %ghost %{_rundir}/lirc
 %ghost %{_rundir}/lirc/lircm
 %ghost %{_rundir}/lirc/lircd
@@ -306,14 +309,16 @@ usermod -a -G input lirc &> /dev/null || :
 %{_mandir}/man1/*
 %{_mandir}/man5/*
 %{_mandir}/man8/*
-%{python3_sitearch}/*
+%{python3_sitearch}/lirc
+%{python3_sitearch}/lirc-setup
 %dir %{_sysconfdir}/%{name}
-%config(noreplace,missingok) %{_sysconfdir}/lirc/lircd.conf
-%config(noreplace,missingok) %{_sysconfdir}/lirc/lircmd.conf
-%config(noreplace,missingok) %{_sysconfdir}/lirc/lirc_options.conf
-%config(noreplace,missingok) %{_sysconfdir}/lirc/lircd.conf.d/README.conf.d
-%config(noreplace,missingok) %{_sysconfdir}/lirc/lircd.conf.d/devinput.lircd.conf
-%config(noreplace,missingok) %{_sysconfdir}/lirc/irexec.lircrc
+%dir %{_sysconfdir}/%{name}/lircd.conf.d
+%config(noreplace,missingok) %{_sysconfdir}/%{name}/lircd.conf
+%config(noreplace,missingok) %{_sysconfdir}/%{name}/lircmd.conf
+%config(noreplace,missingok) %{_sysconfdir}/%{name}/lirc_options.conf
+%config(noreplace,missingok) %{_sysconfdir}/%{name}/lircd.conf.d/README.conf.d
+%config(noreplace,missingok) %{_sysconfdir}/%{name}/lircd.conf.d/devinput.lircd.conf
+%config(noreplace,missingok) %{_sysconfdir}/%{name}/irexec.lircrc
 %{_unitdir}/lirc*
 %{_unitdir}/irexec.service
 %{_tmpfilesdir}/lirc.conf
