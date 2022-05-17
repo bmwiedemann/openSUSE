@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 17 07:50:01 UTC 2022 - mcepl@suse.com
+
+- Update to version 2.0.0+git.1625851959.1275fbe:
+  * Bump version and update NEWS.
+  * Ship Matěj Cepl's systemd files, and refer to them
+  * Replace /etc/cron.daily/leafnode with systemd timer
+- Remove upstreamed patches:
+  - systemd-timers.patch
+
+-------------------------------------------------------------------
 Mon Oct  4 07:23:03 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

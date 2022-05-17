@@ -163,4 +163,18 @@
     <comment></comment>
     <requestid>946525</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4865602609f6b62a0e00441be2686112</srcmd5>
+    <version>2.0.0+git.1625851959.1275fbe</version>
+    <time>1652801074</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.0+git.1625851959.1275fbe:
+  * Bump version and update NEWS.
+  * Ship Matěj Cepl's systemd files, and refer to them
+  * Replace /etc/cron.daily/leafnode with systemd timer
+- Remove upstreamed patches:
+  - systemd-timers.patch
+</comment>
+    <requestid>977662</requestid>
+  </revision>
 </revisionlist>

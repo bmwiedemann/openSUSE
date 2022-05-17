@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define admin_group newsadmin
 %define upname leafnode
 Name:           %{upname}
-Version:        2.0.0+git.1527241185.66da754
+Version:        2.0.0+git.1625851959.1275fbe
 Release:        0
 Summary:        Leaf site NNTP server
 License:        MIT
@@ -34,10 +34,7 @@ URL:            http://www.dt.e-technik.uni-dortmund.de/~ma/leafnode/beta/
 # https://gitlab.com/leafnode-2/leafnode-2/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        README-SUSE.rst
-# PATCH-FEATURE-UPSTREAM name-of-file.patch bsc#1115443 mcepl@suse.com
-# Replace /etc/cron.daily/leafnode with systemd timer
-Patch0:         systemd-timers.patch
-Patch1:	harden_leafnode@.service.patch
+Patch1:         harden_leafnode@.service.patch
 BuildRequires:  autoconf >= 2.68
 BuildRequires:  automake
 BuildRequires:  gettext

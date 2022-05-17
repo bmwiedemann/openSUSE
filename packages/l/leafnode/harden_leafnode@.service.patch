@@ -1,7 +1,9 @@
-Index: leafnode-2.0.0+git.1527241185.66da754/systemd/leafnode@.service.in
-===================================================================
---- leafnode-2.0.0+git.1527241185.66da754.orig/systemd/leafnode@.service.in
-+++ leafnode-2.0.0+git.1527241185.66da754/systemd/leafnode@.service.in
+---
+ systemd/leafnode@.service.in |   13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+--- a/systemd/leafnode@.service.in
++++ b/systemd/leafnode@.service.in
 @@ -3,6 +3,19 @@ Description=NNTP server for small sites
  Documentation=man:leafnode(8)
  
@@ -18,7 +20,7 @@ Index: leafnode-2.0.0+git.1527241185.66da754/systemd/leafnode@.service.in
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
 +RestrictRealtime=true
-+# end of automatic additions 
++# end of automatic additions
  ExecStart=@sbindir@/leafnode
  StandardInput=socket
  User=news
