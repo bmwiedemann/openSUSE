@@ -1,7 +1,8 @@
-diff -Nura plymouth-0.9.5~git20210406.e554475/src/plugins/splash/two-step/plugin.c plymouth-0.9.5~git20210406.e554475_new/src/plugins/splash/two-step/plugin.c
---- plymouth-0.9.5~git20210406.e554475/src/plugins/splash/two-step/plugin.c	2021-04-06 19:53:40.000000000 +0800
-+++ plymouth-0.9.5~git20210406.e554475_new/src/plugins/splash/two-step/plugin.c	2021-09-19 17:04:54.441225214 +0800
-@@ -1053,7 +1053,6 @@
+Index: b/src/plugins/splash/two-step/plugin.c
+===================================================================
+--- a/src/plugins/splash/two-step/plugin.c
++++ b/src/plugins/splash/two-step/plugin.c
+@@ -1055,7 +1055,6 @@ create_plugin (ply_key_file_t *key_file)
          plugin = calloc (1, sizeof(ply_boot_splash_plugin_t));
  
          image_dir = ply_key_file_get_value (key_file, "two-step", "ImageDir");
@@ -9,7 +10,7 @@ diff -Nura plymouth-0.9.5~git20210406.e554475/src/plugins/splash/two-step/plugin
          ply_trace ("Using '%s' as working directory", image_dir);
  
          asprintf (&image_path, "%s/lock.png", image_dir);
-@@ -1076,9 +1075,23 @@
+@@ -1078,9 +1077,23 @@ create_plugin (ply_key_file_t *key_file)
          plugin->background_tile_image = ply_image_new (image_path);
          free (image_path);
  
@@ -36,10 +37,11 @@ diff -Nura plymouth-0.9.5~git20210406.e554475/src/plugins/splash/two-step/plugin
  
          plugin->animation_dir = image_dir;
  
-diff -Nura plymouth-0.9.5~git20210406.e554475/themes/bgrt/bgrt.plymouth.desktop plymouth-0.9.5~git20210406.e554475_new/themes/bgrt/bgrt.plymouth.desktop
---- plymouth-0.9.5~git20210406.e554475/themes/bgrt/bgrt.plymouth.desktop	2021-04-06 19:53:40.000000000 +0800
-+++ plymouth-0.9.5~git20210406.e554475_new/themes/bgrt/bgrt.plymouth.desktop	2021-09-19 17:14:04.299069740 +0800
-@@ -7,6 +7,7 @@
+Index: b/themes/bgrt/bgrt.plymouth.desktop
+===================================================================
+--- a/themes/bgrt/bgrt.plymouth.desktop
++++ b/themes/bgrt/bgrt.plymouth.desktop
+@@ -7,6 +7,7 @@ ModuleName=two-step
  Font=Cantarell 12
  TitleFont=Cantarell Light 30
  ImageDir=@PLYMOUTH_THEME_PATH@/spinner
@@ -47,3 +49,28 @@ diff -Nura plymouth-0.9.5~git20210406.e554475/themes/bgrt/bgrt.plymouth.desktop 
  DialogHorizontalAlignment=.5
  DialogVerticalAlignment=.382
  TitleHorizontalAlignment=.5
+Index: b/scripts/plymouth-populate-initrd.in
+===================================================================
+--- a/scripts/plymouth-populate-initrd.in
++++ b/scripts/plymouth-populate-initrd.in
+@@ -491,6 +491,7 @@ fi
+ 
+ PLYMOUTH_MODULE_NAME=$(grep "ModuleName *= *" ${PLYMOUTH_SYSROOT}${PLYMOUTH_THEME_DIR}/${PLYMOUTH_THEME_NAME}.plymouth | sed 's/ModuleName *= *//')
+ PLYMOUTH_IMAGE_DIR=$(grep "ImageDir *= *" ${PLYMOUTH_SYSROOT}${PLYMOUTH_THEME_DIR}/${PLYMOUTH_THEME_NAME}.plymouth | sed 's/ImageDir *= *//')
++PLYMOUTH_WATERMARK_PATH=$(grep "WatermarkPath *= *" ${PLYMOUTH_SYSROOT}${PLYMOUTH_THEME_DIR}/${PLYMOUTH_THEME_NAME}.plymouth | sed 's/WatermarkPath *= *//')
+ 
+ PLYMOUTH_Font_PATH=$(fc-list |grep $(fc-match "$(echo $(grep "^Font *= *" ${PLYMOUTH_SYSROOT}${PLYMOUTH_DATADIR}/plymouth/themes/`plymouth-set-default-theme`/`plymouth-set-default-theme`.plymouth | sed -e 's/^Font *= *//'| awk 'NF{NF--};1'))" |awk -F : {'print $1'}) |awk -F : {'print $1'} | sort -u | head -n 1)
+ PLYMOUTH_TitleFont_PATH=$(fc-list |grep $(fc-match "$(echo $(grep "^TitleFont *= *" ${PLYMOUTH_SYSROOT}${PLYMOUTH_DATADIR}/plymouth/themes/`plymouth-set-default-theme`/`plymouth-set-default-theme`.plymouth | sed -e 's/^TitleFont *= *//'| awk 'NF{NF--};1'))" |awk -F : {'print $1'}) |awk -F : {'print $1'} | sort -u | head -n 1)
+@@ -516,6 +517,12 @@ if [ "${PLYMOUTH_IMAGE_DIR}" != "${PLYMO
+      inst_recur "${PLYMOUTH_IMAGE_DIR}"
+ fi
+ 
++# WatermarkPath is either an image file or a symlink to it
++[ -f "${PLYMOUTH_WATERMARK_PATH}" ] && inst "${PLYMOUTH_WATERMARK_PATH}" $INITRDDIR
++if [ -L "${PLYMOUTH_WATERMARK_PATH}" ]; then
++    inst_symlink "${PLYMOUTH_WATERMARK_PATH}" 
++fi
++
+ if [ -L ${PLYMOUTH_SYSROOT}${PLYMOUTH_DATADIR}/plymouth/themes/default.plymouth ]; then
+     cp -a ${PLYMOUTH_SYSROOT}${PLYMOUTH_DATADIR}/plymouth/themes/default.plymouth $INITRDDIR${PLYMOUTH_DATADIR}/plymouth/themes
+ fi

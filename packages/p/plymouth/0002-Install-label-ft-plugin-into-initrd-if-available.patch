@@ -10,11 +10,12 @@ Signed-off-by: Fabian Vogt <fvogt@suse.com>
  scripts/plymouth-populate-initrd.in | 9 +++++++++
  1 file changed, 9 insertions(+)
 
-diff -Nura plymouth-0.9.5+git20200921+20778f2/scripts/plymouth-populate-initrd.in plymouth-0.9.5+git20200921+20778f2_new/scripts/plymouth-populate-initrd.in
---- plymouth-0.9.5+git20200921+20778f2/scripts/plymouth-populate-initrd.in	2020-10-05 23:05:13.055563514 +0800
-+++ plymouth-0.9.5+git20200921+20778f2_new/scripts/plymouth-populate-initrd.in	2020-10-05 23:08:35.098420945 +0800
-@@ -461,6 +461,15 @@
-      inst_recur "${PLYMOUTH_IMAGE_DIR}"
+Index: b/scripts/plymouth-populate-initrd.in
+===================================================================
+--- a/scripts/plymouth-populate-initrd.in
++++ b/scripts/plymouth-populate-initrd.in
+@@ -523,6 +523,15 @@ if [ -L "${PLYMOUTH_WATERMARK_PATH}" ];
+     inst_symlink "${PLYMOUTH_WATERMARK_PATH}" 
  fi
  
 +if [ -f "${PLYMOUTH_PLUGIN_PATH}/label-ft.so" ]; then

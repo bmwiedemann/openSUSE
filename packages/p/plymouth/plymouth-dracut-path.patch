@@ -1,7 +1,8 @@
-diff -Nura plymouth-0.9.5~git20210406.e554475/scripts/plymouth-populate-initrd.in plymouth-0.9.5~git20210406.e554475_new/scripts/plymouth-populate-initrd.in
---- plymouth-0.9.5~git20210406.e554475/scripts/plymouth-populate-initrd.in	2021-08-31 21:58:26.153527871 +0800
-+++ plymouth-0.9.5~git20210406.e554475_new/scripts/plymouth-populate-initrd.in	2021-08-31 22:25:36.360335610 +0800
-@@ -415,8 +415,8 @@
+Index: b/scripts/plymouth-populate-initrd.in
+===================================================================
+--- a/scripts/plymouth-populate-initrd.in
++++ b/scripts/plymouth-populate-initrd.in
+@@ -453,8 +453,8 @@ ddebug "Running with PLYMOUTH_LDD=$PLYMO
  ddebug "Running with PLYMOUTH_LDD_PATH=$PLYMOUTH_LDD_PATH"
  
  mkdir -p ${INITRDDIR}${PLYMOUTH_DATADIR}/plymouth/themes
