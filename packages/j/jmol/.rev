@@ -41,4 +41,12 @@
   a PNG file</comment>
     <requestid>870362</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1ba30148b4882fbb4e2ac891f8aee25b</srcmd5>
+    <version>14.32.55</version>
+    <time>1652801068</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 14.32.55</comment>
+    <requestid>977611</requestid>
+  </revision>
 </revisionlist>

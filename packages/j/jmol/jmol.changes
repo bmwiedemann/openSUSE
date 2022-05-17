@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 16 20:48:46 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 14.32.55
+  * feature change: axes POSITION [x y] "xyz" with symmetry
+  * new feature: axes POSITION [x y] "xyzabc"
+  * new feature: global user variable dragDropFileType
+  * bugfix: deleting atoms from PDB failed
+  * bugfix: ModelKit dragAtom did not update measurements
+
+-------------------------------------------------------------------
 Mon Feb  8 22:01:23 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - update build recipes/scripts to use https [boo#1181924]
