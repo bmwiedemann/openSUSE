@@ -1,7 +1,7 @@
 #
 # spec file for package python-PasteDeploy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,19 +19,19 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-PasteDeploy
-Version:        2.1.1
+Version:        2.1.1+git.1652668078.0f0697d
 Release:        0
 Summary:        Tool to load, configure, and compose WSGI applications and servers
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Pylons/pastedeploy
-Source:         https://github.com/Pylons/pastedeploy/archive/%{version}.tar.gz
-# PATCH-FIX-UPSTREAM rm_nspace_pkgs.patch gh#Pylons/pastedeploy#27 mcepl@suse.com
-# Package uses namespace_packages, when it shouldn't.
-Patch0:         rm_nspace_pkgs.patch
+# Source:         https://github.com/Pylons/pastedeploy/archive/%%{version}.tar.gz
+Source:         pastedeploy-%{version}.tar.gz
 BuildRequires:  %{python_module Paste}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Paste
@@ -54,11 +54,13 @@ provides commands to serve applications based on this configuration file.
 %setup -q -n pastedeploy-%{version}
 %autopatch -p1
 
+sed -i -e '/^addopts/s/ --cov//' pytest.ini
+
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -67,6 +69,9 @@ provides commands to serve applications based on this configuration file.
 %files %{python_files}
 %doc README.rst
 %license license.txt
-%{python_sitelib}/*
+# %%{python_sitelib}/PasteDeploy-%%{version}*-info
+%{python_sitelib}/PasteDeploy-2.1.1*-info
+%{python_sitelib}/PasteDeploy-2.1.1*-nspkg.pth
+%{python_sitelib}/paste/deploy
 
 %changelog
