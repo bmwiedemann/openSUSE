@@ -1,7 +1,7 @@
 #
 # spec file for package mingzat-fonts
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,31 +12,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define fontname Mingzat
 
+%define fontname Mingzat
 Name:           mingzat-fonts
-Version:        0.100
+Version:        1.000
 Release:        0
 Summary:        Lepcha Font
 License:        OFL-1.1
 Group:          System/X11/Fonts
-Url:            http://www.sil.org/resources/software_fonts/mingzat
-Source0:        %{fontname}-%{version}.zip
+URL:            https://software.sil.org/mingzat/
+Source0:        https://software.sil.org/downloads/r/mingzat/Mingzat-%{version}.zip
 BuildRequires:  dos2unix
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
-%reconfigure_fonts_prereq
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
+%reconfigure_fonts_prereq
 
 %description
 Mingzat is a Unicode font based on Jason Glavy's JG Lepcha custom-encoded font.
 
 %prep
-%setup -q -n %{fontname}
+%setup -q -n %{fontname}-%{version}
 
 %build
 dos2unix OFL*.txt README.txt FONTLOG.txt
@@ -48,8 +47,7 @@ install -m 0644 *.ttf %{buildroot}%{_ttfontsdir}/
 %reconfigure_fonts_scriptlets
 
 %files
-%defattr(-,root,root)
-%doc OFL*.txt web README.txt FONTLOG.txt
+%doc OFL*.txt documentation/*.pdf README.txt FONTLOG.txt
 %{_ttfontsdir}
 
 %changelog
