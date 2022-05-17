@@ -1,0 +1,780 @@
+--- a/src/main/groovy/ui/InteractiveShell.java	2022-05-13 08:55:53.640145874 +0200
++++ b/src/main/groovy/ui/InteractiveShell.java	2022-05-13 11:33:55.383811065 +0200
+@@ -48,8 +48,8 @@
+ import org.apache.commons.cli.Options;
+ import org.apache.commons.cli.HelpFormatter;
+ 
+-import jline.ConsoleReader;
+-import jline.SimpleCompletor;
++import jline.console.ConsoleReader;
++import org.codehaus.groovy.tools.shell.util.SimpleCompletor;
+ 
+ /**
+  * A simple interactive shell for evaluating groovy expressions on the command line (aka. groovysh).
+@@ -217,12 +217,11 @@
+         this.err = err;
+ 
+         // Initialize the JLine console input reader
+-        Writer writer = new OutputStreamWriter(out);
+-        reader = new ConsoleReader(in, writer);
+-        reader.setDefaultPrompt("groovy> ");
++        reader = new ConsoleReader(in, out);
++        reader.setPrompt("groovy> ");
+ 
+         // Add some completors to fancy things up
+-        reader.addCompletor(new CommandNameCompletor());
++        reader.addCompleter(new CommandNameCompletor());
+ 
+         if (parent != null) {
+             shell = new GroovyShell(parent, binding);
+--- a/src/main/org/codehaus/groovy/tools/shell/CommandAlias.groovy	2022-05-13 08:55:53.660146020 +0200
++++ b/src/main/org/codehaus/groovy/tools/shell/CommandAlias.groovy	2022-05-13 11:33:55.387811094 +0200
+@@ -43,8 +43,8 @@
+         return command
+     }
+     
+-    protected List createCompletors() {
+-        return target.createCompletors()
++    protected List createCompleters() {
++        return target.createCompleters()
+     }
+     
+     String getDescription() {
+--- a/src/main/org/codehaus/groovy/tools/shell/Command.java	2022-05-13 08:55:53.660146020 +0200
++++ b/src/main/org/codehaus/groovy/tools/shell/Command.java	2022-05-13 11:33:55.487811807 +0200
+@@ -16,7 +16,7 @@
+ 
+ package org.codehaus.groovy.tools.shell;
+ 
+-import jline.Completor;
++import jline.console.completer.Completer;
+ import java.util.List;
+ 
+ /**
+@@ -31,7 +31,7 @@
+ 
+     public String getShortcut();
+ 
+-    public Completor getCompletor();
++    public Completer getCompleter();
+ 
+     public String getDescription();
+ 
+--- a/src/main/org/codehaus/groovy/tools/shell/commands/HistoryCommand.groovy	2022-05-13 08:55:53.664146049 +0200
++++ b/src/main/org/codehaus/groovy/tools/shell/commands/HistoryCommand.groovy	2022-05-13 11:33:55.599812605 +0200
+@@ -16,6 +16,9 @@
+ 
+ package org.codehaus.groovy.tools.shell.commands
+ 
++import jline.console.history.FileHistory
++import jline.console.history.History
++
+ import org.codehaus.groovy.tools.shell.ComplexCommandSupport
+ import org.codehaus.groovy.tools.shell.Shell
+ 
+@@ -65,10 +68,12 @@
+     }
+     
+     def do_show = {
+-        history.historyList.eachWithIndex { item, i ->
+-            i = i.toString().padLeft(3, ' ')
+-            
+-            io.out.println(" @|bold $i|@  $item")
++        Iterator<History.Entry> histIt = history.iterator()
++        while (histIt.hasNext()) {
++            History.Entry next = histIt.next();
++            if (next) {
++                io.out.println(" @|bold ${next.index().toString().padLeft(3, ' ')}|@  ${next.value()}")
++            }
+         }
+     }
+     
+@@ -81,7 +86,7 @@
+     }
+     
+     def do_flush = {
+-        history.flushBuffer()
++        history.flush()
+         
+         if (io.verbose) {
+             io.out.println('History flushed')
+@@ -117,6 +122,8 @@
+         
+         log.debug("Recalling history item #$id: $line")
+         
++        if (line) {
+         return shell.execute(line)
+     }
+ }
++}
+--- a/src/main/org/codehaus/groovy/tools/shell/commands/ImportCommand.groovy	2022-05-13 08:55:53.664146049 +0200
++++ b/src/main/org/codehaus/groovy/tools/shell/commands/ImportCommand.groovy	2022-05-13 11:33:55.611812690 +0200
+@@ -16,8 +16,8 @@
+ 
+ package org.codehaus.groovy.tools.shell.commands
+ 
+-import jline.ArgumentCompletor
+-import jline.NullCompletor
++import jline.console.completer.ArgumentCompleter
++import jline.console.completer.NullCompleter
+ 
+ import org.codehaus.groovy.control.CompilationFailedException
+ 
+@@ -39,9 +39,9 @@
+         super(shell, 'import', '\\i')
+     }
+     
+-    protected List createCompletors() {
++    protected List createCompleters() {
+         return [
+-            new ImportCommandCompletor(shell.interp.classLoader),
++            new ImportCommandCompleter(shell.interp.classLoader),
+             null
+         ]
+     }
+@@ -84,19 +84,19 @@
+ }
+ 
+ /**
+- * Completor for the 'import' command.
++ * Completer for the 'import' command.
+  *
+  * @version $Id$
+  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
+  */
+-class ImportCommandCompletor
+-    extends ArgumentCompletor
++class ImportCommandCompleter
++    extends ArgumentCompleter
+ {
+-    ImportCommandCompletor(final GroovyClassLoader classLoader) {
++    ImportCommandCompleter(final GroovyClassLoader classLoader) {
+         super([
+             new ClassNameCompletor(classLoader),
+             new SimpleCompletor('as'),
+-            new NullCompletor()
++            new NullCompleter()
+         ])
+     }
+ }
+--- a/src/main/org/codehaus/groovy/tools/shell/commands/LoadCommand.groovy	2022-05-13 08:55:53.664146049 +0200
++++ b/src/main/org/codehaus/groovy/tools/shell/commands/LoadCommand.groovy	2022-05-13 11:33:55.707813375 +0200
+@@ -16,7 +16,7 @@
+ 
+ package org.codehaus.groovy.tools.shell.commands
+ 
+-import jline.FileNameCompletor
++import jline.console.completer.FileNameCompleter
+ 
+ import org.codehaus.groovy.tools.shell.CommandSupport
+ import org.codehaus.groovy.tools.shell.Shell
+@@ -36,8 +36,8 @@
+         alias('.', '\\.')
+     }
+ 
+-    protected List createCompletors() {
+-        return [ new FileNameCompletor() ]
++    protected List createCompleters() {
++        return [ new FileNameCompleter() ]
+     }
+ 
+     Object execute(final List args) {
+--- a/src/main/org/codehaus/groovy/tools/shell/commands/SaveCommand.groovy	2022-05-13 08:55:53.664146049 +0200
++++ b/src/main/org/codehaus/groovy/tools/shell/commands/SaveCommand.groovy	2022-05-13 11:33:56.107816226 +0200
+@@ -16,7 +16,7 @@
+ 
+ package org.codehaus.groovy.tools.shell.commands
+ 
+-import jline.FileNameCompletor
++import jline.console.completer.FileNameCompleter
+ 
+ import org.codehaus.groovy.tools.shell.CommandSupport
+ import org.codehaus.groovy.tools.shell.Shell
+@@ -36,7 +36,7 @@
+ 
+     protected List createCompletors() {
+         return [
+-            new FileNameCompletor(),
++            new FileNameCompleter(),
+             null
+         ]
+     }
+--- a/src/main/org/codehaus/groovy/tools/shell/commands/SetCommand.groovy	2022-05-13 08:55:53.664146049 +0200
++++ b/src/main/org/codehaus/groovy/tools/shell/commands/SetCommand.groovy	2022-05-13 11:33:56.107816226 +0200
+@@ -35,7 +35,7 @@
+         super(shell, 'set', '\\=')
+     }
+ 
+-    protected List createCompletors() {
++    protected List createCompleters() {
+         def loader = {
+             def list = []
+ 
+--- a/src/main/org/codehaus/groovy/tools/shell/CommandSupport.groovy	2022-05-13 08:55:53.660146020 +0200
++++ b/src/main/org/codehaus/groovy/tools/shell/CommandSupport.groovy	2022-05-13 11:33:56.107816226 +0200
+@@ -16,13 +16,14 @@
+ 
+ package org.codehaus.groovy.tools.shell
+ 
+-import jline.Completor
+-import jline.NullCompletor
+-import jline.ArgumentCompletor
+-import jline.History
+-
+-import org.codehaus.groovy.tools.shell.util.MessageSource
++import jline.console.completer.ArgumentCompleter
++import jline.console.completer.Completer
++import jline.console.completer.NullCompleter
++import jline.console.completer.StringsCompleter
++import jline.console.history.FileHistory
++import jline.console.history.MemoryHistory
+ import org.codehaus.groovy.tools.shell.util.Logger
++import org.codehaus.groovy.tools.shell.util.MessageSource
+ import org.codehaus.groovy.tools.shell.util.SimpleCompletor
+ 
+ /**
+@@ -94,37 +95,37 @@
+     /**
+      * Override to provide custom completion semantics for the command.
+      */
+-    protected List createCompletors() {
++    protected List createCompleters() {
+         return null
+     }
+ 
+     /**
+-     * Setup the completor for the command.
++     * Setup the Completer for the command.
+      */
+-    Completor getCompletor() {
++    Completer getCompleter() {
+         if (hidden) {
+             return null
+         }
+         
+         def list = [ new SimpleCompletor(name, shortcut) ]
+ 
+-        def completors = createCompletors()
++        def completers = createCompleters()
+         
+-        if (completors) {
+-            completors.each {
++        if (completers) {
++            completers.each {
+                 if (it) {
+                     list << it
+                 }
+                 else {
+-                    list << new NullCompletor()
++                    list << new NullCompleter()
+                 }
+             }
+         }
+         else {
+-            list << new NullCompletor()
++            list << new NullCompleter()
+         }
+ 
+-        return new ArgumentCompletor(list)
++        return new ArgumentCompleter(list)
+     }
+     
+     //
+@@ -175,7 +176,7 @@
+         return binding.variables
+     }
+     
+-    protected History getHistory() {
++    protected FileHistory getHistory() {
+         return shell.history
+     }
+     
+--- a/src/main/org/codehaus/groovy/tools/shell/ComplexCommandSupport.groovy	2022-05-13 08:55:53.660146020 +0200
++++ b/src/main/org/codehaus/groovy/tools/shell/ComplexCommandSupport.groovy	2022-05-13 11:33:56.107816226 +0200
+@@ -35,7 +35,7 @@
+         super(shell, name, shortcut)
+     }
+     
+-    protected List createCompletors() {
++    protected List createCompleters() {
+         def c = new SimpleCompletor()
+         
+         functions.each { c.add(it) }
+--- a/src/main/org/codehaus/groovy/tools/shell/Groovysh.groovy	2022-05-13 08:55:53.660146020 +0200
++++ b/src/main/org/codehaus/groovy/tools/shell/Groovysh.groovy	2022-05-13 11:33:56.107816226 +0200
+@@ -17,7 +17,8 @@
+ package org.codehaus.groovy.tools.shell
+ 
+ import jline.Terminal
+-import jline.History
++import jline.TerminalFactory
++import jline.console.history.FileHistory
+ 
+ import org.codehaus.groovy.tools.shell.util.MessageSource
+ import org.codehaus.groovy.tools.shell.util.XmlCommandRegistrar
+@@ -55,7 +56,7 @@
+     
+     InteractiveShellRunner runner
+     
+-    History history
++    FileHistory history
+ 
+     boolean historyFull  // used as a workaround for GROOVY-2177
+     String evictedLine  // remembers the command which will get evicted if history is full
+@@ -403,17 +404,18 @@
+     }
+ 
+     int run(final String commandLine) {
+-        def term = Terminal.terminal
++        Terminal term = TerminalFactory.create()
+ 
+         if (log.debug) {
+             log.debug("Terminal ($term)")
+             log.debug("    Supported:  $term.supported")
+-            log.debug("    ECHO:       $term.echo (enabled: $term.echoEnabled)")
+-            log.debug("    H x W:      $term.terminalHeight x $term.terminalWidth")
+-            log.debug("    ANSI:       ${term.isANSISupported()}")
++            log.debug("    ECHO:       (enabled: $term.echoEnabled)")
++            log.debug("    H x W:      ${term.getHeight()} x ${term.getWidth()}")
++            log.debug("    ANSI:       ${term.isAnsiSupported()}")
+ 
+             if (term instanceof jline.WindowsTerminal) {
+-                log.debug("    Direct:     ${term.directConsole}")
++                jline.WindowsTerminal winterm = (jline.WindowsTerminal) term
++                log.debug("    Direct:     ${winterm.directConsole}")
+             }
+         }
+ 
+@@ -427,16 +429,16 @@
+             if (commandLine != null && commandLine.trim().size() > 0) {
+                 // Run the given commands
+                 execute(commandLine)
+-            }
+-            else {
++            } else {
+                 loadUserScript('groovysh.rc')
+ 
+                 // Setup the interactive runner
+                 runner = new InteractiveShellRunner(this, this.&renderPrompt as Closure)
+ 
+                 // Setup the history
+-                runner.history = history = new History()
+-                runner.historyFile = new File(userStateDirectory, 'groovysh.history')
++                File histFile = new File(userStateDirectory, 'groovysh.history')
++                history = new FileHistory(histFile)
++                runner.setHistory(history)
+ 
+                 // Setup the error handler
+                 runner.errorHandler = this.&displayError
+@@ -447,7 +449,7 @@
+ 
+                 // Display the welcome banner
+                 if (!io.quiet) {
+-                    def width = term.terminalWidth
++                    int width = term.getWidth()
+ 
+                     // If we can't tell, or have something bogus then use a reasonable default
+                     if (width < 1) {
+--- a/src/main/org/codehaus/groovy/tools/shell/InteractiveShellRunner.groovy	2022-05-13 08:55:53.660146020 +0200
++++ b/src/main/org/codehaus/groovy/tools/shell/InteractiveShellRunner.groovy	2022-05-13 11:33:56.107816226 +0200
+@@ -16,11 +16,10 @@
+ 
+ package org.codehaus.groovy.tools.shell
+ 
+-import jline.ConsoleReader
+-import jline.MultiCompletor
+-import jline.History
+-import jline.Completor
+-import jline.MultiCompletor
++import jline.console.ConsoleReader
++import jline.console.completer.AggregateCompleter
++import jline.console.completer.FileNameCompleter
++import jline.console.history.FileHistory
+ 
+ import org.codehaus.groovy.tools.shell.util.Logger
+ 
+@@ -38,40 +37,37 @@
+     
+     final Closure prompt
+     
+-    final CommandsMultiCompletor completor
++    final CommandsMultiCompleter completer
+     
+     InteractiveShellRunner(final Shell shell, final Closure prompt) {
+         super(shell)
+         
+         this.prompt = prompt
+         
+-        this.reader = new ConsoleReader(shell.io.inputStream, new PrintWriter(shell.io.outputStream, true))
++        this.reader = new ConsoleReader(shell.io.inputStream, shell.io.outputStream)
+ 
+-        reader.addCompletor(new ReflectionCompletor(shell))
+-        this.completor = new CommandsMultiCompletor()
++        reader.addCompleter(new ReflectionCompletor(shell))
++        this.completer = new CommandsMultiCompleter()
+         
+-        reader.addCompletor(completor)
++        reader.addCompleter(completer)
+     }
+     
+     void run() {
+         for (command in shell.registry) {
+-            completor << command
++            completer << command
+         }
+ 
+         // Force things to become clean
+-        completor.refresh()
++        completer.refresh()
+ 
+         // And then actually run
+         adjustHistory()
+         super.run()
+     }
+     
+-    void setHistory(final History history) {
++    void setHistory(final FileHistory history) {
+         reader.history = history
+-    }
+-    
+-    void setHistoryFile(final File file) {
+-        def dir = file.parentFile
++        def dir = history.file.parentFile
+         
+         if (!dir.exists()) {
+             dir.mkdirs()
+@@ -79,9 +75,7 @@
+             log.debug("Created base directory for history file: $dir")
+         }
+         
+-        log.debug("Using history file: $file")
+-        
+-        reader.history.historyFile = file
++        log.debug("Using history file: $history.file")
+     }
+     
+     protected String readLine() {
+@@ -104,26 +98,31 @@
+     }
+ 
+     private void adjustHistory() {
++        // we save the evicted line in casesomeone wants to use it with history recall
+         if (shell instanceof Groovysh) {
+-            shell.historyFull = shell.history.size() >= shell.history.maxSize
+-            if (shell.historyFull) shell.evictedLine = shell.history.historyList[0]
++            shell.historyFull = (shell.history.size() >= shell.history.getMaxSize())
++            if (shell.historyFull) {
++                if (shell.history.first()) {
++                    shell.evictedLine = shell.history.first().value()
++                }
++            }
+         }
+     }
+ 
+ }
+ 
+ /**
+- * Completor for interactive shells.
++ * Completer for interactive shells.
+  *
+  * @version $Id$
+  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
+  */
+-class CommandsMultiCompletor
+-    extends MultiCompletor
++class CommandsMultiCompleter
++    extends AggregateCompleter
+ {
+     protected final Logger log = Logger.create(this.class)
+     
+-    List/*<Completor>*/ list = []
++    List/*<Completer>*/ list = []
+     
+     private boolean dirty = false
+     
+@@ -131,24 +130,25 @@
+         assert command
+         
+         //
+-        // FIXME: Need to handle completor removal when things like aliases are rebound
++        // FIXME: Need to handle completer removal when things like aliases are rebound
+         //
+         
+-        def c = command.completor
++        def c = command.completer
+         
+         if (c) {
+             list << c
+             
+-            log.debug("Added completor[${list.size()}] for command: $command.name")
++            log.debug("Added completer[${list.size()}] for command: $command.name")
+             
+             dirty = true
+         }
+     }
+ 
+     void refresh() {
+-        log.debug("Refreshing the completor list")
++        log.debug("Refreshing the completer list")
+ 
+-        completors = list as Completor[]
++        getCompleters().clear()
++        getCompleters().addAll(list)
+         dirty = false
+     }
+ 
+@@ -157,7 +157,7 @@
+         
+         //
+         // FIXME: This is a bit of a hack, I'm too lazy to rewrite a more efficient
+-        //        completor impl that is more dynamic than the jline.MultiCompletor version
++        //        completer impl that is more dynamic than the jline.MultiCompleter version
+         //        so just re-use it and reset the list as needed
+         //
+ 
+--- a/src/main/org/codehaus/groovy/tools/shell/Main.groovy	2022-05-13 08:55:53.660146020 +0200
++++ b/src/main/org/codehaus/groovy/tools/shell/Main.groovy	2022-05-13 11:35:11.700354936 +0200
+@@ -23,7 +23,7 @@
+ import java.util.concurrent.Callable
+ import org.fusesource.jansi.Ansi
+ import org.fusesource.jansi.AnsiConsole
+-import jline.Terminal
++import jline.TerminalFactory
+ 
+ /**
+  * Main CLI entry-point for <tt>groovysh</tt>.
+@@ -104,6 +104,9 @@
+ 
+         def code
+ 
++        // Boot up the shell... :-)
++        final Groovysh shell = new Groovysh(io)
++
+         // Add a hook to display some status when shutting down...
+         addShutdownHook {
+             //
+@@ -119,10 +122,11 @@
+             }
+ 
+             io.flush()
+-        }
+ 
+-        // Boot up the shell... :-)
+-        Groovysh shell = new Groovysh(io)
++            if (shell.history) {
++                shell.history.flush()
++            }
++        }
+ 
+         SecurityManager psm = System.getSecurityManager()
+         System.setSecurityManager(new NoExitSecurityManager())
+@@ -207,6 +211,6 @@
+     implements Callable<Boolean>
+ {
+     public Boolean call() throws Exception {
+-        return Terminal.getTerminal().isANSISupported()
++        return TerminalFactory.create().isAnsiSupported()
+     }
+ }
+--- a/src/main/org/codehaus/groovy/tools/shell/ReflectionCompletor.groovy	2022-05-13 08:55:53.660146020 +0200
++++ b/src/main/org/codehaus/groovy/tools/shell/ReflectionCompletor.groovy	2022-05-13 11:33:56.295817565 +0200
+@@ -1,6 +1,6 @@
+ package org.codehaus.groovy.tools.shell
+ 
+-import jline.Completor
++import jline.console.completer.Completer
+ import org.codehaus.groovy.runtime.InvokerHelper
+ 
+ /**
+@@ -9,7 +9,7 @@
+  *
+  * @author <a href="mailto:probabilitytrees@gmail.com">Marty Saxton</a>
+  */
+-class ReflectionCompletor implements Completor {
++class ReflectionCompletor implements Completer {
+ 
+     private Shell shell;
+ 
+--- a/src/main/org/codehaus/groovy/tools/shell/util/SimpleCompletor.java	2022-05-13 08:55:53.664146049 +0200
++++ b/src/main/org/codehaus/groovy/tools/shell/util/SimpleCompletor.java	2022-05-13 11:33:56.299817593 +0200
+@@ -16,29 +16,68 @@
+ 
+ package org.codehaus.groovy.tools.shell.util;
+ 
+-import java.util.List;
+-import java.util.Iterator;
+-import java.util.SortedSet;
++import java.io.*;
++import java.util.*;
+ 
+ import groovy.lang.Closure;
+ 
++import jline.console.completer.Completer;
++
++public class SimpleCompletor implements Completer, Cloneable {
+ /**
+- * Support for simple completors.
+- *
+- * @version $Id$
+- * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
++     *  The list of candidates that will be completed.
+  */
+-public class SimpleCompletor
+-    extends jline.SimpleCompletor
+-{
+-    public SimpleCompletor(final String[] candidates) {
+-        super(candidates);
+-    }
++    SortedSet candidates;
++
++    /**
++     *  A delimiter to use to qualify completions.
++     */
++    String delimiter;
++    final SimpleCompletorFilter filter;
+     
+     public SimpleCompletor() {
+         this(new String[0]);
+     }
+     
++    /**
++     *  Create a new SimpleCompletor with a single possible completion
++     *  values.
++     */
++    public SimpleCompletor(final String candidateString) {
++        this(new String[] {
++                 candidateString
++             });
++    }
++
++    /**
++     *  Create a new SimpleCompletor with a list of possible completion
++     *  values.
++     */
++    public SimpleCompletor(final String[] candidateStrings) {
++        this(candidateStrings, null);
++    }
++
++    public SimpleCompletor(final String[] strings,
++                           final SimpleCompletorFilter filter) {
++        this.filter = filter;
++        setCandidateStrings(strings);
++    }
++
++    /**
++     *  Complete candidates using the contents of the specified Reader.
++     */
++    public SimpleCompletor(final Reader reader) throws IOException {
++        this(getStrings(reader));
++    }
++
++    /**
++     *  Complete candidates using the whitespearated values in
++     *  read from the specified Reader.
++     */
++    public SimpleCompletor(final InputStream in) throws IOException {
++        this(getStrings(new InputStreamReader(in)));
++    }
++
+     public SimpleCompletor(final Closure loader) {
+         this();
+         
+@@ -77,9 +116,23 @@
+         return null;
+     }
+ 
+-    //
+-    // NOTE: Duplicated (and augmented) from JLine sources to make it call getCandidates() to make the list more dynamic
+-    //
++    private static String[] getStrings(final Reader in)
++                                throws IOException {
++        final Reader reader =
++            (in instanceof BufferedReader) ? in : new BufferedReader(in);
++
++        List words = new LinkedList();
++        String line;
++
++        while ((line = ((BufferedReader) reader).readLine()) != null) {
++            for (StringTokenizer tok = new StringTokenizer(line);
++                     tok.hasMoreTokens(); words.add(tok.nextToken())) {
++                ;
++            }
++        }
++
++        return (String[]) words.toArray(new String[words.size()]);
++    }
+ 
+     public int complete(final String buffer, final int cursor, final List clist) {
+         String start = (buffer == null) ? "" : buffer;
+@@ -113,4 +166,71 @@
+         // the index of the completion is always from the beginning of the buffer.
+         return (clist.size() == 0) ? (-1) : 0;
+     }
++
++    public void setDelimiter(final String delimiter) {
++        this.delimiter = delimiter;
++    }
++
++    public String getDelimiter() {
++        return this.delimiter;
++    }
++
++    public void setCandidates(final SortedSet candidates) {
++        if (filter != null) {
++            TreeSet filtered = new TreeSet();
++
++            for (Iterator i = candidates.iterator(); i.hasNext();) {
++                String element = (String) i.next();
++                element = filter.filter(element);
++
++                if (element != null) {
++                    filtered.add(element);
++                }
++            }
++
++            this.candidates = filtered;
++        } else {
++            this.candidates = candidates;
++        }
++    }
++
++    public SortedSet getCandidates() {
++        return Collections.unmodifiableSortedSet(this.candidates);
++    }
++
++    public void setCandidateStrings(final String[] strings) {
++        setCandidates(new TreeSet(Arrays.asList(strings)));
++    }
++
++    public void addCandidateString(final String candidateString) {
++        final String string =
++            (filter == null) ? candidateString : filter.filter(candidateString);
++
++        if (string != null) {
++            candidates.add(string);
++        }
++    }
++
++    public Object clone() throws CloneNotSupportedException {
++        return super.clone();
++    }
++
++    /**
++     *  Filter for elements in the completor.
++     *
++     *  @author  <a href="mailto:mwp1@cornell.edu">Marc Prud'hommeaux</a>
++     */
++    public static interface SimpleCompletorFilter {
++        /**
++         *  Filter the specified String. To not filter it, return the
++         *  same String as the parameter. To exclude it, return null.
++         */
++        public String filter(String element);
++    }
++
++    public static class NoOpFilter implements SimpleCompletorFilter {
++        public String filter(final String element) {
++            return element;
++        }
++    }
+ }

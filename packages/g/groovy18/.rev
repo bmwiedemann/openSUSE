@@ -47,4 +47,12 @@
     <comment>Fix build on JDK 17</comment>
     <requestid>964087</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>ba62ac9d625c50befa8670fd1252d48f</srcmd5>
+    <version>1.8.9</version>
+    <time>1652801051</time>
+    <user>dimstar_suse</user>
+    <comment>maven 3.8.5 / jansi 2.4.0 and fixes for building with them</comment>
+    <requestid>977560</requestid>
+  </revision>
 </revisionlist>

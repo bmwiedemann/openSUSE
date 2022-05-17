@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 16 11:48:35 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patches:
+  * groovy18-jansi.patch
+    - Fix build against jansi 2.4.0
+  * groovy18-jline2.patch
+    - Port to use jline 2.x instead of 1.x
+
+-------------------------------------------------------------------
 Tue Mar 22 19:41:23 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

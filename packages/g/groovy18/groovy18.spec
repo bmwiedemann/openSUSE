@@ -43,6 +43,8 @@ Patch8:         groovy18-notarget.patch
 Patch9:         groovy18-amgiguous-function-calls.patch
 Patch10:        groovy18-asm7.patch
 Patch11:        groovy18-nofork.patch
+Patch12:        groovy18-jansi.patch
+Patch13:        groovy18-jline2.patch
 BuildRequires:  ant
 BuildRequires:  ant-antlr
 BuildRequires:  antlr
@@ -56,7 +58,7 @@ BuildRequires:  glassfish-servlet-api
 BuildRequires:  jansi
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  jline1
+BuildRequires:  jline
 BuildRequires:  jpackage-utils
 BuildRequires:  junit
 BuildRequires:  objectweb-asm
@@ -80,7 +82,7 @@ Requires:       mvn(com.thoughtworks.xstream:xstream)
 Requires:       mvn(commons-cli:commons-cli)
 Requires:       mvn(commons-logging:commons-logging)
 # Used for richer interactive groovysh support:
-Requires:       mvn(jline:jline:1)
+Requires:       mvn(jline:jline)
 # Following dependencies are optional from Maven POV,
 # but upstream ships them in binary distribution
 Requires:       mvn(junit:junit)
@@ -137,6 +139,8 @@ cp %{SOURCE3} .
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
+%patch12 -p1
+%patch13 -p1
 
 # build.xml is not compatible with Ant 1.10+
 sed -i "s| depends=\"-excludeLegacyAntVersion\"||" build.xml
@@ -175,7 +179,7 @@ build-jar-repository target/lib/compile glassfish-servlet-api glassfish-jsp-api/
         objectweb-asm/asm-tree objectweb-asm/asm \
         objectweb-asm/asm-util objectweb-asm/asm-analysis \
         antlr ant/ant-antlr antlr \
-        bsf jline1/jline-1 xstream ant junit apache-ivy commons-cli \
+        bsf jline/jline xstream ant junit apache-ivy commons-cli \
         jansi
 
 # Build
