@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 11 11:41:00 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 5.1
+  * inputw: improve correctness and startup performance
+  * drw_text: don't segfault when called with 0 width
+  * drw_text: improve performance when there's no match
+  * significantly improve performance on large strings
+  * improve performance of case-insensitive matching
+  * add support for more keypad keys
+
+-------------------------------------------------------------------
 Sun Sep 20 18:58:08 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 5.0:
