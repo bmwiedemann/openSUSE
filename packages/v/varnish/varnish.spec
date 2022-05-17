@@ -16,7 +16,7 @@
 #
 
 
-%define library_name libvarnishapi2
+%define library_name libvarnishapi3
 %define pkg_home     %_localstatedir/lib/%name
 %define pkg_logdir   %_localstatedir/log/%name
 %define pkg_cachedir %_localstatedir/cache/%name
@@ -25,7 +25,7 @@
 %define _fillupdir %_localstatedir/adm/fillup-templates
 %endif
 Name:           varnish
-Version:        6.6.1
+Version:        7.1.0
 Release:        0
 Summary:        Accelerator for HTTP services
 License:        BSD-2-Clause
@@ -39,10 +39,9 @@ Source7:        varnish.service
 Source8:        varnishlog.service
 Patch1:         varnish-5.1.2-add-fallthrough-comments.patch
 Patch2:         uninit.patch
-BuildRequires:  libxslt
+BuildRequires:  libxslt-devel
 BuildRequires:  ncurses-devel
-BuildRequires:  pcre-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-docutils
 BuildRequires:  readline-devel
@@ -96,14 +95,13 @@ This package holds the development files for varnish.
 
 %build
 %define _lto_cflags %nil
-export CFLAGS="%optflags -fcommon -fstack-protector -Wno-error=clobbered -Werror=maybe-uninitialized"
+export CFLAGS="%optflags -fcommon -fstack-protector"
 %ifarch %ix86
 export CFLAGS="$CFLAGS -ffloat-store -fexcess-precision=standard"
 %endif
 %configure --disable-static --docdir="%_docdir/%name" \
-           --localstatedir="%_localstatedir/cache/" \
-           --enable-developer-warnings
-%make_build
+           --localstatedir="%_localstatedir/cache/"
+%make_build V=1
 
 %install
 b="%buildroot"
@@ -180,7 +178,7 @@ fi
 %_fillupdir/sysconfig.%name
 
 %files -n %library_name
-%_libdir/libvarnishapi.so.2*
+%_libdir/libvarnishapi.so.3*
 
 %files devel
 %_includedir/varnish/

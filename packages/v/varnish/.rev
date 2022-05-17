@@ -299,4 +299,12 @@
     <comment></comment>
     <requestid>935002</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>910f47c3a7899ae252cd4053a9367ca8</srcmd5>
+    <version>7.1.0</version>
+    <time>1652801069</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 7.1.0 [boo#1195188] [CVE-2022-23959]</comment>
+    <requestid>977601</requestid>
+  </revision>
 </revisionlist>

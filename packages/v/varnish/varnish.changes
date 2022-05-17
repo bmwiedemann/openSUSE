@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 16 20:10:21 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.1.0 [boo#1195188] [CVE-2022-23959]
+  * VCL: It is now possible to assign a BLOB value to a BODY
+    variable, in addition to STRING as before.
+  * VMOD: New STRING strftime(TIME time, STRING format) function
+    for UTC formatting.
+
+-------------------------------------------------------------------
 Wed Dec  1 10:27:19 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
