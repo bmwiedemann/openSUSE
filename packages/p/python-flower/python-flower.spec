@@ -18,7 +18,7 @@
 
 %bcond_without python2
 Name:           python-flower
-Version:        0.9.7
+Version:        1.0.0
 Release:        0
 Summary:        A web frontend for monitoring and administrating Celery clusters
 License:        BSD-3-Clause
@@ -27,7 +27,8 @@ URL:            https://github.com/mher/flower
 Source:         https://files.pythonhosted.org/packages/source/f/flower/flower-%{version}.tar.gz
 # Tornado 5+ update blocked by salt, so backport the missing piece
 Patch0:         backport_run_in_executor.patch
-Patch1:         pr_1021.patch
+# https://github.com/mher/flower/commit/70b1ae40b467a3febab9abef3ef52dea56ca6f12
+Patch1:         python-flower-new-humanize.patch
 BuildRequires:  %{python_module Babel >= 1.0}
 BuildRequires:  %{python_module celery >= 5.0.0}
 BuildRequires:  %{python_module certifi}
@@ -63,31 +64,21 @@ Requires:       python-futures
 Flower is a web based tool for monitoring and administrating Celery clusters.
 
 %prep
-%setup -q -n flower-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n flower-%{version}
 
 %build
 %python_build
 
 %install
 %python_install
-%python_clone -a %{buildroot}%{_bindir}/flower
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-
-%post
-%python_install_alternative flower
-
-%postun
-%python_uninstall_alternative flower
 
 %check
 %pytest
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGES README.rst
+%doc README.rst
 %{python_sitelib}/*
-%python_alternative %{_bindir}/flower
 
 %changelog

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 17 12:28:23 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.0.0
+  * no upstream changelog file found
+  * Remove flower as individual command.
+- modified patches
+  % backport_run_in_executor.patch (refreshed)
+- deleted patches
+  - pr_1021.patch (upstreamed)
+- added patches
+  fix https://github.com/mher/flower/commit/70b1ae40b467a3febab9abef3ef52dea56ca6f12
+  + python-flower-new-humanize.patch
+
+-------------------------------------------------------------------
 Tue Jan 11 20:58:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add python-rpm-macros dependency 

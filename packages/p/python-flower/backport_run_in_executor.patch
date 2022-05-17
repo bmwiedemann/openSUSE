@@ -7,11 +7,11 @@ Subject: [PATCH] Backport run_in_executor
  flower/api/tasks.py | 21 +++++++++++++++++++--
  1 file changed, 19 insertions(+), 2 deletions(-)
 
-diff --git a/flower/api/tasks.py b/flower/api/tasks.py
-index 1f172422..f0395dea 100644
---- a/flower/api/tasks.py
-+++ b/flower/api/tasks.py
-@@ -78,6 +78,24 @@ def safe_result(self, result):
+Index: flower-1.0.0/flower/api/tasks.py
+===================================================================
+--- flower-1.0.0.orig/flower/api/tasks.py
++++ flower-1.0.0/flower/api/tasks.py
+@@ -83,6 +83,24 @@ class BaseTaskHandler(BaseHandler):
              return result
  
  
@@ -36,7 +36,7 @@ index 1f172422..f0395dea 100644
  class TaskApply(BaseTaskHandler):
      @web.authenticated
      @gen.coroutine
-@@ -138,8 +156,7 @@ def post(self, taskname):
+@@ -143,8 +161,7 @@ Execute a task by name and wait results
          result = task.apply_async(args=args, kwargs=kwargs, **options)
          response = {'task-id': result.task_id}
  
