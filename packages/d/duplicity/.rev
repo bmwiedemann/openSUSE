@@ -567,4 +567,20 @@
     <comment></comment>
     <requestid>970682</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>7d5b4302e69e9a05ac706023830037ee</srcmd5>
+    <version>0.8.23</version>
+    <time>1652801072</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.23:
+  * Add --webdav-headers to webdavbackend.
+  * Document rclone option setting via env vars.
+  * Demote boto backend to legacy.
+  * Promote boto3 backend to default s3:// backend ...
+  * Man page, major sorting, reformatting, S3/GCS documentation
+    update.
+- Update URL.
+</comment>
+    <requestid>977650</requestid>
+  </revision>
 </revisionlist>

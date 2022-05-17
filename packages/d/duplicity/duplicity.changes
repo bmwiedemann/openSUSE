@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 16 23:38:38 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.8.23:
+  * Add --webdav-headers to webdavbackend.
+  * Document rclone option setting via env vars.
+  * Demote boto backend to legacy.
+  * Promote boto3 backend to default s3:// backend ...
+  * Man page, major sorting, reformatting, S3/GCS documentation
+    update.
+- Update URL.
+
+-------------------------------------------------------------------
 Mon Apr 18 14:41:02 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 0.8.22:
