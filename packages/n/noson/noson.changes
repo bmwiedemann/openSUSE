@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May  9 18:16:24 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.8.6. No changelog.
+  * c++-11 compliance
+  * security: peer could return valid result on out of range
+  * code cleanup
+
+-------------------------------------------------------------------
 Thu Dec 30 11:23:50 UTC 2021 - Bo Simonsen <bosim@opensuse.org>
 
 - Update to 2.6.0

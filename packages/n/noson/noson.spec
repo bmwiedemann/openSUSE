@@ -17,13 +17,13 @@
 
 
 Name:           noson
-Version:        2.6.0
+Version:        2.8.6
 Release:        0
 Summary:        C++ library for accessing sonos devices
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/janbar/noson/
-Source0:        https://github.com/janbar/noson/archive/v%{version}.tar.gz
+Source0:        https://github.com/janbar/noson/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  flac-devel
