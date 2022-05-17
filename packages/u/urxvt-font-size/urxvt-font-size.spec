@@ -1,7 +1,7 @@
 #
 # spec file for package urxvt-font-size
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           urxvt-font-size
-Version:        1.1
+Version:        1.3
 Release:        0
 Summary:        Extension for rxvt-unicode that allows changing the font size on the fly
 License:        MIT
 Group:          System/X11/Utilities
 Url:            http://github.com/majutsushi/urxvt-font-size
-Source:         http://github.com/majutsushi/%{name}/archive/v%{version}.tar.gz
+Source:         http://github.com/majutsushi/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -50,7 +50,8 @@ install -D -m 644 font-size %{buildroot}%{_libdir}/urxvt/perl/font-size
 
 %files
 %defattr(-,root,root)
-%doc README.markdown LICENSE
+%doc README.markdown
+%license LICENSE
 %dir %{_libdir}/urxvt
 %dir %{_libdir}/urxvt/perl
 %{_libdir}/urxvt/perl/font-size
