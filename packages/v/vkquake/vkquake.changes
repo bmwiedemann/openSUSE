@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon May 16 08:14:35 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.13.1:
+  * GUI scale is now relative to screen height (scr_relativescale 0
+    to disable).
+  * Crosshair is selectable from menu and added option for dot
+    instead of cross.
+  * Improved compatibility with latest Quake Steam re-release
+    version.
+  * Various smaller bug fixes
+- Update to version 1.13.0:
+  * GPU lightmap update and smooth dynamic light interpolation
+  * Various bug fixes
+  * Improved compatibility with 2021 Quake re-release
+  Known issues:
+  * Some entities don't animate smoothly with FTE protocol
+    extensions. cl_nopext 1 is a workaround right now.
+    Same bug exists in QSS.
+
+-------------------------------------------------------------------
 Fri Feb 18 12:55:29 UTC 2022 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Fix screenshot URL
