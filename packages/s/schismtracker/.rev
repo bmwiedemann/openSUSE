@@ -149,4 +149,12 @@
     <comment>- Update to release 20220506</comment>
     <requestid>975452</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>6b1bf043d9c00de8266a9634fc4fb0d8</srcmd5>
+    <version>20220506</version>
+    <time>1652801075</time>
+    <user>dimstar_suse</user>
+    <comment>- Employ pkgconfig(sdl) to allow pulling in sdl12_compat.</comment>
+    <requestid>977670</requestid>
+  </revision>
 </revisionlist>

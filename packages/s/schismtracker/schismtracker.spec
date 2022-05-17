@@ -28,7 +28,6 @@ Source2:        %name.desktop
 Patch1:         schism-alsa.diff
 Patch2:         schism-nodate.diff
 Patch3:         schism-deptrack.diff
-BuildRequires:  SDL-devel >= 1.2.10
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -37,6 +36,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  python3-base
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(sdl)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xv)
 

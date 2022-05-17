@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 17 08:16:41 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Employ pkgconfig(sdl) to allow pulling in sdl12_compat.
+
+-------------------------------------------------------------------
 Fri May  6 15:15:22 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20220506
