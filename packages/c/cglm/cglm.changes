@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue May 17 08:46:24 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.8.5
+  * update GLM_FLT_EPSILON to use 1e-5 instead of 1e-
+  * implement a few complex routines
+  * set PACKAGE_VERSION so it gets substituted in cglm.pc.in by cmake
+  * header containing sse3 intrinsics is pmmintrin.h
+  * add missing ivec types
+  * fix a bug in glm_lookat_lh and view_lh.h
+- Update to version 0.8.4
+  * Now there are _no and _zo vesions of project / unproject functions.
+  * If CGLM_CLIPSPACE_INCLUDE_ALL is defined then all clipspace
+    headers are icluded in project.h or related main headers
+  * add ZERO_TO_ONE support to glm_unprojecti
+  * add ZERO_TO_ONE support to glm_project
+  * new function: glm_pickmatrix() aka gluPickMatrix()
+  * fix vec3_ortho
+  * fix cross product when an operand is also dest
+  * compute quaternion rotating a vector into another
+
+-------------------------------------------------------------------
 Fri Jun  4 22:53:12 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.8.3
