@@ -1,4 +1,232 @@
 -------------------------------------------------------------------
+Sun May 08 20:51:36 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.34 → 9.24.35
+
+-------------------------------------------------------------------
+Sat May 07 15:34:59 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow more repo params to be set on the cmdline
+
+  The repository parameters for signing keys, the component
+  list the main distribution name for debian repositories and
+  also the repository_gpgcheck could not be set via the
+  commandline options --add-repo and/or --set-repo. This
+  commit adds support for them and also updates the manual
+  page accordingly
+
+-------------------------------------------------------------------
+Sat May 07 09:13:52 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update ubuntu integration tests
+
+  Build them against latest release (jammy).
+  This Fixes #2128
+
+-------------------------------------------------------------------
+Sat May 07 08:58:42 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.33 → 9.24.34
+
+-------------------------------------------------------------------
+Thu May 05 17:40:00 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Follow up fix for isolinux-config
+
+  isolinux-config is called to update the search path inside
+  of the isolinux binary. isolinux/syslinux is exclusive to
+  the ix86 architecture and to BIOS firmware. Therefore the
+  condition to actually call it should reflect this.
+
+-------------------------------------------------------------------
+Thu May 05 17:05:56 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.32 → 9.24.33
+
+-------------------------------------------------------------------
+Thu May 05 09:37:08 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed runtime check
+
+  Fixed check_dracut_module_for_disk_overlay_in_package_list. The
+  check complains if the dracut-kiwi-overlay module is not installed
+  but overlay support was requested. This is correct but should only
+  be done if the selected initrd system is dracut.
+
+-------------------------------------------------------------------
+Wed May 04 15:28:57 CEST 2022 - ozboss <32305849+ozboss@users.noreply.github.com>
+
+- Add option to set LUKS type to luks1 (#2126)
+
+  Add option to set LUKS type to luks1
+
+  So far the LUKS type could be set to luks and luks2. However, what luks
+  version the value 'luks' evaluates to depends on how the distributor has
+  packaged luks. Thus it's possible that 'luks' is either luks1 or luks2. To
+  also have the opportunity to explicitly specify luks1 this commit adds
+  the opportunity in the schema.
+
+-------------------------------------------------------------------
+Wed May 04 09:29:00 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update devel packages helper
+
+  Added trang as needed when working on the schema
+
+-------------------------------------------------------------------
+Fri Apr 29 14:38:13 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for dm integrity with secret key
+
+  Allow to protect the opening of the integrity data map and
+  journal through a keyfile. For setting the key file two new
+  optional type attributes were added:
+
+  * integrity_keyfile
+  * integrity_metadata_key_description
+
+  The key file format must be correct according to the selected
+  integrity algorithm. As of now the kiwi default hmac-sha256
+  algorithm is used with the selected keyfile
+
+  The optional integrity_metadata_key_description attribute
+  allows to specify a custom description of an integrity key
+  as it is expected to be present in the kernel keyring. The
+  information is placed in the integrity metadata block. If
+  not specified kiwi creates a key argument string instead
+  which is based on the given integrity_keyfile filename.
+  The format of this key argument is:
+
+  :BASENAME_OF_integrity_keyfile_WITHOUT_FILE_EXTENSION
+
+-------------------------------------------------------------------
+Thu Apr 28 15:40:31 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update get_disksize_mbytes to support clones
+
+  When using partition clones the pre-calculation of the
+  disk size needs to take this into account.
+
+-------------------------------------------------------------------
+Wed Apr 27 22:22:17 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed UUID setup for XFS
+
+  Make sure the log got replayed prior generating a new UUID
+
+-------------------------------------------------------------------
+Tue Apr 26 21:04:39 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed scope of setup_isolinux_boot_path
+
+  There is a method called setup_isolinux_boot_path which is
+  encoded in the Iso class. The method allows to change the
+  boot path in the isolinux binary and makes sense when the
+  bootloader is selected to be isolinux. However, the method
+  was called in the scope of the FileSystemIsoFs class which
+  responsibility is to create an ISO filesystem. The creation
+  of an ISO filesystem has no direct connection to a bootloader.
+  Thus calling this method in the scope of the FileSystemIsoFs
+  implementation is wrong and can lead to unexpected side
+  effects. This commit moves the call of the method to the
+  places where isolinux as a bootloader can still be used.
+  This Fixes #2117
+
+-------------------------------------------------------------------
+Tue Apr 26 09:32:43 CEST 2022 - Dan Čermák <dcermak@suse.com>
+
+- Correct the URL to the dracut home page
+
+  This fixes https://github.com/OSInside/kiwi/issues/2097
+
+-------------------------------------------------------------------
+Tue Apr 26 09:18:30 CEST 2022 - Dan Čermák <dcermak@suse.com>
+
+- Change the custom vagrant config file to 00-vagrant.conf
+
+  If it is called 99-vagrant.conf, then anything "before" that, like
+  50-redhat.conf takes precedence and overrides our custom settings.
+
+-------------------------------------------------------------------
+Tue Apr 26 09:18:09 CEST 2022 - Dan Čermák <dcermak@suse.com>
+
+- Add Leap 15.4, SLE 15 SP4 & CentOS Stream 9 to the scripts tests
+
+-------------------------------------------------------------------
+Mon Apr 25 17:15:06 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.31 → 9.24.32
+
+-------------------------------------------------------------------
+Mon Apr 11 21:40:59 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for standalone dm integrity
+
+  There is support in kiwi to use dm_integrity in combination
+  with the LUKS header and dm_crypt. However there is also the
+  use case to setup dm_integrity in standalone mode. This commit
+  allows to create the dm_integrity layer outside of LUKS using
+  /etc/integritytab to activate the map through a systemd
+  generator if systemd is used.
+
+  Regarding systemd it's required to use a version of system which
+  provides: system-generators/systemd-integritysetup-generator.
+  If this generator does not exist in the distribution it will
+  also be missing in the dracut generated initrd and the boot
+  will not be able to succeed. It's mentioned here because even
+  newer distributions might be missing the generator
+
+  Along with the implementation there are two new optional
+  attributes in the <type> section:
+
+  standalone_integrity="true|false"
+  embed_integrity_metadata="true|false"
+
+  standalone_integrity activates/deactivates the dm_integrity map
+  on top of the root filesystem. Similar to the veritysetup support
+  there is the opportunity to create an embedded magic metadata
+  block at the end of the device containing the root
+  filesystem via embed_integrity_metadata
+
+-------------------------------------------------------------------
+Sun Apr 10 19:33:35 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update per codacy smell
+
+-------------------------------------------------------------------
+Sun Apr 10 16:52:05 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for part clones to the Disk interface
+
+  The Disk class provides methods to create partition(s)
+  and map names according to its scope and independent of
+  the actual partition tools. For example: create_root_partition().
+  This commit adds an additional optional clone parameter to
+  all methods for which we want to allow partition clones
+
+-------------------------------------------------------------------
+Sun Apr 10 15:25:37 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Be less strict in boot link to itself
+
+  As part of the grub setup a link named 'boot' inside of
+  /boot is created pointing to itself 'boot -> .'. The reason
+  is to allow the bootloader config to find its files referenced as
+  /boot/something independently if /boot is placed into an extra
+  partition. However if an extra boot partition is used and a
+  filesystem which does not support symlinks, e.g fat, that
+  symlink creation should not lead to an error in the image build
+  process as it is considered an optional safe link and not a
+  mandatory pre-requisite
+
+-------------------------------------------------------------------
+Thu Apr 07 09:39:54 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed TW arm rpi integration test
+
+  Explicitly add ruby to the package list
+
+-------------------------------------------------------------------
 Wed Apr 06 16:39:44 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 9.24.30 → 9.24.31
@@ -442,6 +670,15 @@ Sun Mar 06 18:22:10 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
   Nevertheless there are also systems which uses different
   methods to boot and it makes sense to support partuuid
   mappings as well
+
+-------------------------------------------------------------------
+Sun Mar 06 18:03:51 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for partition cloning
+
+  Support creating block level clones of certain partitions
+  used in the image. Clones can be created from the root, boot
+  and any partition listed in the <partitions> element.
 
 -------------------------------------------------------------------
 Sun Mar 06 16:03:13 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
