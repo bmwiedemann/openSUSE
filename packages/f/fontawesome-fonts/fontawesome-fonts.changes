@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue May 17 10:30:53 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 6.1.1
+  * Added a plus-large variant of our plus icon 
+  * Added new child-dress icon 
+  * Added a TypeScript d.ts file for the import.macro.js module 
+  * Adjusted the children icon to be more consistent with the new
+    child and child-dress icons 
+  * Lowered the arms on the child icon and added a new child-reaching
+    variant to match v5 icon 
+  * Brought back a handful of version 4 compatibility unicode aliases
+  * Fixing light style of square-star, so it looks less like circle-star
+  * Made thin style of cubes-stacked actually thin 
+  * Fixed dial-max icon in the light and thin styles,
+    and standardized width on dial indicators in the solid and duotone styles 
+- Update to version 6.1.0
+  * Collaborated with the United Nations Office for the Coordination
+    of Humanitarian Affairs (OCHA) on a set of new icons that depict
+    themes of interest to the humanitarian community such as clusters,
+    disaster types, categories of affected people, and relief items.
+  * Crossed over with a new sponsored bridge-suspension icon 
+  * Cut the deck with a new cards-blank icon 
+  * Pointed to new sponsored icons
+  * New down-to-bracket and up-from-bracket icons 
+  * Merged in a new merge icon to match our existing split icon 
+  * New sponsored ScreenPal brand icon 
+  * Claimed our stake in new sponsored hexagon-vertical-nft and
+    hexagon-vertical-nft-slanted icons 
+  * Made an entirely fungible new sponsored hexagon-image icon 
+  * Nearly communicated some new sponsored NFC-related icons
+  * New shield-quartered icon 
+  * Zoomed in on our xmark icon, and made an xmark-large variant 
+
+-------------------------------------------------------------------
 Sun Feb 20 21:09:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.0.0:
