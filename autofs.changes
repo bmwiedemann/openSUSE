@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  9 15:06:32 UTC 2022 - Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+- Use OPTIONS instead of AUTOFS_OPTIONS in /etc/sysconfig/autofs
+  (bsc#1199027)
+
+-------------------------------------------------------------------
 Thu Feb 10 00:36:26 UTC 2022 - Neil Brown <nfbrown@suse.com>
 
 - Add autofs-Test-TCP-request-correctly-in-nfs_get_info.patch
