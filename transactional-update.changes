@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 17 07:59:57 UTC 2022 - Ignaz Forster <iforster@suse.com>
+
+- Version 4.0.0~rc4
+  - Fix building with GCC 12
+  - Fix stack overflow with very long commands / ids [bsc#1196149]
+  - Use separate mount namespace for chroot, allowing overwriting
+    the bind mounts from the update environment - this could have
+    lead to data loss of the bind mount previously
+  - Fix C error and exception handling for snapshots
+
+-------------------------------------------------------------------
 Tue May  3 10:21:35 UTC 2022 - Ignaz Forster <iforster@suse.com>
 
 - Version 4.0.0~rc3
