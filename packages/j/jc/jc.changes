@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May 14 08:16:14 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.19.0
+  * Add chage --list command parser tested on linux
+  * Add git log command streaming parser
+  * Fix git log standard parser for corner-cases where hash
+    values are in messages
+  * Fix df command parser for rare instances when a newline is
+    found at the end
+  * Fix asciitable-m parser to skip some rows that contain column
+    separator characters in cell data. A warning message will be
+    printed to STDOUT unless -q or quiet=True is used.
+
+-------------------------------------------------------------------
 Sat Jan 22 19:41:31 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.18.1
