@@ -1,7 +1,7 @@
 #
 # spec file for package mjpegtools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,6 +43,7 @@ BuildRequires:  pkgconfig(libpng) >= 1.4
 BuildRequires:  pkgconfig(libquicktime)
 BuildRequires:  pkgconfig(libv4l1)
 BuildRequires:  pkgconfig(sdl)
+BuildRequires:  pkgconfig(x11)
 Requires(post): info
 Requires(preun):info
 Obsoletes:      mjpegtools-orig-addon
