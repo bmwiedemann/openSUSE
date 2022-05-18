@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 17 19:47:23 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 0.26.8
+  * Fixed: Float 32-bit editor in decoding table tool no longer rejects negative
+    values & decimal places (kde#453819)
+  * Fixed: PNG structure definition example now ensures use of big endianness
+    (kde#452362)
+  * Improved: translations
+  * Improved: have more text vertically centered in lists in tool views
+  * Changed: no more use of fixed font type for any list headers in tool views
+
+-------------------------------------------------------------------
 Thu Apr 28 09:17:27 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add okteta-rpmlintrc to silence the'shlib-policy-name-error'

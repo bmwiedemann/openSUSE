@@ -612,4 +612,12 @@ Remove ancient Obsoletes/provides (forwarded request 232571 from sumski)</commen
   rpmlint error (forwarded request 973607 from cgiboudeaux)</comment>
     <requestid>975398</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>10d2d25d842340af3822dc8e50ae7171</srcmd5>
+    <version>0.26.8</version>
+    <time>1652872405</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977838</requestid>
+  </revision>
 </revisionlist>
