@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 17 15:46:51 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 0.1.0~0:
+  * wix version bump
+  * wix fix
+  * bump version
+  * Fix scroll bar scroll
+  * bump druid
+  * problem panel dispaly fix
+  * Clip the command name cells
+  * release lto folder
+  * Clean up split
+
+-------------------------------------------------------------------
 Wed May  4 14:06:02 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - add lapce.sh. workaround for running inside Wayland.

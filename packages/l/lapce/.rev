@@ -7,4 +7,22 @@
     <comment>I want to maintain lapce in openSUSE:Factory</comment>
     <requestid>975273</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>64875a93e9f8a59a122226e6218f9c58</srcmd5>
+    <version>0.1.0~0</version>
+    <time>1652872394</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.1.0~0:
+  * wix version bump
+  * wix fix
+  * bump version
+  * Fix scroll bar scroll
+  * bump druid
+  * problem panel dispaly fix
+  * Clip the command name cells
+  * release lto folder
+  * Clean up split
+</comment>
+    <requestid>977808</requestid>
+  </revision>
 </revisionlist>

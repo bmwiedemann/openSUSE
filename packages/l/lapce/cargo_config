@@ -1,16 +1,52 @@
 [source.crates-io]
 replace-with = "vendored-sources"
 
+[source."https://github.com/Liberatys/tree-sitter-ruby.git"]
+git = "https://github.com/Liberatys/tree-sitter-ruby.git"
+branch = "chore/allow-range-of-tree-sitter"
+replace-with = "vendored-sources"
+
+[source."https://github.com/MDeiml/tree-sitter-markdown.git"]
+git = "https://github.com/MDeiml/tree-sitter-markdown.git"
+replace-with = "vendored-sources"
+
+[source."https://github.com/elixir-lang/tree-sitter-elixir.git"]
+git = "https://github.com/elixir-lang/tree-sitter-elixir.git"
+replace-with = "vendored-sources"
+
 [source."https://github.com/lapce/druid"]
 git = "https://github.com/lapce/druid"
+branch = "opengl"
+replace-with = "vendored-sources"
+
+[source."https://github.com/lapce/font-kit"]
+git = "https://github.com/lapce/font-kit"
+replace-with = "vendored-sources"
+
+[source."https://github.com/lapce/fount"]
+git = "https://github.com/lapce/fount"
+replace-with = "vendored-sources"
+
+[source."https://github.com/lapce/glutin"]
+git = "https://github.com/lapce/glutin"
+branch = "new-keyboard-all"
+replace-with = "vendored-sources"
+
+[source."https://github.com/lapce/parley"]
+git = "https://github.com/lapce/parley"
 replace-with = "vendored-sources"
 
 [source."https://github.com/lapce/piet-wgpu"]
 git = "https://github.com/lapce/piet-wgpu"
+branch = "opengl"
 replace-with = "vendored-sources"
 
 [source."https://github.com/lapce/structdesc"]
 git = "https://github.com/lapce/structdesc"
+replace-with = "vendored-sources"
+
+[source."https://github.com/lapce/swash"]
+git = "https://github.com/lapce/swash"
 replace-with = "vendored-sources"
 
 [source."https://github.com/lapce/winit"]
@@ -25,6 +61,10 @@ replace-with = "vendored-sources"
 [source."https://github.com/maroider/xkbcommon-dl"]
 git = "https://github.com/maroider/xkbcommon-dl"
 rev = "900832888ad6f11011d1369befb344a9aa8a9610"
+replace-with = "vendored-sources"
+
+[source."https://github.com/tree-sitter/tree-sitter-java.git"]
+git = "https://github.com/tree-sitter/tree-sitter-java.git"
 replace-with = "vendored-sources"
 
 [source."https://github.com/tree-sitter/tree-sitter-php.git"]
