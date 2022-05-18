@@ -17,11 +17,11 @@
 #
 
 
-%define qmmp_ver_min 2.0.0
-%define qmmp_ver_max 2.0.99
-%define mver    2.0
+%define qmmp_ver_min 2.1.0
+%define qmmp_ver_max 2.1.99
+%define mver    2.1
 Name:           qmmp-plugin-pack
-Version:        2.0.2
+Version:        2.1.0
 Release:        0
 Summary:        Extra plugins for Qmmp
 License:        GPL-2.0-or-later
@@ -42,9 +42,9 @@ BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libmodplug)
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
-BuildRequires:  pkgconfig(libxmp)
 BuildRequires:  pkgconfig(qmmp) <= %{qmmp_ver_max}
 BuildRequires:  pkgconfig(qmmp) >= %{qmmp_ver_min}
 BuildRequires:  pkgconfig(samplerate)
@@ -91,13 +91,13 @@ Requires:       %{name} = %{version}-%{release}
 %description samplerate
 Qmmp plugin which uses libsamplerate resampling library.
 
-%package xmp
-Summary:        Qmmp plugin which uses the libxmp module library
+%package modplug
+Summary:        Qmmp plugin which uses the libmodplug module library
 Group:          Productivity/Multimedia/Sound/Players
 Requires:       %{name} = %{version}-%{release}
 
-%description xmp
-Qmmp plugin which uses libxmp to play module and tracker files.
+%description modplug
+Qmmp plugin which uses libmodplug to play module and tracker files.
 
 %package youtube
 Summary:        Qmmp plugin which uses the yt-dlp tool
@@ -112,13 +112,13 @@ Qmmp plugin which uses yt-dlp to stream videos.
 %setup -q
 
 %build
-%cmake \
+%cmake_qt6 \
   -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
   -DLIB_DIR=%{_lib}
-%cmake_build
+%qt6_build
 
 %install
-%cmake_install
+%qt6_install
 
 %files
 %license COPYING
@@ -142,9 +142,9 @@ Qmmp plugin which uses yt-dlp to stream videos.
 %dir %{_libdir}/qmmp-%{mver}/Effect/
 %{_libdir}/qmmp-%{mver}/Effect/libsrconverter.so
 
-%files xmp
+%files modplug
 %dir %{_libdir}/qmmp-%{mver}/Input/
-%{_libdir}/qmmp-%{mver}/Input/libxmp.so
+%{_libdir}/qmmp-%{mver}/Input/libmodplug.so
 
 %files youtube
 %dir %{_libdir}/qmmp-%{mver}/Transports
