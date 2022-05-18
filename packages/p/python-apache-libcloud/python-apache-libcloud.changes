@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May 13 11:21:00 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- update to 3.5.1
+  * Support for Python 3.5 which has been EOL for more than a year now has been removed.
+  * [EC2] Add support for new ap-east-1 region.
+  * [OpenStack] OpenStack: Move floating IP functions to use network service instead of nova.
+  * [OpenStack] Avoid raising exception if ip is not found. 
+  * [GCE] Allow credentials argument which is provided to the driver constructor.
+  * [Local Storage] Objects returned by the list_container_objects() method are now returned sorted in the ascending order based on the object name.
+  * Also run unit tests under Python 3.10 + Pyjion on CI/CD.
+- added upstream patch mock.patch and drop mock requirement
+- rebase all other patches
+
+-------------------------------------------------------------------
 Thu Dec  9 10:39:35 UTC 2021 - pgajdos@suse.com
 
 - pytest-runner is not required for build
