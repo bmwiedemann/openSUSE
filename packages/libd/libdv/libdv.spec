@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,11 +52,11 @@ BuildRequires:  libv4l-devel >= 0.8.4
 BuildRequires:  pkg-config
 BuildRequires:  popt-devel
 %if %{with playdv}
-BuildRequires:  SDL-devel
 BuildRequires:  gtk2-devel
 BuildRequires:  libXv-devel
 BuildRequires:  xorg-x11-libX11-devel
 BuildRequires:  xorg-x11-libXext-devel
+BuildRequires:  pkgconfig(sdl)
 %endif
 
 %description
