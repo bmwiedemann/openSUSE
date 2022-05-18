@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 17 13:05:14 UTC 2022 - pgajdos@suse.com
+
+- drop test dependencies from BuildRequires, we do not plan to
+  run the testsuite
+
+-------------------------------------------------------------------
 Thu Sep 16 05:54:02 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Actually remove nose BuildRequires, replacing it with pytest. 

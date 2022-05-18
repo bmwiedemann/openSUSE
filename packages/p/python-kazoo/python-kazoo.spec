@@ -1,7 +1,7 @@
 #
 # spec file for package python-kazoo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,13 +25,7 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/python-zk/kazoo
 Source:         https://files.pythonhosted.org/packages/source/k/kazoo/kazoo-%{version}.tar.gz
-BuildRequires:  %{python_module eventlet >= 0.17.1}
-BuildRequires:  %{python_module gevent >= 1.2}
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pure-sasl}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %ifpython2
