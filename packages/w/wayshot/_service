@@ -3,7 +3,7 @@
     <param name="url">https://github.com/waycrate/wayshot.git</param>
     <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <param name="revision">main</param>
+    <param name="revision">6b67b97bc6ad878f9ea91b069943d3953c6548fe</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>

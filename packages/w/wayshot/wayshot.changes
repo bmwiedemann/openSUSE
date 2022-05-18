@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 17 23:24:39 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 1.1.5~1:
+  * [update] Sane error message on missing scrcpy.
+  * [optimize dependencies] - Patch by jirutka
+  * [update] Workflow.
+  * [update] Bump dependencies.
+  * [update] Readme
+  * [update] Remove testing code.
+  * [update] Fixes
+  * [update] Add workflow.
+  * [update] fix readme
+  * [update] Readme.
+
+-------------------------------------------------------------------
 Wed Mar 16 00:40:31 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 1.1.5~0:
