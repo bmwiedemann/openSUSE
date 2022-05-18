@@ -18,7 +18,7 @@
 
 %define sover 5
 Name:           assimp
-Version:        5.2.3
+Version:        5.2.4
 Release:        0
 Summary:        Library to load and process 3D scenes from various data formats
 License:        BSD-3-Clause AND MIT
@@ -96,7 +96,7 @@ popd
 %{_libdir}/libassimp.so.%{sover}*
 
 %files devel
-%doc README CHANGES CREDITS
+%doc CHANGES CREDITS
 %{_includedir}/assimp/
 %{_bindir}/assimp
 %{_libdir}/libassimp.so

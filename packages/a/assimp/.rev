@@ -141,4 +141,36 @@
     <comment>- Don't use -Werror to prevent build issues with GCC 12</comment>
     <requestid>976440</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>dc57ffe96dd6e1c6914908841107ffbd</srcmd5>
+    <version>5.2.4</version>
+    <time>1652872420</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.4
+  * Use static runtime only when the option is selected
+  * Fix compile error: When enabling macro ASSIMP_DOUBLE_PRECISION
+  * Detect Roughness factor exported by Blender
+  * Updated Android build script
+  * Prevent nullptr access to normals-array in bitangent computation
+  * Avoid setting PBR properties when they are not found on mtl file
+  * Fix ogre xml serializer
+  * Fix draco building error when import assimp with cmake add_subdirectory
+  * FbxConverter: update bone mOffsetMatrix
+  * Some Windows/MSYS2-specific fixes
+  * Document fuzz folder
+  * Fix out-of-range access in ASE-Parser
+  * Disable assertion tests floating point against inf for Intel oneAPI
+  * Delete README
+  * Rename TextureTypeToString() to aiTextureTypeToString()
+  * Fixed library names for MinGW/MSYS2
+  * Update pugixml dependency to v1.12.1
+  * Add an option to treat warnings as errors
+  * Minor updates to ASSIMP Viewer
+  * Add badge to show open issue in percentage
+  * Clang-Tidy performance fixes (make values const-ref where needed)
+  * MMD (pmx) fixes
+  * Resource script updates
+  * Accelerate the Merge vertex post processing step</comment>
+    <requestid>977885</requestid>
+  </revision>
 </revisionlist>
