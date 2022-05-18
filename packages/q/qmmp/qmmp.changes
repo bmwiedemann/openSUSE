@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue May 17 19:43:28 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.1.0:
+  * Add feature to extract lyrics from tags (id3v2 tag and
+    Xiph Comment).
+  * Add queue display in the "jump to track" dialogue.
+  * Add a feature to skip already existing tracks.
+  * Add volume change notification in the KDE notification plugin.
+  * Add XDG Base Directory Specification support.
+  * Replace modplug plugin by xmp plugin.
+  * Improve the qsui plugin:
+    + add a feature to hide playlist name filter;
+    + add a feature to hide menu panel.
+  - Add an application menu
+    + enable clear button for some search filters;
+    + improve file system browser context menu.
+  * improved history plugin:
+    + add a feature to remove tracks from history;
+    + add a feature to show track details.
+  * Improved the "about..." dialogue.
+  * Improve file name filter configuration in the ffmpeg plugin.
+  * Increase the minimal required Qt version to 5.5.
+  * Optimise search for duplicated tracks.
+  * Optimise track queue.
+  * Resolve conflict between the 1.x and 2.x versions.
+  * Update translations.
+- Drop qmmp-fix-openmpt.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Wed Apr 13 14:28:28 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 2.0.4:
@@ -21,7 +50,7 @@ Sun Jan 23 16:38:24 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
   * Use libiconv for charset conversion.
   * Fix default settings in the ffmpeg plugin.
   * Fix transition between http tracks.
-  * Improv qsui plugin:
+  * Improve qsui plugin:
     + fix toolbar renaming;
     + fix Wayland support;
     + fix tab bar context menu.

@@ -18,11 +18,11 @@
 
 %global __provides_exclude_from ^%{_libdir}/qmmp-[0-9\.]*/
 %define sover   2
-%define mver    2.0
+%define mver    2.1
 %bcond_with faad
 %bcond_with restricted
 Name:           qmmp
-Version:        2.0.4
+Version:        2.1.0
 Release:        0
 Summary:        Qt-based Multimedia Player
 License:        GPL-2.0-or-later
@@ -31,8 +31,6 @@ URL:            https://qmmp.ylsoftware.com/
 Source:         https://qmmp.ylsoftware.com/files/%{name}/%{mver}/%{name}-%{version}.tar.bz2
 # PATCH-FEATURE-OPENSUSE qmmp-default_pulse.patch reddwarf@opensuse.org -- Use PulseAudio instead of ALSA by default.
 Patch0:         %{name}-default-pulse.patch
-# PATCH-FIX-OPENSUSE qmmp-fix-openmpt.patch -- Fix OpenMPT compatibility.
-Patch1:         %{name}-fix-openmpt.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -62,13 +60,13 @@ BuildRequires:  pkgconfig(libcdio_cdda)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libgme)
 BuildRequires:  pkgconfig(libmms)
-BuildRequires:  pkgconfig(libmodplug)
 BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libprojectM)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libpulse-simple)
 BuildRequires:  pkgconfig(libsidplayfp)
 BuildRequires:  pkgconfig(libspa-0.2)
+BuildRequires:  pkgconfig(libxmp)
 BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(opusfile)
@@ -111,7 +109,7 @@ Provides:       %{name}(%{sover})(Ui)
 # libqmmp0-plugins & qmmp-plugin-pack-simple-ui were last used in openSUSE 13.2 (in PMBS).
 Provides:       %{name}-plugin-pack-simple-ui = %{version}
 Obsoletes:      %{name}-plugin-pack-simple-ui < %{version}
-Obsoletes:      lib%{name}0-plugins
+Obsoletes:      lib%{name}0-plugins < %{version}
 
 %description -n lib%{name}-plugins
 This program is an audio-player, written with help of Qt library.
@@ -175,7 +173,7 @@ rm -r %{buildroot}/%{_datadir}/icons/hicolor/56x56
 %{_datadir}/applications/%{name}*.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}*
 %{_datadir}/metainfo/%{name}.appdata.xml
-%{_datadir}/solid
+%{_datadir}/solid/
 
 %files -n lib%{name}%{sover}
 %{_libdir}/lib%{name}*.so.%{sover}*
