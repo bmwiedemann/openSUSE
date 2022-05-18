@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 16 21:05:11 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable building libinput-replay [boo#1190065]
+
+-------------------------------------------------------------------
 Wed Apr 20 06:51:42 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.20.1

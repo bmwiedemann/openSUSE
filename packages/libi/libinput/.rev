@@ -963,4 +963,12 @@ Peter Hutterer (3):
     <comment></comment>
     <requestid>972423</requestid>
   </revision>
+  <revision rev="111" vrev="3">
+    <srcmd5>d790acbcdd29a590817780056ba927b5</srcmd5>
+    <version>1.20.1</version>
+    <time>1652872309</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable building libinput-replay [boo#1190065]</comment>
+    <requestid>977621</requestid>
+  </revision>
 </revisionlist>

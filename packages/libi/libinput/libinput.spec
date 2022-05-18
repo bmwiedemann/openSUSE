@@ -1,5 +1,5 @@
 #
-# spec file for package libinput
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -32,7 +32,7 @@
 %endif
 
 # no python3-libevdev available
-%bcond_with     python3_libevdev
+%bcond_without python3_libevdev
 
 %define lname	libinput10
 %define pname	libinput
