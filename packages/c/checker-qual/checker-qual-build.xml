@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="checker-qual" default="package" basedir=".">
+
+  <!-- ====================================================================== -->
+  <!-- Build environment properties                                           -->
+  <!-- ====================================================================== -->
+
+  <property name="project.groupId" value="org.checkerframework"/>
+  <property name="project.artifactId" value="checker-qual"/>
+  <property name="project.version" value="3.22.0"/>
+
+  <property name="compiler.source" value="1.8"/>
+  <property name="compiler.target" value="${compiler.source}"/>
+
+  <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
+  <property name="build.dir" value="target"/>
+  <property name="build.outputDir" value="${build.dir}/classes"/>
+  <property name="build.srcDir" value="src/main/java"/>
+  <property name="build.resourceDir" value="src/main/resources"/>
+
+  <property name="reporting.outputDirectory" value="${build.dir}/site"/>
+
+  <!-- ====================================================================== -->
+  <!-- Cleaning up target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="clean" description="Clean the output directory">
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Compilation target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="compile" description="Compile the code">
+    <mkdir dir="${build.outputDir}"/>
+    <javac destdir="${build.outputDir}" 
+           nowarn="false" 
+           debug="true" 
+           optimize="false" 
+           deprecation="true" 
+           target="${compiler.target}" 
+           verbose="false" 
+           fork="false" 
+           source="${compiler.source}">
+      <src>
+        <pathelement location="${build.srcDir}"/>
+      </src>
+    </javac>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Javadoc target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="javadoc" description="Generates the Javadoc of the application">
+    <javadoc sourcepath="${build.srcDir}" 
+             packagenames="*" 
+             destdir="${reporting.outputDirectory}/apidocs" 
+             access="protected" 
+             source="${compiler.source}" 
+             verbose="false" 
+             version="true" 
+             use="true" 
+             author="true" 
+             splitindex="false" 
+             nodeprecated="false" 
+             nodeprecatedlist="false" 
+             notree="false" 
+             noindex="false" 
+             nohelp="false" 
+             nonavbar="false" 
+             serialwarn="false" 
+             charset="ISO-8859-1" 
+             linksource="false" 
+             breakiterator="false"/>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Package target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="package" depends="compile" description="Package the application">
+    <jar jarfile="${build.dir}/${build.finalName}.jar" 
+         compress="true" 
+         index="false" 
+         basedir="${build.outputDir}" 
+         excludes="**/package.html">
+      <manifest>
+		<attribute name="Automatic-Module-Name" value="org.checkerframework.checker.qual"/>
+		<attribute name="Bundle-License" value="MIT"/>
+		<attribute name="Bundle-ManifestVersion" value="2"/>
+		<attribute name="Bundle-Name" value="${project.artifactId}"/>
+		<attribute name="Bundle-SymbolicName" value="${project.artifactId}"/>
+		<attribute name="Bundle-Version" value="${project.version}"/>
+		<attribute name="Export-Package" value="org.checkerframework.checker.builder.qual;version=&quot;${project.version}&quot;,org.checkerframework.checker.calledmethods.qual;uses:=&quot;org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.checker.compilermsgs.qual;uses:=&quot;org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.checker.fenum.qual;uses:=&quot;org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.checker.formatter.qual;uses:=&quot;org.checkerframework.checker.nullness.qual,org.checkerframework.dataflow.qual,org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.checker.formatter;uses:=&quot;org.checkerframework.checker.formatter.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.checker.guieffect.qual;uses:=&quot;org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.checker.i18n.qual;uses:=&quot;org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.checker.i18nformatter.qual;uses:=&quot;org.checkerframework.checker.nullness.qual,org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.checker.i18nformatter;uses:=&quot;org.checkerframework.checker.i18nformatter.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.checker.index.qual;uses:=&quot;org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.checker.initialization.qual;uses:=&quot;org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.checker.interning.qual;uses:=&quot;org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.checker.lock.qual;uses:=&quot;org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.checker.nullness.qual;uses:=&quot;org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.checker.nullness;uses:=&quot;org.checkerframework.checker.nullness.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.checker.optional.qual;uses:=&quot;org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.checker.propkey.qual;uses:=&quot;org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.checker.regex.qual;uses:=&quot;org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.checker.regex;uses:=&quot;org.checkerframework.checker.index.qual,org.checkerframework.checker.lock.qual,org.checkerframework.checker.nullness.qual,org.checkerframework.checker.regex.qual,org.checkerframework.dataflow.qual,org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.checker.signature.qual;uses:=&quot;org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.checker.signedness.qual;uses:=&quot;org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.checker.signedness;uses:=&quot;org.checkerframework.checker.signedness.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.checker.tainting.qual;uses:=&quot;org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.checker.units.qual;uses:=&quot;org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.checker.units;uses:=&quot;org.checkerframework.checker.units.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.common.aliasing.qual;uses:=&quot;org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.common.initializedfields.qual;uses:=&quot;org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.common.reflection.qual;uses:=&quot;org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.common.returnsreceiver.qual;uses:=&quot;org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.common.subtyping.qual;uses:=&quot;org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.common.util.report.qual;uses:=&quot;org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.common.value.qual;uses:=&quot;org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;,org.checkerframework.dataflow.qual;version=&quot;${project.version}&quot;,org.checkerframework.framework.qual;version=&quot;${project.version}&quot;,org.checkerframework.framework.util;uses:=&quot;org.checkerframework.framework.qual&quot;;version=&quot;${project.version}&quot;"/>
+		<attribute name="Implementation-URL" value="https://checkerframework.org"/>
+		<attribute name="Implementation-Version" value="${project.version}"/>
+		<attribute name="Import-Package" value="org.checkerframework.checker.formatter.qual,org.checkerframework.checker.i18nformatter.qual,org.checkerframework.checker.index.qual,org.checkerframework.checker.interning.qual,org.checkerframework.checker.lock.qual,org.checkerframework.checker.nullness.qual,org.checkerframework.checker.regex.qual,org.checkerframework.checker.signedness.qual,org.checkerframework.checker.units.qual,org.checkerframework.dataflow.qual,org.checkerframework.framework.qual"/>
+		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- A dummy target for the package named after the type it creates         -->
+  <!-- ====================================================================== -->
+
+  <target name="jar" depends="package" description="Builds the jar for the application"/>
+
+</project>
