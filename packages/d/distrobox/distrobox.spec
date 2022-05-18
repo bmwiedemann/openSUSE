@@ -16,12 +16,13 @@
 #
 
 Name:           distrobox
-Version:        1.2.14
+Version:        1.2.15
 Release:        0
 Summary:        Use any linux distribution inside your terminal
 License:        GPL-3.0
 URL:            https://github.com/89luca89/distrobox
 Source:         distrobox-%{version}.tar.gz
+Source1:        distrobox.conf
 Requires:       %{_bindir}/basename
 Requires:       %{_bindir}/find
 Requires:       %{_bindir}/grep
@@ -43,9 +44,11 @@ external USB devices and graphical apps (X11/Wayland), and audio.
 
 %install
 mkdir -p %{buildroot}%{_bindir}
+mkdir -p %{buildroot}%{_sysconfdir}/distrobox
 mkdir -p %{buildroot}%{_docdir}/%{name}
 ./install --prefix %{buildroot}/%{_prefix}
 install -m 0644 docs/*.md %{buildroot}%{_docdir}/%{name}
+install -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/distrobox/distrobox.conf
 
 %files
 %license COPYING.md
@@ -54,5 +57,7 @@ install -m 0644 docs/*.md %{buildroot}%{_docdir}/%{name}
 %{_bindir}/%{name}-*
 %{_mandir}/man1/%{name}.1.gz
 %{_mandir}/man1/%{name}-*.1.gz
+%config %{_sysconfdir}/distrobox
+%config %{_sysconfdir}/distrobox/distrobox.conf
 
 %changelog

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat May 14 15:29:50 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Add a config file, so that we pull a tumbleweed image by default
+- Update too latest version, 1.2.15. Some changes:
+  * init: Allow all package manager checks to run
+  * init: Fix compatibility with init containers
+  * init: add pacman post-hook to neutralize systemd post-hooks in case we're not in an init-enabled container
+  * init: exclude dbus system socket sharing, it doesn't work and creates confusing error messages
+  * init: fix missing check before umounting on init-enabled containers
+  * init: fix new archlinux mount: /usr/lib/libmount.so.1: version MOUNT_2_38 not found (required by mount) error, upgrade before installing packages
+  * init: fix regression introduced in 3f014de where containers where thinking they were on a booted systemd
+  * init: improve arch linux integration - add pacman pre-post hooks to reduce number of errors occurring
+  * create/enter: print error messages only when not in dry-run
+  * create: add work around for incompatibility between systemd/journald ACLs and overlayfs
+  * enter: check for container errors during first start
+  * enter: do not instantiate a tty if we do not have one
+  * enter: extract container SHELL from inspect, use that as fallback if no custom command provided
+  * enter: fix boolean logic on tty use
+  * enter: fix unbound variable with --dry-run
+  * export: hide unuseful stderr in export
+ 
+-------------------------------------------------------------------
 Tue Mar 29 09:12:32 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - Update to latest version 1.2.14. Some changes:
