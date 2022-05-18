@@ -40,6 +40,8 @@ Patch2:         plymouth-manpages.patch
 Patch3:         plymouth-disable-fedora-logo.patch
 # PATCH-FIX-OPENSUSE plymouth-only_use_fb_for_cirrus_bochs.patch bnc#888590 boo#1172028 bsc#1181913 fvogt@suse.com -- force fb for cirrus and bochs, force drm otherwise. replace removal of framebuffer driver and plymouth-ignore-cirrusdrm.patch with single patch.
 Patch4:         plymouth-only_use_fb_for_cirrus_bochs.patch
+# PATCH-FIX-OPENSUSE plymouth-crash-avoid-on-keyboard-remove-input-handler.patch bsc#1193736 qzhao@suse.com -- Confirm keyboard handler list not NULL before release memory to avoid crash.
+Patch5:         plymouth-crash-avoid-on-keyboard-remove-input-handler.patch
 # PATCH-FIX-OPENSUSE plymouth-install-label-library-and-font-file-to-initrd.patch boo#1183425 boo#1184309 qzhao@suse.com -- Pack label plugin and font into initram to ensure notice info could successfully show when partition encrypted.
 Patch6:         plymouth-install-label-library-and-font-file-to-initrd.patch
 # PATCH-FIX-OPENSUSE plymouth-screen-twice-scale-on-160DPI-higher.patch boo#1183425 boo#1184309 qzhao@suse.com -- When DPI > 160, screen will scale output twice.
