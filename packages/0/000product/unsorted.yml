@@ -131,6 +131,7 @@ unsorted:
   - MyGUI-devel-doc 
   - MyGUI-tools 
   - NetworkManager-branding-upstream 
+  - NetworkManager-cloud-setup 
   - NetworkManager-devel 
   - NetworkManager-devel-32bit: [x86_64] 
   - NetworkManager-fortisslvpn 
@@ -145,6 +146,7 @@ unsorted:
   - NetworkManager-libreswan 
   - NetworkManager-libreswan-gnome 
   - NetworkManager-libreswan-lang 
+  - NetworkManager-ovs 
   - NetworkManager-strongswan 
   - NetworkManager-strongswan-gnome 
   - NetworkManager-strongswan-lang 
@@ -1932,6 +1934,8 @@ unsorted:
   - check-devel 
   - check_postgres 
   - checkbashisms 
+  - checker-qual 
+  - checker-qual-javadoc 
   - checksec 
   - checkstyle 
   - checkstyle-javadoc 
@@ -2412,6 +2416,7 @@ unsorted:
   - cri-tools: [i586] 
   - criu: [x86_64] # recommended by opensuse_kubic:patterns-containers-kubeadm 
   - criu-devel: [x86_64] 
+  - criu-plugin-amdgpu: [x86_64] 
   - crmsh 
   - crmsh-scripts 
   - crmsh-test 
@@ -6239,6 +6244,13 @@ unsorted:
   - google-cabin-fonts 
   - google-caladea-fonts 
   - google-cardo-fonts 
+  - google-errorprone-annotation 
+  - google-errorprone-annotations 
+  - google-errorprone-annotations-javadoc 
+  - google-errorprone-docgen_processor 
+  - google-errorprone-javadoc 
+  - google-errorprone-parent 
+  - google-errorprone-type_annotations 
   - google-exo-fonts 
   - google-gson 
   - google-gson-javadoc 
@@ -7496,8 +7508,6 @@ unsorted:
   - janino-javadoc 
   - jansi 
   - jansi-javadoc 
-  - jansi-native 
-  - jansi-native-javadoc 
   - janus-gateway 
   - janus-gateway-devel 
   - jarjar 
@@ -8004,6 +8014,7 @@ unsorted:
   - kajaani-kombat-server 
   - kajongg 
   - kajongg-lang 
+  - kak-lsp 
   - kakasi 
   - kakasi-devel 
   - kakasi-dict 
@@ -13289,6 +13300,8 @@ unsorted:
   - libpython2_7-1_0-32bit: [x86_64] 
   - libpython3_10-1_0 
   - libpython3_10-1_0-32bit: [x86_64] 
+  - libpython3_11-1_0 
+  - libpython3_11-1_0-32bit: [x86_64] 
   - libpython3_8-1_0-32bit: [x86_64] 
   - libpython3_9-1_0 
   - libpython3_9-1_0-32bit: [x86_64] 
@@ -25107,6 +25120,19 @@ unsorted:
   - python310-zstd 
   - python310-zxcvbn 
   - python310-zypp-plugin 
+  - python311 
+  - python311-32bit: [x86_64] 
+  - python311-base 
+  - python311-base-32bit: [x86_64] 
+  - python311-curses 
+  - python311-dbm 
+  - python311-devel 
+  - python311-doc 
+  - python311-doc-devhelp 
+  - python311-idle 
+  - python311-testsuite 
+  - python311-tk 
+  - python311-tools 
   - python38-32bit: [x86_64] 
   - python38-APScheduler 
   - python38-AnyQt 
@@ -25784,6 +25810,7 @@ unsorted:
   - python38-boolean.py 
   - python38-booleanOperations 
   - python38-boost-histogram 
+  - python38-boto3 
   - python38-bottle 
   - python38-bowler 
   - python38-bpython 
@@ -31430,8 +31457,8 @@ unsorted:
   - qmmp-plugin-pack-ffap 
   - qmmp-plugin-pack-ffvideo 
   - qmmp-plugin-pack-goom 
+  - qmmp-plugin-pack-modplug 
   - qmmp-plugin-pack-samplerate 
-  - qmmp-plugin-pack-xmp 
   - qmmp-plugin-pack-youtube 
   - qmodbus 
   - qnapi 
