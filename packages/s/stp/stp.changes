@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed May 11 08:48:14 UTC 2022 - jslaby@suse.cz
+
+- Update to version 2.3.3+20220507:
+  * Don't save a pointer to node factor in case it gets updated later
+  * Improved pure literal removal and unit test
+  * Simplify less than one to equal to zero.
+  * handle more cases and better testing of simplifying node factory
+  * refactor. Clean up initialisation of STP in a tool.
+  * Make initialising STP slightly easier.
+  * remove some more default functions.
+  * refactor. Remove substitition map out of simplifier class.
+  * Remove a flag that wasn't read.
+  * Remove a dead path and the associated flag.
+  * Refactor. Use node factory rather than STPMgr.
+  * Remove simplifier from substitution map.
+  * Make more things private in Simplifier
+  * refactor. Moving some code out of simplify
+  * deleting some default generated constructors
+
+-------------------------------------------------------------------
 Wed Mar 16 10:19:08 UTC 2022 - jslaby@suse.cz
 
 - Update to version 2.3.3+20220314:

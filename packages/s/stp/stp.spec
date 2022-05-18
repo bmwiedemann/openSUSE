@@ -18,7 +18,7 @@
 
 %define sover 2_3
 Name:           stp
-Version:        2.3.3+20220314
+Version:        2.3.3+20220507
 Release:        0
 Summary:        Constraint Solver
 License:        MIT
