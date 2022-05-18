@@ -27,7 +27,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-mocket%{psuffix}
-Version:        3.10.5
+Version:        3.10.6
 Release:        0
 Summary:        Python socket mock framework
 License:        BSD-3-Clause
@@ -35,6 +35,7 @@ URL:            https://github.com/mindflayer/python-mocket
 Source0:        https://files.pythonhosted.org/packages/source/m/mocket/mocket-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE recording-urllib3-brotli.patch -- our urllib has different default headers than upstreams test reference, code@bnavigator.de
 Patch0:         recording-urllib3-brotli.patch
+# https://github.com/mindflayer/python-mocket/issues/178
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -57,7 +58,6 @@ BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module http-parser >= 0.9.0}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pook}
 BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pytest}
