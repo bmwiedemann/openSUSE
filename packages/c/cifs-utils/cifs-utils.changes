@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 17 09:11:59 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 6.15
+  * CVE-2022-27239: mount.cifs: fix length check for ip option parsing
+    Previous check was true whatever the length of the input string was,
+    leading to a buffer overflow in the subsequent strcpy call.
+  * mount.cifs: fix verbose messages on option parsing
+
+-------------------------------------------------------------------
 Mon Jan 17 09:22:17 UTC 2022 - Enzo Matsumiya <ematsumiya@suse.de>
 
 - Update cifs-utils.spec:
