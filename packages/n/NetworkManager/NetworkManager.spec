@@ -57,13 +57,13 @@
 %endif
 
 Name:           NetworkManager
-Version:        1.36.4
+Version:        1.38.0
 Release:        0
 Summary:        Network Link Manager and user applications for it
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/System
 URL:            https://www.gnome.org/projects/NetworkManager/
-Source0:        https://download.gnome.org/sources/NetworkManager/1.36/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/NetworkManager/1.38/%{name}-%{version}.tar.xz
 Source1:        nfs
 Source2:        NetworkManager.conf
 Source3:        baselibs.conf
@@ -95,9 +95,7 @@ BuildRequires:  ppp-devel
 BuildRequires:  python3-dbus-python
 BuildRequires:  readline-devel
 BuildRequires:  rp-pppoe
-BuildRequires:  wireless-tools
 BuildRequires:  perl(YAML)
-BuildRequires:  pkgconfig(bluez) >= 5
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1) >= 0.94
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32
@@ -139,6 +137,9 @@ Recommends:     iproute2
 Recommends:     iptables
 Recommends:     iputils
 Recommends:     org.freedesktop.ModemManager
+# Recommend -wifi. Preferably it should be auto-triggered for install
+# when a wifi chip is found, but that is not yet implemented (boo#1199550)
+Recommends:     %{name}-wifi
 # Provides required by sysconfig. The latter is used by older versions.
 Provides:       dhcdbd = 1.14
 Provides:       service(network)
@@ -219,6 +220,70 @@ NetworkManager plugin for ADSL connections.
 
 This package is needed to configure PPPoE interfaces
 
+%package bluetooth
+Summary:        Bluetooth device plugin for NetworkManager
+Group:          System Environment/Base
+Requires:       %{name} = %{version}
+Requires:       NetworkManager-wwan = %{version}
+BuildRequires:  pkgconfig(bluez) >= 5
+Supplements:    (NetworkManager and bluez)
+
+%description bluetooth
+This package contains NetworkManager support for Bluetooth devices.
+
+%package wifi
+Summary:        Wifi plugin for NetworkManager
+Group:          System Environment/Base
+BuildRequires:  wireless-tools
+Requires:       %{name} = %{version}
+Requires:       wpa_supplicant >= 0.6.4
+
+%description wifi
+This package contains NetworkManager support for Wifi and OLPC devices.
+
+%package wwan
+Summary:        Mobile broadband device plugin for NetworkManager
+Group:          System Environment/Base
+Requires:       %{name} = %{version}
+Requires:       ModemManager
+
+%description wwan
+This package contains NetworkManager support for mobile broadband (WWAN)
+devices.
+
+%package ovs
+Summary:        Open vSwitch device plugin for NetworkManager
+Group:          System Environment/Base
+Requires:       %{name} = %{version}
+Requires:       openvswitch
+Supplements:    (NetworkManager and openvswitch)
+
+%description ovs
+This package contains NetworkManager support for Open vSwitch bridges.
+
+%package tui
+Summary:        NetworkManager curses-based UI
+Group:          System Environment/Base
+Requires:       %{name} = %{version}
+Requires:       libnm0 = %{version}
+Supplements:    (patterns-base-enhanced_base and NetworkManager)
+
+%description tui
+This adds a curses-based "TUI" (Text User Interface) to
+NetworkManager, to allow performing some of the operations supported
+by nm-connection-editor and nm-applet in a non-graphical environment.
+
+%package cloud-setup
+Summary:        Automatically configure NetworkManager in cloud
+Group:          System Environment/Base
+Requires:       %{name} = %{version}
+Requires:       libnm0 = %{version}
+
+%description cloud-setup
+Installs a nm-cloud-setup tool that can automatically configure
+NetworkManager in cloud setups. Currently only EC2 is supported.
+This tool is still experimental.
+
 %lang_package
 
 %prep
@@ -297,26 +362,37 @@ install -m 0644 %{SOURCE98} %{buildroot}%{_rpmmacrodir}/
 rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkManager.service
 
 %pre
-%service_add_pre NetworkManager.service NetworkManager-dispatcher.service nm-cloud-setup.service nm-priv-helper.service
+%service_add_pre NetworkManager.service NetworkManager-dispatcher.service nm-priv-helper.service
 
 %post
-%service_add_post NetworkManager.service NetworkManager-dispatcher.service nm-cloud-setup.service nm-priv-helper.service
+%service_add_post NetworkManager.service NetworkManager-dispatcher.service nm-priv-helper.service
 
 %preun
-%service_del_preun NetworkManager.service NetworkManager-dispatcher.service nm-cloud-setup.service nm-priv-helper.service
+%service_del_preun NetworkManager.service NetworkManager-dispatcher.service nm-priv-helper.service
 
 %postun
-%service_del_postun NetworkManager.service NetworkManager-dispatcher.service nm-cloud-setup.service nm-priv-helper.service
+%service_del_postun NetworkManager.service NetworkManager-dispatcher.service nm-priv-helper.service
+
+%pre cloud-setup
+%service_add_pre nm-cloud-setup.service
+
+%post cloud-setup
+%service_add_post nm-cloud-setup.service
+
+%preun cloud-setup
+%service_del_preun nm-cloud-setup.service
+
+%postun cloud-setup
+%service_del_postun nm-cloud-setup.service
 
 %post -n libnm0 -p /sbin/ldconfig
 %postun -n libnm0 -p /sbin/ldconfig
 
 %files
 %license COPYING
-%doc ChangeLog NEWS AUTHORS README TODO
+%doc ChangeLog NEWS AUTHORS TODO
 %{_bindir}/nm-online
 %{_bindir}/nmcli
-%{_bindir}/nmtui*
 %{_datadir}/bash-completion/completions/nmcli
 %{_sbindir}/NetworkManager
 %{_datadir}/dbus-1/system-services/org.freedesktop.nm_dispatcher.service
@@ -325,30 +401,19 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %attr(0700,root,root) %{_localstatedir}/lib/NetworkManager
 %{_mandir}/man1/nm-online.1%{?ext_man}
 %{_mandir}/man1/nmcli.1%{?ext_man}
-%{_mandir}/man1/nmtui.1%{?ext_man}
-%{_mandir}/man1/nmtui-connect.1%{?ext_man}
-%{_mandir}/man1/nmtui-edit.1%{?ext_man}
-%{_mandir}/man1/nmtui-hostname.1%{?ext_man}
 %{_mandir}/man5/nm-settings-keyfile.5%{?ext_man}
 %{_mandir}/man5/NetworkManager.conf.5%{?ext_man}
 %{_mandir}/man5/nm-settings.5%{?ext_man}
 %{_mandir}/man5/nm-system-settings.conf.5%{?ext_man}
 %{_mandir}/man5/nm-settings-dbus.5%{?ext_man}
 %{_mandir}/man5/nm-settings-nmcli.5%{?ext_man}
-%{_mandir}/man7/nm-openvswitch.7%{?ext_man}
 %{_mandir}/man7/nmcli-examples.7%{?ext_man}
-%{_mandir}/man8/NetworkManager.8%{?ext_man}
-%{_mandir}/man8/nm-cloud-setup.8%{?ext_man}
-%{_mandir}/man8/nm-initrd-generator.8%{?ext_man}
 %{_mandir}/man8/NetworkManager-dispatcher.8%{?ext_man}
+%{_mandir}/man8/NetworkManager-wait-online.service.8%{?ext_man}
+%{_mandir}/man8/NetworkManager.8%{?ext_man}
+%{_mandir}/man8/nm-initrd-generator.8%{?ext_man}
 %dir %{_libdir}/NetworkManager
 %dir %{_libdir}/NetworkManager/%{version}
-%{_libdir}/NetworkManager/%{version}/libnm-device-plugin-bluetooth.so
-%{_libdir}/NetworkManager/%{version}/libnm-device-plugin-ovs.so
-%{_libdir}/NetworkManager/%{version}/libnm-device-plugin-wifi.so
-%{_libdir}/NetworkManager/%{version}/libnm-device-plugin-wwan.so
-%{_libdir}/NetworkManager/%{version}/libnm-wwan.so
-%{_libexecdir}/nm-cloud-setup
 %{_libexecdir}/nm-daemon-helper
 %{_libexecdir}/nm-dhcp-helper
 %{_libexecdir}/nm-dispatcher
@@ -363,12 +428,9 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %{_unitdir}/NetworkManager-dispatcher.service
 %{_unitdir}/NetworkManager-wait-online.service
 %dir %{_unitdir}/NetworkManager.service.d
-%{_unitdir}/NetworkManager.service.d/NetworkManager-ovs.conf
 %{_udevdir}/rules.d/84-nm-drivers.rules
 %{_udevdir}/rules.d/85-nm-unmanaged.rules
 %{_udevdir}/rules.d/90-nm-thunderbolt.rules
-%{_unitdir}/nm-cloud-setup.service
-%{_unitdir}/nm-cloud-setup.timer
 %{_unitdir}/nm-priv-helper.service
 %ghost %config(noreplace) %{_localstatedir}/log/NetworkManager
 %dir %{_prefix}/lib/NetworkManager
@@ -377,8 +439,6 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %dir %{_prefix}/lib/NetworkManager/dispatcher.d/pre-up.d
 %dir %{_prefix}/lib/NetworkManager/dispatcher.d/pre-down.d
 %dir %{_prefix}/lib/NetworkManager/VPN
-%{_prefix}/lib/NetworkManager/dispatcher.d/90-nm-cloud-setup.sh
-%{_prefix}/lib/NetworkManager/dispatcher.d/no-wait.d/90-nm-cloud-setup.sh
 %dir %{_prefix}/lib/firewalld
 %dir %{_prefix}/lib/firewalld/zones
 %{_prefix}/lib/firewalld/zones/nm-shared.xml
@@ -416,5 +476,35 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %{_libdir}/NetworkManager/%{version}/libnm-ppp-plugin.so
 %dir %{_libdir}/pppd/2.*
 %{_libdir}/pppd/2.*/nm-pppd-plugin.*
+
+%files bluetooth
+%{_libdir}/NetworkManager/%{version}/libnm-device-plugin-bluetooth.so
+
+%files wifi
+%{_libdir}/NetworkManager/%{version}/libnm-device-plugin-wifi.so
+
+%files wwan
+%{_libdir}/NetworkManager/%{version}/libnm-device-plugin-wwan.so
+%{_libdir}/NetworkManager/%{version}/libnm-wwan.so
+
+%files ovs
+%{_libdir}/NetworkManager/%{version}/libnm-device-plugin-ovs.so
+%{_unitdir}/NetworkManager.service.d/NetworkManager-ovs.conf
+%{_mandir}/man7/nm-openvswitch.7%{?ext_man}
+
+%files tui
+%{_bindir}/nmtui*
+%{_mandir}/man1/nmtui.1%{?ext_man}
+%{_mandir}/man1/nmtui-connect.1%{?ext_man}
+%{_mandir}/man1/nmtui-edit.1%{?ext_man}
+%{_mandir}/man1/nmtui-hostname.1%{?ext_man}
+
+%files cloud-setup
+%{_libexecdir}/nm-cloud-setup
+%{_unitdir}/nm-cloud-setup.service
+%{_unitdir}/nm-cloud-setup.timer
+%{_prefix}/lib/NetworkManager/dispatcher.d/90-nm-cloud-setup.sh
+%{_prefix}/lib/NetworkManager/dispatcher.d/no-wait.d/90-nm-cloud-setup.sh
+%{_mandir}/man8/nm-cloud-setup.8%{?ext_man}
 
 %changelog

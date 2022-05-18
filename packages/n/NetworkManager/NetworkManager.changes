@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Mon May 16 08:37:25 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.38.0:
+  + Add support for route type "throw".
+  + Fix bug setting priority for IP addresses.
+  + Static IPv6 addresses from "ipv6.addresses" are now preferred
+    over addresses from DHCPv6, which are preferred over addresses
+    from autoconf. This affects IPv6 source address selection, if
+    the rules from RFC 6724, section 5 don't give a exhaustive
+    match.
+  + Static IPv6 addresses from "ipv6.addresses" are now interpreted
+    with first address being preferred. Their order got inverted.
+    This is now consistent with IPv4.
+  + Wi-Fi hotspots will use a (stable) random channel number unless
+    one is chosen manually.
+  + Don't use unsupported SAE/WPA3 mode for AP mode.
+  + NetworkManager will no longer advertise frequencies as
+    supported when they're disallowed in configured regulatory
+    domain.
+  + Attempt to connect to WEP-encrypted Wi-Fi network will now fail
+    gracefully with a recent version of wpa_supplicant when built
+    without WEP support. As long as wpa_supplicant supports WEP,
+    NetworkManager will continue to work.
+  + Disable WPA3 transition mode for wifi.key-mgmt=wpa-psk if the
+    NIC does not support PMF. This is known to cause problems in
+    some setups. It is still possible to explicitly configure
+    wifi.key-mgmt=sae for WPA3.
+  + Add new dummy crypto backend "null" that does nothing.
+    NetworkManager uses the crypto library when handling
+    certificates for 802.1x profiles.
+  + Veth devices with name "eth*" are now managed by default via
+    the udev rule. This is to support managing the network in LXD
+    containers.
+  + The hostname received from DHCP is now shortened to the first
+    dot (or to 64 characters, whatever comes first) if it's too
+    long.
+  + As the insecure WEP encryption for Wi-Fi network is phased out,
+    nmcli now discourages its use when activating or modifying a
+    profile.
+  + Fix connectivity checks in case the check endpoint address
+    resolves to multiple addresses.
+  + Workaround libcurl blocking NetworkManager while resolving DNS
+    names.
+  + nmcli: indicate missing Wi-Fi hardware when showing rfkill
+    setting.
+  + nmcli: add connection migrate command to move a profile to a
+    specified settings plugin. This allows to convert profiles in
+    the deprecated ifcfg-rh format to keyfile.
+  + Set "src" attribute for routes from DHCPv4 to the leased
+    address. This helps with source address selection.
+  + Various bugfixes and internal improvements.
+  + Updated translations.
+- Recommend NetworkNanager-wifi from the main package: after the
+  split, there is currently nothing pulling in NM-wifi. Preferably
+  this would happen based on wifi chips prsence, but that is not
+  yet done (boo#1199550).
+
+-------------------------------------------------------------------
+Thu Apr 14 01:45:23 UTC 2022 - Jonathan Kang <songchuan.kang@suse.com>
+
+ - Modify NetworkManager.spec: Split into a few small subpackages
+   (bsc#1198128).
+
+-------------------------------------------------------------------
 Fri Apr  1 08:05:28 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Install nfs dispatcher script in /usr/lib/NetworkManager, not /etc
