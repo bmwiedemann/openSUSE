@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue May 17 16:42:55 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.5.1
+  - desktop#4486 [stable-3.5] Add new and correct sparkle update signature
+  - desktop#4489 [stable-3.5] l10n: Remove string from translation
+  - desktop#4490 [stable-3.5] l10n: Changed triple dot to ellipsis
+  - desktop#4491 [stable-3.5] Ensure cache is stored in default cache location
+  - desktop#4492 [stable-3.5] Updating command-rebase.yml workflow from template
+  - desktop#4493 [stable-3.5] Remove "…" from "Create Debug Archive" button
+  - desktop#4494 [stable-3.5] docs: Replace "preceded" with "followed"
+  - desktop#4511 [stable-3.5] only add OCS-APIREQUEST header for 1st request of webflow v1
+  - desktop#4514 [stable-3.5] Make the make_universal.py script more verbose for easier debugging
+  - desktop#4515 [stable-3.5] Revamp notifications for macOS and add support for actionable update notifications
+  - desktop#4537 [stable-3.5] Use proper online status for user ('dnd', 'online', 'invisible', etc.) to enable or disable desktop notifications.
+  - desktop#4538 [stable-3.5] Bugfix. Take root folder's files size into account when displaying the total size in selective sync dialog.
+  - desktop#4539 [stable-3.5] Fix activity list item issues with colours/layout/etc.
+  - desktop#4541 [stable-3.5] Bugfix/allow manual rename files with spaces
+  - desktop#4544 [stable-3.5] Fixed share link expiration box being ineditable and always attempting to set invalid date
+  - desktop#4545 [stable-3.5] Fix crashing of finder sync extension caused by dispatch_source_cancel of nullptr
+  - desktop#4546 [stable-3.5] Simplify and remove the notification "cache"
+  - desktop#4547 [stable-3.5] Fix tray icon not displaying "Open main dialog"
+  - desktop#4548 [stable-3.5] if an exclude file is deleted, skip it and remove it from internal list
+  - desktop#4549 [stable-3.5] Bugfix/two factor notification
+  - desktop#4550 [stable-3.5] Fix visual borking in the share dialog
+  - desktop#4555 [stable-3.5] add explicit capture for lambda
+
+-------------------------------------------------------------------
 Tue May  3 11:36:28 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.5.0
