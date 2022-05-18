@@ -31,4 +31,12 @@
     <comment>- add no2to3.patch for compatibility with newer setuptools</comment>
     <requestid>958234</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>a32c4a06b562bc9e8240fbdc999814f0</srcmd5>
+    <version>1.2.6</version>
+    <time>1652872405</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977831</requestid>
+  </revision>
 </revisionlist>

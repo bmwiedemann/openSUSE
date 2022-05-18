@@ -26,6 +26,11 @@ Group:          Development/Languages/Python
 URL:            https://github.com/behave/behave
 Source:         https://files.pythonhosted.org/packages/source/b/behave/behave-%{version}.tar.gz
 Patch1:         no2to3.patch
+# https://github.com/behave/behave/commit/83906ba779956af9437defcb8975debb18440e0d
+# https://github.com/behave/behave/commit/66fcadb23bea79e60f370e66bf7588de2f1934e3
+Patch2:         python-behave-fix-tests.patch
+# https://github.com/behave/behave/issues/1028
+Patch3:         python-behave-no-mock.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -55,7 +60,6 @@ Suggests:       python-traceback2
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyHamcrest >= 1.8}
-BuildRequires:  %{python_module mock >= 1.1}
 BuildRequires:  %{python_module parse >= 1.8.2}
 BuildRequires:  %{python_module parse_type >= 0.4.2}
 BuildRequires:  %{python_module path.py >= 10.1}
@@ -73,8 +77,7 @@ non-technical or business participants in a software project.
 code.
 
 %prep
-%setup -q -n behave-%{version}
-%patch1 -p1
+%autosetup -p1 -n behave-%{version}
 
 %build
 %python_build
@@ -85,6 +88,7 @@ code.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+%pytest tests
 
 %post
 %python_install_alternative behave
