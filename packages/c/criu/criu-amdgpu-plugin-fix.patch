@@ -1,0 +1,48 @@
+---
+ plugins/amdgpu/Makefile    |    9 +++++----
+ plugins/amdgpu/kfd_ioctl.h |    2 +-
+ 2 files changed, 6 insertions(+), 5 deletions(-)
+
+--- a/plugins/amdgpu/Makefile
++++ b/plugins/amdgpu/Makefile
+@@ -5,7 +5,8 @@ PLUGIN_SOBJ		:= amdgpu_plugin.so
+ PLUGIN_INCLUDE  	:= -iquote../../../criu/include
+ PLUGIN_INCLUDE  	+= -iquote../../criu/include
+ PLUGIN_INCLUDE  	+= -iquote../../criu/arch/$(ARCH)/include/
+-PLUGIN_INCLUDE  	+= -iquote../../
++PLUGIN_INCLUDE  	+= -iquote../../include
++PLUGIN_INCLUDE  	+= -iquote../..
+ 
+ COMPEL                 := ../../compel/compel-host
+ LIBDRM_INC 		:= -I/usr/include/libdrm
+@@ -50,16 +51,16 @@ clean: amdgpu_plugin_clean amdgpu_plugin
+ mrproper: clean
+ 
+ install:
+-	$(Q) mkdir -p $(PLUGINDIR)
++	$(Q) mkdir -p $(DESTDIR)$(PLUGINDIR)
+ ifeq ($(CONFIG_AMDGPU),y)
+ 	$(E) "  INSTALL " $(PLUGIN_NAME)
+-	$(Q) install -m 644 $(PLUGIN_SOBJ) $(PLUGINDIR)
++	$(Q) install -m 644 $(PLUGIN_SOBJ) $(DESTDIR)$(PLUGINDIR)
+ endif
+ .PHONY: install
+ 
+ uninstall:
+ ifeq ($(CONFIG_AMDGPU),y)
+ 	$(E) " UNINSTALL" $(PLUGIN_NAME)
+-	$(Q) $(RM) $(PLUGINDIR)/$(PLUGIN_SOBJ)
++	$(Q) $(RM) $(DESTDIR)$(PLUGINDIR)/$(PLUGIN_SOBJ)
+ endif
+ .PHONY: uninstall
+--- a/plugins/amdgpu/kfd_ioctl.h
++++ b/plugins/amdgpu/kfd_ioctl.h
+@@ -23,7 +23,7 @@
+ #ifndef KFD_IOCTL_H_INCLUDED
+ #define KFD_IOCTL_H_INCLUDED
+ 
+-#include <drm/drm.h>
++#include <libdrm/drm.h>
+ #include <linux/ioctl.h>
+ 
+ /*

@@ -12,7 +12,7 @@ Signed-off-by: Takashi Iwai <tiwai@suse.de>
 
 --- a/Makefile.config
 +++ b/Makefile.config
-@@ -30,13 +30,16 @@ else
+@@ -38,13 +38,16 @@ else
  endif
  
  ifeq ($(call pkg-config-check,libnftables),y)
@@ -31,7 +31,7 @@ Signed-off-by: Takashi Iwai <tiwai@suse.de>
          else
                  $(warning Warn: you have libnftables installed but it has incompatible API)
                  $(warning Warn: Building without nftables support)
-@@ -67,7 +70,7 @@ endif
+@@ -75,7 +78,7 @@ endif
  endif
  
  export DEFINES += $(FEATURE_DEFINES)
@@ -39,4 +39,4 @@ Signed-off-by: Takashi Iwai <tiwai@suse.de>
 +export CFLAGS += $(FEATURE_DEFINES) $(FEATURE_CFLAGS)
  
  FEATURES_LIST	:= TCP_REPAIR STRLCPY STRLCAT PTRACE_PEEKSIGINFO \
- 	SETPROCTITLE_INIT MEMFD TCP_REPAIR_WINDOW FSCONFIG MEMFD_CREATE
+ 	SETPROCTITLE_INIT MEMFD TCP_REPAIR_WINDOW FSCONFIG MEMFD_CREATE OPENAT2

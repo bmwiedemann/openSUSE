@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed May 18 07:01:20 UTC 2022 - Takashi Iwai <tiwai@suse.com>
+
+- Update to criu 3.17:
+  New features:
+  * Introduced mount-v2 engine
+  * Added support for MAP_HUGETLB mappings
+  * Added support for Linux Restartable Sequences
+  * Added support for SOCK_SEQPACKET unix sockets
+  * CRIU AMD GPU plugin
+  Bugfixes:
+  * GCC 12 compatibility fixes
+  * cgroup: fix --manage-cgroups=ignore
+  * several memory leaks fixed in net, files, mount, tun and config
+    subsystems
+  * Improvements:
+  * bpf: switch from deprecated bpf_create_map_xattr to bpf_map_create
+  * bpfmap: handle map_extra field
+  * setsockopt(SO_BUF_LOCK) support for tcp sockets
+- New criu-plugin-amdgpu sub-package for AMDGPU ROCm plugin, enabled
+  only for x86_64 and aarch64.
+- Build fixes for plugins:
+  criu-amdgpu-plugin-fix.patch
+- Change the plugin install path to $libdir/criu:
+  plugin-dir-path.patch
+
+-------------------------------------------------------------------
 Wed Dec 15 08:29:36 CET 2021 - tiwai@suse.de
 
 - Drop ix86 build, which has been failing almost always
