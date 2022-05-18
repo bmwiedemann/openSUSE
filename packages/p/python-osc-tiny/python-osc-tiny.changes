@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 17 13:03:24 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.5.0
+  * Added capability to log API requests (without headers!) and responses
+  * Make it possible to add a comment when pushing files
+  * Added method to get build history
+
+
+-------------------------------------------------------------------
 Thu Jan 20 10:54:08 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
 
 - Release 0.4.2
