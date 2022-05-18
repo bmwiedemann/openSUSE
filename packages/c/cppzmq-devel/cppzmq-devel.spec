@@ -18,7 +18,7 @@
 
 
 Name:           cppzmq-devel
-Version:        4.7.1
+Version:        4.8.1
 Release:        0
 Summary:        Header-only C++ binding for libzmq
 License:        MIT

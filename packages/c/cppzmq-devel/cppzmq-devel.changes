@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May  9 15:16:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 4.8.1
+  * Fix fallback value for ZMQ_DEPRECATED
+  * Fix MSYS libzmq discovery
+  * Fix handshake event don't need DRAFT API in libzmq v4.3.0 and above
+  * Use chrono duration for poll default timeout
+  * context_t close no longer uses deprecated function
+  * Fix for potential memory leak in monitor_t::check_event
+  * Fix conversion warnings
+  * Deprecate confusing connected() function
+  * Add all draft socket types up to libzmq 4.3.4
+  * Add support for socket_ref to multipart_t ctor/send/recv
+  * Expose zmq::fd_t
+  * Add poller_t::size function
+
+-------------------------------------------------------------------
 Wed May 12 13:25:55 UTC 2021 - Frank Kunz <mailinglists@kunz-im-inter.net>
 
 - Update to version 4.7.1
