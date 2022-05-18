@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 18 02:01:42 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1652795155.981fd51:
+  * Make code for setting VNC timeout portable
+  * Apply VNC timeout also for reading/writing
+  * Avoid backend from being stuck on broken VNC connections for too long
+  * Improve code for parsing raw VNC encoding
+  * Simplify/improve error handling in `update_framebuffer`
+  * Enforce using signatures everywhere (with exceptions marked)
+  * Use signatures in OpenQA::Benchmark::Stopwatch completely
+  * Add unit test for `wait_screen_change`
+
+-------------------------------------------------------------------
 Sun May 15 17:42:54 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1652444983.2156ecc:
