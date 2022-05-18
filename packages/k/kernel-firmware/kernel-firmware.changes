@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue May 17 09:50:51 UTC 2022 - tiwai@suse.com
+
+- Update to version 20220516 (git commit 251d29004ffc):
+  * amdgpu: update beige goby firmware for 22.10
+  * amdgpu: update renoir firmware for 22.10
+  * amdgpu: update dimgrey cavefish firmware for 22.10
+  * amdgpu: update vega20 firmware for 22.10
+  * amdgpu: update yellow carp firmware for 22.10
+  * amdgpu: update vega12 firmware for 22.10
+  * amdgpu: update navy flounder firmware for 22.10
+  * amdgpu: update vega10 firmware for 22.10
+  * amdgpu: update raven2 firmware for 22.10
+  * amdgpu: update raven firmware for 22.10
+  * amdgpu: update sienna cichlid firmware for 22.10
+  * amdgpu: update green sardine firmware for 22.10
+  * amdgpu: update PCO firmware for 22.10
+  * amdgpu: update vangogh firmware for 22.10
+  * amdgpu: update navi14 firmware for 22.10
+  * amdgpu: update navi12 firmware for 22.10
+  * amdgpu: update navi10 firmware for 22.10
+  * amdgpu: update aldebaran firmware for 22.10
+  * linux-firmware: Update firmware file for Intel Bluetooth 9462
+  * linux-firmware: Update firmware file for Intel Bluetooth 9462
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth AX211
+  * linux-firmware: Update firmware file for Intel Bluetooth AX211
+  * linux-firmware: Update firmware file for Intel Bluetooth AX210
+  * linux-firmware: Update firmware file for Intel Bluetooth AX200
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * mediatek: Update mt8192 SCP firmware
+
+-------------------------------------------------------------------
 Wed May 11 08:16:42 UTC 2022 - tiwai@suse.com
 
 - Update to version 20220509 (git commit b19cbdca78ab):
@@ -52,6 +87,10 @@ Mon Apr 11 13:47:37 UTC 2022 - tiwai@suse.com
 - Update to version 20220411 (git commit f219d616f42b):
   * mediatek: Add mt8192 SCP firmware
   * linux-firmware: Update AMD cpu microcode
+    (CVE-2021-26339, CVE-2021-26373, CVE-2021-26347, CVE-2021-26376,
+     CVE-2021-26375, CVE-2021-26378, CVE-2021-26372, CVE-2021-26339,
+     CVE-2021-26348, CVE-2021-26342, CVE-2021-26388, CVE-2021-26349,
+     CVE-2021-26364, CVE-2021-26312, CVE-2021-26350, bsc#1199459)
   * nvidia: add GA102/GA103/GA104/GA106/GA107 signed firmware
   * brcm: rename Rock960 NVRAM to AP6356S and link devices to it
   * linux-firmware: Update firmware file for Intel Bluetooth 9462
@@ -115,6 +154,7 @@ Tue Mar 15 15:20:49 UTC 2022 - tiwai@suse.com
   * linux-firmware: Update firmware file for Intel Bluetooth 9560
   * linux-firmware: Update firmware file for Intel Bluetooth 9260
   * linux-firmware: Update AMD SEV firmware
+    (CVE-2021-46744, CVE-2021-26339, bsc#1199470, bsc#1199459)
   * rtw89: 8852a: update fw to v0.13.35.0
 
 -------------------------------------------------------------------
@@ -128,7 +168,8 @@ Mon Feb 28 09:27:51 UTC 2022 - tiwai@suse.com
   * linux-firmware: update firmware for mediatek bluetooth chip(MT7921)
   * linux-firmware: Update firmware patch for Intel Bluetooth 8260
   * linux-firmware: Update firmware file for Intel Bluetooth 8265
-  * linux-firmware: Intel BT 7265: Fix Security Issues (bsc#1195786)
+  * linux-firmware: Intel BT 7265: Fix Security Issues
+    (CVE-2021-33139,CVE-2021-33155,INTEL-SA-00604,bsc#1195786)
 - Update license.txt for wfx
 - Temporary fix for WHENCE for wfx:
   wfx-WHENCE-fix.diff

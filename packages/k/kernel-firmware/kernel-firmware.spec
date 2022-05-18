@@ -23,13 +23,13 @@
 %endif
 
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20220509
+%define version_unconverted 20220516
 
 Name:           kernel-firmware
-Version:        20220509
+Version:        20220516
 Release:        0
 Summary:        Linux kernel firmware files
-License:        SUSE-Firmware AND GPL-2.0-only AND GPL-2.0-or-later AND MIT
+License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 # Created with umask 022; cd /_tmp
@@ -64,7 +64,7 @@ Patch1:         wfx-WHENCE-fix.diff
 BuildRequires:  fdupes
 BuildRequires:  suse-module-tools
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 BuildArch:      noarch
 Provides:       ath3k-firmware
 Obsoletes:      ath3k-firmware
@@ -112,7 +112,7 @@ that do not support the compressed format.
 Summary:        Microcode updates for AMD CPUs
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 # new style (after 3.12 kernel somewhen)
 Supplements:    modalias(cpu:type%%3Ax86*ven0002*)
 # old style (before 3.16 kernel)
@@ -125,7 +125,7 @@ This package contains the microcode files used by AMD CPUs.
 Summary:        Compatibility metapackage for kernel firmware files
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Provides:       kernel-firmware = %{version}
 Obsoletes:      kernel-firmware <= %{version}
@@ -177,13 +177,15 @@ all files that have been provided by kernel-firmware package.
 Summary:        Kernel firmware files for AMDGPU graphics driver
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
 %endif
+Supplements:    modalias(pci:v00001002d*sv*sd*bc03sc00i00*)
+Supplements:    modalias(pci:v00001002d*sv*sd*bc03sc80i00*)
 Supplements:    modalias(pci:v00001002d00001304sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00001305sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00001306sv*sd*bc*sc*i*)
@@ -487,8 +489,6 @@ Supplements:    modalias(pci:v00001002d00009875sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00009876sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00009877sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000098E4sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001002d*sv*sd*bc03sc00i00*)
-Supplements:    modalias(pci:v00001002d*sv*sd*bc03sc80i00*)
 
 %description amdgpu
 This package contains compressed kernel firmware files for
@@ -498,7 +498,7 @@ AMDGPU graphics driver.
 Summary:        Kernel firmware files for Atheros wireless drivers
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -703,7 +703,7 @@ Atheros wireless drivers.
 Summary:        Kernel firmware files for Atheros QCA988x WiFi drivers
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -733,7 +733,7 @@ Atheros QCA988x WiFi drivers.
 Summary:        Kernel firmware files for Atheros Qualcomm WiFi drivers
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -752,7 +752,7 @@ Atheros Qualcomm WiFi drivers.
 Summary:        Kernel firmware files for various Bluetooth drivers
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -765,6 +765,9 @@ Supplements:    modalias(of:N*T*Cusb4ca,301a)
 Supplements:    modalias(of:N*T*Cusb4ca,301aC*)
 Supplements:    modalias(of:N*T*Cusbcf3,e300)
 Supplements:    modalias(of:N*T*Cusbcf3,e300C*)
+Supplements:    modalias(usb:v*p*d*dc*dsc*dp*icE0isc01ip01in*)
+Supplements:    modalias(usb:v*p*d*dcE0dsc01dp01ic*isc*ip*in*)
+Supplements:    modalias(usb:v*p*d*dcE0dsc01dp04ic*isc*ip*in*)
 Supplements:    modalias(usb:v044Ep3001d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v044Ep3002d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0489p*d*dc*dsc*dp*icFFisc01ip01in*)
@@ -772,6 +775,7 @@ Supplements:    modalias(usb:v04BFp030Ad*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v04CAp*d*dc*dsc*dp*icFFisc01ip01in*)
 Supplements:    modalias(usb:v050Dp*d*dc*dsc*dp*icFFisc01ip01in*)
 Supplements:    modalias(usb:v057Cp3800d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v05ACp*d*dc*dsc*dp*icFFisc01ip01in*)
 Supplements:    modalias(usb:v05ACp8213d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v05ACp8215d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v05ACp8218d*dc*dsc*dp*ic*isc*ip*in*)
@@ -779,10 +783,9 @@ Supplements:    modalias(usb:v05ACp821Ad*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v05ACp821Bd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v05ACp821Fd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v05ACp8281d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v05ACp*d*dc*dsc*dp*icFFisc01ip01in*)
 Supplements:    modalias(usb:v0930p*d*dc*dsc*dp*icFFisc01ip01in*)
-Supplements:    modalias(usb:v0A5Cp21E1d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0A5Cp*d*dc*dsc*dp*icFFisc01ip01in*)
+Supplements:    modalias(usb:v0A5Cp21E1d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0B05p*d*dc*dsc*dp*icFFisc01ip01in*)
 Supplements:    modalias(usb:v0BB4p*d*dc*dsc*dp*icFFisc01ip01in*)
 Supplements:    modalias(usb:v0BDBp1002d*dc*dsc*dp*ic*isc*ip*in*)
@@ -791,12 +794,9 @@ Supplements:    modalias(usb:v0E8Dp763Fd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v105Bp*d*dc*dsc*dp*icFFisc01ip01in*)
 Supplements:    modalias(usb:v13D3p*d*dc*dsc*dp*icFFisc01ip01in*)
 Supplements:    modalias(usb:v19FFp0239d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v413Cp8197d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v413Cp*d*dc*dsc*dp*icFFisc01ip01in*)
+Supplements:    modalias(usb:v413Cp8197d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v8087p0A5Ad*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v*p*d*dc*dsc*dp*icE0isc01ip01in*)
-Supplements:    modalias(usb:v*p*d*dcE0dsc01dp01ic*isc*ip*in*)
-Supplements:    modalias(usb:v*p*d*dcE0dsc01dp04ic*isc*ip*in*)
 
 %description bluetooth
 This package contains compressed kernel firmware files for
@@ -806,7 +806,7 @@ various Bluetooth drivers.
 Summary:        Kernel firmware files for Broadcom network drivers
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -823,9 +823,9 @@ Supplements:    modalias(pci:v000014E4d0000163Csv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d0000163Dsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d0000163Esv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d0000163Fsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000014E4d0000164Asv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d0000164Asv0000103Csd00003101bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d0000164Asv0000103Csd00003106bc*sc*i*)
-Supplements:    modalias(pci:v000014E4d0000164Asv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d0000164Csv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d0000164Esv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d0000164Fsv*sd*bc*sc*i*)
@@ -841,8 +841,8 @@ Supplements:    modalias(pci:v000014E4d000016A2sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d000016A4sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d000016A5sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d000016A9sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v000014E4d000016AAsv0000103Csd00003102bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d000016AAsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000014E4d000016AAsv0000103Csd00003102bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d000016ABsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d000016ACsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d000016ADsv*sd*bc*sc*i*)
@@ -857,7 +857,7 @@ Broadcom network drivers.
 Summary:        Kernel firmware files for Broadcom wireless drivers
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -929,7 +929,7 @@ Broadcom wireless drivers.
 Summary:        Kernel firmware files for Chelsio network drivers
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -1320,7 +1320,7 @@ Chelsio network drivers.
 Summary:        Kernel firmware files for NXP Management Complex bus driver
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -1336,7 +1336,7 @@ NXP Management Complex bus driver.
 Summary:        Kernel firmware files for Intel i915 graphics driver
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -1359,8 +1359,8 @@ Supplements:    modalias(pci:v00008086d00000157sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000015Asv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00000162sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00000166sv*sd*bc03sc*i*)
-Supplements:    modalias(pci:v00008086d0000016Asv0000152Dsd00008990bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000016Asv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000016Asv0000152Dsd00008990bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00000402sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00000406sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000040Asv*sd*bc03sc*i*)
@@ -1688,7 +1688,7 @@ Intel i915 graphics driver.
 Summary:        Kernel firmware files for Intel-platform device drivers
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -1734,7 +1734,7 @@ Intel-platform device drivers.
 Summary:        Kernel firmware files for Intel wireless drivers
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -1810,6 +1810,7 @@ Supplements:    modalias(pci:v00008086d00000091sv*sd00005207bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00000091sv*sd00005221bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00000091sv*sd00005225bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00000091sv*sd00005226bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000002F0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000002F0sv*sd00000030bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000002F0sv*sd00000034bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000002F0sv*sd00000038bc*sc*i*)
@@ -1849,7 +1850,7 @@ Supplements:    modalias(pci:v00008086d000002F0sv*sd000040A4bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000002F0sv*sd00004234bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000002F0sv*sd00004244bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000002F0sv*sd000042A4bc*sc*i*)
-Supplements:    modalias(pci:v00008086d000002F0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000006F0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000006F0sv*sd00000030bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000006F0sv*sd00000034bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000006F0sv*sd00000038bc*sc*i*)
@@ -1888,7 +1889,6 @@ Supplements:    modalias(pci:v00008086d000006F0sv*sd000040A4bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000006F0sv*sd00004234bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000006F0sv*sd00004244bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000006F0sv*sd000042A4bc*sc*i*)
-Supplements:    modalias(pci:v00008086d000006F0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00000885sv*sd00001305bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00000885sv*sd00001307bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00000885sv*sd00001325bc*sc*i*)
@@ -2147,6 +2147,7 @@ Supplements:    modalias(pci:v00008086d000024FDsv*sd00008130bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000024FDsv*sd00009010bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000024FDsv*sd00009074bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000024FDsv*sd00009110bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00002526sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002526sv*sd00000010bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002526sv*sd00000014bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002526sv*sd00000018bc*sc*i*)
@@ -2195,14 +2196,14 @@ Supplements:    modalias(pci:v00008086d00002526sv*sd00008014bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002526sv*sd0000A014bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002526sv*sd0000E010bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002526sv*sd0000E014bc*sc*i*)
-Supplements:    modalias(pci:v00008086d00002526sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000271Bsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000271Bsv*sd00000010bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000271Bsv*sd00000014bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000271Bsv*sd00000210bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000271Bsv*sd00000214bc*sc*i*)
-Supplements:    modalias(pci:v00008086d0000271Bsv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00008086d0000271Csv*sd00000214bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000271Csv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000271Csv*sd00000214bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00002720sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002720sv*sd00000000bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002720sv*sd00000030bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002720sv*sd00000034bc*sc*i*)
@@ -2248,7 +2249,7 @@ Supplements:    modalias(pci:v00008086d00002720sv*sd000040A4bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002720sv*sd00004234bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002720sv*sd00004244bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002720sv*sd000042A4bc*sc*i*)
-Supplements:    modalias(pci:v00008086d00002720sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00002723sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002723sv*sd00000080bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002723sv*sd00000084bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002723sv*sd00000088bc*sc*i*)
@@ -2258,7 +2259,7 @@ Supplements:    modalias(pci:v00008086d00002723sv*sd00001654bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002723sv*sd00002080bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002723sv*sd00004080bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002723sv*sd00004088bc*sc*i*)
-Supplements:    modalias(pci:v00008086d00002723sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00002725sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002725sv*sd00000020bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002725sv*sd00000024bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002725sv*sd00000090bc*sc*i*)
@@ -2271,7 +2272,7 @@ Supplements:    modalias(pci:v00008086d00002725sv*sd00006020bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002725sv*sd00006024bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002725sv*sd0000E020bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002725sv*sd0000E024bc*sc*i*)
-Supplements:    modalias(pci:v00008086d00002725sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00002726sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002726sv*sd00000070bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002726sv*sd00000074bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002726sv*sd00000078bc*sc*i*)
@@ -2282,9 +2283,9 @@ Supplements:    modalias(pci:v00008086d00002726sv*sd000000B0bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002726sv*sd00000510bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002726sv*sd00002074bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002726sv*sd00004070bc*sc*i*)
-Supplements:    modalias(pci:v00008086d00002726sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002727sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002729sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000030DCsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000030DCsv*sd00000030bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000030DCsv*sd00000034bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000030DCsv*sd00000038bc*sc*i*)
@@ -2313,7 +2314,6 @@ Supplements:    modalias(pci:v00008086d000030DCsv*sd00004034bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000030DCsv*sd000040A4bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000030DCsv*sd00004234bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000030DCsv*sd000042A4bc*sc*i*)
-Supplements:    modalias(pci:v00008086d000030DCsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00003165sv*sd00004010bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00003165sv*sd00004012bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00003165sv*sd00004110bc*sc*i*)
@@ -2324,6 +2324,7 @@ Supplements:    modalias(pci:v00008086d00003165sv*sd00008110bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00003166sv*sd00004210bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00003166sv*sd00004212bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00003166sv*sd00004310bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000031DCsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000031DCsv*sd00000030bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000031DCsv*sd00000034bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000031DCsv*sd00000038bc*sc*i*)
@@ -2352,7 +2353,7 @@ Supplements:    modalias(pci:v00008086d000031DCsv*sd00004034bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000031DCsv*sd000040A4bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000031DCsv*sd00004234bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000031DCsv*sd000042A4bc*sc*i*)
-Supplements:    modalias(pci:v00008086d000031DCsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000034F0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000034F0sv*sd00000030bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000034F0sv*sd00000034bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000034F0sv*sd00000038bc*sc*i*)
@@ -2391,7 +2392,7 @@ Supplements:    modalias(pci:v00008086d000034F0sv*sd000040A4bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000034F0sv*sd00004234bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000034F0sv*sd00004244bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000034F0sv*sd000042A4bc*sc*i*)
-Supplements:    modalias(pci:v00008086d000034F0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00003DF0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00003DF0sv*sd00000030bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00003DF0sv*sd00000034bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00003DF0sv*sd00000038bc*sc*i*)
@@ -2420,13 +2421,12 @@ Supplements:    modalias(pci:v00008086d00003DF0sv*sd00004034bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00003DF0sv*sd000040A4bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00003DF0sv*sd00004234bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00003DF0sv*sd000042A4bc*sc*i*)
-Supplements:    modalias(pci:v00008086d00003DF0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004222sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00004222sv*sd00001005bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00004222sv*sd00001034bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00004222sv*sd00001044bc*sc*i*)
-Supplements:    modalias(pci:v00008086d00004222sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00008086d00004227sv*sd00001014bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00004227sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004227sv*sd00001014bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00004229sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000422Bsv*sd00001101bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000422Bsv*sd00001108bc*sc*i*)
@@ -2492,6 +2492,7 @@ Supplements:    modalias(pci:v00008086d0000423Dsv*sd00001211bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000423Dsv*sd00001216bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000423Dsv*sd00001311bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000423Dsv*sd00001316bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000043F0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000043F0sv*sd00000030bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000043F0sv*sd00000034bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000043F0sv*sd00000038bc*sc*i*)
@@ -2532,29 +2533,29 @@ Supplements:    modalias(pci:v00008086d000043F0sv*sd000040A4bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000043F0sv*sd00004234bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000043F0sv*sd00004244bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000043F0sv*sd000042A4bc*sc*i*)
-Supplements:    modalias(pci:v00008086d000043F0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00004DF0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000051F0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000051F1sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000054F0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007740sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00007A70sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007A70sv*sd00000090bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007A70sv*sd00000098bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007A70sv*sd000000B0bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007A70sv*sd00000310bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007A70sv*sd00000510bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007A70sv*sd00000A10bc*sc*i*)
-Supplements:    modalias(pci:v00008086d00007A70sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00007AF0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007AF0sv*sd00000090bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007AF0sv*sd00000098bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007AF0sv*sd000000B0bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007AF0sv*sd00000310bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007AF0sv*sd00000510bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007AF0sv*sd00000A10bc*sc*i*)
-Supplements:    modalias(pci:v00008086d00007AF0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007E40sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007E80sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007F70sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00009DF0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00009DF0sv*sd00000000bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00009DF0sv*sd00000010bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00009DF0sv*sd00000030bc*sc*i*)
@@ -2594,7 +2595,7 @@ Supplements:    modalias(pci:v00008086d00009DF0sv*sd00004034bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00009DF0sv*sd000040A4bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00009DF0sv*sd00004234bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00009DF0sv*sd000042A4bc*sc*i*)
-Supplements:    modalias(pci:v00008086d00009DF0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A0F0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A0F0sv*sd00000000bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A0F0sv*sd00000030bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A0F0sv*sd00000034bc*sc*i*)
@@ -2638,7 +2639,7 @@ Supplements:    modalias(pci:v00008086d0000A0F0sv*sd000040A4bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A0F0sv*sd00004234bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A0F0sv*sd00004244bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A0F0sv*sd000042A4bc*sc*i*)
-Supplements:    modalias(pci:v00008086d0000A0F0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A370sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A370sv*sd00000030bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A370sv*sd00000034bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A370sv*sd00000038bc*sc*i*)
@@ -2667,7 +2668,6 @@ Supplements:    modalias(pci:v00008086d0000A370sv*sd00004034bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A370sv*sd000040A4bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A370sv*sd00004234bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A370sv*sd000042A4bc*sc*i*)
-Supplements:    modalias(pci:v00008086d0000A370sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A840sv*sd*bc*sc*i*)
 
 %description iwlwifi
@@ -2678,7 +2678,7 @@ Intel wireless drivers.
 Summary:        Kernel firmware files for Cavium LiquidIO driver
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -2697,7 +2697,7 @@ Cavium LiquidIO driver.
 Summary:        Kernel firmware files for Marvell network drivers
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -2739,7 +2739,7 @@ Marvell network drivers.
 Summary:        Kernel firmware files for various Video4Linux drivers
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -2869,9 +2869,9 @@ Supplements:    modalias(usb:v1164p2EDCd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v1415p0003d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v147Fp2758d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v14F7p0004d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v1554p5010d[0-2]*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v1554p5010d3[0-9A-E]*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v1554p5010d3F00dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v1554p5010d3[0-9A-E]*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v1554p5010d[0-2]*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v1584p6003d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v15A4p1000d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v15A4p1001d*dc*dsc*dp*ic*isc*ip*in*)
@@ -2928,7 +2928,7 @@ various Video4Linux drivers.
 Summary:        Kernel firmware files for Mediatek network drivers
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -3025,7 +3025,7 @@ Mediatek network drivers.
 Summary:        Kernel firmware files for Mellanox Spectrum switch driver
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -3045,7 +3045,7 @@ Mellanox Spectrum switch driver.
 Summary:        Kernel firmware files for Marvell WiFi fullmac drivers
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -3091,7 +3091,7 @@ Marvell WiFi fullmac drivers.
 Summary:        Kernel firmware files for various network drivers
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -3186,11 +3186,11 @@ Supplements:    modalias(pci:v000014E4d00001688sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d00001689sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d00001690sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d00001691sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000014E4d00001692sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d00001692sv00001025sd00000601bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d00001692sv00001025sd00000612bc*sc*i*)
-Supplements:    modalias(pci:v000014E4d00001692sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v000014E4d00001693sv000017AAsd00003056bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d00001693sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000014E4d00001693sv000017AAsd00003056bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d00001694sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d00001696sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d00001698sv*sd*bc*sc*i*)
@@ -3319,7 +3319,7 @@ various network drivers.
 Summary:        Kernel firmware files for Netronome Flow Processor driver
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -3341,7 +3341,7 @@ Netronome Flow Processor driver.
 Summary:        Kernel firmware files for Nvidia Tegra and graphics drivers
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -3455,7 +3455,7 @@ Nvidia Tegra and graphics drivers.
 Summary:        Kernel firmware files for various platform drivers
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -3520,169 +3520,8 @@ Supplements:    modalias(pci:v0000177Dd0000A0F2sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v0000177Dd0000A0FDsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001A03d00002000sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00001A03d00002010sv*sd*bc03sc*i*)
-Supplements:    modalias(pcmcia:m0013c0000f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0032c0A05f*fn*pfn01pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0032c0B05f*fn*pfn01pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0032c0E01f*fn*pfn01pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0032c1101f*fn*pfn01pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0057c0021f*fn*pfn00pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0057c0021f*fn*pfn01pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0057c1004f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0089c0301f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0089c110Af*fn*pfn01pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m00A4c0276f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0101c0035f*fn01pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0101c0039f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0101c003Df*fn01pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0101c0556f*fn01pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0101c0562f*fn01pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0104c0006f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0104c000Af*fn*pfn00pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0104c000Af*fn*pfn01pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0104c000Df*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0104c0070f*fn00pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0104c0070f*fn01pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0104c0075f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0104c0145f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0105c0101f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0105c0D0Af*fn*pfn01pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0105c0E0Af*fn*pfn01pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0105c100Af*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0105c3E0Af*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0105c410Af*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0105cEA15f*fn*pfn00pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0105cEA15f*fn*pfn01pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0107c0002f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0109c0501f*fn*pfn00pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0109c0501f*fn*pfn01pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m010Bc0D50f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m010Bc0D51f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m010Bc0D52f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m010Bc0D53f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m010BcD180f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0115c3330f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0124c0100f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0134c5600f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0137c000Ef*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0137c001Bf*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0137c0025f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0137c0045f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0137c0052f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0138c110Af*fn*pfn01pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m013FcA555f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0140c000Af*fn*pfn00pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0140c000Af*fn*pfn01pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0143c3341f*fn*pfn00pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0143c3341f*fn*pfn01pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0143cC0ABf*fn*pfn00pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0143cC0ABf*fn*pfn01pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0149c0230f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0149c4530f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0149cC1ABf*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m016Cc0006f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m016Cc0020f*fn00pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m016Cc0020f*fn01pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m016Cc0023f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m016Cc0081f*fn*pfn01pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0175c0000f*fn00pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0175c0000f*fn01pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0186c0110f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0192cA555f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m01BFc8041f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0200c0001f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0213c2452f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m021Bc0101f*fn*pfn00pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m021Bc0101f*fn*pfn01pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m026Fc0300f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m026Fc0307f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m026Fc030Af*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0274c1103f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0274c1121f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m0279c950Bf*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m08A1cC0ABf*fn*pfn00pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m08A1cC0ABf*fn*pfn01pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:mC001c0009f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f02fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn00pfn*pa11C2DA09pb7289DC5DpcAAD95E1Fpd*)
-Supplements:    modalias(pcmcia:m*c*f*fn00pfn*pa3BEB8CF2pb16DC1BA7pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn00pfn*pa3BEB8CF2pb19816C41pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn00pfn*pa3BEB8CF2pb1CCE7AC4pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn00pfn*pa3BEB8CF2pb64112029pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn00pfn*pa3BEB8CF2pbDB9E58BCpc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn00pfn*pa8FDF8F89pbDD5ED9E8pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn00pfn*paB569A6E5pb4BDF15C3pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn00pfn*paB569A6E5pb5BD4FF2Cpc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn00pfn*paB569A6E5pbAE911C15pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn00pfn*pa*pb1ED59302pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn00pfn*pa*pb*pc*pd58FC6056*)
-Supplements:    modalias(pcmcia:m*c*f*fn01pfn*pa11C2DA09pb7289DC5DpcAAD95E1Fpd*)
-Supplements:    modalias(pcmcia:m*c*f*fn01pfn*pa3BEB8CF2pb16DC1BA7pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn01pfn*pa3BEB8CF2pb19816C41pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn01pfn*pa3BEB8CF2pb1CCE7AC4pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn01pfn*pa3BEB8CF2pb64112029pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn01pfn*pa8FDF8F89pbDD5ED9E8pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn01pfn*paB569A6E5pb4BDF15C3pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn01pfn*paB569A6E5pb5BD4FF2Cpc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn01pfn*paB569A6E5pbAE911C15pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn01pfn*paF03E4E77pb*pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn01pfn*pa*pb1ED59302pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn01pfn*pa*pb*pc*pd58FC6056*)
-Supplements:    modalias(pcmcia:m*c*f*fn02pfn*pa3BEB8CF2pb1CCE7AC4pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn03pfn*pa3BEB8CF2pb1CCE7AC4pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn00pa0733CC81pbB3765033pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn00pa0C2F80CDpb656947B9pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn00pa0C2F80CDpbDC9BA5EDpc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn00pa1A424A1CpbB23897FFpc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn00pa281F1C5Dpb570F348Epc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn00pa281F1C5Dpb6FDCACEEpc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn00pa2A151FACpb48B932AEpc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn00pa578BA6E7pbB0AC62C4pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paB2CED065pb3CED0555pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paB4585A1Apb53F922F8pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paBA9EB7E2pb077C174Epc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paDCFE12D3pbC67C648Fpc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paDCFE12D3pbCD8906CCpc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paDD9989BEpb662C394Cpc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paF510DB04pb0143B773pc46A52D63pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paF510DB04pb04CD2988pc46A52D63pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paF510DB04pb52D21E1EpcBD6C43EFpd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paF510DB04pb52D21E1Epc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paF510DB04pb856D66C8pcBD6C43EFpd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paF5F025C2pb338E8155pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paF5F025C2pb4AE85D35pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paF7CB0B07pb66881874pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paF7CB0B07pb7A821B58pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa0733CC81pbB3765033pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa0C2F80CDpb656947B9pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa0C2F80CDpbDC9BA5EDpc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa18DF0BA0pb831B1064pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa1A424A1CpbB23897FFpc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa1EAE9475pbD9A93BEDpc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa281F1C5Dpb570F348Epc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa281F1C5Dpb6FDCACEEpc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa2A151FACpb48B932AEpc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa2E3EE845pbECA401BFpc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa2E3EE845pb*pc0EA978EApd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa2E3EE845pb*pc76DF1D29pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa2E3EE845pb*pc80609023pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa2E3EE845pb*pcA650C32Apd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa2E3EE845pb*pcF1403719pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa578BA6E7pbB0AC62C4pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paB2CED065pb3CED0555pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paB4585A1Apb53F922F8pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paBA9EB7E2pb077C174Epc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paDCFE12D3pbC67C648Fpc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paDCFE12D3pbCD8906CCpc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paDD9989BEpb662C394Cpc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paF510DB04pb0143B773pc46A52D63pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paF510DB04pb04CD2988pc46A52D63pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paF510DB04pb52D21E1EpcBD6C43EFpd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paF510DB04pb52D21E1Epc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paF510DB04pb856D66C8pcBD6C43EFpd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paF5F025C2pb338E8155pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paF5F025C2pb4AE85D35pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paF7CB0B07pb66881874pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paF7CB0B07pb7A821B58pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn*pa*pbA996D078pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn*pa*pbAD20B156pc*pd*)
 Supplements:    modalias(pcmcia:m*c*f*fn*pfn*pa00B2E941pb43AC239Bpc*pd*)
 Supplements:    modalias(pcmcia:m*c*f*fn*pfn*pa00B2E941pb4B0D829Epc*pd*)
 Supplements:    modalias(pcmcia:m*c*f*fn*pfn*pa01C43AE1pb00B2E941pc*pd*)
@@ -3830,8 +3669,8 @@ Supplements:    modalias(pcmcia:m*c*f*fn*pfn*pa88FCDEDApb6D772737pc*pd*)
 Supplements:    modalias(pcmcia:m*c*f*fn*pfn*pa88FCDEDApb81090922pc*pd*)
 Supplements:    modalias(pcmcia:m*c*f*fn*pfn*pa88FCDEDApbC1E2521Cpc*pd*)
 Supplements:    modalias(pcmcia:m*c*f*fn*pfn*pa8DD86181pbF2B52517pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn*pa932B7189pb699E4436pc6F6652E0pd*)
 Supplements:    modalias(pcmcia:m*c*f*fn*pfn*pa932B7189pb*pc5E9D92C0pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn*pa932B7189pb699E4436pc6F6652E0pd*)
 Supplements:    modalias(pcmcia:m*c*f*fn*pfn*pa93693494pb93693494pc*pd*)
 Supplements:    modalias(pcmcia:m*c*f*fn*pfn*pa93B15570pb461C5247pc*pd*)
 Supplements:    modalias(pcmcia:m*c*f*fn*pfn*pa93B15570pb75EC3EFBpc*pd*)
@@ -3897,17 +3736,178 @@ Supplements:    modalias(pcmcia:m*c*f*fn*pfn*paEBF91155pb30074C80pc*pd*)
 Supplements:    modalias(pcmcia:m*c*f*fn*pfn*paEBF91155pb7F5A4F50pc*pd*)
 Supplements:    modalias(pcmcia:m*c*f*fn*pfn*paEE138382pbD4CE9B02pc*pd*)
 Supplements:    modalias(pcmcia:m*c*f*fn*pfn*paEE5AF0ADpb7C2ADD04pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn*paF510DB04pb*pcBB2CCE4Apd*)
 Supplements:    modalias(pcmcia:m*c*f*fn*pfn*paF510DB04pb*pc*pdBD6C43EF*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn*paF510DB04pb*pcBB2CCE4Apd*)
 Supplements:    modalias(pcmcia:m*c*f*fn*pfn*paF5F025C2pb3A30E110pc*pd*)
 Supplements:    modalias(pcmcia:m*c*f*fn*pfn*paF7CB0B07pb6701DA11pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn*paF866B0B0pb6F6652E0pc*pd*)
 Supplements:    modalias(pcmcia:m*c*f*fn*pfn*paF866B0B0pb*pcF6E4A31Epd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn*paF866B0B0pb6F6652E0pc*pd*)
 Supplements:    modalias(pcmcia:m*c*f*fn*pfn*paF8A097E3pb97880447pc*pd*)
 Supplements:    modalias(pcmcia:m*c*f*fn*pfn*paFA2E424Dpb3953D9B9pc*pd*)
 Supplements:    modalias(pcmcia:m*c*f*fn*pfn*paFA2E424DpbE9190D8Apc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn*pa*pbA996D078pc*pd*)
-Supplements:    modalias(pcmcia:m*c*f*fn*pfn*pa*pbAD20B156pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn00pa0733CC81pbB3765033pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn00pa0C2F80CDpb656947B9pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn00pa0C2F80CDpbDC9BA5EDpc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn00pa1A424A1CpbB23897FFpc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn00pa281F1C5Dpb570F348Epc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn00pa281F1C5Dpb6FDCACEEpc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn00pa2A151FACpb48B932AEpc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn00pa578BA6E7pbB0AC62C4pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paB2CED065pb3CED0555pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paB4585A1Apb53F922F8pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paBA9EB7E2pb077C174Epc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paDCFE12D3pbC67C648Fpc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paDCFE12D3pbCD8906CCpc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paDD9989BEpb662C394Cpc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paF510DB04pb0143B773pc46A52D63pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paF510DB04pb04CD2988pc46A52D63pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paF510DB04pb52D21E1Epc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paF510DB04pb52D21E1EpcBD6C43EFpd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paF510DB04pb856D66C8pcBD6C43EFpd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paF5F025C2pb338E8155pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paF5F025C2pb4AE85D35pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paF7CB0B07pb66881874pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn00paF7CB0B07pb7A821B58pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa0733CC81pbB3765033pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa0C2F80CDpb656947B9pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa0C2F80CDpbDC9BA5EDpc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa18DF0BA0pb831B1064pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa1A424A1CpbB23897FFpc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa1EAE9475pbD9A93BEDpc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa281F1C5Dpb570F348Epc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa281F1C5Dpb6FDCACEEpc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa2A151FACpb48B932AEpc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa2E3EE845pb*pc0EA978EApd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa2E3EE845pb*pc76DF1D29pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa2E3EE845pb*pc80609023pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa2E3EE845pb*pcA650C32Apd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa2E3EE845pb*pcF1403719pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa2E3EE845pbECA401BFpc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01pa578BA6E7pbB0AC62C4pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paB2CED065pb3CED0555pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paB4585A1Apb53F922F8pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paBA9EB7E2pb077C174Epc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paDCFE12D3pbC67C648Fpc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paDCFE12D3pbCD8906CCpc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paDD9989BEpb662C394Cpc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paF510DB04pb0143B773pc46A52D63pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paF510DB04pb04CD2988pc46A52D63pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paF510DB04pb52D21E1Epc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paF510DB04pb52D21E1EpcBD6C43EFpd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paF510DB04pb856D66C8pcBD6C43EFpd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paF5F025C2pb338E8155pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paF5F025C2pb4AE85D35pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paF7CB0B07pb66881874pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn01paF7CB0B07pb7A821B58pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn00pfn*pa*pb*pc*pd58FC6056*)
+Supplements:    modalias(pcmcia:m*c*f*fn00pfn*pa*pb1ED59302pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn00pfn*pa11C2DA09pb7289DC5DpcAAD95E1Fpd*)
+Supplements:    modalias(pcmcia:m*c*f*fn00pfn*pa3BEB8CF2pb16DC1BA7pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn00pfn*pa3BEB8CF2pb19816C41pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn00pfn*pa3BEB8CF2pb1CCE7AC4pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn00pfn*pa3BEB8CF2pb64112029pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn00pfn*pa3BEB8CF2pbDB9E58BCpc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn00pfn*pa8FDF8F89pbDD5ED9E8pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn00pfn*paB569A6E5pb4BDF15C3pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn00pfn*paB569A6E5pb5BD4FF2Cpc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn00pfn*paB569A6E5pbAE911C15pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn01pfn*pa*pb*pc*pd58FC6056*)
+Supplements:    modalias(pcmcia:m*c*f*fn01pfn*pa*pb1ED59302pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn01pfn*pa11C2DA09pb7289DC5DpcAAD95E1Fpd*)
+Supplements:    modalias(pcmcia:m*c*f*fn01pfn*pa3BEB8CF2pb16DC1BA7pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn01pfn*pa3BEB8CF2pb19816C41pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn01pfn*pa3BEB8CF2pb1CCE7AC4pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn01pfn*pa3BEB8CF2pb64112029pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn01pfn*pa8FDF8F89pbDD5ED9E8pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn01pfn*paB569A6E5pb4BDF15C3pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn01pfn*paB569A6E5pb5BD4FF2Cpc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn01pfn*paB569A6E5pbAE911C15pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn01pfn*paF03E4E77pb*pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn02pfn*pa3BEB8CF2pb1CCE7AC4pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn03pfn*pa3BEB8CF2pb1CCE7AC4pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f02fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0013c0000f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0032c0A05f*fn*pfn01pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0032c0B05f*fn*pfn01pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0032c0E01f*fn*pfn01pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0032c1101f*fn*pfn01pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0057c0021f*fn*pfn00pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0057c0021f*fn*pfn01pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0057c1004f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0089c0301f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0089c110Af*fn*pfn01pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m00A4c0276f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0101c0035f*fn01pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0101c0039f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0101c003Df*fn01pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0101c0556f*fn01pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0101c0562f*fn01pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0104c0006f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0104c000Af*fn*pfn00pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0104c000Af*fn*pfn01pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0104c000Df*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0104c0070f*fn00pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0104c0070f*fn01pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0104c0075f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0104c0145f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0105c0101f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0105c0D0Af*fn*pfn01pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0105c0E0Af*fn*pfn01pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0105c100Af*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0105c3E0Af*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0105c410Af*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0105cEA15f*fn*pfn00pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0105cEA15f*fn*pfn01pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0107c0002f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0109c0501f*fn*pfn00pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0109c0501f*fn*pfn01pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m010Bc0D50f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m010Bc0D51f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m010Bc0D52f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m010Bc0D53f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m010BcD180f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0115c3330f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0124c0100f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0134c5600f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0137c000Ef*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0137c001Bf*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0137c0025f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0137c0045f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0137c0052f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0138c110Af*fn*pfn01pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m013FcA555f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0140c000Af*fn*pfn00pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0140c000Af*fn*pfn01pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0143c3341f*fn*pfn00pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0143c3341f*fn*pfn01pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0143cC0ABf*fn*pfn00pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0143cC0ABf*fn*pfn01pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0149c0230f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0149c4530f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0149cC1ABf*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m016Cc0006f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m016Cc0020f*fn00pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m016Cc0020f*fn01pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m016Cc0023f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m016Cc0081f*fn*pfn01pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0175c0000f*fn00pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0175c0000f*fn01pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0186c0110f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0192cA555f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m01BFc8041f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0200c0001f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0213c2452f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m021Bc0101f*fn*pfn00pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m021Bc0101f*fn*pfn01pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m026Fc0300f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m026Fc0307f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m026Fc030Af*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0274c1103f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0274c1121f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m0279c950Bf*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m08A1cC0ABf*fn*pfn00pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m08A1cC0ABf*fn*pfn01pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:mC001c0009f*fn*pfn*pa*pb*pc*pd*)
 Supplements:    modalias(platform:imx25-sdma)
 Supplements:    modalias(platform:imx31-sdma)
 Supplements:    modalias(platform:imx35-sdma)
@@ -3946,7 +3946,7 @@ various platform drivers.
 Summary:        Kernel firmware files for Marvell Prestera ASIC driver
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -3962,7 +3962,7 @@ Marvell Prestera ASIC driver.
 Summary:        Kernel firmware files for Qualcomm device drivers
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -4084,7 +4084,7 @@ Qualcomm device drivers.
 Summary:        Kernel firmware files for QLogic network drivers
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -4147,13 +4147,15 @@ QLogic network drivers.
 Summary:        Kernel firmware files for Radeon graphics driver
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
 %endif
+Supplements:    modalias(pci:v00001002d*sv*sd*bc03sc00i00*)
+Supplements:    modalias(pci:v00001002d*sv*sd*bc03sc80i00*)
 Supplements:    modalias(pci:v00001002d00001304sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00001305sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00001306sv*sd*bc*sc*i*)
@@ -5007,8 +5009,6 @@ Supplements:    modalias(pci:v00001002d0000999Dsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000099A0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000099A2sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000099A4sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001002d*sv*sd*bc03sc00i00*)
-Supplements:    modalias(pci:v00001002d*sv*sd*bc03sc80i00*)
 
 %description radeon
 This package contains compressed kernel firmware files for
@@ -5018,7 +5018,7 @@ Radeon graphics driver.
 Summary:        Kernel firmware files for Realtek wireless drivers
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -5058,8 +5058,8 @@ Supplements:    modalias(pci:v000010ECd00008852sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010ECd0000A85Asv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010ECd0000B723sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010FFd00008168sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001186d00004300sv00001186sd00004B10bc*sc*i*)
 Supplements:    modalias(pci:v00001186d00004300sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001186d00004300sv00001186sd00004B10bc*sc*i*)
 Supplements:    modalias(pci:v00001186d00004302sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001259d0000C107sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001432d00007708sv*sd*bc*sc*i*)
@@ -5146,30 +5146,30 @@ Supplements:    modalias(usb:v04E8pA101d*dc*dsc*dp*icFFisc*ip*in*)
 Supplements:    modalias(usb:v04F2pAFF2d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v04F2pAFF5d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v04F2pAFF6d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v04F2pAFF7d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v04F2pAFF7d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v04F2pAFF8d*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v04F2pAFF7d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v04F2pAFF8d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v04F2pAFF9d*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v04F2pAFF8d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v04F2pAFF9d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v04F2pAFFAd*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v04F2pAFF9d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v04F2pAFFAd*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v04F2pAFFBd*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v04F2pAFFAd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v04F2pAFFBd*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v04F2pAFFCd*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v04F2pAFFBd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v04F2pAFFCd*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v04F2pAFFCd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v050Dp1003d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v050Dp1004d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v050Dp1004d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v050Dp1102d*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v050Dp1004d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v050Dp1102d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v050Dp1102d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v050Dp1103d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v050Dp11F1d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v050Dp11F2d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v050Dp2102d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v050Dp2102d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v050Dp2103d*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v050Dp2102d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v050Dp2103d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v050Dp2103d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v050Dp8053d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v050Dp805Cd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v050Dp815Cd*dc*dsc*dp*ic*isc*ip*in*)
@@ -5187,15 +5187,15 @@ Supplements:    modalias(usb:v0586p3416d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0586p3418d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0586p341Ad*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0586p341Ed*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v0586p341Fd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0586p341Fd*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0586p341Fd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0586p3421d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0586p343Ed*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v05A6p0101d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v06F8pE031d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v06F8pE032d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v06F8pE033d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v06F8pE033d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v06F8pE033d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v06F8pE034d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v06F8pE035d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v06F8pE036d*dc*dsc*dp*ic*isc*ip*in*)
@@ -5216,8 +5216,8 @@ Supplements:    modalias(usb:v07AAp0041d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v07AAp0042d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v07AAp0047d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v07AAp0051d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v07AAp0056d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v07AAp0056d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v07AAp0056d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v07B8p2770d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v07B8p2870d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v07B8p3070d*dc*dsc*dp*ic*isc*ip*in*)
@@ -5225,12 +5225,12 @@ Supplements:    modalias(usb:v07B8p3071d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v07B8p3072d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v07B8p3073d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v07B8p3074d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v07B8p8178d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v07B8p8178d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v07B8p8178d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v07B8p8179d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v07B8p8188d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v07B8p8189d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v07B8p8189d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v07B8p8189d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v07D1p3300d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v07D1p3302d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v07D1p3303d*dc*dsc*dp*ic*isc*ip*in*)
@@ -5267,14 +5267,14 @@ Supplements:    modalias(usb:v083ApF511d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0846p9012d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0846p9013d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0846p9019d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v0846p9021d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0846p9021d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v0846p9041d*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v0846p9021d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0846p9041d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0846p9041d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0846p9042d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0846p9043d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v0846pF001d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0846pF001d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0846pF001d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v08B9p1197d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0930p0A07d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0955p09FFd*dc*dsc*dp*ic02isc06ip00in*)
@@ -5291,26 +5291,26 @@ Supplements:    modalias(usb:v0B05p1790d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0B05p1791d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0B05p179Dd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0B05p17A7d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v0B05p17ABd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0B05p17ABd*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0B05p17ABd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0B05p17ADd*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v0B05p17BAd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0B05p17BAd*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0B05p17BAd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0B05p17BCd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0B05p17E8d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0B05p18F0d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0BDAp0179d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v0BDAp018Ad*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp018Ad*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0BDAp018Ad*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp0724d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp1724d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp1E1Ed*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp2E2Ed*dc*dsc*dp*icFFiscFFipFFin*)
-Supplements:    modalias(usb:v0BDAp317Fd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp317Fd*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0BDAp317Fd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp5077d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v0BDAp5088d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp5088d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0BDAp5088d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp8050d*dc*dsc*dp*ic02isc06ip00in*)
 Supplements:    modalias(usb:v0BDAp8050d*dc*dsc*dp*icFFisc*ip*in*)
 Supplements:    modalias(usb:v0BDAp8053d*dc*dsc*dp*ic02isc06ip00in*)
@@ -5323,37 +5323,37 @@ Supplements:    modalias(usb:v0BDAp8155d*dc*dsc*dp*ic02isc06ip00in*)
 Supplements:    modalias(usb:v0BDAp8155d*dc*dsc*dp*icFFisc*ip*in*)
 Supplements:    modalias(usb:v0BDAp8156d*dc*dsc*dp*ic02isc06ip00in*)
 Supplements:    modalias(usb:v0BDAp8156d*dc*dsc*dp*icFFisc*ip*in*)
-Supplements:    modalias(usb:v0BDAp8170d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp8170d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0BDAp8170d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp8171d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0BDAp8172d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0BDAp8173d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0BDAp8174d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v0BDAp8176d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp8176d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v0BDAp8177d*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v0BDAp8176d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp8177d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v0BDAp8178d*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v0BDAp8177d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp8178d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0BDAp8178d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp8179d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v0BDAp817Ad*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp817Ad*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v0BDAp817Bd*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v0BDAp817Ad*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp817Bd*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0BDAp817Bd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp817Cd*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v0BDAp817Dd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp817Dd*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v0BDAp817Ed*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v0BDAp817Dd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp817Ed*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v0BDAp817Fd*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v0BDAp817Ed*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp817Fd*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0BDAp817Fd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp8186d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v0BDAp818Ad*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp818Ad*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0BDAp818Ad*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp818Bd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp818Cd*dc*dsc*dp*icFFiscFFipFFin*)
-Supplements:    modalias(usb:v0BDAp8191d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp8191d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0BDAp8191d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp8192d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0BDAp819Ad*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0BDAp8712d*dc*dsc*dp*ic*isc*ip*in*)
@@ -5404,20 +5404,20 @@ Supplements:    modalias(usb:v0DF6p004Cd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0DF6p004Dd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0DF6p0050d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0DF6p0051d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v0DF6p0052d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0DF6p0052d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0DF6p0052d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0DF6p0053d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0DF6p0057d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0DF6p0058d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0DF6p0059d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0DF6p005Bd*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v0DF6p005Cd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0DF6p005Cd*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0DF6p005Cd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0DF6p005Dd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0DF6p005Fd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0DF6p0060d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v0DF6p0061d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0DF6p0061d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0DF6p0061d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0DF6p0062d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0DF6p0063d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0DF6p0064d*dc*dsc*dp*ic*isc*ip*in*)
@@ -5430,8 +5430,8 @@ Supplements:    modalias(usb:v0DF6p006Ad*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0DF6p006Cd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0DF6p006Ed*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0DF6p006Fd*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v0DF6p0070d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0DF6p0070d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0DF6p0070d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0DF6p0076d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0DF6p0077d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0DF6p0078d*dc*dsc*dp*ic*isc*ip*in*)
@@ -5446,19 +5446,19 @@ Supplements:    modalias(usb:v0E66p0015d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0E66p0016d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0E66p0017d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0E66p0018d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v0E66p0019d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0E66p0019d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v0E66p0020d*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v0E66p0019d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0E66p0020d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0E66p0020d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0E66p0021d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0EB0p9061d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v0EB0p9071d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0EB0p9071d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0EB0p9071d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0FE9pB307d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v100Dp9031d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v100Dp9032d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v103Cp1629d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v103Cp1629d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v103Cp1629d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v1044p800Bd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v1044p800Cd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v1044p800Dd*dc*dsc*dp*ic*isc*ip*in*)
@@ -5492,8 +5492,8 @@ Supplements:    modalias(usb:v13D3p3339d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v13D3p3340d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v13D3p3341d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v13D3p3342d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v13D3p3357d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v13D3p3357d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v13D3p3357d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v13D3p3358d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v13D3p3359d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v13D3p3365d*dc*dsc*dp*ic*isc*ip*in*)
@@ -5610,14 +5610,14 @@ Supplements:    modalias(usb:v1EDAp2012d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v1EDAp2210d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v1EDAp2310d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2001p3306d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v2001p3307d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2001p3307d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v2001p3308d*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v2001p3307d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2001p3308d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v2001p3309d*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v2001p3308d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2001p3309d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v2001p330Ad*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v2001p3309d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2001p330Ad*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v2001p330Ad*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2001p330Bd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2001p330Dd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2001p330Fd*dc*dsc*dp*ic*isc*ip*in*)
@@ -5640,42 +5640,42 @@ Supplements:    modalias(usb:v2001p3C21d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2001p3C22d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2001p3C23d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2001p3C25d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v2019p1201d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2019p1201d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v2019p1201d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2019p4901d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v2019p4902d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2019p4902d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v2019p4902d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2019p5201d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2019pAB24d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2019pAB25d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2019pAB28d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2019pAB29d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v2019pAB2Ad*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2019pAB2Ad*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v2019pAB2Bd*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v2019pAB2Ad*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2019pAB2Bd*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v2019pAB2Ed*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v2019pAB2Bd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2019pAB2Ed*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v2019pAB2Ed*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2019pAB33d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2019pED06d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2019pED14d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2019pED16d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v2019pED17d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2019pED17d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v2019pED17d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2019pED18d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2019pED19d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v203Dp1480d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v203Dp14A1d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v203Dp14A9d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v20B8p8888d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v20F4p624Dd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v20F4p624Dd*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v20F4p624Dd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v20F4p646Bd*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v20F4p648Bd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v20F4p648Bd*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v20F4p648Bd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v20F4p724Ad*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v2357p0100d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2357p0100d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v2357p0100d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2357p0107d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2357p0108d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2357p0109d*dc*dsc*dp*icFFiscFFipFFin*)
@@ -5686,12 +5686,12 @@ Supplements:    modalias(usb:v2357p0601d*dc*dsc*dp*icFFisc*ip*in*)
 Supplements:    modalias(usb:v25D4p4CA1d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v25D4p4CABd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2C4Ep0102d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v4855p0090d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v4855p0090d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v4855p0091d*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v4855p0090d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v4855p0091d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v4856p0091d*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v4855p0091d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v4856p0091d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v4856p0091d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v5A57p0280d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v5A57p0282d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v5A57p0283d*dc*dsc*dp*ic*isc*ip*in*)
@@ -5706,10 +5706,10 @@ Supplements:    modalias(usb:v7392p7717d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v7392p7718d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v7392p7722d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v7392p7733d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v7392p7811d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v7392p7811d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v7392p7822d*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v7392p7811d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v7392p7822d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v7392p7822d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v7392pA611d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v7392pB811d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v8516p2070d*dc*dsc*dp*ic*isc*ip*in*)
@@ -5731,7 +5731,7 @@ Realtek wireless drivers.
 Summary:        Kernel firmware files for various serial drivers
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -5904,7 +5904,7 @@ various serial drivers.
 Summary:        Kernel firmware files for various sound drivers
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -5960,7 +5960,7 @@ various sound drivers.
 Summary:        Kernel firmware files for Texas Instruments wireless drivers
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -5978,7 +5978,7 @@ Texas Instruments wireless drivers.
 Summary:        Kernel firmware files for Eagle IV USB ADSL modem driver
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -6028,7 +6028,7 @@ Eagle IV USB ADSL modem driver.
 Summary:        Kernel firmware files for various USB WiFi / Ethernet drivers
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 %if 0%{?suse_version} >= 1550
@@ -6155,7 +6155,6 @@ Supplements:    modalias(usb:v7392p7618d*dc*dsc*dp*ic*isc*ip*in*)
 This package contains compressed kernel firmware files for
 various USB WiFi / Ethernet drivers.
 
-
 %prep
 %setup -q
 %patch1 -p1
@@ -6179,213 +6178,317 @@ sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 %if "%flavor" != "compressed"
 %post
 %{?regenerate_initrd_post}
+
 %postun
 %{?regenerate_initrd_post}
+
 %posttrans
 %{?regenerate_initrd_posttrans}
+
 %post -n ucode-amd
 %{?regenerate_initrd_post}
+
 %postun -n ucode-amd
 %{?regenerate_initrd_post}
+
 %posttrans -n ucode-amd
 %{?regenerate_initrd_posttrans}
 %else
+
 %post all
 %{?regenerate_initrd_post}
+
 %postun all
 %{?regenerate_initrd_post}
+
 %posttrans all
 %{?regenerate_initrd_posttrans}
+
 %post amdgpu
 %{?regenerate_initrd_post}
+
 %postun amdgpu
 %{?regenerate_initrd_post}
+
 %posttrans amdgpu
 %{?regenerate_initrd_posttrans}
+
 %post atheros
 %{?regenerate_initrd_post}
+
 %postun atheros
 %{?regenerate_initrd_post}
+
 %posttrans atheros
 %{?regenerate_initrd_posttrans}
+
 %post ath10k
 %{?regenerate_initrd_post}
+
 %postun ath10k
 %{?regenerate_initrd_post}
+
 %posttrans ath10k
 %{?regenerate_initrd_posttrans}
+
 %post ath11k
 %{?regenerate_initrd_post}
+
 %postun ath11k
 %{?regenerate_initrd_post}
+
 %posttrans ath11k
 %{?regenerate_initrd_posttrans}
+
 %post bluetooth
 %{?regenerate_initrd_post}
+
 %postun bluetooth
 %{?regenerate_initrd_post}
+
 %posttrans bluetooth
 %{?regenerate_initrd_posttrans}
+
 %post bnx2
 %{?regenerate_initrd_post}
+
 %postun bnx2
 %{?regenerate_initrd_post}
+
 %posttrans bnx2
 %{?regenerate_initrd_posttrans}
+
 %post brcm
 %{?regenerate_initrd_post}
+
 %postun brcm
 %{?regenerate_initrd_post}
+
 %posttrans brcm
 %{?regenerate_initrd_posttrans}
+
 %post chelsio
 %{?regenerate_initrd_post}
+
 %postun chelsio
 %{?regenerate_initrd_post}
+
 %posttrans chelsio
 %{?regenerate_initrd_posttrans}
+
 %post dpaa2
 %{?regenerate_initrd_post}
+
 %postun dpaa2
 %{?regenerate_initrd_post}
+
 %posttrans dpaa2
 %{?regenerate_initrd_posttrans}
+
 %post i915
 %{?regenerate_initrd_post}
+
 %postun i915
 %{?regenerate_initrd_post}
+
 %posttrans i915
 %{?regenerate_initrd_posttrans}
+
 %post intel
 %{?regenerate_initrd_post}
+
 %postun intel
 %{?regenerate_initrd_post}
+
 %posttrans intel
 %{?regenerate_initrd_posttrans}
+
 %post iwlwifi
 %{?regenerate_initrd_post}
+
 %postun iwlwifi
 %{?regenerate_initrd_post}
+
 %posttrans iwlwifi
 %{?regenerate_initrd_posttrans}
+
 %post liquidio
 %{?regenerate_initrd_post}
+
 %postun liquidio
 %{?regenerate_initrd_post}
+
 %posttrans liquidio
 %{?regenerate_initrd_posttrans}
+
 %post marvell
 %{?regenerate_initrd_post}
+
 %postun marvell
 %{?regenerate_initrd_post}
+
 %posttrans marvell
 %{?regenerate_initrd_posttrans}
+
 %post media
 %{?regenerate_initrd_post}
+
 %postun media
 %{?regenerate_initrd_post}
+
 %posttrans media
 %{?regenerate_initrd_posttrans}
+
 %post mediatek
 %{?regenerate_initrd_post}
+
 %postun mediatek
 %{?regenerate_initrd_post}
+
 %posttrans mediatek
 %{?regenerate_initrd_posttrans}
+
 %post mellanox
 %{?regenerate_initrd_post}
+
 %postun mellanox
 %{?regenerate_initrd_post}
+
 %posttrans mellanox
 %{?regenerate_initrd_posttrans}
+
 %post mwifiex
 %{?regenerate_initrd_post}
+
 %postun mwifiex
 %{?regenerate_initrd_post}
+
 %posttrans mwifiex
 %{?regenerate_initrd_posttrans}
+
 %post network
 %{?regenerate_initrd_post}
+
 %postun network
 %{?regenerate_initrd_post}
+
 %posttrans network
 %{?regenerate_initrd_posttrans}
+
 %post nfp
 %{?regenerate_initrd_post}
+
 %postun nfp
 %{?regenerate_initrd_post}
+
 %posttrans nfp
 %{?regenerate_initrd_posttrans}
+
 %post nvidia
 %{?regenerate_initrd_post}
+
 %postun nvidia
 %{?regenerate_initrd_post}
+
 %posttrans nvidia
 %{?regenerate_initrd_posttrans}
+
 %post platform
 %{?regenerate_initrd_post}
+
 %postun platform
 %{?regenerate_initrd_post}
+
 %posttrans platform
 %{?regenerate_initrd_posttrans}
+
 %post prestera
 %{?regenerate_initrd_post}
+
 %postun prestera
 %{?regenerate_initrd_post}
+
 %posttrans prestera
 %{?regenerate_initrd_posttrans}
+
 %post qcom
 %{?regenerate_initrd_post}
+
 %postun qcom
 %{?regenerate_initrd_post}
+
 %posttrans qcom
 %{?regenerate_initrd_posttrans}
+
 %post qlogic
 %{?regenerate_initrd_post}
+
 %postun qlogic
 %{?regenerate_initrd_post}
+
 %posttrans qlogic
 %{?regenerate_initrd_posttrans}
+
 %post radeon
 %{?regenerate_initrd_post}
+
 %postun radeon
 %{?regenerate_initrd_post}
+
 %posttrans radeon
 %{?regenerate_initrd_posttrans}
+
 %post realtek
 %{?regenerate_initrd_post}
+
 %postun realtek
 %{?regenerate_initrd_post}
+
 %posttrans realtek
 %{?regenerate_initrd_posttrans}
+
 %post serial
 %{?regenerate_initrd_post}
+
 %postun serial
 %{?regenerate_initrd_post}
+
 %posttrans serial
 %{?regenerate_initrd_posttrans}
+
 %post sound
 %{?regenerate_initrd_post}
+
 %postun sound
 %{?regenerate_initrd_post}
+
 %posttrans sound
 %{?regenerate_initrd_posttrans}
+
 %post ti
 %{?regenerate_initrd_post}
+
 %postun ti
 %{?regenerate_initrd_post}
+
 %posttrans ti
 %{?regenerate_initrd_posttrans}
+
 %post ueagle
 %{?regenerate_initrd_post}
+
 %postun ueagle
 %{?regenerate_initrd_post}
+
 %posttrans ueagle
 %{?regenerate_initrd_posttrans}
+
 %post usb-network
 %{?regenerate_initrd_post}
+
 %postun usb-network
 %{?regenerate_initrd_post}
+
 %posttrans usb-network
 %{?regenerate_initrd_posttrans}
 %endif
@@ -6409,36 +6512,67 @@ sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 %doc WHENCE README
 
 %files -f files-amdgpu amdgpu
+
 %files -f files-atheros atheros
+
 %files -f files-ath10k ath10k
+
 %files -f files-ath11k ath11k
+
 %files -f files-bluetooth bluetooth
+
 %files -f files-bnx2 bnx2
+
 %files -f files-brcm brcm
+
 %files -f files-chelsio chelsio
+
 %files -f files-dpaa2 dpaa2
+
 %files -f files-i915 i915
+
 %files -f files-intel intel
+
 %files -f files-iwlwifi iwlwifi
+
 %files -f files-liquidio liquidio
+
 %files -f files-marvell marvell
+
 %files -f files-media media
+
 %files -f files-mediatek mediatek
+
 %files -f files-mellanox mellanox
+
 %files -f files-mwifiex mwifiex
+
 %files -f files-network network
+
 %files -f files-nfp nfp
+
 %files -f files-nvidia nvidia
+
 %files -f files-platform platform
+
 %files -f files-prestera prestera
+
 %files -f files-qcom qcom
+
 %files -f files-qlogic qlogic
+
 %files -f files-radeon radeon
+
 %files -f files-realtek realtek
+
 %files -f files-serial serial
+
 %files -f files-sound sound
+
 %files -f files-ti ti
+
 %files -f files-ueagle ueagle
+
 %files -f files-usb-network usb-network
 %endif
 
