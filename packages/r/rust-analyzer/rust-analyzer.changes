@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 17 16:29:42 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 2022.05.17~0:
+  * Bump extension version
+  * Update test output
+  * Fix incorrect config key in client config update
+  * Update lsp-extensions hash
+  * Allow inlay hint tooltips to trigger hovers
+  * Trigger hover requests on closing brace hints
+  * Replace some SmolStr usages with String as the conversion happens anyways
+  * feat: Implement inlay hint tooltips
+  * internal: Cleanup lifetime elision hints
+
+-------------------------------------------------------------------
 Wed May 11 03:47:03 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update LICENSE in rpm spec

@@ -7,4 +7,12 @@
     <comment>I want to maintain rust-analyzer in openSUSE:Factory</comment>
     <requestid>976171</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>29dd0ac323e96a7cd57b377f62225ada</srcmd5>
+    <version>2022.05.17~0</version>
+    <time>1652872410</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977844</requestid>
+  </revision>
 </revisionlist>
