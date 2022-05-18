@@ -1,0 +1,6 @@
+<package name="google-errorprone-annotations" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="openSUSE:Factory" package="google-errorprone"/>
+  <bcntsynctag>google-errorprone</bcntsynctag>
+</package>
