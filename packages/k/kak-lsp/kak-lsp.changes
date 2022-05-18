@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Tue May 17 15:59:00 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 12.2.1:
+  * v12.2.1
+  * Update changelog for release
+  * Test code lens from haskell-language-server
+  * lsp-code-lens: pass correct args to lsp-perform-code-lens
+  * start new cycle
+  * v12.2.0
+  * Update changelog for release
+  * README: clarify "cargo install" behavior and kak-lsp.toml creation when using plug.kak
+  * README: remove misleading warning
+  * lsp-hover: limit to 20 lines via lsp_hover_max_lines
+
+-------------------------------------------------------------------
+Wed Apr  6 22:08:21 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for kak-lsp (12.1.0)

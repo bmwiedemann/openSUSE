@@ -1,0 +1,28 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://github.com/kak-lsp/kak-lsp</param>
+    <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
+    <param name="scm">git</param>
+    <param name="revision">4f9e06e27b1211fe7726712cc81c17eb2ea81ced</param>
+    <param name="match-tag">*</param>
+    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)~0</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">socvirnyl.estela@gmail.com</param>
+  </service>
+  <service mode="disabled" name="tar" />
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+  <service name="cargo_vendor" mode="disabled">
+     <param name="update">true</param>
+     <param name="srcdir">kak-lsp</param>
+     <param name="compression">xz</param>
+  </service>
+  <service name="cargo_audit" mode="disabled">
+     <param name="srcdir">kak-lsp</param>
+  </service>
+</services>
+
