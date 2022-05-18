@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 17 00:33:52 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Move gcc_version to 11 to support a number of linker flags in Leap
+- Add missing requires on lld
+
+-------------------------------------------------------------------
+Fri May 13 21:56:33 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Use system llvm and lld on Tumbleweed.
+- Add wasm-use-system-lld.patch: let wasm32 toolchain pick system
+  lld by default (if we're not using the bundled llvm).
+
+-------------------------------------------------------------------
 Thu May 12 03:09:51 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Clean up of specfile - use without macro

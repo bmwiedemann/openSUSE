@@ -25,7 +25,10 @@
 %if 0%{?sle_version} <= 150300 && 0%{?suse_version} < 1599
 # We may need a minimum gcc version for some linker flags
 # This is especially true on leap/sle
-%global gcc_version 7
+#
+# ⚠️   11 is required for a number of linker flags to be supported in sle.
+#
+%global gcc_version 11
 %endif
 
 %define obsolete_rust_versioned() \
@@ -104,11 +107,8 @@ ExcludeArch:    armv6hl
 #
 # ⚠️   SLE/LEAP 15.3 LLVM is too old!
 # ⚠️   1.59 breaks codegen with distro llvm!!!
-# ⚠️   1.60 llvm too old
-# ⚠️   Wasm requires rust-lld, which depends on bundled LLVM. Rather than add more variables
-#     to the build, keep everything consistent.
 
-%if 0%{?is_opensuse} == 1 && 0%{?suse_version} >= 1550 && "%{version_suffix}" != "1.60"
+%if 0%{?is_opensuse} == 1 && 0%{?suse_version} >= 1550
 # Can proceed with pinned llvm.
 %bcond_with bundled_llvm
 %else
@@ -233,6 +233,10 @@ Source209:      %{dl_url}/rust-%{version_current}-riscv64gc-unknown-linux-gnu.ta
 Source1000:     README.suse-maint
 # PATCH-FIX-OPENSUSE: edit src/librustc_llvm/build.rs to ignore GCC incompatible flag
 Patch0:         ignore-Wstring-conversion.patch
+%if %{without bundled_llvm}
+# PATCH-FIX-OPENSUSE: let wasm target use the system lld by default, rust-lld might not be available.
+Patch1:         wasm-use-system-lld.patch
+%endif
 BuildRequires:  chrpath
 BuildRequires:  curl
 BuildRequires:  fdupes
@@ -248,13 +252,6 @@ BuildRequires:  pkgconfig(zlib)
 BuildRequires:  sccache
 %else
 BuildRequires:  ccache
-%endif
-
-%if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 150200
-# In these distros cmake is 2.x, or 3.X < 3.13, so we need cmake3 for building llvm.
-BuildRequires:  cmake3 > 3.13.4
-%else
-BuildRequires:  cmake > 3.13.4
 %endif
 
 # For linking to platform
@@ -285,13 +282,22 @@ Suggests:       clang
 Suggests:       lld
 %endif
 
+# CMake and Ninja required to drive the bundled llvm build.
+# Cmake is also needed in tests.
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 150200
+# In these distros cmake is 2.x, or 3.X < 3.13, so we need cmake3 for building llvm.
+BuildRequires:  cmake3 > 3.13.4
+%else
+BuildRequires:  cmake > 3.13.4
+%endif
+
 %if %{with bundled_llvm}
-# Ninja required to drive the bundled llvm build.
 BuildRequires:  ninja
 %else
 # Use distro provided LLVM on Tumbleweed, but pin it to the matching LLVM!
 # For details see boo#1192067
 BuildRequires:  llvm%{llvm_version}-devel
+Requires:       lld%{llvm_version}
 %endif
 
 %if %{with test}
@@ -530,10 +536,9 @@ RUSTC_LOG=rustc_codegen_ssa::back::link=info %{rust_root}/bin/rustc -C link-args
   --enable-local-rust \
   %{!?with_test: --local-rust-root=%{rust_root} --disable-rpath} \
   %{!?with_bundled_llvm: --llvm-root=%{_prefix} --enable-llvm-link-shared} \
-  %{?with_bundled_llvm: --disable-llvm-link-shared --set llvm.link-jobs=0} \
+  %{?with_bundled_llvm: --disable-llvm-link-shared --set llvm.link-jobs=0 --set rust.lld=true} \
   %{?with_llvmtools: --set rust.use-lld=true --set llvm.use-linker=lld} \
   --default-linker=%{rust_linker} \
-  --set rust.lld=true \
   --enable-optimize \
   %{?with_sccache: --enable-sccache} \
   %{!?with_sccache: --enable-ccache} \
@@ -560,11 +565,13 @@ df -h
 
 python3 ./x.py install
 
+%if %{with bundled_llvm}
 # bsc#1199126 - rust-lld contains an rpath, which is invalid.
 chrpath -d %{buildroot}%{rustlibdir}/%{rust_triple}/bin/rust-lld
 
 # To facilitate tests when we aren't using system LLVM, we need filecheck available.
 install -m 0755 %{_builddir}/rustc-%{version}-src/build/%{rust_triple}/llvm/bin/FileCheck %{buildroot}%{rustlibdir}/%{rust_triple}/bin/FileCheck
+%endif
 
 # Remove the license files from _docdir: make install put duplicates there
 rm %{buildroot}%{_docdir}/rust/{README.md,COPYRIGHT,LICENSE*}
@@ -608,7 +615,7 @@ fi
 # Remove llvm installation
 rm -rf %{buildroot}/home
 
-# End ! with test
+# End without test
 %endif
 
 %if %{with test}
@@ -652,9 +659,10 @@ python3 ./x.py test --target=%{rust_triple}
 %{rustlibdir}%{_sysconfdir}/lldb_providers.py
 %{rustlibdir}%{_sysconfdir}/rust_types.py
 %dir %{rustlibdir}/%{rust_triple}
-%dir %{rustlibdir}/%{rust_triple}/bin
+%if %{with bundled_llvm}
+%{rustlibdir}/%{rust_triple}/bin
+%endif
 %dir %{rustlibdir}/%{rust_triple}/lib
-%{rustlibdir}/%{rust_triple}/bin/*
 %{rustlibdir}/%{rust_triple}/lib/*.so
 %{rustlibdir}/%{rust_triple}/lib/*.rlib
 %if %{with wasm32}
