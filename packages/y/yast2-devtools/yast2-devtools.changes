@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 16 07:03:10 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Extract the translatable strings also from the Qt *.ui files
+  (bsc#1198097)
+- 4.5.4
+
+-------------------------------------------------------------------
 Thu Apr 21 12:32:14 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Generate correct source location for POT messages extracted
