@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec 11 23:43:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.3:
+  * New maintainer
+  * build fixes, code cleanups
+  * fix overflow bug 
+
+-------------------------------------------------------------------
 Sun Jan 24 16:59:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.2:
