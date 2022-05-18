@@ -1,0 +1,26 @@
+Index: mutter-42.1/src/x11/session.c
+===================================================================
+--- mutter-42.1.orig/src/x11/session.c
++++ mutter-42.1/src/x11/session.c
+@@ -113,7 +113,8 @@ process_ice_messages (GIOChannel   *chan
+        * being cleaned up, since it is owned by libSM.
+        */
+       disconnect ();
+-      meta_context_terminate (ice_connection->context);
++      if (ice_connection->context != NULL)
++              meta_context_terminate (ice_connection->context);
+ 
+       return FALSE;
+     }
+Index: mutter-42.1/src/tests/meson.build
+===================================================================
+--- mutter-42.1.orig/src/tests/meson.build
++++ mutter-42.1/src/tests/meson.build
+@@ -35,6 +35,7 @@ tests_deps = [
+ ]
+ 
+ libmutter_test = shared_library(libmutter_test_name,
++                                mutter_enum_types,
+                                 mutter_test_sources,
+                                 gnu_symbol_visibility: 'hidden',
+                                 include_directories: tests_includes,
