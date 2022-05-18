@@ -65,7 +65,7 @@ sed -i 's:pytest-runner::' setup.py
 %{_bindir}/bst
 %{_bindir}/bst-artifact-server
 %{_datadir}/bash-completion/completions/bst
-%{python3_sitelib}/BuildStream-*-py3.?.egg-info
+%{python3_sitelib}/BuildStream-*-py3.*.egg-info
 %{python3_sitelib}/buildstream
 %{_mandir}/man1/bst*%{ext_man}
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 18 06:14:26 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Prepare for Python 3.10 by correcting sitelib install path. 
+
+-------------------------------------------------------------------
 Fri Mar 18 15:16:33 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.6.5:
