@@ -1,7 +1,7 @@
 #
 # spec file for package libxfce4ui
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %bcond_with git
-%define libname_gtk3 libxfce4ui-2-0
 
 Name:           libxfce4ui
 Version:        4.16.1
@@ -58,7 +57,7 @@ BuildRequires:  xfce4-dev-tools
 The libxfce4ui library provides a number of widgets commonly used by Xfce
 applications.
 
-%package -n %{libname_gtk3}
+%package -n libxfce4ui-2-0
 Summary:        Widgets Library for the Xfce Desktop Environment
 # uses exo-open
 License:        GPL-2.0-or-later
@@ -69,9 +68,17 @@ Requires:       exo-tools
 Recommends:     %{name}-branding = %{version}
 Recommends:     %{name}-lang = %{version}
 
-%description -n %{libname_gtk3}
+%description -n libxfce4ui-2-0
 The libxfce4ui library provides a number of widgets commonly used by Xfce
 applications. This package provides the GTK 3 variant of libxfce4ui.
+
+%package -n libxfce4kbd-private-3-0
+Summary:        XFCE keyboard library for xfwm
+License:        GPL-2.0-or-later
+Group:          System/Libraries
+
+%description -n libxfce4kbd-private-3-0
+The libxfce4kbd-private library provides helper functions for xfwm4.
 
 %package tools
 Summary:        Tools from libxfce4ui
@@ -85,7 +92,8 @@ This package provides tools from libxfce4ui.
 Summary:        Development Files for the libxfce4ui Library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Requires:       %{libname_gtk3} = %{version}
+Requires:       libxfce4kbd-private-3-0 = %{version}-%{release}
+Requires:       libxfce4ui-2-0 = %{version}-%{release}
 Recommends:     %{name}-doc = %{version}
 
 %description devel
@@ -105,7 +113,7 @@ This package provides the documentation for the libxfce4ui library.
 Summary:        Upstream Branding of libxfce4ui
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
-Supplements:    packageand(%{libname_gtk3}:branding-upstream)
+Supplements:    packageand(libxfce4ui-2-0:branding-upstream)
 # BRAND: xfce4-keyboard-shortcuts.xml: Controls the global keyboard shortcuts
 # BRAND: for the Xfce desktop.
 Conflicts:      otherproviders(%{name}-branding)
@@ -116,15 +124,18 @@ BuildArch:      noarch
 This package provides the upstream look and feel for libxfce4ui.
 
 
-# this should be replaced by %%lang_package once bnc#513786 is resolved
 
+
+
+
+# this should be replaced by %%lang_package once bnc#513786 is resolved
 %package lang
 Summary:        Languages for package %{name}
 License:        LGPL-2.1-or-later
 Group:          System/Localization
-Requires:       %{libname_gtk3} = %{version}
+Requires:       libxfce4ui-2-0 = %{version}
 Provides:       %{name}-lang-all = %{version}
-Supplements:    packageand(bundle-lang-other:%{libname_gtk3})
+Supplements:    packageand(bundle-lang-other:libxfce4ui-2-0)
 BuildArch:      noarch
 
 %description lang
@@ -181,19 +192,22 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 
 %fdupes %{buildroot}%{_includedir}
 
-%post -n %{libname_gtk3} -p /sbin/ldconfig
+%post   -n libxfce4ui-2-0 -p /sbin/ldconfig
+%postun -n libxfce4ui-2-0 -p /sbin/ldconfig
+%post   -n libxfce4kbd-private-3-0 -p /sbin/ldconfig
+%postun -n libxfce4kbd-private-3-0 -p /sbin/ldconfig
 
-%postun -n %{libname_gtk3} -p /sbin/ldconfig
-
-%files -n %{libname_gtk3}
+%files -n libxfce4ui-2-0
 %license COPYING
-%doc AUTHORS NEWS THANKS TODO
 %{_libdir}/libxfce4ui-2.so.*
+
+%files -n libxfce4kbd-private-3-0
 %{_libdir}/libxfce4kbd-private-3.so.*
 
 %files lang -f %{name}.lang
 
 %files devel
+%doc AUTHORS NEWS THANKS TODO
 %{_libdir}/libxfce4ui-*.so
 %{_libdir}/libxfce4kbd-private-*.so
 %{_libdir}/pkgconfig/libxfce4ui-*.pc

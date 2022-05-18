@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 11 09:41:27 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve rpmlint report "libxfce4ui-2-0.x86_64: E:
+  shlib-policy-name-error SONAME: libxfce4kbd-private-3.so.0,
+  expected package suffix: 3-0"
+- Move documentation to -devel package
+
+-------------------------------------------------------------------
 Tue Sep  7 23:36:49 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 4.16.1
