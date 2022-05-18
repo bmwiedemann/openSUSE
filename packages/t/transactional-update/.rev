@@ -909,4 +909,16 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
     [gh#openSUSE/transactional-update#80] </comment>
     <requestid>974853</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>6566abfeff34dee7fc9914bfe40e1935</srcmd5>
+    <version>4.0.0~rc4</version>
+    <time>1652872367</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.0.0~rc4
+  - Fix building with GCC 12
+  - Fix stack overflow with very long commands / ids [bsc#1196149]
+  - Use separate mount namespace for chroot, allowing overwriting the bind mounts from the update environment - this could have lead to data loss of the bind mount previously
+  - Fix C error and exception handling for snapshots</comment>
+    <requestid>977663</requestid>
+  </revision>
 </revisionlist>
