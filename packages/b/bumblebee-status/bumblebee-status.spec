@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           bumblebee-status
-Version:        2.1.4
+Version:        2.1.5
 Release:        0
 Summary:        Modular, theme-able status line generator for the i3 window manager
 License:        MIT
@@ -714,6 +714,7 @@ export PYTHONPATH=%{buildroot}%{_datadir}/%{name}/:%{buildroot}%{_datadir}/%{nam
 %{_datadir}/%{name}/bumblebee/modules/core/disk.py
 %{_datadir}/%{name}/bumblebee/modules/core/error.py
 %{_datadir}/%{name}/bumblebee/modules/core/keys.py
+%{_datadir}/%{name}/bumblebee/modules/core/layout.py
 %{_datadir}/%{name}/bumblebee/modules/core/load.py
 %{_datadir}/%{name}/bumblebee/modules/core/memory.py
 %{_datadir}/%{name}/bumblebee/modules/core/nic.py
@@ -721,26 +722,30 @@ export PYTHONPATH=%{buildroot}%{_datadir}/%{name}/:%{buildroot}%{_datadir}/%{nam
 %{_datadir}/%{name}/bumblebee/modules/core/spacer.py
 %{_datadir}/%{name}/bumblebee/modules/core/test.py
 %{_datadir}/%{name}/bumblebee/modules/core/time.py
+%{_datadir}/%{name}/bumblebee/modules/contrib/battery-upower.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/battery.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/battery_upower.py
-%{_datadir}/%{name}/bumblebee/modules/contrib/battery-upower.py
-%{_datadir}/%{name}/bumblebee/modules/contrib/bluetooth2.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/bluetooth.py
+%{_datadir}/%{name}/bumblebee/modules/contrib/bluetooth2.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/currency.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/datetimetz.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/datetz.py
+%{_datadir}/%{name}/bumblebee/modules/contrib/emerge_status.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/getcrypto.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/github.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/hostname.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/http_status.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/kernel.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/messagereceiver.py
+%{_datadir}/%{name}/bumblebee/modules/contrib/network.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/network_traffic.py
+%{_datadir}/%{name}/bumblebee/modules/contrib/optman.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/pomodoro.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/publicip.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/rofication.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/shell.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/shortcut.py
+%{_datadir}/%{name}/bumblebee/modules/contrib/solaar.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/spaceapi.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/stock.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/system.py
@@ -752,9 +757,13 @@ export PYTHONPATH=%{buildroot}%{_datadir}/%{name}/:%{buildroot}%{_datadir}/%{nam
 %{_datadir}/%{name}/bumblebee/modules/contrib/uptime.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/weather.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/xkcd.py
+%{_datadir}/%{name}/themes/albiceleste-powerline.json
 %{_datadir}/%{name}/themes/default.json
 %{_datadir}/%{name}/themes/gruvbox-light.json
 %{_datadir}/%{name}/themes/gruvbox.json
+%{_datadir}/%{name}/themes/nord-colorful.json
+%{_datadir}/%{name}/themes/rastafari-powerline.json
+%{_datadir}/%{name}/themes/rose-pine.json
 %{_datadir}/%{name}/themes/solarized.json
 %{_datadir}/%{name}/themes/test.json
 %{_datadir}/%{name}/themes/test_cycle.json

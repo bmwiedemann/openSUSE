@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 18 12:53:13 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.1.5:
+  + New modules: generic layout, GPU module for optimus-manager,
+    network module, and solaar for logitech unifying devices.
+  + New themes: albiceleste, rasafari, nord-colorful, and
+    rose-pine.
+  + Improvements:
+    - Configurable editor for todo
+    - Per-CPU widget for cpu
+    - Better documentation
+    - nvidiagpu get GPU and memory usage
+    - sensors thermal zone auto-detection
+    - Allow hiding of inactive states of modules
+  + Varius bugfixes.
+
+-------------------------------------------------------------------
 Tue Apr 26 07:27:44 UTC 2022 - pgajdos@suse.com
 
 - python-mock is not required for build
