@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu May 19 05:06:43 UTC 2022 - varkoly@suse.com
+
+- Update to version 4.11.0+git.1652860746.11107cb7:
+  * Mid: fence_scsi,fence_mpath: Add suppress-errors option. (#484)
+  * fence_gce: Make zone optional for get_nodes_list (#487)
+
+-------------------------------------------------------------------
+Wed May 18 07:39:31 UTC 2022 - varkoly@suse.com
+
+- Update to version 4.11.0+git.1652779508.228f4a1b:
+  * fence_apc/fence_ilo_moonshot: add missing "import logging"
+  * fence_gce: inform that SSLError might be caused by old versions of httplib2
+  * fence_ibm_vpc: remove unused instance parameter and make limit optional
+  * all agents: unify ssl parameters to avoid having to use --ssl when using --ssl-secure/--ssl-insecure for some agents
+
+-------------------------------------------------------------------
 Tue Apr 12 21:39:40 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Do not use oauth2client on Tumbleweed: deprecated package.
