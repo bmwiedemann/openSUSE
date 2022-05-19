@@ -1,7 +1,7 @@
 #
 # spec file for package python-magic-wormhole-transit-relay
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,9 @@ Summary:        Transit Relay server for Magic-Wormhole
 License:        MIT
 URL:            https://github.com/warner/magic-wormhole-transit-relay
 Source:         https://files.pythonhosted.org/packages/source/m/magic-wormhole-transit-relay/magic-wormhole-transit-relay-%{version}.tar.gz
+# https://github.com/magic-wormhole/magic-wormhole/issues/439
+Patch0:         python-magic-wormhole-transit-relay-no-mock.patch
 BuildRequires:  %{python_module Twisted >= 17.5.0}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{pythons}
@@ -39,7 +40,7 @@ BuildArch:      noarch
 Transit Relay server for Magic-Wormhole
 
 %prep
-%setup -q -n magic-wormhole-transit-relay-%{version}
+%autosetup -p1 -n magic-wormhole-transit-relay-%{version}
 
 %build
 %python_build
@@ -54,6 +55,9 @@ Transit Relay server for Magic-Wormhole
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/wormhole_transit_relay
+%{python_sitelib}/magic_wormhole_transit_relay-%{version}*-info
+%{python_sitelib}/twisted/plugins/magic_wormhole_transit_relay.py
+%pycache_only %{python_sitelib}/twisted/plugins/__pycache__/magic_wormhole_transit_relay*.pyc
 
 %changelog

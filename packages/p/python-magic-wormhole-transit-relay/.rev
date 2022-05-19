@@ -23,4 +23,17 @@
     <comment></comment>
     <requestid>874040</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>1f3f1f15873b723f65575e59aaebd070</srcmd5>
+    <version>0.2.1</version>
+    <time>1652993365</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up the SPEC file.
+- do not require python-mock for build
+- added patches
+  fix https://github.com/magic-wormhole/magic-wormhole/issues/439
+  + python-magic-wormhole-transit-relay-no-mock.patch
+</comment>
+    <requestid>977997</requestid>
+  </revision>
 </revisionlist>
