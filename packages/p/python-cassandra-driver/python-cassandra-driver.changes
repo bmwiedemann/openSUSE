@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 19 07:49:12 UTC 2022 - pgajdos@suse.com
+
+- run test_host_connection_pool
+- modified patches
+  % python-cassandra-driver-no-mock.patch (refreshed)
+
+-------------------------------------------------------------------
 Tue May 17 10:56:36 UTC 2022 - pgajdos@suse.com
 
 - version update to 3.25.0

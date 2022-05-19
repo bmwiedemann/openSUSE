@@ -1,6 +1,7 @@
-diff -upr python-driver-3.25.0.orig/tests/unit/advanced/cloud/test_cloud.py python-driver-3.25.0/tests/unit/advanced/cloud/test_cloud.py
---- python-driver-3.25.0.orig/tests/unit/advanced/cloud/test_cloud.py	2022-05-17 12:54:41.630450670 +0200
-+++ python-driver-3.25.0/tests/unit/advanced/cloud/test_cloud.py	2022-05-17 12:54:41.654450817 +0200
+Index: python-driver-3.25.0/tests/unit/advanced/cloud/test_cloud.py
+===================================================================
+--- python-driver-3.25.0.orig/tests/unit/advanced/cloud/test_cloud.py
++++ python-driver-3.25.0/tests/unit/advanced/cloud/test_cloud.py
 @@ -19,7 +19,7 @@ except ImportError:
  from cassandra import DriverException
  from cassandra.datastax import cloud
@@ -10,9 +11,10 @@ diff -upr python-driver-3.25.0.orig/tests/unit/advanced/cloud/test_cloud.py pyth
  
  from tests import notwindows
  
-diff -upr python-driver-3.25.0.orig/tests/unit/advanced/test_insights.py python-driver-3.25.0/tests/unit/advanced/test_insights.py
---- python-driver-3.25.0.orig/tests/unit/advanced/test_insights.py	2022-05-17 12:54:41.630450670 +0200
-+++ python-driver-3.25.0/tests/unit/advanced/test_insights.py	2022-05-17 12:54:41.658450843 +0200
+Index: python-driver-3.25.0/tests/unit/advanced/test_insights.py
+===================================================================
+--- python-driver-3.25.0.orig/tests/unit/advanced/test_insights.py
++++ python-driver-3.25.0/tests/unit/advanced/test_insights.py
 @@ -19,7 +19,7 @@ except ImportError:
      import unittest  # noqa
  
@@ -22,9 +24,10 @@ diff -upr python-driver-3.25.0.orig/tests/unit/advanced/test_insights.py python-
  import sys
  
  from cassandra import ConsistencyLevel
-diff -upr python-driver-3.25.0.orig/tests/unit/advanced/test_policies.py python-driver-3.25.0/tests/unit/advanced/test_policies.py
---- python-driver-3.25.0.orig/tests/unit/advanced/test_policies.py	2022-05-17 12:54:41.630450670 +0200
-+++ python-driver-3.25.0/tests/unit/advanced/test_policies.py	2022-05-17 12:54:41.658450843 +0200
+Index: python-driver-3.25.0/tests/unit/advanced/test_policies.py
+===================================================================
+--- python-driver-3.25.0.orig/tests/unit/advanced/test_policies.py
++++ python-driver-3.25.0/tests/unit/advanced/test_policies.py
 @@ -16,7 +16,7 @@ try:
  except ImportError:
      import unittest  # noqa
@@ -34,9 +37,10 @@ diff -upr python-driver-3.25.0.orig/tests/unit/advanced/test_policies.py python-
  
  from cassandra.pool import Host
  from cassandra.policies import RoundRobinPolicy
-diff -upr python-driver-3.25.0.orig/tests/unit/cqlengine/test_connection.py python-driver-3.25.0/tests/unit/cqlengine/test_connection.py
---- python-driver-3.25.0.orig/tests/unit/cqlengine/test_connection.py	2022-05-17 12:54:41.626450646 +0200
-+++ python-driver-3.25.0/tests/unit/cqlengine/test_connection.py	2022-05-17 12:54:41.658450843 +0200
+Index: python-driver-3.25.0/tests/unit/cqlengine/test_connection.py
+===================================================================
+--- python-driver-3.25.0.orig/tests/unit/cqlengine/test_connection.py
++++ python-driver-3.25.0/tests/unit/cqlengine/test_connection.py
 @@ -21,7 +21,7 @@ from cassandra.cluster import _ConfigMod
  from cassandra.cqlengine import connection
  from cassandra.query import dict_factory
@@ -46,9 +50,10 @@ diff -upr python-driver-3.25.0.orig/tests/unit/cqlengine/test_connection.py pyth
  
  
  class ConnectionTest(unittest.TestCase):
-diff -upr python-driver-3.25.0.orig/tests/unit/io/test_asyncioreactor.py python-driver-3.25.0/tests/unit/io/test_asyncioreactor.py
---- python-driver-3.25.0.orig/tests/unit/io/test_asyncioreactor.py	2022-05-17 12:54:41.630450670 +0200
-+++ python-driver-3.25.0/tests/unit/io/test_asyncioreactor.py	2022-05-17 12:54:41.658450843 +0200
+Index: python-driver-3.25.0/tests/unit/io/test_asyncioreactor.py
+===================================================================
+--- python-driver-3.25.0.orig/tests/unit/io/test_asyncioreactor.py
++++ python-driver-3.25.0/tests/unit/io/test_asyncioreactor.py
 @@ -10,7 +10,7 @@ except (ImportError, SyntaxError):
  from tests import is_monkey_patched, connection_class
  from tests.unit.io.utils import TimerCallback, TimerTestMixin
@@ -58,9 +63,10 @@ diff -upr python-driver-3.25.0.orig/tests/unit/io/test_asyncioreactor.py python-
  
  import unittest
  import time
-diff -upr python-driver-3.25.0.orig/tests/unit/io/test_asyncorereactor.py python-driver-3.25.0/tests/unit/io/test_asyncorereactor.py
---- python-driver-3.25.0.orig/tests/unit/io/test_asyncorereactor.py	2022-05-17 12:54:41.630450670 +0200
-+++ python-driver-3.25.0/tests/unit/io/test_asyncorereactor.py	2022-05-17 12:54:41.658450843 +0200
+Index: python-driver-3.25.0/tests/unit/io/test_asyncorereactor.py
+===================================================================
+--- python-driver-3.25.0.orig/tests/unit/io/test_asyncorereactor.py
++++ python-driver-3.25.0/tests/unit/io/test_asyncorereactor.py
 @@ -16,7 +16,7 @@ try:
  except ImportError:
      import unittest # noqa
@@ -70,9 +76,10 @@ diff -upr python-driver-3.25.0.orig/tests/unit/io/test_asyncorereactor.py python
  import socket
  import cassandra.io.asyncorereactor as asyncorereactor
  from cassandra.io.asyncorereactor import AsyncoreConnection
-diff -upr python-driver-3.25.0.orig/tests/unit/io/test_eventletreactor.py python-driver-3.25.0/tests/unit/io/test_eventletreactor.py
---- python-driver-3.25.0.orig/tests/unit/io/test_eventletreactor.py	2022-05-17 12:54:41.630450670 +0200
-+++ python-driver-3.25.0/tests/unit/io/test_eventletreactor.py	2022-05-17 12:54:41.658450843 +0200
+Index: python-driver-3.25.0/tests/unit/io/test_eventletreactor.py
+===================================================================
+--- python-driver-3.25.0.orig/tests/unit/io/test_eventletreactor.py
++++ python-driver-3.25.0/tests/unit/io/test_eventletreactor.py
 @@ -22,7 +22,7 @@ from tests.unit.io.utils import TimerTes
  from tests import notpypy, EVENT_LOOP_MANAGER
  
@@ -82,9 +89,10 @@ diff -upr python-driver-3.25.0.orig/tests/unit/io/test_eventletreactor.py python
  
  try:
      from cassandra.io.eventletreactor import EventletConnection
-diff -upr python-driver-3.25.0.orig/tests/unit/io/test_geventreactor.py python-driver-3.25.0/tests/unit/io/test_geventreactor.py
---- python-driver-3.25.0.orig/tests/unit/io/test_geventreactor.py	2022-05-17 12:54:41.630450670 +0200
-+++ python-driver-3.25.0/tests/unit/io/test_geventreactor.py	2022-05-17 12:54:41.658450843 +0200
+Index: python-driver-3.25.0/tests/unit/io/test_geventreactor.py
+===================================================================
+--- python-driver-3.25.0.orig/tests/unit/io/test_geventreactor.py
++++ python-driver-3.25.0/tests/unit/io/test_geventreactor.py
 @@ -26,7 +26,7 @@ try:
  except ImportError:
      GeventConnection = None  # noqa
@@ -94,9 +102,10 @@ diff -upr python-driver-3.25.0.orig/tests/unit/io/test_geventreactor.py python-d
  
  
  skip_condition = GeventConnection is None or EVENT_LOOP_MANAGER != "gevent"
-diff -upr python-driver-3.25.0.orig/tests/unit/io/test_libevreactor.py python-driver-3.25.0/tests/unit/io/test_libevreactor.py
---- python-driver-3.25.0.orig/tests/unit/io/test_libevreactor.py	2022-05-17 12:54:41.630450670 +0200
-+++ python-driver-3.25.0/tests/unit/io/test_libevreactor.py	2022-05-17 12:54:41.658450843 +0200
+Index: python-driver-3.25.0/tests/unit/io/test_libevreactor.py
+===================================================================
+--- python-driver-3.25.0.orig/tests/unit/io/test_libevreactor.py
++++ python-driver-3.25.0/tests/unit/io/test_libevreactor.py
 @@ -16,7 +16,7 @@ try:
  except ImportError:
      import unittest # noqa
@@ -106,9 +115,10 @@ diff -upr python-driver-3.25.0.orig/tests/unit/io/test_libevreactor.py python-dr
  import weakref
  import socket
  
-diff -upr python-driver-3.25.0.orig/tests/unit/io/test_twistedreactor.py python-driver-3.25.0/tests/unit/io/test_twistedreactor.py
---- python-driver-3.25.0.orig/tests/unit/io/test_twistedreactor.py	2022-05-17 12:54:41.630450670 +0200
-+++ python-driver-3.25.0/tests/unit/io/test_twistedreactor.py	2022-05-17 12:54:41.658450843 +0200
+Index: python-driver-3.25.0/tests/unit/io/test_twistedreactor.py
+===================================================================
+--- python-driver-3.25.0.orig/tests/unit/io/test_twistedreactor.py
++++ python-driver-3.25.0/tests/unit/io/test_twistedreactor.py
 @@ -16,7 +16,7 @@ try:
      import unittest2 as unittest
  except ImportError:
@@ -118,9 +128,10 @@ diff -upr python-driver-3.25.0.orig/tests/unit/io/test_twistedreactor.py python-
  
  from cassandra.connection import DefaultEndPoint
  
-diff -upr python-driver-3.25.0.orig/tests/unit/io/utils.py python-driver-3.25.0/tests/unit/io/utils.py
---- python-driver-3.25.0.orig/tests/unit/io/utils.py	2022-05-17 12:54:41.630450670 +0200
-+++ python-driver-3.25.0/tests/unit/io/utils.py	2022-05-17 12:54:41.658450843 +0200
+Index: python-driver-3.25.0/tests/unit/io/utils.py
+===================================================================
+--- python-driver-3.25.0.orig/tests/unit/io/utils.py
++++ python-driver-3.25.0/tests/unit/io/utils.py
 @@ -28,7 +28,7 @@ from functools import wraps
  from itertools import cycle
  import six
@@ -130,9 +141,10 @@ diff -upr python-driver-3.25.0.orig/tests/unit/io/utils.py python-driver-3.25.0/
  
  import errno
  import logging
-diff -upr python-driver-3.25.0.orig/tests/unit/test_cluster.py python-driver-3.25.0/tests/unit/test_cluster.py
---- python-driver-3.25.0.orig/tests/unit/test_cluster.py	2022-05-17 12:54:41.626450646 +0200
-+++ python-driver-3.25.0/tests/unit/test_cluster.py	2022-05-17 12:54:41.658450843 +0200
+Index: python-driver-3.25.0/tests/unit/test_cluster.py
+===================================================================
+--- python-driver-3.25.0.orig/tests/unit/test_cluster.py
++++ python-driver-3.25.0/tests/unit/test_cluster.py
 @@ -19,7 +19,7 @@ except ImportError:
  import logging
  import six
@@ -142,9 +154,10 @@ diff -upr python-driver-3.25.0.orig/tests/unit/test_cluster.py python-driver-3.2
  
  from cassandra import ConsistencyLevel, DriverException, Timeout, Unavailable, RequestExecutionException, ReadTimeout, WriteTimeout, CoordinationFailure, ReadFailure, WriteFailure, FunctionFailure, AlreadyExists,\
      InvalidRequest, Unauthorized, AuthenticationFailed, OperationTimedOut, UnsupportedOperation, RequestValidationException, ConfigurationException, ProtocolVersion
-diff -upr python-driver-3.25.0.orig/tests/unit/test_concurrent.py python-driver-3.25.0/tests/unit/test_concurrent.py
---- python-driver-3.25.0.orig/tests/unit/test_concurrent.py	2022-05-17 12:54:41.626450646 +0200
-+++ python-driver-3.25.0/tests/unit/test_concurrent.py	2022-05-17 12:54:41.658450843 +0200
+Index: python-driver-3.25.0/tests/unit/test_concurrent.py
+===================================================================
+--- python-driver-3.25.0.orig/tests/unit/test_concurrent.py
++++ python-driver-3.25.0/tests/unit/test_concurrent.py
 @@ -19,7 +19,7 @@ except ImportError:
      import unittest  # noqa
  
@@ -154,9 +167,10 @@ diff -upr python-driver-3.25.0.orig/tests/unit/test_concurrent.py python-driver-
  import time
  import threading
  from six.moves.queue import PriorityQueue
-diff -upr python-driver-3.25.0.orig/tests/unit/test_connection.py python-driver-3.25.0/tests/unit/test_connection.py
---- python-driver-3.25.0.orig/tests/unit/test_connection.py	2022-05-17 12:54:41.626450646 +0200
-+++ python-driver-3.25.0/tests/unit/test_connection.py	2022-05-17 12:54:41.658450843 +0200
+Index: python-driver-3.25.0/tests/unit/test_connection.py
+===================================================================
+--- python-driver-3.25.0.orig/tests/unit/test_connection.py
++++ python-driver-3.25.0/tests/unit/test_connection.py
 @@ -16,7 +16,7 @@ try:
  except ImportError:
      import unittest  # noqa
@@ -166,9 +180,10 @@ diff -upr python-driver-3.25.0.orig/tests/unit/test_connection.py python-driver-
  import six
  from six import BytesIO
  import time
-diff -upr python-driver-3.25.0.orig/tests/unit/test_control_connection.py python-driver-3.25.0/tests/unit/test_control_connection.py
---- python-driver-3.25.0.orig/tests/unit/test_control_connection.py	2022-05-17 12:54:41.626450646 +0200
-+++ python-driver-3.25.0/tests/unit/test_control_connection.py	2022-05-17 12:54:41.658450843 +0200
+Index: python-driver-3.25.0/tests/unit/test_control_connection.py
+===================================================================
+--- python-driver-3.25.0.orig/tests/unit/test_control_connection.py
++++ python-driver-3.25.0/tests/unit/test_control_connection.py
 @@ -20,7 +20,7 @@ except ImportError:
  import six
  
@@ -178,9 +193,10 @@ diff -upr python-driver-3.25.0.orig/tests/unit/test_control_connection.py python
  
  from cassandra import OperationTimedOut, SchemaTargetType, SchemaChangeType
  from cassandra.protocol import ResultMessage, RESULT_KIND_ROWS
-diff -upr python-driver-3.25.0.orig/tests/unit/test_endpoints.py python-driver-3.25.0/tests/unit/test_endpoints.py
---- python-driver-3.25.0.orig/tests/unit/test_endpoints.py	2022-05-17 12:54:41.626450646 +0200
-+++ python-driver-3.25.0/tests/unit/test_endpoints.py	2022-05-17 12:54:41.658450843 +0200
+Index: python-driver-3.25.0/tests/unit/test_endpoints.py
+===================================================================
+--- python-driver-3.25.0.orig/tests/unit/test_endpoints.py
++++ python-driver-3.25.0/tests/unit/test_endpoints.py
 @@ -15,7 +15,7 @@ import itertools
  
  from cassandra.connection import DefaultEndPoint, SniEndPoint, SniEndPointFactory
@@ -190,9 +206,10 @@ diff -upr python-driver-3.25.0.orig/tests/unit/test_endpoints.py python-driver-3
  
  
  def socket_getaddrinfo(*args):
-diff -upr python-driver-3.25.0.orig/tests/unit/test_metadata.py python-driver-3.25.0/tests/unit/test_metadata.py
---- python-driver-3.25.0.orig/tests/unit/test_metadata.py	2022-05-17 12:54:41.626450646 +0200
-+++ python-driver-3.25.0/tests/unit/test_metadata.py	2022-05-17 12:54:41.658450843 +0200
+Index: python-driver-3.25.0/tests/unit/test_metadata.py
+===================================================================
+--- python-driver-3.25.0.orig/tests/unit/test_metadata.py
++++ python-driver-3.25.0/tests/unit/test_metadata.py
 @@ -18,7 +18,7 @@ except ImportError:
  
  from binascii import unhexlify
@@ -202,9 +219,10 @@ diff -upr python-driver-3.25.0.orig/tests/unit/test_metadata.py python-driver-3.
  import os
  import six
  import timeit
-diff -upr python-driver-3.25.0.orig/tests/unit/test_policies.py python-driver-3.25.0/tests/unit/test_policies.py
---- python-driver-3.25.0.orig/tests/unit/test_policies.py	2022-05-17 12:54:41.626450646 +0200
-+++ python-driver-3.25.0/tests/unit/test_policies.py	2022-05-17 12:54:41.662450867 +0200
+Index: python-driver-3.25.0/tests/unit/test_policies.py
+===================================================================
+--- python-driver-3.25.0.orig/tests/unit/test_policies.py
++++ python-driver-3.25.0/tests/unit/test_policies.py
 @@ -18,7 +18,7 @@ except ImportError:
      import unittest  # noqa
  
@@ -214,9 +232,10 @@ diff -upr python-driver-3.25.0.orig/tests/unit/test_policies.py python-driver-3.
  from random import randint
  import six
  from six.moves._thread import LockType
-diff -upr python-driver-3.25.0.orig/tests/unit/test_protocol.py python-driver-3.25.0/tests/unit/test_protocol.py
---- python-driver-3.25.0.orig/tests/unit/test_protocol.py	2022-05-17 12:54:41.626450646 +0200
-+++ python-driver-3.25.0/tests/unit/test_protocol.py	2022-05-17 12:54:41.662450867 +0200
+Index: python-driver-3.25.0/tests/unit/test_protocol.py
+===================================================================
+--- python-driver-3.25.0.orig/tests/unit/test_protocol.py
++++ python-driver-3.25.0/tests/unit/test_protocol.py
 @@ -17,7 +17,7 @@ try:
  except ImportError:
      import unittest # noqa
@@ -226,9 +245,10 @@ diff -upr python-driver-3.25.0.orig/tests/unit/test_protocol.py python-driver-3.
  
  from cassandra import ProtocolVersion, UnsupportedOperation
  from cassandra.protocol import (
-diff -upr python-driver-3.25.0.orig/tests/unit/test_response_future.py python-driver-3.25.0/tests/unit/test_response_future.py
---- python-driver-3.25.0.orig/tests/unit/test_response_future.py	2022-05-17 12:54:41.630450670 +0200
-+++ python-driver-3.25.0/tests/unit/test_response_future.py	2022-05-17 12:54:41.662450867 +0200
+Index: python-driver-3.25.0/tests/unit/test_response_future.py
+===================================================================
+--- python-driver-3.25.0.orig/tests/unit/test_response_future.py
++++ python-driver-3.25.0/tests/unit/test_response_future.py
 @@ -17,7 +17,7 @@ try:
  except ImportError:
      import unittest # noqa
@@ -238,9 +258,10 @@ diff -upr python-driver-3.25.0.orig/tests/unit/test_response_future.py python-dr
  
  from cassandra import ConsistencyLevel, Unavailable, SchemaTargetType, SchemaChangeType, OperationTimedOut
  from cassandra.cluster import Session, ResponseFuture, NoHostAvailable, ProtocolVersion
-diff -upr python-driver-3.25.0.orig/tests/unit/test_resultset.py python-driver-3.25.0/tests/unit/test_resultset.py
---- python-driver-3.25.0.orig/tests/unit/test_resultset.py	2022-05-17 12:54:41.630450670 +0200
-+++ python-driver-3.25.0/tests/unit/test_resultset.py	2022-05-17 12:54:41.662450867 +0200
+Index: python-driver-3.25.0/tests/unit/test_resultset.py
+===================================================================
+--- python-driver-3.25.0.orig/tests/unit/test_resultset.py
++++ python-driver-3.25.0/tests/unit/test_resultset.py
 @@ -18,7 +18,7 @@ try:
  except ImportError:
      import unittest # noqa
@@ -250,9 +271,10 @@ diff -upr python-driver-3.25.0.orig/tests/unit/test_resultset.py python-driver-3
  
  from cassandra.cluster import ResultSet
  
-diff -upr python-driver-3.25.0.orig/tests/unit/test_timestamps.py python-driver-3.25.0/tests/unit/test_timestamps.py
---- python-driver-3.25.0.orig/tests/unit/test_timestamps.py	2022-05-17 12:54:41.630450670 +0200
-+++ python-driver-3.25.0/tests/unit/test_timestamps.py	2022-05-17 12:54:41.662450867 +0200
+Index: python-driver-3.25.0/tests/unit/test_timestamps.py
+===================================================================
+--- python-driver-3.25.0.orig/tests/unit/test_timestamps.py
++++ python-driver-3.25.0/tests/unit/test_timestamps.py
 @@ -17,7 +17,7 @@ try:
  except ImportError:
      import unittest  # noqa
@@ -262,9 +284,10 @@ diff -upr python-driver-3.25.0.orig/tests/unit/test_timestamps.py python-driver-
  
  from cassandra import timestamps
  from threading import Thread, Lock
-diff -upr python-driver-3.25.0.orig/tests/unit/utils.py python-driver-3.25.0/tests/unit/utils.py
---- python-driver-3.25.0.orig/tests/unit/utils.py	2022-05-17 12:54:41.630450670 +0200
-+++ python-driver-3.25.0/tests/unit/utils.py	2022-05-17 12:54:41.662450867 +0200
+Index: python-driver-3.25.0/tests/unit/utils.py
+===================================================================
+--- python-driver-3.25.0.orig/tests/unit/utils.py
++++ python-driver-3.25.0/tests/unit/utils.py
 @@ -15,7 +15,7 @@
  from concurrent.futures import Future
  from functools import wraps
@@ -274,3 +297,16 @@ diff -upr python-driver-3.25.0.orig/tests/unit/utils.py python-driver-3.25.0/tes
  
  
  def mock_session_pools(f):
+Index: python-driver-3.25.0/tests/unit/test_host_connection_pool.py
+===================================================================
+--- python-driver-3.25.0.orig/tests/unit/test_host_connection_pool.py
++++ python-driver-3.25.0/tests/unit/test_host_connection_pool.py
+@@ -17,7 +17,7 @@ try:
+ except ImportError:
+     import unittest # noqa
+ 
+-from mock import Mock, NonCallableMagicMock
++from unittest.mock import Mock, NonCallableMagicMock
+ from threading import Thread, Event, Lock
+ 
+ from cassandra.cluster import Session

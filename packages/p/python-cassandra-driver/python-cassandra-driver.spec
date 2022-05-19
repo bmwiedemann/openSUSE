@@ -76,8 +76,6 @@ rm -rf tests/unit/cython
 rm -f tests/unit/test_types.py
 # fix hardcoded cython dep
 sed -i -e 's:Cython>=0.20,!=0.25,<0.29:Cython:g' setup.py
-# https://datastax-oss.atlassian.net/browse/PYTHON-1300
-rm -f tests/unit/test_host_connection_pool.py
 
 %build
 export CFLAGS="%{optflags}"
@@ -91,7 +89,10 @@ export CASS_DRIVER_NO_EXTENSIONS=1
 
 %check
 # https://datastax-oss.atlassian.net/browse/PYTHON-1273
-%pytest -k 'not (test_connection_initialization or test_nts_token_performance)'
+%pytest -k 'not (test_connection_initialization or test_nts_token_performance or test_host_connection_pool)'
+# https://datastax-oss.atlassian.net/browse/PYTHON-1300
+pytest tests/unit/test_host_connection_pool.py -k "HostConnectionTests"
+pytest tests/unit/test_host_connection_pool.py -k "HostConnectionPoolTests"
 
 %files %{python_files}
 %license LICENSE
