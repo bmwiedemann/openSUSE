@@ -122,7 +122,7 @@ BuildRequires:  libpng-devel
 BuildRequires:  zlib-devel
 %endif
 %if %{build_cross}
-BuildRequires:  cross-%{cross_arch}-gcc11-bootstrap
+BuildRequires:  cross-%{cross_arch}-gcc%{gcc_version}-bootstrap
 BuildRequires:  cross-%{cross_arch}-linux-glibc-devel
 %endif
 %if "%flavor" == "i686"
@@ -179,11 +179,11 @@ Release:        0
 %define git_id %(echo %version | sed 's/.*\.g//')
 %define libversion %(echo %version | sed 's/\.[^.]*\.g.*//')
 %endif
-URL:            http://www.gnu.org/software/libc/libc.html
+URL:            https://www.gnu.org/software/libc/libc.html
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if !%{build_snapshot}
-Source:         http://ftp.gnu.org/pub/gnu/glibc/glibc-%{version}.tar.xz
-Source1:        http://ftp.gnu.org/pub/gnu/glibc/glibc-%{version}.tar.xz.sig
+Source:         https://ftp.gnu.org/pub/gnu/glibc/glibc-%{version}.tar.xz
+Source1:        https://ftp.gnu.org/pub/gnu/glibc/glibc-%{version}.tar.xz.sig
 %else
 Source:         glibc-%{version}.tar.xz
 %endif
@@ -283,16 +283,18 @@ Patch306:       glibc-fix-double-loopback.diff
 ###
 # Patches from upstream
 ###
-# PATCH-FIX-OPENSUSE linux: __get_nprocs_sched: do not feed CPU_COUNT_S with garbage (BZ #28850)
+# PATCH-FIX-UPSTREAM linux: __get_nprocs_sched: do not feed CPU_COUNT_S with garbage (BZ #28850)
 Patch1000:      get-nprocs-sched-uninit-read.patch
-# PATCH-FIX-OPENSUSE linux: fix accuracy of get_nprocs and get_nprocs_conf (BZ #28865)
+# PATCH-FIX-UPSTREAM linux: fix accuracy of get_nprocs and get_nprocs_conf (BZ #28865)
 Patch1001:      get-nprocs-inaccurate.patch
-# PATCH-FIX-OPENSUSE x86: Fallback {str|wcs}cmp RTM in the ncmp overflow case (BZ #28896)
+# PATCH-FIX-UPSTREAM x86: Fallback {str|wcs}cmp RTM in the ncmp overflow case (BZ #28896)
 Patch1002:      strcmp-rtm-fallback.path
-# PATCH-FIX-OPENSUSE elf: Check invalid hole in PT_LOAD segments (BZ #28838)
+# PATCH-FIX-UPSTREAM elf: Check invalid hole in PT_LOAD segments (BZ #28838)
 Patch1003:      pt-load-invalid-hole.patch
-# PATCH-FIX-OPENSUSE localedef: Update LC_MONETARY handling (BZ #28845)
+# PATCH-FIX-UPSTREAM localedef: Update LC_MONETARY handling (BZ #28845)
 Patch1004:      localedef-ld-monetary.patch
+# PATCH-FIX-UPSTREAM nptl: Handle spurious EINTR when thread cancellation is disabled (BZ #29029)
+Patch1005:      nptl-spurious-eintr.patch
 
 ###
 # Patches awaiting upstream approval
@@ -517,6 +519,7 @@ library in a cross compilation setting.
 %patch1002 -p1
 %patch1003 -p1
 %patch1004 -p1
+%patch1005 -p1
 
 %patch2000 -p1
 %patch2001 -p1

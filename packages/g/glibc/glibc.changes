@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May 17 14:07:46 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- nptl-spurious-eintr.patch: nptl: Handle spurious EINTR when thread
+  cancellation is disabled (BZ #29029)
+
+-------------------------------------------------------------------
+Thu May 12 14:33:56 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Follow the distro default gcc version to build the cross
+  bootstrap packages.
+
+-------------------------------------------------------------------
+Fri Apr 29 10:48:30 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- switched to https urls
+
+-------------------------------------------------------------------
 Mon Feb 28 10:51:19 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - get-nprocs-sched-uninit-read.patch: linux: __get_nprocs_sched: do not

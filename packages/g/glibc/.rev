@@ -2629,4 +2629,13 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   #28845) (forwarded request 958081 from Andreas_Schwab)</comment>
     <requestid>958082</requestid>
   </revision>
+  <revision rev="259" vrev="3">
+    <srcmd5>fa03fe391cd9208db86d527e405ee9ac</srcmd5>
+    <version>2.35</version>
+    <time>1652993338</time>
+    <user>dimstar_suse</user>
+    <comment>- nptl-spurious-eintr.patch: nptl: Handle spurious EINTR when thread
+  cancellation is disabled (BZ #29029) (forwarded request 977802 from Andreas_Schwab)</comment>
+    <requestid>977804</requestid>
+  </revision>
 </revisionlist>
