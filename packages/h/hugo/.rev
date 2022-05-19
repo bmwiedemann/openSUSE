@@ -174,4 +174,15 @@
   * tpl/crypto: Add example for FNV32a (forwarded request 977580 from jfkw)</comment>
     <requestid>977590</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>68ec70fd2e88cefa8eeef6d8f2871709</srcmd5>
+    <version>0.99.1</version>
+    <time>1652993355</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.99.1:
+  * server: Fix multihost crash
+  * Update stale.yml
+  * common/hugo: Fix version logic (forwarded request 977963 from jfkw)</comment>
+    <requestid>977964</requestid>
+  </revision>
 </revisionlist>

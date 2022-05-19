@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 18 14:04:12 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.99.1:
+  * server: Fix multihost crash
+  * Update stale.yml
+  * common/hugo: Fix version logic
+
+-------------------------------------------------------------------
 Mon May 16 15:18:04 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 0.99.0:
