@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 19 08:00:30 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Switch to pkgconfig(sdl) to build with sdl12_compat.
+
+-------------------------------------------------------------------
 Thu Apr 29 17:27:39 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.58_rc5

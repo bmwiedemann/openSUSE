@@ -1,7 +1,7 @@
 #
 # spec file for package openlierox
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,11 +20,10 @@ Name:           openlierox
 Version:        0.58_rc5
 Release:        0
 Summary:        A real-time, excessive clone of Worms
-License:        LGPL-2.0+
+License:        LGPL-2.0-or-later
 Group:          Amusements/Games/Other
-Url:            http://www.openlierox.net/
+URL:            http://www.openlierox.net/
 Source:         http://downloads.sourceforge.net/%{name}/OpenLieroX_%{version}.src.tar.bz2
-BuildRequires:  SDL-devel
 BuildRequires:  SDL_image-devel
 BuildRequires:  SDL_mixer-devel
 BuildRequires:  cmake
@@ -38,6 +37,7 @@ BuildRequires:  libxml2-devel
 BuildRequires:  libzip-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(sdl)
 # for people who try to install this using upstream capitalization
 Provides:       OpenLieroX = %{version}-%{release}
 
@@ -47,11 +47,11 @@ shoot-em-up backed by an active gamers community. Dozens of levels and mods
 are available to provide endless gaming pleasure.
 
 %prep
-%setup -q -n OpenLieroX
+%autosetup -n OpenLieroX
 
 %build
 %cmake -DDEBUG=OFF -DBREAKPAD=OFF -DSYSTEM_DATA_DIR=%{_datadir} -DHAWKNL_BUILTIN=ON
-make %{?_smp_mflags}
+%make_build
 
 %install
 install -m 755 -d %{buildroot}%{_datadir}/openlierox/
