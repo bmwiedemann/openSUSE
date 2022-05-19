@@ -1,7 +1,7 @@
 #
 # spec file for package backintime
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           backintime
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Backup tool for Linux inspired by the "flyback project"
 License:        GPL-2.0-or-later
 URL:            https://github.com/bit-team/backintime
-Source0:        https://github.com/bit-team/backintime/releases/download/%{version}/%{name}-%{version}.tar.gz
-Source1:        https://github.com/bit-team/backintime/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
+Source0:        https://github.com/bit-team/backintime/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/bit-team/backintime/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
 # Public key mentioned in https://github.com/bit-team/backintime#archlinux
 Source2:        %{name}.keyring
 Source3:        %{name}.png
