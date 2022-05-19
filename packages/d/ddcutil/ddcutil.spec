@@ -17,7 +17,7 @@
 
 
 Name:           ddcutil
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Utility to query and update monitor settings
 License:        GPL-2.0-or-later
