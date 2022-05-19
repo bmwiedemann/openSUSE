@@ -26,6 +26,8 @@ Summary:        Tool for transferring files through a secure channel
 License:        MIT
 URL:            https://github.com/warner/magic-wormhole
 Source:         https://files.pythonhosted.org/packages/source/m/magic-wormhole/%{modname}-%{version}.tar.gz
+# https://github.com/magic-wormhole/magic-wormhole/issues/439
+Patch0:         python-magic-wormhole-no-mock.patch
 BuildRequires:  %{python_module Automat}
 BuildRequires:  %{python_module PyNaCl}
 BuildRequires:  %{python_module click}
@@ -33,7 +35,6 @@ BuildRequires:  %{python_module hkdf}
 BuildRequires:  %{python_module humanize}
 BuildRequires:  %{python_module magic-wormhole-mailbox-server}
 BuildRequires:  %{python_module magic-wormhole-transit-relay}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module service_identity}
 BuildRequires:  %{python_module setuptools}
@@ -68,6 +69,7 @@ the code, which must then be typed into the receiving machine.
 
 %prep
 %setup -q -n %{modname}-%{version}
+%patch0 -p1
 
 %build
 %python_build

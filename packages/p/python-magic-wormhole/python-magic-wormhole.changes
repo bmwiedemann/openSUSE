@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 18 09:52:07 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+- added patches
+  fix https://github.com/magic-wormhole/magic-wormhole/issues/439
+  + python-magic-wormhole-no-mock.patch
+
+-------------------------------------------------------------------
 Tue Jan 11 21:10:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add python-rpm-macros dependency 
