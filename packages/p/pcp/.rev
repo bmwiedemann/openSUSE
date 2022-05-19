@@ -621,4 +621,12 @@ This is needed so that the rpm hack to update config.sub works (forwarded reques
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>962478</requestid>
   </revision>
+  <revision rev="64" vrev="7">
+    <srcmd5>d1a7b63de384303e6167a8ba23678d82</srcmd5>
+    <version>5.2.2</version>
+    <time>1652993336</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977496</requestid>
+  </revision>
 </revisionlist>

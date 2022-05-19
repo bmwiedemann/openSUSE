@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 16 07:30:26 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix a few rpmlint errors (to at least get below the 1000 mark)
+  (boo#1199558):
+  + make libpcp-devel require libpcp_gui: the devel package
+    installs a symlink pointing to that library, so anything
+    willing to link it would fail
+    libpcp-devel.x86_64: E: no-library-dependency-on libpcp_gui2 /usr/lib64/libpcp_gui.so.2
+    The package misses dependency on a package which file it links to.
+  + Call fdupes over /var/lib/pcp/testsuite to solve
+    pcp-testsuite.x86_64: W: files-duplicate
+  + W: macro-in-comment: escape the relevant macros using %%
+  + Filter out W: potential-bashisms for pcp-testsuite.
+
+-------------------------------------------------------------------
 Mon Feb  7 16:25:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Own %{_datadir}/zsh and %{_datadir}/zsh/site-functions: we have

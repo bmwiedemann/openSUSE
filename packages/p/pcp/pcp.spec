@@ -407,7 +407,7 @@ Obsoletes:      pcp-pmda-nvidia < %{version}
 %global _hicolordir	%{_datadir}/icons/hicolor
 
 %if 0%{?fedora} >= 20 || 0%{?rhel} >= 8 || 0%{?suse_version}
-# FIXME: PCP defaults to using %{_datadir}/doc/pcp-doc
+# FIXME: PCP defaults to using %%{_datadir}/doc/pcp-doc
 %global _with_doc --with-docdir=%{_docdir}/%{name}
 %endif
 %if !%{disable_systemd}
@@ -624,6 +624,7 @@ License:        %{license_gplv2plus} AND %{license_lgplv21plus}
 Group:          %{lib_devel_gr}
 URL:            https://pcp.io
 Requires:       %{lib_pkg} = %{version}-%{release}
+Requires:       libpcp_gui%{libpcp_gui_sover} = %{version}
 Conflicts:      %{lib_devel_pkg_conflict}
 %if (0%{?suse_version} > 0)
 Provides:       pcp-devel = %{version}
@@ -888,7 +889,7 @@ URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} >= %{version}-%{release}
 %else
-# this package nests files under %{_sysconfdir}/zabbix, which is provided by:
+# this package nests files under %%{_sysconfdir}/zabbix, which is provided by:
 Requires:       zabbix-server
 %endif
 
@@ -1869,7 +1870,7 @@ kernels configfs filesystem. The PMDA provides per LUN level stats, and a
 summary instance per iSCSI target, which aggregates all LUN metrics within the
 target.
 #end pcp-pmda-lio
-%endif # !%{disable_lio}
+%endif # !%%{disable_lio}
 
 #
 # pcp-pmda-openmetrics
@@ -1929,7 +1930,7 @@ This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics from simple network checks.
 
 # end pcp-pmda-netcheck
-%endif # !%{disable_python3}
+%endif # !%%{disable_python3}
 
 %if !%{disable_mssql}
 #
@@ -1970,7 +1971,7 @@ BuildRequires:  python3-jsonpointer
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics output in JSON.
 # end pcp-pmda-json
-%endif # !%{disable_json}
+%endif # !%%{disable_json}
 
 #
 # C pmdas
@@ -2603,6 +2604,8 @@ sed -i -e '/^# .*_LOCAL=1/s/^# //' %{buildroot}/%{_sysconfdir}/sysconfig/{pmcd,p
 %endif
 
 rm -f %{buildroot}/%{_localstatedir}/lib/pcp/testsuite/perfevent/perfevent_coverage # drop unreproducible file (boo#1040589)
+%fdupes %{buildroot}%{_testsdir}
+
 
 %if 0%{?suse_version}
 mkdir -p %{buildroot}/%{_tempsdir}
@@ -2613,7 +2616,7 @@ ln -sf /sbin/service %{buildroot}/%{_sbindir}/rcpmie
 ln -sf /sbin/service %{buildroot}/%{_sbindir}/rcpmlogger
 ln -sf /sbin/service %{buildroot}/%{_sbindir}/rcpmproxy
 
-# SUSE requires use of %fillup_and_insserv
+# SUSE requires use of %%fillup_and_insserv
 mkdir -p %{buildroot}/%{_fillupdir}
 for f in pmlogger pmproxy pmcd pmie_timers pmlogger_timers pmfind; do
 	mv %{buildroot}/%{_sysconfdir}/sysconfig/${f} \
@@ -3484,7 +3487,7 @@ PCP_LOG_DIR=%{_logsdir}
 %{_pmdasexecdir}/netcheck
 %{_confdir}/netcheck
 
-%endif # !%{disable_python3}
+%endif # !%%{disable_python3}
 
 %if !%{disable_zabbix_agent}
 %files export-zabbix-agent

@@ -7,3 +7,9 @@ addFilter('E: devel-file-in-non-devel-package')
 # tmp files. it must be world writeable for PMDAs and client tools, which
 # may be run as anyone.
 #addFilter('E: permissions-world-writable')
+# pcp-testsuite.x86_64: W: potential-bashisms /var/lib/pcp/testsuite/archives/mk.ipcs
+# checkbashisms reported potential bashisms in a /bin/sh shell script, you might
+# want to manually check this script for bashisms.
+addFilter('pcp-testsuite.*W: potential-bashisms');
+# pcp-testsuite.x86_64: E: env-script-interpreter
+addFilter('pcp-testsuite.*E: env-script-interpreter');
