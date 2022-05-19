@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 18 19:55:30 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Clean up the SPEC file.
+
+-------------------------------------------------------------------
+Wed May 18 09:51:20 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+- added patches
+  fix https://github.com/magic-wormhole/magic-wormhole/issues/439
+  + python-magic-wormhole-mailbox-server-no-mock.patch
+
+-------------------------------------------------------------------
 Wed Jul 14 10:41:40 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer build for python 3.6: not all dependencies are
