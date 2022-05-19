@@ -7,4 +7,15 @@
     <comment>I want to maintain helix in openSUSE:Factory</comment>
     <requestid>974168</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2be2f7ad7774af9040908bc3de83b58f</srcmd5>
+    <version>22.03~0</version>
+    <time>1652993370</time>
+    <user>dimstar_suse</user>
+    <comment>- add support for stable/point-release systems e.g. Leap
+- add ExclusiveArch to support more architectures that rust supports
+
+This will increase possible helix users.</comment>
+    <requestid>978023</requestid>
+  </revision>
 </revisionlist>

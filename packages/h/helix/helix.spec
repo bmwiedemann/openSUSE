@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global _helix_runtimedir %{_sharedstatedir}/%{name}/runtime/
 %global rustflags -Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2
 
@@ -23,7 +24,7 @@ Version:        22.03~0
 Release:        0
 Summary:        A post-modern modal text editor written in Rust
 License:        (Apache-2.0 OR MIT) AND BSD-3-Clause AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (MIT OR Apache-2.0 OR Zlib) AND (MIT or Unlicense) AND (Zlib OR Apache-2.0 OR MIT) AND Apache-2.0 AND BSL-1.0 AND ISC AND MIT AND MPL-2.0+ AND Zlib AND MPL-2.0
-Url:            https://github.com/helix-editor/helix
+URL:            https://github.com/helix-editor/helix
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
@@ -31,6 +32,8 @@ Source3:        helix.sh
 Source4:        helix-rpmlintrc
 Source5:        README.SUSE
 BuildRequires:  cargo-packaging
+BuildRequires:  rust >= 1.46
+ExclusiveArch:  %{rust_arches}
 
 %description
 A kakoune/neovim inspired modal text editor with built-in LSP and
