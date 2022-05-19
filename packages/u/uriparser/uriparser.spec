@@ -32,7 +32,9 @@ BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  ghostscript-fonts-std
 BuildRequires:  graphviz
+BuildRequires:  graphviz-gd
 BuildRequires:  libqt5-qttools
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libxdot)
@@ -102,8 +104,8 @@ This subpackage contains the documentation for %{name}.
     -DURIPARSER_BUILD_TESTS:BOOL=OFF \
 %endif
     -DURIPARSER_BUILD_TOOLS:BOOL=ON \
-    -DURIPARSER_BUILD_WCHAR:BOOL=ON \
-%make_jobs
+    -DURIPARSER_BUILD_WCHAR:BOOL=ON
+%cmake_build
 
 %install
 %cmake_install

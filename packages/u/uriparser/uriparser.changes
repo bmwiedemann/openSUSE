@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 16 23:19:39 UTC 2022 - Andrew Daugherity <adaugherity@tamu.edu>
+
+- fix cmake build (incorrect line continuation - %%make_jobs is not part of the
+  %%cmake call; it only worked in distros where it printed a deprecation
+  warning before invoking make)
+  - replace deprecated %%make_jobs with %%cmake_build
+- fix building docs: need graphviz-gd to produce PNG files and 
+  ghostscript-fonts-std for the fonts used
+
+-------------------------------------------------------------------
 Sun Jan  9 20:48:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.6 (bsc#1194365, bsc#1194364):
