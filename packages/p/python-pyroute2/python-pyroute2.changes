@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue May 10 19:01:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.9:
+  * wireguard peer fix for both IPv4 and IPv6: 
+  * netns: avoid extra libc reloads: 
+  * wireguard: IPv6 fixes: 
+  * ndb: support arbitrary IPRoute-compatible source classes
+  * ndb: tolerate source failures
+  * ndb: chaotic tests
+  * general: kernel version parser: 
+  * package: static version file: 
+  * iproute: support custom link kind classes: 
+  * ndb: reload of tunnels in the down state 
+  * ndb: improved reliability in the state sync, affected multihop and encap routes
+  * ndb: improved neighbours management
+  * tuntap: support loongarch 
+  * ndb: fix routes cleanup 
+  * ndb: support `in` for sources, interfaces and addresses
+  * ndb: support changing tunnel (gre, ipip, ...) attributes
+  * netlink: support NLM_F_DUMP_INTR 
+
+-------------------------------------------------------------------
+Sat Oct 16 21:54:19 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.5:
+  * ndb: fix `in` for sources
+  * core: provide entry_points aliases for legacy code
+  * packaging: fix missing exports
+  * ndb: memory leak fix
+  * packaging: fix internal modules import
+  * netlink: DEFAULT_RCVBUF size increased
+  * rtnl: fix COLLECT_METADATA for geneve devices
+  * ndb: route spec fixes
+  * packaging: force virtual packages to require same versions
+  * core: relocate RemoteIPRoute
+  * wireguard: fix key parsing
+  * packaging: fix importlib-metadata deps
+  * tc: support pfifo qdisc
+  * packaging: new layout
+  * ndb: fix default routes keys
+  * mptcp: basic support
+  * netlink: ext_ack support fix
+  * tc: netem rate setting
+  * NSPopen: fix fd leak
+
+-------------------------------------------------------------------
 Fri Apr 30 08:34:54 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - update to 0.5.18:

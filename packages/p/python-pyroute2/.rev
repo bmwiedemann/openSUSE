@@ -233,4 +233,41 @@
     <comment></comment>
     <requestid>889497</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1239429a76c2a0fed5f537d37d255317</srcmd5>
+    <version>0.6.9</version>
+    <time>1652993381</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.9:
+  * wireguard peer fix for both IPv4 and IPv6: 
+  * netns: avoid extra libc reloads: 
+  * wireguard: IPv6 fixes: 
+  * ndb: support arbitrary IPRoute-compatible source classes
+  * ndb: tolerate source failures
+  * ndb: chaotic tests
+  * general: kernel version parser: 
+  * package: static version file: 
+  * iproute: support custom link kind classes: 
+  * ndb: reload of tunnels in the down state 
+  * ndb: improved reliability in the state sync, affected multihop and encap routes
+  * ndb: improved neighbours management
+  * tuntap: support loongarch 
+  * ndb: fix routes cleanup 
+  * ndb: support `in` for sources, interfaces and addresses
+  * ndb: support changing tunnel (gre, ipip, ...) attributes
+  * netlink: support NLM_F_DUMP_INTR 
+
+- update to 0.6.5:
+  * ndb: fix `in` for sources
+  * core: provide entry_points aliases for legacy code
+  * packaging: fix missing exports
+  * ndb: memory leak fix
+  * packaging: fix internal modules import
+  * netlink: DEFAULT_RCVBUF size increased
+  * rtnl: fix COLLECT_METADATA for geneve devices
+  * ndb: route spec fixes
+  * packaging: force virtual packages to require same versions
+  * core: relocate RemoteIPRoute</comment>
+    <requestid>978081</requestid>
+  </revision>
 </revisionlist>

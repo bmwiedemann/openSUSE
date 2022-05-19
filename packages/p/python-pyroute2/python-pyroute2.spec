@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyroute2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyroute2
-Version:        0.5.18
+Version:        0.6.9
 Release:        0
 Summary:        Python Netlink library
 License:        Apache-2.0 OR GPL-2.0-or-later
@@ -31,6 +31,13 @@ BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
+Requires:       python-pyroute2.core = %{version}
+Requires:       python-pyroute2.ethtool = %{version}
+Requires:       python-pyroute2.ipdb = %{version}
+Requires:       python-pyroute2.ipset = %{version}
+Requires:       python-pyroute2.ndb = %{version}
+Requires:       python-pyroute2.nftables = %{version}
+Requires:       python-pyroute2.nslink = %{version}
 %python_subpackages
 
 %description
@@ -58,27 +65,11 @@ protocols. Some supported netlink families and protocols:
 
 %install
 %python_install
-%python_clone -a %{buildroot}%{_bindir}/pyroute2-cli
-%python_clone -a %{buildroot}%{_bindir}/ss2
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%check
-%pytest
-
-%post
-%python_install_alternative pyroute2-cli
-%python_install_alternative ss2
-
-%postun
-%python_uninstall_alternative pyroute2-cli
-%python_uninstall_alternative ss2
-
 %files %{python_files}
-%license README.license.md
-%doc README.md CHANGELOG.md README.report.md
+%doc README.rst CHANGELOG.md
 %license LICENSE.Apache.v2 LICENSE.GPL.v2
 %{python_sitelib}/*
-%python_alternative %{_bindir}/ss2
-%python_alternative %{_bindir}/pyroute2-cli
 
 %changelog
