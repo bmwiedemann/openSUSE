@@ -1,7 +1,7 @@
 #
 # spec file for package libressl
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 Name:           libressl
-Version:        3.5.2
+Version:        3.5.3
 Release:        0
 Summary:        An SSL/TLS protocol implementation
 License:        OpenSSL

@@ -503,4 +503,12 @@
     OpenSSL added the TLSv1.3 ciphersuites with &quot;RFC names&quot;</comment>
     <requestid>974957</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>adf05bc78f8d07d7be0f4bf3330ea59e</srcmd5>
+    <version>3.5.3</version>
+    <time>1652993385</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.5.3</comment>
+    <requestid>978071</requestid>
+  </revision>
 </revisionlist>

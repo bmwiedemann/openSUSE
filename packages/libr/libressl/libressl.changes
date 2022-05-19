@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 19 07:41:31 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.5.3
+  * Fix d2i_ASN1_OBJECT(). A confusion of two CBS resulted in
+    advancing the passed *der_in pointer incorrectly.
+
+-------------------------------------------------------------------
 Thu Apr 28 06:31:12 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to release 3.5.2:
