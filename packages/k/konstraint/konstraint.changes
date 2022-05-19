@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 18 09:13:43 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.20.0:
+  * Parse parameter names from rule header values in addition to the body (#279)
+  * Allow adding description to parameters - fix #273 (#275)
+  * Group and sort kind matchers by apiGroup (fix #269) (#272)
+  * Merge repeated @matchlabels and @kinds annotations (#271)
+  * Fix violation rule return format in test policy (#274)
+
+-------------------------------------------------------------------
 Thu May 05 06:36:44 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.19.1:
