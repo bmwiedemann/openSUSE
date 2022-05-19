@@ -31,7 +31,7 @@
 
 %define project github.com/prometheus-community/postgres_exporter
 Name:           prometheus-postgres_exporter
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Obsoletes:      golang-github-wrouesnel-postgres_exporter < %version-%release
 Provides:       golang-github-wrouesnel-postgres_exporter = %version-%release
@@ -39,14 +39,13 @@ Summary:        Prometheus exporter for PostgreSQL
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://prometheus.io/
-Source:         postgres_exporter-%{version}.tar.xz
+Source:         postgres_exporter-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        prometheus-postgres_exporter.service
 Source3:        prometheus-postgres_exporter.sysconfig
 BuildRequires:  fdupes
 BuildRequires:  golang-github-prometheus-promu
 BuildRequires:  golang-packaging
-BuildRequires:  xz
 ExcludeArch:    s390
 %if 0%{?rhel}
 BuildRequires:  golang >= 1.14

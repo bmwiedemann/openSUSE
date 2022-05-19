@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 16 08:31:06 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Use go_modules source service
+- Upgrade to version 0.10.1:
+  * Fix broken log-level for values other than debug.
+
+-------------------------------------------------------------------
 Wed May 11 17:27:07 UTC 2022 - Stefan Bluhm <stefan.bluhm@clacee.eu>
 
 - Version/release lines above first usage of those macros.

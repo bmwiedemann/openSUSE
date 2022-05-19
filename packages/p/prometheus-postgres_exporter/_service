@@ -3,14 +3,17 @@
     <param name="url">https://github.com/prometheus-community/postgres_exporter.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">0.10.0</param>
+    <param name="versionformat">0.10.1</param>
     <param name="revision">v0.10.0</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">postgres_exporter-*.tar</param>
-    <param name="compression">xz</param>
+    <param name="compression">gz</param>
   </service>
   <service name="set_version" mode="disabled">
     <param name="basename">postgres_exporter</param>
+  </service>
+  <service name="go_modules" mode="disabled">
+    <param name="archive">postgres_exporter-0.10.1.tar.gz</param>
   </service>
 </services>
