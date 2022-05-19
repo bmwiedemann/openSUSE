@@ -52,4 +52,12 @@
   * Fixed heap buffer overflow (CVE-2021-45005, boo#1195954).</comment>
     <requestid>954741</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>6eb4615c092cabe1d23fa525b30bc604</srcmd5>
+    <version>1.2.0</version>
+    <time>1652993359</time>
+    <user>dimstar_suse</user>
+    <comment>Added mujs-1.2.0-stack-exhaustion.patch (CVE-2022-30974, boo#1199678).</comment>
+    <requestid>977973</requestid>
+  </revision>
 </revisionlist>

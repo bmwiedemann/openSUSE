@@ -24,6 +24,7 @@ License:        AGPL-3.0-or-later
 Group:          Development/Languages/C and C++
 URL:            https://mujs.com
 Source0:        https://mujs.com/downloads/%{name}-%{version}.tar.xz
+Patch0:         %{name}-1.2.0-stack-exhaustion.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(readline)
 
