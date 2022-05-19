@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed May 18 20:23:14 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.13.3:
+  * Fix: incorrect in/out direction for syscall exit.
+  * Fix: net: socket: rename SKB_DROP_REASON_SOCKET_FILTER (v5.17).
+  * Fix: net: skb: introduce kfree_skb_reason() (v5.17).
+  * Fix: random: rather than entropy_store abstraction, use global
+    (v5.17).
+  * Fix: btrfs: pass fs_info to trace_btrfs_transaction_commit
+    (v5.17).
+  * Fix: mm: compaction: fix the migration stats in
+    trace_mm_compaction_migratepages() (v5.17).
+  * Fix: block: remove the ->rq_disk field in struct request
+    (v5.17).
+  * Fix: block: remove GENHD_FL_SUPPRESS_PARTITION_INFO (v5.17).
+  * Document expected ISO8601 time formats in ABI header.
+  * Fix: lttng ABI: lttng_counter_ioctl() tainted scalar.
+  * Fix: sample discarded events count before reserve.
+  * Cleanup: comment alignment in ring buffer config.h.
+
+-------------------------------------------------------------------
 Sat Jan 15 13:16:03 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 2.13.1:
