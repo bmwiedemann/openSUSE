@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 18 13:24:26 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Change version to 3.1 (not v3.1).
+
+-------------------------------------------------------------------
 Thu Nov 26 14:57:37 UTC 2020 - Fuminobu Takeyama <ftake@geeko.jp>
 
 - move /etc/X11/xim.d/* to /usr/etc/X11/xim.d/ (boo#1176431)

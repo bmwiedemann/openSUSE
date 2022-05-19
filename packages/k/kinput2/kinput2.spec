@@ -1,7 +1,7 @@
 #
 # spec file for package kinput2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           kinput2
-Version:        v3.1
+Version:        3.1
 Release:        0
 Summary:        Kanji Input Server for the X Window System
 License:        HPND
@@ -44,7 +44,7 @@ Patch8:         64bit.patch
 Patch9:         bugzilla-47203-keep-auxiliary-windows-on-top.patch
 Patch10:        bugzilla-63978-hoge.patch
 Patch11:        bugzilla-62553-spotlocation.patch
-Patch12:        %{name}-%{version}-prototypes.patch
+Patch12:        %{name}-v%{version}-prototypes.patch
 Patch13:        canna_c-warn.diff
 Patch14:        bugzilla-137396-cannot-work-after-specific-function-calls.patch
 Patch15:        bugzilla-368441-local-variable-used-before-set.patch
