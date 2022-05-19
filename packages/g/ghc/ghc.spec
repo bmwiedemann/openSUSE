@@ -1,7 +1,7 @@
 #
 # spec file for package ghc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,9 +51,6 @@ BuildRequires:  ncurses-devel
 BuildRequires:  pkg-config
 BuildRequires:  xz
 %ifarch aarch64 %{arm}
-BuildRequires:  binutils-gold
-%endif
-%ifarch aarch64 %{arm} 
 BuildRequires:  clang >= 9
 BuildRequires:  llvm >= 9
 BuildRequires:  llvm-devel >= 9
@@ -104,16 +101,13 @@ Group:          Development/Languages/Other
 Requires:       gcc
 Requires:       ghc-base-devel
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
-%ifarch aarch64 %{arm}
-Requires:       binutils-gold
-%endif
+Requires(postun):update-alternatives
 %ifarch aarch64 %{arm}
 Requires:       clang9
 Requires:       llvm9
 %endif
 %ifarch x86_64 %{ix86}
-Suggests:       clang9 
+Suggests:       clang9
 Suggests:       llvm9
 %endif
 
@@ -143,7 +137,7 @@ To install all of GHC install package ghc.
 %ghc_lib_subpackage -d containers-0.6.5.1
 %ghc_lib_subpackage -d deepseq-1.4.4.0
 %ghc_lib_subpackage -d directory-1.3.6.0
-%ghc_lib_subpackage -d exceptions-0.10.4 
+%ghc_lib_subpackage -d exceptions-0.10.4
 %ghc_lib_subpackage -d filepath-1.4.2.1
 %ghc_lib_subpackage -d -x ghc-%{ghc_version_override}
 %ghc_lib_subpackage -d ghc-boot-%{ghc_version_override}
@@ -257,7 +251,7 @@ export CFLAGS="${CFLAGS:-%optflags}"
 %limit_build -m 2000
 %endif
 make %{?_smp_mflags}
-%else 
+%else
 make -j 2
 %endif
 

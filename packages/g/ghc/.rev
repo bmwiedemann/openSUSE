@@ -920,4 +920,12 @@ Please wait for SR #249835 (ghc-bootstrap).</comment>
     when using the pthread itimer implementation.</comment>
     <requestid>917983</requestid>
   </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>e5764a4cbf89789b560397215ec36c61</srcmd5>
+    <version>8.10.7</version>
+    <time>1652993388</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978085</requestid>
+  </revision>
 </revisionlist>
