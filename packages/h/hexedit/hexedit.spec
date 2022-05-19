@@ -1,7 +1,7 @@
 #
 # spec file for package hexedit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           hexedit
-Version:        1.5
+Version:        1.6
 Release:        0
 Summary:        Hexadecimal editor for binary files
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Editor
 URL:            https://github.com/pixel/hexedit
 Source0:        https://github.com/pixel/hexedit/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch1:         hexedit-Prevent-division-by-zero-on-empty-files.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  pkgconfig
