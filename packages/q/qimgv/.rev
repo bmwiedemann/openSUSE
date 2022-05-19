@@ -182,4 +182,41 @@
     <comment></comment>
     <requestid>950009</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>6fd205f884880d4d9d331ae68942fa4b</srcmd5>
+    <version>1.0.3a+git20220510.48dd2ea3</version>
+    <time>1652993369</time>
+    <user>dimstar_suse</user>
+    <comment>- Removing patch files which aren't needed since items were fixed upstream:
+  * qimgv-mpv_v2_fix.patch
+  * qimgv-no_return_in_nonvoid.patch
+
+- Update to version 1.0.3a+git20220510.48dd2ea3:
+  * [cmake] fix default flags
+  * check for qt5 first
+  * .
+  * Update build-package.yml
+  * change release tag
+  * fix mpv include path
+  * [windows/msys2] add build script
+  * fix #410
+  * [windows] enable scripts/&quot;open with&quot; functionality #406 #236 #196
+  * [ContextMenu] compact layout
+  * [res] back/forward icons
+  * [ContextMenu] scripts/&quot;open with..&quot; page mockup #406 #236 Fix scripts with qt6
+  * [ImageViewerV2] tweak scroll handling
+  * [ThumbnailViewProxy] fix(?) event order
+  * fix Core::loadPath()
+  * delay model loading (test) #383 #156
+  * fix #384
+  * fix #392
+  * fix window close with qt 6.3 #394
+  * [cmake] qt detection tweak (prefer qt6); remove core5compat
+
+- Commenting out the following 2 patches as the issues appear fixed upstream:
+  * qimgv-mpv_v2_fix.patch
+  * qimgv-no_return_in_nonvoid.patch
+- Cleaning up 'Source0' definition.</comment>
+    <requestid>978019</requestid>
+  </revision>
 </revisionlist>

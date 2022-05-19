@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed May 18 23:25:22 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Removing patch files which aren't needed since items were fixed upstream:
+  * qimgv-mpv_v2_fix.patch
+  * qimgv-no_return_in_nonvoid.patch
+
+-------------------------------------------------------------------
+Wed May 11 18:15:36 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.0.3a+git20220510.48dd2ea3:
+  * [cmake] fix default flags
+  * check for qt5 first
+  * .
+  * Update build-package.yml
+  * change release tag
+  * fix mpv include path
+  * [windows/msys2] add build script
+  * fix #410
+  * [windows] enable scripts/"open with" functionality #406 #236 #196
+  * [ContextMenu] compact layout
+  * [res] back/forward icons
+  * [ContextMenu] scripts/"open with.." page mockup #406 #236 Fix scripts with qt6
+  * [ImageViewerV2] tweak scroll handling
+  * [ThumbnailViewProxy] fix(?) event order
+  * fix Core::loadPath()
+  * delay model loading (test) #383 #156
+  * fix #384
+  * fix #392
+  * fix window close with qt 6.3 #394
+  * [cmake] qt detection tweak (prefer qt6); remove core5compat
+
+-------------------------------------------------------------------
+Thu May  5 17:08:06 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Commenting out the following 2 patches as the issues appear fixed upstream:
+  * qimgv-mpv_v2_fix.patch
+  * qimgv-no_return_in_nonvoid.patch
+- Cleaning up 'Source0' definition.
+
+-------------------------------------------------------------------
+Thu May 05 16:22:03 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version v1.0.2+git20220504.51278bec:
+  * Create msys2-test.yml
+  * build: Add AppData installation via Cmake
+  * chore: Update qimgv.appdata.xml manifest
+  * Update README.md
+  * fix window close with qt 6.3 #394
+  * fix mpv_opengl_init_params
+  * ShortcutBuilder::processWheelEvent() - fallback to x value #367
+  * open clipboard test #360
+  * fix window size issue
+
+-------------------------------------------------------------------
 Sun Jan 30 15:46:40 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Add qimgv-mpv_v2_fix.patch (fix Factory build)

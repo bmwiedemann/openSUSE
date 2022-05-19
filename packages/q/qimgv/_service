@@ -1,0 +1,25 @@
+<!--
+# vim: set syntax=xml
+-->
+
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/easymodo/qimgv</param>
+    <param name="scm">git</param>
+    <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
+    <!-- Commenting out for TEMP
+    <param name="versionrewrite-pattern">v(.*)</param>
+    -->
+    <!-- TEMP: "-alpha" errors out @ buildtime -->
+    <param name="versionrewrite-pattern">v1.0.3-alpha</param>
+    <param name="versionrewrite-replacement">1.0.3a</param>
+    <!-- /TEMP -->
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+  <service name="tar" mode="disabled"/>
+  <service name="recompress" mode="disabled">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>
