@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 13 16:01:02 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
+
+- biWidth*biBitCnt integer overflow fix (bsc#1182158,
+  CVE-2019-19004, CVE-2019-19004.patch).
+- Bitmap double free fix (bsc1182159, CVE-2019-19005,
+  CVE-2017-9182, CVE-2017-9190, CVE-2019-19005.patch).
+
+-------------------------------------------------------------------
 Tue Aug 12 20:12:25 UTC 2014 - sfalken@opensuse.org
 
 - Add 0001-fix_input_png.patch:  Corrects build failure against libpng15

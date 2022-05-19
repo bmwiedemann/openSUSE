@@ -1,7 +1,7 @@
 #
 # spec file for package autotrace
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,17 +21,21 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pstoedit-devel
 Summary:        Program for Converting Bitmaps to Vector Graphics
-License:        GPL-2.0+ and LGPL-2.1+
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Graphics/Convertors
 Provides:       bitmap_tracing
-Version:        0.31.1 
+Version:        0.31.1
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
 Source1:        pstoedit.m4
 Patch0:         %{name}-%{version}-quotefix.diff
-# PATCH-FIX_OPENSUSE 0001-fix_input_png.patch sfalken@opensuse.org -- fixes build failure against libpng15
+# PATCH-FIX-OPENSUSE 0001-fix_input_png.patch sfalken@opensuse.org -- fixes build failure against libpng15
 Patch1:         0001-fix_input_png.patch
-Url:            http://autotrace.sourceforge.net/
+# PATCH-FIX-SECURITY CVE-2019-19004.patch bsc1182158 CVE-2019-19004 -- biWidth*biBitCnt integer overflow fix
+Patch2:         CVE-2019-19004.patch
+# PATCH-FIX-SECURITY CVE-2019-19005.patch bsc1182159 CVE-2019-19005 CVE-2017-9182, CVE-2017-9190 -- bitmap double free fix
+Patch3:         CVE-2019-19005.patch
+URL:            http://autotrace.sourceforge.net/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  ImageMagick-devel
 # FIXME: Broken with the latest pstoedit. See Fedora patches for partial fix.
@@ -75,6 +79,8 @@ platform using GCC.
 %setup -q
 %patch0
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -fno-tree-sra"
