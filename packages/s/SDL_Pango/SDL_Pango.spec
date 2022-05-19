@@ -1,7 +1,7 @@
 #
 # spec file for package SDL_Pango
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,6 @@ Group:          Development/Libraries/X11
 URL:            http://sdlpango.sourceforge.net/
 #CVS-Clone:	-d:pserver:anonymous@sdlpango.cvs.sourceforge.net:/cvsroot/sdlpango co -P SDL_Pango
 Source:         %name-%version.tar.bz2
-Source2:        baselibs.conf
 Patch1:         %name-%version-API-adds.patch
 BuildRequires:  dos2unix
 BuildRequires:  libtool
@@ -42,25 +41,22 @@ engine to SDL.
 %package -n %lname
 Summary:        Programming Pango via SDL
 Group:          System/Libraries
-Provides:       SDL_Pango = %version
-Obsoletes:      SDL_Pango <= %version
 
 %description -n %lname
 Pango is the text rendering engine of GNOME 2.x. SDL_Pango connects the
 engine to SDL.
 
-%package -n libSDL_Pango-devel
-Summary:        Include Files and Libraries for SDL_Pango development
+%package devel
+Summary:        Headers for SDL_Pango development
 Group:          Development/Libraries/X11
 Requires:       %lname = %version
-Requires:       libSDL-devel
-Requires:       pkgconfig
-Provides:       SDL_Pango-devel = %version
-Obsoletes:      SDL_Pango-devel <= %version
+Requires:       pkgconfig(sdl)
+Provides:       libSDL_Pango-devel = %version-%release
+Obsoletes:      libSDL_Pango-devel < %version-%release
 
-%description -n libSDL_Pango-devel
-This package contains all necessary include files and libraries needed
-to develop applications that require these.
+%description devel
+This package contains the necessary include files and libraries needed
+to develop applications that require SDL_Pango.
 
 %prep
 %autosetup -p1
@@ -69,7 +65,7 @@ dos2unix AUTHORS README
 %build
 autoreconf -fiv
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -83,7 +79,7 @@ find %buildroot -type f -name "*.la" -delete -print
 %doc AUTHORS README
 %_libdir/libSDL_Pango.so.*
 
-%files -n libSDL_Pango-devel
+%files devel
 %_includedir/SDL_Pango.h
 %_libdir/pkgconfig/SDL_Pango.pc
 %_libdir/libSDL_Pango.so

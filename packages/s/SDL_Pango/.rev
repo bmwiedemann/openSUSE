@@ -182,4 +182,14 @@
     <comment></comment>
     <requestid>702517</requestid>
   </revision>
+  <revision rev="26" vrev="240">
+    <srcmd5>7f3ae8e34328db0e7b5dd8bb9e88c0d2</srcmd5>
+    <version>0.1.2</version>
+    <time>1652993361</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove baselibs.conf, nothing appears to be using it.
+- Change -devel subpackage to be based on SRPM/project name.
+- Use pkgconfig(sdl) to build with sdl12_compat.</comment>
+    <requestid>977981</requestid>
+  </revision>
 </revisionlist>
