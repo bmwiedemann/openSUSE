@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed May 18 09:07:12 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.3.0:
+  * fix: remove docker-desktop feature (#2648)
+  * fix: stack on the ui should not been expanded (#2688)
+  * refactor: point main branch in e2e test when work with voting-app (#2687)
+  * fix: avoid use compose files if manifest is v1 (#2656)
+  * feat: add e2e test for okteto deploy [svc] (#2682)
+  * Support multile envs at stack (#2652)
+  * Fix "okteto pipeline deploy --wait" condition (#2681)
+  * Add check for prereleases (#2668)
+  * refactor: added new Build Option to check if image is autogen or not (#2667)
+  * build(deps): Bump docker/setup-qemu-action from 1 to 2 (#2650)
+  * Fix: error message missing filename (#2657)
+  * build(deps): Bump docker/setup-buildx-action from 1 to 2 (#2651)
+  * Jlopezbarb/fix env vars not getting inyected into stack (#2662)
+  * fix: avoid expand env if are created on a deployment pipeline (#2653)
+  * fix: compose test e2e (#2654)
+  * Support for divert in the deploy section of the okteto manifest (#2622)
+  * fix: nil pointer when okteto manifest is created (#2649)
+  * feat: support debug on compose up detach (#2631)
+  * refactor: add clearer logs when the image name cannot be obtained (#2638)
+  * fix: load env files from stack directory (#2632)
+  * fix: remove warning symbols on stderr (#2643)
+  * refactor: remove dettach and use docker extension (#2644)
+  * fix: e2e test on compose (#2640)
+  * build(deps): Bump github.com/hashicorp/go-getter from 1.5.8 to 1.5.11 (#2633)
+  * fix: manifestv1 was not passing ctx and ns to v2 (#2601)
+  * fix: paths on win (#2618)
+  * feat: deploy dependencies before building the images (#2629)
+  * Fix tests for map non deterministic order (#2624)
+  * added --all flag in okteto down (#2515)
+  * Remove divert test + current implementation (#2620)
+  * fix: deploying compose on different path (#2617)
+  * fix: deploy a subset of svcs was building everything (#2610)
+  * Fix compose extended notation (#2612)
+  * fix: avoid nil pointer when cannot load manifest (#2614)
+  * feat: show options to the user if failure (#2602)
+  * feat: start auth flow automatically if required when refresh okteto cloud token (#2588)
+  * Fix global optimization when okteto deploy --build (#2590)
+  * feat: add test on release-x.x (#2608)
+  * fix: debugger ports not creating services (#2606)
+  * Fix CTRL + C when using "--detach" (#2604)
+  * Add http traceTransport utility (#2545)
+  * feat: add support envvars when okteto up (#2578)
+  * refactor: build command (#2503)
+  * Adrian/deploy app first before activate dev container (#2591)
+
+-------------------------------------------------------------------
 Thu May 05 15:11:41 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.2.2:
