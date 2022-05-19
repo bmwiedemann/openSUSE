@@ -134,4 +134,36 @@
     contains a `.git` file.</comment>
     <requestid>827119</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3471ffa5947fe8deac5d266a377c4136</srcmd5>
+    <version>1.0.0</version>
+    <time>1652993515</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.0:
+  - Added the ability to ignore parts of a file when running `reuse lint`. Simply
+    add `REUSE-IgnoreStart` and `REUSE-IgnoreEnd` as comments and all lines
+    between the two will be ignored by the next run of `reuse lint`. (#463)
+  - Meson subprojects are now ignored by default. (#496)
+  - Added `--skip-existing` flag to `addheader` in order to skip files that
+    already contain SPDX information. This may be useful for only adding SPDX
+    information to newly created files. (#480)
+  - Added `--recursive` flag to `addheader`. (#469)
+  - Ignore all SPDX files with their typical formats and extensions. (#494)
+  - Add support for merging copyright lines based on copyright statement,
+    transforming multiple lines with a single year into a single line with a
+    range. (#328)
+  - Deprecated `--explicit-license` in favour of `--force-dot-license`.
+    `--explicit-license` will remain useable (although undocumented) for the
+    foreseeable future. (#476)
+  - Better support for unary &quot;+&quot; operator in license identifiers. For example, if
+    `Apache-1.0+` appears as a declared license, it should not be identified as
+    missing, bad, or unused if `LICENSES/Apache-1.0.txt` exists. It is, however,
+    identified separately as a used license. (#123)
+  - When `addheader` creates a `.license` file, that file now has a newline at the
+    end. (#477)
+  - `supported-licenses` command that lists all licenses supported by REUSE (#401)
+  - `--quiet` switch to the `lint` command (#402)
+</comment>
+    <requestid>978130</requestid>
+  </revision>
 </revisionlist>
