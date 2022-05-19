@@ -32,4 +32,15 @@
   proper upgrade from previous version 1.0.0b2 (forwarded request 972558 from glaubitz)</comment>
     <requestid>972599</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0a557bd01a8e3a8f63fdffc6f73d529e</srcmd5>
+    <version>1.1.0</version>
+    <time>1652993514</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 977899 from glaubitz)</comment>
+    <requestid>978119</requestid>
+  </revision>
 </revisionlist>
