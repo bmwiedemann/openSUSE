@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 18 06:06:55 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Prepare for Python 3.10 by correcting sitelib install paths. 
+
+-------------------------------------------------------------------
 Mon Nov  8 17:42:04 UTC 2021 - Stephane Thiell <sthiell@stanford.edu>
 
 - Update to upstream release 1.8.4:

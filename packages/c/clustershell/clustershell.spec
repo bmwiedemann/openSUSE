@@ -1,7 +1,7 @@
 #
 # spec file for package clustershell
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021 Stephane Thiell <sthiell@stanford.edu>
 #
 # All modifications and additions to the file contributed by third parties
@@ -193,7 +193,7 @@ rm -rf %{buildroot}
 %{_bindir}/clush-%{python3_shortver}
 %{_bindir}/nodeset-%{python3_shortver}
 %{python3_sitelib}/ClusterShell/
-%{python3_sitelib}/ClusterShell-*-py?.?.egg-info
+%{python3_sitelib}/ClusterShell-*-py?.*.egg-info
 
 %else
 
@@ -206,7 +206,7 @@ rm -rf %{buildroot}
 %{_bindir}/clush
 %{_bindir}/nodeset
 %{python3_sitelib}/ClusterShell/
-%{python3_sitelib}/ClusterShell-*-py?.?.egg-info
+%{python3_sitelib}/ClusterShell-*-py?.*.egg-info
 %endif
 
 %files

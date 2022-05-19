@@ -111,4 +111,12 @@
     <comment>update to upstream release 1.8.4</comment>
     <requestid>930223</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f77b77f921066578170501c7065072bd</srcmd5>
+    <version>1.8.4</version>
+    <time>1652993364</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977989</requestid>
+  </revision>
 </revisionlist>
