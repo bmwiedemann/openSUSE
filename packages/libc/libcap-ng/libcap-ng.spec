@@ -1,7 +1,7 @@
 #
 # spec file for package libcap-ng
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,10 @@
 
 
 %define sover  0
+%define ambient_sover 0
+
 Name:           libcap-ng
-Version:        0.7.11
+Version:        0.8.3
 Release:        0
 Summary:        An alternate Linux/POSIX capabilities library
 License:        LGPL-2.1-or-later
@@ -66,6 +68,25 @@ The libcap-ng-utils package contains applications to analyse the
 Linux process capabilities of programs running on a system. It also
 lets you set the filesystem-based capabilities.
 
+%package -n libdrop_ambient%{ambient_sover}
+Summary:        Library for dropping ambient capabilities
+License:        LGPL-2.1-or-later
+Requires:       %{name}%{sover} = %{version}
+
+%description -n libdrop_ambient%{ambient_sover}
+This library can be used via LD_PRELOAD to force an application started with ambient capabilities to drop them.
+It leaves other capabilities intact. This can also be linked against and automatically does the right thing.
+You do not need to make any calls into the library because all the work is done in the constructor which runs before main() is called.
+
+%package -n libdrop_ambient-devel
+Summary:        Devel package for libdrop_ambient%{ambient_sover}
+License:        LGPL-2.1-or-later
+Requires:       libdrop_ambient%{ambient_sover}
+
+%description -n libdrop_ambient-devel
+This package contains the files needed for developing
+applications that need to use the libdrop_ambient library.
+
 %prep
 %setup -q
 
@@ -83,10 +104,21 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %post -n %{name}%{sover} -p /sbin/ldconfig
 %postun -n %{name}%{sover} -p /sbin/ldconfig
 
+%post -n libdrop_ambient%{ambient_sover} -p /sbin/ldconfig
+%postun -n libdrop_ambient%{ambient_sover} -p /sbin/ldconfig
+
 %files -n %{name}%{sover}
 %license COPYING.LIB
 %{_libdir}/%{name}.so.%{sover}
 %{_libdir}/%{name}.so.%{sover}.*
+
+%files -n libdrop_ambient%{ambient_sover}
+%{_libdir}/libdrop_ambient.so.%{ambient_sover}
+%{_libdir}/libdrop_ambient.so.%{ambient_sover}.*
+
+%files -n libdrop_ambient-devel
+%{_libdir}/libdrop_ambient.so
+%{_mandir}/man7/libdrop_ambient.7%{ext_man}
 
 %files devel
 %{_mandir}/man3/*.3%{ext_man}

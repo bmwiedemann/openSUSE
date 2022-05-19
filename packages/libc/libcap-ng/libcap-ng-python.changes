@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon May  9 06:59:13 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.8.3:
+  * Add vararg support to python bindings for capng_updatev
+  * Add support for ambient capabilities
+  * Add support for V3 filesystem capabilities
+  * If procfs is not available, leave last_cap as CAP_LAST_CAP
+  * If bounding and ambient not found in status, try prctl method
+  * In capng_apply, move ambient caps to the end of the transaction
+  * In capng_apply, return errors more aggressively.
+  * In capng_apply, if the action includes the bounding set,resync with the kernel
+  * Fix signed/unsigned warning in cap-ng.c
+  * In capng_apply, return a unique error code to diagnose any failure
+  * In capng_have_capability, return 0 for failure
+  * Add the libdrop_ambient admin tool
+  * In capng_apply, if we blew up in bounding set, allow setting capabilities
+  * If PR_CAP_AMBIENT is not available, do not build libdrop_ambient
+  * Improve last_cap check
+  * Fix parameters to capng_updatev python bindings to be signed
+  * Detect capability options at runtime to make containerization easier (ntkme)
+  * Initialize the library when linked statically
+  * Add gcc function attributes for deallocation
+
+-------------------------------------------------------------------
 Thu Dec  9 22:05:19 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 0.7.11
