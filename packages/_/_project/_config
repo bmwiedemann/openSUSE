@@ -332,11 +332,6 @@ Support: rpmlint-mini
 Support: rpmlint-strict
 %endif
 
-%ifarch ia64
-Support: libunwind libunwind-devel
-Preinstall: libunwind
-%endif
-
 # Prefer coreutils over coreutils-single
 Prefer: -coreutils-single
 
