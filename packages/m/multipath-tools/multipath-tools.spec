@@ -1,7 +1,7 @@
 #
 # spec file for package multipath-tools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,11 @@
 
 %global _lto_cflags %{nil}
 
+# multipath-tools auto-detects support for -D_FORTFY_SOURCE.
+# This will lead to a compilation error if the distro overrides
+# -D_FORTIFY_SOURCE in optflags, unless we precede it with -U
+%global mp_optflags %(echo %{optflags} | sed 's/-D_FORTIFY_SOURCE=[0-9]/-U_FORTIFY_SOURCE &/')
+
 # Whether to build libdmmp - default YES
 %bcond_without libdmmp
 
@@ -29,7 +34,7 @@
 %define libdmmp_version %(echo %{_libdmmp_version} | tr . _)
 
 Name:           multipath-tools
-Version:        0.8.8+64+suse.f265f7e0
+Version:        0.8.9+90+suse.71a70fb
 Release:        0
 Summary:        Tools to Manage Multipathed Devices with the device-mapper
 License:        GPL-2.0-only
@@ -78,8 +83,6 @@ multipath maps. multipathd sets up multipath maps automatically,
 monitors path devices for failure, removal, or addition, and applies
 the necessary changes to the multipath maps to ensure continuous
 availability of the map devices.
-
-
 
 
 
@@ -161,11 +164,11 @@ cp %{SOURCE5} .
 
 %build
 [ -n "$SOURCE_DATE_EPOCH" ] && export KBUILD_BUILD_TIMESTAMP=@$SOURCE_DATE_EPOCH
-%{make_build} OPTFLAGS="%{optflags}" %{dirflags} %{makeflags}
+%{make_build} OPTFLAGS="%{mp_optflags}" %{dirflags} %{makeflags}
 
 %if 0%{?with_check} == 1
 %check
-%{make_build} OPTFLAGS="%{optflags}" test
+%{make_build} OPTFLAGS="%{mp_optflags}" test
 %endif
 
 %install

@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed May 11 12:54:27 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.8.9+90+suse.71a70fb:
+  * support overriding -D_FORTIFY_SOURCE in OPTFLAGS
+  * add -U_FORTIFY_SOURCE to optflags to avoid compilation errors
+    on old distros
+
+-------------------------------------------------------------------
+Tue May 10 07:37:57 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.8.9+87+suse.a1eb122:
+  * add ability to autodetect support for -D_FORTIFY_SOURCE=3
+
+-------------------------------------------------------------------
+Mon May  9 09:59:53 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.8.9+85+suse.a9da21c:
+  * This is a pre-release of multipath-tools 0.9.0
+  * multipath.conf: add "protocol" subsection in "overrides" section
+    This allows to set "dev_loss_tmo", "fast_io_fail_tmo", and
+    "eh_deadline" on a per-protocol basis rather than per storage
+  * multipath.conf: drop support for deprecated options:
+    getuid_callout, pg_timeout, config_dir, multipath_dir
+  * multipathd: don't switch to DAEMON_IDLE during startup
+  (bsc#1199346, bsc#1197570)
+  * multipathd: avoid delays during uevent processing (bsc#1199347)
+  * Fixes for minor issues reported by coverity
+  * Fix for memory leak with uid_attrs
+  * Fix possibility to redefine -D_FORTIFY_SOURCE macro.
+  * Updates for built in hardware db
+
+-------------------------------------------------------------------
+Thu Apr 14 21:13:18 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.8.9+42+suse.45974f11:
+  * Logging improvements
+  * Fix busy loop with delayed_reconfigure (bsc#1199342)
+  * multipathd: use remove_map_callback for delayed reconfigure
+  * multipathd: Don't keep starting TUR threads, if they always hang.
+    (bsc#1199345)
+  * Fix handling of path addition in read-only arrays on NVMe
+  * Updates of built-in hardware database
+
+- Update to upstream 0.8.9
+  * libmultipath: only warn once about unsupported dev_loss_tmo
+  * Otherwise code-identical to 0.8.8+64
+
+-------------------------------------------------------------------
 Mon Mar 28 12:54:15 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - If multipath-tools is newly installed, load dm-multipath
