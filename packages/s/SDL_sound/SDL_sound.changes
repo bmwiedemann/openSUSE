@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 18 16:05:35 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Switch to pkgconfig(sdl) to build with sdl12_compat.
+
+-------------------------------------------------------------------
 Wed Mar 30 13:37:57 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop baselibs.conf, nothing really needs SDL_sound anymore.

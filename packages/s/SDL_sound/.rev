@@ -183,4 +183,12 @@
 - Rename devel package to just %name-devel</comment>
     <requestid>966040</requestid>
   </revision>
+  <revision rev="26" vrev="96">
+    <srcmd5>3347fc8da87171b72aea53a4d0a35116</srcmd5>
+    <version>1.0.3</version>
+    <time>1652993362</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pkgconfig(sdl) to build with sdl12_compat.</comment>
+    <requestid>977982</requestid>
+  </revision>
 </revisionlist>

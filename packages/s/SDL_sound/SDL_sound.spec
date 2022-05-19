@@ -28,12 +28,12 @@ URL:            http://icculus.org/SDL_sound/
 Source:         %name-%version-nompglib.tar.bz2
 Patch0:         %name-%version-nompglib.patch
 BuildRequires:  flac-devel
-BuildRequires:  libSDL-devel
 BuildRequires:  libmikmod-devel
 BuildRequires:  libogg-devel
 BuildRequires:  libvorbis-devel
 BuildRequires:  speex-devel
 BuildRequires:  pkgconfig(libmodplug)
+BuildRequires:  pkgconfig(sdl)
 
 %description
 SDL_sound is a library that handles the decoding of several popular
