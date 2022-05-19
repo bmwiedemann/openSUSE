@@ -1,0 +1,12 @@
+Index: supertux/external/partio_zip/zip_manager.hpp
+===================================================================
+--- supertux.orig/external/partio_zip/zip_manager.hpp
++++ supertux/external/partio_zip/zip_manager.hpp
+@@ -47,6 +47,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ #include <string>
+ #include <stdexcept>
+ #include <vector>
++#include <memory>
+ 
+ namespace Partio{
+ struct ZipFileHeader;

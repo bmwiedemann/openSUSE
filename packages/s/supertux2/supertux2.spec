@@ -1,7 +1,7 @@
 #
 # spec file for package supertux2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        CC-BY-SA-3.0 AND GPL-3.0-or-later AND GPL-2.0-or-later AND GPL-1
 Group:          Amusements/Games/Action/Arcade
 URL:            https://supertux.github.io/
 Source:         https://github.com/SuperTux/supertux/releases/download/v%{version}/SuperTux-v%{version}-Source.tar.gz
+Patch0:         supertux2-gcc12.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -55,7 +56,7 @@ SuperTux is a classic 2D jump'n run sidescroller game in a similar
 style like the original SuperMario games.
 
 %prep
-%setup -q -n SuperTux-v%{version}-Source
+%autosetup -p1 -n SuperTux-v%{version}-Source
 # Use supertux2.png filename to not conflict with supertux package.
 for res in png xpm; do
     cp -f data/images/engine/icons/{%{_name},%{name}}.$res

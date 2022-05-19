@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 12 13:06:54 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add supertux2-gcc12.patch: Fix build with gcc12.
+
+-------------------------------------------------------------------
 Sun Dec 26 23:30:54 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 0.6.3:
