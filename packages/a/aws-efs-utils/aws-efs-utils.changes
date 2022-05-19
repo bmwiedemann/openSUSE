@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 18 05:39:02 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.33.1
+  * Enable mount process to retry on failed or timed out mount.nfs command
+  * use unittest.mock instead of mock
+
+-------------------------------------------------------------------
 Wed Apr 27 06:39:41 UTC 2022 - pgajdos@suse.com
 
 - version update to 1.32.1

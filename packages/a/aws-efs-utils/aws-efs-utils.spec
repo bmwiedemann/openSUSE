@@ -17,7 +17,7 @@
 
 
 Name:           aws-efs-utils
-Version:        1.32.1
+Version:        1.33.1
 Release:        0
 Summary:        Utilities for using the EFS file systems
 License:        MIT
@@ -65,8 +65,6 @@ find . -name "*.py" -exec sed -i 's/env python3/python3/' {} +
 # No build required
 
 %check
-# https://github.com/aws/efs-utils/issues/131
-sed -i 's:from mock:from unittest.mock:' test/*/test_*.py
 make test
 
 %install
