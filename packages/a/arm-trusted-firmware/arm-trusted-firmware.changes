@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 19 09:50:31 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add "--param=min-pagesize=0" to CFLAGS as a workaround for
+  GCC12 bug: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105523
+- Add a patch to add "--param=min-pagesize=0" for
+  mv-ddr-marvell-armada since it does not use CFLAGS:
+  * fix-mv-ddr-marvell-armada.patch
+- Fix bug on A3700 flavor found by GCC12:
+  * fix-a3700_tool.patch
+
+-------------------------------------------------------------------
 Fri Mar 18 09:48:05 UTC 2022 - Ivan Ivanov <ivan.ivanov@suse.com>
 
 - Backport fallowing patches mitigating CVE-2022-23960 [1] and [2].

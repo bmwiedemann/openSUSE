@@ -26,7 +26,6 @@
 %global debug_build 1
 %endif
 
-# Patch151 fixes the build with GCC11 - https://github.com/MarvellEmbeddedProcessors/A3700-utils-marvell/issues/22
 %bcond_without A3700_tools
 
 %bcond_with atf_optee
@@ -71,6 +70,10 @@ Patch4:         0003-refactor-el3-runtime-change-Cortex-A76-implementatio.patch
 Patch5:         0004-fix-security-loop-workaround-for-CVE-2022-23960-for-.patch
 Patch6:         0005-fix-security-workaround-for-CVE-2022-23960-for-Corte.patch
 Patch7:         0006-fix-security-SMCCC_ARCH_WORKAROUND_3-mitigations-for.patch
+# Workaround for GCC12 bug - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105523
+Patch100:       fix-mv-ddr-marvell-armada.patch
+# Fix build with GCC12 - https://github.com/MarvellEmbeddedProcessors/mv-ddr-marvell/issues/37
+Patch101:       fix-a3700_tool.patch
 Patch150:       A3700_utils-drop-git.patch
 BuildRequires:  fdupes
 %if "%{platform}" != ""
@@ -211,6 +214,13 @@ This package contains fiptool.
 %endif
 # git repo or branch.txt file are expected
 echo "%{mv_ddr_ver}" > mv-ddr-marvell-%{mv_ddr_ver}/branch.txt
+pushd mv-ddr-marvell-%{mv_ddr_ver}
+%if %{suse_version} > 1550
+# Workaround for GCC12 bug - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105523
+%patch100 -p1
+%endif
+%patch101 -p1
+popd
 %else
 %if "%{platform}" == ""
 %setup -q -n trusted-firmware-a-%{srcversion} -a 2
@@ -244,7 +254,6 @@ export CRYPTOPP_INCDIR=%{_includedir}/cryptopp
 %endif
 
 %if "%{platform}" == ""
-
 make %{?_smp_mflags} V=1 fiptool
 
 %if %{with A3700_tools}
@@ -292,6 +301,11 @@ for variant in %{variants}; do
 %endif
 %if "%{platform}" == "poplar"
 for dram_size in one_gig two_gig; do
+%endif
+%if 0%{suse_version} > 1550
+# Workaround for GCC12 bug - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105523
+export TF_CFLAGS="$TF_CFLAGS --param=min-pagesize=0"
+export CFLAGS="$CFLAGS --param=min-pagesize=0"
 %endif
 make \
 %if "%{platform}" != "a3700" && "%{platform}" != "a80x0_mcbin"
