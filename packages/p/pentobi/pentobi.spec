@@ -17,7 +17,7 @@
 
 
 Name:           pentobi
-Version:        20.0
+Version:        21.0
 Release:        0
 Summary:        Program to play the board game Blokus
 License:        GPL-3.0-only
@@ -72,16 +72,6 @@ Pentobi game files.
 %install
 %cmake_install
 
-%if 0%{?suse_version} < 1330
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
-
 %files
 %license LICENSE.md
 %doc AUTHORS.md NEWS.md README.md
@@ -89,7 +79,6 @@ Pentobi game files.
 %{_datadir}/applications/io.sourceforge.pentobi.desktop
 %{_datadir}/icons/hicolor/*/*/*
 %{_datadir}/mime/packages/*.xml
-%{_datadir}/doc/pentobi/
 %{_mandir}/man6/pentobi.6%{?ext_man}
 %{_mandir}/*/man6/pentobi.6%{?ext_man}
 %{_datadir}/metainfo/io.sourceforge.pentobi.appdata.xml
