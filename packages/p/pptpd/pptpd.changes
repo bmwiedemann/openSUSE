@@ -7,6 +7,12 @@ Fri Apr 22 14:04:43 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
   modules-load.d belongs to udev, not systemd.
 
 -------------------------------------------------------------------
+Wed Oct 20 08:11:05 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * pptpd.service
+
+-------------------------------------------------------------------
 Mon Feb  3 15:42:09 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
