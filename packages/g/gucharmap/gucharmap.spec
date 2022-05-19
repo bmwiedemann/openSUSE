@@ -21,15 +21,13 @@
 %define so_gucharmap 7
 %define pc_api 2.90
 Name:           gucharmap
-Version:        13.0.0
+Version:        14.0.3
 Release:        0
 Summary:        A Featureful Unicode Character Map
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Gucharmap
 Source0:        %{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM a8ee037f8cf151b8b65354bc93c56953e41f5a22.patch -- Fix build with meson 0.61 and newer
-Patch0:         https://gitlab.gnome.org/GNOME/gucharmap/-/commit/a8ee037f8cf151b8b65354bc93c56953e41f5a22.patch
 
 BuildRequires:  appdata-tools
 BuildRequires:  fdupes
@@ -40,7 +38,7 @@ BuildRequires:  gtk3-devel >= 3.4.0
 BuildRequires:  intltool
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
-BuildRequires:  unicode-ucd
+BuildRequires:  unicode-ucd >= 14.0
 BuildRequires:  unicode-ucd-unihan
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
