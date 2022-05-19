@@ -517,4 +517,12 @@ The update addresses several other things and was much easier to fix for mono 3.
   + Fixed a crash (forwarded request 885488 from susnux)</comment>
     <requestid>885651</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>3e5777d4d742af7bae1cf48bc817ce8c</srcmd5>
+    <version>2.4.4</version>
+    <time>1652993374</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.4: (forwarded request 978054 from dimstar)</comment>
+    <requestid>978057</requestid>
+  </revision>
 </revisionlist>
