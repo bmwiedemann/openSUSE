@@ -89,9 +89,9 @@ BuildRequires:  python3-docutils
 Requires(post): systemd
 Recommends:     sbc
 Provides:       bluez-utils = 3.36
-Obsoletes:      bluez-utils <= 3.36
+Obsoletes:      bluez-utils < 3.36
 Provides:       bluez-audio = 3.36
-Obsoletes:      bluez-audio <= 3.36
+Obsoletes:      bluez-audio < 3.36
 Obsoletes:      bluez-hcidump < 5.0
 Provides:       bluez-hcidump = %{version}
 Obsoletes:      obexd-client < 5.0
@@ -123,7 +123,7 @@ Summary:        Bluetooth Libraries
 License:        GPL-2.0-or-later
 Group:          System/Libraries
 Provides:       bluez-libs = 3.36
-Obsoletes:      bluez-libs <= 3.36
+Obsoletes:      bluez-libs < 3.36
 
 %description -n libbluetooth3
 BlueZ provides support for the core Bluetooth layers and protocols.
@@ -139,6 +139,9 @@ It is uses a modular implementation. It has many interesting features:
 Summary:        CUPS Driver for Bluetooth Printers
 License:        GPL-2.0-or-later
 Group:          Hardware/Printing
+Requires:       cups
+Requires:       %{name}
+Supplements:    (%{name} and cups)
 
 %description cups
 Contains the files required by CUPS for printing to Bluetooth-connected
@@ -149,7 +152,7 @@ Summary:        Tools for testing of various Bluetooth-functions
 License:        GPL-2.0-or-later AND MIT
 Group:          Development/Tools/Debuggers
 Requires:       python3-dbus-python
-Requires:       python3-gobject2
+Requires:       python3-gobject
 
 %description test
 Contains a few tools for testing various bluetooth functions. The
@@ -198,6 +201,17 @@ Requires:       bluez = %{version}
 %description obexd
 Object Exchange daemon for sharing content.
 
+%package zsh-completion
+Summary:        Zsh completion for bluez
+Group:          System/Management
+Requires:       zsh
+Requires:       %{name}
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+This package contain the zsh completion command for the Bluetooth Stack for Linux.
+
 %prep
 %setup -q
 %autopatch -p1
@@ -237,6 +251,7 @@ autoreconf -fi
 %endif
 	--enable-datafiles	\
 	--enable-sixaxis	\
+	--with-dbusconfdir=%{_datadir}	\
 %if 0%{?suse_version} >= 1550
 	--enable-external-ell	\
 %endif
@@ -281,7 +296,7 @@ sed -i -e '1s/env p/p/' %{buildroot}%{_libdir}/bluez/test/{example-gatt-{client,
 %if %{with mesh}
 # boo#1151518
 mkdir -p %{buildroot}%{_defaultdocdir}/%{name}
-mv %{buildroot}%{_sysconfdir}/dbus-1/system.d/bluetooth-mesh.conf %{buildroot}%{_defaultdocdir}/%{name}
+mv %{buildroot}%{_datadir}/dbus-1/system.d/bluetooth-mesh.conf %{buildroot}%{_defaultdocdir}/%{name}
 mv %{buildroot}%{_datadir}/dbus-1/system-services/org.bluez.mesh.service %{buildroot}%{_defaultdocdir}/%{name}
 cat > %{buildroot}%{_defaultdocdir}/%{name}/README-mesh.SUSE << EOF
 The bluetooth-mesh dbus system config has been disabled due to security
@@ -290,7 +305,7 @@ details.
 
 If you want to use this feature anyway, copy
 bluetooth-mesh.conf to %{_sysconfdir}/dbus-1/systemd.d/ and
-org.bluez.mesh.service to %{_datadir}/dbus-1/system-services/,
+org.bluez.mesh.service to %{_sysconfdir}/dbus-1/system-services/,
 then reboot.
 EOF
 touch -r %{SOURCE0} %{buildroot}%{_defaultdocdir}/%{name}/README-mesh.SUSE
@@ -382,9 +397,9 @@ done
 %{_mandir}/man1/hid2hci.1%{?ext_man}
 %{_mandir}/man1/l2ping.1%{?ext_man}
 %{_mandir}/man1/rctest.1%{?ext_man}
-%config %{_sysconfdir}/dbus-1/system.d/bluetooth.conf
+%{_datadir}/dbus-1/system.d/bluetooth.conf
 # not packaged, boo#1151518
-###%%config %%{_sysconfdir}/dbus-1/system.d/bluetooth-mesh.conf
+###%%{_datadir}/dbus-1/system.d/bluetooth-mesh.conf
 %dir %{_localstatedir}/lib/bluetooth
 %dir %{_modprobedir}
 %{_modprobedir}/50-bluetooth.conf
@@ -395,7 +410,6 @@ done
 %{_datadir}/dbus-1/system-services/org.bluez.service
 # not packaged, boo#1151518
 ###%%{_datadir}/dbus-1/system-services/org.bluez.mesh.service
-%{_datadir}/zsh/site-functions/_bluetoothctl
 
 %files obexd
 %{_libexecdir}/bluetooth/obexd
@@ -449,5 +463,8 @@ done
 %files auto-enable-devices
 %dir %{_sysconfdir}/bluetooth
 %config(noreplace) %{_sysconfdir}/bluetooth/main.conf
+
+%files zsh-completion
+%{_datadir}/zsh/site-functions/_bluetoothctl
 
 %changelog

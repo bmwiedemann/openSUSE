@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May  8 16:12:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Upgrade bluez-test requirement of PyGObject from ancient version
+  2 to current version. (bluez/test is at least able to use it
+  since 2014)
+
+-------------------------------------------------------------------
+Wed May  4 11:23:32 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move the dbus-1 system.d file to /usr (bsc#1199207)
+- Fix self-obsoletion issues
+- Add supplements to cups subpackage
+- Split zsh completion into subpackage
+- Don't tell the user to write to /usr (in README-mesh.SUSE)
+
+-------------------------------------------------------------------
 Tue Apr 26 17:24:48 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - add Requires(post): systemd for bluez-auto-enable-devices
