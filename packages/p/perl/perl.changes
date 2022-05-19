@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed May  4 06:41:37 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Update to 5.34.1 - maintenance release
+  B::Deparse has been upgraded from version 1.56 to 1.57.
+  Encode has been upgraded from version 3.08 to 3.08_01.
+  GDBM_File has been upgraded from version 1.19 to 1.19_01.
+  Module::CoreList has been upgraded from version 5.20210520 to 5.20220313.
+  perl5db.pl has been upgraded from version 1.60 to 1.60_01.
+- Drop c029d660f2fe60699cf64bbb3fa9f671a1a370d5.patch (upstream)
+
+-------------------------------------------------------------------
+Thu Mar  3 13:33:03 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Don't install anything in testsuite build
+- Run testsuite also in qemu build
+- posix-sigaction.patch: remove, this has been fixed properly in commit
+  19c9c2ee4a
+
+-------------------------------------------------------------------
 Mon Oct  4 08:08:30 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 - Add multibuild flavor to split the testsuite out of the main package

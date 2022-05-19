@@ -1043,4 +1043,14 @@ e.g. https://build.opensuse.org/package/show/devel:languages:perl/perl-Pod-Parse
   rebuilds the same package the same way, but runs the check section</comment>
     <requestid>956107</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>f793464a26bbbb39ce9ba102110341d9</srcmd5>
+    <version>5.34.1</version>
+    <time>1652993334</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.34.1 - maintenance release
+
+I hope I got it right now. It export both 5.34.0 and 5.34.1 COMPAT. That should be correct.</comment>
+    <requestid>976985</requestid>
+  </revision>
 </revisionlist>

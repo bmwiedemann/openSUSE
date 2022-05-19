@@ -21,11 +21,11 @@
 %define name_suffix -%{flavor}
 %endif
 
-%define pversion 5.34.0
+%define pversion 5.34.1
 # set to %nil when equal to pversion
-%global versionlist %nil
+%global versionlist 5.34.0
 Name:           perl%{?name_suffix}
-Version:        5.34.0
+Version:        5.34.1
 Release:        0
 Summary:        The Perl interpreter
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -50,9 +50,6 @@ Patch11:        perl-5.18.2-overflow.diff
 Patch12:        perl-reproducible.patch
 # PATCH-FIX-OPENSUSE skip flaky tests powerpc as bypass https://bugzilla.suse.com/show_bug.cgi?id=1063176
 Patch13:        perl_skip_flaky_tests_powerpc.patch
-Patch14:        posix-sigaction.patch
-# PATCH-FIX-UPSTREAM https://github.com/Perl/perl5/pull/18919 - Fix build with gdbm 1.20
-Patch15:        https://github.com/Perl/perl5/commit/c029d660f2fe60699cf64bbb3fa9f671a1a370d5.patch
 # PATCH-FIX-UPSTREAM unmerged https://www.nntp.perl.org/group/perl.perl5.porters/2018/12/msg253240.html
 Patch18:        perl-reproducible2.patch
 BuildRequires:  db-devel
@@ -68,6 +65,9 @@ Suggests:       perl-doc = %{version}
 Provides:       perl-500
 Provides:       perl-Archive-Tar = 2.38
 Provides:       perl(:MODULE_COMPAT_%{pversion})
+%if "%{versionlist}" != ""
+Provides:       perl(:MODULE_COMPAT_%{versionlist})
+%endif
 Obsoletes:      perl-Archive-Tar <= 2.38
 Provides:       perl-autodie = 2.34
 Obsoletes:      perl-autodie <= 2.34
@@ -187,8 +187,6 @@ cp -p %{SOURCE3} .
 %patch9 -p1
 %patch11
 %patch12 -p1
-%patch14
-%patch15 -p1
 %patch18
 
 %build
@@ -230,12 +228,17 @@ mv savelib lib
 make %{?_smp_mflags}
 
 %check
-%if "%{name}" == "perl-testsuite" && !0%{?qemu_user_space_build}
-%define _unpackaged_files_terminate_build 0
+%if 0%{?qemu_user_space_build}
+# Disable tests that are difficult to emulate
+echo 'print "1..0\n";' > t/op/fork.t
+echo 'print "1..0\n";' > t/op/magic.t
+%endif
+%if "%{name}" == "perl-testsuite"
 TEST_JOBS="%{jobs}" make %{?_smp_mflags} test
 %endif
 
 %install
+%if "%{name}" != "perl-testsuite"
 %make_install
 cp -a %{buildroot}/usr/lib/perl5/site_perl %{buildroot}/usr/lib/perl5/vendor_perl
 cpa=`echo %{buildroot}/usr/lib/perl5/*/*/CORE | sed -e 's@/CORE$@@'`
@@ -352,6 +355,7 @@ EOF
      esac
    done)
 } > perl-base-excludes
+%endif
 
 %if "%{name}" == "perl"
 %files base -f perl-base-filelist
