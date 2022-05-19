@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 18 12:07:59 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.0.2:
+  + Fixed `FATAL` error thrown by user configuration migration code
+    that caused users with inaccessible home directories to be
+    unable to use `apptainer` commands.
+  + Do not truncate environment variables with commas.
+  + Use HEAD request when checking digest of remote OCI image
+    sources, with GET as a fall-back. Greatly reduces Apptainer's
+    impact on Docker Hub API limits.
+
+-------------------------------------------------------------------
 Fri Mar 18 16:02:59 UTC 2022 - Christian Goll <cgoll@suse.com>
 
 - Updated to v1.0.1 with following bug fixes
