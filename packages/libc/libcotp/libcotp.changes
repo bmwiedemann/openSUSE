@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 19 11:42:24 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.2.6:
+  * fix pkg-config file generation (#32)
+
+-------------------------------------------------------------------
 Wed Dec 29 08:44:18 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to v1.2.4:
