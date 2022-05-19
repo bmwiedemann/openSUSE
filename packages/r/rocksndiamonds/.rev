@@ -293,4 +293,12 @@ Using the old *changes file which is not in utf-8 as it's difficult get it accpt
     <comment></comment>
     <requestid>892252</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>0512952aecf5de062d762d2b541a68f4</srcmd5>
+    <version>4.3.2.1</version>
+    <time>1652993387</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978075</requestid>
+  </revision>
 </revisionlist>

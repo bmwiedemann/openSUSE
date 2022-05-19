@@ -1,7 +1,7 @@
 #
 # spec file for package rocksndiamonds
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rocksndiamonds
-Version:        4.2.3.1
+Version:        4.3.2.1
 Release:        0
 Summary:        Colorful Boulderdash'n'Emerald Mine'n'Sokoban'n'Stuff
 License:        GPL-2.0-or-later
