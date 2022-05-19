@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 13 06:10:43 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220511.fc030cd:
+  * Add missing dependencies to setup.py
+  * no-binary for all packages
+  * Update docs about rpmlintrc auto-loading.
+
+-------------------------------------------------------------------
 Mon May 09 07:21:47 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.2.0+git20220509.ea27381:

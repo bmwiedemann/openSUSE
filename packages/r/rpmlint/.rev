@@ -3783,4 +3783,15 @@ oddjob-gpupdate isn't blocked)</comment>
   * Fix up binary-or-shlib-defines-rpath error</comment>
     <requestid>975722</requestid>
   </revision>
+  <revision rev="399" vrev="1">
+    <srcmd5>aafea00b340713f52ee28e6e6fba6bfc</srcmd5>
+    <version>2.2.0+git20220511.fc030cd</version>
+    <time>1652993333</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git20220511.fc030cd:
+  * Add missing dependencies to setup.py
+  * no-binary for all packages
+  * Update docs about rpmlintrc auto-loading.</comment>
+    <requestid>976971</requestid>
+  </revision>
 </revisionlist>
