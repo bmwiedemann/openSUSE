@@ -1,7 +1,7 @@
 #
 # spec file for package pcre
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,7 @@ Patch1:         pcre-8.21-multilib.patch
 Patch2:         pcre-8.41-stack_frame_size_detection.patch
 #Patch 3: see: https://sources.debian.net/patches/pcre3/2:8.39-2/pcreposix.patch/ and cyrus imapd issue  #1731
 Patch3:         pcre-8.42-pcreposix.patch
+Patch4:         pcre-8.45-bsc1199232-unicode-property-matching.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -154,6 +155,7 @@ as Perl 5.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

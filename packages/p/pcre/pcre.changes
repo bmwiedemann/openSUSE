@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 11 09:21:09 UTC 2022 - Jason Sikes <jsikes@suse.com>
+
+- Added pcre-8.45-bsc1199232-unicode-property-matching.patch
+  * bsc#1199232
+  * Fixes unicode property matching issue
+
+-------------------------------------------------------------------
 Mon Jul 26 21:30:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.45:
