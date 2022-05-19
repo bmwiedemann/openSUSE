@@ -39,4 +39,27 @@
     <comment></comment>
     <requestid>943232</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fa597cfeee3693990a9fd9e9ee4c3b2b</srcmd5>
+    <version>1.0.14</version>
+    <time>1652993391</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.14:
+  * fix pkg-config file generation (#25)
+- update to 1.0.12:
+  * check for null byte only at the end of the user given
+    input length (fix #23)
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; .new
+- Update to 1.0.11
+  * fix valgrind reported error on decode function
+- Use cmake macros
+- Update to 1.0.10
+  * fix valgrind issues
+- Disable debug package on Fedora (https://en.opensuse.org/Fedora_packaging)
+- run spec cleaner 
+- fix build 
+- first release on OBS 
+</comment>
+    <requestid>978114</requestid>
+  </revision>
 </revisionlist>
