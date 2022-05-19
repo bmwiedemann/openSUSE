@@ -767,4 +767,12 @@ for -ldl. (forwarded request 586626 from jengelh)</comment>
     <comment></comment>
     <requestid>951438</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>0202fccd313699386c15a95f137c4b73</srcmd5>
+    <version>14.0.3</version>
+    <time>1652993375</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 14.0.3 (forwarded request 977962 from dimstar)</comment>
+    <requestid>978056</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed May 18 14:51:50 UTC 2022 - dimstar@opensuse.org
+
+- Update to version 14.0.3:
+  + Classify characters without script name properly
+  + all: Use PCRE2 instead of GRegex
+  + build:
+    - Enforce required unicode data version
+    - Fix build with meson 0.60
+    - Fix warning about incompatible pointer return type
+    - Fix warning about unused variable 'priv'
+    - Remove unwanted warning
+  + charmap: Search in details by default
+  + chartable:
+    - Improve Korean Hanja Pronunciations property
+    - Mark special script and block names in italic
+    - Use device scale for character popup
+  + help: Remove duplicate entry
+  + lib:
+    - Enable alphabetical sorting of the Unicode blocks
+    - Remove bogus volatile from type builtins code
+  + unicode:
+    - Add strings to prepare unicode 14 update
+    - Update for unicode 14.0.0
+  + Updated translations.
+- Drop a8ee037f8cf151b8b65354bc93c56953e41f5a22.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Thu Feb  3 06:23:00 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add a8ee037f8cf151b8b65354bc93c56953e41f5a22.patch: Fix build
