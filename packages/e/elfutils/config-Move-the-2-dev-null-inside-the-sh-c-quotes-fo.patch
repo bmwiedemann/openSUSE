@@ -1,0 +1,50 @@
+From f1252e4dbe781f75d806ce0b990779548eeeb7a9 Mon Sep 17 00:00:00 2001
+From: Mark Wielaard <mark@klomp.org>
+Date: Tue, 3 May 2022 17:48:55 +0200
+Subject: [PATCH] config: Move the 2>/dev/null inside the sh -c '' quotes for
+ profile.csh.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+csh/tcsh would warn about "Ambiguous output redirect" if not done inside
+the sh -c command.
+
+Fix-by: наб <nabijaczleweli@nabijaczleweli.xyz>
+
+https://bugzilla.redhat.com/show_bug.cgi?id=2080957
+
+Signed-off-by: Mark Wielaard <mark@klomp.org>
+---
+ config/ChangeLog      | 4 ++++
+ config/profile.csh.in | 2 +-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/config/ChangeLog b/config/ChangeLog
+index 51415258..cfb37b42 100644
+--- a/config/ChangeLog
++++ b/config/ChangeLog
+@@ -1,3 +1,7 @@
++2022-05-03  Mark Wielaard  <mark@klomp.org>
++
++	* profile.csh.in: Move the 2>/dev/null inside the sh -c '' quotes.
++
+ 2022-04-25  Mark Wielaard  <mark@klomp.org>
+ 
+ 	* elfutils.spec.in: Update for 0.187.
+diff --git a/config/profile.csh.in b/config/profile.csh.in
+index 012e243a..74c20c99 100644
+--- a/config/profile.csh.in
++++ b/config/profile.csh.in
+@@ -6,7 +6,7 @@
+ 
+ if (! $?DEBUGINFOD_URLS) then
+     set prefix="@prefix@"
+-    set DEBUGINFOD_URLS=`sh -c 'cat "$0"/*.urls; :' "@sysconfdir@/debuginfod" 2>/dev/null | tr '\n' ' '`
++    set DEBUGINFOD_URLS=`sh -c 'cat "$0"/*.urls 2>/dev/null; :' "@sysconfdir@/debuginfod" | tr '\n' ' '`
+     if ( "$DEBUGINFOD_URLS" != "" ) then
+         setenv DEBUGINFOD_URLS "$DEBUGINFOD_URLS"
+     else
+-- 
+2.36.1
+

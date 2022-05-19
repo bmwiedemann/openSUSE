@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 13 12:16:45 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add config-Move-the-2-dev-null-inside-the-sh-c-quotes-fo.patch
+  in order to fix boo#1199265.
+
+-------------------------------------------------------------------
 Mon May  2 07:30:54 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Do not set DEBUGINFOD_URLS for anything older than Tumbleweed.

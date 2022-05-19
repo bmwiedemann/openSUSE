@@ -29,7 +29,8 @@ Source1:        https://fedorahosted.org/releases/e/l/elfutils/%{version}/elfuti
 Source2:        elfutils.changes
 Source3:        elfutils.keyring
 Source4:        %{name}.sysusers
-Patch2:         harden_debuginfod.service.patch
+Patch1:         harden_debuginfod.service.patch
+Patch2:         config-Move-the-2-dev-null-inside-the-sh-c-quotes-fo.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
