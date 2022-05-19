@@ -17,7 +17,7 @@
 
 
 Name:           guava
-Version:        30.1.1
+Version:        31.1
 Release:        0
 Summary:        Google Core Libraries for Java
 License:        Apache-2.0 AND CC0-1.0
@@ -25,9 +25,11 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/google/guava
 Source0:        https://github.com/google/guava/archive/v%{version}.tar.gz
 Source1:        %{name}-build.tar.xz
-Patch0:         donotmock.patch
 BuildRequires:  ant
+BuildRequires:  checker-qual
 BuildRequires:  fdupes
+BuildRequires:  google-errorprone-annotations
+BuildRequires:  j2objc-annotations
 BuildRequires:  javapackages-local
 BuildRequires:  jsr-305
 BuildRequires:  junit
@@ -52,8 +54,6 @@ API documentation for %{name}.
 %package testlib
 Summary:        The guava-testlib artifact
 Group:          Development/Libraries/Java
-Requires:       mvn(com.google.code.findbugs:jsr305)
-Requires:       mvn(com.google.guava:guava)
 Requires:       mvn(junit:junit)
 
 %description testlib
@@ -61,7 +61,6 @@ guava-testlib provides additional functionality for conveninent unit testing
 
 %prep
 %setup -q -a1
-%patch0 -p1
 
 find . -name '*.jar' -delete
 
@@ -74,28 +73,8 @@ find . -name '*.jar' -delete
 
 %pom_xpath_inject /pom:project/pom:build/pom:plugins/pom:plugin/pom:configuration/pom:instructions "<_nouses>true</_nouses>" guava/pom.xml
 
-%pom_remove_dep -r :error_prone_annotations
-%pom_remove_dep -r :j2objc-annotations
-%pom_remove_dep -r org.checkerframework:
-
 %pom_remove_dep -r :listenablefuture
 %pom_remove_dep -r :failureaccess
-
-annotations=$(
-    find -name '*.java' \
-    | xargs grep -F -h \
-        -e 'import com.google.j2objc.annotations' \
-        -e 'import com.google.errorprone.annotation' \
-        -e 'import org.codehaus.mojo.animal_sniffer' \
-        -e 'import org.checkerframework' \
-    | sort -u \
-    | sed 's/.*\.\([^.]*\);/\1/' \
-    | paste -sd\|
-)
-# guava started using quite a few annotation libraries for code quality, which
-# we don't have. This ugly regex is supposed to remove their usage from the code
-find -name '*.java' | xargs sed -ri \
-    "s/^import .*\.($annotations);//;s/@($annotations)"'\>\s*(\((("[^"]*")|([^)]*))\))?//g'
 
 for mod in guava guava-testlib futures/failureaccess; do
   %pom_remove_parent ${mod}
@@ -104,11 +83,15 @@ for mod in guava guava-testlib futures/failureaccess; do
     <version>%{version}</version>' ${mod}
 done
 
-%pom_change_dep -r -f ::::: :::::
+%pom_change_dep -r :error_prone_annotations :::provided
+%pom_change_dep -r :j2objc-annotations :::provided
+%pom_change_dep -r org.checkerframework: :::provided
+
+%pom_change_dep -r -f :::: ::::
 
 %build
 mkdir -p lib
-build-jar-repository -s lib junit jsr-305
+build-jar-repository -s lib junit jsr-305 google-errorprone/annotations checker-qual j2objc-annotations
 %{ant} -Dtest.skip=true package javadoc
 
 %install

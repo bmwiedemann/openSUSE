@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 18 17:26:01 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to guava 31.1
+  * Remove the hack of removing annotations, since we have now
+    all the required dependencies packaged
+- Removed patch:
+  * donotmock.patch
+    + hack not needed any more
+
+-------------------------------------------------------------------
 Fri Mar 11 12:13:02 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Remove parent reference from ALL distributed pom files
