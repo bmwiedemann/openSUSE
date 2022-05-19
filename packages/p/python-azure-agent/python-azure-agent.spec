@@ -36,19 +36,12 @@ BuildRequires:  openssl
 %if 0%{?suse_version} < 1140
 BuildRequires:  python-ordereddict
 %endif
+BuildRequires:  python-rpm-macros
 %if 0%{?suse_version} && 0%{?suse_version} > 1315
-BuildRequires:  python3-devel
 BuildRequires:  python3-distro
-BuildRequires:  python3-mock
-BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
-BuildRequires:  python3-xml
 %else
-BuildRequires:  python-devel
-BuildRequires:  python-mock
-BuildRequires:  python-pytest
 BuildRequires:  python-setuptools
-BuildRequires:  python-xml
 %endif
 BuildRequires:  pkgconfig(udev)
 Requires:       eject
