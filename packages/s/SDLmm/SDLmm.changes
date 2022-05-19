@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 18 16:00:45 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove baselibs.conf, nothing appears to be using it.
+- Change -devel subpackage to be based on SRPM/project name.
+- Use pkgconfig(sdl) to build with sdl12_compat.
+
+-------------------------------------------------------------------
 Thu Jan  8 11:04:11 UTC 2015 - jengelh@inai.de
 
 - Improve package summary and description. Drop --with-pic which

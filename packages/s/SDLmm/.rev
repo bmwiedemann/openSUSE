@@ -187,4 +187,14 @@
   is enabled implicitly anyway.</comment>
     <requestid>280527</requestid>
   </revision>
+  <revision rev="27" vrev="1170">
+    <srcmd5>9f953d48cfc1a707adccd61f52f8cdd1</srcmd5>
+    <version>0.1.8</version>
+    <time>1652993360</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove baselibs.conf, nothing appears to be using it.
+- Change -devel subpackage to be based on SRPM/project name.
+- Use pkgconfig(sdl) to build with sdl12_compat.</comment>
+    <requestid>977980</requestid>
+  </revision>
 </revisionlist>

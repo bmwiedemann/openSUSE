@@ -1,7 +1,7 @@
 #
 # spec file for package SDLmm
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,12 +21,11 @@ Name:           SDLmm
 Version:        0.1.8
 Release:        0
 Summary:        C++ glue API for Simple DirectMedia Layer
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/X11
-Url:            http://sdlmm.sf.net/
+URL:            http://sdlmm.sf.net/
 
 Source:         http://downloads.sf.net/sdlmm/%name-%version.tar.bz2
-Source2:        baselibs.conf
 Patch:          %name-%version.patch
 Patch1:         %name-%version-lib64.patch
 Patch2:         %name-%version-autoheader.patch
@@ -35,55 +34,40 @@ Patch4:         %name-%version-makefile.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig(sdl)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-SDLmm aims to stay as close as possible to the C API while taking
-advantage of native C++ features like object oriented programming. It
-also aims to be as platform independent as possible. In other words, it
-tries to support every platform that SDL supports.
+SDLmm takes advantage of native C++ features like object oriented
+programming while programming SDL.
 
 %package -n %lname
 Summary:        Simple DirectMedia Layer C++ glue library
 Group:          System/Libraries
-Provides:       SDLmm = %version
-Obsoletes:      SDLmm <= %version
 
 %description -n %lname
-SDLmm aims to stay as close as possible to the C API while taking
-advantage of native C++ features like object oriented programming. It
-also aims to be as platform independent as possible. In other words, it
-tries to support every platform that SDL supports.
+SDLmm takes advantage of native C++ features like object oriented
+programming while programming SDL.
 
-%package -n libSDLmm-devel
+%package devel
 Summary:        Development files for the SDL C++ API layer
 Group:          Development/Libraries/X11
 Requires:       %lname = %version
-Requires:       libSDL-devel
 Requires:       libstdc++-devel
-Provides:       SDLmm-devel = %version
-Obsoletes:      SDLmm-devel <= %version
+Requires:       pkgconfig(sdl)
+Provides:       libSDLmm-devel = %version
+Obsoletes:      libSDLmm-devel <= %version
 
-%description -n libSDLmm-devel
-SDLmm aims to stay as close as possible to the C API while taking
-advantage of native C++ features like object orientation. We will also
-aim at being platform independent as much as possible. I.e we'll try to
-support ever platform supported by SDL.
+%description devel
+SDLmm takes advantage of native C++ features like object oriented
+programming while programming SDL.
 
 %prep
-%setup -q
-%patch
-%patch1
-%patch2
-%patch3
-%patch4
-rm acconfig.h
-rm acinclude.m4
+%autosetup -p0
+rm -fv acconfig.h acinclude.m4
 
 %build
 autoreconf -fi
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -93,12 +77,11 @@ rm -f "%buildroot/%_libdir"/*.la docs/html/Makefil*
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%doc AUTHORS COPYING NEWS README THANKS
+%license COPYING
 %_libdir/*.so.*
 
-%files -n libSDLmm-devel
-%defattr(-,root,root)
+%files devel
+%doc AUTHORS NEWS README THANKS
 %doc docs/html
 %_bindir/sdlmm-config
 %_includedir/SDLmm
