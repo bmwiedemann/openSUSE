@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 18 09:05:57 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.11.7:
+  * ci: run `cilium service list get` with `sudo` in external workloads ping test
+  * ci: make external workload only use global DNS server in test
+  * ci: run `ciliun status` with `sudo` in external workloads test
+  * ci: bump cilium version to v1.11.5
+  * defaults: update default Cilium version to v1.11.5
+  * go.mod, vendor: pick up the latest cilium/chart
+  * build(deps): bump google.golang.org/grpc from 1.46.0 to 1.46.2
+  * .github: explicitly set Cilium version in workflows
+  * build(deps): bump actions/setup-go from 3.0.0 to 3.1.0
+
+-------------------------------------------------------------------
 Sat May 14 11:38:40 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.11.6:
