@@ -77,4 +77,12 @@
     <comment>- Update to version 2.13.0.</comment>
     <requestid>934572</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f11811182b80961caf4d59ff700bfc7c</srcmd5>
+    <version>2.13.2</version>
+    <time>1653061817</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.13.2.</comment>
+    <requestid>978015</requestid>
+  </revision>
 </revisionlist>
