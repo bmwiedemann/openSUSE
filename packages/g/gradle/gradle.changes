@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 20 04:46:11 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Modify the launcher so that gradle can work with Java 17
+- Do not force building with java <= 15, since we now can run
+  gradle-bootstrap with Java 17 too
+
+-------------------------------------------------------------------
 Mon May 16 12:37:31 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build against jansi 2.x
