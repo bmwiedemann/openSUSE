@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed May 18 12:43:26 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.6.2:
+  + New features in Meson build:
+    - Auto-detect whether the man page can be generated.
+    - -Dbwrapdir=... changes the installation directory (useful
+       when being used as a subproject).
+    - -Dtests=false disables unit tests.
+  + Bug fixes:
+    - Add --add-seccomp-fd to shell completions
+    - Document --add-seccomp-fd, --json-status-fd and --share-net
+      in the man page
+    - Add attributes to silence various compiler warnings
+    - Allow compilation of tests with musl on mips architectures
+    - Allow compilation with older glibc
+    - Disable sanitizers for a test helper whose seccomp profile
+      breaks the instrumentation
+    - Disable AddressSanitizer leak detection where it interferes
+      with unit testing
+
+-------------------------------------------------------------------
 Fri Mar  4 18:13:15 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update to 0.6.1:
