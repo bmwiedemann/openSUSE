@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 18 09:19:29 CEST 2022 - aschnell@suse.com
+
+- add new type command from upstream
+  added patches:
+  - type-command.patch
+
+-------------------------------------------------------------------
 Wed Apr 20 09:11:11 CEST 2022 - aschnell@suse.com
 
 - update to version 3.5:
