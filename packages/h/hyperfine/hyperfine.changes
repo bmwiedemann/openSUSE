@@ -1,4 +1,169 @@
 -------------------------------------------------------------------
+Wed May 18 14:46:40 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 1.14.0:
+  * Bump version
+  * Address review comments
+  * Forbid --output=file without a path separator
+  * Add --output=inherit as an alias for --show-output
+  * Clarify --output's help text
+  * Implement --output={null,pipe,<FILE>}
+  * Use cross to build x86_64-unknown-linux-gnu executables
+  * Add CHANGELOG entry for Emacs org-mode
+  * Adapt to new markup exporter changes
+  * Export of Emacs org-mode table support
+  * Bump thiserror from 1.0.30 to 1.0.31
+  * Bump libc from 0.2.121 to 0.2.125
+  * Bump anyhow from 1.0.56 to 1.0.57
+  * Bump serde_json from 1.0.79 to 1.0.80
+  * Bump clap from 3.1.7 to 3.1.14
+  * Simplify test
+  * table_line => table_divider
+  * table_data => table_row
+  * Remove superfluous newline
+  * Move determine_unit_from_results
+  * Implement Exporter for all MarkupExporters
+  * Remove the TestExporter
+  * Do not pass 'unit' into determine_unit_from_results
+  * Move Exporter::unit => determine_unit_from_results
+  * Refactor MarkupExporter to omit intermediate table result creation and simplify MarkupFormatter emitting
+  * Refactor MarkdownExporter emitting using a generic MarkupFormatter trait
+  * Refactor Markdown table emitting to generic Markup function
+  * Refactor Markdown table contents generation to generic Markup function
+  * Refactor Markdown with Markup by using generic table emitter
+  * Bump clap from 3.1.5 to 3.1.7
+  * Bump rust_decimal from 1.22.0 to 1.23.1
+  * Bump anyhow from 1.0.55 to 1.0.56
+  * Bump libc from 0.2.119 to 0.2.121
+  * Fix description of execution order
+  * Add execution order to README
+  * Update execution order image
+  * Use table for example plots
+  * Add whisker plot
+  * Update CHANGELOG
+  * Update README.md
+  * Add histogram image
+  * Update warning text
+  * Update documentation
+  * Bump version to v1.13.0
+  * Add plot_progression.py
+  * Add number of runs to advanced_statistics.py
+  * Update dependencies
+  * Add scipy to scripts README.md pre-requisites
+  * Bump clap from 3.1.1 to 3.1.3
+  * Add --t-min/--t-max to histogram script
+  * Adjust image size
+  * Add additional integration test for failing command
+  * Add simple integation test for --shell=none
+  * Add CHANGELOG entry
+  * Switch to --shell=none/-N, do not change the default
+  * Use raw executor by default, skip intermediate shell
+  * Update dependencies
+  * Extract common functionality
+  * Simplify
+  * Rename to TimerResult
+  * Move wall clock timer into execute_and_measure
+  * Change argument order
+  * Add integration test for --show-output
+  * Move Stdio extraction to enum
+  * Further simplify execute_and_measure
+  * Move to timer module
+  * Move custom functionality to executor
+  * Rename functions
+  * Rename to run_command_and_measure
+  * Rename to get_command_line
+  * Refactor timer module
+  * Fix clippy warnings
+  * Update outdated comment
+  * Update LICENSE
+  * Add environment randomization on Windows
+  * Remove comment
+  * Update CHANGELOG
+  * Proper shell overhead computation
+  * Add debug/mock mode
+  * Faster tests
+  * Add integration test for '--shell'
+  * New Benchmark struct
+  * Improve error message
+  * Formatting
+  * Better error handling in run_intermediate_command
+  * Restructure run_intermediate_command
+  * Update BenchmarkResult documentation
+  * Simplify code
+  * Rename to command
+  * Rename num
+  * Move functionality into run_cleanup_command
+  * Remove more function arguments
+  * Move functions into Scheduler
+  * Move functionality to scheduler
+  * Move exit code function to separate file
+  * Rename test
+  * Use get_program
+  * Remove unused option
+  * Rename parse to from_str
+  * Turn show_output into enum
+  * Rename _res to _result
+  * Rename Runs to RunBounds
+  * Fix clippy warning
+  * Modify doc comment
+  * Refactor command.rs
+  * Update code comments
+  * New Scheduler struct
+  * Fix SVG
+  * Expand execution order tests
+  * Add diagram explaining execution order
+  * Split range into range_step and commands
+  * Introduce Commands struct
+  * New schedule module
+  * Move a few modules to util
+  * Move more modules around
+  * New parameter module
+  * New output module
+  * New 'benchmark' module folder
+  * Move build_commands
+  * Move build_export_manager to ExportManager
+  * Rename to Options
+  * Move convert_cli_arguments_to_options to HyperfineOptions
+  * Fix Windows code
+  * Fix format call
+  * Fix formatting
+  * Rename function
+  * Unified error handling
+  * Integration test for duplicate parameter names
+  * Add integration test for prepare option
+  * Add more integration tests
+  * Remove BenchmarkResult::new
+  * Add new integration test
+  * Move execution order tests to separate file
+  * Use thiserror for to derive Error
+  * Fix deprecated clippy option
+  * Fix clippy suggestions
+  * Update install instructions
+  * Update to clap 3
+  * Update CHANGELOG
+  * Bump serde from 1.0.132 to 1.0.136
+  * Bump libc from 0.2.112 to 0.2.116
+  * Bump serde_json from 1.0.73 to 1.0.78
+  * Bump tempfile from 3.2.0 to 3.3.0
+  * Bump predicates from 2.1.0 to 2.1.1
+  * Bump assert_cmd from 2.0.2 to 2.0.4
+  * Bump serde_json from 1.0.72 to 1.0.73
+  * Bump MSRV
+  * Bump libc from 0.2.108 to 0.2.112
+  * Bump serde from 1.0.130 to 1.0.132
+  * Bump rust_decimal from 1.17.0 to 1.19.0
+  * Fixed #452 - Difference between markdown and asciidoctor output
+  * Bump clap from 2.33.3 to 2.34.0
+  * Bump serde_json from 1.0.68 to 1.0.72
+  * Bump libc from 0.2.106 to 0.2.108
+  * Bump predicates from 2.0.3 to 2.1.0
+  * Add --setup (-s) option, like --prepare but runs once per batch
+  * Make stddev fields optional, hide "± σ" for 1 run
+  * Add support for one run with --runs=1
+  * Bump rust_decimal from 1.16.0 to 1.17.0
+  * Bump libc from 0.2.104 to 0.2.106
+
+-------------------------------------------------------------------
 Mon Nov 01 09:00:49 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
 
 - Update to version 1.12.0:
