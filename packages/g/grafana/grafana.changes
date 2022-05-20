@@ -7,7 +7,8 @@ Thu Apr  7 16:17:17 UTC 2022 - Jordi Massaguer <jmassaguerpla@suse.com>
 -------------------------------------------------------------------
 Wed Feb 09 16:10:40 UTC 2022 - witold.bedyk@suse.com
 
-- Update to version 8.3.5 (jsc#SLE-23439, jsc#SLE-23422)
+- Update to version 8.3.5 (jsc#SLE-23439, jsc#SLE-23422,
+  jsc#SLE-24565)
   + Security:
     * Fixes XSS vulnerability in handling data sources
       (bsc#1195726, CVE-2022-21702)
