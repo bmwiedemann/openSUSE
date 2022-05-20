@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 17 09:39:16 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 14.0.0
+  * Unicode 14.0 adds 838 characters, for a total of 144,697 characters
+  * These additions include 5 new scripts, for a total of 159 scripts
+  * As well as 37 new emoji characters.
+  * Full news: http://www.unicode.org/versions/Unicode14.0.0/
+
+-------------------------------------------------------------------
 Mon Jun 28 16:32:58 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
 
 - Update version to 13.0.0. Upstream did not provide changelog.

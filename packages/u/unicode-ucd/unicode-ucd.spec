@@ -1,7 +1,7 @@
 #
 # spec file for package unicode-ucd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global unicodedir %{_datadir}/unicode
 %global ucddir %{unicodedir}/ucd
 Name:           unicode-ucd
-Version:        13.0.0
+Version:        14.0.0
 Release:        0
 Summary:        Unicode Character Database
 # FIXME: use correct group, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
