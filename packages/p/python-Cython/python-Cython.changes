@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 18 08:35:39 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 0.29.30:
+  * Avoid acquiring the GIL at the end of nogil functions. This change
+    was backported in order to avoid generating wrong C code that
+    would trigger C compiler warnings with tracing support enabled. 
+  * Function definitions in finally: clauses were not correctly generated.
+  * A case where C-API functions could be called with a live exception
+    set was fixed.
+  * Cython now correctly generates Python methods for both the provided
+    regular and reversed special numeric methods of extension types.
+  * The C union type in pure Python mode mishandled some field names.
+
+-------------------------------------------------------------------
 Sun Mar 20 20:33:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.29.28:

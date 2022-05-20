@@ -20,7 +20,7 @@
 %define         oldpython python
 %bcond_with test
 Name:           python-Cython
-Version:        0.29.28
+Version:        0.29.30
 Release:        0
 Summary:        The Cython compiler for writing C extensions for the Python language
 License:        Apache-2.0
