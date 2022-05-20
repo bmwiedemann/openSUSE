@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 20 10:09:46 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1653037748.75eb1b1:
+  * Add basic unit tests for backend svirt
+  * Small fixes for svirt backend and removal of HDDFORMAT check
+  * Improve error feedback for non-existant CASEDIR
+  * t: Add simple test coverage for some baseclass subs
+  * Simplify baseclass a bit
+  * Improve socket check die messages
+  * Delete disabled code in backend::amt
+  * Remove 'HDDFORMAT' from backendvars
+
+-------------------------------------------------------------------
 Wed May 18 02:01:42 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1652795155.981fd51:
