@@ -1,7 +1,7 @@
 #
 # spec file for package adobe-sourcecodepro-fonts
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 Name:           adobe-sourcecodepro-fonts
-Version:        2.030
+Version:        2.038
 Release:        0
-%define         italic_version  1.050
+%define         italic_version   1.058
+%define         variable_version 1.018
 Summary:        A set of OpenType fonts designed for coding environments
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://adobe-fonts.github.io/source-code-pro/
-Source:         https://github.com/adobe-fonts/source-code-pro/archive/%{version}R-ro/%{italic_version}R-it.tar.gz#/source-code-pro-%{version}R-ro-%{italic_version}R-it.tar.gz
+Source:         https://github.com/adobe-fonts/source-code-pro/archive/%{version}R-ro/%{italic_version}R-it/%{variable_version}R-VAR.tar.gz#/source-code-pro-%{version}R-ro-%{italic_version}R-it-%{variable_version}R-VAR.tar.gz
 Source1:        adobe-sourcecodepro-fonts.metainfo.xml
 Obsoletes:      SourceCodePro-fonts < %version-%release
 Provides:       SourceCodePro-fonts = %version-%release
@@ -40,7 +41,7 @@ work well with coding environments. This family of fonts is a complementary
 design to the Source Sans family.
 
 %prep
-%setup -q -n source-code-pro-%{version}R-ro-%{italic_version}R-it
+%setup -q -n source-code-pro-%{version}R-ro-%{italic_version}R-it-%{variable_version}R-VAR
 
 %build
 chmod -x+X -R *
@@ -57,7 +58,7 @@ install -D -m0644 %{S:1} %{buildroot}%{_datadir}/metainfo/
 
 %files
 %defattr(-,root,root)
-%license LICENSE.txt
+%license LICENSE.md
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/adobe-sourcecodepro-fonts.metainfo.xml
 %dir %{_ttfontsdir}
