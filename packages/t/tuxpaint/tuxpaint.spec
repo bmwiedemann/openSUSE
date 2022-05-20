@@ -30,26 +30,30 @@ Patch0:         tuxpaint-import-eval.patch
 # PATCH-FIX-OPENSUSE tuxpaint-makefile.patch -- Disable update-desktop-database, because it do not work
 Patch1:         tuxpaint-makefile.patch
 BuildRequires:  ImageMagick
-BuildRequires:  SDL-devel
-BuildRequires:  SDL_Pango-devel
-BuildRequires:  SDL_image-devel
-BuildRequires:  SDL_mixer-devel
-BuildRequires:  SDL_ttf-devel > 2.0.8
-BuildRequires:  fribidi-devel
+BuildRequires:  pkgconfig(sdl)
+BuildRequires:  pkgconfig(SDL_Pango)
+BuildRequires:  pkgconfig(SDL_image)
+BuildRequires:  pkgconfig(SDL_mixer)
+BuildRequires:  pkgconfig(SDL_ttf) > 2.0.8
+BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  gperf
+%if 0%{?suse_version} <= 01530
 BuildRequires:  libimagequant-devel
+%else
+BuildRequires:  pkgconfig(imagequant)
+%endif
 BuildRequires:  libpaper-devel
 BuildRequires:  libpng-devel
 BuildRequires:  xdg-utils
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(zlib)
 #
 # openSUSE
 #
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
-BuildRequires:  libSDL_gfx-devel
-BuildRequires:  librsvg-devel
+BuildRequires:  pkgconfig(SDL_gfx)
+BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  update-desktop-files
 Requires:       freefont
 Requires:       netpbm
@@ -76,7 +80,7 @@ interface and fixed canvas size, and provides access to previous images
 using a thumbnail browser (it provides no access to the underlying
 filesystem).
 
-Unlike popular drawing programs such as "The GIMP," it has a very
+Unlike drawing programs such as "The GIMP", it has a very
 limited toolset. However, it provides a much simpler interface, and has
 entertaining, child-oriented additions such as sound effects.
 
@@ -84,19 +88,19 @@ entertaining, child-oriented additions such as sound effects.
 Summary:        Devel files of tuxpaint
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
-Requires:       SDL-devel
-Requires:       SDL_Pango-devel
-Requires:       SDL_image-devel
-Requires:       SDL_mixer-devel
-Requires:       SDL_ttf-devel
-Requires:       fribidi-devel
+Requires:       pkgconfig(sdl)
+Requires:       pkgconfig(SDL_Pango)
+Requires:       pkgconfig(SDL_image)
+Requires:       pkgconfig(SDL_mixer)
+Requires:       pkgconfig(SDL_ttf)
+Requires:       pkgconfig(fribidi)
 Requires:       libpaper-devel
 Requires:       libpng-devel
-Requires:       zlib-devel
+Requires:       pkgconfig(zlib)
 %if 0%{?suse_version}
 Requires:       gcc-c++
 Requires:       gettext-devel
-Requires:       librsvg-devel
+Requires:       pkgconfig(librsvg-2.0)
 %endif
 %if 0%{?fedora_version}
 Requires:       gettext
@@ -107,12 +111,9 @@ Requires:       librsvg2-devel
 Header files and development documentation for tuxpaint.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-
-find . -name CVS   -print0 | xargs -0 rm -rf
-find docs/ -type f -print0 | xargs -0 chmod -v 644
+%autosetup -p1
+find . -name CVS -exec rm -rf {} +
+find docs/ -type f -exec chmod -v 644 {} +
 
 make PREFIX=%{_prefix} MAGIC_PREFIX=%{_libdir}/%{name}/plugins tp-magic-config
 
@@ -126,23 +127,22 @@ make PREFIX=%{_prefix} MAGIC_PREFIX=%{_libdir}/%{name}/plugins tp-magic-config
 %if ! 0%{?suse_version}
 mkdir -p %{buildroot}
 %endif
-make install \
+%make_install \
      PREFIX="%{_prefix}" \
      X11_ICON_PREFIX="%{buildroot}/%{_datadir}/pixmaps" \
      MAGIC_PREFIX="%{buildroot}/%{_libdir}/%{name}/plugins" \
-     GNOME_PREFIX="%{_prefix}" \
-     KDE_ICON_PREFIX="%{_datadir}/icons" \
 %if 0%{?suse_version}
      DEVDOC_PREFIX="%{buildroot}/%{_defaultdocdir}/%{name}-devel" \
      DOC_PREFIX="%{buildroot}/%{_defaultdocdir}/%{name}" \
 %endif
-     DESTDIR=%{buildroot}
+     GNOME_PREFIX="%{_prefix}" \
+     KDE_ICON_PREFIX="%{_datadir}/icons"
 
-find %{buildroot}/%{_mandir} -type f -exec chmod 644 {} \;
-find %{buildroot} -type d -exec chmod 0755 {} \;
+find %{buildroot}/%{_mandir} -type f -exec chmod 644 {} +
+find %{buildroot} -type d -exec chmod 0755 {} +
 
 %if 0%{?suse_version}
-find %{buildroot} -name "*.desktop" -exec rm -v {} \;
+find %{buildroot} -name "*.desktop" -print -delete
 %suse_update_desktop_file -i %{name} Game KidsGame
 %fdupes -s %{buildroot}
 %else

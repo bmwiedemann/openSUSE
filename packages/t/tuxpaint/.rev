@@ -99,4 +99,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>965556</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>2fffb1172f111443edc215b0e7ce4bd8</srcmd5>
+    <version>0.9.27</version>
+    <time>1653061862</time>
+    <user>dimstar_suse</user>
+    <comment>Please check Changelog: mostly just beautify and adjustments for Factory</comment>
+    <requestid>978235</requestid>
+  </revision>
 </revisionlist>
