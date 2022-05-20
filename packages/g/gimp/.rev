@@ -2040,4 +2040,12 @@ General:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>976248</requestid>
   </revision>
+  <revision rev="133" vrev="3">
+    <srcmd5>b1460cf4d2e811e5cde228fc1970b05d</srcmd5>
+    <version>2.10.30</version>
+    <time>1653061828</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978061</requestid>
+  </revision>
 </revisionlist>

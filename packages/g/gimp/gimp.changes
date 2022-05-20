@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 18 14:52:26 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Add gimp-CVE_2022-30067.patch: fix out of memory when reading
+  XCF (boo#1199653 CVE-2022-30067).
+
+-------------------------------------------------------------------
 Wed May  4 09:02:40 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - switched to https urls

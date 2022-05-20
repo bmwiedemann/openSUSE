@@ -42,6 +42,8 @@ Source1:        macros.gimp
 # openSUSE palette file
 Source2:        openSUSE.gpl
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM gimp-CVE_2022-30067.patch boo#1199653 mgorse@suse.com -- fix out of memory when reading XCF.
+Patch0:         gimp-CVE_2022-30067.patch
 
 BuildRequires:  aalib-devel
 BuildRequires:  alsa-devel >= 1.0.0
