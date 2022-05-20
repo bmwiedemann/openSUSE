@@ -77,6 +77,10 @@ features.
 sed -i 's/lrelease/lrelease-qt5/g' translate_generation.sh
 sed -i 's/Exec=deepin-editor/Exec=env QT_QPA_PLATFORMTHEME=deepin deepin-editor/g' \
 deepin-editor.desktop
+%if 0%{?suse_version} > 1500
+sed -i 's|KF5/KSyntaxHighlighting/|KF5/KSyntaxHighlighting/KSyntaxHighlighting/|g' \
+src/editor/showflodcodewidget.h src/editor/dtextedit.cpp
+%endif
 
 %build
 %cmake -DVERSION=%{version}-%{distribution} \

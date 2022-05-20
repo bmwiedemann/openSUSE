@@ -60,4 +60,12 @@
     <comment></comment>
     <requestid>971780</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>185d524aaf5051a5f360d31d901e269a</srcmd5>
+    <version>5.10.19</version>
+    <time>1653061858</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on Tumbleweed</comment>
+    <requestid>978233</requestid>
+  </revision>
 </revisionlist>
