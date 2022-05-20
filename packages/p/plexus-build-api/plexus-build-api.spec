@@ -28,6 +28,7 @@ Source0:        sonatype-sisu-build-api-plexus-build-api-0.0.7-0-g883ea67.tar.gz
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 Source2:        %{name}-build.xml
 Patch0:         plexus-build-api-utils-3.3.0.patch
+Patch1:         plexus-build-api-javadoc.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
@@ -51,6 +52,7 @@ API documentation for %{name}.
 %prep
 %setup -q -n sonatype-sisu-build-api-f1f8849
 %patch0 -p1
+%patch1 -p1
 cp -p %{SOURCE1} .
 cp -p %{SOURCE2} build.xml
 

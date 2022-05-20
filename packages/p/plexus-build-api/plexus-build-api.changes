@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 19 06:23:14 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * plexus-build-api-javadoc.patch
+    + fix an error of tag in javadoc
+
+-------------------------------------------------------------------
 Sun Mar 20 18:00:35 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source and target levels 8

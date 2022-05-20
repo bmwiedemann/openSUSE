@@ -23,4 +23,12 @@
     <comment>Build with source/target levels 8</comment>
     <requestid>963313</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>d4ca45e9449d817ab19eb173d4d5d4c3</srcmd5>
+    <version>0.0.7</version>
+    <time>1653061841</time>
+    <user>dimstar_suse</user>
+    <comment>Fix a javadoc error</comment>
+    <requestid>978181</requestid>
+  </revision>
 </revisionlist>
