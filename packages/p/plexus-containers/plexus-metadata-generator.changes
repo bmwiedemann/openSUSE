@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 20 12:13:42 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * plexus-metadata-generator-cli.patch
+    + Do not use the deprecated plexus-cli functions, but port
+      the generator to the recommended replacement
+
+-------------------------------------------------------------------
 Sun Mar 20 17:43:54 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source and target levels 8

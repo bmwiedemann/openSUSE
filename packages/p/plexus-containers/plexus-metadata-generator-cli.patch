@@ -9,7 +9,7 @@ diff -urEbwBN plexus-containers-plexus-containers-2.1.0/plexus-component-metadat
 +import java.util.Collections;
 +
 +import org.apache.commons.cli.CommandLine;
-+import org.apache.commons.cli.OptionBuilder;
++import org.apache.commons.cli.Option;
 +import org.apache.commons.cli.Options;
 +import org.codehaus.plexus.PlexusContainer;
 +import org.codehaus.plexus.tools.cli.AbstractCli;
@@ -17,11 +17,11 @@ diff -urEbwBN plexus-containers-plexus-containers-2.1.0/plexus-component-metadat
 +public class PlexusMetadataGeneratorCli
 +    extends AbstractCli
 +{
-+    public static final char SOURCE_DIRECTORY = 's';
-+    public static final char SOURCE_ENCODING = 'e';
-+    public static final char CLASSES_DIRECTORY = 'c';
-+    public static final char OUTPUT_FILE = 'o';
-+    public static final char DESCRIPTORS_DIRECTORY = 'm';
++    public static final String SOURCE_DIRECTORY = "s";
++    public static final String SOURCE_ENCODING = "e";
++    public static final String CLASSES_DIRECTORY = "c";
++    public static final String OUTPUT_FILE = "o";
++    public static final String DESCRIPTORS_DIRECTORY = "m";
 +
 +    public static void main( String[] args )
 +        throws Exception
@@ -39,11 +39,11 @@ diff -urEbwBN plexus-containers-plexus-containers-2.1.0/plexus-component-metadat
 +    @SuppressWarnings("static-access")
 +    public Options buildCliOptions( Options options )
 +    {
-+        options.addOption( OptionBuilder.withLongOpt( "source" ).hasArg().withDescription( "Source directory." ).create( SOURCE_DIRECTORY ) );
-+        options.addOption( OptionBuilder.withLongOpt( "encoding" ).hasArg().withDescription( "Source file encoding." ).create( SOURCE_ENCODING ) );
-+        options.addOption( OptionBuilder.withLongOpt( "classes" ).hasArg().withDescription( "Classes directory." ).create( CLASSES_DIRECTORY ) );
-+        options.addOption( OptionBuilder.withLongOpt( "output" ).hasArg().withDescription( "Output directory." ).create( OUTPUT_FILE ) );
-+        options.addOption( OptionBuilder.withLongOpt( "descriptors" ).hasArg().withDescription( "Descriptors directory." ).create( DESCRIPTORS_DIRECTORY ) );
++        options.addOption( Option.builder( SOURCE_DIRECTORY ).longOpt( "source" ).hasArg().desc( "Source directory." ).build() );
++        options.addOption( Option.builder( SOURCE_ENCODING ).longOpt( "encoding" ).hasArg().desc( "Source file encoding." ).build() );
++        options.addOption( Option.builder( CLASSES_DIRECTORY ).longOpt( "classes" ).hasArg().desc( "Classes directory." ).build() );
++        options.addOption( Option.builder( OUTPUT_FILE ).longOpt( "output" ).hasArg().desc( "Output directory." ).build() );
++        options.addOption( Option.builder( DESCRIPTORS_DIRECTORY ).longOpt( "descriptors" ).hasArg().desc( "Descriptors directory." ).build() );
 +        return options;
 +    }    
 +

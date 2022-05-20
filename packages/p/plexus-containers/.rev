@@ -76,4 +76,12 @@
     <comment>Build with source and target levels 8</comment>
     <requestid>964427</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>3fdd5981502ea266e7040ab985df40e2</srcmd5>
+    <version>2.1.1</version>
+    <time>1653061871</time>
+    <user>dimstar_suse</user>
+    <comment>Port out of deprecated plexus-cli classes</comment>
+    <requestid>978272</requestid>
+  </revision>
 </revisionlist>

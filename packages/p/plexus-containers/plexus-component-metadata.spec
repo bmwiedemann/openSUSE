@@ -114,13 +114,14 @@ pushd %{comp_name}
 %{mvn_file} :%{comp_name} %{base_name}/%{comp_name}
 %{mvn_build} \
 %if %{without tests}
-	-f \
+    -f \
 %endif
+    -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=8
+    -Dmaven.compiler.release=8 \
 %endif
+    -Dsource=8
 
-# empty line, keep
 popd
 
 %install

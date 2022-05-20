@@ -85,7 +85,7 @@ Group:          Documentation/HTML
 mkdir -p lib
 build-jar-repository -s lib %{base_name} objectweb-asm/asm objectweb-asm/asm-commons plexus/classworlds plexus/utils jdom2/jdom2 commons-cli qdox plexus/cli
 %if %{with tests}
-build-jar-repository -s lib hamcrest/core
+build-jar-repository -s lib hamcrest/core xbean/xbean-reflect
 %endif
 
 %patch1 -p1
