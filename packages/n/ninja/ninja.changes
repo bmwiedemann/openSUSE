@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 18 08:46:55 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 1.11.0:
+  * this release adds Validation Nodes which are a new way to add jobs
+    like linters or static analyzers to the build graph
+  * support cpu limit on docker
+  * fixes to disk_interface
+  * fixes to ninja -t parameter
+  * optimize ninja -d stats
+  * add -q (quiet) option
+- rebase ninja-disable-maxprocs-test.patch
+- rebase ninja-re2c-g.patch
+
+-------------------------------------------------------------------
 Mon Apr  5 21:51:58 UTC 2021 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - ninja-re2c-g.patch tell re2c to generate gcc specific code using

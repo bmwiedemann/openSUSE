@@ -1,7 +1,7 @@
 #
 # spec file for package ninja
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ninja
-Version:        1.10.2
+Version:        1.11.0
 Release:        0
 Summary:        A small build system closest in spirit to Make
 License:        Apache-2.0
@@ -37,7 +37,7 @@ of files (typically source code and output executables) and orchestrates
 building them, quickly.
 
 %prep
-%autosetup -p0
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags}"

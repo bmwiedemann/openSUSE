@@ -1,8 +1,8 @@
 Index: src/subprocess_test.cc
 ===================================================================
---- src/subprocess_test.cc.orig
-+++ src/subprocess_test.cc
-@@ -214,36 +214,6 @@ TEST_F(SubprocessTest, SetWithMulti) {
+--- a/src/subprocess_test.cc.orig
++++ b/src/subprocess_test.cc
+@@ -216,36 +216,6 @@ TEST_F(SubprocessTest, SetWithMulti) {
    }
  }
  
