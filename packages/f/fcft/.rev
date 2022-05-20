@@ -154,4 +154,14 @@
   to ensure build fails if dependencies change.</comment>
     <requestid>974220</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>edf1b21a9cb2ef4a8bbf5345c239f7c2</srcmd5>
+    <version>3.1.2</version>
+    <time>1653061838</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.2:
+  * Fixed SVG glyphs failing with “bad argument” if LCD subpixel rendering is
+    enabled.</comment>
+    <requestid>978164</requestid>
+  </revision>
 </revisionlist>

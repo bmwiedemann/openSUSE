@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 19 17:25:04 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 3.1.2:
+  * Fixed SVG glyphs failing with “bad argument” if LCD subpixel rendering is
+    enabled.
+
+-------------------------------------------------------------------
 Sun May  1 20:11:17 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 3.1.1:
