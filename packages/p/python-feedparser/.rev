@@ -322,4 +322,17 @@
 </comment>
     <requestid>952249</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>9ab1a163e0298ef617bff8cc6955c1e7</srcmd5>
+    <version>6.0.9</version>
+    <time>1653061848</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 304_python310-crash.patch fixing crash of test test_001741
+  on Python 3.10 (gh#kurtmckee/feedparser#304).
+- update to version 6.0.9:
+  * Fix a crash that can occur with GeoRSS feeds that lack a 
+    &lt;where&gt; tag. (#305)
+</comment>
+    <requestid>978244</requestid>
+  </revision>
 </revisionlist>

@@ -19,22 +19,25 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-feedparser
-Version:        6.0.8
+Version:        6.0.9
 Release:        0
 Summary:        Universal Feed Parser Module for Python
 License:        BSD-2-Clause
 Group:          Development/Libraries/Python
 URL:            https://github.com/kurtmckee/feedparser
 Source:         https://files.pythonhosted.org/packages/source/f/feedparser/feedparser-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 304_python310-crash.patch gh#kurtmckee/feedparser#304 mcepl@suse.com
+# Fix crash on Python 3.10
+Patch0:         304_python310-crash.patch
 BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sgmllib3k}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-sgmllib3k
 Requires:       python-xml
 Recommends:     python-chardet
-Requires:       python-sgmllib3k
 BuildArch:      noarch
 %python_subpackages
 
@@ -44,9 +47,6 @@ A universal feed parser module for Python that handles RSS 0.9x, RSS 1.0, RSS
 
 %prep
 %autosetup -p1 -n feedparser-%{version}
-
-# Remove Python 3.10 non-compatible tests
-rm -v tests/wellformed/sanitize/xml_declaration_unexpected_character.xml
 
 # Make tests more verbose
 sed -i -e 's/verbosity=1/verbosity=2/' tests/runtests.py

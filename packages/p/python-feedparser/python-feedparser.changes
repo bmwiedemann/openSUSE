@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 20 09:28:16 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add 304_python310-crash.patch fixing crash of test test_001741
+  on Python 3.10 (gh#kurtmckee/feedparser#304).
+
+-------------------------------------------------------------------
+Thu May 19 19:30:30 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 6.0.9:
+  * Fix a crash that can occur with GeoRSS feeds that lack a 
+    <where> tag. (#305)
+
+-------------------------------------------------------------------
 Mon Feb  7 21:02:35 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Revert previous skip, because we have now working sgmllib3k.

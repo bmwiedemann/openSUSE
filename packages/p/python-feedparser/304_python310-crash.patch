@@ -1,0 +1,34 @@
+From c55bd8ad37db89bd219783bc514d600c9523ed38 Mon Sep 17 00:00:00 2001
+From: Kurt McKee <contactme@kurtmckee.org>
+Date: Sat, 12 Jun 2021 15:32:05 -0500
+Subject: [PATCH] Fix a crash that occurs with Python 3.10.0b2
+
+---
+ changelog.d/20210612_152233_kurtmckee_python3_10.rst | 4 ++++
+ feedparser/html.py                                   | 2 +-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+ create mode 100644 changelog.d/20210612_152233_kurtmckee_python3_10.rst
+
+diff --git a/changelog.d/20210612_152233_kurtmckee_python3_10.rst b/changelog.d/20210612_152233_kurtmckee_python3_10.rst
+new file mode 100644
+index 00000000..3795cdc0
+--- /dev/null
++++ b/changelog.d/20210612_152233_kurtmckee_python3_10.rst
+@@ -0,0 +1,4 @@
++Fixed
++-----
++
++*   Fix a crash that occurs with Python 3.10.0b2.
+diff --git a/feedparser/html.py b/feedparser/html.py
+index be913311..f78270a3 100644
+--- a/feedparser/html.py
++++ b/feedparser/html.py
+@@ -337,7 +337,7 @@ def parse_declaration(self, i):
+ 
+         try:
+             return sgmllib.SGMLParser.parse_declaration(self, i)
+-        except sgmllib.SGMLParseError:
++        except (AssertionError, sgmllib.SGMLParseError):
+             # Escape the doctype declaration and continue parsing.
+             self.handle_data('&lt;')
+             return i+1
