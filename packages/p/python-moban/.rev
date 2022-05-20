@@ -57,4 +57,15 @@
     <comment></comment>
     <requestid>836540</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c34776243aec980b60acba9d67d01820</srcmd5>
+    <version>0.8.2</version>
+    <time>1653061854</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch stop-using-jinja-extensions.patch
+  * Stop using a removed Jinja2 extension.
+- Add patch remove-mock.patch
+  * Switch to using unittest.mock.</comment>
+    <requestid>978215</requestid>
+  </revision>
 </revisionlist>

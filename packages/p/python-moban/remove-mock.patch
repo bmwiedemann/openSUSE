@@ -1,0 +1,153 @@
+Index: moban-0.8.2/tests/core/test_engine.py
+===================================================================
+--- moban-0.8.2.orig/tests/core/test_engine.py
++++ moban-0.8.2/tests/core/test_engine.py
+@@ -2,7 +2,7 @@ import os
+ 
+ import pytest
+ import fs.path
+-from mock import patch
++from unittest.mock import patch
+ 
+ from moban.core import ENGINES
+ from moban.core.definitions import TemplateTarget
+Index: moban-0.8.2/tests/core/test_moban_factory.py
+===================================================================
+--- moban-0.8.2.orig/tests/core/test_moban_factory.py
++++ moban-0.8.2/tests/core/test_moban_factory.py
+@@ -3,7 +3,7 @@ import sys
+ 
+ import pytest
+ import fs.path
+-from mock import patch
++from unittest.mock import patch
+ from lml.plugin import PluginInfo
+ 
+ import moban.exceptions as exceptions
+Index: moban-0.8.2/tests/deprecated/test_handle_requires.py
+===================================================================
+--- moban-0.8.2.orig/tests/deprecated/test_handle_requires.py
++++ moban-0.8.2/tests/deprecated/test_handle_requires.py
+@@ -1,5 +1,5 @@
+ import pytest
+-from mock import patch
++from unittest.mock import patch
+ 
+ from moban.deprecated import GitRequire
+ 
+Index: moban-0.8.2/tests/deprecated/test_repo.py
+===================================================================
+--- moban-0.8.2.orig/tests/deprecated/test_repo.py
++++ moban-0.8.2/tests/deprecated/test_repo.py
+@@ -2,7 +2,7 @@ import unittest
+ 
+ import pytest
+ import fs.path
+-from mock import patch
++from unittest.mock import patch
+ 
+ from moban.deprecated import GitRequire
+ from moban.exceptions import NoGitCommand
+Index: moban-0.8.2/tests/integration_tests/test_command_line_options.py
+===================================================================
+--- moban-0.8.2.orig/tests/integration_tests/test_command_line_options.py
++++ moban-0.8.2/tests/integration_tests/test_command_line_options.py
+@@ -5,7 +5,7 @@ from shutil import copyfile
+ 
+ import fs
+ import pytest
+-from mock import MagicMock, patch
++from unittest.mock import MagicMock, patch
+ 
+ from moban.core.definitions import TemplateTarget
+ 
+Index: moban-0.8.2/tests/mobanfile/test_mobanfile.py
+===================================================================
+--- moban-0.8.2.orig/tests/mobanfile/test_mobanfile.py
++++ moban-0.8.2/tests/mobanfile/test_mobanfile.py
+@@ -1,6 +1,6 @@
+ import pytest
+ import fs.path
+-from mock import patch
++from unittest.mock import patch
+ 
+ from moban.core.definitions import TemplateTarget
+ 
+Index: moban-0.8.2/tests/mobanfile/test_templates.py
+===================================================================
+--- moban-0.8.2.orig/tests/mobanfile/test_templates.py
++++ moban-0.8.2/tests/mobanfile/test_templates.py
+@@ -2,7 +2,7 @@ import unittest
+ 
+ import pytest
+ import fs.path
+-from mock import patch
++from unittest.mock import patch
+ 
+ from moban.core.mobanfile.templates import handle_template
+ 
+Index: moban-0.8.2/tests/test_file_system.py
+===================================================================
+--- moban-0.8.2.orig/tests/test_file_system.py
++++ moban-0.8.2/tests/test_file_system.py
+@@ -5,7 +5,7 @@ from shutil import rmtree
+ 
+ import fs
+ import pytest
+-from mock import patch
++from unittest.mock import patch
+ 
+ from moban.externals import file_system
+ from moban.exceptions import FileNotFound, UnsupportedPyFS2Protocol
+Index: moban-0.8.2/tests/test_main.py
+===================================================================
+--- moban-0.8.2.orig/tests/test_main.py
++++ moban-0.8.2/tests/test_main.py
+@@ -5,7 +5,7 @@ from shutil import copyfile
+ 
+ import fs
+ import pytest
+-from mock import MagicMock, patch
++from unittest.mock import MagicMock, patch
+ 
+ import moban.exceptions as exceptions
+ 
+Index: moban-0.8.2/tests/test_regression.py
+===================================================================
+--- moban-0.8.2.orig/tests/test_regression.py
++++ moban-0.8.2/tests/test_regression.py
+@@ -4,7 +4,7 @@ import filecmp
+ import unittest
+ 
+ import fs
+-from mock import patch
++from unittest.mock import patch
+ 
+ from moban.main import main
+ from .utils import Docs
+Index: moban-0.8.2/tests/test_reporter.py
+===================================================================
+--- moban-0.8.2.orig/tests/test_reporter.py
++++ moban-0.8.2/tests/test_reporter.py
+@@ -2,7 +2,7 @@ import sys
+ import unittest
+ 
+ import pytest
+-from mock import patch
++from unittest.mock import patch
+ 
+ from moban.externals import reporter
+ 
+Index: moban-0.8.2/tests/utils.py
+===================================================================
+--- moban-0.8.2.orig/tests/utils.py
++++ moban-0.8.2/tests/utils.py
+@@ -5,7 +5,7 @@ from textwrap import dedent
+ 
+ import fs
+ import pytest
+-from mock import patch
++from unittest.mock import patch
+ from fs.opener.parse import parse_fs_url
+ 
+ from moban.main import main
