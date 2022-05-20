@@ -13,14 +13,6 @@ Sun May 15 14:38:55 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 - Refresh patches to apply cleanly
 
 -------------------------------------------------------------------
-Sat May 14 05:31:03 UTC 2022 - Cliff Zhao <qzhao@suse.com>
-
-- Remove plymouth-keep-KillMode-none.patch: With the iteration of
-  tumbleweed, system could boot with the systemd recommanding option
-  KillMode=mixed, So it's the time to remove this patch (bsc#1177082
-  bsc#1184087 boo#1182145).
-
--------------------------------------------------------------------
 Fri May 13 10:45:07 UTC 2022 - Cliff Zhao <qzhao@suse.com>
 
 - Add plymouth-screen-twice-scale-on-160DPI-higher.patch: 
