@@ -31,4 +31,12 @@
     <comment>netty3 does not have compat version any more</comment>
     <requestid>975897</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>277b5c35dd2f050eb3094cde1bebdfc0</srcmd5>
+    <version>1.2.1</version>
+    <time>1653061842</time>
+    <user>dimstar_suse</user>
+    <comment>gradle compatibility with java 17</comment>
+    <requestid>978182</requestid>
+  </revision>
 </revisionlist>

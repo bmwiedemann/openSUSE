@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 20 04:44:17 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not force building with java <= 15, since we now can run
+  gradle-bootstrap with Java 17 too
+
+-------------------------------------------------------------------
 Sat Apr 30 16:09:40 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build against the org.jboss.netty:netty artifact, since the compat

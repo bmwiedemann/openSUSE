@@ -36,9 +36,6 @@ BuildRequires:  mvn(org.codehaus.jcsp:jcsp)
 BuildRequires:  mvn(org.codehaus.jsr166-mirror:extra166y)
 BuildRequires:  mvn(org.jboss.netty:netty)
 BuildRequires:  mvn(org.multiverse:multiverse-core)
-BuildConflicts: java >= 16
-BuildConflicts: java-devel >= 16
-BuildConflicts: java-headless >= 16
 Obsoletes:      %{name}-bootstrap
 #!BuildRequires: gradle-bootstrap groovy-bootstrap
 BuildArch:      noarch
