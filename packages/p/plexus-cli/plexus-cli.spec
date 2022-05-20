@@ -27,6 +27,8 @@ URL:            https://github.com/codehaus-plexus/plexus-cli
 Source0:        %{name}-%{version}.tar.xz
 Source1:        LICENSE-2.0.txt
 Source100:      %{name}-build.xml
+Patch0:         0001-Do-not-use-commons-cli-deprecated-classes.patch
+Patch1:         0002-No-unchecked-operations.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-cli
 BuildRequires:  fdupes
@@ -60,6 +62,8 @@ Javadoc for %{name}.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
 cp -p %{SOURCE1} .
 cp -p %{SOURCE100} build.xml
 

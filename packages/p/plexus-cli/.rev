@@ -32,4 +32,12 @@
     <comment>Build with source/target levels 8</comment>
     <requestid>963310</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>adbe606f8f3208af57be7084a3c8bdbd</srcmd5>
+    <version>1.6</version>
+    <time>1653061840</time>
+    <user>dimstar_suse</user>
+    <comment>Do not use deprecated APIs</comment>
+    <requestid>978179</requestid>
+  </revision>
 </revisionlist>
