@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 17 12:07:26 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.1:
+  + Web (Chromium + Gecko):
+    - Fix several performance issues impacting Google Docs.
+    - Fix bug in which Orca failed to speak when clicking on a
+      line.
+  + WebKitGtk: Handle WebKitGtk's change in toolkit name casing so
+    that older versions of Orca continue to work with newer
+    versions of WebKitGtk.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Mar 22 18:08:09 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.0:
