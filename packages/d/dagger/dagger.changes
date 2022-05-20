@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri May 20 14:56:22 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.11:
+  * build(deps): bump google.golang.org/grpc from 1.46.0 to 1.46.2 (#2458)
+  * Bump Docusaurus up to 2.0.0-beta.20 (#2463)
+  * core: add `#Rm` core action (#2422)
+  * telemetry: include the git repository
+  * build(deps-dev): bump concurrently from 7.0.0 to 7.2.0 in /website
+  * docs: bypass `Permission denied` error on cloning repo (#2387)
+  * Add GitHub Codespaces support (#2217)
+  * feat: Add debian (#2433)
+  * build(deps): bump amplitude-js from 8.18.1 to 8.18.2 in /website
+  * feat: Add sam package
+  * docs: making-reusable-package
+  * docs: project-file-organization
+  * ci: add plan for viewing Jaeger CI traces locally
+  * Set trace name with bats test name.
+  * ci: add tracing support to integration tests.
+  * Downgrade opentelemetry to match Buildkit's version.
+  * docs: document usage with buildkit unix socket
+  * build(deps): bump golang from 1.18.1-alpine to 1.18.2-alpine
+  * feat: export secrets with `docker.#Run`
+  * ci: Pass cache env vars through to integ tests.
+  * ci: set log format to plain
+  * feat: add Gitpod support
+  * fix: Course correct on `project update` consistency
+  * feat: Use `client: filesystem` path as a default
+  * docs: Add more installation options for Windows
+  * build(deps-dev): bump cypress from 9.6.0 to 9.6.1 in /website
+  * universe: add test with kustomization
+  * universe: add `#Delete` definition to experimental kubernetes package
+  * Add yaml content to the markdown file and remove external tekton file to fix the lint issue
+  * docs: rename tekton file
+  * docs: use dagger values
+  * docs: dagger version and netlify team as parameters
+  * docs: dagger action as param + clarify name parameter
+  * docs: remove useless commands
+  * docs: Update ci-environment doc to add tekton example
+  * docs: Getting started with Tekton
+
+-------------------------------------------------------------------
 Fri May 13 15:02:43 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.2.10:
