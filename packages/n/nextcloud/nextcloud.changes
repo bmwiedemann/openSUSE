@@ -1,8 +1,63 @@
 -------------------------------------------------------------------
+Thu May 19 20:20:46 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 24.0.1
+  - Bump karma-spec-reporter from 0.0.33 to 0.0.34 (server#31985)
+  - Tell mysql to ignore the sort index for search queries (server#32123)
+  - Update description of cronjob settings to be aligned to the documenta… (server#32133)
+  - Fix showing of all apps are up-to-date in apps management (server#32153)
+  - Fx translations with trailing colon (server#32159)
+  - Fix social sharing buttons (server#32181)
+  - Revert “Show the child folders in the breadcrumb menu when on a parent entry.” (server#32219)
+  - Use sabre function directly rather than duplicating it (server#32236)
+  - Revert “Revert “Make the order of reactions reliable”” (server#32241)
+  - Include more emoji chars to test and fixes after include it (server#32256)
+  - Expose shareWithDisplayNameUnique also on autocomplete endpoint (server#32275)
+  - Don’t use hash to check if binding worked (server#32282)
+  - Fix preview generator trying to recreate an existing folder (server#32320)
+  - Fix for transferring ownership of groupfolders (server#32329)
+  - Add share search tweaks (server#32360)
+  - Don’t unjail the path when getting the storage info (server#32365)
+  - Increase retry delay on ‘Wait for S3’ CI job (server#32368)
+  - Bump karma from 6.3.17 to 6.3.20 (server#32386)
+  - Bump moment from 2.29.2 to 2.29.3 (server#32402)
+  - Fix user agent trimming on installation (server#32414)
+  - Show user account on grant loginflow step (server#32415)
+  - Only log diagnostic events if a treshhold is set (server#32424)
+  - Replace isValidEmoji by method in EmojiHelper (server#32437)
+  - Add Email validation (server#32472)
+  - Switch to getOption() (circles#1042)
+  - Add new diagram templates (example-files#23)
+  - Adapt layout after viewer update (files_pdfviewer#597)
+  - Update phpunit workflows (files_pdfviewer#599)
+  - Prevent video file downloads when there is a download limit (files_videoplayer#275)
+  - Fix password generation (password_policy#357)
+  - Fix FreeBsd Interface parsing (serverinfo#373)
+  - Switch to auto table layout (text#2375)
+  - Use ‘(n)’ suffix instead of timestamp prefix for uploaded image names (text#2377)
+  - Manually get a mounted instance of the file if needed during lock/unlock (text#2380)
+  - Fix attachment cleanup when file names contain parenthesis (text#2389)
+  - Build(deps-dev): bump cypress from 9.5.3 to 9.5.4 (text#2402)
+  - Build(deps-dev): bump @vue/vue2-jest from 27.0.0-alpha.4 to 27.0.0 (text#2405)
+  - Fix viewer integration styling (text#2419)
+  - Revert “Revert “Improve preloading”” (viewer#1237)
+  - Revert “Revert “Revert “Improve preloading””” (viewer#1238)
+  - Fix design update after 5 vue components upgrade (viewer#1239)
+  - Improve preloading (viewer#1240)
+
+-------------------------------------------------------------------
 Tue May  3 14:51:48 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update 24.0.0
-  - No changelog from upstream at this time.
+  - User migration
+  - Smart file locking
+  - 4x lower db load
+  - Reactions & media tab in Talk
+  - Reply to calls & messages in Desktop client
+  - Undo send & schedule emails
+
+  Read announcement blog for all the the details:
+  https://nextcloud.com/blog/nextcloud-hub-24-is-here/
 
 -------------------------------------------------------------------
 Sun Apr 24 20:30:06 UTC 2022 - ecsos <ecsos@opensuse.org>
