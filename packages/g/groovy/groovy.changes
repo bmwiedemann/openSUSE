@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 20 04:45:23 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not force building with java <= 15, since we now can run
+  gradle-bootstrap with Java 17 too
+- Added patch:
+  * groovy-java17.patch
+    + Add the content of org.gradle.jvmargs to to the forked
+      jvm in root compileJava task
+    + Fixes build with Java 17
+
+-------------------------------------------------------------------
 Mon May 16 11:55:21 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

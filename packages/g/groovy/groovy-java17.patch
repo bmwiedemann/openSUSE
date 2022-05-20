@@ -1,0 +1,18 @@
+--- groovy-2.4.21/build.gradle	2022-05-20 08:52:17.474890956 +0200
++++ groovy-2.4.21/build.gradle	2022-05-20 10:34:19.081038906 +0200
+@@ -381,6 +381,7 @@
+ compileJava {
+     dependsOn ensureGrammars, exceptionUtils
+     options.fork(memoryMaximumSize: javacMain_mx)
++    options.forkOptions.jvmArgs = [ '--add-opens', 'java.base/java.lang=ALL-UNNAMED', '--add-exports', 'jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED']
+ }
+ 
+     // Gradle classloading magic with Groovy will only work if it finds a *jar*
+--- groovy-2.4.21/gradle.properties	2022-05-20 08:52:17.474890956 +0200
++++ groovy-2.4.21/gradle.properties	2022-05-20 09:17:03.075985951 +0200
+@@ -29,4 +29,4 @@
+ groovycTest_mx=1g
+ 
+ javaDoc_mx=1g
+-org.gradle.jvmargs=-Xms800m -Xmx1500m -XX:MaxPermSize=512m -XX:+CMSClassUnloadingEnabled -XX:+CMSPermGenSweepingEnabled -XX:+IgnoreUnrecognizedVMOptions
++org.gradle.jvmargs=-Xms800m -Xmx1500m -XX:MaxPermSize=512m -XX:+CMSClassUnloadingEnabled -XX:+CMSPermGenSweepingEnabled -XX:+IgnoreUnrecognizedVMOptions --add-opens java.base/java.lang=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED
