@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun May 15 11:12:12 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.54.3:
+  + Fix detection of gi-docgen.
+  + Install the generated documentation in the correct place so
+    that Devhelp can find it.
+- Changes from version 2.54.2:
+  + Fix regressions when computing element geometries.
+  + Add a --disable-gtk-doc option for the configure script, so
+    people can disable generating documentation for
+    cross-compiling.
+  + MSVC: Support generating documentation, and passing
+    introspection paths.
+
+-------------------------------------------------------------------
 Mon Apr 25 09:30:06 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.54.1:
