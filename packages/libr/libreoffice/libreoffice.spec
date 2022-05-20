@@ -109,6 +109,8 @@ Patch9:         fix_math_desktop_file.patch
 Patch10:        fix_gtk_popover_on_3.20.patch
 # Bug 1192616 - LO-L3: Extraneous/missing lines in table in Impress versus PowerPoint
 Patch13:        bsc1192616.patch
+# Bug 1197497 - LO-L3: Loading XLSX with 1M rows is ultra slow (or crashes Calc)
+Patch14:        bsc1197497.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
@@ -1021,6 +1023,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch6 -p1
 %patch9 -p1
 %patch13 -p1
+%patch14 -p1
 %if 0%{?suse_version} < 1500
 %patch10 -p1
 %patch101 -p1

@@ -3231,4 +3231,12 @@ Petr</comment>
   $ORIGIN is interpreted by rpmlint now.</comment>
     <requestid>975204</requestid>
   </revision>
+  <revision rev="255" vrev="2">
+    <srcmd5>0ca422afe9746211ac719944c26869e5</srcmd5>
+    <version>7.3.3.2</version>
+    <time>1653061790</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977916</requestid>
+  </revision>
 </revisionlist>
