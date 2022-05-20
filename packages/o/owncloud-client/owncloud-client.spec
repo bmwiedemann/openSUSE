@@ -33,6 +33,8 @@ Source4:        ownCloud.conf
 # PATCH-FIX-UPSTREAM fix position of systray menu https://github.com/owncloud/client/issues/5968
 # for all except tumbleweed and ongoing, as the Qt bug is fixed in there.
 Patch0:         fix-systray-menu-pos.patch
+# PATCH-FIX-UPSTREAM fix compilation with gcc12
+Patch1:         fix-gcc12-build.patch
 
 %define cmake_args -DSYSCONF_INSTALL_DIR=%{_sysconfdir}
 
@@ -204,6 +206,7 @@ Framework 5 based Dolphin filemanager to display overlay icons.
 %if 0%{?suse_version} <= 1500
 %patch0 -p1
 %endif
+%patch1 -p1
 
 %build
 
