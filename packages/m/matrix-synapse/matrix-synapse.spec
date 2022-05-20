@@ -51,7 +51,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.58.1
+Version:        1.59.1
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -145,7 +145,7 @@ BuildRequires:  %{use_python}-sortedcontainers >= 1.4.4
 %requires_peq   %{use_python}-sortedcontainers
 BuildRequires:  %{use_python}-systemd  >= 231
 %requires_peq   %{use_python}-systemd
-BuildRequires:  %{use_python}-typing_extensions >= 3.10.0
+BuildRequires:  %{use_python}-typing_extensions >= 3.10.0.1
 %requires_peq   %{use_python}-typing_extensions
 BuildRequires:  %{use_python}-treq >= 15.1
 %requires_peq   %{use_python}-treq
