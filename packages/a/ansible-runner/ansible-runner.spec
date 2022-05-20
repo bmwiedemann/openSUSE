@@ -1,7 +1,7 @@
 #
 # spec file for package ansible-runner
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,6 @@ Source:         https://files.pythonhosted.org/packages/source/a/ansible-runner/
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-PyYAML
-BuildRequires:  python3-mock
 BuildRequires:  python3-pexpect
 BuildRequires:  python3-psutil
 BuildRequires:  python3-python-daemon
@@ -50,7 +49,7 @@ systems that don’t want to manage the complexities of the interface on
 their own (such as CI/CD platforms, Jenkins, or other automated tooling)
 
 %prep
-%setup -q 
+%setup -q
 
 %build
 %python3_build
