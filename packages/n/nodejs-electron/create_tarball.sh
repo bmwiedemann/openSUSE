@@ -59,7 +59,7 @@ solutions = [
 EOF
 
 echo ">>>>>> Downloading electron-${ELECTRON_PKGVERSION}"
-gclient sync --jobs 4 --nohooks --no-history --shallow --revision=v"${ELECTRON_PKGVERSION}"
+gclient sync -v --jobs $(nproc) --nohooks --no-history --shallow --revision=v"${ELECTRON_PKGVERSION}"
 if [ $? -ne 0 ]; then
     echo "ERROR: gclient sync failed"
     cleanup_and_exit 1
@@ -102,6 +102,10 @@ python3 src/tools/update_pgo_profiles.py \
     update \
     --gs-url-base=chromium-optimization-profiles/pgo_profiles
 
+
+#The following commands overwrite this file which is needed during build.
+#The precise content is unimportant, but we cache the original one for reproducibility.
+mv -v src/third_party/node/node_modules.tar.gz.sha1{,.bak}
 # Needed to get typescript compiler
 echo ">>>>>> Get node modules for third_party/node"
 bash src/third_party/node/update_npm_deps
@@ -109,6 +113,9 @@ if [ $? -ne 0 ]; then
     echo "ERROR: npm ci failed"
     cleanup_and_exit 1
 fi
+mv -v src/third_party/node/node_modules.tar.gz.sha1{.bak,}
+# Remove unnecessary repack of node_modules
+rm -v src/third_party/node/node_modules.tar.gz
 
 echo ">>>>>> Get node modules for electron"
 pushd src/electron || cleanup_and_exit 1
@@ -375,10 +382,13 @@ fi
 rm -rf third_party/blink/web_tests # 1.6GB
 rm -rf third_party/catapult/tracing/test_data # 200MB
 find . -type d -name .git -print0 | xargs -0 rm -rf
+# Remove generatted python bytecode
+find . -type d -name __pycache__ -print0 | xargs -0 rm -rvf
+find . -type f -name '*.pyc' -print -delete
 popd || cleanup_and_exit 1
 
 echo ">>>>>> Create tarball"
-XZ_OPT="-T$(nproc)" tar cJf "${ELECTRON_PKGDIR}/${ELECTRON_PKGNAME}-${ELECTRON_PKGVERSION}.tar.xz" "${ELECTRON_PKGNAME}-${ELECTRON_PKGVERSION}"
+XZ_OPT="-T$(nproc) -e9" tar -vcJf "${ELECTRON_PKGDIR}/${ELECTRON_PKGNAME}-${ELECTRON_PKGVERSION}.tar.xz" "${ELECTRON_PKGNAME}-${ELECTRON_PKGVERSION}"
 if [ $? -ne 0 ]; then
     echo "ERROR: tar cJf failed"
     cleanup_and_exit 1

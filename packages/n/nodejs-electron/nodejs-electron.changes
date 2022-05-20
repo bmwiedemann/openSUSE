@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 19 10:08:10 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 17.4.5:
+  * Fixed a crash when calling loadExtension on an extension directory that's missing a manifest file. #34193 (Also in 16)
+  * SIGUSR1 is no longer handled when the node_cli_inspect fuse is disabled.
+  * Backported security fixes: CVE-2022-1637, CVE-2022-1638, CVE-2022-1639.
+- Remove some spurious generated files from the tarball.
+
+-------------------------------------------------------------------
 Wed May 11 21:05:41 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 17.4.4:
   * Fixed an OSR crash happening when input select items were rendered.
