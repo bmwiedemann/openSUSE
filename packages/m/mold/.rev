@@ -157,4 +157,12 @@
 - Add valgrind as BuildRequire argument.</comment>
     <requestid>976062</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>217c84804ce650a57354b3182e9985df</srcmd5>
+    <version>1.2.1</version>
+    <time>1653061870</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>978268</requestid>
+  </revision>
 </revisionlist>

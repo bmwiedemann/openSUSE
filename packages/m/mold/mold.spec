@@ -67,9 +67,6 @@ build time especially in rapid debug-edit-rebuild cycles.
 %if %{suse_version} < 1550
 export CC=gcc-10
 export CXX=g++-10
-%else
-export CC=gcc
-export CXX=g++
 %endif
 export CXXFLAGS="%{optflags} -Wno-sign-compare"
 
@@ -93,6 +90,10 @@ LIBEXECDIR=%{_libexecdir} \
 %{build_args}
 
 %check
+%if %{suse_version} < 1550
+export TEST_CC=gcc-10
+export TEST_CXX=g++-10
+%endif
 make test -k -e \
 PREFIX=%{_prefix} \
 BINDIR=%{_bindir} \

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 13 09:31:25 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Use better CC and TEST_CC variables.
+
+-------------------------------------------------------------------
+Fri May 13 09:21:22 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add memory per job constraint.
+
+-------------------------------------------------------------------
 Tue May 10 12:30:07 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Do not use mimalloc, use system glibc allocator.
