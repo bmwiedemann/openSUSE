@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 20 14:57:26 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.31.0:
+  * add configurable `-dns-method` to resolve dns (#576)
+  * fix fortio version when used as libray/module (#574)
+
+-------------------------------------------------------------------
 Wed May 18 09:06:42 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.30.1:
