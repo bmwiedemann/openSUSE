@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 18 12:31:43 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.2.5:
+  + Fix: atd forgets to run a job in the queue (deb#1004972).
+
+-------------------------------------------------------------------
+Wed Mar 23 11:44:56 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Switch to dynamic UIDs instead of hardcoding 25
+
+-------------------------------------------------------------------
 Tue Mar 15 17:51:31 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Drop systemd hardening as it breaks some jobs, fixes bsc#1196219

@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           at
-Version:        3.2.4
+Version:        3.2.5
 Release:        0
 Summary:        A Job Manager
 License:        GPL-2.0-or-later
