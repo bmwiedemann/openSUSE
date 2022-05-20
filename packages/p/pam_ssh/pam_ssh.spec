@@ -47,12 +47,12 @@ entire session, the user types no more passwords.
 %build
 autoreconf -fiv
 export CFLAGS="%{optflags} -fno-strict-aliasing -fcommon"
-%configure --libdir=/%{_lib}
+%configure
 make %{?_smp_mflags}
 
 %install
-install -d 755 %{buildroot}/%{_lib}/security
-install -m 755 .libs/pam_ssh.so %{buildroot}/%{_lib}/security
+install -d 755 %{buildroot}/%{_pam_moduledir}
+install -m 755 .libs/pam_ssh.so %{buildroot}/%{_pam_moduledir}
 install -d 755 %{buildroot}%{_mandir}/man8
 install -m 644 pam_ssh.8 %{buildroot}%{_mandir}/man8/
 install -Dm0644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/%{name}.conf
@@ -64,7 +64,7 @@ install -Dm0644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 %defattr(444,root,root,755)
 %doc README TODO NEWS
 %{_tmpfilesdir}/%{name}.conf
-%attr(555,root,root) /%{_lib}/security/pam_ssh.so
+%attr(555,root,root) /%{_pam_moduledir}/pam_ssh.so
 %attr(444,root,root) %{_mandir}/man*/*.*
 
 %changelog

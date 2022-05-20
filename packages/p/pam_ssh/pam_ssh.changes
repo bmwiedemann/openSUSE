@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 18 08:13:45 UTC 2022 - pgajdos@suse.com
+
+- use pam macros [bsc#1190960]
+
+-------------------------------------------------------------------
 Tue Mar 15 09:07:31 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Update source packages from upstream 
