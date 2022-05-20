@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 11 14:21:09 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 4.0.4
+  + CVE-2022-28346: Potential SQL injection in "QuerySet.annotate()",
+    "aggregate()", and "extra()"
+  + CVE-2022-28347: Potential SQL injection via
+    "QuerySet.explain(**options)" on PostgreSQL
+
+-------------------------------------------------------------------
 Tue Mar  1 10:49:51 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 4.0.3
