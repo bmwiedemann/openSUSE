@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 17 20:49:27 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix package counters in the installation slideshow
+  (boo#1199621).
+- 4.5.4
+
+-------------------------------------------------------------------
 Tue May  3 06:50:36 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Run the package solver after selecting additional system
