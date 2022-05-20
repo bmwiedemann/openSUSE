@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 18 07:52:13 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Adjust baselibs.conf for shlib guideline.
+
+-------------------------------------------------------------------
+Mon May 16 10:22:02 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add Conflict markers for earlier combined libunwind.
+
+-------------------------------------------------------------------
+Fri May 13 06:35:55 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve rpmlint error "libunwind.x86_64: E:
+  shlib-policy-name-error SONAME: libunwind-coredump.so.0,
+  expected package suffix: 0"
+
+-------------------------------------------------------------------
 Fri May  6 09:25:52 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Enable build on riscv64 and run testsuite
