@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 17 16:37:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add jfsutils_format-security_ftbs.patch
+
+-------------------------------------------------------------------
 Mon Oct 11 11:59:23 UTC 2021 - David Disseldorp <ddiss@suse.com>
 
 - UsrMerge: don't override _sbindir (bsc#1191065)

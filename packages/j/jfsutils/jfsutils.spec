@@ -1,7 +1,7 @@
 #
 # spec file for package jfsutils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        IBM JFS Utility Programs
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
-URL:            http://jfs.sf.net
+URL:            http://jfs.sourceforge.net/
 Source0:        http://jfs.sourceforge.net/project/pub/%{name}-%{version}.tar.gz
 Source1:        jfs.pdf
 Source2:        jfslayout.pdf
@@ -32,10 +32,10 @@ Source5:        jfs.txt
 Patch1:         jfs-headers.patch
 Patch2:         sysmacros.patch
 Patch3:         libfs-Fixing-issue-with-variable-name-collision.patch
+Patch4:         jfsutils_format-security_ftbs.patch
 BuildRequires:  e2fsprogs-devel
 Provides:       jfsprogs = %{version}
 Obsoletes:      jfsprogs < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Supplements:    filesystem(jfs)
 
 %description
@@ -55,6 +55,7 @@ system editor
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 sed -i -e 's@^\./"@\." @' fsck/jfs_fsck.8 \
@@ -77,8 +78,8 @@ install -m 644 %{SOURCE5} ./jfsdocs
 make DESTDIR=%{buildroot} install %{?_smp_mflags}
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYING NEWS ChangeLog jfsdocs/*
+%license COPYING
+%doc AUTHORS NEWS ChangeLog jfsdocs/*
 %{_mandir}/man8/*
 %{_sbindir}/*
 
