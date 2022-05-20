@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu May 19 12:05:50 UTC 2022 - opensuse-packaging@opensuse.org
+
+- Update to version 84.87.20220519.bf4df4b:
+  * Update year poo#100125
+
+-------------------------------------------------------------------
+Thu May 19 10:21:04 UTC 2022 - opensuse-packaging@opensuse.org
+
+- Update to version 84.87.20220406.78dbb8c:
+  * Use https instead of git:// which is disabled 
+  * Translated using Weblate (Czech)
+  * Update version to 15.4 in Leap's treeinfo
+  * Bump for 15.4 poo#99876
+  * Translated using Weblate (Ukrainian)
+  * Rename .treeinfo.1550 to .treeinfo.1599
+  * Translated using Weblate (Chinese (China) (zh_CN))
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Russian)
+  * Bump date in the license poo#76378
+  * treeinfo: bump treeinfo to 15.3
+
+-------------------------------------------------------------------
 Fri Feb 25 14:36:31 UTC 2022 - opensuse-packaging@opensuse.org
 
 - Update to version 84.87.20220225.f4ee64a:
