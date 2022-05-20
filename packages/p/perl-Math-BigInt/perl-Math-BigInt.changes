@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 17 03:06:43 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.999831
+   see /usr/share/doc/packages/perl-Math-BigInt/CHANGES
+
+  1.999831 2022-05-16
+   * Further improvements to upgrading, downgrading, and rounding.
+   * New stringification method bfstr() for representing numbers as fractions.
+     E.g., Math::BigFloat -> new("1.25") -> bfstr() returns "5/4".
+   * Miscellaneous bug fixes.
+   * Fixed errors and typos in the documentation.
+
+-------------------------------------------------------------------
 Wed Apr 13 03:07:41 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.999830
