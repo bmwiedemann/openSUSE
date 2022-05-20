@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 16 03:06:05 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.95
+   see /usr/share/doc/packages/perl-App-perlbrew/Changes
+
+  0.95
+  	- Released at 2022-05-15T22:59:11+0800
+  	- Thanks to our contributors: Leon Timmermans
+  	- Now we use metacpan api for fetching perl versions and for downloading. Github PR #743
+  	- `--verbose` flag now also enable verbosity of underlying curl/wget commands. Github PR #740.
+  	- Avoid perl test errors when NO_COLOR is set. Github PR #738
+
+-------------------------------------------------------------------
 Sun Dec  5 03:06:08 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.94

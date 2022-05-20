@@ -1,7 +1,7 @@
 #
 # spec file for package perl-App-perlbrew
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,17 @@
 
 %define cpan_name App-perlbrew
 Name:           perl-App-perlbrew
-Version:        0.94
+Version:        0.95
 Release:        0
-Summary:        Manage perl installations in your C<$HOME>
 License:        MIT
+Summary:        Manage perl installations in your C<$HOME>
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/G/GU/GUGOD/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(CPAN::Perl::Releases) >= 5.20210620
+BuildRequires:  perl(CPAN::Perl::Releases) >= 5.20220313
 BuildRequires:  perl(Capture::Tiny) >= 0.48
 BuildRequires:  perl(Devel::PatchPerl) >= 2.08
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.22
@@ -48,7 +48,7 @@ BuildRequires:  perl(Test::Simple) >= 1.001002
 BuildRequires:  perl(Test::Spec) >= 0.49
 BuildRequires:  perl(Test::TempDir::Tiny) >= 0.016
 BuildRequires:  perl(local::lib) >= 2.000014
-Requires:       perl(CPAN::Perl::Releases) >= 5.20210620
+Requires:       perl(CPAN::Perl::Releases) >= 5.20220313
 Requires:       perl(Capture::Tiny) >= 0.48
 Requires:       perl(Devel::PatchPerl) >= 2.08
 Requires:       perl(ExtUtils::MakeMaker) >= 7.22
@@ -59,9 +59,7 @@ Requires:       perl(Pod::Usage) >= 1.68
 Requires:       perl(local::lib) >= 2.000014
 %{perl_requires}
 # MANUAL BEGIN
-BuildRequires:  curl
-BuildRequires:  groff
-BuildRequires:  wget
+BuildRequires:  wget curl groff
 # MANUAL END
 
 %description
