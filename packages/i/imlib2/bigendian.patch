@@ -1,0 +1,14 @@
+Index: imlib2-1.7.5/src/modules/loaders/loader_ico.c
+===================================================================
+--- imlib2-1.7.5.orig/src/modules/loaders/loader_ico.c
++++ imlib2-1.7.5/src/modules/loaders/loader_ico.c
+@@ -142,6 +142,9 @@ ico_read_icon(ico_t * ico, int ino)
+ {
+    ie_t               *ie;
+    unsigned int        size;
++#ifdef WORDS_BIGENDIAN
++   unsigned int        nr;
++#endif
+ 
+    ie = &ico->ie[ino];
+ 

@@ -1,7 +1,7 @@
 #
 # spec file for package imlib2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/X11
 URL:            https://sourceforge.net/projects/enlightenment/
 Source:         https://downloads.sourceforge.net/project/enlightenment/imlib2-src/%{version}/%{name}-%{version}.tar.xz
+Patch0:         bigendian.patch
 BuildRequires:  giflib-devel
 BuildRequires:  libICE-devel
 BuildRequires:  libjpeg-devel
@@ -96,6 +97,7 @@ jpeg, png, pnm, tga, tiff, xpm
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure \
