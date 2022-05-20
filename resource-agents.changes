@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 18 07:36:56 UTC 2022 - varkoly@suse.com
+
+- Update to version 4.11.0+git11.a5f40b4c:
+  * iSCSILogicalUnit: fix issue where resource was in stopped state when using allowed_initiators parameter (#1766)
+  * Filesystem: improve logic for UUID/label and add note that /dev/disk/by-{uuid,label}/ are preferred on Linux
+
+-------------------------------------------------------------------
 Sun May 01 22:04:58 UTC 2022 - varkoly@suse.com
 
 - Update to version 4.11.0+git8.2351f1d4:
