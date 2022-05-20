@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 20 09:42:42 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1652976468.5c2628c:
+  * Fix alignment of avatar icons beside comments
+  * Add button to insert (force result) label into comment text
+  * Limit git log in investigation tab
+  * Add route for WebSockets to allow communication without a proxy
+  * worker: Move formatting of settings to logging module
+  * worker: Extract formatting settings (for log) into separate function
+  * worker: Avoid logging secret variables
+  * Dependency cron 2022-05-18
+
+-------------------------------------------------------------------
 Tue May 17 15:15:30 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1652799331.7cf3159:
