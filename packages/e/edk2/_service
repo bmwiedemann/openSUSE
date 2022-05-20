@@ -6,7 +6,7 @@
     <param name="scm">git</param>
     <param name="filename">edk2-platforms</param>
     <param name="versionformat">0.0~%ci~%h</param>
-    <param name="revision">1d23831b5f07a1150a44e1d03fb7e0c394dfe9ab</param>
+    <param name="revision">03d1c51272c053c0b7ef8d3a16fabd26d7c51d8c</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*edk2-platforms*.tar</param>
@@ -18,10 +18,22 @@
     <param name="scm">git</param>
     <param name="filename">edk2-non-osi</param>
     <param name="versionformat">0.0~%ci~%h</param>
-    <param name="revision">2e8dd46782451e8ae7181417a5c30d1804302b43</param>
+    <param name="revision">6996a45d7f4014fd4aa0f1eb4cbe97d8a3c5957a</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*edk2-non-osi*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/google/brotli</param>
+    <param name="scm">git</param>
+    <param name="filename">brotli</param>
+    <param name="versionformat">0.0~%ci~%h</param>
+    <param name="revision">f4153a09f87cbb9c826d8fc12c74642bb2d879ea</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*brotli*.tar</param>
     <param name="compression">xz</param>
   </service>
 </services>

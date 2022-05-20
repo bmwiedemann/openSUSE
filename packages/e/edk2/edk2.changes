@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May 19 08:05:04 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to stable202205-rc1 to fix build with GCC12:
+  * changelog: not available for *-rcX
+  * changelog from skipped 202108: 
+    https://github.com/tianocore/edk2/releases/tag/edk2-stable202108
+  * changelog from skipped 202111: 
+    https://github.com/tianocore/edk2/releases/tag/edk2-stable202111
+  * changelog from skipped 202202: 
+    https://github.com/tianocore/edk2/releases/tag/edk2-stable202202
+- Update edk2-platforms to version 0.0~20220516T160923~03d1c51272
+- Update edk2-non-osi to version 0.0~20220407T181805~6996a45
+- Update openssl to 1.1.1n
+
+-------------------------------------------------------------------
 Thu Jun  3 12:20:49 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update edk2 to 202105:

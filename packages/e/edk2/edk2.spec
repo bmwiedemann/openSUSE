@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,10 @@
 
 
 %define platform @BUILD_FLAVOR@%{nil}
-%define edk2_platforms_version 0.0~20210602T151109~1d23831b5f
-%define edk2_non_osi_version 0.0~20210520T182705~2e8dd46
-%global openssl_version 1.1.1j
+%define edk2_platforms_version 0.0~20220516T160923~03d1c51272
+%define edk2_non_osi_version 0.0~20220407T181805~6996a45
+%define brotli_version 0.0~20220110T130810~f4153a0
+%global openssl_version 1.1.1n
 
 # Build with edk2-non-osi
 %bcond_without edk2_non_osi
@@ -32,22 +33,24 @@
 %define build_mode RELEASE
 %endif
 
+# This differs on RC
+%define archive_version 202205-rc1
+
 %if "%{platform}" != "%{nil}"
 Name:           edk2-%{platform}
 %else
 Name:           edk2
 %endif
-Version:        202105
+Version:        0.0~20220516T160923~03d1c51272
 Release:        0
 Summary:        Firmware required to run the %{platform}
 License:        SUSE-Firmware
 Group:          System/Boot
 URL:            https://github.com/tianocore/edk2
-Source0:        https://github.com/tianocore/edk2/archive/edk2-stable%{version}.tar.gz
+Source0:        https://github.com/tianocore/edk2/archive/edk2-stable%{archive_version}.tar.gz
 Source1:        edk2-platforms-%{edk2_platforms_version}.tar.xz
 Source2:        edk2-non-osi-%{edk2_non_osi_version}.tar.xz
-Source3:        https://github.com/tianocore/edk2/releases/download/edk2-stable%{version}/submodule-BaseTools-Source-C-BrotliCompress-brotli.zip
-Source4:        https://github.com/tianocore/edk2/releases/download/edk2-stable%{version}/submodule-MdeModulePkg-Library-BrotliCustomDecompressLib-brotli.zip
+Source3:        brotli-%{brotli_version}.tar.xz
 Source10:       https://www.openssl.org/source/openssl-%{openssl_version}.tar.gz
 Source11:       https://www.openssl.org/source/openssl-%{openssl_version}.tar.gz.asc
 Source12:       openssl.keyring
@@ -77,9 +80,11 @@ ExclusiveArch:  aarch64
 Firmware required to run the %{platform}
 
 %prep
-%setup -q -n edk2-edk2-stable%{version} -a 1 -a 2 -a 3 -a 4
-# PATCH-FIX-UPSTREAM - Fix build with GCC11 - https://bugzilla.tianocore.org/show_bug.cgi?id=3417
-echo "BUILD_CFLAGS += -Wno-error=vla-parameter" >> BaseTools/Source/C/BrotliCompress/GNUmakefile
+%setup -q -n edk2-edk2-stable%{archive_version} -a 1 -a 2 -a 3
+
+# Fix path of the brotli submodules
+cp -R brotli-%{brotli_version}/* BaseTools/Source/C/BrotliCompress/brotli/
+cp -R brotli-%{brotli_version}/* MdeModulePkg/Library/BrotliCustomDecompressLib/brotli/
 
 ln -sf edk2-platforms-%{edk2_platforms_version} edk2-platforms
 ln -sf edk2-non-osi-%{edk2_non_osi_version} edk2-non-osi
@@ -87,8 +92,6 @@ ln -sf edk2-non-osi-%{edk2_non_osi_version} edk2-non-osi
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl
 tar -xf %{SOURCE10} --strip 1
-# Fix 1.1.1d error:
-sed -i 's/return return 0;/return 0;/' crypto/threads_none.c
 popd
 
 %build
