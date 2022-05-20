@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 18 07:49:13 UTC 2022 - werner@suse.de
+
+- Update to version 84.87+git20220518.dc83f4e:
+  * Also in /etc/profile, rootsh is not restricted
+
+-------------------------------------------------------------------
+Wed May 18 07:07:33 UTC 2022 - werner@suse.de
+
+- Update to version 84.87+git20220518.78b2a0b:
+  * The wrapper rootsh is not a restricted shell
+
+-------------------------------------------------------------------
 Tue Apr 19 11:17:08 UTC 2022 - lnussel@suse.de
 
 - Update to version 84.87+git20220419.bf51b75:

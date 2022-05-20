@@ -4017,4 +4017,16 @@
   * move DIR_COLORS to where ls.bash is</comment>
     <requestid>970751</requestid>
   </revision>
+  <revision rev="489" vrev="1">
+    <srcmd5>676dcb6edc5a4e08e0a8c2fced0b3bc1</srcmd5>
+    <version>84.87+git20220518.dc83f4e</version>
+    <time>1653061813</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20220518.dc83f4e:
+  * Also in /etc/profile, rootsh is not restricted
+
+- Update to version 84.87+git20220518.78b2a0b:
+  * The wrapper rootsh is not a restricted shell</comment>
+    <requestid>977891</requestid>
+  </revision>
 </revisionlist>
