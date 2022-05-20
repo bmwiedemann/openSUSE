@@ -14506,8 +14506,14 @@ unsorted:
   - libunistring-devel 
   - libunistring-devel-32bit: [x86_64] 
   - libunshield0 
-  - libunwind-32bit: [x86_64] 
+  - libunwind-coredump0 
+  - libunwind-coredump0-32bit: [x86_64] 
   - libunwind-devel 
+  - libunwind-ptrace0 
+  - libunwind-ptrace0-32bit: [x86_64] 
+  - libunwind-setjmp0 
+  - libunwind-setjmp0-32bit: [x86_64] 
+  - libunwind8-32bit: [x86_64] 
   - libupb24 
   - libupm1 
   - libupnp-devel 
@@ -22405,6 +22411,7 @@ unsorted:
   - python310-azure-mgmt-digitaltwins 
   - python310-azure-mgmt-dns 
   - python310-azure-mgmt-documentdb 
+  - python310-azure-mgmt-dynatrace 
   - python310-azure-mgmt-edgegateway 
   - python310-azure-mgmt-edgeorder 
   - python310-azure-mgmt-elastic 
@@ -25628,6 +25635,7 @@ unsorted:
   - python38-azure-mgmt-digitaltwins 
   - python38-azure-mgmt-dns 
   - python38-azure-mgmt-documentdb 
+  - python38-azure-mgmt-dynatrace 
   - python38-azure-mgmt-edgegateway 
   - python38-azure-mgmt-edgeorder 
   - python38-azure-mgmt-elastic 
@@ -28668,6 +28676,7 @@ unsorted:
   - python39-azure-mgmt-digitaltwins 
   - python39-azure-mgmt-dns 
   - python39-azure-mgmt-documentdb 
+  - python39-azure-mgmt-dynatrace 
   - python39-azure-mgmt-edgegateway 
   - python39-azure-mgmt-edgeorder 
   - python39-azure-mgmt-elastic 
