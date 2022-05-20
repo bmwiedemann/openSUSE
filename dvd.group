@@ -2685,7 +2685,7 @@
     <package name="libumfpack5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libunbound8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="libunistring2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libunwind" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libunwind8" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libupnp17" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libupower-glib3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liburcu8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
