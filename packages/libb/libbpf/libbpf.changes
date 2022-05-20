@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu May 19 03:00:36 UTC 2022 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update to release 0.8.0
+  * New features and APIs:
+    - support auto-resolution of binaries and shared libraries from PATH, if necessary;
+    - support attaching by function names (only by IP was supported before);
+    - support attaching to USDTs (SEC("usdt/...") and
+      bpf_program__attach_usdt()) with initially supported architectures:
+      x86-64 (amd64); x86 (i386); s390x; ARM64 (aarch64); RISC V (riscv);
+    - improved BPF verifier log reporting for CO-RE relocation failures (no
+      more obscure "invalid func unknown#195896080" errors);
+    - auto-adjust BPF ringbuf size according to host kernel's page size requirements;
+    - high-level BPF map APIs: bpf_map__lookup_elem(), bpf_map__update_elem(),
+      etc that validate key/value buffer sizes;
+    - bpf_link_create() can create all bpf_link-based (including raw_tp,
+      fentry/fexit, etc), falling back to bpf_raw_tracepoint_open() on old
+      kernels transparently;
+    - support opting out from auto-loading BPF programs declaratively with
+      SEC("?...");
+    - support opting out from auto-creation of declarative BPF maps with
+      bpf_map__set_autocreate();
+    - support multi-kprobes (SEC("kprobe.multi/...") and
+      bpf_program__attach_kprobe_multi_opts());
+    - support target-less SEC() programs (e.g., SEC("kprobe"), SEC("tp"), etc);
+    - support BPF sub-skeletons for "incomplete" BPF object files (requires
+      matching bpftool to generate .subskel.h);
+    - BPF cookie support for fentry/fexit/fmod_ret BPF programs
+      (bpf_program__attach_trace_opts());
+    - support for custom SEC() handlers (libbpf_register_prog_handler()).
+  * BPF-side API
+    - BPF-side USDT APIs. See new usdt.bpf.h header:
+      * BPF_USDT() program wrapper macro; bpf_usdt_arg(), bpf_usdt_arg_cnt(),
+      * bpf_usdt_cookie() helpers;
+    - new bpf_core_field_offset() CO-RE helper and support
+      bpf_core_field_size(type, field) forms;
+    - barrier() and barrier_var() macros for improving BPF code generation;
+    - __kptr and __kptr_ref tags added;
+    - ARC architecture support in bpf_tracing.h header;
+    - new BPF helpers:
+      * bpf_skb_set_tstamp();
+      * bpf_ima_file_hash();
+      * bpf_kptr_xchg();
+      * bpf_map_lookup_percpu_elem().
+  * Bug fixes
+    - netlink bug fixes;
+    - libbpf.pc fixes to support patch releases properly;
+    - BPF_MAP_TYPE_PERF_EVENT_ARRAY map auto-pinning fix;
+    - minor CO-RE fixes and improvements for some corner cases;
+    - various other small fixes and improvements.
+
+-------------------------------------------------------------------
 Thu Mar 10 18:28:17 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
 
 - Enable building and packaging of static library.
