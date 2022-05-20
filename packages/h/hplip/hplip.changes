@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 17 20:47:46 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add rebased hplip-3.20.6-python-includes.patch to fix the non-
+  functional scanning: libsane-hpaio.so.1: undefined symbol: _DBG
+  (fixes boo#1198794)
+
+-------------------------------------------------------------------
 Mon May  9 10:05:36 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.22.4

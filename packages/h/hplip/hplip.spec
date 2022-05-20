@@ -85,6 +85,8 @@ Patch401:       hplip-orblite-return-null.diff
 Patch402:       hplip-change-pgp-server.patch
 # boo#1107711
 Patch403:       Revert-changes-from-3.18.5-that-break-hp-setup-for-f.patch
+# PATCH-FIX-UPSTREAM: https://bugs.launchpad.net/hplip/+bug/1879445
+Patch404:       hplip-3.20.6-python-includes.patch
 Patch500:       hplip-missing-drivers.patch
 BuildRequires:  %{pymod devel}
 BuildRequires:  %{pymod qt5-devel}
@@ -321,6 +323,7 @@ This sub-package is only required by developers.
 %patch401 -p1
 %patch402 -p1
 %patch403 -p1
+%patch404 -p1
 %patch500 -p1
 # replace "env" shebang and "/usr/bin/python" with real executable
 find . -name '*.py' -o -name pstotiff | \
