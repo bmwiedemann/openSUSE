@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 20 05:37:36 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not force building with java <= 15, since we now can run
+  gradle with Java 17 too
+
+-------------------------------------------------------------------
 Wed Mar 23 20:01:49 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Force building with JDK <= 15, since our gradle does not work

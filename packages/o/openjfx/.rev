@@ -113,4 +113,12 @@
     <comment>Fix build on JDK 17</comment>
     <requestid>964370</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>1e2dad7bb1cd2c4017b3a3e4c6892faf</srcmd5>
+    <version>11.0.14</version>
+    <time>1653061845</time>
+    <user>dimstar_suse</user>
+    <comment>gradle compatibility with java 17</comment>
+    <requestid>978186</requestid>
+  </revision>
 </revisionlist>
