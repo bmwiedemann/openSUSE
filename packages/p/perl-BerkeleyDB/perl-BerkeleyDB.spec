@@ -1,7 +1,7 @@
 #
 # spec file for package perl-BerkeleyDB
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,15 @@
 #
 
 
-Name:           perl-BerkeleyDB
-Version:        0.64
-Release:        0
 %define cpan_name BerkeleyDB
-Summary:        Perl extension for Berkeley DB version 2, 3, 4, 5 or 6
+Name:           perl-BerkeleyDB
+Version:        0.65
+Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        Perl extension for Berkeley DB version 2, 3, 4, 5 or 6
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PM/PMQS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 %{perl_requires}
@@ -55,12 +53,12 @@ particularly relevant.
 The interface to Berkeley DB is implemented with a number of Perl classes.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -71,7 +69,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc BerkeleyDB.pod.P Changes dbinfo mkpod README Todo
 
 %changelog
