@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 20 09:54:09 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 2.5.1:
+  - Fix bad def naming
+  - Use tcp address on Windows
+  - Fix $NVR_CMD (#179)
+
+-------------------------------------------------------------------
 Mon May  9 13:40:37 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 2.5.0:
