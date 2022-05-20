@@ -15,4 +15,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>975593</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e3a5dedbb93037713847ad1720787f0d</srcmd5>
+    <version>0~ch560</version>
+    <time>1653061869</time>
+    <user>dimstar_suse</user>
+    <comment>- Resolve broken scriptlet, which warned
+  &quot;[-:1] Missing action and name columns&quot; during installation.</comment>
+    <requestid>978264</requestid>
+  </revision>
 </revisionlist>

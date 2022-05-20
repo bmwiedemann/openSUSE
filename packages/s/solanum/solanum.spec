@@ -94,7 +94,7 @@ EOF
 rm -Rf "$b/%_libdir/pkgconfig" "$b/%_libdir/libratbox.so"
 
 %pre
-%sysusers_create_inline 'u solanum - "Solanum ircd"'
+%{sysusers_create_inline u solanum - "Solanum ircd"}
 %service_add_pre %name.service
 
 %post

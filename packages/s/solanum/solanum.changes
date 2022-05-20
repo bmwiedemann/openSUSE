@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 20 11:02:47 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve broken scriptlet, which warned
+  "[-:1] Missing action and name columns" during installation.
+
+-------------------------------------------------------------------
 Sat Apr 30 23:01:25 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 0~ch560 (48a06ae3)
