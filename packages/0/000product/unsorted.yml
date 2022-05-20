@@ -256,7 +256,9 @@ unsorted:
   - SDL-devel-32bit: [x86_64] 
   - SDL-devel-doc 
   - SDL2_sound-devel 
+  - SDL_Pango-devel 
   - SDL_sound-devel 
+  - SDLmm-devel 
   - SHERPA-MC-devel 
   - SVT-AV1: [x86_64] 
   - SVT-AV1-devel: [x86_64] # devel package of common_locks:libSvtAv1Enc1 
@@ -2929,6 +2931,7 @@ unsorted:
   - deltafs 
   - deluge 
   - deluge-lang 
+  - delve 
   - demumble 
   - desktopfolder 
   - desktopfolder-lang 
@@ -6767,10 +6770,6 @@ unsorted:
   - hawkey-man 
   - hawknl-devel 
   - hawknl-libs 
-  - hawtbuf 
-  - hawtbuf-javadoc 
-  - hawtbuf-proto 
-  - hawtbuf-protoc 
   - hawtjni 
   - hawtjni-javadoc 
   - hawtjni-maven-plugin 
@@ -9443,10 +9442,7 @@ unsorted:
   - libSDL2_ttf-2_0-0-32bit: [x86_64] 
   - libSDL2_ttf-devel 
   - libSDL2_ttf-devel-32bit: [x86_64] 
-  - libSDL_Pango-devel 
-  - libSDL_Pango-devel-32bit: [x86_64] 
   - libSDL_Pango1 
-  - libSDL_Pango1-32bit: [x86_64] 
   - libSDL_bgi-devel 
   - libSDL_bgi-suse7 
   - libSDL_gfx-devel 
@@ -9468,9 +9464,6 @@ unsorted:
   - libSDL_ttf-devel 
   - libSDL_ttf-devel-32bit: [x86_64] 
   - libSDLmm-0_1-8 
-  - libSDLmm-0_1-8-32bit: [x86_64] 
-  - libSDLmm-devel 
-  - libSDLmm-devel-32bit: [x86_64] 
   - libSFCGAL1 
   - libSHERPA-MC0 
   - libSHERPA-MC0-config 
@@ -10663,6 +10656,8 @@ unsorted:
   - libdrm_intel1-32bit: [x86_64] 
   - libdrm_nouveau2-32bit: [x86_64] 
   - libdrm_radeon1-32bit: [x86_64] 
+  - libdrop_ambient-devel 
+  - libdrop_ambient0 
   - libdrpm-devel 
   - libdrpm0 
   - libdrumstick-alsa2 
@@ -15475,7 +15470,7 @@ unsorted:
   - ltrace 
   - ltrace-32bit: [x86_64] 
   - lttng-modules 
-  - lttng-modules-kmp-default 
+  - lttng-modules-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - lttng-modules-kmp-pae: [i586] 
   - lttng-tools 
   - lttng-tools-devel 
@@ -17465,7 +17460,6 @@ unsorted:
   - nodejs16-docs 
   - nodejs17-devel 
   - nodejs17-docs 
-  - noisetorch 
   - nomacs 
   - nomacs-lang 
   - non-ntk-devel 
@@ -24210,6 +24204,13 @@ unsorted:
   - python310-pyroma 
   - python310-pyroomacoustics 
   - python310-pyroute2 
+  - python310-pyroute2.core 
+  - python310-pyroute2.ethtool 
+  - python310-pyroute2.ipdb 
+  - python310-pyroute2.ipset 
+  - python310-pyroute2.ndb 
+  - python310-pyroute2.nftables 
+  - python310-pyroute2.nslink 
   - python310-pyrsistent 
   - python310-pysaml2 
   - python310-pyscard 
@@ -27282,6 +27283,13 @@ unsorted:
   - python38-pyroma 
   - python38-pyroomacoustics 
   - python38-pyroute2 
+  - python38-pyroute2.core 
+  - python38-pyroute2.ethtool 
+  - python38-pyroute2.ipdb 
+  - python38-pyroute2.ipset 
+  - python38-pyroute2.ndb 
+  - python38-pyroute2.nftables 
+  - python38-pyroute2.nslink 
   - python38-pyrsistent: [i586] 
   - python38-pysaml2 
   - python38-pyscard 
@@ -30456,6 +30464,13 @@ unsorted:
   - python39-pyroma 
   - python39-pyroomacoustics 
   - python39-pyroute2 
+  - python39-pyroute2.core 
+  - python39-pyroute2.ethtool 
+  - python39-pyroute2.ipdb 
+  - python39-pyroute2.ipset 
+  - python39-pyroute2.ndb 
+  - python39-pyroute2.nftables 
+  - python39-pyroute2.nslink 
   - python39-pyrsistent 
   - python39-pysaml2 
   - python39-pyscard 
