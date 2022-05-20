@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 20 04:42:28 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Modify the launcher so that gradle-bootstrap can work with
+  Java 17
+
+-------------------------------------------------------------------
 Mon May 16 12:19:47 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Adapt to the change in jline/jansi dependencies of gradle

@@ -26,4 +26,8 @@ function splitJvmOpts() {
 eval splitJvmOpts $JAVA_OPTS $GRADLE_OPTS
 JVM_OPTS[${#JVM_OPTS[*]}]="-Dorg.gradle.appname=gradle"
 
-exec "$JAVACMD" "${JVM_OPTS[@]}" -classpath "$CLASSPATH" org.gradle.launcher.GradleMain "$@"
+JAVA_VER=$($JAVACMD -version 2>&1 | sed -n ';s/.* version "\(.*\)\.\(.*\)\..*".*/\1\2/p;')
+GRDL_JAVA_OPTS=
+[ "$JAVA_VER" -ge 160 ] && GRDL_JAVA_OPTS+="--add-opens java.base/java.lang=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED"
+
+exec "$JAVACMD" ${GRDL_JAVA_OPTS} "${JVM_OPTS[@]}" -classpath "$CLASSPATH" org.gradle.launcher.GradleMain "$@"
