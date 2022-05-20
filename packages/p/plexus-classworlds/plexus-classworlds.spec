@@ -1,7 +1,7 @@
 #
-# spec file for package plexus
+# spec file
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %global short_name classworlds
 %bcond_with tests
 Name:           plexus-%{short_name}
-Version:        2.5.2
+Version:        2.6.0
 Release:        0
 Summary:        Plexus Classworlds Classloader Framework
 License:        Apache-2.0 AND Plexus
 Group:          Development/Libraries/Java
 URL:            https://github.com/codehaus-plexus/plexus-classworlds
-Source0:        https://github.com/sonatype/%{name}/archive/%{name}-%{version}.tar.gz
+Source0:        https://github.com/codehaus-plexus/%{name}/archive/%{name}-%{version}.tar.gz
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
