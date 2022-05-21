@@ -1,7 +1,7 @@
 #
 # spec file for package re
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%global sover   1
+%global sover   5
 %global libname lib%{name}%{sover}
 Name:           re
-Version:        2.0.1
+Version:        2.3.0
 Release:        0
 Summary:        Library for real-time communications with async IO support
 License:        BSD-3-Clause
@@ -68,7 +68,7 @@ sed -e 's|@$(CC)|$(CC)|g' \
 %make_build \
     RELEASE=1 \
     USE_OPENSSL=1 \
-    EXTRA_CFLAGS="%optflags"
+    EXTRA_CFLAGS="%{optflags}"
 
 %install
 make DESTDIR=%{buildroot} LIBDIR=%{_libdir} install
@@ -78,11 +78,12 @@ rm %{buildroot}/%{_libdir}/libre.a
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
-%license docs/COPYING
+%license LICENSE
 %doc README.md
 %{_libdir}/libre.so.%{sover}*
 
 %files devel
+%license LICENSE
 %{_includedir}/re
 %{_datadir}/re
 %{_libdir}/libre.so
