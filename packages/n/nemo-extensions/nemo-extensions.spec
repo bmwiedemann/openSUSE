@@ -1,7 +1,7 @@
 #
 # spec file for package nemo-extensions
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -538,14 +538,14 @@ rm -r %{buildroot}%{_datadir}/licenses/nemo-dropbox/COPYING
 %{_datadir}/nemo-python/extensions/nemo-audio-tab.py*
 %dir %{_datadir}/nemo-audio-tab
 %{_datadir}/nemo-audio-tab/nemo-audio-tab.glade
-%{python3_sitelib}/nemo_audio_tab-%{version}-py?.?.egg-info
+%{python3_sitelib}/nemo_audio_tab-%{version}-py?.*.egg-info
 
 %files -n nemo-extension-compare
 %license nemo-compare/nemo-compare/COPYING*
 %doc nemo-compare/debian/changelog
 %{_bindir}/nemo-compare-preferences
 %{_datadir}/nemo-compare/
-%{python3_sitelib}/nemo_compare-%{version}-py?.?.egg-info
+%{python3_sitelib}/nemo_compare-%{version}-py?.*.egg-info
 %{_datadir}/nemo-python/extensions/nemo-compare.py
 
 %files -n nemo-extension-dropbox
@@ -559,7 +559,7 @@ rm -r %{buildroot}%{_datadir}/licenses/nemo-dropbox/COPYING
 %license nemo-emblems/COPYING*
 %doc nemo-emblems/debian/changelog
 %{_datadir}/nemo-python/extensions/nemo-emblems.py*
-%{python3_sitelib}/nemo_emblems-%{version}-py?.?.egg-info
+%{python3_sitelib}/nemo_emblems-%{version}-py?.*.egg-info
 
 %files -n nemo-extension-fileroller
 %license nemo-fileroller/COPYING
@@ -580,7 +580,7 @@ rm -r %{buildroot}%{_datadir}/licenses/nemo-dropbox/COPYING
 %{_datadir}/icons/hicolor/*/apps/nemo-pastebin.png
 %{_datadir}/icons/hicolor/scalable/apps/nemo-pastebin.svg
 %{_datadir}/glib-2.0/schemas/nemo-pastebin.gschema.xml
-%{python3_sitelib}/nemo_pastebin-%{version}-py?.?.egg-info
+%{python3_sitelib}/nemo_pastebin-%{version}-py?.*.egg-info
 
 %files -n nemo-extension-preview -f nemo-preview.lang
 %license nemo-preview/COPYING
@@ -624,6 +624,6 @@ rm -r %{buildroot}%{_datadir}/licenses/nemo-dropbox/COPYING
 %{_datadir}/nemo-terminal/
 %{_datadir}/nemo-python/extensions/nemo_terminal.py
 %{_datadir}/glib-2.0/schemas/org.nemo.extensions.nemo-terminal.gschema.xml
-%{python3_sitelib}/nemo_terminal-%{version}-py?.?.egg-info
+%{python3_sitelib}/nemo_terminal-%{version}-py?.*.egg-info
 
 %changelog
