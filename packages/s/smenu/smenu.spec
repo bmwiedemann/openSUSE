@@ -1,7 +1,7 @@
 #
 # spec file for package smenu
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           smenu
-Version:        0.9.19
+Version:        1.0.0.RC1
 Release:        0
 Summary:        A standard input word picker
 License:        GPL-2.0-only

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri May 20 09:41:20 UTC 2022 - Pierre Gentile <p.gen.progs@gmail.com>
+
+- Version 1.0.0.RC1
+* Fixes:
+  * Fix configure.ac for autoconf >= 2.70.
+  * Fixed a bug in the bash example in the README.
+  * Synchronization with the commit 9ddac73 of ctxopt on github.
+  * Use the right format to print size_t values (C99).
+  * Add a missing break.
+  * Fix a potential segfault when allocating .ini paths.
+  * Fixed color and attribute parsing.
+  * Fix some tests.
+* Improvements:
+  * Update to autoconf 2.71.
+  * Added "invisible" style attribute (n).
+  * Prevent smenu from running in the background.
+  * Catch and handle SIGPIPE signal.
+  * Improve the manual.
+* Miscellaneous:
+  * Various code simplifications.
+  * Removal of some unnecessary parameter.
+  * Removal of unnecessary code.
+  * Fixed typos in the README file.
+
+-------------------------------------------------------------------
 Sat Dec 11 19:45:51 UTC 2021 - Pierre Gentile <p.gen.progs@gmail.com>
 
 - Version 0.9.19

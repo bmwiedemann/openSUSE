@@ -145,4 +145,33 @@
 </comment>
     <requestid>939979</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0c809c37c522a440392424acb598c160</srcmd5>
+    <version>1.0.0.RC1</version>
+    <time>1653152772</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.0.0.RC1
+* Fixes:
+  * Fix configure.ac for autoconf &gt;= 2.70.
+  * Fixed a bug in the bash example in the README.
+  * Synchronization with the commit 9ddac73 of ctxopt on github.
+  * Use the right format to print size_t values (C99).
+  * Add a missing break.
+  * Fix a potential segfault when allocating .ini paths.
+  * Fixed color and attribute parsing.
+  * Fix some tests.
+* Improvements:
+  * Update to autoconf 2.71.
+  * Added &quot;invisible&quot; style attribute (n).
+  * Prevent smenu from running in the background.
+  * Catch and handle SIGPIPE signal.
+  * Improve the manual.
+* Miscellaneous:
+  * Various code simplifications.
+  * Removal of some unnecessary parameter.
+  * Removal of unnecessary code.
+  * Fixed typos in the README file.
+</comment>
+    <requestid>978322</requestid>
+  </revision>
 </revisionlist>
