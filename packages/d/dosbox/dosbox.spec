@@ -1,7 +1,7 @@
 #
 # spec file for package dosbox
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,21 @@
 
 
 Name:           dosbox
-Version:        0.77.1
+Version:        0.78.1
 Release:        0
 Summary:        A modernized DOSBox to run old DOS games
 License:        GPL-2.0-or-later
 URL:            https://%{name}-staging.github.io
 Source0:        https://github.com/%{name}-staging/%{name}-staging/archive/v%{version}.tar.gz#/%{name}-staging-%{version}.tar.gz
-Patch0:         %{name}-staging-0.77.1-config.patch
-Patch1:         %{name}-staging-0.77.1-name.patch
+Patch0:         %{name}-staging-0.78.1-config.patch
+Patch1:         %{name}-staging-0.78.1-name.patch
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.54.2
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SDL2_net)
 BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(gmock)
 BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(opusfile)
@@ -38,8 +39,8 @@ BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-translations = %{version}
 Recommends:     fluid-soundfont-gm
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
-BuildRequires:  pkgconfig(fluidsynth) >= 2.0
+%if 0%{?suse_version} >= 1550
+BuildRequires:  pkgconfig(fluidsynth) >= 2.2.3
 BuildRequires:  pkgconfig(mt32emu)
 %endif
 
@@ -63,21 +64,20 @@ This package contains translations for %{name}-staging.
 
 %prep
 %autosetup -p1 -n %{name}-staging-%{version}
-%if "%{?_lib}" == "lib" || (0%{?suse_version} < 1550 && 0%{?sle_version} < 150400)
+%if "%{?_lib}" == "lib" || (0%{?suse_version} < 1550)
 sed -i 's/.*soft_limit.*//' tests/meson.build
 %endif
 
 %build
-%meson \
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150400
--Duse_fluidsynth=false -Duse_mt32emu=false
+%meson -Duse_slirp=false \
+%if 0%{?suse_version} < 1550
+-Duse_fluidsynth=false -Duse_mt32emu=false \
 %endif
+
 %meson_build
 
 %install
 %meson_install
-mkdir -p %{buildroot}%{_datadir}/%{name}/translations
-install -pm0644 contrib/translations/??/*.lng %{buildroot}%{_datadir}/%{name}/translations
 
 %check
 %meson_test

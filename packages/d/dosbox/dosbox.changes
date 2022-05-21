@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
-Sun Oct  3 17:48:00 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+Sat May 21 13:23:30 UTC 2022 - Илья Индиго <ilya@ilya.cf>
 
-- Updated to dosbox-staging 0.77.1.
+- Updated to dosbox-staging 0.78.1
+  * Replaced dosbox-staging-0.77.1-config.patch by dosbox-staging-0.78.1-config.patch.
+  * Replaced dosbox-staging-0.77.1-name.patch by dosbox-staging-0.78.1-name.patch.
+  * Added BuildRequires: pkgconfig(gmock) dependency.
+  * Disabled fluidsynth and mt32emu dependency for Leap.
+  * https://dosbox-staging.github.io/v0-78-0/#changes
+  * https://dosbox-staging.github.io/v0-78-1/#changes
+
+-------------------------------------------------------------------
+Sun Oct  3 17:48:00 UTC 2021 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to dosbox-staging 0.77.1
   * Removed old patches dosbox-0.71-manpage.diff dosbox-0.74-3-mt32-patch.diff.
   * Removed old files dosbox.desktop dosbox.png CONFIG-midi-mt32-gm.
   * Added patch dosbox-staging-0.77.1-config.patch.
@@ -12,18 +23,18 @@ Sun Oct  3 17:48:00 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
   * https://github.com/dosbox-staging/dosbox-staging#readme
 
 -------------------------------------------------------------------
-Fri Apr  9 12:51:28 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+Fri Apr  9 12:51:28 UTC 2021 - Илья Индиго <ilya@ilya.cf>
 
 - Used pkgconfig everywhere and removed BuildRequires: Mesa-devel.
 - Refresh CONFIG-midi-mt32-gm file.
 
 -------------------------------------------------------------------
-Thu Mar 18 13:28:47 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+Thu Mar 18 13:28:47 UTC 2021 - Илья Индиго <ilya@ilya.cf>
 
 - Remove Roland MT-32 support for openSUSE Leap 15.3.
 
 -------------------------------------------------------------------
-Mon Nov  2 17:50:22 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Mon Nov  2 17:50:22 UTC 2020 - Илья Индиго <ilya@ilya.cf>
 
 - Refresh spec-file via spec-cleaner and manual optimizations.
 - Add patch dosbox-0.74-3-mt32-patch.diff for Roland MT-32 support.
