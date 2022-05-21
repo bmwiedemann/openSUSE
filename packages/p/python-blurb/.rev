@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>893911</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>473822fbda9172ead8840763ef7a7405</srcmd5>
+    <version>1.1.0</version>
+    <time>1653152760</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  - Support GitHub Issues in addition to b.p.o
+    (bugs.python.org). If &quot;gh-issue&quot; is in the metadata, then the
+    filename will contain &quot;gh-issue-&lt;number&gt;&quot; instead of &quot;bpo-&quot;.
+</comment>
+    <requestid>978315</requestid>
+  </revision>
 </revisionlist>

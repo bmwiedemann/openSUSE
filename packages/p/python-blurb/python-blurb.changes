@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 20 15:26:45 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.1.0:
+  - Support GitHub Issues in addition to b.p.o
+    (bugs.python.org). If "gh-issue" is in the metadata, then the
+    filename will contain "gh-issue-<number>" instead of "bpo-".
+
+-------------------------------------------------------------------
 Tue May 18 07:07:22 UTC 2021 - pgajdos@suse.com
 
 - version update to 1.0.8

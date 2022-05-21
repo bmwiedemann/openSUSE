@@ -1,7 +1,7 @@
 #
 # spec file for package python-blurb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,43 +19,60 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-blurb
-Version:        1.0.8
+Version:        1.1.0
 Release:        0
 Summary:        Command-line tool to manage CPython Misc/NEWS.d entries
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/python/core-workflow/tree/master/blurb
 Source:         https://files.pythonhosted.org/packages/source/b/blurb/blurb-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.5}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
 Command-line tool to manage CPython Misc/NEWS.d entries.
 
 %prep
-%setup -q -n blurb-%{version}
+%autosetup -p1 -n blurb-%{version}
+
+sed -i '1{\,^#!%{_bindir}/env python,d}' blurb.py
+chmod -x blurb.py
 
 %build
-%python_build
+%pyproject_wheel
+
+%install
+%pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/blurb
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 mkdir blurb
 mv tests blurb
 %pytest blurb.py
 
-%install
-%python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%post
+%python_install_alternative blurb
+
+%postun
+%python_uninstall_alternative blurb
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%python_alternative %{_bindir}/blurb
+%{python_sitelib}/blurb.py
+%pycache_only %{python_sitelib}/__pycache__/blurb*.pyc
+%{python_sitelib}/blurb-%{version}*-info
 
 %changelog
