@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 20 20:27:06 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 3.0.2:
+  * Roster: Raise exception if a full jid is found.
+  * AdHoc: Don’t raise on empty nodes.
+  * Roster: Don’t fail when no roster attribute is found.
+  * Remove redundant wheel dependency.
+
+-------------------------------------------------------------------
 Sat May 14 21:39:58 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 3.0.1 (changes since 2.0.6):
