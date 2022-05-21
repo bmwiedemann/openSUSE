@@ -18,7 +18,7 @@
 
 
 Name:           virt-p2v
-Version:        1.42.0
+Version:        1.42.1
 Release:        0
 Summary:        Tools to convert a physical machine to run on KVM
 URL:            https://libguestfs.org/
