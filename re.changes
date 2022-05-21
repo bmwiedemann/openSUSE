@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May 21 10:55:44 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.3.0:
+  * network improvements
+  * static code analysis fixes
+  * aubuf adaptive jitter buffer
+  * Support adding CRLs
+  * shim: new module
+  * new Trice module
+  * error corrections and developer visible fixes
+  * ToS for video and sip
+
+-------------------------------------------------------------------
 Sat Apr 24 10:08:48 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.1
