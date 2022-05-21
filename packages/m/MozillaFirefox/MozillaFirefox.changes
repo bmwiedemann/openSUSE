@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri May 20 15:03:50 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 100.0.2
+  MFSA 2022-19 (bsc#1199768)
+  * CVE-2022-1802 (bmo#1770137)
+    Prototype pollution in Top-Level Await implementation
+  * CVE-2022-1529 (bmo#1770048)
+    Untrusted input used in JavaScript object indexing, leading
+    to prototype pollution
+
+-------------------------------------------------------------------
+Wed May 18 20:27:49 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 100.0.1:
+  * Fixed: Fixed an issue with subtitles in Picture-in-Picture
+    mode while using Netflix (bmo#1768818)
+  * Fixed: Fixed an issue where some commands were unavailable in
+    the Picture-in-Picture window (bmo#1768201)
+
+-------------------------------------------------------------------
 Sun May  1 21:31:01 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 100.0

@@ -5600,4 +5600,24 @@
 - requires NSS 3.77</comment>
     <requestid>974815</requestid>
   </revision>
+  <revision rev="366" vrev="1">
+    <srcmd5>ef1cc4a8ff48fc27d942f8f9afb9ac49</srcmd5>
+    <version>100.0.2</version>
+    <time>1653152745</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 100.0.2
+  MFSA 2022-19 (bsc#1199768)
+  * CVE-2022-1802 (bmo#1770137)
+    Prototype pollution in Top-Level Await implementation
+  * CVE-2022-1529 (bmo#1770048)
+    Untrusted input used in JavaScript object indexing, leading
+    to prototype pollution
+
+- Mozilla Firefox 100.0.1:
+  * Fixed: Fixed an issue with subtitles in Picture-in-Picture
+    mode while using Netflix (bmo#1768818)
+  * Fixed: Fixed an issue where some commands were unavailable in
+    the Picture-in-Picture window (bmo#1768201)</comment>
+    <requestid>978314</requestid>
+  </revision>
 </revisionlist>
