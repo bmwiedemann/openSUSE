@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 20 06:27:18 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.2.2
+  * For a complete list of changes see:
+    https://wiki.freepascal.org/Lazarus_2.2_fixes_branch#Fixes_for_2.2.2_.28merged.29
+- Rebase lazarus-Makefile_patch.diff, because some things in 
+  upstream now.
+- Drop fix-object-inspector-visible.patch because now in upstream.
+
+-------------------------------------------------------------------
 Sat Apr 30 20:57:54 UTC 2022 - PragmaticLinux <info@pragmaticlinux.com>
 
 -  Add patch to fix Object Inspector visibility:

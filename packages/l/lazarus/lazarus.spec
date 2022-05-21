@@ -16,10 +16,10 @@
 #
 
 
-%define dlver   2.2.0-0
+%define dlver   2.2.2-0
 %define sover   1
 Name:           lazarus
-Version:        2.2.0
+Version:        2.2.2
 Release:        0
 # Please note that the LGPL is modified and this is not multi-licensed, but each component has a separate license chosen.
 Summary:        FreePascal RAD IDE and Component Library
@@ -34,8 +34,6 @@ Source90:       %{name}-rpmlintrc
 Patch0:         %{name}-Makefile_patch.diff
 # PATCH-FIX-OPENSUSE lazarus.desktop.patch -- Fix desktop file
 Patch1:         lazarus.desktop.patch
-# PATCH-FIX-UPSTREAM fix-object-inspector-visible.patch boo#1197651
-Patch2:         fix-object-inspector-visible.patch
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  fpc >= 3.0.0
