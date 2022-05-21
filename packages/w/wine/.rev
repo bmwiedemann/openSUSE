@@ -4437,4 +4437,16 @@
 - update staging to 7.8 release</comment>
     <requestid>975633</requestid>
   </revision>
+  <revision rev="378" vrev="1">
+    <srcmd5>bf7e39045095b9ba21c0d1254778974b</srcmd5>
+    <version>7.9</version>
+    <time>1653152801</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.9 development release
+  - Preliminary work towards PE conversion of macOS driver.
+  - A number of fixes for test failures on Windows.
+  - Various bug fixes.
+- update staging to 7.9 release</comment>
+    <requestid>978425</requestid>
+  </revision>
 </revisionlist>

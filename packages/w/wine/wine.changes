@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May 21 07:50:21 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 7.9 development release
+  - Preliminary work towards PE conversion of macOS driver.
+  - A number of fixes for test failures on Windows.
+  - Various bug fixes.
+- update staging to 7.9 release
+
+-------------------------------------------------------------------
 Sat May  7 11:55:55 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 7.8 development release
