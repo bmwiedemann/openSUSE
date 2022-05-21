@@ -1,0 +1,34 @@
+From 0dfda792ca7cfad3933e08667d63e5b33e121822 Mon Sep 17 00:00:00 2001
+From: William Brown <william@blackhats.net.au>
+Date: Fri, 20 May 2022 13:19:35 +1000
+Subject: [PATCH] fix tests
+
+---
+ src/tools/compiletest/src/header.rs | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/tools/compiletest/src/header.rs b/src/tools/compiletest/src/header.rs
+index 1bdea33dffa..d49eefc11da 100644
+--- a/src/tools/compiletest/src/header.rs
++++ b/src/tools/compiletest/src/header.rs
+@@ -807,7 +807,7 @@ pub fn make_test_description<R: Read>(
+ ) -> test::TestDesc {
+     let mut ignore = false;
+     #[cfg(not(bootstrap))]
+-    let ignore_message: Option<String> = None;
++    let _ignore_message: Option<String> = None;
+     let mut should_fail = false;
+ 
+     let rustc_has_profiler_support = env::var_os("RUSTC_PROFILER_SUPPORT").is_some();
+@@ -880,7 +880,7 @@ pub fn make_test_description<R: Read>(
+         name,
+         ignore,
+         #[cfg(not(bootstrap))]
+-        ignore_message,
++        ignore_message: None,
+         should_panic,
+         compile_fail: false,
+         no_run: false,
+-- 
+2.32.1 (Apple Git-133)
+
