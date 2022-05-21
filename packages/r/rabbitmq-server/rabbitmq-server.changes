@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May 21 06:34:03 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 3.10.2
+  * Default log level used a four-character severity abbreviation
+    instead of more common longer format, for example, warn instead
+    of warning.
+  * Fix CLI tools failed to run on Erlang 25
+
+-------------------------------------------------------------------
 Wed May 11 20:25:01 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - add upstream signing key and verify source signature
