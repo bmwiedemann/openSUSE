@@ -17,7 +17,7 @@
 
 
 Name:           yt-dlp
-Version:        2022.04.08
+Version:        2022.05.18
 Release:        0
 Summary:        Enhanced fork of youtube-dl, a video site downloader for offline watching
 License:        CC-BY-SA-3.0 AND SUSE-Public-Domain
