@@ -18,6 +18,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python36 1
+# python-xmlsec doesn’t support 3.10 gh#mehcode/python-xmlsec#204
+%define skip_python310 1
 Name:           python-zeep
 Version:        4.1.0
 Release:        0

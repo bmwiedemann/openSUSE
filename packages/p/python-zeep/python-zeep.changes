@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May 21 09:32:46 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Doesn't build with 3.10 because of missing xmlsec.
+
+-------------------------------------------------------------------
 Thu Apr 14 09:03:18 UTC 2022 - pgajdos@suse.com
 
 - do not require python-mock for build
