@@ -40,4 +40,13 @@
   compatible.</comment>
     <requestid>959991</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>58ff28e3b4269cb2fa6bcb6050d9b690</srcmd5>
+    <version>3.12.2+git.1625035095.f0a089a</version>
+    <time>1653152767</time>
+    <user>dimstar_suse</user>
+    <comment>- Synchronize SPEC file to be more like the SLE one.
+</comment>
+    <requestid>978319</requestid>
+  </revision>
 </revisionlist>
