@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 21 11:58:17 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Add 0001-cmake-Don-t-build-the-interpreter-on-ARM.patch and
+  0001-cmake-Don-t-run-the-version-test-if-the-interpreter-.patch : disable the
+  interpreter on ARM architectures
+
+-------------------------------------------------------------------
 Thu May  5 13:58:54 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to version 1.12

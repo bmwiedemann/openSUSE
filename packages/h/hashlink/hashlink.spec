@@ -29,6 +29,10 @@ Patch01:        0001-cmake-Link-sdl.hdll-with-OpenGL.patch
 Patch02:        0001-cmake-Install-hlc_main.c-with-hl.h-and-hlc.h.patch
 # PATCH-FIX-UPSTREAM
 Patch03:        0001-Disable-the-JIT-tests-on-arm-architectures.patch
+# PATCH-FIX-UPSTREAM
+Patch04:        0001-cmake-Don-t-build-the-interpreter-on-ARM.patch
+# PATCH-FIX-UPSTREAM
+Patch05:        0001-cmake-Don-t-run-the-version-test-if-the-interpreter-.patch
 BuildRequires:  cmake
 BuildRequires:  haxe >= 4.0
 BuildRequires:  mbedtls-devel
@@ -92,7 +96,9 @@ haxelib dev hashlink other/haxelib
 %postun -n libhl1 -p /sbin/ldconfig
 
 %files
+%ifnarch %{arm} %{arm64}
 %{_bindir}/hl
+%endif
 %license LICENSE
 %doc README.md
 
