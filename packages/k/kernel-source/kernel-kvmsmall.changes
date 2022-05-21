@@ -1,4 +1,228 @@
 -------------------------------------------------------------------
+Wed May 18 12:03:12 CEST 2022 - jslaby@suse.cz
+
+- Linux 5.17.9 (bsc#1012628).
+- batman-adv: Don't skb_split skbuffs with frag_list
+  (bsc#1012628).
+- iwlwifi: iwl-dbg: Use del_timer_sync() before freeing
+  (bsc#1012628).
+- hwmon: (tmp401) Add OF device ID table (bsc#1012628).
+- mac80211: Reset MBSSID parameters upon connection (bsc#1012628).
+- net: rds: use maybe_get_net() when acquiring refcount on TCP
+  sockets (bsc#1012628).
+- net: Fix features skip in for_each_netdev_feature()
+  (bsc#1012628).
+- net: mscc: ocelot: fix last VCAP IS1/IS2 filter persisting in
+  hardware when deleted (bsc#1012628).
+- net: mscc: ocelot: fix VCAP IS2 filters matching on both lookups
+  (bsc#1012628).
+- net: mscc: ocelot: restrict tc-trap actions to VCAP IS2 lookup 0
+  (bsc#1012628).
+- net: mscc: ocelot: avoid corrupting hardware counters when
+  moving VCAP filters (bsc#1012628).
+- fbdev: simplefb: Cleanup fb_info in .fb_destroy rather than
+  .remove (bsc#1012628).
+- fbdev: efifb: Cleanup fb_info in .fb_destroy rather than .remove
+  (bsc#1012628).
+- fbdev: vesafb: Cleanup fb_info in .fb_destroy rather than
+  .remove (bsc#1012628).
+- platform/surface: aggregator: Fix initialization order when
+  compiling as builtin module (bsc#1012628).
+- ice: Fix race during aux device (un)plugging (bsc#1012628).
+- ice: clear stale Tx queue settings before configuring
+  (bsc#1012628).
+- ice: fix PTP stale Tx timestamps cleanup (bsc#1012628).
+- ipv4: drop dst in multicast routing path (bsc#1012628).
+- drm/nouveau: Fix a potential theorical leak in
+  nouveau_get_backlight_name() (bsc#1012628).
+- netlink: do not reset transport header in netlink_recvmsg()
+  (bsc#1012628).
+- net: chelsio: cxgb4: Avoid potential negative array offset
+  (bsc#1012628).
+- fbdev: efifb: Fix a use-after-free due early fb_info cleanup
+  (bsc#1012628).
+- net: sfc: fix memory leak due to ptp channel (bsc#1012628).
+- fanotify: do not allow setting dirent events in mask of non-dir
+  (bsc#1012628).
+- mac80211_hwsim: call ieee80211_tx_prepare_skb under RCU
+  protection (bsc#1012628).
+- nfs: fix broken handling of the softreval mount option
+  (bsc#1012628).
+- ionic: fix missing pci_release_regions() on error in
+  ionic_probe() (bsc#1012628).
+- dim: initialize all struct fields (bsc#1012628).
+- hwmon: (ltq-cputemp) restrict it to SOC_XWAY (bsc#1012628).
+- procfs: prevent unprivileged processes accessing fdinfo dir
+  (bsc#1012628).
+- selftests: vm: Makefile: rename TARGETS to VMTARGETS
+  (bsc#1012628).
+- net: dsa: flush switchdev workqueue on bridge join error path
+  (bsc#1012628).
+- arm64: vdso: fix makefile dependency on vdso.so (bsc#1012628).
+- virtio: fix virtio transitional ids (bsc#1012628).
+- s390/ctcm: fix variable dereferenced before check (bsc#1012628).
+- s390/ctcm: fix potential memory leak (bsc#1012628).
+- s390/lcs: fix variable dereferenced before check (bsc#1012628).
+- net/sched: act_pedit: really ensure the skb is writable
+  (bsc#1012628).
+- net: ethernet: mediatek: ppe: fix wrong size passed to memset()
+  (bsc#1012628).
+- net: bcmgenet: Check for Wake-on-LAN interrupt probe deferral
+  (bsc#1012628).
+- drm/vc4: hdmi: Fix build error for implicit function declaration
+  (bsc#1012628).
+- mlxsw: Avoid warning during ip6gre device removal (bsc#1012628).
+- net: dsa: bcm_sf2: Fix Wake-on-LAN with mac_link_down()
+  (bsc#1012628).
+- net/smc: non blocking recvmsg() return -EAGAIN when no data
+  and signal_pending (bsc#1012628).
+- net: sfc: ef10: fix memory leak in efx_ef10_mtd_probe()
+  (bsc#1012628).
+- tls: Fix context leak on tls_device_down (bsc#1012628).
+- drm/vmwgfx: Fix fencing on SVGAv3 (bsc#1012628).
+- gfs2: Fix filesystem block deallocation for short writes
+  (bsc#1012628).
+- hwmon: (asus_wmi_sensors) Fix CROSSHAIR VI HERO name
+  (bsc#1012628).
+- hwmon: (f71882fg) Fix negative temperature (bsc#1012628).
+- RDMA/irdma: Fix deadlock in irdma_cleanup_cm_core()
+  (bsc#1012628).
+- iommu: arm-smmu: disable large page mappings for Nvidia arm-smmu
+  (bsc#1012628).
+- ASoC: max98090: Reject invalid values in custom control put()
+  (bsc#1012628).
+- ASoC: max98090: Generate notifications on changes for custom
+  control (bsc#1012628).
+- ASoC: ops: Validate input values in snd_soc_put_volsw_range()
+  (bsc#1012628).
+- s390: disable -Warray-bounds (bsc#1012628).
+- ASoC: SOF: Fix NULL pointer exception in sof_pci_probe callback
+  (bsc#1012628).
+- io_uring: assign non-fixed early for async work (bsc#1012628).
+- net: emaclite: Don't advertise 1000BASE-T and do auto
+  negotiation (bsc#1012628).
+- net: sfp: Add tx-fault workaround for Huawei MA5671A SFP ONT
+  (bsc#1012628).
+- secure_seq: use the 64 bits of the siphash for port offset
+  calculation (bsc#1012628).
+- tcp: use different parts of the port_offset for index and offset
+  (bsc#1012628).
+- tcp: resalt the secret every 10 seconds (bsc#1012628).
+- tcp: add small random increments to the source port
+  (bsc#1012628).
+- tcp: dynamically allocate the perturb table used by source ports
+  (bsc#1012628).
+- tcp: increase source port perturb table to 2^16 (bsc#1012628).
+- tcp: drop the hash_32() part from the index calculation
+  (bsc#1012628).
+- block: Do not call folio_next() on an unreferenced folio
+  (bsc#1012628).
+- interconnect: Restore sync state by ignoring ipa-virt in
+  provider count (bsc#1012628).
+- perf tests: Fix coresight `perf test` failure (bsc#1012628).
+- firmware_loader: use kernel credentials when reading firmware
+  (bsc#1012628).
+- KVM: PPC: Book3S PR: Enable MSR_DR for switch_mmu_context()
+  (bsc#1012628).
+- usb: xhci-mtk: fix fs isoc's transfer error (bsc#1012628).
+- x86/mm: Fix marking of unused sub-pmd ranges (bsc#1012628).
+- tty/serial: digicolor: fix possible null-ptr-deref in
+  digicolor_uart_probe() (bsc#1012628).
+- tty: n_gsm: fix buffer over-read in gsm_dlci_data()
+  (bsc#1012628).
+- tty: n_gsm: fix mux activation issues in gsm_config()
+  (bsc#1012628).
+- tty: n_gsm: fix invalid gsmtty_write_room() result
+  (bsc#1012628).
+- usb: gadget: uvc: allow for application to cleanly shutdown
+  (bsc#1012628).
+- usb: cdc-wdm: fix reading stuck on device close (bsc#1012628).
+- usb: typec: tcpci: Don't skip cleanup in .remove() on error
+  (bsc#1012628).
+- usb: typec: tcpci_mt6360: Update for BMC PHY setting
+  (bsc#1012628).
+- USB: serial: pl2303: add device id for HP LM930 Display
+  (bsc#1012628).
+- USB: serial: qcserial: add support for Sierra Wireless EM7590
+  (bsc#1012628).
+- USB: serial: option: add Fibocom L610 modem (bsc#1012628).
+- USB: serial: option: add Fibocom MA510 modem (bsc#1012628).
+- slimbus: qcom: Fix IRQ check in qcom_slim_probe (bsc#1012628).
+- fsl_lpuart: Don't enable interrupts too early (bsc#1012628).
+- genirq: Remove WARN_ON_ONCE() in generic_handle_domain_irq()
+  (bsc#1012628).
+- serial: 8250_mtk: Fix UART_EFR register address (bsc#1012628).
+- serial: 8250_mtk: Fix register address for XON/XOFF character
+  (bsc#1012628).
+- ceph: fix setting of xattrs on async created inodes
+  (bsc#1012628).
+- Revert "mm/memory-failure.c: skip huge_zero_page in
+  memory_failure()" (bsc#1012628).
+- mm/huge_memory: do not overkill when splitting huge_zero_page
+  (bsc#1012628).
+- mm: mremap: fix sign for EFAULT error return value
+  (bsc#1012628).
+- drm/vmwgfx: Disable command buffers on svga3 without gbobjects
+  (bsc#1012628).
+- drm/nouveau/tegra: Stop using iommu_present() (bsc#1012628).
+- i40e: i40e_main: fix a missing check on list iterator
+  (bsc#1012628).
+- net: phy: Fix race condition on link status change
+  (bsc#1012628).
+- writeback: Avoid skipping inode writeback (bsc#1012628).
+- cgroup/cpuset: Remove cpus_allowed/mems_allowed setup in
+  cpuset_init_smp() (bsc#1012628).
+- ping: fix address binding wrt vrf (bsc#1012628).
+- ath11k: reduce the wait time of 11d scan and hw scan while
+  add interface (bsc#1012628).
+- arm[64]/memremap: don't abuse pfn_valid() to ensure presence
+  of linear map (bsc#1012628).
+- net: phy: micrel: Do not use kszphy_suspend/resume for KSZ8061
+  (bsc#1012628).
+- net: phy: micrel: Pass .probe for KS8737 (bsc#1012628).
+- SUNRPC: Ensure that the gssproxy client can start in a connected
+  state (bsc#1012628).
+- drm/vmwgfx: Initialize drm_mode_fb_cmd2 (bsc#1012628).
+- Revert "drm/amd/pm: keep the BACO feature enabled for suspend"
+  (bsc#1012628).
+- dma-buf: call dma_buf_stats_setup after dmabuf is in valid list
+  (bsc#1012628).
+- mm/hwpoison: use pr_err() instead of dump_page() in
+  get_any_page() (bsc#1012628).
+- net: phy: micrel: Fix incorrect variable type in micrel
+  (bsc#1012628).
+- mm/kfence: reset PG_slab and memcg_data before freeing
+  __kfence_pool (bsc#1012628).
+- commit eab1a2c
+
+-------------------------------------------------------------------
+Mon May 16 06:08:55 CEST 2022 - jslaby@suse.cz
+
+- Linux 5.17.8 (bsc#1012628).
+- mm: fix invalid page pointer returned with FOLL_PIN gups
+  (bsc#1012628).
+- mm,migrate: fix establishing demotion target (bsc#1012628).
+- mm/mlock: fix potential imbalanced rlimit ucounts adjustment
+  (bsc#1012628).
+- mm/hwpoison: fix error page recovered but reported "not
+  recovered" (bsc#1012628).
+- mm: userfaultfd: fix missing cache flush in mcopy_atomic_pte()
+  and __mcopy_atomic() (bsc#1012628).
+- mm: shmem: fix missing cache flush in shmem_mfill_atomic_pte()
+  (bsc#1012628).
+- mm: hugetlb: fix missing cache flush in
+  hugetlb_mcopy_atomic_pte() (bsc#1012628).
+- mm: hugetlb: fix missing cache flush in
+  copy_huge_page_from_user() (bsc#1012628).
+- mm: fix missing cache flush for all tail pages of compound page
+  (bsc#1012628).
+- udf: Avoid using stale lengthOfImpUse (bsc#1012628).
+- rfkill: uapi: fix RFKILL_IOCTL_MAX_SIZE ioctl request definition
+  (bsc#1012628).
+- Bluetooth: Fix the creation of hdev->name (bsc#1012628).
+- commit 718e8e9
+
+-------------------------------------------------------------------
 Thu May 12 14:36:35 CEST 2022 - jslaby@suse.cz
 
 - Linux 5.17.7 (bsc#1012628).
