@@ -142,4 +142,41 @@
   - rename ca-key to ca-cert. Fix 1608, 1613 by @vaikas in #1617 (forwarded request 972815 from msmeissn)</comment>
     <requestid>972838</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ca4ffbaad99a3ba956a0ea9ecf73a522</srcmd5>
+    <version>1.8.0</version>
+    <time>1653152804</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.8.0
+ - Move the KMS integration imports into the binary entrypoints by @mattmoor in #1744
+ - [Cosigned] Convert functions for webhookCIP from v1alpha1 by @DennyHoang in #1736
+ - Refactor policy related code, add support for vuln verify by @vaikas in #1747
+ - Use bundle log ID to find verification key by @haydentherapper in #1748
+ - [cosigned] The webhook name is now configurable via --webhook-name flag by @vpnachev in #1726
+ - Add intermediate CA certificate pool for Fulcio by @haydentherapper in #1749
+ - test: create fake TUF test root and create test SETs for verification by @asraa in #1750
+ - Implement identities, fix bug in webhook validation. by @vaikas in #1759
+ - Validate issuer/subject regexp in validate webhook. by @vaikas in #1761
+ - chore: add warning when attaching sBOMs by @hectorj2f in #1756
+ - Verify embedded SCTs by @haydentherapper in #1731
+ - chore: add warning when downloading a sBOM by @hectorj2f in #1763
+ - [policy-webhook] The webhooks name is now configurable via --(validating|mutating)-webhook-name flags by @vpnachev in #1757
+ - Break the CIP action tests into a sh script. by @vaikas in #1767
+ - tuf: add debug info if tuf update fails by @asraa in #1766
+ - cosigned: add support for rsa keys by @hectorj2f in #1768
+ - Cosigned validate against remote sig src by @DennyHoang in #1754
+ - Add Fulcio intermediate CA certificate to intermediate pool by @haydentherapper in #1774
+ - fix: more informative error by @ybelMekk in #1778
+ - Run update-codegen. by @wlynch in #1789
+ - Remove the dependency on v1alpha1.Identity which brings in unnecessary k8s deps. by @vaikas in #1790
+ - Refactor fulcio signer to take in KeyOpts. by @wlynch in #1788
+ - test: add cue unit tests by @hectorj2f in #1791
+ - Attestations + policy in cip. by @vaikas in #1772
+ - chore: add rego function to consume modules and evaluate them by @hectorj2f in #1787
+ - Add parallelization for processing policies / authorities. by @vaikas in #1795
+ - Allow passing keys via environment variables (env:// refs) by @znewman01 in #1794
+ - Handle context cancelled properly + tests. by @vaikas in #1796
+ - Fix a bug where an error would send duplicate results. by @vaikas in #1797</comment>
+    <requestid>978429</requestid>
+  </revision>
 </revisionlist>
