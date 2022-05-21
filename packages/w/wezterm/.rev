@@ -7,4 +7,23 @@
     <comment>I want to maintain wezterm in openSUSE:Factory</comment>
     <requestid>975387</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>98f26a76bd3442658a9982d10f30740d</srcmd5>
+    <version>20220408.101518.b908e2dd~232</version>
+    <time>1653152794</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220408.101518.b908e2dd~232:
+  * dynamic: allow defaulting to None for enum struct fields
+  * quickselect: allow multiline matches
+  * wayland: fix weirdness with recent mutter and display scaling
+  * wayland: avoid noisy panic-within-panic on shutdown
+  * config: fix specifying numeric font weights
+  * quickselect: avoid jumping to bottom of viewport when activated
+  * mux: match workspace to local window when syncing panes
+  * ssh: avoid busy loop when all channels are closed on the session
+  * fix typo
+  * fixup win32 build
+</comment>
+    <requestid>978417</requestid>
+  </revision>
 </revisionlist>

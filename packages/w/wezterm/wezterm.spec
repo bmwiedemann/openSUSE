@@ -17,17 +17,20 @@
 
 
 Name:           wezterm
-Version:        20220408.101518.b908e2dd~150
+Version:        20220408.101518.b908e2dd~232
 Release:        0
 Summary:        GPU-accelerated cross-platform terminal emulator and multiplexer
 URL:            https://github.com/wez/wezterm
-License:        (Apache-2.0 OR MIT) AND BSD-3-Clause AND (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR BSL-1.0 OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT) AND (MIT OR Apache-2.0 OR BSD-2-Clause) AND (MIT OR Apache-2.0 OR Zlib) AND (MIT OR Zlib OR Apache-2.0) AND (Unlicense OR MIT) AND (Zlib OR Apache-2.0 OR MIT) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND LGPL-2.1-only AND MIT AND MPL-2.0 AND WTFPL AND Zlib AND MIT
+License:        (Apache-2.0 OR MIT) AND BSD-3-Clause AND (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR BSL-1.0 OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR BSD-2-Clause) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND LGPL-2.1-only AND MIT AND MPL-2.0 AND WTFPL AND Zlib AND MIT
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 Requires:       terminfo
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  cargo-packaging
+BuildRequires:  rust >= 1.46
+ExclusiveArch:  %{rust_arches}
+
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -45,9 +48,9 @@ BuildRequires:  xcb-util-image-devel
 BuildRequires:  xcb-util-keysyms-devel
 BuildRequires:  xcb-util-wm-devel
 BuildRequires:  pkgconfig(fontconfig)
-BuildRequires:  pkgconfig(tic)
 BuildRequires:  pkgconfig(libssh2)
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(tic)
 BuildRequires:  pkgconfig(xcb)
 
 %description
@@ -76,7 +79,6 @@ install -Dm 0644 assets/icon/%{name}-icon.svg %{buildroot}%{_datadir}/icons/hico
 install -Dm 0644 assets/%{name}.appdata.xml %{buildroot}%{_datadir}/metainfo/org.wezfurlong.%{name}.appdata.xml
 install -Dm 0644 assets/shell-integration/* -t %{buildroot}%{_sysconfdir}/profile.d
 install -Dm 0644 assets/%{name}-nautilus.py %{buildroot}%{_datadir}/nautilus-python/extensions/%{name}-nautilus.py
-
 
 %files
 %license LICENSE.md
