@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 20 21:20:13 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to release 1.46.3
+  * backport: xds: use federation env var to guard new-style
+    resource name parsing (#29725) #29727
+
+-------------------------------------------------------------------
 Mon May 16 19:18:45 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.46.2
