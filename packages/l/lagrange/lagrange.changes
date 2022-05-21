@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 20 15:47:30 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.13.5
+  - Parent navigation assumes directory URL is equivalent to index page URL
+    (e.g., "/path/" == "/path/index.gmi"): this now only applies to Gemini URLs,
+    and checks for "index.gemini", too, as per Gemini Best Practices.
+  - Fixed crash when determining the name of a ZIP file from a URL.
+  - Fixed misparsing of URL to form the name of a downloaded file (%23 decoded
+    too early).
+
+-------------------------------------------------------------------
 Thu May 12 19:36:23 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.13.4
