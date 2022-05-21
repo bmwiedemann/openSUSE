@@ -1319,7 +1319,6 @@ unsorted:
   - bluefish 
   - bluemoon 
   - blueprint-cursor-theme 
-  - bluez-cups: [i586] 
   - bluez-deprecated 
   - bluez-devel 
   - bluez-devel-32bit: [x86_64] 
@@ -1798,6 +1797,7 @@ unsorted:
   - cargo1.58 
   - cargo1.59 
   - cargo1.60 
+  - cargo1.61 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -2011,10 +2011,6 @@ unsorted:
   - clang 
   - clang-devel 
   - clang-doc 
-  - clang10 
-  - clang10-devel 
-  - clang10-devel-32bit: [x86_64] 
-  - clang10-doc 
   - clang11 
   - clang11-devel 
   - clang11-devel-32bit: [x86_64] 
@@ -8141,7 +8137,6 @@ unsorted:
   - kemoticons-devel 
   - kernel-debug 
   - kernel-debug-devel 
-  - kernel-default-base: [i586] 
   - kernel-default-base-rebuild 
   - kernel-default-devel 
   - kernel-devel 
@@ -9044,8 +9039,6 @@ unsorted:
   - libLASi-devel 
   - libLASi2 
   - libLHAPDF-6_4_0 
-  - libLLVM10 
-  - libLLVM10-32bit: [x86_64] 
   - libLLVM11 
   - libLLVM11-32bit: [x86_64] 
   - libLLVM12 
@@ -9055,8 +9048,6 @@ unsorted:
   - libLLVM14-32bit: [x86_64] 
   - libLLVM9 
   - libLLVM9-32bit: [x86_64] 
-  - libLTO10 
-  - libLTO10-32bit: [x86_64] 
   - libLTO11 
   - libLTO11-32bit: [x86_64] 
   - libLTO12 
@@ -10322,8 +10313,6 @@ unsorted:
   - libclang-cpp13 
   - libclang-cpp13-32bit: [x86_64] 
   - libclang-cpp14-32bit: [x86_64] 
-  - libclang10 
-  - libclang10-32bit: [x86_64] 
   - libclang11 
   - libclang11-32bit: [x86_64] 
   - libclang12 
@@ -12086,7 +12075,6 @@ unsorted:
   - liblirc_driver0 
   - liblirc_driver0-32bit: [x86_64] 
   - liblittleb0 
-  - liblldb10: [x86_64] 
   - liblldb11: [x86_64] 
   - liblldb12: [x86_64] 
   - liblldb13: [x86_64] 
@@ -12720,7 +12708,6 @@ unsorted:
   - libolecf1 
   - libolm3 
   - libomniORB4 
-  - libomp10-devel 
   - libomp11-devel 
   - libomp12-devel 
   - libomp13-devel 
@@ -13566,8 +13553,8 @@ unsorted:
   - librdkafka-devel 
   - librdmacm-utils 
   - librdmacm1-32bit: [x86_64] 
-  - libre1 
   - libre2-9-32bit: [x86_64] 
+  - libre5 
   - libreadline-java 
   - libreadline-java-32bit: [x86_64] 
   - libreadline-java-javadoc 
@@ -15300,7 +15287,6 @@ unsorted:
   - lksctp-tools-devel 
   - llcbench 
   - lld 
-  - lld10 
   - lld11 
   - lld12 
   - lld13 
@@ -15308,8 +15294,6 @@ unsorted:
   - lld9 
   - lldb: [x86_64] 
   - lldb-devel: [x86_64] 
-  - lldb10: [x86_64] 
-  - lldb10-devel: [x86_64] 
   - lldb11: [x86_64] 
   - lldb11-devel: [x86_64] 
   - lldb12: [x86_64] 
@@ -15331,17 +15315,6 @@ unsorted:
   - llvm-polly 
   - llvm-polly-devel 
   - llvm-vim-plugins 
-  - llvm10 
-  - llvm10-LTO-devel 
-  - llvm10-LTO-devel-32bit: [x86_64] 
-  - llvm10-devel 
-  - llvm10-devel-32bit: [x86_64] 
-  - llvm10-doc 
-  - llvm10-gold 
-  - llvm10-opt-viewer 
-  - llvm10-polly 
-  - llvm10-polly-devel 
-  - llvm10-vim-plugins 
   - llvm11 
   - llvm11-LTO-devel 
   - llvm11-LTO-devel-32bit: [x86_64] 
@@ -21726,7 +21699,6 @@ unsorted:
   - python3-libvoikko 
   - python3-lilv 
   - python3-lldb: [x86_64] 
-  - python3-lldb10: [x86_64] 
   - python3-lldb11: [x86_64] 
   - python3-lldb12: [x86_64] 
   - python3-lldb13: [x86_64] 
@@ -24962,7 +24934,6 @@ unsorted:
   - python310-validators 
   - python310-varint 
   - python310-varlink 
-  - python310-vatnumber 
   - python310-vcrpy 
   - python310-vcver 
   - python310-vcversioner 
@@ -25095,7 +25066,6 @@ unsorted:
   - python310-zc.customdoctests 
   - python310-zc.lockfile 
   - python310-zdaemon 
-  - python310-zeep 
   - python310-zeroconf 
   - python310-zhon 
   - python310-zict 
@@ -32378,6 +32348,7 @@ unsorted:
   - rust1.58 
   - rust1.59 
   - rust1.60 
+  - rust1.61 
   - rustscan 
   - rustup: [x86_64] 
   - rxp 
