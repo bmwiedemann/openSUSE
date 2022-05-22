@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 20 01:16:43 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Re-compile bin/get-kbd-layout from source to support multiple arch
+- Move some modules into separate packages with necessary deps
+- Remove test data from runtime package
+
+-------------------------------------------------------------------
 Wed May 18 12:53:13 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.1.5:

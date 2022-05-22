@@ -53,8 +53,10 @@ BuildRequires:  %{python_module tzlocal}
 BuildRequires:  %{python_module xkbgroup}
 BuildRequires:  NetworkManager
 BuildRequires:  alsa-utils
+BuildRequires:  gcc
 BuildRequires:  iputils
 BuildRequires:  libnotify-tools
+BuildRequires:  libX11-devel
 BuildRequires:  password-store
 BuildRequires:  pavucontrol
 BuildRequires:  playerctl
@@ -117,7 +119,7 @@ Suggests:       bumblebee-status-module-cmus = %{version}
 Suggests:       bumblebee-status-module-deadbeef = %{version}
 Suggests:       bumblebee-status-module-deezer = %{version}
 Suggests:       bumblebee-status-module-docker-ps = %{version}
-Suggests:       bumblebee-status-module-duns = %{version}
+Suggests:       bumblebee-status-module-dunst = %{version}
 Suggests:       bumblebee-status-module-git = %{version}
 Suggests:       bumblebee-status-module-layout-xkbswitch = %{version}
 Suggests:       bumblebee-status-module-libvirt = %{version}
@@ -136,7 +138,6 @@ Suggests:       bumblebee-status-module-vault = %{version}
 Suggests:       bumblebee-status-module-vpn = %{version}
 Suggests:       bumblebee-status-module-watson = %{version}
 Suggests:       bumblebee-status-module-yubikey = %{version}
-BuildArch:      noarch
 # SECTION missing dependencies
 #Suggests:       bumblebee-status-module-nvidia = %{version}
 #Suggests:       bumblebee-status-module-pihole = %{version}
@@ -282,7 +283,7 @@ Supplements:    (%{name} and dunst)
 BuildArch:      noarch
 
 %description module-dunst
-Toggle dunst notifications.
+Widget to toggle dunst notifications.
 
 %package module-git
 Summary:        Widget to show git information
@@ -297,7 +298,7 @@ BuildArch:      noarch
 Displays information about the git repository.
 
 %package module-indicator
-Summary:        Widget to show indicator status, for numlock, scrolllock and capslock
+Summary:        Widget to show status for numlock, scrolllock and capslock
 Group:          System/Monitoring
 Requires:       %{name} = %{version}
 Requires:       xset
@@ -305,7 +306,7 @@ Supplements:    (%{name} and xset)
 BuildArch:      noarch
 
 %description module-indicator
-Displays the indicator status, for numlock, scrolllock and capslock.
+Displays the indicator status for numlock, scrolllock and capslock.
 
 %package module-layout
 Summary:        Displays and changes the current keyboard layout
@@ -402,7 +403,7 @@ BuildArch:      noarch
 Displays GPU name, temperature and memory usage.
 
 %package module-nvidia-prime
-Summary:        GPU selection for NVIDIA optimus
+Summary:        GPU selection for NVIDIA optimus using bbswitch
 Group:          System/Monitoring
 Requires:       %{name} = %{version}
 Requires:       suse-prime-bbswitch
@@ -410,7 +411,16 @@ Supplements:    (%{name} and suse-prime-bbswitch)
 BuildArch:      noarch
 
 %description module-nvidia-prime
-GPU (nvidia/intel) selection for NVIDIA optimus laptops with bbswitch support.
+GPU (nvidia/intel) selection for NVIDIA optimus laptops using bbswitch
+
+%package module-nvidia-optimus-manager
+Summary:        GPU selection for NVIDIA optimus using optimus-manager
+Group:          System/Monitoring
+Requires:       %{name} = %{version}
+BuildArch:      noarch
+
+%description module-nvidia-optimus-manager
+GPU (nvidia/intel) selection for NVIDIA optimus laptops using optimus-manager.
 
 %package module-octoprint
 Summary:        Displays Octoprint status
@@ -490,7 +500,7 @@ Requires:       python3-feedparser
 BuildArch:      noarch
 
 %description module-rss
-Displays a RSS feed.
+Widget to display a RSS feed.
 
 %package module-sensors
 Summary:        Widget for sensors
@@ -513,6 +523,17 @@ BuildArch:      noarch
 
 %description module-smartstatus
 Displays HDD smart status of different drives or all drives.
+
+%package module-solaar
+Summary:        Displays of Logitech's unifying device
+Group:          System/Monitoring
+Requires:       %{name} = %{version}
+Requires:       solaar
+Supplements:    (%{name} and solaar)
+BuildArch:      noarch
+
+%description module-solaar
+Displays status and load percentage of Logitech's unifying device.
 
 %package module-speedtest
 Summary:        Performs a speedtest
@@ -545,7 +566,7 @@ Requires:       python3-suntime
 BuildArch:      noarch
 
 %description module-sun
-Displays sunrise and sunset times.
+Widget to display sunrise and sunset times.
 
 %package module-taskwarrior
 Summary:        Widget to display number of pending tasks in TaskWarrior
@@ -556,7 +577,7 @@ Supplements:    (%{name} and taskwarrior)
 BuildArch:      noarch
 
 %description module-taskwarrior
-Displays the number of pending tasks in TaskWarrior.
+Widget to displays the number of pending tasks in TaskWarrior.
 
 %package module-title
 Summary:        Widget to display focused i3 window title
@@ -566,7 +587,7 @@ Requires:       python3-i3ipc
 BuildArch:      noarch
 
 %description module-title
-Displays focused i3 window title.
+Widget to displays focused i3 window title.
 
 %package module-twmn
 Summary:        Widget to toggle twmn notifications
@@ -578,7 +599,7 @@ Requires:       systemd
 BuildArch:      noarch
 
 %description module-twmn
-Toggle twmn notifications.
+Widget to toggle twmn notifications.
 
 %package module-vault
 Summary:        Copy passwords from a password store
@@ -654,9 +675,19 @@ Displays info about zpools present on the system.
 %patch2 -p1
 # Remove hashbang from modules
 sed -i '1{/^#!/d}' bumblebee_status/modules/contrib/{network_traffic,playerctl,spaceapi}.py
+
+# Remove executable bit from modules
 chmod a-x bumblebee_status/modules/contrib/playerctl.py
 
+# Add proper hashbang to scripts
+sed -i '1{s:^#!.*:#!%{_bindir}/bash:}' bin/*.sh
+
+# Remove pre-compiled binary
+rm bin/get-kbd-layout
+
 %build
+cd util
+make ../bin/get-kbd-layout
 
 %install
 mkdir -p "%{buildroot}%{_bindir}"
@@ -667,21 +698,32 @@ mkdir -p "%{buildroot}%{_datadir}/%{name}/bumblebee/modules"
 
 # 1. prepare filesystem
 install -d %{buildroot}%{_bindir} \
-%{buildroot}%{_datadir}/%{buildroot}/{bumblebee/modules,themes/icons}
-ln -s %{_datadir}/%{name}/%{name} %{buildroot}%{_bindir}/%{name}
+  %{buildroot}%{_datadir}/%{name}/bin/
 
 # 2. remove modules:
 #    * apt (debian)
 #    * arch-update and pacman (only usable on arch linux)
+#    * emerge_status (gentoo)
 #    * gpmdp (needs Google Play music player)
 #    * hddtemp (no longer maintained)
-rm bumblebee_status/modules/contrib/{apt,arch_update,arch-update,gpmdp,hddtemp,pacman,portage_status}.py
+rm bumblebee_status/modules/contrib/{apt,arch_update,arch-update,emerge_status,gpmdp,hddtemp,pacman,portage_status}.py
 rm tests/modules/contrib/test_{apt,arch-update,gpmdp,hddtemp,pacman,portage_status}.py
+rm bin/pacman-updates
 
 # 3. copy files from source
 cp -a --parents %{name} themes/{,icons/}*.json %{buildroot}%{_datadir}/%{name}
+rm %{buildroot}%{_datadir}/%{name}/themes/{,icons/}test*.json
+
 cd bumblebee_status
 cp -r . %{buildroot}%{_datadir}/%{name}/bumblebee/
+cd ..
+
+cp bin/*.sh %{buildroot}%{_datadir}/%{name}/bin/
+cp bin/get-kbd-layout %{buildroot}%{_bindir}
+
+# 4. Create symlinks
+ln -s %{_datadir}/%{name}/%{name} %{buildroot}%{_bindir}/%{name}
+ln -s %{_bindir}/get-kbd-layout %{buildroot}%{_datadir}/%{name}/bin/get-kbd-layout
 
 %check
 export LANG=en_US.UTF-8
@@ -696,7 +738,10 @@ export PYTHONPATH=%{buildroot}%{_datadir}/%{name}/:%{buildroot}%{_datadir}/%{nam
 %dir %{_datadir}/%{name}/themes
 %dir %{_datadir}/%{name}/themes/icons
 %{_bindir}/%{name}
+%{_bindir}/get-kbd-layout
 %{_datadir}/%{name}/%{name}
+%dir %{_datadir}/%{name}/bin/
+%{_datadir}/%{name}/bin/get-kbd-layout
 %dir %{_datadir}/%{name}/bumblebee/
 %{_datadir}/%{name}/bumblebee/*.py
 %{_datadir}/%{name}/bumblebee/core/
@@ -730,7 +775,6 @@ export PYTHONPATH=%{buildroot}%{_datadir}/%{name}/:%{buildroot}%{_datadir}/%{nam
 %{_datadir}/%{name}/bumblebee/modules/contrib/currency.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/datetimetz.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/datetz.py
-%{_datadir}/%{name}/bumblebee/modules/contrib/emerge_status.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/getcrypto.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/github.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/hostname.py
@@ -739,13 +783,11 @@ export PYTHONPATH=%{buildroot}%{_datadir}/%{name}/:%{buildroot}%{_datadir}/%{nam
 %{_datadir}/%{name}/bumblebee/modules/contrib/messagereceiver.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/network.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/network_traffic.py
-%{_datadir}/%{name}/bumblebee/modules/contrib/optman.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/pomodoro.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/publicip.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/rofication.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/shell.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/shortcut.py
-%{_datadir}/%{name}/bumblebee/modules/contrib/solaar.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/spaceapi.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/stock.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/system.py
@@ -765,13 +807,9 @@ export PYTHONPATH=%{buildroot}%{_datadir}/%{name}/:%{buildroot}%{_datadir}/%{nam
 %{_datadir}/%{name}/themes/rastafari-powerline.json
 %{_datadir}/%{name}/themes/rose-pine.json
 %{_datadir}/%{name}/themes/solarized.json
-%{_datadir}/%{name}/themes/test.json
-%{_datadir}/%{name}/themes/test_cycle.json
-%{_datadir}/%{name}/themes/test_invalid.json
 %{_datadir}/%{name}/themes/icons/ascii.json
 %{_datadir}/%{name}/themes/icons/ionicons.json
 %{_datadir}/%{name}/themes/icons/paxy97.json
-%{_datadir}/%{name}/themes/icons/test.json
 
 %files theme-powerline
 %{_datadir}/%{name}/themes/icons/awesome-fonts.json
@@ -858,6 +896,9 @@ export PYTHONPATH=%{buildroot}%{_datadir}/%{name}/:%{buildroot}%{_datadir}/%{nam
 %files module-nvidia-prime
 %{_datadir}/%{name}/bumblebee/modules/contrib/prime.py
 
+%files module-nvidia-optimus-manager
+%{_datadir}/%{name}/bumblebee/modules/contrib/optman.py
+
 %files module-notmuch
 %{_datadir}/%{name}/bumblebee/modules/contrib/notmuch_count.py
 
@@ -892,6 +933,9 @@ export PYTHONPATH=%{buildroot}%{_datadir}/%{name}/:%{buildroot}%{_datadir}/%{nam
 %files module-smartstatus
 %{_datadir}/%{name}/bumblebee/modules/contrib/smartstatus.py
 
+%files module-solaar
+%{_datadir}/%{name}/bumblebee/modules/contrib/solaar.py
+
 %files module-speedtest
 %{_datadir}/%{name}/bumblebee/modules/core/speedtest.py
 
@@ -920,6 +964,8 @@ export PYTHONPATH=%{buildroot}%{_datadir}/%{name}/:%{buildroot}%{_datadir}/%{nam
 %{_datadir}/%{name}/bumblebee/modules/contrib/watson.py
 
 %files module-xrandr
+%{_datadir}/%{name}/bin/load-i3-bars.sh
+%{_datadir}/%{name}/bin/toggle-display.sh
 %{_datadir}/%{name}/bumblebee/modules/core/xrandr.py
 %{_datadir}/%{name}/bumblebee/modules/contrib/rotation.py
 
