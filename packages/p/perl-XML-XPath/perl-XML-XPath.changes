@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat May 14 03:08:51 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.47
+   see /usr/share/doc/packages/perl-XML-XPath/Changes
+
+  1.47  2022-05-13 MANWAR
+        - Another bunch of patches, thanks @shawnm.
+          a) Get the encoding used for command line arguments from
+             the environment.
+          b) Don't assume standard input and output are UTF-8; also
+             get their encoding from the environment.
+
+  1.46  2022-05-12 MANWAR
+        - Added missing unit test (t/52matches.t)
+        - Added missing unit test (t/cleanup.t)
+        - Added unit test for MANIFEST (t/manifest.t)
+
+  1.45  2022-05-12 MANWAR
+        - Added XPath function matches(), thanks @shawnw.
+
+-------------------------------------------------------------------
 Thu Nov  8 07:08:40 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.44
