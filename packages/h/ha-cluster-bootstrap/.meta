@@ -1,7 +1,0 @@
-<package name="ha-cluster-bootstrap" project="openSUSE:Factory">
-  <title>SLE HA bootstrap</title>
-  <description>Tool to bootstrap a SLE HA cluster in a hurry.
-
-Authors: Tim Serong &amp;lt;tserong@suse.com&amp;gt;</description>
-  <devel project="network:ha-clustering:Factory" package="ha-cluster-bootstrap"/>
-</package>
