@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 27 10:19:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- fix URL 
+- use %%license tag
+
+-------------------------------------------------------------------
+Thu Sep  9 16:49:31 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2021.09.09 (boo#1178224)
+  - This should fix generating changelogs for trees with multiple
+    images.
+
+-------------------------------------------------------------------
 Mon Dec 10 16:33:02 CET 2018 - ro@suse.de
 
 - add pattern-category also to susedata, not just susedata_i18n 

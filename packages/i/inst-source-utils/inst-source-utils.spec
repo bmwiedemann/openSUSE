@@ -1,7 +1,7 @@
 #
 # spec file for package inst-source-utils
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,9 +20,9 @@ Name:           inst-source-utils
 Summary:        Utilities for creating customized installation sources
 License:        GPL-2.0-or-later
 Group:          System/YaST
-Version:        2018.12.10
+Version:        2021.09.09
 Release:        0
-Url:            http://en.opensuse.org/Inst-source-utils
+URL:            https://en.opensuse.org/Inst-source-utils
 BuildArch:      noarch
 Requires:       gpg2
 Obsoletes:      autoyast2-utils <= 2.14.10
@@ -31,16 +31,13 @@ Recommends:     create-repo-utils
 Requires:       perl-XML-Parser
 Source:         %name-%version.tar.xz
 Source1:        split.pl
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Utilities supporting autoinstallation and creation of customized
-installation  sources.
+installation sources.
 
-Have a look at http://en.opensuse.org/Inst-source-utils for a detailed
+Have a look at https://en.opensuse.org/Inst-source-utils for a detailed
 description of each script.
-
-
 
 %prep
 %setup -q
@@ -53,7 +50,7 @@ install -d -m 755 %{buildroot}/%{_prefix}
 cp -a usr %{buildroot}/
 
 %files
-%doc COPYING
+%license COPYING
 %defattr(755,root,root,755)
 %_bindir/*
 %defattr(644,root,root,755)

@@ -478,4 +478,12 @@ this is fixing crashes during product build
 - add pattern-category also to susedata, not just susedata_i18n</comment>
     <requestid>656866</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>97c736e2896b639210d132c20190f621</srcmd5>
+    <version>2021.09.09</version>
+    <time>1653243965</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978210</requestid>
+  </revision>
 </revisionlist>
