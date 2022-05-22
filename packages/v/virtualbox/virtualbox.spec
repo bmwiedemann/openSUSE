@@ -202,7 +202,7 @@ Source2:        VirtualBox.appdata.xml
 ### Requirements for virtualbox main package ###
 %if %{main_package}
 BuildRequires:  LibVNCServer-devel
-BuildRequires:  SDL-devel
+BuildRequires:  pkgconfig(sdl)
 BuildRequires:  acpica
 BuildRequires:  alsa-devel
 BuildRequires:  bin86

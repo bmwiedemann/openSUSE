@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 17 07:14:47 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace SDL-devel BuildRequires with pkgconfig(sdl): allow to use
+  sdl12_compat as an alternative.
+
+-------------------------------------------------------------------
 Wed May 11 10:33:15 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Filter out rpmlint error that is valid for qemu, but will
