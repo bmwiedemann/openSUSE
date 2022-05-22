@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 13 14:41:40 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- URL -> https.
+- Run spec-cleaner: mainly: package LICENSE as license, not doc.
+
+-------------------------------------------------------------------
 Wed Nov  8 19:43:45 UTC 2017 - aavindraa@gmail.com
 
 - update to version 1.19

@@ -1,7 +1,7 @@
 #
 # spec file for package enca
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,10 +20,10 @@ Name:           enca
 Version:        1.19
 Release:        0
 Summary:        Detects encoding of text files
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Other
-Url:            http://cihar.com/software/enca/
-Source:         http://dl.cihar.com/%{name}/%{name}-%{version}.tar.xz
+URL:            https://cihar.com/software/enca/
+Source:         https://dl.cihar.com/%{name}/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  pkgconfig
 Requires:       sed
@@ -75,7 +75,7 @@ library.
 
 %build
 %configure --disable-static --without-librecode
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -86,12 +86,13 @@ rm %{buildroot}/%{_libdir}/libenca.la
 %postun -n libenca0 -p /sbin/ldconfig
 
 %files
-%doc AUTHORS COPYING ChangeLog* FAQ README THANKS TODO
+%license COPYING
+%doc AUTHORS ChangeLog* FAQ README THANKS TODO
 %{_bindir}/enca
 %{_bindir}/enconv
 %{_libexecdir}/enca
-%{_mandir}/man1/enca.1%{ext_man}
-%{_mandir}/man1/enconv.1%{ext_man}
+%{_mandir}/man1/enca.1%{?ext_man}
+%{_mandir}/man1/enconv.1%{?ext_man}
 
 %files -n libenca0
 %{_libdir}/libenca.so.0*
