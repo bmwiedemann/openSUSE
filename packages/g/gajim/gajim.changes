@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat May 21 15:49:23 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.4.1:
+  * Add "Join Support Chat" help item.
+  * ConversationView: Add date for timestamps older than current
+    date.
+  * SearchView: Add margins and border-radius to ResultRow.
+  * ConversationView: Move timestamp widget to the left.
+  * Bug fixes:
+    See https://dev.gajim.org/gajim/gajim/-/blob/gajim-1.4.1/ChangeLog#L13
+
+-------------------------------------------------------------------
 Sat May 14 21:39:58 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.4.0:
