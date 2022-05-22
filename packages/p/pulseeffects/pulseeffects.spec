@@ -17,13 +17,12 @@
 
 
 Name:           pulseeffects
-Version:        4.8.5
+Version:        4.8.7
 Release:        0
 Summary:        Audio effects for Pulseaudio applications
 License:        GPL-3.0-or-later
 URL:            https://github.com/wwmm/pulseeffects
 Source0:        https://github.com/wwmm/pulseeffects/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         01-fix-boost-include.patch
 BuildRequires:  appstream-glib
 BuildRequires:  gcc-c++
 BuildRequires:  itstool
@@ -63,8 +62,7 @@ effects for Pulseaudio applications.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p0
+%setup -q -n easyeffects-%{version}
 # we don't need this
 sed -i '/^meson.add_install_script/d' meson.build
 
