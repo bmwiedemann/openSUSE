@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 18 19:49:34 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- CFA NM: replace problematic characters when getting the filename
+  for the given wireless configuration (bsc#1199451).
+- 4.5.2
+
+-------------------------------------------------------------------
 Wed May  4 13:23:14 UTC 2022 - Martin Vidner <mvidner@suse.com>
 
 - Disable loading the Ruby bindings in ag_udev_persistent, a stdio
