@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 20 09:41:16 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add lto-dump binary and link it similarly to e.g. gcov-dump.
+
+-------------------------------------------------------------------
 Wed Apr  6 07:37:13 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Switch gcc to default 12.

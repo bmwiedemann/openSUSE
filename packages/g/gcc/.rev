@@ -611,4 +611,12 @@ from GCC 6).
 </comment>
     <requestid>967780</requestid>
   </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>137cc6d3219e210dcccd4dd2b53b81fd</srcmd5>
+    <version>12</version>
+    <time>1653243952</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lto-dump binary and link it similarly to e.g. gcov-dump.</comment>
+    <requestid>978266</requestid>
+  </revision>
 </revisionlist>

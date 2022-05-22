@@ -134,6 +134,7 @@ The system GNU Compiler documentation.
 
 
 
+
 # install / update the entries
 %post -n gcc-info
 %install_info --info-dir=%{_infodir} --name=cpp --description='The GNU C preprocessor.' %{_infodir}/cpp.info.gz
@@ -411,7 +412,7 @@ mkdir -p $RPM_BUILD_ROOT%{_prefix}/share/doc/packages/gcc-objc/
 mkdir -p $RPM_BUILD_ROOT%{_prefix}/share/doc/packages/gcc-obj-c++/
 # Link all the binaries
 for program in \
-        gcc gcov gcov-dump gcov-tool \
+        gcc gcov gcov-dump gcov-tool lto-dump \
         g++ \
         cpp \
         gfortran \
@@ -433,7 +434,7 @@ ln -sf %{_sysconfdir}/alternatives/go %{buildroot}%{_bindir}/go
 ln -sf %{_sysconfdir}/alternatives/gofmt %{buildroot}%{_bindir}/gofmt
 # Link section 1 manpages
 for man1 in \
-        gcc gcov gcov-dump gcov-tool \
+        gcc gcov gcov-dump gcov-tool lto-dump \
         g++ \
         cpp \
         gfortran \
@@ -488,6 +489,7 @@ fi
 %{_prefix}/bin/gcov
 %{_prefix}/bin/gcov-dump
 %{_prefix}/bin/gcov-tool
+%{_prefix}/bin/lto-dump
 %{_prefix}/bin/gcc-ar
 %{_prefix}/bin/gcc-nm
 %{_prefix}/bin/gcc-ranlib
@@ -498,6 +500,7 @@ fi
 %doc %{_mandir}/man1/gcov.1.gz
 %doc %{_mandir}/man1/gcov-dump.1.gz
 %doc %{_mandir}/man1/gcov-tool.1.gz
+%doc %{_mandir}/man1/lto-dump.1.gz
 
 %files -n cpp
 %defattr(-,root,root)
