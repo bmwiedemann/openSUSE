@@ -4850,4 +4850,15 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   via hardware supplements on AMD GPUs</comment>
     <requestid>977269</requestid>
   </revision>
+  <revision rev="439" vrev="311">
+    <srcmd5>e00c1b793a559edb5b17fdda7b4352bb</srcmd5>
+    <version>unknown</version>
+    <time>1653243962</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 22.1.0
+  * lot of great featurres, including (since rc5) additional 
+    kopper backports for zink, and support for Intel's Alchemist
+    DG2 platform.</comment>
+    <requestid>978155</requestid>
+  </revision>
 </revisionlist>

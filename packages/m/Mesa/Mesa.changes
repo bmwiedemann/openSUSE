@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 19 19:00:09 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 22.1.0
+  * lot of great featurres, including (since rc5) additional 
+    kopper backports for zink, and support for Intel's Alchemist
+    DG2 platform.
+
+-------------------------------------------------------------------
 Sat May 14 20:51:44 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - autoselect libvdpau_r300/libvdpau_r600/libvdpau_radeonsi packages
