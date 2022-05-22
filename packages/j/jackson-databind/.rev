@@ -57,4 +57,12 @@
     <comment>Version update</comment>
     <requestid>926598</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ac49591fe8a296a549aed00fd928510f</srcmd5>
+    <version>2.13.0</version>
+    <time>1653244083</time>
+    <user>dimstar_suse</user>
+    <comment>sync with sle15</comment>
+    <requestid>978554</requestid>
+  </revision>
 </revisionlist>

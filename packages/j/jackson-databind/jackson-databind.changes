@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Wed Oct 20 08:12:34 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
-- Update to 2.13.0
+- Update to 2.13.0 (CVE-2020-36518, bsc#1197132)
   * 2.13.0 (30-Sep-2021)
     + #1850: '@JsonValue' with integer for enum does not deserialize
       correctly
