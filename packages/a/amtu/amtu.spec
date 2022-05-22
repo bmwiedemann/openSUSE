@@ -1,7 +1,7 @@
 #
 # spec file for package amtu
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           amtu
-URL:            http://sourceforge.net/projects/amtueal/
+URL:            https://sourceforge.net/projects/amtueal/
 Requires:       audit >= 1.2.9
 Version:        1.0.8
 Release:        0
@@ -51,7 +51,7 @@ export CC CFLAGS
   ./configure                           \
 	--prefix=/usr			\
 	--bindir=/usr/sbin		\
-	--mandir=%{_mandir}		
+	--mandir=%{_mandir}
   make %{?_smp_mflags}
 
 %install
