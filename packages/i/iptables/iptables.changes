@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May 13 15:39:33 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8.8
+  * Add iptables-translate support for: sctp match's
+    --chunk-types option, connlimit match, multiport match's
+    --ports option, and the tcpmss match.
+  * Reject setuid executables in libxtables for safety reasons
+  * Extended arptables-nft with -C, -I, -R, -S cmomands and the
+    "-c N,M" counter syntax.
+  * Debug output in iptables-restore (all variants), iptables-nft
+    and ebtables-nft when specifying -v multiple times
+  * Improved performance of iptables-save and -restore
+
+-------------------------------------------------------------------
 Thu Dec 30 15:05:20 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Only use nftables backend when iptables-backend-nft is installed
