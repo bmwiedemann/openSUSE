@@ -1,7 +1,7 @@
 #
 # spec file for package libfakekey
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define lname   libfakekey0
 Name:           libfakekey
-Version:        0.1
+Version:        0.3
 Release:        0
 Summary:        Library for converting characters to X key-presses
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          System/GUI/Other
-Url:            https://yoctoproject.org/tools-resources/projects/matchbox
-Source:         http://downloads.yoctoproject.org/releases/matchbox/%{name}/%{version}/%{name}-%{version}.tar.bz2
+URL:            https://yoctoproject.org/tools-resources/projects/matchbox
+Source:         https://github.com/veyon/libfakekey/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.bz2
 # PATCH-FIX-UPSTREAM 0001-add-return.patch nmo.marques@gmail.com -- Add missing return.
 Patch0:         0001-add-return.patch
-BuildRequires:  pkg-config
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(xtst)
 
 %description
@@ -56,24 +59,26 @@ developing applications that use libfakekey.
 %patch0 -p1
 
 %build
+autoreconf -fiv
 %configure --disable-static
-make %{?_smp_mflags} AM_LDFLAGS=-lX11
+%make_build AM_LDFLAGS=-lX11
+
+%check
+%make_build check
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{lname} -p /sbin/ldconfig
-
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %{_libdir}/libfakekey.so.*
 
 %files devel
-%defattr(-,root,root)
+%license COPYING
 %{_includedir}/fakekey/
 %{_libdir}/libfakekey.so
 %{_libdir}/pkgconfig/libfakekey.pc

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 19 20:40:26 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.3:
+  * do not send shift when not needed
+  * build system fixes and developer visible changes
+
+-------------------------------------------------------------------
 Tue May  5 13:47:23 UTC 2015 - sor.alexei@meowr.ru
 
 - Spec cleanup.
