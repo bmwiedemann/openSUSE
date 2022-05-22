@@ -70,6 +70,7 @@ Requires:       coreutils
 Requires:       glibc
 Suggests:       busybox-hostname
 Requires:       NetworkManager
+Requires:       NetworkManager-wifi
 Requires:       iproute2
 Requires:       libnss_usrfiles2
 Requires:       openSUSE-build-key
@@ -583,6 +584,7 @@ Requires:       cryptsetup
 Requires:       iscsiuio
 #extra items for DVD, not every install
 Requires:       ModemManager
+Requires:       NetworkManager-wwan
 # Firmware packages with proper "Supplements:" (see bsc#1184767)
 Requires:       kernel-firmware-all
 Requires:       lvm2

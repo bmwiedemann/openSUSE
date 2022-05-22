@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 19 12:47:00 UTC 2022 - Syds Bearda <opensuse@syds.eu>
+
+- NetworkManager 1.38.0 is split into different packages and doesn't 
+  require the wifi and wwan module, therefore added here as required.
+  added NetworkManager-wifi to common and NetworkManager-wwan to DVD
+
+-------------------------------------------------------------------
 Wed Apr 13 08:39:06 UTC 2022 - Richard Brown <rbrown@suse.com>
 
 - Revert "Remove requirement of pattern-bootloader". Containers

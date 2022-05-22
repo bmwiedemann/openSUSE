@@ -451,4 +451,15 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
   the creation of containers that use pattern-microos-base.</comment>
     <requestid>969735</requestid>
   </revision>
+  <revision rev="47" vrev="47">
+    <srcmd5>79c2ff66335222cfb818c86de924c78d</srcmd5>
+    <version>5.0</version>
+    <time>1653243957</time>
+    <user>dimstar_suse</user>
+    <comment>- NetworkManager 1.38.0 is split into different packages and doesn't 
+  require the wifi and wwan module, therefore added here as required.
+  added NetworkManager-wifi to common and NetworkManager-wwan to DVD
+</comment>
+    <requestid>978147</requestid>
+  </revision>
 </revisionlist>
