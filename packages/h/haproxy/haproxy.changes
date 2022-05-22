@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri May 13 14:54:15 UTC 2022 - mrueckert@suse.de
+
+- Update to version 2.5.7+git0.2ef551d02:
+  * [RELEASE] Released version 2.5.7
+  * CLEANUP: mux-h1: Fix comments and error messages for global options
+  * MINOR: mux-h1: Add global option accpet payload for any HTTP/1.0 requests
+  * BUG/MEDIUM: wdt: don't trigger the watchdog when p is unitialized
+  * CLEANUP: applet: make appctx_new() initialize the whole appctx
+  * BUG/MINOR: conn_stream: do not confirm a connection from the frontend path
+  * DOC/MINOR: fix typos in the lua-api document
+  * BUG/MEDIUM: lua: fix argument handling in data removal functions
+  * BUG/MINOR: server: Make SRV_STATE_LINE_MAXLEN value from 512 to 2kB (2000 bytes).
+  * DOC: install: update gcc version requirements
+  * BUG/MEDIUM: ssl: fix the gcc-12 broken fix :-(
+  * BUILD: listener: shut report of possible null-deref in listener_accept()
+  * BUILD: debug: work around gcc-12 excessive -Warray-bounds warnings
+  * BUILD: ssl: work around bogus warning in gcc 12's -Wformat-truncation
+  * BUG/MINOR: ssl: Fix typos in crl-file related CLI commands
+  * CI: dynamically determine actual version of h2spec
+  * DOC: fix typo "ant" for "and" in INSTALL
+  * BUG/MINOR: ssl/cli: fix "show ssl cert" not to mix cli+ssl contexts
+  * BUG/MINOR: ssl/cli: fix "show ssl crl-file" not to mix cli+ssl contexts
+  * BUG/MINOR: ssl/cli: fix "show ssl ca-file <name>" not to mix cli+ssl contexts
+  * BUG/MINOR: ssl/cli: fix "show ssl ca-file/crl-file" not to mix cli+ssl contexts
+  * BUG/MEDIUM: ssl/cli: fix yielding in show_cafile_detail
+  * BUG/MINOR: map/cli: make sure patterns don't vanish under "show map"'s init
+  * BUG/MINOR: map/cli: protect the backref list during "show map" errors
+  * BUG/MINOR: proxy/cli: don't enumerate internal proxies on "show backend"
+  * BUG/MEDIUM: cli: make "show cli sockets" really yield
+  * BUG/MEDIUM: resolvers: make "show resolvers" properly yield
+  * BUG/MINOR: startup: usage() when no -cc arguments
+  * BUG/MINOR: tcp/http: release the expr of set-{src,dst}[-port]
+  * DOC: config: Update doc for PR/PH session states to warn about rewrite failures
+  * MINOR: mux-h2: report a trace event when failing to create a new stream
+  * BUG/MINOR: mux-h2: mark the stream as open before processing it not after
+  * BUG/MAJOR: dns: multi-thread concurrency issue on UDP socket
+  * BUG/MEDIUM: mux-h1: Be able to handle trailers when C-L header was specified
+  * BUG/MEDIUM: mux-fcgi: Be sure to never set EOM flag on an empty HTX message
+  * SCRIPTS: announce-release: add URL of dev packages
+  * CI: github actions: update LibreSSL to 3.5.2
+  * BUG/MEDIUM: httpclient: Fix loop consuming HTX blocks from the response channel
+  * MINOR: ssl: add a new global option "tune.ssl.hard-maxrecord"
+  * BUG/MINOR: pools: make sure to also destroy shared pools in pool_destroy_all()
+  * BUG/MINOR: resolvers: Fix memory leak in resolvers_deinit()
+  * BUG/MEDIUM: http-ana: Fix memleak in redirect rules with ignore-empty option
+  * MINOR: connection: Add way to disable active connection closing during soft-stop
+  * BUILD: compiler: properly distinguish weak and global symbols
+
+-------------------------------------------------------------------
 Tue Apr 26 21:59:04 UTC 2022 - mrueckert@suse.de
 
 - Update to version 2.5.6+git0.ba44b4312:

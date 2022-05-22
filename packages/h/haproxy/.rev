@@ -1170,4 +1170,12 @@
     <comment>- Update to version 2.5.6+git0.ba44b4312:</comment>
     <requestid>972982</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>e6701cded16263c73bcb852b4dfffc96</srcmd5>
+    <version>2.5.7+git0.2ef551d02</version>
+    <time>1653243986</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>978321</requestid>
+  </revision>
 </revisionlist>
