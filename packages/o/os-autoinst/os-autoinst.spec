@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1653037748.75eb1b1
+Version:        4.6.1653078548.548335f
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -167,8 +167,6 @@ Convenience package providing os-autoinst + s390 worker jumphost dependencies.
 
 %prep
 %setup -q
-# Replace version number from git to what's reported by the package
-sed  -i 's/ my $thisversion = qx{git.*rev-parse HEAD}.*;/ my $thisversion = "%{version}";/' isotovideo
 
 # don't require qemu within OBS
 # and exclude known flaky tests in OBS check
@@ -185,7 +183,10 @@ rm xt/30-make.t
 
 %build
 %define __builder ninja
-%cmake -DOS_AUTOINST_DOC_DIR:STRING="%{_docdir}/%{name}" -DSYSTEMD_SERVICE_DIR:STRING="%{_unitdir}"
+%cmake \
+    -DOS_AUTOINST_DOC_DIR:STRING="%{_docdir}/%{name}" \
+    -DOS_AUTOINST_VERSION:STRING="%{version}" \
+    -DSYSTEMD_SERVICE_DIR:STRING="%{_unitdir}"
 %cmake_build
 
 %install

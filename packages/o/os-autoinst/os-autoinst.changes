@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May 22 18:00:21 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1653078548.548335f:
+  * Enable the use of Perl "signatures" in testapi
+  * Fix finding `git` in build script
+  * Avoid Git error in installed version of os-autoinst
+  * Add basic unit tests for backend svirt
+  * Small fixes for svirt backend and removal of HDDFORMAT check
+  * Remove 'HDDFORMAT' from backendvars
+  * Only load snapshots if there is actually a next module
+
+-------------------------------------------------------------------
 Fri May 20 10:09:46 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1653037748.75eb1b1:
