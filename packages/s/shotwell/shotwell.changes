@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 20 18:11:12 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.30.16:
+  + Fix issue with dark mode wallpapers.
+  + Fix compatibility with OpenCV 4.
+  + Fix import of videos from Sony A7C.
+  + Fix mixed up label in Adjust Date/Time.
+  + Fix _LIB dir (missing plugins).
+  + Always enable face tagging functionality.
+
+-------------------------------------------------------------------
 Fri Apr  8 17:14:00 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.30.15:
