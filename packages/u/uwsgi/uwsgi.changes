@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 12 07:28:54 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add uwsgi-ld-noexecstack.patch in order to fix gh#unbit/uwsgi#2436.
+
+-------------------------------------------------------------------
 Sun Dec  5 14:20:26 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - update 2.0.20:

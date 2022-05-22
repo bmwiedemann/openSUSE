@@ -1,7 +1,7 @@
 #
 # spec file for package uwsgi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,6 +43,8 @@ Patch2:         uwsgi-1.9.13-objc_gc-no-fobjc-gc.patch
 Patch3:         uwsgi-1.9.11-systemd_logger-old_systemd.patch
 # PATCH-FIX-OPENSUSE uwsgi-2.0.18-postgresql-config.patch - Use pkg-config instead of pg_config
 Patch4:         uwsgi-2.0.18-postgresql-config.patch
+# PATCH-FIX-UPSTREAM uwsgi-ld-noexecstack.patch - Do not create executable stack
+Patch5:         uwsgi-ld-noexecstack.patch
 BuildRequires:  apache-rpm-macros
 %if 0%{suse_version} < 1500
 BuildRequires:  apache2-devel
@@ -397,6 +399,7 @@ This package contains support for PHP version 7.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 # Generate a config that builds all plugins except for examples and stuff we
 # can't satisfy the requirements for or are just broken
 excluded_plugins=""
