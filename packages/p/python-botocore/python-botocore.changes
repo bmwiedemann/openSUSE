@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri May 20 09:40:11 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.26.4 (bsc#1199716)
+  * api-change:``gamesparks``: This release adds an optional DeploymentResult field in the responses
+    of GetStageDeploymentIntegrationTests and ListStageDeploymentIntegrationTests APIs.
+  * enhancement:StreamingBody: Allow StreamingBody to be used as a context manager
+  * api-change:``lookoutmetrics``: In this release we added SnsFormat to SNSConfiguration to support
+    human readable alert.
+- from version 1.26.3
+  * api-change:``greengrassv2``: This release adds the new DeleteDeployment API operation that you
+    can use to delete deployment resources. This release also adds support for discontinued
+    AWS-provided components, so AWS can communicate when a component has any issues that you should
+    consider before you deploy it.
+  * api-change:``quicksight``: API UpdatePublicSharingSettings enables IAM admins to enable/disable
+    account level setting for public access of dashboards. When enabled, owners/co-owners for
+    dashboards can enable public access on their dashboards. These dashboards can only be accessed
+    through share link or embedding.
+  * api-change:``appmesh``: This release updates the existing Create and Update APIs for meshes and
+    virtual nodes by adding a new IP preference field. This new IP preference field can be used to
+    control the IP versions being used with the mesh and allows for IPv6 support within App Mesh.
+  * api-change:``batch``: Documentation updates for AWS Batch.
+  * api-change:``iotevents-data``: Introducing new API for deleting detectors: BatchDeleteDetector.
+  * api-change:``transfer``: AWS Transfer Family now supports SetStat server configuration option,
+    which provides the ability to ignore SetStat command issued by file transfer clients, enabling
+    customers to upload files without any errors.
+- from version 1.26.2
+  * api-change:``kms``: Add HMAC best practice tip, annual rotation of AWS managed keys.
+  * api-change:``glue``: This release adds a new optional parameter called codeGenNodeConfiguration
+    to CRUD job APIs that allows users to manage visual jobs via APIs. The updated CreateJob and
+    UpdateJob will create jobs that can be viewed in Glue Studio as a visual graph. GetJob can be used
+    to get codeGenNodeConfiguration.
+
+-------------------------------------------------------------------
 Tue May 17 09:09:38 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.26.1
