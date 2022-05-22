@@ -17,7 +17,7 @@
 
 
 Name:           glusterfs
-Version:        9.3
+Version:        10.2
 Release:        0
 Summary:        Aggregating distributed file system
 License:        GPL-2.0-only OR LGPL-3.0-or-later
@@ -26,7 +26,7 @@ URL:            https://www.gluster.org/
 
 #Git-Clone:	https://github.com/gluster/glusterfs
 #Git-Clone:	https://github.com/fvzwieten/lsgvt
-Source:         https://download.gluster.org/pub/gluster/glusterfs/9/%version/glusterfs-%version.tar.gz
+Source:         https://download.gluster.org/pub/gluster/glusterfs/10/%version/glusterfs-%version.tar.gz
 BuildRequires:  acl-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -154,6 +154,7 @@ links.
 %define _lto_cflags %nil
 ./autogen.sh
 %configure \
+	--without-tcmalloc \
 %if !(0%{?suse_version} >= 1550)
 	--disable-linux-io_uring \
 %else

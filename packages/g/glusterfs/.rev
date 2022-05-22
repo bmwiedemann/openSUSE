@@ -265,4 +265,12 @@
     <comment></comment>
     <requestid>947447</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>902f270ac6519e90e1fb19f3a6137631</srcmd5>
+    <version>10.2</version>
+    <time>1653243980</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 10.2</comment>
+    <requestid>978234</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 20 08:37:19 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10.2
+  * Some 165 bugfixes with none particularly sticking out
+
+-------------------------------------------------------------------
 Wed Jan 19 00:00:00 CET 2022 - dsterba@suse.cz
 
 - add python-rpm-macros as dependency, fix build on on Leap 15.x
