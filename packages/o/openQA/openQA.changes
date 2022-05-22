@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 22 17:42:48 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1653068134.449d730:
+  * Fix missing import of 'log_info'
+  * Reduce log-level of non-critical issue
+  * Add configuration for expiring minion jobs
+  * Simplify setup by removing path rewrite
+
+-------------------------------------------------------------------
 Fri May 20 09:42:42 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1652976468.5c2628c:
