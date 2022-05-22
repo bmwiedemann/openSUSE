@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat May 21 18:28:41 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 9.2.4:
+  * Release 9.2.4 (#12788)
+  * [v9] Upgrade MySQL driver to v1.5.0 and set missing mysql client cap (#12734)
+  * [v9] Add hostlogin to proxy config for windows desktop  (#12781)
+  * 05/19 Upcoming Releases Update
+  * Backport #12119 to branch/v9 (#12645)
+  * Backport #12236 to branch/v9 (#12648)
+  * Add Video Banner for Installing Teleport page (#12746)
+  * Ensure h2 has precedence over http/1.1 (#12740) (#12749)
+  * Update Teleport Cloud FAQ (#12663)
+  * Ignore access denied errors when creating/getting a session tracker as db, app, or windows desktop service. (#12728)
+  * Backports redirects from #12528, adds indexing page (#12655)
+  * [v9] Listener hygiene (#12689)
+  * `tbot configure` command for assisting Machine ID configuration (#12517) (#12576)
+  * Updates terraform docs for provider (#12314) (#12595)
+  * Optionally skip unshallowing step (#10978) (#12669)
+  * ssh: Ignore PuTTY-specific channel requests (#12662)
+  * Replace title-less Details boxes with ScopedBlocks (#12608)
+  * [v9] Proxy restart fixes (#12488)
+  * Restore "Adds optional deployment key for CI (#10506) (#12590)" (#12624)
+  * Reduce latency of GetNodes (#12637)
+  * Implement global tsh config file: `/etc/tsh.yaml` (#12598) (#12626)
+  * docs version update to 9.2.3 (#12631)
+  * [v9] Link to Interactive Teleport Labs (#12620)
+  * [v9] Client timeout fixes (#12632)
+
+-------------------------------------------------------------------
 Fri May 13 14:54:38 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 9.2.3:
