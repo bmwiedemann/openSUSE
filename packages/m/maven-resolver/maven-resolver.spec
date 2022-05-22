@@ -191,6 +191,7 @@ done
 %{mvn_package} :maven-resolver
 %{mvn_package} :maven-resolver-{*}  @1
 %{mvn_alias} 'org.apache.maven.resolver:maven-resolver{*}' 'org.eclipse.aether:aether@1'
+%{mvn_alias} 'org.apache.maven.resolver:maven-resolver-transport-wagon' 'org.eclipse.aether:aether-connector-wagon'
 %{mvn_file} ':maven-resolver{*}' %{name}/maven-resolver@1 aether/aether@1
 
 # Try to avoid sucking in dependencies on packages that are not built at this moment

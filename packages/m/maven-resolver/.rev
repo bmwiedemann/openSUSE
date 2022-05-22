@@ -88,4 +88,12 @@
     <comment>Standalone JavaEE inconditionally</comment>
     <requestid>965942</requestid>
   </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>d882a797f85aeca6fa85e3b6ba085f22</srcmd5>
+    <version>1.7.3</version>
+    <time>1653244059</time>
+    <user>dimstar_suse</user>
+    <comment>Add an artifact alias</comment>
+    <requestid>978458</requestid>
+  </revision>
 </revisionlist>
