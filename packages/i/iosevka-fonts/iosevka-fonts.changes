@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May 14 21:18:48 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v15.3.1
+  * Changes of version 15.3.1
+    = Fix display of Kleisli arrows under Kitty (#1350).
+	= Ascender height and Cap height is decoupled. Now they could
+      be configured separately (#1334).
+
+-------------------------------------------------------------------
 Sun May  8 05:50:45 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v15.3.0
