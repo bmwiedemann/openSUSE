@@ -1,7 +1,7 @@
 #
 # spec file for package python-dfVFS
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python-%{**} python38-%{**}}
 %define timestamp 20200920
 %define pythons python3
 Name:           python-dfVFS
@@ -51,7 +51,6 @@ BuildRequires:  %{python_module libvhdi}
 BuildRequires:  %{python_module libvmdk}
 BuildRequires:  %{python_module libvshadow}
 BuildRequires:  %{python_module libvslvm}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tsk}

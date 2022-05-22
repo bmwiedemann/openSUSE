@@ -153,4 +153,12 @@ Move from python 2 to python 3</comment>
     <comment></comment>
     <requestid>888338</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>1f8b544d5dced1269c266ada9fea2103</srcmd5>
+    <version>0~20200920</version>
+    <time>1653244043</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978282</requestid>
+  </revision>
 </revisionlist>

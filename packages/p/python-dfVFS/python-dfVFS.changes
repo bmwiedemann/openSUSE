@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 17 11:30:28 UTC 2022 - pgajdos@suse.com
+
+- python-mock is not required for build (even if the testsuite
+  would run)
+
+-------------------------------------------------------------------
 Sun Apr 25 20:52:33 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - The majority of dependencies is available for the primary python3
