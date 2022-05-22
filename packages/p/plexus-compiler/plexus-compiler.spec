@@ -79,6 +79,8 @@ cp %{SOURCE2} LICENSE.MIT
 # don't generate requires on test dependency (see #1007498)
 %pom_xpath_remove "pom:dependency[pom:artifactId[text()='plexus-compiler-test']]" plexus-compilers
 
+%pom_change_dep org.codehaus.plexus:plexus-testing :::test plexus-compilers/plexus-compiler-eclipse
+
 %pom_remove_plugin :maven-site-plugin
 
 for i in plexus-compiler-api plexus-compiler-manager plexus-compiler-test \

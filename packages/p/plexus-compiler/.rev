@@ -15,4 +15,12 @@
     <comment>2.11.1</comment>
     <requestid>961202</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6a99b07aad191b2b781ebad4521c7c0f</srcmd5>
+    <version>2.11.1</version>
+    <time>1653244058</time>
+    <user>dimstar_suse</user>
+    <comment>fix installability in factory</comment>
+    <requestid>978457</requestid>
+  </revision>
 </revisionlist>
