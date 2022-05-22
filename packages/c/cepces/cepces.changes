@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 10 19:19:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add b755b56d25f3e54f8f15d9985fd0597b21c1051d.patch
+
+-------------------------------------------------------------------
 Wed Oct  6 09:03:40 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Only install the selinux policy if necessary

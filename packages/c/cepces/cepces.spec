@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Summary:        Certificate Enrollment through CEP/CES
 License:        GPL-3.0-or-later
 URL:            https://github.com/ufven/%{app_name}
 Source0:        %{name}-%{version}.tar.bz2
+Patch1:         https://github.com/openSUSE/cepces/pull/11/commits/b755b56d25f3e54f8f15d9985fd0597b21c1051d.patch
 BuildArch:      noarch
 
 Requires:       %{app_name}-certmonger == %{version}
@@ -82,6 +83,7 @@ SELinux support for %{app_name}
 
 %prep
 %setup -q -n %{app_name}-%{version}
+%autopatch -p1
 
 %build
 %py3_build

@@ -1,0 +1,23 @@
+From b755b56d25f3e54f8f15d9985fd0597b21c1051d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dirk=20M=C3=BCller?= <dirk@dmllr.de>
+Date: Tue, 10 May 2022 18:18:32 +0200
+Subject: [PATCH] Use Python 3.10 compatible import path
+
+This should work with any python >= 3.0
+---
+ cepces/xml/binding.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cepces/xml/binding.py b/cepces/xml/binding.py
+index 2749399..9928c1f 100644
+--- a/cepces/xml/binding.py
++++ b/cepces/xml/binding.py
+@@ -18,7 +18,7 @@
+ # pylint: disable=protected-access,too-few-public-methods,too-many-arguments
+ # pylint: disable=too-many-ancestors
+ """Module containing XML bindings."""
+-from collections import MutableSequence
++from collections.abc import MutableSequence
+ from xml.etree import ElementTree
+ import inspect
+ from abc import ABCMeta, abstractmethod
