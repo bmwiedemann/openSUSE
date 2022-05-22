@@ -24,6 +24,9 @@ License:        Zlib
 Group:          System/Monitoring
 URL:            https://github.com/lsof-org/lsof
 Source:         https://github.com/lsof-org/lsof/releases/download/%{version}/lsof_%{version}.linux.tar.bz2
+# PATCH-FIX-UPSTREAM danilo.spinella@suse.com bsc#1199709
+# https://github.com/lsof-org/lsof/pull/217
+Patch0:         remove-hostname.patch
 BuildRequires:  libselinux-devel
 BuildRequires:  xz
 
@@ -37,6 +40,7 @@ path.
 
 %prep
 %setup -q -n %{name}_%{version}.linux
+%patch0 -p1
 
 %build
 ./Configure -n linux

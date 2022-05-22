@@ -1,0 +1,20 @@
+commit 14c51131b961d9fe6a5f474f3171e4893982fc86
+Author: Danilo Spinella <danilo.spinella@suse.com>
+Date:   Fri May 20 11:13:52 2022 +0200
+Url: https://github.com/lsof-org/lsof/pull/217
+
+    Allow setting hostname for reproducible builds
+
+diff --git a/Configure b/Configure
+index 9abcc2d..ee94a93 100755
+--- a/Configure
++++ b/Configure
+@@ -1242,7 +1242,7 @@ case $LSOF_TGT in	# {
+     then
+       DU_SYSDIR=$LSOF_TMP1
+     fi	# }
+-    LSOF_HOST=`uname -n`
++    LSOF_HOST=${HOSTNAME:-`uname -n`}
+     if test "X$DU_CDIR" = "X"	# {
+     then
+       LSOF_CDIR=`expr $LSOF_HOST : '\([^\.]*\)\..*$'`

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 20 09:55:56 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix hostname in reproducible builds, bsc#1199709
+  * remove-hostname.patch
+
+-------------------------------------------------------------------
 Sat May  7 14:38:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.95.0:
