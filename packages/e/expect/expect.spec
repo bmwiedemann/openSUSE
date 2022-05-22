@@ -1,7 +1,7 @@
 #
 # spec file for package expect
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Patch2:         expect-fixes.patch
 Patch3:         expect-log.patch
 Patch4:         config-guess-sub-update.patch
 Patch5:         expect-errorfd.patch
+Patch6:         expect-5.45-format-security.patch
 BuildRequires:  autoconf
 BuildRequires:  tcl-devel
 
@@ -54,11 +55,7 @@ expect package loaded.
 
 %prep
 %setup -q -n %name%version
-%patch1
-%patch2
-%patch3
-%patch4
-%patch5
+%autopatch -p0
 
 %build
 export CFLAGS="%{optflags} -fPIC -pie"
