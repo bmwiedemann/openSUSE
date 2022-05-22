@@ -24,7 +24,9 @@ Release:        0
 Summary:        OpenPGP implementation fully compliant with RFC 4880
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause
 URL:            https://www.rnpgp.com/
-Source:         https://github.com/rnpgp/rnp/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/rnpgp/rnp/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source2:        https://github.com/rnpgp/rnp/releases/download/v%{version}/v%{version}.tar.gz.asc#/%{name}-%{version}.tar.gz.asc
+Source3:        https://www.rnpgp.org/openpgp_keys/BEDBA05C1E6EE2DFB4BA72E1EC5D520AD90A7262-A845A5BD622556E89D7763B5EB06D1696BEC4C90.asc#/%{name}.keyring
 BuildRequires:  cmake >= 3.14
 BuildRequires:  gcc-c++
 # https://github.com/rnpgp/rnp/issues/1579

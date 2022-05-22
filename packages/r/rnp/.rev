@@ -40,4 +40,13 @@
     <comment></comment>
     <requestid>954113</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ced31efc827b1ed257d8af1021324045</srcmd5>
+    <version>0.16.0</version>
+    <time>1653244078</time>
+    <user>dimstar_suse</user>
+    <comment>- add upstream signing key and verify source signature
+</comment>
+    <requestid>978503</requestid>
+  </revision>
 </revisionlist>
