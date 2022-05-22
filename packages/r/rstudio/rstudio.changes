@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 19 21:19:48 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- New upstream release v1.4.1743.
+- Add 0010-Fix-R-build.patch from upstream to fix build with newer
+  R-core-devel: it just declares the Rf_countContexts locally.
+
+-------------------------------------------------------------------
 Wed Apr 13 10:24:11 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Build with jdk 11 to fix build failure

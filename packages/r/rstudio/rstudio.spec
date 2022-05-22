@@ -97,9 +97,9 @@
 
 %global rstudio_version_major 1
 %global rstudio_version_minor 4
-%global rstudio_version_patch 1717
+%global rstudio_version_patch 1743
 # commit of the tag belonging to %%{version}
-%global rstudio_git_revision_hash df86b69ebdf62f1a9ed51af59c168572677541f1
+%global rstudio_git_revision_hash bca6ea9e38e43802db1919b6554424eded7a2f5c
 Name:           rstudio
 Version:        %{rstudio_version_major}.%{rstudio_version_minor}.%{rstudio_version_patch}
 Release:        0
@@ -151,6 +151,8 @@ Patch7:         0008-Add-support-for-RapidJSON-1.1.0-in-Leap-15.2.patch
 # Upstream fix is https://github.com/catchorg/Catch2/commit/8f277a54c0b9c1d1024dedcb2dec1d206971e745,
 # but that's quite large and is hard to apply because the files are concatenated here.
 Patch8:         0009-Fix-catch-build.patch
+# Upstream fix for compilation with newer R.
+Patch9:         https://github.com/rstudio/rstudio/commit/872e2806f74e922a25e0f9586faa6624883728ca.patch#/0010-Fix-R-build.patch
 
 BuildRequires:  Mesa-devel
 BuildRequires:  R-core-devel
@@ -305,6 +307,7 @@ on a server has a number of benefits, including:
 %patch5 -p1
 %patch6 -p1
 %patch8 -p1
+%patch9 -p1
 %endif
 
 tar -xf %{SOURCE2}
