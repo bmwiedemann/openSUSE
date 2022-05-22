@@ -27,6 +27,7 @@ License:        BSD-3-Clause
 Group:          Productivity/Networking/Diagnostic
 URL:            https://github.com/phaag/nfdump
 Source:         https://github.com/phaag/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         fix-build.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -45,10 +46,11 @@ http://www.terena.nl/tech/task-forces/tf-csirt/meeting12/nfsen-Haag.pdf
 
 %prep
 %setup -q
+%patch0 -p1
 chmod a-x AUTHORS COPYING LICENSE README.md ChangeLog
 
 %build
-autoreconf -fi
+autoreconf -fiv
 %configure \
 	--enable-nfprofile \
 	--enable-nftrack \
