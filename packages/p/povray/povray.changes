@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 20 08:00:20 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Build docs as noarch
+- Use more pkgconfig() to refer to BuildRequires
+
+-------------------------------------------------------------------
 Thu Feb 13 15:55:14 UTC 2020 - Stanislav Brabec <sbrabec@suse.com>
 
 - Fix typo in RPM group.

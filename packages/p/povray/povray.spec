@@ -1,7 +1,7 @@
 #
 # spec file for package povray
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,11 +39,11 @@ BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
-BuildRequires:  xorg-x11-libX11-devel
-BuildRequires:  xorg-x11-libXpm-devel
 BuildRequires:  pkgconfig(OpenEXR)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(sdl)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xpm)
 BuildRequires:  pkgconfig(zlib)
 Recommends:     povray-doc
 
@@ -60,6 +60,7 @@ realistic reflections, shading, perspective, and other effects.
 %package doc
 Summary:        Documentation for POV-Ray
 Group:          Documentation/HTML
+BuildArch:      noarch
 
 %description doc
 This package contains the Povray documentation.
@@ -92,12 +93,10 @@ dos2unix -k unix/scripts/*.sh
 sed -i -e 's,^DEFAULT_DIR=.*,DEFAULT_DIR=/usr,' scripts/*
 sed -i -e 's,^SYSCONFDIR=.*,SYSCONFDIR=/etc,' scripts/*
 
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} \
-     povdocdir=%{_defaultdocdir}/povray \
-     install
+%make_install povdocdir=%{_defaultdocdir}/povray
 
 # fix wrong permissions
 chmod 755 %{buildroot}%{_datadir}/povray-%{maj_version}/scenes/camera/mesh_camera/bake.sh
