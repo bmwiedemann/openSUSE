@@ -1574,6 +1574,7 @@ unsorted:
   - bumblebee-status-module-mpd 
   - bumblebee-status-module-notmuch 
   - bumblebee-status-module-nvidia 
+  - bumblebee-status-module-nvidia-optimus-manager 
   - bumblebee-status-module-nvidia-prime 
   - bumblebee-status-module-octoprint 
   - bumblebee-status-module-pihole 
@@ -1584,6 +1585,7 @@ unsorted:
   - bumblebee-status-module-rss 
   - bumblebee-status-module-sensors 
   - bumblebee-status-module-smartstatus 
+  - bumblebee-status-module-solaar 
   - bumblebee-status-module-speedtest 
   - bumblebee-status-module-spotify 
   - bumblebee-status-module-sun 
@@ -1686,15 +1688,6 @@ unsorted:
   - cadabra2-gui 
   - caddy 
   - cadsondemak-fonts 
-  - caffe 
-  - caffe-devel 
-  - caffe-examples 
-  - caffe-gnu-hpc 
-  - caffe-gnu-hpc-devel 
-  - caffe-gnu-hpc-examples 
-  - caffe_1_0-gnu-hpc 
-  - caffe_1_0-gnu-hpc-devel 
-  - caffe_1_0-gnu-hpc-examples 
   - caffeine 
   - cairo-clock 
   - cairo-clock-lang 
@@ -1793,9 +1786,6 @@ unsorted:
   - cargo-audit-advisory-db: [x86_64] 
   - cargo-c 
   - cargo-packaging 
-  - cargo1.57 
-  - cargo1.58 
-  - cargo1.59 
   - cargo1.60 
   - cargo1.61 
   - caribou 
@@ -1989,7 +1979,6 @@ unsorted:
   - cinnamon-settings-daemon-lang 
   - cinnamon-theme-adapta 
   - cinnamon-theme-matcha 
-  - cinnamon-theme-plata 
   - cint-devel 
   - citra: [x86_64] 
   - civetweb 
@@ -4290,7 +4279,7 @@ unsorted:
   - gdl-devel 
   - gdl-lang 
   - gdlmm-devel 
-  - gdm-branding-MicroOS: [i586] 
+  - gdm-branding-MicroOS 
   - gdm-branding-upstream 
   - gdm-devel 
   - gdm-systemd 
@@ -4346,7 +4335,6 @@ unsorted:
   - gedit-plugins-data 
   - gedit-plugins-lang 
   - gedit-theme-adapta 
-  - gedit-theme-plata 
   - geekodoc 
   - geeqie 
   - geeqie-lang 
@@ -5968,7 +5956,7 @@ unsorted:
   - gnome-bluetooth-devel 
   - gnome-boxes 
   - gnome-boxes-lang 
-  - gnome-branding-MicroOS: [i586] 
+  - gnome-branding-MicroOS 
   - gnome-builder 
   - gnome-builder-doc 
   - gnome-builder-lang 
@@ -6064,7 +6052,6 @@ unsorted:
   - gnome-shell-search-provider-wike 
   - gnome-shell-theme-adapta 
   - gnome-shell-theme-matcha 
-  - gnome-shell-theme-plata 
   - gnome-software-devel 
   - gnome-sound-recorder 
   - gnome-sound-recorder-lang 
@@ -6084,7 +6071,7 @@ unsorted:
   - gnome-todo-lang 
   - gnome-tour 
   - gnome-tour-lang 
-  - gnome-usage: [i586] 
+  - gnome-usage 
   - gnome-usage-lang 
   - gnome-user-docs-lang 
   - gnome-video-effects-devel 
@@ -6221,7 +6208,6 @@ unsorted:
   - golang-github-prometheus-promu 
   - golang-github-shadowsocks-v2ray-plugin 
   - golang-github-v2fly-v2ray-core 
-  - golang-github-vpenso-prometheus_slurm_exporter 
   - golang-gopkgin-check 
   - golang-org-x-sys 
   - golang-packaging 
@@ -6562,14 +6548,13 @@ unsorted:
   - gtk2-metatheme-nimbus 
   - gtk2-metatheme-numix 
   - gtk2-metatheme-paper 
-  - gtk2-metatheme-plata 
   - gtk2-metatheme-radiance 
   - gtk2-metatheme-vertex 
   - gtk2-metatheme-yaru 
   - gtk2-metatheme-yaru-mate 
   - gtk2-metatheme-yuyo 
   - gtk2-theme-oxygen 
-  - gtk3-branding-upstream 
+  - gtk3-branding-openSUSE 
   - gtk3-devel 
   - gtk3-devel-32bit: [x86_64] 
   - gtk3-devel-doc 
@@ -6595,7 +6580,6 @@ unsorted:
   - gtk3-metatheme-mint 
   - gtk3-metatheme-numix 
   - gtk3-metatheme-paper 
-  - gtk3-metatheme-plata 
   - gtk3-metatheme-radiance 
   - gtk3-metatheme-vertex 
   - gtk3-metatheme-yaru 
@@ -6609,7 +6593,6 @@ unsorted:
   - gtk4-metatheme-adapta 
   - gtk4-metatheme-arc 
   - gtk4-metatheme-matcha 
-  - gtk4-metatheme-plata 
   - gtk4-metatheme-yaru-mate 
   - gtkam 
   - gtkam-doc 
@@ -6724,7 +6707,6 @@ unsorted:
   - gzdoom 
   - gzrt 
   - h5utils 
-  - ha-cluster-bootstrap 
   - haas-proxy 
   - habootstrap-formula 
   - hackbench 
@@ -6766,11 +6748,6 @@ unsorted:
   - hawkey-man 
   - hawknl-devel 
   - hawknl-libs 
-  - hawtjni 
-  - hawtjni-javadoc 
-  - hawtjni-maven-plugin 
-  - hawtjni-maven-plugin-javadoc 
-  - hawtjni-runtime 
   - haxe 
   - hbci4java 
   - hbci4java-javadoc 
@@ -7433,7 +7410,6 @@ unsorted:
   - jack-example-tools 
   - jack-rack 
   - jack_capture 
-  - jackson 
   - jackson-annotations 
   - jackson-annotations-javadoc 
   - jackson-bom 
@@ -7449,7 +7425,6 @@ unsorted:
   - jackson-datatype-hppc 
   - jackson-datatypes-collections 
   - jackson-datatypes-collections-javadoc 
-  - jackson-javadoc 
   - jackson-jaxrs-json-provider 
   - jackson-jaxrs-providers 
   - jackson-jaxrs-providers-datatypes 
@@ -10160,9 +10135,6 @@ unsorted:
   - libcacard-devel 
   - libcaes-devel 
   - libcaes1 
-  - libcaffe-gnu-hpc 
-  - libcaffe1_0_0 
-  - libcaffe_1_0-gnu-hpc 
   - libcairo-gobject2-32bit: [x86_64] 
   - libcairo-script-interpreter2-32bit: [x86_64] 
   - libcairomm-1_0-1-32bit: [x86_64] 
@@ -14358,7 +14330,6 @@ unsorted:
   - libtomoe-gtk0 
   - libtool: [i586] 
   - libtool-32bit: [x86_64] 
-  - libtorch: [x86_64] 
   - libtorrent-devel 
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
@@ -16225,6 +16196,7 @@ unsorted:
   - menu-cache 
   - menu-cache-devel 
   - mercurial 
+  - mercurial-extension-hg-evolve 
   - mercurial-extension-hg-git 
   - mercurial-lang 
   - mercurial-tests 
@@ -16239,7 +16211,6 @@ unsorted:
   - metacity-lang 
   - metacity-theme-adapta 
   - metacity-theme-matcha 
-  - metacity-theme-plata 
   - metacity-tools 
   - metainf-services 
   - metainf-services-javadoc 
@@ -16259,7 +16230,6 @@ unsorted:
   - metatheme-mint-common 
   - metatheme-numix-common 
   - metatheme-paper-common 
-  - metatheme-plata-common 
   - metatheme-radiance-common 
   - metatheme-vertex-common 
   - metatheme-yaru-common 
@@ -17465,11 +17435,18 @@ unsorted:
   - notmuch-devel 
   - notmuch-doc 
   - notmuch-emacs 
+  - noto-arimo-fonts 
+  - noto-cousine-fonts 
   - noto-kufiarabic-fonts 
-  - noto-mono-fonts 
+  - noto-loopedlao-fonts 
+  - noto-loopedlao-ui-fonts 
+  - noto-loopedthai-fonts 
+  - noto-loopedthai-ui-fonts 
+  - noto-music-fonts 
   - noto-naskharabic-fonts 
   - noto-naskharabic-ui-fonts 
   - noto-nastaliqurdu-fonts 
+  - noto-rashihebrew-fonts 
   - noto-sans-adlam-fonts 
   - noto-sans-adlamunjoined-fonts 
   - noto-sans-anatolianhieroglyphs-fonts 
@@ -17479,36 +17456,49 @@ unsorted:
   - noto-sans-avestan-fonts 
   - noto-sans-balinese-fonts 
   - noto-sans-bamum-fonts 
+  - noto-sans-bassavah-fonts 
   - noto-sans-batak-fonts 
   - noto-sans-bengali-fonts 
   - noto-sans-bengali-ui-fonts 
+  - noto-sans-bhaiksuki-fonts 
   - noto-sans-brahmi-fonts 
   - noto-sans-buginese-fonts 
   - noto-sans-buhid-fonts 
   - noto-sans-canadianaboriginal-fonts 
   - noto-sans-carian-fonts 
+  - noto-sans-caucasianalbanian-fonts 
   - noto-sans-chakma-fonts 
   - noto-sans-cham-fonts 
   - noto-sans-cherokee-fonts 
+  - noto-sans-chorasmian-fonts 
   - noto-sans-cjk-fonts 
   - noto-sans-coptic-fonts 
   - noto-sans-cuneiform-fonts 
   - noto-sans-cypriot-fonts 
+  - noto-sans-cyprominoan-fonts 
   - noto-sans-deseret-fonts 
   - noto-sans-devanagari-fonts 
   - noto-sans-devanagari-ui-fonts 
-  - noto-sans-display-fonts 
+  - noto-sans-duployan-fonts 
   - noto-sans-egyptianhieroglyphs-fonts 
+  - noto-sans-elbasan-fonts 
+  - noto-sans-elymaic-fonts 
   - noto-sans-ethiopic-fonts 
   - noto-sans-georgian-fonts 
   - noto-sans-glagolitic-fonts 
   - noto-sans-gothic-fonts 
+  - noto-sans-grantha-fonts 
   - noto-sans-gujarati-fonts 
   - noto-sans-gujarati-ui-fonts 
+  - noto-sans-gunjalagondi-fonts 
   - noto-sans-gurmukhi-fonts 
   - noto-sans-gurmukhi-ui-fonts 
+  - noto-sans-hanifirohingya-fonts 
   - noto-sans-hanunoo-fonts 
+  - noto-sans-hatran-fonts 
   - noto-sans-hebrew-fonts 
+  - noto-sans-hebrewdroid-fonts 
+  - noto-sans-hebrewnew-fonts 
   - noto-sans-hk-black-fonts 
   - noto-sans-hk-bold-fonts 
   - noto-sans-hk-demilight-fonts 
@@ -17520,6 +17510,7 @@ unsorted:
   - noto-sans-hk-regular-fonts 
   - noto-sans-hk-thin-fonts 
   - noto-sans-imperialaramaic-fonts 
+  - noto-sans-indicsiyaqnumbers-fonts 
   - noto-sans-inscriptionalpahlavi-fonts 
   - noto-sans-inscriptionalparthian-fonts 
   - noto-sans-javanese-fonts 
@@ -17540,6 +17531,8 @@ unsorted:
   - noto-sans-kharoshthi-fonts 
   - noto-sans-khmer-fonts 
   - noto-sans-khmer-ui-fonts 
+  - noto-sans-khojki-fonts 
+  - noto-sans-khudawadi-fonts 
   - noto-sans-kr-black-fonts 
   - noto-sans-kr-bold-fonts 
   - noto-sans-kr-demilight-fonts 
@@ -17554,32 +17547,58 @@ unsorted:
   - noto-sans-lao-ui-fonts 
   - noto-sans-lepcha-fonts 
   - noto-sans-limbu-fonts 
+  - noto-sans-lineara-fonts 
   - noto-sans-linearb-fonts 
   - noto-sans-lisu-fonts 
   - noto-sans-lycian-fonts 
   - noto-sans-lydian-fonts 
+  - noto-sans-mahajani-fonts 
   - noto-sans-malayalam-fonts 
   - noto-sans-malayalam-ui-fonts 
   - noto-sans-mandaic-fonts 
+  - noto-sans-manichaean-fonts 
+  - noto-sans-marchen-fonts 
+  - noto-sans-masaramgondi-fonts 
+  - noto-sans-math-fonts 
+  - noto-sans-mayannumerals-fonts 
+  - noto-sans-medefaidrin-fonts 
   - noto-sans-meeteimayek-fonts 
+  - noto-sans-mendekikakui-fonts 
+  - noto-sans-meroitic-fonts 
+  - noto-sans-miao-fonts 
+  - noto-sans-modi-fonts 
   - noto-sans-mongolian-fonts 
   - noto-sans-mono-fonts 
+  - noto-sans-mro-fonts 
+  - noto-sans-multani-fonts 
   - noto-sans-myanmar-fonts 
   - noto-sans-myanmar-ui-fonts 
+  - noto-sans-nabataean-fonts 
+  - noto-sans-nandinagari-fonts 
+  - noto-sans-newa-fonts 
   - noto-sans-newtailue-fonts 
   - noto-sans-nko-fonts 
+  - noto-sans-nushu-fonts 
   - noto-sans-ogham-fonts 
   - noto-sans-olchiki-fonts 
+  - noto-sans-oldhungarian-fonts 
   - noto-sans-olditalic-fonts 
+  - noto-sans-oldnortharabian-fonts 
+  - noto-sans-oldpermic-fonts 
   - noto-sans-oldpersian-fonts 
+  - noto-sans-oldsogdian-fonts 
   - noto-sans-oldsoutharabian-fonts 
   - noto-sans-oldturkic-fonts 
   - noto-sans-oriya-fonts 
   - noto-sans-oriya-ui-fonts 
   - noto-sans-osage-fonts 
   - noto-sans-osmanya-fonts 
+  - noto-sans-pahawhhmong-fonts 
+  - noto-sans-palmyrene-fonts 
+  - noto-sans-paucinhau-fonts 
   - noto-sans-phagspa-fonts 
   - noto-sans-phoenician-fonts 
+  - noto-sans-psalterpahlavi-fonts 
   - noto-sans-rejang-fonts 
   - noto-sans-runic-fonts 
   - noto-sans-samaritan-fonts 
@@ -17594,23 +17613,30 @@ unsorted:
   - noto-sans-sc-mono-fonts 
   - noto-sans-sc-regular-fonts 
   - noto-sans-sc-thin-fonts 
+  - noto-sans-sharada-fonts 
   - noto-sans-shavian-fonts 
+  - noto-sans-siddham-fonts 
+  - noto-sans-signwriting-fonts 
   - noto-sans-sinhala-fonts 
   - noto-sans-sinhala-ui-fonts 
+  - noto-sans-sogdian-fonts 
+  - noto-sans-sorasompeng-fonts 
+  - noto-sans-soyombo-fonts 
   - noto-sans-sundanese-fonts 
   - noto-sans-sylotinagri-fonts 
   - noto-sans-symbols-fonts 
   - noto-sans-symbols2-fonts 
-  - noto-sans-syriaceastern-fonts 
-  - noto-sans-syriacestrangela-fonts 
-  - noto-sans-syriacwestern-fonts 
+  - noto-sans-syriac-fonts 
   - noto-sans-tagalog-fonts 
   - noto-sans-tagbanwa-fonts 
   - noto-sans-taile-fonts 
   - noto-sans-taitham-fonts 
   - noto-sans-taiviet-fonts 
+  - noto-sans-takri-fonts 
   - noto-sans-tamil-fonts 
   - noto-sans-tamil-ui-fonts 
+  - noto-sans-tamilsupplement-fonts 
+  - noto-sans-tangsa-fonts 
   - noto-sans-tc-black-fonts 
   - noto-sans-tc-bold-fonts 
   - noto-sans-tc-demilight-fonts 
@@ -17626,19 +17652,40 @@ unsorted:
   - noto-sans-thaana-fonts 
   - noto-sans-thai-fonts 
   - noto-sans-thai-ui-fonts 
-  - noto-sans-tibetan-fonts 
   - noto-sans-tifinagh-fonts 
+  - noto-sans-tifinaghadrar-fonts 
+  - noto-sans-tifinaghagrawimazighen-fonts 
+  - noto-sans-tifinaghahaggar-fonts 
+  - noto-sans-tifinaghair-fonts 
+  - noto-sans-tifinaghapt-fonts 
+  - noto-sans-tifinaghazawagh-fonts 
+  - noto-sans-tifinaghghat-fonts 
+  - noto-sans-tifinaghhawad-fonts 
+  - noto-sans-tifinaghrhissaixa-fonts 
+  - noto-sans-tifinaghsil-fonts 
+  - noto-sans-tifinaghtawellemmet-fonts 
+  - noto-sans-tirhuta-fonts 
   - noto-sans-ugaritic-fonts 
   - noto-sans-vai-fonts 
+  - noto-sans-vithkuqi-fonts 
+  - noto-sans-wancho-fonts 
+  - noto-sans-warangciti-fonts 
   - noto-sans-yi-fonts 
+  - noto-sans-zanabazarsquare-fonts 
+  - noto-serif-ahom-fonts 
   - noto-serif-armenian-fonts 
+  - noto-serif-balinese-fonts 
   - noto-serif-bengali-fonts 
   - noto-serif-devanagari-fonts 
   - noto-serif-display-fonts 
+  - noto-serif-divesakuru-fonts 
+  - noto-serif-dogra-fonts 
   - noto-serif-ethiopic-fonts 
   - noto-serif-fonts 
   - noto-serif-georgian-fonts 
+  - noto-serif-grantha-fonts 
   - noto-serif-gujarati-fonts 
+  - noto-serif-gurmukhi-fonts 
   - noto-serif-hebrew-fonts 
   - noto-serif-jp-black-fonts 
   - noto-serif-jp-extralight-fonts 
@@ -17648,6 +17695,7 @@ unsorted:
   - noto-serif-jp-semibold-fonts 
   - noto-serif-kannada-fonts 
   - noto-serif-khmer-fonts 
+  - noto-serif-khojki-fonts 
   - noto-serif-kr-black-fonts 
   - noto-serif-kr-bold-fonts 
   - noto-serif-kr-extralight-fonts 
@@ -17658,8 +17706,12 @@ unsorted:
   - noto-serif-kr-regular-fonts 
   - noto-serif-kr-semibold-fonts 
   - noto-serif-lao-fonts 
+  - noto-serif-makasar-fonts 
   - noto-serif-malayalam-fonts 
   - noto-serif-myanmar-fonts 
+  - noto-serif-nyiakengpuachuehmong-fonts 
+  - noto-serif-olduyghur-fonts 
+  - noto-serif-oriya-fonts 
   - noto-serif-sc-black-fonts 
   - noto-serif-sc-extralight-fonts 
   - noto-serif-sc-fonts-full 
@@ -17668,6 +17720,8 @@ unsorted:
   - noto-serif-sc-semibold-fonts 
   - noto-serif-sinhala-fonts 
   - noto-serif-tamil-fonts 
+  - noto-serif-tamilslanted-fonts 
+  - noto-serif-tangut-fonts 
   - noto-serif-tc-black-fonts 
   - noto-serif-tc-extralight-fonts 
   - noto-serif-tc-fonts-full 
@@ -17676,6 +17730,12 @@ unsorted:
   - noto-serif-tc-semibold-fonts 
   - noto-serif-telugu-fonts 
   - noto-serif-thai-fonts 
+  - noto-serif-tibetan-fonts 
+  - noto-serif-toto-fonts 
+  - noto-serif-vithkuqi-fonts 
+  - noto-serif-yezidi-fonts 
+  - noto-tinos-fonts 
+  - noto-traditionalnushu-fonts 
   - nova 
   - novdoc 
   - novnc 
@@ -18246,7 +18306,6 @@ unsorted:
   - openbox-kde 
   - openbox-theme-adapta 
   - openbox-theme-matcha 
-  - openbox-theme-plata 
   - openbsc 
   - openbsc-bs11-utils 
   - openbsc-bsc-sccplite 
@@ -18881,6 +18940,7 @@ unsorted:
   - patterns-media-rest_cd_kde 
   - patterns-media-rest_cd_x11 
   - patterns-media-rest_core_dvd 
+  - patterns-microos-desktop-gnome: [x86_64] 
   - patterns-openSUSEway 
   - patterns-rpm-macros 
   - patterns-server-dhcp_dns_server-32bit 
@@ -20688,7 +20748,6 @@ unsorted:
   - plank-theme-adapta 
   - plank-theme-elementary 
   - plank-theme-matcha 
-  - plank-theme-plata 
   - plantuml 
   - plantuml-javadoc 
   - plasma-applet-weather-widget 
@@ -21580,9 +21639,6 @@ unsorted:
   - python3-botan 
   - python3-bump2version 
   - python3-caca 
-  - python3-caffe 
-  - python3-caffe-gnu-hpc 
-  - python3-caffe_1_0-gnu-hpc 
   - python3-capng 
   - python3-capstone 
   - python3-casacore: [x86_64] 
@@ -24846,8 +24902,6 @@ unsorted:
   - python310-toolz 
   - python310-toposort 
   - python310-topy 
-  - python310-torch: [x86_64] 
-  - python310-torch-devel: [x86_64] 
   - python310-torchvision: [x86_64] 
   - python310-tornado 
   - python310-tornado6 
@@ -27879,8 +27933,6 @@ unsorted:
   - python38-toolz 
   - python38-toposort 
   - python38-topy 
-  - python38-torch: [x86_64] 
-  - python38-torch-devel: [x86_64] 
   - python38-torchvision: [x86_64] 
   - python38-tortilla 
   - python38-towncrier 
@@ -31106,8 +31158,6 @@ unsorted:
   - python39-toolz 
   - python39-toposort 
   - python39-topy 
-  - python39-torch: [x86_64] 
-  - python39-torch-devel: [x86_64] 
   - python39-torchvision: [x86_64] 
   - python39-tornado 
   - python39-tornado6 
@@ -31361,8 +31411,6 @@ unsorted:
   - python39-zstd 
   - python39-zxcvbn 
   - python39-zypp-plugin 
-  - pytorch-converters: [x86_64] 
-  - pytorch-examples: [x86_64] 
   - pyzo 
   - pyzologo 
   - q4wine 
@@ -32344,9 +32392,6 @@ unsorted:
   - rust-cbindgen 
   - rust-packaging 
   - rust-srpm-macros 
-  - rust1.57 
-  - rust1.58 
-  - rust1.59 
   - rust1.60 
   - rust1.61 
   - rustscan 
@@ -33445,7 +33490,6 @@ unsorted:
   - telegraf 
   - telegram-desktop: [x86_64] 
   - telegram-theme-adapta: [x86_64] 
-  - telegram-theme-plata 
   - telemetrics-client 
   - telemetrics-client-devel 
   - telepathy-accounts-signon 
@@ -42119,7 +42163,6 @@ unsorted:
   - tkimg 
   - tkimg-devel 
   - tkinfo 
-  - tkirc 
   - tktable 
   - tkxcd 
   - tllist-devel 
@@ -43447,7 +43490,6 @@ unsorted:
   - xfce4-notes-plugin-lang 
   - xfce4-notifyd-branding-upstream 
   - xfce4-notifyd-theme-adapta 
-  - xfce4-notifyd-theme-plata 
   - xfce4-panel-branding-upstream 
   - xfce4-panel-devel 
   - xfce4-panel-plugin-appmenu 
@@ -43496,7 +43538,6 @@ unsorted:
   - xfwm4-branding-upstream 
   - xfwm4-theme-adapta 
   - xfwm4-theme-matcha 
-  - xfwm4-theme-plata 
   - xgalaga++ 
   - xgalaga-sdl 
   - xgamma 
@@ -43822,7 +43863,6 @@ unsorted:
   - yast2-rdp 
   - yast2-rear 
   - yast2-registration: [x86_64] 
-  - yast2-rmt 
   - yast2-samba-provision 
   - yast2-schema-collection 
   - yast2-schema-micro 

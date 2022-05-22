@@ -795,7 +795,7 @@
     <package name="gtk2-theme-thinice" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="gtk2-theming-engine-adwaita" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gtk2-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="gtk3-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="gtk3-branding-upstream" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gtk3-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gtk3-immodule-amharic" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gtk3-immodule-inuktitut" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1063,7 +1063,7 @@
     <package name="kdoctools-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="kdump" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="kernel-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="kernel-default-base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="kernel-default-base" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
     <package name="kernel-firmware-all" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="kernel-firmware-amdgpu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="kernel-firmware-ath10k" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
