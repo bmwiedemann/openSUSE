@@ -1,5 +1,0 @@
-<package name="plata-theme" project="openSUSE:Factory">
-  <title>A Gtk+ theme based on Material Design Refresh</title>
-  <description></description>
-  <devel project="X11:common:Factory" package="plata-theme"/>
-</package>
