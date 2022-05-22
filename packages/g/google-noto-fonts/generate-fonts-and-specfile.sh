@@ -1,21 +1,13 @@
 #!/bin/sh
 pkg_name="google-noto-fonts"
+font_dir="otf"
 
-for a in *.zip; do
-	mkdir -p $pkg_name
-	unzip -o -d $pkg_name $a
-done
-
-rm $pkg_name/LICENSE_OFL.txt
-# remove cjk
-rm $pkg_name/*CJK*.?tf
-# remove emoji
-rm $pkg_name/*Emoji*.ttf
-# remove README
-rm $pkg_name/README
+# Get only the otf fonts
+svn checkout https://github.com/googlefonts/noto-fonts/trunk/unhinted/otf
+tar -cvzf otf.tar.gz otf
 
 cp -f $pkg_name.spec.in $pkg_name.spec
-ls $pkg_name/ | sed -e 's:Noto::' -e 's:-.*\..tf::' -e 's:\..tf::' -e 's:\.ttc::' | sort -f | uniq | while read font; do 
+ls $font_dir/ | sed -e 's:Noto::' -e 's:-.*\..tf::' -e 's:\..tf::' -e 's:\.ttc::' | sort -f | uniq | while read font; do
   ui=`(echo $font | grep -q UI) && echo UI`
   font=${font%%$ui}
   serif=`echo $font | sed 's:\(Sans\|Serif\).*:\1:'`
@@ -28,12 +20,21 @@ ls $pkg_name/ | sed -e 's:Noto::' -e 's:-.*\..tf::' -e 's:\..tf::' -e 's:\.ttc::
     packagename="$packagename-$ui"
   fi
   packagename=`echo "$packagename" | tr [A-Z] [a-z]`
+  # NotoSansDisplay is already provided by NotoSans
+  # Also they have inconsistent family names: https://github.com/googlefonts/noto-fonts/issues/2315
+  if [ $packagename == "noto-sans-display" ]; then
+    continue
+  fi
   if [ $serif == "Sans" ]; then
     serif_dsc="Sans Serif "
   else
     serif_dsc=""
   fi
-  obsoletes=$packagename
+  if [ $packagename == "noto-sans" ]; then
+    OBSOLETES=($packagename 'noto-sans-display' 'noto-sans-display-fonts')
+  else
+    OBSOLETES=($packagename)
+  fi
   packagename="$packagename-fonts"
   if [ ! -z "$script" ]; then
     summary=`echo "Noto $script ${serif_dsc}Font" | sed 's:\([a-z]\)\([A-Z]\):\1 \2:g'`
@@ -44,9 +45,9 @@ ls $pkg_name/ | sed -e 's:Noto::' -e 's:-.*\..tf::' -e 's:\..tf::' -e 's:\.ttc::
   sed -i "s/@SUBPACKAGE_HEADERS@/Summary:        $summary\n@SUBPACKAGE_HEADERS@/" $pkg_name.spec
   sed -i "s;@SUBPACKAGE_HEADERS@;Group:          System/X11/Fonts\n@SUBPACKAGE_HEADERS@;" $pkg_name.spec
   sed -i "s/@SUBPACKAGE_HEADERS@/Recommends:     $pkg_name-doc\n@SUBPACKAGE_HEADERS@/" $pkg_name.spec
-  for i in $obsoletes ; do
-    sed -i "s/@SUBPACKAGE_HEADERS@/Obsoletes:      $i\n@SUBPACKAGE_HEADERS@/" $pkg_name.spec
-    sed -i "s/@SUBPACKAGE_HEADERS@/Provides:       $i\n@SUBPACKAGE_HEADERS@/" $pkg_name.spec
+  for i in "${OBSOLETES[@]}" ; do
+    sed -i "s/@SUBPACKAGE_HEADERS@/Obsoletes:      $i < %{version}\n@SUBPACKAGE_HEADERS@/" $pkg_name.spec
+    sed -i "s/@SUBPACKAGE_HEADERS@/Provides:       $i = %{version}\n@SUBPACKAGE_HEADERS@/" $pkg_name.spec
   done
   sed -i "s/@SUBPACKAGE_HEADERS@/%reconfigure_fonts_prereq\n@SUBPACKAGE_HEADERS@/" $pkg_name.spec
   sed -i "s/@SUBPACKAGE_HEADERS@/\n@SUBPACKAGE_HEADERS@/" $pkg_name.spec
@@ -65,8 +66,8 @@ ls $pkg_name/ | sed -e 's:Noto::' -e 's:-.*\..tf::' -e 's:\..tf::' -e 's:\.ttc::
   sed -i "s/@SUBPACKAGE_FILELISTS@/%files -n $packagename\n@SUBPACKAGE_FILELISTS@/" $pkg_name.spec
   sed -i "s/@SUBPACKAGE_FILELISTS@/%defattr(0644,root,root,755)\n@SUBPACKAGE_FILELISTS@/" $pkg_name.spec
   sed -i "s/@SUBPACKAGE_FILELISTS@/%dir %{_ttfontsdir}\n@SUBPACKAGE_FILELISTS@/" $pkg_name.spec
-  if [ $serif == "ColorEmoji" ]; then
-    sed -i "s:@SUBPACKAGE_FILELISTS@:%{_ttfontsdir}/Noto$serif$script$ui\*.?tf\n@SUBPACKAGE_FILELISTS@:" $pkg_name.spec
+  if [ $serif == "Arimo" ] || [ $serif == "Cousine" ] || [ $serif == "Tinos" ]; then
+    sed -i "s:@SUBPACKAGE_FILELISTS@:%{_ttfontsdir}/$serif$script$ui-\*.?tf\n@SUBPACKAGE_FILELISTS@:" $pkg_name.spec
   else
     sed -i "s:@SUBPACKAGE_FILELISTS@:%{_ttfontsdir}/Noto$serif$script$ui-\*.?tf\n@SUBPACKAGE_FILELISTS@:" $pkg_name.spec
   fi
@@ -77,4 +78,3 @@ sed -i 's/@SUBPACKAGE_HEADERS@//' $pkg_name.spec
 sed -i 's/@SUBPACKAGE_SCRIPTLETS@//' $pkg_name.spec
 sed -i 's/@SUBPACKAGE_FILELISTS@//' $pkg_name.spec
 
-rm -r $pkg_name

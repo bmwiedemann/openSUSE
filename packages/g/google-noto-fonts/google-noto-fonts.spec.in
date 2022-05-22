@@ -1,7 +1,7 @@
 #
 # spec file for package google-noto-fonts
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,13 @@
 #
 
 
-%define hyear     2017
-%define hmonth    09
-%define hday      19
+%define hyear     2022
+%define hmonth    05
+%define hday      16
+
 %define src_name  NotoFonts
 
-# DO NOT EDIT THIS SPECFILE DIRECTLY, edit google-noto-fonts.spec.in and run generate-specfile.sh script
+# DO NOT EDIT THIS SPECFILE DIRECTLY, edit google-noto-fonts.spec.in and run generate-fonts-and-specfile.sh script
 
 Name:           google-noto-fonts
 Version:        %{hyear}%{hmonth}%{hday}
@@ -29,11 +30,12 @@ Release:        0
 Summary:        Noto Font Families
 License:        OFL-1.1
 Group:          System/X11/Fonts
-Url:            https://github.com/googlei18n/noto-fonts
-Source0:        https://noto-website-2.storage.googleapis.com/pkgs/Noto-hinted.zip
-Source1:        generate-specfile.sh
+Url:            https://github.com/googlefonts/noto-fonts
+# Generate Source0 via generate-fonts-and-specfile.sh
+Source0:        otf.tar.gz
+Source1:        generate-fonts-and-specfile.sh
+Source2:        LICENSE
 BuildRequires:  fontpackages-devel
-BuildRequires:  unzip
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
@@ -49,25 +51,29 @@ Group:          Documentation/Other
 License for Google's Noto fonts.
 
 @SUBPACKAGE_HEADERS@
-
 %prep
-%setup -q -c -n %{name}-%{version}
-# remove cjk
-rm -rf *CJK*.?tf
-# remove emoji
-rm -rf *Emoji*.ttf
+tar -xzf %{SOURCE0} -C .
+cp %{SOURCE2} .
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_ttfontsdir}
-cp *.?tf   %{buildroot}%{_ttfontsdir}/
+# Tifinagh fonts have duplicates in NotoSansTifinagh folder
+# https://github.com/googlefonts/noto-fonts/issues/2177 and https://github.com/googlefonts/noto-fonts/issues/2326
+rm otf/NotoSansTifinagh/NotoSansTifinagh[!\-]*
+
+# NotoSansDisplay is already provided by NotoSans
+# Also they have inconsistent family names: https://github.com/googlefonts/noto-fonts/issues/2315
+rm -r otf/NotoSansDisplay/
+
+cp otf/*/*.otf   %{buildroot}%{_ttfontsdir}/
 
 @SUBPACKAGE_SCRIPTLETS@
 
 %files doc
 %defattr(0644,root,root,755)
-%doc LICENSE*.txt
+%doc LICENSE
 
 @SUBPACKAGE_FILELISTS@
 
