@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 22 16:48:02 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 6.0.10:
+  * Populate <summary> correctly if it comes after <content> (#260)
+
+-------------------------------------------------------------------
 Fri May 20 09:28:16 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add 304_python310-crash.patch fixing crash of test test_001741
