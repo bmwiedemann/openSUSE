@@ -55,4 +55,12 @@
     <comment>- Add llvm11-fix.patch in order to fix build with LLVM11.</comment>
     <requestid>852858</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>00f149b353d239f1248ec0ac6b760582</srcmd5>
+    <version>0.18</version>
+    <time>1653313919</time>
+    <user>dimstar_suse</user>
+    <comment>- Depend on LLVM13, cannot be built with LLVM14.</comment>
+    <requestid>978635</requestid>
+  </revision>
 </revisionlist>
