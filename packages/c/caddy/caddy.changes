@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May 23 07:48:15 UTC 2022 - alexandre.vicenzi@suse.com
+
+- Update to version 2.5.1:
+  * Fixed regression in Unix socket admin endpoints.
+  * Fixed regression in caddy trust commands.
+  * Hash-based load balancing policies (ip_hash, uri_hash, header, and cookie)
+    use an improved highest-random-weight (HRW) algorithm for increased
+    consistency.
+  * Dynamic upstreams, which is the ability to get the list of upstreams at
+    every request (more specifically, every iteration in the proxy loop of
+    every request) rather than just once at config-load time.
+  * Caddy will automatically try to get relevant certificates from the local
+    Tailscale instance.
+  * New OpenTelemetry integration.
+  * Added new endpoints /pki/ca/<id> and /pki/ca/<id>/certificates for
+    getting information about Caddy's managed CAs.
+  * Rename _caddy to zsh-completion
+
+-------------------------------------------------------------------
 Fri Mar 25 17:23:27 UTC 2022 - alexandre.vicenzi@suse.com
 
 - Update to version 2.4.6:
