@@ -9,6 +9,6 @@
       --libexecdir=%{_libexecdir} \
       --includedir=%{_includedir} \
       --mandir=%{_mandir} \
-      --systemd-unitsdir=%{_unitdir} \
+      --systemd-unitsdir=/usr/lib/systemd \
       --yes
 }

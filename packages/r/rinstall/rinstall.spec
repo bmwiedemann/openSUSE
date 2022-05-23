@@ -1,7 +1,7 @@
 #
 # spec file for package rinstall
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rinstall
-Version:        0.1.1~git0.2a66d34
+Version:        0.2.0
 Release:        0
 Summary:        Declarative install for programs
 #               If you know the license, put it's SPDX string here.
