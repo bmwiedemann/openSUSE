@@ -1,7 +1,7 @@
 #
 # spec file for package python-sympy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %bcond_with     test
 Name:           python-sympy
-Version:        1.8
+Version:        1.10.1
 Release:        0
 Summary:        Computer algebra system (CAS) in Python
 License:        BSD-3-Clause

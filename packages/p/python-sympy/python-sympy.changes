@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat May 21 07:43:28 UTC 2022 - andy great <andythe_great@pm.me>
+
+- Update to version 1.10.1.
+  * Fixed a bug that prevented unpickling pickles created with older
+   sympy versions.
+  * The .diff method accepts string arguments again
+    (fixing a regression in 1.10).
+- Update for version 1.10.0.
+  * The Laplace transform computations has become much more powerful
+    using a rule-based system.
+  * All active deprecations in SymPy have been revamped.
+  * A number of classes and functions have been moved to better
+    locations mostly to resolve problems with cyclic imports within
+    the SymPy codebase.
+  * BREAKING: removed the since long deprecated densearith,
+    densesolve, and densetools
+  * BREAKING CHANGE: core.trace with class Tr moved to
+    physics.quantum.trace.
+  * Full changelog at
+    https://github.com/sympy/sympy/wiki/Release-Notes-for-1.10
+- Update for version 1.9.
+  * The internal implementation of Matrix and other matrix classes
+    (SparseMatrix etc) is now DomainMatrix.
+  * Leading term methods now raise PoleError at singularities.
+  * Full changelog at
+    https://github.com/sympy/sympy/wiki/Release-Notes-for-1.9
+
+-------------------------------------------------------------------
 Fri May 14 01:35:35 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.8:
