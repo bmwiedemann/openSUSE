@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 16 07:56:29 UTC 2022 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.10.12
+  * Improved threading support
+  * Implement new Read Receipt design
+
+-------------------------------------------------------------------
 Tue Apr 12 11:24:44 UTC 2022 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.10.9
