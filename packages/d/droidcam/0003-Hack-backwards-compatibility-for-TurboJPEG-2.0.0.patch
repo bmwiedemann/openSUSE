@@ -1,19 +1,10 @@
-From 0f32243499c2c38b746605b8031ea01a731e8514 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
-Date: Sat, 11 Jul 2020 07:30:28 +0200
-Subject: [PATCH 3/3] Hack backwards compatibility for TurboJPEG < 2.0.0
-
----
- src/decoder.c | 6 ++++++
- 1 file changed, 6 insertions(+)
-
 diff --git a/src/decoder.c b/src/decoder.c
-index 69496b0..ad48f92 100644
+index 5c72ceb..a408d72 100644
 --- a/src/decoder.c
 +++ b/src/decoder.c
-@@ -25,6 +25,15 @@ extern "C" {
- #include "libswscale/swscale.h"
- #include "speex/speex.h"
+@@ -31,6 +31,15 @@ extern "C"
+ }
+ #endif
  
 +#include "jconfig.h"
 +#if LIBJPEG_TURBO_VERSION_NUMBER < 2000000
@@ -27,6 +18,3 @@ index 69496b0..ad48f92 100644
  struct spx_decoder_s {
   snd_pcm_t *snd_handle;
   void *state;
--- 
-2.27.0
-

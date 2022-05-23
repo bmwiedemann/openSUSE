@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon May 16 20:35:05 UTC 2022 - Grover Chou <groverchout@opensuse.org>
+
+- Update to version 1.8.2
+  * Bugfix: Prevent UI alerts when connection is stopped abruptly. #210
+- Update to version 1.8.1
+  * Added -vflip/-hflip options to droidcam-cli
+- Update to version 1.8.0
+  * Fix for iOS USB connections dropping instantly (via #184)
+  * Code updates (via #184)
+  * Binaries now go into /usr/local/bin instead of /usr/bin, which is
+    more "correct" for non-packaged software
+  * Add battery-level check and label
+  * Add flag that allows other programs (eg. ffmpeg) to use the v4l2-dc
+    device
+- Update to version 1.7.3
+  * Bring back app-indicator by popular demand (#159).
+- Update to version 1.7.2
+  * GUI client saves + restores horizontal and vertical flip changes
+  * GUI client: Exposure lock and white-balance controls
+  * Update keyboard accelerators, hopefully fix the numpad plus/minus
+    shortcuts for all keyboards
+  * CLI client: -nocontrols flag to facilitate "headless mode" (#143)
+- Update to version 1.7.1
+  * Dropped 'appindicator' (systray icon) support as this library is
+    deprecated and no longer works (at least on Debian).
+- Updated patches:
+  * 0001-Use-icon-installed-to-theme-directory.patch
+  * 0003-Hack-backwards-compatibility-for-TurboJPEG-2.0.0.patch
+
+-------------------------------------------------------------------
 Mon Feb  8 19:32:13 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.7

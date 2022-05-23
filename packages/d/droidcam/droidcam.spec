@@ -1,7 +1,7 @@
 #
 # spec file for package droidcam
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           droidcam
-Version:        1.7
+Version:        1.8.2
 Release:        0
 Summary:        Program to turn a mobile device into a webcam
 License:        GPL-2.0-or-later
@@ -71,8 +71,8 @@ live streaming programs like OBS.
 %build
 export USBMUXDLIBS="`pkg-config --silence-errors --libs libusbmuxd-2.0 || pkg-config --silence-errors --libs libusbmuxd`"
 # CC is used for CXXFLAGS
-%make_build JPEG="-lturbojpeg" USBMUXD=${USBMUXDLIBS} CC="%{optflags} -std=c++11" droidcam-cli
-%make_build JPEG="-lturbojpeg" USBMUXD=${USBMUXDLIBS} CC="%{optflags} -std=c++11" droidcam
+%make_build JPEG="-lturbojpeg" USBMUXD=${USBMUXDLIBS} CFLAGS="%{optflags}" droidcam-cli
+%make_build JPEG="-lturbojpeg" USBMUXD=${USBMUXDLIBS} CFLAGS="%{optflags}" droidcam
 
 %install
 install -D -m 755 -t %{buildroot}%{_bindir} droidcam-cli
