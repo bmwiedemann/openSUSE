@@ -18,14 +18,16 @@
 
 
 %global sover   0
+%global sover_cpp 1
 %global libname libgensio%{sover}
+%global libname_cpp libgensiocpp%{sover_cpp}
 %if 0%{?suse_version} > 1500
 %bcond_without openipmi
 %else
 %bcond_with    openipmi
 %endif
 Name:           gensio
-Version:        2.3.6
+Version:        2.4.1
 Release:        0
 Summary:        Library to abstract stream and packet I/O
 # examples/* is licenced under Apache-2.0
@@ -74,9 +76,25 @@ on top of that, and stack Telnet on top of that. It supports a
 number of network I/O and serial ports. gensios that stack on
 other gensios are called filters.
 
+%package -n %{libname_cpp}
+Summary:        Library to abstract stream and packet I/O
+Group:          System/Libraries
+
+%description -n %{libname_cpp}
+This is gensio (pronounced gen'-see-oh), a framework for giving a
+consistent view of various stream (and packet) I/O types. You
+create a gensio object (or a gensio), and you can use that gensio
+without having to know too much about what is going on underneath.
+You can stack gensio on top of another one to add protocol
+funcionality. For instance, you can create a TCP gensio, stack SSL
+on top of that, and stack Telnet on top of that. It supports a
+number of network I/O and serial ports. gensios that stack on
+other gensios are called filters.
+
 %package devel
 Summary:        Library to abstract stream and packet I/O
 Group:          Development/Libraries/C and C++
+Requires:       %{libname_cpp} = %{version}
 Requires:       %{libname} = %{version}
 Requires:       lksctp-tools-devel
 Requires:       pkgconfig(avahi-client)
@@ -121,6 +139,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
+%post -n %{libname_cpp} -p /sbin/ldconfig
+%postun -n %{libname_cpp} -p /sbin/ldconfig
 
 %files
 %license COPYING COPYING.LIB
@@ -130,6 +150,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/gtlssh
 %{_bindir}/gtlssh-keygen
 %{_bindir}/gtlssync
+%{_bindir}/greflector
 %{_mandir}/man1/gensiot.1%{?ext_man}
 %{_mandir}/man1/gmdns.1%{?ext_man}
 %{_mandir}/man1/gtlssh-keygen.1%{?ext_man}
@@ -141,8 +162,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n %{libname}
 %{_libdir}/libgensio*.so.%{sover}*
 
+%files -n %{libname_cpp}
+%{_libdir}/libgensiocpp.so.%{sover_cpp}*
+
 %files devel
-%dir %{_includedir}/gensio
 %{_includedir}/gensio/
 %{_libdir}/libgensio*.so
 %{_libdir}/pkgconfig/libgensio*.pc

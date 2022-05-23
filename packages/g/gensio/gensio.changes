@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 20 10:53:14 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Udpate to version 2.4.1
+  * Added support for the AX25 Amateur Radio packet protocol
+  * Rewritten the C++ interface
+
+-------------------------------------------------------------------
 Thu Feb 24 20:53:10 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.6
