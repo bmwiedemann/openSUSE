@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May 21 06:36:17 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 91.9.1
+  MFSA 2022-19 (bsc#1199768)
+  * CVE-2022-1802 (bmo#1770137)
+    Prototype pollution in Top-Level Await implementation
+  * CVE-2022-1529 (bmo#1770048)
+    Untrusted input used in JavaScript object indexing, leading
+    to prototype pollution
+
+-------------------------------------------------------------------
 Mon May  2 06:34:51 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 91.9.0

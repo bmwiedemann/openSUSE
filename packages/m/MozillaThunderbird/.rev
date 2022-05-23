@@ -4195,4 +4195,18 @@ I cannot test locally unfortunately.
     Memory safety bugs fixed in Thunderbird 91.9</comment>
     <requestid>975202</requestid>
   </revision>
+  <revision rev="280" vrev="1">
+    <srcmd5>f1c4b2f4c5ea67bc6cd68118187eaa42</srcmd5>
+    <version>91.9.1</version>
+    <time>1653313890</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 91.9.1
+  MFSA 2022-19 (bsc#1199768)
+  * CVE-2022-1802 (bmo#1770137)
+    Prototype pollution in Top-Level Await implementation
+  * CVE-2022-1529 (bmo#1770048)
+    Untrusted input used in JavaScript object indexing, leading
+    to prototype pollution</comment>
+    <requestid>978422</requestid>
+  </revision>
 </revisionlist>
