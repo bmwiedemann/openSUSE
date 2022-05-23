@@ -1,0 +1,12 @@
+diff -upr elasticsearch-dsl-py-7.2.1.orig/test_elasticsearch_dsl/conftest.py elasticsearch-dsl-py-7.2.1/test_elasticsearch_dsl/conftest.py
+--- elasticsearch-dsl-py-7.2.1.orig/test_elasticsearch_dsl/conftest.py	2022-05-23 13:59:46.128193973 +0200
++++ elasticsearch-dsl-py-7.2.1/test_elasticsearch_dsl/conftest.py	2022-05-23 13:59:46.152194107 +0200
+@@ -5,7 +5,7 @@ from datetime import datetime
+ 
+ from elasticsearch.helpers import bulk
+ from elasticsearch.helpers.test import SkipTest, get_test_client
+-from mock import Mock
++from unittest.mock import Mock
+ from pytest import fixture, skip
+ 
+ from elasticsearch_dsl.connections import connections, add_connection

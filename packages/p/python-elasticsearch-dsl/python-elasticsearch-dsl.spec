@@ -1,7 +1,7 @@
 #
 # spec file for package python-elasticsearch-dsl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/elasticsearch/elasticsearch-dsl-py
 Source:         https://github.com/elastic/elasticsearch-dsl-py/archive/%{version}.tar.gz#/elasticsearch-dsl-%{version}.tar.gz
+# https://github.com/elastic/elasticsearch-dsl-py/issues/1596
+Patch0:         python-elasticsearch-dsl-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -35,7 +37,6 @@ Suggests:       python-pytz
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module elasticsearch >= 7.0.0}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest >= 3.0.0}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz}
@@ -48,6 +49,7 @@ Python client for Elasticsearch.
 
 %prep
 %setup -q -n elasticsearch-dsl-py-%{version}
+%patch0 -p1
 
 %build
 %python_build

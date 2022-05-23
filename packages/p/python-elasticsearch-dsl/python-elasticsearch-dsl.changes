@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 23 12:07:23 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+- added patches
+  fix https://github.com/elastic/elasticsearch-dsl-py/issues/1596
+  + python-elasticsearch-dsl-no-mock.patch
+
+-------------------------------------------------------------------
 Fri Nov 27 05:34:09 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Resume builds by removing unnecessary build dependency coverage < 5
