@@ -7,4 +7,17 @@
     <comment></comment>
     <requestid>973956</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ef9526759005afff34c6384576f06d87</srcmd5>
+    <version>0.0.3~git6.03c747e</version>
+    <time>1653321016</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.3~git6.03c747e:
+  * Hide snapshot item extension part
+  * Change help URL to official docs
+  * Mention node_modules.sums in spec sources
+  * Use compression for source archive
+</comment>
+    <requestid>978716</requestid>
+  </revision>
 </revisionlist>

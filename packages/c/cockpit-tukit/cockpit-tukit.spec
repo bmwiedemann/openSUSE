@@ -15,28 +15,29 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-Name: cockpit-tukit
-Version: 0.0.3~git0.d4aa7e9
-Release: 0%{?dist}
-Summary: Cockpit module for Transactional Update
-License: LGPL-2.1-or-later
 
-URL: https://github.com/openSUSE/cockpit-tukit
-Source: %{name}-%{version}.tar.xz
+Name:           cockpit-tukit
+Version:        0.0.3~git6.03c747e
+Release:        0%{?dist}
+Summary:        Cockpit module for Transactional Update
+License:        LGPL-2.1-or-later
+
+URL:            https://github.com/openSUSE/cockpit-tukit
+Source:         %{name}-%{version}.tar.xz
 Source10:       package-lock.json
 Source11:       node_modules.spec.inc
 Source12:       node_modules.sums
 %include %_sourcedir/node_modules.spec.inc
-BuildArch: noarch
-BuildRequires: nodejs-devel
-BuildRequires: npm
-BuildRequires: make
-BuildRequires: appstream-glib
-BuildRequires: cockpit-devel >= 251
-BuildRequires: local-npm-registry
+BuildArch:      noarch
+BuildRequires:  appstream-glib
+BuildRequires:  cockpit-devel >= 251
+BuildRequires:  local-npm-registry
+BuildRequires:  make
+BuildRequires:  nodejs-devel
+BuildRequires:  npm
 
-Requires: cockpit-system
-Requires: tukitd
+Requires:       cockpit-system
+Requires:       tukitd
 
 %define debug_package %{nil}
 
