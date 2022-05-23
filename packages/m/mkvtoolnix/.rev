@@ -1245,4 +1245,51 @@ Fixes a major regression in the gui and some other bugs. As always: A lot of oth
     <comment></comment>
     <requestid>970447</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>83a4ba1bab8e3e42d9df6509d9439192</srcmd5>
+    <version>68.0.0</version>
+    <time>1653313918</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 68.0.0
+  New features and enhancements:
+  * mkvmerge: HDMV PGS subtitles: mkvmerge now tries to detect
+    bogus timestamps (where the current timestamp is two hours
+    or more after the previous timestamp) &amp; correct them to
+    something more sensible (1s after the previous timestamp).
+    That way one bogus timestamp cannot cause the rest of the
+    frames to not be interleaved properly with the other audio &amp;
+    video packets.
+  * mkvmerge: added colour information, colour mastering meta
+    information &amp; video projection information properties to the
+    JSON identification format. The properties are reported for
+    container types for which mkvmerge supports reading them
+    (Matroska &amp; MP4). The JSON identification format version
+    number has been bumped to v15.
+  * MKVToolNix GUI: multiplexer: added controls for all the
+    video colour information &amp; the video projection information.
+  Bug fixes:
+  * mkvmerge: SRT reader: entries with a duration of 0 or less
+    will now be skipped.
+  * mkvpropedit, MKVToolNix GUI's chapter &amp; header editors:
+    fixed an invalid memory access when trying to update
+    existing Matroska files whose EBML Head element had a &quot;size&quot;
+    field length of eight bytes, and where rewriting said element
+    would shrink the element by one byte. Files created by
+    gstreamer fit the first part whereas the second depends on
+    the changes requested by the user.
+  * mkvpropedit, MKVToolNix GUI's chapter &amp; header editors:
+    fixed the programs not handling having to remove EBML void
+    elements at the end of the file correctly and consequently
+    aborting.
+  * MKVToolNix GUI: the GUI now uses almost all SVG icons,
+    allowing proper scaling even for scaling factors such as
+    125%.
+  * MKVToolNix GUI: when compiled with Qt 5 the character set of
+    INI files is forced to UTF-8 in order to fix reading INI
+    files written by a version compiled with Qt 6.
+  Build system changes:
+  * Qt's SVG library is now required.
+</comment>
+    <requestid>978631</requestid>
+  </revision>
 </revisionlist>
