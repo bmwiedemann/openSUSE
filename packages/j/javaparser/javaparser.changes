@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon May 23 12:17:32 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 2.24.2
+  * Fixes:
+    + Adding constructor descriptor
+    + Fix issue #3491  Method has a multidimensional arrays argument
+      in jar file. when call the method throw
+      UnsolvedSymbolException
+    + Fix issue #3218 GetSourceRoots() does not return all source
+      roots
+    + Bug in ArrayCreationExpr constructors
+    + Fix issue 3440 Removing a node with LexicalPreservingPrinter
+      causes UnsupportedOperationException
+    + Improve unit test for BlockStmtContextResolutionTest
+    + Improve Conditional Operator resolution [JLS 15.25]
+    + Fix issue #3526 Variable or FieldDeclaration is not resolved
+      correctly when another variable with the same name is
+      declared in the same block
+
+-------------------------------------------------------------------
 Thu Mar 10 11:36:18 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to the latest version 3.24.0
