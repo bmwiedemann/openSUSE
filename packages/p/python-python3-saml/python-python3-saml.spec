@@ -1,7 +1,7 @@
 #
 # spec file for package python-python3-saml
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# python-xmlsec doesn’t support 3.10 gh#mehcode/python-xmlsec#204
+%define skip_python310 1
 Name:           python-python3-saml
-Version:        1.11.0
+Version:        1.14.0
 Release:        0
 Summary:        Python SAML support
 License:        MIT
@@ -26,19 +28,19 @@ Group:          Development/Languages/Python
 URL:            https://github.com/onelogin/python3-saml
 Source:         https://github.com/onelogin/python3-saml/archive/v%{version}.tar.gz#/python3-saml-%{version}.tar.gz
 BuildRequires:  %{python_module freezegun >= 0.3.11}
-BuildRequires:  %{python_module isodate >= 0.5.0}
+BuildRequires:  %{python_module isodate >= 0.6.1}
 BuildRequires:  %{python_module lxml >= 3.3.5}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module xmlsec >= 1.0.5}
+BuildRequires:  %{python_module xmlsec >= 1.3.9}
 BuildRequires:  fdupes
 BuildRequires:  libxmlsec1-openssl1
 BuildRequires:  python-rpm-macros
 # Select the libxmlsec backend known to work
 # pkgconfig doesnt auto-require it.
 Requires:       libxmlsec1-openssl1
-Requires:       python-isodate >= 0.5.0
-Requires:       python-xmlsec >= 1.0.5
+Requires:       python-isodate >= 0.6.1
+Requires:       python-xmlsec >= 1.3.9
 BuildArch:      noarch
 %python_subpackages
 

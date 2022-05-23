@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 23 07:59:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.0:
+  * Add support for python 3.10 and cleanup the GHA
+  * Remove stats from coveralls removed as they are no longer maintained
+  * Add rejectDeprecatedAlgorithm settings in order to be able reject messages
+    signed with deprecated algorithms
+  * Support building a LogoutResponse with non-success status
+  * Replace double-underscored names with single underscores
+  * Deprecate server_port from request data dictionary
+
+-------------------------------------------------------------------
 Fri Jul 23 07:12:16 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 1.11.0:

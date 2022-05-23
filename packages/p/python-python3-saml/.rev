@@ -90,4 +90,19 @@
 </comment>
     <requestid>907875</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a9af7e9dc7c195dce8e3b72fbfa984db</srcmd5>
+    <version>1.14.0</version>
+    <time>1653313924</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.14.0:
+  * Add support for python 3.10 and cleanup the GHA
+  * Remove stats from coveralls removed as they are no longer maintained
+  * Add rejectDeprecatedAlgorithm settings in order to be able reject messages
+    signed with deprecated algorithms
+  * Support building a LogoutResponse with non-success status
+  * Replace double-underscored names with single underscores
+  * Deprecate server_port from request data dictionary</comment>
+    <requestid>978650</requestid>
+  </revision>
 </revisionlist>
