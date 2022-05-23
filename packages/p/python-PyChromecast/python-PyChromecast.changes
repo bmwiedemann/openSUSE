@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May 21 20:53:58 UTC 2022 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to 12.1.2:
+  * Breaking Changes: the media controller has been refactored in #607, which means:
+  * Controllers not included in the pychromecast repo may need some adjustments
+  * The `BbcIplayerController` and `BbcSoundsController` no longer have overridden `play_media` methods
+  * Refactor handling of discovered casts and device info (#556) 
+
+-------------------------------------------------------------------
 Mon Mar  8 04:51:11 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 9.1.1:

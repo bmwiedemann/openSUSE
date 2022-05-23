@@ -207,4 +207,12 @@
   * Make current_time optional when loading or queing media (#446)</comment>
     <requestid>877546</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>18b9fac4d2f888c35f2ab949ef84e719</srcmd5>
+    <version>12.1.2</version>
+    <time>1653313906</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978571</requestid>
+  </revision>
 </revisionlist>
