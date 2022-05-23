@@ -1,8 +1,8 @@
 #
 # spec file for package tdiff
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2020-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           tdiff
-Version:        0.8.5
+Version:        0.8.6
 Release:        0
 Summary:        File tree diff tool
 License:        GPL-3.0-or-later

@@ -23,4 +23,12 @@
     <comment>Forward the current version of tdiff to Factory</comment>
     <requestid>798795</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>12847001bd0ab0aceec58330c5fde134</srcmd5>
+    <version>0.8.6</version>
+    <time>1653313915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978622</requestid>
+  </revision>
 </revisionlist>
