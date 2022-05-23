@@ -17,7 +17,7 @@
 
 
 Name:           loki
-Version:        2.4.2+git.1642005974.525040a32
+Version:        2.5.0+git.1649366683.2d9d0ee23
 Release:        0
 Summary:        Loki: like Prometheus, but for logs
 License:        Apache-2.0
@@ -32,7 +32,7 @@ Patch0:         harden_promtail.service.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-devel
-BuildRequires:  golang(API) >= 1.15
+BuildRequires:  golang(API) = 1.17
 Requires:       logcli = %{version}
 Requires:       group(loki)
 Requires:       user(loki)
