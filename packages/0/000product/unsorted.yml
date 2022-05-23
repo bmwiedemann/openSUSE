@@ -3106,6 +3106,7 @@ unsorted:
   - dpdk-devel-static: [x86_64] 
   - dpdk-doc: [x86_64] 
   - dpdk-examples: [x86_64] 
+  - dpdk-kmp-default: [x86_64] 
   - dpdk-tools: [x86_64] 
   - dpic 
   - dpic-doc 
@@ -4279,7 +4280,7 @@ unsorted:
   - gdl-devel 
   - gdl-lang 
   - gdlmm-devel 
-  - gdm-branding-MicroOS 
+  - gdm-branding-MicroOS: [i586] 
   - gdm-branding-upstream 
   - gdm-devel 
   - gdm-systemd 
@@ -5956,7 +5957,7 @@ unsorted:
   - gnome-bluetooth-devel 
   - gnome-boxes 
   - gnome-boxes-lang 
-  - gnome-branding-MicroOS 
+  - gnome-branding-MicroOS: [i586] 
   - gnome-builder 
   - gnome-builder-doc 
   - gnome-builder-lang 
@@ -6071,7 +6072,7 @@ unsorted:
   - gnome-todo-lang 
   - gnome-tour 
   - gnome-tour-lang 
-  - gnome-usage 
+  - gnome-usage: [i586] 
   - gnome-usage-lang 
   - gnome-user-docs-lang 
   - gnome-video-effects-devel 
@@ -6554,7 +6555,7 @@ unsorted:
   - gtk2-metatheme-yaru-mate 
   - gtk2-metatheme-yuyo 
   - gtk2-theme-oxygen 
-  - gtk3-branding-openSUSE 
+  - gtk3-branding-upstream 
   - gtk3-devel 
   - gtk3-devel-32bit: [x86_64] 
   - gtk3-devel-doc 
@@ -8112,6 +8113,7 @@ unsorted:
   - kemoticons-devel 
   - kernel-debug 
   - kernel-debug-devel 
+  - kernel-default-base: [i586] 
   - kernel-default-base-rebuild 
   - kernel-default-devel 
   - kernel-devel 
@@ -8391,6 +8393,7 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
+  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -18279,11 +18282,14 @@ unsorted:
   - openSUSE-release-usb-x11 
   - openSUSE-signkey-cert: [x86_64] 
   - openSUSEway 
+  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
+  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
+  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -18940,7 +18946,6 @@ unsorted:
   - patterns-media-rest_cd_kde 
   - patterns-media-rest_cd_x11 
   - patterns-media-rest_core_dvd 
-  - patterns-microos-desktop-gnome: [x86_64] 
   - patterns-openSUSEway 
   - patterns-rpm-macros 
   - patterns-server-dhcp_dns_server-32bit 

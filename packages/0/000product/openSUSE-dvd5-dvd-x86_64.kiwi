@@ -408,7 +408,6 @@
       <repopackage name="dolphin-part-lang"/>
       <repopackage name="dos2unix"/>
       <repopackage name="dosfstools"/>
-      <repopackage name="dpdk-kmp-default" arch="x86_64"/>
       <repopackage name="dracut"/>
       <repopackage name="dracut-mkinitrd-deprecated"/>
       <repopackage name="dracut-transactional-update"/>
@@ -831,7 +830,7 @@
       <repopackage name="gtk2-theming-engine-adwaita-32bit" arch="x86_64"/>
       <repopackage name="gtk2-tools"/>
       <repopackage name="gtk2-tools-32bit" arch="x86_64"/>
-      <repopackage name="gtk3-branding-upstream"/>
+      <repopackage name="gtk3-branding-openSUSE"/>
       <repopackage name="gtk3-data"/>
       <repopackage name="gtk3-immodule-amharic"/>
       <repopackage name="gtk3-immodule-inuktitut"/>
@@ -1114,7 +1113,6 @@
       <repopackage name="kdoctools-lang"/>
       <repopackage name="kdump"/>
       <repopackage name="kernel-default"/>
-      <repopackage name="kernel-default-base"/>
       <repopackage name="kernel-firmware-all"/>
       <repopackage name="kernel-firmware-amdgpu"/>
       <repopackage name="kernel-firmware-ath10k"/>
@@ -1279,7 +1277,7 @@
       <repopackage name="kquickcharts"/>
       <repopackage name="krb5"/>
       <repopackage name="krb5-32bit" arch="x86_64"/>
-      <repopackage name="krb5-client"/>
+      <repopackage name="krb5-client" arch="x86_64"/>
       <repopackage name="krename"/>
       <repopackage name="kreversi"/>
       <repopackage name="kreversi-lang"/>
@@ -3422,9 +3420,6 @@
       <repopackage name="open-iscsi"/>
       <repopackage name="open-vm-tools"/>
       <repopackage name="open-vm-tools-desktop"/>
-      <repopackage name="openafs"/>
-      <repopackage name="openafs-client"/>
-      <repopackage name="openafs-kmp-default"/>
       <repopackage name="openal-soft-data"/>
       <repopackage name="opencc-data"/>
       <repopackage name="openconnect"/>
