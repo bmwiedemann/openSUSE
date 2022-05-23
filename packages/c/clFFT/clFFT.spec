@@ -1,7 +1,7 @@
 #
 # spec file for package clFFT
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -113,7 +113,7 @@ This subpackage provides shared libStatTimer library
 %prep
 %setup -q
 %patch0 -p1
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %patch1 -p1
 %endif
 %if 0%{?suse_version} >= 1550

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 23 12:51:43 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- clFFT-fix-aarm64.patch: also needed for riscv64
+
+-------------------------------------------------------------------
 Thu Jul  1 14:28:59 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add clFFT-avoid-rvalue-address.patch: Fix building with gcc11
