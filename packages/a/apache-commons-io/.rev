@@ -135,4 +135,12 @@
     <comment></comment>
     <requestid>970873</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>441434a433de13ef9daf8371be22254c</srcmd5>
+    <version>2.11.0</version>
+    <time>1653314967</time>
+    <user>dimstar_suse</user>
+    <comment>sync changes with sle</comment>
+    <requestid>978714</requestid>
+  </revision>
 </revisionlist>

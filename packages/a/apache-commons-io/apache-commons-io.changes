@@ -26,7 +26,7 @@ Tue Oct 27 11:49:20 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 -------------------------------------------------------------------
 Wed Jun  3 11:12:22 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
-- Update to upstream version 2.7
+- Update to upstream version 2.7 (bsc#1184755, CVE-2021-29425)
   * https://commons.apache.org/proper/commons-io/changes-report.html#a2.7
   * Lots of bugfixes, updates and enhancements
   * Java 8 or later is required
