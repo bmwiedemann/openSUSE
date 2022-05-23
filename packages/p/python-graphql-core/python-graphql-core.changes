@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun May 22 13:59:41 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 3.1.7
+  * Patch based on GraphQL.js v15.8.0.
+  * Set enum value values to value names in build_client_schema
+  * Fix camel to snake case conversion with digits
+  * Preserve deprecation_reason on GraphQLInputFields
+  * Add missing __Directive.args(includeDeprecated)
+  * Fix original_error.extensions overriding extensions argument
+- Update to 3.1.6
+  * Patch release based on GraphQL.js v15.5.1.
+- Update to 3.1.5
+  * Default parse_literal of GraphQLScalarType now handles variables
+  * build_ast_schema now matches order of default types and directives
+  * Return formatted errors in formatted execution result
+  * The is_deprecated property is now deprecated itself
+  * Input fields and arguments can now be marked as deprecated
+  * Handle case when MapAsyncIterator is cancelled
+  * Improve return type for complete_list_value
+  * Replace resolved types in lexicographic schema sort
+  * EventEmitter helper class has been replaces by SimplePubSub
+  * print_ast now breaks arguments over multiple lines
+- Update to 3.1.4
+  * Fix enum values
+- Update to 3.1.3
+  * Python 3.9 is now officially suported by GraphQL-core.
+  * build_schema: allow to reference introspection types
+  * Custom validation rules for "no schema introspection" and "no deprecated"
+  * Added execute_sync() as synchronous version of execute()
+  * Support deep copy of GraphQL schema
+  * build_ast_schema now sets internal enum values
+  * Do not double-wrap resolver errors any more
+  * Use newer Sphinx version, fix for various autodoc issues
+  * Fix example in docstring of GraphQLUnionType
+  * Let default resolver check for Mapping instead of dict
+
+-------------------------------------------------------------------
 Mon Jan 25 02:15:12 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v3.1.2
