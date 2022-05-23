@@ -1,7 +1,7 @@
 #
 # spec file for package python-graphql-relay
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,23 +19,25 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-graphql-relay
-Version:        3.0.0
+Version:        3.1.5
 Release:        0
 Summary:        Relay implementation for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/graphql-python/graphql-relay-py
 Source:         https://files.pythonhosted.org/packages/source/g/graphql-relay/graphql-relay-%{version}.tar.gz
-BuildRequires:  %{python_module graphql-core}
+BuildRequires:  %{python_module graphql-core >= 3.1}
 BuildRequires:  %{python_module promise}
+BuildRequires:  %{python_module pytest >= 6.2}
 BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-describe}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-graphql-core
 Requires:       python-promise
 Requires:       python-six
+Requires:       (python-graphql-core >= 3.1 and python-graphql-core < 3.2)
 BuildArch:      noarch
 %python_subpackages
 
