@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Mon May 23 15:36:52 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#61
+- fix zstd compression handling (bsc#1198138)
+- 2.7
+
+--------------------------------------------------------------------
 Mon Dec 6 13:11:46 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#60
