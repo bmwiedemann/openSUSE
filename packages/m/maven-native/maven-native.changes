@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 23 12:05:40 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0001-Require-Java-8.patch
+    + Backport upstream changes that fix infinite loops on some 
+      architectures
+
+-------------------------------------------------------------------
 Fri Mar 25 07:57:38 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Put back the plexus components.xml files from alpha-8, since

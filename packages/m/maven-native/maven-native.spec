@@ -30,6 +30,7 @@ Source1:        plexus_components-bcc.xml
 Source2:        plexus_components-generic-c.xml
 Source3:        plexus_components-manager.xml
 Source4:        plexus_components-msvc.xml
+Patch0:         0001-Require-Java-8.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
@@ -79,17 +80,12 @@ This package contains javadoc for %{name}.
 
 %prep
 %setup -q -n %{name}-%{namedversion}
+%patch0 -p1
 
 for d in LICENSE ; do
   iconv -f iso8859-1 -t utf-8 $d.txt > $d.txt.conv && mv -f $d.txt.conv $d.txt
   sed -i 's/\r//' $d.txt
 done
-
-# use jvm apis
-%pom_remove_dep backport-util-concurrent:backport-util-concurrent
-%pom_remove_dep backport-util-concurrent:backport-util-concurrent maven-native-api
-sed -i "s|edu.emory.mathcs.backport.java.util.concurrent|java.util.concurrent|" \
- maven-native-api/src/main/java/org/codehaus/mojo/natives/compiler/AbstractCompiler.java
 
 %pom_remove_plugin -r :sortpom-maven-plugin
 

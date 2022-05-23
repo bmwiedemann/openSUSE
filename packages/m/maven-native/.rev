@@ -39,4 +39,12 @@
     <comment>Plexus metadata not correctly generated</comment>
     <requestid>964787</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>33f0065017bdc5f2f755764f24802a8a</srcmd5>
+    <version>1.0~alpha11</version>
+    <time>1653313935</time>
+    <user>dimstar_suse</user>
+    <comment>trying to fix broken build of openjfx8 on some architectures</comment>
+    <requestid>978703</requestid>
+  </revision>
 </revisionlist>
