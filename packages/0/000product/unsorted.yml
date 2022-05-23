@@ -3106,7 +3106,6 @@ unsorted:
   - dpdk-devel-static: [x86_64] 
   - dpdk-doc: [x86_64] 
   - dpdk-examples: [x86_64] 
-  - dpdk-kmp-default: [x86_64] 
   - dpdk-tools: [x86_64] 
   - dpic 
   - dpic-doc 
@@ -18282,14 +18281,14 @@ unsorted:
   - openSUSE-release-usb-x11 
   - openSUSE-signkey-cert: [x86_64] 
   - openSUSEway 
-  - openafs 
+  - openafs: [i586] 
   - openafs-authlibs 
   - openafs-authlibs-devel 
-  - openafs-client 
+  - openafs-client: [i586] 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
-  - openafs-kmp-default 
+  - openafs-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
