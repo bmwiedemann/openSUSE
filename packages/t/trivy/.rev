@@ -333,4 +333,41 @@
     <comment></comment>
     <requestid>973909</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>56cbe8ac1c88ac367360ccaeb1de8850</srcmd5>
+    <version>0.28.0</version>
+    <time>1653313916</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.28.0 (bsc#1199760, CVE-2022-28946):
+  * fix: remove Highlighted from json output (#2131)
+  * fix: remove trivy-kubernetes replace (#2132)
+  * docs: Add Operator docs under Kubernetes section (#2111)
+  * fix(k8s): security-checks panic (#2127)
+  * ci: added k8s scope (#2130)
+  * docs: Update misconfig output in examples (#2128)
+  * fix(misconf): Fix coloured output in Goland terminal (#2126)
+  * docs(secret): Fix default value of --security-checks in docs (#2107)
+  * refactor(report): move colorize function from trivy-db (#2122)
+  * feat: k8s resource scanning (#2118)
+  * chore: add CODEOWNERS (#2121)
+  * feat(image): add `--server` option for remote scans (#1871)
+  * refactor: k8s (#2116)
+  * refactor: export useful APIs (#2108)
+  * docs: fix k8s doc (#2114)
+  * feat(kubernetes): Add report flag for summary (#2112)
+  * fix: Remove problematic advanced rego policies (#2113)
+  * feat(misconf): Add special output format for misconfigurations (#2100)
+  * feat:  add k8s subcommand (#2065)
+  * chore: fix make lint version (#2102)
+  * fix(java): handle relative pom modules (#2101)
+  * fix(misconf): Add missing links for non-rego misconfig results (#2094)
+  * feat(misconf): Added fs.FS based scanning via latest defsec (#2084)
+  * chore(deps): bump trivy-issue-action to v0.0.4 (#2091)
+  * chore(deps): bump github.com/twitchtv/twirp (#2077)
+  * chore(deps): bump github.com/urfave/cli/v2 from 2.4.0 to 2.5.1 (#2074)
+  * chore(os): updated fanal version and alpine distroless test (#2086)
+  * chore(deps): bump github.com/CycloneDX/cyclonedx-go from 0.5.1 to 0.5.2 (#2075)
+  * chore(deps): bump github.com/samber/lo from 1.16.0 to 1.19.0 (#2076)</comment>
+    <requestid>978633</requestid>
+  </revision>
 </revisionlist>
