@@ -6,7 +6,7 @@ Sun Mar 20 16:22:45 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 -------------------------------------------------------------------
 Wed Oct 20 05:29:15 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
-- Update to 2.13.0
+- Update to 2.13.0 (CVE-2020-36518, bsc#1197132)
   * 2.13.0 (30-Sep-2021)
     + Add 'mvnw' wrapper
   * 2.12.0 (29-Nov-2020)

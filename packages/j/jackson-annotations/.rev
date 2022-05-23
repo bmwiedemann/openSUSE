@@ -63,4 +63,12 @@
     <comment>Build with source/target levels 8</comment>
     <requestid>963294</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>9e63ca8b67fa3820abf9365a2ebd711d</srcmd5>
+    <version>2.13.0</version>
+    <time>1653313912</time>
+    <user>dimstar_suse</user>
+    <comment>sync changes with sle</comment>
+    <requestid>978556</requestid>
+  </revision>
 </revisionlist>
