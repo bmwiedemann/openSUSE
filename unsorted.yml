@@ -11115,6 +11115,7 @@ unsorted:
   - libgendersplusplus2 
   - libgeners0 
   - libgensio0 
+  - libgensiocpp1 
   - libgeocode-glib0-32bit: [x86_64] 
   - libgeos3_10_2 
   - libgeos_c1 
@@ -24447,7 +24448,6 @@ unsorted:
   - python310-python-xlib 
   - python310-python-yubico 
   - python310-python3-openid 
-  - python310-python3-saml 
   - python310-pythondialog 
   - python310-pythonfinder 
   - python310-pythonwhois 
@@ -24815,7 +24815,7 @@ unsorted:
   - python310-subscene-api 
   - python310-subst 
   - python310-suds-community 
-  - python310-sunpy 
+  - python310-sunpy: [x86_64] 
   - python310-suntime 
   - python310-sure 
   - python310-svglib 
@@ -24902,7 +24902,6 @@ unsorted:
   - python310-toolz 
   - python310-toposort 
   - python310-topy 
-  - python310-torchvision: [x86_64] 
   - python310-tornado 
   - python310-tornado6 
   - python310-tortilla 
@@ -27933,7 +27932,6 @@ unsorted:
   - python38-toolz 
   - python38-toposort 
   - python38-topy 
-  - python38-torchvision: [x86_64] 
   - python38-tortilla 
   - python38-towncrier 
   - python38-tox 
@@ -31158,7 +31156,6 @@ unsorted:
   - python39-toolz 
   - python39-toposort 
   - python39-topy 
-  - python39-torchvision: [x86_64] 
   - python39-tornado 
   - python39-tornado6 
   - python39-tortilla 
@@ -32298,6 +32295,7 @@ unsorted:
   - rpmlint-test 
   - rpmorphan 
   - rpmrebuild 
+  - rr: [x86_64] 
   - rrdtool 
   - rrdtool-cached 
   - rrdtool-devel 
@@ -42181,6 +42179,7 @@ unsorted:
   - tntdb-replicate 
   - tntdb-sqlite 
   - toilet 
+  - toipe 
   - tokei: [x86_64] 
   - tolua 
   - toluapp-5.1 
