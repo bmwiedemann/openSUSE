@@ -26,6 +26,8 @@ URL:            https://github.com/swaywm/sway
 Source0:        https://github.com/swaywm/sway/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source2:        sway.keyring
 Patch0:         https://github.com/swaywm/sway/pull/6484.patch
+# Will be in next release
+Patch1:         fix-upstream-gcc12-build-issue.patch
 BuildRequires:  gcc-c++
 #BuildRequires:  libxslt-tools
 BuildRequires:  libevdev-devel

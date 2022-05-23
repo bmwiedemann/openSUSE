@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 16 06:24:47 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- Fix build with gcc12
+  * fix-upstream-gcc12-build-issue.patch
+
+-------------------------------------------------------------------
 Wed Feb  2 22:26:15 UTC 2022 - Denys Kondratenko <stdden@opensuse.org>
 
 - Restore brandig package versioning due to dependency for OpenSUSEway
