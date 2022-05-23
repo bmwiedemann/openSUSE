@@ -1,0 +1,111 @@
+From da6e6fb2395e97921e3b8069afce62a1cc2233bc Mon Sep 17 00:00:00 2001
+From: Bob131 <bob@bob131.so>
+Date: Sat, 9 Oct 2021 04:39:58 +1100
+Subject: [PATCH] audit/stap-note-iter: map ELF header directly
+
+In order to dig around in a loaded object's STap probe sections,
+stap_note_iter_init() tries to find the address at which the ELF
+header was mapped by the linker/kernel; to do this, it uses a function
+private to glibc (_dl_addr) to find the base address of an object in
+memory given the provided pointer to its dynamic segment.
+
+At some point (apparently due a toolchain update between F34 and F35,
+but I'm not entirely sure) this stopped working because _dl_addr() is
+no longer being exported in libc's DT_GNU_HASH table: the execution of
+stap_note_iter_init() triggers an exit when the PLT stub fails to
+resolve the symbol.
+
+Rather than using some other functionality or poking around trying to
+find where the header might already be mapped, this commit has the
+function just map it as required. (I have no idea why I wrote it like
+this in the first place; I suspect I was being too clever by half.)
+---
+ src/audit/stap-note-iter.c | 38 ++++++++------------------------------
+ src/audit/stap-note-iter.h |  1 -
+ 2 files changed, 8 insertions(+), 31 deletions(-)
+
+diff --git a/src/audit/stap-note-iter.c b/src/audit/stap-note-iter.c
+index 713dec9c0..d89793e9b 100644
+--- a/src/audit/stap-note-iter.c
++++ b/src/audit/stap-note-iter.c
+@@ -14,17 +14,6 @@
+ #define ALIGN_UP(x, p2) \
+   (((x) & ((p2) - 1)) == 0 ? (x) : ((x) + (p2)) & ~((p2) - 1))
+ 
+-/* rtld doesn't mark itself as initialised until after it's loaded all the
+- * initially required objects. dladdr() checks this flag, and when not set it
+- * delegates functionality to dlfcn_hook; in our case no such hook is
+- * installed, so it segfaults trying.
+- *
+- * This is the function dladdr() normally calls into. The signature doesn't
+- * seem to have changed since at least 2007, so redeclaring it here is probably
+- * relatively safe. */
+-extern int _dl_addr(const void* address, Dl_info* info,
+-                    struct link_map** mapp, const ElfW(Sym)** symbolp);
+-
+ static void* stap_note_iter_map(StapNoteIter* self,
+                                 size_t offset, size_t size) {
+   void* map;
+@@ -83,28 +72,14 @@ void stap_note_iter_init(StapNoteIter* self, const struct link_map* map) {
+ 
+   self->map = map;
+ 
+-  {
+-    /* We want the image base address. Kind of round-about, but it works.
+-     *
+-     * A warning about anyone thinking about alternate approaches: The initial
+-     * implementation of this used dl_phdr_info::dlpi_addr[0], but this
+-     * approach was changed since the documentation of the field doesn't appear
+-     * to be correct[1].
+-     *
+-     * [0]: dl_iterate_phdr(3)
+-     * [1]: https://bugzilla.kernel.org/show_bug.cgi?id=205837 */
+-    Dl_info info;
+-    if (!_dl_addr((void*) map->l_ld, &info, NULL, NULL)) {
+-      if (rr_audit_debug) {
+-        fprintf(stderr, "Base address lookup for '%s' failed\n", map->l_name);
+-      }
+-      return;
++  ehdr = stap_note_iter_map(self, 0, sizeof(*ehdr));
++  if (!ehdr) {
++    if (rr_audit_debug) {
++      fprintf(stderr, "Mapping ELF header for '%s' failed\n", map->l_name);
+     }
+-    self->base = info.dli_fbase;
++    return;
+   }
+ 
+-  ehdr = self->base;
+-
+   assert(ehdr->e_shentsize == sizeof(ElfW(Shdr)));
+ 
+   self->shdrs = stap_note_iter_map(self,
+@@ -114,6 +89,7 @@ void stap_note_iter_init(StapNoteIter* self, const struct link_map* map) {
+     if (rr_audit_debug) {
+       fprintf(stderr, "Mapping section headers for '%s' failed\n", map->l_name);
+     }
++    stap_note_iter_unmap(self, (void*) ehdr, sizeof(*ehdr));
+     return;
+   }
+ 
+@@ -122,6 +98,8 @@ void stap_note_iter_init(StapNoteIter* self, const struct link_map* map) {
+ 
+   assert(ehdr->e_shstrndx < ehdr->e_shnum);
+   shstrtab_hdr = self->shdrs + ehdr->e_shstrndx;
++  stap_note_iter_unmap(self, (void*) ehdr, sizeof(*ehdr));
++
+   shstrtab = stap_note_iter_map(self,
+                                 shstrtab_hdr->sh_offset,
+                                 shstrtab_hdr->sh_size);
+diff --git a/src/audit/stap-note-iter.h b/src/audit/stap-note-iter.h
+index 6fa703fae..947e4ca47 100644
+--- a/src/audit/stap-note-iter.h
++++ b/src/audit/stap-note-iter.h
+@@ -17,7 +17,6 @@ typedef struct {
+ typedef struct {
+   /*< private >*/
+   const struct link_map* map;
+-  const void* base;
+   int fd;
+   uintptr_t stapbase;
+   const ElfW(Shdr) *shdrs, *shdr_iter, *shdr_end;
