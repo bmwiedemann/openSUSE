@@ -17,7 +17,8 @@
 
 
 %{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
+# python-xmlsec doesn’t support 3.10 gh#mehcode/python-xmlsec#204
+%define skip_python310 1
 Name:           python-sunpy
 Version:        3.1.5
 Release:        0

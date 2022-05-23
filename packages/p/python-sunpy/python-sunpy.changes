@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May 21 09:36:16 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Doesn't build with 3.10 because of missing xmlsec.
+
+-------------------------------------------------------------------
 Tue Apr 26 10:33:52 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update sunpy-test-ignore-warnings.patch to include warnings
