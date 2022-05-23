@@ -42,6 +42,7 @@ Patch9:         groovy-java11.patch
 Patch10:        groovy-source-levels.patch
 Patch11:        groovy-ambiguous-functions-calls.patch
 Patch12:        groovy-2.4.21-jansi.patch
+Patch13:        0001-illegal-reflective-access.patch
 Patch100:       groovy-java17.patch
 BuildRequires:  ant
 BuildRequires:  ant-antlr
@@ -253,6 +254,7 @@ find \( -name *.jar -o -name *.class \) -delete
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
+%patch13 -p1
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
 %patch100 -p1
 %endif

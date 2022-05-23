@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 23 12:25:49 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0001-illegal-reflective-access.patch
+    + Backport upstream changes solving illegal reflective access
+    + This fixes visibility errors with Java 16+
+
+-------------------------------------------------------------------
 Fri May 20 04:45:23 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not force building with java <= 15, since we now can run

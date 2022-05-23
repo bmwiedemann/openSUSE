@@ -79,4 +79,12 @@
     <comment>gradle compatibility with java 17</comment>
     <requestid>978259</requestid>
   </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>2d5e4ff1c24010de8679dadd3d491654</srcmd5>
+    <version>2.4.21</version>
+    <time>1653318339</time>
+    <user>dimstar_suse</user>
+    <comment>Make the groovy/gradle combo build and run with Java 17</comment>
+    <requestid>978710</requestid>
+  </revision>
 </revisionlist>
