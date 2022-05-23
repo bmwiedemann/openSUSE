@@ -23,7 +23,7 @@
 %endif
 
 Name:           libxkbcommon
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Library for handling xkb descriptions
 License:        MIT
@@ -102,7 +102,7 @@ Summary:        Utilities from xkbcommon
 Group:          System/X11/Utilities
 
 %description tools
-xkbcommon tools for introspectino and debugging.
+xkbcommon tools for introspection and debugging.
 
 %package x11-devel
 Summary:        Development files for the libxkbcommon-x11 library

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May 22 00:09:05 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4.1
+  * Fix compose sequence overriding (common prefix) not working
+    correctly. Regressed in 1.2.0.
+  * Remove various bogus currency sign (particulary Euro and
+    Korean Won) entries from the keysym <-> Unicode mappings.
+    They prevented the real keysyms/codepoints for these from
+    mapping correctly.
+
+-------------------------------------------------------------------
 Fri Feb  4 11:51:53 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.4.0
