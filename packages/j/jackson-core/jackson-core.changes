@@ -6,7 +6,7 @@ Sun Mar 20 16:24:25 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 -------------------------------------------------------------------
 Wed Oct 20 05:55:56 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
-- Update to 2.13.0
+- Update to 2.13.0 (CVE-2020-36518, bsc#1197132)
   * 2.13.0 (30-Sep-2021)
     + #652: Misleading exception for input source when processing
       byte buffer with start offset
