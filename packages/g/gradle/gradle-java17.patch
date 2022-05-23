@@ -1,0 +1,245 @@
+--- gradle-4.4.1/gradle/compile.gradle	2022-05-20 20:47:44.754819707 +0200
++++ gradle-4.4.1/gradle/compile.gradle	2022-05-20 22:12:26.492986285 +0200
+@@ -20,6 +20,9 @@
+ 
+ tasks.withType(AbstractCompile) {
+     options.fork = true // Always fork compilation
++    if (JavaVersion.current().java9Compatible) {
++        options.forkOptions.jvmArgs = [ '--add-opens', 'java.base/java.lang=ALL-UNNAMED', '--add-exports', 'jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED']
++    }
+ }
+ 
+ if (java7Home) {
+--- gradle-4.4.1/subprojects/base-services/base-services.gradle	2022-05-20 20:38:40.431254836 +0200
++++ gradle-4.4.1/subprojects/base-services/base-services.gradle	2022-05-20 20:39:13.927474227 +0200
+@@ -6,7 +6,7 @@
+  */
+ apply plugin: 'java-library'
+ 
+-sourceCompatibility = javaVersion.java9Compatible ? 1.6 : 1.5
++sourceCompatibility = 1.8
+ 
+ dependencies {
+     api libraries.guava
+--- gradle-4.4.1/subprojects/base-services/src/main/java/org/gradle/internal/Actions.java	2022-05-20 20:38:40.439254888 +0200
++++ gradle-4.4.1/subprojects/base-services/src/main/java/org/gradle/internal/Actions.java	2022-05-20 21:00:37.135908660 +0200
+@@ -64,7 +64,7 @@
+      * @return The composite action.
+      */
+     public static <T> Action<T> composite(Action<? super T>... actions) {
+-        return composite(Arrays.asList(actions));
++        return composite(Arrays.<Action<? super T>>asList(actions));
+     }
+ 
+     private static class CompositeAction<T> implements Action<T> {
+--- gradle-4.4.1/subprojects/build-option/build-option.gradle	2022-05-20 20:38:40.519255412 +0200
++++ gradle-4.4.1/subprojects/build-option/build-option.gradle	2022-05-20 20:46:26.446306879 +0200
+@@ -1,6 +1,6 @@
+ apply plugin: 'java-library'
+ 
+-sourceCompatibility = javaVersion.java9Compatible ? 1.6 : 1.5
++sourceCompatibility = 1.8
+ 
+ dependencies {
+     api project(':cli')
+--- gradle-4.4.1/subprojects/cli/cli.gradle	2022-05-20 20:38:40.527255465 +0200
++++ gradle-4.4.1/subprojects/cli/cli.gradle	2022-05-20 20:46:09.742197488 +0200
+@@ -22,6 +22,6 @@
+ */
+ apply plugin: 'java-library'
+ 
+-sourceCompatibility = javaVersion.java9Compatible ? 1.6 : 1.5
++sourceCompatibility = 1.8
+ 
+ useClassycle()
+--- gradle-4.4.1/subprojects/jvm-services/jvm-services.gradle	2022-05-20 20:38:40.627256119 +0200
++++ gradle-4.4.1/subprojects/jvm-services/jvm-services.gradle	2022-05-20 20:45:02.565757547 +0200
+@@ -3,7 +3,7 @@
+  */
+ apply plugin: 'java-library'
+ 
+-sourceCompatibility = javaVersion.java9Compatible ? 1.6 : 1.5
++sourceCompatibility = 1.8
+ 
+ dependencies {
+     api project(":baseServices")
+--- gradle-4.4.1/subprojects/language-groovy/language-groovy.gradle	2022-05-20 20:38:40.371254444 +0200
++++ gradle-4.4.1/subprojects/language-groovy/language-groovy.gradle	2022-05-20 20:44:55.081708524 +0200
+@@ -1,6 +1,6 @@
+ 
+ // Compiler daemon
+-sourceCompatibility = 1.6
++sourceCompatibility = 1.8
+ 
+ dependencies {
+     compile project(":core")
+--- gradle-4.4.1/subprojects/language-jvm/language-jvm.gradle	2022-05-20 20:38:40.579255806 +0200
++++ gradle-4.4.1/subprojects/language-jvm/language-jvm.gradle	2022-05-20 20:44:47.005655628 +0200
+@@ -1,4 +1,4 @@
+-sourceCompatibility = 1.6
++sourceCompatibility = 1.8
+ 
+ dependencies {
+     compile project(":core")
+--- gradle-4.4.1/subprojects/launcher/launcher.gradle	2022-05-20 20:38:40.403254653 +0200
++++ gradle-4.4.1/subprojects/launcher/launcher.gradle	2022-05-20 20:44:35.929583089 +0200
+@@ -1,7 +1,7 @@
+ import org.gradle.build.GradleStartScriptGenerator
+ 
+ // Main entry point requires Java 5
+-sourceCompatibility = javaVersion.java9Compatible ? 1.6 : 1.5
++sourceCompatibility = 1.8
+ 
+ configurations {
+     startScriptGenerator
+--- gradle-4.4.1/subprojects/logging/logging.gradle	2022-05-20 20:38:40.707256643 +0200
++++ gradle-4.4.1/subprojects/logging/logging.gradle	2022-05-20 20:44:27.033524832 +0200
+@@ -3,7 +3,7 @@
+  */
+ apply plugin: 'java-library'
+ 
+-sourceCompatibility = javaVersion.java9Compatible ? 1.6 : 1.5
++sourceCompatibility = 1.8
+ 
+ dependencies {
+     api project(':baseServices')
+--- gradle-4.4.1/subprojects/messaging/messaging.gradle	2022-05-20 20:38:40.619256067 +0200
++++ gradle-4.4.1/subprojects/messaging/messaging.gradle	2022-05-20 20:44:13.169434035 +0200
+@@ -1,6 +1,6 @@
+ apply plugin: 'java-library'
+ 
+-sourceCompatibility = javaVersion.java9Compatible ? 1.6 : 1.5
++sourceCompatibility = 1.8
+ 
+ dependencies {
+     api project(':baseServices')
+--- gradle-4.4.1/subprojects/model-groovy/model-groovy.gradle	2022-05-20 20:38:40.215253421 +0200
++++ gradle-4.4.1/subprojects/model-groovy/model-groovy.gradle	2022-05-20 20:44:04.225375461 +0200
+@@ -20,7 +20,7 @@
+  */
+ apply plugin: 'java-library'
+ 
+-sourceCompatibility = javaVersion.java9Compatible ? 1.6 : 1.5
++sourceCompatibility = 1.8
+ 
+ dependencies {
+     api project(':baseServices')
+--- gradle-4.4.1/subprojects/native/native.gradle	2022-05-20 20:38:40.583255831 +0200
++++ gradle-4.4.1/subprojects/native/native.gradle	2022-05-20 20:43:54.185309705 +0200
+@@ -3,7 +3,7 @@
+ */
+ apply plugin: 'java-library'
+ 
+-sourceCompatibility = javaVersion.java9Compatible ? 1.6 : 1.5
++sourceCompatibility = 1.8
+ 
+ dependencies {
+     api project(':baseServices')
+--- gradle-4.4.1/subprojects/platform-play/platform-play.gradle	2022-05-20 20:38:40.687256513 +0200
++++ gradle-4.4.1/subprojects/platform-play/platform-play.gradle	2022-05-20 20:43:31.785163017 +0200
+@@ -1,7 +1,7 @@
+ apply plugin: "groovy"
+ 
+ // Compiler daemon
+-sourceCompatibility = 1.6
++sourceCompatibility = 1.8
+ 
+ dependencies {
+     compile project(":core")
+--- gradle-4.4.1/subprojects/plugins/plugins.gradle	2022-05-20 20:38:40.375254469 +0200
++++ gradle-4.4.1/subprojects/plugins/plugins.gradle	2022-05-20 20:42:07.592611627 +0200
+@@ -14,7 +14,7 @@
+  * limitations under the License.
+  */
+ 
+-sourceCompatibility = 1.6
++sourceCompatibility = 1.8
+ 
+ configurations {
+     testFixtures
+--- gradle-4.4.1/subprojects/process-services/process-services.gradle	2022-05-20 20:38:40.635256172 +0200
++++ gradle-4.4.1/subprojects/process-services/process-services.gradle	2022-05-20 20:41:57.240543827 +0200
+@@ -3,7 +3,7 @@
+  */
+ apply plugin: 'java-library'
+ 
+-sourceCompatibility = javaVersion.java9Compatible ? 1.6 : 1.5
++sourceCompatibility = 1.8
+ 
+ dependencies {
+     api project(':baseServices')
+--- gradle-4.4.1/subprojects/reporting/reporting.gradle	2022-05-20 20:38:40.511255360 +0200
++++ gradle-4.4.1/subprojects/reporting/reporting.gradle	2022-05-20 21:10:34.875902747 +0200
+@@ -19,8 +19,6 @@
+     testCompile libraries.jsoup
+     integTestRuntime project(':codeQuality')
+     integTestRuntime project(':jacoco')
+-
+-    reports "jquery:jquery.min:1.11.0@js"
+ }
+ 
+ task reportResources(type: Copy) {
+--- gradle-4.4.1/subprojects/resources/resources.gradle	2022-05-20 20:38:40.683256488 +0200
++++ gradle-4.4.1/subprojects/resources/resources.gradle	2022-05-20 20:41:42.880449782 +0200
+@@ -3,7 +3,7 @@
+  */
+ apply plugin: 'java-library'
+ 
+-sourceCompatibility = javaVersion.java9Compatible ? 1.6 : 1.5
++sourceCompatibility = 1.8
+ 
+ dependencies {
+     api project(':baseServices')
+--- gradle-4.4.1/subprojects/scala/scala.gradle	2022-05-20 20:38:40.399254628 +0200
++++ gradle-4.4.1/subprojects/scala/scala.gradle	2022-05-20 20:41:24.736330953 +0200
+@@ -15,7 +15,7 @@
+  */
+ 
+ // Compiler daemon
+-sourceCompatibility = 1.6
++sourceCompatibility = 1.8
+ 
+ dependencies {
+     compile libraries.groovy
+--- gradle-4.4.1/subprojects/testing-jvm/testing-jvm.gradle	2022-05-20 20:38:40.551255623 +0200
++++ gradle-4.4.1/subprojects/testing-jvm/testing-jvm.gradle	2022-05-20 20:41:00.632173069 +0200
+@@ -14,7 +14,7 @@
+  * limitations under the License.
+  */
+ // Test execution
+-sourceCompatibility = 1.6
++sourceCompatibility = 1.8
+ 
+ dependencies {
+     compile project(':core')
+--- gradle-4.4.1/subprojects/tooling-api/tooling-api.gradle	2022-05-20 20:38:40.415254732 +0200
++++ gradle-4.4.1/subprojects/tooling-api/tooling-api.gradle	2022-05-20 20:40:34.336000860 +0200
+@@ -1,7 +1,7 @@
+ import org.gradle.ShadedJar
+ 
+ // GradleConnector entry point requires Java 5
+-sourceCompatibility = javaVersion.java9Compatible ? 1.6 : 1.5
++sourceCompatibility = 1.8
+ 
+ configurations {
+     testPublishRuntime
+--- gradle-4.4.1/subprojects/workers/workers.gradle	2022-05-20 20:38:40.631256147 +0200
++++ gradle-4.4.1/subprojects/workers/workers.gradle	2022-05-20 20:40:21.263915243 +0200
+@@ -1,5 +1,5 @@
+ 
+-sourceCompatibility = javaVersion.java9Compatible ? 1.6 : 1.5
++sourceCompatibility = 1.8
+ 
+ dependencies {
+     compile project(':core')
+--- gradle-4.4.1/subprojects/wrapper/wrapper.gradle	2022-05-20 20:38:40.699256591 +0200
++++ gradle-4.4.1/subprojects/wrapper/wrapper.gradle	2022-05-20 20:39:56.007749831 +0200
+@@ -15,7 +15,7 @@
+  */
+ 
+ // Wrapper main entry point requires Java 5
+-sourceCompatibility = javaVersion.java9Compatible ? 1.6 : 1.5
++sourceCompatibility = 1.8
+ 
+ dependencies {
+     compile project(":cli")

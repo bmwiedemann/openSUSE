@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 23 12:27:42 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * gradle-java17.patch
+    + Allow actually build gradle using Java 16+
+
+-------------------------------------------------------------------
 Fri May 20 04:46:11 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Modify the launcher so that gradle can work with Java 17

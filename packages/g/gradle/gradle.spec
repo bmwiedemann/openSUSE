@@ -23,64 +23,48 @@ Summary:        Build automation tool
 # Some examples and integration tests are under GNU LGPL and Boost
 # Software License, but are not used to create binary package.
 License:        Apache-2.0
-URL:            http://www.gradle.org/
-
-Source0:        http://services.gradle.org/distributions/gradle-%{version}-src.zip
-#Source1:        http://services.gradle.org/versions/all#/all-released-versions.json
-Source2:        gradle-font-metadata.xml
-Source3:        gradle-jquery-metadata.xml
+URL:            https://www.gradle.org/
+Source0:        https://services.gradle.org/distributions/gradle-%{version}-src.zip
 Source4:        gradle-launcher.sh.in
 Source5:        gradle.desktop
 Source6:        gradle-man.txt
-
-Patch0001:      0001-Gradle-local-mode.patch
-Patch0002:      0002-Remove-Class-Path-from-manifest.patch
-Patch0003:      0003-Implement-XMvn-repository-factory-method.patch
-Patch0004:      0004-Use-unversioned-dependency-JAR-names.patch
-Patch0005:      0005-Port-to-Maven-3.3.9-and-Eclipse-Aether.patch
-Patch0006:      0006-Disable-code-quality-checks.patch
-Patch0007:      0007-Port-to-Kryo-3.0.patch
-Patch0008:      0008-Port-to-Ivy-2.4.0.patch
-Patch0009:      0009-Port-to-Polyglot-0.1.8.patch
-Patch0010:      0010-Port-from-Simple-4-to-Jetty-9.patch
-Patch0011:      0011-Disable-benchmarks.patch
-Patch0012:      0012-Disable-patching-of-external-modules.patch
-Patch0013:      0013-Add-missing-transitive-dependencies.patch
-Patch0014:      0014-Disable-ideNative-module.patch
-Patch0015:      0015-Disable-docs-build.patch
-Patch0016:      0016-Port-to-guava-20.0.patch
+Patch1:         0001-Gradle-local-mode.patch
+Patch2:         0002-Remove-Class-Path-from-manifest.patch
+Patch3:         0003-Implement-XMvn-repository-factory-method.patch
+Patch4:         0004-Use-unversioned-dependency-JAR-names.patch
+Patch5:         0005-Port-to-Maven-3.3.9-and-Eclipse-Aether.patch
+Patch6:         0006-Disable-code-quality-checks.patch
+Patch7:         0007-Port-to-Kryo-3.0.patch
+Patch8:         0008-Port-to-Ivy-2.4.0.patch
+Patch9:         0009-Port-to-Polyglot-0.1.8.patch
+Patch10:        0010-Port-from-Simple-4-to-Jetty-9.patch
+Patch11:        0011-Disable-benchmarks.patch
+Patch12:        0012-Disable-patching-of-external-modules.patch
+Patch13:        0013-Add-missing-transitive-dependencies.patch
+Patch14:        0014-Disable-ideNative-module.patch
+Patch15:        0015-Disable-docs-build.patch
+Patch16:        0016-Port-to-guava-20.0.patch
 # it depends on ant which is Java 8+
-Patch0017:      0017-Set-core-api-source-level-to-8.patch
-
+Patch17:        0017-Set-core-api-source-level-to-8.patch
 Patch100:       gradle-CVE-2019-16370.patch
-
 Patch200:       gradle-4.4.1-asm7.patch
 Patch201:       gradle-jansi.patch
-
 Patch300:       java11-compatibility.patch
 Patch301:       java8-compatibility.patch
 Patch302:       remove-timestamps.patch
 Patch303:       cast-estimated-runtime-to-long.patch
 Patch304:       port-to-guava-30.patch
-
-BuildRequires:  gradle-local
-BuildRequires:  xmvn-subst
-BuildConflicts: java-devel >= 12
-BuildConflicts: java-headless >= 12
-BuildConflicts: java >= 12
-
-# Generic build dependencies
-BuildRequires:  desktop-file-utils
-BuildRequires:  unzip
-
-# Not to have to own the directories
-BuildRequires:  hicolor-icon-theme
-
+Patch305:       gradle-java17.patch
 # manpage build dependencies
 BuildRequires:  asciidoc
+# Generic build dependencies
+BuildRequires:  desktop-file-utils
+BuildRequires:  gradle-local
+# Not to have to own the directories
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  unzip
 BuildRequires:  xmlto
-
-# Artifacts required for Gradle build
+BuildRequires:  xmvn-subst
 BuildRequires:  mvn(antlr:antlr)
 BuildRequires:  mvn(biz.aQute.bnd:bndlib)
 BuildRequires:  mvn(bsh:bsh)
@@ -199,26 +183,6 @@ BuildRequires:  mvn(org.sonatype.pmaven:pmaven-groovy)
 BuildRequires:  mvn(org.testng:testng)
 BuildRequires:  mvn(xerces:xercesImpl)
 BuildRequires:  mvn(xml-apis:xml-apis)
-# Avoid building with bootstrap versions of those
-#!BuildRequires: groovy-lib sbt gpars
-# But we want to avoid cycle with oneself
-#!BuildRequires: gradle-bootstrap
-
-Obsoletes:      %{name}-bootstrap
-
-# Artifacts required for Gradle build which don't have Maven metadata
-# and thus no mvn provides.
-BuildRequires:  liberation-fonts
-
-# Generic runtime dependencies.
-Requires:       bash
-Requires:       hicolor-icon-theme
-Requires:       javapackages-tools
-
-# Theoretically Gradle might be usable with just JRE, but typical Gradle
-# workflow requires full JDK, so we recommend it here.
-Recommends:     java-devel
-
 # Providers of symlinks in Gradle lib/ directory. Generated with:
 # for l in $(find /usr/share/gradle -type l); do rpm -qf --qf 'Requires:       %{name}\n' $(readlink -e $l); done | sort -u | grep -v gradle
 Requires:       ant
@@ -236,6 +200,8 @@ Requires:       aws-sdk-java-core
 Requires:       aws-sdk-java-kms
 Requires:       aws-sdk-java-s3
 Requires:       base64coder
+# Generic runtime dependencies.
+Requires:       bash
 Requires:       beust-jcommander
 Requires:       bouncycastle
 Requires:       bouncycastle-pg
@@ -246,6 +212,7 @@ Requires:       google-gson
 Requires:       google-guice
 Requires:       groovy-lib
 Requires:       guava
+Requires:       hicolor-icon-theme
 Requires:       httpcomponents-client
 Requires:       httpcomponents-core
 Requires:       jackson-annotations
@@ -253,6 +220,7 @@ Requires:       jackson-core
 Requires:       jackson-databind
 Requires:       jansi
 Requires:       jatl
+Requires:       javapackages-tools
 Requires:       jcifs
 Requires:       jcip-annotations
 Requires:       jcl-over-slf4j
@@ -302,6 +270,14 @@ Requires:       testng
 Requires:       xbean
 Requires:       xerces-j2
 Requires:       xml-commons-apis
+# Theoretically Gradle might be usable with just JRE, but typical Gradle
+# workflow requires full JDK, so we recommend it here.
+Recommends:     java-devel
+# Avoid building with bootstrap versions of those
+#!BuildRequires: groovy-lib sbt gpars
+# But we want to avoid cycle with oneself
+#!BuildRequires: gradle-bootstrap
+Obsoletes:      %{name}-bootstrap
 
 %description
 Gradle is build automation evolved. Gradle can automate the building,
@@ -333,10 +309,6 @@ rm -rf gradle/wrapper/
 rm -r buildSrc/src/main/groovy/org/gradle/binarycompatibility
 rm buildSrc/src/main/groovy/org/gradle/build/docs/CacheableAsciidoctorTask.groovy
 
-# jquery and fonts don't have Maven metadata
-%mvn_config resolverSettings/metadataRepositories/repository %{SOURCE2}
-%mvn_config resolverSettings/metadataRepositories/repository %{SOURCE3}
-
 # Tests for build script currently fail, but the build works.
 # TODO: enble tests
 rm -rf buildSrc/src/test
@@ -354,10 +326,9 @@ rm -r subprojects/resources-gcs
 rm -r subprojects/ide-native
 
 %build
+rm gradle.properties
 export LANG=en_US.UTF8
 export JAVA_OPTS="-Xmx2g -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8"
-# Disables parallel build and daemon mode
-rm gradle.properties
 gradle-local --offline --no-daemon install xmvnInstall \
     -Pgradle_installPath=$PWD/inst -PfinalRelease
 
@@ -405,7 +376,7 @@ install -p -m 644 man/gradle.1 %{buildroot}%{_mandir}/man1/gradle.1
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
-%{_mandir}/man1/gradle.1*
+%{_mandir}/man1/gradle.1%{?ext_man}
 %license LICENSE NOTICE
 
 %changelog
