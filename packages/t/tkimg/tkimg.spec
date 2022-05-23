@@ -1,7 +1,7 @@
 #
 # spec file for package tkimg
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,21 @@
 
 
 Name:           tkimg
+Version:        1.4.13
+Release:        0
+Summary:        More Image Formats for Tk
+Group:          Development/Libraries/Tcl
+License:        BSD-3-Clause
+URL:            https://sourceforge.net/projects/tkimg
+Source0:        https://sourceforge.net/projects/tkimg/files/tkimg/1.4/tkimg%%20%{version}/Img-%{version}-Source.tar.gz
+Patch0:         tests-add-destdir-tcllibpath.patch
+# PATCH-FIX-UPSTREAM fix-aarch64-neon.patch -- https://sourceforge.net/p/tkimg/patches/13/
+Patch1:         fix-aarch64-neon.patch
+BuildRequires:  dos2unix
 BuildRequires:  tcllib
 BuildRequires:  tk-devel
 BuildRequires:  xorg-x11-devel
-Url:            http://sourceforge.net/projects/tkimg
-Summary:        More Image Formats for Tk
-License:        BSD-3-Clause
-Group:          Development/Libraries/Tcl
-Version:        1.4
-Release:        0
-Source0:        %{name}%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  xvfb-run
 
 %description
 This package contains a collection of image format handlers for the Tk
@@ -44,7 +48,12 @@ Group:          Development/Libraries/Tcl
 Files needed to compile/link C code against tkimg.
 
 %prep
-%setup -q -n %name%{version}
+%autosetup -p1 -n Img-%{version}
+# Source archive is likly created on Windows, so fix some issues
+# 1. Fix file permissions: Executable bit is set on every file, fix that
+find . -type f -not -name configure -exec chmod 0644 \{\} +
+# 2. Fix line ending
+dos2unix ANNOUNCE ChangeLog README Reorganization.Notes.txt changes doc/*.htm demo.tcl license.terms base/pkgIndex.tcl.in
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -52,19 +61,20 @@ Files needed to compile/link C code against tkimg.
         --libdir=%tcl_archdir \
         --with-tcl=%_libdir \
         --with-tk=%_libdir
-make
-
-%check
-make test
+%make_build
 
 %install
-%makeinstall INSTALL_ROOT=%buildroot
+%make_install INSTALL_ROOT=%buildroot
+# Fix file permissions
 chmod a-x %buildroot%tcl_archdir/*/*.a
+
+%check
+xvfb-run make test DESTDIR=%buildroot
 
 %files
 %defattr(-,root,root,-)
-%doc ANNOUNCE ChangeLog README Reorganization.Notes.txt
-%doc changes license.terms doc/*.htm demo.tcl
+%doc ANNOUNCE ChangeLog README Reorganization.Notes.txt changes doc/*.htm demo.tcl
+%license license.terms
 %doc %_mandir/*/*
 %tcl_archdir/*
 %exclude %tcl_archdir/*/*.a
