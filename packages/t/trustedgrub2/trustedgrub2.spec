@@ -1,7 +1,7 @@
 #
 # spec file for package trustedgrub2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,6 +68,8 @@ Patch103:       grub2-btrfs-03-follow_default.patch
 Patch104:       grub2-btrfs-04-subvol-mount.patch
 Patch105:       grub2-btrfs-05-subvol-fallback.patch
 Patch110:       grub2-menu-unrestricted.patch
+Patch111:       0001-Fix-Werror-array-bounds-array-subscript-0-is-outside.patch
+Patch112:       0002-reed_solomon-Fix-array-subscript-0-is-outside-array-.patch
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  flex

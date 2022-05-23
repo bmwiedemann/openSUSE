@@ -80,4 +80,12 @@
   * 0001-build-Fix-GRUB-i386-pc-build-with-Ubuntu-gcc.patch (forwarded request 887242 from michael-chang)</comment>
     <requestid>887496</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>a4d7e7cb7f4293b4ffa052f1ad33a1d0</srcmd5>
+    <version>1.4.0</version>
+    <time>1653313922</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978653</requestid>
+  </revision>
 </revisionlist>

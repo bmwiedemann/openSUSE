@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 23 06:33:29 UTC 2022 - Michael Chang <mchang@suse.com>
+
+- Fix GCC 12 build failure
+  * 0001-Fix-Werror-array-bounds-array-subscript-0-is-outside.patch
+  * 0002-reed_solomon-Fix-array-subscript-0-is-outside-array-.patch
+- Revised
+  * grub2-btrfs-01-add-ability-to-boot-from-subvolumes.patch
+
+-------------------------------------------------------------------
 Wed Apr 21 03:52:37 UTC 2021 - Michael Chang <mchang@suse.com>
 
 - Fix decompressor is too big error during installation (bsc#1185023) 
