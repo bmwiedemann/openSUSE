@@ -53,9 +53,7 @@ BuildRequires:  mvn(org.osgi:osgi.core)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildArch:      noarch
-%if 0%{?suse_version} > 1500
 BuildRequires:  mvn(javax.activation:activation)
-%endif
 
 %description
 Netty is a NIO client server framework which enables quick and easy
@@ -89,9 +87,7 @@ rm -rf jar doc license
 %pom_remove_plugin :animal-sniffer-maven-plugin
 %pom_remove_plugin :maven-enforcer-plugin
 
-%if 0%{?suse_version} <= 1500
 %pom_remove_dep javax.activation:activation
-%endif
 %pom_remove_dep :npn-api
 %pom_xpath_remove "pom:extension[pom:artifactId[text()='os-maven-plugin']]"
 %pom_xpath_remove "pom:execution[pom:id[text()='remove-examples']]"
