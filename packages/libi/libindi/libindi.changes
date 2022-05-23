@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May 21 15:37:19 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.9.6:
+  * add lastparked logic 
+  * Fixing UTC Offset format allowing :SGHH:MM# where MM can be 00, 30 and 45 
+  * Terminate commands missing #, introduce PEC recording and status
+  * fix issue reading worm position 
+  * UTC uninitialized structure fix
+  * Add mount status. Start CP5 
+  * Remove user choice for CM/CMR
+  * Allow any guide rate between 0.1x and 1x 
+  * Driver for WandererRotatorLite
+
+-------------------------------------------------------------------
 Thu Mar 10 07:26:23 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.9.5:

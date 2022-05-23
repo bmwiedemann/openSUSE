@@ -492,4 +492,21 @@
     <comment>Fix changelog</comment>
     <requestid>962237</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>ca673cebc735876a8a65164b08b28cef</srcmd5>
+    <version>1.9.6</version>
+    <time>1653313909</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.6:
+  * add lastparked logic 
+  * Fixing UTC Offset format allowing :SGHH:MM# where MM can be 00, 30 and 45 
+  * Terminate commands missing #, introduce PEC recording and status
+  * fix issue reading worm position 
+  * UTC uninitialized structure fix
+  * Add mount status. Start CP5 
+  * Remove user choice for CM/CMR
+  * Allow any guide rate between 0.1x and 1x 
+  * Driver for WandererRotatorLite</comment>
+    <requestid>978596</requestid>
+  </revision>
 </revisionlist>
