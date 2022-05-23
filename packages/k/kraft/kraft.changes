@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 22 19:58:01 UTC 2022 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to upstream version 0.98
+- Remove patch Adapt-to-new-Akonadi-includes.patch as it went upstream
+
+-------------------------------------------------------------------
 Wed Dec  1 11:18:22 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add Adapt-to-new-Akonadi-includes.patch to fix build with Akonadi

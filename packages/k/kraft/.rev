@@ -178,4 +178,14 @@
     <comment></comment>
     <requestid>935795</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c93d190f6a0cd324e35715f49d17e088</srcmd5>
+    <version>0.98</version>
+    <time>1653313904</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream version 0.98
+- Remove patch Adapt-to-new-Akonadi-includes.patch as it went upstream
+</comment>
+    <requestid>978568</requestid>
+  </revision>
 </revisionlist>
