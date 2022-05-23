@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 23 12:28:53 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Regenerate to account for changes in gradle and groovy packages
+
+-------------------------------------------------------------------
 Fri May 20 04:42:28 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Modify the launcher so that gradle-bootstrap can work with
