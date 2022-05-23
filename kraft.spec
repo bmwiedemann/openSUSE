@@ -1,7 +1,7 @@
 #
 # spec file for package kraft
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2007-2011 Klaas Freitag <freitag@kde.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %bcond_without akonadi
 %bcond_with qpdfview
 Name:           kraft
-Version:        0.97
+Version:        0.98
 Release:        0
 Summary:        KDE software to manage office documents in the office
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -53,8 +53,6 @@ Recommends:     python3-Weasyprint
 # PATCH-FEATURE-UPSTREAM use_qpdfview.path Open PDFs in qpdfview in appimages
 Patch0:         use_qpdfview.patch
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         Adapt-to-new-Akonadi-includes.patch
 %if %{with akonadi}
 BuildRequires:  cmake(KF5AkonadiContact)
 %endif
@@ -73,7 +71,6 @@ See the website http://volle-kraft-voraus.de for more information.
 %if %{with qpdfview}
 %patch0 -p1
 %endif
-%patch1 -p1
 
 %build
 
