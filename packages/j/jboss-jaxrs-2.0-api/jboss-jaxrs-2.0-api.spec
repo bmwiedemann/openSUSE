@@ -26,12 +26,11 @@ Summary:        JAX-RS 2.0: The Java API for RESTful Web Services
 License:        Apache-2.0 AND (CDDL-1.0 OR GPL-2.0-only)
 URL:            https://github.com/jboss/jboss-jaxrs-api_spec
 Source0:        https://github.com/jboss/jboss-jaxrs-api_spec/archive/%{oname}-%{namedversion}/jboss-jaxrs-api_spec-%{oname}-%{namedversion}.tar.gz
+BuildRequires:  fdupes
 BuildRequires:  maven-local
+BuildRequires:  mvn(javax.xml.bind:jaxb-api)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.jboss:jboss-parent:pom:)
-%if 0%{?suse_version} > 1500
-BuildRequires:  mvn(javax.xml.bind:jaxb-api)
-%endif
 BuildArch:      noarch
 
 %description
@@ -48,9 +47,7 @@ This package contains the API documentation for %{name}.
 
 %pom_remove_plugin :maven-source-plugin
 
-%if 0%{?suse_version} > 1500
-%pom_add_dep javax.xml.bind:jaxb-api
-%endif
+%pom_add_dep javax.xml.bind:jaxb-api::provided
 
 %{mvn_file} :%{oname} %{name}
 
@@ -61,6 +58,7 @@ This package contains the API documentation for %{name}.
 
 %install
 %mvn_install
+%fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 %license LICENSE

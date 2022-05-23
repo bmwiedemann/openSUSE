@@ -15,4 +15,12 @@
     <comment>standalone jaxb-api</comment>
     <requestid>964416</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a95b35324fb8779070f64357f2cc9802</srcmd5>
+    <version>1.0.1</version>
+    <time>1653313934</time>
+    <user>dimstar_suse</user>
+    <comment>Build against the standalone JavaEE modules inconditionally</comment>
+    <requestid>978700</requestid>
+  </revision>
 </revisionlist>
