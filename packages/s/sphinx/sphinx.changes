@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 12 12:39:57 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add permissions on /var/log/sphinx so it can create searchd.log.
+
+-------------------------------------------------------------------
 Thu Jan 27 20:00:41 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Added CVE-2020-29050.patch for fixing CVE-2020-29050 boo#1195227

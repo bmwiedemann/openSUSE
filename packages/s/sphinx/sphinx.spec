@@ -89,9 +89,12 @@ Pure C searchd client API library
 Sphinx search engine, http://sphinxsearch.com/
 
 
+
+
 # Comment
 # we don't package api language java,ruby,php,python
 # upstream don't recommend their usage.
+
 %prep
 %setup -q -n "%{name}-%{version}-release"
 %autopatch -p1
@@ -110,11 +113,11 @@ export pg_includes="$(pkg-config --cflags --libs libpq | sed 's,^-I,,g')"
     --with-pgsql-includes="${pg_includes}" \
     --with-pgsql-libs="%{_libdir}"
 
-make %{?_smp_mflags} VERBOSE=1
+%make_build VERBOSE=1
 
 pushd api/libsphinxclient
  %configure --sysconfdir=%{_sysconfdir}/%{name}/
- make VERBOSE=1 # Not supported upstream %%{?_smp_mflags}
+ %make_build VERBOSE=1 -j1
 popd
 
 %install
@@ -161,7 +164,8 @@ cat > %{buildroot}%{_sysconfdir}/logrotate.d/%{name} << EOF
        compress
        notifempty
        missingok
-       create 640 %{sphinx_user} root
+       su %{sphinx_user} %{sphinx_group}
+       create 640 %{sphinx_user} %{sphinx_group}
 }
 EOF
 
@@ -223,7 +227,7 @@ useradd -r -g %{sphinx_group} -d %{sphinx_home} -s /bin/sh \
 %doc %attr(644, root, man) %{_mandir}/man1/indextool.1*
 %doc %attr(644, root, man) %{_mandir}/man1/searchd.1*
 %doc %attr(644, root, man) %{_mandir}/man1/spelldump.1*
-%dir %attr(0750, root, %{sphinx_group}) %{_localstatedir}/log/%{name}
+%dir %attr(0750, %{sphinx_user}, %{sphinx_group}) %{_localstatedir}/log/%{name}
 %ghost %attr(0640, %{sphinx_user}, root) %{_localstatedir}/log/%{name}/%{daemon}.log
 %ghost %attr(0640, %{sphinx_user}, root) %{_localstatedir}/log/%{name}/query.log
 %dir %attr(0755, %{sphinx_user}, %{sphinx_group}) %{_localstatedir}/lib/%{name}
