@@ -1,7 +1,7 @@
 #
 # spec file for package simplescreenrecorder
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           simplescreenrecorder
-Version:        0.4.3
+Version:        0.4.4
 Release:        0
 Summary:        A feature-rich screen recorder that supports X11 and OpenGL
 License:        GPL-3.0-or-later
@@ -46,7 +46,7 @@ BuildRequires:  pkgconfig(libavformat) >= 53
 BuildRequires:  pkgconfig(libavutil) >= 51
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libswscale) >= 2
-BuildRequires:  pkgconfig(libv4l2) 
+BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
