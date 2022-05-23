@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 20 12:31:39 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 43.3:
+  + Change Google/Microsoft authentication flow to use a more
+    secure, non-deprecated approach (Google is turning off the
+    approach we use now in just a few months).
+  + Remember window size after closing.
+  + Fix incorrect file permissions / mtime when restoring files
+    from other users.
+  + Updated translations.
+- Drop 60856db.patch and 9c17deb0526b.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Mon Apr 25 11:10:25 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 43.2:

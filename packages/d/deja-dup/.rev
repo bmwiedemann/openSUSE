@@ -604,4 +604,20 @@ So preferably for 13.1 as well.</comment>
     <comment>Scripted push from GNOME:Next (forwarded request 972592 from dimstar)</comment>
     <requestid>973126</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>341764da3dfdfe384839e77a788e61f5</srcmd5>
+    <version>43.3</version>
+    <time>1653313928</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 43.3:
+  + Change Google/Microsoft authentication flow to use a more
+    secure, non-deprecated approach (Google is turning off the
+    approach we use now in just a few months).
+  + Remember window size after closing.
+  + Fix incorrect file permissions / mtime when restoring files
+    from other users.
+  + Updated translations.
+- Drop 60856db.patch and 9c17deb0526b.patch: fixed upstream. (forwarded request 978273 from dimstar)</comment>
+    <requestid>978661</requestid>
+  </revision>
 </revisionlist>
