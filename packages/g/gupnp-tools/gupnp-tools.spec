@@ -1,7 +1,7 @@
 #
 # spec file for package gupnp-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gupnp-tools
-Version:        0.10.2
+Version:        0.10.3
 Release:        0
 Summary:        UPnP tools to test and debug UPnP devices and control points
 License:        GPL-2.0-or-later
@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig(gobject-2.0) >= 2.24
 BuildRequires:  pkgconfig(gssdp-1.2) >= 1.1
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10
 BuildRequires:  pkgconfig(gtksourceview-4)
-BuildRequires:  pkgconfig(gupnp-1.2) >= 1.1
+BuildRequires:  pkgconfig(gupnp-1.2) >= 1.4.0
 BuildRequires:  pkgconfig(gupnp-av-1.0) >= 0.5.5
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.42
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.0

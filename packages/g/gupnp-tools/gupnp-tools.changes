@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 23 16:10:47 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.10.3:
+  + Fix deprecated function calls.
+  + Fix empty icon for devices with no icons.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Nov 16 19:05:01 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.10.2:
