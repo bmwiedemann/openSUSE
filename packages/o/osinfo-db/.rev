@@ -448,4 +448,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>969578</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>d33baf18a23f38025d434fe66aa4a669</srcmd5>
+    <version>20220516</version>
+    <time>1653417073</time>
+    <user>dimstar_suse</user>
+    <comment>Update to database version 20220516</comment>
+    <requestid>978781</requestid>
+  </revision>
 </revisionlist>
