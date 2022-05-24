@@ -127,4 +127,17 @@
     password flow encounters errors with ADFS (#456, #458) (forwarded request 967331 from glaubitz)</comment>
     <requestid>967340</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a2ee458b1c825afec442cfb1c07b41e5</srcmd5>
+    <version>1.18.0b1</version>
+    <time>1653417109</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.18.0b1
+  + New feature: Optional initiate_auth_code_flow(..., response_mode=&quot;form_post&quot;)
+    to allow the auth code being delivered to your app by form post, which is
+    considered even more secure. (#396, #469)
+  + New feature: acquire_token_interactive(..., prompt=&quot;none&quot;) can obtain some
+    tokens from within Cloud Shell, without any prompt. (#420) (forwarded request 978928 from glaubitz)</comment>
+    <requestid>978942</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 24 10:35:23 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.18.0b1
+  + New feature: Optional initiate_auth_code_flow(..., response_mode="form_post")
+    to allow the auth code being delivered to your app by form post, which is
+    considered even more secure. (#396, #469)
+  + New feature: acquire_token_interactive(..., prompt="none") can obtain some
+    tokens from within Cloud Shell, without any prompt. (#420)
+
+-------------------------------------------------------------------
 Thu Mar 24 12:27:46 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.17.0

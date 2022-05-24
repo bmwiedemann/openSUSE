@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-msal
-Version:        1.17.0
+Version:        1.18.0b1
 Release:        0
 Summary:        Microsoft Authentication Library (MSAL) for Python
 License:        MIT
