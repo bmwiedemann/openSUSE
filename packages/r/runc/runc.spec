@@ -36,6 +36,8 @@ URL:            https://github.com/opencontainers/runc
 Source0:        https://github.com/opencontainers/runc/releases/download/v%{_version}/runc.tar.xz#/runc-%{version}.tar.xz
 Source1:        https://github.com/opencontainers/runc/releases/download/v%{_version}/runc.tar.xz.asc#/runc-%{version}.tar.xz.asc
 Source2:        runc.keyring
+# OPENSUSE-FIX-UPSTREAM: Backport of <https://github.com/opencontainers/runc/pull/3474>. bsc#1192051 bsc#1199565
+Patch1:         bsc1192051-0001-seccomp-enosys-always-return-ENOSYS-for-setup-2-on-s390x.patch
 BuildRequires:  fdupes
 BuildRequires:  go-go-md2man
 # Due to a limitation in openSUSE's Go packaging we cannot have a BuildRequires
@@ -55,6 +57,7 @@ Obsoletes:      docker-runc-kubic < %{version}
 Provides:       docker-runc-kubic = %{version}
 Obsoletes:      docker-runc = 0.1.1+gitr2819_50a19c6
 Obsoletes:      docker-runc_50a19c6
+ExcludeArch:    s390
 
 # Construct "git describe --dirty --long --always".
 %define git_describe v%{_version}-0-g%{git_short}
@@ -67,6 +70,8 @@ and has grown to become a separate project entirely.
 
 %prep
 %setup -q -n %{name}-%{_version}
+# bsc#1192051 bsc#1199565
+%patch1 -p1
 
 %build
 # build runc

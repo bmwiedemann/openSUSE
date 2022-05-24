@@ -1,16 +1,29 @@
 -------------------------------------------------------------------
+Mon May 23 03:02:32 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+- Backport <https://github.com/opencontainers/runc/pull/3474> to fix issues
+  with newer syscalls (namely faccessat2) on older kernels on s390(x) caused by
+  that platform's syscall multiplexing semantics. bsc#1192051 bsc#1199565
+  + bsc1192051-0001-seccomp-enosys-always-return-ENOSYS-for-setup-2-on-s390x.patch
+
+-------------------------------------------------------------------
+Thu May 12 10:04:57 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+- Add ExcludeArch for s390 (not s390x) since we've never supported it.
+
+-------------------------------------------------------------------
 Wed May 11 22:43:51 UTC 2022 - Aleksa Sarai <asarai@suse.com>
 
 - Update to runc v1.1.2. Upstream changelog is available from
   https://github.com/opencontainers/runc/releases/tag/v1.1.2.
-  CVE-2022-24769
+  CVE-2022-29162 bsc#1199460
 
- * A bug was found in runc where runc exec --cap executed processes with
-   non-empty inheritable Linux process capabilities, creating an atypical Linux
-   environment. For more information, see [GHSA-f3fp-gc8g-vw66][] and
-   CVE-2022-29162.
- * `runc spec` no longer sets any inheritable capabilities in the created
-   example OCI spec (`config.json`) file.
+  * A bug was found in runc where runc exec --cap executed processes with
+    non-empty inheritable Linux process capabilities, creating an atypical Linux
+    environment. For more information, see [GHSA-f3fp-gc8g-vw66][] and
+    CVE-2022-29162. bsc#1199460
+  * `runc spec` no longer sets any inheritable capabilities in the created
+    example OCI spec (`config.json`) file.
 
 -------------------------------------------------------------------
 Tue Mar 29 03:33:30 UTC 2022 - Aleksa Sarai <asarai@suse.com>
