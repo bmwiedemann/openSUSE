@@ -88,7 +88,7 @@ ExclusiveArch:  do_not_build
 %define         skip_python2 1
 
 Name:           %{package_name}
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        Scientific Tools for Python
 License:        BSD-3-Clause AND LGPL-2.0-or-later AND BSL-1.0

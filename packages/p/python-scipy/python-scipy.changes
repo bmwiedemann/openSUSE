@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 21 08:12:51 UTC 2022 - andy great <andythe_great@pm.me>
+
+- Update to version 1.8.1.
+  * Bug-fix release with no new features.
+
+-------------------------------------------------------------------
 Tue Apr 12 12:20:43 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - With the previously added -ffloat-store, some tests that fail on i586.
