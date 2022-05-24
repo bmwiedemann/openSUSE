@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 24 11:07:02 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 20220512:
+  * Fixed gnome 42 issues
+  * Rename all 'dark' to' Dark'
+  * Updates for Budgie desktop #214
+  * change shebang to #! /usr/bin/env bash to
+    improve portability #218
+  * Update README.md #221
+
+-------------------------------------------------------------------
 Wed Jul 21 07:06:59 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 20210720:

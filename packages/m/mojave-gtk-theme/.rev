@@ -96,4 +96,18 @@
   * Fix gnome-shell 40.3 issues</comment>
     <requestid>907428</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>15e2ebd43d12b7a4b538f895c8946b96</srcmd5>
+    <version>20220512</version>
+    <time>1653417108</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20220512:
+  * Fixed gnome 42 issues
+  * Rename all 'dark' to' Dark'
+  * Updates for Budgie desktop #214
+  * change shebang to #! /usr/bin/env bash to
+    improve portability #218
+  * Update README.md #221</comment>
+    <requestid>978944</requestid>
+  </revision>
 </revisionlist>
