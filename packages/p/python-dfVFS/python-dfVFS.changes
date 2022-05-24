@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon May 23 22:46:00 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to 20211228
+  - deprecated GetStat file entry method
+
+- Manually run tests results in:
+  - Ran 1228 tests in 299.931s
+  - NO errors reported!
+
+- update to 20211017
+  - changes to support pyfwnt 20210717
+  - added attribute support for multiple filesystems
+  - added size entry for ext, XFS, HFS file entries
+
+- update to 20210606
+  - added pymodi to support Mac OS disk images
+  - API changes related to time objects to be compatible with newer dependency versions
+- added BuildRequires:  %{python_module libmodi}
+- added Requires:  python-libmodi
+
+- update to 20210213
+  - added pyvsgpt to support hybrid GPT partition table setups
+  - added pyvsxfs to support XFS filesystem support
+  - moved examples folder to new github project dfvfs-snippets
+
+- added BuildRequires:  %{python_module libvsgpt}
+- added BuildRequires:  %{python_module libvsxfs}
+- added Requires:  python-libvsgpt
+- added Requires:  python-libvsxfs
+  
+- remove  %doc examples
+  - no longer provided in source tarball, moved to dfvfs-snippets github project
+
+- remove lintrc reference to examples as examples have been removed
+
+- update to 20201219 
+  - added fsext backend
+  - changes to expose HFS+ create time
+  - added fshfs backend
+  - added fsxfs backend
+  - added QCOW differential image support
+
+-------------------------------------------------------------------
 Tue May 17 11:30:28 UTC 2022 - pgajdos@suse.com
 
 - python-mock is not required for build (even if the testsuite

@@ -17,7 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python38-%{**}}
-%define timestamp 20200920
+%define timestamp 20211228
 %define pythons python3
 Name:           python-dfVFS
 Version:        0~%{timestamp}
@@ -40,15 +40,18 @@ BuildRequires:  %{python_module libfsapfs}
 BuildRequires:  %{python_module libfsext}
 BuildRequires:  %{python_module libfshfs}
 BuildRequires:  %{python_module libfsntfs}
+BuildRequires:  %{python_module libfsxfs}
 BuildRequires:  %{python_module libfvde}
 BuildRequires:  %{python_module libfwnt}
 BuildRequires:  %{python_module libluksde}
+BuildRequires:  %{python_module libmodi}
 BuildRequires:  %{python_module libqcow}
 BuildRequires:  %{python_module libsigscan >= 0~20191221}
 BuildRequires:  %{python_module libsmdev}
 BuildRequires:  %{python_module libsmraw}
 BuildRequires:  %{python_module libvhdi}
 BuildRequires:  %{python_module libvmdk}
+BuildRequires:  %{python_module libvsgpt}
 BuildRequires:  %{python_module libvshadow}
 BuildRequires:  %{python_module libvslvm}
 BuildRequires:  %{python_module pbr}
@@ -65,15 +68,18 @@ Requires:       python-libfsapfs
 Requires:       python-libfsext
 Requires:       python-libfshfs
 Requires:       python-libfsntfs >= 0~20160418
+Requires:       python-libfsxfs
 Requires:       python-libfvde
-Requires:       python-libfwnt
+Requires:       python-libfwnt >= 20210717
 Requires:       python-libluksde
+Requires:       python-libmodi
 Requires:       python-libqcow
 Requires:       python-libsigscan
 Requires:       python-libsmdev
 Requires:       python-libsmraw
 Requires:       python-libvhdi
 Requires:       python-libvmdk
+Requires:       python-libvsgpt
 Requires:       python-libvshadow >= 0~20170902
 Requires:       python-libvslvm
 Requires:       python-six
@@ -122,7 +128,6 @@ chmod -x run_tests.py
 %license LICENSE
 %doc ACKNOWLEDGEMENTS AUTHORS README
 %doc utils/check_dependencies.py utils/dependencies.py
-%doc examples
 %{python_sitelib}/dfvfs*
 # these are installed into the wrong place
 %exclude %{_datadir}/doc/dfvfs/
