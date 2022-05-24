@@ -49,4 +49,12 @@
     <comment>Add an alias to jakarta.mail</comment>
     <requestid>973924</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>4153e8bf44b0ae79bd6cd82e3f96b51f</srcmd5>
+    <version>1.5.2</version>
+    <time>1653417219</time>
+    <user>dimstar_suse</user>
+    <comment>sync changes with sle</comment>
+    <requestid>978881</requestid>
+  </revision>
 </revisionlist>
