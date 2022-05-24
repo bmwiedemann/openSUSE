@@ -17,7 +17,7 @@
 
 
 Name:           lapce
-Version:        0.1.0~0
+Version:        0.1.1~0
 Release:        0
 Summary:        Lightning-fast and Powerful Code Editor written in Rust
 URL:            https://github.com/lapce/lapce
@@ -34,10 +34,17 @@ BuildRequires:  gcc-c++
 BuildRequires:  libgcc_s1
 BuildRequires:  pkgconfig
 BuildRequires:  python3
+BuildRequires:  pkgconfig(atk) >= 2.18
+BuildRequires:  pkgconfig(cairo) >= 1.14
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(gdk-3.0) >= 3.22
+BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.36.8
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(pango) >= 1.38
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xkbcommon)
+ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 Lapce is written in pure Rust, with the UI in Druid

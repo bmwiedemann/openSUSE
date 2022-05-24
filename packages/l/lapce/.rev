@@ -25,4 +25,93 @@
 </comment>
     <requestid>977808</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>06bf19f4c1116f9685d66612828d9dec</srcmd5>
+    <version>0.1.1~0</version>
+    <time>1653417111</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.1.1~0:
+  * fix modifiers
+  * relase v0.1.1
+  * windows dark mode
+  * fix ci
+  * reset editor view to normal when it's not a hisotry
+  * bump druid
+  * apt-get update
+  * change the place of anim frame request paint
+  * update dependencies
+  * update dependencies
+  * clippy fix
+  * remove glutin
+  * num lock modifier fix
+  * request paint when request anim frame
+  * bump druid
+  * use mouse event count for double/tripple click
+  * use mouse event count for double click
+  * macos title double click fix
+  * Change Appstream metadata license to MIT
+  * bump druid
+  * bump druid
+  * consolidate window desc creation
+  * add Linux AppStream metadata
+  * add Linux .desktop file
+  * file watcher fix
+  * fix editor focus issue
+  * clippy fix
+  * ensure cusror visible when editor got focus
+  * cancel mouse hover timer when right click
+  * change to os menu
+  * file dialog change to druid-shell
+  * use druid shell with opengl
+  * fix code format
+  * refactor the tests for readability
+  * Avoid cloning syntax highlight result
+  * Only allocate once when toggling comments
+  * Special-case non-modifier ansi sequences
+  * Doc: do not specify a transitional package
+  * fix code format
+  * address PR review feedbacks
+  * fix code format
+  * address PR review feedbacks
+  * Removed the last min window size constraint
+  * Pre-parse svgs
+  * Only hash svg names once
+  * Deduplicate
+  * Don't allocate while accessing svgs
+  * add meta+backspace for macOS
+  * key binding mode text fix
+  * Restrict visibility and remove unused code
+  * Remove unused type
+  * Remove unused outline module
+  * Remove unused module
+  * Use static str in LapceIcon
+  * Remove most of the dead code
+  * bump lapce-rpc version
+  * support count in move by words commands in the vi-mode
+  * implement top_of_window and bottom_of_window
+  * Removed min window size
+- Update to version 0.1.0~0:
+  * wix version bump
+  * wix fix
+  * bump version
+  * Fix scroll bar scroll
+  * bump druid
+  * problem panel dispaly fix
+  * Clip the command name cells
+  * release lto folder
+  * Clean up split
+- Automatic update of vendored dependencies
+- Update to version 0.1.0~0:
+  * wix version bump
+  * wix fix
+  * bump version
+  * Fix scroll bar scroll
+  * bump druid
+  * problem panel dispaly fix
+  * Clip the command name cells
+  * release lto folder
+  * Clean up split
+</comment>
+    <requestid>978940</requestid>
+  </revision>
 </revisionlist>

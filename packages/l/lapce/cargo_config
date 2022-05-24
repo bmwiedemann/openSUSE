@@ -16,7 +16,7 @@ replace-with = "vendored-sources"
 
 [source."https://github.com/lapce/druid"]
 git = "https://github.com/lapce/druid"
-branch = "opengl"
+branch = "shell_opengl"
 replace-with = "vendored-sources"
 
 [source."https://github.com/lapce/font-kit"]
@@ -27,18 +27,13 @@ replace-with = "vendored-sources"
 git = "https://github.com/lapce/fount"
 replace-with = "vendored-sources"
 
-[source."https://github.com/lapce/glutin"]
-git = "https://github.com/lapce/glutin"
-branch = "new-keyboard-all"
-replace-with = "vendored-sources"
-
 [source."https://github.com/lapce/parley"]
 git = "https://github.com/lapce/parley"
 replace-with = "vendored-sources"
 
 [source."https://github.com/lapce/piet-wgpu"]
 git = "https://github.com/lapce/piet-wgpu"
-branch = "opengl"
+branch = "shell_opengl"
 replace-with = "vendored-sources"
 
 [source."https://github.com/lapce/structdesc"]
@@ -49,18 +44,8 @@ replace-with = "vendored-sources"
 git = "https://github.com/lapce/swash"
 replace-with = "vendored-sources"
 
-[source."https://github.com/lapce/winit"]
-git = "https://github.com/lapce/winit"
-branch = "new-keyboard-all"
-replace-with = "vendored-sources"
-
 [source."https://github.com/lapce/xi-editor"]
 git = "https://github.com/lapce/xi-editor"
-replace-with = "vendored-sources"
-
-[source."https://github.com/maroider/xkbcommon-dl"]
-git = "https://github.com/maroider/xkbcommon-dl"
-rev = "900832888ad6f11011d1369befb344a9aa8a9610"
 replace-with = "vendored-sources"
 
 [source."https://github.com/tree-sitter/tree-sitter-java.git"]
