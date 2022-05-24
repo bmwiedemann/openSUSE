@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun May 22 15:32:17 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.21.1+git20210908.02ec659b:
+  * [acpi] Generalise DSDT/SSDT data extraction logic
+  * [efi] Record cached ProxyDHCPOFFER and PXEBSACK, if present
+  * [efi] Use zero for PCI vendor/device IDs when no applicable ID exists
+  * [cloud] Retry DHCP aggressively in AWS EC2
+  * [efi] Match signtool expectations for file alignment
+  * [libc] Allow for externally-defined LITTLE_ENDIAN and BIG_ENDIAN constants
+  * [uri] Make URI schemes case-insensitive
+  * [rdc] Add driver for RDC R6040 embedded NIC
+  * [realtek] Work around hardware bug on RTL8211B
+  * [cloud] Show ifstat output after a failed boot attempt
+  * [peerdist] Assume that most recently discovered peer can be reused
+- Fixes build on Leap
+- Add workaround for building with GCC12 (Factory)
+
+-------------------------------------------------------------------
+Sun May 22 15:08:10 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fix version, base version, starting with 1.20.1+git20210604.065dce8d,
+  was 1.21.1 not 1.20.1 as 1.21.1 was released December 2020.
+  So current version is: 1.21.1+git20210614.bf4ccd42
+
+-------------------------------------------------------------------
 Thu Jun 17 09:12:05 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Since last update, syslinux is required to build the ISO but

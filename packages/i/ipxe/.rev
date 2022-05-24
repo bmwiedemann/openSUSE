@@ -126,4 +126,12 @@ use xorrisofs for creating iso
   it is available only on x86*, so disable ISO build for non-x86*</comment>
     <requestid>900673</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>995a48989af347b1bcf15eed2706d191</srcmd5>
+    <version>1.21.1+git20210908.02ec659b</version>
+    <time>1653417081</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978769</requestid>
+  </revision>
 </revisionlist>

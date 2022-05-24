@@ -1,4 +1,6 @@
 <servicedata>
-<service name="tar_scm">
-                <param name="url">https://git.ipxe.org/ipxe.git</param>
-              <param name="changesrevision">bf4ccd4265ac614fbfa38bf168b6eeaf4c17d51e</param></service></servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/ipxe/ipxe.git</param>
+    <param name="changesrevision">02ec659b73b0998a275e79ec06a5b7d674dfad07</param>
+  </service>
+</servicedata>

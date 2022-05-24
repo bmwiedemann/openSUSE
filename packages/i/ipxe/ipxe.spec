@@ -1,7 +1,7 @@
 #
 # spec file for package ipxe
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %ifnarch %{ix86} x86_64
 %define buildtargets dsk,usb,lkrn
 %else
@@ -22,13 +23,13 @@
 %endif
 
 Name:           ipxe
-Version:        1.20.1+git20210614.bf4ccd42
+Version:        1.21.1+git20210908.02ec659b
 Release:        0
 Summary:        A Network Boot Firmware
 License:        GPL-2.0-only
 Group:          System/Boot
 URL:            https://ipxe.org/
-Source:         %{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  binutils-devel
 %ifarch aarch64
 %if 0%{?sle_version} >= 150000 && 0%{?sle_version} < 159999
@@ -80,8 +81,10 @@ UNDI formats. EFI is supported, too.
 cd src
 
 make_ipxe() {
+    # https://github.com/ipxe/ipxe/issues/620
+    [ `gcc -dumpversion` -ge 12 ] && TAG="NO_WERROR=1" || TAG=""
     make %{?_smp_mflags} V=1 \
-        VERSION=%{version} "$@"
+        VERSION=%{version} $TAG "$@"
 }
 
 %ifarch %{ix86} x86_64
