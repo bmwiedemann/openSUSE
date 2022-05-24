@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 20 16:02:05 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.36.2:
+  + Fix some pages showing empty content boxes when using GTK4.
+  + Fix the build with accessibility disabled.
+  + Fix the build with newer Ruby versions.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
 Mon May  2 08:24:28 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Remove dependency on binutils-gold as the package will be removed
