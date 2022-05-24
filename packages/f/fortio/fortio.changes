@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 24 07:50:11 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.32.0:
+  * dns cache lock fix, tls grpc test restoration, bug fix for -sync error case and increased timeout (#578)
+
+-------------------------------------------------------------------
 Fri May 20 14:57:26 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.31.0:
