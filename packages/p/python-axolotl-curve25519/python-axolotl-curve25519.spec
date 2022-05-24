@@ -1,7 +1,7 @@
 #
 # spec file for package python-axolotl-curve25519
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define _version 0.4.1.post2
 Name:           python-axolotl-curve25519
-Version:        0.4.1.1
+Version:        0.4.1.2
 Release:        0
 Summary:        A curve25519 Python wrapper with Ed25519 signatures
-License:        GPL-3.0-only AND BSD-3-Clause
+License:        BSD-3-Clause AND GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/tgalal/python-axolotl-curve25519
 Source:         https://files.pythonhosted.org/packages/source/p/%{name}/%{name}-%{_version}.tar.gz
