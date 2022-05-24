@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 24 12:19:44 UTC 2022 - tiwai@suse.com
+
+- Update to version 1.14.9+130+g289e5bbd66f6:
+  * Fold docstring within 80 characters
+  * Remove XEmacs related stuff.
+  * New installer option PACKAGE_LISPDIR
+  * Fix problem with new timestamp format.
+  * Fold docstring within 80 characters
+
+-------------------------------------------------------------------
 Sat Apr 09 07:17:16 UTC 2022 - schwab@linux-m68k.org
 
 - Switch to FLIM-LB from Wanderlust

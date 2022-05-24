@@ -1,7 +1,7 @@
 #
 # spec file for package emacs-flim
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           emacs-flim
-Version:        1.14.9+125+g02735de
+Version:        1.14.9+130+g289e5bbd66f6
 Release:        0
 Summary:        An Emacs Library for MIME
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Editors/Emacs
-Url:            https://github.com/wanderlust/flim
+URL:            https://github.com/wanderlust/flim
 Source:         flim-%{version}.tar.gz
 Patch:          flim-encoding-fix.diff
 BuildRequires:  emacs-apel >= 10.7
@@ -31,6 +31,7 @@ Requires:       emacs
 Requires:       emacs-apel
 Requires:       emacs_program
 Provides:       flim = %{version}
+Requires:       emacs_program
 Obsoletes:      flim <= %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -45,11 +46,13 @@ For coding and decoding MIME messages.
 %build
 make %{?_smp_mflags} EMACS=emacs \
   PREFIX=%{_prefix} \
+  PACKAGE_LISPDIR=NONE \
   VERSION_SPECIFIC_LISPDIR=%{_datadir}/emacs/site-lisp/emu
 
 %install
 make install EMACS=emacs  \
   PREFIX=%{buildroot}%{_prefix} \
+  PACKAGE_LISPDIR=NONE \
   VERSION_SPECIFIC_LISPDIR=%{_datadir}/emacs/site-lisp/emu
 # make install.man
 # Already part of Emacs
