@@ -95,13 +95,14 @@
 %endif
 %define boost_version %{?rstudio_boost_requested_version}%{?!rstudio_boost_requested_version:1.69}
 
-%global rstudio_version_major 1
-%global rstudio_version_minor 4
-%global rstudio_version_patch 1743
+%global rstudio_version_major 2022
+%global rstudio_version_minor 02
+%global rstudio_version_patch 2
+%global rstudio_version_suffix 485
 # commit of the tag belonging to %%{version}
-%global rstudio_git_revision_hash bca6ea9e38e43802db1919b6554424eded7a2f5c
+%global rstudio_git_revision_hash 8acbd38b0d4ca3c86c570cf4112a8180c48cc6fb
 Name:           rstudio
-Version:        %{rstudio_version_major}.%{rstudio_version_minor}.%{rstudio_version_patch}
+Version:        %{rstudio_version_major}.%{rstudio_version_minor}.%{rstudio_version_patch}+%{rstudio_version_suffix}
 Release:        0
 Summary:        RStudio base package
 # AGPLv3:             RStudio, icomoon glyphs
@@ -116,7 +117,7 @@ Summary:        RStudio base package
 # EPL-1.0:            junit
 # dictionaries: see below
 License:        AGPL-3.0-only AND Apache-2.0 AND MPL-1.1 AND LGPL-2.1-or-later AND GPL-2.0-only AND MIT AND W3C-20150513 AND BSD-3-Clause AND (BSL-1.0 OR MIT) AND GPL-3.0-only AND ISC AND OFL-1.1 AND Zlib AND NPL-1.1 AND CC-BY-4.0 AND EPL-1.0
-URL:            https://github.com/%{name}/
+URL:            https://github.com/%{name}
 Source0:        %{URL}/%{name}/archive/v%{version}.tar.gz
 # these appear to have been taken from Chromium's source code, see:
 # https://raw.githubusercontent.com/rstudio/rstudio/master/dependencies/tools/sync-hunspell-dictionaries
@@ -151,8 +152,6 @@ Patch7:         0008-Add-support-for-RapidJSON-1.1.0-in-Leap-15.2.patch
 # Upstream fix is https://github.com/catchorg/Catch2/commit/8f277a54c0b9c1d1024dedcb2dec1d206971e745,
 # but that's quite large and is hard to apply because the files are concatenated here.
 Patch8:         0009-Fix-catch-build.patch
-# Upstream fix for compilation with newer R.
-Patch9:         https://github.com/rstudio/rstudio/commit/872e2806f74e922a25e0f9586faa6624883728ca.patch#/0010-Fix-R-build.patch
 
 BuildRequires:  Mesa-devel
 BuildRequires:  R-core-devel
@@ -295,9 +294,9 @@ on a server has a number of benefits, including:
 
 %prep
 %if 0%{?sle_version} == 150200
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{rstudio_version_major}.%{rstudio_version_minor}.%{rstudio_version_patch}-%{rstudio_version_suffix}
 %else
-%autosetup -N
+%autosetup -N -n %{name}-%{rstudio_version_major}.%{rstudio_version_minor}.%{rstudio_version_patch}-%{rstudio_version_suffix}
 # autopatch is broken in Leap 15.3… (boo#1189495)
 %patch0 -p1
 %patch1 -p1
@@ -307,7 +306,6 @@ on a server has a number of benefits, including:
 %patch5 -p1
 %patch6 -p1
 %patch8 -p1
-%patch9 -p1
 %endif
 
 tar -xf %{SOURCE2}
@@ -328,8 +326,8 @@ ln -sf %{_includedir}/websocketpp src/cpp/ext/websocketpp
 ln -sf %{_includedir}/rapidjson src/cpp/shared_core/include/shared_core/json/rapidjson
 
 # unpack common-dictionaries
-mkdir -p dependencies/common/dictionaries
-unzip -d dependencies/common/dictionaries %{SOURCE1}
+mkdir -p dependencies/dictionaries
+unzip -d dependencies/dictionaries %{SOURCE1}
 
 # don't include gwt_build in ALL to avoid recompilation, but then we must build
 # it manually
@@ -344,9 +342,13 @@ sed -i 's#LIBCLANG_PLACEHOLDER#%{_libdir}/libclang.so.%{_llvm_sonum}#' src/cpp/c
 export RSTUDIO_VERSION_MAJOR=%{rstudio_version_major}
 export RSTUDIO_VERSION_MINOR=%{rstudio_version_minor}
 export RSTUDIO_VERSION_PATCH=%{rstudio_version_patch}
+export RSTUDIO_VERSION_SUFFIX=+%{rstudio_version_suffix}
 export RSTUDIO_GIT_REVISION_HASH=%{rstudio_git_revision_hash}
 export GIT_COMMIT=%{rstudio_git_revision_hash}
-%cmake -DRSTUDIO_TARGET=Desktop -DRSTUDIO_SERVER=TRUE -DCMAKE_BUILD_TYPE=Release    \
+%cmake -DRSTUDIO_TARGET=Desktop \
+    -DRSTUDIO_DESKTOP:BOOL=ON \
+    -DRSTUDIO_SERVER:BOOL=ON \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=%{_libexecdir}/%{name}                                   \
     -DRSTUDIO_USE_SYSTEM_BOOST=TRUE                                                 \
     -DRSTUDIO_USE_SYSTEM_SOCI=TRUE                                                  \
@@ -420,7 +422,7 @@ rm -rf %{buildroot}%{_libexecdir}/%{name}/extras
 
 # fix shebangs from /usr/bin/env bash to
 BASH_PATH=$(which bash)
-for f in postback/askpass-passthrough postback/rpostback-askpass postback/rpostback-editfile postback/rpostback-gitssh postback/rpostback-pdfviewer r-ldpath rstudio-backtrace.sh; do
+for f in postback/{askpass-passthrough,rpostback-{askpass,editfile,gitssh,pdfviewer}} r-ldpath rstudio-backtrace.sh; do
     full_path=%{buildroot}%{_libexecdir}/%{name}/bin/$f
     sed -i.orig 's:^#\!%{_bindir}/env\s\+bash\s\?$:#\!'"${BASH_PATH}"':' $full_path
     touch -r $full_path.orig $full_path

@@ -7,43 +7,42 @@ Use find_file() & find_program() functions to find the dependencies in the
 dependencies/ subdirectory first. If they are not there, use the system paths
 instead.
 ---
- src/cpp/session/CMakeLists.txt | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ src/cpp/session/CMakeLists.txt | 22 ----------------------
+ 1 file changed, 22 deletions(-)
 
 diff --git a/src/cpp/session/CMakeLists.txt b/src/cpp/session/CMakeLists.txt
-index 54d15d9055..dc383952df 100644
+index 1dfc977..56e2838 100644
 --- a/src/cpp/session/CMakeLists.txt
 +++ b/src/cpp/session/CMakeLists.txt
-@@ -48,14 +48,6 @@ else()
- 
+@@ -64,28 +64,6 @@ else()
  endif()
  
--foreach(DEP "${RSTUDIO_DEPENDENCIES_DICTIONARIES_DIR}"
--            "${RSTUDIO_DEPENDENCIES_MATHJAX_DIR}"
--            "${RSTUDIO_DEPENDENCIES_PANDOC_DIR}")
--   if(NOT EXISTS "${DEP}")
--      message(FATAL_ERROR "${DEP} not found (re-run install-dependencies script to install")
+ 
+-# validate our dependencies exist
+-foreach(VAR RSTUDIO_DEPENDENCIES_DICTIONARIES_DIR
+-            RSTUDIO_DEPENDENCIES_MATHJAX_DIR
+-            RSTUDIO_DEPENDENCIES_PANDOC_DIR
+-            RSTUDIO_DEPENDENCIES_QUARTO_DIR)
+-
+- 
+-   # skip quarto if not enabled
+-   if("${VAR}" STREQUAL "RSTUDIO_DEPENDENCIES_QUARTO_DIR" AND NOT QUARTO_ENABLED)
+-      continue()
 -   endif()
+-
+-   # validate existence
+-   if(NOT EXISTS "${${VAR}}")
+-      message(FATAL_ERROR "${${VAR}} not found (re-run install-dependencies script to install")
+-   endif()
+-
+-   # cache variables so they can be seen by configure_file
+-   set("${VAR}" "${${VAR}}" CACHE INTERNAL "")
+-   
 -endforeach()
 -
  # verify embedded packages are available
  foreach(PKG ${RSTUDIO_EMBEDDED_PACKAGES})
     file(GLOB PKG_FILES "${RSTUDIO_DEPENDENCIES_DIR}/common/${PKG}*.tar.gz")
-@@ -558,6 +550,14 @@ if(NOT RSTUDIO_SESSION_WIN32 AND NOT RSESSION_ALTERNATE_BUILD)
-    install(FILES ${R_MODULE_SRC_FILES}
-            DESTINATION ${RSTUDIO_INSTALL_SUPPORTING}/R/modules)
- 
-+   # install hunspell dictionaries
-+   install(DIRECTORY "${RSTUDIO_DEPENDENCIES_DIR}/common/dictionaries"
-+           DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/resources")
-+
-+   # install mathjax for local html preview
-+   install(DIRECTORY "${MATHJAX_PATH}"
-+           DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/resources")
-+
-    # icons for database connections
-    install(DIRECTORY "resources/connections"
-            DESTINATION ${RSTUDIO_INSTALL_SUPPORTING}/resources)
 -- 
 2.31.1
 

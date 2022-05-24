@@ -195,4 +195,12 @@ Rebase patches:
   R-core-devel: it just declares the Rf_countContexts locally. (forwarded request 978435 from aaronpuchert)</comment>
     <requestid>978438</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>354dc2ef8adc8d9a0a10e115b3e0d5fa</srcmd5>
+    <version>2022.02.2+485</version>
+    <time>1653417081</time>
+    <user>dimstar_suse</user>
+    <comment>Undo unnecessary changes before submit to Factory. (Initially the file wasn't there because I didn't enable the desktop build for aarch64.) (forwarded request 978896 from aaronpuchert)</comment>
+    <requestid>978950</requestid>
+  </revision>
 </revisionlist>

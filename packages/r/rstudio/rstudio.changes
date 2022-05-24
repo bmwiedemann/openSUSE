@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May 21 19:48:08 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- New upstream release v2022.02.2+485. (boo#1198936)
+- Rebase and simplify patches:
+  * 0001-Unbundle-mathjax-and-pandoc.patch
+  * 0002-Don-t-install-pandoc-and-mathjax.patch
+  * 0007-use-system-node.patch
+- Drop obsolete 0010-Fix-R-build.patch. 
+
+-------------------------------------------------------------------
 Thu May 19 21:19:48 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - New upstream release v1.4.1743.
