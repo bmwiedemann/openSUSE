@@ -133,7 +133,7 @@ SUSE_ASNEEDED=0
 %make_install INSTALLROOT=%{buildroot} install_samples
 install -d -m 755 %{buildroot}%{_sysconfdir}/auto.master.d
 install -D -m 644 %{SOURCE1} %{buildroot}%{_fillupdir}/sysconfig.autofs
-install -D -m 755 %{SOURCE7} %{buildroot}%{_sysconfdir}/NetworkManager/dispatcher.d/autofs
+install -D -m 755 %{SOURCE7} %{buildroot}%{_prefix}/lib/NetworkManager/dispatcher.d/autofs
 ln -s %{_mandir}/man8/autofs.8.gz %{buildroot}/%{_mandir}/man8/rcautofs.8.gz
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcautofs
 %if %{with_udisks}
@@ -170,9 +170,9 @@ rm -f %{buildroot}%{_sysconfdir}/sysconfig/autofs
 %config %{_sysconfdir}/dbus-1/system.d/org.freedesktop.AutoMount.conf
 %endif
 %dir %{_sysconfdir}/auto.master.d
-%dir %{_sysconfdir}/NetworkManager
-%dir %{_sysconfdir}/NetworkManager/dispatcher.d
-%{_sysconfdir}/NetworkManager/dispatcher.d/autofs
+%dir %{_prefix}/lib/NetworkManager
+%dir %{_prefix}/lib/NetworkManager/dispatcher.d
+%attr(0755,root,root) %{_prefix}/lib/NetworkManager/dispatcher.d/autofs
 %doc README README.changer README.ncpfs README.replicated-server
 %doc README.smbfs README.v5.release autofs.schema README.active-restart
 %doc README.SUSE README.SUSE.ldap

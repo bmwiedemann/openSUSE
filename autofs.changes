@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 12 15:12:50 UTC 2022 - Stefan Schubert <schubi@suse.de>
+
+- Moved -autofs- file from user specif directory
+  /etc/NetworkManager/dispatcher.d to vendor specific directory
+  /usr/lib/NetworkManager/dispatcher.d. So, users changes can
+  still be done in /etc and will not be overwritten by an update. 
+
+-------------------------------------------------------------------
 Mon May  9 15:06:32 UTC 2022 - Goldwyn Rodrigues <rgoldwyn@suse.com>
 
 - Use OPTIONS instead of AUTOFS_OPTIONS in /etc/sysconfig/autofs
