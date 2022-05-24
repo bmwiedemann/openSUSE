@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu May 19 15:21:54 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.35 → 9.24.36
+
+-------------------------------------------------------------------
+Tue May 17 08:54:46 CEST 2022 - Robert Schweikert <rjschwei@suse.com>
+
+- Subformats should also not be compressed when encryption is enabled (#2138)
+
+  Subformats should also not be compressed when encryption is enabled
+  This is a follow on change to bdba953. When the filesystem is encrypted the
+  resulting image should not be compressed. Also explain why we ignore the
+  compression seeting in the user configuration for encrypted images.
+
+-------------------------------------------------------------------
+Mon May 16 10:09:01 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for prebuilt bootstrap package for apt
+
+  When using the apt packagemanager kiwi required the use of
+  debootstrap to create the initial rootfs. This works as long
+  as there is always a main distribution repository available
+  which follows the structure of the official debian mirrors.
+  However if such a main distribution is not present or an
+  alternative layout like e.g OBS repos is used, debootstrap
+  will refuse to work. To allow for an alternative and without
+  the dependency to debootstrap kiwi supports using a prebuilt
+  bootstrap package providing the mini rootfs to serve as
+  the bootstrap result. As all other package managers properly
+  supports installation into an empty new root, this feature
+  was only added when using the apt packagemanager
+
+-------------------------------------------------------------------
 Sun May 08 20:51:36 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 9.24.34 → 9.24.35
