@@ -1,8 +1,10 @@
---- dynamips-0.2.16/common/dynamips_common.h	2016-03-16 05:05:47.000000000 -0400
-+++ dynamips-0.2.16/common/dynamips_common.h	2017-02-28 10:47:30.000000000 -0500
-@@ -65,6 +65,8 @@
- #define ARCH_BYTE_ORDER ARCH_LITTLE_ENDIAN
- #elif defined(__arm__) || defined (__aarch64__)
+diff --git a/common/dynamips_common.h b/common/dynamips_common.h
+index 0f72f53..ca3a184 100644
+--- a/common/dynamips_common.h
++++ b/common/dynamips_common.h
+@@ -71,6 +71,8 @@
+ #define ARCH_BYTE_ORDER ARCH_BIG_ENDIAN
+ #elif defined(__riscv) || defined(__riscv__)
  #define ARCH_BYTE_ORDER ARCH_LITTLE_ENDIAN
 +#elif defined(__s390x__)
 +#define ARCH_BYTE_ORDER ARCH_BIG_ENDIAN
