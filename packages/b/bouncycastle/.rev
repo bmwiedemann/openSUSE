@@ -304,4 +304,12 @@ view</comment>
     <comment>1.71</comment>
     <requestid>973708</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>e20d48258d19c5e0137096cd93f4eef7</srcmd5>
+    <version>1.71</version>
+    <time>1653417214</time>
+    <user>dimstar_suse</user>
+    <comment>sync changes with sle</comment>
+    <requestid>978876</requestid>
+  </revision>
 </revisionlist>

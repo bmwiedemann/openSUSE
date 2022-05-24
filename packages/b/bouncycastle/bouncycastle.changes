@@ -337,7 +337,7 @@ Fri Apr 22 21:24:48 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
 -------------------------------------------------------------------
 Wed Mar 30 10:27:18 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
-- Build against the standalone JavaEE modules inconditionally
+- Build against the standalone JavaEE modules unconditionally
 
 -------------------------------------------------------------------
 Fri Mar 18 18:47:50 UTC 2022 - Fridrich Strba <fstrba@suse.com>
