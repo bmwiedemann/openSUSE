@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 23 10:14:07 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add vlc-dav1d-1.0.patch: Fix build with dav1d 1.0. Upstream
+  commits 2202c892 and d38ddd727.
+
+-------------------------------------------------------------------
 Fri Apr 22 11:01:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.0.17.4:
