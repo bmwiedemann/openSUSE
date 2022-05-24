@@ -56,4 +56,19 @@
     <comment></comment>
     <requestid>936286</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>da25ea89afba547d1be2892f5c376679</srcmd5>
+    <version>2.0.0</version>
+    <time>1653417215</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.0
+  * Removed deprecated function
+  * Remove deprecated jsondiff entry point
+- from version 1.3.1
+  * Optionally allow different escape_str than '$'
+  * Clarified the readme, closes #23
+  * Fixed readme
+- Remove jsondiff command from %install, %post, %postun and %files sections (forwarded request 978966 from glaubitz)</comment>
+    <requestid>978978</requestid>
+  </revision>
 </revisionlist>

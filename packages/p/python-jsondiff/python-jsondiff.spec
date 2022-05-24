@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsondiff
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jsondiff
-Version:        1.3.0
+Version:        2.0.0
 Release:        0
 Summary:        Module to diff JSON and JSON-like structures in Python
 License:        MIT
@@ -48,7 +48,6 @@ Package to show differences between JSON and JSON-like structures in Python
 
 %install
 %python_install
-%python_clone -a %{buildroot}%{_bindir}/jsondiff
 %python_clone -a %{buildroot}%{_bindir}/jdiff
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -56,11 +55,9 @@ Package to show differences between JSON and JSON-like structures in Python
 %pytest tests/__init__.py
 
 %post
-%python_install_alternative jsondiff
 %python_install_alternative jdiff
 
 %postun
-%python_uninstall_alternative jsondiff
 %python_uninstall_alternative jdiff
 
 %files %{python_files}
@@ -68,6 +65,5 @@ Package to show differences between JSON and JSON-like structures in Python
 %doc README.rst
 %{python_sitelib}/*
 %python_alternative %{_bindir}/jdiff
-%python_alternative %{_bindir}/jsondiff
 
 %changelog

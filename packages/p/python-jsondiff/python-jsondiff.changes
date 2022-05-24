@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 24 13:11:04 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.0.0
+  * Removed deprecated function
+  * Remove deprecated jsondiff entry point
+- from version 1.3.1
+  * Optionally allow different escape_str than '$'
+  * Clarified the readme, closes #23
+  * Fixed readme
+- Remove jsondiff command from %install, %post, %postun and %files sections
+
+-------------------------------------------------------------------
 Tue Dec  7 09:32:07 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.3.0
