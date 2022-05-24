@@ -41,17 +41,6 @@
 %if ! %{defined _distconfdir}
 %define _distconfdir %{_sysconfdir}
 %endif
-# Use Python3 rather than Python2 by default
-%define __python %{_bindir}/python3
-# In /usr/lib/rpm/macros, py_compile is hard-wired to use the command "python". I think
-# this is a bug for which the work-around is to redefine that macro to use python3.
-%define py_compile(O)  \
-find %{1} -name '*.pyc' -exec rm -f {} \\; \
-python3 -c "import sys, os, compileall; br='%{buildroot}'; compileall.compile_dir(sys.argv[1], ddir=br and (sys.argv[1][len(os.path.abspath(br)):]+'/') or None)" %{1} \
-%{-O: \
-find %{1} -name '*.pyo' -exec rm -f {} \\; \
-python3 -O -c "import sys, os, compileall; br='%{buildroot}'; compileall.compile_dir(sys.argv[1], ddir=br and (sys.argv[1][len(os.path.abspath(br)):]+'/') or None)" %{1} \
-}
 # Do not provide libGL.so symbols - they are owned by Mesa already and this could potentially confuse rpm/zypp
 %global __provides_exclude ^libE?GL.so.1.*$
 # With 32-bit builds, the job limit cannot be larger than 2, otherwise the build runs out of memory.
@@ -107,8 +96,6 @@ Patch2:         vbox-vboxadd-init-script.diff
 #with renaming we probably break some macosx functionality however ths is just quick fix
 #see thread : http://lists.freebsd.org/pipermail/freebsd-acpi/2010-October/006795.html
 Patch6:         vbox-smc-napa.diff
-#fix build of Python and dev package on openSUSE 11.3
-Patch8:         vbox-python-detection.diff
 #deprecated old-style C++ service proxies and objects,we have to use soapcpp2 -z1 flag
 Patch9:         vbox-deprec-gsoap-service-proxies.diff
 #fix failed linking process during build - this patch is just quick workaround
@@ -153,8 +140,11 @@ Patch118:       internal-headers.patch
 Patch120:       fixes_for_python.patch
 # Fix build for Qt 5.11
 Patch122:       fixes_for_Qt5.11.patch
-# Switch to Python 3.4+
-Patch123:       switch_to_python3.4+.patch
+# xpcom: Support up to python 3.10 -- https://www.virtualbox.org/changeset/90537/vbox + https://www.virtualbox.org/changeset/86623/vbox, thanks to Archlinux
+Patch123:       vbox-python-py310.patch
+# fix build of Python and dev package on openSUSE 11.3 (was vbox-detection.diff)
+# use plain python3 interpreter of the distro (part of former switch_to_pyton3.4+.patch),
+Patch124:       vbox-python-selection.patch
 # Use build parameters to control video driver problems
 Patch125:       remove_vbox_video_build.patch
 # fix library search
@@ -202,7 +192,6 @@ Source2:        VirtualBox.appdata.xml
 ### Requirements for virtualbox main package ###
 %if %{main_package}
 BuildRequires:  LibVNCServer-devel
-BuildRequires:  pkgconfig(sdl)
 BuildRequires:  acpica
 BuildRequires:  alsa-devel
 BuildRequires:  bin86
@@ -241,6 +230,7 @@ BuildRequires:  pkgconfig(randrproto)
 BuildRequires:  pkgconfig(renderproto)
 BuildRequires:  pkgconfig(resourceproto)
 BuildRequires:  pkgconfig(scrnsaverproto)
+BuildRequires:  pkgconfig(sdl)
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xau)
@@ -305,14 +295,6 @@ hardware. VirtualBox is freely available as Open Source Software under
 the terms of the GNU Public License (GPL).
 
 
-
-
-
-
-
-
-
-
 ##########################################
 %package qt
 Summary:        Qt GUI part for %{name}
@@ -331,14 +313,6 @@ Obsoletes:      %{name}-ose-qt < %{version}
 This package contains the code for the GUI used to control VMs.
 
 
-
-
-
-
-
-
-
-
 #########################################
 %package websrv
 Summary:        WebService GUI part for %{name}
@@ -350,14 +324,6 @@ Obsoletes:      %{name}-vboxwebsrv < %{version}
 
 %description websrv
 The VirtualBox web server is used to control headless VMs using a browser.
-
-
-
-
-
-
-
-
 
 
 #########################################
@@ -373,14 +339,6 @@ Obsoletes:      xorg-x11-driver-virtualbox-ose < %{version}
 
 %description guest-x11
 This package contains X11 guest utilities and X11 guest mouse and video drivers
-
-
-
-
-
-
-
-
 
 
 ###########################################
@@ -402,14 +360,6 @@ Requires(pre):  net-tools-deprecated
 VirtualBox guest addition tools.
 
 
-
-
-
-
-
-
-
-
 ###########################################
 %package -n python3-%{name}
 Summary:        Python bindings for %{name}
@@ -429,14 +379,6 @@ Obsoletes:      python3-%{name}-ose < %{version}
 Python XPCOM bindings to %{name}. Used e.g. by vboxgtk package.
 
 
-
-
-
-
-
-
-
-
 ###########################################
 %package devel
 Summary:        Devel files for %{name}
@@ -449,14 +391,6 @@ Obsoletes:      %{name}-ose-devel < %{version}
 
 %description devel
 Development file for %{name}
-
-
-
-
-
-
-
-
 
 
 ###########################################
@@ -490,14 +424,6 @@ These can be built for custom kernels using
 sudo %{_sbindir}/vboxguestconfig
 
 
-
-
-
-
-
-
-
-
 ###########################################
 %package guest-desktop-icons
 Summary:        Icons for guest desktop files
@@ -508,14 +434,6 @@ BuildArch:      noarch
 
 %description guest-desktop-icons
 This package contains icons for guest desktop files that were created on the desktop.
-
-
-
-
-
-
-
-
 
 
 ###########################################
@@ -544,7 +462,6 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch1 -p1
 %patch2 -p1
 %patch6 -p1
-%patch8 -p1
 %patch9 -p1
 %patch10 -p1
 %patch99 -p1
@@ -568,6 +485,7 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch120 -p1
 %patch122 -p1
 %patch123 -p1
+%patch124 -p1
 %patch125 -p1
 %patch128 -p1
 # Adjustments that are version dependent
@@ -848,7 +766,7 @@ VBOX_INSTALL_PATH=%{_vbox_instdir} python3 vboxapisetup.py install --prefix=%{_p
 popd
 install -d -m 755 %{buildroot}%{_vbox_instdir}/sdk/bindings/xpcom
 cp -r out/linux.*/release/bin/sdk/bindings/xpcom/python %{buildroot}%{_vbox_instdir}/sdk/bindings/xpcom
-%py_compile %{buildroot}%{_vbox_instdir}/sdk/bindings/xpcom/python
+%py3_compile %{buildroot}%{_vbox_instdir}/sdk/bindings/xpcom/python
 
 ######################################################
 echo "entering virtualbox-devel install section"

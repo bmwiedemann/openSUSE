@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat May 21 20:17:00 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update support of building with Python
+  * Add vbox-python-py310.patch for support of Python 3.10
+    https://github.com/archlinux/svntogit-community/commit/59d75cd22
+    https://www.virtualbox.org/changeset/90537/vbox
+    https://www.virtualbox.org/changeset/86623/vbox
+  * Drop switch_to_python3.4+.patch and vbox-python-detection.diff;
+    replace by vbox-python-selection.patch for what is left of the
+    above after removing some obvious cruft. Could still be more in
+    there.
+  * Remove unnecessary reusage of old python2 macros, we use
+    python-rpm-macros already.
+
+-------------------------------------------------------------------
 Tue May 17 07:14:47 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Replace SDL-devel BuildRequires with pkgconfig(sdl): allow to use
