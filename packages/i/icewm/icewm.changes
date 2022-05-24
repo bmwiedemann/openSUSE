@@ -1,4 +1,378 @@
 -------------------------------------------------------------------
+Fri May 20 08:01:17 UTC 2022 - QK ZHU <qkzhu@suse.com>
+
+- Rebase patches for version 2.9.7:
+  * icewm-susemenu.patch
+  * icewm-desktop-nodisplay.patch
+  * icewm-preferences.patch
+
+- Update to 2.9.7:
+  * Fix for saving keyboard layouts in --rewrite-preferences.
+  * Faster and more reliable restart of icewmbg.
+  * Add themable preference ColorKeyboardLayoutText.
+  * Add KeySysKeyboardNext to switch to next keyboard layout.
+  * Document alternative keypad handling in icewm-keys(1).
+  * Handle right-to-left languages in icewm-menu-fdo.
+  * Add -g,--generic option to icewm-menu-fdo for GenericName in menus.
+  * Updated translations: Czech, Danish, Finnish, Turkish, German, French.
+
+- from version 2.9.6:
+  * Lower a fullscreen window below the window which is to be activated.
+  * Start a new fullscreen client in the fullscreen layer for issue #85.
+  * Prioritize the thermal zones when showing CPU temperature.
+  * Let CPU graphs share a single timer and adjust to changes to TaskBarCPUSamples.
+  * Support workspace names "next" and "prev" in icesh for issue bbidulock/icewm#640.
+  * Updated translations: Spanish, German, Italian, Chinese, Portuguese (Brazil).
+
+- from version 2.9.5:
+  * Set the window type of desktop icons and of the dockapps container.
+  * Make taskbar unhide more reliable.
+  * Fix OSS / APM confusion in some translations.
+  * Fix for taskbar on icewm restart when there is a fullscreen window.
+  * Fix for TaskBarAutoHide and for focusing address bar.
+  * Make TaskBarFullscreenAutoShow option more reliable.
+  * Remove all of the inefficient management of the fullscreen layer.
+  * Fixes to prevent a lockup where no keybinding works,
+    when activating a do-not-focus output-only window
+    on a workspace where no focusable window exists.
+  * When a fullscreen disappears, update the taskbar layer.
+  * On startup don't switch workspace to activate a fullscreen window.
+  * Updated translations: it, id, pt, pt_BR, de, ar, lt.
+
+- from version 2.9.4:
+  * Always keep desktop icons below application windows.
+  * Set an icewmbg background color as a pixmap to overcome
+    limitations in picom and compton for issue bbidulock/icewm#632.
+  * When icewmbg is configured with just a single background image
+    or color, then always create a single pixmap in the X11 server as
+    a temporary resource and have icewmbg exit to free its memory.
+  * Add icesh options +class and +Pid to extend the window selection.
+  * Improved workaround for 'feh' desktop backgrounds, where its
+    pixmap has been marked persistent, for issue bbidulock/icewm#627.
+  * Eliminate flicker when resizing frames which have a shape masked
+    border, like CoolSteel and Illuminate-ice by enabling bit gravity.
+  * Minimized windows which have both winoptions startMinimized and
+    ignoreActivationMessages, require a mouse click to become active.
+  * Support focus in subwindows of Globally Active Input applications,
+    like games in a Wine virtual desktop for issue #73.
+  * Eliminate all flicker when switching between different
+    fullscreen windows for issue bbidulock/icewm#630.
+  * Always put the active window first in the list of switchable
+    windows for issue bbidulock/icewm#631.
+  * Updated translation: Portuguese.
+
+- from version 2.9.3:
+  * Support Unicode and non-Latin text in input fields and the address bar.
+  * Add a Tile submenu to the window menu for issue #74.
+  * When icewm starts, force the desktop background to be refreshed,
+    for 'feh' background pixmaps in issue bbidulock/icewm#627.
+  * Initialize locale specific modifiers with XSetLocaleModifiers.
+  * Refresh the task pane background on expose events.
+  * Fix for icesh maximize.
+  * Fix to eliminate toggling the input focus.
+  * Fix for the system tray background for issue bbidulock/icewm#626.
+  * Updated translations: Ukrainian, Slovak, Japanese, Catalan, Portuguese.
+
+- from version 2.9.2:
+  * Fix for fullscreen wine programs for issue #73.
+  * Fix the drawing of LED-clock for themes like "unusualscars".
+  * Fix a memory access after free after loading a core font failed.
+  * Fix a missing include sys/wait.h for the FreeBSD build.
+  * Add support for multiple clocks in different time zones.
+  * Internationalize the error messages for the dynamic menu.
+  * Internationalize the keyboard tooltip.
+
+- from version 2.9.1:
+  * Fix for focusing wine and winecfg for issue bbidulock/icewm#625.
+  * Fix the taskbar background for double height taskbar.
+  * Swap the columns in the about dialog for right-to-left locales.
+  * Replace "sans-serif" with "DejaVu Sans" for Xft fonts,
+    because these support a wider range of characters, which
+    improves support for languages with non-Latin scripts.
+  * Add tabs to CPU multiline status tooltip for two-column display.
+  * Fix multiline tooltips for right-to-left locales.
+  * Ensure the multiline tab spacing is two character positions.
+  * Fix taskbar collapse button for right-to-left locales.
+  * Fix workspace pane sizing for right-to-left locales.
+  * When the keyboard layout changes due to external reasons
+    and the taskbar has the keyboard applet, then reflect
+    the new layout in the taskbar applet for issue bbidulock/icewm#622.
+  * Make the keyboard applet display all of the output
+    of setxkbmap -query in the tooltip for the applet.
+  * With the mouse in the keyboard applet, always post the tooltip.
+  * Compress a series of XMappingEvents to one keyboard update.
+
+- from version 2.9.0:
+  * Improvements to drawing right-to-left text within left-to-right locales.
+  * Improvements for right-to-left locales like Arabic and Hebrew.
+  * Give icewmbg an error handler to protect against destroyed windows.
+  * Updated translations, most notably Ukrainian.
+  * Only free cursor attributes when they were allocated.
+  * Fix column alignment in menu's for right-to-left languages.
+  * Prefer to keep the system menu within the frame when
+    opening it from the menu button in the titlebar.
+  * Don't repaint the taskbar when it is collapsed.
+  * Refresh the taskbar to prevent background artefacts in CoolSteel.
+  * Fix the last entry in the themes menu for the default theme.
+  * Ignore empty resize events to reduce flickering when resizing in CoolSteel.
+  * Only redraw frame borders on the last expose event.
+  * Fix the the bottom right hole of a scrolled window list for bbidulock/icewm#620.
+  * Add logout icons to Logout submenu for issue #69.
+  * Update minimum required cmake version to 3.2.
+  * Support right-to-left languages for corefonts when i18n is enabled.
+  * When codesets are missing in a fontset, then only search for
+    extra fonts in the same font family, and only when i18n is enabled.
+  * Detect UTF-8 locale and support multibyte to wide character conversions.
+  * Make DejaVu the default backup font family for corefonts.
+  * Fix the horizontal scrollbar for the window list window.
+  * Improve the ascent/descent detection for font sets.
+  * Optimize text length detection for width-limited text fields.
+  * Improve the Xft last resort backup font.
+  * Improve vertical font positioning for the address bar.
+  * Reuse discarded miniicon positions when minimizing to desktop.
+  * Flush stdout after printing preferences.
+  * Detect Right-To-Left locales Arabic, Hebrew, Farsi, Pashto, Sindhi, Urdu.
+  * Improve the handling of font loading failures.
+  * Improve the handling of setting "PreferFreetypeFonts" to false.
+  * Use the font "10x20" as the last resort font instead of "fixed".
+  * Be resilient to font preferences being set to the empty string.
+  * Document drag and drop.
+  * Add support for edge switching during drag and drop operations.
+  * Update icewm.desktop for issue bbidulock/icewm#617.
+  * Add a font cache to prevent repeatedly loading the same fonts,
+    which also makes icewm a little faster on startup.
+  * Don't kill internal windows.
+  * Only let a frame retake focus on an ungrab event when the manager still
+    believes that frame should have focus. This fixes the flashing of title
+    bar buttons when the window list window is popped up.
+  * Fix for FreeBSD build.
+  * Document the -T switch for taskbar in icesh for issue #18.
+  
+- from version 2.8.0
+  * Improve the explanation on how to spy on client messages with icesh.
+  * When rearranging windows with tile placement or cascade placement, correct for
+    the top side vertical offset, in those themes which have a masked top border.
+  * Improve the explanation for some of the preferences.
+  * Update the winoptions example on DockApps.
+  * Guard against a color name being set to the empty string (bbidulock/icewm#614).
+  * Improve the performance and scalability of the window list menu.
+  * In the window list window group similar application windows together.
+  * Add +group and +Class select options to icesh.
+  * Improve the filtering on the WM_CLASS property in icesh.
+  * Fix the OSS/ALSA defaults in icesound help message (bbidulock/icewm#609).
+  * Fix the OSS/ALSA defaults in icesound man page (bbidulock/icewm#608)
+  * Only support SVG for icons, not for icewmbg backgrounds.
+  * Let icewmbg pixmaps free its associated Image to reduce memory usage.
+  * Prevent a potential trailing -I flag in CMake for issue #57.
+  * Fix the description for sizeby in the icesh manpage.
+  * Fix overflows in battery calculations for issue bbidulock/icewm#607.
+  * Update the translations, most notably Brazilian Portuguese.
+
+- from version 2.7.0
+  * Increase the maximum value for TaskbarButtonWidthDivisor from 25 to 50.
+  * Add a --with-background= build option to set a default background path.
+  * Improve the responsiveness of icewmbg when a new image must be scaled.
+  * Reduce the memory usage by icewmbg by removing the image cache.
+  * Make icewmbg much faster when scanning directories for image files.
+  * Improve the reliability of icewm motion compression by also testing
+    for subwindow equality.
+  * Decrease the number of system calls for path lookups.
+  * Guard against array indexing with negative indices.
+  * Double the timeout for the dynamic menu generator to 1.4 seconds.
+  * Eliminate most of the inefficiences when looking for icon directories.
+  * Postpone the loading of cursors, because some cursors are seldomly used.
+  * Rewrite the task successor and task predecessor actions to properly
+    take into account the separation of TaskBarApp and TaskButton,
+    as well as task grouping. This resolves issues #602 and #604.
+  * Allow to build icewm using cmake -GNinja (issue #603).
+  * Fix building on a case-insensitive file system (issue #601).
+
+- from version 2.6.0:
+  * Keep track of changes to modal flag.
+  * Optimize raising of modal windows.
+  * Fix a memory leak for dynamic menu's.
+  * Free start menu and windowlist menu on exit.
+  * Fix for browse menu's for root and home in start menu.
+  * Eliminate several memory leaks in icon handling.
+  * Use absolute paths for the Exec definition in desktop files.
+  * Only do a passive grab on buttons which are defined by the ButtonRaiseMask.
+  * Guard against buffer overflow when copying the degrees centigrade symbol.
+  * When a focused window can't raise, or there is no overlapping window,
+    then there shouldn't be a passive button grab by icewm, in order to
+    improve menu handling in applications which don't use windows for menu's.
+  * Release the passive button grab from a focused window,
+    when a button click wouldn't raise it, for improved menu
+    handling for applications with internal menu's (CSS drawing).
+  * These fix the Debian Bug report with number #989764:
+    "icewm: Intermittently unable to select menu items in drop-down menus.",
+    which was reported versus IceWM version 2.1.2 on June 12 on:
+    https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=989764.
+
+- from version 2.5.0:
+  * Fix for a crash when destructing frames with kill message boxes.
+  * Clear the UrgencyHint in the WM_HINTS structure to stop the flashing.
+  * Collect windows to arrange from layers OnTop, Normal and Below.
+  * Add new -unmapped and -viewable filters to icesh.
+  * Restore the window selection after an "end" clause in icesh.
+  * Add example for constructing dropdown terminals with icesh.
+  * Updated 8 translations.
+  * Add full support for application modal dialogs.
+  * Support WM_TRANSIENT_FOR being equal to the root window, per
+    the EWMH standard in section: "Implementing enhanced support
+    for application transient windows".
+  * Revert "Enforce that focus remains with IceTopWin for issue #593."
+  * Support paths with spaces in the rebuild.sh build script.
+  * Replace paths with configured directories in generated manpages
+    for CMake builds and also fix spaces and double quotes.
+  * CMake builds html pages for #50.
+
+- from version 2.4.0:
+  * Fix icehelp to ignore a missing file icon.
+  * Add support for WindowMaker DockApps to icewm and icesh.
+  * Support Ctrl+Mouse buttons to control dockapps.
+  * Make icewm resilient against a newly managed client exiting immediately.
+  * Ensure that focus remains with IceTopWin when showing desktop for issue #593.
+  * Consider AllWorkspaces to be equal to the active workspace in Alt+Tab,
+    when QuickSwitchGroupWorkspaces is enabled, for issue #589.
+  * Improve recovery from restart failures.
+  * Improve icehelp colors.
+  * Support searching for keywords in icehelp document with Ctrl+F and F3.
+  * Improve centrally placing transient windows over their
+    leader window when CenterTransientsOnOwner is enabled.
+  * Fix for when CenterLarge is true.
+  * Prevent compiler warnings.
+  * A dozen translations were updated.
+
+- from version 2.3.4:
+  * Add a button for a menu in icehelp.
+  * Support anti-aliased fonts in icehelp.
+  * Improve accuracy of clicking on links in icehelp.
+  * Support reverse video in icehelp.
+  * Add more keyboard shortcuts to icehelp.
+  * Let icehelp handle scrollbar keys when mouse pointer is inside a scrollbar.
+  * Improve vertical alignment of text with different font faces in icehelp.
+  * Add a --disable-rsvg option to configure for issue #587.
+  * Always rebuild manpages when Makefile changes.
+  * Fix for positioning new frames for themes with mask shaped top sides.
+  * Fix for snapping frame borders for themes with mask shaped top sides.
+  * Generate preferences in sorted order.
+  * Better handling of preferences which have null strings by default.
+  * Cleaner rewriting of preferences with --rewrite-preferences option.
+  * Add a PingTimeout preference for issue #47.
+  * When _NET_WM_PING timeouts then request user permission to send
+    a terminate signal to the application for issue #47.
+  * Fix the exit code of icesh for issue #585.
+  * Only use RTTI when debugging for issue #48.
+  * Updated translations.
+    
+- from version 2.3.3:
+  * Document default winoption format .OPTION.
+  * Permit scroll wheel to control rolling up or down for issue #584.
+  * Add new icewm option --rewrite-preferences to update preferences.
+  * Improve documentation for options for Super/Windows key modifiers.
+  * Make the QuickSwitch modifiers dependent on the type of QuickSwitch:
+    either from the Alt+Tab or from the "switchkey" keyword for issue #583.
+  * Don't reorder focus when Alt+Tabbing for issue #579.
+  * Defer loading internationalized help text until required.
+  * Add support for conditional expressions to icesh.
+  * Add a toggle option "^" to the "netState" command for issue #580.
+
+- from version 2.3.2:
+  * Document more workspace button features.
+  * Improve drawing rectangles with rounded corners.
+  * Use reversed active text colors for drawing grouping number.
+  * Dissolve the disparity between dragged and non-dragged task buttons.
+  * Allow button clicks with some mouse motion between button press and release.
+  * Fix for editing workspace name in the workspace button.
+  * Repaint workspace button after editing the workspace name.
+  * Change the default value for ModSuperIsCtrlAlt from true to false.
+  * Support ModSuperIsCtrlAlt in the quick switch for issue #574.
+  * Reduce the number of frame updates when changing workspace.
+  * Free the memory for the About dialog after it is closed.
+  * Prevent a compiler warning.
+  * Update Finnish translation.
+
+- from version 2.3.1:
+  * Let icewmbg refresh the root background on icewm restart
+    to evade a bug in the X server.
+  * Prevent compiler warnings about missing overrides.
+  * Improve drawing for TaskBarTaskGrouping with preferences.
+  * Fix for drawing missing icon in message box.
+  * Fix for changing theme via theme menus.
+  * Fix for drawing icons in menus.
+  * Fix for switchkey.
+
+- from version 2.3.0:
+  * Add new preference NetStatusShowOnlyRunning to only
+    show running network interfaces by alspitz.
+  * Reduce systemcalls as much as possible when updating network status.
+  * Only update tooltips when a tooltip window is visible.
+  * Postpone creating tooltips.
+  * If without system tray, enforce taskbar updateLocation for issue #559.
+  * Redraw task button when name changes.
+  * Print more details for "all" in "icesh motif".
+  * When client loses its X shape then update frame functions, which
+    fixes toggling "Use system title bar and borders" in Chrome.
+  * Optimize filereader to reduce the number of read system calls.
+  * Add new preference TaskBarTaskGrouping to group similar
+    applications under a single task button for issue #198.
+  * Support immediate toggling of TaskBarTaskGrouping without a restart.
+  * Add menu option to icehelp to open current document in a browser.
+  * Support switching workspaces via window menu list.
+  * Add command "denormal" to icesh for issue #561.
+  * Support mouse buttons up to button number 9 for issue #333.
+  * Allow to switch workspaces by key in the Alt+Tab QuickSwitch for #563.
+  * Improve handling of modifier keys in QuickSwitch.
+  * Support arrow keys, Home, End, Delete and Return keys in QuickSwitch.
+  * Support keys '1' to '9' to index the QuickSwitch.
+  * Prevent closing QuickSwitch window when a button release event occurs.
+  * Fixes for QuickSwitch when there is a fullscreen window for issue #558.
+  * Add QuickSwitchRaiseCandidate to raise a selected window for issue #564.
+  * Don't reorder focus in QuickSwitch when changing workspaces for issue #564.
+  * Support rotating mouse wheel buttons in QuickSwitch to scroll over windows.
+  * Efficiency improvements to QuickSwitch.
+  * When QuickSwitch is up and a new window is created, then add it to the list.
+  * Support colored cursors when using libXpm for issue #45.
+  * When activating a frame on another workspace, ignore any focus events
+    on the root window, for more reliable QuickSwitching to intended window.
+  * Updated documentation.
+  * Updated translations.
+
+- from version 2.2.1:
+  * Fix the CMake build.
+  * Draw an icon in each message box popup.
+  * Make input field focus tab-traversable when editing preferences.
+  * When modifying preferences, only trim input for scalar options.
+  * Simplify the icewm manpage.
+  * Taskbar may have a non-zero screen due to XineramaPrimaryScreen
+    in getNewPos. Only consider workarea when using same screen as
+    taskbar, otherwise allow entire desktop for issue bbidulock/icewm#557.
+  * Position the move/size-status on the screen of the window.
+
+- from version 2.2.0:
+  * Support modifying all icewm preferences directly via a popup.
+  * Allow to reset a key or string option in the preferences menu.
+  * Show the preference description when modifying a preference.
+  * Give each preference option a meaningful description.
+  * Drop support for nonICCCMconfigureRequest winoption.
+  * Immediately redraw clock after setting default clock format.
+  * Add new clock format %H:%M to clock menu.
+  * Fix cmake test target for issue #41.
+  * Improve CMake build speed by building libraries.
+  * If an application resizes itself partially outside the work area, then
+    move it back inside the work area, if possible, for issue #550.
+  * Fix ignoreQuickSwitch winoption for focused windows for issue #552.
+  * Support locales in icehelp and icewmhint.
+
+- from version 2.1.2:
+  * In icewm-menu-fdo don't abort directory scanning on bad menu items to fix issue #546.
+  * Relayout task buttons whenever a task button is removed for issue #548.
+  * Add test for XShm extension+pixmaps.
+  * Remove the urgent state flag from frame when gaining or losing focus.
+  * Add 'urgent' action to icesh to set the urgent flag on a window.
+  * Create a Settings submenu to reduce Start menu items for issue #543.
+
+--- ----------------------------------------------------------------
 Tue Jan 26 00:46:42 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.1.1

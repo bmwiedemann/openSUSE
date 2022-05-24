@@ -1,7 +1,8 @@
-diff -Nru icewm-2.0.0.orig/lib/menu.in icewm-2.0.0/lib/menu.in
---- icewm-2.0.0.orig/lib/menu.in	2020-12-14 02:14:27.000000000 +0100
-+++ icewm-2.0.0/lib/menu.in	2020-12-20 18:55:09.026453502 +0100
-@@ -11,5 +11,6 @@
+Index: icewm-2.9.7/lib/menu.in
+===================================================================
+--- icewm-2.9.7.orig/lib/menu.in
++++ icewm-2.9.7/lib/menu.in
+@@ -11,5 +11,6 @@ prog Firefox mozilla firefox
  prog Hexchat xchat hexchat
  prog Gimp gimp gimp
  includeprog icewm-menu-fdo --sep-before --no-sep-others
@@ -9,10 +10,11 @@ diff -Nru icewm-2.0.0.orig/lib/menu.in icewm-2.0.0/lib/menu.in
 +#menufile Programs folder programs
  menufile Tool_bar folder toolbar
 +menuprog SUSE folder xdg_menu --format icewm
-diff -Nru icewm-2.0.0.orig/src/wmmenu.cc icewm-2.0.0/src/wmmenu.cc
---- icewm-2.0.0.orig/src/wmmenu.cc	2020-12-14 02:14:27.000000000 +0100
-+++ icewm-2.0.0/src/wmmenu.cc	2020-12-20 18:59:54.401885022 +0100
-@@ -294,6 +294,46 @@
+Index: icewm-2.9.7/src/wmmenu.cc
+===================================================================
+--- icewm-2.9.7.orig/src/wmmenu.cc
++++ icewm-2.9.7/src/wmmenu.cc
+@@ -294,6 +294,46 @@ char* MenuLoader::parseMenuProg(char *p,
      return p;
  }
  
@@ -59,7 +61,7 @@ diff -Nru icewm-2.0.0.orig/src/wmmenu.cc icewm-2.0.0/src/wmmenu.cc
  char* MenuLoader::parseMenuProgReload(char *p, ObjectContainer *container)
  {
      Argument name;
-@@ -395,6 +435,9 @@
+@@ -395,6 +435,9 @@ char* MenuLoader::parseWord(char *word,
          else if (!strcmp(word, "menuprogreload")) {
              p = parseMenuProgReload(p, container);
          }
@@ -69,10 +71,11 @@ diff -Nru icewm-2.0.0.orig/src/wmmenu.cc icewm-2.0.0/src/wmmenu.cc
          else if (!strcmp(word, "include")) {
              p = parseIncludeStatement(p, container);
          }
-diff -Nru icewm-2.0.0.orig/src/wmprog.h icewm-2.0.0/src/wmprog.h
---- icewm-2.0.0.orig/src/wmprog.h	2020-12-14 02:14:27.000000000 +0100
-+++ icewm-2.0.0/src/wmprog.h	2020-12-20 19:01:08.201727478 +0100
-@@ -30,6 +30,7 @@
+Index: icewm-2.9.7/src/wmprog.h
+===================================================================
+--- icewm-2.9.7.orig/src/wmprog.h
++++ icewm-2.9.7/src/wmprog.h
+@@ -30,6 +30,7 @@ private:
      char* parseAMenu(char *data, ObjectContainer *container);
      char* parseMenuFile(char *data, ObjectContainer *container);
      char* parseMenuProg(char *data, ObjectContainer *container);
