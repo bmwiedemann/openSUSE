@@ -1,7 +1,7 @@
 #
 # spec file for package prometheus-ha_cluster_exporter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           prometheus-ha_cluster_exporter
 # Version will be processed via set_version source service
-Version:        1.2.3+git.1622185790.d319147
+Version:        1.3.0+git.1653405719.2a65dfc
 Release:        0
 Summary:        Prometheus exporter for Pacemaker HA clusters metrics
 License:        Apache-2.0
@@ -28,10 +28,15 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.14
+Requires(post): %fillup_prereq
 Provides:       ha_cluster_exporter = %{version}-%{release}
 Provides:       prometheus(ha_cluster_exporter) = %{version}-%{release}
 ExclusiveArch:  aarch64 x86_64 ppc64le s390x
 %{go_nostrip}
+#Compat macro for new _fillupdir macro introduced in Nov 2017
+%if ! %{defined _fillupdir}
+  %define _fillupdir /var/adm/fillup-templates
+%endif
 
 %description
 Prometheus exporter for Pacemaker HA clusters metrics
@@ -47,7 +52,7 @@ Prometheus exporter for Pacemaker HA clusters metrics
 export CGO_ENABLED=0
 go build -mod=vendor \
          -buildmode=pie \
-         -ldflags="-s -w -X main.version=%{version}" \
+         -ldflags="-s -w -X github.com/prometheus/common/version.Version=%{version}" \
          -o %{shortname}
 
 %install
@@ -58,6 +63,9 @@ install -D -m 0755 %{shortname} "%{buildroot}%{_bindir}/%{shortname}"
 # Install the systemd unit
 install -D -m 0644 %{shortname}.service %{buildroot}%{_unitdir}/%{name}.service
 
+# Install the environment file
+install -D -m 0644 %{shortname}.sysconfig %{buildroot}%{_fillupdir}/sysconfig.%{name}
+
 # Install compat wrapper for legacy init systems
 install -Dd -m 0755 %{buildroot}%{_sbindir}
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rc%{name}
@@ -67,6 +75,7 @@ ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rc%{name}
 
 %post
 %service_add_post %{name}.service
+%fillup_only -n %{name}
 
 %preun
 %service_del_preun %{name}.service
@@ -84,6 +93,7 @@ ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rc%{name}
 %endif
 %{_bindir}/%{shortname}
 %{_unitdir}/%{name}.service
+%{_fillupdir}/sysconfig.%{name}
 %{_sbindir}/rc%{name}
 
 %changelog
