@@ -1925,4 +1925,12 @@ Library portions are LGPL-2.1+ licensed (forwarded request 132611 from dimstar)<
   version does not support that syntax yet.</comment>
     <requestid>931779</requestid>
   </revision>
+  <revision rev="225" vrev="1">
+    <srcmd5>93c1c5d5a6bc5655c3e5a378990c03e0</srcmd5>
+    <version>1.2.5</version>
+    <time>1653417050</time>
+    <user>dimstar_suse</user>
+    <comment>Tweak .changes, resub (forwarded request 978286 from iznogood)</comment>
+    <requestid>978663</requestid>
+  </revision>
 </revisionlist>
