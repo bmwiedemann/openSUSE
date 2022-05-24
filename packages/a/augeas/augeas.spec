@@ -16,7 +16,6 @@
 #
 
 
-%define libname lib%{name}0
 Name:           augeas
 Version:        1.12.0
 Release:        0
@@ -49,7 +48,8 @@ file format and the transformation into a tree.
 
 %package        devel
 Summary:        A library for changing configuration files
-Requires:       %{libname} = %{version}
+Requires:       libaugeas0 = %{version}
+Requires:       libfa1 = %{version}
 
 %description    devel
 A library for programmatically editing configuration files. Augeas
@@ -57,15 +57,11 @@ parses configuration files into a tree structure, which it exposes
 through its public API. Changes made through the API are written back
 to the initially read files.
 
-The transformation works very hard to preserve comments and formatting
-details. It is controlled by ``lens'' definitions that describe the
-file format and the transformation into a tree.
-
-%package        -n %{libname}
+%package -n libaugeas0
 Summary:        A library for changing configuration files
 Recommends:     %{name}-lenses = %{version}
 
-%description    -n %{libname}
+%description -n libaugeas0
 A library for programmatically editing configuration files. Augeas
 parses configuration files into a tree structure, which it exposes
 through its public API. Changes made through the API are written back
@@ -75,9 +71,15 @@ The transformation works very hard to preserve comments and formatting
 details. It is controlled by ``lens'' definitions that describe the
 file format and the transformation into a tree.
 
+%package -n libfa1
+Summary:        Finite automaton library for Augeas
+
+%description -n libfa1
+Component library for the Augeas configuration parser.
+
 %package        lenses
-Summary:        Official set of lenses for use by %{libname}
-Requires:       %{libname} = %{version}
+Summary:        Official set of lenses for use by libaugeas
+Requires:       libaugeas0 = %{version}
 
 %description    lenses
 Augeas parses configuration files described in lenses into a tree
@@ -96,13 +98,7 @@ Set of tests for official Augeas lenses. These can be used when
 modifying the official lenses, or when creating new ones.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%autosetup -p1
 
 %build
 %configure \
@@ -120,8 +116,10 @@ mv %{buildroot}/%{_datadir}/vim/vimfiles %{buildroot}/%{_datadir}/vim/site
 %check
 %make_build check
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%post   -n libaugeas0 -p /sbin/ldconfig
+%postun -n libaugeas0 -p /sbin/ldconfig
+%post   -n libfa1 -p /sbin/ldconfig
+%postun -n libfa1 -p /sbin/ldconfig
 
 %files
 %license COPYING
@@ -132,8 +130,11 @@ mv %{buildroot}/%{_datadir}/vim/vimfiles %{buildroot}/%{_datadir}/vim/site
 %{_bindir}/fadot
 %{_mandir}/man1/*
 
-%files -n %{libname}
-%{_libdir}/*.so.*
+%files -n libaugeas0
+%{_libdir}/libaugeas.so.*
+
+%files -n libfa1
+%{_libdir}/libfa.so.*
 
 %files devel
 %{_includedir}/*

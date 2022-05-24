@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 26 08:43:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Employ shared library packaging guideline and resolve this
+  rpmlint report: "libaugeas0.x86_64: E: shlib-policy-name-error
+  SONAME: libfa.so.1, expected package suffix: 1" [boo#1191749]
+
+-------------------------------------------------------------------
 Thu Mar 24 12:11:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add sysctl_parsing.patch (bsc#1197443) 
