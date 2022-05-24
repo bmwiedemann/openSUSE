@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 24 11:29:29 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.1.0:
+  Added:
+  * The restart command now accepts the --gap/--no-gap options.
+  Fixed:
+  * Watson is now compatible with Click 8+
+
+-------------------------------------------------------------------
 Fri May 14 08:47:52 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.0.1:

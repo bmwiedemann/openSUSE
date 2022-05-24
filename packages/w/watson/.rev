@@ -93,4 +93,16 @@
   * Ability to edit the current frame (#418)</comment>
     <requestid>893056</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ba4e7442a208d5f6d761b64491ac23af</srcmd5>
+    <version>2.1.0</version>
+    <time>1653417114</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.0:
+  Added:
+  * The restart command now accepts the --gap/--no-gap options.
+  Fixed:
+  * Watson is now compatible with Click 8+</comment>
+    <requestid>978953</requestid>
+  </revision>
 </revisionlist>

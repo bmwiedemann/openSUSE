@@ -1,7 +1,7 @@
 #
 # spec file for package watson
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
 Name:           watson
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        CLI time tracker
 License:        MIT
