@@ -2,5 +2,5 @@
   <title>Pure-Python Git Library</title>
   <description>Simple Pure-Python implementation of the Git file formats and protocols. Dulwich
 is the place where Mr. and Mrs. Git live in one of the Monty Python sketches.</description>
-  <devel project="devel:languages:python" package="python-dulwich"/>
+  <devel project="devel:tools:scm" package="python-dulwich"/>
 </package>

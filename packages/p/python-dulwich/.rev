@@ -573,4 +573,12 @@
  * Ensure git config is available in a linked working tree.</comment>
     <requestid>965100</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>8a514260736aef050fac653084eb3197</srcmd5>
+    <version>0.20.40</version>
+    <time>1653417060</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978722</requestid>
+  </revision>
 </revisionlist>
