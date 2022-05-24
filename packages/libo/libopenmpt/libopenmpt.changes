@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 16 08:11:38 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 0.6.3:
+  * Pitch / Pan Separation and Random Variation instrument properties
+    were not resetting properly when seeking, potentially causing
+    instruments to be played e.g. at a vastly different pan position
+    compared to playing the module continuously.
+  * MED: Stereo samples were not imported correctly.
+
+-------------------------------------------------------------------
 Thu Mar 31 10:55:08 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 0.6.2:
