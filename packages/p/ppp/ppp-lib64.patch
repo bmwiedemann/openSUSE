@@ -1,30 +1,19 @@
---- PLUGINS.orig
-+++ PLUGINS
-@@ -14,7 +14,7 @@ plugin support only under Linux and Sola
- Plugins are loaded into pppd using the `plugin' option, which takes
- one argument, the name of a shared object file.  The plugin option is
- a privileged option.  If the name given does not contain a slash, pppd
--will look in the /usr/lib/pppd/<version> directory for the file, where
-+will look in the /usr/lib64/pppd/<version> directory for the file, where
- <version> is the version number of pppd, for example, 2.4.2.  I
- suggest that you either give the full path name of the shared object
- file or just the base name; if you don't, it may be possible for
---- README.orig
-+++ README
-@@ -261,8 +261,8 @@ What was new in ppp-2.4.1.
-   per-tty options file are parsed correctly, and don't override values
-   from the command line in most cases.
- 
--* The plugin option now looks in /usr/lib/pppd/<pppd-version> (for
--  example, /usr/lib/pppd/2.4.1b1) for shared objects for plugins if
-+* The plugin option now looks in /usr/lib64/pppd/<pppd-version> (for
-+  example, /usr/lib64/pppd/2.4.1b1) for shared objects for plugins if
-   there is no slash in the plugin name.
- 
- * When loading a plugin, pppd will now check the version of pppd for
---- pppd/pathnames.h.orig
-+++ pppd/pathnames.h
-@@ -57,9 +57,9 @@
+diff -Nur ppp-2.4.9/pppd/Makefile.linux new/pppd/Makefile.linux
+--- ppp-2.4.9/pppd/Makefile.linux	2021-01-05 00:06:37.000000000 +0100
++++ new/pppd/Makefile.linux	2022-05-23 17:42:04.835599374 +0200
+@@ -112,7 +112,7 @@
+ # EAP SRP-SHA1
+ ifdef USE_SRP
+ CFLAGS	+= -DUSE_SRP -DOPENSSL -I/usr/local/ssl/include
+-LIBS	+= -lsrp -L/usr/local/ssl/lib
++LIBS	+= -lsrp -L/usr/local/ssl/lib6464
+ NEEDCRYPTOLIB = y
+ TARGETS	+= srp-entry
+ EXTRAINSTALL = $(INSTALL) -c -m 555 srp-entry $(BINDIR)/srp-entry
+diff -Nur ppp-2.4.9/pppd/pathnames.h new/pppd/pathnames.h
+--- ppp-2.4.9/pppd/pathnames.h	2021-01-05 00:06:37.000000000 +0100
++++ new/pppd/pathnames.h	2022-05-23 17:42:04.835599374 +0200
+@@ -62,9 +62,9 @@
  
  #ifdef PLUGIN
  #ifdef __STDC__
@@ -36,21 +25,23 @@
  #endif /* __STDC__ */
  
  #endif /* PLUGIN */
---- pppd/plugins/Makefile.linux.orig
-+++ pppd/plugins/Makefile.linux
-@@ -7,7 +7,7 @@ INSTALL	= install
+diff -Nur ppp-2.4.9/pppd/plugins/Makefile.linux new/pppd/plugins/Makefile.linux
+--- ppp-2.4.9/pppd/plugins/Makefile.linux	2021-01-05 00:06:37.000000000 +0100
++++ new/pppd/plugins/Makefile.linux	2022-05-23 17:42:04.835599374 +0200
+@@ -5,7 +5,7 @@
  DESTDIR = $(INSTROOT)@DESTDIR@
  BINDIR = $(DESTDIR)/sbin
  MANDIR = $(DESTDIR)/share/man/man8
 -LIBDIR = $(DESTDIR)/lib/pppd/$(VERSION)
 +LIBDIR = $(DESTDIR)/lib64/pppd/$(VERSION)
  
- SUBDIRS := rp-pppoe pppoatm pppol2tp
- # Uncomment the next line to include the radius authentication plugin
---- pppd/plugins/pppoatm/Makefile.linux.orig
-+++ pppd/plugins/pppoatm/Makefile.linux
-@@ -7,7 +7,7 @@ INSTALL	= install
- #***********************************************************************
+ CFLAGS	= $(COPTS) -I.. -I../../include -fPIC
+ LDFLAGS_SHARED	= -shared
+diff -Nur ppp-2.4.9/pppd/plugins/pppoatm/Makefile.linux new/pppd/plugins/pppoatm/Makefile.linux
+--- ppp-2.4.9/pppd/plugins/pppoatm/Makefile.linux	2021-01-05 00:06:37.000000000 +0100
++++ new/pppd/plugins/pppoatm/Makefile.linux	2022-05-23 17:42:04.835599374 +0200
+@@ -4,7 +4,7 @@
+ COPTS=@CFLAGS@
  
  DESTDIR = $(INSTROOT)@DESTDIR@
 -LIBDIR = $(DESTDIR)/lib/pppd/$(VERSION)
@@ -58,31 +49,10 @@
  
  VERSION = $(shell awk -F '"' '/VERSION/ { print $$2; }' ../../patchlevel.h)
  
---- pppd/plugins/pppol2tp/Makefile.linux.orig
-+++ pppd/plugins/pppol2tp/Makefile.linux
-@@ -7,7 +7,7 @@ INSTALL	= install
- #***********************************************************************
- 
- DESTDIR = @DESTDIR@
--LIBDIR = $(DESTDIR)/lib/pppd/$(VERSION)
-+LIBDIR = $(DESTDIR)/lib64/pppd/$(VERSION)
- 
- VERSION = $(shell awk -F '"' '/VERSION/ { print $$2; }' ../../patchlevel.h)
- 
---- pppd/plugins/radius/Makefile.linux.orig
-+++ pppd/plugins/radius/Makefile.linux
-@@ -5,7 +5,7 @@
- 
- DESTDIR = $(INSTROOT)@DESTDIR@
- MANDIR = $(DESTDIR)/share/man/man8
--LIBDIR = $(DESTDIR)/lib/pppd/$(VERSION)
-+LIBDIR = $(DESTDIR)/lib64/pppd/$(VERSION)
- 
- VERSION = $(shell awk -F '"' '/VERSION/ { print $$2; }' ../../patchlevel.h)
- 
---- pppd/plugins/rp-pppoe/Makefile.linux.orig
-+++ pppd/plugins/rp-pppoe/Makefile.linux
-@@ -16,7 +16,7 @@
+diff -Nur ppp-2.4.9/pppd/plugins/pppoe/Makefile.linux new/pppd/plugins/pppoe/Makefile.linux
+--- ppp-2.4.9/pppd/plugins/pppoe/Makefile.linux	2021-01-05 00:06:37.000000000 +0100
++++ new/pppd/plugins/pppoe/Makefile.linux	2022-05-23 17:42:04.835599374 +0200
+@@ -18,7 +18,7 @@
  
  DESTDIR = $(INSTROOT)@DESTDIR@
  BINDIR = $(DESTDIR)/sbin
@@ -91,9 +61,34 @@
  
  PPPDVERSION = $(shell awk -F '"' '/VERSION/ { print $$2; }' ../../patchlevel.h)
  
---- pppd/pppd.8.orig
-+++ pppd/pppd.8
-@@ -946,7 +946,7 @@ persistent connections.
+diff -Nur ppp-2.4.9/pppd/plugins/pppol2tp/Makefile.linux new/pppd/plugins/pppol2tp/Makefile.linux
+--- ppp-2.4.9/pppd/plugins/pppol2tp/Makefile.linux	2021-01-05 00:06:37.000000000 +0100
++++ new/pppd/plugins/pppol2tp/Makefile.linux	2022-05-23 17:42:04.835599374 +0200
+@@ -4,7 +4,7 @@
+ COPTS=@CFLAGS@
+ 
+ DESTDIR = $(INSTROOT)/@DESTDIR@
+-LIBDIR = $(DESTDIR)/lib/pppd/$(VERSION)
++LIBDIR = $(DESTDIR)/lib64/pppd/$(VERSION)
+ 
+ VERSION = $(shell awk -F '"' '/VERSION/ { print $$2; }' ../../patchlevel.h)
+ 
+diff -Nur ppp-2.4.9/pppd/plugins/radius/Makefile.linux new/pppd/plugins/radius/Makefile.linux
+--- ppp-2.4.9/pppd/plugins/radius/Makefile.linux	2021-01-05 00:06:37.000000000 +0100
++++ new/pppd/plugins/radius/Makefile.linux	2022-05-23 17:42:04.835599374 +0200
+@@ -9,7 +9,7 @@
+ 
+ DESTDIR = $(INSTROOT)@DESTDIR@
+ MANDIR = $(DESTDIR)/share/man/man8
+-LIBDIR = $(DESTDIR)/lib/pppd/$(VERSION)
++LIBDIR = $(DESTDIR)/lib64/pppd/$(VERSION)
+ 
+ VERSION = $(shell awk -F '"' '/VERSION/ { print $$2; }' ../../patchlevel.h)
+ 
+diff -Nur ppp-2.4.9/pppd/pppd.8 new/pppd/pppd.8
+--- ppp-2.4.9/pppd/pppd.8	2021-01-05 00:06:37.000000000 +0100
++++ new/pppd/pppd.8	2022-05-23 17:42:04.835599374 +0200
+@@ -995,7 +995,7 @@
  .B plugin \fIfilename
  Load the shared library object file \fIfilename\fR as a plugin.  This
  is a privileged option.  If \fIfilename\fR does not contain a slash

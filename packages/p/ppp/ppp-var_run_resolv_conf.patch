@@ -1,6 +1,12 @@
---- Changes-2.3.orig
-+++ Changes-2.3
-@@ -262,10 +262,10 @@ What was new in ppp-2.3.6.
+Tue Jul 22 14:16:29 CEST 2008 - hvogel@suse.de
+
+Move the resolv.conf written by pppd to /var/run [bnc#401648]
+
+
+diff -Nur ppp-2.4.9/Changes-2.3 new/Changes-2.3
+--- ppp-2.4.9/Changes-2.3	2021-01-05 00:06:37.000000000 +0100
++++ new/Changes-2.3	2022-05-23 18:30:08.827773633 +0200
+@@ -262,10 +262,10 @@
  
  * Added new option `usepeerdns', thanks to Nick Walker
    <nickwalker@email.com>.  If the peer supplies DNS addresses, these
@@ -15,10 +21,11 @@
  
  * The Solaris ppp driver should now work correctly on SMP systems.
  
---- pppd/ipcp.c.orig
-+++ pppd/ipcp.c
-@@ -2148,10 +2148,13 @@ create_resolv(peerdns1, peerdns2)
-     u_int32_t peerdns1, peerdns2;
+diff -Nur ppp-2.4.9/pppd/ipcp.c new/pppd/ipcp.c
+--- ppp-2.4.9/pppd/ipcp.c	2021-01-05 00:06:37.000000000 +0100
++++ new/pppd/ipcp.c	2022-05-23 18:30:08.827773633 +0200
+@@ -2090,10 +2090,13 @@
+ create_resolv(u_int32_t peerdns1, u_int32_t peerdns2)
  {
      FILE *f;
 +    char rcfilename[MAXIFNAMELEN];
@@ -33,7 +40,7 @@
  	return;
      }
  
-@@ -2162,7 +2165,7 @@ create_resolv(peerdns1, peerdns2)
+@@ -2104,7 +2107,7 @@
  	fprintf(f, "nameserver %s\n", ip_ntoa(peerdns2));
  
      if (ferror(f))
@@ -42,9 +49,10 @@
  
      fclose(f);
  }
---- pppd/pathnames.h.orig
-+++ pppd/pathnames.h
-@@ -30,7 +30,7 @@
+diff -Nur ppp-2.4.9/pppd/pathnames.h new/pppd/pathnames.h
+--- ppp-2.4.9/pppd/pathnames.h	2021-01-05 00:06:37.000000000 +0100
++++ new/pppd/pathnames.h	2022-05-23 18:30:08.827773633 +0200
+@@ -35,7 +35,7 @@
  #define _PATH_TTYOPT	 _ROOT_PATH "/etc/ppp/options."
  #define _PATH_CONNERRS	 _ROOT_PATH "/etc/ppp/connect-errors"
  #define _PATH_PEERFILES	 _ROOT_PATH "/etc/ppp/peers/"
@@ -53,9 +61,10 @@
  
  #define _PATH_USEROPT	 ".ppprc"
  #define	_PATH_PSEUDONYM	 ".ppp_pseudonym"
---- pppd/pppd.8.orig
-+++ pppd/pppd.8
-@@ -1143,8 +1143,8 @@ Ask the peer for up to 2 DNS server addr
+diff -Nur ppp-2.4.9/pppd/pppd.8 new/pppd/pppd.8
+--- ppp-2.4.9/pppd/pppd.8	2021-01-05 00:06:37.000000000 +0100
++++ new/pppd/pppd.8	2022-05-23 18:30:08.827773633 +0200
+@@ -1196,8 +1196,8 @@
  by the peer (if any) are passed to the /etc/ppp/ip\-up script in the
  environment variables DNS1 and DNS2, and the environment variable
  USEPEERDNS will be set to 1.  In addition, pppd will create an

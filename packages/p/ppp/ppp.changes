@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon May 23 14:07:58 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.4.9
+  * Support for new EAP (Extensible Authentication Protocol) methods
+    * Support for EAP-TLS
+    * Support for EAP-MSCHAPv2
+  * New pppd options:
+    * chap-timeout
+    * chapms-strip-domain
+    * replacedefaultroute
+    * noreplacedefaultroute
+    * ipv6cp-accept-remote
+    * lcp-echo-adaptive
+    * ip-up-script
+    * ip-down-script
+    * ca
+    * capath
+    * cert
+    * key
+    * crl-dir
+    * crl
+    * max-tls-version
+  *  need-peer-eap
+  * Fixes for CVE-2020-8597 and CVE-2015-3310.
+  * The rp-pppoe plugin has been renamed to pppoe, to distinguish it
+    from the upstream rp-pppoe code.  Its options have changed names,
+    but the old names are kept as aliases.
+  * Many bug fixes and cleanups.
+- Drop upstream fixed patches
+  * ppp-2.4.3-winbind-setuidfix.patch
+  * fix-header-conflict.patch
+  * ppp-CVE-2015-3310.patch
+  * ppp-CVE-2020-8597.patch
+  * ppp-cifdefroute.patch
+  * ppp-higher-speeds.patch
+  * ppp-2.4.3-strip.diff
+  * ppp-filter.patch
+  * ppp-__P.patch
+- Drop upstream resolved ppp-make.patch use `--cflags` configure
+  switch instead
+
+-------------------------------------------------------------------
 Thu Mar 10 13:59:07 UTC 2022 - Илья Индиго <ilya@ilya.cf>
 
 - Removed Wants=network.target from modem@.service (bsc#1196359).

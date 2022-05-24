@@ -1,17 +1,7 @@
---- pppd/Makefile.linux.orig
-+++ pppd/Makefile.linux
-@@ -224,7 +224,7 @@ install: pppd
- 	$(INSTALL) -m 644 pppd.8 $(MANDIR)
- 
- pppd: $(PPPDOBJS)
--	$(CC) $(CFLAGS) $(LDFLAGS) $(LDFLAGS_PLUGIN) -o pppd $(PPPDOBJS) $(LIBS)
-+	$(CC) $(CFLAGS) -pie -fPIC $(LDFLAGS) $(LDFLAGS_PLUGIN) -o pppd $(PPPDOBJS) $(LIBS)
- 
- srp-entry:	srp-entry.c
- 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ srp-entry.c $(LIBS)
---- chat/Makefile.linux.orig
-+++ chat/Makefile.linux
-@@ -18,7 +18,7 @@ INSTALL= install
+diff -Nur ppp-2.4.9/chat/Makefile.linux new/chat/Makefile.linux
+--- ppp-2.4.9/chat/Makefile.linux	2021-01-05 00:06:37.000000000 +0100
++++ new/chat/Makefile.linux	2022-05-23 17:29:53.108022140 +0200
+@@ -19,7 +19,7 @@
  all:	chat
  
  chat:	chat.o
@@ -20,10 +10,23 @@
  
  chat.o:	chat.c
  	$(CC) -c $(CFLAGS) -o chat.o chat.c
---- pppstats/Makefile.linux.orig
-+++ pppstats/Makefile.linux
-@@ -26,7 +26,7 @@ install: pppstats
- 	$(INSTALL) -m 444 pppstats.8 $(MANDIR)
+diff -Nur ppp-2.4.9/pppd/Makefile.linux new/pppd/Makefile.linux
+--- ppp-2.4.9/pppd/Makefile.linux	2021-01-05 00:06:37.000000000 +0100
++++ new/pppd/Makefile.linux	2022-05-23 17:29:53.108022140 +0200
+@@ -245,7 +245,7 @@
+ 	$(INSTALL) -c -m 444 pppd.8 $(MANDIR)
+ 
+ pppd: $(PPPDOBJS)
+-	$(CC) $(CFLAGS) $(LDFLAGS) $(LDFLAGS_PLUGIN) -o pppd $(PPPDOBJS) $(LIBS)
++	$(CC) $(CFLAGS) -pie -fPIC $(LDFLAGS) $(LDFLAGS_PLUGIN) -o pppd $(PPPDOBJS) $(LIBS)
+ 
+ srp-entry:	srp-entry.c
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ srp-entry.c $(LIBS)
+diff -Nur ppp-2.4.9/pppstats/Makefile.linux new/pppstats/Makefile.linux
+--- ppp-2.4.9/pppstats/Makefile.linux	2021-01-05 00:06:37.000000000 +0100
++++ new/pppstats/Makefile.linux	2022-05-23 17:29:53.108022140 +0200
+@@ -27,7 +27,7 @@
+ 	$(INSTALL) -c -m 444 pppstats.8 $(MANDIR)
  
  pppstats: $(PPPSTATSRCS)
 -	$(CC) $(CFLAGS) $(LDFLAGS) -o pppstats pppstats.c $(LIBS)

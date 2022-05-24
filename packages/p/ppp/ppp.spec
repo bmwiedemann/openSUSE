@@ -1,7 +1,7 @@
 #
 # spec file for package ppp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,19 @@
 
 %define _group dialout
 Name:           ppp
-Version:        2.4.8
+Version:        2.4.9
 Release:        0
 Summary:        The Point to Point Protocol for Linux
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          Productivity/Networking/PPP
 URL:            https://ppp.samba.org
-Source0:        https://download.samba.org/pub/%{name}/%{name}-%{version}.tar.gz
-# config for pam
-Source1:        ppp.pamd
+Source0:        https://download.samba.org/pub/ppp/ppp-%{version}.tar.gz
+Source1:        https://download.samba.org/pub/ppp/ppp-%{version}.tar.gz.asc
 # templates for secrets
 Source2:        pap-secrets.template
 Source3:        chap-secrets.template
+# config for pam
+Source4:        ppp.pamd
 # options and filters files
 Source5:        options
 Source6:        filters
@@ -47,32 +48,22 @@ Source15:       modem@.service
 Source16:       modem.rules
 # https://www.kernel.org/doc/wot/paulus.html
 Source17:       %{name}.keyring
-Source18:       https://download.samba.org/pub/%{name}/%{name}-%{version}.tar.gz.asc
-# Makefile changes
-Patch0:         ppp-make.patch
-# replacedefaultroute option
-Patch2:         ppp-cifdefroute.patch
+# PATCH-FEATURE-OPENSUSE ppp-smpppd.patch -- Add more log output for smpppd (move from debug to info log)
+Patch0:         ppp-smpppd.patch
+# PATCH-FIX-OPENSUSE ppp-pie.patch -- Build position independent code
+Patch1:         ppp-pie.patch
+# PATCH-FIX-OPENSUSE ppp-lib64.patch -- Install into lib64 on 64bit systems
+Patch2:         ppp-lib64.patch
+# PATCH-FIX-UPSTREAM ppp-var_run_resolv_conf.patch -- Move resolv.conf to /var/run
+Patch3:         ppp-var_run_resolv_conf.patch
+# PATCH-FIX-UPSTREAM ppp-fix-bashisms.patch -- Remove bashism from posix shell interpreted script https://github.com/ppp-project/ppp/issues/348
+Patch4:         ppp-fix-bashisms.patch
+# PATCH-FIX-UPSTREAM ppp-fork-fix.patch -- fix safe_fork to not close needed file descriptors
+Patch5:         ppp-fork-fix.patch
 # misc tiny stuff
-Patch3:         ppp-misc.patch
-# more log output for smpppd
-Patch4:         ppp-smpppd.patch
-# allow higher serial speeds
-Patch5:         ppp-higher-speeds.patch
-# fixed use of libpcap including dial on demand
-Patch6:         ppp-filter.patch
-# Don't use __P from glibc (pppd uses it wrong)
-Patch9:         ppp-__P.patch
-Patch11:        ppp-fix-bashisms.patch
-Patch12:        ppp-pie.patch
-Patch14:        ppp-fork-fix.patch
-Patch17:        ppp-2.4.3-strip.diff
-Patch18:        ppp-2.4.3-winbind-setuidfix.patch
-Patch21:        ppp-lib64.patch
-Patch22:        ppp-var_run_resolv_conf.patch
-# PATCH-FIX-UPSTREAM -- Patch for CVE-2015-3310
-Patch24:        ppp-CVE-2015-3310.patch
-Patch25:        fix-header-conflict.patch
-Patch27:        ppp-CVE-2020-8597.patch
+Patch6:         ppp-misc.patch
+# Of cause any other compatible libc would work, like musl, but 2.24 required for SOL_NETLINK
+BuildRequires:  glibc-devel >= 2.24
 BuildRequires:  libpcap-devel
 BuildRequires:  linux-atm-devel
 BuildRequires:  openssl-devel
@@ -100,9 +91,9 @@ plugins for the pppd.
 %package modem
 Summary:        Automatic redial for any USB modem supported by the kernel
 Group:          System/Kernel
-Requires:       group(dialout)
 Requires:       ppp
 Requires:       udev
+Requires:       group(dialout)
 BuildArch:      noarch
 
 %description modem
@@ -118,24 +109,16 @@ you can disable unnecessary or disable everything.
 %prep
 %setup -q
 %patch0
-%patch2
-%patch3
-%patch4
+%patch1 -p1
+%patch3 -p1
+%patch4 -p1
 %patch5
 %patch6
-%patch9
-%patch11 -p1
-%patch12
-%patch14
-%patch17
-%patch18
+
 %if "%{_lib}" == "lib64"
-%patch21
+%patch2 -p1
 %endif
-%patch22
-%patch24
-%patch25 -p1
-%patch27
+
 sed -i -e '1s/local\///' scripts/secure-card
 find scripts -type f | xargs chmod a-x
 find -type f -name '*.orig' | xargs rm -f
@@ -145,8 +128,7 @@ find -type f -name '*.orig' | xargs rm -f
 sed -i '/#HAVE_LIBATM/s/#//' pppd/plugins/pppoatm/Makefile.linux
 
 %build
-export MY_CFLAGS="%{optflags} -fno-strict-aliasing -fPIC $SP"
-%configure
+%configure --cflags "%{optflags} -fno-strict-aliasing -fPIC $SP"
 %make_build CHAPMS=y CBCP=y HAS_SHADOW=y USE_PAM=y FILTER=y HAVE_INET6=y HAVE_LOGWTMP=y
 
 %install
@@ -166,7 +148,7 @@ install -m 644 %{SOURCE10} %{buildroot}%{_sysconfdir}/ppp/peers/pppoatm
 install -m 644 %{SOURCE11} %{buildroot}%{_sysconfdir}/ppp/peers/ppp
 install -m 644 %{SOURCE12} %{buildroot}%{_sysconfdir}/ppp/peers/pptp
 install -d 755 %{buildroot}%{_sysconfdir}/pam.d
-install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/pam.d/ppp
+install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/pam.d/ppp
 install -m 644 %{SOURCE13} %{buildroot}%{_mandir}/man8/pppoe-discovery.8.gz
 install -Dm 644 %{SOURCE14} %{buildroot}%{_sysconfdir}/ppp/chatscripts/modem.chat
 install -Dm 644 %{SOURCE15} %{buildroot}%{_unitdir}/modem@.service
