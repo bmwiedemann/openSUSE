@@ -2,6 +2,8 @@
 Sun Mar 13 15:42:53 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 1.7.14
+  * Release notes:
+    https://github.com/mozilla/rhino/blob/master/RELEASE-NOTES.md#rhino-1714
   * split into 3 packages: rhino, rhino-engine and rhino-runtime
   * build also the javadoc documentation
   * inspired by build.gradle file, write our own ant build.xml
