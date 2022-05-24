@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon May 16 10:35:34 MDT 2022 - carnold@suse.com
+
+- Update to version 1.12.2:
+  * Version 1.12.2.
+  * Fix for CVE-2022-0485 Silent data corruption when using
+    nbdcopy(1).
+  * New APIs
+    get_pread_initialize
+    set_pread_initialize
+      Control whether libnbd clears the pread buffer to avoid
+      leaking memory contents if the client does not properly
+      handle errors. These were added as part of the fix for
+      CVE-2022-0485 (Eric Blake).
+    get_request_block_size
+    set_request_block_size
+      Control whether libnbd requests block size constraints from
+      the server during negotiation (Eric Blake).
+  * Error messages about incorrect URIs in nbd_connect_uri(3) have
+    been improved to make common mistakes clearer for the user.
+  * New syntax: nbdinfo [ CMD ... ] allowing you to query the
+    properties of an NBD server directly.
+  * nbdcopy(1) new --queue-size option to control the maximum
+    size of the internal buffer (Nir Soffer).
+  * nbdcopy(1) now names the source and destination handles to
+    make it easier to understand debug output.
+  * New OCaml NBD.with_handle helper which ensures that NBD.close
+    is always called even if the inner code throws an exception.
+  * The OCaml bindings now consistently use the correct types for
+    buffer sizes everywhere (Laszlo Ersek).
+  * Several improvements and fixes to the golang bindings and
+    tests. The golang bindings have been relicensed to LGPLv2+
+    like the rest of the library and are now published as a golang
+    module at https://libguestfs.org/libnbd (Nir Soffer).
+  * The Python bindings no longer crash if you pass None in place
+    of a buffer parameter. In addition some memory leaks were fixed
+    (Eric Blake).
+  * Various memory leaks have been fixed when using the optional
+    strict_mode settings (Eric Blake).
+  * The performance of the internal vector library has been
+    improved greatly and overflow is now handled correctly
+    (Nir Soffer, Laszlo Ersek and Eric Blake).
+  * Add simple_copy and aio_copy Golang examples (Nir Soffer).
+  * Error handling was reviewed and fixed across many of the
+    example programs and documentation (Eric Blake, Nir Soffer).
+  * Simplify and optimize handling of the extents callback in
+    Golang (Nir Soffer).
+  * Golang AioBuffer was enhanced, making it safer to use, faster
+    and adding documentation (Nir Soffer).
+  * Other fixes to Tests, Documentation, and Build.
+
+-------------------------------------------------------------------
+Thu May 12 16:25:41 MDT 2022 - carnold@suse.com
+
+- Enable building the ocaml bindings for libnbd.
+  virt-v2v has added a dependency on ocaml bindings from libnbd 
+  beginning with virt-v2v version 2.0.0.
+  libnbd.spec
+
+-------------------------------------------------------------------
 Tue Feb 08 16:46:29 UTC 2022 - jfehlig@suse.com
 
 - Update to version 1.10.4:

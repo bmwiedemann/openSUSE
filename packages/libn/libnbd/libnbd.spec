@@ -19,16 +19,17 @@
 %define sover 0
 
 Name:           libnbd
-Version:        1.10.4
+Version:        1.12.2
 Release:        0
 Summary:        NBD client library in userspace
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.com/nbdkit/libnbd
-Source0:        %{name}-%{version}.tar.bz2
+Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  libtool
+BuildRequires:  ocaml-findlib
 BuildRequires:  pkg-config
 BuildRequires:  ocaml(compiler)
 BuildRequires:  perl(Pod::Man)
@@ -102,6 +103,7 @@ for %{name}.
 %autosetup -p1
 
 %build
+%define _lto_cflags %{nil}
 autoreconf -fiv
 %configure \
     --with-tls-priority=@LIBNBD,SYSTEM \
@@ -120,9 +122,6 @@ find "%{buildroot}" -name '*.la' -delete
 
 # Delete the golang man page since we're not distributing the bindings.
 rm %{buildroot}/%{_mandir}/man3/libnbd-golang.3*
-
-# Delete the ocaml man page. 'make install' should be fixed to not install it when ocaml is disabled
-rm %{buildroot}/%{_mandir}/man3/libnbd-ocaml.3*
 
 %check
 # All fuse tests fail in Koji with:
@@ -156,12 +155,24 @@ done
 %license COPYING.LIB
 %{_libdir}/libnbd.so.%{sover}
 %{_libdir}/libnbd.so.%{sover}.*
+%dir %{_libdir}/ocaml/nbd
+%{_libdir}/ocaml/nbd/META
+%{_libdir}/ocaml/nbd/NBD.cmi
+%{_libdir}/ocaml/nbd/mlnbd.cma
+%{_libdir}/ocaml/stublibs/dllmlnbd.so
+%{_libdir}/ocaml/stublibs/dllmlnbd.so.owner
 
 %files devel
 %{_includedir}/libnbd.h
 %{_libdir}/libnbd.so
 %{_libdir}/pkgconfig/libnbd.pc
+%{_libdir}/ocaml/nbd/NBD.cmx
+%{_libdir}/ocaml/nbd/mlnbd.cmxa
+%{_libdir}/ocaml/nbd/NBD.mli
+%{_libdir}/ocaml/nbd/mlnbd.a
+%{_libdir}/ocaml/nbd/libmlnbd.a
 %{_mandir}/man3/libnbd.3*
+%{_mandir}/man3/libnbd-ocaml.3.gz
 %{_mandir}/man1/libnbd-release-notes-1.*.1*
 %{_mandir}/man3/libnbd-security.3*
 %{_mandir}/man3/nbd_*.3*
