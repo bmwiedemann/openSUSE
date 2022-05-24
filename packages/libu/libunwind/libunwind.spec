@@ -77,7 +77,9 @@ system routines, at the cost of a much slower longjmp.
 %package devel
 Summary:        Headers for the Unwind library
 Group:          Development/Libraries/C and C++
+%ifnarch ppc ppc64 ppc64le s390x
 Requires:       libunwind-coredump0 = %{version}-%{release}
+%endif
 Requires:       libunwind-ptrace0 = %{version}-%{release}
 Requires:       libunwind-setjmp0 = %{version}-%{release}
 Requires:       libunwind8 = %{version}-%{release}
@@ -125,7 +127,10 @@ find %{buildroot}/%{_libdir} -type f | sort
 %ifarch %ix86
 %{_libdir}/libunwind-x86.so.8*
 %else
-%ifarch ppc ppc64 ppc64le
+%ifarch ppc
+%{_libdir}/libunwind-ppc32.so.8*
+%else
+%ifarch ppc64 ppc64le
 %{_libdir}/libunwind-ppc64.so.8*
 %else
 %{_libdir}/libunwind-%{_target_cpu}.so.8*
@@ -133,8 +138,9 @@ find %{buildroot}/%{_libdir} -type f | sort
 %endif
 %endif
 %endif
+%endif
 
-%ifnarch ppc64 ppc64le s390x
+%ifnarch ppc ppc64 ppc64le s390x
 %files -n libunwind-coredump0
 %{_libdir}/libunwind-coredump.so.0*
 %endif
