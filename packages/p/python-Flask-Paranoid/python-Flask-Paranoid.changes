@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 24 02:58:33 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 0.3.0
+  * Project restructure and test fixes
+- Bump minimum required python version to 3.7
+- Fix compatibility with old Flask versions
+  * fix-ParanoidTests-fail.patch
+
+-------------------------------------------------------------------
 Tue Sep 14 11:51:45 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro
