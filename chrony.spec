@@ -228,7 +228,7 @@ mkdir %{buildroot}%{_sysconfdir}/chrony.d
 install -Dpm 0640 examples/chrony.keys.example \
   %{buildroot}%{_sysconfdir}/chrony.keys
 install -Dpm 0755 examples/chrony.nm-dispatcher.onoffline \
-  %{buildroot}%{_sysconfdir}/NetworkManager/dispatcher.d/20-chrony
+  %{buildroot}%{_prefix}/lib/NetworkManager/dispatcher.d/20-chrony
 install -Dpm 0755 %{SOURCE3} \
   %{buildroot}%{_sysconfdir}/dhcp/dhclient.d/chrony.sh
 install -Dpm 0644 examples/chrony.logrotate \
@@ -310,7 +310,7 @@ make %{?_smp_mflags} check
 %config(noreplace) %attr(0640,root,%{name}) %{_sysconfdir}/chrony.conf
 %config(noreplace) %attr(0640,root,%{name}) %verify(not md5 size mtime) %{_sysconfdir}/chrony.keys
 %config(noreplace) %{_sysconfdir}/logrotate.d/chrony
-%{_sysconfdir}/NetworkManager/dispatcher.d/20-chrony
+%attr(0755,root,root) %{_prefix}/lib/NetworkManager/dispatcher.d/20-chrony
 %dir %{_sysconfdir}/chrony.d/
 %dir %{_sysconfdir}/dhcp/
 %dir %{_sysconfdir}/dhcp/dhclient.d/
