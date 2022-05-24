@@ -19,7 +19,7 @@
 %bcond_without  java
 
 Name:           openSUSE-EULAs
-Version:        84.87.20220225.c939427
+Version:        84.87.20220520.1491bf6
 Release:        0
 URL:            https://github.com/openSUSE/openSUSE-EULAs
 Summary:        Collection of EULAs for openSUSE

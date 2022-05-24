@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 23 07:35:34 UTC 2022 - opensuse-packaging@opensuse.org
+
+- Update to version 84.87.20220520.1491bf6:
+  * license for Mesa-dri-nouveau no longer needed (boo#1186721)
+  * Prepare for deepin-feature-enable
+
+-------------------------------------------------------------------
 Thu May 19 10:29:35 UTC 2022 - opensuse-packaging@opensuse.org
 
 - Update to version 84.87.20220225.c939427:
