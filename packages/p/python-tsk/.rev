@@ -84,4 +84,12 @@ python bindings for sleuthkit.  Required by plaso.</comment>
     <comment></comment>
     <requestid>765654</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9e5c02a634486dbb6e0263f6c03326c6</srcmd5>
+    <version>0~20210419</version>
+    <time>1653417085</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978785</requestid>
+  </revision>
 </revisionlist>

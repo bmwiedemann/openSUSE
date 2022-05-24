@@ -1,7 +1,7 @@
 #
 # spec file for package python-tsk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define timestamp 	20200117
+%define timestamp 	20210419
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-tsk
@@ -35,7 +35,7 @@ BuildRequires:  libstdc++-devel
 BuildRequires:  libtalloc-devel
 BuildRequires:  postgresql-devel
 BuildRequires:  python-rpm-macros
-BuildRequires:  sleuthkit-devel >= 4.6.7
+BuildRequires:  sleuthkit-devel >= 4.10.2
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(libvhdi)
 BuildRequires:  pkgconfig(libvmdk)
@@ -44,14 +44,13 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %python_subpackages
 
 %description
-The Sleuthkit is a forensic filesystem analysis framework (http://www.sleuthkit.org/). This project is a python 2 binding for the sleuthkit. 
+The Sleuthkit is a forensic filesystem analysis framework (http://www.sleuthkit.org/). This project is a python 3 binding for the sleuthkit.
 
 %prep
 %setup -q -n pytsk3-%{timestamp}
 # remove unused libraries with incompatible license, use libtalloc from main repositories
 # rm -rf pytsk talloc
 # rm -rf pytsk talloc.new
-# %patch1 -p1
 
 %build
 CFLAGS="%{optflags}"
@@ -70,7 +69,7 @@ $python ./run_tests.py
 %files %{python_files}
 %defattr(-,root,root)
 %doc README
-%license LICENSE 
+%license LICENSE
 %{python_sitearch}/*
 
 %changelog
