@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri May 20 09:01:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.5:
+  + Backends:
+    - dnf:
+      . Add support for autoremove flag when removing packages.
+      . Searches by name and package details should be case
+        insensitive.
+      . Update appstream xml files if dnf_sack_add_repos() does
+        the download.
+    - zypp:
+      . Add -std=c++1z cpp flags.
+      . Fix crash when search string is NULL.
+      . Fix package installation using undefined data.
+    - Changes to alpm, apttcc, nix, and slack.
+  + Bugfixes:
+    - Install offline-update enablement symlink if Meson is new
+      enough.
+    - Move Wants= line for network-online.target.
+    - Add flags to D-Bus offline invoking methods.
+    - Properly handle allow-reinstall flag for installations.
+    - Provide better error message if trying to install an
+      installed package.
+    - Wait until online to activate systemd service.
+- Drop 505.patch, PackageKit-zypp-c++17.patch, and
+  PackageKit-zypp-fix-crash-with-empty-search-string.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Tue Nov 16 14:24:11 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Apply all patches unconditonally: PackageKit-zypp-c++17.patch is

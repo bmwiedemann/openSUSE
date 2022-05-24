@@ -1,7 +1,7 @@
 #
 # spec file for package PackageKit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 %endif
 
 Name:           PackageKit
-Version:        1.2.4
+Version:        1.2.5
 Release:        0
 Summary:        Simple software installation management software
 License:        GPL-2.0-or-later
@@ -50,14 +50,8 @@ Patch1:         PackageKit-systemd-timers.patch
 Patch2:         PackageKit-remove-polkit-rules.patch
 # PATCH-FIX-OPENSUSE PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch ngompa13@gmail.com -- Band-aid to deal with OBS producing differently named appstream repodata files
 Patch3:         PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch
-# PATCH-FIX-UPSTREAM 505.patch -- pk-offline: Add flags to D-Bus invoking methods
-Patch4:         https://patch-diff.githubusercontent.com/raw/PackageKit/PackageKit/pull/505.patch
 # PATCH-FIX-UPSTREAM PackageKit-fix-crash-pre-dbus.patch gh#hughsie/PackageKit!436 -- Do not crash when calling pk_dbus_get_uid() before D-Bus is  setup
 Patch5:         PackageKit-fix-crash-pre-dbus.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-fix-crash-with-empty-search-string.patch gh#hughsie/PackageKit/commit#21ccf49, bsc#1179287 sckang@suse.com -- zypp: Fix crash when search string is NULL
-Patch6:         PackageKit-zypp-fix-crash-with-empty-search-string.patch
-# PATCH-FIX-SLE PackageKit-zypp-c++17.patch gh#hughsie/PackageKit/commit/1a6bb6ae6, bsc#1192349 sckang@suse.com -- Fix build failure when building with libzypp > 17.28.5 and gcc < 11.
-Patch1000:      PackageKit-zypp-c++17.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
