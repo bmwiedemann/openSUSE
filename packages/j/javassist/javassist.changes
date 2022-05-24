@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon May 23 13:16:59 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Requires java >= 1.8
+
+- Rebased patches:
+  * javassist-osgi.patch
+
+- Version update to 3.29.0: 
+  * removes an unused import declaration as PR 384 mentions.
+  * Merge pull request #382 from tim-hoffman/PR_RemoveStringBuffer
+  * Merge pull request #383 from tim-hoffman/PR_ArrayCopyPerformance
+  * uncomments test code suggested by PR405
+  * cancels PR#391, which does not pass all the tests
+  * fixes a wrong indentation
+  * Merge pull request #391 from derklaro/fix-method-naming-syntax
+  * does refactoring
+  * fixes a bug in SignatureAttribute.renameClass().
+  * fixs a compilation problem although one test still fails.
+  * Merge pull request #299 from pietrobraione/master
+  * Merge branch 'master' into master
+  * Merge pull request #278 from ximsfei/master
+  * Merge pull request #390 from derklaro/master
+  * changes test code because package 
+    java.rmi.activation.ActivationGroupDesc does not exist any 
+    longer.
+  * deletes src/test/test2/*.class
+  * Merge pull request #399 from carldea/master
+  * Merge pull request #409 from aschleck/patch-1
+  * Remove redundant type check
+  * Using TCK Tested JDK builds of OpenJDK
+  * Merge pull request #395 from aburaksahin/master
+  * Fix for NullPointerException on detach()
+  * Only wrap the method name if the method doesn't come from the 
+    same decl class
+  * Lower requirement for an extra type in constructor to Java 7-
+  * Replace array copy loop with System.arraycopy
+  * Replace remaining StringBuffer uses with StringBuilder
+  * Replace StringBuffer with StringBuilder and other minor String 
+    optimizations
+  * fixes GitHub Issue 378 (wrong link for apache license)
+  * updates javassist.Loader to exclude jdk.internal.
+  * Fixes to support the full syntax of possible signatures
+  * Fix renaming of classes in presence of generic signatures and 
+    nested classes.
+  * add unit test
+  * fixes a bug of ClassFile#renameClass(), some imports could not 
+    be successfully renamed
+
+-------------------------------------------------------------------
 Fri Dec 10 18:51:02 UTC 2021 - David Anes <david.anes@suse.com>
 
 - Rebased osgi patch: javassist-osgi.patch

@@ -137,4 +137,12 @@ This is a dual license so the operator is ^or^ not ^and^ (forwarded request 1579
     <comment></comment>
     <requestid>940656</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f9e3884ad09c98bae28fea4f15af9d5b</srcmd5>
+    <version>3.29.0</version>
+    <time>1653417069</time>
+    <user>dimstar_suse</user>
+    <comment>3.29.0.ga</comment>
+    <requestid>978767</requestid>
+  </revision>
 </revisionlist>

@@ -1,9 +1,9 @@
-Index: javassist-rel_3_28_0_ga/src/main/META-INF/MANIFEST.MF
+Index: javassist-rel_3_29_0_ga/src/main/META-INF/MANIFEST.MF
 ===================================================================
---- javassist-rel_3_28_0_ga.orig/src/main/META-INF/MANIFEST.MF
-+++ javassist-rel_3_28_0_ga/src/main/META-INF/MANIFEST.MF
+--- javassist-rel_3_29_0_ga.orig/src/main/META-INF/MANIFEST.MF
++++ javassist-rel_3_29_0_ga/src/main/META-INF/MANIFEST.MF
 @@ -3,3 +3,50 @@ Specification-Vendor: Shigeru Chiba, www
- Specification-Version: 3.28.0-GA
+ Specification-Version: 3.29.0-GA
  Main-Class: javassist.CtClass
  Automatic-Module-Name: org.javassist
 +  Bundle-Description: Javassist (JAVA programming ASSISTant)
@@ -16,40 +16,40 @@ Index: javassist-rel_3_28_0_ga/src/main/META-INF/MANIFEST.MF
 +  Bundle-Name: Javassist                               
 +  Bundle-SymbolicName: javassist                               
 +  Bundle-Vendor: Shigeru Chiba, www.javassist.org        
-+  Bundle-Version: 3.28.0.GA                               
-+  Export-Package: javassist;version="3.28.0.GA";
++  Bundle-Version: 3.19.0.GA                               
++  Export-Package: javassist;version="3.19.0.GA";
 +   uses:="javassist.bytecode,javassist.compiler,
 +   javassist.compiler.ast,javassist.convert,javassist.expr",
-+   javassist.bytecode;version="3.28.0.GA";
++   javassist.bytecode;version="3.19.0.GA";
 +   uses:="javassist,javassist.bytecode.annotation",
-+   javassist.bytecode.analysis;version="3.28.0.GA";
++   javassist.bytecode.analysis;version="3.19.0.GA";
 +   uses:="javassist,javassist.bytecode,javassist.bytecode.stackmap",
-+   javassist.bytecode.annotation;version="3.28.0.GA";
++   javassist.bytecode.annotation;version="3.19.0.GA";
 +   uses:="javassist,javassist.bytecode",
-+   javassist.bytecode.stackmap;version="3.28.0.GA";
++   javassist.bytecode.stackmap;version="3.19.0.GA";
 +   uses:="javassist,javassist.bytecode",
-+   javassist.compiler;version="3.28.0.GA";
++   javassist.compiler;version="3.19.0.GA";
 +   uses:="javassist,javassist.bytecode,javassist.compiler.ast",
-+   javassist.compiler.ast;version="3.28.0.GA";
++   javassist.compiler.ast;version="3.19.0.GA";
 +   uses:="javassist,javassist.compiler",
-+   javassist.convert;version="3.28.0.GA";
++   javassist.convert;version="3.19.0.GA";
 +   uses:="javassist,javassist.bytecode",
-+   javassist.expr;version="3.28.0.GA";
++   javassist.expr;version="3.19.0.GA";
 +   uses:="javassist,javassist.bytecode",
-+   javassist.runtime;version="3.28.0.GA",
-+   javassist.scopedpool;version="3.28.0.GA";
++   javassist.runtime;version="3.19.0.GA",
++   javassist.scopedpool;version="3.19.0.GA";
 +   uses:=javassist,
-+   javassist.tools;version="3.28.0.GA";
++   javassist.tools;version="3.19.0.GA";
 +   uses:=javassist,
-+   javassist.tools.reflect;version="3.28.0.GA";
++   javassist.tools.reflect;version="3.19.0.GA";
 +   uses:="javassist,javassist.bytecode",
-+   javassist.tools.rmi;version="3.28.0.GA";
++   javassist.tools.rmi;version="3.19.0.GA";
 +   uses:="javassist,javassist.tools.web",
-+   javassist.tools.web;version="3.28.0.GA";
++   javassist.tools.web;version="3.19.0.GA";
 +   uses:=javassist,
-+   javassist.util;version="3.28.0.GA";
++   javassist.util;version="3.19.0.GA";
 +   uses:=javassist,
-+   javassist.util.proxy;version="3.28.0.GA";
++   javassist.util.proxy;version="3.19.0.GA";
 +   uses:="javassist,javassist.bytecode"
 +  Require-Capability: osgi.ee;
 +   filter:="(&(osgi.ee=JavaSE)(version=1.7))"
