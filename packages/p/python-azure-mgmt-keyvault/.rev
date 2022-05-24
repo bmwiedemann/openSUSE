@@ -133,4 +133,16 @@
     CHANGELOG.md file provided with this package (forwarded request 933087 from glaubitz)</comment>
     <requestid>933101</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c7c967f96f19c895dd6c4947f18a2d02</srcmd5>
+    <version>10.0.0</version>
+    <time>1653417110</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 10.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 978897 from glaubitz)</comment>
+    <requestid>978949</requestid>
+  </revision>
 </revisionlist>
