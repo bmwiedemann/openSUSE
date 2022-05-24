@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri May 20 12:30:33 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 20210827
+  * Validate address in server's PASV and LPSV responses. Previously
+    a hostile server could cause ftp to open a data connection elsewhere.
+  * Avoid intermittent crashes by fixing signal handler restoration.
+  * Fix intermittent failures in -q QUITTIME by not using restartable
+    signals.
+  * Set SO_KEEPALIVE on control connection to attempt to avoid timeouts.
+  * Display usage to stdout with -?.
+- Update to version 20200705:
+  * Avoid crashes by exiting if lostpeer due to a signal
+  * Issue PWD commands to the server only when we actually need the
+    results, not speculatively, just in case we might.
+  * Use "anonymous" instead of the local username for anonymous
+    ftp. Avoids unnecesary information leak.
+  * Use the first name we requested the http/https URL for, not any
+    name we ended up with after random redirects.
+  * Support using CONNECT for https:// via proxy.
+  * Improve SSL error reporting, and IPv6 endpoint reporting.
+  * Use the system glob() if required extensions are supported.
+- Drop upstream fixed tnftp-20100108-am_and_libedit.patch
+- Drop upstream fixed tnftp-verify_hostname.patch
+
+-------------------------------------------------------------------
 Tue May 26 13:49:20 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - tnftp ssl client should validate hostnames and certificates,
