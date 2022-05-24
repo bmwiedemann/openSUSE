@@ -5,6 +5,12 @@
 target="mingw64"
 host="x86_64-w64-mingw32"
 
+scan_implibs=
+if [ "$1" = "--scan-implibs" ]; then
+  scan_implibs=1
+  shift
+fi
+
 if [ -n "$1" ]; then
    package_name="$1"
 fi
@@ -13,8 +19,7 @@ fi
 
 # Get the list of files.
 
-filelist="/tmp/$target-find-requires.$$"
-sed "s/['\"]/\\\&/g" >"$filelist"
+filelist=`sed "s/['\"]/\\\&/g"`
 
 libs_to_exclude="
     advapi32
@@ -82,9 +87,9 @@ for i in $libs_to_exclude; do
 done
 
 
-dlls=$(cat "$filelist" | xargs file | grep executable | sed 's,:.*$,,g')
-pcs=$(grep '\.pc$' "$filelist")
-configs=$(grep 'config$' "$filelist")
+dlls=$(echo "$filelist" | grep -v 'config$' | xargs file | grep executable | sed 's,:.*$,,g')
+pcs=$(echo "$filelist" | grep '\.pc$')
+configs=$(echo "$filelist" | grep 'config$')
 
 for f in $dlls; do
     [ ! -f "$f" ] && continue
@@ -93,6 +98,17 @@ for f in $dlls; do
         grep -Ev "$exclude_pattern" |
         sed 's/\(.*\)/'"$target"'(\1)/'
 done | sort -u
+
+if [ -n "$scan_implibs" ]; then
+    implibs=$(echo "$filelist" | grep '\.dll.a$')
+    for f in $implibs; do
+        [ ! -f "$f" ] && continue
+        "$OBJDUMP" -r "$f" | grep '_iname' | sed 's,^.*lib,lib,g;s,_iname,,g;s,_dll,.dll,g;s,_,-,g' |
+            tr "[:upper:]" "[:lower:]" |
+            grep -Ev "$exclude_pattern" |
+            sed 's/\(.*\)/'"$target"'(\1)/'
+    done | sort -u
+fi
 
 (
 for g in $pcs; do
@@ -113,5 +129,3 @@ for k in $configs; do
     done
 done
 ) | sort -u
-
-rm "$filelist"
