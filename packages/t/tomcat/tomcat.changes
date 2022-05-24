@@ -124,6 +124,9 @@ Mon Feb 22 08:56:03 UTC 2021 - Marcel Witte <wittemar@googlemail.com>
 
 - Update to Tomcat 9.0.37. See changelog at
   https://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.37_(markt)
+- Fixed CVEs:
+  * CVE-2020-13934 (bsc#1174121)
+  * CVE-2020-13935 (bsc#1174117)
 - Rebased patches:
   * tomcat-9.0-osgi-build.patch
   * tomcat-9.0.31-java8compat.patch -> tomcat-9.0.37-java8compat.patch
