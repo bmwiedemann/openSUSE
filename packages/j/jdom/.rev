@@ -224,4 +224,12 @@
     <comment>Standalone JavaEE inconditionally</comment>
     <requestid>965940</requestid>
   </revision>
+  <revision rev="31" vrev="39">
+    <srcmd5>719322281a4ac0e17f2980cf701dcb20</srcmd5>
+    <version>unknown</version>
+    <time>1653417220</time>
+    <user>dimstar_suse</user>
+    <comment>sync changes with sle</comment>
+    <requestid>978882</requestid>
+  </revision>
 </revisionlist>
