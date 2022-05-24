@@ -1,7 +1,7 @@
 #
 # spec file for package emacs-semi
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           emacs-semi
-BuildRequires:  emacs-nox
-BuildRequires:  flim
-Requires:       emacs
-Requires:       flim
-Version:        1.14.6
+Version:        1.14.6+239+gb1c245b81715
 Release:        0
-Url:            http://git.chise.org/elisp/semi/
-Source0:        semi-%{version}.tar.bz2
-Patch0:         autoloads.patch
-Patch1:         mime-hide-buttons-in-reply.diff
 Summary:        Library to provide MIME feature for GNU Emacs
 License:        GPL-2.0-or-later
 Group:          Productivity/Editors/Emacs
-Provides:       semi-emacs
-Obsoletes:      semi-emacs
+URL:            https://github.com/wanderlust/semi
+Source0:        semi-%{version}.tar.gz
+BuildRequires:  emacs-flim
+BuildRequires:  emacs-nox
+Requires:       emacs
+Requires:       emacs-flim
+Requires:       emacs_program
+Provides:       semi-emacs = %{version}
+Obsoletes:      semi-emacs < %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
@@ -42,22 +41,22 @@ proposed internet standard for including content and headers other than
 
 %prep
 %setup -q -n semi-%{version}
-%patch0 -p1
-%patch1 -p1
-# necessary to generate the auto-autoloads.el file:
-touch *.el
 
 %build
-%define emacs_package_dir /usr/share/emacs/site-lisp/
-make LISPDIR=%{emacs_package_dir}
+make %{?_smp_mflags} EMACS=emacs \
+  PREFIX=%{_prefix} \
+  PACKAGE_LISPDIR=NONE \
+  VERSION_SPECIFIC_LISPDIR=%{_datadir}/emacs/site-lisp/emu
 
 %install
-mkdir -p $RPM_BUILD_ROOT%{emacs_package_dir}/semi
-make install LISPDIR=$RPM_BUILD_ROOT%{emacs_package_dir}
+make install EMACS=emacs  \
+  PREFIX=%{buildroot}%{_prefix} \
+  PACKAGE_LISPDIR=NONE \
+  VERSION_SPECIFIC_LISPDIR=%{_datadir}/emacs/site-lisp/emu
 
-%files 
+%files
 %defattr(-,root,root)
-%doc NEWS README* ChangeLog SEMI* TODO VERSION
-%{emacs_package_dir}/*
+%doc NEWS README* ChangeLog.1 TODO VERSION
+%{_datadir}/emacs/site-lisp/semi
 
 %changelog
