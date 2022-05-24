@@ -1,7 +1,8 @@
-Index: minicom-2.6.2/src/configsym.h
-===================================================================
---- minicom-2.6.2.orig/src/configsym.h
-+++ minicom-2.6.2/src/configsym.h
+https://bugzilla.opensuse.org/show_bug.cgi?id=707860
+
+diff -Nur minicom-2.8/src/configsym.h new/src/configsym.h
+--- minicom-2.8/src/configsym.h	2021-01-01 18:45:55.000000000 +0100
++++ new/src/configsym.h	2022-05-23 15:33:17.417821951 +0200
 @@ -35,7 +35,7 @@
   * jl  10.02.2000 parameter P_STOPB
   */
@@ -11,16 +12,3 @@ Index: minicom-2.6.2/src/configsym.h
  
  struct pars {
    /* value is first, so that (char *)mpars[0] == mpars[0].value */
-Index: minicom-2.6.2/src/config.c
-===================================================================
---- minicom-2.6.2.orig/src/config.c
-+++ minicom-2.6.2/src/config.c
-@@ -567,7 +567,7 @@ static void doserial(void)
-         mc_wclose(w, 1);
-         return;
-       case 'A':
--        pgets(w, mbslen (serial_device) + 1, 0, P_PORT, 64, 64, 1);
-+        pgets(w, mbslen (serial_device) + 1, 0, P_PORT, PARS_VAL_LEN, PARS_VAL_LEN, 1);
-         break;
- #if !HAVE_LOCKDEV
-       case 'B':

@@ -1,7 +1,7 @@
 #
 # spec file for package minicom
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,24 @@
 
 
 Name:           minicom
-Version:        2.7.1
+Version:        2.8
 Release:        0
 Summary:        A Terminal Program
 License:        GPL-2.0-or-later
 Group:          Hardware/Modem
-URL:            http://alioth.debian.org/projects/minicom/
-Source0:        https://alioth.debian.org/frs/download.php/latestfile/3/%{name}-%{version}.tar.gz
-Patch0:         minicom-2.2-defaults.diff
+URL:            https://salsa.debian.org/minicom-team/minicom
+Source0:        https://salsa.debian.org/minicom-team/minicom/-/archive/%{version}/minicom-%{version}.tar.bz2
+# PATCH-FIX-OPENSUSE openSUSE-defaults.patch -- Fix default settings for *SUSE
+Patch0:         openSUSE-defaults.patch
+# PATCH-FIX-OPENSUSE openSUSE-no-root-setup.patch
+Patch1:         openSUSE-no-root-setup.patch
 Patch2:         03norzsz.diff
-Patch4:         minicom-2.3-no-build-date.patch
-Patch5:         minicom-2.4-norootsetup.diff
-# PATCH-FIX-UPSTREAM increase permitted length of serial device (bnc#707860)
-Patch6:         minicom-2.5-serial_device_path_length.patch
-Patch7:         fix-upstream-gcc10-build1.patch
-Patch8:         fix-upstream-gcc10-build2.patch
-Patch9:         fix-upstream-gcc10-build3.patch
+# PATCH-FIX-UPSTREAM minicom-2.5-serial_device_path_length.patch -- increase permitted length of serial device (boo#707860)
+Patch3:         minicom-2.5-serial_device_path_length.patch
+# PATCH-FIX-UPSTREAM minicom-2.8-replace-sigrelse.patch -- Replace deprecated sigrelse https://salsa.debian.org/minicom-team/minicom/-/commit/c43a18c25b09f6968219f3ecbaec7215e804838d
+Patch4:         minicom-2.8-replace-sigrelse.patch
+# PATCH-FIX-UPSTREAM fix-undefined-reference.patch -- Fix undefined reference to external COLS and LINES
+Patch5:         minicom-2.8-fix-undefined-reference.patch
 BuildRequires:  ckermit
 BuildRequires:  gettext-devel
 BuildRequires:  lockdev-devel
@@ -41,7 +43,6 @@ BuildRequires:  pkg-config
 Requires:       ckermit
 Requires:       rzsz
 Requires(pre):  group(uucp)
-Recommends:     %{name}-lang
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -54,15 +55,7 @@ of the uucp group.
 %lang_package
 
 %prep
-%setup -q
-%patch0
-%patch2 -p1
-%patch4
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} $(ncursesw6-config --cflags)"
@@ -74,15 +67,15 @@ export LDFLAGS="$(ncursesw6-config --libs)"
     --enable-dfl-port=/dev/modem \
     --enable-socket \
     --enable-cfg-dir=%{_sysconfdir}
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 %find_lang %{name}
 
 %files
-%defattr(644,root,root,755)
-%doc doc/minicom.FAQ AUTHORS COPYING NEWS README
+%license COPYING
+%doc doc/minicom.FAQ AUTHORS NEWS README
 %attr(0755,root,root) %{_bindir}/ascii-xfr
 %attr(0755,root,uucp) %{_bindir}/minicom
 %attr(0755,root,root) %{_bindir}/runscript
@@ -93,6 +86,5 @@ make DESTDIR=%{buildroot} install %{?_smp_mflags}
 %{_mandir}/man1/runscript.1.gz
 
 %files lang -f %{name}.lang
-%defattr(-,root,root)
 
 %changelog

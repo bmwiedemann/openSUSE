@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue May 24 09:12:51 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not recommend lang package: the lang package has smarter
+  supplements in place (working with zypper locales).
+
+-------------------------------------------------------------------
+Mon May 23 09:52:00 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Replace dead URL with current upstream
+- Update to version 2.8
+  * New timestamp mode: Delta to previous line.
+  * Add HPA ESC sequence
+  * Add alternative window support (ti/te)
+  * Fix file name of non-global configuration settings.
+  * Update translations: Indonesian, French, Swedish, Spanish,
+    German, Brazilian Portuguese, Vietnamese, Polish, Danish,
+    Norwegian, and Serbian
+  * New translation: Serbian, Simplified chinese
+  * Fix F10 macro key used in current setups
+  * Add F11 and F12 for macro use
+  * Fixed DTR for recent systems
+  * Add support for RS485.
+  * Add --capturefile-buffer-mode option
+  * Bug fixes
+- Drop upstream resolved patches
+  * fix-upstream-gcc10-build2.patch
+  * fix-upstream-gcc10-build3.patch
+  * fix-upstream-gcc10-build1.patch
+- Drop minicom-2.3-no-build-date.patch, GCC now uses SOURCE_DATE_EPOCH
+- Rebased minicom-2.2-defaults.diff as openSUSE-defaults.patch
+- Rebased minicom-2.4-norootsetup.diff as openSUSE-no-root-setup.patch
+- Add patch from upstream minicom-2.8-replace-sigrelse.patch,
+  replace deprecated sigrelse
+- Add patch to fix undefined reference to external symbols
+  minicom-2.8-fix-undefined-reference.patch
+
+-------------------------------------------------------------------
 Tue Jun  9 03:11:04 UTC 2020 - Simon Lees <sflees@suse.de>
 
 - Fix some unneccesary global defenitions to fix build failures with

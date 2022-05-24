@@ -1,0 +1,23 @@
+diff -Nur minicom-2.8/src/rwconf.c new/src/rwconf.c
+--- minicom-2.8/src/rwconf.c	2021-01-01 18:45:55.000000000 +0100
++++ new/src/rwconf.c	2022-05-23 15:15:30.440605764 +0200
+@@ -80,8 +80,8 @@
+   { "",			0,   "pname12" },
+   { "sz -vv -b",	0,   "pprog1" },
+   { "sb -vv",		0,   "pprog2" },
+-  { "sx -vv",		0,   "pprog3" },
+-  { "rz -vv -b -E",	0,   "pprog4" },
++  { "sz -X -vv",	0,   "pprog3" },
++  { "rz -vv -b",	0,   "pprog4" },
+   { "rb -vv",		0,   "pprog5" },
+   { "rx -vv",		0,   "pprog6" },
+   { "kermit -i -l %l -b %b -s", 0, "pprog7" },
+@@ -135,7 +135,7 @@
+   { "BS",		0,   "backspace" },
+   { N_("enabled"),	0,   "statusline" },
+   { N_("Yes"),		0,   "hasdcd" },
+-  { N_("Yes"),		0,   "rtscts" },
++  { N_("No"),		0,   "rtscts" },
+   { N_("No"),		0,   "xonxoff" },
+   { "D",		0,   "zauto" },
+ 

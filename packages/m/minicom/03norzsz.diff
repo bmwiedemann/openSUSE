@@ -1,6 +1,9 @@
---- minicom-2.2.orig/src/updown.c	2005-08-14 22:39:30.000000000 +0200
-+++ minicom-2.2/src/updown.c	2006-10-18 16:48:34.000000000 +0200
-@@ -355,6 +355,22 @@
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=111060
+
+diff -Nur minicom-2.8/src/updown.c new/src/updown.c
+--- minicom-2.8/src/updown.c	2021-01-01 18:45:55.000000000 +0100
++++ new/src/updown.c	2022-05-23 15:41:51.964337441 +0200
+@@ -427,6 +427,22 @@
    mcd("");
    timer_update();
  

@@ -1,0 +1,12 @@
+diff -Nur minicom-2.8/src/window.c new/src/window.c
+--- minicom-2.8/src/window.c	2021-01-01 18:45:55.000000000 +0100
++++ new/src/window.c	2022-05-23 15:02:34.468812231 +0200
+@@ -58,6 +58,8 @@
+ 
+ #define swap(x, y) { int d = (x); (x) = (y); (y) = d; }
+ 
++int COLS = 0;
++int LINES = 0;
+ /* Terminal capabilities */
+ static const char *CM, *IS, *RS, *AC, *EA;
+ static const char *ME, *SE, *UE, *AE;
