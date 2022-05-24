@@ -1,0 +1,15 @@
+diff --git a/test/rbenv.bats b/test/rbenv.bats
+index bca34d3..3b981f3 100644
+--- a/test/rbenv.bats
++++ b/test/rbenv.bats
+@@ -66,9 +66,7 @@ The following versions contain \`1.9.3' in the name:
+ 
+ See all available versions with \`rbenv install --list'.
+ 
+-If the version you need is missing, try upgrading ruby-build:
+-
+-  git -C ${BATS_TEST_DIRNAME}/.. pull
++If the version you need is missing, try upgrading ruby-build.
+ OUT
+ 
+   unstub ruby-build

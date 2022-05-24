@@ -1,0 +1,259 @@
+-------------------------------------------------------------------
+Tue May 24 00:13:43 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Run "osc service runall format_spec_file".
+
+-------------------------------------------------------------------
+Tue Apr 26 13:34:00 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20220426.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20220426
+  * Add TruffleRuby and TruffleRuby GraalVM 22.1.0
+
+-------------------------------------------------------------------
+Fri Apr 15 16:10:44 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20220415.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20220415
+  * Allow truffleruby to install in an existing empty directory
+
+-------------------------------------------------------------------
+Tue Apr 12 14:52:11 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20220412.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20220412
+  * Add definition for Ruby 3.2.0-preview1
+  * Add Ruby 3.1.2, 3.0.4, 2.7.6, 2.6.10
+
+-------------------------------------------------------------------
+Thu Mar 24 23:18:13 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20220324.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20220324
+  * Bump up OpenSSL 1.1.1n and 3.0.2
+  * Update openssl version at 2.4.0-preview versions
+  * Add JRuby 9.3.4.0
+
+-------------------------------------------------------------------
+Fri Feb 18 15:25:32 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20220218.
+- Changelog:
+  https://github.com/rbenv/ruby-build/releases/tag/v20220218
+  * Added Ruby 3.1.1
+
+-------------------------------------------------------------------
+Wed Jan 26 12:38:41 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20220125.
+- Changelog:
+  https://github.com/rbenv/ruby-build/releases/tag/v20220125
+  * Add JRuby 9.3.3.0
+  * Add TruffleRuby and TruffleRuby GraalVM 22.0.0.2
+
+-------------------------------------------------------------------
+Sat Dec 25 19:35:55 UTC 2021 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20211225.
+- Changelog:
+  https://github.com/rbenv/ruby-build/releases/tag/v20211225
+  * Add Ruby 3.1.0.
+
+-------------------------------------------------------------------
+Fri Dec  3 10:53:52 UTC 2021 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20211203.
+- Changelog v20211203: 
+  https://github.com/rbenv/ruby-build/releases/tag/v20211203
+  * Add JRuby 9.3.2.0
+- Changelog v20211201: 
+  https://github.com/rbenv/ruby-build/releases/tag/v20211201
+  * Add JRuby 9.2.20.1
+
+-------------------------------------------------------------------
+Wed Nov 24 19:18:31 UTC 2021 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20211124.
+- Changelog: 
+  https://github.com/rbenv/ruby-build/releases/tag/v20211124
+  * Add ruby 2.6.9, 2.7.5 and 3.0.3
+
+-------------------------------------------------------------------
+Wed Nov 10 22:44:17 UTC 2021 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20211109.
+- Replace the source download service with a static source archive
+  and a disabled service to update the sources manually.
+
+-------------------------------------------------------------------
+Sat Nov  6 14:34:40 UTC 2021 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to v20211019.
+- Changelog: 
+  https://github.com/rbenv/ruby-build/releases/tag/v20211019
+- Enable testing.
+
+-------------------------------------------------------------------
+Tue Apr 27 07:45:14 UTC 2021 - Andrey Gankov <gav@qsolution.ru>
+
+- Update to v20210423: changelog at:
+  https://github.com/rbenv/ruby-build/releases/tag/v20210423 
+
+-------------------------------------------------------------------
+Sun Oct  4 13:23:23 UTC 2020 - Michele Bologna <Michele.Bologna@suse.com>
+
+- Update to v2020926 from v20200727. Changelog at:
+  https://github.com/rbenv/ruby-build/releases/tag/v20200926 
+
+-------------------------------------------------------------------
+Wed Jul 29 08:38:50 UTC 2020 - Michele Bologna <Michele.Bologna@suse.com>
+
+- Update to v20200727 from v20200401. Changelog at:
+  https://github.com/rbenv/ruby-build/releases/tag/v20200727
+
+-------------------------------------------------------------------
+Thu May  7 09:06:39 UTC 2020 - Ana María Martínez Gómez <anamaria@martinezgomez.name>
+
+- Update to v20200401 from v20190401. Changelog at:
+  https://github.com/rbenv/ruby-build/releases?after=v20200402
+
+-------------------------------------------------------------------
+Tue Jan 29 08:26:37 UTC 2019 - dmacvicar@suse.de
+
+- Update to v20181225: changelog at:
+  https://github.com/rbenv/ruby-build/releases/tag/v20181225
+
+-------------------------------------------------------------------
+Sun Aug 26 14:34:58 UTC 2018 - timo.goellner@googlemail.com
+
+- Update to v20180822: changelog at:
+  https://github.com/rbenv/ruby-build/releases/tag/v20180822
+
+-------------------------------------------------------------------
+Tue Mar 27 12:07:59 UTC 2018 - michele.bologna@suse.com
+
+- Update to v20180224: changelog at:
+  https://github.com/rbenv/ruby-build/releases/tag/v20180224
+
+-------------------------------------------------------------------
+Wed Feb 14 22:07:31 UTC 2018 - michele.bologna@suse.com
+
+- Update to v20171215: changelog at:
+  https://github.com/rbenv/ruby-build/releases/tag/v20171226
+
+-------------------------------------------------------------------
+Mon Jul 24 15:00:46 CEST 2017 - kpimenov@suse.com
+
+- update to v20170523
+- https://github.com/rbenv/ruby-build/releases/tag/v20170523
+
+-------------------------------------------------------------------
+Wed Mar 15 13:17:05 UTC 2017 - mamorales@suse.com
+
+- update to v20170201
+- https://github.com/rbenv/ruby-build/releases/tag/v20170201
+
+-------------------------------------------------------------------
+Wed Jan 25 12:19:33 CET 2017 - kpimenov@novell.com
+
+- update to v20170112
+- https://github.com/rbenv/ruby-build/releases/tag/v20170112
+
+-------------------------------------------------------------------
+Mon Dec 19 16:04:49 UTC 2016 - kpimenov@novell.com
+
+- update to v20161121
+- https://github.com/rbenv/ruby-build/releases/tag/v20161121
+
+-------------------------------------------------------------------
+Mon Jun 20 06:55:52 UTC 2016 - dmacvicar@suse.de
+
+- update to v20160602
+- https://github.com/rbenv/ruby-build/releases/tag/v20160602
+
+-------------------------------------------------------------------
+Wed Dec 30 02:29:25 UTC 2015 - dmacvicar@suse.de
+
+- update to v20151226
+- https://github.com/rbenv/ruby-build/releases/tag/v20151226
+
+-------------------------------------------------------------------
+Wed Mar 18 13:15:31 UTC 2015 - dmacvicar@suse.de
+
+- add libffi-devel as MRI 2.2.1 does not build with the
+  bundled one
+
+-------------------------------------------------------------------
+Wed Mar 18 10:11:06 UTC 2015 - dmacvicar@suse.de
+
+- update to v20150303
+
+-------------------------------------------------------------------
+Wed Jan 21 16:42:29 UTC 2015 - dmacvicar@suse.de
+
+- update to v20150116
+
+-------------------------------------------------------------------
+Wed Nov 12 09:24:38 UTC 2014 - dmacvicar@suse.de
+
+- update to v20141028
+
+-------------------------------------------------------------------
+Fri Jan 31 10:42:47 UTC 2014 - dmacvicar@suse.de
+
+- update to v20140110.1
+
+-------------------------------------------------------------------
+Wed Jan  8 08:46:47 UTC 2014 - dmacvicar@suse.de
+
+- update to v20131220
+
+-------------------------------------------------------------------
+Fri Oct 18 08:56:57 UTC 2013 - dmacvicar@suse.de
+
+- update to v20131008
+
+-------------------------------------------------------------------
+Sun Feb 24 21:08:08 UTC 2013 - dmacvicar@suse.de
+
+- update to v20130224
+
+-------------------------------------------------------------------
+Wed Dec 12 12:37:19 UTC 2012 - dmacvicar@suse.de
+
+- update to v20121204
+
+-------------------------------------------------------------------
+Fri May 25 09:47:49 UTC 2012 - dmacvicar@suse.de
+
+- update to v20120524
+
+-------------------------------------------------------------------
+Sun Mar 18 19:40:47 UTC 2012 - dmacvicar@suse.de
+
+- update to v20120216
+
+-------------------------------------------------------------------
+Thu Jan 19 23:16:42 UTC 2012 - dmacvicar@suse.de
+
+- update to v20111230
+- add Url tag
+
+-------------------------------------------------------------------
+Wed Jan  4 11:36:23 UTC 2012 - dmacvicar@suse.de
+
+- add curl to Requires
+- add ruby MRI BuildRequires to Requires
+
+-------------------------------------------------------------------
+Wed Jan  4 11:03:09 UTC 2012 - dmacvicar@suse.de
+
+- add BuildRoot tag
+
+-------------------------------------------------------------------
+Wed Nov 16 10:27:36 UTC 2011 - dmacvicar@suse.de
+
+- initial package for v20111030
+
+
+
