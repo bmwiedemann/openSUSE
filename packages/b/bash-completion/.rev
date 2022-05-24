@@ -532,4 +532,13 @@
 - add versioned dependency to bash versions that have the fix (forwarded request 962002 from dirkmueller)</comment>
     <requestid>962071</requestid>
   </revision>
+  <revision rev="54" vrev="5">
+    <srcmd5>c11905839a0caeb7ace16da042f91092</srcmd5>
+    <version>2.11</version>
+    <time>1653417056</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch bsc1199724-modules.patch (bsc#1199724)
+  * Enable upstream commit to list ko.zst modules as well</comment>
+    <requestid>978684</requestid>
+  </revision>
 </revisionlist>

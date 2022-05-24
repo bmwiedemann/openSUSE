@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 23 10:37:27 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch bsc1199724-modules.patch (bsc#1199724)
+  * Enable upstream commit to list ko.zst modules as well
+
+-------------------------------------------------------------------
 Fri Jan 28 19:19:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - remove PS1-completion-boo903362.patch as it breaks on non-bash

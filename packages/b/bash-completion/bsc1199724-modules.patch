@@ -1,0 +1,15 @@
+---
+ bash_completion |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/bash_completion
++++ b/bash_completion	2022-05-23 10:50:43.197937832 +0000
+@@ -1316,7 +1316,7 @@ _modules()
+     local modpath
+     modpath=/lib/modules/$1
+     COMPREPLY=($(compgen -W "$(command ls -RL $modpath 2>/dev/null |
+-        command sed -ne 's/^\(.*\)\.k\{0,1\}o\(\.[gx]z\)\{0,1\}$/\1/p')" -- "$cur"))
++        command sed -ne 's/^\(.*\)\.k\{0,1\}o\(\.[gx]z\|\.bz2\|\.zst\)\{0,1\}$/\1/p')" -- "$cur"))
+ }
+ 
+ # This function completes on installed modules

@@ -68,6 +68,8 @@ Patch11:        bash-completion-2.7-unRAR-remove.patch
 Patch12:        bash-completion-fix-missing-directory-completion-with-filename-pattern.patch
 # PATCH-FIX-SUSE boo#1190929
 Patch13:        boo1190929-9af4afd0.patch
+# PATCH-FIX-SUSE boo#1199724
+Patch14:        bsc1199724-modules.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildArch:      noarch
