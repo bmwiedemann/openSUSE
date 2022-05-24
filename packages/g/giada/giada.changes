@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 24 13:18:45 UTC 2022 - Edgar Aichinger <edogawa@aon.at>
+
+- workaround for gcc12 build failure in TW:
+    temporarily use gcc11 until upstream fix will be available
+
+-------------------------------------------------------------------
 Wed Mar 16 09:07:47 UTC 2022 - Edgar Aichinger <edogawa@aon.at>
 
 - Update to version 0.21.0+git, switch to obs_scm service

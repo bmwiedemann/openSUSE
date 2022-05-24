@@ -31,7 +31,7 @@ BuildRequires:  fltk-devel
 %if 0%{?suse_version} < 1550
 BuildRequires:  gcc10-c++
 %else
-BuildRequires:  gcc-c++
+BuildRequires:  gcc11-c++
 %endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libtool
@@ -65,6 +65,7 @@ control this.
 %build
 export CXX=g++
 test -x "$(type -p g++-10)" && export CXX=g++-10 OBJCXX=g++-10
+test -x "$(type -p g++-11)" && export CXX=g++-11 OBJCXX=g++-11
 %cmake -DCMAKE_BUILD_TYPE=Release -DWITH_VST3=ON
 %cmake_build
 
