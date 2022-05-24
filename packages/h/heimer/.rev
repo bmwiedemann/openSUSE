@@ -7,4 +7,17 @@
     <comment>heimer</comment>
     <requestid>962084</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ae90ade0d43750a9e88fc59eadafd956</srcmd5>
+    <version>3.3.0</version>
+    <time>1653417098</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.0:
+  * Add German translations
+  * Fix #206: An option to change the size of the arrows
+  * Toolbar now includes a spinner widget to set the arrow size
+  * Fix #205: Click dragging from an existing node, then pressing
+    delete before dropping the node, crashes the program</comment>
+    <requestid>978869</requestid>
+  </revision>
 </revisionlist>

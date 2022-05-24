@@ -18,10 +18,10 @@
 
 
 Name:           heimer
-Version:        3.2.0
+Version:        3.3.0
 Release:        0
 Summary:        Mind map, diagram, and note-taking tool
-License:        GPL-3.0-only AND CC-BY-SA-3.0
+License:        CC-BY-SA-3.0 AND GPL-3.0-only
 Group:          Productivity/Office/Other
 URL:            https://github.com/juzzlin/Heimer
 Source0:        https://github.com/juzzlin/Heimer/archive/refs/tags/%{version}.tar.gz

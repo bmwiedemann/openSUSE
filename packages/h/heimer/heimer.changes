@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 24 07:48:12 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.3.0:
+  * Add German translations
+  * Fix #206: An option to change the size of the arrows
+  * Toolbar now includes a spinner widget to set the arrow size
+  * Fix #205: Click dragging from an existing node, then pressing
+    delete before dropping the node, crashes the program
+
+-------------------------------------------------------------------
 Tue Mar 15 19:40:21 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.2.0:
