@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 12 14:33:50 UTC 2022 - Stefan Schubert <schubi@suse.de>
+
+- Moved 20-chrony file from user specif directory
+  /etc/NetworkManager/dispatcher.d to vendor specific directory 
+  /usr/lib/NetworkManager/dispatcher.d. So, users changes can
+  still be done in /etc and will not be overwritten by an update.
+
+-------------------------------------------------------------------
 Mon Jan 10 17:26:02 UTC 2022 - Reinhard Max <max@suse.com>
 
 - boo#1194206: Use /run instead of /var/run throughout.
