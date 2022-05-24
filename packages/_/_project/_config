@@ -237,10 +237,6 @@ Preinstall: libpopt0 libelf1 libpcre1 libzstd1 libpcre2-8-0
 Prefer: libdb-4_8-devel
 VMinstall: util-linux libmount1 perl-base libdb-4_8 libblkid1 libuuid1 libsmartcols1 libcrypt1
 VMinstall: kernel-obs-build
-# iproute seems not to be used anymore nowadays; the builders have working localnet without it
-# and on OBS we don't support 'network' access anyway, so the rest of the config is never reached
-# 2022-03-23 - dimstar
-# VMInstall: iproute2 libmnl0
 
 # Add hostname so that OBS/build will have a chance to identify the hostname (instead of localhost)
 # build has alternative ways to inject hostname nowadays - removed 2022-03-23 - dimstar
