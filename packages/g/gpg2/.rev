@@ -1301,4 +1301,12 @@ See-also: gnupg-announce/2019q1/000434.html
     <comment></comment>
     <requestid>975336</requestid>
   </revision>
+  <revision rev="160" vrev="2">
+    <srcmd5>e2c1b4c904ff28a311ba8cd8f280af8e</srcmd5>
+    <version>2.3.6</version>
+    <time>1653417053</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>978674</requestid>
+  </revision>
 </revisionlist>

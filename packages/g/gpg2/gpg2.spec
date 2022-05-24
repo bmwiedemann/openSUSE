@@ -87,6 +87,15 @@ revocation lists (CRLs) for X.509 certificates, downloading X.509 certificates,
 and providing access to OCSP providers.  Dirmngr is invoked internally by gpg,
 gpgsm, or via the gpg-connect-agent tool.
 
+%package tpm
+Summary:        TPM2 support for GnuPG
+Group:          Productivity/Networking/Security
+
+%description tpm
+Version 2.3 of GnuPG introduced support for converting GPG private
+keys to TPM2 wrapped form.  This package enables that support.  The
+keytotpm command will not function unless this package is installed.
+
 %lang_package
 
 %prep
@@ -105,6 +114,7 @@ date=$(date -u +%%Y-%%m-%%dT%%H:%%M+0000 -r %{SOURCE99})
     --with-pinentry-pgm=%{_bindir}/pinentry \
     --with-dirmngr-pgm=%{_bindir}/dirmngr \
     --with-scdaemon-pgm=%{_bindir}/scdaemon \
+    --with-tpm2daemon-pgm=%{_bindir}/tpm2daemon \
     --enable-ldap \
     --enable-gpgsm=yes \
     --enable-gpgtar \
@@ -136,6 +146,8 @@ rm -rf %{buildroot}/%{_datadir}/locale/en@{bold,}quot
 # install scdaemon to %%{_bindir} (bnc#863645)
 mv %{buildroot}%{_libdir}/scdaemon %{buildroot}%{_bindir}
 mv %{buildroot}%{_libdir}/dirmngr_ldap %{buildroot}%{_bindir}
+# install tpm2daemon
+mv %{buildroot}%{_libdir}/tpm2daemon %{buildroot}%{_bindir}
 # install udev rules for scdaemon
 install -Dm 0644 %{SOURCE4} %{buildroot}%{_udevrulesdir}/60-scdaemon.rules
 
@@ -162,6 +174,7 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_udevrulesdir}/60-scdaemon.rules
 %exclude %{_docdir}/%{name}/examples/systemd-user/dirmngr.*
 %doc %{_docdir}/%{name}
 %exclude %{_bindir}/dirmngr*
+%exclude %{_bindir}/tpm2daemon*
 %{_bindir}/*
 %{_libdir}/[^d]*
 %{_sbindir}/addgnupghome
@@ -177,5 +190,8 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_udevrulesdir}/60-scdaemon.rules
 %{_mandir}/*/dirmngr*%{ext_man}
 %{_docdir}/%{name}/examples/systemd-user/dirmngr.*
 %{_bindir}/dirmngr*
+
+%files tpm
+%{_bindir}/tpm2daemon*
 
 %changelog

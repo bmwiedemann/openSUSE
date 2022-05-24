@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 16 09:12:06 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- added tpm support, added a new subpackage gpg2-tpm
+
+-------------------------------------------------------------------
 Mon Apr 25 19:09:32 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GnuPG 2.3.6:
