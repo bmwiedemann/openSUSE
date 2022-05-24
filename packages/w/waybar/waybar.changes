@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue May 24 06:52:59 UTC 2022 - Denys Kondratenko <stdden@opensuse.org>
+
+- Update to 0.9.13:
+  * use moon phases for backlight format-icons #1478
+  * Use user-defined mode when toggling visibility rather than resetting to default #1479
+  * sway/language: Load exotic xkb rules too #1480
+  * Battery module. Gamepads support #1481
+  * Hide/Unhide temperature module when "format*" is empty. #1485 
+  * feat: added network speed in Bytes #1489
+  * Upower module #1484
+  * Add option to display week number on calendar #1315
+  * Upower fixes #1493
+  * Battery module support for rk817 #1495 
+  * Waybar. Issue#1068. Double/Triple events #1499
+  * refactor: change enum ipc_command_type to uint32_t #1516
+  * Add disabled bluetooth style #1518
+  * #1315. Add option to display week number on calendar #1492
+  * Sway/window: Only update icon from main thread #1522
+  * sway/window: Allow the user to change the size of the app icon #1523
+  * bar: don't set layer-shell anchor for edges when width is not 'auto' #1524
+  * Replace sleep_until with sleep_for to prevent clock from getting stuck with system time adjustment #1500
+  * Show hidden bar #1510
+  * Backlight: avoid crash on getting brightness fails #1530
+  * Add a config to set a timeout for the idle_inhibitor module #1454
+  * network: calculate bandwidth for current interface #1527
+  * feat: extend bluetooth module #1540
+  * Add classes to individual keyboard state labels #1551
+  * Calendar module: localization issue #1552
+  * Prevent segfault in getCpuFrequency #1563
+  * Issue#1556. Battery module: a lot of warnings when battery dissapears #1557
+  * Gamemode Module #1554
+  * Calendar module: localization issue #1552 #1555
+  * sway/window: Add heuristics for finding icons #1525
+  * River Window Module #1562
+
+-------------------------------------------------------------------
 Thu Mar 10 09:58:22 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.12:

@@ -17,7 +17,7 @@
 
 
 Name:           waybar
-Version:        0.9.12
+Version:        0.9.13
 Release:        0
 Summary:        Customizable Wayland bar for Sway and Wlroots based compositors
 License:        MIT
@@ -26,7 +26,7 @@ URL:            https://github.com/Alexays/Waybar
 # use this to download tarball. then use `meson subprojects download`
 # to get the `date` dependency. and create own tarball
 #Source:         https://github.com/Alexays/Waybar/archive/%{version}.tar.gz
-Source:         %{version}.tar.xz
+Source:         %{version}.tar.gz
 BuildRequires:  cmake
 %if 0%{?sle_version} >= 150400
 BuildRequires:  gcc11-c++
@@ -37,6 +37,8 @@ BuildRequires:  gtk-layer-shell-devel
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+# test dependency
+BuildRequires:  pkgconfig(catch2)
 # wait for SR#860135
 #BuildRequires:  sndio-devel >= 1.7.0
 # optional: man pages
@@ -48,6 +50,7 @@ BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(gtkmm-3.0)
 BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(libinput)
+BuildRequires:  pkgconfig(upower-glib)
 # optional: mpd module
 BuildRequires:  pkgconfig(libmpdclient)
 # optional: network

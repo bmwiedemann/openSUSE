@@ -601,4 +601,12 @@
   * Feature Clock: show list of time in other timezones in a tooltip</comment>
     <requestid>960704</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>2759c958f8ecfedb0c6502d97b575de6</srcmd5>
+    <version>0.9.13</version>
+    <time>1653417107</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978941</requestid>
+  </revision>
 </revisionlist>
