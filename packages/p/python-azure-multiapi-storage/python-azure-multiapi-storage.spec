@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-multiapi-storage
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        Microsoft Azure Storage Client Library for Python - with Multi API version Support
 License:        MIT
