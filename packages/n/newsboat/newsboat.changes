@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 24 14:01:33 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Add newsboat-gcc12.patch:
+  Fix build with gcc12
+
+-------------------------------------------------------------------
 Wed Mar 23 07:32:59 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - bsc#1196972: Bump rust regex to fixed version

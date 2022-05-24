@@ -842,4 +842,13 @@ run -osc service localrun format_spec_file to fix copyright
     <comment>build fixed</comment>
     <requestid>965450</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>b40eaa2d46c1a77c43d17e0b98dde6fe</srcmd5>
+    <version>2.27</version>
+    <time>1653417219</time>
+    <user>dimstar_suse</user>
+    <comment>- Add newsboat-gcc12.patch:
+  Fix build with gcc12</comment>
+    <requestid>978997</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,13 @@
+Index: newsboat-2.27/src/itemlistformaction.cpp
+===================================================================
+--- newsboat-2.27.orig/src/itemlistformaction.cpp
++++ newsboat-2.27/src/itemlistformaction.cpp
+@@ -5,7 +5,7 @@
+ #include <cstdio>
+ #include <langinfo.h>
+ #include <sstream>
+-#include <string>
++#include <string.h>
+ #include <sys/stat.h>
+ 
+ #include "config.h"

@@ -29,6 +29,7 @@ Source2:        https://newsboat.org/newsboat.pgp#/%{name}.keyring
 Source3:        vendor.tar.xz
 # pbleser: introduce OPTFLAGS make variable, instead of hard-coded -ggdb
 Patch0:         newsbeuter-makefile.patch
+Patch1:         newsboat-gcc12.patch
 BuildRequires:  cargo
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
@@ -60,6 +61,7 @@ text terminals.
 %prep
 %setup -qa3
 %patch0 -p1
+%patch1 -p1
 mkdir cargo-home
 cat >cargo-home/config <<EOF
 [source.crates-io]
