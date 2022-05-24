@@ -1,0 +1,100 @@
+-------------------------------------------------------------------
+Tue May 24 00:17:27 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Run "osc service runall format_spec_file".
+
+-------------------------------------------------------------------
+Mon May 23 23:50:01 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Remove unnecessary conflict with a potential rvm package.
+
+-------------------------------------------------------------------
+Mon May 23 20:30:06 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Re-enable skipped tests by requiring the procps package.
+- Use /usr/lib/rbenv instead of /etc/rbenv.d for hooks.
+- Factor bash and zsh completions out into subpackages.
+- Add %changelog macro at the end of the spec file.
+- Remove _service file.
+- Remove broken completion path fix without replacement.
+
+-------------------------------------------------------------------
+Wed Nov 10 22:29:34 UTC 2021 - Lukas Müller <expeehaa@outlook.com>
+
+- Fix completion installation.
+- Install hooks.
+
+-------------------------------------------------------------------
+Fri Nov  5 14:20:28 UTC 2021 - Müller <expeehaa@outlook.com>
+
+- Enable tests on openSUSE in %check step.
+
+-------------------------------------------------------------------
+Fri Nov  5 02:42:42 UTC 2021 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to 1.2.0
+- Changelog: https://github.com/rbenv/rbenv/releases/tag/v1.2.0
+
+-------------------------------------------------------------------
+Sun Oct  4 13:12:09 UTC 2020 - Michele Bologna <Michele.Bologna@suse.com>
+
+- Update to 1.1.2
+- Changelog: https://github.com/rbenv/rbenv/releases/tag/v1.1.2
+
+-------------------------------------------------------------------
+Fri Feb  9 15:29:26 UTC 2018 - michele.bologna@suse.com
+
+- Update to 1.1.1
+- Changelog: https://github.com/rbenv/rbenv/releases/tag/v1.1.1
+
+-------------------------------------------------------------------
+Tue Mar 14 20:28:18 UTC 2017 - mamorales@suse.com
+
+- update to 1.1.0
+- see https://github.com/rbenv/rbenv/releases/tag/v1.1.0
+
+-------------------------------------------------------------------
+Wed Dec 30 02:27:40 UTC 2015 - dmacvicar@suse.de
+
+- update to 1.0.0
+- see https://github.com/rbenv/rbenv/releases/tag/v1.0.0
+
+-------------------------------------------------------------------
+Fri Oct 18 09:04:18 UTC 2013 - dmacvicar@suse.de
+
+- update to 0.4.0
+
+-------------------------------------------------------------------
+Wed Jan  4 11:07:13 UTC 2012 - dmacvicar@suse.de
+
+- update to 0.3.0
+
+-------------------------------------------------------------------
+Wed Jan  4 10:58:55 UTC 2012 - dmacvicar@suse.de
+
+- add BuildRoot tag
+
+-------------------------------------------------------------------
+Thu Dec  8 13:21:45 UTC 2011 - dmacvicar@suse.de
+
+- sync with git master
+
+-------------------------------------------------------------------
+Thu Nov 24 09:07:21 UTC 2011 - dmacvicar@suse.de
+
+- Move completions to /usr/share/rbenv/completions
+- remove patch for completions and just modify rbenv-init
+  to ouput the right path.
+
+-------------------------------------------------------------------
+Wed Nov 16 11:44:42 UTC 2011 - dmacvicar@suse.de
+
+- patch rbenv-init to not source completions as we install them
+  in completions.d
+
+-------------------------------------------------------------------
+Wed Nov 16 10:14:53 UTC 2011 - dmacvicar@suse.de
+
+- initial package for 0.2.1
+
+
