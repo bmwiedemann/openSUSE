@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 17 10:46:38 UTC 2022 - Michael Chang <mchang@suse.com>
+
+- Fix installation over serial console ends up in infinite boot loop
+  (bsc#1187810)
+  * 0001-Fix-infinite-boot-loop-on-headless-system-in-qemu.patch
+- Fix ppc64le build error for new IEEE long double ABI
+  * 0001-libc-config-merge-from-glibc.patch
+
+-------------------------------------------------------------------
 Thu Apr 21 09:35:15 UTC 2022 - Michael Chang <mchang@suse.com>
 
 - Fix Power10 LPAR error "The partition fails to activate as partition went

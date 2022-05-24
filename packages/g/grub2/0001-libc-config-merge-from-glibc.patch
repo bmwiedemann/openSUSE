@@ -1,0 +1,339 @@
+From 88d0ba220763f99c6c98e44918435cdceef56ed7 Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Tue, 5 Jan 2021 13:12:39 -0800
+Subject: [PATCH] libc-config: merge from glibc
+
+Use a better way of keeping glibc <sys/cdefs.h> and gnulib
+lib/cdefs.h mostly in sync, by using lib/cdefs.h only on platforms
+where <sys/cdefs.h> does not work well enough for Gnulib.
+* lib/cdefs.h: Go back to using _SYS_CDEFS_H rather than
+_GL_DEFS_H as an include guard.
+(__THROW, __THROWNL, __NTH, __NTHNL):
+Define to noexcept for C++11 and later.
+(__glibc_objsize, __glibc_objsize0): New, for _FORTIFY_SOURCE=3.
+(__warndecl): Remove.
+(__attribute_copy__): New macro, for GCC 9 support.
+(__LDBL_REDIR, __LDBL_REDIR_DECL, __LDBL_REDIR1)
+(__LDBL_REDIR1_DECL, __LDBL_REDIR1_NTH, __REDIRECT_NTH_LDBL)
+(__REDIRECT_LDBL, __LDBL_REDIR_NTH):
+Redirections for IEEE long double on powerpc64le.
+(__LDBL_REDIR2_DECL): New macro.
+(__attr_access): New macro, for GCC 10 bounds checking.
+(__attribute_returns_twice__): New macro, for setjmp etc.
+* lib/libc-config.h: Include <cdefs.h> only if __glibc_likely is
+undefined.  The following changes apply only if __glibc_likely
+is not defined.
+(__LDBL_REDIR2_DECL, __attr_access, __attribute_returns_twice__)
+(__glibc_clang_has_attribute, __glibc_clang_has_extension)
+(__glibc_objsize, __glibc_objsize0):
+Undef these new (or newer) <cdefs.h> macros.
+(__P, __PMT, __always_inline): Do not undef, since cdefs.h does that.
+(__glibc_likely): Do not undef, since this is inside
+ifndef __glibc_likely.
+(__warndecl): Do not undef; no longer defined.
+---
+ ChangeLog         | 32 +++++++++++++++
+ grub-core/lib/gnulib/cdefs.h       | 99 ++++++++++++++++++++++++++++++++++++++++-------
+ grub-core/lib/gnulib/libc-config.h | 51 +++++++++++++-----------
+ 3 files changed, 147 insertions(+), 35 deletions(-)
+
+diff --git a/grub-core/lib/gnulib/cdefs.h b/grub-core/lib/gnulib/cdefs.h
+index 4b696590c..71813d635 100644
+--- a/grub-core/lib/gnulib/cdefs.h
++++ b/grub-core/lib/gnulib/cdefs.h
+@@ -25,7 +25,7 @@
+ 
+ /* The GNU libc does not support any K&R compilers or the traditional mode
+    of ISO C compilers anymore.  Check for some of the combinations not
+-   anymore supported.  */
++   supported anymore.  */
+ #if defined __GNUC__ && !defined __STDC__
+ # error "You need a ISO C conforming compiler to use the glibc headers"
+ #endif
+@@ -47,7 +47,7 @@
+ # endif
+ 
+ /* GCC can always grok prototypes.  For C++ programs we add throw()
+-   to help it optimize the function calls.  But this works only with
++   to help it optimize the function calls.  But this only works with
+    gcc 2.8.x and egcs.  For gcc 3.2 and up we even mark C functions
+    as non-throwing using a function attribute since programs can use
+    the -fexceptions options for C code as well.  */
+@@ -58,10 +58,14 @@
+ #  define __NTHNL(fct)  __attribute__ ((__nothrow__)) fct
+ # else
+ #  if defined __cplusplus && __GNUC_PREREQ (2,8)
+-#   define __THROW	throw ()
+-#   define __THROWNL	throw ()
+-#   define __NTH(fct)	__LEAF_ATTR fct throw ()
+-#   define __NTHNL(fct) fct throw ()
++#   if __cplusplus >= 201103L
++#    define __THROW	noexcept (true)
++#   else
++#    define __THROW	throw ()
++#   endif
++#   define __THROWNL	__THROW
++#   define __NTH(fct)	__LEAF_ATTR fct __THROW
++#   define __NTHNL(fct) fct __THROW
+ #  else
+ #   define __THROW
+ #   define __THROWNL
+@@ -123,14 +127,20 @@
+ #define __bos(ptr) __builtin_object_size (ptr, __USE_FORTIFY_LEVEL > 1)
+ #define __bos0(ptr) __builtin_object_size (ptr, 0)
+ 
++/* Use __builtin_dynamic_object_size at _FORTIFY_SOURCE=3 when available.  */
++#if __USE_FORTIFY_LEVEL == 3 && __glibc_clang_prereq (9, 0)
++# define __glibc_objsize0(__o) __builtin_dynamic_object_size (__o, 0)
++# define __glibc_objsize(__o) __builtin_dynamic_object_size (__o, 1)
++#else
++# define __glibc_objsize0(__o) __bos0 (__o)
++# define __glibc_objsize(__o) __bos (__o)
++#endif
++
+ #if __GNUC_PREREQ (4,3)
+-# define __warndecl(name, msg) \
+-  extern void name (void) __attribute__((__warning__ (msg)))
+ # define __warnattr(msg) __attribute__((__warning__ (msg)))
+ # define __errordecl(name, msg) \
+   extern void name (void) __attribute__((__error__ (msg)))
+ #else
+-# define __warndecl(name, msg) extern void name (void)
+ # define __warnattr(msg)
+ # define __errordecl(name, msg) extern void name (void)
+ #endif
+@@ -256,8 +266,8 @@
+ /* Since version 4.5, gcc also allows one to specify the message printed
+    when a deprecated function is used.  clang claims to be gcc 4.2, but
+    may also support this feature.  */
+-#if __GNUC_PREREQ (4,5) || \
+-    __glibc_clang_has_extension (__attribute_deprecated_with_message__)
++#if __GNUC_PREREQ (4,5) \
++    || __glibc_clang_has_extension (__attribute_deprecated_with_message__)
+ # define __attribute_deprecated_msg__(msg) \
+ 	 __attribute__ ((__deprecated__ (msg)))
+ #else
+@@ -434,6 +444,16 @@
+ # define __attribute_nonstring__
+ #endif
+ 
++/* Undefine (also defined in libc-symbols.h).  */
++#undef __attribute_copy__
++#if __GNUC_PREREQ (9, 0)
++/* Copies attributes from the declaration or type referenced by
++   the argument.  */
++# define __attribute_copy__(arg) __attribute__ ((__copy__ (arg)))
++#else
++# define __attribute_copy__(arg)
++#endif
++
+ #if (!defined _Static_assert && !defined __cplusplus \
+      && (defined __STDC_VERSION__ ? __STDC_VERSION__ : 0) < 201112 \
+      && (!__GNUC_PREREQ (4, 6) || defined __STRICT_ANSI__))
+@@ -449,7 +469,37 @@
+ # include <bits/long-double.h>
+ #endif
+ 
+-#if defined __LONG_DOUBLE_MATH_OPTIONAL && defined __NO_LONG_DOUBLE_MATH
++#if __LDOUBLE_REDIRECTS_TO_FLOAT128_ABI == 1
++# ifdef __REDIRECT
++
++/* Alias name defined automatically.  */
++#  define __LDBL_REDIR(name, proto) ... unused__ldbl_redir
++#  define __LDBL_REDIR_DECL(name) \
++  extern __typeof (name) name __asm (__ASMNAME ("__" #name "ieee128"));
++
++/* Alias name defined automatically, with leading underscores.  */
++#  define __LDBL_REDIR2_DECL(name) \
++  extern __typeof (__##name) __##name \
++    __asm (__ASMNAME ("__" #name "ieee128"));
++
++/* Alias name defined manually.  */
++#  define __LDBL_REDIR1(name, proto, alias) ... unused__ldbl_redir1
++#  define __LDBL_REDIR1_DECL(name, alias) \
++  extern __typeof (name) name __asm (__ASMNAME (#alias));
++
++#  define __LDBL_REDIR1_NTH(name, proto, alias) \
++  __REDIRECT_NTH (name, proto, alias)
++#  define __REDIRECT_NTH_LDBL(name, proto, alias) \
++  __LDBL_REDIR1_NTH (name, proto, __##alias##ieee128)
++
++/* Unused.  */
++#  define __REDIRECT_LDBL(name, proto, alias) ... unused__redirect_ldbl
++#  define __LDBL_REDIR_NTH(name, proto) ... unused__ldbl_redir_nth
++
++# else
++_Static_assert (0, "IEEE 128-bits long double requires redirection on this platform");
++# endif
++#elif defined __LONG_DOUBLE_MATH_OPTIONAL && defined __NO_LONG_DOUBLE_MATH
+ # define __LDBL_COMPAT 1
+ # ifdef __REDIRECT
+ #  define __LDBL_REDIR1(name, proto, alias) __REDIRECT (name, proto, alias)
+@@ -458,6 +508,8 @@
+ #  define __LDBL_REDIR1_NTH(name, proto, alias) __REDIRECT_NTH (name, proto, alias)
+ #  define __LDBL_REDIR_NTH(name, proto) \
+   __LDBL_REDIR1_NTH (name, proto, __nldbl_##name)
++#  define __LDBL_REDIR2_DECL(name) \
++  extern __typeof (__##name) __##name __asm (__ASMNAME ("__nldbl___" #name));
+ #  define __LDBL_REDIR1_DECL(name, alias) \
+   extern __typeof (name) name __asm (__ASMNAME (#alias));
+ #  define __LDBL_REDIR_DECL(name) \
+@@ -468,11 +520,13 @@
+   __LDBL_REDIR1_NTH (name, proto, __nldbl_##alias)
+ # endif
+ #endif
+-#if !defined __LDBL_COMPAT || !defined __REDIRECT
++#if (!defined __LDBL_COMPAT && __LDOUBLE_REDIRECTS_TO_FLOAT128_ABI == 0) \
++    || !defined __REDIRECT
+ # define __LDBL_REDIR1(name, proto, alias) name proto
+ # define __LDBL_REDIR(name, proto) name proto
+ # define __LDBL_REDIR1_NTH(name, proto, alias) name proto __THROW
+ # define __LDBL_REDIR_NTH(name, proto) name proto __THROW
++# define __LDBL_REDIR2_DECL(name)
+ # define __LDBL_REDIR_DECL(name)
+ # ifdef __REDIRECT
+ #  define __REDIRECT_LDBL(name, proto, alias) __REDIRECT (name, proto, alias)
+@@ -511,4 +565,23 @@
+ # define __HAVE_GENERIC_SELECTION 0
+ #endif
+ 
++#if __GNUC_PREREQ (10, 0)
++/* Designates a 1-based positional argument ref-index of pointer type
++   that can be used to access size-index elements of the pointed-to
++   array according to access mode, or at least one element when
++   size-index is not provided:
++     access (access-mode, <ref-index> [, <size-index>])  */
++#define __attr_access(x) __attribute__ ((__access__ x))
++#else
++#  define __attr_access(x)
++#endif
++
++/* Specify that a function such as setjmp or vfork may return
++   twice.  */
++#if __GNUC_PREREQ (4, 1)
++# define __attribute_returns_twice__ __attribute__ ((__returns_twice__))
++#else
++# define __attribute_returns_twice__ /* Ignore.  */
++#endif
++
+ #endif	 /* sys/cdefs.h */
+diff --git a/grub-core/lib/gnulib/libc-config.h b/grub-core/lib/gnulib/libc-config.h
+index f24fbfa6a..5a0b69685 100644
+--- a/grub-core/lib/gnulib/libc-config.h
++++ b/grub-core/lib/gnulib/libc-config.h
+@@ -62,21 +62,24 @@
+ # endif
+ #endif
+ 
+-
+-/* Prepare to include <cdefs.h>, which is our copy of glibc
+-   <sys/cdefs.h>.  */
++#ifndef __glibc_likely
++/* <sys/cdefs.h> either does not exist, or predates glibc commit
++   2012-12-28T06:33:01Z!siddhesh@redhat.com
++   (91998e449e0ce758db55aecf2abc3ee510fcbc8f)
++   and so does not suffice for Gnulib.  Prepare to include <cdefs.h>,
++   which is Gnulib's copy of a more-recent glibc <sys/cdefs.h>.  */
+ 
+ /* Define _FEATURES_H so that <cdefs.h> does not include <features.h>.  */
+-#ifndef _FEATURES_H
+-# define _FEATURES_H 1
+-#endif
++# ifndef _FEATURES_H
++#  define _FEATURES_H 1
++# endif
+ /* Define __WORDSIZE so that <cdefs.h> does not attempt to include
+    nonexistent files.  Make it a syntax error, since Gnulib does not
+    use __WORDSIZE now, and if Gnulib uses it later the syntax error
+    will let us know that __WORDSIZE needs configuring.  */
+-#ifndef __WORDSIZE
+-# define __WORDSIZE %%%
+-#endif
++# ifndef __WORDSIZE
++#  define __WORDSIZE %%%
++# endif
+ /* Undef the macros unconditionally defined by our copy of glibc
+    <sys/cdefs.h>, so that they do not clash with any system-defined
+    versions.  */
+@@ -92,14 +95,13 @@
+ #undef __LDBL_REDIR1
+ #undef __LDBL_REDIR1_DECL
+ #undef __LDBL_REDIR1_NTH
++#undef __LDBL_REDIR2_DECL
+ #undef __LDBL_REDIR_DECL
+ #undef __LDBL_REDIR_NTH
+ #undef __LEAF
+ #undef __LEAF_ATTR
+ #undef __NTH
+ #undef __NTHNL
+-#undef __P
+-#undef __PMT
+ #undef __REDIRECT
+ #undef __REDIRECT_LDBL
+ #undef __REDIRECT_NTH
+@@ -108,7 +110,7 @@
+ #undef __STRING
+ #undef __THROW
+ #undef __THROWNL
+-#undef __always_inline
++#undef __attr_access
+ #undef __attribute__
+ #undef __attribute_alloc_size__
+ #undef __attribute_artificial__
+@@ -121,6 +123,7 @@
+ #undef __attribute_noinline__
+ #undef __attribute_nonstring__
+ #undef __attribute_pure__
++#undef __attribute_returns_twice__
+ #undef __attribute_used__
+ #undef __attribute_warn_unused_result__
+ #undef __bos
+@@ -132,10 +135,13 @@
+ #undef __flexarr
+ #undef __fortify_function
+ #undef __glibc_c99_flexarr_available
++#undef __glibc_clang_has_attribute
++#undef __glibc_clang_has_builtin
+ #undef __glibc_clang_has_extension
+-#undef __glibc_likely
+ #undef __glibc_macro_warning
+ #undef __glibc_macro_warning1
++#undef __glibc_objsize
++#undef __glibc_objsize0
+ #undef __glibc_unlikely
+ #undef __inline
+ #undef __ptr_t
+@@ -144,20 +150,21 @@
+ #undef __va_arg_pack
+ #undef __va_arg_pack_len
+ #undef __warnattr
+-#undef __warndecl
+ 
+ /* Include our copy of glibc <sys/cdefs.h>.  */
+-#include <cdefs.h>
++# include <cdefs.h>
+ 
+ /* <cdefs.h> __inline is too pessimistic for non-GCC.  */
+-#undef __inline
+-#ifndef HAVE___INLINE
+-# if 199901 <= __STDC_VERSION__ || defined inline
+-#  define __inline inline
+-# else
+-#  define __inline
++# undef __inline
++# ifndef HAVE___INLINE
++#  if 199901 <= __STDC_VERSION__ || defined inline
++#   define __inline inline
++#  else
++#   define __inline
++#  endif
+ # endif
+-#endif
++
++#endif /* defined __glibc_likely */
+ 
+ 
+ /* A substitute for glibc <libc-symbols.h>, good enough for Gnulib.  */
+-- 
+2.34.1
+
