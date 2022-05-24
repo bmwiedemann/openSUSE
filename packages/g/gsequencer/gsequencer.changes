@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 24 06:20:50 UTC 2022 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v4.0.4 major API improvements.
+- migrated to libgtk-4.0
+- migrated to libsoup-3.0
+- updated gsequencer.spec version identifier
+
+-------------------------------------------------------------------
 Mon Apr 25 06:12:38 UTC 2022 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.19.0 fixed potential SIGSEGV with
