@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 17 09:44:57 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 14.0
+  * Added 37 new emoji characters
+  * New emoji ZWJ sequences and emoji modifier sequences
+  * https://unicode.org/emoji/charts-14.0/emoji-released.html
+
+-------------------------------------------------------------------
 Mon Jun 28 16:43:10 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
 
 - Update to Unicode-13.1 version, no upstream provided changelog.
