@@ -17,24 +17,28 @@
 
 
 Name:           libminizinc
-Version:        2.6.2
+Version:        2.6.3
 Release:        0
-Summary:	A high-level constraint modelling language
+Summary:        A high-level constraint modelling language
 Group:          Productivity/Scientific/Math
 License:        MPL-2.0
 URL:            https://www.minizinc.org/
 Source:         https://github.com/MiniZinc/libminizinc/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Fix-missing-return-in-non-void-function.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Add-memory-include-required-for-unique_ptr.patch
 BuildRequires:  cmake >= 3.4.0
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(mpfr)
+BuildRequires:  gecode-devel
+Recommends:     gecode-minizinc
 
 %description
 MiniZinc is a free and open-source constraint modeling language.
 
 %package -n minizinc
-Summary:	A high-level constraint modelling language
+Summary:        A high-level constraint modelling language
 
 %description -n minizinc
 You can use MiniZinc to model constraint satisfaction and optimisation
@@ -44,7 +48,7 @@ compiled into FlatZinc, a solver input language that is understood
 by a wide range of solvers.
 
 %package devel
-Summary:	A high-level constraint modelling language
+Summary:        A high-level constraint modelling language
 Group:          Development/Libraries/C and C++
 Requires:       minizinc = %{version}
 

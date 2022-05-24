@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May 21 10:47:50 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.6.3
+  https://github.com/MiniZinc/libminizinc/blob/2.6.3/changes.rst
+- Fix build with GCC 12.1.0, add
+  0001-Add-memory-include-required-for-unique_ptr.patch
+
+-------------------------------------------------------------------
+Thu Apr 28 12:47:40 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Depend on gecode for building the presolver, and recommend the
+  gecode-minizinc solver plugin.
+
+-------------------------------------------------------------------
 Tue Apr 26 20:51:53 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Initial package version (2.6.2)
