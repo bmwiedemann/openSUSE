@@ -96,4 +96,12 @@
     <comment>Add an artifact alias</comment>
     <requestid>978458</requestid>
   </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>d155094286e96f510ea3c47a2af11e45</srcmd5>
+    <version>1.7.3</version>
+    <time>1653417221</time>
+    <user>dimstar_suse</user>
+    <comment>sync changes with sle</comment>
+    <requestid>978883</requestid>
+  </revision>
 </revisionlist>
