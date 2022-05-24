@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May 23 15:56:29 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 1.0.2:
+  * Added new RBF interpolation method in the background extraction
+    tool
+  * Removed file name length limit in conversion
+  * Fixed crash in preprocess command if a quote was not closed in
+    -bias= option
+  * Fixed crash when star detection box was expanded past a border
+  * Fixed crash in plot when X axis data contained negative values
+  * Fixed numerous bugs in the background extraction tool
+  * Fixed bug in PixelMath where only one char parameter where
+    allowed
+  * Fixed bug in FITS partial reader
+
+-------------------------------------------------------------------
 Tue Apr 26 15:12:53 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use tarball from gitlab, to fix broken builds due to wrong
