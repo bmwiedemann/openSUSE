@@ -1,0 +1,64 @@
+From: Murilo Opsfelder Araujo <muriloo@linux.ibm.com>
+Date: Fri, 11 Mar 2022 19:16:34 -0300
+Subject: block-qdict: Fix -Werror=maybe-uninitialized build failure
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 79854b95446396c8e7f397800c5d86c3d9a7540d
+References: bsc#1199625
+
+Building QEMU on Fedora 37 (Rawhide Prerelease) ppc64le failed with the
+following error:
+
+    $ ../configure --prefix=/usr/local/qemu-disabletcg --target-list=ppc-softmmu,ppc64-softmmu --disable-tcg --disable-linux-user
+    ...
+    $ make -j$(nproc)
+    ...
+    In file included from /root/qemu/include/qapi/qmp/qdict.h:16,
+                     from /root/qemu/include/block/qdict.h:13,
+                     from ../qobject/block-qdict.c:11:
+    /root/qemu/include/qapi/qmp/qobject.h: In function ‘qdict_array_split’:
+    /root/qemu/include/qapi/qmp/qobject.h:49:17: error: ‘subqdict’ may be used uninitialized [-Werror=maybe-uninitialized]
+       49 |     typeof(obj) _obj = (obj);                                   \
+          |                 ^~~~
+    ../qobject/block-qdict.c:227:16: note: ‘subqdict’ declared here
+      227 |         QDict *subqdict;
+          |                ^~~~~~~~
+    cc1: all warnings being treated as errors
+
+Fix build failure by expanding the ternary operation.
+Tested with `make check-unit` (the check-block-qdict test passed).
+
+Signed-off-by: Murilo Opsfelder Araujo <muriloo@linux.ibm.com>
+Cc: Kevin Wolf <kwolf@redhat.com>
+Cc: Hanna Reitz <hreitz@redhat.com>
+Cc: Markus Armbruster <armbru@redhat.com>
+Message-Id: <20220311221634.58288-1-muriloo@linux.ibm.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ qobject/block-qdict.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/qobject/block-qdict.c b/qobject/block-qdict.c
+index 1487cc5dd8b1cfbd50b9f354bcfa..4a83bda2c3be54994ae6a704b20b 100644
+--- a/qobject/block-qdict.c
++++ b/qobject/block-qdict.c
+@@ -251,12 +251,12 @@ void qdict_array_split(QDict *src, QList **dst)
+         if (is_subqdict) {
+             qdict_extract_subqdict(src, &subqdict, prefix);
+             assert(qdict_size(subqdict) > 0);
++            qlist_append_obj(*dst, QOBJECT(subqdict));
+         } else {
+             qobject_ref(subqobj);
+             qdict_del(src, indexstr);
++            qlist_append_obj(*dst, subqobj);
+         }
+-
+-        qlist_append_obj(*dst, subqobj ?: QOBJECT(subqdict));
+     }
+ }
+ 
