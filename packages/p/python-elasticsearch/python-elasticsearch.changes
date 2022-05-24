@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 23 12:08:05 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+- added patches
+  fix https://github.com/elastic/elasticsearch-py/issues/1983
+  + python-elasticsearch-no-mock.patch
+
+-------------------------------------------------------------------
 Sun Aug 16 12:33:29 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Replace nose with pytest

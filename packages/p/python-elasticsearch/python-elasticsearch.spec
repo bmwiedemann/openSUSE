@@ -1,7 +1,7 @@
 #
 # spec file for package python-elasticsearch
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,10 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/elastic/elasticsearch-py
 Source:         https://github.com/elastic/elasticsearch-py/archive/%{version}.tar.gz
+# https://github.com/elastic/elasticsearch-py/issues/1983
+Patch0:         python-elasticsearch-no-mock.patch
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pyaml}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.0.0}
@@ -49,6 +50,7 @@ to be opinion-free and very extendable.
 %setup -q -n elasticsearch-py-%{version}
 rm README.rst
 sed -i 's/from nose.plugins.skip import SkipTest/from unittest import SkipTest/' test_elasticsearch/test_helpers.py
+%patch0 -p1
 
 %build
 %python_build
