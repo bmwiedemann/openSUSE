@@ -1,7 +1,7 @@
 #
 # spec file for package ip2unix
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           ip2unix
 Version:        2.1.4
 Release:        0
@@ -22,12 +23,13 @@ Summary:        Turn IP sockets into Unix domain sockets
 License:        LGPL-3.0-only
 URL:            https://github.com/nixcloud/ip2unix/
 Source0:        https://github.com/nixcloud/ip2unix/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         gcc-12.patch
 BuildRequires:  asciidoc
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.46.0
-BuildRequires:  pkgconfig(yaml-cpp) >= 0.5.0
 BuildRequires:  python3
 BuildRequires:  python3-pytest
+BuildRequires:  pkgconfig(yaml-cpp) >= 0.5.0
 # systemd-socket-activate is used in tests
 BuildRequires:  systemd
 
@@ -40,7 +42,7 @@ socketPath is specified, the Unix domain socket will bind or listen to the given
 path.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 

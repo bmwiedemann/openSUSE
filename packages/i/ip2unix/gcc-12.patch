@@ -1,0 +1,16 @@
+From: Adam Mizerski <adam@mizerski.pl>
+Date: 2022-05-24 10:04:39 +0200
+Subject: fix building with gcc-12
+References: https://github.com/nixcloud/ip2unix/issues/30
+Upstream: submitted
+
+Index: ip2unix-2.1.4/src/dynports/dynports.cc
+===================================================================
+--- ip2unix-2.1.4.orig/src/dynports/dynports.cc
++++ ip2unix-2.1.4/src/dynports/dynports.cc
+@@ -1,4 +1,5 @@
+ // SPDX-License-Identifier: LGPL-3.0-only
++#include <array>
+ #include <stdexcept>
+ #include <sys/types.h>
+ #include <unistd.h>
