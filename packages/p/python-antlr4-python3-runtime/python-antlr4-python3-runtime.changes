@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue May 24 12:02:27 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 4.9.3
+  Issues fixed
+  * Swift Target Crashes with Multi-Threading
+  * JavaScript Runtime bug
+  * Go target, cannot use superClass for the lexer grammar!
+  * Python runtime is inconsistent with Java
+  * FunctionDef source extract using getText()
+  * Provide .NET Framework target in the csharp nuget package
+  * Go target for Antlr tool, type ",int8" => "int8"
+  * Flutter/Dart web support
+  * Allow Antlr Javascript runtime to be loaded into Kindle Touch
+  * Fix Go test suite
+  * Weird error
+  Improvements, features
+  * [C++] Use faster alternative to dynamic_cast when not testing inherit
+  * Stackoverflow after upgrading from 4.6 to 4.7
+- from version 4.9.2
+  Issues fixed
+  * CSharp and Java produce different results for identical input, identical tokens
+  Improvements, features
+  * Moved away from travis-ci.com
+- Source upstream tarball from Github since PyPi tarball no longer ships testsuite
+
+-------------------------------------------------------------------
 Sun Jan 31 10:41:57 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 4.9.1.

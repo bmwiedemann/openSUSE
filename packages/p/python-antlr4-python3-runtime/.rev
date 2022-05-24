@@ -15,4 +15,33 @@
     <comment></comment>
     <requestid>868140</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>672c464d653d7b3ca7ab16bd70385fb7</srcmd5>
+    <version>4.9.3</version>
+    <time>1653417205</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.9.3
+  Issues fixed
+  * Swift Target Crashes with Multi-Threading
+  * JavaScript Runtime bug
+  * Go target, cannot use superClass for the lexer grammar!
+  * Python runtime is inconsistent with Java
+  * FunctionDef source extract using getText()
+  * Provide .NET Framework target in the csharp nuget package
+  * Go target for Antlr tool, type &quot;,int8&quot; =&gt; &quot;int8&quot;
+  * Flutter/Dart web support
+  * Allow Antlr Javascript runtime to be loaded into Kindle Touch
+  * Fix Go test suite
+  * Weird error
+  Improvements, features
+  * [C++] Use faster alternative to dynamic_cast when not testing inherit
+  * Stackoverflow after upgrading from 4.6 to 4.7
+- from version 4.9.2
+  Issues fixed
+  * CSharp and Java produce different results for identical input, identical tokens
+  Improvements, features
+  * Moved away from travis-ci.com
+- Source upstream tarball from Github since PyPi tarball no longer ships testsuite (forwarded request 978954 from glaubitz)</comment>
+    <requestid>978960</requestid>
+  </revision>
 </revisionlist>
