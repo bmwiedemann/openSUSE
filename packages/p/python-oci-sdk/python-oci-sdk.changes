@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue May 17 10:18:43 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.67.0
+  * Support for getting usage information for autonomous databases and
+    Cloud at Customer autonomous databases in the Database service
+  * Support for the "standby" lifecycle state on autonomous databases
+    in the Database service
+  * Support for BIP connections and dataflow operators in the
+    Data Integration service
+  * The type of parameter `default_connection` was changed from
+    `CreateConnectionFromBICC` to `CreateConnectionDetails` in the
+    create_data_asset_from_fusion_app model in the Data Integration
+    service
+  * The type of parameter `default_connection` was changed from
+    `ConnectionFromBICCDetails` to `ConnectionDetails` in the
+    data_asset_from_fusion_app model in the Data Integration service
+  * The type of parameter `default_connection` was changed from
+    `ConnectionSummaryFromBICC` to `ConnectionSummary` in the
+    data_asset_summary_from_fusion_app model in the Data Integration
+    service
+  * The type of parameter `output_ports` was changed from a list of
+    oci.data_integration.models.OutputPort to oci.data_integration.models.
+    TypedObject in the aggregator model in the Data Integration service
+  * Support for retries by default on WAF Edge Policy GET / LIST operations
+    in the Web Application Acceleration and Security service
+  * Support for retries by default on some operations
+    in the Stack Monitoring service
+  * Support for retries by default on some resource discovery and
+    monitoring operations in the Application Management service
+  * Support for retries by default on some operations in the MySQL Database service
+- from version 2.66.0
+  * Support for the Application Dependency Management service
+  * Support for platform configuration options on some bare
+    metal shapes in the Compute service
+  * Support for shielded instances for BM.Standard.E4.128 and
+    BM.Standard3.64 shapes in the Compute service
+  * Support for E4 dense VMs on launch and update instance
+    operations in the Compute service
+  * Support for reboot migration on DenseIO shapes in the Compute service
+  * Support for an increased database name maximum length,
+    from 14 to 30 characters, in the Database service
+  * Support for provisioned concurrency in the Functions service
+  * Support for retries by default on operations in the Vault service
+  * Support for retries by default on operations in the DNS service
+  * Support for retries by default on operations in
+    the Content Management service
+  * Support for retries by default on operations in the Console Dashboard service
+  * Support for retries by default on Web Application Firewall
+    operations in the Web Application Acceleration and Security service
+  * Support for retries by default on operations in the Data Science service
+
+-------------------------------------------------------------------
 Tue May  3 12:03:38 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.65.0
