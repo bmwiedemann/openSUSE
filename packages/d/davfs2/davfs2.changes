@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 24 19:38:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use release team keyring
+- enable keyring validating 
+
+-------------------------------------------------------------------
 Mon Dec 20 21:07:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.1:

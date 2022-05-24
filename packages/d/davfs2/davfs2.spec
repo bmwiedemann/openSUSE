@@ -1,7 +1,7 @@
 #
 # spec file for package davfs2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,8 @@ URL:            https://savannah.nongnu.org/projects/%{name}
 Source0:        https://download.savannah.nongnu.org/releases/%{name}/%{name}-%{version}.tar.gz
 Source1:        https://download.savannah.nongnu.org/releases/%{name}/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}-rpmlintrc
-Source3:        memberlist-gpgkeys.gpg
+# Taken from https://savannah.nongnu.org/project/release-gpgkeys.php?group=davfs2&download=1
+Source3:        davfs2.keyring
 BuildRequires:  automake >= 1.16
 BuildRequires:  fuse-devel >= 2.2
 BuildRequires:  neon-devel

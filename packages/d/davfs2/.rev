@@ -57,4 +57,13 @@
   * mount_davfs.c, write_mtab_entry: Add option _netdev to utab-entry.</comment>
     <requestid>941700</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>393f0241aedab9c926b8a0624f27c0e4</srcmd5>
+    <version>1.6.1</version>
+    <time>1653423925</time>
+    <user>dimstar_suse</user>
+    <comment>- use release team keyring
+- enable keyring validating</comment>
+    <requestid>979043</requestid>
+  </revision>
 </revisionlist>
