@@ -1,6 +1,15 @@
 diff -Pdpru dosbox-staging-0.78.1.orig/src/dosbox.cpp dosbox-staging-0.78.1/src/dosbox.cpp
 --- dosbox-staging-0.78.1.orig/src/dosbox.cpp	2022-01-07 18:37:04.000000000 +0300
-+++ dosbox-staging-0.78.1/src/dosbox.cpp	2022-05-21 13:45:17.898607106 +0300
++++ dosbox-staging-0.78.1/src/dosbox.cpp	2022-05-24 17:47:11.357668107 +0300
+@@ -516,7 +516,7 @@ void DOSBOX_Init() {
+ 	const char *verbosity_choices[] = {
+ 	        "auto", "high", "medium", "low", "splash_only", "quiet", 0,
+ 	};
+-	Pstring = secprop->Add_string("startup_verbosity", only_at_start, "auto");
++	Pstring = secprop->Add_string("startup_verbosity", only_at_start, "medium");
+ 	Pstring->Set_values(verbosity_choices);
+ 	Pstring->Set_help(
+ 	        "Controls verbosity prior to displaying the program:\n"
 @@ -549,7 +549,7 @@ void DOSBOX_Init() {
  	pstring->Set_values(mono_pal);
  
@@ -45,7 +54,7 @@ diff -Pdpru dosbox-staging-0.78.1.orig/src/dosbox.cpp dosbox-staging-0.78.1/src/
  
 diff -Pdpru dosbox-staging-0.78.1.orig/src/gui/sdlmain.cpp dosbox-staging-0.78.1/src/gui/sdlmain.cpp
 --- dosbox-staging-0.78.1.orig/src/gui/sdlmain.cpp	2022-01-07 18:37:04.000000000 +0300
-+++ dosbox-staging-0.78.1/src/gui/sdlmain.cpp	2022-05-21 13:56:03.471057645 +0300
++++ dosbox-staging-0.78.1/src/gui/sdlmain.cpp	2022-05-24 17:51:25.785165473 +0300
 @@ -3432,7 +3432,7 @@ void Config_Add_SDL() {
  	// constexpr auto deprecated = Property::Changeable::Deprecated;
  	constexpr auto on_start = Property::Changeable::OnlyAtStart;
@@ -75,7 +84,7 @@ diff -Pdpru dosbox-staging-0.78.1.orig/src/gui/sdlmain.cpp dosbox-staging-0.78.1
  	        "acceleration and sensitivity settings. This works in\n"
 diff -Pdpru dosbox-staging-0.78.1.orig/src/midi/midi_fluidsynth.cpp dosbox-staging-0.78.1/src/midi/midi_fluidsynth.cpp
 --- dosbox-staging-0.78.1.orig/src/midi/midi_fluidsynth.cpp	2022-01-07 18:37:04.000000000 +0300
-+++ dosbox-staging-0.78.1/src/midi/midi_fluidsynth.cpp	2022-05-21 13:58:10.276717530 +0300
++++ dosbox-staging-0.78.1/src/midi/midi_fluidsynth.cpp	2022-05-24 17:52:23.585946162 +0300
 @@ -50,7 +50,7 @@ static void init_fluid_dosbox_settings(S
  
  	// Name 'default.sf2' picks the default soundfont if it's installed

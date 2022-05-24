@@ -290,4 +290,13 @@
   * https://dosbox-staging.github.io/v0-78-1/#changes</comment>
     <requestid>978431</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>f603cfab0417de2d530fe4e4234f791c</srcmd5>
+    <version>0.78.1</version>
+    <time>1653425413</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated dosbox-staging-0.78.1-config.patch.
+- Updated dosbox-staging-0.78.1-name.patch.</comment>
+    <requestid>979030</requestid>
+  </revision>
 </revisionlist>

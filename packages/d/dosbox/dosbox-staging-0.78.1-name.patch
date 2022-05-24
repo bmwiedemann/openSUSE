@@ -1,6 +1,6 @@
 diff -Pdpru dosbox-staging-0.78.1.orig/contrib/icons/meson.build dosbox-staging-0.78.1/contrib/icons/meson.build
 --- dosbox-staging-0.78.1.orig/contrib/icons/meson.build	2022-01-07 18:37:04.000000000 +0300
-+++ dosbox-staging-0.78.1/contrib/icons/meson.build	2022-05-21 14:55:58.438969423 +0300
++++ dosbox-staging-0.78.1/contrib/icons/meson.build	2022-05-24 17:57:53.078396467 +0300
 @@ -3,11 +3,11 @@ icons_hicolor = data_dir / 'icons' / 'hi
  # small pre-rendered raster icons
  #
@@ -17,7 +17,7 @@ diff -Pdpru dosbox-staging-0.78.1.orig/contrib/icons/meson.build dosbox-staging-
               install_dir : icons_hicolor / 'scalable' / 'apps')
 diff -Pdpru dosbox-staging-0.78.1.orig/contrib/linux/dosbox-staging.desktop dosbox-staging-0.78.1/contrib/linux/dosbox-staging.desktop
 --- dosbox-staging-0.78.1.orig/contrib/linux/dosbox-staging.desktop	2022-01-07 18:37:04.000000000 +0300
-+++ dosbox-staging-0.78.1/contrib/linux/dosbox-staging.desktop	2022-05-21 14:53:51.761276863 +0300
++++ dosbox-staging-0.78.1/contrib/linux/dosbox-staging.desktop	2022-05-24 17:59:28.267682145 +0300
 @@ -56,9 +56,9 @@ GenericName[zh_CN]=DOS 模拟器
  GenericName[zh_TW]=DOS 模擬器
  Comment=DOS/x86 emulator focusing on ease of use
@@ -32,7 +32,7 @@ diff -Pdpru dosbox-staging-0.78.1.orig/contrib/linux/dosbox-staging.desktop dosb
 +StartupWMClass=dosbox
 diff -Pdpru dosbox-staging-0.78.1.orig/contrib/linux/meson.build dosbox-staging-0.78.1/contrib/linux/meson.build
 --- dosbox-staging-0.78.1.orig/contrib/linux/meson.build	2022-01-07 18:37:04.000000000 +0300
-+++ dosbox-staging-0.78.1/contrib/linux/meson.build	2022-05-21 14:54:58.254165284 +0300
++++ dosbox-staging-0.78.1/contrib/linux/meson.build	2022-05-24 18:00:32.000542956 +0300
 @@ -1,5 +1,5 @@
 -install_data('dosbox-staging.desktop',
 +install_data('dosbox-staging.desktop', rename : 'dosbox.desktop',
@@ -43,7 +43,7 @@ diff -Pdpru dosbox-staging-0.78.1.orig/contrib/linux/meson.build dosbox-staging-
               install_dir : data_dir / 'metainfo')
 diff -Pdpru dosbox-staging-0.78.1.orig/contrib/translations/meson.build dosbox-staging-0.78.1/contrib/translations/meson.build
 --- dosbox-staging-0.78.1.orig/contrib/translations/meson.build	2022-01-07 18:37:04.000000000 +0300
-+++ dosbox-staging-0.78.1/contrib/translations/meson.build	2022-05-21 15:00:32.750634542 +0300
++++ dosbox-staging-0.78.1/contrib/translations/meson.build	2022-05-24 18:03:18.242788315 +0300
 @@ -49,7 +49,7 @@ endforeach
  
  # Setup the translation files in the system
@@ -55,7 +55,7 @@ diff -Pdpru dosbox-staging-0.78.1.orig/contrib/translations/meson.build dosbox-s
                   install_dir : system_translations)
 diff -Pdpru dosbox-staging-0.78.1.orig/meson.build dosbox-staging-0.78.1/meson.build
 --- dosbox-staging-0.78.1.orig/meson.build	2022-01-07 18:37:04.000000000 +0300
-+++ dosbox-staging-0.78.1/meson.build	2022-05-21 14:57:09.079913267 +0300
++++ dosbox-staging-0.78.1/meson.build	2022-05-24 18:04:41.503912885 +0300
 @@ -469,8 +469,8 @@ subdir('tests')
  # additional files for installation
  #
@@ -67,3 +67,17 @@ diff -Pdpru dosbox-staging-0.78.1.orig/meson.build dosbox-staging-0.78.1/meson.b
  
  install_man('docs/dosbox.1')
  install_data('COPYING', install_dir : licenses_dir)
+diff -Pdpru dosbox-staging-0.78.1.orig/src/misc/messages.cpp dosbox-staging-0.78.1/src/misc/messages.cpp
+--- dosbox-staging-0.78.1.orig/src/misc/messages.cpp	2022-01-07 18:37:04.000000000 +0300
++++ dosbox-staging-0.78.1/src/misc/messages.cpp	2022-05-24 18:12:01.735417977 +0300
+@@ -239,8 +239,8 @@ static std::deque<std_fs::path> get_path
+ 
+ 	// Try the user-installed and then repo-installed paths, which
+ 	// can exist on macOS, POSIX, and even MinGW/MSYS2/Cygwin.
+-	paths.emplace_back("/usr/local/share/dosbox-staging/translations");
+-	paths.emplace_back("/usr/share/dosbox-staging/translations");
++	paths.emplace_back("/usr/local/share/dosbox/translations");
++	paths.emplace_back("/usr/share/dosbox/translations");
+ 
+ 	// Worst-cast: fallback to the user's config directory
+ 	const std_fs::path config_path(CROSS_GetPlatformConfigDir());
