@@ -11,13 +11,12 @@ fi
 
 [ -z "$OBJDUMP" ] && OBJDUMP="$host-objdump"
 
-filelist="/tmp/$target-find-provides.$$"
-sed "s/['\"]/\\\&/g" >"$filelist"
+filelist=`sed "s/['\"]/\\\&/g"`
 
-dlls=$(grep '\.dll$' "$filelist")
-pcs=$(grep '\.pc$' "$filelist")
-libs=$(grep '\.a$' "$filelist")
-cmakes=$(grep '[cC]onfig.cmake$' "$filelist")
+dlls=$(echo "$filelist" | grep '\.dll$')
+pcs=$(echo "$filelist" | grep '\.pc$')
+libs=$(echo "$filelist" | grep '\.a$')
+cmakes=$(echo "$filelist" | grep '[cC]onfig.cmake$')
 
 for f in $dlls; do
     [ ! -f "$f" ] && continue
@@ -40,5 +39,3 @@ for h in $cmakes; do
     [ ! -f "$h" ] && continue
     echo $h | /usr/lib/rpm/mingw32-cmake.prov
 done
-
-rm "$filelist"

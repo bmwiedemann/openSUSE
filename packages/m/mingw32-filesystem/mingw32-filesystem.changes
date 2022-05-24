@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 23 13:58:15 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to 20220524
+- On finding provides and requirements do not generate temporary 
+  files in the global temporary directory (boo#1182356)
+- Add optional support to add runtime dependencies for import
+  libraries, see macros.mingw32 for details (boo#1194430)
+- Fix warning 'file format not recognized' in mingw32-find-requires.sh
+  when parsing xxx-config files
+
+-------------------------------------------------------------------
 Thu Dec  2 14:06:40 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Change all version comparisons for Tumbleweed to >= 1550 (instead
