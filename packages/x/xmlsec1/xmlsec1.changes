@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 23 09:49:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.34:
+  * Support for OpenSSL compiled with OPENSSL_NO_ERR.
+  * Full support for LibreSSL 3.5.0 and above
+  * Several other small fixes
+
+-------------------------------------------------------------------
 Sun Nov 28 18:53:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.33:
