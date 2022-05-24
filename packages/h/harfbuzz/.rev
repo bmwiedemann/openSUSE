@@ -854,4 +854,12 @@ https://github.com/harfbuzz/harfbuzz/issues/3216</comment>
     <comment>harfbuzz 4.2.1 (forwarded request 972371 from AndreasStieger)</comment>
     <requestid>972517</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>afbb27027381483c669d4e12e518d84a</srcmd5>
+    <version>4.3.0</version>
+    <time>1653417052</time>
+    <user>dimstar_suse</user>
+    <comment>harfbuzz 4.3.0 (forwarded request 978395 from AndreasStieger)</comment>
+    <requestid>978665</requestid>
+  </revision>
 </revisionlist>

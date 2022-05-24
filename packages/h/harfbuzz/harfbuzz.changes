@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May 21 08:10:59 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 4.3.0:
+  + Major speed up in loading and subsetting fonts, especially in
+    handling CFF table. Subsetting some fonts is now 3 times faster
+  + Speed up blending CFF2 table
+  + Speed up hb_ot_tags_from_language()
+  + Fix USE classification of U+10A38 to fix multiple marks on
+    single Kharoshthi base
+  + Fix parsing of empty CFF Index
+  + Fix subsetting CPAL table with partial palette overlaps
+
+-------------------------------------------------------------------
 Sun Apr 24 11:28:52 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 4.2.1:
