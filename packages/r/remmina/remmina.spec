@@ -22,7 +22,7 @@
 %bcond_with	remmina_kwallet
 %endif
 Name:           remmina
-Version:        1.4.25
+Version:        1.4.26
 Release:        0
 Summary:        Versatile Remote Desktop Client
 License:        GPL-2.0-or-later
@@ -40,6 +40,7 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libsodium-devel
 BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python3-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(appindicator3-0.1)
 BuildRequires:  pkgconfig(atk)
@@ -107,6 +108,14 @@ Requires:       remmina = %{version}
 %description plugin-exec
 This package provides a plugin for Remmina allowing the execution of
 local commands.
+
+%package plugin-python-wrapper
+Summary:        Adapter for remmina Python plugins
+Group:          Productivity/Networking/Other
+Requires:       remmina = %{version}
+
+%description plugin-python-wrapper
+This package provides an adapter used by remmina Python plugins
 
 %package plugin-spice
 Summary:        SPICE Protocol Plugin for Remmina
@@ -225,6 +234,12 @@ export CFLAGS="$CFLAGS -fPIC"
 %postun plugin-exec
 %icon_theme_cache_postun
 
+%post plugin-python-wrapper
+%icon_theme_cache_post
+
+%postun plugin-python-wrapper
+%icon_theme_cache_postun
+
 %post plugin-spice
 %icon_theme_cache_post
 
@@ -296,6 +311,9 @@ export CFLAGS="$CFLAGS -fPIC"
 
 %files plugin-exec
 %{_libdir}/remmina/plugins/remmina-plugin-exec.so
+
+%files plugin-python-wrapper
+%{_libdir}/remmina/plugins/remmina-plugin-python_wrapper.so
 
 %files plugin-spice
 %{_libdir}/remmina/plugins/remmina-plugin-spice.so

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu May 19 14:29:06 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Updated to remmina version 1.4.26
+
+- Major improvements:
+  * A Python plugin/API (you can write Remmina plugins in Python now!!!)
+  * X11 Forward for the SSH plugin @marco.fortina
+  * Kiosk improvements and new command lines options
+
+- Other changes:
+  * Fix trial for 2577: Closing a VNC connection makes Remmina close all other... 
+  * Handle after-auth connection errors in VNC properly 
+  * Using Remmina from command-line for kiosked servers 
+  * Manual page refactoring fixes #2056 (closed) 
+  * Add mutex to protect RDP clipboard->srv_data. Fixes #2666 (closed) 
+  * Add '--no-tray-icon' command-line option 
+  * Make FreeRDPs TLS Security Level setting accessible in the advanced settings view 
+  * Disable grabs for SSH and SFTP, #closes #2728 (closed) 
+  * Cannot disable shared folder 
+  * Use PyInitializeEx in order to skip signal handler registration 
+  * Ignore add new connection button in kiosk mode 
+  * WWW plugin refactoring 
+
+-------------------------------------------------------------------
 Thu Mar 10 18:02:25 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Updated to remmina version 1.4.25
