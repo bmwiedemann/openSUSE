@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-cosmos
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-cosmos
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
 Summary:        Microsoft Azure Cosmos client library for Python
 License:        MIT
@@ -34,9 +34,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.0.0
+Requires:       python-azure-core >= 1.23.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-six >= 1.6
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
@@ -65,7 +64,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 %files %{python_files}
 %defattr(-,root,root,-)
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/cosmos
 %{python_sitelib}/azure_cosmos-*.egg-info
 
