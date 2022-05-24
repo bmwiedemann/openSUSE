@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon May 23 15:42:03 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.4.3
+  Bug fixes:
+  * Correctly handle changing of temp save path
+  * Fix storage in SQLite
+  * Correctly apply content layout when "Skip hash check" is
+    enabled
+  * Don't corrupt IDs of v2 torrents
+  * Reduce the number of hashing threads by default (improves
+    hashing speed on HDDs)
+  * Prevent the "update dialog" from blocking input on other
+    windows
+  * Add trackers in exported .torrent files
+  * Fix wrong GUI behavior in "Optional IP address to bind to"
+    setting
+  Web UI:
+  * Fix WebUI crash due to missing tags from config
+  * Show correct location path
+
+-------------------------------------------------------------------
 Wed Apr 20 19:50:45 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Require libQt6Svg at runtime (fixes boo#1198544)
