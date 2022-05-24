@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 24 12:29:55 UTC 2022 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to v1.71
+  + Refresh AlmaLinux keys to add AlmaLinux 9 key
+  + Add RHEL9 keys
+  + Add RPM Fusion keys for Fedora 38
+  + Add RPM Fusion keys for EL 9
+
+-------------------------------------------------------------------
 Wed Mar 23 10:51:49 UTC 2022 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to v1.67
