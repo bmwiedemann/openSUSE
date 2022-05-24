@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 24 09:18:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not recommend lang package: the lang package has smarter
+  supplements in place.
+
+-------------------------------------------------------------------
 Tue Jan 11 21:18:03 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add python-rpm-macros 

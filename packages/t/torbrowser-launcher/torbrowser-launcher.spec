@@ -45,7 +45,6 @@ Requires:       python3-packaging
 Requires:       python3-qt5
 Requires:       python3-requests
 Requires:       xmessage
-Recommends:     %{name}-lang = %{version}
 BuildArch:      noarch
 
 %description
