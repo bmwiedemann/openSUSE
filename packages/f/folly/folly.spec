@@ -16,9 +16,9 @@
 #
 
 
-%define lname libfolly-v2022_01_24_00
+%define lname libfolly-v2022_05_23_00
 Name:           folly
-Version:        2022.01.24.00
+Version:        2022.05.23.00
 Release:        0
 Summary:        A C++ utility library
 License:        MIT
@@ -49,7 +49,6 @@ BuildRequires:  libdwarf-devel-static >= 20170103
 %endif
 BuildRequires:  libevent-devel
 BuildRequires:  liblz4-devel
-BuildRequires:  xz-devel
 BuildRequires:  libsodium-devel
 BuildRequires:  libunwind-devel
 BuildRequires:  liburing-devel
@@ -59,6 +58,7 @@ BuildRequires:  lzlib-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  snappy-devel
+BuildRequires:  xz-devel
 BuildRequires:  zlib-devel-static
 
 %description

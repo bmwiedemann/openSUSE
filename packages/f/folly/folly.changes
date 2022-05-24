@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 24 00:19:35 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2022.05.23
+  * No changelog provided
+- Change fix-asm-execstack.patch to use @progbits, not %progbits.
+- Edit fix-asm-execstack.patch and remove hunk for memcpy.S,
+  because memcpy.S already has had a @progbits line.
+
+-------------------------------------------------------------------
 Tue Feb 15 15:09:53 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable building of shared libraries

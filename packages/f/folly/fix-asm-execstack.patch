@@ -4,33 +4,22 @@ Date: Mon Jan 31 08:53:38 UTC 2022
 Add unconditional section markers to assembler units to avoid the library
 getting an executable stack.
 
-Index: folly-2022.01.24.00/folly/memset.S
+---
+ folly/memset.S |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+Index: folly-2022.05.23.00/folly/memset.S
 ===================================================================
---- folly-2022.01.24.00.orig/folly/memset.S
-+++ folly-2022.01.24.00/folly/memset.S
+--- folly-2022.05.23.00.orig/folly/memset.S
++++ folly-2022.05.23.00/folly/memset.S
 @@ -18,6 +18,10 @@
  
  #define LABEL(x)     .L##x
  
 +#if defined(__linux__) && defined(__ELF__)
-+.section .note.GNU-stack,"",%progbits
++.section .note.GNU-stack,"",@progbits
 +#endif
 +
  .text
  .p2align  5, 0x90
  .global __folly_memset
-Index: folly-2022.01.24.00/folly/memcpy.S
-===================================================================
---- folly-2022.01.24.00.orig/folly/memcpy.S
-+++ folly-2022.01.24.00/folly/memcpy.S
-@@ -70,6 +70,10 @@
-  * @author Logan Evans <lpe@fb.com>
-  */
- 
-+#if defined(__linux__) && defined(__ELF__)
-+.section .note.GNU-stack,"",%progbits
-+#endif
-+
- #if defined(__AVX2__)
- 
- // This threshold is half of L1 cache on a Skylake machine, which means that
