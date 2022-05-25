@@ -41,6 +41,7 @@ unsorted:
   - DVDStyler 
   - DVDStyler-lang 
   - DevIL-devel 
+  - DirectX-Headers 
   - EternalTerminal 
   - FAudio-devel 
   - FAudio-devel-32bit: [x86_64] 
@@ -13714,7 +13715,7 @@ unsorted:
   - librrd8 
   - librsb-devel 
   - librsb0 
-  - librssguard-4_2_1 
+  - librssguard-4_2_2 
   - librssguard-devel 
   - librsvg-2-2-32bit: [x86_64] 
   - librsvg-devel 
@@ -18476,6 +18477,7 @@ unsorted:
   - openstack-macros 
   - openstack-utils 
   - opensurge 
+  - opensuse-welcome-lang 
   - opentest4j 
   - opentest4j-javadoc 
   - opentoonz 
@@ -21569,8 +21571,6 @@ unsorted:
   - python3-GitgExt 
   - python3-Hamlib 
   - python3-HyperKitty 
-  - python3-Keras: [x86_64] 
-  - python3-Keras-Preprocessing: [x86_64] 
   - python3-MapProxy 
   - python3-OpenColorIO 
   - python3-OpenImageIO 
@@ -21845,8 +21845,6 @@ unsorted:
   - python3-talloc-32bit: [x86_64] 
   - python3-talloc-devel 
   - python3-tdb-32bit: [x86_64] 
-  - python3-tensorboard 
-  - python3-tensorboard-cmd 
   - python3-tevent-32bit: [x86_64] 
   - python3-tooz 
   - python3-tvtk 
@@ -26634,7 +26632,7 @@ unsorted:
   - python38-langdetect 
   - python38-langtable 
   - python38-language-check 
-  - python38-lark-parser 
+  - python38-lark-parser: [i586] 
   - python38-latexcodec 
   - python38-lazr.uri 
   - python38-lazy 
@@ -27569,7 +27567,7 @@ unsorted:
   - python38-reconfigure 
   - python38-redbaron 
   - python38-redfish 
-  - python38-regex 
+  - python38-regex: [i586] 
   - python38-relatorio 
   - python38-releases 
   - python38-remoto 
@@ -32111,7 +32109,7 @@ unsorted:
   - remmina-plugin-exec 
   - remmina-plugin-gvnc 
   - remmina-plugin-kwallet 
-  - remmina-plugin-python-wrapper: [i586] 
+  - remmina-plugin-python-wrapper 
   - remmina-plugin-spice 
   - remmina-plugin-www 
   - remontoire 
