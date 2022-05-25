@@ -238,4 +238,16 @@
   - Close session at clean_up if available</comment>
     <requestid>936090</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0284aeb1ba398637f1b20f1dcbcd6a64</srcmd5>
+    <version>2.5.0</version>
+    <time>1653503670</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.5.0
+  - Add Python3 yoga unit tests
+  - Update master for stable/xena
+  - Replace allow_get check with allow_fetch
+  - parseractions: Make key validation reusable</comment>
+    <requestid>979070</requestid>
+  </revision>
 </revisionlist>

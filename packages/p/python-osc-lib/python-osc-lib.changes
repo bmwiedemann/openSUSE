@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 24 21:07:14 UTC 2022 - cloud-devel@suse.de
+
+- update to version 2.5.0
+  - Add Python3 yoga unit tests
+  - Update master for stable/xena
+  - Replace allow_get check with allow_fetch
+  - parseractions: Make key validation reusable
+
+-------------------------------------------------------------------
 Tue Oct 26 21:38:28 UTC 2021 - cloud-devel@suse.de
 
 - update to version 2.4.2

@@ -2,7 +2,7 @@
   <service mode="disabled" name="renderspec">
     <param name="input-template">https://opendev.org/openstack/rpm-packaging/raw/master/openstack/osc-lib/osc-lib.spec.j2</param>
     <param name="output-name">python-osc-lib.spec</param>
-    <param name="requirements">https://opendev.org/openstack/osc-lib/raw/branch/stable/xena/requirements.txt</param>
+    <param name="requirements">https://opendev.org/openstack/osc-lib/raw/branch/master/requirements.txt</param>
     <param name="changelog-email">cloud-devel@suse.de</param>
     <param name="changelog-provider">gh,openstack,osc-lib</param>
   </service>
