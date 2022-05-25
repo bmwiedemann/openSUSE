@@ -45,7 +45,6 @@
     <package name="NetworkManager-vpnc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="NetworkManager-vpnc-gnome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="NetworkManager-vpnc-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="NetworkManager-wifi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="NetworkManager-wwan" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="OpenPrintingPPDs-ghostscript" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-printing -->
     <package name="OpenPrintingPPDs-hpijs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-printing -->
@@ -3135,7 +3134,6 @@
     <package name="openssl" supportstatus="unsupported"/> <!-- reason: dvd:mokutil -->
     <package name="openssl-1_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="opensuse-welcome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="opensuse-welcome-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="openvpn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="orca" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="orca-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
