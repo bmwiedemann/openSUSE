@@ -7,6 +7,13 @@ Sun Mar 20 20:11:02 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 Fri Mar 11 06:57:17 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.1.0
+  * Improvements:
+    + [MSHARED-812] – Require Java 7
+    + [MSHARED-879] – make build Reproducible
+  * Task:
+    + [MSHARED-1024] – Replace deprecated code
+  * Dependency upgrade:
+    + [MSHARED-844] – Upgrade to Doxia 1.11.1
   * needed for a new maven-javadoc-plugin
 
 -------------------------------------------------------------------
