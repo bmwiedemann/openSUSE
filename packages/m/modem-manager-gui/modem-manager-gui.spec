@@ -43,7 +43,6 @@ BuildRequires:  pkgconfig(appindicator3-0.1)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.1
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.4.0
 Requires:       ModemManager >= 0.5.0.0
-Recommends:     %{name}-lang
 Suggests:       evolution-data-server >= 3.4.1
 Suggests:       libcanberra0 >= 0.28
 Suggests:       libnotify-tools >= 0.7.5
