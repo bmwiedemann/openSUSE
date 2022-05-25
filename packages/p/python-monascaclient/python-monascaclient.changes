@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May 24 20:54:47 UTC 2022 - cloud-devel@suse.de
+
+- update to version 2.5.0
+  - Add Python3 yoga unit tests
+  - Update master for stable/xena
+
+-------------------------------------------------------------------
+Mon Dec  6 09:31:36 UTC 2021 - cloud-devel@suse.de
+
+- update to version 2.4.0
+  - Fix Docker build
+  - Add Python3 xena unit tests
+  - Update master for stable/wallaby
+  - Fix zuul publish docker image job
+
+-------------------------------------------------------------------
 Sun May  2 17:24:05 UTC 2021 - cloud-devel@suse.de
 
 - update to version 2.3.0

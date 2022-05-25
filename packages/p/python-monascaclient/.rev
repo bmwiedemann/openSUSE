@@ -177,4 +177,20 @@
     <comment></comment>
     <requestid>889977</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>adfdd8f9f65426fc5a9791c1f255dcae</srcmd5>
+    <version>2.5.0</version>
+    <time>1653503662</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.5.0
+  - Add Python3 yoga unit tests
+  - Update master for stable/xena
+
+- update to version 2.4.0
+  - Fix Docker build
+  - Add Python3 xena unit tests
+  - Update master for stable/wallaby
+  - Fix zuul publish docker image job</comment>
+    <requestid>979063</requestid>
+  </revision>
 </revisionlist>

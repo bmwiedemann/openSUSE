@@ -1,7 +1,7 @@
 #
 # spec file for package python-monascaclient
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,17 @@
 
 
 Name:           python-monascaclient
-Version:        2.3.0
+Version:        2.5.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Monasca
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-monascaclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-monascaclient/python-monascaclient-2.3.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-monascaclient/python-monascaclient-2.5.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable >= 0.7.2
 BuildRequires:  python3-PyYAML >= 3.12
 BuildRequires:  python3-fixtures
-BuildRequires:  python3-mock
 BuildRequires:  python3-openstackdocstheme
 BuildRequires:  python3-osc-lib >= 1.8.0
 BuildRequires:  python3-oslo.concurrency
@@ -70,7 +69,7 @@ provides a Python API (the ``monascaclient`` module) and a command-line tool
 The Monasca Client was written using the OpenStack Heat Python client as a framework.
 
 %prep
-%autosetup -p1 -n python-monascaclient-2.3.0
+%autosetup -p1 -n python-monascaclient-2.5.0
 %py_req_cleanup
 
 %build
