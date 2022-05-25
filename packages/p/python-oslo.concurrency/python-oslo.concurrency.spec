@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.concurrency
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,17 @@
 
 
 Name:           python-oslo.concurrency
-Version:        4.3.0
+Version:        4.5.1
 Release:        0
 Summary:        OpenStack oslo.concurrency library
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/oslo.concurrency
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.concurrency/oslo.concurrency-4.3.0.tar.gz
+URL:            https://docs.openstack.org/oslo.concurrency
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.concurrency/oslo.concurrency-4.5.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-eventlet
 BuildRequires:  python3-fasteners >= 0.7.0
 BuildRequires:  python3-fixtures
-BuildRequires:  python3-mock
 BuildRequires:  python3-oslo.config >= 5.2.0
 BuildRequires:  python3-oslo.i18n >= 3.15.3
 BuildRequires:  python3-oslo.utils >= 3.33.0
@@ -46,12 +45,10 @@ external processes.
 
 %package -n python3-oslo.concurrency
 Summary:        OpenStack oslo.concurrency library
-Group:          Development/Languages/Python
 Requires:       python3-fasteners >= 0.7.0
 Requires:       python3-oslo.config >= 5.2.0
 Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-oslo.utils >= 3.33.0
-Requires:       python3-six
 %if 0%{?suse_version}
 Obsoletes:      python2-oslo.concurrency < 4.0.0
 %endif
@@ -65,7 +62,6 @@ This package contains the Python 3.x module.
 
 %package -n python-oslo.concurrency-doc
 Summary:        Documentation for OpenStack concurrency library
-Group:          Development/Languages/Python
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
 BuildRequires:  python3-sphinxcontrib-apidoc
@@ -77,7 +73,7 @@ external processes.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n oslo.concurrency-4.3.0
+%autosetup -p1 -n oslo.concurrency-4.5.1
 %py_req_cleanup
 
 %build

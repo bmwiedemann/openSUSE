@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue May 24 21:18:02 UTC 2022 - cloud-devel@suse.de
+
+- update to version 4.5.1
+  - Add support for non-blocking locks
+  - Use TOX_CONSTRAINTS_FILE
+  - Dropping lower constraints testing
+  - Remove references to 'sys.version_info'
+  - Update CI to use unversioned jobs template
+  - Add Python3 wallaby unit tests
+  - Adding pre-commit
+  - Fix RequiredOptError when missing lock_path
+  - Remove unnecessary unicode prefixes
+  - Monkey patch original current_thread _active in processutils
+  - Use py3 as the default runtime for tox
+  - Update master for stable/victoria
+  - Allow python_exec kwarg to be None
+  - Move flake8 as a pre-commit local target.
+  - Add Python3 yoga unit tests
+  - setup.cfg: Replace dashes with underscores
+  - Remove lower-constraints remnants
+  - Update python testing classifier
+
+-------------------------------------------------------------------
 Fri Oct  9 19:10:17 UTC 2020 - cloud-devel@suse.de
 
 - update to version 4.3.0
