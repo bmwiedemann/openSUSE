@@ -2,6 +2,18 @@
 Tue Mar 29 13:53:45 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 3.2.2
+  * Bugs:
+    + MJAR-276 - Don't log a warning when jar will be empty and
+      creation is forced
+    + MJAR-281 - Wrong order of META-INF/ and
+      META-INF/MANIFEST.MF entries
+  * Improvement:
+    + MJAR-270 - make build Reproducible
+  * Dependency upgrades:
+    + MJAR-282 - Upgrade Maven Archiver to 3.5.2
+    + MJAR-283 - Upgrade Plexus Utils to 3.3.1
+    + MJAR-284 - Remove override for Plexus Archiver to fix order
+      of META-INF/ and META-INF/MANIFEST.MF entries
 - Modified patch:
   * 01-allow-replacing-artifacts.patch
     + rediff to different line endings
@@ -15,6 +27,22 @@ Tue Mar 22 13:18:12 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 Mon Nov 25 17:28:29 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 3.2.0
+  * Bugs:
+    + MJAR-259 – Archiving to jar is very slow
+    + MJAR-241 – Jar package does not have a size in ZipEntry
+  * Improvements:
+    + MJAR-260 – Upgrade to Archiver 3.3.0 and add ITs
+    + MJAR-238 – Allow setting of module main class
+  * New Feature:
+    + MJAR-263 – Reproducible Builds: make entries in output jar
+      files reproducible (order + timestamp)
+  * Task:
+    + MJAR-251 – Add documentation information for GitHub
+  * Dependency upgrades:
+    + MJAR-261 – Upgrade plexus-archiver 3.7.0
+    + MJAR-256 – Upgrade JUnit to 4.12
+    + MJAR-255 – Upgrade maven-plugins parent to version 32
+    + MJAR-252 – Upgrade plexus-archiver to 3.6.0
 - Modified patch:
   * maven-jar-plugin-bootstrap-resources.patch
     + regenerate from non-bootstrap build
