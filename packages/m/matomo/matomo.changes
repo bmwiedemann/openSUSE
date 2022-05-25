@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 25 05:39:32 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.10.1
+  * matomo-org/matomo
+    - #19209 Show spark lines correctly in KPI widget when using segments
+    - #19251 Fix manifest.json sending HTTP-Status 403
+    - #19241 Set default hasExtraPlugin in campaign builder component to true
+    - #19237 Make CustomDimensions available in Segment Editor
+    - #19262 Set default null/falsey value in FieldNumber to 0 to match previous behavior
+
+-------------------------------------------------------------------
 Mon May 16 06:08:42 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.10.0
