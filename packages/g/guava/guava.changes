@@ -2,6 +2,50 @@
 Wed May 18 17:26:01 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to guava 31.1
+  * Fixes:
+    + base: Deprecated the Throwables methods lazyStackTrace and
+      lazyStackTraceIsLazy. They are no longer useful on any current
+      platform.
+    + collect: Added a new method
+      ImmutableMap.Builder.buildKeepingLast(), which keeps the last
+      value for any given key rather than throwing an exception when
+      a key appears more than once.
+    + collect: As a side-effect of the buildKeepingLast() change,
+      the idiom
+      ImmutableList.copyOf(Maps.transformValues(map, function))
+      may produce different results if function has side-effects.
+    + hash: Added Hashing.fingerprint2011().
+    + io: Changed ByteStreams.nullOutputStream() to follow the
+      contract of OutputStream.write by throwing an exception if
+      the range of bytes is out of bounds.
+    + net: Added @CheckReturnValue to the package (with a few
+      exceptions).
+    + net: Added HttpHeaders constant for
+      Access-Control-Allow-Private-Network.
+    + util.concurrent: Added accumulate/update methods for
+      AtomicDouble and AtomicDoubleArray.
+  * APIs promoted from @Beta:
+    + base: Throwables methods getCausalChain and getCauseAs
+    + collect: Streams methods mapWithIndex and findLast
+    + collect: the remaining methods in Comparators: min, max,
+      lexicographical, emptiesFirst, emptiesLast, isInOrder,
+      isInStrictOrder
+    + escape: various APIs
+    + io: various APIs in Files
+    + net: various APIs
+    + reflect: various APIs
+    + testlib: various APIs
+    + util.concurrent: AsyncCallable, ListenableScheduledFuture,
+      and ClosingFuture
+    + util.concurrent: ExecutionSequencer,
+      MoreExecutors.newSequentialExecutor, and Monitor
+    + util.concurrent: Futures methods: submit, submitAsync,
+      scheduleAsync, nonCancellationPropagating, inCompletionOrder
+    + util.concurrent: Uninterruptibles:
+      awaitTerminationUninterruptibly and the Duration overloads in
+      the class
+    + util.concurrent: the FluentFuture type, its factory methods,
+      and addCallback
   * Remove the hack of removing annotations, since we have now
     all the required dependencies packaged
 - Removed patch:
@@ -17,6 +61,14 @@ Fri Mar 11 12:13:02 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 Mon May 10 14:59:41 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to guava 30.1.1
+  * Fixes:
+    + cache: Fixed compatibility between asMap().compute(...)
+      and a load.
+    + cache: Added @CheckReturnValue to some APIs.
+    + collect: Added @DoNotCall to the mutator methods on immutable
+      types
+    + hash: Removed @Beta from HashCode.
+    + io: Removed @Beta from CountingOutputStream.
   * fixes bsc#1179926, CVE-2020-8908: temp directory creation
     vulnerability in Guava versions prior to 30.0
 - Removed patch:
