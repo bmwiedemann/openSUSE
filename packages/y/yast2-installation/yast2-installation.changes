@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 23 15:42:10 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- AutoYaST Second Stage: Added a missing dependency to the service
+  to prevent getty-autogeneration listen on 5901 port (bsc#1199746)
+- 4.5.2
+
+-------------------------------------------------------------------
 Mon Apr 25 23:10:17 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - Revert changes introduced in v4.3.50 as it produces some ordering

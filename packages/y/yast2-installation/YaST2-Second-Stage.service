@@ -6,10 +6,11 @@ After=systemd-user-sessions.service
 # Run after kernels are purged to prevent a zypper lock (bsc#1196431)
 After=purge-kernels.service
 Conflicts=plymouth-start.service
-# Prevent getty auto-generation (bsc#1196614, bsc#1196594)
+# Prevent getty auto-generation (bsc#1196614, bsc#1196594, bsc#1199746)
 Before=getty@tty1.service getty@tty2.service getty@tty3.service getty@tty4.service getty@tty5.service getty@tty6.service
 Before=serial-getty@ttyS0.service serial-getty@ttyS1.service serial-getty@ttyS2.service
 Before=serial-getty@hvc0.service serial-getty@ttyAMA0.service serial-getty@ttysclp0.service
+Before=serial-getty@sclp_line0.service
 # Prevent too early user login (bsc#1196594)
 Before=display-manager.service
 ConditionPathExists=/var/lib/YaST2/runme_at_boot
