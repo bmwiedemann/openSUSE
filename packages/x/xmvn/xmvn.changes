@@ -2,6 +2,64 @@
 Tue May 10 12:36:15 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 4.0.0
+  * Changes:
+    +  Bump codecov/codecov-action from 2.0.1 to 2.0.2
+    +  Bump codecov/codecov-action from 1 to 2.0.1
+    +  Bump commons-compress from 1.20 to 1.21 in /xmvn-parent
+    +  Change logic for JPMS detection by Javadoc MOJO
+    +  Fix Javadoc generation for non-JPMS project with JDK 11
+    +  Remove superflous JARs from assembly
+    +  Create a backup file when injecting Manifest
+    +  Attach site artifacts only in site lifecycle
+    +  Rename xmvn-connector-aether to xmvn-connector
+    +  Use try-with-resources to avoid resource leaks
+    +  Remove unused AtomicFileCounter class
+    +  Update Eclipse project settings
+    +  Add separate build profile for code quality tools
+    +  Remove prerequisites on Maven version
+    +  Drop bisect tool
+    +  Move release plugins to pluginManagement
+    +  Move prerequisites on Maven version to xmvn-mojo
+    +  Fix javadoc warning
+    +  Bump junit from 4.12 to 4.13.1 in /xmvn-it/src/test/resources/testBisect
+    +  Bump slf4jVersion from 1.8.0-beta4 to 2.0.0-alpha2 in /xmvn-parent
+    +  Compile everything whith --release 11
+    +  Fix assembly building with Maven Checkstyle Plugin 3.1.0+
+    +  Update to latest Checkstyle
+    +  Format code to conform to Checkstyle 8.44
+    +  Untabify Maven build files
+    +  Update Maven plugin versions
+    +  Drop Ivy
+    +  Drop Gradle
+    +  Add support for compiler release setting
+    +  Fix Javadoc generation for modular projects
+    +  Add JPMS check to Javadoc MOJO
+    +  Add missing license headers
+    +  Disable I/O write test if the build is running as root
+    +  Switch to SHA-256 in CacheManager
+    +  Update dependency xmlunit.assertj to xmlunit.assertj3
+    +  Fixes #56 - Honour source parameter in javadoc mojo
+    +  Implement XMvn toolchain manager
+    +  Fix requires generation for self-depending packages
+    +  Remove redundant parentheses
+    +  Remove redudnant use of this
+    +  Relay on implicit access modifiers of interfaces
+    +  Rely on implicit boxing
+    +  Make use of diamond operator
+    +  [test] Use use lambda expressions for creation of DeploymentResult
+    +  Remove use of deprecated StringUtils methods
+    +  [test] Port tests to JUnit 5
+    +  Update to latest dependencies
+    +  [test] Add missing assertions about XML output
+    +  Use new Collection methods added in Java 9
+    +  Remove uses of deprecated Class.newInstance() method
+    +  Drop artifact resolution from JAVA_HOME
+    +  Update to latest Maven plugin versions
+    +  Update compiler source/target to JDK 11
+    +  Update Eclipse project settings
+    +  Make xmvn-subst honor settings for ignoring duplicate metadata
+    +  Allow removing plugins during model validation
+    +  Prefer namespaced metadata when duplicates are found
 
 -------------------------------------------------------------------
 Fri Oct 22 09:15:52 UTC 2021 - Fridrich Strba <fstrba@suse.com>
