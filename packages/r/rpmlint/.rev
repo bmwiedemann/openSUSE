@@ -3794,4 +3794,25 @@ oddjob-gpupdate isn't blocked)</comment>
   * Update docs about rpmlintrc auto-loading.</comment>
     <requestid>976971</requestid>
   </revision>
+  <revision rev="400" vrev="1">
+    <srcmd5>11eb4a85c8f06a21584fc766d0c5ce4b</srcmd5>
+    <version>2.3.0+git20220523.e71c7f8</version>
+    <time>1653503648</time>
+    <user>dimstar_suse</user>
+    <comment>- Add temporary patch disable-SystemdTmpfilesCheck.patch in order to build
+  rpmlint with older rpmlint-mini.
+
+- Update to version 2.3.0+git20220523.e71c7f8:
+  * SystemdTmpfilesCheck: add additional unit test for parsing logic
+  * SystemdTmpfilesCheck: fix invalid member accesses
+  * openSUSE: Do not allow files in /etc/NetworkManager/dispatcher.d anymore
+
+- Update to version 2.3.0+git20220519.82b9e76:
+  * Release 2.3.0
+  * Skip shared-library-without-dependency-information for python.
+  * Skip undefined-non-weak-symbol for python packages.
+  * SystemdTmpfilesCheck: new check to restrict systemd-tmpfiles configuration.
+  * Skip undefined-non-weak-symbol for python packages.</comment>
+    <requestid>978672</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon May 23 09:50:11 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add temporary patch disable-SystemdTmpfilesCheck.patch in order to build
+  rpmlint with older rpmlint-mini.
+
+-------------------------------------------------------------------
+Mon May 23 08:44:12 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.3.0+git20220523.e71c7f8:
+  * SystemdTmpfilesCheck: add additional unit test for parsing logic
+  * SystemdTmpfilesCheck: fix invalid member accesses
+  * openSUSE: Do not allow files in /etc/NetworkManager/dispatcher.d anymore
+
+-------------------------------------------------------------------
+Fri May 20 06:22:26 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.3.0+git20220519.82b9e76:
+  * Release 2.3.0
+  * Skip shared-library-without-dependency-information for python.
+  * Skip undefined-non-weak-symbol for python packages.
+  * SystemdTmpfilesCheck: new check to restrict systemd-tmpfiles configuration.
+  * Skip undefined-non-weak-symbol for python packages.
+
+-------------------------------------------------------------------
 Fri May 13 06:10:43 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.2.0+git20220511.fc030cd:
