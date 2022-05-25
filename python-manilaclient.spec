@@ -1,7 +1,7 @@
 #
 # spec file for package python-manilaclient
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-manilaclient
-Version:        2.6.0
+Version:        3.4.0
 Release:        0
 Summary:        Client Library for OpenStack Share API
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-manilaclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-manilaclient/python-manilaclient-2.6.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-manilaclient/python-manilaclient-3.4.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-ddt
 BuildRequires:  python3-fixtures
@@ -54,7 +54,6 @@ Requires:       python3-oslo.serialization >= 2.18.0
 Requires:       python3-oslo.utils >= 3.33.0
 Requires:       python3-requests >= 2.14.2
 Requires:       python3-simplejson >= 3.5.1
-Requires:       python3-six >= 1.10.0
 %if 0%{?suse_version}
 Obsoletes:      python2-manilaclient < 2.0.0
 %endif
@@ -76,13 +75,13 @@ Share API.
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-manilaclient-2.6.0
+%autosetup -p1 -n python-manilaclient-3.4.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
-PBR_VERSION=2.6.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=3.4.0 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
