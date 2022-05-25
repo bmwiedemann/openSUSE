@@ -13,7 +13,7 @@ Thu Jul 29 21:25:14 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 -------------------------------------------------------------------
 Fri Jun 26 12:30:08 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
-- No loner package /usr/share/mime-info: this came from GNOME 1
+- No longer package /usr/share/mime-info: this came from GNOME 1
   times which are long gone (boo#1062631).
   + Drop scala.keys and scala.mime source files.
 
