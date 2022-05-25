@@ -99,7 +99,7 @@
 %endif
 
 %if 0%{?suse_version} && 0%{?suse_version} < 1550
-%global force_gcc_version 7
+%global force_gcc_version 10
 %endif
 
 Name:           darktable
@@ -128,7 +128,7 @@ BuildRequires:  llvm-devel
 BuildRequires:  llvm-static
 %endif
 %if %{without clang}
-BuildRequires:  gcc%{?force_gcc_version}-c++ >= 5
+BuildRequires:  gcc%{?force_gcc_version}-c++ >= 10
 %if 0%{?force_gcc_version}
 #!BuildIgnore:  libgcc_s1
 %endif

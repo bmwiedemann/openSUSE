@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 18 12:16:13 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Use at least gcc 10
+
+-------------------------------------------------------------------
 Fri Feb 11 09:01:03 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 3.8.1
