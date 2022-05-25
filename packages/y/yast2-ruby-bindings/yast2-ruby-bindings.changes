@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 24 08:37:42 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Added experimental infrastructure for managing system in
+  a chroot (bsc#1199840)
+- 4.5.1
+
+-------------------------------------------------------------------
 Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.5.0 (bsc#1198109)
