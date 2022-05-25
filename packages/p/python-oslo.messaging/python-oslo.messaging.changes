@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue May 24 21:39:26 UTC 2022 - cloud-devel@suse.de
+
+- update to version 12.14.0
+  - limit maximum timeout in the poll loop
+  - Adding support for rabbitmq quorum queues
+  - Update master for stable/yoga
+  - Add EXTERNAL as rabbit login method
+  - Add a new option to enforce the OpenSSL FIPS mode
+  - Update python testing classifier
+  - tests: Fix test failures with kombu >= 5.2.4
+  - rabbit: move stdlib_threading bits into _utils
+  - Remove deprecation of heartbeat_in_pthread
+  - amqp1: fix race when reconnecting
+  - [rabbit] use retry parameters during notification sending
+  - use message id cache for RPC listener
+  - Update master for stable/xena
+  - Reproduce bug 1917645
+  - Add Python3 yoga unit tests
+  - Add Python3 zed unit tests
+
+-------------------------------------------------------------------
 Mon Dec  6 09:34:51 UTC 2021 - cloud-devel@suse.de
 
 - update to version 12.9.1

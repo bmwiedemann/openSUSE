@@ -515,4 +515,28 @@
   - Move flake8 as a pre-commit local target.</comment>
     <requestid>939533</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>533b04d0c381b8eee70eba7308f6edd4</srcmd5>
+    <version>12.14.0</version>
+    <time>1653503683</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 12.14.0
+  - limit maximum timeout in the poll loop
+  - Adding support for rabbitmq quorum queues
+  - Update master for stable/yoga
+  - Add EXTERNAL as rabbit login method
+  - Add a new option to enforce the OpenSSL FIPS mode
+  - Update python testing classifier
+  - tests: Fix test failures with kombu &gt;= 5.2.4
+  - rabbit: move stdlib_threading bits into _utils
+  - Remove deprecation of heartbeat_in_pthread
+  - amqp1: fix race when reconnecting
+  - [rabbit] use retry parameters during notification sending
+  - use message id cache for RPC listener
+  - Update master for stable/xena
+  - Reproduce bug 1917645
+  - Add Python3 yoga unit tests
+  - Add Python3 zed unit tests</comment>
+    <requestid>979087</requestid>
+  </revision>
 </revisionlist>
