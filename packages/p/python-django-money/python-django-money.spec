@@ -44,7 +44,6 @@ BuildRequires:  %{python_module django-reversion}
 BuildRequires:  %{python_module py-moneyed >= 0.8.0}
 BuildRequires:  %{python_module pytest >= 3.1.0}
 BuildRequires:  %{python_module pytest-django}
-BuildRequires:  %{python_module pytest-pythonpath}
 BuildRequires:  %{python_module setuptools}
 # /SECTION
 %python_subpackages
@@ -65,6 +64,7 @@ Django money and currency fields in models and forms.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+PYTHONPATH=.
 export DJANGO_SETTINGS_MODULE=tests.settings
 # we don't have python-mixer and it is needed only for tests
 %pytest -k "not (mixer or test_no_deprecation_warning)"
