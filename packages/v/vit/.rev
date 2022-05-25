@@ -79,4 +79,16 @@ their configuration.
   * Use Python.ignore from github</comment>
     <requestid>901587</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>af9eba02992eab339402ca95673d205a</srcmd5>
+    <version>2.2.0</version>
+    <time>1653503670</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.0
+  * Require Python &gt;= 3.7
+  * Simplify timezone handling
+  * Replace pytz and tzlocal by zoneinfo
+  * Make vit respect taskrc in config.ini</comment>
+    <requestid>979057</requestid>
+  </revision>
 </revisionlist>

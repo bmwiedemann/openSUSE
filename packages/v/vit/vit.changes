@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 24 20:40:11 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to 2.2.0
+  * Require Python >= 3.7
+  * Simplify timezone handling
+  * Replace pytz and tzlocal by zoneinfo
+  * Make vit respect taskrc in config.ini
+
+-------------------------------------------------------------------
 Wed Jun 23 20:39:29 UTC 2021 - Mia Herkt <mia@0x0.st>
 
 - Update to 2.1.0

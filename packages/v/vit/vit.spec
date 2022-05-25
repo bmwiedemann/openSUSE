@@ -1,7 +1,7 @@
 #
 # spec file for package vit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           vit
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Visual Interactive Taskwarrior full-screen terminal interface
 License:        MIT
@@ -27,12 +27,12 @@ Source:         https://files.pythonhosted.org/packages/source/v/vit/vit-%{versi
 BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-base >= 3.7
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-tasklib
-BuildRequires:  python3-tzlocal
 BuildRequires:  python3-urwid
+Requires:       python3-base >= 3.7
 Requires:       python3-tasklib
-Requires:       python3-tzlocal
 Requires:       python3-urwid
 Requires:       taskwarrior
 BuildArch:      noarch
