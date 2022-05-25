@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May 24 20:57:03 UTC 2022 - cloud-devel@suse.de
+
+- update to version 18.0.0
+  - Remove USE_PYTHON3 in .zuul.yaml
+  - Drop lower-constraints.txt and its testing
+  - Update master for stable/xena
+  - Update python classifier as per testing runtime
+  - Add Python3 yoga unit tests
+  - Update master for stable/yoga
+  - docs: Update docs to reflect deprecation status
+  - Remove unnecessary packages in bindep.txt
+  - Updating python testing classifier as per Yoga testing runtime
+  - Fix check job failures
+  - Update pre-commit hook, hacking versions
+  - Add openssl in bindep.txt
+  - Add Python3 zed unit tests
+  - Deprecate nova CLI
+
+-------------------------------------------------------------------
 Tue Oct 26 21:31:47 UTC 2021 - cloud-devel@suse.de
 
 - update to version 17.6.0

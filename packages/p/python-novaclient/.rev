@@ -686,4 +686,26 @@ update to version 5.1.0
   - Change minversion of tox to 3.18.0</comment>
     <requestid>927610</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>0c0891f75ea2767d5018cbf2d1ea4bd6</srcmd5>
+    <version>18.0.0</version>
+    <time>1653503665</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 18.0.0
+  - Remove USE_PYTHON3 in .zuul.yaml
+  - Drop lower-constraints.txt and its testing
+  - Update master for stable/xena
+  - Update python classifier as per testing runtime
+  - Add Python3 yoga unit tests
+  - Update master for stable/yoga
+  - docs: Update docs to reflect deprecation status
+  - Remove unnecessary packages in bindep.txt
+  - Updating python testing classifier as per Yoga testing runtime
+  - Fix check job failures
+  - Update pre-commit hook, hacking versions
+  - Add openssl in bindep.txt
+  - Add Python3 zed unit tests
+  - Deprecate nova CLI</comment>
+    <requestid>979065</requestid>
+  </revision>
 </revisionlist>

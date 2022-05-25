@@ -2,7 +2,7 @@
   <service mode="disabled" name="renderspec">
     <param name="input-template">https://opendev.org/openstack/rpm-packaging/raw/master/openstack/python-novaclient/python-novaclient.spec.j2</param>
     <param name="output-name">python-novaclient.spec</param>
-    <param name="requirements">https://opendev.org/openstack/python-novaclient/raw/branch/stable/xena/requirements.txt</param>
+    <param name="requirements">https://opendev.org/openstack/python-novaclient/raw/branch/master/requirements.txt</param>
     <param name="changelog-email">cloud-devel@suse.de</param>
     <param name="changelog-provider">gh,openstack,python-novaclient</param>
   </service>
