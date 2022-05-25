@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue May 24 20:47:57 UTC 2022 - cloud-devel@suse.de
+
+- update to version 4.0.0
+  - Clean up extra spaces
+  - Release notes for 3.6.0
+  - Update master for stable/yoga
+  - Add an optional parameter --detail
+  - Correct releasenote path for member-get command
+  - Add support for usage API
+  - Remove lower-constraints.txt
+  - Updating python testing classifier as per Yoga testing runtime
+  - Add doc and test for verbose parameter
+  - Add an optional parameter --append
+  - Update python testing as per zed cycle teting runtime
+  - Replace deprecated UPPER_CONSTRAINTS_FILE variable
+  - Documentation: Add options for "glance image-import"
+  - Add support for Cache API
+  - Update master for stable/xena
+  - Fix pygments style
+  - Add Python3 yoga unit tests
+  - glance help <subcommand>: Clearly specify which options are mandatory
+  - Fix functional CI job
+
+-------------------------------------------------------------------
+Tue Oct 26 22:01:28 UTC 2021 - cloud-devel@suse.de
+
+- update to version 3.5.0
+  - Update master for stable/wallaby
+  - Add Python3 xena unit tests
+  - Add member-get command
+  - Uncap PrettyTable
+  - Clean up extra spaces
+  - Fix undesirable raw Python error
+  - setup.cfg: Replace dashes with underscores
+
+-------------------------------------------------------------------
 Sun May  2 17:21:26 UTC 2021 - cloud-devel@suse.de
 
 - update to version 3.3.0

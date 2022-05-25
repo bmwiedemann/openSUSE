@@ -583,4 +583,40 @@ update to version 2.3.0
     <comment></comment>
     <requestid>889966</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>dbb1b0e1e3acaa26b9924db47545d24a</srcmd5>
+    <version>4.0.0</version>
+    <time>1653503659</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.0.0
+  - Clean up extra spaces
+  - Release notes for 3.6.0
+  - Update master for stable/yoga
+  - Add an optional parameter --detail
+  - Correct releasenote path for member-get command
+  - Add support for usage API
+  - Remove lower-constraints.txt
+  - Updating python testing classifier as per Yoga testing runtime
+  - Add doc and test for verbose parameter
+  - Add an optional parameter --append
+  - Update python testing as per zed cycle teting runtime
+  - Replace deprecated UPPER_CONSTRAINTS_FILE variable
+  - Documentation: Add options for &quot;glance image-import&quot;
+  - Add support for Cache API
+  - Update master for stable/xena
+  - Fix pygments style
+  - Add Python3 yoga unit tests
+  - glance help &lt;subcommand&gt;: Clearly specify which options are mandatory
+  - Fix functional CI job
+
+- update to version 3.5.0
+  - Update master for stable/wallaby
+  - Add Python3 xena unit tests
+  - Add member-get command
+  - Uncap PrettyTable
+  - Clean up extra spaces
+  - Fix undesirable raw Python error
+  - setup.cfg: Replace dashes with underscores</comment>
+    <requestid>979055</requestid>
+  </revision>
 </revisionlist>
