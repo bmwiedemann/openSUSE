@@ -23,4 +23,12 @@
     <comment>fix installability in factory</comment>
     <requestid>978457</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>c48431e65dc941e75efb9ca5709f4f2d</srcmd5>
+    <version>2.11.1</version>
+    <time>1653503692</time>
+    <user>dimstar_suse</user>
+    <comment>Sync changes with sle</comment>
+    <requestid>979214</requestid>
+  </revision>
 </revisionlist>
