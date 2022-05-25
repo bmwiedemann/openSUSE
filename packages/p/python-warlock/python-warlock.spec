@@ -1,7 +1,7 @@
 #
 # spec file for package python-warlock
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Python object model built on top of JSON schema
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            http://github.com/bcwaldon/warlock
+URL:            https://github.com/bcwaldon/warlock
 Source:         https://github.com/bcwaldon/warlock/archive/%{version}.tar.gz#/warlock-%{version}.tar.gz
 BuildRequires:  %{python_module jsonpatch >= 0.7}
 BuildRequires:  %{python_module jsonschema >= 0.10}
@@ -53,7 +53,8 @@ rm pytest.ini
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# Skipped because of gh#bcwaldon/warlock#64 (the package is incompatible with jsonschema < 4)
+%pytest -k 'not test_recursive_models'
 
 %files %{python_files}
 %doc README.md

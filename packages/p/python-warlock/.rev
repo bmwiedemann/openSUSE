@@ -142,4 +142,14 @@
 - Update to 1.3.3:</comment>
     <requestid>731437</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>dfafc49ed77db1d60ec686028db6de64</srcmd5>
+    <version>1.3.3</version>
+    <time>1653503704</time>
+    <user>dimstar_suse</user>
+    <comment>- Skipped test_recursive_models because the package is
+  incompatible with jsonschema &lt; 4 (gh#bcwaldon/warlock#64).
+</comment>
+    <requestid>979142</requestid>
+  </revision>
 </revisionlist>
