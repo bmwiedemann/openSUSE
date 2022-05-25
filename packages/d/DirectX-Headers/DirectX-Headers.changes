@@ -1,0 +1,90 @@
+-------------------------------------------------------------------
+Wed May 25 16:20:53 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Clean spec file
+  * Fix description
+  * Use %autosetup
+  * Use meson macros
+  * Use fdupes for duplicate files
+  * Use a better URL
+
+-------------------------------------------------------------------
+Wed May 25 13:28:44 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- added missing %changelog section to specfile 
+
+-------------------------------------------------------------------
+Wed May 25 12:25:12 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- build exclusively on %{ix86} x86_64, since DirectX ia only
+  relevant on these platforms 
+
+-------------------------------------------------------------------
+Wed May 25 12:14:37 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed 32bit build 
+
+-------------------------------------------------------------------
+Thu May 12 15:36:35 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Renamed project/file references from 'directx-headers' to
+  'DirectX-Headers' (as is upstream).
+
+-------------------------------------------------------------------
+Thu Apr 28 20:21:30 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to upstream version 1.600.10
+
+-------------------------------------------------------------------
+Thu Nov 11 19:36:30 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
+
+* Prepping for inclusion in X11:XOrg project:
+  - General cleanup of .spec file
+  - Adjusting to use proper naming of rpmlintrc.
+  - Pre-0.57.0 version of 'meson install' does not support
+    '--destdir', using ENV var for all but TW.
+
+-------------------------------------------------------------------
+Wed Aug 25 22:47:50 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding rpmlintrc for addFilter 'lto-no-text-in-archive'.
+
+-------------------------------------------------------------------
+Wed Aug 25 21:45:20 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Fixing file conflict for /usr/lib64/pkgconfig.
+
+-------------------------------------------------------------------
+Wed Aug 25 21:37:49 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Apparently pkgconf doesn't like /usr/local by default.
+
+-------------------------------------------------------------------
+Wed Aug 25 21:25:34 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Replacing hardcoded path in 'rm .../libDirectX-Guids.a' ...
+
+-------------------------------------------------------------------
+Wed Aug 25 21:18:11 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Seems to use /usr/local for generated .pc file vs. /usr
+
+-------------------------------------------------------------------
+Wed Aug 25 20:15:52 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Taking out 'libDirectX-Guids.a' and trying again.
+
+-------------------------------------------------------------------
+Wed Aug 25 20:03:16 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Trying to get 'libDirectX-Guids.a' added to resulting .rpm file.
+
+-------------------------------------------------------------------
+Wed Aug 25 15:50:16 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Some changes to get missing files added.
+
+-------------------------------------------------------------------
+Mon Aug 23 22:19:05 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Initial package version as 'directx-headers'.
