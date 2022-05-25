@@ -329,4 +329,17 @@
   - Update master for stable/wallaby</comment>
     <requestid>939534</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>26f8af66a711482fbd7a50be75f9a432</srcmd5>
+    <version>4.5.1</version>
+    <time>1653503680</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.5.1
+  - Add paste.filter_factory entrypoint for basic auth middleware
+  - Update python testing classifier
+  - Update master for stable/xena
+  - Add oslo.config.opts entrypoint for basic auth middleware
+  - Add Python3 yoga unit tests</comment>
+    <requestid>979083</requestid>
+  </revision>
 </revisionlist>
