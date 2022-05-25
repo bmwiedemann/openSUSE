@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 23 14:34:16 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.0:
+  + pgp: Fix GPG version check.
+  + desktop: Add pgp,gpg to the description.
+  + search-provider: Don't escape result description as markup.
+  + gkr: Network label fixes.
+  + ssh: Fix CPU Usage Spike When Calling ssh-keygen.
+  + desktop: Add supported mime types to .desktop file>
+  + desktop: Mark application as adaptive.
+  + metainfo: Align app name with .desktop name.
+  + ui: Opt-in to color scheme user preference>
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Sep 29 09:45:52 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.0:

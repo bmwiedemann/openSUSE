@@ -870,4 +870,12 @@ A couple of patches for this are competing for upstream approval at bgo#659834 -
     <comment>New stable release (forwarded request 922142 from iznogood)</comment>
     <requestid>922148</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>482851ba289a53e557403b6430efad47</srcmd5>
+    <version>42.0</version>
+    <time>1653503637</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 42.0 (forwarded request 978743 from dimstar)</comment>
+    <requestid>978921</requestid>
+  </revision>
 </revisionlist>

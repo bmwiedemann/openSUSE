@@ -1,7 +1,7 @@
 #
 # spec file for package seahorse
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           seahorse
-Version:        41.0
+Version:        42.0
 Release:        0
 Summary:        GNOME interface for gnupg
 License:        GFDL-1.1-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Security
 URL:            https://wiki.gnome.org/Apps/Seahorse
-Source0:        https://download.gnome.org/sources/seahorse/41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/seahorse/42/%{name}-%{version}.tar.xz
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gpg2 >= 2.2.0
@@ -46,7 +46,7 @@ BuildRequires:  pkgconfig(gmodule-2.0) >= 2.66
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.66
 BuildRequires:  pkgconfig(gpgme) >= 1.14.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
-BuildRequires:  pkgconfig(libhandy-1) >= 1.1.0
+BuildRequires:  pkgconfig(libhandy-1) >= 1.5.0
 BuildRequires:  pkgconfig(libsecret-1) >= 0.16
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.33.92
 BuildRequires:  pkgconfig(pwquality)
