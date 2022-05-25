@@ -1,7 +1,7 @@
 #
 # spec file for package python-mistralclient
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,17 @@
 
 %global oldpython python
 Name:           python-mistralclient
-Version:        4.2.0
+Version:        4.4.0
 Release:        0
 Epoch:          0
 Summary:        Python API and CLI for OpenStack Mistral
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-mistralclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-mistralclient/python-mistralclient-4.2.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-mistralclient/python-mistralclient-4.4.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML >= 3.13
 BuildRequires:  python3-fixtures
-BuildRequires:  python3-mock
 BuildRequires:  python3-openstackclient
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-osprofiler
@@ -53,7 +52,6 @@ Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-oslo.utils >= 3.33.0
 Requires:       python3-osprofiler
 Requires:       python3-requests >= 2.14.2
-Requires:       python3-six
 Requires:       python3-stevedore >= 1.20.0
 Conflicts:      %{oldpython}-mistralclient < %version
 
@@ -76,7 +74,7 @@ Client library for Mistral built on the Mistral API. It provides a Python API
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n python-mistralclient-4.2.0
+%autosetup -p1 -n python-mistralclient-4.4.0
 %py_req_cleanup
 
 %build

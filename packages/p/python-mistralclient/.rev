@@ -256,4 +256,23 @@
     <comment></comment>
     <requestid>889976</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>82a1a929659f94f7837eb8c6b428f201</srcmd5>
+    <version>4.4.0</version>
+    <time>1653503667</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.4.0
+  - version bump, no changes
+- remove unnecessary dependencies
+
+- update to version 4.3.0
+  - Drop lower-constraints job
+  - [community goal] Update contributor documentation
+  - Use py3 as the default runtime for tox
+  - Update master for stable/wallaby
+  - Allow enforcing usage of &quot;raw&quot; definitions
+  - Add Python3 xena unit tests
+  - Remove tripleo job from mistralclient</comment>
+    <requestid>979069</requestid>
+  </revision>
 </revisionlist>

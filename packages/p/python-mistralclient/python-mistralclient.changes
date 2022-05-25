@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May 24 21:04:11 UTC 2022 - cloud-devel@suse.de
+
+- update to version 4.4.0
+  - version bump, no changes
+- remove unnecessary dependencies
+
+-------------------------------------------------------------------
+Tue Oct 26 21:54:03 UTC 2021 - cloud-devel@suse.de
+
+- update to version 4.3.0
+  - Drop lower-constraints job
+  - [community goal] Update contributor documentation
+  - Use py3 as the default runtime for tox
+  - Update master for stable/wallaby
+  - Allow enforcing usage of "raw" definitions
+  - Add Python3 xena unit tests
+  - Remove tripleo job from mistralclient
+
+-------------------------------------------------------------------
 Sun May  2 16:33:48 UTC 2021 - cloud-devel@suse.de
 
 - update to version 4.2.0
