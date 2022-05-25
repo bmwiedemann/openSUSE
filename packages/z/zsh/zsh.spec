@@ -25,12 +25,12 @@ BuildRequires:  texi2html
 BuildRequires:  texinfo
 %endif
 Name:           zsh
-Version:        5.8.1
+Version:        5.9
 Release:        0%{?dist}
 Summary:        Shell with comprehensive completion
 License:        MIT
 Group:          System/Shells
-URL:            http://www.zsh.org
+URL:            https://www.zsh.org
 Source0:        https://downloads.sourceforge.net/project/zsh/zsh/%{version}/zsh-%{version}.tar.xz
 Source1:        https://downloads.sourceforge.net/project/zsh/zsh/%{version}/zsh-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
@@ -40,7 +40,6 @@ Source5:        zprofile
 Patch1:         trim-unneeded-completions.patch
 # PATCH-FIX-OPENSUSE zsh-osc-completion.patch -- Fix openSUSE versions in osc completion
 Patch2:         zsh-osc-completion.patch
-Patch3:         ncurses-fix.patch
 BuildRequires:  groff
 BuildRequires:  libcap-devel
 BuildRequires:  ncurses-devel
@@ -100,7 +99,6 @@ This package contains the Zsh manual in HTML format.
 %patch1 -p1
 %endif
 %patch2 -p1
-%patch3 -p1
 
 # Remove executable bit
 chmod 0644 Etc/changelog2html.pl
@@ -109,7 +107,7 @@ chmod 0644 Etc/changelog2html.pl
 perl -p -i -e 's|%{_prefix}/local/bin|%{_bindir}|' \
     Doc/intro.ms Misc/globtests.ksh Misc/globtests \
     Misc/lete2ctl Util/check_exports Util/helpfiles \
-    Util/reporter
+    Util/reporter Functions/VCS_Info/test-repo-git-rebase-*
 
 %build
 
