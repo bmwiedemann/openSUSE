@@ -756,7 +756,6 @@
     <package name="gstreamer-plugins-good-lang" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="gstreamer-plugins-good-qtqml" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="gstreamer-plugins-libav" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="gstreamer-plugins-rs" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="gstreamer-plugins-ugly" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gstreamer-plugins-ugly-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gstreamer-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -862,7 +861,6 @@
     <package name="hyper-v" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="iagno" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="iagno-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="ibmtss-base" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus-dict-emoji" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus-gtk" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1770,7 +1768,7 @@
     <package name="libdaemon0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libdar64-6000" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libdatrie1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libdav1d5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libdav1d6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libdazzle-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdazzle-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdb-4_8" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1855,6 +1853,7 @@
     <package name="libexttextcat" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libexttextcat-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libf2fs8" supportstatus="unsupported"/> <!-- reason: dvd:f2fs-tools -->
+    <package name="libfa1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfakekey0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libfarstream-0_2-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfastjson4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -2088,7 +2087,6 @@
     <package name="libhugetlbfs" supportstatus="unsupported"/> <!-- reason: dvd:nvme-cli -->
     <package name="libhunspell-1_7-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libhyphen0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libibmtss1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libibus-1_0-5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libibverbs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libibverbs1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
@@ -4434,7 +4432,7 @@
     <package name="system-user-root" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="system-user-srvGeoClue" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="system-user-tftp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="system-user-tss" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="system-user-tss" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="system-user-upsd" supportstatus="unsupported"/> <!-- reason: dvd:system-user-upsd -->
     <package name="system-user-uucp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="system-user-vscan" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
