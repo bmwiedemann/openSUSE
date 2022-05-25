@@ -28,7 +28,6 @@ BuildRequires:  openstack-macros
 BuildRequires:  python3-cffi >= 1.14.0
 BuildRequires:  python3-eventlet >= 0.21.0
 BuildRequires:  python3-greenlet >= 0.4.14
-BuildRequires:  python3-mock
 BuildRequires:  python3-msgpack >= 0.6.0
 BuildRequires:  python3-oslo.config >= 5.2.0
 BuildRequires:  python3-oslo.i18n >= 3.15.3

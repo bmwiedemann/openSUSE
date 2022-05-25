@@ -246,4 +246,12 @@
   - Update master for stable/xena</comment>
     <requestid>977079</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>168bb5e4cbfc443ebe774f5c0934349c</srcmd5>
+    <version>2.8.0</version>
+    <time>1653503675</time>
+    <user>dimstar_suse</user>
+    <comment>- remove unneded mock dependency</comment>
+    <requestid>979076</requestid>
+  </revision>
 </revisionlist>
