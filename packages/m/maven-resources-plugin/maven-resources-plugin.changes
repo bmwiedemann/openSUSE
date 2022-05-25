@@ -2,6 +2,23 @@
 Thu Apr 28 11:51:20 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 3.2.0
+  * Bug
+    + [MRESOURCES-171] - ISO8859-1 properties files get changed into
+      UTF-8 when filtered
+    + [MRESOURCES-210] - copy-resources erases file permissions
+    + [MRESOURCES-236] - Copying of files with permissions broken
+    + [MRESOURCES-257] - property from list element in pom model
+  * Improvement
+    + [MRESOURCES-251] - Upgrade plexus-interpolation 1.26
+    + [MRESOURCES-252] - Add m2e lifecycle Metadata to plugin
+    + [MRESOURCES-256] - make build Reproducible
+    + [MRESOURCES-258] - Only overwrite filtered resources when
+      contents differ
+  * Dependency upgrade
+    + [MRESOURCES-249] - Upgrade maven-plugins parent to version 32
+    + [MRESOURCES-255] - Upgrade plexus-utils 3.3.0
+    + [MRESOURCES-261] - Make Maven 3.1.0 the minimum version
+    + [MRESOURCES-263] - Update to maven-filtering 3.2.0
 - Modified patch:
   * maven-resources-plugin-bootstrap-resources.patch
     + regenerate with current version of tools against the current
