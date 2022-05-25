@@ -47,4 +47,12 @@
     <comment>Do not depend on gmavenplus-plugin's test stub generator</comment>
     <requestid>941020</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>e3a7c3eef2e6f0d353ef7ecc9352fd5d</srcmd5>
+    <version>0.4.5</version>
+    <time>1653503725</time>
+    <user>dimstar_suse</user>
+    <comment>Sync changes with sle</comment>
+    <requestid>979218</requestid>
+  </revision>
 </revisionlist>
