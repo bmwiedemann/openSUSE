@@ -2,6 +2,84 @@
 Wed Apr 27 13:42:54 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 7.4.0
+  * Features:
+    + Ability to be notified when a data provider fails, through
+      a TestNG listener.
+      TestNG already has a listener that will let you plug in your
+      callbacks for the following with respect to a data provider
+      (implement org.testng.IDataProviderListener interface)
+      You can now use this listener to be notified when a data
+      provider fails as well.
+    + Add the ability to override explicitly included test methods
+      if they belong to any excluded groups via the configuration
+      property : overrideIncludedMethods
+    + Reduced memory foot print when trying to run tests with
+      larger projects.
+      This is now a toggle feature which can be enabled via the
+      JVM argument: -Dtestng.memory.friendly=true
+  * Bug fixes:
+    + GITHUB-2459: Support configurable start time - emailable
+      report
+    + GITHUB-2467: XmlTest does not copy the xmlClasses during clone
+    + GITHUB-2469: Parameters added in XmlTest during
+      AlterSuiteListener not available in SuiteListener
+    + GITHUB-2296: Fix for assertEquals not working for sets as
+      order is not guaranteed
+    + GITHUB-2465: Fix bux where Strings.join returns empty String
+    + GITHUB-1632: throwing SkipException sets iTestResult status to
+      Failure instead of Skip
+    + GITHUB-2456: Add onDataProviderFailure listener
+    + GITHUB-2445: NPE in FailedReporter.java With Tests Created in
+      Factory
+    + GITHUB-2428: Configuration methods have the same test class
+      instance when @Factory is being used
+    + GITHUB-2440: Fixed an issue when case timeout returned an
+      incorrect exception and effect the next other test case
+    + GITHUB-2407: Adds "overrideIncludedMethods" to the global
+      config as a command-line argument, which excludes explicitly
+      included test methods if they belong to any excluded groups
+    + GITHUB-2432: Rework MethodInheritance.fixMethodInheritance to
+      "soft" dependencies
+    + GITHUB-2429: Seggregate Dependency Injection out as a clear
+      implementation
+    + GITHUB-2435: getParameterIndex() always return 0 in test
+      listener
+    + GITHUB-2406: TestNG 7.3.0 transitive vulnerability
+      CVE-2020-11022 and CVE-2020-11023 due to JQuery 3.4.1
+    + GITHUB-2405: Regression: Using TestNG via Maven breaks when
+      optional Guice dependency is unavailable
+    + GITHUB-2427: Guice module (suite parent-module and test
+      module) configure() method is called multiple times
+    + GITHUB-2419: TestNG JUnit reports are not valid if system
+      output contains XML tags
+    + GITHUB-188: suite parallel="methods" does not work when there
+      are multiple <test> tags in the testng.xml
+    + GITHUB-346: When a method is annotated with both BeforeGroups
+      and AfterGroups only AfterGroup is executed
+    + GITHUB-2403: Suite.xml files attempt to make web request when
+      suite references standard TestNG DTD using HTTP
+    + GITHUB-2385: Make @Listeners can work for implemented
+      interfaces and Inherited class
+    + GITHUB-2053: MethodHelper.collectAndOrderMethods() Hangs when
+      Parallel Instance and dependsOnGroups
+    + GITHUB-2400: BeforeClass/Method (and AfterClass/Method)
+      configuration methods that override default methods are
+      invoked multiple times
+    + GITHUB-2396: @Ignore on method level doesn't work as expected
+    + GITHUB-2382: TestNG version should be specified in MANIFEST.MF
+    + GITHUB-2096: 7.0.0-beta6 memory issues (regression)
+    + GITHUB-2355: TestNG creates multiple Guice Module Instances
+    + GITHUB-2374: Add file name to the warning message
+    + GITHUB-2321: -Dtestng.thread.affinity=true do not work when
+      running multiple instance of test in parallel
+    + GITHUB-2363: JS error when switching theme
+    + GITHUB-2361: No way to enforce @Test(singleThreaded = true)
+      when test defined in base class
+    + GITHUB-2343: Injectors are not reused when they share the same
+      set of modules
+    + GITHUB-2346: ITestResult attributes are null when retrieved by
+      Listener onTestStart if test fails at BeforeMethod
+    + GITHUB-2357: TestNG 7.3.0 transitive dependencies
 - Fetch sources using source service instead of a script
 - Build with java source and target levels 8
 - Modified patches:
