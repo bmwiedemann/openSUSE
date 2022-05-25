@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon May 23 12:52:23 UTC 2022 - aplanas@suse.com
+
+- Update to version v6.4.0 (CVE-2022-1053, boo#1199253):
+  * general: bump Keylime version to 6.4.0
+  * tests: adjust tests to reflect latest API changes
+  * api: bump version to 2.1
+  * config: remove unused registrar mTLS options in cloud_verifier section
+  * tenant, verifier: let the tenant provide the AK and mTLS certificate
+  * Fix exit call in scripts/download_packit_coverage.sh
+  * Added codecov.io description to TESTING.md
+  * ci: only run CodeQL on the keylime directory and disable it for the webapp
+  * Enable GitHub workflow integrating codecov.io
+  * README: Fix and cleanup the install instructions
+  * ima: add backport for dataclasses support for Python 3.6
+  * ima: add info that device mapper validation is still experimental
+  * add lark as a dependency
+  * ima: integrate dm validator into gernal IMA validation
+  * agentstates: add the option to load and store dm validator state
+  * ima: add parser and validator for device mapper entries
+  * ima_file_signatures: rename to file_signatures
+  * ima_ast: rename to ast
+  * ima: move IMA components into their own module
+  * failure: add function to get current event ids
+  * config: add more details for tpm_cert_store option
+  * Deprecate API version 1.0
+  * config, webapp: remove tls_check_hostnames option
+  * ci: add CodeQL analysis
+  * agent, tpm: remove is_vtpm() check
+  * tests: update to reflect vTPM removal
+  * remove vTPM related helper files and documentation
+  * config: remove vTPM related options
+  * tenant: remove vtpm_policy
+  * verifier: remove vtpm_policy
+  * remove REQUIRE_ROOT environment option
+  * Remove Testing farm tag-repository
+  * Bump required packaging module version to 20.0
+  * Remove last traces of M2Crypto
+  * Workaround for mock_open not supporting iteration in Python 3.6
+
+-------------------------------------------------------------------
+Wed May 18 11:28:14 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Fix "run_as" configuration parameter and set it to keylime:tss
+- Improve downgrade user migration during package update
+
+-------------------------------------------------------------------
 Wed Apr 13 09:42:54 UTC 2022 - aplanas@suse.com
 
 - Update to version v6.3.2:

@@ -25,7 +25,7 @@
 %bcond_with cfssl
 %endif
 Name:           keylime
-Version:        6.3.2
+Version:        6.4.0
 Release:        0
 Summary:        Open source TPM software for Bootstrapping and Maintaining Trust
 License:        Apache-2.0 AND MIT
@@ -50,6 +50,7 @@ Requires:       python-PyYAML
 Requires:       python-SQLAlchemy
 Requires:       python-alembic
 Requires:       python-cryptography
+Requires:       python-lark-parser
 Requires:       python-psutil
 Requires:       python-python-gnupg
 Requires:       python-pyzmq
@@ -156,11 +157,11 @@ install -Dpm 600 %{srcname}.conf %{buildroot}%{_prefix}%{_sysconfdir}/%{srcname}
 install -Dpm 600 %{srcname}.conf %{buildroot}%{_sysconfdir}/%{srcname}.conf
 %endif
 install -Dpm 644 ./services/%{srcname}_agent.service %{buildroot}%{_unitdir}/%{srcname}_agent.service
-install -Dpm 644 ./services/%{srcname}_agent_secure.mount %{buildroot}%{_unitdir}/var-lib-keylime-secure.mount
+install -Dpm 644 ./services/%{srcname}_agent_secure.mount %{buildroot}%{_unitdir}/var-lib-%{srcname}-secure.mount
 install -Dpm 644 ./services/%{srcname}_verifier.service %{buildroot}%{_unitdir}/%{srcname}_verifier.service
 install -Dpm 644 ./services/%{srcname}_registrar.service %{buildroot}%{_unitdir}/%{srcname}_registrar.service
 
-install -D -m 644 %{SOURCE1} %{buildroot}%{_prefix}/lib/firewalld/services/keylime.xml
+install -D -m 644 %{SOURCE1} %{buildroot}%{_prefix}/lib/firewalld/services/%{srcname}.xml
 
 mkdir -p %{buildroot}/%{_sharedstatedir}/%{srcname}
 cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
@@ -199,6 +200,15 @@ install -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/
 
 %pre -n %{srcname}-tpm_cert_store -f %{srcname}.pre
 
+%post -n %{srcname}-tpm_cert_store
+# Help the upgrade process when moving to a non-root services
+chown -R keylime:tss %{_sharedstatedir}/%{srcname}/ca 2> /dev/null || :
+chown -R keylime:tss %{_sharedstatedir}/%{srcname}/secure 2> /dev/null || :
+chown -R keylime:tss %{_sharedstatedir}/%{srcname}/cv_ca 2> /dev/null || :
+chown keylime:tss %{_sharedstatedir}/%{srcname}/*.sqlite 2> /dev/null || :
+chown keylime:tss %{_sharedstatedir}/%{srcname}/*.yml 2> /dev/null || :
+chown keylime:tss %{_sysconfdir}/%{srcname}.conf 2> /dev/null || :
+
 %pre -n %{srcname}-verifier
 %service_add_pre %{srcname}_verifier.service
 
@@ -225,19 +235,19 @@ install -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/
 
 %pre -n %{srcname}-agent
 %service_add_pre %{srcname}_agent.service
-%service_add_pre var-lib-keylime-secure.mount
+%service_add_pre var-lib-%{srcname}-secure.mount
 
 %post -n %{srcname}-agent
 %service_add_post %{srcname}_agent.service
-%service_add_post var-lib-keylime-secure.mount
+%service_add_post var-lib-%{srcname}-secure.mount
 
 %preun -n %{srcname}-agent
 %service_del_preun %{srcname}_agent.service
-%service_del_preun var-lib-keylime-secure.mount
+%service_del_preun var-lib-%{srcname}-secure.mount
 
 %postun -n %{srcname}-agent
 %service_del_postun %{srcname}_agent.service
-%service_del_postun var-lib-keylime-secure.mount
+%service_del_postun var-lib-%{srcname}-secure.mount
 
 %files %{python_files}
 %doc README.md
@@ -255,20 +265,20 @@ install -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/
 
 %files -n %{srcname}-config
 %if 0%{?suse_version} >= 1550
-%{_prefix}%{_sysconfdir}/%{srcname}.conf
+%attr (600,keylime,tss) %{_prefix}%{_sysconfdir}/%{srcname}.conf
 %else
-%config(noreplace) %{_sysconfdir}/%{srcname}.conf
+%config(noreplace) %attr (600,keylime,tss) %{_sysconfdir}/%{srcname}.conf
 %endif
 
 %files -n %{srcname}-firewalld
 %dir %{_prefix}/lib/firewalld
 %dir %{_prefix}/lib/firewalld/services
-%{_prefix}/lib/firewalld/services/keylime.xml
+%{_prefix}/lib/firewalld/services/%{srcname}.xml
 
 %files -n %{srcname}-tpm_cert_store
-%dir %attr(0700,keylime,tss) %{_sharedstatedir}/keylime
-%dir %{_sharedstatedir}/keylime/tpm_cert_store
-%{_sharedstatedir}/keylime/tpm_cert_store/*
+%dir %attr(0700,keylime,tss) %{_sharedstatedir}/%{srcname}
+%dir %{_sharedstatedir}/%{srcname}/tpm_cert_store
+%{_sharedstatedir}/%{srcname}/tpm_cert_store/*
 %{_sysusersdir}/%{srcname}-user.conf
 
 %files -n %{srcname}-verifier
@@ -279,6 +289,6 @@ install -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/
 
 %files -n %{srcname}-agent
 %{_unitdir}/%{srcname}_agent.service
-%{_unitdir}/var-lib-keylime-secure.mount
+%{_unitdir}/var-lib-%{srcname}-secure.mount
 
 %changelog
