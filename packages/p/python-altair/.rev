@@ -79,4 +79,24 @@
     <comment></comment>
     <requestid>873830</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>543b400f51d31012862efa86a8a7e27e</srcmd5>
+    <version>4.2.0</version>
+    <time>1653503728</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 4.2.0:
+  - Pie charts are now supported through the use of mark_arc.
+  - Support for the datum encoding specifications from Vega-Lite;
+    see Vega-Lite Datum Definition.
+  - angle encoding can now be used to control point styles
+  - Support for serialising pandas nullable data types for float data
+  - Automatically create an empty data object when Chart is
+    called without a data parameter
+  - Allow the use of pathlib Paths when saving charts
+  - Support deepcopy for charts
+  - Fix to_dict() for nested selections
+  - Fix item access for expressions
+</comment>
+    <requestid>979235</requestid>
+  </revision>
 </revisionlist>

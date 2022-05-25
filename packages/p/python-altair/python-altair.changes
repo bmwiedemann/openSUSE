@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May 25 15:12:57 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 4.2.0:
+  - Pie charts are now supported through the use of mark_arc.
+  - Support for the datum encoding specifications from Vega-Lite;
+    see Vega-Lite Datum Definition.
+  - angle encoding can now be used to control point styles
+  - Support for serialising pandas nullable data types for float data
+  - Automatically create an empty data object when Chart is
+    called without a data parameter
+  - Allow the use of pathlib Paths when saving charts
+  - Support deepcopy for charts
+  - Fix to_dict() for nested selections
+  - Fix item access for expressions
+
+-------------------------------------------------------------------
 Fri Feb 19 14:36:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Skip python36 build: With NumPy 1.20, Tumbleweed no longer 
