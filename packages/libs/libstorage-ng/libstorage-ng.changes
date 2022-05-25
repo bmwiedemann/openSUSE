@@ -1,4 +1,32 @@
 --------------------------------------------------------------------
+Tue May 24 13:50:04 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#879
+- added include for gcc13 (gh#openSUSE/libstorage-ng#878)
+- 4.5.14
+
+--------------------------------------------------------------------
+Mon May 23 11:10:51 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#877
+- use new parted type command instead of SUSE-specific type-id
+- extended documentation
+- 4.5.13
+
+--------------------------------------------------------------------
+Fri May 20 09:18:47 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#876
+- added support for BitLocker using cryptsetup
+- extended LuksInfo class
+- fixed probing partition name
+- added testcase
+- updated integration tests
+- coding style
+- updated parser for 'cryptsetup status'
+- 4.5.12
+
+--------------------------------------------------------------------
 Thu May 12 13:20:38 UTC 2022 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#875
