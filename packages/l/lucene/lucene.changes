@@ -9,6 +9,724 @@ Sun Mar 20 16:11:33 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 Thu Apr  9 09:20:58 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 8.5.0
+  * API Changes:
+    + LUCENE-9093: Change in behavior of the UnifiedHighlighter's
+      LengthGoalBreakIterator that will yield Passages sized a
+      little different due to the fact that the sizing pivot is now
+      the center of the first match and not its left edge.
+    + LUCENE-9116: PostingsWriterBase and PostingsReaderBase no
+      longer support setting a field's metadata via a 'long[]'.
+    + LUCENE-9116: The FSTOrd postings format has been removed.
+    + LUCENE-8369: Remove obsolete spatial module.
+    + LUCENE-8621: Refactor LatLonShape, XYShape, and all query and
+      utility classes to core.
+    + LUCENE-9218: XY geometries API works in float space.
+    + LUCENE-9212: Intervals.multiterm() takes CompiledAutomaton
+      rather than plain Automaton
+    + LUCENE-9150: Restore support for dynamic PlanetModel in
+      spatial3d.
+    + LUCENE-9171: QueryBuilder.newTermQuery() and
+      .newSynonymQuery() now take boost parameters.
+    + LUCENE-9029: Deprecate SloppyMath toRadians/toDegrees in
+      favor of Java Math.
+    + LUCENE-8620: Add CONTAINS support for LatLonShape and XYShape.
+    + LUCENE-9050: MultiTermIntervalsSource.visit() was not calling
+      back to its visitor.
+    + LUCENE-8909: IndexWriter#getFieldNames() method is used to
+      get fields present in index. After LUCENE-8316, this method is
+      no longer required. Hence, deprecate
+      IndexWriter#getFieldNames() method.
+    + LUCENE-8755: SpatialPrefixTreeFactory now consumes the
+      "version" parsed with Lucene's Version class. The quad and
+      packed quad prefix trees are sensitive to this. It's
+      recommended to pass the version like you should do likewise
+      for analysis components for tokenized text, or else changes to
+      the encoding in future versions may be incompatible with older
+      indexes.
+    + LUCENE-8956: QueryRescorer now only sorts the first topN hits
+      instead of all initial hits.
+    + LUCENE-8921: IndexSearcher.termStatistics() no longer takes a
+      TermStates; it takes the docFreq and totalTermFreq. And don't
+      call if docFreq <= 0. The previous implementation survives as
+      deprecated and final. It's removed in 9.0.
+    + LUCENE-8990: PointValues#estimateDocCount(visitor) estimates
+      the number of documents that would be matched by the given
+      IntersectVisitor. THe method is used to compute the cost() of
+      ScorerSuppliers instead of
+      PointValues#estimatePointCount(visitor).
+    + LUCENE-8865: IndexSearcher now uses Executor instead of
+      ExecutorService. This change is fully backwards compatible
+      since ExecutorService directly implements Executor.
+    + LUCENE-8856: Intervals queries have moved from the sandbox to
+      the queries module.
+    + LUCENE-8893: Intervals.wildcard() and Intervals.prefix()
+      methods now take BytesRef rather than String.
+    + LUCENE-3041: A query introspection API has been added.
+      Queries should implement a visit() method, taking a
+      QueryVisitor, and either pass the visitor down to any child
+      queries, or call a visitX() or consumeX() method on it. All
+      locations in the code that called Weight.extractTerms() have
+      been changed to use this API, and the extractTerms() method
+      has been deprecated.
+    + LUCENE-8735: Directory.getPendingDeletions is now abstract to
+      ensure subclasses override it. FilterDirectory now delegates
+      the call, ensuring correct default behaviour for subclasses.
+    + LUCENE-8662: TermsEnum.seekExact(BytesRef) to abstract and
+      delegate seekExact(BytesRef) in
+      FilterLeafReader.FilterTermsEnum.
+    + LUCENE-8469: Deprecated StringHelper.compare has been removed.
+    + LUCENE-8039: Introduce a "delta distance" method set to
+      GeoDistance. This allows distance calculations, especially for
+      paths, to take into account an "excursion" to include the
+      specified point.
+    + LUCENE-8007: Index statistics Terms.getSumDocFreq(),
+      Terms.getDocCount() are now required to be stored by codecs.
+      Additionally, TermsEnum.totalTermFreq() and
+      Terms.getSumTotalTermFreq() are now required: if frequencies
+      are not stored they are equal to TermsEnum.docFreq() and
+      Terms.getSumDocFreq(), respectively, because all freq() values
+      equal 1.
+    + LUCENE-8038: Deprecated PayloadScoreQuery constructors have
+      been removed
+    + LUCENE-8014: Similarity.computeSlopFactor() and
+      Similarity.computePayloadFactor() have been removed
+    + LUCENE-7996: Queries are now required to produce positive
+      scores.
+    + LUCENE-8099: CustomScoreQuery, BoostedQuery and BoostingQuery
+      have been removed
+    + LUCENE-8012: Explanation now takes Number rather than float
+    + LUCENE-8116: SimScorer now only takes a frequency and a norm
+      as per-document scoring factors.
+    + LUCENE-8113: TermContext has been renamed to TermStates, and
+      can now be constructed lazily if term statistics are not
+      required
+    + LUCENE-8242: Deprecated method
+      IndexSearcher#createNormalizedWeight() has been removed
+    + LUCENE-8267: Memory codecs removed from the codebase
+      (MemoryPostings, MemoryDocValues).
+    + LUCENE-8144: Moved QueryCachingPolicy.ALWAYS_CACHE to the
+      test framework.
+    + LUCENE-8356: StandardFilter and StandardFilterFactory have
+      been removed
+    + LUCENE-8373: StandardAnalyzer.ENGLISH_STOP_WORD_SET has been
+      removed
+    + LUCENE-8388: Unused PostingsEnum#attributes() method has been
+      removed
+    + LUCENE-8405: TopDocs.maxScore is removed. IndexSearcher and
+      TopFieldCollector no longer have an option to compute the
+      maximum score when sorting by field.
+    + LUCENE-8411: TopFieldCollector no longer takes a fillFields
+      option, it now always fills fields.
+    + LUCENE-8412: TopFieldCollector no longer takes a
+      trackDocScores option. Scores need to be set on top hits via
+      TopFieldCollector#populateScores instead.
+    + LUCENE-6228: A new Scorable abstract class has been added,
+      containing only those methods from Scorer that should be
+      called from Collectors. LeafCollector.setScorer() now takes a
+      Scorable rather than a Scorer.
+    + LUCENE-8475: Deprecated constants have been removed from
+      RamUsageEstimator.
+    + LUCENE-8483: Scorers may no longer take null as a Weight
+    + LUCENE-8352: TokenStreamComponents is now final, and can take
+      a Consumer<Reader> in its constructor
+    + LUCENE-8498: LowerCaseTokenizer has been removed, and
+      CharTokenizer no longer takes a normalizer function.
+    + LUCENE-7875: Moved MultiFields static methods out of the
+      class. getLiveDocs is now in MultiBits which is now public.
+      getMergedFieldInfos and getIndexedFields are now in
+      FieldInfos. getTerms is now in MultiTerms.
+      getTermPositionsEnum and getTermDocsEnum were collapsed and
+      renamed to just getTermPostingsEnum and moved to MultiTerms.
+    + LUCENE-8513: MultiFields.getFields is now removed. Please
+      avoid this class, and Fields in general, when possible.
+    + LUCENE-8497: MultiTermAwareComponent has been removed, and in
+      its place TokenFilterFactory and CharFilterFactory now expose
+      type-safe normalize() methods. This decouples normalization
+      from tokenization entirely.
+    + LUCENE-8597: IntervalIterator now exposes a gaps() method
+      that reports the number of gaps between its component
+      sub-intervals. This can be used in a new filter available via
+      Intervals.maxgaps().
+    + LUCENE-8609: Remove IndexWriter#numDocs() and
+      IndexWriter#maxDoc() in favor of IndexWriter#getDocStats().
+  * Changes in Runtime Behavior
+    + LUCENE-8671: Load FST off-heap also for ID-like fields if
+      reader is not opened from an IndexWriter.
+    + LUCENE-8730: WordDelimiterGraphFilter always emits its
+      original token first. This brings its behaviour into line with
+      the deprecated WordDelimiterFilter, so that the only
+      difference in output between the two is in the position length
+      attribute.
+    + LUCENE-7386: Disjunctions nested in disjunctions are now
+      flattened. This might trigger changes in the produced scores
+      due to changes to the order in which scores of sub clauses are
+      summed up.
+    + LUCENE-8756: MoreLikeThisQuery now respects custom term
+      frequencies (TermFrequencyAttribute) at search time
+    + LUCENE-8333: Switch MoreLikeThis.setMaxDocFreqPct to use
+      maxDoc instead of numDocs.
+    + LUCENE-7837: Indices that were created before the previous
+      major version will now fail to open even if they have been
+      merged with the previous major version.
+    + LUCENE-8020: Similarities are no longer passed terms that
+      don't exist by queries such as SpanOrQuery, so scoring
+      formulas no longer require divide-by-zero hacks.
+      IndexSearcher.termStatistics/collectionStatistics return null
+      instead of returning bogus values for a non-existent term or
+      field.
+    + LUCENE-7996: FunctionQuery and FunctionScoreQuery now return
+      a score of 0 when the function produces a negative value.
+    + LUCENE-8116: Similarities now score fields that omit norms as
+      if the norm was 1. This might change score values on fields
+      that omit norms.
+    + LUCENE-8134: Index options are no longer automatically
+      downgraded.
+    + LUCENE-8031: Length normalization correctly reflects omission
+      of term frequencies.
+    + LUCENE-7444: StandardAnalyzer no longer defaults to removing
+      English stopwords
+    + LUCENE-8060: IndexSearcher's search and searchAfter methods
+      now only compute total hit counts accurately up to 1,000 in
+      order to enable top-hits optimizations such as block-max WAND
+      (LUCENE-8135).
+    + LUCENE-8505: IndexWriter#addIndices will now fail if the
+      target index is sorted but the candidate is not.
+    + LUCENE-8535: Highlighter and FVH doesn't support ToParent and
+      ToChildBlockJoinQuery out of the box anymore. In order to
+      highlight on Block-Join Queries a custom
+      WeightedSpanTermExtractor / FieldQuery should be used.
+    + LUCENE-8563: BM25 scores don't include the (k1+1) factor in
+      their numerator anymore. This doesn't affect ordering as this
+      is a constant factor which is the same for every document.
+    + LUCENE-8509: WordDelimiterGraphFilter will no longer set the
+      offsets of internal tokens by default, preventing a number of
+      bugs when the filter is chained with tokenfilters that change
+      the length of their tokens
+    + LUCENE-8633: IntervalQuery scores do not use term weighting
+      any more, the score is instead calculated as a function of the
+      sloppy frequency of the matching intervals.
+    + LUCENE-8635: FSTs can now remain off-heap, accessed via
+      IndexInput, and the default codec's term dictionary
+      (BlockTreeTermsReader) will now leave the FST for the terms
+      index off-heap for non-primary-key fields using MMapDirectory,
+      reducing heap usage for such fields.
+  * New Features:
+    + LUCENE-8903: Add LatLonShape and XYShape point query.
+    + LUCENE-8707: Add LatLonShape and XYShape distance query.
+    + LUCENE-9238: New XYPointField field and Queries for indexing,
+      searching and sorting cartesian points.
+    + LUCENE-8936: Add SpanishMinimalStemFilter
+    + LUCENE-8764 LUCENE-8945: Add "export all terms and doc freqs"
+      feature to Luke with delimiters.
+    + LUCENE-8747: Composite Matches from multiple subqueries now
+      allow access to their submatches, and a new NamedMatches API
+      allows marking of subqueries and a simple way to find which
+      subqueries have matched on a given document
+    + LUCENE-8769: Introduce Range Query For Multiple Connected
+      Ranges
+    + LUCENE-8960: Introduce LatLonDocValuesPointInPolygonQuery for
+      LatLonDocValuesField
+    + LUCENE-8753: New UniformSplitPostingsFormat (name
+      "UniformSplit") primarily benefiting in simplicity and
+      extensibility. New STUniformSplitPostingsFormat (name
+      "SharedTermsUniformSplit") that shares a single internal term
+      dictionary across fields.
+    + LUCENE-8632: New XYShape Field and Queries for indexing and
+      searching general cartesian geometries.
+    + LUCENE-8891: Snowball stemmer/analyzer for the Estonian
+      language.
+    + LUCENE-8815: Provide a DoubleValues implementation for
+      retrieving the value of features without requiring a separate
+      numeric field. Note that as feature values are stored with
+      only 8 bits of mantissa the values returned may have a delta
+      from the original values indexed.
+    + LUCENE-8803: Provide a FeatureSortfield to allow sorting
+      search hits by descending value of a feature. This is exposed
+      via the factory method FeatureField#newFeatureSort.
+    + LUCENE-8784: The KoreanTokenizer now preserves punctuations
+      if discardPunctuation is set to false (defaults to true).
+    + LUCENE-8812: Add new KoreanNumberFilter that can change
+      Hangul character to number and process decimal point. It is
+      similar to the JapaneseNumberFilter.
+    + LUCENE-8362: Add doc-value support to range fields.
+    + LUCENE-8766: Add monitor subproject (previously Luwak
+      monitoring library). This allows a stream of documents to be
+      matched against a set of registered queries in an efficien
+      manner, for use as a monitoring or classification tool.
+    + LUCENE-7714: Add a numeric range query in sandbox that takes
+      advantage of index sorting.
+    + LUCENE-8859: The completion suggester's postings format now
+      have an option to load its internal FST off-heap.
+    + LUCENE-2562: The well-known graphical user interface for
+      inspecting Lucene indexes "Luke" was added as a Lucene module.
+      It can be started from the binary distribution by calling the
+      shell scripts in the module folder or from the source checkout
+      by using 'ant -f lucene/luke/build.xml run'. Luke provides a
+      Swing-based user interface and can be used to open Lucene or
+      Solr (or Elasticsearch) indexes, inspect documents, check
+      index commits and segments, or test (custom) analyzers. It
+      also has maintenance functions to check index structures and
+      force merge indexes for archival.
+    + LUCENE-8340: LongPoint#newDistanceFeatureQuery may be used to
+      boost scores based on how close a value of a long field is
+      from a configurable origin. This is typically useful to boost
+      by recency.
+    + LUCENE-8482: LatLonPoint#newDistanceFeatureQuery may be used
+      to boost scores based on the haversine distance of a
+      LatLonPoint field to a provided point. This is typically
+      useful to boost by distance.
+    + LUCENE-8216: Added a new BM25FQuery in sandbox to blend
+      statistics across several fields using the BM25F formula.
+    + LUCENE-8564: GraphTokenFilter is an abstract class useful for
+      token filters that need to read-ahead in the token stream and
+      take into account graph structures. This also changes
+      FixedShingleFilter to extend GraphTokenFilter
+    + LUCENE-8612: Intervals.extend() treats an interval as if it
+      covered a wider span than it actually does, allowing users to
+      force minimum gaps between intervals in a phrase.
+    + LUCENE-8629: New interval functions: Intervals.before(),
+      Intervals.after(), Intervals.within() and
+      Intervals.overlapping().
+    + LUCENE-8622: Adds a minimum-should-match interval function
+      that produces intervals spanning a subset of a set of sources.
+    + LUCENE-8645: Intervals.fixField() allows you to report
+      intervals from one field as if they came from another.
+    + LUCENE-8646: New interval functions: Intervals.prefix() and
+      Intervals.wildcard()
+    + LUCENE-8655: Add a getter in FunctionScoreQuery class in
+      order to access to the underlying DoubleValuesSource.
+    + LUCENE-8697: GraphTokenStreamFiniteStrings correctly handles
+      side paths containing gaps
+    + LUCENE-8702: Simplify intervals returned from vararg
+      Intervals factory methods
+  * Improvements:
+    + LUCENE-9149: Increase data dimension limit in BKD.
+    + LUCENE-9102: Add maxQueryLength option to DirectSpellchecker.
+    + LUCENE-9091: UnifiedHighlighter HTML escaping should only
+      escape essentials
+    + LUCENE-9105: UniformSplit postings format detects corrupted
+      index and better handles IO exceptions.
+    + LUCENE-9106: UniformSplit postings format allows extension of
+      block/line serializers.
+    + LUCENE-9093: UnifiedHighlighter's LengthGoalBreakIterator has
+      a new fragmentAlignment option to better center the first
+      match in the passage. Also the sizing point now pivots at the
+      center of the first match term and not its left edge. This
+      yields Passages that won't be identical to the previous
+      behavior.
+    + LUCENE-9153: Allow WhitespaceAnalyzer to set a maxTokenLength
+      other than the default of 255
+    + LUCENE-9152: Improve line intersections with polygons when
+      they are touching from the outside.
+    + LUCENE-9123: Add new JapaneseTokenizer constructors with
+      discardCompoundToken option that controls whether the
+      tokenizer emits original (compound) tokens when the mode is
+      not NORMAL.
+    + UCENE-9253: KoreanTokenizer now supports custom
+      dictionaries(system, unknown).
+    + LUCENE-9171: QueryBuilder can now use BoostAttributes on
+      input token streams to selectively boost particular terms or
+      synonyms in parsed queries.
+    + LUCENE-9002: Skip costly caching clause in LRUQueryCache if
+      it makes the query many times slower.
+    + LUCENE-9006: WordDelimiterGraphFilter's catenateAll token is
+      now ordered before any token parts, like WDF did.
+    + LUCENE-9028: introducing Intervals.multiterm()
+    + LUCENE-9018: ConcatenateGraphFilter now has a configurable
+      separator.
+    + LUCENE-9036: ExitableDirectoryReader may interupt scaning
+      over DocValues
+    + LUCENE-9062: QueryVisitor now has a consumeTermsMatching()
+      method, allowing queries that match a class of terms to pass a
+      ByteRunAutomaton matching those that class back to the visitor.
+    + LUCENE-9073: IntervalQuery to respond field on toString() and
+      explain()
+    + LUCENE-8874: Show SPI names instead of class names in Luke
+      Analysis tab.
+    + LUCENE-8894: Add APIs to find SPI names for
+      Tokenizer/CharFilter/TokenFilter factory classes.
+    + LUCENE-8914: move the logic for discarding inner modes in
+      FloatPointNearestNeighbor to the IntersectVisitor so we take
+      advantage of the change introduced in LUCENE-7862.
+    + LUCENE-8955: move the logic for discarding inner modes in
+      LatLonPoint NearestNeighbor to the IntersectVisitor so we take
+      advantage of the change introduced in LUCENE-7862.
+    + LUCENE-8918: PhraseQuery throws exceptions at construction
+      time if it is passed null arguments.
+    + LUCENE-8916: GraphTokenStreamFiniteStrings preserves all
+      Token attributes through its finite strings TokenStreams
+    + LUCENE-8933: Check kuromoji user dictionary beforehand to
+      avoid unexpected runtime exceptions. (Tomoko Uchida
+    + LUCENE-8906: Expose Lucene50PostingsFormat.IntBlockTermState
+      as public so that other postings formats can re-use it.
+    + LUCENE-8942: Remove redundant parameters and improve
+      visibility strictness in LRUQueryCache
+    + SOLR-13663: Introduce <SpanPositionRange> into XML Query
+      Parser
+    + LUCENE-8952: Use a sort key instead of true distance in
+      NearestNeighbor
+    + LUCENE-8620: Tessellator labels the edges of the generated
+      triangles whether they belong to the original polygon. This
+      information is added to the triangle encoding.
+    + LUCENE-8964: Fix geojson shape parsing on string arrays in
+      properties
+    + LUCENE-8976: Use exact distance between point and bounding
+      rectangle in FloatPointNearestNeighbor.
+    + LUCENE-8966: The Korean analyzer now splits tokens on
+      boundaries between digits and alphabetic characters.
+    + LUCENE-8984: MoreLikeThis MLT is biased for uncommon fields
+    + LUCENE-7840: Non-scoring BooleanQuery now removes SHOULD
+      clauses before building the scorer supplier as opposed to
+      eliminating them during scoring construction.
+    + LUCENE-8770: BlockMaxConjunctionScorer now leverages
+      two-phase iterators in order to avoid executing the second
+      phase when scorers don't intersect.
+    + LUCENE-8781: FST lookup performance has been improved in many
+      cases by encoding Arcs using full-sized arrays with gaps. The
+      new encoding is enabled for postings in the default codec and
+      for suggesters.
+    + LUCENE-8818: Fix smokeTestRelease.py encoding bug
+    + LUCENE-8845: Allow Intervals.prefix() and
+      Intervals.wildcard() to specify their maximum allowed expansions
+    + LUCENE-8875: Introduce a Collector optimized for use cases
+      when large number of hits are requested
+    + LUCENE-8848 LUCENE-7757 LUCENE-8492: The UnifiedHighlighter
+      now detects that parts of the query are not understood by it,
+      and thus it should not make optimizations that result in no
+      highlights or slow highlighting. This generally works best for
+      WEIGHT_MATCHES mode. Consequently queries produced by
+      ComplexPhraseQueryParser and the surround QueryParser will now
+      highlight correctly.
+    + LUCENE-8793: Luke enhanced UI for CustomAnalyzer: show
+      detailed analysis steps.
+    + LUCENE-8855: Add Accountable to some Query implementations
+    + LUCENE-8673: Use radix partitioning when merging dimensional
+      points instead of sorting all dimensions before hand.
+    + LUCENE-8687: Optimise radix partitioning for points on heap.
+    + LUCENE-8699: Change HeapPointWriter to use a single byte
+      array instead to a list of byte arrays. In addition a new
+      interface PointValue is added to abstract out the different
+      formats between offline and on-heap writers.
+    + LUCENE-8703: Build point writers in the BKD tree only when
+      they are needed.
+    + LUCENE-8652: SynonymQuery can now deboost the document
+      frequency of each term when blending the score of the synonym.
+    + LUCENE-8631: The Korean's user dictionary now picks the
+      longest-matching word and discards the other matches.
+    + LUCENE-8732: ConstantScoreQuery can now early terminate the
+      query if the minimum score is greater than the constant score
+      and total hits are not requested.
+    + LUCENE-8750: Implements setMissingValue() on sort fields
+      produced from DoubleValuesSource and LongValuesSource
+    + LUCENE-8701: ToParentBlockJoinQuery now creates a child
+      scorer that disallows skipping over non-competitive documents
+      if the score of a parent depends on the score of multiple
+      children (avg, max, min). Additionally the score mode 'none'
+      that assigns a constant score to each parent can early
+      terminate top scores's collection.
+    + LUCENE-8751: Weight#matches now use the ScorerSupplier to
+      build scorers with a lead cost of 1 (single document).
+    + LUCENE-8752: Japanese new era name '令和' (Reiwa) is added to
+      the dictionary used in JapaneseTokenizer so that the analyzer
+      handles the era name correctly. Reiwa is set to replace the
+      Heisei Era on May 1, 2019.
+    + LUCENE-8671: Introduced reader attributes allows a per
+      IndexReader configuration of codec internals. This enables a
+      per reader configuration if FSTs are on- or off-heap on a per
+      field basis
+    + LUCENE-8787: spatial-extras DateRangePrefixTree used to only
+      parse ISO-8601 timestamps with 0 or 3 digits of milliseconds
+      precision but now parses other lengths (although > 3 not
+      used).
+    + LUCENE-7997: Add BaseSimilarityTestCase to sanity check
+      similarities. SimilarityBase switches to 64-bit doubles
+      internally to help avoid common numeric issues. Add missing
+      range checks for similarity parameters. Improve BM25 and
+      ClassicSimilarity's explanations.
+    + LUCENE-8011: Improved similarity explanations.
+    + LUCENE-4198: Codecs now have the ability to index score
+      impacts.
+    + LUCENE-8135: Boolean queries now implement the block-max WAND
+      algorithm in order to speed up selection of top scored
+      documents.
+    + LUCENE-8279: CheckIndex now cross-checks terms with norms.
+    + LUCENE-8660: TopDocsCollectors now return an accurate count
+      (instead of a lower bound) if the total hit count is equal to
+      the provided threshold.
+  * Optimizations
+    + LUCENE-9211: Add compression for Binary doc value fields.
+    + LUCENE-4702: Better compression of terms dictionaries.
+    + LUCENE-9228: Sort dvUpdates in the term order before applying
+      if they all update a single field to the same value. This
+      optimization can reduce the flush time by around 20% for the
+      docValues update user cases.
+    + LUCENE-9245: Reduce AutomatonTermsEnum memory usage.
+    + LUCENE-9237: Faster UniformSplit intersect TermsEnum.
+    + LUCENE-9068: FuzzyQuery builds its Automaton up-front
+    + LUCENE-9113: Faster merging of SORTED/SORTED_SET doc values.
+    + LUCENE-9125: Optimize Automaton.step() with binary search and
+      introduce Automaton.next().
+    + LUCENE-9147: The index of stored fields and term vectors in
+      now off-heap.
+    + LUCENE-8928: When building a kd-tree for dimensions n > 2,
+      compute exact bounds for an inner node every N splits to
+      improve the quality of the tree. N is defined by
+      SPLITS_BEFORE_EXACT_BOUNDS which is set to 4.
+    + BaseDirectoryReader no longer sums up the
+      'LeafReader#numDocs' of its leaves eagerly. This especially
+      helps when creating views of readers that hide documents,
+      since computing the number of live documents is an expensive
+      operation.
+    + LUCENE-8992: TopFieldCollector and TopScoreDocCollector can
+      now share minimum scores across leaves concurrently.
+    + LUCENE-8932: BKDReader's index is now stored off-heap when
+      the IndexInput is an instance of ByteBufferIndexInput.
+    + LUCENE-9024: IntroSelector now falls back to the median of
+      medians algorithm instead of sorting when the maximum
+      recursion level is exceeded, providing better worst-case
+      runtime.
+    + LUCENE-8920: The denser arcs of FST now index labels with a
+      bitset in order to provide near constant time access.
+    + LUCENE-9027: Use SIMD instructions to decode postings.
+    + LUCENE-9049: Remove FST cached root arcs now redundant with
+      labels indexed by bitset. This frees some on-heap FST space.
+    + LUCENE-9045: Do not use TreeMap/TreeSet in BlockTree and
+      PerFieldPostingsFormat.
+    + LUCENE-8922: DisjunctionMaxQuery more efficiently leverages
+      impacts to skip non-competitive hits.
+    + LUCENE-8935: BooleanQuery with no scoring clause can now
+      early terminate the query when the total hits is not requested.
+    + LUCENE-8941: Matches on wildcard queries will defer building
+      their full disjunction until a MatchesIterator is pulled
+    + LUCENE-8755: spatial-extras quad and packed quad prefix trees
+      now index points faster.
+    + LUCENE-8860: add additional leaf node level optimizations in
+      LatLonShapeBoundingBoxQuery.
+    + LUCENE-8968: Improve performance of WITHIN and DISJOINT
+      queries for Shape queries by doing just one pass whenever
+      possible.
+    + LUCENE-8939: Introduce shared count based early termination
+      across multiple slices
+    + LUCENE-8980: Blocktree's seekExact now short-circuits false
+      if the term isn't in the min-max range of the segment. Large
+      perf gain for ID/time like data when populated sequentially.
+    + LUCENE-8796: Use exponential search instead of binary search
+      in IntArrayDocIdSet#advance method
+    + LUCENE-8865: Use incoming thread for execution if
+      IndexSearcher has an executor. Now caller threads execute at
+      least one search on an index even if there is an executor
+      provided to minimize thread context switching.
+    + LUCENE-8868: New storing strategy for BKD tree leaves with
+      low cardinality. It stores the distinct values once with the
+      cardinality value reducing the storage cost.
+    + LUCENE-8885: Optimise BKD reader by exploiting cardinality
+      information stored on leaves.
+    + LUCENE-8896: Override default implementation of
+      IntersectVisitor#visit(DocIDSetBuilder, byte[]) for several queries.
+    + LUCENE-8901: Load frequencies lazily only when needed in
+      BlockDocsEnum and BlockImpactsEverythingEnum
+    + LUCENE-8888: Optimize distribution of points with data
+      dimensions in BKD tree leaves.
+    + LUCENE-8311: Phrase queries now leverage impacts.
+    + LUCENE-8040: Optimize IndexSearcher.collectionStatistics,
+      avoiding MultiFields/MultiTerms
+    + LUCENE-4100: Disjunctions now support faster collection of
+      top hits when the total hit count is not required.
+    + LUCENE-7993: Phrase queries are now faster if total hit
+      counts are not required.
+    + LUCENE-8109: Boolean queries propagate information about the
+      minimum competitive score in order to make collection faster
+      if there are disjunctions or phrase queries as sub queries,
+      which know how to leverage this information to run faster.
+    + LUCENE-8439: Disjunction max queries can skip blocks to
+      select the top documents if the total hit count is not required.
+    + LUCENE-8204: Boolean queries with a mix of required and
+      optional clauses are now faster if the total hit count is not
+      required.
+    + LUCENE-8448: Boolean queries now propagates the mininum score
+      to their sub-scorers.
+    + LUCENE-8511: MultiFields.getIndexedFields is now optimized;
+      does not call getMergedFieldInfos
+    + LUCENE-8507: TopFieldCollector can now update the minimum
+      competitive score if the primary sort is by relevancy and the
+      total hit count is not required.
+    + LUCENE-8464: ConstantScoreScorer now implements
+      setMinCompetitveScore in order to early terminate the iterator
+      if the minimum score is greater than the constant score.
+    + LUCENE-8607: MatchAllDocsQuery can shortcut when total hit
+      count is not required
+    + LUCENE-8585: Index-time jump-tables for DocValues, for O(1)
+      advance when retrieving doc values.
+  * Bug Fixes
+    + LUCENE-9084: Fix potential deadlock due to circular
+      synchronization in AnalyzingInfixSuggester
+    + LUCENE-9115: NRTCachingDirectory no longer caches files of
+      unknown size.
+    + LUCENE-9144: Fix error message on OneDimensionBKDWriter when
+      too many points are added to the writer.
+    + LUCENE-9135: Make UniformSplit FieldMetadata counters long.
+    + LUCENE-9200: Fix TieredMergePolicy to use double (not float)
+      math to make its merging decisions, fixing a corner-case bug
+      uncovered by fun randomized tests
+    + LUCENE-9099: Unordered and Ordered interval queries now
+      correctly handle repeated subterms - ordered intervals could
+      supply an 'extra' minimized interval, resulting in odd
+      matches when combined with eg CONTAINS queries; and unordered
+      intervals would match duplicate subterms on the same position,
+      so an query for UNORDERED(foo, foo) would match a document
+      containing 'foo' only once.
+    + LUCENE-9250: Add support for Circle2d#intersectsLine around
+      the dateline.
+    + LUCENE-9243: Add fudge factor when creating a bounding box of
+      a XYCircle.
+    + LUCENE-9239: Circle2D#WithinTriangle detects properly if a
+      triangle is Within distance.
+    + LUCENE-9251: Fix bug in the polygon tessellator where edges
+      with different value on #isEdgeFromPolygon were bot filtered
+      out properly.
+    + LUCENE-9263: Fix wrong transformation of distance in meters
+      to radians in Geo3DPoint.
+    + LUCENE-9001: Fix race condition in SetOnce.
+    + LUCENE-9030: Fix WordnetSynonymParser behaviour so it behaves
+      similar to SolrSynonymParser.
+    + LUCENE-9054: Fix reproduceJenkinsFailures.py to not overwrite
+      junit XML files when retrying
+    + LUCENE-9031: UnsupportedOperationException on
+      MatchesIterator.getQuery()
+    + LUCENE-8996: maxScore was sometimes missing from distributed
+      grouped responses.
+    + LUCENE-9055: Fix the detection of lines crossing triangles
+      through edge points.
+    + LUCENE-9103: Disjunctions can miss some hits in some rare
+      conditions.
+    + LUCENE-8755: spatial-extras quad and packed quad prefix trees
+      could throw a NullPointerException for certain cell edge
+      coordinates
+    + LUCENE-9005: BooleanQuery.visit() would pull subVisitors from
+      its parent visitor, rather than from a visitor for its own
+      specific query. This could cause problems when BQ was nested
+      under another BQ. Instead, we now pull a MUST subvisitor, pass
+      it to any MUST subclauses, and then pull SHOULD, MUST_NOT and
+      FILTER visitors from it rather than from the parent.
+    + LUCENE-8831: Fixed LatLonShapeBoundingBoxQuery .hashCode
+      methods.
+    + LUCENE-8775: Improve tessellator to handle better cases where
+      a hole share a vertex with the polygon.
+    + LUCENE-8785: Ensure new threadstates are locked before
+      retrieving the number of active threadstates. This causes
+      assertion errors and potentially broken field attributes in
+      the IndexWriter when IndexWriter#deleteAll is called while
+      actively indexing.
+    + LUCENE-8804: Forbid calls to putAttribute on frozen FieldType
+      instances.
+    + LUCENE-8828: Removes the buggy 'disallow overlaps' boolean
+      from Intervals.unordered(), and replaces it with a new
+      Intervals.unorderedNoOverlaps() method
+    + LUCENE-8843: Don't ignore exceptions that are thrown when
+      trying to open a file in IOUtils#fsync.
+    + LUCENE-8835: FileSwitchDirectory now respects the file
+      extension when listing directory contents to ensure we don't
+      expose pending deletes if both directory point to the same
+      underlying filesystem directory.
+    + LUCENE-8853: FileSwitchDirectory now applies best effort to
+      place tmp files in the same directory as the target files.
+    + LUCENE-8892: Add missing closing parentheses in
+      MultiBoolFunction's description()
+    + LUCENE-8736: LatLonShapePolygonQuery returns incorrect WITHIN
+      results with shared boundaries. Point in Polygon now correctly
+      includes boundary points. Box and Polygon relations with
+      triangles have also been improved to correctly include
+      boundary points.
+    + LUCENE-8712: Polygon2D does not detect crossings through
+      segment edges.
+    + LUCENE-8720: NameIntCacheLRU (in the facets module) had an
+      int overflow bug that disabled cleaning of the cache
+    + LUCENE-8726: ValueSource.asDoubleValuesSource() could leak a
+      reference to IndexSearcher
+    + LUCENE-8719: FixedShingleFilter can miss shingles at the end
+      of a token stream if there are multiple paths with different
+      lengths.
+    + LUCENE-8688: TieredMergePolicy#findForcedMerges now tries to
+      create the cheapest merges that allow the index to go down to
+      'maxSegmentCount' segments or less.
+    + LUCENE-8477: Interval disjunctions could miss valid hits if
+      some of the clauses of the disjunction are minimized away. We
+      now rewrite intervals if a source contains a disjunction and
+      the internal gaps matter for matching. This behaviour can be
+      disabled if users are more interested in speed rather than
+      accuracy of matching.
+    + LUCENE-8741: ValueSource.fromDoubleValuesSource() was casting
+      to Scorer instead of Scorable, leading to ClassCastExceptions
+    + LUCENE-8754: Fix ConcurrentModificationException in
+      SegmentInfo if attributes are accessed in MergePolicy while
+      the merge is running
+    + LUCENE-8765: Fixed validation of the number of added points
+      in KD trees.
+  * Other
+    + LUCENE-9109: Backport some changes from master (except
+      StackWalker) to improve TestSecurityManager
+    + LUCENE-9110: Backport refactored stack analysis in tests to
+      use generalized LuceneTestCase methods
+    + LUCENE-9141: Simplify LatLonShapeXQuery API by adding a new
+      abstract class called LatLonGeometry. Queries are executed
+      with input objects that extend such interface.
+    + LUCENE-9194: Simplify XYShapeXQuery API by adding a new
+      abstract class called XYGeometry. Queries are executed with
+      input objects that extend such interface.
+    + LUCENE-9096: Simplification of
+      CompressingTermVectorsWriter#flushOffsets.
+    + LUCENE-9225: Rectangle extends LatLonGeometry so it can be
+      used in a geometry collection.
+    + LUCENE-8979: Code Cleanup: Use entryset for map iteration
+      wherever possible. - Part 2
+    + LUCENE-8746: Refactor EdgeTree - Introduce a Component tree
+      that represents the tree of components (e.g polygons). Edge
+      tree is now just a tree of edges.
+    + LUCENE-8994: Code Cleanup - Pass values to list constructor
+      instead of empty constructor followed by addAll().
+    + LUCENE-9046: Fix wrong example in Javadoc of TermInSetQuery
+    + LUCENE-8983: Add sandbox PhraseWildcardQuery to control
+      multi-terms expansions in a phrase.
+    + LUCENE-9067: Polygon2D#contains() is now thread safe.
+    + LUCENE-8778 LUCENE-8911 LUCENE-8957: Define analyzer SPI
+      names as static final fields and document the names in Javadocs.
+    + LUCENE-8758: QuadPrefixTree: removed levelS and levelN fields
+      which weren't used.
+    + LUCENE-8975: Code Cleanup: Use entryset for map iteration
+      wherever possible.
+    + LUCENE-8993, LUCENE-8807: Changed all repository and download
+      references in build files to HTTPS.
+    + LUCENE-8998: Fix OverviewImplTest.testIsOptimized
+      reproducible failure.
+    + LUCENE-8999: LuceneTestCase.expectThrows now propogates
+      assert/assumption failures up to the test w/o wrapping in a
+      new assertion failure unless the caller has explicitly
+      expected them
+    + LUCENE-8062: GlobalOrdinalsWithScoreQuery is no longer
+      eligible for query caching.
+    + LUCENE-8847: Code Cleanup: Remove StringBuilder.append with
+      concatenated strings.
+    + LUCENE-8861: Script to find open Github PRs that needs
+      attention
+    + LUCENE-8852: ReleaseWizard tool for release managers
+    + LUCENE-8838: Remove support for Steiner points on Tessellator.
+    + LUCENE-8879: Improve BKDRadixSelector tests.
+    + LUCENE-8886: Fix TestMutablePointsReaderUtils tests.
+    + LUCENE-8680: Refactor EdgeTree#relateTriangle method.
+    + LUCENE-8685: Refactor LatLonShape tests.
+    + LUCENE-8713: Add Line2D tests.
+    + LUCENE-8729: Workaround: Disable accessibility doclints (Java
+      13+), so compilation with recent JDK succeeds.
+    + LUCENE-8725: Make TermsQuery.SeekingTermSetTermsEnum a top
+      level class and public
+  * Build
+    + Upgrade forbiddenapis to version 2.7; upgrade Groovy to
+      2.4.17.
+    + LUCENE-9041: Upgrade ecj to 3.19.0 to fix sporadic precommit
+      javadoc issues
+  * Test Framework
+    + LUCENE-8825: CheckHits now display the shard index in case of
+      mismatch between top hits.
 - Modified patches:
   * 0001-Disable-ivy-settings.patch
   * 0002-Dependency-generation.patch
