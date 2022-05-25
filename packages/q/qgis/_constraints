@@ -22,4 +22,14 @@
     </memoryperjob>
     </hardware>
   </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>riscv64</arch>
+    </conditions>
+    <hardware>
+      <disk>
+	<size unit="G">20</size>
+      </disk>
+    </hardware>
+  </overwrite>
 </constraints>
