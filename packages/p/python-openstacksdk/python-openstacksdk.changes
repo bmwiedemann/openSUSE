@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue May 24 21:34:59 UTC 2022 - cloud-devel@suse.de
+
+- update to version 0.61.0
+  - Add "check_limit" to network Quota class
+  - Update master for stable/xena
+  - compute: Add support for server lock reason
+  - compute: Add support for microversion 2.89
+  - Change image.hw_qemu_guest_agent to be string
+  - Fix some docstrings, and a small bug
+  - Vpn ike policy resource
+  - Add Python3 yoga unit tests
+  - Keep creating keystone admin endpoint for heat
+  - Add compute microversion 2.78
+  - Add Neutron Local IP CRUD
+  - Remove misspelled speccing arguments
+  - Adds "test_update_zone" test case
+  - Splits class `TestNetworkProxy`
+  - Add support for reading node's "boot_mode" and "secure_boot" fields
+  - Add support for changing baremetal node's boot_mode and secure_boot states
+  - Add description args for device profile create
+  - Changed minversion in tox to 3.18.0
+
+-------------------------------------------------------------------
 Tue Oct 26 21:55:54 UTC 2021 - cloud-devel@suse.de
 
 - update to version 0.59.0

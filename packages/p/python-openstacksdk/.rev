@@ -351,4 +351,30 @@
   - Adding retype_volume to BlockStorageCloudMixin</comment>
     <requestid>939531</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7351be31d48f1178c0b655e94556305a</srcmd5>
+    <version>0.61.0</version>
+    <time>1653503681</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.61.0
+  - Add &quot;check_limit&quot; to network Quota class
+  - Update master for stable/xena
+  - compute: Add support for server lock reason
+  - compute: Add support for microversion 2.89
+  - Change image.hw_qemu_guest_agent to be string
+  - Fix some docstrings, and a small bug
+  - Vpn ike policy resource
+  - Add Python3 yoga unit tests
+  - Keep creating keystone admin endpoint for heat
+  - Add compute microversion 2.78
+  - Add Neutron Local IP CRUD
+  - Remove misspelled speccing arguments
+  - Adds &quot;test_update_zone&quot; test case
+  - Splits class `TestNetworkProxy`
+  - Add support for reading node's &quot;boot_mode&quot; and &quot;secure_boot&quot; fields
+  - Add support for changing baremetal node's boot_mode and secure_boot states
+  - Add description args for device profile create
+  - Changed minversion in tox to 3.18.0</comment>
+    <requestid>979085</requestid>
+  </revision>
 </revisionlist>

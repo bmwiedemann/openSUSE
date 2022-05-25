@@ -1,7 +1,7 @@
 #
 # spec file for package python-openstacksdk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define with_tests 0
 Name:           python-openstacksdk
-Version:        0.59.0
+Version:        0.61.0
 Release:        0
 Summary:        An SDK for building applications to work with OpenStack
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/openstacksdk
-Source0:        https://files.pythonhosted.org/packages/source/o/openstacksdk/openstacksdk-0.59.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/openstacksdk/openstacksdk-0.61.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML >= 3.13
 BuildRequires:  python3-appdirs >= 1.3.0
@@ -39,7 +39,6 @@ BuildRequires:  python3-jmespath >= 0.9.0
 BuildRequires:  python3-jsonpatch >= 1.16
 BuildRequires:  python3-jsonschema
 BuildRequires:  python3-keystoneauth1 >= 3.18.0
-BuildRequires:  python3-mock
 BuildRequires:  python3-munch >= 2.1.0
 BuildRequires:  python3-netifaces >= 0.10.4
 BuildRequires:  python3-os-service-types >= 1.7.0
@@ -49,7 +48,6 @@ BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-python-subunit
 BuildRequires:  python3-requests-mock
 BuildRequires:  python3-requestsexceptions >= 1.2.0
-BuildRequires:  python3-six
 BuildRequires:  python3-statsd
 BuildRequires:  python3-stestr
 BuildRequires:  python3-stevedore
@@ -83,7 +81,6 @@ Requires:       python3-munch >= 2.1.0
 Requires:       python3-netifaces >= 0.10.4
 Requires:       python3-os-service-types >= 1.7.0
 Requires:       python3-requestsexceptions >= 1.2.0
-Requires:       python3-six
 %if 0%{?suse_version}
 Obsoletes:      python2-openstacksdk < 1.0.0
 %endif
@@ -124,7 +121,7 @@ The openstacksdk is a collection of libraries for building
 applications to work with OpenStack clouds.
 
 %prep
-%autosetup -p1 -n openstacksdk-0.59.0
+%autosetup -p1 -n openstacksdk-0.61.0
 %py_req_cleanup
 sed -i -e 's,coverage.*,,' test-requirements.txt || true
 sed -i -e "s,'sphinx.ext.intersphinx'\,,," doc/source/conf.py
@@ -135,7 +132,7 @@ rm openstack/tests/unit/test_stats.py
 
 %build
 %py3_build
-PBR_VERSION=0.59.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=0.61.0 %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
