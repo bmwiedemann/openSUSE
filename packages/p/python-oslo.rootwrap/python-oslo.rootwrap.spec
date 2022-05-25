@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.rootwrap
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,18 @@
 
 
 Name:           python-oslo.rootwrap
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        Filtering shell commands to run as root from OpenStack services
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.rootwrap
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.rootwrap/oslo.rootwrap-6.3.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.rootwrap/oslo.rootwrap-6.3.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-eventlet
 BuildRequires:  python3-fixtures
-BuildRequires:  python3-mock
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr
-BuildRequires:  python3-six
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testtools
 BuildArch:      noarch
@@ -46,7 +44,6 @@ from OpenStack services.
 
 %package -n python3-oslo.rootwrap
 Summary:        Filtering shell commands to run as root from OpenStack services
-Requires:       python3-six
 %if 0%{?suse_version}
 Obsoletes:      python2-oslo.rootwrap < 6.0.1
 %endif
@@ -66,14 +63,14 @@ BuildRequires:  python3-openstackdocstheme
 Documentation for the OpenStack oslo.rootwrap library.
 
 %prep
-%autosetup -p1 -n oslo.rootwrap-6.3.0
+%autosetup -p1 -n oslo.rootwrap-6.3.1
 %py_req_cleanup
 
 %build
 %{py3_build}
 
 # generate html docs
-PBR_VERSION=6.3.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=6.3.1 %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install

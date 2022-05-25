@@ -193,4 +193,13 @@
 - switch to wallaby template</comment>
     <requestid>939539</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>680c921c03c1cd127ee7f9601e314a3c</srcmd5>
+    <version>6.3.1</version>
+    <time>1653503672</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 6.3.1
+  - CommandFilter should allow exec from full path</comment>
+    <requestid>979072</requestid>
+  </revision>
 </revisionlist>
