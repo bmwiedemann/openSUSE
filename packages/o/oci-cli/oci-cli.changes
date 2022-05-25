@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed May 18 07:45:12 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.9.0
+  * Data Integration service
+    * Support for BIP connection in the following commands
+      * ``oci data-integration connection
+        create-connection-create-connection-from-bip``
+      * ``oci data-integration connection-validation
+        create-connection-validation-create-connection-from-bip``
+    * New parameters --conditional-composite-field-map, --is-single-load
+      and --parallel-load-limit for the below commands
+      * ``oci data-integration task create-data-loader-task
+         --conditional-composite-field-map --is-single-load
+	 --parallel-load-limit``
+      * ``oci data-integration task update-data-loader-task
+        --conditional-composite-field-map --is-single-load
+	--parallel-load-limit``
+  * Rover service
+    * [BREAKING] Parameters --compartment-id and --bucket-id for
+      add-workload operations for node and cluster are being deleted
+      * ``oci rover node add-workload``
+      * ``oci rover standalone-cluster add-workload``
+      * ``oci rover station-cluster add-workload``
+- from version 3.8.1
+  * Support for Application Dependency Management service
+    * ``oci adm``
+  * Support for provisioned concurrency in the Functions service
+    * ``oci fn function create --provisioned-concurrency``
+    * ``oci fn function update --provisioned-concurrency``
+  * Support for allow reboot migration for DenseIO shape
+    in maintenance situations in Compute service
+    * ``oci compute instance instance-action-reset-action-details``
+    * ``oci compute instance instance-action-soft-reset-action-details``
+- Refresh patches for new version
+    + oc_relax-python-depends.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Tue May  3 12:27:48 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.8.0
