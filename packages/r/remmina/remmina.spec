@@ -62,7 +62,6 @@ BuildRequires:  pkgconfig(vte-2.91)
 BuildRequires:  pkgconfig(webkit2gtk-4.0)
 BuildRequires:  pkgconfig(winpr2)
 BuildRequires:  pkgconfig(xkbfile)
-Recommends:     %{name}-lang
 Recommends:     %{name}-plugin-rdp
 Recommends:     %{name}-plugin-secret
 Recommends:     %{name}-plugin-vnc

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 24 09:19:31 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not recommend lang package: the lang package has smarter
+  supplements in place.
+
+-------------------------------------------------------------------
 Thu May 19 14:29:06 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Updated to remmina version 1.4.26
