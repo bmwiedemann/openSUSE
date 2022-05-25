@@ -7,4 +7,12 @@
     <comment>I want to maintain sad in openSUSE:Factory</comment>
     <requestid>975015</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ace1d0b67896f57b77784e5dfc7b4e75</srcmd5>
+    <version>0.4.20~0</version>
+    <time>1653503653</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978855</requestid>
+  </revision>
 </revisionlist>
