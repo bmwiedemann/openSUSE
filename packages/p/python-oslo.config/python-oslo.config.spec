@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.config
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,19 @@
 
 
 Name:           python-oslo.config
-Version:        8.7.1
+Version:        8.8.0
 Release:        0
 Epoch:          0
 Summary:        OpenStack common configuration library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.config
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.config/oslo.config-8.7.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.config/oslo.config-8.8.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML >= 5.1
 BuildRequires:  python3-debtcollector >= 1.2.0
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-importlib-metadata
-BuildRequires:  python3-mock
 BuildRequires:  python3-netaddr >= 0.7.18
 BuildRequires:  python3-oslo.i18n >= 3.15.3
 BuildRequires:  python3-oslotest
@@ -38,7 +37,6 @@ BuildRequires:  python3-pbr
 BuildRequires:  python3-requests >= 2.18.0
 BuildRequires:  python3-requests-mock
 BuildRequires:  python3-rfc3986 >= 1.2.0
-BuildRequires:  python3-six
 BuildRequires:  python3-stestr
 BuildRequires:  python3-stevedore >= 1.20.0
 BuildRequires:  python3-testscenarios
@@ -63,7 +61,6 @@ Requires:       python3-netaddr >= 0.7.18
 Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-requests >= 2.18.0
 Requires:       python3-rfc3986 >= 1.2.0
-Requires:       python3-six
 Requires:       python3-stevedore >= 1.20.0
 %if 0%{?suse_version}
 Obsoletes:      python2-oslo.config < 8.0.1
@@ -90,13 +87,13 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for the oslo-config library.
 
 %prep
-%autosetup -p1 -n oslo.config-8.7.1
+%autosetup -p1 -n oslo.config-8.8.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
-PBR_VERSION=8.7.1 PYTHONPATH=. \
+PBR_VERSION=8.8.0 PYTHONPATH=. \
     %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}

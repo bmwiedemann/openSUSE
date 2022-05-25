@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 24 21:26:19 UTC 2022 - cloud-devel@suse.de
+
+- update to version 8.8.0
+  - Update python testing classifier
+  - Replace deprecated UPPER_CONSTRAINTS_FILE variable
+  - Update master for stable/xena
+  - Fix tests for Python3.
+  - setup.cfg: Replace dashes with underscores
+  - Add Python3 yoga unit tests
+
+-------------------------------------------------------------------
 Tue Oct 26 21:36:55 UTC 2021 - cloud-devel@suse.de
 
 - update to version 8.7.1

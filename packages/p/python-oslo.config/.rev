@@ -783,4 +783,18 @@ all changed Requires/Buildrequires seem to be available
   - tests: Add test for config file priority order</comment>
     <requestid>940194</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>04e73715b191aac3c690445bc337c6ec</srcmd5>
+    <version>8.8.0</version>
+    <time>1653503678</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 8.8.0
+  - Update python testing classifier
+  - Replace deprecated UPPER_CONSTRAINTS_FILE variable
+  - Update master for stable/xena
+  - Fix tests for Python3.
+  - setup.cfg: Replace dashes with underscores
+  - Add Python3 yoga unit tests</comment>
+    <requestid>979081</requestid>
+  </revision>
 </revisionlist>
