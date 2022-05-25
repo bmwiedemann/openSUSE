@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri May 20 15:05:01 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 0.8.4
+  * Major changes:
+    * Improve UX and HIG-conformity. By @real-yfprojects (#1176)
+    * Rewrite scheduler logic. By @real-yfprojects (#1204)
+  * Other improvements:
+    * Change default returncode for log. By @real-yfprojects (#1193)
+    * Update next backup time label. By @real-yfprojects (#1180)
+    * Support new borg compact command (#1205)
+    * Change keyring label to improve UX on Gnome. By @real-yfprojects (#1181)
+    * Add missing translate strings. By @delfino-nunez (#1229)
+    * Fix setting a timer value too large for C++ int. (#1230)
+    * Add missing translation marking. By @delfino-nunez (#1240)
+    * Use accept-new for host keys. By @delfino-nunez (#1238)
+    * Properly set dialog titles. By @delfino-nunez (#1246)
+    * Use fnmatch for exclude patterns. By @real-yfprojects (#1253)
+    * Add a button to mount full repository. By @real-yfprojects (#1257)
+    * Clarify enable_background_question label. By @real-yfprojects (#1262)
+    * Improve SecretStorage locking behavior. By @Aeysol (#1255)
+    * Set repo stats to N/A after delete or prune. By @real-yfprojects (#1251)
+    * Improve keyring logging. By @real-yfprojects (#1263)
+    * Better diff selection without extra dialog. By @real-yfprojects (#1235)
+    * Add support for special file types in borg diff output. By @real-yfprojects (#1265)
+
+-------------------------------------------------------------------
 Mon Feb  7 11:49:33 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 0.8.3
