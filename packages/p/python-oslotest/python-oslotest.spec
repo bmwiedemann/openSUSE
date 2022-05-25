@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslotest
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,10 +27,8 @@ Source0:        https://files.pythonhosted.org/packages/source/o/oslotest/oslote
 BuildRequires:  openstack-macros
 BuildRequires:  python3-debtcollector
 BuildRequires:  python3-fixtures >= 3.0.0
-BuildRequires:  python3-mock
 BuildRequires:  python3-pbr
 BuildRequires:  python3-python-subunit >= 1.0.0
-BuildRequires:  python3-six >= 1.10.0
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testtools >= 2.2.0
 BuildArch:      noarch
@@ -47,7 +45,6 @@ Requires:       python3-mock
 # NOTE: python-os-client-config is only needed for functional testing
 # Requires:       python3-os-client-config
 Requires:       python3-python-subunit >= 1.0.0
-Requires:       python3-six >= 1.10.0
 Requires:       python3-stestr
 Requires:       python3-testtools >= 2.2.0
 
