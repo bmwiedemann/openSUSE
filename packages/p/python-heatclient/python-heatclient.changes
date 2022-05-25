@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue May 24 20:53:44 UTC 2022 - cloud-devel@suse.de
+
+- update to version 2.5.1
+  - Update master for stable/xena
+  - Update python testing classifier
+  - Replace deprecated import of ABCs from collections
+  - Add Python3 yoga unit tests
+  - Fix test and lower constraints
+  - setup.cfg: Replace dashes by underscores
+
+-------------------------------------------------------------------
+Tue Oct 26 21:48:01 UTC 2021 - cloud-devel@suse.de
+
+- update to version 2.4.0
+  - Update master for stable/wallaby
+  - [ussuri][goal] Update contributor documentation
+  - Replace oslo_utils.fnmatch with fnmatch
+  - Add Python3 xena unit tests
+  - fix lower constraint job
+
+-------------------------------------------------------------------
 Sun May  2 17:23:01 UTC 2021 - cloud-devel@suse.de
 
 - update to version 2.3.0
