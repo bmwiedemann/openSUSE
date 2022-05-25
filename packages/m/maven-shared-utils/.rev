@@ -23,4 +23,12 @@
     <comment>3.3.3; fixes bsc#1198833, CVE-2022-29599</comment>
     <requestid>973672</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e8dba35bda73269977cd957c5c2b4fda</srcmd5>
+    <version>3.3.3</version>
+    <time>1653503686</time>
+    <user>dimstar_suse</user>
+    <comment>Sync changes with sle</comment>
+    <requestid>979206</requestid>
+  </revision>
 </revisionlist>

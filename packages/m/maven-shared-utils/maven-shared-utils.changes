@@ -2,7 +2,25 @@
 Mon Apr 25 15:44:47 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.3.3
-  * fixes bsc#1198833, CVE-2022-29599
+  * Bug
+    + [MSHARED-297] - Commandline class shell injection
+      vulnerabilities (bsc#1198833, CVE-2022-29599)
+    + [MSHARED-416] - Odd number of quotes in command-line fails
+    + [MSHARED-431] - # (Hash-Sign) should trigger quoting in
+      BourneShell.java
+    + [MSHARED-681] - Maven-Shared: Java7Support silently fails
+      overwriting symlinks
+    + [MSHARED-749] - Commandline does not thrown
+      CommandLineException when uneven number of quotation marks
+      used
+    + [MSHARED-750] - Unbalanced quotes in command with escaped
+      double quotation mark
+  * Improvement
+    + [MSHARED-684] - Upgrade parent to 31
+    + [MSHARED-748] - Upgrade maven-shared-parent to 32
+    + [MSHARED-826] - Require Java 7
+    + [MSHARED-879] - make build Reproducible
+    + [MSHARED-881] - try with resources in FileUtils
 
 -------------------------------------------------------------------
 Sun Mar 20 17:58:48 UTC 2022 - Fridrich Strba <fstrba@suse.com>
