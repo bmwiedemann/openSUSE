@@ -1,7 +1,7 @@
 #
 # spec file for package python-Js2Py
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Js2Py
-Version:        0.70
+Version:        0.71
 Release:        0
 Summary:        JavaScript to Python Translator & JavaScript interpreter
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/PiotrDabkowski/Js2Py
 Source:         https://files.pythonhosted.org/packages/source/J/Js2Py/Js2Py-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/PiotrDabkowski/Js2Py/master/LICENSE.md 
+Source1:        https://raw.githubusercontent.com/PiotrDabkowski/Js2Py/master/LICENSE.md
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
