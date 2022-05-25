@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 24 11:15:56 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Handle update case as well (boo#1199754)
+
+-------------------------------------------------------------------
 Mon Jul 18 12:29:42 UTC 2016 - fvogt@suse.com
 
 - Use update-xml-catalog

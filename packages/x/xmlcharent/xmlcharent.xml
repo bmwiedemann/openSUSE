@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
-	<rewriteSystem systemIdStartString="http://www.oasis-open.org/docbook/xmlcharent/0.3/" rewritePrefix="file://__DIR__/entities/"/>
+  <group id="xmlcharent">
+    <rewriteSystem systemIdStartString="http://www.oasis-open.org/docbook/xmlcharent/0.3/" rewritePrefix="file://__DIR__/entities/"/>
 	<public publicId="ISO 8879:1986//ENTITIES Publishing//EN//XML" uri="file://__DIR__/entities/iso-pub.ent"/>
 	<public publicId="ISO 8879:1986//ENTITIES Greek Letters//EN//XML" uri="file://__DIR__/entities/iso-grk1.ent"/>
 	<public publicId="ISO 8879:1986//ENTITIES Box and Line Drawing//EN//XML" uri="file://__DIR__/entities/iso-box.ent"/>
@@ -19,5 +20,6 @@
 	<public publicId="ISO 8879:1986//ENTITIES Added Math Symbols: Binary Operators//EN//XML" uri="file://__DIR__/entities/iso-amsb.ent"/>
 	<public publicId="ISO 8879:1986//ENTITIES Added Latin 2//EN//XML" uri="file://__DIR__/entities/iso-lat2.ent"/>
 	<public publicId="ISO 8879:1986//ENTITIES Added Math Symbols: Relations//EN//XML" uri="file://__DIR__/entities/iso-amsr.ent"/>
-	<public publicId="ISO 8879:1986//ENTITIES Non-Russian Cyrillic//EN//XML" uri="file://__DIR__/entities/iso-cyr2.ent"/>
+    <public publicId="ISO 8879:1986//ENTITIES Non-Russian Cyrillic//EN//XML" uri="file://__DIR__/entities/iso-cyr2.ent"/>
+  </group>
 </catalog>

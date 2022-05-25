@@ -1,7 +1,7 @@
 #
 # spec file for package xmlcharent
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,13 +22,13 @@ Release:        0
 Summary:        XML Character Entities
 License:        BSD-3-Clause
 Group:          Productivity/Publishing/XML
-Url:            http://www.oasis-open.org/docbook/xmlcharent/
+URL:            http://www.oasis-open.org/docbook/xmlcharent/
 Source0:        xmlcharent-0.3.tar.bz2
 Source1:        xmlcharent.xml
 Source2:        xmlcharent.sgml
 Requires:       sgml-skel >= 0.7
 Requires(post): sgml-skel >= 0.7
-Requires(postun): sgml-skel >= 0.7
+Requires(postun):sgml-skel >= 0.7
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -55,7 +55,10 @@ sgml-register-catalog -a %{_datadir}/%{name}/%{name}.sgml
 
 %postun
 update-xml-catalog
-sgml-register-catalog -r %{_datadir}/%{name}/%{name}.sgml
+if ! test -e %{_datadir}/%{name}/%{name}.sgml
+then
+    sgml-register-catalog -r %{_datadir}/%{name}/%{name}.sgml
+fi
 
 %files
 %defattr(-, root, root)

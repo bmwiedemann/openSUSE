@@ -127,4 +127,12 @@
     <comment>1</comment>
     <requestid>411817</requestid>
   </revision>
+  <revision rev="20" vrev="429">
+    <srcmd5>5f58d7d4df101e552446a07fd4f488b9</srcmd5>
+    <version>0.3</version>
+    <time>1653503640</time>
+    <user>dimstar_suse</user>
+    <comment>- Handle update case as well (boo#1199754)</comment>
+    <requestid>978943</requestid>
+  </revision>
 </revisionlist>
