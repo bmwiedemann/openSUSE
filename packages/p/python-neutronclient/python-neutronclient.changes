@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 24 20:55:51 UTC 2022 - cloud-devel@suse.de
+
+- update to version 7.8.0
+  - Replace deprecated assertDictContainsSubset
+  - Update master for stable/xena
+  - Fix lower-constraints and neutronclient-functional job
+  - Add support for minimum packet rate rule to the client
+  - Add CURD actions for packet rate limit rule
+  - Add support for 'smart-nic' vnic-type
+  - Update python testing classifier
+  - Add Python3 yoga unit tests
+
+-------------------------------------------------------------------
 Tue Oct 26 21:30:23 UTC 2021 - cloud-devel@suse.de
 
 - update to version 7.6.0

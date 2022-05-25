@@ -553,4 +553,20 @@
   - Set when deprecated neutron client CLI will be removed</comment>
     <requestid>935034</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8b765109683b8218c20920e4cb1b8417</srcmd5>
+    <version>7.8.0</version>
+    <time>1653503663</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 7.8.0
+  - Replace deprecated assertDictContainsSubset
+  - Update master for stable/xena
+  - Fix lower-constraints and neutronclient-functional job
+  - Add support for minimum packet rate rule to the client
+  - Add CURD actions for packet rate limit rule
+  - Add support for 'smart-nic' vnic-type
+  - Update python testing classifier
+  - Add Python3 yoga unit tests</comment>
+    <requestid>979064</requestid>
+  </revision>
 </revisionlist>
