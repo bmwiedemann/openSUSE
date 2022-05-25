@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed May 25 13:14:55 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 6.2.8
+  * Fixes:
+    + #121: Fix issues outlined by "lgtm.com"'s static analysis
+    + #136: 'com.ctc.wstx.evt' is not exported in 'module-info.java'
+    + #132: 'copyEventFromReader()' Processing Instruction event bug
+    + A few LGTM.com fixes
+    + #125: 'ArrayIndexOutOfBoundsException' for UTF-32 encoded data
+    + #127: Invalid attributes producing extra null characters
+      during DTD validation
+    + #123: NPE for content that only has XML declaration and
+      unknown encoding
+    + #124: ArrayIndexOutOfBoundsException for 4-byte UTF-8
+      character at end of CDATA
+    + #122: Expected either attr limit (2147483647) >=
+      currAttrSize (0) OR >= outBuf.length (96)
+
+-------------------------------------------------------------------
 Wed Mar 23 11:36:02 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 8
@@ -38,6 +57,27 @@ Fri Jun  4 17:15:20 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 Tue Mar 31 06:35:08 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 6.1.1
+  * Fixes:
+    + Fix for #96 (see below) had an issue leading to
+      non-functioning RelaxNG, W3C Schema validation
+    + #96: woodstox-core.jar 6.0.2 uses JDK-11 removed internal
+      APIs
+    + #88: Missing closing quote for attribute values during in
+      Validating output mode
+    + #93: Stax2 'maxAttributeSize' limit is only vaguely
+      respected
+    + #97: 'copyEventFromReader()' 'ArrayIndexOutOfBoundsException'
+    + #85: OSGi dependency on relaxng should be 'optional'
+    + #82: Recycled buffers in XMLStreamWriter are colliding between
+      multiple writer instances when used in an Akka stream
+    + #78: Shade MSV dependency
+    + Add 'module-info.class' for Java 9+ module system
+    + #58: Reading comment comments after Root Element closed
+      sometimes throws 'NullPointerException'
+    + #61: Add support for 'XMLConstants.FEATURE_SECURE_PROCESSING'
+      via SAX/Stax factories
+    + #74: Infinite loop in BijectiveNsMap#addGeneratedMapping when
+      ctxt.getNamespaceURI(prefix) returns an empty String
 - Removed patch:
   * 0001-stax2-api.patch
     + Not needed any more with this version

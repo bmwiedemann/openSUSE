@@ -19,7 +19,7 @@
 %global base_name woodstox
 %global core_name %{base_name}-core
 Name:           %{core_name}
-Version:        6.2.6
+Version:        6.2.8
 Release:        0
 Summary:        XML processor
 License:        Apache-2.0
@@ -60,6 +60,7 @@ This package contains the API documentation for %{name}.
 
 # we don't care about Java 9 modules (yet)
 %pom_remove_plugin :moditect-maven-plugin
+%pom_remove_plugin :jacoco-maven-plugin
 
 # replace felix-osgi-core with osgi-core
 %pom_change_dep -r :org.osgi.core org.osgi:osgi.core
