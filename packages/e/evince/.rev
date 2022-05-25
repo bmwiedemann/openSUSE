@@ -1256,4 +1256,12 @@
     <comment> (forwarded request 971101 from dimstar)</comment>
     <requestid>973129</requestid>
   </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>e94bdaea707b5fad2ff78d70bed120b6</srcmd5>
+    <version>42.3</version>
+    <time>1653503636</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 42.3 (forwarded request 978737 from dimstar)</comment>
+    <requestid>978920</requestid>
+  </revision>
 </revisionlist>
