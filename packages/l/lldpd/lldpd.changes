@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May 21 21:42:16 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Upate to version 1.0.14
+  Changes:
+  * Add configure commands to alter inventory TLVs.
+  Fixes:
+  * Update seccomp rules for newer kernel/libc.
+  * Correctly handle an interface whose index has changed.
+  * Don't send VLANs when there are too many.
+
+-------------------------------------------------------------------
 Sun Nov 14 12:44:04 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to versino 1.0.13
