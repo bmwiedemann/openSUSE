@@ -50,4 +50,14 @@
 </comment>
     <requestid>951788</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e11138d41bfe02f435da8e031a8ad341</srcmd5>
+    <version>1638580181.839d06a</version>
+    <time>1653503668</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix compatibility with GCC12:
+  - add 0005-fix-gcc12-werror-address.patch
+  - add 0006-fix-gcc12-bind2nd-deprecated.patch</comment>
+    <requestid>979054</requestid>
+  </revision>
 </revisionlist>

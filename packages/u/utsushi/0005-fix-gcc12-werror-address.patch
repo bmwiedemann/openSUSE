@@ -1,0 +1,29 @@
+--- gtkmm/file-chooser.cpp	2022-05-24 21:03:51.102152372 +0200
++++ gtkmm/file-chooser.cpp	2022-05-24 21:34:25.226183683 +0200
+@@ -268,7 +268,7 @@
+                          " format or use one of the known file extensions."))
+             % ext).str ());
+
+-        if (dynamic_cast< Gtk::Window * > (this))
++        if (auto *ptr = dynamic_cast< Gtk::Window * > (this); ptr != nullptr)
+           get_group ()->add_window (tbd);
+
+         tbd.run ();
+@@ -293,7 +293,7 @@
+                            " a filename such as 'Untitled-%%3i%2%'."))
+               % fmt % get_current_extension ()).str ());
+
+-          if (dynamic_cast< Gtk::Window * > (this))
++          if (auto *ptr = dynamic_cast< Gtk::Window * > (this); ptr != nullptr)
+             get_group ()->add_window (tbd);
+
+           tbd.run ();
+@@ -346,7 +346,7 @@
+   tbd.add_button (Gtk::Stock::YES, Gtk::RESPONSE_ACCEPT);
+   tbd.set_default_response (Gtk::RESPONSE_ACCEPT);
+
+-  if (dynamic_cast< Gtk::Window * > (this))
++  if (auto *ptr = dynamic_cast< Gtk::Window * > (this); ptr != nullptr)
+     get_group ()->add_window (tbd);
+
+   if (Gtk::RESPONSE_ACCEPT != tbd.run ())

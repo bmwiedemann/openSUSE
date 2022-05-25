@@ -1,0 +1,19 @@
+--- drivers/esci/vector.hpp	2022-05-24 21:03:51.262152375 +0200
++++ drivers/esci/vector.hpp	2022-05-24 22:00:34.382210471 +0200
+@@ -82,14 +82,14 @@
+     vector& operator*= (const T& t)
+     {
+       std::transform (this->begin (), this->end (), this->begin (),
+-                      std::bind2nd (std::multiplies<T> (), t));
++                      std::bind (std::multiplies<T> (), std::placeholders::_1, t));
+       return *this;
+     }
+
+     vector& operator/= (const T& t)
+     {
+       std::transform (this->begin (), this->end (), this->begin (),
+-                      std::bind2nd (std::divides<T> (), t));
++                      std::bind (std::divides<T> (), std::placeholders::_1, t));
+       return *this;
+     }
+

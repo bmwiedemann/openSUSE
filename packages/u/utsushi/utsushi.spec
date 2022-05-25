@@ -28,6 +28,8 @@ Patch0:         0001-drivers-avoid-library-version-for-dynamically-loadab.patch
 Patch1:         0002-avoid-version-for-dynamic-libs.patch
 Patch2:         0003-fix-uint-deprecation.patch
 Patch3:         0004-change-sane-version-check.patch
+Patch4:         0005-fix-gcc12-werror-address.patch
+Patch5:         0006-fix-gcc12-bind2nd-deprecated.patch
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -75,6 +77,8 @@ This is the community maintained fork, based on imagescan upstream.
 %patch1
 %patch2
 %patch3
+%patch4
+%patch5
 ./bootstrap
 
 %build
