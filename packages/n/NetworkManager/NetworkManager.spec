@@ -95,6 +95,7 @@ BuildRequires:  ppp-devel
 BuildRequires:  python3-dbus-python
 BuildRequires:  readline-devel
 BuildRequires:  rp-pppoe
+BuildRequires:  wireless-tools
 BuildRequires:  perl(YAML)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1) >= 0.94
@@ -137,9 +138,6 @@ Recommends:     iproute2
 Recommends:     iptables
 Recommends:     iputils
 Recommends:     org.freedesktop.ModemManager
-# Recommend -wifi. Preferably it should be auto-triggered for install
-# when a wifi chip is found, but that is not yet implemented (boo#1199550)
-Recommends:     %{name}-wifi
 # Provides required by sysconfig. The latter is used by older versions.
 Provides:       dhcdbd = 1.14
 Provides:       service(network)
@@ -148,6 +146,12 @@ Obsoletes:      dhcdbd < 1.14
 Obsoletes:      libnm-glib-vpn1 < 1.32
 Obsoletes:      libnm-glib4 < 1.32
 Obsoletes:      libnm-util2 < 1.32
+# NetworkManager-wifi was folded back into the main package
+# The dep chain is not really different and it causes too many
+# problems for users having that split. Not worth the pain
+Provides:       NetworkManager-wifi = %{version}
+Obsoletes:      NetworkManager-wifi <= %{version}
+
 %{?systemd_ordering}
 
 %description
@@ -230,16 +234,6 @@ Supplements:    (NetworkManager and bluez)
 
 %description bluetooth
 This package contains NetworkManager support for Bluetooth devices.
-
-%package wifi
-Summary:        Wifi plugin for NetworkManager
-Group:          System Environment/Base
-BuildRequires:  wireless-tools
-Requires:       %{name} = %{version}
-Requires:       wpa_supplicant >= 0.6.4
-
-%description wifi
-This package contains NetworkManager support for Wifi and OLPC devices.
 
 %package wwan
 Summary:        Mobile broadband device plugin for NetworkManager
@@ -414,6 +408,7 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %{_mandir}/man8/nm-initrd-generator.8%{?ext_man}
 %dir %{_libdir}/NetworkManager
 %dir %{_libdir}/NetworkManager/%{version}
+%{_libdir}/NetworkManager/%{version}/libnm-device-plugin-wifi.so
 %{_libexecdir}/nm-daemon-helper
 %{_libexecdir}/nm-dhcp-helper
 %{_libexecdir}/nm-dispatcher
@@ -479,9 +474,6 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 
 %files bluetooth
 %{_libdir}/NetworkManager/%{version}/libnm-device-plugin-bluetooth.so
-
-%files wifi
-%{_libdir}/NetworkManager/%{version}/libnm-device-plugin-wifi.so
 
 %files wwan
 %{_libdir}/NetworkManager/%{version}/libnm-device-plugin-wwan.so

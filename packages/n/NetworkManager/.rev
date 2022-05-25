@@ -2010,4 +2010,17 @@ WANTED for 13.1 - BLUEZ5 FIX (forwarded request 203010 from Zaitor)</comment>
     <comment></comment>
     <requestid>977658</requestid>
   </revision>
+  <revision rev="241" vrev="2">
+    <srcmd5>ae86f409d3527a3350c1d075196f958f</srcmd5>
+    <version>1.38.0</version>
+    <time>1653503646</time>
+    <user>dimstar_suse</user>
+    <comment>- Fold NetworkManager-wifi back into the main package: The dep
+  chain is not really different and it causes too many problems for
+  users having that split. Not worth the pain (boo#1199710,
+  boo#1199706).
+- As a consequence, also drop the recommends fro the main package
+  to -wifi.</comment>
+    <requestid>979001</requestid>
+  </revision>
 </revisionlist>

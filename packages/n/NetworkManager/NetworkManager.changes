@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 24 14:23:15 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fold NetworkManager-wifi back into the main package: The dep
+  chain is not really different and it causes too many problems for
+  users having that split. Not worth the pain (boo#1199710,
+  boo#1199706).
+- As a consequence, also drop the recommends fro the main package
+  to -wifi.
+
+
+-------------------------------------------------------------------
 Mon May 16 08:37:25 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.38.0:
