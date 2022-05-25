@@ -1,7 +1,7 @@
 #
 # spec file for package aranym
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,17 +27,17 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        afros812.zip
 Patch:          pow10.patch
 Patch1:         lto.patch
-BuildRequires:  Mesa-devel
-BuildRequires:  SDL-devel
-BuildRequires:  SDL_image-devel
 BuildRequires:  automake
 BuildRequires:  gcc-c++
-BuildRequires:  libOSMesa-devel
-BuildRequires:  libusb-1_0-devel
 BuildRequires:  mpfr-devel
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(SDL_image)
+BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(osmesa)
+BuildRequires:  pkgconfig(sdl)
+BuildRequires:  pkgconfig(zlib)
 Requires(post): permissions
 
 %description
@@ -69,9 +69,7 @@ Features:
   scsi, ide, or other emulation
 
 %prep
-%setup -q -a 1
-%patch -p1
-%patch1 -p1
+%autosetup -p1 -a1
 # Don't remove -g from CFLAGS
 sed -i -e 's,/-g,/-:,' configure.ac configure
 
@@ -82,20 +80,20 @@ sed -i -e 's,/-g,/-:,' configure.ac configure
 mkdir jit
 cd jit
 %configure %{common_opts} --enable-jit-compiler
-make %{?_smp_mflags}
+%make_build
 cd ..
 %endif
 mkdir mmu
 cd mmu
 %configure %{common_opts} --enable-lilo --enable-fullmmu
-make %{?_smp_mflags}
+%make_build
 cd ..
 %define _configure ./configure
 %configure %{common_opts}
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR=%{buildroot}
+%make_install
 %ifarch %{ix86} x86_64 %{arm}
 install -m 755 jit/aranym %{buildroot}%{_bindir}/aranym-jit
 %endif
