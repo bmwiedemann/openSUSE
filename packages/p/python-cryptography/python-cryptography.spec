@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-cryptography%{psuffix}
-Version:        36.0.2
+Version:        37.0.2
 Release:        0
 Summary:        Python library which exposes cryptographic recipes and primitives
 License:        Apache-2.0 OR BSD-3-Clause
@@ -37,7 +37,7 @@ URL:            https://cryptography.io/en/latest/
 Source0:        https://files.pythonhosted.org/packages/source/c/cryptography/cryptography-%{version}.tar.gz
 Source1:        https://files.pythonhosted.org/packages/source/c/cryptography/cryptography-%{version}.tar.gz.asc
 # use `osc service disabledrun` to regenerate
-Source2:        vendor.tar.xz
+Source2:        vendor.tar.zst
 # use `osc service disabledrun` to regenerate
 Source3:        cargo_config
 Source4:        python-cryptography.keyring
@@ -52,6 +52,7 @@ BuildRequires:  libopenssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  rust >= 1.41.0
+BuildRequires:  zstd
 BuildRequires:  pkgconfig(libffi)
 # python-base is not enough, we need the _ssl module
 Requires:       python
@@ -63,6 +64,7 @@ BuildRequires:  %{python_module hypothesis >= 1.11.4}
 BuildRequires:  %{python_module iso8601}
 BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pytest > 6.0}
+BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-subtests}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytz}
@@ -84,6 +86,7 @@ functions.
 %autosetup -a2 -p1 -n cryptography-%{version}
 mkdir .cargo
 cp %{SOURCE3} .cargo/config
+rm -v src/rust/Cargo.lock
 
 %build
 export RUSTFLAGS=%{rustflags}
