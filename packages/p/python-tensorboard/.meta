@@ -1,5 +1,0 @@
-<package name="python-tensorboard" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="science:machinelearning" package="python-tensorboard"/>
-</package>
