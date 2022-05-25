@@ -2,6 +2,13 @@
 Thu Jan 13 17:22:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 2.0
+  * Changes:
+    + Switch from Sonatype to Plexus
+    + Switch to the Eclipse sisu-maven-plugin
+    + Bump junit from 4.12 to 4.13.1
+    + Update codebase
+    + Bump plexus from 6.5 to 8
+    + Fix surefire warnings
   * needed by maven 3.8.4
   * needed by plexus-sec-dispatcher 2.0
 

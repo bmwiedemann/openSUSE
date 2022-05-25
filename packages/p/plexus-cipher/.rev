@@ -15,4 +15,12 @@
     <comment>2.0</comment>
     <requestid>946195</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f4d5a54e8a980a131d64a496f7705963</srcmd5>
+    <version>2.0</version>
+    <time>1653503691</time>
+    <user>dimstar_suse</user>
+    <comment>Sync changes with sle</comment>
+    <requestid>979213</requestid>
+  </revision>
 </revisionlist>
