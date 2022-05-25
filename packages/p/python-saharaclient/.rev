@@ -257,4 +257,16 @@
     <comment></comment>
     <requestid>890004</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5937c6af6d9f1a4b4bfd1b74b1d010de</srcmd5>
+    <version>3.5.0</version>
+    <time>1653503673</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.5.0
+  - Update master for stable/xena
+
+- update to version 3.4.0
+  - Update master for stable/wallaby</comment>
+    <requestid>979073</requestid>
+  </revision>
 </revisionlist>
