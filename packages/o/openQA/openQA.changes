@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 25 01:44:44 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1653423899.eb3c8f7:
+  * Add a limit for the maximum number of jobs to include in /tests/overview
+  * Fix showing too many expand/collapse buttons on test overview
+  * Don't log_debug git stdout in all cases
+  * Improve debugging of _carry_over_candidate
+  * Make button to toggle parallel children easier to click
+  * Add "Expand all parallel children" button on test result overview
+
+-------------------------------------------------------------------
 Sun May 22 17:42:48 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1653068134.449d730:
