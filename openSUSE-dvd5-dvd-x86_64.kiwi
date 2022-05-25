@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20220523" schemaversion="4.1">
+<image name="OBS__openSUSE___20220524" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220523</productvar>
+      <productvar name="VERSION">20220524</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220523,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220524,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220523/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220524/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -788,7 +788,6 @@
       <repopackage name="gstreamer-plugins-good-lang"/>
       <repopackage name="gstreamer-plugins-good-qtqml"/>
       <repopackage name="gstreamer-plugins-libav"/>
-      <repopackage name="gstreamer-plugins-rs"/>
       <repopackage name="gstreamer-plugins-ugly"/>
       <repopackage name="gstreamer-plugins-ugly-lang"/>
       <repopackage name="gstreamer-utils"/>
@@ -905,7 +904,6 @@
       <repopackage name="hyper-v"/>
       <repopackage name="iagno"/>
       <repopackage name="iagno-lang"/>
-      <repopackage name="ibmtss-base"/>
       <repopackage name="ibus"/>
       <repopackage name="ibus-dict-emoji"/>
       <repopackage name="ibus-gtk"/>
@@ -1583,7 +1581,7 @@
       <repopackage name="libdar64-6000"/>
       <repopackage name="libdatrie1"/>
       <repopackage name="libdatrie1-32bit" arch="x86_64"/>
-      <repopackage name="libdav1d5"/>
+      <repopackage name="libdav1d6"/>
       <repopackage name="libdazzle-1_0-0"/>
       <repopackage name="libdazzle-lang"/>
       <repopackage name="libdb-4_8"/>
@@ -1675,6 +1673,7 @@
       <repopackage name="libexttextcat"/>
       <repopackage name="libexttextcat-2_0-0"/>
       <repopackage name="libf2fs8"/>
+      <repopackage name="libfa1"/>
       <repopackage name="libfakekey0"/>
       <repopackage name="libfarstream-0_2-5"/>
       <repopackage name="libfastjson4"/>
@@ -1944,7 +1943,6 @@
       <repopackage name="libHX32"/>
       <repopackage name="libHX32-32bit" arch="x86_64"/>
       <repopackage name="libhyphen0"/>
-      <repopackage name="libibmtss1"/>
       <repopackage name="libibus-1_0-5"/>
       <repopackage name="libibus-1_0-5-32bit" arch="x86_64"/>
       <repopackage name="libibverbs"/>

@@ -2012,10 +2012,6 @@ unsorted:
   - clang13-devel 
   - clang13-doc 
   - clang14-devel 
-  - clang9 
-  - clang9-devel 
-  - clang9-devel-32bit: [x86_64] 
-  - clang9-doc 
   - clanlib 
   - clanlib-devel 
   - clanlib-doc 
@@ -4307,6 +4303,8 @@ unsorted:
   - geary 
   - geary-lang 
   - gebaar-libinput 
+  - gecode-devel 
+  - gecode-minizinc 
   - gede 
   - gedit-devel 
   - gedit-latex-lang 
@@ -6281,6 +6279,7 @@ unsorted:
   - gperftools-doc 
   - gperiodic 
   - gperiodic-lang 
+  - gpg2-tpm 
   - gphoto 
   - gphoto2-webcam 
   - gphotofs 
@@ -6471,6 +6470,7 @@ unsorted:
   - gstreamer-plugins-good-jack-32bit: [x86_64] 
   - gstreamer-plugins-libav-32bit: [x86_64] 
   - gstreamer-plugins-libcamera 
+  - gstreamer-plugins-rs 
   - gstreamer-plugins-rs-devel 
   - gstreamer-plugins-ugly-32bit: [x86_64] 
   - gstreamer-plugins-vaapi 
@@ -7042,6 +7042,7 @@ unsorted:
   - ibm-data-db2 
   - ibmswtpm2 
   - ibmtss 
+  - ibmtss-base 
   - ibmtss-devel 
   - ibsim 
   - ibus-anthy 
@@ -8671,7 +8672,7 @@ unsorted:
   - lapacke-devel 
   - lapacke-devel-32bit: [x86_64] 
   - lapacke-devel-static 
-  - lapce 
+  - lapce: [x86_64] 
   - lapdog 
   - laptop-mode-tools 
   - laptop-mode-tools-gui 
@@ -9022,16 +9023,12 @@ unsorted:
   - libLLVM13 
   - libLLVM13-32bit: [x86_64] 
   - libLLVM14-32bit: [x86_64] 
-  - libLLVM9 
-  - libLLVM9-32bit: [x86_64] 
   - libLTO11 
   - libLTO11-32bit: [x86_64] 
   - libLTO12 
   - libLTO12-32bit: [x86_64] 
   - libLTO13 
   - libLTO14 
-  - libLTO9 
-  - libLTO9-32bit: [x86_64] 
   - libLimeSuite20_10-1 
   - libMagick++-7_Q16HDRI5 
   - libMagick++-7_Q16HDRI5-32bit: [x86_64] 
@@ -9643,7 +9640,7 @@ unsorted:
   - libagdb-devel 
   - libagdb-tools 
   - libagdb1 
-  - libags3 
+  - libags4 
   - libaio-devel 
   - libaio-devel-32bit: [x86_64] 
   - libaio1-32bit: [x86_64] 
@@ -10290,8 +10287,6 @@ unsorted:
   - libclang11-32bit: [x86_64] 
   - libclang12 
   - libclang12-32bit: [x86_64] 
-  - libclang9 
-  - libclang9-32bit: [x86_64] 
   - libclastfm-devel 
   - libclaw-devel 
   - libclaw-doc 
@@ -10487,7 +10482,7 @@ unsorted:
   - libdatovka-devel 
   - libdatovka2 
   - libdatrie-devel 
-  - libdav1d5-32bit: [x86_64] 
+  - libdav1d6-32bit: [x86_64] 
   - libdavix0 
   - libdazzle-devel 
   - libdb-4_8-32bit: [x86_64] 
@@ -10787,6 +10782,7 @@ unsorted:
   - libexttextcat-tools 
   - libf2c0 
   - libf2fs_format7 
+  - libfa1-32bit: [x86_64] 
   - libfabric 
   - libfabric-devel 
   - libfabric-devel-32bit: [x86_64] 
@@ -10920,7 +10916,7 @@ unsorted:
   - libfole-devel 
   - libfole1 
   - libfolks-telepathy26 
-  - libfolly-v2022_01_24_00 
+  - libfolly-v2022_05_23_00 
   - libfoma0 
   - libfont-specimen0 
   - libfontenc-devel: [i586] # devel package of common_locks:libfontenc1 
@@ -11104,6 +11100,7 @@ unsorted:
   - libgdruntime3 
   - libgdruntime3-32bit: [x86_64] 
   - libgeany0 
+  - libgecode51 
   - libgee-0_8-2-32bit: [x86_64] 
   - libgee-devel 
   - libgee06-devel 
@@ -11655,6 +11652,7 @@ unsorted:
   - libibdm1 
   - libibmad5 
   - libibmad5-32bit: [x86_64] 
+  - libibmtss1 
   - libibnetdisc5 
   - libibumad3 
   - libibumad3-32bit: [x86_64] 
@@ -11759,9 +11757,6 @@ unsorted:
   - libiodbc-devel 
   - libiodbc2 
   - libiodbcadm2 
-  - libiomp5: [x86_64] 
-  - libiomp5-gnu-hpc: [x86_64] 
-  - libiomp5-gnu-openmpi2-hpc: [x86_64] 
   - libipa_hbac-devel 
   - libipa_hbac0 
   - libiperf0 
@@ -12053,7 +12048,6 @@ unsorted:
   - liblldb12: [x86_64] 
   - liblldb13: [x86_64] 
   - liblldb14: [x86_64] 
-  - liblldb9: [x86_64] 
   - liblldp_clif1: [i586] 
   - liblldpctl4 
   - liblmdb-0_9_29-32bit: [x86_64] 
@@ -12686,7 +12680,6 @@ unsorted:
   - libomp12-devel 
   - libomp13-devel 
   - libomp14-devel 
-  - libomp9-devel 
   - libonnx 
   - libonnx_proto 
   - libonnxifi_dummy 
@@ -14255,15 +14248,6 @@ unsorted:
   - libtelepathy-qt5-service1 
   - libtelepathy-qt5-service1-32bit: [x86_64] 
   - libtemplate_glib-1_0-0 
-  - libtensorflow2: [x86_64] 
-  - libtensorflow2-gnu-hpc: [x86_64] 
-  - libtensorflow2-gnu-openmpi2-hpc: [x86_64] 
-  - libtensorflow_cc2: [x86_64] 
-  - libtensorflow_cc2-gnu-hpc: [x86_64] 
-  - libtensorflow_cc2-gnu-openmpi2-hpc: [x86_64] 
-  - libtensorflow_framework2: [x86_64] 
-  - libtensorflow_framework2-gnu-hpc: [x86_64] 
-  - libtensorflow_framework2-gnu-openmpi2-hpc: [x86_64] 
   - libtepl-6-0 
   - libteredo5 
   - libterminalwidget5-0 
@@ -15264,7 +15248,6 @@ unsorted:
   - lld12 
   - lld13 
   - lld14 
-  - lld9 
   - lldb: [x86_64] 
   - lldb-devel: [x86_64] 
   - lldb11: [x86_64] 
@@ -15275,8 +15258,6 @@ unsorted:
   - lldb13-devel: [x86_64] 
   - lldb14: [x86_64] 
   - lldb14-devel: [x86_64] # devel package of dvd:libLLVM14 
-  - lldb9: [x86_64] 
-  - lldb9-devel: [x86_64] 
   - lldpd 
   - lldpd-devel 
   - llmnrd 
@@ -15331,17 +15312,6 @@ unsorted:
   - llvm14-polly 
   - llvm14-polly-devel 
   - llvm14-vim-plugins 
-  - llvm9 
-  - llvm9-LTO-devel 
-  - llvm9-LTO-devel-32bit: [x86_64] 
-  - llvm9-devel 
-  - llvm9-devel-32bit: [x86_64] 
-  - llvm9-doc 
-  - llvm9-gold 
-  - llvm9-opt-viewer 
-  - llvm9-polly 
-  - llvm9-polly-devel 
-  - llvm9-vim-plugins 
   - lmarbles 
   - lmdb 
   - lmdb-devel 
@@ -21760,7 +21730,6 @@ unsorted:
   - python3-lldb12: [x86_64] 
   - python3-lldb13: [x86_64] 
   - python3-lldb14: [x86_64] 
-  - python3-lldb9: [x86_64] 
   - python3-logreduce 
   - python3-lttngust 
   - python3-magnumclient 
@@ -21878,7 +21847,6 @@ unsorted:
   - python3-tdb-32bit: [x86_64] 
   - python3-tensorboard 
   - python3-tensorboard-cmd 
-  - python3-tensorflow-estimator: [x86_64] 
   - python3-tevent-32bit: [x86_64] 
   - python3-tooz 
   - python3-tvtk 
@@ -32066,6 +32034,9 @@ unsorted:
   - rbd-fuse: [x86_64] 
   - rbd-mirror: [x86_64] 
   - rbd-nbd: [x86_64] 
+  - rbenv 
+  - rbenv-bash-completion 
+  - rbenv-zsh-completion 
   - rbutil 
   - rcc-runtime 
   - rclone 
@@ -32140,6 +32111,7 @@ unsorted:
   - remmina-plugin-exec 
   - remmina-plugin-gvnc 
   - remmina-plugin-kwallet 
+  - remmina-plugin-python-wrapper: [i586] 
   - remmina-plugin-spice 
   - remmina-plugin-www 
   - remontoire 
@@ -32357,6 +32329,7 @@ unsorted:
   - rubberband-vamp 
   - rubberband-vamp-32bit: [x86_64] 
   - ruby-apparmor 
+  - ruby-build 
   - ruby-bundled-gems-rpmhelper 
   - ruby-common-rails 
   - ruby-devel 
@@ -33516,19 +33489,6 @@ unsorted:
   - template-resolver 
   - template-resolver-javadoc 
   - tennebon-dynamic-wallpaper 
-  - tensorflow2: [x86_64] 
-  - tensorflow2-devel: [x86_64] 
-  - tensorflow2-doc: [x86_64] 
-  - tensorflow2-gnu-hpc: [x86_64] 
-  - tensorflow2-gnu-openmpi2-hpc: [x86_64] 
-  - tensorflow2-lite: [x86_64] 
-  - tensorflow2-lite-devel: [x86_64] 
-  - tensorflow2_2_7_1-gnu-hpc: [x86_64] 
-  - tensorflow2_2_7_1-gnu-hpc-devel: [x86_64] 
-  - tensorflow2_2_7_1-gnu-hpc-doc: [x86_64] 
-  - tensorflow2_2_7_1-gnu-openmpi2-hpc: [x86_64] 
-  - tensorflow2_2_7_1-gnu-openmpi2-hpc-devel: [x86_64] 
-  - tensorflow2_2_7_1-gnu-openmpi2-hpc-doc: [x86_64] 
   - tepl-6-lang 
   - tepl-devel 
   - termcap 
@@ -42565,7 +42525,7 @@ unsorted:
   - typelib-1_0-Jsonrpc-1_0 
   - typelib-1_0-Keybinder-0_0 
   - typelib-1_0-Keybinder-3_0 
-  - typelib-1_0-Libags-3_0 
+  - typelib-1_0-Libags-4_0 
   - typelib-1_0-Libinsane-1_0 
   - typelib-1_0-Libmsi-1_0 
   - typelib-1_0-LibvirtGConfig-1_0 
