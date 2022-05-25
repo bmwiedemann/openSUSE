@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 25 02:00:37 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Update vendored dependencies
+- Correct ordering of _service entries due to a recompress confusion
+
+-------------------------------------------------------------------
 Wed Mar 23 07:33:52 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - spec: /etc/pam.d/greetd should be %config(noreplace) on SLE
