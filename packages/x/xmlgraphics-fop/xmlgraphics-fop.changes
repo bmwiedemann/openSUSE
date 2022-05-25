@@ -2,6 +2,43 @@
 Fri Jan 28 12:52:15 UTC 2022 - Quang Tran <quang.tran@suse.com>
 
 - version 2.7
+  * Changes:
+    + FOP-2928: PDFDocumentGraphics2D does not clear content on
+      nextPage()
+    + FOP-2943: NPE when inline character is a white space
+    + FOP-2973: Cannot use custom schemes starting with "data" in
+      resource resolver
+    + FOP-2997: Double byte glyphs not working in SVG font
+    + FOP-2999: Rollback after checking next page
+    + FOP-3000: Absolute positioning wrong with AFP TTF
+    + FOP-3002: Optimise memory usage for data uri
+    + FOP-3006: XMP Metadata in created PDF/A-2 documents is not
+      valid
+    + FOP-3008: Table with linefeed-treatment may give
+      ClassCastException
+    + FOP-3014: ConcurrentModificationException for table cell
+    + FOP-3016: Reorder thai marks for zero width
+    + FOP-3017: Add option to disable positioning per char
+    + FOP-3018: Allow to disable AFP page group
+    + FOP-3019: Merge useragent encryption params with fop.xconf
+    + FOP-3021: Improve validation of border property
+    + FOP-3024: Make sure even number of bytes are output per trn
+      for AFP TTF
+    + FOP-3025: Keep table size on changing ipd which has graphics
+    + FOP-3026: Fix NPE with empty table header
+    + FOP-3027: Sections of text sometimes lost with span=all
+      multiple columns
+    + FOP-3028: Set values in fopFactoryBuilder setConfiguration
+    + FOP-3030: AFP page overlay was written twice
+    + FOP-3031: Add MCF before MDR in AFP
+    + FOP-3032: Allow to embed native PDF in AFP
+    + FOP-3033: Update PDFBox to 2.0.21
+    + FOP-3034: Update PDFBox to 2.0.24
+    + FOP-3038: Allow sections which need security permissions to
+      be run when AllPermission denied in caller code
+    + FOP-3039: AFP include-page-overlay missing X and Y via IF
+    + FOP-3046: Don't use page position only on redo of layout
+    + XGC-128: Remove image transparency for PS
   * Allow to embed native PDF in AFP
 - Added patch:
   * update-2.7.patch
@@ -10,6 +47,31 @@ Fri Jan 28 12:52:15 UTC 2022 - Quang Tran <quang.tran@suse.com>
 Sun Jan 24 18:01:22 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - version 2.6
+  * Changes:
+    + FOP-1648: Fix pdf internal named destinations
+    + FOP-2536: Allow overpaint of PDF border
+    + FOP-2889: Make JAI optional
+    + FOP-2919: NPE printing
+    + FOP-2935: Make servlet a compile only dependency
+    + FOP-2939: Upgrade ant to 1.9.15
+    + FOP-2941: SVG container with stroke=black has an unexpected
+      border
+    + FOP-2945: Don't use change ipd on columns where it won't fit
+    + FOP-2950: Display font error at top level exception
+    + FOP-2957: Don't change ipd on lastpage if column count changes
+    + FOP-2958: Error when using both AFP truetype and base14 font
+    + FOP-2960: Soft-Hyphen on Hyphenated words
+    + FOP-2975: Put composite glyphs to separate font
+    + FOP-2978: Include composite glyphs in otf subset
+    + FOP-2979: Update PDFBox to 2.0.19
+    + FOP-2980: Reduce filesize for AFP Graphics2D
+    + FOP-2981: Convert CFF CID to Type1
+    + FOP-2989: Missing text in AFP output when using high
+      resolution
+    + FOP-2990: Changing ipd doesn't handle table narrowing
+    + FOP-2992: List broken too early without change ipd
+    + FOP-2994: Support OTF/TTF SVG fonts
+    + XGC-123: Decode image at page load rather than document load
   * Support OTF/TTF SVG fonts
   * Allow overpaint of PDF border
 
@@ -22,6 +84,29 @@ Sat Jan 23 18:39:32 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 Thu Jun  4 05:13:44 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - version 2.5
+  * Changes:
+    + FOP-1606: Incorrect border when using number-columns-spanned
+      in RTF
+    + FOP-2704: Don't fail on coverage set class table not
+      supported
+    + FOP-2889: Make JAI optional
+    + FOP-2892: Font substitutions not working
+    + FOP-2894: Fit table contents onto current page
+    + FOP-2895: Add missing classes to allinone jar
+    + FOP-2898: Only use zero glue for change ipd
+    + FOP-2901: NoSuchElementException on empty table footer
+    + FOP-2902: Ignore TTF reserved index range
+    + FOP-2907: Missing bounding box on repeated image for PDF/UA
+    + FOP-2908: Repeated image in header not shown in structure tree
+    + FOP-2909: Hide empty blocks from structure tree
+    + FOP-2911: Add endpage event for FO to IF
+    + FOP-2923: Allow to suppress fo:leader within empty paragaphs
+      from structure tree
+    + FOP-2924: Images not scaled or rotated in PCL
+    + FOP-2925: Change in IPD on empty block NPE
+    + FOP-2926: Add artifact type to PDF header/footer
+    + FOP-2934: Absolute element should not be removed
+  * Allow to hide empty blocks from structure tre
   * Does not need avalon-framework to build or run
   * Adapt the command-line scripts by removing avalon-framework
     from classpath
