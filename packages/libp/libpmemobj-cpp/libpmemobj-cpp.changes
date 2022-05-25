@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 25 10:09:03 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.13.0
+  * Introduce experimental MPSC queue
+    (pmem::obj::experimental::mpsc_queue)
+  * Implement support for multi-reader single-writer concurrency
+    in pmem::obj::experimental::radix_tree
+  * Introduce basic_dram_inline_string which can be kept both on
+    pmem and dram
+  * Bug fixes:
+  * Fix radix_tree leaf layout to ensure proper key/value alignment
+- Add 0001-Fix-compliation-on-gcc-12.patch
+
+-------------------------------------------------------------------
 Fri Jan 22 12:36:37 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable aarch64 build

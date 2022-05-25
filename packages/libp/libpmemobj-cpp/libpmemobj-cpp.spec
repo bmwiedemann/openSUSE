@@ -1,7 +1,7 @@
 #
 # spec file for package libpmemobj-cpp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 Name:           libpmemobj-cpp
 %define lname   libpmemobj-cpp0
-Version:        1.11
+Version:        1.13.0
 Release:        0
 Summary:        C++ bindings for libpmemobj
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            http://pmem.io/pmdk/
 Source:         https://github.com/pmem/libpmemobj-cpp/archive/%version.tar.gz
+Patch1:         0001-Fix-compliation-on-gcc-12.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
@@ -70,6 +71,7 @@ Example C++ programs (with source) on how to use libpmemobj++.
 	-DTEST_SEGMENT_VECTOR_VECTOR_FIXEDSIZE=OFF \
 	-DTEST_ENUMERABLE_THREAD_SPECIFIC=OFF \
 %endif
+	-DTESTS_USE_VALGRIND:BOOL=OFF \
 	-DCMAKE_INSTALL_DOCDIR="%_docdir/%name"
 %cmake_build
 
