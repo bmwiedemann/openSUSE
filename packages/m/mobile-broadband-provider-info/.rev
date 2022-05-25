@@ -218,4 +218,12 @@
     <comment></comment>
     <requestid>962383</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>af896d9f1906ed351b2d16fc9c903822</srcmd5>
+    <version>20220511</version>
+    <time>1653503635</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 20220511 (forwarded request 978735 from dimstar)</comment>
+    <requestid>978918</requestid>
+  </revision>
 </revisionlist>

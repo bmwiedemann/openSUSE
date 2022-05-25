@@ -17,7 +17,7 @@
 
 
 Name:           mobile-broadband-provider-info
-Version:        20220315
+Version:        20220511
 Release:        0
 Summary:        Mobile Service Provider Database
 License:        SUSE-Public-Domain
