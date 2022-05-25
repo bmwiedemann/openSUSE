@@ -31,4 +31,12 @@
     <comment>3.0.0-M1</comment>
     <requestid>976411</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5eb9e28b6412ad8c744cc842ae3995c3</srcmd5>
+    <version>3.0.0~M1</version>
+    <time>1653503679</time>
+    <user>dimstar_suse</user>
+    <comment>sync changes with sle</comment>
+    <requestid>979132</requestid>
+  </revision>
 </revisionlist>
