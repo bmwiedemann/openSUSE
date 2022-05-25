@@ -801,4 +801,12 @@
   - Run functional job on Ubuntu Focal</comment>
     <requestid>939529</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>d67fcb0a63576d450f68f11bc2e6bfca</srcmd5>
+    <version>8.1.0</version>
+    <time>1653503660</time>
+    <user>dimstar_suse</user>
+    <comment>- remove unneeded dependencies</comment>
+    <requestid>979058</requestid>
+  </revision>
 </revisionlist>

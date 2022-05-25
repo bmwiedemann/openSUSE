@@ -1,7 +1,7 @@
 #
 # spec file for package python-cinderclient
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,6 @@ BuildRequires:  python3-PrettyTable >= 0.7.2
 BuildRequires:  python3-ddt
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-keystoneauth1 >= 4.3.1
-BuildRequires:  python3-mock
 BuildRequires:  python3-oslo.serialization
 BuildRequires:  python3-oslo.utils >= 4.8.0
 BuildRequires:  python3-pbr >= 5.5.0
@@ -53,7 +52,6 @@ Requires:       python3-oslo.i18n >= 5.0.1
 Requires:       python3-oslo.utils >= 4.8.0
 Requires:       python3-requests >= 2.25.1
 Requires:       python3-simplejson >= 3.5.1
-Requires:       python3-six
 %if 0%{?suse_version}
 Obsoletes:      python2-cinderclient < 6.0.0
 %endif
