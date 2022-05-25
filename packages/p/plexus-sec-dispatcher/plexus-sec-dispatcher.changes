@@ -7,6 +7,12 @@ Fri May 13 09:06:37 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 Thu Jan 13 17:21:04 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 2.0
+  * Changes:
+    + Bump plexus-utils from 3.4.0 to 3.4.1
+    + Bump plexus from 6.5 to 8
+    + Bump plexus-utils from 3.3.0 to 3.4.0 (#9)
+    + Switch from Sonatype to Plexus
+    + INFR-169, updating pom to use modello source 1.4
   * needed for maven 3.8.4
   * needed for plexus-cipher 2.0
 
