@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 23 13:12:58 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Fixed failing unit test: Added translatable message for new
+  libstorage enum type for bitlocker (bsc#1199832)
+- 4.5.6
+
+-------------------------------------------------------------------
 Mon May  9 11:28:26 UTC 2022 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Handle the new libstorage-ng "storage feature" for NILFS2
