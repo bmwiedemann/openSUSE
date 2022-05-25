@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May 24 21:37:24 UTC 2022 - cloud-devel@suse.de
+
+- update to version 2.4.0
+  - Use py3 as the default runtime for tox
+  - Update master for stable/wallaby
+  - Add Python3 xena unit tests
+  - Add Python3 yoga unit tests
+  - Update master for stable/xena
+
+-------------------------------------------------------------------
+Tue Oct 26 22:00:44 UTC 2021 - cloud-devel@suse.de
+
+- update to version 2.3.0
+  - Adds --wait argument for cluster CLI interactions
+  - Fix lower-constraints
+  - Fix config and metadata in cluster update
+  - trivial: Drop references to os-testr
+  - Update TOX_CONSTRAINTS_FILE
+
+-------------------------------------------------------------------
 Sun May  2 17:16:34 UTC 2021 - cloud-devel@suse.de
 
 - update to version 2.2.1

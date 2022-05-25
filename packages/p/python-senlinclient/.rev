@@ -217,4 +217,24 @@
     <comment></comment>
     <requestid>890005</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0469958b4b3486430ab1370f0b57b18a</srcmd5>
+    <version>2.4.0</version>
+    <time>1653503682</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.4.0
+  - Use py3 as the default runtime for tox
+  - Update master for stable/wallaby
+  - Add Python3 xena unit tests
+  - Add Python3 yoga unit tests
+  - Update master for stable/xena
+
+- update to version 2.3.0
+  - Adds --wait argument for cluster CLI interactions
+  - Fix lower-constraints
+  - Fix config and metadata in cluster update
+  - trivial: Drop references to os-testr
+  - Update TOX_CONSTRAINTS_FILE</comment>
+    <requestid>979086</requestid>
+  </revision>
 </revisionlist>
