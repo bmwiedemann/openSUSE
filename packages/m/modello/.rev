@@ -49,4 +49,12 @@
     <comment>2.0.0</comment>
     <requestid>977013</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ddf3c38f3793706f582a0ce5538d10fd</srcmd5>
+    <version>2.0.0</version>
+    <time>1653503687</time>
+    <user>dimstar_suse</user>
+    <comment>Sync changes with sle</comment>
+    <requestid>979207</requestid>
+  </revision>
 </revisionlist>
