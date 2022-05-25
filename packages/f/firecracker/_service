@@ -22,5 +22,6 @@
   <service name="cargo_vendor" mode="disabled">
     <param name="srcdir">firecracker</param>
     <param name="compression">xz</param>
+    <param name="update">true</param>
   </service>
 </services>

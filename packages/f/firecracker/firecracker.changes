@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 24 06:33:07 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Automatic update of vendored dependencies
+- Remove 0001-cargo-update-regex-dependency.patch due to update of
+  vendored dependencies
+
+-------------------------------------------------------------------
 Wed Mar 16 13:17:24 UTC 2022 - Liang Yan <lyan@opensuse.org>
 
 - Bump rust to 1.46.0 for vmm-sys-util building
