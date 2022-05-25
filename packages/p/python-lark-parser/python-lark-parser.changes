@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May 24 07:13:03 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 1.1.2
+  * Tree instances now have a pretty print with the "rich" library,
+    when doing rich.print(tree)
+  * Bugfix for recursive regexes (with the "regex" library)
+  * Refactors, cleanups, and better mypy support
+  * Clean up tree templates implementation to reduce mypy errors
+  * Remove redefinitions related to standalone parser
+  * Added Tree.rich() method to make Tree a Rich renderable
+  * Rename lexer_state->lexer_thread, and make a few adjustments for
+    the benefit of Lark-Cython
+  * Use isinstance() checks in expcetions match_examples()
+  * change MAXREPEAT to int
+  * Tests: Small fixes
+- For previous changes check
+  https://github.com/lark-parser/lark/releases
+- Drop Python2 support
+
+-------------------------------------------------------------------
 Wed May 26 08:33:40 UTC 2021 - pgajdos@suse.com
 
 - version update to 0.11.3
