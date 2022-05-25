@@ -665,4 +665,31 @@
     <comment></comment>
     <requestid>889971</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>f3050606f5aa8506708f117572ee8885</srcmd5>
+    <version>4.5.0</version>
+    <time>1653503676</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.5.0
+  - Fix bindep.txt to work with newer CentOS and RHEL
+  - setup.cfg: Replace dashes by underscores
+  - Stop to use the __future__ module.
+  - remove unicode from code
+  - Fix doc error to unblock the gate
+  - use importlib.metadata to get keyring version
+  - Update master for stable/xena
+  - Update master for stable/wallaby
+  - Update master for stable/yoga
+  - Stop using an admin endpoint by default
+  - Update master for stable/victoria
+  - Add access to /v3/auth/systems
+  - Use TOX_CONSTRAINTS_FILE
+  - Drop lower-constraints.txt and its testing
+  - trivial: Drop os-testr
+  - Drop lower-constrait job
+  - Remove translation sections from setup.cfg
+
+- update to version 4.3.0</comment>
+    <requestid>979078</requestid>
+  </revision>
 </revisionlist>

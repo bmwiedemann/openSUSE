@@ -1,7 +1,7 @@
 #
 # spec file for package python-keystoneclient
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,19 @@
 
 
 Name:           python-keystoneclient
-Version:        4.2.0
+Version:        4.5.0
 Release:        0
 Epoch:          0
 Summary:        Client library for OpenStack Identity API
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-keystoneclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-keystoneclient/python-keystoneclient-4.2.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-keystoneclient/python-keystoneclient-4.5.0.tar.gz
 BuildRequires:  openssl
 BuildRequires:  openstack-macros
 BuildRequires:  python3-debtcollector >= 1.2.0
 BuildRequires:  python3-keystoneauth1 >= 3.4.0
 BuildRequires:  python3-lxml
-BuildRequires:  python3-mock
 BuildRequires:  python3-oslo.config >= 5.2.0
 BuildRequires:  python3-oslo.i18n >= 3.15.3
 BuildRequires:  python3-oslo.serialization >= 2.18.0
@@ -38,7 +37,6 @@ BuildRequires:  python3-oslo.utils >= 3.33.0
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-requests-mock
-BuildRequires:  python3-six >= 1.10.0
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testresources
 BuildRequires:  python3-testscenarios
@@ -56,7 +54,6 @@ Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-oslo.serialization >= 2.18.0
 Requires:       python3-oslo.utils >= 3.33.0
 Requires:       python3-requests >= 2.14.2
-Requires:       python3-six >= 1.10.0
 Requires:       python3-stevedore >= 1.20.0
 
 %description -n python3-keystoneclient
@@ -74,7 +71,7 @@ Documentation for the client library for interacting with Openstack
 Identity API.
 
 %prep
-%autosetup -p1 -n python-keystoneclient-4.2.0
+%autosetup -p1 -n python-keystoneclient-4.5.0
 %py_req_cleanup
 # disable intersphinx - no network access during build
 echo "intersphinx_mapping = {}" >> doc/source/conf.py
