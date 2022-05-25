@@ -47,4 +47,12 @@
     <comment>1.7.0</comment>
     <requestid>976406</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>46200d8ecd02365e29a432790a8f1dd5</srcmd5>
+    <version>1.7.0</version>
+    <time>1653503680</time>
+    <user>dimstar_suse</user>
+    <comment>sync changes with sle</comment>
+    <requestid>979135</requestid>
+  </revision>
 </revisionlist>

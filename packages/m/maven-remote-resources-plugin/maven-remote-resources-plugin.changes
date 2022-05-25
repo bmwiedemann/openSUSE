@@ -2,6 +2,56 @@
 Wed May 11 06:47:20 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 1.7.0
+  * Changes:
+    + MRRESOURCES-114 - use reproducible
+      project.build.outputTimestamp
+    + MRRESOURCES-112 - Require Java 7
+    + MRRESOURCES-111 - "Copying" message before instead of
+      "Copied" after
+    + MRRESOURCES-111 - added INFO on number of resources
+      bundled/copied
+    + MRRESOURCES-94 - Lazily provide projects* Velocity properties
+    + MPOM-205 - use sha512 checksums instead of sha1
+    + MNGSITE-341 - use https for sigs, hashes and KEYS
+    + MRRESOURCES-109 - - Upgrade plexus-utils from 3.0.24 to 3.1.0
+    + MRRESOURCES-108 - - Upgrade plexus-interpolation to 1.25
+    + MRRESOURCES-107 - - Upgrade JUnit from 4.11 to 4.12
+    + MRRESOURCES-103 - Upgrade parent to 32
+    + INFRA-16467 - move components documentation out of CMS space
+    + MNGSITE-328 - use sha1 checksum instead of md5
+    + MRRESOURCES-100 - Upgrade maven-filtering to 3.1.1
+    + MRRESOURCES-99 - Upgrade of plexus-interpolation to 1.24.
+    + MRRESOURCES-97] Upgrade maven-shared-components parent to
+      version 30
+    + MPOM-95 - updated parent pom location
+    + MNGSITE-243 - Fixed link to How to use Mirros for Repositories
+    + MRRESOURCES-95 - Upgrade plexus-resources from 1.0-alpha-7 to
+      1.0.1
+    + MRRESOURCES-91 - Avoid overwrite of the destination file if
+      the produced contents is the same
+    + MRRESOURCES-90 - Using project.isExecutionRoot() instead of
+      the old way.
+    + MRRESOURCES-89 - Removed deprecated attributes
+    + MRRESOURCES-88 - Added a note about .vm on the usage page
+    + MRRESOURCES-87 - Upgrade JUnit from 3.8.1 to 4.11
+    + MRRESOURCES-86 - Remove unused dependency maven-monitor
+    + MRRESOURCES-84 - Print warning in case no encoding has been
+      set.
+    + MRRESOURCES-84 - Print warning in case no encoding has been
+      set.
+    + MRRESOURCES-82 - Upgrade to maven-plugins parent version 27
+    + MRRESOURCES-80 - Upgrade to maven-parent version 26  - Fixed
+      according checkstyle reported issues.
+    + MRRESOURCES-79 - Removed dependency
+      plexus-container-default:1.0-alpha-9-stable-1
+    + MRRESOURCES-77 - Upgrade maven-filtering to 1.3
+    + MRRESOURCES-78 - Upgrade maven-plugin-testing-harness to 1.3
+    + MRRESOURCES-76 - Updated plexus-archiver
+    + MNGSITE-152 - Added missing download.cgi and
+      xdoc/download.xml.vm
+    + MNGSITE-152 - Added appropriate links to download site and
+      license location to fulfill the ASF requirements.
+    + MRRESOURCES-70 - SVN settings: eol-style and keywords
 - Added patch:
   * 0001-Port-to-Maven-3.patch
     + port tests to modern maven framework
