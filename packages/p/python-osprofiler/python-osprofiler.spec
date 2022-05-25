@@ -1,7 +1,7 @@
 #
 # spec file for package python-osprofiler
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ BuildRequires:  python3-ddt
 BuildRequires:  python3-docutils
 BuildRequires:  python3-elasticsearch
 BuildRequires:  python3-importlib-metadata
-BuildRequires:  python3-mock
 BuildRequires:  python3-oslo.concurrency >= 3.26.0
 BuildRequires:  python3-oslo.config
 BuildRequires:  python3-oslo.log
@@ -39,7 +38,6 @@ BuildRequires:  python3-oslo.utils >= 3.33.0
 BuildRequires:  python3-pymongo
 BuildRequires:  python3-python-subunit
 BuildRequires:  python3-redis
-BuildRequires:  python3-six
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testtools
 BuildArch:      noarch
@@ -61,7 +59,6 @@ Requires:       python3-oslo.concurrency >= 3.26.0
 Requires:       python3-oslo.config
 Requires:       python3-oslo.log
 Requires:       python3-oslo.utils >= 3.33.0
-Requires:       python3-six
 %if 0%{?suse_version}
 Obsoletes:      python2-osprofiler < 3.0.0
 %endif
