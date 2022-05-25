@@ -181,4 +181,16 @@
   - Use py3 as the default runtime for tox</comment>
     <requestid>940198</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>509d621ac71319400006dde728d8cd48</srcmd5>
+    <version>4.4.0</version>
+    <time>1653503665</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.4.0
+  - Add type hint for Client API
+  - update type hint for Client
+  - Fix flake8 error: H104
+  - Add arm64 gate ci job</comment>
+    <requestid>979066</requestid>
+  </revision>
 </revisionlist>
