@@ -270,4 +270,15 @@
   - Drop use of deprecated collections classes</comment>
     <requestid>939540</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>edf32f0bdf106c5b9f9dc3f329bd2fb9</srcmd5>
+    <version>4.3.0</version>
+    <time>1653503678</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.3.0
+  - setup.cfg: Replace dashes with underscores
+  - Update master for stable/xena
+  - Add Python3 yoga unit tests</comment>
+    <requestid>979082</requestid>
+  </revision>
 </revisionlist>

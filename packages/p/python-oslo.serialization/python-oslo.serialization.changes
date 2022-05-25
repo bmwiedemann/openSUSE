@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 24 21:27:55 UTC 2022 - cloud-devel@suse.de
+
+- update to version 4.3.0
+  - setup.cfg: Replace dashes with underscores
+  - Update master for stable/xena
+  - Add Python3 yoga unit tests
+
+-------------------------------------------------------------------
 Tue Oct 26 21:58:01 UTC 2021 - cloud-devel@suse.de
 
 - update to version 4.2.0
