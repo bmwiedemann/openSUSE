@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue May 24 16:34:36 UTC 2022 - Gayane Osipyan <Gayane.Osipyan@suse.com>
+
+- update to version 5.3.0
+  * Test Python 3.11 beta (#539) @hugovk
+  * Benchmark refactor - argparse CLI (#533) @Erotemic
+  * Fix segmentation faults when errors occur while handling unserialisable objects (#531) @JustAnotherArchivist
+  * Fix segmentation fault when an exception is raised while converting a dict key to a string (#526) @JustAnotherArchivist
+  * Fix memory leak dumping on non-string dict keys (#521) @JustAnotherArchivist
+  * Fix ref counting on repeated default function calls (#524) @JustAnotherArchivist
+  * Remove redundant wheel dependency from pyproject.toml (#535) @hugovk
+- Release 5.2.0
+  * Support parsing NaN, Infinity and -Infinity (#514) @Erotemic
+  * Support dynamically linking against system double-conversion library (#508) @musicinmybrain
+  * Add env var to control stripping debug info (#507) @musicinmybrain
+  * Add JSONDecodeError (#498) @JustAnotherArchivist
+  * Fix buffer overflows (CVE-2021-45958) (#519) @JustAnotherArchivist
+  * Upgrade Black to fix Click (#515) @hugovk
+  * simplify exception handling on integer overflow (#510) @RouquinBlanc
+  * Remove dead code that used to handle the separate int type in Python 2 (#509) @JustAnotherArchivist
+  * Fix exceptions on encoding list or dict elements and non-overflow errors on int handling getting silenced (#505) @JustAnotherArchivist
+- Release 5.1.0
+  * Strip debugging symbols from Linux binaries (#493) @bwoodsend
+- Release 5.0.0
+  * Use cibuildwheel to build wheels (#491) @bwoodsend
+  * Drop support for soon-EOL Python 3.6 (#490) @hugovk
+  * Install Twine to upload to PyPI (#492) @hugovk
+- Remove python-ujson-system-double-conversion.patch (upstreamed)
+
+-------------------------------------------------------------------
 Sat Dec 11 18:15:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - update to 4.3.0

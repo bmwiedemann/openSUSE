@@ -1,7 +1,7 @@
 #
 # spec file for package python-ujson
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,12 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-ujson
-Version:        4.3.0
+Version:        5.3.0
 Release:        0
 Summary:        JSON encoder and decoder for Python
 License:        BSD-3-Clause
 URL:            https://github.com/esnme/ultrajson
 Source:         https://files.pythonhosted.org/packages/source/u/ujson/ujson-%{version}.tar.gz
-# unbundle double-conversion (https://github.com/ultrajson/ultrajson/issues/375)
-Patch0:         python-ujson-system-double-conversion.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
@@ -48,6 +46,8 @@ bindings for Python 2.7 and 3.5+
 %build
 rm -r deps
 export CFLAGS="%{optflags} -fno-strict-aliasing"
+export UJSON_BUILD_DC_INCLUDES='/usr/include/double-conversion'
+export UJSON_BUILD_DC_LIBS='-ldouble-conversion'
 %python_build
 
 %install
