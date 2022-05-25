@@ -7,6 +7,31 @@ Wed Mar 23 09:00:09 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 Mon Jan 17 09:06:21 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.7.0
+  * Changes:
+    + Added a new property os.detected.arch.bitness
+    + Added detection of RISC-V architecture, riscv
+    + Added an abstraction layer for System property and file
+      system access
+    + Added thread safety information to Maven plugin metadata
+      so that Maven doesn't warn about thread safety anymore
+    + Added detection of z/OS operating system
+    + Added m2e life cycle mapping metadata so os-maven-plugin
+      works better with Eclipse m2e
+    + Added support for MIPS and MIPSEL 32/64-bit architecture
+        mips_32 - if the value is one of: mips, mips32
+        mips_64 - if the value is mips64
+        mipsel_32 - if the value is one of: mipsel, mips32el
+        mipsel_64 - if the value is mips64el
+    + Added support for PPCLE 32-bit architecture
+        ppcle_32 - if the value is one of: ppcle, ppc32le
+    + Added support for IA64N and IA64W architecture
+        itanium_32 - if the value is ia64n
+        itanium_64 - if the value is one of: ia64, ia64w (new),
+                     itanium64
+    + Fixed classpath conflicts due to outdated Guava version
+      in transitive dependencies
+    + Fixed incorrect prerequisite
+    + Overall code clean-up and dependency updates
 - Modified patch:
   * 0002-Don-t-fail-on-unknown-arch.patch ->
     0001-Don-t-fail-on-unknown-arch.patch
