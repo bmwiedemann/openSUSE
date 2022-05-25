@@ -128,4 +128,12 @@
     <comment>- update to 3.3.2 (bsc#1198331):</comment>
     <requestid>969845</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ebd8b64ea16ce28344453e6101b5dd4a</srcmd5>
+    <version>37.0.2</version>
+    <time>1653503629</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>978567</requestid>
+  </revision>
 </revisionlist>
