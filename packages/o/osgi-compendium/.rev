@@ -23,4 +23,12 @@
     <comment>7.0.0</comment>
     <requestid>790500</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f7afd25d148fd0a1de9b872c89df1952</srcmd5>
+    <version>7.0.0</version>
+    <time>1653503723</time>
+    <user>dimstar_suse</user>
+    <comment>Sync changes with sle</comment>
+    <requestid>979211</requestid>
+  </revision>
 </revisionlist>
