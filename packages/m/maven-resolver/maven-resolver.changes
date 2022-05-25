@@ -23,12 +23,103 @@ Thu Mar 17 03:20:22 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 Fri Mar 11 12:10:26 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.7.3
+  * Bug
+    + [MRESOLVER-96] - Dependency Injection fails after upgrading
+      to Maven 3.6.2
+    + [MRESOLVER-153] - resolver-status.properties file is corrupted
+      due to concurrent writes
+    + [MRESOLVER-171] - Resolver fails when compiled on Java 9+ an
+      run on Java 8 due to JDK API breakage
+    + [MRESOLVER-189] - Using semaphore-redisson followed by
+      rwlock-redisson on many parallel build of the same project
+      triggers redisson error
+  * New Feature
+    + [MRESOLVER-90] - HTML content in POM: Maven should validate
+      content before storing in local repo
+    + [MRESOLVER-145] - Introduce more SyncContext implementations
+  * Improvement
+    + [MRESOLVER-103] - Replace deprecated HttpClient classes
+    + [MRESOLVER-104] - maven-resolver-demo-maven-plugin uses
+      reserved artifactId
+    + [MRESOLVER-147] - Upgrade to Java 8
+    + [MRESOLVER-148] - Use vanilla Guice 4 instead of forked
+      Guice 3
+    + [MRESOLVER-156] - Active dependency management for Google
+      Guice/Guava
+    + [MRESOLVER-168] - add DEBUG message when downloading an
+      artifact from repositories
+    + [MRESOLVER-193] - Properly type lock key names in Redis
+    + [MRESOLVER-197] - Minors improvements (umbrella)
+    + [MRESOLVER-204] - Add a SessionData#computeIfAbsent method
+    + [MRESOLVER-214] - Remove clirr configuration
+  * Task
+    + [MRESOLVER-141] - Review index-based access to collections
+    + [MRESOLVER-151] - Enforce a checksum policy to be provided
+      explicitly
+    + [MRESOLVER-152] - Perform null checks when interface
+      contracts require it
+    + [MRESOLVER-154] - Move SyncContextFactory interface to SPI
+      module
+    + [MRESOLVER-155] - Make TrackingFileManager member of
+      DefaultUpdateCheckManager
+    + [MRESOLVER-158] - Simplify SimpleDigest class
+    + [MRESOLVER-159] - Mark singleton components as Sisu Singletons
+    + [MRESOLVER-160] - Deprecate ServiceLocator
+    + [MRESOLVER-162] - Restore binary compatibility broken by
+      MRESOLVER-154
+    + [MRESOLVER-170] - Deprecate org.eclipse.aether.spi.log
+    + [MRESOLVER-172] - Make TrackingFileManager shared singleton
+      component
+    + [MRESOLVER-173] - Drop deprecated AetherModule
+    + [MRESOLVER-174] - Use all bindings in UTs and tests
+    + [MRESOLVER-175] - Drop SyncContextFactory delegates in favor
+      of a selector approach
+    + [MRESOLVER-177] - Move pre-/post-processing of metadata from
+      ResolveTask to DefaultMetadataResolver
+    + [MRESOLVER-183] - Don't require optional dependencies for
+      Redisson
+    + [MRESOLVER-184] - Destroy Redisson semaphores if not used
+      anymore
+    + [MRESOLVER-186] - Update Maven version in Resolver Demo
+      Snippets
+    + [MRESOLVER-188] - Improve documentation on using the named
+      locks with redis/hazelcast (umbrella)
+    + [MRESOLVER-190] - [Regression] Revert MRESOLVER-184
+    + [MRESOLVER-191] - Document how to analyze lock issues
+    + [MRESOLVER-196] - Document named locks configuration options
+    + [MRESOLVER-219] - Implement NamedLock with advisory file
+      locking
+    + [MRESOLVER-227] - Refactor NamedLockFactorySelector to a
+      managed component
+    + [MRESOLVER-232] - Make SimpleNamedLockFactorySelector logic
+      reusable
+  * Sub-task
+    + [MRESOLVER-198] - Replace assert by simpler but equivalent
+      calls
+    + [MRESOLVER-199] - Java 8 improvements
+    + [MRESOLVER-200] - Simplify conditions with the same result
+      and avoid extra validations
+    + [MRESOLVER-201] - Make variables final whenever possible
+    + [MRESOLVER-202] - Use isEmpty() instead length() <= 0
+  * Dependency upgrade
+    + [MRESOLVER-185] - Upgrade Redisson to 3.15.6
   * Change of API and incompatible with maven-resolver < 1.7
 
 -------------------------------------------------------------------
 Thu Jan 13 17:38:54 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.6.3
+  * Bug
+    + [MRESOLVER-153] - resolver-status.properties file is corrupted
+      due to concurrent writes
+    + [MRESOLVER-171] - Resolver fails when compiled on Java 9+ and
+      run on Java 8 due to JDK API breakage
+  * Improvement
+    + [MRESOLVER-168] - add DEBUG message when downloading an
+      artifact from repositories
+  * Task
+    + [MRESOLVER-177] - Move pre-/post-processing of metadata from
+      ResolveTask to DefaultMetadataResolver
   * Needed for maven 3.8.4
 - Removed patch:
   * maven-resolver-1.3.1-java8compat.patch
@@ -43,6 +134,52 @@ Tue May 11 15:11:15 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 Mon Apr 26 14:48:36 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.6.2
+  * Sub-task
+    + [MRESOLVER-139] - Make SimpleDigest use SHA-1 or MD5 only
+    + [MRESOLVER-140] - Default to SHA-1 and MD5 hashing algorithms
+  * Bug
+    + [MRESOLVER-25] - Resume support is broken under high
+      concurrency
+    + [MRESOLVER-114] - ArtifactNotFoundExceptions when building in
+      parallel
+    + [MRESOLVER-129] - Exclusion has no setters
+    + [MRESOLVER-137] - Make OSGi bundles reproducible
+    + [MRESOLVER-138] - MRESOLVER-56 introduces severe performance
+      regression
+  * New Feature
+    + [MRESOLVER-109] - AndDependencySelector should override
+      toString
+    + [MRESOLVER-115] - Make checksum algorithms configurable
+    + [MRESOLVER-123] - Provide a global locking sync context by
+      default
+    + [MRESOLVER-131] - Introduce a Redisson-based
+      SyncContextFactory
+    + [MRESOLVER-165] - Add support for mirror selector on
+      external:http:*
+    + [MRESOLVER-166] - Add support for blocked
+      repositories/mirrors
+  * Improvement
+    + [MRESOLVER-56] - Support SHA-256 and SHA-512 as checksums
+    + [MRESOLVER-116] - Add page with all supported configuration
+      options
+    + [MRESOLVER-125] - Use type conversions returning primitives
+    + [MRESOLVER-127] - Don't use boolean for property
+      'aether.updateCheckManager.sessionState'
+    + [MRESOLVER-136] - Migrate from maven-bundle-plugin to
+      bnd-maven-plugin
+  * Task
+    + [MRESOLVER-119] - Turn log messages to SLF4J placeholders
+    + [MRESOLVER-130] - Move GlobalSyncContextFactory to a separate
+      module
+    + [MRESOLVER-132] - Remove synchronization in
+      TrackingFileManager
+  * Dependency upgrade
+    + [MRESOLVER-105] - Update Plexus Components
+    + [MRESOLVER-106] - Update HttpComponents
+    + [MRESOLVER-107] - Update Wagon Provider API to 3.4.0
+    + [MRESOLVER-108] - Update mockito-core to 2.28.2
+    + [MRESOLVER-117] - Upgrade SLF4J to 1.7.30
+    + [MRESOLVER-118] - Upgrade Sisu Components to 0.3.4
   * Needed for maven 3.8.x
 
 -------------------------------------------------------------------
@@ -54,11 +191,33 @@ Tue Feb  2 18:07:14 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 Tue Dec 29 09:03:53 UTC 2020 - Wang Jun <jgwang@suse.com>
 
 - Upgrade to upstream version 1.4.2
+  * Bug:
+    + MRESOLVER-38 – SOE/OOME in DefaultDependencyNode.accept
+  * Improvements:
+    + MRESOLVER-93 – PathRecordingDependencyVisitor to handle 3 cycles
+    + MRESOLVER-102 – make build Reproducible
 
 -------------------------------------------------------------------
 Mon Dec  9 15:35:35 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.4.1
+  * Task
+    + [MRESOLVER-92] - Revert MRESOLVER-7
+  * Bug
+    + [MRESOLVER-86] - ResolveArtifactMojo from resolver example
+      uses plugin repositories to resolve dependencies
+  * New Feature
+    + [MRESOLVER-10] - New 'TransitiveDependencyManager'
+      supporting transitive dependency management
+    + [MRESOLVER-33] - New 'DefaultDependencyManager' managing
+      dependencies on all levels supporting transitive dependency
+      management
+  * Improvement
+    + [MRESOLVER-7] - Download dependency POMs in parallel
+    + [MRESOLVER-84] - Add support for "release" qualifier
+    + [MRESOLVER-87] - Refresh examples to use maven-resolver
+      artifacts for demo
+    + [MRESOLVER-88] - Code style cleanup to use Java 7 features
 
 -------------------------------------------------------------------
 Wed Mar 20 10:26:50 UTC 2019 - Fridrich Strba <fstrba@suse.com>
