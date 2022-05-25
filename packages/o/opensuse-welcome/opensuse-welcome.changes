@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 24 09:13:56 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not recommend lang package: the lang package has smarter
+  supplements in place.
+
+-------------------------------------------------------------------
 Sun Feb 06 14:02:25 UTC 2022 - opensuse.lietuviu.kalba@gmail.com
 
 - Update to version 0.1.8+git.44.7923e16:

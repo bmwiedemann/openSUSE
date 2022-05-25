@@ -55,4 +55,13 @@
     <comment></comment>
     <requestid>952227</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>79bc7b79cd37c5a003cb8b7d910a23e9</srcmd5>
+    <version>0.1.8+git.44.7923e16</version>
+    <time>1653503634</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not recommend lang package: the lang package has smarter
+  supplements in place. (forwarded request 978902 from dimstar)</comment>
+    <requestid>978911</requestid>
+  </revision>
 </revisionlist>

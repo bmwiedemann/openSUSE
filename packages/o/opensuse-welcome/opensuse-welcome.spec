@@ -35,7 +35,6 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5WebChannel)
 BuildRequires:  pkgconfig(Qt5WebEngine)
-Recommends:     %{name}-lang = %{version}
 
 %lang_package
 
