@@ -17,7 +17,7 @@
 
 
 Name:           gerbera
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 Summary:        UPnP Media Server
 License:        GPL-2.0-only
@@ -27,6 +27,8 @@ Source0:        https://github.com/gerbera/gerbera/archive/v%{version}.tar.gz#/%
 Source1:        config.xml
 Source2:        gerbera.sysusers.in
 Patch0:         harden_gerbera.service.patch
+#PATCH-FIX-UPSTREAM https://github.com/gerbera/gerbera/pull/2635
+Patch1:         2635.patch
 BuildRequires:  ccache
 BuildRequires:  cmake >= 3.13
 BuildRequires:  fdupes

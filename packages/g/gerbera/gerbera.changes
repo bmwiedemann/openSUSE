@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed May 25 09:36:13 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update 2635.patch
+
+-------------------------------------------------------------------
+Wed May 18 09:23:12 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add 2635.patch: this fixes and issue on i586 and x86
+
+-------------------------------------------------------------------
+Mon May  9 06:10:54 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.11.0:
+  * New features:
+    - Database: Clients and statistics are stored database so restart
+      does not empty client list. Client grouping for play statistics.
+    - Search: Support searching playlists containers
+    - Search: Respect ContainerID when performing search
+    - Import: item class filtering and mapping by file properties
+      allows more sophisticated virtual structure
+    - Transcoding: Support filtering transcoding profiles by resource properties
+      (like codecs) avoids transcoding if client can play files
+    - DLNA: Detect DNLA profiles by resource attributes to specify more detailled
+      profile for handling in client
+    - File type support for WavPack improved: More metadata read with
+      special library if compiled in.
+  * Fixes:
+    - Playlist: Fix parser error
+    - Playlist: Handle end of file properly
+    - Browsing: Sort containers first
+    - Search: search result is sort by title now
+    - Import: Timestamps in future are not stored for containers
+    - Lots of others fixes: https://github.com/gerbera/gerbera/releases/tag/v1.11.0
+
+-------------------------------------------------------------------
 Mon Mar 21 15:35:03 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.10.0:
