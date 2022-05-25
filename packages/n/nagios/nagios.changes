@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 13 20:57:58 UTC 2022 - Andre Klaerner <kandre@ak-online.be>
+
+- 4.4.7 - 2022-04-14
+  FIXES
+  * Fixed checkboxes in jsonquery.html (#778) (Rfferrao87)
+  * Added SSL support for version update check (Sebastian Wolf)
+  * Note: NEB modules using the priority/scheduling queues in libnagios may need to update headers due to symbol conflicts with OpenSSL.
+  * Fixed XSS in homepage when displaying update check results (Sebastian Wolf)
+  * Fixed allocation error in getcgi.c (#820) (Ariadne Conill)
+  * Fixed Error: NULL variable for lines of spaces in resource.cfg (#814) (Ralf Herrmann)
+  * Fixed crash when handling large check output (#825, #828) (Kilvador)
+  * Update packaging instructions for RPM/EPEL (#850) (T.J. Yang)
+  * Include packaging instructions for DEB (#842) (Catfriend1)
+  * Fixed CGI object processing when names end in \ (#819) (Sebastian Wolf)
+  * $SERVICEPROBLEMID$ now accessible when notifications are sent (#688) (Sebastian Wolf)
+
+-------------------------------------------------------------------
 Fri Oct 15 07:27:58 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:

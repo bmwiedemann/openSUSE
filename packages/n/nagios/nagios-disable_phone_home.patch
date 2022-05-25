@@ -1,8 +1,7 @@
-Index: nagios-4.4.2/base/utils.c
-===================================================================
---- nagios-4.4.2.orig/base/utils.c
-+++ nagios-4.4.2/base/utils.c
-@@ -3297,122 +3297,6 @@ int check_for_nagios_updates(int force,
+diff --unified -r nagios-4.4.7-orig/base/utils.c nagios-4.4.7/base/utils.c
+--- nagios-4.4.7-orig/base/utils.c	2022-04-14 16:19:37.000000000 +0200
++++ nagios-4.4.7/base/utils.c	2022-05-13 19:58:24.615532600 +0200
+@@ -3322,142 +3322,6 @@
  
  /* checks for updates at api.nagios.org */
  int query_update_api(void) {
@@ -62,6 +61,26 @@ Index: nagios-4.4.2/base/utils.c
 -	  abort();
 -	}
 -
+-#ifdef HAVE_SSL
+-	SSL *ssl;
+-	SSL_CTX *ctx;
+-
+-	int result = my_ssl_connect(api_server, 443, &sd, &ssl, &ctx, 2);
+-	if(sd > 0 && result != ERROR) {
+-		/* send request */
+-		send_len = strlen(buf);
+-		my_ssl_sendall(sd, ssl, buf, &send_len, 2);
+-
+-		/* get response */
+-		recv_len = sizeof(recv_buf);
+-		my_ssl_recvall(sd, ssl, recv_buf, &recv_len, 2);
+-		recv_buf[sizeof(recv_buf) - 1] = '\x0';
+-
+-		/* close connection */
+-		SSL_free(ssl);
+-		SSL_CTX_free(ctx);
+-		close(sd);
+-#else 
 -	my_tcp_connect(api_server, 80, &sd, 2);
 -	if(sd > 0) {
 -		/* send request */
@@ -75,7 +94,7 @@ Index: nagios-4.4.2/base/utils.c
 -
 -		/* close connection */
 -		close(sd);
--
+-#endif
 -		/* parse the result */
 -		in_header = TRUE;
 -		while((ptr = get_next_string_from_buf(recv_buf, &buf_index, sizeof(recv_buf)))) {
