@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.vmware
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,6 @@ BuildRequires:  python3-ddt
 BuildRequires:  python3-eventlet >= 0.18.2
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-lxml >= 4.5.0
-BuildRequires:  python3-mock
 BuildRequires:  python3-netaddr >= 0.7.18
 BuildRequires:  python3-oslo.concurrency >= 3.26.0
 BuildRequires:  python3-oslo.context >= 2.19.2
@@ -65,7 +64,6 @@ Requires:       python3-oslo.context >= 2.19.2
 Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-oslo.utils >= 3.33.0
 Requires:       python3-requests >= 2.14.2
-Requires:       python3-six
 Requires:       python3-stevedore >= 1.20.0
 Requires:       python3-suds-community >= 0.6
 Requires:       python3-urllib3 >= 1.21.1

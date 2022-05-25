@@ -375,4 +375,12 @@
   - setup.cfg: Replace dashes with underscores</comment>
     <requestid>939545</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>d52980e0ca31f1a04c973623786522d1</srcmd5>
+    <version>3.10.0</version>
+    <time>1653503671</time>
+    <user>dimstar_suse</user>
+    <comment>- remove unneeded dependencies</comment>
+    <requestid>979071</requestid>
+  </revision>
 </revisionlist>
