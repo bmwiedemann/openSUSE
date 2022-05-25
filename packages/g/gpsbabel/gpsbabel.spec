@@ -1,7 +1,7 @@
 #
 # spec file for package gpsbabel
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,30 +18,25 @@
 
 %global translationdir %{_datadir}/qt5/translations
 Name:           gpsbabel
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Converts GPS waypoint, route and track data from one format type to another
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
 URL:            http://www.gpsbabel.org/
-Source:         https://github.com/GPSBabel/gpsbabel/archive/refs/tags/%{name}_1_7_0.tar.gz
+Source:         https://github.com/GPSBabel/gpsbabel/archive/refs/tags/%{name}_1_8_0.tar.gz
 Source1:        http://www.gpsbabel.org/htmldoc-%{version}/%{name}-%{version}.pdf
 Source2:        %{name}.png
 Source21:       style3.css
-# Pickup gmapbase.html from /usr/share/gpsbabel
-Patch3:         0003-gpsbabel-1.7.0-gmapbase.patch
 # No automatic phone home by default (RHBZ 668865)
 Patch4:         0004-gpsbabel-1.4.3-nosolicitation.patch
-# Add qmake support for system libraries.
-Patch9:         0009-PR611-system-libs.patch
-# Pickup translations from /usr/share/qt5/translations
-Patch10:        0010-translations.patch
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  libusb-1_0-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Designer)
 BuildRequires:  pkgconfig(Qt5Help)
+BuildRequires:  pkgconfig(Qt5SerialPort)
 BuildRequires:  pkgconfig(Qt5UiTools)
 BuildRequires:  pkgconfig(Qt5WebChannel)
 BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
@@ -79,7 +74,7 @@ Requires(postun):update-desktop-files
 Qt GUI interface for GPSBabel
 
 %prep
-%autosetup -p1 -n gpsbabel-gpsbabel_1_7_0
+%autosetup -p1 -n gpsbabel-gpsbabel_1_8_0
 # Use system shapelib instead of bundled partial shapelib
 rm -rf shapelib
 
