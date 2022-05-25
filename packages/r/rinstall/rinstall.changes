@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 24 10:28:25 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix rinstall usage in macros.rinstall
+
+-------------------------------------------------------------------
 Thu May 19 14:48:18 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Fix systemd unitdir in macros.rinstall

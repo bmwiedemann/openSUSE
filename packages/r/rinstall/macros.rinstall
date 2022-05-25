@@ -1,7 +1,8 @@
 %rinstall() \
 %{shrink:\
       %{_bindir}/rinstall \
-      --disable-uninstall \
+      install \
+      --skip-pkginfo \
       --system \
       --destdir=%{buildroot} \
       --prefix=%{_prefix} \
