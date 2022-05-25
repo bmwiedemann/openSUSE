@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 24 09:20:53 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not recommend lang package: the lang package has smarter
+  supplements in place.
+
+-------------------------------------------------------------------
 Wed May 18 14:52:26 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Add gimp-CVE_2022-30067.patch: fix out of memory when reading

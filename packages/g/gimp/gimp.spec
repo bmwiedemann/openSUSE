@@ -116,7 +116,6 @@ Requires:       libbabl-0_1-0 >= 0.1.78
 Requires:       libgimp-2_0-0 = %{version}
 Requires:       libgimpui-2_0-0 = %{version}
 Requires:       xdg-utils
-Recommends:     %{name}-lang
 %if %{with python_plugin}
 Recommends:     %{name}-plugins-python = %{version}
 %endif
