@@ -32,6 +32,10 @@ Group:          Amusements/Games/Strategy/Real Time
 URL:            http://wz2100.net/
 Source:         https://github.com/Warzone2100/warzone2100/releases/download/%{version}/warzone2100_src.tar.xz
 Source99:       %{name}.changes
+# PATCH-FIX-UPSTREAM warzone2100-temporarily-disable-Wnull-dereference-on-gcc12.patch -- Fix building with gcc12 -- https://github.com/Warzone2100/warzone2100/commit/3128eee
+Patch0:         warzone2100-temporarily-disable-Wnull-dereference-on-gcc12.patch
+# PATCH-FIX-UPSTREAM warzone2100-silence-gcc12-warning.patch -- Fix building with gcc12 -- https://github.com/Warzone2100/warzone2100/commit/5d71117
+Patch1:         warzone2100-silence-gcc12-warning.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake >= 3.5
 BuildRequires:  fdupes
@@ -108,6 +112,8 @@ This package provides the game data for Warzone 2100.
 
 %prep
 %setup -q -n %{name}
+%patch0 -p1
+%patch1 -p1
 
 # constant timestamp for reproducible builds
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE99}")"

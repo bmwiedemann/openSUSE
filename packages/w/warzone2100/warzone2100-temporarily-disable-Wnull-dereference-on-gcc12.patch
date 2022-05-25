@@ -1,0 +1,26 @@
+From 3128eee9a8be531734c29533649d0c014e5725ac Mon Sep 17 00:00:00 2001
+From: past-due <30942300+past-due@users.noreply.github.com>
+Date: Fri, 13 May 2022 19:53:41 -0400
+Subject: [PATCH] [CMake] Temporarily disable Wnull-dereference on GCC 12
+
+Until the issues with this warning are fixed
+---
+ CMakeLists.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8af404dc27..31c4253d9a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -550,8 +550,11 @@ macro(CONFIGURE_WZ_COMPILER_WARNINGS)
+ #		check_compiler_flags_output("-Werror -Wuseless-cast -Wno-error=cpp" COMPILER_TYPE CXX OUTPUT_FLAGS "-Wuseless-cast" OUTPUT_VARIABLE _supported_cxx_compiler_flags APPEND)
+ 
+ 		# -Wnull-dereference		(GCC 6.0+, Clang 3.2+)
++		# Temporary: Do not enable for GCC 12+ (issues with nlohmann::json + GCC 12.1 + Wnull-dereference)
++		if (NOT CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_VERSION VERSION_LESS 12.0)
+ 		check_compiler_flags_output("-Werror -Wnull-dereference -Wno-error=cpp" COMPILER_TYPE C   OUTPUT_FLAGS "-Wnull-dereference" OUTPUT_VARIABLE _supported_c_compiler_flags APPEND)
+ 		check_compiler_flags_output("-Werror -Wnull-dereference -Wno-error=cpp" COMPILER_TYPE CXX OUTPUT_FLAGS "-Wnull-dereference" OUTPUT_VARIABLE _supported_cxx_compiler_flags APPEND)
++		endif()
+ 
+ 		# -Wduplicated-cond			(GCC 6.0+)
+ 		check_compiler_flags_output("-Werror -Wduplicated-cond -Wno-error=cpp" COMPILER_TYPE C   OUTPUT_FLAGS "-Wduplicated-cond" OUTPUT_VARIABLE _supported_c_compiler_flags APPEND)

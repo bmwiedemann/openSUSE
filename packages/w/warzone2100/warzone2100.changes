@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 23 04:41:54 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add warzone2100-temporarily-disable-Wnull-dereference-on-gcc12.patch
+  and warzone2100-silence-gcc12-warning.patch, fixes building with
+  gcc12: gh#Warzone2100/warzone2100/#2698
+
+-------------------------------------------------------------------
 Wed Mar  9 16:39:02 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Updated to 4.2.7

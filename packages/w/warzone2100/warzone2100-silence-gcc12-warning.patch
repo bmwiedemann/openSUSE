@@ -1,0 +1,36 @@
+From 5d711172962bb8a91cc1cdce4704e2d9745e79f8 Mon Sep 17 00:00:00 2001
+From: past-due <30942300+past-due@users.noreply.github.com>
+Date: Fri, 13 May 2022 16:45:21 -0400
+Subject: [PATCH] cheat.cpp: Silence GCC 12 warning
+
+---
+ src/cheat.cpp | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/src/cheat.cpp b/src/cheat.cpp
+index 547cc090898..fd0b83edff4 100644
+--- a/src/cheat.cpp
++++ b/src/cheat.cpp
+@@ -182,6 +182,11 @@ void sendProcessDebugMappings(bool val)
+ 	NETend();
+ }
+ 
++#if !defined(__clang__) && defined(__GNUC__) && (12 <= __GNUC__)
++# pragma GCC diagnostic push
++# pragma GCC diagnostic ignored "-Warray-bounds"
++#endif
++
+ static std::string getWantedDebugMappingStatuses(const DebugInputManager& dbgInputManager, bool bStatus)
+ {
+ 	char ret[MAX_PLAYERS + 1] = "\0";
+@@ -198,6 +203,10 @@ static std::string getWantedDebugMappingStatuses(const DebugInputManager& dbgInp
+ 	return ret;
+ }
+ 
++#if !defined(__clang__) && defined(__GNUC__) && (12 <= __GNUC__)
++# pragma GCC diagnostic pop
++#endif
++
+ void recvProcessDebugMappings(NETQUEUE queue)
+ {
+ 	bool val = false;
