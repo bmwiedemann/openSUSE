@@ -125,4 +125,17 @@
   - setup.cfg: Replace dashes with underscores</comment>
     <requestid>939530</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>85c3e026c236e1ff8b135953c886e64e</srcmd5>
+    <version>2.5.0</version>
+    <time>1653503666</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.5.0
+  - Use py3 as the default runtime for tox
+  - Ignore new pylint checker
+  - Update master for stable/xena
+  - Add Python3 yoga unit tests
+  - Add support for PROMETHEUS listeners.</comment>
+    <requestid>979067</requestid>
+  </revision>
 </revisionlist>

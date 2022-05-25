@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 24 21:03:02 UTC 2022 - cloud-devel@suse.de
+
+- update to version 2.5.0
+  - Use py3 as the default runtime for tox
+  - Ignore new pylint checker
+  - Update master for stable/xena
+  - Add Python3 yoga unit tests
+  - Add support for PROMETHEUS listeners.
+
+-------------------------------------------------------------------
 Mon Dec  6 09:31:13 UTC 2021 - cloud-devel@suse.de
 
 - update to version 2.4.0
