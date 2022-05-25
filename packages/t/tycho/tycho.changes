@@ -28,6 +28,102 @@ Sat Mar 12 09:50:44 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 Fri Jul  3 09:59:22 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 1.6.0
+  * Summary of changes in 1.6.0:
+    + Faster target platform resolution
+      Tycho needs to resolve the target platform during the initial
+      phase of a build. This is now much faster than before, thanks
+      to improved caching. In an example application with 800
+      bundles in its target platform Tycho 1.5 needs about 2 seconds
+      per Maven module for target platform resolution, while Tycho
+      1.6 needs about 0.2 seconds per Maven module.
+    + Drop support for obsolete modular JVMs (10 and 12)
+      Due to Equinox no longer shipping EEs (they kind of lost sense
+      with modular JVMs which may or may not include a module) these
+      EEs are shipped as part of Tycho now, but it can't go
+      indefinitely. Dropped Java 10 and 12 which are no longer
+      supported versions already.
+    + Plexus Utils has been updated to version 3.3.0 as a prereq for
+      other dependency updates. 
+  * Summary of changes in 1.5.0:
+    + Pomless Build
+      The pomless build has been improved to support some new
+      features and improve existing ones
+    + FreeBSD support
+    + Thread stack traces dump before forkedProcessTimeoutInSeconds
+      timeout occurs
+      The parameter forkedProcessTimeoutInSeconds can be specified
+      to kill the process which runs tests (also prior to Tycho
+      1.5.0). With the change for bug 542876, a few minutes before
+      the process is killed due to this timeout, thread stack traces
+      are dumped in the test log. I.e. when a timeout occurs (e.g.
+      due to a deadlock) the logs would now contain some indication
+      of which code causes the timeout.
+    + A Mojo to list dependencies. A new
+      org.eclipse.tycho.extras:tycho-dependency-tools-plugin:list-dependencies mojo
+      can list the bundles resulting of dependency resolution for
+      Tycho projects.
+    + ECJ has been updated to version 3.19.0. This version adds
+      support for Java 12 bytecode and features.
+    + JGit has been updated to version 5.5.0.
+    + Equinox and p2 has been updated to their 2019-09 versions.
+  * Summary of changes in 1.4.0:
+    + ObjectWeb ASM has been updated to version 7.0 from 5.0.3 which
+      provides Java 11 compatibility in artifactcomparator.
+      Note: Due to upstream no longer producing
+      org.ow2.asm:asm-debug-all Tycho now requires
+      org.ow2.asm:asm-tree and org.ow2.asm:asm-util.
+    + Resolving Java 11 removed modules
+      Java 11 removed a number of modules which broke
+      compilation/tests/resolving deps when the bundle has lower
+      BREE as they were resolved from the BREE profile. Now Tycho
+      will check if runtime Java is 11+ and if it differs from
+      bundle's EE - in this case it will resolve deps with current
+      runtime's EE.
+    + Performance improvement using Git timestamp provider
+      If you have configured Tycho to create reproducable version
+      qualifiers, then Tycho will calculate the qualifier from the
+      underlying git history.
+    + ECJ has been updated to version 3.17.0 from 3.15.1. This
+      version brings support for Java 11 bytecode and features.
+  * Summary of changes in 1.3.0
+    + Java 11: JDT was updated to 3.15.1 (we are now using ecj
+      binaries from  maven central as opposed to jdt.core and
+      jdt.compiler.apt) to support compiling against Java 11
+    + Tycho 1.3.0 surefire plugin supports starting applications
+      that use org.apache.felix.scr bundle in place of
+      org.eclipse.equinox.ds (like Eclipse Platform 4.10 based
+      target-platforms)
+    + download.stats artifact metadata property
+      Support for download.stats property on artifacts metadata.
+      In order to (partially) enable p2 download stats as
+      documented in Equinox_p2_download_stats, you can now configure
+      you tycho-p2-plugin:p2-metadata generateDownloadStats
+      parameter to add the necessary property on the artifacts or
+      alternatively, you can override the
+      tycho.generateDownloadStatsProperty property either by CLI
+      with mvn -Dtycho.generateDownloadStatsProperty=true ... or
+      by adding
+        <tycho.generateDownloadStatsProperty>
+          true
+        </tycho.generateDownloadStatsProperty>
+      in the <properties> element of your pom.xml.
+    + Extra artifact repository properties (like p2.statsURI or
+      p2.mirrorsURL)
+      The tycho-p2-repository-plugin:assemble-repository plugin now
+      accepts a extraArtifactRepositoryProperties parameter to
+      configure addition properties to add to the artifact
+      repository.
+    + Configure trimStackTrace in Tycho Surefire
+      Maven Surefire aggressively trims stack traces in test case
+      failure reports, which can lead to confusion where an
+      error/exception actually happened. To avoid that Tycho
+      Surefire now allows configuring the trimStackTrace property as
+      in Maven Surefire.
+    + The Maven Surefire plugins had been updated to v2.22.0 and are
+      now using the Surefire JUnit 5 Platform Provider (prior Tycho
+      used the JUnit 5 Platform Provider from the JUnit Team).
+      So the provider specific properties (e.g. "excludeTag") might
+      not work anymore.
 - Removed patches:
   * build-against-surefire-2.21.patch
   * build-against-surefire-2.22.patch
