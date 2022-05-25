@@ -370,4 +370,41 @@ update to version 1.10.0
     <comment></comment>
     <requestid>889974</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>635dc2ad4a747310c619630e6651ddc9</srcmd5>
+    <version>3.4.0</version>
+    <time>1653503674</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.4.0
+  - [OSC] Implement share network subnet commands
+  - Add support for ~name and ~description filtering when listing shares.
+  - Add CLI error notification in case there is no share type
+  - Fix displaying column headers for OSC list commands
+  - Move release notes to correct folders
+  - Update master for stable/xena
+  - Add --scheduler_hints to share create command
+  - Add missing space in server migration complete
+  - Fix typo in subnet delete description
+  - Fix tox to ignore_basepython_conflict
+  - Remove check for args.force
+  - api 2.64, manilaclient support force extend share
+  - Refractor logs
+  - Update python testing classifier
+  - [OSC] Add missing waiters
+  - Add --wait flag to the share access rule
+  - Avoid formatting *_extra_specs unless format is table
+  - [OSC] Implement Share Group Type Commands
+  - Implement OSC quota set default and project mandatory
+  - Add a --wait flag to share manage/unmanage
+  - Add share groups/share group snaps to quota class
+  - Add Python3 yoga unit tests
+  - Drop lower-constraints.txt and its testing
+  - Fix for displaying export locations for share snapshot.
+  - Refactor code from oslo_incubator
+  - Fix python-manilaclient functional tests
+  - Allow tests to choose client privileges
+  - Add --wait flag to the mange share server operation
+  - Fix typo in unit test</comment>
+    <requestid>979074</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Tue May 24 21:11:48 UTC 2022 - cloud-devel@suse.de
+
+- update to version 3.4.0
+  - [OSC] Implement share network subnet commands
+  - Add support for ~name and ~description filtering when listing shares.
+  - Add CLI error notification in case there is no share type
+  - Fix displaying column headers for OSC list commands
+  - Move release notes to correct folders
+  - Update master for stable/xena
+  - Add --scheduler_hints to share create command
+  - Add missing space in server migration complete
+  - Fix typo in subnet delete description
+  - Fix tox to ignore_basepython_conflict
+  - Remove check for args.force
+  - api 2.64, manilaclient support force extend share
+  - Refractor logs
+  - Update python testing classifier
+  - [OSC] Add missing waiters
+  - Add --wait flag to the share access rule
+  - Avoid formatting *_extra_specs unless format is table
+  - [OSC] Implement Share Group Type Commands
+  - Implement OSC quota set default and project mandatory
+  - Add a --wait flag to share manage/unmanage
+  - Add share groups/share group snaps to quota class
+  - Add Python3 yoga unit tests
+  - Drop lower-constraints.txt and its testing
+  - Fix for displaying export locations for share snapshot.
+  - Refactor code from oslo_incubator
+  - Fix python-manilaclient functional tests
+  - Allow tests to choose client privileges
+  - Add --wait flag to the mange share server operation
+  - Fix typo in unit test
+  - Bump max API microversion
+  - Fix the id attr for share group type access repr
+  - Add Python 3 only classifier
+  - Add --scheduler_hints to share replica create command
+  - Update master for stable/yoga
+  - Add export location information to share replica show command
+  - [CI] Change rally and lower-constraints jobs
+  - API 2.69,Manila client support recycle bin
+  - Bump lower-constraints
+
+-------------------------------------------------------------------
+Tue Oct 26 21:59:46 UTC 2021 - cloud-devel@suse.de
+
+- update to version 3.0.0
+  - Fix test failures for "test_list_shares_by_{filter}"
+  - Further fix to "test_list_shares_by_status"
+  - [OSC] Implement share instance commands
+  - tools: Remove dead tools
+  - Fix OSC share groups
+  - Fix typo in quota set error message
+  - Add "--wait" option for deleting a share server
+  - [OSC] Implement Share Limits Show command
+  - Add --wait flag to the create share group operation
+  - [TrivialFix] Follow up per-share-gigabytes quota changes
+  - Fix PDF docs issue
+  - Changed minversion in tox to 3.18.0
+  - Implement OSC share instance export location commands
+  - Add --wait flag to the delete share group operation
+  - [OSC] Implement Share Pools List command
+  - [OSC] Implement Share Replica Commands
+  - Add Python3 xena unit tests
+  - Fix incorrect dict member lookup
+  - [OSC] Implement Share Group Commands
+  - [ci] fix neutron services in functional job
+  - Replace deprecated inspect.getargspec
+  - [OSC] Implement Availability Zones Command
+  - OSC Implementation for Share Networks
+  - Re-enable shell completion cache
+  - tests: Remove unused fakes
+  - setup.cfg: Replace dashes with underscores
+  - Fix error in CLI 'manila list' with sorting key 'availability_zone'.
+  - [OSC] Implement Share Services Commands
+  - Remove six
+  - utils: Remove unicode-related helpers
+  - [OSC] Implement Replica Export Locations commands
+  - Update master for stable/wallaby
+  - Fix issue while creating share from snapshot
+  - Uncap PrettyTable
+  - [OSC] Fix the default API_VERSION in unit tests
+  - [OSC] Add Share Snapshot Instances commands
+  - Remove some deprecated options
+  - Add per share gigabytes quota to the CLI
+
+-------------------------------------------------------------------
 Sun May  2 17:23:39 UTC 2021 - cloud-devel@suse.de
 
 - update to version 2.6.0
