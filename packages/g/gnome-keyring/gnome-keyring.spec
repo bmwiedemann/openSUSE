@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-keyring
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-keyring
-Version:        40.0
+Version:        42.1
 Release:        0
 Summary:        GNOME Keyring
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeKeyring
-Source0:        https://download.gnome.org/sources/gnome-keyring/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-keyring/42/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 # PATCH-FIX-OPENSUSE gnome-keyring-pam-auth-prompt-password.patch bnc#466732 bgo#560488 vuntz@novell.com -- Make the pam module prompt the password in auth, so we can use pam-config. This is a workaround until bnc#477488 is implemented.
@@ -50,6 +50,8 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gck-1) >= 3.3.4
 BuildRequires:  pkgconfig(gcr-3) >= 3.27.90
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
+BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(systemd)
 Requires:       libgck-modules-gnome-keyring = %{version}
 Recommends:     %{name}-pam
 Provides:       dbus(org.freedesktop.secrets)
@@ -190,6 +192,8 @@ fi
 %dir %{_datadir}/xdg-desktop-portal
 %dir %{_datadir}/xdg-desktop-portal/portals
 %{_datadir}/xdg-desktop-portal/portals/gnome-keyring.portal
+%{_userunitdir}/gnome-keyring-daemon.service
+%{_userunitdir}/gnome-keyring-daemon.socket
 
 %files -n libgck-modules-gnome-keyring
 # Note: if modules move to %%{_libdir}/pkcs11, then we should remove

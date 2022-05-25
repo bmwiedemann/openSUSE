@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May 23 15:02:17 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.1:
+  + daemon: Add files to EXTRA_DIST to fix distcheck.
+- Changes from version 42.0:
+  + secret-portal: Properly check the default keyring.
+  + Build fixes.
+  + ssh-agent: Fix crash by uninitialized GMutex.
+  + fix looping off the end of the operations array.
+  + readme: Mention libsecret instead of deprecated
+    libgnome-keyring.
+  + daemon: Make it systemd-activatable through the control socket.
+  + Updated translations.
+- Add pkgcondfig(systemd) and pkgconfig(libsystemd) BuildRequires:
+  new dependencies.
+
+-------------------------------------------------------------------
 Tue Oct 19 12:45:32 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Build without libcap-ng support (boo#1098245):
