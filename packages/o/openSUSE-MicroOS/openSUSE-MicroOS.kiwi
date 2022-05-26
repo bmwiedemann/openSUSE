@@ -11,7 +11,6 @@
         <!-- Flavors -->
         <profile name="ContainerHost" description="MicroOS with container runtime (podman)"/>
         <profile name="k3s" description="MicroOS with k3s"/>
-        <profile name="Kubic-kubeadm" description="MicroOS with CRI-O and kubeadm"/>
         <!-- Platforms -->
         <profile name="kvm-and-xen" description="kvm-and-xen" arch="x86_64,aarch64"/>
         <profile name="VMware" description="VMware for x86_64" arch="x86_64"/>
@@ -59,49 +58,9 @@
             <requires profile="Vagrant"/>
             <requires profile="ContainerHost"/>
         </profile>
-        <profile name="Kubic-kubeadm-kvm-and-xen" description="kubeadm with CRI-O for KVM and HVM Xen" arch="x86_64,aarch64">
-            <requires profile="kvm-and-xen"/>
-            <requires profile="Kubic-kubeadm"/>
-        </profile>
-        <profile name="Kubic-kubeadm-VMware" description="kubeadm with CRI-O for VMware" arch="x86_64">
-            <requires profile="VMware"/>
-            <requires profile="Kubic-kubeadm"/>
-        </profile>
-        <profile name="Kubic-kubeadm-MS-HyperV" description="kubeadm with CRI-O for Hyper-V" arch="x86_64">
-            <requires profile="MS-HyperV"/>
-            <requires profile="Kubic-kubeadm"/>
-        </profile>
-        <profile name="Kubic-kubeadm-OpenStack-Cloud" description="kubeadm with CRI-O for OpenStack Cloud" arch="x86_64">
-            <requires profile="OpenStack-Cloud"/>
-            <requires profile="Kubic-kubeadm"/>
-        </profile>
-        <profile name="Kubic-kubeadm-DigitalOcean-Cloud" description="kubeadm with CRI-O for DigitalOcean Cloud" arch="x86_64">
-            <requires profile="DigitalOcean-Cloud"/>
-            <requires profile="Kubic-kubeadm"/>
-        </profile>
-        <profile name="Kubic-kubeadm-Pine64" description="kubeadm with CRI-O for the Pine64" arch="aarch64">
-            <requires profile="Pine64"/>
-            <requires profile="Kubic-kubeadm"/>
-        </profile>
-        <profile name="Kubic-kubeadm-RaspberryPi" description="kubeadm with CRI-O for the Raspberry Pi" arch="aarch64">
-            <requires profile="RaspberryPi"/>
-            <requires profile="Kubic-kubeadm"/>
-        </profile>
-        <profile name="Kubic-kubeadm-Rock64" description="kubeadm with CRI-O for the Rock64" arch="aarch64">
-            <requires profile="Rock64"/>
-            <requires profile="Kubic-kubeadm"/>
-        </profile>
-        <profile name="Kubic-kubeadm-Vagrant" description="kubeadm with CRI-O for Vagrant" arch="x86_64,aarch64">
-            <requires profile="Vagrant"/>
-            <requires profile="Kubic-kubeadm"/>
-        </profile>
         <profile name="ContainerHost-SelfInstall" description="MicroOS with Podman for SelfInstallation" arch="x86_64,aarch64">
             <requires profile="SelfInstall"/>
             <requires profile="ContainerHost"/>
-        </profile>
-        <profile name="Kubic-kubeadm-SelfInstall" description="kubeadm with CRI-O for SelfInstallation" arch="x86_64,aarch64">
-            <requires profile="SelfInstall"/>
-            <requires profile="Kubic-kubeadm"/>
         </profile>
         <profile name="k3s-kvm-and-xen" description="MicroOS with k3s for KVM and HVM Xen" arch="x86_64,aarch64">
             <requires profile="kvm-and-xen"/>
@@ -712,13 +671,6 @@
     </packages>
     <packages type="image" profiles="k3s">
         <package name="k3s"/>
-    </packages>
-    <packages type="image" profiles="Kubic-kubeadm">
-        <package name="patterns-containers-container_runtime_kubernetes"/>
-        <package name="patterns-containers-kubeadm"/>
-        <package name="patterns-containers-kubic_admin"/>
-        <package name="patterns-containers-kubic_loadbalancer"/>
-        <package name="patterns-containers-kubic_worker"/>
     </packages>
     <packages type="image" profiles="kvm-and-xen">
         <!-- KVM and Xen specific packages -->
