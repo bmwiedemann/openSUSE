@@ -77,4 +77,48 @@
     <comment></comment>
     <requestid>962438</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ea365ef88b4d386b1a509e09869411a3</srcmd5>
+    <version>1.1.1</version>
+    <time>1653583427</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.1:
+  - Improvements:
+    - Fixed issue with regex library by pinning dependencies to
+      an earlier version
+    - Extended support for Russian language dates starting with
+      lowercase
+    - Allowed to use_given_order for languages too
+    - Fixed link to settings section
+    - Defined UTF-8 encoding for Windows
+    - Fixed directories creation error in CLI utils
+- Update to 1.1.0:
+  - New features:
+    - Support language detection based on langdetect, fastText,
+      or a custom implementation
+    - Add support for 'by '
+    - Sort default language list by internet usage
+  - Improvements:
+    - Improved support of Chinese
+    - Improvements in search_dates
+    - Make order of previous locales deterministic
+    - Fix parsing with trailing space
+    - Consider RETURN_TIME_AS_PERIOD for timestamp times
+    - Exclude failing regex version
+    - Ongoing work multithreading support
+    - Add demo URL
+  - QA:
+    - Migrate pipelines from Travis CI to Github Actions
+    - Use versioned CLDR data
+    - Add a script to update table of supported languages and
+      locales
+    - Sort 'skip' keys in yaml files
+    - Improve test coverage
+    - Code cleanup
+- Add patches:
+  - incompatible-regex-pattern.patch (gh#scrapinghub/dateparser#1052)
+  - mark-network-tests.patch (gh#scrapinghub/dateparser#1059)
+</comment>
+    <requestid>979090</requestid>
+  </revision>
 </revisionlist>

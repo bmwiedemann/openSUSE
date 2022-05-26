@@ -19,15 +19,23 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-dateparser
-Version:        1.0.0
+Version:        1.1.1
 Release:        0
 Summary:        Date parsing library designed to parse dates from HTML pages
 License:        BSD-3-Clause
 URL:            https://github.com/scrapinghub/dateparser
 Source:         https://files.pythonhosted.org/packages/source/d/dateparser/dateparser-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM incompatible-regex-pattern.patch gh#scrapinghub/dateparser#1052 mcepl@suse.com
+# use pattern compatible with the modern version of regex
+Patch0:         incompatible-regex-pattern.patch
+# PATCH-FIX-UPSTREAM mark-network-tests.patch gh#scrapinghub/dateparser#1059 mcepl@suse.com
+# mark test requiring network access
+Patch1:         mark-network-tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-fasttext
+Requires:       python-langdetect
 Requires:       python-python-dateutil
 Requires:       python-pytz
 Requires:       python-regex
@@ -40,7 +48,9 @@ BuildArch:      noarch
 BuildRequires:  %{python_module GitPython}
 BuildRequires:  %{python_module convertdate}
 BuildRequires:  %{python_module coverage}
+BuildRequires:  %{python_module fasttext}
 BuildRequires:  %{python_module jdatetime}
+BuildRequires:  %{python_module langdetect}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
@@ -50,38 +60,51 @@ BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module tzlocal}
 # /SECTION
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
 Date parsing library designed to parse dates from HTML pages
 
 %prep
-%setup -q -n dateparser-%{version}
+%autosetup -p1 -n dateparser-%{version}
+
 # not py3 compatible and weird license of the imported module
 rm tests/test_hijri.py
 rm dateparser/calendars/hijri*
 # Requires files not shipped in PyPi tarball
 rm tests/test_dateparser_data_integrity.py
 
+sed -i '1{/\/usr\/bin\/env python/d;}' \
+    dateparser_scripts/update_supported_languages_and_locales.py
+
 %build
 %python_build
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/dateparser-download
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+export NO_NETWORK=1
 %pytest
+
+%post
+%python_install_alternative dateparser-download
+
+%postun
+%python_uninstall_alternative dateparser-download
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst
 %license LICENSE
-%dir %{python_sitelib}/dateparser
-%{python_sitelib}/dateparser/*
-%dir %{python_sitelib}/dateparser_data
-%{python_sitelib}/dateparser_data/*
-%dir %{python_sitelib}/dateparser_scripts
-%{python_sitelib}/dateparser_scripts/*
-%{python_sitelib}/dateparser-%{version}-py*.egg-info
+%python_alternative %{_bindir}/dateparser-download
+%{python_sitelib}/dateparser
+%{python_sitelib}/dateparser_cli
+%{python_sitelib}/dateparser_data
+%{python_sitelib}/dateparser_scripts
+%{python_sitelib}/dateparser-%{version}*-info
 
 %changelog

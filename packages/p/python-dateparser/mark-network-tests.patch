@@ -1,0 +1,32 @@
+---
+ tests/test_language_detect.py |    6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+--- a/tests/test_language_detect.py
++++ b/tests/test_language_detect.py
+@@ -1,6 +1,8 @@
++import os
++import unittest
++
+ from datetime import datetime
+ from unittest.mock import Mock
+-import unittest
+ 
+ from parameterized import parameterized, param
+ 
+@@ -13,6 +15,7 @@ from dateparser.search import search_dat
+ detect_languages = Mock()
+ detect_languages.return_value = ["en"]
+ 
++NO_NETWORK = int(os.environ.get('NO_NETWORK', 0)) == 1
+ 
+ class CustomLangDetectParserTest(unittest.TestCase):
+     def check_is_returned_list(self):
+@@ -22,6 +25,7 @@ class CustomLangDetectParserTest(unittes
+         param(dt_string="14 June 2020", confidence_threshold=0.0),
+         param(dt_string="26 July 2021", confidence_threshold=0.0)
+     ])
++    @unittest.skipIf(NO_NETWORK, "Test requires network access")
+     def test_custom_language_detect_fast_text(self, dt_string, confidence_threshold):
+         self.result = fast_text_detect_languages(dt_string, confidence_threshold)
+         self.check_is_returned_list()
