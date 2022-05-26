@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Thu May 26 05:50:06 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.5.9:
+  * Link the mosaic button in the scheduler UI to the new mosaic planner to avoid confusion
+  * Replace changes the string itself and does not only affect returned string
+  * Fix guide settle time setting
+  * Missed moving step
+  * Fix order of state strings
+  * Previous fix for I18N_NOOP got completely lost. This is a re-write for that previous fix
+  * Add option to refocus after meridian flip
+  * Disable unused functions for now to be implemented later
+  * Ensure that GOTO mode in align is set to GOTO_SLEW when using goto and solve button
+  * Must run equatorial to horizontal to check for altitude
+  * Record full object name to be used for FITS header
+  * fix the pipeline
+  * fix broken test_ekos_scheduler_ops test
+  * Update getDarkSettings in dark Library
+  * Fix mosaic panel and tiles compilation when INDI is not detected
+  * Limit mosaic tiles to INDI
+  * Mosaic Planner Sky Component
+  * Add Gain and ISO to dark library
+  * Bugfix for PHD2 guiding - restart guiding after lost star
+  * Use const qualifier for jobs
+  * Capture state machine | introducing device adaptor
+  * Bugfix for aborted jobs handling in the scheduler
+  * Add EkosLive shim to scheduler
+  * l10n Improves: comment added for gender change
+  * Current coord horizontal components need to be updated as per the timer;
+    otherwise the mount indicator slips away
+  * Bugfix for aborting guiding while dithering
+  * More fixes to offline HIPS rendering
+  * Use BlockWithGui as proposed by Wolfgang
+  * Fix condition that prevented object selection from find dialog
+  * Fix I18N_NOOP usage
+  * adds schedular commands for EkosLive
+  * Support native INDI mount directional control reverse logic
+  * Fix issue estimating polar-alignment target pixel when error is large
+  * Respect None setting
+  * Fix typo and avoid using strings to send status due to internationalization
+  * Further improvements to offline HiPS rendering to fill the gaps for missing levels
+  * Add support for HiPS offline storage. Reduce unnecessary significant...
+  * Ensure Appimage builds do not occupy a significant amount of storage space.
+  * Prevent destructor from starting when fitsview is being updated
+  * Add Target Distance to the Analyze graph/stats
+  * Fix broken checkbox label and tooltip.
+  * Capture progress labels consolidated
+  * New index files
+  * Adds clear capture sequence queue command
+  * Switch scheduler table to ResizeToContents
+  * Stop update frame time on dtor
+  * Improve WCS when multithreading. Add parallel-solvers test.
+  * Fix crash in Guide::processCaptureTimeout()
+  * Support native INDI mount directional control reverse logic
+  * Fix issue estimating polar-alignment target pixel when error is large
+  * Fix compile on 18.04
+  * Respect None setting
+  * Fix test cases
+  * Fix typo and avoid using strings to send status due to internationalization
+  * Further improvements to offline HiPS rendering to fill the gaps for missing levels
+  * Add support for HiPS offline storage. Reduce unnecessary significant...
+  * Ensure Appimage builds do not occupy a significant amount of storage space.
+  * Prevent destructor from starting when fitsview is being updated
+  * Add Target Distance to the Analyze graph/stats
+  * Fix broken checkbox label and tooltip.
+  * Capture progress labels consolidated
+  * New index files
+  * Adds clear capture sequence queue command
+  * Switch scheduler table to ResizeToContents
+  * Stop update frame time on dtor
+  * adds commands to save and load sequence files
+  * Improve WCS when multithreading. Add parallel-solvers test.
+  * Fix crash in Guide::processCaptureTimeout()
+  * adds commands to save and load sequence files
+  * Check explicitly for CAL_NONE to fix an important bug where flat frames are captured twice
+  * One-pulse dither should not send any guide pulses on first guide frame
+  * Greedy scheduler speedups and test
+  * use captureStates directly to send the exact capture status string
+  * Disable warning that might get annoying after a while for some setups
+  * Avoid empty msgids
+  * Redesign capture progress
+  * Ensure that image frame still exists when timer hits
+  * Send dark frame as high bandwidth
+  * Simplify code by using existing currentCoordinates function
+  * Prevent cpu waster from zero-delay captureDelayTimer when CCD starts slowly.
+  * Dark library refactor to clarify function names
+  * We have to explicitly use a pointer for traversing the devices since we re-assign them
+  * Use const-correct loops for accessing INDI listener devices
+  * Fix align list save
+  * Bugfix: Greedy simulator needs capturedFramesCount
+  * fit altVsTime crash
+  * Fix auxiliary setting
+  * Fix possible crash when using remote astrometry solver in load and slew
+  * Fix issue with bias frame never emitting prepareComplete
+  * fix abort-delay bug
+  * Fix option name
+- Add fix-eigen3.patch
+
+-------------------------------------------------------------------
 Wed Mar 16 15:59:47 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.5.8:

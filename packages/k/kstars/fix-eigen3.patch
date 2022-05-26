@@ -1,0 +1,33 @@
+From d0cf48e3dfb084ddc58918ddc756e1b89d2011ce Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heiko.becker@kde.org>
+Date: Tue, 24 May 2022 17:43:35 +0200
+Subject: [PATCH] Use Config mode for finding Eigen3
+
+In [1] the build system was changed to use Eigen3's imported targets
+provided upstream. These are only available with the cmake config
+files, not the FindEigen3 module (also upstream). With the basic
+signature of find_package() it searches in Module mode first, finding
+Eigen3 via FindEigen3.cmake and erroring out afterwards because
+Eigen3::Eigen is an unknown target.
+Forcing find_package to use the Config mode fixes that.
+
+[1] 361d241d3d76b53cc92bc98dbb237c4fe6d79000
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bb4d78d98..b5fd58c54 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -152,7 +152,7 @@ else(BUILD_KSTARS_LITE)
+ endif(BUILD_KSTARS_LITE)
+ 
+ ## Eigen3 Library
+-find_package(Eigen3 REQUIRED)
++find_package(Eigen3 REQUIRED CONFIG)
+ 
+ ## CFITSIO Library
+ if(ANDROID)
+-- 
+GitLab
