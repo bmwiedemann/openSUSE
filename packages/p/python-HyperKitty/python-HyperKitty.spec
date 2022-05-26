@@ -1,7 +1,7 @@
 #
 # spec file for package python-HyperKitty
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,6 +61,8 @@ Patch0:         hyperkitty-settings.patch
 Patch1:         hyperkitty-fix-mistune-2.0-imports.patch
 # PATCH-FIX-UPSTREAM hyperkitty-django4.patch gl#mailman/hyperkitty#384 jayvdb@gmail.com
 Patch2:         hyperkitty-django4.patch
+# https://gitlab.com/mailman/hyperkitty/-/issues/429
+Patch3:         python-HyperKitty-no-mock.patch
 #
 BuildRequires:  %{python_module django-debug-toolbar >= 2.2}
 BuildRequires:  %{python_module isort}
@@ -108,7 +110,6 @@ BuildRequires:  %{python_module flufl.lock}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module mailmanclient >= 3.3.2}
 BuildRequires:  %{python_module mistune}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module networkx >= 1.9.1}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
@@ -160,6 +161,7 @@ rsync -a example_project/* build_static_files
 
 %patch0 -p1
 %patch1 -p1
+%patch3 -p1
 
 %build
 sed -i 's|^#!/usr/bin/env.*|#!%{_bindir}/python3|' \
