@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu May 19 07:14:05 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.033:
+  * Add various patterns for files for which mirrors shouldnt be used (#275)
+  * Fix regexp in latest_misses sql so *-primary.xml wasnt requesting scans (#275)
+  * Add MyMirrors menu to openSUSE branding (#275)
+  * Introduce MIRRORCACHE_VPN variable which has higher priority thant MIRRORCACHE_VPN_PREFIX (#275)
+  * Allow regular users add and manage own mirrors (#274)
+  * Add parameter MIRRORCACHE_MAX_PATH (#274)
+
+-------------------------------------------------------------------
+Thu May 12 07:31:11 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.032:
+  * Set MIME type when rendering files (#273)
+  * Optimize main sql query so it doesnt create tmp disk tables in mariadb (#272)
+  * Force sql plan in job mirror_check_from_stat for mariadb (#272)
+  * Add shared guard to schedule jobs to avoid deadlocks in DB (#272)
+
+-------------------------------------------------------------------
 Thu May 05 01:57:15 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.031:
