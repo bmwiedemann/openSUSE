@@ -109,4 +109,15 @@
   * xwayland/present: Fix use-after-free in xwl_unrealize_window()</comment>
     <requestid>966177</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0542376baa9241d781caa5657846abfe</srcmd5>
+    <version>22.1.2</version>
+    <time>1653583438</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 22.1.2
+  * randr: Add &quot;RANDR Emulation&quot; property
+  * xwayland/output: Set the &quot;RANDR Emulation&quot; property
+  * xwayland: Fix invalid pointer access in drm_lease_device_handle_released.</comment>
+    <requestid>979155</requestid>
+  </revision>
 </revisionlist>

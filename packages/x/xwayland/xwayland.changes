@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 25 10:03:50 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 22.1.2
+  * randr: Add "RANDR Emulation" property
+  * xwayland/output: Set the "RANDR Emulation" property
+  * xwayland: Fix invalid pointer access in drm_lease_device_handle_released.
+
+-------------------------------------------------------------------
 Thu Mar 31 09:21:36 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 22.1.1

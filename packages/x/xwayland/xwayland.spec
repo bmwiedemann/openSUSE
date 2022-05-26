@@ -24,7 +24,7 @@
 %endif
 
 Name:           xwayland
-Version:        22.1.1
+Version:        22.1.2
 Release:        0
 URL:            http://xorg.freedesktop.org/
 Summary:        X
