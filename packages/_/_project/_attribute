@@ -210,7 +210,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
-jobs_num: 322
+jobs_num: 320
 openqa_group: openSUSE Tumbleweed
 openqa_server: https://openqa.opensuse.org
 product_repo: images
@@ -544,7 +544,7 @@ set_snapshot_number: True</value>
     <value>failed: ''
 published: '20220524'
 publishing: '20220524'
-testing: '20220524'
+testing: '20220525'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
