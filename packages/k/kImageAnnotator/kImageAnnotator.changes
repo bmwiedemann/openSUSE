@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon May 23 07:34:16 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6.0
+  New
+  * Add optional undo, redo, crop, scale and modify canvas buttons
+    to dock widgets.
+  * Cut out vertical or horizontal slice of an image.
+  * Middle-click on tab header closes tab.
+  * Add button to fit image into current view.
+  * Allow changing item opacity.
+  * Add support for RGBA colors with transparency.
+  * Add mouse cursor sticker.
+  * Allow scaling stickers per setting.
+  * Respect original aspect ratio of stickers.
+  * Respect original size of stickers.
+  Fixed
+  * Adding image effect does not send image change notification.
+  * Blur / Pixelate break when going past image edge once.
+  * Item opacity not applied when item shadow disabled.
+  Changed
+  * Changed kImageAnnotator: Max font size changed to 100pt.
+
+-------------------------------------------------------------------
 Thu Nov 25 23:10:08 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.5.3
