@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 24 19:27:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- modernize spec file
+  * use licensedir
+  * use bcond
+  * use https:// urls
+  * spec-cleaner
+
+-------------------------------------------------------------------
 Tue Jan 25 15:37:00 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - There is a file conflict in current wayland-devel-32bit and
