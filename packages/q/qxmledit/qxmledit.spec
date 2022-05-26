@@ -16,9 +16,9 @@
 #
 
 
-%define major   -0_9_16-0
+%define major   -0_9_17-0
 Name:           qxmledit
-Version:        0.9.16
+Version:        0.9.17
 Release:        0
 Summary:        XML Editor and XSD Viewer
 License:        LGPL-2.0-or-later AND LGPL-3.0-or-later

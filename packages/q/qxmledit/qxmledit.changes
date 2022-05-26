@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May 26 03:49:39 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.9.17
+  * Issue #83, the license dialog don't ask questions anymore.
+  * Option to load a base64 coded data file in base64 dialog.
+  * Added generation of XML and XSD via XMLBeans integration
+    (XMLBeans required).
+  * Issue #81, path in tooltip under configuration.
+  * Issue #76, Russian translations.
+  * Issue #73, wrong library versions.
+  * Issue #71, installation for desktop files.
+  * Added an alternative set of sources to test installation.
+
+-------------------------------------------------------------------
 Thu Apr 28 07:18:05 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Drop baselibs.conf, unnecessary
