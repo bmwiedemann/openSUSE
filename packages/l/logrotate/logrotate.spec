@@ -19,7 +19,7 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           logrotate
-Version:        3.19.0
+Version:        3.20.1
 Release:        0
 Summary:        Cron service for rotating, compressing, mailing and removing system log files
 License:        GPL-2.0-or-later
@@ -32,8 +32,9 @@ Source2:        logrotate.default
 Source3:        logrotate.service
 Source10:       https://github.com/%{name}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source100:      %{name}-rpmlintrc
-Patch0:         logrotate-3.19.0-man_logrotate.patch
+Patch0:         logrotate-3.20.0-man_logrotate.patch
 BuildRequires:  acl
+BuildRequires:  automake
 BuildRequires:  libacl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libselinux)
@@ -52,9 +53,10 @@ It manages plain files only and is not involved in systemd's journal rotation.
 
 %prep
 %setup -q
-%patch0 -p1
+%autopatch -p1
 
 %build
+autoreconf -f -i
 %configure \
     --disable-silent-rules \
     --with-state-file-path=%{_localstatedir}/lib/misc/logrotate.status \

@@ -670,4 +670,12 @@
 - Adapted man page: logrotate-3.19.0-man_logrotate.patch</comment>
     <requestid>960296</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>8220e69e615bc425252ad6e104cf9223</srcmd5>
+    <version>3.20.1</version>
+    <time>1653583440</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979299</requestid>
+  </revision>
 </revisionlist>

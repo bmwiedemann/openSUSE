@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed May 25 20:06:20 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 3.20.1:
+  * drop world-readable permission on state file even when ACLs are enabled (#446)
+- removed obsolete logrotate-CVE-2022-1348-follow-up.patch
+
+-------------------------------------------------------------------
+Wed May 25 15:31:32 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Security fix: (bsc#1199652, CVE-2022-1348)
+  * Add follow-up upstream patch for the introduced fix.
+  * Added patch logrotate-CVE-2022-1348-follow-up.patch
+
+- Update patch:
+  * logrotate-3.19.0-man_logrotate.patch -> logrotate-3.20.0-man_logrotate.patch
+
+-------------------------------------------------------------------
+Wed May 25 13:34:17 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 3.20.0:
+  * fix potential DoS from unprivileged users via the state file (CVE-2022-1348)
+  * fix a misleading debug message with copytruncate and rotate 0 (#443)
+  * add support for unsigned time_t (#438)
+  * do not lock state file /dev/null (#433)
+
+-------------------------------------------------------------------
 Thu Feb 24 10:36:07 UTC 2022 - Stefan Schubert <schubi@suse.de>
 
 - Added own logrotate.service file in order to define a new order

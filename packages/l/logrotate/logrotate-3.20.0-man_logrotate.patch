@@ -1,6 +1,6 @@
-diff -Naur logrotate-3.19.0.orig/logrotate.8.in logrotate-3.19.0/logrotate.8.in
---- logrotate-3.19.0.orig/logrotate.8.in	2022-02-24 11:18:24.202811846 +0100
-+++ logrotate-3.19.0/logrotate.8.in	2022-02-24 11:28:25.137690351 +0100
+diff -ur logrotate-3.20.0.orig/logrotate.8.in logrotate-3.20.0/logrotate.8.in
+--- logrotate-3.20.0.orig/logrotate.8.in	2022-03-31 14:00:36.000000000 +0200
++++ logrotate-3.20.0/logrotate.8.in	2022-05-25 15:40:21.015424608 +0200
 @@ -48,6 +48,17 @@
  is given on the command line, every file in that directory is used as
  a config file.
@@ -19,15 +19,6 @@ diff -Naur logrotate-3.19.0.orig/logrotate.8.in logrotate-3.19.0/logrotate.8.in
  If no command line arguments are given, \fBlogrotate\fR will print
  version and copyright information, along with a short usage summary.  If
  any errors occur while rotating logs, \fBlogrotate\fR will exit with
-@@ -76,7 +87,7 @@
- acquires a lock on the state file, if it cannot be acquired \fBlogrotate\fR
- will exit with value 3.  The default state file is \fI@STATE_FILE_PATH@\fR.
- If \fI/dev/null\fR is given as the state file, then \fBlogrotate\fR will
--not try to write the state file.
-+not try to lock or write the state file.
- 
- .TP
- \fB\-\-skip-state-lock\fR
 @@ -752,7 +763,8 @@
  tab(:);
  l l l.
