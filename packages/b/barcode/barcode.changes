@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 19 09:17:36 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- switch to https source urls
+
+-------------------------------------------------------------------
 Thu Jun 18 10:01:59 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix building with gcc10

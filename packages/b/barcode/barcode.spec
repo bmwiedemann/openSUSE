@@ -1,7 +1,7 @@
 #
 # spec file for package barcode
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,8 @@ Summary:        Text-Mode Barcode Creation Utility
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://www.gnu.org/software/barcode
-Source0:        ftp://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.xz
-Source1:        ftp://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.xz.sig
+Source0:        https://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.xz
+Source1:        https://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 # PATCH-FIX-OPENSUSE barcode-0.99-info.patch
 Patch2:         %{name}-0.99-info.patch
