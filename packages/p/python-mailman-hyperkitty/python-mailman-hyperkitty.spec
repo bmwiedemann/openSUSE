@@ -1,7 +1,7 @@
 #
 # spec file for package python-mailman-hyperkitty
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ Summary:        Mailman archiver plugin for HyperKitty
 License:        GPL-3.0-only
 URL:            https://gitlab.com/mailman/mailman-hyperkitty/
 Source:         https://files.pythonhosted.org/packages/source/m/mailman-hyperkitty/mailman-hyperkitty-%{version}.tar.gz
+# https://gitlab.com/mailman/mailman-hyperkitty/-/issues/28
+Patch0:         python-mailman-hyperkitty-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -36,7 +38,6 @@ Requires:       python-zope.interface
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module mailman}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nose2}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
