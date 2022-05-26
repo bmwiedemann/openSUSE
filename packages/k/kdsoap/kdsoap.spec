@@ -15,10 +15,22 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 %define soname 2
-
-Name:           kdsoap
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == ""
+%define qt5 1
+%define pkg_suffix %{nil}
+%define lib_suffix %{soname}
+%define mkspecsdir %{_libqt5_archdatadir}/mkspecs
+%endif
+%if "%{flavor}" == "qt6"
+%define qt6 1
+%define pkg_suffix -qt6
+# to have libkdsoap-qt6-2
+%define lib_suffix -%{soname}
+%define mkspecsdir %{_qt6_mkspecsdir}
+%endif
+Name:           kdsoap%{pkg_suffix}
 Version:        2.0.0
 Release:        0
 Summary:        A Qt-based client-side and server-side SOAP component
@@ -26,14 +38,22 @@ Summary:        A Qt-based client-side and server-side SOAP component
 License:        (GPL-2.0-only OR GPL-3.0-only) AND LGPL-2.1-only AND AGPL-3.0-only
 Group:          System/Libraries
 URL:            https://www.kdab.com/products/kd-soap
-Source:         https://github.com/KDAB/KDSoap/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/KDAB/KDSoap/releases/download/kdsoap-%{version}/kdsoap-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5Core) >= 5.9.0
+%if 0%{?qt5}
+BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+%endif
+%if 0%{?qt6}
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Xml)
+%endif
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -42,22 +62,21 @@ It can be used to create client applications for web services and also provides
 the means to create web services without the need for any further component such
 as a dedicated web server.
 
-%package -n libkdsoap%{soname}
+%package -n libkdsoap%{pkg_suffix}%{lib_suffix}
 Summary:        A Qt-based client-side and server-side SOAP component
 License:        (GPL-2.0-only OR GPL-3.0-only) AND LGPL-2.1-only
 Group:          System/Libraries
-Recommends:     %{name}
 
-%description -n libkdsoap%{soname}
+%description -n libkdsoap%{pkg_suffix}%{lib_suffix}
 KD Soap is a Qt-based client-side and server-side SOAP component.
 This package provides the library for the client-side component.
 
-%package -n libkdsoap-server%{soname}
+%package -n libkdsoap-server%{pkg_suffix}%{lib_suffix}
 Summary:        A Qt-based client-side and server-side SOAP component
 License:        AGPL-3.0-only
 Group:          System/Libraries
 
-%description -n libkdsoap-server%{soname}
+%description -n libkdsoap-server%{pkg_suffix}%{lib_suffix}
 KD Soap is a Qt-based client-side and server-side SOAP component.
 This package provides the library for the server-side component.
 
@@ -65,8 +84,12 @@ This package provides the library for the server-side component.
 Summary:        Development files for kdsoap, a Qt-based client and server-side SOAP component
 License:        (GPL-2.0-only OR GPL-3.0-only) OR LGPL-2.1-only AND AGPL-3.0-only
 Group:          Development/Libraries/C and C++
-Requires:       libkdsoap%{soname} = %{version}
-Requires:       libkdsoap-server%{soname} = %{version}
+Requires:       libkdsoap%{pkg_suffix}%{lib_suffix} = %{version}
+Requires:       libkdsoap-server%{pkg_suffix}%{lib_suffix} = %{version}
+# Only runtime packages can be co-installed
+%if 0%{?qt6}
+Conflicts:      kdsoap-devel
+%endif
 
 %description devel
 KD Soap is a Qt-based client-side and server-side SOAP component.
@@ -74,44 +97,58 @@ This package provides development headers to use KD Soap in Qt based
 applications.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n kdsoap-%{version}
 
 %build
+%if 0%{?qt5}
 %cmake
 %cmake_build
+%endif
+%if 0%{?qt6}
+# The two helloworld examples fail to build
+%cmake_qt6 -DKDSoap_QT6:BOOL=TRUE -DKDSoap_EXAMPLES:BOOL=FALSE
+%qt6_build
+%endif
 
 %install
+%if 0%{?qt5}
 %cmake_install
+%endif
+%if 0%{?qt6}
+%qt6_install
+%endif
 
-mkdir -p %{buildroot}%{_libqt5_archdatadir}/mkspecs/features
-mv %{buildroot}%{_datadir}/mkspecs/features/kdsoap.prf %{buildroot}%{_libqt5_archdatadir}/mkspecs/features/
+mkdir -p %{buildroot}%{mkspecsdir}/features
+mv %{buildroot}%{_datadir}/mkspecs/features/kdsoap.prf %{buildroot}%{mkspecsdir}/features/
 
 %fdupes %{buildroot}%{_includedir}/KDSoapClient/
 
-%post -n libkdsoap-server%{soname}  -p /sbin/ldconfig
-%post -n libkdsoap%{soname}  -p /sbin/ldconfig
-%postun -n libkdsoap-server%{soname}  -p /sbin/ldconfig
-%postun -n libkdsoap%{soname}  -p /sbin/ldconfig
+%post -n libkdsoap-server%{pkg_suffix}%{lib_suffix} -p /sbin/ldconfig
+%post -n libkdsoap%{pkg_suffix}%{lib_suffix} -p /sbin/ldconfig
+%postun -n libkdsoap-server%{pkg_suffix}%{lib_suffix} -p /sbin/ldconfig
+%postun -n libkdsoap%{pkg_suffix}%{lib_suffix} -p /sbin/ldconfig
 
-%files -n libkdsoap%{soname}
+%files -n libkdsoap%{pkg_suffix}%{lib_suffix}
 %license LICENSES/{GPL-2.0-only.txt,GPL-3.0-only.txt,LGPL-2.1-only.txt,LGPL-3.0-only.txt} README.txt
-%{_libdir}/libkdsoap.so.%{soname}*
+%{_libdir}/libkdsoap%{pkg_suffix}.so.%{soname}*
 
-%files -n libkdsoap-server%{soname}
+%files -n libkdsoap-server%{pkg_suffix}%{lib_suffix}
 %license LICENSES/LicenseRef-KDAB-KDSoap-AGPL3-Modified.txt README.txt
-%{_libdir}/libkdsoap-server.so.%{soname}*
+%{_libdir}/libkdsoap-server%{pkg_suffix}.so.%{soname}*
 
 %files devel
 %license LICENSES/* README.txt
 %{_bindir}/kdwsdl2cpp
-%{_libdir}/libkdsoap.so
-%{_libdir}/libkdsoap-server.so
-%{_libdir}/cmake/KDSoap
-%{_includedir}/KDSoapServer
-%{_includedir}/KDSoapClient
 %{_datadir}/doc/KDSoap/
-%{_libqt5_archdatadir}/mkspecs/features/kdsoap.prf
-%{_libqt5_archdatadir}/mkspecs/modules/qt_KDSoapClient.pri
-%{_libqt5_archdatadir}/mkspecs/modules/qt_KDSoapServer.pri
+%{_includedir}/KDSoapClient/
+%{_includedir}/KDSoapServer/
+%{_libdir}/cmake/KDSoap
+%{_libdir}/libkdsoap%{pkg_suffix}.so
+%{_libdir}/libkdsoap-server%{pkg_suffix}.so
+%{mkspecsdir}/features/kdsoap.prf
+%if 0%{?qt5}
+%{mkspecsdir}/modules/qt_KDSoapClient.pri
+%{mkspecsdir}/modules/qt_KDSoapServer.pri
+%endif
 
 %changelog
