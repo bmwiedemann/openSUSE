@@ -1,7 +1,7 @@
 #
 # spec file for package xmgrace
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,8 @@ Release:        0
 Summary:        A 2D-Plot-Program for Visualisation of Scientific Data
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Visualization/Graph
-URL:            http://plasma-gate.weizmann.ac.il/Grace/
-Source:         ftp://ftp.fu-berlin.de/unix/graphics/grace/src/grace5/grace-%{version}.tar.gz
+URL:            https://plasma-gate.weizmann.ac.il/Grace/
+Source:         https://ftp.fu-berlin.de/unix/graphics/grace/src/grace5/grace-%{version}.tar.gz
 Source1:        %{name}.desktop
 Source2:        xmgrace.png
 Patch0:         xmgrace-null.patch
