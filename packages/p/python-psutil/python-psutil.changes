@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May 24 17:53:52 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- removed obsolete skip-partitions-erros.patch
+- update to 5.9.1
+  * Enhancements
+    - 1053: drop Python 2.6 support. (patches by Matthieu Darbois and Hugo van Kemenade)
+    - 2050, [Linux]: increase read(2) buffer size from 1k to 32k when reading /proc
+      pseudo files line by line. This should help having more consistent results.
+    - 2057, [OpenBSD]: add support for cpu_freq().
+    - 2107, [Linux]: Process.memory_full_info() (reporting process USS/PSS/Swap memory)
+      now reads /proc/pid/smaps_rollup instead of /proc/pids/smaps, which makes it 5 times faster.
+  * Bug fixes
+    - 2048: AttributeError is raised if psutil.Error class is raised manually and passed through str.
+    - 2049, [Linux]: cpu_freq() erroneously returns curr value in GHz while min and max are in MHz.
+    - 2050, [Linux]: virtual_memory() may raise ValueError if running in a LCX container.
+
+-------------------------------------------------------------------
 Wed Feb  2 17:30:32 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Fix name of Patch4, it is skip-partitions-erros.patch

@@ -24,7 +24,7 @@
 %endif
 %bcond_without python2
 Name:           python-psutil
-Version:        5.9.0
+Version:        5.9.1
 Release:        0
 Summary:        A process utilities module for Python
 License:        BSD-3-Clause
@@ -36,8 +36,6 @@ Patch1:         skip-obs.patch
 Patch2:         skip_failing_tests.patch
 # PATCH-FIX-SLE skip_rlimit_tests_on_python2.patch alarrosa@suse.com
 Patch3:         skip_rlimit_tests_on_python2.patch
-# PATCH-FIX-UPSTREAM skip-partitions-erros.patch gh#giampaolo/psutil#2043 mcepl@suse.com
-Patch4:         skip-partitions-erros.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
