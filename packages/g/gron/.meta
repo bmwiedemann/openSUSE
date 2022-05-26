@@ -1,0 +1,11 @@
+<package name="gron" project="openSUSE:Factory">
+  <title>Make JSON greppable</title>
+  <description>gron transforms JSON into discrete assignments to make it easier
+to grep for what you want and see the absolute 'path' to it. It
+eases the exploration of APIs that return large blobs of JSON but
+have terrible documentation.
+
+</description>
+  <devel project="utilities" package="gron"/>
+  <url>https://github.com/tomnomnom/gron</url>
+</package>
