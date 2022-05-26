@@ -80,9 +80,7 @@ BuildRequires:  xz
 BuildRequires:  zlib-devel
 Requires:       git-core = %{version}
 Requires:       perl-Git = %{version}
-Recommends:     git-cvs
 Recommends:     git-email
-Recommends:     git-svn
 Suggests:       git-gui
 Suggests:       gitk
 Suggests:       git-daemon
@@ -175,6 +173,7 @@ Requires:       perl-Git = %{version}
 Requires:       perl-Term-ReadKey
 Requires:       subversion
 Requires:       subversion-perl
+Supplements:    (%{name} and subversion)
 
 %description svn
 Tools for importing Subversion repositories to the Git version control
@@ -188,6 +187,7 @@ Requires:       cvsps
 Requires:       git-core = %{version}
 Requires:       perl-DBD-SQLite
 Requires:       perl-Git = %{version}
+Supplements:    (%{name} and cvs)
 
 %description cvs
 Tools for importing CVS repositories to the Git version control system.
