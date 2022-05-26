@@ -1,7 +1,7 @@
 #
 # spec file for package gperf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,11 +25,10 @@ Group:          Development/Languages/C and C++
 URL:            https://gnu.org/software/gperf/
 Source0:        https://ftp.gnu.org/pub/gnu/gperf/gperf-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/pub/gnu/gperf/gperf-%{version}.tar.gz.sig
-Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%{name}&download=1#/%{name}.keyring
+# From https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%{name}&download=1#/%{name}.keyring
+Source2:        %{name}.keyring
 Patch0:         testsuite-race.patch
 BuildRequires:  gcc-c++
-Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
 
 %description
 A perfect hash function is simply: a hash function and a data structure
@@ -49,14 +48,6 @@ one probe into the data structure.
 
 %install
 %make_install
-rm -f %{buildroot}%{_prefix}/doc/gperf/gperf.html
-rm -f %{buildroot}%{_datadir}/doc/gperf/gperf.html
-
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
 
 %files
 %license COPYING

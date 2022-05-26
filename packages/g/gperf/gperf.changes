@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 24 19:22:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- stop linking dynamic content per full url, this breaks
+  asset validation
+- remove info scripts, this is done via filetriggers for ages
+- remove obsolete rm in %%install - these files are no longer installed 
+
+-------------------------------------------------------------------
 Tue Nov 24 11:46:21 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Small package cleanup
