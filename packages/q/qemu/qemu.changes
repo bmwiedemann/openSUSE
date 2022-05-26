@@ -1,11 +1,4 @@
 -------------------------------------------------------------------
-Mon May 23 12:15:45 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
-
-- Backport a GCC 12 aarch64 build fix (bsc#1199625)
-* Patches added:
-  block-qdict-Fix-Werror-maybe-uninitializ.patch
-
--------------------------------------------------------------------
 Wed May 11 10:30:34 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Filter out rpmlint error that is valid for qemu, but will
