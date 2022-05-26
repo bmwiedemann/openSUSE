@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon May 23 07:40:04 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 1.10.0
+  New
+  * Set image save location on command line.
+  * Add debug logging.
+  * Add FTP upload.
+  * Upload image via command line without opening editor.
+  * Add multi-language comment option to desktop file.
+  * Add MimeType of Images to desktop file.
+  * Add .jpeg to open file dialog filter (File > Open).
+  * Escape closes window (and exits when not using tray).
+  * Double-click mouse to confirm rect selection.
+  * Activate tab that is prompting for save.
+  * Add Save all options menu.
+  * Allow overwriting existing files.
+  * Allow setting Imgur upload title/description.
+  * Search bar in the settings dialog.
+  * Make implicit capture delay configurable.
+  * Shortcuts for Actions can be made global and non-global per
+    config.
+  * OCR scan of screenshots (via plugin).
+  Fixed
+  * Opens a new window for each capture.
+  * First cli invocation won't copy image to clipboard.
+  * Snipping area incorrectly positioned with screen scaling.
+  * MainWindow position not restored when outside primary screen.
+  * Interface window isn't restored to the default after tab is
+    closed in maximized state.
+  * Failed Imgur uploads show up titled as 'Upload Successful'.
+  * Preview of screenshot is scaled after changing desktop size.
+  * After an auto start followed by reboot/turn on the window
+    section is stretched.
+  Changed
+  * Improve translation experience by using full sentences.
+  * Make switch 'to select tool after drawing item' by default
+    disabled.
+- Drop %check since tests are now using new dependencies that are
+  not available out of the box *SUSE
+
+-------------------------------------------------------------------
 Thu Nov 25 23:12:07 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 1.9.2

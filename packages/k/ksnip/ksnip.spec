@@ -1,7 +1,7 @@
 #
 # spec file for package ksnip
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ksnip
-Version:        1.9.2
+Version:        1.10.0
 Release:        0
 Summary:        Screenshot tool
 License:        GPL-2.0-or-later
@@ -29,7 +29,7 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  kColorPicker-devel
-BuildRequires:  kImageAnnotator-devel >= 0.5.3
+BuildRequires:  kImageAnnotator-devel >= 0.6.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xvfb-run
@@ -56,7 +56,7 @@ annotation features for your screenshots.
 %autosetup -p1
 
 %build
-%cmake -DBUILD_TESTS=ON
+%cmake
 %cmake_build
 
 %install
@@ -64,9 +64,6 @@ annotation features for your screenshots.
 %suse_update_desktop_file -r org.ksnip.ksnip Utility DesktopUtility
 
 %find_lang %{name} --with-qt
-
-%check
-xvfb-run make -C build test
 
 %files
 %license LICENSE.txt
