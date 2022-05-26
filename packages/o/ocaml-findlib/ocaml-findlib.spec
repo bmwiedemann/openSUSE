@@ -18,14 +18,14 @@
 
 
 Name:           ocaml-findlib
-Version:        1.9.2
+Version:        1.9.3
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Objective CAML package manager and build helper
 License:        MIT
 Group:          Development/Languages/OCaml
-BuildRoot:      %_tmppath/%name-%version-build
-Url:            https://github.com/ocaml/ocamlfind
+URL:            https://github.com/ocaml/ocamlfind
+#SourceURL:     http://download.camlcity.org/download/findlib-%version.tar.gz
 Source0:        findlib-%version.tar.xz
 #
 Requires:       ocaml-compiler-libs
@@ -35,6 +35,8 @@ Provides:       ocamlfind = %version
 BuildRequires:  ocaml
 BuildRequires:  ocaml-ocamldoc
 BuildRequires:  ocaml-rpm-macros >= 20220222
+#
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Findlib is a library manager for Objective Caml. It provides a

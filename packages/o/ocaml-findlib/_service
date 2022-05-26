@@ -1,9 +1,13 @@
 <services>
+  <!-- Currently only the release tarball contains the built man pages,
+       generating them from source requires tools not available on OBS
+  -->
   <service name="tar_scm" mode="disabled">
     <param name="url">https://github.com/ocaml/ocamlfind.git</param>
     <param name="scm">git</param>
-    <param name="versionformat">1.9.2</param>
-    <param name="revision">9f29bb975a91b17e115127ec38d857673b33e0e4</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">findlib-(.*)</param>
+    <param name="revision">6c8438c13b68e5cbc48ea558906046e38a7f8d72</param>
     <param name="filename">ocaml-findlib</param>
   </service>
   <service name="recompress" mode="disabled">

@@ -172,4 +172,12 @@
   Fix an incomaptibility with ocaml-5.0</comment>
     <requestid>967051</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fca7c05c3c6ac60aa9c7ea0c1c87e13b</srcmd5>
+    <version>1.9.3</version>
+    <time>1653583446</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>979310</requestid>
+  </revision>
 </revisionlist>
