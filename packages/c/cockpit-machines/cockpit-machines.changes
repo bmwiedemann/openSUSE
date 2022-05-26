@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 19 18:10:51 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- Add suse-vv-install.patch to display SUSE hint for virt-viewer
+  installation (bsc#1199673)
+
+-------------------------------------------------------------------
 Mon Mar 14 22:37:04 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
 
 - Hide links pointing to RHEL docs, hide-docs.patch (bsc#1197003) 

@@ -29,6 +29,8 @@ Source10:       package-lock.json
 Source11:       node_modules.spec.inc
 %include %_sourcedir/node_modules.spec.inc
 Patch0:         hide-docs.patch
+# patches for node modules start with 100
+Patch100:       suse-vv-install.patch
 BuildArch:      noarch
 BuildRequires:  appstream-glib
 BuildRequires:  make
@@ -56,11 +58,12 @@ Cockpit component for managing virtual machines.
 
 If "virt-install" is installed, you can also create new virtual machines.
 
-
 %prep
-%autosetup -p1 -n %{name}
+%setup -n %{name}
+%patch0 -p1
 rm -f package-lock.json
 local-npm-registry %{_sourcedir} install --with=dev --legacy-peer-deps || ( find ~/.npm/_logs -name '*-debug.log' -print0 | xargs -0 cat; false)
+%patch100 -p1
 
 %build
 cp -r %{_datadir}/cockpit/devel/lib src/lib
