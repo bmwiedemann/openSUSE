@@ -260,4 +260,14 @@
     https://www.php.net/ChangeLog-8.php#8.1.5</comment>
     <requestid>971314</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d7bac6e1351e1fe3c858cef99c8097b9</srcmd5>
+    <version>8.1.6</version>
+    <time>1653583433</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 8.1.6:
+  * This is a bug fix release.
+    https://www.php.net/ChangeLog-8.php#8.1.6</comment>
+    <requestid>979150</requestid>
+  </revision>
 </revisionlist>
