@@ -17,7 +17,7 @@
 
 
 Name:           MicroOS-release
-Version:        20220525
+Version:        20220526
 Release:        0
 Summary:        openSUSE MicroOS 
 License:        GPL-2.0-or-later
@@ -176,9 +176,9 @@ ExclusiveArch:  %ix86 x86_64 ppc64le s390x aarch64 %arm
 %include %{SOURCE100}
 Provides:       %name-%version
 Provides:       product() = MicroOS
-Provides:       product(MicroOS) = 20220525-0
+Provides:       product(MicroOS) = 20220526-0
 Provides:       product-label() = openSUSE%20MicroOS
-Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Amicroos%3A20220525
+Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Amicroos%3A20220526
 Provides:       product-url(releasenotes) = http%3A%2F%2Fdoc.opensuse.org%2Frelease%2Dnotes%2Fx86_64%2FopenSUSE%2FTumbleweed%2Frelease%2Dnotes%2DopenSUSE.rpm
 Provides:       product-endoflife()
 Requires:       product_flavor(MicroOS)
@@ -194,7 +194,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(dvd)
-Provides:       product_flavor(MicroOS) = 20220525-0
+Provides:       product_flavor(MicroOS) = 20220526-0
 Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description dvd
@@ -205,28 +205,12 @@ openSUSE MicroOS combines the benefits of a rolling OS with a read-only root fil
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/MicroOS-release-dvd
 
-%package -n MicroOS-release-kubic-dvd
-License:        BSD-3-Clause
-Group:          System/Fhs
-Provides:       product_flavor()
-Provides:       flavor(kubic-dvd)
-Provides:       product_flavor(MicroOS) = 20220525-0
-Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
-
-%description kubic-dvd
-openSUSE MicroOS combines the benefits of a rolling OS with a read-only root filesystem with transactional updates. It is a modern Linux Operating System, designed for single-service installations, such as container hosts. It is optimized for large, clustered deployments.
-        It inherits the benefits of openSUSE Tumbleweed while redefining the operating system into a small, efficient and reliable distribution.
-
-%files kubic-dvd
-%defattr(-,root,root)
-%doc %{_defaultdocdir}/MicroOS-release-kubic-dvd
-
 %package -n MicroOS-release-appliance
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance)
-Provides:       product_flavor(MicroOS) = 20220525-0
+Provides:       product_flavor(MicroOS) = 20220526-0
 Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description appliance
@@ -236,22 +220,6 @@ openSUSE MicroOS combines the benefits of a rolling OS with a read-only root fil
 %files appliance
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/MicroOS-release-appliance
-
-%package -n MicroOS-release-appliance-kubic
-License:        BSD-3-Clause
-Group:          System/Fhs
-Provides:       product_flavor()
-Provides:       flavor(appliance-kubic)
-Provides:       product_flavor(MicroOS) = 20220525-0
-Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
-
-%description appliance-kubic
-openSUSE MicroOS combines the benefits of a rolling OS with a read-only root filesystem with transactional updates. It is a modern Linux Operating System, designed for single-service installations, such as container hosts. It is optimized for large, clustered deployments.
-        It inherits the benefits of openSUSE Tumbleweed while redefining the operating system into a small, efficient and reliable distribution.
-
-%files appliance-kubic
-%defattr(-,root,root)
-%doc %{_defaultdocdir}/MicroOS-release-appliance-kubic
 
 
 
@@ -299,11 +267,11 @@ cat >%{buildroot}%{_sysconfdir}/products.d/MicroOS.prod << EOF
 <product schemeversion="0">
   <vendor>openSUSE</vendor>
   <name>MicroOS</name>
-  <version>20220525</version>
+  <version>20220526</version>
   <release>0</release>
   <endoflife></endoflife>
   <arch>%{_target_cpu}</arch>
-  <cpeid>cpe:/o:opensuse:microos:20220525</cpeid>
+  <cpeid>cpe:/o:opensuse:microos:20220526</cpeid>
   <productline>MicroOS</productline>
   <register>
     <pool>
@@ -347,21 +315,9 @@ This package only exists for providing the product flavor 'dvd'.
 
 EOF
 
-mkdir -p %{buildroot}%{_defaultdocdir}/MicroOS-release-kubic-dvd
-cat >%{buildroot}%{_defaultdocdir}/MicroOS-release-kubic-dvd/README << EOF
-This package only exists for providing the product flavor 'kubic-dvd'.
-
-EOF
-
 mkdir -p %{buildroot}%{_defaultdocdir}/MicroOS-release-appliance
 cat >%{buildroot}%{_defaultdocdir}/MicroOS-release-appliance/README << EOF
 This package only exists for providing the product flavor 'appliance'.
-
-EOF
-
-mkdir -p %{buildroot}%{_defaultdocdir}/MicroOS-release-appliance-kubic
-cat >%{buildroot}%{_defaultdocdir}/MicroOS-release-appliance-kubic/README << EOF
-This package only exists for providing the product flavor 'appliance-kubic'.
 
 EOF
 
