@@ -36,6 +36,7 @@ Source4:        README.SUSE.SLES
 Patch1:         0001-Relabel-relabel-links-instead-of-their-targets.patch
 Patch2:         0002-specgen-do-not-set-OOMScoreAdj-by-default.patch
 Patch3:         0001-Adjust-buildah-to-opencontainers-selinux-v1.10.1.patch
+Patch4:         0004-fix-Container.cGroupPath-skip-empty-line-to-avoid-fa.patch
 BuildRequires:  bash-completion
 BuildRequires:  cni
 BuildRequires:  device-mapper-devel

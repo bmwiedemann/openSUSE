@@ -815,4 +815,12 @@ Bugfixes
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>970716</requestid>
   </revision>
+  <revision rev="94" vrev="3">
+    <srcmd5>0116f3e099b196e643cf4019e7d0277b</srcmd5>
+    <version>4.0.3</version>
+    <time>1653583433</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979149</requestid>
+  </revision>
 </revisionlist>

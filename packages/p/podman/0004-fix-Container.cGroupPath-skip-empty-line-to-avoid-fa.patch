@@ -1,0 +1,31 @@
+From a079b84539fc6120c12ee656f0224303845b3206 Mon Sep 17 00:00:00 2001
+From: ttyS3 <ttys3.rust@gmail.com>
+Date: Sun, 8 May 2022 01:25:48 +0800
+Subject: [PATCH] fix: Container.cGroupPath() skip empty line to avoid false
+ error logging
+
+Signed-off-by: ttyS3 <ttys3.rust@gmail.com>
+
+[NO NEW TESTS NEEDED]
+---
+ libpod/container.go | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/libpod/container.go b/libpod/container.go
+index e280b87a8..a953f1da9 100644
+--- a/libpod/container.go
++++ b/libpod/container.go
+@@ -958,6 +958,10 @@ func (c *Container) cGroupPath() (string, error) {
+ 
+ 	var cgroupPath string
+ 	for _, line := range bytes.Split(lines, []byte("\n")) {
++		// skip last empty line
++		if len(line) == 0 {
++			continue
++		}
+ 		// cgroups(7) nails it down to three fields with the 3rd
+ 		// pointing to the cgroup's path which works both on v1 and v2.
+ 		fields := bytes.Split(line, []byte(":"))
+-- 
+2.36.1
+
