@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 20 04:32:48 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- Add option --with-app-defaults to configure
+  * fix boo#1199742
+
+-------------------------------------------------------------------
 Mon Apr  4 10:04:56 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with autoconf 2.71: call sed only after autoreconf.

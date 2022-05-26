@@ -185,6 +185,7 @@ export ac_cv_gcc_accepts_std=no
 # Disable direct PAM use and shadow (both needs suid).
 %configure \
   --with-configdir=%{_sysconfdir}/xscreensaver       \
+  --with-app-defaults=%{_datadir}/X11/app-defaults   \
   --without-kerberos                                 \
   --with-gl                                          \
   --with-gle                                         \
@@ -259,8 +260,8 @@ done
 %{_libexecdir}/xscreensaver/xscreensaver-gfx
 %{_libexecdir}/xscreensaver/xscreensaver-gl-visual
 %{_libexecdir}/xscreensaver/xscreensaver-systemd
-%dir %{_prefix}/lib/X11/app-defaults
-%{_prefix}/lib/X11/app-defaults/XScreenSaver
+%dir %{_datadir}/X11/app-defaults
+%{_datadir}/X11/app-defaults/XScreenSaver
 %{_mandir}/man1/xscreensaver.*
 %{_mandir}/man1/xscreensaver-command.*
 %{_mandir}/man1/xscreensaver-demo.*
