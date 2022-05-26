@@ -1,0 +1,86 @@
+---
+ sympy/printing/ccode.py          |   23 -----------------------
+ sympy/printing/cxxcode.py        |   21 ---------------------
+ sympy/printing/tests/test_c.py   |    6 ------
+ sympy/printing/tests/test_cxx.py |    5 -----
+ 4 files changed, 55 deletions(-)
+
+--- a/sympy/printing/ccode.py
++++ /dev/null
+@@ -1,23 +0,0 @@
+-"""
+-.. deprecated:: 1.7
+-
+-   ccode.py was deprecated and renamed to c.py. This is a shim file to provide
+-   backwards compatibility.
+-
+-"""
+-
+-from sympy.utilities.exceptions import sympy_deprecation_warning
+-
+-sympy_deprecation_warning(
+-    """
+-    The sympy.printing.ccode submodule is deprecated. It has been renamed to
+-    sympy.printing.c.
+-    """,
+-    deprecated_since_version="1.7",
+-    active_deprecations_target="deprecated-printing-code-submodules",
+-)
+-
+-from .c import (ccode, print_ccode, known_functions_C89, known_functions_C99, # noqa:F401
+-                reserved_words, reserved_words_c99, get_math_macros,
+-                C89CodePrinter, C99CodePrinter, C11CodePrinter,
+-                c_code_printers)
+--- a/sympy/printing/cxxcode.py
++++ /dev/null
+@@ -1,21 +0,0 @@
+-"""
+-.. deprecated:: 1.7
+-
+-   cxxcode.py was deprecated and renamed to cxx.py. This is a shim file to
+-   provide backwards compatibility.
+-
+-"""
+-
+-from sympy.utilities.exceptions import sympy_deprecation_warning
+-
+-sympy_deprecation_warning(
+-    """
+-    The sympy.printing.cxxcode submodule is deprecated. It has been renamed to
+-    sympy.printing.cxx.
+-    """,
+-    deprecated_since_version="1.7",
+-    active_deprecations_target="deprecated-printing-code-submodules",
+-)
+-
+-from .cxx import (cxxcode, reserved, CXX98CodePrinter, # noqa:F401
+-                  CXX11CodePrinter, CXX17CodePrinter, cxx_code_printers)
+--- a/sympy/printing/tests/test_c.py
++++ b/sympy/printing/tests/test_c.py
+@@ -847,12 +847,6 @@ def test_ccode_codegen_ast():
+         'return x;',
+     ])
+ 
+-def test_ccode_submodule():
+-    # Test the compatibility sympy.printing.ccode module imports
+-    with warns_deprecated_sympy():
+-        import sympy.printing.ccode # noqa:F401
+-
+-
+ def test_ccode_UnevaluatedExpr():
+     assert ccode(UnevaluatedExpr(y * x) + z) == "z + x*y"
+     assert ccode(UnevaluatedExpr(y + x) + z) == "z + (x + y)"  # gh-21955
+--- a/sympy/printing/tests/test_cxx.py
++++ b/sympy/printing/tests/test_cxx.py
+@@ -61,11 +61,6 @@ def test_CXX17CodePrinter():
+ def test_cxxcode():
+     assert sorted(cxxcode(sqrt(x)*.5).split('*')) == sorted(['0.5', 'std::sqrt(x)'])
+ 
+-def test_cxxcode_submodule():
+-    # Test the compatibility sympy.printing.cxxcode module imports
+-    with warns_deprecated_sympy():
+-        import sympy.printing.cxxcode # noqa:F401
+-
+ def test_cxxcode_nested_minmax():
+     assert cxxcode(Max(Min(x, y), Min(u, v))) \
+         == 'std::max(std::min(u, v), std::min(x, y))'

@@ -18,7 +18,8 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%bcond_with     test
+%define skip_python36 1
+%bcond_without  test
 Name:           python-sympy
 Version:        1.10.1
 Release:        0
@@ -28,6 +29,9 @@ Group:          Development/Libraries/Python
 URL:            https://www.sympy.org/
 Source0:        https://files.pythonhosted.org/packages/source/s/sympy/sympy-%{version}.tar.gz
 Source99:       python-sympy-rpmlintrc
+# PATCH-FIX-UPSTREAM sympy_printing_ccode.patch gh#sympy/sympy#23533 mcepl@suse.com
+# just eliminate already deprecated sympy.printing.ccode module
+Patch0:         sympy_printing_ccode.patch
 BuildRequires:  %{python_module mpmath >= 0.19}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -53,7 +57,8 @@ extensible. SymPy is written entirely in Python and does not require
 any external libraries.
 
 %prep
-%setup -q -n sympy-%{version}
+%autosetup -p1 -n sympy-%{version}
+
 sed -i -e '/^#!\//, 1d' sympy/testing/tests/diagnose_imports.py
 
 %{python_expand cp -r examples examples-%{$python_bin_suffix}
@@ -88,8 +93,11 @@ sed -i "s|^#!%{_bindir}/env python$|#!%{__$python}|" %{buildroot}%{$python_sitel
 
 %if %{with test}
 %check
-export LANG=en_US.UTF-8
-%pytest
+# Don’t even dare to think that the pytest macro could manage
+# all complexities hidden in that specific command!
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib} PYTHONDONTWRITEBYTECODE=1
+$python -c 'from sympy.testing import runtests ; runtests.run_all_tests()'
+}
 %endif
 
 %files %{python_files}
