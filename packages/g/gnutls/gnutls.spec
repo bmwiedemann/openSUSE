@@ -36,7 +36,7 @@
 %bcond_with tpm
 %bcond_without guile
 Name:           gnutls
-Version:        3.7.5
+Version:        3.7.4
 Release:        0
 Summary:        The GNU Transport Layer Security Library
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -159,6 +159,7 @@ Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       gnutls = %{version}
 Requires:       libgnutls%{gnutls_sover} = %{version}
+Requires(pre):  %{install_info_prereq}
 Provides:       gnutls-devel = %{version}-%{release}
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 Requires:       crypto-policies
@@ -185,6 +186,7 @@ Group:          Development/Libraries/C and C++
 Requires:       libgnutls-devel = %{version}
 Requires:       libgnutlsxx%{gnutlsxx_sover} = %{version}
 Requires:       libstdc++-devel
+Requires(pre):  %{install_info_prereq}
 
 %description -n libgnutlsxx-devel
 Files needed for software development using gnutls.
@@ -239,7 +241,7 @@ export CXXFLAGS="%{optflags} -fPIE"
         --with-fips140-module-name="GnuTLS version" \
         --with-fips140-module-version="%{version}-%{release}" \
         %{nil}
-%make_build
+make %{?_smp_mflags}
 
 %install
 %make_install
@@ -266,7 +268,7 @@ rm -rf %{buildroot}%{_datadir}/doc/gnutls
 
 %check
 %if ! 0%{?qemu_user_space_build}
-%make_build check GNUTLS_SYSTEM_PRIORITY_FILE=/dev/null || {
+make %{?_smp_mflags} check GNUTLS_SYSTEM_PRIORITY_FILE=/dev/null || {
     find -name test-suite.log -print -exec cat {} +
     exit 1
 }
@@ -288,6 +290,12 @@ GNUTLS_FORCE_FIPS_MODE=1 make check %{?_smp_mflags} GNUTLS_SYSTEM_PRIORITY_FILE=
 %post -n libgnutlsxx%{gnutlsxx_sover} -p /sbin/ldconfig
 %postun -n libgnutlsxx%{gnutlsxx_sover} -p /sbin/ldconfig
 
+%post -n libgnutls-devel
+%install_info --info-dir=%{_infodir} %{_infodir}/gnutls.info.gz
+
+%preun -n libgnutls-devel
+%install_info_delete --info-dir=%{_infodir} %{_infodir}/gnutls.info.gz
+
 %files -f libgnutls.lang
 %license LICENSE
 %doc THANKS README.md NEWS ChangeLog AUTHORS doc/TODO
@@ -308,25 +316,20 @@ GNUTLS_FORCE_FIPS_MODE=1 make check %{?_smp_mflags} GNUTLS_SYSTEM_PRIORITY_FILE=
 %{_mandir}/man1/*
 
 %files -n libgnutls%{gnutls_sover}
-%license LICENSE
 %{_libdir}/libgnutls.so.%{gnutls_sover}*
 
 %files -n libgnutls%{gnutls_sover}-hmac
-%license LICENSE
 %{_libdir}/.libgnutls.so.%{gnutls_sover}*.hmac
 
 %if %{with dane}
 %files -n libgnutls-dane%{gnutls_dane_sover}
-%license LICENSE
 %{_libdir}/libgnutls-dane.so.%{gnutls_dane_sover}*
 %endif
 
 %files -n libgnutlsxx%{gnutlsxx_sover}
-%license LICENSE
 %{_libdir}/libgnutlsxx.so.%{gnutlsxx_sover}*
 
 %files -n libgnutls-devel
-%license LICENSE
 %dir %{_includedir}/%{name}
 %{_includedir}/%{name}/abstract.h
 %{_includedir}/%{name}/crypto.h
@@ -353,7 +356,6 @@ GNUTLS_FORCE_FIPS_MODE=1 make check %{?_smp_mflags} GNUTLS_SYSTEM_PRIORITY_FILE=
 
 %if %{with dane}
 %files -n libgnutls-dane-devel
-%license LICENSE
 %dir %{_includedir}/%{name}
 %{_includedir}/%{name}/dane.h
 %{_libdir}/pkgconfig/gnutls-dane.pc
@@ -361,14 +363,12 @@ GNUTLS_FORCE_FIPS_MODE=1 make check %{?_smp_mflags} GNUTLS_SYSTEM_PRIORITY_FILE=
 %endif
 
 %files -n libgnutlsxx-devel
-%license LICENSE
 %{_libdir}/libgnutlsxx.so
 %dir %{_includedir}/%{name}
 %{_includedir}/%{name}/gnutlsxx.h
 
 %if %{with guile}
 %files guile
-%license LICENSE
 %{_libdir}/guile/*
 %{_datadir}/guile/gnutls*
 %endif

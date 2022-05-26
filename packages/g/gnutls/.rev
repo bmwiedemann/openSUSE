@@ -1529,4 +1529,11 @@ bsc#901857 (forwarded request 493933 from AndreasStieger)</comment>
     <comment>guntls 3.7.5 (forwarded request 978448 from AndreasStieger)</comment>
     <requestid>978504</requestid>
   </revision>
+  <revision rev="138" vrev="3">
+    <srcmd5>44e32d04a45e72591a45a60f6d37433b</srcmd5>
+    <version>3.7.4</version>
+    <time>1653597861</time>
+    <user>dimstar_suse</user>
+    <comment>osc copypac from project:openSUSE:Factory package:gnutls revision:136, using expand</comment>
+  </revision>
 </revisionlist>
