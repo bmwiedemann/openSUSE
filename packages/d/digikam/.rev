@@ -1769,4 +1769,12 @@ General : Update internal Libraw to snapshot 202110
     <comment></comment>
     <requestid>976994</requestid>
   </revision>
+  <revision rev="205" vrev="3">
+    <srcmd5>f189b6fce3767c6b9a38af22c3c3ac68</srcmd5>
+    <version>7.6.0</version>
+    <time>1653592592</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979358</requestid>
+  </revision>
 </revisionlist>

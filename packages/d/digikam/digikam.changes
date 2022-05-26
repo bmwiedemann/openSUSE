@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 25 11:04:34 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve rpmlint error "libdigikamcore7.x86_64: E: shlib-policy-name-error
+  SONAME: libdigikamcore.so.7.6.0, expected package suffix: 7_6_0"
+- Move documentation out of libdigikamcore7.
+
+-------------------------------------------------------------------
 Fri May 13 06:46:48 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add Fix-build-with-akonadi-contacts-22.04.patch to fix build with

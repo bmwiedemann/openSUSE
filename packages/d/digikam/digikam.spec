@@ -16,7 +16,6 @@
 #
 
 
-%define soversion 7
 %bcond_without released
 %bcond_with    apidocs
 Name:           digikam
@@ -142,7 +141,7 @@ Additional plugins for digiKam.
 %package devel
 Summary:        DigiKam development files
 Group:          Development/Libraries/KDE
-Requires:       libdigikamcore%{soversion} = %{version}
+Requires:       libdigikamcore7_6_0 = %{version}
 
 %description devel
 Development headers and libraries for digiKam.
@@ -155,14 +154,15 @@ Supplements:    %{name}
 %description -n showfoto
 Additional program to browse and view photos
 
-%package -n libdigikamcore%{soversion}
+%package -n libdigikamcore7_6_0
 Summary:        The main digikam libraries
 Group:          Development/Libraries/KDE
+Conflicts:      libdigikamcore7
 # DNN ABI is not stable and not using symbol versioning (boo#1185700)
 %requires_eq %(rpm --qf %%{name} -qf %{_libdir}/libopencv_dnn.so.%{pkg_version opencv-devel})
 Recommends:     %{name}-plugins
 
-%description -n libdigikamcore%{soversion}
+%description -n libdigikamcore7_6_0
 The main digikam libraries that are being shared between showfoto and digikam
 
 %lang_package
@@ -197,8 +197,8 @@ The main digikam libraries that are being shared between showfoto and digikam
 
 %fdupes %{buildroot}
 
-%post -n libdigikamcore%{soversion} -p /sbin/ldconfig
-%postun -n libdigikamcore%{soversion} -p /sbin/ldconfig
+%post -n libdigikamcore7_6_0 -p /sbin/ldconfig
+%postun -n libdigikamcore7_6_0 -p /sbin/ldconfig
 
 %files
 %{_kf5_bindir}/digikam
@@ -216,6 +216,7 @@ The main digikam libraries that are being shared between showfoto and digikam
 %{_kf5_kxmlguidir}/digikam/
 %{_kf5_notifydir}/digikam.notifyrc
 %{_kf5_appstreamdir}/org.kde.digikam.appdata.xml
+%doc AUTHORS NEWS README.md
 
 %files plugins
 %{_kf5_iconsdir}/hicolor/*/apps/dk-*
@@ -241,12 +242,11 @@ The main digikam libraries that are being shared between showfoto and digikam
 %{_kf5_kxmlguidir}/showfoto/
 %{_kf5_appstreamdir}/org.kde.showfoto.appdata.xml
 
-%files -n libdigikamcore%{soversion}
+%files -n libdigikamcore7_6_0
 %license COPYING*
-%doc AUTHORS NEWS README.md
-%{_kf5_libdir}/libdigikamcore.so.%{soversion}.*
-%{_kf5_libdir}/libdigikamdatabase.so.%{soversion}.*
-%{_kf5_libdir}/libdigikamgui.so.%{soversion}.*
+%{_kf5_libdir}/libdigikamcore.so.7.6.0
+%{_kf5_libdir}/libdigikamdatabase.so.7.6.0
+%{_kf5_libdir}/libdigikamgui.so.7.6.0
 
 %if %{with released}
 %files lang -f %{name}.lang
