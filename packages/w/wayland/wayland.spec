@@ -1,7 +1,7 @@
 #
 # spec file for package wayland
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define _version 1.20.0
 %if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1550
@@ -21,36 +22,34 @@
 %else
 %define eglversion %_version
 %endif
-
 %define lname	libwayland0
+%bcond_with doc
 Name:           wayland
 Version:        %_version
 Release:        0
 Summary:        Wayland Compositor Infrastructure
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://wayland.freedesktop.org/
-
+URL:            https://wayland.freedesktop.org/
 #Git-Clone:	git://anongit.freedesktop.org/wayland/wayland
 #Git-Web:	http://cgit.freedesktop.org/wayland/wayland/
-Source:         http://wayland.freedesktop.org/releases/%name-%version.tar.xz
-Source2:        http://wayland.freedesktop.org/releases/%name-%version.tar.xz.sig
+Source:         https://wayland.freedesktop.org/releases/%name-%version.tar.xz
+Source2:        https://wayland.freedesktop.org/releases/%name-%version.tar.xz.sig
 Source3:        %name.keyring
 Source4:        baselibs.conf
 # PATCH-FIX-UPSTREAM wayland-shm-Close-file-descriptors-not-needed.patch bsc#1194190 alynx.zhou@suse.com -- Close file descriptors not needed to prevent Xwayland crash.
 Patch1:         wayland-shm-Close-file-descriptors-not-needed.patch
-BuildRequires:  c_compiler
 BuildRequires:  c++_compiler
+BuildRequires:  c_compiler
 BuildRequires:  libxml2-tools
 BuildRequires:  libxslt-tools
 BuildRequires:  meson
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(libxml-2.0)
-%define with_doc 0
-%if 0%with_doc
+%if %{with doc}
 BuildRequires:  doxygen
 BuildRequires:  graphviz-gnome
 BuildRequires:  xmlto
@@ -87,9 +86,9 @@ loads them directly into an shm pool making it easy for the clients
 to get buffer for each cursor image.
 
 %package -n libwayland-egl1
+Version:        %eglversion
 Summary:        Additional egl functions for wayland
 Group:          System/Libraries
-Version:        %eglversion
 
 %description -n libwayland-egl1
 This package provides additional functions for EGL-using programs
@@ -119,7 +118,7 @@ Requires:       libwayland-server0 = %_version
 # egl1 was once provided by Mesa 17.x.
 %if (0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400)
 Provides:       libwayland-egl-devel = 18.1.5
-Obsoletes:      libwayland-egl-devel < 18.1.5 
+Obsoletes:      libwayland-egl-devel < 18.1.5
 %else
 Provides:       libwayland-egl-devel = 18.0.2
 Obsoletes:      libwayland-egl-devel < 18.0.2
@@ -153,7 +152,7 @@ sed -i 's/<eglversion>/%eglversion/' "%_sourcedir/baselibs.conf"
 # includedir intentional, cf. bugzilla.opensuse.org/795968
 %meson \
 	--includedir="%_includedir/%name" \
-%if %with_doc
+%if %{with doc}
 	--docdir="%_defaultdocdir/%name"
 %else
 	-D documentation=false
@@ -184,7 +183,7 @@ sed -i 's/<eglversion>/%eglversion/' "%_sourcedir/baselibs.conf"
 
 %files -n libwayland-client0
 %_libdir/libwayland-client.so.0*
-%doc COPYING
+%license COPYING
 
 %files -n libwayland-cursor0
 %_libdir/libwayland-cursor.so.0*
@@ -203,7 +202,7 @@ sed -i 's/<eglversion>/%eglversion/' "%_sourcedir/baselibs.conf"
 %_datadir/aclocal/
 %_datadir/wayland/
 
-%if %with_doc
+%if %{with doc}
 %files doc
 %_mandir/man3/wl*.3*
 %_docdir/%name/
