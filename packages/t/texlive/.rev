@@ -968,4 +968,12 @@
 - Remove patch source-r58686:r58919.dif as obsolete</comment>
     <requestid>967551</requestid>
   </revision>
+  <revision rev="79" vrev="82">
+    <srcmd5>41cc3912222b00103e6d41c99a3b145c</srcmd5>
+    <version>unknown</version>
+    <time>1653583435</time>
+    <user>dimstar_suse</user>
+    <comment>- Use the found perl version for requiring perl-base in perl-biber (boo#1199795)</comment>
+    <requestid>979154</requestid>
+  </revision>
 </revisionlist>

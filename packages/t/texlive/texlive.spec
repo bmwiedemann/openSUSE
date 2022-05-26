@@ -3774,7 +3774,7 @@ License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Utilities
 URL:            http://biblatex-biber.sourceforge.net/
 Recommends:     perl(Readonly::XS)
-Requires:       perl-base >= 5.26.1
+Requires:       perl-base = %{perl_version}
 Requires:       perl(Business::ISBN) >= 3.005
 Requires:       perl(Business::ISMN)
 Requires:       perl(Business::ISSN)

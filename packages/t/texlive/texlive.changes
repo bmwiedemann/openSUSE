@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 25 09:36:56 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Use the found perl version for requiring perl-base in perl-biber (boo#1199795) 
+
+-------------------------------------------------------------------
 Tue Apr  5 13:38:47 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Update to TeXLive 2022 (boo#1188577)
