@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 26 16:28:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.10:
+  * MNT: Stop using distutils by @pllim in #47
+  * Add plugin for cpu/memory intensive tests by @saimn in #48
+
+-------------------------------------------------------------------
 Sun Oct 17 13:13:41 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.9:

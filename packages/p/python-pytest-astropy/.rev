@@ -54,4 +54,15 @@
     <comment></comment>
     <requestid>926350</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>887e7de7d9fb9b572d7a466c01b1fae8</srcmd5>
+    <version>0.10.0</version>
+    <time>1653584608</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10:
+  * MNT: Stop using distutils by @pllim in #47
+  * Add plugin for cpu/memory intensive tests by @saimn in #48
+</comment>
+    <requestid>979377</requestid>
+  </revision>
 </revisionlist>
