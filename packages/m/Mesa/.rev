@@ -4861,4 +4861,28 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     DG2 platform.</comment>
     <requestid>978155</requestid>
   </revision>
+  <revision rev="440" vrev="312">
+    <srcmd5>887a97595ca7be1d91dd57e04592acce</srcmd5>
+    <version>unknown</version>
+    <time>1653583418</time>
+    <user>dimstar_suse</user>
+    <comment>- buildrequire DirectX-Headers only on %{ix86} x86_64, since it's
+  only relevant on these platforms 
+
+- Calling patch with '-p1' (as the others are) so 'git show'
+  .patch output works.
+
+- Generating 'n_stop-iris-flicker.patch' from 'git format-patch' vs.
+  a standard diff.
+
+- Fixing up 'stop-iris-flicker.patch' patch name to follow standards.
+
+- Switching out 'directx-headers' for 'DirectX-Headers'.
+
+- Adding changes I need for iris to not flicker and have d3d12
+  available for use in WSL.
+
+- Adding 'stop-iris-flicker.patch'.</comment>
+    <requestid>979185</requestid>
+  </revision>
 </revisionlist>

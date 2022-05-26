@@ -1,0 +1,20 @@
+commit 5d6f7baf3bc40a85b09e4088c8c3bccec6a7c82d
+Author: Scott Bradnick <scott.bradnick@suse.com>
+Date:   Tue May 24 14:47:53 2022 -0400
+
+    Adjusting 'iris_batch.c' per 'https://gitlab.freedesktop.org/mesa/mesa/-/issues/5731'.
+
+diff --git a/src/gallium/drivers/iris/iris_batch.c b/src/gallium/drivers/iris/iris_batch.c
+index 71cb2096ad1..0a72d2a07c3 100644
+--- a/src/gallium/drivers/iris/iris_batch.c
++++ b/src/gallium/drivers/iris/iris_batch.c
+@@ -926,8 +926,7 @@ submit_batch(struct iris_batch *batch)
+             (struct drm_i915_gem_exec_object2) {
+                .handle = bo->gem_handle,
+                .offset = bo->address,
+-               .flags  = bo->real.kflags | (written ? EXEC_OBJECT_WRITE : 0) |
+-                         (iris_bo_is_external(bo) ? 0 : EXEC_OBJECT_ASYNC),
++               .flags  = bo->real.kflags | (written ? EXEC_OBJECT_WRITE : 0),
+             };
+          ++validation_count;
+       }

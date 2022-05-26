@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed May 25 12:27:30 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- buildrequire DirectX-Headers only on %{ix86} x86_64, since it's
+  only relevant on these platforms 
+
+-------------------------------------------------------------------
+Tue May 24 19:18:59 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Calling patch with '-p1' (as the others are) so 'git show'
+  .patch output works.
+
+-------------------------------------------------------------------
+Tue May 24 18:50:21 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Generating 'n_stop-iris-flicker.patch' from 'git format-patch' vs.
+  a standard diff.
+
+-------------------------------------------------------------------
+Tue May 24 15:48:53 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Fixing up 'stop-iris-flicker.patch' patch name to follow standards.
+
+-------------------------------------------------------------------
 Thu May 19 19:00:09 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 22.1.0
@@ -26,10 +49,21 @@ Tue May  3 08:21:55 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
     architecture (bsc#1199040)
 
 -------------------------------------------------------------------
+Thu Apr 28 21:22:38 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Switching out 'directx-headers' for 'DirectX-Headers'.
+
+-------------------------------------------------------------------
 Fri Apr 22 09:06:31 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 22.0.2
   * bugfix release with almost all nominated patches
+
+-------------------------------------------------------------------
+Thu Apr 14 19:29:21 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding changes I need for iris to not flicker and have d3d12
+  available for use in WSL.
 
 -------------------------------------------------------------------
 Wed Apr 13 12:30:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -158,6 +192,11 @@ Sat Jan  8 10:21:21 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
   n_no-sse2-on-ix86-except-for-intel-drivers.patch
   * no longer disable sse2 support for intel drivers, since this
     breaks build, which is probably unresolvable (boo1190409)
+
+-------------------------------------------------------------------
+Fri Jan  7 19:35:29 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding 'stop-iris-flicker.patch'.
 
 -------------------------------------------------------------------
 Thu Jan  6 16:34:30 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
