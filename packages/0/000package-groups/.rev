@@ -1402,4 +1402,12 @@ is not needed.
     <user>dimstar_suse</user>
     <comment>No need to lock gcc11 - it should not be pulled in anyway</comment>
   </revision>
+  <revision rev="196" vrev="194">
+    <srcmd5>7f56ecbb874a6d00cdf48a474140a627</srcmd5>
+    <version>unknown</version>
+    <time>1653583420</time>
+    <user>dimstar_suse</user>
+    <comment>Remove Kubic</comment>
+    <requestid>979179</requestid>
+  </revision>
 </revisionlist>

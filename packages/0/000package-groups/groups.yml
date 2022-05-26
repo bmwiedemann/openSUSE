@@ -11,13 +11,6 @@ OUTPUT:
       recommends: true
       includes:
         - common_locks
-  - opensuse_kubic:
-      recommends: false
-      require_all: true
-      includes:
-        - common_locks
-        - opensuse_microos
-        - opensuse_kubic
   - opensuse_microos:
       recommends: false
       require_all: true
@@ -435,11 +428,3 @@ opensuse_microos_desktop:
   - patterns-microos-desktop-kde: [aarch64,ppc64le,x86_64]
   - patterns-microos-desktop-gnome: [aarch64,ppc64le,x86_64]
 
-opensuse_kubic:
-  - patterns-containers-kubeadm: [aarch64,ppc64le,s390x,x86_64]
-  - patterns-containers-container_runtime_kubernetes: [aarch64,ppc64le,s390x,x86_64]
-  - patterns-containers-container_runtime: [aarch64,ppc64le,s390x,x86_64]
-  - patterns-containers-kubic_worker: [aarch64,ppc64le,s390x,x86_64]
-  - patterns-containers-kubic_admin: [aarch64,ppc64le,s390x,x86_64]
-  - patterns-containers-kubernetes_utilities: [aarch64,ppc64le,s390x,x86_64]
-  - patterns-containers-kubic_loadbalancer: [aarch64,ppc64le,s390x,x86_64]
