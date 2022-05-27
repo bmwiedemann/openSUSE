@@ -1,7 +1,7 @@
 #
 # spec file for package terminator
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,6 @@ Requires:       python3-gobject-Gdk
 Requires:       python3-psutil
 Requires(post): hicolor-icon-theme
 Requires(postun):hicolor-icon-theme
-Recommends:     %{name}-lang
 BuildArch:      noarch
 
 %description
