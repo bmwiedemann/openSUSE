@@ -1,7 +1,7 @@
 #
 # spec file for package ckb-next
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ckb-next
-Version:        0.4.4
+Version:        0.5.0
 Release:        0
 Summary:        RGB driver for Corsair keyboard and mice
 License:        BSD-3-Clause AND GPL-2.0-only
@@ -107,6 +107,7 @@ ln -sf service %{buildroot}%{_sbindir}/rc%{name}-daemon
 %{_bindir}/%{name}-dev-detect
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}*.png
+%{_datadir}/icons/hicolor/*/status/%{name}*png
 %{_sbindir}/rc%{name}-daemon
 %{_libexecdir}/%{name}-daemon
 %{_libexecdir}/%{name}-animations
