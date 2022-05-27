@@ -1,7 +1,7 @@
 #
 # spec file for package libkrun
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           libkrun
-Version:        0.1.7
+Version:        0.1.8
 Release:        0
 Summary:        A dynamic library providing KVM-based process isolation capabilities
 License:        Apache-2.0
 URL:            https://github.com/containers/libkrun
 Source0:        libkrun-%{version}.tar.gz
-Source1:        vendor.tar.xz
+Source1:        vendor.tar.zst
 Source2:        cargo_config
 ExclusiveArch:  x86_64 aarch64
 BuildRequires:  cargo >= 1.43.0
@@ -36,8 +36,8 @@ Requires:       libkrunfw >= 0.6
 %ifarch aarch64
 BuildRequires:  libfdt-devel >= 1.6.0
 %endif
-Conflicts:      libkrun0 <= 0.1.7
 Conflicts:      libkrun-devel <= 0.1.7
+Conflicts:      libkrun0 <= 0.1.7
 
 %description
 libkrun is a dynamic library that allows programs to easily acquire the ability to run processes in a partially isolated environment using KVM Virtualization.

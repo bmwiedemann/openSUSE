@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri May 27 12:23:06 UTC 2022 - dfaggioli@suse.com
+
+- Automatic update of vendored dependencies
+- Update to version 0.1.8.
+- (From upstream) Bump version to 0.1.8. We're about to introduce
+  some breaking changes that will lead us to 0.2.0, so let's
+  release a version now so people can get the latest clean ups
+  without jumping all the way into 0.2.
+- Some changes:
+  * utils: drop unused functionality
+  * CI: fail on clippy warnings
+  * cpuid/logger: remove  "fn main" in doctests
+  * Use vm-memory from crates.io
+  * Remove unneeded extern declarations
+  * libkrun: fix clippy warnings
+  * libkrun: set Rust Edition to 2021
+  * vmm: fix clippy warnings
+  * vmm: set Rust Edition to 2021
+  * kernel: fix clippy warnings
+  * kernel: set Rust Edition to 2021
+  * logger: fix clippy warnings
+  * logger: update code to Rust 2021
+  * polly: fix clippy warnings
+  * polly: set Rust Edition to 2021
+  * utils: fix clippy warnings
+  * utils: set Rust Edition to 2021
+  * devices: fix clippy warnings
+  * devices: set Rust Edition to 2021
+  * cpuid: fix clippy warnings
+  * cpuid: update code to Rust 2021
+  * arch: fix clippy warnings
+  * arch: update code to Rust 2021
+  * SEV: Ensure space for BIOS is always reserved
+  * SEV: Implement support for SEV-ES
+  * SEV: Increase the RAM of the examples to 2 GiB
+  * SEV: Add the SEV flag to the Makefiles
+  * SEV: Add a couple of examples fro libkrun-SEV
+  * SEV: Automatically detect AMD CPU model
+  * SEV: Implement support for Remote Attestation
+  * SEV: Teach init how to open a LUKS volume
+  * SEV: Add support for initramfs
+  * SEV: Import virtio-block support from Firecraker
+  * SEV: Initial plain SEV support
+  * SEV: Configure MTRR MSR
+  * SEV: Load qboot into the reset vector
+  * CI: use default Cargo features on tests
+
+-------------------------------------------------------------------
 Fri Aug  6 13:28:37 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
 
 - Don't try follow library policy, libkrun is a plugin.
