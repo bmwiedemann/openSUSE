@@ -3078,4 +3078,12 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
     <user>dimstar_suse</user>
     <comment>osc copypac from project:openSUSE:Factory package:qemu revision:227, using expand</comment>
   </revision>
+  <revision rev="230" vrev="50">
+    <srcmd5>95849823ad0ecee202dd9c86eec8edf7</srcmd5>
+    <version>unknown</version>
+    <time>1653690488</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979490</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May 27 14:07:50 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- It has been observed that building QEMU with _FORTIFY_SOURCE=3
+  causes problem (see bsc#1199924). Force it to =2 for now, while
+  we investigate the issue.
+
+-------------------------------------------------------------------
+Mon May 23 12:15:45 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Backport a GCC 12 aarch64 build fix (bsc#1199625)
+* Patches added:
+  block-qdict-Fix-Werror-maybe-uninitializ.patch
+
+-------------------------------------------------------------------
 Wed May 11 10:30:34 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Filter out rpmlint error that is valid for qemu, but will

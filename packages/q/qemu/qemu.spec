@@ -247,6 +247,7 @@ Patch00103:     python-aqmp-stop-the-server-during-disco.patch
 Patch00104:     python-aqmp-add-start_server-and-accept-.patch
 Patch00105:     python-aqmp-fix-race-condition-in-legacy.patch
 Patch00106:     python-aqmp-drop-_bind_hack.patch
+Patch00107:     block-qdict-Fix-Werror-maybe-uninitializ.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -1276,6 +1277,7 @@ This package records qemu testsuite results and represents successful testing.
 %patch00104 -p1
 %patch00105 -p1
 %patch00106 -p1
+%patch00107 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1
@@ -1392,6 +1394,8 @@ cp %{SOURCE13} docs/supported.rst
 mkdir -p %blddir
 cd %blddir
 
+# We want to enforce _FORTIFY_SOURCE=2. See bsc#1199924
+EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g') -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
 %srcdir/configure \
 	--prefix=%_prefix \
 	--sysconfdir=%_sysconfdir \
@@ -1401,7 +1405,7 @@ cd %blddir
 	--docdir=%_docdir \
 	--firmwarepath=%_datadir/%name \
         --python=%_bindir/python3 \
-	--extra-cflags="%{optflags}" \
+	--extra-cflags="${EXTRA_CFLAGS}" \
 	--with-git-submodules=ignore \
 	--disable-fuzzing \
 	--disable-multiprocess \

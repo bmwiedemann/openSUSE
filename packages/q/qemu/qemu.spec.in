@@ -1128,6 +1128,8 @@ cp %{SOURCE13} docs/supported.rst
 mkdir -p %blddir
 cd %blddir
 
+# We want to enforce _FORTIFY_SOURCE=2. See bsc#1199924
+EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g') -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
 %srcdir/configure \
 	--prefix=%_prefix \
 	--sysconfdir=%_sysconfdir \
@@ -1137,7 +1139,7 @@ cd %blddir
 	--docdir=%_docdir \
 	--firmwarepath=%_datadir/%name \
         --python=%_bindir/python3 \
-	--extra-cflags="%{optflags}" \
+	--extra-cflags="${EXTRA_CFLAGS}" \
 	--with-git-submodules=ignore \
 	--disable-fuzzing \
 	--disable-multiprocess \
