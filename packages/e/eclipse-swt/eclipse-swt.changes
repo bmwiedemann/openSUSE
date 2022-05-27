@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 26 13:57:09 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build also the gtk3 support of webkit including the webkit2
+  extensions
+- Modified patch:
+  * eclipse-is64.patch
+    + run actually replace64 if the *value* of is64 is false
+
+-------------------------------------------------------------------
 Fri Apr 22 07:37:46 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Add a fake provide osgi(org.eclipse.swt) to make packages that

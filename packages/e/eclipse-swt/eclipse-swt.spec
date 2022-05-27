@@ -67,6 +67,8 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(webkit2gtk-web-extension-4.0)
 BuildRequires:  pkgconfig(xt)
 BuildConflicts: java-devel >= 9
 Requires:       atk
@@ -113,7 +115,7 @@ utils/ensure_arch.sh eclipse.platform.swt.binaries/bundles x86_64 aarch64 ppc64
 
 %build
 export CLASSPATH=$(build-classpath js)
-ant -Dswt.arch=%{eclipse_arch}
+ant -Dmachine_gtk3=1 -DBUILD_WEBKIT2EXTENSION=yes -Dswt.arch=%{eclipse_arch}
 
 %{mvn_artifact} eclipse.platform.swt/bundles/org.eclipse.swt/pom.xml org.eclipse.swt.gtk.linux.%{eclipse_arch}.jar
 

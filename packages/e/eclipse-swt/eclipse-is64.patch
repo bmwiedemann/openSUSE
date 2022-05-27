@@ -1,6 +1,5 @@
-diff -urEbwB eclipse-platform-sources-I20180906-0745/eclipse.platform.swt/bundles/org.eclipse.swt/buildFragment.xml eclipse-platform-sources-I20180906-0745/eclipse.platform.swt/bundles/org.eclipse.swt/buildFragment.xml
---- eclipse-platform-sources-I20180906-0745/eclipse.platform.swt/bundles/org.eclipse.swt/buildFragment.xml	2018-08-21 14:03:57.000000000 +0200
-+++ eclipse-platform-sources-I20180906-0745/eclipse.platform.swt/bundles/org.eclipse.swt/buildFragment.xml	2021-11-16 18:11:01.569116136 +0100
+--- eclipse-platform-sources-I20180906-0745/eclipse.platform.swt/bundles/org.eclipse.swt/buildFragment.xml	2022-05-26 15:32:50.674679467 +0200
++++ eclipse-platform-sources-I20180906-0745/eclipse.platform.swt/bundles/org.eclipse.swt/buildFragment.xml	2022-05-26 15:51:11.649507086 +0200
 @@ -234,7 +234,7 @@
  	</target>
  
@@ -10,3 +9,12 @@ diff -urEbwB eclipse-platform-sources-I20180906-0745/eclipse.platform.swt/bundle
  			<or>
  				<equals arg1="${swt.arch}" arg2="x86_64"/>
  				<equals arg1="${swt.arch}" arg2="ia64"/>
+@@ -247,7 +247,7 @@
+ 		<echo>Is64=${is64}</echo>
+ 	</target>
+ 		
+-    <target name="replace64" depends="is64" unless="is64">
++    <target name="replace64" depends="is64" unless="${is64}">
+     	<echo>Converting java files to 32 bit</echo>
+     	<replace dir="${copy.src.dir}" includes="**/*.java" value="int /*long*/" token="long /*int*/"/>
+     	<replace dir="${copy.src.dir}" includes="**/*.java" value="int[] /*long[]*/" token="long[] /*int[]*/"/>
