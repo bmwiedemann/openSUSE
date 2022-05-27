@@ -322,4 +322,12 @@ their well-known cousins (e.g. dtest vs. test, or dgrep vs. grep).</comment>
   * a0ebd0037df973aed14779b51d59da3edc506b6a.patch</comment>
     <requestid>913333</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>1030a79f3a1912a41d21638ba6de81f5</srcmd5>
+    <version>0.4.10</version>
+    <time>1653690496</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979457</requestid>
+  </revision>
 </revisionlist>

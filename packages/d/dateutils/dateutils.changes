@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 27 09:45:49 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.10:
+  * do not resort to daisy sequences when incomplete dates are present (#131)
+  * upon end-of-buffer finalise the last line (#141)
+  * let --empty-mode|-E and --sed-mode|-S play nicely together (#139)
+  * adapt CLI behaviour of strptime(1) to the other tools (#142)
+
+-------------------------------------------------------------------
 Fri Aug 20 12:15:31 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.9:
