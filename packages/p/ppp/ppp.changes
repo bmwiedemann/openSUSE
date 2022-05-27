@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 26 18:43:35 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add ppp-compiling-with-clang-encounters-an-error-in-eap-tls..patch
+  that fixed the following rpmlint error:
+  executable-stack (Badness: 10000) /usr/sbin/pppd
+
+-------------------------------------------------------------------
 Mon May 23 14:07:58 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.4.9

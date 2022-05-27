@@ -62,6 +62,8 @@ Patch4:         ppp-fix-bashisms.patch
 Patch5:         ppp-fork-fix.patch
 # misc tiny stuff
 Patch6:         ppp-misc.patch
+# PATCH-FIX-UPSTREAM ppp-fork-fix.patch -- fix E: executable-stack (Badness: 10000) /usr/sbin/pppd
+Patch7:         ppp-compiling-with-clang-encounters-an-error-in-eap-tls..patch
 # Of cause any other compatible libc would work, like musl, but 2.24 required for SOL_NETLINK
 BuildRequires:  glibc-devel >= 2.24
 BuildRequires:  libpcap-devel
@@ -114,6 +116,7 @@ you can disable unnecessary or disable everything.
 %patch4 -p1
 %patch5
 %patch6
+%patch7 -p1
 
 %if "%{_lib}" == "lib64"
 %patch2 -p1
