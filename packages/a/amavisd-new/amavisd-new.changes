@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 27 05:21:35 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- amavis fails to start (bsc#1199755)
+  Add missed requirement 
+
+-------------------------------------------------------------------
+Thu May 26 05:04:09 UTC 2022 - Togan Muftuoglu <toganm@opensuse.org>
+
+- Remove server:mail/amavisd-new/amavis.service since it results Assignment outside of section warning
+
+-------------------------------------------------------------------
 Wed May  4 11:33:04 UTC 2022 - Peter Varkoly <varkoly@suse.com>
 
 - Starting amavis.service gives Unit var-run.mount not found.
