@@ -20,7 +20,7 @@ Summary:        SUSE HPC Environment
 License:        BSD-3-Clause
 Group:          Productivity/Clustering/Computing
 Name:           suse-hpc
-Version:        0.5.20220206.0c6b168
+Version:        0.5.20220525.fd76646
 Release:        0
 Source0:        macros.hpc
 Source1:        dlinfo.c

@@ -286,11 +286,15 @@ cat << EOF > %{buildroot}%{hpc_module_dep_base}%{version}
 %dir %hpc_mpi_install_path_base \
 %dir %hpc_mpi_install_path
 
-# serial and parallel libraries - use in library package
-%hpc_dirs \
+# base dir path only
+%hpc_base_dirs \
 %{!?hpc_compiler_family:%dir %{hpc_install_base}} \
 %dir %{hpc_install_path_base} \
-%dir %{hpc_install_path} \
+%dir %{hpc_install_path}
+
+# serial and parallel libraries - use in library package
+%hpc_dirs \
+%{hpc_base_dirs} \
 %dir %{hpc_libdir}
 
 #

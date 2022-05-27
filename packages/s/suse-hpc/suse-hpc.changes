@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 25 05:56:07 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Add %hpc_base_dirs macro
+  In contrast to %hpc_dirs which also includes the library directory
+  this only provides the HPC base directories.
+
+-------------------------------------------------------------------
 Sun Feb  6 15:55:41 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Add %hpc_python_sitelib and %hpc_python_sitelib_no_singlespec

@@ -232,4 +232,14 @@
   to get arch independent module directories for modules. (forwarded request 952120 from eeich)</comment>
     <requestid>952121</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d1e7f13cc958518a4b930433996c275f</srcmd5>
+    <version>0.5.20220525.fd76646</version>
+    <time>1653690490</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %hpc_base_dirs macro
+  In contrast to %hpc_dirs which also includes the library directory
+  this only provides the HPC base directories. (forwarded request 979120 from eeich)</comment>
+    <requestid>979393</requestid>
+  </revision>
 </revisionlist>
