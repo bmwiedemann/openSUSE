@@ -534,4 +534,13 @@
 - drop automake-reproducible.patch (upstream)</comment>
     <requestid>933575</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>063bf4e081028478067ac221aaf30dbf</srcmd5>
+    <version>1.16.5</version>
+    <time>1653690481</time>
+    <user>dimstar_suse</user>
+    <comment>- update automake.keyring: use release-team keyring
+- don't reference source URL when the linked sources change over time</comment>
+    <requestid>979042</requestid>
+  </revision>
 </revisionlist>

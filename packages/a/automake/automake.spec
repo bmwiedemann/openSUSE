@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,8 @@ Group:          Development/Tools/Building
 URL:            https://www.gnu.org/software/automake
 Source0:        https://ftp.gnu.org/gnu/automake/automake-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/gnu/automake/automake-%{version}.tar.xz.sig
-Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=automake&download=1#/automake.keyring
+# taken from https://savannah.gnu.org/project/release-gpgkeys.php?group=automake&download=1
+Source2:        automake.keyring
 Source3:        automake-rpmlintrc
 Patch2:         automake-require_file.patch
 Patch3:         automake-1.13.4-fix-primary-prefix-invalid-couples-test.patch
