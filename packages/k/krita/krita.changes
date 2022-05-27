@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 27 06:38:23 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.0.8
+  * Fix suffix of "target size" in WebP (kde#447191)
+  * Apply the backported patch renaming xmlgui from Arch to 5.0
+    (kde#453884, boo#1199798)
+  * Fix default preset names (kde#453266)
+
+-------------------------------------------------------------------
 Mon May  2 07:15:14 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 5.0.6

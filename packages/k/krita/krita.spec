@@ -24,7 +24,7 @@
 %bcond_with vc
 %endif
 Name:           krita
-Version:        5.0.6
+Version:        5.0.8
 Release:        0
 Summary:        Digital Painting Application
 License:        BSD-2-Clause AND GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND CC0-1.0 AND LGPL-2.0-only
