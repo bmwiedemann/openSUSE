@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 27 09:42:49 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1653501113.88a17ce:
+  * Allow markdown in apparmor
+  * Generalize fix from previous commit for all kinds of comment creations
+  * Prevent new comments from being considered edited
+  * Fix workaround for sporadic error in comments test
+  * Document `_TRIGGER_JOB_DONE_HOOK` and generic hook script
+  * Introduce job setting `_TRIGGER_JOB_DONE_HOOK` to disable/enable hook
+  * Extract code for running hook script into separate function
+
+-------------------------------------------------------------------
 Wed May 25 01:44:44 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1653423899.eb3c8f7:
