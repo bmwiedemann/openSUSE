@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed May 25 10:23:35 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Use https for variosu links.
+
+-------------------------------------------------------------------
+Wed May 25 08:56:09 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update binutils-2.38-branch.diff.gz (to 93054037f1e304e)
+  in order to include PR29087.
+
+-------------------------------------------------------------------
+Mon May  9 10:18:29 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Enable multitarget build on riscv64
+- On SLE15 and later, use make -Oline to synchronize configure output by
+  lines
+
+-------------------------------------------------------------------
 Wed May  4 12:08:27 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Renumber Sources.

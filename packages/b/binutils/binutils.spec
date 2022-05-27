@@ -94,7 +94,7 @@ Release:        0
 %define	make_check_handling	false
 %endif
 # handle all binary object formats supported by SUSE (and a few more)
-%ifarch %ix86 %arm aarch64 ia64 ppc ppc64 ppc64le s390 s390x x86_64
+%ifarch %ix86 %arm aarch64 ia64 ppc ppc64 ppc64le riscv64 s390 s390x x86_64
 %define build_multitarget 1
 %else
 %define build_multitarget 0
@@ -103,7 +103,7 @@ Release:        0
 #
 #
 #
-URL:            http://www.gnu.org/software/binutils/
+URL:            https://www.gnu.org/software/binutils/
 PreReq:         %{install_info_prereq}
 # bug437293
 %ifarch ppc64
@@ -211,6 +211,11 @@ The Compact C Type Format (CTF) is a way of representing information about a bin
 %endif
 %define DIST %(echo '%distribution' | sed 's/ (.*)//')
 
+%if 0%{suse_version} >= 1500
+# Synchronize output by lines, useful for configure output
+%define make_output_sync -Oline
+%endif
+
 %prep
 echo "make check will return with %{make_check_handling} in case of testsuite failures."
 %setup -q -n binutils-%{version}
@@ -311,7 +316,7 @@ EXTRA_TARGETS="$EXTRA_TARGETS,aarch64-suse-linux"
 %define common_flags CFLAGS="${RPM_OPT_FLAGS}" CXXFLAGS="${RPM_OPT_FLAGS}" \\\
 	--prefix=%{_prefix} --libdir=%{_libdir} \\\
 	--infodir=%{_infodir} --mandir=%{_mandir} \\\
-	--with-bugurl=http://bugs.opensuse.org/ \\\
+	--with-bugurl=https://bugs.opensuse.org/ \\\
 	--with-pkgversion="GNU Binutils; %{DIST}" \\\
 	--with-separate-debug-dir=%{_prefix}/lib/debug \\\
 	--with-pic --with-system-zlib --build=%{HOST}
@@ -348,14 +353,14 @@ cd build-dir
 # we patch headers (bfd-in.h) that are input to other headers
 # which are generated only with --enable-maintainer-mode (which we
 # don't do) or explicitely by make headers, so do this:
-make %{?_smp_mflags} all-bfd TARGET-bfd=headers V=1
+make %{?make_output_sync} %{?_smp_mflags} all-bfd TARGET-bfd=headers V=1
 # the above interacts with --enable-pgo-build=lto because all-bfd doesn't
 # have the PGO handling, hence it's config.cache files are wrong
 # remove all of those for reconfigure
 rm */config.cache
 # force reconfiguring
 rm bfd/Makefile
-make %{?_smp_mflags} V=1
+make %{?make_output_sync} %{?_smp_mflags} V=1
 
 %else
 # building cross-TARGET-binutils
@@ -402,7 +407,7 @@ EXTRA_TARGETS="$EXTRA_TARGETS,aarch64-suse-linux"
 %endif
 ../configure CFLAGS="${RPM_OPT_FLAGS}" \
   --prefix=%{_prefix} \
-  --with-bugurl=http://bugs.opensuse.org/ \
+  --with-bugurl=https://bugs.opensuse.org/ \
   --with-pkgversion="GNU Binutils; %{DIST}" \
   --with-system-zlib \
   --disable-nls \
@@ -421,17 +426,17 @@ EXTRA_TARGETS="$EXTRA_TARGETS,aarch64-suse-linux"
   --enable-default-hash-style=both \
 %endif
   ${EXTRA_TARGETS:+--enable-targets="${EXTRA_TARGETS#,}"}
-make %{?_smp_mflags} all-bfd TARGET-bfd=headers V=1
+make %{?make_output_sync} %{?_smp_mflags} all-bfd TARGET-bfd=headers V=1
 rm */config.cache
 # force reconfiguring
 rm bfd/Makefile
-make %{?_smp_mflags} V=1
+make %{?make_output_sync} %{?_smp_mflags} V=1
 %if "%{TARGET}" == "avr"
 # build an extra nesC version because nesC requires $'s in identifiers
 cp -a gas gas-nesc
 echo '#include "tc-%{TARGET}-nesc.h"' > gas-nesc/targ-cpu.h
 make -C gas-nesc clean
-make -C gas-nesc %{?_smp_mflags}
+make -C gas-nesc %{?make_output_sync} %{?_smp_mflags}
 %endif
 %endif
 

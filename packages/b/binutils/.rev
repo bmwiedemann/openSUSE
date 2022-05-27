@@ -2049,4 +2049,19 @@ contain it.
 - Start using _multibuild for cross binutils.</comment>
     <requestid>974908</requestid>
   </revision>
+  <revision rev="158" vrev="6">
+    <srcmd5>8b7294a70cbcdfd0ac1a7d7ee07de34e</srcmd5>
+    <version>2.38</version>
+    <time>1653690483</time>
+    <user>dimstar_suse</user>
+    <comment>- Use https for variosu links.
+
+- Update binutils-2.38-branch.diff.gz (to 93054037f1e304e)
+  in order to include PR29087.
+
+- Enable multitarget build on riscv64
+- On SLE15 and later, use make -Oline to synchronize configure output by
+  lines</comment>
+    <requestid>979157</requestid>
+  </revision>
 </revisionlist>
