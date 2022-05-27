@@ -467,20 +467,6 @@ products:
     - x86_64
   - openSUSE-MicroOS:k3s-kvm-and-xen:
     - x86_64
-  - openSUSE-MicroOS:Kubic-kubeadm-DigitalOcean-Cloud:
-    - x86_64
-  - openSUSE-MicroOS:Kubic-kubeadm-kvm-and-xen:
-    - x86_64
-  - openSUSE-MicroOS:Kubic-kubeadm-MS-HyperV:
-    - x86_64
-  - openSUSE-MicroOS:Kubic-kubeadm-OpenStack-Cloud:
-    - x86_64
-  - openSUSE-MicroOS:Kubic-kubeadm-SelfInstall:
-    - x86_64
-  - openSUSE-MicroOS:Kubic-kubeadm-Vagrant:
-    - x86_64
-  - openSUSE-MicroOS:Kubic-kubeadm-VMware:
-    - x86_64
   - openSUSE-MicroOS:kvm-and-xen:
     - x86_64
   - openSUSE-MicroOS:MS-HyperV:
@@ -536,7 +522,6 @@ products:
   - 000product:openSUSE-cd-mini-i586
   - 000product:openSUSE-cd-mini-x86_64
   - 000product:MicroOS-dvd5-dvd-x86_64
-  - 000product:MicroOS-dvd5-kubic-dvd-x86_64
 test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
@@ -544,7 +529,7 @@ set_snapshot_number: True</value>
     <value>failed: ''
 published: '20220525'
 publishing: '20220525'
-testing: '20220525'
+testing: '20220526'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
