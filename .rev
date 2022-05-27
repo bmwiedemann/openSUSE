@@ -645,4 +645,15 @@ Please forward to Factory and 13.1
   (bsc#1198783)</comment>
     <requestid>974902</requestid>
   </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>ad848037a2f376e8970aa62852540bc6</srcmd5>
+    <version>2.12.2</version>
+    <time>1653690492</time>
+    <user>dimstar_suse</user>
+    <comment>- amavis fails to start (bsc#1199755)
+  Add missed requirement 
+
+- Remove server:mail/amavisd-new/amavis.service since it results Assignment outside of section warning</comment>
+    <requestid>979415</requestid>
+  </revision>
 </revisionlist>

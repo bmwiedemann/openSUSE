@@ -53,6 +53,7 @@ Requires:       perl(Compress::Raw::Zlib) >= 2.017
 Requires:       perl(Compress::Zlib) >= 1.35
 Requires:       perl(Convert::BinHex)
 Requires:       perl(Digest::MD5) >= 2.22
+Requires:       perl(IO::Socket::SSL)
 Requires:       perl(IO::Stringy)
 Requires:       perl(MIME::Base64)
 Requires:       perl(MIME::Parser)
