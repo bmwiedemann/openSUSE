@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri May 27 09:42:14 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.25.1:
+  * Shell integration: Add a command to Clone the current shell into
+    a new window
+  * Remote control: Allow using Boolean operators when constructing
+    queries to match windows or tabs
+  * Sessions: Fix os_window_size and os_window_class not applying
+    to the first OS Window (#4957)
+  * Allow using the cwd of the oldest as well as the newest foreground
+    process for launch --cwd (#4869)
+  * Bash integration: Fix the value of shell_integration not taking
+    effect if the integration script is sourced in bashrc (#4964)
+  * Fix a regression in the previous release that caused mouse move
+    events to be incorrectly reported as drag events even when a button
+    is not pressed (#4992)
+  * remote file kitten: Integrate with the ssh kitten for improved
+    performance and robustness. Re-uses the control master connection
+    of the ssh kitten to avoid round-trip latency.
+  * Fix tab selection when closing a new tab not correct in some scenarios (#4987)
+  * A new action open_url to open the specified URL (#5004)
+  * A new option select_by_word_characters_forward that allows changing
+    which characters are considered part of a word to the right when
+    double clicking to select words (#5103)
+  * Fix reloading of config not working when kitty.conf does not exist
+    when kitty is launched (#5071)
+  * Fix deleting images by row not calculating image bounds correctly (#5081)
+  * Increase the max number of combining chars per cell from two to three,
+    without increasing memory usage.
+  * Linux: Load libfontconfig at runtime to allow the binaries to work for
+    running kittens on servers without FontConfig
+  * GNOME: Fix for high CPU usage caused by GNOME’s text input subsystem
+    going into an infinite loop when IME cursor position is updated
+    after a done event (#5105)
+
+-------------------------------------------------------------------
 Mon Apr 18 11:54:12 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Fixed SPEC to build with Leap
