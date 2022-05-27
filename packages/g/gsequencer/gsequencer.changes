@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 26 22:52:42 UTC 2022 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v4.0.8 fixed machine's input dialogs and machine
+  selector popover.
+- fixed unitialized value in ags_simple_file.c.
+- minor improvements.
+
+-------------------------------------------------------------------
 Tue May 24 06:20:50 UTC 2022 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v4.0.4 major API improvements.
