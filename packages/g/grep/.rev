@@ -685,4 +685,14 @@ also requires -fno-profile-values to avoid ~3 differing bits (forwarded request 
     <comment>Make profiling deterministic (bsc#1040589) (forwarded request 962124 from bmwiedemann)</comment>
     <requestid>962180</requestid>
   </revision>
+  <revision rev="82" vrev="4">
+    <srcmd5>73291ec4251db78beeeb9011247e3e77</srcmd5>
+    <version>3.7</version>
+    <time>1653690482</time>
+    <user>dimstar_suse</user>
+    <comment>- use release keyring rather than full one for validation 
+
+- Do not link an unversioned file by URL (and refresh keyring)</comment>
+    <requestid>979044</requestid>
+  </revision>
 </revisionlist>

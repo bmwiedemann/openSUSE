@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 24 19:42:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use release keyring rather than full one for validation 
+
+-------------------------------------------------------------------
+Tue May 24 14:15:24 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Do not link an unversioned file by URL (and refresh keyring)
+
+-------------------------------------------------------------------
 Tue Mar 15 21:51:41 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Make profiling deterministic (bsc#1040589)

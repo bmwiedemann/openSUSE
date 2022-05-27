@@ -25,7 +25,8 @@ Group:          Productivity/Text/Utilities
 URL:            https://www.gnu.org/software/grep/
 Source0:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
 Source2:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
-Source3:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=grep&download=1#/%{name}.keyring
+# Taken from https://savannah.gnu.org/project/release-gpgkeys.php?group=grep&download=1
+Source3:        %{name}.keyring
 Source4:        profile.sh
 Source5:        %{name}-rpmlintrc
 BuildRequires:  fdupes
