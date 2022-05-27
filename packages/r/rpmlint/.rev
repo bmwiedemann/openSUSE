@@ -3815,4 +3815,17 @@ oddjob-gpupdate isn't blocked)</comment>
   * Skip undefined-non-weak-symbol for python packages.</comment>
     <requestid>978672</requestid>
   </revision>
+  <revision rev="401" vrev="1">
+    <srcmd5>b91ad0b50afb72acf06b017f643232d0</srcmd5>
+    <version>2.3.0+git20220525.d213f48</version>
+    <time>1653690478</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0+git20220525.d213f48:
+  * opensuse config: parse ValidLicenseExceptions
+  * Report binary in shlib-policy-name-error error
+  * Remove extra prints from tests.
+  * Increase badness for executable-stack
+- Remove disable-SystemdTmpfilesCheck.patch.</comment>
+    <requestid>979251</requestid>
+  </revision>
 </revisionlist>
