@@ -112,9 +112,7 @@ unsorted:
   - Mesa-vulkan-device-select-32bit: [x86_64] 
   - Mesa-vulkan-overlay 
   - Mesa-vulkan-overlay-32bit: [x86_64] 
-  - MicroOS-release-appliance-kubic 
   - MicroOS-release-dvd 
-  - MicroOS-release-kubic-dvd 
   - MirrorCache 
   - ModemManager-devel 
   - Modules 
@@ -1613,7 +1611,7 @@ unsorted:
   - busybox-hostname: [i586] 
   - busybox-iproute2 
   - busybox-iputils 
-  - busybox-k8s-yaml: [i586] 
+  - busybox-k8s-yaml 
   - busybox-kbd 
   - busybox-kmod 
   - busybox-less 
@@ -1861,6 +1859,7 @@ unsorted:
   - celt051-devel 
   - ceph: [x86_64] 
   - ceph-base: [x86_64] 
+  - ceph-common: [x86_64] 
   - ceph-csi: [x86_64] 
   - ceph-csi-helm-charts: [x86_64] 
   - ceph-fuse: [x86_64] 
@@ -1886,7 +1885,7 @@ unsorted:
   - cephfs-top: [x86_64] 
   - cereal-devel 
   - certbot-systemd-timer 
-  - certstrap: [i586] 
+  - certstrap 
   - cf-cli 
   - cf-cli-test 
   - cfengine 
@@ -2259,7 +2258,7 @@ unsorted:
   - connman-plugin-vpnc 
   - connman-plugin-wireguard 
   - connman-test 
-  - conntrack-tools: [i586] 
+  - conntrack-tools 
   - conntrackd 
   - console 
   - console-lang 
@@ -2397,8 +2396,10 @@ unsorted:
   - crawl-sdl 
   - crazydiskinfo 
   - crc32csum: [x86_64] 
-  - cri-tools: [i586] 
-  - criu: [x86_64] # recommended by opensuse_kubic:patterns-containers-kubeadm 
+  - cri-o: [x86_64] 
+  - cri-o-kubeadm-criconfig: [x86_64] 
+  - cri-tools 
+  - criu: [x86_64] # recommended by opensuse_microos:patterns-microos-alt_onlyDVD 
   - criu-devel: [x86_64] 
   - criu-plugin-amdgpu: [x86_64] 
   - crmsh 
@@ -2654,7 +2655,9 @@ unsorted:
   - cutterff 
   - cutterff-lang 
   - cvise 
+  - cvs 
   - cvs-doc 
+  - cvsps 
   - cwstudio 
   - cxref 
   - cxxtools-devel 
@@ -3475,6 +3478,7 @@ unsorted:
   - etcd-for-k8s1.19: [x86_64] 
   - etcd-for-k8s1.22: [x86_64] 
   - etcd-for-k8s1.23: [x86_64] 
+  - etcdctl: [x86_64] 
   - etcdutl: [x86_64] 
   - etckeeper 
   - etckeeper-bash-completion 
@@ -3842,7 +3846,7 @@ unsorted:
   - flameshot-zsh-completion 
   - flann-devel 
   - flannel 
-  - flannel-k8s-yaml: [i586] 
+  - flannel-k8s-yaml 
   - flare 
   - flare-game 
   - flarq 
@@ -4094,6 +4098,7 @@ unsorted:
   - fwts 
   - fwupd-devel 
   - fwupd-fish-completion 
+  - fx 
   - fxload 
   - fzf 
   - fzf-bash-completion 
@@ -5754,6 +5759,7 @@ unsorted:
   - git-credential-gnome-keyring 
   - git-credential-libsecret 
   - git-crypt 
+  - git-cvs 
   - git-daemon 
   - git-delta 
   - git-deps 
@@ -6374,6 +6380,7 @@ unsorted:
   - gromacs-doc 
   - gromacs-openmpi 
   - gromit-mpx 
+  - gron 
   - groovy 
   - groovy-ant 
   - groovy-bootstrap 
@@ -6728,7 +6735,7 @@ unsorted:
   - hamster-time-tracker-lang 
   - handedict 
   - happy: [x86_64] 
-  - haproxy: [i586] 
+  - haproxy 
   - hardening-check 
   - hardinfo 
   - harfbuzz-devel 
@@ -6838,7 +6845,7 @@ unsorted:
   - health-check 
   - health-check-bash-completion 
   - health-checker-plugins-caasp 
-  - health-checker-plugins-kubic: [i586] 
+  - health-checker-plugins-kubic 
   - health-checker-testing 
   - heaptrack-devel 
   - hedgewars 
@@ -6849,8 +6856,9 @@ unsorted:
   - helix 
   - hello 
   - hello-kubic: [x86_64] 
+  - hello-kubic-k8s-yaml: [x86_64] 
   - hello-lang 
-  - helm: [i586] 
+  - helm 
   - helm-bash-completion 
   - helm-docs 
   - helm-fish-completion 
@@ -7970,6 +7978,7 @@ unsorted:
   - k3s-selinux 
   - k3sup 
   - k8s-sidecar 
+  - k9s: [x86_64] 
   - kColorPicker-devel 
   - kImageAnnotator 
   - kImageAnnotator-devel 
@@ -7982,6 +7991,7 @@ unsorted:
   - kaffeine-lang 
   - kafka-kit: [x86_64] 
   - kafka-source 
+  - kail: [x86_64] 
   - kajaani-kombat 
   - kajaani-kombat-server 
   - kajongg 
@@ -8098,6 +8108,7 @@ unsorted:
   - kdnssd-lang 
   - kdoctools-devel 
   - kdsoap-devel 
+  - kdsoap-qt6-devel 
   - kdstatemachineeditor-devel 
   - kdumpid 
   - kea 
@@ -8482,14 +8493,16 @@ unsorted:
   - ktuberling 
   - ktuberling-lang 
   - kube-no-trouble 
-  - kube-prometheus-k8s-yaml: [i586] 
+  - kube-prometheus-k8s-yaml 
   - kube-prometheus-sources 
   - kubectl-neat 
+  - kubectl-who-can: [x86_64] 
   - kubectx 
   - kubens 
-  - kuberlr: [i586] 
+  - kuberlr 
   - kubernetes-apiserver: [x86_64] 
   - kubernetes-apiserver-minus1: [x86_64] 
+  - kubernetes-client: [x86_64] 
   - kubernetes-client-fish-completion 
   - kubernetes-controller-manager: [x86_64] 
   - kubernetes-controller-manager-minus1: [x86_64] 
@@ -8497,6 +8510,8 @@ unsorted:
   - kubernetes-coredns-minus1: [x86_64] 
   - kubernetes-etcd: [x86_64] 
   - kubernetes-etcd-minus1: [x86_64] 
+  - kubernetes-kubeadm: [x86_64] 
+  - kubernetes-kubelet: [x86_64] 
   - kubernetes-node-image-pause 
   - kubernetes-pause 
   - kubernetes-proxy: [x86_64] 
@@ -8544,11 +8559,17 @@ unsorted:
   - kubernetes1.22-client-common: [x86_64] 
   - kubernetes1.22-controller-manager: [x86_64] 
   - kubernetes1.22-kubeadm: [x86_64] 
+  - kubernetes1.22-kubelet: [x86_64] 
   - kubernetes1.22-kubelet-common: [x86_64] 
   - kubernetes1.22-proxy: [x86_64] 
   - kubernetes1.22-scheduler: [x86_64] 
   - kubernetes1.23-apiserver: [x86_64] 
+  - kubernetes1.23-client: [x86_64] 
+  - kubernetes1.23-client-common: [x86_64] 
   - kubernetes1.23-controller-manager: [x86_64] 
+  - kubernetes1.23-kubeadm: [x86_64] 
+  - kubernetes1.23-kubelet: [x86_64] 
+  - kubernetes1.23-kubelet-common: [x86_64] 
   - kubernetes1.23-proxy: [x86_64] 
   - kubernetes1.23-scheduler: [x86_64] 
   - kubescape 
@@ -8564,8 +8585,11 @@ unsorted:
   - kubevirt-virt-launcher: [x86_64] 
   - kubevirt-virt-operator: [x86_64] 
   - kubevirt-virtctl: [x86_64] 
+  - kubic-haproxycfg: [x86_64] 
   - kubic-locale-archive 
   - kubic-pause 
+  - kubicctl: [x86_64] 
+  - kubicd: [x86_64] 
   - kubie 
   - kubie-bash-completion 
   - kubie-fish-completion 
@@ -8579,10 +8603,11 @@ unsorted:
   - kup-server 
   - kupfer 
   - kured 
-  - kured-k8s-yaml: [i586] 
+  - kured-k8s-yaml 
   - kuserfeedback-devel 
   - kuserfeedback-server 
   - kuserfeedback-tools 
+  - kustomize: [x86_64] 
   - kvantum-doc 
   - kvantum-manager 
   - kvantum-manager-lang 
@@ -10221,6 +10246,7 @@ unsorted:
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
   - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
+  - libcephfs2: [x86_64] 
   - libcephsqlite: [x86_64] 
   - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
   - libceres-devel 
@@ -10564,7 +10590,7 @@ unsorted:
   - libdhash-devel-32bit: [x86_64] 
   - libdhash1-32bit: [x86_64] 
   - libdico2 
-  - libdigikamcore7 
+  - libdigikamcore7_6_0 
   - libdirac_decoder0 
   - libdirac_decoder0-32bit: [x86_64] 
   - libdirac_encoder0 
@@ -11862,6 +11888,8 @@ unsorted:
   - libkdecoration2-devel 
   - libkdegames-devel 
   - libkdepim-devel 
+  - libkdsoap-qt6-2 
+  - libkdsoap-server-qt6-2 
   - libkdsoap-server2 
   - libkdstatemachineeditor_core1 
   - libkdstatemachineeditor_debuginterfaceclient1 
@@ -12515,10 +12543,10 @@ unsorted:
   - libnetfilter_conntrack-devel 
   - libnetfilter_conntrack3-32bit: [x86_64] 
   - libnetfilter_cthelper-devel 
-  - libnetfilter_cthelper0: [i586] 
+  - libnetfilter_cthelper0 
   - libnetfilter_cthelper0-32bit: [x86_64] 
   - libnetfilter_cttimeout-devel 
-  - libnetfilter_cttimeout1: [i586] 
+  - libnetfilter_cttimeout1 
   - libnetfilter_cttimeout1-32bit: [x86_64] 
   - libnetfilter_log-devel 
   - libnetfilter_log1 
@@ -12631,7 +12659,7 @@ unsorted:
   - libo2scl0 
   - liboaml1 
   - liboath-devel 
-  - liboath0: [i586] 
+  - liboath0 
   - liboauth-devel 
   - liboauth0-32bit: [x86_64] 
   - libobby-0_4-1 
@@ -13472,7 +13500,7 @@ unsorted:
   - libqwt5-qt5-5 
   - libqwt6_2 
   - libqwtplot3d-qt5-0 
-  - libqxmledit-0_9_16-0 
+  - libqxmledit-0_9_17-0 
   - libqxmpp-devel 
   - libqxmpp-doc 
   - libqxmpp3 
@@ -13696,6 +13724,7 @@ unsorted:
   - librevenge-generators-0_0-0 
   - librfxencode0 
   - librgw-devel: [x86_64] # devel package of dvd:librados2 
+  - librgw2: [x86_64] 
   - librhash0 
   - librime-devel 
   - librime-lua 
@@ -16190,6 +16219,7 @@ unsorted:
   - metaio-devel 
   - metaio-utils 
   - metallb-controller: [x86_64] 
+  - metallb-k8s-yaml: [x86_64] 
   - metallb-speaker: [x86_64] 
   - metamath 
   - metatheme-adapta-common 
@@ -17317,7 +17347,7 @@ unsorted:
   - nfoview 
   - nfoview-lang 
   - nfs-client-provisioner 
-  - nfs-client-provisioner-k8s-yaml: [i586] 
+  - nfs-client-provisioner-k8s-yaml 
   - nfs-ganesha: [x86_64] 
   - nfs-ganesha-ceph: [x86_64] 
   - nfs-ganesha-mount-9P: [x86_64] 
@@ -17785,7 +17815,7 @@ unsorted:
   - o2scl-doc 
   - oaml-devel 
   - oath-toolkit 
-  - oath-toolkit-xml: [i586] 
+  - oath-toolkit-xml 
   - oauth-signpost 
   - obantoo 
   - obby 
@@ -18857,6 +18887,12 @@ unsorted:
   - patterns-ceph-containers-ceph_base: [x86_64] 
   - patterns-cinnamon-cinnamon 
   - patterns-cinnamon-cinnamon_basis 
+  - patterns-containers-container_runtime_kubernetes: [x86_64] 
+  - patterns-containers-kubeadm: [x86_64] 
+  - patterns-containers-kubernetes_utilities: [x86_64] 
+  - patterns-containers-kubic_admin: [x86_64] 
+  - patterns-containers-kubic_loadbalancer: [x86_64] 
+  - patterns-containers-kubic_worker: [x86_64] 
   - patterns-deepin-deepin 
   - patterns-deepin-deepin_admin 
   - patterns-deepin-deepin_basis 
@@ -19328,6 +19364,7 @@ unsorted:
   - perl-DBD-MariaDB 
   - perl-DBD-ODBC 
   - perl-DBD-Pg 
+  - perl-DBD-SQLite 
   - perl-DBD-XBase 
   - perl-DBICx-Sugar 
   - perl-DBICx-TestDatabase 
@@ -21615,6 +21652,9 @@ unsorted:
   - python3-casacore: [x86_64] 
   - python3-castellan 
   - python3-ccm 
+  - python3-ceph-argparse: [x86_64] 
+  - python3-ceph-common: [x86_64] 
+  - python3-cephfs: [x86_64] 
   - python3-cinderclient 
   - python3-clang 
   - python3-clang13 
@@ -21818,8 +21858,11 @@ unsorted:
   - python3-pyside6-devel 
   - python3-pysol-cards 
   - python3-pytest-cookies 
+  - python3-rados: [x86_64] 
+  - python3-rbd: [x86_64] 
   - python3-renderspec 
   - python3-reno 
+  - python3-rgw: [x86_64] 
   - python3-rpmconf 
   - python3-rrdtool 
   - python3-rust2rpm 
@@ -23074,6 +23117,7 @@ unsorted:
   - python310-fastnumbers 
   - python310-fastparquet 
   - python310-fastremap 
+  - python310-fasttext 
   - python310-fb-re2 
   - python310-fedora-messaging 
   - python310-feedgen 
@@ -24298,7 +24342,6 @@ unsorted:
   - python310-pytest-profiling 
   - python310-pytest-pycodestyle 
   - python310-pytest-pyramid-server 
-  - python310-pytest-pythonpath 
   - python310-pytest-qt 
   - python310-pytest-random-order 
   - python310-pytest-randomly 
@@ -26253,6 +26296,7 @@ unsorted:
   - python38-fastimport 
   - python38-fastnumbers 
   - python38-fastremap 
+  - python38-fasttext 
   - python38-fb-re2 
   - python38-fedora-messaging 
   - python38-feedgen 
@@ -27366,7 +27410,6 @@ unsorted:
   - python38-pytest-profiling 
   - python38-pytest-pycodestyle 
   - python38-pytest-pyramid-server 
-  - python38-pytest-pythonpath 
   - python38-pytest-qt 
   - python38-pytest-random-order 
   - python38-pytest-randomly 
@@ -29328,6 +29371,7 @@ unsorted:
   - python39-fastnumbers 
   - python39-fastparquet 
   - python39-fastremap 
+  - python39-fasttext 
   - python39-fb-re2 
   - python39-fedora-messaging 
   - python39-feedgen 
@@ -30550,7 +30594,6 @@ unsorted:
   - python39-pytest-profiling 
   - python39-pytest-pycodestyle 
   - python39-pytest-pyramid-server 
-  - python39-pytest-pythonpath 
   - python39-pytest-qt 
   - python39-pytest-random-order 
   - python39-pytest-randomly 
@@ -31991,6 +32034,7 @@ unsorted:
   - rainbow 
   - rainbow-bash-completion 
   - rainbow-zsh-completion 
+  - rakkess: [x86_64] 
   - rakudo 
   - raleway-fonts 
   - rancher-cli 
@@ -32027,6 +32071,7 @@ unsorted:
   - raylib-devel 
   - razercfg 
   - razor-agents 
+  - rbac-lookup: [x86_64] 
   - rbac-manager: [x86_64] 
   - rbac-manager-k8s-yaml: [x86_64] 
   - rbd-fuse: [x86_64] 
@@ -32087,6 +32132,7 @@ unsorted:
   - redshift-gtk 
   - reflectasm 
   - reflectasm-javadoc 
+  - reg: [x86_64] 
   - regexp 
   - regexploit 
   - rehex 
@@ -32236,6 +32282,7 @@ unsorted:
   - rook: [x86_64] 
   - rook-ceph-helm-charts: [x86_64] 
   - rook-integration: [x86_64] 
+  - rook-k8s-yaml: [x86_64] 
   - rook-rookflex: [x86_64] 
   - root-tail 
   - rootlesskit 
@@ -32396,7 +32443,7 @@ unsorted:
   - salt-proxy 
   - salt-shaptools 
   - salt-ssh 
-  - salt-standalone-formulas-configuration: [i586] 
+  - salt-standalone-formulas-configuration 
   - salt-syndic 
   - salt-zsh-completion 
   - samba-ad-dc 
@@ -32934,7 +32981,7 @@ unsorted:
   - soapysdr0.8-module-uhd 
   - soapysdr0.8-module-xtrx 
   - sobby 
-  - socat: [i586] 
+  - socat 
   - soci-devel 
   - soci-empty-devel 
   - soci-mysql-devel 
@@ -33061,6 +33108,7 @@ unsorted:
   - sqlite-jdbc 
   - sqlite-jdbc-javadoc 
   - sqlite3 
+  - sqlite3-devel 
   - sqlite3-doc 
   - sqlitebrowser 
   - sqliteman 
@@ -33440,6 +33488,8 @@ unsorted:
   - tcpflow 
   - tcpreplay 
   - tcpser 
+  - tcsh 
+  - tcsh-lang 
   - tdb-tools 
   - tdfiglet 
   - tdiff 
@@ -43118,6 +43168,7 @@ unsorted:
   - wcslib-tools 
   - wdiff 
   - wdiff-lang 
+  - weave-k8s-yaml: [x86_64] 
   - weave-kube: [x86_64] 
   - weave-npc: [x86_64] 
   - webalizer 
@@ -43870,7 +43921,7 @@ unsorted:
   - ykclient 
   - ykpers 
   - yodl 
-  - yomi-formula: [i586] 
+  - yomi-formula 
   - you-get 
   - you-get-bash-completion 
   - you-get-fish-completion 

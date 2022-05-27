@@ -6,7 +6,7 @@
       <name>MicroOS</name>
       <releasepkgname>MicroOS-release</releasepkgname>
       <endoflife/>
-      <version>20220525</version>
+      <version>20220526</version>
       <!-- release is no longer optional -->
       <release>0</release>
       <productline>MicroOS</productline>
@@ -78,32 +78,6 @@
     </media>
 
     <!-- BEWARE: do not touch the naming here without adapting ftp upload scripts ! -->
-    <media
-      type="dvd5"
-      flavor="kubic-dvd"
-      name="openSUSE-Kubic-DVD"
-      sourcemedia="0"
-      firmware="uefi"
-      mediastyle="tumbleweed"
-      run_hybridiso="true"
-      run_media_check="true"
-      use_undecided="false"
-      create_pattern="false"
-      use_required="true"
-      use_recommended="true"
-      use_suggested="false">
-      <archsets>
-        <archset ref="x86_64"/>
-      </archsets>
-      <metadata>
-        <package name="skelcd-installer-Kubic"/>
-        <!--package name="skelcd-control-Kubic"/-->
-        <package name="skelcd-openSUSE"/>
-      </metadata>
-      <use group="opensuse_kubic" create_pattern="false"/>
-      <use group="opensuse_kubic.x86_64" create_pattern="false"/>
-    </media>
-    
     <media type="image"
          flavor="appliance"
          mediastyle="tumbleweed"
@@ -111,17 +85,10 @@
     <!-- Create no product media, but a flavor release subpackage -->
     </media>
 
-    <media type="image"
-         flavor="appliance-kubic"
-         mediastyle="tumbleweed"
-         name="openSUSE-Kubic-appliance" >
-    <!-- Create no product media, but a flavor release subpackage -->
-    </media>
   </mediasets>
 
 
   <xi:include href="opensuse_microos.group"/>
-  <xi:include href="opensuse_kubic.group"/>
 
 </productdefinition>
 
