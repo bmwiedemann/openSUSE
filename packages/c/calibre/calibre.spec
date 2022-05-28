@@ -17,7 +17,7 @@
 
 
 Name:           calibre
-Version:        5.42.0
+Version:        5.43.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 27 09:17:04 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+-Update to 5.43.0 
+  * New Features
+    - Kobo driver: Allow using templates to generate collections
+    - Book details popup: Double clicking on the cover now uses
+      calibre's internal image viewer. Right click on the cover
+      to open it with another program.
+  * Bug Fixes
+    - Fix Book details blank when switching from device view
+      to library view
+    - TXT Input: Fix a regression in 5.39 that caused the option
+      to remove indents also removing blank lines
+    - E-book viewer: Fix incorrect sorting of highlights from the
+      first internal file of a book
+
+-------------------------------------------------------------------
 Tue May  3 08:30:26 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.42.0
