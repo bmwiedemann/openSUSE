@@ -1,10 +1,17 @@
 <services>
     <service name="obs_scm" mode="disabled">
         <param name="url">https://github.com/sumneko/lua-language-server</param>
+        <param name="versionformat">@PARENT_TAG@</param>
         <param name="scm">git</param>
         <param name="exclude">.git</param>
-        <param name="revision">2.6.1</param>
-        <param name="version">2.6.1</param>
+        <param name="revision">505ed9411939fe8c45903e3c9ce559fde50a0584</param>
+        <param name="versionrewrite-pattern">(.*)</param>
+        <param name="versionrewrite-replacement">\1</param>
+    </service>
+    <service name="download_url" mode="disabled">
+        <param name="protocol">https</param>
+        <param name="host">github.com</param>
+        <param name="path">sumneko/lua-language-server/releases/download/3.2.4/lua-language-server-3.2.4-submodules.zip</param>
     </service>
     <service name="tar" mode="disabled" />
     <service name="recompress" mode="disabled">

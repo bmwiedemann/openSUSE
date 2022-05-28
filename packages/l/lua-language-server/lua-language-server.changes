@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat May 28 06:07:09 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 3.2.4:
+  * Include files required to compile by @sharksforarms in #1157 
+  * NEW settings:
+      - workspace.supportScheme: ["file", "untitled", "git"]
+      - diagnostics.disableScheme: ["git"]
+  * NEW folding: support folding ---@alias
+  * CHG if rootUri or workspaceFolder is set to ROOT or HOME, this extension will refuse to load these directories and show an error message.
+  * CHG show warning message when scanning more than 100,000 files.
+  * CHG upgrade LSP to 3.17
+  * FIX hover: can not union table with other basic types
+  * FIX #1125
+  * FIX #1131
+  * FIX #1134
+  * FIX #1141
+  * FIX #1144
+  * FIX #1150
+  * FIX #1155
+
+-------------------------------------------------------------------
 Mon Apr 11 11:55:56 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 3.0.1:

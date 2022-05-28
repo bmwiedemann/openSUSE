@@ -17,19 +17,18 @@
 #
 
 
-%define pkg_name lua-language-server
-
 Name:           lua-language-server
-Version:        3.0.1
+Version:        3.2.4
 Release:        0
 Summary:        Lua Language Server coded by Lua
 License:        MIT
 URL:            https://github.com/sumneko/lua-language-server
 # Checkout from git is required because of gh#sumneko/lua-language-server#878
 # Source0:        %%{name}-%%{version}.tar.gz
-Source0:        https://github.com/sumneko/%{pkg_name}/releases/download/%{version}/%{pkg_name}-%{version}-submodules.zip
-Source1:        lua-lsp-launcher.sh
-Source2:        README.suse-maint.md
+Source0:        https://github.com/sumneko/%{name}/releases/download/%{version}/%{name}-%{version}-submodules.zip
+Source1:        https://github.com/sumneko/%{name}/archive/%{version}.tar.gz
+Source2:        lua-lsp-launcher.sh
+Source3:        README.suse-maint.md
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
@@ -63,7 +62,7 @@ cp -av \
     %{buildroot}%{_datadir}/%{name}/
 
 install -d -m 0755 %{buildroot}%{_bindir}
-sed -e 's#@LIBDIR@#%{_libdir}#' %{SOURCE1} > %{buildroot}%{_bindir}/%{name}
+sed -e 's#@LIBDIR@#%{_libdir}#' %{SOURCE2} > %{buildroot}%{_bindir}/%{name}
 chmod 0755 %{buildroot}%{_bindir}/%{name}
 
 %fdupes %{buildroot}%{_libdir}/%{name}
