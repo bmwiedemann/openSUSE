@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat May 21 15:10:09 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.22.6
+    * Problems with card communication when using the "Smartphone as
+      card reader" function in Comfort mode have been fixed.
+    * Starting with macOS 10.14, system notifications are now being used.
+    * On macOS, the tray icon is now disabled by default.
+      This can be re-enabled in the preferences.
+    * On iOS, a new NFC scan was not possible under certain
+      circumstances. This has been fixed.
+    * When canceling an authentication, the app sometimes crashed
+      on iOS. This has been fixed.
+    * Minor bug fixes and optimizations.
+    * Updated OpenSSL to version 1.1.1o.
+
+-------------------------------------------------------------------
 Fri Apr 15 19:45:41 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

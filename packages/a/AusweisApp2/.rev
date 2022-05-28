@@ -132,4 +132,12 @@
     * Update of OpenSSL to version 1.1.1n. (forwarded request 970378 from glaubitz)</comment>
     <requestid>970761</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a4b9a587dc50644a916e111637936339</srcmd5>
+    <version>1.22.6</version>
+    <time>1653768981</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979535</requestid>
+  </revision>
 </revisionlist>
