@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 26 16:01:02 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update Emerald_Mine_Club to 3.1.3
+  - fixed using game sounds from original games for a large number
+    of level sets
+  - added missing wall element graphic (displayed using R’n’D
+    graphics before)
+  - changed using larger font for player name on high score screen
+
+-------------------------------------------------------------------
 Sat Sep 18 20:49:24 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
 
 - Add Better_Together-1.0.0
