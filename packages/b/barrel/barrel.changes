@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 27 08:33:33 CEST 2022 - aschnell@suse.com
+
+- support activation of LUKS and BitLocker
+- version 0.1.4
+
+-------------------------------------------------------------------
 Mon May 09 10:27:21 CEST 2022 - aschnell@suse.com
 
 - added nilfs2 support
