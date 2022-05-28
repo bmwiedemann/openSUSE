@@ -1,7 +1,25 @@
 -------------------------------------------------------------------
+Sat May 28 13:17:46 UTC 2022 - Enno Gotthold <egotthold@suse.com>
+
+- Fix specfile so submissions to Factory are possible again
+
+-------------------------------------------------------------------
+Fri Oct  8 10:47:43 UTC 2021 - Enno Gotthold <egotthold@suse.com>
+
+- Readding the requires for runtime dependencies on python3-netifaces
+  and python3-distro (bsc#1191448)
+
+-------------------------------------------------------------------
+Tue Sep  7 09:28:43 UTC 2021 - Enno Gotthold <egotthold@suse.com>
+
+- Only recommend virt-install to unbreak scenarios where it is not
+  available in the enabled modules of the system
+
+-------------------------------------------------------------------
 Tue Jul 27 11:54:15 UTC 2021 - Enno Gotthold <egotthold@suse.com>
 
 - Updated to Koan 3.0.1
+  https://github.com/cobbler/koan/releases/tag/v3.0.1
 - The xend functionallity is not expected to work since this the underying tool
   was removed: https://github.com/cobbler/koan/issues/73
 - Python 2 compability was fully removed

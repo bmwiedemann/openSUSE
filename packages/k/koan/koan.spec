@@ -1,7 +1,7 @@
 #
 # spec file for package koan
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,14 +54,14 @@ Group:          Development/Libraries
 License:        GPL-2.0-or-later
 URL:            https://github.com/cobbler/koan
 Source0:        %{name}-%{version}.tar.gz
-
 BuildArch:      noarch
 
 BuildRequires:  python%{python_pkgversion}-%{develsuffix}
 BuildRequires:  python%{python_pkgversion}-setuptools
-
-%{?python_enable_dependency_generator}
-%if ! (%{defined python_enable_dependency_generator} || %{defined python_disable_dependency_generator})
+%if 0%{?rhel}
+# We need these to build this properly, and OBS doesn't pull them in by default for EPEL
+BuildRequires:  epel-rpm-macros
+%endif
 Requires:       python%{python_pkgversion}-distro
 Requires:       python%{python_pkgversion}-netifaces
 %if 0%{?suse_version}
@@ -70,11 +70,10 @@ Requires:       python%{python_pkgversion}-libvirt-python
 %else
 Requires:       python%{python_pkgversion}-libvirt
 %endif
-%endif
 %if "%{_vendor}" == "debbuild"
-Requires:       virtinst
+Recommends:     virtinst
 %else
-Requires:       virt-install
+Recommends:     virt-install
 %endif
 
 %description
@@ -96,20 +95,20 @@ pathfix.py -pni "%{__python} %{py_shbang_opts}" bin
 %py_install
 
 %files
-%{python_sitelib}/koan*
-%{_bindir}/koan
-%{_bindir}/cobbler-register
 %license COPYING
 %doc README.md
+%{_bindir}/koan
+%{_bindir}/cobbler-register
+%{python_sitelib}/koan*
 
 %if "%{_vendor}" == "debbuild"
-%post -n python%{python_pkgversion}-koan
+%post
 # Do late-stage bytecompilation, per debian policy
-py%{python_pkgversion}compile -p python%{python_pkgversion}-koan
+py%{python_pkgversion}compile -p %{name}
 
-%preun -n python%{python_pkgversion}-koan
+%preun
 # Ensure all __pycache__ files are deleted, per debian policy
-py%{python_pkgversion}clean -p python%{python_pkgversion}-koan
+py%{python_pkgversion}clean -p %{name}
 %endif
 
 %changelog
