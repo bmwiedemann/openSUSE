@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 20 15:37:54 UTC 2022 - Yunhe Guo <i@guoyunhe.me>
+
+- Add cmake.patch to fix lib path on 64bit system
+
+-------------------------------------------------------------------
 Sat May 14 18:12:21 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Rectify Requires list for the -devel subpackage.

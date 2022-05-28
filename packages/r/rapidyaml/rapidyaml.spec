@@ -24,6 +24,7 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/biojppm/%{name}
 Source0:        https://github.com/biojppm/%{name}/releases/download/v%{version}/%{name}-%{version}-src.tgz
+Patch0:         cmake.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  git
@@ -61,7 +62,7 @@ ryml is a C++ library to parse and emit YAML.
 This package contains development headers and examples.
 
 %prep
-%autosetup -n %{name}-%{version}-src
+%autosetup -n %{name}-%{version}-src -p1
 
 %build
 %cmake
@@ -69,11 +70,6 @@ This package contains development headers and examples.
 
 %install
 %cmake_install
-
-if [ "%{_libdir}" != "/usr/lib" ]; then
-    mkdir -p %{buildroot}%{_libdir}
-    mv %{buildroot}/usr/lib/* %{buildroot}%{_libdir}/
-fi
 
 %post   -n libc4core0_1_8 -p /sbin/ldconfig
 %postun -n libc4core0_1_8 -p /sbin/ldconfig
