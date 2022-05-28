@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri May 27 13:41:13 UTC 2022 - gmbr3@opensuse.org
+
+- Update to version 1.0.2+0:
+  * Add missing systemd-service file for vnc sharing
+  * v1.0.2 version bump
+  * Rework VNC screensharing to work with GNOME 42 version of
+    GNOME Remote Desktop
+  * Rework fractional scaling to disable the lock-screen
+    GNOME/Budgie screensaver goes into a flash loop when
+    fractional scaling options are used.
+  * Move some items out to fix some fallback.
+  * Enable setting a dark distributor logo for Fedora.
+  * build: Bump required gsettings-desktop-schemas version
+  * small typo
+  * Ensure buddies gresource includes sound test icons
+  * Correct build issues with documentation meson option/disable
+    wayland building as a default
+  * Bump microrelease
+  * Reorganize directories to match budgie-desktop
+  * Port: Add individual app icons
+  * Fix lintian reported typo
+  * network: Fix OWE settings
+
+-------------------------------------------------------------------
 Thu Apr 14 11:18:45 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Split out bash completion into subpackage

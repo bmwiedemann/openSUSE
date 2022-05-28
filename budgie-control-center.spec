@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           budgie-control-center
-Version:        1.0.0+0
+Version:        1.0.2+0
 Release:        0
 Summary:        Fork of GNOME Control Center for Budgie 10
 License:        GPL-2.0-or-later
@@ -29,36 +30,36 @@ Requires:       colord
 Requires:       gnome-color-manager
 # The online accounts panel interacts with binaries and icons from gnome-online-accounts
 Requires:       gnome-online-accounts
-BuildRequires:  meson
 BuildRequires:  cups-devel
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(libpulse)
-BuildRequires:  pkgconfig(libhandy-1)
+BuildRequires:  meson
 BuildRequires:  pkgconfig(accountsservice)
+BuildRequires:  pkgconfig(cheese)
 BuildRequires:  pkgconfig(colord)
+BuildRequires:  pkgconfig(colord-gtk)
+BuildRequires:  pkgconfig(gcr-3)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gnome-bluetooth-1.0)
 BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(gnome-settings-daemon)
 BuildRequires:  pkgconfig(goa-1.0)
-BuildRequires:  pkgconfig(polkit-gobject-1)
-BuildRequires:  pkgconfig(upower-glib)
+BuildRequires:  pkgconfig(gsound)
 BuildRequires:  pkgconfig(gudev-1.0)
-BuildRequires:  pkgconfig(cheese)
 BuildRequires:  pkgconfig(ibus-1.0)
+BuildRequires:  pkgconfig(libgtop-2.0)
+BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(libnma)
-BuildRequires:  pkgconfig(mm-glib)
-BuildRequires:  pkgconfig(gnome-bluetooth-1.0)
-BuildRequires:  pkgconfig(libwacom)
-BuildRequires:  pkgconfig(colord-gtk)
-BuildRequires:  pkgconfig(libsoup-2.4)
-BuildRequires:  pkgconfig(udisks2)
-BuildRequires:  pkgconfig(libgtop-2.0)
-BuildRequires:  pkgconfig(smbclient)
+BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsecret-1)
-BuildRequires:  pkgconfig(gsound)
-BuildRequires:  pkgconfig(pwquality)
-BuildRequires:  pkgconfig(gcr-3)
+BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(libwacom)
 BuildRequires:  pkgconfig(malcontent-0)
+BuildRequires:  pkgconfig(mm-glib)
+BuildRequires:  pkgconfig(polkit-gobject-1)
+BuildRequires:  pkgconfig(pwquality)
+BuildRequires:  pkgconfig(smbclient)
+BuildRequires:  pkgconfig(udisks2)
+BuildRequires:  pkgconfig(upower-glib)
 
 %description
 Fork of GNOME Control Center for Budgie 10
@@ -103,7 +104,6 @@ rm %{buildroot}%{_datadir}/polkit-1/rules.d/budgie-control-center.rules
 %{_datadir}/dbus-1/services/org.buddiesofbudgie.ControlCenter.service
 %{_datadir}/glib-2.0/schemas/org.buddiesofbudgie.ControlCenter.gschema.xml
 %{_datadir}/budgie-control-center
-%{_datadir}/icons/hicolor/*/*/*.png
 %{_datadir}/icons/hicolor/*/*/*.svg
 %{_datadir}/pixmaps/budgie-faces
 %{_datadir}/pixmaps/budgie-logo.png
