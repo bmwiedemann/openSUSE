@@ -1,0 +1,11 @@
+<package name="python-editables" project="openSUSE:Factory">
+  <title>Editable installations</title>
+  <description>A Python library for creating &quot;editable wheels&quot;
+
+This library supports the building of wheels which, when installed, will expose
+packages in a local directory on sys.path in &quot;editable mode&quot;. In other words,
+changes to the package source will be reflected in the package visible to
+Python, without needing a reinstall.</description>
+  <devel project="devel:languages:python" package="python-editables"/>
+  <url>https://github.com/pfmoore/editables</url>
+</package>
