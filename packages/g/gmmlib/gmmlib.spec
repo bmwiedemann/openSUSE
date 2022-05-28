@@ -19,7 +19,7 @@
 %global somajor 12
 %global libname libigdgmm%{somajor}
 Name:           gmmlib
-Version:        22.0.1
+Version:        22.1.2
 Release:        0
 Summary:        Intel Graphics Memory Management Library Package
 License:        MIT
