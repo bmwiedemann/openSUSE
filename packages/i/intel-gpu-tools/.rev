@@ -17,4 +17,14 @@
 </comment>
     <requestid>946551</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0e4134032050dcf9e42fcca6a79b92b4</srcmd5>
+    <version>1.26</version>
+    <time>1653768984</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable SUSE_ZNOW to fix failing tests on x86_64
+  + https://gitlab.freedesktop.org/drm/igt-gpu-tools/-/issues/102
+</comment>
+    <requestid>979538</requestid>
+  </revision>
 </revisionlist>

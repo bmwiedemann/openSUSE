@@ -76,6 +76,9 @@ Development files and library headers for %{name}
 %patch1 -p1
 
 %build
+#Tests fail on x86_64 with -z now
+#https://gitlab.freedesktop.org/drm/igt-gpu-tools/-/issues/102
+export SUSE_ZNOW=0
 %meson
 %meson_build
 
