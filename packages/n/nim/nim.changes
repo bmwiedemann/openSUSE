@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed May  4 16:57:06 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Reworked whole package.
+
+- Add patches:
+  * nim-fix-tests-certificate-key-too-small.patch
+  * nim-fix-tests-ip-protocol-missing.patch
+  * nim-nim-gdb_fix_interpreter.patch
+
+- Following nim tools now work as expected:
+  * nim_dbg is now installed.
+  * nim-gdb can be successfully launched as it finds and loads
+    nim-gdb.py correctly under gdb.
+  * nimble package manager stores package information per user.
+  * compiler package can be found and used, as it may be required
+    by other packages.
+    
+- Update to 1.6.6
+  * standard library use consistent styles for variable names so it
+    can be used in projects which force a consistent style with 
+    --styleCheck:usages option. 
+  * ARC/ORC are now considerably faster at method dispatching, 
+    bringing its performance back on the level of the refc memory 
+    management.
+  * Full changelog:
+    https://nim-lang.org/blog/2022/05/05/version-166-released.html
+
+- Previous updates and changelogs:
+  * 1.6.4: 
+    https://nim-lang.org/blog/2022/02/08/version-164-released.html
+  * 1.6.2: 
+    https://nim-lang.org/blog/2021/12/17/version-162-released.html
+  * 1.6.0: 
+    https://nim-lang.org/blog/2021/10/19/version-160-released.html
+  * 1.4.8: 
+    https://nim-lang.org/blog/2021/05/25/version-148-released.html
+  * 1.4.6: 
+    https://nim-lang.org/blog/2021/04/15/versions-146-and-1212-released.html
+  * 1.4.4: 
+    https://nim-lang.org/blog/2021/02/23/versions-144-and-1210-released.html
+  * 1.4.2: 
+    https://nim-lang.org/blog/2020/12/01/version-142-released.html
+  * 1.4.0: 
+    https://nim-lang.org/blog/2020/10/16/version-140-released.html
+
+-------------------------------------------------------------------
 Sat Feb  5 13:29:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.16

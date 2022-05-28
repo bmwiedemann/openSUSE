@@ -1,0 +1,54 @@
+From 2c73e84436a11cae1676c7da0228158ba1a885cc Mon Sep 17 00:00:00 2001
+From: kraptor <kraptor@kraptor.com>
+Date: Sat, 7 May 2022 20:46:45 +0200
+Subject: [PATCH] "ip" protocol as id 0 is long gone (#19760)
+
+IANA is using id 0 for "HOPOPT" instead of "ip"
+for some time now and those systems that still
+support the old mapping will stop doing so at
+some point in the future.
+
+Some BSDs and openSUSE are already following this
+change as per IANA list here:
+https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml
+
+As new unixes (and maybe Windows, who knows) start
+to adopt the updated IANA list, this will keep
+failing from time to time, so it's better to
+remove the "ip" check altogether.
+---
+ tests/stdlib/tgetprotobyname.nim | 4 ----
+ 1 file changed, 4 deletions(-)
+
+Index: nim-1.6.6/tests/stdlib/tgetprotobyname.nim
+===================================================================
+--- nim-1.6.6.orig/tests/stdlib/tgetprotobyname.nim
++++ nim-1.6.6/tests/stdlib/tgetprotobyname.nim
+@@ -1,14 +1,7 @@
+ import nativesockets
+ 
+-when not defined(netbsd):
+-  # Ref: https://github.com/nim-lang/Nim/issues/15452 - NetBSD doesn't define an `ip` protocol
+-  doAssert getProtoByName("ip") == 0
+-
+-doAssert getProtoByName("ipv6") == 41
+-doAssert getProtoByName("tcp") == 6
+ doAssert getProtoByName("udp") == 17
+ doAssert getProtoByName("icmp") == 1
+-doAssert getProtoByName("ipv6-icmp") == 58
+ 
+ when defined(windows):
+   doAssertRaises(OSError):
+Index: nim-1.6.6/lib/pure/nativesockets.nim
+===================================================================
+--- nim-1.6.6.orig/lib/pure/nativesockets.nim
++++ nim-1.6.6/lib/pure/nativesockets.nim
+@@ -214,7 +214,7 @@ proc getProtoByName*(name: string): int
+     let protoent = posix.getprotobyname(name.cstring)
+ 
+   if protoent == nil:
+-    raise newException(OSError, "protocol not found")
++    raise newException(OSError, "protocol not found: " & name)
+ 
+   result = protoent.p_proto.int
+ 
