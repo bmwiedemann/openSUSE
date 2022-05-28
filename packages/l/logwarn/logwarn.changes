@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 28 14:44:50 UTC 2022 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Upgrade to release 1.0.17
+  + Use fstat(2) instead of stat(2) to avoid tiny race condition
+  + Fix bug when parsing consecutive "-T" flags
+
+-------------------------------------------------------------------
 Sun Nov 21 21:34:12 UTC 2021 - Archie Cobbs <archie.cobbs@gmail.com>
 
 - Fix bug with spec file - source shouldn't be using URL 

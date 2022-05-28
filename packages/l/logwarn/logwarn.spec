@@ -1,7 +1,7 @@
 #
 # spec file for package logwarn
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2010-2011 Archie L. Cobbs. All rights reserved.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           logwarn
-Version:        1.0.16
+Version:        1.0.17
 Release:        0
 Summary:        Utility for finding interesting messages in log files
 License:        Apache-2.0
