@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 25 11:21:14 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Implement Shared Library Packaging Policy and resolve rpmlint
+  error "libstroke.x86_64: E: shlib-policy-name-error SONAME:
+  libstroke.so.0, expected package suffix: 0"
+- Move documentation out of the shlib package.
+
+-------------------------------------------------------------------
 Wed Oct  1 20:10:55 UTC 2014 - crrodriguez@opensuse.org
 
 - Do not use metapackage xorg-x11-devel 
