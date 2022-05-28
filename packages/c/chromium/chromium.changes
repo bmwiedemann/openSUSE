@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri May 27 19:40:42 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Chromium 102.0.5001.61 (boo#1199893)
+  * CVE-2022-1853: Use after free in Indexed DB
+  * CVE-2022-1854: Use after free in ANGLE
+  * CVE-2022-1855: Use after free in Messaging
+  * CVE-2022-1856: Use after free in User Education
+  * CVE-2022-1857: Insufficient policy enforcement in File System API
+  * CVE-2022-1858: Out of bounds read in DevTools
+  * CVE-2022-1859: Use after free in Performance Manager
+  * CVE-2022-1860: Use after free in UI Foundations
+  * CVE-2022-1861: Use after free in Sharing
+  * CVE-2022-1862: Inappropriate implementation in Extensions
+  * CVE-2022-1863: Use after free in Tab Groups
+  * CVE-2022-1864: Use after free in WebApp Installs
+  * CVE-2022-1865: Use after free in Bookmarks
+  * CVE-2022-1866: Use after free in Tablet Mode
+  * CVE-2022-1867: Insufficient validation of untrusted input in Data Transfer
+  * CVE-2022-1868: Inappropriate implementation in Extensions API
+  * CVE-2022-1869: Type Confusion in V8
+  * CVE-2022-1870: Use after free in App Service
+  * CVE-2022-1871: Insufficient policy enforcement in File System API
+  * CVE-2022-1872: Insufficient policy enforcement in Extensions API
+  * CVE-2022-1873: Insufficient policy enforcement in COOP
+  * CVE-2022-1874: Insufficient policy enforcement in Safe Browsing
+  * CVE-2022-1875: Inappropriate implementation in PDF
+  * CVE-2022-1876: Heap buffer overflow in DevTools
+- Added patches:
+  * chromium-102-compiler.patch
+  * chromium-102-fenced_frame_utils-include.patch
+  * chromium-102-regex_pattern-array.patch
+  * chromium-102-swiftshader-template-instantiation.patch
+  * chromium-102-symbolize-include.patch
+  * ffmpeg-new-channel-layout.patch
+- Removed patches:
+  * chromium-100-compiler.patch
+  * chromium-80-QuicStreamSendBuffer-deleted-move-constructor.patch
+  * chromium-95-quiche-include.patch
+  * chromium-fix-swiftshader-template.patch
+  * chromium-missing-include-tuple.patch
+  * chromium-webrtc-stats-missing-vector.patch
+  * chromium-101-segmentation_platform-type.patch
+
+-------------------------------------------------------------------
 Sun May 15 09:03:28 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 101.0.4951.67

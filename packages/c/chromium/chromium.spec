@@ -49,7 +49,7 @@
 # Chromium built with GCC 11 and LTO enabled crashes (boo#1194055)
 %bcond_with lto
 Name:           chromium
-Version:        101.0.4951.67
+Version:        102.0.5005.61
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -57,6 +57,7 @@ URL:            https://www.chromium.org/
 Source0:        https://commondatastorage.googleapis.com/chromium-browser-official/%{rname}-%{version}.tar.xz
 Source1:        esbuild.tar.gz
 Source3:        README.SUSE
+Source4:        ffmpeg-new-channel-layout.patch
 # Toolchain definitions
 Source30:       master_preferences
 Source104:      chromium-symbolic.svg
@@ -83,8 +84,7 @@ Patch10:        chromium-disable-parallel-gold.patch
 Patch11:        chromium-lp151-old-drm.patch
 # gentoo/fedora/arch patchset
 Patch12:        chromium-78-protobuf-RepeatedPtrField-export.patch
-Patch13:        chromium-80-QuicStreamSendBuffer-deleted-move-constructor.patch
-Patch15:        chromium-100-compiler.patch
+Patch15:        chromium-102-compiler.patch
 Patch17:        chromium-86-ImageMemoryBarrierData-init.patch
 Patch21:        chromium-gcc11.patch
 Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
@@ -95,21 +95,20 @@ Patch63:        chromium-ffmpeg-lp152.patch
 Patch65:        chromium-94-sql-no-assert.patch
 Patch68:        chromium-94-ffmpeg-roll.patch
 Patch69:        chromium-93-InkDropHost-crash.patch
-Patch72:        chromium-95-quiche-include.patch
 Patch78:        chromium-98-EnumTable-crash.patch
 Patch80:        chromium-97-ScrollView-reference.patch
 Patch84:        chromium-third_party-symbolize-missing-include.patch
-Patch85:        chromium-fix-swiftshader-template.patch
 Patch86:        chromium-97-arm-tflite-cast.patch
 Patch87:        chromium-98-gtk4-build.patch
 Patch90:        chromium-100-InMilliseconds-constexpr.patch
-Patch93:        chromium-missing-include-tuple.patch
-Patch94:        chromium-webrtc-stats-missing-vector.patch
 Patch95:        chromium-101-libxml-unbundle.patch
-Patch96:        chromium-101-segmentation_platform-type.patch
-Patch101:       chromium-86-fix-vaapi-on-intel.patch
+Patch97:        chromium-102-fenced_frame_utils-include.patch
+Patch98:        chromium-102-regex_pattern-array.patch
+Patch99:        chromium-102-swiftshader-template-instantiation.patch
+Patch100:       chromium-102-symbolize-include.patch
+Patch201:       chromium-86-fix-vaapi-on-intel.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
-Patch102:       chromium-prop-codecs.patch
+Patch202:       chromium-prop-codecs.patch
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -117,6 +116,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  elfutils
 BuildRequires:  fdupes
 BuildRequires:  flex
+BuildRequires:  git
 BuildRequires:  gn >= 0.1807
 BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
@@ -303,6 +303,7 @@ WebDriver is an open source tool for automated testing of webapps across many br
 %if 0%{?suse_version} >= 1550
 patch -R -p1 < %{PATCH68}
 %endif
+patch -R -p1 < %{SOURCE4}
 
 %build
 # esbuild
@@ -463,7 +464,6 @@ keeplibs=(
     third_party/libx11/src
     third_party/libxcb-keysyms/keysyms
     third_party/libxml/chromium
-    third_party/libXNVCtrl
     third_party/libyuv
     third_party/libzip
     third_party/lottie
@@ -482,7 +482,6 @@ keeplibs=(
     third_party/node
     third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2
     third_party/one_euro_filter
-    third_party/opencv
     third_party/openscreen
     third_party/openscreen/src/third_party/mozilla
     third_party/openscreen/src/third_party/tinycbor/src/src
@@ -527,13 +526,13 @@ keeplibs=(
     third_party/swiftshader/third_party/llvm-subzero
     third_party/swiftshader/third_party/marl
     third_party/swiftshader/third_party/SPIRV-Headers/include/spirv/unified1
+    third_party/swiftshader/third_party/SPIRV-Tools
     third_party/swiftshader/third_party/subzero
     third_party/tensorflow-text
     third_party/tflite
     third_party/tflite/src/third_party/eigen3
     third_party/tflite/src/third_party/fft2d
     third_party/ukey2
-    third_party/usrsctp
     third_party/utf
     third_party/vulkan
     third_party/wayland
