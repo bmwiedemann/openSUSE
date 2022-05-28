@@ -25,7 +25,7 @@ Summary:        Windows openSUSE installer
 License:        GPL-2.0-or-later
 Group:          Metapackages
 URL:            http://en.opensuse.org/Instlux
-Version:        15.3.6
+Version:        15.4.1
 Release:        0
 AutoReqProv:    off
 BuildRequires:  dos2unix
