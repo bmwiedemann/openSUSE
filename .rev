@@ -113,4 +113,14 @@
 - Replace source tarball with _service file pulling from github</comment>
     <requestid>932830</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>936dbae7c5c40951e93104cbe321ff06</srcmd5>
+    <version>1.0.17</version>
+    <time>1653769015</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to release 1.0.17
+  + Use fstat(2) instead of stat(2) to avoid tiny race condition
+  + Fix bug when parsing consecutive &quot;-T&quot; flags</comment>
+    <requestid>979595</requestid>
+  </revision>
 </revisionlist>
