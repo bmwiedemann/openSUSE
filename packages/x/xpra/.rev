@@ -465,4 +465,12 @@
     <comment></comment>
     <requestid>973983</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>feea817e32bf650967c49b79cfe1c418</srcmd5>
+    <version>4.4+git20220521.cb25967f8</version>
+    <time>1653769027</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>979608</requestid>
+  </revision>
 </revisionlist>

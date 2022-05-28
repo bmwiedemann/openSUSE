@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sat May 21 15:26:30 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 4.4+git20220521.cb25967f8:
+  * #3545 opensuse does patch distutils
+
+-------------------------------------------------------------------
+Fri May 20 22:03:33 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 4.4+git20220519.9be098cc7:
+  * #3371 set the server socket even if we don't forward xdg-open
+  * we need a frame ancestor to use StreamSaver.js
+  * Cython 0.29.30
+  * trays don't have a 'client-geometry' to adjust
+  * if we fail the checksum, delete the file
+  * refactor hash checking functions
+  * detect AlmaLinux and Rocky-Linux
+  * make code more readable?
+  * almalinux list of packages is the same as centos
+  * minor fixes
+  * update to use cuda 11.7 path
+  * #3537 forward port d0d2bae8ad825685a9301855924f3468ae39767d
+  * fix debug logging triggering warnings
+  * better warning message: include the key
+  * #3537 remove DesktopManager and DesktopState
+  * #3537 remove overcomplicated ownership-election
+  * #3537 clamp window models to the new screen size
+  * more understandable message
+  * simplify: size can be passed in, no need for a callback here
+  * back off more gradually
+  * the 'title' lives in the model
+  * #3390 stub evdi capture codec
+  * try harder to distinguish connection failures vs lost connections
+  * only do the context check if we actually access X11 functions
+  * log failures to cleanup contents handle
+  * use the correct short names
+  * these are the correct short names apparently
+  * try harder to show a useful hostinfo
+  * #3530 always use the free_image_wrapper method to ensure we safely access X11 using the context manager
+  * prevent name conflict between errno value and enum
+  * make it possible to call clean multiple times without causing errors
+  * #3535 only unescape what we use, URL handlers can handle it raw
+  * #3486 more thorough testing of json input
+  * #3486 indent error details
+  * #3486 can't catch an error we can't import
+  * fixup c5f7c8804a87eb725e699045800b00322a4633e1: add to the correct prefix
+  * #3486 add MSYS2 dependency
+  * #3486 add suggested dependencies
+  * #3486 fix keycloak auth module thanks to unit tests
+  * #3535 unescape URLs
+  * force rebuild
+  * some distros choke on zstd
+
+-------------------------------------------------------------------
 Thu Apr 28 16:02:03 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version 4.4+git20220428.94954180d:
