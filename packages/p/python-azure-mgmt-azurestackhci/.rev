@@ -53,4 +53,15 @@
 - Update Requires from setup.py (forwarded request 967731 from glaubitz)</comment>
     <requestid>967756</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7c9d971c309ebe3a560e724e93a4f01e</srcmd5>
+    <version>7.0.0</version>
+    <time>1653768898</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 979450 from glaubitz)</comment>
+    <requestid>979474</requestid>
+  </revision>
 </revisionlist>
