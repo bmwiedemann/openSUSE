@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat May 28 16:21:23 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.60.0
+  * Bugfixes and minor changes:
+    - SFTP: Fixed error handling if reading from child process fails
+    - Fixed transfers following recursive operations not starting
+      if the connection limit has been set to 1 in the Site Manager
+- Changes from 3.60.0-rc1
+  * New features:
+    - macOS: Remote files can now be dragged into Finder
+  * Bugfixes and minor changes:
+    - Fixed file change detection when editing files
+- Use gcc10-c++ in Tumbleweed to fix build error for Tumbleweed i586.
+
+-------------------------------------------------------------------
 Fri Apr  8 18:38:16 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.59.0

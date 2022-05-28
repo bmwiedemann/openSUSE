@@ -16,10 +16,10 @@
 #
 
 
-%define main_version 3.59.0
+%define main_version 3.60.0
 
 Name:           filezilla
-Version:        3.59.0
+Version:        3.60.0
 Release:        0
 Summary:        A GUI FTP and SFTP Client
 License:        GPL-2.0-or-later
@@ -30,7 +30,11 @@ Patch0:         %{name}-welcome_dialog.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
+%if 0%{?suse_version} > 1500
+BuildRequires:  gcc10-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -126,6 +130,10 @@ do
 done
 
 %build
+%if 0%{?suse_version} > 1500
+export CC="%{_bindir}/gcc-10"
+export CXX="%{_bindir}/g++-10"
+%endif
 autoreconf -fi
 %configure \
   --disable-static            \
