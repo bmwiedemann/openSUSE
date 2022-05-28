@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 27 12:41:34 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.4.9
+ * install-hook: make sure the hooks path exists
+ * Always prefer files passed as params
+ * Use a symlink to make the new key default
+ * Add patatt install-hook subcommand
+
+-------------------------------------------------------------------
 Thu Jun 10 04:23:09 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 0.4.6

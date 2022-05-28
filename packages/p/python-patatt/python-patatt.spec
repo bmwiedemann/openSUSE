@@ -1,7 +1,7 @@
 #
 # spec file for package python-patatt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-patatt
-Version:        0.4.6
+Version:        0.4.9
 Release:        0
 Summary:        Cryptographic patch attestation for the masses
 License:        MIT-0
@@ -33,8 +33,8 @@ BuildArch:      noarch
 BuildRequires:  %{python_module PyNaCl}
 BuildRequires:  git-core
 # /SECTION
-Requires(post):   update-alternatives
-Requires(postun): update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
