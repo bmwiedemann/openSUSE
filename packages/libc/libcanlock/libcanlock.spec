@@ -1,8 +1,8 @@
 #
 # spec file for package libcanlock
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2020-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global sover   3
 %global libname %{name}%{sover}
 Name:           libcanlock
-Version:        3.2.2
+Version:        3.3.0
 Release:        0
 Summary:        Library for creating and verifying Usenet cancel locks
 License:        MIT
@@ -100,19 +100,29 @@ parser.
 %license COPYING
 %doc ChangeLog README
 %{_libdir}/libcanlock.so.%{sover}*
+%{_libdir}/libcanlock-hp.so.%{sover}*
 
 %files devel
 %dir %{_includedir}/libcanlock-%{sover}
 %{_includedir}/libcanlock-%{sover}/canlock.h
+%{_includedir}/libcanlock-3/canlock-hp.h
 %{_libdir}/libcanlock.so
+%{_libdir}/libcanlock-hp.so
 %{_libdir}/pkgconfig/libcanlock-3.pc
+%{_libdir}/pkgconfig/libcanlock-hp-3.pc
 %exclude %{_libdir}/libcanlock.a
 %exclude %{_libdir}/libcanlock.la
+%exclude %{_libdir}/libcanlock-hp.a
+%exclude %{_libdir}/libcanlock-hp.la
 %{_mandir}/man3/cl_clear_secret.3%{?ext_man}
 %{_mandir}/man3/cl_get_key.3%{?ext_man}
 %{_mandir}/man3/cl_get_lock.3%{?ext_man}
 %{_mandir}/man3/cl_split.3%{?ext_man}
 %{_mandir}/man3/cl_verify.3%{?ext_man}
+%{_mandir}/man3/cl_hp_get_field.3%{?ext_man}
+%{_mandir}/man3/cl_hp_parse_field.3%{?ext_man}
+%{_mandir}/man3/cl_hp_unfold_field.3%{?ext_man}
+%{_mandir}/man3/cl_verify_multi.3%{?ext_man}
 
 %files -n canlock
 %{_bindir}/canlock
