@@ -1,7 +1,7 @@
 #
 # spec file for package ballerburg
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ballerburg
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Two players, two castles, and a hill in between
 License:        GPL-3.0-only
@@ -29,7 +29,8 @@ Source1:        %{name}.xpm
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(SDL_gfx)
+#BuildRequires:  pkgconfig(SDL_gfx)
+BuildRequires:  pkgconfig(sdl2)
 
 %description
 Ballerburg is a castle combat game. Two players (which can be human or
