@@ -1,8 +1,8 @@
 #
 # spec file for package flnews
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2020-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           flnews
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Graphical USENET newsreader
 License:        BSD-2-Clause

@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat May 28 08:31:40 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.0
+  Bug fixes:
+  * CORE: Authentication without password is now rejected.
+  * MAIN: Potential deadlocks in thread-safe replacement functions
+    fixed.
+  * GUI: State machine modified to avoid race condition when
+    articles are marked read while group is not completely loaded
+    yet.
+  New features and improvements:
+  * GUI: Option to automatically check for new articles added (an
+    interval in minutes can be configured with the new
+    "refresh_interval" entry in configfile).
+  * GUI: Checkbox "Tools->Debug mode" removed. Debug mode must be
+    enabled with command line option "-debug".
+  * NNTP: Protocol logfile is only created if debug mode was
+    enabled (and unlinked otherwise, if present). "Tools->Protocol
+    console" window now requires debug mode.
+  * GUI: Support for estimated article count in subscription window
+    added
+  * GUI: Support for group descriptions in subscription window
+    added
+  * NNTP: Support for LIST NEWSGROUPS command (RFC 3977) added
+  * GUI: Support for subscription proposals from server added
+    (offered to user after server was changed and group list is
+    empty)
+  * CORE: Support for subscription proposals from server added
+  * NNTP: Support for LIST SUBSCRIPTIONS command (RFC 6048) added
+  * GUI: File save operations now suggest a pathname in the file
+    selection window.
+  * GUI: File save operations now ask the user before an existing
+    file is overwritten.
+  * CORE: Function added to suggest a pathname (created from home
+    directory, program name and timestamp).
+  * CORE: Message-IDs are now generated with algorithm A3 (uses a
+    modified Base64 alphabet with "/" replaced by "-"). This
+    allows to generate RFC 5538 conformant "news"-URIs without
+    percent-encoding.
+
+-------------------------------------------------------------------
 Thu May 13 12:35:58 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.0
