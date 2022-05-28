@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat May 28 11:46:57 UTC 2022 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to version 2.1
+  * implemented support for the selectRow DBI method
+  * implemented support for the prepared statement API; 
+    the driver uses MySQL's prepared statement API internal 
+    to bind to Qore's DBI prepared statement API
+  * implemented support for binding and retrieving "number" types
+  * implemented support for the following DBI options:
+    - "optimal-numbers"
+    - "string-numbers"
+    - "numeric-numbers"
+    - "timezone"
+ 
+-------------------------------------------------------------------
 Thu Oct 28 18:58:40 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.0.2.1 for qore 1.0.10
