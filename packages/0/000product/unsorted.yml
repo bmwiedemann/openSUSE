@@ -14124,8 +14124,8 @@ unsorted:
   - libstoragemgmt-udev 
   - libstoragemgmt1 
   - libstp2_3 
-  - libstroke 
   - libstroke-devel 
+  - libstroke0 
   - libstrophe-devel 
   - libstrophe0 
   - libsubid-devel 
@@ -22315,6 +22315,7 @@ unsorted:
   - python310-azure-agrifood-nspkg 
   - python310-azure-ai-anomalydetector 
   - python310-azure-ai-formrecognizer 
+  - python310-azure-ai-language-conversations 
   - python310-azure-ai-language-nspkg 
   - python310-azure-ai-language-questionanswering 
   - python310-azure-ai-metricsadvisor 
@@ -23055,6 +23056,7 @@ unsorted:
   - python310-ecdsa 
   - python310-ed25519 
   - python310-edgegrid-python 
+  - python310-editables 
   - python310-editdistance 
   - python310-editdistance-devel 
   - python310-efilter 
@@ -23299,6 +23301,7 @@ unsorted:
   - python310-haproxyctl 
   - python310-hashids 
   - python310-hatch 
+  - python310-hatchling 
   - python310-hawkauthlib 
   - python310-hcloud 
   - python310-hdf5storage: [x86_64] 
@@ -24177,6 +24180,7 @@ unsorted:
   - python310-pykeepass 
   - python310-pykerberos 
   - python310-pykickstart 
+  - python310-pykka 
   - python310-pykwalify 
   - python310-pylama 
   - python310-pylast 
@@ -25531,6 +25535,7 @@ unsorted:
   - python38-azure-agrifood-nspkg 
   - python38-azure-ai-anomalydetector 
   - python38-azure-ai-formrecognizer 
+  - python38-azure-ai-language-conversations 
   - python38-azure-ai-language-nspkg 
   - python38-azure-ai-language-questionanswering 
   - python38-azure-ai-metricsadvisor 
@@ -26238,6 +26243,7 @@ unsorted:
   - python38-ecdsa 
   - python38-ed25519 
   - python38-edgegrid-python 
+  - python38-editables 
   - python38-editdistance 
   - python38-editdistance-devel 
   - python38-efilter 
@@ -26461,6 +26467,7 @@ unsorted:
   - python38-haproxyctl 
   - python38-hashids 
   - python38-hatch 
+  - python38-hatchling 
   - python38-hawkauthlib 
   - python38-hcloud 
   - python38-hdf5storage: [x86_64] 
@@ -27253,6 +27260,7 @@ unsorted:
   - python38-pykeepass 
   - python38-pykerberos 
   - python38-pykickstart 
+  - python38-pykka 
   - python38-pykwalify 
   - python38-pylama 
   - python38-pylast 
@@ -28568,6 +28576,7 @@ unsorted:
   - python39-azure-agrifood-nspkg 
   - python39-azure-ai-anomalydetector 
   - python39-azure-ai-formrecognizer 
+  - python39-azure-ai-language-conversations 
   - python39-azure-ai-language-nspkg 
   - python39-azure-ai-language-questionanswering 
   - python39-azure-ai-metricsadvisor 
@@ -29307,6 +29316,7 @@ unsorted:
   - python39-ecdsa 
   - python39-ed25519 
   - python39-edgegrid-python 
+  - python39-editables 
   - python39-editdistance 
   - python39-editdistance-devel 
   - python39-efilter 
@@ -29551,6 +29561,7 @@ unsorted:
   - python39-haproxyctl 
   - python39-hashids 
   - python39-hatch 
+  - python39-hatchling 
   - python39-hawkauthlib 
   - python39-hcloud 
   - python39-hdf5storage: [x86_64] 
@@ -30427,6 +30438,7 @@ unsorted:
   - python39-pykeepass 
   - python39-pykerberos 
   - python39-pykickstart 
+  - python39-pykka 
   - python39-pykwalify 
   - python39-pylama 
   - python39-pylast 
@@ -32750,6 +32762,7 @@ unsorted:
   - shadowsocks-v2ray-plugin 
   - shairport-sync 
   - shake: [x86_64] 
+  - shannpersand-comicshanns-fonts 
   - shapelib 
   - shared-color-targets 
   - sharpfont 
