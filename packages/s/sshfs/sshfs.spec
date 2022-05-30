@@ -1,7 +1,7 @@
 #
 # spec file for package sshfs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sshfs
-Version:        3.7.2
+Version:        3.7.3
 Release:        0
 Summary:        Filesystem client based on SSH file transfer protocol
 License:        GPL-2.0-or-later
@@ -26,8 +26,6 @@ URL:            https://github.com/libfuse/sshfs
 Source:         https://github.com/libfuse/sshfs/releases/download/%{name}-%{version}/%{name}-%{version}.tar.xz
 Source2:        https://github.com/libfuse/sshfs/releases/download/%{name}-%{version}/%{name}-%{version}.tar.xz.asc
 Source3:        %{name}.keyring
-# PATCH-FIX-UPSTREAM fix-typo-in-ssh_opts.patch -- based on PR 269, boo#1191886
-Patch0:         fix-typo-in-ssh_opts.patch
 BuildRequires:  fuse3-devel >= 3.1.0
 BuildRequires:  meson
 BuildRequires:  pkgconfig >= 0.9.0

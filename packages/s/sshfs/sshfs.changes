@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 26 13:53:15 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- sshfs 3.7.3:
+  * Minor bugfixes.
+  * This is the last release from the current maintainer.
+    SSHFS is now no longer maintained.
+- removed obsolete fix-typo-in-ssh_opts.patch
+
+-------------------------------------------------------------------
 Sun Oct 31 08:27:15 UTC 2021 - munix9@googlemail.com
 
 - Add fix-typo-in-ssh_opts.patch (boo#1191886)
