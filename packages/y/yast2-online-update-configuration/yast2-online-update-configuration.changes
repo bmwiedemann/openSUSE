@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 26 06:42:47 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Reduce nesting in the "category_filter" section of the AutoYaST
+  profile (bsc#1198848). The old (nested) format is still accepted.
+- 4.5.1
+
+-------------------------------------------------------------------
 Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.5.0 (bsc#1198109)
