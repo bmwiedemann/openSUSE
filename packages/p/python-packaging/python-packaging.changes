@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 29 09:22:42 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add patch to fix testsuite on big-endian targets
+  + fix-big-endian-build.patch
+
+-------------------------------------------------------------------
 Mon Apr 25 07:56:29 UTC 2022 - Hui-Zhi Zhao <hui.zhi.zhao@suse.com>
 
 - Ignore python3.6.2 since the test doesn't support it. 

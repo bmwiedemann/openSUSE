@@ -37,6 +37,9 @@ URL:            https://github.com/pypa/packaging
 Source:         https://files.pythonhosted.org/packages/source/p/packaging/packaging-%{version}.tar.gz
 # Restore compatibility with 20.4 for setuptools
 Patch1:         no-legacyversion-warning.patch
+# Fix testsuite on big-endian systems
+# see: https://github.com/pypa/packaging/pull/538
+Patch2:         fix-big-endian-build.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
