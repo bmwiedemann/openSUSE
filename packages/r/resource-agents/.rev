@@ -1567,4 +1567,12 @@
   * Filesystem: improve logic for UUID/label and add note that /dev/disk/by-{uuid,label}/ are preferred on Linux</comment>
     <requestid>978038</requestid>
   </revision>
+  <revision rev="118" vrev="2">
+    <srcmd5>344c88a510df307544804fdb37d3f2f2</srcmd5>
+    <version>4.11.0+git11.a5f40b4c</version>
+    <time>1653907355</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979438</requestid>
+  </revision>
 </revisionlist>

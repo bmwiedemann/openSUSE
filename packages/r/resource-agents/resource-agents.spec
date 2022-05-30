@@ -44,9 +44,9 @@ Patch9:         portblock.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  cluster-glue-devel
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docbook_4
-BuildRequires:  libglue-devel
 BuildRequires:  libxslt
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
