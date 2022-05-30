@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 11 09:45:01 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove old specfile constructs
+- Remove --with-pic, this is only useful with --enable-static
+- Make %install sh-compatible
+- Remove .la files, I do not think we will need it
+- Repair rpmlint error "libvisual.x86_64: E:
+  shlib-policy-name-error SONAME: libvisual-0.4.so.0, expected
+  package suffix: 0_4-0"
+
+-------------------------------------------------------------------
 Sat Feb  2 18:52:30 UTC 2013 - coolo@suse.com
 
 - update license to new format
