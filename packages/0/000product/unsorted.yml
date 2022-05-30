@@ -7974,7 +7974,6 @@ unsorted:
   - k3d-bash-completion 
   - k3d-fish-completion 
   - k3d-zsh-completion 
-  - k3s 
   - k3s-install 
   - k3s-selinux 
   - k3sup 
@@ -8958,6 +8957,7 @@ unsorted:
   - libGIMPACTUtils3_17 
   - libGLC-devel 
   - libGLC0 
+  - libGLEW2_2 
   - libGLEW2_2-32bit: [x86_64] 
   - libGLU1-32bit: [x86_64] 
   - libGLw-devel 
@@ -9435,7 +9435,7 @@ unsorted:
   - libSDL2_ttf-devel-32bit: [x86_64] 
   - libSDL_Pango1 
   - libSDL_bgi-devel 
-  - libSDL_bgi-suse7 
+  - libSDL_bgi-suse8 
   - libSDL_gfx-devel 
   - libSDL_gfx-devel-32bit: [x86_64] 
   - libSDL_gfx15-32bit: [x86_64] 
@@ -16262,6 +16262,7 @@ unsorted:
   - mfoc 
   - mfsm 
   - mftrace 
+  - mg 
   - mgdiff 
   - mgetty 
   - mgp 
@@ -33725,7 +33726,7 @@ unsorted:
   - texi2html-lang 
   - texi2roff 
   - texinfo 
-  - texlab: [x86_64] 
+  - texlab 
   - texlive 
   - texlive-12many 
   - texlive-12many-doc 
