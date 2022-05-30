@@ -72,6 +72,8 @@ done
 %install
 %make_install FISHCOMP_PATH=%{buildroot}%{_datadir}/fish/completions WITH_ALLCOMP="yes"
 install -p -D -m 0755 contrib/dmenu/passmenu %{buildroot}%{_bindir}/passmenu
+# own extensions directory for pass plugins
+mkdir -p %{buildroot}%{_prefix}/lib/password-store/extensions
 
 %check
 %if 0%{?suse_version} >= 1320
@@ -90,6 +92,8 @@ install -p -D -m 0755 contrib/dmenu/passmenu %{buildroot}%{_bindir}/passmenu
 %{_datadir}/bash-completion/completions/pass
 %{_datadir}/fish/vendor_completions.d/pass.fish
 %{_datadir}/zsh/site-functions/_pass
+%dir %{_prefix}/lib/password-store
+%dir %{_prefix}/lib/password-store/extensions
 
 %files dmenu
 %doc contrib/dmenu/README.md
