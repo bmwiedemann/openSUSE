@@ -1,7 +1,7 @@
 #
 # spec file for package mlterm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mlterm
-Version:        3.9.1
+Version:        3.9.2
 Release:        0
 Summary:        Multilingual Terminal Emulator for X
 License:        BSD-3-Clause

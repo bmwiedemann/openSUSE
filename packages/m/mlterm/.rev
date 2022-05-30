@@ -720,4 +720,41 @@
     Fix segfault in double click at RTL characters. (Enbugged at 3.6.2)</comment>
     <requestid>882137</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>650f1f7c5aeb5bafd62be32bc32c04f6</srcmd5>
+    <version>3.9.2</version>
+    <time>1653907467</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 3.9.2
+  * Support Fcitx5.
+  * Support GTK4 for mlconfig. (./configure --with-gtk=4.0)
+  * Support CSI &gt; Ps q (XTVERSION). (Response: DCS&gt;|mlterm(3.9.2)ST)
+  * Add &quot;MOSH_UDP_PORT&quot; environmental variable to specify UDP port or port-range
+    to communicate with a mosh server.
+  * Add INSERT_CLIPBOARD shortcut key.
+    (https://github.com/arakiken/mlterm/issues/19)
+  * Add --fk / format_other_keys option (equivalent to &quot;formatOtherKeys&quot; of xterm), and
+    change the default format of the escape sequence with modifyOtherKeys from
+    CSI Ps; Ps u to CSI 27; Ps; Ps ~.
+  * Add --with-iconv, --disable-daemon, --disable-split and --disable-zmodem
+    options to ./configure script.
+  * Add vte 0.66 API symbols to libvte compatible library.
+  * Show server list dialog at startup on Android.
+  * It is deprecated to use &quot;mlterm&quot; as the value of termtype / -y option.
+  * 'termcap' config file stops to accept multiple terminal types concated by '|'
+    (e.g. xterm|xterm-256) as key.
+  * Arabic ligatures (U+644-U+622, U+644-U+622, U+644-U+625, U+644-U+627) occupy
+    two logical columns instead of one even if --dyncomb option isn't specified.
+  * KBD_INPUT_NUM and MOUSE_INPUT_NUM environmental variables (for mlterm-fb)
+    accept multiple device numbers by &quot;&lt;num&gt;,&lt;num&gt;&quot;.
+  * Show &quot;Config: key=value&quot; only if shortcut keys whose format is
+    &quot;proto:(echo)key=value&quot; is pressed.
+  * Merge patches:
+    https://github.com/arakiken/mlterm/pull/5.
+    https://github.com/arakiken/mlterm/pull/9.
+    https://github.com/arakiken/mlterm/pull/12.
+    https://github.com/arakiken/mlterm/pull/22.
+  * Bug fixes:</comment>
+    <requestid>979827</requestid>
+  </revision>
 </revisionlist>

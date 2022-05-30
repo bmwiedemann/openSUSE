@@ -8,10 +8,10 @@
  etc/xim     |   13 ++++++++---
  7 files changed, 161 insertions(+), 72 deletions(-)
 
-Index: mlterm-3.8.9/etc/aafont
+Index: mlterm-3.9.2/etc/aafont
 ===================================================================
---- mlterm-3.8.9.orig/etc/aafont	2019-11-22 17:32:07.000000000 +0100
-+++ mlterm-3.8.9/etc/aafont	2019-12-19 10:22:29.451439014 +0100
+--- mlterm-3.9.2.orig/etc/aafont
++++ mlterm-3.9.2/etc/aafont
 @@ -1,42 +1,39 @@
  #DEFAULT=Kochi Gothic
  
@@ -88,10 +88,10 @@ Index: mlterm-3.8.9/etc/aafont
  
  ISCII_ASSAMESE	= AS-TTDurga 26
  ISCII_BENGALI	= BN-TTDurga 26
-Index: mlterm-3.8.9/etc/font
+Index: mlterm-3.9.2/etc/font
 ===================================================================
---- mlterm-3.8.9.orig/etc/font	2019-11-22 17:32:07.000000000 +0100
-+++ mlterm-3.8.9/etc/font	2019-12-19 10:22:29.451439014 +0100
+--- mlterm-3.9.2.orig/etc/font
++++ mlterm-3.9.2/etc/font
 @@ -1,7 +1,7 @@
  #DEFAULT = -kochi-mincho-medium-r-*--%d-*-
  #DEFAULT_ITALIC = -mona-gothic-medium-i-*--%d-*-
@@ -101,11 +101,11 @@ Index: mlterm-3.8.9/etc/font
  #ISO8859_1_BOLD = 10,a10B;14,7x14bold;
  #JISX0201_KATA = 10,r10;12,r12;14,r14;16,r16;
  #JISX0201_KATA_BOLD = 10,r10;
-Index: mlterm-3.8.9/etc/key
+Index: mlterm-3.9.2/etc/key
 ===================================================================
---- mlterm-3.8.9.orig/etc/key	2019-11-22 17:32:07.000000000 +0100
-+++ mlterm-3.8.9/etc/key	2019-12-19 10:22:29.451439014 +0100
-@@ -43,3 +43,9 @@
+--- mlterm-3.9.2.orig/etc/key
++++ mlterm-3.9.2/etc/key
+@@ -47,3 +47,9 @@
  # Shift+Button3="exesel:explorer.exe microsoft-edge:\"%s\""
  # Button4="\x1bOA\x1bOA"
  # Button5="\x1bOB\x1bOB"
@@ -115,10 +115,10 @@ Index: mlterm-3.8.9/etc/key
 +Shift+KP_Subtract="proto:fontsize=smaller"
 +KP_Begin="\e[E"
 +
-Index: mlterm-3.8.9/etc/main
+Index: mlterm-3.9.2/etc/main
 ===================================================================
---- mlterm-3.8.9.orig/etc/main	2019-11-22 17:32:07.000000000 +0100
-+++ mlterm-3.8.9/etc/main	2019-12-19 10:22:29.451439014 +0100
+--- mlterm-3.9.2.orig/etc/main
++++ mlterm-3.9.2/etc/main
 @@ -2,6 +2,32 @@
  # Copy to ~/.mlterm/main
  #
@@ -152,10 +152,10 @@ Index: mlterm-3.8.9/etc/main
  # -- Window --
  
  # display =
-Index: mlterm-3.8.9/etc/xim
+Index: mlterm-3.9.2/etc/xim
 ===================================================================
---- mlterm-3.8.9.orig/etc/xim	2019-11-22 17:32:07.000000000 +0100
-+++ mlterm-3.8.9/etc/xim	2019-12-19 10:22:29.451439014 +0100
+--- mlterm-3.9.2.orig/etc/xim
++++ mlterm-3.9.2/etc/xim
 @@ -1,6 +1,13 @@
 -Ami=ko_KR.eucKR
  kinput2=ja_JP.eucJP
@@ -173,10 +173,10 @@ Index: mlterm-3.8.9/etc/xim
 +uim=ja_JP.UTF-8
 +
  
-Index: mlterm-3.8.9/etc/vaafont
+Index: mlterm-3.9.2/etc/vaafont
 ===================================================================
---- mlterm-3.8.9.orig/etc/vaafont	2019-11-22 17:32:07.000000000 +0100
-+++ mlterm-3.8.9/etc/vaafont	2019-12-19 10:22:29.451439014 +0100
+--- mlterm-3.9.2.orig/etc/vaafont
++++ mlterm-3.9.2/etc/vaafont
 @@ -1,37 +1,36 @@
  #DEFAULT=Kochi Gothic
  

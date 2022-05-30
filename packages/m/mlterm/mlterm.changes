@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon May 30 09:18:48 UTC 2022 - pgajdos@suse.com
+
+- version update to 3.9.2
+  * Support Fcitx5.
+  * Support GTK4 for mlconfig. (./configure --with-gtk=4.0)
+  * Support CSI > Ps q (XTVERSION). (Response: DCS>|mlterm(3.9.2)ST)
+  * Add "MOSH_UDP_PORT" environmental variable to specify UDP port or port-range
+    to communicate with a mosh server.
+  * Add INSERT_CLIPBOARD shortcut key.
+    (https://github.com/arakiken/mlterm/issues/19)
+  * Add --fk / format_other_keys option (equivalent to "formatOtherKeys" of xterm), and
+    change the default format of the escape sequence with modifyOtherKeys from
+    CSI Ps; Ps u to CSI 27; Ps; Ps ~.
+  * Add --with-iconv, --disable-daemon, --disable-split and --disable-zmodem
+    options to ./configure script.
+  * Add vte 0.66 API symbols to libvte compatible library.
+  * Show server list dialog at startup on Android.
+  * It is deprecated to use "mlterm" as the value of termtype / -y option.
+  * 'termcap' config file stops to accept multiple terminal types concated by '|'
+    (e.g. xterm|xterm-256) as key.
+  * Arabic ligatures (U+644-U+622, U+644-U+622, U+644-U+625, U+644-U+627) occupy
+    two logical columns instead of one even if --dyncomb option isn't specified.
+  * KBD_INPUT_NUM and MOUSE_INPUT_NUM environmental variables (for mlterm-fb)
+    accept multiple device numbers by "<num>,<num>".
+  * Show "Config: key=value" only if shortcut keys whose format is
+    "proto:(echo)key=value" is pressed.
+  * Merge patches:
+    https://github.com/arakiken/mlterm/pull/5.
+    https://github.com/arakiken/mlterm/pull/9.
+    https://github.com/arakiken/mlterm/pull/12.
+    https://github.com/arakiken/mlterm/pull/22.
+  * Bug fixes:
+    Fix https://github.com/arakiken/mlterm/issues/15.
+    Fix https://github.com/arakiken/mlterm/issues/18.
+    Fix https://github.com/arakiken/mlterm/issues/24.
+    Fix https://github.com/arakiken/mlterm/issues/28.
+    Fix failure of restarting mlterm on Android. (Enbugged at 3.9.1)
+    Fix segfault if mlterm screen with -t option goes outside of the display.
+    Fix emoji glyphs becoming too large with cairo.
+    Fix corrupt value of "word_separator" option which mlconfig outputs.
+    Fix incompatibility with xterm in pressing Shift + a-z keys etc if modifyOtherKeys is 1.
+    (https://github.com/arakiken/mlterm/issues/21)
+    Fix segfault in opening a new roxterm tab with libvte compatible library on wayland.
+- modified patches
+  % etc.patch (refreshed)
+
+-------------------------------------------------------------------
 Tue Mar 30 09:25:40 UTC 2021 - pgajdos@suse.com
 
 - version update to 3.9.1
