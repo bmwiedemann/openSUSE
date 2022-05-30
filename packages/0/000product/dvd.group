@@ -1848,7 +1848,7 @@
     <package name="libext2fs2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libexttextcat" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libexttextcat-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libf2fs8" supportstatus="unsupported"/> <!-- reason: dvd:f2fs-tools -->
+    <package name="libf2fs9" supportstatus="unsupported"/> <!-- reason: dvd:f2fs-tools -->
     <package name="libfa1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfakekey0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libfarstream-0_2-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2731,7 +2731,7 @@
     <package name="libvirt-glib-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libvirt-libs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libvisio-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libvisual" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libvisual-0_4-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libvlc5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libvlccore9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libvmaf1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2865,6 +2865,7 @@
     <package name="links" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="linux-glibc-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="lklug-fonts" supportstatus="unsupported"/> <!-- reason: dvd:lklug-fonts -->
+    <package name="llvm14-gold" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="lockdev" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="login_defs" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="logrotate" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -4254,6 +4255,7 @@
     <package name="ruby3.1-rubygem-xdg-2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-xml-simple" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-xmlhash" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.1-rubygem-xmlrpc" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-yajl-ruby" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-yard" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-yast-rake" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->

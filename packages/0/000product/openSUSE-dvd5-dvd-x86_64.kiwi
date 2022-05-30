@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20220528" schemaversion="4.1">
+<image name="OBS__openSUSE___20220530" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220528</productvar>
+      <productvar name="VERSION">20220530</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220528,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220530,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220528/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220530/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1669,7 +1669,7 @@
       <repopackage name="libext2fs2"/>
       <repopackage name="libexttextcat"/>
       <repopackage name="libexttextcat-2_0-0"/>
-      <repopackage name="libf2fs8"/>
+      <repopackage name="libf2fs9"/>
       <repopackage name="libfa1"/>
       <repopackage name="libfakekey0"/>
       <repopackage name="libfarstream-0_2-5"/>
@@ -2895,7 +2895,7 @@
       <repopackage name="libvirt-glib-1_0-0"/>
       <repopackage name="libvirt-libs"/>
       <repopackage name="libvisio-0_1-1"/>
-      <repopackage name="libvisual"/>
+      <repopackage name="libvisual-0_4-0"/>
       <repopackage name="libvlc5"/>
       <repopackage name="libvlccore9"/>
       <repopackage name="libvmaf1"/>
@@ -3115,6 +3115,7 @@
       <repopackage name="links"/>
       <repopackage name="linux-glibc-devel"/>
       <repopackage name="lklug-fonts"/>
+      <repopackage name="llvm14-gold"/>
       <repopackage name="lockdev"/>
       <repopackage name="login_defs"/>
       <repopackage name="logrotate"/>
@@ -4603,6 +4604,7 @@
       <repopackage name="ruby3.1-rubygem-xdg-2"/>
       <repopackage name="ruby3.1-rubygem-xml-simple"/>
       <repopackage name="ruby3.1-rubygem-xmlhash"/>
+      <repopackage name="ruby3.1-rubygem-xmlrpc"/>
       <repopackage name="ruby3.1-rubygem-yajl-ruby"/>
       <repopackage name="ruby3.1-rubygem-yard"/>
       <repopackage name="ruby3.1-rubygem-yast-rake"/>

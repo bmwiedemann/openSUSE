@@ -1531,9 +1531,7 @@ unsorted:
   - budgie-visualspace-applet 
   - budgie-wallstreet 
   - budgie-weathershow-applet 
-  - budgie-window-mover-applet 
   - budgie-window-shuffler 
-  - budgie-workspace-overview-applet 
   - budgie-workspace-stopwatch-applet 
   - budgie-workspace-wallpaper-applet 
   - buffer 
@@ -2058,6 +2056,8 @@ unsorted:
   - clucene-core-devel 
   - clustduct 
   - cluster-glue 
+  - cluster-glue-devel 
+  - cluster-glue-libs 
   - clustershell 
   - clusterssh 
   - clutter-devel 
@@ -5999,8 +5999,6 @@ unsorted:
   - gnome-info-collect 
   - gnome-initial-setup 
   - gnome-initial-setup-lang 
-  - gnome-internet-radio-locator 
-  - gnome-internet-radio-locator-lang 
   - gnome-keyring-sharp 
   - gnome-keyring-sharp-devel 
   - gnome-keysign 
@@ -6253,6 +6251,9 @@ unsorted:
   - google-lekton-fonts 
   - google-merriweather-fonts 
   - google-nobile-fonts 
+  - google-or-tools 
+  - google-or-tools-devel 
+  - google-or-tools-minizinc 
   - google-osconfig-agent 
   - google-quiche-source 
   - google-roboto-mono-fonts 
@@ -10260,7 +10261,7 @@ unsorted:
   - libcfile1 
   - libcg3-1 
   - libcglm0: [x86_64] 
-  - libcgns4_1 
+  - libcgns4_3 
   - libchafa0 
   - libchamplain-devel 
   - libchardet-devel 
@@ -10808,7 +10809,7 @@ unsorted:
   - libexttextcat-devel 
   - libexttextcat-tools 
   - libf2c0 
-  - libf2fs_format7 
+  - libf2fs_format8 
   - libfa1-32bit: [x86_64] 
   - libfabric 
   - libfabric-devel 
@@ -10914,6 +10915,7 @@ unsorted:
   - libfl2-32bit: [x86_64] 
   - libflann1_9 
   - libflatbuffers2 
+  - libflatzinc9 
   - libflickcurl-devel 
   - libflickcurl0 
   - libflickcurl0-32bit: [x86_64] 
@@ -11208,10 +11210,6 @@ unsorted:
   - libglslang11-32bit: [x86_64] 
   - libgltf-0_1-1 
   - libgltf-devel 
-  - libglue-devel 
-  - libglue-devel-32bit: [x86_64] 
-  - libglue2 
-  - libglue2-32bit: [x86_64] 
   - libglusterd0 
   - libglusterfs0 
   - libglut3-32bit: [x86_64] 
@@ -12839,13 +12837,14 @@ unsorted:
   - liboqs0 
   - liboqs0-32bit: [x86_64] 
   - liborc-0_4-0-32bit: [x86_64] 
-  - liborcania2_2 
+  - liborcania2_3 
   - liborcus-devel 
   - liborcus-tools 
   - liborigin-devel 
   - liborigin-doc 
   - liborigin-tools 
   - liborigin3 
+  - libortools9 
   - libortp15 
   - libortp15-32bit: [x86_64] 
   - libosdCPU3_4_4 
@@ -12948,8 +12947,6 @@ unsorted:
   - libp11-3-32bit: [x86_64] 
   - libp11-devel 
   - libp8-platform2 
-  - libpacemaker-devel 
-  - libpacemaker3 
   - libpackagekit-glib2-18-32bit: [x86_64] 
   - libpackagekit-glib2-devel 
   - libpackagekit-glib2-devel-32bit: [x86_64] 
@@ -13321,6 +13318,9 @@ unsorted:
   - libqrcodegen1 
   - libqrcodegencpp1 
   - libqrencode4-32bit: [x86_64] 
+  - libqrtr-glib-devel 
+  - libqrtr-glib-devel-doc 
+  - libqrtr-glib0 
   - libqrupdate1 
   - libqsastime0 
   - libqscintilla2_qt5-15 
@@ -14240,6 +14240,8 @@ unsorted:
   - libtaginfo-devel 
   - libtaginfo1 
   - libtaginfo1-32bit: [x86_64] 
+  - libtaginfo_c0 
+  - libtaginfo_c0-32bit: [x86_64] 
   - libtalloc-devel 
   - libtar 
   - libtar-devel 
@@ -14633,7 +14635,7 @@ unsorted:
   - libvisio-tools 
   - libvisio2svg-devel 
   - libvisio2svg0 
-  - libvisual-32bit: [x86_64] 
+  - libvisual-0_4-0-32bit: [x86_64] 
   - libvisual-devel 
   - libvkd3d-shader1 
   - libvkd3d-shader1-32bit: [x86_64] 
@@ -15337,7 +15339,6 @@ unsorted:
   - llvm14 
   - llvm14-devel 
   - llvm14-doc 
-  - llvm14-gold 
   - llvm14-opt-viewer 
   - llvm14-polly 
   - llvm14-polly-devel 
@@ -18696,6 +18697,8 @@ unsorted:
   - pacemaker 
   - pacemaker-cli 
   - pacemaker-cts 
+  - pacemaker-devel 
+  - pacemaker-libs 
   - pacemaker-remote 
   - packETH 
   - packETH-cli 
@@ -18973,6 +18976,7 @@ unsorted:
   - pbzip2 
   - pcapdump 
   - pcapinfo 
+  - pcapplusplus-devel 
   - pcaudiolib-devel 
   - pcb 
   - pcb-doc 
@@ -19022,6 +19026,7 @@ unsorted:
   - pcp-pmda-gluster 
   - pcp-pmda-gpfs 
   - pcp-pmda-gpsd 
+  - pcp-pmda-hacluster 
   - pcp-pmda-haproxy 
   - pcp-pmda-infiniband 
   - pcp-pmda-json 
@@ -19061,6 +19066,7 @@ unsorted:
   - pcp-pmda-slurm 
   - pcp-pmda-smart 
   - pcp-pmda-snmp 
+  - pcp-pmda-sockets 
   - pcp-pmda-summary 
   - pcp-pmda-systemd 
   - pcp-pmda-trace 
@@ -21804,6 +21810,7 @@ unsorted:
   - python3-openstackdocstheme 
   - python3-openstacksdk 
   - python3-openwsman 
+  - python3-ortools 
   - python3-os-api-ref 
   - python3-os-client-config 
   - python3-os-service-types 
@@ -23826,8 +23833,8 @@ unsorted:
   - python310-numpy-devel 
   - python310-numpy-gnu-hpc 
   - python310-numpy-gnu-hpc-devel 
-  - python310-numpy_1_21_4-gnu-hpc 
-  - python310-numpy_1_21_4-gnu-hpc-devel 
+  - python310-numpy_1_21_6-gnu-hpc 
+  - python310-numpy_1_21_6-gnu-hpc-devel 
   - python310-numpydoc 
   - python310-nwdiag 
   - python310-nxapi-plumbing 
@@ -24412,6 +24419,7 @@ unsorted:
   - python310-python-gvm 
   - python310-python-jenkins 
   - python310-python-jose 
+  - python310-python-jose-cryptography 
   - python310-python-json-logger 
   - python310-python-jsonschema-objects 
   - python310-python-keycloak 
@@ -26945,8 +26953,8 @@ unsorted:
   - python38-numpy-devel 
   - python38-numpy-gnu-hpc 
   - python38-numpy-gnu-hpc-devel 
-  - python38-numpy_1_21_4-gnu-hpc 
-  - python38-numpy_1_21_4-gnu-hpc-devel 
+  - python38-numpy_1_21_6-gnu-hpc 
+  - python38-numpy_1_21_6-gnu-hpc-devel 
   - python38-numpydoc 
   - python38-nwdiag 
   - python38-nxapi-plumbing 
@@ -27482,6 +27490,7 @@ unsorted:
   - python38-python-gvm 
   - python38-python-jenkins 
   - python38-python-jose 
+  - python38-python-jose-cryptography 
   - python38-python-json-logger 
   - python38-python-jsonschema-objects 
   - python38-python-keycloak 
@@ -30084,8 +30093,8 @@ unsorted:
   - python39-numpy-devel 
   - python39-numpy-gnu-hpc 
   - python39-numpy-gnu-hpc-devel 
-  - python39-numpy_1_21_4-gnu-hpc 
-  - python39-numpy_1_21_4-gnu-hpc-devel 
+  - python39-numpy_1_21_6-gnu-hpc 
+  - python39-numpy_1_21_6-gnu-hpc-devel 
   - python39-numpydoc 
   - python39-nwdiag 
   - python39-nxapi-plumbing 
@@ -30669,6 +30678,7 @@ unsorted:
   - python39-python-gnupg 
   - python39-python-jenkins 
   - python39-python-jose 
+  - python39-python-jose-cryptography 
   - python39-python-json-logger 
   - python39-python-jsonschema-objects 
   - python39-python-keycloak 
@@ -42614,6 +42624,7 @@ unsorted:
   - typelib-1_0-Playerctl-2_0 
   - typelib-1_0-Pluma-1_0 
   - typelib-1_0-Poppler-0_18 
+  - typelib-1_0-Qrtr-1_0 
   - typelib-1_0-Rest-1_0 
   - typelib-1_0-Retro-1-0 
   - typelib-1_0-RygelCore-2_6 
@@ -43847,6 +43858,8 @@ unsorted:
   - yajl 
   - yamagi-quake2 
   - yamagi-quake2-ctf 
+  - yambar 
+  - yambar-devel 
   - yaml-cpp-devel 
   - yang-tools 
   - yank 
