@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 27 22:27:02 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
+
+- Update fixes_for_kernel_5.18.patch to save and restore FPU status during interrupt.
+  The change fixes boo#1199803.
+
+-------------------------------------------------------------------
 Sat May 21 20:17:00 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update support of building with Python
