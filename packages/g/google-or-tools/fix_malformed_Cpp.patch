@@ -1,0 +1,29 @@
+From 672303cc2f2396c4bd5fbed8430208308815bd54 Mon Sep 17 00:00:00 2001
+From: Mizux Seiha <mizux.dev@gmail.com>
+Date: Tue, 17 May 2022 13:19:08 +0200
+Subject: [PATCH] cpp: Fix ill-formed C++
+
+note: spotted by gcc 12 and clang 14
+---
+ ortools/graph/topologicalsorter.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/ortools/graph/topologicalsorter.h b/ortools/graph/topologicalsorter.h
+index 2013d1faa1..2b7c09b681 100644
+--- a/ortools/graph/topologicalsorter.h
++++ b/ortools/graph/topologicalsorter.h
+@@ -77,12 +77,12 @@ namespace util {
+ // Returns true if the graph was a DAG, and outputs the topological order in
+ // "topological_order". Returns false if the graph is cyclic.
+ // Works in O(num_nodes + arcs.size()), and is pretty fast.
+-inline ABSL_MUST_USE_RESULT bool DenseIntTopologicalSort(
++ABSL_MUST_USE_RESULT inline bool DenseIntTopologicalSort(
+     int num_nodes, const std::vector<std::pair<int, int>>& arcs,
+     std::vector<int>* topological_order);
+ 
+ // Like DenseIntTopologicalSort, but stable.
+-inline ABSL_MUST_USE_RESULT bool DenseIntStableTopologicalSort(
++ABSL_MUST_USE_RESULT inline bool DenseIntStableTopologicalSort(
+     int num_nodes, const std::vector<std::pair<int, int>>& arcs,
+     std::vector<int>* topological_order);
+ 

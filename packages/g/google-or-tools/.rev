@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e93c7ac2d7d8eea9ca10c9040af59b9</srcmd5>
+    <version>9.3</version>
+    <time>1653907424</time>
+    <user>dimstar_suse</user>
+    <comment>New package, dependency for FlatCam (hard) and minizinc (optional, runtime)</comment>
+    <requestid>979677</requestid>
+  </revision>
+</revisionlist>

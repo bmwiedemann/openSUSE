@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Sun May 29 14:28:49 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix failing build with GCC 12, add fix_malformed_Cpp.patch
+- Fix build on 32bit archs, allow tests to fail
+- Add _constraints to avoid no-space-left errors
+
+-------------------------------------------------------------------
+Sun Apr 24 17:23:49 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Initial package version (9.3)
+- Add fix_re2_string_view.patch
+- Add 0001-Build-Python-modules-as-CMake-MODULEs.patch

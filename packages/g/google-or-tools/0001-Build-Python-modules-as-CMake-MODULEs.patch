@@ -1,0 +1,119 @@
+From 4c64e4f0d1890f457f9cdc7ec0b7c78a4d626819 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Mon, 25 Apr 2022 18:00:20 +0200
+Subject: [PATCH] Build Python modules as CMake MODULEs
+
+Python since 3.8 no longer links to the interpreter library, so
+symbols like `PyExc_AttributeError` will be undefined at link time.
+
+This causes build failures when shared libraries are linked with
+`-Wl,--no-undefined`. Use `TYPE MODULE` for python extension modules,
+which allows to specify distinct flags via CMAKE_MODULE_LINKER_FLAGS
+vs CMAKE_SHARED_LINKER_FLAGS. (The same is already used by
+`pybind11_add_module(... MODULE ...)`).
+
+Fixes #3258.
+---
+ cmake/docs/swig.md                              | 2 +-
+ ortools/algorithms/python/CMakeLists.txt        | 2 +-
+ ortools/constraint_solver/python/CMakeLists.txt | 2 +-
+ ortools/graph/python/CMakeLists.txt             | 2 +-
+ ortools/init/python/CMakeLists.txt              | 2 +-
+ ortools/linear_solver/python/CMakeLists.txt     | 2 +-
+ ortools/scheduling/python/CMakeLists.txt        | 2 +-
+ 7 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/cmake/docs/swig.md b/cmake/docs/swig.md
+index f7763733a6..bf9181b950 100644
+--- a/cmake/docs/swig.md
++++ b/cmake/docs/swig.md
+@@ -163,7 +163,7 @@ So `int64_t` (i.e. `long int` in this case) will be correctly bind to Java/.Net
+ You can use `OUTPUT_DIR` to change the output directory for the `.py` file e.g.:
+ ```cmake
+ swig_add_library(pyFoo
+-  TYPE SHARED
++  TYPE MODULE
+   LANGUAGE python
+   OUTPUT_DIR ${CMAKE_BINARY_DIR}/python/${PROJECT_NAME}/Foo
+   SOURCES foo.i)
+diff --git a/ortools/algorithms/python/CMakeLists.txt b/ortools/algorithms/python/CMakeLists.txt
+index 67cb2705fc..711d4a75d4 100644
+--- a/ortools/algorithms/python/CMakeLists.txt
++++ b/ortools/algorithms/python/CMakeLists.txt
+@@ -3,7 +3,7 @@ set_property(SOURCE knapsack_solver.i PROPERTY SWIG_MODULE_NAME pywrapknapsack_s
+ set_property(SOURCE knapsack_solver.i PROPERTY COMPILE_DEFINITIONS
+   ${OR_TOOLS_COMPILE_DEFINITIONS} ABSL_MUST_USE_RESULT)
+ swig_add_library(pywrapknapsack_solver
+-  TYPE SHARED
++  TYPE MODULE
+   LANGUAGE python
+   OUTPUT_DIR  ${PYTHON_PROJECT_DIR}/algorithms
+   SOURCES knapsack_solver.i)
+diff --git a/ortools/constraint_solver/python/CMakeLists.txt b/ortools/constraint_solver/python/CMakeLists.txt
+index 529a02fbd1..feaa92a82d 100644
+--- a/ortools/constraint_solver/python/CMakeLists.txt
++++ b/ortools/constraint_solver/python/CMakeLists.txt
+@@ -4,7 +4,7 @@ set_property(SOURCE routing.i PROPERTY COMPILE_DEFINITIONS
+   ${OR_TOOLS_COMPILE_DEFINITIONS} ABSL_MUST_USE_RESULT)
+ set_property(SOURCE routing.i PROPERTY COMPILE_OPTIONS -nofastunpack)
+ swig_add_library(pywrapcp
+-  TYPE SHARED
++  TYPE MODULE
+   LANGUAGE python
+   OUTPUT_DIR ${PYTHON_PROJECT_DIR}/constraint_solver
+   SOURCES routing.i)
+diff --git a/ortools/graph/python/CMakeLists.txt b/ortools/graph/python/CMakeLists.txt
+index 9ca2580234..4fc8af59b8 100644
+--- a/ortools/graph/python/CMakeLists.txt
++++ b/ortools/graph/python/CMakeLists.txt
+@@ -3,7 +3,7 @@ set_property(SOURCE graph.i PROPERTY SWIG_MODULE_NAME pywrapgraph)
+ set_property(SOURCE graph.i PROPERTY COMPILE_DEFINITIONS
+   ${OR_TOOLS_COMPILE_DEFINITIONS} ABSL_MUST_USE_RESULT)
+ swig_add_library(pywrapgraph
+-  TYPE SHARED
++  TYPE MODULE
+   LANGUAGE python
+   OUTPUT_DIR ${PYTHON_PROJECT_DIR}/graph
+   SOURCES graph.i)
+diff --git a/ortools/init/python/CMakeLists.txt b/ortools/init/python/CMakeLists.txt
+index 1c78a548b0..5a6ade110c 100644
+--- a/ortools/init/python/CMakeLists.txt
++++ b/ortools/init/python/CMakeLists.txt
+@@ -3,7 +3,7 @@ set_property(SOURCE init.i PROPERTY SWIG_MODULE_NAME pywrapinit)
+ set_property(SOURCE init.i PROPERTY COMPILE_DEFINITIONS
+   ${OR_TOOLS_COMPILE_DEFINITIONS} ABSL_MUST_USE_RESULT)
+ swig_add_library(pywrapinit
+-  TYPE SHARED
++  TYPE MODULE
+   LANGUAGE python
+   OUTPUT_DIR  ${PYTHON_PROJECT_DIR}/init
+   SOURCES init.i)
+diff --git a/ortools/linear_solver/python/CMakeLists.txt b/ortools/linear_solver/python/CMakeLists.txt
+index 52adbf1b47..755f5501b9 100644
+--- a/ortools/linear_solver/python/CMakeLists.txt
++++ b/ortools/linear_solver/python/CMakeLists.txt
+@@ -3,7 +3,7 @@ set_property(SOURCE linear_solver.i PROPERTY SWIG_MODULE_NAME pywraplp)
+ set_property(SOURCE linear_solver.i PROPERTY COMPILE_DEFINITIONS
+   ${OR_TOOLS_COMPILE_DEFINITIONS} ABSL_MUST_USE_RESULT)
+ swig_add_library(pywraplp
+-  TYPE SHARED
++  TYPE MODULE
+   LANGUAGE python
+   OUTPUT_DIR ${PYTHON_PROJECT_DIR}/linear_solver
+   SOURCES linear_solver.i)
+diff --git a/ortools/scheduling/python/CMakeLists.txt b/ortools/scheduling/python/CMakeLists.txt
+index 347094def8..a636ff4b4f 100644
+--- a/ortools/scheduling/python/CMakeLists.txt
++++ b/ortools/scheduling/python/CMakeLists.txt
+@@ -3,7 +3,7 @@ set_property(SOURCE rcpsp.i PROPERTY SWIG_MODULE_NAME pywraprcpsp)
+ set_property(SOURCE rcpsp.i PROPERTY COMPILE_DEFINITIONS
+   ${OR_TOOLS_COMPILE_DEFINITIONS} ABSL_MUST_USE_RESULT)
+ swig_add_library(pywraprcpsp
+-  TYPE SHARED
++  TYPE MODULE
+   LANGUAGE python
+   OUTPUT_DIR ${PYTHON_PROJECT_DIR}/scheduling
+   SOURCES rcpsp.i)
+-- 
+2.35.3
+
