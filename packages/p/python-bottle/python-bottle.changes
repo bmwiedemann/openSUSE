@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 26 20:41:56 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 0.12.21: bugfix release
+  * Fix: Bad deprecation warning in cherrypy server adapter
+- update to version 0.12.20: security fix
+  * fix: Multipart file uploads with empty filename not detected
+    as binary
+  * fix auth_basic decorator (#586)
+  * Add ServerAdapter for CherryPy >= 9
+  * Gracefully handle errors during early request binding
+
+-------------------------------------------------------------------
 Fri Nov 13 17:49:59 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 0.12.19: bugfix release
