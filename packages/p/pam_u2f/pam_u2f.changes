@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May 29 19:59:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.1:
+  * Fixed an issue where native credentials could be truncated, resulting in
+    failure to authenticate or successful authentication with missing options.
+  * Stricter parsing of sshformat credentials.
+  * pamu2fcfg now allows a combination of the --username and --nouser options.
+  * Improved documentation on FIDO2 options.
+- add keyring for validation
+
+-------------------------------------------------------------------
 Mon Oct 18 20:00:36 UTC 2021 - Torsten Gruner <t.gruner@katodev.de>
 
 - Define macro _pam_moduledir if not set to fix builds for Leap and SLE

@@ -1,7 +1,7 @@
 #
 # spec file for package pam_u2f
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{!?_pam_moduledir: %define _pam_moduledir /%{_lib}/security}
 
 Name:           pam_u2f
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        U2F authentication integration into PAM
 License:        BSD-2-Clause
@@ -27,6 +28,7 @@ URL:            https://developers.yubico.com
 Source0:        https://developers.yubico.com/pam-u2f/Releases/%{name}-%{version}.tar.gz
 Source1:        https://developers.yubico.com/pam-u2f/Releases/%{name}-%{version}.tar.gz.sig
 Source2:        baselib.conf
+Source99:       pam_u2f.keyring
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcrypto)
