@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May 27 10:50:30 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- disabling Werror from build no longer needed; therefore commented
+  out this sed line for now ...
+
+-------------------------------------------------------------------
+Thu May 26 13:14:05 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 22.4.2:
+  * [Encode] AVC RC mode - Implement abs QP map (MBQP) and CQP QP
+      - Enable abs QP map mode caps
+  - Implement programming for abs QP map mode
+- removed no longer needed Werror-initialize-in-right-order.patch 
+
+-------------------------------------------------------------------
 Wed Jan 19 19:25:04 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 22.1.1:

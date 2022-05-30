@@ -228,4 +228,19 @@ versions of libva(2)</comment>
     - Fixed render copy mem leak</comment>
     <requestid>947573</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>63dd9e694eca4221397839d62f4647bf</srcmd5>
+    <version>22.4.2</version>
+    <time>1653907389</time>
+    <user>dimstar_suse</user>
+    <comment>- disabling Werror from build no longer needed; therefore commented
+  out this sed line for now ...
+
+- Update to version 22.4.2:
+  * [Encode] AVC RC mode - Implement abs QP map (MBQP) and CQP QP
+      - Enable abs QP map mode caps
+  - Implement programming for abs QP map mode
+- removed no longer needed Werror-initialize-in-right-order.patch</comment>
+    <requestid>979462</requestid>
+  </revision>
 </revisionlist>

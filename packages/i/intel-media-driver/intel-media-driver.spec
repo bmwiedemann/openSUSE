@@ -19,7 +19,7 @@
 %define so_ver	7
 
 Name:           intel-media-driver
-Version:        22.1.1
+Version:        22.4.2
 Release:        0
 Summary:        Intel Media Driver for VAAPI
 License:        BSD-3-Clause AND MIT
@@ -29,13 +29,12 @@ Source:         %{url}/archive/intel-media-%{version}.tar.gz
 Source1:        generate-supplements.sh
 Source2:        supplements.inc
 Source3:        baselibs.conf
-Patch1:         Werror-initialize-in-right-order.patch
 BuildRequires:  c++_compiler
-BuildRequires:  cmake
-BuildRequires:  gmmlib-devel >= 22.0.1
+BuildRequires:  cmake >= 3.5
+BuildRequires:  gmmlib-devel >= 22.1.2
 BuildRequires:  pkgconfig
 #Note this is NOT libva library version!
-BuildRequires:  pkgconfig(libva) >= 1.13.0
+BuildRequires:  pkgconfig(libva) >= 1.14.0
 BuildRequires:  pkgconfig(pciaccess)
 ExclusiveArch:  x86_64 i586
 %include %{S:2}
@@ -70,10 +69,9 @@ libigfxcmrt%{so_ver}.
 mv media-driver-* media-driver
 chmod -x media-driver/*.md
 pushd media-driver
-%patch1 -p1
 popd
 %define __sourcedir media-driver
-sed -i -e 's,-Werror,,' media-driver/cmrtlib/linux/CMakeLists.txt
+#sed -i -e 's,-Werror,,' media-driver/cmrtlib/linux/CMakeLists.txt
 
 %ifarch i586
 sed -i -e 's/-m${ARCH}/-m32/' -e 's/${ARCH}/"32"/' media-driver/media_driver/cmake/linux/media_compile_flags_linux.cmake
