@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 26 14:55:59 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Support managing system in a chroot (bsc#1199840)
+- 4.5.4
+
+-------------------------------------------------------------------
 Fri May  6 07:14:08 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Import the SSL certificate from the <reg_server_cert> AutoYaST
