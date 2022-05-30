@@ -19,28 +19,28 @@
 # only works with the python version which the package 'ansible' uses
 %define pythons python3
 Name:           python-ansible-compat
-Version:        2.0.2
+Version:        2.0.4
 Release:        0
 Summary:        Compatibility shim for Ansible 2.9 and newer
 License:        MIT
 URL:            https://github.com/ansible-community/ansible-compat
 Source:         https://files.pythonhosted.org/packages/source/a/ansible-compat/ansible-compat-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools_scm_git_archive}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm_git_archive}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  ansible
-BuildRequires:  %{python_module flaky}
-BuildRequires:  %{python_module subprocess-tee}
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module flaky}
+BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module subprocess-tee}
+BuildRequires:  ansible
 # /SECTION
 BuildRequires:  fdupes
-BuildRequires: python-rpm-generators
+BuildRequires:  python-rpm-generators
 %{?python_enable_dependency_generator}
 BuildArch:      noarch
 %python_subpackages
