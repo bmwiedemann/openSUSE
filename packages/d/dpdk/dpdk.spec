@@ -59,6 +59,7 @@ Source1:        preamble
 # PATCH-FIX-OPENSUSE PATCH-FEATURE-UPSTREAM
 Patch0:         0001-build-try-to-get-kernel-version-from-kernel-source.patch
 Patch1:         0002-SLE15-SP3-compatibility-patch-for-kni.patch
+Patch2:         kni-fix-build-with-Linux-5.18.patch
 BuildRequires:  binutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes

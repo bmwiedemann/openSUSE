@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 25 10:13:44 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- add kni-fix-build-with-Linux-5.18.patch to fix build with kernel
+  5.18
+
+-------------------------------------------------------------------
 Wed Apr 27 16:08:56 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 21.11.1
