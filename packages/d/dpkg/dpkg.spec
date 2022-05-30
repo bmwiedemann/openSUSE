@@ -1,7 +1,7 @@
 #
 # spec file for package dpkg
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dpkg
-Version:        1.21.1
+Version:        1.21.8
 Release:        0
 Summary:        Debian package management system
 License:        GPL-2.0-or-later

@@ -10,10 +10,10 @@ Subject: [PATCH 3/4] update-alternatives-suse
  utils/update-alternatives.c   |  2 +-
  4 files changed, 12 insertions(+), 12 deletions(-)
 
-diff --git a/man/update-alternatives.pod b/man/update-alternatives.pod
-index 7f3e0e66f..54e91f26b 100644
---- a/man/update-alternatives.pod
-+++ b/man/update-alternatives.pod
+Index: dpkg-1.21.8/man/update-alternatives.pod
+===================================================================
+--- dpkg-1.21.8.orig/man/update-alternatives.pod
++++ dpkg-1.21.8/man/update-alternatives.pod
 @@ -37,7 +37,7 @@ B<update-alternatives>
  
  B<update-alternatives>
@@ -23,7 +23,7 @@ index 7f3e0e66f..54e91f26b 100644
  
  It is possible for several programs fulfilling the same or similar
  functions to be installed on a single system at the same time.
-@@ -47,7 +47,7 @@ different editor, if desired, but makes it difficult for a program
+@@ -47,7 +47,7 @@ different editor, if desired, but makes
  to make a good choice for an editor to invoke if the
  user has not specified a particular preference.
  
@@ -43,11 +43,11 @@ index 7f3e0e66f..54e91f26b 100644
  (configure) to install the alternative and from
  B<prerm> and B<postrm>
  (remove) to remove the alternative.
-diff --git a/utils/Makefile.am b/utils/Makefile.am
-index a86cba32b..d19007073 100644
---- a/utils/Makefile.am
-+++ b/utils/Makefile.am
-@@ -45,8 +45,8 @@ update_alternatives_SOURCES = \
+Index: dpkg-1.21.8/utils/Makefile.am
+===================================================================
+--- dpkg-1.21.8.orig/utils/Makefile.am
++++ dpkg-1.21.8/utils/Makefile.am
+@@ -47,8 +47,8 @@ update_alternatives_SOURCES = \
  
  update_alternatives_CPPFLAGS = \
  	-DALT_TMP_EXT=\".dpkg-tmp\" \
@@ -55,10 +55,10 @@ index a86cba32b..d19007073 100644
 -	-DINSTDIR_ENVVAR=\"DPKG_ROOT\" \
 +	-DADMINDIR_ENVVAR=\"RPM_ADMINDIR\" \
 +	-DINSTDIR_ENVVAR=\"RPM_ROOT\" \
- 	$(AM_CPPFLAGS)
+ 	$(AM_CPPFLAGS) \
+ 	# EOL
  
- update_alternatives_LDADD = \
-@@ -81,9 +81,9 @@ uninstall-local:
+@@ -85,9 +85,9 @@ uninstall-local:
  	rm -f $(DESTDIR)$(sysconfdir)/alternatives/README
  
  TEST_ENV_VARS = \
@@ -71,11 +71,11 @@ index a86cba32b..d19007073 100644
  	UA_ADMINDIR_DEFAULT=$(admindir) \
  	# EOL
  
-diff --git a/utils/t/update_alternatives.t b/utils/t/update_alternatives.t
-index a4885dda9..a0959e5d9 100644
---- a/utils/t/update_alternatives.t
-+++ b/utils/t/update_alternatives.t
-@@ -32,8 +32,8 @@ my $bindir = File::Spec->rel2abs("$tmpdir/bin");
+Index: dpkg-1.21.8/utils/t/update_alternatives.t
+===================================================================
+--- dpkg-1.21.8.orig/utils/t/update_alternatives.t
++++ dpkg-1.21.8/utils/t/update_alternatives.t
+@@ -32,8 +32,8 @@ my $bindir = File::Spec->rel2abs("$tmpdi
  my @ua = ("$ENV{builddir}/update-alternatives", '--log', '/dev/null',
            '--quiet', '--admindir', "$admindir", '--altdir', "$altdir");
  
@@ -86,11 +86,11 @@ index a4885dda9..a0959e5d9 100644
  
  delete $ENV{$rootdir_envvar};
  delete $ENV{$admindir_envvar};
-diff --git a/utils/update-alternatives.c b/utils/update-alternatives.c
-index 716035876..eee59d590 100644
---- a/utils/update-alternatives.c
-+++ b/utils/update-alternatives.c
-@@ -115,7 +115,7 @@ static int opt_force = 0;
+Index: dpkg-1.21.8/utils/update-alternatives.c
+===================================================================
+--- dpkg-1.21.8.orig/utils/update-alternatives.c
++++ dpkg-1.21.8/utils/update-alternatives.c
+@@ -116,7 +116,7 @@ static int opt_force = 0;
  static void
  version(void)
  {
@@ -99,6 +99,3 @@ index 716035876..eee59d590 100644
  	printf("\n");
  
  	printf(_(
--- 
-2.33.1
-
