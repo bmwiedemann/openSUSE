@@ -1,10 +1,26 @@
 -------------------------------------------------------------------
+Sun May 29 08:11:02 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v15.4.0
+  * Changes of version 15.4.0
+    = Add characters:
+      ~ LATIN SMALL LETTER SIDEWAYS O (U+1D11);
+      ~ LATIN SMALL LETTER SIDEWAYS OPEN O (U+1D12);
+      ~ LATIN SMALL LETTER SIDEWAYS O WITH STROKE (U+1D13);
+      ~ LATIN SMALL LETTER SIDEWAYS U (U+1D1D);
+      ~ LATIN SMALL LETTER SIDEWAYS DIAERESIZED U (U+1D1E);
+      ~ LATIN SMALL LETTER SIDEWAYS TURNED M (U+1D1F);
+      ~ MODIFIER LETTER SMALL SIDEWAYS U (U+1D59);
+    = Make user build plans' variants inheritable (#1345).
+    = Add top-cut variants of 1 (#1354).
+
+-------------------------------------------------------------------
 Sat May 14 21:18:48 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v15.3.1
   * Changes of version 15.3.1
     = Fix display of Kleisli arrows under Kitty (#1350).
-	= Ascender height and Cap height is decoupled. Now they could
+    = Ascender height and Cap height is decoupled. Now they could
       be configured separately (#1334).
 
 -------------------------------------------------------------------

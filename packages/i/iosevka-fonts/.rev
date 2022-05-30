@@ -516,4 +516,328 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>978464</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>e4d7d8d7a25588f424d8b05f28a2ab95</srcmd5>
+    <version>15.4.0</version>
+    <time>1653907403</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v15.4.0
+  * Changes of version 15.4.0
+    = Add characters:
+      ~ LATIN SMALL LETTER SIDEWAYS O (U+1D11);
+      ~ LATIN SMALL LETTER SIDEWAYS OPEN O (U+1D12);
+      ~ LATIN SMALL LETTER SIDEWAYS O WITH STROKE (U+1D13);
+      ~ LATIN SMALL LETTER SIDEWAYS U (U+1D1D);
+      ~ LATIN SMALL LETTER SIDEWAYS DIAERESIZED U (U+1D1E);
+      ~ LATIN SMALL LETTER SIDEWAYS TURNED M (U+1D1F);
+      ~ MODIFIER LETTER SMALL SIDEWAYS U (U+1D59);
+    = Make user build plans' variants inheritable (#1345).
+    = Add top-cut variants of 1 (#1354).
+- Update to v15.3.1
+  * Changes of version 15.3.1
+    = Fix display of Kleisli arrows under Kitty (#1350).
+    = Ascender height and Cap height is decoupled. Now they could
+      be configured separately (#1334).
+- Update to v15.3.0
+  * Changes of version 15.3.0
+    = Add characters (#1337):
+      ~ SUMMATION TOP (U+23B2);
+      ~ SUMMATION BOTTOM (U+23B3);
+      ~ BLACK RIGHT-POINTING DOUBLE TRIANGLE (U+23E9);
+      ~ BLACK LEFT-POINTING DOUBLE TRIANGLE (U+23EA);
+      ~ BLACK UP-POINTING DOUBLE TRIANGLE (U+23EB);
+      ~ BLACK DOWN-POINTING DOUBLE TRIANGLE (U+23EC);
+      ~ BLACK RIGHT-POINTING DOUBLE TRIANGLE WITH VERTICAL BAR
+        (U+23ED);
+      ~ BLACK LEFT-POINTING DOUBLE TRIANGLE WITH VERTICAL BAR
+        (U+23EE);
+      ~ BLACK RIGHT-POINTING TRIANGLE WITH DOUBLE VERTICAL BAR
+        (U+23EF);
+    = Enlarged U+02BE and U+02BF to match the dimensions of other
+      quotes (#1346).
+- Update to v15.2.0
+  * Changes of version 15.2.0
+    = Add characters:
+      ~ FLOWER PUNCTUATION MARK (U+2055);
+      ~ VERTICAL FOUR DOTS (U+205E);
+      ~ BLACK LEFTWARDS BULLET (U+204C);
+      ~ BLACK RIGHTWARDS BULLET (U+204D);
+      ~ THREE DOT PUNCTUATION (U+2056);
+      ~ FOUR DOT PUNCTUATION (U+2058);
+      ~ FIVE DOT PUNCTUATION (U+2059);
+      ~ TWO DOT PUNCTUATION (U+205A);
+      ~ FOUR DOT MARK (U+205B);
+    = Shape adjustment of t (#1336).
+    = Pilcrow signs are adjusted to have fills.
+- Update to v15.1.0
+  * Changes of version 15.1.0
+    = Add Characters
+      ~ MODIFIER LETTER YIN DEPARTING TONE MARK (U+02EA);
+      ~ MODIFIER LETTER YANG DEPARTING TONE MARK (U+02EB);
+      ~ MODIFIER LETTER DOUBLE APOSTROPHE (U+02EE);
+      ~ MODIFIER LETTER MIDDLE GRAVE ACCENT (U+02F4);
+      ~ MODIFIER LETTER MIDDLE DOUBLE GRAVE ACCENT (U+02F5);
+      ~ MODIFIER LETTER MIDDLE DOUBLE ACUTE ACCENT (U+02F6);
+      ~ MODIFIER LETTER RAISED COLON (U+02F8);
+      ~ MODIFIER LETTER BEGIN HIGH TONE (U+02F9);
+      ~ MODIFIER LETTER END HIGH TONE (U+02FA);
+      ~ MODIFIER LETTER BEGIN LOW TONE (U+02FB);
+      ~ MODIFIER LETTER END LOW TONE (U+02FC);
+      ~ MODIFIER LETTER SHELF (U+02FD);
+      ~ MODIFIER LETTER OPEN SHELF (U+02FE);
+      ~ MODIFIER LETTER LOW LEFT ARROW (U+02FF);
+      ~ COMBINING LEFT ARROW BELOW (U+20EE);
+      ~ COMBINING RIGHT ARROW BELOW (U+20EF);
+- Update to v15.0.3
+  * Changes of version 15.0.3
+    = Add Asterism (U+2042) character (#1324).
+- Update to v15.0.2
+  * Changes of version 15.0.2
+    = Fix placement of COMBINING DOT ABOVE RIGHT (U+0358) (#1318).
+    = Fix fourfold width of @ under quasi-proportionals (#1319).
+- Update to v15.0.1
+  * Changes of version 15.0.1
+    = Fix cv99/VXDD applications on U+0149, U+0310, U+034B, U+0352,
+      U+037C, U+037D, U+03FE, U+03FF, U+1E0B, and U+1EF5 (#1317).
+- Update to v15.0.0
+  * Changes of version 15.0.0
+    = [Breaking] Metric override name change: xheight → xHeight.
+    = Add variant selector for dot and comma diacritics (#1309).
+    = Fix enclosed glyphs' placement when having glyphs
+      with different Y-shifting (#1310).
+    = Add metric override for archDepth and smallArchDepth (#1313).
+    = Fix feature application on OBJECT REPLACEMENT CHARACTER
+      (U+FFFC) and REPLACEMENT CHARACTER (U+FFFD) (#1314).
+- Update to v14.0.1
+  * Changes of version 14.0.1
+    = Balance weight of $ under heavy weights (#1302).
+    = Balance serif weight of 7's serifed-straight variants (#1303).
+    = Add moon phase symbols (U+1F311 ... U+1F319, #1308).
+- Update to v14.0.0
+  * Changes of version 14.0.0
+    = [Breaking] Reordered variants for @, 0, 1.
+    = [Breaking] Renamed variants selector for following characters:
+      ¶ (paragraph-sign → pilcrow).
+    = Fix cv99's application to U+0149 LATIN SMALL LETTER N
+      PRECEDED BY APOSTROPHE (#1297).
+    = Fix cv45's application to U+1DF0 COMBINING LATIN SMALL
+      LETTER U WITH LIGHT CENTRALIZATION STROKE (#1298).
+- Update to v13.3.1
+  * Changes of version 13.3.1
+    = Fix geometry of reversed comma under heavy italic (#1292).
+    = Fix alignment of motion serif in v when squished (#1293).
+    = Fix geometry of &quot;Ӊ&quot;, &quot;ӊ&quot;, &quot;Ӎ&quot; , and &quot;ӎ&quot; (#1295).
+- Update to v11.3.0
+  * Changes of version 11.3.0
+    = Add Characters
+      ~ REVERSED SEMICOLON (U+204F);
+      ~ REVERSED QUESTION MARK (U+2E2E);
+      ~ REVERSED COMMA (U+2E41);
+      ~ DOUBLE LOW-REVERSED-9 QUOTATION MARK (U+2E42);
+    = Add fourfold-solid-inner variants for @ (#1285).
+    = Change the layout of control picture subglyphs from horizontal
+      to diagonal (#1286).
+- Update to v11.2.7
+  * Changes of version 11.2.7
+    = Add characters:
+      ~ LIGHT VERTICAL BAR (U+2758) ... HEAVY VERTICAL BAR (U+275A).
+- Update to v11.2.6
+  * Changes of version 11.2.6
+    = Fix variant selection of CIRCLED ZERO WITH SLASH (U+1F10D)
+      (#1274).
+- Update to v11.2.5
+  * Changes of version 11.2.5
+    = Add split-slash variants of 0 (#1270).
+    = Add ligation set for Dafny (#1271).
+- Update to v11.2.4
+  * Changes of version 11.2.4
+    = Add spacing grade quasi-proportional-extension-only.
+    = Fix broken geometry of a.double-storey-tailed under
+      heavy weights.
+    = Fix broken geometry of Cyrillic Iotified Es under
+      heavy weights.
+- Update to v11.2.3
+  * Changes of version 11.2.3
+    = Make webfont formats customizable (#1266).
+    = Fix localization of Macedonian GJE (#1267).
+- Update to v11.2.2
+  * Changes of version 11.2.2
+    = Add open-swash Q (#1264).
+    = Add ability to customize the width of S-related necks
+      for different kind of letters (#1265).
+    = Add Characters
+      ~ NORTH WEST ARROW TO CORNER (U+21F1).
+      ~ SOUTH EAST ARROW TO CORNER (U+21F2).
+      ~ THREE RIGHTWARDS ARROWS (U+21F6).
+- Update to v11.2.1
+  * Changes of version 11.2.1
+    = Add top-left and bottom-right serifed variants for K
+      and Cyrillic Ka (#1257).
+    = Add characters:
+      ~ LEFTWARDS ARROW WITH LOOP (U+21AB).
+      ~ RIGHTWARDS ARROW WITH LOOP (U+21AC).
+      ~ DOWNWARDS ZIGZAG ARROW (U+21AF).
+      ~ LEFTWARDS TRIPLE ARROW (U+21DA).
+      ~ RIGHTWARDS TRIPLE ARROW (U+21DB).
+      ~ LEFTWARDS SQUIGGLE ARROW (U+21DC).
+      ~ RIGHTWARDS SQUIGGLE ARROW (U+21DD).
+      ~ RIGHTWARDS ARROW WITH TIP DOWNWARDS (U+2B0E) ...
+        LEFTWARDS ARROW WITH TIP UPWARDS (U+2B11).
+- Update to v11.2.0
+  * Changes of version 11.2.0
+    = Slightly reduce X-height by 0.01em for better geometric
+      balancing.
+    = Make low-crossbar variants of f more distinctive
+      with crossbar-at-x-height (#1254).
+    = Add Fira Code V6's progress bar symbols.
+    = Add BLACK FOUR POINTED STAR (U+2726)
+      and WHITE FOUR POINTED STAR (U+2727).
+    = Add MATHEMATICAL LEFT FLATTENED PARENTHESIS (U+27EE)
+      and MATHEMATICAL RIGHT FLATTENED PARENTHESIS (U+27EF).
+    = Add Hookless variants for r (#1255).
+- Update to v11.1.1
+  * Changes of version 11.1.1
+    = Fix broken geometry of SECTION SIGN (U+00A7)
+      under extra-wide widths (#1252).
+    = Fix broken geometry of K under extra-wide widths (#1253).
+- Update to v11.1.0
+  * Changes of version 11.1.0
+    = Add characters
+      ~ MODIFIER LETTER CHINESE TONE YIN PING .. MODIFIER LETTER
+        CHINESE TONE YANG RU (U+A700 .. U+A707) (#1249).
+      ~ LONG LEFTWARDS ARROW FROM BAR (U+27FB), LONG RIGHTWARDS
+        ARROW FROM BAR (U+27FC) (#1251).
+      ~ PITCHFORK (U+22D4).
+      ~ ELEMENT OF WITH DOT ABOVE (U+22F5).
+      ~  ELEMENT OF WITH TWO HORIZONTAL STROKES (U+22F9).
+    = Fix serif of Cyrillic capital Ya under italics (#1250).
+  * Changes of version 11.0.1
+    = Fix custom builds with compatibility ligatures (#1248).
+- Update to v11.0.0
+  * Changes of version 11.0.0
+    = [Breaking] Fixed width and removal logic for
+      Long Leftwards Arrow (U+27F5) and
+      Long Rightwards Arrow (U+27F6) (#1245).
+    = [Breaking] Fix the metrics of wide characters, making
+      Extended families compatible with FontConfig’s
+      “dual” width (#1247).
+    = Change the shape of Eng (U+014A) into &quot;N with Hook&quot;,
+      to follow Unicode code chart (#1239).
+    = Increase shoulder arc thickness of lowercase r
+      for better thickness contrast (#1243).
+    = Fix metrics of Swung Dash (U+2053) (#1246).
+- Update to v10.3.4
+  * Changes of version 10.3.4
+    = Fix weight of D under heavy weights (#1237).
+    = Fix width under Aile and Etoile:
+      ~ Cyrillic Letter EnGhe (U+04A4, U+04A5);
+      ~ Cyrillic Letter Pe With Middle Hook (U+04A6, U+04A7);
+      ~ Cyrillic Letter Abkhazian Ha (U+04A8, U+04A9).
+    = Improve shape of double emotion punctuations
+      (U+203C, U+2047, U+2048, U+2049) under wide width.
+    = Add Characters
+      ~ Element Of with Long Horizontal Stroke (U+22F2);
+      ~ Element Of with Vertical Bar at end of
+        Horizontal Stroke (U+22F3);
+      ~ Small Element Of with Vertical Bar at end of
+        Horizontal Stroke (U+22F4);
+      ~ Contains with Long Horizontal Stroke (U+22FA);
+      ~ Contains with Vertical Bar at end of
+        Horizontal Stroke (U+22FB);
+      ~ Small Contains with Vertical Bar at end of
+        Horizontal Stroke (U+22FC);
+- Update to v10.3.3
+  * Changes of version 10.3.3
+    = Add support for Roman numerals (#623).
+- Update to v10.3.2
+  * Changes of version 10.3.2
+    = Add support for OpenType frac feature (#1230).
+    = Fix placement of U+031C and U+0357.
+- Update to v10.3.1
+  * Changes of version 10.3.1
+    = Add taller variants of Number Sign (#1222).
+- Update to v10.3.0
+  * Changes of version 10.3.0
+    = Add Greek letters and symbols:
+      ~ Heta (U+0370, U+0371);
+      ~ Sampi (U+0372, U+0373, U+03E0, U+03E1);
+      ~ Greek Lower Number Sign (U+0375);
+      ~ Pamphylian Digamma (U+0376, U+0377);
+      ~ Capital Kai Symbol (U+03CF);
+      ~ Qoppa (U+03D8, U+03D9, U+03DE, U+03DF);
+      ~ Stigma (U+03DA, U+03DB);
+      ~ San (U+03FA, U+03FB);
+      ~ Rho with Bar Symbol (U+03FC).
+- Update to v10.2.0
+  * Changes of version 10.2.0
+    = Refine the size and placements of diacritics, to avoid
+      stacking marks to collide (#1204).
+    = Refine the alignment of Number Sign (#) to align with
+      numbers (#1210).
+    = Add tailless variants for Greek small Mu (μ) (#1211).
+    = Remove unnecessary serifs of Greek Capital Ksi (Ξ) (#1212).
+    = Add quick reuse of default weight/width/slope grades
+      in customized build (#1215).
+    = Add taller variants for At sign's Threefold and Fourfold
+      form (#1216).
+- Update to v10.1.1
+  * Changes of version 10.1.1
+    = Refines the design of APL glyphs, and also introduces
+      a configurable &quot;Favor APL&quot; configuration for APL-oriented
+      custom builds (#1200).
+  * Changes of version 10.1.0
+    = Improve ligation set for logical operators; Add bar kerning
+      to match JetBrains Mono (#1192).
+    = Add Tironian Sign Et (U+2E52, U+204A) (#1198).
+- Update to v10.0.0
+- Fix merge conflict
+- Update to version 9.0.1
+- Additionally package 18 stylistic sets
+- Package “Super TTC” because it is the recommended way to install fonts for
+  Desktop usage
+- Add separate %reconfigure_fonts_scriptlets for each subpackage
+- Spec file cleanup
+- Update to 7.3.2
+- Update to 7.3.0
+- Update to 7.2.8
+- Update to 7.1.1
+- Update to 7.0.4
+- Update to 7.0.2
+- Properly add files
+- Update to 6.0.1
+- Update to 5.2.1
+- Update to 5.1.1
+- Update to 5.1.0
+- Update to 5.0.9
+- Update to 5.0.5
+- Update to 5.0.1
+- Update to 5.0.0-rc.1
+- Trim marketing and redundancies from
+  descriptions. Updates to summaries.
+- Add the source files
+- Properly fix the package
+- Set the _service file mode to manual
+- Work around the version string not being able to contain dashes
+- Update to v5.0.0-beta.2
+- Update to v4.5.0
+- Update to v4.4.0
+- Update to v4.3.0
+- Add Aile, Etoile, and Sparkle font families
+- Separate families into subpackages
+- Update to v4.2.0
+- Use TTC instead of TTF
+- Update to v4.0.3
+- Update to v4.0.2
+- Update to v4.0.0
+- Remove/replace obsolete macros
+- Update to v4.0.0-beta.3
+- Update to v4.0.0-beta.2
+- Update to v3.0.0-rc.5
+- Update to v3.0.0-rc.4
+- Update to v3.0.0-rc.3
+- Update to v3.0.0-rc.1
+- Update to v1.12.5
+</comment>
+    <requestid>979644</requestid>
+  </revision>
 </revisionlist>
