@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue May 17 08:58:52 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.3.0:
+  * Add a context structure to handle cleanly cgio/hdf5 state
+  * When opening a CGNS file with MLL the whole file is parsed.
+  * Fix an uninitialized local array by copying m_dimvals to dimvals.
+  * Set the default file_type in cg_open only when in write mode
+  * Multiplication result converted to larger type fixes
+- Update to version 4.2.0:
+  * New C and Fortran APIs that allows for reading/writing datatypes 
+    that are different from cgsize_t
+  * Added a diskless option for creating a CGNS file in memory and
+    then to optionally persist the memory to disk.
+  * Mapping of X4/X8 was lost when moving from ADF to HDF5.
+    This fix reintroduces it as an experimental feature.
+  * Tuned the parallel library algorithms to improve metadata type operations
+  * Experimental support for conversion of FamilySpecified BC for
+    AFLR3 file format, PR#247
+  * Added check on node names according to SIDS
+  * added warning if ZoneBC_t is missing while zone surfaces are
+    present in a 3D mesh.
+
+-------------------------------------------------------------------
 Thu Nov 12 02:11:00 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 4.1.2:

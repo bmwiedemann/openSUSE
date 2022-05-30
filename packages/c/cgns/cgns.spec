@@ -1,7 +1,7 @@
 #
 # spec file for package cgns
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define libname libcgns4_1
+%define libname libcgns4_3
 Name:           cgns
-Version:        4.1.2
+Version:        4.3.0
 Release:        0
 Summary:        CFD General Notation System
 License:        Zlib
@@ -111,6 +111,7 @@ mv %{buildroot}%{_prefix}/lib %{buildroot}%{_libdir}
 %{_includedir}/cgns.mod
 %{_includedir}/cgnsBuild.defs
 %{_libdir}/libcgns.so
+%{_libdir}/cmake/cgns
 
 %files devel-static
 %{_libdir}/libcgns.a
