@@ -1,7 +1,7 @@
 #
 # spec file for package azote
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
 Name:           azote
-Version:        1.9.2
+Version:        1.9.4
 Release:        0
 Summary:        Wallpaper manager for Sway, i3 and some other WMs
 License:        GPL-3.0-only
@@ -60,7 +60,7 @@ install -D -m 0644 dist/azote.desktop %{buildroot}%{_datadir}/applications/azote
 
 %files
 %license LICENSE
-%doc CHANGELOG.md README.md
+%doc README.md
 %{_bindir}/azote
 %{_datadir}/applications/azote.desktop
 %{_datadir}/azote/
