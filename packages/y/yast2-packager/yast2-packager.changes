@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 26 12:40:24 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Support managing system in a chroot (bsc#1199840)
+- 4.5.5
+
+-------------------------------------------------------------------
 Tue May 17 20:49:27 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Fix package counters in the installation slideshow
