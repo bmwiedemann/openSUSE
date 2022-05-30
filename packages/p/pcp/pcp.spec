@@ -66,7 +66,7 @@ Summary:        System-level performance monitoring and performance management
 License:        %{license_gplv2plus} AND %{license_lgplv2plus} AND %{license_cc_by}
 Group:          %{pcp_gr}
 Name:           pcp
-Version:        5.2.2
+Version:        5.2.5
 Release:        0
 %global buildversion 1
 
@@ -86,10 +86,6 @@ Patch3:         0003-Remove-runlevel-4-from-init-scripts.patch
 Patch5:         0005-SUSE-fy-pmsnap-control-path.patch
 # PATCH-FIX-OPENSUSE, kkaempf@suse.de
 Patch6:         0006-pmsnap-control-var-www-srv-www.patch
-# PATCH-FIX-UPSTREAM, ddiss@suse.de
-Patch7:         0007-pmns-Make-drop-duplicate-if-else.patch
-# PATCH-FIX-UPSTREAM, ddiss@suse.de
-Patch8:         0008-fixes-for-GH-1140-PCP_TMPFILE_DIR-used-in-build.patch
 # PATCH-FIX-UPSTREAM, ddiss@suse.de
 Patch9:         0009-remove-rundir-install.patch
 
@@ -739,9 +735,9 @@ The PCP::LogImport module contains the Perl language bindings for
 importing data in various 3rd party formats into PCP archives so
 they can be replayed with standard PCP monitoring tools.
 
- #
 
 
+#
 # perl-PCP-LogSummary
 #
 %package -n perl-PCP-LogSummary
@@ -2252,6 +2248,41 @@ smartmontools package.
 
 
 #
+# pcp-pmda-sockets
+#
+%package pmda-sockets
+License:        %{license_gplv2plus}
+Summary:        Performance Co-Pilot (PCP) per-socket metrics
+URL:            https://pcp.io
+Requires:       %{lib_pkg} = %{version}-%{release}
+Requires:       iproute
+Requires:       pcp = %{version}-%{release}
+
+%description pmda-sockets
+This package contains the PCP Performance Metric Domain Agent (PMDA) for
+collecting per-socket statistics, making use of utilities such as 'ss'.
+#end pcp-pmda-sockets
+
+
+
+#
+# pcp-pmda-hacluster
+#
+%package pmda-hacluster
+License:        %{license_gplv2plus}
+Summary:        Performance Co-Pilot (PCP) metrics for High Availability Clusters
+URL:            https://pcp.io
+Requires:       %{lib_pkg} = %{version}-%{release}
+Requires:       pcp = %{version}-%{release}
+
+%description pmda-hacluster
+This package contains the PCP Performance Metrics Domain Agent (PMDA) for
+collecting metrics about linux High Availability (HA) Clusters.
+# end pcp-pmda-hacluster
+
+
+
+#
 # pcp-pmda-summary
 #
 %package pmda-summary
@@ -2475,8 +2506,6 @@ updated policy package.
 %patch3 -p1
 %patch5 -p1
 %patch6 -p1
-%patch7 -p1
-%patch8 -p1
 %patch9 -p1
 
 autoconf
@@ -2606,7 +2635,6 @@ sed -i -e '/^# .*_LOCAL=1/s/^# //' %{buildroot}/%{_sysconfdir}/sysconfig/{pmcd,p
 rm -f %{buildroot}/%{_localstatedir}/lib/pcp/testsuite/perfevent/perfevent_coverage # drop unreproducible file (boo#1040589)
 %fdupes %{buildroot}%{_testsdir}
 
-
 %if 0%{?suse_version}
 mkdir -p %{buildroot}/%{_tempsdir}
 
@@ -2632,7 +2660,7 @@ done
 %endif
 
 # list of PMDAs in the base pcp package
-for pmda in jbd2 kvm linux mmv pipe pmcd proc root xfs; do
+for pmda in jbd2 kvm linux mmv pipe pmcd proc root xfs zfs; do
     for alt in %{_pmdasdir} %{_pmdasexecdir} %{_confdir}; do
         [ -d %{buildroot}/$alt/$pmda ] && echo $alt/$pmda >>base_pmdas.list
     done
@@ -3570,6 +3598,14 @@ PCP_LOG_DIR=%{_logsdir}
 %{_pmdasdir}/smart
 %{_pmdasexecdir}/smart
 
+%files pmda-sockets
+%{_pmdasdir}/sockets
+%{_pmdasexecdir}/sockets
+
+%files pmda-hacluster
+%{_pmdasdir}/hacluster
+%{_pmdasexecdir}/hacluster
+
 %files pmda-summary
 %{_pmdasdir}/summary
 %{_pmdasexecdir}/summary
@@ -3643,8 +3679,6 @@ PCP_LOG_DIR=%{_logsdir}
 %dir %{_docdir}/pcp/demos/tutorials
 %dir %{_datadir}/doc/pcp-doc
 %{_datadir}/doc/pcp-doc/html
-%{_datadir}/doc/pcp-doc/pcp-programmers-guide.pdf
-%{_datadir}/doc/pcp-doc/pcp-users-and-administrators-guide.pdf
 %endif
 
 %if !%{disable_selinux}

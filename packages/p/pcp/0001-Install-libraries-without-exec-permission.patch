@@ -1,33 +1,45 @@
-From 550357486d093e60ddf8102cf3ff474c7fa1721d Mon Sep 17 00:00:00 2001
+From 1c78e9cae055e914a846a54a6a12acfc7525d64e Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
-Date: Fri, 12 Dec 2014 15:43:00 +0100
-Subject: [PATCH 1/6] Install libraries without exec permission
+Date: Mon, 16 May 2022 17:31:55 +0200
+Subject: [PATCH] build: install libraries without exec permission
 
+Signed-off-by: David Disseldorp <ddiss@suse.de>
 ---
- src/genpmda/genpmda               | 4 ++--
- src/libpcp/src/GNUmakefile        | 4 ++--
- src/libpcp_fault/src/GNUmakefile  | 4 ++--
- src/libpcp_gui/src/GNUmakefile    | 4 ++--
- src/libpcp_import/src/GNUmakefile | 4 ++--
- src/libpcp_mmv/src/GNUmakefile    | 4 ++--
- src/libpcp_pmcd/src/GNUmakefile   | 2 +-
- src/libpcp_pmda/src/GNUmakefile   | 4 ++--
- src/libpcp_trace/src/GNUmakefile  | 4 ++--
- src/pmdas/aix/GNUmakefile         | 2 +-
- src/pmdas/darwin/GNUmakefile      | 2 +-
- src/pmdas/freebsd/GNUmakefile     | 2 +-
- src/pmdas/linux/GNUmakefile       | 2 +-
- src/pmdas/linux_proc/GNUmakefile  | 2 +-
- src/pmdas/lustrecomm/GNUmakefile  | 2 +-
- src/pmdas/pmcd/src/GNUmakefile    | 2 +-
- src/pmdas/sendmail/GNUmakefile    | 2 +-
- src/pmdas/solaris/GNUmakefile     | 2 +-
- 18 files changed, 26 insertions(+), 26 deletions(-)
+ src/genpmda/genpmda                 | 4 ++--
+ src/libpcp/src/GNUmakefile          | 4 ++--
+ src/libpcp_fault/src/GNUmakefile    | 4 ++--
+ src/libpcp_gui/src/GNUmakefile      | 4 ++--
+ src/libpcp_import/src/GNUmakefile   | 4 ++--
+ src/libpcp_mmv/src/GNUmakefile      | 4 ++--
+ src/libpcp_pmcd/src/GNUmakefile     | 2 +-
+ src/libpcp_pmda/src/GNUmakefile     | 4 ++--
+ src/libpcp_trace/src/GNUmakefile    | 4 ++--
+ src/libpcp_web/src/GNUmakefile      | 4 ++--
+ src/pmdas/cifs/GNUmakefile          | 4 ++--
+ src/pmdas/dm/GNUmakefile            | 4 ++--
+ src/pmdas/docker/GNUmakefile        | 4 ++--
+ src/pmdas/hacluster/GNUmakefile     | 4 ++--
+ src/pmdas/jbd2/GNUmakefile          | 4 ++--
+ src/pmdas/kvm/GNUmakefile           | 4 ++--
+ src/pmdas/linux/GNUmakefile         | 4 ++--
+ src/pmdas/linux_proc/GNUmakefile    | 4 ++--
+ src/pmdas/linux_sockets/GNUmakefile | 4 ++--
+ src/pmdas/linux_xfs/GNUmakefile     | 4 ++--
+ src/pmdas/linux_zfs/GNUmakefile     | 4 ++--
+ src/pmdas/nvidia/GNUmakefile        | 5 ++---
+ src/pmdas/pmcd/src/GNUmakefile      | 2 +-
+ src/pmdas/podman/GNUmakefile        | 4 ++--
+ src/pmdas/rpm/GNUmakefile           | 4 ++--
+ src/pmdas/sendmail/GNUmakefile      | 4 ++--
+ src/pmdas/smart/GNUmakefile         | 4 ++--
+ src/pmdas/statsd/src/GNUmakefile    | 4 ++--
+ src/zabbix-agent/src/GNUmakefile    | 2 +-
+ 29 files changed, 55 insertions(+), 56 deletions(-)
 
-Index: pcp/src/genpmda/genpmda
-===================================================================
---- pcp.orig/src/genpmda/genpmda
-+++ pcp/src/genpmda/genpmda
+diff --git a/src/genpmda/genpmda b/src/genpmda/genpmda
+index 5e5c110d1..9670b7461 100755
+--- a/src/genpmda/genpmda
++++ b/src/genpmda/genpmda
 @@ -899,7 +899,7 @@ install: default
  	\$(INSTALL) -m 755 -d \$(PCP_VAR_DIR)/pmdas
  	\$(INSTALL) -m 755 -d \$(PMDADIR)
@@ -46,10 +58,10 @@ Index: pcp/src/genpmda/genpmda
  	\$(INSTALL) -m 755 -f $oflag/Install \$(PMDADIR)/Install
  	\$(INSTALL) -m 755 -f $oflag/Remove \$(PMDADIR)/Remove
  	\$(INSTALL) -m 644 -f $oflag/Makefile.install \$(PMDADIR)/Makefile
-Index: pcp/src/libpcp/src/GNUmakefile
-===================================================================
---- pcp.orig/src/libpcp/src/GNUmakefile
-+++ pcp/src/libpcp/src/GNUmakefile
+diff --git a/src/libpcp/src/GNUmakefile b/src/libpcp/src/GNUmakefile
+index c58277980..b8d98872e 100644
+--- a/src/libpcp/src/GNUmakefile
++++ b/src/libpcp/src/GNUmakefile
 @@ -125,7 +125,7 @@ endif
  
  install : default
@@ -68,10 +80,10 @@ Index: pcp/src/libpcp/src/GNUmakefile
  endif
  
  $(EXT_FILES):
-Index: pcp/src/libpcp_fault/src/GNUmakefile
-===================================================================
---- pcp.orig/src/libpcp_fault/src/GNUmakefile
-+++ pcp/src/libpcp_fault/src/GNUmakefile
+diff --git a/src/libpcp_fault/src/GNUmakefile b/src/libpcp_fault/src/GNUmakefile
+index 229092783..ee37c2aa6 100644
+--- a/src/libpcp_fault/src/GNUmakefile
++++ b/src/libpcp_fault/src/GNUmakefile
 @@ -150,7 +150,7 @@ endif
  
  install : default
@@ -90,10 +102,10 @@ Index: pcp/src/libpcp_fault/src/GNUmakefile
  endif
  	$(INSTALL) -m 644 $(TOPDIR)/src/include/pcp/fault.h $(PCP_INC_DIR)/fault.h
  
-Index: pcp/src/libpcp_gui/src/GNUmakefile
-===================================================================
---- pcp.orig/src/libpcp_gui/src/GNUmakefile
-+++ pcp/src/libpcp_gui/src/GNUmakefile
+diff --git a/src/libpcp_gui/src/GNUmakefile b/src/libpcp_gui/src/GNUmakefile
+index b45028ca4..9099e4d1e 100644
+--- a/src/libpcp_gui/src/GNUmakefile
++++ b/src/libpcp_gui/src/GNUmakefile
 @@ -54,7 +54,7 @@ include $(BUILDRULES)
  
  install: default
@@ -112,10 +124,10 @@ Index: pcp/src/libpcp_gui/src/GNUmakefile
  endif
  
  default_pcp:	default
-Index: pcp/src/libpcp_import/src/GNUmakefile
-===================================================================
---- pcp.orig/src/libpcp_import/src/GNUmakefile
-+++ pcp/src/libpcp_import/src/GNUmakefile
+diff --git a/src/libpcp_import/src/GNUmakefile b/src/libpcp_import/src/GNUmakefile
+index 0536ded93..b1bd3b3d7 100644
+--- a/src/libpcp_import/src/GNUmakefile
++++ b/src/libpcp_import/src/GNUmakefile
 @@ -54,7 +54,7 @@ include $(BUILDRULES)
  
  install: default
@@ -134,10 +146,10 @@ Index: pcp/src/libpcp_import/src/GNUmakefile
  endif
  
  default_pcp: default
-Index: pcp/src/libpcp_mmv/src/GNUmakefile
-===================================================================
---- pcp.orig/src/libpcp_mmv/src/GNUmakefile
-+++ pcp/src/libpcp_mmv/src/GNUmakefile
+diff --git a/src/libpcp_mmv/src/GNUmakefile b/src/libpcp_mmv/src/GNUmakefile
+index e0a0b4c5a..9481bf4f5 100644
+--- a/src/libpcp_mmv/src/GNUmakefile
++++ b/src/libpcp_mmv/src/GNUmakefile
 @@ -47,7 +47,7 @@ include $(BUILDRULES)
  
  install: default
@@ -156,10 +168,10 @@ Index: pcp/src/libpcp_mmv/src/GNUmakefile
  endif
  
  default_pcp: default
-Index: pcp/src/libpcp_pmcd/src/GNUmakefile
-===================================================================
---- pcp.orig/src/libpcp_pmcd/src/GNUmakefile
-+++ pcp/src/libpcp_pmcd/src/GNUmakefile
+diff --git a/src/libpcp_pmcd/src/GNUmakefile b/src/libpcp_pmcd/src/GNUmakefile
+index e550dde1a..d53c05565 100644
+--- a/src/libpcp_pmcd/src/GNUmakefile
++++ b/src/libpcp_pmcd/src/GNUmakefile
 @@ -73,7 +73,7 @@ include $(BUILDRULES)
  
  install : default
@@ -169,10 +181,10 @@ Index: pcp/src/libpcp_pmcd/src/GNUmakefile
  endif
  
  ifeq "$(ENABLE_PROBES)" "true"
-Index: pcp/src/libpcp_pmda/src/GNUmakefile
-===================================================================
---- pcp.orig/src/libpcp_pmda/src/GNUmakefile
-+++ pcp/src/libpcp_pmda/src/GNUmakefile
+diff --git a/src/libpcp_pmda/src/GNUmakefile b/src/libpcp_pmda/src/GNUmakefile
+index 021cec3f9..83042edcc 100644
+--- a/src/libpcp_pmda/src/GNUmakefile
++++ b/src/libpcp_pmda/src/GNUmakefile
 @@ -64,7 +64,7 @@ include $(BUILDRULES)
  
  install: default
@@ -191,10 +203,10 @@ Index: pcp/src/libpcp_pmda/src/GNUmakefile
  endif
  
  $(XFILES):
-Index: pcp/src/libpcp_trace/src/GNUmakefile
-===================================================================
---- pcp.orig/src/libpcp_trace/src/GNUmakefile
-+++ pcp/src/libpcp_trace/src/GNUmakefile
+diff --git a/src/libpcp_trace/src/GNUmakefile b/src/libpcp_trace/src/GNUmakefile
+index 10738d631..6f11d0660 100644
+--- a/src/libpcp_trace/src/GNUmakefile
++++ b/src/libpcp_trace/src/GNUmakefile
 @@ -56,13 +56,13 @@ include $(BUILDRULES)
  
  install : default
@@ -211,72 +223,10 @@ Index: pcp/src/libpcp_trace/src/GNUmakefile
  endif
  
  default_pcp : default
-Index: pcp/src/pmdas/linux/GNUmakefile
-===================================================================
---- pcp.orig/src/pmdas/linux/GNUmakefile
-+++ pcp/src/pmdas/linux/GNUmakefile
-@@ -89,10 +89,10 @@ build-me: $(LIBTARGET) $(CMDTARGET) $(HE
- install: default
- 	$(INSTALL) -m 755 -d $(PMDAADMDIR)
- 	$(INSTALL) -m 755 -d $(PMDATMPDIR)
--	$(INSTALL) -m 644 -t $(PMDATMPDIR) domain.h help $(HELPTARGETS) $(PMDAADMDIR)
-+	$(INSTALL) -m 644 -t $(PMDATMPDIR) domain.h help $(HELPTARGETS) $(LIBTARGET) $(PMDAADMDIR)
- 	$(INSTALL) -m 755 -d $(PMDACONFIG)
- 	$(INSTALL) -m 644 -t $(PMDATMPDIR)/samplebandwidth.conf bandwidth.conf $(PMDACONFIG)/samplebandwidth.conf
--	$(INSTALL) -m 755 -t $(PMDATMPDIR) $(LIBTARGET) $(CMDTARGET) $(PMDAADMDIR)
-+	$(INSTALL) -m 755 -t $(PMDATMPDIR)/$(CMDTARGET) $(CMDTARGET) $(PMDAADMDIR)/$(CMDTARGET)
- 	$(INSTALL) -m 644 -t $(PCP_PMNS_DIR)/root_linux root_linux $(PCP_PMNSADM_DIR)/root_linux
- 	$(INSTALL) -m 644 -t $(REWRITEVARDIR)/linux_proc_fs_nfsd_fixups.conf proc_fs_nfsd_fixups.conf $(REWRITEDIR)/linux_proc_fs_nfsd_fixups.conf
- 	$(INSTALL) -m 644 -t $(REWRITEVARDIR)/linux_proc_net_snmp_migrate.conf proc_net_snmp_migrate.conf $(REWRITEDIR)/linux_proc_net_snmp_migrate.conf
-Index: pcp/src/pmdas/linux_proc/GNUmakefile
-===================================================================
---- pcp.orig/src/pmdas/linux_proc/GNUmakefile
-+++ pcp/src/pmdas/linux_proc/GNUmakefile
-@@ -73,10 +73,10 @@ build-me: root_proc $(LIBTARGET) $(CMDTA
- install: default
- 	$(INSTALL) -m 755 -d $(PMDAADMDIR)
- 	$(INSTALL) -m 755 -d $(PMDATMPDIR)
--	$(INSTALL) -m 644 -t $(PMDATMPDIR) domain.h help help.dir help.pag root root_proc $(PMDAADMDIR)
-+	$(INSTALL) -m 644 -t $(PMDATMPDIR) domain.h help help.dir help.pag root root_proc $(LIBTARGET) $(PMDAADMDIR)
- 	$(INSTALL) -m 755 -d $(PMDACONFIG)
- 	$(INSTALL) -m 644 -t $(PMDATMPDIR)/samplehotproc.conf samplehotproc.conf $(PMDACONFIG)/samplehotproc.conf
--	$(INSTALL) -m 755 -t $(PMDATMPDIR) $(LIBTARGET) $(CMDTARGET) $(SCRIPTS) $(PMDAADMDIR)
-+	$(INSTALL) -m 755 -t $(PMDATMPDIR) $(CMDTARGET) $(SCRIPTS) $(PMDAADMDIR)
- 	$(INSTALL) -m 644 -t $(PCP_PMNS_DIR)/root_proc root_proc $(PCP_PMNSADM_DIR)/root_proc
- 	$(INSTALL) -m 644 -t $(REWRITEVARDIR) $(LOGREWRITERS) $(REWRITEDIR)
- 	@$(INSTALL_MAN)
-Index: pcp/src/pmdas/pmcd/src/GNUmakefile
-===================================================================
---- pcp.orig/src/pmdas/pmcd/src/GNUmakefile
-+++ pcp/src/pmdas/pmcd/src/GNUmakefile
-@@ -59,7 +59,7 @@ default: $(LIBTARGET)
- install: default
- 	$(INSTALL) -m 755 -d $(PMDAADMDIR)
- 	$(INSTALL) -m 755 -d $(PMDATMPDIR)
--	$(INSTALL) -m 755 -t $(PMDATMPDIR)/$(LIBTARGET) $(LIBTARGET) $(PMDAADMDIR)/$(LIBTARGET)
-+	$(INSTALL) -m 644 -t $(PMDATMPDIR)/$(LIBTARGET) $(LIBTARGET) $(PMDAADMDIR)/$(LIBTARGET)
- 
- include $(BUILDRULES)
- 
-Index: pcp/src/pmdas/sendmail/GNUmakefile
-===================================================================
---- pcp.orig/src/pmdas/sendmail/GNUmakefile
-+++ pcp/src/pmdas/sendmail/GNUmakefile
-@@ -44,8 +44,8 @@ install install_pcp:	default
- 	$(INSTALL) -m 755 -d $(PMDAADMDIR)
- 	$(INSTALL) -m 755 -d $(PMDATMPDIR)
- 	$(INSTALL) -m 755 -t $(PMDATMPDIR)/pmda$(IAM)$(EXECSUFFIX) $(CMDTARGET) $(PMDAADMDIR)/pmda$(IAM)$(EXECSUFFIX)
--	$(INSTALL) -m 755 -t $(PMDATMPDIR) $(LIBTARGET) $(SCRIPTS) $(PMDAADMDIR)
--	$(INSTALL) -m 644 -t $(PMDATMPDIR) $(DFILES) pmns help root domain.h $(PMDAADMDIR)
-+	$(INSTALL) -m 755 -t $(PMDATMPDIR) $(SCRIPTS) $(PMDAADMDIR)
-+	$(INSTALL) -m 644 -t $(PMDATMPDIR) $(DFILES) pmns help root domain.h $(LIBTARGET) $(PMDAADMDIR)
- 	$(INSTALL) -m 644 -t $(PMCHARTVARDIR)/Sendmail Sendmail.pmchart $(PMCHARTDIR)/Sendmail
- 
- $(CMDTARGET):	$(OBJECTS)
-Index: pcp/src/libpcp_web/src/GNUmakefile
-===================================================================
---- pcp.orig/src/libpcp_web/src/GNUmakefile
-+++ pcp/src/libpcp_web/src/GNUmakefile
+diff --git a/src/libpcp_web/src/GNUmakefile b/src/libpcp_web/src/GNUmakefile
+index 5eb0dc9ac..d675c12e9 100644
+--- a/src/libpcp_web/src/GNUmakefile
++++ b/src/libpcp_web/src/GNUmakefile
 @@ -84,7 +84,7 @@ endif
  
  install: default
@@ -295,10 +245,10 @@ Index: pcp/src/libpcp_web/src/GNUmakefile
  endif
  
  $(XFILES):
-Index: pcp/src/pmdas/cifs/GNUmakefile
-===================================================================
---- pcp.orig/src/pmdas/cifs/GNUmakefile
-+++ pcp/src/pmdas/cifs/GNUmakefile
+diff --git a/src/pmdas/cifs/GNUmakefile b/src/pmdas/cifs/GNUmakefile
+index 27b154511..d1ab2c8d0 100644
+--- a/src/pmdas/cifs/GNUmakefile
++++ b/src/pmdas/cifs/GNUmakefile
 @@ -44,8 +44,8 @@ build-me: $(CMDTARGET) $(LIBTARGET)
  install: default
  	$(INSTALL) -m 755 -d $(PMDAADMDIR)
@@ -310,10 +260,10 @@ Index: pcp/src/pmdas/cifs/GNUmakefile
  	@$(INSTALL_MAN)
  else
  build-me:
-Index: pcp/src/pmdas/dm/GNUmakefile
-===================================================================
---- pcp.orig/src/pmdas/dm/GNUmakefile
-+++ pcp/src/pmdas/dm/GNUmakefile
+diff --git a/src/pmdas/dm/GNUmakefile b/src/pmdas/dm/GNUmakefile
+index 1e8695c97..af915a971 100644
+--- a/src/pmdas/dm/GNUmakefile
++++ b/src/pmdas/dm/GNUmakefile
 @@ -56,8 +56,8 @@ install: default
  	$(INSTALL) -m 755 -d $(PMDAADMDIR)
  	$(INSTALL) -m 755 -d $(PMDATMPDIR)
@@ -325,10 +275,10 @@ Index: pcp/src/pmdas/dm/GNUmakefile
  	$(INSTALL) -m 644 -t $(PMIEVARDIR)/data_high_util dmthin.data_high_util.pmie $(PMIEDIR)/data_high_util
  	$(INSTALL) -m 644 -t $(PMIEVARDIR)/metadata_high_util dmthin.metadata_high_util.pmie $(PMIEDIR)/metadata_high_util
  	@$(INSTALL_MAN)
-Index: pcp/src/pmdas/docker/GNUmakefile
-===================================================================
---- pcp.orig/src/pmdas/docker/GNUmakefile
-+++ pcp/src/pmdas/docker/GNUmakefile
+diff --git a/src/pmdas/docker/GNUmakefile b/src/pmdas/docker/GNUmakefile
+index 3bca9ab6d..50350581d 100644
+--- a/src/pmdas/docker/GNUmakefile
++++ b/src/pmdas/docker/GNUmakefile
 @@ -45,8 +45,8 @@ build-me:	$(CMDTARGET) $(LIBTARGET)
  install_pcp install:	default 
  	$(INSTALL) -m 755 -d $(PMDAADMDIR)
@@ -340,11 +290,26 @@ Index: pcp/src/pmdas/docker/GNUmakefile
  	@$(INSTALL_MAN)
  else
  build-me:
-Index: pcp/src/pmdas/jbd2/GNUmakefile
-===================================================================
---- pcp.orig/src/pmdas/jbd2/GNUmakefile
-+++ pcp/src/pmdas/jbd2/GNUmakefile
-@@ -57,8 +57,8 @@ build-me: $(LIBTARGET) $(CMDTARGET) $(HE
+diff --git a/src/pmdas/hacluster/GNUmakefile b/src/pmdas/hacluster/GNUmakefile
+index b9caf514a..2ec7577a9 100644
+--- a/src/pmdas/hacluster/GNUmakefile
++++ b/src/pmdas/hacluster/GNUmakefile
+@@ -48,8 +48,8 @@ build-me: $(CMDTARGET) $(LIBTARGET)
+ install: default
+ 	$(INSTALL) -m 755 -d $(PMDAADMDIR)
+ 	$(INSTALL) -m 755 -d $(PMDATMPDIR)
+-	$(INSTALL) -m 644 -t $(PMDATMPDIR) root pmns domain.h help $(PMDAADMDIR)
+-	$(INSTALL) -m 755 -t $(PMDATMPDIR) $(LIBTARGET) $(CMDTARGET) $(SCRIPTS) $(PMDAADMDIR)
++	$(INSTALL) -m 644 -t $(PMDATMPDIR) root pmns domain.h help $(LIBTARGET) $(PMDAADMDIR)
++	$(INSTALL) -m 755 -t $(PMDATMPDIR) $(CMDTARGET) $(SCRIPTS) $(PMDAADMDIR)
+ 	@$(INSTALL_MAN)
+ else
+ build-me:
+diff --git a/src/pmdas/jbd2/GNUmakefile b/src/pmdas/jbd2/GNUmakefile
+index 9a313bc63..386000fff 100644
+--- a/src/pmdas/jbd2/GNUmakefile
++++ b/src/pmdas/jbd2/GNUmakefile
+@@ -57,8 +57,8 @@ build-me: $(LIBTARGET) $(CMDTARGET) $(HELPTARGETS) $(MYFILES)
  install: default
  	$(INSTALL) -m 755 -d $(PMDAADMDIR)
  	$(INSTALL) -m 755 -d $(PMDATMPDIR)
@@ -355,11 +320,11 @@ Index: pcp/src/pmdas/jbd2/GNUmakefile
  	$(INSTALL) -m 644 -t $(PCP_PMNS_DIR)/root_jbd2 root_jbd2 $(PCP_PMNSADM_DIR)/root_jbd2
  	$(INSTALL) -m 644 -t $(REWRITEVARDIR)/jbd2_kernel_ulong.conf jbd2_kernel_ulong.conf $(REWRITEDIR)/jbd2_kernel_ulong.conf
  	@$(INSTALL_MAN)
-Index: pcp/src/pmdas/kvm/GNUmakefile
-===================================================================
---- pcp.orig/src/pmdas/kvm/GNUmakefile
-+++ pcp/src/pmdas/kvm/GNUmakefile
-@@ -55,10 +55,10 @@ build-me: $(LIBTARGET) $(CMDTARGET) $(HE
+diff --git a/src/pmdas/kvm/GNUmakefile b/src/pmdas/kvm/GNUmakefile
+index c21b095ae..8ce3b2470 100644
+--- a/src/pmdas/kvm/GNUmakefile
++++ b/src/pmdas/kvm/GNUmakefile
+@@ -55,10 +55,10 @@ build-me: $(LIBTARGET) $(CMDTARGET) $(HELPTARGETS)
  install: default
  	$(INSTALL) -m 755 -d $(PMDAADMDIR)
  	$(INSTALL) -m 755 -d $(PMDATMPDIR)
@@ -372,11 +337,61 @@ Index: pcp/src/pmdas/kvm/GNUmakefile
  	$(INSTALL) -m 644 -t $(PCP_PMNS_DIR)/root_kvm root_kvm $(PCP_PMNSADM_DIR)/root_kvm
  	@$(INSTALL_MAN)
  else
-Index: pcp/src/pmdas/linux_xfs/GNUmakefile
-===================================================================
---- pcp.orig/src/pmdas/linux_xfs/GNUmakefile
-+++ pcp/src/pmdas/linux_xfs/GNUmakefile
-@@ -57,8 +57,8 @@ build-me: $(LIBTARGET) $(CMDTARGET) $(HE
+diff --git a/src/pmdas/linux/GNUmakefile b/src/pmdas/linux/GNUmakefile
+index c2efc5f7d..13195bbdf 100644
+--- a/src/pmdas/linux/GNUmakefile
++++ b/src/pmdas/linux/GNUmakefile
+@@ -89,11 +89,11 @@ build-me: $(LIBTARGET) $(CMDTARGET) $(HELPTARGETS) $(CONFTARGETS)
+ install: default
+ 	$(INSTALL) -m 755 -d $(PMDAADMDIR)
+ 	$(INSTALL) -m 755 -d $(PMDATMPDIR)
+-	$(INSTALL) -m 644 -t $(PMDATMPDIR) domain.h help $(HELPTARGETS) $(PMDAADMDIR)
++	$(INSTALL) -m 644 -t $(PMDATMPDIR) domain.h help $(HELPTARGETS) $(LIBTARGET) $(PMDAADMDIR)
+ 	$(INSTALL) -m 755 -d $(PMDACONFIG)
+ 	$(INSTALL) -m 644 interfaces.conf $(PMDACONFIG)/interfaces.conf
+ 	$(INSTALL) -m 644 -t $(PMDATMPDIR)/samplebandwidth.conf bandwidth.conf $(PMDACONFIG)/samplebandwidth.conf
+-	$(INSTALL) -m 755 -t $(PMDATMPDIR) $(LIBTARGET) $(CMDTARGET) $(PMDAADMDIR)
++	$(INSTALL) -m 755 -t $(PMDATMPDIR)/$(CMDTARGET) $(CMDTARGET) $(PMDAADMDIR)/$(CMDTARGET)
+ 	$(INSTALL) -m 644 -t $(PCP_PMNS_DIR)/root_linux root_linux $(PCP_PMNSADM_DIR)/root_linux
+ 	$(INSTALL) -m 644 -t $(REWRITEVARDIR)/linux_proc_fs_nfsd_fixups.conf proc_fs_nfsd_fixups.conf $(REWRITEDIR)/linux_proc_fs_nfsd_fixups.conf
+ 	$(INSTALL) -m 644 -t $(REWRITEVARDIR)/linux_proc_net_snmp_migrate.conf proc_net_snmp_migrate.conf $(REWRITEDIR)/linux_proc_net_snmp_migrate.conf
+diff --git a/src/pmdas/linux_proc/GNUmakefile b/src/pmdas/linux_proc/GNUmakefile
+index 86f38857d..8e5746075 100644
+--- a/src/pmdas/linux_proc/GNUmakefile
++++ b/src/pmdas/linux_proc/GNUmakefile
+@@ -73,10 +73,10 @@ build-me: root_proc $(LIBTARGET) $(CMDTARGET) $(HELPTARGETS) $(LOGREWRITERS)
+ install: default
+ 	$(INSTALL) -m 755 -d $(PMDAADMDIR)
+ 	$(INSTALL) -m 755 -d $(PMDATMPDIR)
+-	$(INSTALL) -m 644 -t $(PMDATMPDIR) domain.h help help.dir help.pag root root_proc $(PMDAADMDIR)
++	$(INSTALL) -m 644 -t $(PMDATMPDIR) domain.h help help.dir help.pag root root_proc $(LIBTARGET) $(PMDAADMDIR)
+ 	$(INSTALL) -m 755 -d $(PMDACONFIG)
+ 	$(INSTALL) -m 644 -t $(PMDATMPDIR)/samplehotproc.conf samplehotproc.conf $(PMDACONFIG)/samplehotproc.conf
+-	$(INSTALL) -m 755 -t $(PMDATMPDIR) $(LIBTARGET) $(CMDTARGET) $(SCRIPTS) $(PMDAADMDIR)
++	$(INSTALL) -m 755 -t $(PMDATMPDIR) $(CMDTARGET) $(SCRIPTS) $(PMDAADMDIR)
+ 	$(INSTALL) -m 644 -t $(PCP_PMNS_DIR)/root_proc root_proc $(PCP_PMNSADM_DIR)/root_proc
+ 	$(INSTALL) -m 644 -t $(REWRITEVARDIR) $(LOGREWRITERS) $(REWRITEDIR)
+ 	@$(INSTALL_MAN)
+diff --git a/src/pmdas/linux_sockets/GNUmakefile b/src/pmdas/linux_sockets/GNUmakefile
+index 34897f2e9..b69561693 100644
+--- a/src/pmdas/linux_sockets/GNUmakefile
++++ b/src/pmdas/linux_sockets/GNUmakefile
+@@ -49,8 +49,8 @@ build-me: $(LIBTARGET) $(CMDTARGET)
+ install: default
+ 	$(INSTALL) -m 755 -d $(PMDAADMDIR)
+ 	$(INSTALL) -m 755 -d $(PMDATMPDIR)
+-	$(INSTALL) -m 755 -t $(PMDATMPDIR) $(LIBTARGET) $(CMDTARGET) $(SCRIPTS) $(PMDAADMDIR)
+-	$(INSTALL) -m 644 -t $(PMDATMPDIR) domain.h help $(PMNSFILES) $(PMDAADMDIR)
++	$(INSTALL) -m 755 -t $(PMDATMPDIR) $(CMDTARGET) $(SCRIPTS) $(PMDAADMDIR)
++	$(INSTALL) -m 644 -t $(PMDATMPDIR) domain.h help $(PMNSFILES) $(LIBTARGET) $(PMDAADMDIR)
+ 	@$(INSTALL_MAN)
+ else
+ build-me:
+diff --git a/src/pmdas/linux_xfs/GNUmakefile b/src/pmdas/linux_xfs/GNUmakefile
+index e91b02b94..9b75677e3 100644
+--- a/src/pmdas/linux_xfs/GNUmakefile
++++ b/src/pmdas/linux_xfs/GNUmakefile
+@@ -57,8 +57,8 @@ build-me: $(LIBTARGET) $(CMDTARGET) $(HELPTARGETS)
  install: default
  	$(INSTALL) -m 755 -d $(PMDAADMDIR)
  	$(INSTALL) -m 755 -d $(PMDATMPDIR)
@@ -387,10 +402,25 @@ Index: pcp/src/pmdas/linux_xfs/GNUmakefile
  	$(INSTALL) -m 644 -t $(PCP_PMNS_DIR)/root_xfs root_xfs $(PCP_PMNSADM_DIR)/root_xfs
  	$(INSTALL) -m 644 -t $(REWRITEVARDIR)/linux_xfs_migrate.conf linux_xfs_migrate.conf $(REWRITEDIR)/linux_xfs_migrate.conf
  	@$(INSTALL_MAN)
-Index: pcp/src/pmdas/nvidia/GNUmakefile
-===================================================================
---- pcp.orig/src/pmdas/nvidia/GNUmakefile
-+++ pcp/src/pmdas/nvidia/GNUmakefile
+diff --git a/src/pmdas/linux_zfs/GNUmakefile b/src/pmdas/linux_zfs/GNUmakefile
+index cf877efe3..ec04126dc 100644
+--- a/src/pmdas/linux_zfs/GNUmakefile
++++ b/src/pmdas/linux_zfs/GNUmakefile
+@@ -49,8 +49,8 @@ build-me: $(LIBTARGET) $(CMDTARGET) $(HELPTARGETS)
+ install: default
+ 	$(INSTALL) -m 755 -d $(PMDAADMDIR)
+ 	$(INSTALL) -m 755 -d $(PMDATMPDIR)
+-	$(INSTALL) -m 644 -t $(PMDATMPDIR) domain.h help help.dir help.pag root root_zfs $(PMDAADMDIR)
+-	$(INSTALL) -m 755 -t $(PMDATMPDIR) $(LIBTARGET) $(CMDTARGET) $(SCRIPTS) $(PMDAADMDIR)
++	$(INSTALL) -m 644 -t $(PMDATMPDIR) domain.h help help.dir help.pag root root_zfs $(LIBTARGET) $(PMDAADMDIR)
++	$(INSTALL) -m 755 -t $(PMDATMPDIR) $(CMDTARGET) $(SCRIPTS) $(PMDAADMDIR)
+ 	$(INSTALL) -m 644 -t $(PCP_PMNS_DIR)/root_zfs root_zfs $(PCP_PMNSADM_DIR)/root_zfs
+ 	@$(INSTALL_MAN)
+ else
+diff --git a/src/pmdas/nvidia/GNUmakefile b/src/pmdas/nvidia/GNUmakefile
+index 2a1fa6a90..b02d431ea 100644
+--- a/src/pmdas/nvidia/GNUmakefile
++++ b/src/pmdas/nvidia/GNUmakefile
 @@ -37,9 +37,8 @@ include $(BUILDRULES)
  install:	default
  	$(INSTALL) -m 755 -d $(PMDAADMDIR)
@@ -403,11 +433,24 @@ Index: pcp/src/pmdas/nvidia/GNUmakefile
  
  $(OBJECTS): domain.h
  
-Index: pcp/src/pmdas/podman/GNUmakefile
-===================================================================
---- pcp.orig/src/pmdas/podman/GNUmakefile
-+++ pcp/src/pmdas/podman/GNUmakefile
-@@ -48,8 +48,8 @@ build-me: $(LIBTARGET) $(CMDTARGET) $(HE
+diff --git a/src/pmdas/pmcd/src/GNUmakefile b/src/pmdas/pmcd/src/GNUmakefile
+index c128d6d59..63fdd07e0 100644
+--- a/src/pmdas/pmcd/src/GNUmakefile
++++ b/src/pmdas/pmcd/src/GNUmakefile
+@@ -59,7 +59,7 @@ default: $(LIBTARGET)
+ install: default
+ 	$(INSTALL) -m 755 -d $(PMDAADMDIR)
+ 	$(INSTALL) -m 755 -d $(PMDATMPDIR)
+-	$(INSTALL) -m 755 -t $(PMDATMPDIR)/$(LIBTARGET) $(LIBTARGET) $(PMDAADMDIR)/$(LIBTARGET)
++	$(INSTALL) -m 644 -t $(PMDATMPDIR)/$(LIBTARGET) $(LIBTARGET) $(PMDAADMDIR)/$(LIBTARGET)
+ 
+ include $(BUILDRULES)
+ 
+diff --git a/src/pmdas/podman/GNUmakefile b/src/pmdas/podman/GNUmakefile
+index 0d28a67bf..a5f921ed1 100644
+--- a/src/pmdas/podman/GNUmakefile
++++ b/src/pmdas/podman/GNUmakefile
+@@ -48,8 +48,8 @@ build-me: $(LIBTARGET) $(CMDTARGET) $(HELPTARGETS)
  install: default
  	$(INSTALL) -m 755 -d $(PMDAADMDIR)
  	$(INSTALL) -m 755 -d $(PMDATMPDIR)
@@ -418,10 +461,10 @@ Index: pcp/src/pmdas/podman/GNUmakefile
  	$(INSTALL) -m 644 -t $(PCP_PMNS_DIR)/root_podman root_podman $(PCP_PMNSADM_DIR)/root_podman
  	@$(INSTALL_MAN)
  else
-Index: pcp/src/pmdas/rpm/GNUmakefile
-===================================================================
---- pcp.orig/src/pmdas/rpm/GNUmakefile
-+++ pcp/src/pmdas/rpm/GNUmakefile
+diff --git a/src/pmdas/rpm/GNUmakefile b/src/pmdas/rpm/GNUmakefile
+index 86bffd2ca..72459250e 100644
+--- a/src/pmdas/rpm/GNUmakefile
++++ b/src/pmdas/rpm/GNUmakefile
 @@ -51,8 +51,8 @@ build-me: $(CMDTARGET) $(LIBTARGET)
  install_pcp install:	default 
  	$(INSTALL) -m 755 -d $(PMDAADMDIR)
@@ -433,10 +476,25 @@ Index: pcp/src/pmdas/rpm/GNUmakefile
  	$(INSTALL) -m 644 -t $(REWRITEVARDIR)/rpm_migrate.conf migrate.conf $(REWRITEDIR)/rpm_migrate.conf
  	@$(INSTALL_MAN)
  else
-Index: pcp/src/pmdas/smart/GNUmakefile
-===================================================================
---- pcp.orig/src/pmdas/smart/GNUmakefile
-+++ pcp/src/pmdas/smart/GNUmakefile
+diff --git a/src/pmdas/sendmail/GNUmakefile b/src/pmdas/sendmail/GNUmakefile
+index cd2da09cb..57c0555ce 100644
+--- a/src/pmdas/sendmail/GNUmakefile
++++ b/src/pmdas/sendmail/GNUmakefile
+@@ -44,8 +44,8 @@ install install_pcp:	default
+ 	$(INSTALL) -m 755 -d $(PMDAADMDIR)
+ 	$(INSTALL) -m 755 -d $(PMDATMPDIR)
+ 	$(INSTALL) -m 755 -t $(PMDATMPDIR)/pmda$(IAM)$(EXECSUFFIX) $(CMDTARGET) $(PMDAADMDIR)/pmda$(IAM)$(EXECSUFFIX)
+-	$(INSTALL) -m 755 -t $(PMDATMPDIR) $(LIBTARGET) $(SCRIPTS) $(PMDAADMDIR)
+-	$(INSTALL) -m 644 -t $(PMDATMPDIR) $(DFILES) pmns help root domain.h $(PMDAADMDIR)
++	$(INSTALL) -m 755 -t $(PMDATMPDIR) $(SCRIPTS) $(PMDAADMDIR)
++	$(INSTALL) -m 644 -t $(PMDATMPDIR) $(DFILES) pmns help root domain.h $(LIBTARGET) $(PMDAADMDIR)
+ 	$(INSTALL) -m 644 -t $(PMCHARTVARDIR)/Sendmail Sendmail.pmchart $(PMCHARTDIR)/Sendmail
+ 
+ $(CMDTARGET):	$(OBJECTS)
+diff --git a/src/pmdas/smart/GNUmakefile b/src/pmdas/smart/GNUmakefile
+index a852cc4ac..26dd4c8f9 100644
+--- a/src/pmdas/smart/GNUmakefile
++++ b/src/pmdas/smart/GNUmakefile
 @@ -48,8 +48,8 @@ build-me: $(CMDTARGET) $(LIBTARGET)
  install: default
  	$(INSTALL) -m 755 -d $(PMDAADMDIR)
@@ -448,11 +506,11 @@ Index: pcp/src/pmdas/smart/GNUmakefile
  	@$(INSTALL_MAN)
  else
  build-me:
-Index: pcp/src/pmdas/statsd/src/GNUmakefile
-===================================================================
---- pcp.orig/src/pmdas/statsd/src/GNUmakefile
-+++ pcp/src/pmdas/statsd/src/GNUmakefile
-@@ -68,8 +68,8 @@ build-me: $(RAGELTARGET).o $(CMDTARGET)
+diff --git a/src/pmdas/statsd/src/GNUmakefile b/src/pmdas/statsd/src/GNUmakefile
+index 1567fe273..1dbcd4700 100644
+--- a/src/pmdas/statsd/src/GNUmakefile
++++ b/src/pmdas/statsd/src/GNUmakefile
+@@ -68,8 +68,8 @@ build-me: $(RAGELTARGET).o $(CMDTARGET) $(LIBTARGET)
  install: default
  	$(INSTALL) -m 755 -d $(PMDAADMDIR)
  	$(INSTALL) -m 755 -d $(PMDATMPDIR)
@@ -463,10 +521,10 @@ Index: pcp/src/pmdas/statsd/src/GNUmakefile
  
  CFILES += $(RFILES)
  
-Index: pcp/src/zabbix-agent/src/GNUmakefile
-===================================================================
---- pcp.orig/src/zabbix-agent/src/GNUmakefile
-+++ pcp/src/zabbix-agent/src/GNUmakefile
+diff --git a/src/zabbix-agent/src/GNUmakefile b/src/zabbix-agent/src/GNUmakefile
+index 25c630197..fb41d303b 100644
+--- a/src/zabbix-agent/src/GNUmakefile
++++ b/src/zabbix-agent/src/GNUmakefile
 @@ -43,7 +43,7 @@ install: default
  	$(INSTALL) -m 755 -d $(ZABBIX_DIR)
  	$(INSTALL) -m 755 -d $(MODULE_DIR)
@@ -476,3 +534,6 @@ Index: pcp/src/zabbix-agent/src/GNUmakefile
  	$(INSTALL) -S $(AGENT_DIR)/$(LIBTARGET) $(MODULE_DIR)/$(LIBTARGET)
  	$(INSTALL) -m 755 -d $(CONFIG_DIR)
  	$(INSTALL) -m 644 $(LIBCONFIG) $(CONFIG_DIR)/$(LIBCONFIG)
+-- 
+2.35.3
+

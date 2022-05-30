@@ -1,7 +1,17 @@
-Index: pcp/GNUmakefile
-===================================================================
---- pcp.orig/GNUmakefile
-+++ pcp/GNUmakefile
+From 248b4bd1e3adc51bceebc932efbd71f86c2171cb Mon Sep 17 00:00:00 2001
+From: David Disseldorp <ddiss@suse.de>
+Date: Mon, 16 May 2022 17:50:09 +0200
+Subject: [PATCH] build: remove rundir install
+
+Signed-off-by: David Disseldorp <ddiss@suse.de>
+---
+ GNUmakefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/GNUmakefile b/GNUmakefile
+index 8b866eb77..0a67e9d27 100644
+--- a/GNUmakefile
++++ b/GNUmakefile
 @@ -80,9 +80,9 @@ ifneq ($(TARGET_OS),mingw)
  	$(INSTALL) -m 1777 -d $(PCP_TMPFILE_DIR)
  endif
@@ -14,3 +24,6 @@ Index: pcp/GNUmakefile
  	# artifacts ... PCP_RUN_DIR is also conditionally created on the
  	# fly in each before use case, so the inclusion in the package is
  	# sometimes desirable, but not mandatory
+-- 
+2.35.3
+

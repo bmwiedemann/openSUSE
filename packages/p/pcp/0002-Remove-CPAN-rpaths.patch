@@ -1,8 +1,9 @@
-From 952ce8410406537e388a41e873941bbc427fd4d1 Mon Sep 17 00:00:00 2001
+From cc6ffae33eef2fd1b595dfda72defed17aae89c4 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
-Date: Fri, 12 Dec 2014 15:45:33 +0100
-Subject: [PATCH 2/6] Remove CPAN rpaths
+Date: Mon, 16 May 2022 17:32:55 +0200
+Subject: [PATCH] build: remove CPAN rpaths
 
+Acked-by: David Disseldorp <ddiss@suse.de>
 ---
  src/perl/LogImport/Makefile.PL | 2 +-
  src/perl/MMV/Makefile.PL       | 2 +-
@@ -10,7 +11,7 @@ Subject: [PATCH 2/6] Remove CPAN rpaths
  3 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/src/perl/LogImport/Makefile.PL b/src/perl/LogImport/Makefile.PL
-index a254f5ad501f..2ec42f51a4eb 100644
+index a254f5ad5..2ec42f51a 100644
 --- a/src/perl/LogImport/Makefile.PL
 +++ b/src/perl/LogImport/Makefile.PL
 @@ -15,7 +15,7 @@ if ($ENV{TARGET_OS} eq "mingw") {
@@ -23,7 +24,7 @@ index a254f5ad501f..2ec42f51a4eb 100644
  if ($ENV{TARGET_OS} eq "darwin") {
      # standard ones, minus -arch ppc
 diff --git a/src/perl/MMV/Makefile.PL b/src/perl/MMV/Makefile.PL
-index 7a6787deda4a..1e4cea0317d4 100644
+index 7a6787ded..1e4cea031 100644
 --- a/src/perl/MMV/Makefile.PL
 +++ b/src/perl/MMV/Makefile.PL
 @@ -15,7 +15,7 @@ if ($ENV{TARGET_OS} eq "mingw") {
@@ -36,7 +37,7 @@ index 7a6787deda4a..1e4cea0317d4 100644
  if ($ENV{TARGET_OS} eq "darwin") {
      # standard ones, minus -arch ppc
 diff --git a/src/perl/PMDA/Makefile.PL b/src/perl/PMDA/Makefile.PL
-index d5c44615a651..e2260c4b5397 100644
+index d5c44615a..e2260c4b5 100644
 --- a/src/perl/PMDA/Makefile.PL
 +++ b/src/perl/PMDA/Makefile.PL
 @@ -15,7 +15,7 @@ if ($ENV{TARGET_OS} eq "mingw") {
@@ -49,5 +50,5 @@ index d5c44615a651..e2260c4b5397 100644
  if ($ENV{TARGET_OS} eq "darwin") {
      # standard ones, minus -arch ppc
 -- 
-2.18.0
+2.35.3
 
