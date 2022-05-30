@@ -1,7 +1,7 @@
 #
 # spec file for package python-bokeh
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %define skip_python36 1
 %bcond_without  tests
 Name:           python-bokeh
-Version:        2.4.2
+Version:        2.4.3
 Release:        0
 Summary:        Statistical interactive HTML plots for Python
 License:        BSD-3-Clause
 URL:            https://github.com/bokeh/bokeh/
 Source0:        https://files.pythonhosted.org/packages/source/b/bokeh/bokeh-%{version}.tar.gz
-Source1:        https://github.com/bokeh/bokeh/raw/%{version}/conftest.py
+Source1:        https://raw.githubusercontent.com/bokeh/bokeh/%{version}/conftest.py
 BuildRequires:  %{python_module Jinja2 >= 2.9}
 BuildRequires:  %{python_module Pillow >= 7.1.0}
 BuildRequires:  %{python_module PyYAML >= 3.10}

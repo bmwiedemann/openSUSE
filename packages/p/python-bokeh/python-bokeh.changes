@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun May 29 15:02:34 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.4.3:
+  * Bugfixes:
+    - gh#bokeh/bokeh#7390 [component: bokehjs] Tap events respond
+      outside plot area.
+    - gh#bokeh/bokeh#11744 [component: docs] BokehJS example in
+      docs is broken.
+    - gh#bokeh/bokeh#11832 [component: bokehjs] [BUG] Zoom-in
+      failing with the `xzoom_in` tool.
+    - gh#bokeh/bokeh#11965 [component: bokehjs] [BUG] Table
+      formatting causes layout crash/collapse.
+    - gh#bokeh/bokeh#11987 [component: docs] Docs: extra
+      whitespace on non-sidebar pages.
+    - gh#bokeh/bokeh#11995 [component: docs] [Docs] his must be
+      replaced by This.
+    - gh#bokeh/bokeh#12058 [BUG] webgl backend results in dashed
+      lines.
+    - gh#bokeh/bokeh#12070 [component: bokehjs] [BUG]
+      Wedge/AnnularWedge hit testing cuts off top/bottom.
+    - gh#bokeh/bokeh#12096 Missing `f` prefix on f-strings.
+    - gh#bokeh/bokeh#11819 [component: bokehjs] Correctly handle
+      odd-length dash patterns in WebGL.
+    - gh#bokeh/bokeh#11829 [component: bokehjs] Fix webgl line NaN
+      handling.
+    - gh#bokeh/bokeh#12051 [component: docs] Fixed typo:
+      s/server/serve/
+    - gh#bokeh/bokeh#12106 Fix typo in git.py.
+  * Features:
+    - gh#bokeh/bokeh#9182 [component: bokehjs] Add hover tooltip
+      support for Patch, HArea, and VArea.
+    - gh#bokeh/bokeh#10525 [component: bokehjs] [Feature] Support
+      full text search for MultiChoice and  auto complete input 
+    - gh#bokeh/bokeh#11840 [component: bokehjs] Support multiple
+      marker types in WebGL scatter.
+    - gh#bokeh/bokeh#12034 Add DatetimeRangeSlider.
+    - gh#bokeh/bokeh#12121 Support rescale_discrete_levels in
+      EqHistColorMapper.
+- Refresh conftest.py from github sources.
+
+-------------------------------------------------------------------
 Wed Dec  8 23:16:06 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.4.2:
