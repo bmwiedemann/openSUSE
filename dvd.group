@@ -1300,7 +1300,6 @@
     <package name="libBasicUsageEnvironment1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libFLAC++6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libFLAC8" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libGLEW2_2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libGLU1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libGraphicsMagick++-Q16-12" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="libGraphicsMagick-Q16-3" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
