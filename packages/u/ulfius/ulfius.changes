@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May 29 13:27:11 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.7.10
+  * Update `SameSite` cookie value, add `U_COOKIE_SAME_SITE_EMPTY`
+    and allow value None
+  * Fix pkg-config file with absolute path for
+    `CMAKE_INSTALL_{INCLUDE,LIB}DIR`
+  * Fix `CMAKE_MODULE_PATH` who was used as single value
+
+-------------------------------------------------------------------
 Tue Apr 19 14:22:50 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.7.9
