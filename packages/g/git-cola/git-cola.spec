@@ -18,7 +18,7 @@
 
 
 Name:           git-cola
-Version:        3.12.0
+Version:        4.0.0
 Release:        0
 Summary:        A GUI for Git
 License:        GPL-2.0-or-later
@@ -30,15 +30,20 @@ BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3
 BuildRequires:  python3-Sphinx
-BuildRequires:  python3-devel
-BuildRequires:  python3-pyinotify
+BuildRequires:  python3-build
+BuildRequires:  python3-jaraco.packaging
+BuildRequires:  python3-pip
 BuildRequires:  python3-qt5
+BuildRequires:  python3-rst.linker
+BuildRequires:  python3-setuptools_scm
+BuildRequires:  python3-wheel
 BuildRequires:  update-desktop-files
 Requires:       git-core
-Requires:       python3-qt5
+Requires:       python3-QtPy
 Recommends:     gitk
 Recommends:     python3-Send2Trash
 Recommends:     python3-pyinotify
+Recommends:     python3-qt5
 %if 0%{?suse_version} > 1110
 BuildArch:      noarch
 %endif
@@ -50,27 +55,32 @@ interact with Git repositories.
 %prep
 %setup -q
 
+#Workaround for issue https://github.com/git-cola/git-cola/issues/1230
+cd share/doc
+ln -s ../../setup.py
+cd ../../
+
 %build
 dos2unix qtpy/py3compat.py
 
-%install
-%make_install prefix=%{_prefix} DESTDIR=%{buildroot} PYLINT=pylint3 PYTHON=python3 PIP=pip3
+python3 -m build --wheel --no-isolation
 
-make install-man prefix=%{_prefix} DESTDIR=%{buildroot}  PYLINT=pylint3 PYTHON=python3 PIP=pip3
+%make_build man prefix=%{_prefix} DESTDIR=%{buildroot}  PYLINT=pylint3 PYTHON=python3 PIP=pip
+
+%install
+pip install --no-deps --force-reinstall  --root=%{buildroot} --prefix="%{_prefix}" dist/*.whl
+
+make install-man prefix=%{_prefix} DESTDIR=%{buildroot}  PYLINT=pylint3 PYTHON=python3 PIP=pip
 
 %suse_update_desktop_file %{buildroot}%{_datadir}/applications/git-cola.desktop
 %suse_update_desktop_file %{buildroot}%{_datadir}/applications/git-dag.desktop
 %suse_update_desktop_file %{buildroot}%{_datadir}/applications/git-cola-folder-handler.desktop
 
-%find_lang %{name}
-
-%files -f %{name}.lang
+%files
 %{_bindir}/cola
 %{_bindir}/git-cola
 %{_bindir}/git-dag
 %{_bindir}/git-cola-sequence-editor
-%dir %{_datadir}/git-cola
-%{_datadir}/git-cola/*
 %{_datadir}/applications/git-cola.desktop
 %{_datadir}/applications/git-dag.desktop
 %{_datadir}/applications/git-cola-folder-handler.desktop
@@ -80,12 +90,10 @@ make install-man prefix=%{_prefix} DESTDIR=%{buildroot}  PYLINT=pylint3 PYTHON=p
 %{_datadir}/icons/hicolor/scalable/apps/git-cola.svg
 %dir %{_datadir}/doc/git-cola
 %{_datadir}/doc/git-cola/*
+%{_mandir}/man1/*.*
 %if 0%{?sles_version} > 9
 %{_datadir}/locale/zh_cn
 %endif
-%{_mandir}/man1/*.*
-%{_datadir}/metainfo/git-cola.appdata.xml
-%{_datadir}/metainfo/git-dag.appdata.xml
 %dir %{python3_sitelib}/cola
 %{python3_sitelib}/cola/*
 %{python3_sitelib}/git_cola*
