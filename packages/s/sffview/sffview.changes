@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 17 08:21:13 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop unused BuildRequire on SDL-devel.
+- Modernize specfile. Trim filler wording from description.
+
+-------------------------------------------------------------------
 Thu Feb  2 12:46:30 UTC 2017 - adam.majer@suse.de
 
 - use individual libboost-*-devel packages instead of boost-devel
