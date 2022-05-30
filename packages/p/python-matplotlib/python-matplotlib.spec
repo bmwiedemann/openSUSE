@@ -31,7 +31,7 @@ ExclusiveArch:  x86_64 aarch64
 %bcond_with test
 %endif
 Name:           python-matplotlib%{psuffix}
-Version:        3.5.1
+Version:        3.5.2
 Release:        0
 Summary:        Plotting Library for Python
 License:        SUSE-Matplotlib
@@ -41,8 +41,8 @@ Source1:        matplotlib-mplsetup.cfg
 # Bundled version of freetype and qhull for testing purposes only
 Source98:       http://www.qhull.org/download/qhull-2020-src-8.0.2.tgz
 Source99:       https://downloads.sourceforge.net/project/freetype/freetype2/2.6.1/freetype-2.6.1.tar.gz
-# PATCH-FIX-UPSTREAM matplotlib-pr22780-Pillow-deprecations.patch -- gh#matplotlib/matplotlib#22780
-Patch1:         https://github.com/matplotlib/matplotlib/pull/22780.patch#/matplotlib-pr22780-Pillow-deprecations.patch
+# PATCH-FIX-UPSTREAM matplotlib-pr22975-fixarray.patch -- gh#matplotlib/matplotlib#22975, required for astropy 5.1
+Patch1:         https://github.com/matplotlib/matplotlib/pull/22975.patch#/matplotlib-pr22975-fixarray.patch
 BuildRequires:  %{python_module Cycler >= 0.10}
 BuildRequires:  %{python_module FontTools >= 4.22.0}
 BuildRequires:  %{python_module devel}
@@ -93,6 +93,7 @@ BuildRequires:  %{python_module matplotlib-testdata = %{version}}
 BuildRequires:  %{python_module matplotlib-tk = %{version}}
 BuildRequires:  %{python_module matplotlib-web = %{version}}
 BuildRequires:  %{python_module matplotlib-wx = %{version}}
+BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
@@ -290,11 +291,13 @@ skip_tests+=" or (test_fig_close and Qt4Agg)"
 skip_tests+=" or test_invisible_Line_rendering"
 # too much memory consumption on obs parallel workers
 skip_tests+=" or (test_agg and chunksize) or test_throw_rendering_complexity_exceeded"
+# testing interactive backend leaks inside obs is flaky
+skip_tests+=" or (test_backends_interactive and test_figure_leak_20490)"
+# flaky signal termination tests inside obs
+skip_tests+=" or _sigint"
 %ifnarch x86_64
 # image comparison failures due to precisions dicrepancies to the x86 produced references
 skip_tests+=" or png or svg or pdf"
-# flaky signal termination tests inside obs
-skip_tests+=" or _sigint"
 %endif
 %{pytest_arch --pyargs matplotlib.tests \
               --pyargs mpl_toolkits.tests \

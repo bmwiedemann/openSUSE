@@ -1,0 +1,60 @@
+From 29ce2c226aafc170cb9b874e81b158c832322cf7 Mon Sep 17 00:00:00 2001
+From: Jody Klymak <jklymak@gmail.com>
+Date: Thu, 5 May 2022 04:38:49 +0000
+Subject: [PATCH] FIX: fix check_1d to also check for ndim
+
+Arrays sometimes don't have all the methods arrays should have, so
+add another check here.  Plot requires both ndim and shape and this
+will extract the numpy array if x does not have those attributes.
+Otherwise leave the object alone, because unit support (currently only
+in plot) requires the object to retain the unit info.
+---
+ lib/matplotlib/cbook/__init__.py   |  7 ++++++-
+ lib/matplotlib/tests/test_units.py | 19 +++++++++++++++++++
+ 2 files changed, 25 insertions(+), 1 deletion(-)
+
+diff --git a/lib/matplotlib/cbook/__init__.py b/lib/matplotlib/cbook/__init__.py
+index 774643fc9c99..5a955ed459c5 100644
+--- a/lib/matplotlib/cbook/__init__.py
++++ b/lib/matplotlib/cbook/__init__.py
+@@ -1333,7 +1333,12 @@ def _check_1d(x):
+     """Convert scalars to 1D arrays; pass-through arrays as is."""
+     # Unpack in case of e.g. Pandas or xarray object
+     x = _unpack_to_numpy(x)
+-    if not hasattr(x, 'shape') or len(x.shape) < 1:
++    # plot requires `shape` and `ndim`.  If passed an
++    # object that doesn't provide them, then force to numpy array.
++    # Note this will strip unit information.
++    if (not hasattr(x, 'shape') or
++            not hasattr(x, 'ndim') or
++            len(x.shape) < 1):
+         return np.atleast_1d(x)
+     else:
+         return x
+diff --git a/lib/matplotlib/tests/test_units.py b/lib/matplotlib/tests/test_units.py
+index 93a12cebb2c8..d3b8c5a71643 100644
+--- a/lib/matplotlib/tests/test_units.py
++++ b/lib/matplotlib/tests/test_units.py
+@@ -264,3 +264,22 @@ def test_empty_default_limits(quantity_converter):
+     fig.draw_without_rendering()
+     assert ax.get_ylim() == (0, 100)
+     assert ax.get_xlim() == (28.5, 31.5)
++
++
++# test array-like objects...
++class Kernel:
++    def __init__(self, array):
++        self._array = np.asanyarray(array)
++
++    def __array__(self):
++        return self._array
++
++    @property
++    def shape(self):
++        return self._array.shape
++
++
++def test_plot_kernel():
++    # just a smoketest that fail
++    kernel = Kernel([1, 2, 3, 4, 5])
++    plt.plot(kernel)

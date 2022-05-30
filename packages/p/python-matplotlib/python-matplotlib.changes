@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May 26 16:23:46 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Skip a flaky leak test, move sigint test skip to all archs
+- Add matplotlib-pr22975-fixarray.patch,
+  gh#matplotlib/matplotlib#22975, required for astropy 5.1
+
+-------------------------------------------------------------------
+Wed May  4 19:15:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.2:
+  * Preliminary support for Windows on arm64 target has been added; this
+    requires FreeType 2.11 or above.
+- drop matplotlib-pr22780-Pillow-deprecations.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Apr 12 21:15:39 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add matplotlib-pr22780-Pillow-deprecations.patch for
