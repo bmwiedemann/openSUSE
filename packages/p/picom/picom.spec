@@ -1,7 +1,7 @@
 #
 # spec file for package picom
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           picom
-Version:        8.2
+Version:        9.1
 Release:        0
 Summary:        Stand-alone compositor for X11
-License:        MPL-2.0 AND MIT
+License:        MIT AND MPL-2.0
 Group:          System/X11/Utilities
 URL:            https://github.com/yshui/picom
 Source0:        https://github.com/yshui/picom/archive/v%{version}.tar.gz
