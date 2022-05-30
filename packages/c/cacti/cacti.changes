@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 29 11:19:31 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti 1.2.21:
+  * Add a CLI script to install/enable/disable/uninstall plugins
+  * Add log message when purging DS stats and poller repopulate
+  * A collection of bug fixes
+
+-------------------------------------------------------------------
 Fri Apr 22 11:16:10 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.2.20
