@@ -41,4 +41,19 @@ Required by the latest version of jupyter-jupyterlab-server</comment>
     <comment></comment>
     <requestid>923471</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1b63c61c6728a94c0db5a8bce7546902</srcmd5>
+    <version>0.9.8</version>
+    <time>1653907447</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.8:
+  * Fixed error reporting in some cases due to how parsing was handling
+    nested rules in the grammar - previously the reported location for
+    the error could be far away from the point where it actually happened.
+  * Fixed behavior of `default` fn in `dump` and `dumps`. Previously
+    we didn't require the function to return a string, and so we could
+    end up returning something that wasn't actually valid. This change
+    now matches the behavior in the `json` module.</comment>
+    <requestid>979749</requestid>
+  </revision>
 </revisionlist>

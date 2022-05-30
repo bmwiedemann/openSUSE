@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May 29 20:17:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.8:
+  * Fixed error reporting in some cases due to how parsing was handling
+    nested rules in the grammar - previously the reported location for
+    the error could be far away from the point where it actually happened.
+  * Fixed behavior of `default` fn in `dump` and `dumps`. Previously
+    we didn't require the function to return a string, and so we could
+    end up returning something that wasn't actually valid. This change
+    now matches the behavior in the `json` module.
+
+-------------------------------------------------------------------
 Tue Oct  5 16:04:01 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
 - Added BuildRequires:  alts
