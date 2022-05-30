@@ -1,0 +1,54 @@
+From aa6c1c6577f8178643591ddc06996a5d5588cb9a Mon Sep 17 00:00:00 2001
+From: Sorin Sbarnea <ssbarnea@redhat.com>
+Date: Sun, 13 Feb 2022 13:21:49 +0000
+Subject: [PATCH] Remove deprecated pytest hook (#1891)
+
+---
+ conftest.py | 22 ----------------------
+ tox.ini     |  1 +
+ 2 files changed, 1 insertion(+), 22 deletions(-)
+
+diff --git a/conftest.py b/conftest.py
+index 303e87302..f93a957af 100644
+--- a/conftest.py
++++ b/conftest.py
+@@ -1,27 +1,5 @@
+ """PyTest Fixtures."""
+ import os
+-import re
+-import sys
+-from typing import List
+ 
+ os.environ["NO_COLOR"] = "1"
+ pytest_plugins = ["ansiblelint.testing.fixtures"]
+-
+-
+-def pytest_cmdline_preparse(args: List[str]) -> None:
+-    """Pytest hook."""
+-    # disable xdist when called with -k args (filtering)
+-    # https://stackoverflow.com/questions/66407583/how-to-disable-pytest-xdist-only-when-pytest-is-called-with-filters
+-    if "xdist" in sys.modules and "-k" in args:
+-        for i, arg in enumerate(args):
+-            # remove -n # option
+-            if arg == "-n":
+-                del args[i]
+-                del args[i]
+-                break
+-            # remove -n# option
+-            if re.match(r"-n\d+", arg):
+-                del args[i]
+-                break
+-
+-        args[:] = ["-n0"] + args
+diff --git a/tox.ini b/tox.ini
+index 4ffa9d99e..fb0525be6 100644
+--- a/tox.ini
++++ b/tox.ini
+@@ -28,6 +28,7 @@ commands =
+   {envpython} -m pytest \
+   --junitxml "{toxworkdir}/junit.{envname}.xml" \
+   {posargs:\
++    -n0 \
+     -m "not eco" \
+     -p pytest_cov \
+     --cov ansiblelint \

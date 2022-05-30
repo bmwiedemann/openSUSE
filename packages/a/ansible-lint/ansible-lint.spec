@@ -26,6 +26,7 @@ Summary:        Best practices checker for Ansible
 License:        MIT
 URL:            https://github.com/ansible-community/ansible-lint
 Source0:        https://github.com/ansible-community/ansible-lint/archive/v%{version}/ansible-lint-%{version}.tar.gz
+Patch0:         https://github.com/ansible/ansible-lint/commit/aa6c1c6577f8178643591ddc06996a5d5588cb9a.patch#/deprecated-pytest-hook.patch
 BuildArch:      noarch
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-PyYAML
@@ -40,11 +41,11 @@ BuildRequires:  python3-tenacity
 BuildRequires:  python3-yamllint
 #BuildRequires:     git
 BuildRequires:  python3-enrich >= 1.2.6
+BuildRequires:  ansible
 BuildRequires:  python3-rich >= 9.5.1
 BuildRequires:  python3-ruamel.yaml >= 0.15.37
 BuildRequires:  python3-wcmatch >= 7.0
 # /SECTION
-BuildRequires:  ansible
 BuildRequires:  fdupes
 Requires:       ansible
 Requires:       python3-PyYAML
@@ -61,6 +62,7 @@ Checks playbooks for practices and behavior that could potentially be improved.
 
 %prep
 %setup -n ansible-lint-%{version}
+%patch0 -p1
 sed -ri 's/(\[metadata\])/\1\nversion = %{version}/' setup.cfg
 sed -i '1{/\/usr\/bin\/env python/d;}' src/ansiblelint/__main__.py
 
@@ -78,7 +80,7 @@ python3 -O -m compileall %{buildroot}/%{python3_sitelib}
 %check
 # exclude some tests depending on internet access (galaxy modules)
 # exclude test_cli_auto_detect which depends on a local git repository
-# exclude test_co and test_call_from_outside_venv because of https://github.com/ansible-community/ansible-lint/issues/1885
+# exclude test_co and test_call_from_outside_venv because of https://github.com/ansible-community/ansible-lint/issues/1885 FIXED!
 PYTHONPATH=${PYTHONPATH:+$PYTHONPATH:}%{buildroot}/%{python3_sitelib} PATH=${PATH:+$PATH:}%{buildroot}/%{_bindir} PYTHONDONTWRITEBYTECODE=1 pytest -v -k 'not (test_prerun_reqs_v1 or test_prerun_reqs_v2 or test_install_collection or test_require_collection_wrong_version or test_cli_auto_detect or test_eco or test_call_from_outside_venv)'
 
 %files
