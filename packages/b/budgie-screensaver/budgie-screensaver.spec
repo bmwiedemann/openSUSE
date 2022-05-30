@@ -16,6 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{?suse_version} < 1550
 %define _distconfdir %{_sysconfdir}
 %endif
@@ -25,7 +26,7 @@
 %define chkpwd /sbin/unix2_chkpwd
 %endif
 Name:           budgie-screensaver
-Version:        5.0+0
+Version:        5.0.1+0
 Release:        0
 Summary:        Fork of GNOME Screensaver for Budgie 10
 License:        GPL-2.0-or-later
@@ -33,8 +34,8 @@ Group:          System/GUI/Other
 URL:            https://github.com/BuddiesOfBudgie/budgie-screensaver
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         gnome-screensaver-suse-pam.patch
-BuildRequires:  meson
 BuildRequires:  intltool
+BuildRequires:  meson
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-glib-1)

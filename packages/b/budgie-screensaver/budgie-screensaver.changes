@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 27 12:49:46 UTC 2022 - gmbr3@opensuse.org
+
+- Update to version 5.0.1+0:
+  * Version bump
+  * Fix musl build
+  * Add our mkrelease script that we use on budgie-desktop-view
+    and budgie-desktop itself
+
+-------------------------------------------------------------------
 Tue Mar 08 17:33:41 UTC 2022 - gmbr3@opensuse.org
 
 - Update to version 5.0+0:
