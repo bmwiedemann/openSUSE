@@ -19,7 +19,7 @@
 
 %bcond_with betatest
 Name:           patterns-budgie
-Version:        20200903
+Version:        20220527
 Release:        0
 Summary:        Patterns for Installation (Budgie)
 License:        MIT
@@ -114,9 +114,7 @@ Recommends:     budgie-trash-applet
 Recommends:     budgie-visualspace-applet
 Recommends:     budgie-wallstreet
 Recommends:     budgie-weathershow-applet
-Recommends:     budgie-window-mover-applet
 Recommends:     budgie-window-shuffler
-Recommends:     budgie-workspace-overview-applet
 Recommends:     budgie-workspace-stopwatch-applet
 Recommends:     budgie-workspace-wallpaper-applet
 #
