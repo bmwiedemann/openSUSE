@@ -631,4 +631,21 @@ New since previous SR: added patches to .changes file.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>975765</requestid>
   </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>2c0181897b0b1bf55263575aa7608ee3</srcmd5>
+    <version>1.0.12+v1.git.1650454062.1fbde71c</version>
+    <time>1653907351</time>
+    <user>dimstar_suse</user>
+    <comment>- Use the project upstream name for the -devel subpackage
+  (rename libglue-devel to cluster-glue-devel).
+- Rename libglue2 to cluster-glue-libs following packages like
+  xrootd-libs et al so it does not get picked on by rpmlint
+  [boo#1191752].
+- Remove baselibs.conf as downstream packages (booth, pacemaker,
+  et al) don't use it.
+
+- [SLPP] cluster-glue: E: shlib-policy-name-error (bsc#1191752)
+  Add addFilter(&quot;shlib-policy-name-error&quot;) in cluster-glue.rpmlintrc</comment>
+    <requestid>979414</requestid>
+  </revision>
 </revisionlist>

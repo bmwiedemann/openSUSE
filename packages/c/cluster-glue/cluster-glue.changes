@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May 26 17:22:41 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Use the project upstream name for the -devel subpackage
+  (rename libglue-devel to cluster-glue-devel).
+- Rename libglue2 to cluster-glue-libs following packages like
+  xrootd-libs et al so it does not get picked on by rpmlint
+  [boo#1191752].
+- Remove baselibs.conf as downstream packages (booth, pacemaker,
+  et al) don't use it.
+
+-------------------------------------------------------------------
+Wed May 25 06:54:56 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- [SLPP] cluster-glue: E: shlib-policy-name-error (bsc#1191752)
+  Add addFilter("shlib-policy-name-error") in cluster-glue.rpmlintrc 
+
+-------------------------------------------------------------------
 Mon May 02 09:29:54 UTC 2022 - varkoly@suse.com
 
 - Update to version 1.0.12+v1.git.1650454062.1fbde71c:

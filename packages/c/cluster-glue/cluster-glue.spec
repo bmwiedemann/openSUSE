@@ -30,7 +30,6 @@ License:        GPL-2.0-only AND LGPL-2.1-or-later
 Group:          Productivity/Clustering/HA
 URL:            https://github.com/ClusterLabs/cluster-glue.git
 Source:         %{name}-%{version}.tar.bz2
-Source2:        baselibs.conf
 Source3:        hb_report.in
 # PATCH-FIX-OPENSUSE: load libplumb symbols manually (thanks to lge) (bnc#694243)
 Patch1:         bug-694243_cluster-glue_symbol-conflict.patch
@@ -77,33 +76,32 @@ such as Pacemaker.
 Provides a local resource manager that understands the OCF and LSB
 standards, and an interface to common STONITH devices.
 
-%package -n libglue2
+%package libs
 Summary:        Reusable cluster libraries
-Group:          Productivity/Clustering/HA
+Group:          System/Libraries
 Requires:       %{name} = %{version}-%{release}
 Conflicts:      libheartbeat2 < 3.0.2
+Obsoletes:      libglue2
 Obsoletes:      libheartbeat2 < 3.0.2
+Conflicts:      libglue2
 
-%description -n libglue2
+%description libs
 A collection of libraries that are useful for writing cluster managers
 such as Pacemaker.
 
-%package -n libglue-devel
+%package devel
 Summary:        Headers and libraries for writing cluster managers
 Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}-%{release}
-Requires:       libglue2 = %{version}-%{release}
+Requires:       %{name}-libs = %{version}-%{release}
 Conflicts:      libheartbeat-devel < 3.0.2
 Obsoletes:      libheartbeat-devel < 3.0.2
 
-%description -n libglue-devel
+%description devel
 Headers and shared libraries for a useful for writing cluster managers
 such as Pacemaker.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch4 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="${CFLAGS} %{optflags}"
@@ -147,8 +145,8 @@ mkdir -p %{_var}/run/heartbeat/rsctmp
 %postun
 %service_del_postun logd.service
 
-%post -n libglue2 -p /sbin/ldconfig
-%postun -n libglue2 -p /sbin/ldconfig
+%post   libs -p /sbin/ldconfig
+%postun libs -p /sbin/ldconfig
 
 %files
 %{_defaultdocdir}/%{name}/
@@ -192,12 +190,12 @@ mkdir -p %{_var}/run/heartbeat/rsctmp
 %{_libdir}/stonith/plugins/stonith2/*.so
 %{_libdir}/stonith/plugins/xen0-ha-dom0-stonith-helper
 
-%files -n libglue2
+%files libs
 %{_libdir}/lib*.so.*
 %doc AUTHORS
 %doc COPYING.LIB
 
-%files -n libglue-devel
+%files devel
 %dir %{_libdir}/heartbeat
 %dir %{_libdir}/heartbeat/plugins
 %dir %{_libdir}/heartbeat/plugins/test
