@@ -1,7 +1,7 @@
 #
-# spec file for package python-python-jose
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,52 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-python-jose
-Version:        3.2.0
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test-backend-cryptography"
+%define psuffix -%{flavor}
+%bcond_without test
+%bcond_without testcryptography
+%bcond_with    testnative
+%endif
+%if "%{flavor}" == "test-backend-native"
+%define psuffix -%{flavor}
+%bcond_without test
+%bcond_with    testcryptography
+%bcond_without testnative
+%endif
+%if "%{flavor}" == ""
+%define psuffix %{nil}
+%bcond_with    test
+%bcond_with    testcryptography
+%bcond_with    testnative
+%endif
+
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
+Name:           python-python-jose%{psuffix}
+Version:        3.3.0
 Release:        0
 Summary:        JOSE implementation in Python
 License:        MIT
 URL:            https://github.com/mpdavis/python-jose
-Source:         https://github.com/mpdavis/python-jose/archive/%{version}.tar.gz#/python-jose-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/python-jose/python-jose-%{version}.tar.gz
 Patch0:         unpin-deps.patch
 BuildRequires:  %{python_module setuptools >= 39.2.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
-Recommends:     python-cryptography
-Recommends:     python-pyasn1
-Recommends:     python-pycryptodome >= 3.3.1
+Requires:       python-ecdsa >= 0.16
+Requires:       python-pyasn1
+Requires:       python-rsa
 BuildArch:      noarch
-# SECTION test requirements
-BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module pyasn1}
-BuildRequires:  %{python_module pycryptodome >= 3.3.1}
+%if %{with test}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
+%if %{with testcryptography}
+BuildRequires:  %{python_module python-jose-cryptography = %{version}}
+%endif
+%if %{with testnative}
+BuildRequires:  %{python_module python-jose = %{version}}
+%endif
+%endif
 # /SECTION
 %python_subpackages
 
@@ -46,25 +69,51 @@ BuildRequires:  %{python_module six}
 A JavaScript Object Signing and Encryption (JOSE) technologies
 implementation in Python.
 
-%prep
-%setup -q -n python-jose-%{version}
-%patch0 -p1
-sed -i -e '/addopts/d' setup.cfg
-sed -i -e '/pytest-runner/d' setup.py
+python-jose implements different cryptographic backends.
+Consuming python packages must select the backend as an extra
+when installing python-jose. RPM packages must select the
+corresponding rpm subpackage. If no backend is selected, the
+main package uses the native-python backend.
 
+%package cryptography
+Summary:        JOSE implementation in Python, cryptography extra
+Requires:       %{name} = %{version}-%{release}
+Requires:       python-cryptography >= 3.4.0
+
+%description cryptography
+A JavaScript Object Signing and Encryption (JOSE) technologies
+implementation in Python.
+
+python-jose implements three different cryptographic backends.
+This package provides the python-jose[cryptography] extra.
+
+%prep
+%autosetup -p1 -n python-jose-%{version}
+
+%if ! %{with test}
 %build
 %python_build
 
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
-%pytest
+%pytest -rsEf
+%endif
 
+%if ! %{with test}
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/python_jose-%{version}*-info
+%{python_sitelib}/jose
+
+%files %{python_files cryptography}
+%doc README.rst
+%license LICENSE
+%endif
 
 %changelog

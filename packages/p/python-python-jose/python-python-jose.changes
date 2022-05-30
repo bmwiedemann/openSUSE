@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May 29 19:45:02 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.3.0
+  * Remove support for python 2.7 & 3.5
+  * Add support for Python 3.9
+  * Remove PyCrypto backend
+  * Fix deprecation warning from cryptography backend
+- Add rpm subpackages for the extra backend selection.  The missing
+  requires were only discovered because other packages started to
+  fail.
+  * setup.py and README still mention pycrypto and pycryptodome, but
+    it was removed from the code.
+  * Test in flavors
+- Refresh unpin-deps.patch
+
+-------------------------------------------------------------------
 Wed Aug  5 12:58:25 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 3.2.0

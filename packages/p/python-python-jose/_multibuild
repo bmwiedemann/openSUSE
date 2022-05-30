@@ -1,0 +1,4 @@
+<multibuild>
+  <flavor>test-backend-cryptography</flavor>
+  <flavor>test-backend-native</flavor>
+</multibuild>
