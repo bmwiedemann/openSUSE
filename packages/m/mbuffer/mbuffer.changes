@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 29 19:34:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 20220418:
+  * fix handling of filesystem full on stdout 
+
+-------------------------------------------------------------------
 Mon Jan 31 20:28:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 20211018:
