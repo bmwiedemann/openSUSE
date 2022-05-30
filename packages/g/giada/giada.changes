@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May 29 08:45:50 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Add giada-gcc12.patch to fix Factory build
+
+-------------------------------------------------------------------
 Tue May 24 13:18:45 UTC 2022 - Edgar Aichinger <edogawa@aon.at>
 
 - workaround for gcc12 build failure in TW:

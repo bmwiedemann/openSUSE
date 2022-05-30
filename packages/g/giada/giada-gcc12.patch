@@ -1,0 +1,13 @@
+Index: giada-0.21.0+git.20220521.ce35a252/src/deps/juce/modules/juce_gui_basics/windows/juce_ComponentPeer.h
+===================================================================
+--- giada-0.21.0+git.20220521.ce35a252.orig/src/deps/juce/modules/juce_gui_basics/windows/juce_ComponentPeer.h
++++ giada-0.21.0+git.20220521.ce35a252/src/deps/juce/modules/juce_gui_basics/windows/juce_ComponentPeer.h
+@@ -23,6 +23,8 @@
+   ==============================================================================
+ */
+ 
++#include <utility>
++
+ namespace juce
+ {
+ 

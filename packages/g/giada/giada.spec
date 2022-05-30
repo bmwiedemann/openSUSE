@@ -19,19 +19,21 @@
 
 
 Name:           giada
-Version:        0.21.0+git.20220312.9f123ccf
+Version:        0.21.0+git.20220521.ce35a252
 Release:        0
 Summary:        Sampler Audio Tool
 License:        GPL-3.0-or-later
 URL:            https://giadamusic.com
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         %{name}-findFLTK.patch
+# PATCH-FIX-OPENSUSE giada-gcc12.patch add missing include aloisio@gmx.com
+Patch1:         %{name}-gcc12.patch
 BuildRequires:  cmake
 BuildRequires:  fltk-devel
 %if 0%{?suse_version} < 1550
 BuildRequires:  gcc10-c++
 %else
-BuildRequires:  gcc11-c++
+BuildRequires:  gcc-c++
 %endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libtool
@@ -39,6 +41,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  portaudio-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(jansson) >= 2.7
 BuildRequires:  pkgconfig(libpulse)
@@ -63,9 +66,7 @@ control this.
 %autosetup -p1
 
 %build
-export CXX=g++
 test -x "$(type -p g++-10)" && export CXX=g++-10 OBJCXX=g++-10
-test -x "$(type -p g++-11)" && export CXX=g++-11 OBJCXX=g++-11
 %cmake -DCMAKE_BUILD_TYPE=Release -DWITH_VST3=ON
 %cmake_build
 
