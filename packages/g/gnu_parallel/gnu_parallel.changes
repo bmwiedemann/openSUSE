@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 29 18:13:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 20220522:
+  * --latest-line shows only the latest line of running jobs.
+  * --color colors output in different colors per job (this obsoletes --ctag).
+  * xargs compatibility: --process-slot-var foo sets $foo to jobslot-1.
+  * xargs compatibility: --open-tty opens the terminal on stdin (standard input).
+
+-------------------------------------------------------------------
 Sun Apr 24 20:17:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 20220422:
