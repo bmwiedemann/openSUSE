@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 29 15:29:08 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.2:
+  - Make the sample state indexable [gh#dfm/emcee#425].
+  - Remove NumPy from SETUP_REQUIRES [gh#dfm/emcee#427].
+
+-------------------------------------------------------------------
 Sat Sep 18 19:58:41 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.1.1:
