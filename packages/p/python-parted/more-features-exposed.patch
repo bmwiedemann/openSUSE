@@ -1,0 +1,18 @@
+Index: pyparted-3.12.0/tests/test__ped_disktype.py
+===================================================================
+--- pyparted-3.12.0.orig/tests/test__ped_disktype.py
++++ pyparted-3.12.0/tests/test__ped_disktype.py
+@@ -75,11 +75,11 @@ class DiskTypeCheckFeatureTestCase(Requi
+ 
+ class DiskTypeStrTestCase(RequiresDiskTypes):
+     def runTest(self):
+-        self.assertEqual(str(self.disktype['msdos']), '_ped.DiskType instance --\n  name: msdos  features: 1')
++        self.assertEqual(str(self.disktype['msdos']), '_ped.DiskType instance --\n  name: msdos  features: 9')
+         self.assertEqual(str(self.disktype['aix']), '_ped.DiskType instance --\n  name: aix  features: 0')
+         self.assertEqual(str(self.disktype['sun']), '_ped.DiskType instance --\n  name: sun  features: 0')
+         self.assertEqual(str(self.disktype['amiga']), '_ped.DiskType instance --\n  name: amiga  features: 2')
+-        self.assertEqual(str(self.disktype['gpt']), '_ped.DiskType instance --\n  name: gpt  features: 2')
++        self.assertEqual(str(self.disktype['gpt']), '_ped.DiskType instance --\n  name: gpt  features: 18')
+         self.assertEqual(str(self.disktype['mac']), '_ped.DiskType instance --\n  name: mac  features: 6')
+         self.assertEqual(str(self.disktype['bsd']), '_ped.DiskType instance --\n  name: bsd  features: 0')
+         self.assertEqual(str(self.disktype['pc98']), '_ped.DiskType instance --\n  name: pc98  features: 2')

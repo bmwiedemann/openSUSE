@@ -19,18 +19,19 @@
 %define srcname pyparted
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-parted
-Version:        3.11.7
+Version:        3.12.0
 Release:        0
 Summary:        Python module for GNU parted
 License:        GPL-2.0-or-later
-Group:          Development/Languages/Python
 URL:            https://github.com/dcantrell/pyparted/
 Source0:        https://github.com/dcantrell/pyparted/archive/v%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
 # catch exception for unknown 'disk flag', kkaempf@suse.de
 Patch0:         pyparted-3.10.patch
 Patch3:         python-parted-parted-binary.patch
 Patch4:         python-parted-featurestest.patch
+Patch5:         more-features-exposed.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 # tests requires
 BuildRequires:  e2fsprogs
@@ -47,8 +48,7 @@ Python module for the parted library.  It is used for manipulating
 partition tables.
 
 %prep
-%setup -q -n %{srcname}-%{version}
-%autopatch -p1
+%autosetup -p1 -n %{srcname}-%{version}
 
 %build
 %python_build
