@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun May 29 17:59:12 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
+
+- Update to 3.14.1 (2021-11-13)
+  * Fix publishing type hints per PEP-561 (#1905). Thanks @bwindsor for the catch and patch.
+- Release 3.14.0 (2021-10-17)
+  * Fix fields.TimeDelta serialization precision (#1865). Thanks @yarsanich for reporting.
+  * Fix type-hints for `data` arg in `Schema.validate` to accept list of
+    dictionaries (#1790, #1868). Thanks @yourun-proger for PR.
+  * Improve warning when passing metadata as keyword arguments (#1882).
+    Thanks @traherom for the PR.
+  * Don’t build universal wheels. We don’t support Python 2 anymore.
+    (#1860) Thanks @YKdvd for reporting.
+  * Make the build reproducible (#1862).
+  * Drop support for Python 3.5 (#1863).
+  * Test against Python 3.10 (#1888).
+- Release 3.13.0 (2021-07-21)
+  * Replace missing/default field parameters with load_default/dump_default (#1742).
+    Thanks @sirosen for the PR.
+  * The use of missing/default field parameters is deprecated and will be removed
+  * in marshmallow 4. load_default/dump_default should be used instead.
+- Release 3.12.2 (2021-07-06)
+  * Don’t expose Fields as Schema attributes. This reverts a change
+    introduced in 3.12.0 that causes issues when field names conflict
+    with Schema attributes or methods. Fieldss are still accessible on a
+    Schema instance through the fields attribute. (#1843)
+- Release 3.12.1 (2021-05-10)
+  * Fix bug that raised an AttributeError when instantiating a Schema with a
+    field named parent (#1808). Thanks @flying-sheep for reporting and helping with the fix.
+- Release 3.12.0 (2021-05-09)
+  * Add validate.And (#1768). Thanks @rugleb for the suggestion.
+  * Add type annotations to marshmallow.decorators (#1788, #1789). Thanks @michaeldimchuk for the PR.
+  * Let Fields be accessed by name as Schema attributes (#1631).
+  * Improve types in marshmallow.validate (#1786).
+  * Make marshmallow.validate.Validator an abstract base class (#1786).
+  * Remove unnecessary list cast (#1785).
+
+-------------------------------------------------------------------
 Thu Apr 22 09:42:48 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.11.1
