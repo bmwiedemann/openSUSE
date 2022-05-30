@@ -790,4 +790,12 @@
     <user>dimstar_suse</user>
     <comment>RelMgr: drop invalid ascii from changelog</comment>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>bfde3a52fce58acd5885a6b8c781aede</srcmd5>
+    <version>0.12.4</version>
+    <time>1653907417</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>979650</requestid>
+  </revision>
 </revisionlist>
