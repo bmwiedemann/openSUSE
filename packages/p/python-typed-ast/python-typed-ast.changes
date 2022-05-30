@@ -1,49 +1,47 @@
 -------------------------------------------------------------------
+Sun May 22 10:12:24 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Release version 1.5.4 (#189)
+ - Do not include now private code.h (#188)
+   As of https://github.com/python/cpython/pull/32385 the header
+   code.h is private but directly included into Python.h
+ - Fix Python 3.11 support (#187)
+   The compilation error on master is:
+   ```
+       ast3/Parser/tokenizer.c:1991:10: error: implicit declaration of function '_Py_dup' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+           fd = _Py_dup(fd);
+                ^
+       1 error generated.
+   ```
+   Probably as a result of https://github.com/python/cpython/pull/30484
+   Just declaring it seems to fix things.
+   Add a (slightly) hacky way of testing Python 3.11 in CI prior to manylinux / cibuildwheel support.
+ - Bump version to 1.5.4.dev0 (#186)
+
+-------------------------------------------------------------------
 Tue Apr 19 14:31:59 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
-- - Release version 1.5.3 (#185)
+- Release version 1.5.3 (#185)
  - FIX: Account form stdbool.h being included in Python.h (#184)
    As of CPython 3.11 (via https://github.com/python/cpython/pull/29883) stdbool.h
    is now included in Python.h so do attempt to redefine bool/true/false.
  - Bump version to 1.5.3.dev0
- - Release version 1.5.2
- - Add support for building aarch64 wheels (#182)
-   Co-authored-by: Shantanu <12621235+hauntsaninja@users.noreply.github.com>
- - Remove update process document (#177)
-   typed_ast will not be updated to support syntax past Python 3.8 as
-   Python 3.8's ast module now incorporates the features of typed_ast.
- - Bump version to 1.5.2.dev0
- - Release version 1.5.1 (#181)
-   Co-authored-by: hauntsaninja <>
- - Fix #167: Port ast27 to Python 3.11 (#176)
-   Copy _PyLong_DigitValue table from Python 3.10 as "digitvalue" in
-   ast27/Python/mystrtoul.c. The symbol has been removed from the public
-   Python 3.11 C API.
- - Bump version to 1.5.1.dev0
 
 -------------------------------------------------------------------
 Thu Jan 27 19:26:57 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
-- - Release version 1.5.2
+- Release version 1.5.2
  - Add support for building aarch64 wheels (#182)
    Co-authored-by: Shantanu <12621235+hauntsaninja@users.noreply.github.com>
  - Remove update process document (#177)
    typed_ast will not be updated to support syntax past Python 3.8 as
    Python 3.8's ast module now incorporates the features of typed_ast.
  - Bump version to 1.5.2.dev0
- - Release version 1.5.1 (#181)
-   Co-authored-by: hauntsaninja <>
- - Fix #167: Port ast27 to Python 3.11 (#176)
-   Copy _PyLong_DigitValue table from Python 3.10 as "digitvalue" in
-   ast27/Python/mystrtoul.c. The symbol has been removed from the public
-   Python 3.11 C API.
- - Bump version to 1.5.1.dev0
 
 -------------------------------------------------------------------
 Sun Dec  5 07:44:32 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
-- - Release version 1.5.1 (#181)
-   Co-authored-by: hauntsaninja <>
+- Release version 1.5.1 (#181)
  - Fix #167: Port ast27 to Python 3.11 (#176)
    Copy _PyLong_DigitValue table from Python 3.10 as "digitvalue" in
    ast27/Python/mystrtoul.c. The symbol has been removed from the public

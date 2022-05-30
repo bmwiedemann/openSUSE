@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-typed-ast
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        A fork of Python 2 and 3 ast modules with type comment support
 License:        Apache-2.0
