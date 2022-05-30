@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Thu May 26 19:24:22 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Use the project upstream name for the -devel subpackage
+  (rename libpacemaker-devel to pacemaker-devel).
+- Drop libpacemaker3-cluster separation, since it double-ships
+  a file that is already in libpacemaker3
+- Rename libpacemaker3 to pacmekaer-libs following packages like
+  xrootd-libs et al so it does not get picked on by rpmlint
+  [boo#1191752].
+
+-------------------------------------------------------------------
+Thu May 26 18:56:57 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220526.b387f8972:
+- libcrmcommon: avoid memory leak if IPC server fails to run
+- nls: format of XML-escaped string
+
+-------------------------------------------------------------------
+Thu May 26 18:46:07 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220518.dff7c3a72 (Pacemaker-2.1.3-rc2):
+- schemas: Use fence-event-2.15.rng (rh#2086230)
+- scheduler: don't support versioned instance attributes in operations
+- schemas: allow Promoted/Unpromoted in crm_resource output
+
+-------------------------------------------------------------------
+Thu May 12 07:56:23 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220511.0bf080da3:
+- tools: Set options.command when "attrd_updater -Y" is used.
+
+-------------------------------------------------------------------
+Mon May 02 10:01:36 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220427.c01a90fd2:
+- tools: Hook up the verbosity flag in crm_attribute.
+- tools: Honor CIB_file when doing node name lookups in crm_attribute.
+- tools: Handle a remote node's name differing from its hostname.
+- libcrmcommon: Fix a bug in processing multiple IPC messages.
+- libcrmcommon: Add EAGAIN as a return code from crm_ipc_read.
+- libcrmcommon: Handle IPC ACKs from proxied connections too.
+- fenced: Correctly log the total fencing timeout.
+- scheduler: make multiple-active="stop_unexpected" actually work
+- libcib: Check for NULL before calling g_ascii_strdown.
+
+-------------------------------------------------------------------
+Mon May 02 08:44:22 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220421.a988afd4e (Pacemaker-2.1.3-rc1):
+- libpe_status: deprecate node_ping
+- fencer: avoid core dump at exit
+- fix Chinese garbled
+- fencer: don't use constant within translatable string literal
+- libcrmcommon: fix NLS issues with option meta-data
+
+-------------------------------------------------------------------
+Fri Apr 29 15:42:58 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220414.8cfa69660:
+- tools: set command for `crm_resource -q/--query-xml` before changing any options (bsc#1198409)
+- tools: prevent possible crm_resource segfaults if multiple commands are specified (bsc#1198409)
+- tools: set commands in crm_resource before changing any options (bsc#1198409)
+
+-------------------------------------------------------------------
+Fri Apr 29 15:30:44 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220412.826f287ac:
+- schemas: update some API schemas for node health change
+- tools: add node health to crm_mon output
+- libpe_status: tweak HTML output for node names
+- libcrmcommon: tweak HTML CSS
+- libpe_status: show node status components in separate HTML spans
+- libpe_status: remove stray space from HTML class name
+
+-------------------------------------------------------------------
+Fri Apr 29 13:42:20 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220412.bd19767c9:
+- libcib: Fix handling the return value of cib_internal_op.
+
+-------------------------------------------------------------------
+Fri Apr 29 10:43:11 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220408.6321f6534:
+- libcrmcommon: bump feature set for multiple-active=stop_unexpected
+- scheduler: implement multiple-active=stop_unexpected
+- scheduler: log a warning if invalid value is given for multiple-active
+
+-------------------------------------------------------------------
+Fri Apr 29 10:06:55 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220407.844c3972e:
+- scheduler: allow-unhealthy-nodes resource meta-attribute
+
+-------------------------------------------------------------------
+Wed Apr 20 12:44:15 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220407.56d93678c:
+- tools: Handle an error case in crm_attribute.
+- tools: Convert crm_ticket to using glib for command line.
+
+-------------------------------------------------------------------
+Wed Apr 06 11:19:17 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220405.1ec3db01e:
+- schemas: Add host= to crm_attribute schema.
+- libpacemaker: Don't output attribute settings for blank strings.
+- tools: Override the attribute text message in crm_attribute.
+- tools: Use the new attribute message in attrd_updater.
+- libpacemaker: Add host to the attribute message.
+- tools: Add formatted output boilerplate to attrd_updater.
+- fencer: drop useless logs
+
+-------------------------------------------------------------------
 Sun Apr  3 07:44:37 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - Create libltdl/config before autoreconf to fix an incompatibility
@@ -28,7 +142,7 @@ Tue Mar 29 06:49:24 UTC 2022 - Yan Gao <ygao@suse.com>
 - Update to version 2.1.2+20220328.24d87d0b2:
 - tools: Do not allow certain operations on clone instances.
 - tools: Fix one method of restarting a cloned group.
-- tools: Fix restarting clone instances in crm_resource.
+- tools: Fix restarting clone instances in crm_resource. (rh#1930578)
 - tools: If crm_resource is given an invalid node, error.
 - tools: Fix one way to restart a cloned primitive.
 - tools: Fix restarting implicit bundled resources without a host.
@@ -1056,7 +1170,7 @@ Fri Mar 19 13:28:44 UTC 2021 - Yan Gao <ygao@suse.com>
 Tue Mar 16 17:04:01 UTC 2021 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.5+20210114.ad074d869:
-- all: use high-resolution timestamps in detail log when available
+- all: use high-resolution timestamps in detail log when available (bsc#1197668)
 - CIB: remove cibmon command
 
 -------------------------------------------------------------------

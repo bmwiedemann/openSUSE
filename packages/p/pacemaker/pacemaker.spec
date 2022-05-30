@@ -47,8 +47,7 @@
 ## Add option to create binaries suitable for use with profiling tools
 %bcond_with profiling
 
-## Add option to skip generating documentation
-## (the build tools aren't available everywhere)
+## Allow deprecated option to skip or enable documentation
 %bcond_with doc
 
 ## Add option to default to start-up synchronization with SBD.
@@ -100,12 +99,12 @@
 %endif
 
 %define with_nagios             1
-%define enable_lib_cluster_pkg  0
+%define enable_cluster_libs_pkg  0
 %define enable_fatal_warnings   0
 %define with_regression_tests   0
 
 Name:           pacemaker
-Version:        2.1.2+20220331.1ad8bbddd
+Version:        2.1.2+20220526.b387f8972
 Release:        0
 Summary:        Scalable High-Availability cluster resource manager
 # AGPL-3.0 licensed extra/clustermon.sh is not present in the binary
@@ -163,7 +162,6 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(uuid)
 Requires:       %{name}-cli = %{version}-%{release}
 Requires:       corosync >= 2.0.0
-Requires:       libpacemaker3 = %{version}-%{release}
 Requires:       psmisc
 Requires:       python3
 Requires:       resource-agents
@@ -177,9 +175,6 @@ Conflicts:      libheartbeat2 < 3.0.0
 Provides:       pacemaker-ticket-support = 2.0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
-%if %{enable_lib_cluster_pkg}
-Requires:       libpacemaker3-cluster = %{version}-%{release}
-%endif
 # Enables optional functionality
 %if 0%{?suse_version} > 1100
 BuildRequires:  docbook-xsl-stylesheets
@@ -188,7 +183,7 @@ BuildRequires:  docbook-style-xsl
 %endif
 %if %{with stonithd}
 %if 0%{?suse_version}
-BuildRequires:  libglue-devel
+BuildRequires:  cluster-glue-devel
 %else
 BuildRequires:  cluster-glue-libs-devel
 %endif
@@ -218,7 +213,6 @@ resource health.
 %package cli
 Summary:        Command line tools for controlling Pacemaker clusters
 Group:          Productivity/Clustering/HA
-Requires:       libpacemaker3 = %{version}-%{release}
 Requires:       logrotate
 Requires:       perl-TimeDate
 Requires:       procps
@@ -236,9 +230,9 @@ The %{name}-cli package contains command line tools that can be used
 to query and control the cluster from machines that may, or may not,
 be part of the cluster.
 
-%package -n libpacemaker3
+%package libs
 Summary:        Core Pacemaker libraries
-Group:          Productivity/Clustering/HA
+Group:          System/Libraries
 Requires(pre):  shadow
 # sbd 1.4.0+ supports the libpe_status API for pe_working_set_t
 # sbd 1.4.2+ supports startup/shutdown handshake via pacemakerd-api
@@ -246,31 +240,31 @@ Requires(pre):  shadow
 # sbd 1.5.0+ handshake defaults to enabled with upstream sbd-release
 #            implicitly supports handshake defaults to enabled in this spec
 Conflicts:      sbd < 1.5.0
+Conflicts:      libpacemaker3
+Obsoletes:      libpacemaker3
 
-%description -n libpacemaker3
+%description libs
 Pacemaker is an advanced, scalable High-Availability cluster resource
 manager.
 
-The libpacemaker3 package contains shared libraries needed for cluster
+The pacemaker-libs package contains shared libraries needed for cluster
 nodes and those just running the CLI tools.
 
-%package -n libpacemaker3-cluster
+%package cluster-libs
 Summary:        Cluster Libraries used by Pacemaker
-Group:          Productivity/Clustering/HA
-Requires:       libpacemaker3 = %{version}-%{release}
+Group:          System/Libraries
 
-%description -n libpacemaker3-cluster
+%description cluster-libs
 Pacemaker is an advanced, scalable High-Availability cluster resource
 manager.
 
-The libpacemaker3-cluster package contains cluster-aware shared
+The pacemaker-cluster-libs package contains cluster-aware shared
 libraries needed for nodes that will form part of the cluster nodes.
 
 %package remote
 Summary:        Pacemaker remote executor daemon for non-cluster nodes
 Group:          Productivity/Clustering/HA
 Requires:       %{name}-cli = %{version}-%{release}
-Requires:       libpacemaker3 = %{version}-%{release}
 Requires:       procps
 Requires:       resource-agents
 %{?systemd_requires}
@@ -283,10 +277,10 @@ The %{name}-remote package contains the Pacemaker Remote daemon
 which is capable of extending pacemaker functionality to remote
 nodes not running the full corosync/cluster stack.
 
-%package -n libpacemaker-devel
+%package devel
 Summary:        Pacemaker development package
 Group:          Development/Libraries/C and C++
-Requires:       libpacemaker3 = %{version}-%{release}
+Requires:       %{name}-libs = %{version}-%{release}
 Requires:       libtool-ltdl-devel
 Requires:       pkgconfig
 Requires:       pkgconfig(bzip2)
@@ -296,8 +290,8 @@ Requires:       pkgconfig(libqb)
 Requires:       pkgconfig(libxml-2.0)
 Requires:       pkgconfig(libxslt)
 Requires:       pkgconfig(uuid)
-%if %{enable_lib_cluster_pkg}
-Requires:       libpacemaker3-cluster = %{version}-%{release}
+%if %{enable_cluster_libs_pkg}
+Requires:       %{name}-cluster-libs = %{version}-%{release}
 %endif
 %if %{with_regression_tests}
 # For the regression tests, we can run them only if all pacemaker
@@ -306,11 +300,11 @@ Requires:       libpacemaker3-cluster = %{version}-%{release}
 Requires:       pacemaker
 %endif
 
-%description -n libpacemaker-devel
+%description devel
 Pacemaker is an advanced, scalable High-Availability cluster resource
 manager.
 
-The libpacemaker-devel package contains headers and shared libraries
+The pacemaker-devel package contains headers and shared libraries
 for developing tools for Pacemaker.
 
 %package       cts
@@ -339,17 +333,7 @@ Pacemaker is an advanced, scalable High-Availability cluster resource
 manager.
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
+%autosetup -p1
 
 %build
 
@@ -490,21 +474,21 @@ fi
 %postun cli
 %service_del_postun crm_mon.service
 
-%pre -n libpacemaker3
+%pre libs
 getent group %{gname} >/dev/null || groupadd -r %{gname} -g %{hacluster_id}
 getent passwd %{uname} >/dev/null || useradd -r -g %{gname} -u %{hacluster_id} -s /sbin/nologin -c "cluster user" %{uname}
 exit 0
 
-%post -n libpacemaker3 -p /sbin/ldconfig
-%postun -n libpacemaker3 -p /sbin/ldconfig
+%post libs -p /sbin/ldconfig
+%postun libs -p /sbin/ldconfig
 
-%if %{enable_lib_cluster_pkg}
-%post -n libpacemaker3-cluster -p /sbin/ldconfig
-%postun -n libpacemaker3-cluster -p /sbin/ldconfig
+%if %{enable_cluster_libs_pkg}
+%post cluster-libs -p /sbin/ldconfig
+%postun clsuter-libs -p /sbin/ldconfig
 %endif
 
 %if %{with_regression_tests}
-%post -n libpacemaker-devel
+%post devel
 if [ ! -e /tmp/.pcmk_regression_tests_ran ]; then
 	touch /tmp/.pcmk_regression_tests_ran
 	# Needed so that the shell doesn't get stuck on escape
@@ -516,7 +500,6 @@ fi
 %endif
 
 %files
-%defattr(-,root,root)
 %{_defaultdocdir}/%{name}/
 %{_sbindir}/pacemakerd
 
@@ -555,7 +538,6 @@ fi
 %{ocf_root}/resource.d/pacemaker/remote
 
 %files cli
-%defattr(-,root,root)
 %dir %attr (750, root, %{gname}) %{_sysconfdir}/pacemaker
 %config(noreplace) %{_sysconfdir}/logrotate.d/pacemaker
 %{_unitdir}/crm_mon.service
@@ -622,9 +604,7 @@ fi
 %dir %attr (770, %{uname}, %{gname}) %{_var}/log/pacemaker
 %dir %attr (770, %{uname}, %{gname}) %{_var}/log/pacemaker/bundles
 
-%files -n libpacemaker3 %{?with_nls:-f %{name}.lang}
-%defattr(-,root,root)
-
+%files libs %{?with_nls:-f %{name}.lang}
 %{_libdir}/libcib.so.*
 %{_libdir}/liblrmd.so.*
 %{_libdir}/libcrmservice.so.*
@@ -637,16 +617,14 @@ fi
 %doc COPYING ChangeLog
 %{_libdir}/libcrmcluster.so.*
 
-%if %{enable_lib_cluster_pkg}
-%files -n libpacemaker3-cluster
-%defattr(-,root,root)
+%if %{enable_cluster_libs_pkg}
+%files cluster-libs
 %{_libdir}/libcrmcluster.so.*
 #%license licenses/LGPLv2.1
 %doc COPYING ChangeLog
 %endif
 
 %files remote
-%defattr(-,root,root)
 %{_unitdir}/pacemaker_remote.service
 %{_sbindir}/rcpacemaker_remote
 
@@ -658,13 +636,11 @@ fi
 
 %if %{with doc}
 %files doc
-%defattr(-,root,root)
 %doc %{pcmk_docdir}
 #%license licenses/CC-BY-SA-4.0
 %endif
 
 %files cts
-%defattr(-,root,root)
 %{python3_sitelib}/cts
 %{_datadir}/pacemaker/tests
 
@@ -674,8 +650,7 @@ fi
 #%license licenses/GPLv2
 %doc COPYING ChangeLog
 
-%files -n libpacemaker-devel
-%defattr(-,root,root)
+%files devel
 %{_includedir}/pacemaker
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc

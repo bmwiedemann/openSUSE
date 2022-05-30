@@ -1963,4 +1963,41 @@
 - Update to version 2.1.2+20220322.5129e5ca5:</comment>
     <requestid>966816</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>5cb2d27fee00d5ae65b1543bea223b41</srcmd5>
+    <version>2.1.2+20220526.b387f8972</version>
+    <time>1653907353</time>
+    <user>dimstar_suse</user>
+    <comment>- Use the project upstream name for the -devel subpackage
+  (rename libpacemaker-devel to pacemaker-devel).
+- Drop libpacemaker3-cluster separation, since it double-ships
+  a file that is already in libpacemaker3
+- Rename libpacemaker3 to pacmekaer-libs following packages like
+  xrootd-libs et al so it does not get picked on by rpmlint
+  [boo#1191752].
+
+- Update to version 2.1.2+20220526.b387f8972:
+- libcrmcommon: avoid memory leak if IPC server fails to run
+- nls: format of XML-escaped string
+
+- Update to version 2.1.2+20220518.dff7c3a72 (Pacemaker-2.1.3-rc2):
+- schemas: Use fence-event-2.15.rng (rh#2086230)
+- scheduler: don't support versioned instance attributes in operations
+- schemas: allow Promoted/Unpromoted in crm_resource output
+
+- Update to version 2.1.2+20220511.0bf080da3:
+- tools: Set options.command when &quot;attrd_updater -Y&quot; is used.
+
+- Update to version 2.1.2+20220427.c01a90fd2:
+- tools: Hook up the verbosity flag in crm_attribute.
+- tools: Honor CIB_file when doing node name lookups in crm_attribute.
+- tools: Handle a remote node's name differing from its hostname.
+- libcrmcommon: Fix a bug in processing multiple IPC messages.
+- libcrmcommon: Add EAGAIN as a return code from crm_ipc_read.
+- libcrmcommon: Handle IPC ACKs from proxied connections too.
+- fenced: Correctly log the total fencing timeout.
+- scheduler: make multiple-active=&quot;stop_unexpected&quot; actually work
+- libcib: Check for NULL before calling g_ascii_strdown.</comment>
+    <requestid>979418</requestid>
+  </revision>
 </revisionlist>
