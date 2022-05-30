@@ -22,7 +22,7 @@
 %endif
 
 Name:           xrdp
-Version:        0.9.15
+Version:        0.9.19
 Release:        0
 Summary:        Remote desktop protocol (RDP) server
 License:        Apache-2.0 AND GPL-2.0-or-later
@@ -183,7 +183,6 @@ exit 0
 %dir %{_libdir}/xrdp
 %config(noreplace) %{_sysconfdir}/pam.d/xrdp-sesman
 %license COPYING
-%doc *.txt
 %{_bindir}/xrdp*
 %{_datadir}/xrdp/*
 %{_libdir}/xrdp/*

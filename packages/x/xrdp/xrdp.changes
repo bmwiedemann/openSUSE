@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun May 15 09:00:20 UTC 2022 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to version 0.9.19
+  + New features
+    - loongarch support
+    - Improved Fail2ban support
+    - Both inbound and outbound clipboards can now be restricted for text, 
+      files or images
+    - Versions 0.13 and later of checklib can undefine the pre-processor 
+      symbol HAVE_STDINT_H
+    - The OpenSSL 3 EVP interface is now fully supported
+    - The logging of TLS/non-TLS security negotiation has been improved
+    - Unified and improved logging 
+    - Status values for the DRDYNVC channel are now available in 
+      libxrdp/xrdp_channel.h
+    - Backgrounds and logos on the login screen can now be zoomed and scaled
+    - The performance settings for NeutrinoRDP can be now configured
+    - clipboard: log file transfer for the purpose of audit 
+    - Client's Keyboard layout now can be overridden by xrdp configuration 
+      for debugging purposes
+    - On-the-fly resolution change now supported for Xvnc and Xorg
+    - xrdp can now use key algorithms other than RSA for TLS 
+    - chansrv can now work on DISPLAY=:0 so it can be used with 
+      x11vnc/Vino/etc sessions
+  + Bug fixes
+    - Privilege escalation on xrdp-sesman: CVE-2022-23613
+    - Some situations where zombie processes could exist have been resolved 
+    - Null-pointer exceptions which can happen in the logging module addressed
+    - Some minor logging errors have been corrected 
+    - The signal handling in sesman has been reworked to prevent race conditions 
+      when a child exits
+    - Logging is improved for security protocol level decisions 
+    - Failure to attach to the memory area shared with xorgxrdp now logged
+    - Remote drive redirection now works if printer redirection is also 
+      requested by the client
+    - config value has been added which allows copy-pasting of files to work 
+      with Nautilus for GNOME 3 versions >= 3.29.92
+    - Fix some regressions in sesman auth modules
+    - Fix TS_PLAY_SOUND_PDU_DATA to set the correct frequency and duration
+    - Fix password leakage to logs in NeutrinoRDP module
+- Remove *.txt as docs because of files not found (improvements in man pages)
+
+-------------------------------------------------------------------
 Fri Mar 25 14:56:37 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adding 'BuildRequires:fuse-devel' and '--enable-fuse' to configure
