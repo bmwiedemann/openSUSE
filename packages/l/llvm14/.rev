@@ -58,4 +58,29 @@ disable the corresponding tests.
 - Use ThinLTO with lld on i586.</comment>
     <requestid>974221</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>df9c13c56575019f04feed6a58331400</srcmd5>
+    <version>14.0.4</version>
+    <time>1653907318</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 14.0.4.
+  * This release contains bug-fixes for the LLVM 14.0.0 release.
+    This release is API and ABI compatible with 14.0.0.
+- Don't use gold for linking anymore: on s390x we use ld.bfd with
+  LLVMgold.so, on ppc64 we disable ThinLTO for now.
+- Using ld.bfd on s390x exposed an issue with the existing
+  llvm_build_tablegen_component_as_shared_library.patch: linking
+  llvm-tblgen with libLLVM.so means we also have to link libraries
+  used for that (like LLVMTableGenGlobalISel) with libLLVM.so.
+- Rewrite summary and description for llvm-gold to point out that
+  it can also be used with ld.bfd, recommend with binutils.
+- Prefer RPM macros over shell scripting, so that we can better
+  inspect the build script with substitutions in place.
+- More memory for stage 1 build jobs due to recent OOMs.
+- Add %_libclang_sonum RPM macro to llvm-devel, since that might
+  now diverge from %_llvm_sonum.
+- Rebase llvm-do-not-install-static-libraries.patch.
+</comment>
+    <requestid>979618</requestid>
+  </revision>
 </revisionlist>

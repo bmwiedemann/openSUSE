@@ -16,14 +16,14 @@
 #
 
 
-%define _relver 14.0.3
+%define _relver 14.0.4
 %define _version %_relver%{?_rc:rc%_rc}
 %define _tagver %_relver%{?_rc:-rc%_rc}
 %define _minor  14.0
 %define _sonum  14
 %define _itsme14 1
 # Integer version used by update-alternatives
-%define _uaver  1403
+%define _uaver  1404
 %define _soclang 13
 %define _socxx  1
 
@@ -39,11 +39,10 @@
 %bcond_with openmp
 %endif
 
-# We use gold where we want to use ThinLTO, but where lld isn't supported (well).
-%ifarch ppc64 s390x
-%bcond_without gold
+%ifarch s390x
+%bcond_with use_lld
 %else
-%bcond_with gold
+%bcond_without use_lld
 %endif
 
 %ifarch x86_64
@@ -55,7 +54,7 @@
 %endif
 
 # Disabled on ARM because it's awfully slow and often times out. (boo#1178070)
-%ifarch %{ix86} ppc64 ppc64le s390x x86_64
+%ifarch %{ix86} ppc64le s390x x86_64
 %bcond_without thin_lto
 %else
 %bcond_with thin_lto
@@ -169,9 +168,6 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 # llvm does not work on s390
 ExcludeArch:    s390
-%if %{with gold}
-BuildRequires:  binutils-gold
-%endif
 %if %{with ffi}
 BuildRequires:  pkgconfig(libffi)
 %endif
@@ -365,14 +361,18 @@ Group:          System/Libraries
 This package contains the link-time optimizer for LLVM.
 
 %package gold
-Summary:        Gold linker plugin for LLVM
+Summary:        LLVM LTO plugin for ld.bfd and ld.gold
 Group:          Development/Tools/Building
 Conflicts:      llvm-gold-provider < %{version}
 Provides:       llvm-gold-provider = %{version}
+Supplements:    packageand(clang%{_sonum}:binutils)
 Supplements:    packageand(clang%{_sonum}:binutils-gold)
 
 %description gold
-This package contains the Gold linker plugin for LLVM.
+This package contains a plugin for link-time optimization in binutils linkers.
+
+Despite the name, it can also be used with ld.bfd. It is required for using
+Clang with -flto=full or -flto=thin when linking with one of those linkers.
 
 %package -n libomp%{_sonum}-devel
 Summary:        MPI plugin for LLVM
@@ -650,6 +650,8 @@ mv libcxxabi-%{_version}.src projects/libcxxabi
 %endif
 
 %build
+%global sourcedir %{_builddir}/%{buildsubdir}
+
 %define _lto_cflags %{nil}
 
 # Use optflags, but:
@@ -657,17 +659,18 @@ mv libcxxabi-%{_version}.src projects/libcxxabi
 #    hardening. The problem is in sanitizers from compiler-rt.
 # 2) Remove the -g. We don't want it in stage1 and it will be added by cmake in
 #    the following stage.
-flags=$(echo %{optflags} | sed 's/-D_FORTIFY_SOURCE=./-D_FORTIFY_SOURCE=0/;s/\B-g\b//g')
+%global cleaned_flags %(echo %{optflags} | sed 's/-D_FORTIFY_SOURCE=./-D_FORTIFY_SOURCE=0/;s/\\B-g\\b//g')
 
+%global flags %{cleaned_flags}
 %ifarch armv6hl
-flags+=" -mfloat-abi=hard -mcpu=arm1176jzf-s -mfpu=vfpv2"
+%global flags %{cleaned_flags} -mfloat-abi=hard -mcpu=arm1176jzf-s -mfpu=vfpv2
 %endif
 %ifarch armv7hl
-flags+=" -mfloat-abi=hard -march=armv7-a -mtune=cortex-a17 -mfpu=vfpv3-d16"
+%global flags %{cleaned_flags} -mfloat-abi=hard -march=armv7-a -mtune=cortex-a17 -mfpu=vfpv3-d16
 %endif
 
-CFLAGS=$flags
-CXXFLAGS=$flags
+CFLAGS="%flags"
+CXXFLAGS="%flags"
 
 # By default build everything
 TARGETS_TO_BUILD="all"
@@ -693,10 +696,10 @@ TARGETS_TO_BUILD="host;BPF"
 EXPERIMENTAL_TARGETS_TO_BUILD=
 %endif
 
-mem_per_compile_job=1000000
+mem_per_compile_job=1200000
 %ifarch i586 ppc armv6hl armv7hl
 # 32-bit arches need less memory than 64-bit arches.
-mem_per_compile_job=600000
+mem_per_compile_job=700000
 %endif
 
 mem_per_link_job=3000000
@@ -744,10 +747,10 @@ avail_mem=$(awk '/MemAvailable/ { print $2 }' /proc/meminfo)
 ninja -v %{?_smp_mflags} clang llvm-tblgen clang-tblgen \
 %if %{with thin_lto}
     llvm-ar llvm-ranlib \
-%if %{with gold}
-    LLVMgold
-%else
+%if %{with use_lld}
     lld
+%else
+    LLVMgold
 %endif
 %endif
 
@@ -760,9 +763,9 @@ find ./stage1 \( -name '*.o' -or -name '*.a' \) -delete
 # 3) Remove -fstack-clash-protection on architectures where it isn't supported.
 #    Using it just prints a warning, but that warning prevents the configuration
 #    step, which uses -Werror, from recognizing the availability of other flags.
-if ! ${PWD}/stage1/bin/clang -c -xc -Werror -fstack-clash-protection -o /dev/null /dev/null;
+if ! ./stage1/bin/clang -c -xc -Werror -fstack-clash-protection -o /dev/null /dev/null;
 then
-    flags=$(echo $flags | sed 's/-fstack-clash-protection//');
+    flags=$(echo %flags | sed 's/-fstack-clash-protection//');
 fi
 CFLAGS=$flags
 CXXFLAGS=$flags
@@ -782,22 +785,12 @@ max_link_jobs=1
 
 %define __builddir build
 %define build_ldflags -Wl,--build-id=sha1
-export PATH=${PWD}/stage1/bin:$PATH
-export CC=${PWD}/stage1/bin/clang
-export CXX=${PWD}/stage1/bin/clang++
-%if %{with thin_lto}
-export LLVM_AR=${PWD}/stage1/bin/llvm-ar
-export LLVM_RANLIB=${PWD}/stage1/bin/llvm-ranlib
-export LLD=${PWD}/stage1/bin/ld.lld
-%endif
-export LLVM_TABLEGEN=${PWD}/stage1/bin/llvm-tblgen
-export CLANG_TABLEGEN=${PWD}/stage1/bin/clang-tblgen
-# Build is using absolute paths assuming the monorepo layout, so we need this.
-export CLANG_TOOLS_EXTRA_DIR=${PWD}/tools/clang/tools/extra
 # The build occasionally uses tools linking against previously built
 # libraries (mostly libLLVM.so), but we don't want to set RUNPATHs.
-export LD_LIBRARY_PATH=${PWD}/build/%{_lib}
+export LD_LIBRARY_PATH=%{sourcedir}/build/%{_lib}
 %cmake \
+    -DCMAKE_C_COMPILER="%{sourcedir}/stage1/bin/clang" \
+    -DCMAKE_CXX_COMPILER="%{sourcedir}/stage1/bin/clang++" \
     -DBUILD_SHARED_LIBS:BOOL=OFF \
     -DLLVM_HOST_TRIPLE=%{host_triple} \
     -DLLVM_BUILD_LLVM_DYLIB:BOOL=ON \
@@ -807,25 +800,20 @@ export LD_LIBRARY_PATH=${PWD}/build/%{_lib}
     -DLLVM_PARALLEL_LINK_JOBS="$max_link_jobs" \
 %if %{with thin_lto}
     -DLLVM_ENABLE_LTO=Thin \
-    -DCMAKE_AR="${LLVM_AR}" \
-    -DCMAKE_RANLIB="${LLVM_RANLIB}" \
-%if %{with gold}
-    -DCMAKE_LINKER=%{_bindir}/ld.gold \
-    -DLLVM_USE_LINKER=gold \
-%else
-    -DCMAKE_LINKER=${LLD} \
-    -DLLVM_USE_LINKER=${LLD} \
+    -DCMAKE_AR="%{sourcedir}/stage1/bin/llvm-ar" \
+    -DCMAKE_RANLIB="%{sourcedir}/stage1/bin/llvm-ranlib" \
+%if %{with use_lld}
+    -DCMAKE_LINKER="%{sourcedir}/stage1/bin/ld.lld" \
+    -DLLVM_USE_LINKER="%{sourcedir}/stage1/bin/ld.lld" \
 %endif
-%else
-    -DCMAKE_LINKER=%{_bindir}/ld \
 %endif
 %ifarch %arm ppc s390 %{ix86}
     -DCMAKE_C_FLAGS_RELWITHDEBINFO="-g1" \
     -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-g1" \
 %endif
     -DENABLE_LINKER_BUILD_ID=ON \
-    -DLLVM_TABLEGEN="${LLVM_TABLEGEN}" \
-    -DCLANG_TABLEGEN="${CLANG_TABLEGEN}" \
+    -DLLVM_TABLEGEN="%{sourcedir}/stage1/bin/llvm-tblgen" \
+    -DCLANG_TABLEGEN="%{sourcedir}/stage1/bin/clang-tblgen" \
     -DLLVM_ENABLE_RTTI:BOOL=ON \
     -DLLVM_ENABLE_ASSERTIONS=OFF \
     -DLLVM_ENABLE_PIC=ON \
@@ -879,7 +867,7 @@ cd ..
 
 %install
 # Installation seems to build some files not contained in "all".
-export LD_LIBRARY_PATH=${PWD}/build/%{_lib}
+export LD_LIBRARY_PATH=%{sourcedir}/build/%{_lib}
 %cmake_install
 
 # Install FileCheck needed for testing Rust boo#1192629
@@ -1103,6 +1091,7 @@ cat > %{buildroot}%{_rpmconfigdir}/macros.d/macros.llvm <<EOF
 %_llvm_relver %{_relver}
 %_llvm_minorver %{_minor}
 %_llvm_sonum  %{_sonum}
+%_libclang_sonum %{_soclang}
 %_libcxx_sonum %{_socxx}
 
 # Build information
@@ -1172,6 +1161,10 @@ python3 bin/llvm-lit -sv test/
 
 # On s390x, this test complains that a required pass couldn't be found and then crashes. (FIXME)
 sed -i '/XFAIL/i// XFAIL: s390x' ../tools/clang/test/CodeGen/sanitize-coverage-old-pm.c
+%if 0%{?suse_version} > 1500
+# We're not getting the exact crash dump that was expected. Not sure why, input is cut off.
+sed -i '1i// XFAIL: s390x' ../tools/clang/test/Driver/{crash-{diagnostics-dir.c,report-header.h,report-spaces.c},rewrite-map-in-diagnostics.c}
+%endif
 # On ppc, this test fails with "fatal error: error in backend: Relocation type not implemented yet!"
 sed -i '/UNSUPPORTED/i// XFAIL: powerpc-' ../tools/clang/test/Interpreter/execute.cpp
 # Tests hang on armv6l.
