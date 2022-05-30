@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun May 29 20:06:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.15.0:
+  * JPEG: Better handling of PixelAspectRatio.
+  * OpenEXR: Fix DWAA compression default level.
+  * Perf: Huge speed-up of case-insensitive string comparisons
+  * New ImageBufAlgo::st_warp() (and oiiotool --st_warp) perform warping of
+    an image where a second image gives the (s,t) coordinates to look up from at
+    every pixel. #3379
+  * Python: Add ImageSpec and ParamValueList method get_bytes_attribute(),
+    which is like get_string_attribute(), but returns the string as a Python
+    bytes object. In Python 3, strings are UTF-8, so this can be useful if you
+    know that a string attribute might contain non-UTF8 data. #3396 
+
+-------------------------------------------------------------------
 Fri Apr  8 06:26:36 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - version update to 2.3.14.0:

@@ -34,13 +34,13 @@
 %define so_ver 2_3
 %define major_minor_ver 2.3
 Name:           OpenImageIO
-Version:        2.3.14.0
+Version:        2.3.15.0
 Release:        0
 Summary:        Library for Reading and Writing Images
 License:        BSD-3-Clause
 Group:          Productivity/Graphics/Other
 URL:            https://www.openimageio.org/
-Source0:        https://github.com/OpenImageIO/oiio/archive/Release-%{version}.tar.gz#/oiio-%{version}.tar.gz
+Source0:        https://github.com/OpenImageIO/oiio/archive/refs/tags/v%{version}.tar.gz#/oiio-%{version}.tar.gz
 # NOTE: Please don't uncomment a build requirement unless you have submitted the package to factory and it exists
 #BuildRequires:  Field3D-devel
 BuildRequires:  cmake >= 3.12
