@@ -583,4 +583,12 @@
     this and related tweaks should fix some deprecation warnings under Python 3.10.</comment>
     <requestid>973836</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>6452fdcc6c5a825875cd93b127eb7413</srcmd5>
+    <version>2.11.0</version>
+    <time>1653907362</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979467</requestid>
+  </revision>
 </revisionlist>
