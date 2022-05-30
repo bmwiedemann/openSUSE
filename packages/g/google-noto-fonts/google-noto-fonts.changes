@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May 26 23:07:18 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+- Switch back to hinted ttf as unhinted otf causes blurring (boo#1199938)
+
+-------------------------------------------------------------------
+Tue May 24 23:19:22 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+- Add obsoletes and provides for:
+  - noto-mono-fonts: Got merged into noto-sans-mono-fonts
+  - noto-sans-syriac* variants: Got merged into noto-sans-syriac-fonts
+  - noto-sans-tibetan-fonts: Got renamed to noto-serif-tibetan-fonts
+- Update to version 20220524
+  - Updated Noto Sans Myanmar and Noto Sans Tangsa Fonts
+
+-------------------------------------------------------------------
 Thu May 19 15:10:51 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 - Clarify sources

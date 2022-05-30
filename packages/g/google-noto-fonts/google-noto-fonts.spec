@@ -18,7 +18,7 @@
 
 %define hyear     2022
 %define hmonth    05
-%define hday      16
+%define hday      24
 
 %define src_name  NotoFonts
 
@@ -32,7 +32,7 @@ License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://github.com/googlefonts/noto-fonts
 # Generate Source0 via generate-fonts-and-specfile.sh
-Source0:        otf.tar.gz
+Source0:        ttf.tar.gz
 Source1:        generate-fonts-and-specfile.sh
 Source2:        LICENSE
 BuildRequires:  fontpackages-devel
@@ -1399,6 +1399,10 @@ Group:          System/X11/Fonts
 Recommends:     google-noto-fonts-doc
 Obsoletes:      noto-sans-mono < %{version}
 Provides:       noto-sans-mono = %{version}
+Obsoletes:      noto-mono < %{version}
+Provides:       noto-mono = %{version}
+Obsoletes:      noto-mono-fonts < %{version}
+Provides:       noto-mono-fonts = %{version}
 %reconfigure_fonts_prereq
 
 %description -n noto-sans-mono-fonts
@@ -2023,6 +2027,18 @@ Group:          System/X11/Fonts
 Recommends:     google-noto-fonts-doc
 Obsoletes:      noto-sans-syriac < %{version}
 Provides:       noto-sans-syriac = %{version}
+Obsoletes:      noto-sans-syriacwestern < %{version}
+Provides:       noto-sans-syriacwestern = %{version}
+Obsoletes:      noto-sans-syriacwestern-fonts < %{version}
+Provides:       noto-sans-syriacwestern-fonts = %{version}
+Obsoletes:      noto-sans-syriacestrangela < %{version}
+Provides:       noto-sans-syriacestrangela = %{version}
+Obsoletes:      noto-sans-syriacestrangela-fonts < %{version}
+Provides:       noto-sans-syriacestrangela-fonts = %{version}
+Obsoletes:      noto-sans-syriaceastern < %{version}
+Provides:       noto-sans-syriaceastern = %{version}
+Obsoletes:      noto-sans-syriaceastern-fonts < %{version}
+Provides:       noto-sans-syriaceastern-fonts = %{version}
 %reconfigure_fonts_prereq
 
 %description -n noto-sans-syriac-fonts
@@ -2894,6 +2910,10 @@ Group:          System/X11/Fonts
 Recommends:     google-noto-fonts-doc
 Obsoletes:      noto-serif-tibetan < %{version}
 Provides:       noto-serif-tibetan = %{version}
+Obsoletes:      noto-sans-tibetan < %{version}
+Provides:       noto-sans-tibetan = %{version}
+Obsoletes:      noto-sans-tibetan-fonts < %{version}
+Provides:       noto-sans-tibetan-fonts = %{version}
 %reconfigure_fonts_prereq
 
 %description -n noto-serif-tibetan-fonts
@@ -2976,13 +2996,13 @@ cp %{SOURCE2} .
 mkdir -p %{buildroot}%{_ttfontsdir}
 # Tifinagh fonts have duplicates in NotoSansTifinagh folder
 # https://github.com/googlefonts/noto-fonts/issues/2177 and https://github.com/googlefonts/noto-fonts/issues/2326
-rm otf/NotoSansTifinagh/NotoSansTifinagh[!\-]*
+rm ttf/NotoSansTifinagh/NotoSansTifinagh[!\-]*
 
 # NotoSansDisplay is already provided by NotoSans
 # Also they have inconsistent family names: https://github.com/googlefonts/noto-fonts/issues/2315
-rm -r otf/NotoSansDisplay/
+rm -r ttf/NotoSansDisplay/
 
-cp otf/*/*.otf   %{buildroot}%{_ttfontsdir}/
+cp ttf/*/*.ttf   %{buildroot}%{_ttfontsdir}/
 
 %reconfigure_fonts_scriptlets -n noto-arimo-fonts
 

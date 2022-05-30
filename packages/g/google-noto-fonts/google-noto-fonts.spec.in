@@ -18,7 +18,7 @@
 
 %define hyear     2022
 %define hmonth    05
-%define hday      16
+%define hday      24
 
 %define src_name  NotoFonts
 
@@ -32,7 +32,7 @@ License:        OFL-1.1
 Group:          System/X11/Fonts
 Url:            https://github.com/googlefonts/noto-fonts
 # Generate Source0 via generate-fonts-and-specfile.sh
-Source0:        otf.tar.gz
+Source0:        ttf.tar.gz
 Source1:        generate-fonts-and-specfile.sh
 Source2:        LICENSE
 BuildRequires:  fontpackages-devel
@@ -61,13 +61,13 @@ cp %{SOURCE2} .
 mkdir -p %{buildroot}%{_ttfontsdir}
 # Tifinagh fonts have duplicates in NotoSansTifinagh folder
 # https://github.com/googlefonts/noto-fonts/issues/2177 and https://github.com/googlefonts/noto-fonts/issues/2326
-rm otf/NotoSansTifinagh/NotoSansTifinagh[!\-]*
+rm ttf/NotoSansTifinagh/NotoSansTifinagh[!\-]*
 
 # NotoSansDisplay is already provided by NotoSans
 # Also they have inconsistent family names: https://github.com/googlefonts/noto-fonts/issues/2315
-rm -r otf/NotoSansDisplay/
+rm -r ttf/NotoSansDisplay/
 
-cp otf/*/*.otf   %{buildroot}%{_ttfontsdir}/
+cp ttf/*/*.ttf   %{buildroot}%{_ttfontsdir}/
 
 @SUBPACKAGE_SCRIPTLETS@
 

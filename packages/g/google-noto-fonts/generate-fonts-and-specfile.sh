@@ -1,10 +1,10 @@
 #!/bin/sh
 pkg_name="google-noto-fonts"
-font_dir="otf"
+font_dir="ttf"
 
 # Get only the otf fonts
-svn checkout https://github.com/googlefonts/noto-fonts/trunk/unhinted/otf
-tar -cvzf otf.tar.gz otf
+svn checkout https://github.com/googlefonts/noto-fonts/trunk/hinted/$font_dir
+tar -cvzf $font_dir.tar.gz $font_dir
 
 cp -f $pkg_name.spec.in $pkg_name.spec
 ls $font_dir/ | sed -e 's:Noto::' -e 's:-.*\..tf::' -e 's:\..tf::' -e 's:\.ttc::' | sort -f | uniq | while read font; do
@@ -32,6 +32,12 @@ ls $font_dir/ | sed -e 's:Noto::' -e 's:-.*\..tf::' -e 's:\..tf::' -e 's:\.ttc::
   fi
   if [ $packagename == "noto-sans" ]; then
     OBSOLETES=($packagename 'noto-sans-display' 'noto-sans-display-fonts')
+  elif [ $packagename == "noto-serif-tibetan" ]; then
+    OBSOLETES=($packagename 'noto-sans-tibetan' 'noto-sans-tibetan-fonts')
+  elif [ $packagename == "noto-sans-syriac" ]; then
+    OBSOLETES=($packagename 'noto-sans-syriacwestern' 'noto-sans-syriacwestern-fonts' 'noto-sans-syriacestrangela' 'noto-sans-syriacestrangela-fonts' 'noto-sans-syriaceastern' 'noto-sans-syriaceastern-fonts')
+  elif [ $packagename == "noto-sans-mono" ]; then
+    OBSOLETES=($packagename 'noto-mono' 'noto-mono-fonts')
   else
     OBSOLETES=($packagename)
   fi
