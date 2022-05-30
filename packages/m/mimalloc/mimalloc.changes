@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 29 19:39:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.6:
+  * long list of fixes, see https://github.com/microsoft/mimalloc/compare/v2.0.3...v2.0.6 
+
+-------------------------------------------------------------------
 Tue Feb  1 09:52:20 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Fix libname.
