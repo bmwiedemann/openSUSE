@@ -561,4 +561,14 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
   * Fixed BUFR, GRIB and HDF5 stub saving #6071</comment>
     <requestid>967882</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>1900559d8040ad43c00035fd0f2fcbd3</srcmd5>
+    <version>9.1.1</version>
+    <time>1653907328</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 9.1.1 (bsc#1199713, CVE-2022-30595):
+  * When reading past the end of a TGA scan line, reduce bytes left. CVE-2022-30595
+  * Do not open images with zero or negative height #6269</comment>
+    <requestid>979708</requestid>
+  </revision>
 </revisionlist>
