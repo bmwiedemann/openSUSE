@@ -1,0 +1,61 @@
+Index: PcapPlusPlus-22.05/mk/install.sh.template
+===================================================================
+--- PcapPlusPlus-22.05.orig/mk/install.sh.template
++++ PcapPlusPlus-22.05/mk/install.sh.template
+@@ -4,32 +4,24 @@ set -e # Exit with nonzero exit code if
+ INSTALL_DIR={{INSTALL_DIR}}
+ 
+ # copy libs
+-mkdir -p $INSTALL_DIR/lib
+-cp libCommon++.a libPacket++.a libPcap++.a $INSTALL_DIR/lib
++mkdir -p ${DESTDIR}/${PREFIX}/${LIB}
++cp libCommon++.a libPacket++.a libPcap++.a ${DESTDIR}/${PREFIX}/${LIB}
+ 
+-# copy header files
+-mkdir -p $INSTALL_DIR/include
+-mkdir -p $INSTALL_DIR/include/pcapplusplus
+-cp header/* $INSTALL_DIR/include/pcapplusplus
+-
+-# copy examples
+-if [ -d "examples/" ]
+-then
+-  mkdir -p $INSTALL_DIR/bin
+-  cp examples/* $INSTALL_DIR/bin
+-fi
++mkdir -p ${DESTDIR}/${INCLUDEDIR}
++mkdir -p ${DESTDIR}/${INCLUDEDIR}/pcapplusplus
++cp header/* ${DESTDIR}/${INCLUDEDIR}/pcapplusplus
+ 
+ # create template makefile
+-cp mk/PcapPlusPlus.mk PcapPlusPlus.mk
++cp ../mk/PcapPlusPlus.mk PcapPlusPlus.mk
+ sed -i.bak '/PCAPPLUSPLUS_HOME :=/d' PcapPlusPlus.mk && rm PcapPlusPlus.mk.bak
+ sed -i.bak '/# libs dir/d' PcapPlusPlus.mk && rm PcapPlusPlus.mk.bak
+ sed -i.bak '/PCAPPP_LIBS_DIR :=/d' PcapPlusPlus.mk && rm PcapPlusPlus.mk.bak
+-sed -i.bak "s|PCAPPP_INCLUDES :=.*|PCAPPP_INCLUDES := -I$INSTALL_DIR/include/pcapplusplus|g" PcapPlusPlus.mk && rm PcapPlusPlus.mk.bak
++sed -i.bak "s|PCAPPP_INCLUDES :=.*|PCAPPP_INCLUDES := -I${INCLUDEDIR}/pcapplusplus|g" PcapPlusPlus.mk && rm PcapPlusPlus.mk.bak
+ 
+ # create PcapPlusPlus.pc
+-echo prefix=$INSTALL_DIR>PcapPlusPlus.pc
++echo prefix=${PREFIX}>PcapPlusPlus.pc
+ echo 'exec_prefix=${prefix}'>>PcapPlusPlus.pc
+-echo 'libdir=${exec_prefix}/lib'>>PcapPlusPlus.pc
++echo 'libdir=${exec_prefix}/'${LIB}>>PcapPlusPlus.pc
+ echo 'includedir=${prefix}/include'>>PcapPlusPlus.pc
+ echo>>PcapPlusPlus.pc
+ echo 'Name: PcapPlusPlus'>>PcapPlusPlus.pc
+@@ -45,10 +37,9 @@ grep PCAPPP_INCLUDES PcapPlusPlus.mk | s
+ printf '\n'>>PcapPlusPlus.pc
+ 
+ # copy template makefile
+-mkdir -p $INSTALL_DIR/etc
+-mv PcapPlusPlus.mk $INSTALL_DIR/etc
++#mkdir -p $INSTALL_DIR/etc
++#mv PcapPlusPlus.mk $INSTALL_DIR/etc
+ 
+ # copy PcapPlusPlus.pc
+-PKG_CONFIG_PATH="${PKG_CONFIG_PATH:-$INSTALL_DIR/lib/pkgconfig}"
+-mkdir -p $PKG_CONFIG_PATH
+-mv PcapPlusPlus.pc $PKG_CONFIG_PATH
++mkdir -p ${DESTDIR}${PREFIX}/${LIB}/pkgconfig
++mv PcapPlusPlus.pc ${DESTDIR}${PREFIX}/${LIB}/pkgconfig

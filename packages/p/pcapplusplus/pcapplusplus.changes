@@ -1,0 +1,348 @@
+-------------------------------------------------------------------
+Fri May 27 06:54:46 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Drop unused pcap++-dpdk.patch for the time being
+
+-------------------------------------------------------------------
+Sun May 22 06:04:09 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 22.05
+  * NTP protocol support
+  * Clone live devices and live devices list
+  * Add support for reading SNOOP capture files
+  * Add an option to supply additional arguments when calling
+    initDpdk()
+  * Detect DPDK installed via pkg-config during PcapPlusPlus
+    configuration
+  * Try modprobe if insmod fails in DPDK setup script
+  * Support parsing of IPv6 over IPv4
+  * TCP reassembly improvmements:
+    + Update timestamp of last packet seen in connection info
+    + Add the timestamp of the received packet in the message
+      callback
+    + Add config parameter to disable OOO buffer cleanup
+  * Remove deprecated methods in IPv4Layer, IPv6Layer and
+    IPcapDevice
+  * Internal changes:
+    + Use standard compiler macros to detect which platform
+      PcapPlusPlus is running on
+    + Add pre-commit hooks to detect spelling mistakes, trailing
+      spaces, wrong end-of-file, and more
+    + Run Black formatter on all Python files
+  * Tons of bug fixes and minor improvements
+- Refreshed pcap++-dpdk.patch and pcap++-paths.patch
+- Disabled dpdk due to breaking changes
+
+-------------------------------------------------------------------
+Tue Nov  9 09:03:56 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 21.11
+  * DPDK 20.11 support
+  * Support uio_pci_generic and vfio-pci kernel modules in DPDK
+    setup script
+  * Add the stream operator << to IP address and MAC address
+    classes
+  * Add the stream operator << to Packet and Layer
+  * Add DHCPv6 protocol support
+  * Get the full timestamp resolution from a standard pcap file
+  * Add a new Packet constructor that uses a pre-allocated buffer
+  * Add src/dst IP address setters in IPv6 layer
+  * Add musl support
+  * Support loopback interface in PfRingDeviceList
+  * Modernize PcapPlusPlus examples and tutorials
+  * Add IPv6 support in DNS Spoofing example
+  * Convert TLVRecord to a templated class that can represent
+    records with any type and length size
+  * Convert PPPoE tags to use the TLV infrastructure
+  * Modernize PcapPlusPlus test infrastructure:
+    + Simplify string and object asserts
+    + Replace printf with std::cout
+  * Refactor and modernize PcapPlusPlus logger
+  * Implement VlanLayet::computeCalculateFields() to calculate
+    the next EtherType
+  * Parse the 802.1ad QinQ EtherType as VlanLayer
+  * Replace c-style string copy (sprintf) with cpp-style string
+    copy using sstreams
+  * Tons of bug fixes
+
+-------------------------------------------------------------------
+Wed May 19 09:22:08 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 21.05
+  * TLS fingerprinting based on JA3
+    + Extract TLS fingerprints from TLS ClientHello and
+      ServerHello packets
+    + TLS fingerprinting example app
+  * TLS 1.3 support
+  * A brand new DPDK setup script written in Python that makes
+    it easier to setup DPDK
+  * Significant size reduction of PcapPlusPlus compiled libraries
+  * Calculate a packet's network data size before sending a
+    packet and make sure it doesn't exceed the MTU
+  * UDP multicast support
+    + Add isMulticast() property to IPAddress, IPv4Address,
+      IPv6Address
+    + PcapSplitter: take into consideration multicast packets
+      when splitting by client/server IP/port
+  * New protocol support:
+    + SSH (parsing only)
+    + IP Sec (AH + ESP, parsing only)
+  * Existing protocol enhancement:
+    + DNS over TCP
+    + Parse 2 new TLS extensions: Supported Groups and EC Point
+      Format
+    + Added a new IPLayer interface to abstract IPv4Layer and
+      IPv6Layer
+    + Added convenient methods to fetch source and dest ports in
+      TCP and UDP layers
+    + GRE layer - add Transparent Ethernet Bridging support
+  * Major header files cleanup: remove platform-specific
+    includes, remove pcap.h from PcapPlusPlus includes, remove
+    redundant header files, replace c-str arguments with C++
+    std::string
+  * New API method to search PcapLiveDevice by IP address or name
+  * Parse packets with link type of LINKTYPE_IPV4 and
+    LINKTYPE_IPV6
+  * TCP reassembly
+    + Add configurable out-of-order packets per flow limit
+    + Expose missing bytes size on data loss
+  * hash5Tuple improvements
+  * Fix Makefile dependencies - detect when header files are
+    changed
+  * Recognize *.zstd file extension in
+    IFileReaderDevice::getReader()
+  * Moved a large portion of PcapPlusPlus CI to GitHub Actions
+  * Tons of bug fixes
+- Refresh pcap++-paths.patch
+
+-------------------------------------------------------------------
+Wed Aug 26 08:05:34 UTC 2020 - aloisio@gmx.com
+
+- Update to version 20.08
+  * Major security and quality improvements:
+    + PcapPlusPlus was added to Google OSS-Fuzz which uses the
+      Fuzz testing technique to discover security
+      vulnerabilities and stability bugs
+    + Created a new regression test suite for OSS-Fuzz bugfixes
+      under Tests/Fuzzers/RegressionTests
+    + Added LGTM integration to enable continuous code analysis
+      and prevent critical vulnerabilities
+    + More than 60 issues were found by OSS-Fuzz and LGTM and
+      fixed in this release
+    + Revamped Packet++Test and Pcap++Test: tests are now more
+      structured, divided into multiple files and use common and
+      more intuitive test infrastructure
+    + Added a new test suite (written in Python) for
+      PcapPlusPlus examples under Tests/ExamplesTests
+  * Added DPDK 19.11 (LTS) support
+  * New supported protocols:
+    + BGP v4
+    + IEEE 802.3 Ethernet
+  * A complete rewrite of the IP address classes IPv4Address,
+    IPv6Address and IPAddress to make them more efficient and
+    easy to use
+  * In addition, new features were added to IP address classes:
+    + Added "less than" comparison operator
+    + Added subnet match for IPv6Address
+  * Performance optimization, readability improvements and code
+    cleanup in various parts of the code
+  * Integrated streaming ZStd compression for pcapng files
+  * Pcap/pcapng files:
+    + Read and write in nanoseconds precision for pcapng files
+    + Enable flush for pcap and pcapng file writers
+  * TCP reassembly returns status in every call to
+    TcpReassembly::reassemblePacket()
+  * Added port filter to HttpAnalyzer
+  * Support for setting snapshot length in PcapLiveDevice
+  * GeneralFilter::matchPacketWithFilter() can now match packet
+    of any link type
+  * Added user link types 147-162 to support custom protocols
+  * Tons of bug fixes
+
+-------------------------------------------------------------------
+Wed Dec  4 08:51:23 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 19.12
+  * Added support for DPDK 19.08 (thanks @gx740 !)
+  * Major improvements in TCP reassembly (thanks @gx740 !):
+    + Reducing memory consumption by cleaning up old connections
+    + A lot of performance and code optimizations
+  * Added support for GTP v1 protocol
+  * Added DPDK KNI support (thanks @echo-Mike !)
+  * Added KniPong example to demo the new KNI API (thanks
+    @echo-Mike !)
+  * Lots of performance optimizations and code cleanups (special
+    thanks to @gx740 !)
+  * Major revamp of reading/writing pcapng files - use streaming
+    instead of memory copies and added support for compression
+    (thanks @Dysl3xik !)
+  * Added support for pcap_setdirection in PcapLiveDevice
+    (thanks @MrSiz !)
+  * Performance optimization and fixes in IPReassembly (thanks
+    @gx740, @silviucpp !)
+  * Added a new BPFStringFilter pcap filter to handle raw BPF
+    filter strings and deprecated the old
+    IPcapDevice::matchPacketWithFilter() API (thanks @Dysl3xik !)
+  * Let the user add custom LDFLAGS to the main Makefile (thanks
+    @rom1sqr !)
+  * Added data validations in IPv4Layer before parsing the next
+    layers (thanks @gx740 !)
+  * Created a new unit-test framework to make it easier to write
+    unit-tests
+  * Replaced old 3rd-party debug-new with new homegrown
+    MemPlumber
+  * Tons of bug fixes (special thanks to @gx740 , @echo-Mike ,
+    @Dysl3xik !)
+
+-------------------------------------------------------------------
+Tue Apr  2 08:19:25 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 19.04
+  * DPDK support enhancements
+    + Added support for the newest DPDK releases: 18.05, 18.08,
+      18.11, 19.02
+    + Added a new DpdkBridge example which is a PcapPlusPlus
+      implementation for DPDK's L2 forwarding example - Thanks
+      @vicenterb !
+    + Added a new tutorial for using PcapPlusPlus with DPDK
+      which walks through building a simple version of DpdkBridge
+  * Packet parsing and crafting enhancements
+    + Added RADIUS layer
+    + Revamped DNS record API and added support for DNS MX
+      records
+    + Revamped remove layer from packet - removing a layer is
+      more intuitive now + added an option to detach a layer
+      from a packet
+    + Revamped TLV data handling - simplified the way IPv4
+      options, TCP options, DHCP options, RADIUS attributes and
+      IPv6 extensions with options are handled. API is now more
+      intuitive and shares a common infrastructure
+    + Fixed bugs in fetching VLAN properties in VlanLayer -
+      thanks @Lapshin !
+  * Added support for raw sockets on Linux and Windows
+    (RawSocketDevice)
+  * Added support for link-types other than Ethernet in
+    PcapLiveDevice - thanks @axasoft !
+  * Exposed start and end times in TCP reassembly - thanks
+    @Lnk2past !
+  * PcapSplitter
+    + Added pcapng support
+    + When splitting by connection, multiple flows with the same
+      5-tuple are now separated to different files
+  * Added filtering capabilities to PcapNgFileWriterDevice -
+    thanks @vrobles-gee !
+  * Added more accurate time measurement for packet capture in
+    blocking mode
+  * Added DeviceConfiguration to PcapLiveDevice to provide an
+    interface to set WinPcap/libpcap packet buffer size and
+    buffer timeout
+  * Refactored the devices class hierarchy (the new root class
+    is now IDevice)
+  * Build system improvements to provide better support for
+    package managers - thanks @solvingj !
+  * Lots of bugfixes
+
+- Refreshed pcap++-dpdk.patch
+
+-------------------------------------------------------------------
+Thu Oct 18 11:05:03 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 18.08
+  * Massive DPDK enhancements:
+    + Major performance improvements
+    + Fixed some mbuf leakages
+    + DPDK 17.11 and 18.02 support (thanks @luigino !)
+    + Re-designed some of DpdkDevice APIs to make them cleaner,
+      faster and easier to use
+    + Expose DPDK-specific stats
+    + RSS (Receive Side Scaling) support
+    + DPDK TX buffers support
+    + Enable DPDK master core configuration
+  * Added IP reassembly module (a.k.a IP de-fragmenetation).
+    Supports both IPv4 and IPv6
+  * Added IPv6 support for TCP reassembly
+  * Install to custom directory on Linux and MacOS
+  * Performance improvement in packet parsing
+  * Fixed compatibility issues with C++17 (thanks @echo-Mike !)
+  * Read multiple packets from pcap/pcapng files
+  * Build system improvements (thanks @echo-Mike !)
+  * New protocols:
+    + Packet trailer (a.k.a footer or padding)
+    + IPv6 extensions
+  * New and updated utilities:
+    + New IPFragUtil for splitting packets into IP fragments
+    + New IPDefragUtil for reassembling IP fragments into packets
+    + PcapSplitter now supports round-robin splitting
+  * Many bugfixes
+
+- Refreshed pcap++-dpdk.patch and pcap++-paths.patch
+
+-------------------------------------------------------------------
+Sun Feb 18 09:00:05 UTC 2018 - aloisio@gmx.com
+
+- Future-proofed pcap++-dpdk.patch
+
+-------------------------------------------------------------------
+Sat Feb 17 10:28:47 UTC 2018 - aloisio@gmx.com
+
+- Reworked pcap++-dpdk.patch and re-enabled dpdk
+
+-------------------------------------------------------------------
+Tue Feb 13 17:38:12 UTC 2018 - aloisio@gmx.com
+
+- Update to version 17.11
+  * Added TCP reassembly module
+  * Set Unilicense as PcapPlusPlus license
+  * Added support for DPDK 16.11 and 17.02 (replacing old 2.1
+    version)
+  * Added 5 tutorials for getting started with PcapPlusPlus:
+    http://seladb.github.io/PcapPlusPlus-Doc/tutorials.html
+  * Added installation target ('make install') on Linux and MacOS
+  * New protocols:
+    + SIP
+    + SDP
+    + IPv4 options
+    + Raw IP link layer type
+    + VXLAN
+  * New and updated utilities:
+    + New TCP reassembly utility
+    + PcapSplitter now includes split criteria in split file names
+      (for example: when splitting by client IP output files will
+      look like: filename-client-ip-x.x.x.x.pcap). This applies
+      also to splitting by server IP, server port and BPF filter
+      (thanks to @bpagon13 !)
+    + PcapSplitter now supports splitting pcap files with link
+      type other than Ethernet
+    + Added version information for all utilities
+  * Choose whether to parse a packet fully or up to a certain layer
+  * Added support for libpcap immediate mode where supported
+    (libpcap ver>=1.5) - thanks to @f-squirrel !
+  * pthreads on MinGW are now linked statically (upgraded pthreads
+    to 2.10)
+  * Added PcapPlusPlus version and Git info API
+  * Clean-ups:
+    + Removed unnecessary files and reduced repo size
+    + Removed compilation warnings
+    + Cleaner makefiles and makefile output
+    + Moved debug-new to 3rd-party
+  * Many bugfixes
+
+- Dropped pcap++-rpmlint.patch and pcap++-big_endian.patch
+  (merged upstream)
+
+- Refreshed pcap++-dpdk.patch
+
+- Added pcap++-paths.patch
+
+- Disabled dpdk until upstream catches up with current version
+
+-------------------------------------------------------------------
+Sat Aug 19 03:18:35 UTC 2017 - aloisio@gmx.com
+
+- Added pcap++-big_endian.patch (solves build failures on ppc64
+  and s390x)
+
+-------------------------------------------------------------------
+Thu Aug 10 07:27:42 UTC 2017 - aloisio@gmx.com
+
+- Initial package (17.02)
