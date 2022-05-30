@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 28 07:37:37 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.22.7
+    * Fixed a crash with the new system notifications on macOS 10.14+.
+
+-------------------------------------------------------------------
 Sat May 21 15:10:09 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
