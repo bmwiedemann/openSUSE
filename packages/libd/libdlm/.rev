@@ -428,4 +428,12 @@
     <comment></comment>
     <requestid>926153</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>ac318c5bbbaccbc4b28fea39aad90db4</srcmd5>
+    <version>4.1.0</version>
+    <time>1653907356</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust BuildRequires libpacemaker-devel -&gt; pkgconfig(pacemaker)</comment>
+    <requestid>979440</requestid>
+  </revision>
 </revisionlist>

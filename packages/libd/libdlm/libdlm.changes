@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 27 06:12:29 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Adjust BuildRequires libpacemaker-devel -> pkgconfig(pacemaker)
+
+-------------------------------------------------------------------
 Mon Oct 18 08:29:00 UTC 2021 - heming.zhao@suse.com
 
 - Update to v4.1.0+ (bsc#1191734)

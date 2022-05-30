@@ -1,7 +1,7 @@
 #
 # spec file for package libdlm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,9 +65,9 @@ Patch106:       bug-1191734_0016-Revert-dlm_controld-use-new-quorum-api-to-detec
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel
 BuildRequires:  libcorosync-devel
-BuildRequires:  libpacemaker-devel
 BuildRequires:  libtool
 BuildRequires:  libxml2-devel
+BuildRequires:  pkgconfig(pacemaker)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 Recommends:     dlm-kmp
@@ -88,7 +88,7 @@ Conflicts:      libdlm2
 Libraries and tools that allow applications, particularly filesystems
 like OCFS2, to interface with the in-kernel distributed lock manager.
 
-%package        devel 
+%package        devel
 Summary:        Development files for the kernel's distributed lock manager
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
