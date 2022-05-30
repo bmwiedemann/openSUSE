@@ -1,7 +1,7 @@
 #
 # spec file for package putty
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           putty
-Version:        0.76
+Version:        0.77
 Release:        0
 Summary:        SSH client with optional GTK-based terminal emulator frontend
 License:        MIT
@@ -32,13 +32,10 @@ Source4:        %name.keyring
 Patch1:         putty-03-config.diff
 Patch2:         reproducible.patch
 BuildRequires:  ImageMagick
+BuildRequires:  cmake
 BuildRequires:  gtk3-devel
 BuildRequires:  krb5-devel
-%if 0%{?suse_version} < 1500
 BuildRequires:  python3-base
-%else
-BuildRequires:  python-base
-%endif
 BuildRequires:  update-desktop-files
 Conflicts:      pssh
 
@@ -55,13 +52,16 @@ openssh, and "putty" is the program that combines both in one.
 %autosetup -p1
 
 %build
-export CFLAGS="%optflags -Wno-error"
-%configure
-make %{?_smp_mflags}
-make %{?_smp_mflags} -C icons cicons pngs
+make -C icons cicons pngs
+#
+# from defs.h: """PuTTY is a security project, so assertions are
+# important""" (-DNDEBUG injected by optflags not allowed)
+#
+%cmake -DCMAKE_C_FLAGS:STRING="%optflags -UNDEBUG"
+%cmake_build
 
 %install
-%make_install
+%cmake_install
 b="%buildroot"
 mkdir -p "$b/%_datadir/applications/"
 cat >"$b/%_datadir/applications/%name.desktop" <<-EOF
@@ -84,12 +84,10 @@ install -m644 icons/xpmputty.c "$b/%_datadir/pixmaps/putty.xpm"
 install -m644 icons/pterm-32.png "$b/%_datadir/pixmaps/pterm.png"
 install -m644 icons/putty-32.png "$b/%_datadir/pixmaps/putty.png"
 
-%check
-make check
-
 %files
-%doc LICENCE doc/*.html
-%doc %_mandir/man*/*
+%license LICENCE
+%doc doc/*.but
+%_mandir/man*/*
 %_bindir/*
 %_datadir/applications/%name.desktop
 %_datadir/pixmaps/*.png

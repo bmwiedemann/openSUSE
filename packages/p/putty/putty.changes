@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat May 28 19:42:12 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.77
+  * Major improvements to network proxy support:
+  * Support for interactively prompting the user if the proxy
+    server requires authentication.
+  * Built-in support for proxying via another SSH server, so that
+    PuTTY will SSH to the proxy and then automatically forward a
+    port through it to the destination host. (Similar to running
+    plink -nc as a subprocess, but more convenient to set up, and
+    allows you to answer interactive prompts presented by the
+    proxy.)
+  * Support for HTTP Digest authentication, when talking to HTTP
+    proxies.
+  * New configuration options for keyboard handling:
+  * Option to control handling of Shift + arrow keys
+  * Extra mode in the function-keys option, for modern xterm
+    (v216 and above).
+  * Crypto update: added side-channel resistance in probabilistic
+    RSA key generation.
+  * Crypto update: retired the use of short Diffie-Hellman
+    exponents.
+
+-------------------------------------------------------------------
 Sun Jul 18 22:20:49 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.76
