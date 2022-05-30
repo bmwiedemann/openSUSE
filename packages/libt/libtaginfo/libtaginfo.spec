@@ -1,7 +1,7 @@
 #
 # spec file for package libtaginfo
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define _sover 1
 Name:           libtaginfo
 Version:        0.2.1
 Release:        0
 Summary:        Library for reading media metadata (tags)
-License:        LGPL-2.1+
-Group:          System/Libraries
-Url:            https://bitbucket.org/shuerhaaken/libtaginfo
+License:        LGPL-2.1-or-later
+Group:          Development/Libraries/C and C++
+URL:            https://bitbucket.org/shuerhaaken/libtaginfo
 Source:         https://bitbucket.org/shuerhaaken/%{name}/downloads/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  autoconf
@@ -31,8 +30,8 @@ BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(taglib) >= 1.9.1
 BuildRequires:  vala
+BuildRequires:  pkgconfig(taglib) >= 1.9.1
 
 %description
 libtaginfo is a convenience wrapper for taglib with C and vala
@@ -43,11 +42,12 @@ AlbumArtist, Comments, Disk number, Compilation flag, User labels,
 Embedded Images, Lyrics, Audio properties (length, bitrate, samplerate,
 channels ...), ...
 
-%package -n %{name}%{_sover}
+%package -n libtaginfo1
 Summary:        Library for reading media metadata (tags)
 Group:          System/Libraries
+Conflicts:      libtaginfo < %{version}-%{release}
 
-%description -n %{name}%{_sover}
+%description -n libtaginfo1
 libtaginfo is a convenience wrapper for taglib with C and vala
 bindings.
 
@@ -56,40 +56,52 @@ AlbumArtist, Comments, Disk number, Compilation flag, User labels,
 Embedded Images, Lyrics, Audio properties (length, bitrate, samplerate,
 channels ...), ...
 
-%package -n %{name}-devel
-Summary:        Development files of libtaginfo
-Group:          Development/Libraries
-Requires:       %{name}%{_sover} = %{version}
+%package -n libtaginfo_c0
+Summary:        Library for reading media metadata (tags)
+Group:          System/Libraries
+Conflicts:      libtaginfo < %{version}-%{release}
 
-%description -n %{name}-devel
+%description -n libtaginfo_c0
+libtaginfo is a convenience wrapper for taglib with C and vala
+bindings.
+
+%package devel
+Summary:        Development files for libtaginfo
+Group:          Development/Libraries
+Requires:       libtaginfo1 = %{version}-%{release}
+Requires:       libtaginfo_c0 = %{version}-%{release}
+
+%description devel
 The libtaglib development package includes the header files, libraries,
 configuration files and development tools necessary for compiling and
 linking application which will use libtaginfo.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf -fi
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n %{name}%{_sover} -p /sbin/ldconfig
+%post   -n libtaginfo1 -p /sbin/ldconfig
+%postun -n libtaginfo1 -p /sbin/ldconfig
+%post   -n libtaginfo_c0 -p /sbin/ldconfig
+%postun -n libtaginfo_c0 -p /sbin/ldconfig
 
-%postun -n %{name}%{_sover} -p /sbin/ldconfig
+%files -n libtaginfo1
+%license COPYING
+%{_libdir}/libtaginfo.so.1*
 
-%files -n %{name}%{_sover}
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING NEWS README
-%{_libdir}/%{name}.so.*
-%{_libdir}/%{name}_c.so.*
+%files -n libtaginfo_c0
+%{_libdir}/libtaginfo_c.so.0*
 
 %files -n %{name}-devel
-%defattr(-, root, root)
+%doc AUTHORS ChangeLog NEWS README
 %{_includedir}/%{name}/
 %{_libdir}/%{name}.so
 %{_libdir}/%{name}_c.so
