@@ -17,7 +17,7 @@
 
 
 Name:           budgie-extras
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Additional Budgie Desktop enhancements for user experience
 License:        GPL-3.0-or-later
@@ -26,8 +26,6 @@ URL:            https://github.com/UbuntuBudgie/%{name}
 Source:         %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-# PATCH-FIX-OPENSUSE Change all shebang lines to /usr/bin/python3
-Patch0:         python3-shebangs.patch
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  meson
@@ -70,9 +68,7 @@ Recommends:     budgie-trash-applet
 Recommends:     budgie-visualspace-applet
 Recommends:     budgie-wallstreet
 Recommends:     budgie-weathershow-applet
-Recommends:     budgie-window-mover-applet
 Recommends:     budgie-window-shuffler
-Recommends:     budgie-workspace-overview-applet
 Recommends:     budgie-workspace-stopwatch-applet
 Recommends:     budgie-workspace-wallpaper-applet
 
@@ -346,26 +342,6 @@ Requires:       procps
 %description -n budgie-weathershow-applet
 WeatherShowII is a completely rewritten version of the existing python WeatherShow applet.
 
-%package -n budgie-window-mover-applet
-Summary:        Window Mover applet
-Group:          System/GUI/Other
-Requires:       dconf
-Requires:       python3-gobject-Gdk
-Requires:       python3-psutil
-Requires:       wmctrl
-Requires:       xdotool
-Requires:       xdpyinfo
-Requires:       xev
-Requires:       xlsatoms
-Requires:       xlsclients
-Requires:       xlsfonts
-Requires:       xprop
-Requires:       xvinfo
-Requires:       xwininfo
-
-%description -n budgie-window-mover-applet
-Budgie WindoMover is an application (applet) to quickly move windows to any of the other workspaces.
-
 %package -n budgie-window-shuffler
 Summary:        Window shuffler applet
 Group:          System/GUI/Other
@@ -382,24 +358,6 @@ Requires:       xwininfo
 
 %description -n budgie-window-shuffler
 GUI and keyboard friendly window arranger for the budgie desktop
-
-%package -n budgie-workspace-overview-applet
-Summary:        Workspace Overview applet
-Group:          System/GUI/Other
-Requires:       python3-gobject-Gdk
-Requires:       python3-psutil
-Requires:       wmctrl
-Requires:       xdpyinfo
-Requires:       xev
-Requires:       xlsatoms
-Requires:       xlsclients
-Requires:       xlsfonts
-Requires:       xprop
-Requires:       xvinfo
-Requires:       xwininfo
-
-%description -n budgie-workspace-overview-applet
-An applet to have quick access to all windows across all workspaces
 
 %package -n budgie-workspace-stopwatch-applet
 Summary:        Workspace stopwatch applet
@@ -435,6 +393,8 @@ Budgie Wallpaper Workspace Switcher is an application (applet) to show a differe
 %install
 %meson_install
 find %{buildroot} -name '*.py' -type f -print -exec chmod 755 {} \;
+find %{buildroot} -type f -exec sed -i 's|#!/usr/bin/env python3|#!/usr/bin/python3|g' {} \;
+chmod 0644 LICENSE
 %find_lang %{name}
 %fdupes -s %{buildroot}
 
@@ -501,8 +461,9 @@ find %{buildroot} -name '*.py' -type f -print -exec chmod 755 {} \;
 %files -n budgie-previews
 %{_libdir}/budgie-previews
 %{_datadir}/pixmaps/budgie_wpreviews_*.png
-%{_datadir}/pixmaps/budgiewprviews.svg
-%{_datadir}/applications/previewscontrols.desktop
+%{_datadir}/applications/org.ubuntubudgie.previewscontrols.desktop
+%{_datadir}/icons/hicolor/scalable/apps/org.ubuntubudgie.budgiewpreviews.svg
+%{_datadir}/metainfo/org.ubuntubudgie.previewscontrols.metainfo.xml
 %{_distconfdir}/xdg/autostart/previews-creator-autostart.desktop
 %{_distconfdir}/xdg/autostart/previews-daemon-autostart.desktop
 %{_datadir}/glib-2.0/schemas/org.ubuntubudgie.budgie-wpreviews.gschema.xml
@@ -511,7 +472,9 @@ find %{buildroot} -name '*.py' -type f -print -exec chmod 755 {} \;
 %{_bindir}/quickchar
 %{_libdir}/quickchar
 %{_datadir}/quickchar
-%{_datadir}/applications/quickchar.desktop
+%{_datadir}/applications/org.ubuntubudgie.quickchar.desktop
+%{_datadir}/icons/hicolor/scalable/apps/org.ubuntubudgie.quickchar.svg
+%{_datadir}/metainfo/org.ubuntubudgie.quickchar.metainfo.xml
 %{_distconfdir}/xdg/autostart/quickchar-autostart.desktop
 %{_datadir}/glib-2.0/schemas/org.ubuntubudgie.quickchar.gschema.xml
 %{_mandir}/man1/quickchar.1%{?ext_man}
@@ -550,8 +513,9 @@ find %{buildroot} -name '*.py' -type f -print -exec chmod 755 {} \;
 
 %files -n budgie-wallstreet
 %{_libdir}/budgie-wallstreet
-%{_datadir}/pixmaps/wallstreet-control.svg
-%{_datadir}/applications/wallstreet-control.desktop
+%{_datadir}/applications/org.ubuntubudgie.wallstreetcontrol.desktop
+%{_datadir}/icons/hicolor/scalable/apps/org.ubuntubudgie.wallstreet-control.svg
+%{_datadir}/metainfo/org.ubuntubudgie.wallstreetcontrol.metainfo.xml
 %{_distconfdir}/xdg/autostart/wallstreet-autostart.desktop
 %{_datadir}/glib-2.0/schemas/org.ubuntubudgie.budgie-wallstreet.gschema.xml
 
@@ -560,26 +524,18 @@ find %{buildroot} -name '*.py' -type f -print -exec chmod 755 {} \;
 %{_datadir}/pixmaps/budgie-wticon-symbolic.svg
 %{_datadir}/glib-2.0/schemas/org.ubuntubudgie.plugins.weathershow.gschema.xml
 
-%files -n budgie-window-mover-applet
-%{_datadir}/pixmaps/budgie-wmover-symbolic.svg
-%{_libdir}/budgie-desktop/plugins/budgie-wmover
-
 %files -n budgie-window-shuffler
 %{_libdir}/budgie-window-shuffler
 %{_libdir}/budgie-desktop/plugins/budgie-window-shuffler
+%{_datadir}/applications/org.ubuntubudgie.shufflercontrol.desktop
+%{_datadir}/icons/hicolor/scalable/apps/org.ubuntubudgie.shuffler-control.svg
+%{_datadir}/metainfo/org.ubuntubudgie.shufflercontrol.metainfo.xml
 %{_datadir}/pixmaps/shuffler*.svg
-%{_datadir}/applications/shuffler-control.desktop
 %{_datadir}/glib-2.0/schemas/org.ubuntubudgie.windowshuffler.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.ubuntubudgie.plugins.budgie-shufflerapplet.gschema.xml
 %{_distconfdir}/xdg/autostart/shufflerdaemon-autostart.desktop
 %{_distconfdir}/xdg/autostart/shufflergui-autostart.desktop
 %{_distconfdir}/xdg/autostart/layoutspopup-autostart.desktop
-
-%files -n budgie-workspace-overview-applet
-%{_datadir}/pixmaps/ws*-symbolic.svg
-%{_datadir}/pixmaps/budgie-wsoverview-symbolic.svg
-%{_libdir}/budgie-desktop/plugins/budgie-wsoverview
-%{_datadir}/glib-2.0/schemas/org.ubuntubudgie.plugins.budgie-wsoverview.gschema.xml
 
 %files -n budgie-workspace-stopwatch-applet
 %{_datadir}/pixmaps/budgie-wstopwatch-symbolic.svg

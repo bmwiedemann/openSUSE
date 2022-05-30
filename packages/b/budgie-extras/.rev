@@ -41,4 +41,68 @@
 </comment>
     <requestid>922876</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f9daf4cb037adfc091feabc87e615bc1</srcmd5>
+    <version>1.4.0</version>
+    <time>1653907393</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.0 &quot;Budgie Bonanza&quot;
+  * Budgie Applications Menu applet: this has the following
+    enhancements from upstream:
+    * App context menu available when right click from search
+      results.
+    * Reads the PrefersNonDefaultGPU setting from .desktop files
+      and uses that to automatically configure default or
+      non-default GPU.
+    * Adds a new context menu to support choosing the other GPU
+    * Categories have been slimmed down - less apps should
+      default to the “Other” category.
+    * when searching, Nemo bookmarks are also displayed in the
+      search results.
+  * Applications menu category view now defaults to 6px which
+    gives a less squashed look for most themes - this can be
+    configured via the applet settings.
+  * Quicknote pop-up correctly retains its scroll-position so
+    no need to keep scrolling up and down to find text you
+    previously was looking at.
+  * Made Shuffler more robust, handling situations when a window
+    was just closed before a shuffler action was performed on it,
+    or when trying to perform an action on a window of an
+    invalid window type (e.g. a dialog window).
+  * Budgie Previews, Budgie Quickchar and Budgie Window Shuffler
+    now appear in GNOME-Software with meaningful descriptions
+    and pictures.
+  * Shuffle windows according to which is the active monitor.
+  * Shuffle Control window animations match Budgie Settings'
+    cross-fade.
+  * Fix Shuffler rules to check window type
+    (so e.g. dialog windows won't be positioned).
+  * Dropby handle MMC (SD Cards) as well as USB.
+  * Add ChromeOS based layout.
+  * Update default Ubuntu Budgie layout.
+  * Add delay option for Hot-corners; useful for touchpads that
+    have difficulty measuring speed of movement.
+  * Lots and lots of translations.
+  * Handle terminating secondary processes more gracefully,
+    when applets are removed from the panel .
+  * Removed Window Mover applet since no longer supported.
+  * Removed Workspace Overview applet since no longer supported.
+  * Ejecting from Dropby is managed with modern API.
+  * Fixed Dropby popup timing.
+  * Replaced deprecated Notify2 based notifications with
+    notify-send.
+  * Desktop file icons moved to the recommended hicolor icon folder
+    location.
+  * Fixed missing QuickChar icon; new icon designed.
+  * Network applet settings now opens in budgie-control-center
+    if installed.
+  * Network applet spinner icon handled correctly when
+    connecting to VPNs.
+  * Network applet settings now opens in budgie-control-center
+    if installed.
+  * Changed from ChangeLog to NEWS file for version history.
+- Removed python3-shebangs.patch: replaced with sed command
+</comment>
+    <requestid>979500</requestid>
+  </revision>
 </revisionlist>
