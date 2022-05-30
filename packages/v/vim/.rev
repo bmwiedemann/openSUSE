@@ -5839,4 +5839,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Old Coverity warning for not checking ftell() return value.</comment>
     <requestid>975380</requestid>
   </revision>
+  <revision rev="309" vrev="1">
+    <srcmd5>bb1255796b371cc4f7a1d808732f26b1</srcmd5>
+    <version>8.2.5038</version>
+    <time>1653907325</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.5038, fixes the following problems
+  * Valgrind warning for using uninitialized variable.
+  * Screendump test may fail when using valgrind.
+  * Vim9: misplaced elseif causes invalid memory access.
+  * &quot;P&quot; in Visual mode still changes some registers.
+  * Cannot make 'breakindent' use a specific column.
+  * String interpolation only works in heredoc.
+  * Test fails without the job/channel feature. (Dominique Pellé)
+  * Test fails with the job/channel feature.
+  * Vim9: redir in skipped block seen as assignment.
+  * Channel log does not show invoking a timer callback.
+  * Line number of lambda ignores line continuation.
+  * Inconsistent capitalization in error messages.
+  * Vim help presentation could be better.
+  * Test failures because of changed error messages.
+  * Distributed import files are not installed.
+  * Buffer overflow with invalid command with composing chars.
+  * Expression in command block does not look after NL when command is typed.
+  * Comment inside an expression in lambda ignores the rest of the expression.
+  * Coverity complains about pointer usage.
+  * With latin1 encoding CTRL-W might go before the start of the command line.
+  * Vim9 expression test fails without the job feature.
+  * NULL pointer access when using invalid pattern.
+  * Mouse wheel scrolling is inconsistent.
+  * Cannot get the current cmdline completion type and position.
+  * codecov includes MS-Windows install files.
+  * codecov includes MS-Windows install header file.
+  * Some users do not want a line comment always inserted.
+  * No text formatting for // comment after a statement.
+  * MODE_ enum entries names are too generic.</comment>
+    <requestid>979693</requestid>
+  </revision>
 </revisionlist>

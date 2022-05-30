@@ -17,7 +17,7 @@
 
 
 %define pkg_version 8.2
-%define patchlevel 4877
+%define patchlevel 5038
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim82
 %define site_runtimepath %{_datadir}/vim/site
@@ -631,6 +631,8 @@ fi
 %dir %{_datadir}/vim/%{VIM_SUBDIR}/doc/
 %dir %{_datadir}/vim/%{VIM_SUBDIR}/ftplugin/
 %dir %{_datadir}/vim/%{VIM_SUBDIR}/indent/
+%dir %{_datadir}/vim/%{VIM_SUBDIR}/import/
+%dir %{_datadir}/vim/%{VIM_SUBDIR}/import/dist/
 %dir %{_datadir}/vim/%{VIM_SUBDIR}/keymap/
 %dir %{_datadir}/vim/%{VIM_SUBDIR}/lang/
 %dir %{_datadir}/vim/%{VIM_SUBDIR}/macros/
@@ -670,6 +672,7 @@ fi
 %{_datadir}/vim/%{VIM_SUBDIR}/doc/*
 %{_datadir}/vim/%{VIM_SUBDIR}/ftplugin/*
 %{_datadir}/vim/%{VIM_SUBDIR}/indent/*
+%{_datadir}/vim/%{VIM_SUBDIR}/import/dist/*
 %{_datadir}/vim/%{VIM_SUBDIR}/keymap/*
 %{_datadir}/vim/%{VIM_SUBDIR}/lang/*
 %{_datadir}/vim/%{VIM_SUBDIR}/macros/*

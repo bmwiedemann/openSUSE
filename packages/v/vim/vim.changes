@@ -1,4 +1,165 @@
 -------------------------------------------------------------------
+Sun May 29 16:30:57 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.5038, fixes the following problems
+  * Valgrind warning for using uninitialized variable.
+  * Screendump test may fail when using valgrind.
+  * Vim9: misplaced elseif causes invalid memory access.
+  * "P" in Visual mode still changes some registers.
+  * Cannot make 'breakindent' use a specific column.
+  * String interpolation only works in heredoc.
+  * Test fails without the job/channel feature. (Dominique Pellé)
+  * Test fails with the job/channel feature.
+  * Vim9: redir in skipped block seen as assignment.
+  * Channel log does not show invoking a timer callback.
+  * Line number of lambda ignores line continuation.
+  * Inconsistent capitalization in error messages.
+  * Vim help presentation could be better.
+  * Test failures because of changed error messages.
+  * Distributed import files are not installed.
+  * Buffer overflow with invalid command with composing chars.
+  * Expression in command block does not look after NL when command is typed.
+  * Comment inside an expression in lambda ignores the rest of the expression.
+  * Coverity complains about pointer usage.
+  * With latin1 encoding CTRL-W might go before the start of the command line.
+  * Vim9 expression test fails without the job feature.
+  * NULL pointer access when using invalid pattern.
+  * Mouse wheel scrolling is inconsistent.
+  * Cannot get the current cmdline completion type and position.
+  * codecov includes MS-Windows install files.
+  * codecov includes MS-Windows install header file.
+  * Some users do not want a line comment always inserted.
+  * No text formatting for // comment after a statement.
+  * MODE_ enum entries names are too generic.
+  * Imperfect coding.
+  * The mode #defines are not clearly named.
+  * Using execute() to define a lambda doesn't work. (Ernie Rael)
+  * Popup_hide() does not always have effect.
+  * String interpolation in :def function may fail.
+  * Sometimes the cursor is in the wrong position.
+  * Mouse in Insert mode test fails.
+  * Fuzzy expansion of option names is not right.
+  * Conceal character from matchadd() displayed too many times.
+  * Can add invalid bytes with :spellgood.
+  * Spell test fails because of new illegal byte check.
+  * Mouse test fails on MS-Windows.
+  * Test checks for terminal feature unnecessarily.
+  * maparg() may return a string that cannot be reused.
+  * Trailing backslash may cause reading past end of line.
+  * #ifdef for crypt feature around too many lines.
+  * Return type of remove() incorrect when using three arguments.
+  * Various white space and cosmetic mistakes.
+  * Off-by-one error in in statusline item.
+  * Interpolated string expression requires escaping.
+  * Crash with sequence of Perl commands.
+  * Not easy to filter the output of maplist().
+  * A few more capitalization mistakes in error messages.
+  * String interpolation fails when not evaluating.
+  * With 'foldmethod' "indent" some lines are not included in the fold. (Oleg
+  Koshovetc)
+  * No test for what 8.2.4931 fixes.
+  * Crash when matching buffer with invalid pattern.
+  * matchfuzzypos() with "matchseq" does not have all positions.
+  * Some code is never used.
+  * '[ and '] marks may be wrong after undo.
+  * Error when setting 'filetype' in help file again.
+  * Changing 'switchbuf' may have no effect.
+  * Text properties are wrong after "cc". (Axel Forsman)
+  * Inconsistent use of white space.
+  * Vim9: some code not covered by tests.
+  * Text properties not adjusted when accepting spell suggestion.
+  * Cannot use Perl heredoc in nested :def function. (Virginia Senioria)
+  * Vim9: some code not covered by tests.
+  * Text properties position wrong after shifting text.
+  * Smart indenting done when not enabled.
+  * GUI test will fail if color scheme changes.
+  * With 'smartindent' inserting '}' after completion goes wrong.
+  * Inserting line breaks text property spanning more then one line.
+  * Text property in wrong position after auto-indent.
+  * Reading past end of line with "gf" in Visual block mode.
+  * Text properties in a wrong position after a block change.
+  * A couple conditions are always true.
+  * Using NULL regexp program.
+  * Text properties that cross line boundary are not correctly updated for
+  a deleted line.
+  * Build error with a certain combination of features.
+  * Files show up in git status.
+  * Expanding path with "/**" may overrun end of buffer.
+  * GUI: testing mouse move event depends on screen cell size.
+  * Changing text in Visual mode may cause invalid memory access.
+  * "eval 123" gives an error, "eval 'abc'" does not.
+  * Vim9: interpolated string seen as range.
+  * Vim9: compilation fails when using dict member when skipping.
+  * Vim9: type error for list unpack mentions argument.
+  * ":so" command may read after end of buffer.
+  * Recursive command line loop may cause a crash.
+  * Coverity complains about not restoring a saved value.
+  * Memory access error when substitute expression changes window.
+  * No error if engine selection atom is not at the start.
+  * Accessing freed memory when line is flushed.
+  * When 'shortmess' contains 'A' loading a session may still warn for an
+  existing swap file. (Melker Österberg)
+  * It is not possible to manipulate autocommands.
+  * Colors in terminal window are not 100% correct.
+  * Colors test fails in the GUI.
+  * Dragging statusline fails for window with winbar.
+  * PVS warns for possible array underrun.
+  * Some github actions are outdated.
+  * After deletion a small fold may be closable.
+  * Textprop in wrong position when replacing multi-byte chars.
+  * Cannot specify a function name for :defcompile.
+  * Memory leak when :defcompile fails.
+  * No test for hwat patch 8.1.0535 fixes.
+  * Compiler warning for possibly uninitialized variable. (Tony Mechelynck)
+  * smart/C/lisp indenting is optional, which makes the code more complex,
+  while it only reduces the executable size a bit.
+  * Tests are using legacy functions.
+  * Still a compiler warning for possibly uninitialized variable. (Tony
+  Mechelynck)
+  * setbufline() may change Visual selection. (Qiming Zhao)
+  * Python: changing hidden buffer can cause the display to be messed up.
+  * Vim9: crash when using multiple funcref().
+  * Filetype test table is not properly sorted.
+  * Checking translations affects the search pattern history.
+  * deletebufline() may change Visual selection.
+  * Cannot do bitwise shifts.
+  * Right shift on negative number does not work as documented.
+  * Compiler warning for uninitialized variable. (John Marriott)
+  * Asan warns for undefined behavior.
+  * Spell suggestion may use uninitialized memory. (Zdenek Dohnal)
+  * When 'formatoptions' contains "/" wrongly wrapping a long trailing comment.
+  * Fold may not be closeable after appending.
+  * The terminal debugger uses various global variables.
+  * Replacing an autocommand requires several lines.
+  * Cannot select one character inside ().
+  * After text formatting the cursor may be in an invalid position.
+  * Byte offsets are wrong when using text properties.
+  * Hoon and Moonscript files are not recognized.
+  * Access before start of text with a put command.
+  * Gcc 12.1 warns for uninitialized variable.
+  * Vim9: some code is not covered by tests.
+  * Cannot get the first screen column of a character.
+  * Using 'imstatusfunc' and 'imactivatefunc' breaks 'foldopen'.
+  * Build fails with normal features and +terminal. (Dominique Pellé)
+  * 'completefunc'/'omnifunc' error does not end completion.
+  * Substitute overwrites allocated buffer.
+  * Using freed memory with "]d".
+  * Vim9: a few lines not covered by tests.
+  * Error for missing :endif when an exception was thrown. (Dani Dickstein)
+  * Syntax regexp matching can be slow.
+  * "textlock" is always zero.
+  * autocmd_add() can only handle one event and pattern.
+  * Cannot easily run the benchmarks.
+  * Python 3 test fails without the GUI.
+  * Build error with +eval but without +quickfix.  Warning for uninitialized
+  variable.
+  * There is no way to get the byte index from a virtual column.
+  * When splitting a window the changelist position moves.
+  * Using two counters for timeout check in NFA engine.
+  * Cursor position may be invalid after "0;" range.
+  * A finished terminal in a popup window does not show a scrollbar.
+
+-------------------------------------------------------------------
 Fri May  6 09:48:06 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.4877, fixes the following problems
