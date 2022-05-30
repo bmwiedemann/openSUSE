@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri May 27 12:40:36 UTC 2022 - gmbr3@opensuse.org
+
+- Update to version 10.6.1+0:
+  * Tag 10.6.1 Release
+  * Update button ID to launcher when pinning and open app and
+    back to app ID when unpinning it
+  * Fix regression where non pinned icons were not reorderable in
+    icon tasklist
+  * Attempt to fix a regression in dragging that was caused by
+    inconsistent application IDs.
+  * Remove delay when opening apps
+  * Sync translations. Updated transifex config.
+  * Remove check for window  hints when removing button in
+    Icon tasklist
+  * Improve racyness when a notification is closed and another
+    one shown in quick succession
+  * Fix regression in IconTasklist.
+  * Don't modify notification group HashTables while iterating
+    over them
+  * Re-connect to the Raven signal to clear all notifications
+  * Ensure new applications icons are displayed in tasklist
+    when using restrict-to-workspace
+  * Fix inconsistency when opening Raven
+  * Add a null check to budgie_popover_manager_ungrab
+
+-------------------------------------------------------------------
 Wed Apr  6 09:08:20 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Change gnome-bluetooth requires to be compatible with older

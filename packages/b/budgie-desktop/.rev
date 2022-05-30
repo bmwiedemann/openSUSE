@@ -393,4 +393,12 @@
     <comment>fix</comment>
     <requestid>967257</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b5866410db10c9ae00777f74a2f8be7a</srcmd5>
+    <version>10.6.1+0</version>
+    <time>1653907391</time>
+    <user>dimstar_suse</user>
+    <comment>10.6.1</comment>
+    <requestid>979495</requestid>
+  </revision>
 </revisionlist>
