@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Thu Jun 24 18:10:17 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.3.2
+ see installed NEWS.md
+
+  ## 0.3.2
+  
+  ### Improvements
+  
+    * Added support for Ruby 3.0.
+      [GitHub#27][Reported by Herwin Weststrate]
+  
+  ### Thanks
+  
+    * Herwin Weststrate
+  
+
+-------------------------------------------------------------------
+Wed Jan 20 13:37:37 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.3.1
+  no changelog found
+
+-------------------------------------------------------------------
+Fri Jun 23 14:54:10 UTC 2017 - bgeuken@suse.com
+
+- Add macros for ruby 2.3
+
+-------------------------------------------------------------------
+Fri Mar 17 18:31:08 UTC 2017 - coolo@suse.com
+
+- initial package
