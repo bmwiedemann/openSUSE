@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May 29 18:20:32 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.17
+  * Fix CMAKE_MODULE_PATH who was used as single value (for real)
+
+-------------------------------------------------------------------
+Sat May 28 18:57:01 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.16
+  * Fix pkg-config file with absolute path for
+    CMAKE_INSTALL_{INCLUDE,LIB}DIR
+  * Fix CMAKE_MODULE_PATH who was used as single value
+  * Add y_set_split_message_newline to split log messages on
+    newline characters
+
+-------------------------------------------------------------------
 Sun Mar 13 16:47:40 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.4.15
