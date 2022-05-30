@@ -1,44 +1,37 @@
 -------------------------------------------------------------------
+Sun May 22 10:39:56 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.32.1:
+ - Do not remove quoted annotations on 3.11
+   `from __future__ import annotations` will not be the default
+   behavior on 3.11.
+   Fixes #637.
+
+-------------------------------------------------------------------
 Sat Apr  9 07:31:58 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
-- - update to version 2.32.0:
+- update to version 2.32.0:
  - rewrite check_output(...) universal_newlines -> text
  - convert fstring rewriter to a plugin
  - move typed class rewrite to a plugin
  - change is_name_attr to accept multiple modules
  - reorder pre-commit config
-   Committed via https://github.com/asottile/all-repos
  - Update default branch to main
-   Committed via https://github.com/asottile/all-repos
  - remove unneeded gitignore lines
    - coverage-html: coverage>=6.2 writes a .gitignore file
    - mypy_cache: mypy>=0.770 writes a .gitignore file
    - pytest_cache: pytest>=3.8.1 writes a .gitignore file
    - venv: virtualenv>=20.0.21 writes a .gitignore file
-   Committed via https://github.com/asottile/all-repos
-- update to version 2.31.1:
- - dont rewrite universal_newlines if text or **kwargs present
- - upgrade flake8-typing-imports
-   Committed via https://github.com/asottile/all-repos
- - drop python3.6 support
-   python 3.6 reached end of life on 2021-12-23
-   Committed via https://github.com/asottile/all-repos
- - remove --fail-under from tox (covdefaults handles this)
-   Committed via https://github.com/asottile/all-repos
- - Use diff syntax in more places in the docs
 
 -------------------------------------------------------------------
 Mon Mar 14 21:41:27 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
-- - update to version 2.31.1:
+- update to version 2.31.1:
  - dont rewrite universal_newlines if text or **kwargs present
  - upgrade flake8-typing-imports
-   Committed via https://github.com/asottile/all-repos
  - drop python3.6 support
    python 3.6 reached end of life on 2021-12-23
-   Committed via https://github.com/asottile/all-repos
  - remove --fail-under from tox (covdefaults handles this)
-   Committed via https://github.com/asottile/all-repos
  - Use diff syntax in more places in the docs
 - update to version 2.31.0:
  - rewrite string formatting with **locals()
