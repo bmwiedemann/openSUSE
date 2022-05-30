@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 30 09:04:49 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 1.27.0
+  * Added support for RFC8555 subproblems to our acme library.
+  * The PGP key F2871B4152AE13C49519111F447BF683AA3B26C3 was added 
+    as an additional trusted key to sign our PyPI packages
+- Refreshed python-acme.keyring
+
+-------------------------------------------------------------------
 Thu Apr  7 15:33:21 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Update to version 1.26.0

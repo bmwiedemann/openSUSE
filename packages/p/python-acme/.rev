@@ -636,4 +636,13 @@
 </comment>
     <requestid>967759</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>7fabf915e679c383c87c2ac00bb7a07f</srcmd5>
+    <version>1.27.0</version>
+    <time>1653907469</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump
+</comment>
+    <requestid>979811</requestid>
+  </revision>
 </revisionlist>
