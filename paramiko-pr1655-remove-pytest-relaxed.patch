@@ -15,11 +15,11 @@ on the system.  It has been banned from Gentoo for this reason.
  tests/test_client.py | 20 ++++++++++----------
  3 files changed, 10 insertions(+), 14 deletions(-)
 
-Index: paramiko-2.8.0/tests/test_client.py
+Index: paramiko-2.11.0/tests/test_client.py
 ===================================================================
---- paramiko-2.8.0.orig/tests/test_client.py
-+++ paramiko-2.8.0/tests/test_client.py
-@@ -33,7 +33,7 @@ import warnings
+--- paramiko-2.11.0.orig/tests/test_client.py	2022-05-17 03:04:13.000000000 +0200
++++ paramiko-2.11.0/tests/test_client.py	2022-05-26 22:57:20.216831045 +0200
+@@ -33,7 +33,7 @@
  import weakref
  from tempfile import mkstemp
  
@@ -28,11 +28,12 @@ Index: paramiko-2.8.0/tests/test_client.py
  from mock import patch, Mock
  
  import paramiko
-@@ -687,10 +687,10 @@ class PasswordPassphraseTests(ClientTest
+@@ -733,11 +733,11 @@
  
      # TODO: more granular exception pending #387; should be signaling "no auth
      # methods available" because no key and no password
 -    @raises(SSHException)
+     @requires_sha1_signing
      def test_passphrase_kwarg_not_used_for_password_auth(self):
 -        # Using the "right" password in the "wrong" field shouldn't work.
 -        self._test_connection(passphrase="pygmalion")
@@ -40,13 +41,14 @@ Index: paramiko-2.8.0/tests/test_client.py
 +            # Using the "right" password in the "wrong" field shouldn't work.
 +            self._test_connection(passphrase="pygmalion")
  
+     @requires_sha1_signing
      def test_passphrase_kwarg_used_for_key_passphrase(self):
-         # Straightforward again, with new passphrase kwarg.
-@@ -708,14 +708,14 @@ class PasswordPassphraseTests(ClientTest
+@@ -757,15 +757,15 @@
              password="television",
          )
  
 -    @raises(AuthenticationException)  # TODO: more granular
+     @requires_sha1_signing
      def test_password_kwarg_not_used_for_passphrase_when_passphrase_kwarg_given(  # noqa
          self
      ):

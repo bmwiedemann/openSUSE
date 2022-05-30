@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-paramiko
-Version:        2.10.4
+Version:        2.11.0
 Release:        0
 Summary:        SSH2 protocol library
 License:        LGPL-2.1-or-later
