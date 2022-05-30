@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May 29 20:44:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.15.0:
+  * fsck.f2fs: fix broken file_map output
+  * f2fs-tools: show segment/section layout correctly
+  * dump.f2fs: compress: fix dstlen of LZ4_compress_fast_extState()
+  * big endian fixes
+  * cross compile fixes
+  * mkfs.f2fs: set required quota types only
+  * fsck.f2fs: Add progression feedback
+  * fsck.f2fs: do not assert if i_size is missing i_blocks in symlink
+  * f2fs-tools: separate other bugs in fsck_verify
+  * fsck|dump.f2fs: add -M to get file map
+- drop f2fs-tools-1.4.0-bigendian.patch: obsolete
+
+-------------------------------------------------------------------
 Fri Oct  1 18:41:46 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 1.14.0+g67 (972d7107)

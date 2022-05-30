@@ -1,7 +1,7 @@
 #
 # spec file for package f2fs-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,17 @@
 
 
 Name:           f2fs-tools
-Version:        1.14.0.g67
+Version:        1.15.0
 Release:        0
 Summary:        Utilities for the Flash-friendly Filesystem (F2FS)
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          System/Filesystems
 URL:            https://git.kernel.org/cgit/linux/kernel/git/jaegeuk/f2fs-tools.git
-Source:         %name-%version.tar.xz
-Patch1:         f2fs-tools-1.4.0-bigendian.patch
+Source:         https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git/snapshot/f2fs-tools-%version.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
-BuildRequires:  pkgconfig
-BuildRequires:  xz
+BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(blkid)
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(uuid)
@@ -39,19 +37,19 @@ Supplements:    filesystem(f2fs)
 Utilities needed to create and maintain so-called Flash-Friendly (F2)
 filesystems.
 
-%package -n libf2fs8
+%package -n libf2fs9
 Summary:        Library to manipulate F2 filesystems
 Group:          System/Libraries
 
-%description -n libf2fs8
+%description -n libf2fs9
 This package contains a shared library used for manipulation of F2
 filesystems.
 
-%package -n libf2fs_format7
+%package -n libf2fs_format8
 Summary:        Library to create F2 filesystems
 Group:          System/Libraries
 
-%description -n libf2fs_format7
+%description -n libf2fs_format8
 This package contains a shared library to format F2 filesystems.
 
 %if !0%{?usrmerged}
@@ -68,8 +66,8 @@ needed for programs that assume these locations.
 %package devel
 Summary:        Development files for f2fs
 Group:          Development/Languages/C and C++
-Requires:       libf2fs8 = %version
-Requires:       libf2fs_format7 = %version
+Requires:       libf2fs9 = %version-%release
+Requires:       libf2fs_format8 = %version-%release
 
 %description devel
 This package contains development files for %name.
@@ -97,20 +95,20 @@ ln -sf "%_sbindir"/{defrag.f2fs,dump.f2fs,f2fstat,fibmap.f2fs,fsck.f2fs,mkfs.f2f
 cp -a include/f2fs_fs.h mkfs/f2fs_format_utils.h \
 	"%buildroot/%_includedir/"
 
-%post   -n libf2fs8 -p /sbin/ldconfig
-%postun -n libf2fs8 -p /sbin/ldconfig
-%post   -n libf2fs_format7 -p /sbin/ldconfig
-%postun -n libf2fs_format7 -p /sbin/ldconfig
+%post   -n libf2fs9 -p /sbin/ldconfig
+%postun -n libf2fs9 -p /sbin/ldconfig
+%post   -n libf2fs_format8 -p /sbin/ldconfig
+%postun -n libf2fs_format8 -p /sbin/ldconfig
 
 %files
 %license COPYING
 %_sbindir/*
 %_mandir/man8/*
 
-%files -n libf2fs8
+%files -n libf2fs9
 %_libdir/libf2fs.so.*
 
-%files -n libf2fs_format7
+%files -n libf2fs_format8
 %_libdir/libf2fs_format.so.*
 
 %if !0%{?usrmerged}

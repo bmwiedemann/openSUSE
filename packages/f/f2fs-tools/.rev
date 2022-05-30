@@ -163,4 +163,12 @@
     <comment>- Update to snapshot 1.14.0+g67 (972d7107) [boo#1191235]</comment>
     <requestid>942701</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>92c7591ee8b659232668766f99e17088</srcmd5>
+    <version>1.15.0</version>
+    <time>1653907452</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.15.0</comment>
+    <requestid>979759</requestid>
+  </revision>
 </revisionlist>
