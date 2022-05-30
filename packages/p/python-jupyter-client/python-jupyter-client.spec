@@ -27,23 +27,25 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-jupyter-client%{psuffix}
-Version:        7.1.2
+Version:        7.3.1
 Release:        0
 Summary:        Jupyter protocol implementation and client libraries
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/jupyter_client
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_client/jupyter_client-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         jupyter-client-fix787-kernelwarningsfilter.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-jupyter_client = %{version}
 Requires:       python-entrypoints
-Requires:       python-jupyter-core >= 4.6.0
-Requires:       python-nest-asyncio >= 1.5
-Requires:       python-python-dateutil >= 2.1
-Requires:       python-pyzmq >= 13
-Requires:       python-tornado >= 4.1
+Requires:       python-jupyter-core >= 4.9.2
+Requires:       python-nest-asyncio >= 1.5.4
+Requires:       python-python-dateutil >= 2.8.2
+Requires:       python-pyzmq >= 22.3
+Requires:       python-tornado >= 6.0
 Requires:       python-traitlets
 Provides:       python-jupyter_client = %{version}
 Obsoletes:      python-jupyter_client < %{version}

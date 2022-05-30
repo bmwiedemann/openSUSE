@@ -1,0 +1,13 @@
+--- jupyter-client.orig/pyproject.toml
++++ jupyter-client/pyproject.toml
+@@ -53,6 +53,10 @@
+   # We could eventually find a way to make sure these are only created
+   # when there is a running event loop.
+   "ignore:There is no current event loop:DeprecationWarning:zmq",
++
++  # workaround for deprecated modules
++  "ignore:the imp module is deprecated in favour of importlib:DeprecationWarning",
++  "ignore:The distutils package is deprecated and slated for removal in Python 3.12. Use setuptools or check PEP 632 for potential alternatives"
+ ]
+ 
+ [tool.mypy]

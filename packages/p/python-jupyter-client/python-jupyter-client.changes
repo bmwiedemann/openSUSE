@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed May 25 23:15:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add jupyter-client-fix787-kernelwarningsfilter.patch
+  * gh#jupyter/jupyter_client#787 
+
+-------------------------------------------------------------------
+Wed May 25 15:01:01 UTC 2022 - andy great <andythe_great@pm.me>
+
+- Disable pytest for signalkernel.py and problemkernel.py because
+  issue with newer ipykernel.
+  https://github.com/jupyter/jupyter_client/issues/787
+- Update to version 7.3.1.
+  * Bugs fixed
+    * Check that channels exist before asking if they are alive
+      #785 (@ccordoba12)
+    * Unicode error correction using Error Handler #779 (@hxawax)
+  * Maintenance and upkeep improvements
+    * Allow bot PRs to be automatically labeled #784 (@blink1073)
+- Update for version 7.3.0
+  * Bugs fixed
+    * Fix shutdown and cleanup behavior #772 (@blink1073)
+  * Maintenance and upkeep improvements
+    * Improve mypy config #769 (@blink1073)
+- Update for version 7.2.2
+  * Maintenance and upkeep improvements
+    * Include py.typed file #766 (@blink1073)
+    * More Cleanup #764 (@blink1073)
+- Update for version 7.2.1
+  * Maintenance and upkeep improvements
+    * Handle Warnings #760 (@blink1073)
+- Update for version 7.2.0
+  * Enhancements made
+    * Update consoleapp.py #733 (@you-n-g)
+  * Bugs fixed
+    * Json packer: handle TypeError and fallback to old json_clean
+      #752 (@martinRenou)
+    * Prefer sending signals to kernel process group #743
+      (@kevin-bates)
+  * Maintenance and upkeep improvements
+    * Mock is not needed #758 (@hroncok)
+    * Add pytest opts and clean up workflows #757 (@blink1073)
+    * Clean up dependency handling #750 (@blink1073)
+    * Use built in run cancellation #742 (@blink1073)
+
+-------------------------------------------------------------------
 Sun Mar 13 06:53:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.1.2
