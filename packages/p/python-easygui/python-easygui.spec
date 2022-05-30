@@ -1,7 +1,7 @@
 #
 # spec file for package python-easygui
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define py_name easygui
 Name:           python-easygui
-Version:        0.98.1
+Version:        0.98.3
 Release:        0
 Summary:        Function-driven python GUI programming
 License:        BSD-3-Clause
