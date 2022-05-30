@@ -1,7 +1,7 @@
 #
 # spec file for package rainbow
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,10 +18,10 @@
 
 
 Name:           rainbow
-Version:        2.7.1
+Version:        2.8.0
 Release:        0
 Summary:        Colorize commands output or STDIN using patterns
-License:        GPL-3.0-only
+License:        GPL-3.0-or-later
 Group:          System/Console
 URL:            https://github.com/nicoulaj/rainbow
 Source:         https://github.com/nicoulaj/rainbow/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -56,7 +56,7 @@ Zsh command line completion support for %{name}.
 
 %prep
 %setup -q
-sed -i 's|#!/usr/bin/python|#!/usr/bin/python3|g' scripts/rainbow
+sed -i 's|#!%{_bindir}/python|#!%{_bindir}/python3|g' scripts/rainbow
 
 %build
 %python3_build
@@ -76,9 +76,11 @@ install -Dm0644 build/man/rainbow.1 %{buildroot}%{_mandir}/man1/%{name}.1
 %{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files bash-completion
+%license COPYING
 %{_datadir}/bash-completion/completions/%{name}
 
 %files zsh-completion
+%license COPYING
 %dir %{_sysconfdir}/zsh_completion.d
 %config %{_sysconfdir}/zsh_completion.d/%{name}
 
