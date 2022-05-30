@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun May 29 13:20:53 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 8.10
+  * The OpenGL 3.2 renderer now supports the classic underwater
+    effect.  Until now it was only available in the Software
+    renderer.
+  * Add 'ref_gles3', an OpenGL ES 3.0 renderer lib. This is an
+    variant of the OpenGL 3.2 renderer, using OpenGL ES instead of
+    desktop OpenGL.  It greatly enhances support for embedded GPUs
+    like the RaspberryPI 4.
+  * The Software renderer now supports colored lightning. It can
+    be enabled through `sw_colorlight`.
+  * Another round of timing fixes. Implement `cl_maxfps -1` (the
+    new default, existing configs are not altered) to
+    automatically select a known to be good packet framerate
+    depending on the current renderer framerate. This solves some
+    subtile problems with stuttering entities.
+  * Greatly improved support for joysticks and controllers. Devices
+    can now be hotplugged at runtime, binding should be portable
+    between differend controllers and there's a new menu for
+    controller bindings.
+  * Add the `r_2D_unfiltered` and `r_videos_unfiltered` cvars. When
+    enabled 2D elements like the HUD and videos are not filtered,
+    they appear pixeled.
+  * Add 'prefweap' command to select weapon by priority.
+  * Several game code fixes, mostly for stuck mechanics in fact2.
+  * Fix two stuck monsters in hangar1 and jail5.
+  * Fix the `viewsize` cvar.
+
+-------------------------------------------------------------------
 Sun Jan 23 22:18:33 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 8.01
