@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat May 28 15:16:15 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 0.19.1:
+  * Fixed
+    - Fix inference of Route.name when created from methods #1553.
+    - Avoid TypeError on websocket.disconnect when code is None #1574.
+  * Deprecated
+    - Deprecate WS_1004_NO_STATUS_RCVD and WS_1005_ABNORMAL_CLOSURE in favor
+      of WS_1005_NO_STATUS_RCVD and WS_1006_ABNORMAL_CLOSURE, as the previous
+      constants didn't match the WebSockets specs #1580.
+
+-------------------------------------------------------------------
 Mon Apr 18 15:27:00 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to 0.19.0:
