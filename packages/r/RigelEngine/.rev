@@ -98,4 +98,46 @@
     <comment></comment>
     <requestid>966429</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>840aff84c2bedf1f7167bc16a79ef410</srcmd5>
+    <version>0.8.5beta</version>
+    <time>1653907448</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.5
+  New features
+  * Implemented a mod manager. Mods can now be organized into
+    directories, and each mod can be enabled/disabled in the
+    options menu. See Modding Support for more details.
+  * Added additional &quot;remixed&quot; HUD styles in widescreen mode.
+  * Added additional upscaling filters: Sharp bilinear, pixel
+    perfect (integer scaling). Note that using mods with high-res
+    replacement graphics currently forces nearest neighbor
+    filtering.
+  * The game now writes a log file into the user directory.
+  * Gamepad controls are now explained in the options menu.
+  * The top-level in-game menu (reachable via gamepad) now shows
+    the current episode, level and difficulty in the title.
+  Improvements
+  * Improved the look of the classic HUD in widescreen mode, by
+    extending the left side to cover the length of the screen.
+  * Reworked quick saving/loading gamepad controls, to make
+    loading quick saves possible without needing to open the menu.
+    The select/back button now acts as a modifier. When pressed
+    together with shoot, a quick save is made. Pressing the
+    button together with jump loads the last quick save.
+  Bug fixes
+  * Fixed destructible level geometry remaining visible after
+    being destroyed in certain cases
+  * Fixed brief camera movement after turning wide-screen mode
+    on/off or changing the window size
+  * Fixed slime blob containers sometimes not animating.
+  * Fixed sprites flickering in and out of existence in certain
+    circumstances
+  * The episode 2 boss would keep flying when killed in mid-flight
+    This is now fixed.
+- Add patch:
+  * fix-build.patch
+</comment>
+    <requestid>979752</requestid>
+  </revision>
 </revisionlist>
