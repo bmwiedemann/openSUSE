@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May 29 18:15:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.21.6:
+  * Do not forward `__(deep)copy__` calls of `_GenericAlias`...
+  * Fix float16 einsum fastpaths using wrong tempvar
+  * Print os error message when the executable not exist
+  * Force ``npymath` ` to respect ``npy_longdouble``
+  * Fix failure to create aligned, empty structured dtype
+  * provide a convenience function to replace npy_load_module
+  * update wheel to version that supports python3.10
+  * Clear errors correctly in F2PY conversions
+  * add a warningfilter to fix pytest workflow.
+  * Help boost::python libraries at least not crash
+- drop bpo-45167-fixes.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Dec  9 14:43:32 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Ignore Python 3.10 deprecation warnings

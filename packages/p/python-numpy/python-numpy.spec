@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,8 @@
 %endif
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%define ver 1.21.4
-%define _ver 1_21_4
+%define ver 1.21.6
+%define _ver 1_21_6
 %define pname python-numpy
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
 %if "%{flavor}" == ""
@@ -84,8 +84,6 @@ Source99:       python-numpy-rpmlintrc
 Patch0:         numpy-buildfix.patch
 # PATCH-FIX-OPENSUSE numpy-1.9.0-remove-__declspec.patch -- fix for spurious compiler warnings that cause build failure
 Patch1:         numpy-1.9.0-remove-__declspec.patch
-# PATCH-FIX-UPSTREAM -- gh#numpy/numpy#20347
-Patch2:         bpo-45167-fixes.patch
 # PATCH-FIX-UPSTREAM -- gh#numpy/numpy#20388
 Patch3:         numpy-fix-cpu_asimdfhm.patch
 BuildConflicts: gcc11 < 11.2

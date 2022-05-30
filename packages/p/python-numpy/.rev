@@ -993,4 +993,23 @@ All packages broken by this update should be fixed now</comment>
     <comment></comment>
     <requestid>938534</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>2f4f866bf57bcf470a0496b768147b23</srcmd5>
+    <version>1.21.6</version>
+    <time>1653907327</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.21.6:
+  * Do not forward `__(deep)copy__` calls of `_GenericAlias`...
+  * Fix float16 einsum fastpaths using wrong tempvar
+  * Print os error message when the executable not exist
+  * Force ``npymath` ` to respect ``npy_longdouble``
+  * Fix failure to create aligned, empty structured dtype
+  * provide a convenience function to replace npy_load_module
+  * update wheel to version that supports python3.10
+  * Clear errors correctly in F2PY conversions
+  * add a warningfilter to fix pytest workflow.
+  * Help boost::python libraries at least not crash
+- drop bpo-45167-fixes.patch (upstream)</comment>
+    <requestid>979707</requestid>
+  </revision>
 </revisionlist>
