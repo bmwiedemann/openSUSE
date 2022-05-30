@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Wed May 25 10:18:50 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#297
+- add EDID boot option to specify arbitrary display sizes (bsc#1199020)
+- add edid-write tool to create EDID data
+- 8.12
+
+--------------------------------------------------------------------
 Mon Apr 25 14:00:01 UTC 2022 - jreidinger@suse.cz
 
 - merge gh#openSUSE/linuxrc#295

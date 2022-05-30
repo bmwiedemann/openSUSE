@@ -17,7 +17,7 @@
 
 
 Name:           linuxrc
-Version:        8.11
+Version:        8.12
 Release:        0
 Summary:        SUSE Installation Program
 License:        GPL-3.0+
@@ -52,6 +52,7 @@ make %{?_smp_mflags} DESTDIR=%{buildroot} install
 %defattr(-,root,root)
 %{_sbindir}/linuxrc
 %{_bindir}/mkpsfu
+%{_bindir}/edid-write
 %{_datadir}/linuxrc
 %doc COPYING *.html *.md *.txt *.png
 
