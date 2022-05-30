@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May 29 16:41:58 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- use meson version >= 0.58.0 to abandon deprecated options
+
+-------------------------------------------------------------------
 Thu Mar  3 09:30:31 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Use released tarball with source URL

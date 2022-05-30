@@ -1,7 +1,7 @@
 #
 # spec file for package wbg
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,16 +25,16 @@ Group:          System/GUI/Other
 URL:            https://codeberg.org/dnkl/wbg
 Source0:        https://codeberg.org/dnkl/wbg/archive/%version.tar.gz
 BuildRequires:  gcc-c++
-BuildRequires:  meson >= 0.48.0
+BuildRequires:  meson >= 0.58.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(pixman-1)
+BuildRequires:  pkgconfig(tllist) >= 1.0.1
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wayland-server)
-BuildRequires:  pkgconfig(pixman-1)
-BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(libjpeg)
-BuildRequires:  pkgconfig(tllist) >= 1.0.1
 
 %description
 Wbg is a wallpaper setter for Wayland compositors that implement the
