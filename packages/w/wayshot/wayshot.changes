@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun May 29 15:41:06 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 1.1.7~0:
+  * [update] replace xdg-output-handler with wl_output
+  * [update] nix deps bump and add repology to readme
+  * [update] Sane error message on missing scrcpy.
+  * [optimize dependencies] - Patch by jirutka
+  * [update] Workflow.
+  * [update] Bump dependencies.
+  * [update] Readme
+  * [update] Remove testing code.
+  * [update] Fixes
+  * [update] Add workflow.
+
+- Use zstd compression :)
+
+-------------------------------------------------------------------
 Tue May 17 23:24:39 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 1.1.5~1:
