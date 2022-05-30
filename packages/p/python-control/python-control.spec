@@ -18,15 +18,13 @@
 
 %define skip_python2 1
 Name:           python-control
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        Python control systems library
 License:        BSD-3-Clause
-URL:            http://python-control.org
+URL:            https://python-control.org
 Source:         https://files.pythonhosted.org/packages/source/c/control/control-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM - https://github.com/python-control/python-control/pull/688
-Patch1:         688.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -71,10 +69,8 @@ export MPLBACKEND="Qt5Agg"
 # preload malloc library to avoid free() error on i586 architecture
 if [[ $(getconf LONG_BIT) == 32 ]]; then
 export LD_PRELOAD="%{_libdir}/libjemalloc.so.2"
-# segfault on i586 (?)
-donttest=" or test_nichols"
 fi
-%pytest -k "not (ifanything $donttest)"
+%pytest
 
 %files %{python_files}
 %doc ChangeLog README.rst

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun May 29 10:07:56 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.2
+  * Improvements in I/O systems, stochastic systems,
+    optimization-based control, Nyquist plots
+  * Round to nearest integer decade for default omega vector by
+    @bnavigator in #688
+  * Fix in documentation of ss2tf by @miroslavfikar in #695
+  * Interpret str-type args to interconnect as non-sequence by
+    @roryyorke in #698
+  * Fixes to various optimization-based control functions by
+    @murrayrm in #709
+  * I/O system enhancements by @murrayrm in #710
+  * Optimal control enhancements by @murrayrm in #712
+  * Keyword argument checking by @murrayrm in #713
+  * Stochastic systems additions by @murrayrm in #714
+  * Updated system class functionality by @murrayrm in #721
+  * Bug fix and improvements to Nyquist plots by @murrayrm in #722
+  * Add linform to compute linear system L-infinity norm by
+    @roryyorke in #729
+  * Improvements to Nichols chart plotting by @roryyorke in #723
+  * Add envs to gitignore by @s35t in #731
+  * Fix README.rst for twine by @murrayrm in #738
+- Drop 688.patch fixed upstream
+
+-------------------------------------------------------------------
 Sat Feb 12 18:42:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - skip segfaulting test on i586
