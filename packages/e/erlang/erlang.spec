@@ -23,7 +23,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           erlang
-Version:        24.3.2
+Version:        25.0
 Release:        0
 Summary:        General-purpose programming language and runtime environment
 License:        Apache-2.0
@@ -262,6 +262,7 @@ sed -i 's|WX_LIBS=`$WX_CONFIG_WITH_ARGS --libs`|WX_LIBS="`$WX_CONFIG_WITH_ARGS -
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS=$CFLAGS
+export LANG="en_US.UTF-8"
 
 %configure \
     --enable-systemd \
