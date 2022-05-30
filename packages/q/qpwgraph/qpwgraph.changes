@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun May 29 15:59:49 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.3.1:
+  * Only ask to quit an activated patchbay when actually quitting
+    the application (not just closing a patchbay).
+  * Graph/Connect and Disconnect keyboard shortcuts changed from
+    [Ins] and [Del], to [Ctrl+C] and [Ctrl+D] respectively; also
+    added [F2] as brand new keyboard shortcut for Edit/Rename...
+
+-------------------------------------------------------------------
+Wed May 25 19:28:14 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.3.0:
+  * Fix document dirtiness (modified state) when making connections
+    and/or disconnections on a clear and new patchbay.
+  * Attempt to save and possibly restore different node positions
+    and aliases when forner original node name is non-unique.
+
+-------------------------------------------------------------------
 Thu Apr 28 23:13:59 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.2.6:
