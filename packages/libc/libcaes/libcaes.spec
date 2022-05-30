@@ -18,7 +18,7 @@
 
 Name:           libcaes
 %define lname	libcaes1
-Version:        20220424
+Version:        20220529
 Release:        0
 Summary:        Library for AES encryption
 License:        LGPL-3.0-or-later
