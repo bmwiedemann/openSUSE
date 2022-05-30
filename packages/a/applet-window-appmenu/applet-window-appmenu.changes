@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 29 20:08:49 UTC 2022 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 0.8.0:
+  * use applet geometry to accept mouse events when inside latte docks and panels
+  * show menu only after the previous one has already become hidden
+
+-------------------------------------------------------------------
 Wed Jan  5 13:51:31 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Fix installation (again) when using plasma-framework 5.89

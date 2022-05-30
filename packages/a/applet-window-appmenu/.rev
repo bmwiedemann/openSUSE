@@ -112,4 +112,15 @@
     <comment></comment>
     <requestid>944058</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3ed4d0d91892d3175ab70aed7bc3a06e</srcmd5>
+    <version>0.8.0</version>
+    <time>1653907446</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.0:
+  * use applet geometry to accept mouse events when inside latte docks and panels
+  * show menu only after the previous one has already become hidden
+</comment>
+    <requestid>979748</requestid>
+  </revision>
 </revisionlist>

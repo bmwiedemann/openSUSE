@@ -1,7 +1,7 @@
 #
 # spec file for package applet-window-appmenu
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define qt5_version 5.9
 
 Name:           applet-window-appmenu
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        Plasma 5 applet to show the window appmenu
 License:        GPL-2.0-or-later
