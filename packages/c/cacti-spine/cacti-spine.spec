@@ -18,7 +18,7 @@
 
 %{!?make_build: %define make_build make %{?_smp_mflags}}
 Name:           cacti-spine
-Version:        1.2.20
+Version:        1.2.21
 Release:        0
 Summary:        Threaded poller for Cacti written in C
 License:        LGPL-2.1-or-later

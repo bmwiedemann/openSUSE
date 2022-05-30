@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 29 11:16:21 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti-spine 1.2.21:
+  * Disable DES if Net-SNMP doesn't have it
+
+-------------------------------------------------------------------
 Fri Apr 22 16:15:25 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti-spine 1.2.20:
