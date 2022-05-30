@@ -268,4 +268,12 @@
     <comment>certbot version bump</comment>
     <requestid>967770</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d1981a44d0386103cc67ea4d6f6b87e2</srcmd5>
+    <version>1.27.0</version>
+    <time>1653907479</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>979822</requestid>
+  </revision>
 </revisionlist>
