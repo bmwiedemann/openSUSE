@@ -34,7 +34,7 @@
 %endif
 
 Name:           lxd
-Version:        5.1
+Version:        5.2
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0
@@ -51,8 +51,6 @@ Source101:      %{name}-config.yml
 # Additional runtime configuration.
 Source200:      %{name}.sysctl
 Source201:      %{name}.dnsmasq
-# OPENSUSE-UPSTREAM-FIX: Backport of <https://github.com/lxc/lxd/pull/10348>.
-Patch1:         0001-lxd-secommp-Fix-sysinfo-syscall-interception-on-32-b.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  libacl-devel
@@ -127,8 +125,6 @@ Bash command line completion support for %{name}.
 
 %prep
 %setup -q
-# https://github.com/lxc/lxd/pull/10348
-%patch1 -p1
 
 %build
 # Make sure any leftover go build caches are gone.

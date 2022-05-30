@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun May 29 02:18:04 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 5.2. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-5-2-has-been-released/14200
+  boo#1200002
+
+  + VPD information in resources API
+  * Cross-project profile copy
+  * HTTP streaming support in /dev/lxd API
+  * Use of server-side filtering in CLI
+  * Ceph librbd for virtual machines
+- Remove upstreamed patch:
+  + 0001-lxd-secommp-Fix-sysinfo-syscall-interception-on-32-b.patch
+
+-------------------------------------------------------------------
 Thu May  5 04:27:43 UTC 2022 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 5.1. The full upstream changelog is available from:
