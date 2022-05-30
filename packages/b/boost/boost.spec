@@ -266,6 +266,7 @@ Patch20:        python_library_name.patch
 Patch21:        boost-remove-cmakedir.patch
 Patch22:        boost-process.patch
 Patch23:        https://www.boost.org/patches/1_79_0/0001-json-array-erase-relocate.patch
+Patch24:        boost-mp-locale-fix.patch
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
 BuildRequires:  libbz2-devel
@@ -1260,6 +1261,7 @@ find -type f ! \( -name \*.sh -o -name \*.py -o -name \*.pl \) -exec chmod -x {}
 %patch21 -p1
 %patch22 -p2
 %patch23 -p1
+%patch24 -p1
 
 %build
 find . -type f -exec chmod u+w {} +

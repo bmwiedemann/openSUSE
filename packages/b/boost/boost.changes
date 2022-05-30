@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 29 12:51:47 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix failing conversion of cpp_dec_float to double, depending on
+  locale (gh#boostorg/multiprecision#464, boo#1199968).
+  Add boost-mp-locale-fix.patch
+
+-------------------------------------------------------------------
 Fri Apr 15 00:23:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.79.0:

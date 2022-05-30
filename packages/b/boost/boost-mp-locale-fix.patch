@@ -1,0 +1,108 @@
+From b30cfbb5dd7bf0a03730a5e25d35b4fd61add6e7 Mon Sep 17 00:00:00 2001
+From: Matt Borland <matt@mattborland.com>
+Date: Sat, 28 May 2022 08:53:35 -0700
+Subject: [PATCH] Fix for issue #464
+
+---
+ .../boost/multiprecision/cpp_dec_float.hpp    | 22 +++++++++++--
+ test/Jamfile.v2                               |  1 +
+ test/git_issue_464.cpp                        | 31 +++++++++++++++++++
+ 3 files changed, 52 insertions(+), 2 deletions(-)
+ create mode 100644 test/git_issue_464.cpp
+
+diff --git a/include/boost/multiprecision/cpp_dec_float.hpp b/include/boost/multiprecision/cpp_dec_float.hpp
+index bed38d5cf..074073827 100644
+--- a/boost/multiprecision/cpp_dec_float.hpp
++++ b/boost/multiprecision/cpp_dec_float.hpp
+@@ -26,6 +26,8 @@
+ #include <string>
+ #include <limits>
+ #include <stdexcept>
++#include <sstream>
++#include <locale>
+ #include <boost/multiprecision/detail/standalone_config.hpp>
+ #include <boost/multiprecision/number.hpp>
+ #include <boost/multiprecision/detail/fpclassify.hpp>
+@@ -1603,7 +1605,15 @@ double cpp_dec_float<Digits10, ExponentType, Allocator>::extract_double() const
+                      : -std::numeric_limits<double>::infinity());
+    }
+ 
+-   return std::strtod(str(std::numeric_limits<double>::digits10 + (2 + 1), std::ios_base::scientific).c_str(), nullptr);
++   std::stringstream ss;
++   ss.imbue(std::locale::classic());
++
++   ss << str(std::numeric_limits<double>::digits10 + (2 + 1), std::ios_base::scientific);
++
++   double d;
++   ss >> d;
++
++   return d;
+ }
+ 
+ template <unsigned Digits10, class ExponentType, class Allocator>
+@@ -1642,7 +1652,15 @@ long double cpp_dec_float<Digits10, ExponentType, Allocator>::extract_long_doubl
+                      : -std::numeric_limits<long double>::infinity());
+    }
+ 
+-   return std::strtold(str(std::numeric_limits<long double>::digits10 + (2 + 1), std::ios_base::scientific).c_str(), nullptr);
++   std::stringstream ss;
++   ss.imbue(std::locale::classic());
++
++   ss << str(std::numeric_limits<long double>::digits10 + (2 + 1), std::ios_base::scientific);
++
++   long double ld;
++   ss >> ld;
++
++   return ld;
+ }
+ 
+ template <unsigned Digits10, class ExponentType, class Allocator>
+diff --git a/test/Jamfile.v2 b/test/Jamfile.v2
+index 4ad012273..f5d88edf2 100644
+--- a/libs/multiprecision/test/Jamfile.v2
++++ b/libs/multiprecision/test/Jamfile.v2
+@@ -1176,6 +1176,7 @@ test-suite misc :
+       [ run git_issue_426.cpp : : : [ check-target-builds ../config//has_mpfr : <source>gmp <source>mpfr <define>TEST_MPFR ] [ check-target-builds ../config//has_float128 : <source>quadmath <define>TEST_FLOAT128 ] ]
+       [ run git_issue_277.cpp ]
+       [ run git_issue_313.cpp ]
++      [ run git_issue_464.cpp ]
+       [ compile git_issue_98.cpp : 
+          [ check-target-builds ../config//has_float128 : <define>TEST_FLOAT128 <source>quadmath : ]
+          [ check-target-builds ../config//has_gmp : <define>TEST_GMP <source>gmp : ]
+diff --git a/test/git_issue_464.cpp b/test/git_issue_464.cpp
+new file mode 100644
+index 000000000..dc9d0054a
+--- /dev/null
++++ b/libs/multiprecision/test/git_issue_464.cpp
+@@ -0,0 +1,31 @@
++///////////////////////////////////////////////////////////////////////////////
++//  Copyright 2022 Matt Borland. Distributed under the Boost
++//  Software License, Version 1.0. (See accompanying file
++//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
++//
++//  See: https://github.com/boostorg/multiprecision/issues/464
++
++#include <boost/multiprecision/cpp_dec_float.hpp>
++#include <locale>
++#include "test.hpp"
++
++template <typename T>
++void test()
++{
++    auto a = boost::multiprecision::cpp_dec_float_50 {12345};
++
++    auto d1 = a.convert_to<T>();
++
++    std::locale::global(std::locale("de_DE"));
++    auto d2 = a.convert_to<T>();
++
++    BOOST_CHECK_EQUAL(d1, d2);
++}
++
++int main(void)
++{
++    test<double>();
++    test<long double>();
++
++    return boost::report_errors();
++}
