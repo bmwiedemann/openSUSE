@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 30 09:59:43 UTC 2022 - Richard Brown <rbrown@suse.com>
+
+- Remove k3s flavours (boo#1199285)
+
+-------------------------------------------------------------------
 Sun May  1 13:19:16 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Rock64 board perfectly works with GPT

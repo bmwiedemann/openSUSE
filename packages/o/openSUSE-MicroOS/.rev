@@ -518,4 +518,12 @@
     <comment>Remove Kubic Images</comment>
     <requestid>979180</requestid>
   </revision>
+  <revision rev="54" vrev="54">
+    <srcmd5>ba118e06095359ae1779733f094dd782</srcmd5>
+    <version>16.0.0</version>
+    <time>1654004820</time>
+    <user>dimstar_suse</user>
+    <comment>Remove k3s flavour</comment>
+    <requestid>979835</requestid>
+  </revision>
 </revisionlist>

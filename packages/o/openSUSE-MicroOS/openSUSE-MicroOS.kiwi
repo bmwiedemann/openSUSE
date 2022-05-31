@@ -10,7 +10,6 @@
         <!-- Profiles used as dependencies of actual image profiles -->
         <!-- Flavors -->
         <profile name="ContainerHost" description="MicroOS with container runtime (podman)"/>
-        <profile name="k3s" description="MicroOS with k3s"/>
         <!-- Platforms -->
         <profile name="kvm-and-xen" description="kvm-and-xen" arch="x86_64,aarch64"/>
         <profile name="VMware" description="VMware for x86_64" arch="x86_64"/>
@@ -61,46 +60,6 @@
         <profile name="ContainerHost-SelfInstall" description="MicroOS with Podman for SelfInstallation" arch="x86_64,aarch64">
             <requires profile="SelfInstall"/>
             <requires profile="ContainerHost"/>
-        </profile>
-        <profile name="k3s-kvm-and-xen" description="MicroOS with k3s for KVM and HVM Xen" arch="x86_64,aarch64">
-            <requires profile="kvm-and-xen"/>
-            <requires profile="k3s"/>
-        </profile>
-        <profile name="k3s-VMware" description="MicroOS with k3s for VMware" arch="x86_64">
-            <requires profile="VMware"/>
-            <requires profile="k3s"/>
-        </profile>
-        <profile name="k3s-MS-HyperV" description="MicroOS with k3s for Hyper-V" arch="x86_64">
-            <requires profile="MS-HyperV"/>
-            <requires profile="k3s"/>
-        </profile>
-        <profile name="k3s-OpenStack-Cloud" description="MicroOS with k3s for OpenStack Cloud" arch="x86_64,aarch64">
-            <requires profile="OpenStack-Cloud"/>
-            <requires profile="k3s"/>
-        </profile>
-        <profile name="k3s-Pine64" description="MicroOS with k3s for the Pine64" arch="aarch64">
-            <requires profile="Pine64"/>
-            <requires profile="k3s"/>
-        </profile>
-        <profile name="k3s-RaspberryPi" description="MicroOS with k3s for the Raspberry Pi" arch="aarch64">
-            <requires profile="RaspberryPi"/>
-            <requires profile="k3s"/>
-        </profile>
-        <profile name="k3s-Rock64" description="MicroOS with k3s for the Rock64" arch="aarch64">
-            <requires profile="Rock64"/>
-            <requires profile="k3s"/>
-        </profile>
-        <profile name="k3s-Vagrant" description="MicroOS with k3s for Vagrant" arch="x86_64,aarch64">
-            <requires profile="Vagrant"/>
-            <requires profile="k3s"/>
-        </profile>
-        <profile name="k3s-SelfInstall" description="MicroOS with k3s for SelfInstallation" arch="x86_64,aarch64">
-            <requires profile="SelfInstall"/>
-            <requires profile="k3s"/>
-        </profile>
-        <profile name="k3s-DigitalOcean-Cloud" description="MicroOS with k3s for DigitalOcean Cloud" arch="x86_64">
-            <requires profile="DigitalOcean-Cloud"/>
-            <requires profile="k3s"/>
         </profile>
     </profiles>
     <preferences profiles="kvm-and-xen" arch="x86_64">
@@ -668,9 +627,6 @@
     </packages>
     <packages type="image" profiles="ContainerHost">
         <package name="patterns-containers-container_runtime"/>
-    </packages>
-    <packages type="image" profiles="k3s">
-        <package name="k3s"/>
     </packages>
     <packages type="image" profiles="kvm-and-xen">
         <!-- KVM and Xen specific packages -->
