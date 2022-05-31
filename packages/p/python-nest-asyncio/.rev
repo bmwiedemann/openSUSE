@@ -32,4 +32,14 @@
   * No release notes</comment>
     <requestid>940135</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8ea6e8cb0c903d36915146876f52e41d</srcmd5>
+    <version>1.5.5</version>
+    <time>1654004810</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.5:
+  * Patch asyncio.get_event_loop to not require a running loop
+  * Potential fix for issue #65</comment>
+    <requestid>979750</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 29 20:19:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.5:
+  * Patch asyncio.get_event_loop to not require a running loop
+  * Potential fix for issue #65
+
+-------------------------------------------------------------------
 Mon Dec 13 05:53:15 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.5.4:
