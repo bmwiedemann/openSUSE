@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 30 19:56:51 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Update to version 1.6.0
+  Introduce function to purge invalid entries from history
+
+-------------------------------------------------------------------
 Thu Apr  7 18:16:57 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
 
 - Format spec file via osc service

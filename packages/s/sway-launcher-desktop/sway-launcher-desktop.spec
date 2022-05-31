@@ -17,7 +17,7 @@
 
 
 Name:           sway-launcher-desktop
-Version:        1.5.4
+Version:        1.6.0
 Release:        0
 Summary:        TUI Application launcher with Desktop Entry support
 License:        GPL-3.0-only
