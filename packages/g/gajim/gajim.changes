@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon May 30 14:07:46 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix download url: upstream only publishes a .tar.gz, so let's use
+  that.
+
+-------------------------------------------------------------------
+Sat May 28 20:17:01 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.4.2:
+  * SearchView: Add calendar for browsing history.
+  * MUC: Enable history when creating rooms.
+  * Preferences: Bind show_send_message_button to
+    send_on_ctrl_enter.
+  * MessageInputTextView: Limit chars when applying styles.
+  * Accounts: Fix accessing disabled accounts.
+  * MUC: Display moderated messages again.
+  * MUC: Ignore gateway services for room creation.
+  * Preferences: Hide non-functional xhtml setting.
+  * Remove `Save conversation` setting.
+  * Reset conversation view when switching chat.
+  * Socks5: Catch specific exception.
+  * Status: Restore last status correctly.
+  * Jingle: Stop early if no transport is available.
+  * Roster: Filter list on contact update.
+  * Roster: Sort DND last.
+  * Don't set read marker when receiving own carbons.
+
+-------------------------------------------------------------------
 Sat May 21 15:49:23 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.4.1:
