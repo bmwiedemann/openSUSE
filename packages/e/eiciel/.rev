@@ -322,4 +322,24 @@
   (jsc#SLE-21105). (forwarded request 919914 from sbrabec)</comment>
     <requestid>920291</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>765ef8bfe3639343ce67a1b0161c22ba</srcmd5>
+    <version>0.9.13.1</version>
+    <time>1654011485</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.13.1:
+  + Solves a missing file in the archive and adds some
+    compatibility support to build on old distributions.
+- Changes from version 0.9.13:
+  + This update includes the long-requested feature of recursive
+    changing of permissions and some minor cleanups (mostly
+    non-functional changes).
+  + Add meson build system.
+- Drop
+  0001-Remove-deprecated-dynamic-exception-specifications.patch and
+  eiciel-sys-xattr.patch: fixed upstream.
+
+FTR: meson build system is not part of the tarball (forwarded request 980056 from dimstar)</comment>
+    <requestid>980075</requestid>
+  </revision>
 </revisionlist>

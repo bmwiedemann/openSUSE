@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 31 08:17:27 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.9.13.1:
+  + Solves a missing file in the archive and adds some
+    compatibility support to build on old distributions.
+- Changes from version 0.9.13:
+  + This update includes the long-requested feature of recursive
+    changing of permissions and some minor cleanups (mostly
+    non-functional changes).
+  + Add meson build system.
+- Drop
+  0001-Remove-deprecated-dynamic-exception-specifications.patch and
+  eiciel-sys-xattr.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Thu Sep 16 01:27:08 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

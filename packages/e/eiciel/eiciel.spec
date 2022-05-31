@@ -1,7 +1,7 @@
 #
 # spec file for package eiciel
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,13 @@
 %define _libnautilus_extensiondir %(pkg-config --variable extensiondir libnautilus-extension)
 
 Name:           eiciel
-Version:        0.9.12.1
+Version:        0.9.13.1
 Release:        0
 Summary:        GNOME ACL viewer and editor
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            http://rofi.roger-ferrer.org/eiciel/
 Source0:        http://rofi.roger-ferrer.org/eiciel/files/%{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM eiciel-sys-xattr.patch -- <attr/xattr.h> is deprecated, use <sys/xattr.h> instead
-Patch0:         eiciel-sys-xattr.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Remove-deprecated-dynamic-exception-specifications.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libacl-devel
