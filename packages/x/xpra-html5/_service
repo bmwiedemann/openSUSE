@@ -6,6 +6,28 @@
   <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/Xpra-org/xpra-html5</param>
     <param name="scm">git</param>
+    <!-- GOOD
+    <param name="revision">8aea0a5</param>
+    <param name="revision">0f51cab</param>
+    <param name="revision">1fe2469</param>
+    <param name="revision">09d46e4</param>
+    <param name="revision">3e2e896</param>
+    <param name="revision">7908dab</param>
+    <param name="revision">9512aca</param>
+    <param name="revision">e181fd1</param>
+    <param name="revision">caf9971</param>
+    -->
+    <!-- QUESTIONABLE
+    <param name="revision">ced316f</param>
+    <param name="revision">9e26e8e</param>
+    <param name="revision">8336b02</param>
+    -->
+    <!-- BAD
+    <param name="revision">799330a</param>
+    <param name="revision">fbb091f</param>
+    -->
+    <!-- TESTING -->
+    <param name="revision">caf9971</param>
     <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>

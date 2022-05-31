@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 23 21:12:32 UTC 2022 - scott.bradnick@suse.com
+
+- Updating uglifyjs to '3.15.5'.
+- Update to version 5.0+git20220516.caf9971:
+  * Last known commit working w/o error(s).
+
+-------------------------------------------------------------------
 Wed Apr 27 18:05:45 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version 4.5.2+git20220421.ecc3a08:

@@ -22,4 +22,12 @@
   * tell the server to use 'scroll' encoding less</comment>
     <requestid>973252</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d10356fe5fc95a2d558803c4106917ae</srcmd5>
+    <version>5.0+git20220516.caf9971</version>
+    <time>1654004853</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>979972</requestid>
+  </revision>
 </revisionlist>
