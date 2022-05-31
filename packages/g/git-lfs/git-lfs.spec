@@ -26,7 +26,7 @@
 %endif
 
 Name:           git-lfs
-Version:        3.1.4
+Version:        3.2.0
 Release:        0
 Summary:        Git extension for versioning large files
 License:        MIT
@@ -36,9 +36,9 @@ Source0:        https://github.com/git-lfs/git-lfs/releases/download/v%{version}
 BuildRequires:  curl
 BuildRequires:  fdupes
 BuildRequires:  git-core >= 1.8.2
-BuildRequires:  go1.14
 BuildRequires:  golang-packaging
 BuildRequires:  which
+BuildRequires:  golang(API) >= 1.18
 Requires:       git-core >= 1.8.2
 Requires(post): git-core >= 1.8.2
 Requires(preun):git-core >= 1.8.2

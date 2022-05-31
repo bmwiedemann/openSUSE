@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 25 22:07:04 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- bump golang to 1.18 or newer as we need support for
+  os.ErrDeadlineExceeded
+
+-------------------------------------------------------------------
+Wed May 25 22:04:22 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.2.0:
+  https://github.com/git-lfs/git-lfs/releases/tag/v3.2.0
+
+-------------------------------------------------------------------
 Thu Apr 21 13:23:07 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 3.1.4:
