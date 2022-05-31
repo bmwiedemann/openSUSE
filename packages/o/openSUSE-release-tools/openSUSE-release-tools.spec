@@ -20,7 +20,7 @@
 %define source_dir openSUSE-release-tools
 %define announcer_filename factory-package-news
 Name:           openSUSE-release-tools
-Version:        20220531.932157b8
+Version:        20220531.7e00d7d8
 Release:        0
 Summary:        Tools to aid in staging and release work for openSUSE/SUSE
 License:        GPL-2.0-or-later AND MIT
@@ -112,6 +112,18 @@ BuildArch:      noarch
 
 %description check-source
 Check source review bot that performs basic source analysis and assigns reviews.
+
+%package docker-publisher
+Summary:        Docker image publishing bot
+Group:          Development/Tools/Other
+BuildArch:      noarch
+Requires:       python3-lxml
+Requires:       python3-requests
+Requires(pre):  shadow
+
+%description docker-publisher
+A docker image publishing bot which regularly pushes built docker images from
+several sources (Repo, URL) to several destinations (git, Docker registries)
 
 %package maintenance
 Summary:        Maintenance related services
@@ -301,6 +313,14 @@ exit 0
 %postun check-source
 %{systemd_postun}
 
+%pre docker-publisher
+getent passwd osrt-docker-publisher > /dev/null || \
+  useradd -r -m -s /sbin/nologin -c "user for openSUSE-release-tools-docker-publisher" osrt-docker-publisher
+exit 0
+
+%postun docker-publisher
+%{systemd_postun}
+
 %pre maintenance
 getent passwd osrt-maintenance > /dev/null || \
   useradd -r -m -s /sbin/nologin -c "user for openSUSE-release-tools-maintenance" osrt-maintenance
@@ -372,6 +392,8 @@ exit 0
 %exclude %{_datadir}/%{source_dir}/check_maintenance_incidents.py
 %exclude %{_datadir}/%{source_dir}/check_source.py
 %exclude %{_datadir}/%{source_dir}/devel-project.py
+%exclude %{_datadir}/%{source_dir}/docker_publisher.py
+%exclude %{_datadir}/%{source_dir}/docker_registry.py
 %exclude %{_datadir}/%{source_dir}/metrics
 %exclude %{_datadir}/%{source_dir}/metrics.py
 %exclude %{_datadir}/%{source_dir}/metrics_release.py
@@ -408,6 +430,13 @@ exit 0
 %files check-source
 %{_bindir}/osrt-check_source
 %{_datadir}/%{source_dir}/check_source.py
+
+%files docker-publisher
+%{_bindir}/osrt-docker_publisher
+%{_datadir}/%{source_dir}/docker_publisher.py
+%{_datadir}/%{source_dir}/docker_registry.py
+%{_unitdir}/osrt-docker-publisher.service
+%{_unitdir}/osrt-docker-publisher.timer
 
 %files maintenance
 %{_bindir}/osrt-check_maintenance_incidents
