@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Tue May 31 07:29:14 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#881
+- increase disk size requirement in obs to avoid build failures
+- 4.5.16
+
+--------------------------------------------------------------------
+Mon May 30 10:36:01 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#880
+- added partition id for linux-server-data
+- 4.5.15
+
+--------------------------------------------------------------------
 Tue May 24 13:50:04 UTC 2022 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#879
