@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 26 23:51:03 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Update to vendored depedencies
+
+-------------------------------------------------------------------
 Fri Nov  5 04:09:55 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Add cargo audit service to detect potential security issues
