@@ -1,5 +1,5 @@
 #
-# spec file for package systemd
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #

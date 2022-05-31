@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 13 08:55:55 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update rpmlintrc for shlib-policy-name-error/multibuild case.
+
+-------------------------------------------------------------------
 Fri May  6 12:44:36 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - Import commit 0d950479e58dd3af007eb3780d600a5446aac519 (merge of v250.5)

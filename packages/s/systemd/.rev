@@ -6019,4 +6019,12 @@ handle manual pages that consist only of a .so directive such as
   It's a backport of upstream commit 1000522a60ceade446773c67031b47a566d4a70d.</comment>
     <requestid>975732</requestid>
   </revision>
+  <revision rev="359" vrev="2">
+    <srcmd5>195dfeafcd4bd31340fc4a6651848628</srcmd5>
+    <version>250.5</version>
+    <time>1654004816</time>
+    <user>dimstar_suse</user>
+    <comment>- Update rpmlintrc for shlib-policy-name-error/multibuild case.</comment>
+    <requestid>979799</requestid>
+  </revision>
 </revisionlist>
