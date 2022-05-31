@@ -118,7 +118,7 @@ Tue Apr 19 14:26:32 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
  - Fixed the expansion of $XONSH_TRACEBACK_LOGFILE user paths (e.g. "~/log")
  - Fixed DeprecationWarning when providing autocompletion for a non-callable type with ``(``
  - OSC codes in ``$PROMPT`` is no longer removed when using ptk shell.
-   These codes need to be escaped with ``..`` instead.
+   These codes need to be escaped with ``..`` instead.
  - Attempt to show a modal cursor in vi_mode (ie. block in cmd, bar in ins)
  - Xonsh can now be used in VIM (e.g. by ":read !ls" if VIM is configured to use xonsh. This may be the case when xonsh is the default shell.)
  - Fixed OSError on Windows when GnuWin32 is installed in the PATH.
