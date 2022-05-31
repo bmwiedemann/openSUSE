@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pint
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,13 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-Pint
-Version:        0.18
+Version:        0.19.2
 Release:        0
 Summary:        Physical quantities module
 License:        BSD-3-Clause
 URL:            https://github.com/hgrecco/pint
 Source:         https://files.pythonhosted.org/packages/source/P/Pint/Pint-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module importlib-resources}
 BuildRequires:  %{python_module setuptools_scm}
@@ -36,10 +37,10 @@ Requires:       python-importlib-metadata
 Requires:       python-importlib-resources
 Requires:       python-packaging
 Requires:       python-uncertainties >= 3.0
-Recommends:     python-numpy >= 1.17
+Recommends:     python-numpy >= 1.19
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module numpy >= 1.17}
+BuildRequires:  %{python_module numpy >= 1.19}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest >= 4.0}
 BuildRequires:  %{python_module pytest-subtests}
