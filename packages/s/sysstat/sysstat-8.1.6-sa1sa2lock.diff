@@ -1,9 +1,9 @@
-Index: sysstat-12.4.0/sa1.in
+Index: sysstat-12.6.0/sa1.in
 ===================================================================
---- sysstat-12.4.0.orig/sa1.in
-+++ sysstat-12.4.0/sa1.in
-@@ -29,19 +29,25 @@ then
- 	SADC_OPTIONS="${SADC_OPTIONS} -D"
+--- sysstat-12.6.0.orig/sa1.in
++++ sysstat-12.6.0/sa1.in
+@@ -31,8 +31,14 @@ then
+ 	LONG_NAME=y
  fi
  
 +set -e
@@ -16,6 +16,9 @@ Index: sysstat-12.4.0/sa1.in
 +
  [ "$1" = "--boot" ] && shift && BOOT=y || BOOT=n
  [ "$1" = "--sleep" ] && shift && SLEEP=y || SLEEP=n
+ 
+@@ -51,13 +57,13 @@ fi
+ 
  if [ "${SLEEP}" = "y" ]
  then
 -	exec ${ENDIR}/sadc -F -L ${SADC_OPTIONS} -C "LINUX SLEEP MODE ($*)" ${SA_DIR}
@@ -24,17 +27,17 @@ Index: sysstat-12.4.0/sa1.in
  then
  # Note: Stats are written at the end of previous file *and* at the
  # beginning of the new one (when there is a file rotation) only if
- # outfile has been specified as '-' on the command line...
+ # outfile has not been explicitly specified on the command line...
 -	exec ${ENDIR}/sadc -F -L ${SADC_OPTIONS} 1 1 ${SA_DIR}
 +	${ENDIR}/sadc -F -L ${SADC_OPTIONS} 1 1 ${SA_DIR}
  else
 -	exec ${ENDIR}/sadc -F -L ${SADC_OPTIONS} $* ${SA_DIR}
 +	${ENDIR}/sadc -F -L ${SADC_OPTIONS} $* ${SA_DIR}
  fi
-Index: sysstat-12.4.0/sa2.in
+Index: sysstat-12.6.0/sa2.in
 ===================================================================
---- sysstat-12.4.0.orig/sa2.in
-+++ sysstat-12.4.0/sa2.in
+--- sysstat-12.6.0.orig/sa2.in
++++ sysstat-12.6.0/sa2.in
 @@ -59,6 +59,17 @@ fi
  
  [ -f "${DFILE}" ] || exit 0

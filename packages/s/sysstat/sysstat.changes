@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon May 30 08:53:57 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Rebased patches:
+  * sysstat-8.1.6-sa1sa2lock.diff
+
+- Update to 12.6.0:
+  * sar: Fix maximum value for A_IRQ activity.
+  * sar/sadf: A_NET_SOFT: Add new metric softnet network backlog.
+  * sadc: A_NET_SOFT: Use CPU id from /proc/net/softnet_stat.
+  * Update DTD and XSD documents (softnet backlog).
+  * sar/sadf: Convert 64-bit time value to time_t as needed.
+  * sadf: Add basic colorization to sadf's output.
+  * sadf: Add sanity checks on values read from file.
+  * sadf: PCP: Fix multiple metrics name problems.
+  * sa_common.c: Remove unneeded variable assignment.
+  * Take into account LDFLAGS passer to configure script.
+  * Various janitorial fixes and updated.
+  * Update FAQ.
+  * Update sar manual page.
+  * Update NLS translations.
+  * Update non regression tests..
+
+-------------------------------------------------------------------
 Fri Mar 11 14:00:11 UTC 2022 - David Anes <david.anes@suse.com>
 - fix changelog typos.
 - update to 12.4.5:
