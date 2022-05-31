@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May 30 14:32:03 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.32.2:
+  * fixing missing write timeout (#584)
+  * removing testify dependency, fixing security issue in dep (#582)
+
+-------------------------------------------------------------------
+Mon May 30 14:31:04 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.32.1:
+  * use h2c fixed version of x/net (#581)
+  * blind fix/attempt for transient build process failure to upload artifacts (#579)
+
+-------------------------------------------------------------------
 Tue May 24 07:50:11 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.32.0:
