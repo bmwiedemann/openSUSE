@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May 30 22:22:31 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update 0.5.8:
+  - add support for Python 3.10 collections.abc.Iterable
+  - fix test_show
+  - fix failing test
+  - update mplexporter
+  - remove unnecessary imports
+  - Change to new dev version
+  - Update RELEASING.md
+- Removed upstreamed patch remove-nose.patch, because removal of
+  nose was done.
+
+-------------------------------------------------------------------
 Mon Feb  7 01:54:44 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to version 0.5.7:

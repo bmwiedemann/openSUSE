@@ -22,7 +22,7 @@
 # Tests are not designed to be non-interactively run, see README.md
 %bcond_without  test
 Name:           python-mpld3
-Version:        0.5.7
+Version:        0.5.8
 Release:        0
 Summary:        D3 Viewer for Matplotlib
 License:        BSD-3-Clause
@@ -31,9 +31,6 @@ URL:            https://mpld3.github.com
 Source0:        https://files.pythonhosted.org/packages/source/m/mpld3/%{modname}-%{version}.tar.gz
 # Originally from https://raw.githubusercontent.com/mpld3/mpld3/master/visualize_tests.py
 Source1:        visualize_tests.py
-# PATCH-FIX-UPSTREAM remove-nose.patch gh#mpld3/mpld3#505 mcepl@suse.com
-# there are just few SkipTests which need to be imported from stdlib
-Patch0:         remove-nose.patch
 BuildRequires:  %{python_module Jinja2 >= 2.7}
 BuildRequires:  %{python_module matplotlib >= 2.2}
 BuildRequires:  %{python_module pandas}

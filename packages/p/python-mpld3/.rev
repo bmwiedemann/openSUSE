@@ -31,4 +31,22 @@
 </comment>
     <requestid>951994</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dc8c5278d4fe54a8991da71ee0b5f7b1</srcmd5>
+    <version>0.5.8</version>
+    <time>1654004854</time>
+    <user>dimstar_suse</user>
+    <comment>- Update 0.5.8:
+  - add support for Python 3.10 collections.abc.Iterable
+  - fix test_show
+  - fix failing test
+  - update mplexporter
+  - remove unnecessary imports
+  - Change to new dev version
+  - Update RELEASING.md
+- Removed upstreamed patch remove-nose.patch, because removal of
+  nose was done.
+</comment>
+    <requestid>979974</requestid>
+  </revision>
 </revisionlist>
