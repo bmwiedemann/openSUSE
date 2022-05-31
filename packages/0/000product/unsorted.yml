@@ -1916,6 +1916,7 @@ unsorted:
   - charliecloud 
   - charliecloud-doc 
   - charliecloud-examples 
+  - chart-testing 
   - chasen 
   - chasen-devel 
   - chck-devel 
@@ -4273,7 +4274,6 @@ unsorted:
   - gdk-pixbuf-devel 
   - gdk-pixbuf-devel-32bit: [x86_64] 
   - gdk-pixbuf-loader-libavif 
-  - gdk-pixbuf-loader-libheif 
   - gdk-pixbuf-loader-libopenraw 
   - gdk-pixbuf-loader-libopenraw-32bit: [x86_64] 
   - gdk-pixbuf-loader-rsvg-32bit: [x86_64] 
@@ -10600,8 +10600,8 @@ unsorted:
   - libdiscid0-32bit: [x86_64] 
   - libdiscord-rpc 
   - libdisomaster1 
-  - libdispatch 
   - libdispatch-devel 
+  - libdispatch1_3 
   - libdjvulibre-devel 
   - libdlm-devel 
   - libdmapsharing-3_0-2 
@@ -13947,7 +13947,7 @@ unsorted:
   - libsliplu1 
   - libslirp-devel 
   - libslopy7_6 
-  - libslurm37: [x86_64] 
+  - libslurm38: [x86_64] 
   - libsmartcols-devel 
   - libsmartcols-devel-32bit: [x86_64] 
   - libsmartcols-devel-static 
@@ -18271,6 +18271,7 @@ unsorted:
   - openSUSE-release-tools-abichecker: [x86_64] 
   - openSUSE-release-tools-announcer: [x86_64] 
   - openSUSE-release-tools-check-source: [x86_64] 
+  - openSUSE-release-tools-docker-publisher: [x86_64] 
   - openSUSE-release-tools-maintenance: [x86_64] 
   - openSUSE-release-tools-metrics: [x86_64] 
   - openSUSE-release-tools-metrics-access: [x86_64] 
@@ -23341,7 +23342,6 @@ unsorted:
   - python310-httpsig_cffi 
   - python310-httptools 
   - python310-httpx 
-  - python310-hug 
   - python310-humanfriendly 
   - python310-humanhash3 
   - python310-humanize 
@@ -23460,6 +23460,7 @@ unsorted:
   - python310-josepy 
   - python310-jplephem 
   - python310-jsbeautifier 
+  - python310-jschema-to-python 
   - python310-jsmin 
   - python310-json-rpc 
   - python310-json5 
@@ -26502,7 +26503,6 @@ unsorted:
   - python38-httpretty 
   - python38-httpsig_cffi 
   - python38-httptools 
-  - python38-hug 
   - python38-humanfriendly 
   - python38-humanhash3 
   - python38-humanize 
@@ -26608,6 +26608,7 @@ unsorted:
   - python38-josepy 
   - python38-jplephem 
   - python38-jsbeautifier 
+  - python38-jschema-to-python 
   - python38-jsmin 
   - python38-json-rpc 
   - python38-json5 
@@ -29603,7 +29604,6 @@ unsorted:
   - python39-httpsig_cffi 
   - python39-httptools 
   - python39-httpx 
-  - python39-hug 
   - python39-humanfriendly 
   - python39-humanhash3 
   - python39-humanize 
@@ -29722,6 +29722,7 @@ unsorted:
   - python39-josepy 
   - python39-jplephem 
   - python39-jsbeautifier 
+  - python39-jschema-to-python 
   - python39-jsmin 
   - python39-json-rpc 
   - python39-json5 
@@ -33557,6 +33558,8 @@ unsorted:
   - template-resolver 
   - template-resolver-javadoc 
   - tennebon-dynamic-wallpaper 
+  - tensorflow-lite: [x86_64] 
+  - tensorflow-lite-devel: [x86_64] 
   - tepl-6-lang 
   - tepl-devel 
   - termcap 
