@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pre-commit
-Version:        2.18.1
+Version:        2.19.0
 Release:        0
 Summary:        Multi-language pre-commit hooks
 License:        MIT

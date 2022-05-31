@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May 31 02:56:01 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.19.0:
+  * Features
+    + Allow multiple outputs from language: dotnet hooks.
+    + Add more information to healthy() failure.
+    + Upgrade ruby-build.
+    + Add pre-commit validate-config / pre-commit validate-manifest
+      and deprecate pre-commit-validate-config and
+      pre-commit-validate-manifest.
+  * Fixes
+    + Fix pre-push when pushed ref contains spaces.
+  * Updating
+    + Change pre-commit-validate-config / pre-commit-validate-manifest
+      to pre-commit validate-config / pre-commit validate-manifest.
+
+-------------------------------------------------------------------
 Thu Apr  7 11:39:58 UTC 2022 - pgajdos@suse.com
 
 - version update to 2.18.1
