@@ -636,4 +636,12 @@ https://doc.powerdns.com/recursor/changelog/4.4.html#change-4.4.3</comment>
     <comment></comment>
     <requestid>969514</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>91d2861ae7eb242eeab38be070ec82d8</srcmd5>
+    <version>4.7.0</version>
+    <time>1654004865</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980065</requestid>
+  </revision>
 </revisionlist>

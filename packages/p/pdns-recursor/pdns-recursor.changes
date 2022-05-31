@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon May 30 17:15:50 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 4.7.0
+   * A configurable way of adding Additional records to answers sent
+     to the client, so the client does not have to ask for these
+     records.
+   * The step sizes for Query Minimization are now computed following to
+     guidelines in [2]RFC 9156.
+   * The Recursor now schedules tasks to resolve IPv6 addresses of name
+     servers not learned by glue records. This has the consequence that,
+     if applicable, name servers will be contacted over IPv6 more often.
+   * An experimental implementation of unilateral [3]DoT probing. This
+     allows the Recursor to learn if a an authoritative servers supports
+     DoT.
+   * Recursor has gained a way to fall back to the parent NS set if
+     contacting servers in the child NS set does not lead to an answer.
+     This works around some broken authoritative servers configurations.
+   * ZONEMD validation of the zones retrieved by the [5]Zone to Cache,
+     providing integrity guarantees for the zone retrieved.
+   * The table recording round trip times of authoritative server IP
+     addresses is now shared between threads to make it more effective
+     and to reduce its memory footprint.
+   * A Lua FFI hook for post-resolve interception: [6]postresolve_ffi,
+     providing a very fast way to do post-resolve Lua scripting.
+
+-------------------------------------------------------------------
 Mon Apr  4 16:41:19 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - update to 4.6.2
