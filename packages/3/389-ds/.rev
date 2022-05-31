@@ -574,4 +574,24 @@
     <comment></comment>
     <requestid>976502</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>c9f3cbb064a762037ab4d3afbe431eac</srcmd5>
+    <version>2.1.1~git22.faef73366</version>
+    <time>1654004855</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1199889 - CVE-2022-1949 - full access control bypass with simple crafted query, resolved
+  by Issue 5170.
+- Update to version 2.1.1~git22.faef73366:
+  * Issue 5302 - Release tarballs don't contain cockpit webapp
+  * Issue 5237 - audit-ci: Cannot convert undefined or null to object
+  * Issue 5170 - BUG - ldapsubentries were incorrectly returned (#5285)
+  * Issue 4970 - Add support for recursively deleting subentries
+  * Issue 5284 - Replication broken after password change (#5286)
+  * Issue 5291 - Harden ReplicationManager.wait_for_replication (#5292)
+  * Issue 5170 - RFE - Filter optimiser (#5171)
+  * Issue 5276 - CLI - improve task handling
+  * Issue 5273 - CLI - add arg completer for instance name
+  * Issue 2893 - CLI - dscreate - add options for setting up replication</comment>
+    <requestid>979985</requestid>
+  </revision>
 </revisionlist>
