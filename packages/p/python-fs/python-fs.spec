@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-fs
-Version:        2.4.15
+Version:        2.4.16
 Release:        0
 Summary:        Python's filesystem abstraction layer
 License:        MIT

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May 29 20:03:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.16:
+  * Make `fs.zipfs._ZipExtFile` use the seeking mechanism implemented
+    in the Python standard library in Python version 3.7 and later
+  * Mark `fs.zipfs.ReadZipFS` as a case-sensitive filesystem
+  * Optimized moving files between filesystems with syspaths.
+  * Fixed `fs.move.move_file` to clean up the copy on the destination in case of errors.
+  * `fs.opener.manage_fs` with `writeable=True` will now raise a `ResourceReadOnly`
+    exception if the managed filesystem is not writeable.
+  * Marked filesystems wrapped with `fs.wrap.WrapReadOnly` as read-only.
+
+-------------------------------------------------------------------
 Sat Mar 26 21:28:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.15:

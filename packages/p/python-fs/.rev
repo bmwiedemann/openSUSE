@@ -131,4 +131,20 @@
    `movedir` to be always skipped.</comment>
     <requestid>965110</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d81dd1d8df9e7e18d466faa30ba50ff1</srcmd5>
+    <version>2.4.16</version>
+    <time>1654004809</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.16:
+  * Make `fs.zipfs._ZipExtFile` use the seeking mechanism implemented
+    in the Python standard library in Python version 3.7 and later
+  * Mark `fs.zipfs.ReadZipFS` as a case-sensitive filesystem
+  * Optimized moving files between filesystems with syspaths.
+  * Fixed `fs.move.move_file` to clean up the copy on the destination in case of errors.
+  * `fs.opener.manage_fs` with `writeable=True` will now raise a `ResourceReadOnly`
+    exception if the managed filesystem is not writeable.
+  * Marked filesystems wrapped with `fs.wrap.WrapReadOnly` as read-only.</comment>
+    <requestid>979746</requestid>
+  </revision>
 </revisionlist>
