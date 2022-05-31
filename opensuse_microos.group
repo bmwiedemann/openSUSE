@@ -1273,6 +1273,7 @@
     <package name="polkit" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-packagekit -->
     <package name="polkit-default-privs" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="polkit-kde-agent-5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="power-profiles-daemon" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="powerdevil5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="prison-qt5-imports" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="procps" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
