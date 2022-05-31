@@ -326,4 +326,15 @@
     <comment>- Version 2.5.0</comment>
     <requestid>977555</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>016b097fdefebdc5f4cf3d0479e06cfe</srcmd5>
+    <version>2.6.0</version>
+    <time>1654012063</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.6.0
+- Move to global config in /etc/opi.cfg
+- Check if desired repo is already added instead of relying on prefix
+- Add config option use_releasever_var</comment>
+    <requestid>980108</requestid>
+  </revision>
 </revisionlist>

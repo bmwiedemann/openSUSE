@@ -17,7 +17,7 @@
 
 
 Name:           opi
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        OBS Package Installer (CLI)
 License:        GPL-3.0-only
@@ -49,15 +49,14 @@ OBS Package Installer (CLI)
 %setup -q
 
 %build
-help2man -s8 -N ./bin/opi > opi.8.gz
+help2man -s8 -N ./bin/opi | gzip > opi.8.gz
 gzip opi.8.gz
 
 %install
 python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
-mkdir -p %{buildroot}%{_datadir}/metainfo
-cp org.openSUSE.opi.appdata.xml %{buildroot}%{_datadir}/metainfo
-mkdir -p %{buildroot}%{_datadir}/man/man8
-cp opi.8.gz %{buildroot}%{_datadir}/man/man8
+install -m 644 -D -v org.openSUSE.opi.appdata.xml %{buildroot}%{_datadir}/metainfo/org.openSUSE.opi.appdata.xml
+install -m 644 -D -v opi.8.gz %{buildroot}%{_datadir}/man/man8/opi.8.gz
+install -m 644 -D -v opi.default.cfg %{buildroot}%{_sysconfdir}/opi.cfg
 
 %check
 python3 setup.py --version | grep %{version}
@@ -69,5 +68,6 @@ python3 setup.py --version | grep %{version}
 %{_datadir}/metainfo/org.openSUSE.opi.appdata.xml
 %{_datadir}/man/man8/opi.8.gz
 %{python3_sitelib}/*
+%config %{_sysconfdir}/opi.cfg
 
 %changelog
