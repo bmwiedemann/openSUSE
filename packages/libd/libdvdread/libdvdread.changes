@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 29 19:08:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.3:
+  * Improvements for OpenBSD
+  * Fix crashes on some DVD (0 PCGI SRP)
+  * Misc source fixes and cleanups, including fixes for recent toolchains
+
+-------------------------------------------------------------------
 Sun May  9 14:37:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.2:

@@ -1,7 +1,7 @@
 #
 # spec file for package libdvdread
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover   8
 Name:           libdvdread
-Version:        6.1.2
+Version:        6.1.3
 Release:        0
 Summary:        Library for Reading DVD Video Images
 License:        GPL-2.0-or-later
@@ -79,7 +79,7 @@ rm -rf %{buildroot}%{_datadir}/doc/libdvdread/
 
 %files -n libdvdread%{sover}
 %license COPYING
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md
 %{_libdir}/libdvdread.so.%{sover}
 %{_libdir}/libdvdread.so.%{sover}.*
 
