@@ -97,4 +97,12 @@ need to be staged with libVNCServer sr#862644 (forwarded request 862647 from fcr
     <comment>Update to 42.1.1 (forwarded request 973116 from dimstar)</comment>
     <requestid>973140</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>78193c9f3e60449a844a7cd4420c7205</srcmd5>
+    <version>42.2</version>
+    <time>1654004858</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42.2 (forwarded request 979892 from dimstar)</comment>
+    <requestid>980030</requestid>
+  </revision>
 </revisionlist>

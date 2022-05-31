@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May 30 12:11:18 UTC 2022 - dimstar@opensuse.org
+
+- Update to version 42.2:
+  + rdp-graphics-pipeline: Measure bandwidth when sending frame
+    updates.
+  + session-rdp: Handle queued bandwidth measure stop operations.
+  + rdp/nw-auto: Add APIs for bandwidth measurement.
+  + rdp/nw-auto: Also notify client about network characteristics
+    results.
+  + rdp/nw-auto: Turn ping info condition into assertion.
+  + rdp/nw-auto: Assert RTT consumer != NONE, when removing RTT
+    consumer.
+  + rdp/nw-auto: Remove superfluous if condition.
+  + rdp/nw-auto: Fix initial ping source not being created.
+  + rdp/rdpgfx: Create RTT pause source while GFX mutex is locked.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Apr 27 11:50:09 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 42.1.1:
