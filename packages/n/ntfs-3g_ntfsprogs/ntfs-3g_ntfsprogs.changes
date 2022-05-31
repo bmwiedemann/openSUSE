@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May 29 19:51:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2022.5.17 (bsc#1199978):
+  * Improved defence against maliciously tampered NTFS partitions
+  * Improved defence against improper use of options
+  * Updated the documentation
+  * CVE-2022-30783, CVE-2022-30785, CVE-2022-30787
+  * CVE-2021-46790, CVE-2022-30784, CVE-2022-30786, 
+  * CVE-2022-30788, CVE-2022-30789 
+
+-------------------------------------------------------------------
 Tue Aug 31 14:59:59 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2021.8.22 (boo#1189720 boo#1130165):

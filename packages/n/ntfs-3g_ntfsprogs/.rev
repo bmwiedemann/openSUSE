@@ -211,4 +211,18 @@ Please forward to 12.3</comment>
     <comment></comment>
     <requestid>942721</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>1160bada2953062d599d50eb4e7bae8d</srcmd5>
+    <version>2022.5.17</version>
+    <time>1654004807</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2022.5.17 (bsc#1199978):
+  * Improved defence against maliciously tampered NTFS partitions
+  * Improved defence against improper use of options
+  * Updated the documentation
+  * CVE-2022-30783, CVE-2022-30785, CVE-2022-30787
+  * CVE-2021-46790, CVE-2022-30784, CVE-2022-30786, 
+  * CVE-2022-30788, CVE-2022-30789</comment>
+    <requestid>979742</requestid>
+  </revision>
 </revisionlist>

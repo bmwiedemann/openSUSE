@@ -1,7 +1,7 @@
 #
 # spec file for package ntfs-3g_ntfsprogs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,20 @@
 #
 
 
+%define sover 89
 %if 0%{?usrmerged}
-%define sbindir %_sbindir
+%define sbindir %{_sbindir}
 %else
 %define sbindir /sbin
 %endif
-
-%define sover 89
-
 Name:           ntfs-3g_ntfsprogs
+Version:        2022.5.17
+Release:        0
 Summary:        NTFS Support in Userspace
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
-Version:        2021.8.22
-Release:        0
-Source:         http://tuxera.com/opensource/%{name}-%{version}.tgz
 URL:            https://github.com/tuxera/ntfs-3g/
+Source:         https://tuxera.com/opensource/%{name}-%{version}.tgz
 BuildRequires:  autoconf
 BuildRequires:  gnutls-devel
 BuildRequires:  hwinfo-devel
@@ -39,7 +37,6 @@ BuildRequires:  libgcrypt-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fuse) >= 2.6.0
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 NTFS-3G allows for read/write access to NTFS partitions which can be
@@ -63,12 +60,12 @@ NTFS-3G allows for read/write access to NTFS partitions which can be
 shared with Windows XP, Windows Server 2003, Windows 2000, Windows
 Vista and Windows Seven.
 
-%package -n libntfs-3g%sover
+%package -n libntfs-3g%{sover}
 Summary:        NTFS Support in Userspace -- Library
 License:        LGPL-2.1-or-later
 Group:          System/Filesystems
 
-%description -n libntfs-3g%sover
+%description -n libntfs-3g%{sover}
 NTFS-3G allows for read/write access to NTFS partitions which can be
 shared with Windows XP, Windows Server 2003, Windows 2000, Windows
 Vista and Windows Seven.
@@ -78,7 +75,7 @@ Summary:        NTFS Support in Userspace -- Development Files
 License:        LGPL-2.1-or-later
 Group:          System/Filesystems
 Requires:       glibc-devel
-Requires:       libntfs-3g%sover = %{version}
+Requires:       libntfs-3g%{sover} = %{version}
 Provides:       ntfs-3g-devel = %{version}
 Obsoletes:      ntfs-3g-devel < %{version}
 
@@ -106,7 +103,7 @@ Group:          System/Filesystems
 These are programs which are considered non-functional or only test-oriented.  They are kept in the source
 tarball so that volunteers can capitalize on them for improvement.
 
-In particular ntfsck is just a place holder.  Distributions are expected not to recommend inserting a positive value in the last field of /etc/fstab for ntfs partitions.
+In particular ntfsck is just a place holder.  Distributions are expected not to recommend inserting a positive value in the last field of %{_sysconfdir}/fstab for ntfs partitions.
 
 They have been orphaned for ten years and are unlikely to be upgraded (except ntfsfallocate, if there is some demand).
 
@@ -121,21 +118,21 @@ autoconf
 # which is signed and would possibly ok to be unsigned. Any solution to this
 # needs to be carefully reviewed and tested, so we do not change the code now:
 #
-export CFLAGS="$RPM_OPT_FLAGS -Wformat -Wformat-security -W -Wno-sign-compare -fPIE"
+export CFLAGS="%{optflags} -Wformat -Wformat-security -W -Wno-sign-compare -fPIE"
 export LDFLAGS="-pie"
 %configure --exec-prefix=/ --disable-static --with-pic --disable-ldconfig \
 	--with-fuse=external --enable-posix-acls \
 	--enable-extras \
 	--enable-crypto \
 	--enable-quarantined
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 %if 0%{?usrmerged}
 mv %{buildroot}/sbin/* %{buildroot}%{_sbindir}
 %endif
-%{__rm} -v %{buildroot}%{_libdir}/libntfs-3g.la
+rm -v %{buildroot}%{_libdir}/libntfs-3g.la
 # Alternatives for mount.ntfs (binary and manpage)
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -s -f %{_sysconfdir}/alternatives/mount.ntfs %{buildroot}%{sbindir}/mount.ntfs
@@ -160,12 +157,10 @@ if [ ! -f %{sbindir}/mount.ntfs-3g ]; then
   update-alternatives --remove mount.ntfs %{sbindir}/mount.ntfs-3g
 fi
 
-%post -n libntfs-3g%sover -p /sbin/ldconfig
-
-%postun -n libntfs-3g%sover -p /sbin/ldconfig
+%post -n libntfs-3g%{sover} -p /sbin/ldconfig
+%postun -n libntfs-3g%{sover} -p /sbin/ldconfig
 
 %files -n ntfs-3g
-%defattr(-,root,root,-)
 %doc AUTHORS ChangeLog CREDITS NEWS README
 %license COPYING
 %{_bindir}/ntfs-3g
@@ -186,21 +181,18 @@ fi
 %{_mandir}/man8/ntfssecaudit.8%{?ext_man}
 %{_mandir}/man8/ntfsusermap.8%{?ext_man}
 # We already have this, so no need to package it again.
-%exclude /usr/share/doc/ntfs-3g/README
+%exclude %{_datadir}/doc/ntfs-3g/README
 
-%files -n libntfs-3g%sover
-%defattr(-,root,root,-)
+%files -n libntfs-3g%{sover}
 %license COPYING.LIB
 %{_libdir}/libntfs-3g.so.*
 
 %files -n libntfs-3g-devel
-%defattr(-,root,root,-)
 %{_includedir}/ntfs-3g/
 %{_libdir}/libntfs-3g.so
 %{_libdir}/pkgconfig/libntfs-3g.pc
 
 %files -n ntfsprogs
-%defattr(-, root, root)
 %doc AUTHORS ChangeLog CREDITS NEWS README
 %license COPYING
 %{_sbindir}/mkfs.ntfs
@@ -240,7 +232,6 @@ fi
 %{_mandir}/man8/ntfsrecover.8%{?ext_man}
 
 %files -n ntfsprogs-extra
-%defattr(-, root, root)
 %doc AUTHORS ChangeLog CREDITS NEWS README
 %license COPYING
 %{_bindir}/ntfsck
