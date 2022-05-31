@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May 31 11:08:59 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.21.0:
+  * Add command to convert legacy annotations to OPA Metadata annotations (#294)
+  * Fix OPA Metadata parameters validation (fix #293) (#295)
+  * Bump github.com/spf13/viper from 1.11.0 to 1.12.0 (#292)
+  * Bump k8s.io/apimachinery from 0.24.0 to 0.24.1 (#291)
+  * Check parent as well as exact match when resolving imports (#286)
+  * Bump golang from 1.18.1-alpine to 1.18.2-alpine (#290)
+  * Bump alpine from 3.15.4 to 3.16.0 (#289)
+  * Have Dependabot run more often (#288)
+  * Bump k8s.io/apimachinery from 0.23.6 to 0.24.0 (#285)
+  * Add support for using OPA Metadata Annotations (#281)
+  * Run e2e tests weekly (#284)
+  * Run e2e tests weekly (#283)
+  * Run e2e tests weekly (#282)
+
+-------------------------------------------------------------------
 Wed May 18 09:13:43 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.20.0:
