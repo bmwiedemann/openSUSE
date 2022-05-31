@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 17 07:54:00 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.0.0.rc16 patch level 3
+- Drop upstream fixed and resolved dmraid-destdir.patch,
+  dmraid-1.0.0.rc16-cvs-2010-02-02.patch, lib-install.patch,
+  fix-return-function-type.patch and handle_spaces
+- Drop remove_trylock, only required for very old glibc versions
+  (openSUSE 11.x)
+
+-------------------------------------------------------------------
 Tue Nov 17 13:59:10 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)

@@ -450,4 +450,12 @@ See lib/register/dmreg.c and tools/dmevent_tool.c (both have GPL-2.0 license) (f
     <comment>- prepare usrmerge (boo#1029961) (forwarded request 849711 from lnussel)</comment>
     <requestid>850824</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>74f4e0b11a59eda1f71524cfa8bc36bf</srcmd5>
+    <version>1.0.0.rc16.3</version>
+    <time>1654004812</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979760</requestid>
+  </revision>
 </revisionlist>

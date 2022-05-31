@@ -1,7 +1,7 @@
 #
 # spec file for package dmraid
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,28 +39,23 @@ BuildRequires:  zlib-devel
 Requires:       aaa_base
 Requires:       kpartx
 Requires(post): coreutils
-Requires(postun): coreutils
+Requires(postun):coreutils
 URL:            http://people.redhat.com/~heinzm/sw/dmraid/src/
 Summary:        A Device-Mapper Software RAID Support Tool
 License:        GPL-2.0-only
-Version:        1.0.0.rc16
+Version:        1.0.0.rc16.3
+%define src_version 1.0.0.rc16-3
 Release:        0
-Source:         ftp://people.redhat.com/heinzm/sw/dmraid/src/dmraid-%{version}.tar.bz2
+Source:         https://people.redhat.com/~heinzm/sw/dmraid/src/dmraid-%{src_version}.tar.bz2
 Source1:        sysconfig.dmraid
 Source3:        README.SUSE
 Source6:        dmraid-activation.service
-Patch1:         dmraid-1.0.0.rc16-cvs-2010-02-02.patch
-Patch2:         dmraid-1.0.0.rc13-geometry.patch
-Patch3:         lib-install.patch
-Patch4:         handle_spaces
-Patch5:         remove_trylock
-Patch6:         rebuild.fix
-Patch7:         ddf-erase
-Patch8:         dmraid-move-var-lock-to-run-lock.patch
-Patch9:         dmraid-destdir.patch
-Patch10:        fix-undefined-symbol.patch
-Patch11:        0001-remove-partitions-with-O_RDONLY.patch
-Patch12:        fix-return-function-type.patch
+Patch0:         dmraid-1.0.0.rc13-geometry.patch
+Patch1:         rebuild.fix
+Patch2:         ddf-erase
+Patch3:         dmraid-move-var-lock-to-run-lock.patch
+Patch4:         fix-undefined-symbol.patch
+Patch5:         0001-remove-partitions-with-O_RDONLY.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         %fillup_prereq
@@ -99,19 +94,13 @@ dmraid uses libdevmapper and the device-mapper kernel runtime to create
 devices with respective mappings for the ATARAID sets discovered.
 
 %prep
-%setup -n dmraid/%{version}
+%setup -n dmraid/%{src_version}/dmraid
+%patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p2
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p2
-%patch12 -p2
 
 cp %{SOURCE3} .
 
@@ -120,6 +109,7 @@ cp %{SOURCE3} .
 autoreconf -fi
 rm -r autom4te.cache
 %configure \
+  --with-usrlibdir=%{_libdir} \
 %if !0%{?usrmerged}
   --sbindir=%{sbindir} \
 %endif
@@ -128,10 +118,10 @@ rm -r autom4te.cache
 make
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT
-rm -f $RPM_BUILD_ROOT/%_libdir/libdmraid.a
-mkdir -p $RPM_BUILD_ROOT%{_fillupdir}
-install -m644 %{SOURCE1} $RPM_BUILD_ROOT%{_fillupdir}/sysconfig.dmraid
+%make_install
+rm -f %{buildroot}%{_libdir}/libdmraid.a
+mkdir -p %{buildroot}%{_fillupdir}
+install -m644 %{SOURCE1} %{buildroot}%{_fillupdir}/sysconfig.dmraid
 install -D -m 0644 %{S:6} %{buildroot}%{_unitdir}/dmraid-activation.service
 install -d %{buildroot}%{_tmpfilesdir}
 echo 'd /run/lock/dmraid 0700 root root -' > %{buildroot}%{_tmpfilesdir}/dmraid.conf
@@ -166,15 +156,16 @@ chmod -x %{buildroot}%{_prefix}/include/dmraid/*h
 %{_mandir}/man8/*
 %doc LICENSE LICENSE_GPL LICENSE_LGPL README README.SUSE TODO doc/*
 %{_fillupdir}/sysconfig.dmraid
+%{_libdir}/libdmraid.so.*
 %{_libdir}/libdmraid-events-isw.so
-%{_libdir}/libdmraid.so.1.0.0.rc16-3
+%dir %{_libdir}/device-mapper
+%{_libdir}/device-mapper/libdmraid-events-isw.so
 %dir %{_tmpfilesdir}
 %{_tmpfilesdir}/dmraid.conf
 %{_unitdir}/dmraid-activation.service
 
 %files devel
 %defattr(-, root, root)
-%dir %{_prefix}/include/dmraid
 %{_prefix}/include/dmraid
 %{_libdir}/libdmraid.so
 
