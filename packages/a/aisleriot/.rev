@@ -538,4 +538,12 @@
   upstream.</comment>
     <requestid>970067</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>62736ee0a8dbc8ef27a0c7b0c12bfc3e</srcmd5>
+    <version>3.22.23</version>
+    <time>1654011483</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.22.23 (forwarded request 980055 from dimstar)</comment>
+    <requestid>980070</requestid>
+  </revision>
 </revisionlist>
