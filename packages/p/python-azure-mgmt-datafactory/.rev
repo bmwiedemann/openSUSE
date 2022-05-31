@@ -173,4 +173,15 @@
     CHANGELOG.md file provided with this package (forwarded request 977012 from glaubitz)</comment>
     <requestid>977043</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6210d4c9ca1577736f7b4e4702951fbb</srcmd5>
+    <version>2.6.0</version>
+    <time>1654012425</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.6.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 979846 from glaubitz)</comment>
+    <requestid>980113</requestid>
+  </revision>
 </revisionlist>
