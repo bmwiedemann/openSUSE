@@ -1,0 +1,6 @@
+<package name="chart-testing" project="openSUSE:Factory">
+  <title>chart-testing</title>
+  <description>CLI tool for linting and testing Helm charts </description>
+  <devel project="devel:kubic" package="chart-testing"/>
+  <url>https://github.com/helm/chart-testing</url>
+</package>
