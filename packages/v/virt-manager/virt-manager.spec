@@ -98,7 +98,6 @@ Recommends:     python3-SpiceClientGtk
 Requires:       virt-install
 Requires:       virt-manager-common = %{verrel}
 Requires:       typelib(GtkSource)
-Recommends:     xorriso
 
 %if %{with_guestfs}
 Requires:       python3-libguestfs
@@ -129,6 +128,7 @@ Requires:       python3-ipaddr
 Requires:       python3-libvirt-python >= 0.7.0
 Requires:       python3-libxml2-python
 Requires:       python3-pycurl
+Requires:       xorriso
 Requires:       typelib(AppIndicator3)
 Requires:       typelib(LibvirtGLib)
 Suggests:       python3-virt-bootstrap

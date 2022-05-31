@@ -1830,4 +1830,12 @@
     <comment>Add support in virt-manager for enabling launch security (SEV) on AMD compatible hardware (jsc#SLE-18732).</comment>
     <requestid>976118</requestid>
   </revision>
+  <revision rev="232" vrev="3">
+    <srcmd5>c17dd7c0a53c862d2ce4da8dc2dead49</srcmd5>
+    <version>4.0.0</version>
+    <time>1654004822</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>979896</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 23 08:10:42 MDT 2022 - carnold@suse.com
+
+- Change dependency on package xorriso to Requires from Recommends
+  virt-manager.spec
+
+-------------------------------------------------------------------
 Wed Mar 30 09:06:33 MDT 2022 - carnold@suse.com
 
 - bsc#1196806 - [jsc#SLE-18834][virt-install] ERROR SEV launch
