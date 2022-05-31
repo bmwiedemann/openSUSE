@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue May 31 08:25:55 UTC 2022 - dimstar@opensuse.org
+
+- Update to version 42.2:
+  + Show device problems.
+  + Verify without blocking the UI mainloop.
+  + icons: provide generic device fallbacks.
+  + Provide specific device icons and install as resources.
+  + Show the About dialog in the menu.
+  + icons: udate symbolic icon.
+  + Do not show the estimated time to completion.
+  + Use a revealer for the progress bar.
+  + Don't pass user_data to window_destroy response cb.
+  + Lower the GTK4 dep to build on F35.
+- Changes from version 42.1:
+  + Update the progressbar text for every percentage changed event.
+  + Do not show crazy remaining time values.
+  + Do not create a fake FwupdRequest as we set FLAG_REQUESTS.
+  + Show how GUIDs are constructed in the UI.
+  + Marks the application as adaptive in mobile in Phosh.
+  + Show the 'No Releases Available' in more cases.
+- Changes from version 42.0:
+  + Use a GtkProgressBar for install progress.
+  + Rate limit device refresh callbacks.
+  + Allow the GUIDs to wrap when required.
+  + Add the device branch to the device page.
+  + Add some padding to the bottom of the page.
+  + Move the release icon to right aligned.
+  + Port to GTK4.
+  + Allow installing firmware with FWUPD_DEVICE_FLAG_AFFECTS_FDE.
+  + Updated translation.
+- Replace pkgconfig(gtk+-3.0) BuildRequires with pkgconfig(gtk4):
+  follow upstreams port to GTK4.
+- Add pkgconfig(libadwaita-1) BuildRequires: new dependency.
+- Drop gobject-introspection, perl-forks,
+  pkgconfig(appstream-glib), pkgconfig(libsoup-2.4), and
+  pkgconfig(systemd) buildRequires: no longer needed.
+
+-------------------------------------------------------------------
 Fri Jul  3 16:51:43 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Removed do-not-call-gtk_init-manually.patch. Fixed upstream

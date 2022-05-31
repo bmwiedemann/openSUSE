@@ -5,7 +5,7 @@
     <param name="url">https://gitlab.gnome.org/hughsie/gnome-firmware-updater.git</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">refs/tags/3.36.0</param>
+    <param name="revision">refs/tags/42.2</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service mode="disabled" name="set_version"/>

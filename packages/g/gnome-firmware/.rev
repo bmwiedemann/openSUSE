@@ -37,4 +37,12 @@
   * l10n: Add Italian translation (forwarded request 818626 from Dead_Mozay)</comment>
     <requestid>819928</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bddd814b30c2c52f81dc4031fbd07c3e</srcmd5>
+    <version>42.2</version>
+    <time>1654011486</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 42.2 (forwarded request 980060 from dimstar)</comment>
+    <requestid>980076</requestid>
+  </revision>
 </revisionlist>

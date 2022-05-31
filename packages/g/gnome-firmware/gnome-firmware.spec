@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-firmware
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +17,22 @@
 
 
 Name:           gnome-firmware
-Version:        3.36.0
+Version:        42.2
 Release:        0
 Summary:        Install firmware on devices
 License:        GPL-2.0-or-later
 Group:          System/Management
 URL:            https://gitlab.gnome.org/hughsie/gnome-firmware-updater
 Source0:        %{name}-%{version}.tar.xz
-
-BuildRequires:  gobject-introspection
 BuildRequires:  help2man
-BuildRequires:  meson
-BuildRequires:  perl-forks
+BuildRequires:  meson >= 0.46.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(appstream-glib)
-BuildRequires:  pkgconfig(fwupd) >= 1.2.10
+BuildRequires:  pkgconfig(fwupd) >= 1.7.5
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(libsoup-2.4)
-BuildRequires:  pkgconfig(systemd)
-BuildRequires:  pkgconfig(xmlb)
-
+BuildRequires:  pkgconfig(gtk4) >= 4.2
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.0.0
+BuildRequires:  pkgconfig(xmlb) >= 0.1.7
 Provides:       gnome-firmware-updater = %{version}-%{release}
 Obsoletes:      gnome-firmware-updater < %{version}-%{release}
 Provides:       gnome-firmware-updater-lang = %{version}-%{release}
@@ -70,7 +64,6 @@ supported by fwupd.
 %{_datadir}/metainfo/org.gnome.Firmware.metainfo.xml
 %{_datadir}/icons/hicolor/scalable/apps/org.gnome.Firmware.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Firmware-symbolic.svg
-%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Firmware.Devel.svg
 %{_mandir}/man1/gnome-firmware.1%{?ext_man}
 
 %files lang -f %{name}.lang
