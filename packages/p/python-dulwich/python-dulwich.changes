@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 29 20:02:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.20.42:
+  * Drop ``RefsContainer.watch`` that was always flaky.
+  * Fix wheel uploading, properly. (Ruslan Kuprieiev)
+
+-------------------------------------------------------------------
 Sun May 22 12:09:13 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 0.20.40.
