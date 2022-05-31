@@ -884,4 +884,12 @@
   CVE-2022-29501 (bsc#1199279), and CVE-2022-29502 (bsc#1199281).</comment>
     <requestid>976280</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>f6fc2dbbd105f9538d00f3bb7c048c4d</srcmd5>
+    <version>22.05.0</version>
+    <time>1654005891</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980097</requestid>
+  </revision>
 </revisionlist>

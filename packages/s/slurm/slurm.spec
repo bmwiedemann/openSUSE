@@ -17,9 +17,9 @@
 
 
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
-%define so_version 37
-%define ver 21.08.8
-%define _ver _21_08
+%define so_version 38
+%define ver 22.05.0
+%define _ver _22_05
 %define dl_ver %{ver}
 # so-version is 0 and seems to be stable
 %define pmi_so 0
@@ -147,9 +147,7 @@ Source10:       https://raw.githubusercontent.com/openSUSE/hpc/10c105e/files/slu
 Source11:       https://raw.githubusercontent.com/openSUSE/hpc/10c105e/files/slurm/slurmctld.xml
 Source12:       https://raw.githubusercontent.com/openSUSE/hpc/10c105e/files/slurm/slurmdbd.xml
 Patch0:         Remove-rpath-from-build.patch
-Patch1:         slurm-2.4.4-init.patch
 Patch2:         pam_slurm-Initialize-arrays-and-pass-sizes.patch
-Patch3:         load-pmix-major-version.patch
 
 %{?upgrade:Provides: %{pname} = %{version}}
 %{?upgrade:Conflicts: %{pname}}
@@ -213,6 +211,7 @@ BuildRequires:  rrdtool-devel
 %{?have_sysuser:BuildRequires:  sysuser-tools}
 %{?systemd_ordering}
 BuildRequires:  dejagnu
+BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(systemd)
 %else
 Requires(post): %insserv_prereq %fillup_prereq
@@ -560,17 +559,19 @@ Contains also cray specific documentation.
 %prep
 %setup -q -n %{pname}-%{dl_ver}
 %patch0 -p1
-%patch1 -p1
+#%%patch1 -p1
 %patch2 -p1
-%patch3 -p1
+#%%patch3 -p1
 %if 0%{?python_ver} < 3
 # Workaround for wrongly flagged python3 to keep SLE-11-SP4 building
 mkdir -p mybin; ln -s /usr/bin/python2 mybin/python3
 %endif
 
 %build
+# needed as slurm works that way bsc#1200030
+export SUSE_ZNOW=0
+
 autoreconf
-%define _lto_cflags %{nil}
 [ -e $(pwd)/mybin ] && PATH=$(pwd)/mybin:$PATH
 %configure --enable-shared \
            --disable-static \
@@ -766,7 +767,6 @@ EOF
 # Temporary - remove when build is fixed upstream.
 %if !0%{?build_slurmrestd}
 rm -f %{buildroot}/%{_mandir}/man8/slurmrestd.*
-rm -f %{buildroot}/%{_libdir}/slurm/openapi_*
 %endif
 
 %check
@@ -1093,9 +1093,11 @@ exit 0
 %{_libdir}/slurm/accounting_storage_none.so
 %{_libdir}/slurm/accounting_storage_slurmdbd.so
 %{_libdir}/slurm/acct_gather_energy_pm_counters.so
+%{_libdir}/slurm/acct_gather_energy_gpu.so
 %{_libdir}/slurm/acct_gather_energy_ibmaem.so
 %{_libdir}/slurm/acct_gather_energy_none.so
 %{_libdir}/slurm/acct_gather_energy_rapl.so
+%{_libdir}/slurm/acct_gather_interconnect_sysfs.so
 %{_libdir}/slurm/acct_gather_filesystem_lustre.so
 %{_libdir}/slurm/acct_gather_filesystem_none.so
 %{_libdir}/slurm/acct_gather_interconnect_none.so
@@ -1103,6 +1105,7 @@ exit 0
 %{_libdir}/slurm/burst_buffer_lua.so
 %{?have_json_c:%{_libdir}/slurm/burst_buffer_datawarp.so}
 %{_libdir}/slurm/cgroup_v1.so
+%{_libdir}/slurm/cgroup_v2.so
 %{_libdir}/slurm/core_spec_none.so
 %{_libdir}/slurm/cli_filter_none.so
 %{_libdir}/slurm/cli_filter_lua.so
@@ -1114,6 +1117,7 @@ exit 0
 %{_libdir}/slurm/gres_gpu.so
 %{_libdir}/slurm/gres_mps.so
 %{_libdir}/slurm/gres_nic.so
+%{_libdir}/slurm/gres_shard.so
 %{_libdir}/slurm/hash_k12.so
 %{_libdir}/slurm/jobacct_gather_cgroup.so
 %{_libdir}/slurm/jobacct_gather_linux.so
@@ -1222,12 +1226,14 @@ exit 0
 %{?comp_at}
 %{_sbindir}/slurmrestd
 %{_mandir}/man8/slurmrestd.*
+%{_libdir}/slurm/openapi_dbv0_0_38.so
+%{_libdir}/slurm/openapi_v0_0_38.so
 %{_libdir}/slurm/openapi_dbv0_0_37.so
 %{_libdir}/slurm/openapi_v0_0_37.so
 %{_libdir}/slurm/openapi_dbv0_0_36.so
-%{_libdir}/slurm/openapi_v0_0_35.so
+#%{_libdir}/slurm/openapi_v0_0_35.so
 %{_libdir}/slurm/openapi_v0_0_36.so
-%{_libdir}/slurm/rest_auth_jwt.so
+#%{_libdir}/slurm/rest_auth_jwt.so
 %{_libdir}/slurm/rest_auth_local.so
 %endif
 
@@ -1280,6 +1286,7 @@ exit 0
 %{_mandir}/man5/topology.*
 %{_mandir}/man5/knl.conf.5.*
 %{_mandir}/man5/job_container.conf.5.*
+%{_mandir}/man5/mpi.conf.5.*
 
 %if 0%{?have_hdf5}
 %files hdf5

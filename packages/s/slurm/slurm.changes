@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May 31 12:56:05 UTC 2022 - Christian Goll <cgoll@suse.com>
+
+- update to 22.05.0 with following changes:
+- Support for dynamic node addition and removal
+- Support for native Linux cgroup v2 operation
+- Newly added plugins to support HPE Slingshot 11 networks
+  (switch/hpe_slingshot), and Intel Xe GPUs (gpu/oneapi)
+- Added new acct_gather_interconnect/sysfs plugin to collect statistics
+  from arbitrary network interfaces.
+- Expanded and synced set of environment variables available in the
+  Prolog/Epilog/PrologSlurmctld/EpilogSlurmctld scripts.
+- New "--prefer" option to job submissions to allow for a "soft
+  constraint" request to influence node selection.
+- Optional support for license planning in the backfill scheduler with
+  "bf_licenses" option in SchedulerParameters.
+- removed file slurm-2.4.4-init.patch as sysvinit is now realy deprecated
+- removed file load-pmix-major-version.patch as fixed upstream
+
+-------------------------------------------------------------------
 Tue May 10 10:26:02 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Add a comment about the CommunicationParameters=block_null_hash
