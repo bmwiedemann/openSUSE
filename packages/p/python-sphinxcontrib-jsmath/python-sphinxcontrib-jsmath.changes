@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 30 10:40:01 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream patch sphinx5.patch to fix build with the new Sphinx
+
+-------------------------------------------------------------------
 Fri Jan 31 01:54:06 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add required suffix to package name for test package. Although

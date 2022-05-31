@@ -1,7 +1,7 @@
 #
-# spec file for package python-sphinxcontrib-jsmath
+# spec file
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            http://sphinx-doc.org/
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-jsmath/sphinxcontrib-jsmath-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/sphinx-doc/sphinxcontrib-jsmath/commit/3297b27177ab4862d1b2408a2db66235397fe212 Fix #9361: RemovedInSphinx50Warning on testing
+Patch0:         sphinx5.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -50,6 +52,7 @@ via JavaScript.
 
 %prep
 %setup -q -n sphinxcontrib-jsmath-%{version}
+%autopatch -p1
 
 %build
 %python_build
