@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 25 11:16:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve rpmlint error "libdispatch.x86_64: E:
+  shlib-policy-name-error SONAME: libBlocksRuntime.so.1.3,
+  expected package suffix: 1_3" by implementing shared library
+  packaging policy.
+
+-------------------------------------------------------------------
 Tue Oct 19 08:51:35 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
 
 - Update to version 5.5

@@ -1,7 +1,7 @@
 #
 # spec file for package libdispatch
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,24 +42,33 @@ BuildRequires:  llvm-gold
 BuildRequires:  ninja
 
 %description
-Grand Central Dispatch (GCD or libdispatch) provides
-comprehensive support for concurrent code execution on
-multicore hardware.
+Grand Central Dispatch (GCD or libdispatch) provides support for
+concurrent code execution on multicore hardware.
+
+%package -n libdispatch1_3
+Summary:        Apple's Grand Central Dispatch library
+Group:          System/Libraries
+Obsoletes:      libdispatch
+Provides:       libdispatch = %{version}-%{release}
+
+%description -n libdispatch1_3
+Grand Central Dispatch (GCD or libdispatch) provides support for
+concurrent code execution on multicore hardware.
 
 %package        devel
 Summary:        Development files for %{name}
 Group:          Development/Languages/C and C++
-Requires:       %{name} = %{version}
+Requires:       libdispatch1_3 = %{version}-%{release}
+# Wrong location for manpages in older version
+Conflicts:      libdispatch < %{version}-%{release}
 
 %description    devel
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q -n swift-corelibs-libdispatch-swift-%{reltag}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n swift-corelibs-libdispatch-swift-%{reltag}
+
 %build
 export CC=clang
 export CXX=clang++
@@ -93,13 +102,12 @@ ninja
 %cmake_install
 chrpath --delete %{buildroot}%{_libdir}/libdispatch.so.1.3
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post   -n libdispatch1_3 -p /sbin/ldconfig
+%postun -n libdispatch1_3 -p /sbin/ldconfig
 
-%files
+%files -n libdispatch1_3
 %license LICENSE
 %{_libdir}/*.so*
-%{_mandir}/man3/*
 
 %files devel
 %dir %{_includedir}/block
@@ -108,5 +116,6 @@ chrpath --delete %{buildroot}%{_libdir}/libdispatch.so.1.3
 %{_includedir}/dispatch/*
 %dir %{_includedir}/os
 %{_includedir}/os/*
+%{_mandir}/man3/*
 
 %changelog
