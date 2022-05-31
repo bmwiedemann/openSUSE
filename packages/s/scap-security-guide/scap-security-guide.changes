@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 30 12:48:54 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.62 (jsc#ECO-3319)
+  - Update rhel8 stig to v1r6
+  - OL7 STIG v2r7 update
+  - Initial definition of ANSSI BP28 minmal profile for SLE
+
+-------------------------------------------------------------------
 Mon Apr  4 08:40:40 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 0.1.61 (jsc#ECO-3319)

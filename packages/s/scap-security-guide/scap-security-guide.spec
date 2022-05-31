@@ -42,7 +42,7 @@
 %endif
 
 Name:           scap-security-guide
-Version:        0.1.61
+Version:        0.1.62
 Release:        0
 Summary:        XCCDF files for SUSE Linux and openSUSE
 License:        BSD-3-Clause
@@ -71,8 +71,8 @@ BuildRequires:  python3
 %endif
 
 %if 0%{?suse_version}
-BuildRequires:  python3-xml
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-xml
 %endif
 
 %if 0%{?rhel} == 7
@@ -120,6 +120,15 @@ Description Format), OVAL (Open Vulnerability and Assessment
 Language), CPE (Common Platform Enumeration) and DS (Data Stream)
 files to run a compliance test on SLE12, SLE15 and openSUSE
 
+SUSE supported in this version of scap-security-guide:
+
+- DISA STIG profile for SUSE Linux Enterprise Server 12 and 15
+- PCI-DSS profile for SUSE Linux Enterprise Server 12 and 15
+- HIPAA profile for SUSE Linux Enterprise Server 12 and 15
+
+Other profiles, like the CIS profile, are community supplied and
+not officially supported by SUSE.
+
 %package redhat
 Summary:        XCCDF files for RHEL, CentOS, Fedora and ScientificLinux
 Group:          Productivity/Security
@@ -135,6 +144,8 @@ Description Format), OVAL (Open Vulnerability and Assessment
 Language), CPE (Common Platform Enumeration) and DS (Data Stream)
 files to run a compliance test on various Redhat products, CentOS, Oracle Linux, Fedora and ScientificLinux.
 
+Note that the included profiles are community supplied and not officially supported by SUSE..
+
 %package debian
 Summary:        XCCDF files for Debian
 Group:          Productivity/Security
@@ -146,6 +157,8 @@ This package contains XCCDF (Extensible Configuration Checklist
 Description Format), OVAL (Open Vulnerability and Assessment
 Language), CPE (Common Platform Enumeration) and DS (Data Stream)
 files to run a compliance test on Debian.
+
+Note that the included profiles are community supplied and not officially supported by SUSE..
 
 %package ubuntu
 Summary:        XCCDF files for Ubuntu
@@ -159,6 +172,7 @@ Description Format), OVAL (Open Vulnerability and Assessment
 Language), CPE (Common Platform Enumeration) and DS (Data Stream)
 files to run a compliance test on Ubuntu.
 
+Note that the included profiles are community supplied and not officially supported by SUSE..
 
 %prep
 %setup -n content-%version
