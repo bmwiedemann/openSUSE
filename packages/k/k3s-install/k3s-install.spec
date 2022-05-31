@@ -1,7 +1,7 @@
 #
 # spec file for package k3s-install
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,23 +15,19 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           k3s-install
-Version:        1.21.2+k3s1
+Version:        1.23.6+k3s1
 Release:        0
 Summary:        Installer for k3s optimised for openSUSE MicroOS
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://k3s.io
 Source0:        https://github.com/k3s-io/k3s/archive/v%{version}.tar.gz#/k3s-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM inform-user-of-current-k3s-SELinux-support.patch gh#k3s-io/k3s/#3088 
-Patch1:         inform-user-of-current-k3s-SELinux-support.patch
-Requires:       cni-plugins
-Requires:       conntrack-tools
-Requires:       containerd
+Requires:       container-selinux
 Requires:       iptables
-Requires:       runc
-Conflicts:      kubectl
 Conflicts:      cri-tools
+Conflicts:      kubectl
 Conflicts:      kubernetes-client
 Conflicts:      kubernetes-client-provider
 
