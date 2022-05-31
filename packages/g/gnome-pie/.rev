@@ -47,4 +47,12 @@
     <comment></comment>
     <requestid>754118</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1419177c812354d9acf74f223e511e4e</srcmd5>
+    <version>0.7.3</version>
+    <time>1654011487</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.3: (forwarded request 980061 from dimstar)</comment>
+    <requestid>980077</requestid>
+  </revision>
 </revisionlist>
