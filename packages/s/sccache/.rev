@@ -144,4 +144,12 @@
     <comment></comment>
     <requestid>975017</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2cdf62689bad59eb052d7ae2e6acb3bd</srcmd5>
+    <version>0.3.0~git4.a372a20</version>
+    <time>1654004860</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>980015</requestid>
+  </revision>
 </revisionlist>

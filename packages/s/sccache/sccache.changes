@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 24 06:28:56 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Automatic update of vendored dependencies
+
+-------------------------------------------------------------------
+Mon May 23 02:11:35 UTC 2022 - william.brown@suse.com
+
+- Update to version 0.3.0~git4.e5e233f:
+  * Force concurrent disk cache by default
+  * Ignore some env vars
+  * Add experimental concurrent cache support
+  * Increase the MSRV and bump dependencies (#1137)
+- Remove 0001-Ignore-some-env-vars.patch as it is on the maint branch
+
+-------------------------------------------------------------------
 Wed May 04 23:39:03 UTC 2022 - william.brown@suse.com
 
 - Update to version 0.3.0~git0.f6e36e6:

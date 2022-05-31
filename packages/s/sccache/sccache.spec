@@ -19,7 +19,7 @@
 %define configdir %{_sysconfdir}/%{name}
 
 Name:           sccache
-Version:        0.3.0~git0.f6e36e6
+Version:        0.3.0~git4.a372a20
 Release:        0
 Summary:        A compiler caching tool for Rust, C and C++ with optional cloud storage
 License:        (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR CC0-1.0) AND ((Apache-2.0 AND BSD-2-Clause) OR MIT) AND (Apache-2.0 OR MIT OR BSD-2-Clause) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT
@@ -33,7 +33,6 @@ Source11:       sccache-dist-scheduler.service
 Source12:       builder.conf
 Source13:       scheduler.conf
 Source14:       client.example
-Patch1:         0001-Ignore-some-env-vars.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig(openssl)
 Requires:       bubblewrap
@@ -47,7 +46,6 @@ the Google Cloud Storage (GCS) API.
 %prep
 %setup -q
 %setup -qa1
-%patch1 -p1
 
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
@@ -57,13 +55,13 @@ find vendor -type f -name \*.rs -exec chmod -x '{}' \;
 %build
 %ifarch x86_64
 # 'dist-server' available only on x86_64 so far - https://github.com/mozilla/sccache/issues/656
-features="azure,s3,redis,dist-server,dist-client"
+features="azure,s3,redis,dist-server,dist-client,concurrent-cache"
 %else
 %ifarch aarch64
-features="azure,s3,redis"
+features="azure,s3,redis,concurrent-cache"
 %else
 # Most other arches have issues (especially with ring). Use FS cache only
-features=""
+features="concurrent-cache"
 %endif
 %endif
 
