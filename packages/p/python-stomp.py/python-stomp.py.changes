@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 24 06:55:07 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 8.0.1:
+ * Change code to use cryptography lib rather than PyOpenSSL (which is not recommended for use any more - discussed here: https://github.com/jasonrbriggs/stomp.py/issues/378)
+
+-------------------------------------------------------------------
 Mon Feb 14 11:22:18 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Relieve python dependencies (replace ^ with >=).
