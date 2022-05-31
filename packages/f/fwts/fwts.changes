@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 31 08:15:44 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 22.05.00:
+  * lib: fwts_version.h - update to V22.05.00
+  * debian: update changelog
+  * fwts-test: sync up IORT test with specification version E.d
+  * acpi: mcfg: checking kernel lockdown when doing mmap PCI config space
+  * auto-packager:mkpackage.sh: add kinetic
+  * acpi: iort: update IORT test to specification version E.d
+  * Update copyright year to 2022
+  * acpi: iort: update the IORT node dump
+  * acpi: iort: update IORT node revision check
+  * ACPICA: Update to version 20220331
+
+-------------------------------------------------------------------
 Thu Mar 24 07:57:02 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 22.03.00:
