@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           wasm-pack
 #               This will be set by osc services, that will run after this.
 Version:        0.10.2~0
@@ -26,7 +27,7 @@ License:        ( 0BSD OR MIT OR Apache-2.0 ) AND ( Apache-2.0 OR BSL-1.0 ) AND 
 #               Select a group from this link:
 #               https://en.opensuse.org/openSUSE:Package_group_guidelines
 Group:          Development/Languages/Rust
-Url:            https://github.com/rustwasm/wasm-pack
+URL:            https://github.com/rustwasm/wasm-pack
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
