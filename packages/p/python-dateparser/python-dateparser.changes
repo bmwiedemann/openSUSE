@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 31 07:52:04 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Do not collect test_search.py
+  * https://github.com/scrapinghub/dateparser/issues/1053
+
+-------------------------------------------------------------------
 Tue May 24 18:05:23 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 1.1.1:

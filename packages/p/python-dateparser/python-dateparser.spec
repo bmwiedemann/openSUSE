@@ -88,6 +88,8 @@ sed -i '1{/\/usr\/bin\/env python/d;}' \
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# https://github.com/scrapinghub/dateparser/issues/1053
+rm tests/test_search.py
 export NO_NETWORK=1
 %pytest
 
