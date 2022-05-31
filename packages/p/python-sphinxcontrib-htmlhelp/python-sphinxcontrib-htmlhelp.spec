@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/sphinx-doc/sphinxcontrib-htmlhelp
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-htmlhelp/sphinxcontrib-htmlhelp-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/sphinx-doc/sphinxcontrib-htmlhelp/commit/248ff52b3c3d39c20cdaef3052ac7507a407733a Fix #9457: RemovedInSphinx50Warning on testing
+Patch0:         sphinx5.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -52,6 +54,7 @@ Html help generating extension.
 
 %prep
 %setup -q -n sphinxcontrib-htmlhelp-%{version}
+%autopatch -p1
 
 %build
 %python_build

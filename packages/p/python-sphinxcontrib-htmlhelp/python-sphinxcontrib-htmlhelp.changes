@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 30 10:38:17 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream patch sphinx5.patch to fix build with the new Sphinx
+
+-------------------------------------------------------------------
 Sun Jun  6 12:12:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.0:
