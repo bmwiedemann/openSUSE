@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9ce88acdb33a4cf39f1d6a34083279c3</srcmd5>
+    <version>2.9.1</version>
+    <time>1654004838</time>
+    <user>dimstar_suse</user>
+    <comment>replacement for subpackage previously provided by tensorflow2, which was removed. Required by armnn</comment>
+    <requestid>979862</requestid>
+  </revision>
+</revisionlist>

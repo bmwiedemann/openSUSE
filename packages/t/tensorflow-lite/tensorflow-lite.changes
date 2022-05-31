@@ -1,0 +1,1049 @@
+-------------------------------------------------------------------
+Fri May 27 23:01:40 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- tensorflow2 has been removed from Tumbleweed. Provide a separate
+  Tensorflow Lite package in version 2.9.1
+- Now includes the tflite_runtime python3 package
+- Add tensorflow-lite-cmake-find-python.patch
+
+-------------------------------------------------------------------
+Fri Feb  4 21:37:07 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- restore larger memory per job constraint
+
+-------------------------------------------------------------------
+Fri Feb  4 16:28:12 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.7.1 -- boo#1195545 security update
+  * Fixes a floating point division by 0 when executing convolution
+    operators (CVE-2022-21725)
+  * Fixes a heap OOB read in shape inference for ReverseSequence
+    (CVE-2022-21728)
+  * Fixes a heap OOB access in Dequantize (CVE-2022-21726)
+  * Fixes an integer overflow in shape inference for Dequantize
+    (CVE-2022-21727)
+  * Fixes a heap OOB access in FractionalAvgPoolGrad
+    (CVE-2022-21730)
+  * Fixes an overflow and divide by zero in UnravelIndex
+    (CVE-2022-21729)
+  * Fixes a type confusion in shape inference for ConcatV2
+    (CVE-2022-21731)
+  * Fixes an OOM in ThreadPoolHandle (CVE-2022-21732)
+  * Fixes an OOM due to integer overflow in StringNGrams
+    (CVE-2022-21733)
+  * Fixes more issues caused by incomplete validation in boosted
+    trees code (CVE-2021-41208)
+  * Fixes an integer overflows in most sparse component-wise ops
+    (CVE-2022-23567)
+  * Fixes an integer overflows in AddManySparseToTensorsMap
+    (CVE-2022-23568)
+  * Fixes a number of CHECK-failures in MapStage (CVE-2022-21734)
+  * Fixes a division by zero in FractionalMaxPool (CVE-2022-21735)
+  * Fixes a number of CHECK-fails when building invalid/overflowing
+    tensor shapes (CVE-2022-23569)
+  * Fixes an undefined behavior in SparseTensorSliceDataset
+    (CVE-2022-21736)
+  * Fixes an assertion failure based denial of service via faulty
+    bin count operations (CVE-2022-21737)
+  * Fixes a reference binding to null pointer in QuantizedMaxPool
+    (CVE-2022-21739)
+  * Fixes an integer overflow leading to crash in
+    SparseCountSparseOutput (CVE-2022-21738)
+  * Fixes a heap overflow in SparseCountSparseOutput
+    (CVE-2022-21740)
+  * Fixes an FPE in BiasAndClamp in TFLite (CVE-2022-23557)
+  * Fixes an FPE in depthwise convolutions in TFLite
+    (CVE-2022-21741)
+  * Fixes an integer overflow in TFLite array creation
+    (CVE-2022-23558)
+  * Fixes an integer overflow in TFLite (CVE-2022-23559)
+  * Fixes a dangerous OOB write in TFLite (CVE-2022-23561)
+  * Fixes a vulnerability leading to read and write outside of
+    bounds in TFLite (CVE-2022-23560)
+  * Fixes a set of vulnerabilities caused by using insecure
+    temporary files (CVE-2022-23563)
+  * Fixes an integer overflow in Range resulting in undefined
+    behavior and OOM (CVE-2022-23562)
+  * Fixes a vulnerability where missing validation causes
+    tf.sparse.split to crash when axis is a tuple (CVE-2021-41206)
+  * Fixes a CHECK-fail when decoding resource handles from proto
+    (CVE-2022-23564)
+  * Fixes a CHECK-fail with repeated AttrDef (CVE-2022-23565)
+  * Fixes a heap OOB write in Grappler (CVE-2022-23566)
+  * Fixes a CHECK-fail when decoding invalid tensors from proto
+    (CVE-2022-23571)
+  * Fixes a null-dereference when specializing tensor type
+    (CVE-2022-23570)
+  * Fixes a crash when type cannot be specialized (CVE-2022-23572)
+  * Fixes a heap OOB read/write in SpecializeType (CVE-2022-23574)
+  * Fixes an unitialized variable access in AssignOp
+    (CVE-2022-23573)
+  * Fixes an integer overflow in
+    OpLevelCostEstimator::CalculateTensorSize (CVE-2022-23575)
+  * Fixes an integer overflow in
+    OpLevelCostEstimator::CalculateOutputSize (CVE-2022-23576)
+  * Fixes a null dereference in GetInitOp (CVE-2022-23577)
+  * Fixes a memory leak when a graph node is invalid
+    (CVE-2022-23578)
+  * Fixes an abort caused by allocating a vector that is too large
+    (CVE-2022-23580)
+  * Fixes multiple CHECK-failures during Grappler's
+    IsSimplifiableReshape (CVE-2022-23581)
+  * Fixes multiple CHECK-failures during Grappler's
+    SafeToRemoveIdentity (CVE-2022-23579)
+  * Fixes multiple CHECK-failures in TensorByteSize
+    (CVE-2022-23582)
+  * Fixes multiple CHECK-failures in binary ops due to type
+    confusion (CVE-2022-23583)
+  * Fixes a use after free in DecodePng kernel (CVE-2022-23584)
+  * Fixes a memory leak in decoding PNG images (CVE-2022-23585)
+  * Fixes multiple CHECK-fails in function.cc (CVE-2022-23586)
+  * Fixes multiple CHECK-fails due to attempting to build a
+    reference tensor (CVE-2022-23588)
+  * Fixes an integer overflow in Grappler cost estimation of crop
+    and resize operation (CVE-2022-23587)
+  * Fixes a null pointer dereference in Grappler's IsConstant
+    (CVE-2022-23589)
+  * Fixes a CHECK failure in constant folding (CVE-2021-41197)
+  * Fixes a stack overflow due to self-recursive function in
+    GraphDef (CVE-2022-23591)
+  * Fixes a crash due to erroneous StatusOr (CVE-2022-23590)
+  * Fixes multiple crashes and heap OOB accesses in TFG dialect
+    (MLIR) (CVE-2022-23594)
+  * Fixes a null pointer dereference in BuildXlaCompilationCache
+    (XLA) (CVE-2022-23595)
+  * Updates icu to 69.1 to handle CVE-2020-10531
+
+-------------------------------------------------------------------
+Tue Feb  1 17:44:12 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Remove URLs from github zip archives for xnnpack transitive
+  dependencies: The GitHub archiver produces unreliable files
+
+-------------------------------------------------------------------
+Sat Jan 22 20:52:02 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.7.0
+  * Big changelog: at
+    https://github.com/tensorflow/tensorflow/releases/tag/v2.7.0
+- Security references:
+  * Fixes a code injection issue in saved_model_cli
+    (CVE-2021-41228)
+  * Fixes a vulnerability due to use of uninitialized value in
+    Tensorflow (CVE-2021-41225)
+  * Fixes a heap OOB in FusedBatchNorm kernels (CVE-2021-41223)
+  * Fixes an arbitrary memory read in ImmutableConst
+    (CVE-2021-41227)
+  * Fixes a heap OOB in SparseBinCount (CVE-2021-41226)
+  * Fixes a heap OOB in SparseFillEmptyRows (CVE-2021-41224)
+  * Fixes a segfault due to negative splits in SplitV
+    (CVE-2021-41222)
+  * Fixes segfaults and vulnerabilities caused by accesses to
+    invalid memory during shape inference in Cudnn* ops
+    (CVE-2021-41221)
+  * Fixes a null pointer exception when Exit node is not preceded
+    by Enter op (CVE-2021-41217)
+  * Fixes an integer division by 0 in tf.raw_ops.AllToAll
+    (CVE-2021-41218)
+  * Fixes a use after free and a memory leak in CollectiveReduceV2
+    (CVE-2021-41220)
+  * Fixes an undefined behavior via nullptr reference binding in
+    sparse matrix multiplication (CVE-2021-41219)
+  * Fixes a heap buffer overflow in Transpose (CVE-2021-41216)
+  * Prevents deadlocks arising from mutually recursive tf.function
+    objects (CVE-2021-41213)
+  * Fixes a null pointer exception in DeserializeSparse
+    (CVE-2021-41215)
+  * Fixes an undefined behavior arising from reference binding to
+    nullptr in tf.ragged.cross (CVE-2021-41214)
+  * Fixes a heap OOB read in tf.ragged.cross (CVE-2021-41212)
+  * Fixes a heap OOB in shape inference for QuantizeV2
+    (CVE-2021-41211)
+  * Fixes a heap OOB read in all tf.raw_ops.QuantizeAndDequantizeV*
+    ops (CVE-2021-41205)
+  * Fixes an FPE in ParallelConcat (CVE-2021-41207)
+  * Fixes FPE issues in convolutions with zero size filters
+    (CVE-2021-41209)
+  * Fixes a heap OOB read in tf.raw_ops.SparseCountSparseOutput
+    (CVE-2021-41210)
+  * Fixes vulnerabilities caused by incomplete validation in
+    boosted trees code (CVE-2021-41208)
+  * Fixes vulnerabilities caused by incomplete validation of shapes
+    in multiple TF ops (CVE-2021-41206)
+  * Fixes a segfault produced while copying constant resource
+    tensor (CVE-2021-41204)
+  * Fixes a vulnerability caused by unitialized access in
+    EinsumHelper::ParseEquation (CVE-2021-41201)
+  * Fixes several vulnerabilities and segfaults caused by missing
+    validation during checkpoint loading (CVE-2021-41203)
+  * Fixes an overflow producing a crash in tf.range
+    (CVE-2021-41202)
+  * Fixes an overflow producing a crash in tf.image.resize when
+    size is large (CVE-2021-41199)
+  * Fixes an overflow producing a crash in tf.tile when tiling
+    tensor is large (CVE-2021-41198)
+  * Fixes a vulnerability produced due to incomplete validation in
+    tf.summary.create_file_writer (CVE-2021-41200)
+  * Fixes multiple crashes due to overflow and CHECK-fail in ops
+    with large tensor shapes (CVE-2021-41197)
+  * Fixes a crash in max_pool3d when size argument is 0 or negative
+    (CVE-2021-41196)
+  * Fixes a crash in tf.math.segment_* operations (CVE-2021-41195)
+  * Updates curl to 7.78.0 to handle CVE-2021-22922,
+    CVE-2021-22923, CVE-2021-22924, CVE-2021-22925, and
+    CVE-2021-22926.
+- This drops support for Python 3.6 and thus for SLE/Leap 15
+  See also https://code.opensuse.org/leap/features/issue/35
+- Closes boo#1195295
+  * Note that tensorflow2 (non-lite) will be removed from
+    Tumbleweed soon if there are no volunteers, see leap feature
+    issue above.
+- Have to migrate tensorflow-lite build to CMake as old Makefile
+  was dropped
+- Drop patches no longer necessary or applicable
+  * tensorflow-2.6.0-remove-weakref.patch
+  * tensorflow-2.6.0-fix-lite.patch
+  * tensorflow-2.6.0-tf-keras-hdf5-3.patch
+  * tensorflow-2.6.0-removed-clog-build-as-included-in-cpuinfo.patch
+  * tensorflow-2.6.0-numpy-tensor-small.patch
+- fix double nested unpacking and refresh patches, migrate to -p1
+  * tensorflow-2.6.0-removed-external-toolchains.patch
+  * tensorflow-2.6.0-compile-with-protobuf-3.16.patch
+- Add #tensorflow-2.7.0-fix-lite.patch
+  * https://github.com/tensorflow/tensorflow/commit/fb1dcbd9
+  * gh#tensorflow/tensorflow#54216
+- Have to use grpc and upb from bazelcache, pulls in go
+  * Add tensorflow-2.7.0-go_host_sdk.patch -- use system SDK
+    instead of downloading a binary blob
+
+-------------------------------------------------------------------
+Tue Jan 11 09:41:07 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Remove more python dependencies for tensorflow2-lite
+
+-------------------------------------------------------------------
+Mon Jan 10 14:03:05 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- tensorflow2-lite version does not need all the python dependencies
+  listed for tensorflow2
+
+-------------------------------------------------------------------
+Fri Jan  7 10:15:53 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Leap 15.x / Backports: Do not build non-Lite versions since python3-numpy
+  and python3-scipy are too old for Keras/TF2
+
+-------------------------------------------------------------------
+Tue Nov  9 13:26:21 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- updated to 2.6.2 which is bug fix release which just fixes an issue where
+  keras, tensorflow_estimator and tensorboard were missing proper upper bounds
+  and resulted in broken installs after Keras 2.7 release for all packages in
+  TensorFlow ecosystem
+- Fixes from 2.6.1 (boo#1192447):
+  * Fixes a code injection issue in saved_model_cli (CVE-2021-41228)
+  * Fixes a vulnerability due to use of uninitialized value in Tensorflow (CVE-2021-41225)
+  * Fixes a heap OOB in FusedBatchNorm kernels (CVE-2021-41223)
+  * Fixes an arbitrary memory read in ImmutableConst (CVE-2021-41227)
+  * Fixes a heap OOB in SparseBinCount (CVE-2021-41226)
+  * Fixes a heap OOB in SparseFillEmptyRows (CVE-2021-41224)
+  * Fixes a segfault due to negative splits in SplitV (CVE-2021-41222)
+  * Fixes segfaults and vulnerabilities caused by accesses to invalid memory
+    during shape inference in Cudnn* ops (CVE-2021-41221)
+  * Fixes a null pointer exception when Exit node is not preceded by Enter op (CVE-2021-41217)
+  * Fixes an integer division by 0 in tf.raw_ops.AllToAll (CVE-2021-41218)
+  * Fixes a use after free and a memory leak in CollectiveReduceV2 (CVE-2021-41220)
+  * Fixes an undefined behavior via nullptr reference binding in sparse matrix
+    multiplication (CVE-2021-41219)
+  * Fixes a heap buffer overflow in Transpose (CVE-2021-41216)
+  * Prevents deadlocks arising from mutually recursive tf.function objects (CVE-2021-41213)
+  * Fixes a null pointer exception in DeserializeSparse (CVE-2021-41215)
+  * Fixes an undefined behavior arising from reference binding to nullptr in
+    tf.ragged.cross (CVE-2021-41214)
+  * Fixes a heap OOB read in tf.ragged.cross (CVE-2021-41212)
+  * Fixes a heap OOB in shape inference for QuantizeV2 (CVE-2021-41211)
+  * Fixes a heap OOB read in all tf.raw_ops.QuantizeAndDequantizeV* ops (CVE-2021-41205)
+  * Fixes an FPE in ParallelConcat (CVE-2021-41207)
+  * Fixes FPE issues in convolutions with zero size filters (CVE-2021-41209)
+  * Fixes a heap OOB read in tf.raw_ops.SparseCountSparseOutput (CVE-2021-41210)
+  * Fixes vulnerabilities caused by incomplete validation in boosted trees code (CVE-2021-41208)
+  * Fixes vulnerabilities caused by incomplete validation of shapes in multiple TF ops (CVE-2021-41206)
+  * Fixes a segfault produced while copying constant resource tensor (CVE-2021-41204)
+  * Fixes a vulnerability caused by unitialized access in EinsumHelper::ParseEquation (CVE-2021-41201)
+  * Fixes several vulnerabilities and segfaults caused by missing validation
+    during checkpoint loading (CVE-2021-41203)
+  * Fixes an overflow producing a crash in tf.range (CVE-2021-41202)
+  * Fixes an overflow producing a crash in tf.image.resize when size is large (CVE-2021-41199)
+  * Fixes an overflow producing a crash in tf.tile when tiling tensor is large (CVE-2021-41198)
+  * Fixes a vulnerability produced due to incomplete validation in
+    tf.summary.create_file_writer (CVE-2021-41200)
+  * Fixes multiple crashes due to overflow and CHECK-fail in ops with large
+    tensor shapes (CVE-2021-41197)
+  * Fixes a crash in max_pool3d when size argument is 0 or negative (CVE-2021-41196)
+  * Fixes a crash in tf.math.segment_* operations (CVE-2021-41195)
+
+-------------------------------------------------------------------
+Sat Oct 23 09:56:33 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Make sure tensorflow/core/public/version.h is installed in the
+  'lite' version (bsc#1191805).
+
+-------------------------------------------------------------------
+Fri Sep 24 15:57:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add missing python requirements -- boo#1190856 
+
+-------------------------------------------------------------------
+Wed Sep  1 10:30:38 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Limit BuildRequires for bazel-skylib-source to versions >= 1.0.3.
+
+-------------------------------------------------------------------
+Thu Aug 19 03:51:15 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 2.6.0
+  Major changes are:
+  * Keras been split into a separate PIP package (keras), and its
+    code has been moved to the GitHub repositorykeras-team/keras.
+    The API endpoints for tf.keras stay unchanged, but are now
+    backed by the keras PIP package. The existing code in
+    tensorflow/python/keras is a staled copy and will be removed in
+    future release (2.7). Please remove any imports to
+    tensorflow.python.keras and replace them with public tf.keras
+    API instead.
+  * tf.train.experimental.enable_mixed_precision_graph_rewrite is
+    removed, as the API only works in graph mode and is not
+    customizable. The function is still accessible under
+    tf.compat.v1.mixed_precision.enable_mixed_precision_graph_rewrite,
+    but it is recommended to use the Keras mixed precision API
+    instead.
+  * tf.lite: Remove experimental.nn.dynamic_rnn,
+    experimental.nn.TfLiteRNNCell and
+    experimental.nn.TfLiteLSTMCell since they're no
+    longer supported. It's recommended to just use keras lstm
+    instead.
+  * tf.keras: The methods Model.to_yaml() and
+    keras.models.model_from_yaml have been replaced to raise a
+    RuntimeError as they can be abused to cause arbitrary code
+    execution. It is recommended to use JSON serialization instead
+    of YAML, or, a better alternative, serialize to H5.
+- Major changes from 2.5.x:
+  * Support for Python3.9 has been added.
+  * The TF_CPP_MIN_VLOG_LEVEL environment variable has been renamed
+    to to TF_CPP_MAX_VLOG_LEVEL which correctly describes its
+    effect.
+- Fixed multiple CVEs (boo#1189423):
+  * CVE-2021-37635
+  * CVE-2021-37636
+  * CVE-2021-37637
+  * CVE-2021-37638
+  * CVE-2021-37639
+  * CVE-2021-37640
+  * CVE-2021-37642
+  * CVE-2021-37641
+  * CVE-2021-37644
+  * CVE-2021-37643
+  * CVE-2021-37645
+  * CVE-2021-37646
+  * CVE-2021-37647
+  * CVE-2021-37648
+  * CVE-2021-37649
+  * CVE-2021-37650
+  * CVE-2021-37651
+  * CVE-2021-37652
+  * CVE-2021-37653
+  * CVE-2021-37654
+  * CVE-2021-37655
+  * CVE-2021-37656
+  * CVE-2021-37657
+  * CVE-2021-37658
+  * CVE-2021-37659
+  * CVE-2021-37660
+  * CVE-2021-37661
+  * CVE-2021-37662
+  * CVE-2021-37664
+  * CVE-2021-37663
+  * CVE-2021-37665
+  * CVE-2021-37666
+  * CVE-2021-37667
+  * CVE-2021-37668
+  * CVE-2021-37669
+  * CVE-2021-37670
+  * CVE-2021-37671
+  * CVE-2021-37672
+  * CVE-2021-37673
+  * CVE-2021-37674
+  * CVE-2021-37676
+  * CVE-2021-37675
+  * CVE-2021-37677
+  * CVE-2021-37678
+  * CVE-2021-37679
+  * CVE-2021-37680
+  * CVE-2021-37681
+  * CVE-2021-37682
+  * CVE-2021-37683
+  * CVE-2021-37684
+  * CVE-2021-37686
+  * CVE-2021-37685
+  * CVE-2021-37687
+  * CVE-2021-37688
+  * CVE-2021-37689
+  * CVE-2021-37691
+  * CVE-2021-37692
+  * CVE-2021-37690
+- Updated sources:
+  * abseil-cpp.tar.gz
+  * cpuinfo.zip
+  * dill-0.3.2.zip
+  * eigen.tar.gz
+  * google-cloud-cpp.tar.gz
+  * libxsmm_1.14.tar.gz
+  * llvm.tar.gz
+  * oneDNN.tar.gz
+  * rules_cc.tar.gz
+  * rules_closure.tar.gz
+  * rules_docker-0.18.0.tar.gz
+  * ruy.zip
+  * tblib-1.7.0.tar.gz
+- Added sources:
+  * ComputeLibrary.tar.gz
+  * oneDNN-v2.3-rc2.tar.gz
+  * platforms-0.0.2.tar.gz
+  * rules_proto.tar.gz
+  * tf_runtime.tar.gz
+  * tf_toolchains.tar.gz
+- Removed sources:
+  * kafka-v0.11.5.tar.gz
+- Add "tensorflow-2.6.0" prefix to existing patches to indicate
+  that patches are likely to be only applicable to a specific
+  version.
+  * fix-lite.patch -> tensorflow-2.6.0-fix-lite.patch
+  * numpy-tensor-small.patch -> tensorflow-2.6.0-numpy-tensor-small.patch
+  * removed-clog-build-as-included-in-cpuinfo.patch -> tensorflow-2.6.0-removed-clog-build-as-included-in-cpuinfo.patch
+  * removed-external-toolchains.patch -> tensorflow-2.6.0-removed-external-toolchains.patch
+  * remove-weakref.patch -> tensorflow-2.6.0-remove-weakref.patch
+  * tf-keras-hdf5-3.patch -> tensorflow-2.6.0-tf-keras-hdf5-3.patch
+- Rebase all existing patches.
+- Add tensorflow-2.6.0-compile-with-protobuf-3.16.patch to fix
+  build error with protobuf >= 3.16.0. (boo#1186860)
+  (https://github.com/protocolbuffers/protobuf/pull/8354)
+- Update bazel version requirement to 3.7.2.
+- Drop pcre-devel build requirement as it is not used anymore.
+- Drop --incompatible_no_support_tools_in_action_inputs=false as it
+  is removed in bazel >= 3.6.
+
+-------------------------------------------------------------------
+Wed May 19 12:02:57 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints to use host with 'asimdrdm' cpu flag to avoid
+  slow CPU and be scheduled on faster systems
+
+-------------------------------------------------------------------
+Wed Apr 14 15:01:22 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.4.1
+  * Bugfixes
+  * Drops requirement of AVX2
+
+-------------------------------------------------------------------
+Tue Apr  6 16:27:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't BuildRequire keras_applications. Tensorflow provides it
+  itself: https://github.com/tensorflow/tensorflow/commit/23c3bdaa
+- These were discovered by Keras test suite:
+  * add numpy-tensor-small.patch for Numpy >= 1.20
+    gh#tensorflow/tensorflow#47691
+  * add tf-keras-hdf5-3.patch for hdf5 >= 3.0
+    gh#tensorflow/tensorflow#44467
+
+-------------------------------------------------------------------
+Thu Feb 18 14:26:20 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Generate and install pkgconfig files for tensorflow-lite and
+  tensorflow (non-hpc)
+
+-------------------------------------------------------------------
+Wed Jan 27 10:54:57 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Do not install bazel tools to build Lite version. This will allow
+  to build for armv7 where bazel 3.x is not available - boo#1178564
+
+-------------------------------------------------------------------
+Fri Jan 15 08:05:09 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix packaging for libiomp5
+
+-------------------------------------------------------------------
+Mon Jan 11 01:49:52 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- build verbose to not fail on the obs stall detection 
+
+-------------------------------------------------------------------
+Fri Jan  8 07:30:53 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- libiomp5 is x86_64 only
+
+-------------------------------------------------------------------
+Wed Jan  6 13:25:31 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on aarch64 and on hpc variants
+
+-------------------------------------------------------------------
+Wed Oct 21 13:48:26 UTC 2020 - Christian Goll <cgoll@suse.com>
+- Updated to version 2.4.0 which fixes several bugs (bsc#1173128)
+  (bsc#1173314)i, (bsc#1179455) and (bsc#1178287)
+- Security fixes for CVE-2020-26266, CVE-2020-26267, CVE-2020-26268,
+  CVE-2020-26270 and CVE-2020-26271
+- updated sources:
+  * abseil-cpp.tar.gz
+  * eigen.tar.gz
+  * gemmlowp.zip
+  * googleapis.zip
+  * llvm.tar.gz
+- added sources:
+  * DouraFFT.tar.gz
+  * cpuinfo.zip
+  * dill-0.3.1.1.tar.gz (aarch64 only)
+  * dlpack.tar.gz
+  * oneDNN.tar.gz
+  * openmp-10.0.1.src.tar.xz
+  * python-license-astunparse
+  * re2.tar.gz
+  * rules_android.zip
+  * rules_cc.tar.gz
+  * rules_docker-0.15.0.tar.gz
+  * ruy.zip
+  * sobol_data.tar.gz
+  * tblib-1.3.2.tar.gz (aarch64 only)
+  * typing_extensions-3.7.4.2.tar.gz (aarch64 only)
+- removed sources:
+  * boring_ssl.tar.gz
+  * cub_1.8.0.zip
+  * mkl-v0.21.2.tar.gz
+  * pybind11-v2.3.0.tar.gz
+  * right-json-location.patch
+  * rules_docker.tar.gz
+- removed patches:
+  * Provide-overload-to-cope-with-const-ness-change-of-N.patch
+  * fix-google-absl-memory.patch
+  * json-feature-name.patch
+  * libjpeg_turbo-name.patch
+  * removed-docker-tools.patch
+- added patches:
+  * removed-clog-build-as-included-in-cpuinfo.patch
+  * removed-external-toolchains.patch
+- Major changes are:
+  * tf.distribute introduces experimental support for asynchronous training of 
+    models via the tf.distribute.experimental.ParameterServerStrategy API.
+  * MultiWorkerMirroredStrategy is now a stable API and is no longer considered 
+    experimental.
+  * Introduces experimental support for a new module named tf.experimental.numpy 
+    which is a NumPy-compatible API for writing TF programs.
+  * A major refactoring of the internals of the Keras Functional API has been 
+    completed, that should improve the reliability, stability, and performance 
+    of constructing Functional models.
+  * Keras mixed precision API tf.keras.mixed_precision is no longer experimental 
+    and allows the use of 16-bit floating point formats during training, 
+    improving performance by up to 3x on GPUs and 60% on TPUs.
+  * TensorFlow Profiler now supports profiling MultiWorkerMirroredStrategy and 
+    tracing multiple workers using the sampling mode API.
+
+-------------------------------------------------------------------
+Tue Oct 13 10:02:55 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- fixed hpc flavor and Leap15.2 builds 
+
+-------------------------------------------------------------------
+Mon Sep 28 13:06:00 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- updated to 2.1.2 with following fixes (bsc#1177022):
+  * Fixes an undefined behavior causing a segfault in tf.raw_ops.Switch (CVE-2020-15190)
+  * Fixes three vulnerabilities in conversion to DLPack format 
+    (CVE-2020-15191, CVE-2020-15192, CVE-2020-15193)
+  * Fixes two vulnerabilities in SparseFillEmptyRowsGrad 
+    (CVE-2020-15194, CVE-2020-15195)
+  * Fixes an integer truncation vulnerability in code using the 
+    work sharder API (CVE-2020-15202)
+  * Fixes a format string vulnerability in tf.strings.as_string (CVE-2020-15203)
+  * Fixes segfault raised by calling session-only ops in eager mode (CVE-2020-15204)
+  * Fixes data leak and potential ASLR violation from tf.raw_ops.StringNGrams (CVE-2020-15205)
+  * Fixes segfaults caused by incomplete SavedModel validation (CVE-2020-15206)
+  * Fixes a data corruption due to a bug in negative indexing support in TFLite (CVE-2020-15207)
+  * Fixes a data corruption due to dimension mismatch in TFLite (CVE-2020-15208)
+  * Fixes several vulnerabilities in TFLite saved model format 
+    (CVE-2020-15209, CVE-2020-15210, CVE-2020-15211)
+- using fft2d.tgz instead of fft.tar.gz
+- removed fft.tar.gz
+
+-------------------------------------------------------------------
+Mon Sep 14 11:53:55 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- fixed json-feature-name.patch for leap15.2 builds  
+
+-------------------------------------------------------------------
+Thu Sep 10 09:04:46 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- updated disk constraints, as sometimes the build fails with too
+  low disk space
+
+-------------------------------------------------------------------
+Wed Sep  9 13:09:19 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- Package C-headers for standard tensorflow (boo#1175789)
+- fixed build gcc10.1 errors for Tumbleweed with following 
+  upstream patch:
+  * added file Provide-overload-to-cope-with-const-ness-change-of-N.patch
+
+-------------------------------------------------------------------
+Tue Sep  8 14:46:31 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- Package header files for Tensoflow2 Lite - boo#1175099 
+
+-------------------------------------------------------------------
+Thu Sep  3 15:37:56 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Revert memoryperjob constraint support and use again 
+  %limit_build macro to avoid OOM errors
+
+-------------------------------------------------------------------
+Thu Aug 20 15:06:34 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Lower memoryperjob to 1300 MB (as done for tensorflow)
+
+-------------------------------------------------------------------
+Thu Aug 20 09:06:46 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use memoryperjob constraint instead of %limit_build macro.
+
+-------------------------------------------------------------------
+Thu Jun 25 12:00:33 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- fixed build with json_cpp 1.9.3 (bsc#1173314)
+
+-------------------------------------------------------------------
+Fri Jun 19 11:21:59 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- fixed local CUDA builds 
+
+-------------------------------------------------------------------
+Tue Jun 16 09:27:33 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- updated to 2.1.1 which is a bug fix release mostly for external
+  sources which are not part of this package (sqlite,libjpeg-turbo,
+  Apache Spark)
+  * Fixes a versioning bug which causes Keras layers from TF 1.x to 
+  be used instead of those from TF 2.x
+
+-------------------------------------------------------------------
+Mon May 25 15:44:40 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- fixed broken builds which were caused due to missing dependency
+  on @com_google_absl//absl/strings in various BUILD files
+- added patch: fix-google-absl-memory.patch
+
+-------------------------------------------------------------------
+Tue Apr  7 09:43:28 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- added mkl-ddn as source and do not use system mkl-dnn (bsc#1168839)
+- removed patches:
+  * fixed-mkl-sgemm-call.patch
+  * added-mkl_dnn-as-syslib.patch
+- added source:
+  mkl-v0.21.2.tar.gz
+
+-------------------------------------------------------------------
+Fri Mar 27 09:44:32 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- tensorflow2-lite-devel does not requires libtensorflow*
+
+-------------------------------------------------------------------
+Thu Mar 26 08:41:54 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- removed hpc-mvapich2 build (bsc#1167735) 
+
+-------------------------------------------------------------------
+Tue Mar 24 04:16:57 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use pip install --no-compile (boo#1094323)
+
+-------------------------------------------------------------------
+Fri Mar 20 07:00:40 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Lite flavor should not provide python3-tensorflow nor tensorflow
+
+-------------------------------------------------------------------
+Fri Mar 13 15:25:38 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- removed sources of bazel sources and replaced them by internal packages
+ * rules-cc.zip removed
+ * bazel-toolchains.tar.gz removed
+ * bazel-skylib.0.8.0.tar.gz removed
+
+-------------------------------------------------------------------
+Mon Mar  9 21:22:29 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Lite flavor should not provide "tensorflow", otherwise 
+  tensorlfow2-devel and tensorlfow2-lite-devel conflict and break
+  armnn
+
+-------------------------------------------------------------------
+Thu Mar  5 16:49:47 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- added Provides: tensorflow, so that Kerase works with this package
+  and fixed Leap 15.2 build
+
+-------------------------------------------------------------------
+Fri Feb 28 10:55:43 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix name for libtensorflow* sub-packages
+
+-------------------------------------------------------------------
+Thu Feb 20 08:46:19 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- openSUSE has no CUDA package, so disable cuda build for
+  openSUSE
+
+-------------------------------------------------------------------
+Fri Feb 14 15:03:03 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- addding changes for CUDA builds  
+
+-------------------------------------------------------------------
+Thu Feb 13 19:41:17 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add 'Provides' only for hpc flavors, otherwise it matches the
+  package name
+
+-------------------------------------------------------------------
+Tue Feb 11 14:41:45 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add provides/conflicts to avoid to install tensorflow and 
+  tensorflow2 as some files are provided by both packages
+
+-------------------------------------------------------------------
+Wed Feb  5 14:14:06 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+-  removed mkl-dnn as sourc and force usage of system mkl-dnn 
+   for x86_64 builds
+   * removed file mkl-dnn-v021.2.tar.gz
+   * added patch: added-mkl_dnn-as-syslib.patch
+   * added patch: fixed-mkl-sgemm-call.patch
+
+-------------------------------------------------------------------
+Sun Feb  2 19:32:32 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add 1.25.0 as minimal version for grpc-devel
+
+-------------------------------------------------------------------
+Fri Jan 31 10:33:05 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add 3.1.5 as a minimal version for double-conversion-devel
+  (2.0.1 from SLE15SP2/Leap15.2 is too old)
+- Lower required version for protobuf (3.9.1 from SLE15SP2/Leap15.2
+  is fine)
+
+-------------------------------------------------------------------
+Thu Jan 30 14:27:58 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- removed AVX2 flavor, this should be fixed via mkl-dnn 
+
+-------------------------------------------------------------------
+Thu Jan 30 13:18:12 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on hpc targets
+
+-------------------------------------------------------------------
+Tue Jan 28 11:15:24 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- added shared library packages libtensorflow2, 
+  libtensorflow_cc2 and libtensorflow_framework2
+- removed the AWS sdk support as this forces a SEGFAULT
+  * remobed file aws-sdk-cpp-1.5.8.tar.gz
+- dropped following source files as they are not needed any more
+  * removed file backports.weakref-1.0rc1.tar.gz
+  * removed file gettid.patch
+  * removed file grpc-v1.24.2.gz
+  * removed file libjpeg-turbo-2.0.0.tar.gz
+  * removed file nsync_1.20.0.tar.gz
+
+
+-------------------------------------------------------------------
+Tue Jan 28 09:33:03 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Do not try to install *.pb.* files in Lite flavor
+
+-------------------------------------------------------------------
+Tue Jan 28 09:13:58 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Define package name at 'tensorflow2' instead of 'tensorflow'
+
+-------------------------------------------------------------------
+Fri Jan 24 16:52:52 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Generate *.pb.* files and package them, to be used by ArmNN
+- Do not build on %ix86
+- Do not build %arm, except for Lite flavor
+
+-------------------------------------------------------------------
+Thu Jan 23 10:23:01 UTC 2020 - Christian Goll <cgoll@suse.com>
+- updated to tensorflow 2.1.0 which is a stable release and has
+  following breaking changes:
+  * Deletes Operation.traceback_with_start_lines for which we 
+    know of no usages.
+  * Removed id from tf.Tensor.__repr__() as id is not useful other 
+    than internal debugging.
+  * Some tf.assert_* methods now raise assertions at operation 
+    creation time if the input tensors' values are known at that 
+    time, not during the session.run(). This only changes behavior 
+    when the graph execution would have resulted in an error. When 
+    this happens, a noop is returned and the input tensors are 
+    marked non-feedable. In other words, if they are used as keys 
+    in feed_dict argument to session.run(), an error will be raised. 
+    Also, because some assert ops don't make it into the graph, the 
+    graph structure changes. A different graph can result in 
+    different per-op random seeds when they are not given 
+    explicitly (most often).
+  * The following APIs are not longer experimental: 
+    tf.config.list_logical_devices, tf.config.list_physical_devices, 
+    tf.config.get_visible_devices, tf.config.set_visible_devices, 
+    tf.config.get_logical_device_configuration, 
+    tf.config.set_logical_device_configuration.
+  * tf.config.experimentalVirtualDeviceConfiguration has been 
+    renamed to tf.config.LogicalDeviceConfiguration.
+  * tf.config.experimental_list_devices has been removed, 
+    please use tf.config.list_logical_devices.
+- renamed the project to tensorflow2 so that the original tensorflow
+  v1 API compatible release can stay in factory. Following
+  changes were made to achive this:
+  * added tensorflow-v2.1.0.tar.gz
+  * added tensforflow2.spec
+  * added tensforflow2.changes
+  * removed tensorflow-v1.13.2.tar.gz
+  * removed tensorflow.spec
+  * removed tensorflow.chnages
+- following source files had to be updated
+  * updated abseil-cpp.tar.gz
+  * updated bazel-toolchains.tar.gz
+  * updated eigen.tar.gz
+  * updated gemmlowp.zip
+  * updated license.rst.txt
+  * updated rules_closure.tar.gz
+- following new souces had to be updated
+  * added aws-sdk-cpp-1.5.8.tar.gz
+  * added bazel-skylib.0.8.0.tar.gz
+  * added fft2d.tgz
+  * added rules_cc.zip
+- for the following souces the system libraries are now ues
+  * removed aws-sdk-cpp-1.3.15.tar.gz
+  * removed double_conversion.zip
+  * removed file unicode-org-icu.tar.gz
+  * removed file 816a4ae622e964763ca0862d9dbd19324a1eaf45.tar.gz
+- these patches were removed
+  * removed file support-new-bazel.patch
+  * removed file tensorflow-make_aws_sdk_work_on_aarch64.patch
+  * removed file tensorflow-fix_lite.patch
+  * removed file remove-keras.patch
+  * removed file grpc-namespace-corrections.patch
+- these new patches were added
+  * added fix-lite.patch
+  * added removed-docker-tools.patch
+  * added right-json-location.patch
+
+-------------------------------------------------------------------
+Tue Oct 15 19:24:06 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- updated to tensorflow 0.13.2
+- dropped grpc.tar.gz and grpc-v1.13.0.gz as system grpc is used, this
+  fixes the broken builds which were introduced with gcc9 (bsc#1152671)
+  * added grpc-namespace-corrections.patch in order to use system grpc
+- dropped re2-2018-10-01.tar.gz as system re2 is used now
+
+-------------------------------------------------------------------
+Wed Sep 25 14:18:48 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- added remove-keras.patch which removes keras sources and uses
+  distribution keras libaries
+  * removed keras-applications-1.0.6.tar.gz
+  * removed keras-preprocessing-1.0.9.tar.gz
+
+-------------------------------------------------------------------
+Mon Sep 23 09:25:08 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- using now system protobuf instead of building it (bsc#1151150) 
+
+-------------------------------------------------------------------
+Tue Sep 17 21:08:12 UTC 2019 - guillaume.gardet@opensuse.org
+
+- Ajust %limit_build to avoid OOM errors
+- Do not use %limit_build for lite flavor
+
+-------------------------------------------------------------------
+Mon Jul 29 13:51:16 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- added additonal dependencies
+
+-------------------------------------------------------------------
+Wed Jul 17 08:18:34 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- fixed installation location of shared library 
+
+-------------------------------------------------------------------
+Mon Jul  8 14:04:17 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- removed bazel mirror from as much source links as possible 
+- added support-new-bazel.patch support newer upcoming bazel
+  versions
+
+-------------------------------------------------------------------
+Tue Jun  4 14:16:10 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build for lite flavor:
+  * tensorflow-fix_lite.patch
+
+-------------------------------------------------------------------
+Wed May 29 16:11:36 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Call ldconfig for devel package in post/postun
+
+-------------------------------------------------------------------
+Mon May 27 15:00:28 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix aarch64 build with upstream patch:
+  * tensorflow-make_aws_sdk_work_on_aarch64.patch
+
+-------------------------------------------------------------------
+Mon May 27 04:08:54 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add Lite flavor
+
+-------------------------------------------------------------------
+Fri Apr 26 08:27:55 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- updated to 1.13.1 fixes boo#1133490 
+
+-------------------------------------------------------------------
+Fri Mar 29 13:06:28 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints to avoid OOM errors
+
+-------------------------------------------------------------------
+Fri Mar 29 08:18:09 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build and package libtensorflow_cc and libtensorflow_framework
+
+-------------------------------------------------------------------
+Tue Mar 19 15:40:25 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- added fix_mvapich_mpi_bzl.patch which fixes detection of 
+  mvapich2 mpi library
+- fixed python3 build
+
+-------------------------------------------------------------------
+Tue Mar 12 20:33:56 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 1.13.1
+  * Major Features and Improvements
+  * TensorFlow Lite has moved from contrib to core. This means that Python modules are under tf.lite and source code is now under tensorflow/lite rather than tensorflow/contrib/lite.
+  * TensorFlow GPU binaries are now built against CUDA 10 and TensorRT 5.0.
+  * Support for Python3.7 on all operating systems.
+  * Moved NCCL to core.
+- drop merged patch mpilibpath_configure_py.patch
+- drop obsolete pyton3.7 patches
+- disabled jemalloc for now
+
+-------------------------------------------------------------------
+Tue Feb 12 08:39:57 UTC 2019 - cgoll@suse.com
+
+- enabled aws and googlecloud support
+  * removed no_aws_and_googlecloud.patch
+
+-------------------------------------------------------------------
+Mon Feb 11 16:27:20 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- Fixed build issues with python 3.7 what introduced the patches
+  * python3_7_compatibility.patch backported from upstream
+  * python3.7_unicode.patch fixes a minor function call
+  * python3.7_async_keyword.patch avoids the new keyword async
+
+-------------------------------------------------------------------
+Thu Jan 31 11:44:21 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix build with python 3.7
+
+-------------------------------------------------------------------
+Fri Jan 18 16:45:48 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build and package libtensorflow.so as some packages may link to it
+
+-------------------------------------------------------------------
+Fri Jan 11 13:52:51 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add constraints on HDD size to avoid no space-left error
+
+-------------------------------------------------------------------
+Mon Nov 26 19:38:35 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Fix python3 provides
+- Minor spec file cleanups
+
+-------------------------------------------------------------------
+Sat Nov 24 09:03:12 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Provide python3-tensorflow
+
+-------------------------------------------------------------------
+Thu Nov  8 15:54:04 UTC 2018 - cgoll@suse.com
+
+- updated build command to fit bazel-0.19 
+
+-------------------------------------------------------------------
+Thu Oct 18 22:11:23 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim pad wording from descriptions.
+
+-------------------------------------------------------------------
+Tue Oct 16 10:26:54 UTC 2018 - cgoll@suse.com
+
+- Updated to Tensorflow 1.10 as with this release it supports 
+  the partial use of systemlibs. Still a lot additional sources are
+  included which are
+  * closure
+  * weakref
+  * double-conversion
+  * gast
+  * farmhash
+  * nsync
+  * gemmlowp
+  * abseil-cpp
+  * boring-ssl
+  * google-apis
+  * cub
+  * highwayhash
+  * abseil-pypi
+  * eigen
+  * arm_neon_x86_sse
+  * fft
+  * grpc
+  * re2
+  Although some of these libraries are available in factory they could 
+  not be used as explicit versions are needed or bazel or the build
+  system links them in the wrong way.
+- mpilibpath_configure_py.patch changes the search path for the mpi 
+  to also include lib64/
+- no_aws_and_googlecloud.patch removes the dependence of aws, 
+  googlecloud and kafaka apis, as this version is not compiled with
+  the support of this apis.
+
+-------------------------------------------------------------------
+Thu Jan  4 11:00:55 UTC 2018 - cgoll@suse.com
+
+- Initial commit of Tensorflow 1.4 not all requirement could be met
+  by the distribution packages and the sources have to be included. 
+  This is true for
+  - Eigen
+  - protobuf
+  - grpc
+  - lmdb
+  - json-cpp
+  The build itself is now based on bazel and creates the pip package which 
+  is then extracted from the build environment
