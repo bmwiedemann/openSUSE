@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-zipp%{psuffix}
-Version:        3.7.0
+Version:        3.8.0
 Release:        0
 Summary:        Pathlib-compatible object wrapper for zip files
 License:        MIT
@@ -54,6 +54,7 @@ A pathlib-compatible Zipfile object wrapper.
 
 %prep
 %setup -q -n zipp-%{version}
+echo "import setuptools; setuptools.setup()" > setup.py
 # we don't need the extensions for smoke testing
 rm -f pytest.ini
 

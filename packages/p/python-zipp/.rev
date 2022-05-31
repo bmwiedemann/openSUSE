@@ -154,4 +154,13 @@
 - add python-rpm-macros buildrequires</comment>
     <requestid>945425</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ee752ba4fdda1aec25ddac02c62918ea</srcmd5>
+    <version>3.8.0</version>
+    <time>1654004806</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.8.0:
+  * Removed compatibility code.</comment>
+    <requestid>979729</requestid>
+  </revision>
 </revisionlist>
