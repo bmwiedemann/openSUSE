@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Mon May 23 12:09:40 UTC 2022 - jan.suse@zerebecki.de
+
+- Update to version 5.3.0:
+  * cargo: Afterburn release 5.3.0
+  * build(deps): bump nix from 0.24.0 to 0.24.1
+  * build(deps): bump anyhow from 1.0.56 to 1.0.57
+  * build(deps): bump nix from 0.23.1 to 0.24.0
+  * systemd: enable sshkeys on Power VS platform
+  * network: Encode information for systemd-networkd-wait-online
+  * build(deps): bump ipnetwork from 0.18.0 to 0.19.0
+  * build(deps): bump crossbeam-channel from 0.5.2 to 0.5.4
+  * cargo: update to clap 3.1
+  * cargo: enable clap wrap_help feature
+  * cli: run clap tests
+  * cli: avoid deprecated clap constructs
+  * cargo: update to clap 3.0
+  * cli: use clap mechanism to require exp subcommand
+  * build(deps): bump pnet_datalink from 0.28.0 to 0.29.0
+  * build(deps): bump pnet_base from 0.28.0 to 0.29.0
+  * build(deps): bump slog-term from 2.8.1 to 2.9.0
+  * cargo: declare MSRV in Cargo.toml
+  * cargo: update to Rust 2021; bump MSRV to 1.56.0
+  * workflows: update clippy to 1.59.0
+  * copr: abort if specfile fetch fails
+  * providers/aws: add AWS_IPV6 attribute
+  * providers/aws: bump metadata version to 2021-01-03
+  * kubevirt: Add KubeVirt platform support
+  * *.service: add/update Documentation field
+  * build(deps): bump regex from 1.5.4 to 1.5.5
+    fixes RUSTSEC-2022-0013 AKA CVE-2022-24713
+  * build(deps): bump reqwest from 0.11.9 to 0.11.10
+  * github/release-checklist: Remove Windows binaries from vendored sources
+  * build(deps): bump anyhow from 1.0.55 to 1.0.56
+  * build(deps): bump mockito from 0.30.0 to 0.31.0
+    fixes RUSTSEC-2020-0095
+  * aws/mock_tests: explicitly drop mocks before resetting
+  * aws/mock_tests: split out IMDS tests
+  * aws/mock_tests: factor out map building
+  * build(deps): bump anyhow from 1.0.54 to 1.0.55
+  * workflows/rpm: reword workflow and job name
+  * workflows/rpm: do full git clone
+  * build(deps): bump anyhow from 1.0.53 to 1.0.54
+  * workflows: add "RPM build" test
+  * templates/release-checklist: add Fedora/RHCOS packaging instructions
+  * lockfile: refresh
+  * tests: explicitly scope conflicting mocks
+  * Add COPR integration Makefile
+  * build(deps): bump serde_json from 1.0.78 to 1.0.79
+  * build(deps): bump crossbeam-utils from 0.8.5 to 0.8.7
+  * build(deps): bump block-buffer from 0.10.0 to 0.10.2
+  * build(deps): bump thread_local from 1.1.3 to 1.1.4
+    fixes RUSTSEC-2022-0006
+  * build(deps): bump slog-term from 2.8.0 to 2.8.1
+  * build(deps): bump serde from 1.0.135 to 1.0.136
+  * *: use `RemainAfterExit` on all oneshot services
+  * build(deps): bump anyhow from 1.0.52 to 1.0.53
+  * build(deps): bump serde_json from 1.0.75 to 1.0.78
+  * build(deps): bump mailparse from 0.13.7 to 0.13.8
+  * build(deps): bump serde from 1.0.134 to 1.0.135
+  * ci: skip broken kdump.crash kola test Issue: https://github.com/coreos/fedora-coreos-tracker/issues/1075
+  * build(deps): bump serde from 1.0.133 to 1.0.134
+  * build(deps): bump serde_json from 1.0.74 to 1.0.75
+
+-------------------------------------------------------------------
 Tue Jan 18 21:12:09 UTC 2022 - jan.suse@zerebecki.de
 
 - Update to version 5.2.0:

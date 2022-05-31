@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="filename">afterburn</param>
-    <param name="revision">v5.2.0</param>
+    <param name="revision">v5.3.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
@@ -17,5 +17,6 @@
   <service name="cargo_vendor" mode="manual">
     <param name="srcdir">afterburn</param>
     <param name="compression">xz</param>
+    <param name="update">false</param>
   </service>
 </services>
