@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon May 30 14:31:50 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.12:
+  * Keep the _api_test command until we have a higher-level integration
+  * Capitalise Dagger in login/logout commands
+  * Remove redundant http server
+  * Remove API keys auth message
+  * Link to the app which we got the ClientID from
+  * analytics: remove git origin duplicates
+  * fix: Bump `dagger.io` package requirement
+  * ci: use prod dagger binary in universe tests
+  * feat: universe: new and improved yarn package
+  * experimental: fix and improve custom yarn package (#2480)
+  * rename telemetry to analytics
+  * build(deps): bump github.com/hashicorp/go-version from 1.4.0 to 1.5.0
+  * fix: Default to json when printing action outputs in a non-tty environment
+  * docs: Update "Handling action outputs" docs  (#2478)
+  * doc: document cue fmt -s in the package coding style
+  * docs: bump dagger version to v0.2.11 (#2471)
+  * feature: Add ability to filter universe tests
+  * feature: Add apt package to universe
+  * fix: Add type to `#DecodeSecret`’s `output`
+  * gitpod: mark /src directory as safe to use
+  * Experimental: modified version of Kambui Nurse's spectral package
+  * authenticated client support
+  * primitive auth support
+  * feat: Add 1password package
+
+-------------------------------------------------------------------
 Fri May 20 14:56:22 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.2.11:
