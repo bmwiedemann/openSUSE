@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-media-videoanalyzer-edge
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-media-videoanalyzer-edge
-Version:        1.0.0b3
+Version:        1.0.0b4
 Release:        0
 Summary:        Microsoft Azure Video Analyzer Edge SDK Library for Python
 License:        MIT
@@ -37,8 +37,9 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-core < 2.0.0
 Requires:       python-azure-core >= 1.2.2
+Requires:       python-azure-media-nspkg >= 1.0.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.5.0
+Requires:       python-msrest >= 0.6.21
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
