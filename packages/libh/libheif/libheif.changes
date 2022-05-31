@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 27 16:27:00 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
+
+- Add missing gdk-pixbuf loader scriptlets (bsc#1199987).
+- Recommend gdk-pixbuf-loader-libheif whenever both related
+  packages are installed.
+
+-------------------------------------------------------------------
 Fri Jun 11 17:55:11 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.12.0:

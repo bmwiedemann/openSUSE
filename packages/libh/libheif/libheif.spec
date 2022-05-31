@@ -1,7 +1,7 @@
 #
 # spec file for package libheif
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -81,6 +81,7 @@ This package contains the header files.
 %package -n gdk-pixbuf-loader-libheif
 Summary:        GDK PixBuf Loader for %{name}
 Group:          System/Libraries
+Supplements:    packageand(libheif1:libgdk_pixbuf-2_0-0)
 
 %description -n gdk-pixbuf-loader-libheif
 A ISO/IEC 23008-12:2017 HEIF file format decoder and encoder.
@@ -132,6 +133,12 @@ for e in heif-convert \
 
 %post -n libheif1 -p /sbin/ldconfig
 %postun -n libheif1 -p /sbin/ldconfig
+
+%post -n gdk-pixbuf-loader-libheif
+%{gdk_pixbuf_loader_post}
+
+%postun -n gdk-pixbuf-loader-libheif
+%{gdk_pixbuf_loader_postun}
 
 %files -n libheif1
 %license COPYING
