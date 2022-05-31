@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 30 14:38:03 UTC 2022 - kastl@b1-systems.de
+
+- add zstd as BuildRequires, as cargo_vendor now spits out tar.zst files...
+- Update to version 0.17.0:
+  * Version 0.17.0
+  * Cleanup dead code
+  * fix: copy zsh_hisotry file
+  * Add instructions for installing on Arch Linux
+
+-------------------------------------------------------------------
 Thu Feb 17 17:38:09 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - add subpackages for kubie bash-completion and fish-completion
