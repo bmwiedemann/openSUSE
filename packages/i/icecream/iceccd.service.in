@@ -19,7 +19,7 @@ RestrictRealtime=true
 Type=simple
 EnvironmentFile=-/etc/sysconfig/icecream
 SyslogIdentifier=iceccd
-ExecStart=@LIBEXECDIR@/icecc/iceccd-wrapper -u icecream -vv -b /var/cache/icecream/
+ExecStart=@LIBEXECDIR@/icecc/iceccd-wrapper -u icecream -b /var/cache/icecream/
 Nice=5
 
 [Install]

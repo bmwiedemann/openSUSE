@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 30 06:50:15 UTC 2022 - Lubos Lunak <l.lunak@centrum.cz>
+
+- Do not start iceccd with verbose options.
+
+-------------------------------------------------------------------
 Fri Mar  4 16:39:39 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - Update to 1.4
