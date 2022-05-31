@@ -501,4 +501,12 @@
     <comment>Update to 42.0 (forwarded request 966951 from dimstar)</comment>
     <requestid>967853</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>84918763a4e47f3e33ce7015acbba624</srcmd5>
+    <version>42.1</version>
+    <time>1654004856</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42.2 (forwarded request 979886 from dimstar)</comment>
+    <requestid>980024</requestid>
+  </revision>
 </revisionlist>
