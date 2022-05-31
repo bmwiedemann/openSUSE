@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 30 12:30:40 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Ensure power-profiles-daemon is installed by Desktop GNOME
+  pattern.
+
+-------------------------------------------------------------------
 Thu May 19 12:47:00 UTC 2022 - Syds Bearda <opensuse@syds.eu>
 
 - NetworkManager 1.38.0 is split into different packages and doesn't 

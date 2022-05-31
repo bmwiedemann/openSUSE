@@ -500,6 +500,8 @@ Requires:       xdg-user-dirs-gtk
 Requires:       yelp
 # https://build.opensuse.org/request/show/921373
 Requires:       xdg-desktop-portal-gnome
+# ensure laptop power support is there
+Requires:       power-profiles-daemon
 #
 # Low-level parts that we need
 #
