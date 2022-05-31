@@ -12,3 +12,7 @@ override_dh_auto_install:
 	install -Dm0644 dist/complete.csh debian/tmp/etc/profile.d/osc.csh
 	install -Dm0644 dist/complete.sh debian/tmp/etc/bash_completion.d/osc.sh
 	install -Dm0755 dist/osc.complete debian/tmp/usr/lib/osc/complete
+
+
+override_dh_auto_test:
+	echo "skipping test"

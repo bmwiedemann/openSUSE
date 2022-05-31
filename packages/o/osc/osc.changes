@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue May 24 12:34:52 UTC 2022 - Daniel Mach <daniel.mach@suse.com>
+
+- 0.178.0
+  - EXPERIMENTAL: git repository handling
+    * init command is working inside of a git repository
+    * downloadassets command fetches references assets from build description
+    * checkout is cloning from git
+  - EXPERIMENTAL: signature (ssh key) authetication
+    * allow to configure 'sshkey' option in the config
+    * try to guess ssh key from the keys added to ssh-agent
+    * rename OscHTTPBasicAuthHandler to OscHTTPAuthHandler
+    * simplify bad auth retry workaround needed for old python versions
+  - add support for building preinstall images
+  - add support for building Helm charts
+  - show the md5s that are failing to validate after fetching a package
+  - add missing space to copypac completion
+  - never require login in the help command
+  - linkdiff: raise an exception when an added file is missing
+  - run tests via calling 'setup.py test'
+  - several coding style fixes
+
+- spec file:
+  - run tests via calling 'setup.py test'
+  - disabled tests in debian.rules
+
+-------------------------------------------------------------------
 Tue Apr 26 07:53:48 UTC 2022 - Marco Strigl <marco.strigl@suse.com>
 
 - 0.177.0
