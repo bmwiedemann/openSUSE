@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 30 14:31:10 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.3.1:
+  * Revert "Remove warning when failing to add dev annotations (#2719)"
+  * Remove warning when failing to add dev annotations (#2721)
+  * Fix "okteto up" metrics for vanilla clusters (#2718)
+  * fix: build okteto with volumes tag per commit (#2710)
+
+-------------------------------------------------------------------
 Wed May 18 09:07:12 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.3.0:
