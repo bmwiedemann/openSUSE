@@ -1,8 +1,20 @@
 -------------------------------------------------------------------
+Mon May 30 13:16:32 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to latest version, 1.3.0:
+  * new tools and commands!
+  * rootful containers support
+  * new supported distros
+  * improved integration with the host
+  * many fixes and improvements
+
+For full log, see: https://github.com/89luca89/distrobox/releases/tag/1.3.0
+
+-------------------------------------------------------------------
 Sat May 14 15:29:50 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - Add a config file, so that we pull a tumbleweed image by default
-- Update too latest version, 1.2.15. Some changes:
+- Update to latest version, 1.2.15. Some changes:
   * init: Allow all package manager checks to run
   * init: Fix compatibility with init containers
   * init: add pacman post-hook to neutralize systemd post-hooks in case we're not in an init-enabled container
