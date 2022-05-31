@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May 30 17:37:17 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.8.0
+  * New option combination -o (--only-matching) with -ABC context
+    for column context
+  * option -o with -b or -k now shows results on separate lines
+  * new option --width to truncate long lines to the specified
+    width or the terminal width by default
+  * short ug command now sorts by name by default
+  * query TUI ALT-] [ (increase/decrease context) and ALT-} {
+    (increase/decrease fuzziness) keys switched meaning
+  * new %+ format field used by updated --only-line-number option
+
+-------------------------------------------------------------------
 Wed May 11 04:22:53 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.7.11:
