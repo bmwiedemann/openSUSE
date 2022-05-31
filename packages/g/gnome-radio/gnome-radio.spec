@@ -17,7 +17,7 @@
 
 
 Name:           gnome-radio
-Version:        16.0.42
+Version:        16.0.43
 Release:        0
 Summary:        Live Internet radio broadcaster discovery program
 License:        GPL-3.0-or-later
