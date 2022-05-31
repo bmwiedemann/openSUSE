@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon May 30 14:39:12 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 9.3.0:
+  * Release 9.3.0 (#12955)
+  * [v9] Re-add `kinds` config field to tbot with a deprecation warning (#13000)
+  * Read all PROXYv2 header bytes (#12861) (#12994)
+  * Fix missing SSH HostCA in tbot impersonated identities (#12992)
+  * Add `tbot proxy` and `tbot db` wrapper commands (#12687) (#12990)
+  * Extend support for identity files in tsh (#12686) (#12922)
+  * [auto] Update webassets in branch/v9 (#12989)
+  * Backport #11768 #12411 to branch/v9 (#12975)
+  * [v9] When adding a cluster, return it if it was already added (#12978)
+  * add ExactKey function to create absolute storage paths (#12721)
+  * ensure tctl outputs all debug log messages (#12920)
+  * Update docs docker versions for oss and enterprise (#12917)
+  * Chage `teleport configure` to accept non existent `--data-dir` directory (#12673) (#12806)
+  * Revert "Avoid nil dereferencing when tlsConfig is nil. (#9788)" (#12874)
+  * [v9] Set TELEPORT_ETCD_TEST=yes. (#12784) (#12851)
+  * Backport #12034 to branch/v9 (#12842)
+  * Fix `tsh db ls` for remote clusters. (#12281) (#12853)
+  * Improve CertAuthorityWatcher (#10403) (#12724)
+  * Improve performance using session trackers in large clusters (#12584) (#12832)
+  * tctl: Respect TELEPORT_HOME value when grabbing profile (#12486) (#12738)
+  * [v9] Fix Redis Cluster default user AUTH cmd (#12754)
+  * Warn instead of hard error when validating u2f facets (#12826)
+  * [v9] Update docs version to 9.2.4 for self-hosted and cloud (#12823)
+  * Remove non-https facets from documentation (#12776) (#12785)
+
+-------------------------------------------------------------------
 Sat May 21 18:28:41 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 9.2.4:
