@@ -1,21 +1,15 @@
 <services>
-  <service mode="disabled" name="obs_scm">
-    <param name="url">https://github.com/helix-editor/helix</param>
-    <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
-    <param name="scm">git</param>
-    <param name="revision">22.03</param>
-    <param name="match-tag">*</param>
-    <param name="versionrewrite-pattern">(\d+\.\d+\.\d+)~0</param>
-    <param name="versionrewrite-replacement">\1</param>
-    <param name="changesgenerate">enable</param>
-    <param name="changesauthor">socvirnyl.estela@gmail.com</param>
+  <service mode="disabled" name="download_url">
+    <param name="prefer-old">true</param>
+    <param name="protocol">https</param>
+    <param name="host">github.com</param>
+    <param name="path">helix-editor/helix/releases/download/22.05/helix-22.05-source.tar.xz</param>
   </service>
-  <service mode="disabled" name="tar" />
+  <service mode="disabled" name="set_version"/>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service mode="disabled" name="set_version"/>
   <service name="cargo_vendor" mode="disabled">
      <param name="srcdir">helix</param>
      <param name="compression">xz</param>

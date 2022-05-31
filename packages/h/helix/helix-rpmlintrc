@@ -1,1 +1,3 @@
 addFilter("files-duplicate")
+addFilter("shared-library-without-dependency-information")
+

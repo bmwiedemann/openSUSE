@@ -18,4 +18,25 @@
 This will increase possible helix users.</comment>
     <requestid>978023</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8594fea1e86325ecfd12a53719576bf0</srcmd5>
+    <version>22.05</version>
+    <time>1654004836</time>
+    <user>dimstar_suse</user>
+    <comment>- remove false positive by adding filter to shared-library-without-dependency-information
+- Update to version 22.05:
+  * Fix the VERSION file
+  * mention the requirement of C++ compiler for building grammar in doc (#2592)
+  * Fix release action
+  * add 22.05 changelog notes (#2584)
+  * add section on syntax tree motions to the usage docs (#2568)
+  * Changing Macro color to avoid color confusion
+  * update Erlang grammar and queries
+  * update Gleam grammar and queries
+  * Add `parameter.around` text object query
+  * build(deps): bump once_cell from 1.10.0 to 1.12.0
+
+** Finally builds successfully **</comment>
+    <requestid>979978</requestid>
+  </revision>
 </revisionlist>
