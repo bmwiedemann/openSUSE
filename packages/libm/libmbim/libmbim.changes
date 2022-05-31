@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun May 29 19:31:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.26.4:
+  * meson: force building doc on normal builds, not only during install.
+  * meson: fix 'export_packages' in GIR setup.
+  * compat: deprecate the MbimLteAttachStatus type.
+  * net-port-manager: use unaligned netlink attribute length.
+  * include MBIM proxy control service in docs.
+  * codegen: add section doc for each service.
+  * utils: add missing short description in section.
+  * compat: add missing MbimLteAttachStatus doc.
+  * device: add missing mbim_device_list_links() doc.
+  * device: fix MbimDevice 'device-in-session' property doc.
+  * version: add missing MBIM_CHECK_VERSION() documentation.
+  * device: fix wrong reference to QmiDevice
+  * Several other minor improvements and fixes.
+
+-------------------------------------------------------------------
 Mon Dec 20 22:07:09 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 1.26.2:

@@ -309,4 +309,12 @@
 - Drop pkgconfig(gudev-1.0) BuildRequires: no longer used.</comment>
     <requestid>941787</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>047c4a3400716d457194acef57c296dc</srcmd5>
+    <version>1.26.4</version>
+    <time>1654004820</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979844</requestid>
+  </revision>
 </revisionlist>
