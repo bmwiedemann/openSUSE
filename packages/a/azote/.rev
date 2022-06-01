@@ -134,4 +134,13 @@
   * search more backgrounds sub-dirs on first run</comment>
     <requestid>979788</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a0150b8cd03e72b4112e1cb5b054eba0</srcmd5>
+    <version>1.9.5</version>
+    <time>1654097745</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.5:
+  * Fixed launcher script not working on Fedora #163</comment>
+    <requestid>980358</requestid>
+  </revision>
 </revisionlist>

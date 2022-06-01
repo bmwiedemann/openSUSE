@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  1 13:24:46 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.9.5:
+  * Fixed launcher script not working on Fedora #163
+
+-------------------------------------------------------------------
 Mon May 30 07:04:21 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.9.4:
