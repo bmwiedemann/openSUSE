@@ -97,7 +97,6 @@ Patch68:        chromium-94-ffmpeg-roll.patch
 Patch69:        chromium-93-InkDropHost-crash.patch
 Patch78:        chromium-98-EnumTable-crash.patch
 Patch80:        chromium-97-ScrollView-reference.patch
-Patch84:        chromium-third_party-symbolize-missing-include.patch
 Patch86:        chromium-97-arm-tflite-cast.patch
 Patch87:        chromium-98-gtk4-build.patch
 Patch90:        chromium-100-InMilliseconds-constexpr.patch
@@ -635,7 +634,7 @@ export CXXFLAGS="${CXXFLAGS} -Wno-unused-command-line-argument -Wno-unknown-warn
 %endif
 %ifarch aarch64
 %if %{without clang}
-export CXXFLAGS="${CXXFLAGS} -flax-vector-conversions"
+export CXXFLAGS="${CXXFLAGS} -flax-vector-conversions -fno-omit-frame-pointer"
 %else
 %if 0%{?sle_version} == 150200
 export CXXFLAGS="${CXXFLAGS} -flax-vector-conversions"
@@ -785,6 +784,7 @@ myconf_gn+=" ffmpeg_branding=\"Chrome\""
 
 %ifarch aarch64
 myconf_gn+=" host_cpu=\"arm64\""
+myconf_gn+=" arm_control_flow_integrity=\"none\""
 %endif
 
 # Set up Google API keys, see http://www.chromium.org/developers/how-tos/api-keys

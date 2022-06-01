@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun  1 09:43:54 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Disable ARM control flow integrity, it causes build issues
+  at the moment
+- Try a different SVG (black logo on GNOME)
+- Removed patches:
+  * chromium-third_party-symbolize-missing-include.patch
+  (replaced by chromium-102-symbolize-include.patch)
+
+-------------------------------------------------------------------
 Fri May 27 19:40:42 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Chromium 102.0.5001.61 (boo#1199893)
