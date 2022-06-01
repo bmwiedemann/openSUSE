@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May 30 11:38:48 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.44.2:
+  + Miscellaneous:
+    - ERemindersWidget: Allow width shrink for small screens.
+    - Fix few memory leaks discovered by Coverity scan.
+    - GOA module: Prevent ESource removal on D-Bus reconnect or
+      registry reload.
+  + Bug Fixes:
+    - CalDAV: Crash on calendar update.
+    - e-webdav-discover: Fails to find Radicale calendars within
+      collection account.
+    - Google OAuth out-of-band (oob) flow will be deprecated.
+    - IMAPx: Fails to create folder with NIL folder hierarchy
+      delimiter.
+    - WebDAVCollectionBackend: Removes sources on server error.
+
+-------------------------------------------------------------------
 Fri Apr 22 12:35:39 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
 
 - Update to version 3.44.1:
