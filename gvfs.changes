@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 30 11:33:43 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.50.2:
+  + smb: Rework anonymous handling to avoid EINVAL.
+  + http: Unescape prefix to fix handling of encoded URIs.
+  + build: Fix build without Avahi support.
+
+-------------------------------------------------------------------
 Mon Apr 25 08:54:10 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.50.1:

@@ -1375,4 +1375,12 @@ Also wanted for 13.1</comment>
     <comment>Scripted push from GNOME:Next (forwarded request 972574 from dimstar)</comment>
     <requestid>973151</requestid>
   </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>41bdda9537cd5927e10b8443c46b6ac5</srcmd5>
+    <version>1.50.2</version>
+    <time>1654097644</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42.2 (forwarded request 979900 from dimstar)</comment>
+    <requestid>980036</requestid>
+  </revision>
 </revisionlist>
