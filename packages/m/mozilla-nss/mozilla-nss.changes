@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue May 31 19:24:59 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.78.1
+  * bmo#1767590 - Initialize pointers passed to
+                  NSS_CMSDigestContext_FinishMultiple
+
+-------------------------------------------------------------------
+Mon May 30 21:24:54 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.78
+  * bmo#1755264 - Added TLS 1.3 zero-length inner plaintext checks and
+                  tests, zero-length record/fragment handling tests.
+  * bmo#1294978 - Reworked overlong record size checks and added TLS1.3
+                  specific boundaries.
+  * bmo#1763120 - Add ECH Grease Support to tstclnt
+  * bmo#1765003 - Add a strict variant of moz::pkix::CheckCertHostname.
+  * bmo#1166338 - Change SSL_REUSE_SERVER_ECDHE_KEY default to false.
+  * bmo#1760813 - Make SEC_PKCS12EnableCipher succeed
+  * bmo#1762489 - Update zlib in NSS to 1.2.12.
+
+-------------------------------------------------------------------
 Thu Apr 28 20:40:04 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.77

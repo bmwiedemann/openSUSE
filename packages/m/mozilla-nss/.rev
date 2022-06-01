@@ -2619,4 +2619,25 @@
   * bmo#1755092 - rework signature verification in mozilla::pkix</comment>
     <requestid>974916</requestid>
   </revision>
+  <revision rev="189" vrev="1">
+    <srcmd5>4bbf29ab5afc1886aba020895138808a</srcmd5>
+    <version>3.78.1</version>
+    <time>1654097661</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.78.1
+  * bmo#1767590 - Initialize pointers passed to
+                  NSS_CMSDigestContext_FinishMultiple
+
+- update to NSS 3.78
+  * bmo#1755264 - Added TLS 1.3 zero-length inner plaintext checks and
+                  tests, zero-length record/fragment handling tests.
+  * bmo#1294978 - Reworked overlong record size checks and added TLS1.3
+                  specific boundaries.
+  * bmo#1763120 - Add ECH Grease Support to tstclnt
+  * bmo#1765003 - Add a strict variant of moz::pkix::CheckCertHostname.
+  * bmo#1166338 - Change SSL_REUSE_SERVER_ECDHE_KEY default to false.
+  * bmo#1760813 - Make SEC_PKCS12EnableCipher succeed
+  * bmo#1762489 - Update zlib in NSS to 1.2.12.</comment>
+    <requestid>980155</requestid>
+  </revision>
 </revisionlist>
