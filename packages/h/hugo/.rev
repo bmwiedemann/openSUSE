@@ -185,4 +185,35 @@
   * common/hugo: Fix version logic (forwarded request 977963 from jfkw)</comment>
     <requestid>977964</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1cdddf046442085aa749bc6e62ea35c4</srcmd5>
+    <version>0.100.0</version>
+    <time>1654097683</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.100.0:
+  * Fix indentation in highlight shortcode
+  * Make .RenderString render shortcodes
+  * Improve shortcode indentation handling
+  * Add Markdown as an output format
+  * build(deps): bump github.com/evanw/esbuild from 0.14.39 to 0.14.42
+  * Run go mod tidy
+  * Add a shortcode benchmark
+  * Remove Blackfriday markdown engine
+  * Fix HasMenuCurrent and IsDescendant/IsAncestor when comparing to itself
+  * build(deps): bump github.com/sanity-io/litter from 1.5.4 to 1.5.5
+  * deps: Update to github.com/tdewolff/minify/v2 v2.11.5
+  * Don't use the baseURL /path as part of the resource cache key
+  * postcss: Make the resource cache key more stable
+  * commands: Fix case where languages cannot be configured
+  * github: Set HUGO_BUILD_TAGS: extended when running tests
+  * metrics: Fix divide by zero error
+  * Fix error message when PostCSS config file is not found
+  * server: Skip watching dirs in ignoreFiles
+  * resources: Improve error message on .Resize etc. on SVGs
+  * Fix Plainify edge cases
+  * Add resources.Copy
+  * basefs: add `noBuildLock` flag
+  * import: Fix importing jekyll site (forwarded request 980150 from jfkw)</comment>
+    <requestid>980159</requestid>
+  </revision>
 </revisionlist>

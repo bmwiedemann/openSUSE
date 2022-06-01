@@ -20,7 +20,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           hugo
-Version:        0.99.1
+Version:        0.100.0
 Release:        0
 Summary:        Static website generator written in Go
 License:        Apache-2.0
