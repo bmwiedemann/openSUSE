@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May  3 13:01:18 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
+
+- Update to version 3.24.6:
+  + GTK: TreeValueProxy: Declare copy constructor = default,
+    avoiding warnings from the claing++ compiler.
+  + Object::_release_c_instance(): Unref orphan managed widgets.
+  + SizeGroup demo: Set active items in the combo boxs,
+    so something is shown.
+  + Build with Meson: MSVC build: Support Visual Studio 2022.
+  + Specify 'check' option in run_command().
+  + Check if Perl is required for building documentation.
+  + Don't use deprecated python3.path() and execute
+    (..., gui_app...).
+-------------------------------------------------------------------
 Fri Aug  6 13:04:30 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.24.5:
