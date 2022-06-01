@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue May 31 20:35:04 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Swapping out '%{_datarootdir}' for '%{_datadir}'.
+
+-------------------------------------------------------------------
+Tue May 31 16:32:03 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.2.7+git20220528.c3eb02f:
+  * v1.2.7 Bug fixes & new features
+  * Fixed: Net sync scale bug
+  * Added tokyo-night & tokyo-storm theme
+
+-------------------------------------------------------------------
+Mon May 23 00:52:43 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.2.6+git20220516.c257938:
+  * Fix makefile to install to /usr/local instead of /usr
+  * Update makefile to install/remove icons and desktop entry
+  * Add desktop icon svg and png
+  * Add btop.desktop
+  * Added: Case insensitive process filtering
+
+-------------------------------------------------------------------
 Thu May 05 18:56:57 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version 1.2.6+git20220505.841941a:
