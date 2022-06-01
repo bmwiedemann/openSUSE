@@ -1,0 +1,26 @@
+Index: PackageKit-1.2.5/backends/zypp/pk-backend-zypp.cpp
+===================================================================
+--- PackageKit-1.2.5.orig/backends/zypp/pk-backend-zypp.cpp
++++ PackageKit-1.2.5/backends/zypp/pk-backend-zypp.cpp
+@@ -1239,13 +1239,19 @@ zypp_get_package_updates (string repo, s
+ 		resolver->doUpdate ();
+ 	}
+ 
+-	for (; it != e; ++it)
+-		if (it->status().isToBeInstalled()) {
++	for (; it != e; ++it) {
++        if (it->status().isLocked()) {
++            // We pretend locked packages are not upgradable at all since
++            // we can't represent the concept of holds in PackageKit.
++            // https://github.com/PackageKit/PackageKit/issues/325
++            continue;
++        } else if (it->status().isToBeInstalled()) {
+ 			ui::Selectable::constPtr s =
+ 				ui::Selectable::get((*it)->kind(), (*it)->name());
+ 			if (s->hasInstalledObj())
+ 				pks.insert(*it);
+ 		}
++    }
+ 
+ 	if (is_tumbleweed ()) {
+ 		resolver->setUpgradeMode (FALSE);

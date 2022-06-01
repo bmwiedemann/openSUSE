@@ -51,7 +51,9 @@ Patch2:         PackageKit-remove-polkit-rules.patch
 # PATCH-FIX-OPENSUSE PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch ngompa13@gmail.com -- Band-aid to deal with OBS producing differently named appstream repodata files
 Patch3:         PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch
 # PATCH-FIX-UPSTREAM PackageKit-fix-crash-pre-dbus.patch gh#hughsie/PackageKit!436 -- Do not crash when calling pk_dbus_get_uid() before D-Bus is  setup
-Patch5:         PackageKit-fix-crash-pre-dbus.patch
+Patch4:         PackageKit-fix-crash-pre-dbus.patch
+# PATCH-FIX-UPSTREAM PackageKit-zypp-locked-packages.patch gh#hughsie/PackageKit#543, boo#1199895 sckang@suse.com -- zypp: ignore locked packages
+Patch5:         PackageKit-zypp-locked-packages.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
