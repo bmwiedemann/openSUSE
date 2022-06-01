@@ -1,8 +1,8 @@
-Index: haproxy-2.5/Makefile
+Index: haproxy-2.6/Makefile
 ===================================================================
---- haproxy-2.5.orig/Makefile
-+++ haproxy-2.5/Makefile
-@@ -103,7 +103,7 @@
+--- haproxy-2.6.orig/Makefile
++++ haproxy-2.6/Makefile
+@@ -104,7 +104,7 @@
  #   LUA_LIB        : force the lib path to lua
  #   LUA_INC        : force the include path to lua
  #   LUA_LIB_NAME   : force the lib name (or automatically evaluated, by order of
@@ -11,7 +11,7 @@ Index: haproxy-2.5/Makefile
  #   OT_DEBUG       : compile the OpenTracing filter in debug mode
  #   OT_INC         : force the include path to libopentracing-c-wrapper
  #   OT_LIB         : force the lib path to libopentracing-c-wrapper
-@@ -606,11 +606,11 @@ OPTIONS_CFLAGS  += $(if $(LUA_INC),-I$(L
+@@ -648,11 +648,11 @@ OPTIONS_CFLAGS  += $(if $(LUA_INC),-I$(L
  LUA_LD_FLAGS := -Wl,$(if $(EXPORT_SYMBOL),$(EXPORT_SYMBOL),--export-dynamic) $(if $(LUA_LIB),-L$(LUA_LIB))
  ifeq ($(LUA_LIB_NAME),)
  # Try to automatically detect the Lua library
@@ -26,11 +26,11 @@ Index: haproxy-2.5/Makefile
  ifneq ($(LUA_INC),)
  OPTIONS_CFLAGS  += -I$(LUA_INC)
  endif
-Index: haproxy-2.5/INSTALL
+Index: haproxy-2.6/INSTALL
 ===================================================================
---- haproxy-2.5.orig/INSTALL
-+++ haproxy-2.5/INSTALL
-@@ -320,9 +320,9 @@ Lua is an embedded programming language
+--- haproxy-2.6.orig/INSTALL
++++ haproxy-2.6/INSTALL
+@@ -329,9 +329,9 @@ Lua is an embedded programming language
  advanced scripting capabilities. Only versions 5.3 and above are supported.
  In order to enable Lua support, please specify "USE_LUA=1" on the command line.
  Some systems provide this library under various names to avoid conflicts with

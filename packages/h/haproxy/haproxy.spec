@@ -55,7 +55,7 @@
 %endif
 
 Name:           haproxy
-Version:        2.5.7+git0.2ef551d02
+Version:        2.6.0+git0.a1efc048b
 Release:        0
 #
 #
@@ -268,7 +268,7 @@ getent passwd %{pkg_name} >/dev/null || \
 %defattr(-,root,root,-)
 %license LICENSE
 %doc CHANGELOG README
-%doc ROADMAP doc/* examples/
+%doc doc/* examples/
 %doc admin/netsnmp-perl/ admin/selinux/
 %dir               %attr(-,root,haproxy) %{_sysconfdir}/%{pkg_name}
 %config(noreplace) %attr(-,root,haproxy) %{_sysconfdir}/%{pkg_name}/*

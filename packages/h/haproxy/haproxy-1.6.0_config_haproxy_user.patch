@@ -1,24 +1,7 @@
-Index: haproxy-2.5/examples/acl-content-sw.cfg
+Index: haproxy-2.6/examples/content-sw-sample.cfg
 ===================================================================
---- haproxy-2.5.orig/examples/acl-content-sw.cfg
-+++ haproxy-2.5/examples/acl-content-sw.cfg
-@@ -5,9 +5,9 @@ global
- 	log	   loghost   local0
- 	log	   localhost local0 err
- 	maxconn	   250
--	uid	   71
--	gid	   71
--	chroot	   /var/empty
-+	user	haproxy
-+	group	haproxy
-+	chroot	   /var/lib/haproxy
- 	pidfile	   /var/run/haproxy.pid
- 	daemon
- 	quiet
-Index: haproxy-2.5/examples/content-sw-sample.cfg
-===================================================================
---- haproxy-2.5.orig/examples/content-sw-sample.cfg
-+++ haproxy-2.5/examples/content-sw-sample.cfg
+--- haproxy-2.6.orig/examples/content-sw-sample.cfg
++++ haproxy-2.6/examples/content-sw-sample.cfg
 @@ -11,9 +11,9 @@ global
          maxconn         10000
          stats socket    /var/run/haproxy.stat mode 600 level admin
@@ -32,10 +15,10 @@ Index: haproxy-2.5/examples/content-sw-sample.cfg
          daemon
  
  # The public 'www' address in the DMZ
-Index: haproxy-2.5/examples/option-http_proxy.cfg
+Index: haproxy-2.6/examples/option-http_proxy.cfg
 ===================================================================
---- haproxy-2.5.orig/examples/option-http_proxy.cfg
-+++ haproxy-2.5/examples/option-http_proxy.cfg
+--- haproxy-2.6.orig/examples/option-http_proxy.cfg
++++ haproxy-2.6/examples/option-http_proxy.cfg
 @@ -9,6 +9,9 @@ global
          uid             200
          gid             200
@@ -46,10 +29,10 @@ Index: haproxy-2.5/examples/option-http_proxy.cfg
          daemon
  
  frontend test-proxy
-Index: haproxy-2.5/examples/transparent_proxy.cfg
+Index: haproxy-2.6/examples/transparent_proxy.cfg
 ===================================================================
---- haproxy-2.5.orig/examples/transparent_proxy.cfg
-+++ haproxy-2.5/examples/transparent_proxy.cfg
+--- haproxy-2.6.orig/examples/transparent_proxy.cfg
++++ haproxy-2.6/examples/transparent_proxy.cfg
 @@ -6,6 +6,10 @@
  #
  
@@ -61,3 +44,58 @@ Index: haproxy-2.5/examples/transparent_proxy.cfg
  defaults
  	timeout client		30s
  	timeout server		30s
+Index: haproxy-2.6/examples/basic-config-edge.cfg
+===================================================================
+--- haproxy-2.6.orig/examples/basic-config-edge.cfg
++++ haproxy-2.6/examples/basic-config-edge.cfg
+@@ -15,7 +15,7 @@ global
+ 	zero-warning
+ 
+ 	# Security hardening: isolate and drop privileges
+-	chroot /var/empty
++  chroot	   /var/lib/haproxy
+ 	user haproxy
+ 	group haproxy
+ 
+Index: haproxy-2.6/examples/quick-test.cfg
+===================================================================
+--- haproxy-2.6.orig/examples/quick-test.cfg
++++ haproxy-2.6/examples/quick-test.cfg
+@@ -3,6 +3,9 @@
+ 
+ global
+    strict-limits  # refuse to start if insufficient FDs/memory
++   user	haproxy
++   group	haproxy
++   chroot	   /var/lib/haproxy
+    # add some process-wide tuning here if required
+ 
+    # A stats socket may be added to check live metrics if the load generators
+Index: haproxy-2.6/examples/socks4.cfg
+===================================================================
+--- haproxy-2.6.orig/examples/socks4.cfg
++++ haproxy-2.6/examples/socks4.cfg
+@@ -2,6 +2,9 @@ global
+ 	log /dev/log local0
+ 	log /dev/log local1 notice
+ 	stats timeout 30s
++  user	haproxy
++  group	haproxy
++  chroot	   /var/lib/haproxy
+ 
+ defaults
+ 	log global
+Index: haproxy-2.6/examples/wurfl-example.cfg
+===================================================================
+--- haproxy-2.6.orig/examples/wurfl-example.cfg
++++ haproxy-2.6/examples/wurfl-example.cfg
+@@ -5,6 +5,9 @@
+ #
+ 
+ global
++  user	haproxy
++  group	haproxy
++  chroot	   /var/lib/haproxy
+ 
+ 	# The WURFL data file
+ 	wurfl-data-file		/usr/share/wurfl/wurfl.zip
