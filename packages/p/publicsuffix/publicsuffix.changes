@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 31 08:10:11 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20220518:
+  * util: gTLD data autopull updates for 2022-05-18T15:16:02 UTC (#1567)
+  * fixed wordwrap; added # of users q
+  * Add builder.code.com, stg-builder.code.com, and dev-builder.code.com (#1566)
+  * UPDATE HOSTBIP RECORDS (`name.pm` `sch.tf` `biz.wf` `sch.wf` `org.yt`) (#1473)
+  * Fix comments delete space and deprecation of io/ioutil (#1557)
+
+-------------------------------------------------------------------
 Wed May 11 06:40:30 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20220510:
