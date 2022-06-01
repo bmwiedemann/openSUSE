@@ -1809,4 +1809,12 @@ https://gitlab.gnome.org/GNOME/gnome-control-center/commit/3e82d5386033e8fbf3f5b
     <comment>Update to 42.1 (forwarded request 973115 from dimstar)</comment>
     <requestid>973139</requestid>
   </revision>
+  <revision rev="214" vrev="1">
+    <srcmd5>747c4820b93bda134c436fbbe9b1f950</srcmd5>
+    <version>42.2</version>
+    <time>1654097636</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42.2 (forwarded request 979888 from dimstar)</comment>
+    <requestid>980026</requestid>
+  </revision>
 </revisionlist>
