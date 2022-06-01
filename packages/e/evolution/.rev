@@ -2145,4 +2145,12 @@ Recommended for 12.3</comment>
     <comment>Update to 3.44.1 (forwarded request 973119 from dimstar)</comment>
     <requestid>973154</requestid>
   </revision>
+  <revision rev="257" vrev="1">
+    <srcmd5>11f3f2d44d844958418c7f49029e890c</srcmd5>
+    <version>3.44.2</version>
+    <time>1654097632</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42.2 (forwarded request 979882 from dimstar)</comment>
+    <requestid>980021</requestid>
+  </revision>
 </revisionlist>

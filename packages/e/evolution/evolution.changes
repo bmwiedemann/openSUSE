@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon May 30 11:41:09 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.44.2:
+  + Miscellaneous:
+    - EShell: Auto-close ESource connection alerts on idle.
+    - EContactEditor: Use a GWeakRef on the editor when opening
+      target client.
+    - EWebDAVConfigLookup: Set also authentication method.
+    - EWebKitEditor: Mode change not propagated into the Editor
+      widget.
+    - Tasks: Ensure ICalTime::zone is set for current time.
+    - itip-view: Ignore empty text/plain subpart in meeting
+      invitation mail.
+  + Bug Fixes:
+    - WebKitEditor: Convert to plain text incorrect on
+      reply/forward open.
+    - itip-formatter: Use whole URL value as a link href.
+    - Fails to build with libgweather 3.36.
+    - Misc: Handle numpad Enter similarly as the Enter key.
+    - Composer: Ensure URL entry is focused in Link Properties.
+    - Better handle Dark Style GNOME 42 setting.
+    - iTIP formatter shows twice "Attendee status updated".
+    - Tasks: Overdue calculation sometimes incorrect.
+    - CompEditor: Move whole component between calendars.
+    - DUE-today color in Tasks window not always applied.
+    - Calendar: iTip message not sent to a Room address.
+    - EMFolderTreeModel: Prefer Inbox over other folder types.
+
+-------------------------------------------------------------------
 Mon Apr 25 08:57:30 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.44.1:
