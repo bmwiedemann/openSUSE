@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jun  1 07:15:26 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6:
+  * Changed slightly how the XFF field is specified. See man page for details.
+  * Ensure city is displayed with the DBIP City Lite database.
+  * Ensure no 'cleaning up resources' message  is displayed if `--no-progress`
+    is passed.
+  * Ensure the maximum number of items per panel defaults to 1440 (24hrs) when
+    passing `--date-spec=min`.
+  * Fixed issue when parsing a delimited XFF field followed by a host IP.
+  * Fixed issue where some data was buffered on the WebSocket server before it
+    was sent to each client.
+  * Fixed issue where the WebSocket server would fail with POLLNVAL consuming
+    100% CPU.
+  * Fixed segfault when attempting to open an unresolved IP on mac/BSDs.
+
+-------------------------------------------------------------------
 Fri Apr 29 05:17:11 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.5.7:
