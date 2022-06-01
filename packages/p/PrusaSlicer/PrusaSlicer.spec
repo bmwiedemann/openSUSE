@@ -95,6 +95,9 @@ rm resources/udev/90-3dconnexion.rules
   export CXXFLAGS="$CFLAGS"
 %endif
 export CC=gcc-%gcc_ver CXX=g++-%gcc_ver
+# rh#2059646
+sed -i tests/libslic3r/CMakeLists.txt -e '\@test_voronoi.cpp@d'
+
 %cmake \
   -DSLIC3R_FHS=1 \
   -DSLIC3R_GTK=3 \
