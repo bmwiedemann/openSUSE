@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 30 11:30:58 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.2:
+  + Close broken link message dialog on response.
+  + Fix crash when opening new window from pathbar.
+  + Fix remote filesystem check.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Apr 25 08:43:58 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 42.1.1:
