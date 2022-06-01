@@ -1933,4 +1933,13 @@ Library portions are LGPL-2.1+ licensed (forwarded request 132611 from dimstar)<
     <comment>Tweak .changes, resub (forwarded request 978286 from iznogood)</comment>
     <requestid>978663</requestid>
   </revision>
+  <revision rev="226" vrev="2">
+    <srcmd5>122fe9095e5994312befbbc5a2a07d8f</srcmd5>
+    <version>1.2.5</version>
+    <time>1654097628</time>
+    <user>dimstar_suse</user>
+    <comment>- Add PackageKit-zypp-locked-packages.patch: zypp: ignore locked
+  packages(gh#hughsie/PackageKit#543, boo#1199895). (forwarded request 979408 from JonathanKang)</comment>
+    <requestid>980018</requestid>
+  </revision>
 </revisionlist>

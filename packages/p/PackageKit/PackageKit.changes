@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 26 07:25:04 UTC 2022 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-locked-packages.patch: zypp: ignore locked
+  packages(gh#hughsie/PackageKit#543, boo#1199895).
+
+-------------------------------------------------------------------
 Fri May 20 09:01:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.2.5:
