@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun 01 03:50:05 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 2022.05.30:
+  * fix overflow during tuple struct type inference
+  * minor: Freshen up goto feature docs
+  * typo: missing comma
+  * Fix typo
+  * fix: f32 and f64 representation during lowering
+  * internal: Remove `Interned` usage from nameres collector
+  * take into account excludeDirs when computing linked_projects
+  * add failing test
+
+-------------------------------------------------------------------
 Tue May 17 16:29:42 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 2022.05.17~0:
