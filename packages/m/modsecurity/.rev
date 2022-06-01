@@ -28,4 +28,12 @@
     <comment>add baselibs.conf to sources (forwarded request 823576 from mrostecki)</comment>
     <requestid>823577</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ade10bef215b58eb9f2439e9fe5773b3</srcmd5>
+    <version>3.0.6</version>
+    <time>1654097681</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>980136</requestid>
+  </revision>
 </revisionlist>

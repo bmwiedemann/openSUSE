@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Feb 25 12:15:57 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.0.6
+  * Security issue: Support configurable limit on depth of JSON
+    parsing, possible DoS issue. CVE-2021-42717
+- Update to version 3.0.5
+  * New: Having ARGS_NAMES, variables proxied
+  * Fix: FILES variable does not use multipart part name for key
+  * GeoIP: switch to GEOIP_MEMORY_CACHE from GEOIP_INDEX_CACHE
+  * Support configurable limit on number of arguments processed
+  * Adds support to lua 5.4
+  * Add support for new operator rxGlobal
+  * Fix: Replaces put with setenv in SetEnv action
+  * Fix: Regex key selection should not be case-sensitive
+  * Fix: Only delete Multipart tmp files after rules have run
+  * Fixed MatchedVar on chained rules
+  * Fix IP address logging in Section A
+  * Fix:  rx: exit after full match (remove /g emulation); ensure
+    capture groups occuring after unused groups still populate TX vars
+  * Fix rule-update-target for non-regex
+  * Fix Security Impacting Issues:
+    * Handle URI received with uri-fragment, CVE-2020-15598
+
+-------------------------------------------------------------------
 Wed Jul 22 10:39:48 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add baselibs, fix packaging (install into %_libdir)
