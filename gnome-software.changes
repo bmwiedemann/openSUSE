@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 30 14:59:55 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.2:
+  + Fix installing langpacks for certain locales.
+  + Improve UI presentation of flatpak apps with complex
+    permissions.
+  + Fix minor UI glitches on updates page.
+  + Fix installation of .deb packages with PackageKit ≥ 1.2.5.
+  + Fix the ‘Remove’ button for your own app reviews.
+  + Minor UI fixes when using a dark theme.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Apr 29 12:01:13 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
 
 - Updated to version 42.1:
