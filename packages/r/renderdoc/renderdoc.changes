@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May 31 09:32:33 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.20
+  * Views of buffers, either storage/raw buffers or constant buffers,
+    have been refactored and improved. 
+  * Most complex error messages (particularly those that reference some
+    error replaying or problem with the API like a fatal error) now
+    contain better explanations of what problem has happened.
+  * UI: Tweak behaviour around closing all captures on shutdown to be
+    more consistent.
+  * D3D12: Support the encoded color in obfuscated PIX-style markers.
+  * ARM: Update hardware counter library.
+  * Vulkan: Add support for some extensions:
+    - VK_KHR_pipeline_library
+    - VK_EXT_graphics_pipeline_library
+    - VK_QCOM_render_pass_store_ops
+    - VK_GOOGLE_surfaceless_query
+
+-------------------------------------------------------------------
 Sat Apr 16 13:02:39 UTC 2022 - Mark Nefedov <mark_nefedov@runbox.com>
 
 - Update to version 1.19
