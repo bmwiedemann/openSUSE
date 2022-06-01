@@ -1284,4 +1284,12 @@
     <comment>- Update to version 2.36.3 (forwarded request 979860 from mgorse)</comment>
     <requestid>980019</requestid>
   </revision>
+  <revision rev="147" vrev="2">
+    <srcmd5>427caac26106af3670fc0ee4be6f3417</srcmd5>
+    <version>2.36.3</version>
+    <time>1654099712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980385</requestid>
+  </revision>
 </revisionlist>
