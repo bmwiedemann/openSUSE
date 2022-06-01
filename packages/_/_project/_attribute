@@ -8,7 +8,7 @@
   boo#1176553: '20220311'
   boo#1183454: '20220531'
   boo#1189869: '20211207'
-  boo#1190434: '20220530'
+  boo#1190434: '20220531'
   boo#1190670: '20211128'
   boo#1190823: '20220409'
   boo#1191225: '20211210'
@@ -74,11 +74,11 @@
   boo#1198418: '20220518'
   boo#1199498: '20220512'
   boo#1199535: '20220516'
-  boo#1199881: '20220525'
+  boo#1199881: '20220531'
   boo#1199885: '20220531'
   boo#1199924: '20220526'
   boo#1199925: '20220531'
-  bsc#1161276: '20220530'
+  bsc#1161276: '20220531'
   bsc#1191684: '20220531'
   bsc#1194208: '20220216'
   bsc#1196925: '20220314'
@@ -142,16 +142,16 @@
   poo#109422: '20220421'
   poo#109611: '20220531'
   poo#109731: '20220414'
-  poo#109983: '20220530'
+  poo#109983: '20220531'
   poo#110049: '20220420'
-  poo#110211: '20220530'
-  poo#110473: '20220530'
+  poo#110211: '20220531'
+  poo#110473: '20220531'
   poo#110581: '20220530'
   poo#110740: '20220517'
   poo#110872: '20220517'
   poo#111036: '20220531'
   poo#111069: '20220530'
-  poo#111266: '20220530'
+  poo#111266: '20220531'
   poo#111416: '20220525'
   poo#111479: '20220531'
   poo#111485: '20220523'
@@ -208,7 +208,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20220531</value>
+    <value>20220601</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -515,8 +515,8 @@ set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
     <value>failed: ''
-published: '20220530'
-publishing: '20220530'
+published: '20220531'
+publishing: '20220531'
 testing: '20220531'
 </value>
   </attribute>
