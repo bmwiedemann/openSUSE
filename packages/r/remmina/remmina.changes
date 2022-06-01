@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  1 12:42:42 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Added 2734-flatpak-crash.patch to fix an issue reported on upstream:
+  #2580: "Closing RDP connection quits Remmina without an error message"
+
+-------------------------------------------------------------------
 Tue May 24 09:19:31 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not recommend lang package: the lang package has smarter

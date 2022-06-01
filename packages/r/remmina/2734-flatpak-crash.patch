@@ -1,0 +1,105 @@
+From 137a053c17119a2239c75b35ec2ce40d30d61b2b Mon Sep 17 00:00:00 2001
+From: "Antenore Gatta (tmow)" <antenore@simbiosi.org>
+Date: Thu, 19 May 2022 21:32:24 +0000
+Subject: [PATCH] Fix dangling pointer after scrolled_container destruction.
+
+---
+ CMakeLists.txt                         | 2 ++
+ flatpak/org.remmina.Remmina-local.json | 4 ++--
+ flatpak/org.remmina.Remmina.json       | 2 +-
+ flatpak/shared-modules                 | 2 +-
+ src/rcw.c                              | 4 +++-
+ src/remmina_scrolled_viewport.h        | 2 ++
+ 6 files changed, 11 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1989bad53..2d78df09a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -153,6 +153,8 @@ if(CMAKE_COMPILER_IS_GNUCC)
+ 
+   if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+     add_definitions(-DDEBUG)
++    set(CMAKE_CXX_FLAGS_DEBUG "-O0")
++    set(CMAKE_C_FLAGS_DEBUG "-O0")
+     check_c_compiler_flag(-Wunused-result Wunused-result)
+     if(Wunused-result)
+       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wunused-result")
+diff --git a/flatpak/org.remmina.Remmina-local.json b/flatpak/org.remmina.Remmina-local.json
+index 81d0704b5..6bf4a0aad 100644
+--- a/flatpak/org.remmina.Remmina-local.json
++++ b/flatpak/org.remmina.Remmina-local.json
+@@ -519,13 +519,13 @@
+                 "/share/applications/remmina-gnome.desktop"
+             ],
+             "config-opts": [
+-                "-DCMAKE_BUILD_TYPE:STRING=Release",
++                "-DCMAKE_BUILD_TYPE:STRING=Debug",
+                 "-DWITH_NEWS:BOOL=ON",
+                 "-DCMAKE_INSTALL_LIBDIR:PATH=lib",
+                 "-DWITH_FREERDP3:BOOL=OFF",
+                 "-DWITH_GVNC:BOOL=ON",
+                 "-DWITH_CUPS:BOOL=ON",
+-                "-DWITH_PYTHON:BOOL=ON",
++                "-DWITH_PYTHONLIBS:BOOL=ON",
+                 "-DWITH_MANPAGES:BOOL=OFF"
+             ],
+             "sources": [
+diff --git a/flatpak/org.remmina.Remmina.json b/flatpak/org.remmina.Remmina.json
+index f94c4421d..b67116ea6 100644
+--- a/flatpak/org.remmina.Remmina.json
++++ b/flatpak/org.remmina.Remmina.json
+@@ -525,7 +525,7 @@
+                 "-DWITH_FREERDP3:BOOL=OFF",
+                 "-DWITH_GVNC:BOOL=ON",
+                 "-DWITH_CUPS:BOOL=ON",
+-                "-DWITH_PYTHON:BOOL=ON",
++                "-DWITH_PYTHON_LIBS:BOOL=ON",
+                 "-DWITH_MANPAGES:BOOL=OFF"
+             ],
+             "sources": [
+diff --git a/src/rcw.c b/src/rcw.c
+index de87e0474..7e669fa6a 100644
+--- a/src/rcw.c
++++ b/src/rcw.c
+@@ -1268,6 +1268,7 @@ static void rcw_migrate(RemminaConnectionWindow *from, RemminaConnectionWindow *
+ 			frompage = gtk_notebook_get_nth_page(from_notebook, i);
+ 			cnnobj = g_object_get_data(G_OBJECT(frompage), "cnnobj");
+ 			cnnobj->scrolled_container = rco_create_scrolled_container(cnnobj, to->priv->view_mode);
++			g_signal_connect(G_OBJECT(cnnobj->scrolled_container), "destroy", gtk_widget_destroyed, (gpointer)&cnnobj->scrolled_container);
+ 			newpage = rcw_append_new_page(to, cnnobj);
+ 			nb_migrate_page_content(frompage, newpage);
+ 		}
+@@ -3411,7 +3412,7 @@ void rco_closewin(RemminaProtocolWidget *gp)
+ 		}
+ 	}
+ 	if (cnnobj) {
+-		if (REMMINA_IS_SCROLLED_VIEWPORT(cnnobj->scrolled_container)) {
++		if (cnnobj->scrolled_container && REMMINA_IS_SCROLLED_VIEWPORT(cnnobj->scrolled_container)) {
+ 			REMMINA_DEBUG("deleting motion");
+ 			remmina_scrolled_viewport_remove_motion(REMMINA_SCROLLED_VIEWPORT(cnnobj->scrolled_container));
+ 		}
+@@ -4483,6 +4484,7 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
+ 
+ 	/* Create the scrolled container */
+ 	cnnobj->scrolled_container = rco_create_scrolled_container(cnnobj, view_mode);
++	g_signal_connect(G_OBJECT(cnnobj->scrolled_container), "destroy", gtk_widget_destroyed, (gpointer)&cnnobj->scrolled_container);
+ 
+ 	gtk_container_add(GTK_CONTAINER(cnnobj->scrolled_container), cnnobj->viewport);
+ 
+diff --git a/src/remmina_scrolled_viewport.h b/src/remmina_scrolled_viewport.h
+index 370d53b4f..601e1e367 100644
+--- a/src/remmina_scrolled_viewport.h
++++ b/src/remmina_scrolled_viewport.h
+@@ -35,6 +35,8 @@
+ 
+ #pragma once
+ 
++#include <gtk/gtk.h>
++
+ G_BEGIN_DECLS
+ 
+ #define REMMINA_TYPE_SCROLLED_VIEWPORT \
+-- 
+GitLab
+
