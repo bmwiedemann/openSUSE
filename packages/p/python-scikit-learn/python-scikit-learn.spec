@@ -1,5 +1,5 @@
 #
-# spec file for package python-scikit-learn
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -18,9 +18,32 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test-py38"
+%define psuffix -test-py38
+%define skip_python39 1
+%define skip_python310 1
+%bcond_without test
+%endif
+%if "%{flavor}" == "test-py39"
+%define psuffix -test-py39
+%define skip_python38 1
+%define skip_python310 1
+%bcond_without test
+%endif
+%if "%{flavor}" == "test-py310"
+%define psuffix -test-py310
+%define skip_python38 1
+%define skip_python39 1
+%bcond_without test
+%endif
+%if "%{flavor}" == ""
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %bcond_with extratest
-Name:           python-scikit-learn
-Version:        1.0.2
+Name:           python-scikit-learn%{psuffix}
+Version:        1.1.1
 Release:        0
 Summary:        Python modules for machine learning and data mining
 License:        BSD-3-Clause
@@ -29,8 +52,8 @@ Source0:        https://files.pythonhosted.org/packages/source/s/scikit-learn/sc
 BuildRequires:  %{python_module Cython >= 0.28.5}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module joblib >= 0.11}
-BuildRequires:  %{python_module numpy-devel >= 1.14.6}
-BuildRequires:  %{python_module scipy >= 1.1.0}
+BuildRequires:  %{python_module numpy-devel >= 1.17.3}
+BuildRequires:  %{python_module scipy >= 1.3.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module threadpoolctl >= 2.0.0}
 BuildRequires:  %{python_module xml}
@@ -40,23 +63,26 @@ BuildRequires:  gcc-fortran
 BuildRequires:  openblas-devel
 BuildRequires:  python-rpm-macros
 Requires:       python-joblib >= 0.11
-Requires:       python-numpy >= 1.14.6
-Requires:       python-scipy >= 1.0.0
+Requires:       python-numpy >= 1.17.3
+Requires:       python-scipy >= 1.3.2
 Requires:       python-threadpoolctl >= 2.0.0
 Requires:       python-xml
-Provides:       python-sklearn
 Suggests:       python-matplotlib
 Suggests:       python-pandas
 Suggests:       python-seaborn
+Provides:       python-sklearn
 %if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
 Provides:       sklearn
 %endif
 # SECTION test requirements
+%if %{with test}
 BuildRequires:  %{python_module pytest >= 4.0}
+BuildRequires:  %{python_module scikit-learn}
 %if %{with extratest}
-BuildRequires:  %{python_module matplotlib >= 2.1.1}
+BuildRequires:  %{python_module matplotlib >= 3.1.2}
 BuildRequires:  %{python_module pandas >= 0.25.0}
 BuildRequires:  %{python_module scikit-image >= 0.13}
+%endif
 %endif
 # /SECTION
 %python_subpackages
@@ -71,12 +97,17 @@ scipy.
 rm -rf sklearn/.pytest_cache
 
 %build
+%if !%{with test}
 %python_build
+%endif
 
 %install
+%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+%endif
 
+%if %{with test}
 # Precision-related errors on non-x86 platforms
 %ifarch %{ix86} x86_64
 %check
@@ -97,14 +128,17 @@ NO_TESTS+=" or test_convergence_dtype_consistency"
 
 mkdir test_dir
 pushd test_dir
-%pytest_arch -p no:cacheprovider -v -k "not ($NO_TESTS)" %{buildroot}%{$python_sitearch}/sklearn
+%pytest_arch -p no:cacheprovider -v -k "not ($NO_TESTS)" %{$python_sitearch}/sklearn
 popd
 %endif
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %license COPYING
 %doc README.rst
 %{python_sitearch}/sklearn/
 %{python_sitearch}/scikit_learn-%{version}*-info
+%endif
 
 %changelog

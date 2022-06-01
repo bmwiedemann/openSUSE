@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue May 31 03:09:03 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile
+  * updated numpy, scipy, and matplotlib requirements
+
+- update to version 1.1.1:
+  * Enhancement The error message is improved when importing
+    model_selection.HalvingGridSearchCV,
+    model_selection.HalvingRandomSearchCV, or impute.IterativeImputer
+    without importing the experimental flag. #23194 by Thomas Fan.
+  * Enhancement Added an extension in doc/conf.py to automatically
+    generate the list of estimators that handle NaN values. #23198 by
+    Lise Kleiber, Zhehao Liu and Chiara Marmo.
+  * sklearn.datasets
+    + Fix Avoid timeouts in datasets.fetch_openml by not passing a
+      timeout argument, #23358 by Loïc Estève.
+  * sklearn.decomposition
+    + Fix Avoid spurious warning in decomposition.IncrementalPCA when
+      n_samples == n_components. #23264 by Lucy Liu.
+  * sklearn.feature_selection
+    + Fix The partial_fit method of feature_selection.SelectFromModel
+      now conducts validation for max_features and feature_names_in
+      parameters. #23299 by Long Bao.
+  * sklearn.metrics
+    + Fix Fixes metrics.precision_recall_curve to compute
+      precision-recall at 100% recall. The Precision-Recall curve now
+      displays the last point corresponding to a classifier that
+      always predicts the positive class: recall=100% and
+      precision=class balance. #23214 by Stéphane Collot and Max Baak.
+  * sklearn.preprocessing
+    + Fix preprocessing.PolynomialFeatures with degree equal to 0 will
+      raise error when include_bias is set to False, and outputs a
+      single constant array when include_bias is set to True. #23370
+      by Zhehao Liu.
+  * sklearn.tree
+    + Fix Fixes performance regression with low cardinality features
+      for tree.DecisionTreeClassifier, tree.DecisionTreeRegressor,
+      ensemble.RandomForestClassifier, ensemble.RandomForestRegressor,
+      ensemble.GradientBoostingClassifier, and
+      ensemble.GradientBoostingRegressor. #23410 by Loïc Estève.
+  * sklearn.utils
+    + Fix utils.class_weight.compute_sample_weight now works with
+      sparse y. #23115 by kernc.
+
+- changes from version 1.1.0:
+long changelog, see https://scikit-learn.org/stable/whats_new/v1.1.html#version-1-1-0
+
+-------------------------------------------------------------------
+Mon May 30 10:40:34 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Split up to using multibuild per Python version since the test suite
+  may take a while. 
+
+-------------------------------------------------------------------
 Wed Feb  2 02:07:05 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.0.2: 

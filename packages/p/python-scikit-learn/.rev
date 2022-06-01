@@ -524,4 +524,12 @@
   * Many others, see full changelog at https://scikit-learn.org/dev/whats_new/v1.0.html</comment>
     <requestid>950579</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>96384e725a4628c07911966d7c7cf653</srcmd5>
+    <version>1.1.1</version>
+    <time>1654097649</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980051</requestid>
+  </revision>
 </revisionlist>
