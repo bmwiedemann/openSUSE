@@ -1,7 +1,7 @@
 #
 # spec file for package python-alsa
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-alsa
-Version:        1.2.6
+Version:        1.2.7
 Release:        0
 Summary:        Python ALSA binding
-License:        LGPL-2.1-or-later AND GPL-2.0-only
+License:        GPL-2.0-only AND LGPL-2.1-or-later
 Group:          Development/Libraries/Python
 URL:            https://www.alsa-project.org
 Source:         %{url}/files/pub/pyalsa/pyalsa-%{version}.tar.bz2

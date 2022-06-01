@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun  1 06:03:41 UTC 2022 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 1.2.7:
+  * alsaseq: fix 'ext' buffer fill
+  * various python3 fixes 
+
+-------------------------------------------------------------------
 Mon Dec  6 15:17:53 CET 2021 - tiwai@suse.de
 
 - Update to version 1.2.6:
