@@ -1468,4 +1468,12 @@ Hence, recommended to be added to 12.3</comment>
     <comment>Scripted push from GNOME:Next (forwarded request 972577 from dimstar)</comment>
     <requestid>973134</requestid>
   </revision>
+  <revision rev="196" vrev="1">
+    <srcmd5>d7594860c34c0427e9b3739a30751c0e</srcmd5>
+    <version>42.2</version>
+    <time>1654097647</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42.2 (forwarded request 979902 from dimstar)</comment>
+    <requestid>980038</requestid>
+  </revision>
 </revisionlist>
