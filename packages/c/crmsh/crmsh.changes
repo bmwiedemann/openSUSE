@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 01 02:36:16 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.0+20220601.b8c2952f:
+  * Dev: ui_cluster: Update help for deprecated --no-overwrite-sshkey option
+
+-------------------------------------------------------------------
+Wed Jun 01 01:25:58 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.0+20220601.da41ffc3:
+  * Fix: utils: wait4dc: Make change since output of 'crmadmin -S' changed(bsc#1199412)
+  * Dev: unittest: Adjust unit test for previous changes
+  * Fix: bootstrap: stop and disable csync2.socket on removed node (bsc#1199325)
+
+-------------------------------------------------------------------
 Thu May 05 02:12:49 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.0+20220505.a3a00365:
