@@ -1206,4 +1206,12 @@ X-GNOME-DocPath=eog/eog.xml (forwarded request 128768 from dimstar)</comment>
     <comment>Scripted push from GNOME:Next (forwarded request 972567 from dimstar)</comment>
     <requestid>973156</requestid>
   </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>dd4e6841c0543c5f766b4404cdee349e</srcmd5>
+    <version>42.2</version>
+    <time>1654097630</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42.2 (forwarded request 979881 from dimstar)</comment>
+    <requestid>980020</requestid>
+  </revision>
 </revisionlist>
