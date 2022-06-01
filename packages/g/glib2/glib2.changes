@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 31 07:35:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.72.2:
+  + Bugs fixed: glgo#GNOME/GLib#2640, glgo#GNOME/GLib!2605,
+    glgo#GNOME/GLib!2616, glgo#GNOME/GLib!2629,
+    glgo#GNOME/GLib!2643, glgo#GNOME/GLib!2644,
+    glgo#GNOME/GLib!2662, glgo#GNOME/GLib!2691.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Apr 21 00:43:14 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
 
 - Update to version 2.72.2:
