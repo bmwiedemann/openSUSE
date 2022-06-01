@@ -729,4 +729,16 @@ require it nevertheless
     <comment></comment>
     <requestid>943050</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>ddf1b2d0d5e8c3fc26671d48db8997c5</srcmd5>
+    <version>4.34</version>
+    <time>1654097626</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.34
+  * add an API that returns a preferred loopback IP on hosts that
+    have two IP stacks available.
+
+  * fixes to build system and export of private symbols</comment>
+    <requestid>979935</requestid>
+  </revision>
 </revisionlist>

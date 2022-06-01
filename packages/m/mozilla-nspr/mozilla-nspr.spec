@@ -1,8 +1,8 @@
 #
 # spec file for package mozilla-nspr
 #
-# Copyright (c) 2021 SUSE LLC
-#               2006-2021 Wolfgang Rosenauer
+# Copyright (c) 2022 SUSE LLC
+#               2006-2022 Wolfgang Rosenauer
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define useccache     1
 
 Name:           mozilla-nspr
-Version:        4.33
+Version:        4.34
 Release:        0
 Summary:        Netscape Portable Runtime
 License:        MPL-2.0
