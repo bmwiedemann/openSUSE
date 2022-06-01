@@ -1114,4 +1114,12 @@
   &quot;is not installed&quot; error after install in WSL. (boo#1198312) (forwarded request 972227 from sbradnick)</comment>
     <requestid>972516</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>c102e63c13e3aa09b7a6972a238280cb</srcmd5>
+    <version>42.1</version>
+    <time>1654097634</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42.2 (forwarded request 979885 from dimstar)</comment>
+    <requestid>980023</requestid>
+  </revision>
 </revisionlist>
