@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 30 18:29:18 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 8.5.0
+  * over four years since the last release; a lot of changes
+    including support for Meson build
+
+-------------------------------------------------------------------
 Tue Feb 10 19:14:24 UTC 2022 - Behzad A <behzad.a_ir@hotmail.com>
 
 - added sub-packages as dependencies to the main package to

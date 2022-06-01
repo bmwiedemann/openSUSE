@@ -17,7 +17,7 @@
 
 
 Name:           Mesa-demo
-Version:        8.4.0
+Version:        8.5.0
 Release:        0
 Summary:        Mesa demo programs for the OpenGL stack
 License:        MIT
@@ -100,7 +100,7 @@ This package contains some common EGL-based demos.
 autoreconf -fi
 %configure --bindir=%{_libdir}/mesa-demos/bin \
            --enable-gles1 \
-           --enable-gles2
+           --enable-gles2 --enable-autotools
 make %{?_smp_mflags}
 
 %install

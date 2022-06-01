@@ -211,4 +211,14 @@ This avoids &quot;not owned by any package&quot; if only the &quot;-x&quot; subp
     <comment></comment>
     <requestid>955606</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>80b753736ca4d9bc4ca804b0e0fdd352</srcmd5>
+    <version>8.5.0</version>
+    <time>1654097625</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.5.0
+  * over four years since the last release; a lot of changes
+    including support for Meson build</comment>
+    <requestid>979931</requestid>
+  </revision>
 </revisionlist>
