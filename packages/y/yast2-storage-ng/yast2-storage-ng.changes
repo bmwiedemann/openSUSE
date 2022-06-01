@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 31 13:04:11 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Partitioner: Allow min chunk size of 4 KiB (page size) for RAID0 /
+  RAID10 (bsc#1200018)
+- 4.5.7
+
+-------------------------------------------------------------------
 Mon May 23 13:12:58 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Fixed failing unit test: Added translatable message for new
