@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 30 11:59:47 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.2:
+  + native-window-placement: Adjust to gnome-shell 42 changes.
+  + window-list: Fix visibility on non-primary monitors.
+
+-------------------------------------------------------------------
 Sun May  8 00:20:21 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
 
 - Update to version 42.1:
