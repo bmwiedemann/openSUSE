@@ -17,17 +17,17 @@
 
 
 Name:           SDL_bgi
-%define sover   7
+%define sover   8
 %define lname	libSDL_bgi-suse%sover
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        BGI-compatible 2D graphics C library with SDL backend
 License:        GPL-2.0-or-later AND Zlib
 Group:          Development/Libraries/X11
-URL:            http://libXbgi.sf.net/
+URL:            https://sdl-bgi.sourceforge.io/
 
-#Git-Web:       https://github.com/genpfault/sdl-bgi
-Source:         https://downloads.sf.net/libxbgi/%name-%version.tar.gz
+#Freshcode:     http://freshcode.club/projects/sdl_bgi
+Source:         https://downloads.sf.net/sdl-bgi/%name-%version.tar.gz
 Source9:        %name-rpmlintrc
 Patch1:         sdlbgi-cmake.diff
 BuildRequires:  cmake
@@ -50,7 +50,7 @@ SDL. It provides extensions for RGB colors and mouse support.
 %package -n libSDL_bgi-devel
 Summary:        Libraries, includes and more to develop SDL_bgi applications
 Group:          Development/Libraries/X11
-Requires:       %lname = %version
+Requires:       %lname = %version-%release
 Provides:       SDL_bgi-devel = %version-%release
 
 %description -n libSDL_bgi-devel

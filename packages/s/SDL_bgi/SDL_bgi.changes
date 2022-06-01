@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  1 10:32:40 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.6.0
+  * added getclick(), doubleclick(), extended mouseclick()
+
+-------------------------------------------------------------------
 Wed May  4 08:41:32 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated source url to https

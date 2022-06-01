@@ -2,28 +2,18 @@
 Add some library versioning.
 
 ---
- CMakeLists.txt |    6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ CMakeLists.txt |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-Index: SDL_bgi-2.4.1/CMakeLists.txt
+Index: SDL_bgi-2.6.0/CMakeLists.txt
 ===================================================================
---- SDL_bgi-2.4.1.orig/CMakeLists.txt
-+++ SDL_bgi-2.4.1/CMakeLists.txt
-@@ -21,9 +21,6 @@ include_directories (SDL_bgi ${SDL2_INCL
- # Default install directory variables
- include (GNUInstallDirs)
- 
--# fix stupid bug on Linux
--string (STRIP ${SDL2_LIBRARIES} SDL2_LIBRARIES)
--
- # Find source files
- file (GLOB SOURCES src/*.c)
- 
-@@ -32,8 +29,9 @@ include_directories (src)
+--- SDL_bgi-2.6.0.orig/CMakeLists.txt
++++ SDL_bgi-2.6.0/CMakeLists.txt
+@@ -32,8 +32,9 @@ include_directories (src)
  
  # Create shared library
  add_library (${PROJECT_NAME} SHARED ${SOURCES})
-+set_target_properties(${PROJECT_NAME} PROPERTIES SOVERSION suse7)
++set_target_properties(${PROJECT_NAME} PROPERTIES SOVERSION suse8)
  # fix provided by Austin Hurst
 -target_link_libraries (SDL_bgi ${SDL2_LIBRARIES})
 +target_link_libraries (SDL_bgi -lm ${SDL2_LIBRARIES})
