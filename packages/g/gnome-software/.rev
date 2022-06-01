@@ -861,4 +861,12 @@ cd - (forwarded request 199127 from Zaitor)</comment>
     <comment> (forwarded request 974418 from dimstar)</comment>
     <requestid>975076</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>fc109f7581140ce97c98b736314f0380</srcmd5>
+    <version>42.2</version>
+    <time>1654097640</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42.2 (forwarded request 979895 from dimstar)</comment>
+    <requestid>980033</requestid>
+  </revision>
 </revisionlist>
