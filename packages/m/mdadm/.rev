@@ -1396,4 +1396,13 @@ which haven't landed upstream yet
   * Add 0120-udev-md-raid-assembly.rules-skip-if-DM_UDEV_DISABLE_.patch</comment>
     <requestid>963102</requestid>
   </revision>
+  <revision rev="133" vrev="18">
+    <srcmd5>f6b09ca2668a90d05e728a9254048413</srcmd5>
+    <version>4.1</version>
+    <time>1654097626</time>
+    <user>dimstar_suse</user>
+    <comment>- resource RAID failed during cluster patch, Mdadm gets floating point error (bsc#1197158)
+  1004-mdadm-super1-restore-commit-45a87c2f31335-to-fix-clu.patch (forwarded request 979803 from hmzhao)</comment>
+    <requestid>979975</requestid>
+  </revision>
 </revisionlist>

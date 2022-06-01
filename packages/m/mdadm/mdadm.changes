@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 30 08:25:00 UTC 2022 - Heming Zhao <heming.zhao@suse.com>
+
+- resource RAID failed during cluster patch, Mdadm gets floating point error (bsc#1197158)
+  1004-mdadm-super1-restore-commit-45a87c2f31335-to-fix-clu.patch
+
+-------------------------------------------------------------------
 Fri Mar 18 22:48:41 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - skip RAID assembly if DM_UDEV_DISABLE_OTHER_RULES_FLAG (bsc#1196054)
