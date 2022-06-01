@@ -4209,4 +4209,37 @@ I cannot test locally unfortunately.
     to prototype pollution</comment>
     <requestid>978422</requestid>
   </revision>
+  <revision rev="281" vrev="1">
+    <srcmd5>01640132e951ad5fa44e8302e513fbce</srcmd5>
+    <version>91.10.0</version>
+    <time>1654097664</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 91.10.0
+  * Various UX and theme improvements
+  MFSA 2022-22 (bsc#1200027)
+  * CVE-2022-31736 (bmo#1735923)
+    Cross-Origin resource's length leaked
+  * CVE-2022-31737 (bmo#1743767)
+    Heap buffer overflow in WebGL
+  * CVE-2022-31738 (bmo#1756388)
+    Browser window spoof using fullscreen mode
+  * CVE-2022-31739 (bmo#1765049)
+    Attacker-influenced path traversal when saving downloaded
+    files
+  * CVE-2022-31740 (bmo#1766806)
+    Register allocation problem in WASM on arm64
+  * CVE-2022-31741 (bmo#1767590)
+    Uninitialized variable leads to invalid memory read
+  * CVE-2022-1834 (bmo#1767816)
+    Braille space character caused incorrect sender email to be
+    shown for a digitally signed email
+  * CVE-2022-31742 (bmo#1730434)
+    Querying a WebAuthn token with a large number of
+    allowCredential entries may have leaked cross-origin
+    information
+  * CVE-2022-31747 (bmo#1760765, bmo#1765610, bmo#1766283,
+    bmo#1767365, bmo#1768559, bmo#1768734)
+    Memory safety bugs fixed in Thunderbird 91.10</comment>
+    <requestid>980158</requestid>
+  </revision>
 </revisionlist>

@@ -1,8 +1,8 @@
 PRODUCT="thunderbird"
 CHANNEL="esr91"
-VERSION="91.9.1"
+VERSION="91.10.0"
 VERSION_SUFFIX=""
-PREV_VERSION="91.9.0"
+PREV_VERSION="91.9.1"
 PREV_VERSION_SUFFIX=""
 #SKIP_LOCALES="" # Uncomment to skip l10n and compare-locales-generation
 RELEASE_REPO="https://hg.mozilla.org/releases/comm-esr91"
