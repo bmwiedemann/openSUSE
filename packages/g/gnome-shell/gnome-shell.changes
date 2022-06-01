@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 30 11:37:42 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.2:
+  + Align space-padded times in world clocks.
+  + Fix top bar menus on lock screen.
+  + Fix on-screen keyboard gestures.
+  + Fix focus tracking in magnifier on wayland.
+  + Misc. bug fixes.
+
+-------------------------------------------------------------------
 Fri May  6 08:41:37 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
 
 - Update to version 42.1:
