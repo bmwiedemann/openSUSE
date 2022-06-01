@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 24 15:13:25 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * thttpd.service
+
+-------------------------------------------------------------------
 Thu May 14 08:42:14 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
 
 - Allow regular users to execute makeweb (bsc#1171580)
