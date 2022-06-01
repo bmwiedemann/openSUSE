@@ -56,7 +56,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-astropy%{psuffix}
-Version:        5.0.4
+Version:        5.1
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
@@ -90,6 +90,7 @@ Requires(postun):update-alternatives
 Recommends:     libxml2-tools
 Recommends:     python-Bottleneck
 Recommends:     python-asdf >= 2.9.2
+Recommends:     python-asdf-astropy
 Recommends:     python-beautifulsoup4
 Recommends:     python-bleach
 Recommends:     python-h5py
@@ -99,7 +100,7 @@ Recommends:     python-matplotlib >= 3.1
 Recommends:     python-mpmath
 Recommends:     python-pandas
 Recommends:     python-pyarrow >= 5
-Recommends:     python-scipy >= 1.1
+Recommends:     python-scipy >= 1.3
 Recommends:     python-setuptools
 Recommends:     python-sortedcontainers
 Recommends:     python-typing_extensions >= 3.10.0.1
@@ -117,7 +118,8 @@ BuildRequires:  pkgconfig(wcslib) >= 7
 %if %{with test}
 # SECTION Optional requirements
 BuildRequires:  %{python_module Bottleneck}
-BuildRequires:  %{python_module asdf >= 2.9.2}
+BuildRequires:  %{python_module asdf >= 2.10.0}
+BuildRequires:  %{python_module asdf-astropy}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module bleach}
 BuildRequires:  %{python_module h5py}
@@ -137,7 +139,8 @@ BuildRequires:  %{python_module astropy = %{version}}
 BuildRequires:  %{python_module ipython >= 4.2}
 BuildRequires:  %{python_module objgraph}
 BuildRequires:  %{python_module pytest >= 7}
-BuildRequires:  %{python_module pytest-astropy >= 0.9}
+BuildRequires:  %{python_module pytest-astropy >= 0.10}
+BuildRequires:  %{python_module pytest-astropy-header >= 0.2.1}
 BuildRequires:  %{python_module pytest-doctestplus >= 0.12}
 BuildRequires:  %{python_module pytest-mpl}
 BuildRequires:  %{python_module pytest-xdist}
@@ -158,6 +161,8 @@ managing them.
 %autosetup -p1 -n astropy-%{version}
 # avoid rpmlint zero-length error for empty module
 echo '# empty module' > astropy/samp/setup_package.py
+# Reverse gh#astropy/astropy#13205, patch MPL instead
+sed -i '/matplotlib/ s/,!=3.5.2//' setup.cfg
 
 # Make sure bundled libs are not used
 %if %{with system_cfitsio}
@@ -203,6 +208,8 @@ donttest="test_color_print3"
 donttest+=" or test_ignore_sigint"
 donttest+=" or (test_wcs and test_spectra)"
 donttest+=" or (test_standard_profile and test_main)"
+# segfaults on obs, but are okay when run on live system -- gh#astropy/astropy/13286
+donttest+=" or test_celprm or test_prjprm"
 %ifarch aarch64
 # doctest failure because of precision errors
   donttest+=" or bayesian_info_criterion_lsq"

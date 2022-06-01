@@ -1312,4 +1312,29 @@
 </comment>
     <requestid>972390</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>9e80eab4dd72cb63f1f81dd6170b4e9d</srcmd5>
+    <version>5.1</version>
+    <time>1654097688</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip two test categories segfaulting: gh#astropy/astropy#13286
+- Update to 5.1
+  * Astropy 5.1 is a major release that adds significant new
+    functionality since the 5.0 LTS release.
+  * In particular, this release includes:
+    - Updates to cosmology
+    - doppler_redshift() equivalency
+    - Specifying data types when reading ASCII tables
+    - Structured Columns
+    - New model fitters have been added
+    - Allow time conversions without predictive Earth rotation data
+      (IERS-A)
+    - Uncertainty classes can be transformed into each other
+    - Schechter1D Model
+  * In addition to these major changes, Astropy v5.1 includes a
+    large number of smaller improvements and bug fixes, which are
+    described in the Full Changelog.
+</comment>
+    <requestid>980183</requestid>
+  </revision>
 </revisionlist>

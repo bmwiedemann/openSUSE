@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue May 31 20:51:59 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Skip two test categories segfaulting: gh#astropy/astropy#13286
+
+-------------------------------------------------------------------
+Thu May 26 15:46:09 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.1
+  * Astropy 5.1 is a major release that adds significant new
+    functionality since the 5.0 LTS release.
+  * In particular, this release includes:
+    - Updates to cosmology
+    - doppler_redshift() equivalency
+    - Specifying data types when reading ASCII tables
+    - Structured Columns
+    - New model fitters have been added
+    - Allow time conversions without predictive Earth rotation data
+      (IERS-A)
+    - Uncertainty classes can be transformed into each other
+    - Schechter1D Model
+  * In addition to these major changes, Astropy v5.1 includes a
+    large number of smaller improvements and bug fixes, which are
+    described in the Full Changelog.
+
+-------------------------------------------------------------------
 Sat Apr 23 19:27:14 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Enable tests requiring Pytest 7
