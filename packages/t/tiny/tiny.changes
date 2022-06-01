@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jun  1 06:10:51 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Fix versioning format. 
+- Update to version 0.10.0+git13 (mostly dependency update and some fixes):
+  * Update dependencies (#386)
+  * Move to 2021 edition (#385)
+  * Fix clippy warnings (#383)
+  * Remove alias field in `Tab`, store visible name, remove `MsgSource::visible_name`
+  * Suppress some clippy warnings
+  * Document ERR_NICKNAMEINUSE handling in conn handler, remove a TODO
+  * Fix potential UB in `term_input::read_stdin`
+  * Bump dependencies
+  * Update messages in some of the tests to avoid confusion
+  * Bump deps
+  * Fix handling of CR, LR, tabs in IRC format parser
+  * Fix a few doc warnings
+  * Bump deps
+
+-------------------------------------------------------------------
+Wed Jun  1 00:01:28 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Automatic update of vendored dependencies
+- Fix some build errors
+
+-------------------------------------------------------------------
+Tue May 24 06:37:20 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Automatic update of vendored dependencies
+
+-------------------------------------------------------------------
 Tue Mar 15 06:48:25 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Initial spec for tiny (0.10.0)

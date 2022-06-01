@@ -1,11 +1,10 @@
 <services>
   <service mode="disabled" name="obs_scm">
     <param name="url">https://github.com/osa1/tiny</param>
-    <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
+    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <param name="revision">v0.10.0</param>
-    <param name="match-tag">*</param>
-    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)~0</param>
+    <param name="revision">52b1383b91f7a064c73d87a5bdac03f62af2b4e8</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">socvirnyl.estela@gmail.com</param>
