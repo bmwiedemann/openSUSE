@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May 24 20:28:24 UTC 2022 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 10.0.1
+  + Follow up fix to (bsc#1199722) allow the user a choice of 2.0 and v2.0 as
+    tpm versions on the command line
+
+-------------------------------------------------------------------
+Thu May 19 14:19:38 UTC 2022 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 10.0.0 (bsc#1199722)
+  + Add --tpm-support as command line option and tpm_support to the API
+    to register images that support NitroTPM
+  + API change for ec2deprecateimg. It is now possible to deprecate
+    an image without providing a successor image.
+
+-------------------------------------------------------------------
 Fri Dec 17 17:56:07 UTC 2021 - Sean Marlow <sean.marlow@suse.com>
 
 - Add rpm-macros to build requirements in spec.
