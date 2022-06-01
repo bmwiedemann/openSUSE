@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 31 08:13:24 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20220527:
+  * wireless-regdb: update regulatory rules for Bulgaria (BG) on 6GHz
+  * Regulatory update for 6 GHz operation in FI
+  * Regulatory update for 6 GHz operation in United States (US)
+  * Regulatory update for 6 GHz operation in Canada (CA)
+
+-------------------------------------------------------------------
 Tue Apr 19 07:41:29 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20220408:
