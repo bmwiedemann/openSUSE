@@ -1,7 +1,7 @@
 #
 # spec file for package pulseaudio
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,12 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
-%define drvver  15.0
+%define drvver  16.0
 %define soname  0
 %define _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d
 %define _bashcompletionsdir %{_datadir}/bash-completion/completions
 Name:           pulseaudio
-Version:        15.0
+Version:        16.0
 Release:        0
 Summary:        A Networked Sound Server
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -374,7 +374,7 @@ System user for PulseAudio
 %meson_install
 rm -rf \
 	"%{buildroot}%{_libdir}"/*.la \
-	"%{buildroot}%{_libdir}/pulse-%{drvver}/modules"/*.la \
+	"%{buildroot}%{_libdir}/pulseaudio/modules"/*.la \
 	"%{buildroot}%{_libdir}/pulseaudio"/*.la
 
 # configure --disable-static had no effect; delete manually.
@@ -480,82 +480,82 @@ exit 0
 %{_datadir}/pulseaudio/alsa-mixer
 %dir %{_libdir}/pulseaudio
 %{_libdir}/pulseaudio/libpulsecore-%{drvver}.so
-%dir %{_libdir}/pulse-%{drvver}/
-%dir %{_libdir}/pulse-%{drvver}/modules/
-%{_libdir}/pulse-%{drvver}/modules/libalsa-util.so
-%{_libdir}/pulse-%{drvver}/modules/libcli.so
-%{_libdir}/pulse-%{drvver}/modules/liboss-util.so
-%{_libdir}/pulse-%{drvver}/modules/libprotocol-cli.so
-%{_libdir}/pulse-%{drvver}/modules/libprotocol-http.so
-%{_libdir}/pulse-%{drvver}/modules/libprotocol-native.so
-%{_libdir}/pulse-%{drvver}/modules/libprotocol-simple.so
-%{_libdir}/pulse-%{drvver}/modules/librtp.so
-%{_libdir}/pulse-%{drvver}/modules/libwebrtc-util.so
-%{_libdir}/pulse-%{drvver}/modules/module-alsa-card.so
-%{_libdir}/pulse-%{drvver}/modules/module-alsa-sink.so
-%{_libdir}/pulse-%{drvver}/modules/module-alsa-source.so
-%{_libdir}/pulse-%{drvver}/modules/module-always-sink.so
-%{_libdir}/pulse-%{drvver}/modules/module-always-source.so
-%{_libdir}/pulse-%{drvver}/modules/module-allow-passthrough.so
-%{_libdir}/pulse-%{drvver}/modules/module-augment-properties.so
-%{_libdir}/pulse-%{drvver}/modules/module-card-restore.so
-%{_libdir}/pulse-%{drvver}/modules/module-cli.so
-%{_libdir}/pulse-%{drvver}/modules/module-cli-protocol-tcp.so
-%{_libdir}/pulse-%{drvver}/modules/module-cli-protocol-unix.so
-%{_libdir}/pulse-%{drvver}/modules/module-combine.so
-%{_libdir}/pulse-%{drvver}/modules/module-combine-sink.so
-%{_libdir}/pulse-%{drvver}/modules/module-console-kit.so
-%{_libdir}/pulse-%{drvver}/modules/module-dbus-protocol.so
-%{_libdir}/pulse-%{drvver}/modules/module-default-device-restore.so
-%{_libdir}/pulse-%{drvver}/modules/module-detect.so
-%{_libdir}/pulse-%{drvver}/modules/module-device-manager.so
-%{_libdir}/pulse-%{drvver}/modules/module-device-restore.so
-%{_libdir}/pulse-%{drvver}/modules/module-echo-cancel.so
-%{_libdir}/pulse-%{drvver}/modules/module-equalizer-sink.so
-%{_libdir}/pulse-%{drvver}/modules/module-filter-apply.so
-%{_libdir}/pulse-%{drvver}/modules/module-filter-heuristics.so
-%{_libdir}/pulse-%{drvver}/modules/module-http-protocol-tcp.so
-%{_libdir}/pulse-%{drvver}/modules/module-http-protocol-unix.so
-%{_libdir}/pulse-%{drvver}/modules/module-intended-roles.so
-%{_libdir}/pulse-%{drvver}/modules/module-ladspa-sink.so
-%{_libdir}/pulse-%{drvver}/modules/module-loopback.so
-%{_libdir}/pulse-%{drvver}/modules/module-match.so
-%{_libdir}/pulse-%{drvver}/modules/module-mmkbd-evdev.so
-%{_libdir}/pulse-%{drvver}/modules/module-native-protocol-fd.so
-%{_libdir}/pulse-%{drvver}/modules/module-native-protocol-tcp.so
-%{_libdir}/pulse-%{drvver}/modules/module-native-protocol-unix.so
-%{_libdir}/pulse-%{drvver}/modules/module-null-sink.so
-%{_libdir}/pulse-%{drvver}/modules/module-null-source.so
-%{_libdir}/pulse-%{drvver}/modules/module-oss.so
-%{_libdir}/pulse-%{drvver}/modules/module-pipe-sink.so
-%{_libdir}/pulse-%{drvver}/modules/module-pipe-source.so
-%{_libdir}/pulse-%{drvver}/modules/module-position-event-sounds.so
-%{_libdir}/pulse-%{drvver}/modules/module-remap-sink.so
-%{_libdir}/pulse-%{drvver}/modules/module-rescue-streams.so
-%{_libdir}/pulse-%{drvver}/modules/module-role-cork.so
-%{_libdir}/pulse-%{drvver}/modules/module-rtp-recv.so
-%{_libdir}/pulse-%{drvver}/modules/module-rtp-send.so
-%{_libdir}/pulse-%{drvver}/modules/module-rygel-media-server.so
-%{_libdir}/pulse-%{drvver}/modules/module-simple-protocol-tcp.so
-%{_libdir}/pulse-%{drvver}/modules/module-simple-protocol-unix.so
-%{_libdir}/pulse-%{drvver}/modules/module-sine.so
-%{_libdir}/pulse-%{drvver}/modules/module-sine-source.so
-%{_libdir}/pulse-%{drvver}/modules/module-stream-restore.so
-%{_libdir}/pulse-%{drvver}/modules/module-suspend-on-idle.so
-%{_libdir}/pulse-%{drvver}/modules/module-switch-on-connect.so
-%{_libdir}/pulse-%{drvver}/modules/module-switch-on-port-available.so
-%{_libdir}/pulse-%{drvver}/modules/module-systemd-login.so
-%{_libdir}/pulse-%{drvver}/modules/module-tunnel-sink.so
-%{_libdir}/pulse-%{drvver}/modules/module-tunnel-sink-new.so
-%{_libdir}/pulse-%{drvver}/modules/module-tunnel-source.so
-%{_libdir}/pulse-%{drvver}/modules/module-tunnel-source-new.so
-%{_libdir}/pulse-%{drvver}/modules/module-udev-detect.so
-%{_libdir}/pulse-%{drvver}/modules/module-virtual-sink.so
-%{_libdir}/pulse-%{drvver}/modules/module-virtual-source.so
-%{_libdir}/pulse-%{drvver}/modules/module-virtual-surround-sink.so
-%{_libdir}/pulse-%{drvver}/modules/module-volume-restore.so
-%{_libdir}/pulse-%{drvver}/modules/module-remap-source.so
-%{_libdir}/pulse-%{drvver}/modules/module-role-ducking.so
+%dir %{_libdir}/pulseaudio/
+%dir %{_libdir}/pulseaudio/modules/
+%{_libdir}/pulseaudio/modules/libalsa-util.so
+%{_libdir}/pulseaudio/modules/libcli.so
+%{_libdir}/pulseaudio/modules/liboss-util.so
+%{_libdir}/pulseaudio/modules/libprotocol-cli.so
+%{_libdir}/pulseaudio/modules/libprotocol-http.so
+%{_libdir}/pulseaudio/modules/libprotocol-native.so
+%{_libdir}/pulseaudio/modules/libprotocol-simple.so
+%{_libdir}/pulseaudio/modules/librtp.so
+%{_libdir}/pulseaudio/modules/libwebrtc-util.so
+%{_libdir}/pulseaudio/modules/module-alsa-card.so
+%{_libdir}/pulseaudio/modules/module-alsa-sink.so
+%{_libdir}/pulseaudio/modules/module-alsa-source.so
+%{_libdir}/pulseaudio/modules/module-always-sink.so
+%{_libdir}/pulseaudio/modules/module-always-source.so
+%{_libdir}/pulseaudio/modules/module-allow-passthrough.so
+%{_libdir}/pulseaudio/modules/module-augment-properties.so
+%{_libdir}/pulseaudio/modules/module-card-restore.so
+%{_libdir}/pulseaudio/modules/module-cli.so
+%{_libdir}/pulseaudio/modules/module-cli-protocol-tcp.so
+%{_libdir}/pulseaudio/modules/module-cli-protocol-unix.so
+%{_libdir}/pulseaudio/modules/module-combine.so
+%{_libdir}/pulseaudio/modules/module-combine-sink.so
+%{_libdir}/pulseaudio/modules/module-console-kit.so
+%{_libdir}/pulseaudio/modules/module-dbus-protocol.so
+%{_libdir}/pulseaudio/modules/module-default-device-restore.so
+%{_libdir}/pulseaudio/modules/module-detect.so
+%{_libdir}/pulseaudio/modules/module-device-manager.so
+%{_libdir}/pulseaudio/modules/module-device-restore.so
+%{_libdir}/pulseaudio/modules/module-echo-cancel.so
+%{_libdir}/pulseaudio/modules/module-equalizer-sink.so
+%{_libdir}/pulseaudio/modules/module-filter-apply.so
+%{_libdir}/pulseaudio/modules/module-filter-heuristics.so
+%{_libdir}/pulseaudio/modules/module-http-protocol-tcp.so
+%{_libdir}/pulseaudio/modules/module-http-protocol-unix.so
+%{_libdir}/pulseaudio/modules/module-intended-roles.so
+%{_libdir}/pulseaudio/modules/module-ladspa-sink.so
+%{_libdir}/pulseaudio/modules/module-loopback.so
+%{_libdir}/pulseaudio/modules/module-match.so
+%{_libdir}/pulseaudio/modules/module-mmkbd-evdev.so
+%{_libdir}/pulseaudio/modules/module-native-protocol-fd.so
+%{_libdir}/pulseaudio/modules/module-native-protocol-tcp.so
+%{_libdir}/pulseaudio/modules/module-native-protocol-unix.so
+%{_libdir}/pulseaudio/modules/module-null-sink.so
+%{_libdir}/pulseaudio/modules/module-null-source.so
+%{_libdir}/pulseaudio/modules/module-oss.so
+%{_libdir}/pulseaudio/modules/module-pipe-sink.so
+%{_libdir}/pulseaudio/modules/module-pipe-source.so
+%{_libdir}/pulseaudio/modules/module-position-event-sounds.so
+%{_libdir}/pulseaudio/modules/module-remap-sink.so
+%{_libdir}/pulseaudio/modules/module-rescue-streams.so
+%{_libdir}/pulseaudio/modules/module-role-cork.so
+%{_libdir}/pulseaudio/modules/module-rtp-recv.so
+%{_libdir}/pulseaudio/modules/module-rtp-send.so
+%{_libdir}/pulseaudio/modules/module-rygel-media-server.so
+%{_libdir}/pulseaudio/modules/module-simple-protocol-tcp.so
+%{_libdir}/pulseaudio/modules/module-simple-protocol-unix.so
+%{_libdir}/pulseaudio/modules/module-sine.so
+%{_libdir}/pulseaudio/modules/module-sine-source.so
+%{_libdir}/pulseaudio/modules/module-stream-restore.so
+%{_libdir}/pulseaudio/modules/module-suspend-on-idle.so
+%{_libdir}/pulseaudio/modules/module-switch-on-connect.so
+%{_libdir}/pulseaudio/modules/module-switch-on-port-available.so
+%{_libdir}/pulseaudio/modules/module-systemd-login.so
+%{_libdir}/pulseaudio/modules/module-tunnel-sink.so
+%{_libdir}/pulseaudio/modules/module-tunnel-sink-new.so
+%{_libdir}/pulseaudio/modules/module-tunnel-source.so
+%{_libdir}/pulseaudio/modules/module-tunnel-source-new.so
+%{_libdir}/pulseaudio/modules/module-udev-detect.so
+%{_libdir}/pulseaudio/modules/module-virtual-sink.so
+%{_libdir}/pulseaudio/modules/module-virtual-source.so
+%{_libdir}/pulseaudio/modules/module-virtual-surround-sink.so
+%{_libdir}/pulseaudio/modules/module-volume-restore.so
+%{_libdir}/pulseaudio/modules/module-remap-source.so
+%{_libdir}/pulseaudio/modules/module-role-ducking.so
 %{_udevrulesdir}/90-pulseaudio.rules
 %{_mandir}/man1/pulseaudio.1*
 %{_mandir}/man5/default.pa.5*
@@ -628,56 +628,56 @@ exit 0
 %{_datadir}/glib-2.0/schemas/org.freedesktop.pulseaudio.gschema.xml
 
 %files module-bluetooth
-%dir %{_libdir}/pulse-%{drvver}
-%dir %{_libdir}/pulse-%{drvver}/modules
-%{_libdir}/pulse-%{drvver}/modules/module-bluetooth-policy.so
-%{_libdir}/pulse-%{drvver}/modules/module-bluetooth-discover.so
-%{_libdir}/pulse-%{drvver}/modules/libbluez5-util.so
-%{_libdir}/pulse-%{drvver}/modules/module-bluez5-device.so
-%{_libdir}/pulse-%{drvver}/modules/module-bluez5-discover.so
+%dir %{_libdir}/pulseaudio
+%dir %{_libdir}/pulseaudio/modules
+%{_libdir}/pulseaudio/modules/module-bluetooth-policy.so
+%{_libdir}/pulseaudio/modules/module-bluetooth-discover.so
+%{_libdir}/pulseaudio/modules/libbluez5-util.so
+%{_libdir}/pulseaudio/modules/module-bluez5-device.so
+%{_libdir}/pulseaudio/modules/module-bluez5-discover.so
 
 %files module-gsettings
 %dir %{_libexecdir}/pulse
-%dir %{_libdir}/pulse-%{drvver}
-%dir %{_libdir}/pulse-%{drvver}/modules
-%{_libdir}/pulse-%{drvver}/modules/module-gsettings.so
+%dir %{_libdir}/pulseaudio
+%dir %{_libdir}/pulseaudio/modules
+%{_libdir}/pulseaudio/modules/module-gsettings.so
 %{_libexecdir}/pulse/gsettings-helper
 %dir %{_datadir}/GConf
 %dir %{_datadir}/GConf/gsettings
 %{_datadir}/GConf/gsettings/pulseaudio.convert
 
 %files module-lirc
-%dir %{_libdir}/pulse-%{drvver}
-%dir %{_libdir}/pulse-%{drvver}/modules
-%{_libdir}/pulse-%{drvver}/modules/module-lirc.so
+%dir %{_libdir}/pulseaudio
+%dir %{_libdir}/pulseaudio/modules
+%{_libdir}/pulseaudio/modules/module-lirc.so
 
 %files module-jack
-%dir %{_libdir}/pulse-%{drvver}
-%dir %{_libdir}/pulse-%{drvver}/modules
-%{_libdir}/pulse-%{drvver}/modules/module-jack-sink.so
-%{_libdir}/pulse-%{drvver}/modules/module-jack-source.so
-%{_libdir}/pulse-%{drvver}/modules/module-jackdbus-detect.so
+%dir %{_libdir}/pulseaudio
+%dir %{_libdir}/pulseaudio/modules
+%{_libdir}/pulseaudio/modules/module-jack-sink.so
+%{_libdir}/pulseaudio/modules/module-jack-source.so
+%{_libdir}/pulseaudio/modules/module-jackdbus-detect.so
 
 %files module-x11
-%dir %{_libdir}/pulse-%{drvver}
-%dir %{_libdir}/pulse-%{drvver}/modules
+%dir %{_libdir}/pulseaudio
+%dir %{_libdir}/pulseaudio/modules
 %{_sysconfdir}/xdg/autostart/pulseaudio.desktop
 %{_bindir}/start-pulseaudio-x11
-%{_libdir}/pulse-%{drvver}/modules/module-x11-bell.so
-%{_libdir}/pulse-%{drvver}/modules/module-x11-cork-request.so
-%{_libdir}/pulse-%{drvver}/modules/module-x11-publish.so
-%{_libdir}/pulse-%{drvver}/modules/module-x11-xsmp.so
+%{_libdir}/pulseaudio/modules/module-x11-bell.so
+%{_libdir}/pulseaudio/modules/module-x11-cork-request.so
+%{_libdir}/pulseaudio/modules/module-x11-publish.so
+%{_libdir}/pulseaudio/modules/module-x11-xsmp.so
 %{_mandir}/man1/start-pulseaudio-x11.1*
 
 %files module-zeroconf
-%dir %{_libdir}/pulse-%{drvver}
-%dir %{_libdir}/pulse-%{drvver}/modules
-%{_libdir}/pulse-%{drvver}/modules/libavahi-wrap.so
-%{_libdir}/pulse-%{drvver}/modules/libraop.so
-%{_libdir}/pulse-%{drvver}/modules/module-raop-discover.so
-%{_libdir}/pulse-%{drvver}/modules/module-raop-sink.so
-%{_libdir}/pulse-%{drvver}/modules/module-zeroconf-discover.so
-%{_libdir}/pulse-%{drvver}/modules/module-zeroconf-publish.so
+%dir %{_libdir}/pulseaudio
+%dir %{_libdir}/pulseaudio/modules
+%{_libdir}/pulseaudio/modules/libavahi-wrap.so
+%{_libdir}/pulseaudio/modules/libraop.so
+%{_libdir}/pulseaudio/modules/module-raop-discover.so
+%{_libdir}/pulseaudio/modules/module-raop-sink.so
+%{_libdir}/pulseaudio/modules/module-zeroconf-discover.so
+%{_libdir}/pulseaudio/modules/module-zeroconf-publish.so
 
 %files utils
 %{_bindir}/pa-info
