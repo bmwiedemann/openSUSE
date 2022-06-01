@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 30 11:35:40 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.2:
+  + Don't use direct scanout for transparent windows.
+  + Fix initialization of privacy mode in displays that support it.
+  + Fix --replace again.
+  + Improve picking a window for direct scanout.
+  + Do not allow windows to steal focus when the shell has a grab.
+  + Fix night light without GAMMA_LUT property.
+  + Fixed crash.
+  + Misc. bug fixes.
+
+-------------------------------------------------------------------
 Fri May 13 08:22:15 UTC 2022 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add mutter-crash-meta_context_terminate.patch: Fix SIGSEGV in
