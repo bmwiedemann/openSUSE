@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May 31 09:15:36 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.5.16:
+  + fix preserve_job_files default settings.
+  + add debugprint covering failed fingerprint retrieval attempts.
+  + Make sure that applet.py is running one instance per user.
+  + fix incorrect use of urllib.request.
+  + remove python3-requests.
+  + build: Migrate build system from Intltool to Gettext.
+  + udev-configure-printer.c: Fix possible use after frees and
+    leaks.
+  + scp-dbus-service.py: Fix typo in method call.
+  + add option to disable xmlto manual generation.
+  + allow + in device uris - gutenprint has a backend with +.
+- Drop python3-requests requires: no longer needed, following
+  upstream changes.
+- Rebase system-config-printer-no-openprinting.patch.
+
+-------------------------------------------------------------------
 Mon Jan 10 07:29:17 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
 
 - Add python-rpm-macros BuildRequires in case some build

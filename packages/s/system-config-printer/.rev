@@ -807,4 +807,12 @@
   macros like %{python3_sitelib}. (forwarded request 945230 from yfjiang)</comment>
     <requestid>945293</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>557be848ef4ae498c9a399e493f3c98a</srcmd5>
+    <version>1.5.16</version>
+    <time>1654097656</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.5.16 (forwarded request 980064 from dimstar)</comment>
+    <requestid>980074</requestid>
+  </revision>
 </revisionlist>

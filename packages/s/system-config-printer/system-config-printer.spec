@@ -19,7 +19,7 @@
 %define _icontheme adwaita
 %define _iconlocation Adwaita
 Name:           system-config-printer
-Version:        1.5.15
+Version:        1.5.16
 Release:        0
 Summary:        A printer administration tool
 License:        GPL-2.0-or-later
@@ -59,7 +59,6 @@ BuildRequires:  pkgconfig(udev)
 Requires:       %{name}-common = %{version}
 Requires:       python3-cups
 Requires:       python3-pycurl
-Requires:       python3-requests
 # The applet is not strictly necessary, but it really makes sense
 Recommends:     %{name}-applet
 Obsoletes:      gnome-cups-manager <= 0.33
