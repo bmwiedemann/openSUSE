@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 31 17:38:23 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1654018695.5972f50:
+  * Use combined operators
+  * Pass -x and -y as array arguments
+  * Make xres and yres class variables
+  * Add XRES and YRES docs to correct places
+  * Address code review comments
+  * Move docs to correct section
+  * Allow videoencoder to use custom resolution
+
+-------------------------------------------------------------------
 Sun May 22 18:00:21 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1653078548.548335f:
