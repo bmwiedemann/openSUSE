@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun 01 12:26:32 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 4.0.0:
+  * Bump version to v4.0.0
+  * Add missing Cargo metadata
+  * Use custom citation rendering instead of citeproc-rs (#629)
+  * Remove reference to im crate
+  * Add command line flag to print version
+  * Fix deployment workflow
+  * Bump crossbeam-utils from 0.8.6 to 0.8.8
+  * Remove Clippy CI job
+  * Bump unindent from 0.1.8 to 0.1.9 (#626)
+  * Bump log from 0.4.16 to 0.4.17 (#624)
+
+-------------------------------------------------------------------
 Sat Mar 12 04:20:39 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Initial working spec of texlab (3.3.2)
