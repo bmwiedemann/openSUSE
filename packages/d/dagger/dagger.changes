@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Jun 01 11:12:11 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.13:
+  * website: make code in hyperlinks visible
+  * Fix outputs2 marshal error
+  * Remove Ginkgo suite for version
+  * Do not use the Cloud logger if there are no credentials
+  * Print requests too
+  * Use runId instead of run_id
+  * Print events, json & responses
+  * Send log events async using TelemetryLite
+  * Send outputs when run finishes
+  * Add a more details to all events (logs) sent to the cloud
+  * Timeout all API requests after 10 seconds
+  * Extract engine ID functionality
+  * Send all logs to API if logged in
+  * Start implementing events stream to the API
+  * feat: add docker.#Scratch image
+  * build(deps): bump github.com/spf13/viper from 1.11.0 to 1.12.0 (#2520)
+  * Simplify version tests
+  * Use only Sprintf, don't combine with string concatenation
+  * Convert version tests to use stretchr/testify
+  * core.#Nop: fix output to be properly generated
+  * Clarify how to safely export binary data in docs.
+  * telemetry: event type system
+  * Use version Short() or Long() across the codebase
+  * docs: Explain how to use `core.#Source` (#2525)
+  * fix(docker.#Image): correctly verify files (#2524)
+  * doc: clean up wording + removed install instructions
+  * doc: split install steps to standalone page
+  * Enable debug logs for the default buildkitd-worker.
+  * chore: remove todoapp test
+  * Docs: getting started: use new todoapp repo
+  * chore: remove examples from universe
+  * ci: Split Experimental tests from Universe tests
+  * build(deps): bump amplitude-js from 8.18.2 to 8.18.3 in /website
+  * ci: port TESTDIR= feature for universe tests
+  * ci: use normal binary for universe and docs integration tests
+  * ci: moving universe and docs integration tests to the dagger CI plan
+  * build(deps): bump sass from 1.51.0 to 1.52.1 in /website
+  * build(deps-dev): bump cypress from 9.6.1 to 9.7.0 in /website
+
+-------------------------------------------------------------------
 Mon May 30 14:31:50 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.2.12:
