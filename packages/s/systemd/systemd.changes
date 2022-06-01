@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 31 13:26:38 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Import commit 4dbc543953eabd4c578da67ce6e2970d6f96c406 (merge of v250.6)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/0d950479e58dd3af007eb3780d600a5446aac519...4dbc543953eabd4c578da67ce6e2970d6f96c406
+
+-------------------------------------------------------------------
 Fri May 13 08:55:55 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update rpmlintrc for shlib-policy-name-error/multibuild case.

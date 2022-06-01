@@ -6027,4 +6027,14 @@ handle manual pages that consist only of a .so directive such as
     <comment>- Update rpmlintrc for shlib-policy-name-error/multibuild case.</comment>
     <requestid>979799</requestid>
   </revision>
+  <revision rev="360" vrev="1">
+    <srcmd5>f7fe6487d08ed6c1f39763ebdef419eb</srcmd5>
+    <version>250.6</version>
+    <time>1654097658</time>
+    <user>dimstar_suse</user>
+    <comment>- Import commit 4dbc543953eabd4c578da67ce6e2970d6f96c406 (merge of v250.6)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/0d950479e58dd3af007eb3780d600a5446aac519...4dbc543953eabd4c578da67ce6e2970d6f96c406</comment>
+    <requestid>980104</requestid>
+  </revision>
 </revisionlist>
