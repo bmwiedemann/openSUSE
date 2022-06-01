@@ -526,4 +526,12 @@
     <comment>Remove k3s flavour</comment>
     <requestid>979835</requestid>
   </revision>
+  <revision rev="55" vrev="55">
+    <srcmd5>2f8773839cd11ed83ab8374881a9bf4c</srcmd5>
+    <version>16.0.0</version>
+    <time>1654097674</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop building Kubic and k3s flavours</comment>
+    <requestid>980301</requestid>
+  </revision>
 </revisionlist>
