@@ -505,4 +505,12 @@ mostly-working synapse than nothing at all) and the package has been update to
     <comment></comment>
     <requestid>978220</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>6a639338f8443050c00eecdd5cf67535</srcmd5>
+    <version>1.60.0</version>
+    <time>1654097678</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.60.0</comment>
+    <requestid>980134</requestid>
+  </revision>
 </revisionlist>
