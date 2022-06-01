@@ -282,4 +282,21 @@ Look at the license file in the sources (forwarded request 143986 from babelworx
 - Switch to _service</comment>
     <requestid>931033</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>fbe300f527e8f4772afe07e296378b68</srcmd5>
+    <version>5.19</version>
+    <time>1654097653</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.19:
+  * bump version to 5.19
+  * info: refactor extended features
+  * info: add missing extended features
+  * update nl80211.h
+  * iw: handle VHT extended NSS
+  * iw: fix 'upto' -&gt; 'up to'
+  * iw: fix double tab in mesh path header
+  * station: print EHT rate information
+  * iw: Print local EHT capabilities</comment>
+    <requestid>980062</requestid>
+  </revision>
 </revisionlist>

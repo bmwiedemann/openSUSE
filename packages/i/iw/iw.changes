@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 31 08:34:22 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 5.19:
+  * bump version to 5.19
+  * info: refactor extended features
+  * info: add missing extended features
+  * update nl80211.h
+  * iw: handle VHT extended NSS
+  * iw: fix 'upto' -> 'up to'
+  * iw: fix double tab in mesh path header
+  * station: print EHT rate information
+  * iw: Print local EHT capabilities
+
+-------------------------------------------------------------------
 Fri Nov 12 08:27:00 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 5.16:
