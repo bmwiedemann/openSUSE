@@ -6,7 +6,7 @@
     <value>last_seen:
   boo#1172073: '20220516'
   boo#1176553: '20220311'
-  boo#1183454: '20220530'
+  boo#1183454: '20220531'
   boo#1189869: '20211207'
   boo#1190434: '20220530'
   boo#1190670: '20211128'
@@ -65,7 +65,7 @@
   boo#1197521: '20220403'
   boo#1197638: '20220404'
   boo#1197704: '20220517'
-  boo#1197719: '20220530'
+  boo#1197719: '20220531'
   boo#1197931: '20220412'
   boo#1198150: '20220421'
   boo#1198169: '20220413'
@@ -75,11 +75,11 @@
   boo#1199498: '20220512'
   boo#1199535: '20220516'
   boo#1199881: '20220525'
-  boo#1199885: '20220530'
+  boo#1199885: '20220531'
   boo#1199924: '20220526'
-  boo#1199925: '20220530'
+  boo#1199925: '20220531'
   bsc#1161276: '20220530'
-  bsc#1191684: '20220530'
+  bsc#1191684: '20220531'
   bsc#1194208: '20220216'
   bsc#1196925: '20220314'
   bsc#1198235: '20220503'
@@ -140,7 +140,7 @@
   poo#108902: '20220523'
   poo#108905: '20220329'
   poo#109422: '20220421'
-  poo#109611: '20220530'
+  poo#109611: '20220531'
   poo#109731: '20220414'
   poo#109983: '20220530'
   poo#110049: '20220420'
@@ -149,15 +149,15 @@
   poo#110581: '20220530'
   poo#110740: '20220517'
   poo#110872: '20220517'
-  poo#111036: '20220530'
+  poo#111036: '20220531'
   poo#111069: '20220530'
   poo#111266: '20220530'
   poo#111416: '20220525'
-  poo#111479: '20220530'
+  poo#111479: '20220531'
   poo#111485: '20220523'
   poo#111551: '20220528'
   poo#111596: '20220525'
-  poo#111599: '20220530'
+  poo#111599: '20220531'
   poo#63397: '20220422'
   poo#80628: '20220323'
   poo#91383: '20220111'
@@ -455,20 +455,6 @@ products:
     - x86_64
   - openSUSE-MicroOS:DigitalOcean-Cloud:
     - x86_64
-  - openSUSE-MicroOS:k3s-DigitalOcean-Cloud:
-    - x86_64
-  - openSUSE-MicroOS:k3s-MS-HyperV:
-    - x86_64
-  - openSUSE-MicroOS:k3s-OpenStack-Cloud:
-    - x86_64
-  - openSUSE-MicroOS:k3s-SelfInstall:
-    - x86_64
-  - openSUSE-MicroOS:k3s-VMware:
-    - x86_64
-  - openSUSE-MicroOS:k3s-Vagrant:
-    - x86_64
-  - openSUSE-MicroOS:k3s-kvm-and-xen:
-    - x86_64
   - openSUSE-MicroOS:kvm-and-xen:
     - x86_64
   - openSUSE-MicroOS:MS-HyperV:
@@ -531,7 +517,7 @@ set_snapshot_number: True</value>
     <value>failed: ''
 published: '20220530'
 publishing: '20220530'
-testing: '20220530'
+testing: '20220531'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
