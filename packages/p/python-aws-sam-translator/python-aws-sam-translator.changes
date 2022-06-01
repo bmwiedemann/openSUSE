@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Thu May  5 11:19:33 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.45.0
+  * Feat FURL by @jonife @valerena in #2370
+  * Feat /tmp config by @slowpokesnail in #2362
+  * Fix no allowed origin by @c2tarun in #2180
+  * Raise InvalidEventException when RestApiId/ApiId is not resolved to a string by @aahung in #2213
+  * Raise a validation exception if the responses section in an openApi definition path is not a dictionary object by @moelasmar in #2214
+  * chore: Add auto PR labeler by @jfuss in #2219
+  * Fix DestinationConfig in streaming event sources by @hawflau in #2215
+  * fix: handle non-dict DefinitionBody path item in _openapi_postprocess by @torresxb1 in #2216
+  * Run unit tests in parallel by @aahung in #2222
+  * Handle when HttpApi resource doesn't have properties by @aahung in #2221
+  * Chore: Only add labels on open of PRs by @jfuss in #2225
+  * feat: Lambda URLs by @mndeveci in #2231
+  * Revert "feat: Lambda URLs (#2229)" by @mndeveci in #2233
+  * Handle when function http event auth is not a string by @aahung in #2234
+  * chore: bump version to 1.42.0 by @mndeveci in #2235
+  * Revert "chore: bump version to 1.42.0" by @CoshUS in #2237
+  * release: 1.42.0 by @mndeveci in #2243
+  * fix: open api set_path_default_authorizer by @mndeveci in #2248
+  * Validate swagger path item objects by @aahung in #2251
+  * Validate swagger method value is a valid dict before processing by @aahung in #2250
+  * fix: fix validation errors log message that calls join on a string by @torresxb1 in #2245
+  * [FOSS] hot fix and improvement by @mingkun2020 in #2207
+  * fix: Check type of resource type is a string by @mildaniel in #2252
+  * fix: open api set_path_default_authorizer (#2248) by @mndeveci in #2262
+  * fix: open api set_path_default_authorizer (#2248) by @mndeveci in #2261
+  * Do not abort SAR loop on throttling by @marekaiv in #2240
+  * Improve error message for an invalid ResourcePolicy element by @marekaiv in #2271
+  * Fixing DisableExecuteApiEndpoint property for REST and adding integ t… by @sattigar in #2272
+  * fix: Py27hash fix by @torresxb1 in #2182
+  * chore: bump version to 1.43.0 by @hawflau in #2276
+  * Update integ test expected result to incorporate py27hashfix changes by @hawflau in #2286
+  * [minor docs] Updates examples link to current non-archived repo by @Phuurl in #2277
+  * fix: Raise exception if provided Auth.Authorizers.Identity isn't a dict by @mildaniel in #2273
+  * fix: Correct CognitoUserPool SmsConfiguration validation type by @lafiosca in #1582
+  * fix: accept empty components property in Open Api Definition by @moelasmar in #2296
+  * Corrected gitpod link to open this repo instead of aws-sam-cli by @JiteshKanojia in #2170
+  * docs: updating EventBridgeRule documentation by @TheWesDias in #2236
+  * Update INTEGRATION_TESTS.md by @hawflau in #2300
+  * Clean up Py2 dependencies and update to use native unittest.mock by @hawflau in #2299
+  * Add security policy by @tylersouthwick in #1937
+  * fix: Add handling for OpenApi definition that has tags with invalid format by @qingchm in #2295
+  * Remove six as dependency by @hawflau in #2302
+  * Fix all warnings in tests by @hawflau in #2303
+  * fix: Raise Invalid Resource When DisableExecuteApiEndpoint: False And Has No DefinitionBody by @CoshUS in #2285
+  * handle 'Invalid Swagger Document' and refactor some validation into Swagger Editor constructor by @torresxb1 in #2263
+  * Update PR template to add integration tests in checklist by @hawflau in #2306
+  * Conditionally adding metadata to translated resources by @andrew-glenn in #2224
+  * Improve exception processing for Route53 with invalid type by @wchengru in #2284
+  * fix: Check S3 Lambda Configuration Type is a List by @mildaniel in #2310
+  * tests: add test for DefaultAuthorizers not a string in API by @jfuss in #2313
+  * fix: ValueError is not caught by int() by @wchengru in #2305
+  * fix: Add Checks for Authorizer Types in API Event Sources by @mildaniel in #2307
+  * Add method for determining service availability in a region by @marekaiv in #2321
+  * chore: Enable pylint on project by @jfuss in #2326
+  * update validation for dead letter queue by @jonife in #2324
+  * fix: fix paths IF intrinsic bug by @torresxb1 in #2330
+  * Py27dict deepcopy performance by @marekaiv in #2331
+  * Update function_with_custom_code_deploy integration test case by @hawflau in #2320
+  * fix: Update tag count check for apigw v2 resources by @mildaniel in #2333
+  * chore: Remove duplicated Docs by @jfuss in #2334
+  * validate Lambda Authorizer property identity by @jonife in #2322
+  * chore: update setup.cfg key to use underscore by @mgorny in #2051
+  * test: Add retries on flaky integration test by @mildaniel in #2343
+  * fix: remove py3.6 support and add py3.9 and py3.10 by @mndeveci in #2311
+  * Revert "chore: bump version to 1.43.0" by @hawflau in #2345
+  * Revert "handle 'Invalid Swagger Document' and refactor some validatio… by @torresxb1 in #2346
+  * chore: Version bump to 1.43.0 by @hawflau in #2347
+  * Release/v1.43.0 by @mildaniel in #2358
+- fix build
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Tue Mar 15 08:48:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use python_expand for fdupes 
