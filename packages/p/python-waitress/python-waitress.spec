@@ -16,24 +16,21 @@
 #
 
 
-%if 0%{?suse_version} > 1500
-%bcond_without libalternatives
-%else
-%bcond_with libalternatives
-%endif
-
 %global flavor @BUILD_FLAVOR@%{nil}
-
 %if "%{flavor}" == "doc"
 %define psuffix -doc
 %endif
 %if "%{flavor}" == ""
 %define psuffix %{nil}
 %endif
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 Name:           python-waitress%{psuffix}
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        Waitress WSGI server
 License:        ZPL-2.1
@@ -46,13 +43,14 @@ Source1:        python3.inv
 Source2:        fetch-intersphinx-inventories.sh
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
+BuildArch:      noarch
 %if "%{flavor}" == ""
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 %if %{with libalternatives}
-Requires:       alts
 BuildRequires:  alts
+Requires:       alts
 %else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -65,7 +63,6 @@ BuildRequires:  python3-pylons-sphinx-themes
 BuildRequires:  python3-waitress = %{version}
 Recommends:     python3-waitress = %{version}
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %if "%{flavor}" == ""
@@ -106,7 +103,9 @@ http://docs.pylonsproject.org/projects/waitress/en/latest/ .
 %license LICENSE.txt
 %doc COPYRIGHT.txt README.rst
 %python_alternative %{_bindir}/waitress-serve
-%{python_sitelib}/*
+%dir %{python_sitelib}/waitress
+%{python_sitelib}/waitress/*
+%{python_sitelib}/waitress-%{version}-py*.egg-info
 
 %else
 

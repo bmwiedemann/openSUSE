@@ -251,4 +251,12 @@
     https://github.com/Pylons/waitress/security/advisories/GHSA-4f7p-27jc-3c36</comment>
     <requestid>962909</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4765284ee2e2b1d29407503c9a81d19d</srcmd5>
+    <version>2.1.2</version>
+    <time>1654097650</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980052</requestid>
+  </revision>
 </revisionlist>
