@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 30 11:43:24 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.44.2:
+  + Miscellaneous:
+    - build: Limit which parts link to the evolution libraries.
+    - EWS registry backend: Handle gracefully when Host URL is not
+      set.
+  + Updated translations.
+- Drop evolution-ews-fix-gtk-linkage.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Fri Apr 29 20:06:32 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Add evolution-ews-fix-gtk-linkage.patch: fix for gnome-contacts

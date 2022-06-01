@@ -1046,4 +1046,18 @@
   being unable to launch. (forwarded request 973986 from mgorse)</comment>
     <requestid>974343</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>148312961c7b66d78ed1253537cd6e89</srcmd5>
+    <version>3.44.2</version>
+    <time>1654097648</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.44.2:
+  + Miscellaneous:
+    - build: Limit which parts link to the evolution libraries.
+    - EWS registry backend: Handle gracefully when Host URL is not
+      set.
+  + Updated translations.
+- Drop evolution-ews-fix-gtk-linkage.patch: fixed upstream. (forwarded request 980012 from dimstar)</comment>
+    <requestid>980039</requestid>
+  </revision>
 </revisionlist>
