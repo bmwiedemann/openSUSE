@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jun  1 06:12:16 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Fix versioning format
+- Update to version 20220408.101518.b908e2dd+git299:
+  * background: respect alpha in background images
+  * background: use the actual sprite width
+  * fmt
+  * background: implement attachment scrolling and parallax!
+  * background: refactor where we trigger background painting
+  * background: implement scaling and repeating options
+  * render multiple backgrounds with alpha
+  * notionally allow multiple background image layers
+  * build(deps): bump crazy-max/ghaction-github-pages from 2 to 3
+  * Use clap::derive::Parser::parse() to fix deprecated warning
+
+-------------------------------------------------------------------
 Sat May 21 04:07:29 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 20220408.101518.b908e2dd~232:
