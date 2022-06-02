@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>34b975c1f16a8cf92ca6d4b0457c45eb</srcmd5>
+    <version>1.48.1</version>
+    <time>1654199642</time>
+    <user>dimstar_suse</user>
+    <comment>guestfs-tools is a new package split out from libguestfs with its own source tarball.</comment>
+    <requestid>979362</requestid>
+  </revision>
+</revisionlist>
