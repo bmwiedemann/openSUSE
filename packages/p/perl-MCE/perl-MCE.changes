@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 25 03:06:24 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.879
+   see /usr/share/doc/packages/perl-MCE/Changes
+
+  1.879 Tue May 24 05:00:00 EST 2022
+
+    * Replace http with https in documentation and meta files.
+    * Call PDL::set_autopthread_targ(1); disables PDL auto-threading.
+
+-------------------------------------------------------------------
 Mon Feb 21 03:08:20 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.878
