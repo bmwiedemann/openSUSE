@@ -597,4 +597,19 @@
     * wasapi: fix resume after pause</comment>
     <requestid>965775</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>3c5347dcc5b90db19b6e543510eda656</srcmd5>
+    <version>0.23.7</version>
+    <time>1654199648</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.23.7
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.7/NEWS
+  * decoder:
+    * ffmpeg: fix HLS seeking
+    * opus: fix missing song length on high-latency files
+  * mixer:
+    * pipewire: fix volume restore
+    * software: update volume of disabled outputs</comment>
+    <requestid>980373</requestid>
+  </revision>
 </revisionlist>

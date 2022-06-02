@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun  1 14:58:09 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to 0.23.7
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.7/NEWS
+  * decoder:
+    * ffmpeg: fix HLS seeking
+    * opus: fix missing song length on high-latency files
+  * mixer:
+    * pipewire: fix volume restore
+    * software: update volume of disabled outputs
+
+-------------------------------------------------------------------
 Tue Mar 29 21:26:09 UTC 2022 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 0.23.6
@@ -33,7 +45,7 @@ Thu Dec  2 18:29:33 UTC 2021 - Mia Herkt <mia@0x0.st>
   * GCC 12 build fixes
 
 -------------------------------------------------------------------
-Fri Nov 12 23:12:23 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+Fri Nov 12 23:12:23 UTC 2021 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 0.23.4
   * Changed file mpd-user.conf​ (disabled pid_file).
@@ -49,7 +61,7 @@ Fri Nov 12 23:12:23 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
     * ignore the "pid_file" setting if started as systemd service
 
 -------------------------------------------------------------------
-Sat Nov  6 02:02:33 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+Sat Nov  6 02:02:33 UTC 2021 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 0.23.3
   * Add patch mpd-service.patch.
@@ -106,7 +118,7 @@ Sat Nov  6 02:02:33 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
       and "Location"
 
 -------------------------------------------------------------------
-Wed Sep  1 07:24:21 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+Wed Sep  1 07:24:21 UTC 2021 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 0.22.11
   * https://github.com/MusicPlayerDaemon/MPD/blob/v0.22.11/NEWS
@@ -117,7 +129,7 @@ Wed Sep  1 07:24:21 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
     * support double-precision samples (by converting to single precision)
 
 -------------------------------------------------------------------
-Tue Aug 17 07:55:08 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+Tue Aug 17 07:55:08 UTC 2021 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 0.22.10
   * https://github.com/MusicPlayerDaemon/MPD/blob/v0.22.10/NEWS
@@ -138,7 +150,7 @@ Tue Aug 17 07:55:08 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
   * mixer: alsa: fix yet more rounding errors.
 
 -------------------------------------------------------------------
-Sun Jun 27 11:12:37 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+Sun Jun 27 11:12:37 UTC 2021 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 0.22.9
   * https://github.com/MusicPlayerDaemon/MPD/blob/v0.22.9/NEWS
@@ -156,7 +168,7 @@ Sun May 30 15:39:04 UTC 2021 - Fabian Niepelt <fniepelt@takios.de>
   * fix crash bug in "albumart" command (0.22.7 regression) 
 
 -------------------------------------------------------------------
-Fri May 21 06:04:21 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+Fri May 21 06:04:21 UTC 2021 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 0.22.7
   * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.22.7/NEWS
@@ -188,7 +200,7 @@ Fri Feb 19 23:49:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
   - pulse: fix deadlock with "always_on"
 
 -------------------------------------------------------------------
-Sat Jan 23 11:49:19 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+Sat Jan 23 11:49:19 UTC 2021 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 0.22.4
   * refresh mpd-conf.patch
@@ -203,7 +215,7 @@ Sat Jan 23 11:49:19 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
   * output: moveoutput: fix always_on and tag lost on move
 
 -------------------------------------------------------------------
-Mon Nov  9 06:24:26 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Mon Nov  9 06:24:26 UTC 2020 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 0.22.3
   * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.22.3/NEWS
@@ -216,7 +228,7 @@ Mon Nov  9 06:24:26 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
     * ffmpeg: support sample formats other than 16 bit
 
 -------------------------------------------------------------------
-Wed Oct 28 22:04:23 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Wed Oct 28 22:04:23 UTC 2020 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 0.22.2
   * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.22.2/NEWS
@@ -239,7 +251,7 @@ Wed Oct 28 22:04:23 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
     * save on shutdown
 
 -------------------------------------------------------------------
-Wed Sep 30 01:36:05 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Wed Sep 30 01:36:05 UTC 2020 - Илья Индиго <ilya@ilya.cf>
 
 - Refresh spec-file via spec-cleaner and manual optimizations
   * Removed unnecessary constructions and comments.
@@ -356,7 +368,7 @@ Tue Jul  7 06:32:18 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
     * upnp: fix crash during shutdown
 
 -------------------------------------------------------------------
-Mon Jun 22 10:33:14 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Mon Jun 22 10:33:14 UTC 2020 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 0.21.24
   * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.21.24/NEWS
@@ -370,7 +382,7 @@ Mon Jun 22 10:33:14 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
   * fix unit test failure
 
 -------------------------------------------------------------------
-Sat Apr 25 18:01:18 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Sat Apr 25 18:01:18 UTC 2020 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 0.21.23
   * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.21.23/NEWS
@@ -386,7 +398,7 @@ Sat Apr 25 18:01:18 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
   * player: drain: outputs at end of song in "single" mode
 
 -------------------------------------------------------------------
-Sat Apr  4 22:04:54 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Sat Apr  4 22:04:54 UTC 2020 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 0.21.22
   * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.21.22/NEWS
@@ -397,7 +409,7 @@ Sat Apr  4 22:04:54 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
   * fix build failures with uClibc-ng
 
 -------------------------------------------------------------------
-Fri Mar 27 15:53:58 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Fri Mar 27 15:53:58 UTC 2020 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 0.21.21
   * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.21.21/NEWS
@@ -409,7 +421,7 @@ Fri Mar 27 15:53:58 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
   * raise default "max_connections" value to 100
 
 -------------------------------------------------------------------
-Thu Feb 27 06:59:18 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Thu Feb 27 06:59:18 UTC 2020 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 0.21.20
   * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.21.20/NEWS
@@ -420,7 +432,7 @@ Thu Feb 27 06:59:18 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
   * fix backwards seeking on ARM (and other non-x86 CPUs)
 
 -------------------------------------------------------------------
-Mon Jan 20 07:42:18 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Mon Jan 20 07:42:18 UTC 2020 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 0.21.19
   * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.21.19/NEWS
@@ -432,7 +444,7 @@ Mon Jan 20 07:42:18 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
   * fix build failure with Android NDK r20
 
 -------------------------------------------------------------------
-Sat Dec 28 10:42:29 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
+Sat Dec 28 10:42:29 UTC 2019 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 0.21.18
   * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.21.18/NEWS
@@ -446,7 +458,7 @@ Sat Dec 28 10:42:29 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
   * reduce unnecessary CPU wakeups
 
 -------------------------------------------------------------------
-Wed Dec 18 15:55:55 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
+Wed Dec 18 15:55:55 UTC 2019 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 0.21.17
   * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.21.17/NEWS
@@ -461,7 +473,7 @@ Wed Dec 18 15:55:55 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
   * fix build failure with -Ddatabase=false
 
 -------------------------------------------------------------------
-Wed Oct 16 11:36:22 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
+Wed Oct 16 11:36:22 UTC 2019 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 0.21.16
   * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.21.16/NEWS
@@ -476,7 +488,7 @@ Wed Oct 16 11:36:22 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
     * fix crash when music_directory is not a directory
 
 -------------------------------------------------------------------
-Tue Oct  8 08:02:09 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
+Tue Oct  8 08:02:09 UTC 2019 - Илья Индиго <ilya@ilya.cf>
 
 - Refresh spec-file via spec-cleaner and manual optimizations
   * specified the correct license GPL-2.0-or-later
@@ -520,7 +532,7 @@ Tue Oct  8 08:02:09 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
     * include command name in error responses 
 
 -------------------------------------------------------------------
-Tue Jul 23 07:42:13 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
+Tue Jul 23 07:42:13 UTC 2019 - Илья Индиго <ilya@ilya.cf>
 
 - Remove patch GCC9-buildfix.patch (upsteamed)
 
