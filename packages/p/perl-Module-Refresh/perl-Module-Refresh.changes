@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 18 03:09:35 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.18
+   see /usr/share/doc/packages/perl-Module-Refresh/Changes
+
+  0.18 Tue May 10 03:33:29 CST 2022
+
+   * Fix uninitialized warnings when modules were not successfully loaded
+
+-------------------------------------------------------------------
 Tue Oct  3 08:58:39 UTC 2017 - coolo@suse.com
 
 - remove old_test_more.patch - no longer supporting sle11
