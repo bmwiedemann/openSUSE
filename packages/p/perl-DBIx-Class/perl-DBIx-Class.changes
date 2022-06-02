@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 18 03:06:27 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.082843
+   see /usr/share/doc/packages/perl-DBIx-Class/Changes
+
+  0.082843 2022-05-17 10:50 (UTC)
+      * Fixes
+          - Adjust tests to account for DBD::SQLite's column_info() no longer
+            being case-preserving in recent versions
+          - Fix t/storage/replicated.t relying on no-longer-available module
+          - Adjust t/53lean_startup.t to work around spurious changes in
+            Perl5 core (GH#143)
+
+-------------------------------------------------------------------
 Wed Jun 17 03:10:01 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.082842
