@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  2 12:17:22 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove now unrequired mock BuildRequires. 
+
+-------------------------------------------------------------------
 Thu Apr 14 11:00:24 UTC 2022 - pgajdos@suse.com
 
 - do not require python-mock for build

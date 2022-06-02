@@ -32,7 +32,6 @@ BuildRequires:  python-rpm-macros
 Recommends:     python-pylint
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module mock >= 1.0.1}
 BuildRequires:  %{python_module pylint}
 BuildRequires:  %{python_module pytest >= 2.6.1}
 BuildRequires:  %{python_module pytest-cov >= 2.2.1}
