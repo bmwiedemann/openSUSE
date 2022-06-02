@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu May 19 03:07:43 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.23
+   see /usr/share/doc/packages/perl-XS-Parse-Keyword/Changes
+
+  0.23    2022-05-18
+          [CHANGES]
+           * Defined XPK_KEYWORD, a better version of XPK_LITERAL for
+             keyword-like tokens
+           * Defined XPK_ARITHEXPR, a higher-precedence version of XPK_TERMEXPR
+           * Defined XPK_ARGSCOPE, a variant of XPK_PARENSCOPE where the parens
+             themselves are optional
+           * Undocument the old XPK_STRING token type
+
+          [BUGFIXES]
+           * Fixes for bugs that affect -DDEBUGGING-enabled perls
+              + Remember to clear OPf_KIDS when stealing the op_first of a
+                LISTOP (RT142770)
+              + Don't call cv_clone() at compiletime when unit testing; generate
+                an OP_ANONCODE instead (RT142771)
+
+-------------------------------------------------------------------
 Tue Feb 22 03:08:54 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.22
