@@ -420,4 +420,36 @@
 - Add Source URL (forwarded request 971704 from wolfi323)</comment>
     <requestid>971710</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>81ac568179526715258ed9928b248245</srcmd5>
+    <version>0.7.4</version>
+    <time>1654199679</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream release 0.7.4
+- New features and improvements
+  * Support &quot;step into&quot; and &quot;finish current&quot; modes in the R debugger window
+  * When directly upgrading from very old versions (pre 0.6.3, currently), discard existing config settings
+  * Plugin maps with the same id are grouped together, and the most recent version is used, automatically
+  * Added functionality to install add-on packages directly from git (formerly available as external plugin rk.gitInstall)
+  * Add option to show ANOVA table for linear regression
+  * Add default preview() function is available to plugins, reducing the code needed to add preview functionality
+  * Add preview functionality to most existing plugins that did not have it, yet
+  * Better placement of messages in non-plot preview windows
+  * Package installation uses inline widget to provide progress feedback, instead of separate dialogs
+  * Package installation no longer uses an external process, unless required for root permissions
+  * (Re-)added improved &quot;Import Assistant&quot; to help getting started with importing data
+  * &quot;Paste special&quot; can now also paste data.frames with labels, and is available in the Workspace Browser context menu
+  * Add &quot;rio&quot;-based generic import plugin
+  * Allow separate analysis by grouping factors in Analysis-&gt;Descriptive Statistics
+  * Rework help start page to serve as a dashboard for common tasks, replacing the old startup dialog
+- Bug fixes
+  * Fixed: Disabling a element in plugins would not make the sub-elements non-required
+  * Fixed some problems with cancelling running commands
+  * Fixed: Package installation as root would fail to find kdesu/kdesudo on recent systems
+  * Fixed: R help pages would refuse to open in new tab
+  * Fixed: Windows: Issues with some shiny apps due to a too small stack size
+  * Fixed: Installation from dialog would fail for R packages requiring the rkward package
+  * Fix quirks around &quot;Save as&quot; for rkward output documents (forwarded request 980498 from wolfi323)</comment>
+    <requestid>980499</requestid>
+  </revision>
 </revisionlist>

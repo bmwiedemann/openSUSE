@@ -28,7 +28,7 @@
 %bcond_with qtwebengine
 %endif
 Name:           rkward
-Version:        0.7.3
+Version:        0.7.4
 Release:        0
 Summary:        Graphical frontend for R language
 Summary(fr):    Interface graphique pour le langage R
@@ -136,6 +136,8 @@ intégration dans les suites bureautiques.
 %dir %{_kf5_sharedir}/katepart5/syntax
 %{_kf5_sharedir}/katepart5/syntax/rkward.xml
 %endif
+%{_kf5_sharedir}/mime/packages/vnd.kde.rkward-output.xml
+%{_kf5_sharedir}/mime/packages/vnd.kde.rmarkdown.xml
 %{_kf5_sharedir}/mime/packages/vnd.rkward.r.xml
 
 # language files

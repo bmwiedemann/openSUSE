@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jun  2 09:22:28 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to upstream release 0.7.4
+
+- New features and improvements
+  * Support "step into" and "finish current" modes in the R debugger window
+  * When directly upgrading from very old versions (pre 0.6.3, currently), discard existing config settings
+  * Plugin maps with the same id are grouped together, and the most recent version is used, automatically
+  * Added functionality to install add-on packages directly from git (formerly available as external plugin rk.gitInstall)
+  * Add option to show ANOVA table for linear regression
+  * Add default preview() function is available to plugins, reducing the code needed to add preview functionality
+  * Add preview functionality to most existing plugins that did not have it, yet
+  * Better placement of messages in non-plot preview windows
+  * Package installation uses inline widget to provide progress feedback, instead of separate dialogs
+  * Package installation no longer uses an external process, unless required for root permissions
+  * (Re-)added improved "Import Assistant" to help getting started with importing data
+  * "Paste special" can now also paste data.frames with labels, and is available in the Workspace Browser context menu
+  * Add "rio"-based generic import plugin
+  * Allow separate analysis by grouping factors in Analysis->Descriptive Statistics
+  * Rework help start page to serve as a dashboard for common tasks, replacing the old startup dialog
+
+- Bug fixes
+  * Fixed: Disabling a element in plugins would not make the sub-elements non-required
+  * Fixed some problems with cancelling running commands
+  * Fixed: Package installation as root would fail to find kdesu/kdesudo on recent systems
+  * Fixed: R help pages would refuse to open in new tab
+  * Fixed: Windows: Issues with some shiny apps due to a too small stack size
+  * Fixed: Installation from dialog would fail for R packages requiring the rkward package
+  * Fix quirks around "Save as" for rkward output documents
+
+-------------------------------------------------------------------
 Tue Apr 19 16:19:13 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to upstream release 0.7.3
