@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 01 11:28:24 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 9.3.2:
+  * [v9] Fix broken version check in tbot's `tshwrap` (#13034) (#13037)
+  * Updated Upcoming Relapses (05/26).
+  * skip no credential providers error (#12984)
+  * [v9] Fix CA rotation docs inconsistently providing `--type` flag (#12929)
+  * [v9] Deflake TestLockWatcherStale (#12981)
+- skipping 9.3.1 release that does not exist
+
+-------------------------------------------------------------------
 Mon May 30 14:39:12 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 9.3.0:
