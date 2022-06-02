@@ -32,4 +32,14 @@
     <comment></comment>
     <requestid>903304</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5a7959b5697456c4f8f81321607957a5</srcmd5>
+    <version>20220121</version>
+    <time>1654199654</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220121
+  * Unspecified changes to volume unlocking.
+</comment>
+    <requestid>980396</requestid>
+  </revision>
 </revisionlist>

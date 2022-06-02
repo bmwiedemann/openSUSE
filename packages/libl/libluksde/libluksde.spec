@@ -1,7 +1,7 @@
 #
 # spec file for package libluksde
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,36 +18,41 @@
 
 %define lname	libluksde1
 Name:           libluksde
-Version:        20210419
+Version:        20220121
 Release:        0
 Summary:        Library and tools to access LUKS Disk Encryption encrypted files
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libluksde
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/libyal/libluksde/releases/download/%version/libluksde-experimental-%version.tar.gz
+Source2:        https://github.com/libyal/libluksde/releases/download/%version/libluksde-experimental-%version.tar.gz.asc
+Source9:        %name.keyring
 Patch1:         system-libs.patch
+BuildRequires:  %python_module devel
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libbfio) >= 20201229
-BuildRequires:  pkgconfig(libcaes) >= 20201012
-BuildRequires:  pkgconfig(libcdata) >= 20200509
-BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  python-rpm-macros
+BuildRequires:  pkgconfig(libbfio) >= 20220120
+BuildRequires:  pkgconfig(libcaes) >= 20210522
+BuildRequires:  pkgconfig(libcdata) >= 20220115
+BuildRequires:  pkgconfig(libcerror) >= 20220101
 BuildRequires:  pkgconfig(libcfile) >= 20201229
-BuildRequires:  pkgconfig(libclocale) >= 20200913
-BuildRequires:  pkgconfig(libcnotify) >= 20200913
-BuildRequires:  pkgconfig(libcpath) >= 20200623
-BuildRequires:  pkgconfig(libcsplit) >= 20200703
-BuildRequires:  pkgconfig(libcthreads) >= 20200508
-BuildRequires:  pkgconfig(libfcache) >= 20200708
+BuildRequires:  pkgconfig(libclocale) >= 20220107
+BuildRequires:  pkgconfig(libcnotify) >= 20220108
+BuildRequires:  pkgconfig(libcpath) >= 20220108
+BuildRequires:  pkgconfig(libcsplit) >= 20220109
+BuildRequires:  pkgconfig(libcthreads) >= 20220102
+BuildRequires:  pkgconfig(libfcache) >= 20220110
 BuildRequires:  pkgconfig(libfcrypto) >= 20200104
-BuildRequires:  pkgconfig(libfdata) >= 20201129
-BuildRequires:  pkgconfig(libfdatetime) >= 20180910
-BuildRequires:  pkgconfig(libfguid) >= 20180724
+BuildRequires:  pkgconfig(libfdata) >= 20211023
+BuildRequires:  pkgconfig(libfdatetime) >= 20220112
+BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libhmac) >= 20200104
-BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(libuna) >= 20220102
 BuildRequires:  pkgconfig(python3)
+%python_subpackages
 
 %description
 Library and tools to access the New Technology File System (NTFS).
@@ -82,24 +87,22 @@ Requires:       %{lname} = %{version}
 This subpackage contains libraries and header files for developing
 applications that want to make use of %{name}.
 
-%package -n python3-%{name}
-Summary:        Python 3 bindings for libluksde
-License:        LGPL-3.0-or-later
-Group:          Development/Languages/Python
-
-%description -n python3-%{name}
-Python 3 binding for libluksde, which can access the NTFS filesystem.
-
 %prep
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
-%configure --disable-static --enable-wide-character-type --enable-python3
+autoreconf -fi
+# OOT builds are presently broken, so we have to install
+# within each python iteration now, not in %%install.
+%{python_expand #
+%configure --disable-static --enable-wide-character-type --enable-python PYTHON_VERSION="%{$python_bin_suffix}"
 %make_build
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
+mv %_builddir/rt/* %buildroot/
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %{lname} -p /sbin/ldconfig
@@ -109,20 +112,20 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING*
 %{_libdir}/libluksde.so.*
 
-%files tools
+%files -n %name-tools
 %{_bindir}/luksde*
 %{_mandir}/man1/luksdeinfo.1*
 %{_mandir}/man1/luksdemount.1*
 
-%files devel
+%files -n %name-devel
 %{_includedir}/libluksde.h
 %{_includedir}/libluksde/
 %{_libdir}/libluksde.so
 %{_libdir}/pkgconfig/libluksde.pc
 %{_mandir}/man3/libluksde.3*
 
-%files -n python3-%{name}
+%files %python_files
 %license COPYING*
-%{python3_sitearch}/pyluksde.so
+%{python_sitearch}/pyluksde.so
 
 %changelog
