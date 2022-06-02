@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 31 22:49:01 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+-update to 20220219 
+  * No changelog was provided.
+
+-update source to refer to github which is where dtfabric is developed
+
+-remove tests-improved.patch 
+  * incorporated into upstream, no longer needed/applies
+
+-------------------------------------------------------------------
 Fri Jul 30 10:02:51 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add tests-improved.patch gh#libyal/dtfabric#25

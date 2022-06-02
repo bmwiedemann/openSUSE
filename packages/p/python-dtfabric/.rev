@@ -23,4 +23,17 @@
     <comment></comment>
     <requestid>909384</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e3890d46e83d2fe429f5b80bf0fdd30f</srcmd5>
+    <version>20220219</version>
+    <time>1654199650</time>
+    <user>dimstar_suse</user>
+    <comment>-update to 20220219 
+  * No changelog was provided.
+-update source to refer to github which is where dtfabric is developed
+-remove tests-improved.patch 
+  * incorporated into upstream, no longer needed/applies
+</comment>
+    <requestid>980384</requestid>
+  </revision>
 </revisionlist>

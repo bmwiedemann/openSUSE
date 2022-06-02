@@ -1,7 +1,7 @@
 #
 # spec file for package python-dtfabric
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,20 +20,18 @@
 %define modname dtfabric
 %define skip_python2 1
 Name:           python-dtfabric
-Version:        20200621
+Version:        20220219
 Release:        0
 Summary:        Data type fabric (dtfabric)
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/libyal/dtfabric
-Source:         https://files.pythonhosted.org/packages/source/d/%{modname}/%{modname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM tests-improved.patch gh#libyal/dtfabric#25 mcepl@suse.com
-# tests improved and hope more BigEndian safe
-Patch0:         tests-improved.patch
+Source:         https://github.com/libyal/dtfabric/releases/download/%{version}/dtfabric-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python38
 BuildArch:      noarch
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -43,7 +41,7 @@ Requires(postun):update-alternatives
 dtFabric, or data type fabric, is a project to manage data types and structures, as used in the libyal projects.
 
 %prep
-%autosetup -p1 -n %{modname}-%{version}
+%setup -q -n %{modname}-%{version}
 
 %build
 %python_build
