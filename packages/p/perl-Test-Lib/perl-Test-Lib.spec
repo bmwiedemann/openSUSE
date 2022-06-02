@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Lib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %define cpan_name Test-Lib
 Name:           perl-Test-Lib
-Version:        0.002
+Version:        0.003
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Use libraries from a t/lib directory
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/H/HA/HAARG/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -53,5 +54,6 @@ make test
 
 %files -f %{name}.files
 %doc Changes README
+%license LICENSE
 
 %changelog
