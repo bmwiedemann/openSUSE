@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %major.99
-%define major          100
-%define mainver        %major.0.2
-%define orig_version   100.0.2
+%define major          101
+%define mainver        %major.0
+%define orig_version   101.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -103,7 +103,7 @@ BuildRequires:  rust >= 1.57
 # Newer sle/leap/tw use parallel versioned rust releases which have
 # a different method for provides that we can use to request a
 # specific version
-BuildRequires:  rust+cargo >= 1.57
+BuildRequires:  rust+cargo >= 1.59
 %endif
 %if 0%{useccache} != 0
 BuildRequires:  ccache
@@ -114,7 +114,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.33
-BuildRequires:  mozilla-nss-devel >= 3.77
+BuildRequires:  mozilla-nss-devel >= 3.78.1
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -124,7 +124,7 @@ BuildRequires:  python36
 BuildRequires:  python3 >= 3.5
 BuildRequires:  python3-devel
 %endif
-BuildRequires:  rust-cbindgen >= 0.19.0
+BuildRequires:  rust-cbindgen >= 0.23.0
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-libXt-devel

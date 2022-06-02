@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sun May 29 08:02:45 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 101.0
+  * Reading is now easier with the prefers-contrast media query,
+    which allows sites to detect if the user has requested that web
+    content is presented with a higher (or lower) contrast
+  * All non-configured MIME types can now be assigned a custom
+    action upon download completion
+  * allows users to use as many microphones as you want, at the
+    same time, during video conferencing. The most exciting benefit
+    is that you can easily switch your microphones at any time
+    (if your conferencing service provider enables this flexibility)
+  MFSA 2022-20 (bsc#1200027)
+  * CVE-2022-31736 (bmo#1735923)
+    Cross-Origin resource's length leaked
+  * CVE-2022-31737 (bmo#1743767)
+    Heap buffer overflow in WebGL
+  * CVE-2022-31738 (bmo#1756388)
+    Browser window spoof using fullscreen mode
+  * CVE-2022-31739 (bmo#1765049)
+    Attacker-influenced path traversal when saving downloaded files
+  * CVE-2022-31740 (bmo#1766806)
+    Register allocation problem in WASM on arm64
+  * CVE-2022-31741 (bmo#1767590)
+    Uninitialized variable leads to invalid memory read
+  * CVE-2022-31742 (bmo#1730434)
+    Querying a WebAuthn token with a large number of allowCredential
+    entries may have leaked cross-origin information
+  * CVE-2022-31743 (bmo#1747388)
+    HTML Parsing incorrectly ended HTML comments prematurely
+  * CVE-2022-31744 (bmo#1757604)
+    CSP bypass enabling stylesheet injection
+  * CVE-2022-31745 (bmo#1760944)
+    Incorrect Assertion caused by unoptimized array shift operations
+  * CVE-2022-1919 (bmo#1761275)
+    Memory Corruption when manipulating webp images
+  * CVE-2022-31747 (bmo#1760765, bmo#1765610, bmo#1766283,
+    bmo#1767365, bmo#1768559, bmo#1768734)
+    Memory safety bugs fixed in Firefox 101 and Firefox ESR 91.10
+  * CVE-2022-31748 (bmo#1713773, bmo#1762201, bmo#1762469,
+    bmo#1762770, bmo#1764878, bmo#1765226, bmo#1765782, bmo#1765973,
+    bmo#1767177, bmo#1767181, bmo#1768232, bmo#1768251, bmo#1769869)
+    Memory safety bugs fixed in Firefox 101
+- requires
+  * NSS 3.78.1
+  * rust-cbindgen 0.23.0
+  * rust 1.59
+
+-------------------------------------------------------------------
 Fri May 20 15:03:50 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 100.0.2

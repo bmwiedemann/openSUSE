@@ -5620,4 +5620,41 @@
     the Picture-in-Picture window (bmo#1768201)</comment>
     <requestid>978314</requestid>
   </revision>
+  <revision rev="367" vrev="1">
+    <srcmd5>95e53dab11d29717f2f99789843c0d5f</srcmd5>
+    <version>101.0</version>
+    <time>1654199625</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 101.0
+  * Reading is now easier with the prefers-contrast media query,
+    which allows sites to detect if the user has requested that web
+    content is presented with a higher (or lower) contrast
+  * All non-configured MIME types can now be assigned a custom
+    action upon download completion
+  * allows users to use as many microphones as you want, at the
+    same time, during video conferencing. The most exciting benefit
+    is that you can easily switch your microphones at any time
+    (if your conferencing service provider enables this flexibility)
+  MFSA 2022-20 (bsc#1200027)
+  * CVE-2022-31736 (bmo#1735923)
+    Cross-Origin resource's length leaked
+  * CVE-2022-31737 (bmo#1743767)
+    Heap buffer overflow in WebGL
+  * CVE-2022-31738 (bmo#1756388)
+    Browser window spoof using fullscreen mode
+  * CVE-2022-31739 (bmo#1765049)
+    Attacker-influenced path traversal when saving downloaded files
+  * CVE-2022-31740 (bmo#1766806)
+    Register allocation problem in WASM on arm64
+  * CVE-2022-31741 (bmo#1767590)
+    Uninitialized variable leads to invalid memory read
+  * CVE-2022-31742 (bmo#1730434)
+    Querying a WebAuthn token with a large number of allowCredential
+    entries may have leaked cross-origin information
+  * CVE-2022-31743 (bmo#1747388)
+    HTML Parsing incorrectly ended HTML comments prematurely
+  * CVE-2022-31744 (bmo#1757604)
+    CSP bypass enabling stylesheet injection</comment>
+    <requestid>980191</requestid>
+  </revision>
 </revisionlist>
