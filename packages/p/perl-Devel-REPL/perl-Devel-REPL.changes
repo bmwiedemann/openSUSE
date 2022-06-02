@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 29 03:06:50 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.003029
+   see /usr/share/doc/packages/perl-Devel-REPL/Changes
+
+  1.003029   2022-05-28 03:31:29Z
+    - removed File::HomeDir dependency
+
+-------------------------------------------------------------------
 Fri Feb 19 10:10:28 UTC 2016 - coolo@suse.com
 
 - updated to 1.003028
