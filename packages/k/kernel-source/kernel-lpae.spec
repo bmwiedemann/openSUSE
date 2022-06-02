@@ -17,8 +17,8 @@
 # needssslcertforbuild
 
 
-%define srcversion 5.17
-%define patchversion 5.17.9
+%define srcversion 5.18
+%define patchversion 5.18.1
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules zstd
@@ -107,9 +107,9 @@ Name:           kernel-lpae
 Summary:        Kernel for LPAE enabled systems
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        5.17.9
+Version:        5.18.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.geab1a2c
+Release:        <RELEASE>.gd00e88d
 %else
 Release:        0
 %endif
@@ -234,10 +234,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-eab1a2cee966a5cf3b8d386ac543e7daef943fcd
-Provides:       kernel-srchash-eab1a2cee966a5cf3b8d386ac543e7daef943fcd
+Provides:       kernel-%build_flavor-base-srchash-d00e88d58dfc679cfddede128d4ff4f3bfbeb313
+Provides:       kernel-srchash-d00e88d58dfc679cfddede128d4ff4f3bfbeb313
 # END COMMON DEPS
-Provides:       %name-srchash-eab1a2cee966a5cf3b8d386ac543e7daef943fcd
+Provides:       %name-srchash-d00e88d58dfc679cfddede128d4ff4f3bfbeb313
 %obsolete_rebuilds %name
 Source0:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
@@ -519,6 +519,11 @@ if echo %_project | grep -Eqx -f %_sourcedir/release-projects; then
 fi
 %endif
 
+DEBUG_INFO_TYPE="$(grep "CONFIG_DEBUG_INFO_DWARF.*=y" .config)"
+DEBUG_INFO_TYPE="${DEBUG_INFO_TYPE%%=y}"
+DEBUG_INFO_TYPE="${DEBUG_INFO_TYPE##CONFIG_DEBUG_INFO_}"
+echo "Kernel debuginfo type: ${DEBUG_INFO_TYPE}"
+
 ../scripts/config \
 	--set-str CONFIG_LOCALVERSION -%source_rel-%build_flavor \
 	--enable  CONFIG_SUSE_KERNEL \
@@ -526,7 +531,9 @@ fi
 %if 0%{?__debug_package:1}
 	--enable  CONFIG_DEBUG_INFO
 %else
-	--disable CONFIG_DEBUG_INFO
+	--disable CONFIG_DEBUG_INFO \
+	--disable CONFIG_DEBUG_INFO_"${DEBUG_INFO_TYPE}" \
+	--enable  CONFIG_DEBUG_INFO_NONE
 %endif
 
 if [ %CONFIG_MODULE_SIG = "y" ]; then

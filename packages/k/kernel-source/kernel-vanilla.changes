@@ -1,4 +1,148 @@
 -------------------------------------------------------------------
+Mon May 30 09:46:41 CEST 2022 - jslaby@suse.cz
+
+- Linux 5.18.1 (bsc#1012628).
+- ALSA: ctxfi: Add SB046x PCI ID (bsc#1012628).
+- ACPI: sysfs: Fix BERT error region memory mapping (bsc#1012628).
+- random: check for signals after page of pool writes
+  (bsc#1012628).
+- random: wire up fops->splice_{read,write}_iter() (bsc#1012628).
+- random: convert to using fops->write_iter() (bsc#1012628).
+- random: convert to using fops->read_iter() (bsc#1012628).
+- random: unify batched entropy implementations (bsc#1012628).
+- random: move randomize_page() into mm where it belongs
+  (bsc#1012628).
+- random: move initialization functions out of hot pages
+  (bsc#1012628).
+- random: make consistent use of buf and len (bsc#1012628).
+- random: use proper return types on get_random_{int,long}_wait()
+  (bsc#1012628).
+- random: remove extern from functions in header (bsc#1012628).
+- random: use static branch for crng_ready() (bsc#1012628).
+- random: credit architectural init the exact amount
+  (bsc#1012628).
+- random: handle latent entropy and command line from
+  random_init() (bsc#1012628).
+- random: use proper jiffies comparison macro (bsc#1012628).
+- random: remove ratelimiting for in-kernel unseeded randomness
+  (bsc#1012628).
+- random: move initialization out of reseeding hot path
+  (bsc#1012628).
+- random: avoid initializing twice in credit race (bsc#1012628).
+- random: use symbolic constants for crng_init states
+  (bsc#1012628).
+- siphash: use one source of truth for siphash permutations
+  (bsc#1012628).
+- random: help compiler out with fast_mix() by using simpler
+  arguments (bsc#1012628).
+- random: do not use input pool from hard IRQs (bsc#1012628).
+- random: order timer entropy functions below interrupt functions
+  (bsc#1012628).
+- random: do not pretend to handle premature next security model
+  (bsc#1012628).
+- random: use first 128 bits of input as fast init (bsc#1012628).
+- random: do not use batches when !crng_ready() (bsc#1012628).
+- random: insist on random_get_entropy() existing in order to
+  simplify (bsc#1012628).
+- xtensa: use fallback for random_get_entropy() instead of zero
+  (bsc#1012628).
+- sparc: use fallback for random_get_entropy() instead of zero
+  (bsc#1012628).
+- um: use fallback for random_get_entropy() instead of zero
+  (bsc#1012628).
+- x86/tsc: Use fallback for random_get_entropy() instead of zero
+  (bsc#1012628).
+- nios2: use fallback for random_get_entropy() instead of zero
+  (bsc#1012628).
+- arm: use fallback for random_get_entropy() instead of zero
+  (bsc#1012628).
+- mips: use fallback for random_get_entropy() instead of just
+  c0 random (bsc#1012628).
+- riscv: use fallback for random_get_entropy() instead of zero
+  (bsc#1012628).
+- m68k: use fallback for random_get_entropy() instead of zero
+  (bsc#1012628).
+- timekeeping: Add raw clock fallback for random_get_entropy()
+  (bsc#1012628).
+- powerpc: define get_cycles macro for arch-override
+  (bsc#1012628).
+- alpha: define get_cycles macro for arch-override (bsc#1012628).
+- parisc: define get_cycles macro for arch-override (bsc#1012628).
+- s390: define get_cycles macro for arch-override (bsc#1012628).
+- ia64: define get_cycles macro for arch-override (bsc#1012628).
+- init: call time_init() before rand_initialize() (bsc#1012628).
+- random: fix sysctl documentation nits (bsc#1012628).
+- HID: amd_sfh: Add support for sensor discovery (bsc#1012628).
+- lockdown: also lock down previous kgdb use (bsc#1012628).
+- commit df81444
+
+-------------------------------------------------------------------
+Thu May 26 21:52:06 CEST 2022 - mkubecek@suse.cz
+
+- Update patches.suse/Revert-net-af_key-add-check-for-pfkey_broadcast-in-f.patch
+  Update to upstream version, update upstream reference and move into sorted
+  section.
+- commit 3ae1db7
+
+-------------------------------------------------------------------
+Thu May 26 21:46:47 CEST 2022 - mkubecek@suse.cz
+
+- series.conf: cleanup
+- update upstream reference and move into sorted section:
+  - patches.suse/simplefb-Enable-boot-time-VESA-graphic-mode-selectio.patch
+- commit dc762c4
+
+-------------------------------------------------------------------
+Thu May 26 10:33:38 CEST 2022 - msuchanek@suse.de
+
+- kernel-binary.spec: Support radio selection for debuginfo.
+  To disable debuginfo on 5.18 kernel a radio selection needs to be
+  switched to a different selection. This requires disabling the currently
+  active option and selecting NONE as debuginfo type.
+- commit 43b5dd3
+
+-------------------------------------------------------------------
+Thu May 26 10:20:32 CEST 2022 - jslaby@suse.cz
+
+- Update config files -- DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT (bsc#1199932)
+  Set DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT which makes use of dwarf5 on
+  gcc-11 and newer.
+- commit f439809
+
+-------------------------------------------------------------------
+Wed May 25 10:49:52 CEST 2022 - jslaby@suse.cz
+
+- random: do not use input pool from hard IRQs (bsc#1199803).
+- commit 3352b92
+
+-------------------------------------------------------------------
+Mon May 23 16:07:21 CEST 2022 - schwab@suse.de
+
+- Add dtb-starfive
+- commit 9633cc7
+
+-------------------------------------------------------------------
+Mon May 23 13:51:00 CEST 2022 - mkubecek@suse.cz
+
+- Revert "net: af_key: add check for pfkey_broadcast in function
+  pfkey_process" (20220523022438.ofhehjievu2alj3h@lion.mk-sys.cz).
+- commit 2023975
+
+-------------------------------------------------------------------
+Sun May 22 22:10:03 CEST 2022 - mkubecek@suse.cz
+
+- Update to 5.18 final
+- refresh configs (headers only)
+- commit d0f5e4b
+
+-------------------------------------------------------------------
+Wed May 18 19:02:31 CEST 2022 - tonyj@suse.de
+
+- perf: Fix sys_perf_event_open() race against self
+  (CVE-2022-1729, bsc#1199507).
+- commit c1eda89
+
+-------------------------------------------------------------------
 Wed May 18 12:03:12 CEST 2022 - jslaby@suse.cz
 
 - Linux 5.17.9 (bsc#1012628).
@@ -221,6 +365,12 @@ Mon May 16 06:08:55 CEST 2022 - jslaby@suse.cz
   (bsc#1012628).
 - Bluetooth: Fix the creation of hdev->name (bsc#1012628).
 - commit 718e8e9
+
+-------------------------------------------------------------------
+Mon May 16 03:32:53 CEST 2022 - mkubecek@suse.cz
+
+- Update to 5.18-rc7
+- commit 1778f40
 
 -------------------------------------------------------------------
 Thu May 12 14:36:35 CEST 2022 - jslaby@suse.cz
@@ -863,6 +1013,18 @@ Mon May  9 08:21:01 CEST 2022 - jslaby@suse.cz
 - commit e2300f2
 
 -------------------------------------------------------------------
+Sun May  8 23:14:22 CEST 2022 - mkubecek@suse.cz
+
+- Update to 5.18-rc6
+- commit ed50f8f
+
+-------------------------------------------------------------------
+Fri May  6 09:39:43 CEST 2022 - dmueller@suse.com
+
+- rpm/kernel-obs-build.spec.in: Also depend on dracut-systemd (bsc#1195775)
+- commit 5d4e32c
+
+-------------------------------------------------------------------
 Thu May  5 12:06:09 CEST 2022 - jslaby@suse.cz
 
 - Revert "build initrd without systemd" (bsc#1195775)"
@@ -899,12 +1061,45 @@ Tue May  3 08:43:43 CEST 2022 - jslaby@suse.cz
 - commit e962fef
 
 -------------------------------------------------------------------
+Mon May  2 15:18:38 CEST 2022 - msuchanek@suse.de
+
+- Update config files.
+  No pmem support on s390 - no such device.
+- commit 9704fc2
+
+-------------------------------------------------------------------
+Mon May  2 14:39:29 CEST 2022 - dmueller@suse.com
+
+- config.conf: reenable armv7hl configs
+- Update config files for armv7hl lpae/default
+- Inherit settings from x86_64
+- Use =m where available
+- stick with CONFIG_UNWINDER_FRAME_POINTER=y
+- commit 2821d72
+
+-------------------------------------------------------------------
+Sun May  1 23:45:07 CEST 2022 - mkubecek@suse.cz
+
+- Update to 5.18-rc5
+- new config options:
+  - BLK_DEV_FD_RAWCMD=n
+- commit da18d3b
+
+-------------------------------------------------------------------
 Fri Apr 29 17:55:47 CEST 2022 - mkubecek@suse.cz
 
 - Update
   patches.kernel.org/5.17.2-0822-net-x25-Fix-null-ptr-deref-caused-by-x25_disc.patch
   references (add CVE-2022-1516 bsc#1199012).
 - commit af2638d
+
+-------------------------------------------------------------------
+Fri Apr 29 15:17:25 CEST 2022 - msuchanek@suse.de
+
+- Update config files (bsc#1199024).
+  arm, i386 LIBNVDIMM y->m
+  i386 X86_PMEM_LEGACY y->m
+- commit ff4fa9f
 
 -------------------------------------------------------------------
 Wed Apr 27 18:54:10 CEST 2022 - jslaby@suse.cz
@@ -1164,7 +1359,7 @@ Wed Apr 27 08:21:29 CEST 2022 - jslaby@suse.cz
 - Refresh
   patches.suse/simplefb-Enable-boot-time-VESA-graphic-mode-selectio.patch.
   Update upstream status.
-- commit 749ae03
+- commit 3b1b874
 
 -------------------------------------------------------------------
 Wed Apr 27 08:03:46 CEST 2022 - jslaby@suse.cz
@@ -1198,6 +1393,13 @@ Mon Apr 25 06:51:48 CEST 2022 - jslaby@suse.cz
 - commit ac62a28
 
 -------------------------------------------------------------------
+Mon Apr 25 00:24:03 CEST 2022 - mkubecek@suse.cz
+
+- Update to 5.18-rc4
+- refresh configs
+- commit 4ddddbd
+
+-------------------------------------------------------------------
 Fri Apr 22 16:37:17 CEST 2022 - tiwai@suse.de
 
 - gpio: Request interrupts after IRQ is initialized (bsc#1198697).
@@ -1212,9 +1414,19 @@ Fri Apr 22 15:35:01 CEST 2022 - dmueller@suse.com
 - commit a6e141d
 
 -------------------------------------------------------------------
+Thu Apr 21 19:24:41 CEST 2022 - dmueller@suse.com
+
+- config.conf: reenable armv6hl config
+  Uses same config settings like x86_64
+- commit 1fbebaa
+
+-------------------------------------------------------------------
 Thu Apr 21 08:39:08 CEST 2022 - jslaby@suse.cz
 
 - scripts: dummy-tools, add pahole (bsc#1198388).
+- scripts: dummy-tools, add pahole (bsc#1198388).
+- Update config files.
+  The config files now contain the dummy PAHOLE_VERSION (9999).
 - commit 1fe0032
 
 -------------------------------------------------------------------
@@ -1621,6 +1833,35 @@ Tue Apr 19 07:59:57 CEST 2022 - jslaby@suse.cz
 - commit a0f1f93
 
 -------------------------------------------------------------------
+Sun Apr 17 23:54:59 CEST 2022 - mkubecek@suse.cz
+
+- config: enable arm64 builds
+- reenable arm64 configs after update to 5.18-rc2
+- new arm64 config options:
+  - SHADOW_CALL_STACK=n
+  - RELR=n
+  - KCOV=n
+- commit ffb18e4
+
+-------------------------------------------------------------------
+Sun Apr 17 23:17:01 CEST 2022 - mkubecek@suse.cz
+
+- Update to 5.18-rc3
+- update configs
+  - x86_64
+    - NET_DSA_REALTEK_RTL8365MB=m
+    - NET_DSA_REALTEK_RTL8366RB=m
+- commit 04810ad
+
+-------------------------------------------------------------------
+Fri Apr 15 00:34:13 CEST 2022 - dmueller@suse.com
+
+- Update config files.
+  set modprobe path to /usr/sbin/modprobe after usrmerge completion
+  in Tumbleweed.
+- commit 767eb22
+
+-------------------------------------------------------------------
 Fri Apr 15 00:19:33 CEST 2022 - dmueller@suse.com
 
 - Update config files (bsc#1198722, bsc#1197746).
@@ -1637,14 +1878,14 @@ Thu Apr 14 23:49:56 CEST 2022 - dmueller@suse.com
 
 - Update config files.
 - set CONFIG_NO_HZ_FULL again on armv7/aarch64 (bsc#1189692)
-- commit b76702a
+- commit bfb0c41
 
 -------------------------------------------------------------------
 Thu Apr 14 23:43:13 CEST 2022 - dmueller@suse.com
 
 - Update config files.
   Disable legacy pty support (bsc#1198506)
-- commit 4f0df75
+- commit 295a9c6
 
 -------------------------------------------------------------------
 Thu Apr 14 09:30:13 CEST 2022 - dmueller@suse.com
@@ -1655,7 +1896,7 @@ Thu Apr 14 09:30:13 CEST 2022 - dmueller@suse.com
   vulnerabilities. This was previously set to 0 to enable dosemu,
   but dosemu no longer requires that setting, especially not on
   non-x86.
-- commit 53331e8
+- commit 30bf192
 
 -------------------------------------------------------------------
 Thu Apr 14 06:56:56 CEST 2022 - jslaby@suse.cz
@@ -2226,13 +2467,19 @@ Thu Apr 14 06:56:56 CEST 2022 - jslaby@suse.cz
 - commit a63605c
 
 -------------------------------------------------------------------
+Wed Apr 13 14:30:33 CEST 2022 - mbrugger@suse.com
+
+- arm64: Update config files to v5.18-rc2
+- commit 2158d93
+
+-------------------------------------------------------------------
 Wed Apr 13 08:57:17 CEST 2022 - tiwai@suse.de
 
 - Update config files: set CONFIG_EFI_VARS_PSTORE_DEFAULT_DISABLE=y (bsc#1198276)
   Using efivars as the pstore default backend is dangerous, as it might fill up
   quickly with dumps, eventually resulting in a non-bootable system.
   The feature can be enabled manually via efi_pstore.pstore_disable=0 option.
-- commit 458c79b
+- commit 7821031
 
 -------------------------------------------------------------------
 Wed Apr 13 08:49:31 CEST 2022 - tiwai@suse.de
@@ -2258,6 +2505,16 @@ Mon Apr 11 09:08:11 CEST 2022 - tiwai@suse.de
 - drm/nouveau/pmu: Add missing callbacks for Tegra devices
   (bsc#1196967).
 - commit 0789f15
+
+-------------------------------------------------------------------
+Mon Apr 11 07:34:48 CEST 2022 - mkubecek@suse.cz
+
+- Update to 5.18-rc2
+- eliminate 1 patch
+  - patches.suse/net-fungible-Fix-reference-to-__udivdi3-on-32b-build.patch
+- update configs
+  - SATA_LPM_POLICY renamed to SATA_MOBILE_LPM_POLICY
+- commit d8f6a40
 
 -------------------------------------------------------------------
 Sat Apr  9 08:30:15 CEST 2022 - jslaby@suse.cz
@@ -4170,6 +4427,13 @@ Wed Apr  6 00:42:06 CEST 2022 - bp@suse.de
 - commit b756c61
 
 -------------------------------------------------------------------
+Mon Apr  4 22:44:42 CEST 2022 - mkubecek@suse.cz
+
+- net/fungible: Fix reference to __udivdi3 on 32b builds.
+  Fix i386 build failure.
+- commit 6385d80
+
+-------------------------------------------------------------------
 Mon Apr  4 18:01:45 CEST 2022 - tiwai@suse.de
 
 - can: mcba_usb: mcba_usb_start_xmit(): fix double dev_kfree_skb
@@ -4179,6 +4443,184 @@ Mon Apr  4 18:01:45 CEST 2022 - tiwai@suse.de
 - can: ems_usb: ems_usb_start_xmit(): fix double dev_kfree_skb()
   in error path (CVE-2022-28390 bsc#1198031).
 - commit e456953
+
+-------------------------------------------------------------------
+Mon Apr  4 01:37:16 CEST 2022 - mkubecek@suse.cz
+
+- Update to 5.18-rc1
+- eliminate 47 patches (42 stable, 5 mainline)
+  - patches.kernel.org/*
+  - patches.suse/Bluetooth-btusb-Add-missing-Chicony-device-for-Realt.patch
+  - patches.suse/Revert-Input-clear-BTN_RIGHT-MIDDLE-on-buttonpads.patch
+  - patches.suse/Revert-swiotlb-rework-fix-info-leak-with-DMA_FROM_DE.patch
+  - patches.suse/block-restore-the-old-set_task_ioprio-behaviour-wrt-.patch
+  - patches.suse/bpf-add-config-to-allow-loading-modules-with-BTF-mis.patch
+- refresh
+  - patches.suse/s390-export-symbols-for-crash-kmp.patch
+  - patches.suse/vfs-add-super_operations-get_inode_dev
+- disable ARM architectures (need config update)
+- new config options
+  - General setup
+    CLOCKSOURCE_WATCHDOG_MAX_SKEW_US=100
+  - Processor type and features
+    X86_KERNEL_IBT=n
+  - Binary Emulations
+    X86_X32_ABI=n (renamed X86_X32)
+  - General architecture-dependent options
+    RANDOMIZE_KSTACK_OFFSET=y
+  - Enable the block layer
+    BLOCK_LEGACY_AUTOLOAD=y
+  - Networking support
+    PAGE_POOL_STATS=n
+  - File systems
+    F2FS_UNFAIR_RWSEM=n
+  - Security options
+    USER_DECRYPTED_DATA=n
+  - Cryptographic API
+    CRYPTO_DH_RFC7919_GROUPS=y
+    CRYPTO_SM3_AVX_X86_64=m
+  - Kernel hacking
+    DEBUG_INFO_NONE=n
+    DEBUG_INFO_DWARF5=n
+    KFENCE_DEFERRABLE=n
+    FPROBE=y
+  - PCI support
+    CXL_PCI=m
+  - NVME Support
+    NVME_VERBOSE_ERRORS=n
+  - Serial ATA and Parallel ATA drivers (libata)
+    SATA_LPM_POLICY=0
+  - Network device support
+    NET_DSA_REALTEK=m
+    NET_VENDOR_DAVICOM=y
+    DM9051=m
+    NET_VENDOR_FUNGIBLE=y
+    FUN_ETH=m
+    MT7921U=m
+  - Input device support
+    TOUCHSCREEN_IMAGIS=m
+  - Power supply class support
+    IP5XXX_POWER=m
+    BATTERY_SAMSUNG_SDI=n
+    BATTERY_UG3105=m
+  - Hardware Monitoring support
+    I8K=n
+    SENSORS_LM25066_REGULATOR=y
+    SENSORS_PLI1209BC=m
+    SENSORS_PLI1209BC_REGULATOR=y
+    SENSORS_XDPE122_REGULATOR=y
+    SENSORS_SY7636A=m
+    SENSORS_TMP464=m
+    SENSORS_ASUS_EC=m
+  - Voltage and Current Regulator Support
+    REGULATOR_RT5190A=m
+    REGULATOR_SY7636A=m
+  - Multimedia support
+    VIDEO_HI847=m
+    VIDEO_OG01A1B=m
+    VIDEO_OV08D10=m
+  - Graphics support
+    DRM_PANEL_MIPI_DBI=m
+    DRM_SSD130X=n
+  - Sound card support
+    SND_SOC_AMD_ACP_PCI=m
+    SND_SOC_INTEL_AVS=m
+    SND_SOC_INTEL_SOF_SSP_AMP_MACH=m
+    SND_SOC_AW8738=n
+    SND_SOC_TAS5805M=n
+  - HID support
+    HID_RAZER=m
+    HID_SIGMAMICRO=m
+  - USB support
+    TYPEC_RT1719=m
+    TYPEC_WUSB3801=m
+  - Staging drivers
+    VIDEO_ZORAN_DC30=y
+    VIDEO_ZORAN_ZR36060=y
+    VIDEO_ZORAN_BUZ=y
+    VIDEO_ZORAN_DC10=y
+    VIDEO_ZORAN_LML33=y
+    VIDEO_ZORAN_LML33R10=y
+    VIDEO_ZORAN_AVS6EYES=y
+  - X86 Platform Specific Device Drivers
+    AMD_HSMP=m
+    INTEL_CHTWC_INT33FE=m
+    INTEL_SDSI=m
+    SERIAL_MULTI_INSTANTIATE=m
+  - Industrial I/O support
+    ADXL367_SPI=n
+    ADXL367_I2C=n
+    ADA4250=n
+    LTC2688=n
+    ADMV1014=n
+    ADMV4420=n
+    SX9324=n
+    SX9360=n
+    PECI=n
+    PECI=n
+  - Misc drivers
+    MTD_NAND_ECC_MXIC=n
+    I2C_DESIGNWARE_AMDPSP=y
+    SPI_INTEL_PCI=m
+    SPI_INTEL_PLATFORM=m
+    INTEL_HFI_THERMAL=y
+    MFD_SIMPLE_MFD_I2C=n
+    MLX5_VFIO_PCI=m
+    VMGENID=y
+    CHROMEOS_PRIVACY_SCREEN=m
+    RPMSG_CTRL=m
+  - OF dependent (i386, ppc64/ppc64le, riscv64)
+    - OPEN_DICE=m
+    - MFD_MAX77714=n
+    - REGULATOR_TPS6286X=m
+    - VIDEO_ISL7998X=m
+    - DRM_PANEL_ILITEK_ILI9341=n
+    - DRM_PANEL_NOVATEK_NT35560=n
+    - DRM_ITE_IT6505=n
+    - COMMON_CLK_RS9_PCIE=m
+    - PHY_CADENCE_DPHY_RX=m
+  - i586
+    - DTPM_DEVFREQ=y
+    - INTEGRITY_MACHINE_KEYRING=y
+  - ppc64 / ppc64le
+    - NET_DSA_REALTEK_MDIO=m
+    - NET_DSA_REALTEK_RTL8365MB=m
+    - NET_DSA_REALTEK_RTL8366RB=m
+    - MCTP_TRANSPORT_I2C=m
+    - CRC64_ROCKSOFT=m
+  - s390x
+    - EXPOLINE_EXTERN=y
+    - CRC64_ROCKSOFT=m
+  - riscv64
+    - RSEQ=y
+    - DEBUG_RSEQ=n
+    - CPU_IDLE=y
+    - CPU_IDLE_GOV_LADDER=y
+    - CPU_IDLE_GOV_TEO=y
+    - RISCV_SBI_CPUIDLE=y
+    - CPU_IDLE_GOV_MENU=y
+    - PARPORT_PC=m
+    - PARPORT_SERIAL=m
+    - PARPORT_PC_FIFO=y
+    - PARPORT_PC_PCMCIA=n
+    - PARIDE=m
+    - PARIDE_*=m (PARIDE_EPATC8=y
+    - SCSI_PPA=m
+    - SCSI_IMM=m
+    - SCSI_IZIP_EPP16=n
+    - SCSI_IZIP_SLOW_CTR=n
+    - NET_DSA_REALTEK_MDIO=m
+    - NET_DSA_REALTEK_RTL8365MB=m
+    - NET_DSA_REALTEK_RTL8366RB=m
+    - KS0108=n
+    - CLK_STARFIVE_JH7100_AUDIO=m
+    - POLARFIRE_SOC_SYS_CTRL=m
+    - IDLE_INJECT=y
+    - RISCV_PMU=y
+    - RISCV_PMU_LEGACY=y
+    - RISCV_PMU_SBI=y
+    - CPU_IDLE_THERMAL=y
+- commit e499f10
 
 -------------------------------------------------------------------
 Sun Apr  3 15:32:40 CEST 2022 - mkubecek@suse.cz
@@ -4204,6 +4646,13 @@ Thu Mar 31 07:28:17 CEST 2022 - jslaby@suse.cz
 - Revert "config: Enable BPF LSM" (bsc#1197746)
   This reverts commit c2c25b18721866d6211054f542987036ed6e0a50.
 - commit 58205bc
+
+-------------------------------------------------------------------
+Wed Mar 30 13:37:35 CEST 2022 - msuchanek@suse.de
+
+- Refresh patches.rpmify/powerpc-64-BE-option-to-use-ELFv2-ABI-for-big-endian.patch.
+- Refresh config files.
+- commit bd4767f
 
 -------------------------------------------------------------------
 Tue Mar 29 07:47:47 CEST 2022 - jslaby@suse.cz
@@ -4665,7 +5114,7 @@ Wed Mar 16 19:45:27 CET 2022 - jslaby@suse.cz
 Wed Mar 16 19:29:49 CET 2022 - ailiop@suse.com
 
 - config: enable XFS_RT (bsc#1197190)
-- commit d8f0e40
+- commit 253c423
 
 -------------------------------------------------------------------
 Wed Mar 16 17:55:51 CET 2022 - msuchanek@suse.de
@@ -11862,7 +12311,7 @@ Mon Nov 22 11:48:00 CET 2021 - mkubecek@suse.cz
   used for build. Update also these to make sure unprivileged BPF is really
   disabled by default.
   [ddiss: extend to all tumbleweed kernel configs]
-- commit 423d2b5
+- commit 61d2576
 
 -------------------------------------------------------------------
 Mon Nov 22 06:37:17 CET 2021 - jslaby@suse.cz

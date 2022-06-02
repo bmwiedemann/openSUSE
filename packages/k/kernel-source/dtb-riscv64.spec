@@ -16,8 +16,8 @@
 #
 
 
-%define srcversion 5.17
-%define patchversion 5.17.9
+%define srcversion 5.18
+%define patchversion 5.18.1
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -29,9 +29,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-riscv64
-Version:        5.17.9
+Version:        5.18.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.geab1a2c
+Release:        <RELEASE>.gd00e88d
 %else
 Release:        0
 %endif
@@ -118,6 +118,15 @@ Source121:      sysctl.tar.bz2
 %description
 Device Tree files for $MACHINES.
 
+%package -n dtb-microchip
+Summary:        Microchip based riscv64 systems
+Group:          System/Boot
+Provides:       multiversion(dtb)
+Requires(post): coreutils
+
+%description -n dtb-microchip
+Device Tree files for Microchip based riscv64 systems.
+
 %package -n dtb-sifive
 Summary:        SiFive based riscv64 systems
 Group:          System/Boot
@@ -127,14 +136,14 @@ Requires(post): coreutils
 %description -n dtb-sifive
 Device Tree files for SiFive based riscv64 systems.
 
-%package -n dtb-microchip
-Summary:        Microchip based riscv64 systems
+%package -n dtb-starfive
+Summary:        StarFive based riscv64 systems
 Group:          System/Boot
 Provides:       multiversion(dtb)
 Requires(post): coreutils
 
-%description -n dtb-microchip
-Device Tree files for Microchip based riscv64 systems.
+%description -n dtb-starfive
+Device Tree files for StarFive based riscv64 systems.
 
 
 
@@ -157,7 +166,7 @@ DTC_FLAGS="$DTC_FLAGS -@"
 %endif
 
 cd $source/arch/riscv/boot/dts
-for dts in sifive/*.dts microchip/*.dts ; do
+for dts in microchip/*.dts sifive/*.dts starfive/*.dts ; do
     target=${dts%*.dts}
     mkdir -p $PPDIR/$(dirname $target)
     cpp -x assembler-with-cpp -undef -D__DTS__ -nostdinc -I. -I$SRCDIR/include/ -I$SRCDIR/scripts/dtc/include-prefixes/ -P $target.dts -o $PPDIR/$target.dts
@@ -169,7 +178,7 @@ done
 %install
 
 cd pp
-for dts in sifive/*.dts microchip/*.dts ; do
+for dts in microchip/*.dts sifive/*.dts starfive/*.dts ; do
     target=${dts%*.dts}
     install -m 755 -d %{buildroot}%{dtbdir}/$(dirname $target)
     # install -m 644 COPYING %{buildroot}%{dtbdir}/$(dirname $target)
@@ -184,6 +193,13 @@ for dts in sifive/*.dts microchip/*.dts ; do
 done
 cd -
 
+%post -n dtb-microchip
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
 %post -n dtb-sifive
 cd /boot
 # If /boot/dtb is a symlink, remove it, so that we can replace it.
@@ -191,12 +207,23 @@ cd /boot
 # Unless /boot/dtb exists as real directory, create a symlink.
 [ -d dtb ] || ln -sf dtb-%kernelrelease dtb
 
-%post -n dtb-microchip
+%post -n dtb-starfive
 cd /boot
 # If /boot/dtb is a symlink, remove it, so that we can replace it.
 [ -d dtb ] && [ -L dtb ] && rm -f dtb
 # Unless /boot/dtb exists as real directory, create a symlink.
 [ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch aarch64 riscv64
+%files -n dtb-microchip -f dtb-microchip.list
+%else
+%files -n dtb-microchip
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/microchip
+%{dtbdir}/microchip/*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-sifive -f dtb-sifive.list
@@ -210,14 +237,14 @@ cd /boot
 %{dtbdir}/sifive/*.dtb
 
 %ifarch aarch64 riscv64
-%files -n dtb-microchip -f dtb-microchip.list
+%files -n dtb-starfive -f dtb-starfive.list
 %else
-%files -n dtb-microchip
+%files -n dtb-starfive
 %endif
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%dir %{dtbdir}/microchip
-%{dtbdir}/microchip/*.dtb
+%dir %{dtbdir}/starfive
+%{dtbdir}/starfive/*.dtb
 
 %changelog
