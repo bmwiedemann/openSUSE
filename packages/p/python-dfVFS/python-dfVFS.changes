@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 31 22:38:37 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to 20220419
+  - changes to support python-dtfabric 20220219
+  - update methods for working with GPT and HFS+ volumes
+
+- add BuildRequires libphdi   required to provide Parallels Disk Image support
+- re-enable %check section as the built-in tests now all pass
+- update requires libluksde to require a current versions
+- update requires python-dtfabric to require a current versions
+
+-------------------------------------------------------------------
 Mon May 23 22:46:00 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to 20211228
@@ -10,7 +22,7 @@ Mon May 23 22:46:00 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to 20211017
   - changes to support pyfwnt 20210717
-  - added attribute support for multiple filesystems
+  - added pyxattr to add attribute support for multiple filesystems 
   - added size entry for ext, XFS, HFS file entries
 
 - update to 20210606

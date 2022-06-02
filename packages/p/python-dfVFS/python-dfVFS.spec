@@ -17,7 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python38-%{**}}
-%define timestamp 20211228
+%define timestamp 20220419
 %define pythons python3
 Name:           python-dfVFS
 Version:        0~%{timestamp}
@@ -32,7 +32,7 @@ BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module dfdatetime}
-BuildRequires:  %{python_module dtfabric}
+BuildRequires:  %{python_module dtfabric >= 20220219}
 BuildRequires:  %{python_module idna}
 BuildRequires:  %{python_module libbde}
 BuildRequires:  %{python_module libewf}
@@ -43,8 +43,9 @@ BuildRequires:  %{python_module libfsntfs}
 BuildRequires:  %{python_module libfsxfs}
 BuildRequires:  %{python_module libfvde}
 BuildRequires:  %{python_module libfwnt}
-BuildRequires:  %{python_module libluksde}
+BuildRequires:  %{python_module libluksde >= 20220121}
 BuildRequires:  %{python_module libmodi}
+BuildRequires:  %{python_module libphdi}
 BuildRequires:  %{python_module libqcow}
 BuildRequires:  %{python_module libsigscan >= 0~20191221}
 BuildRequires:  %{python_module libsmdev}
@@ -61,7 +62,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-construct
 Requires:       python-dfdatetime >= 0~20180110
-Requires:       python-dtfabric
+Requires:       python-dtfabric >= 20220219
 Requires:       python-libbde
 Requires:       python-libewf
 Requires:       python-libfsapfs
@@ -71,8 +72,9 @@ Requires:       python-libfsntfs >= 0~20160418
 Requires:       python-libfsxfs
 Requires:       python-libfvde
 Requires:       python-libfwnt >= 20210717
-Requires:       python-libluksde
+Requires:       python-libluksde >= 20220121
 Requires:       python-libmodi
+Requires:       python-libphdi
 Requires:       python-libqcow
 Requires:       python-libsigscan
 Requires:       python-libsmdev
@@ -119,10 +121,9 @@ chmod -x run_tests.py
 %fdupes %{buildroot}
 
 %check
-# APFS parsing errors are being detected.  Skip for now (April 5, 2020)
-# %%{python_expand export PYTHONPATH=%%{buildroot}%%{$python_sitearch}
-# $python ./run_tests.py
-# }
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
+$python ./run_tests.py
+}
 
 %files %{python_files}
 %license LICENSE
