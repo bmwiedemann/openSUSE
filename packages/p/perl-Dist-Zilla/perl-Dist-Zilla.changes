@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 29 03:07:33 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.025
+   see /usr/share/doc/packages/perl-Dist-Zilla/Changes
+
+  6.025     2022-05-28 11:55:35-04:00 America/New_York
+          - eliminate use of multidimensional array emulation
+
+-------------------------------------------------------------------
 Mon Aug  2 03:07:56 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.024

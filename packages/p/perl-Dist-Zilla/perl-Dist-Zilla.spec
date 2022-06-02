@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Dist-Zilla
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Dist-Zilla
 Name:           perl-Dist-Zilla
-Version:        6.024
+Version:        6.025
 Release:        0
-Summary:        Distribution builder; installer not included!
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Distribution builder; installer not included!
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
