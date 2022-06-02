@@ -1,3 +1,14 @@
+Wed Jun  1 15:20:02 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to 1.5.17:
+   * Fix Qobuz plugin consecutively to small change in Qobuz interface
+- update to 1.5.16:
+   * Fix radios using Apple Live Streaming, which were broken in 1.5.14
+- update to 1.5.15:
+   * Fix possible deadlocks when switching to Songcast mode
+- update to 1.5.14:
+   * Added mediaserver module for listing and listening to  BBC radio stations 
+
 -------------------------------------------------------------------
 Sun Mar 20 09:56:32 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
