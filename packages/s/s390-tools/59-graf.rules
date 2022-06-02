@@ -7,7 +7,7 @@ SUBSYSTEM!="ccw", GOTO="graf_end"
 DRIVER!="3270", GOTO="graf_end"
 
 # Configure 3270 device
-ACTION=="add",    SUBSYSTEM=="ccw", PROGRAM="/sbin/chccwdev -e $kernel"
-ACTION=="remove", SUBSYSTEM=="ccw", PROGRAM="/sbin/chccwdev -d $kernel"
+ACTION=="add",    SUBSYSTEM=="ccw", PROGRAM="/usr/sbin/chccwdev -e $kernel"
+ACTION=="remove", SUBSYSTEM=="ccw", PROGRAM="/usr/sbin/chccwdev -d $kernel"
 
 LABEL="graf_end"

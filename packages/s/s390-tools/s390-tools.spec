@@ -101,6 +101,8 @@ Patch005:       s390-tools-sles15sp4-01-genprotimg-remove-DigiCert-root-CA-pinni
 Patch006:       s390-tools-sles15sp4-02-genprotimg-check_hostkeydoc-relax-default-issuer-che.patch
 Patch007:       s390-tools-sles15sp4-libseckey-Fix-re-enciphering-of-EP11-secure-key.patch
 Patch008:       s390-tools-sles15sp4-zdump-fix-segfault-due-to-double-free.patch
+Patch009:       s390-tools-sles15sp4-libseckey-Adapt-keymgmt_match-implementation-to-Open.patch
+Patch010:       s390-tools-sles15sp4-genprotimg-boot-disable-Warray-bounds-for-now.patch
 
 # SUSE patches
 Patch900:       s390-tools-sles12-zipl_boot_msg.patch
@@ -310,14 +312,7 @@ popd
 
 install -m 755 read_values %{buildroot}/%{_bindir}/
 install -m644 -t %{buildroot}/%{_mandir}/man8 %{SOURCE87}
-
-# The "usrmerge" has happened in openSUSE:Factory, but not yet in SLES.
-# Make sure we look for the zfcpdump kernel image in the right place.
-%if 0%{?usrmerged}
 install -D -m600 %{_prefix}/lib/modules/*-zfcpdump/image %{buildroot}%{_prefix}/lib/s390-tools/zfcpdump/zfcpdump-image
-%else
-install -D -m600 /boot/image-*-zfcpdump %{buildroot}%{_prefix}/lib/s390-tools/zfcpdump/zfcpdump-image
-%endif
 
 install -D -m644 etc/cpuplugd.conf %{buildroot}%{_sysconfdir}/cpuplugd.conf
 install -D -m644 etc/udev/rules.d/40-z90crypt.rules %{buildroot}%{_prefix}/lib/udev/rules.d/40-z90crypt.rules
@@ -347,11 +342,11 @@ install -D -m755 %{SOURCE5} %{buildroot}%{_prefix}/lib/systemd/scripts/xpram
 install -D -m644 %{SOURCE6} %{buildroot}%{_fillupdir}/sysconfig.xpram
 install -D -m755 %{SOURCE7} %{buildroot}%{_prefix}/lib/systemd/scripts/appldata
 install -D -m644 %{SOURCE8} %{buildroot}%{_fillupdir}/sysconfig.appldata
-install -D -m755 %{SOURCE10} sbin/dasdro
-install -D -m755 %{SOURCE11} sbin/dasd_reload
-install -D -m755 %{SOURCE12} sbin/mkdump
+install -D -m755 %{SOURCE10} %{buildroot}%{_sbindir}/dasdro
+install -D -m755 %{SOURCE11} %{buildroot}%{_sbindir}/dasd_reload
+install -D -m755 %{SOURCE12} %{buildroot}%{_sbindir}/mkdump
 install -D -m644 %{SOURCE13} %{buildroot}%{_fillupdir}/sysconfig.osasnmpd
-install -D -m755 %{SOURCE14} sbin/zfcp_san_disc
+install -D -m755 %{SOURCE14} %{buildroot}%{_sbindir}/zfcp_san_disc
 install -D -m644 %{SOURCE15} %{buildroot}/%{_mandir}/man8
 install -D -m644 %{SOURCE19} %{buildroot}%{_prefix}/lib/udev/rules.d/52-xpram.rules
 install -D -m644 %{SOURCE20} %{buildroot}%{_prefix}/lib/udev/rules.d/52-hw_random.rules
@@ -359,8 +354,8 @@ install -D -m644 %{SOURCE21} %{buildroot}%{_prefix}/lib/udev/rules.d/59-graf.rul
 install -D -m644 %{SOURCE28} %{buildroot}%{_prefix}/lib/udev/rules.d/59-prng.rules
 install -D -m644 %{SOURCE29} %{buildroot}%{_prefix}/lib/udev/rules.d/59-zfcp-compat.rules
 install -D -m644 %{SOURCE30} %{buildroot}%{_modprobedir}/90-s390-tools.conf
-install -D -m755 %{SOURCE32} %{buildroot}/sbin/killcdl
-install -D -m755 %{SOURCE33} %{buildroot}/sbin/lgr_check
+install -D -m755 %{SOURCE32} %{buildroot}%{_sbindir}/killcdl
+install -D -m755 %{SOURCE33} %{buildroot}%{_sbindir}/lgr_check
 install -D -m644 %{SOURCE34} %{buildroot}%{_fillupdir}/sysconfig.virtsetup
 
 if [ ! -d %{_sbindir} ]; then
@@ -388,8 +383,12 @@ install -D -m755 %{SOURCE24} %{buildroot}%{_bindir}/cputype
 
 install -m644 -t %{buildroot}/%{_mandir}/man8 %{SOURCE25}
 
+# Move all the binaries installed via the IBM-provided Makefile from /sbin to
+# /usr/sbin/ to align with the openSUSE "usrmerge" project
+mv -vi %{buildroot}/sbin/* %{buildroot}%{_sbindir}/
+
 ### Obsolete scripts and man pages to be removed once changes in other tools are made
-install -m755 -t sbin/ %{SOURCE88} %{SOURCE89} %{SOURCE90} %{SOURCE91} %{SOURCE92} %{SOURCE93}
+install -m755 -t %{buildroot}/%{_sbindir}/ %{SOURCE88} %{SOURCE89} %{SOURCE90} %{SOURCE91} %{SOURCE92} %{SOURCE93}
 install -m644 -t %{buildroot}/%{_mandir}/man8 %{SOURCE94} %{SOURCE95} %{SOURCE96} %{SOURCE97} %{SOURCE98} %{SOURCE99}
 ###
 

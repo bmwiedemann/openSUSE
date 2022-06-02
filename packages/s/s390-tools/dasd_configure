@@ -142,7 +142,7 @@ if [ ${RC} -ne 0 ]; then
 elif [ ${ON_OFF} == 1 ]; then
     exitcode=0
     # Extract the full busid so that we can reference the proper entries in /sys
-    BUSID=$(/sbin/lszdev dasd ${CCW_CHAN_ID} | /usr/bin/sed -e 1d | /usr/bin/tr -s " " | /usr/bin/cut -f2 -d" " )
+    BUSID=$(/usr/sbin/lszdev dasd ${CCW_CHAN_ID} | /usr/bin/sed -e 1d | /usr/bin/tr -s " " | /usr/bin/cut -f2 -d" " )
     # Make sure the DASD volume came online
     for ((counter=0; counter<30; counter++)); do
       sleep 0.1

@@ -33,14 +33,14 @@ use Getopt::Long;
 
 my $VERSION = "2.0.3";
 
-my $BLKID = "/sbin/blkid";
+my $BLKID = "/usr/sbin/blkid";
 my $PARTED = "/usr/sbin/parted";
-my $FDASD = "/sbin/fdasd";
-my $DASDVIEW = "/sbin/dasdview";
-my $DASDFMT = "/sbin/dasdfmt";
-my $ZIPL = "/sbin/zipl";
-my $UDEVADM = "/sbin/udevadm";
-my $ZGETDUMP = "/sbin/zgetdump";
+my $FDASD = "/usr/sbin/fdasd";
+my $DASDVIEW = "/usr/sbin/dasdview";
+my $DASDFMT = "/usr/sbin/dasdfmt";
+my $ZIPL = "/usr/sbin/zipl";
+my $UDEVADM = "/usr/sbin/udevadm";
+my $ZGETDUMP = "/usr/sbin/zgetdump";
 
 # temporary DASD device configuration file for Zipl
 my $MDPATH = "/tmp/mvdump.conf.".`mcookie`;

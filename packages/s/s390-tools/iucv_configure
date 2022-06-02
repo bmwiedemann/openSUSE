@@ -125,7 +125,7 @@ fi
 
 if [ "$iucvdev" ] ; then
     cat > /etc/udev/rules.d/51-iucv-$PEER_USERID.rules <<EOF
-ACTION=="add", SUBSYSTEM=="subsystem", KERNEL=="iucv", RUN+="/sbin/modprobe netiucv"
+ACTION=="add", SUBSYSTEM=="subsystem", KERNEL=="iucv", RUN+="/usr/sbin/modprobe netiucv"
 ACTION=="add", SUBSYSTEM=="drivers", KERNEL=="netiucv", ATTR{connection}="$PEER_USERID"
 EOF
 fi

@@ -8,8 +8,8 @@ ConditionPathExists=!/dev/vmlogrdr_LOGREC
 Type=oneshot
 RemainAfterExit=yes
 
-ExecStart=/sbin/modprobe vmlogrdr
-ExecStop=/sbin/modprobe -r vmlogrdr
+ExecStart=/usr/sbin/modprobe vmlogrdr
+ExecStop=/usr/sbin/modprobe -r vmlogrdr
 
 [Install]
 WantedBy=default.target

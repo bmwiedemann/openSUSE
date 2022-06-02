@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu May 26 17:03:32 UTC 2022 - Mark Post <mpost@suse.com>
+
+- Modifed the spec file to install all binaires in /usr/sbin instead of /sbin
+  to align with the "usrmerge" initiative in openSUSE. (bsc#1195914) Also
+  modified the following files that SUSE provides that need to reflect this
+  change:
+  *  59-graf.rules
+  *  dasd_configure
+  *  dasd_reload
+  *  detach_disks.sh
+  *  iucv_configure
+  *  killcdl
+  *  mkdump.pl
+  *  README.SUSE
+  *  s390-tools-sles12-update-by_id-links-on-change-and-add-action.patch
+  *  virtsetup.sh
+  *  vmlogrdr.service
+- Added s390-tools-sles15sp4-libseckey-Adapt-keymgmt_match-implementation-to-Open.patch
+  for bsc#1199649. zkey: KMIP plugin fails to connection to KMIP server
+  When a zkey key repository is bound to the KMIP plugin, and the
+  connection to the KMIP server is to be configired using command 
+  'zkey kms configure --kmip-server <server>', it fails to connect
+  to the specified KMIP server. 
+- Added s390-tools-sles15sp4-genprotimg-boot-disable-Warray-bounds-for-now.patch
+  to fix a build failure with gcc12. With gcc12, a "false positive"
+  of "array subscript 0 is outside array bounds" is seen in
+  genprotimg/boot/stage3a.c (bsc#1200131).
+
+-------------------------------------------------------------------
 Tue May  3 18:10:58 UTC 2022 - Mark Post <mpost@suse.com>
 
 - Added s390-tools-sles15sp4-zdump-fix-segfault-due-to-double-free.patch

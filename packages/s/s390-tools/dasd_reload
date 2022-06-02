@@ -25,7 +25,7 @@ if [ ! -r /proc/modules ]; then
     exit 1
 fi
 
-if [ ! -x /sbin/rmmod -o ! -x /sbin/modprobe ]; then
+if [ ! -x /usr/sbin/rmmod -o ! -x /usr/sbin/modprobe ]; then
     echo "Missing module programs"
     exit 2
 fi
@@ -95,7 +95,7 @@ for module in ${module_test_list}; do
     if grep -q "${module}" /proc/modules; then
 	module_list="${module} ${module_list}"
 	: Unloading ${module}
-	/sbin/rmmod ${module}
+	/usr/sbin/rmmod ${module}
     fi
 done
 
@@ -133,7 +133,7 @@ if [ -d /etc/udev/rules.d ]; then
 	    fi
 	    echo Activating ${dasd}
 	    mv -i "${file}" /etc/udev/rules.d/
-	    /sbin/chzdev dasd --apply --configured -q --no-root-update ${dasd}
+	    /usr/sbin/chzdev dasd --apply --configured -q --no-root-update ${dasd}
 	    lsdasd
 	    break
 	done
@@ -147,7 +147,7 @@ if [ -d /etc/udev/rules.d ]; then
 	    [ -f "${file}" ] || continue
 	    echo Activating ${dasd}
 	    mv -i "${file}" /etc/udev/rules.d/
-	    /sbin/chzdev dasd --apply --configured -q --no-root-update ${dasd}
+	    /usr/sbin/chzdev dasd --apply --configured -q --no-root-update ${dasd}
 	    break
 	done
     done

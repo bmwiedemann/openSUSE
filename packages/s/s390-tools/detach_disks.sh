@@ -76,7 +76,7 @@ fi
 
 # First, get a list of all the DASD devices we have for this guest, in decimal.
 # (Trying to handle things in hex gets complicated.)
-/sbin/vmcp -b1048576 q v dasd | cut -f2 -d" "  |\
+/usr/sbin/vmcp -b1048576 q v dasd | cut -f2 -d" "  |\
   while read HEXNO
     do let DECNO=0x${HEXNO}
        echo ${DECNO}
@@ -139,7 +139,7 @@ else
 # Get a list of all the virtual NICs since they require an
 # extra keyword to detach. Contrary to what we've done before
 # these will be hex values
-     /sbin/vmcp -b1048576 q nic | grep Adapter | cut -f2 -d" "  | cut -f1 -d. > ${NICFILE}
+     /usr/sbin/vmcp -b1048576 q nic | grep Adapter | cut -f2 -d" "  | cut -f1 -d. > ${NICFILE}
 
 # Now we sort the device numbers and detach them.
      sort -un ${DETFILE} | \

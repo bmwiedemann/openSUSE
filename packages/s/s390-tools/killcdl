@@ -15,7 +15,7 @@ usage(){
   echo "	busid	The full specification of the volume, e.g., 0.0.3184."
 }
 
-ARCH="$(/bin/uname -m)"
+ARCH="$(/usr/bin/uname -m)"
 if [ "${ARCH}" != "s390x" ] && [ "${ARCH}" != "s390" ]; then
   echo "This script is only useful on IBM mainframes."
   exit 1
@@ -107,7 +107,7 @@ BUSID="${FIRST}.${SECOND}.${DEVNO}"
 
 if [ ! -h /sys/bus/ccw/devices/${BUSID} ]; then
   echo "Busid ${BUSID} was not found."
-  /sbin/cio_ignore -i ${BUSID} > /dev/null
+  /usr/sbin/cio_ignore -i ${BUSID} > /dev/null
   if [ $? -eq 0 ]; then
     echo "That device is in the cio_ignore list."
     echo "Please remove it with \"cio_ignore -r ${BUSID}\" before trying again."
@@ -134,16 +134,16 @@ if [ -r /sys/bus/ccw/devices/${BUSID}/discipline ]; then
   # We have to bring the device online before the kernel will fill in
   # the value for discipline.
   if [ ${ORIG_ONLINE_STATUS} -eq 0 ]; then
-    /sbin/chccwdev -e ${BUSID}
-    /sbin/udevadm settle
+    /usr/sbin/chccwdev -e ${BUSID}
+    /usr/sbin/udevadm settle
   fi
 
   read STATUS < /sys/bus/ccw/devices/${BUSID}/status
   if [ "${STATUS}" == "unformatted" ]; then
     echo "DASD device ${BUSID} is already in an unformatted state."
     if [ ${ORIG_ONLINE_STATUS} -eq 0 ]; then
-      /sbin/chccwdev -d -s ${BUSID}
-      /sbin/udevadm settle
+      /usr/sbin/chccwdev -d -s ${BUSID}
+      /usr/sbin/udevadm settle
     fi
     exit 0
   fi
@@ -168,7 +168,7 @@ fi
 if [ "${DISCIPLINE}" != "ECKD" ]; then
   echo "This script only works on ECKD DASD."
   if [ ${ORIG_ONLINE_STATUS} -eq 0 ]; then
-    /sbin/chccwdev -d -s ${BUSID}
+    /usr/sbin/chccwdev -d -s ${BUSID}
   fi
   exit 12
 fi
@@ -180,8 +180,8 @@ if [ ${STATUS} -eq 1 ]; then
     exit 13
   fi
 
-  /sbin/chccwdev -d -s ${BUSID}
-  /sbin/udevadm settle
+  /usr/sbin/chccwdev -d -s ${BUSID}
+  /usr/sbin/udevadm settle
 
   read STATUS < /sys/bus/ccw/devices/${BUSID}/online
   if [ ${STATUS} -ne 0 ]; then
@@ -190,8 +190,8 @@ if [ ${STATUS} -eq 1 ]; then
   fi
 fi
 
-/sbin/chccwdev -a raw_track_access=1 -e ${BUSID}
-/sbin/udevadm settle
+/usr/sbin/chccwdev -a raw_track_access=1 -e ${BUSID}
+/usr/sbin/udevadm settle
 
 read STATUS < /sys/bus/ccw/devices/${BUSID}/online
 if [ ${STATUS} -ne 1 ]; then
@@ -208,10 +208,10 @@ if [ "$?" -ne 0 ]; then
 fi
 
 echo "Setting ${BUSID} back offline with raw track access disabled."
-/sbin/chccwdev -d -s -a raw_track_access=0 ${BUSID}
-/sbin/udevadm settle
+/usr/sbin/chccwdev -d -s -a raw_track_access=0 ${BUSID}
+/usr/sbin/udevadm settle
 
 if [ ${ORIG_ONLINE_STATUS} -eq 1 ]; then
-  /sbin/chccwdev -e ${BUSID}
-  /sbin/udevadm settle
+  /usr/sbin/chccwdev -e ${BUSID}
+  /usr/sbin/udevadm settle
 fi

@@ -38,7 +38,7 @@ case "${hypervisor}" in
 		  /usr/lib/systemd/scripts/detach_disks.sh
 		fi
 		if [ "${ZVM_WARN_ABOUT_POSSIBLE_LGR_PROBLEMS}" == yes ]; then
-		  /sbin/lgr_check
+		  /usr/sbin/lgr_check
 		fi
 	;;
 	none)

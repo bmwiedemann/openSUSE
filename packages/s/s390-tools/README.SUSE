@@ -21,7 +21,7 @@ ls - Addons by SUSE
 	    1 for on and 0 for off
 
 	* ctc_configure
-	  Usage: /sbin/ctc_configure <read channel> <write channel> <online> [<protocol>]
+	  Usage: /usr/sbin/ctc_configure <read channel> <write channel> <online> [<protocol>]
 	  To configure CTC connections 
 	  Valid Parameters for the protocal are 0, 1 and 3
 	  For a detailed explanation please look in the Device Driver book
@@ -33,11 +33,11 @@ ls - Addons by SUSE
 	  LPAR just set it to 0
 
 	* iucv_configure
-	  Usage: /sbin/iucv_configure  <router> <online>
+	  Usage: /usr/sbin/iucv_configure  <router> <online>
 	  To set an IUCV IP-network online/offline
 
 	* qeth_configure
-	  Usage: /sbin/qeth_configure [options] <read chan> <write chan> <control chan> <online>
+	  Usage: /usr/sbin/qeth_configure [options] <read chan> <write chan> <control chan> <online>
 	  Set qeth, hipersocket adapter online/offline.
 	  options could be one of the following:
 
@@ -48,10 +48,10 @@ ls - Addons by SUSE
 	  
 
 	* zfcp_disk_configure
-	  Usage: /sbin/zfcp_disk_configure  <ccwid> <wwpn> <lun> <online>
+	  Usage: /usr/sbin/zfcp_disk_configure  <ccwid> <wwpn> <lun> <online>
 	  set a disk online/offline. This require that the repective
 	  Adapter is online. See command below.
 
 	* zfcp_host_configure
-	  Usage: /sbin/zfcp_host_configure  <ccwid> <online>
+	  Usage: /usr/sbin/zfcp_host_configure  <ccwid> <online>
 	  Set a zfcp Adapter online/offline
