@@ -1,7 +1,7 @@
 #
 # spec file for package libfwnt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,15 +29,17 @@ Source2:        https://github.com/libyal/libfwnt/releases/download/%version/lib
 Source3:        %name.keyring
 Source11:       Locale_identifier_LCID.pdf
 Patch1:         system-libs.patch
+BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libcdata) >= 20210625
 BuildRequires:  pkgconfig(libcerror) >= 20201121
 BuildRequires:  pkgconfig(libcnotify) >= 20200913
 BuildRequires:  pkgconfig(libcthreads) >= 20200508
-BuildRequires:  pkgconfig(python3)
+%python_subpackages
 
 %description
 Library to provide Windows NT data type support for the libyal family of libraries.
@@ -65,27 +67,24 @@ of libraries. libyal is typically used in digital forensic tools.
 This subpackage contains libraries and header files for developing
 applications that want to make use of libfwnt.
 
-%package -n python3-%{name}
-Summary:        Python 3 bindings for ${name}
-License:        LGPL-3.0-or-later
-Group:          Development/Languages/Python
-Requires:       %{lname} = %{version}
-Requires:       python3
-
-%description -n python3-%{name}
-This packinge provides Python 3 bindings for ${name}
-
 %prep
 %autosetup -p1
 cp %_sourcedir/*.pdf .
 
 %build
 autoreconf -fi
-%configure --disable-static --enable-python3
+# OOT builds are presently broken, so we have to install
+# within each python iteration now, not in %%install.
+%{python_expand #
+%configure --disable-static \
+	--enable-python PYTHON_VERSION="%{$python_bin_suffix}"
 %make_build
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
+mv %_builddir/rt/* %buildroot/
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
@@ -98,7 +97,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING*
 %{_libdir}/libfwnt.so.*
 
-%files devel
+%files -n %name-devel
 %license COPYING*
 %doc Locale_identifier_LCID.pdf
 %{_includedir}/libfwnt.h
@@ -107,8 +106,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/libfwnt.pc
 %{_mandir}/man3/libfwnt.3*
 
-%files -n python3-%{name}
+%files %python_files
 %license COPYING*
-%{python3_sitearch}/pyfwnt.so
+%{python_sitearch}/pyfwnt.so
 
 %changelog

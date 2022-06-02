@@ -88,4 +88,12 @@
     <comment>- Update to release 20210906</comment>
     <requestid>933961</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>f66af2e9d13ff8fbb3ebaf5d45304689</srcmd5>
+    <version>20210906</version>
+    <time>1654199677</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>980467</requestid>
+  </revision>
 </revisionlist>
