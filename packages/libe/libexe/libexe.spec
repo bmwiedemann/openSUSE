@@ -1,7 +1,7 @@
 #
 # spec file for package libexe
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,10 +26,12 @@ Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libexe
 Source:         %{name}-%{version}.tar.xz
 Patch1:         system-libs.patch
+BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libbfio) >= 20201229
 BuildRequires:  pkgconfig(libcdata) >= 20200509
 BuildRequires:  pkgconfig(libcerror) >= 20201121
@@ -43,14 +45,13 @@ BuildRequires:  pkgconfig(libfcache) >= 20200708
 BuildRequires:  pkgconfig(libfdata) >= 20201129
 BuildRequires:  pkgconfig(libfdatetime) >= 20180910
 BuildRequires:  pkgconfig(libuna) >= 20201204
-BuildRequires:  pkgconfig(python3)
+%python_subpackages
 
 %description
-libexe is a library and related tools to access the executable (EXE) format.
-
-At the moment the goal of this project is to provide functionality to parse EXE (PE/COFF) and the resources stored in them using libwrc. This functionality is used in libevt and libevx to parse EventLog messages from PE/COFF message files.
-
-Part of the libyal family of libraries.
+libexe is a library and related tools to parse .exe files
+(specifically PE/COFF) and the resources stored in them using
+libwrc. This functionality is used in libevt and libevx to parse
+EventLog messages from PE/COFF message files.
 
 %package -n %{lname}
 Summary:        Library to access the executable (EXE) format
@@ -58,11 +59,10 @@ License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
 %description -n %{lname}
-libexe is a library and related tools to access the executable (EXE) format.
-
-At the moment the goal of this project is to provide functionality to parse EXE (PE/COFF) and the resources stored in them using libwrc. This functionality is used in libevt and libevx to parse EventLog messages from PE/COFF message files.
-
-Part of the libyal family of libraries.
+libexe is a library and related tools to parse .exe files
+(specifically PE/COFF) and the resources stored in them using
+libwrc. This functionality is used in libevt and libevx to parse
+EventLog messages from PE/COFF message files.
 
 %package tools
 Summary:        Tools to access Microsoft executable (EXE) format files
@@ -70,7 +70,8 @@ License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
 
 %description tools
-Tools to access Microsoft executable (EXE) format files including PE/COFF formats.
+Tools to access Microsoft executable (.exe) format files
+including PE/COFF formats.
 
 %package devel
 Summary:        Development files for libexe
@@ -79,31 +80,27 @@ Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
 %description devel
-Library to provide Microsoft EXE file support for the libyal family of libraries.  libyal is typically used in digital forensic tools.
+Library to provide Microsoft EXE file support for the libyal family
+of libraries. libyal is typically used in digital forensic tools.
 
 This subpackage contains libraries and header files for developing
 applications that want to make use of libexe.
-
-%package -n python3-%name
-Summary:        Python bindings for libexe
-License:        LGPL-3.0-or-later
-Group:          Development/Libraries/Python
-#python-%name was previously the name of this submodule.  It was python2 bindings.
-Obsoletes:      python-%name <= 20181128
-
-%description -n python3-%name
-Python bindings for libexe.  Libexe is a part of the libyal family of libraries.
 
 %prep
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
-%configure --disable-static --enable-wide-character-type --enable-python3
+autoreconf -fi
+%{python_expand #
+%configure --disable-static --enable-wide-character-type \
+	--enable-python PYTHON_VERSION="%{$python_bin_suffix}"
 %make_build
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
+mv %_builddir/rt/* %buildroot/
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %{lname} -p /sbin/ldconfig
@@ -113,12 +110,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING*
 %{_libdir}/libexe.so.*
 
-%files tools
+%files -n %name-tools
 %license COPYING*
 %_bindir/exeinfo
 %_mandir/man1/exeinfo.1*
 
-%files devel
+%files -n %name-devel
 %license COPYING*
 %{_includedir}/libexe.h
 %{_includedir}/libexe/
@@ -126,7 +123,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/libexe.pc
 %{_mandir}/man3/libexe.3*
 
-%files -n python3-%name
-%python3_sitearch/pyexe.so
+%files %python_files
+%python_sitearch/pyexe.so
 
 %changelog
