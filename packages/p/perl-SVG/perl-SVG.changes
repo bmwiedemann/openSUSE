@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 20 03:09:01 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.87
+   see /usr/share/doc/packages/perl-SVG/Changes
+
+  2.87  2022.05.19 MANWAR
+        - Indent doc for text PR #15, thanks @benkasminbullock.
+        - Remove dead links to domain-squatted site PR #16, thanks @benkasminbullock.
+        - Perldity code base (still 2 not happy).
+
+-------------------------------------------------------------------
 Fri Apr 23 03:09:43 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.86

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-SVG
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name SVG
 Name:           perl-SVG
-Version:        2.86
+Version:        2.87
 Release:        0
-Summary:        Perl extension for generating Scalable Vector Graphics (SVG) documents
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Perl extension for generating Scalable Vector Graphics (SVG) documents
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MA/MANWAR/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
