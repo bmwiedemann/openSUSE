@@ -100,4 +100,12 @@
     <comment>- Update to release 20211229</comment>
     <requestid>944876</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>eb57ae191a4187d159b2d996ee11f8ec</srcmd5>
+    <version>20220220</version>
+    <time>1654199674</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>980464</requestid>
+  </revision>
 </revisionlist>
