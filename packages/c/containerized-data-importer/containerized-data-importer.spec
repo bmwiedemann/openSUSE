@@ -17,7 +17,7 @@
 
 
 Name:           containerized-data-importer
-Version:        1.48.0
+Version:        1.49.0
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
