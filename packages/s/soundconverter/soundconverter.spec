@@ -1,7 +1,7 @@
 #
 # spec file for package soundconverter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global __requires_exclude typelib\\(GConf\\)|typelib\\(Unity\\)
 %define pythons python3
 Name:           soundconverter
-Version:        4.0.1
+Version:        4.0.3
 Release:        0
 Summary:        Sound Converter Application for the GNOME Desktop
 License:        GPL-3.0-or-later
@@ -68,8 +68,6 @@ to WAV, FLAC, MP3, AAC, and Ogg Vorbis, also with the help of GStreamer.
 %install
 %python_install
 
-mkdir -p %{buildroot}/usr/share/locale
-mv build/mo/* %{buildroot}/usr/share/locale/
 %find_lang %{name}
 
 desktop-file-install \
