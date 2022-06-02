@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Pod-Usage
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,17 @@
 #
 
 
+%define cpan_name Pod-Usage
 Name:           perl-Pod-Usage
-Version:        2.01
+Version:        2.03
 Release:        0
 #Upstream: Artistic-1.0 or GPL-1.0-or-later
-%define cpan_name Pod-Usage
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Extracts POD documentation and shows usage information
-License:        GPL-1.0-or-later OR Artistic-1.0
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/M/MA/MAREKR/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Pod::Perldoc) >= 3.28
@@ -49,11 +47,11 @@ description (if present) of the command line options and arguments. If the
 verbose level is 2, then the entire manual page is printed.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -82,7 +80,6 @@ popd >/dev/null
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 %license LICENSE
 

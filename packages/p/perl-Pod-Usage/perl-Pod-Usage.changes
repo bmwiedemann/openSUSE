@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May 22 03:09:07 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.03
+   see /usr/share/doc/packages/perl-Pod-Usage/Changes
+
+  2.03      2022-05-21
+
+  2.02      2022-05-21
+
+  - merged two pull requests (https://github.com/Dual-Life/Pod-Usage),
+    thanks Nicolas and Karl
+
+-------------------------------------------------------------------
 Wed Oct 14 03:17:40 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.01
