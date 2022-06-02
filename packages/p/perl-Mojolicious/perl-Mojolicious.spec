@@ -18,7 +18,7 @@
 
 %define cpan_name Mojolicious
 Name:           perl-Mojolicious
-Version:        9.25
+Version:        9.26
 Release:        0
 License:        Artistic-2.0
 Summary:        Real-time web framework
