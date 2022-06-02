@@ -20,15 +20,16 @@
 %bcond_without ide
 
 Name:           coq
-Version:        8.15.1
+Version:        8.15.2
 Release:        0
 Summary:        Proof Assistant based on the Calculus of Inductive Constructions
 License:        LGPL-2.1-only
 Group:          Productivity/Scientific/Math
 URL:            https://coq.inria.fr/
 Source:         https://github.com/coq/coq/archive/V%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        coq.desktop
-Source2:        coq.xml
+Source1:        fr.inria.coq.coqide.desktop
+Source2:        fr.inria.coq.coqide.metainfo.xml
+Source3:        coq.xml
 Source50:       coq-refman-%{version}.tar.xz
 Source51:       coq-stdlib-%{version}.tar.xz
 Source100:      %{name}-rpmlintrc
@@ -74,6 +75,7 @@ This package contains development files for Coq.
 Summary:        Documentation for coq
 Group:          Documentation/HTML
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description doc
 HTML reference manual for Coq and full documentation of the standard library.
@@ -112,8 +114,9 @@ mv %{buildroot}%{_prefix}/lib/* %{buildroot}%{_libdir}
 
 %if %{with ide}
 %suse_update_desktop_file -i %{SOURCE1}
-install -D -m 644 %{SOURCE1} %{buildroot}%{_datadir}/applications/coq.desktop
-install -D -m 644 %{SOURCE2} %{buildroot}%{_datadir}/mime/packages/coq.xml
+install -D -m 644 %{SOURCE1} %{buildroot}%{_datadir}/applications/fr.inria.coq.coqide.desktop
+install -D -m 644 %{SOURCE2} %{buildroot}%{_datadir}/metainfo/fr.inria.coq.coqide.metainfo.xml
+install -D -m 644 %{SOURCE3} %{buildroot}%{_datadir}/mime/packages/coq.xml
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
 ln -s %{_datadir}/coq/coq.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/coq.png
 %else
@@ -245,8 +248,9 @@ rm -r %{buildroot}%{_docdir}/%{name}/refman/{.buildinfo,.doctrees,_sources}
 %{_bindir}/coqidetop.opt
 %{_mandir}/man1/coqide.1%{ext_man}
 %{_datadir}/%{name}
-%{_datadir}/applications/coq.desktop
+%{_datadir}/applications/fr.inria.coq.coqide.desktop
 %{_datadir}/icons/hicolor/256x256/apps/coq.png
+%{_datadir}/metainfo/fr.inria.coq.coqide.metainfo.xml
 %{_datadir}/mime/packages/coq.xml
 %dir %{_docdir}/%{name}
 %{_docdir}/%{name}/coqide

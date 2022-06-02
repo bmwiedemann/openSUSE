@@ -286,4 +286,26 @@
 </comment>
     <requestid>964734</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>381730229c99f5db698869904bdc74d5</srcmd5>
+    <version>8.15.2</version>
+    <time>1654199659</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.15.2.
+  * Tactics `intuition` and `dintuition` use
+    `Tauto.intuition_solver` (defined as `auto with *`) instead of
+    hardcoding `auto with *`. This makes it possible to change the
+    default solver with `Ltac Tauto.intuition_solver ::= ...`.
+  * Fixed an uncaught exception `UnableToUnify` with
+    bidirectionality hints.
+  * Fixed multiple CoqIDE bugs.
+  * Fixed an incorrect implementation of `SFClassify`, allowing for
+    a proof of `False` since 8.11.0, due to Axioms present in
+    `Float.Axioms`.
+- Rename coq.desktop to fr.inria.coq.coqide.desktop as the
+  documentation suggests, add an accompanying metainfo file.
+- Declare documentation as noarch.
+</comment>
+    <requestid>980409</requestid>
+  </revision>
 </revisionlist>

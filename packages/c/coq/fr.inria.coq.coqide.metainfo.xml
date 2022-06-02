@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component>
+  <id type="desktop">fr.inria.coq.coqide</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <name>Coq IDE</name>
+  <summary>Graphical frontend for the Coq formal proof management system</summary>
+  <description>
+    <p>
+      Coq implements a program specification and mathematical higher-level language called <em>Gallina</em> that is based on an expressive formal language called the <em>Calculus of Inductive Constructions</em> that itself combines both a higher-order logic and a richly-typed functional programming language.
+      Through a <em>vernacular</em> language of commands, Coq allows:
+    </p>
+    <ul>
+      <li>to define functions or predicates, that can be evaluated efficiently;</li>
+      <li>to state mathematical theorems and software specifications;</li>
+      <li>to interactively develop formal proofs of these theorems;</li>
+      <li>to machine-check these proofs by a relatively small certification "kernel";</li>
+      <li>to extract certified programs to languages like OCaml, Haskell or Scheme.</li>
+    </ul>
+    <p>
+      As a proof development system, Coq provides interactive proof methods, decision and semi-decision algorithms, and a <em>tactic</em> language for letting the user define its own proof methods.
+      Connection with external computer algebra system or theorem provers is available.
+    </p>
+    <p>
+      As a platform for the formalization of mathematics or the development of programs, Coq provides support for high-level notations, implicit contents and various other useful kinds of macros.
+    </p>
+  </description>
+  <categories>
+    <category>Development</category>
+    <category>IDE</category>
+    <category>Science</category>
+    <category>ComputerScience</category>
+    <category>Math</category>
+  </categories>
+  <keywords>
+    <keyword>dependent-types</keyword>
+    <keyword>coq</keyword>
+    <keyword>theorem-proving</keyword>
+    <keyword>proof-assistant</keyword>
+  </keywords>
+  <url type="homepage">https://coq.inria.fr/</url>
+  <url type="bugtracker">https://github.com/coq/coq/issues</url>
+  <url type="faq">https://github.com/coq/coq/wiki/The-Coq-FAQ</url>
+  <url type="help">https://coq.inria.fr/documentation</url>
+  <url type="donation">https://coq.inria.fr/consortium</url>
+  <url type="vcs-browser">https://github.com/coq/coq</url>
+  <url type="contribute">https://github.com/coq/coq/blob/master/CONTRIBUTING.md</url>
+  <launchable type="desktop-id">fr.inria.coq.coqide.desktop</launchable>
+  <releases>
+    <release version="8.15.2" date="2022-05-31"/>
+    <release version="8.15.1" date="2022-03-22"/>
+  </releases>
+  <provides>
+    <binary>coqide</binary>
+  </provides>
+  <project_license>LGPL-2.1-only</project_license>
+  <content_rating type="oars-1.1"/>
+</component>
