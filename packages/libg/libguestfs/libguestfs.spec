@@ -2,7 +2,6 @@
 # spec file for package libguestfs
 #
 # Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2011 Michal Hrusecky <mhrusecky@novell.com>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,558 +14,164 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-# needsbinariesforbuild
 
 
-Version:        1.44.2
-Release:        0
-%{?ocaml_preserve_bytecode}
-
-%bcond_without ocaml_bindings
-%bcond_without lua_bindings
-%bcond_without python_bindings
-%bcond_without perl_bindings
-%bcond_without hivex
-
-%bcond_without fuse
-
-%bcond_without ruby_bindings
-
-%bcond_with p2v
-
-%bcond_without bash_completion
-# The following defines are overridden in the individual subpackages
-%define _configure_fuse --disable-fuse
-%define _configure_lua --disable-lua
-%define _configure_ocaml --disable-ocaml
-%define _configure_perl --disable-perl
-%define _configure_python --disable-python
-%define _configure_ruby --disable-ruby
-
-#
-# use 'env LIBGUESTFS_HV=/path/to/kvm libguestfs-test-tool' to verify
-%define kvm_binary /bin/false
-%ifarch aarch64
-%define kvm_binary /usr/bin/qemu-system-aarch64
-%endif
-%ifarch ppc64le
-%define kvm_binary /usr/bin/qemu-system-ppc64
-%endif
-%ifarch ppc64
-%define kvm_binary /usr/bin/qemu-system-ppc64
-%endif
-%ifarch s390x
-%define kvm_binary /usr/bin/qemu-system-s390x
-%endif
-%ifarch x86_64
-%define kvm_binary /usr/bin/qemu-system-x86_64
-%endif
-#
-%define guestfs_docdir %{_defaultdocdir}/%{name}
-#
 Name:           libguestfs
-%if "%{?_ignore_exclusive_arch}" == ""
 ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64
-%endif
-BuildRequires:  aaa_base
-BuildRequires:  attr-devel
-BuildRequires:  augeas-devel >= 1.0.0
-BuildRequires:  autoconf
-BuildRequires:  automake
-%if %{with bash_completion}
-BuildRequires:  bash-completion >= 2.0
-%if 0%{?suse_version} >= 1330
-BuildRequires:  bash-completion-devel >= 2.0
-%endif
-%endif
+Version:        1.48.3
+Release:        0
+Summary:        Access and modify virtual machine disk images
+License:        GPL-2.0-or-later
+URL:            http://libguestfs.org
+
+Source0:        %{name}-%{version}.tar.gz
+Source1:        %{name}-%{version}.tar.gz.sig
+Source3:        libguestfs.rpmlintrc
+Source5:        guestfish.sh
+Source100:      mount-rootfs-and-chroot.sh
+Source101:      README
+
+# Patches
+
 BuildRequires:  bison
 BuildRequires:  file-devel
 BuildRequires:  flex
-BuildRequires:  gcc
+BuildRequires:  gawk
 BuildRequires:  gcc-c++
+BuildRequires:  gobject-introspection-devel
 BuildRequires:  gperf
-BuildRequires:  libacl-devel
-BuildRequires:  libcap-devel
-BuildRequires:  libconfig-devel
 BuildRequires:  libtool
-BuildRequires:  libvirt-devel >= 1.2.20
-BuildRequires:  libxml2-devel
-BuildRequires:  ncurses-devel
-BuildRequires:  pkgconfig(libtirpc)
-%if %{with perl_bindings}
-BuildRequires:  perl(Module::Build)
-%endif
-BuildRequires:  db48-utils
-BuildRequires:  dhcp-client
-BuildRequires:  libjansson-devel
-BuildRequires:  pcre2-devel
-BuildRequires:  pkg-config
-BuildRequires:  qemu-tools
-BuildRequires:  readline-devel
-BuildRequires:  supermin >= 5.1.6
-BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(python3)
-# Required to build tools, its independent from bindings
-BuildRequires:  glib2-devel
-BuildRequires:  ocaml >= 4.01
-BuildRequires:  ocaml-findlib
-BuildRequires:  ocaml-gettext-devel
-BuildRequires:  ocaml-gettext-stub-devel
+BuildRequires:  ocaml >= 4.04
 BuildRequires:  ocaml-hivex-devel
-BuildRequires:  ocaml-libvirt-devel
-
-#
-BuildRequires:  ocaml-rpm-macros
-%if %{with ocaml_bindings}
-%define _configure_ocaml --enable-ocaml
-%endif
-#
-%if %{with fuse}
-BuildRequires:  fuse-devel
-%define _configure_fuse --enable-fuse
-%endif
-#
-%if %{with hivex}
-BuildRequires:  glibc-locale
-BuildRequires:  hivex
-BuildRequires:  hivex-devel
-%endif
-#
-%if %{with p2v}
-BuildRequires:  gtk2-devel
-%endif
-#
-URL:            http://libguestfs.org/
-Summary:        Compatibility package for guestfs-tools
-# Upstream patches
-License:        GPL-2.0-or-later
-
-# Upstream
-Patch1:         e26cfa44-daemon-Build-with--pthread.patch
-Patch2:         489b14b7-ocaml-examples-Link-examples-to-gnulib.patch
-Patch3:         68a02c2f-customize--resize--sparsify--sysprep-Link-explicitly-with-pthread.patch
-Patch4:         c0de4de9-appliance-add-reboot-and-netconfig-for-SUSE.patch
-Patch5:         9db0c98c-appliance-enable-bashs-Process-Substitution-feature.patch
-Patch6:         f47e0bb6-appliance-reorder-mounting-of-special-filesystems-in-init.patch
-Patch7:         63c9cd93-m4-guestfs-ocaml.m4-Fix-deprecated-warning-format.patch
-Patch8:         a4930f5f-customize-Suppress-OCaml-warning.patch
-
-# Pending upstram review
-Patch50:        0001-Introduce-a-wrapper-around-xmlParseURI.patch
-Patch51:        0002-common-extract-UTF-8-conversion-function.patch
-Patch52:        0003-inspector-rpm-summary-and-description-may-not-be-utf.patch
-# Our patches
-Patch100:       appliance.patch
-Patch101:       netconfig.patch
-Patch102:       libguestfs.env.patch
-Patch103:       makefile-ocaml-find-guestfs.patch
-
-Source0:        https://download.libguestfs.org/1.44-stable/libguestfs-%{version}.tar.gz
-Source1:        https://download.libguestfs.org/1.44-stable/libguestfs-%{version}.tar.gz.sig
-Source3:        libguestfs.rpmlintrc
-Source100:      mount-rootfs-and-chroot.sh
-Source101:      README
-Source789653:   Pod-Simple-3.23.tar.xz
-#
-Source10001:    libguestfs.test.simple.run-libugestfs-test-tool.sh
-Source10002:    libguestfs.test.simple.create-opensuse-guest.sh
-Source10003:    libguestfs.test.simple.create-opensuse-guest-crypt-on-lvm.sh
-Source10004:    libguestfs.test.simple.create-sles12-guest.sh
-Source10005:    libguestfs.test.simple.create-sles12-guest-crypt-on-lvm.sh
-
-#
-Requires:       guestfs-tools
-Requires:       lvm2
-Requires:       virt-v2v = %{version}
-
-%description
-libguestfs is a set of tools for accessing and modifying virtual machine (VM)
-disk images. You can use this for viewing and editing files inside guests,
-scripting changes to VMs, monitoring disk used/free statistics, P2V, V2V,
-performing partial backups, cloning VMs, and much else besides.
-
-%package -n guestfs-tools
-Summary:        Tools for accessing and modifying virtual machine disk images
-Provides:       %{name} = %{version}
-Obsoletes:      %{name} < %{version}
-Requires:       libguestfs0 = %{version}
-Requires:       python3-evtx
-%if %{with bash_completion}
-Recommends:     bash-completion >= 2.0
-%endif
-%if %{with perl_bindings}
-Requires:       perl(Data::Dumper)
-Requires:       perl(File::Basename)
-Requires:       perl(File::Temp)
-Requires:       perl(Getopt::Long)
-Requires:       perl(Locale::TextDomain)
-Requires:       perl(Pod::Usage)
-Requires:       perl(String::ShellQuote)
-Requires:       perl(Sys::Guestfs)
-%{perl_requires}
-%if %{with hivex}
-Requires:       perl(Win::Hivex)
-Requires:       perl(Win::Hivex::Regedit)
-%endif
-%endif
-
-%if %{with fuse}
-Requires:       fuse
-%endif
-
-# For virt-builder
-Requires:       curl
-Requires:       gpg2
-Requires:       xz
-Conflicts:      libguestfs0 < %{version}
-
-%description -n guestfs-tools
-libguestfs is a set of tools for accessing and modifying virtual machine (VM)
-disk images. You can use this for viewing and editing files inside guests,
-scripting changes to VMs, monitoring disk used/free statistics, P2V, V2V,
-performing partial backups, cloning VMs, and much else besides.
-
-libguestfs can access nearly any type of filesystem including: all known types
-of Linux filesystem (ext2/3/4, XFS, btrfs etc), any Windows filesystem (VFAT
-and NTFS), any Mac OS X and BSD filesystems, LVM2 volume management, MBR and
-GPT disk partitions, raw disks, qcow2, VirtualBox VDI, VMWare VMDK, CD and DVD
-ISOs, SD cards, and dozens more. libguestfs doesn't need root permissions.
-
-All this functionality is available through a convenient shell called
-guestfish, or use virt-rescue to get a rescue shell for fixing unbootable
-virtual machines.
-
-%package -n guestfsd
-Summary:        Daemon for the libguestfs appliance
-Conflicts:      libaugeas0 < 1.0.0
-
-%description -n guestfsd
-guestfsd runs within the libguestfs appliance. It receives commands from the host
-and performs the requested action by calling the helper binaries.
-This package is only required for building the appliance.
-
-#
-%if %{with ocaml_bindings}
-%package -n ocaml-libguestfs
-Summary:        OCaml bindings for libguestfs
-#
-
-%description -n ocaml-libguestfs
-Allows OCaml scripts to directly use libguestfs.
-
-%package -n ocaml-libguestfs-devel
-Summary:        Development files for libguesfs OCaml bindings
-
-%description -n ocaml-libguestfs-devel
-Allows OCaml scripts to directly use libguestfs.
-%endif
-#
-%if %{with perl_bindings}
-%package -n perl-Sys-Guestfs
-Summary:        Perl bindings for libguestfs
-BuildRequires:  perl
-BuildRequires:  perl(Data::Dumper)
+BuildRequires:  pkgconf-pkg-config
+BuildRequires:  po4a
+BuildRequires:  readline-devel
+BuildRequires:  supermin >= 5.1.18
+BuildRequires:  ocamlfind(findlib)
 BuildRequires:  perl(Getopt::Long)
 BuildRequires:  perl(Locale::TextDomain)
+BuildRequires:  perl(Module::Build)
+BuildRequires:  perl(Pod::Man)
+BuildRequires:  perl(Pod::Simple)
 BuildRequires:  perl(Pod::Usage)
-BuildRequires:  perl(String::ShellQuote)
-BuildRequires:  perl(Sys::Virt)
-%if %{with hivex}
-BuildRequires:  perl(Win::Hivex)
-BuildRequires:  perl(Win::Hivex::Regedit)
-%endif
-%define _configure_perl --enable-perl
-#
-Provides:       libguestfs-perl = %{version}
-Obsoletes:      libguestfs-perl < %{version}
-Requires:       perl(File::Temp)
-Requires:       perl(Locale::TextDomain)
-%perl_requires
-
-%description -n perl-Sys-Guestfs
-Allows Perl scripts to directly use libguestfs.
-%endif
-#
-%if %{with lua_bindings}
-%package -n lua-libguestfs
-Summary:        Lua bindings for libguestfs
-BuildRequires:  lua-devel
-%define _configure_lua --enable-lua
-#
-
-%description -n lua-libguestfs
-Allows lua scripts to directly use libguestfs.
-%endif
-#
-
-%if %{with python_bindings}
-%{?!python_module:%define python_module() python3-%{**}}
-%package -n python3-libguestfs
-Summary:        Python 3 bindings for libguestfs
+BuildRequires:  perl(Test::More)
+BuildRequires:  pkgconfig(augeas)
+BuildRequires:  pkgconfig(bash-completion)
+BuildRequires:  pkgconfig(fuse)
+BuildRequires:  pkgconfig(hivex)
+BuildRequires:  pkgconfig(jansson)
+BuildRequires:  pkgconfig(libacl)
+BuildRequires:  pkgconfig(libcap)
+BuildRequires:  pkgconfig(libconfig)
+BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(libpcre2-8)
+BuildRequires:  pkgconfig(libtirpc)
+BuildRequires:  pkgconfig(libvirt)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(python3)
-%define _configure_python --enable-python
-#
-Obsoletes:      libguestfs-python < %{version}
-Obsoletes:      python-libguestfs < %{version}
-Provides:       python-libguestfs = %{version}
+BuildRequires:  pkgconfig(rpm) >= 4.6.0
+BuildRequires:  pkgconfig(tinfo)
 
-%description -n python3-libguestfs
-Allows Python 3 scripts to directly use libguestfs.
-%endif
-#
-%if %{with ruby_bindings}
-%package -n rubygem-libguestfs
-Summary:        Ruby bindings for libguestfs
-BuildRequires:  ruby
-BuildRequires:  ruby-devel
-BuildRequires:  rubygem(rake)
-%define _configure_ruby --enable-ruby
-#
+Requires:       supermin >= 5.1.18
+Obsoletes:      guestfs-tools <= 1.44.2
 
-%description -n rubygem-libguestfs
-Allows Ruby scripts to directly use libguestfs.
-%endif
+%description
+Libguestfs is a library for accessing and modifying virtual machine
+disk images.  http://libguestfs.org
 
-%package test
-Summary:        Testcases for libguestfs
-Requires:       %{name}
-
-%description test
-This package contains testcases to verify libguestfs functionality.
-
-%package -n guestfs-data
-BuildRequires:  augeas-lenses
-BuildRequires:  bc
-BuildRequires:  btrfsprogs
-BuildRequires:  bzip2
-BuildRequires:  coreutils
-BuildRequires:  cpio
-BuildRequires:  cryptsetup
-BuildRequires:  diffutils
-BuildRequires:  dosfstools
-BuildRequires:  e2fsprogs
-BuildRequires:  file
-BuildRequires:  findutils
-BuildRequires:  gawk
-%if 0%{?suse_version} >= 1500
-BuildRequires:  mkisofs
-%else
-BuildRequires:  cdrkit-cdrtools-compat
-BuildRequires:  genisoimage
-%endif
-BuildRequires:  glibc
-BuildRequires:  gptfdisk
-BuildRequires:  grep
-BuildRequires:  gzip
-BuildRequires:  initviocons
-BuildRequires:  iproute2
-BuildRequires:  jfsutils
-BuildRequires:  lvm2
-BuildRequires:  mdadm
-BuildRequires:  module-init-tools
-BuildRequires:  ncurses-utils
-BuildRequires:  nfs-client
-BuildRequires:  ntfs-3g
-BuildRequires:  ntfsprogs
-BuildRequires:  pam-config
-BuildRequires:  parted
-BuildRequires:  pciutils
-BuildRequires:  pciutils-ids
-BuildRequires:  psmisc
-BuildRequires:  reiserfs
-BuildRequires:  rsync
-BuildRequires:  sg3_utils
-BuildRequires:  strace
-%ifarch %ix86 x86_64
-BuildRequires:  syslinux
-%endif
-BuildRequires:  ldmtool
-BuildRequires:  tar
-BuildRequires:  terminfo-base
-BuildRequires:  tunctl
-BuildRequires:  udev
-BuildRequires:  util-linux
-BuildRequires:  util-linux-lang
-BuildRequires:  xfsprogs
-BuildRequires:  xz
-BuildRequires:  pkgconfig(systemd)
-
-# Needed by guestfsd which is burried in the appliance
-#
-# The problem with this design is that rpm can't find the
-# library dependencies from the guestfsd hidden in the
-# daemon.tar.gz tarball.Supermin will compute an appliance
-# at runtime based on the packages it will find on the host.
-# Thus if there is no libaugeas, libhivex, etc on the host,
-# the appliance will fail to start the guestfsd.
-Requires:       augeas
-Requires:       augeas-lenses
-Requires:       libaugeas0
-Requires:       libcap2
-Requires:       libhivex0
-Requires:       libpcre1
-
-# For core disk features
-Requires:       qemu-tools
-
-# Optional packages that could be picked up by supermin
-Recommends:     btrfsprogs
-Recommends:     dosfstools
-Recommends:     e2fsprogs
-Recommends:     cryptsetup
-Recommends:     gptfdisk
-Recommends:     jfsutils
-Recommends:     reiserfs
-Recommends:     xfsprogs
-Recommends:     mdadm
-Recommends:     parted
-Recommends:     zerofree
-%if 0%{?suse_version} >= 1500
-Recommends:     mkisofs
-%else
-Recommends:     genisoimage
-%endif
-Recommends:     ldmtool
-Recommends:     guestfs-winsupport
-
-Summary:        Virtual machine needed for libguestfs
-Provides:       libguestfs-data = %{version}
-Obsoletes:      libguestfs-data < %{version}
-
-%description -n guestfs-data
-libguestfs needs for it's run a virtual machine image.
-This package provides such an image, an initrd and a kernel.
-
-%package -n guestfs-winsupport
-Summary:        Windows guest support in libguestfs
-Requires:       libguestfs >= 1.32
-BuildRequires:  ntfs-3g
-BuildRequires:  ntfsprogs
-BuildRequires:  rsync
-
-%description -n guestfs-winsupport
-Provides the needed pieces for libguestfs to handle Windows guests.
-
-%package devel
-Summary:        Development files for libguestfs
-Requires:       libguestfs0 = %{version}
-
-%description devel
-Development files for libguestfs.
-
-libguestfs is a set of tools for accessing and modifying virtual machine (VM)
-disk images. You can use this for viewing and editing files inside guests,
-scripting changes to VMs, monitoring disk used/free statistics, P2V, V2V,
-performing partial backups, cloning VMs, and much else besides.
-
-%package -n libguestfs0
-Summary:        Runtime library of libguestfs
-Requires:       %{kvm_binary}
-Requires:       db48-utils
-Requires:       guestfs-data >= %{version}
-Requires:       qemu >= 2.0
-Requires:       qemu-tools
-Requires:       supermin >= 5.1.6
-
-%description -n libguestfs0
-Library for libguestfs.
-
-libguestfs is a set of tools for accessing and modifying virtual machine (VM)
-disk images. You can use this for viewing and editing files inside guests,
-scripting changes to VMs, monitoring disk used/free statistics, P2V, V2V,
-performing partial backups, cloning VMs, and much else besides.
-
-libguestfs can access nearly any type of filesystem including: all known types
-of Linux filesystem (ext2/3/4, XFS, btrfs etc), any Windows filesystem (VFAT
-and NTFS), any Mac OS X and BSD filesystems, LVM2 volume management, MBR and
-GPT disk partitions, raw disks, qcow2, VirtualBox VDI, VMWare VMDK, CD and DVD
-ISOs, SD cards, and dozens more. libguestfs doesn't need root permissions.
-
-All this functionality is available through a convenient shell called
-guestfish, or use virt-rescue to get a rescue shell for fixing unbootable
-virtual machines.
-
-
-%package -n virt-v2v
-Summary:        Convert a virtual machine to run on KVM
-Requires:       libguestfs0 = %{version}
-Requires:       qemu-block-ssh
-# Conflicts with the old perl version
-Conflicts:      virt-v2v <= 0.9.1
-
-%description -n virt-v2v
-virt-v2v is a tool for converting and importing virtual machines to
-libvirt-managed KVM. It can import a variety of guest operating systems
-from libvirt-managed hosts.
-
-%if %{with p2v}
-%package -n virt-p2v
-Summary:        Convert a physical machine to run on KVM
-Requires:       gawk
-Requires:       virt-v2v = %{version}
-
-%description -n virt-p2v
-virt-p2v is a tool for converting physical machines into libvirt-managed KVM machines.
-It can import a variety of guest operating systems from libvirt-managed hosts.
-%endif
+Libguestfs uses Linux kernel and qemu code, and can access any type of
+guest filesystem that Linux and qemu can, including but not limited
+to: ext2/3/4, btrfs, FAT and NTFS, LVM, many different disk partition
+schemes, qcow, qcow2, vmdk.
 
 %prep
-: _ignore_exclusive_arch '%{?_ignore_exclusive_arch}'
-%autosetup -p1 -a 789653
+%autosetup -p1
+
+sed -i 's|RPMVSF_MASK_NOSIGNATURES|_RPMVSF_NOSIGNATURES|' daemon/rpm-c.c
 
 %build
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-bison --version
-# [Bug 789653] sles11 perl obsoletes perl-Pod-Simple unconditionally
-export PERLLIB=`echo $PWD/Pod-Simple-*/lib`
-# disable qemu test.
-# If the package is built within kvm the configure test will fail because it starts kvm within kvm
-# With QEMU in environment qemu and kvm packages are not needed at build time.
-# With SUPERMIN and SUPERMIN_HELPER in environment, supermin package is not needed at build time.
-export vmchannel_test=no
+%define _lto_cflags %{nil}
+
+# use 'env LIBGUESTFS_HV=/path/to/kvm libguestfs-test-tool' to verify
+%define kvm_binary /bin/false
+%ifarch aarch64
+%define kvm_binary %{_bindir}/qemu-system-aarch64
+%endif
+%ifarch ppc64le
+%define kvm_binary %{_bindir}/qemu-system-ppc64
+%endif
+%ifarch ppc64
+%define kvm_binary %{_bindir}/qemu-system-ppc64
+%endif
+%ifarch s390x
+%define kvm_binary %{_bindir}/qemu-system-s390x
+%endif
+%ifarch x86_64
+%define kvm_binary %{_bindir}/qemu-system-x86_64
+%endif
+#
+%define guestfs_docdir %{_defaultdocdir}/%{name}
+
+export AWK='%{_bindir}/gawk'
+export CPIO='%{_bindir}/cpio'
+export GPERF='%{_bindir}/gperf'
+export MKISOFS='%{_bindir}/xorrisofs'
+export XMLLINT='%{_bindir}/xmllint'
+export PO4A_GETTEXTIZE='%{_bindir}/po4a-gettextize'
+export PO4A_TRANSLATE='%{_bindir}/po4a-translate'
+export SQLITE3='%{_bindir}/sqlite3'
+export PBMTEXT='%{_bindir}/pbmtext'
+export PNMTOPNG='%{_bindir}/pnmtopng'
+export BMPTOPNM='%{_bindir}/bmptopnm'
+export PAMCUT='%{_bindir}/pamcut'
+export WRESTOOL='%{_bindir}/wrestool'
+export XZCAT='%{_bindir}/xzcat'
+export VALGRIND='%{_bindir}/valgrind'
+export FUSER='%{_bindir}/fuser'
+export TOOL_TRUE='%{_bindir}/true'
+export XGETTEXT='%{_bindir}/xgettext'
+export MSGCAT='%{_bindir}/msgcat'
+export MSGFMT='%{_bindir}/msgfmt'
+export MSGMERGE='%{_bindir}/msgmerge'
+export RPCGEN='%{_bindir}/rpcgen'
+export SUPERMIN='%{_bindir}/supermin'
 export QEMU="%{kvm_binary}"
-export SUPERMIN=supermin
-export SUPERMIN_HELPER=supermin-helper
-# for configure macro below
-export CFLAGS="%{optflags} -Wno-unused"
-export CXXFLAGS="%{optflags} -Wno-unused"
+export vmchannel_test=no
+export PERL='%{_bindir}/perl'
+export PYTHON='%{_bindir}/python3'
+
+sed -i~ '
+/test-data/d
+' configure.ac
+diff -u "$_"~ "$_" && exit 0
+sed -i~ '
+/SUBDIRS/s@test-data@@
+' Makefile.am
+diff -u "$_"~ "$_" && exit 0
 autoreconf -fi
 
-#
+%configure --help
 %configure \
-	--help || :
-
-# Defines these if using --with-distro=SUSE with configure
-export HAVE_RPM_TRUE=
-export HAVE_RPM_FALSE="#"
-export HAVE_DPKG_TRUE="#"
-export HAVE_DPKG_FALSE="#"
-export HAVE_PACMAN_TRUE="#"
-export HAVE_PACMAN_FALSE="#"
-
-#sed -i '1 s@^.*@#!/bin/sh -x@' configure
-%configure \
-	--docdir=%{guestfs_docdir} \
-	--enable-daemon \
+        --docdir=%{guestfs_docdir} \
+	--with-distro=SUSE \
+	--with-readline \
+        --with-guestfs-path=%{_libdir}/guestfs \
+        --with-qemu=$QEMU \
+        --with-supermin-packager-config="$PWD/zypper.priv.conf --use-installed --verbose" \
+        --without-java \
+        --enable-daemon \
 	--enable-install-daemon \
-	--with-guestfs-path=%{_libdir}/guestfs \
-	--with-qemu=$QEMU \
-	--without-java \
-	--with-supermin-packager-config="$PWD/zypper.priv.conf --use-installed --verbose" \
-	--disable-haskell \
-	--disable-php \
-	%{_configure_fuse} \
-	%{_configure_lua} \
-	%{_configure_ocaml} \
-	%{_configure_perl} \
-	%{_configure_python} \
-	%{_configure_ruby} \
-	--disable-rpath \
-	--disable-static \
-	--with-distro=SUSE
+        --enable-ocaml \
+        --enable-perl \
+        --enable-python \
+        --disable-erlang \
+        --disable-haskell \
+        --disable-php \
+        --disable-rpath \
+        --disable-static \
+	%nil
 
-#Workaround an autotools bug
-make -j1 -C builder index-parse.c
 # 'INSTALLDIRS' ensures that perl libs are installed in the vendor dir instead of the site dir
 build_it() {
 make \
@@ -578,47 +183,58 @@ make \
 build_it %{?_smp_mflags} || build_it
 
 %install
-%makeinstall \
+%make_install \
 	INSTALLDIRS=vendor \
 	udevrulesdir=%{_udevrulesdir}
-find %{buildroot} -ls
-mkdir -p %{buildroot}/%{_datadir}/guestfs
-cp -avLt %{buildroot}/%{_datadir}/guestfs \
-	%{S:10005} \
-	%{S:10004} \
-	%{S:10003} \
-	%{S:10002} \
-	%{S:10001}
-chmod 0755 %{buildroot}/%{_datadir}/guestfs/*
-#remove ocaml bindings files if they are disable via rpm macro
-%if !%{with ocaml_bindings}
-rm -rfv %{buildroot}/%{_libdir}/ocaml
-%endif
-rm -rfv %{buildroot}/%{guestfs_docdir}
-rm -rfv %{buildroot}/etc/libguestfs-tools.conf
-find %{buildroot}/ -type f \( \
-	-name "virt-list-filesystems" -o -name "virt-list-filesystems.*" -o \
-	-name "virt-list-partitions" -o -name "virt-list-partitions.*" -o \
-	-name "virt-tar" -o -name "virt-tar.*" \
-	\) -print -delete
-%if %{with perl_bindings}
-# Delete empty perl bootstrap files
+find %buildroot -ls
+
+rm -f $( find %buildroot -name '*.a' | grep -v /ocaml/ )
+
+find %buildroot -name '*.la' -delete
+
+mkdir -p %{buildroot}/etc/profile.d
+cp %{S:5} %{buildroot}/etc/profile.d
+
+# Perl
 find %{buildroot}/ -name "*.bs" -size 0c -print -delete
 %perl_process_packlist
 %perl_gen_filelist
-# the macro above packages everything, here only the perl files are desrired
+# The macro above packages everything, here only the perl files are desired
 grep "%perl_vendorarch/" %{name}.files | tee t
 mv t %{name}.files
-%endif
 
-# Don't package the test harness (yet)
-rm -rf  %{buildroot}/%{_libdir}/ocaml/v2v_test_harness
+# Supermin
+pushd $RPM_BUILD_ROOT%{_libdir}/guestfs/supermin.d
 
-#
-find %{buildroot}/ -name "*.la" -print -delete
-rm -fv %{buildroot}/%{_libdir}/*.a
-#
-touch %{name}.lang
+function remove
+{
+    grep -Ev "^$1$" < packages > packages-t
+    mv packages-t packages
+}
+
+function move_to
+{
+    if ! grep -Esq "^$1$" packages; then
+        echo "move_to $1: package name not found in packages file"
+        exit 1
+    fi
+    remove "$1"
+    echo "$1" >> "$2"
+}
+
+move_to iputils         zz-packages-rescue
+move_to lsof            zz-packages-rescue
+move_to pciutils        zz-packages-rescue
+move_to strace          zz-packages-rescue
+move_to vim             zz-packages-rescue
+move_to rsync           zz-packages-rsync
+move_to xfsprogs        zz-packages-xfs
+
+popd
+
+# Remove the .gitignore file from ocaml/html which will be copied to docdir.
+rm ocaml/html/.gitignore
+
 %find_lang %{name}
 
 # Appliance NTFS files
@@ -648,18 +264,332 @@ tar -czf %{buildroot}/%{_libdir}/guestfs/supermin.d/zz-scripts.tar.gz usr
 popd
 rm -rf %{buildroot}/tmp
 
-%if %{with p2v}
-# Remove the kickstart files from p2v package
-rm %{buildroot}/%{_datadir}/virt-p2v/p2v.ks.in
-%endif
+%package -n libguestfs0
+Summary:        Runtime library of libguestfs
+Requires:       %{kvm_binary}
 
+%description -n libguestfs0
+Shared object library for libguestfs tools which are used to access
+and modify virtual machines.
+
+%package -n libguestfsd
+Summary:        Daemon for the libguestfs appliance
+Provides:       guestfsd = %{version}
+Obsoletes:      guestfsd < %{version}
+
+%description -n libguestfsd
+guestfsd runs within the libguestfs appliance. It receives commands from the host
+and performs the requested action by calling the helper binaries.
+This package is only required for building the appliance.
+
+%package -n libguestfs-appliance
+BuildRequires:  augeas-lenses
+BuildRequires:  bc
+BuildRequires:  btrfsprogs
+BuildRequires:  bzip2
+BuildRequires:  coreutils
+BuildRequires:  cpio
+BuildRequires:  cryptsetup
+BuildRequires:  diffutils
+BuildRequires:  dosfstools
+BuildRequires:  e2fsprogs
+BuildRequires:  file
+BuildRequires:  findutils
+BuildRequires:  glibc
+BuildRequires:  gptfdisk
+BuildRequires:  grep
+BuildRequires:  gzip
+BuildRequires:  initviocons
+BuildRequires:  iproute2
+BuildRequires:  jfsutils
+BuildRequires:  ldmtool
+BuildRequires:  lvm2
+BuildRequires:  mdadm
+BuildRequires:  mkisofs
+BuildRequires:  module-init-tools
+BuildRequires:  ncurses-utils
+BuildRequires:  nfs-client
+BuildRequires:  ntfs-3g
+BuildRequires:  ntfsprogs
+BuildRequires:  pam-config
+BuildRequires:  parted
+BuildRequires:  psmisc
+BuildRequires:  reiserfs
+BuildRequires:  sg3_utils
+BuildRequires:  strace
+%ifarch %ix86 x86_64
+BuildRequires:  syslinux
+%endif
+BuildRequires:  tar
+BuildRequires:  terminfo-base
+BuildRequires:  tunctl
+BuildRequires:  udev
+BuildRequires:  util-linux
+BuildRequires:  util-linux-lang
+BuildRequires:  xfsprogs
+BuildRequires:  xz
+
+# Needed by guestfsd which is burried in the appliance
+#
+# The problem with this design is that rpm can't find the
+# library dependencies from the guestfsd hidden in the
+# daemon.tar.gz tarball. Supermin will compute an appliance
+# at runtime based on the packages it will find on the host.
+# Thus if there is no libaugeas, libhivex, etc on the host,
+# the appliance will fail to start the guestfsd.
+Requires:       augeas
+Requires:       augeas-lenses
+Requires:       libaugeas0
+Requires:       libcap2
+Requires:       libguestfs0
+Requires:       libhivex0
+Requires:       libpcre1
+
+# For core disk features
+Requires:       qemu-tools
+
+# Optional packages that could be picked up by supermin
+Recommends:     btrfsprogs
+Recommends:     cryptsetup
+Recommends:     dosfstools
+Recommends:     e2fsprogs
+Recommends:     gptfdisk
+Recommends:     jfsutils
+Recommends:     ldmtool
+Recommends:     mdadm
+Recommends:     mkisofs
+Recommends:     parted
+Recommends:     reiserfs
+Recommends:     xfsprogs
+Recommends:     zerofree
+
+Summary:        Virtual machine needed for libguestfs
+Provides:       guestfs-data = %{version}
+Obsoletes:      guestfs-data < %{version}
+
+%description -n libguestfs-appliance
+libguestfs-appliance provides the appliance used by libguestfs.
+
+%package winsupport
+Summary:        Windows guest support in libguestfs
+Requires:       libguestfs >= 1.32
+BuildRequires:  ntfs-3g
+BuildRequires:  ntfsprogs
+BuildRequires:  rsync
+Provides:       guestfs-winsupport = %{version}
+Obsoletes:      guestfs-winsupport < %{version}
+
+%description winsupport
+Provides the needed pieces for libguestfs to handle Windows guests.
+
+%package devel
+Summary:        Development files for libguestfs
+Requires:       libguestfs0 = %{version}
+
+%description devel
+Development files for libguestfs.
+
+libguestfs is a set of tools for accessing and modifying virtual machine (VM)
+disk images. You can use this for viewing and editing files inside guests,
+scripting changes to VMs, monitoring disk used/free statistics, P2V, V2V,
+performing partial backups, cloning VMs, and much else besides.
+
+%package bash-completion
+Summary:        Bash tab-completion scripts for %{name} tools
+BuildArch:      noarch
+Requires:       bash-completion >= 2.0
+
+%description bash-completion
+Install this package if you want intelligent bash tab-completion
+for guestfish, guestmount and various virt-* tools.
+
+%package inspect-icons
+Summary:        Additional dependencies for inspecting guest icons
+BuildArch:      noarch
+Requires:       %{name} = %{version}-%{release}
+Requires:       icoutils
+
+%description inspect-icons
+%{name}-inspect-icons is a metapackage that pulls in additional
+dependencies required by libguestfs to pull icons out of non-Linux
+guests.  Install this package if you want libguestfs to be able to
+inspect non-Linux guests and display icons from them.
+
+The only reason this is a separate package is to avoid core libguestfs
+having to depend on Perl.
+
+%package -n ocaml-%{name}
+Summary:        OCaml bindings for %{name}
+Requires:       %{name} = %{version}-%{release}
+
+%description -n ocaml-%{name}
+ocaml-%{name} contains OCaml bindings for %{name}.
+
+This is for toplevel and scripting access only.  To compile OCaml
+programs which use %{name} you will also need ocaml-%{name}-devel.
+
+%package -n ocaml-%{name}-devel
+Summary:        OCaml bindings for %{name}
+Requires:       ocaml-%{name} = %{version}-%{release}
+
+%description -n ocaml-%{name}-devel
+ocaml-%{name}-devel contains development libraries
+required to use the OCaml bindings for %{name}.
+
+%package -n perl-Sys-Guestfs
+Summary:        Perl bindings for %{name} (Sys::Guestfs)
+Requires:       %{name} = %{version}-%{release}
+Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
+
+%description -n perl-Sys-Guestfs
+perl-Sys-Guestfs contains Perl bindings for %{name} (Sys::Guestfs).
+
+%package -n python3-%{name}
+Summary:        Python 3 bindings for %{name}
+BuildRequires:  python-rpm-macros
+Requires:       %{name} = %{version}-%{release}
+%{?python_provide:%python_provide python3-%{name}}
+
+%description -n python3-%{name}
+python3-%{name} contains Python 3 bindings for %{name}.
+
+%package -n rubygem-%{name}
+Summary:        Ruby bindings for %{name}
+BuildRequires:  ruby
+BuildRequires:  ruby-devel
+BuildRequires:  rubygem(rake)
+Requires:       %{name} = %{version}-%{release}
+Requires:       ruby
+
+%description -n rubygem-%{name}
+ruby-%{name} contains Ruby bindings for %{name}.
+
+%package -n lua-%{name}
+Summary:        Lua bindings for %{name}
+BuildRequires:  lua-devel
+Requires:       %{name} = %{version}-%{release}
+Requires:       lua
+
+%description -n lua-%{name}
+lua-%{name} contains Lua bindings for %{name}.
+
+%package gobject-1_0
+Summary:        GObject bindings for %{name}
+Requires:       %{name} = %{version}-%{release}
+Obsoletes:      libguestfs0 <= 1.44.2
+
+%description gobject-1_0
+%{name}-gobject-1_0 contains GObject bindings for %{name}.
+
+To develop software against these bindings, you need to install
+%{name}-gobject-devel.
+
+%package typelib-Guestfs-1_0
+Summary:        Libguestfs GObject introspection data
+Group:          System/Libraries
+
+%description typelib-Guestfs-1_0
+This package contains the GObject introspection data.
+
+%package gobject-devel
+Summary:        GObject bindings for %{name}
+Requires:       %{name}-gobject-1_0 = %{version}-%{release}
+Requires:       glib2-devel
+
+%description gobject-devel
+%{name}-gobject contains GObject bindings for %{name}.
+
+This package is needed if you want to write software using the
+GObject bindings.  It also contains GObject Introspection information.
+
+%package rescue
+Summary:        virt-rescue shell
+BuildRequires:  iputils
+BuildRequires:  lsof
+BuildRequires:  pciutils
+BuildRequires:  strace
+BuildRequires:  vim
+
+%description rescue
+This adds the virt-rescue shell which is a "rescue disk" for virtual
+machines, and additional tools to use inside the shell such as ssh,
+network utilities, editors and debugging utilities.
+
+%package rsync
+Summary:        rsync support for %{name}
+Requires:       %{name} = %{version}-%{release}
+BuildRequires:  rsync
+
+%description rsync
+This adds rsync support to %{name}.  Install it if you want to use
+rsync to upload or download files into disk images.
+
+%package xfs
+Summary:        XFS support for %{name}
+Requires:       %{name} = %{version}-%{release}
+
+%description xfs
+This adds XFS support to %{name}.  Install it if you want to process
+disk images containing XFS.
+
+%package man-pages-ja
+Summary:        Japanese (ja) man pages for %{name}
+BuildArch:      noarch
+Requires:       %{name} = %{version}-%{release}
+
+%description man-pages-ja
+%{name}-man-pages-ja contains Japanese (ja) man pages
+for %{name}.
+
+%package man-pages-uk
+Summary:        Ukrainian (uk) man pages for %{name}
+BuildArch:      noarch
+Requires:       %{name} = %{version}-%{release}
+
+%description man-pages-uk
+%{name}-man-pages-uk contains Ukrainian (uk) man pages
+for %{name}.
+
+%post -n %{name} -p /sbin/ldconfig
+%postun -n %{name} -p /sbin/ldconfig
 %post -n libguestfs0 -p /sbin/ldconfig
 %postun -n libguestfs0 -p /sbin/ldconfig
+%post -n %{name}-gobject-1_0 -p /sbin/ldconfig
+%postun -n %{name}-gobject-1_0 -p /sbin/ldconfig
 
-%files test
-%{_datadir}/guestfs
+%files -f %{name}.lang
+%license README COPYING
+%{_bindir}/guestfish
+%{_bindir}/guestmount
+%{_bindir}/guestunmount
+%{_bindir}/libguestfs-test-tool
+%{_bindir}/virt-copy-in
+%{_bindir}/virt-copy-out
+%{_bindir}/virt-tar-in
+%{_bindir}/virt-tar-out
+%{_mandir}/man1/guestfish.1*
+%{_mandir}/man1/guestfs-faq.1*
+%{_mandir}/man1/guestfs-performance.1*
+%{_mandir}/man1/guestfs-recipes.1*
+%{_mandir}/man1/guestfs-release-notes.1.gz
+%{_mandir}/man1/guestfs-release-notes-1*.1*
+%{_mandir}/man1/guestfs-security.1*
+%{_mandir}/man1/guestmount.1*
+%{_mandir}/man1/guestunmount.1*
+%{_mandir}/man1/libguestfs-test-tool.1*
+%{_mandir}/man1/virt-copy-in.1*
+%{_mandir}/man1/virt-copy-out.1*
+%{_mandir}/man1/virt-tar-in.1*
+%{_mandir}/man1/virt-tar-out.1*
+%{_mandir}/man5/libguestfs-tools.conf.5*
+%config %{_sysconfdir}/profile.d/guestfish.sh
+%config(noreplace) %{_sysconfdir}/libguestfs-tools.conf
 
-%files -n guestfs-data
+%files -n libguestfs0
+%license COPYING.LIB
+%{_libdir}/libguestfs.so.*
+
+%files -n libguestfs-appliance
 %dir %{_libdir}/guestfs
 %dir %{_libdir}/guestfs/supermin.d
 %{_libdir}/guestfs/supermin.d/base.tar.gz
@@ -671,80 +601,123 @@ rm %{buildroot}/%{_datadir}/virt-p2v/p2v.ks.in
 %{_libdir}/guestfs/supermin.d/packages
 %{_libdir}/guestfs/supermin.d/zz-scripts.tar.gz
 
-%files -n guestfs-winsupport
+%files winsupport
 %{_libdir}/guestfs/supermin.d/zz-*winsupport*
 
-%if %{with ocaml_bindings}
-%files -n ocaml-libguestfs
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/guestfs
-%{_libdir}/ocaml/guestfs/META
-%{_libdir}/ocaml/guestfs/*.cmi
-%{_libdir}/ocaml/guestfs/*.cma
-%{_libdir}/ocaml/stublibs
+%files bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/guestfish
+%{_datadir}/bash-completion/completions/guestmount
+%{_datadir}/bash-completion/completions/guestunmount
+%{_datadir}/bash-completion/completions/libguestfs-test-tool
+%{_datadir}/bash-completion/completions/virt-copy-in
+%{_datadir}/bash-completion/completions/virt-copy-out
+%{_datadir}/bash-completion/completions/virt-rescue
+%{_datadir}/bash-completion/completions/virt-tar-in
+%{_datadir}/bash-completion/completions/virt-tar-out
 
-%files -n ocaml-libguestfs-devel
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/guestfs
+%files inspect-icons
+# no files
+
+%files -n ocaml-%{name}
+%{_libdir}/ocaml/guestfs
+%exclude %{_libdir}/ocaml/guestfs/*.a
+%exclude %{_libdir}/ocaml/guestfs/*.cmxa
+%exclude %{_libdir}/ocaml/guestfs/*.cmx
+%exclude %{_libdir}/ocaml/guestfs/*.mli
+%{_libdir}/ocaml/stublibs/dllmlguestfs.so
+%{_libdir}/ocaml/stublibs/dllmlguestfs.so.owner
+
+%files -n ocaml-%{name}-devel
+%doc ocaml/examples/*.ml ocaml/html
 %{_libdir}/ocaml/guestfs/*.a
-%{_libdir}/ocaml/guestfs/*.cmx
 %{_libdir}/ocaml/guestfs/*.cmxa
+%{_libdir}/ocaml/guestfs/*.cmx
 %{_libdir}/ocaml/guestfs/*.mli
-%endif
-#
-%if %{with lua_bindings}
-%files -n lua-libguestfs
-%{_libdir}/lua
-%endif
-#
-%if %{with perl_bindings}
-%post -n perl-Sys-Guestfs -p /sbin/ldconfig
+%{_mandir}/man3/guestfs-ocaml.3*
 
-%postun -n perl-Sys-Guestfs -p /sbin/ldconfig
+%files -n perl-Sys-Guestfs
+%{perl_vendorarch}/*
+%doc perl/examples/*.pl
+%{_mandir}/man3/Sys::Guestfs.3pm*
+%{_mandir}/man3/guestfs-perl.3*
 
-%files -n perl-Sys-Guestfs -f %{name}.files
-%endif
-#
-%if %{with python_bindings}
+%files -n python3-%{name}
+%doc python/examples/*.py
+%{python3_sitearch}/libguestfsmod*.so
+%{python3_sitearch}/guestfs.py
+%{_mandir}/man3/guestfs-python.3*
 
-%files -n python3-libguestfs
-%{python3_sitearch}/*
-%endif
-#
-%if %{with ruby_bindings}
-%files -n rubygem-libguestfs
+%files -n rubygem-%{name}
+%doc ruby/examples/*.rb
+%doc ruby/doc/site/*
 %{_libdir}/ruby
-%endif
+%{_mandir}/man3/guestfs-ruby.3*
 
-%files -n libguestfs0
-%license COPYING.LIB
-%{_libdir}/*.so.*
+%files -n lua-%{name}
+%doc lua/examples/*.lua
+%doc lua/examples/LICENSE
+%{_libdir}/lua
+%{_mandir}/man3/guestfs-lua.3*
+
+%files gobject-1_0
+%{_libdir}/libguestfs-gobject-1.0.so.0*
+
+%files typelib-Guestfs-1_0
+%{_libdir}/girepository-1.0/Guestfs-1.0.typelib
+
+%files gobject-devel
+%{_libdir}/libguestfs-gobject-1.0.so
+%{_includedir}/guestfs-gobject.h
+%dir %{_includedir}/guestfs-gobject
+%{_includedir}/guestfs-gobject/*.h
+%{_datadir}/gir-1.0/Guestfs-1.0.gir
+%{_libdir}/pkgconfig/libguestfs-gobject-1.0.pc
+%{_mandir}/man3/guestfs-gobject.3*
 
 %files devel
+%doc examples/*.c
+%{_sbindir}/libguestfs-make-fixed-appliance
 %{_libdir}/*.so
-%{_libdir}/pkgconfig/*
+%{_libdir}/pkgconfig/libguestfs.pc
 %{_includedir}/guestfs.h
-%{_includedir}/guestfs-gobject
-%{_includedir}/guestfs-gobject.h
-%{_mandir}/man3/*
+%{_mandir}/man1/guestfs-building.1*
+%{_mandir}/man1/guestfs-hacking.1*
+%{_mandir}/man1/guestfs-internals.1*
+%{_mandir}/man1/guestfs-testing.1*
+%{_mandir}/man1/libguestfs-make-fixed-appliance.1*
+%{_mandir}/man3/guestfs.3*
+%{_mandir}/man3/guestfs-examples.3*
+%{_mandir}/man3/libguestfs.3*
 
-%files -n guestfsd
+%files -n libguestfsd
 %{_udevrulesdir}
 %{_sbindir}/guestfsd
 %{_mandir}/man8/*
 
-%files -n guestfs-tools -f %{name}.lang
-%license COPYING
-%{_sbindir}/libguestfs-make-fixed-appliance
-%{_bindir}/*
-/etc/virt-builder
-%dir /etc/xdg/virt-builder
-%dir /etc/xdg/virt-builder/repos.d
-%config /etc/xdg/virt-builder/repos.d/*
-%if %{with bash_completion}
-%{_datadir}/bash-completion
+%files rescue
+%{_libdir}/guestfs/supermin.d/zz-packages-rescue
+%{_bindir}/virt-rescue
+%{_mandir}/man1/virt-rescue.1*
+
+%files rsync
+%{_libdir}/guestfs/supermin.d/zz-packages-rsync
+
+%files xfs
+%{_libdir}/guestfs/supermin.d/zz-packages-xfs
+
+%files man-pages-ja
+%lang(ja) %{_mandir}/ja/man1/*.1*
+%lang(ja) %{_mandir}/ja/man3/*.3*
+%lang(ja) %{_mandir}/ja/man5/*.5*
+
+%files man-pages-uk
+%if 0%{?suse_version} <= 1500
+%dir %{_mandir}/uk
+%dir %{_mandir}/uk/man{1,3,5}
 %endif
-%{_mandir}/man1/*
-%{_mandir}/man5/*
+%lang(uk) %{_mandir}/uk/man1/*.1*
+%lang(uk) %{_mandir}/uk/man3/*.3*
+%lang(uk) %{_mandir}/uk/man5/*.5*
 
 %changelog

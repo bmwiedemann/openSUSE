@@ -1,9 +1,128 @@
 -------------------------------------------------------------------
+Wed Jun  1 09:29:15 MDT 2022 - carnold@suse.com
+
+- Update to version 1.48.3
+  * Several bugs fixed in this release since version 1.48.1
+  * Updated language files
+
+-------------------------------------------------------------------
+Mon Apr 18 15:35:53 MDT 2022 - carnold@suse.com
+
+- Update to version 1.48.1
+  * Updated language files
+  * A few bug fixes in this release
+  * Drop requirement for newer ocaml required by Bytes.get_uint8.
+    It is replaced with a local implementation.
+
+-------------------------------------------------------------------
+Wed Apr 13 22:37:33 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add relevant %post{,un} sections
+- Add another rpmlint filter
+- Add uk man dirs
+
+-------------------------------------------------------------------
+Wed Apr 13 20:48:37 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Avoid useless builds, if ocaml version isn't up to the task
+  libguestfs uses get_uint8(), available since ocaml 4.13.0
+
+-------------------------------------------------------------------
+Thu Mar 17 15:45:02 MDT 2022 - carnold@suse.com
+
+- Update to version 1.48.0
+  * Fix allocation and deallocation of string lists in golang
+    bindings (Laszlo Ersek).
+  * Multiple fixes to the OCaml bindings:
+  * Add support for Kylin (Laszlo Ersek).
+  * Add support for Rocky Linux (Neil Hanlon).
+  * Inspection of guests which use LUKS encryption on top of LVM
+    logical volumes should now work (Laszlo Ersek).
+  * "guestfs_list_9p" and "guestfs_mount_9p" are deprecated and
+    now return errors.
+  * "guestfs_remove_drive" has been deprecated and now returns an
+    error.
+  * "guestfs_add_drive" no longer supports hotplugging
+  * In "guestfs_xfs_admin" the "lazycounter" parameter is deprecated
+    because it is no longer supported in recent versions of XFS.
+  * The User-mode Linux ("uml") backend has been removed.
+  * Partition APIs now cope with the broken MBR partition tables
+    created by dosfstools ≥ 4.2 (Laszlo Ersek).
+  * Various bug fixes
+
+-------------------------------------------------------------------
+Wed Feb 16 09:33:31 MST 2022 - carnold@suse.com
+
+- Update to version 1.46.2
+  * This release has moved many virt tools like virt-builder,
+    virt-cat, virt-customize, virt-df, etc. to the guestfs-tools
+    project. This makes libguestfs a bit easier to build and manage.
+  * The build now uses and requires PCRE2 (instead of PCRE).
+  * This version requires libvirt ≥ 7.1.0, if libvirt is enabled.
+  * gnulib is no longer bundled with libguestfs, making builds from
+    git much simpler.
+  * Perl Sys::Virt (libvirt bindings for Perl) are no longer
+    required by libguestfs.
+  * The code has been compiled with both LTO and GCC -fanalyzer and
+    many bugs and warnings fixed.
+  * Various fixes for qemu 6.1.
+  * Update appliance packages on SUSE and several other improvements
+    to the init script (Olaf Hering).
+  * We now use the qemu / libvirt feature -cpu max to select the
+    best CPU to run the appliance.
+  * When passing the appliance filesystem UUID to supermin we now
+    read it directly out of the appliance instead of using the
+    file(1) program. This is more reliable.
+  * The qemu -enable-fips option is no longer used. It was not
+    needed and has been deprecated by qemu.
+  * We no longer use qemu's sga (Serial Graphics Adapter) option
+    ROM, instead using the equivalent seabios feature.
+  * Various bug fixes
+- Package changes
+  * New libguestfs.spec file.
+  * Moved guestfs-tools to a new and separate project and package
+  * Renamed packages
+    guestfs-winsupport -> libguestfs-winsupport
+    guestfsd -> libguestfsd
+  * New packages
+    libguestfs, libguestfs-typelib-Guestfs,
+    libguestfs-gobject, libguestfs-gobject-devel
+    libguestfs-rescue, libguestfs-rsync, libguestfs-xfs
+  * Dropped package libguestfs-test
+- Dropped scripts and patches
+  Pod-Simple-3.23.tar.xz
+  libguestfs.test.simple.create-opensuse-guest-crypt-on-lvm.sh
+  libguestfs.test.simple.create-opensuse-guest.sh
+  libguestfs.test.simple.create-sles12-guest-crypt-on-lvm.sh
+  libguestfs.test.simple.create-sles12-guest.sh
+  libguestfs.test.simple.run-libugestfs-test-tool.sh
+  0001-Introduce-a-wrapper-around-xmlParseURI.patch
+  0002-common-extract-UTF-8-conversion-function.patch
+  0003-inspector-rpm-summary-and-description-may-not-be-utf.patch
+  489b14b7-ocaml-examples-Link-examples-to-gnulib.patch
+  63c9cd93-m4-guestfs-ocaml.m4-Fix-deprecated-warning-format.patch
+  68a02c2f-customize--resize--sparsify--sysprep-Link-explicitly-with-pthread.patch
+  9db0c98c-appliance-enable-bashs-Process-Substitution-feature.patch
+  a4930f5f-customize-Suppress-OCaml-warning.patch
+  c0de4de9-appliance-add-reboot-and-netconfig-for-SUSE.patch
+  e26cfa44-daemon-Build-with--pthread.patch
+  f47e0bb6-appliance-reorder-mounting-of-special-filesystems-in-init.patch
+  appliance.patch
+  libguestfs.env.patch
+  makefile-ocaml-find-guestfs.patch
+  netconfig.patch
+
+-------------------------------------------------------------------
 Mon Feb  7 15:23:07 MST 2022 - carnold@suse.com
 
 - bsc#1195415 - libguestfs: consider dropping build requirement on
   systemd-sysvinit 
   libguestfs.spec
+ 
+-------------------------------------------------------------------
+Tue Dec 14 14:14:14 UTC 2021 - ohering@suse.de
+
+- Add python-rpm-macros (bsc#1180125)
 
 -------------------------------------------------------------------
 Tue Oct 26 20:44:52 MDT 2021 - carnold@suse.com

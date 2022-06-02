@@ -926,4 +926,12 @@
     <comment>Fix for bsc#1195415 - libguestfs: consider dropping build requirement on systemd-sysvinit</comment>
     <requestid>952274</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>224854765066c3d8e7bc6d72271ca68c</srcmd5>
+    <version>1.48.3</version>
+    <time>1654199643</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.48.3. Note that guestfs-tools is now a separate package from libguestfs (no longer a sub-package).</comment>
+    <requestid>980531</requestid>
+  </revision>
 </revisionlist>
