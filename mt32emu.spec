@@ -1,7 +1,7 @@
 #
 # spec file for package mt32emu
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,16 @@
 
 
 %define s_name  munt-lib%{name}_%{s_ver}
-%define s_ver   2_5_3
+%define s_ver   2_6_3
 %define sover   2
 Name:           mt32emu
-Version:        2.5.3
+Version:        2.6.3
 Release:        0
 Summary:        An emulator of the Roland MT-32, CM-32L and LAPC-I synthesiser modules
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 URL:            https://github.com/munt/munt
 Source0:        https://github.com/munt/munt/archive/lib%{name}_%{s_ver}.tar.gz#/%{s_name}.tar.gz
-Source1:        %{name}-qt.desktop
-Source2:        %{name}.png
+Patch0:         %{name}-2.6.3-name.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -80,11 +79,7 @@ Development files for lib%{name}.
 
 %install
 %cmake_install
-rm %{buildroot}%{_datadir}/applications/%{name}-qt.desktop
-install -Dpm0644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}-qt.desktop
-rm %{buildroot}%{_datadir}/pixmaps/munt.png
-install -Dpm0644 %{SOURCE2} %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/%{name}.png
-rm -r %{buildroot}%{_datadir}/doc
+rm -r %{buildroot}%{_datadir}/doc %{buildroot}%{_libdir}/cmake
 
 %post   -n lib%{name}%{sover} -p /sbin/ldconfig
 %postun -n lib%{name}%{sover} -p /sbin/ldconfig
