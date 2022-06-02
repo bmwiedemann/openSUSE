@@ -17,7 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define timestamp 20190714
+%define timestamp 20201006
 %define modname dfwinreg
 Name:           python-dfwinreg
 Version:        0~%{timestamp}
@@ -31,6 +31,8 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python3-libcreg
+Requires:       python3-libregf >= 20201002
 BuildArch:      noarch
 %python_subpackages
 

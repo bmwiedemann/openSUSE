@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 31 03:36:09 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to 20201006
+  - Changes for REG_MULTI_SZ support
+  - Changes to improve handling HKEY_USERS
+  - Changes for test paths to be independent of working directory
+  - Changes to formattingstrings for type()
+  - Removed python2 support
+  - Added Windows 9x/Me Registry support
+- added: 
+  Requires:       python3-libcreg
+  Requires:       python3-libregf >= 20201002
+-------------------------------------------------------------------
 Mon Jan 20 16:58:16 CET 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 20190714:
