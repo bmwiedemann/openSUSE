@@ -20,15 +20,14 @@
 # If there are patches which touch autotools files, set this to 1.
 %global patches_touch_autotools 1
 # The source directory.
-%global source_directory 1.44-stable
+%global source_directory 2.0-stable
 Name:           virt-v2v
-Version:        1.44.2
+Version:        2.0.6
 Release:        0
 Summary:        Tools to convert a virtual machine to run on KVM
 License:        GPL-2.0-or-later
 Group:          System/Management
 URL:            https://github.com/libguestfs/virt-v2v
-Patch0:         fix-linker-error.patch
 Source0:        https://download.libguestfs.org/virt-v2v/%{source_directory}/%{name}-%{version}.tar.gz
 Source1:        https://download.libguestfs.org/virt-v2v/%{source_directory}/%{name}-%{version}.tar.gz.sig
 BuildRequires:  augeas-devel
@@ -59,15 +58,20 @@ BuildRequires:  po4a
 BuildRequires:  qemu-tools
 BuildRequires:  perl(Sys::Guestfs)
 BuildRequires:  pkgconfig(bash-completion) >= 2.0
+BuildRequires:  pkgconfig(libnbd)
 Requires:       %{_bindir}/gawk
 Requires:       %{_bindir}/gzip
+Requires:       %{_bindir}/qemu-nbd
 Requires:       %{_bindir}/virsh
 Requires:       curl
 Requires:       guestfs-tools >= 1.42
-Requires:       libguestfs0%{?_isa} >= 1.42
+Requires:       libguestfs0 >= 1.42
+Requires:       openssh-clients >= 8.8p1
+Requires:       ovmf
 Requires:       unzip
 Recommends:     nbdkit
 Recommends:     nbdkit-curl-plugin
+Recommends:     nbdkit-nbd-plugin
 Recommends:     nbdkit-python-plugin
 Recommends:     nbdkit-ssh-plugin
 Recommends:     nbdkit-vddk-plugin
@@ -145,8 +149,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 mkdir -p %{buildroot}/%{_datadir}/virt-tools
 
 # Delete the v2v test harness (except for the man page).
-rm -r %{buildroot}/%{_libdir}/ocaml/v2v_test_harness
-rm -r %{buildroot}/%{_libdir}/ocaml/stublibs/dllv2v_test_harness*
+#rm -r %{buildroot}/%{_libdir}/ocaml/v2v_test_harness
+#rm -r %{buildroot}/%{_libdir}/ocaml/stublibs/dllv2v_test_harness*
 
 # Find locale files.
 %find_lang %{name}
@@ -182,9 +186,9 @@ rm -r %{buildroot}/%{_libdir}/ocaml/stublibs/dllv2v_test_harness*
 %license COPYING
 #doc README
 %{_bindir}/virt-v2v
-%{_bindir}/virt-v2v-copy-to-local
+%{_bindir}/virt-v2v-in-place
 %{_mandir}/man1/virt-v2v.1%{?ext_man}
-%{_mandir}/man1/virt-v2v-copy-to-local.1%{?ext_man}
+%{_mandir}/man1/virt-v2v-in-place.1%{?ext_man}
 %{_mandir}/man1/virt-v2v-hacking.1%{?ext_man}
 %{_mandir}/man1/virt-v2v-input-vmware.1%{?ext_man}
 %{_mandir}/man1/virt-v2v-input-xen.1%{?ext_man}
@@ -192,14 +196,13 @@ rm -r %{buildroot}/%{_libdir}/ocaml/stublibs/dllv2v_test_harness*
 %{_mandir}/man1/virt-v2v-output-openstack.1%{?ext_man}
 %{_mandir}/man1/virt-v2v-output-rhv.1%{?ext_man}
 %{_mandir}/man1/virt-v2v-release-notes-1.42.1%{?ext_man}
+%{_mandir}/man1/virt-v2v-release-notes-2.0.1%{?ext_man}
 %{_mandir}/man1/virt-v2v-support.1%{?ext_man}
-%{_mandir}/man1/virt-v2v-test-harness.1%{?ext_man}
 %{_datadir}/virt-tools
 
 %files bash-completion
 %license COPYING
 %{_datadir}/bash-completion/completions/virt-v2v
-%{_datadir}/bash-completion/completions/virt-v2v-copy-to-local
 
 %files man-pages-ja
 %license COPYING

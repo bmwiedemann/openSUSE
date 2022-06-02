@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu May 26 11:39:38 MDT 2022 - carnold@suse.com
+
+- Update to version 2.0.6
+  * This is a bug fix release on top of 2.0.5
+
+-------------------------------------------------------------------
+Thu May 12 14:40:29 MDT 2022 - carnold@suse.com
+
+- Update to version 2.0.5
+  * Virt-v2v has been modularised allowing external programs to
+    examine the state of the conversion and inject their own
+    copying step. Further enhancements will be made to this new
+    architecture in forthcoming releases.
+  * The command line is almost identical apart from some debugging
+    features that were removed (see below). The only significant
+    difference is that the output format (-of) now has to be
+    specified if it is different from the input format, whereas
+    previous versions of virt-v2v would use the same output format
+    as input format automatically.
+  * A lot of time was spent improving the performance of virt-v2v
+    in common cases.
+  * Implement conversion of ALT Linux guests (Mikhail Gordeev).
+  * Many bug fixes and performance enhancements were made to oVirt
+    imageio output (Nir Soffer).
+  * There is a new virt-v2v-in-place(1) tool which replaces the
+    existing virt-v2v --in-place option.
+  * Virt-v2v can now convert guests which use LUKS encrypted
+    logical volumes (Laszlo Ersek).
+  * Option -oo rhv-direct has been replaced by -oo rhv-proxy, and
+    direct mode (which is much faster) is now the default when
+    writing to oVirt, with proxy mode available for restricted
+    network configurations (thanks: Nir Soffer).
+  * The following command line options were removed:
+    --print-estimate, --debug-overlays, --no-copy.
+  * Virt-v2v no longer installs the RHEV-APT tool in Windows
+    guests. This tool was deprecated and then removed in oVirt 4.3.
+  * Deprecated tool virt-v2v-copy-to-local has been removed.
+    This was deprecated in November 2018.
+- Drop fix-linker-error.patch
+
+-------------------------------------------------------------------
 Thu Jan  6 15:56:46 MST 2022 - carnold@suse.com
 
 - Update to version 1.44.2
