@@ -216,4 +216,13 @@
   * import: Fix importing jekyll site (forwarded request 980150 from jfkw)</comment>
     <requestid>980159</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d7e4f4eafde62efa1ae9baaae8201887</srcmd5>
+    <version>0.100.1</version>
+    <time>1654199661</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.100.1:
+  * Fix panic with markdownify/RenderString with shortcode on Page with no content file (forwarded request 980415 from jfkw)</comment>
+    <requestid>980416</requestid>
+  </revision>
 </revisionlist>

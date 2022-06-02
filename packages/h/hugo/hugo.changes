@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 01 17:18:08 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.100.1:
+  * Fix panic with markdownify/RenderString with shortcode on Page with no content file
+
+-------------------------------------------------------------------
 Tue May 31 14:43:21 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 0.100.0:
