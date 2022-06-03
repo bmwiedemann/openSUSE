@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  3 10:16:56 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Fixed autoload of module
+- Fixed build issue with Linux v5.18 
+
+-------------------------------------------------------------------
 Tue Oct 19 09:59:07 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update the archive to match what is on github

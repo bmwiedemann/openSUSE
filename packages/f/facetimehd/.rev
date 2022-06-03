@@ -7,4 +7,12 @@
     <comment>Kernel device driver for facetimehd webcams. facetimehd-firmware package is also required.</comment>
     <requestid>926313</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9bb9add91c4d3e1ff157bc7dbb8970ef</srcmd5>
+    <version>0.5.18</version>
+    <time>1654258630</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980617</requestid>
+  </revision>
 </revisionlist>
