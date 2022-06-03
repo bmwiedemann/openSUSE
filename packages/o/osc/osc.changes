@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun  2 12:31:16 UTC 2022 - Daniel Mach <daniel.mach@suse.com>
+
+- 0.179.0
+  - signature (ssh key) authetication fixes (RSA key support, skip binary files)
+  - commandline: handle calls without arguments gracefully
+  - use percent-quoted url for download url generation
+  - osc co/up: highlight pending requests' header
+  - get_results(): fix check for empty details
+  - another exception for github URLs for "osc add"
+  - update Sphinx configuration, documentation fixes
+  - make Sphinx optional in setup.py not to break package builds
+  - support flavors in aggregatepac
+  - check if repos provided to aggregatepac command exist
+  - several coding style fixes
+
+-------------------------------------------------------------------
 Tue May 24 12:34:52 UTC 2022 - Daniel Mach <daniel.mach@suse.com>
 
 - 0.178.0
