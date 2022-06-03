@@ -8,7 +8,6 @@ Recommends:     apparmor-utils-32bit
 Recommends:     yast2-apparmor-32bit
 Recommends:     audit-32bit
 Recommends:     audit-32bit
-Recommends:     apparmor-docs-32bit
 Provides:       pattern() = apparmor%2d32bit
 Group:          Metapackages
 Supplements:    packageand(patterns-base-32bit:patterns-base-apparmor)
@@ -26,7 +25,6 @@ The 32bit pattern complementing apparmor.
 %package base-32bit
 Summary:        Base System
 Recommends:     aaa_base-32bit
-Recommends:     aaa_base-malloccheck-32bit
 Recommends:     bash-32bit
 Recommends:     ca-certificates-mozilla-32bit
 Recommends:     coreutils-32bit
@@ -34,17 +32,11 @@ Recommends:     glibc-32bit
 Recommends:     libnss_usrfiles2-32bit
 Recommends:     pam-32bit
 Recommends:     pam-config-32bit
+Recommends:     purge-kernels-service-32bit
 Recommends:     rpm-32bit
 Recommends:     system-user-nobody-32bit
 Recommends:     systemd-32bit
 Recommends:     util-linux-32bit
-Recommends:     zypper-32bit
-Recommends:     SUSEConnect-32bit
-Recommends:     rollback-helper-32bit
-Recommends:     e2fsprogs-32bit
-Recommends:     btrfsprogs-32bit
-Recommends:     xfsprogs-32bit
-Recommends:     purge-kernels-service-32bit
 Recommends:     busybox-static-32bit
 Recommends:     elfutils-32bit
 Recommends:     glibc-locale-base-32bit
@@ -61,8 +53,14 @@ Recommends:     terminfo-32bit
 Recommends:     terminfo-iterm-32bit
 Recommends:     terminfo-screen-32bit
 Recommends:     timezone-32bit
+Recommends:     zypper-32bit
+Recommends:     aaa_base-malloccheck-32bit
+Recommends:     SUSEConnect-32bit
+Recommends:     btrfsprogs-32bit
+Recommends:     e2fsprogs-32bit
+Recommends:     rollback-helper-32bit
+Recommends:     xfsprogs-32bit
 Recommends:     ppc64-diag-32bit
-Recommends:     haveged-32bit
 Provides:       pattern() = base%2d32bit
 Group:          Metapackages
 Supplements:    packageand(patterns-base-32bit:patterns-base-base)
@@ -144,44 +142,54 @@ Recommends:     pciutils-ids-32bit
 Recommends:     perl-Bootloader-32bit
 Recommends:     perl-base-32bit
 Recommends:     pinentry-32bit
+Recommends:     plymouth-32bit
 Recommends:     psmisc-32bit
 Recommends:     rsync-32bit
-Recommends:     rsyslog-32bit
-Recommends:     systemd-logger-32bit
 Recommends:     scout-32bit
 Recommends:     screen-32bit
 Recommends:     sed-32bit
 Recommends:     sg3_utils-32bit
 Recommends:     smartmontools-32bit
 Recommends:     sudo-32bit
-Recommends:     udev-extra-rules-32bit
 Recommends:     systemd-sysvinit-32bit
 Recommends:     time-32bit
 Recommends:     timezone-32bit
 Recommends:     udev-configure-printer-32bit
+Recommends:     udev-extra-rules-32bit
 Recommends:     usbutils-32bit
 Recommends:     vim-32bit
 Recommends:     wget-32bit
 Recommends:     xz-32bit
 Recommends:     zisofs-tools-32bit
+Recommends:     rsyslog-32bit
+Recommends:     systemd-logger-32bit
 Recommends:     dmidecode-32bit
 Recommends:     hfsutils-32bit
 Recommends:     mouseemu-32bit
 Recommends:     pdisk-32bit
 Recommends:     powerpc32-32bit
-Recommends:     plymouth-32bit
 Recommends:     dmraid-32bit
 Recommends:     dosfstools-32bit
 Recommends:     ifplugd-32bit
+Recommends:     joe-32bit
 Recommends:     klogd-32bit
+Recommends:     mpt-status-32bit
 Recommends:     nano-32bit
 Recommends:     openldap2-client-32bit
 Recommends:     prctl-32bit
+Recommends:     procinfo-32bit
+Recommends:     procmail-32bit
+Recommends:     providers-32bit
 Recommends:     psmisc-32bit
+Recommends:     setserial-32bit
+Recommends:     sharutils-32bit
 Recommends:     smp_utils-32bit
+Recommends:     spax-32bit
 Recommends:     strace-32bit
+Recommends:     terminfo-32bit
 Recommends:     tnftp-32bit
 Recommends:     tuned-32bit
+Recommends:     vlan-32bit
 Recommends:     wireless-tools-32bit
 Recommends:     wol-32bit
 Recommends:     acpica-32bit
@@ -189,19 +197,6 @@ Recommends:     mcelog-32bit
 Recommends:     numactl-32bit
 Recommends:     ucode-amd-32bit
 Recommends:     ucode-intel-32bit
-Recommends:     joe-32bit
-Recommends:     mpt-status-32bit
-Recommends:     prctl-32bit
-Recommends:     procinfo-32bit
-Recommends:     procmail-32bit
-Recommends:     providers-32bit
-Recommends:     setserial-32bit
-Recommends:     sharutils-32bit
-Recommends:     spax-32bit
-Recommends:     strace-32bit
-Recommends:     terminfo-32bit
-Recommends:     vlan-32bit
-Recommends:     wol-32bit
 Provides:       pattern() = enhanced_base%2d32bit
 Group:          Metapackages
 Supplements:    packageand(patterns-base-32bit:patterns-base-enhanced_base)
@@ -219,9 +214,9 @@ The 32bit pattern complementing enhanced_base.
 %package minimal_base-32bit
 Summary:        Minimal Appliance Base
 Recommends:     branding-32bit
+Recommends:     build-key-32bit
 Recommends:     distribution-release-32bit
 Recommends:     filesystem-32bit
-Recommends:     build-key-32bit
 Provides:       pattern() = minimal_base%2d32bit
 Group:          Metapackages
 Supplements:    packageand(patterns-base-32bit:patterns-base-minimal_base)
@@ -238,9 +233,9 @@ The 32bit pattern complementing minimal_base.
 #
 %package sw_management-32bit
 Summary:        Software Management
-Recommends:     zypper-32bit
 Recommends:     lifecycle-data-32bit
 Recommends:     zypper-lifecycle-plugin-32bit
+Recommends:     zypper-32bit
 Provides:       pattern() = sw_management%2d32bit
 Group:          Metapackages
 Supplements:    packageand(patterns-base-32bit:patterns-base-sw_management)
@@ -297,7 +292,6 @@ Recommends:     glibc-locale-32bit
 Recommends:     glibc-locale-base-32bit
 Recommends:     xkeyboard-config-32bit
 Recommends:     xorg-x11-essentials-32bit
-Recommends:     web_browser-32bit
 Recommends:     cabextract-32bit
 Recommends:     command-not-found-32bit
 Recommends:     dbus-1-glib-32bit
@@ -310,6 +304,7 @@ Recommends:     ghostscript-x11-32bit
 Recommends:     numlockx-32bit
 Recommends:     opensuse-welcome-32bit
 Recommends:     translation-update-32bit
+Recommends:     web_browser-32bit
 Recommends:     xauth-32bit
 Recommends:     xdmbgrd-32bit
 Recommends:     xkeyboard-config-32bit

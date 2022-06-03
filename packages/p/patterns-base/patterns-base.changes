@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun  1 12:26:43 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No long recommend haveged (boo#1190024): The mainline Linux
+  Kernel has now HAVEGED algorithm build in internally (since
+  version 5.6).
+
+-------------------------------------------------------------------
 Wed Feb 16 12:14:23 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Use ntfs-3g again, udisks no longer works with the new ntfs3 module

@@ -188,10 +188,6 @@ Recommends:     xfsprogs
 # bsc#1098849
 Requires:       ppc64-diag
 %endif
-# Current systems suffer from entropy starvation (bsc#1131369)
-%ifarch aarch64 %{ix86} x86_64 ppc64 ppc64le s390x
-Recommends:     haveged
-%endif
 
 %description base
 This is the base runtime system.  It contains only a basic multiuser booting system. For running on real hardware, you need to add additional packages and pattern to make this pattern useful on its own.

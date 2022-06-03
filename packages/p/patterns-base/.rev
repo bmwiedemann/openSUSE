@@ -754,4 +754,14 @@
   (gh#storaged-project/udisks#932)</comment>
     <requestid>956504</requestid>
   </revision>
+  <revision rev="87" vrev="33">
+    <srcmd5>8f6860d7e06a389a97ac98682781dab4</srcmd5>
+    <version>20200505</version>
+    <time>1654258522</time>
+    <user>dimstar_suse</user>
+    <comment>- No long recommend haveged (boo#1190024): The mainline Linux
+  Kernel has now HAVEGED algorithm build in internally (since
+  version 5.6).</comment>
+    <requestid>980343</requestid>
+  </revision>
 </revisionlist>
