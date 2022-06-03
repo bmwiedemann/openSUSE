@@ -1188,7 +1188,7 @@ unsorted:
   - bb 
   - bbe 
   - bbswitch 
-  - bbswitch-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - bbswitch-kmp-default 
   - bbswitch-kmp-pae: [i586] 
   - bcache-tools: [i586] 
   - bcal: [x86_64] 
@@ -3128,6 +3128,7 @@ unsorted:
   - drawing 
   - drawing-lang 
   - drbd-formula 
+  - drbd-kmp-default: [x86_64] 
   - drbd-utils: [i586] 
   - drc 
   - drc-doc 
@@ -3556,7 +3557,7 @@ unsorted:
   - fabtests 
   - facedetect 
   - facetimehd-firmware 
-  - facetimehd-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - facetimehd-kmp-default 
   - facetimehd-kmp-pae: [i586] 
   - faenza-icon-theme 
   - faenza-icon-theme-ambiance 
@@ -6660,7 +6661,9 @@ unsorted:
   - gudev-sharp 
   - gudev-sharp-devel 
   - guess-changelog: [x86_64] 
-  - guestfsd: [x86_64] 
+  - guestfs-tools-bash-completion: [x86_64] 
+  - guestfs-tools-man-pages-ja: [x86_64] 
+  - guestfs-tools-man-pages-uk: [x86_64] 
   - guice-assistedinject 
   - guice-bom 
   - guice-extensions 
@@ -8405,6 +8408,7 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
+  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -8749,7 +8753,7 @@ unsorted:
   - ldc-phobos-devel 
   - ldc-runtime-devel 
   - ldirectord 
-  - ldmtool: [i586] 
+  - ldmtool 
   - ldns-devel 
   - leafnode 
   - leafpad 
@@ -11417,8 +11421,19 @@ unsorted:
   - libguess-devel 
   - libguess1 
   - libguess1-32bit: [x86_64] 
+  - libguestfs-appliance: [x86_64] 
+  - libguestfs-bash-completion: [x86_64] 
   - libguestfs-devel: [x86_64] 
-  - libguestfs-test: [x86_64] 
+  - libguestfs-gobject-1_0: [x86_64] 
+  - libguestfs-gobject-devel: [x86_64] 
+  - libguestfs-inspect-icons: [x86_64] 
+  - libguestfs-man-pages-ja: [x86_64] 
+  - libguestfs-man-pages-uk: [x86_64] 
+  - libguestfs-rescue: [x86_64] 
+  - libguestfs-rsync: [x86_64] 
+  - libguestfs-typelib-Guestfs-1_0: [x86_64] 
+  - libguestfs-winsupport: [x86_64] 
+  - libguestfsd: [x86_64] 
   - libguile-cairo0 
   - libguile-srfi-srfi-1-v-3-3 
   - libguile-srfi-srfi-13-14-v-3-3 
@@ -11640,7 +11655,7 @@ unsorted:
   - libhidapi-libusb0 
   - libhinawa-devel 
   - libhinawa2 
-  - libhivex0: [i586] 
+  - libhivex0 
   - libhl1 
   - libhmac-devel 
   - libhmac-tools 
@@ -12026,7 +12041,7 @@ unsorted:
   - libldb-devel 
   - libldl-doc 
   - libldl2 
-  - libldm-1_0-0: [i586] 
+  - libldm-1_0-0 
   - libldm-1_0-0-devel 
   - libleechcraft-util-db-qt5-0_6_75_1 
   - libleechcraft-util-gui-qt5-0_6_75_1 
@@ -12464,7 +12479,7 @@ unsorted:
   - libnbd 
   - libnbd-bash-completion 
   - libnbd-devel 
-  - libnbd0 
+  - libnbd0: [i586] 
   - libnblib0 
   - libnco-5_0_6 
   - libnco-devel 
@@ -15423,7 +15438,7 @@ unsorted:
   - ltrace 
   - ltrace-32bit: [x86_64] 
   - lttng-modules 
-  - lttng-modules-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - lttng-modules-kmp-default 
   - lttng-modules-kmp-pae: [i586] 
   - lttng-tools 
   - lttng-tools-devel 
@@ -16155,6 +16170,7 @@ unsorted:
   - mcelog: [i586] 
   - mchange-commons 
   - mcjoin 
+  - mcomix 
   - mcpp 
   - mcpp-devel 
   - mcqd 
@@ -16268,7 +16284,7 @@ unsorted:
   - mgp 
   - mhash-devel 
   - mhvtl 
-  - mhvtl-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - mhvtl-kmp-default 
   - mhvtl-kmp-pae: [i586] 
   - miao-fonts 
   - micro-editor 
@@ -17154,7 +17170,7 @@ unsorted:
   - nbdkit-devel 
   - nbdkit-example-plugins 
   - nbdkit-gzip-filter 
-  - nbdkit-nbd-plugin 
+  - nbdkit-nbd-plugin: [i586] 
   - nbdkit-python-plugin: [i586] 
   - nbdkit-server: [i586] 
   - nbdkit-ssh-plugin: [i586] 
@@ -18285,11 +18301,14 @@ unsorted:
   - openSUSE-release-usb-x11 
   - openSUSE-signkey-cert: [x86_64] 
   - openSUSEway 
+  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
+  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
+  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -19301,7 +19320,7 @@ unsorted:
   - perl-Class-Factory-Util 
   - perl-Class-ISA 
   - perl-Class-Inner 
-  - perl-Class-Inspector: [i586] 
+  - perl-Class-Inspector 
   - perl-Class-Load 
   - perl-Class-Load-XS 
   - perl-Class-MakeMethods 
@@ -19516,7 +19535,7 @@ unsorted:
   - perl-Exporter-Declare 
   - perl-Exporter-Lite 
   - perl-Exporter-Tidy 
-  - perl-Exporter-Tiny: [i586] 
+  - perl-Exporter-Tiny 
   - perl-ExtUtils-CChecker 
   - perl-ExtUtils-Config 
   - perl-ExtUtils-CppGuess 
@@ -19560,7 +19579,7 @@ unsorted:
   - perl-File-Rename 
   - perl-File-Rsync 
   - perl-File-Share 
-  - perl-File-ShareDir: [i586] 
+  - perl-File-ShareDir 
   - perl-File-ShareDir-Install 
   - perl-File-ShareDir-ProjectDistDir 
   - perl-File-Slurp 
@@ -19734,8 +19753,8 @@ unsorted:
   - perl-List-BinarySearch 
   - perl-List-BinarySearch-XS 
   - perl-List-Compare 
-  - perl-List-MoreUtils: [i586] 
-  - perl-List-MoreUtils-XS: [i586] 
+  - perl-List-MoreUtils 
+  - perl-List-MoreUtils-XS 
   - perl-List-SomeUtils 
   - perl-List-SomeUtils-XS 
   - perl-List-UtilsBy 
@@ -19993,7 +20012,7 @@ unsorted:
   - perl-Parallel-ForkManager 
   - perl-Params-Classify 
   - perl-Params-Coerce 
-  - perl-Params-Util: [i586] 
+  - perl-Params-Util 
   - perl-Params-Validate 
   - perl-Params-ValidationCompiler 
   - perl-Parse-ANSIColor-Tiny 
@@ -20146,7 +20165,7 @@ unsorted:
   - perl-String-Format 
   - perl-String-Formatter 
   - perl-String-RewritePrefix 
-  - perl-String-ShellQuote: [i586] 
+  - perl-String-ShellQuote 
   - perl-String-ToIdentifier-EN 
   - perl-String-Trim 
   - perl-String-Truncate 
@@ -20173,6 +20192,7 @@ unsorted:
   - perl-Syntax-Keyword-Junction 
   - perl-Syntax-Keyword-Try 
   - perl-Sys-CPU 
+  - perl-Sys-Guestfs: [x86_64] 
   - perl-Sys-Hostname-Long 
   - perl-Sys-LoadAvg 
   - perl-Sys-MemInfo 
@@ -20401,7 +20421,7 @@ unsorted:
   - perl-Web-MREST-CLI 
   - perl-Web-Machine 
   - perl-Web-Scraper 
-  - perl-Win-Hivex: [i586] 
+  - perl-Win-Hivex 
   - perl-Wx 
   - perl-X11-Protocol-Other 
   - perl-XML-Atom 
@@ -20468,7 +20488,7 @@ unsorted:
   - perl-indirect 
   - perl-lib-relative 
   - perl-libconfigfile 
-  - perl-libintl-perl: [i586] 
+  - perl-libintl-perl 
   - perl-libprelude 
   - perl-libxml-perl 
   - perl-local-lib 
@@ -21751,13 +21771,9 @@ unsorted:
   - python3-libcec 
   - python3-libcomps 
   - python3-libdnf 
-  - python3-libexe 
-  - python3-libfsntfs 
   - python3-libftdi1 
-  - python3-libfwnt 
   - python3-libguestfs: [x86_64] 
   - python3-libixion 
-  - python3-libluksde 
   - python3-libmodulemd 
   - python3-libmount 
   - python3-libnvme 
@@ -22429,6 +22445,7 @@ unsorted:
   - python310-azure-mgmt-commerce 
   - python310-azure-mgmt-communication 
   - python310-azure-mgmt-compute 
+  - python310-azure-mgmt-confidentialledger 
   - python310-azure-mgmt-confluent 
   - python310-azure-mgmt-connectedvmware 
   - python310-azure-mgmt-consumption 
@@ -23577,17 +23594,21 @@ unsorted:
   - python310-libevt 
   - python310-libevtx 
   - python310-libewf 
+  - python310-libexe 
   - python310-libfsapfs 
   - python310-libfsext 
   - python310-libfshfs 
+  - python310-libfsntfs 
   - python310-libfsxfs 
   - python310-libfvde 
+  - python310-libfwnt 
   - python310-libfwps 
   - python310-libfwsi 
   - python310-libkdumpfile 
   - python310-liblarch 
   - python310-liblarch-gtk 
   - python310-liblnk 
+  - python310-libluksde 
   - python310-libmodi 
   - python310-libmsiecf 
   - python310-libmsym 
@@ -25650,6 +25671,7 @@ unsorted:
   - python38-azure-mgmt-commerce 
   - python38-azure-mgmt-communication 
   - python38-azure-mgmt-compute 
+  - python38-azure-mgmt-confidentialledger 
   - python38-azure-mgmt-confluent 
   - python38-azure-mgmt-connectedvmware 
   - python38-azure-mgmt-consumption 
@@ -26288,7 +26310,7 @@ unsorted:
   - python38-evdev 
   - python38-eventlet 
   - python38-evilunit 
-  - python38-evtx: [i586] 
+  - python38-evtx 
   - python38-exam 
   - python38-execnet 
   - python38-exiv2 
@@ -26486,7 +26508,7 @@ unsorted:
   - python38-hepunits 
   - python38-hetzner 
   - python38-hetznercloud 
-  - python38-hexdump: [i586] 
+  - python38-hexdump 
   - python38-hijri-converter 
   - python38-hkdf 
   - python38-hl7apy 
@@ -26722,17 +26744,21 @@ unsorted:
   - python38-libevt 
   - python38-libevtx 
   - python38-libewf 
+  - python38-libexe 
   - python38-libfsapfs 
   - python38-libfsext 
   - python38-libfshfs 
+  - python38-libfsntfs 
   - python38-libfsxfs 
   - python38-libfvde 
+  - python38-libfwnt 
   - python38-libfwps 
   - python38-libfwsi 
   - python38-libkdumpfile 
   - python38-liblarch 
   - python38-liblarch-gtk 
   - python38-liblnk 
+  - python38-libluksde 
   - python38-libmodi 
   - python38-libmsiecf 
   - python38-libmsym 
@@ -28692,6 +28718,7 @@ unsorted:
   - python39-azure-mgmt-commerce 
   - python39-azure-mgmt-communication 
   - python39-azure-mgmt-compute 
+  - python39-azure-mgmt-confidentialledger 
   - python39-azure-mgmt-confluent 
   - python39-azure-mgmt-connectedvmware 
   - python39-azure-mgmt-consumption 
@@ -29839,17 +29866,21 @@ unsorted:
   - python39-libevt 
   - python39-libevtx 
   - python39-libewf 
+  - python39-libexe 
   - python39-libfsapfs 
   - python39-libfsext 
   - python39-libfshfs 
+  - python39-libfsntfs 
   - python39-libfsxfs 
   - python39-libfvde 
+  - python39-libfwnt 
   - python39-libfwps 
   - python39-libfwsi 
   - python39-libkdumpfile 
   - python39-liblarch 
   - python39-liblarch-gtk 
   - python39-liblnk 
+  - python39-libluksde 
   - python39-libmodi 
   - python39-libmsiecf 
   - python39-libmsym 
@@ -33382,7 +33413,7 @@ unsorted:
   - syntax-highlighting-imports 
   - sysbench 
   - sysdig 
-  - sysdig-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - sysdig-kmp-default 
   - sysdig-kmp-pae: [i586] 
   - sysfsutils 
   - sysfsutils-devel 
@@ -43057,6 +43088,7 @@ unsorted:
   - virt-top 
   - virt-v2v-man-pages-ja: [x86_64] 
   - virt-v2v-man-pages-uk: [x86_64] 
+  - virt-win-reg: [x86_64] 
   - virtme 
   - virtualbox: [x86_64] 
   - virtualbox-devel: [x86_64] # devel package of dvd:virtualbox-guest-x11 
@@ -43835,6 +43867,8 @@ unsorted:
   - xviewer-plugins-lang 
   - xvinfo 
   - xvkbd 
+  - xwallpaper 
+  - xwallpaper-zsh-completion 
   - xwayland-devel 
   - xwd 
   - xwininfo 
@@ -44008,7 +44042,7 @@ unsorted:
   - zdbsp 
   - zeal 
   - zerobranestudio 
-  - zerofree: [i586] 
+  - zerofree 
   - zeromq-devel 
   - zfp-devel: [x86_64] 
   - zhu3d 
