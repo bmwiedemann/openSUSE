@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  1 12:28:33 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Add patch tiff-readcount.patch to fix build with the new tiff
+
+-------------------------------------------------------------------
 Sun May 29 18:37:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 9.1.1 (bsc#1199713, CVE-2022-30595):

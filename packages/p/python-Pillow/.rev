@@ -571,4 +571,13 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
   * Do not open images with zero or negative height #6269</comment>
     <requestid>979708</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>4d1a920bc0f554bf8a4c70c6d8cdf627</srcmd5>
+    <version>9.1.1</version>
+    <time>1654258592</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch tiff-readcount.patch to fix build with the new tiff
+</comment>
+    <requestid>980462</requestid>
+  </revision>
 </revisionlist>

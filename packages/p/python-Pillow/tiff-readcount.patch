@@ -1,0 +1,44 @@
+From 40a918d274182b7d7c063d7797fb77d967982c4a Mon Sep 17 00:00:00 2001
+From: Andrew Murray <radarhere@users.noreply.github.com>
+Date: Sat, 28 May 2022 20:14:05 +1000
+Subject: [PATCH] Set readcount to TIFF_VARIABLE for a variable number of
+ values
+
+---
+ src/libImaging/TiffDecode.c | 14 +++-----------
+ 1 file changed, 3 insertions(+), 11 deletions(-)
+
+diff --git a/src/libImaging/TiffDecode.c b/src/libImaging/TiffDecode.c
+index f818f19d50..3bb444c804 100644
+--- a/src/libImaging/TiffDecode.c
++++ b/src/libImaging/TiffDecode.c
+@@ -815,11 +815,11 @@ ImagingLibTiffMergeFieldInfo(
+ 
+     // custom fields added with ImagingLibTiffMergeFieldInfo are only used for
+     // decoding, ignore readcount;
+-    int readcount = 1;
++    int readcount = is_var_length ? TIFF_VARIABLE : 1;
+     // we support writing a single value, or a variable number of values
+-    int writecount = 1;
++    int writecount = is_var_length ? TIFF_VARIABLE : 1;
+     // whether the first value should encode the number of values.
+-    int passcount = 0;
++    int passcount = (is_var_length && field_type != TIFF_ASCII) ? 1 : 0;
+ 
+     TIFFFieldInfo info[] = {
+         {key,
+@@ -831,14 +831,6 @@ ImagingLibTiffMergeFieldInfo(
+          passcount,
+          "CustomField"}};
+ 
+-    if (is_var_length) {
+-        info[0].field_writecount = -1;
+-    }
+-
+-    if (is_var_length && field_type != TIFF_ASCII) {
+-        info[0].field_passcount = 1;
+-    }
+-
+     n = sizeof(info) / sizeof(info[0]);
+ 
+     // Test for libtiff 4.0 or later, excluding libtiff 3.9.6 and 3.9.7

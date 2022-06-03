@@ -26,6 +26,8 @@ Summary:        Python Imaging Library (Fork)
 License:        HPND
 URL:            https://python-pillow.org/
 Source:         https://files.pythonhosted.org/packages/source/P/Pillow/Pillow-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/python-pillow/Pillow/commit/40a918d274182b7d7c063d7797fb77d967982c4a Set readcount to TIFF_VARIABLE for a variable number of values
+Patch0:         tiff-readcount.patch
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module olefile}
 BuildRequires:  %{python_module pytest >= 4.0}
@@ -68,6 +70,7 @@ Python Imaging Library by Fredrik Lundh and Contributors.
 
 %prep
 %setup -q -n Pillow-%{version}
+%autopatch -p1
 
 %build
 %python_build
