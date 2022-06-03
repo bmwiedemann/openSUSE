@@ -22,7 +22,7 @@
 %define py3pkg python310
 %define py3pkg_sitelib %{_prefix}/lib/python%{py3ver}/site-packages
 Name:           gajim
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        XMPP client written in Python and Gtk
 License:        GPL-3.0-only
@@ -100,12 +100,14 @@ mkdir -p %{buildroot}%{_datadir}/
 mv %{buildroot}{%{py3pkg_sitelib}/%{name}/data,%{_datadir}/%{name}}/
 ln -s %{_datadir}/%{name} %{buildroot}%{py3pkg_sitelib}/%{name}/data
 
+# The plugins subdirectory must be owned by the package.
+mkdir %{buildroot}%{_datadir}/%{name}/plugins/
+
 %suse_update_desktop_file -r org.gajim.Gajim Network InstantMessaging
 %fdupes %{buildroot}%{_prefix}/
 %find_lang %{name}
 
 %files
-%license COPYING
 %{_bindir}/%{name}*
 %{_datadir}/%{name}/
 %{py3pkg_sitelib}/%{name}/

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jun  1 20:44:55 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.4.3:
+  * AppPage: Show plugin update notifications.
+  * ChatList: Add middle mouse click for closing a chat.
+  * DirectorySearch: Use Gio.Menu, add Start Chat item.
+  * Group chat roster: Store visibility.
+  * Smaller Jingle file transfer widget.
+  * Unify ContactInfo and GroupchatDetails elements width.
+  * Workspaces: Add Move to new workspace functionality.
+  * Workspaces: Enable emoji picker.
+  * Avatars: Render emojis correctly.
+  * AddContact: Fix opening AdHocCommands window.
+  * ContactInfo: Fix copying name and JID by Ctrl+C.
+  * DirectorySearch: Correctly connect form validation.
+  * Don’t fail on GajimPlugin equality test.
+  * History: Don’t remove JID IDs from database.
+  * InfoBar: Add style rule for anchors in dark mode.
+  * Make GStreamer an optional dependency again.
+  * Plugins: Unregister modules after calling deactivate().
+  * Replace user-visible strings of "Groupchat" with "Group Chat".
+  * WorkspaceDialog: Disable Remove button for last workspace.
+  * AccountsWindow: Use get_app_window to reliably access window's
+    methods.
+  * VCardGrid: Request minimum width.
+  * ChatControl: Don't update AV actions for PMs.
+  * Search: Add fail-safe for incomplete JID ID tables.
+  * StartChat: Allow transport JIDs without successful discovery.
+
+-------------------------------------------------------------------
 Mon May 30 14:07:46 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix download url: upstream only publishes a .tar.gz, so let's use
