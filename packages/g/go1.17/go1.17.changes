@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jun  1 17:51:26 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.17.11 (released 2022-06-01) includes security fixes to the
+  crypto/rand, crypto/tls, os/exec, and path/filepath packages, as
+  well as bug fixes to the crypto/tls package.
+  Refs boo#1190649 go1.17 release tracking
+  CVE-2022-30634 CVE-2022-30629 CVE-2022-30580 CVE-2022-29804
+  * boo#1200134 go#52561 CVE-2022-30634
+  * go#52932 crypto/rand: Read hangs when passed buffer larger than 1<<32 - 1
+  * boo#1200135 go#52814 CVE-2022-30629
+  * go#52832 crypto/tls: randomly generate ticket_age_add
+  * boo#1200136 go#52574 CVE-2022-30580
+  * go#53056 os/exec: Cmd.{Run,Start} should fail if Cmd.Path is unset
+  * boo#1200137 go#52476 CVE-2022-29804
+  * go#52478 path/filepath: Clean(.\c:) returns c: on Windows
+  * go#52790 crypto/tls: 500% increase in allocations from (*tls.Conn).Read in go 1.17
+  * go#52826 runtime: TestGcSys is still flaky
+  * go#53042 misc/cgo/testsanitizers: occasional hangs in TestTSAN/tsan12
+  * go#53049 runtime: TestGdbBacktrace failures due to GDB "internal-error: wait returned unexpected status 0x0"
+  * go#53114 misc/cgo/testsanitizers: deadlock in TestTSAN/tsan11
+
+-------------------------------------------------------------------
 Tue May 10 22:25:54 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.17.10 (released 2022-05-10) includes security fixes to the

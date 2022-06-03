@@ -145,7 +145,7 @@
 %endif
 
 Name:           go1.17
-Version:        1.17.10
+Version:        1.17.11
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause

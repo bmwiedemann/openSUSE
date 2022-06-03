@@ -268,4 +268,29 @@
   * go#52705 net: TestDialCancel is not compatible with new macOS ARM64 builders (forwarded request 976169 from jfkw)</comment>
     <requestid>976172</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7ada56d32e46bda86d4741a761ff2d0b</srcmd5>
+    <version>1.17.11</version>
+    <time>1654258532</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.17.11 (released 2022-06-01) includes security fixes to the
+  crypto/rand, crypto/tls, os/exec, and path/filepath packages, as
+  well as bug fixes to the crypto/tls package.
+  Refs boo#1190649 go1.17 release tracking
+  CVE-2022-30634 CVE-2022-30629 CVE-2022-30580 CVE-2022-29804
+  * boo#1200134 go#52561 CVE-2022-30634
+  * go#52932 crypto/rand: Read hangs when passed buffer larger than 1&lt;&lt;32 - 1
+  * boo#1200135 go#52814 CVE-2022-30629
+  * go#52832 crypto/tls: randomly generate ticket_age_add
+  * boo#1200136 go#52574 CVE-2022-30580
+  * go#53056 os/exec: Cmd.{Run,Start} should fail if Cmd.Path is unset
+  * boo#1200137 go#52476 CVE-2022-29804
+  * go#52478 path/filepath: Clean(.\c:) returns c: on Windows
+  * go#52790 crypto/tls: 500% increase in allocations from (*tls.Conn).Read in go 1.17
+  * go#52826 runtime: TestGcSys is still flaky
+  * go#53042 misc/cgo/testsanitizers: occasional hangs in TestTSAN/tsan12
+  * go#53049 runtime: TestGdbBacktrace failures due to GDB &quot;internal-error: wait returned unexpected status 0x0&quot;
+  * go#53114 misc/cgo/testsanitizers: deadlock in TestTSAN/tsan11 (forwarded request 980417 from jfkw)</comment>
+    <requestid>980419</requestid>
+  </revision>
 </revisionlist>
