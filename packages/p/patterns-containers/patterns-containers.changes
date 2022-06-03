@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  2 17:58:02 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove patterns for Kubic specific system roles
+
+-------------------------------------------------------------------
 Wed Oct 27 08:39:30 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Only require rook on architectures it's available on
