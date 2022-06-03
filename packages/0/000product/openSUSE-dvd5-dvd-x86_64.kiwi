@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20220601" schemaversion="4.1">
+<image name="OBS__openSUSE___20220602" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220601</productvar>
+      <productvar name="VERSION">20220602</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220601,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220602,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220601/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220602/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -198,7 +198,6 @@
       <repopackage name="bash-doc"/>
       <repopackage name="bash-lang"/>
       <repopackage name="bash-sh"/>
-      <repopackage name="bbswitch-kmp-default" arch="x86_64"/>
       <repopackage name="bc"/>
       <repopackage name="bcm20702a1-firmware"/>
       <repopackage name="bcm43xx-firmware"/>
@@ -413,7 +412,6 @@
       <repopackage name="dragonplayer"/>
       <repopackage name="dragonplayer-lang"/>
       <repopackage name="drbd" arch="x86_64"/>
-      <repopackage name="drbd-kmp-default" arch="x86_64"/>
       <repopackage name="drbd-utils" arch="x86_64"/>
       <repopackage name="drkonqi5"/>
       <repopackage name="drkonqi5-lang"/>
@@ -475,7 +473,6 @@
       <repopackage name="expect"/>
       <repopackage name="eyeD3"/>
       <repopackage name="f2fs-tools"/>
-      <repopackage name="facetimehd-kmp-default" arch="x86_64"/>
       <repopackage name="farstream-data"/>
       <repopackage name="fbiterm"/>
       <repopackage name="fcitx"/>
@@ -853,9 +850,7 @@
       <repopackage name="gtkspell-lang"/>
       <repopackage name="gucharmap"/>
       <repopackage name="gucharmap-lang"/>
-      <repopackage name="guestfs-data" arch="x86_64"/>
       <repopackage name="guestfs-tools" arch="x86_64"/>
-      <repopackage name="guestfs-winsupport" arch="x86_64"/>
       <repopackage name="guile"/>
       <repopackage name="guile-modules-3_0"/>
       <repopackage name="gupnp-av"/>
@@ -1274,7 +1269,7 @@
       <repopackage name="kquickcharts"/>
       <repopackage name="krb5"/>
       <repopackage name="krb5-32bit" arch="x86_64"/>
-      <repopackage name="krb5-client"/>
+      <repopackage name="krb5-client" arch="x86_64"/>
       <repopackage name="krename"/>
       <repopackage name="kreversi"/>
       <repopackage name="kreversi-lang"/>
@@ -1342,7 +1337,6 @@
       <repopackage name="kwrited5"/>
       <repopackage name="lame"/>
       <repopackage name="layer-shell-qt5"/>
-      <repopackage name="ldmtool" arch="x86_64"/>
       <repopackage name="ldns"/>
       <repopackage name="lensfun-data"/>
       <repopackage name="less"/>
@@ -1897,6 +1891,8 @@
       <repopackage name="libgts-0_7-5"/>
       <repopackage name="libgucharmap_2_90-7"/>
       <repopackage name="libgudev-1_0-0"/>
+      <repopackage name="libguestfs" arch="x86_64"/>
+      <repopackage name="libguestfs-xfs" arch="x86_64"/>
       <repopackage name="libguestfs0" arch="x86_64"/>
       <repopackage name="libguile-3_0-1"/>
       <repopackage name="libgupnp-1_2-1"/>
@@ -1932,7 +1928,6 @@
       <repopackage name="libheif1"/>
       <repopackage name="libhidapi-hidraw0"/>
       <repopackage name="libhiredis1_0_0"/>
-      <repopackage name="libhivex0" arch="x86_64"/>
       <repopackage name="libhogweed6"/>
       <repopackage name="libhogweed6-32bit" arch="x86_64"/>
       <repopackage name="libhugetlbfs"/>
@@ -2245,7 +2240,6 @@
       <repopackage name="libldapcpp0"/>
       <repopackage name="libldb2"/>
       <repopackage name="libldb2-32bit" arch="x86_64"/>
-      <repopackage name="libldm-1_0-0" arch="x86_64"/>
       <repopackage name="libldns3"/>
       <repopackage name="liblensfun1"/>
       <repopackage name="liblhasa0"/>
@@ -2344,6 +2338,7 @@
       <repopackage name="libmysofa1"/>
       <repopackage name="libmythes-1_2-0"/>
       <repopackage name="libnautilus-extension1"/>
+      <repopackage name="libnbd0" arch="x86_64"/>
       <repopackage name="libncurses6"/>
       <repopackage name="libndctl6" arch="x86_64"/>
       <repopackage name="libndp0"/>
@@ -3127,7 +3122,6 @@
       <repopackage name="lskat-lang"/>
       <repopackage name="lsof"/>
       <repopackage name="lsscsi"/>
-      <repopackage name="lttng-modules-kmp-default" arch="x86_64"/>
       <repopackage name="luit"/>
       <repopackage name="lunar-calendar"/>
       <repopackage name="lunar-calendar-gtk3-module"/>
@@ -3206,7 +3200,6 @@
       <repopackage name="metatheme-greybird-geeko-common"/>
       <repopackage name="metatheme-sonar-common"/>
       <repopackage name="mgopen-fonts"/>
-      <repopackage name="mhvtl-kmp-default" arch="x86_64"/>
       <repopackage name="milou5"/>
       <repopackage name="milou5-lang"/>
       <repopackage name="minicom"/>
@@ -3338,6 +3331,7 @@
       <repopackage name="nbdkit-basic-filters" arch="x86_64"/>
       <repopackage name="nbdkit-basic-plugins" arch="x86_64"/>
       <repopackage name="nbdkit-curl-plugin" arch="x86_64"/>
+      <repopackage name="nbdkit-nbd-plugin" arch="x86_64"/>
       <repopackage name="nbdkit-python-plugin" arch="x86_64"/>
       <repopackage name="nbdkit-server" arch="x86_64"/>
       <repopackage name="nbdkit-ssh-plugin" arch="x86_64"/>
@@ -3416,9 +3410,6 @@
       <repopackage name="open-iscsi"/>
       <repopackage name="open-vm-tools"/>
       <repopackage name="open-vm-tools-desktop"/>
-      <repopackage name="openafs"/>
-      <repopackage name="openafs-client"/>
-      <repopackage name="openafs-kmp-default"/>
       <repopackage name="openal-soft-data"/>
       <repopackage name="opencc-data"/>
       <repopackage name="openconnect"/>
@@ -3579,7 +3570,6 @@
       <repopackage name="perl-BSD-Resource"/>
       <repopackage name="perl-CDDB_get"/>
       <repopackage name="perl-CGI"/>
-      <repopackage name="perl-Class-Inspector" arch="x86_64"/>
       <repopackage name="perl-Clone"/>
       <repopackage name="perl-common-sense"/>
       <repopackage name="perl-Config-General"/>
@@ -3606,11 +3596,9 @@
       <repopackage name="perl-Encode-Locale"/>
       <repopackage name="perl-Error"/>
       <repopackage name="perl-Expect"/>
-      <repopackage name="perl-Exporter-Tiny" arch="x86_64"/>
       <repopackage name="perl-ExtUtils-PkgConfig"/>
       <repopackage name="perl-File-Listing"/>
       <repopackage name="perl-File-RandomAccess"/>
-      <repopackage name="perl-File-ShareDir" arch="x86_64"/>
       <repopackage name="perl-FileHandle-Unget"/>
       <repopackage name="perl-GD"/>
       <repopackage name="perl-Geography-Countries"/>
@@ -3634,10 +3622,7 @@
       <repopackage name="perl-JSON"/>
       <repopackage name="perl-JSON-XS"/>
       <repopackage name="perl-ldap"/>
-      <repopackage name="perl-libintl-perl" arch="x86_64"/>
       <repopackage name="perl-libwww-perl"/>
-      <repopackage name="perl-List-MoreUtils" arch="x86_64"/>
-      <repopackage name="perl-List-MoreUtils-XS" arch="x86_64"/>
       <repopackage name="perl-LWP-MediaTypes"/>
       <repopackage name="perl-LWP-Protocol-https"/>
       <repopackage name="perl-Mail-AuthenticationResults"/>
@@ -3661,13 +3646,10 @@
       <repopackage name="perl-Net-SNMP"/>
       <repopackage name="perl-Net-SSLeay"/>
       <repopackage name="perl-NetAddr-IP"/>
-      <repopackage name="perl-Params-Util" arch="x86_64"/>
       <repopackage name="perl-Parse-RecDescent"/>
       <repopackage name="perl-razor-agents"/>
       <repopackage name="perl-SNMP"/>
       <repopackage name="perl-Socket6"/>
-      <repopackage name="perl-String-ShellQuote" arch="x86_64"/>
-      <repopackage name="perl-Sys-Guestfs" arch="x86_64"/>
       <repopackage name="perl-Term-ReadKey"/>
       <repopackage name="perl-Term-ReadLine-Gnu"/>
       <repopackage name="perl-Test-Fork"/>
@@ -3677,7 +3659,6 @@
       <repopackage name="perl-Unix-Syslog"/>
       <repopackage name="perl-URI"/>
       <repopackage name="perl-WebService-MusicBrainz"/>
-      <repopackage name="perl-Win-Hivex" arch="x86_64"/>
       <repopackage name="perl-WWW-RobotRules"/>
       <repopackage name="perl-X11-Protocol"/>
       <repopackage name="perl-X500-DN"/>
@@ -3951,7 +3932,6 @@
       <repopackage name="python38-docutils"/>
       <repopackage name="python38-dragonmapper"/>
       <repopackage name="python38-et_xmlfile"/>
-      <repopackage name="python38-evtx" arch="x86_64"/>
       <repopackage name="python38-executing"/>
       <repopackage name="python38-extras"/>
       <repopackage name="python38-falcon"/>
@@ -3975,7 +3955,6 @@
       <repopackage name="python38-h11"/>
       <repopackage name="python38-h2"/>
       <repopackage name="python38-hanzidentifier"/>
-      <repopackage name="python38-hexdump" arch="x86_64"/>
       <repopackage name="python38-hiredis"/>
       <repopackage name="python38-hpack"/>
       <repopackage name="python38-hstspreload"/>
@@ -4755,7 +4734,6 @@
       <repopackage name="syntax-highlighting"/>
       <repopackage name="sysconfig"/>
       <repopackage name="sysconfig-netconfig"/>
-      <repopackage name="sysdig-kmp-default" arch="x86_64"/>
       <repopackage name="syslinux"/>
       <repopackage name="syslog-service"/>
       <repopackage name="system-config-printer"/>
@@ -5391,7 +5369,6 @@
       <repopackage name="zd1211-firmware"/>
       <repopackage name="zenity"/>
       <repopackage name="zenity-lang"/>
-      <repopackage name="zerofree" arch="x86_64"/>
       <repopackage name="zeromq-tools"/>
       <repopackage name="zip"/>
       <repopackage name="zisofs-tools"/>
