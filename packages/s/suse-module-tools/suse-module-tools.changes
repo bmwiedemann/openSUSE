@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun  2 10:55:37 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.20:
+  * Bump version to 16.0.20
+  * driver-check.sh: avoid false positive error messages (boo#1200107)
+  * don't hardcode /boot for kernel-related files (boo#1199873)
+  * spec file: use "install -p" consistently
+
+-------------------------------------------------------------------
 Fri Jan 28 21:00:00 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.19:

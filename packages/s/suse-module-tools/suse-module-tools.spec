@@ -45,7 +45,7 @@
 %global modprobe_conf_rpmsave %(echo "%{modprobe_conf_files}" | sed 's,\\([^ ]*\\),%{_sysconfdir}/modprobe.d/\\1.conf.rpmsave,g')
 
 Name:           suse-module-tools
-Version:        16.0.19
+Version:        16.0.20
 Release:        0
 Summary:        Configuration for module loading and SUSE-specific utilities for KMPs
 License:        GPL-2.0-or-later
@@ -169,26 +169,25 @@ install -pm 755 kmp-install "%{buildroot}%{_bindir}/"
 install -d -m 755 "%{buildroot}%{_unitdir}/systemd-sysctl.service.d"
 echo '[Unit]' >"%{buildroot}%{sysctl_dropin}"
 %if %{with kernel_sysctl}
-install -m 644 kernel-sysctl.service "%{buildroot}%{_unitdir}"
+install -pm 644 kernel-sysctl.service "%{buildroot}%{_unitdir}"
 echo 'Wants=kernel-sysctl.service' >>"%{buildroot}%{sysctl_dropin}"
 %endif
 %if %{with boot_sysctl}
-install -m 644 boot-sysctl.service "%{buildroot}%{_unitdir}"
+install -pm 644 boot-sysctl.service "%{buildroot}%{_unitdir}"
 echo 'Wants=boot-sysctl.service' >>"%{buildroot}%{sysctl_dropin}"
 %endif
 
-# Ensure that the sg driver is loaded early (bsc#1036463)
-# Not needed in SLE11, where sg is loaded via udev rule.
 install -d -m 755 "%{buildroot}%{_modulesloaddir}"
-install -pm 644 sg.conf "%{buildroot}%{_modulesloaddir}"
+install -pm 644 -t "%{buildroot}%{_modulesloaddir}" modules-load.d/*.conf
+
 %ifarch ppc64 ppc64le
 install -d -m 755 %{buildroot}/usr/lib/systemd/system-generators
-install -m 755 udev-trigger-generator %{buildroot}/usr/lib/systemd/system-generators
+install -pm 755 udev-trigger-generator %{buildroot}/usr/lib/systemd/system-generators
 %endif
 
 # udev rules (formerly system-tuning-common-SUSE, udev-extra-rules)
 install -d -m 755 %{buildroot}%{_udevrulesdir}
-install -m 644 udevrules/*.rules %{buildroot}%{_udevrulesdir}
+install -pm 644 udevrules/*.rules %{buildroot}%{_udevrulesdir}
 
 mkdir -p %{buildroot}%{_defaultlicensedir}
 
