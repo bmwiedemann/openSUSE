@@ -1,4 +1,8 @@
 -------------------------------------------------------------------
+Wed Jun  1 08:43:48 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Add obsoletes and provides for google-{arimo,cousine,tinos}-fonts
+
+-------------------------------------------------------------------
 Thu May 26 23:07:18 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 - Switch back to hinted ttf as unhinted otf causes blurring (boo#1199938)

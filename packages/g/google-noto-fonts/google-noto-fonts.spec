@@ -40,7 +40,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
-Noto's design goal is to achieve visual harmonization (e.g., compatible heights and stroke
+Noto's design goal is to achieve visual harmonization (e.g., compatible heights and stroke 
 thicknesses) across languages.
 
 %package doc
@@ -56,6 +56,8 @@ Group:          System/X11/Fonts
 Recommends:     google-noto-fonts-doc
 Obsoletes:      noto-arimo < %{version}
 Provides:       noto-arimo = %{version}
+Obsoletes:      google-arimo-fonts < %{version}
+Provides:       google-arimo-fonts = %{version}
 %reconfigure_fonts_prereq
 
 %description -n noto-arimo-fonts
@@ -69,6 +71,8 @@ Group:          System/X11/Fonts
 Recommends:     google-noto-fonts-doc
 Obsoletes:      noto-cousine < %{version}
 Provides:       noto-cousine = %{version}
+Obsoletes:      google-cousine-fonts < %{version}
+Provides:       google-cousine-fonts = %{version}
 %reconfigure_fonts_prereq
 
 %description -n noto-cousine-fonts
@@ -2966,6 +2970,8 @@ Group:          System/X11/Fonts
 Recommends:     google-noto-fonts-doc
 Obsoletes:      noto-tinos < %{version}
 Provides:       noto-tinos = %{version}
+Obsoletes:      google-tinos-fonts < %{version}
+Provides:       google-tinos-fonts = %{version}
 %reconfigure_fonts_prereq
 
 %description -n noto-tinos-fonts

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 pkg_name="google-noto-fonts"
 font_dir="ttf"
 
@@ -38,6 +38,12 @@ ls $font_dir/ | sed -e 's:Noto::' -e 's:-.*\..tf::' -e 's:\..tf::' -e 's:\.ttc::
     OBSOLETES=($packagename 'noto-sans-syriacwestern' 'noto-sans-syriacwestern-fonts' 'noto-sans-syriacestrangela' 'noto-sans-syriacestrangela-fonts' 'noto-sans-syriaceastern' 'noto-sans-syriaceastern-fonts')
   elif [ $packagename == "noto-sans-mono" ]; then
     OBSOLETES=($packagename 'noto-mono' 'noto-mono-fonts')
+  elif [ $packagename == "noto-arimo" ]; then
+    OBSOLETES=($packagename 'google-arimo')
+  elif [ $packagename == "noto-cousine" ]; then
+    OBSOLETES=($packagename 'google-cousine')
+  elif [ $packagename == "noto-tinos" ]; then
+    OBSOLETES=($packagename 'google-tinos')
   else
     OBSOLETES=($packagename)
   fi
