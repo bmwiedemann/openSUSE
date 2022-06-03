@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri May 27 06:53:41 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 3.0.1:
+ - Fixes
+  - Make sure to include _hyperlinks in history items
+  - On edit ticket, raise exception if user/queue does not exist
+ - Added
+  - Add helper method for deleting tickets
+  - Add tests
+
+-------------------------------------------------------------------
+Sun May 22 10:18:29 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 3.0.0
+ - The following is a major release of the `rt` library.
+  - There is support for the REST API version 1 as well as version 2.
+  - Please note that this release contains breaking changes and requires adaptations to existing code, even if you are sticking to version 1 of the API.
+  - These changes were necessary in order to properly support both API versions.
+ - Added
+  - RT REST2 support was added and is mostly on par with the REST1 support (differences are a result of the REST2 API implementation differences in RT).
+  - REST2 is a modern API based on JSON exchanges and thus the complex parsing of responses and request construction are no longer needed.
+ - Changes
+  - Existing exception classes were renamed to adhere to the naming convention (https://peps.python.org/pep-0008/#exception-names).
+   - In case you do catch specific `rt` exceptions, a simple search/replace will do, see the changelog page in the documentation for details.
+  - Importing the `rt` class changed in order to better accommodate the new `rest2` implementation.
+   - Where one use to be able to import `rt` using:
+     `from rt import Rt`
+     you now have to use the following syntax:
+     `from rt.rest1 import Rt`
+  - Importing the `rt` module does no longer import all exceptions but only the core `RtError` exception.
+  - If you require other exceptions, please import them from `rt.exceptions`.
+  - Use pytest instead of nose.
+
+-------------------------------------------------------------------
 Sat Apr  9 07:30:39 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update to version 2.2.2:
