@@ -3637,4 +3637,33 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>975718</requestid>
   </revision>
+  <revision rev="215" vrev="19">
+    <srcmd5>d587b6d0f0e80ef95405d70f2bcb96e9</srcmd5>
+    <version>6.3.MACRO</version>
+    <time>1654258605</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20220529
+  + expanded notes for teken/syscons -TD
+  + fix overlooked copying of extended string-heap in copy_termtype
+    (cf: 20220430).
+  + update config.guess
+- Add ncurses patch 20220521
+  + improve memory-leak checking in several test-programs.
+  + set trailing null on string passed from winsnstr() to wins_nwstr().
+  + modify del_curterm() to fix memory-leak introduced by change to
+    copy_termtype().
+- Update tack to 1.09-20220528
+  + Autoconf fixes
+
+- Add ncurses patch 20220514
+  + further improvements to test/test_mouse.c; compare with ncurses test
+    program menu A/a.
+
+- Add ncurses patch 20220507
+  + add test/test_mouse.c (patch by Leonid S Usov).
+  + add a few debug-traces for tic, fix a couple of memory-leaks.
+
+- Add ncurses patch 20220501</comment>
+    <requestid>980327</requestid>
+  </revision>
 </revisionlist>

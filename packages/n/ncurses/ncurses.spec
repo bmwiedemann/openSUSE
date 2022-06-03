@@ -88,12 +88,12 @@ Source2:        handle.linux
 Source3:        README.devel
 Source4:        ncurses-rpmlintrc
 # Latest tack can be found at ftp://ftp.invisible-island.net/pub/ncurses/current/
-Source5:        ftp://ftp.invisible-island.net/pub/ncurses/current/tack-1.09-20210619.tgz
+Source5:        ftp://ftp.invisible-island.net/pub/ncurses/current/tack-1.09-20220528.tgz
 Source6:        edit.sed
 Source7:        baselibs.conf
 Source8:        cursescheck
 Source9:        ftp://ftp.invisible-island.net/ncurses/ncurses-%{basevers}.tar.gz.asc
-Source10:       ftp://ftp.invisible-island.net/pub/ncurses/current/tack-1.09-20210619.tgz.asc
+Source10:       ftp://ftp.invisible-island.net/pub/ncurses/current/tack-1.09-20220528.tgz.asc
 Source11:       ncurses.keyring
 Patch0:         ncurses-6.3.dif
 Patch1:         ncurses-5.9-ibm327x.dif
@@ -133,7 +133,7 @@ tset  -- terminal-initialization utility
 reset -- terminal initialization utility
 
 %package -n ncurses-examples
-Provides:       ncurses-tests = 6.3.20211127
+Provides:       ncurses-tests = %{version}
 Obsoletes:      ncurses-tests <= 6.3.20211127
 Summary:        Tools using the new curses libraries
 License:        MIT

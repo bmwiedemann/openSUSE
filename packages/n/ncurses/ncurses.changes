@@ -1,7 +1,37 @@
 -------------------------------------------------------------------
+Mon May 30 12:27:14 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20220529
+  + expanded notes for teken/syscons -TD
+  + fix overlooked copying of extended string-heap in copy_termtype
+    (cf: 20220430).
+  + update config.guess
+- Add ncurses patch 20220521
+  + improve memory-leak checking in several test-programs.
+  + set trailing null on string passed from winsnstr() to wins_nwstr().
+  + modify del_curterm() to fix memory-leak introduced by change to
+    copy_termtype().
+- Update tack to 1.09-20220528
+  + Autoconf fixes
+
+-------------------------------------------------------------------
+Mon May 16 07:43:27 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20220514
+  + further improvements to test/test_mouse.c; compare with ncurses test
+    program menu A/a.
+
+-------------------------------------------------------------------
+Mon May  9 10:06:01 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20220507
+  + add test/test_mouse.c (patch by Leonid S Usov).
+  + add a few debug-traces for tic, fix a couple of memory-leaks.
+
+-------------------------------------------------------------------
 Mon May  2 06:22:03 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
-- Add ncurses patch  20220501
+- Add ncurses patch 20220501
   + build-fix for debug-traces (report/patch by Chris Clayton).
 - Add ncurses patch 20220430
   + modify samples for xterm mouse 1002/1003 modes to use 1006 mode, and
