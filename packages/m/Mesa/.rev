@@ -4885,4 +4885,17 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - Adding 'stop-iris-flicker.patch'.</comment>
     <requestid>979185</requestid>
   </revision>
+  <revision rev="441" vrev="313">
+    <srcmd5>0932587bc6759d0a39fc29eff8a51172</srcmd5>
+    <version>unknown</version>
+    <time>1654258526</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 22.1.1
+  * first bugfix release
+- supersedes U_llvmpipe-flush-resources-for-kms-swrast-path.patch
+
+- Add patch to fix glitches with KMS (boo#1199885):
+  * U_llvmpipe-flush-resources-for-kms-swrast-path.patch</comment>
+    <requestid>980454</requestid>
+  </revision>
 </revisionlist>

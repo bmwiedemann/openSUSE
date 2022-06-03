@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun  2 01:32:59 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 22.1.1
+  * first bugfix release
+- supersedes U_llvmpipe-flush-resources-for-kms-swrast-path.patch
+
+-------------------------------------------------------------------
+Wed Jun  1 07:58:57 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix glitches with KMS (boo#1199885):
+  * U_llvmpipe-flush-resources-for-kms-swrast-path.patch
+
+-------------------------------------------------------------------
 Wed May 25 12:27:30 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - buildrequire DirectX-Headers only on %{ix86} x86_64, since it's
