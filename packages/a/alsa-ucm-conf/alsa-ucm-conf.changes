@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun  1 05:59:14 UTC 2022 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 1.2.7:
+  Various profile updates for USB-audio, HD-audio, etc.
+  For details, see:
+   https://www.alsa-project.org/wiki/Changes_v1.2.6.3_v1.2.7#alsa-ucm-conf
+- Drop obsoleted patches:
+  0001-HDA-DualCodecs-fix-typo-in-Speaker-condition.patch
+  0002-HDA-acp-avoid-to-create-Mic-ACP-LED-control-for-the-.patch
+
+-------------------------------------------------------------------
 Fri Jan 21 09:42:54 CET 2022 - tiwai@suse.de
 
 - Fix regression for AMD ACP LED control:
