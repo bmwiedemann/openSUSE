@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  1 08:38:40 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Added sphinx5.patch
+  * Fix build with the new Sphinx, sent upstream
+
+-------------------------------------------------------------------
 Fri Mar  6 11:15:26 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.0.3

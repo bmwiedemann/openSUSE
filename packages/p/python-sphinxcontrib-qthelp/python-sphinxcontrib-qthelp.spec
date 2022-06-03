@@ -1,7 +1,7 @@
 #
-# spec file for package python-sphinxcontrib-qthelp
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/sphinx-doc/sphinxcontrib-qthelp
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-qthelp/sphinxcontrib-qthelp-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/sphinx-doc/sphinxcontrib-qthelp/pull/14 Fix tests with Sphinx 5.0
+Patch0:         sphinx5.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -51,6 +53,7 @@ sphinxcontrib-qthelp is a sphinx extension which outputs QtHelp document.
 
 %prep
 %setup -q -n sphinxcontrib-qthelp-%{version}
+%autopatch -p1
 
 %build
 %python_build

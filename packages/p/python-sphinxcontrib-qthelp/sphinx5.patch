@@ -1,0 +1,73 @@
+Index: sphinxcontrib-qthelp-1.0.3/tests/test_qthelp.py
+===================================================================
+--- sphinxcontrib-qthelp-1.0.3.orig/tests/test_qthelp.py
++++ sphinxcontrib-qthelp-1.0.3/tests/test_qthelp.py
+@@ -17,7 +17,7 @@ from sphinx.testing.util import etree_pa
+ def test_qthelp_basic(app, status, warning):
+     app.builder.build_all()
+ 
+-    qhp = (app.outdir / 'Python.qhp').text()
++    qhp = (app.outdir / 'Python.qhp').read_text()
+     assert '<customFilter name="Python ">' in qhp
+     assert '<filterAttribute>Python</filterAttribute>' in qhp
+     assert '<filterAttribute></filterAttribute>' in qhp
+@@ -26,7 +26,7 @@ def test_qthelp_basic(app, status, warni
+     assert '<file>index.html</file>' in qhp
+     assert '<file>_static/basic.css</file>' in qhp
+ 
+-    qhcp = (app.outdir / 'Python.qhcp').text()
++    qhcp = (app.outdir / 'Python.qhcp').read_text()
+     assert '<title>Python  documentation</title>' in qhcp
+     assert '<homePage>qthelp://org.sphinx.python/doc/index.html</homePage>' in qhcp
+     assert '<startPage>qthelp://org.sphinx.python/doc/index.html</startPage>' in qhcp
+@@ -91,10 +91,10 @@ def test_qthelp_namespace(app, status, w
+     # default namespace
+     app.builder.build_all()
+ 
+-    qhp = (app.outdir / 'Python.qhp').text()
++    qhp = (app.outdir / 'Python.qhp').read_text()
+     assert '<namespace>org.sphinx.python</namespace>' in qhp
+ 
+-    qhcp = (app.outdir / 'Python.qhcp').text()
++    qhcp = (app.outdir / 'Python.qhcp').read_text()
+     assert '<homePage>qthelp://org.sphinx.python/doc/index.html</homePage>' in qhcp
+     assert '<startPage>qthelp://org.sphinx.python/doc/index.html</startPage>' in qhcp
+ 
+@@ -102,10 +102,10 @@ def test_qthelp_namespace(app, status, w
+     app.config.qthelp_namespace = 'org.sphinx-doc.sphinx'
+     app.builder.build_all()
+ 
+-    qhp = (app.outdir / 'Python.qhp').text()
++    qhp = (app.outdir / 'Python.qhp').read_text()
+     assert '<namespace>org.sphinx-doc.sphinx</namespace>' in qhp
+ 
+-    qhcp = (app.outdir / 'Python.qhcp').text()
++    qhcp = (app.outdir / 'Python.qhcp').read_text()
+     assert '<homePage>qthelp://org.sphinx-doc.sphinx/doc/index.html</homePage>' in qhcp
+     assert '<startPage>qthelp://org.sphinx-doc.sphinx/doc/index.html</startPage>' in qhcp
+ 
+@@ -115,10 +115,10 @@ def test_qthelp_title(app, status, warni
+     # default title
+     app.builder.build_all()
+ 
+-    qhp = (app.outdir / 'Python.qhp').text()
++    qhp = (app.outdir / 'Python.qhp').read_text()
+     assert '<section title="Python  documentation" ref="index.html">' in qhp
+ 
+-    qhcp = (app.outdir / 'Python.qhcp').text()
++    qhcp = (app.outdir / 'Python.qhcp').read_text()
+     assert '<title>Python  documentation</title>' in qhcp
+ 
+     # give a title
+@@ -126,9 +126,9 @@ def test_qthelp_title(app, status, warni
+     app.config.html_short_title = 'Sphinx <b>"short"</b> title'
+     app.builder.build_all()
+ 
+-    qhp = (app.outdir / 'Python.qhp').text()
++    qhp = (app.outdir / 'Python.qhp').read_text()
+     assert ('<section title="Sphinx &lt;b&gt;&#34;full&#34;&lt;/b&gt; title" ref="index.html">'
+             in qhp)
+ 
+-    qhcp = (app.outdir / 'Python.qhcp').text()
++    qhcp = (app.outdir / 'Python.qhcp').read_text()
+     assert '<title>Sphinx &lt;b&gt;&#34;short&#34;&lt;/b&gt; title</title>' in qhcp
