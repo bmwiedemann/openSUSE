@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon May 23 10:51:45 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to release 2.6.2
+  * Added support for OpenSSL 3.0 (ITS#9436)
+  * Fixed ldapdelete to prune LDAP subentries (ITS#9737)
+  * Fixed libldap to drop connection when non-LDAP data is
+    received (ITS#9803)
+  * Fixed libldap to allow newlines at end of included file
+    (ITS#9811)
+  * Fixed slapd slaptest conversion of olcLastBind (ITS#9808)
+  * Fixed slapd to correctly init global_host earlier (ITS#9787)
+  * Fixed slapd bconfig locking for cn=config replication
+    (ITS#9584)
+  * Fixed slapd usage of thread local counters (ITS#9789)
+  * Fixed slapd to clear runqueue task correctly (ITS#9785)
+  * Fixed slapd idletimeout handling (ITS#9820)
+  * Fixed slapd syncrepl handling of new sessions (ITS#9584)
+  * Fixed slapd to clear connections on bind (ITS#9799)
+  * Fixed slapd to correctly advance connections index (ITS#9831)
+  * Fixed slapd syncrepl ODSEE replication of unknown attr
+    (ITS#9801)
+  * Fixed slapd-asyncmeta memory leak in keepalive setting,
+    slapd-ldap memory leak in keepalive setting, SEGV on config
+    rewrite, ordering on config rewrite, memory leak in keepalive
+    setting (ITS#9802)
+  * Fixed slapo-pcache SEGV & slapd-monitor SEGV on shutdown
+    (ITS#9809)
+  * Fixed slapd-monitor crash when hitting sizelimit (ITS#9832)
+  * Fixed slapd-sql to properly escape filter value (ITS#9815)
+  * Fixed slapo-dynlist dynamic group regression (ITS#9825)
+  * Fixed slapo-ppolicy operation handling to be consistent
+    (ITS#9794)
+  * Fixed slapo-translucent to correctly duplicate substring
+    filters (ITS#9818)
+  * Contrib:
+  * Update ppm module to the 2.1 release (ITS#9814)
+  * Documentation:
+  * admin26: Document new lloadd features (ITS#9780)
+  * Fixed slapd.conf(5)/slapd-config(5) syncrepl
+    sizelimit/timelimit documentation (ITS#9804)
+  * Fixed slapd-sock(5) to clarify "sockresps result" behavior
+    (ITS#8255)
+
+-------------------------------------------------------------------
 Thu May 12 02:48:19 UTC 2022 - William Brown <william.brown@suse.com>
 
 - bsc#1199277 - Resolve segfault when calling new ctx with global ctx

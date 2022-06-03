@@ -17,7 +17,7 @@
 
 
 %define run_test_suite 0
-%define version_main 2.6.1
+%define version_main 2.6.2
 %define slapdrundir %{_rundir}/slapd
 %define flavor @BUILD_FLAVOR@%{nil}
 %if "%flavor" == "contrib"
