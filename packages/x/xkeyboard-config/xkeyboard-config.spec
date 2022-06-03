@@ -17,17 +17,19 @@
 
 
 Name:           xkeyboard-config
-Version:        2.34
+Version:        2.36
 Release:        0
 Summary:        The X Keyboard Extension
 License:        CDDL-1.0 AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/X11/Utilities
 URL:            https://www.freedesktop.org/Software/XKeyboardConfig
-Source:         https://xorg.freedesktop.org/archive/individual/data/%{name}/%{name}-%{version}.tar.bz2
+Source:         https://xorg.freedesktop.org/archive/individual/data/%{name}/%{name}-%{version}.tar.xz
+Patch0:         U_Fixes-regression-from-c3c5d02-were-mistakenly-replac.patch
 # PATCH-FIX-OPENSUSE disable-2xalt_2xctrl-toggle.diff fdo#4927 -- This is just a workaround until fdo#4927 is fixed
 Patch109:       n_disable-2xalt_2xctrl-toggle.diff
 BuildRequires:  fdupes
 BuildRequires:  intltool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  xsltproc
@@ -48,19 +50,18 @@ make keyboards more accessible to people with physical impairments.
 
 %prep
 %setup -q
+%patch0 -p1
 %patch109 -p1
 
 %build
-%configure \
-            --disable-silent-rules \
-            --with-xkb-rules-symlink=xorg \
-            --with-xkb-base=%{_datadir}/X11/xkb \
-            --enable-compat_rules \
-            --disable-runtime-deps
-%make_build
+%{meson} \
+    -Dxkb-base=%{_datadir}/X11/xkb \
+    -Dcompat-rules=true \
+    -Dxorg-rules-symlinks=true
+%{meson_build}
 
 %install
-%make_install
+%{meson_install}
 mkdir -p %{buildroot}%{_localstatedir}/lib/xkb
 # Bug 335553
 mkdir -p %{buildroot}%{_localstatedir}/lib/xkb/compiled/

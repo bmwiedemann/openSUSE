@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun  2 13:35:01 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_Fixes-regression-from-c3c5d02-were-mistakenly-replac.patch
+  * Regression fixed from
+    c3c5d02rules: sort the names of multimedia keyboards alphabetically
+    "\" at the end of line were mistakenly replacd by "/"
+
+-------------------------------------------------------------------
+Thu Jun  2 02:21:07 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 2.36 
+  * bugfixes
+  * removed autotools support :-(
+- switched to meson 
+
+-------------------------------------------------------------------
 Fri Feb 18 17:36:39 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - removed n_suse-ctrl-alt-bksp-terminate.patch 
