@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 29 14:46:58 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.0.2:
+  * Added support for argon2id key derivation function.
+  * Added credential expiry functions.
+  * Fixes gh#libkeepass/pykeepass#223 - safe saving.
+
+-------------------------------------------------------------------
 Sun May 23 00:32:17 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.0.1:

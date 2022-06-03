@@ -1,7 +1,7 @@
 #
 # spec file for package python-pykeepass
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pykeepass
-Version:        4.0.1
+Version:        4.0.2
 Release:        0
 Summary:        Low-level library to interact with keepass databases
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/libkeepass/pykeepass
-Source:         https://github.com/libkeepass/pykeepass/archive/%{version}.tar.gz#/pykeepass-%{version}.tar.gz
+Source:         https://github.com/libkeepass/pykeepass/archive/refs/tags/v%{version}.tar.gz#/pykeepass-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -59,7 +59,6 @@ sed -i '1{/^#!.*env python/d}' pykeepass/pykeepass.py pykeepass/kdbx_parsing/kdb
 
 %install
 %python_install
-%python_expand rm -r %{buildroot}%{$python_sitelib}/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
