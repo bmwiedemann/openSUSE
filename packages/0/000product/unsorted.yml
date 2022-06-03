@@ -3557,7 +3557,7 @@ unsorted:
   - fabtests 
   - facedetect 
   - facetimehd-firmware 
-  - facetimehd-kmp-default 
+  - facetimehd-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - facetimehd-kmp-pae: [i586] 
   - faenza-icon-theme 
   - faenza-icon-theme-ambiance 
@@ -6228,11 +6228,13 @@ unsorted:
   - google-alegreya-sans-fonts 
   - google-allerta-fonts 
   - google-anonymouspro-fonts 
+  - google-arimo-fonts 
   - google-authenticator-libpam 
   - google-authenticator-libpam-32bit: [x86_64] 
   - google-cabin-fonts 
   - google-caladea-fonts 
   - google-cardo-fonts 
+  - google-cousine-fonts 
   - google-errorprone-annotation 
   - google-errorprone-annotations 
   - google-errorprone-annotations-javadoc 
@@ -6259,6 +6261,7 @@ unsorted:
   - google-quiche-source 
   - google-roboto-mono-fonts 
   - google-roboto-slab-fonts 
+  - google-tinos-fonts 
   - google-worksans-fonts 
   - google-worksans-fonts-doc 
   - googleapis-source 
@@ -9046,7 +9049,7 @@ unsorted:
   - libKSeExpr4 
   - libLASi-devel 
   - libLASi2 
-  - libLHAPDF-6_4_0 
+  - libLHAPDF-6_5_1 
   - libLLVM11 
   - libLLVM11-32bit: [x86_64] 
   - libLLVM12 
@@ -9411,7 +9414,7 @@ unsorted:
   - libQuotient0_6 
   - libRaTools0 
   - libRecast1 
-  - libRivet-3_1_5 
+  - libRivet-3_1_6 
   - libSDL-1_2-0-32bit: [x86_64] 
   - libSDL2-2_0-0-32bit: [x86_64] 
   - libSDL2-devel 
@@ -9610,7 +9613,7 @@ unsorted:
   - libXxf86vm-devel 
   - libXxf86vm-devel-32bit: [x86_64] 
   - libXxf86vm1-32bit: [x86_64] 
-  - libYODA-1_9_4 
+  - libYODA-1_9_5 
   - libZXing1-32bit: [x86_64] 
   - liba2ps1 
   - liba52-0-32bit: [x86_64] 
@@ -14728,7 +14731,7 @@ unsorted:
   - libvulkan_radeon-32bit: [x86_64] 
   - libwacom-devel 
   - libwacom-tools 
-  - libwacom2-32bit: [x86_64] 
+  - libwacom9-32bit: [x86_64] 
   - libwaffle-1-0 
   - libwapcaplet-devel 
   - libwapcaplet0 
@@ -17456,8 +17459,6 @@ unsorted:
   - notmuch-devel 
   - notmuch-doc 
   - notmuch-emacs 
-  - noto-arimo-fonts 
-  - noto-cousine-fonts 
   - noto-kufiarabic-fonts 
   - noto-loopedlao-fonts 
   - noto-loopedlao-ui-fonts 
@@ -17755,7 +17756,6 @@ unsorted:
   - noto-serif-toto-fonts 
   - noto-serif-vithkuqi-fonts 
   - noto-serif-yezidi-fonts 
-  - noto-tinos-fonts 
   - noto-traditionalnushu-fonts 
   - nova 
   - novdoc 
@@ -18914,9 +18914,6 @@ unsorted:
   - patterns-containers-container_runtime_kubernetes: [x86_64] 
   - patterns-containers-kubeadm: [x86_64] 
   - patterns-containers-kubernetes_utilities: [x86_64] 
-  - patterns-containers-kubic_admin: [x86_64] 
-  - patterns-containers-kubic_loadbalancer: [x86_64] 
-  - patterns-containers-kubic_worker: [x86_64] 
   - patterns-deepin-deepin 
   - patterns-deepin-deepin_admin 
   - patterns-deepin-deepin_basis 
