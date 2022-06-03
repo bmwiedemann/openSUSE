@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 03 09:42:52 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1654246580.7c8d679:
+  * Dependency cron 2022-06-03
+  * jobs: Emit cancel_by_settings in all cases
+  * Avoid unhandled log output
+  * Use combined operators
+
+-------------------------------------------------------------------
 Wed Jun 01 01:44:50 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1654007249.47fe286:
