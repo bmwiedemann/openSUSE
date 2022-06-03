@@ -16,11 +16,11 @@
 #
 
 
-%define so_name libLHAPDF-6_4_0
+%define so_name libLHAPDF-6_5_1
 %define execname lhapdf
 
 Name:           LHAPDF
-Version:        6.4.0
+Version:        6.5.1
 Release:        0
 Summary:        A library for unified interface to PDF sets
 License:        GPL-3.0-only
@@ -31,6 +31,7 @@ BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  doxygen
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libtool
@@ -95,7 +96,7 @@ This package provides the API documentation for LHAPDF in HTML format.
 
 %build
 autoreconf -fvi
-%{python_expand # Necessary to run %%configure with both py2 and py3
+%{python_expand # Necessary to run configure with both py2 and py3
 export PYTHON=%{_bindir}/$python
 mkdir ../$python
 cp -pr ./ ../$python
@@ -119,6 +120,15 @@ pushd ../$python
 if [ "$python_" = "python3_" -o "%{$python_provides}" = "python3" ]; then
 mkdir -p %{buildroot}%{_docdir}/%{name}
 cp -pr doc/doxygen %{buildroot}%{_docdir}/%{name}/
+
+# Drop a bunch of execs that report libtool-wrapper-in-package errors via rpmlint
+for f in analyticpdf compatibility hessian2replicas reweight testpdf testpdfunc testpdfset
+do
+rm %{buildroot}%{_docdir}/%{name}/examples/${f}
+done
+
+%fdupes %{buildroot}%{_docdir}/%{name}/
+
 fi
 popd
 }
