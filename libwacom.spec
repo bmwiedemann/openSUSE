@@ -15,25 +15,18 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%if 0%{?suse_version} > 1510
-%bcond_without meson
-%else
-%bcond_with meson
-%endif
 Name:           libwacom
-Version:        1.12
+Version:        2.2.0
 Release:        0
 Summary:        Library to identify wacom tablets
 License:        MIT
 Group:          System/Libraries
 URL:            https://linuxwacom.github.io/
-Source0:        https://github.com/linuxwacom/libwacom/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2
-Source1:        https://github.com/linuxwacom/libwacom/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2.sig
+Source0:        https://github.com/linuxwacom/libwacom/releases/download/libwacom-%{version}/libwacom-%{version}.tar.xz
+Source1:        https://github.com/linuxwacom/libwacom/releases/download/libwacom-%{version}/libwacom-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 Source99:       baselibs.conf
-%if %{with meson}
 BuildRequires:  meson >= 0.51.0
-%endif
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gudev-1.0)
@@ -45,12 +38,12 @@ libwacom is a library to identify wacom tablets and their model-specific
 features. It provides easy access to information such as "is this a
 built-in on-screen tablet", "what is the size of this model", etc.
 
-%package -n libwacom2
+%package -n libwacom9
 Summary:        Library to identify wacom tablets
 Group:          System/Libraries
 Requires:       %{name}-data >= %{version}
 
-%description -n libwacom2
+%description -n libwacom9
 libwacom is a library to identify wacom tablets and their model-specific
 features. It provides easy access to information such as "is this a
 built-in on-screen tablet", "what is the size of this model", etc.
@@ -78,7 +71,7 @@ built-in on-screen tablet", "what is the size of this model", etc.
 %package devel
 Summary:        Library to identify wacom tablets -- Development Files
 Group:          Development/Libraries/C and C++
-Requires:       libwacom2 = %{version}
+Requires:       libwacom9 = %{version}
 
 %description devel
 libwacom is a library to identify wacom tablets and their model-specific
@@ -89,38 +82,25 @@ built-in on-screen tablet", "what is the size of this model", etc.
 %setup -q
 
 %build
-%if %{with meson}
 %meson -Db_lto=true -Dtests=disabled
 %meson_build
-%else
-%configure \
-        --with-udev-dir=%{_udevrulesdir}/.. \
-        --disable-static
-make %{?_smp_mflags}
-%endif
 
 %install
-%if %{with meson}
 %meson_install
-%else
-%make_install
-%endif
 
 sed -e 's-#!/usr/bin/env python3-#!/usr/bin/python3-g' -i %{buildroot}%{_bindir}/*
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%if %{with meson}
 %check
 %meson_test
-%endif
 
-%post -n libwacom2 -p /sbin/ldconfig
-%postun -n libwacom2 -p /sbin/ldconfig
+%post -n libwacom9 -p /sbin/ldconfig
+%postun -n libwacom9 -p /sbin/ldconfig
 
-%files -n libwacom2
+%files -n libwacom9
 %license COPYING
 %doc NEWS README.md
-%{_libdir}/libwacom.so.2*
+%{_libdir}/libwacom.so.9*
 
 %files data
 %dir %{_datadir}/libwacom
