@@ -18,7 +18,7 @@
 
 %define cpan_name XML-LibXSLT
 Name:           perl-XML-LibXSLT
-Version:        2.000000
+Version:        2.002000
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Interface to GNOME libxslt library
