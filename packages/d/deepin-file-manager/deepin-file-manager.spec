@@ -31,6 +31,8 @@ Source1:        deepin-file-dbus-installer.in
 Source2:        deepin-file-polkit-installer.in
 # PATCH-FIX-UPSTEAM fix-header-include.patch hillwood@opensuse.org - dfsearch is necessary
 Patch2:         fix-header-include.patch
+# PATCH-FIX-UPSTEAM gcc12.patch hillwood@opensuse.org - fix gcc 12 build
+Patch4:         gcc-12.patch
 Patch3:         harden_dde-filemanager-daemon.service.patch
 %ifarch ppc ppc64 ppc64le s390 s390x
 BuildRequires:  deepin-desktop-base
