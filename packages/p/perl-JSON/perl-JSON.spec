@@ -18,10 +18,10 @@
 
 %define cpan_name JSON
 Name:           perl-JSON
-Version:        4.05
+Version:        4.06
 Release:        0
-Summary:        JSON (JavaScript Object Notation) encoder/decoder
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        JSON (JavaScript Object Notation) encoder/decoder
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
