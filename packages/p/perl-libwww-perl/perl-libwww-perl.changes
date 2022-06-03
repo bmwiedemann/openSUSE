@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 19 03:08:26 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.66
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+
+  6.66      2022-05-18 16:44:44Z
+      - Revert automatic follow of meta refresh tags which was added in 6.63
+        (GH#415) (Olaf Alders)
+
+  6.65      2022-05-09 18:36:14Z
+      - fix NAME in Makefile.PL (GH#413) (Graham Knop)
+
+-------------------------------------------------------------------
 Wed Apr 27 03:08:23 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.64
