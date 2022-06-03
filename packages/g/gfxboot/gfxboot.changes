@@ -1,4 +1,13 @@
 --------------------------------------------------------------------
+Thu Jun 2 07:24:32 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/gfxboot#54
+- work around broken Video BIOS: in case VBE video mode list is
+  empty, try VESA pre-defined mode numbers (bsc#1199896)
+- How to build and view the bincode reference
+- 4.5.85
+
+--------------------------------------------------------------------
 Wed Apr 27 18:20:24 UTC 2022 - opensuse-packaging@opensuse.org
 
 - Translated using Weblate (Slovenian) (bsc#1149754)
