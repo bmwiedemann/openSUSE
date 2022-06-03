@@ -16,11 +16,12 @@
 #
 
 
-%global longver 2022-04-01
+%global longver 2022-06-01
 %global shortver %(echo %{longver}|sed 's|-||g')
 %define libname libre2-9
+%ifarch s390 s390x riscv64 armv6l armv6hl
 %bcond_with test
-%ifnarch s390 s390x riscv64 armv6l armv6hl
+%else
 %bcond_without test
 %endif
 Name:           re2
@@ -32,7 +33,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/google/re2
 Source0:        %{url}/archive/%{longver}/%{name}-%{longver}.tar.gz
 Source99:       baselibs.conf
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.10.2
 %if %{?suse_version} < 1550
 BuildRequires:  gcc11-c++
 %else

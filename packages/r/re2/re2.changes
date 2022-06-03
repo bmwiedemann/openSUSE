@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  1 19:38:17 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2022-06-01:
+  * switch to cxx_std_11 and other developer visible fixes
+
+-------------------------------------------------------------------
 Sun May  1 20:13:09 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use Release config so O3 is used
