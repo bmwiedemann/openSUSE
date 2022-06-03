@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May 26 03:07:03 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.48
+   see /usr/share/doc/packages/perl-Text-CSV_XS/ChangeLog
+
+  1.48	- 2022-05-24, H.Merijn Brand
+      * It's 2022
+      * Update to Devel::PPPort-3.64
+      * kh => 1 (use internal headers)
+      * Update to Devel::PPPort-3.67
+      * Add constants for META flags (RT#142508)
+      * Update to Devel::PPPort-3.68
+      * Export :CONSTANTS
+      * Fix sep_set typo (issue 37)
+      * Tested against perl-5.36.0
+
+-------------------------------------------------------------------
 Wed Dec 22 03:06:54 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.47
