@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun  3 09:07:00 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Version 15.4.20220603
+  * Change Recommends tag to Suggests tag for NetworkManager-applet
+  * Change Suggests tag to Recommends tag for deepin-feature-enable 
+
+-------------------------------------------------------------------
 Wed Apr 20 11:55:11 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Disable wayland plugins (boo#1198692) 

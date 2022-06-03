@@ -49,4 +49,14 @@
     <comment> (forwarded request 971091 from hillwood)</comment>
     <requestid>971092</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e37f5dfff449a6e033d5b6c19725115e</srcmd5>
+    <version>15.4.20220603</version>
+    <time>1654258620</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 15.4.20220603
+  * Change Recommends tag to Suggests tag for NetworkManager-applet
+  * Change Suggests tag to Recommends tag for deepin-feature-enable</comment>
+    <requestid>980602</requestid>
+  </revision>
 </revisionlist>

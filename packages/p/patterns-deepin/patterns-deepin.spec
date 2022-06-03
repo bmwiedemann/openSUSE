@@ -19,7 +19,7 @@
 %bcond_with betatest
 
 Name:           patterns-deepin
-Version:        15.4.20220320
+Version:        15.4.20220603
 Release:        0
 Summary:        Patterns for Installation (Deepin)
 License:        MIT
@@ -98,7 +98,7 @@ Recommends:     deepin-system-monitor
 Recommends:     deepin-clone
 Recommends:     remmina
 # workaround wireless networks issue for deepin-control-center
-Recommends:     NetworkManager-applet
+Suggests:       NetworkManager-applet
 
 %description deepin_admin
 Administration Tools e.g. for desktop lockdown.
@@ -187,9 +187,9 @@ Recommends:     MozillaFirefox
 Recommends:     desktop-data-openSUSE
 Recommends:     avahi
 Recommends:     xdg-user-dirs
+Recommends:     deepin-feature-enable
 # metalink downloader
 Suggests:       aria2
-Suggests:       deepin-feature-enable
 
 %description deepin_basis
 Base packages for the Deepin desktop environment.
