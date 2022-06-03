@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun  2 07:34:17 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 4.0.5
+  + Fixed a bug in Django 4.0 where not all OPTIONS were passed to a
+    Redis client
+  + Fixed a bug in Django 4.0 that caused a crash of QuerySet.filter()
+    on IsNull() expressions
+  + Fixed a bug in Django 4.0 where a hidden quick filter toolbar in
+    the admin’s navigation sidebar was focusable
+
+-------------------------------------------------------------------
 Mon Apr 11 14:21:09 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 4.0.4
