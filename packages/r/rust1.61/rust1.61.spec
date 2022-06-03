@@ -189,11 +189,7 @@ ExcludeArch:    armv6hl
 %define debug_info %{nil}
 %endif
 
-%ifarch x86_64
-%global rustflags -Clink-arg=-Wl,-z,relro,-z,now -Clink-arg=-B%{rust_root}/lib/rustlib/%{rust_triple}/bin/gcc-ld/
-%else
 %global rustflags -Clink-arg=-Wl,-z,relro,-z,now
-%endif
 
 # Exclude implicitly-scanned Provides, especially the libLLVM.so ones:
 %global __provides_exclude_from ^%{rustlibdir}/.*$
