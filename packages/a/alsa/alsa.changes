@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun  1 05:51:17 UTC 2022 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 1.2.7:
+  more extended UCM API, PCM rate,multi,direct plugin fixes and
+  enhancements, compilation fixes, etc.  For details see:
+   https://www.alsa-project.org/wiki/Changes_v1.2.6.3_v1.2.7#alsa-lib
+
+-------------------------------------------------------------------
 Fri Dec 10 08:58:14 CET 2021 - tiwai@suse.de
 
 - Update to version 1.2.6.1:
