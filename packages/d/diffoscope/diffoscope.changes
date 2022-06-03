@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri May 27 06:33:01 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 214:
+ - Support both python-argcomplete 1.x and 2.x.
+ - Add external tool on GNU Guix for xb-tool.
+ - Use assert_diff in test_zip over get_data and separate assert.
+
+-------------------------------------------------------------------
+Sun May 22 10:16:02 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 213:
+ - Don't mask differences in .zip/.jar central directory extra fields.
+ - Don't show a binary comparison of .zip/.jar files if we have at least
+   one observed nested difference.
+ - Use assert_diff in test_zip over get_data and separate assert.
+- update to version 212:
+ - Add support for extracting vmlinuz/vmlinux Linux kernel images.
+   (Closes: reproducible-builds/diffoscope#304)
+ - Some Python .pyc files report as "data", so support ".pyc" as a
+   fallback extension.
+
+-------------------------------------------------------------------
 Sat May  7 19:59:00 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 211:
@@ -7,19 +29,20 @@ Sat May  7 19:59:00 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 -------------------------------------------------------------------
 Tue Apr 19 14:29:46 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
-- - update to version 210:
+- update to version 210:
  - Make sure that PATH is properly mangled for all diffoscope actions, not
    just when running comparators.
+
+-------------------------------------------------------------------
+Fri Apr  1 19:16:51 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
 - update to version 209:
  - Update R test fixture for R 4.2.x series. (Closes: #1008446)
  - Update minimum version of Black to prevent test failure on Ubuntu jammy.
 
 -------------------------------------------------------------------
-Fri Apr  1 19:16:51 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Fri Mar 25 21:21:18 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
-- - update to version 209:
- - Update R test fixture for R 4.2.x series. (Closes: #1008446)
- - Update minimum version of Black to prevent test failure on Ubuntu jammy.
 - update to version 208:
  - Add graceful handling for UNIX sockets and named pipes.
    (Closes: reproducible-builds/diffoscope#292)
@@ -27,36 +50,17 @@ Fri Apr  1 19:16:51 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
  - Reformat various files to satisfy current version of Black.
 
 -------------------------------------------------------------------
-Fri Mar 25 21:21:18 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Fri Mar  4 18:59:10 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
-- - update to version 208:
- - Add graceful handling for UNIX sockets and named pipes.
-   (Closes: reproducible-builds/diffoscope#292)
- - Remove a superfluous log message and reformatt comment lines.
- - Reformat various files to satisfy current version of Black.
 - update to version 207:
  - Fix a gnarly regression when comparing directories against non-directories.
    (Closes: reproducible-builds/diffoscope#292)
  - Use our assert_diff utility where we can within test_directory.py
 
 -------------------------------------------------------------------
-Fri Mar  4 18:59:10 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
-
-- - update to version 207:
- - Fix a gnarly regression when comparing directories against non-directories.
-   (Closes: reproducible-builds/diffoscope#292)
- - Use our assert_diff utility where we can within test_directory.py
-- update to version 206:
- - Also allow "Unicode text, UTF-8 text" as well as "UTF-8 Unicode text" to
-   match for .buildinfo files too.
- - Add a test for recent file(1) issue regarding .changes files.
-   (Re: reproducible-builds/diffoscope#291)
- - Drop "_PATH" suffix from some module-level globals that are not paths.
-
--------------------------------------------------------------------
 Fri Feb 25 20:08:22 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
-- - update to version 206:
+- update to version 206:
  - Also allow "Unicode text, UTF-8 text" as well as "UTF-8 Unicode text" to
    match for .buildinfo files too.
  - Add a test for recent file(1) issue regarding .changes files.
@@ -80,7 +84,7 @@ Mon Feb 21 11:21:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Fri Feb 11 19:14:39 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
-- - update to version 204:
+- update to version 204:
  - Don't run the binwalk comparator tests as root (or fakeroot) as the
    latest version of binwalk has some security protection against doing
    precisely this.
@@ -90,6 +94,10 @@ Fri Feb 11 19:14:39 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
    that we are missing the "rpm" module instead.
  - Use dependencies to ensure that "diffoscope" and "diffoscope-minimal"
    packages always have the precise same version.
+
+-------------------------------------------------------------------
+Fri Feb  4 16:51:28 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
 - update to version 203:
  - Improve documentation for --timeout due to a few misconceptions.
    Add an allowed-to-fail test regarding a regression in directory handling.
@@ -97,13 +105,8 @@ Fri Feb 11 19:14:39 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
  - Fix diffing CBFS names that contain spaces.
 
 -------------------------------------------------------------------
-Fri Feb  4 16:51:28 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Fri Jan 28 16:24:38 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
-- - update to version 203:
- - Improve documentation for --timeout due to a few misconceptions.
-   Add an allowed-to-fail test regarding a regression in directory handling.
- - Tidy control flow in Difference._reverse_self a little.
- - Fix diffing CBFS names that contain spaces.
 - update to version 202:
  - Don't fail if comparing a nonexistent file with a .pyc file (and add test).
    (Closes: #1004312)
@@ -123,25 +126,8 @@ Fri Feb  4 16:51:28 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
  - Fix/update whitespace for Black 21.12.
 
 -------------------------------------------------------------------
-Fri Jan 28 16:24:38 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Fri Jan 21 16:48:00 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
-- - update to version 202:
- - Don't fail if comparing a nonexistent file with a .pyc file (and add test).
-   (Closes: #1004312)
- - Drop a reference in the manual page which claims the ability to compare
-   non-existent files on the command-line. This has not been possible since
-   version 32 which was released in September 2015. (Closes: #1004182)
- - Add experimental support for incremental output support with a timeout.
-   Passing, for example, --timeout=60 will mean that diffoscope will not
-   recurse into any sub-archives after 60 seconds total execution time has
-   elapsed and mark the diff as being incomplete. (Note that this is not a
-   fixed/strict timeout due to implementation issues.)
-   (Closes: reproducible-builds/diffoscope#301)
- - Don't return with an exit code of 0 if we encounter device file such as
-   /dev/stdin with human-readable metadata that matches literal, non-device,
-   file contents. (Closes: #1004198)
- - Correct a "recompile" typo.
- - Fix/update whitespace for Black 21.12.
 - update to version 201:
  - If the debian.deb822 module raises any exception on import, re-raise it as
    an ImportError instead. This should fix diffoscope on some Fedora systems.
@@ -150,14 +136,8 @@ Fri Jan 28 16:24:38 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
  - Fix json detection with file-5.41-3.fc36.x86_64.
 
 -------------------------------------------------------------------
-Fri Jan 21 16:48:00 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Fri Jan 14 09:22:48 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
-- - update to version 201:
- - If the debian.deb822 module raises any exception on import, re-raise it as
-   an ImportError instead. This should fix diffoscope on some Fedora systems.
-   Thanks to Mattia Rizzolo for suggesting this particular solution.
-   (Closes: reproducible-builds/diffoscope#300)
- - Fix json detection with file-5.41-3.fc36.x86_64.
 - update to version 200:
  - Even if a Sphinx .inv inventory file is labelled "The remainder of this
    file is compressed using zlib", it might not actually be. In this case,
@@ -168,28 +148,16 @@ Fri Jan 21 16:48:00 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
    diffoscope's output.
 
 -------------------------------------------------------------------
-Fri Jan 14 09:22:48 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Fri Jan  7 09:00:17 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
-- - update to version 200:
- - Even if a Sphinx .inv inventory file is labelled "The remainder of this
-   file is compressed using zlib", it might not actually be. In this case,
-   don't traceback, and simply return the original content.
-   (Closes: reproducible-builds/diffoscope#299)
- - Update "X has been modified after NT_GNU_BUILD_ID has been applied" message
-   to, for instance, not duplicating the full filename in the primary
-   diffoscope's output.
 - update to version 199:
  - Support both variants of "odt2txt", including the one provided by unoconv.
    (Closes: reproducible-builds/diffoscope#298)
  - Add external tool reference on Arch Linux for xb-tool.
 
 -------------------------------------------------------------------
-Fri Jan  7 09:00:17 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Mon Jan  3 11:42:21 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
-- - update to version 199:
- - Support both variants of "odt2txt", including the one provided by unoconv.
-   (Closes: reproducible-builds/diffoscope#298)
- - Add external tool reference on Arch Linux for xb-tool.
 - update to version 198:
  - Support showing "Ordering differences only" within .dsc field values.
    (Closes: #1002002, reproducible-builds/diffoscope#297)
@@ -199,15 +167,8 @@ Fri Jan  7 09:00:17 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
  - Also recognize "GnuCash file" files as XML.
 
 -------------------------------------------------------------------
-Mon Jan  3 11:42:21 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Fri Dec 17 11:59:51 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
-- - update to version 198:
- - Support showing "Ordering differences only" within .dsc field values.
-   (Closes: #1002002, reproducible-builds/diffoscope#297)
- - Support OCaml versions 4.11, 4.12 and 4.13. (Closes: #1002678)
- - Add support for XMLb files. (Closes: reproducible-builds/diffoscope#295)
- - Also add, for example, /usr/lib/x86_64-linux-gnu to our internal PATH.
- - Also recognize "GnuCash file" files as XML.
 - update to version 197:
  - Drop unnecessary has_same_content_as logging calls.
  - Ignore the new "binary-with-bad-dynamic-table" Lintian tag.
@@ -215,33 +176,17 @@ Mon Jan  3 11:42:21 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
    <dev.primeos@gmail.com> for reporting and testing the fix.
 
 -------------------------------------------------------------------
-Fri Dec 17 11:59:51 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Fri Dec 10 16:35:04 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
-- - update to version 197:
- - Drop unnecessary has_same_content_as logging calls.
- - Ignore the new "binary-with-bad-dynamic-table" Lintian tag.
- - Support pgpdump 0.34 in the tests. Thanks to Michael Weiss
-   <dev.primeos@gmail.com> for reporting and testing the fix.
 - update to version 196:
  - Add a comment/annotation when the GNU_BUILD_ID field has been modified.
  - Fix the "Black" version detection.
  - Replace "token" with anonymous variable "x" in order to remove extra lines.
 
 -------------------------------------------------------------------
-Fri Dec 10 16:35:04 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
-
-- - update to version 196:
- - Add a comment/annotation when the GNU_BUILD_ID field has been modified.
- - Fix the "Black" version detection.
- - Replace "token" with anonymous variable "x" in order to remove extra lines.
-- update to version 195:
- - Don't use the runtime platform's native endianness when unpacking .pyc
-   files to fix test failures on big-endian machines.
-
--------------------------------------------------------------------
 Sun Dec  5 19:18:58 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
-- - update to version 195:
+- update to version 195:
  - Don't use the runtime platform's native endianness when unpacking .pyc
    files to fix test failures on big-endian machines.
 
@@ -251,28 +196,11 @@ Sun Nov 28 07:31:54 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 - update to version 194:
  - Don't traceback when comparing nested directories with non-directories.
    (Closes: reproducible-builds/diffoscope#288)
-- update to version 193:
- - Don't duplicate file lists at each directory level.
-   (Closes: #989192, reproducible-builds/diffoscope#263)
- - When pretty-printing JSON, mark the difference as such, additionally
-   avoiding including the full path.
-   (Closes: reproducible-builds/diffoscope#205)
- - Codebase improvements:
-   - Update a bunch of %-style string interpolations into f-strings or
-     str.format.
-   - Import itertools top-level directly.
-   - Drop some unused imports.
-   - Use isinstance(...) over type(...) ==
-   - Avoid aliasing variables if we aren't going to use them.
- - Fix missing diff output on large diffs.
- - Ignore a Python warning coming from a dependent library (triggered by
-   supporting Python 3.10)
- - Document that support both Python 3.9 and 3.10.
 
 -------------------------------------------------------------------
 Sat Nov 20 13:01:25 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
-- - update to version 193:
+- update to version 193:
  - Don't duplicate file lists at each directory level.
    (Closes: #989192, reproducible-builds/diffoscope#263)
  - When pretty-printing JSON, mark the difference as such, additionally
