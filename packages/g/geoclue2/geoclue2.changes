@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri May 20 09:44:27 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.6.0:
+  + Stop the client for system applications when accuracy is set to
+    NONE.
+  + NMEA: add a unix socket file option.
+  + Client info: support cgroup v2.
+  + Don't compute movements for low accuracy sources.
+  + Add an option to generate vapi.
+  + Send the 3G tower type as part of the Mozilla location service
+    requests.
+  + Add phosh & lipstick as allowed agents.
+  + Use GeoIP when no WiFi device is available.
+  + Modem manager: add polkit rule to allow GPS access.
+  + Allow disabling compass at build and at runtime.
+  + Fix heading computation for identical locations.
+  + Be strict with time and distance threshold.
+  + Fix the XDG location portal integration.
+  + Replace agent wait timeout with a queue.
+  + Other bugs fixes.
+- Drop geoclue2-geoip-when-wifi-unavailable.patch: fixed upstream.
+- Minor tweaks to rpmlintrc file: systemd_service changed from
+  warnings to error (but still don't apply here, as it's a dbus
+  enabled service).
+
+-------------------------------------------------------------------
 Sun Mar 20 19:25:46 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Remove unnecessary shadow requires

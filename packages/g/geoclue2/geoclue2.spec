@@ -1,7 +1,7 @@
 #
 # spec file for package geoclue2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _name geoclue
 
 Name:           geoclue2
-Version:        2.5.7
+Version:        2.6.0
 Release:        0
 Summary:        GeoLocation Framework
 License:        GPL-2.0-or-later
@@ -28,8 +28,6 @@ URL:            https://gitlab.freedesktop.org/geoclue/geoclue
 Source0:        %{url}/-/archive/%{version}/geoclue-%{version}.tar.bz2
 Source1:        srvGeoClue.conf
 Source99:       geoclue2-rpmlintrc
-# PATCH-FIX-UPSTREAM geoclue2-geoip-when-wifi-unavailable.patch glfo#geoclue/geoclue#142 badshah400@gmail.com -- gclue-wifi: Use GeoIP when a WiFi device isn't available
-Patch0:         geoclue2-geoip-when-wifi-unavailable.patch
 BuildRequires:  intltool >= 0.40.0
 BuildRequires:  meson >= 0.47.2
 BuildRequires:  pkgconfig
@@ -62,6 +60,7 @@ communication mechanism to provide location information
 %package -n system-user-srvGeoClue
 Summary:        System user for the geoclue service
 Group:          System/Base
+BuildArch:      noarch
 %sysusers_requires
 
 %description -n system-user-srvGeoClue
@@ -100,15 +99,16 @@ communication mechanism to provide location information
 
 %install
 %meson_install
+
+# Rename polkit rule to have specific ordering capabilities - boo#1199767#c1
+mv %{buildroot}/usr/share/polkit-1/rules.d/org.freedesktop.GeoClue2.rules \
+   %{buildroot}/usr/share/polkit-1/rules.d/50-org.freedesktop.GeoClue2.rules
+
 install -d %{buildroot}%{_localstatedir}/lib/srvGeoClue
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 644 %{SOURCE1} %{buildroot}%{_sysusersdir}/system-user-srvGeoClue.conf
 
-# Remove desktop file, we do not build the demos # Upstream is explicitly asking us to package these, so lets give it a go.
-#find %%{buildroot} -type f -name "geoclue-demo-agent.desktop" -delete -print
-
 # note: do not use systemd macros for geoclue2.service, they are not meant for dbus unit files.
-
 %pre -n system-user-srvGeoClue -f srvGeoClue.pre
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -131,6 +131,7 @@ install -m 644 %{SOURCE1} %{buildroot}%{_sysusersdir}/system-user-srvGeoClue.con
 %{_datadir}/dbus-1/interfaces/org.freedesktop.GeoClue2.Manager.xml
 %dir %{_datadir}/dbus-1/system-services
 %{_datadir}/dbus-1/system-services/org.freedesktop.GeoClue2.service
+%{_datadir}/polkit-1/rules.d/50-org.freedesktop.GeoClue2.rules
 %dir %{_sysconfdir}/dbus-1
 %dir %{_sysconfdir}/dbus-1/system.d
 %dir %{_sysconfdir}/geoclue/
