@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May 23 13:50:46 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fix license tag, remove CHECK(...) and use correct
+  "you can redistribute it and/or modify it under the same terms as
+   Perl itself." aka GPL-1.0+ OR Artistic-1.0
+- Use https for URL and SourceURL
+
+-------------------------------------------------------------------
+Thu Sep 22 06:24:58 UTC 2016 - coolo@suse.com
+
+- updated to 1.46
+   see /usr/share/doc/packages/perl-XML-DOM/Changes
+
+  1.46 (tjmather) 09/21/2016
+  - Correct name passed to WriteMakefile to XML::DOM (was XML/Dom)
+
+-------------------------------------------------------------------
 Fri Aug 21 07:36:37 UTC 2015 - cfarrell@suse.com
 
 - license update: Artistic-1.0 or GPL-1.0+

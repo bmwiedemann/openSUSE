@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XML-DOM
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-XML-DOM
-Version:        1.45
+Version:        1.46
 Release:        0
 %define cpan_name XML-DOM
 Summary:        Perl Module for Building Dom Level 1 Compliant Document Structures
-License:        Artistic-1.0 or GPL-1.0+
+# "You can redistribute it and/or modify it under the same terms as Perl itself"
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/XML-DOM/
-Source0:        http://www.cpan.org/authors/id/T/TJ/TJMATHER/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/pod/XML::DOM
+Source0:        https://cpan.metacpan.org/authors/id/T/TJ/TJMATHER/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -70,7 +71,7 @@ problem.
 
 When using XML::Parser 2.27 and above, you can suppress expansion of
 parameter entity references (e.g. %pent;) in the DTD, by setting
-_ParseParamEnt_ to 1 and _ExpandParamEnt_ to 0. See /_Hidden_Nodes_ for
+_ParseParamEnt_ to 1 and _ExpandParamEnt_ to 0. See Hidden Nodes for
 details.
 
 A Document has a tree structure consisting of _Node_ objects. A Node may
