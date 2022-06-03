@@ -94,10 +94,16 @@ This package contains the header files and static lib for Qhull's C++ interface.
 # Needed for static lib libqhullcpp.a
 export CXXFLAGS+=" -ffat-lto-objects"
 
+# Don't assume LIB_INSTALL_DIR is relative
+sed -i 's#@LIB_INSTALL_DIR@#%{_lib}#' build/qhull.pc.in
+
+# Neither is INCLUDE_INSTALL_DIR
+sed -i 's#@INCLUDE_INSTALL_DIR@#include#' build/qhull.pc.in
+
 %cmake \
         -DDOC_INSTALL_DIR="%{_docdir}/%{name}" \
         -DINCLUDE_INSTALL_DIR="%{_includedir}" \
-        -DLIB_INSTALL_DIR="%{_lib}" \
+        -DLIB_INSTALL_DIR="%{_libdir}" \
         -DBIN_INSTALL_DIR="%{_bindir}" \
         -DMAN_INSTALL_DIR="%{_mandir}/man1/"
 %cmake_build qhullcpp
@@ -111,6 +117,9 @@ mv %{buildroot}%{_prefix}/lib/pkgconfig %{buildroot}%{_libdir}/
 %endif
 rm %{buildroot}%{_docdir}/%{name}/COPYING.txt
 
+# Fix rpmlint warning: E: double-slash-in-pkgconfig-path
+sed -i 's#//#/#' %{buildroot}%{_libdir}/pkgconfig/*.pc
+
 # Manually install cpp lib since it isn't installed by make install
 find ./ -name "libqhullcpp.a" -print -exec install -m0644 {} %{buildroot}%{_libdir}/ \;
 
@@ -118,7 +127,7 @@ find ./ -name "libqhullcpp.a" -print -exec install -m0644 {} %{buildroot}%{_libd
 rm %{buildroot}%{_libdir}/pkgconfig/qhullstatic*.pc
 
 # Remove deprecated qhull headers
-rm -fr %{buildroot}%{_includedir}/libqhull
+rm -r %{buildroot}%{_includedir}/libqhull
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig

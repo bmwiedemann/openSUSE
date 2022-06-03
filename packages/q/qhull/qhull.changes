@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 24 09:03:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix rpmlint errors:
+  * E: double-slash-in-pkgconfig-path
+  * E: binary-or-shlib-defines-rpath (boo#1199059)
+- Fix incorrect includedir path in qhull.pc
+
+-------------------------------------------------------------------
 Mon Mar 29 23:36:48 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop deprecated (non-reentrant) qhull headers since we don't
