@@ -25,7 +25,8 @@ Group:          System/Filesystems
 URL:            http://www.gnu.org/software/parted/
 Source0:        ftp://ftp.gnu.org/gnu/parted/%{name}-%{version}.tar.xz
 Source1:        ftp://ftp.gnu.org/gnu/parted/%{name}-%{version}.tar.xz.sig
-Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=parted&download=1#/%{name}.keyring
+# Taken from https://savannah.gnu.org/project/release-gpgkeys.php?group=parted&download=1
+Source2:        %{name}.keyring
 Source3:        baselibs.conf
 Source4:        fatresize-0.1.tar.bz2
 # Build patches

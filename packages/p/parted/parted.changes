@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  1 09:27:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use static keyring file (and switch to the release team keyring) 
+
+-------------------------------------------------------------------
 Wed May 18 09:19:29 CEST 2022 - aschnell@suse.com
 
 - add new type command from upstream
