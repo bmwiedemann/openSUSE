@@ -1,0 +1,45 @@
+Date: 2022-06-01
+Author: Bernhard M. Wiedemann
+
+disable march=native to avoid
+https://bugzilla.opensuse.org/show_bug.cgi?id=1100677 packages do not build reproducibly from compile-time CPU-detection
+
+Index: fastText-0.9.2/CMakeLists.txt
+===================================================================
+--- fastText-0.9.2.orig/CMakeLists.txt
++++ fastText-0.9.2/CMakeLists.txt
+@@ -15,7 +15,7 @@ set (fasttext_VERSION_MINOR 1)
+ 
+ include_directories(fasttext)
+ 
+-set(CMAKE_CXX_FLAGS " -pthread -std=c++11 -funroll-loops -O3 -march=native")
++set(CMAKE_CXX_FLAGS " -pthread -std=c++11 -funroll-loops -O3")
+ 
+ set(HEADER_FILES
+     src/args.h
+Index: fastText-0.9.2/setup.py
+===================================================================
+--- fastText-0.9.2.orig/setup.py
++++ fastText-0.9.2/setup.py
+@@ -76,7 +76,7 @@ ext_modules = [
+         ],
+         language='c++',
+         extra_compile_args=["-O0 -fno-inline -fprofile-arcs -pthread -march=native" if coverage else
+-                            "-O3 -funroll-loops -pthread -march=native"],
++                            "-O3 -funroll-loops -pthread"],
+     ),
+ ]
+ 
+Index: fastText-0.9.2/Makefile
+===================================================================
+--- fastText-0.9.2.orig/Makefile
++++ fastText-0.9.2/Makefile
+@@ -7,7 +7,7 @@
+ #
+ 
+ CXX = c++
+-CXXFLAGS = -pthread -std=c++11 -march=native
++CXXFLAGS = -pthread -std=c++11
+ OBJS = args.o autotune.o matrix.o dictionary.o loss.o productquantizer.o densematrix.o quantmatrix.o vector.o model.o utils.o meter.o fasttext.o
+ INCLUDES = -I.
+ 

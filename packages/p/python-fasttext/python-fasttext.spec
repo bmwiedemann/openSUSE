@@ -27,6 +27,7 @@ Summary:        Library for fast text representation and classification
 License:        MIT
 URL:            https://github.com/facebookresearch/fastText
 Source:         https://github.com/facebookresearch/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+Patch0:         reproducible.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pybind11-devel}

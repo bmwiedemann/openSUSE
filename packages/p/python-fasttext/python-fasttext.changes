@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  1 09:51:33 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to not depend on build machine CPU (boo#1100677)
+
+-------------------------------------------------------------------
 Tue May 24 18:16:16 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Initial packaging effort for fasttext 0.9.2.
