@@ -21,7 +21,7 @@
 %define py3pkg python310
 %define _name   omemo
 Name:           gajim-plugin-omemo
-Version:        2.8.13
+Version:        2.8.15
 Release:        0
 Summary:        Gajim plugin for OMEMO Multi-End Message and Object Encryption
 License:        GPL-3.0-only
@@ -29,7 +29,7 @@ Group:          Productivity/Networking/Talk/Clients
 URL:            https://dev.gajim.org/gajim/gajim-plugins/wikis/OmemoGajimPlugin
 Source:         https://ftp.gajim.org/plugins_releases/omemo_%{version}.zip
 BuildRequires:  %{py3pkg}-protobuf
-BuildRequires:  gajim >= 1.4.0
+BuildRequires:  gajim >= 1.4.3
 BuildRequires:  unzip
 Requires:       %{py3pkg}-axolotl
 Requires:       %{py3pkg}-base
@@ -46,7 +46,7 @@ XMPP Extension Protocol (XEP) for secure multi-client end-to-end
 encryption based on Double Ratchet and PEP.
 
 %prep
-%setup -q -n %{_name}
+%setup -q -c
 
 %build
 # Nothing to build.

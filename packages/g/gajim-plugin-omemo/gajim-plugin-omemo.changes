@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun  1 20:44:55 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.8.15 (changes since 2.8.13):
+  * Fix detecting room members on join.
+  * Update plugin manifest.
+
+-------------------------------------------------------------------
 Sat May 14 21:39:58 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 2.8.13 (changes since 2.7.14):
