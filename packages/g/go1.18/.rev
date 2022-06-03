@@ -177,4 +177,32 @@
   * go#52804 go/types: NewMethodSet doesn't terminate for recursively embedded generics (forwarded request 976170 from jfkw)</comment>
     <requestid>976173</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>33f27608746458dc333ff5fcc9d0c244</srcmd5>
+    <version>1.18.3</version>
+    <time>1654258534</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.18.3 (released 2022-06-01) includes security fixes to the
+  crypto/rand, crypto/tls, os/exec, and path/filepath packages, as
+  well as bug fixes to the compiler, and the crypto/tls and
+  text/template/parse packages.
+  Refs boo#1193742 go1.18 release tracking
+  CVE-2022-30634 CVE-2022-30629 CVE-2022-30580 CVE-2022-29804
+  * boo#1200134 go#52561 CVE-2022-30634
+  * go#52933 crypto/rand: Read hangs when passed buffer larger than 1&lt;&lt;32 - 1
+  * boo#1200135 go#52814 CVE-2022-30629
+  * go#52833 crypto/tls: randomly generate ticket_age_add
+  * boo#1200136 go#52574 CVE-2022-30580
+  * go#53057 os/exec: Cmd.{Run,Start} should fail if Cmd.Path is unset
+  * boo#1200137 go#52476 CVE-2022-29804
+  * go#52479 path/filepath: Clean(.\c:) returns c: on Windows
+  * go#51849 cmd/compile: crash on pointer conversion in call to mapaccess2
+  * go#52242 cmd/compile: compiler crash on valid code
+  * go#52286 cmd/compile: compiler crash with &quot;Dictionary should have already been generated&quot;
+  * go#52791 crypto/tls: 500% increase in allocations from (*tls.Conn).Read in go 1.17
+  * go#52878 text/template: break/continue require no whitespace around them
+  * go#53043 misc/cgo/testsanitizers: occasional hangs in TestTSAN/tsan12
+  * go#53115 misc/cgo/testsanitizers: deadlock in TestTSAN/tsan11 (forwarded request 980418 from jfkw)</comment>
+    <requestid>980420</requestid>
+  </revision>
 </revisionlist>
