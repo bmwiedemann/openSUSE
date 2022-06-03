@@ -274,4 +274,41 @@
     <comment></comment>
     <requestid>932554</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>10abbe61a6ffeb886fc282b29992223e</srcmd5>
+    <version>2.2.0</version>
+    <time>1654258604</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove meson conditional - no other build system is supported.
+
+- update to 2.2.0:
+  * data: Add ISDv4 5285 (Lenovo ThinkPad X13 Yoga Gen 2)
+  * data: Add ISDv4 16C (HP ZBook x2 G4)
+  * Add ISDv4 52a2 (Lenovo Yoga 6 13ALC6)
+  * data: Add ISDv4 5218 (Lenovo IdeaPad Flex 5 14ALC05)
+  * data: Add ISDv4 521c (Lenovo IdeaPad Flex 5 15ALC05)
+  * data: Add ISDv4 49a3 (Dell Latitude 7320 Detachable)
+  * Remove now-unused libwacom.pc.in
+  * CI: add a workflow to check for &quot;sysinfo&quot; in newly added data files
+  * doc: fix the check for integration flags in the example code
+  * github: bump freebsd workflow to 0.1.5
+  * Update data/surface-go-2.tablet
+  * Update huion-h610-pro.tablet
+  * data: Add ISDv4 4995 (HP EliteBook x360 1040 G8 Notebook PC)
+  * data: Add ISDv4 51EF (Lenovo Yoga C740-14IML)
+  * data: Add ISDv4 2d1f:0095 (PINE64 PineNote)
+  * data: Add ISDv4 52b0 (Lenovo Yoga 7 14ACN6)
+  * data: Add ISDv4 511a (Lenovo ThinkPad X1 Tablet Gen 3)
+  * data: Add ISDv4 484d (Dell Latitude 5290)
+  * Add description for elan-2a70 (#466)
+  * data: remove unknown BuiltIn key from the DTU1931
+  * data: Add ISDv4 5276 (Lenovo ThinkPad X1 Yoga Gen 6)
+  * data: Add ISDv4 51d0 (&quot;Lenovo ThinkPad X1 Titanium Gen 1&quot;)
+  * data: Add ISDv4 5019 (Fujitsu LIFEBOOK T935)
+  * test: add a test for matching the button count with the evdev codes
+  * meson.build: use gnu_symbol_visibility argument
+  * meson.build: use current_source_dir() over deprecated source_root()
+  * Remove unused arguments from two helper functions</comment>
+    <requestid>980528</requestid>
+  </revision>
 </revisionlist>
