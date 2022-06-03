@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 30 06:54:56 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 7.0.2. Bugfix release:
+  * https://www.qt.io/blog/qt-creator-7.0.2-released
+- Add patch to fix build with recent KSyntaxHighlighting releases:
+  * 0001-Correctly-include-KSyntaxHighlighting-headers.patch
+
+-------------------------------------------------------------------
 Sun May  1 08:39:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Don't let the %cmake macro ignore the install rpath (boo#1198281)
