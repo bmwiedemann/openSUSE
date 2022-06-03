@@ -30,8 +30,8 @@ Release:        0
 %define mod_full_name %{mod_name}-%{version}
 # MANUAL
 %if 0%{?suse_version} == 1500
-%define rb_build_versions  ruby27
-%define rb_build_ruby_abis ruby:2.7.0
+%define rb_build_versions  ruby31     ruby27
+%define rb_build_ruby_abis ruby:3.1.0 ruby:2.7.0
 %endif
 BuildRequires:  %{rubygem mini_portile2 >= 2.8}
 BuildRequires:  %{rubygem pkg-config}
