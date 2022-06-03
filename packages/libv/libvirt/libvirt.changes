@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun  1 14:10:53 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 8.4.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v8-4-0-2022-06-01
+
+-------------------------------------------------------------------
 Mon May  9 13:49:51 UTC 2022 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 8.3.0

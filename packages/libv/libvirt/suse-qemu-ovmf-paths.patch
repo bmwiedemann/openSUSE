@@ -5,10 +5,10 @@ advertised and used by libvirt are automatically detected. Until upstream
 removes the old DEFAULT_LOADER_NVRAM approach and associated code, this
 patch will stay.
 
-Index: libvirt-8.3.0/src/qemu/qemu_conf.c
+Index: libvirt-8.4.0/src/qemu/qemu_conf.c
 ===================================================================
---- libvirt-8.3.0.orig/src/qemu/qemu_conf.c
-+++ libvirt-8.3.0/src/qemu/qemu_conf.c
+--- libvirt-8.4.0.orig/src/qemu/qemu_conf.c
++++ libvirt-8.4.0/src/qemu/qemu_conf.c
 @@ -87,10 +87,9 @@ VIR_ONCE_GLOBAL_INIT(virQEMUConfig);
  
  #ifndef DEFAULT_LOADER_NVRAM
@@ -23,10 +23,10 @@ Index: libvirt-8.3.0/src/qemu/qemu_conf.c
  #endif
  
  
-Index: libvirt-8.3.0/src/security/virt-aa-helper.c
+Index: libvirt-8.4.0/src/security/virt-aa-helper.c
 ===================================================================
---- libvirt-8.3.0.orig/src/security/virt-aa-helper.c
-+++ libvirt-8.3.0/src/security/virt-aa-helper.c
+--- libvirt-8.4.0.orig/src/security/virt-aa-helper.c
++++ libvirt-8.4.0/src/security/virt-aa-helper.c
 @@ -480,7 +480,8 @@ valid_path(const char *path, const bool
          "/usr/share/ovmf/",              /* for OVMF images */
          "/usr/share/AAVMF/",             /* for AAVMF images */
@@ -37,10 +37,10 @@ Index: libvirt-8.3.0/src/security/virt-aa-helper.c
      };
      /* override the above with these */
      const char * const override[] = {
-Index: libvirt-8.3.0/src/qemu/test_libvirtd_qemu.aug.in
+Index: libvirt-8.4.0/src/qemu/test_libvirtd_qemu.aug.in
 ===================================================================
---- libvirt-8.3.0.orig/src/qemu/test_libvirtd_qemu.aug.in
-+++ libvirt-8.3.0/src/qemu/test_libvirtd_qemu.aug.in
+--- libvirt-8.4.0.orig/src/qemu/test_libvirtd_qemu.aug.in
++++ libvirt-8.4.0/src/qemu/test_libvirtd_qemu.aug.in
 @@ -96,10 +96,9 @@ module Test_libvirtd_qemu =
  { "migration_port_max" = "49215" }
  { "log_timestamp" = "0" }
@@ -55,10 +55,10 @@ Index: libvirt-8.3.0/src/qemu/test_libvirtd_qemu.aug.in
  }
  { "stdio_handler" = "logd" }
  { "gluster_debug_level" = "9" }
-Index: libvirt-8.3.0/src/qemu/qemu.conf.in
+Index: libvirt-8.4.0/src/qemu/qemu.conf.in
 ===================================================================
---- libvirt-8.3.0.orig/src/qemu/qemu.conf.in
-+++ libvirt-8.3.0/src/qemu/qemu.conf.in
+--- libvirt-8.4.0.orig/src/qemu/qemu.conf.in
++++ libvirt-8.4.0/src/qemu/qemu.conf.in
 @@ -857,10 +857,9 @@
  # for x86_64 and i686, but it's AAVMF for aarch64. The libvirt default
  # follows this scheme.

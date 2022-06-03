@@ -5,11 +5,11 @@ June 2021 ovmf only supports one firmware for Xen. This patch adjusts
 the firmware path to match the one provided by the ovmf package.
 
 
-Index: libvirt-8.3.0/src/libxl/libxl_conf.c
+Index: libvirt-8.4.0/src/libxl/libxl_conf.c
 ===================================================================
---- libvirt-8.3.0.orig/src/libxl/libxl_conf.c
-+++ libvirt-8.3.0/src/libxl/libxl_conf.c
-@@ -1783,7 +1783,7 @@ libxlDriverConfigNew(void)
+--- libvirt-8.4.0.orig/src/libxl/libxl_conf.c
++++ libvirt-8.4.0/src/libxl/libxl_conf.c
+@@ -1785,7 +1785,7 @@ libxlDriverConfigNew(void)
      cfg->firmwares = g_new0(virFirmware *, 1);
      cfg->nfirmwares = 1;
      cfg->firmwares[0] = g_new0(virFirmware, 1);

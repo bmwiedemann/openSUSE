@@ -7,10 +7,10 @@ suse-qemu-conf-secdriver.patch, suse-qemu-conf-lockmgr.patch,
 etc.), but for now they are all lumped together in this
 single patch.
 
-Index: libvirt-8.3.0/src/qemu/qemu_conf.c
+Index: libvirt-8.4.0/src/qemu/qemu_conf.c
 ===================================================================
---- libvirt-8.3.0.orig/src/qemu/qemu_conf.c
-+++ libvirt-8.3.0/src/qemu/qemu_conf.c
+--- libvirt-8.4.0.orig/src/qemu/qemu_conf.c
++++ libvirt-8.4.0/src/qemu/qemu_conf.c
 @@ -261,7 +261,7 @@ virQEMUDriverConfig *virQEMUDriverConfig
      cfg->slirpHelperName = g_strdup(QEMU_SLIRP_HELPER);
      cfg->dbusDaemonName = g_strdup(QEMU_DBUS_DAEMON);
@@ -20,10 +20,10 @@ Index: libvirt-8.3.0/src/qemu/qemu_conf.c
      cfg->securityRequireConfined = false;
  
      cfg->keepAliveInterval = 5;
-Index: libvirt-8.3.0/src/qemu/test_libvirtd_qemu.aug.in
+Index: libvirt-8.4.0/src/qemu/test_libvirtd_qemu.aug.in
 ===================================================================
---- libvirt-8.3.0.orig/src/qemu/test_libvirtd_qemu.aug.in
-+++ libvirt-8.3.0/src/qemu/test_libvirtd_qemu.aug.in
+--- libvirt-8.4.0.orig/src/qemu/test_libvirtd_qemu.aug.in
++++ libvirt-8.4.0/src/qemu/test_libvirtd_qemu.aug.in
 @@ -45,6 +45,7 @@ module Test_libvirtd_qemu =
  { "remote_websocket_port_min" = "5700" }
  { "remote_websocket_port_max" = "65535" }
@@ -32,10 +32,10 @@ Index: libvirt-8.3.0/src/qemu/test_libvirtd_qemu.aug.in
  { "security_default_confined" = "1" }
  { "security_require_confined" = "1" }
  { "user" = "@QEMU_USER@" }
-Index: libvirt-8.3.0/src/qemu/qemu.conf.in
+Index: libvirt-8.4.0/src/qemu/qemu.conf.in
 ===================================================================
---- libvirt-8.3.0.orig/src/qemu/qemu.conf.in
-+++ libvirt-8.3.0/src/qemu/qemu.conf.in
+--- libvirt-8.4.0.orig/src/qemu/qemu.conf.in
++++ libvirt-8.4.0/src/qemu/qemu.conf.in
 @@ -491,10 +491,19 @@
  # isolation, but it cannot appear in a list of drivers.
  #
