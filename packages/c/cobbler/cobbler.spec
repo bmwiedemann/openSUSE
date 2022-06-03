@@ -151,7 +151,7 @@
 %endif
 
 Name:           cobbler
-Version:        3.3.2.0+git.9044aa99
+Version:        3.3.3.0+git.5c498dbf
 Release:        0%{?dist}
 Summary:        Boot server configurator
 URL:            https://cobbler.github.io/
@@ -353,16 +353,12 @@ fi
 # Fixup permission for world readable settings files
 chmod 640 %{_sysconfdir}/cobbler/settings.yaml
 chmod 600 %{_sysconfdir}/cobbler/mongodb.conf
-chmod 600 %{_sysconfdir}/cobbler/modules.conf
+chmod 640 %{_sysconfdir}/cobbler/modules.conf
 chmod 640 %{_sysconfdir}/cobbler/users.conf
 chmod 640 %{_sysconfdir}/cobbler/users.digest
 chmod 750 %{_sysconfdir}/cobbler/settings.d
 chmod 640 %{_sysconfdir}/cobbler/settings.d/*
 chgrp %{apache_group} %{_sysconfdir}/cobbler/settings.yaml
-chgrp %{apache_group} %{_sysconfdir}/cobbler/users.conf
-chgrp %{apache_group} %{_sysconfdir}/cobbler/users.digest
-chgrp %{apache_group} %{_sysconfdir}/cobbler/settings.d
-chgrp %{apache_group} %{_sysconfdir}/cobbler/settings.d/*
 
 %preun
 %{py3_bytecompile_preun %{name}}
@@ -377,16 +373,12 @@ chgrp %{apache_group} %{_sysconfdir}/cobbler/settings.d/*
 # Fixup permission for world readable settings files
 chmod 640 %{_sysconfdir}/cobbler/settings.yaml
 chmod 600 %{_sysconfdir}/cobbler/mongodb.conf
-chmod 600 %{_sysconfdir}/cobbler/modules.conf
+chmod 640 %{_sysconfdir}/cobbler/modules.conf
 chmod 640 %{_sysconfdir}/cobbler/users.conf
 chmod 640 %{_sysconfdir}/cobbler/users.digest
 chmod 750 %{_sysconfdir}/cobbler/settings.d
 chmod 640 %{_sysconfdir}/cobbler/settings.d/*
 chgrp %{apache_group} %{_sysconfdir}/cobbler/settings.yaml
-chgrp %{apache_group} %{_sysconfdir}/cobbler/users.conf
-chgrp %{apache_group} %{_sysconfdir}/cobbler/users.digest
-chgrp %{apache_group} %{_sysconfdir}/cobbler/settings.d
-chgrp %{apache_group} %{_sysconfdir}/cobbler/settings.d/*
 
 
 %preun
@@ -422,7 +414,7 @@ chgrp %{apache_group} %{_sysconfdir}/cobbler/settings.d/*
 %dir %{_sysconfdir}/cobbler/iso
 %config(noreplace) %{_sysconfdir}/cobbler/iso/buildiso.template
 %config(noreplace) %{_sysconfdir}/cobbler/logging_config.conf
-%attr(600, root, root) %config(noreplace) %{_sysconfdir}/cobbler/modules.conf
+%attr(640, root, root) %config(noreplace) %{_sysconfdir}/cobbler/modules.conf
 %attr(600, root, root) %config(noreplace) %{_sysconfdir}/cobbler/mongodb.conf
 %config(noreplace) %{_sysconfdir}/cobbler/named.template
 %config(noreplace) %{_sysconfdir}/cobbler/ndjbdns.template
@@ -445,13 +437,13 @@ chgrp %{apache_group} %{_sysconfdir}/cobbler/settings.d/*
 %attr(640, root, root) %config(noreplace) %{_sysconfdir}/cobbler/users.digest
 %else
 %attr(640, root, %{apache_group}) %config(noreplace) %{_sysconfdir}/cobbler/settings.yaml
-%attr(750, root, %{apache_group}) %dir %{_sysconfdir}/cobbler/settings.d
-%attr(640, root, %{apache_group}) %config(noreplace) %{_sysconfdir}/cobbler/settings.d/bind_manage_ipmi.settings
-%attr(640, root, %{apache_group}) %config(noreplace) %{_sysconfdir}/cobbler/settings.d/manage_genders.settings
-%attr(640, root, %{apache_group}) %config(noreplace) %{_sysconfdir}/cobbler/settings.d/nsupdate.settings
-%attr(640, root, %{apache_group}) %config(noreplace) %{_sysconfdir}/cobbler/settings.d/windows.settings
-%attr(640, root, %{apache_group}) %config(noreplace) %{_sysconfdir}/cobbler/users.conf
-%attr(640, root, %{apache_group}) %config(noreplace) %{_sysconfdir}/cobbler/users.digest
+%attr(750, root, root) %dir %{_sysconfdir}/cobbler/settings.d
+%attr(640, root, root) %config(noreplace) %{_sysconfdir}/cobbler/settings.d/bind_manage_ipmi.settings
+%attr(640, root, root) %config(noreplace) %{_sysconfdir}/cobbler/settings.d/manage_genders.settings
+%attr(640, root, root) %config(noreplace) %{_sysconfdir}/cobbler/settings.d/nsupdate.settings
+%attr(640, root, root) %config(noreplace) %{_sysconfdir}/cobbler/settings.d/windows.settings
+%attr(640, root, root) %config(noreplace) %{_sysconfdir}/cobbler/users.conf
+%attr(640, root, root) %config(noreplace) %{_sysconfdir}/cobbler/users.digest
 %endif
 %config(noreplace) %{_sysconfdir}/cobbler/version
 %config(noreplace) %{_sysconfdir}/cobbler/zone.template

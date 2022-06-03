@@ -1239,4 +1239,12 @@ D fixes-a-template-rendering-error.patch
     <comment></comment>
     <requestid>961099</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>e35e78345b2c7b13239317e181725715</srcmd5>
+    <version>3.3.3.0+git.5c498dbf</version>
+    <time>1654258631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980623</requestid>
+  </revision>
 </revisionlist>

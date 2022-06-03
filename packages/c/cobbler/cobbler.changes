@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Jun  3 10:51:18 UTC 2022 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Update to version 3.3.3
+  * New:
+    * Uyuni Proxies can now be set with the schema validation.
+    * Cobbler should now build on AlmaLinux.
+    * The initrd is not required anymore as it is an optional file.
+    * XML-RPC: Added dump_vars endpoint. This is intended to replace get_blended_data as of 3.4.0.
+    * XML-RPC: Added get_item_resolved_value & set_item_resolved_value endpoints.
+  * Breaking Changes:
+    * The field virt_file_size is now a float and the related settings as well.
+  * Changes: 
+    * The error messages for duplicated objects now contains the name of the duplicated object.
+  * Bugfixes:
+    * Dictionaries had the wrong value set for <<inherit>>.
+    * There were some cases in which the autoinstallation manager was handed the wrong object and then crashed.
+    * The inheritance of the owners field was fixed.
+    * Serial Console options should not contain bogous -1 value anymore.
+    * HTTP API should not throw permission errors anymore.
+    * During build the log was not visible due to a custom logger without output.
+    * cobbler mkloaders now also copies dependencies of menu.c32.
+    * We now generate the grub configuration for the architectures correct again.
+    * virt_file_size now is a float at all times.
+    * Cobbler should restart successfully now if you have attached an image to a system.
+    * If you have a system named default the bootloader was not removed properly before.
+    * cobbler buildiso: The isolinux.cfg was not properly formatted.
+    * There were unharmful templating errors in the log related to redhat_management_type. The parts depending on this were removed.
+    * The DNS managers were non-functional before because of a not existing function call.
+    * cobbler buildiso failed with --tmpdirs that don't end in buildiso.
+    * cobbler buildiso had outdated docs and help messages for some parameters.
+    * cobbler import: It was impossible to import Rocky Linux 8.5 successfully.
+    * Cobbler created duplicated settings files before.
+    * cobbler sync was broken by refactoring to shell=False before.
+- Removed:
+  * cobbler332alma.patch 
+
+-------------------------------------------------------------------
+Thu Mar 31 18:18:15 UTC 2022 - Stefan Bluhm <stefan.bluhm@clacee.eu>
+
+- Added workaround to build Cobbler 3.3.2 on AlmaLinux.
+
+-------------------------------------------------------------------
 Fri Mar 11 13:00:12 UTC 2022 - Enno Gotthold <egotthold@suse.com>
 
 - This update fixes CVE-2022-0860 (bsc#1197027)
