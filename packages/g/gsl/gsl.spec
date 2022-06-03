@@ -1,7 +1,7 @@
 #
-# spec file for package gsl
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -120,6 +120,7 @@ URL:            https://www.gnu.org/software/%{pname}/
 Source0:        https://ftp.gnu.org/pub/gnu/%{pname}/%{pname}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/pub/gnu/%{pname}/%{pname}-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=gsl&download=1#/%{pname}.keyring
+Source3:        gsl-rpmlintrc
 Patch6:         gsl-qawc-test-x86-precision.diff
 Patch7:         gsl-disable-fma.patch
 BuildRequires:  autoconf
@@ -219,6 +220,7 @@ Summary:        Documentation for the GNU Scientific Library
 Group:          Documentation/Other
 Requires(post): %{install_info_prereq}
 Requires(preun):%{install_info_prereq}
+BuildArch:      noarch
 
 %description    doc
 This package contains documentation for GSL
@@ -419,8 +421,11 @@ EOF
 %files doc
 %doc AUTHORS BUGS ChangeLog NEWS README THANKS TODO
 %license COPYING
-%{?with_hpc:%hpc_dirs}
-%{?with_hpc:%dir %p_infodir}
+%if %{with hpc}
+%dir %{hpc_install_path_base}
+%dir %{hpc_install_path}
+%dir %{p_infodir}
+%endif
 %{p_infodir}/gsl-ref*
 
 %post doc

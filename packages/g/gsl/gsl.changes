@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 24 20:48:30 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Add gsl-rpmlintrc rule to ignore shlib name policy errors for HPC
+  packages (see this file for explanation) (bsc#1191757).
+- Make doc package arch-independent.
+
+-------------------------------------------------------------------
 Fri May 14 13:31:41 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not own standard filesystem dir /usr/lib64/pkgconfig.
