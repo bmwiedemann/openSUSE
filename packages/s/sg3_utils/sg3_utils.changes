@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 01 14:50:40 UTC 2022 - mwilck@suse.com
+
+- Update to version 1.47+5.d13bc56:
+  * rescan-scsi-bus.sh: add timeout parameter (bsc#1199248)
+
+-------------------------------------------------------------------
 Mon Feb 21 13:07:57 UTC 2022 - mwilck@suse.com
 
 - Update to version 1.47+4.82fb156:

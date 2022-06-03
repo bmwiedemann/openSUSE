@@ -593,4 +593,13 @@ Show aggregation and make compatible with Fedora declaration (forwarded request 
   * rescan_scsi_bus.sh: restore numeric ordering of hosts (bsc#1196244)</comment>
     <requestid>956486</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>d12e2f21e29f17bf0077aa2c7541c0d9</srcmd5>
+    <version>1.47+5.d13bc56</version>
+    <time>1654258525</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.47+5.d13bc56:
+  * rescan-scsi-bus.sh: add timeout parameter (bsc#1199248)</comment>
+    <requestid>980369</requestid>
+  </revision>
 </revisionlist>
