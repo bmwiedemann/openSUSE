@@ -438,4 +438,12 @@
 - drop check_inv_ALPN_lists.patch: upstream</comment>
     <requestid>951686</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>d85a88518541249d337ac591a7f1e852</srcmd5>
+    <version>22.0.0</version>
+    <time>1654258518</time>
+    <user>dimstar_suse</user>
+    <comment>- Shift BuildRequires on openssl, it's only required for tests.</comment>
+    <requestid>980309</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  1 08:25:21 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Shift BuildRequires on openssl, it's only required for tests.
+
+-------------------------------------------------------------------
 Fri Feb  4 23:21:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.0.0:

@@ -39,7 +39,6 @@ Patch0:         skip-networked-test.patch
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  openssl
 BuildRequires:  python-rpm-macros
 %if %{with test}
 BuildRequires:  %{python_module cryptography >= 35}
@@ -48,6 +47,7 @@ BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pyOpenSSL >= %version}
 BuildRequires:  %{python_module pytest >= 3.0.1}
 BuildRequires:  ca-certificates-mozilla
+BuildRequires:  openssl
 %endif
 Requires:       python-cffi
 Requires:       python-cryptography >= 35
