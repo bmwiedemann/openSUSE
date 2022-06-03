@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Pod-Parser
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Pod-Parser
-Version:        1.63
-Release:        0
 %define cpan_name Pod-Parser
-Summary:        Base Class for Creating Pod Filters and Translators
-License:        GPL-1.0+ or Artistic-1.0
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Pod-Parser/
-Source0:        http://www.cpan.org/authors/id/M/MA/MAREKR/%{cpan_name}-%{version}.tar.gz
+Name:           perl-Pod-Parser
+Version:        1.65
+Release:        0
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Modules for parsing/translating POD format documents
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/M/MA/MAREKR/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 %{perl_requires}
 
 %description
-*NOTE: This module is considered legacy; modern Perl releases (5.18 and
-higher) are going to remove Pod-Parser from core and use Pod-Simple for all
-things POD.*
+*NOTE: This module is considered legacy; modern Perl releases (5.31.1 and
+higher) are going to remove Pod-Parser from core and use Pod::Simple for
+all things POD.*
 
 *Pod::Parser* is a base class for creating POD filters and translators. It
 handles most of the effort involved with parsing the POD sections from an
@@ -47,15 +45,15 @@ components of the POD. Subclasses of *Pod::Parser* override these methods
 to translate the POD into whatever output format they desire.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{version}
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -63,7 +61,6 @@ find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc ANNOUNCE CHANGES README TODO
 
 %changelog
