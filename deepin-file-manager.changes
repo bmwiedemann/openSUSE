@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 31 13:46:08 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add gcc-12.patch, fix gcc 12 build 
+
+-------------------------------------------------------------------
 Mon Apr 18 08:50:01 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.5.10
