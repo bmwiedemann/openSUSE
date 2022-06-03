@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun May 29 20:32:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.0:
+  * TIFFIsBigTiff() function added.
+  * Functions TIFFFieldSetGetSize() and TIFFieldSetGetCountSize() added.
+  * LZWDecode(): major speed improvements (~30% faster)
+  * Predictor 2 (horizontal differenciation): support 64-bit
+  * Support libjpeg 9d
+  * avoid hang in TIFFRewriteDirectory() if a classic file > 4 GB is attempted
+    to be created
+  * tif_jbig.c: fix crash when reading a file with multiple IFD in
+    memory-mapped mode and when bit reversal is needed
+  * TIFFFetchNormalTag(): avoid calling memcpy() with a null source pointer and
+    size of zero
+  * TIFFWriteDirectoryTagData(): turn assertion on data length into a runtime
+    check
+  * TIFFFetchStripThing(): avoid calling memcpy() with a null source pointer
+    and size of zero
+  * TIFFReadDirectory(): avoid calling memcpy() with a null source pointer and
+    size of zero
+  * TIFFYCbCrToRGBInit(): avoid Integer-overflow
+  * TIFFGetField(TIFFTAG_STRIPBYTECOUNTS/TIFFTAG_STRIPOFFSETS): return error if
+    returned pointer is NULL (fixes #342)
+  * OJPEG: avoid assertion when using TIFFReadScanline()
+  * TIFFReadDirectory: fix OJPEG hack
+  * LZW codec: fix support for strips/tiles > 2 GB on Windows
+  * TIFFAppendToStrip(): fix rewrite-in-place logic
+  * Fix TIFFRewriteDirectory discarding directories.
+  * TIFFReadCustomDirectory(): avoid crash when reading SubjectDistance tag on
+    a non EXIF directory
+  * Fix Segmentation fault printing GPS directory if Altitude tag is present
+  * tif_jpeg.c: do not emit progressive scans with mozjpeg. (#266)
+  * _TIFFRewriteField(): fix when writing a IFD with a single tile that is a
+    sparse one, on big endian hosts
+  * Fix all remaining uses of legacy Deflate compression id and warn on use.
+- drop tiff-CVE-2022-0907.patch, tiff-CVE-2022-0561.patch, tiff-CVE-2022-0562.patch,
+  tiff-CVE-2022-0865.patch, tiff-CVE-2022-0909.patch, tiff-CVE-2022-0924.patch,
+  tiff-CVE-2022-0908.patch, tiff-CVE-2022-1056,CVE-2022-0891.patch: all upstream
+- add signature validation, adds tiff.keyring
+
+-------------------------------------------------------------------
 Mon May  9 10:50:34 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - security update:
