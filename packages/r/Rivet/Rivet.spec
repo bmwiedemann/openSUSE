@@ -16,7 +16,7 @@
 #
 
 
-%define ver 3.1.5
+%define ver 3.1.6
 %define so_name lib%{name}-%(echo %{ver} | tr '.' '_')
 Name:           Rivet
 Version:        %{ver}

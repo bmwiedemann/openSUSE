@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun May 29 13:09:20 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.6:
+  * Allow the rivet script's -p option to be given multiple times,
+    or to contain a comma-separated list of files to load cf. the
+    -a argument. readData() is called for each specified preload
+    file, in order.
+  * Add a pseudojets() method and automatic conversion operator to
+    Particles.  It sets the user index so the constituents will
+    match the indices of the particle or jet vector used as input.
+  * Move the Jets and Particles definitions into the .hh headers.
+  * Submission of CMS_2017_I1497519: Z boson in association with
+    jets at 8 TeV.
+  * Fall back to old calculation of y in DISKinematics if Q2 is
+    zero.
+  * Add MissingMom typedef for MissingMomentum.
+  * Add vectorEt/PtMiss() and scalarEt/PtMiss() methods to
+    MissingMomentum.
+  * Use ThreeMomentum in MissingMomentum for the vectorPt() etc.
+  * Add ThreeMomentum/P3 type with momentum-oriented method names,
+    cf. FourVector->FourMomentum.
+  * Add a pseudojets() method to the Jets container type.
+  * Add BESIII_2022_I2047667 e+e- > eta omega and omega pi0.
+  * Add finalize-scaling protection in ATLAS_2020_1790256.
+  * Add BESIII_2022_I2039027 e+e- > pi+pi-eta.
+  * Add BESIII_2022_I2033007 e+e-> K+K-pi0.
+
+-------------------------------------------------------------------
 Fri Jan  7 08:31:54 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Fix sed script for rpath removal from rivet-config.
