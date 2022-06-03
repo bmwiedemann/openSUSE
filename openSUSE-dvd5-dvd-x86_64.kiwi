@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20220602" schemaversion="4.1">
+<image name="OBS__openSUSE___20220603" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220602</productvar>
+      <productvar name="VERSION">20220603</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220602,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220603,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220602/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220603/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -473,6 +473,7 @@
       <repopackage name="expect"/>
       <repopackage name="eyeD3"/>
       <repopackage name="f2fs-tools"/>
+      <repopackage name="facetimehd-kmp-default" arch="x86_64"/>
       <repopackage name="farstream-data"/>
       <repopackage name="fbiterm"/>
       <repopackage name="fcitx"/>
@@ -721,16 +722,13 @@
       <repopackage name="gnome-weather-lang"/>
       <repopackage name="gnomekbd-tools"/>
       <repopackage name="gnutls"/>
-      <repopackage name="google-arimo-fonts"/>
       <repopackage name="google-carlito-fonts"/>
-      <repopackage name="google-cousine-fonts"/>
       <repopackage name="google-croscore-fonts"/>
       <repopackage name="google-droid-fonts"/>
       <repopackage name="google-noto-fonts-doc"/>
       <repopackage name="google-opensans-fonts"/>
       <repopackage name="google-poppins-fonts"/>
       <repopackage name="google-roboto-fonts"/>
-      <repopackage name="google-tinos-fonts"/>
       <repopackage name="gpart"/>
       <repopackage name="gpg2"/>
       <repopackage name="gpg2-lang"/>
@@ -2906,7 +2904,7 @@
       <repopackage name="libvte-2_91-0"/>
       <repopackage name="libvulkan1"/>
       <repopackage name="libwacom-data"/>
-      <repopackage name="libwacom2"/>
+      <repopackage name="libwacom9"/>
       <repopackage name="libwavpack1"/>
       <repopackage name="libwayland-client0"/>
       <repopackage name="libwayland-cursor0"/>
@@ -3376,7 +3374,9 @@
       <repopackage name="nodejs17"/>
       <repopackage name="notification-daemon"/>
       <repopackage name="notification-daemon-lang"/>
+      <repopackage name="noto-arimo-fonts"/>
       <repopackage name="noto-coloremoji-fonts"/>
+      <repopackage name="noto-cousine-fonts"/>
       <repopackage name="noto-sans-fonts"/>
       <repopackage name="noto-serif-jp-bold-fonts"/>
       <repopackage name="noto-serif-jp-fonts"/>
@@ -3387,6 +3387,7 @@
       <repopackage name="noto-serif-tc-bold-fonts"/>
       <repopackage name="noto-serif-tc-fonts"/>
       <repopackage name="noto-serif-tc-regular-fonts"/>
+      <repopackage name="noto-tinos-fonts"/>
       <repopackage name="npm17"/>
       <repopackage name="nscd"/>
       <repopackage name="nss-mdns"/>

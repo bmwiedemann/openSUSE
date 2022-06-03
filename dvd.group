@@ -693,16 +693,13 @@
     <package name="gnome-weather-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnomekbd-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnutls" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
-    <package name="google-arimo-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="google-carlito-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="google-cousine-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="google-croscore-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="google-droid-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
-    <package name="google-noto-fonts-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="google-noto-fonts-doc" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="google-opensans-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="google-poppins-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="google-roboto-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
-    <package name="google-tinos-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gpart" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="gpg2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gpg2-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -833,7 +830,7 @@
     <package name="gxditview" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="gzip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="hack-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="haveged" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="haveged" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="hdf5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="hdparm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="health-checker" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -2068,7 +2065,7 @@
     <package name="libharfbuzz-icu0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libharfbuzz-subset0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libharfbuzz0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libhavege2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libhavege2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libhdf5-103" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libhdf5_cpp103" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libhdf5_fortran102" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -2744,7 +2741,7 @@
     <package name="libvte-2_91-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libvulkan1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwacom-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libwacom2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libwacom9" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwavpack1" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libwayland-client0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwayland-cursor0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3074,7 +3071,9 @@
     <package name="nodejs17" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="notification-daemon" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="notification-daemon-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="noto-arimo-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="noto-coloremoji-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="noto-cousine-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="noto-sans-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="noto-serif-jp-bold-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="noto-serif-jp-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3085,6 +3084,7 @@
     <package name="noto-serif-tc-bold-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="noto-serif-tc-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="noto-serif-tc-regular-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="noto-tinos-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="npm17" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="nscd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="nss-mdns" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -5042,6 +5042,7 @@
     <package name="drbd-utils" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="efibootmgr" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
     <package name="exim" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="facetimehd-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="fcitx-gtk2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="fcitx-mozc" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ffmpeg-5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
