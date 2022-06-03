@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun 03 10:01:25 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1654172370.feb899d:
+  * ci: Upload coverage HTML as an artifact
+  * Use combined operators
+  * Pass -x and -y as array arguments
+  * Make xres and yres class variables
+  * Add XRES and YRES docs to correct places
+  * Address code review comments
+
+-------------------------------------------------------------------
 Tue May 31 17:38:23 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1654018695.5972f50:
