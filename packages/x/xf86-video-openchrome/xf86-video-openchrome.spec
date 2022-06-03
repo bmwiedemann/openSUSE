@@ -42,6 +42,9 @@ of VIA chipsets featuring the VIA UniChrome, UniChrome Pro and Chrome9 integrate
 %setup -q
 
 %build
+# We have some -z now related errors during X default startup (boo#1197994):
+# this is directly visible on startup, so easy to test later on.
+export SUSE_ZNOW=0
 %configure
 make %{?_smp_mflags}
 

@@ -147,4 +147,12 @@
 - specfile: fixed URL and Source lines</comment>
     <requestid>960581</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>bfb49e86a31bd3681337e6f97c6e08aa</srcmd5>
+    <version>0.6.225</version>
+    <time>1654258614</time>
+    <user>dimstar_suse</user>
+    <comment>- set SUSE_ZNOW to 0 (boo#1200183, boo#1197994)</comment>
+    <requestid>980579</requestid>
+  </revision>
 </revisionlist>
