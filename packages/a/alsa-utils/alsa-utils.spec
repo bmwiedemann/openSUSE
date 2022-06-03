@@ -16,10 +16,16 @@
 #
 
 
-%define do_autoreconf 1
+%define do_autoreconf 0
 %define _udevdir %(pkg-config --variable=udevdir udev)
+%ifarch %ix86 x86_64 %arm aarch64 ppc64le riscv64
+%define enable_topology	1
+%else
+%define enable_topology	0
+%endif
+
 Name:           alsa-utils
-Version:        1.2.6
+Version:        1.2.7
 Release:        0
 Summary:        Advanced Linux Sound Architecture Utilities
 License:        GPL-2.0-or-later
@@ -30,12 +36,10 @@ Source1:        https://www.alsa-project.org/files/pub/utils/alsa-utils-%{versio
 Source2:        01beep.conf
 Source3:        sound-extra.service
 Source5:        load-sound-modules.sh
-Patch1:         0001-alsamixer-Fix-regression-in-color-setup.patch
-Patch2:         0002-alsamixer-Revert-has_mouse-check.patch
 Patch100:       alsa-info-no-update-for-distro-script.patch
 Patch101:       alsa-utils-configure-version-revert.patch
 BuildRequires:  alsa-devel
-%ifarch %ix86 x86_64 %arm aarch64 ppc64le riscv64
+%if %enable_topology
 BuildRequires:  alsa-topology-devel
 %endif
 BuildRequires:  fftw3-devel
@@ -52,6 +56,7 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 %if 0%{?do_autoreconf}
 BuildRequires:  automake
+BuildRequires:  libtool
 %endif
 Requires:       alsa
 # for alsa-info.sh
@@ -75,8 +80,6 @@ and test audio before and after PM state changes.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
 %patch100 -p1
 %if 0%{?do_autoreconf}
 %patch101 -p1
@@ -100,6 +103,9 @@ make %{?_smp_mflags}
 %make_install
 mkdir -p %{buildroot}%{_datadir}/alsa/init/preinit
 mkdir -p %{buildroot}%{_datadir}/alsa/init/postinit
+%if %enable_topology
+rm -f %{_libdir}/alsa-topology/*.la
+%endif
 for i in %{_sourcedir}/[0-9]*.conf; do
   install -c -m 0644 $i %{buildroot}%{_datadir}/alsa/init/postinit
 done
@@ -146,6 +152,9 @@ exit 0
 %{_sbindir}/*
 %exclude %{_bindir}/alsabat
 %exclude %{_sbindir}/alsabat-test.sh
+%if %enable_topology
+%{_libdir}/alsa-topology
+%endif
 %exclude %{_mandir}/man*/alsabat.*
 %{_datadir}/sounds/alsa
 %{_datadir}/alsa

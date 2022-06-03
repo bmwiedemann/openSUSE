@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun  1 05:54:52 UTC 2022 - Takashi Iwai <tiwai@suse.com>
+
+- Update to alsa-utils 1.2.7:
+  Enhancement and fixes of alsactl, speaker-test cleanup, 
+  alsatplg enhancements, arecord ghost data fix, etc.
+  For details see:
+   https://www.alsa-project.org/wiki/Changes_v1.2.6.3_v1.2.7#alsa-utils
+- Drop obsoleted patches:
+  0001-alsamixer-Fix-regression-in-color-setup.patch
+  0002-alsamixer-Revert-has_mouse-check.patch
+
+-------------------------------------------------------------------
 Fri Jan 28 17:53:00 CET 2022 - tiwai@suse.de
 
 - Fix the broken mouse support on alsamixer:
