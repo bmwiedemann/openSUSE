@@ -374,6 +374,7 @@ Patch848:       0001-grub-probe-Deduplicate-probed-partmap-output.patch
 Patch849:       0001-powerpc-do-CAS-in-a-more-compatible-way.patch
 Patch850:       0001-Fix-infinite-boot-loop-on-headless-system-in-qemu.patch
 Patch851:       0001-libc-config-merge-from-glibc.patch
+Patch852:       0001-ofdisk-improve-boot-time-by-lookup-boot-disk-first.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
@@ -644,7 +645,7 @@ CD_MODULES="all_video boot cat configfile echo true \
 PXE_MODULES="tftp http"
 CRYPTO_MODULES="luks gcry_rijndael gcry_sha1 gcry_sha256"
 %ifarch %{efi}
-CD_MODULES="${CD_MODULES} chain efifwsetup efinet"
+CD_MODULES="${CD_MODULES} chain efifwsetup efinet read"
 PXE_MODULES="${PXE_MODULES} efinet"
 %else
 CD_MODULES="${CD_MODULES} net"

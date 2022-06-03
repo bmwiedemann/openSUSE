@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 31 04:41:44 UTC 2022 - Michael Chang <mchang@suse.com>
+
+- Use boot disks in OpenFirmware, fixing regression caused by
+  0001-ieee1275-implement-FCP-methods-for-WWPN-and-LUNs.patch, when
+  the root LV is completely in the boot LUN (bsc#1197948)
+  * 0001-ofdisk-improve-boot-time-by-lookup-boot-disk-first.patch
+
+-------------------------------------------------------------------
+Thu May 26 10:10:56 UTC 2022 - Michael Chang <mchang@suse.com>
+
+- Fix error message in displaying help on bootable snapshot (bsc#1199609)
+
+-------------------------------------------------------------------
 Tue May 17 10:46:38 UTC 2022 - Michael Chang <mchang@suse.com>
 
 - Fix installation over serial console ends up in infinite boot loop
