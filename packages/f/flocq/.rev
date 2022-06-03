@@ -7,4 +7,18 @@
     <comment>- Initial submit based on version 4.0.0.</comment>
     <requestid>974213</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4446f32770b540005f6feee0801aaa19</srcmd5>
+    <version>4.1.0</version>
+    <time>1654258611</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.1.0.
+  * Added `Bnearbyint` and `Btrunc` in `IEEE754`.
+  * Ensured compatibility from Coq 8.12 to 8.16.
+- Fix patching of coqdoc invocation, make it more robust.
+- Patch up coqdoc invocation also for older Coq versions since they
+  don't understand --coqlib_url.
+</comment>
+    <requestid>980558</requestid>
+  </revision>
 </revisionlist>

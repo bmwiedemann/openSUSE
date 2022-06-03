@@ -1,6 +1,7 @@
 #
 # spec file for package flocq
 #
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020 Peter Trommler <ptrommler@icloud.com>
 # Copyright (c) 2022 Aaron Puchert <aaronpuchert@alice-dsl.net>
 #
@@ -13,11 +14,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           flocq
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 Summary:        Formalization of floating point numbers for Coq
 Group:          Productivity/Scientific/Math
@@ -61,8 +63,11 @@ This package contains the HTML documentation for flocq.
 %setup -q
 
 # Make the documentation point to coq-doc if possible.
+grep "\-\-coqlib_url http://coq.inria.fr/distrib/current/stdlib" Remakefile.in &&
 %if %{pkg_vcmp coq >= 8.14}
-sed -i "s|--coqlib http://coq.inria.fr/distrib/current/stdlib|--coqlib %{_libdir}/coq-core --coqlib_url %{_defaultdocdir}/coq/stdlib|" Remakefile.in
+sed -i "s|--coqlib_url http://coq.inria.fr/distrib/current/stdlib|--coqlib %{_libdir}/coq-core --coqlib_url %{_defaultdocdir}/coq/stdlib|" Remakefile.in
+%else
+sed -i "s|--coqlib_url http://coq.inria.fr/distrib/current/stdlib|--coqlib %{_libdir}/coq-core|" Remakefile.in
 %endif
 
 %build
