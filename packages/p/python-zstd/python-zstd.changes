@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun  4 13:44:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.2.5:
+  * Update bundled libzstd to 1.5.2
+  * Add support of setting build options via envvars
+  * Fixed config for github actions to build wheels
+  * Force disable all ASM for AMD code
+
+-------------------------------------------------------------------
 Mon Jan 10 11:50:03 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.1.0:
