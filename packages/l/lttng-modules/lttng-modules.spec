@@ -17,7 +17,7 @@
 
 
 Name:           lttng-modules
-Version:        2.13.3
+Version:        2.13.4
 Release:        0
 Summary:        Licensing information for package lttng-modules
 License:        GPL-2.0-only AND LGPL-2.1-only AND MIT

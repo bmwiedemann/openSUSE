@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jun  3 20:12:25 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.13.4:
+  * Fix: event notifier: racy use of last subbuffer record.
+  * Fix: bytecode interpreter context_get_index() leaves byte
+    order uninitialised.
+  * Fix: "random" tracepoints removed in stable kernels.
+  * Fix: random: remove unused tracepoints (v5.10, v5.15).
+  * Fix: sched/tracing: Append prev_state to tp args instead
+    (v5.18).
+  * Fix: mm: compaction: cleanup the compaction trace events
+    (v5.18).
+  * Fix: scsi: core: Remove <scsi/scsi_request.h> (v5.18).
+  * Fix: kprobes: Use rethook for kretprobe if possible (v5.18).
+  * Fix: random: remove unused tracepoints (v5.18).
+  * Fix: scsi: block: Remove REQ_OP_WRITE_SAME support (v5.18).
+  * Fix: block: remove genhd.h (v5.18).
+  * Fix: sched/tracing: Don't re-read p->state when emitting
+    sched_switch event (v5.18).
+  * Fix: KVM: x86: Unexport kvm_x86_ops (v5.18).
+  * Fix: do not warn on unknown counter ioctl.
+  * Fix: tracepoint event: allow same provider and event name.
+  * Fix: compaction migratepages event name.
+
+-------------------------------------------------------------------
 Wed May 18 20:23:14 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 2.13.3:
@@ -531,4 +556,3 @@ Mon Feb 27 22:42:24 UTC 2012 - tonyj@suse.com
 Wed Jan  4 19:59:26 UTC 2012 - tonyj@suse.com
 
 - Update to version 2.0-pre11
-
