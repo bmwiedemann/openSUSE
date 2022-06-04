@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun  2 12:48:05 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Hardcode libarchive13 for now until we make macro based requires
+  work with the python package magic. libarchive13 was the package
+  name since sle12.
+
+-------------------------------------------------------------------
+Thu Jun  2 12:23:32 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- we only need the shared library package for libarchive and not
+  the devel package:
+  use %requires_file to get the package of the currently installed
+  via the libarchive.so symlink in libarchive-devel
+
+-------------------------------------------------------------------
 Wed Mar 23 13:50:58 UTC 2022 - pgajdos@suse.com
 
 - version update to 4.0

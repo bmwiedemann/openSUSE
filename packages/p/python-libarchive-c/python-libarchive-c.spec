@@ -16,6 +16,8 @@
 #
 
 
+%define requires_file() %( readlink -f '%*' | LC_ALL=C xargs -r rpm -q --qf 'Requires: %%{name} >= %%{epoch}:%%{version}\\n' -f | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-libarchive-c
 Version:        4.0
@@ -30,7 +32,11 @@ Patch0:         python-libarchive-c-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       libarchive-devel
+%if %{with libarchive_dynamically}
+%requires_file  %{_libdir}/libarchive.so
+%else
+Requires:       libarchive13
+%endif
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
