@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jira
-Version:        3.1.1
+Version:        3.2.0
 Release:        0
 Summary:        Python library for interacting with JIRA via REST APIs
 License:        BSD-3-Clause
@@ -40,8 +40,7 @@ Requires:       python-pbr >= 3.0.0
 Requires:       python-requests >= 2.10.0
 Requires:       python-requests-oauthlib >= 0.6.1
 Requires:       python-requests-toolbelt
-Requires:       python-setuptools >= 20.10.1
-Requires:       python-six >= 1.10.0
+Requires:       python-typing_extensions >= 3.7.4.2
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch

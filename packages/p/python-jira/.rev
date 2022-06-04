@@ -117,4 +117,21 @@
     <comment>- Add missing Requires on keyring.</comment>
     <requestid>950065</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8c8ae7532d693b799ba29b1135e5259d</srcmd5>
+    <version>3.2.0</version>
+    <time>1654378051</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.0:
+  * Additional scheme endpoints for projects 
+  * Add subscriptable support for PropertyHolder 
+  * Fixing type hint to match documentation for move_to_backlog 
+  * improve ResultList types 
+  * Allow verify option as path to cert in config 
+  * Bugfixes
+  * Locate the exact user by key if there are multiple users returned from query 
+  * Fixing type hint to match documentation for move_to_backlog 
+  * Avoid printing parsed json response</comment>
+    <requestid>980788</requestid>
+  </revision>
 </revisionlist>

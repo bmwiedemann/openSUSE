@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jun  4 18:05:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.0:
+  * Additional scheme endpoints for projects 
+  * Add subscriptable support for PropertyHolder 
+  * Fixing type hint to match documentation for move_to_backlog 
+  * improve ResultList types 
+  * Allow verify option as path to cert in config 
+  * Bugfixes
+  * Locate the exact user by key if there are multiple users returned from query 
+  * Fixing type hint to match documentation for move_to_backlog 
+  * Avoid printing parsed json response 
+
+-------------------------------------------------------------------
 Mon Jan 31 03:56:35 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing Requires on keyring. 
