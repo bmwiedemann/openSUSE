@@ -25,6 +25,10 @@ License:        LGPL-3.0-or-later
 Group:          Productivity/Other
 URL:            http://liblouis.org/
 Source0:        https://github.com/liblouis/liblouis/releases/download/v%{version}/liblouis-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM liblouis-CVE-2022-26981.patch boo#1197085 mgorse@suse.com -- fix buffer overrun in compilePassOpcode.
+Patch0:         liblouis-CVE-2022-26981.patch
+# PATCH-FIX-UPSTREAM liblouis-CVE-2022-31783.patch boo#1200120 mgorse@suse.com -- prevent an invalid memory write in compileRule.
+Patch1:         liblouis-CVE-2022-31783.patch
 
 BuildRequires:  fdupes
 BuildRequires:  libyaml-devel
@@ -124,7 +128,7 @@ translation for many languages and has support for hyphenation.
 This subpackage contains the Python3 bindings.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --disable-static --enable-ucs4

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun  2 17:49:07 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Add liblouis-CVE-2022-26981.patch: fix buffer overrun in
+  compilePassOpcode (boo#1197085 CVE-2022-26981).
+- Add liblouis-CVE-2022-31783.patch: prevent an invalid memory
+  write in compileRule (boo#1200120 CVE-2022-31783).
+
+-------------------------------------------------------------------
 Sun Apr 10 12:48:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.21.0:
