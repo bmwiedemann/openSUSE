@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 28 09:50:05 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20220528
+  * Improved extended attributes support.
+  * Unspecified updates to Python bindings.
+
+-------------------------------------------------------------------
 Fri Jan 21 07:53:11 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20220113
