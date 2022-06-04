@@ -1,0 +1,10 @@
+--- a/source/modules/juce_gui_basics/native/x11/juce_linux_XWindowSystem.cpp
++++ b/source/modules/juce_gui_basics/native/x11/juce_linux_XWindowSystem.cpp
+@@ -24,6 +24,7 @@
+ */
+ 
+ #include <unordered_map>
++#include <array>
+ 
+ namespace juce
+ {

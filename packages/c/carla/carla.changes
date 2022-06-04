@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun  4 10:05:07 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Add fix-include-array.patch to fix Tumbleweed build error.
+
+-------------------------------------------------------------------
 Tue Apr 26 12:29:08 UTC 2022 - rpm@fthiessen.de
 
 - Update to version 2.4.3:

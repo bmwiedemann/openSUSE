@@ -46,6 +46,8 @@ Patch0:         carla-systemlibs.patch
 Patch1:         carla-remove-pkgconf-rpath.patch
 # PATCH-FIX-OPENSUSE -- Use the correct plugin paths for openSUSE sflees@suse.de
 Patch2:         use-correct-plugin-paths.patch
+# PATCH-FIX_OPENSUSE -- Fix build error in Tumbleweed
+Patch3:         fix-include-array.patch
 BuildRequires:  fdupes
 BuildRequires:  file-devel
 BuildRequires:  hicolor-icon-theme
