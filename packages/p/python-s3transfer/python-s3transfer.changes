@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun  3 11:41:08 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.6.0
+  * feature:Python: Dropped support for Python 3.6
+- from version 0.5.2
+  * enhancement:``s3``: Added support for flexible checksums
+    when uploading or downloading objects.
+- from version 0.5.1
+  * enhancement:Python: Officially add Python 3.10 support
+- Drop unused python-mock dependency from BuildRequires
+- Refresh patches for new version
+  + no-bundled-packages.patch
+
+-------------------------------------------------------------------
 Tue Jul 27 09:40:00 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update 0.5.0: (bsc#1189649)
