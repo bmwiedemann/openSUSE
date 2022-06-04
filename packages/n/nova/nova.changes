@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun 04 18:58:11 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 3.2.0:
+  * add flag --show-old to only charts not on the latest version (#111)
+  * Bump alpine from 3.15 to 3.16.0 (#119)
+  * Replace klog.Fatal with Klog.Error and os.Exit(1) (#116)
+  * attempt to fix #106 by moving mutex lock (#115)
+  * Update dependencies (#107)
+
+-------------------------------------------------------------------
 Sat May 14 08:18:39 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 3.1.0:

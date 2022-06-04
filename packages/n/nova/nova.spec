@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           nova
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Find outdated or deprecated Helm charts running in your cluster
 License:        Apache-2.0
@@ -28,7 +28,7 @@ Source:         nova-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  go >= 1.17
 
-# found conflict of nova-3.1.0-1.1.x86_64 with python3-novaclient-17.6.0-1.2.noarch
+# found conflict of nova-3.2.0-1.1.x86_64 with python3-novaclient-17.6.0-1.2.noarch
 #   /usr/bin/nova
 Conflicts:      python3-novaclient
 
