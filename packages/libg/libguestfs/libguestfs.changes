@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun  3 15:28:15 MDT 2022 - carnold@suse.com
+
+- bsc#1190501 - virt-builder fails to install packages when
+  building an image. Add Recommends: dhcp-client for the appliance.
+  libguestfs.spec
+
+-------------------------------------------------------------------
 Wed Jun  1 09:29:15 MDT 2022 - carnold@suse.com
 
 - Update to version 1.48.3

@@ -290,6 +290,7 @@ BuildRequires:  bzip2
 BuildRequires:  coreutils
 BuildRequires:  cpio
 BuildRequires:  cryptsetup
+BuildRequires:  dhcp-client
 BuildRequires:  diffutils
 BuildRequires:  dosfstools
 BuildRequires:  e2fsprogs
