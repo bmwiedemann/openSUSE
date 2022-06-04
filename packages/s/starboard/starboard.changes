@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Jun 04 18:53:58 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.15.6:
+  * release: prepare v0.15.6 (#1210)
+
+-------------------------------------------------------------------
+Wed Jun 01 14:04:50 UTC 2022 - kastl@b1-systems.de
+
+- mitigate CVE-2022-28946 (bsc#1199760)
+- Update to version 0.15.5:
+  * release: prepare v0.15.5 (#1209)
+  * chore(deps): bump github.com/caarlos0/env/v6 from 6.9.2 to 6.9.3 (#1208)
+  * chore(deps): bump goreleaser/goreleaser-action from 2 to 3 (#1198)
+  * chore(deps): bump k8s.io/code-generator from 0.24.0 to 0.24.1 (#1206)
+  * chore(deps): bump k8s.io/cli-runtime from 0.24.0 to 0.24.1 (#1203)
+  * chore(deps): bump github.com/hashicorp/go-version from 1.4.0 to 1.5.0 (#1197)
+  * Added Region support for ECR-Registry handling. (#1191)
+  * chore(deps): bump github.com/google/go-containerregistry (#1196)
+  * chore(deps): bump sigs.k8s.io/controller-runtime from 0.11.2 to 0.12.1 (#1195)
+  * chore(deps): bump github.com/caarlos0/env/v6 from 6.9.1 to 6.9.2 (#1194)
+  * chore(deps): bump golangci/golangci-lint-action from 3.1.0 to 3.2.0 (#1188)
+  * chore: bump k8s.io to version 0.24.0 (#1193)
+  * chore(deps): bump docker/setup-qemu-action from 1 to 2 (#1178)
+  * chore(deps): bump docker/setup-buildx-action from 1 to 2 (#1177)
+  * chore(deps): bump docker/login-action from 1 to 2 (#1176)
+  * chore(deps): bump github.com/google/go-cmp from 0.5.7 to 0.5.8 (#1171)
+  * chore(deps): bump github.com/open-policy-agent/opa from 0.39.0 to 0.40.0 (#1170)
+  * feat(configaudit): only scan current revision of deployments (#1148)
+  * feat(trivy): add mirror config in helm chart (#1159)
+  * feat: remove 'all' category from vuln and configaudit CRDs (#1156)
+  * chore(deps): bump k8s.io/cli-runtime from 0.23.5 to 0.23.6 (#1153)
+  * chore(deps): bump k8s.io/client-go from 0.23.5 to 0.23.6 (#1151)
+  * chore(deps): bump k8s.io/code-generator from 0.23.5 to 0.23.6 (#1150)
+  * Modified Decode() to use SplitN rather than Split. This allows GCR auths to be split that contain multiple : characters. (#1126)
+  * chore(deps): bump github.com/emirpasic/gods from 1.15.0 to 1.18.1 (#1141)
+  * chore(deps): bump rajatjindal/krew-release-bot from 0.0.42 to 0.0.43 (#1139)
+
+-------------------------------------------------------------------
 Thu Apr 14 19:46:21 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.15.4:
