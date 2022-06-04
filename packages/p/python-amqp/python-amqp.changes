@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun  4 11:37:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.1:
+  - Use AF_UNSPEC for name resolution 
+
+-------------------------------------------------------------------
 Sat Mar 26 20:22:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.1.0:
