@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Jun  3 19:09:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.1.0
+  * PR: Restrict broken Pytest versions to those not affected by
+    the Pytest 7.0.0 import-mode=importlib behavior regression by
+    @CAM-Gerlach in #324
+  * PR: Monkey patch pyside2uic UIParser.readResources for Python
+    3.9 compatibility by @n-elie in #325
+  * PR: Add missing QWebEngineScript support for PyQt5/6 and
+    PySide2/6 by @EasyIsrael in #326
+  * PR: Add missing Qt.MidButton on PyQt6 by @dalthviz in #328
+  * PR: Drop support for Python 3.6 by @dalthviz in #329
+  * PR: Fix typo in constant name by @eyllanesc in #330
+  * PR: Use QFileDialog.Option to be compatiable with Qt6 by
+    @frmdstryr in #331
+  * PR: Skip import of QOpenGLTime* on architectures where not
+    available by @juliangilbey in #333
+  * PR: Remove QHeaderView patch related files by @dalthviz in #334
+  * PR: Fix uic skipped tests and PyQt 6.3.0 segfaulting tests by
+    @dalthviz in #335
+  * PR: Add command line support for Mypy by @CAM-Gerlach in #337
+  * PR: Add workaround for mode argument in
+    QTextCursor.movePosition (Pyside2) by @rear1019 in #341
+  * PR: Fix bug with environ handling by @larsoner in #340
+  * PR: Change bindings try order to be PyQt5, PySide2, PyQt6,
+    PySide6 by @dalthviz in #343
+
+-------------------------------------------------------------------
 Mon Apr 11 08:03:56 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Disable PyQt6-WebEngine tests for 32-bit platforms
