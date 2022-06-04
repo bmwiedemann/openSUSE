@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 26 03:14:09 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- Provide dbus-service so from a packaging perspective its easier
+  to replace dbus-daemon in the future.
+
+-------------------------------------------------------------------
 Mon May 16 10:27:31 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 31

@@ -37,6 +37,7 @@ BuildRequires:  pkgconfig(libcap-ng) >= 0.6
 BuildRequires:  pkgconfig(libselinux) >= 3.2
 BuildRequires:  pkgconfig(libsystemd) >= 230
 BuildRequires:  pkgconfig(systemd) >= 230
+Provides:       dbus-service
 Provides:       bundled(c-dvar) = 1+
 Provides:       bundled(c-ini) = 1+
 Provides:       bundled(c-list) = 3+git9
@@ -70,8 +71,6 @@ ln -s /bin/true rst2man
 
 %install
 %meson_install
-mkdir -p "%buildroot/%_sbindir"
-ln -s service "%buildroot/%_sbindir/rcdbus-broker"
 
 %pre
 %service_add_pre dbus-broker.service
@@ -90,7 +89,6 @@ ln -s service "%buildroot/%_sbindir/rcdbus-broker"
 %_unitdir/*.service
 %_prefix/lib/systemd/user/*.service
 %_prefix/lib/systemd/catalog/
-%_sbindir/rc*
 %license LICENSE
 
 %changelog
