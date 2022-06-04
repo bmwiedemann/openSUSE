@@ -214,4 +214,26 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>929067</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d1f3a191de671ea536bb5f880b72e320</srcmd5>
+    <version>2.0.1</version>
+    <time>1654378052</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to release 2.0.1
+  + Fix null pointer dereference bug in zero cache.
+
+- Upgrade to release 2.0.0
+  + Support running as a Network Block Device (NBD) server (issue #178)
+  + Fix slow write performance with large block sizes since 1.6.0 (issue ##185)
+  + Disable MD5 cache by default now that Amazon S3 is consistent (issue #183)
+  + Fix bug where &quot;(null)&quot; was appearing in usage message (issue #161)
+  + Give more meaningful usage error when size limits are exceeded (issue #162)
+  + Added flag &quot;--http11&quot; to restrict cURL to HTTP 1.1 (issue #168)
+  + Clean up mount token if FUSE itself fails to start (issue #175)
+  + Detect HTTP redirects and emit appropriate hint/warning (issue #174)
+  + Added man page reference to Linux bcache (issue #169)
+  + Added &quot;--blockCacheFileAdvise&quot; flag (pr #176)
+  + Treat 3xx HTTP response codes as errors</comment>
+    <requestid>980807</requestid>
+  </revision>
 </revisionlist>

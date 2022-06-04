@@ -1,7 +1,7 @@
 #
 # spec file for package s3backer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           s3backer
-Version:        1.6.3
+Version:        2.0.1
 Release:        0
 Summary:        FUSE-based single file backing store via Amazon S3
 License:        GPL-2.0-or-later
@@ -25,20 +25,14 @@ Group:          System/Filesystems
 URL:            https://github.com/archiecobbs/%{name}
 Source:         https://s3.amazonaws.com/archie-public/%{name}/%{name}-%{version}.tar.gz
 BuildRequires:  fuse-devel >= 2.5
+BuildRequires:  libcurl-devel >= 7.16.2
+BuildRequires:  libexpat-devel
+BuildRequires:  libopenssl-devel
+%if 0%{?sle_version} >= 150300
+BuildRequires:  nbdkit-devel
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
-%if 0%{?suse_version} >= 1100
-BuildRequires:  libcurl-devel >= 7.16.2
-BuildRequires:  libopenssl-devel
-%else
-BuildRequires:  curl-devel >= 7.16.2
-BuildRequires:  openssl-devel
-%endif
-%if 0%{?suse_version} < 1000 || 0%{?fedora_version} != 0 || 0%{?centos_version} != 0
-BuildRequires:  expat
-%else
-BuildRequires:  libexpat-devel
-%endif
 
 %description
 s3backer is a filesystem that contains a single file backed by the Amazon
@@ -52,6 +46,8 @@ filesystem.
 In typical usage, a `normal' filesystem is mounted on top of the file
 exported by the s3backer filesystem using a loopback mount (or disk image
 mount on Mac OS X).
+
+s3backer can also function as a Network Block Device (NBD) plug-in.
 
 %prep
 %setup -q
@@ -69,6 +65,9 @@ rm -f %{buildroot}%{_docdir}/%{name}/INSTALL
 %files
 %{_bindir}/*
 %{_mandir}/man1/*
+%if 0%{?sle_version} >= 150300
+%{_libdir}/nbdkit/plugins/*
+%endif
 %{_docdir}/%{name}
 
 %changelog
