@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Jun 04 18:56:53 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.18.0:
+  * New v0.18.0 release (#855)
+  * Update golang target version to latest release 1.18.3 (#854)
+  * Add capability to watch multiple namespaces (#572)
+  * Update gopkg.in/yaml.v3 to v3.0.0 (#852)
+  * Publish images in GHCR (#851)
+  * Remove operator links (#845)
+  * Indent controller installation instructions (#844)
+  * Made gosec a step of the CI (#798)
+  * Update resourcenames in the controller.jsonnet to align it with the helm rbac rules (#838)
+  * fix: rbac permission (#828)
+  * Fix gosec warnings (#837)
+  * Cosign signature setup for release and docker image in CI (#810)
+  * Remove race condition in merge (#789)
+  * Gosec g304 (#795)
+  * Update the vmware-image-builder action with the latest release (#834)
+  * Add runtimeClassName as configurable value (#832)
+  * Fix make generate and set up temporally an specific code-generator version (#817)
+  * #791 Check if kubeseal encrypts using an expired certificate (#818)
+  * Bump prometheus/client_golang dependency to avoid CVE-2022-21698 and crypto dependency to avoid CVE-2022-27191 (#831)
+  * Chart: update registry and bump version (#825)
+  * Bump goreleaser to v1.7.0 (#826)
+
+-------------------------------------------------------------------
 Tue Apr 26 06:21:45 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.17.5:
