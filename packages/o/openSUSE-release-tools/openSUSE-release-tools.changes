@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 03 14:03:53 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220603.05ff2914:
+  * Run gocd/generate.sh
+  * Remove all Kubic tooling
+
+-------------------------------------------------------------------
 Tue May 31 14:29:06 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220531.bd5f1a56:
