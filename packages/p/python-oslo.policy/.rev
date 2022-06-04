@@ -314,4 +314,30 @@
   - setup.cfg: Replace dashes with underscores</comment>
     <requestid>939535</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>fc983f85d9f81d9a58cd7ba8abddcfce</srcmd5>
+    <version>3.12.1</version>
+    <time>1654378047</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.12.1
+  - Update python testing classifier
+  - Fix formatting of release list
+  - make deprecated rule examples explicit
+  - Update master for stable/yoga
+  - Refactor scope enforcement in the Enforcer class
+  - Map system_scope in creds dictionary
+  - Update master for stable/xena
+  - Enforce scope check always when rule has scope_types set
+  - Rules in policy directory files can be deleted.
+  - Add Python3 zed unit tests
+  - Increase timeout of the cross-neutron-tox-py38 job
+  - Add Python3 yoga unit tests
+  - Don't reset rules without overwriting
+  - Don't raise InvalidScope exception when do_raise=False
+  - Add scope_types attribute to the BaseCheck class
+  - Expand set_defaults() to set other config default value
+  - Clarify enforce_new_defaults help text
+  - Only pass exclude-deprecated when True</comment>
+    <requestid>980779</requestid>
+  </revision>
 </revisionlist>
