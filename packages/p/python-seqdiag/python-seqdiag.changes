@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jun  4 15:16:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.0:
+  * Drop python3.6 support
+  * Use funcparserlib-1.0.0a0 or newer to support new python versions
+  * Allow to write multiline string via triple quotes (""" ... """)
+  * Add "edge_label_margin" attribute to edges
+  * Fix bugs
+    - Fix #147: file existence disclosure using svg renderer
+    - Separator does not support both default_fontsize and default_textcolor
+
+-------------------------------------------------------------------
 Tue May 19 09:27:58 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

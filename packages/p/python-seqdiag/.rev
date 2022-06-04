@@ -56,4 +56,19 @@
     <comment></comment>
     <requestid>807289</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d204dabed65b5fc867552ec19e2f943e</srcmd5>
+    <version>3.0.0</version>
+    <time>1654378044</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.0:
+  * Drop python3.6 support
+  * Use funcparserlib-1.0.0a0 or newer to support new python versions
+  * Allow to write multiline string via triple quotes (&quot;&quot;&quot; ... &quot;&quot;&quot;)
+  * Add &quot;edge_label_margin&quot; attribute to edges
+  * Fix bugs
+    - Fix #147: file existence disclosure using svg renderer
+    - Separator does not support both default_fontsize and default_textcolor</comment>
+    <requestid>980777</requestid>
+  </revision>
 </revisionlist>
