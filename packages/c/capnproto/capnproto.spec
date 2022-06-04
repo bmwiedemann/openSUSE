@@ -16,9 +16,9 @@
 #
 
 
-%define _libver 0_9_1
+%define _libver 0_10_0
 Name:           capnproto
-Version:        0.9.1
+Version:        0.10.0
 Release:        0
 Summary:        A Data Serialization Format
 License:        MIT

@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Fri Jun  3 15:20:21 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.10.0
+  * Introduce a debugging aid to detect when KJ I/O objects are
+    held in the wrong places.
+  * Support OneOf for up to 50 variants
+  * Rename AnyPointer -> Capability
+  * Fix async-test.c++ unused function warnings
+  * Fix linux-musl build
+  * Work around getcontext() being broken on manylinux2014-x86.
+  * CI: alpine needs bash to run the tests
+  * Implement lazy Maybe<Own<T>>::orDefault
+  * Move countLines() inside if pragma
+  * Update outdated references to Sandstorm.
+  * Fix release tests
+  * Make threads move-constructible and move-assignable
+  * Allow changing an exception's description
+  * Fix bug in TreeIndex erase().
+  * Fix CapabilityServerSet<DynamicCapability>.
+  * Docs: correct target of parameter annotation
+  * allow defer to be cancelled
+  * Add SchemaParser::getAllLoaded() to get all parsed schemas.
+  * Add comment clarifying how to get unindexed headers
+  * Fix computeCurrentPath test with generic Unix test
+  * add popFront to ProducerConsumerQueue
+  * 1429: Make kj-test target build conditionally
+  * Check ERANGE error from getcwd
+  * Fix windows-sanity.h in NOGDI case, again.
+  * Fix typo in section about KJ
+  * Fix release tests
+  * Fix bug with queue wait time metrics in TwoPartyNetwork
+  * Make sure to clean up properly with a pipe hits an exception
+    to avoid inadvertently hanging
+  * Add dockcross/manylinux2014 to tests
+  * Check if SYS_renameat2 defined before using it
+  * CMake: don't overwrite tls-test.c++ COMPILE_DEFINITIONS,
+    append to it
+  * Assert that HttpHeaders instances know about indexed ids
+  * Disable the coroutine immediately-ready optimization before
+    the first suspension
+  * Add support for musl
+  * Build fails with -O0 on Ubuntu 20.04
+  * 0.10
+  * Fix bug where HttpServer listen loop would terminate early.
+  * Fix corruption in Tables with a TreeIndex after clear()
+  * HTTP concurrency limiter: Avoid unnecessary recursion
+  * Restore splice pump optimization
+  * Revert "Optimize fd-to-fd pumps on Linux using splice()."
+  * Fix typos
+  * Optimize fd-to-fd pumps on Linux using splice().
+  * Fix obscure FD leak... and disable Cygwin CI
+  * Update old repo url with new
+  * Introduce ConnectionReceiver implementation that aggregates
+    from multiple underlying receivers.
+  * kj-http: Fix memory leak caused by TCO breakage
+  * Lie about the true size of the fiber stack on M1 Macs
+  * Log exceptions when serving HTTP errors by default
+  * Fix tryTee() optimization when limits are used.
+  * Fix/refactor AsyncTee
+  * Tweak BTreeImpl::verifyNode().
+  * Replace boolean destroyed with magic integer live in Event.
+  * Work around old OpenSSL versions not being able to verify
+    Let's Encrypt certificate chains.
+  * Fix async-io-win32 for vs2019 & C++20
+  * Track source locations where Events were created in order to
+    provide extra debugging info.
+  * Fix an irrelevant bug in BTreeIndex.
+  * Fix Potential UAF caused by race in MembraneHook
+  * refcount from zero instead of one
+  * Add debugging to detect UAF of Event.
+  * Report next expected ordinal when duplicate ordinals are
+    found
+  * Correct documentation of Maybe regarding contruction from T*
+  * LocalResponse refcount is never used
+  * Move BUILD_TESTING to root
+  * Fix HttpServer::drain() data loss race condition.
+  * Try harder to work around windows.h defining min()/max() as
+    macros.
+  * Fixes the double includes in build when ZLIB is found.
+  * Improve TLS accept error handling
+  * Add KJ_UNWRAP_OR_RETURN macro.
+  * Make hashCode behave more consistently
+
+-------------------------------------------------------------------
 Tue Apr 26 08:44:58 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Employ shared lib packaging guideline and resolve this rpmlint
