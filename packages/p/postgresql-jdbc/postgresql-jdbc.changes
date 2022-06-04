@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun  3 10:34:36 UTC 2022 - Michael Calmer <mc@suse.com>
+
+- Address arbitrary File Write Vulnerability CVE-2022-26520
+  (bsc#1197356)
+  * Add: CVE-2022-26520.patch
+
+-------------------------------------------------------------------
 Thu Mar  3 16:01:03 UTC 2022 - Michael Calmer <mc@suse.com>
 
 - Upgrade to upstream version 42.2.25
