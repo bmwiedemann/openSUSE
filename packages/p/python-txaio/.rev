@@ -104,4 +104,17 @@
     attempt to tame the new pip dep resolver madness.</comment>
     <requestid>876089</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2bc73464de9a968b1d3bb523d70bccc7</srcmd5>
+    <version>22.2.1</version>
+    <time>1654378043</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 22.2.1:
+  * fix: cancel handling in python 3.8/3.9. (#175)
+  * fix: gracefully fail if coroutine called with wrong args (#176)
+  * fix: eliminate redundant dep. on mock (#170)
+  * fix: doc note that twisted supports native coroutines (#172)
+- remove-mock.patch: upstream</comment>
+    <requestid>980776</requestid>
+  </revision>
 </revisionlist>
