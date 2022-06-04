@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun  4 12:43:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.5:
+  * Use PyEval_GetLocals for getting locals in Py3.10 and up. 
+  * Fix cp->coroutines becomes NULL when head is removed 
+  * Remove pypistats dw count
+
+-------------------------------------------------------------------
 Sat Oct 16 19:39:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.3.3:

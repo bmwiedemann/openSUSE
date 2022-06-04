@@ -1,7 +1,7 @@
 #
 # spec file for package python-yappi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-yappi
-Version:        1.3.3
+Version:        1.3.5
 Release:        0
 Summary:        Yet Another Python Profiler
 License:        MIT
