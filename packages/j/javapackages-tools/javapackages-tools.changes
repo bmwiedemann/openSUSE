@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun  3 10:11:21 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0004-Remove-dependency-on-Six-compatibility-library.patch
+    + remove dependency on python-six for newer distributions
+
+-------------------------------------------------------------------
 Fri Apr 29 10:21:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Added patches:

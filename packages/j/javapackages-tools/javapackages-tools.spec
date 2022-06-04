@@ -49,6 +49,7 @@ Patch2:         suse-no-epoch.patch
 Patch3:         0001-Let-maven_depmap.py-generate-metadata-with-dependenc.patch
 Patch4:         0002-Do-not-try-to-construct-POM-from-maven-coordinate-st.patch
 Patch5:         0003-Fix-tests-after-the-recent-maven_depmap.py-changes.patch
+Patch6:         0004-Remove-dependency-on-Six-compatibility-library.patch
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  perl
@@ -122,7 +123,9 @@ allows artifact resolution using XMvn resolver.
 Summary:        Module for handling various files for Java packaging
 Group:          Development/Languages/Java
 Requires:       python-lxml
+%if 0%{?suse_version} > 1320
 Requires:       python-six
+%endif
 
 %description -n python-javapackages
 Module for handling, querying and manipulating of various files for Java
@@ -134,9 +137,11 @@ packaging in Linux distributions
 Summary:        Module for handling various files for Java packaging
 Group:          Development/Languages/Java
 Requires:       python3-lxml
-Requires:       python3-six
 Obsoletes:      python-javapackages < %{version}-%{release}
 Provides:       python-javapackages = %{version}-%{release}
+%if 0%{?suse_version} > 1320
+Requires:       python3-six
+%endif
 
 %description -n python3-javapackages
 Module for handling, querying and manipulating of various files for Java
@@ -156,7 +161,15 @@ This package provides non-essential macros and scripts to support Java packaging
 
 %prep
 %setup -q -n javapackages-%{version}
-%autopatch -p1
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%if 0%{?suse_version} >= 1320
+%patch6 -p1
+%endif
 
 # The usr/lib is hardcoded in configuration files too
 new_dir=$(echo %{_libdir} | sed 's#/##')
