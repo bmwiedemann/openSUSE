@@ -19,14 +19,14 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           fortio
-Version:        1.32.2
+Version:        1.32.3
 Release:        0
 Summary:        Load testing library, command line tool, advanced echo server and web UI
 License:        Apache-2.0
 URL:            https://github.com/fortio/fortio
 Source:         fortio-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.17
+BuildRequires:  go >= 1.18
 
 %description
 Fortio (Φορτίο) started as, and is, Istio's load testing tool and now graduated to be its own project.
