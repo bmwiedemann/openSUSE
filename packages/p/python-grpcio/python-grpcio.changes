@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun  4 14:52:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.46.3:
+  * backport: xds: use federation env var to guard new-style resource name parsing
+  * This release contains refinements, improvements, and bug fixes. 
+
+-------------------------------------------------------------------
 Fri May  6 17:37:43 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.46.0:

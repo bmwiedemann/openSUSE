@@ -153,4 +153,14 @@
     <comment></comment>
     <requestid>975744</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fc261ec2ffd340c4396eca835b3ac2bf</srcmd5>
+    <version>1.46.3</version>
+    <time>1654378045</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.46.3:
+  * backport: xds: use federation env var to guard new-style resource name parsing
+  * This release contains refinements, improvements, and bug fixes.</comment>
+    <requestid>980774</requestid>
+  </revision>
 </revisionlist>
