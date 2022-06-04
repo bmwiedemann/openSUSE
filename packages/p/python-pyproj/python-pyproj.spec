@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyproj
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python36 1
 %{?!python_module:%define python_module() python3-%{**}}
 Name:           python-pyproj
-Version:        3.3.0
+Version:        3.3.1
 Release:        0
 Summary:        Python interface to PROJ library
 License:        SUSE-Public-Domain AND X11

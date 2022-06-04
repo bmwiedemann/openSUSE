@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri May  6 06:52:52 UTC 2022 - Libor Pechacek <lpechacek@suse.com>
+
+- Update to 3.3.1
+  * DOC: minor fix to crs doc-strings by @bjlittle in #1004
+  * BUG: Correct type annotation for AreaofUse.bounds by
+    @Kirill888 in #1013
+  * BUG: crs.py: remove @AbstractMethod decorator by @hemberger
+    in #1018
+  * BUG: Reorder deps in show_versions for setuptools issue by
+    @snowman2 in #1019
+  * BUG: get_data_dir support for conda Windows enviroments by
+    @snowman2 in #1030
+  * ENH: warn when export of CRS returns None by @martinfleis
+    in #1037
+  * BUG: Complete database stub file with query_utm_crs_info()
+    signature by @orontee in #1047
+  * ENH: Added support for int-like strings and numpy dtypes by
+    @iboates in #1049
+  * BUG: Warn when CRS cannot be converted to PROJ or PROJ JSON
+    by @snowman2 in #1054
+  * ENH: Added support to pickle Transformer by @snowman2
+    in #1060
+
+-------------------------------------------------------------------
 Thu Nov 18 10:44:14 UTC 2021 - Libor Pechacek <lpechacek@suse.com>
 
 - Update to 3.3.0
