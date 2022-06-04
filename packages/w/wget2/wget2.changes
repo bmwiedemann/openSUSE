@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Jun  4 07:20:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.1:
+  * Fix escaping space in query part
+  * Set EXIT_STATUS_NETWORK on error for the last try
+  * Fix -k/--convert-links fragment
+  * Fix escapng URLs with -k/--convert-links
+  * Fix false reporting of a PSL error
+  * Fix --directory-prefix with --content-disposition
+  * Allow spaces and \ escaping in passwords in .netrc
+  * Fix download abortion on some versions of Windows
+  * Fix --unlink behavior
+  * Fix deflate decompression when server omits the header
+  * WolfSSL: Fix buffer overflow in SHA512 hashing
+  * WolfSSL: Fix memory leak
+  * Add support for unquoted HTML attribute values
+  * OpenSSL: Fix several OCSP issues
+  * Use keep-alive for HTTP/1.1 and higher as default
+  * Don't create core dumps on CTRL-c
+  * Fix replacing Content-Type: headers
+  * Fix NULL pointer read / segfault
+  * Fix several build issues
+  * Fix several documentation issues
+
+-------------------------------------------------------------------
 Sat Feb 26 18:27:29 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - add upstream signing key and validate source signature

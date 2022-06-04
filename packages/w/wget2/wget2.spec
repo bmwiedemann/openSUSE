@@ -17,7 +17,7 @@
 
 
 Name:           wget2
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        A Tool for Mirroring FTP and HTTP Servers
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
