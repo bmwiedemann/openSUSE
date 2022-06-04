@@ -197,4 +197,16 @@
   * Fix some portability issues in a few scripts.</comment>
     <requestid>962246</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d86b42f15cd4a23a53c33d6ec25a746e</srcmd5>
+    <version>3.0.4</version>
+    <time>1654378007</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.4:
+  * Eliminate some bogus calls to abort.
+  * Fix a typo in jas_safeui64_div (#323).
+  * Add some additional logging messages.
+  * Fix the source of a potential compiler warning (#321).</comment>
+    <requestid>980633</requestid>
+  </revision>
 </revisionlist>

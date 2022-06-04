@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun  3 12:41:24 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.0.4:
+  * Eliminate some bogus calls to abort.
+  * Fix a typo in jas_safeui64_div (#323).
+  * Add some additional logging messages.
+  * Fix the source of a potential compiler warning (#321).
+
+-------------------------------------------------------------------
 Wed Mar 16 16:59:29 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.0.3:
