@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Fri Jun  3 09:11:21 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.27.2
+  * api-change:``codeartifact``: Documentation updates for CodeArtifact
+  * api-change:``voice-id``: Added a new attribute ServerSideEncryptionUpdateDetails to Domain and
+    DomainSummary.
+  * api-change:``proton``: Add new "Components" API to enable users to Create, Delete and Update AWS
+    Proton components.
+  * api-change:``connect``: This release adds the following features: 1) New APIs to manage (create,
+    list, update) task template resources, 2) Updates to startTaskContact API to support task
+    templates, and 3) new TransferContact API to programmatically transfer in-progress tasks via a
+    contact flow.
+  * api-change:``application-insights``: Provide Account Level onboarding support through CFN/CLI
+  * api-change:``kendra``: Amazon Kendra now provides a data source connector for GitHub. For more
+    information, see https://docs.aws.amazon.com/kendra/latest/dg/data-source-github.html
+- from version 1.27.1
+  * api-change:``backup-gateway``: Adds GetGateway and UpdateGatewaySoftwareNow API and adds
+    hypervisor name to UpdateHypervisor API
+  * api-change:``forecast``: Added Format field to Import and Export APIs in Amazon Forecast. Added
+    TimeSeriesSelector to Create Forecast API.
+  * api-change:``chime-sdk-meetings``: Adds support for centrally controlling each participant's
+    ability to send and receive audio, video and screen share within a WebRTC session.  Attendee
+    capabilities can be specified when the attendee is created and updated during the session with the
+    new BatchUpdateAttendeeCapabilitiesExcept API.
+  * api-change:``route53``: Add new APIs to support Route 53 IP Based Routing
+- from version 1.27.0
+  * api-change:``iotsitewise``: This release adds the following new optional field to the IoT
+    SiteWise asset resource: assetDescription.
+  * api-change:``lookoutmetrics``: Adding backtest mode to detectors using the Cloudwatch data source.
+  * api-change:``transcribe``: Amazon Transcribe now supports automatic language identification for
+    multi-lingual audio in batch mode.
+  * feature:Python: Dropped support for Python 3.6
+  * api-change:``cognito-idp``: Amazon Cognito now supports IP Address propagation for all
+    unauthenticated APIs (e.g. SignUp, ForgotPassword).
+  * api-change:``drs``: Changed existing APIs and added new APIs to accommodate using multiple AWS
+    accounts with AWS Elastic Disaster Recovery.
+  * api-change:``sagemaker``: Amazon SageMaker Notebook Instances now support Jupyter Lab 3.
+- from version 1.26.10
+  * api-change:``sagemaker``: Amazon SageMaker Notebook Instances now allows configuration of
+    Instance Metadata Service version and Amazon SageMaker Studio now supports G5 instance types.
+  * api-change:``appflow``: Adding the following features/changes: Parquet output that preserves
+    typing from the source connector, Failed executions threshold before deactivation for scheduled
+    flows, increasing max size of access and refresh token from 2048 to 4096
+  * api-change:``datasync``: AWS DataSync now supports TLS encryption in transit, file system
+    policies and access points for EFS locations.
+  * api-change:``emr-serverless``: This release adds support for Amazon EMR Serverless, a serverless
+    runtime environment that simplifies running analytics applications using the latest open source
+    frameworks such as Apache Spark and Apache Hive.
+- from version 1.26.9
+  * api-change:``lightsail``: Amazon Lightsail now supports the ability to configure a Lightsail
+    Container Service to pull images from Amazon ECR private repositories in your account.
+  * api-change:``emr-serverless``: This release adds support for Amazon EMR Serverless, a serverless
+    runtime environment that simplifies running analytics applications using the latest open source
+    frameworks such as Apache Spark and Apache Hive.
+  * api-change:``ec2``: C7g instances, powered by the latest generation AWS Graviton3 processors,
+    provide the best price performance in Amazon EC2 for compute-intensive workloads.
+  * api-change:``forecast``: Introduced a new field in Auto Predictor as Time Alignment Boundary. It
+    helps in aligning the timestamps generated during Forecast exports
+- from version 1.26.8
+  * api-change:``secretsmanager``: Documentation updates for Secrets Manager
+  * api-change:``fsx``: This release adds root squash support to FSx for Lustre to restrict root
+    level access from clients by mapping root users to a less-privileged user/group with limited
+    permissions.
+  * api-change:``lookoutmetrics``: Adding AthenaSourceConfig for MetricSet APIs to support Athena as
+    a data source.
+  * api-change:``voice-id``: VoiceID will now automatically expire Speakers if they haven't been
+    accessed for Enrollment, Re-enrollment or Successful Auth for three years. The Speaker APIs now
+    return a "LastAccessedAt" time for Speakers, and the EvaluateSession API returns "SPEAKER_EXPIRED"
+    Auth Decision for EXPIRED Speakers.
+  * api-change:``cloudformation``: Add a new parameter statusReason to DescribeStackSetOperation
+    output for additional details
+  * api-change:``apigateway``: Documentation updates for Amazon API Gateway
+  * api-change:``apprunner``: Documentation-only update added for CodeConfiguration.
+  * api-change:``sagemaker``: Amazon SageMaker Autopilot adds support for manually selecting features
+    from the input dataset using the CreateAutoMLJob API.
+- from version 1.26.7
+  * api-change:``mediaconvert``: AWS Elemental MediaConvert SDK has added support for rules that
+    constrain Automatic-ABR rendition selection when generating ABR package ladders.
+  * api-change:``cognito-idp``: Amazon Cognito now supports requiring attribute verification (ex.
+    email and phone number) before update.
+  * api-change:``networkmanager``: This release adds Multi Account API support for a TGW Global
+    Network, to enable and disable AWSServiceAccess with AwsOrganizations for Network Manager service
+    and dependency CloudFormation StackSets service.
+  * api-change:``ivschat``: Doc-only update. For MessageReviewHandler structure, added timeout period
+    in the description of the fallbackResult field
+  * api-change:``ec2``: Stop Protection feature enables customers to protect their instances from
+    accidental stop actions.
+- from version 1.26.6
+  * api-change:``elasticache``: Added support for encryption in transit for Memcached clusters.
+    Customers can now launch Memcached cluster with encryption in transit enabled when using Memcached
+    version 1.6.12 or later.
+  * api-change:``forecast``: New APIs for Monitor that help you understand how your predictors
+    perform over time.
+  * api-change:``personalize``: Adding modelMetrics as part of DescribeRecommender API response for
+    Personalize.
+- from version 1.26.5
+  * api-change:``comprehend``: Comprehend releases 14 new entity types for DetectPiiEntities and
+    ContainsPiiEntities APIs.
+  * api-change:``logs``: Doc-only update to publish the new valid values for log retention
+
+-------------------------------------------------------------------
 Fri May 20 09:40:11 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.26.4 (bsc#1199716)
