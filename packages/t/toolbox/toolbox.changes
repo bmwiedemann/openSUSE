@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 03 11:13:15 UTC 2022 - kukuk@suse.com
+
+- Update to version 2.3+git20220603.bbeda2e:
+  * Allow to choose runtime and try to retain the user's groups
+  * (Try to) Avoid problems when packages touching bind mounts are upgraded
+  * Try to make sure that (some) foreign distro images (kind of) work as toolboxes
+  * Do not stop a toolbox with something running inside
+  * Exit if neither podman or docker are usable
+  * Support passing just the name of the container to create and enter command
+  * Fix cleanup logic and make toolbox start a little less verbose
+  * Always pull when creating a new toolbox
+  * Add a "more sandboxing" mode
+
+-------------------------------------------------------------------
 Mon Feb 21 13:16:41 UTC 2022 - jsrain@suse.com
 
 - adjusted the patch to the toolbox container in registry

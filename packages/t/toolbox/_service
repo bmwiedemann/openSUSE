@@ -2,7 +2,7 @@
   <service name="tar_scm" mode="disabled">
     <param name="version">2.3</param>
     <param name="versionformat">2.3+git%cd.%h</param>
-    <param name="url">git://github.com/kubic-project/microos-toolbox.git</param>
+    <param name="url">https://github.com/openSUSE/microos-toolbox.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
   </service>

@@ -207,4 +207,21 @@
     <comment></comment>
     <requestid>962737</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5f4b8ac4b315cf1cb26b7d23d179ce77</srcmd5>
+    <version>2.3+git20220603.bbeda2e</version>
+    <time>1654378006</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3+git20220603.bbeda2e:
+  * Allow to choose runtime and try to retain the user's groups
+  * (Try to) Avoid problems when packages touching bind mounts are upgraded
+  * Try to make sure that (some) foreign distro images (kind of) work as toolboxes
+  * Do not stop a toolbox with something running inside
+  * Exit if neither podman or docker are usable
+  * Support passing just the name of the container to create and enter command
+  * Fix cleanup logic and make toolbox start a little less verbose
+  * Always pull when creating a new toolbox
+  * Add a &quot;more sandboxing&quot; mode</comment>
+    <requestid>980625</requestid>
+  </revision>
 </revisionlist>
