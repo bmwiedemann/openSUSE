@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun 04 18:54:41 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.14:
+  * telemetry: Fix flaky run ID
+  * endpoint: switch from dagger.io to dagger.cloud
+  * feat(universe): add experimental kustomization (#2531)
+  * Improve Secrets docs (#2541)
+  * build(deps): bump gopkg.in/yaml.v3 from 3.0.0 to 3.0.1 (#2534)
+  * Default user to "root:root" rather than "root".
+  * build(deps-dev): bump cypress-localstorage-commands in /website
+  * bugfix: add image.config.workdir support to docker.#Copy
+
+-------------------------------------------------------------------
 Wed Jun 01 11:12:11 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.2.13:
