@@ -21,7 +21,7 @@
 %define sover   0
 %define typelib typelib-1_0-AyatanaIdo3-0_4
 Name:           ayatana-ido
-Version:        0.9.0
+Version:        0.9.2
 Release:        0
 Summary:        Ayatana Indicator Display Objects
 License:        GPL-3.0-only AND LGPL-3.0-only AND LGPL-2.1-only
@@ -29,8 +29,6 @@ Group:          System/GUI/Other
 URL:            https://github.com/AyatanaIndicators/ayatana-ido
 Source:         https://github.com/AyatanaIndicators/ayatana-ido/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM ayatana-ido-0.9.0-libm.patch -- Link with libm to fix build.
-Patch0:         ayatana-ido-0.9.0-libm.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -107,6 +105,6 @@ This package contains the development files for Ido.
 %{_libdir}/pkgconfig/%{soname}.pc
 %{_datadir}/gir-1.0/AyatanaIdo3-0.4.gir
 %dir %{_datadir}/vala/vapi/
-%{_datadir}/vala/vapi/AyatanaIdo3-0.4.vapi
+%{_datadir}/vala/vapi/libayatana-ido3-0.4.vapi
 
 %changelog

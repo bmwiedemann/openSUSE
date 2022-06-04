@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 03 21:50:15 UTC 2022 - Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+
+- Update to version 0.9.2:
+  * src/CMakeLists.txt: link libm for expf, pow and sinf.
+  * vala: The name of the vapi should match the pkg-config name.
+- Drop ayatana-ido-0.9.0-libm.patch. Applied upstream.
+- Adjust to .vapi file renaming by upstream (AyatanaIdo3-0.4.vapi ->
+  libayatana-ido3-0.4.vapi.
+
+-------------------------------------------------------------------
 Wed Nov 24 20:55:20 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.9.0:
