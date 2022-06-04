@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 04 18:59:38 UTC 2022 - kastl@b1-systems.de
+
+- BuildRequire go1.18
+- Update to version 1.32.3:
+  * golang 1.18.3, go get -u + keep latest yaml + pin github actions + ... (#585)
+
+-------------------------------------------------------------------
 Mon May 30 14:32:03 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.32.2:
