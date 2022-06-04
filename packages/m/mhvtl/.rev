@@ -137,4 +137,12 @@ updates from Base:System/mhvtl to Factory.</comment>
     <comment></comment>
     <requestid>947492</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7d5acc64aa1596b39a43b253d7be45e5</srcmd5>
+    <version>1.70_release+862.561d4d5b473f</version>
+    <time>1654378033</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980731</requestid>
+  </revision>
 </revisionlist>

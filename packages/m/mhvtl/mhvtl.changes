@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Jun 03 16:46:44 UTC 2022 - lduncan@suse.com
+
+- Update to version 1.70_release+862.561d4d5b473f, to fix a build
+  issue (include of genhd.h fails, since the include file is
+  gone now):
+  * Standardise using -m <barcode>
+  * kernel/config.sh: use $KDIR for the kernel build directory
+  * Add include guard to generated config.h
+  * kernel: Re-work compat symbols detection
+  * vtlcart: Replace calls to creat() with calls to open()
+  * mhvtl.spec: Bump version to 1.7
+  * systemd device config: touch up error logging
+  * systemd device config: Dummy-spit if we can't find the config file
+  * CodeQL
+  * SEND_DIAGNOSTICS: Check for valid MAM structure size and CRC sanity checks
+  * Makefile: Fix path to mhvtl-utils.spec
+  * etc/Makefile: run bash scripts using bash, not sh
+  * device-conf-generator: Drop path qualifier from comment
+  * Makefile: add new file to 'tar' target missed in previous commit
+  * Makefile infrastructure: fix passing variables
+  * Makefile: Correctly pass top-level variables
+  * Build process was failing if not following a clean
+  * LTO media: Set Encryption capable bit for LTO6, 7 & 8 media
+  * Fix issue with too many bytes returned on short block read
+  * Add script to check CRC32C & RS-CRC
+  * Handle systemd directory paths correctly.
+  * Handle our queue command correctly
+  * Add new preload_tape to git ignore
+  * Remove duplicate def of systemd generator dir.
+  * Handle sysfs_emit correctly
+  * Make preload_tape a link to dump_tape
+  * Silence compiler complaints about string too long
+  This removed these patches (no longer needed):
+  * mhvtl-fix-systemd-generator-dir.patch
+  * mhvtl-handle-systemd-location-correctly-for-generator.patch
+  * mhvtl-kernel-module-fix-queuecommand-arg-change.patch
+  * mhvtl-kernel-module-fix-sysfs_emit-decl.patch
+  And added (not yet upstream):
+  * mhvtl-fix-removal-of-genhd-h.patch
+
+-------------------------------------------------------------------
 Tue Jan 18 18:58:52 UTC 2022 - lduncan@suse.com
 
 - Update to version 1.64_release+835.6beb0aa01437, to fix factory

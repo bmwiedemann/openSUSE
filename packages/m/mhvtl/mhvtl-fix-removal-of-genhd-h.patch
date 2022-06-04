@@ -1,0 +1,23 @@
+diff --git a/kernel/mhvtl.c b/kernel/mhvtl.c
+index 099c781b1f52..461c79f429a9 100644
+--- a/kernel/mhvtl.c
++++ b/kernel/mhvtl.c
+@@ -50,7 +50,6 @@
+ #include <linux/timer.h>
+ #include <linux/types.h>
+ #include <linux/string.h>
+-#include <linux/genhd.h>
+ #include <linux/fs.h>
+ #include <linux/init.h>
+ #include <linux/moduleparam.h>
+@@ -74,6 +73,10 @@
+ #include <linux/smp_lock.h>
+ #endif
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 18, 0)
++#include <linux/genhd.h>
++#endif
++
+ #ifndef _SCSI_H
+ #define _SCSI_H
+ 

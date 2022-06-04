@@ -26,7 +26,7 @@
 
 Name:           mhvtl
 URL:            http://sites.google.com/site/linuxvtl2/
-Version:        1.64_release+835.6beb0aa01437
+Version:        1.70_release+862.561d4d5b473f
 Release:        0
 Requires:       mhvtl-kmp
 Requires:       module-init-tools
@@ -45,10 +45,7 @@ License:        GPL-2.0-only
 Group:          System/Daemons
 Source:         %{name}-%{version}.tar.xz
 Source2:        %{name}.preamble
-Patch1:         %{name}-kernel-module-fix-queuecommand-arg-change.patch
-Patch2:         %{name}-kernel-module-fix-sysfs_emit-decl.patch
-Patch3:         %{name}-handle-systemd-location-correctly-for-generator.patch
-Patch4:         %{name}-fix-systemd-generator-dir.patch
+Patch1:         %{name}-fix-removal-of-genhd-h.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_ordering}
 
@@ -82,9 +79,6 @@ through to user-space daemons.
 %prep
 %setup -qn %{name}-%{version}
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 %build
 make MHVTL_HOME_PATH=%{mhvtl_home_dir} VERSION=%{version} \
@@ -92,6 +86,7 @@ make MHVTL_HOME_PATH=%{mhvtl_home_dir} VERSION=%{version} \
 	SYSTEMD_SERVICE_DIR=%{_unitdir}
 %if 0%{buildkmp} == 1
 for flavor in %flavors_to_build; do
+	make -C kernel config.h
 	rm -rf obj/$flavor
 	mkdir -p obj/$flavor
 	cp -a kernel/* obj/$flavor
