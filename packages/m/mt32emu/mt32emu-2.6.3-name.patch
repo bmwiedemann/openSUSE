@@ -1,6 +1,6 @@
 diff -Pdpru munt-libmt32emu_2_6_3.orig/mt32emu_qt/CMakeLists.txt munt-libmt32emu_2_6_3/mt32emu_qt/CMakeLists.txt
 --- munt-libmt32emu_2_6_3.orig/mt32emu_qt/CMakeLists.txt	2022-04-16 10:42:21.000000000 +0300
-+++ munt-libmt32emu_2_6_3/mt32emu_qt/CMakeLists.txt	2022-06-01 19:08:30.816268115 +0300
++++ munt-libmt32emu_2_6_3/mt32emu_qt/CMakeLists.txt	2022-06-03 22:05:49.598983991 +0300
 @@ -369,8 +369,8 @@ install(TARGETS
  
  if(UNIX AND NOT APPLE)
@@ -8,13 +8,13 @@ diff -Pdpru munt-libmt32emu_2_6_3.orig/mt32emu_qt/CMakeLists.txt munt-libmt32emu
 -  foreach(${PROJECT_NAME}_ICON_RESOLUTION 16x16;24x24;32x32;48x48;64x64;72x72;96x96;128x128;256x256)
 -    install(FILES res/icons/${${PROJECT_NAME}_ICON_RESOLUTION}/munt.png DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/${${PROJECT_NAME}_ICON_RESOLUTION}/apps)
 +  foreach(${PROJECT_NAME}_ICON_RESOLUTION 16x16;32x32;48x48;64x64;128x128)
-+    install(FILES res/icons/${${PROJECT_NAME}_ICON_RESOLUTION}/munt.png DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/${${PROJECT_NAME}_ICON_RESOLUTION}/apps/mt32emu.png)
++    install(FILES res/icons/${${PROJECT_NAME}_ICON_RESOLUTION}/munt.png DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/${${PROJECT_NAME}_ICON_RESOLUTION}/apps RENAME mt32emu.png)
      # These directories pre-exist on a freedesktop-conforming system and cause conflict if not excluded
      list(APPEND CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST_ADDITION ${CMAKE_INSTALL_FULL_DATAROOTDIR}/icons/hicolor/${${PROJECT_NAME}_ICON_RESOLUTION})
      list(APPEND CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST_ADDITION ${CMAKE_INSTALL_FULL_DATAROOTDIR}/icons/hicolor/${${PROJECT_NAME}_ICON_RESOLUTION}/apps)
 diff -Pdpru munt-libmt32emu_2_6_3.orig/mt32emu_qt/res/mt32emu-qt.desktop munt-libmt32emu_2_6_3/mt32emu_qt/res/mt32emu-qt.desktop
 --- munt-libmt32emu_2_6_3.orig/mt32emu_qt/res/mt32emu-qt.desktop	2022-04-16 10:42:21.000000000 +0300
-+++ munt-libmt32emu_2_6_3/mt32emu_qt/res/mt32emu-qt.desktop	2022-06-01 19:11:11.322483864 +0300
++++ munt-libmt32emu_2_6_3/mt32emu_qt/res/mt32emu-qt.desktop	2022-06-03 21:53:17.383478345 +0300
 @@ -1,10 +1,9 @@
  [Desktop Entry]
  Name=MT-32 Emulator

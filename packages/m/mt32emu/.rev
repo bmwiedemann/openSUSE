@@ -147,4 +147,12 @@ Need for dosbox and aplaymidi for play MT-32 sound.</comment>
     a simple way to restore factory defaults of the application settings of some types.</comment>
     <requestid>980387</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>dc6727a0252bbc45343cfea1425274d7</srcmd5>
+    <version>2.6.3</version>
+    <time>1654378027</time>
+    <user>dimstar_suse</user>
+    <comment>- Changed mt32emu-2.6.3-name.patch for fix icons name.</comment>
+    <requestid>980672</requestid>
+  </revision>
 </revisionlist>
