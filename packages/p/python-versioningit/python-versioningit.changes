@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Fri Jun  3 20:14:18 UTC 2022 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Build using pyproject, not setup.py
+- Use libalternatives on Tumbleweed.
+- BuildRequire git and mercurial to properly run tests
+
+-------------------------------------------------------------------
+Wed Jun  1 16:57:04 UTC 2022 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Build and run tests with pytest
+
+-------------------------------------------------------------------
+Fri May  6 20:31:53 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Initial version from upstream via py2pack.
+  * requires shim 'setup.py'.
