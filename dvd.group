@@ -5270,7 +5270,9 @@
     <package name="libz1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libz3-4_8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libzstd1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="lttng-modules-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="mcelog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="mhvtl-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="mokutil" supportstatus="unsupported"/> <!-- reason: dvd:mokutil -->
     <package name="mozc" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="mozc-gui-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

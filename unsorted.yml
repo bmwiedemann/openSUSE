@@ -8592,11 +8592,8 @@ unsorted:
   - kubevirt-virt-launcher: [x86_64] 
   - kubevirt-virt-operator: [x86_64] 
   - kubevirt-virtctl: [x86_64] 
-  - kubic-haproxycfg: [x86_64] 
   - kubic-locale-archive 
   - kubic-pause 
-  - kubicctl: [x86_64] 
-  - kubicd: [x86_64] 
   - kubie 
   - kubie-bash-completion 
   - kubie-fish-completion 
@@ -10204,7 +10201,7 @@ unsorted:
   - libcapi20-devel 
   - libcapi20-devel-32bit: [x86_64] 
   - libcapi20-mod_misdn 
-  - libcapnp-0_9_1 
+  - libcapnp-0_10_0 
   - libcapnp-devel 
   - libcapstone-devel 
   - libcapstone4 
@@ -15441,7 +15438,7 @@ unsorted:
   - ltrace 
   - ltrace-32bit: [x86_64] 
   - lttng-modules 
-  - lttng-modules-kmp-default 
+  - lttng-modules-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - lttng-modules-kmp-pae: [i586] 
   - lttng-tools 
   - lttng-tools-devel 
@@ -16287,7 +16284,7 @@ unsorted:
   - mgp 
   - mhash-devel 
   - mhvtl 
-  - mhvtl-kmp-default 
+  - mhvtl-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - mhvtl-kmp-pae: [i586] 
   - miao-fonts 
   - micro-editor 
@@ -24854,6 +24851,7 @@ unsorted:
   - python310-subprocrunner 
   - python310-subscene-api 
   - python310-subst 
+  - python310-suds 
   - python310-suds-community 
   - python310-suntime 
   - python310-sure 
@@ -25036,6 +25034,7 @@ unsorted:
   - python310-venusian-doc 
   - python310-verboselogs 
   - python310-versioneer 
+  - python310-versioningit 
   - python310-versiontag 
   - python310-versiontools 
   - python310-veusz: [x86_64] 
@@ -27898,6 +27897,7 @@ unsorted:
   - python38-subprocrunner 
   - python38-subscene-api 
   - python38-subst 
+  - python38-suds 
   - python38-suds-community 
   - python38-sunpy 
   - python38-suntime 
@@ -28067,6 +28067,7 @@ unsorted:
   - python38-venusian-doc 
   - python38-verboselogs 
   - python38-versioneer 
+  - python38-versioningit 
   - python38-versiontag 
   - python38-versiontools 
   - python38-veusz: [x86_64] 
@@ -31125,6 +31126,7 @@ unsorted:
   - python39-subprocrunner 
   - python39-subscene-api 
   - python39-subst 
+  - python39-suds 
   - python39-suds-community 
   - python39-sunpy 
   - python39-suntime 
@@ -31309,6 +31311,7 @@ unsorted:
   - python39-venusian-doc 
   - python39-verboselogs 
   - python39-versioneer 
+  - python39-versioningit 
   - python39-versiontag 
   - python39-versiontools 
   - python39-veusz: [x86_64] 
