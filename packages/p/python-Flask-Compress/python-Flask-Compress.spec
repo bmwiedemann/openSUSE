@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask-Compress
-Version:        1.11
+Version:        1.12
 Release:        0
 Summary:        Compress responses in Flask apps with gzip
 License:        MIT

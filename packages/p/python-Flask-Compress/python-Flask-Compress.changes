@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun  5 04:37:02 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 1.12:
+  * Disable compression when response is streamed, see #31
+
+-------------------------------------------------------------------
 Sat Mar  5 18:00:09 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
