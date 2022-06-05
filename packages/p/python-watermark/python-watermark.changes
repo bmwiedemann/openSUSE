@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jun  5 13:41:11 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * increase python version to 3.8
+
+- update to version 2.3.1:
+  * Upper limit on importlib-metadata caused trouble installing on
+    Python 3.7. Instead pin to minimum version with Python 3.8
+    functionality according to
+    https://github.com/python/importlib_metadata#compatibility (#86,
+    via contribution by James Myatt)
+
+-------------------------------------------------------------------
 Sat Feb 19 03:39:20 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:

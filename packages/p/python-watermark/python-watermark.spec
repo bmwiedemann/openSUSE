@@ -19,14 +19,14 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-watermark
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        IPython magic function to psystem information
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/rasbt/watermark
 Source:         https://files.pythonhosted.org/packages/source/w/watermark/watermark-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
