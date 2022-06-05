@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun  4 23:51:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- move to suds 
+
+-------------------------------------------------------------------
 Tue Apr 19 12:08:40 UTC 2022 - pgajdos@suse.com
 
 - python-mock is not required for build

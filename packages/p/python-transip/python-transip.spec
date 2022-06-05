@@ -29,13 +29,13 @@ BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module suds-jurko}
+BuildRequires:  %{python_module suds}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography
 Requires:       python-requests
 Requires:       python-setuptools
-Requires:       python-suds-jurko
+Requires:       python-suds
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch

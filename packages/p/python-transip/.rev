@@ -56,4 +56,12 @@
     <comment></comment>
     <requestid>970844</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>03086de9b401bcb0b54ec59724b0664d</srcmd5>
+    <version>2.1.2</version>
+    <time>1654457293</time>
+    <user>dimstar_suse</user>
+    <comment>- move to suds</comment>
+    <requestid>980816</requestid>
+  </revision>
 </revisionlist>
