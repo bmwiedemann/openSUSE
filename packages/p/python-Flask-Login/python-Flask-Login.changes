@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun  5 04:37:42 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.6.1:
+  * Only preserve subdomain or host view args in unauthorized redirect
+    #663
+  * The new utility function login_remembered returns True if the
+    current login is remembered across sessions. #654
+  * Fix side effect potentially executing view twice for same
+    request. #666
+  * Clarify usage of FlaskLoginClient test client in docs. #668
+
+-------------------------------------------------------------------
 Sat Apr  9 02:28:36 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:

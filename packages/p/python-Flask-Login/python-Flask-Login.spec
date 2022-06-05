@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without  test
 Name:           python-Flask-Login
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        User session management for Flask
 License:        MIT
