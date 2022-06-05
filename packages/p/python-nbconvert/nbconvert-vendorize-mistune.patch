@@ -1,25 +1,41 @@
-Index: nbconvert-6.3.0/nbconvert/filters/markdown_mistune.py
+Index: nbconvert-6.5.0/nbconvert/filters/markdown_mistune.py
 ===================================================================
---- nbconvert-6.3.0.orig/nbconvert/filters/markdown_mistune.py
-+++ nbconvert-6.3.0/nbconvert/filters/markdown_mistune.py
-@@ -23,7 +23,7 @@ except ImportError:
+--- nbconvert-6.5.0.orig/nbconvert/filters/markdown_mistune.py
++++ nbconvert-6.5.0/nbconvert/filters/markdown_mistune.py
+@@ -21,7 +21,9 @@ except ImportError:
+     from cgi import escape as html_escape
  
  import bs4
- 
 -import mistune
++
 +from nbconvert.vendor import mistune
- 
++
  from pygments import highlight
+ from pygments.formatters import HtmlFormatter
  from pygments.lexers import get_lexer_by_name
-Index: nbconvert-6.3.0/setup.py
+Index: nbconvert-6.5.0/setup.py
 ===================================================================
---- nbconvert-6.3.0.orig/setup.py
-+++ nbconvert-6.3.0/setup.py
-@@ -214,7 +214,6 @@ setup_args = dict(
- )
+--- nbconvert-6.5.0.orig/setup.py
++++ nbconvert-6.5.0/setup.py
+@@ -245,7 +245,6 @@ setup_args["install_requires"] = [
+     "jupyter_core>=4.7",
+     "jupyterlab_pygments",
+     "MarkupSafe>=2.0",
+-    "mistune>=0.8.1,<2",
+     "nbclient>=0.5.0",
+     "nbformat>=5.1",
+     "packaging",
+Index: nbconvert-6.5.0/nbconvert/vendor/mistune.py
+===================================================================
+--- nbconvert-6.5.0.orig/nbconvert/vendor/mistune.py
++++ nbconvert-6.5.0/nbconvert/vendor/mistune.py
+@@ -432,7 +432,8 @@ class BlockLexer(object):
+         for i, line in enumerate(cells):
+             for c, cell in enumerate(line):
+                 # de-escape any pipe inside the cell here
+-                cells[i][c] = re.sub('\\\\\|', '|', cell)
++                # https://github.com/lepture/mistune/pull/188
++                cells[i][c] = re.sub(r'\\\|', '|', cell)
  
- setup_args['install_requires'] = [
--    'mistune>=0.8.1,<2',
-     'jinja2>=2.4',
-     'pygments>=2.4.1',
-     'jupyterlab_pygments',
+         return cells
+ 

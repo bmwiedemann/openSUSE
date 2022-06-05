@@ -1,0 +1,11 @@
+Index: nbconvert-6.5.0/pyproject.toml
+===================================================================
+--- nbconvert-6.5.0.orig/pyproject.toml
++++ nbconvert-6.5.0/pyproject.toml
+@@ -21,5 +21,5 @@ filterwarnings = [
+     "ignore:unclosed <socket.socket:ResourceWarning",
+     "ignore:unclosed event loop:ResourceWarning",
+     "ignore:There is no current event loop:DeprecationWarning",
+-
++    "ignore:Support for bleach <5 will be removed in a future version of nbconvert:DeprecationWarning",
+ ]

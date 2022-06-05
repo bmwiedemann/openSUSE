@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jun  5 11:29:55 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.5.0
+  * Drop dependency on testpath. by @anntzer in #1723
+  * Apply Autoformatters by @blink1073 in #1746
+  * support bleach 5, add packaging and tinycss2 dependencies by
+    @bollwyvl in #1755
+  * update cli example by @leahecole in #1753
+- Refresh nbconvert-vendorize-mistune.patch, include
+  gh#lepture/mistune#188 for successful import
+- Add ignore-bleach-deprecation-test.patch because the test suite
+  fails with a DeprecationWarning for bleach <5 otherwise.
+
+-------------------------------------------------------------------
 Sat Mar 12 04:50:52 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
