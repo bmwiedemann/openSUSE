@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Jun  5 16:20:08 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update the requirements, add note about test suite
+
+-------------------------------------------------------------------
+Tue May 24 09:40:22 UTC 2022 - andy great <andythe_great@pm.me>
+
+- Update to version 5.3.1.
+  * New features
+    * Add a toolbar to the Variable Explorer viewer for dictionaries,
+      lists and sets to easily access the functionality available
+      through its context menu.
+    * Add navigation with extra buttons in the editor for mouses
+      that support them.
+    * Add --no-web-widgets command line option to disable
+      plugins/widgets that use Qt Webengine widgets.
+  * Important fixes
+    * Fix several important bugs related to the Autoformat on save
+      functionality.
+    * Fix options related to the Working directory entry in Preferences.
+    * Make code completion widget entries accessible to screen readers.
+  * New API features
+    * Add get_command_line_options to SpyderPluginV2 so that
+      plugins can access the command line options passed to Spyder.
+    * The current interpreter used by all Spyder plugins can be
+      accessed now through the executable option of the Main \
+      interpreter plugin.
+  * Full changelog here,
+    * https://github.com/spyder-ide/spyder/releases/tag/v5.3.1
+
+-------------------------------------------------------------------
 Sat Apr  9 20:39:42 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 5.3.0

@@ -16,10 +16,12 @@
 #
 
 
-# boo#1190482
+# The tests fail randomly with segfaults on the obs servers.
+# You MUST test locally with `osc build --with test` and checkout the app in
+# your live system before submitting an update.
 %bcond_with     test
 Name:           spyder
-Version:        5.3.0
+Version:        5.3.1
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -35,7 +37,7 @@ Requires:       %{name}-lang
 Requires:       cookiecutter >= 1.6.0
 Requires:       python3-Pygments >= 2.0
 Requires:       python3-QtAwesome >= 1.0.2
-Requires:       python3-QtPy >= 2.0.1
+Requires:       python3-QtPy >= 2.1.0
 Requires:       python3-Rtree >= 0.9.7
 Requires:       python3-Sphinx >= 0.6.6
 Requires:       python3-atomicwrites >= 1.2.0
@@ -64,12 +66,12 @@ Requires:       python3-pylint >= 2.5.0
 Requires:       python3-pyls-spyder >= 0.4.0
 Requires:       python3-python-lsp-black >= 1.2.0
 Requires:       python3-pyxdg >= 0.26
-Requires:       python3-pyzmq >= 17
+Requires:       python3-pyzmq >= 22.1.0
 Requires:       python3-qstylizer >= 0.1.10
 Requires:       python3-qt5
 Requires:       python3-qtwebengine-qt5
 Requires:       python3-rope >= 0.10.5
-Requires:       python3-setuptools >= 39.0.0
+Requires:       python3-setuptools >= 49.6.0
 Requires:       python3-textdistance >= 4.2.0
 Requires:       python3-three-merge >= 0.1.1
 Requires:       python3-watchdog
@@ -112,7 +114,7 @@ BuildRequires:  python3-Cython >= 0.21
 BuildRequires:  python3-Pillow
 BuildRequires:  python3-Pygments >= 2.0
 BuildRequires:  python3-QtAwesome >= 1.0.2
-BuildRequires:  python3-QtPy >= 2.0.1
+BuildRequires:  python3-QtPy >= 2.1.0
 BuildRequires:  python3-Rtree >= 0.9.7
 BuildRequires:  python3-Sphinx >= 0.6.6
 BuildRequires:  python3-atomicwrites >= 1.2.0
@@ -154,7 +156,7 @@ BuildRequires:  python3-pytest-qt
 BuildRequires:  python3-pytest-timeout
 BuildRequires:  python3-python-lsp-black >= 1.2.0
 BuildRequires:  python3-pyxdg >= 0.26
-BuildRequires:  python3-pyzmq >= 17
+BuildRequires:  python3-pyzmq >= 22.1.0
 BuildRequires:  python3-qstylizer >= 0.1.10
 BuildRequires:  python3-qt5
 BuildRequires:  python3-qtwebengine-qt5
@@ -170,7 +172,7 @@ BuildRequires:  xvfb-run
 BuildRequires:  (python3-QDarkStyle >= 3.0.2 with python3-QDarkStyle < 3.1.0)
 BuildRequires:  (python3-python-lsp-server >= 1.4.1 with python3-python-lsp-server < 1.5)
 BuildRequires:  (python3-qtconsole >= 5.3.0 with python3-qtconsole < 5.4.0)
-BuildRequires:  (python3-spyder-kernels >= 2.3.0 with python3-spyder-kernels < 2.4.0)
+BuildRequires:  (python3-spyder-kernels >= 2.3.1 with python3-spyder-kernels < 2.4.0)
 %endif
 
 %description
@@ -387,11 +389,18 @@ donttest+=" or test_handle_exception"
 
 donttest+=" or known_leak"
 
+# segfault in obs, successful in live system
+donttest+=" or test_module_completion"
+
+# cannot start spyder kernel
+donttest+=" or test_kernel_crash"
+
 export donttest
 # Can't use pytest-xvfb because the tests leave widgets open and trigger https://github.com/The-Compiler/pytest-xvfb/issues/11
 # create test script so that we can use one Xvfb with both test suites:
 echo '
 #!/bin/bash
+set -e
 testcmd=(python3 runtests.py -m "not no_xvfb" --timeout 1800 -ra -k "not (${donttest:4})")
 "${testcmd[@]}"
 "${testcmd[@]}" --run-slow

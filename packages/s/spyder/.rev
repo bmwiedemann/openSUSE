@@ -496,4 +496,35 @@ rename the package from spyder3 to spyder.
     called on closeEvent (forwarded request 968081 from bnavigator)</comment>
     <requestid>968082</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>d4411b5a619cdd3fe1edc67158888579</srcmd5>
+    <version>5.3.1</version>
+    <time>1654457322</time>
+    <user>dimstar_suse</user>
+    <comment>- Update the requirements, add note about test suite
+
+- Update to version 5.3.1.
+  * New features
+    * Add a toolbar to the Variable Explorer viewer for dictionaries,
+      lists and sets to easily access the functionality available
+      through its context menu.
+    * Add navigation with extra buttons in the editor for mouses
+      that support them.
+    * Add --no-web-widgets command line option to disable
+      plugins/widgets that use Qt Webengine widgets.
+  * Important fixes
+    * Fix several important bugs related to the Autoformat on save
+      functionality.
+    * Fix options related to the Working directory entry in Preferences.
+    * Make code completion widget entries accessible to screen readers.
+  * New API features
+    * Add get_command_line_options to SpyderPluginV2 so that
+      plugins can access the command line options passed to Spyder.
+    * The current interpreter used by all Spyder plugins can be
+      accessed now through the executable option of the Main \
+      interpreter plugin.
+  * Full changelog here,
+    * https://github.com/spyder-ide/spyder/releases/tag/v5.3.1 (forwarded request 980901 from bnavigator)</comment>
+    <requestid>980902</requestid>
+  </revision>
 </revisionlist>
