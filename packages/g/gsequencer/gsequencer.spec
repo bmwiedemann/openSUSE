@@ -22,18 +22,18 @@
 # activated with --with run_functional_tests command line switch.
 %bcond_with run_functional_tests
 Name:           gsequencer
-Version:        4.0.8
+Version:        4.2.0
 Release:        0
 Summary:        Audio processing engine
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND GFDL-1.3-only
 Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://nongnu.org/gsequencer
-Source0:        https://download.savannah.gnu.org/releases/gsequencer/4.0.x/%{name}-%{version}.tar.gz
+Source0:        https://download.savannah.gnu.org/releases/gsequencer/4.2.x/%{name}-%{version}.tar.gz
 # improve glib-2.0 compatibility to version 2.54
 Patch1:         gsequencer.1-improved-glib-compatibility.patch
 BuildRequires:  gcc-c++
 BuildRequires:  cunit-devel
-BuildRequires:  dblatex
+BuildRequires:  fop
 BuildRequires:  texlive-latex
 BuildRequires:  texlive-fancybox
 BuildRequires:  texlive-collection-fontsrecommended
@@ -98,13 +98,13 @@ export LIBAGS_SERVER_CPPFLAGS='-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-secur
 #export LIBAGS_VST3_LIBS="-L/usr/%{_lib}/vst3sdk"
 export LIBAGS_AUDIO_CPPFLAGS='-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security'
 export LIBAGS_GUI_CPPFLAGS='-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security'
-export LIBGSEQUENCER_CPPFLAGS='-DAGS_CSS_FILENAME=\"'%{_datadir}'/gsequencer/styles/ags.css\" -DAGS_ANIMATION_FILENAME=\"'%{_datadir}'/gsequencer/images/gsequencer-800x450.png\" -DAGS_LOGO_FILENAME=\"'%{_datadir}'/gsequencer/images/ags.png\" -DAGS_LICENSE_FILENAME=\"'%{_datadir}'/licenses/gsequencer/COPYING\" -DAGS_ONLINE_HELP_PDF_FILENAME=\"'%{_docdir}'/gsequencer/pdf/user-manual.pdf\" -DAGS_REDUCE_RT_EVENTS=1 -DAGS_LIBRARY_SUFFIX=\".so\" -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security'
+export LIBGSEQUENCER_CPPFLAGS='-DAGS_CSS_FILENAME=\"'%{_datadir}'/gsequencer/styles/ags.css\" -DAGS_ANIMATION_FILENAME=\"'%{_datadir}'/gsequencer/images/gsequencer-800x450.png\" -DAGS_LOGO_FILENAME=\"'%{_datadir}'/gsequencer/images/ags.png\" -DAGS_LICENSE_FILENAME=\"'%{_datadir}'/licenses/gsequencer/COPYING\" -DAGS_ONLINE_HELP_A4_PDF_FILENAME=\"'%{_docdir}'/gsequencer/pdf/user-manual-a4.pdf\" -DAGS_ONLINE_HELP_LETTER_PDF_FILENAME=\"'%{_docdir}'/gsequencer/pdf/user-manual-letter.pdf\" -DAGS_REDUCE_RT_EVENTS=1 -DAGS_LIBRARY_SUFFIX=\".so\" -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security'
 #NOTE:JK: no --enable-vst3 passed to configure
 %configure \
 %if %{with run_functional_tests}
     --enable-run-functional-tests \
 %endif
-    HTMLHELP_XSL="/usr/share/xml/docbook/stylesheet/nwalsh/current/htmlhelp/htmlhelp.xsl" --disable-upstream-gtk-doc --enable-introspection --disable-oss --enable-gtk-doc --enable-gtk-doc-html
+    FO_XSL=/usr/share/xml/docbook/stylesheet/nwalsh/current/fo/docbook.xsl HTMLHELP_XSL="/usr/share/xml/docbook/stylesheet/nwalsh/current/htmlhelp/htmlhelp.xsl" --disable-upstream-gtk-doc --enable-introspection --disable-oss --enable-gtk-doc --enable-gtk-doc-html
 
 %make_build all
 %make_build html
@@ -138,7 +138,8 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/gsequencer.desktop
 %{_datadir}/gsequencer/
 %{_datadir}/xml/gsequencer/
 %{_docdir}/gsequencer/
-%{_docdir}/gsequencer/pdf/user-manual.pdf
+%{_docdir}/gsequencer/pdf/user-manual-a4.pdf
+%{_docdir}/gsequencer/pdf/user-manual-letter.pdf
 %{_datadir}/applications/gsequencer.desktop
 %{_datadir}/icons/hicolor/*/apps/gsequencer.png
 %{_datadir}/icons/hicolor/scalable/apps/gsequencer.svg
