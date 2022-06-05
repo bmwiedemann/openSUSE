@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jun 04 23:15:57 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 20220408.101518.b908e2dd^git328:
+  * x11: more hacks to deal with missing CONFIGURE_NOTIFY
+  * x11: subscribe to Present extension configure notify events
+  * background: round down fractional pixels when tiling
+  * avoid invalidating line seqno when applying hyperlinks
+  * box model: allow for eased colors to be set
+  * gui: speculative fix for #2068
+  * manual fuzzing with cat /dev/random
+  * x11: trace expose events. invalidate geometry in some cases
+  * x11: use focus change as a signal that the size may have changed
+  * gui: move ease/interpolation into shader
+
+-------------------------------------------------------------------
 Wed Jun  1 06:12:16 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Fix versioning format
