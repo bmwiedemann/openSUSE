@@ -1,54 +1,41 @@
-diff --git a/djmoney/__init__.py b/djmoney/__init__.py
-index d483c54..3358017 100644
---- a/djmoney/__init__.py
-+++ b/djmoney/__init__.py
-@@ -1,2 +1,2 @@
--__version__ = "2.1.1"
-+__version__ = "3.0.0"
- default_app_config = "djmoney.apps.MoneyConfig"
-diff --git a/djmoney/models/fields.py b/djmoney/models/fields.py
-index 3bfd7dd..582eec2 100644
+From d29ff6f488c9d0478d29dd32a77e2fe0e76e4fb6 Mon Sep 17 00:00:00 2001
+From: Anton Agestam <git@antonagestam.se>
+Date: Mon, 19 Apr 2021 17:21:12 +0200
+Subject: [PATCH 01/13] Drop support for legacy versions
+
+- Drop support for Django 1.11, 2.1 and 3.0.
+- Drop support for Python 3.5.
+---
+ .github/workflows/main.yml                  |    2 
+ djmoney/models/fields.py                    |    2 
+ djmoney/money.py                            |   52 +---------------------
+ djmoney/settings.py                         |   15 +-----
+ docs/changes.rst                            |    7 +++
+ pytest.ini                                  |    3 -
+ setup.py                                    |    3 -
+ tests/conftest.py                           |    8 ---
+ tests/contrib/test_django_rest_framework.py |    3 -
+ tests/settings.py                           |   16 -------
+ tests/test_admin.py                         |   19 --------
+ tests/test_models.py                        |   54 +++++++++++++++--------
+ tests/test_money.py                         |   64 ++++------------------------
+ tests/test_tags.py                          |   35 ---------------
+ tests/testapp/models.py                     |    2 
+ 15 files changed, 65 insertions(+), 220 deletions(-)
+
+--- a/.github/workflows/main.yml
++++ b/.github/workflows/main.yml
+@@ -13,7 +13,7 @@ jobs:
+ 
+       - uses: actions/setup-python@v2
+         with:
+-          python-version: 3.7
++          python-version: 3.9
+ 
+       - run: pip install pre-commit
+       - run: pre-commit run --all-files
 --- a/djmoney/models/fields.py
 +++ b/djmoney/models/fields.py
-@@ -104,14 +104,6 @@ class MoneyFieldProxy:
-         return data[self.field.name]
- 
-     def __set__(self, obj, value):  # noqa
--        if (
--            value is not None
--            and self.field._currency_field.null
--            and not isinstance(value, MONEY_CLASSES)
--            and not obj.__dict__[self.currency_field_name]
--        ):
--            # For nullable fields we need either both NULL amount and currency or both NOT NULL
--            raise ValueError("Missing currency value")
-         if isinstance(value, BaseExpression):
-             if isinstance(value, Value):
-                 value = self.prepare_value(obj, value.value)
-@@ -120,6 +112,14 @@ class MoneyFieldProxy:
-                 prepare_expression(value)
-         else:
-             value = self.prepare_value(obj, value)
-+        if (
-+            value is not None
-+            and self.field._currency_field.null
-+            and not isinstance(value, MONEY_CLASSES)
-+            and not obj.__dict__[self.currency_field_name]
-+        ):
-+            # For nullable fields we need either both NULL amount and currency or both NOT NULL
-+            raise ValueError("Missing currency value")
-         obj.__dict__[self.field.name] = value
- 
-     def prepare_value(self, obj, value):
-@@ -178,7 +178,7 @@ class MoneyField(models.DecimalField):
-         currency_max_length=CURRENCY_CODE_MAX_LENGTH,
-         currency_field_name=None,
-         money_descriptor_class=MoneyFieldProxy,
--        **kwargs
-+        **kwargs,
-     ):
-         nullable = kwargs.get("null", False)
-         default = self.setup_default(default, default_currency, nullable)
 @@ -213,7 +213,7 @@ class MoneyField(models.DecimalField):
          elif isinstance(default, OldMoney):
              default = Money(default.amount, default.currency)
@@ -58,17 +45,6 @@ index 3bfd7dd..582eec2 100644
          return default
  
      def to_python(self, value):
-@@ -261,7 +261,7 @@ class MoneyField(models.DecimalField):
-             default=self.default_currency,
-             editable=False,
-             choices=self.currency_choices,
--            null=self.default_currency is None,
-+            null=self.null,
-         )
-         currency_field.creation_counter = self.creation_counter - 1
-         currency_field_name = get_currency_field_name(name, self)
-diff --git a/djmoney/money.py b/djmoney/money.py
-index f11ca38..95a154d 100644
 --- a/djmoney/money.py
 +++ b/djmoney/money.py
 @@ -1,5 +1,3 @@
@@ -77,7 +53,7 @@ index f11ca38..95a154d 100644
  from types import MappingProxyType
  
  from django.conf import settings
-@@ -10,20 +8,13 @@ from django.utils.html import avoid_wrapping, conditional_escape
+@@ -10,20 +8,13 @@ from django.utils.html import avoid_wrap
  from django.utils.safestring import mark_safe
  
  import moneyed.l10n
@@ -128,16 +104,9 @@ index f11ca38..95a154d 100644
      def _copy_attributes(self, source, target):
          """Copy attributes to the new `Money` instance.
  
-@@ -111,20 +86,7 @@ class Money(DefaultMoney):
-         # https://github.com/py-moneyed/py-moneyed/blob/c518745dd9d7902781409daec1a05699799474dd/moneyed/classes.py#L217-L218
-         raise TypeError("Cannot divide non-Money by a Money instance.")
+@@ -118,13 +93,6 @@ class Money(DefaultMoney):
+         return self.use_l10n
  
--    @property
--    def is_localized(self):
--        if self.use_l10n is None:
--            return settings.USE_L10N
--        return self.use_l10n
--
      def __str__(self):
 -        if self._decimal_places_display is not None or IS_DECIMAL_PLACES_DISPLAY_SET:
 -            kwargs = {"money": self, "decimal_places": self.decimal_places_display}
@@ -149,7 +118,7 @@ index f11ca38..95a154d 100644
          format_options = {
              **MONEY_FORMAT,
              **(self.format_options or {}),
-@@ -175,22 +137,10 @@ class Money(DefaultMoney):
+@@ -175,22 +143,10 @@ class Money(DefaultMoney):
      __rmul__ = __mul__
  
  
@@ -174,8 +143,6 @@ index f11ca38..95a154d 100644
  
  
  def maybe_convert(value, currency):
-diff --git a/djmoney/settings.py b/djmoney/settings.py
-index 3509ed2..4aa7e85 100644
 --- a/djmoney/settings.py
 +++ b/djmoney/settings.py
 @@ -1,15 +1,14 @@
@@ -216,32 +183,22 @@ index 3509ed2..4aa7e85 100644
  
  OPEN_EXCHANGE_RATES_URL = getattr(settings, "OPEN_EXCHANGE_RATES_URL", "https://openexchangerates.org/api/latest.json")
  OPEN_EXCHANGE_RATES_APP_ID = getattr(settings, "OPEN_EXCHANGE_RATES_APP_ID", None)
-diff --git a/docs/changes.rst b/docs/changes.rst
-index 5eab8fd..4b4ee01 100644
 --- a/docs/changes.rst
 +++ b/docs/changes.rst
-@@ -4,11 +4,19 @@ Changelog
- `Unreleased`_ - TBA
- -------------------
+@@ -70,6 +70,13 @@ Changelog
+ - ``Money.decimal_places_display`` will be removed in django-money 3.0.
+ - ``CURRENCY_DECIMAL_PLACES_DISPLAY`` will be removed in django-money 3.0.
  
-+**Changed**
-+
++- Drop support for Django 1.11, 2.1 and 3.0.
++- Drop support for Python 3.5.
++- Add support for Django 3.2.
 +- Update py-moneyed to 2.0.
-+
- **Fixed**
- 
- - Improve the internal check for whether a currency is provided `#657`_ (`davidszotten`_)
- - Fix test suite for django main branch `#657`_ (`davidszotten`_)
- 
-+**Removed**
 +- Remove the deprecated ``Money.decimal_places_display`` property and argument.
 +- Remove the deprecated ``CURRENCY_DECIMAL_PLACES_DISPLAY`` setting.
 +
- `2.1.1`_ - 2022-01-02
+ `1.3.1`_ - 2021-02-04
  ---------------------
  
-diff --git a/pytest.ini b/pytest.ini
-index 46fd704..dccdd07 100644
 --- a/pytest.ini
 +++ b/pytest.ini
 @@ -2,6 +2,3 @@
@@ -251,21 +208,25 @@ index 46fd704..dccdd07 100644
 -    ignore:This module and all its contents is deprecated in favour of new moneyed.l10n.format_money\.:DeprecationWarning
 -    ignore:`Money\.decimal_places_display` is deprecated and will be removed in django-money 3\.0\.:DeprecationWarning
 -    ignore:`CURRENCY_DECIMAL_PLACES_DISPLAY` is deprecated and will be removed in django-money 3\.0\.:DeprecationWarning
-diff --git a/setup.py b/setup.py
-index c6c1fb6..623b713 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -66,7 +66,7 @@ setup(
+@@ -29,7 +29,6 @@ class PyTest(TestCommand):
+ test_requirements = [
+     "pytest>=3.1.0",
+     "pytest-django",
+-    "pytest-pythonpath",
+     "pytest-cov",
+     "mixer",
+ ]
+@@ -66,7 +65,7 @@ setup(
      maintainer_email="greg@reinbach.com",
      license="BSD",
      packages=find_packages(include=["djmoney", "djmoney.*"]),
 -    install_requires=["setuptools", "Django>=2.2", "py-moneyed>=1.2,<2.0"],
-+    install_requires=["setuptools", "Django>=2.2", "py-moneyed>=2.0"],
++    install_requires=["setuptools", "Django>=2.2", "py-moneyed>=2.0,<3.0"],
      python_requires=">=3.6",
      platforms=["Any"],
      keywords=["django", "py-money", "money"],
-diff --git a/tests/conftest.py b/tests/conftest.py
-index 666e969..7f8baee 100644
 --- a/tests/conftest.py
 +++ b/tests/conftest.py
 @@ -1,5 +1,3 @@
@@ -284,21 +245,20 @@ index 666e969..7f8baee 100644
 -def legacy_formatting():
 -    with mock.patch("djmoney.money.IS_DECIMAL_PLACES_DISPLAY_SET", True):
 -        yield
-diff --git a/tests/contrib/test_django_rest_framework.py b/tests/contrib/test_django_rest_framework.py
-index aef52bd..e373910 100644
 --- a/tests/contrib/test_django_rest_framework.py
 +++ b/tests/contrib/test_django_rest_framework.py
-@@ -67,7 +67,7 @@ class TestMoneyField:
-             (NullMoneyFieldModel, "field", {"default_currency": "EUR"}, 10, Money(10, "EUR")),
+@@ -64,10 +64,9 @@ class TestMoneyField:
+             (NullMoneyFieldModel, "field", {"default_currency": "EUR", "allow_null": True}, None, None),
+             (NullMoneyFieldModel, "field", None, Money(10, "USD"), Money(10, "USD")),
+             (NullMoneyFieldModel, "field", {"default_currency": "EUR"}, Money(10, "USD"), Money(10, "USD")),
+-            (NullMoneyFieldModel, "field", {"default_currency": "EUR"}, 10, Money(10, "EUR")),
++            (ModelWithVanillaMoneyField, "money", {"default_currency": "EUR"}, 10, Money(10, "EUR")),
              (ModelWithVanillaMoneyField, "money", None, Money(10, "USD"), Money(10, "USD")),
              (ModelWithVanillaMoneyField, "money", {"default_currency": "EUR"}, Money(10, "USD"), Money(10, "USD")),
 -            (ModelWithVanillaMoneyField, "money", None, 10, Money(10, "XYZ")),
-+            #  (ModelWithVanillaMoneyField, "money", None, 10, Money(10, "XYZ")),  # TODO
              (ModelWithVanillaMoneyField, "money", {"default_currency": "EUR"}, 10, Money(10, "EUR")),
          ),
      )
-diff --git a/tests/settings.py b/tests/settings.py
-index de5ce53..eb6a7db 100644
 --- a/tests/settings.py
 +++ b/tests/settings.py
 @@ -1,8 +1,6 @@
@@ -331,17 +291,12 @@ index de5ce53..eb6a7db 100644
  moneyed.add_currency("USDT", "000", "Tether", None)
  
  OPEN_EXCHANGE_RATES_APP_ID = "test"
-diff --git a/tests/test_admin.py b/tests/test_admin.py
-index 068700b..5b952cb 100644
 --- a/tests/test_admin.py
 +++ b/tests/test_admin.py
-@@ -11,29 +11,11 @@ MONEY_FIELD = ModelWithVanillaMoneyField._meta.get_field("money")
- INTEGER_FIELD = ModelWithVanillaMoneyField._meta.get_field("integer")
- 
- 
--@pytest.mark.parametrize(
--    "value, expected",
--    (
+@@ -14,26 +14,7 @@ INTEGER_FIELD = ModelWithVanillaMoneyFie
+ @pytest.mark.parametrize(
+     "value, expected",
+     (
 -        (Money(10, "RUB"), "10.00 руб."),  # Issue 232
 -        (Money(1234), "1,234.00 XYZ"),  # Issue 220
 -        (Money(1000, "SAR"), "ر.س1,000.00"),  # Issue 196
@@ -357,29 +312,17 @@ index 068700b..5b952cb 100644
 -    assert admin_utils.display_for_field(value, MONEY_FIELD, "") == expected
 -
 -
- @pytest.mark.parametrize(
-     "value, expected",
-     (
+-@pytest.mark.parametrize(
+-    "value, expected",
+-    (
          (Money(10, "RUB"), "10,00\xa0RUB"),  # Issue 232
 -        (Money(1234), "1\xa0234,00\xa0XYZ"),  # Issue 220
-+        (Money(1234, "USD"), "1\xa0234,00\xa0US$"),  # Issue 220
          (Money(1000, "SAR"), "1\xa0000,00\xa0SAR"),  # Issue 196
          (Money(1000, "PLN"), "1\xa0000,00\xa0PLN"),  # Issue 102
          (Money("3.33", "EUR"), "3,33\xa0€"),  # Issue 90
-diff --git a/tests/test_models.py b/tests/test_models.py
-index 53def7c..c1ef0db 100644
 --- a/tests/test_models.py
 +++ b/tests/test_models.py
-@@ -39,6 +39,8 @@ from .testapp.models import (
-     ModelWithDefaultAsOldMoney,
-     ModelWithDefaultAsString,
-     ModelWithDefaultAsStringWithCurrency,
-+    ModelWithDefaultCurrencyOnly,
-+    ModelWithDefaultValueAndCurrency,
-     ModelWithNonMoneyField,
-     ModelWithNullableCurrency,
-     ModelWithSharedCurrency,
-@@ -60,8 +62,8 @@ class TestVanillaMoneyField:
+@@ -60,8 +60,8 @@ class TestVanillaMoneyField:
      @pytest.mark.parametrize(
          "model_class, kwargs, expected",
          (
@@ -390,34 +333,46 @@ index 53def7c..c1ef0db 100644
              (BaseModel, {}, Money(0, "USD")),
              (BaseModel, {"money": "111.2"}, Money("111.2", "USD")),
              (BaseModel, {"money": Money("123", "PLN")}, Money("123", "PLN")),
-@@ -116,7 +118,7 @@ class TestVanillaMoneyField:
+@@ -116,7 +116,6 @@ class TestVanillaMoneyField:
      @pytest.mark.parametrize(
          "model_class, other_value",
          (
 -            (ModelWithVanillaMoneyField, Money("100.0")),
-+            (ModelWithDefaultValueAndCurrency, Money("100.0", "USD")),
              (BaseModel, Money(0, "USD")),
              (ModelWithDefaultAsMoney, Money("0.01", "RUB")),
              (ModelWithDefaultAsFloat, OldMoney("12.05", "PLN")),
-@@ -151,7 +153,11 @@ class TestVanillaMoneyField:
+@@ -149,27 +148,35 @@ class TestVanillaMoneyField:
+             BaseModel.objects.create(money=value)
+ 
      @pytest.mark.parametrize("money_class", (Money, OldMoney))
-     @pytest.mark.parametrize("field_name", ("money", "second_money"))
-     def test_save_new_value(self, field_name, money_class):
+-    @pytest.mark.parametrize("field_name", ("money", "second_money"))
+-    def test_save_new_value(self, field_name, money_class):
 -        ModelWithVanillaMoneyField.objects.create(**{field_name: money_class("100.0")})
-+        kwargs = {
-+            "money": money_class("100.0", "USD"),
-+        }
-+        kwargs[field_name] = money_class("100.0", "USD")
-+        ModelWithVanillaMoneyField.objects.create(**kwargs)
++    def test_save_new_value_on_field_without_default(self, money_class):
++        ModelWithVanillaMoneyField.objects.create(money=money_class("100.0", "DKK"))
  
          # Try setting the value directly
          retrieved = ModelWithVanillaMoneyField.objects.get()
-@@ -162,14 +168,14 @@ class TestVanillaMoneyField:
-         assert getattr(retrieved, field_name) == Money(1, "DKK")
+-        setattr(retrieved, field_name, Money(1, "DKK"))
++        retrieved.money = Money(1, "DKK")
+         retrieved.save()
+         retrieved = ModelWithVanillaMoneyField.objects.get()
++        assert retrieved.money == Money(1, "DKK")
+ 
+-        assert getattr(retrieved, field_name) == Money(1, "DKK")
++    def test_save_new_value_on_field_with_default(self):
++        ModelWithDefaultAsMoney.objects.create()
++
++        # Try setting the value directly
++        retrieved = ModelWithDefaultAsMoney.objects.get()
++        retrieved.money = Money(1, "DKK")
++        retrieved.save()
++        retrieved = ModelWithDefaultAsMoney.objects.get()
++        assert retrieved.money == Money(1, "DKK")
  
      def test_rounding(self):
 -        money = Money("100.0623456781123219")
-+        money = Money("100.0623456781123219", "EUR")
++        money = Money("100.0623456781123219", "USD")
  
          instance = ModelWithVanillaMoneyField.objects.create(money=money)
          # TODO. Should instance.money be rounded too?
@@ -425,20 +380,20 @@ index 53def7c..c1ef0db 100644
          retrieved = ModelWithVanillaMoneyField.objects.get(pk=instance.pk)
  
 -        assert retrieved.money == Money("100.06")
-+        assert retrieved.money == Money("100.06", "EUR")
++        assert retrieved.money == Money("100.06", "USD")
  
      @pytest.fixture(params=[Money, OldMoney])
      def objects_setup(self, request):
-@@ -238,7 +244,7 @@ class TestVanillaMoneyField:
+@@ -238,7 +245,7 @@ class TestVanillaMoneyField:
          assert ModelWithTwoMoneyFields.objects.filter(**kwargs).count() == expected
  
      def test_exact_match(self):
 -        money = Money("100.0")
-+        money = Money("100.0", "EUR")
++        money = Money("100.0", "USD")
  
          instance = ModelWithVanillaMoneyField.objects.create(money=money)
          retrieved = ModelWithVanillaMoneyField.objects.get(money=money)
-@@ -251,9 +257,9 @@ class TestVanillaMoneyField:
+@@ -251,9 +258,9 @@ class TestVanillaMoneyField:
          ModelIssue300.objects.filter(money__created__gt=date)
  
      def test_range_search(self):
@@ -450,40 +405,51 @@ index 53def7c..c1ef0db 100644
          retrieved = ModelWithVanillaMoneyField.objects.get(money__gt=money)
  
          assert instance.pk == retrieved.pk
-@@ -307,9 +313,9 @@ class TestGetOrCreate:
+@@ -302,12 +309,19 @@ class TestVanillaMoneyField:
+         instance = NullMoneyFieldModel.objects.create()
+         assert instance.field is None
+ 
++    def test_currency_field_null_switch_not_triggered_from_default_currency(self):
++        # We want a sane default behaviour and simply declaring a `MoneyField(...)`
++        # without any default value args should create non nullable amount and currency
++        # fields
++        assert not ModelWithVanillaMoneyField._meta.get_field("money").null
++        assert not ModelWithVanillaMoneyField._meta.get_field("money_currency").null
++
+ 
+ class TestGetOrCreate:
      @pytest.mark.parametrize(
          "model, field_name, kwargs, currency",
          (
 -            (ModelWithVanillaMoneyField, "money", {"money_currency": "PLN"}, "PLN"),
--            (ModelWithVanillaMoneyField, "money", {"money": Money(0, "EUR")}, "EUR"),
--            (ModelWithVanillaMoneyField, "money", {"money": OldMoney(0, "EUR")}, "EUR"),
-+            (ModelWithDefaultValueAndCurrency, "money", {"money_currency": "PLN"}, "PLN"),
-+            (ModelWithDefaultValueAndCurrency, "money", {"money": Money(0, "EUR")}, "EUR"),
-+            (ModelWithDefaultValueAndCurrency, "money", {"money": OldMoney(0, "EUR")}, "EUR"),
++            (ModelWithDefaultAsInt, "money", {"money_currency": "PLN"}, "PLN"),
+             (ModelWithVanillaMoneyField, "money", {"money": Money(0, "EUR")}, "EUR"),
+             (ModelWithVanillaMoneyField, "money", {"money": OldMoney(0, "EUR")}, "EUR"),
              (ModelWithSharedCurrency, "first", {"first": 10, "second": 15, "currency": "CZK"}, "CZK"),
-         ),
-     )
-@@ -382,8 +388,8 @@ class TestNullableCurrency:
- 
-     def test_fails_with_nullable_but_no_default(self):
-         with pytest.raises(IntegrityError) as exc:
--            ModelWithTwoMoneyFields.objects.create()
--        assert str(exc.value) == "NOT NULL constraint failed: testapp_modelwithtwomoneyfields.amount1"
-+            ModelWithDefaultCurrencyOnly.objects.create()
-+        assert str(exc.value) == "NOT NULL constraint failed: testapp_modelwithdefaultcurrencyonly.money"
- 
-     def test_query_not_null(self):
-         money = Money(100, "EUR")
-@@ -527,7 +533,7 @@ class TestExpressions:
+@@ -527,9 +541,11 @@ class TestExpressions:
          assert ModelWithVanillaMoneyField.objects.get(integer=1).money == Money(0, "USD")
  
      def test_create_func(self):
 -        instance = ModelWithVanillaMoneyField.objects.create(money=Func(Value(-10), function="ABS"))
-+        instance = ModelWithDefaultValueAndCurrency.objects.create(money=Func(Value(-10), function="ABS"))
++        instance = ModelWithVanillaMoneyField.objects.create(
++            money=Func(Value(-10), function="ABS"), money_currency="USD"
++        )
          instance.refresh_from_db()
-         assert instance.money.amount == 10
+-        assert instance.money.amount == 10
++        assert instance.money == Money(10, "USD")
  
-@@ -560,7 +566,7 @@ def test_find_models_related_to_money_models():
+     @pytest.mark.parametrize(
+         "value, expected", ((None, None), (10, Money(10, "USD")), (Money(10, "EUR"), Money(10, "EUR")))
+@@ -541,7 +557,7 @@ class TestExpressions:
+ 
+     def test_value_create_invalid(self):
+         with pytest.raises(ValidationError):
+-            ModelWithVanillaMoneyField.objects.create(money=Value("string"))
++            ModelWithVanillaMoneyField.objects.create(money=Value("string"), money_currency="DKK")
+ 
+     def test_expressions_for_non_money_fields(self):
+         instance = ModelWithVanillaMoneyField.objects.create(money=Money(1, "USD"), integer=0)
+@@ -560,7 +576,7 @@ def test_find_models_related_to_money_mo
  def test_allow_expression_nodes_without_money():
      """Allow querying on expression nodes that are not Money"""
      desc = "hundred"
@@ -492,50 +458,25 @@ index 53def7c..c1ef0db 100644
      instance = ModelWithNonMoneyField.objects.filter(desc=F("desc")).get()
      assert instance.desc == desc
  
-@@ -787,17 +793,6 @@ def test_distinct_through_wrapper():
-     assert queryset.count() == 3
- 
- 
--def test_mixer_blend():
--    try:
--        from mixer.backend.django import mixer
--    except AttributeError:
--        pass  # mixer doesn't work with pypy
--    else:
+@@ -793,7 +809,7 @@ def test_mixer_blend():
+     except AttributeError:
+         pass  # mixer doesn't work with pypy
+     else:
 -        instance = mixer.blend(ModelWithTwoMoneyFields)
--        assert isinstance(instance.amount1, Money)
--        assert isinstance(instance.amount2, Money)
--
--
- @pytest.mark.parametrize(
-     ("attribute", "build_kwargs", "expected"),
-     [
-@@ -827,3 +822,13 @@ def test_deconstruct_includes(attribute, build_kwargs, expected):
-     new = MoneyField(*args, **kwargs)
-     assert getattr(new, attribute) == getattr(instance, attribute)
-     assert getattr(new, attribute) == expected
-+
-+
-+def test_mixer_blend():
-+    try:
-+        from mixer.backend.django import mixer
-+    except AttributeError:
-+        pass  # mixer doesn't work with pypy
-+    else:
-+        instance = mixer.blend(ModelWithDefaultCurrencyOnly)
-+        assert isinstance(instance.money, Money)
-diff --git a/tests/test_money.py b/tests/test_money.py
-index 9bca69c..789ac6d 100644
++        instance = mixer.blend(ModelWithTwoMoneyFields, amount1_currency="EUR", amount2_currency="USD")
+         assert isinstance(instance.amount1, Money)
+         assert isinstance(instance.amount2, Money)
+ 
 --- a/tests/test_money.py
 +++ b/tests/test_money.py
-@@ -9,24 +9,16 @@ def test_repr():
-     assert repr(Money("10.5", "USD")) == "Money('10.5', 'USD')"
+@@ -10,23 +10,19 @@ def test_repr():
  
  
--def test_legacy_repr():
+ def test_legacy_repr():
 -    assert repr(Money("10.5", "USD", decimal_places_display=2)) == "Money('10.5', 'USD')"
--
--
++    assert repr(Money("10.5", "USD")) == "Money('10.5', 'USD')"
+ 
+ 
  def test_html_safe():
      assert Money("10.5", "EUR").__html__() == "€10.50"
  
@@ -550,17 +491,14 @@ index 9bca69c..789ac6d 100644
              return "<script>"
  
 -    assert UnsafeMoney().__html__() == "&lt;script&gt;"
-+    assert UnsafeMoney(1, "EUR").__html__() == "&lt;script&gt;"
++    assert UnsafeMoney(100, "USD").__html__() == "&lt;script&gt;"
  
  
  def test_default_mul():
-@@ -43,18 +35,6 @@ def test_reverse_truediv_fails():
-         10 / Money(5, "USD")
- 
- 
--@pytest.mark.parametrize(
--    "locale, expected",
--    (
+@@ -46,18 +42,6 @@ def test_reverse_truediv_fails():
+ @pytest.mark.parametrize(
+     "locale, expected",
+     (
 -        ("pl", "PL_PL"),
 -        ("pl_PL", "pl_PL"),
 -    ),
@@ -570,31 +508,33 @@ index 9bca69c..789ac6d 100644
 -        assert get_current_locale(for_babel=False) == expected
 -
 -
- @pytest.mark.parametrize(
-     "locale, expected",
-     (
-@@ -82,17 +62,13 @@ def test_configurable_decimal_number():
+-@pytest.mark.parametrize(
+-    "locale, expected",
+-    (
+         ("pl", "pl"),
+         ("pl-pl", "pl_PL"),
+         ("sv", "sv"),
+@@ -82,17 +66,8 @@ def test_configurable_decimal_number():
      assert mny.decimal_places == 3
  
  
 -def test_localize_decimal_places_default():
-+def test_localize():
-     # use default decimal display places from settings
-     assert str(Money("10.543125", "USD")) == "$10.54"
- 
- 
+-    # use default decimal display places from settings
+-    assert str(Money("10.543125", "USD")) == "$10.54"
+-
+-
 -def test_localize_decimal_places_overwrite():
 -    assert str(Money("10.543125", "USD", decimal_places_display=4)) == "$10.5431"
 -
 -
 -def test_localize_decimal_places_both():
 -    assert str(Money("10.543125", "USD", decimal_places=5, decimal_places_display=1)) == "$10.5"
-+def test_localize_decimal_places():
++def test_localize_defaults_to_currency_decimal_places():
 +    assert str(Money("10.543125", "USD", decimal_places=5)) == "$10.54"
  
  
  def test_add_decimal_places():
-@@ -117,10 +93,10 @@ def test_add_decimal_places_zero():
+@@ -117,10 +92,10 @@ def test_add_decimal_places_zero():
          lambda a, d: a * 2,
          lambda a, d: 2 * a,
          lambda a, d: a / 5,
@@ -609,7 +549,7 @@ index 9bca69c..789ac6d 100644
          lambda a, d: -a,
          lambda a, d: +a,
          lambda a, d: abs(a),
-@@ -131,19 +107,9 @@ def test_add_decimal_places_zero():
+@@ -131,19 +106,9 @@ def test_add_decimal_places_zero():
  )
  def test_keep_decimal_places(operation, decimal_places):
      # Arithmetic operations should keep the `decimal_places` value
@@ -630,92 +570,50 @@ index 9bca69c..789ac6d 100644
  
  
  def test_sub_negative():
-@@ -156,56 +122,32 @@ def test_sub_negative():
- 
- 
- @pytest.mark.parametrize(
--    "decimal_places_display, decimal_places",
-+    "decimal_places",
-     [
--        [None, None],
--        [0, 0],
--        [1, 0],
--        [4, 0],
--        [0, 1],
--        [1, 1],
--        [4, 1],
--        [0, 4],
--        [1, 4],
--        [4, 4],
--        [None, 4],
--        [None, 1],
--        [None, 0],
--        [4, None],
--        [1, None],
--        [0, None],
-+        None,
-+        0,
-+        0,
-+        0,
-+        1,
-+        1,
-+        1,
-+        4,
-+        4,
-+        4,
-+        4,
-+        1,
-+        0,
-+        None,
-+        None,
-+        None,
+@@ -177,35 +142,28 @@ def test_sub_negative():
      ],
  )
--def test_proper_copy_of_attributes(decimal_places_display, decimal_places):
+ def test_proper_copy_of_attributes(decimal_places_display, decimal_places):
 -    one = Money(1, "EUR", decimal_places_display=decimal_places_display)
--
++    one = Money(1, "EUR")
+ 
 -    assert one._decimal_places_display is decimal_places_display
--    assert one.decimal_places == 2, "default value"
--
-+def test_proper_copy_of_attributes(decimal_places):
+     assert one.decimal_places == 2, "default value"
+ 
      two = Money(2, "EUR", decimal_places=decimal_places)
  
 -    assert two._decimal_places_display is None, "default value"
      assert two.decimal_places == decimal_places
  
--    result = Money(3, "EUR")
--    one._copy_attributes(two, result)
--
+     result = Money(3, "EUR")
+     one._copy_attributes(two, result)
+ 
 -    assert result._decimal_places_display == decimal_places_display
--    assert result.decimal_places == max(2, decimal_places) if decimal_places is not None else 2
--
--    result = Money(0, "EUR")
+     assert result.decimal_places == max(2, decimal_places) if decimal_places is not None else 2
+ 
+     result = Money(0, "EUR")
 -    one._copy_attributes(Money(1, "EUR", decimal_places_display=3), result)
 -
 -    assert result._decimal_places_display == max(3, decimal_places_display) if decimal_places_display is not None else 3
--
--    result = Money(0, "EUR")
--    one._copy_attributes(1, result)
--
++    one._copy_attributes(Money(1, "EUR"), result)
+ 
+     result = Money(0, "EUR")
+     one._copy_attributes(1, result)
+ 
 -    assert result._decimal_places_display == decimal_places_display
--    assert result.decimal_places == 2
--
+     assert result.decimal_places == 2
+ 
      result = Money(0, "EUR")
      two._copy_attributes(1, result)
  
 -    assert result._decimal_places_display is None
      assert result.decimal_places == decimal_places if decimal_places else 2
-diff --git a/tests/test_tags.py b/tests/test_tags.py
-index ee83ed2..ff05c57 100644
 --- a/tests/test_tags.py
 +++ b/tests/test_tags.py
-@@ -53,41 +53,6 @@ def assert_template(string, result, context=None):
-         assert render(string, context) == result
- 
- 
--@pytest.mark.parametrize(
--    "string, result, context",
--    (
+@@ -56,41 +56,6 @@ def assert_template(string, result, cont
+ @pytest.mark.parametrize(
+     "string, result, context",
+     (
 -        ('{% load djmoney %}{% money_localize "2.5" "PLN" as NEW_M %}{{NEW_M}}', "2,50 zł", {}),
 -        ('{% load djmoney %}{% money_localize "2.5" "PLN" %}', "2,50 zł", {}),
 -        ("{% load djmoney %}{% money_localize amount currency %}", "2,60 zł", {"amount": 2.6, "currency": "PLN"}),
@@ -748,32 +646,20 @@ index ee83ed2..ff05c57 100644
 -    assert_template(string, result, context)
 -
 -
- @pytest.mark.parametrize(
-     "string, result, context",
-     (
-diff --git a/tests/testapp/models.py b/tests/testapp/models.py
-index e9f22a1..bbe3b9a 100644
+-@pytest.mark.parametrize(
+-    "string, result, context",
+-    (
+         ('{% load djmoney %}{% money_localize "2.5" "PLN" as NEW_M %}{{NEW_M}}', "2,50\xa0zł", {}),
+         ('{% load djmoney %}{% money_localize "2.5" "PLN" %}', "2,50\xa0zł", {}),
+         ("{% load djmoney %}{% money_localize amount currency %}", "2,60\xa0zł", {"amount": 2.6, "currency": "PLN"}),
 --- a/tests/testapp/models.py
 +++ b/tests/testapp/models.py
-@@ -24,11 +24,20 @@ else:
+@@ -24,7 +24,7 @@ else:
  
  
  class ModelWithVanillaMoneyField(models.Model):
 -    money = MoneyField(max_digits=10, decimal_places=2, default=0.0)
-+    # TODO: This should now be an error?
 +    money = MoneyField(max_digits=10, decimal_places=2)
      second_money = MoneyField(max_digits=10, decimal_places=2, default=0.0, default_currency="EUR")
      integer = models.IntegerField(default=0)
- 
- 
-+class ModelWithDefaultValueAndCurrency(models.Model):
-+    money = MoneyField(max_digits=10, decimal_places=2, default=0, default_currency="SEK")
-+
-+
-+class ModelWithDefaultCurrencyOnly(models.Model):
-+    money = MoneyField(max_digits=10, decimal_places=2, default_currency="SEK")
-+
-+
- class ModelWithNullableCurrency(models.Model):
-     money = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency=None)
  

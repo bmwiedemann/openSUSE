@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun  5 16:32:55 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Updated pr_638.patch according to the latest development upstream.
+
+-------------------------------------------------------------------
 Wed May 25 07:28:34 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Do not require pytest-pythonpath for build

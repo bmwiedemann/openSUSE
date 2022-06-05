@@ -32,4 +32,13 @@
     <comment></comment>
     <requestid>979156</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>0e402096c1b788e7d129ceacab81c9dc</srcmd5>
+    <version>2.1.1</version>
+    <time>1654457321</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated pr_638.patch according to the latest development upstream.
+</comment>
+    <requestid>980905</requestid>
+  </revision>
 </revisionlist>

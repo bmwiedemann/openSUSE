@@ -66,8 +66,11 @@ Django money and currency fields in models and forms.
 %check
 PYTHONPATH=.
 export DJANGO_SETTINGS_MODULE=tests.settings
+export PYTHONPATH=$(pwd -P)
 # we don't have python-mixer and it is needed only for tests
-%pytest -k "not (mixer or test_no_deprecation_warning)"
+# test_currency_field_null_switch_not_triggered_from_default_currency is
+# expected to fail according to gh#django-money/django-money#638
+%pytest -k "not (mixer or test_no_deprecation_warning or test_currency_field_null_switch_not_triggered_from_default_currency)"
 
 %files %{python_files}
 %doc README.rst
