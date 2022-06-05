@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-taskmanager
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xfce4-taskmanager
-Version:        1.4.2
+Version:        1.5.4
 Release:        0
 Summary:        Simple Taskmanager for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
@@ -29,6 +29,8 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.2.0
 BuildRequires:  pkgconfig(libwnck-3.0) >= 3.2
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.14
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.14
 BuildRequires:  pkgconfig(xmu) >= 1.1.2
 # uses exo-open
 Requires:       exo-tools

@@ -279,4 +279,69 @@
 </comment>
     <requestid>871500</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>07c8682fe041f0d120b15fc08002a215</srcmd5>
+    <version>1.5.4</version>
+    <time>1654457317</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.4
+  * Update configure.ac.in syntax
+  * Fix taskmanager translations (gxo#apps/xfce4-taskmanager#53)
+  * Translation Updates
+- Updates from 1.5.3
+  * Fix rendering bug (gxo#apps/xfce4-taskmanager#44)
+  * Fix rendering bug for swap graph (gxo#apps/xfce4-taskmanager#44)
+  * Fix bindings related to the &quot;show-legend&quot; setting
+  * Allow to copy full process command line (gxo#apps/xfce4-taskmanager#33)
+  * Rename Private to Resident Bytes (gxo#apps/xfce4-taskmanager#7)
+  * Avoid grabbing the filter entry if it is not realized
+  * Fix intltool lock file problem during make distcheck
+  * `uid_name` has been removed from `task` struct
+  * Fix invalid casts for &quot;About&quot; and &quot;Help&quot; (gxo#apps/xfce4-taskmanager#43)
+  * Show localized website label
+  * Update COPYING (gxo#apps/xfce4-taskmanager#49)
+  * Updated copyright year, authors, and project links
+- Updates from version 1.5.2
+  * Fix restoring the window size (gxo#apps/xfce4-taskmanager#39)
+  * Improve wording of systray option (gxo#apps/xfce4-taskmanager#19)
+- Updates from version 1.5.1
+  * Fix erroneous binding of settings (gxo#apps/xfce4-taskmanager#37)
+  * Store column positions again
+  * Store sort-column-id and sort-type (gxo#apps/xfce4-taskmanager#36)
+  * Also include swap in the memory graph
+  * Reduce drawing code
+  * Reduce borders of graphs
+  * Replace GtkImageMenuItem with GtkMenuItem
+- Updates from version 1.5.0
+  * Port to xfconf
+  * Move to Client-side decorations
+  * Migrate all settings to the settings dialog
+  * settings: Switch to XfceTitledDialog
+  * Use infobar for root warning box
+  * Drop exec button from toolbar
+  * include stdlib.h because exit() is used
+  * remove GLIB_CHECK_VERSION checks
+  * statusbar: Use better color that works well with both light and dark 
+    themes (gxo#apps/xfce4-taskmanager!17)
+  * Fix handling &quot;show-legend&quot; setting
+  * Handle Esc key correctly with hidden filter
+  * Drop unused var and sort copyright
+  * Show/hide filterbar with Ctrl+f and clear with Esc
+  * Properly close settings dialog
+  * Remove GSourceFunc casts
+  * Fix compilation warnings
+  * Replace AC_PROG_LIBTOOL with IT_PROG_INTLTOOL
+  * Simplify &quot;query-tooltip&quot; signal handler
+  * Ellipsize memory and swap labels (gxo#apps/xfce4-taskmanager#32)
+  * Set window icon in glade file
+  * Replace filter entry with GtkSearchBar
+  * Fix doc links and bump dates
+  * Simplify settings dialog code
+  * Drop leftover function for toolbar style
+  * Move about dialog to settings
+  * Drop toolbar style setting
+  * Fix tooltip markdown issue
+  * Create notification area icon only if needed (gxo#apps/xfce4-taskmanager#25) (forwarded request 980164 from mauriziogalli)</comment>
+    <requestid>980877</requestid>
+  </revision>
 </revisionlist>
