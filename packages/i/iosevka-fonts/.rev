@@ -840,4 +840,24 @@
 </comment>
     <requestid>979644</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>12193af26b5940a4bca6e313e0f4dadf</srcmd5>
+    <version>15.5.0</version>
+    <time>1654457294</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v15.5.0
+  * Changes of version 15.5.0
+    = Add characters
+      ~ LATIN SMALL LETTER B WITH MIDDLE TILDE (U+1D6C) ... LATIN
+        SMALL LETTER Z WITH MIDDLE TILDE (U+1D76);
+      ~ LATIN SMALL CAPITAL LETTER U WITH STROKE (U+1D7E);
+- Update to v15.4.2
+  * Changes of version 15.4.2
+    = Fix ranks of cv72 (variants applying to 1) (#1358).
+- Update to v15.4.1
+  * Changes of version 15.4.1
+    = Fix VXDD application on U+1D1E (#1357).
+</comment>
+    <requestid>980832</requestid>
+  </revision>
 </revisionlist>
