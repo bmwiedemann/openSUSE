@@ -45,6 +45,7 @@ URL:            https://github.com/AFLplusplus/AFLplusplus
 Source:         https://github.com/AFLplusplus/AFLplusplus/archive/%{version}.tar.gz
 Source1:        afl-rpmlintrc
 Patch1:         afl-3.0c-fix-paths.patch
+Patch2:         https://github.com/AFLplusplus/AFLplusplus/commit/675d17d737ee5dee88766d9c181567771592c94c.patch#/llvm14-fix-build.patch
 BuildRequires:  clang
 BuildRequires:  gcc-c++
 %ifarch x86_64
@@ -76,6 +77,7 @@ use cases - say, common image parsing or file compression libraries.
 %prep
 %setup -q -n AFLplusplus-%version
 %patch1 -p1
+%patch2 -p1
 sed -i 's|#!/usr/bin/env sh|#!/bin/sh|g' afl-cmin
 sed -i 's|#!/usr/bin/env bash|#!/bin/bash|g' afl-cmin.bash
 

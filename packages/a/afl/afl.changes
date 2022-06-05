@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun  4 13:26:34 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add llvm14-fix-build.patch: fix build with LLVM 14. 
+
+-------------------------------------------------------------------
 Wed Feb 23 22:21:07 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Fix build with armv7l on Leap: we have afl-llvm-rt-lto{,-32}.o.
