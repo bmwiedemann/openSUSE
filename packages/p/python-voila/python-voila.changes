@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Sun Jun  5 11:18:43 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.3.5:
+  * feat: support all kernel ServerConnection options #1129
+    (@maartenbreddels)
+- Release 0.3.4:
+  * feat: make request info available in env for preheated kernels
+    #1109 (@mariobuikhuizen)
+
+-------------------------------------------------------------------
+Fri Mar 18 17:21:06 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.3.3:
+  * Enhancements made
+    + Add theme handling to error pages #1108 (@martinRenou)
+    + Add timeout on the control comm target #1106 (@martinRenou)
+  * Documentation improvements
+    + Remove extra tick from the Changelog #1099 (@martinRenou)
+
+-------------------------------------------------------------------
+Sun Feb 27 01:04:44 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile
+  * require jupyterlab-server for tests
+
+- update to version 0.3.2:
+  * Enhancements made
+    + JupyterLab Voila preview extension: Automatically save Notebook
+      before refreshing the preview #1094 (@legendb317)
+    + Update JupyterLab extension logo #1092 (@martinRenou)
+    + Handle JupyterLab custom themes #1089 (@martinRenou)
+  * Bugs fixed
+    + Bump css-loader and `style-loader" #1096 (@trungleduc)
+  * Maintenance and upkeep improvements
+    + Bump url-parse from 1.5.3 to 1.5.7 in /ui-tests #1097
+      (@dependabot)
+    + Bump follow-redirects from 1.14.7 to 1.14.8 in /ui-tests #1093
+      (@dependabot)
+    + Bump simple-get from 3.1.0 to 3.1.1 in /ui-tests #1091
+      (@dependabot)
+    + Add script to automatically reset the stable branch on release
+      #1085 (@jtpio)
+    + Add bot for updating Galata references #1083 (@martinRenou)
+
+- changes from version 0.3.1:
+  * Enhancements made
+    + Allow all lab templates to use the lab theme #1064
+      (@martinRenou)
+    + Fix element style display #1058 (@martinRenou)
+    + Add more Jinja macros #1057 (@martinRenou)
+    + Lab template: fix body tag #1053 (@martinRenou)
+    + Implement async generator based Voila get handler #1025
+      (@davidbrochart)
+    + Feature: fetch all widgets in one single comm message using the
+      control channel #766 (@maartenbreddels)
+  * Bugs fixed
+    + Fix file redirect error #1073 (@trungleduc)
+    + Lab template: fix body tag #1053 (@martinRenou)
+  * Maintenance and upkeep improvements
+    + Bump node-fetch from 2.6.1 to 2.6.7 #1079 (@dependabot)
+    + Bump node-fetch from 2.6.1 to 2.6.7 in /ui-tests #1078
+      (@dependabot)
+    + Bump nanoid from 3.1.25 to 3.2.0 #1070 (@dependabot)
+    + Bump nanoid from 3.1.25 to 3.2.0 in /ui-tests #1069
+      (@dependabot)
+    + Bump trim-off-newlines from 1.0.1 to 1.0.3 #1066 (@dependabot)
+    + Fix Binder badge PR comment being overwritten #1065 (@jtpio)
+    + Automatically download labvariables CSS instead of shipping them
+      #1062 (@martinRenou)
+    + Remove traitlets 4 test, add missing traitlets dependency and
+      drop Python 3.6 support #1060 (@martinRenou)
+    + Bump follow-redirects from 1.14.3 to 1.14.7 in /ui-tests #1059
+      (@dependabot)
+    + Try fixing UI tests #1054 (@martinRenou)
+    + UI-tests: Update ipympl screenshots #1048 (@martinRenou)
+    + Turn off debug mode and remove warnings for
+      many_iopub_messages_test.py #1045 (@trungleduc)
+    + Use maintainer-tools base setup action, update Python versions
+      on CI #1043 (@jtpio)
+    + Use nbclient to create a new kernel client #860 (@davidbrochart)
+  * Documentation improvements
+    + Fix environment.yml file location in the README #1052
+      (@martinRenou)
+  * Other merged PRs
+    + Pin ipympl to 0.8.7 #1068 (@trungleduc)
+
+-------------------------------------------------------------------
 Fri Jan  7 21:37:33 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.3.0:

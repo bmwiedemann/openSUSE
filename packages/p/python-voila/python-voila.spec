@@ -24,24 +24,24 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
 %endif
-
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-voila%{psuffix}
-Version:        0.3.0
+Version:        0.3.5
 Release:        0
 Summary:        Plugin for serving read-only live Jupyter notebooks
 License:        BSD-3-Clause
 URL:            https://github.com/voila-dashboards/voila
+# Need both source archives: PyPI for the npm compiled JS static files, GitHub for the tests
 Source:         https://files.pythonhosted.org/packages/source/v/voila/voila-%{version}.tar.gz
 Source1:        https://github.com/voila-dashboards/voila/archive/refs/tags/v%{version}.tar.gz#/voila-%{version}-gh.tar.gz
 Source99:       python-voila-rpmlintrc
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module jupyter-packaging >= 0.10}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -49,14 +49,17 @@ BuildRequires:  jupyter-jupyterlab-filesystem
 BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-voila = %{version}
-Requires:       python-jupyter-client >= 6.1.3
-Requires:       python-jupyter-server >= 0.3.0
-Requires:       python-nbclient >= 0.4.0
-Requires:       python-nbconvert >= 6.0.0
 Requires:       python-websockets >= 9.0
+Requires:       (python-jupyter-client >= 6.1.3 with python-jupyter-client < 8)
+Requires:       (python-jupyter-server >= 0.3.0 with python-jupyter-server < 2)
+Requires:       (python-jupyterlab-server >= 2.3.0 with python-jupyterlab-server < 3)
+Requires:       (python-nbclient >= 0.4 with python-nbclient < 0.6)
+Requires:       (python-nbconvert >= 6.4.5 with python-nbconvert < 7)
+Requires:       (python-traitlets >= 5.0.3 with python-traitlets < 6)
+BuildArch:      noarch
 %if %{with libalternatives}
-Requires:       alts
 BuildRequires:  alts
+Requires:       alts
 %else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -65,13 +68,11 @@ Requires(postun):update-alternatives
 BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module matplotlib-web}
 BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest-tornasync}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module voila = %{version}}
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description

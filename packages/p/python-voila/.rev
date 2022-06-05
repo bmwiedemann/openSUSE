@@ -73,4 +73,17 @@
     <comment></comment>
     <requestid>944832</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>64b8242afc96abba014609875da79eb9</srcmd5>
+    <version>0.3.5</version>
+    <time>1654457315</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.5:
+  * feat: support all kernel ServerConnection options #1129
+    (@maartenbreddels)
+- Release 0.3.4:
+  * feat: make request info available in env for preheated kernels
+    #1109 (@mariobuikhuizen) (forwarded request 980881 from bnavigator)</comment>
+    <requestid>980882</requestid>
+  </revision>
 </revisionlist>
