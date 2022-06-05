@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 05 17:42:57 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1654268802.d627369:
+  * CI: Simplify combination of mergify rules
+  * CI: Automatically merge necessary dependency updates
+  * Replace openqa-worker@ with a link to openqa-worker-plain@
+
+-------------------------------------------------------------------
 Fri Jun 03 09:42:52 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1654246580.7c8d679:
