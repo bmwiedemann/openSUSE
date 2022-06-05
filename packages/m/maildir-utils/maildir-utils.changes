@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun  5 12:27:47 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6.11:
+  * mu-init: update manpage #2200.
+  * indexer: don't wait when indexing does not progress #2233.
+  * guile: add XAPIAN_CXXFLAGS #2236.
+  * mu4e: don't loop mu4e-update-index when index is empty #2240.
+
+-------------------------------------------------------------------
 Fri Dec  3 18:31:14 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.6.10:
