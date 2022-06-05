@@ -17,7 +17,7 @@
 
 
 Name:           links
-Version:        2.26
+Version:        2.27
 Release:        0
 Summary:        Text-Based WWW Browser
 License:        GPL-2.0-or-later

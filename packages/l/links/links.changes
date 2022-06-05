@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun  5 01:01:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.27:
+  * Updated the Turkish translation
+  * Allow the user to specify a numeric IPv6 address in the dns-over-https
+    box
+
+-------------------------------------------------------------------
 Tue Apr 12 19:35:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.26:
