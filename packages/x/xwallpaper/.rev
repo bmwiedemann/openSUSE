@@ -7,4 +7,12 @@
     <comment>I want to maintain xwallpaper (a minimalistic wallpaper utility) in openSUSE:Factory</comment>
     <requestid>980389</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>187a20adc0f305b9c02b9d2a9cff5ebb</srcmd5>
+    <version>0.7.3</version>
+    <time>1654457292</time>
+    <user>dimstar_suse</user>
+    <comment>Enable support for JPEG, PNG and XPM file formats</comment>
+    <requestid>980813</requestid>
+  </revision>
 </revisionlist>

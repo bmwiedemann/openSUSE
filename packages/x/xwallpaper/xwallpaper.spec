@@ -1,6 +1,7 @@
 #
 # spec file for package xwallpaper
 #
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2022 Tomasz Hołubowicz <alternateved@pm.me>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,6 +13,10 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
 Name:           xwallpaper
 Version:        0.7.3
 Release:        0
@@ -21,8 +26,12 @@ Group:          System/X11/Utilities
 URL:            https://github.com/stoeckmann/xwallpaper
 Source:         https://github.com/stoeckmann/xwallpaper/releases/download/v%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  libpixman-1-0-devel
+BuildRequires:  pkgconfig
 BuildRequires:  xcb-util-devel
 BuildRequires:  xcb-util-image-devel
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(xpm)
 
 %description
 The xwallpaper utility allows you to set image files as your X wallpaper. JPEG, PNG, and XPM file formats are supported, all of them being configurable and therefore no fixed dependencies.
@@ -41,7 +50,13 @@ Zsh shell completion for %{name}
 %setup -q
 
 %build
-%configure
+%configure \
+        --with-seccomp \
+        --with-randr \
+        --with-jpeg \
+        --with-png \
+        --with-xpm
+
 %make_build
 
 %install
