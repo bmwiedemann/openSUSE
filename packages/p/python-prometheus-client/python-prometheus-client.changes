@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun  4 15:39:55 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to upstream 0.14.1 release
+  * [BUGFIX] Revert choose_encoder being renamed to choose_formatter
+    to fix a breaking change.
+
+-------------------------------------------------------------------
 Tue Apr  5 23:26:22 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to upstream 0.14.0 release
