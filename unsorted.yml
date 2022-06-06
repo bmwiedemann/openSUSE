@@ -1324,7 +1324,6 @@ unsorted:
   - bluez-obexd 
   - bluez-qt-devel 
   - bluez-test 
-  - bluez-tools 
   - bmake 
   - bmkdep 
   - bmon 
@@ -7944,6 +7943,7 @@ unsorted:
   - jupyter-notebook-filesystem 
   - jupyter-notebook-lang 
   - jupyter-notebook-latex 
+  - jupyter-notebook-shim 
   - jupyter-octave-kernel 
   - jupyter-panel 
   - jupyter-plotly 
@@ -13168,7 +13168,7 @@ unsorted:
   - libpoppler-qt5-devel 
   - libpoppler-qt6-3 
   - libpoppler-qt6-devel 
-  - libpoppler121-32bit: [x86_64] 
+  - libpoppler122-32bit: [x86_64] 
   - libportal-devel 
   - libportal-gtk3-1 
   - libportal-gtk3-devel 
@@ -13759,7 +13759,7 @@ unsorted:
   - librrd8 
   - librsb-devel 
   - librsb0 
-  - librssguard-4_2_2 
+  - librssguard-4_2_3 
   - librssguard-devel 
   - librsvg-2-2-32bit: [x86_64] 
   - librsvg-devel 
@@ -15775,9 +15775,6 @@ unsorted:
   - malaga-suomi 
   - malcontent-devel 
   - mame 
-  - mame-data 
-  - mame-mess 
-  - mame-tools 
   - man-pages-fi 
   - man-pages-id 
   - man-pages-mk 
@@ -23831,6 +23828,7 @@ unsorted:
   - python310-nose2 
   - python310-notebook 
   - python310-notebook-lang 
+  - python310-notebook-shim 
   - python310-notify2 
   - python310-nox 
   - python310-npTDMS 
@@ -26961,6 +26959,7 @@ unsorted:
   - python38-nose2 
   - python38-notebook 
   - python38-notebook-lang 
+  - python38-notebook-shim 
   - python38-nox 
   - python38-npTDMS 
   - python38-nptyping 
@@ -30105,6 +30104,7 @@ unsorted:
   - python39-nose2 
   - python39-notebook 
   - python39-notebook-lang 
+  - python39-notebook-shim 
   - python39-notify2 
   - python39-nox 
   - python39-npTDMS 
@@ -43317,6 +43317,7 @@ unsorted:
   - wl-clipboard-fish-completion 
   - wl-clipboard-zsh-completion 
   - wlgreet 
+  - wlopm 
   - wlr-randr 
   - wlr-sunclock 
   - wlroots-devel 
