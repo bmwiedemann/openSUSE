@@ -1,24 +1,25 @@
 #
 # spec file for package ceph-test
 #
-# Copyright (c) 2022 SUSE LLC
 # Copyright (C) 2004-2019 The Ceph Project Developers. See COPYING file
 # at the top-level directory of this distribution and at
 # https://github.com/ceph/ceph/blob/master/COPYING
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
-# upon. The license for this file, and modifications and additions to the
-# file, is the same license as for the pristine package itself (unless the
-# license for the pristine package is not an Open Source License, in which
-# case the license is the MIT License). An "Open Source License" is a
-# license that conforms to the Open Source Definition (Version 1.9)
-# published by the Open Source Initiative.
-
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# upon.
+#
+# This file is under the GNU Lesser General Public License, version 2.1
+#
+# Please submit bugfixes or comments via http://tracker.ceph.com/
 #
 
-
+#################################################################################
+# conditional build section
+#
+# please read http://rpm.org/user_doc/conditional_builds.html for explanation of
+# bcond syntax!
+#################################################################################
 %bcond_with make_check
 %bcond_with zbd
 %bcond_with cmake_verbose_logging
@@ -123,9 +124,9 @@
 #################################################################################
 # main package definition
 #################################################################################
-Name:           ceph-test
-Version:        16.2.7.654+gd5a90ff46f0
-Release:        0%{?dist}
+Name: ceph-test
+Version: 16.2.9.58+ge2e5cb80063
+Release: 0%{?dist}
 %if 0%{?fedora} || 0%{?rhel}
 Epoch: 2
 %endif
@@ -134,95 +135,98 @@ Epoch: 2
 # undefined
 %global _epoch_prefix %{?epoch:%{epoch}:}
 
-Summary:        Ceph benchmarks and test tools
-License:        BSD-3-Clause AND BSL-1.0 AND CC-BY-SA-3.0 AND LGPL-2.1-only AND LGPL-3.0-only AND GPL-2.0-only AND MIT
+Summary: Ceph benchmarks and test tools
+License: LGPL-2.1 and LGPL-3.0 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-3-Clause and MIT
 %if 0%{?suse_version}
-Group:          System/Filesystems
+Group: System/Filesystems
 %endif
-URL:            http://ceph.com/
-Source0:        %{?_remote_tarball_prefix}ceph-16.2.7-654-gd5a90ff46f0.tar.bz2
+URL: http://ceph.com/
+Source0: %{?_remote_tarball_prefix}ceph-16.2.9-58-ge2e5cb80063.tar.bz2
 %if 0%{?suse_version}
-Source94:       ceph-rpmlintrc
-Source95:       checkin.sh
-Source96:       pre_checkin.sh
-Source97:       README-ceph-test.txt
-Source98:       README-checkin.txt
-Source99:       README-packaging.txt
+Source94: ceph-rpmlintrc
+Source95: checkin.sh
+Source96: pre_checkin.sh
+Source97: README-ceph-test.txt
+Source98: README-checkin.txt
+Source99: README-packaging.txt
 # _insert_obs_source_lines_here
-ExclusiveArch:  x86_64
+ExclusiveArch: x86_64
 %endif
 #################################################################################
 # dependencies that apply across all distro families
 #################################################################################
 
-Requires:       ceph-common
-Requires:       jq
-Requires:       socat
-Requires:       xmlstarlet
-Requires(post): binutils
+
+
+
+Requires: ceph-common
+Requires: xmlstarlet
+Requires: jq
+Requires: socat
+Requires(post):	binutils
 %if 0%{with cephfs_java}
-BuildRequires:  java-devel
-BuildRequires:  sharutils
+BuildRequires:	java-devel
+BuildRequires:	sharutils
 %endif
 %if 0%{with selinux}
-BuildRequires:  checkpolicy
-BuildRequires:  selinux-policy-devel
+BuildRequires:	checkpolicy
+BuildRequires:	selinux-policy-devel
 %endif
+BuildRequires:	gperf
 BuildRequires:  cmake > 3.5
-BuildRequires:  cryptsetup
-BuildRequires:  fuse-devel
-BuildRequires:  gperf
+BuildRequires:	cryptsetup
+BuildRequires:	fuse-devel
 %if 0%{with seastar}
-BuildRequires:  gcc-toolset-9-gcc-c++ >= 9.2.1-2.3
+BuildRequires:	gcc-toolset-9-gcc-c++ >= 9.2.1-2.3
 %else
-BuildRequires:  gcc-c++
+BuildRequires:	gcc-c++
 %endif
 %if 0%{with tcmalloc}
 # libprofiler did not build on ppc64le until 2.7.90
 %if 0%{?fedora} || 0%{?rhel} >= 8
-BuildRequires:  gperftools-devel >= 2.7.90
+BuildRequires:	gperftools-devel >= 2.7.90
 %endif
 %if 0%{?rhel} && 0%{?rhel} < 8
-BuildRequires:  gperftools-devel >= 2.6.1
+BuildRequires:	gperftools-devel >= 2.6.1
 %endif
 %if 0%{?suse_version}
-BuildRequires:  gperftools-devel >= 2.4
+BuildRequires:	gperftools-devel >= 2.4
 %endif
 %endif
-BuildRequires:  cryptsetup-devel
-BuildRequires:  fmt-devel >= 5.2.1
-BuildRequires:  leveldb-devel > 1.2
-BuildRequires:  libaio-devel
-BuildRequires:  libblkid-devel >= 2.17
-BuildRequires:  libcap-ng-devel
-BuildRequires:  libcurl-devel
-BuildRequires:  libicu-devel
-BuildRequires:  libnl3-devel
-BuildRequires:  liboath-devel
-BuildRequires:  libtool
-BuildRequires:  libxml2-devel
-BuildRequires:  lua-devel
-BuildRequires:  make
-BuildRequires:  nasm
-BuildRequires:  ncurses-devel
-BuildRequires:  parted
-BuildRequires:  patch
-BuildRequires:  perl
-BuildRequires:  pkgconfig
+BuildRequires:	leveldb-devel > 1.2
+BuildRequires:	libaio-devel
+BuildRequires:	libblkid-devel >= 2.17
+BuildRequires:	cryptsetup-devel
+BuildRequires:	libcurl-devel
+BuildRequires:	libcap-ng-devel
+BuildRequires:	fmt-devel >= 5.2.1
+BuildRequires:	pkgconfig(libudev)
+BuildRequires:	libnl3-devel
+BuildRequires:	liboath-devel
+BuildRequires:	libtool
+BuildRequires:	libxml2-devel
+BuildRequires:	make
+BuildRequires:	ncurses-devel
+BuildRequires:	libicu-devel
+BuildRequires:	parted
+BuildRequires:	patch
+BuildRequires:	perl
+BuildRequires:	pkgconfig
 BuildRequires:  procps
-BuildRequires:  python%{python3_pkgversion}
-BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  snappy-devel
-BuildRequires:  sqlite-devel
-BuildRequires:  sudo
-BuildRequires:  util-linux
-BuildRequires:  valgrind-devel
-BuildRequires:  which
-BuildRequires:  xfsprogs
-BuildRequires:  xfsprogs-devel
-BuildRequires:  xmlstarlet
-BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(udev)
+BuildRequires:	python%{python3_pkgversion}
+BuildRequires:	python%{python3_pkgversion}-devel
+BuildRequires:	snappy-devel
+BuildRequires:	sqlite-devel
+BuildRequires:	sudo
+BuildRequires:	pkgconfig(udev)
+BuildRequires:	util-linux
+BuildRequires:	valgrind-devel
+BuildRequires:	which
+BuildRequires:	xfsprogs
+BuildRequires:	xfsprogs-devel
+BuildRequires:	xmlstarlet
+BuildRequires:	nasm
+BuildRequires:	lua-devel
 %if 0%{with amqp_endpoint}
 BuildRequires:  librabbitmq-devel
 %endif
@@ -234,15 +238,14 @@ BuildRequires:  %{luarocks_package_name}
 %endif
 %if 0%{with make_check}
 BuildRequires:  jq
-BuildRequires:  libuuid-devel
-BuildRequires:  python%{python3_pkgversion}-bcrypt
-BuildRequires:  python%{python3_pkgversion}-coverage
-BuildRequires:  python%{python3_pkgversion}-dateutil
-BuildRequires:  python%{python3_pkgversion}-nose
-BuildRequires:  python%{python3_pkgversion}-pecan
-BuildRequires:  python%{python3_pkgversion}-pyOpenSSL
-BuildRequires:  python%{python3_pkgversion}-requests
-BuildRequires:  socat
+BuildRequires:	libuuid-devel
+BuildRequires:	python%{python3_pkgversion}-bcrypt
+BuildRequires:	python%{python3_pkgversion}-pecan
+BuildRequires:	python%{python3_pkgversion}-requests
+BuildRequires:	python%{python3_pkgversion}-dateutil
+BuildRequires:	python%{python3_pkgversion}-coverage
+BuildRequires:	python%{python3_pkgversion}-pyOpenSSL
+BuildRequires:	socat
 %endif
 %if 0%{with zbd}
 BuildRequires:  libzbd-devel
@@ -274,113 +277,112 @@ BuildRequires:  ragel
 BuildRequires:  systemtap-sdt-devel
 BuildRequires:  yaml-cpp-devel
 %if 0%{?fedora}
+BuildRequires:  libubsan
 BuildRequires:  libasan
 BuildRequires:  libatomic
-BuildRequires:  libubsan
 %endif
 %if 0%{?rhel}
 BuildRequires:  gcc-toolset-9-annobin
+BuildRequires:  gcc-toolset-9-libubsan-devel
 BuildRequires:  gcc-toolset-9-libasan-devel
 BuildRequires:  gcc-toolset-9-libatomic-devel
-BuildRequires:  gcc-toolset-9-libubsan-devel
 %endif
 %endif
 #################################################################################
 # distro-conditional dependencies
 #################################################################################
 %if 0%{?suse_version}
-BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:	systemd-rpm-macros
 %{?systemd_requires}
-PreReq:         %fillup_prereq
-BuildRequires:  fdupes
-BuildRequires:  keyutils-devel
-BuildRequires:  libbz2-devel
+PreReq:		%fillup_prereq
+BuildRequires:	fdupes
+BuildRequires:	net-tools
+BuildRequires:	libbz2-devel
+BuildRequires:	mozilla-nss-devel
+BuildRequires:	keyutils-devel
 BuildRequires:  libopenssl-devel
-BuildRequires:  mozilla-nss-devel
-BuildRequires:  net-tools
 BuildRequires:  openldap2-devel
 #BuildRequires:  krb5
 #BuildRequires:  krb5-devel
 BuildRequires:  cunit-devel
-BuildRequires:  liblz4-devel >= 1.7
-BuildRequires:  python%{python3_pkgversion}-Cython
-BuildRequires:  python%{python3_pkgversion}-PrettyTable
-BuildRequires:  python%{python3_pkgversion}-Sphinx
-BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:	python%{python3_pkgversion}-setuptools
+BuildRequires:	python%{python3_pkgversion}-Cython
+BuildRequires:	python%{python3_pkgversion}-PrettyTable
+BuildRequires:	python%{python3_pkgversion}-Sphinx
 BuildRequires:  rdma-core-devel
+BuildRequires:	liblz4-devel >= 1.7
 # for prometheus-alerts
 BuildRequires:  golang-github-prometheus-prometheus
 %endif
 %if 0%{?fedora} || 0%{?rhel}
 
 BuildRequires:  boost-random
-BuildRequires:  keyutils-libs-devel
-BuildRequires:  libibverbs-devel
+BuildRequires:	nss-devel
+BuildRequires:	keyutils-libs-devel
+BuildRequires:	libibverbs-devel
 BuildRequires:  librdmacm-devel
-BuildRequires:  nss-devel
 BuildRequires:  openldap-devel
 #BuildRequires:  krb5-devel
 BuildRequires:  openssl-devel
 BuildRequires:  CUnit-devel
-BuildRequires:  lz4-devel >= 1.7
-BuildRequires:  python%{python3_pkgversion}-Cython
-BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-prettytable
-BuildRequires:  python%{python3_pkgversion}-setuptools
-BuildRequires:  python%{python3_pkgversion}-sphinx
+BuildRequires:	python%{python3_pkgversion}-devel
+BuildRequires:	python%{python3_pkgversion}-setuptools
+BuildRequires:	python%{python3_pkgversion}-Cython
+BuildRequires:	python%{python3_pkgversion}-prettytable
+BuildRequires:	python%{python3_pkgversion}-sphinx
+BuildRequires:	lz4-devel >= 1.7
 %endif
 # distro-conditional make check dependencies
 %if 0%{with make_check}
+BuildRequires:	golang
 %if 0%{?fedora} || 0%{?rhel}
-BuildRequires:  golang-github-prometheus
-BuildRequires:  jsonnet
-BuildRequires:  libtool-ltdl-devel
-BuildRequires:  xmlsec1
-BuildRequires:  xmlsec1-devel
+BuildRequires:	golang-github-prometheus
+BuildRequires:	libtool-ltdl-devel
+BuildRequires:	xmlsec1
+BuildRequires:	xmlsec1-devel
 %ifarch x86_64
-BuildRequires:  xmlsec1-nss
+BuildRequires:	xmlsec1-nss
 %endif
-BuildRequires:  python%{python3_pkgversion}-cherrypy
-BuildRequires:  python%{python3_pkgversion}-jwt
-BuildRequires:  python%{python3_pkgversion}-pyOpenSSL
-BuildRequires:  python%{python3_pkgversion}-routes
-BuildRequires:  python%{python3_pkgversion}-scipy
-BuildRequires:  python%{python3_pkgversion}-werkzeug
-BuildRequires:  xmlsec1-openssl
-BuildRequires:  xmlsec1-openssl-devel
+BuildRequires:	xmlsec1-openssl
+BuildRequires:	xmlsec1-openssl-devel
+BuildRequires:	python%{python3_pkgversion}-cherrypy
+BuildRequires:	python%{python3_pkgversion}-jwt
+BuildRequires:	python%{python3_pkgversion}-routes
+BuildRequires:	python%{python3_pkgversion}-scipy
+BuildRequires:	python%{python3_pkgversion}-werkzeug
+BuildRequires:	python%{python3_pkgversion}-pyOpenSSL
 %endif
 %if 0%{?suse_version}
-BuildRequires:  golang-github-prometheus-prometheus
-BuildRequires:  jsonnet
-BuildRequires:  libxmlsec1-1
-BuildRequires:  libxmlsec1-nss1
-BuildRequires:  libxmlsec1-openssl1
-BuildRequires:  python%{python3_pkgversion}-CherryPy
-BuildRequires:  python%{python3_pkgversion}-PyJWT
-BuildRequires:  python%{python3_pkgversion}-Routes
-BuildRequires:  python%{python3_pkgversion}-Werkzeug
-BuildRequires:  python%{python3_pkgversion}-numpy-devel
-BuildRequires:  xmlsec1-devel
-BuildRequires:  xmlsec1-openssl-devel
+BuildRequires:	golang-github-prometheus-prometheus
+BuildRequires:	libxmlsec1-1
+BuildRequires:	libxmlsec1-nss1
+BuildRequires:	libxmlsec1-openssl1
+BuildRequires:	python%{python3_pkgversion}-CherryPy
+BuildRequires:	python%{python3_pkgversion}-PyJWT
+BuildRequires:	python%{python3_pkgversion}-Routes
+BuildRequires:	python%{python3_pkgversion}-Werkzeug
+BuildRequires:	python%{python3_pkgversion}-numpy-devel
+BuildRequires:	xmlsec1-devel
+BuildRequires:	xmlsec1-openssl-devel
 %endif
 %endif
 # lttng and babeltrace for rbd-replay-prep
 %if %{with lttng}
 %if 0%{?fedora} || 0%{?rhel}
-BuildRequires:  libbabeltrace-devel
-BuildRequires:  lttng-ust-devel
+BuildRequires:	lttng-ust-devel
+BuildRequires:	libbabeltrace-devel
 %endif
 %if 0%{?suse_version}
+BuildRequires:	lttng-ust-devel
 BuildRequires:  babeltrace-devel
-BuildRequires:  lttng-ust-devel
 %endif
 %endif
 %if 0%{?suse_version}
-BuildRequires:  libexpat-devel
+BuildRequires:	libexpat-devel
 %endif
 %if 0%{?rhel} || 0%{?fedora}
-BuildRequires:  expat-devel
+BuildRequires:	expat-devel
 %endif
 #hardened-cc1
 %if 0%{?fedora} || 0%{?rhel}
@@ -581,9 +583,8 @@ This package contains Ceph benchmarks and test tools.
 %endif
 %if 0%{?suse_version}
 %endif
-
 %prep
-%autosetup -p1 -n ceph-16.2.7-654-gd5a90ff46f0
+%autosetup -p1 -n ceph-16.2.9-58-ge2e5cb80063
 
 %build
 # LTO can be enabled as soon as the following GCC bug is fixed:
@@ -729,12 +730,14 @@ cat ./CMakeFiles/CMakeError.log
 
 make "$CEPH_MFLAGS_JOBS"
 
+
 %if 0%{with make_check}
 %check
 # run in-tree unittests
 cd build
 ctest "$CEPH_MFLAGS_JOBS"
 %endif
+
 
 %install
 pushd build
@@ -809,7 +812,7 @@ mkdir -p %{buildroot}%{_localstatedir}/lib/ceph/bootstrap-rbd
 mkdir -p %{buildroot}%{_localstatedir}/lib/ceph/bootstrap-rbd-mirror
 
 # prometheus alerts
-install -m 644 -D monitoring/prometheus/alerts/ceph_default_alerts.yml %{buildroot}/etc/prometheus/ceph/ceph_default_alerts.yml
+install -m 644 -D monitoring/ceph-mixin/prometheus_alerts.yml %{buildroot}/etc/prometheus/ceph/ceph_default_alerts.yml
 
 %if 0%{?suse_version}
 # create __pycache__ directories and their contents
@@ -1085,10 +1088,6 @@ rm -rf %{buildroot}%{_datadir}/selinux/packages/ceph.pp
 rm -rf %{buildroot}%{_datadir}/selinux/devel/include/contrib/ceph.if
 rm -rf %{buildroot}%{_mandir}/man8/ceph_selinux.8*
 rm -rf %{buildroot}%{_sysconfdir}/grafana/dashboards/ceph-dashboard/*
-rm -rf %{buildroot}%doc
-rm -rf %{buildroot}monitoring/grafana/dashboards/README
-rm -rf %{buildroot}%doc
-rm -rf %{buildroot}monitoring/grafana/README.md
 rm -rf %{buildroot}%{_sysconfdir}/prometheus/ceph/ceph_default_alerts.yml
 
 dirs=`find %{buildroot} -type d -empty`
@@ -1261,5 +1260,4 @@ rm -rf build
 %endif
 %if 0%{?suse_version}
 %endif
-
 %changelog

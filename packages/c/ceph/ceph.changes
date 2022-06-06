@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jun  2 20:57:56 UTC 2022 - Stefen Allen <stefen.allen@suse.com>
+
+- Update to ceph-16.2.9-58-ge2e5cb80063:
+  + (bsc#1200064, pr#480) Remove last vestiges of docker.io image paths
+
+-------------------------------------------------------------------
+Mon May 23 23:56:57 UTC 2022 - Michael Fritch <michael.fritch@suse.com>
+
+- Update to 16.2.9.50-g7d9f12156fb:
+  + (jsc#SES-2515) High-availability NFS export 
+  + (bsc#1196044) cephadm: prometheus: The generatorURL in alerts is only using hostname
+  + (bsc#1196785) cephadm: avoid crashing on expected non-zero exit
+
+-------------------------------------------------------------------
+Tue Apr 19 21:15:33 UTC 2022 - Michael Fritch <michael.fritch@suse.com>
+
+- Update to 16.2.7-969-g6195a460d89
+
+-------------------------------------------------------------------
 Thu Mar 31 17:09:16 UTC 2022 - Stefen Allen <stefen.allen@suse.com>
 
 - Update to v16.2.7-654-gd5a90ff46f0

@@ -104,7 +104,7 @@ if [ -z "$TMPDIR" ] ; then
     rm -rf *.bz2
 fi
 echo "Running make-dist inside clone"
-# export DASHBOARD_FRONTEND_LANGS="ALL"
+export DASHBOARD_FRONTEND_LANGS="ALL"
 ./make-dist
 popd
 

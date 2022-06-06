@@ -637,4 +637,30 @@
     <comment></comment>
     <requestid>967145</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>289e1b6001f600086e0ffb845e0f4d0a</srcmd5>
+    <version>16.2.9.58+ge2e5cb80063</version>
+    <time>1654506624</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to ceph-16.2.9-58-ge2e5cb80063:
+  + (bsc#1200064, pr#480) Remove last vestiges of docker.io image paths
+
+- Update to 16.2.9.50-g7d9f12156fb:
+  + (jsc#SES-2515) High-availability NFS export 
+  + (bsc#1196044) cephadm: prometheus: The generatorURL in alerts is only using hostname
+  + (bsc#1196785) cephadm: avoid crashing on expected non-zero exit
+
+- Update to 16.2.7-969-g6195a460d89
+
+- Update to ceph-16.2.9-58-ge2e5cb80063:
+  + (bsc#1200064, pr#480) Remove last vestiges of docker.io image paths
+
+- Update to 16.2.9.50-g7d9f12156fb:
+  + (jsc#SES-2515) High-availability NFS export 
+  + (bsc#1196044) cephadm: prometheus: The generatorURL in alerts is only using hostname
+  + (bsc#1196785) cephadm: avoid crashing on expected non-zero exit
+
+- Update to 16.2.7-969-g6195a460d89</comment>
+    <requestid>980767</requestid>
+  </revision>
 </revisionlist>
