@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun  5 19:51:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Unpin nbclient <0.6: Tests pass with 0.6.4
+
+-------------------------------------------------------------------
 Sun Jun  5 11:18:43 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 0.3.5:

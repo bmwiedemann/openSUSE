@@ -53,7 +53,7 @@ Requires:       python-websockets >= 9.0
 Requires:       (python-jupyter-client >= 6.1.3 with python-jupyter-client < 8)
 Requires:       (python-jupyter-server >= 0.3.0 with python-jupyter-server < 2)
 Requires:       (python-jupyterlab-server >= 2.3.0 with python-jupyterlab-server < 3)
-Requires:       (python-nbclient >= 0.4 with python-nbclient < 0.6)
+Requires:       python-nbclient >= 0.4
 Requires:       (python-nbconvert >= 6.4.5 with python-nbconvert < 7)
 Requires:       (python-traitlets >= 5.0.3 with python-traitlets < 6)
 BuildArch:      noarch
@@ -113,6 +113,7 @@ This package provides the jupyter components.
 %setup -q -n voila-%{version}
 tar xf %{SOURCE1} --strip-components=1 voila-%{version}/tests
 sed -i s/mistune.Renderer/nbconvert.vendor.mistune.Renderer/ voila/exporter.py
+sed -i '/nbclient/ s/,<0.6//' setup.cfg
 
 %build
 %python_build
