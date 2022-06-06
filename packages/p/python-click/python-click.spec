@@ -20,22 +20,23 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-click
-Version:        8.0.4
+Version:        8.1.3
 Release:        0
 Summary:        A wrapper around optparse for command line utilities
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/mitsuhiko/click
 Source:         https://files.pythonhosted.org/packages/source/c/click/click-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
+BuildArch:      noarch
 %if "%{python_flavor}" == "python36"
 Requires:       python-importlib-metadata
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description
