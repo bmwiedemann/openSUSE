@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun  6 01:42:20 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Add build requires on python >= 3.8
+
+-------------------------------------------------------------------
+Thu May 19 03:05:39 UTC 2022 - william.brown@suse.com
+
+- Update to version 0.4.3~5:
+  * Improve bulk update, revert default compress type due to obs issues
+- Update to version 0.4.3~4:
+  * Improve compressor behaviour
+
+-------------------------------------------------------------------
 Thu Apr 21 23:19:04 UTC 2022 - william.brown@suse.com
 
 - Update to version 0.4.3~3:
