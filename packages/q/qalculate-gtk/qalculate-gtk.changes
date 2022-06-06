@@ -1,4 +1,149 @@
 -------------------------------------------------------------------
+Sun Jun  5 21:27:25 UTC 2022 - Haochuan Chen <yjcoshc@mail.nankai.edu.cn>
+
+- libqalculate is updated to 4.2.0 and the current version (3.20.1) of
+  qalculate-gtk is incompatible with it, so GTK frontend should be updated
+  too. The following changelog is the same as libqalculate:
+- Update to 4.2.0:
+  - Option to plot real and imaginary parts separately (enabled
+    by default)
+  - Variable spacing of x values in plot (unless step size is used)
+  - Updated plot() function with arguments for specification of
+    plot options (in any order after the third argument)
+  - Polar plot style
+  - Ask the user for the desired sinc() variant (unnormalized or
+    normalized)
+  - Support for binary-coded decimals (BCD)
+  - Show names with underscore capitalized and with underscore
+    removed (with some exceptions)
+  - Additional information units
+  - Units for volumetric flow rate
+  - Tradtional numbers (e.g. dozen, score)
+  - Show warning when log() is used with a single argument, and
+    always show second argument of log()
+  - Show single digit suffixes using Unicode subscript (CLI)
+  - Make names with a single character followed by digits
+    case-sensitive with suffix by default
+  - Accept more than two arguments in gcd() and lcm()
+  - Interpret a single vector argument as a list of arguments if
+    function requires more than one argument
+  - Fix limit of floor(), ceil(), and trunc()
+  - Fix plotting of derivatives and integrals
+  - Fix randpoisson()
+  - Fix reactivation of object, after object that caused
+    deactivation is removed
+- Update to 4.1.1:
+  - Restrict use of reciprocal in unit conversion, e.g. invert in
+    "5m/s to s/m" (= 0.2 s/m) but not in "500/lb to g" (= 1.1/g)
+  - New mHg unit (allows use with prefixes other than milli)
+  - Always display abbreviated unit name (symbol) with
+    abbreviated prefix (when unit only has short name)
+  - Minor improvements to automatic unit conversion
+  - Fix display of (1 + f(x))/n
+  - Save definitions on exit (only) if definitions has changed
+    regardless of interactive mode status (qalc)
+- Update to 4.1:
+  - Use non-breaking narrow space as digit separator in
+    reasonably short numbers, and between quantity and unit
+  - Update value of austronomical unit
+  - Fix segfault (when compiled with -D_GLIBCXX_ASSERTIONS) with
+    local digit grouping when separator is empty (e.g. with
+    ignore locale)
+  - Fix freezes and crashes with extrememly large vectors and
+    matrices
+  - Fix segfault (when compiled with -D_GLIBCXX_ASSERTIONS) in
+    matrix multiplication
+  - Minor bug fixes and feature improvements (see the ChangeLog
+    for more details)
+- Update to 4.0:
+  - New matrix syntax (column separated by space or comma, rows
+    separated by semicolon, as in matlab)
+  - Do not make any difference between a vector and a matrix with
+    a single row, or between a scalar and matrix with a single
+    element
+  - Support input of functions, units, and variables with
+    underscores omitted in names (e.g. µ0 = µ_0, FermiCoupling
+    = fermi_coupling), with some exceptions
+  - Option to disable "simplified" percentage calculations (e.g.
+    interpret 100 + 20% as 100 + 0.2 instead of 100 × 120%)
+  - Option to truncate numbers (instead of round to nearest) in
+    result
+  - Convert K, Hz, and 1/m to J (and derived units) using
+    conversion factor constants (e.g. 1/(550nm) to eV ? 2.25
+    eV)
+  - Allow use of M as 10^6 without unit
+  - New ksi unit
+  - New functions: divisors(), rate(), vertcat(), horzcat()
+  - New plastic number (?) constant, and new "hbar" name for
+    reduced Planck constant, and add second Unicode codepoint for
+    µ-sign in constants
+  - Allow zero (1st and/or 2nd argument) in comb() and perm(),
+    and return zero if second argument (k) is greater than the
+    first (n)
+  - Calculate statistical functions (e.g. mode(), min(), max(),
+    percentile()) separately for each column of matrix
+  - Return the lowest value if there are multiple values with
+    equal frequency in mode()
+  - Parse text argument as expression if concatenate function
+    name is found in text string, and fix concatenate returning
+    date
+  - New layout for output of result of matrices and equations
+    (qalc)
+  - Fix Unicode handling on platforms where char is not signed
+  - Fix bitrot()
+  - Fix segfault in multisolve() when initial order of equations
+    is not optimal
+  - Fix segfault with empty sqrt inside sqrt, e.g. sqrt(1+sqrt())
+  - Fix incompletely calculated nounit(), e.g. in unit conversion
+- Update to 3.22.0:
+  - New functions: linearfit(), quadraticfit(), cubicfit(),
+    ramlatency(), parallel()
+  - Merged inv() and inverse() functions
+  - Improved and extended parallel operator (|| is interpreted as
+    parallel if units are used)
+  - Allow nested subfunctions
+  - Do not stop testing function argument values after first failure
+  - Solve x^(x^(-a))=b
+  - Improved simplification: Im(-x)=-Im(x), Re(-x)=-Re(x)
+  - Handle units in plot data (remove and set as y-axis label)
+  - Avoid precision loss on output of interval when saving
+    approximate variable
+  - Fix pearson() and spearman()
+  - Fix display of incompletely solved equation with dual
+    approximation in some cases
+  - Fix genvector() when step size requires evaluation
+  - Fix a%%-b (interpret %% as mod, not percent)
+  - Fix asin(x)+bcos(x)=c
+  - Minor bug fixes and feature improvements
+  - [qacalc] Support "--" as end of options
+  - [qacalc] New --defaults command line option
+  - [qacalc] Configurable SIGINT (Ctrl+C) action (exit orderly by
+    default)
+  - [qacalc] Vertical space option (vspace)
+  - [qacalc] Clear command with Ctrl+L shortcut
+  - [qacalc] Apply same logic with separate to command, as with "to" at
+    end of expression, when result contains no unit
+  - [qacalc] Fix "to unicode"
+- Update to 3.21.0:
+  - Ask (once) for correct interpretation of ambiguous implicit
+    multiplication
+  - Fix crash when using the dock menu to show the RPN dock stack
+    for the first time
+  - Fix link in new version dialog
+  - Fix parenthesis highlighting when cursor is at end of
+    expression
+  - Fix initial value of interval display in preferences dialog
+  - Fix saving of approximation mode
+  - Improved simplification of radical expressions
+  - Improved Im(), Re(), and arg() functions
+  - Improved output of complex forms (other than the default
+    rectangular) in exact mode
+  - Function for drill bit size conversion
+  - Fixes for equations with complex inverse trigonometric and
+    hyperbolic functions with no solution
+  - Fixes for complex x^(ax)=b
+
+-------------------------------------------------------------------
 Thu Jul 29 11:46:40 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.20.1:

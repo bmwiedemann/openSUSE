@@ -1,7 +1,7 @@
 #
 # spec file for package qalculate-gtk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qalculate-gtk
-Version:        3.20.1
+Version:        4.2.0
 Release:        0
 Summary:        Multi-purpose cross-platform desktop calculator
 License:        GPL-2.0-or-later
@@ -33,7 +33,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.4
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12
-BuildRequires:  pkgconfig(libqalculate) >= 3.19.0
+BuildRequires:  pkgconfig(libqalculate) >= 4.2.0
 BuildRequires:  pkgconfig(libxml-2.0)
 
 %description
@@ -68,7 +68,7 @@ NOCONFIGURE=1 ./autogen.sh
 %{_datadir}/applications/%{name}.desktop
 %license COPYING
 %{_mandir}/man?/%{name}.?%{ext_man}
-%{_libdir}/qalculate-search-provider
+%{_libexecdir}/qalculate-search-provider
 %{_datadir}/dbus-1/services/io.github.Qalculate.SearchProvider.service
 %dir %{_datadir}/gnome-shell/
 %dir %{_datadir}/gnome-shell/search-providers
