@@ -7,4 +7,15 @@
     <comment>Testing package of the beta1 release.</comment>
     <requestid>977835</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>618a09aac0d04c316d1f96c1de3516f8</srcmd5>
+    <version>3.11.0b2</version>
+    <time>1654506639</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.11.0b2:
+  - many small updates
+- Add patch support-expat-245.patch:
+  * Support Expat &gt;= 2.4.4 (jsc#SLE-21253)</comment>
+    <requestid>980978</requestid>
+  </revision>
 </revisionlist>

@@ -100,7 +100,7 @@ Obsoletes:      python39%{?1:-%{1}}
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.11.0b1
+Version:        3.11.0b2
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -160,6 +160,9 @@ Patch34:        skip-test_pyobject_freed_is_freed.patch
 # PATCH-FIX-SLE fix_configure_rst.patch bpo#43774 mcepl@suse.com
 # remove duplicate link targets and make documentation with old Sphinx in SLE
 Patch35:        fix_configure_rst.patch
+# PATCH-FIX-UPSTREAM support-expat-245.patch jsc#SLE-21253 mcepl@suse.com
+# Makes Python resilient to changes of API of libexpat
+Patch36:        support-expat-245.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -187,7 +190,7 @@ BuildRequires:  pkgconfig(libtirpc)
 BuildRequires:  mpdecimal-devel
 %endif
 %if %{with doc}
-BuildRequires:  python3-Sphinx
+BuildRequires:  python3-Sphinx >= 4.0.0
 %if 0%{?suse_version} >= 1500
 BuildRequires:  python3-python-docs-theme >= 2022.1
 %endif
@@ -425,6 +428,7 @@ other applications.
 %patch34 -p1
 %endif
 %patch35 -p1
+%patch36 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

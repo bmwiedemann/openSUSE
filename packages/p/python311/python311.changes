@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 31 20:54:36 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.11.0b2:
+  - many small updates
+- Add patch support-expat-245.patch:
+  * Support Expat >= 2.4.4 (jsc#SLE-21253)
+
+-------------------------------------------------------------------
 Tue May 10 15:01:18 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Refresh bluez-devel-vendor.tar.xz
