@@ -1,7 +1,7 @@
 #
 # spec file for package python-yapf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-yapf
-Version:        0.31.0
+Version:        0.32.0
 Release:        0
 Summary:        A formatter for Python code
 License:        Apache-2.0
@@ -65,7 +65,7 @@ be reformatted.
 %pytest --capture=no
 
 %post
-%python_install_alternative yapf
+%python_install_alternative yapf yapf-diff
 
 %postun
 %python_uninstall_alternative yapf

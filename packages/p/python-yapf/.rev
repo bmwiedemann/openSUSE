@@ -92,4 +92,29 @@
   folder being scanned is faster.</comment>
     <requestid>906775</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a69fa522d621536f58fc9ebb55302f0b</srcmd5>
+    <version>0.32.0</version>
+    <time>1654506619</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.32.0:
+  - Look at the 'pyproject.toml' file to see if it contains ignore file information
+    for YAPF.
+  - New entry point `yapf_api.FormatTree` for formatting lib2to3 concrete
+    syntax trees.
+  - Change tests to support &quot;pytest&quot;.
+  - Reformat so that &quot;flake8&quot; is happy.
+  - Clean up the FormatToken interface to limit how much it relies upon the
+    pytree node object.
+  - Rename &quot;unwrapped_line&quot; module to &quot;logical_line.&quot;
+  - Rename &quot;UnwrappedLine&quot; class to &quot;LogicalLine.&quot;
+  - Added pyproject extra to install toml package as an optional dependency.
+  - Enable `BLANK_LINE_BEFORE_NESTED_CLASS_OR_DEF` knob for &quot;pep8&quot; style, so
+    method definitions inside a class are surrounded by a single blank line as
+    prescribed by PEP8.
+  - Fixed the '...' token to be spaced after a colon.
+- Fix update-alternatives use.
+</comment>
+    <requestid>980752</requestid>
+  </revision>
 </revisionlist>
