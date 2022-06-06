@@ -32,4 +32,12 @@
     <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
     <requestid>743982</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>036239c07dd7c7b7a440248250a34d49</srcmd5>
+    <version>3.7.1</version>
+    <time>1654506603</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980904</requestid>
+  </revision>
 </revisionlist>

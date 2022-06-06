@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jun  3 15:17:25 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.7.1
+  * Ownership moved from @benediktschmitt to the tox-dev organization 
+    (new primary maintainer @gaborbernat)
+  * Raise when trying to acquire in R/O or missing folder
+  * Drop python 2.7, 3.5 and 3.6 support, add type hints
+  * Document asyncio support
+  * Accept path types (like pathlib.Path and pathlib.PurePath) in the 
+    constructor for FileLock objects.
+  * Add correct spelling of poll interval parameter for acquire method
+  * Enable use as context decorator
+  * More changes, see upstream changelog
+- Use PyPI tarball, switch to wheel for build (testsuite expects it)
+
+-------------------------------------------------------------------
 Mon Oct 14 13:38:01 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.

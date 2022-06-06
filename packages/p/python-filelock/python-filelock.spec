@@ -1,7 +1,7 @@
 #
 # spec file for package python-filelock
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2018 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,14 +19,17 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-filelock
-Version:        3.0.12
+Version:        3.7.1
 Release:        0
 Summary:        Platform Independent File Lock in Python
 License:        Unlicense
-URL:            https://github.com/benediktschmitt/py-filelock
-Source:         https://github.com/benediktschmitt/py-filelock/archive/v%{version}.tar.gz
+URL:            https://github.com/tox-dev/py-filelock
+Source:         https://files.pythonhosted.org/packages/source/f/filelock/filelock-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -38,17 +41,17 @@ independent file lock in Python, which provides a simple way of
 inter-process communication.
 
 %prep
-%setup -q -n py-filelock-%{version}
+%setup -q -n filelock-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}/%{$python_sitelib}
 
 %check
-%pytest test.py
+%pytest
 
 %files %{python_files}
 %doc README.md
