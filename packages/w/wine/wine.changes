@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun  5 18:22:21 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 7.10 development release
+  - macOS driver converted to PE.
+  - Mono engine updated to version 7.3.0.
+  - Windows-compatible Unicode collation.
+  - Wow64 support in SECUR32.
+  - Various bug fixes.
+- update staging to 7.10 release
+
+-------------------------------------------------------------------
 Sat May 21 07:50:21 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 7.9 development release

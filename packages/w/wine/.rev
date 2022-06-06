@@ -4449,4 +4449,18 @@
 - update staging to 7.9 release</comment>
     <requestid>978425</requestid>
   </revision>
+  <revision rev="379" vrev="1">
+    <srcmd5>78ccf1baca1798d705da3a3d481cc568</srcmd5>
+    <version>7.10</version>
+    <time>1654524749</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.10 development release
+  - macOS driver converted to PE.
+  - Mono engine updated to version 7.3.0.
+  - Windows-compatible Unicode collation.
+  - Wow64 support in SECUR32.
+  - Various bug fixes.
+- update staging to 7.10 release</comment>
+    <requestid>980990</requestid>
+  </revision>
 </revisionlist>
