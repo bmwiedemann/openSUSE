@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu May 26 07:01:46 UTC 2022 - stimut@gmail.com
+
+- Update to version 2.11.3:
+  * Bugfix: Retention period is being sent to the API as 0 (#5706)
+  * Fix Cobra completion output going to stdout
+  * Fix --version flag printing to stdout
+  * Add --upstream-remote-name flag to gh replo clone (#5619)
+  * Parallelize `label clone` (#5687)
+  * Stop bumping winget manifest as part of release automation (#5699)
+  * Write Cobra deprecation messages to stderr
+  * Bump goreleaser/goreleaser-action from 2 to 3
+  * Clarify that ShowResponseHeaders includes status line
+  * Fix owner qualifier for search queries (#5693)
+  * Add `--pattern` field to `run download` (#5539)
+  * add `include-all-branches` flag to `repo create` (#5537)
+  * Add ability to set title for ssh key in auth login (#5524)
+  * Always clear screen when watching PR checks (#5678)
+  * Fix `label clone` to pass orderBy (#5675)
+  * pr create: ensure clear error when `--body` is missing in nonTTY mode
+  * Allow passing full extension name (#5464)
+  * Fixing #5624 - Removing unneeded hint and additional new line (#5642)
+  * Extract feature detection package (#5494)
+  * dont need assignment
+  * issue view: ensure loading indicator is stopped when a prompt is shown (#5641)
+  * Change int to uint64 for large fields (#5651)
+  * filter out internal ports from gh cs ports list
+  * Support rerunning Actions runs with debug logging (#5594)
+  * Allow nil to truncate template function
+  * Support and favor delete for secrets (#5617)
+  * Fix whitespace in search prs examples (#5650)
+  * Fix struct field tag (#5649)
+  * Replace uses of strings.Title (#5623)
+  * Removing confusing user search text (#5620)
+  * Re-enable linters now that golangci-lint has been updated (#5615)
+
+-------------------------------------------------------------------
 Wed May 11 09:03:37 UTC 2022 - rombert@apache.org
 
 - Update to version 2.10.1:
