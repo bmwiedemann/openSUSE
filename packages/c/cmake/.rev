@@ -1905,4 +1905,25 @@ Adjust cmake-gui.spec so it uses 2.8.12.1 (forwarded request 208241 from sumski)
     target_sources() command.</comment>
     <requestid>969999</requestid>
   </revision>
+  <revision rev="216" vrev="1">
+    <srcmd5>741716489cf986c21faf404ba5fca833</srcmd5>
+    <version>3.23.2</version>
+    <time>1654506637</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.23.2:
+  * The ``CPACK_PACKAGEMAKER_CHOICES`` variable used in the
+    ``CPack.distribution.dist.in`` template file was replaced by a new
+    ``CPACK_APPLE_PKG_INSTALLER_CONTENT`` variable in CMake 3.23.0.
+    This broke projects that provided their own template file but still
+    expected the ``CPACK_PACKAGEMAKER_CHOICES`` variable to be defined.
+    The old ``CPACK_PACKAGEMAKER_CHOICES`` variable is now also set to the
+    same content as it was before, but it is formally deprecated.
+ 
+
+- Edit cmake.macros: Stop injecting -DNDEBUG at the end of
+  CFLAGS. It's impossible to override by re-setting CFLAGS, and
+  if it were really wanted globally, it should be in %optflags
+  instead.</comment>
+    <requestid>980819</requestid>
+  </revision>
 </revisionlist>

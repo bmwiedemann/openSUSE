@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jun  5 00:03:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.23.2:
+  * The ``CPACK_PACKAGEMAKER_CHOICES`` variable used in the
+    ``CPack.distribution.dist.in`` template file was replaced by a new
+    ``CPACK_APPLE_PKG_INSTALLER_CONTENT`` variable in CMake 3.23.0.
+    This broke projects that provided their own template file but still
+    expected the ``CPACK_PACKAGEMAKER_CHOICES`` variable to be defined.
+    The old ``CPACK_PACKAGEMAKER_CHOICES`` variable is now also set to the
+    same content as it was before, but it is formally deprecated.
+ 
+-------------------------------------------------------------------
+Sat May 28 18:54:48 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Edit cmake.macros: Stop injecting -DNDEBUG at the end of
+  CFLAGS. It's impossible to override by re-setting CFLAGS, and
+  if it were really wanted globally, it should be in %optflags
+  instead.
+
+-------------------------------------------------------------------
 Wed Apr 13 20:48:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.23.1:
