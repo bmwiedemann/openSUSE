@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu May 19 07:32:31 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to 9.18.3:
+  Bugs fixed:
+  * Fix a crash in DNS-over-HTTPS (DoH) code caused by premature
+    TLS stream socket object deletion.
+  * RPZ NSIP and NSDNAME rule processing didn't handle stub and
+    static-stub zones at or above the query name. This has now
+    been addressed.
+  * Fixed a deadlock that could occur if an rndc connection arrived
+    during the shutdown of network interfaces.
+  * Refactor the fctx_done() function to set fctx to NULL after
+    detaching, so that reference counting errors will be easier to
+    avoid.
+  * udp_recv() in dispatch could trigger an INSIST when the
+    callback's result indicated success but the response was
+    canceled in the meantime.
+  * Work around a jemalloc quirk which could trigger an
+    out-of-memory condition in named over time.
+  * If there was a pending negative cache DS entry, validations
+    depending upon it could fail.
+  * dig returned a 0 exit status on UDP connection failure.
+  * Fix an assertion failure when using dig with +nssearch and
+    +tcp options by starting the next query in the send_done()
+    callback (like in the UDP mode) instead of doing that
+    recursively in start_tcp(). Also ensure that queries
+    interrupted while connecting are detached properly.
+  * Don't remove CDS/CDNSKEY DELETE records on zone sign when
+    using 'auto-dnssec maintain;'.
+  This obsoletes the following patch:
+  bind-define-local-instances-of-FALLTHROUGH-and-UNREACHABLE.patch
+  [CVE-2022-1183, bsc#1199619]
+
+-------------------------------------------------------------------
+Tue May 17 12:06:17 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
+
+- An assertion failure can be triggered if a TLS connection to a
+  configured http TLS listener with a defined endpoint is destroyed too
+  early.
+  [CVE-2022-1183, bsc#1199619, CVE-2022-1183.patch]
+
+-------------------------------------------------------------------
 Mon May 16 08:14:55 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Add upstream patch bind-prevent-buffer-overflow.patch.
