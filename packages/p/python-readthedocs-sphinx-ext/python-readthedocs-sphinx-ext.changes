@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jun  4 20:40:15 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.1.8:
+  * Remove direct call to distutils in favor of more modern packaging
+
+- changes from version 2.1.7:
+  * Use proxied_static_path if available
+
+- changes from version 2.1.6:
+  * External version warning: avoid using the deprecated traverse
+    method
+  * Update tox.ini to reflect the current package state
+  * Update some deps
+
+-------------------------------------------------------------------
 Fri Mar 18 22:29:34 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.1.5:
