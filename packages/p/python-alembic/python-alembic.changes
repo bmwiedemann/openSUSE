@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Jun  4 20:32:32 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.8.0:
+  * changed
+    + [changed] [installation] Alembic 1.8 now supports Python 3.7 and
+      above.  References: #1025
+    + [changed] [environment] The “Pylons” environment template has
+      been removed as of Alembic 1.8. This template was based on the
+      very old pre-Pyramid Pylons web framework which has been long
+      superseded by Pyramid.  References: #987
+  * feature
+    + [feature] [typing] PEP 484 typing annotations have been added to
+      the env.py and revision template files within migration
+      templates. Pull request by Nikita Sobolev.  References: #764
+  * usecase
+    + [usecase] [operations] The op.drop_table() operation directive
+      will now trigger the before_drop() and after_drop() DDL event
+      hooks at the table level, which is similar to how the
+      before_create() and after_create() hooks are triggered by the
+      op.create_table() directive. Note that as op.drop_table()
+      accepts only a table name and optional schema name, the Table
+      object received by the event will not have any information
+      within it other than the table name and schema name.
+      References: #1037
+    + [usecase] [commands] Added new token epoch to the file_template
+      option, which will populate the integer epoch as determined by
+      int(create_date.timestamp()). Pull request courtesy Caio
+      Carvalho.  References: #1027
+  * bug
+    + [bug] [revisioning] Fixed issue where a downgrade using a
+      relative revision would fail in case of multiple branches with a
+      single effectively head due to interdependencies between
+      revisions.  References: #1026
+    + [bug] [batch] Fixed issue in batch mode where CREATE INDEX would
+      not use a new column name in the case of a column rename.
+      References: #1034
+
+-------------------------------------------------------------------
 Sat Mar 26 20:27:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.7:

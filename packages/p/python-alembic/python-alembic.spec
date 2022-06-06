@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-alembic
-Version:        1.7.7
+Version:        1.8.0
 Release:        0
 Summary:        A database migration tool for SQLAlchemy
 License:        MIT
@@ -39,13 +39,13 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Mako
 Requires:       python-SQLAlchemy >= 1.3.0
 Requires:       python-python-dateutil
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+BuildArch:      noarch
 %if 0%{?python_version_nodots} < 39
 Requires:       python-importlib-metadata
 Requires:       python-importlib-resources
 %endif
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
-BuildArch:      noarch
 %python_subpackages
 
 %description
