@@ -32,7 +32,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-ipython%{psuffix}
-Version:        8.2.0
+Version:        8.4.0
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause
