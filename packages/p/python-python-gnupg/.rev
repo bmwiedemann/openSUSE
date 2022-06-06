@@ -120,4 +120,17 @@ providing the results. (forwarded request 695023 from mcepl)</comment>
     message without decrypting it.</comment>
     <requestid>934532</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>67d7ea1292ca7cb2f2de50be38df7ac5</srcmd5>
+    <version>0.4.9</version>
+    <time>1654506629</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.9:
+  * Added a status attribute to the returned object from gen_key()
+  * Provide the ability to add subkeys. 
+  * Add keygrip values to the information collected when keys are listed.
+  * Added extra_args keyword argument to send_keys(), recv_keys() and
+    search_keys() to allow passing options relating to key servers.</comment>
+    <requestid>980771</requestid>
+  </revision>
 </revisionlist>

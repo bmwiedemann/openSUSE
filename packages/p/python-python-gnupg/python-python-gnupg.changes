@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun  4 13:54:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.9:
+  * Added a status attribute to the returned object from gen_key()
+  * Provide the ability to add subkeys. 
+  * Add keygrip values to the information collected when keys are listed.
+  * Added extra_args keyword argument to send_keys(), recv_keys() and
+    search_keys() to allow passing options relating to key servers. 
+
+-------------------------------------------------------------------
 Mon Nov 29 11:57:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.4.8:

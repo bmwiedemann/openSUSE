@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-gnupg
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
 Name:           python-python-gnupg
-Version:        0.4.8
+Version:        0.4.9
 Release:        0
 Summary:        A wrapper for the GNU Privacy Guard (GPG or GnuPG)
 License:        BSD-3-Clause
@@ -47,6 +47,7 @@ encryption and signature functionality from Python programs.
 
 %prep
 %setup -q -n python-gnupg-%{version}
+echo "import setuptools; setuptools.setup()" > setup.py
 
 %build
 %python_build
