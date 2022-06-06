@@ -1,7 +1,7 @@
 #
 # spec file for package openjpeg2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %define library_name  libopenjp2-7
-%define base_version 2.4
+%define base_version 2.5
 Name:           openjpeg2
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        Opensource JPEG 2000 Codec Implementation
 License:        BSD-2-Clause
@@ -31,10 +31,14 @@ BuildRequires:  cmake > 2.8.2
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  libjbig-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(lcms2)
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(libzstd)
 
 %description
 The OpenJPEG library is an open-source JPEG 2000 codec written in C language.

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun  3 09:59:48 UTC 2022 - Timothy Brown <stimut@gmail.com>
+
+- update to 2.5.0:
+  * Encoder: add support for generation of TLM markers
+  * Decoder: add support for high throughput (HTJ2K) decoding
+  * Decoder: add support for partial bitstream decoding
+  * Bug fixes (including security fixes)
+
+-------------------------------------------------------------------
 Mon Jan 18 23:00:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.0:
