@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun  2 15:30:18 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 4.2.3
+  Added:
+  * Autostart feature is now overally better and works with Flatpak build too.
+  * Added a switch to automatically reject all incoming HTTP cookies application-wide.
+  * Gmail: Display proper "To" e-mail header when displaying e-mails.
+  Fixed:
+  * Feedly: Correct article URLs are now fetched if possible.
+  * Mac OS X: Fixed launching with error "invalid application".
+  * External resources for non-web-engine article viewer are now resolved more correctly.
+
+-------------------------------------------------------------------
 Sat May 21 18:58:09 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to version 4.2.2
