@@ -1,0 +1,5 @@
+#!/bin/sh
+dir=$(dirname $0)
+cid=$($dir/getcid.pl "$1")
+ln -sf "$cid" "$1"
+git add "$1"
