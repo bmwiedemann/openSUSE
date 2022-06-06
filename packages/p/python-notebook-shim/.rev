@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4002922ba71b1d2590a12707c66e0c0b</srcmd5>
+    <version>0.1.0</version>
+    <time>1654506646</time>
+    <user>dimstar_suse</user>
+    <comment>required by nbclassic
+
+(supersede: remove stray _multibuild)</comment>
+    <requestid>980926</requestid>
+  </revision>
+</revisionlist>
