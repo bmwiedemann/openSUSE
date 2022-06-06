@@ -28,7 +28,7 @@ git init
 git remote add origin https://code.opensuse.org/package/$pkg
 cp -al ../../../.git/objects/* .git/objects/
 ( cd ../../../ ; git fast-export --no-data master -- $p/ ) > /tmp/f
-cat /tmp/f | perl -pe "s! $p"'/([^/]*)$! $1!' | git fast-import
+cat /tmp/f | perl -pe "s! \\Q$p\\E"'/([^/]*)$! $1!' | git fast-import
 git reset --hard master
 git gc --prune=now
 if ! git fetch origin ; then
