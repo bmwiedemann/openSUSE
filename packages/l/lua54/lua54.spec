@@ -46,6 +46,9 @@ Patch6:         shared_link.patch
 # PATCH-FIX-UPSTREAM luabugsX.patch https://www.lua.org/bugs.html#5.4.4-X
 Patch7:         luabugs1.patch
 Patch8:         luabugs2.patch
+Patch9:         luabugs3.patch
+Patch10:        luabugs4.patch
+Patch11:        luabugs5.patch
 #
 %if "%{flavor}" == "test"
 BuildRequires:  lua54
