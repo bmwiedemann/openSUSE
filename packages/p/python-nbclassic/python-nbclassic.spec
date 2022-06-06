@@ -24,21 +24,24 @@
 %bcond_with libalternatives
 %endif
 Name:           python-nbclassic
-Version:        0.3.5
+Version:        0.3.7
 Release:        0
 Summary:        Jupyter Notebook as a Jupyter Server Extension
 License:        BSD-3-Clause
 URL:            https://github.com/jupyterlab/nbclassic
 # The github archive has the tests
 Source:         https://github.com/jupyterlab/nbclassic/archive/v%{version}.tar.gz#/nbclassic-%{version}-gh.tar.gz
-BuildRequires:  %{python_module jupyter_server >= 1.8 with %python-jupyter_server < 2}
+BuildRequires:  %{python_module jupyter_server >= 1.8}
 BuildRequires:  %{python_module notebook < 7}
+BuildRequires:  %{python_module notebook_shim >= 0.1.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       jupyter-nbclassic = %{version}
+Requires:       python-jupyter_server >= 1.8
 Requires:       python-notebook < 7
-Requires:       (python-jupyter_server >= 1.8 with python-jupyter_server < 2)
+Requires:       python-notebook_shim >= 0.1.0
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts
@@ -98,7 +101,7 @@ This package contains the jupyterlab server configuration file
 %python_uninstall_alternative jupyter-nbclassic
 
 %check
-%pytest nbclassic
+%pytest
 
 %files %{python_files}
 %doc README.md
@@ -109,6 +112,6 @@ This package contains the jupyterlab server configuration file
 
 %files -n jupyter-nbclassic
 %license LICENSE
-%{!?_jupyter_distconfig:%config} %{_jupyter_server_confdir}/nbclassic.json
+%_jupyter_config %{_jupyter_server_confdir}/nbclassic.json
 
 %changelog

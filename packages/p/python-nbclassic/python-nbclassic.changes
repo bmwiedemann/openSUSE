@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun  5 17:18:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.3.7
+  * Clean up packaging and CI #91 (@blink1073)
+- Release 0.3.6
+  * Depend on notebook_shim package for server-side shim layer #88
+    (@Zsailer)
+
+-------------------------------------------------------------------
 Thu Feb 17 16:37:03 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
