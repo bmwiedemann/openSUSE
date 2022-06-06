@@ -435,4 +435,13 @@
     <comment></comment>
     <requestid>942916</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>892cff684cbae8687f779fc2ded12b11</srcmd5>
+    <version>0.33.1</version>
+    <time>1654506633</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.33.1:
+  * Prevent deadlock on logging._lock</comment>
+    <requestid>980778</requestid>
+  </revision>
 </revisionlist>
