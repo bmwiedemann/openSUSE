@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun  5 00:40:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.18:
+  This is the release of iproute2 corresponding to the 5.18 kernel.
+  There are not many new features in this release.
+
+  * The build issues with libbpf should be fixed now.
+  * Building with clang is now supported.
+  * There are still some warnings with gcc-12 that will need to be
+    fixed in the upstream kernel headers.
+
+-------------------------------------------------------------------
 Sat Mar 26 13:58:23 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - update to 5.17:
