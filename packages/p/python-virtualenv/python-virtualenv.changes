@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Jun  4 20:43:42 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 20.14.1:
+  * Features
+    + Support for creating a virtual environment from a Python 2.7
+      framework on macOS 12 - by @nickhutchinson. (#2284)
+  * Bugfixes
+    + Upgrade embedded setuptools to 62.1.0 from 61.0.0 - by
+      @gaborbernat. (#2327)
+
+- changes from version 20.14.0:
+  * Features
+    + Support Nushell activation scripts with nu version 0.60 - by
+      @kubouch. (#2321)
+  * Bugfixes
+    + Upgrade embedded setuptools to 61.0.0 from 60.10.0 - by
+      @gaborbernat. (#2322)
+
+- changes from version 20.13.4:
+  * Bugfixes
+    + Improve performance of python startup inside created virtualenvs
+      - by @asottile. (#2317)
+    + Upgrade embedded setuptools to 60.10.0 from 60.9.3 - by
+      @gaborbernat. (#2320)
+
+-------------------------------------------------------------------
 Sat Mar 12 05:54:11 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 20.13.3:

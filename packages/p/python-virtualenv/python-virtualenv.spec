@@ -28,7 +28,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-virtualenv%{psuffix}
-Version:        20.13.3
+Version:        20.14.1
 Release:        0
 Summary:        Virtual Python Environment builder
 License:        MIT
