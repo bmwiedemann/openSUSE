@@ -131,4 +131,17 @@
     <comment></comment>
     <requestid>885995</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e8f22bd2d21f6b7ba379068ae07e63d4</srcmd5>
+    <version>1.2.1</version>
+    <time>1654506631</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.1:
+  * Added missing typeshed types from distribution
+  * Pass all arguments on recursive freeze_time calls
+  * Add support for `time.perf_counter` (and `…_ns`)
+  * Added typeshed types
+  * Dropped support for python 3.5</comment>
+    <requestid>980773</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun  4 14:46:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.1:
+  * Added missing typeshed types from distribution
+  * Pass all arguments on recursive freeze_time calls
+  * Add support for `time.perf_counter` (and `…_ns`)
+  * Added typeshed types
+  * Dropped support for python 3.5
+
+-------------------------------------------------------------------
 Fri Apr 16 12:47:48 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Skip python2 build. Not supported by upstream, a simple
