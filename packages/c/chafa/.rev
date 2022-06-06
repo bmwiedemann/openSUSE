@@ -247,4 +247,41 @@
   * huntr.dev: Buffer over-read when compiled with -O0 or non-x86 target</comment>
     <requestid>975093</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b336c711d8199d10b2a9ae01da009db2</srcmd5>
+    <version>1.12.0</version>
+    <time>1654511928</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.12.0:
+  * The ImageMagick dependency is now optional and deprecated.
+    Packagers are encouraged to drop the ImageMagick dependency (--without-imagemagick)
+    and add direct dependencies on relevant image codecs.
+    ImageMagick support will be removed in a future release.
+  * Added image loaders for the following formats: JPEG, SVG, TIFF, WebP.
+    Like the existing GIF, PNG and XWD loaders, these are much faster and
+    generally safer than their ImageMagick counterparts. If ImageMagick is
+    enabled, it will be used as a fallback. Supported image loaders will
+    be listed in the --version output.
+  * Implemented a 16/8 mode producing 8 colors and an additional 8 bright
+    foreground-only colors for a total of 16 foreground and 8 background colors.
+    When using ANSI escape sequences in symbol mode, the sequence for bold
+    text is used to enable bright colors. This scheme corresponds to that of
+    the IBM PC's VGA hardware text modes and was popular with terminal
+    emulators in the late 1980s to early 2000s.
+    With a few tweaks, output from this mode can be turned into ANSI art scene
+    .ANS files compatible with utilities like the wonderful Ansilove[2], e.g:
+    $ chafa -f symbols -c 16/8 -s 80 --symbols space+solid+half --fill stipple \
+        in.jpg | tr -d '\n' | iconv -c -f utf8 -t cp437 &gt; out.ans
+    $ ansilove out.ans -o out.png
+  * New builtin Latin symbols (available with --symbols latin). This class
+    comprises most of the symbols from the Latin-1 Supplement, Latin Extended-A
+    and -B, IPA Extensions and Spacing Modifier Letters plus a few Latin-like
+    symbols from other ranges, using Terminus as the reference font.
+    The ASCII class is also a subset of this class.
+  * Reworked ASCII symbols to be more representative of modern terminal fonts.
+    As with the other Latin ranges, the reference font is now Terminus.
+  * New option: --scale &lt;n&gt;. This takes a real number specifying the on-screen
+    scaling factor relative to the input's pixel size, respecting the terminal</comment>
+    <requestid>980989</requestid>
+  </revision>
 </revisionlist>
