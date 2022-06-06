@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Jun  4 18:08:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10.1:
+  * Messages: Fix ``distutils`` import. Regressed in :gh:`843`. 
+  * The ``get_next_timezone_transition
+    likely as soon as Babel 2.11.
+  * CLDR: Upgrade to CLDR 41.0. 
+     * The ``c`` and ``e`` plural form operands introduced in CLDR 40 are parsed
+     * Non-nominative forms of units are currently ignored.
+  * Messages: Implement ``--init-missing`` option for ``pybabel update`` 
+  * Messages: For ``extract``, you can now replace the built-in ``.*`` / ``_*``
+    ignored directory patterns with ones of your own. 
+  * Messages: Add ``--check`` to verify if catalogs are up-to-date 
+  * Messages: Add ``--header-comment`` to override default header comment 
+  * Dates: ``parse_time`` now supports 12-hour clock, and is better at parsing
+    partial times.
+  * Dates: ``parse_date`` and ``parse_time`` now raise ``ParseError``, a subclass
+    of ``ValueError``, in certain cases.
+  * Dates: ``parse_date`` and ``parse_time`` now accept the ``format`` parameter.
+  * The internal ``babel/_compat.py`` module is no more 
+  * Python 3.10 is officially supported 
+  * There's now a friendly GitHub issue template. 
+  * Don't use the deprecated format_number function internally or in tests
+  * Add GitHub URL for PyPi 
+  * Python 3.12 compatibility: Prefer setuptools imports to distutils imports 
+  * Python 3.11 compatibility: Add deprecations to l*gettext variants 
+  * CI: Babel is now tested with PyPy 3.7. 
+  * Date formatting: Allow using ``other`` as fallback form 
+  * Locales: ``Locale.parse
+  * A typo in the plural format for Maltese is fixed. 
+  * Messages: Catalog date parsing is now timezone independent. 
+  * Messages: Fix duplicate locations when writing without lineno 
+  * Messages: Fix missing trailing semicolon in plural form headers 
+  * CLI: Fix output of ``--list-locales`` to not be a bytes repr 
+  * Documentation is now correctly built again, and up to date 
+
+-------------------------------------------------------------------
 Tue Oct  5 14:53:29 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
 - Added BuildRequires:  alts

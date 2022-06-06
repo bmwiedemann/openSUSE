@@ -1,7 +1,7 @@
 #
 # spec file for package python-Babel
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-Babel
-Version:        2.9.1
+Version:        2.10.1
 Release:        0
 Summary:        Internationalization utilities
 License:        BSD-3-Clause
@@ -90,7 +90,7 @@ A collection of tools for internationalizing Python applications.
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGES
+%doc CHANGES.rst
 %python_alternative %{_bindir}/pybabel
 %{python_sitelib}/babel
 %{python_sitelib}/Babel-%{version}-py%{python_version}.egg-info
