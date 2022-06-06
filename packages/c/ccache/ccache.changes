@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Jun  4 23:58:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.6.1:
+  * Added support for passing a directory to the MSVC `/Fo` option.
+  * Added knowledge about the `-imsvc` compiler option.
+  * Added knowledge about the `-z` linker option.
+  * Improved handling of `.gcno` files in combination with absolute input file
+    paths.
+  * Adapted to changes in GCC 9+ `.gcno` files, which contain the current working
+    directory, by including said directory in the hash. You can opt out of this by
+    enabling "`gcno_cwd sloppiness`".
+  * A preexisting object file is no longer considered when using
+    `-fsyntax-only`.
+  * Authenticate with Redis before database selection.
+  * Don't exit with an error on failure reading a cached file.
+  * Bail out on too hard MSVC environment variables `CL` and `+_CL_+`.
+  * Only use `/run/user/<UID>/ccache-tmp` as the temporary directory if it's
+    writable.
+  * Fixed handling of the final newline in cached standard output from the
+    compiler.
+  * Fixed a bug related to distcc markers in standard error output.
+  * Paths to `base_dir` are now properly normalized on Windows.
+  * Fixed handling of MSVC `/Fp` and `/Yu` options with concatenated path.
+  * Fixed "`Multiple precompiled headers used`" error if MSVC `/Yu` option is used
+    after `/Fp`.
+  * Check for short reads when reading strings in result/manifest files.
+  * Log expanded secondary storage URL in put/remove.
+  * Fixed logging of statistics counters with value higher than one in debug log
+    and stats log.
+  * Avoid incorrect error log message for Redis write operations in `reshare`
+    mode.
+  * Support Redis URL without host (meaning localhost).
+
+-------------------------------------------------------------------
 Sun Apr  3 17:54:58 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - ccache 4.6:
