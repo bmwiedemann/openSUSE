@@ -140,6 +140,7 @@ Bash command line completion support for %{name}.
 	--disable-static \
 	--disable-examples \
 	--disable-rpath \
+	--disable-werror \
 	--with-init-script=systemd \
 	--with-systemdsystemunitdir=%{_unitdir}
 make %{?_smp_mflags}
