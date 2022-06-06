@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>973220</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>33aec52da47451ae796096a895dbd87e</srcmd5>
+    <version>1.0.2</version>
+    <time>1654506652</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip tests failing due to astropy 5.1 deprecating non-use of
+  asdf-astropy -- gh#astropy/asdf-astropy#82 (forwarded request 980933 from bnavigator)</comment>
+    <requestid>980934</requestid>
+  </revision>
 </revisionlist>

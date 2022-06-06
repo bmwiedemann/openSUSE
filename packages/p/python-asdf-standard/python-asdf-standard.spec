@@ -75,7 +75,8 @@ sed -i '/addopts = --color=yes/d' setup.cfg
 
 %if %{with test}
 %check
-%pytest
+# https://github.com/astropy/asdf-astropy/issues/82
+%pytest -k "not (time-1.0.0.yaml and test_example)"
 %endif
 
 %if !%{with test}
