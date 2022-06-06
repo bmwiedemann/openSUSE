@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun  4 15:00:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.1:
+  * Fixed value for `ansi.Bg.YELLOW`.
+  * Fixed unit tests for `ansi.allow_style`.
+  * `async_alert()` raises a `RuntimeError` if called from the main thread.
+
+-------------------------------------------------------------------
 Tue Mar  8 07:40:29 UTC 2022 - pgajdos@suse.com
 
 - version update to 2.4.0

@@ -570,4 +570,15 @@
     <comment></comment>
     <requestid>960149</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>a95534793632ea799eb0a4df41e2490a</srcmd5>
+    <version>2.4.1</version>
+    <time>1654506631</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.1:
+  * Fixed value for `ansi.Bg.YELLOW`.
+  * Fixed unit tests for `ansi.allow_style`.
+  * `async_alert()` raises a `RuntimeError` if called from the main thread.</comment>
+    <requestid>980775</requestid>
+  </revision>
 </revisionlist>
