@@ -1,0 +1,11 @@
+<package name="xmvn-connector-ivy" project="openSUSE:Factory">
+  <title>XMvn Connector for Apache Ivy</title>
+  <description>This package provides XMvn MOJO, which is a Maven plugin that consists
+of several MOJOs.  Some goals of these MOJOs are intended to be
+attached to default Maven lifecycle when building packages, others can
+be called directly from Maven command line.
+
+</description>
+  <devel project="Java:packages" package="xmvn-connector-ivy"/>
+  <url>https://fedora-java.github.io/xmvn/</url>
+</package>
