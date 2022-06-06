@@ -233,4 +233,19 @@
     <comment></comment>
     <requestid>973210</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>6e2b50fb6e6ae39658daeb5121be31ca</srcmd5>
+    <version>4.5.1</version>
+    <time>1654506595</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.5.1:
+  * Revert changes to ``$dynamicRef`` which caused a performance regression
+    in v4.5.0
+  * Validator classes for each version now maintain references to the correct
+    corresponding format checker (#905)
+  * Development has moved to a `GitHub organization
+    &lt;https://github.com/python-jsonschema/&gt;`_.
+    No functional behavior changes are expected from the change.</comment>
+    <requestid>980820</requestid>
+  </revision>
 </revisionlist>

@@ -25,7 +25,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-jsonschema
-Version:        4.4.0
+Version:        4.5.1
 Release:        0
 Summary:        An implementation of JSON-Schema validation for Python
 License:        MIT

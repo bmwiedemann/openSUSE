@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun  5 00:14:03 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.1:
+  * Revert changes to ``$dynamicRef`` which caused a performance regression
+    in v4.5.0
+  * Validator classes for each version now maintain references to the correct
+    corresponding format checker (#905)
+  * Development has moved to a `GitHub organization
+    <https://github.com/python-jsonschema/>`_.
+    No functional behavior changes are expected from the change.
+
+-------------------------------------------------------------------
 Tue Apr 26 11:54:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.4.0
