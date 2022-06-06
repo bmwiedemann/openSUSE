@@ -1009,4 +1009,12 @@ require bash-completion for iproute2-bash-completion]</comment>
     <comment>Staging:O</comment>
     <requestid>965968</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>645d281654b3d620f2bd6ff42038e020</srcmd5>
+    <version>5.18</version>
+    <time>1654506598</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980865</requestid>
+  </revision>
 </revisionlist>
