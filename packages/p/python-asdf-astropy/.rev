@@ -34,4 +34,12 @@ This is just to get rid of the build failure in d:l:p. It is not suitable for an
     <comment></comment>
     <requestid>973222</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6fa2079e413d46c46462ec178150a082</srcmd5>
+    <version>0.2.1</version>
+    <time>1654506651</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980930</requestid>
+  </revision>
 </revisionlist>

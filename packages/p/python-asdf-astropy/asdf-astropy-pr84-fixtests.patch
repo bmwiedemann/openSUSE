@@ -1,0 +1,129 @@
+From f21d85f54f9f528453c4e2b87e334fa436fc0d28 Mon Sep 17 00:00:00 2001
+From: William Jamieson <wjamieson@stsci.edu>
+Date: Fri, 27 May 2022 16:37:18 -0400
+Subject: [PATCH 1/3] Add version checking for testing Schechter1D
+
+---
+ asdf_astropy/converters/transform/tests/test_transform.py | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/asdf_astropy/converters/transform/tests/test_transform.py b/asdf_astropy/converters/transform/tests/test_transform.py
+index 7f8306c..41e0699 100644
+--- a/asdf_astropy/converters/transform/tests/test_transform.py
++++ b/asdf_astropy/converters/transform/tests/test_transform.py
+@@ -8,6 +8,7 @@
+ from asdf.tests.helpers import yaml_to_asdf
+ from astropy import units as u
+ from astropy.modeling import models as astropy_models
++from astropy.utils import minversion
+ 
+ from asdf_astropy import integration
+ from asdf_astropy.testing.helpers import assert_model_equal
+@@ -305,6 +306,9 @@ def create_single_models():
+ 
+     result.extend([astropy_models.fix_inputs(m, {"x": 45}), astropy_models.fix_inputs(m, {0: 45})])
+ 
++    if minversion("astropy", "5.1") and minversion("asdf-transform-schemas", "0.2.3"):
++        result.append(astropy_models.Schechter1D(phi_star=1.0, m_star=2.0, alpha=3.0))
++
+     return result
+ 
+ 
+@@ -331,6 +335,9 @@ def create_single_models():
+     astropy.modeling.physical_models.NFW,
+ ]
+ 
++if minversion("astropy", "5.1") and not minversion("asdf-transform-schemas", "0.2.3"):
++    UNSUPPORTED_MODELS.append(astropy.modeling.powerlaws.Schechter1D)
++
+ 
+ @pytest.mark.parametrize("model", create_single_models())
+ def test_single_model(tmpdir, model):
+
+From 20e00f994fd47750e00fe74eca80aba24a026a74 Mon Sep 17 00:00:00 2001
+From: William Jamieson <wjamieson@stsci.edu>
+Date: Fri, 27 May 2022 16:45:40 -0400
+Subject: [PATCH 2/3] Make test_all_models_supported a parameterized test
+
+---
+ .../transform/tests/test_transform.py         | 34 +++++++++----------
+ 1 file changed, 16 insertions(+), 18 deletions(-)
+
+diff --git a/asdf_astropy/converters/transform/tests/test_transform.py b/asdf_astropy/converters/transform/tests/test_transform.py
+index 41e0699..de4cfdf 100644
+--- a/asdf_astropy/converters/transform/tests/test_transform.py
++++ b/asdf_astropy/converters/transform/tests/test_transform.py
+@@ -344,15 +344,7 @@ def test_single_model(tmpdir, model):
+     assert_model_roundtrip(model, tmpdir)
+ 
+ 
+-def test_all_models_supported():
+-    """
+-    Test that all model classes in astropy have serialization
+-    support implemented in this package.  If this test fails,
+-    file an issue on GitHub for each missing model and add
+-    the model to the UNSUPPORTED_MODELS list above with
+-    a link to the issue in a comment.
+-    """
+-
++def get_all_models():
+     def _iterate_model_classes():
+         for key, value in itertools.chain(
+             astropy_models.__dict__.items(), astropy.modeling.math_functions.__dict__.items()
+@@ -364,18 +356,24 @@ def _iterate_model_classes():
+             ):
+                 yield value
+ 
++    return list(_iterate_model_classes())
++
++
++@pytest.mark.parametrize("model", get_all_models())
++def test_all_models_supported(model):
++    """
++    Test that all model classes in astropy have serialization
++    support implemented in this package.  If this test fails,
++    file an issue on GitHub for each missing model and add
++    the model to the UNSUPPORTED_MODELS list above with
++    a link to the issue in a comment.
++    """
++
+     extensions = integration.get_extensions()
+     extension_manager = asdf.extension.ExtensionManager(extensions)
+ 
+-    missing = set()
+-    for model_class in _iterate_model_classes():
+-        if not extension_manager.handles_type(model_class):
+-            missing.add(model_class)
+-
+-    if len(missing) > 0:
+-        class_names = sorted([f"{m.__module__}.{m.__qualname__}" for m in missing])
+-        message = "Missing support for the following model classes:\n\n" + "\n".join(class_names)
+-        assert len(missing) == 0, message
++    message = f"Missing support for model: {model.__module__}.{model.__qualname__}"
++    assert extension_manager.handles_type(model), message
+ 
+ 
+ def test_legacy_const(tmpdir):
+
+From ae3ec2c8623bc9620b37eccb9b3d5b48db39a5d6 Mon Sep 17 00:00:00 2001
+From: William Jamieson <wjamieson@stsci.edu>
+Date: Tue, 31 May 2022 09:35:01 -0400
+Subject: [PATCH 3/3] Add coverage to astropy LTS CI
+
+---
+ .github/workflows/ci.yml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/.github/workflows/ci.yml b/.github/workflows/ci.yml
+index 6095939..1907b49 100644
+--- a/.github/workflows/ci.yml
++++ b/.github/workflows/ci.yml
+@@ -63,7 +63,7 @@ jobs:
+           - name: Python 3.9 with Astropy LTS
+             python-version: "3.9"
+             os: ubuntu-latest
+-            toxenv: py39-astropylts
++            toxenv: py39-astropylts-cov
+ 
+           - name: Build Documents
+             python-version: "3.9"

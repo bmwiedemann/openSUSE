@@ -34,6 +34,8 @@ Summary:        ASDF serialization support for astropy
 License:        BSD-3-Clause
 URL:            https://github.com/astropy/asdf-astropy
 Source:         https://files.pythonhosted.org/packages/source/a/asdf-astropy/asdf_astropy-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM asdf-astropy-pr84-fixtests.patch -- gh#astropy/asdf-astropy#84
+Patch1:         https://github.com/astropy/asdf-astropy/pull/84.patch#/asdf-astropy-pr84-fixtests.patch
 BuildRequires:  %{python_module packaging >= 16.0}
 BuildRequires:  %{python_module setuptools >= 42}
 BuildRequires:  %{python_module setuptools_scm}
@@ -66,7 +68,7 @@ BuildArch:      noarch
 ASDF serialization support for astropy
 
 %prep
-%setup -q -n asdf_astropy-%{version}
+%autosetup -p1 -n asdf_astropy-%{version}
 sed -i 's/--color=yes//' setup.cfg
 
 %build
