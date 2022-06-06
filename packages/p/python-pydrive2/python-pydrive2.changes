@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun  3 11:11:45 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.10.1
+  * implement a fsspec-based filesystem backend
+  * fs.get_file: add callback support
+  * Add option to not launch the browser automatically via LocalWebserver
+  * make credentials save/load thread safe
+- Add patches:
+  * modernize.patch: support up to Python 3.10
+  * migrate-to-google-auth.patch: drop obsolete oauthlib2 requirement
+
+-------------------------------------------------------------------
 Mon Jul  5 21:20:11 UTC 2021 - Martin Wilck <mwilck@suse.com>
 
 - Disabled tests - they all fail on OBS because they need network 
