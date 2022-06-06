@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <services>
-  <service name="obs_scm" mode="localonly">
+  <service name="obs_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://github.com/openSUSE/openSUSE-welcome.git</param>
     <!-- If you need to force version manually or if you have problems with GIT Tags:
@@ -9,9 +9,9 @@
     <param name="versionformat">@PARENT_TAG@+git.@TAG_OFFSET@.%h</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service name="set_version" mode="localonly"/>
-  <service name="tar" mode="localonly"/>
-  <service name="recompress" mode="localonly">
+  <service name="set_version" mode="disabled"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
     <param name="compression">xz</param>
     <param name="file">*.tar</param>
   </service>

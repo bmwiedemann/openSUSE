@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 31 14:45:05 UTC 2022 - dimstar@opensuse.org
+
+- Update to version 0.1.8+git.46.64e51ec:
+  + Updated translations (Catalan, Russian, Swedish, Ukrainian).
+- Add back -lang recommends to the main package: the -lang package
+  does not follow the standard method of installing translations to
+  /usr/share/locale, but installs everything to
+  /usr/share/opensuse-welcome. As such, the automatic supplements
+  do not trigger as intended. A opensuse-welcome-lang.inc is being
+  generated to make the recommends still smarter, based on selected
+  locales in zypp.
+
+-------------------------------------------------------------------
 Tue May 24 09:13:56 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not recommend lang package: the lang package has smarter

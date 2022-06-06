@@ -20,13 +20,20 @@
 %define _name openSUSE-welcome
 
 Name:           opensuse-welcome
-Version:        0.1.8+git.44.7923e16
+Version:        0.1.8+git.46.64e51ec
 Release:        0
 Summary:        Welcome utility for openSUSE
 License:        GPL-3.0-or-later AND MIT
 Group:          System/X11/Utilities
 URL:            https://github.com/openSUSE/openSUSE-welcome
 Source0:        %{_name}-%{version}.tar.xz
+# Source file to produce opensuse-welcome-lang.inc
+Source98:       opensuse-welcome-lang-recommends.sh
+# REcommend the lang package based on installed locales
+# the -lang package actually does not install the translations
+# to a standard location, which results in the lang not having the
+# relevant supplements added.
+Source99:       opensuse-welcome-lang.inc
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  hicolor-icon-theme-branding-openSUSE
 BuildRequires:  libqt5-linguist
@@ -35,6 +42,7 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5WebChannel)
 BuildRequires:  pkgconfig(Qt5WebEngine)
+%include %{SOURCE99}
 
 %lang_package
 

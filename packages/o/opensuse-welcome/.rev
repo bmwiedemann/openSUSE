@@ -64,4 +64,20 @@
   supplements in place. (forwarded request 978902 from dimstar)</comment>
     <requestid>978911</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>47dddebc1ef2d16b69a0fa4ca393ab4d</srcmd5>
+    <version>0.1.8+git.46.64e51ec</version>
+    <time>1654506601</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.1.8+git.46.64e51ec:
+  + Updated translations (Catalan, Russian, Swedish, Ukrainian).
+- Add back -lang recommends to the main package: the -lang package
+  does not follow the standard method of installing translations to
+  /usr/share/locale, but installs everything to
+  /usr/share/opensuse-welcome. As such, the automatic supplements
+  do not trigger as intended. A opensuse-welcome-lang.inc is being
+  generated to make the recommends still smarter, based on selected
+  locales in zypp. (forwarded request 980116 from dimstar)</comment>
+    <requestid>980875</requestid>
+  </revision>
 </revisionlist>
