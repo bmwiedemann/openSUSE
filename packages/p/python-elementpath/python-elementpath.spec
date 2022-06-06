@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-elementpath
-Version:        2.5.0
+Version:        2.5.3
 Release:        0
 Summary:        XPath 1.0/20 parsers and selectors for ElementTree and lxml
 License:        MIT

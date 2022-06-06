@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun  4 14:00:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.3:
+  * Fix unary path step operator (issue #46)
+  * Fix sphinx warnings *'reference target not found'* (issue #45)
+  * Include PR #43 with fixes for `XPathContext.iter_siblings()` (issues #42 and #44)
+  * Fix for failed floats equality tests (issue #41)
+  * Static typing tested with mypy==0.950
+
+-------------------------------------------------------------------
 Sat Mar 26 21:23:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.0:

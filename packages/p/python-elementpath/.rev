@@ -155,4 +155,17 @@
   * Drop support for Python 3.6</comment>
     <requestid>965099</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>18f9427c28f36cb86b35baedf11467ae</srcmd5>
+    <version>2.5.3</version>
+    <time>1654506629</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.3:
+  * Fix unary path step operator (issue #46)
+  * Fix sphinx warnings *'reference target not found'* (issue #45)
+  * Include PR #43 with fixes for `XPathContext.iter_siblings()` (issues #42 and #44)
+  * Fix for failed floats equality tests (issue #41)
+  * Static typing tested with mypy==0.950</comment>
+    <requestid>980772</requestid>
+  </revision>
 </revisionlist>
