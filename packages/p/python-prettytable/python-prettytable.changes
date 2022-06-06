@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun  4 11:42:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.0:
+  * Support Python 3.11
+  * Add flag to preserve internal borders when border=False
+  * Alignment timing fix (#179) @myheroyuki 
+
+-------------------------------------------------------------------
 Wed Mar 30 09:21:10 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.2.0

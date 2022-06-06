@@ -24,4 +24,15 @@
     <comment></comment>
     <requestid>966024</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5b68643aa1f4e9c7545648fc28605cc3</srcmd5>
+    <version>3.3.0</version>
+    <time>1654506621</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.0:
+  * Support Python 3.11
+  * Add flag to preserve internal borders when border=False
+  * Alignment timing fix (#179) @myheroyuki</comment>
+    <requestid>980754</requestid>
+  </revision>
 </revisionlist>

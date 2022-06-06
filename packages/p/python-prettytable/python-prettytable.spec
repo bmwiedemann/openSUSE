@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-prettytable
-Version:        3.2.0
+Version:        3.3.0
 Release:        0
 Summary:        Library for displaying tabular data in formatted fashion
 License:        BSD-2-Clause
