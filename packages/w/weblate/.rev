@@ -95,4 +95,28 @@
     <comment></comment>
     <requestid>967389</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e3a7da902034f2acdaa9be730a7ff510</srcmd5>
+    <version>4.12.2</version>
+    <time>1654506642</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.12.2
+  * Added support for Amharic in :ref:check-end-stop.
+  * Added support for Burmese in :ref:check-end-question.
+  * Extended options of the :ref:addon-weblate.generate.pseudolocale add-on.
+  * Added ignore-all-checks flag to ignore all quality checks on a string.
+  * Avoid :ref:addon-weblate.generate.pseudolocale add-on to trigger failing checks.
+  * Added support for :ref:vcs-gitea.
+  * Added Linux style language code to :ref:component-language_code_style.
+  * Added support for rebuilding project translation memory.
+  * Improved API for creating components from a file.
+  * Add copy and clone buttons to other translations.
+  * Make merge request message configurable at component level.
+  * Improved maximal length restriction behavior with XML tags.
+  * Fixed loading Fluent files with additional comments.
+  * Add support for web monetization.
+  * Ensure Weblate SSH key is generated during migrations.
+</comment>
+    <requestid>980977</requestid>
+  </revision>
 </revisionlist>
