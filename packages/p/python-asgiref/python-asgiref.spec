@@ -1,7 +1,7 @@
 #
 # spec file for package python-asgiref
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-asgiref
-Version:        3.4.1
+Version:        3.5.2
 Release:        0
 Summary:        ASGI specs, helper code, and adapters
 License:        BSD-3-Clause

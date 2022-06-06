@@ -57,4 +57,27 @@
     <comment></comment>
     <requestid>915549</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a04b2fa2f753666526d3575cbf8deb1b</srcmd5>
+    <version>3.5.2</version>
+    <time>1654506634</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.5.2:
+  * Fix async-to-async typo
+  * Add tests for sync_to_async
+  * Improved docs - Starlette supports WebSockets
+  * Use get_event_loop in class-level code
+  * Changed how StatelessServer handles event loops
+  * Fixed pytest_asyncio deprecation warning. 
+  * Drop python 3.6, add python 3.10
+  * Fix allowed values for spec_version
+  * Rewrote multiprocessing test to use no local functions 
+  * Fixed a typographical error
+  * Remove SOCK_NONBLOCK from socket creation on tests 
+  * Preserve CurrentThreadExecutor across create_task
+  * Don't warn 'non-async-marked callable' for async callable instance
+  * Disallow async callable class instances as callable
+  * Fix root_path in WebSocket Connection Scope</comment>
+    <requestid>980784</requestid>
+  </revision>
 </revisionlist>
