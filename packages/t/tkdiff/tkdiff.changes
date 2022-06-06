@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon May 30 14:02:46 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not use %() constructs in Version and URL: these are used by
+  bots in unprotected environments and are thus not evaluated.
+
+-------------------------------------------------------------------
+Sun May 22 11:32:33 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 5.4
+  * Visual Inline-diff SUPPRESSION categories (correlates to those
+    of Diff) supported, yet specific choices are INDEPENDANT of said
+    same Diff MATCH suppressions
+  * Optional support for MULTIPLE Preference files w/command-line
+    specification added: permits user configuration for disjoint
+    projects w/alternate SCM requirements
+  * Reengineered optional SyncScroll to no longer permit fractured
+    alignment - FOREVER: only specific features needing to
+    TEMPORARILY override the Preference will do so.
+  * New preference allows specifying filename patterns to EXCLUDE from
+    searches among directories when forming canidate pairings for examination.
+  * Text searching now (optionally) scrolls EITHER/BOTH windows
+    independent of the current overall synchronized window preference
+    setting.
+  * Within Vpath SCM context, CWD location now effectively TOP-prunes
+    stated VPATH nodes allowing access to yet older V-nodes w/o
+    editting VPATH Subdirs WITHIN given Vpath nodes now recognized as
+    legitimate CWD-scoped locations permitting operations on
+    directory-based subdivisions while STILL being Vpath-ed
+  * Repaired how Vpath searches for Topmost and/or Prior version for
+    consistent results
+  * MouseWheel now scrolls properly when above checkbuttons WITHIN
+    the filelist Dialog
+
+-------------------------------------------------------------------
 Wed Feb  8 12:50:23 UTC 2022  - hsk17@mail.de
 
 - for release info see also https://sourceforge.net/p/tkdiff/news/

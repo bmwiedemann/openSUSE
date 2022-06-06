@@ -1,7 +1,7 @@
 #
 # spec file for package tkdiff
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%global longver 5-3
-%global shortver %(echo %{longver}|sed 's|-|.|g')
 Name:           tkdiff
-Version:        %{shortver}
+Version:        5.4
+%define _version 5-4
 Release:        0
 Summary:        2 and 3-way diff/merge tool
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Utilities
-URL:            http://tkdiff.sourceforge.net/
-Source0:        http://prdownloads.sourceforge.net/tkdiff/tkdiff-%{longver}.zip
+URL:            https://tkdiff.sourceforge.io/
+Source0:        https://sourceforge.net/projects/tkdiff/files/tkdiff/%{version}/tkdiff-%{_version}.zip
 Source1:        README.SUSE
 BuildRequires:  unzip
 Requires:       diffutils
@@ -37,7 +36,7 @@ BuildArch:      noarch
 TkDiff is a graphical 2 and 3-way diff/merge tool.
 
 %prep
-%setup -q -n tkdiff-%{longver}
+%setup -q -n tkdiff-%{_version}
 cp %{SOURCE1} .
 
 %build
