@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun  4 12:07:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.20:
+  * Fix #8 by adding missing gettimeofday.c to MANIFEST.in 
+
+-------------------------------------------------------------------
 Mon Dec  6 20:29:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.19:

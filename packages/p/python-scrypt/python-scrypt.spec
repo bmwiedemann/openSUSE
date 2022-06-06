@@ -1,7 +1,7 @@
 #
 # spec file for package python-scrypt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-scrypt
-Version:        0.8.19
+Version:        0.8.20
 Release:        0
 Summary:        Bindings for scrypt
 License:        BSD-2-Clause
