@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jun  5 01:03:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.06.0:
+  core:
+  * Forms: Fix crash in forms with their own DR
+  * Refactor CairoFontEngine caching
+  * CairoOutputDev: preserve text color when drawing type 3 glyphs
+  * Windows: font code simplification
+  * Minor code improvements
+  * pdfattach: Assume filename is utf8 encoded
+  * pdftohtml: Fix type 3 font size calculation
+- drop poppler-cairo_font_face_t-incorrect-cacheing.patch (upstream)
+
+-------------------------------------------------------------------
 Sat May 14 11:30:35 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add poppler-cairo_font_face_t-incorrect-cacheing.patch -- Fix

@@ -24,7 +24,7 @@
 %endif
 # Actual version of poppler-data:
 %define poppler_data_version 0.4.11
-%define poppler_sover 121
+%define poppler_sover 122
 %define poppler_cpp_sover 0
 %define poppler_glib_sover 8
 %define poppler_qt5_sover 1
@@ -32,7 +32,7 @@
 %define poppler_api 0.18
 %define poppler_apipkg 0_18
 Name:           poppler%{?psuffix}
-Version:        22.05.0
+Version:        22.06.0
 Release:        0
 Summary:        PDF Rendering Library
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -40,8 +40,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://poppler.freedesktop.org
 Source:         %{url}/%{sname}-%{version}.tar.xz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM poppler-cairo_font_face_t-incorrect-cacheing.patch badshah400@gmail.com -- CairoFontEngine: cairo_font_face_t cache should only cache external fonts
-Patch0:         poppler-cairo_font_face_t-incorrect-cacheing.patch
 BuildRequires:  cmake >= 3.10
 %if 0%{?suse_version} < 1550
 BuildRequires:  gcc11-c++
@@ -212,7 +210,6 @@ developed by Derek Noonburg of Glyph and Cog, LLC.
 
 %prep
 %setup -q -n poppler-%{version}
-%patch0 -p1
 
 %build
 %if "%{flavor}" == "qt5"
