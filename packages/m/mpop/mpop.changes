@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 14 21:24:03 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.16:
+  * No significant changes.
+  * Added mpopd, a minimal POP3 server that delivers mails from a local mailbox
+    in maildir format. It can be used by end users as a way to handle incoming
+    mail via mpop with mail clients that insist on using POP3.
+
+-------------------------------------------------------------------
 Thu Nov 25 20:59:30 UTC 2021 - Fabrice BAUZAC-STEHLY <noon@mykolab.com>
 
 - Add support for SLE-12:

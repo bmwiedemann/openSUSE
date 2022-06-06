@@ -1,10 +1,8 @@
 #
 # spec file for package mpop
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021 Fabrice Bauzac.
-# This file and all modifications and additions to the pristine
-# package are under the same license as the package itself.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,30 +17,25 @@
 #
 
 
+%global _description %{expand:
+mpop is a small and fast POP3 client. Features include mail filtering,
+delivery to mbox files, maildir folders or a mail delivery agent, a
+very fast POP3 implementation, many authentication methods, good
+TLS/SSL support, IPv6 support, and more.
+}
 %bcond_with gnome-keyring
-
 Name:           mpop
-Version:        1.4.14
+Version:        1.4.16
 Release:        0
-
-# On SLE-12, this should be GPL-3.0+; if we indicate
-# "GPL-3.0-or-later", rpmlint issues this warning:
-#
-#   invalid-license GPL-3.0-or-later
-#
-# However, I'm on a Tumbleweed 2021-11, and whenever I write
-# "GPL-3.0+", something (what?) overwrites my .spec to replace the
-# license with "GPL-3.0-or-later", and I don't know how to disable
-# this annoying replacement.
-#
-# For now, I'm keeping "GPL-3.0-or-later", and I'll ignore the rpmlint
-# warning....
+Summary:        Lightweight and featureful POP3 Client
 License:        GPL-3.0-or-later
-
 Group:          Productivity/Networking/Email/Utilities
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
+URL:            https://marlam.de/mpop/
+Source:         https://marlam.de/mpop/releases/mpop-%{version}.tar.xz
+BuildRequires:  libgsasl-devel
+BuildRequires:  libidn-devel
+BuildRequires:  libsecret-devel
+BuildRequires:  pkgconfig
 # For an unknown reason, rpmlint says:
 #
 #   invalid-suse-version-check 1315
@@ -50,7 +43,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # However, this suse_version value is actually documented in
 # https://en.opensuse.org/openSUSE:Packaging_for_Leap.  Which is
 # correct, rpmlint or the documentation?
-%if %suse_version > 1315
+%if 0%{?suse_version} > 1315
 BuildRequires:  libgnutls-devel
 %else
 # mpop recommends gnutls over openssl:
@@ -66,34 +59,18 @@ BuildRequires:  libgnutls-devel
 # Let's opt for the first solution: openssl.
 BuildRequires:  libopenssl-devel
 %endif
-
-BuildRequires:  libgsasl-devel
-BuildRequires:  libidn-devel
-BuildRequires:  libsecret-devel
-BuildRequires:  pkgconfig
 %if %{with gnome-keyring}
 BuildRequires:  pkgconfig(gnome-keyring-1)
 %endif
-URL:            https://marlam.de/mpop/
-Source:         https://marlam.de/mpop/releases/mpop-1.4.14.tar.xz
 
-Summary:        Lightweight and featureful POP3 Client
-
-%global _description %{expand:
-mpop is a small and fast POP3 client. Features include mail filtering,
-delivery to mbox files, maildir folders or a mail delivery agent, a
-very fast POP3 implementation, many authentication methods, good
-TLS/SSL support, IPv6 support, and more.
-}
-
-%description %_description
+%description %{_description}
 
 %package doc
 Summary:        Documentation for %{name}
 Group:          Documentation/Other
 Requires:       %{name} = %{version}
 
-%description doc %_description
+%description doc %{_description}
 
 This package contains documentation and sample configuration files.
 
@@ -105,24 +82,24 @@ This package contains documentation and sample configuration files.
 export CFLAGS="%{optflags} -fstack-protector"
 %endif
 
-%if %suse_version > 1315
+%if 0%{?suse_version} > 1315
 tls_lib=gnutls
 %else
 tls_lib=openssl
 %endif
 
 %configure --with-tls=$tls_lib --with-libgsasl --docdir="%{_docdir}/%{name}"
-make -O %{?_smp_mflags} V=1 VERBOSE=1
+%make_build -O
 
 %install
-%makeinstall V=1
+%make_install V=1
 %find_lang %{name}
 
 for f in \
 COPYING \
 ; do
     ff="${f##*/}"
-    %__install -D -m0644 "$f" "%{buildroot}%{_docdir}/%{name}/$ff"
+    install -D -m0644 "$f" "%{buildroot}%{_docdir}/%{name}/$ff"
 done
 
 echo -n >docfiles.lst
@@ -131,19 +108,19 @@ AUTHORS ChangeLog* NEWS README* THANKS NOTES \
 doc/*.example \
 ; do
     ff="${f##*/}"
-    %__install -D -m0644 "$f" "%{buildroot}%{_docdir}/%{name}/$ff"
+    install -D -m0644 "$f" "%{buildroot}%{_docdir}/%{name}/$ff"
     echo "%doc %{_docdir}/%{name}/$ff" >>docfiles.lst
 done
 
 %files -f %{name}.lang
-%defattr(-,root,root,-)
 %doc %dir %{_docdir}/%{name}
-%doc %{_docdir}/%{name}/COPYING
+%license %{_docdir}/%{name}/COPYING
 %{_bindir}/mpop
-%{_infodir}/mpop.info%{ext_info}
-%{_mandir}/man1/mpop.1%{ext_man}
+%{_bindir}/mpopd
+%{_infodir}/mpop.info%{?ext_info}
+%{_mandir}/man1/mpop.1%{?ext_man}
+%{_mandir}/man1/mpopd.1%{?ext_man}
 
 %files doc -f docfiles.lst
-%defattr(-,root,root,-)
 
 %changelog
