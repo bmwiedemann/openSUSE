@@ -146,6 +146,7 @@ rm %{buildroot}%{_libdir}/libmariadb.a
 # add a compatibility symlinks
 ln -s mariadb_config %{buildroot}%{_bindir}/mysql_config
 ln -s mariadb_version.h %{buildroot}%{_includedir}/mysql/mysql_version.h
+ln -s libmariadb.pc %{buildroot}%{_libdir}/pkgconfig/mysqlclient.pc
 
 ln -s %{_includedir}/mysql %{buildroot}%{_includedir}/mariadb
 
@@ -184,6 +185,7 @@ install -Dpm 0644 build/include/ma_config.h \
 %{_includedir}/mysql/*
 %{_includedir}/mariadb
 %{_libdir}/pkgconfig/libmariadb.pc
+%{_libdir}/pkgconfig/mysqlclient.pc
 %{_libdir}/libmariadb.so
 %{_libdir}/libmysqlclient.so
 %{_libdir}/libmysqlclient_r.so
