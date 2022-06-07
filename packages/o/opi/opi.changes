@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 31 15:49:57 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not compress man page during build/install phase, but rather
+  rely on the brp-scripts to pick the right compression format.
+
+-------------------------------------------------------------------
 Tue May 31 14:44:50 UTC 2022 - Dominik Heidler <dheidler@suse.de>
 
 - Version 2.6.0

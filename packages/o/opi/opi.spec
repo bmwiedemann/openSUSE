@@ -49,13 +49,12 @@ OBS Package Installer (CLI)
 %setup -q
 
 %build
-help2man -s8 -N ./bin/opi | gzip > opi.8.gz
-gzip opi.8.gz
+help2man -s8 -N ./bin/opi > opi.8
 
 %install
 python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 install -m 644 -D -v org.openSUSE.opi.appdata.xml %{buildroot}%{_datadir}/metainfo/org.openSUSE.opi.appdata.xml
-install -m 644 -D -v opi.8.gz %{buildroot}%{_datadir}/man/man8/opi.8.gz
+install -m 644 -D -v opi.8 %{buildroot}%{_datadir}/man/man8/opi.8
 install -m 644 -D -v opi.default.cfg %{buildroot}%{_sysconfdir}/opi.cfg
 
 %check
@@ -66,7 +65,7 @@ python3 setup.py --version | grep %{version}
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/metainfo/org.openSUSE.opi.appdata.xml
-%{_datadir}/man/man8/opi.8.gz
+%{_datadir}/man/man8/opi.8%{?ext_man}
 %{python3_sitelib}/*
 %config %{_sysconfdir}/opi.cfg
 

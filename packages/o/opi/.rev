@@ -337,4 +337,12 @@
 - Add config option use_releasever_var</comment>
     <requestid>980108</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>c245f67862278cd8bd6d794a5c9b06fb</srcmd5>
+    <version>2.6.0</version>
+    <time>1654595124</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981091</requestid>
+  </revision>
 </revisionlist>
