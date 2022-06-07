@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Jun  5 16:53:54 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.2.2
+  * Make all explicit and validate in test by @blink1073 in #737
+  * Fix KeyError in Application.get_default_logging_config by
+    @tonyroberts in #724
+- Release 5.2.1
+  * Switch to hatch backend by @blink1073 in #728
+  * logging: don't attempt to close handlers unless they have been
+    opened by @oliver-sanders in #727
+- Release 5.2.0
+  * Add mypy support by @blink1073 in #705
+  * Disambiguate the use of the term value in the example. by
+    @metaperl in #694
+  * Correct spelling and grammar errors. by @metaperl in #695
+  * DOC: Add log example by @Carreau in #693
+  * Put description of signature_has_traits after the header for
+    it. by @metaperl in #711
+  * Application: add logging_config trait by @oliver-sanders in
+    #698
+  * [DOC] Give explicit list of private symbols for 5.0 by @vidartf
+    in #692
+  * Add pre-commit and run auto-formatters by @blink1073 in #699
+  * Fix downstream test by @blink1073 in #701
+  * Add docs on pre-commit and use manual hooks where appropriate
+    by @blink1073 in #700
+  * Set up flake8 by @blink1073 in #703
+  * Typing: tell mypy we have type, update all. by @Carreau in #713
+  * Improve CI by @blink1073 in #706
+  * Fix typing errors by @blink1073 in #718
+  * Use flit build backend by @blink1073 in #720
+  * Add Changelog Entry for 5.2.0 by @blink1073 in #717
+- Add traitlets-pr739-fixversion.patch -- gh#ipython/traitlets#739
+
+-------------------------------------------------------------------
 Sat Oct 30 15:30:37 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 5.1.1

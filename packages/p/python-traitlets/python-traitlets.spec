@@ -1,7 +1,7 @@
 #
 # spec file for package python-traitlets
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,22 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 Name:           python-traitlets
-Version:        5.1.1
+Version:        5.2.2
 Release:        0
 Summary:        Traitlets Python configuration system
 License:        BSD-3-Clause
 URL:            https://github.com/ipython/traitlets
 Source:         https://files.pythonhosted.org/packages/source/t/traitlets/traitlets-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM traitlets-pr739-fixversion.patch -- gh#ipython/traitlets#739
+Patch1:         https://github.com/ipython/traitlets/pull/739.patch#/traitlets-pr739-fixversion.patch
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module hatchling >= 0.25}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-hatchling >= 0.25
 BuildArch:      noarch
 %python_subpackages
 
@@ -38,13 +39,14 @@ BuildArch:      noarch
 A configuration system for Python applications.
 
 %prep
-%setup -q -n traitlets-%{version}
+%autosetup -p1 -n traitlets-%{version}
+sed -i 's/--color yes//' pyproject.toml
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
