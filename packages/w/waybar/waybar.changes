@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun  4 01:04:10 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
+
+- Recreate source tarball with submodules downloaded as before.
+  Otherwise the clock module was replaced with the simpleclock module
+  because libdate subproject was missing.
+
+-------------------------------------------------------------------
 Tue May 24 06:52:59 UTC 2022 - Denys Kondratenko <stdden@opensuse.org>
 
 - Update to 0.9.13:
