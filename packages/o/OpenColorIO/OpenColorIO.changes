@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jun  4 08:09:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.2:
+  * Fix half-domain Lut1D issue for certain values above HALF_MAX
+  * Python copy support
+  * Fix support for ARM64 macOS Python wheels
+  * Improve OpenImageIO dependency management of Imath headers
+  * Improve CMake and library install step
+  * Remove "expat" symbols
+  * Improve the GPU unit test framework
+  * Improve the OSL integration
+  * Propagate Android CMake configuration to external projects
+
+-------------------------------------------------------------------
 Thu May 12 19:47:52 UTC 2022 - Asterios Dramis <asterios.dramis@gmail.com>
 
 - Added a patch "gcc12_fix.patch" to fix compilation with GCC12.
