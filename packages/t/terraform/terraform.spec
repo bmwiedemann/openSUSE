@@ -17,7 +17,7 @@
 
 
 Name:           terraform
-Version:        1.1.9
+Version:        1.2.2
 Release:        0
 Summary:        Tool for building infrastructure safely and efficiently
 License:        MPL-2.0
@@ -27,7 +27,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source99:       terraform-rpmlintrc
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.15
+BuildRequires:  golang(API) >= 1.17
 # See: https://github.com/hashicorp/terraform/issues/22807
 ExcludeArch:    %{ix86} %{arm}
 %{go_nostrip}
@@ -43,13 +43,9 @@ providers as well as custom in-house solutions.
 %setup -q -T -D -a 1
 
 %build
-export GOFLAGS=-mod=vendor
+export GOFLAGS='-mod=vendor -buildmode=pie'
 %{goprep} github.com/hashicorp/terraform
 %{gobuild} .
-
-%check
-export GOFLAGS=-mod=vendor
-%{gotest} github.com/hashicorp/terraform/...
 
 %install
 %{goinstall}
