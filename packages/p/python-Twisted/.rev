@@ -1421,4 +1421,12 @@
   * Be stricter about HTTP/1.1 headers. (bsc#1198086)</comment>
     <requestid>967387</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>88b1a6e0a17b5f7b0ad0f4a0a645d605</srcmd5>
+    <version>22.2.0</version>
+    <time>1654595116</time>
+    <user>dimstar_suse</user>
+    <comment>Synchronize changelog with the SLE package.</comment>
+    <requestid>981084</requestid>
+  </revision>
 </revisionlist>

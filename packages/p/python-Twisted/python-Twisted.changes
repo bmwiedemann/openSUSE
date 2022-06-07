@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  4 06:39:10 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Stop removing test directories, it also removes a public module.
+  (bsc#1198852, bsc#1198854, bsc#1198855)  
+
+-------------------------------------------------------------------
 Thu Apr  7 02:31:24 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 22.2.0:
@@ -17,17 +23,26 @@ Thu Apr  7 02:31:24 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
     + Support for Python 3.6, which is EoL as of 2021-09-04, has been
       deprecated. (#10303)
 - Add patch CVE-2022-24801-http-1.1-leniency.patch:
-  * Be stricter about HTTP/1.1 headers. (bsc#1198086)
+  * Do not be as lenient as earlier HTTP/1.1 RFCs to prevent HTTP
+    request smuggling. (CVE-2022-24801, bsc#1198086)
 
 -------------------------------------------------------------------
-Wed Feb 23 00:30:47 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+Thu Mar 24 12:40:28 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add patch skip-namespacewithwhitespace.patch:
   * Skip a failing test with Expat 2.4.5. 
 
 -------------------------------------------------------------------
+Wed Feb 23 00:30:47 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove 9580-test_fails_cryptography_25.patch which is not
+  necessary with changes in OpenSSL
+
+-------------------------------------------------------------------
 Wed Feb  9 23:38:50 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
+- Add 9580-test_fails_cryptography_25.patch to overcome test failures on
+  SLE-15 with older version of OpenSSL.
 - refreshed patches
   - 1521_delegate_parseqs_stdlib_bpo42967.patch
   - currentThread-deprecated.patch
@@ -38,6 +53,7 @@ Wed Feb  9 23:38:50 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
   - skip_MultiCast.patch
 - remove upstreamed patches
   currentThread-deprecated.patch
+- remove tests from the package
 
 -------------------------------------------------------------------
 Wed Feb  9 23:29:53 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
