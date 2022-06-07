@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Jun  7 08:30:10 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.17.3.2:
+  * TxConfirmationDialog: warn high fees
+  * build: prepare v0.17.3.2
+  * FutureScheduler: delete unused function declarations
+  * main: only update fiat price with open wallet
+  * Mining: only update mining status when page is open
+  * workflows: action-docker-layer-caching v0.0.11
+  * cmake: bump windows deploy lib versions
+  * workflows: deploy on windows
+  * Docker: Update zlib for android
+  * Integrate P2Pool
+  * Docker: update Qt 5.15.2 -> 5.15.3
+  * TitleBar: Remove lock icon on essentials display
+  * AddressBook: fix adding new entry
+  * Transfer: fix offline signing
+  * RemoteNodeDialog: bind ok to return key
+  * SettingsWallet: lock wallet on demand
+  * Doc: Minimize boost deps in README.md
+  * libwalletqt: fix typo in type
+  * workflows: fix windows build error
+  * settings: bind return key after password change
+  * update languages from weblate and add flags
+  * bug: reset wallet path on network change
+  * Advanced: ReserveProof: Resolve review by selsta
+  * Advanced: ReserveProof: Add support for reserve proof
+  * WizardRestoreWallet4, WizardCreateWallet4: disable double-click on "Create wallet" button
+  * Docker: bump hidapi on Linux
+  * cmake: remove including non-existent directory
+  * cmake: don't print verbose make
+  * cmake: remove unneeded monero_gui_add_library()
+
+-------------------------------------------------------------------
 Fri Mar 11 10:16:32 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update _constraints for aarch64 to avoid OOM

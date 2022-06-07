@@ -1,7 +1,7 @@
 #
 # spec file for package monero-gui
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           monero-gui
-Version:        0.17.3.1
+Version:        0.17.3.2
 Release:        0
 Summary:        The official GUI app for the Monero cryptocurrency
 License:        BSD-3-Clause
@@ -69,14 +69,14 @@ The official Qt-based GUI wallet app for the privacy-focused Monero cryptocurren
 
 %build
 %define __builder ninja
-%define _lto_cflags %{nil}
 export CXXFLAGS="%{optflags} -Wno-sign-compare"
 %cmake \
   -DARCH=default \
   -DBUILD_SHARED_LIBS=OFF \
   -DCMAKE_EXE_LINKER_FLAGS="%{?build_ldflags}" \
   -DCMAKE_MODULE_LINKER_FLAGS="%{?build_ldflags}" \
-  -DCMAKE_SHARED_LINKER_FLAGS="%{?build_ldflags}"
+  -DCMAKE_SHARED_LINKER_FLAGS="%{?build_ldflags}" \
+  -Wno-dev
 %cmake_build
 
 %install
