@@ -68,9 +68,10 @@ Obsoletes:      jpackage-utils < %{version}
 BuildRequires:  %{python_module lxml}
 %if 0%{?suse_version} > 1320
 BuildRequires:  %{python_module pytest}
+%else
+BuildRequires:  %{python_module six}
 %endif
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %if 0%{?suse_version} >= 1550
@@ -123,7 +124,7 @@ allows artifact resolution using XMvn resolver.
 Summary:        Module for handling various files for Java packaging
 Group:          Development/Languages/Java
 Requires:       python-lxml
-%if 0%{?suse_version} > 1320
+%if 0%{?suse_version} <= 1320
 Requires:       python-six
 %endif
 
@@ -139,7 +140,7 @@ Group:          Development/Languages/Java
 Requires:       python3-lxml
 Obsoletes:      python-javapackages < %{version}-%{release}
 Provides:       python-javapackages = %{version}-%{release}
-%if 0%{?suse_version} > 1320
+%if 0%{?suse_version} <= 1320
 Requires:       python3-six
 %endif
 
@@ -167,7 +168,7 @@ This package provides non-essential macros and scripts to support Java packaging
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%if 0%{?suse_version} >= 1320
+%if 0%{?suse_version} > 1320
 %patch6 -p1
 %endif
 

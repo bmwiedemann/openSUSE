@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun  5 20:04:33 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fix wrong conditioning of the python-six require.
+
+-------------------------------------------------------------------
 Fri Jun  3 10:11:21 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

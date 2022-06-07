@@ -319,4 +319,12 @@
     <comment>Don't get stuck with python 3.6</comment>
     <requestid>980646</requestid>
   </revision>
+  <revision rev="32" vrev="10">
+    <srcmd5>b65451938e683eb6a62e33ed36d6e2a0</srcmd5>
+    <version>5.3.1</version>
+    <time>1654595092</time>
+    <user>dimstar_suse</user>
+    <comment>Mess in conditions: requires still python-six not needed any more</comment>
+    <requestid>980932</requestid>
+  </revision>
 </revisionlist>
