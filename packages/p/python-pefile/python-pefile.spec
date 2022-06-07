@@ -1,7 +1,7 @@
 #
 # spec file for package python-pefile
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
+
 Name:           python-pefile
-Version:        2019.4.18
+Version:        2022.5.30
 Release:        0
 Summary:        A python module to work with PE (pertable executable) files
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/erocarrera/pefile
+URL:            https://github.com/erocarrera/pefile
 Source:         https://files.pythonhosted.org/packages/source/p/pefile/pefile-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

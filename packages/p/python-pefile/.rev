@@ -39,4 +39,21 @@
     <comment></comment>
     <requestid>697757</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7cf6c660584ab8e17ebd800a5dcd50e8</srcmd5>
+    <version>2022.5.30</version>
+    <time>1654595115</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2022.5.30
+  * Merged pull request #344 from elicn/faster-reloc: Speed up relocation process
+  * Merged pull request #175 from tdube/patch-1: Fix catch-all exception clause in parse_resources_directory
+  * Turn data into a bytearray to avoid copying data around (from elicn)
+  * Merged pull request #343 from mat-gas/master: various performances improvements (30-50% in certain workflows, 15-25% in average)
+  * Merged pull request #340 from dinateper/feature/PEfile_context_manager: Update PE to allow with statements
+  * Removed legacy Python 2 code
+  * Miscellaneous other fixes.
+- add %define skip_python2 1
+</comment>
+    <requestid>981054</requestid>
+  </revision>
 </revisionlist>
