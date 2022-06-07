@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun  5 20:19:36 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- removed libkms BuildRequires, since it has been dropped from
+  libdrm
+
+-------------------------------------------------------------------
 Thu Jun  2 01:32:59 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 22.1.1

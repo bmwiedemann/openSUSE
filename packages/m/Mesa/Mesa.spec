@@ -160,7 +160,6 @@ BuildRequires:  pkgconfig(libglvnd) >= 0.1.0
 %ifarch aarch64 %{ix86} x86_64 ppc64le s390x
 BuildRequires:  pkgconfig(valgrind)
 %endif
-BuildRequires:  pkgconfig(libkms) >= 1.0.0
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(presentproto)
 %if "%{flavor}" == "drivers"

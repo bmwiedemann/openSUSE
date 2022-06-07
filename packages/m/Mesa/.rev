@@ -4898,4 +4898,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   * U_llvmpipe-flush-resources-for-kms-swrast-path.patch</comment>
     <requestid>980454</requestid>
   </revision>
+  <revision rev="442" vrev="314">
+    <srcmd5>6731eb7b859858917d6073c2c6440b2c</srcmd5>
+    <version>unknown</version>
+    <time>1654595093</time>
+    <user>dimstar_suse</user>
+    <comment>- removed libkms BuildRequires, since it has been dropped from
+  libdrm</comment>
+    <requestid>980935</requestid>
+  </revision>
 </revisionlist>
