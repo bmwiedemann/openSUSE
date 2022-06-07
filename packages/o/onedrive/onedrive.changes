@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun  7 07:49:53 UTC 2022 - Enno Gotthold <egotthold@suse.com>
+
+- Update to version 2.4.18:
+  * Fixed various database related access issues steming from running multiple instances of the application at the same time using the same configuration data (#1944, #1955)
+  * Updated all Docker build files to current distributions, using updated distribution LDC version (#1945,#1972,#1975,#1976)
+  * Updated logging output to logfiles when an actual sync process is occuring (#1947)
+  * Fixed --display-config being impacted by --resync flag (#1950)
+  * Fixed installation permissions for onedrive man-pages file (#1953)
+  * Updated output of --display-config to be more relevant (#1956)
+  * Fixed that in some situations that users try --upload-only and --download-only together which is not possible (#1959)
+  * Added Feature Request to add an override for skip_dir|skip_file through flag to force sync (#1960)
+  * Updated manpage to align with application configuration (#1962)
+  * Fixed application crash if unable to read required hash files (#1963)
+  * Added a check to validate local filesystem available space before attempting file download (#1971)
+  * Updated documentation and Docker files based on minimum compiler versions to dmd-2.088.0 and ldc-1.18.0 (#1972)
+  * Added GitHub Actions to build Docker containers and push to DockerHub (#1977)
+  * Updated documentation (various)
+
+-------------------------------------------------------------------
 Wed May 04 07:31:32 UTC 2022 - egotthold@suse.com
 
 - Update to version 2.4.17:
