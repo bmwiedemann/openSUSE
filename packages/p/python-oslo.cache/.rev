@@ -195,4 +195,26 @@
   - Use py3 as the default runtime for tox</comment>
     <requestid>940195</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>cd225943fbc65243fe78b7f844b7c434</srcmd5>
+    <version>2.11.0</version>
+    <time>1654595128</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.11.0
+  - Add Python3 yoga unit tests
+  - Expose pymemcache's HashClient public params
+  - Add Python3 zed unit tests
+  - Add Python 3 only classifier
+  - fix typo
+  - Use the right backend for TLS tests
+  - Remove unnecessary unicode prefixes
+  - Drop pymongo useless and removed attribute
+  - Fix description of memcache_servers
+  - Update master for stable/xena
+  - Update master for stable/yoga
+  - Update python testing classifier
+  - Add socket keepalive options to oslo.cache
+  - Add retry mechanisms to oslo.cache</comment>
+    <requestid>981112</requestid>
+  </revision>
 </revisionlist>

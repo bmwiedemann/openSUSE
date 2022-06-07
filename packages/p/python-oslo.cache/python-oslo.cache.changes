@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun  7 08:41:59 UTC 2022 - cloud-devel@suse.de
+
+- update to version 2.11.0
+  - Add Python3 yoga unit tests
+  - Expose pymemcache's HashClient public params
+  - Add Python3 zed unit tests
+  - Add Python 3 only classifier
+  - fix typo
+  - Use the right backend for TLS tests
+  - Remove unnecessary unicode prefixes
+  - Drop pymongo useless and removed attribute
+  - Fix description of memcache_servers
+  - Update master for stable/xena
+  - Update master for stable/yoga
+  - Update python testing classifier
+  - Add socket keepalive options to oslo.cache
+  - Add retry mechanisms to oslo.cache
+
+-------------------------------------------------------------------
 Tue Oct 26 22:11:53 UTC 2021 - cloud-devel@suse.de
 
 - update to version 2.8.1
