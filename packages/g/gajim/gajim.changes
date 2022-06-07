@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  6 15:38:25 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update dependency on typelib(GtkSource) to version 4 (boo#1199959)
+
+-------------------------------------------------------------------
 Wed Jun  1 20:44:55 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.4.3:

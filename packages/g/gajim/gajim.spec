@@ -49,7 +49,7 @@ Requires:       %{py3pkg}-precis-i18n >= 1.0.0
 Requires:       %{py3pkg}-pyOpenSSL >= 16.2
 Requires:       %{py3pkg}-pycairo >= 1.16.0
 Requires:       ca-certificates-mozilla
-Requires:       typelib(GtkSource) = 3.0
+Requires:       typelib(GtkSource) = 4
 Requires:       typelib(Soup) = 2.4
 # WebP avatars.
 Recommends:     %{py3pkg}-Pillow
