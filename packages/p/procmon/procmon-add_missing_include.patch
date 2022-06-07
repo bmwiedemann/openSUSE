@@ -1,0 +1,12 @@
+Index: ProcMon-for-Linux-1.0.1/src/tracer/ebpf/syscall_schema.h
+===================================================================
+--- ProcMon-for-Linux-1.0.1.orig/src/tracer/ebpf/syscall_schema.h
++++ ProcMon-for-Linux-1.0.1/src/tracer/ebpf/syscall_schema.h
+@@ -10,6 +10,7 @@
+ #include <string>
+ #include <vector>
+ #include <iostream>
++#include <cstring>
+ 
+ namespace SyscallSchema
+ {

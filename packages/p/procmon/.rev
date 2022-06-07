@@ -7,4 +7,13 @@
     <comment>New package</comment>
     <requestid>890980</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6948a843fe9e527b72c195e8e589f636</srcmd5>
+    <version>1.0.1</version>
+    <time>1654595104</time>
+    <user>dimstar_suse</user>
+    <comment>- Add procmon-add_missing_include.patch to fix Factory build
+</comment>
+    <requestid>981026</requestid>
+  </revision>
 </revisionlist>

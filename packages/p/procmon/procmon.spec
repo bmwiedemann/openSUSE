@@ -1,7 +1,7 @@
 #
 # spec file for package procmon
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           procmon
 Version:        1.0.1
 Release:        0
@@ -27,6 +28,8 @@ Source0:        https://github.com/Sysinternals/ProcMon-for-Linux/archive/refs/t
 Patch0:         procmon-use_system_libs.patch
 # PATCH-FIX-UPSTREAM procmon-no_return_in_nonvoid.patch -- aloisio@gmx.com
 Patch1:         procmon-no_return_in_nonvoid.patch
+# PATCH-FIX-OPENSUSE procmon-add_missing_include.patch -- aloisio@gmx.com
+Patch2:         procmon-add_missing_include.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(catch2)
