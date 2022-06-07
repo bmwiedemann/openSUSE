@@ -130,7 +130,6 @@ BuildRequires:  pkgconfig(libcurl) >= 7.35.0
 BuildRequires:  pkgconfig(libdc1394-2) >= 2.0.0
 BuildRequires:  pkgconfig(libdrm) >= 2.4.55
 BuildRequires:  pkgconfig(libexif) >= 0.6.16
-BuildRequires:  pkgconfig(libkms)
 BuildRequires:  pkgconfig(libopenmpt)
 BuildRequires:  pkgconfig(libpng) >= 1.2
 BuildRequires:  pkgconfig(libqrencode)
