@@ -1,0 +1,53 @@
+From 87ff5318e327eb2343f10bd73dce5a32f12db622 Mon Sep 17 00:00:00 2001
+From: Simon McVittie <smcv@collabora.com>
+Date: Wed, 25 May 2022 12:33:42 +0100
+Subject: [PATCH 1/2] conf: Use ino64_t to save and compare inode numbers
+
+On 32-bit platforms when not using the large-file-support ABI,
+struct stat64 contains ino64_t which is 64-bit, while ino_t is only
+32-bit.
+
+snd_config_update_r() checks whether a file has been replaced by saving
+the ino member of a struct stat64 and comparing it with a previously-saved
+inode number. On 32-bit platforms, assigning the 64-bit member of struct
+stat64 to a 32-bit member of struct finfo will truncate it modulo 1<<32,
+which could conceivably result in libasound not reloading configuration
+when it should (although the inode number space is large enough to make
+this failure mode highly unlikely).
+
+Fixes: https://github.com/alsa-project/alsa-lib/pull/231
+Signed-off-by: Simon McVittie <smcv@collabora.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ include/local.h | 1 +
+ src/conf.c      | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/include/local.h b/include/local.h
+index 51fa4063afa7..268a9ff1200e 100644
+--- a/include/local.h
++++ b/include/local.h
+@@ -84,6 +84,7 @@
+ #define scandir64 scandir
+ #define versionsort64 versionsort
+ #define alphasort64 alphasort
++#define ino64_t ino_t
+ #endif
+ 
+ #define _snd_config_iterator list_head
+diff --git a/src/conf.c b/src/conf.c
+index 3d2b4a5bc184..a996e5f9f9be 100644
+--- a/src/conf.c
++++ b/src/conf.c
+@@ -3921,7 +3921,7 @@ snd_config_t *snd_config = NULL;
+ struct finfo {
+ 	char *name;
+ 	dev_t dev;
+-	ino_t ino;
++	ino64_t ino;
+ 	time_t mtime;
+ };
+ 
+-- 
+2.35.3
+

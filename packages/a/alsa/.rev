@@ -1769,4 +1769,14 @@
     <comment></comment>
     <requestid>980233</requestid>
   </revision>
+  <revision rev="215" vrev="2">
+    <srcmd5>18b82b3b9ac6180bb530ceb01ceba75d</srcmd5>
+    <version>1.2.7</version>
+    <time>1654595096</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport upstream fixes for 32bit inode and ELD parsing:
+  0001-conf-Use-ino64_t-to-save-and-compare-inode-numbers.patch
+  0002-control-eld-fix-the-decoding-for-older-hw.patch</comment>
+    <requestid>980994</requestid>
+  </revision>
 </revisionlist>
