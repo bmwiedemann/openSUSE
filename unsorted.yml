@@ -6227,13 +6227,11 @@ unsorted:
   - google-alegreya-sans-fonts 
   - google-allerta-fonts 
   - google-anonymouspro-fonts 
-  - google-arimo-fonts 
   - google-authenticator-libpam 
   - google-authenticator-libpam-32bit: [x86_64] 
   - google-cabin-fonts 
   - google-caladea-fonts 
   - google-cardo-fonts 
-  - google-cousine-fonts 
   - google-errorprone-annotation 
   - google-errorprone-annotations 
   - google-errorprone-annotations-javadoc 
@@ -6260,7 +6258,6 @@ unsorted:
   - google-quiche-source 
   - google-roboto-mono-fonts 
   - google-roboto-slab-fonts 
-  - google-tinos-fonts 
   - google-worksans-fonts 
   - google-worksans-fonts-doc 
   - googleapis-source 
@@ -10727,7 +10724,7 @@ unsorted:
   - libeditorconfig0-32bit: [x86_64] 
   - libefa1-32bit: [x86_64] 
   - libei-devel 
-  - libei-suse1 
+  - libei-suse2 
   - libeiskaltdcpp2_4 
   - libelektra-augeas 
   - libelektra-devel 
@@ -11956,10 +11953,6 @@ unsorted:
   - libkmip-tools 
   - libkmip0 
   - libkmod-devel 
-  - libkms-devel 
-  - libkms-devel-32bit: [x86_64] 
-  - libkms1 
-  - libkms1-32bit: [x86_64] 
   - libknet1 
   - libknet1-compress-bzip2-plugin 
   - libknet1-compress-lz4-plugin 
@@ -17453,6 +17446,8 @@ unsorted:
   - notmuch-devel 
   - notmuch-doc 
   - notmuch-emacs 
+  - noto-arimo-fonts 
+  - noto-cousine-fonts 
   - noto-kufiarabic-fonts 
   - noto-loopedlao-fonts 
   - noto-loopedlao-ui-fonts 
@@ -17750,6 +17745,7 @@ unsorted:
   - noto-serif-toto-fonts 
   - noto-serif-vithkuqi-fonts 
   - noto-serif-yezidi-fonts 
+  - noto-tinos-fonts 
   - noto-traditionalnushu-fonts 
   - nova 
   - novdoc 
@@ -24850,7 +24846,6 @@ unsorted:
   - python310-subscene-api 
   - python310-subst 
   - python310-suds 
-  - python310-suds-community 
   - python310-suntime 
   - python310-sure 
   - python310-svglib 
@@ -26269,7 +26264,6 @@ unsorted:
   - python38-ecdsa 
   - python38-ed25519 
   - python38-edgegrid-python 
-  - python38-editables 
   - python38-editdistance 
   - python38-editdistance-devel 
   - python38-efilter 
@@ -26493,7 +26487,6 @@ unsorted:
   - python38-haproxyctl 
   - python38-hashids 
   - python38-hatch 
-  - python38-hatchling 
   - python38-hawkauthlib 
   - python38-hcloud 
   - python38-hdf5storage: [x86_64] 
@@ -27897,7 +27890,6 @@ unsorted:
   - python38-subscene-api 
   - python38-subst 
   - python38-suds 
-  - python38-suds-community 
   - python38-sunpy 
   - python38-suntime 
   - python38-sure 
@@ -31127,7 +31119,6 @@ unsorted:
   - python39-subscene-api 
   - python39-subst 
   - python39-suds 
-  - python39-suds-community 
   - python39-sunpy 
   - python39-suntime 
   - python39-sure 
