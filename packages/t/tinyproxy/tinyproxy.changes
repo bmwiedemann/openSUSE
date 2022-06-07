@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun  6 16:38:07 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Move tinyproxy program to /usr/bin.
+
+-------------------------------------------------------------------
+Fri May 27 14:14:39 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.11.1
+  * New fnmatch based filtertype
+- Drop tinyproxy-conf.patch, no rationale for why those changes
+  are there [boo#1200028].
+
+-------------------------------------------------------------------
 Fri Apr 16 17:31:11 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.11

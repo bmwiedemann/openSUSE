@@ -1,7 +1,7 @@
 #
 # spec file for package tinyproxy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tinyproxy
-Version:        1.11.0
+Version:        1.11.1
 Release:        0
 Summary:        Minimalist WWW proxy
 License:        GPL-2.0-or-later
@@ -25,11 +25,6 @@ Group:          Productivity/Networking/Web/Proxy
 URL:            https://tinyproxy.github.io/
 Source:         https://github.com/tinyproxy/tinyproxy/releases/download/%version/tinyproxy-%version.tar.xz
 Source1:        %name.logrotate
-Patch1:         tinyproxy-conf.patch
-BuildRequires:  asciidoc
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libxslt
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
 Requires:       logrotate
@@ -45,8 +40,7 @@ system resources for a larger proxy are unavailable.
 %autosetup -p1
 
 %build
-autoreconf -fiv
-%configure --bindir="%_prefix/sbin"
+%configure
 %make_build
 
 %install
@@ -62,18 +56,17 @@ cat >>"$b/%_unitdir/tinyproxy.service" <<-EOF
 	After=network.target named.service nss-lookup.service
 	[Service]
 	Type=simple
-	ExecStart=%_sbindir/tinyproxy -d
-	CapabilityBoundingSet=CAP_NET_BIND_SERVICE CAP_SETGID CAP_SETUID
+	User=tinyproxy
+	Group=tinyproxy
+	ExecStart=%_bindir/tinyproxy -d
 	[Install]
 	WantedBy=multi-user.target
 EOF
 cat >>"$b/%_prefix/lib/tmpfiles.d/tinyproxy.conf" <<-EOF
 	d /run/tinyproxy 0755 tinyproxy tinyproxy -
 EOF
-install -d -m 755 "$b/%_sbindir"
-ln -sf service "$b/%_sbindir/rc%name"
 
-rm -rf "$b%_datadir/doc/%name"
+rm -rf "$b/%_datadir/doc/%name"
 
 %pre
 getent group tinyproxy >/dev/null || groupadd -r tinyproxy
@@ -97,8 +90,7 @@ systemd-tmpfiles --create tinyproxy.conf || :
 %dir %_sysconfdir/%name
 %config(noreplace) %_sysconfdir/%name/*.conf
 %config %_sysconfdir/logrotate.d/%name
-%_sbindir/tinyproxy
-%_sbindir/rctinyproxy
+%_bindir/tinyproxy
 %_mandir/man*/*
 %_datadir/%name
 %_unitdir/*.service

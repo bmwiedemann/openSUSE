@@ -98,4 +98,12 @@
     <comment>- Update to release 1.11</comment>
     <requestid>886124</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>771b39d2884953be6473d76b974bffca</srcmd5>
+    <version>1.11.1</version>
+    <time>1654595103</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.11.1</comment>
+    <requestid>981024</requestid>
+  </revision>
 </revisionlist>
