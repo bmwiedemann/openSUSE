@@ -23,11 +23,11 @@
 %endif
 
 # MANUAL: Update the git_version.
-%define git_version 3df54a852345ae127d1fa3092b95168e4a88e2f8
-%define git_short   3df54a852345
+%define git_version 10c12954828e7c7c9b6e0ea9b0c02b01407d3ae1
+%define git_short   10c12954828e
 
 Name:           containerd
-Version:        1.5.11
+Version:        1.6.6
 Release:        0
 Summary:        Standalone OCI Container Daemon
 License:        Apache-2.0
@@ -43,8 +43,8 @@ BuildRequires:  libbtrfs-devel >= 3.8
 BuildRequires:  libseccomp-devel >= 2.2
 BuildRequires:  pkg-config
 # Due to a limitation in openSUSE's Go packaging we cannot have a BuildRequires
-# for 'golang(API) >= 1.16' here, so just require 1.16 exactly. bsc#1172608
-BuildRequires:  go1.16
+# for 'golang(API) >= 1.18' here, so just require 1.18 exactly. bsc#1172608
+BuildRequires:  go1.18
 # We provide a git revision so that Docker can require it properly.
 Provides:       %{name}-git = %{git_version}
 # Currently runc is the only supported runtime for containerd. We pin the same
@@ -84,21 +84,8 @@ separately from Docker.
 %setup -q -n %{name}-%{version}_%{git_short}
 
 %build
-# NOTE: containerd will switch to go.mod in 1.5.x so this can be removed after
-#       we update to that version.
-
-# Do not use symlinks. If you want to run the unit tests for this package at
-# some point during the build and you need to directly use go list directly it
-# will get confused by symlinks.
-export GOPATH=$HOME/go
-export PROJECT=$HOME/go/src/github.com/containerd/containerd
-export GO111MODULE=off
-mkdir -p $PROJECT
-rm -rf $PROJECT/*
-cp -ar * $PROJECT
-
 BUILDTAGS="apparmor selinux seccomp"
-make -C "$PROJECT"\
+%make_build \
 	BUILDTAGS="$BUILDTAGS" \
 	VERSION="v%{version}" \
 	REVISION="%{git_version}"
