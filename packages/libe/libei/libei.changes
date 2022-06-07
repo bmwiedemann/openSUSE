@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun  7 06:44:15 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.3
+  * libei now supports the concept of sender/receiver contexts. A
+    libei context in sender mode can send events to the
+    (EIS-created) devices, a libei context in receiver mode can
+    receive events from the (EIS-created) devices. This allows
+    for libei to be used as a transport layer for captured input
+    events.
+  * A libei context can bind/unbind to seat capabilities
+    individually at any time
+  * Frame events now carry a timestamp
+  * A helper tool ei-debug-events is now available, this tool can
+    be used in e.g. portal implementation to show the events
+    being sent.
+
+-------------------------------------------------------------------
 Wed Mar  2 08:00:57 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.2

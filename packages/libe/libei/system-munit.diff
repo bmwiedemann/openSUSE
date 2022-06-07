@@ -7,15 +7,15 @@ Do not fail the build if munit available (only) via /usr.
  meson.build |    2 --
  1 file changed, 2 deletions(-)
 
-Index: libei-0.2/meson.build
+Index: libei-0.3/meson.build
 ===================================================================
---- libei-0.2.orig/meson.build
-+++ libei-0.2/meson.build
-@@ -228,8 +228,6 @@ endif
+--- libei-0.3.orig/meson.build
++++ libei-0.3/meson.build
+@@ -236,8 +236,6 @@ endif
  
  # tests
  if get_option('tests')
--    subproject('munit')
+-    subproject('munit', default_options: 'werror=false')
 -
      munit = dependency('munit', fallback: ['munit', 'munit_dep'])
  
