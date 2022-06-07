@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May 29 19:22:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.94.4:
+  * synaptics: New PIDs 0x0168, 0x015f
+  * elan: New PID 0x0c4b
+  * elanspi: New PID 0x241f
+  * synaptics: Minor fix to interrupt transfer resubmission
+  * Avoid sysfs writes if value is already expected
+  * Improvements to the testing setup
+  * Fixes to the internal critical section API
+
+-------------------------------------------------------------------
 Sun Apr 24 20:11:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.94.3:
