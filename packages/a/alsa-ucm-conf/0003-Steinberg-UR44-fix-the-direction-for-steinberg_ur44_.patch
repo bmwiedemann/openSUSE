@@ -1,0 +1,27 @@
+From ef3b6513b6581705d36432428a7f6a4ae23b1276 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 3 Jun 2022 21:34:19 +0200
+Subject: [PATCH 3/3] Steinberg UR44: fix the direction for
+ steinberg_ur44_mono_in
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/USB-Audio/Steinberg/UR44-HiFi.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ucm2/USB-Audio/Steinberg/UR44-HiFi.conf b/ucm2/USB-Audio/Steinberg/UR44-HiFi.conf
+index cd9521410882..7926a0feacd1 100644
+--- a/ucm2/USB-Audio/Steinberg/UR44-HiFi.conf
++++ b/ucm2/USB-Audio/Steinberg/UR44-HiFi.conf
+@@ -16,7 +16,7 @@ Macro [
+ 	{
+ 		SplitPCM {
+ 			Name "steinberg_ur44_mono_in"
+-			Direction Playback
++			Direction Capture
+ 			Channels 1
+ 			HWChannels 6
+ 			HWChannelPos0 MONO
+-- 
+2.35.3
+

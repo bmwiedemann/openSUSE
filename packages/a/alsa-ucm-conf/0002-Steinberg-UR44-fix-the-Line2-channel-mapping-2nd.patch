@@ -1,0 +1,35 @@
+From 3b6317cd79a25cd9a064a80a080ea3c65d4d9942 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 3 Jun 2022 08:01:33 +0200
+Subject: [PATCH 2/3] Steinberg UR44: fix the Line2 channel mapping (2nd)
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/USB-Audio/Steinberg/UR44-HiFi.conf | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/ucm2/USB-Audio/Steinberg/UR44-HiFi.conf b/ucm2/USB-Audio/Steinberg/UR44-HiFi.conf
+index e7f5944d8e56..cd9521410882 100644
+--- a/ucm2/USB-Audio/Steinberg/UR44-HiFi.conf
++++ b/ucm2/USB-Audio/Steinberg/UR44-HiFi.conf
+@@ -43,7 +43,7 @@ SectionDevice."Line1" {
+ 		Channel0 0
+ 		Channel1 1
+ 		ChannelPos0 FL
+-		ChannelPos0 FR
++		ChannelPos1 FR
+ 	}
+ }
+ 
+@@ -61,7 +61,7 @@ SectionDevice."Line2" {
+ 		Channel0 2
+ 		Channel1 3
+ 		ChannelPos0 FL
+-		ChannelPos0 FR
++		ChannelPos1 FR
+ 	}
+ }
+ 
+-- 
+2.35.3
+

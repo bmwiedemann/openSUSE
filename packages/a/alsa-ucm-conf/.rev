@@ -177,4 +177,15 @@ Now required by the upcoming alsa-1.2.1 release</comment>
     <comment></comment>
     <requestid>980235</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>44a73233dc1f9df1e6e13ed17e73a8e8</srcmd5>
+    <version>1.2.7</version>
+    <time>1654595097</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport upstream fixes for Steinberg UR44:
+  0001-Steinberg-UR44-fix-the-Line2-channel-mapping.patch
+  0002-Steinberg-UR44-fix-the-Line2-channel-mapping-2nd.patch
+  0003-Steinberg-UR44-fix-the-direction-for-steinberg_ur44_.patch</comment>
+    <requestid>980995</requestid>
+  </revision>
 </revisionlist>

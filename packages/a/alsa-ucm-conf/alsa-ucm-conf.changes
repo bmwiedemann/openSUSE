@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun  6 10:58:35 UTC 2022 - Takashi Iwai <tiwai@suse.com>
+
+- Backport upstream fixes for Steinberg UR44:
+  0001-Steinberg-UR44-fix-the-Line2-channel-mapping.patch
+  0002-Steinberg-UR44-fix-the-Line2-channel-mapping-2nd.patch
+  0003-Steinberg-UR44-fix-the-direction-for-steinberg_ur44_.patch
+
+-------------------------------------------------------------------
 Wed Jun  1 05:59:14 UTC 2022 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 1.2.7:

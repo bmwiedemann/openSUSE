@@ -1,0 +1,29 @@
+From 8edc0606b7ac69fa71ad4349882cc2dd0a29074d Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 3 Jun 2022 07:59:33 +0200
+Subject: [PATCH 1/3] Steinberg UR44: fix the Line2 channel mapping
+
+Link: https://github.com/alsa-project/alsa-ucm-conf/issues/163
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/USB-Audio/Steinberg/UR44-HiFi.conf | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/ucm2/USB-Audio/Steinberg/UR44-HiFi.conf b/ucm2/USB-Audio/Steinberg/UR44-HiFi.conf
+index 2f826b465bf6..e7f5944d8e56 100644
+--- a/ucm2/USB-Audio/Steinberg/UR44-HiFi.conf
++++ b/ucm2/USB-Audio/Steinberg/UR44-HiFi.conf
+@@ -58,8 +58,8 @@ SectionDevice."Line2" {
+ 		Direction Playback
+ 		HWChannels 4
+ 		Channels 2
+-		Channel0 0
+-		Channel1 1
++		Channel0 2
++		Channel1 3
+ 		ChannelPos0 FL
+ 		ChannelPos0 FR
+ 	}
+-- 
+2.35.3
+
