@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Fri Jun  3 05:12:40 UTC 2022 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- Version 1.10.13
+  * Features
+  # Go to space landing page when clicking on a selected space (#6442). Fixes vector-im/element-web#20296.
+  # Fall back to untranslated string rather than showing missing translation error (#8609).
+  # Show file name and size on images on hover (#6511). Fixes vector-im/element-web#18197.
+  # Iterate on search results for message bubbles (#7047). Fixes vector-im/element-web#20315.
+  # registration: redesign email verification page (#8554). Fixes vector-im/element-web#21984.
+  # Show full thread message in hover title on thread summary (#8568). Fixes vector-im/element-web#22037.
+  # Tweak video rooms copy (#8582). Fixes vector-im/element-web#22176.
+  # Live location share - beacon tooltip in maximised view (#8572).
+  # Add dialog to navigate long room topics (#8517). Fixes vector-im/element-web#9623.
+  # Change spaceroomfacepile tooltip if memberlist is shown (#8571). Fixes vector-im/element-web#17406.
+  # Improve message editing UI (#8483). Fixes vector-im/element-web#9752 and vector-im/element-web#22108.
+  # Make date changes more obvious (#6410). Fixes vector-im/element-web#16221.
+  # Enable forwarding static locations (#8553).
+  # Log TimelinePanel debugging info when opening the bug report modal (#8502).
+  # Improve welcome screen, add opt-out analytics (#8474). Fixes vector-im/element-web#21946.
+  # Converting selected text to MD link when pasting a URL (#8242). Fixes vector-im/element-web#21634. Contributed by @Sinharitik589.
+  # Support Inter on custom themes (#8399). Fixes vector-im/element-web#16293.
+  # Add a Copy link button to the right-click message context-menu labs feature (#8527).
+  # Move widget screenshots labs flag to devtools (#8522).
+  # Remove some labs features which don't get used or create maintenance burden: custom status, multiple integration managers, and do not disturb (#8521).
+  # Add a way to toggle ScrollPanel and TimelinePanel debug logs (#8513).
+  # Spaces: remove blue beta dot (#8511). Fixes vector-im/element-web#22061.
+  # Order new search dialog results by recency (#8444).
+  # Improve pills (#6398). Fixes vector-im/element-web#16948 and vector-im/element-web#21281.
+  # Add a way to maximize/pin widget from the PiP view (#7672). Fixes vector-im/element-web#20723.
+  # Iterate video room designs in labs (#8499).
+  # Improve UI/UX in calls (#7791). Fixes vector-im/element-web#19937.
+  # Add ability to change audio and video devices during a call (#7173). Fixes vector-im/element-web#15595.
+
+  * Bug Fixes
+  # Fix video rooms sometimes connecting muted when they shouldn't (#22125).
+  # Avoid flashing the 'join conference' button at the user in video rooms (#22120).
+  # Fully close Jitsi conferences on errors (#22060).
+  # Fix click behavior of notification badges on spaces (#8627). Fixes vector-im/element-web#22241.
+  # Add missing return values in Read Receipt animation code (#8625). Fixes vector-im/element-web#22175.
+  # Fix 'continue' button not working after accepting identity server terms of service (#8619). Fixes vector-im/element-web#20003.
+  # Proactively fix stuck devices in video rooms (#8587). Fixes vector-im/element-web#22131.
+  # Fix position of the message action bar on left side bubbles (#8398). Fixes vector-im/element-web#21879. Contributed by @luixxiul.
+  # Fix edge case thread summaries around events without a msgtype (#8576).
+  # Fix favourites metaspace not updating (#8594). Fixes vector-im/element-web#22156.
+  # Stop spaces from displaying as rooms in new breadcrumbs (#8595). Fixes vector-im/element-web#22165.
+  # Fix avatar position of hidden event on ThreadView (#8592). Fixes vector-im/element-web#22199. Contributed by @luixxiul.
+  # Fix MessageTimestamp position next to redacted messages on IRC/modern layout (#8591). Fixes vector-im/element-web#22181. Contributed by @luixxiul.
+  # Fix padding of messages in threads (#8574). Contributed by @luixxiul.
+  # Enable overflow of hidden events content (#8585). Fixes vector-im/element-web#22187. Contributed by @luixxiul.
+  # Increase composer line height to avoid cutting off emoji (#8583). Fixes vector-im/element-web#22170.
+  # Don't consider threads for breaking continuation until actually created (#8581). Fixes vector-im/element-web#22164.
+  # Fix displaying hidden events on threads (#8555). Fixes vector-im/element-web#22058. Contributed by @luixxiul.
+  # Fix button width and align 絵文字 (emoji) on the user panel (#8562). Fixes vector-im/element-web#22142. Contributed by @luixxiul.
+  # Standardise the margin for settings tabs (#7963). Fixes vector-im/element-web#20767. Contributed by @yuktea.
+  # Fix room history not being visible even if we have historical keys (#8563). Fixes vector-im/element-web#16983.
+  # Fix oblong avatars in video room lobbies (#8565).
+  # Update thread summary when latest event gets decrypted (#8564). Fixes vector-im/element-web#22151.
+  # Fix codepath which can wrongly cause automatic space switch from all rooms (#8560). Fixes vector-im/element-web#21373.
+  # Fix effect of URL preview toggle not updating live (#8561). Fixes vector-im/element-web#22148.
+  # Fix visual bugs on AccessSecretStorageDialog (#8160). Fixes vector-im/element-web#19426. Contributed by @luixxiul.
+  # Fix the width bounce of the clock on the AudioPlayer (#8320). Fixes vector-im/element-web#21788. Contributed by @luixxiul.
+  # Hide the verification left stroke only on the thread list (#8525). Fixes vector-im/element-web#22132. Contributed by @luixxiul.
+  # Hide recently_viewed dropdown when other modal opens (#8538). Contributed by @yaya-usman.
+  # Only jump to date after pressing the 'go' button (#8548). Fixes vector-im/element-web#20799.
+  # Fix download button not working on events that were decrypted too late (#8556). Fixes vector-im/element-web#19427.
+  # Align thread summary button with bubble messages on the left side (#8388). Fixes vector-im/element-web#21873. Contributed by @luixxiul.
+  # Fix unresponsive notification toggles (#8549). Fixes vector-im/element-web#22109.
+  # Set color-scheme property in themes (#8547). Fixes vector-im/element-web#22124.
+  # Improve the styling of error messages during search initialization. (#6899). Fixes vector-im/element-web#19245 and vector-im/element-web#18164. Contributed by @KalleStruik.
+  # Don't leave button tooltips open when closing modals (#8546). Fixes vector-im/element-web#22121.
+  # update matrix-analytics-events (#8543).
+  # Handle Jitsi Meet crashes more gracefully (#8541).
+  # Fix regression around pasting links (#8537). Fixes vector-im/element-web#22117.
+  # Fixes suggested room not ellipsized on shrinking (#8536). Contributed by @yaya-usman.
+  # Add global spacing between display name and location body (#8523). Fixes vector-im/element-web#22111. Contributed by @luixxiul.
+  # Add box-shadow to the reply preview on the main (left) panel only (#8397). Fixes vector-im/element-web#21894. Contributed by @luixxiul.
+  # Set line-height: 1 to RedactedBody inside GenericEventListSummary for IRC/modern layout (#8529). Fixes vector-im/element-web#22112. Contributed by @luixxiul.
+  # Fix position of timestamp on the chat panel in IRC layout and message edits history modal window (#8464). Fixes vector-im/element-web#22011 and vector-im/element-web#22014. Contributed by @luixxiul.
+  # Fix unexpected and inconsistent inheritance of line-height property for mx_TextualEvent (#8485). Fixes vector-im/element-web#22041. Contributed by @luixxiul.
+  # Set the same margin to the right side of NewRoomIntro on TimelineCard (#8453). Contributed by @luixxiul.
+  # Remove duplicate tooltip from user pills (#8512).
+  # Set max-width for MLocationBody and MLocationBody_map by default (#8519). Fixes vector-im/element-web#21983. Contributed by @luixxiul.
+  # Simplify ReplyPreview UI implementation (#8516). Fixes vector-im/element-web#22091. Contributed by @luixxiul.
+  # Fix thread summary overflow on narrow message panel on bubble message layout (#8520). Fixes vector-im/element-web#22097. Contributed by @luixxiul.
+  # Live location sharing - refresh beacon timers on tab becoming active (#8515).
+  # Enlarge emoji again (#8509). Fixes vector-im/element-web#22086.
+  # Order receipts with the most recent on the right (#8506). Fixes vector-im/element-web#22044.
+  # Disconnect from video rooms when leaving (#8500).
+  # Fix soft crash around threads when room isn't yet in store (#8496). Fixes vector-im/element-web#22047.
+  # Fix reading of cached room device setting values (#8491).
+  # Add loading spinners to threads panels (#8490). Fixes vector-im/element-web#21335.
+  # Fix forwarding UI papercuts (#8482). Fixes vector-im/element-web#17616.
+
+
+-------------------------------------------------------------------
 Mon May 16 07:56:29 UTC 2022 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.10.12
