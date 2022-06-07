@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun  6 20:26:56 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update runtime requirements, clean up test requirements
+
+-------------------------------------------------------------------
+Mon Jun  6 13:33:20 UTC 2022 - Timothy Brown <stimut@gmail.com>
+
+- update to version 6.4.11:
+  * Bugs fixed
+    + Update further to ipykernel comm refactoring
+  * Maintenance and upkeep improvements
+    + Add testpath to the test dependencies
+    + Temporary workaround to fix js-tests related to sanitizer js loading by phantomjs
+    + Use place-hold.it instead of plaecehold.it to create image placeholders
+    + Migrate to python 3.7+
+
+-------------------------------------------------------------------
 Thu Feb 17 16:54:20 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 6.4.8:

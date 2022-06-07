@@ -35,7 +35,7 @@ BuildArch:      noarch
 %bcond_with libalternatives
 %endif
 Name:           python-notebook%{psuffix}
-Version:        6.4.8
+Version:        6.4.11
 Release:        0
 Summary:        Jupyter Notebook interface
 License:        BSD-3-Clause
@@ -54,7 +54,7 @@ Requires:       python-ipykernel
 Requires:       python-ipython_genutils
 Requires:       python-jupyter-client >= 5.3.4
 Requires:       python-jupyter-core >= 4.6.1
-Requires:       python-nbconvert
+Requires:       python-nbconvert >= 5
 Requires:       python-nbformat
 Requires:       python-prometheus_client
 Requires:       python-pyzmq >= 17
@@ -79,27 +79,12 @@ Requires(postun):update-alternatives
 %endif
 %endif
 %if %{with test}
-BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module Send2Trash}
-BuildRequires:  %{python_module argon2-cffi}
-BuildRequires:  %{python_module attrs >= 17.4.0}
-BuildRequires:  %{python_module ipykernel}
-BuildRequires:  %{python_module ipython_genutils}
-BuildRequires:  %{python_module jupyter-client >= 5.3.4}
-BuildRequires:  %{python_module jupyter-core >= 4.6.1}
-BuildRequires:  %{python_module nbconvert}
-BuildRequires:  %{python_module nbformat}
 BuildRequires:  %{python_module nbval}
-# Some dependency loop involving the jupyter-notebook subpackage could pull in an old version otherwise!
 BuildRequires:  %{python_module notebook = %{version}}
-BuildRequires:  %{python_module prometheus_client}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pyzmq >= 17}
 BuildRequires:  %{python_module requests-unixsocket}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module terminado >= 0.8.3}
-BuildRequires:  %{python_module tornado >= 6.1}
-BuildRequires:  %{python_module traitlets >= 4.2.1}
+BuildRequires:  %{python_module testpath}
 %ifnarch %{ix86}
 # pandoc package disabled build for ix86
 BuildRequires:  pandoc
