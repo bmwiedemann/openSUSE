@@ -7,4 +7,17 @@
     <comment></comment>
     <requestid>935960</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d8a0a517a62c73629391c0ef7811d2ae</srcmd5>
+    <version>0.4.0</version>
+    <time>1654595129</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.4.0
+  - Make Expose Port Configurable
+  - Update master for stable/xena
+  - Changed minversion in tox to 3.18.0
+  - Limit metrics_socket_file permissions
+  - setup.cfg: Replace dashes with underscores</comment>
+    <requestid>981113</requestid>
+  </revision>
 </revisionlist>

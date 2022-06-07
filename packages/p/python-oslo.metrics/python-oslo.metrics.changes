@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  7 08:43:27 UTC 2022 - cloud-devel@suse.de
+
+- update to version 0.4.0
+  - Make Expose Port Configurable
+  - Update master for stable/xena
+  - Changed minversion in tox to 3.18.0
+  - Limit metrics_socket_file permissions
+  - setup.cfg: Replace dashes with underscores
+
+-------------------------------------------------------------------
 Mon Dec  6 10:18:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - Initial packaging (0.3.0) 
