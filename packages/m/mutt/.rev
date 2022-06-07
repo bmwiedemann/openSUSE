@@ -1312,4 +1312,15 @@ with a run of spec-cleaner (forwarded request 826781 from AndreasStieger)</comme
   * Update Turkish translations.</comment>
     <requestid>970760</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>6c87179af80d34d3fe76c1c2f825320a</srcmd5>
+    <version>2.2.5</version>
+    <time>1654596253</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.5:
+  * fixing two issues with libgsasl authentication.
+  * fixing some regressions with Maildir/mh mailbox path normalization that were
+    added in 2.2.0. Please see the UPDATING file for more details. (forwarded request 980734 from dirkmueller)</comment>
+    <requestid>981120</requestid>
+  </revision>
 </revisionlist>
