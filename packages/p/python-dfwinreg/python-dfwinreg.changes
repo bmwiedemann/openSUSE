@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun  6 21:45:29 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to 20211207
+  - added support for some malformed registry entry values
+- add %define skip_python2 1
+- enable %check and add new BuildRequires dependencies as needed to support ./run_tests.py
+
+-------------------------------------------------------------------
 Thu Dec 31 03:36:09 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to 20201006

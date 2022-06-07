@@ -1,7 +1,7 @@
 #
 # spec file for package python-dfwinreg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define timestamp 20201006
+%define skip_python2 1
+
+%define timestamp 20211207
 %define modname dfwinreg
 Name:           python-dfwinreg
 Version:        0~%{timestamp}
@@ -27,7 +29,12 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/log2timeline/dfwinreg
 Source:         https://github.com/log2timeline/%{modname}/releases/download/%{timestamp}/%{modname}-%{timestamp}.tar.gz
+BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module dfdatetime}
+BuildRequires:  %{python_module dtfabric}
+BuildRequires:  %{python_module libcreg}
+BuildRequires:  %{python_module libregf}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -41,9 +48,12 @@ BuildArch:      noarch
 
 %prep
 %setup -q -n %{modname}-%{timestamp}
+sed -i 's/python setup.py install/python3 setup.py install/' setup.py
+sed -i 's/py2_build/py3_build/' setup.py
+sed -i 's|/usr/bin/env python|/usr/bin/env python3|' run_tests.py
 
 %build
-%python_build
+%python3_build
 
 %install
 %python_install
@@ -51,6 +61,9 @@ BuildArch:      noarch
 
 # these are installed into the wrong place
 rm -rf %{buildroot}%{_datadir}/doc/%{modname}
+
+%check
+./run_tests.py
 
 %files %{python_files}
 %license LICENSE
