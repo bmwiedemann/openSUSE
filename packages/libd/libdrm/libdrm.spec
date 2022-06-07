@@ -17,7 +17,7 @@
 
 
 Name:           libdrm
-Version:        2.4.110
+Version:        2.4.111
 Release:        0
 Summary:        Userspace Interface for Kernel DRM Services
 License:        MIT
@@ -159,23 +159,6 @@ Linux, BSD and other operating systems.
 This package provides userspace interface for Kernel DRM services
 for AMD Radeon chips.
 
-%package -n libkms-devel
-Summary:        Development files for the KMS MM abstraction library
-Group:          Development/Libraries/C and C++
-Requires:       libkms1 = %{version}
-
-%description -n libkms-devel
-This package contains the development headers for the library found
-in libkms1.
-
-%package -n libkms1
-Summary:        Userspace interface to kernel DRM buffer management
-Group:          System/Libraries
-
-%description -n libkms1
-The KMS Memory Management abstraction library.
-This package provides the userspace interface to kernel DRM buffer management
-
 %package -n libdrm_omap1
 Summary:        Userspace interface to kernel DRM services for omap chips
 Group:          System/Libraries
@@ -279,8 +262,6 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %postun -n libdrm_radeon1 -p /sbin/ldconfig
 %post   -n libdrm_amdgpu1 -p /sbin/ldconfig
 %postun -n libdrm_amdgpu1 -p /sbin/ldconfig
-%post   -n libkms1 -p /sbin/ldconfig
-%postun -n libkms1 -p /sbin/ldconfig
 
 %ifarch %{arm}
 %post   -n libdrm_omap1 -p /sbin/ldconfig
@@ -307,11 +288,9 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %{_bindir}/exynos_fimg2d_test
 %{_bindir}/exynos_fimg2d_event
 %{_bindir}/exynos_fimg2d_perf
+%{_bindir}/tegra-*
 %endif
 %{_bindir}/amdgpu_stress
-%{_bindir}/kms-steal-crtc
-%{_bindir}/kms-universal-planes
-%{_bindir}/kmstest
 %{_bindir}/modeprint
 %{_bindir}/modetest
 %{_bindir}/proptest
@@ -351,14 +330,6 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %files -n libdrm_amdgpu1
 %{_libdir}/libdrm_amdgpu.so.1*
 %{_datarootdir}/libdrm/amdgpu.ids
-
-%files -n libkms1
-%{_libdir}/libkms.so.1*
-
-%files -n libkms-devel
-%{_includedir}/libkms
-%{_libdir}/libkms.so
-%{_libdir}/pkgconfig/libkms.pc
 
 %ifarch %{arm}
 %files -n libdrm_omap1

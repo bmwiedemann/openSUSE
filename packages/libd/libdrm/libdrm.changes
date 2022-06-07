@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun  3 20:16:41 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 2.4.111
+  * bugfixes
+  * drops libkms 
+- added tegra-* tools on aarch64 to spefile
+
+-------------------------------------------------------------------
 Mon Feb 28 19:26:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.110:
