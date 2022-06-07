@@ -321,4 +321,16 @@
   * Make decode errors more helpful in finding the source of the bad data</comment>
     <requestid>951682</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>59452d2357ef8edba5a6381ebb7cc53e</srcmd5>
+    <version>0.38.6</version>
+    <time>1654595846</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.38.6:
+  * Performance improvements for fetching ServiceInfo
+  * Fix ServiceBrowsers not getting ServiceStateChange.Removed callbacks on PTR record expire
+  * Fix missing minimum version of python 3.7
+  * Fix IP Address updates when hostname is uppercase</comment>
+    <requestid>980756</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun  4 12:14:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.38.6:
+  * Performance improvements for fetching ServiceInfo
+  * Fix ServiceBrowsers not getting ServiceStateChange.Removed callbacks on PTR record expire
+  * Fix missing minimum version of python 3.7
+  * Fix IP Address updates when hostname is uppercase
+
+-------------------------------------------------------------------
 Fri Feb  4 22:29:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.38.3:
