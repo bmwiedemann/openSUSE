@@ -1,27 +1,27 @@
 From d29ff6f488c9d0478d29dd32a77e2fe0e76e4fb6 Mon Sep 17 00:00:00 2001
 From: Anton Agestam <git@antonagestam.se>
 Date: Mon, 19 Apr 2021 17:21:12 +0200
-Subject: [PATCH 01/13] Drop support for legacy versions
+Subject: [PATCH 01/16] Drop support for legacy versions
 
 - Drop support for Django 1.11, 2.1 and 3.0.
 - Drop support for Python 3.5.
 ---
  .github/workflows/main.yml                  |    2 
- djmoney/models/fields.py                    |    2 
+ djmoney/models/fields.py                    |    4 -
  djmoney/money.py                            |   52 +---------------------
  djmoney/settings.py                         |   15 +-----
- docs/changes.rst                            |    7 +++
+ docs/changes.rst                            |   15 ++++++
  pytest.ini                                  |    3 -
- setup.py                                    |    3 -
+ setup.py                                    |    2 
  tests/conftest.py                           |    8 ---
  tests/contrib/test_django_rest_framework.py |    3 -
  tests/settings.py                           |   16 -------
  tests/test_admin.py                         |   19 --------
- tests/test_models.py                        |   54 +++++++++++++++--------
+ tests/test_models.py                        |   62 +++++++++++++++++----------
  tests/test_money.py                         |   64 ++++------------------------
  tests/test_tags.py                          |   35 ---------------
  tests/testapp/models.py                     |    2 
- 15 files changed, 65 insertions(+), 220 deletions(-)
+ 15 files changed, 80 insertions(+), 222 deletions(-)
 
 --- a/.github/workflows/main.yml
 +++ b/.github/workflows/main.yml
@@ -45,6 +45,15 @@ Subject: [PATCH 01/13] Drop support for legacy versions
          return default
  
      def to_python(self, value):
+@@ -261,7 +261,7 @@ class MoneyField(models.DecimalField):
+             default=self.default_currency,
+             editable=False,
+             choices=self.currency_choices,
+-            null=self.default_currency is None,
++            null=self.null,
+         )
+         currency_field.creation_counter = self.creation_counter - 1
+         currency_field_name = get_currency_field_name(name, self)
 --- a/djmoney/money.py
 +++ b/djmoney/money.py
 @@ -1,5 +1,3 @@
@@ -185,7 +194,20 @@ Subject: [PATCH 01/13] Drop support for legacy versions
  OPEN_EXCHANGE_RATES_APP_ID = getattr(settings, "OPEN_EXCHANGE_RATES_APP_ID", None)
 --- a/docs/changes.rst
 +++ b/docs/changes.rst
-@@ -70,6 +70,13 @@ Changelog
+@@ -4,6 +4,12 @@ Changelog
+ `Unreleased`_ - TBA
+ -------------------
+ 
++**Changed**
++- Update py-moneyed to 2.0. `#638`_ (`antonagestam`_, `flaeppe`_, `paoloxnet`_)
++- Remove the deprecated ``Money.decimal_places_display`` property and argument. `#638`_ (`antonagestam`_, `flaeppe`_, `paoloxnet`_)
++- Remove the deprecated ``CURRENCY_DECIMAL_PLACES_DISPLAY`` setting. `#638`_ (`antonagestam`_, `flaeppe`_, `paoloxnet`_)
++- Null constraint on an implicit ``CurrencyField`` is now declared from ``null=...`` argument to ``MoneyField``. `#638`_ (`antonagestam`_, `flaeppe`_, `paoloxnet`_)
++
+ **Fixed**
+ 
+ - Improve the internal check for whether a currency is provided `#657`_ (`davidszotten`_)
+@@ -70,6 +76,13 @@ Changelog
  - ``Money.decimal_places_display`` will be removed in django-money 3.0.
  - ``CURRENCY_DECIMAL_PLACES_DISPLAY`` will be removed in django-money 3.0.
  
@@ -199,6 +221,22 @@ Subject: [PATCH 01/13] Drop support for legacy versions
  `1.3.1`_ - 2021-02-04
  ---------------------
  
+@@ -783,6 +796,7 @@ wrapping with ``money_manager``.
+ .. _#657: https://github.com/django-money/django-money/issues/657
+ .. _#648: https://github.com/django-money/django-money/issues/648
+ .. _#646: https://github.com/django-money/django-money/issues/646
++.. _#638: https://github.com/django-money/django-money/issues/638
+ .. _#637: https://github.com/django-money/django-money/issues/637
+ .. _#630: https://github.com/django-money/django-money/pull/630
+ .. _#629: https://github.com/django-money/django-money/pull/629
+@@ -951,6 +965,7 @@ wrapping with ``money_manager``.
+ .. _mstarostik: https://github.com/mstarostik
+ .. _niklasb: https://github.com/niklasb
+ .. _nerdoc: https://github.com/nerdoc
++.. _paoloxnet: https://github.com/paoloxnet
+ .. _pjdelport: https://github.com/pjdelport
+ .. _plumdog: https://github.com/plumdog
+ .. _rach: https://github.com/rach
 --- a/pytest.ini
 +++ b/pytest.ini
 @@ -2,6 +2,3 @@
@@ -210,15 +248,7 @@ Subject: [PATCH 01/13] Drop support for legacy versions
 -    ignore:`CURRENCY_DECIMAL_PLACES_DISPLAY` is deprecated and will be removed in django-money 3\.0\.:DeprecationWarning
 --- a/setup.py
 +++ b/setup.py
-@@ -29,7 +29,6 @@ class PyTest(TestCommand):
- test_requirements = [
-     "pytest>=3.1.0",
-     "pytest-django",
--    "pytest-pythonpath",
-     "pytest-cov",
-     "mixer",
- ]
-@@ -66,7 +65,7 @@ setup(
+@@ -66,7 +66,7 @@ setup(
      maintainer_email="greg@reinbach.com",
      license="BSD",
      packages=find_packages(include=["djmoney", "djmoney.*"]),
@@ -405,10 +435,14 @@ Subject: [PATCH 01/13] Drop support for legacy versions
          retrieved = ModelWithVanillaMoneyField.objects.get(money__gt=money)
  
          assert instance.pk == retrieved.pk
-@@ -302,12 +309,19 @@ class TestVanillaMoneyField:
+@@ -302,12 +309,23 @@ class TestVanillaMoneyField:
          instance = NullMoneyFieldModel.objects.create()
          assert instance.field is None
  
++    def test_raises_type_error_setting_currency_to_none_on_nullable_currency_field_while_having_amount(self):
++        with pytest.raises(ValueError, match=r"Missing currency value"):
++            NullMoneyFieldModel(field=10, field_currency=None)
++
 +    def test_currency_field_null_switch_not_triggered_from_default_currency(self):
 +        # We want a sane default behaviour and simply declaring a `MoneyField(...)`
 +        # without any default value args should create non nullable amount and currency
@@ -426,7 +460,19 @@ Subject: [PATCH 01/13] Drop support for legacy versions
              (ModelWithVanillaMoneyField, "money", {"money": Money(0, "EUR")}, "EUR"),
              (ModelWithVanillaMoneyField, "money", {"money": OldMoney(0, "EUR")}, "EUR"),
              (ModelWithSharedCurrency, "first", {"first": 10, "second": 15, "currency": "CZK"}, "CZK"),
-@@ -527,9 +541,11 @@ class TestExpressions:
+@@ -381,9 +399,9 @@ class TestNullableCurrency:
+         assert not ModelWithNullableCurrency.objects.exists()
+ 
+     def test_fails_with_nullable_but_no_default(self):
+-        with pytest.raises(IntegrityError) as exc:
++        match = r"NOT NULL constraint failed: testapp_modelwithtwomoneyfields.amount1"
++        with pytest.raises(IntegrityError, match=match):
+             ModelWithTwoMoneyFields.objects.create()
+-        assert str(exc.value) == "NOT NULL constraint failed: testapp_modelwithtwomoneyfields.amount1"
+ 
+     def test_query_not_null(self):
+         money = Money(100, "EUR")
+@@ -527,9 +545,11 @@ class TestExpressions:
          assert ModelWithVanillaMoneyField.objects.get(integer=1).money == Money(0, "USD")
  
      def test_create_func(self):
@@ -440,7 +486,7 @@ Subject: [PATCH 01/13] Drop support for legacy versions
  
      @pytest.mark.parametrize(
          "value, expected", ((None, None), (10, Money(10, "USD")), (Money(10, "EUR"), Money(10, "EUR")))
-@@ -541,7 +557,7 @@ class TestExpressions:
+@@ -541,7 +561,7 @@ class TestExpressions:
  
      def test_value_create_invalid(self):
          with pytest.raises(ValidationError):
@@ -449,7 +495,7 @@ Subject: [PATCH 01/13] Drop support for legacy versions
  
      def test_expressions_for_non_money_fields(self):
          instance = ModelWithVanillaMoneyField.objects.create(money=Money(1, "USD"), integer=0)
-@@ -560,7 +576,7 @@ def test_find_models_related_to_money_mo
+@@ -560,7 +580,7 @@ def test_find_models_related_to_money_mo
  def test_allow_expression_nodes_without_money():
      """Allow querying on expression nodes that are not Money"""
      desc = "hundred"
@@ -458,7 +504,7 @@ Subject: [PATCH 01/13] Drop support for legacy versions
      instance = ModelWithNonMoneyField.objects.filter(desc=F("desc")).get()
      assert instance.desc == desc
  
-@@ -793,7 +809,7 @@ def test_mixer_blend():
+@@ -793,7 +813,7 @@ def test_mixer_blend():
      except AttributeError:
          pass  # mixer doesn't work with pypy
      else:

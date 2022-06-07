@@ -41,4 +41,13 @@
 </comment>
     <requestid>980905</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>17f7e790a963995ad416ba6755847b48</srcmd5>
+    <version>2.1.1</version>
+    <time>1654595113</time>
+    <user>dimstar_suse</user>
+    <comment>- Refreshed patch pr_638.patch to the merged version.
+</comment>
+    <requestid>981048</requestid>
+  </revision>
 </revisionlist>
