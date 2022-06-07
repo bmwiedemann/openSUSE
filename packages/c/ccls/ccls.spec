@@ -1,7 +1,7 @@
 #
 # spec file for package ccls
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,9 @@ License:        Apache-2.0 AND CC0-1.0 AND BSL-1.0
 Group:          Development/Tools/IDE
 URL:            https://github.com/MaskRay/ccls
 Source0:        %{URL}/archive/%{version}/%{name}-%{version}.tar.gz
+Patch0:         https://github.com/MaskRay/ccls/commit/3ce756e39ae48204f016a58684652ad62b4dd9f9.patch#/llvm14-refactor-isIdentifierBody.patch
+Patch1:         https://github.com/MaskRay/ccls/commit/8422f0a522b6fbcb4412a8ec73d80b4acbc7e00f.patch#/llvm14-braced-constructor-call.patch
+Patch2:         https://github.com/MaskRay/ccls/commit/790daca4b2d9d5873623fee86283cd61212df674.patch#/llvm14-include-STLExtras.patch
 BuildRequires:  clang-devel >= 7.0
 BuildRequires:  cmake >= 3.8
 BuildRequires:  llvm-devel >= 7.0
@@ -67,7 +70,12 @@ ccls, which originates from cquery, is a C/C++/Objective-C language server.
 rm -rf third_party/rapidjson
 
 %build
-%cmake -DUSE_SYSTEM_RAPIDJSON=ON -DCLANG_LINK_CLANG_DYLIB=on
+%cmake -DUSE_SYSTEM_RAPIDJSON=ON \
+%if %{pkg_vcmp clang-devel >= 9.0.0}
+    -DCLANG_LINK_CLANG_DYLIB=ON
+%else
+    -DCLANG_LINK_CLANG_DYLIB=OFF
+%endif
 # ccls currently consumes ~1GB of memory during compilation per thread
 %cmake_build
 

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun  4 13:28:49 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Port back upstream patches to fix build with LLVM 14:
+  * llvm14-refactor-isIdentifierBody.patch
+  * llvm14-braced-constructor-call.patch
+  * llvm14-include-STLExtras.patch
+- Fix build with older LLVMs by setting CLANG_LINK_CLANG_DYLIB=ON
+  only for versions >= 9.
+
+-------------------------------------------------------------------
 Mon May  3 18:10:23 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.20210330
