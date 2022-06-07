@@ -29,10 +29,9 @@
 %else
 %bcond_with libalternatives
 %endif
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
+
 Name:           python-nbclient%{psuffix}
-Version:        0.5.13
+Version:        0.6.4
 Release:        0
 Summary:        A client library for executing notebooks
 License:        BSD-3-Clause
@@ -45,7 +44,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-jupyter-client >= 6.1.5
 Requires:       python-nbformat >= 5.0
 Requires:       python-nest-asyncio
-Requires:       python-traitlets >= 5.0
+Requires:       python-traitlets >= 5.2.2
 BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts
@@ -57,10 +56,11 @@ Requires(postun):update-alternatives
 %if %{with test}
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipython}
-BuildRequires:  %{python_module ipywidgets < 8}
+BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module nbclient = %{version}}
 BuildRequires:  %{python_module pytest >= 4.1}
 BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module testpath}
 BuildRequires:  %{python_module xmltodict}
 %endif
 %python_subpackages

@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Jun  5 16:49:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fix test requirements
+
+-------------------------------------------------------------------
+Sat Jun  4 23:14:53 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update requirements
+
+- update to version 0.6.4:
+  * Merged PRs
+    + Make sure kernel is cleaned up in case an error occurred while
+      starting kernel client #234 (@CiprianAnton)
+    + Suppress most warnings in tests #232 (@davidbrochart)
+
+- changes from version 0.6.3:
+  * Bugs fixed
+    + Clean up docs and typings #230 (@blink1073)
+  * Documentation improvements
+    + Clean up docs and typings #230 (@blink1073)
+
+- changes from version 0.6.2:
+  * Merged PRs
+    + Fix documentation generation #228 (@davidbrochart)
+
+- changes from version 0.6.1:
+  * Merged PRs
+    + [pre-commit.ci] pre-commit autoupdate #225 (@pre-commit-ci)
+    + Add error_on_interrupt trait #224 (@davidbrochart)
+    + Fix typo #223 (@davidbrochart)
+    + Add on_cell_executed hook #222 (@davidbrochart)
+
+- changes from version 0.6.0:
+  * Maintenance and upkeep improvements
+    + Fix typings and update mypy settings #220 (@blink1073)
+    + Add missing dep on testpath #219 (@blink1073)
+    + Add more pre-commit hooks and update flake8 #218 (@blink1073)
+  * Documentation improvements
+    + Clean up docs handling #216 (@blink1073)
+
+-------------------------------------------------------------------
 Sat Mar 12 04:52:28 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.5.13:
