@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  7 08:53:51 UTC 2022 - cloud-devel@suse.de
+
+- update to version 2.6.0
+  - Update python testing classifier
+  - Add Python3 yoga unit tests
+  - Update master for stable/xena
+
+-------------------------------------------------------------------
 Tue Oct 26 22:10:36 UTC 2021 - cloud-devel@suse.de
 
 - update to version 2.5.0

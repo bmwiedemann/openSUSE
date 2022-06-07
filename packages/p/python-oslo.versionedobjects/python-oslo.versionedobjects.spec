@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.versionedobjects
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.versionedobjects
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        Oslo Versioned Objects library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.versionedobjects
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.versionedobjects/oslo.versionedobjects-2.5.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.versionedobjects/oslo.versionedobjects-2.6.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-iso8601 >= 0.1.11
 BuildRequires:  python3-jsonschema
@@ -61,7 +61,6 @@ Requires:       python3-oslo.log >= 3.36.0
 Requires:       python3-oslo.messaging >= 5.29.0
 Requires:       python3-oslo.serialization >= 2.18.0
 Requires:       python3-oslo.utils >= 4.7.0
-Requires:       python3-six
 
 %description -n python3-oslo.versionedobjects
 oslo.versionedobjects library deals with DB schema being at different versions
@@ -83,7 +82,7 @@ BuildRequires:  python3-openstackdocstheme
 This package contains documentation files for %{name}.
 
 %prep
-%autosetup -p1 -n oslo.versionedobjects-2.5.0
+%autosetup -p1 -n oslo.versionedobjects-2.6.0
 %py_req_cleanup
 
 %build
