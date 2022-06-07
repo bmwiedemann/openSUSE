@@ -1,7 +1,7 @@
 #
 # spec file for package python-tooz
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %global rdo 1
 %endif
 Name:           python-tooz
-Version:        2.9.0
+Version:        2.11.1
 Release:        0
 Summary:        Coordination library for distributed systems
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/tooz/latest/
-Source0:        https://files.pythonhosted.org/packages/source/t/tooz/tooz-2.9.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/t/tooz/tooz-2.11.1.tar.gz
 BuildRequires:  memcached
 BuildRequires:  openstack-macros
 BuildRequires:  python3-fasteners >= 0.7
@@ -38,7 +38,7 @@ BuildRequires:  python3-oslo.utils >= 4.7.0
 BuildRequires:  python3-pbr >= 1.6
 BuildRequires:  python3-pymemcache
 BuildRequires:  python3-stevedore >= 1.16.0
-BuildRequires:  python3-tenacity >= 3.2.1
+BuildRequires:  python3-tenacity >= 5.0.0
 BuildRequires:  python3-testtools
 BuildRequires:  python3-voluptuous >= 0.8.9
 BuildArch:      noarch
@@ -60,7 +60,7 @@ Requires:       python3-oslo.serialization >= 1.10.0
 Requires:       python3-oslo.utils >= 4.7.0
 Requires:       python3-six
 Requires:       python3-stevedore >= 1.16.0
-Requires:       python3-tenacity >= 3.2.1
+Requires:       python3-tenacity >= 5.0.0
 Requires:       python3-voluptuous >= 0.8.9
 
 %description -n python3-tooz
@@ -84,7 +84,7 @@ a coordination API helping developers to build distributed applications.
 This package contains documentation in HTML format.
 
 %prep
-%autosetup -p1 -n tooz-2.9.0
+%autosetup -p1 -n tooz-2.11.1
 %py_req_cleanup
 
 %build

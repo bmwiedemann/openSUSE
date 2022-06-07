@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun  7 08:49:30 UTC 2022 - cloud-devel@suse.de
+
+- update to version 2.11.1
+  - Support later tenacity versions
+  - setup.cfg: Replace dashes with underscores
+  - Enable retries in redis driver
+  - Deprecate the etcd3 driver
+  - Bump tenacity dependency to >= 5.0.0
+  - Update CI to use unversioned jobs template
+  - Fix formatting of release list
+  - Fix getting group with prefix in etcd3gw driver
+  - Fix docstring for get_members()
+
+-------------------------------------------------------------------
 Mon Dec  6 09:23:49 UTC 2021 - cloud-devel@suse.de
 
 - update to version 2.9.0

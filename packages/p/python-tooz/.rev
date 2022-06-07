@@ -215,4 +215,21 @@
   - Bump hacking and flake8 version to fix pep8 job</comment>
     <requestid>939549</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9e59823c67e53a61bb8e683cf2e362a8</srcmd5>
+    <version>2.11.1</version>
+    <time>1654595130</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.11.1
+  - Support later tenacity versions
+  - setup.cfg: Replace dashes with underscores
+  - Enable retries in redis driver
+  - Deprecate the etcd3 driver
+  - Bump tenacity dependency to &gt;= 5.0.0
+  - Update CI to use unversioned jobs template
+  - Fix formatting of release list
+  - Fix getting group with prefix in etcd3gw driver
+  - Fix docstring for get_members()</comment>
+    <requestid>981115</requestid>
+  </revision>
 </revisionlist>
