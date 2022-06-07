@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jun 06 18:43:00 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.16:
+  * Add initial docs for Dagger Cloud
+  * Add start, stop and error events for plan execution
+  * x/pulumi: add support for stack outputs
+  * x/pulumi: fix PULUMI_STACK env var use
+
+-------------------------------------------------------------------
+Mon Jun 06 18:34:37 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.15:
+  * Initial support for logging the plan
+  * build(deps): bump golang from 1.18.2-alpine to 1.18.3-alpine (#2562)
+  * dagger do: log command args and target action
+  * FAQs to guides with subcategories (#2558)
+  * Support signaling core.Start execs.
+  * website: bump up docusaurus preset-classic + netlify node version
+  * build(deps): bump amplitude-js from 8.18.3 to 8.18.4 in /website
+  * website: make quotes visible in dark mode
+  * build(deps): bump @docusaurus/core in /website
+
+-------------------------------------------------------------------
 Sat Jun 04 18:54:41 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.2.14:
