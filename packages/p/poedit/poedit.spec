@@ -20,17 +20,13 @@
 %bcond_without crowdin_integration
 %bcond_with bundled_deps
 Name:           poedit
-Version:        3.0.1
+Version:        3.1
 Release:        0
 Summary:        Gettext Catalog Editing Tool
 License:        MIT
 Group:          Development/Tools/Other
 URL:            https://poedit.net/
 Source:         https://github.com/vslavik/poedit/releases/download/v%{version}-oss/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM poedit-3.0.1-add-icon-about-dialog.patch -- https://github.com/vslavik/poedit/issues/704
-Patch0:         poedit-3.0.1-add-icon-about-dialog.patch
-# PATCH-FIX-UPSTREAM poedit-3.0.1-fix-sizer-assertion.patch -- https://github.com/vslavik/poedit/issues/745
-Patch2:         poedit-3.0.1-fix-sizer-assertion.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_iostreams-devel >= 1.60
@@ -80,8 +76,6 @@ rm -r deps
 
 %install
 %make_install
-# Don't package icon cache, it will be updated at package installation via file trigger
-rm %{buildroot}%{_datadir}/icons/hicolor/icon-theme.cache
 %fdupes -s %{buildroot}%{_datadir}
 %find_lang %{name}
 

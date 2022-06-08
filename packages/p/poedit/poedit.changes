@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun  7 21:18:14 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Poedit 3.1:
+  * Added Go / Previously Edited menu command.
+  * XLIFF: added support for resname/name attributes.
+  * Fixed ID column sizing.
+  * Fixed issues with certain rare escape sequences.
+- Remove upstreamed patches:
+  * poedit-3.0.1-add-icon-about-dialog.patch
+  * poedit-3.0.1-fix-sizer-assertion.patch
+
+-------------------------------------------------------------------
 Sat Apr 16 10:33:45 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Add poedit-3.0.1-add-icon-about-dialog.patch: Fix display of icon
