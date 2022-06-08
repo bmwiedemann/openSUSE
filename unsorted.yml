@@ -1336,6 +1336,7 @@ unsorted:
   - bogofilter-kyotocabinet 
   - bogofilter-sqlite3 
   - boinc-client 
+  - boinc-client-devel 
   - boinc-client-lang 
   - boinc-manager 
   - boinc-manager-lang 
@@ -7255,12 +7256,9 @@ unsorted:
   - insighttoolkit-devel: [x86_64] 
   - inspectrum 
   - inst-source-utils 
-  - install-initrd-Kubic: [x86_64] 
   - install-initrd-MicroOS: [x86_64] 
   - install-initrd-openSUSE 
-  - installation-images-Kubic: [x86_64] 
   - installation-images-MicroOS: [x86_64] 
-  - installation-images-debuginfodeps-Kubic: [x86_64] 
   - installation-images-debuginfodeps-MicroOS: [x86_64] 
   - installation-images-debuginfodeps-openSUSE 
   - installation-images-openSUSE 
@@ -8962,7 +8960,6 @@ unsorted:
   - libGLEW2_2-32bit: [x86_64] 
   - libGLU1-32bit: [x86_64] 
   - libGLw-devel 
-  - libGLw-devel-32bit: [x86_64] 
   - libGLw1 
   - libGLw1-32bit: [x86_64] 
   - libGLwM1 
@@ -9981,7 +9978,6 @@ unsorted:
   - libbluray2-32bit: [x86_64] 
   - libbml-devel 
   - libbml1 
-  - libboinc-devel 
   - libboinc7 
   - libboost_atomic-devel 
   - libboost_atomic1_79_0 
@@ -15129,7 +15125,7 @@ unsorted:
   - libyui-rest-api-devel 
   - libyui-rest-api16 
   - libz-ng2 
-  - libz3-4_8: [i586] 
+  - libz3-4_8 
   - libzapojit-0_0-0 
   - libzapojit-devel 
   - libzbar-devel 
@@ -21686,7 +21682,6 @@ unsorted:
   - python3-debtcollector 
   - python3-deltarpm 
   - python3-designateclient 
-  - python3-dfVFS 
   - python3-django-mailman3 
   - python3-django-q 
   - python3-dnf 
@@ -22904,6 +22899,7 @@ unsorted:
   - python310-devpi-client 
   - python310-devpi-common 
   - python310-devpi-server 
+  - python310-dfVFS 
   - python310-dfdatetime 
   - python310-dfwinreg 
   - python310-dialite 
@@ -26104,6 +26100,7 @@ unsorted:
   - python38-devpi-client 
   - python38-devpi-common 
   - python38-devpi-server 
+  - python38-dfVFS 
   - python38-dfdatetime 
   - python38-dfwinreg 
   - python38-dialite 
@@ -29179,6 +29176,7 @@ unsorted:
   - python39-devpi-client 
   - python39-devpi-common 
   - python39-devpi-server 
+  - python39-dfVFS 
   - python39-dfdatetime 
   - python39-dfwinreg 
   - python39-dialite 
@@ -32882,9 +32880,7 @@ unsorted:
   - skelcd-control-openSUSE 
   - skelcd-control-openSUSE-promo 
   - skelcd-fallbackrepo-openSUSE 
-  - skelcd-installer-Kubic: [x86_64] 
   - skelcd-installer-MicroOS: [x86_64] 
-  - skelcd-installer-net-Kubic: [x86_64] 
   - skelcd-installer-net-MicroOS: [x86_64] 
   - skelcd-installer-net-openSUSE 
   - skelcd-installer-openSUSE 
@@ -42133,7 +42129,6 @@ unsorted:
   - texworks-plugin-lua 
   - texworks-plugin-python 
   - tftpboot-installation-common 
-  - tftpboot-installation-openSUSE-Kubic-x86_64: [x86_64] 
   - tftpboot-installation-openSUSE-Tumbleweed-i586: [i586] 
   - tftpboot-installation-openSUSE-Tumbleweed-x86_64: [x86_64] 
   - the_silver_searcher 
@@ -44091,5 +44086,6 @@ unsorted:
   - zypp-gui 
   - zypper-aptitude 
   - zypper-changelog-plugin 
+  - zypper-lifecycle-plugin 
   - zziplib-devel 
   - zziplib-devel-32bit: [x86_64] 
