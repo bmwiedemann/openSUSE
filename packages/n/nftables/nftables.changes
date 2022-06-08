@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jun  7 14:55:21 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.4
+  * Fixed a segfault in -o/--optimize with unsupported statements.
+  * Bogus datatype mismatch error report in sets was fixed.
+
+-------------------------------------------------------------------
+Tue May 31 13:34:12 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.3
+  * Support for wildcard interface name matching with sets
+  * Support for runtime auto-merge of set elements.
+  * Enhancements for the ruleset optimization -o/--optimize
+    option which allows to coalesce several NAT rules into map.
+  * Support for raw expressions in concatenations.
+  * Support for integer type protocol header fields in concatenations.
+  * Allow to reset TCP options (requires Linux kernel >= 5.18)
+- Drop 0001-build-add-missing-AM_CPPFLAGS-to-examples.patch
+
+-------------------------------------------------------------------
 Tue Feb 22 04:39:01 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.0.2
