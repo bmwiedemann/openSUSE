@@ -1,14 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun  7 10:41:32 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.1.38
+  * Fix wrong read variable resulting by always being in
+    "snapshots" state
+
+-------------------------------------------------------------------
 Tue Apr 26 12:04:13 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 5.1.17
-  * no changelog
+  * No changes for Linux platforms
 
 -------------------------------------------------------------------
 Thu Mar 24 10:30:38 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 5.1.12:
-  * no changelog
+  * Add an API to switch off logs on regex test.
+  * Fix an issue where STUN gathering requests could be sent over
+    IPv6 instead of IPv4 for which they are more useful.
 
 -------------------------------------------------------------------
 Tue Mar  1 15:29:09 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>

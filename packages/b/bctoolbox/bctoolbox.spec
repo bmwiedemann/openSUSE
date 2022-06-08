@@ -18,7 +18,7 @@
 
 %define sover   1
 Name:           bctoolbox
-Version:        5.1.17
+Version:        5.1.38
 Release:        0
 Summary:        Utility library for software from Belledonne Communications
 License:        GPL-3.0-only
@@ -76,9 +76,7 @@ belle-sip, mediastreamer2 and linphone.
 This package the contains shared library for testing component.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %cmake -DENABLE_STATIC=OFF
