@@ -115,4 +115,13 @@
     <comment></comment>
     <requestid>895165</requestid>
   </revision>
+  <revision rev="16" vrev="23">
+    <srcmd5>0efd2ec9881b557f40c5f13f8ac85a4c</srcmd5>
+    <version>1</version>
+    <time>1654691074</time>
+    <user>dimstar_suse</user>
+    <comment>- remove CAcert.pem (md5 based, super outdated)
+- added CAcert_class1.pem (new class1 cert) (forwarded request 981145 from msmeissn)</comment>
+    <requestid>981146</requestid>
+  </revision>
 </revisionlist>

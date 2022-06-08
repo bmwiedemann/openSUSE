@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  7 12:19:46 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- remove CAcert.pem (md5 based, super outdated)
+- added CAcert_class1.pem (new class1 cert)
+
+-------------------------------------------------------------------
 Sun May 23 15:18:32 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update class3.crt to the new one expiring 2031 again

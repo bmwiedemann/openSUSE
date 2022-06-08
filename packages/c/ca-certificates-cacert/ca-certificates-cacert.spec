@@ -1,7 +1,7 @@
 #
 # spec file for package ca-certificates-cacert
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,9 @@ URL:            https://www.cacert.org/
 # TEMP - source validator rejects validation because root cert expired
 # Source:         https://www.cacert.org/class3.crt#/CAcert_class3.pem
 # Source1:        https://www.cacert.org/certs/root.crt#/CAcert.pem
-Source:         CAcert_class3.pem
-Source1:        CAcert.pem
+Source:         http://www.cacert.org/certs/CAcert_Class3Root_x14E228.crt#/CAcert_class3.pem
+# http://www.cacert.org/certs/root_X0F.crt
+Source1:        http://www.cacert.org/certs/root_X0F.crt#/CAcert_class1.pem
 # from http://www.cacert.org/policy/RootDistributionLicense.html
 Source2:        LICENSE.cacert
 BuildRequires:  ca-certificates
