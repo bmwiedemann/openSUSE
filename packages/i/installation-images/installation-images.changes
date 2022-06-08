@@ -1,4 +1,25 @@
 --------------------------------------------------------------------
+Wed Jun 8 09:36:55 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#597
+- Retire Kubic: there are no images built anymore
+- 17.54
+
+--------------------------------------------------------------------
+Wed Jun 8 08:57:50 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#599
+- adjust module config to handle mctp-i2c
+- 17.53
+
+--------------------------------------------------------------------
+Tue Jun 7 15:07:57 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#598
+- Adjust to ignore all python 3.x versions
+- 17.52
+
+--------------------------------------------------------------------
 Mon Apr 25 10:30:04 UTC 2022 - jreidinger@suse.cz
 
 - merge gh#openSUSE/installation-images#592

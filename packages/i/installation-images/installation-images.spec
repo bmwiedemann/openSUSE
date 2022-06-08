@@ -90,15 +90,6 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 
-%if "%flavor" == "Kubic"
-# don't build on Leap for now
-%if 0%{?is_opensuse} && !0%{?sle_version}
-%ifnarch %ix86
-%define theme Kubic
-%endif
-%endif
-%endif
-
 %if "%flavor" == "SMO"
 %if 0%{?is_smo}
 # build for both Leap and SLE
@@ -178,24 +169,6 @@ BuildRequires:  distribution-logos-openSUSE-Tumbleweed
 %else
 BuildRequires:  distribution-logos-openSUSE-Leap
 %endif
-%endif
-
-%if "%theme" == "Kubic"
-%define with_storage_ng 1
-%define with_ssl_hmac 0
-%define branding_skelcd   Kubic
-%define branding_systemd  MicroOS
-%define branding_plymouth openSUSE
-%define branding_grub2    openSUSE
-%define branding_gfxboot  openSUSE
-%define config_bootmenu_no_upgrade 1
-BuildRequires:  MicroOS-release
-BuildRequires:  adobe-sourcesanspro-fonts
-BuildRequires:  distribution-logos-openSUSE-Kubic
-
-# Kubic is based on MicroOS but we don't want this to show
-# note: keep this in sync with the Kubic settings in etc/config
-%global product_name openSUSE-Kubic
 %endif
 
 %if "%theme" == "SMO" || "%theme" == "LeapMicro"
@@ -695,7 +668,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.51
+Version:        17.54
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
