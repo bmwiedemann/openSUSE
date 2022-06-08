@@ -3359,4 +3359,17 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * https://github.com/ImageMagick/Website/blob/main/ChangeLog.md</comment>
     <requestid>977914</requestid>
   </revision>
+  <revision rev="252" vrev="1">
+    <srcmd5>7b6584230194cbe201bc9d9c1b010bd4</srcmd5>
+    <version>7.1.0.37</version>
+    <time>1654691063</time>
+    <user>dimstar_suse</user>
+    <comment>- update version to 7.1.0.37
+  * Support Unicode MP4 filenames
+  * set pass when webp:target-size or webp:target-psnr are set to fix #4931
+  * Corrected rotation angle for right-top and left-bottom in auto-orient.
+  see the upstream changelog:
+  https://github.com/ImageMagick/Website/blob/main/ChangeLog.md (forwarded request 981212 from dirkmueller)</comment>
+    <requestid>981245</requestid>
+  </revision>
 </revisionlist>
