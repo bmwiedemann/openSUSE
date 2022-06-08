@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 24 07:25:05 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 2022.4.24
+  * Many fixes, including drop of Python 2 and improvement of fuzzy
+   test coverage
+
+-------------------------------------------------------------------
 Sun Aug  1 09:30:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2021.7.6:
