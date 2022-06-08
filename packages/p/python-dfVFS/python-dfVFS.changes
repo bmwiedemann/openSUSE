@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  7 22:38:44 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- allow multiple python packages to be built (eg. python38, python39, python310)
+   - rm %define pythons python38
+   - add %Obsoletes python3-dfVFS
+   - add %define skip_python2 1
+
+-------------------------------------------------------------------
 Tue May 31 22:38:37 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to 20220419
@@ -7,8 +15,8 @@ Tue May 31 22:38:37 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - add BuildRequires libphdi   required to provide Parallels Disk Image support
 - re-enable %check section as the built-in tests now all pass
-- update requires libluksde to require a current versions
-- update requires python-dtfabric to require a current versions
+- update requires libluksde to require a current version
+- update requires python-dtfabric to require a current version
 
 -------------------------------------------------------------------
 Mon May 23 22:46:00 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>

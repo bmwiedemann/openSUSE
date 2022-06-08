@@ -16,9 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python38-%{**}}
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
+
 %define timestamp 20220419
-%define pythons python3
+
 Name:           python-dfVFS
 Version:        0~%{timestamp}
 Release:        0
@@ -86,6 +88,7 @@ Requires:       python-libvshadow >= 0~20170902
 Requires:       python-libvslvm
 Requires:       python-six
 Requires:       python-tsk >= 0~20160721
+Obsoletes:      python3-dfVFS
 BuildArch:      noarch
 %python_subpackages
 
