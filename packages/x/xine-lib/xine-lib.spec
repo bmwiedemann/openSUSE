@@ -1,7 +1,7 @@
 #
 # spec file for package xine-lib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,7 +48,6 @@ BuildRequires:  libcdio-devel
 BuildRequires:  libdrm-devel
 BuildRequires:  libmng-devel
 BuildRequires:  libmpcdec-devel
-BuildRequires:  pkgconfig(smbclient)
 BuildRequires:  libtheora-devel
 BuildRequires:  libtool
 BuildRequires:  libv4l-devel >= 0.8.4
@@ -69,6 +68,7 @@ BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libbluray)
 BuildRequires:  pkgconfig(libpostproc)
 BuildRequires:  pkgconfig(mad)
+BuildRequires:  pkgconfig(smbclient)
 BuildRequires:  pkgconfig(vpx)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb-shape)
@@ -88,7 +88,7 @@ BuildRequires:  pkgconfig(vdpau)
 %endif
 BuildRequires:  libpulse-devel
 %if %{with sdl}
-BuildRequires:  SDL-devel
+BuildRequires:  pkgconfig(sdl)
 %endif
 %if %{with jack}
 BuildRequires:  libjack-devel

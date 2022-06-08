@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 17 07:08:56 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace SDL-devel BuildRequires with pkgconfig(sdl): allow to use
+  sdl12_compat as an alternative.
+
+-------------------------------------------------------------------
 Tue Mar 15 10:46:27 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Fix non-distributable build:

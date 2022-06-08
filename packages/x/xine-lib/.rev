@@ -598,4 +598,12 @@ Reason 1.1.x will not be supported to EOL of openSUSE 12.2, see also Bugzilla Bu
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>963925</requestid>
   </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>0adab57b16fed7d06820a0151bd17546</srcmd5>
+    <version>1.2.12</version>
+    <time>1654691049</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981090</requestid>
+  </revision>
 </revisionlist>
