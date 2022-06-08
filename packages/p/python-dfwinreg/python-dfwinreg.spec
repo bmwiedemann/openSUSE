@@ -63,7 +63,9 @@ sed -i 's|/usr/bin/env python|/usr/bin/env python3|' run_tests.py
 rm -rf %{buildroot}%{_datadir}/doc/%{modname}
 
 %check
-./run_tests.py
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
+$python ./run_tests.py
+}
 
 %files %{python_files}
 %license LICENSE

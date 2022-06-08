@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>981050</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>aff5743d491e50d9886146928d06fe94</srcmd5>
+    <version>0~20211207</version>
+    <time>1654691107</time>
+    <user>dimstar_suse</user>
+    <comment>-update %check section to use python macros 
+</comment>
+    <requestid>981227</requestid>
+  </revision>
 </revisionlist>
