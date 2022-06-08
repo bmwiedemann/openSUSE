@@ -27,15 +27,14 @@
 %endif
 %define         skip_python2 1
 Name:           python-google-api-core
-Version:        2.7.2
+Version:        2.8.1
 Release:        0
 Summary:        Google API client core library
 License:        Apache-2.0
 URL:            https://github.com/googleapis/python-api-core
 Source:         https://files.pythonhosted.org/packages/source/g/google-api-core/google-api-core-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 373-KeyError-in-test.patch gh#googleapis/python-api-core#372 mcepl@suse.com
-# fix KeyError in test_rest_streaming.py
-Patch0:         373-KeyError-in-test.patch
+# https://github.com/googleapis/python-api-core/issues/377
+Patch0:         python-google-api-core-no-mock.patch
 BuildRequires:  %{python_module google-auth >= 1.25.0}
 BuildRequires:  %{python_module googleapis-common-protos >= 1.53.0}
 BuildRequires:  %{python_module grpcio >= 1.33.2}
@@ -50,7 +49,6 @@ BuildRequires:  %{python_module wheel}
 # START TESTING SECTION
 %if %{with test}
 BuildRequires:  %{python_module google-api-core >= %{version}}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module proto-plus}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}

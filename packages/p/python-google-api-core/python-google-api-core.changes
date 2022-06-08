@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Jun  8 09:11:04 UTC 2022 - pgajdos@suse.com
+
+- version update to 2.8.1
+  2.8.1 (2022-05-26)
+  Bug Fixes
+  * deps: require googleapis-common-protos >= 1.56.2 (d84d66c)
+  * deps: require protobuf>= 3.15.0, <4.0.0dev (#385) (d84d66c)
+  2.8.0 (2022-05-18)
+  Features
+  * adds support for audience in client_options (#379) (c97c498)
+  * adds support for audience in client_options. (c97c498)
+
+
+-------------------------------------------------------------------
+Thu May 12 09:45:18 UTC 2022 - pgajdos@suse.com
+
+- version update to 2.7.3
+  Bug Fixes
+  * Avoid AttributeError if grpcio-status is not installed (#370) (022add1)
+- deleted patches
+  - 373-KeyError-in-test.patch (upstreamed)
+
+-------------------------------------------------------------------
+Thu May 12 09:17:02 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+- added patches
+  fix no mock
+  + python-google-api-core-no-mock.patch
+
+-------------------------------------------------------------------
 Mon Apr 25 12:30:45 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 2.7.2:

@@ -1,0 +1,258 @@
+diff -upr google-api-core-2.7.2.orig/tests/asyncio/future/test_async_future.py google-api-core-2.7.2/tests/asyncio/future/test_async_future.py
+--- google-api-core-2.7.2.orig/tests/asyncio/future/test_async_future.py	2022-05-12 11:14:18.386281401 +0200
++++ google-api-core-2.7.2/tests/asyncio/future/test_async_future.py	2022-05-12 11:14:18.402281504 +0200
+@@ -14,7 +14,7 @@
+ 
+ import asyncio
+ 
+-import mock
++from unittest import mock
+ import pytest
+ 
+ from google.api_core import exceptions
+diff -upr google-api-core-2.7.2.orig/tests/asyncio/gapic/test_method_async.py google-api-core-2.7.2/tests/asyncio/gapic/test_method_async.py
+--- google-api-core-2.7.2.orig/tests/asyncio/gapic/test_method_async.py	2022-05-12 11:14:18.386281401 +0200
++++ google-api-core-2.7.2/tests/asyncio/gapic/test_method_async.py	2022-05-12 11:14:18.402281504 +0200
+@@ -14,7 +14,7 @@
+ 
+ import datetime
+ 
+-import mock
++from unittest import mock
+ import pytest
+ 
+ try:
+diff -upr google-api-core-2.7.2.orig/tests/asyncio/operations_v1/test_operations_async_client.py google-api-core-2.7.2/tests/asyncio/operations_v1/test_operations_async_client.py
+--- google-api-core-2.7.2.orig/tests/asyncio/operations_v1/test_operations_async_client.py	2022-05-12 11:14:18.386281401 +0200
++++ google-api-core-2.7.2/tests/asyncio/operations_v1/test_operations_async_client.py	2022-05-12 11:14:18.402281504 +0200
+@@ -12,7 +12,7 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-import mock
++from unittest import mock
+ import pytest
+ 
+ try:
+diff -upr google-api-core-2.7.2.orig/tests/asyncio/test_grpc_helpers_async.py google-api-core-2.7.2/tests/asyncio/test_grpc_helpers_async.py
+--- google-api-core-2.7.2.orig/tests/asyncio/test_grpc_helpers_async.py	2022-05-12 11:14:18.386281401 +0200
++++ google-api-core-2.7.2/tests/asyncio/test_grpc_helpers_async.py	2022-05-12 11:14:18.402281504 +0200
+@@ -12,7 +12,7 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-import mock
++from unittest import mock
+ import pytest  # noqa: I202
+ 
+ try:
+diff -upr google-api-core-2.7.2.orig/tests/asyncio/test_operation_async.py google-api-core-2.7.2/tests/asyncio/test_operation_async.py
+--- google-api-core-2.7.2.orig/tests/asyncio/test_operation_async.py	2022-05-12 11:14:18.386281401 +0200
++++ google-api-core-2.7.2/tests/asyncio/test_operation_async.py	2022-05-12 11:14:18.402281504 +0200
+@@ -13,7 +13,7 @@
+ # limitations under the License.
+ 
+ 
+-import mock
++from unittest import mock
+ import pytest
+ 
+ try:
+diff -upr google-api-core-2.7.2.orig/tests/asyncio/test_page_iterator_async.py google-api-core-2.7.2/tests/asyncio/test_page_iterator_async.py
+--- google-api-core-2.7.2.orig/tests/asyncio/test_page_iterator_async.py	2022-05-12 11:14:18.386281401 +0200
++++ google-api-core-2.7.2/tests/asyncio/test_page_iterator_async.py	2022-05-12 11:14:18.402281504 +0200
+@@ -14,7 +14,7 @@
+ 
+ import inspect
+ 
+-import mock
++from unittest import mock
+ import pytest
+ 
+ from google.api_core import page_iterator_async
+@@ -126,7 +126,7 @@ class TestAsyncIterator:
+         item2 = 100
+         item3 = 211
+ 
+-        # Make pages from mock responses
++        # Make pages from unittest.mock responses
+         parent = mock.sentinel.parent
+         page1 = page_iterator_async.Page(
+             parent, (item1, item2), page_iterator_async._item_to_value_identity
+diff -upr google-api-core-2.7.2.orig/tests/asyncio/test_retry_async.py google-api-core-2.7.2/tests/asyncio/test_retry_async.py
+--- google-api-core-2.7.2.orig/tests/asyncio/test_retry_async.py	2022-05-12 11:14:18.386281401 +0200
++++ google-api-core-2.7.2/tests/asyncio/test_retry_async.py	2022-05-12 11:14:18.402281504 +0200
+@@ -15,7 +15,7 @@
+ import datetime
+ import re
+ 
+-import mock
++from unittest import mock
+ import pytest
+ 
+ from google.api_core import exceptions
+diff -upr google-api-core-2.7.2.orig/tests/unit/future/test__helpers.py google-api-core-2.7.2/tests/unit/future/test__helpers.py
+--- google-api-core-2.7.2.orig/tests/unit/future/test__helpers.py	2022-05-12 11:14:18.390281427 +0200
++++ google-api-core-2.7.2/tests/unit/future/test__helpers.py	2022-05-12 11:14:18.402281504 +0200
+@@ -12,7 +12,7 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-import mock
++from unittest import mock
+ 
+ from google.api_core.future import _helpers
+ 
+diff -upr google-api-core-2.7.2.orig/tests/unit/future/test_polling.py google-api-core-2.7.2/tests/unit/future/test_polling.py
+--- google-api-core-2.7.2.orig/tests/unit/future/test_polling.py	2022-05-12 11:14:18.390281427 +0200
++++ google-api-core-2.7.2/tests/unit/future/test_polling.py	2022-05-12 11:14:18.402281504 +0200
+@@ -16,7 +16,7 @@ import concurrent.futures
+ import threading
+ import time
+ 
+-import mock
++from unittest import mock
+ import pytest
+ 
+ from google.api_core import exceptions, retry
+diff -upr google-api-core-2.7.2.orig/tests/unit/gapic/test_method.py google-api-core-2.7.2/tests/unit/gapic/test_method.py
+--- google-api-core-2.7.2.orig/tests/unit/gapic/test_method.py	2022-05-12 11:14:18.386281401 +0200
++++ google-api-core-2.7.2/tests/unit/gapic/test_method.py	2022-05-12 11:14:18.402281504 +0200
+@@ -14,7 +14,7 @@
+ 
+ import datetime
+ 
+-import mock
++from unittest import mock
+ import pytest
+ 
+ try:
+diff -upr google-api-core-2.7.2.orig/tests/unit/operations_v1/test_operations_rest_client.py google-api-core-2.7.2/tests/unit/operations_v1/test_operations_rest_client.py
+--- google-api-core-2.7.2.orig/tests/unit/operations_v1/test_operations_rest_client.py	2022-05-12 11:14:18.386281401 +0200
++++ google-api-core-2.7.2/tests/unit/operations_v1/test_operations_rest_client.py	2022-05-12 11:14:18.402281504 +0200
+@@ -15,7 +15,7 @@
+ #
+ import os
+ 
+-import mock
++from unittest import mock
+ import pytest
+ 
+ try:
+diff -upr google-api-core-2.7.2.orig/tests/unit/test_bidi.py google-api-core-2.7.2/tests/unit/test_bidi.py
+--- google-api-core-2.7.2.orig/tests/unit/test_bidi.py	2022-05-12 11:14:18.386281401 +0200
++++ google-api-core-2.7.2/tests/unit/test_bidi.py	2022-05-12 11:14:18.402281504 +0200
+@@ -17,7 +17,7 @@ import logging
+ import queue
+ import threading
+ 
+-import mock
++from unittest import mock
+ import pytest
+ 
+ try:
+diff -upr google-api-core-2.7.2.orig/tests/unit/test_exceptions.py google-api-core-2.7.2/tests/unit/test_exceptions.py
+--- google-api-core-2.7.2.orig/tests/unit/test_exceptions.py	2022-05-12 11:14:18.386281401 +0200
++++ google-api-core-2.7.2/tests/unit/test_exceptions.py	2022-05-12 11:14:18.402281504 +0200
+@@ -15,7 +15,7 @@
+ import http.client
+ import json
+ 
+-import mock
++from unittest import mock
+ import pytest
+ import requests
+ 
+diff -upr google-api-core-2.7.2.orig/tests/unit/test_extended_operation.py google-api-core-2.7.2/tests/unit/test_extended_operation.py
+--- google-api-core-2.7.2.orig/tests/unit/test_extended_operation.py	2022-05-12 11:14:18.386281401 +0200
++++ google-api-core-2.7.2/tests/unit/test_extended_operation.py	2022-05-12 11:14:18.402281504 +0200
+@@ -16,7 +16,7 @@ import dataclasses
+ import enum
+ import typing
+ 
+-import mock
++from unittest import mock
+ import pytest
+ 
+ from google.api_core import exceptions
+diff -upr google-api-core-2.7.2.orig/tests/unit/test_grpc_helpers.py google-api-core-2.7.2/tests/unit/test_grpc_helpers.py
+--- google-api-core-2.7.2.orig/tests/unit/test_grpc_helpers.py	2022-05-12 11:14:18.386281401 +0200
++++ google-api-core-2.7.2/tests/unit/test_grpc_helpers.py	2022-05-12 11:14:18.402281504 +0200
+@@ -12,7 +12,7 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-import mock
++from unittest import mock
+ import pytest
+ 
+ try:
+diff -upr google-api-core-2.7.2.orig/tests/unit/test_operation.py google-api-core-2.7.2/tests/unit/test_operation.py
+--- google-api-core-2.7.2.orig/tests/unit/test_operation.py	2022-05-12 11:14:18.386281401 +0200
++++ google-api-core-2.7.2/tests/unit/test_operation.py	2022-05-12 11:14:18.406281529 +0200
+@@ -13,7 +13,7 @@
+ # limitations under the License.
+ 
+ 
+-import mock
++from unittest import mock
+ import pytest
+ 
+ try:
+diff -upr google-api-core-2.7.2.orig/tests/unit/test_page_iterator.py google-api-core-2.7.2/tests/unit/test_page_iterator.py
+--- google-api-core-2.7.2.orig/tests/unit/test_page_iterator.py	2022-05-12 11:14:18.386281401 +0200
++++ google-api-core-2.7.2/tests/unit/test_page_iterator.py	2022-05-12 11:14:18.406281529 +0200
+@@ -15,7 +15,7 @@
+ import math
+ import types
+ 
+-import mock
++from unittest import mock
+ import pytest
+ 
+ from google.api_core import page_iterator
+@@ -177,7 +177,7 @@ class TestIterator(object):
+         item2 = 100
+         item3 = 211
+ 
+-        # Make pages from mock responses
++        # Make pages from unittest.mock responses
+         parent = mock.sentinel.parent
+         page1 = page_iterator.Page(
+             parent, (item1, item2), page_iterator._item_to_value_identity
+diff -upr google-api-core-2.7.2.orig/tests/unit/test_path_template.py google-api-core-2.7.2/tests/unit/test_path_template.py
+--- google-api-core-2.7.2.orig/tests/unit/test_path_template.py	2022-05-12 11:14:18.386281401 +0200
++++ google-api-core-2.7.2/tests/unit/test_path_template.py	2022-05-12 11:14:18.406281529 +0200
+@@ -14,7 +14,7 @@
+ 
+ from __future__ import unicode_literals
+ 
+-import mock
++from unittest import mock
+ import pytest
+ 
+ from google.api_core import path_template
+diff -upr google-api-core-2.7.2.orig/tests/unit/test_retry.py google-api-core-2.7.2/tests/unit/test_retry.py
+--- google-api-core-2.7.2.orig/tests/unit/test_retry.py	2022-05-12 11:14:18.390281427 +0200
++++ google-api-core-2.7.2/tests/unit/test_retry.py	2022-05-12 11:14:18.406281529 +0200
+@@ -16,7 +16,7 @@ import datetime
+ import itertools
+ import re
+ 
+-import mock
++from unittest import mock
+ import pytest
+ import requests.exceptions
+ 
+diff -upr google-api-core-2.7.2.orig/tests/unit/test_timeout.py google-api-core-2.7.2/tests/unit/test_timeout.py
+--- google-api-core-2.7.2.orig/tests/unit/test_timeout.py	2022-05-12 11:14:18.390281427 +0200
++++ google-api-core-2.7.2/tests/unit/test_timeout.py	2022-05-12 11:14:18.406281529 +0200
+@@ -15,7 +15,7 @@
+ import datetime
+ import itertools
+ 
+-import mock
++from unittest import mock
+ 
+ from google.api_core import timeout
+ 
