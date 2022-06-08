@@ -59,4 +59,17 @@
   proper upgrade from previous version 1.0.0b1 (forwarded request 939079 from glaubitz)</comment>
     <requestid>939109</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>79ce3e255813f5cc5ae1dbb95a1cfb2d</srcmd5>
+    <version>1.1.0</version>
+    <time>1654691072</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override
+- Update Requires from setup.py (forwarded request 981108 from glaubitz)</comment>
+    <requestid>981136</requestid>
+  </revision>
 </revisionlist>
