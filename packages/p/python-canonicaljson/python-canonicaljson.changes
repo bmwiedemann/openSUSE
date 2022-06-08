@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun  8 10:00:55 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.6.2 
+  - Add type annotations (#49).
+  - 1.6.2 is a rerelease of 1.6.1 with the version numbers fixed in
+    the tarball.
+
+-------------------------------------------------------------------
+Tue Jun  7 17:33:11 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.6.0 
+  - Make frozendict import conditional. by @BURG3R5 in #46
+
+-------------------------------------------------------------------
 Wed May 11 10:04:02 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Bump required version of frozendict to work with Python 3.10
