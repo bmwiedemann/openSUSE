@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  7 16:24:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add fix-CVE-2022-32200.patch (bsc#1200291, CVE-2022-32200)
+
+-------------------------------------------------------------------
 Wed Apr 27 12:25:48 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Resolve rpmlint report "libdwarf1.x86_64: E:

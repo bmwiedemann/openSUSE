@@ -24,6 +24,7 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://prevanders.net/dwarf.html
 Source:         https://github.com/davea42/libdwarf-code/releases/download/v%{version}/libdwarf-%{version}.tar.xz
+Patch1:         https://github.com/davea42/libdwarf-code/commit/8151575a6ace77d005ca5bb5d71c1bfdba3f7069.patch#/fix-CVE-2022-32200.patch
 BuildRequires:  binutils-devel
 BuildRequires:  libelf-devel
 

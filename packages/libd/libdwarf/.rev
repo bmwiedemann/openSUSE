@@ -267,4 +267,12 @@
     <comment></comment>
     <requestid>974321</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>873c99cad4299ee756d1c6547bd776f7</srcmd5>
+    <version>0.4.0</version>
+    <time>1654691085</time>
+    <user>dimstar_suse</user>
+    <comment>- add fix-CVE-2022-32200.patch (bsc#1200291, CVE-2022-32200)</comment>
+    <requestid>981183</requestid>
+  </revision>
 </revisionlist>
