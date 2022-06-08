@@ -239,4 +239,31 @@
   * Import Project: Fix problem with define value with space</comment>
     <requestid>971910</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a7e9a8108e27dc7843af43e7f5688ead</srcmd5>
+    <version>2.8</version>
+    <time>1654691095</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8:
+  * Lifetime analysis can now track lifetime across user-defined constructors
+    when they are inline and using member initializer list.
+  * SymbolDatabase can now deduce iterator types from how they are specified in
+    the library files.
+  * ValueFlow can evaluate class member functions that return known values.
+  * Improve duplicateValueTenary to not warn when used as an lvalue or when one
+    branch has side effects
+  * Fix variableScope to not warn when variables are used in lambda functions
+  * Fix unassignedVariable warnings when using structured bindings
+  * Fix redundantInitialization warning when variable is used in a lambda
+  * Fix variableScope warnings when using if/while init-statement
+  * Improve lifetime analysis when returning variadic template expressions
+  * Detect more statements with constStatement
+  * Detect variableScope for more types
+  * Improvements to unreadVariable
+  * Detect more instances of C style casts
+  * Warn if the return value of new is discarded
+  * The pre-ValueFlow uninitialized checker now uses a different ID as legacyUninitvar
+  * Extended library format to exclude specific function argument values</comment>
+    <requestid>981215</requestid>
+  </revision>
 </revisionlist>
