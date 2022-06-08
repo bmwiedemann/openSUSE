@@ -23,7 +23,7 @@
 #@TODO : ask for rename and take into account the obsolete existant thing. like libcgal deps
 %define _sourcename CGAL
 Name:           cgal
-Version:        5.4
+Version:        5.4.1
 Release:        0
 Summary:        Computational Geometry Algorithms Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -35,7 +35,7 @@ Source2:        cgal-rpmlintrc
 BuildRequires:  blas-devel
 BuildRequires:  cmake >= 3.14
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++ >= 8.3
+BuildRequires:  gcc-c++ >= 10.2.1
 BuildRequires:  glu-devel
 BuildRequires:  gmp-devel
 BuildRequires:  lapack-devel

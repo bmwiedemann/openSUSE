@@ -249,4 +249,13 @@
   See https://github.com/CGAL/cgal/releases/tag/v5.4</comment>
     <requestid>958120</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>496c0d29196ff83076a8b096cbf15c10</srcmd5>
+    <version>5.4.1</version>
+    <time>1654691091</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.4.1:
+  See https://github.com/CGAL/cgal/pulls?utf8=%E2%9C%93&amp;q=label%3AMerged_in_5.4.1</comment>
+    <requestid>981195</requestid>
+  </revision>
 </revisionlist>
