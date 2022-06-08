@@ -16,6 +16,7 @@ Mon May 23 07:48:15 UTC 2022 - alexandre.vicenzi@suse.com
   * Added new endpoints /pki/ca/<id> and /pki/ca/<id>/certificates for
     getting information about Caddy's managed CAs.
   * Rename _caddy to zsh-completion
+  * Fix MatchPath sanitizing [bsc#1200279, CVE-2022-29718]
 
 -------------------------------------------------------------------
 Fri Mar 25 17:23:27 UTC 2022 - alexandre.vicenzi@suse.com
