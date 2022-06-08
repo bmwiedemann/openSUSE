@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jun  7 17:55:15 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.3.2
+  - Fixed a memory leak in __hash__() (thanks to @gusostow for the
+    report)
+- Changes from 2.3.1
+  - Added key([index]), value([index]) and item([index]) methods
+  - Other internal changes and clean-ups
+- Changes from 2.3.0
+  - Added set, delete and setdefault methods.
+- Changes from 2.2.1
+  - Fix segfault on equals between a frozendict and any other
+    dict-like object different but with the same length, in Python
+    3.6
+- Changes from 2.2.0
+  - Added binaries for all supported Py versions (3.7+), OSes
+    (Linux, Windows, MacOS) and architectures (x86_64)
+  - Speed is now fast as dict, if not faster!
+  - reversed() now works also for Py 3.6 and 3.7
+  - Completely refactored internal code, fixing a load of problems
+  - Fixed bug with empty instances of subclasses
+  - Removed binaries for Python 3.6, see next releases
+  - now frozendict no more inherits from MutableMapping. We
+    recommend anyway the C Extension.
+  - reversed supported
+
+-------------------------------------------------------------------
 Sat Jan  8 10:58:56 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Enable tests
