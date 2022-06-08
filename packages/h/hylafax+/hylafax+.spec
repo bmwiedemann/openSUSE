@@ -24,8 +24,8 @@ Release:        0
 Summary:        A fax server
 License:        BSD-3-Clause
 Group:          Productivity/Telephony/Servers
-URL:            http://hylafax.sourceforge.net
-Source0:        http://downloads.sourceforge.net/hylafax/hylafax-%{version}.tar.gz
+URL:            https://hylafax.sourceforge.io
+Source0:        https://prdownloads.sourceforge.net/hylafax/hylafax-%{version}.tar.gz
 Source4:        hylafax-hfaxd.service
 Source5:        hylafax-faxq.service
 Source6:        hylafax-faxgetty@.service
@@ -40,6 +40,8 @@ Source13:       hylafax-faxqclean.service
 Source14:       hylafax-faxmodem@.service
 Source15:       hylafax-service.xml
 Source16:       hylafax-helper.xml
+
+Patch0:         libtiff44.diff
 
 BuildRequires:  firewalld
 BuildRequires:  gcc-c++
@@ -105,10 +107,10 @@ used to access the server.
 %prep
 %setup -q -n hylafax-%{version}
 
+%autopatch -p1
+
 cp %{SOURCE8} .
 cp %{SOURCE9} .
-# pretend, that libtiff 4.4 is similar to 4.{0,1}
-sed -i 's/4.\[01\])/4.[01234])/' configure
 
 %build
 # - Can't use the configure macro because HylaFAX configure script does
