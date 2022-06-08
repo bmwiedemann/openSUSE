@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 12 14:32:29 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Drop unconditional supplements on zypper. It's already recommended
+  by patterns-base-sw_management, and there only for stable distributions
+  and not Tumbleweed.
+
+-------------------------------------------------------------------
 Tue Jan 11 15:33:16 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

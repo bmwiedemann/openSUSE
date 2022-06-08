@@ -40,7 +40,6 @@ Summary:        Zypper subcommand for lifecycle information
 License:        GPL-2.0
 Group:          System/Packages
 BuildArch:      noarch
-Supplements:    zypper
 
 %description
 Zypper subcommand for products and packages lifecycle information.
