@@ -176,4 +176,35 @@
     <comment></comment>
     <requestid>979456</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d33fa0e3116757c53b5b1731a151e607</srcmd5>
+    <version>0.25.2</version>
+    <time>1654691091</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.25.2:
+  * A new command edit-in-kitty to Edit files in new kitty windows
+    even over SSH
+  * Allow getting the last non-empty command output easily via an
+    action or remote control (#4973)
+  * Fix a bug that caused macos_colorspace to always be default
+    regardless of its actual value (#5129)
+  * diff kitten: A new option kitten-diff.ignore_name to exclude
+    files and directories from being scanned (#5171)
+  * ssh kitten: Fix bash not being executed as a login shell since
+    kitty 0.25.0 (#5130)
+  * Themes kitten: Add a tab to show user defined custom color themes
+    separately (#5150)
+  * Iosevka: Fix incorrect rendering when there is a combining char
+    that does not group with its neighbors (#5153)
+  * Weston: Fix client side decorations flickering on slow computers
+    during window resize (#5162)
+  * Remote control: Fix commands with large or asynchronous payloads
+    like kitty @ set-backround-image, kitty @ set-window-logo and
+    kitty @ select-window not working correctly when using a
+    socket (#5165)
+  * hints kitten: Fix surrounding quotes/brackets and embedded
+    carriage returns not being removed when using line number
+    processing (#5170)</comment>
+    <requestid>981198</requestid>
+  </revision>
 </revisionlist>
