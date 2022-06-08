@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon May 30 17:48:40 UTC 2022 - Jan Baier <jbaier@suse.com>
+
+- Update to version 0.21.0:
+  * assets/create.sh
+  * Bump to v0.21.0
+  * Make `INI` syntax register as handler of `.inf` files
+  * release-checklist.md: Don't recommend `--allow-dirty` to cargo publish
+  * release-checklist.md: Recommend looking at the tip of master for `-h` and `man`
+  * release-checklist.md: Recommend `--locked` for `cargo install`
+  * release-checklist.md: Recommend a single git grep command for MSRV
+  * CHANGELOG.md: Clean up and tweak
+  * Bump to syntect 5.0.0 to e.g. start lazy-loading syntaxes (#2181)
+  * Simplify release-checklist.md by printing `-h`, `--help` and `man` in CI (#2183)
+  * Bump assets/syntaxes/02_Extra/Zig from `87ecbca` to `1a4a384` (#2136)
+  * Add `--relative` to `batdiff` in README.md (#2172)
+  * printer.rs: De-duplicate code to highlight long lines
+  * Limit nix features
+  * Add a --style=default option (#2119)
+  * Bump assets/syntaxes/02_Extra/Nginx from `15a1db1` to `65f5a63`
+  * Skip syntax highlighting for long lines (#2165)
+  * Add support for BusyBox less as pager (#2162)
+  * Bump nix from 0.23.1 to 0.24.1
+  * Bump flate2 from 1.0.22 to 1.0.23
+  * Bump thiserror from 1.0.30 to 1.0.31
+  * Run `cargo clippy --fix --all-targets --all-features` with Rust 1.60
+  * Add mapping for Unix mail spool (#2156)
+  * Bump assets/syntaxes/02_Extra/Fish from `cd95616` to `98316d4`
+  * Syntax: add cmd-help (#2148)
+  * bug_report.md template: Explicitly ask for steps
+  * bug_report.md template: Mention some already reported bugs
+  * Print info about custom assets in --diagnostics
+  * Lock regex crate at min 1.5.5 for CVE-2022-24713
+  * Allow configuring show_nonprintable from PrettyPrinter
+  * Bump git2 from 0.14.1 to 0.14.2
+  * Bump once_cell from 1.9.0 to 1.10.0
+  * Bump regex from 1.5.4 to 1.5.5
+  * Bump semver from 1.0.6 to 1.0.7
+  * Bump assets/syntaxes/02_Extra/Fish from `2c254cc` to `cd95616`
+  * Syntax: [Log] highlight escape characters in double quoted strings
+  * Include contents of custom assets `metadata.yaml` in `--diagnostics`
+  * Bump shell-words from 1.0.0 to 1.1.0
+  * Bump git2 from 0.13.25 to 0.14.1
+  * Updated test names
+  * correctly handle multiple tabs in one line
+  * add show_all_tabstops_long integration test
+  * add show_all_tabstops integration test
+  * Correctly render tab stops
+  * Syntax: add clang-format (#2076)
+  * Bump serial_test from 0.5.1 to 0.6.0
+  * Bump semver from 1.0.4 to 1.0.6
+  * Bump predicates from 2.1.0 to 2.1.1
+  * release-checklist: Remind where to push tags in forks
+
+-------------------------------------------------------------------
 Mon Apr 18 14:50:14 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.20.0

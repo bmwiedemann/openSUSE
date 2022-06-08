@@ -17,7 +17,7 @@
 
 
 Name:           bat
-Version:        0.20.0
+Version:        0.21.0
 Release:        0
 Summary:        A cat(1) clone with syntax highlighting and Git integration
 License:        Apache-2.0 OR MIT
@@ -27,7 +27,9 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
-BuildRequires:  rust >= 1.45
+# weak-dep-features introduced in 1.60 and already used by libgit2-sys
+# https://github.com/rust-lang/git2-rs/commit/d8ee105a8f3ce4d5c57cd091b67943aab86b176a
+BuildRequires:  rust >= 1.60
 ExclusiveArch:  %{rust_arches}
 
 %description
