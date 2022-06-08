@@ -1102,7 +1102,6 @@
       <repopackage name="kdoctools-lang"/>
       <repopackage name="kdump"/>
       <repopackage name="kernel-default"/>
-      <repopackage name="kernel-default-base" arch="x86_64"/>
       <repopackage name="kernel-firmware-all"/>
       <repopackage name="kernel-firmware-amdgpu"/>
       <repopackage name="kernel-firmware-ath10k"/>
