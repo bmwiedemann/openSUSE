@@ -17,12 +17,15 @@
 
 
 Name:           kexec-tools
-Version:        2.0.22
+Version:        2.0.24
 Release:        0
 Summary:        Tools for loading replacement kernels into memory
 License:        GPL-2.0-or-later
 Group:          System/Kernel
+URL:            https://projects.horms.net/projects/kexec/
 Source:         https://kernel.org/pub/linux/utils/kernel/kexec/%{name}-%{version}.tar.xz
+Source100:      https://kernel.org/pub/linux/utils/kernel/kexec/%{name}-%{version}.tar.sign
+Source101:      kexec-tools.keyring
 Source1:        kexec-bootloader
 Source2:        kexec-bootloader.8
 Source3:        kexec-load.service
@@ -30,8 +33,6 @@ Source4:        %{name}-rpmlintrc
 Patch3:         %{name}-disable-test.patch
 Patch4:         %{name}-vmcoreinfo-in-xen.patch
 Patch10:        %{name}-SYS_getrandom.patch
-Patch11:        %{name}-remove-duplicate-ramdisk-definition.patch
-Patch12:        %{name}-print-error-if-kexec_file_load-fails.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  systemd-rpm-macros
@@ -63,7 +64,7 @@ export CFLAGS="%{optflags} -fPIC"
 export BUILD_CFLAGS="%{optflags}"
 export LDFLAGS="-pie"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -102,7 +103,7 @@ ln -s %{_sbindir}/kexec %{buildroot}/sbin
 %else
 # filesystem before SLE12 SP3 lacks /usr/share/licenses
 %if 0%(test ! -d %{_defaultlicensedir} && echo 1)
-%define _defaultlicensedir %_defaultdocdir
+%define _defaultlicensedir %{_defaultdocdir}
 %endif
 %endif
 # End of compatibility cruft

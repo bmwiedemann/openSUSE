@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Apr 27 20:16:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.24:
+  * arm64: fix static data relocations in machine_apply_elf_rel()
+  * kexec/elf: assign one to align if sh_addralign equals zero
+  * arm64/crashdump-arm64: explicit type conversion to suppress compiler warning
+  * arm64/kexec-arm64: add support for R_AARCH64_MOVW_UABS_G* rela
+  * arm64/kexec-arm64: use enum to organize the reloc type
+  * arm64/kexec-arm64: add support for R_AARCH64_LDST128_ABS_LO12_NC rela
+  * kexec-tools: fix leak FILE pointer.
+  * purgatory: do not enable vectorization automatically for purgatory compiling
+  * kexec-tools: Determine if the image is lzma commpressed
+  * util_lib/elf_info: harden parsing of printk buffer
+  * github: run apt-get update before installing packages
+  * kexec-xen: Allow xen_kexec_exec() to return in case of Live Update
+  * kexec-tools: print error if kexec_file_load fails
+  * kexec-tools: mips: Concatenate --reuse-cmdline and --append
+  * kexec-tools: mips: Add some debug info
+  * arm64: fix PAGE_OFFSET calc for flipped mm
+  * arm64: read VA_BITS from kcore for 52-bits VA kernel
+  * arm64/crashdump: unify routine to get page_offset
+  * arm64: make phys_offset signed
+  * s390: add support for --reuse-cmdline
+  * use slurp_proc_file() in get_command_line()
+  * add slurp_proc_file()
+  * s390: use KEXEC_ALL_OPTIONS
+  * s390: add variable command line size
+  * arm64: support more than one crash kernel regions
+  * s390: handle R_390_PLT32DBL reloc entries in machine_apply_elf_rel()
+  * arm64/crashdump: deduce paddr of _text based on kernel code size
+- drop kexec-tools-print-error-if-kexec_file_load-fails.patch,
+  kexec-tools-remove-duplicate-ramdisk-definition.patch (upstream)
+- add homepage url
+- add gpg validation
+
+-------------------------------------------------------------------
 Wed Apr 13 07:10:02 UTC 2022 - Petr Tesařík <ptesarik@suse.com>
 
 - kexec-tools-print-error-if-kexec_file_load-fails.patch: print
