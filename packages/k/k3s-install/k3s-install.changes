@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  3 07:43:27 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Ensure k3s-selinux is required, instead of container-selinux.
+
+-------------------------------------------------------------------
 Tue May 31 14:00:18 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
 
 - Drop inform-user-of-current-k3s-SELinux-support.patch, no longer

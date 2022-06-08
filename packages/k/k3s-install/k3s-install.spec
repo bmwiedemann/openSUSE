@@ -24,8 +24,8 @@ License:        Apache-2.0
 Group:          System/Management
 URL:            https://k3s.io
 Source0:        https://github.com/k3s-io/k3s/archive/v%{version}.tar.gz#/k3s-%{version}.tar.gz
-Requires:       container-selinux
 Requires:       iptables
+Requires:       k3s-selinux
 Conflicts:      cri-tools
 Conflicts:      kubectl
 Conflicts:      kubernetes-client
