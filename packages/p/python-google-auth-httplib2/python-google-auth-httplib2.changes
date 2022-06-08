@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun  8 11:42:08 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+- added patches
+  fix https://github.com/googleapis/google-auth-library-python-httplib2/issues/68
+  + python-google-auth-httplib2-no-mock.patch
+
+-------------------------------------------------------------------
 Mon Aug 23 11:45:51 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.1.0
