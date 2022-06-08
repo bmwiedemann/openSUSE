@@ -19,10 +19,8 @@
 # We can't test currenty, see below.
 %bcond_with test
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 Name:           python-dash
-Version:        2.2.0
+Version:        2.5.0
 Release:        0
 Summary:        Python framework for building reactive web-apps
 License:        MIT
@@ -31,14 +29,11 @@ URL:            https://github.com/plotly/dash
 Source:         https://files.pythonhosted.org/packages/source/d/dash/dash-%{version}.tar.gz
 BuildRequires:  %{python_module Flask >= 1.0.4}
 BuildRequires:  %{python_module Flask-Compress}
-BuildRequires:  %{python_module beautifulsoup4}
-BuildRequires:  %{python_module dash-core-components >= 1.16.0}
-BuildRequires:  %{python_module dash-html-components >= 1.1.3}
-BuildRequires:  %{python_module dash-renderer >= 1.9.1}
-BuildRequires:  %{python_module dash-table >= 4.11.3}
-BuildRequires:  %{python_module future}
+BuildRequires:  %{python_module dash-core-components = 2.0.0}
+BuildRequires:  %{python_module dash-html-components = 2.0.0}
+BuildRequires:  %{python_module dash-table = 5.0.0}
 BuildRequires:  %{python_module percy}
-BuildRequires:  %{python_module plotly}
+BuildRequires:  %{python_module plotly >= 5.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,21 +41,21 @@ Requires:       python-Flask >= 1.0.4
 Requires:       python-Flask-Compress
 # dash/testing/dash_page.py
 Requires:       python-beautifulsoup4
-Requires:       python-dash-core-components >= 1.16.0
-Requires:       python-dash-html-components >= 1.1.3
-Requires:       python-dash-renderer >= 1.9.1
-Requires:       python-dash-table >= 4.11.3
-Requires:       python-future
+Requires:       python-dash-core-components = 2.0.0
+Requires:       python-dash-html-components = 2.0.0
+Requires:       python-dash-table = 5.0.0
 # needed for dash/testing/browser.py
 Requires:       python-percy
-Requires:       python-plotly
+Requires:       python-plotly >= 5.0.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-sugar}
+BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module selenium}
@@ -80,8 +75,6 @@ analytical python code.
 %prep
 %setup -q -n dash-%{version}
 sed -i -e '/^#!\//, 1d' dash/extract-meta.js
-# no hardcoded versions
-sed -i -e 's:==:>=:g' requires-*txt
 
 %build
 %python_build
@@ -116,6 +109,6 @@ sed -i -e 's:==:>=:g' requires-*txt
 %python_alternative %{_bindir}/dash-update-components
 %python_alternative %{_bindir}/renderer
 %{python_sitelib}/dash
-%{python_sitelib}/dash-%{version}-py*.egg-info
+%{python_sitelib}/dash-%{version}*-info
 
 %changelog
