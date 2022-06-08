@@ -40,7 +40,7 @@
 # End of compatibility cruft
 
 Name:           makedumpfile
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        Partial kernel dump
 License:        GPL-2.0-only
@@ -51,7 +51,6 @@ Source99:       %{name}-rpmlintrc
 Patch0:         %{name}-override-libtinfo.patch
 Patch1:         %{name}-ppc64-VA-range-SUSE.patch
 Patch2:         %{name}-PN_XNUM.patch
-Patch3:         %{name}-sadump-kaslr-fix-kaslr_offset-calculation.patch
 BuildRequires:  libbz2-devel
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
@@ -76,11 +75,7 @@ and can compress the page data. The obtained dump file can by analyzed
 via gdb or crash utility.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -fcommon"

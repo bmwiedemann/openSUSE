@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 20 08:55:43 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.7.1:
+  * support for kernel up to 5.17
+  * sadump: remove variable length array
+  * print error when reading with unsupported compression
+- Drop upstreamed makedumpfile-sadump-kaslr-fix-kaslr_offset-calculation.patch
+
+-------------------------------------------------------------------
 Mon Mar 21 11:22:52 UTC 2022 - Petr Tesařík <ptesarik@suse.com>
 
 - makedumpfile-sadump-kaslr-fix-kaslr_offset-calculation.patch:

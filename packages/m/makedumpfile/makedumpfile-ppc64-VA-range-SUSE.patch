@@ -12,10 +12,11 @@ Signed-off-by: Petr Tesarik <ptesarik@suse.cz>
  makedumpfile.c |    4 ++++
  makedumpfile.h |    3 +++
  3 files changed, 9 insertions(+), 1 deletion(-)
-diff -ur a/arch/ppc64.c b/arch/ppc64.c
---- a/arch/ppc64.c	2018-12-04 21:21:52.000000000 +0100
-+++ b/arch/ppc64.c	2019-07-05 11:25:20.318510887 +0200
-@@ -248,7 +248,9 @@
+Index: makedumpfile-1.7.1/arch/ppc64.c
+===================================================================
+--- makedumpfile-1.7.1.orig/arch/ppc64.c
++++ makedumpfile-1.7.1/arch/ppc64.c
+@@ -248,7 +248,9 @@ ppc64_vmalloc_init(void)
  
  			if (info->kernel_version >= KERNEL_VERSION(4, 12, 0)) {
  				info->l2_index_size = PMD_INDEX_SIZE_L4_64K_4_12;
@@ -26,10 +27,11 @@ diff -ur a/arch/ppc64.c b/arch/ppc64.c
  					info->l3_index_size = PUD_INDEX_SIZE_L4_64K_4_17;
  				else
  					info->l3_index_size = PUD_INDEX_SIZE_L4_64K_4_12;
-diff -ur a/makedumpfile.c b/makedumpfile.c
---- a/makedumpfile.c	2018-12-04 21:21:52.000000000 +0100
-+++ b/makedumpfile.c	2019-07-05 11:23:32.357093984 +0200
-@@ -2296,6 +2296,8 @@
+Index: makedumpfile-1.7.1/makedumpfile.c
+===================================================================
+--- makedumpfile-1.7.1.orig/makedumpfile.c
++++ makedumpfile-1.7.1/makedumpfile.c
+@@ -2491,6 +2491,8 @@ write_vmcoreinfo_data(void)
  	WRITE_NUMBER_UNSIGNED("kimage_voffset", kimage_voffset);
  #endif
  
@@ -38,7 +40,7 @@ diff -ur a/makedumpfile.c b/makedumpfile.c
  	if (info->phys_base)
  		fprintf(info->file_vmcoreinfo, "%s%lu\n", STR_NUMBER("phys_base"),
  			info->phys_base);
-@@ -2696,6 +2698,8 @@
+@@ -2939,6 +2941,8 @@ read_vmcoreinfo(void)
  
  	READ_NUMBER("HUGETLB_PAGE_DTOR", HUGETLB_PAGE_DTOR);
  
@@ -47,10 +49,11 @@ diff -ur a/makedumpfile.c b/makedumpfile.c
  	return TRUE;
  }
  
-diff -ur a/makedumpfile.h b/makedumpfile.h
---- a/makedumpfile.h	2018-12-04 21:21:52.000000000 +0100
-+++ b/makedumpfile.h	2019-07-05 11:23:32.353093931 +0200
-@@ -1936,6 +1936,9 @@
+Index: makedumpfile-1.7.1/makedumpfile.h
+===================================================================
+--- makedumpfile-1.7.1.orig/makedumpfile.h
++++ makedumpfile-1.7.1/makedumpfile.h
+@@ -2069,6 +2069,9 @@ struct number_table {
  	unsigned long	PHYS_OFFSET;
  	unsigned long	kimage_voffset;
  #endif
