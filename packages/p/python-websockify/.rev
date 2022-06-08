@@ -245,4 +245,12 @@
     <comment>- build websockify for all flavors</comment>
     <requestid>930231</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>0c28e5fe0412ec6502ce819fc2163f1d</srcmd5>
+    <version>0.10.0</version>
+    <time>1654691060</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981178</requestid>
+  </revision>
 </revisionlist>

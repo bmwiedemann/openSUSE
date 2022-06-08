@@ -1,0 +1,10 @@
+--- websockify-0.10.0/setup.py
++++ websockify-0.10.0/setup.py
+@@ -29,7 +29,6 @@
+ 
+       packages=['websockify'],
+       include_package_data=True,
+-      install_requires=['numpy'],
+       zip_safe=False,
+       entry_points={
+         'console_scripts': [

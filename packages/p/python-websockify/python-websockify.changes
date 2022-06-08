@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  7 11:54:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add optional-websockify.patch to make dependency on numpy optional
+
+-------------------------------------------------------------------
 Mon Nov  8 19:53:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - build websockify for all flavors
