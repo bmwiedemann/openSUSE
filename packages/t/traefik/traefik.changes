@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Jun 07 08:27:42 UTC 2022 - alexandre.vicenzi@suse.com
+
+- Update to version 2.7.0:
+  * Enhancements
+    * [consulcatalog] Watch for Consul events to rebuild the dynamic configuration
+    * [healthcheck] Add Failover service
+    * [http3] Configure advertised port using h3 server option
+    * [hub] Add Traefik Hub Integration
+    * [k8s/crd,k8s] Allow empty services in Kubernetes CRD
+    * [metrics] Support InfluxDB v2 metrics backend
+    * [plugins] Remove Pilot token setup constraint to use plugins
+    * [provider] Refactor configuration reload/throttling
+    * [rules,tcp] Add HostSNIRegexp rule matcher for TCP
+    * [tcp] Add muxer for TCP Routers
+    * [webui,pilot] Add Traefik Hub access and remove Pilot access
+    * [webui] Add a link to service on router detail view
+  * Bug fixes
+    * [hub] Skip Provide when TLS is nil
+    * [tcp] Fix TCP-TLS/HTTPS routing precedence
+    * [webui,hub] Use dedicated entrypoint for the tunnels
+    * [logs,k8s/crd] Fix log statement for ExternalName misconfig
+    * [tcp,service] Fix initial tcp lookup when address is not available
+    * [tls] Fix panic when getting certificates with non-existing store
+    * [acme] Fix RenewInterval computation in ACME provider
+    * [ecs,logs] Remove duplicate error logs
+    * [ecs] Filter out ECS anywhere instance IDs
+    * [middleware] Re-add missing writeheader call in flush
+    * [middleware] Fix bug for when custom page is large enough
+    * [middleware] Fix regexp handling in redirect middleware
+    * [plugins] Fix slice parsing for plugins
+    * [tls] Return TLS unrecognized_name error when no certificate is available
+    * [acme] Add domain to HTTP challenge errors
+    * [metrics] Fix metrics bucket key high cardinality
+    * [middleware,tls] Use CNAME for SNI check on host header
+    * [middleware,tracing] Rename Datadog span tags
+    * [tls] Apply the same approach as the rules system on the TLS configuration choice
+
+-------------------------------------------------------------------
 Fri Feb 04 13:37:58 UTC 2022 - alexandre.vicenzi@suse.com
 
 - Update to version 2.6.0:

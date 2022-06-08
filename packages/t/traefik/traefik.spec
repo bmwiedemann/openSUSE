@@ -19,7 +19,7 @@
 %define project github.com/traefik/traefik
 
 Name:           traefik
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        The Cloud Native Application Proxy
 License:        MIT
@@ -33,7 +33,7 @@ Source4:        %{name}-%{version}.webui.tar.gz
 BuildRequires:  go-bindata
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  golang(API) >= 1.16
+BuildRequires:  golang(API) >= 1.17
 Recommends:     podman
 %{?systemd_requires}
 %{go_provides}
