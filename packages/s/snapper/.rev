@@ -1102,4 +1102,12 @@
     <comment>submit new version 0.10.2</comment>
     <requestid>975317</requestid>
   </revision>
+  <revision rev="139" vrev="2">
+    <srcmd5>426202d44f4d5d21bc7a3c2de7568819</srcmd5>
+    <version>0.10.2</version>
+    <time>1654691055</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to latest repository</comment>
+    <requestid>981132</requestid>
+  </revision>
 </revisionlist>
