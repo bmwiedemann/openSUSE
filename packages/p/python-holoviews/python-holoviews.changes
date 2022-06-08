@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Jun  7 19:39:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.14.9
+  * This release contains a small number of important bug fixes as
+    well as support for the newly added antialiasing option for
+    line rendering in datashader.
+  * Improvements to extension loading, improving visual appearance
+    in JupyterLab when no logo is used and a check to avoid loading
+    unnecessary JavaScript. (#5216, #5249)
+  * Add support for setting antialiased line_width on datashader
+    line aggregation as well as pixel_ratio setting (#5264, #5288)
+  * Added options to customize hover line_(width|join|cap|dash)
+    properties (#5211)
+  * Fix to respect series order in stacked area plot (#5236)
+  * Support buffer streams of unspecified length (#5247) (#5247)
+  * Fixed log axis lower bound when data minimum is <= 0 (#5246)
+  * Declared GitHub project URL in setup.py (#5227)
+  * Fixed streaming Psutil example application (#5243)
+  * Respecting Renderer's center property for HoloViews pane
+    (#5197)
+  * Fix vmin/vmax deprecation in HeatMap plot for matplotlib > 3.3
+    (#5300)
+- Release 1.14.8
+  * Fixed xarray validation for aliased coordinate (#5169)
+  * Fixed xaxis/yaxis options with Matplotlib (#5200)
+  * Fixed nested widgets by handling list or tuple values in
+    resolve_dependent_value utility (#5184)
+  * Fixed issue handling multiple widgets without names (#5185)
+  * Fix overlay of two-level categorical plots and HLine (#5203)
+  * Added support for Ibis > 2.0 (#5204)
+  * Allow lower dimensional views on arbitrary dimensioned elements
+    (#5208)
+  * Fix escaping of HTML on Div element (#5209)
+  * Miscellaneous fixes to unit tests, including cudf test fixes as
+    well as addition of Python 3.9 and 3.10 to the test matrix
+    (#5166, #5199, #5201, #5206)
+
+-------------------------------------------------------------------
 Mon Jan 31 20:26:05 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.14.8a1
