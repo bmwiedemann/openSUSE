@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  7 14:54:37 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.2
+  * exthdr: tcp option reset support
+
+-------------------------------------------------------------------
 Thu Nov 18 21:30:11 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.1
