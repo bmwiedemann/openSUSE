@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun  8 11:16:07 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Remove mysql to mariadb hack - fixed in mariadb-connector-c
+- Remove unnecessary mysql and mariadb BRs - use
+  pkgconfig(mysqlclient) instead
+
+-------------------------------------------------------------------
 Wed Feb  2 14:09:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add bebdffb4de586fb43fd07ac549121f4b22f6812d.patch: Fix

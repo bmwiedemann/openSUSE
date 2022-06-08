@@ -53,8 +53,6 @@ BuildRequires:  libopenssl-1_1-devel
 BuildRequires:  libtool
 BuildRequires:  mdbtools-devel
 BuildRequires:  meson
-BuildRequires:  mysql
-BuildRequires:  mysql-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig
@@ -76,7 +74,7 @@ BuildRequires:  pkgconfig(gtksourceview-3.0)
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libgvc)
-BuildRequires:  pkgconfig(libmariadb)
+BuildRequires:  pkgconfig(mysqlclient)
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libxml-2.0)
@@ -388,7 +386,6 @@ VAPIGEN=$(realpath %{_bindir}/vapigen)
 VAPIGENVER=${VAPIGEN: -4}
 # Due to patch1, getsp.java needs to be rebuilt
 javac getsp.java
-sed -e 's-mysqlclient-libmariadb-g' -i meson.build
 %meson \
   -Dui=true \
   -Dexperimental=true \
