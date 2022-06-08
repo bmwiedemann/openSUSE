@@ -110,4 +110,14 @@
   * Update README.md #221</comment>
     <requestid>978944</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b32c1ce0f3d433ae0df67ab2ace6ba6c</srcmd5>
+    <version>20220607</version>
+    <time>1654691089</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20220607:
+  * Fixed #227 
+  * Update install.sh</comment>
+    <requestid>981197</requestid>
+  </revision>
 </revisionlist>
