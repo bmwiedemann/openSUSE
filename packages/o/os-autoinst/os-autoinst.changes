@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 08 02:04:01 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1654632693.a8e87a5:
+  * Fix perl 5.36 warnings on use of @_ in functions with signature
+  * Canonicalize path in @INC
+  * ci: Run tests from toplevel directory
+  * Add --workdir option to isotovideo
+  * ci: Upload coverage HTML as an artifact
+  * Use combined operators
+
+-------------------------------------------------------------------
 Sun Jun 05 17:50:31 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1654271985.8742f99:
