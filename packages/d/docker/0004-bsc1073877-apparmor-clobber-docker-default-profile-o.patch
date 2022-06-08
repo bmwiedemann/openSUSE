@@ -1,4 +1,4 @@
-From 5e84bae968f7beadd92452795cfe2ce4f8995cef Mon Sep 17 00:00:00 2001
+From 5d2f7a37a37547663aae1538b2d3fd48dd7277c8 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Fri, 29 Jun 2018 17:59:30 +1000
 Subject: [PATCH 4/6] bsc1073877: apparmor: clobber docker-default profile on
@@ -22,10 +22,10 @@ Signed-off-by: Aleksa Sarai <asarai@suse.de>
  3 files changed, 17 insertions(+), 6 deletions(-)
 
 diff --git a/daemon/apparmor_default.go b/daemon/apparmor_default.go
-index a7cc3a5ef412..1a952953da8f 100644
+index 21813ec14f8f..0de75b32b7fa 100644
 --- a/daemon/apparmor_default.go
 +++ b/daemon/apparmor_default.go
-@@ -23,6 +23,15 @@ func DefaultApparmorProfile() string {
+@@ -24,6 +24,15 @@ func DefaultApparmorProfile() string {
  	return ""
  }
  
@@ -41,7 +41,7 @@ index a7cc3a5ef412..1a952953da8f 100644
  func ensureDefaultAppArmorProfile() error {
  	if apparmor.IsEnabled() {
  		loaded, err := aaprofile.IsLoaded(defaultAppArmorProfile)
-@@ -36,10 +45,7 @@ func ensureDefaultAppArmorProfile() error {
+@@ -37,10 +46,7 @@ func ensureDefaultAppArmorProfile() error {
  		}
  
  		// Load the profile.
@@ -54,10 +54,10 @@ index a7cc3a5ef412..1a952953da8f 100644
  	return nil
  }
 diff --git a/daemon/apparmor_default_unsupported.go b/daemon/apparmor_default_unsupported.go
-index dd581dc7dadb..5b14979cd4a3 100644
+index e3dc18b32b5e..9c7723056268 100644
 --- a/daemon/apparmor_default_unsupported.go
 +++ b/daemon/apparmor_default_unsupported.go
-@@ -2,6 +2,10 @@
+@@ -3,6 +3,10 @@
  
  package daemon // import "github.com/docker/docker/daemon"
  
@@ -85,5 +85,5 @@ index 2a2fbbd52e19..0999ac3186b7 100644
  	}
  
 -- 
-2.35.1
+2.36.1
 

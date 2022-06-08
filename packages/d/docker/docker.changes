@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun  7 07:18:41 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 20.10.17-ce. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/#201017>. bsc#1200145
+- Rebase patches:
+  * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  * 0003-PRIVATE-REGISTRY-add-private-registry-mirror-support.patch
+  * 0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  * 0005-bsc1183855-btrfs-Do-not-disable-quota-on-cleanup.patch
+  * 0006-bsc1193930-vendor-update-golang.org-x-crypto.patch
+
+-------------------------------------------------------------------
 Fri Apr 29 02:51:43 UTC 2022 - Aleksa Sarai <asarai@suse.com>
 
 - Add patch to update golang.org/x/crypto for CVE-2021-43565 and CVE-2022-27191.

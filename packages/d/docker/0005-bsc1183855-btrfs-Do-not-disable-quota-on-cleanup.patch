@@ -1,4 +1,4 @@
-From 98822d2010c709e64d5e86d7ec8e054861080a53 Mon Sep 17 00:00:00 2001
+From b54c6c7addcb163ddcef5e37fc7ed1c0afd0dbfa Mon Sep 17 00:00:00 2001
 From: Michal Rostecki <mrostecki@opensuse.org>
 Date: Thu, 8 Apr 2021 14:42:02 +0100
 Subject: [PATCH 5/6] bsc1183855: btrfs: Do not disable quota on cleanup
@@ -24,10 +24,10 @@ Signed-off-by: Michal Rostecki <mrostecki@opensuse.org>
  1 file changed, 8 insertions(+), 42 deletions(-)
 
 diff --git a/daemon/graphdriver/btrfs/btrfs.go b/daemon/graphdriver/btrfs/btrfs.go
-index 8fd2854a2673..32c4f07c620d 100644
+index fa0cdf8666b1..02bbb5da1088 100644
 --- a/daemon/graphdriver/btrfs/btrfs.go
 +++ b/daemon/graphdriver/btrfs/btrfs.go
-@@ -103,7 +103,7 @@ func Init(home string, options []string, uidMaps, gidMaps []idtools.IDMap) (grap
+@@ -104,7 +104,7 @@ func Init(home string, options []string, uidMaps, gidMaps []idtools.IDMap) (grap
  	}
  
  	if userDiskQuota {
@@ -36,7 +36,7 @@ index 8fd2854a2673..32c4f07c620d 100644
  			return nil, err
  		}
  	}
-@@ -172,18 +172,10 @@ func (d *Driver) GetMetadata(id string) (map[string]string, error) {
+@@ -173,18 +173,10 @@ func (d *Driver) GetMetadata(id string) (map[string]string, error) {
  
  // Cleanup unmounts the home directory.
  func (d *Driver) Cleanup() error {
@@ -56,7 +56,7 @@ index 8fd2854a2673..32c4f07c620d 100644
  	return nil
  }
  
-@@ -341,7 +333,7 @@ func (d *Driver) updateQuotaStatus() {
+@@ -342,7 +334,7 @@ func (d *Driver) updateQuotaStatus() {
  	d.once.Do(func() {
  		if !d.quotaEnabled {
  			// In case quotaEnabled is not set, check qgroup and update quotaEnabled as needed
@@ -65,7 +65,7 @@ index 8fd2854a2673..32c4f07c620d 100644
  				// quota is still not enabled
  				return
  			}
-@@ -350,7 +342,7 @@ func (d *Driver) updateQuotaStatus() {
+@@ -351,7 +343,7 @@ func (d *Driver) updateQuotaStatus() {
  	})
  }
  
@@ -74,7 +74,7 @@ index 8fd2854a2673..32c4f07c620d 100644
  	d.updateQuotaStatus()
  
  	if d.quotaEnabled {
-@@ -376,32 +368,6 @@ func (d *Driver) subvolEnableQuota() error {
+@@ -377,32 +369,6 @@ func (d *Driver) subvolEnableQuota() error {
  	return nil
  }
  
@@ -107,7 +107,7 @@ index 8fd2854a2673..32c4f07c620d 100644
  func (d *Driver) subvolRescanQuota() error {
  	d.updateQuotaStatus()
  
-@@ -444,11 +410,11 @@ func subvolLimitQgroup(path string, size uint64) error {
+@@ -445,11 +411,11 @@ func subvolLimitQgroup(path string, size uint64) error {
  	return nil
  }
  
@@ -121,7 +121,7 @@ index 8fd2854a2673..32c4f07c620d 100644
  	dir, err := openDir(path)
  	if err != nil {
  		return err
-@@ -622,7 +588,7 @@ func (d *Driver) setStorageSize(dir string, driver *Driver) error {
+@@ -623,7 +589,7 @@ func (d *Driver) setStorageSize(dir string, driver *Driver) error {
  	if d.options.minSpace > 0 && driver.options.size < d.options.minSpace {
  		return fmt.Errorf("btrfs: storage size cannot be less than %s", units.HumanSize(float64(d.options.minSpace)))
  	}
@@ -130,7 +130,7 @@ index 8fd2854a2673..32c4f07c620d 100644
  		return err
  	}
  	return subvolLimitQgroup(dir, driver.options.size)
-@@ -676,7 +642,7 @@ func (d *Driver) Get(id, mountLabel string) (containerfs.ContainerFS, error) {
+@@ -677,7 +643,7 @@ func (d *Driver) Get(id, mountLabel string) (containerfs.ContainerFS, error) {
  
  	if quota, err := ioutil.ReadFile(d.quotasDirID(id)); err == nil {
  		if size, err := strconv.ParseUint(string(quota), 10, 64); err == nil && size >= d.options.minSpace {
@@ -140,5 +140,5 @@ index 8fd2854a2673..32c4f07c620d 100644
  			}
  			if err := subvolLimitQgroup(dir, size); err != nil {
 -- 
-2.35.1
+2.36.1
 

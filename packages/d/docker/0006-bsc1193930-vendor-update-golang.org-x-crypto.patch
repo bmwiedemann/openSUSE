@@ -1,4 +1,4 @@
-From b0122ef823aa4f05c9c552fb0eeff2fc11a0a64c Mon Sep 17 00:00:00 2001
+From bb67252dfccb18dacc9e0c3463e7c52f32fb2900 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Fri, 29 Apr 2022 12:44:21 +1000
 Subject: [PATCH 6/6] bsc1193930: vendor: update golang.org/x/crypto
@@ -354,7 +354,7 @@ Signed-off-by: Aleksa Sarai <asarai@suse.de>
  create mode 100644 vendor/golang.org/x/crypto/xts/xts.go
 
 diff --git a/vendor.conf b/vendor.conf
-index ac4640c76369..c21d903fa8a8 100644
+index 54e97e4562d8..9ff95d499ef8 100644
 --- a/vendor.conf
 +++ b/vendor.conf
 @@ -150,7 +150,7 @@ github.com/golang/protobuf                          84668698ea25b64748563aa20726
@@ -41068,5 +41068,5 @@ index 000000000000..b51308e95e52
 +	}
 +}
 -- 
-2.35.1
+2.36.1
 

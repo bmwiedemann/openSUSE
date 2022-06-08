@@ -42,24 +42,24 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define git_version 87a90dc786bd
-%define git_commit_epoch 1649909084
+%define git_version a89b84221c85
+%define git_commit_epoch 1654554758
 
 # We require a specific pin of libnetwork because it doesn't really do
 # versioning and minor version mismatches in libnetwork can break Docker
 # networking. All other key runtime dependencies (containerd, runc) are stable
 # enough that this isn't necessary.
-%define libnetwork_version 64b7a4574d1426139437d20e81c0b6d391130ec8
+%define libnetwork_version f6ccccb1c082a432c2a5814aaedaca56af33d9ea
 
 %define dist_builddir  %{_builddir}/dist-suse
 %define cli_builddir   %{dist_builddir}/src/github.com/docker/cli
 %define proxy_builddir %{dist_builddir}/src/github.com/docker/libnetwork
 
 Name:           %{realname}%{name_suffix}
-Version:        20.10.14_ce
+Version:        20.10.17_ce
 # This "nice version" is so that docker --version gives a result that can be
 # parsed by other people. boo#1182476
-%define nice_version 20.10.14-ce
+%define nice_version 20.10.17-ce
 Release:        0
 Summary:        The Moby-project Linux container runtime
 License:        Apache-2.0
@@ -111,8 +111,10 @@ BuildRequires:  sqlite3-devel
 BuildRequires:  zsh
 BuildRequires:  fish
 BuildRequires:  go-go-md2man
-BuildRequires:  go1.16
 BuildRequires:  pkgconfig(libsystemd)
+# Due to a limitation in openSUSE's Go packaging we cannot have a BuildRequires
+# for 'golang(API) >= 1.17' here, so just require 1.17 exactly. bsc#1172608
+BuildRequires:  go1.17
 Requires:       apparmor-parser
 Requires:       ca-certificates-mozilla
 # The docker-proxy binary used to be in a separate package. We obsolete it,
@@ -121,8 +123,8 @@ Obsoletes:      docker-libnetwork%{name_suffix} < 0.7.0.2
 Provides:       docker-libnetwork%{name_suffix} = 0.7.0.2.%{version}
 # Required to actually run containers. We require the minimum version that is
 # pinned by Docker, but in order to avoid headaches we allow for updates.
-Requires:       runc >= 1.0.2
-Requires:       containerd >= 1.5
+Requires:       runc >= 1.1.2
+Requires:       containerd >= 1.6.6
 # Needed for --init support. We don't use "tini", we use our own implementation
 # which handles edge-cases better.
 Requires:       catatonit
