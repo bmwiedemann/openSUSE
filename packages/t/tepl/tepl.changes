@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun  1 09:29:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 6.0.2:
+  + Build system: check if compiler supports --version-script
+    linker option.
+
+-------------------------------------------------------------------
+Fri May  6 08:32:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 6.0.1:
+  + No changes.
+    - Note that a 6.00.0 version was released in 2021. The double
+      00 was a mistake.
+
+-------------------------------------------------------------------
 Wed Mar 24 08:14:34 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 6.00.0:

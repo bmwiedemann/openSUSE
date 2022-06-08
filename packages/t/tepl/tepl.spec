@@ -1,7 +1,7 @@
 #
 # spec file for package tepl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %define api_ver 6
 %define lib_ver %{api_ver}-0
 Name:           tepl
-Version:        6.00.0
+Version:        6.0.2
 Release:        0
 Summary:        Text Editor Product Line
 License:        LGPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Projects/Tepl
-Source:         https://download.gnome.org/sources/tepl/6.00/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/tepl/6.0/%{name}-%{version}.tar.xz
 BuildRequires:  gobject-introspection-devel >= 1.42.0
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.53
@@ -100,7 +100,6 @@ applications that want to make use of tepl.
 %{_libdir}/girepository-1.0/Tepl-%{api_ver}.typelib
 
 %files devel
-%doc HACKING
 %doc %{_datadir}/gtk-doc/html/%{name}-%{api_ver}
 %{_datadir}/gir-1.0/Tepl-%{api_ver}.gir
 %{_includedir}/tepl-%{api_ver}/
