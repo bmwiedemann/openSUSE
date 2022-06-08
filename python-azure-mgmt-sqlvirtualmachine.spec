@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-sqlvirtualmachine
-Version:        1.0.0b2
+Version:        1.0.0b3
 Release:        0
 Summary:        Microsoft Azure SQL Virtual Machine Management Client Library
 License:        MIT

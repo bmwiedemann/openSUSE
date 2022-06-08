@@ -57,4 +57,15 @@
 - Update Requires from setup.py (forwarded request 969420 from glaubitz)</comment>
     <requestid>969489</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ed013752b4b4732a6b1394173d1b0a7b</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1654691073</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 981116 from glaubitz)</comment>
+    <requestid>981137</requestid>
+  </revision>
 </revisionlist>
