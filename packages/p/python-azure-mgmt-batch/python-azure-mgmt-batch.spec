@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-batch
-Version:        16.1.0
+Version:        16.2.0
 Release:        0
 Summary:        Microsoft Azure Batch Management Client Library
 License:        MIT
