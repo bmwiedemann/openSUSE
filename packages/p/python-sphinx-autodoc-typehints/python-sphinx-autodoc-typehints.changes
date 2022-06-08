@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  6 23:01:55 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.18.2:
+  - [pre-commit.ci] pre-commit autoupdate
+  - Support and require nptyping 2.1.1
+
+-------------------------------------------------------------------
 Wed May 11 10:08:38 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Switch to multibuild to break build cycles.

@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 %define modname sphinx_autodoc_typehints
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -28,18 +29,20 @@
 %bcond_with test
 %endif
 Name:           python-sphinx-autodoc-typehints%{psuffix}
-Version:        1.18.1
+Version:        1.18.2
 Release:        0
 Summary:        Type hints (PEP 484) support for the Sphinx autodoc extension
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/agronholm/sphinx-autodoc-typehints
-Source:         https://files.pythonhosted.org/packages/source/s/sphinx-autodoc-typehints/sphinx_autodoc_typehints-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/s/sphinx_autodoc_typehints/sphinx_autodoc_typehints-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE python-sphinx-autodoc-typehints-system-object.inv.patch gh#agronholm/sphinx-autodoc-typehints#174 mcepl@suse.com
 # Don't download inventory from the Internet, but use the local one.
 Patch0:         python-sphinx-autodoc-typehints-system-object.inv.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 36.2.7}
 BuildRequires:  %{python_module setuptools_scm >= 1.7.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx >= 1.7
@@ -65,12 +68,12 @@ and return value types of functions.
 %autosetup -p1 -n sphinx_autodoc_typehints-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 %python_expand sed -i -e 's/@PYTHON_VERSION@/%{$python_version}/' tests/conftest.py
 
 %install
 %if %{without test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
