@@ -5906,4 +5906,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.18.1 &amp; perf CVE fix</comment>
     <requestid>979807</requestid>
   </revision>
+  <revision rev="644" vrev="1">
+    <srcmd5>c56d9dce7416f34aa2b9c4a7387fdb89</srcmd5>
+    <version>5.18.2</version>
+    <time>1654691043</time>
+    <user>dimstar_suse</user>
+    <comment>5.18.2 &amp; KVM CVE &amp; iommu &amp; other fixes</comment>
+    <requestid>981088</requestid>
+  </revision>
 </revisionlist>

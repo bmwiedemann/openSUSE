@@ -1,4 +1,167 @@
 -------------------------------------------------------------------
+Tue Jun  7 08:08:54 CEST 2022 - jslaby@suse.cz
+
+- Update config files (only run_oldconfig.sh).
+- commit 695cfee
+
+-------------------------------------------------------------------
+Mon Jun  6 09:11:20 CEST 2022 - jslaby@suse.cz
+
+- Linux 5.18.2 (bsc#1012628).
+- netfilter: nf_tables: disallow non-stateful expression in sets
+  earlier (bsc#1012628).
+- i2c: ismt: prevent memory corruption in ismt_access()
+  (bsc#1012628).
+- assoc_array: Fix BUG_ON during garbage collect (bsc#1012628).
+- pipe: make poll_usage boolean and annotate its access
+  (bsc#1012628).
+- pipe: Fix missing lock in pipe_resize_ring() (bsc#1012628).
+- net: ipa: compute proper aggregation limit (bsc#1012628).
+- drm/i915: Fix -Wstringop-overflow warning in call to
+  intel_read_wm_latency() (bsc#1012628).
+- exfat: check if cluster num is valid (bsc#1012628).
+- netfilter: nft_limit: Clone packet limits' cost value
+  (bsc#1012628).
+- netfilter: nf_tables: sanitize nft_set_desc_concat_parse()
+  (bsc#1012628).
+- netfilter: nf_tables: hold mutex on netns pre_exit path
+  (bsc#1012628).
+- netfilter: nf_tables: double hook unregistration in netns path
+  (bsc#1012628).
+- netfilter: conntrack: re-fetch conntrack after insertion
+  (bsc#1012628).
+- KVM: PPC: Book3S HV: fix incorrect NULL check on list iterator
+  (bsc#1012628).
+- x86/fpu: KVM: Set the base guest FPU uABI size to sizeof(struct
+  kvm_xsave) (bsc#1012628).
+- x86/kvm: Alloc dummy async #PF token outside of raw spinlock
+  (bsc#1012628).
+- x86, kvm: use correct GFP flags for preemption disabled
+  (bsc#1012628).
+- x86/uaccess: Implement macros for CMPXCHG on user addresses
+  (bsc#1012628).
+- KVM: x86: Use __try_cmpxchg_user() to update guest PTE A/D bits
+  (bsc#1012628).
+- KVM: x86: Use __try_cmpxchg_user() to emulate atomic accesses
+  (bsc#1012628).
+- KVM: x86: fix typo in __try_cmpxchg_user causing non-atomicness
+  (bsc#1012628).
+- KVM: x86: avoid loading a vCPU after .vm_destroy was called
+  (bsc#1012628).
+- KVM: x86: Fix the intel_pt PMI handling wrongly considered
+  from guest (bsc#1012628).
+- KVM: x86: Drop WARNs that assert a triple fault never "escapes"
+  from L2 (bsc#1012628).
+- KVM: x86/mmu: Don't rebuild page when the page is synced and
+  no tlb flushing is required (bsc#1012628).
+- KVM: SVM: Use kzalloc for sev ioctl interfaces to prevent
+  kernel data leak (bsc#1012628).
+- crypto: caam - fix i.MX6SX entropy delay value (bsc#1012628).
+- crypto: ecrdsa - Fix incorrect use of vli_cmp (bsc#1012628).
+- crypto: qat - rework the VF2PF interrupt handling logic
+  (bsc#1012628).
+- zsmalloc: fix races between asynchronous zspage free and page
+  migration (bsc#1012628).
+- tools/memory-model/README: Update klitmus7 compat table
+  (bsc#1012628).
+- ALSA: usb-audio: Workaround for clock setup on TEAC devices
+  (bsc#1012628).
+- ALSA: usb-audio: Add missing ep_idx in fixed EP quirks
+  (bsc#1012628).
+- ALSA: usb-audio: Configure sync endpoints before data
+  (bsc#1012628).
+- Bluetooth: hci_qca: Use del_timer_sync() before freeing
+  (bsc#1012628).
+- ARM: dts: s5pv210: Correct interrupt name for bluetooth in Aries
+  (bsc#1012628).
+- dm integrity: fix error code in dm_integrity_ctr()
+  (bsc#1012628).
+- dm crypt: make printing of the key constant-time (bsc#1012628).
+- dm stats: add cond_resched when looping over entries
+  (bsc#1012628).
+- dm verity: set DM_TARGET_IMMUTABLE feature flag (bsc#1012628).
+- raid5: introduce MD_BROKEN (bsc#1012628).
+- fs/ntfs3: validate BOOT sectors_per_clusters (bsc#1012628).
+- HID: multitouch: Add support for Google Whiskers Touchpad
+  (bsc#1012628).
+- HID: multitouch: add quirks to enable Lenovo X12 trackpoint
+  (bsc#1012628).
+- x86/sgx: Disconnect backing page references from dirty status
+  (bsc#1012628).
+- x86/sgx: Mark PCMD page as dirty when modifying contents
+  (bsc#1012628).
+- x86/sgx: Obtain backing storage page with enclave mutex held
+  (bsc#1012628).
+- x86/sgx: Fix race between reclaimer and page fault handler
+  (bsc#1012628).
+- x86/sgx: Ensure no data in PCMD page after truncate
+  (bsc#1012628).
+- media: i2c: imx412: Fix reset GPIO polarity (bsc#1012628).
+- media: i2c: imx412: Fix power_off ordering (bsc#1012628).
+- tpm: Fix buffer access in tpm2_get_tpm_pt() (bsc#1012628).
+- tpm: ibmvtpm: Correct the return value in tpm_ibmvtpm_probe()
+  (bsc#1012628).
+- docs: submitting-patches: Fix crossref to 'The canonical patch
+  format' (bsc#1012628).
+- NFS: Memory allocation failures are not server fatal errors
+  (bsc#1012628).
+- NFSD: Fix possible sleep during nfsd4_release_lockowner()
+  (bsc#1012628).
+- bpf: Fill new bpf_prog_pack with illegal instructions
+  (bsc#1012628).
+- bpf: Fix potential array overflow in bpf_trampoline_get_progs()
+  (bsc#1012628).
+- bpf: Fix combination of jit blinding and pointers to bpf
+  subprogs (bsc#1012628).
+- bpf: Enlarge offset check value to INT_MAX in
+  bpf_skb_{load,store}_bytes (bsc#1012628).
+- bpf: Fix usage of trace RCU in local storage (bsc#1012628).
+- bpf: Fix excessive memory allocation in stack_map_alloc()
+  (bsc#1012628).
+- bpf: Reject writes for PTR_TO_MAP_KEY in check_helper_mem_access
+  (bsc#1012628).
+- bpf: Check PTR_TO_MEM | MEM_RDONLY in check_helper_mem_access
+  (bsc#1012628).
+- bpf: Do write access check for kfunc and global func
+  (bsc#1012628).
+- ALSA: usb-audio: Optimize TEAC clock quirk (bsc#1012628).
+- commit b7b9d3b
+
+-------------------------------------------------------------------
+Fri Jun  3 12:36:02 CEST 2022 - jack@suse.cz
+
+- Remove mistakenly enabled CONFIG_JBD2_DEBUG.
+- commit 7534680
+
+-------------------------------------------------------------------
+Wed Jun  1 10:42:29 CEST 2022 - jroedel@suse.de
+
+- iommu/amd: Increase timeout waiting for GA log enablement
+  (bsc#1199052).
+- commit dfccb72
+
+-------------------------------------------------------------------
+Wed Jun  1 10:40:58 CEST 2022 - jroedel@suse.de
+
+- iommu/amd: Increase timeout waiting for GA log enablement
+  (bsc#1199052).
+- commit 0578d76
+
+-------------------------------------------------------------------
+Wed Jun  1 10:27:05 CEST 2022 - jroedel@suse.de
+
+- KVM: x86: avoid calling x86 emulator without a decoded
+  instruction (CVE-2022-1852 bsc#1199875).
+- commit b4b07c8
+
+-------------------------------------------------------------------
+Wed Jun  1 10:24:36 CEST 2022 - jroedel@suse.de
+
+- KVM: x86: avoid calling x86 emulator without a decoded
+  instruction (CVE-2022-1852 bsc#1199875).
+- commit 01a406d
+
+-------------------------------------------------------------------
 Mon May 30 09:46:41 CEST 2022 - jslaby@suse.cz
 
 - Linux 5.18.1 (bsc#1012628).
