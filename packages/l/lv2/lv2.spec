@@ -1,7 +1,7 @@
 #
 # spec file for package lv2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _waf python3 waf
 
 Name:           lv2
-Version:        1.18.2
+Version:        1.18.4
 Release:        0
 Summary:        Plugin standard for audio systems
 License:        ISC
