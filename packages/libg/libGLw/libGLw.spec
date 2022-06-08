@@ -1,7 +1,7 @@
 #
 # spec file for package libGLw
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,17 +20,6 @@
 %define libversion 1
 
 Name:           libGLw
-# Needs to be set in buildservice project, see 'osc meta prjconf X11:XOrg'
-# for an example
-%if 0%{?use_motif} != 0
-%define lname_m	libGLwM%{libversion}
-BuildRequires:  openmotif-devel
-%endif
-%define lname	libGLw%{libversion}
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xt)
 URL:            http://www.mesa3d.org
 Provides:       Mesa:%{_libdir}/libGLw.so.1
 Version:        8.0.0
@@ -43,16 +32,20 @@ Group:          Development/Libraries/C and C++
 Source:         glw-%{version}_%{date}_%{sha1}.tar.bz2
 Source1:        baselibs.conf
 Patch1:         n_Use-newly-introduced-GLAPIVAR-for-variables.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+# Needs to be set in buildservice project, see 'osc meta prjconf X11:XOrg'
+# for an example
+%if 0%{?use_motif} != 0
+%define lname_m	libGLwM%{libversion}
+BuildRequires:  openmotif-devel
+%endif
+%define lname	libGLw%{libversion}
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xt)
 
 %description
 Xt/Motif OpenGL drawing area widget library shipped by the Mesa Project.
-
-
-
-Authors:
---------
-    Brian Paul
 
 %package -n %lname
 Summary:        Xt OpenGL drawing area widget library
@@ -77,8 +70,6 @@ Group:          Development/Libraries/C and C++
 This package contains all necessary include files needed
 to develop applications that require these.
 
-%if 0%{?use_motif} != 0
-
 %package -n %lname_m
 Summary:        Motif OpenGL drawing area widget library
 # O/P added in 12.2
@@ -92,45 +83,40 @@ Requires:       openmotif
 %description -n %lname_m
 Motif OpenGL drawing area widget library shipped by the Mesa Project.
 
-%endif
-
 %prep
-%setup -q -n glw-%{version}
-%patch1 -p1
+%autosetup -p1 -n glw-%{version}
 
 %build
-%__mkdir build-GLw; cd build-GLw; %{__ln_s} -f ../configure
+mkdir build-GLw; cd build-GLw; ln -sf ../configure
 %{configure} --srcdir=../
-%__make %{?_smp_mflags} OPT_FLAGS="$RPM_OPT_FLAGS"
-%if 0%{?use_motif} != 0
-%__mkdir ../build-GLwM; cd ../build-GLwM; %{__ln_s} -f ../configure
+%make_build OPT_FLAGS="%{optflags}"
+%if 0%{?use_motif}
+mkdir ../build-GLwM; cd ../build-GLwM; ln -sf ../configure
 %{configure} --srcdir=../ --enable-motif
-%__make %{?_smp_mflags} OPT_FLAGS="$RPM_OPT_FLAGS"
+%make_build OPT_FLAGS="%{optflags}"
 %endif
 
 %install
 %if 0%{?use_motif} != 0
 cd build-GLwM
-DESTDIR=$RPM_BUILD_ROOT %__make install
-i=$(echo $RPM_BUILD_ROOT%{_libdir}/libGLw.so.*.*.*); mv $i ${i/libGLw.so/libGLwM.so};
+%make_install
+i=$(echo %{buildroot}/%{_libdir}/libGLw.so.*.*.*); mv $i ${i/libGLw.so/libGLwM.so};
 cd ..
 %endif
 cd build-GLw
-DESTDIR=$RPM_BUILD_ROOT %__make install
-i=$(echo $RPM_BUILD_ROOT%{_libdir}/libGLw.so.*.*.*); mv $i ${i/libGLw.so/libGLwXT.so};
-rm -f $RPM_BUILD_ROOT/%{_libdir}/libGLw.la $RPM_BUILD_ROOT/%{_libdir}/libGLw.a $RPM_BUILD_ROOT/%{_libdir}/libGLw.so.? $RPM_BUILD_ROOT/%{_libdir}/libGLw.so
+%make_install
+i=$(echo %{buildroot}/%{_libdir}/libGLw.so.*.*.*); mv $i ${i/libGLw.so/libGLwXT.so};
+rm -f %{buildroot}/%{_libdir}/libGLw.la %{buildroot}/%{_libdir}/libGLw.a %{buildroot}/%{_libdir}/libGLw.so.? %{buildroot}/%{_libdir}/libGLw.so
 
 %post -n %lname -p /sbin/ldconfig
 
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %doc README
-%{_libdir}/libGLwXT.so.1.* 
+%{_libdir}/libGLwXT.so.1.*
 
 %files devel
-%defattr(-,root,root)
 /usr/include/GL
 %{_libdir}/pkgconfig/glw.pc
 
@@ -143,14 +129,12 @@ ln -snf libGLw.so.1 %{_libdir}/libGLw.so
 %preun devel
  [ $1 -eq 0 ] && rm -f %{_libdir}/libGLw.so || true
 
-%if 0%{?use_motif} != 0
-
 %post -n %lname_m -p /sbin/ldconfig
 
 %postun -n %lname_m -p /sbin/ldconfig
 
+%if 0%{?use_motif}
 %files -n %lname_m
-%defattr(-,root,root)
 %doc README
 %{_libdir}/libGLwM.so.1.*
 

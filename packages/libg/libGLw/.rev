@@ -149,4 +149,12 @@ X11:XOrg/libGLw instead. Thanks.</comment>
     <comment>- fix libGLw.so symlink of devel package (bsc#1191122)</comment>
     <requestid>922981</requestid>
   </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>1c1e71e4359fc3f556ecb8de6cb5d479</srcmd5>
+    <version>8.0.0</version>
+    <time>1654691080</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981160</requestid>
+  </revision>
 </revisionlist>

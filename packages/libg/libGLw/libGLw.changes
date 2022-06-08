@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun  3 13:23:49 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim old specfile constructs
+- Trim baselibs.conf; no other package in openSUSE:Factory
+  buildrequires it and the case for compat should at most exist
+  with 32-bit binaries.
+
+-------------------------------------------------------------------
 Mon Oct  4 09:47:46 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - fix libGLw.so symlink of devel package (bsc#1191122)
