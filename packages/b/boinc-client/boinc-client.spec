@@ -1,7 +1,7 @@
 #
 # spec file for package boinc-client
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2016 by Aaron Puchert <aaronpuchert@alice-dsl.net>
 # Copyright (c) 2011 by Sascha Manns <saigkill@opensuse.org>
 #
@@ -35,8 +35,8 @@
 
 Name:           boinc-client
 %define rel_name        %{name}_release
-%define minor_version   7.18
-Version:        %{minor_version}.1
+%define minor_version   7.20
+Version:        %{minor_version}.0
 Release:        0
 Summary:        Client for Berkeley Open Infrastructure for Network Computing
 License:        GPL-3.0-or-later OR LGPL-3.0-or-later
@@ -124,14 +124,16 @@ Group:          System/Libraries
 The Berkeley Open Infrastructure for Network Computing (BOINC) is a
 software platform which supports distributed computing.
 
-%package -n libboinc-devel
+%package devel
 Summary:        Development files for libboinc
 Group:          Development/Libraries/C and C++
 Requires:       libboinc%{sonum} = %{version}-%{release}
 Conflicts:      %{name}-devel
 Requires:       openssl-devel
+Obsoletes:      libboinc-devel < %{version}-%{release}
+Provides:       libboinc-devel = %{version}-%{release}
 
-%description -n libboinc-devel
+%description devel
 This package contains development files for libboinc.
 
 %prep
@@ -190,7 +192,7 @@ sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
 sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 
 # Export Path and make
-make clean %{?_smp_mflags}
+%make_build clean
 make libboinc_la_LIBADD="-L%{_libdir} -lssl -ldl" \
    DESTDIR=%{_prefix} %{?_smp_mflags} V=1
 
@@ -356,9 +358,10 @@ fi
 %files -n libboinc%{sonum}
 %{_libdir}/*.so.*
 
-%files -n libboinc-devel
+%files devel
 %{_libdir}/*.a
 %{_libdir}/*.so
+%{_libdir}/pkgconfig/*.pc
 %{_includedir}/boinc
 
 %changelog

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun  7 21:04:38 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.20.0
+  * client: pass process priority to wrapper                                                                           
+  * client: Ignore tty(S|ACM) devices in TTY idle time
+    calculation
+  * client: fix overly aggressive project-wide file transfer
+    backoff policy
+  * client: fix work-fetch logic when max concurrent limits are
+    used
+  * manager: fix failure to connect to client with non-English
+    language
+- Let -devel subpackage follow the main package name.
+
+-------------------------------------------------------------------
 Sat Oct 23 16:17:52 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Drop boinc-gui.desktop and icons, because upstream provides a
