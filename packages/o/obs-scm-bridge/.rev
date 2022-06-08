@@ -7,4 +7,15 @@
     <comment>first obs-scm-bridge release, future osc will need it.</comment>
     <requestid>955600</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ffaa1c001dfa4901793e364a35ae41e3</srcmd5>
+    <version>0.2</version>
+    <time>1654691114</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.2
+  * no shallow clone when used with osc
+  * support for LFS fetch
+  * bugfixes (_config file export and path handling)</comment>
+    <requestid>981289</requestid>
+  </revision>
 </revisionlist>

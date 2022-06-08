@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun  8 09:55:31 UTC 2022 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.2
+  * no shallow clone when used with osc
+  * support for LFS fetch
+  * bugfixes (_config file export and path handling)
+
+-------------------------------------------------------------------
 Thu Feb 17 10:01:46 UTC 2022 - Adrian Schröter <adrian@suse.de>
 
 - initial release of version 0.1
