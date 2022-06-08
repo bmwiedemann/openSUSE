@@ -1,8 +1,8 @@
 #
 # spec file for package XyGrib
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2018-2021 Dr. Axel Braun <DocB@opensuse.org>
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2018-2022 Dr. Axel Braun <DocB@opensuse.org>
 # Copyright (c) 2018 Dominig ar Foll (Intel Open Source)
 #
 # All modifications and additions to the file contributed by third parties
