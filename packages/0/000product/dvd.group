@@ -482,7 +482,7 @@
     <package name="fcitx-table-tw-smart-cangjie6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="fcitx-zhuyin" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="fd0ssh" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="fdupes" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="fdupes" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="fetchmail" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="fetchmailconf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="ffmpegthumbnailer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -2538,7 +2538,7 @@
     <package name="librsvg-2-2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="librsync2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="librubberband2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libruby3_1-3_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libruby3_1-3_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="librygel-core-2_6-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="librygel-server-2_6-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libsamba-policy0-python3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
@@ -2847,7 +2847,7 @@
     <package name="libzvbi0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libzypp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libzypp-plugin-appdata" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="lifecycle-data-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="lifecycle-data-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:lifecycle-data-openSUSE -->
     <package name="lightdm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
     <package name="lightdm-gtk-greeter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
     <package name="lightdm-gtk-greeter-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
@@ -3879,9 +3879,9 @@
     <package name="rt2860" supportstatus="unsupported"/> <!-- reason: dvd:rt2860 -->
     <package name="rtkit" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="ruby" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="ruby-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="ruby-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="ruby-solv" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="ruby3.1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="ruby3.1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="ruby3.1-rubygem-Ascii85" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-abstract_method" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="ruby3.1-rubygem-actioncable-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3986,7 +3986,7 @@
     <package name="ruby3.1-rubygem-font-awesome-rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-formatador" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-forwardable-extended" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="ruby3.1-rubygem-gem2rpm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="ruby3.1-rubygem-gem2rpm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="ruby3.1-rubygem-get_process_mem" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-gettext" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-gettext_i18n_rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -5003,7 +5003,6 @@
     <package name="zsh" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="zstd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="zypper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="zypper-lifecycle-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="zypper-log" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="zypper-needs-restarting" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
   </packagelist>
@@ -5069,6 +5068,7 @@
     <package name="ibus-mozc-candidate-window" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="joycond" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="joycond-autoload" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="kernel-default-base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="krb5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="krb5-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="lib389" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
@@ -5266,7 +5266,6 @@
     <package name="libxkbfile-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libxml2-2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libz1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libz3-4_8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libzstd1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="lttng-modules-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="mcelog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
