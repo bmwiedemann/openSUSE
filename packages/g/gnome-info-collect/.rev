@@ -7,4 +7,13 @@
     <comment>New package</comment>
     <requestid>973158</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2f9d5b0d51ea53395a0791c8397ae970</srcmd5>
+    <version>1.0.3</version>
+    <time>1654691115</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.3 (Upstream calls it 1.0-3): no changelog
+  provided. (forwarded request 980357 from dimstar)</comment>
+    <requestid>981298</requestid>
+  </revision>
 </revisionlist>

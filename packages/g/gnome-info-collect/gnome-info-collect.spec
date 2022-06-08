@@ -17,12 +17,12 @@
 
 
 Name:           gnome-info-collect
-Version:        1.0
+Version:        1.0.3
 Release:        0
 Summary:        A simple utility to collect system information
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/vstanek/gnome-info-collect
-Source:         https://gitlab.gnome.org/vstanek/gnome-info-collect/-/archive/v1.0/gnome-info-collect-v1.0.tar.gz
+Source:         https://gitlab.gnome.org/vstanek/gnome-info-collect/-/archive/v1.0-3/gnome-info-collect-v1.0-3.tar.gz
 BuildRequires:  gobject-introspection
 Requires:       python3-gobject
 Requires:       python3-requests
@@ -35,8 +35,8 @@ The collected data is anonymous and is sent to a secure server.
 The data will be used only for the purpose of enhancing usability and user experience of GNOME.
 
 %prep
-%autosetup -p1 -n %{name}-v%{version}
-sed -i "s|bin/env python$|bin/python3|g" client/client.py
+%autosetup -p1 -n %{name}-v1.0-3
+sed -i "s|bin/env python3$|bin/python3|g" client/client.py
 
 %build
 
