@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  7 16:19:36 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.8.1:
+  * Fix bz2 issue cutting off decompression too soon
+
+-------------------------------------------------------------------
 Mon May 30 17:37:17 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.8.0
