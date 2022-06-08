@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jun  5 00:34:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.10.0:
+  * Update ISO 639-2 codes to include Montenegrin (cnr) added in 2017.
+  * Update ISO 4217. Fixes #24
+  * ISO 639-3: New translation for Friulian
+  * ISO 639-5: New translations for Esperanto, Hindi, Russian
+  * ISO 4217: New translation for Esperanto
+  * Translation updates for ISO 3166-1
+  * Translation updates for ISO 3166-2
+  * Translation updates for ISO 3166-3
+  * Translation updates for ISO 639-2
+  * Translation updates for ISO 639-3
+  * Translation updates for ISO 639-5
+  * Translation updates for ISO 4217
+  * Translation updates for ISO 15924
+  * ISO 3166-2: Add parent codes for GB. Fixes #36
+  * ISO 3166-2: Fix subdivision names for Finland. Fixes #37
+
+-------------------------------------------------------------------
 Wed Jan 19 21:17:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.9.0:

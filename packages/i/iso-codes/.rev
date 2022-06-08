@@ -772,4 +772,12 @@
   *  Translation updates for ISO 639-5 (forwarded request 947561 from dirkmueller)</comment>
     <requestid>947902</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>38d1be153f8f4b126989fdc1a4299bdd</srcmd5>
+    <version>4.10.0</version>
+    <time>1654691050</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981117</requestid>
+  </revision>
 </revisionlist>
