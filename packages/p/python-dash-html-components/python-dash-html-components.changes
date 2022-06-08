@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  7 20:17:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.0.0
+  * As of Dash 2, the development of dash-html-components has been
+    moved to the main Dash repo
+  * This package exists for backward compatibility as Dash still
+    lists it as requirement. It has no further functionality than
+    displaying a deprecation message. 
+
+-------------------------------------------------------------------
 Fri Apr  9 21:25:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.1.3

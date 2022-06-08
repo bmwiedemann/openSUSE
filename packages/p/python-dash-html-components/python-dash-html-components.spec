@@ -1,7 +1,7 @@
 #
-# spec file for package python-dash-html-components-test
+# spec file for package python-dash-html-components
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,67 +16,41 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "test"
-%define psuffix -test
-%bcond_without test
-%else
-%define psuffix %{nil}
-%bcond_with test
-%endif
-# dash packagers do not regularly tag their releases on github due to some Julia bug
-# get this from the master branch (dev is the default but does not have the full package)
-%define commit 422c952ed2c86f6c3dbec04150da27688d464a57
-Name:           python-dash-html-components%{psuffix}
-Version:        1.1.3
+Name:           python-dash-html-components
+Version:        2.0.0
 Release:        0
-Summary:        Vanilla HTML components for Dash
+Summary:        Vanilla HTML components for Dash - Legacy
 License:        MIT
 URL:            https://github.com/plotly/dash-html-components
-# only the github archive has the tests
-Source:         https://github.com/plotly/dash-html-components/archive/%{commit}.tar.gz#/dash-html-components-%{version}-gh.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/dash-html-components/dash_html_components-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-%if %{with test}
-BuildRequires:  %{python_module dash}
-BuildRequires:  %{python_module percy}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module selenium}
-BuildRequires:  %{python_module pandas if (%python-base without python36-base)}
-%endif
 %python_subpackages
 
 %description
 Vanilla HTML components for Dash
 
+As of Dash 2, the development of dash-html-components has been moved to the main Dash repo
+
+This package exists for backward compatibility as Dash still lists it as requirement. It
+has no further functionality than displaying a deprecation message.
+
 %prep
-%setup -q -n dash-html-components-%{commit}
+%setup -q -n dash_html_components-%{version}
 
 %build
 %python_build
 
 %install
-%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%endif
 
-%check
-%if %{with test}
-# full test suite needs working nodejs (npm with network), selenium, chromedriver...
-%pytest tests/test_dash_html_components.py
-%endif
-
-%if !%{with test}
 %files %{python_files}
 %license LICENSE
 %doc README.md
 %{python_sitelib}/dash_html_components
-%{python_sitelib}/dash_html_components-%{version}-py*.egg-info
-%endif
+%{python_sitelib}/dash_html_components-%{version}*-info
 
 %changelog
