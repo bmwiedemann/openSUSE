@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  4 15:13:51 UTC 2022 - Jiri Bohac <jbohac@suse.com>
+
+- kdumptool calibrate: add more margin to reservation calculations 
+  (bsc#1196728)
+
+-------------------------------------------------------------------
 Tue Apr 12 14:41:25 UTC 2022 - Jiri Bohac <jbohac@suse.com>
 
 - remount filesystem r/w for fadump (bsc#1197125)
