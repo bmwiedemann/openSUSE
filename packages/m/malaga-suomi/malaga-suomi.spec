@@ -1,7 +1,7 @@
 #
 # spec file for package malaga-suomi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _name voikko-fi
 %define _altname suomi-malaga
 Name:           malaga-suomi
-Version:        2.3
+Version:        2.5
 Release:        0
 Summary:        Description of Finnish morphology written for libvoikko
 License:        GPL-2.0-or-later
@@ -40,8 +40,8 @@ Obsoletes:      %{_altname} < %{version}
 BuildArch:      noarch
 
 %description
-Voikko-fi (previously known as suomi-malaga) is a description of Finnish 
-morphology written for libvoikko. 
+Voikko-fi (previously known as suomi-malaga) is a description of Finnish
+morphology written for libvoikko.
 
 This package contains a compiled version of Voikko-fi using the new
 unweighted VFST dictionary format. It is suitable for use in spell checking,

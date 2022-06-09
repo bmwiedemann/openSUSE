@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun  8 14:39:24 UTC 2022 - Timo Jyrinki <tjyrinki@suse.com>
+
+- Update to new upstream version 2.5:
+  * New words have been added and some bugs have been fixed.
+- Update to new upstream version 2.45:
+  * Automatic hkO derivation for adjectives has been implemented.
+  * Extended special vocabulary for spoken Finnish.
+  * New words have been added and various bugs have been fixed.
+
+-------------------------------------------------------------------
 Thu May  7 06:51:21 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildIgnore malaga-suomi: libvoikko1 does not require

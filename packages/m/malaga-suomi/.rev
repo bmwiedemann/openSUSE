@@ -211,4 +211,18 @@
     <comment></comment>
     <requestid>803330</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>312ac18d6d0296926fea850217cc85eb</srcmd5>
+    <version>2.5</version>
+    <time>1654776581</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream version 2.5:
+  * New words have been added and some bugs have been fixed.
+- Update to new upstream version 2.4:
+  * Automatic hkO derivation for adjectives has been implemented.
+  * Extended special vocabulary for spoken Finnish.
+  * New words have been added and various bugs have been fixed.
+</comment>
+    <requestid>981341</requestid>
+  </revision>
 </revisionlist>
