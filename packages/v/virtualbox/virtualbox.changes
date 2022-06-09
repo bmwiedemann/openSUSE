@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun  8 07:54:46 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Explicitly BuildRequire pkgconfig(glx) and pkgconfig(glu): This
+  happened to be pulled in by SDL-devel, but with the switch to
+  sdl12-compat, this no longer happens. Virtualbox explicitly
+  checks for them though, so it is our own responsibility to have
+  those deps in place.
+
+-------------------------------------------------------------------
 Fri May 27 22:27:02 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
 
 - Update fixes_for_kernel_5.18.patch to save and restore FPU status during interrupt.

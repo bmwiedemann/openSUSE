@@ -2293,4 +2293,12 @@ Linux hosts and guests: fix for building kernel modules against Linux 5.0. Thank
   The change fixes boo#1199803.</comment>
     <requestid>979541</requestid>
   </revision>
+  <revision rev="238" vrev="6">
+    <srcmd5>547c69a6ea664bc8e224801b0ed57b74</srcmd5>
+    <version>6.1.34</version>
+    <time>1654776582</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981349</requestid>
+  </revision>
 </revisionlist>

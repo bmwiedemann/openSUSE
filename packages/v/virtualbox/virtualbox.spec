@@ -224,6 +224,8 @@ BuildRequires:  xorg-x11-server
 BuildRequires:  xorg-x11-server-sdk
 BuildRequires:  zlib-devel-static
 BuildRequires:  pkgconfig(fontsproto)
+BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(glx)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(randrproto)
 BuildRequires:  pkgconfig(renderproto)
@@ -294,8 +296,8 @@ hardware. VirtualBox is freely available as Open Source Software under
 the terms of the GNU Public License (GPL).
 
 
-##########################################
 
+##########################################
 %package qt
 Summary:        Qt GUI part for %{name}
 Group:          System/Emulators/PC
@@ -313,8 +315,8 @@ Obsoletes:      %{name}-ose-qt < %{version}
 This package contains the code for the GUI used to control VMs.
 
 
-#########################################
 
+#########################################
 %package websrv
 Summary:        WebService GUI part for %{name}
 Group:          System/Emulators/PC
@@ -327,8 +329,8 @@ Obsoletes:      %{name}-vboxwebsrv < %{version}
 The VirtualBox web server is used to control headless VMs using a browser.
 
 
-#########################################
 
+#########################################
 %package guest-x11
 Summary:        VirtualBox X11 drivers for mouse and video
 Group:          System/X11/Servers/XF86_4
@@ -343,8 +345,8 @@ Obsoletes:      xorg-x11-driver-virtualbox-ose < %{version}
 This package contains X11 guest utilities and X11 guest mouse and video drivers
 
 
-###########################################
 
+###########################################
 %package guest-tools
 Summary:        VirtualBox guest tools
 Group:          System/Emulators/PC
@@ -363,8 +365,8 @@ Requires(pre):  net-tools-deprecated
 VirtualBox guest addition tools.
 
 
-###########################################
 
+###########################################
 %package -n python3-%{name}
 Summary:        Python bindings for %{name}
 Group:          Development/Libraries/Python
@@ -383,8 +385,8 @@ Obsoletes:      python3-%{name}-ose < %{version}
 Python XPCOM bindings to %{name}. Used e.g. by vboxgtk package.
 
 
-###########################################
 
+###########################################
 %package devel
 Summary:        Devel files for %{name}
 Group:          Development/Libraries/Other
@@ -398,8 +400,8 @@ Obsoletes:      %{name}-ose-devel < %{version}
 Development file for %{name}
 
 
-###########################################
 
+###########################################
 %package host-source
 Summary:        Source files for %{name} host kernel modules
 Group:          Development/Sources
@@ -430,8 +432,8 @@ These can be built for custom kernels using
 sudo %{_sbindir}/vboxguestconfig
 
 
-###########################################
 
+###########################################
 %package guest-desktop-icons
 Summary:        Icons for guest desktop files
 Group:          System/Emulators/PC
@@ -443,8 +445,8 @@ BuildArch:      noarch
 This package contains icons for guest desktop files that were created on the desktop.
 
 
-###########################################
 
+###########################################
 %package vnc
 Summary:        VNC desktop sharing
 Group:          System/Emulators/PC
