@@ -1079,4 +1079,20 @@
 </comment>
     <requestid>974974</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>a265614c0a0eb493e77b28f4c3cefa6e</srcmd5>
+    <version>1.20.2</version>
+    <time>1654776720</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.20.2
+  * Bugfixes:
+    #7289: TCP port 0 is announced in the LAN beacon
+    #8314: https://relays.syncthing.net/endpoint contains non-valid URLs with spaces
+    #8355: Upgrading from v1.19.2 to v1.20.x now requires chmod for syncing files
+  * Enhancements:
+    #8264: Include default ignore patterns in the GUI's advanced configuration editor
+    #8310: Indicate folders / devices where the remote end is paused.
+</comment>
+    <requestid>981456</requestid>
+  </revision>
 </revisionlist>

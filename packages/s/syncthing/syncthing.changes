@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun  9 07:38:30 UTC 2022 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.20.2
+  * Bugfixes:
+    #7289: TCP port 0 is announced in the LAN beacon
+    #8314: https://relays.syncthing.net/endpoint contains non-valid URLs with spaces
+    #8355: Upgrading from v1.19.2 to v1.20.x now requires chmod for syncing files
+
+  * Enhancements:
+    #8264: Include default ignore patterns in the GUI's advanced configuration editor
+    #8310: Indicate folders / devices where the remote end is paused.
+
+-------------------------------------------------------------------
 Wed May  4 16:36:34 UTC 2022 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.20.1
