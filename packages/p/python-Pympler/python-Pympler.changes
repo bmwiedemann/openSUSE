@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun  8 08:24:18 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add BR for python-dbm to make build working on 15.*.
+
+-------------------------------------------------------------------
+Tue Jun  7 17:59:15 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.0.1:
+  - The resource module is only available on Unix, the mmap module
+    is also available on Windows.
+
+-------------------------------------------------------------------
 Wed Dec 22 00:18:12 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.0:

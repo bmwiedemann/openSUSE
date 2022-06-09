@@ -54,4 +54,16 @@
 - Use pytest to run the test suite.</comment>
     <requestid>942029</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7b5f6d948f10021a9d2c56e97e201cce</srcmd5>
+    <version>1.0.1</version>
+    <time>1654776563</time>
+    <user>dimstar_suse</user>
+    <comment>- Add BR for python-dbm to make build working on 15.*.
+- Update to 1.0.1:
+  - The resource module is only available on Unix, the mmap module
+    is also available on Windows.
+</comment>
+    <requestid>981274</requestid>
+  </revision>
 </revisionlist>

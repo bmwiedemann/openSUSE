@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pympler
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,16 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-Pympler
-Version:        1.0
+Version:        1.0.1
 Release:        0
 Summary:        A tool to analyze the memory behavior of Python objects
 License:        Apache-2.0
 URL:            https://github.com/pympler/pympler
 Source:         https://files.pythonhosted.org/packages/source/P/Pympler/Pympler-%{version}.tar.gz
 Patch0:         pympler-flaky-tests.patch
+BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
