@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun  9 12:27:56 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 2.1.0.0 to ensure
+  proper upgrade from previous version 2.1.0b2
+
+-------------------------------------------------------------------
 Tue Apr 12 10:00:41 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
