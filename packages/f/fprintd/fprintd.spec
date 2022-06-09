@@ -44,7 +44,6 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(pam_wrapper)
 BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(systemd)
-Recommends:     %{name}-lang
 ExcludeArch:    s390 s390x
 %{?systemd_requires}
 

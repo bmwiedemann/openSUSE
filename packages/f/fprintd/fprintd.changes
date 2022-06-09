@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 24 09:16:43 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not recommend lang package: the lang package has smarter
+  supplements in place.
+
+-------------------------------------------------------------------
 Sat May  7 14:51:50 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.94.2
