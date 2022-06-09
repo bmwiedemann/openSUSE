@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Jun 08 15:39:26 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 2022.06.06:
+  * fix: Fix trait impl completions using wrong insert position
+  * internal: Keep output channels across restarts
+  * fix: Restart the server instead of reloading the window when config changes
+  * fix: Cleanup output channels when restarting server
+  * minor: Don't log cancelled diagnostics
+  * fix: Fix match to if let assist for wildcard pats
+  * Increase worker thread stack and name them
+  * Only record build script outputs when the output has been changed
+  * Remove some of the unnecessary helpfer functions from CompletionContext
+  * Simplify
+  * Move trait_impl completion analysis into CompletionContext
+  * minor: Reduce move-guard trigger range
+  * internal: Don't log default build script outputs
+  * Deduplicate
+  * Remove prev-sibling completion machinery
+  * More precise where keyword completions
+  * Remove dead code
+  * Fix visibility mods not being completed for field defs
+  * internal: Move most remaining keyword completions to item list completions
+  * Shorten main thread name
+  * feat: Support `$$` in macros.
+  * Allow merging of multiple selected imports.
+  * fix: parsing of `?` opt-out trait bounds
+  * minor: Fix rustfmt failing on main_loop.rs
+  * fix(diagnostic): Don't remove diagnostic with empty message
+  * Sync handlers cannot be cancelled
+  * [editors/vscode] cleaer status bar bg color / command  when server status returns to OK
+  * fix: Fix completions disappearing when typing two keys in quick succession
+  * minor: Remove unused code
+  * fix: Fix VSCode config patching incorrectly patching some configs
+  * fix: float display impl
+  * fix(extract_module): Remove redundancy causing else, and also add import fix loop for names
+  * More precise completion filtering
+  * Update commit/PR style
+  * Use char for trigger character
+  * Add implicit static lifetime hints
+  * fix: visibility completion
+  * fix: add an option to show inlay hint for return type of closures without block
+  * fix(ide-db): correct single-file module rename
+  * Cleanup auto-import ordering
+  * fix(extract_module): import resolution for items of submodules
+  * fix(extract_module): nearby imports deletion causing panic
+  * mismatch
+  * Remove unecessary unwrap
+  * Order auto-imports by relevance
+
+-------------------------------------------------------------------
 Wed Jun 01 03:50:05 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 2022.05.30:

@@ -17,7 +17,7 @@
 
 
 Name:           rust-analyzer
-Version:        2022.05.30
+Version:        2022.06.06
 Release:        0
 Summary:        Implementation of Language Server Protocol for the Rust programming language
 License:        (0BSD OR Apache-2.0 OR MIT) AND Apache-2.0 AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (Artistic-2.0 OR CC0-1.0) AND BSD-3-Clause AND ISC AND MIT AND (MIT OR Unlicense) AND Apache-2.0 AND MIT
@@ -45,6 +45,6 @@ install -Dm 0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildr
 %files
 %{_bindir}/rust-analyzer
 %license LICENSE-APACHE LICENSE-MIT
-%doc README.md
+%doc README.md docs assets
 
 %changelog
