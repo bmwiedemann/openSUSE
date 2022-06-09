@@ -18,7 +18,7 @@
 
 %define pname %{name}-core
 Name:           bats
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        Bash Automated Testing System
 License:        MIT

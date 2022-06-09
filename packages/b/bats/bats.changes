@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun  8 19:11:07 UTC 2022 - Olav Reinert <seroton10@gmail.com>
+
+- Update to version 1.6.1:
+  * prevent teardown, teardown_file, and teardown_suite from overriding bats'
+    exit code by setting $status (e.g. via calling run) (#581, #575)
+    - CRITICAL: this can return exit code 0 despite failed tests, thus
+      preventing your CI from reporting test failures! The regression happened
+      in version 1.6.0.
+  * corrected invalid documentation of run -N (had =N instead) (#579)
+    - CRITICAL: using the incorrect form can lead to silent errors. See issue
+      #578 for more details and how to find out if your tests are affected.
+
+-------------------------------------------------------------------
 Mon Apr 18 14:59:49 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.6.0
