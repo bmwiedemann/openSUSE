@@ -22,7 +22,7 @@
 
 Name:           xpra-html5
 Release:        0
-Version:        5.0+git20220516.caf9971
+Version:        5.0+git20220601.d52ebb5
 Summary:        HTML5 client for Xpra
 License:        GPL-2.0+ AND BSD-3-Clause AND LGPL-3.0+ AND MIT
 URL:            https://xpra.org/
@@ -38,8 +38,17 @@ BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  nodejs-common
 BuildRequires:  python3
+Requires:       cups-client
+Requires:       dejavu-fonts
+Requires:       qrencode
 Requires:       xpra
+Requires:       python3-avahi
+Requires:       python3-netifaces
+Requires:       python3-paramiko
+Requires:       python3-pyinotify
+Requires:       python3-pyxdg
 Requires:       python3-websockify
+Requires:       python3-zeroconf
 Provides:       bundled(js-aurora)
 Provides:       bundled(js-bencode)
 Provides:       bundled(js-broadway)

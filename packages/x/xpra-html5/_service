@@ -25,9 +25,11 @@
     <!-- BAD
     <param name="revision">799330a</param>
     <param name="revision">fbb091f</param>
+    <param name="revision">39566a8</param>
     -->
-    <!-- TESTING -->
+    <!-- TESTING
     <param name="revision">caf9971</param>
+    -->
     <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>

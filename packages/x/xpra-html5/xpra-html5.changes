@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jun 01 13:46:29 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 5.0+git20220601.d52ebb5:
+  * #188 only consume the event when over a window
+
+-------------------------------------------------------------------
+Tue May 31 16:51:28 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 5.0+git20220531.9ebe126:
+  * access client via 'this'
+  * fix another non-offscreen paint error
+  * we don't check but we do support these
+  * fixup c534ab0d839c7b5501fd83f96a6da6af69aaea5a
+  * fix challenge response handler
+  * Update VideoDecoder.js
+  * #190 running install is usually enough
+  * #190 make it clearer one can just run install
+  * #183 fix non-decode worker paints
+  * Remove all commented-out code
+
+-------------------------------------------------------------------
+Wed May 25 21:44:13 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding a few more 'Requires' to cleanup runtime warnings/errors.
+
+-------------------------------------------------------------------
 Mon May 23 21:12:32 UTC 2022 - scott.bradnick@suse.com
 
 - Updating uglifyjs to '3.15.5'.
