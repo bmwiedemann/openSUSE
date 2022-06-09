@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  7 14:16:40 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop pkgconfig(libkms) BuildRequires: this has been removed from
+  latest libdrm.
+
+-------------------------------------------------------------------
 Sat Feb 05 20:24:08 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
 
 - Update to version 0.34.1+git.20220203T182214.5d31c7310c:
