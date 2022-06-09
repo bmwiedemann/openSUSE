@@ -33,6 +33,9 @@ BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(igc-opencl)
 BuildRequires:  pkgconfig(libva)
+Requires:       libigc1
+Requires:       libigdfcl1
+Requires:       libopencl-clang11
 ExclusiveArch:  x86_64
 
 %description
