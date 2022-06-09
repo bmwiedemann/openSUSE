@@ -1,7 +1,7 @@
 #
 # spec file for package megaglest
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  glew-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  krb5-devel
-BuildRequires:  libGLw-devel
 BuildRequires:  libcares-devel
 BuildRequires:  libcurl-devel >= 7.21
 BuildRequires:  libdrm-devel
