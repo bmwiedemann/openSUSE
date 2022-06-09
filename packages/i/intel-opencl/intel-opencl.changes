@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  9 12:31:31 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Add requirements for libigc1, libigdfcl1 and libopencl-clang11 
+
+-------------------------------------------------------------------
 Fri May 13 06:29:01 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - 0001-Include-memory-in-generate_cpp_array.cpp.patch
