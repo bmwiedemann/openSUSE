@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun  1 12:02:29 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.9.6:
+  + build: Add introspection/vapi/tests options.
+  + build: Use library() to optionally build a static library.
+
+-------------------------------------------------------------------
 Sat May 22 19:10:34 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.9.5:
