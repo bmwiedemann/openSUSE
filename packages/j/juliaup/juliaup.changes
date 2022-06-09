@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 08 15:12:48 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 1.6.4:
+  * (cargo-release) version 1.6.4
+  * Fix a version bug
+  * Update to Rust 2021 edition
+  * Update window crate
+  * Update deps
+  * (cargo-release) start next development iteration 1.6.4-alpha.0
+
+-------------------------------------------------------------------
 Fri Jun 03 15:51:01 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 1.6.3:
