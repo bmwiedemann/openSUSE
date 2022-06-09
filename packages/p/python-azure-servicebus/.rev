@@ -202,4 +202,15 @@
     CHANGELOG.md file provided with this package (forwarded request 969362 from glaubitz)</comment>
     <requestid>969510</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f0ed00e12df77035cd5df240746ab74c</srcmd5>
+    <version>7.7.0</version>
+    <time>1654782102</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.7.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 981256 from glaubitz)</comment>
+    <requestid>981503</requestid>
+  </revision>
 </revisionlist>
