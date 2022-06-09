@@ -125,4 +125,15 @@
 - Update Requires from setup.py</comment>
     <requestid>976379</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>133e8cfd6751e99917304d3a64da5864</srcmd5>
+    <version>5.10.0</version>
+    <time>1654782104</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 5.10.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 981507 from glaubitz)</comment>
+    <requestid>981509</requestid>
+  </revision>
 </revisionlist>
