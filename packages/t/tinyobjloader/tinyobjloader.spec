@@ -1,7 +1,7 @@
 #
 # spec file for package tinyobjloader
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2018-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,13 +20,13 @@
 %define sover 2
 %define lname   libtinyobjloader%{sover}
 Name:           tinyobjloader
-Version:        2.0.0rc8+git.20210821
+Version:        2.0.0rc9
 Release:        0
 Summary:        Wavefront .obj file loader
 License:        MIT
 Group:          Development/Languages/C and C++
-URL:            https://github.com/syoyo/tinyobjloader
-Source:         %{name}-%{version}.tar.xz
+URL:            https://github.com/tinyobjloader/tinyobjloader
+Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         tinyobjloader-fix-cmake-path.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
