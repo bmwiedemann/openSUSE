@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  7 08:20:21 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch +20220604
+  + add note on portable memory-leak checking in man/curs_memleaks.3x
+  + remove u6-u9 from teken-2018 -TD
+  + set "xterm-new" to "xterm-p370", add "xterm-p371" -TD
+
+-------------------------------------------------------------------
 Mon May 30 12:27:14 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20220529

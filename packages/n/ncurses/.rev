@@ -3666,4 +3666,15 @@
 - Add ncurses patch 20220501</comment>
     <requestid>980327</requestid>
   </revision>
+  <revision rev="216" vrev="20">
+    <srcmd5>96b6443f5c96e735ac139116f53cc3a5</srcmd5>
+    <version>6.3.MACRO</version>
+    <time>1654776588</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch +20220604
+  + add note on portable memory-leak checking in man/curs_memleaks.3x
+  + remove u6-u9 from teken-2018 -TD
+  + set &quot;xterm-new&quot; to &quot;xterm-p370&quot;, add &quot;xterm-p371&quot; -TD</comment>
+    <requestid>981121</requestid>
+  </revision>
 </revisionlist>
