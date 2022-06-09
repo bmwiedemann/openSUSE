@@ -69,4 +69,12 @@
     <comment>- Update to version 1.1.1: (forwarded request 973142 from dimstar)</comment>
     <requestid>973155</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5bbbe091b059f1f4ed8d2ca1d29b9e11</srcmd5>
+    <version>1.1.2</version>
+    <time>1654776575</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 980349 from dimstar)</comment>
+    <requestid>981301</requestid>
+  </revision>
 </revisionlist>
