@@ -1,7 +1,7 @@
 #
 # spec file for package PlayOnLinux
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,9 +42,6 @@ BuildRequires:  python3
 BuildRequires:  python3-natsort
 BuildRequires:  python3-wxPython
 Requires:       ImageMagick
-%if 0%{?suse_version} <= 1500
-Requires:       dbus-1-python
-%endif
 Requires:       gettext
 Requires:       icoutils
 Requires:       jq

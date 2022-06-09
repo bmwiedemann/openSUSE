@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  8 18:54:27 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Remove required python2 package dbus-1-python from spec.
+
+-------------------------------------------------------------------
 Mon Sep  7 15:24:16 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - PlayOnLinux requires now python3 and pyton3-wxPython.
