@@ -25,7 +25,8 @@ Group:          Productivity/Text/Utilities
 URL:            http://ftp.gnu.org/gnu/patch/
 Source:         http://ftp.gnu.org/gnu/patch/%{name}-%{version}.tar.xz
 Source2:        http://ftp.gnu.org/gnu/patch/%{name}-%{version}.tar.xz.sig
-Source3:        http://savannah.gnu.org/project/memberlist-gpgkeys.php?group=patch&download=1#/patch.keyring
+# https://savannah.gnu.org/people/viewgpg.php?user_id=15000
+Source3:        patch.keyring
 Patch1:         fix-segfault-mangled-rename.patch
 Patch2:         ed-style-01-missing-input-files.patch
 Patch3:         ed-style-02-fix-arbitrary-command-execution.patch

@@ -358,4 +358,12 @@
   files to be missing when all hunks failed to apply (boo#1198106).</comment>
     <requestid>976181</requestid>
   </revision>
+  <revision rev="46" vrev="6">
+    <srcmd5>b3e0672318b102c8c391cad3238f27d7</srcmd5>
+    <version>2.7.6</version>
+    <time>1654776585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980591</requestid>
+  </revision>
 </revisionlist>

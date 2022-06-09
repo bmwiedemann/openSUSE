@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 24 14:16:43 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Do not link unversioned file by URL
+- Replace group keyring not intended for release checking with
+  (expired since 2018) public key of Andreas
+
+-------------------------------------------------------------------
 Tue May 10 16:41:54 UTC 2022 - Jean Delvare <jdelvare@suse.de>
 
 - fix-swapping-fake-lines-in-pch_swap.patch: Fix swapping fake
