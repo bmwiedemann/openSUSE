@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue May 31 04:44:18 UTC 2022 - Michael Chang <mchang@suse.com>
+
+- Security fixes and hardenings for boothole 3 / boothole 2022 (bsc#1198581)
+  * 0001-video-Remove-trailing-whitespaces.patch
+  * 0002-loader-efi-chainloader-Simplify-the-loader-state.patch
+  * 0003-commands-boot-Add-API-to-pass-context-to-loader.patch
+- Fix CVE-2022-28736 (bsc#1198496)
+  * 0004-loader-efi-chainloader-Use-grub_loader_set_ex.patch
+- Fix CVE-2022-28735 (bsc#1198495)
+  * 0005-kern-efi-sb-Reject-non-kernel-files-in-the-shim_lock.patch
+  * 0006-kern-file-Do-not-leak-device_name-on-error-in-grub_f.patch
+  * 0007-video-readers-png-Abort-sooner-if-a-read-operation-f.patch
+  * 0008-video-readers-png-Refuse-to-handle-multiple-image-he.patch
+- Fix CVE-2021-3695 (bsc#1191184)
+  * 0009-video-readers-png-Drop-greyscale-support-to-fix-heap.patch
+- Fix CVE-2021-3696 (bsc#1191185)
+  * 0010-video-readers-png-Avoid-heap-OOB-R-W-inserting-huff-.patch
+  * 0011-video-readers-png-Sanity-check-some-huffman-codes.patch
+  * 0012-video-readers-jpeg-Abort-sooner-if-a-read-operation-.patch
+  * 0013-video-readers-jpeg-Do-not-reallocate-a-given-huff-ta.patch
+  * 0014-video-readers-jpeg-Refuse-to-handle-multiple-start-o.patch
+- Fix CVE-2021-3697 (bsc#1191186)
+  * 0015-video-readers-jpeg-Block-int-underflow-wild-pointer-.patch
+  * 0016-normal-charset-Fix-array-out-of-bounds-formatting-un.patch
+- Fix CVE-2022-28733 (bsc#1198460)
+  * 0017-net-ip-Do-IP-fragment-maths-safely.patch
+  * 0018-net-netbuff-Block-overly-large-netbuff-allocs.patch
+  * 0019-net-dns-Fix-double-free-addresses-on-corrupt-DNS-res.patch
+  * 0020-net-dns-Don-t-read-past-the-end-of-the-string-we-re-.patch
+  * 0021-net-tftp-Prevent-a-UAF-and-double-free-from-a-failed.patch
+  * 0022-net-tftp-Avoid-a-trivial-UAF.patch
+  * 0023-net-http-Do-not-tear-down-socket-if-it-s-already-bee.patch
+- Fix CVE-2022-28734 (bsc#1198493)
+  * 0024-net-http-Fix-OOB-write-for-split-http-headers.patch
+- Fix CVE-2022-28734 (bsc#1198493)
+  * 0025-net-http-Error-out-on-headers-with-LF-without-CR.patch
+  * 0026-fs-f2fs-Do-not-read-past-the-end-of-nat-journal-entr.patch
+  * 0027-fs-f2fs-Do-not-read-past-the-end-of-nat-bitmap.patch
+  * 0028-fs-f2fs-Do-not-copy-file-names-that-are-too-long.patch
+  * 0029-fs-btrfs-Fix-several-fuzz-issues-with-invalid-dir-it.patch
+  * 0030-fs-btrfs-Fix-more-ASAN-and-SEGV-issues-found-with-fu.patch
+  * 0031-fs-btrfs-Fix-more-fuzz-issues-related-to-chunks.patch
+  * 0032-Use-grub_loader_set_ex-for-secureboot-chainloader.patch
+- Bump grub's SBAT generation to 2
+
+-------------------------------------------------------------------
 Tue May 31 04:41:44 UTC 2022 - Michael Chang <mchang@suse.com>
 
 - Use boot disks in OpenFirmware, fixing regression caused by

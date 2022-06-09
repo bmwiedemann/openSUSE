@@ -22,7 +22,7 @@
 %if %{defined sbat_distro}
 # SBAT metadata
 %define sbat_generation 1
-%define sbat_generation_grub 1
+%define sbat_generation_grub 2
 %else
 %{error please define sbat_distro, sbat_distro_summary and sbat_distro_url}
 %endif
@@ -375,6 +375,38 @@ Patch849:       0001-powerpc-do-CAS-in-a-more-compatible-way.patch
 Patch850:       0001-Fix-infinite-boot-loop-on-headless-system-in-qemu.patch
 Patch851:       0001-libc-config-merge-from-glibc.patch
 Patch852:       0001-ofdisk-improve-boot-time-by-lookup-boot-disk-first.patch
+Patch853:       0001-video-Remove-trailing-whitespaces.patch
+Patch854:       0002-loader-efi-chainloader-Simplify-the-loader-state.patch
+Patch855:       0003-commands-boot-Add-API-to-pass-context-to-loader.patch
+Patch856:       0004-loader-efi-chainloader-Use-grub_loader_set_ex.patch
+Patch857:       0005-kern-efi-sb-Reject-non-kernel-files-in-the-shim_lock.patch
+Patch858:       0006-kern-file-Do-not-leak-device_name-on-error-in-grub_f.patch
+Patch859:       0007-video-readers-png-Abort-sooner-if-a-read-operation-f.patch
+Patch860:       0008-video-readers-png-Refuse-to-handle-multiple-image-he.patch
+Patch861:       0009-video-readers-png-Drop-greyscale-support-to-fix-heap.patch
+Patch862:       0010-video-readers-png-Avoid-heap-OOB-R-W-inserting-huff-.patch
+Patch863:       0011-video-readers-png-Sanity-check-some-huffman-codes.patch
+Patch864:       0012-video-readers-jpeg-Abort-sooner-if-a-read-operation-.patch
+Patch865:       0013-video-readers-jpeg-Do-not-reallocate-a-given-huff-ta.patch
+Patch866:       0014-video-readers-jpeg-Refuse-to-handle-multiple-start-o.patch
+Patch867:       0015-video-readers-jpeg-Block-int-underflow-wild-pointer-.patch
+Patch868:       0016-normal-charset-Fix-array-out-of-bounds-formatting-un.patch
+Patch869:       0017-net-ip-Do-IP-fragment-maths-safely.patch
+Patch870:       0018-net-netbuff-Block-overly-large-netbuff-allocs.patch
+Patch871:       0019-net-dns-Fix-double-free-addresses-on-corrupt-DNS-res.patch
+Patch872:       0020-net-dns-Don-t-read-past-the-end-of-the-string-we-re-.patch
+Patch873:       0021-net-tftp-Prevent-a-UAF-and-double-free-from-a-failed.patch
+Patch874:       0022-net-tftp-Avoid-a-trivial-UAF.patch
+Patch875:       0023-net-http-Do-not-tear-down-socket-if-it-s-already-bee.patch
+Patch876:       0024-net-http-Fix-OOB-write-for-split-http-headers.patch
+Patch877:       0025-net-http-Error-out-on-headers-with-LF-without-CR.patch
+Patch878:       0026-fs-f2fs-Do-not-read-past-the-end-of-nat-journal-entr.patch
+Patch879:       0027-fs-f2fs-Do-not-read-past-the-end-of-nat-bitmap.patch
+Patch880:       0028-fs-f2fs-Do-not-copy-file-names-that-are-too-long.patch
+Patch881:       0029-fs-btrfs-Fix-several-fuzz-issues-with-invalid-dir-it.patch
+Patch882:       0030-fs-btrfs-Fix-more-ASAN-and-SEGV-issues-found-with-fu.patch
+Patch883:       0031-fs-btrfs-Fix-more-fuzz-issues-related-to-chunks.patch
+Patch884:       0032-Use-grub_loader_set_ex-for-secureboot-chainloader.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
