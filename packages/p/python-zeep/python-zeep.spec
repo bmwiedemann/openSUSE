@@ -16,10 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python36 1
-# python-xmlsec doesn’t support 3.10 gh#mehcode/python-xmlsec#204
-%define skip_python310 1
+%define skip_python2 1
 Name:           python-zeep
 Version:        4.1.0
 Release:        0
@@ -43,7 +40,7 @@ Requires:       python-pytz
 Requires:       python-requests >= 2.7.0
 Requires:       python-requests-file >= 1.5.1
 Requires:       python-requests-toolbelt >= 0.7.1
-Requires:       python-xmlsec >= 0.6.1
+Recommends:     python-xmlsec >= 0.6.1
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module platformdirs >= 1.4.0}
@@ -63,7 +60,8 @@ BuildRequires:  %{python_module requests >= 2.7.0}
 BuildRequires:  %{python_module requests-file >= 1.5.1}
 BuildRequires:  %{python_module requests-mock >= 0.7.0}
 BuildRequires:  %{python_module requests-toolbelt >= 0.7.1}
-BuildRequires:  %{python_module xmlsec >= 0.6.1}
+# gh#mehcode/python-xmlsec#204
+BuildRequires:  %{python_module xmlsec >= 0.6.1 if %python-base < 3.10}
 # /SECTION
 %python_subpackages
 
@@ -83,8 +81,6 @@ Python SOAP client based on python-lxml and python-requests
 
 %check
 export LANG=en_US.UTF-8
-# no working freezegun for python2
-python2_ignore="--ignore tests/test_cache.py"
 # broken tests
 ignorefiles="--ignore tests/test_wsse_signature.py \
              --ignore tests/test_wsse_username.py \
