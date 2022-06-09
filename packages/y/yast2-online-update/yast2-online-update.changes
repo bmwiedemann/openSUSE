@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  8 07:15:29 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Support managing system in a chroot (bsc#1199840)
+- 4.5.1
+
+-------------------------------------------------------------------
 Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.5.0 (bsc#1198109)
