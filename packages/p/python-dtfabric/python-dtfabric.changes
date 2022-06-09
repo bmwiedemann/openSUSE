@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  8 16:41:04 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- rm explict BuildRequires python38 to allow this to build on older releases of openSUSE
+
+-------------------------------------------------------------------
 Tue May 31 22:49:01 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 -update to 20220219 

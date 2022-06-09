@@ -31,7 +31,6 @@ BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python38
 BuildArch:      noarch
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
