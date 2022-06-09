@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun 08 14:35:20 UTC 2022 - Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+
+- Update to version 0.5.91 (changes since 0.5.90):
+  * src/appindicator.c: Clean up all g_signal_emit and g_signal_new calls
+    so that they correspond with each other.
+  * src/appindicator.c: Fix path NULL check in status_icon_change().
+  * Clean up compilation flags.
+  * tests/run-xvfb.sh: Allow sourcing run-xvfb.sh with /bin/sh.
+  * Use /bin/sh for running tests.
+  * src/ayatana-appindicator-0.1.pc.in. Fix for use with CMake.
+  * Fix build with musl libc.
+
+-------------------------------------------------------------------
 Sat Nov 20 19:39:20 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.5.90 (changes since 0.5.3):

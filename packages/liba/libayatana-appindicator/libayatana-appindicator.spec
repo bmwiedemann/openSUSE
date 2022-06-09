@@ -23,7 +23,7 @@
 %define sover 1
 %bcond_without mono
 Name:           libayatana-appindicator
-Version:        0.5.90
+Version:        0.5.91
 Release:        0
 Summary:        Ayatana application indicators library
 License:        GPL-3.0-only AND LGPL-2.0-only AND LGPL-3.0-only
