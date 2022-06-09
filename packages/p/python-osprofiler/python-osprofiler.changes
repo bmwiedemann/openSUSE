@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun  8 20:10:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.3:
+  * Make some revisions in the document
+  * Update CI to use unversioned jobs template
+  * Fix api index and module index
+
+-------------------------------------------------------------------
 Tue May 24 21:54:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - drop unneeded dependencies 

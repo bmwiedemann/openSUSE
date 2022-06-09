@@ -17,13 +17,13 @@
 
 
 Name:           python-osprofiler
-Version:        3.4.2
+Version:        3.4.3
 Release:        0
 Summary:        OpenStack Profiler Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/osprofiler
-Source0:        https://files.pythonhosted.org/packages/source/o/osprofiler/osprofiler-3.4.2.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/osprofiler/osprofiler-3.4.3.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable >= 0.7.2
 BuildRequires:  python3-WebOb >= 1.7.1
@@ -77,12 +77,13 @@ This package contains the Python 3.x module
 Summary:        Documentation for OSProfiler
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
+BuildRequires:  python3-sphinxcontrib-apidoc
 
 %description -n python-osprofiler-doc
 Documentation for OSProfiler.
 
 %prep
-%autosetup -p1 -n osprofiler-3.4.2
+%autosetup -p1 -n osprofiler-3.4.3
 %py_req_cleanup
 
 %build
