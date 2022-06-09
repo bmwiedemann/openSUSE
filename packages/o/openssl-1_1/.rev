@@ -274,4 +274,20 @@
     <comment></comment>
     <requestid>961992</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>d4e45d9e6f656d4e5f10dbce4ecbcf0e</srcmd5>
+    <version>1.1.1o</version>
+    <time>1654776586</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.1o: [CVE-2022-1292, bsc#1199166]
+  * Fixed a bug in the c_rehash script which was not properly sanitising
+    shell metacharacters to prevent command injection.
+  * Rebased openssl-s390x-assembly-pack-add-OPENSSL_s390xcap-environment.patch
+  * Rebased openssl-s390x-assembly-pack-add-support-for-pcc-and-kma-inst.patch
+- Added openssl-update_expired_certificates.patch
+  * Openssl failed tests because of expired certificates.
+  * bsc#1185637
+  * Sourced from https://github.com/openssl/openssl/pull/18446/commits</comment>
+    <requestid>981089</requestid>
+  </revision>
 </revisionlist>

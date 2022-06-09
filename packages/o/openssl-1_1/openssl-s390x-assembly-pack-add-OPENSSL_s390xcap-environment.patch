@@ -1,30 +1,9 @@
-From f39ad8dcaa75293968d2633d043de3f5fce4f37b Mon Sep 17 00:00:00 2001
-From: Patrick Steuer <patrick.steuer@de.ibm.com>
-Date: Mon, 30 Jan 2017 17:37:54 +0100
-Subject: [PATCH] s390x assembly pack: add OPENSSL_s390xcap environment
- variable.
-
-The OPENSSL_s390xcap environment variable is used to set bits in the s390x
-capability vector to zero. This simplifies testing of different code paths.
-
-Signed-off-by: Patrick Steuer <patrick.steuer@de.ibm.com>
-
-Reviewed-by: Andy Polyakov <appro@openssl.org>
-Reviewed-by: Rich Salz <rsalz@openssl.org>
-Reviewed-by: Richard Levitte <levitte@openssl.org>
-(Merged from https://github.com/openssl/openssl/pull/6813)
----
- crypto/s390x_arch.h  |  23 +-
- crypto/s390xcap.c    | 515 +++++++++++++++++++++++++++++++++++++++++++
- crypto/s390xcpuid.pl |  31 ++-
- 3 files changed, 556 insertions(+), 13 deletions(-)
-
-Index: openssl-1.1.1e/crypto/s390x_arch.h
-===================================================================
---- openssl-1.1.1e.orig/crypto/s390x_arch.h	2020-03-17 15:31:17.000000000 +0100
-+++ openssl-1.1.1e/crypto/s390x_arch.h	2020-03-20 17:29:30.459520742 +0100
-@@ -49,6 +49,9 @@ struct OPENSSL_s390xcap_st {
- 
+diff --git a/crypto/s390x_arch.h b/crypto/s390x_arch.h
+index 64e7ebb..34e04b4 100644
+--- a/crypto/s390x_arch.h
++++ b/crypto/s390x_arch.h
+@@ -52,6 +52,9 @@ __attribute__ ((visibility("hidden")))
+ #endif
  extern struct OPENSSL_s390xcap_st OPENSSL_s390xcap_P;
  
 +/* Max number of 64-bit words currently returned by STFLE */
@@ -33,7 +12,7 @@ Index: openssl-1.1.1e/crypto/s390x_arch.h
  /* convert facility bit number or function code to bit mask */
  #  define S390X_CAPBIT(i)	(1ULL << (63 - (i) % 64))
  
-@@ -68,9 +71,15 @@ extern struct OPENSSL_s390xcap_st OPENSS
+@@ -71,9 +74,15 @@ extern struct OPENSSL_s390xcap_st OPENSSL_s390xcap_P;
  # define S390X_KMA		0xb0
  
  /* Facility Bit Numbers */
@@ -52,7 +31,7 @@ Index: openssl-1.1.1e/crypto/s390x_arch.h
  
  /* Function Codes */
  
-@@ -78,6 +87,9 @@ extern struct OPENSSL_s390xcap_st OPENSS
+@@ -81,6 +90,9 @@ extern struct OPENSSL_s390xcap_st OPENSSL_s390xcap_P;
  # define S390X_QUERY		0
  
  /* kimd/klmd */
@@ -62,7 +41,7 @@ Index: openssl-1.1.1e/crypto/s390x_arch.h
  # define S390X_SHA3_224		32
  # define S390X_SHA3_256		33
  # define S390X_SHA3_384		34
-@@ -91,7 +103,12 @@ extern struct OPENSSL_s390xcap_st OPENSS
+@@ -94,7 +106,12 @@ extern struct OPENSSL_s390xcap_st OPENSSL_s390xcap_P;
  # define S390X_AES_192		19
  # define S390X_AES_256		20
  
@@ -75,10 +54,10 @@ Index: openssl-1.1.1e/crypto/s390x_arch.h
  # define S390X_TRNG		114
  
  /* Register 0 Flags */
-Index: openssl-1.1.1e/crypto/s390xcap.c
-===================================================================
---- openssl-1.1.1e.orig/crypto/s390xcap.c	2020-03-17 15:31:17.000000000 +0100
-+++ openssl-1.1.1e/crypto/s390xcap.c	2020-03-20 17:29:58.011664305 +0100
+diff --git a/crypto/s390xcap.c b/crypto/s390xcap.c
+index 1097c70..da6af34 100644
+--- a/crypto/s390xcap.c
++++ b/crypto/s390xcap.c
 @@ -13,15 +13,51 @@
  #include <setjmp.h>
  #include <signal.h>
@@ -131,7 +110,7 @@ Index: openssl-1.1.1e/crypto/s390xcap.c
  void OPENSSL_vx_probe(void);
  
  struct OPENSSL_s390xcap_st OPENSSL_s390xcap_P;
-@@ -30,6 +66,7 @@ void OPENSSL_cpuid_setup(void)
+@@ -33,6 +69,7 @@ void OPENSSL_cpuid_setup(void)
  {
      sigset_t oset;
      struct sigaction ill_act, oact_ill, oact_fpe;
@@ -139,7 +118,7 @@ Index: openssl-1.1.1e/crypto/s390xcap.c
  
      if (OPENSSL_s390xcap_P.stfle[0])
          return;
-@@ -37,6 +74,12 @@ void OPENSSL_cpuid_setup(void)
+@@ -40,6 +77,12 @@ void OPENSSL_cpuid_setup(void)
      /* set a bit that will not be tested later */
      OPENSSL_s390xcap_P.stfle[0] |= S390X_CAPBIT(0);
  
@@ -152,7 +131,7 @@ Index: openssl-1.1.1e/crypto/s390xcap.c
      memset(&ill_act, 0, sizeof(ill_act));
      ill_act.sa_handler = ill_handler;
      sigfillset(&ill_act.sa_mask);
-@@ -51,6 +94,12 @@ void OPENSSL_cpuid_setup(void)
+@@ -54,6 +97,12 @@ void OPENSSL_cpuid_setup(void)
      if (sigsetjmp(ill_jmp, 1) == 0)
          OPENSSL_s390x_facilities();
  
@@ -165,7 +144,7 @@ Index: openssl-1.1.1e/crypto/s390xcap.c
      /* protection against disabled vector facility */
      if ((OPENSSL_s390xcap_P.stfle[2] & S390X_CAPBIT(S390X_VX))
          && (sigsetjmp(ill_jmp, 1) == 0)) {
-@@ -64,4 +113,470 @@ void OPENSSL_cpuid_setup(void)
+@@ -67,4 +116,470 @@ void OPENSSL_cpuid_setup(void)
      sigaction(SIGFPE, &oact_fpe, NULL);
      sigaction(SIGILL, &oact_ill, NULL);
      sigprocmask(SIG_SETMASK, &oset, NULL);
@@ -636,10 +615,10 @@ Index: openssl-1.1.1e/crypto/s390xcap.c
 +    free(buff);
 +    return rc;
  }
-Index: openssl-1.1.1e/crypto/s390xcpuid.pl
-===================================================================
---- openssl-1.1.1e.orig/crypto/s390xcpuid.pl	2020-03-17 15:31:17.000000000 +0100
-+++ openssl-1.1.1e/crypto/s390xcpuid.pl	2020-03-20 17:29:30.459520742 +0100
+diff --git a/crypto/s390xcpuid.pl b/crypto/s390xcpuid.pl
+index 5cbb962..3602301 100755
+--- a/crypto/s390xcpuid.pl
++++ b/crypto/s390xcpuid.pl
 @@ -38,7 +38,26 @@ OPENSSL_s390x_facilities:
  	stg	%r0,S390X_STFLE+8(%r4)	# wipe capability vectors
  	stg	%r0,S390X_STFLE+16(%r4)

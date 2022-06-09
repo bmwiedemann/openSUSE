@@ -1,25 +1,8 @@
-From e382f507fb67863be02bfa69b08533cc55f0cd96 Mon Sep 17 00:00:00 2001
-From: Patrick Steuer <patrick.steuer@de.ibm.com>
-Date: Thu, 27 Jun 2019 01:07:54 +0200
-Subject: [PATCH 08967/10000] s390x assembly pack: add support for pcc and kma
- instructions
-
-Signed-off-by: Patrick Steuer <patrick.steuer@de.ibm.com>
-
-Reviewed-by: Richard Levitte <levitte@openssl.org>
-Reviewed-by: Shane Lontis <shane.lontis@oracle.com>
-(Merged from https://github.com/openssl/openssl/pull/9258)
----
- crypto/s390x_arch.h  |  22 ++++++++
- crypto/s390xcap.c    | 119 +++++++++++++++++++++++++++++++++++++++++++
- crypto/s390xcpuid.pl |  71 ++++++++++++++++++++++++++
- 3 files changed, 212 insertions(+)
-
-Index: openssl-1.1.1d/crypto/s390x_arch.h
-===================================================================
---- openssl-1.1.1d.orig/crypto/s390x_arch.h
-+++ openssl-1.1.1d/crypto/s390x_arch.h
-@@ -26,6 +26,9 @@ void s390x_kmf(const unsigned char *in,
+diff --git a/crypto/s390x_arch.h b/crypto/s390x_arch.h
+index 34e04b4..a156c97 100644
+--- a/crypto/s390x_arch.h
++++ b/crypto/s390x_arch.h
+@@ -26,6 +26,9 @@ void s390x_kmf(const unsigned char *in, size_t len, unsigned char *out,
                 unsigned int fc, void *param);
  void s390x_kma(const unsigned char *aad, size_t alen, const unsigned char *in,
                 size_t len, unsigned char *out, unsigned int fc, void *param);
@@ -37,8 +20,8 @@ Index: openssl-1.1.1d/crypto/s390x_arch.h
 +    unsigned long long kdsa[2];
  };
  
- extern struct OPENSSL_s390xcap_st OPENSSL_s390xcap_P;
-@@ -69,6 +74,8 @@ extern struct OPENSSL_s390xcap_st OPENSS
+ #if defined(__GNUC__) && defined(__linux)
+@@ -72,6 +77,8 @@ extern struct OPENSSL_s390xcap_st OPENSSL_s390xcap_P;
  # define S390X_KMF		0x90
  # define S390X_PRNO		0xa0
  # define S390X_KMA		0xb0
@@ -47,7 +30,7 @@ Index: openssl-1.1.1d/crypto/s390x_arch.h
  
  /* Facility Bit Numbers */
  # define S390X_MSA		17	/* message-security-assist */
-@@ -80,6 +87,7 @@ extern struct OPENSSL_s390xcap_st OPENSS
+@@ -83,6 +90,7 @@ extern struct OPENSSL_s390xcap_st OPENSSL_s390xcap_P;
  # define S390X_VXD		134	/* vector packed decimal */
  # define S390X_VXE		135	/* vector enhancements 1 */
  # define S390X_MSA8		146	/* message-security-assist-ext. 8 */
@@ -55,7 +38,7 @@ Index: openssl-1.1.1d/crypto/s390x_arch.h
  
  /* Function Codes */
  
-@@ -111,10 +119,24 @@ extern struct OPENSSL_s390xcap_st OPENSS
+@@ -114,10 +122,24 @@ extern struct OPENSSL_s390xcap_st OPENSSL_s390xcap_P;
  # define S390X_SHA_512_DRNG	3
  # define S390X_TRNG		114
  
@@ -80,11 +63,11 @@ Index: openssl-1.1.1d/crypto/s390x_arch.h
 +# define S390X_KDSA_D		0x80
  
  #endif
-Index: openssl-1.1.1d/crypto/s390xcap.c
-===================================================================
---- openssl-1.1.1d.orig/crypto/s390xcap.c
-+++ openssl-1.1.1d/crypto/s390xcap.c
-@@ -137,6 +137,10 @@ void OPENSSL_cpuid_setup(void)
+diff --git a/crypto/s390xcap.c b/crypto/s390xcap.c
+index da6af34..3d762fd 100644
+--- a/crypto/s390xcap.c
++++ b/crypto/s390xcap.c
+@@ -140,6 +140,10 @@ void OPENSSL_cpuid_setup(void)
          OPENSSL_s390xcap_P.prno[1] &= cap.prno[1];
          OPENSSL_s390xcap_P.kma[0] &= cap.kma[0];
          OPENSSL_s390xcap_P.kma[1] &= cap.kma[1];
@@ -95,7 +78,7 @@ Index: openssl-1.1.1d/crypto/s390xcap.c
      }
  }
  
-@@ -163,6 +167,8 @@ static int parse_env(struct OPENSSL_s390
+@@ -166,6 +170,8 @@ static int parse_env(struct OPENSSL_s390xcap_st *cap)
          .kmf    = {0ULL, 0ULL},
          .prno   = {0ULL, 0ULL},
          .kma    = {0ULL, 0ULL},
@@ -104,7 +87,7 @@ Index: openssl-1.1.1d/crypto/s390xcap.c
      };
  
      /*-
-@@ -189,6 +195,8 @@ static int parse_env(struct OPENSSL_s390
+@@ -192,6 +198,8 @@ static int parse_env(struct OPENSSL_s390xcap_st *cap)
          .kmf    = {0ULL, 0ULL},
          .prno   = {0ULL, 0ULL},
          .kma    = {0ULL, 0ULL},
@@ -113,7 +96,7 @@ Index: openssl-1.1.1d/crypto/s390xcap.c
      };
  
      /*-
-@@ -220,6 +228,8 @@ static int parse_env(struct OPENSSL_s390
+@@ -223,6 +231,8 @@ static int parse_env(struct OPENSSL_s390xcap_st *cap)
          .kmf    = {0ULL, 0ULL},
          .prno   = {0ULL, 0ULL},
          .kma    = {0ULL, 0ULL},
@@ -122,7 +105,7 @@ Index: openssl-1.1.1d/crypto/s390xcap.c
      };
  
      /*-
-@@ -257,6 +267,8 @@ static int parse_env(struct OPENSSL_s390
+@@ -260,6 +270,8 @@ static int parse_env(struct OPENSSL_s390xcap_st *cap)
          .kmf    = {0ULL, 0ULL},
          .prno   = {0ULL, 0ULL},
          .kma    = {0ULL, 0ULL},
@@ -131,7 +114,7 @@ Index: openssl-1.1.1d/crypto/s390xcap.c
      };
  
      /*-
-@@ -313,6 +325,9 @@ static int parse_env(struct OPENSSL_s390
+@@ -316,6 +328,9 @@ static int parse_env(struct OPENSSL_s390xcap_st *cap)
                     0ULL},
          .prno   = {0ULL, 0ULL},
          .kma    = {0ULL, 0ULL},
@@ -141,7 +124,7 @@ Index: openssl-1.1.1d/crypto/s390xcap.c
      };
  
      /*-
-@@ -369,6 +384,9 @@ static int parse_env(struct OPENSSL_s390
+@@ -372,6 +387,9 @@ static int parse_env(struct OPENSSL_s390xcap_st *cap)
                     0ULL},
          .prno   = {0ULL, 0ULL},
          .kma    = {0ULL, 0ULL},
@@ -151,7 +134,7 @@ Index: openssl-1.1.1d/crypto/s390xcap.c
      };
  
      /*-
-@@ -429,6 +447,9 @@ static int parse_env(struct OPENSSL_s390
+@@ -432,6 +450,9 @@ static int parse_env(struct OPENSSL_s390xcap_st *cap)
                     | S390X_CAPBIT(S390X_SHA_512_DRNG),
                     0ULL},
          .kma    = {0ULL, 0ULL},
@@ -161,7 +144,7 @@ Index: openssl-1.1.1d/crypto/s390xcap.c
      };
  
      /*-
-@@ -508,6 +529,101 @@ static int parse_env(struct OPENSSL_s390
+@@ -511,6 +532,101 @@ static int parse_env(struct OPENSSL_s390xcap_st *cap)
                       | S390X_CAPBIT(S390X_AES_192)
                       | S390X_CAPBIT(S390X_AES_256),
                     0ULL},
@@ -263,7 +246,7 @@ Index: openssl-1.1.1d/crypto/s390xcap.c
      };
  
      char *tok_begin, *tok_end, *buff, tok[S390X_STFLE_MAX][LEN + 1];
-@@ -551,6 +667,8 @@ static int parse_env(struct OPENSSL_s390
+@@ -554,6 +670,8 @@ static int parse_env(struct OPENSSL_s390xcap_st *cap)
          else if TOK_FUNC(kmf)
          else if TOK_FUNC(prno)
          else if TOK_FUNC(kma)
@@ -272,7 +255,7 @@ Index: openssl-1.1.1d/crypto/s390xcap.c
  
          /* CPU model tokens */
          else if TOK_CPU(z900)
-@@ -561,6 +679,7 @@ static int parse_env(struct OPENSSL_s390
+@@ -564,6 +682,7 @@ static int parse_env(struct OPENSSL_s390xcap_st *cap)
          else if TOK_CPU(zEC12)
          else if TOK_CPU(z13)
          else if TOK_CPU(z14)
@@ -280,10 +263,10 @@ Index: openssl-1.1.1d/crypto/s390xcap.c
  
          /* whitespace(ignored) or invalid tokens */
          else {
-Index: openssl-1.1.1d/crypto/s390xcpuid.pl
-===================================================================
---- openssl-1.1.1d.orig/crypto/s390xcpuid.pl
-+++ openssl-1.1.1d/crypto/s390xcpuid.pl
+diff --git a/crypto/s390xcpuid.pl b/crypto/s390xcpuid.pl
+index 3602301..344f4f6 100755
+--- a/crypto/s390xcpuid.pl
++++ b/crypto/s390xcpuid.pl
 @@ -77,8 +77,13 @@ OPENSSL_s390x_functions:
  	stg	%r0,S390X_PRNO+8(%r4)
  	stg	%r0,S390X_KMA(%r4)

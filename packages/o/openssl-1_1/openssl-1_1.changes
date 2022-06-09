@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun  2 20:54:04 UTC 2022 - Jason Sikes <jsikes@suse.com>
+
+- Update to 1.1.1o: [CVE-2022-1292, bsc#1199166]
+  * Fixed a bug in the c_rehash script which was not properly sanitising
+    shell metacharacters to prevent command injection.
+  * Rebased openssl-s390x-assembly-pack-add-OPENSSL_s390xcap-environment.patch
+  * Rebased openssl-s390x-assembly-pack-add-support-for-pcc-and-kma-inst.patch
+
+- Added openssl-update_expired_certificates.patch
+  * Openssl failed tests because of expired certificates.
+  * bsc#1185637
+  * Sourced from https://github.com/openssl/openssl/pull/18446/commits
+
+-------------------------------------------------------------------
 Tue Mar 15 17:41:47 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.1.1n: [bsc#1196877, CVE-2022-0778]

@@ -41,7 +41,7 @@
 %define _rname  openssl
 Name:           openssl-1_1
 # Don't forget to update the version in the "openssl" package!
-Version:        1.1.1n
+Version:        1.1.1o
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 License:        OpenSSL
@@ -120,6 +120,7 @@ Patch71:        openssl-1_1-Optimize-AES-XTS-aarch64.patch
 Patch72:        openssl-1_1-Optimize-AES-GCM-uarchs.patch
 #PATCH-FIX-SUSE bsc#1182959 FIPS: Fix function and reason error codes
 Patch73:        openssl-1_1-FIPS-fix-error-reason-codes.patch
+Patch74:        openssl-update_expired_certificates.patch
 Requires:       libopenssl1_1 = %{version}-%{release}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
