@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun  1 09:00:30 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.3.1:
+  + Fixed blank nodes to return the correct identifier in certain
+    queries.
+  + Fixes to FTS consistency after updates.
+  + Fixes to HTTP module linking.
+  + Fix handling of STRING_LITERAL_LONG1/2 terminals.
+  + Fix handling of negated property paths.
+  + Use .so suffix for modules on all platforms.
+  + Added code examples in JS/Python.
+  + Developer documentation improvements.
+
+-------------------------------------------------------------------
 Sun Mar 20 07:54:49 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.3.0:
