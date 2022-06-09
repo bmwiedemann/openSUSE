@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jun  9 10:17:20 UTC 2022 - pgajdos@suse.com
+
+- version update to 2.4.0
+  Features
+    * add AbortIncompleteMultipartUpload lifecycle rule (#765) (b2e5150)
+    * support OLM Prefix/Suffix (#773) (187cf50)
+  Bug Fixes
+    * fix rewrite object in CMEK enabled bucket (#807) (9b3cbf3)
+  Documentation
+    * fix changelog header to consistent size (#802) (4dd0907)
+    * samples: Update the Recovery Point Objective (RPO) sample output (#725) (b0bf411)
+    * Update generation_metageneration.rst with a missing space (#798) (1e7cdb6)
+    * update retry docs (#808) (c365d5b)
+- test in _multibuild
+- modified patches
+  % demock.patch (rebased)
+- deleted patches
+  - no-relative-imports.patch (upstreamed)
+- added sources
+  + _multibuild
+
+-------------------------------------------------------------------
+Sat Apr 23 09:49:04 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Limit %files list a bit tighter.
+
+-------------------------------------------------------------------
 Fri Apr 15 08:55:20 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 2.3.0:

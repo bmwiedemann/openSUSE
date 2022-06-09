@@ -1,5 +1,5 @@
 #
-# spec file for package python-google-cloud-storage
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -18,28 +18,28 @@
 
 %define skip_python2 1
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define test 1
+%define pkg_suffix -test
+%bcond_without test
+%else
+%define pkg_suffix %{nil}
+%bcond_with test
+%endif
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-google-cloud-storage
-Version:        2.3.0
+Name:           python-google-cloud-storage%{pkg_suffix}
+Version:        2.4.0
 Release:        0
 Summary:        Google Cloud Storage API python client library
 License:        Apache-2.0
 URL:            https://github.com/googleapis/python-storage
 Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-storage/google-cloud-storage-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM no-relative-imports.patch gh#googleapis/python-storage#772 mcepl@suse.com
-# fix relative imports
-Patch0:         no-relative-imports.patch
 # PATCH-FIX-UPSTREAM demock.patch gh#googleapis/python-storage#770 mcepl@suse.com
 # Don’t use external mock package
 Patch1:         demock.patch
-BuildRequires:  %{python_module google-api-core >= 1.31.5}
-BuildRequires:  %{python_module google-auth >= 1.25.0}
-BuildRequires:  %{python_module google-cloud-core >= 2.3.0}
-BuildRequires:  %{python_module google-resumable-media >= 2.3.2}
-BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests >= 2.18.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -51,6 +51,19 @@ Requires:       python-google-resumable-media >= 2.3.2
 Requires:       python-googleapis-common-protos
 Requires:       python-requests >= 2.18.0
 BuildArch:      noarch
+# SECTION test requirements
+%if %{with test}
+BuildRequires:  %{python_module google-api-core >= 1.31.5}
+BuildRequires:  %{python_module google-auth >= 1.25.0}
+BuildRequires:  %{python_module google-cloud-core >= 2.3.0}
+BuildRequires:  %{python_module google-cloud-storage}
+BuildRequires:  %{python_module google-resumable-media >= 2.3.2}
+BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests >= 2.18.0}
+%endif
+# /SECTION
 %python_subpackages
 
 %description
@@ -62,20 +75,32 @@ to users via direct download. This package provides client to it.
 %prep
 %autosetup -p1 -n google-cloud-storage-%{version}
 
+%if !%{with test}
 %build
 %pyproject_wheel
+%endif
 
+%if !%{with test}
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
-export PYTEST_ADDOPTS="--import-mode=importlib"
+#export PYTEST_ADDOPTS="--import-mode=importlib"
 %pytest -k 'not network' tests/unit
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%dir %{python_sitelib}/google
+%dir %{python_sitelib}/google/cloud
+%{python_sitelib}/google/cloud/storage
+%{python_sitelib}/google_cloud_storage-%{version}*-info
+%{python_sitelib}/google_cloud_storage-%{version}*-nspkg.pth
+%endif
 
 %changelog
