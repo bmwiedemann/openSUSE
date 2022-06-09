@@ -22,14 +22,14 @@
 %define _name gtk
 
 Name:           gtk4
-Version:        4.6.5
+Version:        4.7.0
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/X11
 URL:            https://www.gtk.org/
 
-Source:         https://download.gnome.org/sources/gtk/4.6/%{_name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gtk/4.7/%{_name}-%{version}.tar.xz
 Source2:        settings.ini
 Source3:        macros.gtk4
 Source99:       gtk4-rpmlintrc
@@ -338,16 +338,21 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %{_bindir}/gtk4-demo-application
 %{_bindir}/gtk4-encode-symbolic-svg
 %{_bindir}/gtk4-icon-browser
+%{_bindir}/gtk4-node-editor
 %{_bindir}/gtk4-print-editor
 %{_bindir}/gtk4-widget-factory
 %{_datadir}/applications/org.gtk.Demo4.desktop
 %{_datadir}/applications/org.gtk.IconBrowser4.desktop
+%{_datadir}/applications/org.gtk.gtk4.NodeEditor.desktop
 %{_datadir}/applications/org.gtk.PrintEditor4.desktop
 %{_datadir}/applications/org.gtk.WidgetFactory4.desktop
 %dir %{_datadir}/gtk-4.0
 %{_datadir}/gtk-4.0/gtk4builder.rng
 %{_datadir}/icons/hicolor/scalable/apps/org.gtk.Demo4.svg
 %{_datadir}/icons/hicolor/scalable/apps/org.gtk.IconBrowser4.svg
+%{_datadir}/icons/hicolor/scalable/apps/org.gtk.gtk4.NodeEditor.Devel.svg
+%{_datadir}/icons/hicolor/scalable/apps/org.gtk.gtk4.NodeEditor.svg
+%{_datadir}/icons/hicolor/symbolic/apps/org.gtk.gtk4.NodeEditor-symbolic.svg
 %{_datadir}/icons/hicolor/scalable/apps/org.gtk.PrintEditor4.Devel.svg
 %{_datadir}/icons/hicolor/scalable/apps/org.gtk.PrintEditor4.svg
 %{_datadir}/icons/hicolor/scalable/apps/org.gtk.WidgetFactory4.svg
@@ -357,6 +362,7 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %{_datadir}/icons/hicolor/symbolic/apps/org.gtk.WidgetFactory4-symbolic.svg
 %{_datadir}/metainfo/org.gtk.Demo4.appdata.xml
 %{_datadir}/metainfo/org.gtk.IconBrowser4.appdata.xml
+%{_datadir}/metainfo/org.gtk.gtk4.NodeEditor.appdata.xml
 %{_datadir}/metainfo/org.gtk.PrintEditor4.appdata.xml
 %{_datadir}/metainfo/org.gtk.WidgetFactory4.appdata.xml
 %{_mandir}/man1/gtk4-builder-tool.1%{?ext_man}
@@ -364,6 +370,7 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %{_mandir}/man1/gtk4-demo-application.1%{?ext_man}
 %{_mandir}/man1/gtk4-encode-symbolic-svg.1%{?ext_man}
 %{_mandir}/man1/gtk4-icon-browser.1%{?ext_man}
+%{_mandir}/man1/gtk4-node-editor.1%{?ext_man}
 %{_mandir}/man1/gtk4-widget-factory.1%{?ext_man}
 
 %files schema
