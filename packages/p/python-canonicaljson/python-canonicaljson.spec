@@ -44,11 +44,13 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module frozendict >= 2.1.3}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module simplejson >= 3.14.0}
+BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-frozendict >= 1.0
 Requires:       python-simplejson >= 3.14.0
 Requires:       python-six
+Requires:       python-typing_extensions
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module %{short_name}}
