@@ -53,7 +53,6 @@ unsorted:
   - FlightGear-docs 
   - Fragments 
   - Fragments-lang 
-  - FreeCAD: [x86_64] 
   - FreeFileSync 
   - GraphicsMagick 
   - GraphicsMagick-devel 
@@ -343,15 +342,6 @@ unsorted:
   - adios-gnu-mvapich2-hpc 
   - adios-gnu-mvapich2-hpc-devel 
   - adios-gnu-mvapich2-hpc-devel-static 
-  - adios-gnu-openmpi1-hpc 
-  - adios-gnu-openmpi1-hpc-devel 
-  - adios-gnu-openmpi1-hpc-devel-static 
-  - adios-gnu-openmpi2-hpc 
-  - adios-gnu-openmpi2-hpc-devel 
-  - adios-gnu-openmpi2-hpc-devel-static 
-  - adios-gnu-openmpi3-hpc 
-  - adios-gnu-openmpi3-hpc-devel 
-  - adios-gnu-openmpi3-hpc-devel-static 
   - adios-gnu-openmpi4-hpc 
   - adios-gnu-openmpi4-hpc-devel 
   - adios-gnu-openmpi4-hpc-devel-static 
@@ -373,15 +363,6 @@ unsorted:
   - adios_1_13_1-gnu-mvapich2-hpc 
   - adios_1_13_1-gnu-mvapich2-hpc-devel 
   - adios_1_13_1-gnu-mvapich2-hpc-devel-static 
-  - adios_1_13_1-gnu-openmpi1-hpc 
-  - adios_1_13_1-gnu-openmpi1-hpc-devel 
-  - adios_1_13_1-gnu-openmpi1-hpc-devel-static 
-  - adios_1_13_1-gnu-openmpi2-hpc 
-  - adios_1_13_1-gnu-openmpi2-hpc-devel 
-  - adios_1_13_1-gnu-openmpi2-hpc-devel-static 
-  - adios_1_13_1-gnu-openmpi3-hpc 
-  - adios_1_13_1-gnu-openmpi3-hpc-devel 
-  - adios_1_13_1-gnu-openmpi3-hpc-devel-static 
   - adios_1_13_1-gnu-openmpi4-hpc 
   - adios_1_13_1-gnu-openmpi4-hpc-devel 
   - adios_1_13_1-gnu-openmpi4-hpc-devel-static 
@@ -498,7 +479,6 @@ unsorted:
   - alttab 
   - alure 
   - alure-devel 
-  - amanda 
   - amarok-lang 
   - amazon-ecs-init: [x86_64] 
   - amazon-ssm-agent: [x86_64] 
@@ -514,9 +494,6 @@ unsorted:
   - amtterm-gtk 
   - amtu 
   - analitza-devel 
-  - android-tools 
-  - android-tools-bash-completion 
-  - android-tools-python3 
   - android-udev-rules 
   - angelscript-devel 
   - anjuta 
@@ -3001,6 +2978,7 @@ unsorted:
   - distribution-logos-openSUSE 
   - distribution-logos-openSUSE-Kubic 
   - distribution-logos-openSUSE-MicroOS: [i586] 
+  - distribution-registry 
   - distrobox 
   - dita 
   - diy-devel: [x86_64] 
@@ -3056,7 +3034,6 @@ unsorted:
   - docker-buildx 
   - docker-client-java 
   - docker-client-java-javadoc 
-  - docker-distribution-registry: [x86_64] 
   - docker-fish-completion 
   - docker-kubic: [x86_64] 
   - docker-kubic-bash-completion: [x86_64] 
@@ -6480,8 +6457,6 @@ unsorted:
   - gstreamer-plugins-good-jack-32bit: [x86_64] 
   - gstreamer-plugins-libav-32bit: [x86_64] 
   - gstreamer-plugins-libcamera 
-  - gstreamer-plugins-rs 
-  - gstreamer-plugins-rs-devel 
   - gstreamer-plugins-ugly-32bit: [x86_64] 
   - gstreamer-plugins-vaapi 
   - gstreamer-rtsp-server-devel 
@@ -16262,7 +16237,6 @@ unsorted:
   - metslib-doc 
   - mfgtools 
   - mfoc 
-  - mfsm 
   - mftrace 
   - mg 
   - mgdiff 
@@ -25146,6 +25120,7 @@ unsorted:
   - python310-zc.customdoctests 
   - python310-zc.lockfile 
   - python310-zdaemon 
+  - python310-zeep 
   - python310-zeroconf 
   - python310-zhon 
   - python310-zict 
@@ -32875,7 +32850,6 @@ unsorted:
   - skaffold 
   - skanpage 
   - skanpage-lang 
-  - skelcd-control-Kubic 
   - skelcd-control-MicroOS 
   - skelcd-control-openSUSE 
   - skelcd-control-openSUSE-promo 
@@ -42996,7 +42970,6 @@ unsorted:
   - vendored_licenses_packager 
   - verilator 
   - verilator-devel 
-  - verilator-doc-pdf 
   - verilator-examples 
   - veusz: [x86_64] 
   - veyon 
