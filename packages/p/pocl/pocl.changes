@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun  4 14:33:49 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Use LLVM 13 on Tumbleweed, since LLVM 14 does not yet work
+  according to upstream. (gh#pocl/pocl#1047, gh#pocl/pocl#1048)
+- Require at least version 6 of clang-devel, older versions are
+  not supported. (Otherwise configuration will fail.)
+- Strip prefix from CMAKE_INSTALL_LIBDIR on older distributions
+  to fix paths there.
+
+-------------------------------------------------------------------
 Sat Oct 30 11:37:16 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.8

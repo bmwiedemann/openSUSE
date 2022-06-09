@@ -1,7 +1,7 @@
 #
 # spec file for package pocl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014 Guillaume GARDET <guillaume@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,7 +31,11 @@ URL:            http://portablecl.org/
 Source0:        https://github.com/pocl/pocl/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       pocl-rpmlintrc
 Patch0:         link_against_libclang-cpp_so.patch
-BuildRequires:  clang-devel
+%if 0%{?suse_version} > 1500
+BuildRequires:  clang13-devel
+%else
+BuildRequires:  clang-devel >= 6.0.0
+%endif
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
@@ -88,6 +92,11 @@ This subpackage provides the development files needed for pocl.
 %setup -q
 %patch0 -p1
 
+%if 0%{?suse_version} > 1500
+# Make sure we use the right LLVM version.
+sed -i 's/find_program_or_die( *\([^ ]*\) *"\([^"]*\)" *"\([^"]*\)" *)/find_program_or_die(\1 "\2-%{pkg_version clang13-devel}" "\3")/g' cmake/LLVM.cmake
+%endif
+
 %build
 %define __builder ninja
 %cmake \
@@ -103,6 +112,9 @@ This subpackage provides the development files needed for pocl.
 %ifarch aarch64
   -DLLC_HOST_CPU=cortex-a53 \
 %endif
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300
+  -DCMAKE_INSTALL_LIBDIR:PATH=%{_lib} \
+%endif
   -DWITH_LLVM_CONFIG=%{_bindir}/llvm-config
 
 sed -i 's/-Wl,--no-undefined//g' CMakeCache.txt
@@ -112,8 +124,6 @@ sed -i 's/-Wl,--no-undefined//g' build.ninja
 
 %install
 %cmake_install
-# TODO: check packaging instructions
-sed -i 's|%{_prefix}%{_prefix}/|%{_prefix}/|g' %{buildroot}%{_datadir}/OpenCL/vendors/pocl.icd
 # Unbundle vecmath
 #rm -vf %%{buildroot}/%%{_libdir}/pocl/vecmath/
 #ln -vs %%{_includedir}/vecmath %%{buildroot}/%%{_libdir}/pocl/vecmath
