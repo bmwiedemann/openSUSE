@@ -108,4 +108,12 @@
     <comment></comment>
     <requestid>963978</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>53a788b871b9f520b21f3103e44eb668</srcmd5>
+    <version>0.3.0</version>
+    <time>1654776579</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME:Factory</comment>
+    <requestid>981308</requestid>
+  </revision>
 </revisionlist>

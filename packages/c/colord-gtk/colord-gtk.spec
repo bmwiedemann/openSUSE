@@ -17,15 +17,16 @@
 
 
 Name:           colord-gtk
-Version:        0.2.0+8
+Version:        0.3.0
 Release:        0
 Summary:        System Daemon for Managing Color Devices -- GTK Integration
 License:        LGPL-2.1-or-later
 Group:          System/Daemons
 URL:            https://www.freedesktop.org/software/colord
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://www.freedesktop.org/software/colord/releases/colord-gtk-%{version}.tar.xz
+Source1:        https://www.freedesktop.org/software/colord/releases/colord-gtk-%{version}.tar.xz.asc
+Source2:        %{name}.keyring
 Source99:       baselibs.conf
-
 BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  gtk-doc
 BuildRequires:  meson
