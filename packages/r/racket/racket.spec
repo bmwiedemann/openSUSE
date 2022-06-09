@@ -28,6 +28,7 @@ Source0:        http://download.racket-lang.org/installers/%{version}/%{name}-%{
 Source2:        racket-completion.bash
 Source3:        racket-rpmlintrc
 Patch0:         racket-doc.patch
+Patch1:         racket-amsmath-mathabx.patch
 BuildRequires:  ImageMagick
 BuildRequires:  ca-certificates
 BuildRequires:  chrpath
@@ -122,6 +123,7 @@ compile and link programs which use Racket.
 %prep
 %setup -q
 %patch0 -p0
+%patch1 -p0
 
 cp -p %{SOURCE2} src/
 

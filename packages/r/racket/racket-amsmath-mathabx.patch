@@ -1,0 +1,16 @@
+---
+ share/pkgs/scribble-lib/scribble/scribble-load.tex |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- share/pkgs/scribble-lib/scribble/scribble-load.tex
++++ share/pkgs/scribble-lib/scribble/scribble-load.tex	2022-06-09 06:57:39.433303456 +0000
+@@ -8,7 +8,8 @@
+ % would load amsmath *after* mathabx and wasysym,
+ % causing command redefinition issues.
+ \newcommand{\packageAmsmath}{\usepackage{amsmath}}
+-\newcommand{\packageMathabx}{\usepackage{mathabx}}
++% Both 'mathabx' and 'amsmath' define a '\frac' command (among others).
++\newcommand{\packageMathabx}{\ifx\frac\undefined \usepackage{mathabx} \else \relax \fi}
+ % Avoid conflicts between "mathabx" and "wasysym",
+ % and between "wasysym" integrals and "amsmath" integrals (iint).
+ \newcommand{\packageWasysym}{

@@ -143,4 +143,14 @@
     <comment></comment>
     <requestid>976686</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>e1786f5f2184e4d2fbf8fd32dfd89ef3</srcmd5>
+    <version>8.5</version>
+    <time>1654776722</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch racket-amsmath-mathabx.patch
+  * Avoid conflict between modern amsmath and mathabx LaTeX styles to
+    get e.g. scsh build again (forwarded request 981449 from WernerFink)</comment>
+    <requestid>981461</requestid>
+  </revision>
 </revisionlist>

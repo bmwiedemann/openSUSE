@@ -1,3 +1,10 @@
+-------------------------------------------------------------------
+Thu Jun  9 07:01:25 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch racket-amsmath-mathabx.patch
+  * Avoid conflict between modern amsmath and mathabx LaTeX styles to
+    get e.g. scsh build again
+
 -------------------------------------------------------------------------
 Sun May 8 18:26:11 UTC 2022 - Fred Fu <moonsolo@gmail.com>
 - Update to 8.5:
