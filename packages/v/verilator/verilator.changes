@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  7 22:22:15 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 4.222. For a list of changes, see included Changes or
+  https://github.com/verilator/verilator/blob/v4.222/Changes
+- See https://verilator.org/guide/latest/ for documentation
+- Remove obsolete verilator-rpmlintrc
+
+-------------------------------------------------------------------
 Tue Jun  1 11:33:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 4.202. Changes since 4.200:

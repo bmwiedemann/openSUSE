@@ -1,7 +1,7 @@
 #
 # spec file for package verilator
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           verilator
-Version:        4.202
+Version:        4.222
 Release:        0
 Summary:        Compiling Verilog HDL simulator
 License:        Artistic-2.0 OR LGPL-3.0-only
 Group:          Productivity/Scientific/Electronics
 URL:            https://www.veripool.org/projects/verilator/wiki/Intro
-Source0:        https://www.veripool.org/ftp/%{name}-%{version}.tgz
-Source1:        verilator-rpmlintrc
+Source0:        https://github.com/verilator/verilator/archive/refs/tags/v%{version}.tar.gz#/verilator-%{version}.tar.gz
+BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -48,17 +48,6 @@ BuildArch:      noarch
 Development files for Verilator, a compiling Verilog HDL simulator.
 It includes header files and a pkgconfig file.
 
-%package        doc-pdf
-Summary:        Documentation for verilator in PDF format
-Group:          Documentation/Other
-Requires:       %{name} = %{version}
-BuildArch:      noarch
-
-%description    doc-pdf
-Verilator is a compiling Verilog HDL simulator.
-
-This package contains documentation for verilator in PDF format.
-
 %package        examples
 Summary:        Examples for verilator
 Group:          Documentation/Other
@@ -74,19 +63,18 @@ This package contains examples of using verilator.
 %setup -q
 # Use real path in she-bangs
 sed -i -e '1 s@bin/env perl@bin/perl@' bin/*
+sed -i -e '1 s@bin/env python3@bin/python3@' bin/*
 
 %build
+autoconf
 %configure
 %make_build
 
 %install
 %make_install
 
-# install documentation
-install -d %{buildroot}%{_docdir}/%{name}/
-install -Dm644 *.pdf %{buildroot}%{_docdir}/%{name}/
-
 # install examples
+install -d %{buildroot}%{_docdir}/%{name}/
 mv %{buildroot}%{_datadir}/verilator/examples %{buildroot}%{_docdir}/%{name}/examples
 
 # fix install of devel files
@@ -94,12 +82,14 @@ mkdir -p %{buildroot}%{_includedir}/
 mv %{buildroot}%{_datadir}/verilator/include/ %{buildroot}%{_includedir}/verilator
 
 %check
+mkdir -p "~/.config/gdb/"
+echo "set auto-load safe-path /" > "~/.config/gdb/gdbinit"
+export DEBUGINFOD_URLS=""
 make test
 
 %files
 %license Artistic LICENSE
 %doc Changes README.rst
-%exclude %{_docdir}/%{name}/*.pdf
 %exclude %{_docdir}/%{name}/examples/
 %{_bindir}/verilator
 %{_bindir}/verilator_bin
@@ -111,15 +101,10 @@ make test
 %{_datadir}/verilator
 %{_mandir}/man1/verilator.1%{?ext_man}
 %{_mandir}/man1/verilator_coverage.1%{?ext_man}
-%{_mandir}/man1/verilator_gantt.1%{?ext_man}
-%{_mandir}/man1/verilator_profcfunc.1%{?ext_man}
 
 %files devel
 %{_datadir}/pkgconfig/verilator.pc
 %{_includedir}/verilator
-
-%files doc-pdf
-%{_docdir}/%{name}/*.pdf
 
 %files examples
 %doc %{_docdir}/%{name}/examples/
