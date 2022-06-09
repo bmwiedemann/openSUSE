@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun  9 05:22:57 UTC 2022 - pgajdos@suse.com
+
+- run just unit tests
+
+-------------------------------------------------------------------
+Wed Jun  8 12:43:21 UTC 2022 - pgajdos@suse.com
+
+- version update to 2.11.2
+  * lot of changes, see
+    https://github.com/googleapis/python-kms/blob/main/CHANGELOG.md
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Mon Apr 20 11:49:12 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
