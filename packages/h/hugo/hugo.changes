@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 08 14:42:55 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.100.2:
+  * Update CONTRIBUTING.md
+  * Fix raw TOML dates in where/eq
+  * deps: Update to github.com/pelletier/go-toml/v2 v2.0.1
+  * tpl/path: Add path.BaseName function
+  * livereload: Use `X-Forwarded-Host` for Codespace
+  * helpers: Fix panic with invalid defaultMarkdownHandler
+  * resources: Register MediaTypes before build
+
+-------------------------------------------------------------------
 Wed Jun 01 17:18:08 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 0.100.1:

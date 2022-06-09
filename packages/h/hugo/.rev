@@ -225,4 +225,19 @@
   * Fix panic with markdownify/RenderString with shortcode on Page with no content file (forwarded request 980415 from jfkw)</comment>
     <requestid>980416</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>268461929eec059efb81a805f3e7f355</srcmd5>
+    <version>0.100.2</version>
+    <time>1654776636</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.100.2:
+  * Update CONTRIBUTING.md
+  * Fix raw TOML dates in where/eq
+  * deps: Update to github.com/pelletier/go-toml/v2 v2.0.1
+  * tpl/path: Add path.BaseName function
+  * livereload: Use `X-Forwarded-Host` for Codespace
+  * helpers: Fix panic with invalid defaultMarkdownHandler
+  * resources: Register MediaTypes before build (forwarded request 981343 from jfkw)</comment>
+    <requestid>981347</requestid>
+  </revision>
 </revisionlist>
