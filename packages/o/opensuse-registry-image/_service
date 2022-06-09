@@ -4,7 +4,7 @@
         <param name="file">opensuse-registry-image.kiwi</param>
         <param name="regex">%PKG_VERSION%</param>
         <param name="parse-version">patch</param>
-        <param name="package">docker-distribution-registry</param>
+        <param name="package">distribution-registry</param>
     </service>
     <service mode="buildtime" name="kiwi_label_helper"/>
 </services>

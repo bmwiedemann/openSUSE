@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  9 15:52:27 UTC 2022 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Follow rename of docker-distribution-registry to
+  distribution-registry (following upstream namings).
+
+-------------------------------------------------------------------
 Wed Jan 19 23:25:09 UTC 2022 - Noah Kalish <noah@spacemule.net>
 
 - Fixed volume location to match the directory used by registry

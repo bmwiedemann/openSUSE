@@ -49,7 +49,7 @@
   </repository>
   <packages type="bootstrap">
     <package name="ca-certificates"/>
-    <package name="docker-distribution-registry"/>
+    <package name="distribution-registry"/>
     <package name="apache2-utils"/>
   </packages>
 </image>
