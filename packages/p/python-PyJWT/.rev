@@ -230,4 +230,12 @@
   * Add support for Ed448/EdDSA. (#675) (forwarded request 928968 from glaubitz)</comment>
     <requestid>929638</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>08bd16bdec04e4e66a1bbb0d34757741</srcmd5>
+    <version>2.4.0</version>
+    <time>1654776556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981206</requestid>
+  </revision>
 </revisionlist>
