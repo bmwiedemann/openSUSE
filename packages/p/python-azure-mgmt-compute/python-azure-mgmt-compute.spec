@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-compute
-Version:        27.0.0
+Version:        27.1.0
 Release:        0
 Summary:        Microsoft Azure Compute Management Client Library
 License:        MIT

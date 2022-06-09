@@ -258,4 +258,15 @@
     CHANGELOG.md file provided with this package (forwarded request 977907 from glaubitz)</comment>
     <requestid>977970</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0a309de4685d68e380058eda9185a4cd</srcmd5>
+    <version>27.1.0</version>
+    <time>1654782105</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 27.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 981513 from glaubitz)</comment>
+    <requestid>981517</requestid>
+  </revision>
 </revisionlist>
