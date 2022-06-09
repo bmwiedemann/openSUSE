@@ -1332,4 +1332,12 @@
   upstream. (forwarded request 973710 from dimstar)</comment>
     <requestid>973713</requestid>
   </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>efe67ff06a5ad68c088692d97c2a8aca</srcmd5>
+    <version>42.2</version>
+    <time>1654776578</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 42.2 (forwarded request 980618 from dimstar)</comment>
+    <requestid>981305</requestid>
+  </revision>
 </revisionlist>
