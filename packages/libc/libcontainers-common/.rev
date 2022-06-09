@@ -387,4 +387,15 @@
     <comment></comment>
     <requestid>951590</requestid>
   </revision>
+  <revision rev="46" vrev="9">
+    <srcmd5>a8562b43821f13383c14652a0275ae2e</srcmd5>
+    <version>20210626</version>
+    <time>1654776580</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing comma to previous change 
+
+- Add registry.suse.com as agreed on oSC22
+  Let's advertise usage of BCI images in general</comment>
+    <requestid>981317</requestid>
+  </revision>
 </revisionlist>

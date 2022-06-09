@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun  8 12:39:46 UTC 2022 - Richard Brown <rbrown@suse.com>
+
+- Add missing comma to previous change 
+
+-------------------------------------------------------------------
+Mon Jun  6 12:56:19 UTC 2022 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Add registry.suse.com as agreed on oSC22
+  Let's advertise usage of BCI images in general
+
+-------------------------------------------------------------------
 Thu Feb  3 19:43:19 UTC 2022 - Bruno Leon <bruno.leon@suse.com>
 
 - Update storage to 1.38.2
