@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun  1 09:01:24 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.3.1:
+  + Properly fallback to inotify monitors on fanotify failures.
+  + Fixes to handling of files being atomically replaced.
+  + Fixes to handling of IPTC data embedded in TIFFs.
+  + Improvements to "tracker3 status" output and redirection
+    handling.
+
+-------------------------------------------------------------------
 Fri Apr  1 08:10:28 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Pass -Dsystemd_user_services_dir=%{_userunitdir} to meson: we
