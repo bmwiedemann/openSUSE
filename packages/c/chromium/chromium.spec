@@ -22,8 +22,10 @@
 %define __provides_exclude ^lib.*\\.so.*$
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 %bcond_without system_icu
+%bcond_without gtk4
 %else
 %bcond_with system_icu
+%bcond_with gtk4
 %endif
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
 %bcond_without pipewire
@@ -153,8 +155,6 @@ BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(flac++)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(imlib2)
 BuildRequires:  pkgconfig(jack)
@@ -257,6 +257,12 @@ BuildRequires:  pkgconfig(freetype2)
 %endif
 %if %{with system_zlib}
 BuildRequires:  pkgconfig(zlib)
+%endif
+%if %{with gtk4}
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(atk-bridge-2.0)
+%else
+BuildRequires:  pkgconfig(gtk+-3.0)
 %endif
 %if %{with clang}
 %if %{?suse_version} < 1550
@@ -745,6 +751,9 @@ myconf_gn+=" media_use_openh264=false"
 myconf_gn+=" rtc_use_h264=false"
 myconf_gn+=" use_v8_context_snapshot=true"
 myconf_gn+=" v8_use_external_startup_data=true"
+%if %{with gtk4}
+myconf_gn+=" gtk_version=4"
+%endif
 # See dependency logic in third_party/BUILD.gn
 %if %{with system_harfbuzz}
 myconf_gn+=" use_system_harfbuzz=true"

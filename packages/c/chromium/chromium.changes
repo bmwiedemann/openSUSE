@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  8 13:40:43 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Switch to GTK4 on TW and Leap 15.4+ (boo#1200139)
+
+-------------------------------------------------------------------
 Wed Jun  1 09:43:54 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Disable ARM control flow integrity, it causes build issues

@@ -4123,4 +4123,12 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
     <comment>disable arm cfi</comment>
     <requestid>980324</requestid>
   </revision>
+  <revision rev="339" vrev="3">
+    <srcmd5>aa501598e2f954014ccddfbfac63f34a</srcmd5>
+    <version>102.0.5005.61</version>
+    <time>1654776591</time>
+    <user>dimstar_suse</user>
+    <comment>GTK4</comment>
+    <requestid>981322</requestid>
+  </revision>
 </revisionlist>
