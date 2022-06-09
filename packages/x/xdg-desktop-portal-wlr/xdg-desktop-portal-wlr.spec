@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-desktop-portal-wlr
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xdg-desktop-portal-wlr
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        An xdg-desktop-portal backend for wlroots
 License:        MIT
@@ -28,14 +28,16 @@ Source1:        %{url}/releases/download/v%{version}/xdg-desktop-portal-wlr-%{ve
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc >= 1.9.7
+BuildRequires:  pkgconfig(gbm) >= 21.3
 BuildRequires:  pkgconfig(inih)
-BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.2
+BuildRequires:  pkgconfig(libdrm) >= 2.4.109
+BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.41
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(wayland-client)
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.14
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
 # Screencasting won't work without pipewire, but it's not a hard dependency.
-Recommends:     pipewire >= 0.3.2
+Recommends:     pipewire >= 0.3.41
 Requires:       xdg-desktop-portal
 
 %description

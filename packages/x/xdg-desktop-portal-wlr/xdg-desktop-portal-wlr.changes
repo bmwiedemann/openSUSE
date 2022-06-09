@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun  9 11:00:02 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
+
+- Set explicit version bound on libdrm and gbm deps so that build failure
+  is obvious on Leap 15.4, etc that have older versions.
+
+-------------------------------------------------------------------
+Thu Jun  9 10:45:54 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 0.6.0:
+  * Support for 10-bit color formats.
+  * Better performance through supporting DMA-BUFs and PipeWire's swapchain.
+
+-------------------------------------------------------------------
 Fri Nov  5 17:08:46 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 0.5.0
