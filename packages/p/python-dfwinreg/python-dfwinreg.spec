@@ -38,8 +38,8 @@ BuildRequires:  %{python_module libregf}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python3-libcreg
-Requires:       python3-libregf >= 20201002
+Requires:       python-libcreg
+Requires:       python-libregf >= 20201002
 BuildArch:      noarch
 %python_subpackages
 
@@ -53,7 +53,7 @@ sed -i 's/py2_build/py3_build/' setup.py
 sed -i 's|/usr/bin/env python|/usr/bin/env python3|' run_tests.py
 
 %build
-%python3_build
+%python_build
 
 %install
 %python_install

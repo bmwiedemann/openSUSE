@@ -1,7 +1,9 @@
 -------------------------------------------------------------------
-Wed Jun  8 02:37:57 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
+Wed Jun  8 15:55:17 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 -update %check section to use python macros 
+-change %python3_build to %python_build  
+    --  formerly no *.py files were being included in the RPM packages for Tumbleweed
 
 -------------------------------------------------------------------
 Mon Jun  6 21:45:29 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
