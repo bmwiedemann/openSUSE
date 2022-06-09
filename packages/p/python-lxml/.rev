@@ -854,4 +854,14 @@ Send to Staging:E.
   * Built with Cython 0.29.28.</comment>
     <requestid>955744</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>28131ba54b0d3ceeea0a864779822dff</srcmd5>
+    <version>4.9.0</version>
+    <time>1654776557</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.9.0:
+  * The mixin inheritance order in ``lxml.html`` was corrected.
+  * Built with Cython 0.29.30 to adapt to changes in Python 3.11 and 3.12.</comment>
+    <requestid>981214</requestid>
+  </revision>
 </revisionlist>

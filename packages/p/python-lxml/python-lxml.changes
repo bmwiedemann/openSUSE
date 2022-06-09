@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  7 21:14:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.9.0:
+  * The mixin inheritance order in ``lxml.html`` was corrected.
+  * Built with Cython 0.29.30 to adapt to changes in Python 3.11 and 3.12.
+
+-------------------------------------------------------------------
 Fri Feb 18 00:36:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.8.0:
