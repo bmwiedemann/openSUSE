@@ -1,7 +1,7 @@
 #
-# spec file for package python-signedjson
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,13 @@
 %global modname signedjson
 %bcond_without python2
 Name:           python-%{modname}
-Version:        1.1.1
+Version:        1.1.4
 Release:        0
 Summary:        Python module to sign JSON with Ed25519 signatures
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/matrix-org/%{name}
 Source0:        https://files.pythonhosted.org/packages/source/s/signedjson/%{modname}-%{version}.tar.gz
-Patch0:         no-importlib-on-py38.patch
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -64,7 +63,6 @@ Features:
 
 %prep
 %setup -q -n %{modname}-%{version}
-%patch0 -p1
 
 %build
 %python_build
