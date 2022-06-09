@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-cognitiveservices
-Version:        13.1.0
+Version:        13.2.0
 Release:        0
 Summary:        Microsoft Azure Cognitive Services Management Client Library
 License:        MIT

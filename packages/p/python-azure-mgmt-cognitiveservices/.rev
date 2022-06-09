@@ -119,4 +119,15 @@
 - Update Requires from setup.py (forwarded request 965324 from glaubitz)</comment>
     <requestid>965371</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>97e203abab22f2119b67f9d144f7bb91</srcmd5>
+    <version>13.2.0</version>
+    <time>1654782104</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 13.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 981510 from glaubitz)</comment>
+    <requestid>981512</requestid>
+  </revision>
 </revisionlist>
