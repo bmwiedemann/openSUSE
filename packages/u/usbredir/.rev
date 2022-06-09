@@ -140,4 +140,12 @@ Tested the build localy (forwarded request 114808 from worldcitizen)</comment>
     <comment></comment>
     <requestid>969364</requestid>
   </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>41cdcc2c1327b2df8ea350daba00ee75</srcmd5>
+    <version>0.12.0</version>
+    <time>1654776566</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981283</requestid>
+  </revision>
 </revisionlist>

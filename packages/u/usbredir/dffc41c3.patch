@@ -1,0 +1,49 @@
+From dffc41c30d2535d02b670de96a438755ed130876 Mon Sep 17 00:00:00 2001
+From: Victor Toso <victortoso@redhat.com>
+Date: Mon, 15 Nov 2021 12:35:12 +0100
+Subject: [PATCH] usbredirect: fix leak on bad input
+
+Found by covscan:
+
+    Error: RESOURCE_LEAK (CWE-772): [#def1] [important]
+    usbredir-0.12.0/tools/usbredirect.c:55: alloc_fn: Storage is returned from allocation function "g_strsplit".
+    usbredir-0.12.0/tools/usbredirect.c:55: var_assign: Assigning: "usbid" = storage returned from "g_strsplit(device, "-", 2)".
+    usbredir-0.12.0/tools/usbredirect.c:76: leaked_storage: Variable "usbid" going out of scope leaks the storage it points to.
+    #   74|           if (i == n) {
+    #   75|               libusb_free_device_list(list, true);
+    #   76|->             return false;
+    #   77|           }
+    #   78|
+
+and
+
+    Error: RESOURCE_LEAK (CWE-772): [#def2] [important]
+    usbredir-0.12.0/tools/usbredirect.c:55: alloc_fn: Storage is returned from allocation function "g_strsplit".
+    usbredir-0.12.0/tools/usbredirect.c:55: var_assign: Assigning: "usbid" = storage returned from "g_strsplit(device, "-", 2)".
+    usbredir-0.12.0/tools/usbredirect.c:85: leaked_storage: Variable "usbid" going out of scope leaks the storage it points to.
+    #   83|
+    #   84|           libusb_free_device_list(list, true);
+    #   85|->         return true;
+    #   86|       }
+    #   87|
+
+Signed-off-by: Victor Toso <victortoso@redhat.com>
+---
+ tools/usbredirect.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tools/usbredirect.c b/tools/usbredirect.c
+index 98e5a8c..5e2376c 100644
+--- a/tools/usbredirect.c
++++ b/tools/usbredirect.c
+@@ -59,6 +59,7 @@ parse_opt_device(const char *device, int *vendor, int *product)
+         }
+         gint64 bus = g_ascii_strtoll(usbid[0], NULL, 10);
+         gint64 addr = g_ascii_strtoll(usbid[1], NULL, 10);
++        g_strfreev(usbid);
+ 
+         libusb_device **list = NULL;
+         ssize_t i, n;
+-- 
+GitLab
+

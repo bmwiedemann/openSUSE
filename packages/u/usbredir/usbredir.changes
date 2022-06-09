@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun  8 10:13:43 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add upstream backported patches:
+  + 9426fdb1.patch: Check header length unserialising data.
+  + dffc41c3.patch: usbredirect: fix leak on bad input.
+
+-------------------------------------------------------------------
 Tue Apr 12 08:40:50 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Add 0001-Use-D_FORTIFY_SOURCE-instead-of-Wp-D_FORTIFY_SOURCE.patch

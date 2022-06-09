@@ -1,0 +1,53 @@
+From 9426fdb1a5d362b51c2c946681e94dba7e3bf3d9 Mon Sep 17 00:00:00 2001
+From: Frediano Ziglio <freddy77@gmail.com>
+Date: Thu, 9 Sep 2021 11:02:24 +0100
+Subject: [PATCH] Check header length unserialising data
+
+Avoid unwanted packets.
+The test for header length is moved outside the if.
+If the header is not complete the number will contain 0 bytes so
+a smaller number.
+This avoids potential excessive allocations if the header length is
+very high.
+
+Signed-off-by: Frediano Ziglio <freddy77@gmail.com>
+---
+ usbredirparser/usbredirparser.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/usbredirparser/usbredirparser.c b/usbredirparser/usbredirparser.c
+index b36608a..cd1136b 100644
+--- a/usbredirparser/usbredirparser.c
++++ b/usbredirparser/usbredirparser.c
+@@ -1881,21 +1881,22 @@ int usbredirparser_unserialize(struct usbredirparser *parser_pub,
+     header_len = usbredirparser_get_header_len(parser_pub);
+     data = (uint8_t *)&parser->header;
+     i = header_len;
++    memset(&parser->header, 0, sizeof(parser->header));
+     if (unserialize_data(parser, &state, &remain, &data, &i, "header")) {
+         usbredirparser_assert_invariants(parser);
+         return -1;
+     }
++    if (parser->header.length > MAX_PACKET_SIZE) {
++        ERROR("packet length of %d larger than permitted %d bytes",
++              parser->header.length, MAX_PACKET_SIZE);
++        usbredirparser_assert_invariants(parser);
++        return -1;
++    }
+     parser->header_read = i;
+     parser->type_header_len = 0;
+ 
+     /* Set various length field from the header (if any) */
+     if (parser->header_read == header_len) {
+-        if (parser->header.length > MAX_PACKET_SIZE) {
+-            ERROR("packet length of %d larger than permitted %d bytes",
+-                  parser->header.length, MAX_PACKET_SIZE);
+-            return -1;
+-        }
+-
+         int type_header_len =
+             usbredirparser_get_type_header_len(parser_pub,
+                                                parser->header.type, 0);
+-- 
+GitLab
+
