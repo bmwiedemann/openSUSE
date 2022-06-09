@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun  1 09:02:14 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.2:
+  + Drop direct uses of GSlice.
+  + A11y-settings: Enable toolkit-accessibility when using the
+    magnifier.
+  + Xsettings:
+    - Simplify fetching string for an enum value.
+    - Remove direct mapping from gtk-im-module to Gtk/IMModule.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Mar 20 08:03:20 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.1:
