@@ -1649,4 +1649,12 @@ fixes its regression.
     <comment></comment>
     <requestid>975775</requestid>
   </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>ed35964ecd3a16bbd06e8bfb9272439e</srcmd5>
+    <version>1.1.1o</version>
+    <time>1654776588</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.1o release (forwarded request 981125 from msmeissn)</comment>
+    <requestid>981143</requestid>
+  </revision>
 </revisionlist>
