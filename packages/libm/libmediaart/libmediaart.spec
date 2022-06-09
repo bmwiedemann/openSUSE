@@ -1,7 +1,7 @@
 #
 # spec file for package libmediaart
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           libmediaart
-Version:        1.9.5
+Version:        1.9.6
 Release:        0
 Summary:        Media Art extraction library
 # License note: src.rpm contains GPL-2.0+ (tests) and LGPL-2.1+ code
