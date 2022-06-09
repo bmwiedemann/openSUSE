@@ -29,7 +29,7 @@ Name:           kernel-firmware
 Version:        @@VERSION@@
 Release:        0
 Summary:        Linux kernel firmware files
-License:        SUSE-Firmware AND GPL-2.0-only AND GPL-2.0-or-later AND MIT
+License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 # Created with umask 022; cd /_tmp
@@ -59,10 +59,12 @@ Source1011:     fwtopics.py
 Source1012:     check-topic.py
 Source1013:     update-aliases.py
 Source1014:     README.build
+# temporary fix
+Patch1:         wfx-WHENCE-fix.diff
 BuildRequires:  fdupes
 BuildRequires:  suse-module-tools
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 BuildArch:      noarch
 @@ALLPROVS@@
 Provides:       compat-wireless-firmware = 4.4
@@ -84,7 +86,7 @@ that do not support the compressed format.
 Summary:        Microcode updates for AMD CPUs
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 # new style (after 3.12 kernel somewhen)
 Supplements:    modalias(cpu:type%%3Ax86*ven0002*)
 # old style (before 3.16 kernel)
@@ -97,7 +99,7 @@ This package contains the microcode files used by AMD CPUs.
 Summary:        Compatibility metapackage for kernel firmware files
 Group:          System/Kernel
 Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun): /usr/bin/mkdir /usr/bin/touch
+Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Provides:       kernel-firmware = %{version}
 Obsoletes:      kernel-firmware <= %{version}
@@ -118,6 +120,7 @@ all files that have been provided by kernel-firmware package.
 
 %prep
 %setup -q
+%patch1 -p1
 # additional firmwares
 cat %{SOURCE1} >> WHENCE
 cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .
@@ -137,8 +140,10 @@ sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 
 %if "%flavor" != "compressed"
 @@POST@@
+
 @@POST@@ -n ucode-amd
 %else
+
 @@POST@@ all
 @@SUBPKGPOSTS@@
 %endif

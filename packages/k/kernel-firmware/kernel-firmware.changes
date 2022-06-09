@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun 08 08:06:57 UTC 2022 - tiwai@suse.com
+
+- Update to version 20220607 (git commit 02c69863c885):
+  * rtl_bt: Update RTL8852A BT USB firmware to 0xDFB8_0634
+  * Makefile: replace mkdir by install
+  * iwlwifi: remove old unsupported 3160/7260/7265/8000/8265 firmware
+  * ath11k: WCN6855 hw2.0: update to WLAN.HSP.1.1-03125-QCAHSPSWPL_V1_V2_SILICONZ_LITE-3.6510.9
+  * WHENCE: ath11k: move regdb.bin before board-2.bin
+  * ath10k: QCA9984 hw1.0: update firmware-5.bin to 10.4-3.9.0.2-00157
+  * ath10k: QCA9888 hw2.0: update board-2.bin
+  * ath10k: QCA9888 hw2.0: update firmware-5.bin to 10.4-3.9.0.2-00157
+  * ath10k: QCA4019 hw1.0: update board-2.bin
+  * ath10k: WCN3990 hw1.0: add board-2.bin
+- Update aliases from 5.19-rc1
+- Minor adjustment of spec template and makespec.sh to align with
+  the latest TW format
+
+-------------------------------------------------------------------
 Tue May 17 09:50:51 UTC 2022 - tiwai@suse.com
 
 - Update to version 20220516 (git commit 251d29004ffc):

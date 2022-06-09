@@ -14,7 +14,7 @@ define_subpackage () {
     echo "Summary:        Kernel firmware files for $desc"
     echo "Group:          System/Kernel"
     echo "Requires(post): /usr/bin/mkdir /usr/bin/touch"
-    echo "Requires(postun): /usr/bin/mkdir /usr/bin/touch"
+    echo "Requires(postun):/usr/bin/mkdir /usr/bin/touch"
     echo "Requires(post): dracut >= 049"
     echo "Conflicts:      kernel < 5.3"
     echo "%if 0%{?suse_version} >= 1550"
@@ -35,8 +35,10 @@ define_post () {
     test -n "$l" && l=" $l"
     echo "%post$l"
     echo "%{?regenerate_initrd_post}"
+    echo
     echo "%postun$l"
     echo "%{?regenerate_initrd_post}"
+    echo
     echo "%posttrans$l"
     echo "%{?regenerate_initrd_posttrans}"
 }
@@ -65,6 +67,7 @@ sed -e"s/@@VERSION@@/$version/g" | while read line; do
     esac
     if [ "$line" = "@@SUBPKGPOSTS@@" ]; then
 	for t in $topics; do
+	    echo
 	    define_post $t
 	done
 	continue
@@ -72,6 +75,7 @@ sed -e"s/@@VERSION@@/$version/g" | while read line; do
     if [ "$line" = "@@SUBPKGFILES@@" ]; then
 	for t in $topics; do
 	    echo "%files -f files-$t $t"
+	    echo
 	done
 	continue
     fi
