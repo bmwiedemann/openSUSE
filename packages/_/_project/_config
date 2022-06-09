@@ -196,6 +196,8 @@ FileProvides: /usr/bin/killall psmisc
 FileProvides: /usr/bin/mkdir coreutils busybox-coreutils
 FileProvides: /usr/bin/mimencode metamail
 FileProvides: /usr/bin/mkisofs mkisofs
+# https://bugzilla.suse.com/show_bug.cgi?id=1199995
+FileProvides: /usr/bin/node nodejs-default
 FileProvides: /usr/bin/openssl openssl
 FileProvides: /usr/bin/perl perl-base
 FileProvides: /usr/bin/pkg-config pkgconf-pkg-config
