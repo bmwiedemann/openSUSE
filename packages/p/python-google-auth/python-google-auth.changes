@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jun  8 08:53:02 UTC 2022 - pgajdos@suse.com
+
+- version update to 2.7.0
+  ## [2.7.0]
+    * add experimental enterprise cert support 
+    * add experimental GDCH support 
+    * Pluggable auth support 
+    * validate urls for external accounts 
+    * pluggable auth support [#995]
+    * revert experimental GDCH support 
+    * fix changelog header to consistent size 
+  ## [2.6.6]
+    * silence TypeError during tear down stage 
+  ## [2.6.5]
+    * add additional missing import in _default.py 
+  ## [2.6.4]
+    * fix missing import in _default.py 
+- added patches
+  fix https://github.com/googleapis/google-auth-library-python/issues/1055
+  + python-google-auth-no-mock.patch
+
+-------------------------------------------------------------------
 Fri Jun  3 16:02:30 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.6.6
