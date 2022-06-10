@@ -729,4 +729,12 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
     <comment>Scripted push from GNOME:Next (forwarded request 972167 from dimstar)</comment>
     <requestid>972485</requestid>
   </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>9586172e4705f80537435436a15b2e51</srcmd5>
+    <version>3.42.1</version>
+    <time>1654869444</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981528</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  9 12:51:17 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add dependency on python-cairo to python-gobject-cairo: The
+  introspection wrapper needs the actual pycairo underneath
+  (boo#1179584).
+
+-------------------------------------------------------------------
 Thu Apr 21 01:02:25 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
 
 - Update to version 3.42.1:

@@ -78,6 +78,7 @@ Summary:        Python bindings for GObject/Cairo
 Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Supplements:    (python-gobject and %{cairo_real_package})
+Requires:       python-cairo
 
 %description cairo
 Pygobjects is an extension module for python that gives you access to
