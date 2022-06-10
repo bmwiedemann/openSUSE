@@ -416,4 +416,21 @@ additions, including new UTF-8 compose sequences for:
     be thread-safe.</comment>
     <requestid>973978</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>6c9633d26315ddbedecc4403ce013d76</srcmd5>
+    <version>1.8.1</version>
+    <time>1654869435</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.1
+  This release fixes the --enable-thread-safety-constructor option to the
+  configure script to work as intended.  In the previous release, the changes
+  for this option may not have been enabled when the option was not specified
+  or when the --enable option was specified.
+  While we have enabled it by default, believing that doing so will reduce
+  the number of bugs users encounter running libX11 clients, in some cases
+  it may expose bugs in which clients had previously gotten away with calling
+  libX11 functions while a libX11 lock is already held, and thus now deadlock,
+  as discussed in https://gitlab.freedesktop.org/xorg/lib/libx11/-/issues/157 .</comment>
+    <requestid>981405</requestid>
+  </revision>
 </revisionlist>
