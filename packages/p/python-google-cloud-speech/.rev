@@ -104,4 +104,12 @@
   * add support for python 3.10 (#274) (forwarded request 967509 from glaubitz)</comment>
     <requestid>967510</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dc6eabd6b41c67f7e75b543dc04e33f3</srcmd5>
+    <version>2.14.1</version>
+    <time>1654869454</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981536</requestid>
+  </revision>
 </revisionlist>

@@ -18,16 +18,18 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-google-cloud-speech
-Version:        2.13.1
+Version:        2.14.1
 Release:        0
 Summary:        Google Cloud Speech API client library
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://github.com/GoogleCloudPlatform/google-cloud-python
+URL:            https://github.com/googleapis/python-speech
 Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-speech/google-cloud-speech-%{version}.tar.gz
+# https://github.com/googleapis/python-speech/issues/406
+Patch0:         python-google-cloud-speech-no-mock.patch
 BuildRequires:  %{python_module google-api-core >= 1.31.5}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module proto-plus >= 1.15.0}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -41,7 +43,7 @@ BuildArch:      noarch
 Cloud Speech API converts audio to text by applying neural network models.
 
 %prep
-%setup -q -n google-cloud-speech-%{version}
+%autosetup -p1 -n google-cloud-speech-%{version}
 # remove tests needing credentials to google services
 rm tests/system/gapic/v1/test_system_speech_v1.py
 rm tests/system/gapic/v1p1beta1/test_system_speech_v1p1beta1.py
