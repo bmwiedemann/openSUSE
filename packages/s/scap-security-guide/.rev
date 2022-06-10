@@ -179,4 +179,13 @@ Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from 
   - Initial definition of ANSSI BP28 minmal profile for SLE</comment>
     <requestid>979906</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>988f60ff674b2aeb6200f7713147a8b2</srcmd5>
+    <version>0.1.62</version>
+    <time>1654869460</time>
+    <user>dimstar_suse</user>
+    <comment>- add python3-setuptools for all builds (so it is also used on debian 
+  and centos flavors)</comment>
+    <requestid>981542</requestid>
+  </revision>
 </revisionlist>

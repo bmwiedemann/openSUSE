@@ -66,12 +66,13 @@ BuildRequires:  libxslt
 BuildRequires:  openscap-utils
 %endif
 
+BuildRequires:  python3-setuptools
+
 %if 0%{?rhel} == 8
 BuildRequires:  python3
 %endif
 
 %if 0%{?suse_version}
-BuildRequires:  python3-setuptools
 BuildRequires:  python3-xml
 %endif
 
