@@ -29,15 +29,15 @@
 %global _qtwebengine_dictionaries_dir %{_libqt5_datadir}/qtwebengine_dictionaries
 
 Name:           libqt5-qtwebengine
-Version:        5.15.9
+Version:        5.15.10
 Release:        0
 Summary:        Qt 5 WebEngine Library
 License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.15.9
-%define so_version 5.15.9
+%define real_version 5.15.10
+%define so_version 5.15.10
 %define tar_version qtwebengine-everywhere-src-%{version}
 Source:         %{tar_version}.tar.xz
 Source99:       libqt5-qtwebengine-rpmlintrc

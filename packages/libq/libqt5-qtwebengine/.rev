@@ -811,4 +811,12 @@
   in the future. Gold linker is unmaintained by the upstream project. (forwarded request 974346 from marxin)</comment>
     <requestid>974366</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>c961fe82ccaccfe2ce69418a5a8c8bf2</srcmd5>
+    <version>5.15.10</version>
+    <time>1654869439</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.15.10 (forwarded request 981381 from cgiboudeaux)</comment>
+    <requestid>981447</requestid>
+  </revision>
 </revisionlist>

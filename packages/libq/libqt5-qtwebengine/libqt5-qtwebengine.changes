@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Jun  8 14:36:14 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to version 5.15.10:
+  * Fix top level build with no widget
+  * Fix read-after-free on EGL extensions
+  * Update Chromium
+  * Add workaround for unstable gn on macOS in ci
+  * Pass archiver to gn build
+  * Fix navigation to non-local URLs
+  * Add support for universal builds for qtwebengine and qtpdf
+  *  Enable Apple Silicon support
+  *  Fix cross compilation x86_64->arm64 on mac
+  *  Bump version to 5.15.10
+  *  CustomDialogs: Make custom input fields readable in dark mode
+  *  CookieBrowser: Make alternating rows readable in dark mode
+  * Update Chromium:
+    * Bump V8_PATCH_LEVEL
+    * Fix clang set-but-unused-variable warning
+    * Fix mac toolchain python linker script call
+    * Fix missing dependency for gpu sources
+    * Fix python calls
+    * Fix undefined symbol for universal link
+    * Quick fix for regression in service workers by reverting
+      backports
+    * [Backport] CVE-2022-0797: Out of bounds memory access
+      in Mojo
+    * [Backport] CVE-2022-1125
+    * [Backport] CVE-2022-1138: Inappropriate implementation
+      in Web Cursor.
+    * [Backport] CVE-2022-1305: Use after free in storage
+    * [Backport] CVE-2022-1310: Use after free in regular
+      expressions
+    * [Backport] CVE-2022-1314: Type Confusion in V8
+    * [Backport] CVE-2022-1493: Use after free in Dev Tools
+    * [Backport] On arm64 hosts, set host_cpu to 'arm64', not 'arm'
+    * [Backport] Security Bug 1296876
+    * [Backport] Security bug 1269999
+    * [Backport] Security bug 1280852
+    * [Backport] Security bug 1292905
+    * [Backport] Security bug 1304659
+    * [Backport] Security bug 1306507
+
+-------------------------------------------------------------------
 Mon May  2 08:30:15 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Remove dependency on binutils-gold as the package will be removed
