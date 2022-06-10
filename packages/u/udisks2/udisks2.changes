@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 20 07:45:36 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_udisks2-zram-setup@.service.patch
+  * harden_udisks2.service.patch
+
+-------------------------------------------------------------------
 Mon Jan 31 15:28:11 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop gtk-doc BuildRequires, and pass disable-gtk-doc to

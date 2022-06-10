@@ -1,0 +1,16 @@
+Index: udisks-2.9.4/data/udisks2.service.in
+===================================================================
+--- udisks-2.9.4.orig/data/udisks2.service.in
++++ udisks-2.9.4/data/udisks2.service.in
+@@ -3,6 +3,11 @@ Description=Disk Manager
+ Documentation=man:udisks(8)
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectHostname=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=dbus
+ BusName=org.freedesktop.UDisks2
+ ExecStart=@udisksdprivdir@/udisksd
