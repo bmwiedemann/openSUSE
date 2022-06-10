@@ -3715,7 +3715,7 @@
     <package name="python38-pyasn1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-pyasn1-modules" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-pybind11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
-    <package name="python38-pycairo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="python38-pycairo" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python38-pycares" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-pycparser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python38-pycryptodome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
