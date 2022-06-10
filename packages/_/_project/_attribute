@@ -182,7 +182,8 @@ splitter-whitelist =
 # now just for testing
 source_projects_expand = devel:languages:haskell
 
-devel-whitelist = 
+# devel:BCI:Tumbleweed for inclusion of BCI containers - rbrown 10 Jun 2022
+devel-whitelist = devel:BCI:Tumbleweed
  
 # packagelist generator related configuration
 pkglistgen-archs = i586 x86_64
@@ -214,7 +215,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20220609</value>
+    <value>20220610</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
