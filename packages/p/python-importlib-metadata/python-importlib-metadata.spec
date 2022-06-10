@@ -27,17 +27,17 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-importlib-metadata%{psuffix}
-Version:        4.11.3
+Version:        4.11.4
 Release:        0
 Summary:        Read metadata from Python packages
 License:        Apache-2.0
 URL:            http://importlib-metadata.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/i/importlib_metadata/importlib_metadata-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tomli}
-BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zipp >= 0.5}
 BuildRequires:  fdupes
