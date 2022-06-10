@@ -88,6 +88,8 @@ Patch5:         0005-SUSE-fy-pmsnap-control-path.patch
 Patch6:         0006-pmsnap-control-var-www-srv-www.patch
 # PATCH-FIX-UPSTREAM, ddiss@suse.de
 Patch9:         0009-remove-rundir-install.patch
+# PATCH-FIX-UPSTREAM, ddiss@suse.de
+Patch10:        0010-services-switch-logutil-and-pmieutil-scripts-from-ty.patch
 
 %if 0%{?fedora} || 0%{?rhel}
 %global disable_selinux 0
@@ -551,7 +553,6 @@ Performance Co-Pilot (PCP) run-time configuration
 #
 # pcp-libs
 #
-
 %package -n %{lib_pkg}
 Summary:        Performance Co-Pilot run-time libraries
 License:        %{license_lgplv21plus}
@@ -2358,7 +2359,6 @@ Supplements:    pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about web server logs.
 
-
 # end pcp-pmda-weblog
 # end C pmdas
 
@@ -2423,7 +2423,9 @@ Requires:       %{lib_pkg} = %{version}-%{release}
 %description system-tools
 This PCP module contains additional system monitoring tools written
 in python.
-%endif #end pcp-system-tools
+%endif
+#end pcp-system-tools
+
 %if !%{disable_qt}
 #
 # pcp-gui package for Qt tools
@@ -2507,6 +2509,7 @@ updated policy package.
 %patch5 -p1
 %patch6 -p1
 %patch9 -p1
+%patch10 -p1
 
 autoconf
 
@@ -2809,16 +2812,6 @@ getent group pcp >/dev/null || groupadd -r pcp
 getent passwd pcp >/dev/null || \
   useradd -c "Performance Co-Pilot" -g pcp -d %{_localstatedir}/lib/pcp -M -r -s /sbin/nologin pcp
 exit 0
-
-%if !%{disable_rpm}
-%preun pmda-rpm
-%{pmda_remove "$1" "rpm"}
-%endif
-
-%if !%{disable_systemd}
-%preun pmda-systemd
-%{pmda_remove "$1" "systemd"}
-%endif
 
 %if 0%{?suse_version} && !%{disable_systemd}
 %preun zeroconf

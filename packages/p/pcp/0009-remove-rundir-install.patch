@@ -1,4 +1,4 @@
-From 248b4bd1e3adc51bceebc932efbd71f86c2171cb Mon Sep 17 00:00:00 2001
+From 41afafe153da87753aa91d5669c2ddbd0b720afb Mon Sep 17 00:00:00 2001
 From: David Disseldorp <ddiss@suse.de>
 Date: Mon, 16 May 2022 17:50:09 +0200
 Subject: [PATCH] build: remove rundir install

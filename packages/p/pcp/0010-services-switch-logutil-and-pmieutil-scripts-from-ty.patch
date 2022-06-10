@@ -1,0 +1,319 @@
+From e6d7bb6873531beb5b013a49e0b094cd7680cf89 Mon Sep 17 00:00:00 2001
+From: Mark Goodwin <mgoodwin@redhat.com>
+Date: Mon, 30 Aug 2021 11:22:19 +1000
+Subject: [PATCH] services: switch logutil and pmieutil scripts from type
+ oneshot to exec
+
+Switches the "daily" and "check" and related services from Type=oneshot
+to Type=exec (or Type=simple for older versions of systemd that do
+not support Type=exec) and nuke KillMode=none. Explicitly specify
+Restart=none, even though it's the default, to be clear that these
+timer invoked service scripts are not long running service daemons
+and are expected to exit normally.
+
+These changes are a precursor to further improvements to the long
+running PCP services and systemd integration.
+
+All tests in the logutil and pmieutil QA groups are passing and soak
+testing on several platforms has not shown any new issues (and the
+systemd warnings about "Support for KillMode=none is deprecated" are
+gone).
+
+Resolves: RHBZ#1942844
+Resolves: Fedora BZ#1897945
+Resolves: https://github.com/performancecopilot/pcp/issues/1186
+Obsoletes the earlier PR#1355.
+
+(cherry picked from commit 705b657107e8c812c96fa8b74d0f5d6384b00888)
+Reviewed-by: David Disseldorp <ddiss@suse.de>
+References: bsc#1186511
+---
+ configure                                          | 13 +++++++++++++
+ configure.ac                                       | 14 ++++++++++++++
+ src/include/builddefs.in                           |  3 +++
+ src/pmfind/GNUmakefile                             |  1 +
+ src/pmfind/pmfind.service.in                       |  4 ++--
+ src/pmie/GNUmakefile                               |  2 ++
+ src/pmie/pmie_check.service.in                     |  4 ++--
+ src/pmie/pmie_daily.service.in                     |  4 ++--
+ src/pmlogger/GNUmakefile                           |  5 +++++
+ src/pmlogger/pmlogger_check.service.in             |  4 ++--
+ src/pmlogger/pmlogger_daily-poll.service.in        |  4 ++--
+ src/pmlogger/pmlogger_daily.service.in             |  4 ++--
+ src/pmlogger/pmlogger_daily_report-poll.service.in |  4 ++--
+ src/pmlogger/pmlogger_daily_report.service.in      |  4 ++--
+ 14 files changed, 54 insertions(+), 16 deletions(-)
+
+diff --git a/configure b/configure
+index cc44637a5..51bd43fe9 100755
+--- a/configure
++++ b/configure
+@@ -882,6 +882,7 @@ PACKAGE_BUILD
+ PACKAGE_REVISION
+ PACKAGE_MINOR
+ PACKAGE_MAJOR
++sd_service_type
+ enable_systemd
+ pcp_systemdunit_dir
+ SYSTEMD_SYSTEMUNITDIR
+@@ -5933,9 +5934,21 @@ fi
+ done
+ 
+     $have_sd_daemon || echo WARNING: using systemd, but header systemd/sd-daemon.h not installed
++
++fi
++
++sd_service_type="simple"
++if $enable_systemd
++then
++            systemd_version=`systemd-analyze --version | $AWK '/^systemd/ {print $2}'`
++    if test "$systemd_version" -ge 239
++    then
++    	sd_service_type="exec"
++    fi
+ fi
+ 
+ 
++
+ . ./VERSION.pcp
+ PACKAGE_VERSION=${PACKAGE_MAJOR}.${PACKAGE_MINOR}.${PACKAGE_REVISION}
+ 
+diff --git a/configure.ac b/configure.ac
+index 9e1c04c8b..ea5967a77 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -789,7 +789,21 @@ then
+     dnl is being used
+     AC_CHECK_HEADERS([systemd/sd-daemon.h], [have_sd_daemon=true], [have_sd_daemon=false])
+     $have_sd_daemon || echo WARNING: using systemd, but header systemd/sd-daemon.h not installed
++
++fi
++
++sd_service_type="simple"
++if $enable_systemd
++then
++    dnl if systemd version is 239 or newer, use type=exec for logutil scripts
++    dnl else fallback to type=simple (e.g. on centos7 and some other platforms)
++    systemd_version=`systemd-analyze --version | $AWK '/^systemd/ {print $2}'`
++    if test "$systemd_version" -ge 239
++    then
++    	sd_service_type="exec"
++    fi
+ fi
++AC_SUBST(sd_service_type)
+ 
+ dnl NB: No AC_PREFIX_DEFAULT is needed, as the default configure invocation
+ dnl targets a build for non-system directories such as /usr/local.
+diff --git a/src/include/builddefs.in b/src/include/builddefs.in
+index 02ecb4142..c5bc2d955 100644
+--- a/src/include/builddefs.in
++++ b/src/include/builddefs.in
+@@ -918,6 +918,9 @@ PCP_GROUP = @pcp_group@
+ PCP_USER_INSTALL = @pcp_user_install@
+ PCP_GROUP_INSTALL = @pcp_group_install@
+ 
++# systemd service type for logutil scripts
++SD_SERVICE_TYPE=@sd_service_type@
++
+ PCPLIB = -lpcp
+ PCPLIB_EXTRAS = $(LIB_FOR_MATH) $(LIB_FOR_PTHREADS) $(LIB_FOR_DLOPEN) $(LIB_FOR_RT)
+ ifneq "$(PCPLIB)" "$(LIB_FOR_BASENAME)"
+diff --git a/src/pmfind/GNUmakefile b/src/pmfind/GNUmakefile
+index 7271b4869..d23e894c6 100644
+--- a/src/pmfind/GNUmakefile
++++ b/src/pmfind/GNUmakefile
+@@ -65,6 +65,7 @@ pmfind.service : pmfind.service.in
+ 	    -e 's;@PCP_SYSCONFIG_DIR@;'$(PCP_SYSCONFIG_DIR)';' \
+ 	    -e 's;@PCP_BINADM_DIR@;'$(PCP_BINADM_DIR)';' \
+ 	    -e 's;@PCP_VAR_DIR@;'$(PCP_VAR_DIR)';' \
++	    -e 's;@SD_SERVICE_TYPE@;'$(SD_SERVICE_TYPE)';' \
+ 	# END
+ 
+ crontab: crontab.in
+diff --git a/src/pmfind/pmfind.service.in b/src/pmfind/pmfind.service.in
+index 8ecd4fea6..2eb7eeafc 100644
+--- a/src/pmfind/pmfind.service.in
++++ b/src/pmfind/pmfind.service.in
+@@ -6,8 +6,8 @@ After=pmie_check.timer pmlogger_check.timer
+ BindsTo=pmfind.timer
+ 
+ [Service]
+-Type=oneshot
+-KillMode=none
++Type=@SD_SERVICE_TYPE@
++Restart=no
+ TimeoutSec=60
+ Environment="PMFIND_CHECK_PARAMS=-C -q"
+ EnvironmentFile=-@PCP_SYSCONFIG_DIR@/pmfind
+diff --git a/src/pmie/GNUmakefile b/src/pmie/GNUmakefile
+index cd1d36e1d..cf381b444 100644
+--- a/src/pmie/GNUmakefile
++++ b/src/pmie/GNUmakefile
+@@ -82,6 +82,7 @@ pmie_check.service : pmie_check.service.in
+ 	    -e 's;@PCP_VAR_DIR@;'$(PCP_VAR_DIR)';' \
+ 	    -e 's;@PCP_GROUP@;'$(PCP_GROUP)';' \
+ 	    -e 's;@PCP_USER@;'$(PCP_USER)';' \
++	    -e 's;@SD_SERVICE_TYPE@;'$(SD_SERVICE_TYPE)';' \
+ 	# END
+ 
+ pmie_daily.service : pmie_daily.service.in
+@@ -92,6 +93,7 @@ pmie_daily.service : pmie_daily.service.in
+ 	    -e 's;@PCP_VAR_DIR@;'$(PCP_VAR_DIR)';' \
+ 	    -e 's;@PCP_GROUP@;'$(PCP_GROUP)';' \
+ 	    -e 's;@PCP_USER@;'$(PCP_USER)';' \
++	    -e 's;@SD_SERVICE_TYPE@;'$(SD_SERVICE_TYPE)';' \
+ 	# END
+ 
+ crontab: crontab.in
+diff --git a/src/pmie/pmie_check.service.in b/src/pmie/pmie_check.service.in
+index 00b55408a..29418df23 100644
+--- a/src/pmie/pmie_check.service.in
++++ b/src/pmie/pmie_check.service.in
+@@ -5,8 +5,8 @@ ConditionPathExists=!@CRONTAB_PATH@
+ PartOf=pmie.service
+ 
+ [Service]
+-Type=oneshot
+-KillMode=none
++Type=@SD_SERVICE_TYPE@
++Restart=no
+ TimeoutStartSec=25m
+ Environment="PMIE_CHECK_PARAMS=-C"
+ EnvironmentFile=-@PCP_SYSCONFIG_DIR@/pmie_timers
+diff --git a/src/pmie/pmie_daily.service.in b/src/pmie/pmie_daily.service.in
+index fc52fd792..e93446ce8 100644
+--- a/src/pmie/pmie_daily.service.in
++++ b/src/pmie/pmie_daily.service.in
+@@ -4,8 +4,8 @@ Documentation=man:pmie_daily(1)
+ ConditionPathExists=!@CRONTAB_PATH@
+ 
+ [Service]
+-Type=oneshot
+-KillMode=none
++Type=@SD_SERVICE_TYPE@
++Restart=no
+ Environment="PMIE_DAILY_PARAMS=-X xz -x 3"
+ EnvironmentFile=-@PCP_SYSCONFIG_DIR@/pmie_timers
+ ExecStart=@PCP_BINADM_DIR@/pmie_daily $PMIE_DAILY_PARAMS
+diff --git a/src/pmlogger/GNUmakefile b/src/pmlogger/GNUmakefile
+index 92694f430..931d64fdf 100644
+--- a/src/pmlogger/GNUmakefile
++++ b/src/pmlogger/GNUmakefile
+@@ -101,6 +101,7 @@ pmlogger_daily.service : pmlogger_daily.service.in
+ 	    -e 's;@PCP_VAR_DIR@;'$(PCP_VAR_DIR)';' \
+ 	    -e 's;@PCP_GROUP@;'$(PCP_GROUP)';' \
+ 	    -e 's;@PCP_USER@;'$(PCP_USER)';' \
++	    -e 's;@SD_SERVICE_TYPE@;'$(SD_SERVICE_TYPE)';' \
+ 	# END
+ 
+ pmlogger_daily-poll.service : pmlogger_daily-poll.service.in
+@@ -111,6 +112,7 @@ pmlogger_daily-poll.service : pmlogger_daily-poll.service.in
+ 	    -e 's;@PCP_VAR_DIR@;'$(PCP_VAR_DIR)';' \
+ 	    -e 's;@PCP_GROUP@;'$(PCP_GROUP)';' \
+ 	    -e 's;@PCP_USER@;'$(PCP_USER)';' \
++	    -e 's;@SD_SERVICE_TYPE@;'$(SD_SERVICE_TYPE)';' \
+ 	# END
+ 
+ pmlogger_check.service : pmlogger_check.service.in
+@@ -121,6 +123,7 @@ pmlogger_check.service : pmlogger_check.service.in
+ 	    -e 's;@PCP_VAR_DIR@;'$(PCP_VAR_DIR)';' \
+ 	    -e 's;@PCP_GROUP@;'$(PCP_GROUP)';' \
+ 	    -e 's;@PCP_USER@;'$(PCP_USER)';' \
++	    -e 's;@SD_SERVICE_TYPE@;'$(SD_SERVICE_TYPE)';' \
+ 	# END
+ 
+ pmlogger_daily_report.service : pmlogger_daily_report.service.in
+@@ -132,6 +135,7 @@ pmlogger_daily_report.service : pmlogger_daily_report.service.in
+ 	    -e 's;@PCP_SA_DIR@;'$(PCP_SA_DIR)';' \
+ 	    -e 's;@PCP_GROUP@;'$(PCP_GROUP)';' \
+ 	    -e 's;@PCP_USER@;'$(PCP_USER)';' \
++	    -e 's;@SD_SERVICE_TYPE@;'$(SD_SERVICE_TYPE)';' \
+ 	# END
+ 
+ pmlogger_daily_report-poll.service : pmlogger_daily_report-poll.service.in
+@@ -143,6 +147,7 @@ pmlogger_daily_report-poll.service : pmlogger_daily_report-poll.service.in
+ 	    -e 's;@PCP_SA_DIR@;'$(PCP_SA_DIR)';' \
+ 	    -e 's;@PCP_GROUP@;'$(PCP_GROUP)';' \
+ 	    -e 's;@PCP_USER@;'$(PCP_USER)';' \
++	    -e 's;@SD_SERVICE_TYPE@;'$(SD_SERVICE_TYPE)';' \
+ 	# END
+ 
+ crontab : crontab.in
+diff --git a/src/pmlogger/pmlogger_check.service.in b/src/pmlogger/pmlogger_check.service.in
+index fe0f347e1..ddcee72a5 100644
+--- a/src/pmlogger/pmlogger_check.service.in
++++ b/src/pmlogger/pmlogger_check.service.in
+@@ -4,8 +4,8 @@ Documentation=man:pmlogger_check(1)
+ ConditionPathExists=!@CRONTAB_PATH@
+ 
+ [Service]
+-Type=oneshot
+-KillMode=none
++Type=@SD_SERVICE_TYPE@
++Restart=no
+ TimeoutStartSec=25m
+ Environment="PMLOGGER_CHECK_PARAMS=-C --skip-primary"
+ EnvironmentFile=-@PCP_SYSCONFIG_DIR@/pmlogger_timers
+diff --git a/src/pmlogger/pmlogger_daily-poll.service.in b/src/pmlogger/pmlogger_daily-poll.service.in
+index 69c1738f8..29c4e62c0 100644
+--- a/src/pmlogger/pmlogger_daily-poll.service.in
++++ b/src/pmlogger/pmlogger_daily-poll.service.in
+@@ -4,8 +4,8 @@ Documentation=man:pmlogger_daily(1)
+ ConditionPathExists=!@CRONTAB_PATH@
+ 
+ [Service]
+-Type=oneshot
+-KillMode=none
++Type=@SD_SERVICE_TYPE@
++Restart=no
+ Environment="PMLOGGER_DAILY_POLL_PARAMS=-p"
+ EnvironmentFile=-@PCP_SYSCONFIG_DIR@/pmlogger_timers
+ ExecStart=@PCP_BINADM_DIR@/pmlogger_daily $PMLOGGER_DAILY_POLL_PARAMS
+diff --git a/src/pmlogger/pmlogger_daily.service.in b/src/pmlogger/pmlogger_daily.service.in
+index 44b79e6a5..8a07f5caa 100644
+--- a/src/pmlogger/pmlogger_daily.service.in
++++ b/src/pmlogger/pmlogger_daily.service.in
+@@ -4,8 +4,8 @@ Documentation=man:pmlogger_daily(1)
+ ConditionPathExists=!@CRONTAB_PATH@
+ 
+ [Service]
+-Type=oneshot
+-KillMode=none
++Type=@SD_SERVICE_TYPE@
++Restart=no
+ TimeoutStartSec=1h
+ Environment="PMLOGGER_DAILY_PARAMS=-E"
+ EnvironmentFile=-@PCP_SYSCONFIG_DIR@/pmlogger_timers
+diff --git a/src/pmlogger/pmlogger_daily_report-poll.service.in b/src/pmlogger/pmlogger_daily_report-poll.service.in
+index 67a986ff2..2b186648e 100644
+--- a/src/pmlogger/pmlogger_daily_report-poll.service.in
++++ b/src/pmlogger/pmlogger_daily_report-poll.service.in
+@@ -4,8 +4,8 @@ Documentation=man:pmlogger_daily_report(1)
+ ConditionPathExists=!@CRONTAB_DAILY_REPORT_PATH@
+ 
+ [Service]
+-Type=oneshot
+-KillMode=none
++Type=@SD_SERVICE_TYPE@
++Restart=no
+ Environment="PMLOGGER_DAILY_REPORT_POLL_PARAMS=-o @PCP_SA_DIR@ -p"
+ EnvironmentFile=-@PCP_SYSCONFIG_DIR@/pmlogger_timers
+ ExecStart=@PCP_BINADM_DIR@/pmlogger_daily_report $PMLOGGER_DAILY_REPORT_POLL_PARAMS
+diff --git a/src/pmlogger/pmlogger_daily_report.service.in b/src/pmlogger/pmlogger_daily_report.service.in
+index d09489882..5937e129a 100644
+--- a/src/pmlogger/pmlogger_daily_report.service.in
++++ b/src/pmlogger/pmlogger_daily_report.service.in
+@@ -4,8 +4,8 @@ Documentation=man:pmlogger_daily_report(1)
+ ConditionPathExists=!@CRONTAB_DAILY_REPORT_PATH@
+ 
+ [Service]
+-Type=oneshot
+-KillMode=none
++Type=@SD_SERVICE_TYPE@
++Restart=no
+ TimeoutSec=120
+ Environment="PMLOGGER_DAILY_REPORT_PARAMS=-o @PCP_SA_DIR@"
+ EnvironmentFile=-@PCP_SYSCONFIG_DIR@/pmlogger_timers
+-- 
+2.35.3
+

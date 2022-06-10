@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun  8 21:33:14 UTC 2022 - David Disseldorp <ddiss@suse.com>
+
+- Workaround intermittent build-time package preun failures by dropping
+  PMDA Remove script invocation; (bsc#1197796)
+
+-------------------------------------------------------------------
+Tue Jun  7 16:43:41 UTC 2022 - David Disseldorp <ddiss@suse.com>
+
+- Adjust systemd service types and remove deprecated KillMode=none;
+  (bsc#1186511)
+  + 0010-services-switch-logutil-and-pmieutil-scripts-from-ty.patch
+
+-------------------------------------------------------------------
 Mon May 16 14:22:19 UTC 2022 - David Disseldorp <ddiss@suse.com>
 
 - Upgrade to 5.2.5
