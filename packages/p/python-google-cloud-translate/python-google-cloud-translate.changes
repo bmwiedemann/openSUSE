@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun  9 07:57:58 UTC 2022 - pgajdos@suse.com
+
+- version update to 3.7.4
+  * deps: require protobuf <4.0.0dev (#395) (6747720)
+  * fix changelog header to consistent size (#396) (d4d2825)
+  * fix type in docstring for map fields (3b845d6)
+- added patches
+  fix https://github.com/googleapis/python-translate/issues/403
+  + python-google-cloud-translate-no-mock.patch
+
+-------------------------------------------------------------------
 Wed Apr 13 10:40:56 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.7.2

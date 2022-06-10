@@ -52,4 +52,12 @@
   * (#254) by increasing timeout, use backoff module instead of flaky (#271) (0cff0f2) (forwarded request 969832 from glaubitz)</comment>
     <requestid>969852</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a33109f7721bbf6f9ad29f4583f130b7</srcmd5>
+    <version>3.7.4</version>
+    <time>1654869456</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981538</requestid>
+  </revision>
 </revisionlist>

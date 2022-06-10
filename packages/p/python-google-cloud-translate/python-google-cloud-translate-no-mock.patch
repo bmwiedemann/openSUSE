@@ -1,0 +1,12 @@
+diff -upr google-cloud-translate-3.7.4.orig/tests/unit/v2/test__http.py google-cloud-translate-3.7.4/tests/unit/v2/test__http.py
+--- google-cloud-translate-3.7.4.orig/tests/unit/v2/test__http.py	2022-06-09 09:12:34.520648611 +0200
++++ google-cloud-translate-3.7.4/tests/unit/v2/test__http.py	2022-06-09 09:12:34.608649133 +0200
+@@ -14,7 +14,7 @@
+ 
+ import unittest
+ 
+-import mock
++from unittest import mock
+ 
+ 
+ class TestConnection(unittest.TestCase):
