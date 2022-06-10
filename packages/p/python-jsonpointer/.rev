@@ -141,4 +141,15 @@
   * Add test for get_parts</comment>
     <requestid>936092</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>cf4fdb2956faddc14e32ff83dc9d2cb0</srcmd5>
+    <version>2.3</version>
+    <time>1654869432</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3:
+  * Support setting - for arrays
+  * Add join and / operator
+  * Fix invalid escape sequences</comment>
+    <requestid>981384</requestid>
+  </revision>
 </revisionlist>

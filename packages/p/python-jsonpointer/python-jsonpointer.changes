@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun  8 19:59:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3:
+  * Support setting - for arrays
+  * Add join and / operator
+  * Fix invalid escape sequences 
+
+-------------------------------------------------------------------
 Mon Dec  6 18:00:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2:
