@@ -1,7 +1,7 @@
 #
 # spec file for package the_silver_searcher
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,6 @@ Source4:        %{name}.changes
 # PATCH-FIX-UPSTREAM the_silver_searcher-2.2.0-portabilityfixes.patch gh#ggreer/the_silver_searcher#1377 -- Fix multiple global symbols definitions
 Patch0:         the_silver_searcher-2.2.0-portabilityfixes.patch
 BuildRequires:  pkgconfig >= 0.9.0
-Requires:       bash-completion
 %if 0%{?suse_version} > 1110
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libpcre)
@@ -54,15 +53,15 @@ make %{?_smp_mflags}
 
 %install
 %make_install
-mkdir -p %{buildroot}/%{_sysconfdir}/bash_completion.d
-mv -v %{buildroot}%{_datadir}/%{name}/completions/ag.bashcomp.sh %{buildroot}/%{_sysconfdir}/bash_completion.d/%{name}
+mkdir -p %{buildroot}/%{_datadir}/bash-completion/completions/
+mv -v %{buildroot}%{_datadir}/%{name}/completions/ag.bashcomp.sh %{buildroot}/%{_datadir}/bash-completion/completions/%{name}
 
 %files
 %license LICENSE
 %doc NOTICE README.md
 %{_bindir}/ag
 %{_mandir}/man1/ag.1%{?ext_man}
-%config %{_sysconfdir}/bash_completion.d/%{name}
+%{_datadir}/bash-completion/completions/%{name}
 %dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_the_silver_searcher
