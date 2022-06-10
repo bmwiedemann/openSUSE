@@ -23,6 +23,13 @@
 
 %define __builder ninja
 
+# gcc10 or higher is required
+%if 0%{?suse_version} && ( 0%{?suse_version} < 1500 || ( 0%{?is_opensuse} && 0%{?suse_version} == 1500 && 0%{?sle_version} && 0%{?sle_version} <= 150400 ) )
+%bcond_without  compiler_upgrade
+%else
+%bcond_with     compiler_upgrade
+%endif
+
 %define _dwz_low_mem_die_limit  40000000
 %define _dwz_max_die_limit     200000000
 
@@ -63,6 +70,11 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  enchant-devel
 BuildRequires:  ffmpeg-devel
 BuildRequires:  freetype-devel
+%if %{with compiler_upgrade}
+BuildRequires:  gcc10-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 BuildRequires:  glibc-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  liblz4-devel
@@ -177,6 +189,10 @@ mv tg_owt-master Libraries/tg_owt
 %patch2 -p2 -d Libraries/tg_owt
 
 %build
+%if %{with compiler_upgrade}
+export CC=gcc-10
+export CXX=g++-10
+%endif
 
 # Fix build failures due to not finding installed headers for xkbcommon and wayland-client
 export CXXFLAGS+="`pkg-config --cflags xkbcommon wayland-client`"
