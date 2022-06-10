@@ -494,6 +494,10 @@ unsorted:
   - amtterm-gtk 
   - amtu 
   - analitza-devel 
+  - android-tools 
+  - android-tools-bash-completion 
+  - android-tools-mkbootimg 
+  - android-tools-partition 
   - android-udev-rules 
   - angelscript-devel 
   - anjuta 
@@ -7845,13 +7849,6 @@ unsorted:
   - judy-devel 
   - judy-doc 
   - jul-to-slf4j 
-  - julia 
-  - julia-compat: [x86_64] 
-  - julia-compat-debug: [x86_64] 
-  - julia-compat-devel: [x86_64] 
-  - julia-debug 
-  - julia-devel 
-  - julia-doc 
   - juliaup 
   - julius 
   - junit 
@@ -13211,7 +13208,6 @@ unsorted:
   - libpst4 
   - libpsx2 
   - libpsx2-32bit: [x86_64] 
-  - libpt-devel 
   - libpt2_18_8 
   - libpt2_18_8-plugins-avc 
   - libpt2_18_8-plugins-pulse 
@@ -14766,7 +14762,7 @@ unsorted:
   - libwrc1 
   - libwslay0 
   - libwsman-devel 
-  - libwsman3 
+  - libwsman1 
   - libwsman_client5 
   - libwsman_clientpp-devel 
   - libwsman_clientpp1 
@@ -21326,6 +21322,7 @@ unsorted:
   - pstoedit-devel 
   - pthread-stubs-devel 
   - ptl-devel 
+  - ptlib-devel 
   - ptokax 
   - ptpd 
   - ptscotch-gnu-mpich-hpc 
@@ -24816,6 +24813,7 @@ unsorted:
   - python310-subscene-api 
   - python310-subst 
   - python310-suds 
+  - python310-sunpy 
   - python310-suntime 
   - python310-sure 
   - python310-svglib 
@@ -28047,6 +28045,7 @@ unsorted:
   - python38-vobject 
   - python38-voila 
   - python38-volatile 
+  - python38-volatility3 
   - python38-voluptuous 
   - python38-voluptuous-serialize 
   - python38-vsts 
@@ -43087,7 +43086,6 @@ unsorted:
   - vodovod 
   - voikkospell 
   - vokoscreenNG 
-  - volatility3 
   - volk 
   - volk-devel 
   - volk_modtool 
