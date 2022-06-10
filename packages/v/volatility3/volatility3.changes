@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jun 10 01:35:22 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v2.0.1 
+  - New plugins such as:
+          - Windows networking plugins
+          - Windows crashinfo and skeleton_key_check
+          - Linux kmsg plugin
+  - New layers: AVML and LeechCore
+  - QEMU layer performance optimization
+  - Improved access to Windows library symbols
+  - Better offline and remote support
+  - Improved documentation
+  - Improved working with python requirements
+  - Drop support for python 3.5
+
+- changed source to -- Source: v%{version}.tar.gz
+
+- add multi-python build support
+- add
+    - Obsoletes: volatility3 < %{version} 
+    - Provides:  volatility3 = %{version}
+
+-------------------------------------------------------------------
 Wed Aug 19 11:58:40 UTC 2020 - hpj@urpla.net
 
 - Update to version v1.0.0~git.20200818T091513.73f3c217:
