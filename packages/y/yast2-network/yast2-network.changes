@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  7 13:30:22 UTC 2022 - Martin Vidner <mvidner@suse.com>
+
+- Allow more than 6 domains in resolver search list (bsc#1200155).
+- 4.5.3
+
+-------------------------------------------------------------------
 Wed May 18 19:49:34 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - CFA NM: replace problematic characters when getting the filename
