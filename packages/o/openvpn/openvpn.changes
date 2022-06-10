@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun  5 00:08:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.7:
+  * Limited OpenSSL 3.0 support
+  * print OpenSSL error stack if decoding PKCS12 file fails
+  * fix omission of cipher-negotiation.rst in tarballs
+  * fix errno handling on Windows (Windows has different classes of
+    error codes, GetLastError() and C runtime errno, these should now
+    be handled correctly)
+  * fix PATH_MAX build failure in auth-pam.c
+  * fix t_net.sh self-test leaving around stale "ovpn-dummy0" interface
+  * fix overlong path names, leading to missing pkcs11-helper patch
+    in tarball
+
+-------------------------------------------------------------------
 Wed Mar 23 09:10:31 UTC 2022 - Reinhard Max <max@suse.com>
 
 - update to 2.5.6:
