@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jun 10 05:12:20 UTC 2022 - munix9@googlemail.com
+
+- Add fix-add-functional-include.patch (fix gcc 12 build)
+- Remove fix-pie-build.patch (obsolete)
+
+-------------------------------------------------------------------
+Wed Jan  5 13:34:09 UTC 2022 - munix9@googlemail.com
+
+- Update to version 31.0.3p1
+  * Fixes boringssl build failure with GCC 11.2.1 (e86eabe)
+  * Add boot.img manipulation tools (#52)
+  * Add Dynamic Partition Tools (#51)
+
+- Split parts of the main package into 'mkbootimg' and 'partition'
+- Remove sub-package 'python3' (avbtool is now part of the main
+  package, mkbootimg part of the sub-package 'mkbootimg')
+- Remove fix-install-python-tools.patch
+
+-------------------------------------------------------------------
 Sun Oct 24 07:56:40 UTC 2021 - munix9@googlemail.com
 
 - Update to version 31.0.3

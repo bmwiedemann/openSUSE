@@ -1,7 +1,7 @@
 diff -ruN a/CMakeLists.txt b/CMakeLists.txt
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -9,8 +9,7 @@
+@@ -6,8 +6,7 @@
  include(GNUInstallDirs)
  
  # Install bash/zsh completion files.

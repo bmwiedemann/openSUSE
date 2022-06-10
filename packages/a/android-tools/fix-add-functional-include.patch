@@ -1,0 +1,10 @@
+--- a/vendor/adb/tls/include/adb/tls/tls_connection.h
++++ b/vendor/adb/tls/include/adb/tls/tls_connection.h
+@@ -19,6 +19,7 @@
+ #include <stddef.h>
+ #include <stdint.h>
+ 
++#include <functional>
+ #include <string_view>
+ #include <vector>
+ 
