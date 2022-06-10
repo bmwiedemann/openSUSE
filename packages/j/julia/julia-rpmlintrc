@@ -1,2 +1,0 @@
-# https://github.com/JuliaLang/julia/issues/28564
-addFilter("E: devel-file-in-non-devel-package.*/usr/lib.*/julia/.*")
