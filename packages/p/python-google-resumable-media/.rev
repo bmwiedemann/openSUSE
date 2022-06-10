@@ -170,4 +170,12 @@
   * add user-agent on requests (#295) (forwarded request 967753 from glaubitz)</comment>
     <requestid>967754</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fea8164fb8fc55dc0c48c9569b4b4fea</srcmd5>
+    <version>2.3.3</version>
+    <time>1654869458</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981550</requestid>
+  </revision>
 </revisionlist>

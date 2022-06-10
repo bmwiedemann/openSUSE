@@ -1,0 +1,105 @@
+diff --git a/tests/system/requests/test_upload.py b/tests/system/requests/test_upload.py
+index 3dc92077..6f6991e8 100644
+--- a/tests/system/requests/test_upload.py
++++ b/tests/system/requests/test_upload.py
+@@ -20,7 +20,7 @@
+ import urllib.parse
+ 
+ import pytest  # type: ignore
+-import mock
++from unittest import mock
+ 
+ from google.resumable_media import common
+ from google import resumable_media
+diff --git a/tests/unit/requests/test__helpers.py b/tests/unit/requests/test__helpers.py
+index 0d4c7d17..dc940f2c 100644
+--- a/tests/unit/requests/test__helpers.py
++++ b/tests/unit/requests/test__helpers.py
+@@ -14,7 +14,7 @@
+ 
+ import http.client
+ 
+-import mock
++from unittest import mock
+ import pytest  # type: ignore
+ 
+ import requests.exceptions
+diff --git a/tests/unit/requests/test_download.py b/tests/unit/requests/test_download.py
+index 210973d7..ace0df7c 100644
+--- a/tests/unit/requests/test_download.py
++++ b/tests/unit/requests/test_download.py
+@@ -15,7 +15,7 @@
+ import http.client
+ import io
+ 
+-import mock
++from unittest import mock
+ import pytest  # type: ignore
+ 
+ from google.resumable_media import common
+diff --git a/tests/unit/requests/test_upload.py b/tests/unit/requests/test_upload.py
+index 3694c750..231bec85 100644
+--- a/tests/unit/requests/test_upload.py
++++ b/tests/unit/requests/test_upload.py
+@@ -16,7 +16,7 @@
+ import io
+ import json
+ 
+-import mock
++from unittest import mock
+ 
+ import google.resumable_media.requests.upload as upload_mod
+ 
+diff --git a/tests/unit/test__download.py b/tests/unit/test__download.py
+index 46026b16..21a232eb 100644
+--- a/tests/unit/test__download.py
++++ b/tests/unit/test__download.py
+@@ -15,7 +15,7 @@
+ import http.client
+ import io
+ 
+-import mock
++from unittest import mock
+ import pytest  # type: ignore
+ 
+ from google.resumable_media import _download
+diff --git a/tests/unit/test__helpers.py b/tests/unit/test__helpers.py
+index feedeb18..0bfbae42 100644
+--- a/tests/unit/test__helpers.py
++++ b/tests/unit/test__helpers.py
+@@ -17,7 +17,7 @@
+ import hashlib
+ import http.client
+ 
+-import mock
++from unittest import mock
+ import pytest  # type: ignore
+ 
+ from google.resumable_media import _helpers
+diff --git a/tests/unit/test__upload.py b/tests/unit/test__upload.py
+index d5f82089..110ed775 100644
+--- a/tests/unit/test__upload.py
++++ b/tests/unit/test__upload.py
+@@ -16,7 +16,7 @@
+ import io
+ import sys
+ 
+-import mock
++from unittest import mock
+ import pytest  # type: ignore
+ 
+ from google.resumable_media import _helpers
+diff --git a/tests/unit/test_common.py b/tests/unit/test_common.py
+index a8572bea..d96840c1 100644
+--- a/tests/unit/test_common.py
++++ b/tests/unit/test_common.py
+@@ -12,7 +12,7 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-import mock
++from unittest import mock
+ import pytest  # type: ignore
+ 
+ from google.resumable_media import common
+
