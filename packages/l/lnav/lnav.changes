@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  7 20:42:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add gcc12-includes.patch to fix build with gcc 12 
+
+-------------------------------------------------------------------
 Fri Feb 18 08:52:49 UTC 2022 - Marcin Bajor <marcin.bajor@gmail.com>
 
 - Add temporary patch (fix-for-upstream-sources.patch) for the upstram issue
