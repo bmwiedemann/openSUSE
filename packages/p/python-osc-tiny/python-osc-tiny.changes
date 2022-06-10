@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  9 11:53:07 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.6.0
+  * Support for the "Signature authentication scheme"
+  * Revised method to retrieve credentials from `osc`
+
+-------------------------------------------------------------------
 Tue May 17 13:03:24 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
 
 - Release 0.5.0
