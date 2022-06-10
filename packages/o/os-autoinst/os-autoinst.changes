@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 10 10:04:22 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1654845865.16d96d7:
+  * Simplify testapi methods _is_valid_result and match_has_tag
+  * Simplify testapi::check_var
+  * Use proper perl "signatures" in most of testapi
+  * t: Add test for testapi::x11_start_program
+  * t: Add test for set_var, get_var_array, check_var_array
+  * t: Add test for testapi::force_soft_failure
+  * t: Add test for testapi::init
+  * qemu: stop hard-coding resolution for PPC/ SPARC
+
+-------------------------------------------------------------------
 Wed Jun 08 02:04:01 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1654632693.a8e87a5:
