@@ -1,0 +1,80 @@
+From afc7132dfb212ac1f676a5ac36d29a9e06325645 Mon Sep 17 00:00:00 2001
+From: NeilBrown <neilb@suse.de>
+Date: Tue, 7 Jun 2022 14:22:11 -0400
+Subject: [PATCH] systemd: Apply all sysctl settings when NFS-related modules
+ are loaded
+
+sysctl settings (e.g.  /etc/sysctl.conf and others) are normally loaded
+once at boot.  If the module that implements some settings is no yet
+loaded, those settings don't get applied.
+
+Various NFS modules support various sysctl settings.  If they are loaded
+after boot, they miss out.
+
+So add commands to modprobe.d/50-nfs.conf to apply the relevant settings
+when the module is loaded.
+
+I have placed this in the "systemd" directory because it seemed the
+least bad choice.
+
+Signed-off-by: NeilBrown <neilb@suse.de>
+Signed-off-by: Steve Dickson <steved@redhat.com>
+---
+ systemd/50-nfs.conf |   16 ++++++++++++++++
+ systemd/Makefile.am |   10 ++++++++--
+ 2 files changed, 24 insertions(+), 2 deletions(-)
+ create mode 100644 systemd/50-nfs.conf
+
+--- /dev/null
++++ b/systemd/50-nfs.conf
+@@ -0,0 +1,16 @@
++# Ensure all NFS systctl settings get applied when modules load
++
++# sunrpc module supports "sunrpc.*" sysctls
++install sunrpc /sbin/modprobe --ignore-install sunrpc $CMDLINE_OPTS && /sbin/sysctl -q --pattern sunrpc --system
++
++# rpcrdma module supports sunrpc.svc_rdma.*
++install rpcrdma /sbin/modprobe --ignore-install rpcrdma $CMDLINE_OPTS && /sbin/sysctl -q --pattern sunrpc.svc_rdma --system
++
++# lockd module supports "fs.nfs.nlm*" and "fs.nfs.nsm*" sysctls
++install lockd /sbin/modprobe --ignore-install lockd $CMDLINE_OPTS && /sbin/sysctl -q --pattern fs.nfs.n[sl]m --system
++
++# nfsv4 module supports "fs.nfs.*" sysctls (nfs_callback_tcpport and idmap_cache_timeout)
++install nfsv4 /sbin/modprobe --ignore-install nfsv4 $CMDLINE_OPTS && /sbin/sysctl -q --pattern 'fs.nfs.(nfs_callback_tcpport|idmap_cache_timeout)' --system
++
++# nfs module supports "fs.nfs.*" sysctls
++install nfs /sbin/modprobe --ignore-install nfs $CMDLINE_OPTS && /sbin/sysctl -q --pattern fs.nfs --system
+--- a/systemd/Makefile.am
++++ b/systemd/Makefile.am
+@@ -2,6 +2,8 @@
+ 
+ MAINTAINERCLEANFILES = Makefile.in
+ 
++modprobe_files = 50-nfs.conf
++
+ unit_files =  \
+     nfs-client.target \
+     rpc_pipefs.target \
+@@ -51,7 +53,7 @@ endif
+ 
+ man5_MANS	= nfs.conf.man
+ man7_MANS	= nfs.systemd.man
+-EXTRA_DIST = $(unit_files) $(man5_MANS) $(man7_MANS)
++EXTRA_DIST = $(unit_files) $(modprobe_files) $(man5_MANS) $(man7_MANS)
+ 
+ generator_dir = $(unitdir)/../system-generators
+ 
+@@ -73,8 +75,12 @@ rpc_pipefs_generator_LDADD = ../support/
+ 
+ if INSTALL_SYSTEMD
+ genexec_PROGRAMS = nfs-server-generator rpc-pipefs-generator
+-install-data-hook: $(unit_files)
++install-data-hook: $(unit_files) $(modprobe_files)
+ 	mkdir -p $(DESTDIR)/$(unitdir)
+ 	cp $(unit_files) $(DESTDIR)/$(unitdir)
+ 	cp $(rpc_pipefs_mount_file) $(DESTDIR)/$(unitdir)/$(rpc_pipefsmount)
++else
++install-data-hook: $(modprobe_files)
+ endif
++	mkdir -p $(DESTDIR)/usr/lib/modprobe.d
++	cp $(modprobe_files) $(DESTDIR)/usr/lib/modprobe.d/

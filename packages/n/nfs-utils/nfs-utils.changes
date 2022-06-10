@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun  9 06:49:11 UTC 2022 - Neil Brown <nfbrown@suse.com>
+
+- 0001-systemd-Apply-all-sysctl-settings-when-NFS-related-m.patch
+  Ensure sysctl setting work (bsc#1199856)
+- 0002-Update-autoconfig-files-to-work-with-v2.71.patch
+- 0003-autoconf-change-tirpc-to-check-for-a-file-not-for-an.patch
+  Update for latest autoconf
+
+-------------------------------------------------------------------
 Sat May  7 12:17:24 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - switch to https urls

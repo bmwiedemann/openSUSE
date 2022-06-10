@@ -1627,4 +1627,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>977244</requestid>
   </revision>
+  <revision rev="171" vrev="32">
+    <srcmd5>4bed8da1fbcc39f13a2a158152c2bcdc</srcmd5>
+    <version>unknown</version>
+    <time>1654869438</time>
+    <user>dimstar_suse</user>
+    <comment>- 0001-systemd-Apply-all-sysctl-settings-when-NFS-related-m.patch
+  Ensure sysctl setting work (bsc#1199856)
+- 0002-Update-autoconfig-files-to-work-with-v2.71.patch
+- 0003-autoconf-change-tirpc-to-check-for-a-file-not-for-an.patch
+  Update for latest autoconf</comment>
+    <requestid>981442</requestid>
+  </revision>
 </revisionlist>

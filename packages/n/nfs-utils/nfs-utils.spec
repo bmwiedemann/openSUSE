@@ -43,6 +43,9 @@ Source26:       nfs.conf
 Source27:       nfs-kernel-server.tmpfiles.conf
 Patch0:         nfs-utils-1.0.7-bind-syntax.patch
 Patch1:         gcc12-fix.patch
+Patch2:         0001-systemd-Apply-all-sysctl-settings-when-NFS-related-m.patch
+Patch3:         0002-Update-autoconfig-files-to-work-with-v2.71.patch
+Patch4:         0003-autoconf-change-tirpc-to-check-for-a-file-not-for-an.patch
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -289,9 +292,10 @@ fi
 %{_unitdir}/rpc-svcgssd.service
 %{_unitdir}/rpc-svcgssd.service.d
 %{_unitdir}/var-lib-nfs-rpc_pipefs.mount
-%dir /usr/lib/systemd/system-generators
-/usr/lib/systemd/system-generators/nfs-server-generator
-/usr/lib/systemd/system-generators/rpc-pipefs-generator
+%dir %{_systemdgeneratordir}
+%{_systemdgeneratordir}/nfs-server-generator
+%{_systemdgeneratordir}/rpc-pipefs-generator
+%{_modprobedir}/50-nfs.conf
 %{_mandir}/man8/nfsdclddb.8%{ext_man}
 %{_mandir}/man8/nfsdclnts.8%{ext_man}
 %{_mandir}/man5/nfsmount.conf.5%{ext_man}
