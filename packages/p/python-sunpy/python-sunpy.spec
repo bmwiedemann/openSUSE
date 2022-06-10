@@ -16,11 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-# python-xmlsec doesn’t support 3.10 gh#mehcode/python-xmlsec#204
-%define skip_python310 1
 Name:           python-sunpy
-Version:        3.1.5
+Version:        4.0.0
 Release:        0
 Summary:        SunPy: Python for Solar Physics
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT
@@ -30,8 +27,8 @@ Source100:      python-sunpy-rpmlintrc
 # PATCH-FIX-OPENSSUSE sunpy-test-ignore-warnings.patch -- g#sunpy/sunpy#6030
 Patch1:         sunpy-test-ignore-warnings.patch
 BuildRequires:  %{python_module aioftp}
-BuildRequires:  %{python_module asdf >= 2.6}
-BuildRequires:  %{python_module astropy >= 4.2}
+BuildRequires:  %{python_module astropy >= 4.2.1}
+BuildRequires:  %{python_module base => 3.8}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module numpy-devel > 1.17.0}
 BuildRequires:  %{python_module packaging >= 19}
@@ -41,15 +38,13 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aioftp >= 0.17.1
-Requires:       python-astropy >= 4.2
+Requires:       python-astropy >= 4.2.1
 Requires:       python-numpy > 1.17.0
 Requires:       python-packaging >= 19
 Requires:       python-parfive >= 1.2.0
-%if 0%{?python_version_nodots} < 38
-Requires:       python-importlib_metadata
-%endif
 # SECTION extras_require:asdf
-Recommends:     python-asdf >= 2.6
+Recommends:     python-asdf >= 2.8
+Recommends:     python-asdf-astropy >= 0.1.1
 # /SECTION
 # SECTION extras_require:dask
 Suggests:       python-dask-array >= 2.0
@@ -88,7 +83,10 @@ Recommends:     python-pandas >= 1
 # SECTION test requirements (and extras)
 # even although we do not use tox and doctestplus, there are tests in the suite checking their existence.
 BuildRequires:  %{python_module Glymur >= 0.8.18}
+BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module SQLAlchemy >= 1.3.4}
+BuildRequires:  %{python_module asdf >= 2.8}
+BuildRequires:  %{python_module asdf-astropy >= 0.1.1}
 BuildRequires:  %{python_module beautifulsoup4 >= 4.0.0}
 BuildRequires:  %{python_module cdflib >= 0.3.19}
 BuildRequires:  %{python_module dask-array}
@@ -97,23 +95,23 @@ BuildRequires:  %{python_module extension-helpers}
 BuildRequires:  %{python_module h5netcdf}
 BuildRequires:  %{python_module h5py >= 3.1.0}
 BuildRequires:  %{python_module hypothesis >= 6.0.0}
-BuildRequires:  %{python_module importlib_metadata if %python-base < 3.8}
 BuildRequires:  %{python_module jplephem}
 BuildRequires:  %{python_module matplotlib >= 3.1.0}
 BuildRequires:  %{python_module mpl-animators >= 1.0.0}
 BuildRequires:  %{python_module pandas >= 0.24.0}
+BuildRequires:  %{python_module pytest >= 5.4}
 BuildRequires:  %{python_module pytest-astropy >= 0.8}
 BuildRequires:  %{python_module pytest-doctestplus >= 0.5}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-mpl >= 0.12}
 BuildRequires:  %{python_module pytest-xdist >= 1.27}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module reproject}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module scikit-image >= 0.16.0}
 BuildRequires:  %{python_module scipy >= 1.3.0}
 BuildRequires:  %{python_module tox}
 BuildRequires:  %{python_module zeep >= 3.4.0}
+BuildRequires:  python3-opencv
 # /SECTION
 %python_subpackages
 
@@ -132,15 +130,23 @@ export CFLAGS="%{optflags}"
 %install
 %python_install
 %{python_expand #
+sed -i -e 's@^#!/usr/bin/env python@#!%__$python@' %{buildroot}%{$python_sitearch}/sunpy/extern/distro.py
+chmod +x %{buildroot}%{$python_sitearch}/sunpy/extern/distro.py
 find %{buildroot}%{$python_sitearch} -name '*.h' -delete -print
-rm -r %{buildroot}%{$python_sitearch}/benchmarks
 %fdupes %{buildroot}%{$python_sitearch}
 }
 
 %check
 mkdir testdir
 pushd testdir
-%pytest_arch --pyargs sunpy -ra -n auto
+%{python_expand # no opencv for non-primary python3
+if [ "%{$python_provides}" != "python3" ]; then
+  $python_donttest=" or opencv or (test_transform and (test_nans or test_clipping))"
+fi
+}
+# fails because it does not find any opencv-python dist metadata (even for python3-opencv installed)
+donttest="test_self_test"
+%pytest_arch --pyargs sunpy -ra -n auto -k "not ($donttest ${$python_donttest})"
 popd
 
 %files %{python_files}
