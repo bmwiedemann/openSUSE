@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  9 09:36:18 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Let us use a %check section for testing 
+
+-------------------------------------------------------------------
 Fri Sep 10 12:58:32 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build dependencies: Add tex(newtxmath.sty) BuildRequires, but

@@ -36,4 +36,12 @@
 - Make it build again (forwarded request 918884 from dimstar)</comment>
     <requestid>921673</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>b9c6616d1ebcc181abb002d983ac2881</srcmd5>
+    <version>0.7+git114432435e4eadd54334df6b37fcae505079b49f</version>
+    <time>1654869445</time>
+    <user>dimstar_suse</user>
+    <comment>- Let us use a %check section for testing</comment>
+    <requestid>981469</requestid>
+  </revision>
 </revisionlist>

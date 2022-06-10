@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -100,8 +100,6 @@ autoreconf
 %configure --with-scheme48=%{_libdir}/scheme48-%{scheme}
 %make_build   SCHEME48VM=%{_libdir}/scheme48-%{scheme}/scheme48vm
 
-make test
-
 %if 0%{?bootstrap} == 0
 cp -p rx/README README.rx
 cp -p README.md README
@@ -129,6 +127,9 @@ ln -sf %{_bindir}/scsh %{buildroot}/bin/scsh
 rm -rf %{buildroot}%{_libdir}/scsh-%{scshver}/*.so
 rm -rf %{buildroot}%{_datadir}/scsh-%{scshver}
 %endif
+
+%check
+make test
 
 %files
 %defattr(-,root,root)
