@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun 10 09:43:00 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1654784458.53a0598:
+  * Fix permissions for markdown scripts in apparmor
+  * Avoid race condition in Selenium test helper `element_hidden`
+  * doc: Add note about openqa-worker-plain@.service
+  * Allow Markdown.pl in apparmor
+  * systemd: Depend on time being in sync if possible
+
+-------------------------------------------------------------------
 Wed Jun 08 01:44:49 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1654597213.d04d22b:
