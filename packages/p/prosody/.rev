@@ -514,4 +514,41 @@
   * Easy use of Mozilla TLS recommendations presets</comment>
     <requestid>962612</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>17d8c45e30ce2e43474e1a3c6280b05c</srcmd5>
+    <version>0.12.1</version>
+    <time>1654869453</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.1:
+  Fixes and improvements:
+  * mod_http (and dependent modules): Make CORS opt-in by default (#1731)
+  * mod_http: Reintroduce support for disabling or limiting CORS (#1730)
+  * net.unbound: Disable use of hosts file by default (fixes #1737)
+  * MUC: Allow kicking users with the same affiliation as the kicker (fixes #1724 and improves Jitsi Meet compatibility)
+  * mod_tombstones: Add caching to improve performance on busy servers (fixes #1728: mod_tombstone: inefficient I/O with internal storage)
+  Minor changes:
+  * prosodyctl check config: Report paths of loaded configuration files (#1729)
+  * prosodyctl about: Report version of lua-readline
+  * prosodyctl: check config: Skip bare JID components in orphan check
+  * prosodyctl: check turn: Fail with error if our own address is supplied for the ping test
+  * prosodyctl: check turn: warn about external port mismatches behind NAT
+  * mod_turn_external: Update status and friendlier handling of missing secret option (#1727)
+  * prosodyctl: Pass server when listing (outdated) plugins (fix #1738: prosodyctl list --outdated does not handle multiple versions of a module)
+  * util.prosodyctl: check turn: ensure a result is always returned from a check (thanks eTaurus)
+  * util.prosodyctl: check turn: Report lack of TURN services as a problem #1749
+  * util.random: Ensure that native random number generator works before using it, falling back to /dev/urandom (#1734)
+  * mod_storage_xep0227: Fix mapping of nodes without explicit configuration
+  * mod_admin_shell: Fix error in ‘module:info()’ when statistics is not enabled (#1754)
+  * mod_admin_socket: Compat for luasocket prior to unix datagram support
+  * mod_admin_socket: Improve error reporting when socket can’t be created (#1719)
+  * mod_cron: Record last time a task runs to ensure correct intervals (#1751)
+  * core.moduleapi, core.modulemanager: Fix internal flag affecting logging in in some global modules, like mod_http (#1736, #1748)
+  * core.certmanager: Expand debug messages about cert lookups in index
+  * configmanager: Clearer errors when providing unexpected values after VirtualHost (#1735)
+  * mod_storage_xep0227: Support basic listing of PEP nodes in absence of pubsub#admin data
+  * mod_storage_xep0227: Handle missing {pubsub#owner}pubsub element (fixes #1740: mod_storage_xep0227 tracebacks reading non-existent PEP store)
+  * mod_storage_xep0227: Fix conversion of SCRAM into internal format (#1741)
+  * mod_external_services: Move error message to correct place (fix #1725: mod_external_services: Misplaced textual error message)</comment>
+    <requestid>981547</requestid>
+  </revision>
 </revisionlist>
