@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jun  9 00:22:16 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+- Update to runc v1.1.3. Upstream changelog is available from
+  https://github.com/opencontainers/runc/releases/tag/v1.1.3.
+  (Includes a fix for bsc#1200088.)
+
+  * Our seccomp `-ENOSYS` stub now correctly handles multiplexed syscalls on
+    s390 and s390x. This solves the issue where syscalls the host kernel did not
+    support would return `-EPERM` despite the existence of the `-ENOSYS` stub
+    code (this was due to how s390x does syscall multiplexing).
+  * Retry on dbus disconnect logic in libcontainer/cgroups/systemd now works as
+    intended; this fix does not affect runc binary itself but is important for
+    libcontainer users such as Kubernetes.
+  * Inability to compile with recent clang due to an issue with duplicate
+    constants in libseccomp-golang.
+  * When using systemd cgroup driver, skip adding device paths that don't exist,
+    to stop systemd from emitting warnings about those paths.
+  * Socket activation was failing when more than 3 sockets were used.
+  * Various CI fixes.
+  * Allow to bind mount /proc/sys/kernel/ns_last_pid to inside container.
+  * runc static binaries are now linked against libseccomp v2.5.4.
+- Remove upstreamed patches:
+  - bsc1192051-0001-seccomp-enosys-always-return-ENOSYS-for-setup-2-on-s390x.patch
+
+-------------------------------------------------------------------
 Mon May 23 03:02:32 UTC 2022 - Aleksa Sarai <asarai@suse.com>
 
 - Backport <https://github.com/opencontainers/runc/pull/3474> to fix issues

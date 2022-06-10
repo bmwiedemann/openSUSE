@@ -22,12 +22,12 @@
 %define git_short   a916309fff0f
 
 # Package-wide golang version
-%define go_version 1.17
+%define go_version 1.18
 %define project github.com/opencontainers/runc
 
 Name:           runc
-Version:        1.1.2
-%define _version 1.1.2
+Version:        1.1.3
+%define _version 1.1.3
 Release:        0
 Summary:        Tool for spawning and running OCI containers
 License:        Apache-2.0
@@ -36,8 +36,6 @@ URL:            https://github.com/opencontainers/runc
 Source0:        https://github.com/opencontainers/runc/releases/download/v%{_version}/runc.tar.xz#/runc-%{version}.tar.xz
 Source1:        https://github.com/opencontainers/runc/releases/download/v%{_version}/runc.tar.xz.asc#/runc-%{version}.tar.xz.asc
 Source2:        runc.keyring
-# OPENSUSE-FIX-UPSTREAM: Backport of <https://github.com/opencontainers/runc/pull/3474>. bsc#1192051 bsc#1199565
-Patch1:         bsc1192051-0001-seccomp-enosys-always-return-ENOSYS-for-setup-2-on-s390x.patch
 BuildRequires:  fdupes
 BuildRequires:  go-go-md2man
 # Due to a limitation in openSUSE's Go packaging we cannot have a BuildRequires
@@ -70,8 +68,6 @@ and has grown to become a separate project entirely.
 
 %prep
 %setup -q -n %{name}-%{_version}
-# bsc#1192051 bsc#1199565
-%patch1 -p1
 
 %build
 # build runc
