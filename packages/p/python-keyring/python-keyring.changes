@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  8 20:01:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.5.1:
+  * The correct config root is now used on Windows
+
+-------------------------------------------------------------------
 Mon Jan 10 22:45:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.5.0:

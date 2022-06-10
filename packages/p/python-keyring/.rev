@@ -496,4 +496,13 @@
   * #542: Change get_credential to return generic Credential.</comment>
     <requestid>945432</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>0e32b77601f5f47ceb65b845a4806648</srcmd5>
+    <version>23.5.1</version>
+    <time>1654869431</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.5.1:
+  * The correct config root is now used on Windows</comment>
+    <requestid>981383</requestid>
+  </revision>
 </revisionlist>

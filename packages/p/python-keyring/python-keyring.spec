@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-keyring
-Version:        23.5.0
+Version:        23.5.1
 Release:        0
 Summary:        System keyring service access from Python
 License:        MIT AND Python-2.0
@@ -51,6 +51,7 @@ from python. It can be used in any application that needs safe password storage.
 
 %prep
 %autosetup -p1 -n keyring-%{version}
+echo "import setuptools; setuptools.setup()" > setup.py
 
 %if 0%{?sle_version}
 # keyring is not setting the egg version correctly without this:
