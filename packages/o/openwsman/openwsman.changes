@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 28 00:10:25 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve rpmlint report "libwsman3.x86_64: E:
+  shlib-policy-name-error SONAME: libwsman.so.1, expected package
+  suffix: 1" (packaging bug introduced by the update to v2.6.1 on
+  Aug 28 2015)
+
+-------------------------------------------------------------------
 Wed Oct 13 12:23:48 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

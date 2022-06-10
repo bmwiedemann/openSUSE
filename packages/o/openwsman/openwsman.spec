@@ -1,7 +1,7 @@
 #
 # spec file for package openwsman
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -155,7 +155,7 @@ Source1:        %{name}.rpmlintrc
 Source21:       %{name}.pam.rh
 Source22:       %{name}.pam
 Patch1:         openwsman-initscript.patch
-Patch2:	harden_openwsman.service.patch
+Patch2:         harden_openwsman.service.patch
 %if 0%{?fedora_version} || 0%{?centos_version} || 0%{?rhel_version} || 0%{?fedora} || 0%{?rhel}
 %define pamfile %{S:21}
 %else
@@ -171,14 +171,12 @@ OpenWSMAN is an implementation of the WS-Management protocol stack.
 Web Services for Management (WS-MAN) is a specification for managing
 computer systems using web services standards.
 
-%package -n libwsman3
+%package -n libwsman1
 Summary:        An implementation of the WS-MAN specification
 Group:          System/Libraries
-Provides:       openwsman = %{version}
-Obsoletes:      libwsman1 < %{version}
-Obsoletes:      openwsman < %{version}
+Conflicts:      libwsman3
 
-%description -n libwsman3
+%description -n libwsman1
 OpenWSMAN is an implementation of the WS-Management protocol stack.
 Web Services for Management (WS-MAN) is a specification for managing
 computer systems using web services standards.
@@ -202,7 +200,8 @@ Group:          Development/Libraries/C and C++
 Provides:       openwsman-devel = %{version}
 Obsoletes:      openwsman-devel < %{version}
 Requires:       %{name}-server = %{version}
-Requires:       libwsman3 = %{version}
+Requires:       libwsman1 = %{version}-%{release}
+Requires:       libwsman_client5 = %{version}-%{release}
 Requires:       libxml2-devel
 Requires:       pam-devel
 Requires:       sblim-sfcc-devel
@@ -233,7 +232,6 @@ Requires:       libwsman_clientpp1 = %{version}
 OpenWSMAN is an implementation of the WS-Management protocol stack.
 
 Development files for the C++ interface to the OpenWSMAN client library.
-
 
 %package server
 Requires(pre):  sed coreutils grep diffutils /bin/hostname
@@ -270,6 +268,7 @@ This package provides Python3 bindings to access the OpenWSMAN client
 API.
 
 %else
+
 %package python
 Summary:        Python bindings for OpenWSMAN client API
 Group:          Development/Libraries/Python
@@ -332,6 +331,7 @@ This package provides Ruby bindings to access the OpenWSMAN client API.
 %package ruby-docs
 Summary:        HTML documentation for OpenWSMAN Ruby bindings
 Group:          Documentation/HTML
+BuildArch:      noarch
 
 %description ruby-docs
 This package provides HTML documentation for the OpenWSMAN Ruby
@@ -358,7 +358,7 @@ This package provides Perl bindings to access the OpenWSMAN client API.
 
 %package java
 Requires:       java
-Requires:       libwsman3 = %{version}
+Requires:       libwsman1 = %{version}
 Summary:        Java bindings for OpenWSMAN client API
 Group:          System/Management
 
@@ -397,7 +397,7 @@ mkdir build
 export RPM_OPT_FLAGS="$RPM_OPT_FLAGS -DNO_SSL_CALLBACK"
 %endif
 # SLES 10 needs explicit java bytecode target
-%if 0%{?suse_version} == 1010 || 0%{?suse_version} == 1110 
+%if 0%{?suse_version} == 1010 || 0%{?suse_version} == 1110
 export EXPLICIT_SOURCE=1.5
 export EXPLICIT_TARGET=1.5
 %endif
@@ -465,8 +465,8 @@ install -m 644 %{pamfile} %{buildroot}/%{_sysconfdir}/pam.d/openwsman
 rm -f %{buildroot}/%{_bindir}/winrs
 %endif
 
-%post -n libwsman3 -p /sbin/ldconfig
-%postun -n libwsman3 -p /sbin/ldconfig
+%post -n libwsman1 -p /sbin/ldconfig
+%postun -n libwsman1 -p /sbin/ldconfig
 
 %post -n libwsman_client5 -p /sbin/ldconfig
 %postun -n libwsman_client5 -p /sbin/ldconfig
@@ -522,7 +522,7 @@ rm -f /var/log/wsmand.log
 
 %postun -n libwsman_clientpp1 -p /sbin/ldconfig
 
-%files -n libwsman3
+%files -n libwsman1
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog README.md TODO src/plugins/redirect/redirect-README
 %license COPYING
@@ -551,6 +551,7 @@ rm -f /var/log/wsmand.log
 %{python3_sitearch}/*.so
 %{python3_sitearch}/*.py*
 %else
+
 %files python
 %defattr(-,root,root)
 %{python_sitearch}/*.so
