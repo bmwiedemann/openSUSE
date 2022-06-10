@@ -19,4 +19,26 @@
     installation of the package.</comment>
     <requestid>868442</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9ace81918e1969f442652baf0f18bfc7</srcmd5>
+    <version>1.0.3</version>
+    <time>1654869433</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.3:
+  * Mitigated the coveralls HTTP status 422 by pinning coveralls-python to &lt;3.0.0 (issue #55).
+  * Fixed issues raised by new Pylint 2.9 and 2.10.
+  * Fixed a dependency error that caused importlib-metadata to be installed on
+    Python 3.8, while it is included in the Python base.
+  * Disabled new Pylint issue 'consider-using-f-string', since f-strings were
+    introduced only in Python 3.6.
+  * Fixed install error of wrapt 1.13.0 on Python 2.7 on Windows due to lack of
+    MS Visual C++ 9.0 on GitHub Actions, by pinning it to &lt;1.13.
+  * Fixed potential issue with Sphinx/docutils versions on Python 2.7.
+  * Fixed error when installing virtualenv in install test on Python 2.7.
+  * Fixed that the added setup.py commands (test, leaktest, installtest) were
+    not displayed. They are now displayed at verbosity level 1 (using '-v').
+  * Support for Python 3.10: Added Python 3.10 in GitHub Actions tests, and in package metadata.
+  * Removed old tools that were needed for travis and Appveyor but no longer on</comment>
+    <requestid>981385</requestid>
+  </revision>
 </revisionlist>
