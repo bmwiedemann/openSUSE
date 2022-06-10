@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 09 17:10:17 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.37.2:
+  * Bump github.com/hashicorp/go-getter from 1.5.11 to 1.6.1 (#2131)
+  * Check in Pull Request template (#2124)
+
+-------------------------------------------------------------------
 Sat May 14 08:25:49 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.37.1:
