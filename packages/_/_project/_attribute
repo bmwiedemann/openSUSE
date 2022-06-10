@@ -6,7 +6,7 @@
     <value>last_seen:
   boo#1172073: '20220516'
   boo#1176553: '20220311'
-  boo#1183454: '20220608'
+  boo#1183454: '20220609'
   boo#1189869: '20211207'
   boo#1190434: '20220608'
   boo#1190670: '20211128'
@@ -80,10 +80,10 @@
   boo#1199925: '20220601'
   boo#1200275: '20220608'
   bsc#1161276: '20220608'
-  bsc#1191684: '20220608'
+  bsc#1191684: '20220609'
   bsc#1194208: '20220216'
   bsc#1196925: '20220314'
-  bsc#1198101: '20220608'
+  bsc#1198101: '20220609'
   bsc#1198235: '20220503'
   gh#os-autoinst/os-autoinst-distri-opensuse#13666: '20211129'
   gh#os-autoinst/os-autoinst-distri-opensuse#14599: '20220328'
@@ -151,15 +151,15 @@
   poo#110581: '20220608'
   poo#110740: '20220517'
   poo#110872: '20220517'
-  poo#111036: '20220608'
+  poo#111036: '20220609'
   poo#111069: '20220530'
   poo#111266: '20220608'
   poo#111416: '20220525'
   poo#111479: '20220608'
   poo#111485: '20220523'
-  poo#111551: '20220607'
+  poo#111551: '20220609'
   poo#111596: '20220525'
-  poo#111599: '20220608'
+  poo#111599: '20220609'
   poo#111971: '20220601'
   poo#112241: '20220608'
   poo#112244: '20220608'
@@ -519,10 +519,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20220609'
 published: '20220608'
 publishing: '20220608'
-testing: '20220608'
+testing: '20220609'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
