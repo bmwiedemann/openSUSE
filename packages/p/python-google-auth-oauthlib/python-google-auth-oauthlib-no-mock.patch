@@ -1,0 +1,48 @@
+diff -upr google-auth-oauthlib-0.5.1.orig/tests/unit/test_flow.py google-auth-oauthlib-0.5.1/tests/unit/test_flow.py
+--- google-auth-oauthlib-0.5.1.orig/tests/unit/test_flow.py	2022-06-08 13:49:08.899236362 +0200
++++ google-auth-oauthlib-0.5.1/tests/unit/test_flow.py	2022-06-08 13:49:08.903236386 +0200
+@@ -21,7 +21,7 @@ import re
+ import random
+ import socket
+ 
+-import mock
++from unittest import mock
+ import pytest
+ import requests
+ import urllib
+diff -upr google-auth-oauthlib-0.5.1.orig/tests/unit/test_helpers.py google-auth-oauthlib-0.5.1/tests/unit/test_helpers.py
+--- google-auth-oauthlib-0.5.1.orig/tests/unit/test_helpers.py	2022-06-08 13:49:08.899236362 +0200
++++ google-auth-oauthlib-0.5.1/tests/unit/test_helpers.py	2022-06-08 13:49:08.903236386 +0200
+@@ -16,7 +16,7 @@ import datetime
+ import json
+ import os
+ 
+-import mock
++from unittest import mock
+ import pytest
+ 
+ from google_auth_oauthlib import helpers
+diff -upr google-auth-oauthlib-0.5.1.orig/tests/unit/test_interactive.py google-auth-oauthlib-0.5.1/tests/unit/test_interactive.py
+--- google-auth-oauthlib-0.5.1.orig/tests/unit/test_interactive.py	2022-06-08 13:49:08.899236362 +0200
++++ google-auth-oauthlib-0.5.1/tests/unit/test_interactive.py	2022-06-08 13:49:08.903236386 +0200
+@@ -14,7 +14,7 @@
+ 
+ import socket
+ 
+-import mock
++from unittest import mock
+ import pytest
+ 
+ 
+diff -upr google-auth-oauthlib-0.5.1.orig/tests/unit/test_tool.py google-auth-oauthlib-0.5.1/tests/unit/test_tool.py
+--- google-auth-oauthlib-0.5.1.orig/tests/unit/test_tool.py	2022-06-08 13:49:08.899236362 +0200
++++ google-auth-oauthlib-0.5.1/tests/unit/test_tool.py	2022-06-08 13:49:08.903236386 +0200
+@@ -19,7 +19,7 @@ import tempfile
+ 
+ import click.testing
+ import google.oauth2.credentials
+-import mock
++from unittest import mock
+ import pytest
+ 
+ import google_auth_oauthlib.flow

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun  8 11:56:35 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+- added patches
+  fix https://github.com/googleapis/google-auth-library-python-oauthlib/issues/207
+  + python-google-auth-oauthlib-no-mock.patch
+
+-------------------------------------------------------------------
 Wed Apr 13 11:59:18 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.5.1

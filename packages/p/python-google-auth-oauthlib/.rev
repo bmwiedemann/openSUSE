@@ -66,4 +66,12 @@
   * remove dependency on `six` (#146), closes (#145) (forwarded request 969855 from glaubitz)</comment>
     <requestid>969866</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>dd8d9aa64aeac2db6aa0f45ef2dfd569</srcmd5>
+    <version>0.5.1</version>
+    <time>1654869456</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981537</requestid>
+  </revision>
 </revisionlist>
