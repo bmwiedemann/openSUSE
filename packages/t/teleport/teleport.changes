@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Jun 10 19:32:42 UTC 2022 - kastl@b1-systems.de
+
+- skipped non-existent version 9.3.3
+- Update to version 9.3.4:
+  * Release 9.3.4 (#13315)
+  * Remove rdpclient's Cargo.lock (#13290)
+  * [v9] Improve resourceAccessChecker performance (#13263)
+  * Remove outdated MySQL DBeaver note (#13272)
+  * Backport #12183 to branch/v9 (#13248)
+  * (v9) Security fixes (#13301)
+  * [v9] Add missing flags to "tctl auth sign" docs (#13279)
+  * Document `tsh --mfa-mode` flag (#13264)
+  * [v9] Expand --mfa-mode and disable stdin hijack by default (#13134) (#13212)
+  * [auto] Update webassets in branch/v9 (#13265)
+  * [v9] Add S3:AbortMultipartUpload to AWS IAM policies (#13235)
+  * Make windows terminal keep up with real time (#13221)
+  * [v9] docs: Fix proxy config for GCP (#13259)
+  * [v9] Label desktops based on the content of LDAP attributes (#13238)
+  * Reorganize the docs homepage menu (#13247)
+  * Support proxy protocol v2 in MySQL (#12424) (#12993)
+  * fix typo in RBAC guides.mdx (#13172)
+  * Edit tctl instructions to clarify remote login (#13078)
+  * Prereqs for tctl and enterprise, cloud flow (#12998)
+  * Backport #12544 to branch/v9 (#13110)
+  * Add a link from the older docs versions page (#12953)
+  * Backport #12504 to branch/v9 (#13112)
+  * [v9] Simplify reexec on linux (#13119)
+  * Change tsh to only print non exit errors on exit (#12903)
+  * Filter out invalid EC2 tag keys (#13131)
+  * Update to Go 1.17.11 (#13104)
+  * Add JWT auth guide for ElasticSearch (#12612)
+  * Add disabled imds client by default for integration tests (#13109)
+  * [v9] Cloud customer auth servers use port 443 (#13066)
+  * Fix EC2 labels concurrent write (#13072)
+  * [v9] Docs Backports (#12894)
+  * Add ap-south-1 (Mumbai) as a cloud proxy region
+  * OIDC multiple redirect URLs (#13046)
+  * Backport #12038 to branch/v9 (#12642)
+  * V9: Backport #12898 #12855  (#13065)
+  * docs version update to 9.3.0 (#13004)
+  * Automatically import EC2 tags (#12593)
+
+-------------------------------------------------------------------
 Wed Jun 01 11:28:24 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 9.3.2:
