@@ -1411,4 +1411,26 @@ Thu Jan  9 17:33:31 UTC 2014 - fridrich.strba@suse.com
     <comment></comment>
     <requestid>962877</requestid>
   </revision>
+  <revision rev="172" vrev="4">
+    <srcmd5>0de0cd98f3f1923401b8fdd06ae4cb40</srcmd5>
+    <version>1.14.0</version>
+    <time>1655048212</time>
+    <user>dimstar_suse</user>
+    <comment>- version provides
+- add split provides
+- remove unused/obsolete pre_checkin.sh
+
+- The great dbus package split of 22, in preperation for replacing
+  dbus-daemon with dbus-broker currently there is no functional
+  difference that will change later, this follows a similar setup
+  to RedHat and Debian.
+  * dbus-daemon is now in its own separate package
+  * Create a dbus-1-common package with all the files and config
+    that are shared between the dbus-daemon and dbus-broker
+    implementations.
+  * Create a dbus-1-tools package with the tools eventually we will
+    likely want to move to only recommending this package Redhat and
+    Debian have both already gone down this path.</comment>
+    <requestid>981473</requestid>
+  </revision>
 </revisionlist>

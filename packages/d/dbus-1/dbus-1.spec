@@ -52,20 +52,40 @@ Requires:       alts
 Requires(post): %{_libname} = %{version}
 Requires(post): diffutils
 Requires(pre):  permissions
-Provides:       dbus-launch
+Provides:       dbus-launch = %{version}
 %sysusers_requires
 %if %{with selinux}
 BuildRequires:  libselinux-devel
 %endif
+Requires:       dbus-1-common >= %{version}
+# Later this should move to Recommends
+Requires:       dbus-1-tools >= %{version}
+# Later on change this to just dbus-broker
+Requires:       dbus-service >= %{version}
+Recommends:     dbus-1-daemon >= %{version}
 
 %package -n %{_libname}
 Summary:        Library package for D-Bus
+Requires:       dbus-1-common >= %{version}
+
+%package common
+Summary:        D-BUS message bus configuration
+BuildArch:      noarch
+
+%package daemon
+Summary:        D-Bus message bus daemon
+Provides:       dbus-1:%{_bindir}/dbus-daemon
+Provides:       dbus-service = %{version}
 
 %package devel
 Summary:        Developer package for D-Bus
 Requires:       %{_libname} = %{version}
 Requires:       dbus-1 = %{version}
 Requires:       glibc-devel
+
+%package tools
+Summary:        Tools that go along with dbus
+Provides:       dbus-1:%{_bindir}/dbus-monitor
 
 %description
 D-Bus is a message bus system, a simple way for applications to talk to
@@ -83,6 +103,14 @@ a general one-to-one message passing framework, which can be used by
 any two apps to communicate directly (without going through the message
 bus daemon).
 
+%description common
+D-Bus is a message bus system, The dbus-common package provides the configuration and setup files for D-Bus
+implementations to provide a System and User Message Bus.
+
+%description daemon
+D-Bus is a message bus system, This package contains the original
+dbus-daemon to make it easier to switch to dbus-broker
+
 %description devel
 D-Bus is a message bus system, a simple way for applications to talk to
 one another. D-Bus supplies both a system daemon and a
@@ -90,6 +118,10 @@ per-user-login-session daemon. Also, the message bus is built on top of
 a general one-to-one message passing framework, which can be used by
 any two apps to communicate directly (without going through the message
 bus daemon).
+
+%description tools
+D-Bus is a message bus system, these are some of the tools that go along
+with it.
 
 %prep
 %setup -q -n %{_name}-%{version}
@@ -201,45 +233,18 @@ fi
 %dir %{_libexecdir}/dbus-1/
 %license COPYING
 %doc AUTHORS NEWS README
-%config(noreplace) %{_sysconfdir}/dbus-1/session.conf
-%config(noreplace) %{_sysconfdir}/dbus-1/system.conf
-%{_datadir}/dbus-1/session.conf
-%{_datadir}/dbus-1/system.conf
-%{_bindir}/dbus-cleanup-sockets
-%{_bindir}/dbus-daemon
-%{_bindir}/dbus-monitor
-%{_bindir}/dbus-run-session
-%{_bindir}/dbus-send
-%{_bindir}/dbus-test-tool
-%{_bindir}/dbus-update-activation-environment
-%{_bindir}/dbus-uuidgen
-%{_mandir}/man1/dbus-cleanup-sockets.1%{?ext_man}
-%{_mandir}/man1/dbus-daemon.1%{?ext_man}
-%{_mandir}/man1/dbus-monitor.1%{?ext_man}
-%{_mandir}/man1/dbus-run-session.1%{?ext_man}
-%{_mandir}/man1/dbus-send.1%{?ext_man}
-%{_mandir}/man1/dbus-test-tool.1%{?ext_man}
-%{_mandir}/man1/dbus-update-activation-environment.1%{?ext_man}
-%{_mandir}/man1/dbus-uuidgen.1%{?ext_man}
-%{_mandir}/man1/dbus-launch.1%{?ext_man}
-%{_sbindir}/rcdbus
+
 # See doc/system-activation.txt in source tarball for the rationale
 # behind these permissions
 %attr(4750,root,messagebus) %verify(not mode) %{_libexecdir}/dbus-1/dbus-daemon-launch-helper
 %ghost /run/dbus
 %ghost %{_localstatedir}/lib/dbus/machine-id
-%{_prefix}/lib/sysusers.d/dbus.conf
-%{_prefix}/lib/tmpfiles.d/dbus.conf
 %{_unitdir}/dbus.service
-%{_unitdir}/dbus.socket
 %dir %{_unitdir}/multi-user.target.wants
 %{_unitdir}/multi-user.target.wants/dbus.service
 %dir %{_unitdir}/sockets.target.wants
 %{_unitdir}/sockets.target.wants/dbus.socket
 %{_userunitdir}/dbus.service
-%{_userunitdir}/dbus.socket
-%dir %{_userunitdir}/sockets.target.wants
-%{_userunitdir}/sockets.target.wants/dbus.socket
 %dir %{_datadir}/libalternatives
 %dir %{_datadir}/libalternatives/dbus-launch
 %{_datadir}/libalternatives/dbus-launch/10.conf
@@ -248,8 +253,10 @@ fi
 
 %files -n %{_libname}
 %{_libdir}/libdbus-1.so.*
-# Own those directories in the library instead of dbus-1, since dbus users
-# often ship files there
+
+%files common
+%config(noreplace) %{_sysconfdir}/dbus-1/session.conf
+%config(noreplace) %{_sysconfdir}/dbus-1/system.conf
 %dir %{_sysconfdir}/dbus-1
 %dir %{_sysconfdir}/dbus-1/session.d
 %dir %{_sysconfdir}/dbus-1/system.d
@@ -258,6 +265,26 @@ fi
 %dir %{_datadir}/dbus-1/services
 %dir %{_datadir}/dbus-1/system.d
 %dir %{_datadir}/dbus-1/system-services
+%dir %{_userunitdir}/sockets.target.wants
+%{_userunitdir}/sockets.target.wants/dbus.socket
+%{_prefix}/lib/sysusers.d/dbus.conf
+%{_prefix}/lib/tmpfiles.d/dbus.conf
+%{_datadir}/dbus-1/session.conf
+%{_datadir}/dbus-1/system.conf
+%{_unitdir}/dbus.socket
+%{_userunitdir}/dbus.socket
+
+%files daemon
+%{_bindir}/dbus-cleanup-sockets
+%{_bindir}/dbus-daemon
+%{_bindir}/dbus-run-session
+%{_bindir}/dbus-test-tool
+%{_mandir}/man1/dbus-cleanup-sockets.1%{?ext_man}
+%{_mandir}/man1/dbus-daemon.1%{?ext_man}
+%{_mandir}/man1/dbus-run-session.1%{?ext_man}
+%{_mandir}/man1/dbus-test-tool.1%{?ext_man}
+%{_mandir}/man1/dbus-launch.1%{?ext_man}
+%{_sbindir}/rcdbus
 
 %files devel
 %{_includedir}/*
@@ -267,5 +294,15 @@ fi
 %{_libdir}/pkgconfig/dbus-1.pc
 %{_libdir}/cmake/DBus1
 %{_datadir}/xml/dbus-1
+
+%files tools
+%{_bindir}/dbus-monitor
+%{_bindir}/dbus-send
+%{_bindir}/dbus-update-activation-environment
+%{_bindir}/dbus-uuidgen
+%{_mandir}/man1/dbus-monitor.1%{?ext_man}
+%{_mandir}/man1/dbus-send.1%{?ext_man}
+%{_mandir}/man1/dbus-update-activation-environment.1%{?ext_man}
+%{_mandir}/man1/dbus-uuidgen.1%{?ext_man}
 
 %changelog

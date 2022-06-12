@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jun  8 12:36:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- version provides
+- add split provides
+- remove unused/obsolete pre_checkin.sh
+
+-------------------------------------------------------------------
+Thu May 26 03:24:08 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- The great dbus package split of 22, in preperation for replacing
+  dbus-daemon with dbus-broker currently there is no functional
+  difference that will change later, this follows a similar setup
+  to RedHat and Debian.
+  * dbus-daemon is now in its own separate package
+  * Create a dbus-1-common package with all the files and config
+    that are shared between the dbus-daemon and dbus-broker
+    implementations.
+  * Create a dbus-1-tools package with the tools eventually we will
+    likely want to move to only recommending this package Redhat and
+    Debian have both already gone down this path.
+
+-------------------------------------------------------------------
 Thu Mar 17 21:00:39 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Drop use of %{with libalternatives}, there's no such bcond defined
