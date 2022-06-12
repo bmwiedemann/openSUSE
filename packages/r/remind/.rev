@@ -435,4 +435,12 @@
 - BUG FIX: Always interpret $Latitude and $Longitude input values in the</comment>
     <requestid>967431</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f3a477f8bc6a0b9c8770b52d48ccde3e</srcmd5>
+    <version>4.0.1</version>
+    <time>1655048495</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>982152</requestid>
+  </revision>
 </revisionlist>
