@@ -1,0 +1,14 @@
+diff -Naur FreeFileSync_11.19_Source_orig/wx+/dc.h FreeFileSync_11.19_Source/wx+/dc.h
+--- FreeFileSync_11.19_Source_orig/wx+/dc.h	2022-04-16 20:03:18.000000000 +0200
++++ FreeFileSync_11.19_Source/wx+/dc.h	2022-06-11 16:08:23.827967980 +0200
+@@ -91,8 +91,8 @@
+ inline
+ int getDPI()
+ {
+-#ifndef wxHAS_DPI_INDEPENDENT_PIXELS
+-#error why is wxHAS_DPI_INDEPENDENT_PIXELS not defined?
++#ifndef wxHAVE_DPI_INDEPENDENT_PIXELS
++#error why is wxHAVE_DPI_INDEPENDENT_PIXELS not defined?
+ #endif
+     //GTK2 doesn't properly support high DPI: https://freefilesync.org/forum/viewtopic.php?t=6114
+     //=> requires general fix at wxWidgets-level

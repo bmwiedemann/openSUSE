@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Jun 11 15:06:02 UTC 2022 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 11.19
+  - Improved performance for huge exclusion filter lists: linear to constant(!) time
+  - Support sync with Google Drive starred folders
+  -   - Access "My Computers" (as created by Google Backup and Sync) if starred
+  - Western Digital Mycloud NAS: fixed ERROR_ALREADY_EXISTS when changing case
+  - Added per-file progress for "copy to" function
+  - Have filter wildcard ? not match path separator
+  - Work around WBEM_E_INVALID_NAMESPACE error during installation
+  - Fixed login user incorrectly displayed as root (macOS)
+  - Save Google Drive buffer before system shutdown
+- Changes from 11.18
+  - Add comparison time to sync log when using GUI
+  - Added user-configurable timeout for Google Drive
+  - Consider port when comparing (S)FTP paths for equality
+  - Fixed SFTP key file login error on OpenSSH_8.8p1
+  - Add error details for NSFileReadUnknownError (macOS)
+  - Disable new config button when already at default
+  - Use user language instead of region locale during installation
+- Changes from 11.17
+  - Show per-file progress in percent when copying large files
+  - Log app initialization errors
+  - Fixed uncaught exception after installation
+  - Defer testing for third-party buggy DLLs until after crashing
+  - Consider ReFS 128-bit file ID failure states (Windows)
+  - Refer to volume by name: support names including brackets
+  - Support local installation with non-standard home (Linux)
+- Add FreeFileSync-build-with-gcc12.patch to fix build with gcc12
+- Add FreeFileSync-build-with-wx3.1.5.patch to fix build with wxWidgets 3.1.5
+- Update FreeFileSync-build.patch for version 11.19
+-------------------------------------------------------------------
 Sun Jan 16 17:42:44 UTC 2022 - Jannik Seiler <seil0@mosad.xyz>
 
 - Update to 11.16

@@ -1,0 +1,107 @@
+diff -Naur FreeFileSync_11.19_Source_orig/FreeFileSync/Source/base/db_file.cpp FreeFileSync_11.19_Source/FreeFileSync/Source/base/db_file.cpp
+--- FreeFileSync_11.19_Source_orig/FreeFileSync/Source/base/db_file.cpp	2022-04-16 20:03:18.000000000 +0200
++++ FreeFileSync_11.19_Source/FreeFileSync/Source/base/db_file.cpp	2022-06-11 16:25:56.614662155 +0200
+@@ -665,7 +665,7 @@
+             }
+ 
+         //delete removed items (= "in-sync") from database
+-        std::erase_if(dbFolders, [&](InSyncFolder::FolderList::value_type& v)
++        eraseIf(dbFolders, [&](InSyncFolder::FolderList::value_type& v)
+         {
+             if (auto it = toPreserve.find(v.first); it != toPreserve.end())
+             {
+@@ -692,7 +692,7 @@
+         std::erase_if(dbFolder.files,    [&](const InSyncFolder::FileList   ::value_type& v) { return filter_.passFileFilter(parentRelPathPf + v.first); });
+         std::erase_if(dbFolder.symlinks, [&](const InSyncFolder::SymlinkList::value_type& v) { return filter_.passFileFilter(parentRelPathPf + v.first); });
+ 
+-        std::erase_if(dbFolder.folders, [&](InSyncFolder::FolderList::value_type& v)
++        eraseIf(dbFolder.folders, [&](InSyncFolder::FolderList::value_type& v)
+         {
+             const Zstring& itemRelPath = parentRelPathPf + v.first;
+ 
+diff -Naur FreeFileSync_11.19_Source_orig/wx+/async_task.h FreeFileSync_11.19_Source/wx+/async_task.h
+--- FreeFileSync_11.19_Source_orig/wx+/async_task.h	2022-04-16 20:03:18.000000000 +0200
++++ FreeFileSync_11.19_Source/wx+/async_task.h	2022-06-11 16:32:01.862210363 +0200
+@@ -84,7 +84,7 @@
+ 
+             std::vector<std::unique_ptr<Task>> readyTasks; //Reentrancy; access to AsyncTasks::add is not protected! => evaluate outside eraseIf
+ 
+-            std::erase_if(tasks_, [&](std::unique_ptr<Task>& task)
++            eraseIf(tasks_, [&](std::unique_ptr<Task>& task)
+             {
+                 if (task->resultReady())
+                 {
+diff -Naur FreeFileSync_11.19_Source_orig/zen/stl_tools.h FreeFileSync_11.19_Source/zen/stl_tools.h
+--- FreeFileSync_11.19_Source_orig/zen/stl_tools.h	2022-04-16 20:03:18.000000000 +0200
++++ FreeFileSync_11.19_Source/zen/stl_tools.h	2022-06-11 16:50:12.672858637 +0200
+@@ -10,6 +10,8 @@
+ #include <set>
+ #include <map>
+ #include <vector>
++#include <unordered_set>
++#include <unordered_map>
+ #include <memory>
+ #include <cassert>
+ #include <algorithm>
+@@ -20,6 +22,16 @@
+ //enhancements for <algorithm>
+ namespace zen
+ {
++//unfortunately std::erase_if is useless garbage on GCC 12 (requires non-modifying predicate)
++template <class T, class Alloc, class Predicate>
++void eraseIf(std::vector<T, Alloc>& v, Predicate p);
++
++template <class T, class LessType, class Alloc, class Predicate>
++void eraseIf(std::set<T, LessType, Alloc>& s, Predicate p);
++
++template <class KeyType, class ValueType, class LessType, class Alloc, class Predicate>
++void eraseIf(std::map<KeyType, ValueType, LessType, Alloc>& m, Predicate p);
++
+ //append STL containers
+ template <class T, class Alloc, class C>
+ void append(std::vector<T, Alloc>& v, const C& c);
+@@ -104,6 +116,44 @@
+ 
+ 
+ //######################## implementation ########################
++
++template <class T, class Alloc, class Predicate> inline
++void eraseIf(std::vector<T, Alloc>& v, Predicate p)
++{
++    v.erase(std::remove_if(v.begin(), v.end(), p), v.end());
++}
++
++
++namespace impl
++{
++template <class S, class Predicate> inline
++void setOrMapEraseIf(S& s, Predicate p)
++{
++    for (auto it = s.begin(); it != s.end();)
++        if (p(*it))
++            s.erase(it++);
++        else
++            ++it;
++}
++}
++
++
++template <class T, class LessType, class Alloc, class Predicate> inline
++void eraseIf(std::set<T, LessType, Alloc>& s, Predicate p) { impl::setOrMapEraseIf(s, p); } //don't make this any more generic! e.g. must not compile for std::vector!!!
++
++
++template <class KeyType, class ValueType, class LessType, class Alloc, class Predicate> inline
++void eraseIf(std::map<KeyType, ValueType, LessType, Alloc>& m, Predicate p) { impl::setOrMapEraseIf(m, p); }
++
++
++template <class T, class Hash, class Keyeq, class Alloc, class Predicate> inline
++void eraseIf(std::unordered_set<T, Hash, Keyeq, Alloc>& s, Predicate p) { impl::setOrMapEraseIf(s, p); }
++
++
++template <class KeyType, class ValueType, class Hash, class Keyeq, class Alloc, class Predicate> inline
++void eraseIf(std::unordered_map<KeyType, ValueType, Hash, Keyeq, Alloc>& m, Predicate p) { impl::setOrMapEraseIf(m, p); }
++
++
+ template <class T, class Alloc, class C> inline
+ void append(std::vector<T, Alloc>& v, const C& c) { v.insert(v.end(), c.begin(), c.end()); }
+ 
