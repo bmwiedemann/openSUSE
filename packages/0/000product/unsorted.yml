@@ -250,9 +250,6 @@ unsorted:
   - RigelEngine 
   - Rivet-devel 
   - Rivet-plugins 
-  - SDL-devel 
-  - SDL-devel-32bit: [x86_64] 
-  - SDL-devel-doc 
   - SDL2_sound-devel 
   - SDL_Pango-devel 
   - SDL_sound-devel 
@@ -1530,6 +1527,7 @@ unsorted:
   - buildnumber-maven-plugin 
   - buildnumber-maven-plugin-javadoc 
   - buildstream 
+  - bulk_extractor 
   - bumblebee 
   - bumblebee-status 
   - bumblebee-status-module-alsa 
@@ -6148,6 +6146,9 @@ unsorted:
   - go1.18 
   - go1.18-doc 
   - go1.18-race: [x86_64] 
+  - go1.19 
+  - go1.19-doc 
+  - go1.19-race: [x86_64] 
   - go1.4 
   - go1.4-doc 
   - go1.4-race: [x86_64] 
@@ -32689,6 +32690,7 @@ unsorted:
   - sddm-branding-upstream 
   - sdl-asylum 
   - sdl-ball 
+  - sdl12_compat-devel 
   - sdl_bomber 
   - sdlpop 
   - sdparm 
