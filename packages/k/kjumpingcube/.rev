@@ -978,4 +978,12 @@
     <comment>KDE Gear 22.04.1</comment>
     <requestid>976799</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>09fa61ea347b189357fe4a7d501af92f</srcmd5>
+    <version>22.04.2</version>
+    <time>1655048349</time>
+    <user>dimstar_suse</user>
+    <comment>22.04.2 (forwarded request 981296 from cgiboudeaux)</comment>
+    <requestid>981679</requestid>
+  </revision>
 </revisionlist>
