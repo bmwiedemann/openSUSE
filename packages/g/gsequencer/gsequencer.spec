@@ -22,7 +22,7 @@
 # activated with --with run_functional_tests command line switch.
 %bcond_with run_functional_tests
 Name:           gsequencer
-Version:        4.2.0
+Version:        4.2.3
 Release:        0
 Summary:        Audio processing engine
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND GFDL-1.3-only
@@ -104,7 +104,7 @@ export LIBGSEQUENCER_CPPFLAGS='-DAGS_CSS_FILENAME=\"'%{_datadir}'/gsequencer/sty
 %if %{with run_functional_tests}
     --enable-run-functional-tests \
 %endif
-    FO_XSL=/usr/share/xml/docbook/stylesheet/nwalsh/current/fo/docbook.xsl HTMLHELP_XSL="/usr/share/xml/docbook/stylesheet/nwalsh/current/htmlhelp/htmlhelp.xsl" --disable-upstream-gtk-doc --enable-introspection --disable-oss --enable-gtk-doc --enable-gtk-doc-html
+    FO_XSL=/usr/share/xml/docbook/stylesheet/nwalsh/current/fo/docbook.xsl HTMLHELP_XSL="/usr/share/xml/docbook/stylesheet/nwalsh/current/htmlhelp/htmlhelp.xsl" --disable-upstream-gtk-doc --enable-introspection --disable-oss --with-poppler --with-gtk-unix-print --enable-gtk-doc --enable-gtk-doc-html
 
 %make_build all
 %make_build html
