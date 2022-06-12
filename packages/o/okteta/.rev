@@ -620,4 +620,12 @@ Remove ancient Obsoletes/provides (forwarded request 232571 from sumski)</commen
     <comment></comment>
     <requestid>977838</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>18b0faedc6f121ebe5454c57493aee42</srcmd5>
+    <version>0.26.9</version>
+    <time>1655048503</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982212</requestid>
+  </revision>
 </revisionlist>

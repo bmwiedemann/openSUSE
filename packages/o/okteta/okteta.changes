@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jun 12 11:19:30 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 0.26.9
+  * Fixed: multiple issues in Structures tool
+    + wrong warnings about unknown tag name "enumDef" in <data>
+    + missing cleaning of any existing string data on reading zero-bytes string
+      (kde#396057)
+    + bad condition for string maxBytes value meaning empty string (kde#396057)
+    + missing update of tree view after committing a change (kde#337653)
+    + wrong offset for view markup of string characters
+    + reading data from wrong offset on changes with a locked offset
+    + missing combobox editor for enumerations with defined values (kde#337652)
+  * Improved: multiple things in Structures tool
+    + new context menu to copy data & display string to the clipboard
+      (kde#314798)
+    + additional action for before-mentioned context menu to select the bytes
+  * Improved: control elements in tool views all have margins to the border
+    and follow general QToolBar button style
+  * Improved: translations
+
+-------------------------------------------------------------------
 Tue May 17 19:47:23 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 0.26.8
