@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 10 22:32:18 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.1.1:
+  * Fix skin selection setting.
+  * Fix API documentation.
+  * Fix udisks plugin build.
+  * Fix build with Qt 6.4.
+  * Fix AppStream metadata.
+  * Remove hal plugin.
+  * Update translations.
+
+-------------------------------------------------------------------
 Tue May 17 19:43:28 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 2.1.0:
