@@ -1974,7 +1974,6 @@
       <repopackage name="libiptcdata"/>
       <repopackage name="libiptcdata-lang"/>
       <repopackage name="libiptcdata0"/>
-      <repopackage name="libirml1"/>
       <repopackage name="libiscsi9"/>
       <repopackage name="libisl23"/>
       <repopackage name="libiso9660-11"/>
@@ -2252,7 +2251,6 @@
       <repopackage name="liblilv-0-0"/>
       <repopackage name="liblirc_client0"/>
       <repopackage name="libliveMedia106"/>
-      <repopackage name="libLLVM11"/>
       <repopackage name="libLLVM14"/>
       <repopackage name="liblmdb-0_9_29"/>
       <repopackage name="libloader"/>
@@ -2792,7 +2790,6 @@
       <repopackage name="libtalloc2-32bit" arch="x86_64"/>
       <repopackage name="libtasn1-6"/>
       <repopackage name="libtasn1-6-32bit" arch="x86_64"/>
-      <repopackage name="libtbb12"/>
       <repopackage name="libtdb1"/>
       <repopackage name="libtdb1-32bit" arch="x86_64"/>
       <repopackage name="libtelepathy-glib0"/>
@@ -3995,7 +3992,6 @@
       <repopackage name="python310-linecache2"/>
       <repopackage name="python310-linux-procfs"/>
       <repopackage name="python310-littleutils"/>
-      <repopackage name="python310-llvmlite"/>
       <repopackage name="python310-loguru"/>
       <repopackage name="python310-lxml"/>
       <repopackage name="python310-M2Crypto"/>
@@ -4014,7 +4010,6 @@
       <repopackage name="python310-netifaces"/>
       <repopackage name="python310-networkx"/>
       <repopackage name="python310-notify2"/>
-      <repopackage name="python310-numba"/>
       <repopackage name="python310-numexpr"/>
       <repopackage name="python310-numpy"/>
       <repopackage name="python310-olefile"/>
@@ -4114,7 +4109,6 @@
       <repopackage name="python310-sympy"/>
       <repopackage name="python310-tables"/>
       <repopackage name="python310-tabulate"/>
-      <repopackage name="python310-tbb"/>
       <repopackage name="python310-testtools"/>
       <repopackage name="python310-text-unidecode" arch="x86_64"/>
       <repopackage name="python310-tk"/>
