@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           ark
-Version:        22.04.1
+Version:        22.04.2
 Release:        0
 Summary:        KDE Archiver Tool
 License:        GPL-2.0-or-later
@@ -34,10 +34,6 @@ Source2:        applications.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Support-building-against-libarchive-3.3.2-again.patch
-# PATCH-FIX-OPENSUSE -- https://invent.kde.org/utilities/ark/-/merge_requests/90
-Patch1:         0001-remove-l-flag-to-7z-a.patch
-# PATCH-FIX-OPENSUSE -- https://invent.kde.org/utilities/ark/-/merge_requests/111
-Patch2:         0001-Support-7zip-as-well-as-p7zip.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  libarchive-devel

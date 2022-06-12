@@ -1203,4 +1203,12 @@
   * 0001-Support-7zip-as-well-as-p7zip.patch (forwarded request 976991 from cgiboudeaux)</comment>
     <requestid>976997</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>1220321902b096fb73f87b1749ea909b</srcmd5>
+    <version>22.04.2</version>
+    <time>1655048275</time>
+    <user>dimstar_suse</user>
+    <comment>22.04.2</comment>
+    <requestid>981820</requestid>
+  </revision>
 </revisionlist>

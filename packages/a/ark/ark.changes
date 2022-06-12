@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun  8 09:52:15 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.2/
+- Drop patches, now upstream:
+  * 0001-remove-l-flag-to-7z-a.patch
+  * 0001-Support-7zip-as-well-as-p7zip.patch
+
+-------------------------------------------------------------------
 Fri May 13 06:19:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patches to fix issues caused by p7zip replacement in
