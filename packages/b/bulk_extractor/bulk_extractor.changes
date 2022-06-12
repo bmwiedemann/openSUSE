@@ -1,0 +1,135 @@
+-------------------------------------------------------------------
+Fri Jun 10 17:07:14 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to version 2.0.0
+  * 6 years since the last release!
+  * bulk_extractor 2.0 has:
+	* a dramatically improved carver over version 1.6
+	* is generally more reliable, 
+	* is optimized for use on systems with many cores 
+
+-------------------------------------------------------------------
+Fri Nov  4 19:36:44 UTC 2016 - Greg.Freemyer@gmail.com
+
+- add the User Manual as a separate Source file
+
+-------------------------------------------------------------------
+Mon Jan  5 15:12:39 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.5.5
+  * The NEWS and the ChangeLog files sound not updated for a while 
+- Package 2014-07-17_BE15.pdf into doc directory; this is the version
+  1.5.5 announcement
+- Remove upstreamed patches
+  * dfxml_nonx86.patch
+  * have_atomic.patch
+
+-------------------------------------------------------------------
+Tue Oct 15 23:29:19 UTC 2013 - Greg.Freemyer@gmail.com
+
+- remove BuildRequires libaff - The format never got popular, and 
+  libewf is now recommended 
+- libaff is being dropped from factory
+
+-------------------------------------------------------------------
+Mon Sep 16 21:43:59 UTC 2013 - dvaleev@suse.com
+
+- fix powerpc32 build (have_atomic.patch)
+
+-------------------------------------------------------------------
+Mon Sep 16 14:41:11 UTC 2013 - dvaleev@suse.com
+
+- fixes CPUID used on non-x86 architectures (dfxml_nonx86.patch)
+  upstream commint dd05ebf2db10f5a737bc53b9c0396025a951e022
+- replaces be-1.3.1-cpuid.patch.
+
+-------------------------------------------------------------------
+Wed Sep 11 20:01:48 UTC 2013 - Greg.Freemyer@gmail.com
+
+- update to v1.4.0
+  * There is a long list of bug fixes and improvements, see ChangeLog and be-1.4.0-announcement.pdf in /usr/share folder
+    * added support for lightgrep library which greatly improves keyword search speed
+    * src/scan_accts.flex (dob): DOBs, Fedex#s, and SSNs are now recorded to a feature recorder called 'pii.txt'.
+    * src/scan_net.cpp (scan_net): the -S variable carve_tcp is now implemented by the scan_net scanner to enable or disable TCP/IP memory structure carving. It is disabled by default.
+    * src/scan_zip.cpp (scan_zip_component): now prints mtime in ISO8601 format
+    * src/bulk_extractor.h: removed all global options; replaced with the be config system
+    * src/bulk_extractor.cpp (main): -S now sets options; -s now sets sampling fraction.
+    * src/bulk_extractor.cpp (usage): The -B option for specifying the blocksize for bulk data analysis has been removed. Instead specify it with -S block_size=NN.
+- commented out be-1.3.1-cpuid.patch.  It is unclear how to rebase.
+- rebase ppc-cpuid.patch, ppc build still broken possibly because of missing be-1.3.1-cpuid patch
+- delete be-1.3.1-remove-date-time.patch
+- add be-1.4.0-remove-date-time.patch  (it is in a different source file, so this is not just a rebase)
+- add BuildRequires lightgrep shared library
+  * This is not mandatory and could be conditioned out for architectures that don't have it
+- add patch to prevent a new test program from being packaged
+  * PATCH-FIX-OPENSUSE be-1.3.1-remove-debug-program [/usr/bin/plugin_test should not be installed]
+- Add BuildRequires java-devel.  This allows the BEViewer to build and install
+- BEViewer.jar is installing to /usr/bin.   Move it to /usr/share/bulk_extractor.
+- use sed to update BEViewer to reference the jar in /usr/share/bulk_extractor, not /usr/bin
+- Add BEViewer script and jar file to %files section
+- Add the announcement email as a standalone PDF as documentation
+- Add requires: sleuthkit so that identify_filenames.py works properly
+
+-------------------------------------------------------------------
+Mon Aug  5 09:27:54 UTC 2013 - coolo@suse.com
+
+- don't buildrequire shared libraries
+
+-------------------------------------------------------------------
+Thu Apr  4 23:03:38 UTC 2013 - Greg.Freemyer@gmail.com
+
+- upgrade to v1.3.1
+  * Numerous updates and fixes, see ChangeLog
+- use tsk3-9 instead of tsk3-3 (tsk3-3 is no longer in factory)
+- update cpuid.patch and rename to be-1.3.1-cpuid.patch
+- add be-1.3.1-remove-date-time.patch
+- update url and source fields
+
+-------------------------------------------------------------------
+Sun Dec 30 23:40:59 UTC 2012 - dvaleev@suse.com
+
+- don't optimize a code when doing HAVE_ASM_CPUID detection
+  ppc-cpuid.patch 
+
+-------------------------------------------------------------------
+Thu Aug 16 20:10:26 UTC 2012 - agraf@suse.com
+
+- fix compilation on non-x86 hosts
+  * cpuid.patch
+
+-------------------------------------------------------------------
+Tue Apr  3 19:55:37 UTC 2012 - Greg.Freemyer@gmail.com
+
+-  update to v 1.2.0
+
+	* src/scan_zip.cpp (scan_zip): now detects decmopression bomb attack and changes mode of operation so that buffers are hashed prior to being decompressed and the same buffer will only be hashed just one.
+	* src/bulk_extractor.cpp (main): added -G to specify page size
+	* src/xml.h (class xml): added svn_version to DFXML output.
+
+	* src/bulk_extractor.cpp (main): the -s (context-sensitive stop
+	list) option is removed. The -r (alert list) and -w (stop list)
+	will now take a list of regular expressions, a list of globs or
+	feature files.
+
+	* src/scan_aes.cpp (scan_aes): scan_aes now runs in 15% the time of the original version. It is now, therefore, enabled by default.
+	* configure.ac (HAVE_LIBEWF_H): removed gnuexif support.
+
+
+-------------------------------------------------------------------
+Thu Dec 15 21:02:48 UTC 2011 - Greg.Freemyer@gmail.com
+
+- Upgrade to v1.1.3 - this allows older 11.3 and 11.4 releases to build
+    2011-12-14  Simson Garfinkel  <simsong@imac3.home>
+        * src/xml.cpp: now works with older and newer versions of exiv2
+
+    2011-12-01  Simson Garfinkel  <simsong@imac3.home>
+        * src/histogram.cpp (HistogramMaker::add): looks for \000 in utf16 strings converted to utf8 and erases them (We were getting them in histograms)
+
+
+
+-------------------------------------------------------------------
+Thu Oct 20 00:14:24 UTC 2011 - Greg.Freemyer@gmail.com
+
+- Initial Submission
+  Program to extract files from just hard disk blocks.
+

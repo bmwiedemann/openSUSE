@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ca11e825397a0ef7329c09d433273aac</srcmd5>
+    <version>2.0.0</version>
+    <time>1655048468</time>
+    <user>dimstar_suse</user>
+    <comment>bulk_extractor was formally in factory, but it got stale years ago and was removed.  Upstream, after a 6 year break, has released a new version (version 2.0.0).  It seems to be a major improvement over version 1.5.5</comment>
+    <requestid>982079</requestid>
+  </revision>
+</revisionlist>
