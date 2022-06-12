@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20220612" schemaversion="4.1">
+<image name="OBS__MicroOS___20220613" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220612</productvar>
+      <productvar name="VERSION">20220613</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220612,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220613,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220612/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220613/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -327,6 +327,7 @@
       <repopackage name="kate-plugins" arch="x86_64"/>
       <repopackage name="kbd"/>
       <repopackage name="kbd-legacy"/>
+      <repopackage name="kcmutils-imports" arch="x86_64"/>
       <repopackage name="kconf_update5" arch="x86_64"/>
       <repopackage name="kdbusaddons-tools" arch="x86_64"/>
       <repopackage name="kde-cli-tools5" arch="x86_64"/>
@@ -719,6 +720,7 @@
       <repopackage name="libKF5Completion5" arch="x86_64"/>
       <repopackage name="libKF5ConfigCore5" arch="x86_64"/>
       <repopackage name="libKF5ConfigGui5" arch="x86_64"/>
+      <repopackage name="libKF5ConfigQml5" arch="x86_64"/>
       <repopackage name="libKF5ConfigWidgets5" arch="x86_64"/>
       <repopackage name="libKF5CoreAddons5" arch="x86_64"/>
       <repopackage name="libKF5Crash5" arch="x86_64"/>
@@ -744,6 +746,7 @@
       <repopackage name="libKF5NetworkManagerQt6" arch="x86_64"/>
       <repopackage name="libKF5NewStuff5" arch="x86_64"/>
       <repopackage name="libKF5NewStuffCore5" arch="x86_64"/>
+      <repopackage name="libKF5NewStuffWidgets5" arch="x86_64"/>
       <repopackage name="libKF5Notifications5" arch="x86_64"/>
       <repopackage name="libKF5NotifyConfig5" arch="x86_64"/>
       <repopackage name="libKF5Parts5" arch="x86_64"/>
@@ -780,7 +783,6 @@
       <repopackage name="libKUserFeedbackCore1" arch="x86_64"/>
       <repopackage name="libKUserFeedbackWidgets1" arch="x86_64"/>
       <repopackage name="libkwalletbackend5-5" arch="x86_64"/>
-      <repopackage name="libKWaylandServer5" arch="x86_64"/>
       <repopackage name="liblcms2-2" arch="x86_64"/>
       <repopackage name="libldac2" arch="x86_64"/>
       <repopackage name="libldap2"/>
