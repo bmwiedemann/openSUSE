@@ -7,4 +7,12 @@
     <comment>guestfs-tools is a new package split out from libguestfs with its own source tarball.</comment>
     <requestid>979362</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2344da5d1960d4ed00e91539c0ee4131</srcmd5>
+    <version>1.48.2</version>
+    <time>1655048415</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>982048</requestid>
+  </revision>
 </revisionlist>

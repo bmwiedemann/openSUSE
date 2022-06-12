@@ -16,7 +16,7 @@
 #
 # needsbinariesforbuild
 
-# If there are patches which touch autotools files, set this to 1.
+
 %global patches_touch_autotools 1
 
 # The source directory.
@@ -28,78 +28,81 @@
 # Filter perl provides.
 %{?perl_default_filter}
 
-Summary:       Tools to access and modify virtual machine disk images
-Name:          guestfs-tools
-Version:       1.48.1
-Release:       0
-License:       GPL-2.0-or-later
+Summary:        Tools to access and modify virtual machine disk images
+Name:           guestfs-tools
+Version:        1.48.2
+Release:        0
+License:        GPL-2.0-or-later
 
 # Build only for architectures that have a kernel
-ExclusiveArch: x86_64 ppc64le s390x aarch64
+ExclusiveArch:  x86_64 ppc64le s390x aarch64
 
 # Source and patches.
-URL:           http://libguestfs.org/
-Source0:       http://download.libguestfs.org/guestfs-tools/%{source_directory}/%{name}-%{version}.tar.gz
-Source1:       http://download.libguestfs.org/guestfs-tools/%{source_directory}/%{name}-%{version}.tar.gz.sig
+URL:            http://libguestfs.org/
+Source0:        http://download.libguestfs.org/guestfs-tools/%{source_directory}/%{name}-%{version}.tar.gz
+Source1:        http://download.libguestfs.org/guestfs-tools/%{source_directory}/%{name}-%{version}.tar.gz.sig
 
 %if 0%{patches_touch_autotools}
-BuildRequires: autoconf, automake, libtool, gettext-devel
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  gettext-devel
+BuildRequires:  libtool
 %endif
 
 # Basic build requirements.
-BuildRequires: bison
-BuildRequires: flex
-BuildRequires: gcc
-BuildRequires: gcc-c++
-BuildRequires: libguestfs-devel >= 1.45.3-1
-BuildRequires: libguestfs-xfs
-BuildRequires: libjansson-devel
-BuildRequires: libvirt-devel
-BuildRequires: libxcrypt-devel
-BuildRequires: libxml2-devel
-BuildRequires: make
-BuildRequires: ncurses-devel
-BuildRequires: ocaml-findlib-devel
-BuildRequires: ocaml-gettext-devel
-BuildRequires: ocaml-libguestfs-devel
-BuildRequires: ocaml-ounit-devel
-BuildRequires: pcre2-devel
-BuildRequires: perl
-BuildRequires: perl(Expect)
-BuildRequires: perl(Locale::TextDomain)
-BuildRequires: perl(Module::Build)
-BuildRequires: perl(Pod::Man)
-BuildRequires: perl(Pod::Simple)
-BuildRequires: perl(Sys::Guestfs)
-BuildRequires: perl(Test::More)
-BuildRequires: perl(Win::Hivex)
-BuildRequires: perl(Win::Hivex::Regedit)
-BuildRequires: pkgconfig(bash-completion)
-BuildRequires: po4a
-BuildRequires: qemu-tools
-BuildRequires: unzip
-BuildRequires: xorriso
-BuildRequires: xz-devel
-BuildRequires: zip
+BuildRequires:  bison
+BuildRequires:  flex
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
+BuildRequires:  libguestfs-devel >= 1.45.3-1
+BuildRequires:  libguestfs-xfs
+BuildRequires:  libjansson-devel
+BuildRequires:  libvirt-devel
+BuildRequires:  libxcrypt-devel
+BuildRequires:  libxml2-devel
+BuildRequires:  make
+BuildRequires:  ncurses-devel
+BuildRequires:  ocaml-findlib-devel
+BuildRequires:  ocaml-gettext-devel
+BuildRequires:  ocaml-libguestfs-devel
+BuildRequires:  ocaml-ounit-devel
+BuildRequires:  pcre2-devel
+BuildRequires:  perl
+BuildRequires:  po4a
+BuildRequires:  qemu-tools
+BuildRequires:  unzip
+BuildRequires:  xorriso
+BuildRequires:  xz-devel
+BuildRequires:  zip
+BuildRequires:  perl(Expect)
+BuildRequires:  perl(Locale::TextDomain)
+BuildRequires:  perl(Module::Build)
+BuildRequires:  perl(Pod::Man)
+BuildRequires:  perl(Pod::Simple)
+BuildRequires:  perl(Sys::Guestfs)
+BuildRequires:  perl(Test::More)
+BuildRequires:  perl(Win::Hivex)
+BuildRequires:  perl(Win::Hivex::Regedit)
+BuildRequires:  pkgconfig(bash-completion)
 
 # For virt-builder:
-Requires:      curl
-Requires:      gpg2
+Requires:       curl
+Requires:       gpg2
 ###Requires:      /usr/bin/qemu-img
-Requires:      xz
+Requires:       xz
 
 # Obsolete guestfs-tools from the libguestfs package
-Provides:      %{name} < %{version}
-Obsoletes:     %{name} < %{version}
+Provides:       %{name} < %{version}
+Obsoletes:      %{name} < %{version}
 
 # For virt-builder-repository:
-Suggests:      osinfo-db
+Suggests:       osinfo-db
 
 # For virt-inspector, since Fedora and RHEL >= 7 use XFS:
-Recommends:    libguestfs-xfs
+Recommends:     libguestfs-xfs
 
 # For virt-edit and virt-customize:
-Suggests:      perl
+Suggests:       perl
 
 %description
 guestfs-tools is a set of tools that can be used to make batch
@@ -164,46 +167,41 @@ preparation for cloning them.
 
 Virt-tail follows (tails) a log file within a guest, like 'tail -f'.
 
-
 %package -n virt-win-reg
-Summary:       Access and modify the Windows Registry of a Windows VM
-BuildArch:     noarch
+Summary:        Access and modify the Windows Registry of a Windows VM
+BuildArch:      noarch
 
 %description -n virt-win-reg
 Virt-win-reg lets you look at and modify the Windows Registry of
 Windows virtual machines.
 
-
 %package bash-completion
-Summary:       Bash tab-completion scripts for %{name}
-BuildArch:     noarch
-Requires:      bash-completion >= 2.0
-Requires:      %{name} = %{version}-%{release}
+Summary:        Bash tab-completion scripts for %{name}
+BuildArch:      noarch
+Requires:       %{name} = %{version}-%{release}
+Requires:       bash-completion >= 2.0
 
 %description bash-completion
 Install this package if you want intelligent bash tab-completion
 for the virt-* tools.
 
-
 %package man-pages-ja
-Summary:       Japanese (ja) man pages for %{name}
-BuildArch:     noarch
-Requires:      %{name} = %{version}-%{release}
+Summary:        Japanese (ja) man pages for %{name}
+BuildArch:      noarch
+Requires:       %{name} = %{version}-%{release}
 
 %description man-pages-ja
 %{name}-man-pages-ja contains Japanese (ja) man pages
 for %{name}.
 
-
 %package man-pages-uk
-Summary:       Ukrainian (uk) man pages for %{name}
-BuildArch:     noarch
-Requires:      %{name} = %{version}-%{release}
+Summary:        Ukrainian (uk) man pages for %{name}
+BuildArch:      noarch
+Requires:       %{name} = %{version}-%{release}
 
 %description man-pages-uk
 %{name}-man-pages-uk contains Ukrainian (uk) man pages
 for %{name}.
-
 
 %prep
 %autosetup -p1
@@ -211,7 +209,6 @@ for %{name}.
 %if 0%{patches_touch_autotools}
 autoreconf -i
 %endif
-
 
 %build
 %{configure} \
@@ -224,9 +221,7 @@ make -j1 -C builder index-parse.c
 
 make V=1 %{?_smp_mflags}
 
-
 %check
-
 
 %install
 %makeinstall \
@@ -247,7 +242,6 @@ rm -f $RPM_BUILD_ROOT%{_mandir}/man1/virt-dib.1*
 
 # Find locale files.
 %find_lang %{name}
-
 
 %files -f %{name}.lang
 %license COPYING
@@ -304,19 +298,15 @@ rm -f $RPM_BUILD_ROOT%{_mandir}/man1/virt-dib.1*
 %{_bindir}/virt-win-reg
 %{_mandir}/man1/virt-win-reg.1*
 
-
 %files bash-completion
 %license COPYING
 %dir %{_datadir}/bash-completion/completions
 %{_datadir}/bash-completion/completions/virt-*
 
-
 %files man-pages-ja
 %lang(ja) %{_mandir}/ja/man1/*.1*
 
-
 %files man-pages-uk
 %lang(uk) %{_mandir}/uk/man1/*.1*
-
 
 %changelog
