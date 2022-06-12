@@ -193,4 +193,12 @@
     <comment>version bump (forwarded request 959960 from DocB)</comment>
     <requestid>959979</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>dba9e1bc22aa8739e6bc7be2fa928875</srcmd5>
+    <version>6.0.7</version>
+    <time>1655048486</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>982123</requestid>
+  </revision>
 </revisionlist>
