@@ -398,7 +398,6 @@ unsorted:
   - age 
   - agenda 
   - agenda-lang 
-  - aha 
   - aho-corasick-double-array-trie 
   - aho-corasick-double-array-trie-javadoc 
   - aide 
@@ -8026,7 +8025,6 @@ unsorted:
   - kcalutils-devel 
   - kcm_fcitx5 
   - kcmutils-devel 
-  - kcmutils-imports 
   - kcodecs-devel 
   - kcompletion-devel 
   - kconfig-devel 
@@ -8989,7 +8987,6 @@ unsorted:
   - libImath-3_1-29-32bit: [x86_64] 
   - libIrrlicht1_8 
   - libKDb3-4 
-  - libKF5ConfigQml5 
   - libKF5JsEmbed5 
   - libKF5JsEmbed5-lang 
   - libKF5KDGantt2-5 
@@ -9011,6 +9008,7 @@ unsorted:
   - libKPublicTransport1 
   - libKReport3-4 
   - libKSeExpr4 
+  - libKWaylandServer5 
   - libLASi-devel 
   - libLASi2 
   - libLHAPDF-6_5_1 
@@ -11950,7 +11948,6 @@ unsorted:
   - libksi1 
   - libksieve-devel 
   - libksysguard5-devel 
-  - libksysguard5-plugins 
   - libktoblzcheck1 
   - libktorrent-devel 
   - libktpaccountskcminternal9 
@@ -20748,8 +20745,8 @@ unsorted:
   - plasma-nm5-fortisslvpn 
   - plasma-nm5-iodine 
   - plasma-nm5-l2tp 
+  - plasma-nm5-libreswan 
   - plasma-nm5-mobile 
-  - plasma-nm5-openswan 
   - plasma-nm5-ssh 
   - plasma-nm5-sstp 
   - plasma-nm5-strongswan 
@@ -20765,9 +20762,10 @@ unsorted:
   - plasma5-firewall 
   - plasma5-firewall-lang 
   - plasma5-integration-devel 
+  - plasma5-mobile 
+  - plasma5-mobile-lang 
   - plasma5-nano 
   - plasma5-nano-lang 
-  - plasma5-phone-components 
   - plasma5-sdk 
   - plasma5-sdk-lang 
   - plasma5-workspace-devel 
@@ -27990,7 +27988,6 @@ unsorted:
   - python38-ufonormalizer 
   - python38-ujson 
   - python38-uncertainties 
-  - python38-uncompyle6 
   - python38-unicodecsv 
   - python38-unidiff 
   - python38-unify 
