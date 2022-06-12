@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 11 10:39:09 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- updated to version 2.3.13
+  see installed CHANGELOG.md
+  - Bug fixes:
+    - Fix missing required rubygems version when using old APIs
+      [#5496](https://github.com/rubygems/rubygems/pull/5496)
+    - Fix crash when gem used twice in Gemfile under different
+      platforms
+      [#5187](https://github.com/rubygems/rubygems/pull/5187)
+  - Performance:
+    - Speed up `bundler/setup` time
+      [#5503](https://github.com/rubygems/rubygems/pull/5503)
+
+-------------------------------------------------------------------
 Thu Apr 28 05:22:43 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.3.12
