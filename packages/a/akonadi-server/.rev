@@ -791,4 +791,12 @@ Mainly intended for Leap 42.3 to prevent upgrade problems. (forwarded request 49
   AppArmor profile actually gets used</comment>
     <requestid>977390</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>b11e2497e03692a38c452ac5b04a5e01</srcmd5>
+    <version>22.04.2</version>
+    <time>1655048223</time>
+    <user>dimstar_suse</user>
+    <comment>22.04.2 (forwarded request 981296 from cgiboudeaux)</comment>
+    <requestid>981579</requestid>
+  </revision>
 </revisionlist>
