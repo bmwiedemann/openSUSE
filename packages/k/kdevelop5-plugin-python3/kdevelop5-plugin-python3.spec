@@ -19,7 +19,7 @@
 %define rname kdev-python
 %bcond_without released
 Name:           kdevelop5-plugin-python3
-Version:        22.04.1
+Version:        22.04.2
 Release:        0
 Summary:        Python support for KDevelop
 License:        GPL-2.0-or-later
