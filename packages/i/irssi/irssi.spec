@@ -16,9 +16,8 @@
 #
 
 
-%bcond_with socks
 Name:           irssi
-Version:        1.2.3
+Version:        1.4.1
 Release:        0
 Summary:        Modular IRC Client
 License:        GPL-2.0-or-later
@@ -28,12 +27,9 @@ Source:         https://github.com/irssi/irssi/releases/download/%{version}/irss
 Source1:        irssi.desktop
 Source2:        irssi.png
 Source3:        https://github.com/irssi/irssi/releases/download/%{version}/irssi-%{version}.tar.xz.asc
-# https://sks-keyservers.net/pks/lookup?op=get&search=0x00CCB587DDBEF0E1
+# https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x7EE65E3082A5FB06AC7C368D00CCB587DDBEF0E1
 Source4:        %{name}.keyring
-Source99:       irssi-rpmlintrc
-# PATCH-FIX-OPENSUSE irssi-0.8.16_missing_prototype_warnings.patch
-Patch1:         irssi-0.8.16_missing_prototype_warnings.patch
-Patch2:         irssi-1.2.3-add-libera.patch
+BuildRequires:  meson
 BuildRequires:  glib2-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  openssl-devel
@@ -50,9 +46,6 @@ BuildRequires:  libotr-devel
 %endif
 %if 0%{?suse_version} > 1330 && 0%{?sle_version} == 0
 BuildRequires:  utf8proc-devel
-%endif
-%if %{with socks}
-BuildRequires:  dante-devel
 %endif
 %if 0%{?suse_version}
 BuildRequires:  update-desktop-files
@@ -79,38 +72,22 @@ compile plugins for the irssi package.
 
 %prep
 %setup -q
-%patch1
-%patch2 -p1
 
 %build
-export CFLAGS="%{optflags} -fno-strict-aliasing -DGLIB_DISABLE_DEPRECATION_WARNINGS"
-export CFLAGS="$CFLAGS -fPIE"
-export LDFLAGS="-pie"
-
-%configure              \
-    --disable-silent-rules \
-    --enable-ipv6       \
-    --with-bot          \
-    --with-proxy        \
-    %if %{with socks}
-    --with-socks        \
-    %endif
-    --enable-dane       \
-    --enable-ssl        \
-    --with-ncurses      \
-    --with-terminfo     \
-    --enable-true-color \
-    --with-perl=yes     \
+%meson \
+    -Ddocdir="%{_docdir}/%{name}" \
+    -Denable-true-color=yes \
+    -Dwith-proxy=yes \
+    -Dwith-perl=yes \
+    -Dwith-perl-lib=vendor \
     %if 0%{?suse_version} > 1330
-    --with-otr=module   \
+    -Dwith-otr=yes \
     %endif
-    --with-perl-lib=vendor
-%make_build all
+#
+%meson_build
 
 %install
-%make_install docdir=%{_docdir}/%{name} V=1
-%perl_process_packlist
-rm %{buildroot}%{_libdir}/irssi/modules/lib*.{a,la}
+%meson_install
 
 install -D -m0644 "%{SOURCE1}" "%{buildroot}%{_datadir}/applications/%{name}.desktop"
 install -D -m0644 "%{SOURCE2}" "%{buildroot}%{_datadir}/pixmaps/irssi.png"
@@ -120,8 +97,6 @@ install -D -m0644 "%{SOURCE2}" "%{buildroot}%{_datadir}/pixmaps/irssi.png"
 %endif
 
 %files
-%config(noreplace) %{_sysconfdir}/irssi.conf
-%{_bindir}/botti
 %{_bindir}/irssi
 # modules
 %dir %{_libdir}/irssi
@@ -130,7 +105,7 @@ install -D -m0644 "%{SOURCE2}" "%{buildroot}%{_datadir}/pixmaps/irssi.png"
 # scripts & themes
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/*
-#perl
+# perl
 %dir %{perl_vendorarch}/Irssi
 %{perl_vendorarch}/Irssi.pm
 %{perl_vendorarch}/Irssi/*
@@ -145,5 +120,6 @@ install -D -m0644 "%{SOURCE2}" "%{buildroot}%{_datadir}/pixmaps/irssi.png"
 
 %files devel
 %{_includedir}/irssi/
+%{_libdir}/pkgconfig/irssi*.pc
 
 %changelog
