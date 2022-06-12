@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jun 11 13:50:37 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20220610.
+  Changelog: //github.com/rbenv/ruby-build/releases/tag/v20220610
+  * Skip building docs when building openssl
+    * See openssl/openssl#8170
+    * The install_sw target exists since 1.0.0 or earlier:
+      https://github.com/openssl/openssl/blob/OpenSSL_1_0_0-stable/Makefile.org
+  * Re-enable ssldir creation target for openssl install
+    Prior commit attempts to shorten install by omitting documentation install,
+    however an additional target is needed to get the conf dirs for capturing the
+    PEMs et al.
+  * OpenSSL 1.1+ needs the extra install_ssldirs target to install certificates
+  * Add Darwin-arm64 and Linux-aarch64 for truffleruby-dev and truffleruby+graalvm-dev
+
+-------------------------------------------------------------------
 Tue May 24 00:13:43 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 
 - Run "osc service runall format_spec_file".
