@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  8 18:58:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- switch to _multibuild
+- refresh keyring, enable keyring validation 
+
+-------------------------------------------------------------------
 Thu Mar 17 06:50:19 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - timezone update 2022a:

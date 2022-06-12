@@ -31,7 +31,7 @@ Source:         https://www.iana.org/time-zones/repository/releases/tzdata%{vers
 Source1:        https://www.iana.org/time-zones/repository/releases/tzcode%{version}.tar.gz
 Source2:        https://www.iana.org/time-zones/repository/releases/tzdata%{version}.tar.gz.asc
 Source3:        https://www.iana.org/time-zones/repository/releases/tzcode%{version}.tar.gz.asc
-Source4:        %{name}.keyring
+Source4:        timezone.keyring
 Source5:        %{name}.changes
 Patch0:         tzdata-china.diff
 Patch3:         iso3166-uk.diff
