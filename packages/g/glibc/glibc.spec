@@ -295,6 +295,10 @@ Patch1003:      pt-load-invalid-hole.patch
 Patch1004:      localedef-ld-monetary.patch
 # PATCH-FIX-UPSTREAM nptl: Handle spurious EINTR when thread cancellation is disabled (BZ #29029)
 Patch1005:      nptl-spurious-eintr.patch
+# PATCH-FIX-UPSTREAM powerpc: Fix VSX register number on __strncpy_power9 (BZ #29197)
+Patch1006:      strncpy-power9-vsx.patch
+# PATCH-FIX-UPSTREAM nptl: Fix __libc_cleanup_pop_restore asynchronous restore (BZ #29214)
+Patch1007:      nptl-cleanup-async-restore.patch
 
 ###
 # Patches awaiting upstream approval
@@ -520,6 +524,8 @@ library in a cross compilation setting.
 %patch1003 -p1
 %patch1004 -p1
 %patch1005 -p1
+%patch1006 -p1
+%patch1007 -p1
 
 %patch2000 -p1
 %patch2001 -p1
@@ -554,6 +560,8 @@ esac
 # Before enabling it, run the testsuite and verify that it
 # passes completely
 export SUSE_ASNEEDED=0
+# This is controlled by --enable-bind-now.
+export SUSE_ZNOW=0
 # Adjust glibc version.h
 echo "#define CONFHOST \"${target}\"" >> version.h
 echo "#define GITID \"%{git_id}\"" >> version.h
@@ -712,6 +720,8 @@ make %{?_smp_mflags} -C cc-base html
 %if %{build_testsuite}
 # The testsuite will fail if asneeded is used
 export SUSE_ASNEEDED=0
+# The testsuite will fail if -znow is used
+export SUSE_ZNOW=0
 # Increase timeout
 export TIMEOUTFACTOR=16
 # The testsuite does its own malloc checking

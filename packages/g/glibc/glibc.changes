@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun  9 12:01:07 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Set SUSE_ZNOW=0
+
+-------------------------------------------------------------------
+Wed Jun  8 13:32:57 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- strncpy-power9-vsx.patch: powerpc: Fix VSX register number on
+  __strncpy_power9 (BZ #29197)
+- nptl-cleanup-async-restore.patch: nptl: Fix __libc_cleanup_pop_restore
+  asynchronous restore (bsc#1200093, BZ #29214)
+
+-------------------------------------------------------------------
 Tue May 17 14:07:46 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - nptl-spurious-eintr.patch: nptl: Handle spurious EINTR when thread
