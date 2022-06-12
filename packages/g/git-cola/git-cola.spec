@@ -18,7 +18,7 @@
 
 
 Name:           git-cola
-Version:        4.0.0
+Version:        4.0.1
 Release:        0
 Summary:        A GUI for Git
 License:        GPL-2.0-or-later
@@ -54,11 +54,6 @@ interact with Git repositories.
 
 %prep
 %setup -q
-
-#Workaround for issue https://github.com/git-cola/git-cola/issues/1230
-cd share/doc
-ln -s ../../setup.py
-cd ../../
 
 %build
 dos2unix qtpy/py3compat.py

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Jun 11 10:31:33 UTC 2022 - Marcin Bajor <marcin.bajor@gmail.com>
+
+- Update to 4.0.1
+- Usability, bells and whistles
+* Double-clicking dock widgets no longer creates sub-windows when the layout is locked.
+  https://github.com/git-cola/git-cola/issues/1176
+  https://github.com/git-cola/git-cola/pull/1198
+- Fixes
+* We now guard against `locale.getdefaultlocale()` returning `None` in some
+  configurations, notably on macOS if none of 'LC_ALL', 'LC_CTYPE', 'LANG' or 'LANGUAGE'
+  are defined.
+  https://github.com/git-cola/git-cola/issues/1234
+* The preferences dialog has been fixed to properly handle booleans.
+  https://github.com/git-cola/git-cola/issues/1235
+* The `docs/` directory was restructured to avoid missing `setup.py` errors.
+  `share/doc/git-cola` is now a symlink pointing to `docs/`.
+  https://github.com/git-cola/git-cola/issues/1230
+* Message boxes could sometimes display off-screen or using geometry that is larger
+  than the current desktop. Message box sizes are now clamped to the desktop size.
+  https://github.com/git-cola/git-cola/issues/1228
+
+-------------------------------------------------------------------
 Sat May 28 16:44:10 UTC 2022 - Marcin Bajor <marcin.bajor@gmail.com>
 
 - Update to 4.0.0
