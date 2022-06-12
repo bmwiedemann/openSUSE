@@ -1,19 +1,4 @@
 -------------------------------------------------------------------
-Thu Jun  9 02:09:02 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
-
-- Update to version 1.8.1
-  This release fixes the --enable-thread-safety-constructor option to the
-  configure script to work as intended.  In the previous release, the changes
-  for this option may not have been enabled when the option was not specified
-  or when the --enable option was specified.
-
-  While we have enabled it by default, believing that doing so will reduce
-  the number of bugs users encounter running libX11 clients, in some cases
-  it may expose bugs in which clients had previously gotten away with calling
-  libX11 functions while a libX11 lock is already held, and thus now deadlock,
-  as discussed in https://gitlab.freedesktop.org/xorg/lib/libx11/-/issues/157 .
-
--------------------------------------------------------------------
 Fri Apr 29 17:56:04 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.8
