@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jun 10 19:59:10 UTC 2022 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.0.5
+
+ + Bugfixes:
+ + Fixed smart playlist filetype search.
+ + Fixed Radio Paradise URLs to use HTTPS instead of HTTP.
+ + Fixed horizontal scrolling not affecting currently playing track (#952).
+ + Fixed keep running in the background when window is closed with Wayland (#964).
+ + Fixed percent-encoding of URLs when loading and saving XSPF playlists (#821).
+ + Fixed fancy tabbar context menu showing on right clicks outside of tabbar when a song is playing.
+ + Fixed possible duplicating songs in the database when moving songs to the collection using the organize feature.
+ + Enhancements:
+ + Show more details in error dialog on GStreamer errors (#958).
+ + Allow setting blur amount of playlist background image up to 100px (#939).
+ + Include 128x128 icon sizes (#954).
+ + Show right click copy context menu in context view on top text and lyrics (#965).
+ + Improve fading between album covers in context view.
+ + Added option for overwriting database playcounts in collection settings (#962).
+ + Added option for disabling bar on currently playing track (#972).
+
+-------------------------------------------------------------------
 Sun Apr 10 12:14:47 UTC 2022 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.0.4
