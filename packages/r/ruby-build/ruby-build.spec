@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 # SLE does not provide "bats", which is required for testing.
 %if %{undefined sle_version}
 %bcond_without test
@@ -23,7 +24,7 @@
 %endif
 
 Name:           ruby-build
-Version:        20220426
+Version:        20220610
 Release:        0
 BuildArch:      noarch
 License:        MIT

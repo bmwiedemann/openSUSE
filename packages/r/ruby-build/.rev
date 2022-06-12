@@ -7,4 +7,12 @@
     <comment>ruby-build is a program and plugin for rbenv to compile and install Ruby versions, which is useful for developing Ruby applications.</comment>
     <requestid>978795</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b472bf946f098c4969de16707aa53013</srcmd5>
+    <version>20220610</version>
+    <time>1655048494</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982149</requestid>
+  </revision>
 </revisionlist>
