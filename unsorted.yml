@@ -9012,6 +9012,7 @@ unsorted:
   - libLASi-devel 
   - libLASi2 
   - libLHAPDF-6_5_1 
+  - libLLVM11 
   - libLLVM11-32bit: [x86_64] 
   - libLLVM12 
   - libLLVM12-32bit: [x86_64] 
@@ -11776,6 +11777,7 @@ unsorted:
   - libircclient1 
   - libirman-devel 
   - libirman0 
+  - libirml1 
   - libirrecord0 
   - libiscsi-devel 
   - libiscsi-test 
@@ -14219,6 +14221,7 @@ unsorted:
   - libtasn1-devel 
   - libtasn1-devel-32bit: [x86_64] 
   - libtasn1-tools 
+  - libtbb12 
   - libtbbbind_2_5-3 
   - libtbbmalloc2 
   - libtcmalloc4 
@@ -23474,6 +23477,7 @@ unsorted:
   - python310-lit 
   - python310-livereload 
   - python310-llfuse 
+  - python310-llvmlite 
   - python310-lmdb 
   - python310-lmfit 
   - python310-lml 
@@ -23652,6 +23656,7 @@ unsorted:
   - python310-ntlm-auth 
   - python310-ntplib 
   - python310-num2words 
+  - python310-numba 
   - python310-numba-devel 
   - python310-numcodecs 
   - python310-numericalunits 
@@ -24599,6 +24604,7 @@ unsorted:
   - python310-targetcli-fb 
   - python310-tasklib 
   - python310-taskw 
+  - python310-tbb 
   - python310-tblib 
   - python310-tcolorpy 
   - python310-technicolor 

@@ -1482,7 +1482,6 @@
     <package name="libKUserFeedbackCore1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKUserFeedbackWidgets1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKasten4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="libLLVM11" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libLLVM14" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libMagickCore-7_Q16HDRI10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libMagickWand-7_Q16HDRI10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2111,7 +2110,6 @@
     <package name="libiptcdata" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libiptcdata-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libiptcdata0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libirml1" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libiscsi9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="libisl23" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libiso9660-11" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -2647,7 +2645,6 @@
     <package name="libtag_c0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libtalloc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtasn1-6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libtbb12" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libtdb1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtelepathy-glib0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtelepathy-logger3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3680,7 +3677,6 @@
     <package name="python310-linecache2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python310-linux-procfs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python310-littleutils" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="python310-llvmlite" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-loguru" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python310-lxml" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-matplotlib" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
@@ -3696,7 +3692,6 @@
     <package name="python310-netifaces" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="python310-networkx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-notify2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
-    <package name="python310-numba" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-numexpr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-numpy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-olefile" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
@@ -3786,7 +3781,6 @@
     <package name="python310-sympy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python310-tables" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-tabulate" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="python310-tbb" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-testtools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python310-tk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python310-toml" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
