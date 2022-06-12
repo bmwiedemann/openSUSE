@@ -1,3 +1,19 @@
+gpxsee (11.1) stable; urgency=low
+
+  * Fixed broken map zooming using the mouse wheel (introduced in
+    11.0)
+  * Now using asynchronous tiles rendering in IMG maps.
+
+ -- Martin Tuma <tumic@cbox.cz>  Thu, 02 Jun 2022 22:27:58 +0200
+
+gpxsee (11.0) stable; urgency=low
+
+  * Added Android build.
+  * Various map provider fixes (Mapsforge, IMG, JNX).
+  * Fixed broken PNG/PDF exports on systems with HiDPI displays.
+
+ -- Martin Tuma <tumic@cbox.cz>  Mon, 30 May 2022 19:06:21 +0200
+
 gpxsee (10.7) stable; urgency=low
 
   * Multiple IMG maps loading/rendering fixes.

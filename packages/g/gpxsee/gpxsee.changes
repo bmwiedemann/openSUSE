@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun  2 22:24:38 CEST 2022 - tumic@cbox.cz
+
+- Update to version 11.1
+  * Fixed broken map zooming using the mouse wheel (introduced in
+    11.0)
+  * Now using asynchronous tiles rendering in IMG maps.
+
+-------------------------------------------------------------------
+Mon May 30 18:56:55 CEST 2022 - tumic@cbox.cz
+
+- Update to version 11.0
+  * Added Android build.
+  * Various map provider fixes (Mapsforge, IMG, JNX).
+  * Fixed broken PNG/PDF exports on systems with HiDPI displays.
+
+-------------------------------------------------------------------
 Sun Apr 24 17:54:41 CEST 2022 - tumic@cbox.cz
 
 - Update to version 10.7
