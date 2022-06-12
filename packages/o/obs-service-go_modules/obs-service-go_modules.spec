@@ -37,7 +37,7 @@
 %define use_test   test
 %endif
 Name:           obs-service-%{service}
-Version:        0.4.1
+Version:        0.5.0
 Release:        0
 Summary:        An OBS source service: Download, verify and vendor Go module dependencies
 License:        GPL-2.0-or-later
@@ -46,8 +46,7 @@ URL:            https://github.com/openSUSE/obs-service-%{service}
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  go-md2man
 Requires:       go >= 1.11
-Requires:       gzip
-Requires:       tar
+Requires:       python3-libarchive-c
 BuildArch:      noarch
 %if %{with needs_external_argparse}
 BuildRequires:  %{use_python}-argparse

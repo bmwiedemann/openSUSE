@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun 11 01:56:21 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.5.0:
+  * README update
+  * Check go mod subcommand return code, log and exit on error
+  * Log go.mod file not found as error not info
+  * Execute go mod subcommands using subprocess.run()
+  * Rework the service to better work with obs_scm
+- Add Require: python3-libarchive-c
+- Drop Require: tar
+- Drop Require: gzip
+
+-------------------------------------------------------------------
 Mon May 02 08:36:35 UTC 2022 - dmueller@suse.com
 
 - Update to version 0.4.1:

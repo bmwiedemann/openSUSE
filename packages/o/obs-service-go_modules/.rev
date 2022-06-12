@@ -28,4 +28,20 @@
   * Fix compression parameter default value usage (forwarded request 974350 from dirkmueller)</comment>
     <requestid>974449</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>95cd1b99c347da52c438c66bb14f2e99</srcmd5>
+    <version>0.5.0</version>
+    <time>1655048497</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.0:
+  * README update
+  * Check go mod subcommand return code, log and exit on error
+  * Log go.mod file not found as error not info
+  * Execute go mod subcommands using subprocess.run()
+  * Rework the service to better work with obs_scm
+- Add Require: python3-libarchive-c
+- Drop Require: tar
+- Drop Require: gzip (forwarded request 982161 from jfkw)</comment>
+    <requestid>982163</requestid>
+  </revision>
 </revisionlist>
