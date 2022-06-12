@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kdesdk-kioslaves
-Version:        22.04.1
+Version:        22.04.2
 Release:        0
 Summary:        KDE SDK KIO slaves
 License:        GPL-2.0-only
