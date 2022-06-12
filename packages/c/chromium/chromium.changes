@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 10 15:35:20 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 102.0.5005.115 (boo#1200423)
+  * CVE-2022-2007: Use after free in WebGPU
+  * CVE-2022-2008: Out of bounds memory access in WebGL
+  * CVE-2022-2010: Out of bounds read in compositing
+  * CVE-2022-2011: Use after free in ANGLE
+
+-------------------------------------------------------------------
 Wed Jun  8 13:40:43 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Switch to GTK4 on TW and Leap 15.4+ (boo#1200139)
