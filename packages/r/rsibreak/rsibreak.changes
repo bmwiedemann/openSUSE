@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun 12 11:14:29 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 0.12.15:
+  * Add option to suppress breaks while fullscreen windows are
+    visible
+  * Potentially fix tooltip rendering on XFCE
+  * Make it possible to disable tiny breaks
+  * Configuration dialog: Don't reset timers when pressing "OK" if
+    no changes happened 
+  * Translation improvements
+  * Convert license headers to SPDX
+  * Internal code improvements
+- Add signature file and keyring
+
+-------------------------------------------------------------------
 Tue Jun 29 06:40:29 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 0.12.14:

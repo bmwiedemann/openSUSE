@@ -1,7 +1,7 @@
 #
 # spec file for package rsibreak
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,20 @@
 
 
 %define base_ver 0.12
+%bcond_without released
 Name:           rsibreak
-Version:        0.12.14
+Version:        0.12.15
 Release:        0
 Summary:        Repetetive Strain Injury recovery and prevention assistance utility
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://apps.kde.org/rsibreak
 Source0:        https://download.kde.org/stable/rsibreak/%{base_ver}/rsibreak-%{version}.tar.xz
-BuildRequires:  extra-cmake-modules
+%if %{with released}
+Source1:        https://download.kde.org/stable/rsibreak/%{base_ver}/rsibreak-%{version}.tar.xz.sig
+Source2:        rsibreak.keyring
+%endif
+BuildRequires:  extra-cmake-modules >= 5.79.0
 BuildRequires:  fdupes
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)
@@ -66,14 +71,18 @@ you to take a break now and then.
 %install
 %kf5_makeinstall -C build
 %suse_update_desktop_file -G "RSI Prevention" org.kde.rsibreak Qt KDE TimeUtility
+%if %{with released}
 %find_lang %{name} --all-name
 %{kf5_find_htmldocs}
+%endif
 %fdupes -s %{buildroot}%{_kf5_sharedir}
 
+%if %{with released}
 %files lang -f %{name}.lang
+%endif
 
 %files
-%license COPYING COPYING.DOC
+%license LICENSES/*
 %doc AUTHORS ChangeLog NEWS
 %doc %{_kf5_htmldir}/en/
 %{_kf5_applicationsdir}/org.kde.rsibreak.desktop
