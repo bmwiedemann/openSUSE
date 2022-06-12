@@ -433,4 +433,11 @@ additions, including new UTF-8 compose sequences for:
   as discussed in https://gitlab.freedesktop.org/xorg/lib/libx11/-/issues/157 .</comment>
     <requestid>981405</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>72db93f518e5f087d2c0c4f32fb9845e</srcmd5>
+    <version>1.8</version>
+    <time>1654998355</time>
+    <user>dimstar_suse</user>
+    <comment>osc copypac from project:openSUSE:Factory package:libX11 revision:36, using expand</comment>
+  </revision>
 </revisionlist>
