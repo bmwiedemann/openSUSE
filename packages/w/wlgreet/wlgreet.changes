@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun  3 01:28:50 UTC 2022 - Timothy Brown <stimut@gmail.com>
+
+- Update to 0.4. This release fixes a wl_output version 4
+incompatibility and adds some color configuration. 
+  * Restrict wl_output to version 3
+  * Add configurable color to headline and prompt
+  * Update dependencies version: wayland-*,sctk
+
+-------------------------------------------------------------------
 Thu May 26 23:51:03 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Update to vendored depedencies

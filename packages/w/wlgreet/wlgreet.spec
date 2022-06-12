@@ -17,7 +17,7 @@
 
 
 Name:           wlgreet
-Version:        0.3
+Version:        0.4
 Release:        0
 Summary:        Raw wayland greeter for greetd
 License:        GPL-3.0-only
