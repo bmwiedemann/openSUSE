@@ -19,7 +19,7 @@
 %define    procps_version    %(rpm -q --queryformat '%%{VERSION}' procps-devel)
 
 Name:           deepin-screen-recorder
-Version:        5.10.15
+Version:        5.10.22
 Release:        0
 Summary:        Deepin Screen Recorder
 License:        GPL-3.0-or-later
