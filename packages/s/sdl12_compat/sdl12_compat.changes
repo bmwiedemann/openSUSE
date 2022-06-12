@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Tue May 17 07:44:55 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add baselibs.conf
+
+-------------------------------------------------------------------
+Mon May 16 12:34:45 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-SDL_GetWMInfo-work-like-1.2-when-SDL_SetVideoMode-ha.patch
+  to unbreak use with schismtracker.
+- Add 0001-Set-pixels-in-SDL_CreateYUVOverlay-Fix-164.patch
+  to unbreak use with MPlayer.
+- Hot enable sdl12-compat to be the SDL1 replacement [boo#1198182]
+
+-------------------------------------------------------------------
+Sat Mar  5 16:00:57 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (v1.2.52) for build.opensuse.org
