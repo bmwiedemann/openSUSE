@@ -16,9 +16,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define	sover		1
+%define    sover            1
 # Workaround boo#1189991
-%define	_lto_cflags	%{nil}
+%define    _lto_cflags      %{nil}
+%define    openjpeg_version	%(rpm -q --queryformat '%%{VERSION}' openjpeg2-devel)
+%define    openjpeg_min     2.4.0
 
 Name:           deepin-reader
 Version:        5.10.13
@@ -86,6 +88,10 @@ The package provide pdf library for deepin-reader
 sed -i "s/lrelease/lrelease-qt5/g" translate_generation.sh updateTranslation.sh
 sed -i "s/system(lrelease/system(lrelease-qt5/g" reader/reader.pro
 sed -i "/#include <map>/a#include <cstdint>" tests/include/gtest/stub.h
+%if "%{openjpeg_version}" > "%{openjpeg_min}"
+sed -i "/#include/s|<openjpeg.h>|<openjpeg-2.5/openjpeg.h>|g" \
+3rdparty/deepin-pdfium/src/3rdparty/pdfium/pdfium/core/fxcodec/jpx/{cjpx_decoder.h,jpx_decode_utils.h}
+%endif
 
 %build
 %qmake5 DAPP_VERSION=%{version} \

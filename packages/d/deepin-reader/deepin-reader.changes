@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 11 13:57:29 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix build on openjpeg 2.5.0 and later 
+
+-------------------------------------------------------------------
 Mon May  9 12:15:48 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Fix build on ARM 
