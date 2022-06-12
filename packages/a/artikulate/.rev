@@ -811,4 +811,12 @@ Fri May  9 17:13:53 UTC 2014 - tittiatcoke@gmail.com
     <comment>KDE Gear 22.04.1</comment>
     <requestid>976704</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>c0768769ef10ff934112605342964f6f</srcmd5>
+    <version>22.04.2</version>
+    <time>1655048309</time>
+    <user>dimstar_suse</user>
+    <comment>22.04.2 (forwarded request 981296 from cgiboudeaux)</comment>
+    <requestid>981584</requestid>
+  </revision>
 </revisionlist>
