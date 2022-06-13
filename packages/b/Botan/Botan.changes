@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun  8 18:11:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.19.2:
+  * Add support for parallel computation in Argon2
+  * Add SSSE3 implementation of Argon2
+  * The OpenSSL provider was incompatible with OpenSSL 3.0.
+    It has been removed
+  * Avoid using reserve in secure_vector appending, which caused
+    a performance problem
+  * Fix TLS::Text_Policy behavior when X25519 is disabled
+    at build time
+  * Fix several warnings from Clang
+
+-------------------------------------------------------------------
 Sun Jan 23 08:11:39 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.19.1:

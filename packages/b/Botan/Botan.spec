@@ -20,20 +20,19 @@
 %define version_suffix 2-19
 %define short_version 2
 Name:           Botan
-Version:        2.19.1
+Version:        2.19.2
 Release:        0
 Summary:        A C++ Crypto Library
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://botan.randombit.net
-Source0:        http://botan.randombit.net/releases/Botan-%{version}.tar.xz
-Source1:        http://botan.randombit.net/releases/Botan-%{version}.tar.xz.asc
+Source0:        https://botan.randombit.net/releases/Botan-%{version}.tar.xz
+Source1:        https://botan.randombit.net/releases/Botan-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 BuildRequires:  bzip2 >= 1.0.2
 BuildRequires:  gcc-c++
 BuildRequires:  libbz2-devel
-BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  trousers-devel
@@ -104,7 +103,6 @@ python3 ./configure.py \
   --with-bzip2 \
   --with-zlib \
   --with-lzma \
-  --with-openssl \
   --with-openmp \
   --with-sqlite \
   --with-tpm \
