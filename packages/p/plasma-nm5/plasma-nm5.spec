@@ -19,15 +19,15 @@
 %bcond_without released
 %define mm_support 1
 Name:           plasma-nm5
-Version:        5.24.5
+Version:        5.25.0
 Release:        0
 Summary:        Plasma applet written in QML for managing network connections
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-nm-%{version}.tar.xz
+Source:         plasma-nm-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-nm-%{version}.tar.xz.sig
+Source1:        plasma-nm-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  NetworkManager-devel >= 0.9.8.4
@@ -137,20 +137,21 @@ Obsoletes:      plasma-nm-openconnect < %{version}
 %description openconnect
 OpenConnect plugin for plasma-nm components.
 
-%package openswan
-Summary:        Openswan support for %{name}
+%package libreswan
+Summary:        Libreswan support for %{name}
 Group:          System/GUI/KDE
 Requires:       %{name} = %{version}
-%if 0%{?suse_version} <= 1500
-Requires:       NetworkManager-openswan
-%endif
-Supplements:    packageand(%{name}:NetworkManager-openswan)
-Provides:       NetworkManager-openswan-frontend
+Requires:       NetworkManager-libreswan
+Supplements:    packageand(%{name}:NetworkManager-libreswan)
+Provides:       NetworkManager-libreswan-frontend
+# Old names
 Provides:       plasma-nm-openswan = %{version}
 Obsoletes:      plasma-nm-openswan < %{version}
+Provides:       %{name}-openswan = %{version}
+Obsoletes:      %{name}-openswan < %{version}
 
-%description openswan
-Openswan plugin for plasma-nm components.
+%description libreswan
+Libreswan plugin for plasma-nm components.
 
 %package strongswan
 Summary:        strongSwan support for %{name}
@@ -267,23 +268,24 @@ wireless connectivity on Plasma Mobile.
 
 %files
 %license LICENSES/*
+%{_kf5_applicationsdir}/kcm_networkmanagement.desktop
 %{_kf5_libdir}/libplasmanm_editor.so
 %{_kf5_libdir}/libplasmanm_internal.so
 %dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/kded
 %{_kf5_plugindir}/kf5/kded/networkmanagement.so
-%dir %{_kf5_plugindir}/plasma/network/
-%dir %{_kf5_plugindir}/plasma/network/vpn/
+%dir %{_kf5_plugindir}/plasma/network
+%dir %{_kf5_plugindir}/plasma/network/vpn
+%dir %{_kf5_plugindir}/plasma/kcms
+%dir %{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets
 %{_kf5_qmldir}/
 %{_kf5_notifydir}/
 %{_kf5_sharedir}/plasma/
 %dir %{_kf5_appstreamdir}
 %{_kf5_appstreamdir}/org.kde.plasma.networkmanagement.appdata.xml
-%{_kf5_plugindir}/kcm_networkmanagement.so
+%{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_networkmanagement.so
 %{_kf5_debugdir}/plasma-nm.categories
 %{_datadir}/kcm_networkmanagement/
-%{_kf5_servicesdir}/kcm_networkmanagement.desktop
-%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.networkmanagement.desktop
 
 %files openvpn
 %license LICENSES/*
@@ -300,9 +302,9 @@ wireless connectivity on Plasma Mobile.
 %{_kf5_plugindir}/plasma/network/vpn/plasmanetworkmanagement_openconnect_juniperui.so
 %{_kf5_plugindir}/plasma/network/vpn/plasmanetworkmanagement_openconnect_pulseui.so
 
-%files openswan
+%files libreswan
 %license LICENSES/*
-%{_kf5_plugindir}/plasma/network/vpn/plasmanetworkmanagement_openswanui.so
+%{_kf5_plugindir}/plasma/network/vpn/plasmanetworkmanagement_libreswanui.so
 
 %files strongswan
 %license LICENSES/*
@@ -341,8 +343,6 @@ wireless connectivity on Plasma Mobile.
 %dir %{_kf5_sharedir}/kpackage/kcms/
 %{_kf5_sharedir}/kpackage/kcms/kcm_mobile_hotspot/
 %{_kf5_sharedir}/kpackage/kcms/kcm_mobile_wifi/
-%{_kf5_servicesdir}/hotspotsettings.desktop
-%{_kf5_servicesdir}/wifisettings.desktop
 
 %if %{with released}
 %files lang -f %{name}.lang
