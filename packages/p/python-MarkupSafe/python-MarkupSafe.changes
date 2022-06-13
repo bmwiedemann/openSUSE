@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  9 07:59:18 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Require python 3.6. There is no need to require a newer version and
+  this way it builds on openSUSE Leap >= 15.3
+
+-------------------------------------------------------------------
 Fri Mar 18 22:31:50 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:

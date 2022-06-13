@@ -32,7 +32,7 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-base >= 3.7
+Requires:       python-base >= 3.6
 %if %{with test}
 BuildRequires:  %{python_module pytest}
 %endif
