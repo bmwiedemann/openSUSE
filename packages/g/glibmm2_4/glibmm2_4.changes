@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 10 07:24:17 UTC 2022 - QK ZHU <qkzhu@suse.com>
+
+- Update to version 2.66.4:
+  + Glib: ustring_Iterator: Don't declare copy constructor =default.
+    The fix in the 2.66.3 release broke ABI.
+    (Kjell Ahlstedt) Issue #98 (Scotty Trees)
+
+-------------------------------------------------------------------
 Thu Oct  7 05:34:30 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.66.2:
