@@ -126,6 +126,9 @@ Patch68:        CVE-2021-4189-ftplib-trust-PASV-resp.patch
 # whole long discussion is on bpo#43882
 # fix for santization URLs containing ASCII newline and tabs in urllib.parse
 Patch69:        CVE-2022-0391-urllib_parse-newline-parsing.patch
+# PATCH-FIX-UPSTREAM CVE-2015-20107-mailcap-unsafe-filenames.patch bsc#1198511 mcepl@suse.com
+# avoid the command injection in the mailcap module.
+Patch70:        CVE-2015-20107-mailcap-unsafe-filenames.patch
 # COMMON-PATCH-END
 BuildRequires:  automake
 BuildRequires:  db-devel
@@ -315,6 +318,7 @@ that rely on earlier non-verification behavior.
 %patch67 -p1
 %patch68 -p1
 %patch69 -p1
+%patch70 -p1
 
 # For patch 66
 cp -v %{SOURCE66} Lib/test/recursion.tar

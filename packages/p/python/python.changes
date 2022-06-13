@@ -1,9 +1,15 @@
 -------------------------------------------------------------------
-Fri Mar 18 14:13:25 UTC 2022 - Marcus Meissner <meissner@suse.com>
+Thu Jun  9 16:43:30 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
-- python-2.7.9-sles-disable-verification-by-default.patch: remove
-  as it by default now always does strict enforcement anyway and it
-  is 2022.
+- Add CVE-2015-20107-mailcap-unsafe-filenames.patch to avoid
+  CVE-2015-20107 (bsc#1198511, gh#python/cpython#68966), the
+  command injection in the mailcap module.
+
+-------------------------------------------------------------------
+Tue May 24 07:05:36 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Filter out executable-stack error that is triggered for i586
+  target.
 
 -------------------------------------------------------------------
 Sat Feb 26 12:41:42 UTC 2022 - Matej Cepl <mcepl@suse.com>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun  9 16:43:30 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2015-20107-mailcap-unsafe-filenames.patch to avoid
+  CVE-2015-20107 (bsc#1198511, gh#python/cpython#68966), the
+  command injection in the mailcap module.
+
+-------------------------------------------------------------------
+Tue May 24 07:05:36 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Filter out executable-stack error that is triggered for i586
+  target.
+
+-------------------------------------------------------------------
 Sat Feb 26 12:41:42 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update bundled pip wheel to the latest SLE version patched
