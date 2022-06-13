@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Jun  9 16:06:20 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 4.1.0
+  * Improved: decryption of HLS streams (#4533)
+  * Improved: HLS playlist parsing (#4540, #4552)
+  * Improved: string representations of Stream implementations
+    (#4521)
+  * Fixed: new YouTube consent dialog (#4515)
+  * Fixed: crunchyroll plugin (#4510)
+  * Fixed: nicolive email logins (#4553)
+  * Fixed: threading issue when closing segmented streams (#4517)
+  * Removed: suppression of InsecureRequestWarning (#4525)
+  * New plugins: blazetv (#4548), hiplayer (#4507), useetv (#4536)
+  * Removed plugins: rotana (#4512)
+- The real name of the patch was python-requests-version.patch
+- Update requirements.
+
+-------------------------------------------------------------------
+Sat May 21 23:29:02 UTC 2022 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Dropped python-version-requests.patch
+  + streamlink now only builds on TW where we have requests-2.27
+
+-------------------------------------------------------------------
+Sat May 21 20:29:03 UTC 2022 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to version 4.0.1
+  + Major breaking changes! Please review the changelog thoroughly.
+    https://streamlink.github.io/changelog.html#streamlink-4-0-0-2022-05-01
+  + dropped support for Python 3.6 (#4442)
+  + removed streamlink.plugin.api.utils module (#4467)
+
+-------------------------------------------------------------------
+Sat Jan 15 02:02:26 UTC 2022 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to version 3.0.3
+  + Major breaking changes! Please review the changelog thoroughly.
+    https://streamlink.github.io/changelog.html#streamlink-3-0-3-2021-11-27
+  + dropped support for RTMP, HDS and AkamaiHD streams
+  + removed related CLI arguments
+  + switched from HTTP to HTTPS for all kinds of scheme-less input URLs.
+  + changed Session.resolve_url() and Session.resolve_url_no_redirect()
+
+-------------------------------------------------------------------
 Mon Aug 30 15:51:53 UTC 2021 - Simon Puchert <simonpuchert@alice.de>
 
 - Add python-requests-version.patch:
