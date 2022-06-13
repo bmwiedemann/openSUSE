@@ -32,7 +32,6 @@ Patch3:         setting-naming-policy.patch
 # because we have old objenesis
 Patch4:         fix-incompatible-types.patch
 Patch5:         remove-hardcoded-source-target.patch
-Patch6:         %{name}-hamcrest.patch
 BuildRequires:  ant
 BuildRequires:  aqute-bnd
 BuildRequires:  cglib
@@ -70,7 +69,6 @@ dos2unix `find -name *.java`
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
 
 %pom_add_dep net.sf.cglib:cglib:3.1 maven/mockito-core.pom
 find . -name "*.java" -exec sed -i "s|org\.%{name}\.cglib|net\.sf\.cglib|g" {} +

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun  9 18:35:12 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Removed patch:
+  * mockito-hamcrest.patch
+    + Do not import org.hamcrest.core bundle that does not exist in
+      hamcrest 2.x
+
+-------------------------------------------------------------------
 Wed Mar 23 07:20:16 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 8
