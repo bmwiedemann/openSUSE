@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -128,6 +128,8 @@ Patch4:         openmpi-etc-files.patch
 Patch5:         openmpi-btl-openib-backport-device-params-from-master.patch
 Patch6:         reproducible.patch
 Patch7:         ompi-mca-fix-duplicated-symbol.patch
+Patch8:         Fix-error-with-stricter-quoting-requirements-of-autoconf-2.70.patch
+Patch9:         Always-include-the-stddef.h-header.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -390,6 +392,8 @@ echo without HPC
 %patch4
 %patch5
 %patch7
+%patch8
+%patch9
 
 %if %{without hpc}
 cat > %{_sourcedir}/baselibs.conf  <<EOF
