@@ -18,15 +18,15 @@
 
 %bcond_without released
 Name:           pam_kwallet
-Version:        5.24.5
+Version:        5.25.0
 Release:        0
 Summary:        A PAM Module for KWallet signing
 License:        GPL-2.0-or-later AND LGPL-2.1-only AND GPL-3.0-only
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/kwallet-pam-%{version}.tar.xz
+Source:         kwallet-pam-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kwallet-pam-%{version}.tar.xz.sig
+Source1:        kwallet-pam-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
@@ -69,7 +69,6 @@ module.
 %build
   # Before usrmerge, the PAM module goes into /lib*/security/
   %{cmake_kf5 -d build -- \
-	  -DKDE_INSTALL_LIBEXECDIR=%{_libexecdir} \
   %if !0%{?usrmerged}
       -DKDE_INSTALL_LIBDIR=/%{_lib}
   %endif
