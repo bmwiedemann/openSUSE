@@ -32,8 +32,8 @@
     <requires>
 -      <import plugin="org.apache.commons.fileupload" />
        <import plugin="org.apache.commons.io" />
-       <import plugin="org.hamcrest.core" />
-       <import plugin="org.hamcrest.library" />
+       <import plugin="org.mockito" />
+       <import plugin="org.objenesis" />
 --- rt.equinox.bundles/bundles/org.eclipse.equinox.http.servlet.tests/src/org/eclipse/equinox/http/servlet/tests/ServletTest.java.orig	2019-06-20 11:48:48.317887414 +0100
 +++ rt.equinox.bundles/bundles/org.eclipse.equinox.http.servlet.tests/src/org/eclipse/equinox/http/servlet/tests/ServletTest.java	2019-06-20 11:49:35.106774459 +0100
 @@ -79,10 +79,6 @@

@@ -69,9 +69,7 @@ Patch0:         eclipse-no-source-for-dependencies.patch
 Patch1:         eclipse-p2-pick-up-renamed-jars.patch
 # Patch for this was contributed. Unlikely to be released.
 Patch2:         eclipse-ignore-version-when-calculating-home.patch
-# Explicit requirement on hamcrest where it is used directly
-Patch3:         explicit-hamcrest.patch
-# Add support for all arches supported by Fedora
+# Add support for all arches supported by us
 Patch4:         eclipse-secondary-arches.patch
 Patch5:         eclipse-debug-symbols.patch
 # Add support for riscv64
@@ -404,7 +402,6 @@ Summary:        Eclipse Java Development Tools
 Group:          Development/Libraries/Java
 Requires:       junit >= 4.12
 Requires:       junit5 >= 5.4.0
-Requires:       osgi(org.hamcrest.core)
 Provides:       %{name} = %{version}-%{release}
 BuildArch:      noarch
 
@@ -502,7 +499,6 @@ tar --strip-components=1 -xf %{SOURCE1}
 %patch0
 %patch1
 %patch2 -p1
-%patch3
 %patch4 -p1
 %patch5
 %patch6 -p1

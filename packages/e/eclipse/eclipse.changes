@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun 13 09:27:01 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with hamcrest 2.2
+- Removed patch:
+  * explicit-hamcrest.patch
+    + not needed any more
+- Modified patch:
+  * eclipse-feature-plugins-to-category-ius.patch
+  * eclipse-patch-out-fileupload-dep.patch
+    + do not require org.hamcrest.* bundles that don't exist in
+      hamcrest 2.x any more
+
+-------------------------------------------------------------------
 Tue Mar 29 13:57:45 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Force building with Java 11, since tycho is not knowing about any

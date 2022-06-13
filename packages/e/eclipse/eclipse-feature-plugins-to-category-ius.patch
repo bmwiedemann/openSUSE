@@ -23,13 +23,12 @@ diff --git a/eclipse.jdt/org.eclipse.jdt-feature/feature.xml b/eclipse.jdt/org.e
 index e12ef6a13..6deae2a13 100644
 --- a/eclipse.jdt/org.eclipse.jdt-feature/feature.xml
 +++ b/eclipse.jdt/org.eclipse.jdt-feature/feature.xml
-@@ -19,6 +19,23 @@
+@@ -19,6 +19,22 @@
        %license
     </license>
  
 +   <requires>
 +      <import plugin="org.junit" />
-+      <import plugin="org.hamcrest.core" />
 +      <import plugin="org.junit.jupiter.api" />
 +      <import plugin="org.junit.jupiter.engine" />
 +      <import plugin="org.junit.jupiter.migrationsupport" />
@@ -457,15 +456,13 @@ diff --git a/eclipse.platform.releng/features/org.eclipse.sdk.tests/feature.xml 
 index 6d7659ab9..23f4e6524 100644
 --- a/eclipse.platform.releng/features/org.eclipse.sdk.tests/feature.xml
 +++ b/eclipse.platform.releng/features/org.eclipse.sdk.tests/feature.xml
-@@ -19,6 +19,15 @@
+@@ -19,6 +19,13 @@
        %license
     </license>
  
 +   <requires>
 +      <import plugin="org.apache.commons.fileupload" />
 +      <import plugin="org.apache.commons.io" />
-+      <import plugin="org.hamcrest.core" />
-+      <import plugin="org.hamcrest.library" />
 +      <import plugin="org.mockito" />
 +      <import plugin="org.objenesis" />
 +   </requires>
@@ -540,15 +537,13 @@ diff --git a/eclipse.platform.releng/features/org.eclipse.test-feature/feature.x
 index 1f422b76e..9e26326c3 100644
 --- a/eclipse.platform.releng/features/org.eclipse.test-feature/feature.xml
 +++ b/eclipse.platform.releng/features/org.eclipse.test-feature/feature.xml
-@@ -19,6 +19,14 @@
+@@ -19,6 +19,12 @@
        %license
     </license>
  
 +   <requires>
 +      <import plugin="org.junit" />
 +      <import plugin="org.easymock" />
-+      <import plugin="org.hamcrest.core" />
-+      <import plugin="org.hamcrest.library" />
 +      <import plugin="org.mockito" />
 +   </requires>
 +
