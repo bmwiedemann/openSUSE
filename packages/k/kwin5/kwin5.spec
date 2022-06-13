@@ -17,14 +17,14 @@
 
 
 # Internal QML imports
-%global __requires_exclude qmlimport\\((org\\.kde\\.private\\.kcms\\.kwin\\.effects|org\\.kde\\.kcms\\.kwinrules|org\\.kde\\.kwin\\.private\\.overview).*
+%global __requires_exclude qmlimport\\((org\\.kde\\.private\\.kcms\\.kwin\\.effects|org\\.kde\\.kcms\\.kwinrules|org\\.kde\\.kwin\\.private\\.overview|org\\.kde.kwin\\.private\\.desktopgrid|org\\.kde\\.KWin\\.Effect\\.WindowView).*
 
 %global kf5_version 5.54.0
 %global qt5_version 5.11.0
 %global wayland (0%{?suse_version} >= 1330)
 %bcond_without released
 Name:           kwin5
-Version:        5.24.5
+Version:        5.25.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -34,9 +34,9 @@ Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz
+Source:         kwin-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz.sig
+Source1:        kwin-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FEATURE-OPENSUSE
@@ -86,7 +86,7 @@ BuildRequires:  cmake(KF5WidgetsAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
 BuildRequires:  cmake(KF5XmlGui) >= %{kf5_version}
 BuildRequires:  cmake(KScreenLocker) >= %{_plasma5_version}
-BuildRequires:  cmake(KWaylandServer) >= %{_plasma5_version}
+BuildRequires:  cmake(PlasmaWaylandProtocols)
 BuildRequires:  cmake(QAccessibilityClient)
 BuildRequires:  cmake(Qt5Concurrent) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
@@ -96,14 +96,17 @@ BuildRequires:  cmake(Qt5QuickWidgets) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Script) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Sensors) >= %{qt5_version}
 BuildRequires:  cmake(Qt5UiTools) >= %{qt5_version}
+BuildRequires:  cmake(Qt5WaylandClient) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
 BuildRequires:  cmake(Qt5X11Extras) >= %{qt5_version}
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(lcms2)
+BuildRequires:  pkgconfig(libxcvt)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(wayland-cursor) >= 1.2.0
+BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xau)
@@ -231,6 +234,16 @@ This package provides development files.
 %{_kf5_bindir}/kwin_wayland_wrapper
 %endif
 %{_kf5_applicationsdir}/org.kde.kwin_rules_dialog.desktop
+%{_kf5_applicationsdir}/kcm_kwin_effects.desktop
+%{_kf5_applicationsdir}/kcm_kwin_virtualdesktops.desktop
+%{_kf5_applicationsdir}/kcm_kwinrules.desktop
+%{_kf5_applicationsdir}/kcm_virtualkeyboard.desktop
+%{_kf5_applicationsdir}/kcm_kwin_scripts.desktop
+%{_kf5_applicationsdir}/kcm_kwindecoration.desktop
+%{_kf5_applicationsdir}/kcm_kwinoptions.desktop
+%{_kf5_applicationsdir}/kcm_kwinscreenedges.desktop
+%{_kf5_applicationsdir}/kcm_kwintouchscreen.desktop
+%{_kf5_applicationsdir}/kwincompositing.desktop
 %{_kf5_bindir}/kwin_x11
 %{_kf5_debugdir}/org_kde_kwin.categories
 %{_kf5_knsrcfilesdir}/*.knsrc
@@ -241,17 +254,13 @@ This package provides development files.
 %{_kf5_libdir}/libkwinxrenderutils.so.*
 %{_kf5_libdir}/libkcmkwincommon.so.5
 %{_kf5_libdir}/libkcmkwincommon.so.5.*
-%{_kf5_plugindir}/kcm_kwin_scripts.so
-%{_kf5_plugindir}/kcm_kwinoptions.so
-%{_kf5_plugindir}/kcm_kwinscreenedges.so
-%{_kf5_plugindir}/kcm_kwintabbox.so
-%{_kf5_plugindir}/kcm_kwintouchscreen.so
-%dir %{_kf5_plugindir}/kcms/
-%{_kf5_plugindir}/kcms/kcm_kwin_effects.so
-%{_kf5_plugindir}/kcms/kcm_kwin_virtualdesktops.so
-%{_kf5_plugindir}/kcms/kcm_kwindecoration.so
-%{_kf5_plugindir}/kcms/kcm_kwinrules.so
-%{_kf5_plugindir}/kcms/kcm_virtualkeyboard.so
+%dir %{_kf5_plugindir}/plasma/
+%dir %{_kf5_plugindir}/plasma/kcms/
+%dir %{_kf5_plugindir}/plasma/kcms/systemsettings/
+%dir %{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/
+%{_kf5_plugindir}/plasma/kcms/systemsettings/kcm*.so
+%{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_kwin*.so
+%{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kwincompositing.so
 %dir %{_kf5_plugindir}/kpackage/
 %dir %{_kf5_plugindir}/kpackage/packagestructure/
 %{_kf5_plugindir}/kpackage/packagestructure/kwin_aurorae.so
@@ -259,6 +268,8 @@ This package provides development files.
 %{_kf5_plugindir}/kpackage/packagestructure/kwin_effect.so
 %{_kf5_plugindir}/kpackage/packagestructure/kwin_script.so
 %{_kf5_plugindir}/kpackage/packagestructure/kwin_windowswitcher.so
+%dir %{_kf5_sharedir}/kpackage/kcms
+%{_kf5_sharedir}/kpackage/kcms/kcm_kwin_scripts/
 %dir %{_kf5_plugindir}/kwin/
 %dir %{_kf5_plugindir}/kwin/effects/
 %dir %{_kf5_plugindir}/kwin/effects/configs/
@@ -280,23 +291,21 @@ This package provides development files.
 %{_kf5_plugindir}/kwin/effects/configs/kwin_magnifier_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_mouseclick_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_mousemark_config.so
-%{_kf5_plugindir}/kwin/effects/configs/kwin_presentwindows_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_showfps_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_showpaint_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_slide_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_thumbnailaside_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_trackmouse_config.so
+%{_kf5_plugindir}/kwin/effects/configs/kwin_windowview_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_wobblywindows_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_zoom_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_overview_config.so
-%{_kf5_plugindir}/kwincompositing.so
 %dir %{_kf5_plugindir}/org.kde.kdecoration2/
 %{_kf5_plugindir}/org.kde.kdecoration2/kwin5_aurorae.so
 %dir %{_kf5_plugindir}/org.kde.kwin.platforms/
 %{_kf5_plugindir}/org.kde.kwin.platforms/KWinX11Platform.so
 %dir %{_kf5_plugindir}/org.kde.kwin.waylandbackends/
 %{_kf5_plugindir}/org.kde.kwin.waylandbackends/KWinWaylandDrmBackend.so
-%{_kf5_plugindir}/org.kde.kwin.waylandbackends/KWinWaylandFbdevBackend.so
 %{_kf5_plugindir}/org.kde.kwin.waylandbackends/KWinWaylandVirtualBackend.so
 %{_kf5_plugindir}/org.kde.kwin.waylandbackends/KWinWaylandWaylandBackend.so
 %{_kf5_plugindir}/org.kde.kwin.waylandbackends/KWinWaylandX11Backend.so
@@ -307,6 +316,7 @@ This package provides development files.
 %{_kf5_qmldir}/org/kde/kwin/decoration/
 %{_kf5_qmldir}/org/kde/kwin/decorations/
 %{_kf5_qmldir}/org/kde/kwin/private/
+%{_kf5_qmldir}/org/kde/kwin.2/
 
 %{_kf5_sharedir}/config.kcfg/
 %{_kf5_sharedir}/icons/hicolor/*/apps/kwin.png
@@ -324,15 +334,9 @@ This package provides development files.
 %{_kf5_sharedir}/kpackage/kcms/kcm_kwin_effects
 %{_kf5_sharedir}/kpackage/kcms/kcm_kwinrules
 %{_kf5_sharedir}/kpackage/kcms/kcm_virtualkeyboard
-%if %{pkg_vcmp kf5-filesystem >= 20220307}
 %{_libexecdir}/kwin-applywindowdecoration
 %{_libexecdir}/kwin_killer_helper
 %{_libexecdir}/kwin_rules_dialog
-%else
-%{_kf5_libdir}/libexec/kwin-applywindowdecoration
-%{_kf5_libdir}/libexec/kwin_killer_helper
-%{_kf5_libdir}/libexec/kwin_rules_dialog
-%endif
 %{_userunitdir}/plasma-kwin_x11.service
 %{_userunitdir}/plasma-kwin_wayland.service
 

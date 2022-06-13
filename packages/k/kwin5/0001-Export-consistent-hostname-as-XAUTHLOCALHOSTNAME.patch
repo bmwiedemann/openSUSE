@@ -8,23 +8,23 @@ XAUTHLOCALHOSTNAME is also set (boo#1177835, downstream patch in xtrans).
 The hostname is read once on startup and then used consistently.
 ---
  src/helpers/wayland_wrapper/kwin_wrapper.cpp | 6 +++++-
- src/xwl/lib/xauthority.cpp                   | 3 +--
- src/xwl/lib/xauthority.h                     | 3 ++-
+ src/xwayland/lib/xauthority.cpp                   | 3 +--
+ src/xwayland/lib/xauthority.h                     | 3 ++-
  3 files changed, 8 insertions(+), 4 deletions(-)
 
-Index: kwin-5.17.80git.20211202T160310~4d7f1d135/src/helpers/wayland_wrapper/kwin_wrapper.cpp
+Index: kwin-5.17.80git.20220423T014453~b935bca22/src/helpers/wayland_wrapper/kwin_wrapper.cpp
 ===================================================================
---- kwin-5.17.80git.20211202T160310~4d7f1d135.orig/src/helpers/wayland_wrapper/kwin_wrapper.cpp	2021-12-02 15:03:10.000000000 +0100
-+++ kwin-5.17.80git.20211202T160310~4d7f1d135/src/helpers/wayland_wrapper/kwin_wrapper.cpp	2021-12-03 05:59:35.170481723 +0100
-@@ -22,6 +22,7 @@
- 
+--- kwin-5.17.80git.20220423T014453~b935bca22.orig/src/helpers/wayland_wrapper/kwin_wrapper.cpp	2022-04-23 03:44:53.000000000 +0200
++++ kwin-5.17.80git.20220423T014453~b935bca22/src/helpers/wayland_wrapper/kwin_wrapper.cpp	2022-04-23 08:53:36.971767895 +0200
+@@ -23,6 +23,7 @@
  #include <QCoreApplication>
+ #include <QDBusConnection>
  #include <QDebug>
 +#include <QHostInfo>
  #include <QProcess>
  #include <QTemporaryFile>
- #include <QDBusConnection>
-@@ -70,8 +71,11 @@
+ 
+@@ -71,8 +72,11 @@
          }
          if (m_xwlSocket) {
              if (!qEnvironmentVariableIsSet("KWIN_WAYLAND_NO_XAUTHORITY")) {
@@ -37,10 +37,10 @@ Index: kwin-5.17.80git.20211202T160310~4d7f1d135/src/helpers/wayland_wrapper/kwi
                  }
              }
          }
-Index: kwin-5.17.80git.20211202T160310~4d7f1d135/src/xwl/lib/xauthority.cpp
+Index: kwin-5.17.80git.20220423T014453~b935bca22/src/xwayland/lib/xauthority.cpp
 ===================================================================
---- kwin-5.17.80git.20211202T160310~4d7f1d135.orig/src/xwl/lib/xauthority.cpp	2021-12-02 15:03:10.000000000 +0100
-+++ kwin-5.17.80git.20211202T160310~4d7f1d135/src/xwl/lib/xauthority.cpp	2021-12-03 05:59:35.170481723 +0100
+--- kwin-5.17.80git.20220423T014453~b935bca22.orig/src/xwayland/lib/xauthority.cpp	2022-04-23 03:44:53.000000000 +0200
++++ kwin-5.17.80git.20220423T014453~b935bca22/src/xwayland/lib/xauthority.cpp	2022-04-23 08:53:36.971767895 +0200
 @@ -45,7 +45,7 @@
      return cookie;
  }
@@ -58,10 +58,10 @@ Index: kwin-5.17.80git.20211202T160310~4d7f1d135/src/xwl/lib/xauthority.cpp
      const QByteArray displayName = QByteArray::number(display);
      const QByteArray name = QByteArrayLiteral("MIT-MAGIC-COOKIE-1");
      const QByteArray cookie = generateXauthorityCookie();
-Index: kwin-5.17.80git.20211202T160310~4d7f1d135/src/xwl/lib/xauthority.h
+Index: kwin-5.17.80git.20220423T014453~b935bca22/src/xwayland/lib/xauthority.h
 ===================================================================
---- kwin-5.17.80git.20211202T160310~4d7f1d135.orig/src/xwl/lib/xauthority.h	2021-12-02 15:03:10.000000000 +0100
-+++ kwin-5.17.80git.20211202T160310~4d7f1d135/src/xwl/lib/xauthority.h	2021-12-03 05:59:35.170481723 +0100
+--- kwin-5.17.80git.20220423T014453~b935bca22.orig/src/xwayland/lib/xauthority.h	2022-04-23 03:44:53.000000000 +0200
++++ kwin-5.17.80git.20220423T014453~b935bca22/src/xwayland/lib/xauthority.h	2022-04-23 08:53:36.975767931 +0200
 @@ -9,6 +9,7 @@
  
  #pragma once
