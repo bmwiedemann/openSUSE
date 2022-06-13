@@ -23,15 +23,15 @@ Name:           drkonqi5
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.24.5
+Version:        5.25.0
 Release:        0
 Summary:        Helper for debugging and reporting crashes
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/drkonqi-%{version}.tar.xz
+Source:         drkonqi-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/drkonqi-%{version}.tar.xz.sig
+Source1:        drkonqi-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCHES 100-199 are from upstream 5.16 branch
@@ -41,6 +41,7 @@ BuildRequires:  cmake(KF5Completion) >= %{kf5_version}
 BuildRequires:  cmake(KF5ConfigWidgets) >= %{kf5_version}
 BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5Crash) >= %{kf5_version}
+BuildRequires:  cmake(KF5Declarative) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5IdleTime) >= %{kf5_version}
 BuildRequires:  cmake(KF5JobWidgets) >= %{kf5_version}
@@ -55,6 +56,7 @@ BuildRequires:  cmake(KF5XmlRpcClient) >= %{kf5_version}
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core) >= 5.12.0
 BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
@@ -92,11 +94,7 @@ The KDE Crash Handler gives the user feedback if a program has crashed.
 %{_kf5_sharedir}/drkonqi/
 %{_kf5_applicationsdir}/org.kde.drkonqi.desktop
 %{_kf5_debugdir}/drkonqi.categories
-%if %{pkg_vcmp kf5-filesystem >= 20220307}
 %{_libexecdir}/drkonqi
-%else
-%{_kf5_libdir}/libexec/drkonqi
-%endif
 
 %if %{with released}
 %files lang -f %{name}.lang
