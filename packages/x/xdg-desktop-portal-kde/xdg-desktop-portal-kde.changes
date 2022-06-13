@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Jun  9 11:15:07 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.0
+- Changes since 5.24.90:
+  * [filechooser] Make sure outgoing URIs are encoded (kde#454850)
+  * [screenshot] Encode result URI
+  * UserInfo: Fix initialization error
+  * screencast: Include valid windows in the list of streams to stream
+  * screencast: When we stop a stream, do it actively
+  * screencast: When closing a session, only close the streams from that session
+  * screencast: Do not provide every running stream
+  * screencast: Keep persisting if the user chose to persist (kde#454128)
+  * Add FreeBSD CI
+  * don't supply excess argument
+
+-------------------------------------------------------------------
+Thu May 19 19:46:15 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue May  3 13:00:28 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.5
