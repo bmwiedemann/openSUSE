@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jun  9 11:14:56 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.0
+- Changes since 5.24.90:
+  * kstyle: fix qqc2 desktop style sliders in RtL (kde#430101)
+  * Fix mixup of PM_ToolBarItemMargin & PM_ToolBarFrameWidth
+
+-------------------------------------------------------------------
+Thu May 19 19:45:24 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue May  3 13:00:18 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.5

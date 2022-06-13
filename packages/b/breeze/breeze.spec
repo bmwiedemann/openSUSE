@@ -22,15 +22,15 @@
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           breeze
-Version:        5.24.5
+Version:        5.25.0
 Release:        0
 Summary:        Plasma Desktop artwork, styles and assets
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/breeze-%{version}.tar.xz
+Source:         breeze-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/breeze-%{version}.tar.xz.sig
+Source1:        breeze-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
@@ -48,6 +48,7 @@ BuildRequires:  cmake(KF5FrameworkIntegration)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KCMUtils)
+BuildRequires:  cmake(KF5Kirigami2)
 BuildRequires:  cmake(KF5Package)
 BuildRequires:  cmake(KF5Wayland)
 BuildRequires:  cmake(KF5WindowSystem)
