@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 13 07:25:17 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Add missing requires /usr/bin/fusermount
+
+-------------------------------------------------------------------
 Tue Feb  1 12:42:08 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - Switch to default ruby for Tumbleweed

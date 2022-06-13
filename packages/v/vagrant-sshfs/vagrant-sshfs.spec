@@ -41,6 +41,8 @@ BuildRequires:  ruby-macros >= 5
 BuildRequires:  vagrant >= 1.9.1
 Requires:       sshfs
 Requires:       vagrant >= 1.9.1
+# for /usr/bin/fusermount
+Requires:       fuse
 
 %description
 This Vagrant plugin adds synced folder support for mounting folders from the
