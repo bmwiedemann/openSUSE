@@ -23,15 +23,15 @@
 %bcond_without released
 
 Name:           plasma5-disks
-Version:        5.24.5
+Version:        5.25.0
 Release:        0
 Summary:        Plasma service for monitoring disk health
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-disks-%{version}.tar.xz
+Source:         plasma-disks-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-disks-%{version}.tar.xz.sig
+Source1:        plasma-disks-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
@@ -92,11 +92,7 @@ make %{?_smp_mflags} -C build VERBOSE=1 test
 %{_datadir}/dbus-1/system-services/org.kde.kded.smart.service
 %{_kf5_dbuspolicydir}/org.kde.kded.smart.conf
 %{_datadir}/polkit-1/actions/org.kde.kded.smart.policy
-%if %{pkg_vcmp kf5-filesystem >= 20220307}
 %{_libexecdir}/kauth/kded-smart-helper
-%else
-%{_kf5_libdir}/libexec/kauth/kded-smart-helper
-%endif
 
 %if %{with released}
 %files lang -f %{name}.lang
