@@ -21,15 +21,15 @@
 %global have_fwupd (0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300)
 
 Name:           discover
-Version:        5.24.5
+Version:        5.25.0
 Release:        0
 Summary:        Software store for the KDE Plasma desktop
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            https://quickgit.kde.org/?p=discover.git
-Source:         https://download.kde.org/stable/plasma/%{version}/discover-%{version}.tar.xz
+Source:         discover-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/discover-%{version}.tar.xz.sig
+Source1:        discover-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -210,6 +210,7 @@ user to install them using Discover.
 
 %files notifier -f notifier.lang
 %license LICENSES/*
+%{_kf5_applicationsdir}/kcm_updates.desktop
 %dir %{_kf5_plugindir}/discover-notifier
 %{_kf5_plugindir}/discover-notifier/DiscoverPackageKitNotifier.so
 %{_kf5_plugindir}/discover-notifier/FlatpakNotifier.so
@@ -222,10 +223,6 @@ user to install them using Discover.
 %dir %{_kf5_sharedir}/kpackage/
 %dir %{_kf5_sharedir}/kpackage/kcms/
 %{_kf5_sharedir}/kpackage/kcms/kcm_updates/
-%if %{pkg_vcmp kf5-filesystem >= 20220307}
 %{_libexecdir}/DiscoverNotifier
-%else
-%{_kf5_libdir}/libexec/DiscoverNotifier
-%endif
 
 %changelog
