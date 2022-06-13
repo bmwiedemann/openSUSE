@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue May 24 12:47:10 UTC 2022 - rombert@apache.org
+
+- Update to version 3.7.3:
+  * prep for v3.7.3
+  * Use custom GOOGLE_CREDENTIALS or fallback to default
+  * Replace x/crypto/openpgp with ProtonMail/go-crypto
+  * Update remaining dependencies
+  * Update golang.org/x/{net,oauth2,sys} dependencies
+  * Update keyservice implementation dependencies
+  * Update golang.org/x/crypto
+  * Limit role session name length to 64 characters.
+  * keyservice: accept KeyServiceServer in LocalClient
+  * Use latest dockerd in CI to allow build alpine image (#870)
+  * Add tests for single key
+  * Make `masterKeyFromRecipient` private
+  * This fixes a bug with age encryption when specifying multiple age recipients
+  * Explicitly build linux amd64 binary
+  * Remove duplicated stage from Dockerfile.alpine
+  * Upgrade all dependencies
+  * Build alpine container in CI (#870)
+  * Update keysource.go
+  * support gcp credentials as env var
+  * Allow empty maps for yaml (#907)
+  * Add a test to reproduce #907
+
+-------------------------------------------------------------------
 Wed Mar 16 08:03:54 UTC 2022 - rombert@apache.org
 
 - Update to version 3.7.2:

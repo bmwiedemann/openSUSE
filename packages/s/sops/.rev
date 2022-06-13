@@ -15,4 +15,12 @@
     <comment>Update to version 3.7.2 (forwarded request 962083 from robert_munteanu)</comment>
     <requestid>962121</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0bab81c2ad991e3c65788f0796cf7286</srcmd5>
+    <version>3.7.3</version>
+    <time>1655118183</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982372</requestid>
+  </revision>
 </revisionlist>
