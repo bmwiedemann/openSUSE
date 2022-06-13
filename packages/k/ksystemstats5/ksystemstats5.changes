@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jun  9 11:14:59 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.0
+- No code changes since 5.24.90
+
+-------------------------------------------------------------------
+Thu May 19 19:45:31 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.90
+- Changes since 5.24.5:
+  * Add more network sensor
+  * Add a window system sensor (kde#452461)
+  * cmake: Make sure we also search for dbus interfaces in DESTDIR
+  * Remove duplicate header between header cpp file
+  * Add Qt6 CI
+  * Allow to compile against qt6
+  * CPU Plugin: Prevent integer overflow of total usage (kde#448626)
+  * Set proper initial values for many SensorProperties (kde#446414)
+  * disks: Properly initialize read/write counters (kde#448494)
+
+-------------------------------------------------------------------
 Tue May  3 13:00:20 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.5
