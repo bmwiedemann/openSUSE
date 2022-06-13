@@ -1,0 +1,8 @@
+<package name="oxygen5-sounds" project="openSUSE:Factory">
+  <title>Oxygen sounds</title>
+  <description>Provides sounds for the default Plasma desktop.
+
+</description>
+  <devel project="KDE:Frameworks5" package="oxygen5-sounds"/>
+  <url>https://www.kde.org</url>
+</package>
