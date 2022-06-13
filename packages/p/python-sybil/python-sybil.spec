@@ -31,6 +31,9 @@ BuildRequires:  %{python_module pytest >= 6.2}
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+%if 0%{?sle_version} && 0%{?sle_version} <= 150400
+BuildRequires:  %{python_module dataclasses}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-pytest

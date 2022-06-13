@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  9 11:23:04 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Add missing BR python-dataclasses for openSUSE Leap
+
+-------------------------------------------------------------------
 Wed Feb 16 11:44:28 UTC 2022 - Sasi Olin <hel@lcp.world>
 
 - Add python-sybil-fix-ordering.diff fixing issue with tests
