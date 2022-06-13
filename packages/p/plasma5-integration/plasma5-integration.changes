@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Jun  9 11:15:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.0
+- Changes since 5.24.90:
+  * QDbusMenuBar: properly handle app-wide menubars
+
+-------------------------------------------------------------------
+Thu May 19 19:46:02 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.90
+- Changes since 5.24.5:
+  * Remove duplicate header between header cpp file
+  * Update unit test to reflect code changes
+  * Fix qt6 cmake support
+  * Port QX11Info
+  * Adapt build system for building against qt6
+  * Initialise globals on startup (kde#452060)
+  * WaylandIntegration: Install event filter
+  * Unshadow variable
+  * Exclude the kwin process when checking if we are in wayland
+  * Use QWaylandClientExtension for wayland code
+  * Initial support for building against Qt6
+  * const'ify variables
+  * [KDEPlatformFileDialog] Don't do stat if baseUrl didn't change
+  * It compiles file without deprecated methods
+  * Move import QtQuickSettings into platformtheme
+  * Gracefully handle invalid color scheme setting (kde#449613)
+  * Avoid creating plasma APIs for non-toplevels
+
+-------------------------------------------------------------------
 Tue May  3 13:00:24 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.5

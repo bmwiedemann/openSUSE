@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           plasma5-integration
-Version:        5.24.5
+Version:        5.25.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,9 +28,9 @@ Summary:        Plugins responsible for better integration of Qt applications in
 License:        GPL-2.0+
 Group:          System/GUI/KDE
 Url:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-integration-%{version}.tar.xz
+Source:         plasma-integration-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-integration-%{version}.tar.xz.sig
+Source1:        plasma-integration-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 5.17.0
@@ -47,7 +47,9 @@ BuildRequires:  cmake(KF5Notifications) >= 5.17.0
 BuildRequires:  cmake(KF5Wayland) >= 5.5.0
 BuildRequires:  cmake(KF5WidgetsAddons) >= 5.17.0
 BuildRequires:  cmake(KF5WindowSystem) >= 5.17.0
+BuildRequires:  cmake(PlasmaWaylandProtocols)
 BuildRequires:  cmake(Qt5DBus) >= 5.5.0
+BuildRequires:  cmake(Qt5WaylandClient)
 BuildRequires:  cmake(Qt5Widgets) >= 5.5.0
 BuildRequires:  cmake(Qt5X11Extras) >= 5.5.0
 BuildRequires:  libQt5PlatformSupport-private-headers-devel  >= 5.5.0
