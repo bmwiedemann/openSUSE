@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Jun  9 11:15:04 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.0
+- No code changes since 5.24.90
+
+-------------------------------------------------------------------
+Thu May 19 19:46:05 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.90
+- Changes since 5.24.5:
+  * Port away from deprecated Plasma::DataEngine API
+  * Port away from QRegExp
+  * We need Qt6::Core5Compat for QXmlDefaultHandler
+  * Fix some qt6 compile error
+  * Adapt build system for building against qt6
+  * themeexplorer: Remove unused `org.kde.plasma.calendar`
+  * Correct contextual action names
+  * cuttlefish: Show file in FM action
+  * plasmoidviewer: Port from plasmoid context property to Plasmoid
+  * Remove explicit QuickSettings init method call
+  * Port away from units to PlasmaCore.Units
+  * engineexplorer: Unify first two columns (DataSource + Key)
+  * engineexplorer: Replace magic column numbers with enum
+  * engineexplorer: Add tree recursion support for QList<QVariantMap>
+  * engineexplorer: Add tree recursion support for QVariantMap
+  * engineexplorer: Prepare tree model code for recursion
+  * engineexplorer: Replace canConvert(int) with template method
+  * engineexplorer: Display lists as expandable trees
+  * engineexplorer: Swap Type and Value columns
+  * engineexplorer: Shuffle code a bit
+  * engineexplorer: Add tooltips to DataSource and Key columns
+  * engineexplorer: Switch from Java-style to STL iterators
+  * engineexplorer: Fix logs
+  * engineexplorer: Shorten UI label
+  * engineexplorer: Fix kf.i18n warning
+  * engineexplorer: Port away from foreach macro
+  * [plasmathemeexplorer] Set desktop file name (kde#410861)
+
+-------------------------------------------------------------------
 Tue May  3 13:00:24 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.5
