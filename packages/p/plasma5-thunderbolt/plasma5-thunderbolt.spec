@@ -23,15 +23,15 @@
 %define qt5_version 5.10.0
 %bcond_without released
 Name:           plasma5-thunderbolt
-Version:        5.24.5
+Version:        5.25.0
 Release:        0
 Summary:        Plasma frontend for Thunderbolt 3 security levels
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-thunderbolt-%{version}.tar.xz
+Source:         plasma-thunderbolt-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-thunderbolt-%{version}.tar.xz.sig
+Source1:        plasma-thunderbolt-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
