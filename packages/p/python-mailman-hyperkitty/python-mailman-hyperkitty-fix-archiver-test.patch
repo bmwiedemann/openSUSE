@@ -1,0 +1,13 @@
+Index: mailman-hyperkitty-1.2.0/mailman_hyperkitty/tests/test_archiver.py
+===================================================================
+--- mailman-hyperkitty-1.2.0.orig/mailman_hyperkitty/tests/test_archiver.py	2022-06-09 13:02:11.689258996 +0200
++++ mailman-hyperkitty-1.2.0/mailman_hyperkitty/tests/test_archiver.py	2022-06-09 13:09:00.023906415 +0200
+@@ -130,7 +130,7 @@ MIME-Version: 1.0
+ Content-Type: multipart/alternative; boundary="zzz123"
+ 
+ Ce message est au format MIME. Comme votre logiciel de courrier ne comprend
+-pas ce format, tout ou partie de ce message pourrait \xc3\xaatre illisible.
++pas ce format, tout ou partie de ce message pourrait \udcc3\udcaatre illisible.
+ 
+ --zzz123
+ Content-Type: text/plain; charset="us-ascii"

@@ -28,6 +28,7 @@ URL:            https://gitlab.com/mailman/mailman-hyperkitty/
 Source:         https://files.pythonhosted.org/packages/source/m/mailman-hyperkitty/mailman-hyperkitty-%{version}.tar.gz
 # https://gitlab.com/mailman/mailman-hyperkitty/-/issues/28
 Patch0:         python-mailman-hyperkitty-no-mock.patch
+Patch1:         python-mailman-hyperkitty-fix-archiver-test.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -37,7 +38,7 @@ Requires:       python-setuptools
 Requires:       python-zope.interface
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module mailman}
+BuildRequires:  mailman3 >= 3.3.5
 BuildRequires:  %{python_module nose2}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
