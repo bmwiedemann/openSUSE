@@ -38,7 +38,7 @@ BuildRequires:  mvn(com.google.protobuf:protobuf-java)
 BuildRequires:  mvn(com.jcraft:jzlib)
 BuildRequires:  mvn(commons-logging:commons-logging)
 BuildRequires:  mvn(javax.servlet:javax.servlet-api)
-BuildRequires:  mvn(log4j:log4j:1.2.16)
+BuildRequires:  mvn(log4j:log4j)
 BuildRequires:  mvn(org.apache.ant:ant)
 BuildRequires:  mvn(org.apache.ant:ant-launcher)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
@@ -53,7 +53,6 @@ BuildRequires:  mvn(org.osgi:osgi.core)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildArch:      noarch
-BuildRequires:  mvn(javax.activation:activation)
 
 %description
 Netty is a NIO client server framework which enables quick and easy

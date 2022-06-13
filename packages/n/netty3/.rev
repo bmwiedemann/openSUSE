@@ -103,4 +103,12 @@
     <comment>sync changes with sle</comment>
     <requestid>978885</requestid>
   </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>3914a9df2ef666c38a55775915d6c6bf</srcmd5>
+    <version>3.10.6</version>
+    <time>1655118189</time>
+    <user>dimstar_suse</user>
+    <comment>javax.activation is only a transitive dependency</comment>
+    <requestid>982388</requestid>
+  </revision>
 </revisionlist>

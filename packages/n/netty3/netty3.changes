@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 13 08:43:45 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Remove dependency on javax.activation, which is a transitive
+  dependency.
+- Build again against mvn(log4j:log4j), since reload4j - that
+  provides it - is in all relevant distributions.
+
+-------------------------------------------------------------------
 Mon May 23 11:05:57 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Use the standalone JavaEE modules unconditionally
