@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Jun  9 11:14:59 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.0
+- Changes since 5.24.90:
+  * kcm: Make screen area use full width
+  * kcm: Don't force width of screens area
+  * X11: fix kded xcb resource leak (kde#453280)
+
+-------------------------------------------------------------------
+Thu May 19 19:45:30 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.90
+- Changes since 5.24.5:
+  * plasmoid: Copy InhibitionHint from battery applet
+  * plasmoid: Fix leftMargin expression and delete dummy invisible CheckBox
+  * plasmoid: Port to PlasmaComponents3
+  * plasmoid: Port away from theme context property to PlasmaCore.Theme fonts
+  * plasmoid: Pass down screenLayouts model explicitly through a property
+  * plasmoid: Fix JavaScript code style
+  * plasmoid: Port away from plasmoid context property to attached Plasmoid
+  * plasmoid: Port away from unit context property to PlasmaCore.Units
+  * OSD: Don't wrap current index around when holding left/right key
+  * Add test checking when we connect an external monitor while the device is rotated
+  * Fix connecting external monitors when a monitor is rotated
+  * readability: construct qbytearray directly instead of going through qstring
+  * kcm: fix choosing the refresh rate
+  * kcm: fix refresh rate list not being updated (kde#453392)
+  * Prefer more common aspect ratios over correct math (kde#443764)
+  * KCM: Explain what overscan and rgb range do (kde#442549)
+  * kcm: hide the whole "Primary" RowLayout with only one screen
+  * kcm: fixup 1b9b190d1f00e6287e7afc3d9b493d3aa04d1f85 (bad indentation)
+  * KCM: Explain what being the Primary screen means
+  * KCM: Center Orientation label when there's no automatic options
+  * kcm: port checkboxes and radio buttons to use onToggled signal handlers
+  * kcm: use correct left spacing for intended checkbox
+  * kcm: Use KConfigXt to manage global scale
+  * kcm: Use qmlRegisterAnonymousType
+  * X11: align touchscreen to internal display (kde#415683)
+  * KCM: fix crash when editing disabled display output's refresh rate (kde#450265)
+  * [kcm] Only enable revert action when revert sheet is open (kde#449931)
+  * Ensure to emit ResolutionRole dataChanged signals (kde#448855)
+  * Use more generic name for panel connectors
+
+-------------------------------------------------------------------
 Tue May  3 13:00:20 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.5
