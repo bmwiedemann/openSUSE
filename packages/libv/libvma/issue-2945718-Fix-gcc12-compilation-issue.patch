@@ -1,0 +1,50 @@
+commit 865def12ac0e46a80c2ace2e7ed39258b3de30ed
+Author: Igor Ivanov <igori@nvidia.com>
+Date:   Mon Jan 31 20:01:33 2022 +0200
+
+    issue: 2945718 Fix gcc12 compilation issue
+    
+    C++17 has deprecated a few components that had been in C++ since its beginning,
+    and std::iterator is one of them.
+    
+    In addition fixed configure warning:
+    checking mellanox/dpcp.h presence... no
+    configure: WARNING: mellanox/dpcp.h: accepted by the compiler, rejected by the preprocessor!
+    configure: WARNING: mellanox/dpcp.h: proceeding with the compiler's result
+    The reason: preprocessor does not see -std=c++11
+    
+    Signed-off-by: Igor Ivanov <igori@nvidia.com>
+
+diff --git config/m4/dpcp.m4 config/m4/dpcp.m4
+index 3d3a7593190e..31b40ce6ef78 100644
+--- config/m4/dpcp.m4
++++ config/m4/dpcp.m4
+@@ -43,7 +43,7 @@ AS_IF([test "x$with_dpcp" == xno],
+         vma_cv_dpcp_LDFLAGS="-L$with_dpcp/lib64 -Wl,--rpath,$with_dpcp/lib64"
+     fi
+ 
+-    CPPFLAGS="$vma_cv_dpcp_CPPFLAGS $CPPFLAGS"
++    CPPFLAGS="-std=c++11 $vma_cv_dpcp_CPPFLAGS $CPPFLAGS"
+     CXXFLAGS="-std=c++11 $CXXFLAGS"
+     LDFLAGS="$vma_cv_dpcp_LDFLAGS $LDFLAGS"
+     LIBS="$vma_cv_dpcp_LIBS $LIBS"
+diff --git src/vma/util/vma_list.h src/vma/util/vma_list.h
+index ae57fba43676..9c9b6b38b1d5 100644
+--- src/vma/util/vma_list.h
++++ src/vma/util/vma_list.h
+@@ -88,9 +88,14 @@ public :
+ 
+ template<typename T, size_t offset(void)>
+ /* coverity[missing_move_assignment] */
+-class list_iterator_t : public std::iterator<std::random_access_iterator_tag, T, std::ptrdiff_t, T*, T&>
++class list_iterator_t
+ {
+ public:
++	using iterator_category = std::random_access_iterator_tag;
++	using value_type = T;
++	using difference_type = std::ptrdiff_t;
++	using pointer = T*;
++	using reference = T&;
+ 
+ 	list_iterator_t(T* ptr = NULL) : m_ptr(ptr) {}
+ 

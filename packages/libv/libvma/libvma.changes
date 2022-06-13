@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 13 06:47:26 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add issue-2945718-Fix-gcc12-compilation-issue.patch to fix
+  compilation issues with GCC12
+
+-------------------------------------------------------------------
 Tue Oct  5 09:08:03 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
