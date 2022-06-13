@@ -1,0 +1,388 @@
+-------------------------------------------------------------------
+Thu Jun  9 11:15:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.0
+- Changes since 5.24.90:
+  * quicksettings: Add simple and performant shadow to delegates
+  * logout: Fix window not loading
+  * homescreen: Fix app drawer header buttons not interactable
+  * homescreen: Fix fast sequential flicks not opening the app drawer
+  * homescreen: Use smaller vertical swipe threshold
+  * appdrawer: avoid entering edit mode while in an half empty drawer
+  * quicksettings: Remove debug message
+  * lockscreen: Port to kscreenlocker interface v3 and cleanup
+  * quicksettings: Fix enabled text always displaying "On"
+
+-------------------------------------------------------------------
+Thu May 19 19:46:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.90
+- Too many changes to list here
+- Rename package from plasma5-phone-components to plasma5-mobile,
+  following upstream
+
+-------------------------------------------------------------------
+Tue May  3 13:11:21 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.5
+- No code changes since 5.24.4
+
+-------------------------------------------------------------------
+Tue Mar 29 16:04:39 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.4
+- Changes since 5.24.3:
+  * mmplugin: set all connections to not autoconnect on setMobileDataEnabled(false) (#182)
+
+-------------------------------------------------------------------
+Wed Mar  9 10:49:13 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Remove applets/activities, applets/krunner and the lang
+  subpackage (since those applets where the only ones using it)
+  as they were removed by upstream.
+
+-------------------------------------------------------------------
+Tue Mar  8 18:10:01 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.3
+- No code changes since 5.24.2
+
+-------------------------------------------------------------------
+Tue Feb 22 16:21:04 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.2
+- Changes since 5.24.1:
+  * actiondrawer: Darken landscape drawer background to be easier to read
+  * quicksettings: Ensure mobile data quick setting says not available if not available
+  * Ensure we have a default wallpaper
+  * homescreen: Fix app drawer not interactable in empty space
+  * taskpanel: Fix close action
+
+-------------------------------------------------------------------
+Tue Feb 15 20:01:21 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.1
+- Changes since 5.24.0:
+  * mmplugin: Use NM autoconnect instead of wwan
+  * ci: Add networkmanager-qt
+  * quicksettings: Make mobile data quick setting use NM API directly
+  * taskswitcher: Ensure window is in maximized state when activating
+  * taskswitcher: Remove global variable calls
+  * mmplugin: Fix SIM being reported as locked when no sim is inserted
+  * applets/activities & applets/krunner: Remove from repo
+
+-------------------------------------------------------------------
+Sat Feb  5 19:51:01 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.0
+- Changes since 5.23.90:
+  * applets/activities & applets/krunner: Remove from repo
+  * [shell/updates] Ensure upgrade process has new panel height
+  * Fix meta shortcut being removed regression
+  * homescreen: Don't disable flick tracking unnecessarily
+  * homescreen: Only close app drawer after startup feedback is fullscreen
+  * lockscreen: Use smaller up icon
+  * widgets/krunner: Fix keyboard focus being invoked on shell startup
+  * homescreen: Close app drawer when app is launched
+  * homescreen: Reset app drawer position when opened
+
+-------------------------------------------------------------------
+Thu Jan 13 20:30:31 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue Jan  4 14:58:19 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.5
+- Changes since 5.23.4:
+  * panel: Fix SIM Locked being shown when no sim is inserted
+
+-------------------------------------------------------------------
+Fri Dec 10 18:22:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix package build with plasma-framework 5.89.0.
+
+-------------------------------------------------------------------
+Tue Nov 30 14:59:23 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.4
+- Changes since 5.23.3:
+  * homescreen: Fix silly type name error
+  * Fix broken reset homescreen position signal, and minor refactor
+  * Rework app drawer layout and open/close behaviour logic
+
+-------------------------------------------------------------------
+Tue Nov  9 15:43:26 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.3
+- No code changes since 5.23.2
+
+-------------------------------------------------------------------
+Tue Oct 26 14:56:01 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.2
+- No code changes since 5.23.1
+
+-------------------------------------------------------------------
+Tue Oct 19 14:05:43 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.1
+- Changes since 5.23.0:
+  * panel: Fix quicksetting delegate width not getting enforced on label
+
+-------------------------------------------------------------------
+Thu Oct  7 13:50:10 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.0
+- Changes since 5.22.90:
+  * Fix path->URL conversion error, detected by -DQT_NO_URL_CAST_FROM_STRING
+  * Do not show "Sim Locked" when there's no SIM card
+  * Revert "phonepanel: Keep the Quick Settings buttons the same size"
+  * lockscreen: Fix text input not working because of predictive text
+  * phonepanel: Keep the Quick Settings buttons the same size
+  * Add airplane mode in quicksettings
+- Add new key + signature to plasma.keyring
+
+-------------------------------------------------------------------
+Thu Sep 16 13:05:11 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue Aug 31 19:08:49 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.5
+- No code changes since 5.22.4
+
+-------------------------------------------------------------------
+Tue Jul 27 12:35:01 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.4
+- Changes since 5.22.3:
+  * Make sure the closed signal is emitted upon close
+
+-------------------------------------------------------------------
+Sun Jul 18 08:24:49 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix the %files section. plasma-framework >= 5.84 doesn't install
+  desktop files in %_kf5_servicesdir anymore.
+
+-------------------------------------------------------------------
+Tue Jul  6 12:01:50 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.3
+- No code changes since 5.22.2.1
+
+-------------------------------------------------------------------
+Wed Jun 23 08:24:44 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.2.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.2
+- No code changes since 5.22.1
+
+-------------------------------------------------------------------
+Tue Jun 15 13:17:28 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.1
+- Changes since 5.22.0:
+  * lockscreen: handle all cases for lockscreen keyboard focus
+  * lockscreen: explicitly tell keyboard to open rather than relying on focus
+  * panel: remove unnecessary color changes for header panel when quicksettings open
+
+-------------------------------------------------------------------
+Thu Jun  3 13:06:16 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.0
+- Changes since 5.21.90:
+  * lockscreen: don't make password bar go off the screen if keyboard reports height larger than screen height
+  * Don't reopen keyboard after krunner dialog closes
+  * Make pin screen follow color scheme
+  * lockscreen: do not show percentage for signal strength
+  * indicators: clean-up useless debug
+  * indicators: do not needlessly scan again
+  * Use alternateBackgroundColor for OpenDrawerButton
+
+-------------------------------------------------------------------
+Thu May 13 18:15:46 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue May  4 14:15:41 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.5
+- No code changes since 5.21.4
+
+-------------------------------------------------------------------
+Tue Apr  6 14:00:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.4
+- Changes since 5.21.3:
+  * lockscreen: Accept pin on numpad enter
+  * Fix typo
+
+-------------------------------------------------------------------
+Wed Mar 24 17:47:21 UTC 2021 - Andrés B.S. <andresbs@opensuse.org>
+
+- Add missing Wayland runtime dependency
+  * QT_QPA_PLATFORM is forced from kwinwrapper
+
+-------------------------------------------------------------------
+Tue Mar 16 13:55:26 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.3
+- Changes since 5.21.2:
+  * Fix panel clock from not respecting 12/24 hour settings
+  * Avoid potential double dbus start
+  * remove code pushed by mistake
+  * apporder reflects favorites
+
+-------------------------------------------------------------------
+Tue Mar  2 15:01:38 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.2
+- Changes since 5.21.1:
+  * Fix the SignalStrength indicator on lockscreen
+  * Use Header colors for top panel
+  * shell: keep panelsfix.js in sync with layout.js
+  * fix horizontal scrolling of applets
+
+-------------------------------------------------------------------
+Tue Feb 23 14:52:10 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.1
+- Changes since 5.21.0:
+  * Tweak app drawer behavior
+  * enable the drag handler only when the containment has focus
+  * Close sliding panel as soon as it's off the screen for no delay
+  * Cancel sliding panel animations on touch so it's more responsive
+  * respect max favorite count when dropping
+
+-------------------------------------------------------------------
+Mon Feb 15 14:02:58 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- Changes since 5.20.90:
+  * remove use of dead proeprties
+  * More familiar behavior for the App Drawer
+  * Use loop instead of recursion
+  * Fix logic error in f19f629b4ba85
+  * add back panels if they disappeared
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:47 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Fri Jan 15 17:49:25 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add compatibility with qml-autoreqprov
+
+-------------------------------------------------------------------
+Tue Jan  5 14:40:05 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.5
+- No code changes since 5.20.4
+
+-------------------------------------------------------------------
+Fri Dec 11 18:51:35 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Initial package
