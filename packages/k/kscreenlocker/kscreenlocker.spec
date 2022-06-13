@@ -20,15 +20,15 @@
 
 %bcond_without released
 Name:           kscreenlocker
-Version:        5.24.5
+Version:        5.25.0
 Release:        0
 Summary:        Library and components for secure lock screen architecture
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://projects.kde.org/kscreenlocker
-Source:         https://download.kde.org/stable/plasma/%{version}/kscreenlocker-%{version}.tar.xz
+Source:         kscreenlocker-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kscreenlocker-%{version}.tar.xz.sig
+Source1:        kscreenlocker-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        kde
@@ -36,6 +36,7 @@ BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules >= 1.8.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  pam-devel
+BuildRequires:  cmake(KF5Config) >= 5.15.0
 BuildRequires:  cmake(KF5Crash) >= 5.15.0
 BuildRequires:  cmake(KF5Declarative) >= 5.15.0
 BuildRequires:  cmake(KF5GlobalAccel) >= 5.15.0
@@ -130,7 +131,7 @@ exit 0
 %files
 %license COPYING*
 %{_distconfdir}/pam.d/kde
-%{_kf5_servicesdir}/
+%{_kf5_applicationsdir}/kcm_screenlocker.desktop
 %{_kf5_sharedir}/kconf_update/
 %{_kf5_plugindir}/
 %{_kf5_notifydir}/
@@ -138,13 +139,7 @@ exit 0
 %dir %{_kf5_sharedir}/kpackage/
 %dir %{_kf5_sharedir}/kpackage/kcms
 %{_kf5_sharedir}/kpackage/kcms/kcm_screenlocker
-%if %{pkg_vcmp kf5-filesystem >= 20220307}
-%{_libexecdir}/kcheckpass
 %{_libexecdir}/kscreenlocker_greet
-%else
-%{_kf5_libdir}/libexec/kcheckpass
-%{_kf5_libdir}/libexec/kscreenlocker_greet
-%endif
 
 %files -n libKScreenLocker5
 %license COPYING*

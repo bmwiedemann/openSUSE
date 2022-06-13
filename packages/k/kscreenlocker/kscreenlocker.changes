@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Jun  9 11:14:59 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.0
+- Changes since 5.24.90:
+  * Handle fallback packages when checking for screenlocker API version
+  * Wait for screenlocker UI to call close
+  * Remove old non-compliant Ctrl+Alt+L shortcut that interferes with apps (kde#454397)
+
+-------------------------------------------------------------------
+Thu May 19 19:45:31 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.90
+- Changes since 5.24.5:
+  * Disable logind integration for kwin's unit tests
+  * Add fallback to the absolute path to kscreenlocker_greet (kde#452817)
+  * Guard double authenticate calls
+  * Fix two minor Qt6 build regressions
+  * Cleanup kcheckpass
+  * Plasma 5.25 brings breaking API changes to the lockscreen
+  * Port screen geometry change handling away from QDesktopWidget
+  * Don't recommend current session
+  * Port away from deprecated KDeclarative API
+  * kcm: Fix the load of wallpaper kcms (kde#452757)
+  * Port away from KWayland::Server
+  * Remove uneeded default args for plugin constructors
+  * Port away from using KAboutData with KCMs
+  * Install KCM in new namespaces
+  * De-duplicate json metadata of KPackages
+  * Remove explicit QuickSettings init method call
+  * Use PACKAGE_PREFIX_DIR before any find_dependency() calls
+  * Make the CMake config file work in a Qt6 build as well
+  * Adapt build system to also support Qt6
+  * Port from KDeclarative::ConfigPropertyMap to KConfigPropertyMap
+  * Adapt to Layer Shell Qt API change
+  * Add form factors to embedded json metadata
+  * Port to KLibexec
+
+-------------------------------------------------------------------
 Tue May  3 13:00:20 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.5
