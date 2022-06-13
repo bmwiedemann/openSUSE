@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 10 04:34:52 UTC 2022 - pgajdos@suse.com
+
+- version update to 7.4.30
+  * This is a security release.
+  https://www.php.net/ChangeLog-7.php#7.4.30
+
+-------------------------------------------------------------------
 Fri May  6 09:38:30 UTC 2022 - pgajdos@suse.com
 
 - security update [bsc#1197644]

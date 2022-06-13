@@ -1261,4 +1261,14 @@ file with an '_' (PHP loads extensions in alphabetical order) (forwarded request
   + php7-signedness-php_filter_validate_domain.patch</comment>
     <requestid>975375</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>287feeae17dba8e93baf0089067139e3</srcmd5>
+    <version>7.4.30</version>
+    <time>1655118114</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.4.30
+  * This is a security release.
+  https://www.php.net/ChangeLog-7.php#7.4.30</comment>
+    <requestid>981969</requestid>
+  </revision>
 </revisionlist>
