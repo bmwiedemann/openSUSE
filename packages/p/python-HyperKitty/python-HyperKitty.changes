@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 10 08:14:18 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- First Make migrations on update, then call migrate
+
+-------------------------------------------------------------------
 Thu May 26 09:19:37 UTC 2022 - pgajdos@suse.com
 
 - do not require python-mock for build

@@ -279,6 +279,7 @@ export PYTHONPATH=$(pwd)
 if ! grep -q "^SECRET_KEY.*" %{hyperkitty_etcdir}/settings_local.py; then
     echo "SECRET_KEY='$(openssl rand -base64 48)'" >> %{hyperkitty_etcdir}/settings_local.py
 fi
+%{_sbindir}/hyperkitty-manage makemigrations --pythonpath /srv/www/webapps/mailman/hyperkitty/ --settings settings
 %{_sbindir}/hyperkitty-manage migrate --pythonpath /srv/www/webapps/mailman/hyperkitty/ --settings settings
 
 %service_add_post %{hyperkitty_services}
