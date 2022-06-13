@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jun  9 11:15:07 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.0
+- Changes since 5.24.90:
+  * systemsettingsrunner: Fix all matches having the same id
+  * IconView: Remove duplicated tooltips (kde#409327)
+
+-------------------------------------------------------------------
+Thu May 19 19:46:15 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue May  3 13:00:27 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.5
