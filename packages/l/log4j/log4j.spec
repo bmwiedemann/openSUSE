@@ -27,6 +27,7 @@ Source1:        http://archive.apache.org/dist/logging/%{name}/%{version}/apache
 Source2:        https://www.apache.org/dist/logging/KEYS#/%{name}.keyring
 Patch1:         logging-log4j-Remove-unsupported-EventDataConverter.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 9
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations)
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core)
@@ -39,6 +40,8 @@ BuildRequires:  mvn(javax.activation:javax.activation-api)
 BuildRequires:  mvn(org.apache.commons:commons-compress)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.logging:logging-parent:pom:)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-assembly-plugin)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-dependency-plugin)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
 BuildRequires:  mvn(org.fusesource.jansi:jansi)
 BuildRequires:  mvn(org.jctools:jctools-core)
@@ -95,13 +98,6 @@ rm -rf docs/api
 # artifact for upstream testing of log4j itself, shouldn't be distributed
 %pom_disable_module %{name}-perf
 
-# needs java 9 to build
-%pom_disable_module %{name}-api-java9
-%pom_disable_module %{name}-core-java9
-%pom_remove_dep -r :%{name}-api-java9
-%pom_remove_dep -r :%{name}-core-java9
-%pom_remove_plugin -r :maven-dependency-plugin
-
 # unavailable com.conversantmedia:disruptor
 rm log4j-core/src/main/java/org/apache/logging/log4j/core/async/DisruptorBlockingQueueFactory.java
 %pom_remove_dep -r com.conversantmedia:disruptor
@@ -140,8 +136,6 @@ rm -r log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/kafka
 %pom_disable_module %{name}-jmx-gui
 %pom_disable_module %{name}-bom
 %pom_disable_module %{name}-web
-%pom_disable_module %{name}-iostreams
-%pom_disable_module %{name}-jul
 %pom_disable_module %{name}-core-its
 %pom_disable_module %{name}-jpa
 %pom_disable_module %{name}-couchdb
@@ -150,7 +144,6 @@ rm -r log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/kafka
 %pom_disable_module %{name}-spring-boot
 %pom_disable_module %{name}-spring-cloud-config
 %pom_disable_module %{name}-kubernetes
-%pom_disable_module %{name}-jpl
 
 %pom_remove_dep -r :jackson-dataformat-yaml
 %pom_remove_dep -r :jackson-dataformat-xml
@@ -166,7 +159,6 @@ rm -r log4j-core/src/main/java/org/apache/logging/log4j/core/{jackson,config/yam
 rm -r log4j-core/src/main/java/org/apache/logging/log4j/core/appender/{db,mom,nosql}
 rm log4j-core/src/main/java/org/apache/logging/log4j/core/layout/*{Csv,Jackson,Xml,Yaml,Json,Gelf}*.java
 rm log4j-1.2-api/src/main/java/org/apache/log4j/builders/layout/*Xml*.java
-rm log4j-api/src/main/java/org/apache/logging/log4j/util/Activator.java
 rm -r log4j-1.2-api/src/main/java/org/apache/log4j/or/jms
 
 %{mvn_package} ':%{name}-slf4j-impl' slf4j
@@ -182,7 +174,6 @@ rm -r log4j-1.2-api/src/main/java/org/apache/log4j/or/jms
 %{mvn_package} :log4j-core-its __noinstall
 
 %build
-# missing test deps (mockejb)
 %{mvn_build} -f -- -Dsource=8
 
 %install

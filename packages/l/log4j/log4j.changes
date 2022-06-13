@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 13 09:00:12 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build as multi-release jar.
+- Add some logging providers which we can build with the existing
+  dependencies and without cycles.
+
+-------------------------------------------------------------------
 Mon Apr 11 06:25:34 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on standalone javax.activation-api that is not
