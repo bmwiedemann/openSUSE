@@ -21,15 +21,15 @@
 
 %bcond_without released
 Name:           kcm_sddm
-Version:        5.24.5
+Version:        5.25.0
 Release:        0
 Summary:        A sddm control module for KDE
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            https://projects.kde.org/projects/kdereview/sddm-kcm/repository
-Source:         https://download.kde.org/stable/plasma/%{version}/sddm-kcm-%{version}.tar.xz
+Source:         sddm-kcm-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/sddm-kcm-%{version}.tar.xz.sig
+Source1:        sddm-kcm-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -97,10 +97,6 @@ sddm.
 %dir %{_kf5_plugindir}/plasma/kcms/
 %dir %{_kf5_plugindir}/plasma/kcms/systemsettings/
 %{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_sddm.so
-%if %{pkg_vcmp kf5-filesystem >= 20220307}
 %{_libexecdir}/kauth/kcmsddm_authhelper
-%else
-%{_kf5_libdir}/libexec/kauth/kcmsddm_authhelper
-%endif
 
 %changelog
