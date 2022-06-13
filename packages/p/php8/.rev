@@ -270,4 +270,14 @@
     https://www.php.net/ChangeLog-8.php#8.1.6</comment>
     <requestid>979150</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>6b5effecf158ed0940709b527f10affd</srcmd5>
+    <version>8.1.7</version>
+    <time>1655118114</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 8.1.7
+  * This is a security release.
+  https://www.php.net/ChangeLog-8.php#8.1.7</comment>
+    <requestid>981968</requestid>
+  </revision>
 </revisionlist>
