@@ -1,0 +1,66 @@
+From 0cc230ec7f5bde0e61d1080512db72e3cc1a28f6 Mon Sep 17 00:00:00 2001
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Sun, 29 May 2022 14:47:39 +0800
+Subject: [PATCH] shell: refresh geometries of all `DesktopView` and
+ `PanelView` when receiving `logicalDotsPerInchChanged`
+
+Workaround for https://codereview.qt-project.org/c/qt/qtbase/+/413380
+
+BUG: 450443
+FIXED-IN: 5.24.6
+---
+ shell/desktopview.cpp | 8 ++++++++
+ shell/panelview.cpp   | 8 ++++++++
+ 2 files changed, 16 insertions(+)
+
+diff --git a/shell/desktopview.cpp b/shell/desktopview.cpp
+index 54f759f3b..8002f085e 100644
+--- a/shell/desktopview.cpp
++++ b/shell/desktopview.cpp
+@@ -118,12 +118,20 @@ void DesktopView::adaptToScreen()
+ 
+     if (m_oldScreen) {
+         disconnect(m_oldScreen.data(), &QScreen::geometryChanged, this, &DesktopView::screenGeometryChanged);
++        // Workaround for https://codereview.qt-project.org/c/qt/qtbase/+/413380
++        if (KWindowSystem::isPlatformX11()) {
++            disconnect(m_oldScreen.data(), &QScreen::logicalDotsPerInchChanged, this, &DesktopView::screenGeometryChanged);
++        }
+     }
+ 
+     if (m_windowType == Desktop || m_windowType == WindowedDesktop) {
+         screenGeometryChanged();
+ 
+         connect(m_screenToFollow.data(), &QScreen::geometryChanged, this, &DesktopView::screenGeometryChanged, Qt::UniqueConnection);
++        // Workaround for https://codereview.qt-project.org/c/qt/qtbase/+/413380
++        if (KWindowSystem::isPlatformX11()) {
++            connect(m_screenToFollow.data(), &QScreen::logicalDotsPerInchChanged, this, &DesktopView::screenGeometryChanged, Qt::UniqueConnection);
++        }
+     }
+ 
+     m_oldScreen = m_screenToFollow;
+diff --git a/shell/panelview.cpp b/shell/panelview.cpp
+index a0af15be8..aa921ddfa 100644
+--- a/shell/panelview.cpp
++++ b/shell/panelview.cpp
+@@ -935,10 +935,18 @@ void PanelView::setScreenToFollow(QScreen *screen)
+         // disconnect from old screen
+         disconnect(m_screenToFollow, &QScreen::virtualGeometryChanged, this, &PanelView::updateStruts);
+         disconnect(m_screenToFollow, &QScreen::geometryChanged, this, &PanelView::restore);
++        // Workaround for https://codereview.qt-project.org/c/qt/qtbase/+/413380
++        if (KWindowSystem::isPlatformX11()) {
++            disconnect(m_screenToFollow, &QScreen::logicalDotsPerInchChanged, this, &PanelView::restore);
++        }
+     }
+ 
+     connect(screen, &QScreen::virtualGeometryChanged, this, &PanelView::updateStruts, Qt::UniqueConnection);
+     connect(screen, &QScreen::geometryChanged, this, &PanelView::restore, Qt::UniqueConnection);
++    // Workaround for https://codereview.qt-project.org/c/qt/qtbase/+/413380
++    if (KWindowSystem::isPlatformX11()) {
++        connect(screen, &QScreen::logicalDotsPerInchChanged, this, &PanelView::restore, Qt::UniqueConnection);
++    }
+ 
+     /*connect(screen, &QObject::destroyed, this, [this]() {
+         if (PanelView::screen()) {
+-- 
+2.36.1
+

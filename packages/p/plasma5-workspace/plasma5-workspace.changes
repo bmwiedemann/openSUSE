@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Jun  9 11:39:29 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Add patch to fix a multiscreen bug when PLASMA_USE_QT_SCALING=1
+  (kde#450443, https://invent.kde.org/plasma/plasma-workspace/-/merge_requests/1781)
+  * 0001-shell-refresh-geometries-of-all-DesktopView-and-Pane.patch
+
+-------------------------------------------------------------------
+Thu Jun  9 11:15:05 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.0
+- Too many changes to list here
+- Drop patches, now upstream:
+  * 0001-startkde-Reload-systemd-on-Plasma-start.patch
+
+-------------------------------------------------------------------
+Tue Jun  7 12:55:36 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix opensuse-welcome autostart disabling:
+  * 0001-startkde-Reload-systemd-on-Plasma-start.patch
+
+-------------------------------------------------------------------
+Thu May 19 19:46:06 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.90
+- Too many changes to list here
+- Drop patches, now upstream:
+  * 0001-applets-appmenu-fix-top-level-menu-text-coloration.patch
+  * 0001-kcms-desktoptheme-find-metadata.json-when-loading-Th.patch
+
+-------------------------------------------------------------------
 Wed May 18 18:34:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix appmenu text with certain themes (kde#453348):

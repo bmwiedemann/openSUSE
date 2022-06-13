@@ -1901,4 +1901,14 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
     <comment></comment>
     <requestid>978156</requestid>
   </revision>
+  <revision rev="190" vrev="1">
+    <srcmd5>d5203be39fc20992605d828f542c405b</srcmd5>
+    <version>5.25.0</version>
+    <time>1655118154</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix a multiscreen bug when PLASMA_USE_QT_SCALING=1
+  (kde#450443, https://invent.kde.org/plasma/plasma-workspace/-/merge_requests/1781)
+  * 0001-shell-refresh-geometries-of-all-DesktopView-and-Pane.patch (forwarded request 981524 from fusionfuture)</comment>
+    <requestid>982011</requestid>
+  </revision>
 </revisionlist>

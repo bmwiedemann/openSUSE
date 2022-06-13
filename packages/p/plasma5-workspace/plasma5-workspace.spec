@@ -29,26 +29,25 @@ Name:           plasma5-workspace
 %{!?_plasma5_bugfix: %global _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.24.5
+Version:        5.25.0
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz
+Source:         plasma-workspace-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz.sig
+Source1:        plasma-workspace-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        xprop-kde-full-session.desktop
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-applets-appmenu-fix-top-level-menu-text-coloration.patch
-Patch2:         0001-kcms-desktoptheme-find-metadata.json-when-loading-Th.patch
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
 Patch501:       0001-Use-qdbus-qt5.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch
 # PATCH-FEATURE-OPENSUSE
 Patch506:       0001-Revert-No-icons-on-the-desktop-by-default.patch
+# PATCH-FIX-UPSTREAM kde#450443 https://invent.kde.org/plasma/plasma-workspace/-/merge_requests/1781
+Patch507:       0001-shell-refresh-geometries-of-all-DesktopView-and-Pane.patch
 BuildRequires:  breeze5-icons
 BuildRequires:  fdupes
 %if 0%{?suse_version} < 1550
@@ -57,6 +56,7 @@ BuildRequires:  gcc10-c++
 BuildRequires:  kf5-filesystem
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libQt5PlatformHeaders-devel >= 5.4.0
+BuildRequires:  libicu-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(AppStreamQt) >= 0.10.4
@@ -474,20 +474,11 @@ fi
 
 %config %{_kf5_configdir}/taskmanagerrulesrc
 %config %{_kf5_configdir}/plasmanotifyrc
-%if %{pkg_vcmp kf5-filesystem >= 20220307}
 %{_libexecdir}/ksmserver-logout-greeter
 %{_libexecdir}/plasma-changeicons
 %{_libexecdir}/baloorunner
 %{_libexecdir}/plasma-sourceenv.sh
 %{_libexecdir}/plasma-dbus-run-session-if-needed
-%else
-%dir %{_kf5_libdir}/libexec
-%{_kf5_libdir}/libexec/ksmserver-logout-greeter
-%{_kf5_libdir}/libexec/plasma-changeicons
-%{_kf5_libdir}/libexec/baloorunner
-%{_kf5_libdir}/libexec/plasma-sourceenv.sh
-%{_kf5_libdir}/libexec/plasma-dbus-run-session-if-needed
-%endif
 %{_kf5_libdir}/kconf_update_bin/krunnerglobalshortcuts
 %{_kf5_libdir}/kconf_update_bin/krunnerhistory
 %{_kf5_plugindir}/
@@ -550,20 +541,11 @@ fi
 %{_kf5_sharedir}/kpackage/kcms/kcm_translations
 # %%{_kf5_sharedir}/kpackage/kcms/kcm_feedback
 %{_kf5_sharedir}/kpackage/kcms/kcm_desktoptheme
-%if %{pkg_vcmp kf5-filesystem >= 20220307}
 %dir %{_libexecdir}/kauth
 %{_libexecdir}/kauth/fontinst
 %{_libexecdir}/kauth/fontinst_helper
 %{_libexecdir}/kauth/fontinst_x11
 %{_libexecdir}/kfontprint
-%else
-%dir %{_kf5_libdir}/libexec/kauth
-%{_kf5_libdir}/libexec/kauth/fontinst
-%{_kf5_libdir}/libexec/kauth/fontinst_helper
-%{_kf5_libdir}/libexec/kauth/fontinst_x11
-%{_kf5_libdir}/libexec/kfontprint
-%endif
-
 %exclude %{_kf5_libdir}/libkfontinst.so
 %{_kf5_libdir}/libkfontinst.so.*
 %exclude %{_kf5_libdir}/libkfontinstui.so
