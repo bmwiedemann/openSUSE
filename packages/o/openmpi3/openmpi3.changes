@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 13 06:38:32 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Backport upstream patchs to fix compilation with autoconf >= 2.70 and GCC12
+  - Fix-error-with-stricter-quoting-requirements-of-autoconf-2.70.patch
+  - Always-include-the-stddef.h-header.patch
+
+-------------------------------------------------------------------
 Mon Mar  7 16:54:42 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Add fix-rdma-component-selection.patch to fix bad rdma component selection

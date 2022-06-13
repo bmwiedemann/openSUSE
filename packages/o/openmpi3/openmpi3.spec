@@ -172,6 +172,8 @@ Patch0:         Build-warning-stringop-overflow-in.patch
 Patch1:         reproducible.patch
 Patch2:         memory-patcher-fix-compiler-warning.patch
 Patch3:         fix-rdma-component-selection.patch
+Patch4:         Fix-error-with-stricter-quoting-requirements-of-autoconf-2.70.patch
+Patch5:         Always-include-the-stddef.h-header.patch
 Provides:       mpi
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
@@ -438,6 +440,8 @@ EOF
 %patch1 -p1
 %patch2
 %patch3
+%patch4
+%patch5
 # Live patch the VERSION file
 sed -i -e 's/^greek=.*$/greek=%{git_ver}/' -e 's/^repo_rev=.*$/repo_rev=%{version}%{git_ver}/' \
        -e 's/^date=.*$/date="OpenMPI %{version} Distribution for SUSE"/' VERSION
