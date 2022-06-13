@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           plasma5-addons
-Version:        5.24.5
+Version:        5.25.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,9 +28,9 @@ Summary:        Additional Plasma5 Widgets
 License:        GPL-2.0-or-later AND LGPL-2.1-only AND GPL-3.0-only
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/kdeplasma-addons-%{version}.tar.xz
+Source:         kdeplasma-addons-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kdeplasma-addons-%{version}.tar.xz.sig
+Source1:        kdeplasma-addons-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf5-filesystem
@@ -64,6 +64,9 @@ BuildRequires:  cmake(Qt5WebEngine) >= 5.7.0
 %endif
 BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
 BuildRequires:  cmake(Qt5X11Extras) >= 5.4.0
+%if 0%{?suse_version} < 1550
+BuildRequires:  gcc10-c++
+%endif
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 Requires:       purpose
@@ -93,6 +96,9 @@ the Plasma desktop.
 %setup -q -n kdeplasma-addons-%{version}
 
 %build
+%if 0%{?suse_version} < 1550
+  export CXX=g++-10
+%endif
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
   %cmake_build
 
@@ -109,7 +115,6 @@ the Plasma desktop.
 %files
 %license LICENSES/*
 %{_kf5_knsrcfilesdir}/comic.knsrc
-%{_kf5_libdir}/libplasmacomicprovidercore.so.*
 %{_kf5_libdir}/libplasmapotdprovidercore.so.*
 %{_kf5_plugindir}/
 %{_kf5_qmldir}/
@@ -119,16 +124,17 @@ the Plasma desktop.
 %{_kf5_iconsdir}/hicolor/*/*/*.*
 %{_kf5_appstreamdir}/
 %{_kf5_debugdir}/plasma_comic.categories
+%{_kf5_servicetypesdir}/plasma-comic.desktop
 
 %files devel
 %license LICENSES/*
 %dir %{_includedir}/plasma
 %{_includedir}/plasma/potdprovider
 %{_kf5_cmakedir}/PlasmaPotdProvider/
-%dir %{_kf5_sharedir}/kdevappwizard
-%dir %{_kf5_sharedir}/kdevappwizard/templates/
-%{_kf5_sharedir}/kdevappwizard/templates/*
 %{_kf5_libdir}/libplasmapotdprovidercore.so
+%dir %{_kf5_sharedir}/kdevfiletemplates/
+%dir %{_kf5_sharedir}/kdevfiletemplates/templates
+%{_kf5_sharedir}/kdevfiletemplates/templates/plasmapotdprovider.tar.bz2
 
 %if %{with released}
 %files lang -f %{name}.lang

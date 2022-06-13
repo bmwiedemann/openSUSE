@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jun  9 11:15:02 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.0
+- Changes since 5.24.90:
+  * [applets/konsoleprofiles] Fix invalid property error
+  * wallpapers/potd: update accent color on image changed
+  * Explicitly list relevant lunar phase events (kde#454801)
+  * applets/dict: focus on input field on expanded
+
+-------------------------------------------------------------------
+Thu May 19 19:45:57 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.90
+- Too many changes to list here
+- Needs newer GCC on Leap
+
+-------------------------------------------------------------------
 Tue May  3 13:00:23 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.5

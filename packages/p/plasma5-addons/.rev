@@ -1080,4 +1080,12 @@ Fri Sep 26 09:09:31 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Plasma 5.24.5. Usual version bump + discover patch change (forwarded request 974667 from Vogtinator)</comment>
     <requestid>974713</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>22302d1f2b16fc4862de9a701bb69ff8</srcmd5>
+    <version>5.25.0</version>
+    <time>1655118144</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.25.0</comment>
+    <requestid>981922</requestid>
+  </revision>
 </revisionlist>
