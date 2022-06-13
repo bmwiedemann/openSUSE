@@ -522,9 +522,9 @@ set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
     <value>failed: ''
-published: '20220609'
-publishing: '20220609'
-testing: '20220611'
+published: '20220611'
+publishing: '20220611'
+testing: '20220612'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
