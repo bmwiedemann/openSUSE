@@ -232,4 +232,12 @@ This package needs to be relased for oS 13.2 etc. See bnc#930331
 - rkhunter.keyring: changed from keyserver</comment>
     <requestid>969501</requestid>
   </revision>
+  <revision rev="29" vrev="7">
+    <srcmd5>5ffe65f7139eddf3ab6801d1a6af2d6f</srcmd5>
+    <version>1.4.6</version>
+    <time>1655118184</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982374</requestid>
+  </revision>
 </revisionlist>

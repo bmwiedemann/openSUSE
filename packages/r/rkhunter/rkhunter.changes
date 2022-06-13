@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 23 13:28:50 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Use correct SCRIPTDIR
+
+-------------------------------------------------------------------
 Tue Apr 12 15:50:16 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - renable gpg verification, change to https urls.

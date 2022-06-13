@@ -82,7 +82,7 @@ sed -e 's/\${MYDIR}\/lib/\%{_prefix}\/share/;' files/rkhunter >files/rkhunter.ne
 mv files/rkhunter.new files/rkhunter
 
 %install
-sh ./installer.sh --layout RPM --install
+LIBDIR=%{buildroot}%{_libdir} sh ./installer.sh --layout RPM --install
 install -D -m640 %{SOURCE2} %{buildroot}/%{_fillupdir}/sysconfig.%{name}
 install -d %{buildroot}/%{_docdir}/%{name}-%{version}
 install -m644 %{SOURCE5} %{buildroot}/%{_docdir}/%{name}-%{version}/README.SUSE
@@ -90,7 +90,7 @@ install -D -m640 %{SOURCE6} %{buildroot}/%{_sysconfdir}/logrotate.d/%{name}
 install -m644 %{SOURCE3} %{buildroot}/%{_docdir}/%{name}-%{version}/%{name}.cron
 # adapt the default config for using in openSUSE
 sed "s|^PREFIX*|PREFIX="%{_prefix}"|g; \
-     s|^#SCRIPTDIR=.*|SCRIPTDIR=%{_prefix}/lib/%{name}/scripts|g; \
+     s|^#SCRIPTDIR=.*|SCRIPTDIR=%{_libdir}/%{name}/scripts|g; \
      s|^#TMPDIR=.*|TMPDIR=%{_var}/lib/rkhunter/tmp|g; \
      s|^#DBDIR=.*|DBDIR=%{_var}/lib/rkhunter/db|g; \
      s|^APPEND_LOG=0|APPEND_LOG=1|g; \
@@ -147,7 +147,7 @@ ALLOWDEVFILE=/dev/shm/CAPI20*
 ALLOWDEVFILE=/dev/shm/sem.CAPI20*
 # from https://lists.opensuse.org/opensuse-factory/2014-10/msg00044.html
 # its a checksum for a binary file
-ALLOWHIDDENFILE=/usr/bin/.fipscheck.hmac 
+ALLOWHIDDENFILE=/usr/bin/.fipscheck.hmac
 
 # fix for bnc#826276
 ALLOWHIDDENDIR=/dev/.sysconfig
