@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jun  9 11:15:02 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.0
+- Changes since 5.24.90:
+  * desktoppackage: use `dominant` color instead of `highlight` color
+  * containments: add an application icon to the dragged location (kde#454581)
+  * Drop hack after porting back to lastSpacer
+  * containments/panel: fix Layout binding in `appletContainerComponent` (kde#454095,kde#454517)
+  * Change default keyboard switching shortcut to Meta+Alt+K
+  * desktoppackage: don't focus on panel when pressing applet shortcuts (kde#453166)
+  * Fix icon applet positioning (kde#454105)
+  * Fix applet background becoming opaque when no window is maximized (kde#454175)
+  * kcms/ksplash: Fix 'None' entry not appearing last in the grid view (kde#451422)
+
+-------------------------------------------------------------------
+Thu May 19 19:45:59 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue May  3 13:00:23 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.5

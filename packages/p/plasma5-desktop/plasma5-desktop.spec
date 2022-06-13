@@ -17,7 +17,7 @@
 
 
 # Internal QML imports
-%global __requires_exclude qmlimport\\((org\\.kde\\.private\\.kcms|org\\.kde\\.plasma\\.kcm|org\\.kde\\.desktopsession\\.private|org\\.kde\\.plasma\\.tablet).*
+%global __requires_exclude qmlimport\\((org\\.kde\\.private\\.kcms|org\\.kde\\.plasma\\.kcm|org\\.kde\\.desktopsession\\.private|org\\.kde\\.plasma\\.tablet|org\\.kde\\.plasma\\.shell\\.panel).*
 # Optional PulseAudio integration, needs plasma5-pa
 %global __requires_exclude_from org\\.kde\\.plasma\\.taskmanager/contents/ui/PulseAudio\\.qml
 
@@ -28,7 +28,7 @@
 
 %bcond_without released
 Name:           plasma5-desktop
-Version:        5.24.5
+Version:        5.25.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -38,9 +38,9 @@ Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz
+Source:         plasma-desktop-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz.sig
+Source1:        plasma-desktop-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -254,12 +254,14 @@ Press Meta+. to open an emoji selection window.
 %{_kf5_applicationsdir}/kcm_keyboard.desktop
 %{_kf5_applicationsdir}/kcm_keys.desktop
 %{_kf5_applicationsdir}/kcm_launchfeedback.desktop
+%{_kf5_applicationsdir}/kcm_mouse.desktop
 %{_kf5_applicationsdir}/kcm_plasmasearch.desktop
 %{_kf5_applicationsdir}/kcm_qtquicksettings.desktop
 %{_kf5_applicationsdir}/kcm_smserver.desktop
 %{_kf5_applicationsdir}/kcm_solid_actions.desktop
 %{_kf5_applicationsdir}/kcm_splashscreen.desktop
 %{_kf5_applicationsdir}/kcm_tablet.desktop
+%{_kf5_applicationsdir}/kcm_touchpad.desktop
 %{_kf5_applicationsdir}/kcm_workspace.desktop
 %{_kf5_applicationsdir}/kcmspellchecking.desktop
 %{_kf5_bindir}/kaccess
@@ -269,9 +271,12 @@ Press Meta+. to open an emoji selection window.
 %{_kf5_bindir}/tastenbrett
 %{_kf5_configdir}/autostart/kaccess.desktop
 %dir %{_kf5_plugindir}/plasma/
+%dir %{_kf5_plugindir}/plasma/applets
 %dir %{_kf5_plugindir}/plasma/kcms/
+%dir %{_kf5_plugindir}/plasma/kcms/desktop/
 %dir %{_kf5_plugindir}/plasma/kcms/systemsettings/
 %dir %{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/
+%{_kf5_plugindir}/plasma/applets/org.kde.plasma.marginsseparator.so
 %{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_tablet.so
 %{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_access.so
 %{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_baloofile.so
@@ -281,8 +286,10 @@ Press Meta+. to open an emoji selection window.
 %{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_keys.so
 %{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_landingpage.so
 %{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_launchfeedback.so
+%{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_mouse.so
 %{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_smserver.so
 %{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_splashscreen.so
+%{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_touchpad.so
 %{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_workspace.so
 %{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_activities.so
 %{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_clock.so
@@ -293,12 +300,19 @@ Press Meta+. to open an emoji selection window.
 %{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_qtquicksettings.so
 %{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_solid_actions.so
 %{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kcmspellchecking.so
+%{_kf5_plugindir}/plasma/kcms/desktop/kcm_krunnersettings.so
+%{_kf5_plugindir}/plasma/kcminit/kcm_mouse_init.so
+%{_kf5_plugindir}/plasma/kcminit/kcm_touchpad_init.so
+%{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_mouse.so
+%{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_touchpad.so
 %dir %{_kf5_plugindir}/kf5/kded/
 %{_kf5_plugindir}/kf5/kded/device_automounter.so
 %{_kf5_plugindir}/kf5/kded/keyboard.so
+%{_kf5_plugindir}/kf5/kded/kded_touchpad.so
 %{_kf5_plugindir}/kf5/krunner/
 %{_kf5_qmldir}/
 %{_kf5_applicationsdir}/org.kde.knetattach.desktop
+%{_kf5_applicationsdir}/kcm_krunnersettings.desktop
 %{_kf5_sharedir}/dbus-1/system-services/org.kde.kcontrol.kcmclock.service
 %{_kf5_sharedir}/polkit-1/actions/org.kde.kcontrol.kcmclock.policy
 %if %{have_kaccounts}
@@ -329,6 +343,7 @@ Press Meta+. to open an emoji selection window.
 %{_kf5_sharedir}/kpackage/kcms/kcm_landingpage/
 %{_kf5_sharedir}/kpackage/kcms/kcm_access/
 %{_kf5_sharedir}/kpackage/kcms/kcm_tablet/
+%{_kf5_sharedir}/kpackage/kcms/kcm_krunnersettings/
 %{_kf5_notifydir}/
 %{_kf5_servicetypesdir}/
 %{_kf5_datadir}/
@@ -341,8 +356,6 @@ Press Meta+. to open an emoji selection window.
 %exclude %{_kf5_plasmadir}/ibus-emoji-dicts/
 %endif
 %ifnarch s390 s390x
-%{_kf5_applicationsdir}/kcm_mouse.desktop
-%{_kf5_applicationsdir}/kcm_touchpad.desktop
 %{_kf5_bindir}/kapplymousetheme
 %{_kf5_bindir}/kcm-touchpad-list-devices
 %dir %{_kf5_iconsdir}/hicolor/*/
@@ -350,22 +363,11 @@ Press Meta+. to open an emoji selection window.
 %{_kf5_iconsdir}/hicolor/*/devices/input-touchpad.*
 %{_kf5_sharedir}/kcmmouse/
 %dir %{_kf5_plugindir}/plasma/dataengine/
-%{_kf5_plugindir}/plasma/kcminit/kcm_mouse_init.so
-%{_kf5_plugindir}/kf5/kded/kded_touchpad.so
-%{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_mouse.so
-%{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_touchpad.so
-%{_kf5_plugindir}/plasma/kcminit/kcm_touchpad_init.so
 %{_kf5_plugindir}/plasma/dataengine/plasma_engine_touchpad.so
 %endif
-%if %{pkg_vcmp kf5-filesystem >= 20220307}
 %{_libexecdir}/kauth/kcmdatetimehelper
 %{_libexecdir}/kimpanel-ibus-panel
 %{_libexecdir}/kimpanel-ibus-panel-launcher
-%else
-%{_kf5_libdir}/libexec/kauth/kcmdatetimehelper
-%{_kf5_libdir}/libexec/kimpanel-ibus-panel
-%{_kf5_libdir}/libexec/kimpanel-ibus-panel-launcher
-%endif
 
 %files emojier
 %{_kf5_bindir}/ibus-ui-emojier-plasma
