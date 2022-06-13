@@ -18,7 +18,7 @@
 
 %global upstream_name   httpd
 %global testsuite_name  %{upstream_name}-framework
-%global tversion        svn1898917
+%global tversion        svn1901574
 %global flavor          @BUILD_FLAVOR@%{nil}
 %define mpm             %{nil}
 %if "%{flavor}" == "prefork" || "%{flavor}" == "test_prefork"
@@ -103,19 +103,11 @@
 %define psuffix      -%{flavor}
 %endif
 
-%if 0%{?suse_version} >= 1500
 %define use_firewalld 1
-%else
-%define use_firewalld 0
-%endif
-%if 0%{?suse_version} >= 1500 || 0%{?is_opensuse}
 %define build_http2 1
-%else
-%define build_http2 0
-%endif
 
 Name:           apache2%{psuffix}
-Version:        2.4.53
+Version:        2.4.54
 Release:        0
 Summary:        The Apache HTTPD Server
 License:        Apache-2.0

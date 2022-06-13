@@ -2038,4 +2038,12 @@ Fixes build with Perl-IO-socket-SSL 2.073, as currently staged in :E (forwarded 
     <comment></comment>
     <requestid>961736</requestid>
   </revision>
+  <revision rev="194" vrev="1">
+    <srcmd5>c2d4d2878eab60e82558115465404df9</srcmd5>
+    <version>2.4.54</version>
+    <time>1655118111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981545</requestid>
+  </revision>
 </revisionlist>
