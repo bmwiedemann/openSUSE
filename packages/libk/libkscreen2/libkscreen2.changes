@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jun  9 11:15:01 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.0
+- Changes since 5.24.90:
+  * Remove CI dependency on kwayland-server as that is no longer a thing.
+
+-------------------------------------------------------------------
+Thu May 19 19:45:55 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.90
+- Changes since 5.24.5:
+  * Use const'ref
+  * Delete proxy for PrimaryOutput wayland interface in destructor (kde#451847)
+  * Adapt recent DPMS changes to also build with Qt6
+  * [doctor] Port dpms handling to QtWaylandScanner
+  * Adapt build system to also support Qt6
+  * backends/kwayland: Use output name to guess output type
+  * Update required PlasmaWaylandProtocols version
+
+-------------------------------------------------------------------
 Tue May  3 13:00:22 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.5
