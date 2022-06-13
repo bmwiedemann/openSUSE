@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kmenuedit5
-Version:        5.24.5
+Version:        5.25.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,9 +28,9 @@ Summary:        Provides the interface and basic tools for the KDE workspace
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/kmenuedit-%{version}.tar.xz
+Source:         kmenuedit-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kmenuedit-%{version}.tar.xz.sig
+Source1:        kmenuedit-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 1.7.0
@@ -80,6 +80,7 @@ Provides the interface and basic tools for the KDE workspace.
 %license LICENSES/*
 %{_kf5_bindir}/kmenuedit
 %{_kf5_applicationsdir}/org.kde.kmenuedit.desktop
+%{_kf5_appstreamdir}/org.kde.kmenuedit.appdata.xml
 %{_kf5_sharedir}/icons/hicolor/*/*/*.*
 %{_kf5_sharedir}/kmenuedit/
 %{_kf5_sharedir}/kxmlgui5/

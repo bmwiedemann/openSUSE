@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jun  9 11:14:58 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.0
+- No code changes since 5.24.90
+
+-------------------------------------------------------------------
+Thu May 19 19:45:30 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.90
+- Changes since 5.24.5:
+  * Raise window when activating instance
+  * Add Qt6 CI support
+  * Make compile against qt6
+  * Fix some qt6 compile error
+  * Adapt build system for building against qt6
+  * Make it appear in launchers and app stores
+  * Set SingleMainWindow=true
+  * Kdelibs4ConfigMigrator will be removed in qt6
+
+-------------------------------------------------------------------
 Tue May  3 13:00:20 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.5
