@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 26 13:14:26 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5
+  Changes
+  * doc: An example use-case of JA3.
+  Other
+  * Add parentheses around MAX and MIN.
+  * Add support for pcap output to FIFO.
+
+-------------------------------------------------------------------
 Mon Apr 12 20:07:03 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Specfile overhaul

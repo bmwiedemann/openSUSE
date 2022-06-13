@@ -188,4 +188,12 @@
   * Fix memory leak in ssl_process_server_session_id()</comment>
     <requestid>889542</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5f26318c90c5824e9d2dd866fbb6e53a</srcmd5>
+    <version>1.5</version>
+    <time>1655118181</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982365</requestid>
+  </revision>
 </revisionlist>
