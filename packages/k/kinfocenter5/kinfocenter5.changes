@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Jun  9 11:14:58 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.0
+- Changes since 5.24.90:
+  * redirect stderr to stdout (kde#454197)
+- Fix 0002-Look-for-binaries-in-Mesa-demos-path-as-well.patch (boo#1199975)
+
+-------------------------------------------------------------------
+Thu May 19 19:45:29 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.90
+- Changes since 5.24.5:
+  * Fix about distro KCM not being able to be pinned
+  * Fix: Iterate with std::as_const, to avoid copying vector
+  * Finishing touches for the Qt6 build
+  * Use non-deprecated KAuth includes
+  * modules/about-distro: use standard inner margins for page
+  * modules/about-distro: simplify spacing before "open in Info Center" button
+  * modules/about-distro: remove bottom padding from page (kde#452437)
+  * Explicitly set parent app for energyinfo KCM
+  * Add some DMI data to about-distro
+  * Hide filter bar when showing an error message
+  * Display more informative and actionable error messages
+  * Use not deprecated ECMFindQmlModule
+  * Fix install against qt6
+  * Also horizontally center the error messages in their pages
+  * new module firmware security
+  * Allow to build against qt6
+  * fix up help paths (kde#450918)
+  * about-distro: remove unnecessary spacers above sections
+  * Search in /usr/local/sbin:/usr/sbin:/sbin as fallback (kde#449792)
+  * Add plasma-systemmonitor as the dependency of kinfocenter
+  * Don't use deprecated variable
+  * Drop unnecessary KIconThemes dependency
+- Refresh 0002-Look-for-binaries-in-Mesa-demos-path-as-well.patch
+
+-------------------------------------------------------------------
 Tue May  3 13:00:19 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.5

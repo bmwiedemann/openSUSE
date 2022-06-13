@@ -1,7 +1,7 @@
-From 63940ad9bb5eb3bd8c0eefcf20c4b14d68f9c5c2 Mon Sep 17 00:00:00 2001
+From 0836341c590dc14626e3e1856fb1917ba07fcb84 Mon Sep 17 00:00:00 2001
 From: Fabian Vogt <fabian@ritter-vogt.de>
 Date: Tue, 8 Feb 2022 19:06:23 +0100
-Subject: [PATCH 2/2] Look for binaries in Mesa-demos path as well
+Subject: [PATCH] Look for binaries in Mesa-demos path as well
 
 eglinfo is not in $PATH (yet, boo#1195695)
 ---
@@ -9,10 +9,10 @@ eglinfo is not in $PATH (yet, boo#1195695)
  1 file changed, 7 insertions(+)
 
 diff --git a/src/CommandOutputContext.cpp b/src/CommandOutputContext.cpp
-index ec3cd3d..96e11ce 100644
+index dad54a5e..30554499 100644
 --- a/src/CommandOutputContext.cpp
 +++ b/src/CommandOutputContext.cpp
-@@ -25,6 +25,13 @@ CommandOutputContext::CommandOutputContext(const QString &executable, const QStr
+@@ -27,6 +27,13 @@ CommandOutputContext::CommandOutputContext(const QStringList &findExecutables, c
              QStandardPaths::findExecutable(m_executableName, {QStringLiteral("/usr/local/sbin"), QStringLiteral("/usr/sbin"), QStringLiteral("/sbin")});
      }
  
@@ -23,9 +23,9 @@ index ec3cd3d..96e11ce 100644
 +                                           {QStringLiteral("/usr/lib64/mesa-demos/egl/opengl"), QStringLiteral("/usr/lib/mesa-demos/egl/opengl")});
 +    }
 +
-     metaObject()->invokeMethod(this, &CommandOutputContext::load);
- }
- 
+     m_foundExecutablePaths[executable] = m_executablePath;
+     for (const QString &findExecutable : findExecutables) {
+         m_foundExecutablePaths[findExecutable] = QStandardPaths::findExecutable(findExecutable);
 -- 
-2.33.1
+2.36.1
 

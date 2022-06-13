@@ -23,7 +23,7 @@
 
 %bcond_without released
 Name:           kinfocenter5
-Version:        5.24.5
+Version:        5.25.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -33,9 +33,9 @@ Summary:        Utility that provides information about a computer system
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/kinfocenter-%{version}.tar.xz
+Source:         kinfocenter-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kinfocenter-%{version}.tar.xz.sig
+Source1:        kinfocenter-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -50,7 +50,6 @@ BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5Declarative) >= %{kf5_version}
 BuildRequires:  cmake(KF5DocTools) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
-BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
 BuildRequires:  cmake(KF5KCMUtils) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
 BuildRequires:  cmake(KF5Package) >= %{kf5_version}
@@ -79,6 +78,8 @@ Requires:       /usr/bin/wayland-info
 Requires:       /usr/bin/xdpyinfo
 # Note: Not available as /usr/bin/eglinfo yet (boo#1195695)
 Recommends:     /usr/bin/eglinfo
+# The "Firmware Security" page does fwupdmgr ... | aha | ...
+Recommends:     (aha if fwupd)
 # Mesa-demos includes it, but as a whole it's too fat,
 # so don't pull it in by default.
 Suggests:       Mesa-demo
@@ -104,6 +105,7 @@ KDE Utility that provides information about a computer system.
 
 %files
 %license LICENSES/*.txt
+%{_kf5_applicationsdir}/kcm_about-distro.desktop
 %{_kf5_bindir}/kinfocenter
 %{_kf5_libdir}/libKInfoCenterInternal.so
 %dir %{_kf5_plugindir}/
@@ -115,6 +117,7 @@ KDE Utility that provides information about a computer system.
 %{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_cpu.so
 %{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_devinfo.so
 %{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_egl.so
+%{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_firmware_security.so
 %{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_glx.so
 %{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_interrupts.so
 %{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_nic.so
@@ -134,6 +137,11 @@ KDE Utility that provides information about a computer system.
 %{_kf5_servicetypesdir}/
 %{_kf5_configdir}/menus/kinfocenter.menu
 %{_kf5_sharedir}/desktop-directories/
+%dir %{_libexecdir}/kauth/
+%{_libexecdir}/kauth/kinfocenter-dmidecode-helper
+%{_kf5_sharedir}/dbus-1/system-services/org.kde.kinfocenter.dmidecode.service
+%{_kf5_sharedir}/dbus-1/system.d/org.kde.kinfocenter.dmidecode.conf
+%{_kf5_sharedir}/polkit-1/actions/org.kde.kinfocenter.dmidecode.policy
 %{_kf5_appstreamdir}/org.kde.kinfocenter.appdata.xml
 %dir %{_kf5_qmldir}/org/
 %dir %{_kf5_qmldir}/org/kde/
