@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 13 06:38:32 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Backport upstream patches to fix compilation with autoconf >= 2.70
+  - Fix-error-with-stricter-quoting-requirements-of-autoconf-2.70.patch
+  - Always-include-the-stddef.h-header.patch
+
+-------------------------------------------------------------------
 Tue Oct 19 15:23:32 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Move rpm macros to %_rpmmacrodir (bsc#1191389)

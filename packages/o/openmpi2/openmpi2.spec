@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2004-2005 The Trustees of Indiana University and Indiana
 #                         University Research and Technology
 #                         Corporation.  All rights reserved.
@@ -144,6 +144,8 @@ Patch0:         fix-rdma-component-selection.patch
 Patch1:         reproducible.patch
 Patch2:         add-gen-p5-chip-pci-id-to-ini-file.patch
 Patch3:         openmpi_disable_opal_fifo_test_issue5470.patch
+Patch4:         Fix-error-with-stricter-quoting-requirements-of-autoconf-2.70.patch
+Patch5:         Always-include-the-stddef.h-header.patch
 Provides:       mpi
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
@@ -407,6 +409,8 @@ EOF
 %patch1 -p1
 %patch2
 %patch3 -p1
+%patch4
+%patch5
 # Live patch the VERSION file
 sed -i -e 's/^greek=.*$/greek=%{git_ver}/' -e 's/^repo_rev=.*$/repo_rev=%{version}%{git_ver}/' \
        -e 's/^date=.*$/date="OpenMPI %{version} Distribution for SUSE"/' VERSION
