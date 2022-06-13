@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jun 12 13:39:45 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Package desktop file
+
+-------------------------------------------------------------------
+Sun Jun 12 11:48:07 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Depend on rust version 1.61
+- Update to version 0.10.0
+  Maintenance
+  * Update to Librespot 0.4.1
+  * Prevent integer overflow when calculating cache size
+  * Fix some errors and warnings when enabling/disabling features
+  * Fix: don't throw error if search yields no result
+  Features
+  * Add option (library_tabs) to customize library tabs
+  * Add track_format config option for custom track formatting in lists
+  * Add desktop entry & notification icon hint
+
+-------------------------------------------------------------------
 Tue May 24 05:33:08 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Automatic update of vendored dependencies
