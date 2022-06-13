@@ -19,7 +19,7 @@
 # How to define macros
 %define hello echo "hello world"
 Name:           hello
-Version:        2.12
+Version:        2.12.1
 Release:        0
 Summary:        A Friendly Greeting Program
 License:        GPL-3.0-or-later
