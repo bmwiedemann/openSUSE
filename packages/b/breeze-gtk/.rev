@@ -950,4 +950,12 @@ https://cgit.kde.org/breeze-gtk.git/commit/COPYING.LIB?id=499226afa44cafb342546d
     <comment>Plasma 5.24.5. Usual version bump + discover patch change (forwarded request 974667 from Vogtinator)</comment>
     <requestid>974683</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>93c966bdde6add3fdd370b18dcacfbd6</srcmd5>
+    <version>5.25.0</version>
+    <time>1655118122</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.25.0</comment>
+    <requestid>981895</requestid>
+  </revision>
 </revisionlist>
