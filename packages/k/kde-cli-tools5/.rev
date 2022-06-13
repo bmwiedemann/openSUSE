@@ -1122,4 +1122,12 @@
     <comment>Plasma 5.24.5. Usual version bump + discover patch change (forwarded request 974667 from Vogtinator)</comment>
     <requestid>974689</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>23995fa52f737a46b39d8c5fbf917144</srcmd5>
+    <version>5.25.0</version>
+    <time>1655118126</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.25.0</comment>
+    <requestid>981901</requestid>
+  </revision>
 </revisionlist>
