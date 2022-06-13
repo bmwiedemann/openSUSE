@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  9 18:35:15 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.1:
+  + Fix the display of devices with '&' in their names.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Apr 12 09:30:47 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
 
 - Recommends bluez-auto-enable-devices to ensure BT is enabled

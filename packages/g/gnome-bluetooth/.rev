@@ -813,4 +813,14 @@ Should be copied to 12.2 if possible (it actually makes the bt stack work) (forw
   at startup (glgo#GNOME/gnome-bluetooth#110). (forwarded request 969381 from fcrozat)</comment>
     <requestid>969388</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>07c7ca1731707fd9b9f23d09adc84fab</srcmd5>
+    <version>42.1</version>
+    <time>1655118119</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 42.1:
+  + Fix the display of devices with '&amp;' in their names.
+  + Updated translations. (forwarded request 981567 from iznogood)</comment>
+    <requestid>982034</requestid>
+  </revision>
 </revisionlist>
