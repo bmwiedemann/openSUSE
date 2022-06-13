@@ -1,7 +1,7 @@
 #
 # spec file for package dosemu
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,34 +17,13 @@
 
 
 Name:           dosemu
-BuildRequires:  SDL-devel
-BuildRequires:  bin86
-BuildRequires:  bison
-BuildRequires:  flex
-BuildRequires:  libsndfile-devel
-BuildRequires:  libtool
-BuildRequires:  mkfontdir
-BuildRequires:  slang-devel
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xext)
-BuildRequires:  pkgconfig(xxf86vm)
-%if 0%{?suse_version} > 1130
-BuildRequires:  gpm-devel
-%else
-BuildRequires:  gpm
-%endif
-
-%if 0%{?suse_version} > 1220
-BuildRequires:  bdftopcf
-%endif
-
-ExclusiveArch:  %ix86 x86_64
 Version:        1.4.0.1.r2065
 Release:        0
 Summary:        The DOS Emulator
 License:        GPL-2.0-or-later
 Group:          System/Emulators/PC
-Source:         %name-%version.tgz
+URL:            http://www.dosemu.org
+Source:         %{name}-%{version}.tgz
 Source1:        dosemu-freedos-bin.tgz
 Patch1:         dosemu-1.4.0-destbufferoverflow.patch
 Patch2:         force-vm86-emu.patch
@@ -53,8 +32,21 @@ Patch4:         dosemu-skip-glibc-test.patch
 # PATCH-FIX-UPSTREAM https://github.com/stsp/dosemu2/pull/386 https://github.com/stsp/dosemu2/commit/8d7ab25daf6f2d8ca09e1598fd11de2d8460255e
 Patch5:         reproducible.patch
 Patch6:         dosemu-LTO-fix.patch
-URL:            http://www.dosemu.org
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  bdftopcf
+BuildRequires:  bin86
+BuildRequires:  bison
+BuildRequires:  flex
+BuildRequires:  gpm-devel
+BuildRequires:  libsndfile-devel
+BuildRequires:  libtool
+BuildRequires:  mkfontdir
+BuildRequires:  pkgconfig
+BuildRequires:  slang-devel
+BuildRequires:  pkgconfig(sdl)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xxf86vm)
+ExclusiveArch:  %{ix86} x86_64
 
 %description
 This package allows MS-DOS programs to be run in Linux. A virtual
@@ -95,7 +87,7 @@ suid-root one (protected by file permissions) only available to trusted
 users.
 
 %prep
-%setup -q -n %name-1.4.0.1
+%setup -q -n %{name}-1.4.0.1
 %patch1
 %patch2 -p1
 %if 0%{?suse_version} > 1220 && 0%{?suse_version} < 1321
@@ -108,20 +100,19 @@ users.
 %build
 %global _lto_cflags %{_lto_cflags} -flto-partition=one
 autoreconf -fiv
-export CFLAGS="%optflags -fgnu89-inline"
+export CFLAGS="%{optflags} -fgnu89-inline"
 %configure --sysconfdir=%{_sysconfdir}/%{name} --with-docdir=%{_docdir}/dosemu \
  --with-fdtarball=%{_sourcedir}/dosemu-freedos-bin.tgz
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install
-%_fixowner %{buildroot}
-%_fixgroup %{buildroot}
-%_fixperms %{buildroot}
+%make_install
+%{_fixowner} %{buildroot}
+%{_fixgroup} %{buildroot}
+%{_fixperms} %{buildroot}
 %find_lang %{name} --all-name --with-man
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %{_bindir}/*
 %{_mandir}/man1/*
 %lang(ru) %dir %{_mandir}/ru

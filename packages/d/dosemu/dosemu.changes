@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  7 07:40:13 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace SDL-devel BuildRequires with pkgconfig(sdl): allow to use
+  sdl12_compat as an alternative.
+- Run spec-cleaner: align spec file layout with openSUSE standards.
+
+-------------------------------------------------------------------
 Wed Jan 22 13:19:55 UTC 2020 - Jiri Slaby <jslaby@suse.com>
 
 - add dosemu-LTO-fix.patch (bnc#1160098)
