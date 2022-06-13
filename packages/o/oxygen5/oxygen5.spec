@@ -20,19 +20,19 @@
 %define kwin_deco 1
 
 Name:           oxygen5
-Version:        5.24.5
+Version:        5.25.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.8.95 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Summary:        Oxygen style, KWin decoration, cursors and sounds
+Summary:        Oxygen style, KWin decoration and cursors
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/oxygen-%{version}.tar.xz
+Source:         oxygen-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/oxygen-%{version}.tar.xz.sig
+Source1:        oxygen-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 0.0.9
@@ -69,18 +69,7 @@ Recommends:     oxygen-cursors
 Recommends:     oxygen5-sounds
 
 %description
-Provides Oxygen style, KWin decoration, cursors and sounds.
-
-%package sounds
-Summary:        The KDE Plasma Workspace Sounds
-License:        GPL-2.0-or-later
-Group:          System/GUI/KDE
-Obsoletes:      oxygen-sounds5 < %{version}
-Provides:       oxygen-sounds5 = %{version}
-BuildArch:      noarch
-
-%description sounds
-This package contains the default sound set for a KDE Plasma workspace.
+Provides Oxygen style, KWin decoration, and cursors.
 
 %package cursors
 Summary:        The KDE Plasma Workspace Cursors
@@ -182,10 +171,6 @@ This package contains the libraries Oxygen's KWin decoration.
 %dir %{_kf5_servicesdir}
 %{_kf5_servicesdir}/oxygendecorationconfig.desktop
 %endif
-
-%files sounds
-%license LICENSES/*
-%{_kf5_sharedir}/sounds/*
 
 %files cursors
 %license LICENSES/*
