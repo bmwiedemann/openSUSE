@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           powerdevil5
-Version:        5.24.5
+Version:        5.25.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,9 +28,9 @@ Summary:        KDE Power Management module
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/powerdevil-%{version}.tar.xz
+Source:         powerdevil-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/powerdevil-%{version}.tar.xz.sig
+Source1:        powerdevil-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 1.2.0
@@ -139,13 +139,8 @@ DBus helper and KCM for configuring Power settings.
 %{_kf5_sharedir}/dbus-1/system-services/org.kde.powerdevil.chargethresholdhelper.service
 %{_kf5_sharedir}/dbus-1/system.d/org.kde.powerdevil.chargethresholdhelper.conf
 %{_kf5_sharedir}/polkit-1/actions/org.kde.powerdevil.chargethresholdhelper.policy
-%if %{pkg_vcmp kf5-filesystem >= 20220307}
 %{_libexecdir}/kauth/
 %{_libexecdir}/org_kde_powerdevil
-%else
-%{_kf5_libdir}/libexec/kauth/
-%{_kf5_libdir}/libexec/org_kde_powerdevil
-%endif
 %{_userunitdir}/plasma-powerdevil.service
 
 %{_kf5_configdir}/autostart/powerdevil.desktop
