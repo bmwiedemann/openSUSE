@@ -931,4 +931,14 @@
     <comment></comment>
     <requestid>979612</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>6a878d70f114b224cd0e063e26c4998a</srcmd5>
+    <version>3.60.1</version>
+    <time>1655246067</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.60.1:
+  * Fixed a regression drag-moving local files
+- add disable-avx-on-i586.patch to disable avx on 32bit platforms</comment>
+    <requestid>982630</requestid>
+  </revision>
 </revisionlist>

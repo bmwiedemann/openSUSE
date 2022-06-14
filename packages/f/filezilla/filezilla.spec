@@ -16,10 +16,8 @@
 #
 
 
-%define main_version 3.60.0
-
 Name:           filezilla
-Version:        3.60.0
+Version:        3.60.1
 Release:        0
 Summary:        A GUI FTP and SFTP Client
 License:        GPL-2.0-or-later
@@ -27,14 +25,11 @@ Group:          Productivity/Networking/Ftp/Clients
 URL:            https://filezilla-project.org/
 Source0:        https://download.filezilla-project.org/client/FileZilla_%{version}_src.tar.bz2
 Patch0:         %{name}-welcome_dialog.patch
+Patch1:         disable-avx-on-i586.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
-%if 0%{?suse_version} > 1500
-BuildRequires:  gcc10-c++
-%else
 BuildRequires:  gcc-c++
-%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -92,6 +87,7 @@ This are development files for filezilla.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 # Fix invalid translation locales:
 cd locales
@@ -130,10 +126,6 @@ do
 done
 
 %build
-%if 0%{?suse_version} > 1500
-export CC="%{_bindir}/gcc-10"
-export CXX="%{_bindir}/g++-10"
-%endif
 autoreconf -fi
 %configure \
   --disable-static            \
@@ -173,8 +165,8 @@ autoreconf -fi
 %{_datadir}/pixmaps/%{name}.png
 %dir %{_datadir}/appdata/
 %{_datadir}/appdata/%{name}.appdata.xml
-%{_libdir}/libfzclient-commonui-private-%{main_version}.so
-%{_libdir}/libfzclient-private-%{main_version}.so
+%{_libdir}/libfzclient-commonui-private-%{version}.so
+%{_libdir}/libfzclient-private-%{version}.so
 %{_mandir}/man1/filezilla.1%{?ext_man}
 %{_mandir}/man1/fzputtygen.1%{?ext_man}
 %{_mandir}/man1/fzsftp.1%{?ext_man}

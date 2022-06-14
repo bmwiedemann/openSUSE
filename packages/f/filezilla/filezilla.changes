@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 14 13:30:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.60.1:
+  * Fixed a regression drag-moving local files
+- add disable-avx-on-i586.patch to disable avx on 32bit platforms
+
+-------------------------------------------------------------------
 Sat May 28 16:21:23 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.60.0
