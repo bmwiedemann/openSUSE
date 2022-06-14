@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 14 07:23:18 UTC 2022 - kukuk@suse.com
+
+- Update to version 0.0+git20220603.70601f6:
+  * Fix missing sdnotify argument and NotifyAccess statement (issue #3)
+
+-------------------------------------------------------------------
 Mon Jan 31 14:17:40 UTC 2022 - kukuk@suse.com
 
 - Update to version 0.0+git20220131.00931d2:

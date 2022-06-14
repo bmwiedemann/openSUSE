@@ -100,4 +100,13 @@
   * Adjust timing for start limits in case of errors</comment>
     <requestid>950222</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b1195c8ab6df525d9a20b544f7ae7ac9</srcmd5>
+    <version>0.0+git20220603.70601f6</version>
+    <time>1655245978</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20220603.70601f6:
+  * Fix missing sdnotify argument and NotifyAccess statement (issue #3)</comment>
+    <requestid>982566</requestid>
+  </revision>
 </revisionlist>
