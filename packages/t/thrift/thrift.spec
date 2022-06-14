@@ -16,8 +16,8 @@
 #
 
 
-%define libversion 0_15_0
-%define libgversion 0
+%global libversion 0_16_0
+%global libgversion 0
 %bcond_without perl
 %bcond_without c
 %bcond_without python2
@@ -25,14 +25,12 @@
 %bcond_with java
 %bcond_with ruby
 %bcond_with qt5
-%if %{without python2}
 %define skip_python2 1
-%endif
 %if %{without python3}
 %define skip_python3 1
 %endif
 Name:           thrift
-Version:        0.15.0
+Version:        0.16.0
 Release:        0
 Summary:        Framework for scalable cross-language services development
 License:        Apache-2.0
@@ -41,8 +39,6 @@ URL:            https://thrift.apache.org
 Source0:        https://www.apache.org/dist/thrift/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://www.apache.org/dist/thrift/%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
-# PATCH-FIX-UPSTREAM thrift-pr2487-py310.patch -- gh#apache/thrift#2487 and https://issues.apache.org/jira/browse/THRIFT-5488
-Patch0:         thrift-pr2487-py310.patch
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  fdupes
@@ -73,7 +69,7 @@ BuildRequires:  perl
 BuildRequires:  perl(Bit::Vector)
 BuildRequires:  perl(Class::Accessor)
 %endif
-%if %{with python2} || %{with python3}
+%if %{with python3}
 BuildRequires:  %{python_module devel}
 BuildRequires:  python-rpm-macros
 %if 0%{?suse_version} >= 1550
@@ -184,26 +180,6 @@ Caml, and Haskell.
 
 %else
 
-%package -n python2-thrift
-Summary:        Python bindings for the Thrift software framework
-Group:          Development/Libraries/Python
-Requires:       python-six >= 1.7.2
-Recommends:     python-backports.ssl_match_hostname >= 3.5
-Recommends:     python-ipaddress
-Suggests:       python-Twisted
-Suggests:       python-tornado >= 4.0
-Provides:       %{oldpython}-thrift = %{version}-%{release}
-Obsoletes:      %{oldpython}-thrift < %{version}-%{release}
-
-%description -n python2-thrift
-Thrift Python library
-
-Thrift is a software framework for scalable cross-language services
-development. It combines a software stack with a code generation
-engine to build services that work between C++, Java, C#, Python,
-Ruby, Perl, PHP, Objective C/Cocoa, Smalltalk, Erlang, Objective
-Caml, and Haskell.
-
 %package -n python3-thrift
 Summary:        Python3 bindings for the Thrift software framework
 Group:          Development/Libraries/Python
@@ -225,10 +201,11 @@ Caml, and Haskell.
 %endif
 
 %prep
-
 %autosetup -p1
 
 %build
+# https://issues.apache.org/jira/browse/THRIFT-5498
+%global _lto_cflags %{nil}
 export CXXFLAGS="%{optflags} -fPIC"
 
 # tests require static boost library
@@ -237,7 +214,7 @@ export CXXFLAGS="%{optflags} -fPIC"
 	--enable-static=no
 make %{?_smp_mflags}
 
-%if %{with python2} || %{with python3}
+%if %{with python3}
 pushd lib/py
 %python_build
 popd
@@ -252,7 +229,7 @@ pushd lib/cpp
 %make_install
 popd
 
-%if %{with python2} || %{with python3}
+%if %{with python3}
 pushd lib/py
 %python_install
 popd
@@ -313,15 +290,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{perl_vendorlib}/Thrift
 %endif
 
-%if %{with python2} && ! 0%{?python_subpackage_only}
-%files -n python2-thrift
-%license LICENSE NOTICE
-%doc lib/py/README.md
-%{python2_sitearch}/thrift
-%{python2_sitearch}/thrift-%{version}*-info
-%endif
-
-%if %{with python3} || ( 0%{?python_subpackage_only} && %{with python2} )
+%if %{with python3}
 %files %{python_files thrift}
 %license LICENSE NOTICE
 %doc lib/py/README.md

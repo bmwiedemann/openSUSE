@@ -112,4 +112,41 @@
     <comment></comment>
     <requestid>946898</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>32c1657218304152080726c50406a154</srcmd5>
+    <version>0.16.0</version>
+    <time>1655245997</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.16.0:
+  * C++ library don't work with HTTP
+  * Swift service generator doesn't support oneway
+  * Deprecate Common Lisp support
+  ### C++
+  * Add support for Unix domain sockets on Windows 10 or later
+  * C++ to_string and ostream operator not always generated
+  * ServerSocket doesn't ignore SIGPIPE
+  ### Erlang
+  * Introduce delimiter and app_prefix options to erl generator
+  * Invalid golang code generated for optional set&lt;binary&gt; with a default value
+  * Go lib skip map value may cause stack overflow
+  * Improve memory efficiency in go THeader implementation
+  * Potential connection leaks caused by the connectivity check
+  * Error: Constraint check failure for haxe.ds.ObjectMap.K
+  ### Java
+  * add support for partial deserialization of Thrift
+  * fix issues found by spotbugs 
+  * Update java dependencies
+  ### JavaScript
+  * Wrong type mapping of thrift binary type
+  ### netstd
+  * MaxMessageSize reached exception thrown in TEndpointTransport
+  * Support for deprecated methods (via annotation)
+  * Add net 6 support
+  * TThreadPoolAsyncServer using TFramedTransport mistakenly drops client
+  * consolidate netstd server implementation details into one common model
+  * Uncompilable code when .thrift struct 'System' exists
+  * CA2254 Message template should be compile time constant
+  ### Perl</comment>
+    <requestid>982616</requestid>
+  </revision>
 </revisionlist>
