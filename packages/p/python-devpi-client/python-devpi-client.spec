@@ -1,7 +1,7 @@
 #
 # spec file for package python-devpi-client
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-devpi-client
-Version:        5.2.0
+Version:        5.2.3
 Release:        0
 Summary:        Client for devpi
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/devpi/devpi
 Source:         https://files.pythonhosted.org/packages/source/d/devpi-client/devpi-client-%{version}.tar.gz
-Patch0:         test_sys_executable.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -37,7 +36,7 @@ Requires:       python-py >= 1.4.31
 Requires:       python-tox >= 3.1.0
 Requires:       python-wheel
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     git-core
 Recommends:     python-Sphinx
 BuildArch:      noarch
@@ -64,7 +63,7 @@ for invoking tox.
 %prep
 %setup -q -n devpi-client-%{version}
 rm tox.ini
-%patch0 -p1
+%autopatch -p1
 
 sed -i 's/"python \(setup.py[^"]*\)"/(sys.executable + " \1")/' testing/test_upload.py
 sed -i 's/"python", "setup.py"/sys.executable, "setup.py"/' testing/test_test.py
@@ -81,9 +80,10 @@ sed -i 's/"python", "setup.py"/sys.executable, "setup.py"/' testing/test_test.py
 export LANG=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1
 export PATH=$PATH:%{buildroot}/%{_bindir}
-# Unknown failures https://github.com/devpi/devpi/issues/706
+# Unknown failures gh#devpi/devpi#706
 # test_help: devpi binary is not available (update-alternatives)
-%pytest -k 'not (test_simple_install_new_venv_workflow or test_simple_install_activated_venv_workflow or test_help)'
+# gh#devpi/devpi#896 to skip test_delete_*_with_inheritance
+%pytest -k 'not (test_simple_install_new_venv_workflow or test_simple_install_activated_venv_workflow or test_help or test_delete_version_with_inheritance or test_delete_project_with_inheritance)'
 
 %post
 %python_install_alternative devpi

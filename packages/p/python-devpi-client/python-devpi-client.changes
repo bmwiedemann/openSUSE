@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun 14 05:59:02 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 5.2.3:
+  - Bump upper version limit on pluggy to <2.0.
+  - fix #406: support ``--all`` to show all versions when listing
+    more than one project.
+  - Pin tox to <4dev. The next major version of devpi-client will
+    use tox as a binary to support newer versions.
+  - Support for basic authentication and client side certificates
+    is deprecated now. Take a look at devpi-lockdown instead.
+  - Hide password from index url in pip config with ``devpi
+    use``.
+- Remove upstreamed patch test_sys_executable.patch.
+
+-------------------------------------------------------------------
 Tue Jun  9 19:25:40 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 5.2.0:

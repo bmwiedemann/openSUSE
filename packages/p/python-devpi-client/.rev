@@ -49,4 +49,23 @@
   - Support for check_manifest&gt;=0.42.</comment>
     <requestid>813032</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>34ee563f2bbf9977112381d6606aee38</srcmd5>
+    <version>5.2.3</version>
+    <time>1655246009</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.3:
+  - Bump upper version limit on pluggy to &lt;2.0.
+  - fix #406: support ``--all`` to show all versions when listing
+    more than one project.
+  - Pin tox to &lt;4dev. The next major version of devpi-client will
+    use tox as a binary to support newer versions.
+  - Support for basic authentication and client side certificates
+    is deprecated now. Take a look at devpi-lockdown instead.
+  - Hide password from index url in pip config with ``devpi
+    use``.
+- Remove upstreamed patch test_sys_executable.patch.
+</comment>
+    <requestid>982604</requestid>
+  </revision>
 </revisionlist>
