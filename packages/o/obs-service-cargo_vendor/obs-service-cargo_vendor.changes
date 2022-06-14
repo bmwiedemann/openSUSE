@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 10 01:54:30 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Enforce run time requires on python 3.8
+
+-------------------------------------------------------------------
 Mon Jun  6 01:42:20 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Add build requires on python >= 3.8

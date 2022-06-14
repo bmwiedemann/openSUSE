@@ -28,6 +28,7 @@ Source:         %{name}-%{version}.tar.zst
 BuildRequires:  python3 >= 3.8
 BuildRequires:  zstd
 Requires:       gzip
+Requires:       python3 >= 3.8
 Requires:       python3-zstandard
 Requires:       tar
 Requires:       zstd
