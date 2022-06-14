@@ -18,21 +18,20 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
+%define         test_data_commit 57cae742c7642494b51c26ba3f27935bbcc0116b
 Name:           python-sherpa
-Version:        4.14.0
+Version:        4.14.1
 Release:        0
 Summary:        Modeling and fitting package for scientific data analysis
 License:        GPL-3.0-only
 URL:            https://github.com/sherpa/sherpa/
-Source:         https://github.com/sherpa/sherpa/archive/%{version}.tar.gz#/sherpa-%{version}.tar.gz
+Source0:        https://github.com/sherpa/sherpa/archive/%{version}.tar.gz#/sherpa-%{version}.tar.gz
+Source1:        https://github.com/sherpa/sherpa-test-data/archive/%{test_data_commit}.tar.gz#/sherpa-test-data-%{test_data_commit}.tar.gz
 Patch1:         reproducible.patch
-# PATCH-FIX-UPSTREAM sherpa-pr1318-py310tests.patch -- gh#sherpa/sherpa#1319
-Patch2:         https://github.com/sherpa/sherpa/pull/1318.patch#/sherpa-pr1318-py310tests.patch
-# PATCH-FIX-UPSTREAM sherpa-pr1319-distutils-hack.patch -- gh#sherpa/sherpa#1319
-Patch3:         sherpa-pr1319-distutils-hack.patch
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module numpy-devel >= 1.19}
-BuildRequires:  %{python_module setuptools}
+#  https://sherpa.readthedocs.io/en/latest/install.html#building-from-source
+BuildRequires:  %{python_module setuptools < 60}
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
@@ -47,7 +46,7 @@ ExcludeArch:    %{ix86} %{arm}
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 3.3}
 BuildRequires:  %{python_module pytest-xvfb}
-# Highly recommended by upstream when building from source https://sherpa.readthedocs.io/en/latest/install.html#building-from-source
+# Highly recommended by upstream when building from source
 BuildRequires:  %{python_module astropy}
 BuildRequires:  %{python_module matplotlib}
 # /SECTION
@@ -59,7 +58,7 @@ user to construct models from definitions and fit those models to
 data, using a variety of statistics and optimization methods.
 
 %prep
-%setup -q -n sherpa-%{version}
+%setup -q -n sherpa-%{version} -a1
 %autopatch -p1
 # uncomment system libs
 sed -i "s|#fftw=local|fftw=local|" setup.cfg
@@ -93,8 +92,9 @@ sed -i "1{/\\/usr\\/bin\\/env python/d}" %{buildroot}%{$python_sitearch}/sherpa/
 %check
 # avoid conftest import mismatch
 mv sherpa sherpa_temp
-# astropy 4.2 fits header warning
-donttest+="test_load_case_3"
+export PYTHONPATH=$PWD/sherpa-test-data-%{test_data_commit}
+# unclosed resource warnings by pytest although the tests use Path.to_text which should have closed it.
+donttest="test_save"
 # precision issues
 %ifnarch x86_64
 donttest+=" or (test_regproj and sherpa.plot.dummy_backend)"

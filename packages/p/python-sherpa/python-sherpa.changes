@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Jun  9 20:00:36 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.14.1
+  * enhancements:
+    - various plotting backend improvements
+    - various i/o backend improvements
+    - data object class improvements
+    - basic support for Xspec 12.12.1
+    - beta support for python 3.10
+  * documentation changes:
+    - updated build with CIAO documentation
+    - Add a missing class (DataOgipResponse) to the documentation
+    - Improves the docstrings for DataPHA
+    - fixed typos in plot docs
+    - clean up readthedocs issues such as missing bullets
+  * Infrastructure changes:
+    - updates for compatibility with Clang 12.0
+    - updates to the regression tests
+  * bug fixes:
+    - Improve the FITS headers created when writing out a PHA file (to better match OGIP standards)
+    - addresses delete_model_component call failing if a key does not exist
+    - fixed issue with writing a PHA dataset as a table rather than a PHA file
+    - ensure FITS column access is case insensitive
+    - image handling and image coordinates
+ - Drop sherpa-pr1318-py310tests.patch fixed upstream
+ - Drop sherpa-pr1319-distutils-hack.patch fixed upstream
+
+-------------------------------------------------------------------
 Fri Feb  4 17:05:32 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add sherpa-pr1318-py310tests.patch -- gh#sherpa/sherpa#1318
