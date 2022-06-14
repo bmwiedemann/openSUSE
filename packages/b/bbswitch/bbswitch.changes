@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun  3 18:06:48 UTC 2022 - Simone Pilia <pilia.simone96@gmail.com>
+
+- Fix build in kernel >= 5.18.1 due to deprecated acpi_bus_get_device
+  inclusion:
+  fix-deprecated-acpi_bus_get_device-in-5.18.patch 
+
+-------------------------------------------------------------------
 Wed Mar 10 12:33:49 CET 2021 - tiwai@suse.de
 
 - Fix build with Leap 15.3 kernel due to the missing header

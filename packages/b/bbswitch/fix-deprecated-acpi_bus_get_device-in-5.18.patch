@@ -1,0 +1,18 @@
+From: Simone Pilia <pilia.simone96@gmail.com>
+Subject: Replace deprecated acpi_bus_get_device with acpi_fetch_acpi_dev to build in 5.18
+
+--- a/bbswitch.c
++++ b/bbswitch.c
+@@ -262,10 +262,9 @@
+     pci_disable_device(dis_dev);
+     do {
+         struct acpi_device *ad = NULL;
+-        int r;
+ 
+-        r = acpi_bus_get_device(dis_handle, &ad);
+-        if (r || !ad) {
++        ad = acpi_fetch_acpi_dev(dis_handle);
++        if (!ad) {
+             pr_warn("Cannot get ACPI device for PCI device\n");
+             break;
+         }
