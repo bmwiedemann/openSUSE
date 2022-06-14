@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 13 13:30:24 UTC 2022 - Martin Seidl <mseidl@suse.de>
+
+- Remove license file from %doc
+
+-------------------------------------------------------------------
 Tue May 10 16:15:41 UTC 2022 - Jordi Massaguer <jmassaguerpla@suse.com>
 
 - Exclude s390 arch 

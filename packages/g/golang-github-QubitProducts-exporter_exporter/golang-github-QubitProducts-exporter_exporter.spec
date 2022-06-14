@@ -132,12 +132,12 @@ getent passwd prometheus >/dev/null || %{_sbindir}/useradd -r -g prometheus -d %
 %endif
 
 %files
-%doc README.md LICENSE
+%{!?_licensedir:%global license %doc}
+%doc README.md
+%license LICENSE
 %{_bindir}/%{repo}
 %{_unitdir}/prometheus-exporter_exporter.service
 %config %{_sysconfdir}/%{repo}.yaml
 %{_sysconfdir}/%{repo}.d
-
-%license LICENSE
 
 %changelog
