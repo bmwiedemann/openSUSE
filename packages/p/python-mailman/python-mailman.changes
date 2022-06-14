@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 13 09:09:17 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Added support-alembic-1-8.patch
+- Removed support-alembic-1-7.patch
+
+-------------------------------------------------------------------
 Mon Feb 21 06:31:29 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Clean up a half-completed migration away from python-rpm-macros.

@@ -7,7 +7,7 @@ Index: mailman-3.3.5/setup.py
      install_requires = [
          'aiosmtpd>=1.4.1',
 -        'alembic>=1.6.2,<1.7',
-+        'alembic>=1.6.2,<1.8',
++        'alembic>=1.6.2,<1.9',
          'atpublic',
          'authheaders>=0.9.2',
          'authres>=1.0.1',
@@ -18,7 +18,7 @@ Index: mailman-3.3.5/src/mailman.egg-info/requires.txt
 @@ -1,5 +1,5 @@
  aiosmtpd>=1.4.1
 -alembic<1.7,>=1.6.2
-+alembic<1.8,>=1.6.2
++alembic<1.9,>=1.6.2
  atpublic
  authheaders>=0.9.2
  authres>=1.0.1

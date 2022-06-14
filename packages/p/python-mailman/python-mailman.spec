@@ -64,8 +64,8 @@ Source101:      https://gitlab.com/mailman/mailman/-/raw/master/src/mailman/test
 Patch0:         python-mailman-test_interact_default_banner.patch
 # Support SQLAlchemy 1.4 ... maybe backward compatible
 Patch1:         support-sqlalchemy-1-4.patch
-# Suppprt Alembic 1.7.x
-Patch2:         support-alembic-1-7.patch
+# Suppprt Alembic 1.8.x
+Patch2:         support-alembic-1-8.patch
 #
 # PATCH-FIX-UPSTREAM ARC-message-fail-tests.patch bsc#[0-9]+ mcepl@suse.com
 # this patch makes things totally awesome
