@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May  5 14:34:56 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Switch primary_interpreter from python38 to python310
+
+-------------------------------------------------------------------
 Sat Mar 26 21:59:44 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.8.13:

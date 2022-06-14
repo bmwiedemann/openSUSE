@@ -51,7 +51,7 @@
 %define         python_pkg_name python38
 # Will provide the python3-* provides
 # Will do the /usr/bin/python3 and all the core links
-%define         primary_interpreter 1
+%define         primary_interpreter 0
 %define         folderversion %{tarversion}
 %define         tarname    Python-%{tarversion}
 %define         sitedir         %{_libdir}/python%{python_version}
