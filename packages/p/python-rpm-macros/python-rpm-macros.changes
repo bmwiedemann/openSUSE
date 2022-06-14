@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jun 10 15:52:23 UTC 2022 - mcepl@cepl.eu
+
+- Update to version 20220610.6dc4cb8:
+  * create python_flavored_alternatives and use for testing
+
+-------------------------------------------------------------------
+Thu May 05 14:44:30 UTC 2022 - mcepl@cepl.eu
+
+- Update to version 20220505.4ab53ec:
+  * Switch primary_interpreter from python38 to python310
+  * Avoid bashism in %()
+  * fix flavor executable substitution
+  * Keep python38 as primary python3
+  * Add python310 to the buildset
+  * Move python39 to the primary place in %pythons
+  * Disable python36 flavor in Factory buildset
+  * Add python310 flavor macros to compile set
+  * no newline after python_install_alternative
+
+-------------------------------------------------------------------
 Thu Jan 06 08:16:03 UTC 2022 - mcepl@cepl.eu
 
 - Update to version 20220106.80d3756:

@@ -467,4 +467,24 @@ prerequisite for new python submission</comment>
 </comment>
     <requestid>944185</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>2b9337f535e843006bce3d98769586fe</srcmd5>
+    <version>20220610.6dc4cb8</version>
+    <time>1655245913</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220610.6dc4cb8:
+  * create python_flavored_alternatives and use for testing
+- Update to version 20220505.4ab53ec:
+  * Switch primary_interpreter from python38 to python310
+  * Avoid bashism in %()
+  * fix flavor executable substitution
+  * Keep python38 as primary python3
+  * Add python310 to the buildset
+  * Move python39 to the primary place in %pythons
+  * Disable python36 flavor in Factory buildset
+  * Add python310 flavor macros to compile set
+  * no newline after python_install_alternative
+</comment>
+    <requestid>982055</requestid>
+  </revision>
 </revisionlist>
