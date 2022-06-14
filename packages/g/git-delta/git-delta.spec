@@ -17,45 +17,52 @@
 
 
 Name:           git-delta
-Version:        0.12.1
+Version:        0.13.0
 Release:        0
 Summary:        A syntax-highlighter for git and diff output
 License:        MIT
 URL:            https://github.com/dandavison/delta
-Source0:        https://github.com/dandavison/delta/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        delta-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
 BuildRequires:  git
-Patch1:         bump-regex.patch
 Conflicts:      sccs
 
 %description
 Delta provides language syntax-highlighting, within-line insertion/deletion detection, and restructured diff output for git on the command line.
 
 %prep
-%setup -qa 1 -n delta-%{version}
+%autosetup -a1 -n delta-%{version}
 mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
-%patch1 -p1
 
 %build
+CFLAGS+=' -ffat-lto-objects'
 %{cargo_build}
 
 %check
+CFLAGS+=' -ffat-lto-objects'
 %{cargo_test}
 
 %install
+CFLAGS+=' -ffat-lto-objects'
 %{cargo_install}
 
 # install bash completion
 install -D -m 0644 %{_builddir}/delta-%{version}%{_sysconfdir}/completion/completion.bash %{buildroot}%{_datadir}/bash-completion/completions/delta
+
+# install zsh completion
+install -D -m 0644 %{_builddir}/delta-%{version}%{_sysconfdir}/completion/completion.zsh %{buildroot}%{_datadir}/zsh/site-functions/_delta
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/delta
 %{_datadir}/bash-completion/completions/delta
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_delta
 
 %changelog

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun 14 05:01:54 UTC 2022 - socvirnyl.estela@gmail.com
+
+- remove bump-regex.patch
+
+- Update to version 0.13.0:
+  * Update bat, git2, and syntect
+  * Add 'light = false' w/ comment in gitconfig (#1073)
+  * Add chameleon theme to themes.gitconfig (#1062)
+  * Add note that the package is called "git-delta" in the README
+  * Add link to `bat` on README (#1052)
+  * Apply hyperlinks to diff stat file paths (#1035)
+  * Add custom env struct to store env at init (#1025)
+  * Add support for irreversible-delete
+
+-------------------------------------------------------------------
 Fri Mar 18 09:06:07 UTC 2022 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Add bump-regex.patch to fix CVE-2022-24713 (boo#1196972)
