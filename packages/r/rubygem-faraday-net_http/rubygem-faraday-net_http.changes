@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 13 17:00:47 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.0.3
+
+  * Add Errno::EALREADY to list of Net::HTTP exceptions by @iMacTia in #21
+
+-------------------------------------------------------------------
 Tue Jan 25 06:53:31 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.0.1
