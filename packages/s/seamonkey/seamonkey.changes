@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 14 12:09:28 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add --disable-elf-hack for aarch64 to fix build
+
+-------------------------------------------------------------------
 Fri May 04 09:25:16 UTC 2022 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - update to SeaMonkey 2.53.12

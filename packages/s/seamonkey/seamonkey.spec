@@ -237,7 +237,7 @@ ac_add_options --enable-default-toolkit=cairo-gtk3
 ac_add_options --disable-gconf
 
 # Elfhack fails on ix86: https://bugzilla.mozilla.org/show_bug.cgi?id=1706264
-%ifarch ppc %arm %ix86
+%ifarch aarch64 ppc %arm %ix86
 ac_add_options --disable-elf-hack
 %endif
 
