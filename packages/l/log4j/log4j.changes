@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 13 11:21:51 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not package the *.zip artifacts whose content is part of the
+  multi-release jars already
+- Added patch:
+  * log4j-java8compat.patch
+    + maintain ByteBuffer and CharBuffer compatibility with java 8
+
+-------------------------------------------------------------------
 Mon Jun 13 09:00:12 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build as multi-release jar.
