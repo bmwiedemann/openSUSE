@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 13 17:10:18 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.5.0
+
+  ### Added
+
+  - `Regexp::Expression::Base.construct` and `.token_class` methods
+    * see the [wiki](https://github.com/ammar/regexp_parser/wiki) for details
+
+-------------------------------------------------------------------
 Mon May 16 07:51:38 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 2.4.0
