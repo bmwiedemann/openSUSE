@@ -32,7 +32,7 @@ ExclusiveArch:  do-not-build
 
 Name:           %{php_name}-%{pkg_name}
 %if "%{flavor}" == "php8"
-Version:        1.8.0
+Version:        1.9.0
 %else
 Version:        1.7.0
 %endif
@@ -42,7 +42,7 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/PHP
 URL:            http://www.iceframework.org/
 Source0:        https://pecl.php.net/get/%{pkg_name}-1.7.0.tgz
-Source1:        https://pecl.php.net/get/%{pkg_name}-1.8.0.tgz
+Source1:        https://pecl.php.net/get/%{pkg_name}-1.9.0.tgz
 Source2:        php-%{pkg_name}-rpmlintrc
 BuildRequires:  %{php_name}-ctype
 BuildRequires:  %{php_name}-devel
@@ -54,7 +54,7 @@ BuildRequires:  %{php_name}-tokenizer
 BuildRequires:  gcc
 BuildRequires:  re2c
 %if "%{flavor}" == "php8"
-BuildRequires:  %{php_name} < 8.1
+BuildRequires:  %{php_name} < 8.2
 %else
 BuildRequires:  %{php_name}-json
 Requires:       %{php_name}-json
