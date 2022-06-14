@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun 13 10:44:07 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.3.0
+  * Add backend for Hashicorp Vault OIDC backend
+  * Add generic OpenID Connect backend
+  * Add Grafana OAuth2 backend
+  * Add MusicBrainz OAuth2 backend
+  * Fixed redirect state for Keycloak backend
+  * Add fallback to RSA256 in OpenID Connect when alg is not set
+  * Fixed Azure backend so it can be used with all Azure authority
+    hosts
+- Don't test extra saml for which the distro does not have the right
+  packages
+
+-------------------------------------------------------------------
 Wed Apr 20 09:49:25 UTC 2022 - pgajdos@suse.com
 
 - python-mock is not required for build

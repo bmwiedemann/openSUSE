@@ -17,42 +17,49 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %define modname social-core
+# saml is optional: packages in TW and Leap not compatible
+%bcond_with saml
+
 Name:           python-social-auth-core
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
 Summary:        Python Social Auth Core
 License:        BSD-3-Clause
 URL:            https://github.com/python-social-auth/social-core
 Source:         https://github.com/python-social-auth/%{modname}/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module PyJWT >= 2.0.0}
-BuildRequires:  %{python_module coverage >= 3.6}
 BuildRequires:  %{python_module cryptography >= 2.1.1}
 BuildRequires:  %{python_module defusedxml >= 0.5.0}
-BuildRequires:  %{python_module httpretty}
 BuildRequires:  %{python_module oauthlib >= 1.0.3}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-jose >= 3.0.0}
 BuildRequires:  %{python_module python3-openid >= 3.0.10}
-BuildRequires:  %{python_module python3-saml >= 1.2.1}
 BuildRequires:  %{python_module requests >= 2.9.1}
 BuildRequires:  %{python_module requests-oauthlib >= 0.6.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  ca-certificates
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# SECTION test requirements
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module httpretty >= 0.9.6}
+#/SECTION
+# SECTION optional requirements for tests
+BuildRequires:  %{python_module python-jose >= 3.0.0}
+%if %{with saml}
+BuildRequires:  %{python_module lxml < 4.7}
+BuildRequires:  %{python_module python3-saml >= 1.2.1}
+%endif
+#/SECTION
 Requires:       python-PyJWT >= 2.0.0
 Requires:       python-cryptography >= 2.1.1
+Requires:       python-defusedxml >= 0.5.0
 Requires:       python-oauthlib >= 1.0.3
-Requires:       python-python-jose >= 3.0.0
+Requires:       python-python3-openid >= 3.0.10
 Requires:       python-requests >= 2.9.1
 Requires:       python-requests-oauthlib >= 0.6.1
+Recommends:     python-python-jose >= 3.0.0
 BuildArch:      noarch
-Requires:       python-defusedxml >= 0.5.0
-Requires:       python-python3-openid >= 3.0.10
-Recommends:     python-python3-saml >= 1.2.1
 %python_subpackages
 
 %description
@@ -75,14 +82,15 @@ storage solutions.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# python3 only: assertRaisesRegexp -> assertRaisesRegex
-# skipped tests are online based
-rm -rf _build.python2
-%pytest -k 'not (test_login or test_partial_pipeline)'
+%if !%{with saml}
+donttest+=" or test_saml"
+%endif
+%pytest -k "not (dummyprefix $donttest)"
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/social_core
+%{python_sitelib}/social_auth_core-%{version}*-info
 
 %changelog
