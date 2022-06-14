@@ -53,4 +53,12 @@
 - Use run_tests rather than setup.py tests to run the testsuite.</comment>
     <requestid>971316</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9b786d1330a066ac02f78e3d81135700</srcmd5>
+    <version>0.14.0</version>
+    <time>1655245986</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982582</requestid>
+  </revision>
 </revisionlist>
