@@ -62,9 +62,9 @@ Obsoletes:      python39%{?1:-%{1}}
 %define         python_pkg_name python310
 # Will provide the python3-* provides
 # Will do the /usr/bin/python3 and all the core links
-%define         primary_interpreter 0
+%define         primary_interpreter 1
 # We don't process beta signs well
-%define         folderversion 3.10.4
+%define         folderversion 3.10.5
 %define         tarname    Python-%{tarversion}
 %define         sitedir         %{_libdir}/python%{python_version}
 # three possible ABI kinds: m - pymalloc, d - debug build; see PEP 3149
@@ -100,7 +100,7 @@ Obsoletes:      python39%{?1:-%{1}}
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.10.4
+Version:        3.10.5
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
