@@ -1,7 +1,7 @@
 #
 # spec file for package glassfish-jsp-api
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           glassfish-jsp-api
 Version:        2.3.3
 Release:        0
 Summary:        Glassfish J2EE JSP API specification
-License:        (CDDL-1.1 OR GPL-2.0-only WITH Classpath-exception-2.0) AND Apache-2.0
+License:        Apache-2.0 AND (CDDL-1.1 OR GPL-2.0-only WITH Classpath-exception-2.0)
 Group:          Development/Libraries/Java
 URL:            http://java.net/jira/browse/JSP
 Source0:        %{artifactId}-%{version}.tar.xz
@@ -82,7 +82,7 @@ install -pm 0644 target/%{artifactId}-%{version}.jar %{buildroot}%{_javadir}/%{n
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
 install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{artifactId}.pom
-%add_maven_depmap %{name}/%{artifactId}.pom %{name}/%{artifactId}.jar -a javax.servlet:jsp-api
+%add_maven_depmap %{name}/%{artifactId}.pom %{name}/%{artifactId}.jar -a javax.servlet:jsp-api,javax.servlet.jsp:jsp-api
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
