@@ -1,4 +1,248 @@
 -------------------------------------------------------------------
+Mon Jun  6 22:29:23 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.10.5:
+  - Core and Builtins
+    - gh-93418: Fixed an assert where an f-string has an equal
+      sign ‘=’ following an expression, but there’s no trailing
+      brace. For example, f”{i=”.
+    - gh-91924: Fix __ltrace__ debug feature if the stdout
+      encoding is not UTF-8. Patch by Victor Stinner.
+    - gh-93061: Backward jumps after async for loops are no
+      longer given dubious line numbers.
+    - gh-93065: Fix contextvars HAMT implementation to handle
+      iteration over deep trees.
+    - The bug was discovered and fixed by Eli Libman. See
+      MagicStack/immutables#84 for more details.
+    - gh-92311: Fixed a bug where setting frame.f_lineno to jump
+      over a list comprehension could misbehave or crash.
+    - gh-92112: Fix crash triggered by an evil custom mro() on
+      a metaclass.
+    - gh-92036: Fix a crash in subinterpreters related to the
+      garbage collector. When a subinterpreter is deleted,
+      untrack all objects tracked by its GC. To prevent a crash
+      in deallocator functions expecting objects to be tracked by
+      the GC, leak a strong reference to these objects on
+      purpose, so they are never deleted and their deallocator
+      functions are not called. Patch by Victor Stinner.
+    - gh-91421: Fix a potential integer overflow in
+      _Py_DecodeUTF8Ex.
+    - bpo-47212: Raise IndentationError instead of SyntaxError
+      for a bare except with no following indent. Improve
+      SyntaxError locations for an un-parenthesized generator
+      used as arguments. Patch by Matthieu Dartiailh.
+    - bpo-47182: Fix a crash when using a named unicode character
+      like "\N{digit nine}" after the main interpreter has been
+      initialized a second time.
+    - bpo-47117: Fix a crash if we fail to decode characters in
+      interactive mode if the tokenizer buffers are
+      uninitialized. Patch by Pablo Galindo.
+    - bpo-39829: Removed the __len__() call when initializing
+      a list and moved initializing to list_extend. Patch by
+      Jeremiah Pascual.
+    - bpo-46962: Classes and functions that unconditionally
+      declared their docstrings ignoring the
+      --without-doc-strings compilation flag no longer do so.
+    - The classes affected are ctypes.UnionType,
+      pickle.PickleBuffer, testcapi.RecursingInfinitelyError, and
+      types.GenericAlias.
+    - The functions affected are 24 methods in ctypes.
+    - Patch by Oleg Iarygin.
+    - bpo-36819: Fix crashes in built-in encoders with error
+      handlers that return position less or equal than the
+      starting position of non-encodable characters.
+  - Library
+    - gh-93156: Accessing the pathlib.PurePath.parents sequence
+      of an absolute path using negative index values produced
+      incorrect results.
+    - gh-89973: Fix re.error raised in fnmatch if the pattern
+      contains a character range with upper bound lower than
+      lower bound (e.g. [c-a]). Now such ranges are interpreted
+      as empty ranges.
+    - gh-93010: In a very special case, the email package tried
+      to append the nonexistent InvalidHeaderError to the defect
+      list. It should have been InvalidHeaderDefect.
+    - gh-92839: Fixed crash resulting from calling
+      bisect.insort() or bisect.insort_left() with the key
+      argument not equal to None.
+    - gh-91581: utcfromtimestamp() no longer attempts to resolve
+      fold in the pure Python implementation, since the fold is
+      never 1 in UTC. In addition to being slightly faster in the
+      common case, this also prevents some errors when the
+      timestamp is close to datetime.min. Patch by Paul Ganssle.
+    - gh-92530: Fix an issue that occurred after interrupting
+      threading.Condition.notify().
+    - gh-92049: Forbid pickling constants re._constants.SUCCESS
+      etc. Previously, pickling did not fail, but the result
+      could not be unpickled.
+    - bpo-47029: Always close the read end of the pipe used by
+      multiprocessing.Queue after the last write of buffered data
+      to the write end of the pipe to avoid BrokenPipeError at
+      garbage collection and at multiprocessing.Queue.close()
+      calls. Patch by Géry Ogam.
+    - gh-91401: Provide a fail-safe way to disable subprocess use
+      of vfork() via a private subprocess._USE_VFORK attribute.
+      While there is currently no known need for this, if you
+      find a need please only set it to False. File a CPython
+      issue as to why you needed it and link to that from
+      a comment in your code. This attribute is documented as
+      a footnote in 3.11.
+    - gh-91910: Add missing f prefix to f-strings in error
+      messages from the multiprocessing and asyncio modules.
+    - gh-91810: ElementTree method write() and function
+      tostring() now use the text file’s encoding (“UTF-8” if not
+      available) instead of locale encoding in XML declaration
+      when encoding="unicode" is specified.
+    - gh-91832: Add required attribute to argparse.Action repr
+      output.
+    - gh-91700: Compilation of regular expression containing
+      a conditional expression (?(group)...) now raises an
+      appropriate re.error if the group number refers to not
+      defined group. Previously an internal RuntimeError was
+      raised.
+    - gh-91676: Fix unittest.IsolatedAsyncioTestCase to shutdown
+      the per test event loop executor before returning from its
+      run method so that a not yet stopped or garbage collected
+      executor state does not persist beyond the test.
+    - gh-90568: Parsing \N escapes of Unicode Named Character
+      Sequences in a regular expression raises now re.error
+      instead of TypeError.
+    - gh-91595: Fix the comparison of character and integer
+      inside Tools.gdb.libpython.write_repr(). Patch by Yu Liu.
+    - gh-90622: Worker processes for
+      concurrent.futures.ProcessPoolExecutor are no longer
+      spawned on demand (a feature added in 3.9) when the
+      multiprocessing context start method is "fork" as that can
+      lead to deadlocks in the child processes due to a fork
+      happening while threads are running.
+    - gh-91575: Update case-insensitive matching in the re module
+      to the latest Unicode version.
+    - gh-91581: Remove an unhandled error case in the
+      C implementation of calls to datetime.fromtimestamp with no
+      time zone (i.e. getting a local time from an epoch
+      timestamp). This should have no user-facing effect other
+      than giving a possibly more accurate error message when
+      called with timestamps that fall on 10000-01-01 in the
+      local time. Patch by Paul Ganssle.
+    - bpo-47260: Fix os.closerange() potentially being a no-op in
+      a Linux seccomp sandbox.
+    - bpo-39064: zipfile.ZipFile now raises zipfile.BadZipFile
+      instead of ValueError when reading a corrupt zip file in
+      which the central directory offset is negative.
+    - bpo-47151: When subprocess tries to use vfork, it now falls
+      back to fork if vfork returns an error. This allows use in
+      situations where vfork isn’t allowed by the OS kernel.
+    - bpo-27929: Fix asyncio.loop.sock_connect() to only resolve
+      names for socket.AF_INET or socket.AF_INET6 families.
+      Resolution may not make sense for other families, like
+      socket.AF_BLUETOOTH and socket.AF_UNIX.
+    - bpo-43323: Fix errors in the email module if the charset
+      itself contains undecodable/unencodable characters.
+    - bpo-47101: hashlib.algorithms_available now lists only
+      algorithms that are provided by activated crypto providers
+      on OpenSSL 3.0. Legacy algorithms are not listed unless the
+      legacy provider has been loaded into the default OSSL
+      context.
+    - bpo-46787: Fix concurrent.futures.ProcessPoolExecutor
+      exception memory leak
+    - bpo-45393: Fix the formatting for await x and not x in the
+      operator precedence table when using the help() system.
+    - bpo-46415: Fix ipaddress.ip_{address,interface,network}
+      raising TypeError instead of ValueError if given invalid
+      tuple as address parameter.
+    - bpo-28249: Set doctest.DocTest.lineno to None when object
+      does not have __doc__.
+    - bpo-45138: Fix a regression in the sqlite3 trace callback
+      where bound parameters were not expanded in the passed
+      statement string. The regression was introduced in Python
+      3.10 by bpo-40318. Patch by Erlend E. Aasland.
+    - bpo-44493: Add missing terminated NUL in sockaddr_un’s
+      length
+    - This was potentially observable when using non-abstract
+      AF_UNIX datagram sockets to processes written in another
+      programming language.
+    - bpo-42627: Fix incorrect parsing of Windows registry proxy
+      settings
+    - bpo-36073: Raise ProgrammingError instead of segfaulting on
+      recursive usage of cursors in sqlite3 converters. Patch by
+      Sergey Fedoseev.
+  - Documentation
+    - gh-86438: Clarify that -W and PYTHONWARNINGS are matched
+      literally and case-insensitively, rather than as regular
+      expressions, in warnings.
+    - gh-92240: Added release dates for “What’s New in Python
+      3.X” for 3.0, 3.1, 3.2, 3.8 and 3.10
+    - gh-91888: Add a new gh role to the documentation to link to
+      GitHub issues.
+    - gh-91783: Document security issues concerning the use of
+      the function shutil.unpack_archive()
+    - gh-91547: Remove “Undocumented modules” page.
+    - bpo-44347: Clarify the meaning of dirs_exist_ok, a kwarg of
+      shutil.copytree().
+    - bpo-38668: Update the introduction to documentation for
+      os.path to remove warnings that became irrelevant after the
+      implementations of PEP 383 and PEP 529.
+    - bpo-47138: Pin Jinja to a version compatible with Sphinx
+      version 3.2.1.
+    - bpo-46962: All docstrings in code snippets are now wrapped
+      into PyDoc_STR() to follow the guideline of PEP 7’s
+      Documentation Strings paragraph. Patch by Oleg Iarygin.
+    - bpo-26792: Improve the docstrings of runpy.run_module() and
+      runpy.run_path(). Original patch by Andrew Brezovsky.
+    - bpo-40838: Document that inspect.getdoc(),
+      inspect.getmodule(), and inspect.getsourcefile() might
+      return None.
+    - bpo-45790: Adjust inaccurate phrasing in Defining Extension
+      Types: Tutorial about the ob_base field and the macros used
+      to access its contents.
+    - bpo-42340: Document that in some circumstances
+      KeyboardInterrupt may cause the code to enter an
+      inconsistent state. Provided a sample workaround to avoid
+      it if needed.
+    - bpo-41233: Link the errnos referenced in
+      Doc/library/exceptions.rst to their respective section in
+      Doc/library/errno.rst, and vice versa. Previously this was
+      only done for EINTR and InterruptedError. Patch by Yan
+      “yyyyyyyan” Orestes.
+    - bpo-38056: Overhaul the Error Handlers documentation in
+      codecs.
+    - bpo-13553: Document tkinter.Tk args.
+  - Tests
+    - gh-92886: Fixing tests that fail when running with
+      optimizations (-O) in test_imaplib.py.
+    - gh-92670: Skip
+      test_shutil.TestCopy.test_copyfile_nonexistent_dir test on
+      AIX as the test uses a trailing slash to force the OS
+      consider the path as a directory, but on AIX the trailing
+      slash has no effect and is considered as a file.
+    - gh-91904: Fix initialization of
+      PYTHONREGRTEST_UNICODE_GUARD which prevented running
+      regression tests on non-UTF-8 locale.
+    - gh-91607: Fix test_concurrent_futures to test the correct
+      multiprocessing start method context in several cases where
+      the test logic mixed this up.
+    - bpo-47205: Skip test for sched_getaffinity() and
+      sched_setaffinity() error case on FreeBSD.
+    - bpo-47104: Rewrite asyncio.to_thread() tests to use
+      unittest.IsolatedAsyncioTestCase.
+    - bpo-29890: Add tests for ipaddress.IPv4Interface and
+      ipaddress.IPv6Interface construction with tuple arguments.
+      Original patch and tests by louisom.
+  - Tools/Demos
+    - gh-91583: Fix regression in the code generated by Argument
+      Clinic for functions with the defining_class parameter.
+
+-------------------------------------------------------------------
+Tue May 10 14:35:52 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Refresh bluez-devel-vendor.tar.xz
+
+-------------------------------------------------------------------
+Thu May  5 14:35:56 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Switch primary_interpreter from python38 to python310
+
+-------------------------------------------------------------------
 Sat Mar 26 22:52:45 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.10.4:
