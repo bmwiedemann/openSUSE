@@ -663,4 +663,12 @@
 - Update to 16.2.7-969-g6195a460d89</comment>
     <requestid>980767</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>bcff4faaac678f9b2f32ac01aaa1bbf8</srcmd5>
+    <version>16.2.9.158+gd93952c7eea</version>
+    <time>1655245908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981952</requestid>
+  </revision>
 </revisionlist>

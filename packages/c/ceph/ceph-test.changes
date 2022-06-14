@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  9 23:37:24 UTC 2022 - Tim Serong <tserong@suse.com>
+
+- Update to 16.2.9-158-gd93952c7eea:
+  + cmake: check for python(\d)\.(\d+) when building boost
+  + make-dist: patch boost source to support python 3.10
+
+-------------------------------------------------------------------
 Thu Jun  2 20:57:56 UTC 2022 - Stefen Allen <stefen.allen@suse.com>
 
 - Update to ceph-16.2.9-58-ge2e5cb80063:
