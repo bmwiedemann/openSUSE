@@ -1,4 +1,141 @@
 -------------------------------------------------------------------
+Tue May 10 08:32:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.1.8
+  General:
+  * Moto now supports a way to delay state transitions.
+    See http://docs.getmoto.org/en/latest/docs/configuration/state_transition/index.html
+  * Moto now supports `@mock_batch_simple`, a way to mock the
+    Batch-service without invoking Docker. New Methods:
+  * CognitoIDP:
+    - global_sign_out()
+    - update_group()
+    - update_user_attributes()
+  * DataBrew:
+    - delete_recipe_version()
+    - list_recipe_versions()
+    - publish_recipe()
+  * IAM:
+    - create_service_linked_role()
+    - delete_service_linked_role()
+    - get_service_linked_role_deletion_status()
+  * Sagemaker:
+    - update_endpoint_weights_and_capacities()
+  Miscellaneous:
+  * EC2: request_spot_fleet() now supports the parameters
+    LaunchTemplateConfigs, InstanceInterruptionBehavior
+  * EC2: request_spot_instances() now supports the
+    InstanceInterruptionBehavior-parameter
+  * EC2: The status of a SpotInstances request now automatically
+    transitions to 'Active/Fulfilled'
+  * EC2: Tags specified into create_launch_template() are now
+    passed through when calling `run_instances()` with this
+    template
+  * RDS: describe_db_instances() now supports the filter
+    `db-cluster-id`
+  * TimestreamWrite: create_table() now supports the
+    MagneticStoreWriteProps-parameter
+  * TimestreamWrite: update_table() now supports the
+    MagneticStoreWriteProps-parameter
+- Release 3.1.7
+  New Methods:
+  * SES:
+    - get_identity_verification_attributes()
+  Miscellaneous:
+  * CognitoIDP: UserPools now come with default values for the
+    following attributes: Policies, AdminCreateUserConfig,
+    EmailConfiguration, VerificationMessageTemplate
+  * ELBv2: Improved the response-format of the `create_rule()` and
+    `set_rule_priorities()`-methods
+  * MediaConnect: Now has the correct format for flow/source ARN's
+  * Organizations: Fixes the behaviour for close_account()
+  * Sagemaker: Now supports tagging of Models, EndpointConfigs,
+    ProcessingJobs
+- The tests require mock which is not pulled in implicitly anymore
+
+-------------------------------------------------------------------
+Mon Apr 25 15:26:55 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.1.6 
+  New Methods:
+  * Organizations:
+    * close_account()
+  Miscellaneous:
+    * Autoscaling: the BlockDeviceMappings in LaunchConfigurations
+      and LaunchTemplates are now respected when launching EC2
+      instances
+    * CloudWatch: get_metric_data() now supports the
+      Dimensions-parameter
+    * ELB: set_rule_priorities() now correctly returns the
+      Rules-attribute
+    * ELBv2: create_target_group() now supports the Tags-parameter
+    * Events: delete_rule() now verifies whether any targets are
+      still attached before deletion
+- Release 3.1.5
+  New Methods:
+  * ApplicationAutoscaling:
+      * delete_scheduled_action()
+      * describe_scheduled_actions()
+      * put_scheduled_action()
+  * Databrew:
+      * create_ruleset()
+      * delete_ruleset()
+      * list_rulesets()
+      * update_recipe()
+      * update_ruleset()
+  * EC2:
+      * describe_network_interface_attribute()
+  Miscellaneous:
+  * Glue:get_partitions() now supports the Expression-parameter
+  * RDS:delete_db_cluster() now supports the
+    FinalDBSnapshotIdentifier-parameter
+  * S3 actions can now send notifications for (a subset of)
+    supported events and targets
+- Release 3.1.4
+    General:
+      * Compatible with botocore 1.24.30. The IOTData service in
+        older versions of Moto is incompatible with botocore >=
+        1.24.30, due to the fact that AWS changed their URL
+        endpoints. 
+    New Services:
+    * QuickSight:
+      * create_data_set()
+      * create_group()
+      * create_group_membership()
+      * create_ingestion()
+      * delete_group()
+      * delete_user()
+      * describe_group()
+      * describe_group_membership()
+      * describe_user()
+      * list_groups()
+      * list_group_memberships()
+      * list_users()
+      * register_user()
+      * update_group()
+      * describe_group()
+      * describe_group()
+      * describe_group()
+    * Rekognition:
+      * get_text_detection()
+      * start_text_detection()
+    New Methods:
+    * EC2:
+      * delete_launch_template()
+    * ECS:
+      * create_capacity_provider()
+      * delete_capacity_provider()
+      * describe_capacity_providers()
+    Miscellaneous:
+    * Autoscaling:put_scaling_policy() now supports the parameters
+      MetricAggregationType, MinAdjustmentMagnitude,
+      EstimatedInstanceWarmup, PredictiveScalingConfiguration
+    * Autoscaling:create_auto_scaling_group() now supports launch
+      template versions '$Latest' and '$Default'
+    * RDS: Improved tagging support for Clusters and
+      ClusterSnapshots
+
+-------------------------------------------------------------------
 Sun Mar 27 18:07:22 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.1.3

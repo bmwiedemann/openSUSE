@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-moto
-Version:        3.1.3
+Version:        3.1.8
 Release:        0
 Summary:        Library to mock out the boto library
 License:        Apache-2.0
@@ -38,7 +38,9 @@ Requires:       python-pytz
 Requires:       python-requests >= 2.5
 Requires:       python-responses >= 0.9.0
 Requires:       python-xmltodict
-Requires:       python-zipp
+%if 0%{?python_version_nodots} < 38
+Requires:       python-importlib-metadata
+%endif
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
 Recommends:     python-moto-all
@@ -59,9 +61,12 @@ BuildRequires:  %{python_module docker >= 2.5.1}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module graphql-core}
 BuildRequires:  %{python_module idna >= 2.5}
+BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
 BuildRequires:  %{python_module jsondiff >= 1.1.2}
 BuildRequires:  %{python_module jsonpickle}
+BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module parameterized}
+BuildRequires:  %{python_module pyparsing >= 3}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.1}
@@ -72,7 +77,6 @@ BuildRequires:  %{python_module responses >= 0.9.0}
 BuildRequires:  %{python_module sshpubkeys >= 3.1.0}
 BuildRequires:  %{python_module sure}
 BuildRequires:  %{python_module xmltodict}
-BuildRequires:  %{python_module zipp}
 # /SECTION
 %python_subpackages
 
@@ -90,6 +94,7 @@ Requires:       python-graphql-core
 Requires:       python-idna >= 2.5
 Requires:       python-jsondiff >= 1.1.2
 Requires:       python-moto = %{version}
+Requires:       python-pyparsing >= 3
 Requires:       python-python-jose
 Requires:       python-sshpubkeys >= 3.1.0
 
@@ -110,8 +115,10 @@ library. Meta package to install server extras (moto[server])
 %prep
 %autosetup -p1 -n moto-%{version}
 # avoid zero-length modules
-for f in athena/utils.py ec2/regions.py glue/utils.py medialive/exceptions.py redshift/utils.py support/exceptions.py; do
-  echo '# empty module' > moto/$f
+for f in athena/utils.py ec2/regions.py medialive/exceptions.py redshift/utils.py support/exceptions.py; do
+   [ -f moto/$f ] || (echo "moto/$f does not exist anymore"; exit 1)
+   [ ! -s moto/$f ] || (echo "moto/$f is not empty anymore"; exit 1)
+   echo '# empty module' > moto/$f
 done
 
 %build
@@ -134,6 +141,7 @@ donttest+=" or (test_cloudformation_custom_resources and test_create_custom_lamb
 donttest+=" or (test_cloudformation_stack_integration and test_lambda_function)"
 donttest+=" or test_firehose_put"
 donttest+=" or test_vpc_peering_connections_cross_region_fail"
+donttest+=" or (test_s3_lambda_integration and test_objectcreated_put__invokes_lambda and ObjectCreated)"
 # no  python2.7 on TW
 donttest+=" or test_invoke_function_from_sqs_exception"
 donttest+=" or test_rotate_secret_lambda_invocations"
