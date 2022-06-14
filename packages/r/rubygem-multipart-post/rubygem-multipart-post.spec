@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-multipart-post
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,15 +24,15 @@
 #
 
 Name:           rubygem-multipart-post
-Version:        2.1.1
+Version:        2.2.3
 Release:        0
 %define mod_name multipart-post
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %{ruby >= 2.3.0}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/nicksieger/multipart-post
+URL:            https://github.com/socketry/multipart-post
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A multipart form post accessory for Net::HTTP
@@ -40,9 +40,7 @@ License:        MIT
 Group:          Development/Languages/Ruby
 
 %description
-Use with Net::HTTP to do multipart form postspec. IO values that have
-#content_type, #original_filename, and #local_path will be posted as a binary
-file.
+A multipart form post accessory for Net::HTTP.
 
 %prep
 
@@ -50,7 +48,6 @@ file.
 
 %install
 %gem_install \
-  --doc-files="History.txt LICENSE README.md" \
   -f
 
 %gem_packages
