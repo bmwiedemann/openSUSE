@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-faraday
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 %define mod_name faraday
 %define mod_full_name %{mod_name}-%{version}

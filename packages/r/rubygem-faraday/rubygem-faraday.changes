@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jun 13 16:57:35 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.3.0
+
+  # Features
+
+  * Add indices when arrays are encoded by @daedric in #1399
+
+  # Fixes
+
+  * Allow application/x-www-form-url_encoded POST requests to use file objects as the request body by @catlee in #1415
+
+  # Misc
+
+  * CHANGELOG: add 2.2.0 section by @olleolleolle in #1394
+  * docs: UPGRADE Note #dependency removed in 2.0 by @olleolleolle in #1398
+  * docs: Add one more require to the quickstart to make this whole thing work immediately by @joshuabremerdexcom in #1401
+  * Update custom middleware documentation by @AlexWayfer in #1404
+  * Doc: Added raise_error middleware configuration by @nicosvirjt in #1412
+  * docs: Correct default default_adapter value by @kuahyeow in #1414
+  * CI: Update GitHub Action "checkout" to v3 by @olleolleolle in #1416
+
+-------------------------------------------------------------------
 Mon Feb 21 11:31:14 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.2.0
