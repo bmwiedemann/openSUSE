@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 13 16:52:37 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.12.0
+
+  * `bootsnap precompile` CLI will now also precompile `Rakefile` and `.rake` files.
+
+  * Stop decorating `Module#autoload` as it was only useful for supporting Ruby 2.2 and older.
+
+  * Remove `uname` and other patform specific version from the cache keys. `RUBY_PLATFORM + RUBY_REVISION` should be
+    enough to ensure bytecode compatibility. This should improve caching for alpine based setups. See #409.
+
+-------------------------------------------------------------------
 Thu Mar 10 15:43:33 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.11.1
