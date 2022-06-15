@@ -205,7 +205,11 @@ Substitute: pkg-config pkgconf-pkg-config
 FileProvides: /usr/bin/glxinfo Mesa-demo-x
 FileProvides: /usr/bin/python python-base
 FileProvides: /usr/bin/python2 python2-base
+%if "%{_repository}" == "snapshot"
+FileProvides: /usr/bin/python3 python38-base
+%else
 FileProvides: /usr/bin/python3 python310-base
+%endif
 FileProvides: /usr/bin/sed busybox-sed sed sed
 FileProvides: /usr/bin/setfacl acl
 FileProvides: /usr/bin/sg_inq sg3_utils
