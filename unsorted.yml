@@ -1165,7 +1165,7 @@ unsorted:
   - bb 
   - bbe 
   - bbswitch 
-  - bbswitch-kmp-default 
+  - bbswitch-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - bbswitch-kmp-pae: [i586] 
   - bcache-tools: [i586] 
   - bcal: [x86_64] 
@@ -9012,7 +9012,6 @@ unsorted:
   - libLASi-devel 
   - libLASi2 
   - libLHAPDF-6_5_1 
-  - libLLVM11 
   - libLLVM11-32bit: [x86_64] 
   - libLLVM12 
   - libLLVM12-32bit: [x86_64] 
@@ -11777,7 +11776,6 @@ unsorted:
   - libircclient1 
   - libirman-devel 
   - libirman0 
-  - libirml1 
   - libirrecord0 
   - libiscsi-devel 
   - libiscsi-test 
@@ -13246,7 +13244,6 @@ unsorted:
   - libpythia8 
   - libpythia8lhapdf6 
   - libpython2_7-1_0-32bit: [x86_64] 
-  - libpython3_10-1_0 
   - libpython3_10-1_0-32bit: [x86_64] 
   - libpython3_11-1_0 
   - libpython3_11-1_0-32bit: [x86_64] 
@@ -14222,7 +14219,6 @@ unsorted:
   - libtasn1-devel 
   - libtasn1-devel-32bit: [x86_64] 
   - libtasn1-tools 
-  - libtbb12 
   - libtbbbind_2_5-3 
   - libtbbmalloc2 
   - libtcmalloc4 
@@ -14272,11 +14268,11 @@ unsorted:
   - libtheora0-32bit: [x86_64] 
   - libtheoradec1-32bit: [x86_64] 
   - libtheoraenc1-32bit: [x86_64] 
-  - libthrift-0_15_0 
+  - libthrift-0_16_0 
   - libthrift-devel 
   - libthrift_c_glib0 
-  - libthriftnb-0_15_0 
-  - libthriftz-0_15_0 
+  - libthriftnb-0_16_0 
+  - libthriftz-0_16_0 
   - libtidy-devel 
   - libtidy58 
   - libtidyp-1_04-0 
@@ -14906,7 +14902,7 @@ unsorted:
   - libxcb-composite0-32bit: [x86_64] 
   - libxcb-cursor0-32bit: [x86_64] 
   - libxcb-damage0-32bit: [x86_64] 
-  - libxcb-devel: [i586] # devel package of common_locks:libxcb-xfixes0 
+  - libxcb-devel: [i586] # devel package of common_locks:libxcb-xinerama0 
   - libxcb-devel-32bit: [x86_64] 
   - libxcb-devel-doc 
   - libxcb-dpms0-32bit: [x86_64] 
@@ -19502,6 +19498,7 @@ unsorted:
   - perl-ExtUtils-XSpp 
   - perl-FFI-CheckLib 
   - perl-FastCGI 
+  - perl-Feature-Compat-Try 
   - perl-Feed-Find 
   - perl-Fennec-Lite 
   - perl-File-BaseDir 
@@ -21887,20 +21884,14 @@ unsorted:
   - python3-yui 
   - python3-z3 
   - python3-zbar 
-  - python310 
   - python310-32bit: [x86_64] 
   - python310-APScheduler 
   - python310-AnyQt 
   - python310-Arpeggio 
   - python310-Authlib 
-  - python310-Automat 
   - python310-BTrees 
   - python310-BTrees-devel 
-  - python310-Babel 
-  - python310-Beaker 
   - python310-BitVector 
-  - python310-Bottleneck 
-  - python310-Brotli 
   - python310-CCColUtils 
   - python310-CacheControl 
   - python310-CairoSVG 
@@ -21910,7 +21901,6 @@ unsorted:
   - python310-CherryPy 
   - python310-CommonMark 
   - python310-ConfigArgParse 
-  - python310-Cycler 
   - python310-Cython 
   - python310-DataProperty 
   - python310-DataShape 
@@ -21949,9 +21939,7 @@ unsorted:
   - python310-Flask-Testing 
   - python310-Flask-WTF 
   - python310-Flask-doc 
-  - python310-FontTools 
   - python310-FormEncode 
-  - python310-Genshi 
   - python310-GitPython 
   - python310-Glances 
   - python310-Gloo 
@@ -21965,7 +21953,6 @@ unsorted:
   - python310-IMAPClient 
   - python310-IMDbPY 
   - python310-JPype1 
-  - python310-Jinja2 
   - python310-Js2Py 
   - python310-JsonWeb 
   - python310-Kajiki 
@@ -21976,11 +21963,8 @@ unsorted:
   - python310-Lektor 
   - python310-Levenshtein 
   - python310-Logbook 
-  - python310-M2Crypto 
-  - python310-Mako 
   - python310-Markdown 
   - python310-MarkupPy 
-  - python310-MarkupSafe 
   - python310-Markups 
   - python310-Mathics 
   - python310-Mathics-Scanner 
@@ -22001,8 +21985,6 @@ unsorted:
   - python310-PeachPy: [x86_64] 
   - python310-PeakUtils 
   - python310-Pebble 
-  - python310-Pillow 
-  - python310-Pillow-tk 
   - python310-Pint 
   - python310-Protego 
   - python310-PsyLab 
@@ -22020,18 +22002,15 @@ unsorted:
   - python310-PyECLib 
   - python310-PyFxA 
   - python310-PyGithub 
-  - python310-PyHamcrest 
   - python310-PyICU 
   - python310-PyInstaller 
-  - python310-PyJWT 
+  - python310-PyJWT: [i586] 
   - python310-PyKMIP 
   - python310-PyLaTeX 
   - python310-PyMeeus 
   - python310-PyMeta3 
   - python310-PyMsgBox 
   - python310-PyMuPDF 
-  - python310-PyMySQL 
-  - python310-PyNaCl 
   - python310-PyNamecheap 
   - python310-PyOgg 
   - python310-PyOpenAL 
@@ -22058,7 +22037,6 @@ unsorted:
   - python310-PyRect 
   - python310-PySDL2 
   - python310-PyScreeze 
-  - python310-PySocks 
   - python310-PyTrie 
   - python310-PyTweening 
   - python310-PyVirtualDisplay 
@@ -22066,8 +22044,6 @@ unsorted:
   - python310-PyWebDAV3 
   - python310-PyWebDAV3-GNUHealth 
   - python310-PyX 
-  - python310-PyYAML 
-  - python310-Pygments 
   - python310-Pympler 
   - python310-Pyphen 
   - python310-Pyro4 
@@ -22080,7 +22056,6 @@ unsorted:
   - python310-Routes 
   - python310-Rtree 
   - python310-SPARQLWrapper 
-  - python310-SQLAlchemy 
   - python310-SQLAlchemy-Utils 
   - python310-Scrapy 
   - python310-SecretStorage 
@@ -22100,7 +22075,6 @@ unsorted:
   - python310-Transplant 
   - python310-Trolly 
   - python310-Trololio 
-  - python310-Twisted 
   - python310-TxSNI 
   - python310-URLObject 
   - python310-UkPostcodeParser 
@@ -22122,7 +22096,6 @@ unsorted:
   - python310-XStatic-objectpath 
   - python310-XStatic-term.js 
   - python310-XStatic-tv4 
-  - python310-XlsxWriter 
   - python310-Yapsy 
   - python310-ZConfig 
   - python310-ZConfig-doc 
@@ -22154,24 +22127,17 @@ unsorted:
   - python310-agate-sql 
   - python310-agate-stats 
   - python310-aina 
-  - python310-aiobotocore 
   - python310-aiodataloader 
-  - python310-aiodns 
   - python310-aioeventlet 
   - python310-aiofiles 
   - python310-aioftp 
-  - python310-aiohttp 
   - python310-aiohttp-jinja2 
   - python310-aiohttp-socks 
   - python310-aiohttp-theme 
-  - python310-aiohttp_cors 
-  - python310-aioitertools 
   - python310-aioquic 
   - python310-aioredis 
   - python310-aioresponses 
   - python310-aiorpcX 
-  - python310-aiosignal 
-  - python310-aiosmtpd 
   - python310-aiosmtplib 
   - python310-aiosqlite 
   - python310-aiounittest 
@@ -22179,7 +22145,6 @@ unsorted:
   - python310-akismet 
   - python310-alabaster 
   - python310-aldjemy 
-  - python310-alembic 
   - python310-allpairspy 
   - python310-alsa 
   - python310-altair 
@@ -22196,15 +22161,12 @@ unsorted:
   - python310-ansicolors 
   - python310-ansiwrap 
   - python310-antlr4-python3-runtime 
-  - python310-anyio 
   - python310-anyjson 
   - python310-anymarkup-core 
   - python310-apache-libcloud 
   - python310-apfel 
-  - python310-apipkg 
   - python310-apiron 
   - python310-apns2 
-  - python310-appdirs 
   - python310-application 
   - python310-applicationinsights 
   - python310-apptools 
@@ -22212,11 +22174,9 @@ unsorted:
   - python310-arabic-reshaper 
   - python310-archmage 
   - python310-arf 
-  - python310-argcomplete 
+  - python310-argcomplete: [i586] 
   - python310-argh 
-  - python310-argon2-cffi 
-  - python310-argon2-cffi-bindings 
-  - python310-argparse-manpage 
+  - python310-argparse-manpage: [i586] 
   - python310-args 
   - python310-arrow 
   - python310-arviz 
@@ -22238,28 +22198,20 @@ unsorted:
   - python310-astroid 
   - python310-astropy 
   - python310-astropy-healpix 
-  - python310-asttokens 
   - python310-astunparse 
   - python310-asv 
-  - python310-async_generator 
-  - python310-async_timeout 
   - python310-asyncpg 
   - python310-asyncssh 
   - python310-atlassian-python-api 
   - python310-atom 
   - python310-atomicwrites 
-  - python310-atpublic 
-  - python310-atspi 
   - python310-attr 
-  - python310-attrs 
   - python310-aubio 
   - python310-audio-degrader 
   - python310-audiogrep 
   - python310-audiomate 
   - python310-audioread 
   - python310-augeas 
-  - python310-authheaders 
-  - python310-authres 
   - python310-autobahn 
   - python310-autodoc 
   - python310-autodocsumm 
@@ -22566,18 +22518,14 @@ unsorted:
   - python310-azure-synapse-spark 
   - python310-azure-template 
   - python310-babelfish 
-  - python310-backcall 
   - python310-backoff 
   - python310-backports.entry_points_selectable 
   - python310-baron 
-  - python310-base 
   - python310-base-32bit: [x86_64] 
   - python310-base58 
   - python310-bashate 
   - python310-basictracer 
-  - python310-bcrypt 
   - python310-beartype 
-  - python310-beautifulsoup4 
   - python310-before-after 
   - python310-behave 
   - python310-bencode 
@@ -22596,11 +22544,10 @@ unsorted:
   - python310-bitstring 
   - python310-bitstruct 
   - python310-bjoern 
-  - python310-black 
   - python310-bleach 
   - python310-blessed 
   - python310-blessings 
-  - python310-blinker 
+  - python310-blinker: [i586] 
   - python310-blockdiag 
   - python310-blosc 
   - python310-bloscpack 
@@ -22615,8 +22562,6 @@ unsorted:
   - python310-boolean.py 
   - python310-booleanOperations 
   - python310-boost-histogram 
-  - python310-boto3 
-  - python310-botocore 
   - python310-bottle 
   - python310-bowler 
   - python310-bpython 
@@ -22625,8 +22570,6 @@ unsorted:
   - python310-branca 
   - python310-breathe 
   - python310-brewer2mpl 
-  - python310-brotlicffi 
-  - python310-brotlipy 
   - python310-bsddb3 
   - python310-bsddb3-devel 
   - python310-bson 
@@ -22636,7 +22579,6 @@ unsorted:
   - python310-buttplug 
   - python310-bytecode 
   - python310-cPyparsing 
-  - python310-cached-property 
   - python310-cachelib 
   - python310-cachetools 
   - python310-cachey 
@@ -22680,18 +22622,14 @@ unsorted:
   - python310-certbot-dns-rfc2136 
   - python310-certbot-dns-route53 
   - python310-certbot-nginx 
-  - python310-certifi 
   - python310-certipy 
   - python310-certstream 
-  - python310-cffi 
   - python310-cfgdiff 
   - python310-cfgv 
   - python310-cfn-lint 
   - python310-cfscrape 
   - python310-cftime 
   - python310-chai 
-  - python310-chardet 
-  - python310-charset-normalizer 
   - python310-chart-studio 
   - python310-chartify 
   - python310-check-manifest 
@@ -22710,7 +22648,6 @@ unsorted:
   - python310-cl 
   - python310-cleo 
   - python310-cli-helpers 
-  - python310-click 
   - python310-click-aliases 
   - python310-click-completion 
   - python310-click-default-group 
@@ -22735,12 +22672,10 @@ unsorted:
   - python310-cmapfile 
   - python310-cmarkgfm 
   - python310-cmd2 
-  - python310-cmdln 
   - python310-coards 
   - python310-codecov 
   - python310-cogapp 
   - python310-colander 
-  - python310-colorama 
   - python310-colorcet 
   - python310-colorclass 
   - python310-coloredlogs 
@@ -22756,17 +22691,14 @@ unsorted:
   - python310-compizconfig 
   - python310-compressed_rtf 
   - python310-concurrentloghandler 
-  - python310-configobj 
   - python310-configshell-fb 
   - python310-confluent-kafka 
   - python310-confpy 
   - python310-confusable-homoglyphs 
   - python310-confuse 
-  - python310-constantly 
   - python310-construct 
   - python310-contexter 
   - python310-contextlib2 
-  - python310-contextvars 
   - python310-control 
   - python310-conu 
   - python310-convertdate 
@@ -22787,7 +22719,6 @@ unsorted:
   - python310-cpplint 
   - python310-cppy 
   - python310-cracklib 
-  - python310-cramjam 
   - python310-crashtest 
   - python310-crayons 
   - python310-crcmod 
@@ -22796,12 +22727,10 @@ unsorted:
   - python310-croniter 
   - python310-crontab 
   - python310-crumbs 
-  - python310-cryptography 
   - python310-cryptography-vectors 
   - python310-css-html-js-minify 
   - python310-css-parser 
   - python310-csscompressor 
-  - python310-cssselect 
   - python310-cssselect2 
   - python310-cssutils 
   - python310-cstruct 
@@ -22810,9 +22739,7 @@ unsorted:
   - python310-ctypescrypto 
   - python310-cu2qu 
   - python310-cufflinks 
-  - python310-curio 
   - python310-curlylint 
-  - python310-curses 
   - python310-curtsies 
   - python310-cwcwidth 
   - python310-cx_Freeze 
@@ -22845,9 +22772,7 @@ unsorted:
   - python310-datrie 
   - python310-dbf 
   - python310-dbfread 
-  - python310-dbm 
   - python310-dbus-deviation 
-  - python310-dbus-python 
   - python310-dbus-python-devel 
   - python310-dbus_next 
   - python310-ddg3 
@@ -22855,7 +22780,6 @@ unsorted:
   - python310-deap 
   - python310-debian 
   - python310-debugpy 
-  - python310-decorator 
   - python310-deepdiff 
   - python310-deepmerge 
   - python310-defcon 
@@ -22863,7 +22787,6 @@ unsorted:
   - python310-delegator 
   - python310-delegator.py 
   - python310-dennis 
-  - python310-deprecation 
   - python310-derpconf 
   - python310-devel 
   - python310-devpi-client 
@@ -22890,7 +22813,6 @@ unsorted:
   - python310-distob 
   - python310-distorm3 
   - python310-distributed 
-  - python310-distro 
   - python310-distroinfo 
   - python310-distutils-extra 
   - python310-dj-database-url 
@@ -22990,11 +22912,9 @@ unsorted:
   - python310-djangorestframework-simplejwt 
   - python310-djet 
   - python310-djvulibre 
-  - python310-dkimpy 
   - python310-dmidecode 
   - python310-dns-lexicon 
   - python310-dnslib 
-  - python310-dnspython 
   - python310-doc 
   - python310-doc-devhelp 
   - python310-docformatter 
@@ -23004,7 +22924,6 @@ unsorted:
   - python310-dockerpty 
   - python310-docopt 
   - python310-docrepr 
-  - python310-docutils 
   - python310-docutils-ast-writer 
   - python310-dogslow 
   - python310-dominate 
@@ -23014,7 +22933,6 @@ unsorted:
   - python310-dpkt 
   - python310-dqsegdb: [x86_64] 
   - python310-dqsegdb2 
-  - python310-dragonmapper 
   - python310-drms 
   - python310-dropbox 
   - python310-dtaidistance 
@@ -23035,7 +22953,6 @@ unsorted:
   - python310-ecdsa 
   - python310-ed25519 
   - python310-edgegrid-python 
-  - python310-editables 
   - python310-editdistance 
   - python310-editdistance-devel 
   - python310-efilter 
@@ -23065,7 +22982,6 @@ unsorted:
   - python310-eradicate 
   - python310-espeak 
   - python310-esptool 
-  - python310-et_xmlfile 
   - python310-etcd: [x86_64] 
   - python310-ethtool 
   - python310-evdev 
@@ -23074,13 +22990,11 @@ unsorted:
   - python310-evtx 
   - python310-exam 
   - python310-execnet 
-  - python310-executing 
   - python310-exiv2 
   - python310-expects 
   - python310-expiringdict 
   - python310-exrex 
   - python310-extension-helpers 
-  - python310-extras 
   - python310-extratools 
   - python310-ez_setup 
   - python310-ezdxf 
@@ -23088,14 +23002,12 @@ unsorted:
   - python310-factory_boy 
   - python310-fake-useragent 
   - python310-fakeredis 
-  - python310-falcon 
   - python310-fanficfare 
   - python310-fann2 
   - python310-fastcluster 
   - python310-fasteners 
   - python310-fastimport 
   - python310-fastnumbers 
-  - python310-fastparquet 
   - python310-fastremap 
   - python310-fasttext 
   - python310-fb-re2 
@@ -23107,12 +23019,10 @@ unsorted:
   - python310-fido2 
   - python310-fields 
   - python310-filelock 
-  - python310-filetype 
   - python310-finance_enums 
   - python310-fire 
   - python310-first 
   - python310-fissix 
-  - python310-fixtures 
   - python310-flake8 
   - python310-flake8-blind-except 
   - python310-flake8-bugbear 
@@ -23147,7 +23057,6 @@ unsorted:
   - python310-flit-core 
   - python310-flower 
   - python310-fluent 
-  - python310-flufl.lock 
   - python310-flufl.testing 
   - python310-fluidity-sm 
   - python310-flup 
@@ -23163,9 +23072,6 @@ unsorted:
   - python310-freetype-py 
   - python310-freezegun 
   - python310-frozendict 
-  - python310-frozenlist 
-  - python310-fs 
-  - python310-fsspec 
   - python310-ftfy 
   - python310-ftputil 
   - python310-fudge 
@@ -23174,7 +23080,6 @@ unsorted:
   - python310-furl 
   - python310-fuse 
   - python310-fusepy 
-  - python310-future 
   - python310-fuzzywuzzy 
   - python310-gTTS 
   - python310-gTTS-token 
@@ -23195,7 +23100,6 @@ unsorted:
   - python310-geomet 
   - python310-geopy 
   - python310-getmac 
-  - python310-gevent 
   - python310-geventhttpclient 
   - python310-ggplot 
   - python310-ghp-import 
@@ -23209,12 +23113,8 @@ unsorted:
   - python310-glfw 
   - python310-glob2 
   - python310-glucat 
-  - python310-gmpy 
   - python310-gmpy2 
   - python310-gns3fy 
-  - python310-gobject 
-  - python310-gobject-Gdk 
-  - python310-gobject-cairo 
   - python310-gobject-devel 
   - python310-goobook 
   - python310-google-api-core 
@@ -23243,7 +23143,6 @@ unsorted:
   - python310-graphql-core 
   - python310-graphql-relay 
   - python310-graphviz 
-  - python310-greenlet 
   - python310-greenlet-devel 
   - python310-grpc-google-iam-v1 
   - python310-grpcio 
@@ -23257,7 +23156,6 @@ unsorted:
   - python310-gst 
   - python310-gsw 
   - python310-guessit 
-  - python310-gunicorn 
   - python310-guzzle_sphinx_theme 
   - python310-gvm-tools 
   - python310-gwcs 
@@ -23265,8 +23163,6 @@ unsorted:
   - python310-gwosc 
   - python310-gwyfile 
   - python310-gyp 
-  - python310-h11 
-  - python310-h2 
   - python310-h5netcdf 
   - python310-h5py 
   - python310-h5py-openmpi1 
@@ -23275,12 +23171,10 @@ unsorted:
   - python310-h5py-openmpi4 
   - python310-hammett 
   - python310-hankel 
-  - python310-hanzidentifier 
   - python310-happybase 
   - python310-haproxyctl 
   - python310-hashids 
   - python310-hatch 
-  - python310-hatchling 
   - python310-hawkauthlib 
   - python310-hcloud 
   - python310-hdf5storage: [x86_64] 
@@ -23291,28 +23185,22 @@ unsorted:
   - python310-hetznercloud 
   - python310-hexdump 
   - python310-hijri-converter 
-  - python310-hiredis 
   - python310-hkdf 
   - python310-hl7apy 
   - python310-holidays 
   - python310-holoviews 
   - python310-hotdoc 
-  - python310-hpack 
-  - python310-hstspreload 
   - python310-html2text 
   - python310-html5-parser 
-  - python310-html5lib 
   - python310-htmlmin 
   - python310-httmock 
   - python310-http-ece 
   - python310-http-parser 
   - python310-httpbin 
-  - python310-httpcore 
   - python310-httplib2 
   - python310-httpretty 
   - python310-httpsig_cffi 
   - python310-httptools 
-  - python310-httpx 
   - python310-humanfriendly 
   - python310-humanhash3 
   - python310-humanize 
@@ -23323,8 +23211,6 @@ unsorted:
   - python310-hvac 
   - python310-hvplot 
   - python310-hyper 
-  - python310-hyperframe 
-  - python310-hyperlink 
   - python310-hypothesis 
   - python310-hypothesis-fspaths 
   - python310-hypothesmith 
@@ -23332,7 +23218,6 @@ unsorted:
   - python310-icalendar 
   - python310-identify 
   - python310-idle 
-  - python310-idna 
   - python310-idna_ssl 
   - python310-ifaddr 
   - python310-ifconfig-parser 
@@ -23344,19 +23229,14 @@ unsorted:
   - python310-imbox 
   - python310-img2pdf 
   - python310-iminuit 
-  - python310-immutables 
   - python310-impacket 
   - python310-importlab 
-  - python310-importlib-metadata 
-  - python310-importlib-resources 
   - python310-imread 
   - python310-imreg 
-  - python310-incremental 
   - python310-infinity 
   - python310-inflect 
   - python310-inflection 
   - python310-influxdb 
-  - python310-iniconfig 
   - python310-inifile 
   - python310-iniparse 
   - python310-injector 
@@ -23368,7 +23248,6 @@ unsorted:
   - python310-invocations 
   - python310-invoke 
   - python310-iocapture 
-  - python310-ipaddr 
   - python310-ipdb 
   - python310-iptables 
   - python310-ipy 
@@ -23381,7 +23260,6 @@ unsorted:
   - python310-ipyparallel 
   - python310-ipyscales 
   - python310-ipysheet 
-  - python310-ipython 
   - python310-ipython_genutils 
   - python310-ipyvolume 
   - python310-ipywebrtc 
@@ -23413,8 +23291,6 @@ unsorted:
   - python310-javapackages 
   - python310-javaproperties 
   - python310-jdatetime 
-  - python310-jdcal 
-  - python310-jedi 
   - python310-jedihttp 
   - python310-jeepney 
   - python310-jellyfish 
@@ -23426,7 +23302,6 @@ unsorted:
   - python310-jinja2-time 
   - python310-jira 
   - python310-jirafs 
-  - python310-jmespath 
   - python310-joblib 
   - python310-josepy 
   - python310-jplephem 
@@ -23439,14 +23314,14 @@ unsorted:
   - python310-jsondate 
   - python310-jsondiff 
   - python310-jsonlines 
-  - python310-jsonpatch 
+  - python310-jsonpatch: [i586] 
   - python310-jsonpath-ng 
   - python310-jsonpath-rw 
   - python310-jsonpickle 
-  - python310-jsonpointer 
+  - python310-jsonpointer: [i586] 
   - python310-jsonref 
   - python310-jsonrpclib-pelix 
-  - python310-jsonschema 
+  - python310-jsonschema: [i586] 
   - python310-jsonslicer 
   - python310-jsonxs 
   - python310-junit-xml 
@@ -23482,7 +23357,7 @@ unsorted:
   - python310-kazoo 
   - python310-kerberos 
   - python310-keyczar 
-  - python310-keylime 
+  - python310-keylime: [i586] 
   - python310-keyring 
   - python310-keyring-keyutils 
   - python310-keyrings.alt 
@@ -23491,7 +23366,6 @@ unsorted:
   - python310-kismetdb 
   - python310-kiss-headers 
   - python310-kitchen 
-  - python310-kiwisolver 
   - python310-kmatch 
   - python310-kmod 
   - python310-knack 
@@ -23514,15 +23388,13 @@ unsorted:
   - python310-langdetect 
   - python310-langtable 
   - python310-language-check 
-  - python310-lark-parser 
+  - python310-lark-parser: [i586] 
   - python310-latexcodec 
-  - python310-lazr.config 
-  - python310-lazr.delegates 
   - python310-lazr.uri 
   - python310-lazy 
   - python310-lazy-object-proxy 
   - python310-lazyarray 
-  - python310-ldap 
+  - python310-ldap: [i586] 
   - python310-ldap3 
   - python310-ldapdomaindump 
   - python310-ldappool 
@@ -23581,7 +23453,6 @@ unsorted:
   - python310-libsmraw 
   - python310-libusb1 
   - python310-libvhdi 
-  - python310-libvirt-python 
   - python310-libvmdk 
   - python310-libvsapm 
   - python310-libvsgpt 
@@ -23589,25 +23460,20 @@ unsorted:
   - python310-libvslvm 
   - python310-libvsmbr 
   - python310-libwrc 
-  - python310-libxml2 
   - python310-license-expression 
   - python310-ligo-lw: [x86_64] 
   - python310-ligo-segments 
   - python310-ligotimegps 
   - python310-limnoria 
   - python310-line_profiler 
-  - python310-linecache2 
   - python310-lineup-widget 
   - python310-link-traits 
   - python310-linode-cli 
   - python310-linstor 
   - python310-linstor-client 
-  - python310-linux-procfs 
   - python310-lit 
-  - python310-littleutils 
   - python310-livereload 
   - python310-llfuse 
-  - python310-llvmlite 
   - python310-lmdb 
   - python310-lmfit 
   - python310-lml 
@@ -23615,13 +23481,11 @@ unsorted:
   - python310-locket 
   - python310-lockfile 
   - python310-logilab-common 
-  - python310-loguru 
   - python310-logutils 
   - python310-logzero 
   - python310-lscsoft-glue 
   - python310-lupa 
   - python310-lws 
-  - python310-lxml 
   - python310-lxml-devel 
   - python310-lz4 
   - python310-macholib 
@@ -23645,16 +23509,13 @@ unsorted:
   - python310-marshmallow-enum 
   - python310-mathgl 
   - python310-mathics-pygments 
-  - python310-matplotlib 
   - python310-matplotlib-cairo 
   - python310-matplotlib-gtk-common 
   - python310-matplotlib-gtk3 
   - python310-matplotlib-gtk4 
-  - python310-matplotlib-inline 
   - python310-matplotlib-latex 
   - python310-matplotlib-qt5 
   - python310-matplotlib-testdata 
-  - python310-matplotlib-tk 
   - python310-matplotlib-web 
   - python310-matplotlib-wx 
   - python310-matrix-nio 
@@ -23701,7 +23562,6 @@ unsorted:
   - python310-mongoengine 
   - python310-monitoring-plugins-http_json 
   - python310-monotonic 
-  - python310-more-itertools 
   - python310-moreorless 
   - python310-moto 
   - python310-moto-all 
@@ -23711,11 +23571,9 @@ unsorted:
   - python310-mpl-animators 
   - python310-mplcursors 
   - python310-mpld3 
-  - python310-mpmath 
   - python310-mrcz 
   - python310-msal 
   - python310-msal-extensions 
-  - python310-msgpack 
   - python310-msgpack-numpy 
   - python310-msk 
   - python310-msm 
@@ -23726,7 +23584,6 @@ unsorted:
   - python310-mujson 
   - python310-mulpyplexer 
   - python310-multi_key_dict 
-  - python310-multidict 
   - python310-multipledispatch 
   - python310-munch 
   - python310-munkres 
@@ -23738,10 +23595,8 @@ unsorted:
   - python310-mygpoclient 
   - python310-mypy 
   - python310-mypy-protobuf 
-  - python310-mypy_extensions 
   - python310-mysql-connector-python 
   - python310-mysql-to-sqlite3 
-  - python310-mysqlclient 
   - python310-myst-parser 
   - python310-nagiosplugin 
   - python310-napalm 
@@ -23772,11 +23627,8 @@ unsorted:
   - python310-nested-lookup 
   - python310-net-snmp 
   - python310-netCDF4 
-  - python310-netaddr 
-  - python310-netifaces 
   - python310-netmiko 
   - python310-netpbmfile 
-  - python310-networkx 
   - python310-nibabel 
   - python310-nilearn 
   - python310-nine 
@@ -23791,7 +23643,6 @@ unsorted:
   - python310-notebook 
   - python310-notebook-lang 
   - python310-notebook-shim 
-  - python310-notify2 
   - python310-nox 
   - python310-npTDMS 
   - python310-nptyping 
@@ -23801,12 +23652,9 @@ unsorted:
   - python310-ntlm-auth 
   - python310-ntplib 
   - python310-num2words 
-  - python310-numba 
   - python310-numba-devel 
   - python310-numcodecs 
   - python310-numericalunits 
-  - python310-numexpr 
-  - python310-numpy 
   - python310-numpy-devel 
   - python310-numpy-gnu-hpc 
   - python310-numpy-gnu-hpc-devel 
@@ -23820,7 +23668,7 @@ unsorted:
   - python310-oauth2client 
   - python310-oauth2client-flask 
   - python310-oauth2client-gce 
-  - python310-oauthlib 
+  - python310-oauthlib: [i586] 
   - python310-objgraph 
   - python310-oci-sdk 
   - python310-oct2py 
@@ -23831,7 +23679,6 @@ unsorted:
   - python310-oic 
   - python310-oiffile 
   - python310-oktaloginwrapper 
-  - python310-olefile 
   - python310-oletools 
   - python310-olm 
   - python310-onnx 
@@ -23850,7 +23697,6 @@ unsorted:
   - python310-opengl-accelerate 
   - python310-openidc-client 
   - python310-openmesh 
-  - python310-openpyxl 
   - python310-openqa_client 
   - python310-opentelemetry-api 
   - python310-opentracing 
@@ -23860,18 +23706,15 @@ unsorted:
   - python310-orange-widget-base 
   - python310-orangebox 
   - python310-ordered-namespace 
-  - python310-ordered-set 
   - python310-orderedmultidict 
   - python310-osc-tiny 
   - python310-oscrypto 
   - python310-osmviz 
   - python310-ospd 
   - python310-ospd-openvas 
-  - python310-outcome 
   - python310-ovirt-engine-sdk 
   - python310-ovs 
   - python310-pa-ringbuffer 
-  - python310-packaging 
   - python310-padaos 
   - python310-padatious 
   - python310-paho-mqtt 
@@ -23880,7 +23723,6 @@ unsorted:
   - python310-pamela 
   - python310-pamqp 
   - python310-pan-python 
-  - python310-pandas 
   - python310-pandas-datareader 
   - python310-pandas-ext 
   - python310-pandocfilters 
@@ -23898,7 +23740,6 @@ unsorted:
   - python310-parsedatetime 
   - python310-parsel 
   - python310-parsimonious 
-  - python310-parso 
   - python310-parsy 
   - python310-partd 
   - python310-parted 
@@ -23906,7 +23747,6 @@ unsorted:
   - python310-parver 
   - python310-pass_python_keyring 
   - python310-passivetotal 
-  - python310-passlib 
   - python310-pastel 
   - python310-pastream 
   - python310-patatt 
@@ -23914,13 +23754,11 @@ unsorted:
   - python310-path 
   - python310-pathlib 
   - python310-pathlib2 
-  - python310-pathspec 
   - python310-pathtools 
   - python310-pathvalidate 
   - python310-patiencediff 
   - python310-patsy 
   - python310-pbkdf2 
-  - python310-pbr 
   - python310-pcodedmp 
   - python310-pdd 
   - python310-pdfminer.six 
@@ -23940,7 +23778,6 @@ unsorted:
   - python310-persistent 
   - python310-persistent-devel 
   - python310-petact 
-  - python310-pexpect 
   - python310-pgmagick 
   - python310-phabricator 
   - python310-phonenumbers 
@@ -23949,14 +23786,12 @@ unsorted:
   - python310-phue 
   - python310-physt 
   - python310-pick 
-  - python310-pickleshare 
   - python310-pifpaf 
   - python310-pika 
   - python310-pika-pool 
   - python310-pikepdf 
   - python310-pilkit 
   - python310-pingparsing 
-  - python310-pip 
   - python310-pip-api 
   - python310-pip-licenses 
   - python310-pip-shims 
@@ -23972,15 +23807,12 @@ unsorted:
   - python310-pkgutil-resolve-name 
   - python310-plaster 
   - python310-plaster-pastedeploy 
-  - python310-platformdirs 
   - python310-platformio 
   - python310-plette 
   - python310-plotly 
   - python310-plotly-jupyter 
-  - python310-pluggy 
   - python310-pluginbase 
   - python310-plumbum 
-  - python310-ply 
   - python310-plyvel 
   - python310-pmw 
   - python310-pname 
@@ -24014,7 +23846,6 @@ unsorted:
   - python310-premailer 
   - python310-prestring 
   - python310-pretend 
-  - python310-prettytable 
   - python310-process-tests 
   - python310-proglog 
   - python310-progress 
@@ -24022,7 +23853,6 @@ unsorted:
   - python310-progressbar2 
   - python310-prometheus-client 
   - python310-promise 
-  - python310-prompt_toolkit 
   - python310-prompt_toolkit1 
   - python310-proselint 
   - python310-proto-plus 
@@ -24032,23 +23862,17 @@ unsorted:
   - python310-proxy.py 
   - python310-psautohint 
   - python310-pscript 
-  - python310-psutil 
   - python310-psychtoolbox 
-  - python310-psycopg2 
   - python310-psycopg2cffi 
   - python310-ptpython 
   - python310-ptpython-ptipython 
   - python310-ptr 
-  - python310-ptyprocess 
   - python310-publicsuffix 
-  - python310-publicsuffix2 
   - python310-publicsuffixlist 
   - python310-pudb 
   - python310-pulsectl 
-  - python310-pure-eval 
   - python310-pure-sasl 
   - python310-purl 
-  - python310-py 
   - python310-py-cpuinfo 
   - python310-py-espeak-ng 
   - python310-py-moneyed 
@@ -24066,7 +23890,6 @@ unsorted:
   - python310-pyLibravatar 
   - python310-pyModis 
   - python310-pyOCD 
-  - python310-pyOpenSSL 
   - python310-pyPEG2 
   - python310-pyRFC3339 
   - python310-pyRXP 
@@ -24079,20 +23902,15 @@ unsorted:
   - python310-pyalsaaudio 
   - python310-pyaml 
   - python310-pyannotate 
-  - python310-pyasn1 
-  - python310-pyasn1-modules 
   - python310-pybars3 
   - python310-pybeam 
-  - python310-pybind11 
   - python310-pybind11-devel 
   - python310-pyblake2 
   - python310-pybluez 
   - python310-pybtex 
   - python310-pybugz 
-  - python310-pycairo 
   - python310-pycairo-devel 
   - python310-pycapnp 
-  - python310-pycares 
   - python310-pycdio 
   - python310-pycha 
   - python310-pychm 
@@ -24100,13 +23918,9 @@ unsorted:
   - python310-pycocotools 
   - python310-pycodestyle 
   - python310-pycountry 
-  - python310-pycparser 
-  - python310-pycryptodome 
   - python310-pycryptodomex 
   - python310-pycsw 
   - python310-pyct 
-  - python310-pycups 
-  - python310-pycurl 
   - python310-pycxx 
   - python310-pycxx-devel 
   - python310-pydantic 
@@ -24119,7 +23933,6 @@ unsorted:
   - python310-pydle 
   - python310-pydocstyle 
   - python310-pydocumentdb 
-  - python310-pydot 
   - python310-pydot3 
   - python310-pydotplus 
   - python310-pydrive2 
@@ -24136,24 +23949,20 @@ unsorted:
   - python310-pyfeyn 
   - python310-pyfiglet 
   - python310-pyflakes 
-  - python310-pyftpdlib 
   - python310-pyfuse3 
   - python310-pygal 
   - python310-pygaljs 
   - python310-pygame 
   - python310-pygame-devel 
   - python310-pygerrit2 
-  - python310-pygit2 
   - python310-pyglet 
   - python310-pygments-ansi-color 
   - python310-pygments-pytest 
   - python310-pygments-style-railscasts 
   - python310-pygn 
-  - python310-pygraphviz 
   - python310-pyhcl 
   - python310-pyhibp 
   - python310-pyicumessageformat 
-  - python310-pyinotify 
   - python310-pyipp 
   - python310-pyjavaproperties 
   - python310-pyjnius 
@@ -24174,7 +23983,6 @@ unsorted:
   - python310-pylibfdt 
   - python310-pyliblo 
   - python310-pyliblo-doc 
-  - python310-pylibmc 
   - python310-pylineclip 
   - python310-pylint 
   - python310-pylint-ignore 
@@ -24195,7 +24003,6 @@ unsorted:
   - python310-pymilter 
   - python310-pymisp 
   - python310-pymol 
-  - python310-pymongo 
   - python310-pymssql 
   - python310-pynamodb 
   - python310-pynetbox 
@@ -24210,7 +24017,6 @@ unsorted:
   - python310-pyp 
   - python310-pypandoc: [x86_64] 
   - python310-pyparallel 
-  - python310-pyparsing 
   - python310-pyperclip 
   - python310-pyperf 
   - python310-pypet 
@@ -24233,7 +24039,6 @@ unsorted:
   - python310-pyramid-chameleon 
   - python310-pyramid-debugtoolbar 
   - python310-pyramid-mako 
-  - python310-pyreadstat 
   - python310-pyroma 
   - python310-pyroomacoustics 
   - python310-pyroute2 
@@ -24244,24 +24049,20 @@ unsorted:
   - python310-pyroute2.ndb 
   - python310-pyroute2.nftables 
   - python310-pyroute2.nslink 
-  - python310-pyrsistent 
+  - python310-pyrsistent: [i586] 
   - python310-pysaml2 
   - python310-pyscard 
   - python310-pyscreenshot 
-  - python310-pysendfile 
-  - python310-pyserial 
   - python310-pysha3 
   - python310-pyshark 
   - python310-pyshould 
   - python310-pyshp 
   - python310-pysmb 
-  - python310-pysmbc 
   - python310-pysmi 
   - python310-pysndfile 
   - python310-pysnmp 
   - python310-pysofaconventions 
   - python310-pysolr 
-  - python310-pyspnego 
   - python310-pysrt 
   - python310-pyssim 
   - python310-pystache 
@@ -24269,7 +24070,6 @@ unsorted:
   - python310-pytaglib 
   - python310-pyte 
   - python310-pytesseract 
-  - python310-pytest 
   - python310-pytest-aiohttp 
   - python310-pytest-arraydiff 
   - python310-pytest-astropy 
@@ -24381,7 +24181,6 @@ unsorted:
   - python310-python-crontab 
   - python310-python-daemon 
   - python310-python-datamatrix 
-  - python310-python-dateutil 
   - python310-python-dbusmock 
   - python310-python-docs-theme 
   - python310-python-dotenv 
@@ -24392,7 +24191,7 @@ unsorted:
   - python310-python-gammu 
   - python310-python-gflags 
   - python310-python-gitlab 
-  - python310-python-gnupg 
+  - python310-python-gnupg: [i586] 
   - python310-python-gvm 
   - python310-python-jenkins 
   - python310-python-jose 
@@ -24404,10 +24203,7 @@ unsorted:
   - python310-python-lsp-black 
   - python310-python-lsp-jsonrpc 
   - python310-python-lsp-server 
-  - python310-python-lzo 
   - python310-python-magic 
-  - python310-python-memcached 
-  - python310-python-mimeparse 
   - python310-python-mpd2 
   - python310-python-mpv 
   - python310-python-multipart 
@@ -24429,7 +24225,7 @@ unsorted:
   - python310-python-rpm-spec 
   - python310-python-rtmidi 
   - python310-python-rtmidi-doc 
-  - python310-python-slugify 
+  - python310-python-slugify: [i586] 
   - python310-python-snappy 
   - python310-python-socketio 
   - python310-python-socks 
@@ -24457,12 +24253,10 @@ unsorted:
   - python310-pytoml 
   - python310-pytools 
   - python310-pytricia 
-  - python310-pytz 
   - python310-pytz-deprecation-shim 
   - python310-pytzdata 
   - python310-pyu2f 
   - python310-pyuca 
-  - python310-pyudev 
   - python310-pyupgrade 
   - python310-pyusb 
   - python310-pyux 
@@ -24478,7 +24272,6 @@ unsorted:
   - python310-pyxattr 
   - python310-pyxdg 
   - python310-pyyaml_env_tag 
-  - python310-pyzmq 
   - python310-pyzmq-devel 
   - python310-pyzo 
   - python310-q 
@@ -24493,14 +24286,12 @@ unsorted:
   - python310-qt3d-qt5-api 
   - python310-qt3d-qt5-doc 
   - python310-qt3d-qt5-sip 
-  - python310-qt5 
   - python310-qt5-devel 
   - python310-qt5-doc 
   - python310-qt5-quick3d 
   - python310-qt5-quick3d-devel 
   - python310-qt5-remoteobjects 
   - python310-qt5-remoteobjects-devel 
-  - python310-qt5-sip 
   - python310-qtcharts-qt5 
   - python310-qtcharts-qt5-api 
   - python310-qtcharts-qt5-doc 
@@ -24537,19 +24328,16 @@ unsorted:
   - python310-reconfigure 
   - python310-redbaron 
   - python310-redfish 
-  - python310-redis 
-  - python310-regex 
+  - python310-regex: [i586] 
   - python310-relatorio 
   - python310-releases 
   - python310-remoto 
   - python310-rencode 
-  - python310-reportlab 
   - python310-repoze.lru 
   - python310-repoze.sphinx.autointerface 
   - python310-repoze.who 
   - python310-reproject 
   - python310-requestbuilder 
-  - python310-requests 
   - python310-requests-aws 
   - python310-requests-cache 
   - python310-requests-download 
@@ -24558,10 +24346,8 @@ unsorted:
   - python310-requests-futures 
   - python310-requests-gssapi 
   - python310-requests-hawk 
-  - python310-requests-kerberos 
   - python310-requests-mock 
   - python310-requests-oauthlib 
-  - python310-requests-toolbelt 
   - python310-requests-unixsocket 
   - python310-requests_ntlm 
   - python310-requestsexceptions 
@@ -24579,7 +24365,6 @@ unsorted:
   - python310-retry_decorator 
   - python310-retrying 
   - python310-retryrequests 
-  - python310-rfc3986 
   - python310-rfc3987 
   - python310-rfc6555 
   - python310-rich 
@@ -24590,17 +24375,14 @@ unsorted:
   - python310-robotframework 
   - python310-roifile 
   - python310-rollbar 
-  - python310-roman 
   - python310-rope 
   - python310-rpcq 
   - python310-rply 
-  - python310-rpm 
   - python310-rpmfile 
   - python310-rpmlb 
   - python310-rpy2 
   - python310-rpyc 
   - python310-rq 
-  - python310-rsa 
   - python310-rss2email 
   - python310-rst.linker 
   - python310-rstcheck 
@@ -24614,8 +24396,6 @@ unsorted:
   - python310-ruffus 
   - python310-runthis-sphinxext 
   - python310-rustcfg 
-  - python310-s3fs 
-  - python310-s3transfer 
   - python310-sadisplay 
   - python310-samplerate 
   - python310-sane 
@@ -24637,23 +24417,19 @@ unsorted:
   - python310-scikit-sound 
   - python310-scikit-sparse: [x86_64] 
   - python310-scikit-umfpack: [x86_64] 
-  - python310-scipy 
   - python310-scipy-gnu-hpc: [x86_64] 
   - python310-scipy_1_8_0-gnu-hpc: [x86_64] 
   - python310-scitokens 
-  - python310-scour 
   - python310-scp 
   - python310-screeninfo 
   - python310-screenplain 
   - python310-scripttest 
-  - python310-scrypt 
   - python310-scspell3k 
   - python310-sdnotify 
   - python310-seaborn 
   - python310-securesystemslib 
   - python310-selection 
   - python310-selenium 
-  - python310-semanage 
   - python310-semantic_version 
   - python310-semver 
   - python310-sentry-sdk 
@@ -24661,10 +24437,7 @@ unsorted:
   - python310-serpent 
   - python310-serpy 
   - python310-serverfiles 
-  - python310-service_identity 
-  - python310-setproctitle 
   - python310-setupmeta 
-  - python310-setuptools 
   - python310-setuptools-declarative-requirements 
   - python310-setuptools-git 
   - python310-setuptools-rust 
@@ -24694,7 +24467,6 @@ unsorted:
   - python310-simplebayes 
   - python310-simpleeval 
   - python310-simplegeneric 
-  - python310-simplejson 
   - python310-simplekml 
   - python310-single-version 
   - python310-singledispatch 
@@ -24704,20 +24476,16 @@ unsorted:
   - python310-sip4-devel 
   - python310-sip6-devel 
   - python310-siphashc 
-  - python310-six 
   - python310-sklearn-pandas 
   - python310-skyfield 
   - python310-slackclient 
   - python310-slimit 
-  - python310-slip 
-  - python310-slip-dbus 
   - python310-slixmpp 
   - python310-slycot 
   - python310-smartypants 
   - python310-smbprotocol 
   - python310-smmap 
   - python310-smpplib 
-  - python310-sniffio 
   - python310-snimpy 
   - python310-snowballstemmer 
   - python310-snuggs 
@@ -24727,10 +24495,8 @@ unsorted:
   - python310-softlayer 
   - python310-sorl-thumbnail 
   - python310-sortedcollections 
-  - python310-sortedcontainers 
   - python310-sortinghat 
   - python310-sounddevice 
-  - python310-soupsieve 
   - python310-sox 
   - python310-spake2 
   - python310-spark_parser 
@@ -24792,7 +24558,6 @@ unsorted:
   - python310-ssdeep 
   - python310-sshpubkeys 
   - python310-sshtunnel 
-  - python310-stack-data 
   - python310-starlette 
   - python310-statsd 
   - python310-statsmodels 
@@ -24818,25 +24583,22 @@ unsorted:
   - python310-svglib 
   - python310-svgpathtools: [x86_64] 
   - python310-svgwrite 
+  - python310-svm 
   - python310-svneverever 
   - python310-swapper 
   - python310-swifter 
   - python310-sybil 
-  - python310-sympy 
   - python310-synr 
   - python310-system_hotkey 
   - python310-systemd 
   - python310-tableauserverclient 
   - python310-tableprint 
-  - python310-tables 
   - python310-tablib 
   - python310-tabpy 
-  - python310-tabulate 
   - python310-tap.py 
   - python310-targetcli-fb 
   - python310-tasklib 
   - python310-taskw 
-  - python310-tbb 
   - python310-tblib 
   - python310-tcolorpy 
   - python310-technicolor 
@@ -24859,8 +24621,7 @@ unsorted:
   - python310-testresources 
   - python310-testscenarios 
   - python310-testsuite 
-  - python310-testtools 
-  - python310-text-unidecode 
+  - python310-text-unidecode: [i586] 
   - python310-textX 
   - python310-textdistance 
   - python310-textfsm 
@@ -24885,31 +24646,23 @@ unsorted:
   - python310-tinyrecord 
   - python310-tinyrpc 
   - python310-titlecase 
-  - python310-tk 
   - python310-tkreadonly 
   - python310-tld 
   - python310-tldextract 
   - python310-tmx 
   - python310-tokenize-rt 
-  - python310-toml 
-  - python310-tomli 
   - python310-tomli-w 
   - python310-tomlkit 
   - python310-tools 
   - python310-toolz 
   - python310-toposort 
   - python310-topy 
-  - python310-tornado 
-  - python310-tornado6 
   - python310-tortilla 
   - python310-towncrier 
   - python310-tox 
   - python310-tox-no-internet 
   - python310-tox-wheel 
   - python310-tpfd 
-  - python310-tqdm 
-  - python310-traceback2 
-  - python310-traitlets 
   - python310-traits 
   - python310-traitsui 
   - python310-traittypes 
@@ -24923,7 +24676,6 @@ unsorted:
   - python310-treq 
   - python310-tri.declarative 
   - python310-tri.struct 
-  - python310-trio 
   - python310-trustme 
   - python310-tsk 
   - python310-tweepy 
@@ -24939,11 +24691,9 @@ unsorted:
   - python310-txtorcon 
   - python310-typed-ast 
   - python310-typedload 
-  - python310-typeguard 
   - python310-typepy 
   - python310-typer 
   - python310-typing-inspect 
-  - python310-typing_extensions 
   - python310-typogrify 
   - python310-tzlocal 
   - python310-u-msgpack-python 
@@ -24955,7 +24705,6 @@ unsorted:
   - python310-ujson 
   - python310-uncertainties 
   - python310-unicodecsv 
-  - python310-unicodedata2 
   - python310-unidiff 
   - python310-unify 
   - python310-uniseg 
@@ -24972,8 +24721,6 @@ unsorted:
   - python310-url-normalize 
   - python310-urlextract 
   - python310-urlgrabber 
-  - python310-urllib3 
-  - python310-urwid 
   - python310-usbsdmux 
   - python310-user-agents 
   - python310-user_agent 
@@ -25029,13 +24776,11 @@ unsorted:
   - python310-watchgod 
   - python310-watermark 
   - python310-wcmatch 
-  - python310-wcwidth 
   - python310-weasyprint 
   - python310-web.py 
   - python310-web_cache 
   - python310-webassets 
   - python310-webcolors 
-  - python310-webencodings 
   - python310-weblate-language-data 
   - python310-weblate-schemas 
   - python310-weblib 
@@ -25058,7 +24803,6 @@ unsorted:
   - python310-wmctrl 
   - python310-wolframalpha 
   - python310-wptools 
-  - python310-wrapt 
   - python310-ws4py 
   - python310-wsaccel 
   - python310-wsgi_intercept 
@@ -25071,7 +24815,6 @@ unsorted:
   - python310-xapian 
   - python310-xapian-haystack 
   - python310-xapp 
-  - python310-xarray 
   - python310-xattr 
   - python310-xcffib 
   - python310-xdg 
@@ -25081,8 +24824,6 @@ unsorted:
   - python310-xhtml2pdf 
   - python310-xkbgroup 
   - python310-xkcdpass 
-  - python310-xlrd 
-  - python310-xlwt 
   - python310-xmldiff 
   - python310-xmlschema 
   - python310-xmltodict 
@@ -25104,7 +24845,6 @@ unsorted:
   - python310-yappi 
   - python310-yara 
   - python310-yarg 
-  - python310-yarl 
   - python310-yaspin 
   - python310-yaswfp 
   - python310-yg.lockfile 
@@ -25119,37 +24859,26 @@ unsorted:
   - python310-zdaemon 
   - python310-zeep 
   - python310-zeroconf 
-  - python310-zhon 
   - python310-zict 
   - python310-zignal 
-  - python310-zipp 
   - python310-zipstream 
   - python310-zodbpickle 
   - python310-zope.cachedescriptors 
-  - python310-zope.component 
-  - python310-zope.configuration 
   - python310-zope.copy 
   - python310-zope.deferredimport 
   - python310-zope.deprecation 
-  - python310-zope.event 
   - python310-zope.exceptions 
-  - python310-zope.hookable 
-  - python310-zope.i18nmessageid 
-  - python310-zope.interface 
   - python310-zope.location 
   - python310-zope.proxy 
   - python310-zope.proxy-devel 
-  - python310-zope.schema 
   - python310-zope.security 
   - python310-zope.testbrowser 
   - python310-zope.testbrowser-test 
   - python310-zope.testing 
   - python310-zope.testrunner 
-  - python310-zopfli 
   - python310-zstandard 
   - python310-zstd 
   - python310-zxcvbn 
-  - python310-zypp-plugin 
   - python311 
   - python311-32bit: [x86_64] 
   - python311-base 
@@ -25168,9 +24897,14 @@ unsorted:
   - python38-AnyQt 
   - python38-Arpeggio 
   - python38-Authlib 
+  - python38-Automat 
   - python38-BTrees 
   - python38-BTrees-devel 
+  - python38-Babel 
+  - python38-Beaker 
   - python38-BitVector 
+  - python38-Bottleneck 
+  - python38-Brotli 
   - python38-CCColUtils 
   - python38-CacheControl 
   - python38-CairoSVG 
@@ -25180,6 +24914,7 @@ unsorted:
   - python38-CherryPy 
   - python38-CommonMark 
   - python38-ConfigArgParse 
+  - python38-Cycler 
   - python38-Cython 
   - python38-DataProperty 
   - python38-DataShape 
@@ -25218,7 +24953,9 @@ unsorted:
   - python38-Flask-Testing 
   - python38-Flask-WTF 
   - python38-Flask-doc 
+  - python38-FontTools 
   - python38-FormEncode 
+  - python38-Genshi 
   - python38-GitPython 
   - python38-Glances 
   - python38-Gloo 
@@ -25232,6 +24969,7 @@ unsorted:
   - python38-IMAPClient 
   - python38-IMDbPY 
   - python38-JPype1 
+  - python38-Jinja2 
   - python38-Js2Py 
   - python38-JsonWeb 
   - python38-Kajiki 
@@ -25242,8 +24980,11 @@ unsorted:
   - python38-Lektor 
   - python38-Levenshtein 
   - python38-Logbook 
+  - python38-M2Crypto 
+  - python38-Mako 
   - python38-Markdown 
   - python38-MarkupPy 
+  - python38-MarkupSafe 
   - python38-Markups 
   - python38-Mathics 
   - python38-Mathics-Scanner 
@@ -25264,6 +25005,8 @@ unsorted:
   - python38-PeachPy: [x86_64] 
   - python38-PeakUtils 
   - python38-Pebble 
+  - python38-Pillow 
+  - python38-Pillow-tk 
   - python38-Pint 
   - python38-Protego 
   - python38-PsyLab 
@@ -25281,15 +25024,18 @@ unsorted:
   - python38-PyECLib 
   - python38-PyFxA 
   - python38-PyGithub 
+  - python38-PyHamcrest 
   - python38-PyICU 
   - python38-PyInstaller 
-  - python38-PyJWT: [i586] 
+  - python38-PyJWT 
   - python38-PyKMIP 
   - python38-PyLaTeX 
   - python38-PyMeeus 
   - python38-PyMeta3 
   - python38-PyMsgBox 
   - python38-PyMuPDF 
+  - python38-PyMySQL 
+  - python38-PyNaCl 
   - python38-PyNamecheap 
   - python38-PyOgg 
   - python38-PyOpenAL 
@@ -25316,6 +25062,7 @@ unsorted:
   - python38-PyRect 
   - python38-PySDL2 
   - python38-PyScreeze 
+  - python38-PySocks 
   - python38-PyTrie 
   - python38-PyTweening 
   - python38-PyVirtualDisplay 
@@ -25323,6 +25070,8 @@ unsorted:
   - python38-PyWebDAV3 
   - python38-PyWebDAV3-GNUHealth 
   - python38-PyX 
+  - python38-PyYAML 
+  - python38-Pygments 
   - python38-Pympler 
   - python38-Pyphen 
   - python38-Pyro4 
@@ -25335,6 +25084,7 @@ unsorted:
   - python38-Routes 
   - python38-Rtree 
   - python38-SPARQLWrapper 
+  - python38-SQLAlchemy 
   - python38-SQLAlchemy-Utils 
   - python38-Scrapy 
   - python38-SecretStorage 
@@ -25354,6 +25104,7 @@ unsorted:
   - python38-Transplant 
   - python38-Trolly 
   - python38-Trololio 
+  - python38-Twisted 
   - python38-TxSNI 
   - python38-URLObject 
   - python38-UkPostcodeParser 
@@ -25375,6 +25126,7 @@ unsorted:
   - python38-XStatic-objectpath 
   - python38-XStatic-term.js 
   - python38-XStatic-tv4 
+  - python38-XlsxWriter 
   - python38-Yapsy 
   - python38-ZConfig 
   - python38-ZConfig-doc 
@@ -25406,17 +25158,24 @@ unsorted:
   - python38-agate-sql 
   - python38-agate-stats 
   - python38-aina 
+  - python38-aiobotocore 
   - python38-aiodataloader 
+  - python38-aiodns 
   - python38-aioeventlet 
   - python38-aiofiles 
   - python38-aioftp 
+  - python38-aiohttp 
   - python38-aiohttp-jinja2 
   - python38-aiohttp-socks 
   - python38-aiohttp-theme 
+  - python38-aiohttp_cors 
+  - python38-aioitertools 
   - python38-aioquic 
   - python38-aioredis 
   - python38-aioresponses 
   - python38-aiorpcX 
+  - python38-aiosignal 
+  - python38-aiosmtpd 
   - python38-aiosmtplib 
   - python38-aiosqlite 
   - python38-aiounittest 
@@ -25424,6 +25183,7 @@ unsorted:
   - python38-akismet 
   - python38-alabaster 
   - python38-aldjemy 
+  - python38-alembic 
   - python38-allpairspy 
   - python38-alsa 
   - python38-altair 
@@ -25440,10 +25200,12 @@ unsorted:
   - python38-ansicolors 
   - python38-ansiwrap 
   - python38-antlr4-python3-runtime 
+  - python38-anyio 
   - python38-anyjson 
   - python38-anymarkup-core 
   - python38-apache-libcloud 
   - python38-apfel 
+  - python38-apipkg 
   - python38-apiron 
   - python38-apns2 
   - python38-application 
@@ -25453,9 +25215,11 @@ unsorted:
   - python38-arabic-reshaper 
   - python38-archmage 
   - python38-arf 
-  - python38-argcomplete: [i586] 
+  - python38-argcomplete 
   - python38-argh 
-  - python38-argparse-manpage: [i586] 
+  - python38-argon2-cffi 
+  - python38-argon2-cffi-bindings 
+  - python38-argparse-manpage 
   - python38-args 
   - python38-arrow 
   - python38-arviz 
@@ -25477,20 +25241,28 @@ unsorted:
   - python38-astroid 
   - python38-astropy 
   - python38-astropy-healpix 
+  - python38-asttokens 
   - python38-astunparse 
   - python38-asv 
+  - python38-async_generator 
+  - python38-async_timeout 
   - python38-asyncpg 
   - python38-asyncssh 
   - python38-atlassian-python-api 
   - python38-atom 
   - python38-atomicwrites 
+  - python38-atpublic 
+  - python38-atspi 
   - python38-attr 
+  - python38-attrs 
   - python38-aubio 
   - python38-audio-degrader 
   - python38-audiogrep 
   - python38-audiomate 
   - python38-audioread 
   - python38-augeas 
+  - python38-authheaders 
+  - python38-authres 
   - python38-autobahn 
   - python38-autodoc 
   - python38-autodocsumm 
@@ -25797,6 +25569,7 @@ unsorted:
   - python38-azure-synapse-spark 
   - python38-azure-template 
   - python38-babelfish 
+  - python38-backcall 
   - python38-backoff 
   - python38-backports.entry_points_selectable 
   - python38-backports.zoneinfo 
@@ -25805,7 +25578,9 @@ unsorted:
   - python38-base58 
   - python38-bashate 
   - python38-basictracer 
+  - python38-bcrypt 
   - python38-beartype 
+  - python38-beautifulsoup4 
   - python38-before-after 
   - python38-behave 
   - python38-bencode 
@@ -25824,10 +25599,11 @@ unsorted:
   - python38-bitstring 
   - python38-bitstruct 
   - python38-bjoern 
+  - python38-black 
   - python38-bleach 
   - python38-blessed 
   - python38-blessings 
-  - python38-blinker: [i586] 
+  - python38-blinker 
   - python38-blockdiag 
   - python38-blosc 
   - python38-bloscpack 
@@ -25842,6 +25618,8 @@ unsorted:
   - python38-boolean.py 
   - python38-booleanOperations 
   - python38-boost-histogram 
+  - python38-boto3 
+  - python38-botocore 
   - python38-bottle 
   - python38-bowler 
   - python38-bpython 
@@ -25850,6 +25628,8 @@ unsorted:
   - python38-branca 
   - python38-breathe 
   - python38-brewer2mpl 
+  - python38-brotlicffi 
+  - python38-brotlipy 
   - python38-bsddb3 
   - python38-bsddb3-devel 
   - python38-bson 
@@ -25859,6 +25639,7 @@ unsorted:
   - python38-buttplug 
   - python38-bytecode 
   - python38-cPyparsing 
+  - python38-cached-property 
   - python38-cachelib 
   - python38-cachetools 
   - python38-cachey 
@@ -25902,14 +25683,18 @@ unsorted:
   - python38-certbot-dns-rfc2136 
   - python38-certbot-dns-route53 
   - python38-certbot-nginx 
+  - python38-certifi 
   - python38-certipy 
   - python38-certstream 
+  - python38-cffi 
   - python38-cfgdiff 
   - python38-cfgv 
   - python38-cfn-lint 
   - python38-cfscrape 
   - python38-cftime 
   - python38-chai 
+  - python38-chardet 
+  - python38-charset-normalizer 
   - python38-chart-studio 
   - python38-chartify 
   - python38-check-manifest 
@@ -25928,6 +25713,7 @@ unsorted:
   - python38-cl 
   - python38-cleo 
   - python38-cli-helpers 
+  - python38-click 
   - python38-click-aliases 
   - python38-click-completion 
   - python38-click-default-group 
@@ -25952,10 +25738,12 @@ unsorted:
   - python38-cmapfile 
   - python38-cmarkgfm 
   - python38-cmd2 
+  - python38-cmdln 
   - python38-coards 
   - python38-codecov 
   - python38-cogapp 
   - python38-colander 
+  - python38-colorama 
   - python38-colorcet 
   - python38-colorclass 
   - python38-coloredlogs 
@@ -25971,14 +25759,17 @@ unsorted:
   - python38-compizconfig 
   - python38-compressed_rtf 
   - python38-concurrentloghandler 
+  - python38-configobj 
   - python38-configshell-fb 
   - python38-confluent-kafka 
   - python38-confpy 
   - python38-confusable-homoglyphs 
   - python38-confuse 
+  - python38-constantly 
   - python38-construct 
   - python38-contexter 
   - python38-contextlib2 
+  - python38-contextvars 
   - python38-control 
   - python38-conu 
   - python38-convertdate 
@@ -25999,6 +25790,7 @@ unsorted:
   - python38-cpplint 
   - python38-cppy 
   - python38-cracklib 
+  - python38-cramjam 
   - python38-crashtest 
   - python38-crayons 
   - python38-crcmod 
@@ -26007,10 +25799,12 @@ unsorted:
   - python38-croniter 
   - python38-crontab 
   - python38-crumbs 
+  - python38-cryptography 
   - python38-cryptography-vectors 
   - python38-css-html-js-minify 
   - python38-css-parser 
   - python38-csscompressor 
+  - python38-cssselect 
   - python38-cssselect2 
   - python38-cssutils 
   - python38-cstruct 
@@ -26019,6 +25813,7 @@ unsorted:
   - python38-ctypescrypto 
   - python38-cu2qu 
   - python38-cufflinks 
+  - python38-curio 
   - python38-curlylint 
   - python38-curtsies 
   - python38-cwcwidth 
@@ -26053,6 +25848,7 @@ unsorted:
   - python38-dbf 
   - python38-dbfread 
   - python38-dbus-deviation 
+  - python38-dbus-python 
   - python38-dbus-python-devel 
   - python38-dbus_next 
   - python38-ddg3 
@@ -26060,6 +25856,7 @@ unsorted:
   - python38-deap 
   - python38-debian 
   - python38-debugpy 
+  - python38-decorator 
   - python38-deepdiff 
   - python38-deepmerge 
   - python38-defcon 
@@ -26067,6 +25864,7 @@ unsorted:
   - python38-delegator 
   - python38-delegator.py 
   - python38-dennis 
+  - python38-deprecation 
   - python38-derpconf 
   - python38-devel 
   - python38-devpi-client 
@@ -26093,6 +25891,7 @@ unsorted:
   - python38-distob 
   - python38-distorm3 
   - python38-distributed 
+  - python38-distro 
   - python38-distroinfo 
   - python38-distutils-extra 
   - python38-dj-database-url 
@@ -26192,9 +25991,11 @@ unsorted:
   - python38-djangorestframework-simplejwt 
   - python38-djet 
   - python38-djvulibre 
+  - python38-dkimpy 
   - python38-dmidecode 
   - python38-dns-lexicon 
   - python38-dnslib 
+  - python38-dnspython 
   - python38-doc 
   - python38-doc-devhelp 
   - python38-docformatter 
@@ -26204,6 +26005,7 @@ unsorted:
   - python38-dockerpty 
   - python38-docopt 
   - python38-docrepr 
+  - python38-docutils 
   - python38-docutils-ast-writer 
   - python38-dogslow 
   - python38-dominate 
@@ -26213,6 +26015,7 @@ unsorted:
   - python38-dpkt 
   - python38-dqsegdb: [x86_64] 
   - python38-dqsegdb2 
+  - python38-dragonmapper 
   - python38-drms 
   - python38-dropbox 
   - python38-dtaidistance 
@@ -26233,6 +26036,7 @@ unsorted:
   - python38-ecdsa 
   - python38-ed25519 
   - python38-edgegrid-python 
+  - python38-editables 
   - python38-editdistance 
   - python38-editdistance-devel 
   - python38-efilter 
@@ -26262,6 +26066,7 @@ unsorted:
   - python38-eradicate 
   - python38-espeak 
   - python38-esptool 
+  - python38-et_xmlfile 
   - python38-etcd: [x86_64] 
   - python38-ethtool 
   - python38-evdev 
@@ -26270,11 +26075,13 @@ unsorted:
   - python38-evtx 
   - python38-exam 
   - python38-execnet 
+  - python38-executing 
   - python38-exiv2 
   - python38-expects 
   - python38-expiringdict 
   - python38-exrex 
   - python38-extension-helpers 
+  - python38-extras 
   - python38-extratools 
   - python38-ez_setup 
   - python38-ezdxf 
@@ -26282,12 +26089,14 @@ unsorted:
   - python38-factory_boy 
   - python38-fake-useragent 
   - python38-fakeredis 
+  - python38-falcon 
   - python38-fanficfare 
   - python38-fann2 
   - python38-fastcluster 
   - python38-fasteners 
   - python38-fastimport 
   - python38-fastnumbers 
+  - python38-fastparquet 
   - python38-fastremap 
   - python38-fasttext 
   - python38-fb-re2 
@@ -26299,10 +26108,12 @@ unsorted:
   - python38-fido2 
   - python38-fields 
   - python38-filelock 
+  - python38-filetype 
   - python38-finance_enums 
   - python38-fire 
   - python38-first 
   - python38-fissix 
+  - python38-fixtures 
   - python38-flake8 
   - python38-flake8-blind-except 
   - python38-flake8-bugbear 
@@ -26337,6 +26148,7 @@ unsorted:
   - python38-flit-core 
   - python38-flower 
   - python38-fluent 
+  - python38-flufl.lock 
   - python38-flufl.testing 
   - python38-fluidity-sm 
   - python38-flup 
@@ -26352,6 +26164,9 @@ unsorted:
   - python38-freetype-py 
   - python38-freezegun 
   - python38-frozendict 
+  - python38-frozenlist 
+  - python38-fs 
+  - python38-fsspec 
   - python38-ftfy 
   - python38-ftputil 
   - python38-fudge 
@@ -26360,6 +26175,7 @@ unsorted:
   - python38-furl 
   - python38-fuse 
   - python38-fusepy 
+  - python38-future 
   - python38-fuzzywuzzy 
   - python38-gTTS 
   - python38-gTTS-token 
@@ -26380,6 +26196,7 @@ unsorted:
   - python38-geomet 
   - python38-geopy 
   - python38-getmac 
+  - python38-gevent 
   - python38-geventhttpclient 
   - python38-ggplot 
   - python38-ghp-import 
@@ -26393,8 +26210,10 @@ unsorted:
   - python38-glfw 
   - python38-glob2 
   - python38-glucat 
+  - python38-gmpy 
   - python38-gmpy2 
   - python38-gns3fy 
+  - python38-gobject-Gdk 
   - python38-gobject-devel 
   - python38-goobook 
   - python38-google-api-core 
@@ -26424,6 +26243,7 @@ unsorted:
   - python38-graphql-core 
   - python38-graphql-relay 
   - python38-graphviz 
+  - python38-greenlet 
   - python38-greenlet-devel 
   - python38-grpc-google-iam-v1 
   - python38-grpcio 
@@ -26437,6 +26257,7 @@ unsorted:
   - python38-gst 
   - python38-gsw 
   - python38-guessit 
+  - python38-gunicorn 
   - python38-guzzle_sphinx_theme 
   - python38-gvm-tools 
   - python38-gwcs 
@@ -26444,6 +26265,8 @@ unsorted:
   - python38-gwosc 
   - python38-gwyfile 
   - python38-gyp 
+  - python38-h11 
+  - python38-h2 
   - python38-h5netcdf 
   - python38-h5py 
   - python38-h5py-openmpi1 
@@ -26452,10 +26275,12 @@ unsorted:
   - python38-h5py-openmpi4 
   - python38-hammett 
   - python38-hankel 
+  - python38-hanzidentifier 
   - python38-happybase 
   - python38-haproxyctl 
   - python38-hashids 
   - python38-hatch 
+  - python38-hatchling 
   - python38-hawkauthlib 
   - python38-hcloud 
   - python38-hdf5storage: [x86_64] 
@@ -26466,22 +26291,28 @@ unsorted:
   - python38-hetznercloud 
   - python38-hexdump 
   - python38-hijri-converter 
+  - python38-hiredis 
   - python38-hkdf 
   - python38-hl7apy 
   - python38-holidays 
   - python38-holoviews 
   - python38-hotdoc 
+  - python38-hpack 
+  - python38-hstspreload 
   - python38-html2text 
   - python38-html5-parser 
+  - python38-html5lib 
   - python38-htmlmin 
   - python38-httmock 
   - python38-http-ece 
   - python38-http-parser 
   - python38-httpbin 
+  - python38-httpcore 
   - python38-httplib2 
   - python38-httpretty 
   - python38-httpsig_cffi 
   - python38-httptools 
+  - python38-httpx 
   - python38-humanfriendly 
   - python38-humanhash3 
   - python38-humanize 
@@ -26492,6 +26323,8 @@ unsorted:
   - python38-hvac 
   - python38-hvplot 
   - python38-hyper 
+  - python38-hyperframe 
+  - python38-hyperlink 
   - python38-hypothesis 
   - python38-hypothesis-fspaths 
   - python38-hypothesmith 
@@ -26499,6 +26332,7 @@ unsorted:
   - python38-icalendar 
   - python38-identify 
   - python38-idle 
+  - python38-idna 
   - python38-idna_ssl 
   - python38-ifaddr 
   - python38-ifconfig-parser 
@@ -26510,14 +26344,19 @@ unsorted:
   - python38-imbox 
   - python38-img2pdf 
   - python38-iminuit 
+  - python38-immutables 
   - python38-impacket 
   - python38-importlab 
+  - python38-importlib-metadata 
+  - python38-importlib-resources 
   - python38-imread 
   - python38-imreg 
+  - python38-incremental 
   - python38-infinity 
   - python38-inflect 
   - python38-inflection 
   - python38-influxdb 
+  - python38-iniconfig 
   - python38-inifile 
   - python38-iniparse 
   - python38-injector 
@@ -26529,6 +26368,7 @@ unsorted:
   - python38-invocations 
   - python38-invoke 
   - python38-iocapture 
+  - python38-ipaddr 
   - python38-ipdb 
   - python38-iptables 
   - python38-ipy 
@@ -26541,6 +26381,7 @@ unsorted:
   - python38-ipyparallel 
   - python38-ipyscales 
   - python38-ipysheet 
+  - python38-ipython 
   - python38-ipython_genutils 
   - python38-ipyvolume 
   - python38-ipywebrtc 
@@ -26572,6 +26413,8 @@ unsorted:
   - python38-javapackages 
   - python38-javaproperties 
   - python38-jdatetime 
+  - python38-jdcal 
+  - python38-jedi 
   - python38-jedihttp 
   - python38-jeepney 
   - python38-jellyfish 
@@ -26583,6 +26426,7 @@ unsorted:
   - python38-jinja2-time 
   - python38-jira 
   - python38-jirafs 
+  - python38-jmespath 
   - python38-joblib 
   - python38-josepy 
   - python38-jplephem 
@@ -26595,14 +26439,14 @@ unsorted:
   - python38-jsondate 
   - python38-jsondiff 
   - python38-jsonlines 
-  - python38-jsonpatch: [i586] 
+  - python38-jsonpatch 
   - python38-jsonpath-ng 
   - python38-jsonpath-rw 
   - python38-jsonpickle 
-  - python38-jsonpointer: [i586] 
+  - python38-jsonpointer 
   - python38-jsonref 
   - python38-jsonrpclib-pelix 
-  - python38-jsonschema: [i586] 
+  - python38-jsonschema 
   - python38-jsonslicer 
   - python38-jsonxs 
   - python38-junit-xml 
@@ -26638,7 +26482,7 @@ unsorted:
   - python38-kazoo 
   - python38-kerberos 
   - python38-keyczar 
-  - python38-keylime: [i586] 
+  - python38-keylime 
   - python38-keyring 
   - python38-keyring-keyutils 
   - python38-keyrings.alt 
@@ -26647,6 +26491,7 @@ unsorted:
   - python38-kismetdb 
   - python38-kiss-headers 
   - python38-kitchen 
+  - python38-kiwisolver 
   - python38-kmatch 
   - python38-kmod 
   - python38-knack 
@@ -26669,13 +26514,15 @@ unsorted:
   - python38-langdetect 
   - python38-langtable 
   - python38-language-check 
-  - python38-lark-parser: [i586] 
+  - python38-lark-parser 
   - python38-latexcodec 
+  - python38-lazr.config 
+  - python38-lazr.delegates 
   - python38-lazr.uri 
   - python38-lazy 
   - python38-lazy-object-proxy 
   - python38-lazyarray 
-  - python38-ldap: [i586] 
+  - python38-ldap 
   - python38-ldap3 
   - python38-ldapdomaindump 
   - python38-ldappool 
@@ -26734,6 +26581,7 @@ unsorted:
   - python38-libsmraw 
   - python38-libusb1 
   - python38-libvhdi 
+  - python38-libvirt-python 
   - python38-libvmdk 
   - python38-libvsapm 
   - python38-libvsgpt 
@@ -26741,18 +26589,22 @@ unsorted:
   - python38-libvslvm 
   - python38-libvsmbr 
   - python38-libwrc 
+  - python38-libxml2 
   - python38-license-expression 
   - python38-ligo-lw: [x86_64] 
   - python38-ligo-segments 
   - python38-ligotimegps 
   - python38-limnoria 
   - python38-line_profiler 
+  - python38-linecache2 
   - python38-lineup-widget 
   - python38-link-traits 
   - python38-linode-cli 
   - python38-linstor 
   - python38-linstor-client 
+  - python38-linux-procfs 
   - python38-lit 
+  - python38-littleutils 
   - python38-livereload 
   - python38-llfuse 
   - python38-llvmlite 
@@ -26763,11 +26615,13 @@ unsorted:
   - python38-locket 
   - python38-lockfile 
   - python38-logilab-common 
+  - python38-loguru 
   - python38-logutils 
   - python38-logzero 
   - python38-lscsoft-glue 
   - python38-lupa 
   - python38-lws 
+  - python38-lxml 
   - python38-lxml-devel 
   - python38-lz4 
   - python38-macholib 
@@ -26791,13 +26645,16 @@ unsorted:
   - python38-marshmallow-enum 
   - python38-mathgl 
   - python38-mathics-pygments 
+  - python38-matplotlib 
   - python38-matplotlib-cairo 
   - python38-matplotlib-gtk-common 
   - python38-matplotlib-gtk3 
   - python38-matplotlib-gtk4 
+  - python38-matplotlib-inline 
   - python38-matplotlib-latex 
   - python38-matplotlib-qt5 
   - python38-matplotlib-testdata 
+  - python38-matplotlib-tk 
   - python38-matplotlib-web 
   - python38-matplotlib-wx 
   - python38-matrix-nio 
@@ -26843,6 +26700,7 @@ unsorted:
   - python38-mohawk 
   - python38-mongoengine 
   - python38-monotonic 
+  - python38-more-itertools 
   - python38-moreorless 
   - python38-moto 
   - python38-moto-all 
@@ -26852,9 +26710,11 @@ unsorted:
   - python38-mpl-animators 
   - python38-mplcursors 
   - python38-mpld3 
+  - python38-mpmath 
   - python38-mrcz 
   - python38-msal 
   - python38-msal-extensions 
+  - python38-msgpack 
   - python38-msgpack-numpy 
   - python38-msk 
   - python38-msm 
@@ -26865,6 +26725,7 @@ unsorted:
   - python38-mujson 
   - python38-mulpyplexer 
   - python38-multi_key_dict 
+  - python38-multidict 
   - python38-multipledispatch 
   - python38-munch 
   - python38-munkres 
@@ -26876,8 +26737,10 @@ unsorted:
   - python38-mygpoclient 
   - python38-mypy 
   - python38-mypy-protobuf 
+  - python38-mypy_extensions 
   - python38-mysql-connector-python 
   - python38-mysql-to-sqlite3 
+  - python38-mysqlclient 
   - python38-myst-parser 
   - python38-nagiosplugin 
   - python38-napalm 
@@ -26906,8 +26769,11 @@ unsorted:
   - python38-nested-lookup 
   - python38-net-snmp 
   - python38-netCDF4 
+  - python38-netaddr 
+  - python38-netifaces 
   - python38-netmiko 
   - python38-netpbmfile 
+  - python38-networkx 
   - python38-nibabel 
   - python38-nilearn 
   - python38-nine 
@@ -26922,6 +26788,7 @@ unsorted:
   - python38-notebook 
   - python38-notebook-lang 
   - python38-notebook-shim 
+  - python38-notify2 
   - python38-nox 
   - python38-npTDMS 
   - python38-nptyping 
@@ -26935,6 +26802,8 @@ unsorted:
   - python38-numba-devel 
   - python38-numcodecs 
   - python38-numericalunits 
+  - python38-numexpr 
+  - python38-numpy 
   - python38-numpy-devel 
   - python38-numpy-gnu-hpc 
   - python38-numpy-gnu-hpc-devel 
@@ -26948,7 +26817,7 @@ unsorted:
   - python38-oauth2client 
   - python38-oauth2client-flask 
   - python38-oauth2client-gce 
-  - python38-oauthlib: [i586] 
+  - python38-oauthlib 
   - python38-objgraph 
   - python38-oci-sdk 
   - python38-oct2py 
@@ -26959,6 +26828,7 @@ unsorted:
   - python38-oic 
   - python38-oiffile 
   - python38-oktaloginwrapper 
+  - python38-olefile 
   - python38-oletools 
   - python38-olm 
   - python38-onnx 
@@ -26977,6 +26847,7 @@ unsorted:
   - python38-opengl-accelerate 
   - python38-openidc-client 
   - python38-openmesh 
+  - python38-openpyxl 
   - python38-openqa_client 
   - python38-opentelemetry-api 
   - python38-opentracing 
@@ -26992,6 +26863,7 @@ unsorted:
   - python38-osmviz 
   - python38-ospd 
   - python38-ospd-openvas 
+  - python38-outcome 
   - python38-ovirt-engine-sdk 
   - python38-ovs 
   - python38-pa-ringbuffer 
@@ -27003,6 +26875,7 @@ unsorted:
   - python38-pamela 
   - python38-pamqp 
   - python38-pan-python 
+  - python38-pandas 
   - python38-pandas-datareader 
   - python38-pandas-ext 
   - python38-pandocfilters 
@@ -27020,6 +26893,7 @@ unsorted:
   - python38-parsedatetime 
   - python38-parsel 
   - python38-parsimonious 
+  - python38-parso 
   - python38-parsy 
   - python38-partd 
   - python38-parted 
@@ -27027,6 +26901,7 @@ unsorted:
   - python38-parver 
   - python38-pass_python_keyring 
   - python38-passivetotal 
+  - python38-passlib 
   - python38-pastel 
   - python38-pastream 
   - python38-patatt 
@@ -27034,11 +26909,13 @@ unsorted:
   - python38-path 
   - python38-pathlib 
   - python38-pathlib2 
+  - python38-pathspec 
   - python38-pathtools 
   - python38-pathvalidate 
   - python38-patiencediff 
   - python38-patsy 
   - python38-pbkdf2 
+  - python38-pbr 
   - python38-pcodedmp 
   - python38-pdd 
   - python38-pdfminer.six 
@@ -27058,6 +26935,7 @@ unsorted:
   - python38-persistent 
   - python38-persistent-devel 
   - python38-petact 
+  - python38-pexpect 
   - python38-pgmagick 
   - python38-phabricator 
   - python38-phonenumbers 
@@ -27066,6 +26944,7 @@ unsorted:
   - python38-phue 
   - python38-physt 
   - python38-pick 
+  - python38-pickleshare 
   - python38-pifpaf 
   - python38-pika 
   - python38-pika-pool 
@@ -27087,12 +26966,15 @@ unsorted:
   - python38-pkgutil-resolve-name 
   - python38-plaster 
   - python38-plaster-pastedeploy 
+  - python38-platformdirs 
   - python38-platformio 
   - python38-plette 
   - python38-plotly 
   - python38-plotly-jupyter 
+  - python38-pluggy 
   - python38-pluginbase 
   - python38-plumbum 
+  - python38-ply 
   - python38-plyvel 
   - python38-pmw 
   - python38-pname 
@@ -27126,6 +27008,7 @@ unsorted:
   - python38-premailer 
   - python38-prestring 
   - python38-pretend 
+  - python38-prettytable 
   - python38-process-tests 
   - python38-proglog 
   - python38-progress 
@@ -27133,6 +27016,7 @@ unsorted:
   - python38-progressbar2 
   - python38-prometheus-client 
   - python38-promise 
+  - python38-prompt_toolkit 
   - python38-prompt_toolkit1 
   - python38-proselint 
   - python38-proto-plus 
@@ -27142,17 +27026,23 @@ unsorted:
   - python38-proxy.py 
   - python38-psautohint 
   - python38-pscript 
+  - python38-psutil 
   - python38-psychtoolbox 
+  - python38-psycopg2 
   - python38-psycopg2cffi 
   - python38-ptpython 
   - python38-ptpython-ptipython 
   - python38-ptr 
+  - python38-ptyprocess 
   - python38-publicsuffix 
+  - python38-publicsuffix2 
   - python38-publicsuffixlist 
   - python38-pudb 
   - python38-pulsectl 
+  - python38-pure-eval 
   - python38-pure-sasl 
   - python38-purl 
+  - python38-py 
   - python38-py-cpuinfo 
   - python38-py-espeak-ng 
   - python38-py-moneyed 
@@ -27170,6 +27060,7 @@ unsorted:
   - python38-pyLibravatar 
   - python38-pyModis 
   - python38-pyOCD 
+  - python38-pyOpenSSL 
   - python38-pyPEG2 
   - python38-pyRFC3339 
   - python38-pyRXP 
@@ -27182,8 +27073,11 @@ unsorted:
   - python38-pyalsaaudio 
   - python38-pyaml 
   - python38-pyannotate 
+  - python38-pyasn1 
+  - python38-pyasn1-modules 
   - python38-pybars3 
   - python38-pybeam 
+  - python38-pybind11 
   - python38-pybind11-devel 
   - python38-pyblake2 
   - python38-pybluez 
@@ -27191,6 +27085,7 @@ unsorted:
   - python38-pybugz 
   - python38-pycairo-devel 
   - python38-pycapnp 
+  - python38-pycares 
   - python38-pycdio 
   - python38-pycha 
   - python38-pychm 
@@ -27198,9 +27093,13 @@ unsorted:
   - python38-pycocotools 
   - python38-pycodestyle 
   - python38-pycountry 
+  - python38-pycparser 
+  - python38-pycryptodome 
   - python38-pycryptodomex 
   - python38-pycsw 
   - python38-pyct 
+  - python38-pycups 
+  - python38-pycurl 
   - python38-pycxx 
   - python38-pycxx-devel 
   - python38-pydantic 
@@ -27213,6 +27112,7 @@ unsorted:
   - python38-pydle 
   - python38-pydocstyle 
   - python38-pydocumentdb 
+  - python38-pydot 
   - python38-pydot3 
   - python38-pydotplus 
   - python38-pydrive2 
@@ -27229,20 +27129,24 @@ unsorted:
   - python38-pyfeyn 
   - python38-pyfiglet 
   - python38-pyflakes 
+  - python38-pyftpdlib 
   - python38-pyfuse3 
   - python38-pygal 
   - python38-pygaljs 
   - python38-pygame 
   - python38-pygame-devel 
   - python38-pygerrit2 
+  - python38-pygit2 
   - python38-pyglet 
   - python38-pygments-ansi-color 
   - python38-pygments-pytest 
   - python38-pygments-style-railscasts 
   - python38-pygn 
+  - python38-pygraphviz 
   - python38-pyhcl 
   - python38-pyhibp 
   - python38-pyicumessageformat 
+  - python38-pyinotify 
   - python38-pyipp 
   - python38-pyjavaproperties 
   - python38-pyjnius 
@@ -27263,6 +27167,7 @@ unsorted:
   - python38-pylibfdt 
   - python38-pyliblo 
   - python38-pyliblo-doc 
+  - python38-pylibmc 
   - python38-pylineclip 
   - python38-pylint 
   - python38-pylint-ignore 
@@ -27283,6 +27188,7 @@ unsorted:
   - python38-pymilter 
   - python38-pymisp 
   - python38-pymol 
+  - python38-pymongo 
   - python38-pymssql 
   - python38-pynamodb 
   - python38-pynetbox 
@@ -27319,6 +27225,7 @@ unsorted:
   - python38-pyramid-chameleon 
   - python38-pyramid-debugtoolbar 
   - python38-pyramid-mako 
+  - python38-pyreadstat 
   - python38-pyroma 
   - python38-pyroomacoustics 
   - python38-pyroute2 
@@ -27329,20 +27236,24 @@ unsorted:
   - python38-pyroute2.ndb 
   - python38-pyroute2.nftables 
   - python38-pyroute2.nslink 
-  - python38-pyrsistent: [i586] 
+  - python38-pyrsistent 
   - python38-pysaml2 
   - python38-pyscard 
   - python38-pyscreenshot 
+  - python38-pysendfile 
+  - python38-pyserial 
   - python38-pysha3 
   - python38-pyshark 
   - python38-pyshould 
   - python38-pyshp 
   - python38-pysmb 
+  - python38-pysmbc 
   - python38-pysmi 
   - python38-pysndfile 
   - python38-pysnmp 
   - python38-pysofaconventions 
   - python38-pysolr 
+  - python38-pyspnego 
   - python38-pysrt 
   - python38-pyssim 
   - python38-pystache 
@@ -27350,6 +27261,7 @@ unsorted:
   - python38-pytaglib 
   - python38-pyte 
   - python38-pytesseract 
+  - python38-pytest 
   - python38-pytest-aiohttp 
   - python38-pytest-arraydiff 
   - python38-pytest-astropy 
@@ -27461,6 +27373,7 @@ unsorted:
   - python38-python-crontab 
   - python38-python-daemon 
   - python38-python-datamatrix 
+  - python38-python-dateutil 
   - python38-python-dbusmock 
   - python38-python-docs-theme 
   - python38-python-dotenv 
@@ -27471,7 +27384,7 @@ unsorted:
   - python38-python-gammu 
   - python38-python-gflags 
   - python38-python-gitlab 
-  - python38-python-gnupg: [i586] 
+  - python38-python-gnupg 
   - python38-python-gvm 
   - python38-python-jenkins 
   - python38-python-jose 
@@ -27483,7 +27396,10 @@ unsorted:
   - python38-python-lsp-black 
   - python38-python-lsp-jsonrpc 
   - python38-python-lsp-server 
+  - python38-python-lzo 
   - python38-python-magic 
+  - python38-python-memcached 
+  - python38-python-mimeparse 
   - python38-python-mpd2 
   - python38-python-mpv 
   - python38-python-multipart 
@@ -27505,7 +27421,7 @@ unsorted:
   - python38-python-rpm-spec 
   - python38-python-rtmidi 
   - python38-python-rtmidi-doc 
-  - python38-python-slugify: [i586] 
+  - python38-python-slugify 
   - python38-python-snappy 
   - python38-python-socketio 
   - python38-python-socks 
@@ -27534,10 +27450,12 @@ unsorted:
   - python38-pytoml 
   - python38-pytools 
   - python38-pytricia 
+  - python38-pytz 
   - python38-pytz-deprecation-shim 
   - python38-pytzdata 
   - python38-pyu2f 
   - python38-pyuca 
+  - python38-pyudev 
   - python38-pyupgrade 
   - python38-pyusb 
   - python38-pyuv 
@@ -27554,6 +27472,7 @@ unsorted:
   - python38-pyxattr 
   - python38-pyxdg 
   - python38-pyyaml_env_tag 
+  - python38-pyzmq 
   - python38-pyzmq-devel 
   - python38-pyzo 
   - python38-q 
@@ -27568,12 +27487,14 @@ unsorted:
   - python38-qt3d-qt5-api 
   - python38-qt3d-qt5-doc 
   - python38-qt3d-qt5-sip 
+  - python38-qt5 
   - python38-qt5-devel 
   - python38-qt5-doc 
   - python38-qt5-quick3d 
   - python38-qt5-quick3d-devel 
   - python38-qt5-remoteobjects 
   - python38-qt5-remoteobjects-devel 
+  - python38-qt5-sip 
   - python38-qtcharts-qt5 
   - python38-qtcharts-qt5-api 
   - python38-qtcharts-qt5-doc 
@@ -27610,16 +27531,19 @@ unsorted:
   - python38-reconfigure 
   - python38-redbaron 
   - python38-redfish 
-  - python38-regex: [i586] 
+  - python38-redis 
+  - python38-regex 
   - python38-relatorio 
   - python38-releases 
   - python38-remoto 
   - python38-rencode 
+  - python38-reportlab 
   - python38-repoze.lru 
   - python38-repoze.sphinx.autointerface 
   - python38-repoze.who 
   - python38-reproject 
   - python38-requestbuilder 
+  - python38-requests 
   - python38-requests-aws 
   - python38-requests-cache 
   - python38-requests-download 
@@ -27628,8 +27552,10 @@ unsorted:
   - python38-requests-futures 
   - python38-requests-gssapi 
   - python38-requests-hawk 
+  - python38-requests-kerberos 
   - python38-requests-mock 
   - python38-requests-oauthlib 
+  - python38-requests-toolbelt 
   - python38-requests-unixsocket 
   - python38-requests_ntlm 
   - python38-requestsexceptions 
@@ -27647,6 +27573,7 @@ unsorted:
   - python38-retry_decorator 
   - python38-retrying 
   - python38-retryrequests 
+  - python38-rfc3986 
   - python38-rfc3987 
   - python38-rfc6555 
   - python38-rich 
@@ -27657,14 +27584,17 @@ unsorted:
   - python38-robotframework 
   - python38-roifile 
   - python38-rollbar 
+  - python38-roman 
   - python38-rope 
   - python38-rpcq 
   - python38-rply 
+  - python38-rpm 
   - python38-rpmfile 
   - python38-rpmlb 
   - python38-rpy2 
   - python38-rpyc 
   - python38-rq 
+  - python38-rsa 
   - python38-rss2email 
   - python38-rst.linker 
   - python38-rstcheck 
@@ -27678,6 +27608,8 @@ unsorted:
   - python38-ruffus 
   - python38-runthis-sphinxext 
   - python38-rustcfg 
+  - python38-s3fs 
+  - python38-s3transfer 
   - python38-sadisplay 
   - python38-samplerate 
   - python38-sane 
@@ -27699,19 +27631,23 @@ unsorted:
   - python38-scikit-sound 
   - python38-scikit-sparse: [x86_64] 
   - python38-scikit-umfpack: [x86_64] 
+  - python38-scipy 
   - python38-scipy-gnu-hpc: [x86_64] 
   - python38-scipy_1_8_0-gnu-hpc: [x86_64] 
   - python38-scitokens 
+  - python38-scour 
   - python38-scp 
   - python38-screeninfo 
   - python38-screenplain 
   - python38-scripttest 
+  - python38-scrypt 
   - python38-scspell3k 
   - python38-sdnotify 
   - python38-seaborn 
   - python38-securesystemslib 
   - python38-selection 
   - python38-selenium 
+  - python38-semanage 
   - python38-semantic_version 
   - python38-semver 
   - python38-sentry-sdk 
@@ -27719,6 +27655,8 @@ unsorted:
   - python38-serpent 
   - python38-serpy 
   - python38-serverfiles 
+  - python38-service_identity 
+  - python38-setproctitle 
   - python38-setupmeta 
   - python38-setuptools-declarative-requirements 
   - python38-setuptools-git 
@@ -27749,6 +27687,7 @@ unsorted:
   - python38-simplebayes 
   - python38-simpleeval 
   - python38-simplegeneric 
+  - python38-simplejson 
   - python38-simplekml 
   - python38-single-version 
   - python38-singledispatch 
@@ -27758,16 +27697,20 @@ unsorted:
   - python38-sip4-devel 
   - python38-sip6-devel 
   - python38-siphashc 
+  - python38-six 
   - python38-sklearn-pandas 
   - python38-skyfield 
   - python38-slackclient 
   - python38-slimit 
+  - python38-slip 
+  - python38-slip-dbus 
   - python38-slixmpp 
   - python38-slycot 
   - python38-smartypants 
   - python38-smbprotocol 
   - python38-smmap 
   - python38-smpplib 
+  - python38-sniffio 
   - python38-snimpy 
   - python38-snowballstemmer 
   - python38-snuggs 
@@ -27777,8 +27720,10 @@ unsorted:
   - python38-softlayer 
   - python38-sorl-thumbnail 
   - python38-sortedcollections 
+  - python38-sortedcontainers 
   - python38-sortinghat 
   - python38-sounddevice 
+  - python38-soupsieve 
   - python38-sox 
   - python38-spake2 
   - python38-spark_parser 
@@ -27840,6 +27785,7 @@ unsorted:
   - python38-ssdeep 
   - python38-sshpubkeys 
   - python38-sshtunnel 
+  - python38-stack-data 
   - python38-starlette 
   - python38-statsd 
   - python38-statsmodels 
@@ -27865,18 +27811,20 @@ unsorted:
   - python38-svglib 
   - python38-svgpathtools: [x86_64] 
   - python38-svgwrite 
-  - python38-svm 
   - python38-svneverever 
   - python38-swapper 
   - python38-swifter 
   - python38-sybil 
+  - python38-sympy 
   - python38-synr 
   - python38-system_hotkey 
   - python38-systemd 
   - python38-tableauserverclient 
   - python38-tableprint 
+  - python38-tables 
   - python38-tablib 
   - python38-tabpy 
+  - python38-tabulate 
   - python38-tap.py 
   - python38-targetcli-fb 
   - python38-tasklib 
@@ -27904,7 +27852,8 @@ unsorted:
   - python38-testresources 
   - python38-testscenarios 
   - python38-testsuite 
-  - python38-text-unidecode: [i586] 
+  - python38-testtools 
+  - python38-text-unidecode 
   - python38-textX 
   - python38-textdistance 
   - python38-textfsm 
@@ -27929,23 +27878,31 @@ unsorted:
   - python38-tinyrecord 
   - python38-tinyrpc 
   - python38-titlecase 
+  - python38-tk 
   - python38-tkreadonly 
   - python38-tld 
   - python38-tldextract 
   - python38-tmx 
   - python38-tokenize-rt 
+  - python38-toml 
+  - python38-tomli 
   - python38-tomli-w 
   - python38-tomlkit 
   - python38-tools 
   - python38-toolz 
   - python38-toposort 
   - python38-topy 
+  - python38-tornado 
+  - python38-tornado6 
   - python38-tortilla 
   - python38-towncrier 
   - python38-tox 
   - python38-tox-no-internet 
   - python38-tox-wheel 
   - python38-tpfd 
+  - python38-tqdm 
+  - python38-traceback2 
+  - python38-traitlets 
   - python38-traits 
   - python38-traitsui 
   - python38-traittypes 
@@ -27959,6 +27916,7 @@ unsorted:
   - python38-treq 
   - python38-tri.declarative 
   - python38-tri.struct 
+  - python38-trio 
   - python38-trustme 
   - python38-tsk 
   - python38-tvm: [x86_64] 
@@ -27975,9 +27933,11 @@ unsorted:
   - python38-txtorcon 
   - python38-typed-ast 
   - python38-typedload 
+  - python38-typeguard 
   - python38-typepy 
   - python38-typer 
   - python38-typing-inspect 
+  - python38-typing_extensions 
   - python38-typogrify 
   - python38-tzlocal 
   - python38-u-msgpack-python 
@@ -27989,6 +27949,7 @@ unsorted:
   - python38-ujson 
   - python38-uncertainties 
   - python38-unicodecsv 
+  - python38-unicodedata2 
   - python38-unidiff 
   - python38-unify 
   - python38-uniseg 
@@ -28005,6 +27966,8 @@ unsorted:
   - python38-url-normalize 
   - python38-urlextract 
   - python38-urlgrabber 
+  - python38-urllib3 
+  - python38-urwid 
   - python38-usbsdmux 
   - python38-user-agents 
   - python38-user_agent 
@@ -28062,11 +28025,13 @@ unsorted:
   - python38-watchgod 
   - python38-watermark 
   - python38-wcmatch 
+  - python38-wcwidth 
   - python38-weasyprint 
   - python38-web.py 
   - python38-web_cache 
   - python38-webassets 
   - python38-webcolors 
+  - python38-webencodings 
   - python38-weblate-language-data 
   - python38-weblate-schemas 
   - python38-weblib 
@@ -28089,6 +28054,7 @@ unsorted:
   - python38-wmctrl 
   - python38-wolframalpha 
   - python38-wptools 
+  - python38-wrapt 
   - python38-ws4py 
   - python38-wsaccel 
   - python38-wsgi_intercept 
@@ -28101,6 +28067,7 @@ unsorted:
   - python38-xapian 
   - python38-xapian-haystack 
   - python38-xapp 
+  - python38-xarray 
   - python38-xattr 
   - python38-xcffib 
   - python38-xdg 
@@ -28110,6 +28077,8 @@ unsorted:
   - python38-xhtml2pdf 
   - python38-xkbgroup 
   - python38-xkcdpass 
+  - python38-xlrd 
+  - python38-xlwt 
   - python38-xmldiff 
   - python38-xmlschema 
   - python38-xmlsec 
@@ -28132,6 +28101,7 @@ unsorted:
   - python38-yappi 
   - python38-yara 
   - python38-yarg 
+  - python38-yarl 
   - python38-yaspin 
   - python38-yaswfp 
   - python38-yg.lockfile 
@@ -28146,26 +28116,37 @@ unsorted:
   - python38-zdaemon 
   - python38-zeep 
   - python38-zeroconf 
+  - python38-zhon 
   - python38-zict 
   - python38-zignal 
+  - python38-zipp 
   - python38-zipstream 
   - python38-zodbpickle 
   - python38-zope.cachedescriptors 
+  - python38-zope.component 
+  - python38-zope.configuration 
   - python38-zope.copy 
   - python38-zope.deferredimport 
   - python38-zope.deprecation 
+  - python38-zope.event 
   - python38-zope.exceptions 
+  - python38-zope.hookable 
+  - python38-zope.i18nmessageid 
+  - python38-zope.interface 
   - python38-zope.location 
   - python38-zope.proxy 
   - python38-zope.proxy-devel 
+  - python38-zope.schema 
   - python38-zope.security 
   - python38-zope.testbrowser 
   - python38-zope.testbrowser-test 
   - python38-zope.testing 
   - python38-zope.testrunner 
+  - python38-zopfli 
   - python38-zstandard 
   - python38-zstd 
   - python38-zxcvbn 
+  - python38-zypp-plugin 
   - python39 
   - python39-32bit: [x86_64] 
   - python39-APScheduler 
@@ -32202,6 +32183,7 @@ unsorted:
   - retro-gtk 
   - retro-gtk-devel 
   - retroarch 
+  - retry 
   - reuse 
   - revelation 
   - revelation-lang 
