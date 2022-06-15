@@ -317,8 +317,8 @@ dvd:
 
   # DVD exploded, shrinking based on fabians suggestions - rbrown, 20210816
   - pfstools: [locked]
-  - python38-QtPy: [locked]
-  - python38-numba: [locked]
+  - python310-QtPy: [locked]
+  - python310-numba: [locked]
 
   # DVD over size by > 40MB (kernel change to zstd); need space - dleuenberger, 20211119
   - MozillaThunderbird: [locked]
@@ -331,7 +331,7 @@ dvd:
   - libpython3_6m1_0: [locked]
   - libpython3_9-1_0: [locked]
   - jupyter-jupyter_core-filesystem: [locked]
-  - python38-tornado5: [locked]
+  - python310-tornado5: [locked]
   - patterns-base-documentation: [locked]
 
   # DVD a little too big remove fonts (starting with renamed noto cjk fonts) - rbrown, 20210819
