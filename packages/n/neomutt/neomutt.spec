@@ -104,6 +104,9 @@ make %{?_smp_mflags}
 %{_bindir}/neomutt
 %{_mandir}/man1/neomutt.1%{?ext_man}
 %{_mandir}/man5/neomuttrc.5%{?ext_man}
+%if 0%{?suse_version} && 0%{?suse_version} < 1550
+%dir %{_prefix}/libexec
+%endif
 %dir %{_prefix}/libexec/neomutt
 %{_prefix}/libexec/neomutt/pgpewrap
 %{_prefix}/libexec/neomutt/smime_keys
