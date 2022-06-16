@@ -2291,6 +2291,8 @@ unsorted:
   - coredns-for-k8s1.22-extras 
   - coredns-for-k8s1.23 
   - coredns-for-k8s1.23-extras 
+  - coredns-for-k8s1.24 
+  - coredns-for-k8s1.24-extras 
   - corepack16 
   - corepack17 
   - coreutils-doc 
@@ -6403,6 +6405,7 @@ unsorted:
   - grub2-theme-breeze 
   - grub2-x86_64-efi-debug: [x86_64] 
   - grubby 
+  - grype 
   - gscan2pdf 
   - gscan2pdf-lang 
   - gsequencer 
@@ -7408,9 +7411,17 @@ unsorted:
   - jackson-databind 
   - jackson-databind-javadoc 
   - jackson-dataformat-cbor 
+  - jackson-dataformat-csv 
+  - jackson-dataformat-properties 
   - jackson-dataformat-smile 
+  - jackson-dataformat-toml 
+  - jackson-dataformat-xml 
+  - jackson-dataformat-xml-javadoc 
+  - jackson-dataformat-yaml 
   - jackson-dataformats-binary 
   - jackson-dataformats-binary-javadoc 
+  - jackson-dataformats-text 
+  - jackson-dataformats-text-javadoc 
   - jackson-datatype-guava 
   - jackson-datatype-hppc 
   - jackson-datatypes-collections 
@@ -7717,6 +7728,8 @@ unsorted:
   - jflex 
   - jflex-bootstrap 
   - jflex-javadoc 
+  - jflex-maven-plugin 
+  - jflex-maven-plugin-javadoc 
   - jformatstring 
   - jformatstring-javadoc 
   - jfreechart 
@@ -7761,6 +7774,8 @@ unsorted:
   - jna 
   - jna-contrib 
   - jna-javadoc 
+  - jnacl 
+  - jnacl-javadoc 
   - jnr-a64asm 
   - jnr-a64asm-javadoc 
   - jnr-constants 
@@ -8545,6 +8560,15 @@ unsorted:
   - kubernetes1.23-kubelet-common: [x86_64] 
   - kubernetes1.23-proxy: [x86_64] 
   - kubernetes1.23-scheduler: [x86_64] 
+  - kubernetes1.24-apiserver: [x86_64] 
+  - kubernetes1.24-client: [x86_64] 
+  - kubernetes1.24-client-common: [x86_64] 
+  - kubernetes1.24-controller-manager: [x86_64] 
+  - kubernetes1.24-kubeadm: [x86_64] 
+  - kubernetes1.24-kubelet: [x86_64] 
+  - kubernetes1.24-kubelet-common: [x86_64] 
+  - kubernetes1.24-proxy: [x86_64] 
+  - kubernetes1.24-scheduler: [x86_64] 
   - kubescape 
   - kubeseal 
   - kubetap 
@@ -13282,7 +13306,7 @@ unsorted:
   - libqoauth2 
   - libqobs-devel 
   - libqobs2 
-  - libqore7 
+  - libqore12 
   - libqpid-proton-core10 
   - libqpid-proton-cpp12 
   - libqpid-proton-proactor1 
@@ -15154,6 +15178,8 @@ unsorted:
   - liferea-lang 
   - light-locker 
   - light-locker-lang 
+  - lightcouch 
+  - lightcouch-javadoc 
   - lightdm-deepin-greeter 
   - lightdm-gobject-devel 
   - lightdm-gtk-greeter-branding-upstream 
@@ -16528,6 +16554,7 @@ unsorted:
   - mono-zeroconf-doc 
   - mono-zeroconf-provider-avahi 
   - monodoc-core 
+  - moolticute 
   - mopac7 
   - moreutils 
   - moreutils-parallel 
@@ -17383,6 +17410,7 @@ unsorted:
   - nodejs16-docs 
   - nodejs17-devel 
   - nodejs17-docs 
+  - noisetorch 
   - nomacs 
   - nomacs-lang 
   - non-ntk-devel 
@@ -24406,6 +24434,7 @@ unsorted:
   - python310-sane 
   - python310-sanlock 
   - python310-sarge 
+  - python310-sarif-om 
   - python310-sas7bdat 
   - python310-sasl 
   - python310-sat-search 
@@ -27621,6 +27650,7 @@ unsorted:
   - python38-sane 
   - python38-sanlock 
   - python38-sarge 
+  - python38-sarif-om 
   - python38-sas7bdat 
   - python38-sasl 
   - python38-sat-search 
@@ -30885,6 +30915,7 @@ unsorted:
   - python39-sane 
   - python39-sanlock 
   - python39-sarge 
+  - python39-sarif-om 
   - python39-sas7bdat 
   - python39-sasl 
   - python39-sat-search 
@@ -31521,6 +31552,8 @@ unsorted:
   - qore-misc-tools 
   - qore-mysql-module 
   - qore-mysql-module-doc 
+  - qore-openldap-module 
+  - qore-openldap-module-doc 
   - qore-pgsql-module 
   - qore-pgsql-module-doc 
   - qore-sqlite3-module 
@@ -31531,7 +31564,6 @@ unsorted:
   - qore-uuid-module-doc 
   - qore-xml-module 
   - qore-xml-module-doc 
-  - qore-xml-module-tools 
   - qore-yaml-module 
   - qore-yaml-module-doc 
   - qos 
@@ -33344,6 +33376,7 @@ unsorted:
   - swtpm-devel 
   - sxhkd 
   - sxiv 
+  - syft 
   - symmetrica-devel 
   - sympol 
   - sympol-devel 
