@@ -1,0 +1,41 @@
+From b5ed1ca97de90cb0ffd49ecb5266a041989407b7 Mon Sep 17 00:00:00 2001
+From: Gerwin Klein <lsf@jflex.de>
+Date: Tue, 16 Jun 2020 10:06:31 +0800
+Subject: [PATCH] jflex-maven-plugin: updates for guava 26.0-jre
+
+---
+ .../main/java/jflex/maven/plugin/jflex/JFlexMojo.java  | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/jflex-maven-plugin/src/main/java/jflex/maven/plugin/jflex/JFlexMojo.java b/jflex-maven-plugin/src/main/java/jflex/maven/plugin/jflex/JFlexMojo.java
+index d3fe0371..84ed13fd 100644
+--- a/jflex-maven-plugin/src/main/java/jflex/maven/plugin/jflex/JFlexMojo.java
++++ b/jflex-maven-plugin/src/main/java/jflex/maven/plugin/jflex/JFlexMojo.java
+@@ -11,8 +11,8 @@ package jflex.maven.plugin.jflex;
+ import static com.google.common.base.Strings.isNullOrEmpty;
+ 
+ import com.google.common.base.Predicate;
+-import com.google.common.collect.FluentIterable;
+ import com.google.common.collect.ImmutableSet;
++import com.google.common.collect.Iterables;
+ import com.google.common.io.Files;
+ import java.io.File;
+ import java.io.FileNotFoundException;
+@@ -177,10 +177,10 @@ public class JFlexMojo extends AbstractMojo {
+     if (lexDefinition.isDirectory()) {
+       // recursively process files contained within
+       getLog().debug("Processing lexer files found in " + lexDefinition);
+-      FluentIterable<File> files =
+-          Files.fileTreeTraverser()
+-              .preOrderTraversal(lexDefinition)
+-              .filter(new ExtensionPredicate("jflex", "jlex", "lex", "flex"));
++      Iterable<File> files =
++          Iterables.filter(
++              Files.fileTraverser().depthFirstPreOrder(lexDefinition),
++              new ExtensionPredicate("jflex", "jlex", "lex", "flex"));
+       for (File lexFile : files) {
+         parseLexFile(lexFile);
+       }
+-- 
+2.34.1
+
