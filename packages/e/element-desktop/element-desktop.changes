@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun 15 07:50:02 UTC 2022 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.10.15
+  * Fix missing element desktop preferences
+
+-------------------------------------------------------------------
+Tue Jun 14 11:19:06 UTC 2022 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.10.14
+  * Live location sharing
+  * Allow disabling hw acceleration
+
+-------------------------------------------------------------------
 Fri Jun  3 05:12:40 UTC 2022 - Mathias Homann <Mathias.Homann@opensuse.org>
 
 - Version 1.10.13
