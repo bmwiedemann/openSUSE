@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.18
-%define patchversion 5.18.2
+%define patchversion 5.18.4
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules zstd
@@ -107,9 +107,9 @@ Name:           kernel-default
 Summary:        The Standard Kernel
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        5.18.2
+Version:        5.18.4
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g695cfee
+Release:        <RELEASE>.ged6345d
 %else
 Release:        0
 %endif
@@ -234,10 +234,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-695cfee5f94e63948c91258c2b1d7fdfc8668c11
-Provides:       kernel-srchash-695cfee5f94e63948c91258c2b1d7fdfc8668c11
+Provides:       kernel-%build_flavor-base-srchash-ed6345d7fa91bf63fa223be9a7742d6bb49c8a72
+Provides:       kernel-srchash-ed6345d7fa91bf63fa223be9a7742d6bb49c8a72
 # END COMMON DEPS
-Provides:       %name-srchash-695cfee5f94e63948c91258c2b1d7fdfc8668c11
+Provides:       %name-srchash-ed6345d7fa91bf63fa223be9a7742d6bb49c8a72
 %ifarch %ix86
 Provides:       kernel-smp = 2.6.17
 Obsoletes:      kernel-smp <= 2.6.17
@@ -798,7 +798,11 @@ add_vmlinux()
     find man -name '*.9' -exec install -m 644 -D '{}' %buildroot/usr/share/man/man9/ ';'
 %endif
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
-    objcopy -R .rodata.compressed arch/s390/boot/compressed/vmlinux %buildroot/boot/zdebug-%kernelrelease-%build_flavor
+    s390x_vmlinux=arch/s390/boot/compressed/vmlinux
+    if [ ! -f "$s390x_vmlinux" ]; then
+        s390x_vmlinux=arch/s390/boot/vmlinux
+    fi
+    objcopy -R .rodata.compressed "$s390x_vmlinux" %buildroot/boot/zdebug-%kernelrelease-%build_flavor
 %endif
 %endif
 %ifarch %arm

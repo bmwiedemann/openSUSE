@@ -17,7 +17,7 @@
 
 
 %define srcversion 5.18
-%define patchversion 5.18.2
+%define patchversion 5.18.4
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -31,9 +31,9 @@
 %endif
 
 Name:           kernel-source
-Version:        5.18.2
+Version:        5.18.4
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g695cfee
+Release:        <RELEASE>.ged6345d
 %else
 Release:        0
 %endif
@@ -50,7 +50,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-695cfee5f94e63948c91258c2b1d7fdfc8668c11
+Provides:       %name-srchash-ed6345d7fa91bf63fa223be9a7742d6bb49c8a72
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
@@ -192,6 +192,10 @@ AutoReqProv:    off
 Provides:       %name-vanilla = %version-%source_rel
 Provides:       multiversion(kernel)
 Requires:       kernel-macros
+# dracut no longer carries installkernel
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
+Recommends:     kernel-install-tools
+%endif
 
 %description vanilla
 Vanilla Linux kernel sources with minor build fixes.
