@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun 14 11:34:21 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 2.8.1:
+  * Bugfixes
+    - PICARD-2489 - Preferred Releases UI not loading in Options
+      menu on FreeBSD
+    - PICARD-2491 - Crash upon loading album information for
+      releases with MBID redirects
+    - PICARD-2493 - If locales for picard-countries or
+      picard-attributes are missing UI translation is completely
+      skipped
+    - PICARD-2494 - Remove empty info dialog for
+      "[standalone-recordings]" special album entry
+
+-------------------------------------------------------------------
 Tue May 24 08:26:41 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 2.8.0:
