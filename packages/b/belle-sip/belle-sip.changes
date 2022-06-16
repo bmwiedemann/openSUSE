@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun  8 03:05:29 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com> - 5.1.32
+
+- Update to version 5.1.32:
+  * Fixed userid not used in http auth
+  * Add methods to known whether a request can be created or not
+  * Avoid re-sending a BYE because of un-ACKed dialog if a BYE was sent already
+  * report io error to pending http transaction in case of provider stop
+  * Add test vectors from RFC7616 for digest auth
+  * Implement automatic retry of reINVITE upon 491 request pending response
+- revert license tag change
+
+-------------------------------------------------------------------
 Thu Mar 24 10:33:55 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.1.12:
