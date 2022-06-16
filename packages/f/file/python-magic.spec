@@ -21,7 +21,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global         _miscdir    %{_datadir}/misc
 Name:           python-magic
-Version:        5.41
+Version:        5.42
 Release:        0
 Summary:        Python module to use libmagic
 License:        BSD-3-Clause AND BSD-4-Clause

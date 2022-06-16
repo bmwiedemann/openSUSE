@@ -4,7 +4,7 @@
 
 --- magic/Magdir/archive
 +++ magic/Magdir/archive	2019-02-21 06:49:05.298138025 +0000
-@@ -1200,6 +1200,11 @@
+@@ -1399,6 +1399,11 @@
  0	string		PK\x07\x08PK\x03\x04	Zip multi-volume archive data, at least PKZIP v2.50 to extract
  !:mime	application/zip
  !:ext zip/cbz

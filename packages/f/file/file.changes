@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jun 13 08:45:48 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Update to 5.42:
+  * PR/348: add missing cases to prevent file from aborting on
+    random magic files.
+  * PR/351: octalify filenames when not raw before printing.
+  * fix regex cacheing bug (Dirk Mueller)
+  * merge file_regcomp and file_regerror() to simplify the code
+    and reduce memory requirements for storing regexes (Dirk Mueller)
+  * cache regex (Dirk Mueller)
+  * detect filesystem full by flushing output (Dirk Mueller)
+  * implement running decompressor programs using
+    posix_spawnp(2) instead of vfork(2)
+  * Add support for msdos dates and times
+  * use the system byte swapping functions if available (Werner Fink)
+- Port patches
+  * file-5.17-option.dif
+  * file-5.19-biorad.dif
+  * file-5.19-printf.dif
+  * file-5.19-zip2.0.dif
+  * file-5.28-btrfs-image.dif
+  * file-secure_getenv.patch
+- Remove patches now upstream
+  * file-5.23-endian.patch
+  * file-5.41-cache-regexps-locale-restore.patch
+  * file-5.41-cache-regexps.patch
+- Port and rename patch file-5.41.dif which is now file-5.42.dif
+
+-------------------------------------------------------------------
 Tue Apr 26 09:03:32 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Try to solve 32bit import dependency problems (boo#1198788)

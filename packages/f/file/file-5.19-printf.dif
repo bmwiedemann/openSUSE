@@ -4,7 +4,7 @@
 
 --- src/apprentice.c
 +++ src/apprentice.c	2021-10-19 08:52:01.991343421 +0000
-@@ -2489,7 +2489,7 @@ check_format_type(const char *ptr, int t
+@@ -2608,7 +2608,7 @@ check_format_type(const char *ptr, int t
  			}
  		} else
  			h = 0;

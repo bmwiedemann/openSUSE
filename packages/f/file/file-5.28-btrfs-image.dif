@@ -9,9 +9,9 @@ superblock.  Rather than duplicate the superblock printer, split
 that out and use it with both the on-disk superblock and the ones
 contained within the image.
 
-
-
-
+---
+ magic/Magdir/filesystems |   37 +++++++++++++++++++++++--------------
+ 1 file changed, 23 insertions(+), 14 deletions(-)
 
 diff --git a/magic/Magdir/filesystems b/magic/Magdir/filesystems
 --- a/magic/Magdir/filesystems
@@ -58,5 +58,5 @@ diff --git a/magic/Magdir/filesystems b/magic/Magdir/filesystems
 +>>0x440		string	    	_BHRfS_M		\b, contains
 +>>>0x400	use					btrfs_super_block
  
- # dvdisaster's .ecc
- # From: "Nelson A. de Oliveira" <naoliv@gmail.com>
+ 0		string		btrfs-stream	BTRFS stream file
+ 

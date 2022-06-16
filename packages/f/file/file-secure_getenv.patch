@@ -1,14 +1,11 @@
 ---
- file-5.38/configure.ac |    2 ++
- file-5.38/src/file.c   |    2 +-
- file-5.38/src/file.h   |    8 ++++++++
- file-5.38/src/magic.c  |   10 +++++-----
- 4 files changed, 16 insertions(+), 6 deletions(-)
+ file-5.42/configure.ac |    2 ++
+ file-5.42/src/file.h   |    8 ++++++++
+ file-5.42/src/magic.c  |   12 ++++++------
+ 3 files changed, 16 insertions(+), 6 deletions(-)
 
-Index: file-5.38/configure.ac
-===================================================================
---- file-5.38.orig/configure.ac
-+++ file-5.38/configure.ac
+--- file-5.42/configure.ac
++++ file-5.42/configure.ac	2022-06-13 08:34:50.347521415 +0000
 @@ -114,6 +114,8 @@ if test "$enable_xzlib" != "no"; then
  fi
  AC_CHECK_TYPE([sig_t],[AC_DEFINE([HAVE_SIG_T],1,[Have sig_t type])],,[#include <signal.h>])
@@ -18,11 +15,9 @@ Index: file-5.38/configure.ac
  dnl Checks for typedefs, structures, and compiler characteristics.
  AC_TYPE_OFF_T
  AC_TYPE_SIZE_T
-Index: file-5.38/src/file.h
-===================================================================
---- file-5.38.orig/src/file.h
-+++ file-5.38/src/file.h
-@@ -700,4 +700,12 @@ static const char *rcsid(const char *p)
+--- file-5.42/src/file.h
++++ file-5.42/src/file.h	2022-06-13 08:34:50.347521415 +0000
+@@ -706,4 +706,12 @@ static const char *rcsid(const char *p)
  #define __RCSID(a)
  #endif
  
@@ -35,10 +30,8 @@ Index: file-5.38/src/file.h
 +#endif
 +
  #endif /* __file_h__ */
-Index: file-5.38/src/magic.c
-===================================================================
---- file-5.38.orig/src/magic.c
-+++ file-5.38/src/magic.c
+--- file-5.42/src/magic.c
++++ file-5.42/src/magic.c	2022-06-13 08:36:49.997304349 +0000
 @@ -185,7 +185,7 @@ get_default_magic(void)
  		free(default_magic);
  		default_magic = NULL;
@@ -48,8 +41,13 @@ Index: file-5.38/src/magic.c
  		return MAGIC;
  
  	if (asprintf(&hmagicpath, "%s/.magic.mgc", home) < 0)
-@@ -222,16 +222,16 @@ out:
+@@ -222,20 +222,20 @@ out:
  	}
+ 
+ 	/* Before anything else, try to get a magic file from user HOME */
+-	if ((home = getenv("HOME")) != NULL)
++	if ((home = secure_getenv("HOME")) != NULL)
+ 		_w32_append_path(&hmagicpath, "%s%s", home, hmagic);
  
  	/* First, try to get a magic file from user-application data */
 -	if ((home = getenv("LOCALAPPDATA")) != NULL)
@@ -58,7 +56,7 @@ Index: file-5.38/src/magic.c
  
  	/* Second, try to get a magic file from the user profile data */
 -	if ((home = getenv("USERPROFILE")) != NULL)
-+	if ((home =  secure_getenv("USERPROFILE")) != NULL)
++	if ((home = secure_getenv("USERPROFILE")) != NULL)
  		_w32_append_path(&hmagicpath,
  		    "%s/Local Settings/Application Data%s", home, hmagic);
  
@@ -68,7 +66,7 @@ Index: file-5.38/src/magic.c
  		_w32_append_path(&hmagicpath, "%s%s", home, hmagic);
  
  	/* Fourth, try to get magic file relative to exe location */
-@@ -252,7 +252,7 @@ magic_getpath(const char *magicfile, int
+@@ -256,7 +256,7 @@ magic_getpath(const char *magicfile, int
  	if (magicfile != NULL)
  		return magicfile;
  
