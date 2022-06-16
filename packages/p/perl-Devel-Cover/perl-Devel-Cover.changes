@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jun  6 03:06:12 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.38
+   see /usr/share/doc/packages/perl-Devel-Cover/Changes
+
+  1.38 - 5 June 2022
+   - Improve documentation
+
+  1.37 - 5 June 2022
+   - Fix Subroutine module docs (bkerin) (GH-262)
+   - Use github actions instead of travis (Zakariyya Mughal) (GH-291)
+   - Improve mkdir error messages (Felipe Gasper) (GH-296)
+   - Remove asterisk from gcov count (Zakariyya Mughal) (GH-294)
+   - Test against 5.36.0
+   - Avoid warnings from check_files (Nicolas R) (GH-292)
+   - Support __SUB__ (Graham Knop) (GH-290, GH-243, GH-285)
+   - Support uncoverable count ranges (Tina Müller) (GH-288)
+   - Improve gcov support for XS code (Ed J) (GH-280)
+   - Allow overriding of HTML code highlighting (Jesús Alonso Abad) (GH-271)
+   - Improve contributing docs
+
+-------------------------------------------------------------------
 Wed May 20 03:10:07 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 1.36

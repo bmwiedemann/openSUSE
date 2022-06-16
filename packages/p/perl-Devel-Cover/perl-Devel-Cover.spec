@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Devel-Cover
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,15 @@
 #
 
 
-Name:           perl-Devel-Cover
-Version:        1.36
-Release:        0
 %define cpan_name Devel-Cover
-Summary:        Code coverage metrics for Perl
+Name:           perl-Devel-Cover
+Version:        1.38
+Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        Code coverage metrics for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PJ/PJCJ/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(HTML::Entities) >= 3.69
@@ -38,16 +36,16 @@ Recommends:     perl(Class::XSAccessor)
 Recommends:     perl(HTML::Parser)
 Recommends:     perl(JSON::MaybeXS) >= 1.003003
 Recommends:     perl(Moo)
-Recommends:     perl(namespace::clean)
+Recommends:     perl(PPI::HTML) >= 1.07
 Recommends:     perl(Parallel::Iterator)
 Recommends:     perl(Perl::Tidy) >= 20060719
 Recommends:     perl(Pod::Coverage) >= 0.06
 Recommends:     perl(Pod::Coverage::CountParents)
-Recommends:     perl(PPI::HTML) >= 1.07
 Recommends:     perl(Sereal::Decoder)
 Recommends:     perl(Sereal::Encoder)
 Recommends:     perl(Template) >= 2.00
 Recommends:     perl(Test::Differences)
+Recommends:     perl(namespace::clean)
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  perl-B-Debug
@@ -61,15 +59,15 @@ discover areas of code not exercised by your tests and determine which
 tests to create to increase coverage. Code coverage can be considered an
 indirect measure of quality.
 
-Although it is still being developed, Devel::Cover is now quite stable and
-provides many of the features to be expected in a useful coverage tool.
+Devel::Cover is now quite stable and provides many of the features to be
+expected in a useful coverage tool.
 
 Statement, branch, condition, subroutine, and pod coverage information is
 reported. Statement and subroutine coverage data should be accurate. Branch
 and condition coverage data should be mostly accurate too, although not
 always what one might initially expect. Pod coverage comes from
 Pod::Coverage. If Pod::Coverage::CountParents is available it will be used
-instead. Coverage data for other criteria are not yet collected.
+instead.
 
 The _cover_ program can be used to generate coverage reports. Devel::Cover
 ships with a number of reports including various types of HTML output,
@@ -104,12 +102,12 @@ http://github.com/pjcj/Devel--Cover. This is also where problems should be
 reported.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -120,7 +118,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes Contributors docs README.md
 %license LICENCE
 
