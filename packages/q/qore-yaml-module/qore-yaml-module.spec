@@ -1,7 +1,7 @@
 #
 # spec file for package qore-yaml-module
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,30 +15,30 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define qore_version 1.0.10
-%define src_name module-yaml-release-%{qore_version}
+
+%define src_name module-yaml-%{version}
 %define module_api %(qore --latest-module-api 2>/dev/null)
 Name:           qore-yaml-module
-# for version base see CMakeLists.txt, tags are done for each qore release
-Version:        0.7.0+qore%{qore_version}
+Version:        0.7
 Release:        0
 Summary:        YAML module for Qore
-License:        LGPL-2.1-or-later OR GPL-2.0-or-later OR MIT
+License:        GPL-2.0-or-later OR LGPL-2.1-or-later OR MIT
 Group:          Development/Languages/Misc
 URL:            https://www.qore.org/
-Source:         https://github.com/qorelanguage/module-yaml/archive/refs/tags/release-%{qore_version}.tar.gz#/%{src_name}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  automake
+Source:         https://github.com/qorelanguage/module-yaml/archive/refs/tags/v%{version}.tar.gz#/%{src_name}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
-BuildRequires:  libtool
 BuildRequires:  libyaml-devel
 BuildRequires:  qore
 BuildRequires:  qore-devel >= %{qore_version}
 Requires:       qore-module(abi)%{?_isa} = %{module_api}
 Suggests:       %{name}-doc = %{version}
+# Version schema changed, remove with 0.7.1 release
+Obsoletes:      %{name} = 0.7.0+qore1.0.10
+Obsoletes:      %{name} = 0.7.0+qore0.9.15
 
 %description
 This package contains the yaml module for the Qore Programming Language.
@@ -59,22 +59,12 @@ yaml module.
 find examples -type f|xargs chmod 644
 
 %build
-autoreconf -fi
-%configure \
-%ifarch x86_64 ppc64 ppc64le s390x aarch64
-  --enable-64bit \
-%endif
-  --disable-debug
-%make_build
+%cmake
+%cmake_build docs
 
 %install
-mkdir -p %{buildroot}%{_datadir}/doc/qore-yaml-module
-%make_install
-# Documentation needs the new built modules
-export QORE_MODULE_DIR=%{buildroot}/%{_libdir}/qore-modules:%{buildroot}%{_datadir}/qore-modules
-make html-local
-%make_install install-html-local
-%fdupes %{buildroot}%{_datadir}/qore-yaml-module
+%cmake_install
+%fdupes %{__builddir}/html
 
 %files
 %license COPYING.LGPL COPYING.MIT
@@ -83,6 +73,6 @@ make html-local
 
 %files doc
 %doc README RELEASE-NOTES
-%doc %{_datadir}/qore-yaml-module
+%doc %{__builddir}/html
 
 %changelog
