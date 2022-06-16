@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Jun 15 13:47:47 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to version 2.5.1
+Fixed
+  * The qute-pass userscript is marked as executable again.
+  * The MathML workaround for darkmode (e.g. black on black
+    Wikipedia formula) now also works for display (rather than
+    inline) math.
+  * The content.proxy setting can now correctly be set to arbitrary
+    values via the qute://settings page again.
+  * Fixed a rare possible crash with invalid Content-Disposition
+    headers.
+  * Fixes for various notification-related crashes:
+    + With the tiramisu notification server (due to invalid
+      behavior of the server, now a non-fatal error)
+    + With the budgie notification server when closing a
+      notification (due to invalid behavior of the server,
+      now worked around)
+    + When a server exits with an unsuccessful exit status
+      (now a non-fatal error)
+    + When a server couldn't be started successfully
+      (now a non-fatal error)
+    + With the herbe notification presenter, when the website tries
+      to close the notification after the user accepting
+      (right-clicking) it.
+  * Fixes in userscripts:
+    + The qute-bitwarden userscript now correctly searches for
+      entries for sites on a subdomain of an unrecognized TLD.
+      subdomain names. Previously my.site.local would have searched
+      in bitwarden for my.sitelocal, losing the rightmost dot.
+
+-------------------------------------------------------------------
 Tue Apr  5 23:54:02 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Update to version 2.5.0
