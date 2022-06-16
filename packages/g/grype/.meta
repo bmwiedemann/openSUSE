@@ -1,0 +1,6 @@
+<package name="grype" project="openSUSE:Factory">
+  <title>grype</title>
+  <description>A vulnerability scanner for container images and filesystems</description>
+  <devel project="devel:kubic" package="grype"/>
+  <url>https://github.com/anchore/grype</url>
+</package>

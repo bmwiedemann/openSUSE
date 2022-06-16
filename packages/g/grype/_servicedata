@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/anchore/grype</param>
+              <param name="changesrevision">06d28dad9f7e7d9aa65fc16d45c6ce785826664c</param></service></servicedata>
