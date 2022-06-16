@@ -18,10 +18,10 @@
 
 %define sover   0
 Name:           bzrtp
-Version:        5.1.12
+Version:        5.1.32
 Release:        0
 Summary:        ZRTP keys exchange protocol implementation
-License:        GPL-3.0-only
+License:        GPL-3.0-or-later
 Group:          Productivity/Telephony/Utilities
 URL:            https://linphone.org/
 Source:         https://gitlab.linphone.org/BC/public/bzrtp/-/archive/%{version}/%{name}-%{version}.tar.bz2

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun  8 03:05:35 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com> - 5.1.32
+
+- Update to version 5.1.32:
+  * Cmake support for build from flexisip
+- revert license tag change
+
+-------------------------------------------------------------------
 Thu Mar 24 10:31:39 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.1.12:
