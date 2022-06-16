@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jun  5 11:46:47 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.2.0
+  * added support for the XML, JSON, and JSONB types
+
+-------------------------------------------------------------------
+Sun Jun  5 00:56:39 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.1.1
+  * Fixed a bug handling server disconnections and automatic
+    reconnections
+
+-------------------------------------------------------------------
 Sun Oct 31 14:21:52 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.1.0 for Qore 1.0.10

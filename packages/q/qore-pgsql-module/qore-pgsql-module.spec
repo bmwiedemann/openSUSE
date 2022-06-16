@@ -1,7 +1,7 @@
 #
 # spec file for package qore-pgsql-module
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,16 @@
 #
 
 
-%define qore_version 1.0.10
 %define module_api   %(qore --latest-module-api 2>/dev/null)
-%define src_name     module-pgsql-release-%{qore_version}
+%define src_name     module-pgsql-%{version}
 Name:           qore-pgsql-module
-Version:        3.1.0+qore%{qore_version}
+Version:        3.2.0
 Release:        0
 Summary:        PostgreSQL DBI module for Qore
-License:        LGPL-2.0+ or GPL-2.0+ or MIT
+License:        GPL-2.0-or-later OR LGPL-2.0-or-later OR MIT
 Group:          Development/Languages/Other
-Url:            http://qore.org
-Source:         https://github.com/qorelanguage/module-pgsql/archive/refs/tags/release-%{qore_version}.tar.gz#/%{src_name}.tar.gz
+URL:            http://qore.org
+Source:         https://github.com/qorelanguage/module-pgsql/archive/refs/tags/v%{version}.tar.gz#/%{src_name}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -39,7 +38,7 @@ BuildRequires:  postgresql10-devel
 BuildRequires:  postgresql-devel
 %endif
 BuildRequires:  qore
-BuildRequires:  qore-devel >= %{qore_version}
+BuildRequires:  qore-devel >= 1.0.0
 Requires:       qore-module(abi)%{?_isa} = %{module_api}
 
 %description
@@ -61,7 +60,7 @@ This package provides API documentation, test and example programs
 
 %build
 %cmake -Denable-scu=OFF
-%make_build docs
+%cmake_build docs
 
 %install
 %cmake_install
@@ -73,6 +72,6 @@ This package provides API documentation, test and example programs
 %{_libdir}/qore-modules
 
 %files doc
-%doc %{__builddir}/html
+%doc %{__builddir}/docs/pgsql/html
 
 %changelog
