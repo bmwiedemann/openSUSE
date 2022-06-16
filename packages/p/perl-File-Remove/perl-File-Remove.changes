@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 14 03:06:20 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.61
+   see /usr/share/doc/packages/perl-File-Remove/Changes
+
+  1.61    2022-06-13 - Shlomi Fish
+      - Merged https://github.com/shlomif/File-Remove/pull/4
+
+-------------------------------------------------------------------
 Fri Oct 23 03:07:15 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.60
