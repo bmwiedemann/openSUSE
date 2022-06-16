@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun  3 03:07:30 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.1.0
+   see /usr/share/doc/packages/perl-Test-Compile/Changes
+
+  v3.1.0	  2022-06-02
+      - (Tom Hukins) Treat files with .psgi extensions as perl
+      - (Tom Hukins) Look for file in a case insensitive manner
+      - Update the example code so it doesn't import anything
+
+-------------------------------------------------------------------
 Sun Aug 22 03:09:48 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.0.1
