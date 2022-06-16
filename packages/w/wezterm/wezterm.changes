@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jun 14 14:41:05 UTC 2022 - socvirnyl.estela@gmail.com
+
+- add completions for bash, fish, and zsh
+
+- Update to version 20220408.101518.b908e2dd^git342:
+  * deps: update
+  * Fix minor typo in pad_right.md doc
+  * Fix that harfbuzz skips the usage of some freetype functions unexpectedly
+  * docs: freetype_pcf_long_family_names
+  * fonts: add freetype_pcf_long_family_names option
+  * windows: default allow_win32_input_mode=true
+  * x11: Xkb is already in the mandatory list
+  * mux: restore same-domain check for cwd when spawning tabs
+  * win32: add extended/enhanced key concept for win32 input mode
+  * deps: notify -> 5.0.0-pre.15
+  * deps: migrate from ratelimit_meter -> governor
+  * docs: fix key tables example mismatched curly braces
+  * deps: cargo update
+  * fonts: fix automatic bold synthesis
+
+-------------------------------------------------------------------
 Sat Jun 04 23:15:57 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 20220408.101518.b908e2dd^git328:

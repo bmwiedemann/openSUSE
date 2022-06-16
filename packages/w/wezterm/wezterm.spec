@@ -17,7 +17,7 @@
 
 
 Name:           wezterm
-Version:        20220408.101518.b908e2dd^git328
+Version:        20220408.101518.b908e2dd^git342
 Release:        0
 Summary:        GPU-accelerated cross-platform terminal emulator and multiplexer
 URL:            https://github.com/wez/wezterm
@@ -74,11 +74,23 @@ install -Dm 0755 %{_builddir}/%{name}-%{version}/target/release/wezterm-mux-serv
 install -Dm 0755 %{_builddir}/%{name}-%{version}/target/release/strip-ansi-escapes %{buildroot}%{_bindir}/strip-ansi-escapes
 
 install -Dm 0644 terminfo/w/wezterm %{buildroot}%{_datadir}/terminfo/w/wezterm
-install -Dm 0644 assets/%{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
+install -Dm 0644 assets/%{name}.desktop %{buildroot}%{_datadir}/applications/org.wezfurlong.%{name}.desktop
 install -Dm 0644 assets/icon/%{name}-icon.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.wezfurlong.%{name}.svg
 install -Dm 0644 assets/%{name}.appdata.xml %{buildroot}%{_datadir}/metainfo/org.wezfurlong.%{name}.appdata.xml
 install -Dm 0644 assets/shell-integration/* -t %{buildroot}%{_sysconfdir}/profile.d
 install -Dm 0644 assets/%{name}-nautilus.py %{buildroot}%{_datadir}/nautilus-python/extensions/%{name}-nautilus.py
+
+# Bash completion
+install -D -m 0644 assets/shell-completion/bash %{buildroot}%{_datadir}/bash-completion/completions/wezterm
+install -D -m 0644 assets/shell-completion/bash %{buildroot}%{_datadir}/bash-completion/completions/wezterm-gui
+
+# Zsh completion
+install -D -m 0644 assets/shell-completion/zsh %{buildroot}%{_datadir}/zsh/site-functions/_wezterm
+install -D -m 0644 assets/shell-completion/zsh %{buildroot}%{_datadir}/zsh/site-functions/_wezterm-gui
+
+# Fish completion
+install -D -m 0644 assets/shell-completion/fish %{buildroot}%{_datadir}/fish/vendor_completions.d/wezterm.fish
+install -D -m 0644 assets/shell-completion/fish %{buildroot}%{_datadir}/fish/vendor_completions.d/wezterm-gui.fish
 
 %files
 %license LICENSE.md
@@ -88,10 +100,23 @@ install -Dm 0644 assets/%{name}-nautilus.py %{buildroot}%{_datadir}/nautilus-pyt
 %{_bindir}/wezterm-mux-server
 %{_bindir}/strip-ansi-escapes
 %{_datadir}/terminfo/w/wezterm
-%{_datadir}/applications/wezterm.desktop
+%{_datadir}/applications/org.wezfurlong.wezterm.desktop
 %{_datadir}/icons/hicolor/scalable/apps/org.wezfurlong.wezterm.svg
 %{_datadir}/metainfo/org.wezfurlong.wezterm.appdata.xml
 %{_datadir}/nautilus-python/extensions/wezterm-nautilus.py
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/wezterm
+%{_datadir}/bash-completion/completions/wezterm-gui
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_wezterm
+%{_datadir}/zsh/site-functions/_wezterm-gui
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/wezterm.fish
+%{_datadir}/fish/vendor_completions.d/wezterm-gui.fish
+
 %config %{_sysconfdir}/profile.d/wezterm.sh
 
 %changelog
