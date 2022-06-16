@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 09 14:14:00 UTC 2022 - FSchreiner@suse.com
+
+- Update to version 0.12.5:
+  * [cli] up: new alias for '--skip_check_domain' -> '-S'
+  * [cli] ssh: new option '--agent_forward' aliase '-A'
+  * [cli] new option '--skip_check_domain' for 'kanku up'
+  * [util] use cache='unsafe' only for vmdk
+  * [dist] fixed order of iptables rules when using multiple networks
+  * [handler] changed get_ipaddress in SetupNetwork to console
+
+-------------------------------------------------------------------
 Mon May 09 13:19:00 UTC 2022 - FSchreiner@suse.com
 
 - Update to version 0.12.4:
