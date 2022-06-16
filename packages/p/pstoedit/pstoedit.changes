@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 15 15:13:00 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
+
+- Fix build with libstdc++ 12.1 (pstoedit-include.patch).
+- Convert text files to UNIX style line ends.
+- Do not use version numbers for modules that are loaded as *.so
+  (pstoedit-unversioned.patch).
+
+-------------------------------------------------------------------
 Thu Feb  3 23:05:55 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
 
 - Update to version 3.78:

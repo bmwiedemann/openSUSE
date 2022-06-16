@@ -25,6 +25,10 @@ Group:          Productivity/Publishing/PS
 URL:            http://www.pstoedit.net/
 Source:         https://sourceforge.net/projects/pstoedit/files/pstoedit/%{version}/%{name}-%{version}.tar.gz
 Patch1:         reproducible.patch
+# PATCH-FIX-BUILD pstoedit-include.patch sbrabec@suse.com -- Add missing include needed by libstdc++ 12.1.
+Patch2:         pstoedit-include.patch
+# PATCH-FIX-OPENSUSE pstoedit-unversioned.patch sbrabec@suse.com -- Do not use version numbers for modules that are loaded as *.so.
+Patch3:         pstoedit-unversioned.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -89,7 +93,13 @@ PostScript and PDF converter development headers and library files.
 %prep
 %setup -q
 %patch1 -p1
-chmod -x examples/*.ps examples/Makefile* doc/*.* copying
+%patch2 -p1
+%patch3 -p1
+for CRLFFILE in doc/readme.txt examples/figtext.ps ; do
+	tr -d '\r' <$CRLFFILE >$CRLFFILE.lf
+	touch -r $CRLFFILE $CRLFFILE.lf
+	mv $CRLFFILE.lf $CRLFFILE
+done
 
 %build
 # we are patching configure.ac
@@ -123,7 +133,6 @@ rm -rf %{buildroot}/usr/share/doc/%{name}
 %{_libdir}/*.so.*
 %dir %{_libdir}/pstoedit
 %{_libdir}/pstoedit/*.so
-%{_libdir}/pstoedit/*.so.*
 %{_datadir}/%{name}
 %{_mandir}/man?*/*.*
 
