@@ -163,4 +163,15 @@
 </comment>
     <requestid>981045</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>98380b9217d4e7ae1643ea2acd50c3ec</srcmd5>
+    <version>6.4.12</version>
+    <time>1655396457</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 6.4.12: 
+  * Address security advisory GHSA-v7vq-3x77-87vg
+  * CVE-2022-29238
+</comment>
+    <requestid>982883</requestid>
+  </revision>
 </revisionlist>
