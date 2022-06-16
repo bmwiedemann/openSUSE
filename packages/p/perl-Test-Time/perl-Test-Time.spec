@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Time
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,19 @@
 #
 
 
-Name:           perl-Test-Time
-Version:        0.08
-Release:        0
 %define cpan_name Test-Time
-Summary:        Overrides the time() and sleep() core functions for testing
+Name:           perl-Test-Time
+Version:        0.092
+Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/S/SA/SATOH/%{cpan_name}-%{version}.tar.gz
+Summary:        Overrides the time() and sleep() core functions for testing
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/A/AN/ANATOFUZ/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
 %{perl_requires}
 
 %description
@@ -45,11 +44,11 @@ internalized. You can set custom time by passing time => number after the
     my $then = time;   # $then equals to 301
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+PERL_USE_UNSAFE_INC=1 perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
 make test
@@ -60,7 +59,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes minil.toml README README.md
 %license LICENSE
 

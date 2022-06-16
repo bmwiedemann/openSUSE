@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jun 10 03:08:18 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.092
+   see /usr/share/doc/packages/perl-Test-Time/Changes
+
+  0.092 2022-06-09T11:18:57Z
+  	Fix x_authority (No change in the code)
+
+  0.091 2022-06-09T11:04:30Z
+  	Fix prototype attributes for older perl versions
+
+  0.09 2022-06-09T10:56:31Z
+  	Avoid subroutine redefine warning when using with Devel::Cover (nanto #15)
+
+-------------------------------------------------------------------
 Tue May  7 05:27:08 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.08
