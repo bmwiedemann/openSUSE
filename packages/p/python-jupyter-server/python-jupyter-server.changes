@@ -1,7 +1,48 @@
 -------------------------------------------------------------------
+Tue Jun 14 14:19:00 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.17.1
+  * Address security advisory GHSA-q874-g24w-4q9g
+- boo#1200548, CVE-2022-29241
+- Release 1.17.0
+  * Add the root_dir value to the logging message in case of non
+    compliant preferred_dir #804 (@echarles)
+  * missing required arguments in utils.fetch #798 (@minrk)
+  * Add helper jobs for branch protection #797 (@blink1073)
+  * [pre-commit.ci] pre-commit autoupdate #793
+    (@pre-commit-ci[bot])
+  * Update branch references and links #791 (@blink1073)
+- Release notes for 1.16.0
+  * add hook to observe pending sessions #751 (@Zsailer)
+  * Add max-age Cache-Control header to kernel logos #760
+    (@divyansshhh)
+  * Regression in connection URL calcuation in ServerApp #761
+    (@jhamet93)
+  * Include explicit package data #757 (@blink1073)
+  * Ensure terminal cwd exists #755 (@fcollonval)
+  * make 'cwd' param for TerminalManager absolute #749 (@rccern)
+  * wait to cleanup kernels after kernel is finished pending #748
+    (@Zsailer)
+  * Skip jsonschema in CI #766 (@blink1073)
+  * Remove redundant job and problematic check #765 (@blink1073)
+  * Update pre-commit #764 (@blink1073)
+  * Install pre-commit automatically #763 (@blink1073)
+  * Add pytest opts and use isort #762 (@blink1073)
+  * Ensure minimal nbconvert support jinja2 v2 & v3 #756
+    (@fcollonval)
+  * Fix error handler in simple extension examples #750
+    (@andreyvelich)
+  * Clean up workflows #747 (@blink1073)
+  * Remove Redundant Dir_Exists Invocation When Creating New Files
+    with ContentsManager #720 (@jhamet93)
+  * Handle importstring pre/post save hooks #754 (@dleen)
+- Remove extra code in check section: Python flavored alternatives
+  have been merged into python-rpm-macros
+
+-------------------------------------------------------------------
 Wed Mar 23 18:53:06 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
-- Update to verson 1.15.6
+- Update to version 1.15.6
   * Missing warning when no authorizer in found ZMQ handlers #744
     (@Zsailer)
 - Release notes for 1.15.5

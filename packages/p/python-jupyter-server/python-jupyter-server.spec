@@ -30,17 +30,14 @@
 %else
 %bcond_with libalternatives
 %endif
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
 Name:           python-jupyter-server%{psuffix}
-Version:        1.15.6
+Version:        1.17.1
 Release:        0
 Summary:        The backend to Jupyter web applications
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            https://github.com/jupyter-server/jupyter_server
-# need the release tarball for the static stylesheets
-Source:         https://github.com/jupyter-server/jupyter_server/releases/download/v%{version}/jupyter_server-%{version}.tar.gz
+URL:            https://jupyter-server.readthedocs.io
+Source:         https://files.pythonhosted.org/packages/source/j/jupyter-server/jupyter_server-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module jupyter_packaging}
 BuildRequires:  %{python_module setuptools}
@@ -53,22 +50,21 @@ Requires:       python-Jinja2
 Requires:       python-Send2Trash
 Requires:       python-anyio >= 3.1.0
 Requires:       python-argon2-cffi
-Requires:       python-jupyter-client >= 6.1.1
-Requires:       python-jupyter-core >= 4.6.0
-Requires:       python-nbconvert
+Requires:       python-jupyter-client >= 6.1.12
+Requires:       python-jupyter-core >= 4.7.0
+Requires:       python-nbconvert >= 6.4.4
 Requires:       python-nbformat >= 5.2.0
 Requires:       python-packaging
 Requires:       python-prometheus_client
 Requires:       python-pyzmq >= 17
 Requires:       python-terminado >= 0.8.3
 Requires:       python-tornado >= 6.1
-Requires:       python-traitlets >= 5
+Requires:       python-traitlets >= 5.1
 Requires:       python-websocket-client
 Provides:       python-jupyter_server = %{version}-%{release}
 Obsoletes:      python-jupyter_server < %{version}-%{release}
 %if %{with test}
 BuildRequires:  %{python_module flaky}
-BuildRequires:  %{python_module jupyter-client >= 6.1.1}
 BuildRequires:  %{python_module jupyter-server-test = %{version}}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-xdist}
@@ -109,6 +105,10 @@ Metapackage for the jupyter_server[test] requirement specifier
 
 %prep
 %setup -q -n jupyter_server-%{version}
+sed -i pyproject.toml \
+  -e 's/--color=yes//' \
+  -e '/filterwarnings/,/]/ {/error/ a \  "ignore:Module already imported so cannot be rewritten",
+                           }'
 
 %if ! %{with test}
 %build
@@ -122,30 +122,13 @@ Metapackage for the jupyter_server[test] requirement specifier
 
 %if %{with test}
 %check
-%{python_expand # provide u-a entrypoints in the correct flavor version -- installed packages and jupyter-server
-mkdir -p build/xdgflavorconfig
-export XDG_CONFIG_HOME=$PWD/build/xdgflavorconfig
-if [ -d %{_datadir}/libalternatives/ ]; then
-  for b in %{_datadir}/libalternatives/*; do
-    if [ -e "${b}/%{$python_version_nodots}.conf" ]; then
-        alts -n $(basename ${b}) -p %{$python_version_nodots}
-    fi
-  done
-fi
-mkdir -p build/testbin
-for bin in %{_bindir}/*-%{$python_bin_suffix}; do
-  # four percent into 1 by rpm/python expansions
-  ln -s ${bin} build/testbin/$(basename ${bin%%%%-%{$python_bin_suffix}})
-done
-}
 export LANG=en_US.UTF-8
-export PATH=$PWD/build/testbin:$PATH
 if [ -e ~/.local/share/jupyter ]; then
     echo "WARNING: Not a clean test environment."
     echo "You might need to delete ~/.local/share/jupyter in order to avoid test failures."
 fi
 # pytest-xdist for process control so that the worker does not indefinitely hang after success, no parallel tests
-%pytest jupyter_server --timeout 60 --force-flaky --max-runs=3 --no-flaky-report -n 1
+%pytest --timeout 60 --force-flaky --max-runs=3 --no-flaky-report -n 1
 %endif
 
 %if ! %{with test}
