@@ -18,11 +18,11 @@
 
 %define cpan_name Perl-Tidy
 Name:           perl-Perl-Tidy
-Version:        20220217
+Version:        20220613
 Release:        0
 #Upstream: GPL-1.0-or-later
 License:        GPL-2.0-or-later
-Summary:        Parses and beautifies perl source
+Summary:        Indent and reformat perl scripts
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SH/SHANCOCK/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
