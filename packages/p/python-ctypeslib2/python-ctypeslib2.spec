@@ -35,13 +35,15 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/trolldbois/ctypeslib
 Source:         https://files.pythonhosted.org/packages/source/c/ctypeslib2/ctypeslib2-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM ctypeslib-pr113-clang2py-h.patch -- gh#trolldbois/ctypeslib#113
+Patch1:         ctypeslib-pr113-clang2py-h.patch
 BuildRequires:  %{python_module clang >= 11}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testsuite}
 BuildRequires:  clang >= 11
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20220610
 Requires:       python-clang >= 11
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -54,7 +56,7 @@ BuildArch:      noarch
 Python FFI toolkit using clang.
 
 %prep
-%setup -q -n ctypeslib2-%{version}
+%autosetup -p1 -n ctypeslib2-%{version}
 sed -i '1{/^#!/d}' ctypeslib/clang2py.py
 
 # avoid pkg_resources errors because python3-clang does not provide an egg-info (even upstream does not)
@@ -75,10 +77,6 @@ LDFLAGS="-shared"
 clang $CFLAGS $LDFLAGS -o test/data/test-callbacks.so test/data/test-callbacks.c
 
 export LANG=en_US.UTF-8
-%{python_expand # u-a controlled executable
-  mkdir -p build/bin
-  ln -s %{buildroot}%{_bindir}/clang2py-%{$python_bin_suffix} build/bin/clang2py
-}
 export PATH="$(pwd)/build/bin:$PATH"
 export CPATH=$(clang  -print-resource-dir)/include
 if [ $(getconf LONG_BIT) -eq 32 ]; then

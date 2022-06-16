@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 15 11:17:35 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add ctypeslib-pr113-clang2py-h.patch
+  * Fix output check for python 3.10
+  * gh#trolldbois/ctypeslib#113
+- Remove custom u-a shuffle, provided by new
+  python_flavored_alternatives in pyunittest macro.
+
+-------------------------------------------------------------------
 Thu Apr 21 08:42:48 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - The clang command is not pulled in by python3-clang14 anymore.
