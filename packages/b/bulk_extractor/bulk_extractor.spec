@@ -15,6 +15,10 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
+%ifarch aarch64 %{arm}
+# Workaround until fixed upstream - https://github.com/simsong/bulk_extractor/issues/360
+%define _lto_cflags %{nil}
+%endif
 
 Name:           bulk_extractor
 Version:        2.0.0

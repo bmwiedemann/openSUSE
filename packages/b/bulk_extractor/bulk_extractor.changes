@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 13 11:51:17 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable LTO on aarch64 and %arm until fixed upstream
+  https://github.com/simsong/bulk_extractor/issues/360
+
+-------------------------------------------------------------------
 Fri Jun 10 17:07:14 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to version 2.0.0

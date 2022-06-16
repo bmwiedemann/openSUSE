@@ -7,4 +7,12 @@
     <comment>bulk_extractor was formally in factory, but it got stale years ago and was removed.  Upstream, after a 6 year break, has released a new version (version 2.0.0).  It seems to be a major improvement over version 1.5.5</comment>
     <requestid>982079</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>68e656039d124a67b59655c9f246fb4e</srcmd5>
+    <version>2.0.0</version>
+    <time>1655396460</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982889</requestid>
+  </revision>
 </revisionlist>
