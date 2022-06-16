@@ -157,8 +157,14 @@ touch %{buildroot}/%{_localstatedir}/log/waagent.log
 ### permissinon fixes
 chmod +x %{buildroot}/%{_sbindir}/waagent2.0
 ### naming issues
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
+mv %{buildroot}/%{_sysconfdir}/logrotate.d/waagent.logrotate %{buildroot}/%{_distconfdir}/logrotate.d/waagent
+mv %{buildroot}/%{_sysconfdir}/logrotate.d/waagent-extn.logrotate %{buildroot}/%{_distconfdir}/logrotate.d/waagent-extn
+%else
 mv %{buildroot}/%{_sysconfdir}/logrotate.d/waagent.logrotate %{buildroot}/%{_sysconfdir}/logrotate.d/waagent
 mv %{buildroot}/%{_sysconfdir}/logrotate.d/waagent-extn.logrotate %{buildroot}/%{_sysconfdir}/logrotate.d/waagent-extn
+%endif
 
 # install tests
 %if 0%{?suse_version} && 0%{?suse_version} > 1315
@@ -199,8 +205,14 @@ cp -r tests %{buildroot}/%{python_sitelib}/azurelinuxagent
 %{_sbindir}/rcwaagent
 %attr(0755,root,root) %{_sbindir}/waagent
 %attr(0755,root,root) %{_sbindir}/waagent2.0
+%if 0%{?suse_version} > 1500
+%dir %{_distconfdir}/logrotate.d
+%config(noreplace) %{_distconfdir}/logrotate.d/waagent
+%config(noreplace) %{_distconfdir}/logrotate.d/waagent-extn
+%else
 %config(noreplace) %{_sysconfdir}/logrotate.d/waagent
 %config(noreplace) %{_sysconfdir}/logrotate.d/waagent-extn
+%endif
 %config(noreplace) %{_sysconfdir}/waagent.conf
 %ghost %{_localstatedir}/log/waagent.log
 %if 0%{?suse_version} > 1140

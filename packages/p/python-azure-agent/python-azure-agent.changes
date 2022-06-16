@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 15 10:57:00 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Moved logrotate files from user specif directory /etc/logrotate.d
+  to vendor specif directory /usr/etc/logrotate.d.
+
+-------------------------------------------------------------------
 Tue May 17 15:11:53 UTC 2022 - pgajdos@suse.com
 
 - require python-rpm-macros to fix build for TW
