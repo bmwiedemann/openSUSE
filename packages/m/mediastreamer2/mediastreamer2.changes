@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun  8 03:06:47 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com> - 5.1.32
+
+- Update to version 5.1.32:
+  * Fix a crash/no webcam behaviour with msmfoundation
+  * manger reload is requested if audio routes add/remove device
+
+-------------------------------------------------------------------
 Sat May  7 14:54:28 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - Update to version 5.1.29:

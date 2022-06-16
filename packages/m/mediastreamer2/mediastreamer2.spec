@@ -19,7 +19,7 @@
 %define sobase  libmediastreamer
 %define sover   11
 Name:           mediastreamer2
-Version:        5.1.29
+Version:        5.1.32
 Release:        0
 Summary:        Audio/Video real-time streaming
 License:        GPL-3.0-or-later
