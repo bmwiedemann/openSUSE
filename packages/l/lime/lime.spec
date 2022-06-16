@@ -19,10 +19,10 @@
 %define soname  liblime
 %define sover   0
 Name:           lime
-Version:        5.0.71
+Version:        5.1.32
 Release:        0
 Summary:        Instant Message End-to-End Encryption Library
-License:        GPL-3.0-only
+License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://linphone.org/technical-corner/lime/
 Source:         https://gitlab.linphone.org/BC/public/lime/-/archive/%{version}/%{name}-%{version}.tar.bz2

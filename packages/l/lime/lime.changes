@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun  8 03:06:10 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com> - 5.1.32
+
+- Update to version 5.1.32:
+  * Fix syntax error in Github issue template
+  * Improve trace
+- revert license tag change
+
+-------------------------------------------------------------------
 Thu Mar 24 10:18:42 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 5.0.71:
