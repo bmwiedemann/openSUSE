@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun  8 03:07:55 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com> - 5.1.42
+
+- Update to version 5.1.42:
+  * Fixed incoming call ringtone being played even if device is in do not disturb mode
+  * Fixed call log duration not available in End state
+  * Fixed call duration not returning 0 if call didn't connect
+  * Fixed BufferedReader not closed
+  * Fixed adding a phone number with an invalid label to a Friend
+
+-------------------------------------------------------------------
 Sat May  7 15:00:10 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - Update to version 5.1.24:

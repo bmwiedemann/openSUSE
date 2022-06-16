@@ -26,7 +26,7 @@
 %endif
 %define sover   10
 Name:           linphone
-Version:        5.1.24
+Version:        5.1.42
 Release:        0
 Summary:        Web Phone
 License:        GPL-3.0-or-later
@@ -251,6 +251,8 @@ sed -i "/OPENLDAP_INCLUDE_DIRS/,/LDAP_LIB/s@\${CMAKE_INSTALL_PREFIX}@$PWD/aux@;s
   -DENABLE_STATIC=OFF          \
   -DCMAKE_LINK_WHAT_YOU_USE=ON
 
+#5.1.42: fix error: return-statement with a value, in function returning 'void'
+sed -i '/void CorePrivate::doLater/,/^}/s@return @@' ../src/core/core.cpp
 %cmake_build
 
 %install
