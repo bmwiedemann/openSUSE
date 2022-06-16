@@ -1,0 +1,5 @@
+<package name="qore-openldap-module" project="openSUSE:Factory">
+  <title>Qore OpenLDAP Module</title>
+  <description>This module exposes functionality from the openldap library as a Qore API.</description>
+  <devel project="devel:languages:misc" package="qore-openldap-module"/>
+</package>
