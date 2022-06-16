@@ -58,4 +58,21 @@ Requires SR#908927</comment>
     <comment></comment>
     <requestid>931996</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ac27519a6206302283e74469a0e9a09c</srcmd5>
+    <version>1.5.3</version>
+    <time>1655396386</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.3
+  * fixed merging namespaces in externsl XSDs with overlapping prefixes
+  * fixed handling complexType elements with a sequence and any element
+  * fixed error message for WSDLLib::getWebServiceFromUrl() when the 
+    file could not be read
+  * fixed loading URLs with multiple imports of the same external 
+    XSD schema 
+  * fixed a type error processing messages on listeners with no hostname 
+    socket info value
+</comment>
+    <requestid>982848</requestid>
+  </revision>
 </revisionlist>

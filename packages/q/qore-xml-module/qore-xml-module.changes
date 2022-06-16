@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 26 12:35:03 UTC 2022 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to version 1.5.3
+  * fixed merging namespaces in externsl XSDs with overlapping prefixes
+  * fixed handling complexType elements with a sequence and any element
+  * fixed error message for WSDLLib::getWebServiceFromUrl() when the 
+    file could not be read
+  * fixed loading URLs with multiple imports of the same external 
+    XSD schema 
+  * fixed a type error processing messages on listeners with no hostname 
+    socket info value
+
+-------------------------------------------------------------------
 Sun Oct 31 13:55:01 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.5.1 for Qore 1.0.10
