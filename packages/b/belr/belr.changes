@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun  8 03:05:24 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com> - 5.1.32
+
+- Update to version 5.1.32:
+  * Fix syntax error in Github issue template
+  * Parse integers as long long
+
+-------------------------------------------------------------------
 Wed Apr 27 04:45:13 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - Update to version 5.1.12:
