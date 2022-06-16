@@ -1,0 +1,107 @@
+-------------------------------------------------------------------
+Wed Jun 15 13:51:29 UTC 2022 - rombert@apache.org
+
+- Update to version v0.12.0:
+  * notice about security incident and audit
+  * Update README.md
+  * Update README.md
+  * Update README.md
+  * Update README.md
+  * feat(updater): update from github releases
+  * chore(updater): add bland/semver module
+  * Distribute not in if statement for clarity.
+  * When filter is selected but no device is selected show unconfigured.
+  * Remove unnecessary parenthesis.
+  * when no mic is connected and mic is selected to filter, don't show load
+
+-------------------------------------------------------------------
+Fri Apr 22 06:53:02 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.11.5:
+  * Makefile: enable -trimpath
+  * modules: Append original device name to virtual microphone
+  * Makefile: use $(MAKE) instead of directly using make
+  * Chore: Upgrade nucular GUI dependency
+  * Chore: Upgrade toml dependency
+- Do not use -buildmode=pie in ppc64 where it's not supported.
+
+-------------------------------------------------------------------
+Fri Oct 08 20:46:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 0.11.4:
+  * Pulseaudio: Don't crash on receiving longer-than-expected string message
+  * Fix desktop icon
+  * Add PipeWire support to README
+  * UI: Add confirm screen for unload/reload when device in use
+  * Handle non-semver versions in audio client gracefully-ish
+  * pulseaudio: update module with fixed cookie lookup
+  * CLI: Cleanup temp files on exit
+  * c:ladspa: Fix linking with libm
+  * Revert "Temporarily force clang if available"
+- drop noisetorch-fix-ladspa-linking.patch (obsolete)
+
+-------------------------------------------------------------------
+Tue Aug  3 13:22:05 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Don't link statically
+
+-------------------------------------------------------------------
+Thu Jul 15 10:55:04 UTC 2021 - Robert Munteanu <rombert@apache.org>
+
+- Include the version and packaging information in the about screen 
+
+-------------------------------------------------------------------
+Wed May 26 08:12:05 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix linking of librnnoise.so
+  adds noisetorch-fix-ladspa-linking.patch
+
+-------------------------------------------------------------------
+Tue May 25 09:50:27 UTC 2021 - asn@cryptomilk.org
+
+- Update to version 0.11.2:
+  * https://github.com/lawl/NoiseTorch/releases/tag/0.11.2
+  * https://github.com/lawl/NoiseTorch/releases/tag/0.11.1
+  * https://github.com/lawl/NoiseTorch/releases/tag/0.11.0
+
+-------------------------------------------------------------------
+Mon May 17 12:02:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- make noisetorch effective permissible cap_sys_resource (bsc#1184843) 
+
+-------------------------------------------------------------------
+Mon May 17 11:33:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- remove -tags release to avoid the auto-updater 
+
+-------------------------------------------------------------------
+Sat Apr 24 09:22:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- use buildmode=pie 
+
+-------------------------------------------------------------------
+Mon Mar 29 15:00:15 UTC 2021 - dmueller@suse.com
+
+- Update to version 0.10.1:
+  * Use -O2 for LADSPA module
+  * Use go:embed instead of scripts/embedbinary.go
+  * Update 'Special thanks to'
+  * Update build instructions
+  * Add information about potentially having to relog for PATH changes
+  * Convert fmt print to log print
+  * Fix unloading via CLI (-u)
+  * Use 24-hour clock when adding timestamps to log file names. (#92)
+  * Add warning if FS capabilities don't match process capabilities
+  * Make sure we remove rlimit for unloading too
+  * Require capabilities on startup
+  * use different params for fixed latency devices to hopefully correct latency faster
+  * Add -Wall, -Werr
+  * Replace noise-suppression-for-voice with own implementation
+  * Update README.md
+  * remove more commented code (yuck)
+  * remove commented out code
+
+-------------------------------------------------------------------
+Mon Jan  4 21:07:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- Initial package (0.9.0) 
