@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-dataformats-binary
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_with extra_dataformats
 # Extra formats are disabled because of circular dependencies
 Name:           jackson-dataformats-binary
-Version:        2.13.0
+Version:        2.13.3
 Release:        0
 Summary:        Jackson standard binary data format backends
 License:        Apache-2.0 AND BSD-3-Clause
@@ -28,12 +28,11 @@ URL:            https://github.com/FasterXML/jackson-dataformats-binary
 Source0:        https://github.com/FasterXML/jackson-dataformats-binary/archive/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations) >= %{version}
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core) >= %{version}
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind) >= %{version}
-BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:) >= %{version}
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations) >= 2.13
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core) >= 2.13
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind) >= 2.13
+BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:) >= 2.13
 BuildRequires:  mvn(com.google.code.maven-replacer-plugin:replacer)
-BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildArch:      noarch
 %if %{with extra_dataformats}
