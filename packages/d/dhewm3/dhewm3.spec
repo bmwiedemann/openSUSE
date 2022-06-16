@@ -1,7 +1,7 @@
 #
 # spec file for package dhewm3
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dhewm3
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        DOOM 3 source port
 License:        GPL-3.0-only
@@ -25,13 +25,10 @@ URL:            https://github.com/dhewm/dhewm3
 Source0:        https://github.com/dhewm/%{name}/archive/%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(sdl2)
 BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openal)
-BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(zlib)
 
 %description

@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Wed Jun 15 16:42:19 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.5.2:
+* Gamma and Brightness are now applied in the shaders instead of
+  by setting hardware gamma.  Can be disabled (so hardware gamma
+  is used again) with `r_gammaInShaders 0`
+* Cycle through multiple Quicksave slots instead of immediately
+  overwriting the last Quicksave. The `com_numQuicksaves` CVar
+  allows setting the number of QuickSaves
+  (gh#dhewm/dhewm3#392)
+* Make r_locksurfaces work
+  It doesn't do exactly what its description and name suggests:
+  it renders everything that is *currently* visible from the
+  position/view the player had when setting `r_locksurfaces 1`.
+  Originally it was supposed to render exactly the surfaces that
+  *were* visible then, but I couldn't get that to work.
+  This is pretty similar, but there may be differences with opened
+  doors and such.
+  (gh#dhewm/dhewm3#357)
+* Keyboard input improvements (mostly SDL2-only):
+  - Support (hopefully) all keyboard keys on all kinds of keyboard
+    layouts by using scancodes for otherwise unknown keys
+  - Support typing in non-ASCII characters, if supported by Doom3
+    (it supports ISO-8859-1)
+  - Support the clipboard also on non-Windows platforms
+    You can paste text from the clipboard into the console or
+    other edit fields with `Shift+Insert`
+  - Explicit support for Right Ctrl, Alt and Shift keys
+    (can be bound to different actions than their left
+    counterparts)
+  - Added `in_grabKeyboard` CVar to make sure dhewm3 gets *all*
+    keyboard input
+    Prevents the Windows-key or Alt-Tab or whatever from taking
+    focus from the game
+  - Added `in_ignoreConsoleKey` - if set to `1`, the console is
+    only opened with Shift+Esc, and the "console key" (that key
+    between Esc, 1 and Tab) can be freely bound to an action
+    (and its char can be typed in the console without closing
+    it).
+  - Added (SDL2-only) "auto" option for `in_kbd`: When not
+    disabling the console key, dhewm3 will try to automatically
+    detect it if `in_kbd` is set to "auto" (now default)
+* Reworked mouse-input and -grabbing code, using absolute mouse
+  mode in fullscreen GUIs (except for the PDA, because it's
+  implemented weirdly).
+  This made releasing the mouse in the main menu possible, as now
+  the ingame cursor is at the same position as the system cursor.
+* `s_alReverbGain` CVar to reduce EFX reverb effect intensity
+  (gh#dhewm/dhewm3#365)
+* Pause (looped) sounds when entering menu
+  (gh#dhewm/dhewm3#330)
+* Fixes for looped sounds
+  (gh#dhewm/dhewm3#390)
+* Replace libjpeg with stb_image and libogg/libvorbis(file) with
+  stb_vorbis
+  - Now the only required external dependencies should be OpenAL,
+    SDL, zlib and optionally libCURL (and of course the C and C++
+    runtimes)
+* (Optionally) use libbacktrace on non-Windows platforms for more
+  useful backtraces in case of crashes (usually linked statically)
+* Fixed endless loop (game locking up at startup) if graphics
+  settings couldn't be applied
+  (gh#dhewm/dhewm3#386)
+* Fixed some warnings and uninitialized variables
+* Work around dmap bug caused by GCC using FMA "optimizations"
+  (gh#dhewm/dhewm3#147)
+* Prevent dhewm3 from being run as root on Unix-like systems to
+  improve security
+* Replaced most usages of `strncpy()` with something safer to
+  prevent buffer overflows (remaining cases should be safe).
+* Console output is now logged to `dhewm3log.txt`
+  (last log is renamed to `dhewm3log-old.txt`)
+  - On Windows it's in `My Documents/My Games/dhewm3/`
+  - On Mac it's in `$HOME/Library/Application Support/dhewm3/`
+  - On other Unix-like systems like Linux it's in
+    `$XDG_DATA_HOME/dhewm3/` (usually `$HOME/.local/share/dhewm3/`)
+* Improved compatibility with Wayland
+  (gh#dhewm/dhewm3#426)
+* Work around assertion in AlphaLabs4 due to "ride_of_death"
+  yeeting the dead "monster_zsec_shotgun_12" into the void
+  (gh#dhewm/dhewm3#409)
+* Support loading some mods known to need `fs_game_base d3xp` via
+  Mods menu (currently, *The Lost Mission* and *LibreCoop d3xp*
+  are supported)
+* Disable assertion in idSampleDecoderLocal::DecodeOGG() that
+  triggered when starting a new Classic Doom3 game
+  (gh#dhewm/dhewm3#461)
+
+-------------------------------------------------------------------
 Sun Mar 14 10:09:33 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 1.5.1:
