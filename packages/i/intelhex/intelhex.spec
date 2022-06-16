@@ -1,7 +1,7 @@
 #
 # spec file for package intelhex
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           intelhex
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        Library for Intel HEX Files Manipulations
 License:        BSD-3-Clause
@@ -27,7 +27,6 @@ Source:         https://github.com/bialix/intelhex/archive/%{version}.zip
 BuildRequires:  dos2unix
 BuildRequires:  python3
 BuildRequires:  unzip
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -48,8 +47,8 @@ converts binary data to HEX, and the “hex2bin.py” works the other direction.
 “hex2dump.py” converts data from HEX to a hexdump which is useful for
 inspecting data, and “hexmerge.py” merges multiple HEX files into one.
 
-
 %lang_package
+
 %prep
 %setup -q
 
@@ -61,17 +60,14 @@ python3 setup.py\
 python3 setup.py\
 	install\
 	--prefix=%{_prefix}\
-	--root=$RPM_BUILD_ROOT
-dos2unix AUTHORS.rst NEWS.rst Readme.rst LICENSE.txt
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+	--root=%{buildroot}
+dos2unix AUTHORS.rst NEWS.rst README.rst LICENSE.txt
 
 %files
-%defattr(-, root, root)
-%doc AUTHORS.rst NEWS.rst Readme.rst
+%doc AUTHORS.rst NEWS.rst README.rst
 %license LICENSE.txt
-%{_bindir}/*
+%{_bindir}/bin2hex.py
+%{_bindir}/hex*.py
 %{python_sitelib}/*
 
 %changelog
