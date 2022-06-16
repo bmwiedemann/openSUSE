@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Jun 14 06:39:35 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 2022.06.13:
+  * fix: Pass the build data to rustc_private crates
+  * More precise proc-macro errors
+  * internal: Simplify `hir_ty::utils`
+  * internal: Remove `Generics::type_iter` in favor of `Generics::iter`
+  * fix: Don't respond to cancelled requests when retrying them
+  * fix typo in style.md
+  * fix: Fix config patching for callable snippets
+  * restrict the assist so that it only appears if the cursor is on the loop keyword
+  * change 'loop to 'l, as 'loop is not a valid label name
+  * make generated test pass and make tidy happy
+  * add more tests and some doc
+  * Make add_label_to_loop basically work
+  * internal: Bump Dependencies
+  * internal: Update dashmap and freeze its version
+  * feat: append :: after
+  * Hide param inlay hint when argument is fn-like macro with similar name
+  * Fix a couple of weak warnings found by rust-analyzer itself
+  * Add doc comment
+  * Rustfmt
+  * Add proc macro ABI for rustc 1.63
+  * fix: show non-std enum in a fresh use tree completion
+  * Remove the unneeded destructuring assignment in `run` in `project-model/src/build_scripts.rs`
+  * Add restartServerOnConfigChange setting
+  * Restart server automatically on settings changes
+  * fix: avoid adding enum parens in use
+  * feat: fix inline variable produce mismatched type
+  * fix: #12441 False-positive type-mismatch error with generic future
+  * Bring the version command output in line with other rust tools
+
+-------------------------------------------------------------------
 Wed Jun 08 15:39:26 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 2022.06.06:
