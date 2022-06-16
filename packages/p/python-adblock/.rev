@@ -42,4 +42,14 @@
   * Fix test suite for Python 3.10</comment>
     <requestid>950693</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>79c593297e900bde4dd1db8c4fca9a22</srcmd5>
+    <version>0.5.2</version>
+    <time>1655396449</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.2
+  * Include complete redirect rule feature
+    (gh#ArniDagur/python-adblock#59)</comment>
+    <requestid>982852</requestid>
+  </revision>
 </revisionlist>
