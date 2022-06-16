@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Jun 15 09:15:35 UTC 2022 - mliska@suse.cz
+
+- Update to version 1.16+git.20220603.dfeb750:
+  * lcov: Finalize release 1.16
+  * Makefile: Create make target for creating release tags
+  * lcov: Update website links
+  * geninfo: Fix handling of source path containing non-ASCII characters
+  * geninfo: support remove CR endings of old intermediate text
+  * lcov: Add file attributes for shell scripts
+  * genhtml: Add option to change HTML footer text
+  * genhtml: Add option to change HTML header text
+  * genpng: Improve dark-mode support
+  * lcov: quote tool_dir to enable paths with spaces.
+  * lcov: Improve JSON module selection
+  * lcov: Make JSON module configurable
+  * Fix genhtml on macOS
+  * genhtml/genpng/lcov:  add missing rc support and man page entries
+  * Add a dark mode option
+  * example: Fix example relying on undefined behavior
+  * lcov: add a new --fail-under-lines option
+  * lcov: Finalize release 1.15
+  * Makefile: Reduce unnecessary meta-data in tar and RPM files
+  * geninfo: Add workaround for MSYS GCC problem
+  * geninfo: Change json module
+  * geninfo: Fix warning due to non-numerical branch count
+  * geninfo: Fix missing check for unterminated exclusion marker
+  * Exclusion of exception branches
+  * genhtml: Fix applying prefix to a prefix filename
+  * genhtml: Add more demangler options
+  * tests: Minor improvements
+
+-------------------------------------------------------------------
 Thu Jan 13 22:04:27 UTC 2022 - Federico Mena Quintero <federico@suse.com>
 
 - Add dependency on findutils, as lcov's scripts use find(1) to locate
