@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Jun 13 14:17:50 UTC 2022 - fcrozat@suse.com
+
+- Update to version 1.24.1+k3s1:
+  * Set default egress-selector-mode to agent
+  * Remove control-plane egress context and fix agent mode.
+  * Refactor egress-selector pods mode to watch pods
+  * Bump containerd and runc
+  * Update flaky tests for v1.24 (#5625)
+  * Revert "Give kubelet the node-ip value (#5579)"
+  * Re-add --cloud-provider=external kubelet arg
+  * Update to v1.24.1 (#5616)
+  * Bump dynamiclistener to v0.3.3
+  * remove dweomer from maintainers (#5582)
+  * Add support for configuring the EgressSelector mode
+  * Give kubelet the node-ip value (#5579)
+  * Remove errant unversioned etcd go.mod entry
+  * Remove objects when removed from manifests (#5560)
+  * Add apparmor-parser to OpenSUSE/SLE Micro test VMs
+  * Bump sonobuoy version and fix deprecated arg
+  * Build standalone containerd 1.6
+  * Remove --docker/dockershim support
+  * Always set pod-infra-container-image to protect it from image GC
+  * Remove deprecated flags from cloud-controller-manager
+  * Remove deprecated flags from kube-apiserver
+  * Remove deprecated flags from kubelet
+  * Update Kubernetes to v1.24
+  * Bump golang to 1.18.1
+  * Update CNI version in config file
+  * Fix typo in image scan script
+  * Mark v1.23.6+k3s1 stable
+  * Add "ipFamilyPolicy: PreferDualStack" to have dual-stack ingress support
+  * Move auto-generated resolv.conf out of /tmp to prevent accidental cleanup
+  * Check if user has a correct cluster-cidr and service-cidr config
+  * Replace DefaultProxyDialerFn dialer injection with EgressSelector support
+  * Ensure that WaitForAPIServerReady always re-dials through the loadbalancer
+  * Don't start embedded kubelet until after apiserver is up
+  * Add new `k3s completion` command for shell completion (#5461)
+  * Use ListWatch helpers instead of bare List/Watch
+  * server: Allow to enable network policies with IPv6-only
+  * agent(netpol): Explicitly enable IPv4 when necessary
+  * Bump kine to v0.9.1 for nats.io support
+  * Make supervisor errors parsable by Kubernetes client libs
+  * Drop unnecessary intermediate variable
+  * Add systemd cgroup controller support
+  * Add CNI Plugins and Flannel version to build scripts
+
+-------------------------------------------------------------------
 Fri Jun  3 07:43:27 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
 
 - Ensure k3s-selinux is required, instead of container-selinux.

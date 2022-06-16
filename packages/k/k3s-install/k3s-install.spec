@@ -17,7 +17,7 @@
 
 
 Name:           k3s-install
-Version:        1.23.6+k3s1
+Version:        1.24.1+k3s1
 Release:        0
 Summary:        Installer for k3s optimised for openSUSE MicroOS
 License:        Apache-2.0
