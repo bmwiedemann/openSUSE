@@ -29,6 +29,12 @@ Source2:        irssi.png
 Source3:        https://github.com/irssi/irssi/releases/download/%{version}/irssi-%{version}.tar.xz.asc
 # https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x7EE65E3082A5FB06AC7C368D00CCB587DDBEF0E1
 Source4:        %{name}.keyring
+# PATCH-FIX-UPSTREAM use-isystem-for-include.patch -- based on PR 1384
+Patch1:         use-isystem-for-include.patch
+# PATCH-FIX-UPSTREAM fix-textbuffer-view.patch -- based on PR 1387
+Patch2:         fix-textbuffer-view.patch
+# PATCH-FIX-UPSTREAM default-hash-chan.patch -- based on PR 1388
+Patch3:         default-hash-chan.patch
 BuildRequires:  meson
 BuildRequires:  glib2-devel
 BuildRequires:  ncurses-devel
@@ -72,6 +78,7 @@ compile plugins for the irssi package.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 %meson \
@@ -83,6 +90,7 @@ compile plugins for the irssi package.
     %if 0%{?suse_version} > 1330
     -Dwith-otr=yes \
     %endif
+    -DPACKAGE_VERSION="%{version}-oS1" \
 #
 %meson_build
 

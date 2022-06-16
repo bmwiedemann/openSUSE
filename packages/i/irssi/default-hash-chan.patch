@@ -1,0 +1,28 @@
+From 4864c334fcb45d64441ddafdec814b787829fc10 Mon Sep 17 00:00:00 2001
+From: ailin-nemui <ailin-nemui@users.noreply.github.com>
+Date: Mon, 13 Jun 2022 07:39:29 +0200
+Subject: [PATCH] Merge pull request #1388 from ailin-nemui/default-hash-chan
+
+default to hash channels
+
+(cherry picked from commit a5f5ea7d79274fcf547ef81f019b0c38c6863051)
+---
+ src/irc/core/irc-channels.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/irc/core/irc-channels.c b/src/irc/core/irc-channels.c
+index b0fba9b1..24f57f8d 100644
+--- a/src/irc/core/irc-channels.c
++++ b/src/irc/core/irc-channels.c
+@@ -71,7 +71,7 @@ static char *force_channel_name(IRC_SERVER_REC *server, const char *name)
+ 		return g_strdup(name);
+ 
+ 	chantypes = g_hash_table_lookup(server->isupport, "chantypes");
+-	if (chantypes == NULL || *chantypes == '\0')
++	if (chantypes == NULL || *chantypes == '\0' || strchr(chantypes, '#') != NULL)
+ 		chantypes = "#";
+ 
+ 	return g_strdup_printf("%c%s", *chantypes, name);
+-- 
+2.36.1
+

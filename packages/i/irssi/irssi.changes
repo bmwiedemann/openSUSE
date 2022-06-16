@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 14 14:52:59 UTC 2022 - Ailin Nemui <ailin.nemui@gmail.com>
+
+- backport first set of fixes:
+  - add use-isystem-for-include.patch, fixes build with perl 5.36
+    (#1381)
+  - add fix-textbuffer-view.patch, fixes lost lines on display
+    (#1382)
+  - add default-hash-chan.patch, default to joining #-channels
+    again (#1385)
+
+-------------------------------------------------------------------
 Sat Jun 11 17:47:05 UTC 2022 - Ailin Nemui <ailin.nemui@gmail.com>
 
 - drop irssi.conf, upstream does not install it anymore
