@@ -1,7 +1,7 @@
 #
 # spec file for package python-tldextract
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define oldpython python
 Name:           python-tldextract
-Version:        3.1.2
+Version:        3.3.0
 Release:        0
 Summary:        Python module to separate the TLD of a URL
 License:        BSD-3-Clause

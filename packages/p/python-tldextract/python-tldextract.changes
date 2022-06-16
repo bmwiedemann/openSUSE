@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Jun 15 16:34:05 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to 3.3.0
+Features
+  * Add CLI flag `--suffix_list_url` to set the suffix list URL(s)
+    or source file(s)
+    (#gh/john-kurkowski/tldextract#197)
+  * Add CLI flag `--no_fallback_to_snapshot` to not fall back to
+    the snapshot
+    (#gh/john-kurkowski/tldextract#260)
+  * Add alias `--include_psl_private_domains` for CLI flag
+    `--private_domains`
+Bugfixes
+  * Handle more internationalized domain name dots
+    (#gh/john-kurkowski/tldextract#253)
+Misc.
+  * Update bundled snapshot
+  * Add basic CLI test coverage
+Changes in 3.2.1:
+Bugfixes
+  * Fix incorrect namespace used for caching function returns
+    (#gh/john-kurkowski/tldextract#258)
+Changes in 3.2.0:
+Features
+  * Add types to the public API
+    (#gh/john-kurkowski/tldextract#244)
+Bugfixes
+    * Add support for Python 3.10, drop EOL Python 3.6
+      (#gh/john-kurkowski/tldextract/issues/246))
+
+-------------------------------------------------------------------
 Fri Oct  1 07:26:20 UTC 2021 - Mia Herkt <mia@0x0.st>
 
 - Update to 3.1.2 (no visible changes)
