@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jun  8 03:08:22 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com> - 4.4.5
+
+- Update to version 4.4.5:
+  * Chat rooms may be mark as read while hidden
+- Update to version 4.4.4:
+  * Revert ordering messages from receiving time
+- Update to version 4.4.3:
+  * Crash on searchs with special characters
+- Update to version 4.4.2:
+  * Add Sanitizer build
+  * Add Sanitizer build
+  * Order messages from receiving time
+  * Fix H264 download URL
+  * Hide Admin status in One-to-one chats
+
+-------------------------------------------------------------------
 Sat May  7 15:05:16 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - Update to version 4.4.1:

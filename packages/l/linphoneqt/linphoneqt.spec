@@ -18,7 +18,7 @@
 
 %define _name   linphone
 Name:           linphoneqt
-Version:        4.4.1
+Version:        4.4.5
 Release:        0
 Summary:        Qt interface for Linphone
 License:        GPL-3.0-or-later
