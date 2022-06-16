@@ -746,4 +746,23 @@
   * Updated Chinese (Simplified) and Portuguese (Portugal) translations</comment>
     <requestid>978937</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>ce755677721806ab2e71bb3d3e8d22ff</srcmd5>
+    <version>1.8.6</version>
+    <time>1655396427</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.6:
+  * Keep references between objects when copy/pasting or duplicating (#3361)
+  * Improved default translation used in case of multiple options
+  * Terrain Brush: Update preview on mouse release (#3381)
+  * Fixed 'Add Variation' action in Tile Stamps context menu (#3362)
+  * Fixed importing of removed shortcuts (#3367)
+  * Fixed breaking of alternative shortcuts on import or reset (#3367)
+  * Fixed conflict detection to handle alternative shortcuts (#3368)
+  * Fixed locking up UI on property type name conflict (#3380)
+  * Scripting: Fixed possible crash when accessing Layer.map
+  * Defold plugins: Added support for rotated tiles (#3369)
+  * Updates to German translation</comment>
+    <requestid>982737</requestid>
+  </revision>
 </revisionlist>
