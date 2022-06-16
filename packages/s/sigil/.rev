@@ -207,4 +207,16 @@
     <comment></comment>
     <requestid>978742</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>5b9982cd4392ebe4b232ca2b8f8e18b8</srcmd5>
+    <version>1.9.10</version>
+    <time>1655396424</time>
+    <user>dimstar_suse</user>
+    <comment>- Add sigil-lto.patch to fix boo#1199981 
+  (Sigil EBUP editor terminates with SIGSEGV on startup.)
+  This can be removed again in version &gt; 1.9.10
+  https://github.com/Sigil-Ebook/Sigil/commit/3fd17410c31aca2000134ee28af9d42779fc88ea
+</comment>
+    <requestid>982738</requestid>
+  </revision>
 </revisionlist>

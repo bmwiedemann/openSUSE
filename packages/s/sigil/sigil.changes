@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 15 05:53:23 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Add sigil-lto.patch to fix boo#1199981 
+  (Sigil EBUP editor terminates with SIGSEGV on startup.)
+  This can be removed again in version > 1.9.10
+
+  https://github.com/Sigil-Ebook/Sigil/commit/3fd17410c31aca2000134ee28af9d42779fc88ea
+
+-------------------------------------------------------------------
 Mon May 23 14:46:29 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.9.10

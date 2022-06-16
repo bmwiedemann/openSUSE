@@ -1,0 +1,23 @@
+From 3fd17410c31aca2000134ee28af9d42779fc88ea Mon Sep 17 00:00:00 2001
+From: Doug Massay <douglaslmassay@gmail.com>
+Date: Tue, 7 Jun 2022 21:08:01 -0400
+Subject: [PATCH] Because GCC's lto is willfully chossing to suck
+
+---
+ CMakeLists.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7c8fc81fbe..06a9eef7ae 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -82,6 +82,9 @@ if( UNIX AND NOT APPLE )
+    # which point to directories outside the build tree to the install RPATH.
+    # This will ensure the Qt5 lib directory is always included after install.
+    SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
++
++   # Because GCC's link time optimization is willfully choosing to suck.
++   add_compile_options(-fno-lto)
+ endif()
+ 
+ # Check if platform is 64 bit
