@@ -17,13 +17,13 @@
 
 
 Name:           fd
-Version:        8.3.2
+Version:        8.4.0
 Release:        0
 Summary:        An alternative to the "find" utility
 License:        Apache-2.0 AND MIT
 Group:          Productivity/File utilities
 URL:            https://github.com/sharkdp/fd
-Source:         https://github.com/sharkdp/fd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
