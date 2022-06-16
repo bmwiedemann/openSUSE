@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Tue May 31 06:58:06 UTC 2022 - Stefan Weiberg <sweiberg@suse.com>
+
+- Update to v0.55.0
+
+  * All:
+    fix gnome on wayland crash
+    smaller window for small resolution screens
+    bug fix: mc-agent executable correct path
+    bug fix: Fix crash during service name change
+    better focus assist detection
+    simpler key combination for secret tabs on mac (ctrl+f1/f2/f3)
+    bug fix: Fix delete and rename account to the same name in MMM
+    Enable to rename login to empty string in MMM
+    Prevent changing login name to an existing one in MMM
+    Disable export db prompt when there is no monitored file
+    Do not save not confirmed changes when exiting MMM
+    bug fix: integrity check with orphan children nodes
+    duplicate service check in MMM
+
+  * BLE:
+    automatic bundle file parsing & password recognition
+    correct error message when not approving prompts after MMM
+    prompts for bundle version for v7
+
+-------------------------------------------------------------------
+Tue May 18 12:31:49 UTC 2021 - fawz <fawz@negentropy.io>
+
+- Add Maintainer field for debbuild builds
+- Fix typo in summary field
+
+-------------------------------------------------------------------
+Wed May 12 16:51:21 UTC 2021 - fawz <fawz@negentropy.io>
+
+- Debian_10 support
+
+-------------------------------------------------------------------
+Sun May  9 13:55:38 UTC 2021 - fawz <fawz@negentropy.io>
+
+- Initial package for OpenSUSE Tumbleweed.
