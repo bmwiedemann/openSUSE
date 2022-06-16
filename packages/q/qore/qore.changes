@@ -1,4 +1,175 @@
 -------------------------------------------------------------------
+Sun Jun  5 02:29:14 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.8.0
+  * Updated modules with initial support for generic expressions for
+    searches
+  * Addded support for data provider options to support default values
+  * Addded search_operators to the data provider response to report
+    supported search operators
+  * Fixed a type error in DataProvider::search*() calls with an empty
+    where hash argument
+  * RestClient module
+    * Fixed a bug where REST schema validation was not applied in all
+      contexts with specialized REST clients
+  * RestHandler module
+    * Do not raise a validation error when a response with an unknown
+      code has a message body; this hides the true error message from
+      the caller in case of error messages
+    * Allow a logger to be set in validators
+  * ServiceNowRestDataProvider module
+    * Fixed bugs handling the orderby, orderbydesc, and groupby search
+      options
+  * Fixed a bug where the cast<>() operator threw parse-time exceptions
+    with hashdecls that could succeed at runtime
+  * Fixed a bug handling types at parse time with the minus operator and
+    complex hash operands
+  * Fixed a static memory leak in libqore shutting down the library when
+    built with openssl 3+
+  * Fixed a bug where HTTP redirect messages were encoded twice causing
+    redirect failures in cases where the redirect URI path had encoded
+    elements
+  * Fixed a crash related to stack exhaustion resolving deeply-nested
+    references
+- Add fix-building-doc.patch
+- Add fix-logger-doc.patch
+- Update to version 1.7.2
+  * Fixed parse_datasource() to parse datasource strings with a DB name
+    as a path or with ':' chars in the DB or host name
+- Update to version 1.7.1
+  * DataProvider module: made it possible to determine the default field
+    type in HashDataType
+  * FsUtil module: fixed join_paths() to handle an arbitrary number of
+    paths as arguments (the most common use case)
+  * RestHandler module: improved error handling and sending error messages
+    when exceptions contain non-serializable objects
+  * Fixed a bug handling reference assignments and calculating matches
+    with overloaded functions and methods
+  * Fixed a bug with compilers that do not guarantee left to right argument
+    execution order such as g++ 12+; note that the C++ standard does not
+    guarantee this in any case
+  * Fixed cast<> operator handling of "or nothing" types at parse and runtime
+  * Load the default provider with OpenSSL3+ to make it work on platforms
+    where this provider is not automatically loaded
+- Update to version 1.6.0
+  * DataProvider module: added the desc key supporting a markdown description
+    to data provider info
+  * Mapper module: implemented options supporting suppressing data provider
+    calls on input and output
+  * Added HTTPClient::getSafeURL() and HTTPClient::getSafeProxyURL()
+- Update to version 1.5.0
+  * CsvUtil and FixedLengthUtil: added support for resolving locations
+    with the FileLocationHandler module
+  * DataProvider module:fixed a type error iterating data in
+    DefaultBulkRecordIterface
+
+-------------------------------------------------------------------
+Sun Jun  5 01:19:14 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.4.0
+  * DataProvider module
+    * Added support for tags on data provider types
+    * Fixed data provider factory info to provide info about the
+      actual data provider factory instead of only provider info
+    * Added "from example" APIs to data provider factories
+    * Added generic search capabilities to data providers with no
+      native search functionality
+  * Util module:
+    * Implemented the serialize_to_string() API
+    * parse_uri_query() fails if the string has newlines in it
+  * RestHandler module: Added missing make*() methods with REST
+    responses to the RestHandler class
+  * added the CipherMap constant providing a hash of known ciphers
+  * Support for OpenSSL 3+ added
+    * when Qore is compiled with OpenSSL3 or greater, all cipher
+      and digest algorithms known to the encryption library are
+      supported with dynamic APIs
+  * Removed code that generated unnecessary ILLEGAL-CALL
+    exceptions at parse time
+- Update to version 1.3.0
+  * FileLocationHandler module
+    * updated for read/write operations and added streaming APIs
+  * Added an optional encoding parameter to the FtpClient::getAsString() API
+  * Fixed a bug handling committing parse operations where final
+    checks were not always made before committing
+  * Fixed return type for Type::isAssignableFrom(Type) in the
+    reflection module
+  * Fixed bugs in variant matching that could lead to unexpected
+    results at runtime as well as errors with inherited Java code
+  * Fixed a bug dispatching method and function calls at runtime in
+    certain cases
+- Update to version 1.2.0
+  * DataProvider module
+    * Added a logger to the AbstractDataProvider class to enable
+      logging
+    * Added support for creating, updating, and deleting data providers
+  * DbDataProvider module
+    * Added support for creating, updating, and deleting data providers
+  * FreetdsSqlUtil module
+    * Fixed a bug where offset and limit were not properly supported
+      with MS SQL Server DBs
+    * Fixed a bug where date/time values in other time zones were not
+      bound correctly
+    * Fixed a bug handling transaction savepoints
+  * Fixed a bug in certain type errors involving complex types where
+    the specific complex type was omitted from the error message
+  * Fixed a bug initializing constant values at parse time;
+    now all constant expressions requiring evaluation are evaluated
+    after all other parsing is done 
+- Update to version 1.1.0
+  * Added DataProviderTypeCache::listParentTypes() to allow a list
+    of parent types to be returned
+  * Added StringOutputStream::hasData()
+  * rethrow now accepts optional exception arguments to allow
+    exceptions to be enriched in a catch block while maintaining
+    the original call stack, and the on_error statement now includes
+    an implicit argument $1 giving the currently-active exception,
+    additionally, rethrow statements are now allowed in on_error
+    statement blocks to allow for exception enrichment without
+    requiring a try/catch block.
+  * Fixed a bug in the stack guard implementation where additional
+    guard area was needed in the primary thread on some platforms
+  * Fixed bugs tagging functions and constants provided by builtin
+    modules with their module name; required to consistently provide
+    unique binary names when imported into Java, for example
+  * Fixed a bug initializing constant values that could result in
+    spurious errors
+  * Added regex APIs to the C++ string class
+  * Added a warning for constant operands with the square bracket
+    operator that are not integers
+  * Fixed a bug handling EOF conditions while parsing the final
+    part of regular expressions
+
+-------------------------------------------------------------------
+Fri May 20 22:25:36 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.0.13
+  * Fixed: builtin namespaces are not consistently tagged with the
+    providing module's name
+  * Update QUnit constructor variants taking list arguments to allow
+    them to work better with Python and Java subclasses
+  * Fixed: not possible to use a Mapper with an output provider only
+    for the output data type
+  * Fixed a bug where qpp would not recognize multi-line method
+  * Fixed a regression in the SwaggerDataProvider
+- Update to version 1.0.12
+  * Fixed handling implicit in-object calls in arguments
+  * Adding missing methods for transaction management with
+    supported DataProviders
+  * Fixed upsert usage with unique constraints and indices
+    when there is a non-matching PK
+  * Fixed handling reserved words as column names in the
+    PgsqlSqlUtil module
+  * Fixed a bug in parse_to_qore_value() with floats and numbers
+    with trailing zeros
+  * Fixed handling recursive references in Swagger schemas in the
+    Swagger module
+  * Fixed handling recursive references in Swagger schemas in the
+    SwaggerDataProvider module
+  * Mail and MailMessage fixes - downstream patches
+- Drop upstream fixed fix-module-linker-flags.patch
+
+-------------------------------------------------------------------
 Thu Oct 28 09:18:24 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.0.10:

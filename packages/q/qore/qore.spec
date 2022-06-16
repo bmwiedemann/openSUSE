@@ -1,7 +1,7 @@
 #
 # spec file for package qore
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014 David Nichols <david@qore.org>
 # Copyright (c) 2014 Petr Vanek <petr@yarpen.cz>
 #
@@ -18,10 +18,10 @@
 #
 
 
-%define so_ver 7
+%define so_ver 12
 %define module_dir %{_libdir}/qore-modules
 Name:           qore
-Version:        1.0.10
+Version:        1.8.0
 Release:        0
 Summary:        Multithreaded Programming Language
 License:        GPL-2.0-or-later OR LGPL-2.1-or-later OR MIT
@@ -32,18 +32,13 @@ Source0:        https://github.com/qorelanguage/qore/archive/refs/tags/release-%
 Source99:       qore-module.prov
 # PATCH-FIX-OPENSUSE bmwiedemann boo#1084909
 Patch0:         reproducible.patch
-# PATCH-FIX-UPSTREAM fix-module-linker-flags.patch -- gh#4335
-Patch1:         fix-module-linker-flags.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  bison
-BuildRequires:  bzip2
+BuildRequires:  bison >= 1.8.5
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  flex >= 2.5.31
 BuildRequires:  gcc-c++ >= 4.8.1
 BuildRequires:  gmp-devel
 BuildRequires:  libbz2-devel
-BuildRequires:  libtool
 BuildRequires:  mpfr-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pcre-devel
@@ -99,15 +94,14 @@ This package contains tool for working with:
 %autosetup -p1 -n %{name}-release-%{version}
 # silence the executable warning for examples
 find examples -type f|xargs chmod 644
+[ ! -e "include/qore/intern/git-revision.h" ] && echo "#define BUILD \"openSUSE %{version}\"" > include/qore/intern/git-revision.h
 
 %build
-autoreconf -fi
-%configure --disable-debug --disable-dependency-tracking
-%make_build
+%cmake
+%cmake_build
 
 %install
-%make_install
-rm %{buildroot}/%{_libdir}/libqore.la
+%cmake_install
 
 # Fix scripts
 for script in qdp qget rest saprest schema-reverse sfrest sqlutil qdx qjar qdbg{,-remote,-server,-vsc-adapter}; do
@@ -115,11 +109,12 @@ for script in qdp qget rest saprest schema-reverse sfrest sqlutil qdx qjar qdbg{
 done
 
 # Check if we have all the provides for libqore - to ensure we provide all the qore-module ABI's the code supports
-./qore --module-apis | awk -F',[[:blank:]]' '{i = 1; while (i < NF) { print $i; i++  } }' > /tmp/qore-modules.prov
+LD_LIBRARY_PATH="%{buildroot}%{_libdir}" \
+	%{__builddir}/qore --module-apis | awk 'BEGIN{ RS = ""; FS = ",[[:blank:]]"}{i = 1; while (i <= NF) { print $i; i++  } }' > /tmp/qore-modules.prov
 diff -ur %{SOURCE99} /tmp/qore-modules.prov
 
 %check
-make test
+%ctest
 
 %post -n libqore%{so_ver} -p /sbin/ldconfig
 %postun -n libqore%{so_ver} -p /sbin/ldconfig
