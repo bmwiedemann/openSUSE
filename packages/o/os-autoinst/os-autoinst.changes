@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 15 13:38:13 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1655298846.b80c956:
+  * Fix `t/18-qemu-options.t` on newer QEMU versions
+  * Add general recommendations and s390x specific details to backend docs
+  * Link the backend-specific documentation from the main README file
+  * Update documentation of default value of QEMUVGA
+  * Allow running tests (invoking isotovideo) without Git
+
+-------------------------------------------------------------------
 Fri Jun 10 10:04:22 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1654845865.16d96d7:
