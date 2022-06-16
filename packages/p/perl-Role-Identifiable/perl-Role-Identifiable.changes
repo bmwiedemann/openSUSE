@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 13 03:15:03 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.008
+   see /usr/share/doc/packages/perl-Role-Identifiable/Changes
+
+  0.008     2022-06-12 15:25:28-04:00 America/New_York
+          - tweak some packaging information (author, etc)
+          - add Role::Identifiable just to make life simpler
+            ( https://github.com/rjbs/Role-Identifiable/issues/3 )
+
+-------------------------------------------------------------------
 Sat May  2 09:45:00 UTC 2015 - coolo@suse.com
 
 - updated to 0.007
