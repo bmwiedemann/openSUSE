@@ -517,9 +517,12 @@ Prefer: libftdi-devel
 Prefer: tensorflow2
 
 # have choice for python3-sip: python3-sip-devel python3-sip4
-Prefer: python38-sip-devel python39-sip-devel
+Prefer: python38-sip-devel python39-sip-devel python310-sip-devel
 Prefer: -python38-sip4 -python38-sip4-devel
 Prefer: -python39-sip4 -python39-sip4-devel
+Prefer: -python310-sip4 -python310-sip4-devel
+
+Prefer: python310-Shapely:geos
 
 # pipewire has a jack compatible implementation - but for now we prefer the real jack
 Prefer: -pipewire-libjack-0_3-devel libjack0
