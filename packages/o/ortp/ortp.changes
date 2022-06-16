@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun  8 03:05:32 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com> - 5.1.32
+
+- Update to version 5.1.32:
+  * fix leak of ortp_malloc in bundle mode
+  * Add frame marking extension header
+  * Factorize client and server pipe function to reuse bctbx code
+  * Changed creation function with audio level to accept payload aswell
+- revert license tag change
+
+-------------------------------------------------------------------
 Thu Mar 24 10:32:36 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 5.1.12:
