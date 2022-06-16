@@ -317,4 +317,12 @@ New spdx.org license list now contains an official entry for X11 (forwarded requ
 - Drop old rpm constructs. (forwarded request 836235 from jengelh)</comment>
     <requestid>836355</requestid>
   </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>b68063371ab340330d8160a6c7cdd9d8</srcmd5>
+    <version>1.18</version>
+    <time>1655396372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982370</requestid>
+  </revision>
 </revisionlist>

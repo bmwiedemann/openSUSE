@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%define soname libpopt0
 Name:           popt
 Version:        1.18
 Release:        0
@@ -24,8 +24,7 @@ Summary:        A C library for parsing command line parameters
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/rpm-software-management/popt
-
-Source:         http://ftp.rpm.org/popt/releases/popt-1.x/popt-%{version}.tar.gz
+Source0:        http://ftp.rpm.org/popt/releases/popt-1.x/popt-%{version}.tar.gz
 Source2:        baselibs.conf
 Patch:          popt-libc-updates.patch
 BuildRequires:  libtool
@@ -40,13 +39,13 @@ based on command line arguments.  Popt allows command line arguments to
 be aliased via configuration files and includes utility functions for
 parsing arbitrary strings into argv[] arrays using shell-like rules.
 
-%package -n libpopt0
+%package -n %{soname}
 Summary:        A C library for parsing command line parameters
 Group:          System/Libraries
 Provides:       popt = %{version}
 Obsoletes:      popt < %{version}
 
-%description -n libpopt0
+%description -n %{soname}
 Popt is a C library for parsing command line parameters.  Popt was
 heavily influenced by the getopt() and getopt_long() functions. It
 improves on them by allowing more powerful argument expansion. Popt can
@@ -59,12 +58,14 @@ parsing arbitrary strings into argv[] arrays using shell-like rules.
 Summary:        Development files for the popt library
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
-Requires:       libpopt0 = %{version}
+Requires:       %{soname} = %{version}
 
 %description devel
 The popt-devel package includes header files and libraries necessary
 for developing programs which use the popt C library. It contains the
 API documentation of the popt library, too.
+
+%lang_package
 
 %prep
 %autosetup -p1
@@ -80,14 +81,16 @@ rm %{buildroot}%{_libdir}/libpopt.la
 
 %find_lang %{name}
 
-%post -n libpopt0 -p /sbin/ldconfig
+%post -n %{soname} -p /sbin/ldconfig
 
-%postun -n libpopt0 -p /sbin/ldconfig
+%postun -n %{soname} -p /sbin/ldconfig
 
-%files -n libpopt0 -f %{name}.lang
+%files -n %{soname}
 %license COPYING
 %doc CHANGES
 %{_libdir}/libpopt.so.*
+
+%files lang -f %{name}.lang
 
 %files devel
 %doc README
