@@ -101,4 +101,14 @@
   * Implement reptyr -T support for FreeBSD</comment>
     <requestid>841056</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>db2e9d9dce5cff9ad609bd3fa93eeee3</srcmd5>
+    <version>0.9.0</version>
+    <time>1655396457</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.0
+  * Add RISCV64 support on Linux
+  * Fix tty-stealing on PowerPC</comment>
+    <requestid>982865</requestid>
+  </revision>
 </revisionlist>
