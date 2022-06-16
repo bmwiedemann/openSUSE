@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-kwin
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,8 +13,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define   _name           dde-kwin
 %define   sover           0
@@ -27,42 +28,41 @@ Release:        0
 Summary:        KWin configures/plugins on the DDE
 License:        GPL-3.0-or-later
 Group:          System/GUI/Other
-Url:            https://github.com/linuxdeepin/dde-kwin
+URL:            https://github.com/linuxdeepin/dde-kwin
 Source0:        https://github.com/linuxdeepin/dde-kwin/archive/%{version}/%{_name}-%{version}.tar.gz
 Patch0:         deepin-kwin-tabbox-chameleon-rename.patch
 %if 0%{suse_version} > 1500 || 0%{?sle_version} > 150300
 Patch1:         deepin-kwin-crash.patch
-BuildRequires:  cmake(KWaylandServer)
 %endif
 # PATCH-FIX-UPSTRAM fix-library-links.patch hillwood@opensuse.org - Fix build on Tumbleweed
 # https://github.com/linuxdeepin/dde-kwin/pull/154
 Patch2:         fix-library-links.patch
 BuildRequires:  fdupes
 BuildRequires:  gtest
+BuildRequires:  kwin5-devel
+BuildRequires:  libQt5Core-private-headers-devel
+BuildRequires:  libQt5Gui-private-headers-devel
+BuildRequires:  libQt5PlatformSupport-devel-static
+BuildRequires:  libepoxy-devel
 BuildRequires:  libqt5-linguist
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5XmlPatterns)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(dtkcore)
-BuildRequires:  pkgconfig(dtkgui) >= 5.0.0
-BuildRequires:  pkgconfig(xcb)
-BuildRequires:  pkgconfig(gsettings-qt)
-BuildRequires:  cmake(KF5GlobalAccel)
-BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  plasma5-workspace-devel
 BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(Qt5X11Extras)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5GlobalAccel)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  kwin5-devel
-BuildRequires:  libepoxy-devel
-BuildRequires:  plasma5-workspace-devel
-BuildRequires:  libQt5Gui-private-headers-devel 
-BuildRequires:  libQt5Core-private-headers-devel
-BuildRequires:  libQt5PlatformSupport-devel-static
-Requires:       deepin-wallpapers
+BuildRequires:  cmake(Qt5X11Extras)
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5XmlPatterns)
+BuildRequires:  pkgconfig(dtkcore)
+BuildRequires:  pkgconfig(dtkgui) >= 5.0.0
+BuildRequires:  pkgconfig(gsettings-qt)
+BuildRequires:  pkgconfig(xcb)
 Requires:       dbus-1
+Requires:       deepin-wallpapers
 Requires:       kwin5
 Provides:       deepin-kwin5
 %if "%{kwin_version}" > "%{kwin_max}"
@@ -115,7 +115,7 @@ chmod -x %{buildroot}%{_datadir}/kwin/tabbox/chameleon/contents/ui/main.qml \
            %{buildroot}%{_datadir}/kwin/tabbox/chameleon/metadata.desktop
 %endif
 
-chmod +x %{buildroot}%{_bindir}/kwin_no_scale 
+chmod +x %{buildroot}%{_bindir}/kwin_no_scale
 rm -rf %{buildroot}%{_datadir}/kwin/*/*/LICENSE
 
 rm -rf \
@@ -126,7 +126,6 @@ rm -rf \
     %{buildroot}%{_sysconfdir}/xdg/kwinrc \
     %{buildroot}%{_sysconfdir}/xdg/kdeglobals
 
-           
 %fdupes %{buildroot}
 
 %if "%{kwin_version}" <= "%{kwin_max}"
@@ -176,4 +175,3 @@ rm -rf \
 %endif
 
 %changelog
-
