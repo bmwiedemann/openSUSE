@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun  8 03:09:08 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.012005
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.012005	2022-06-07
+
+   [ Bug Fixes ]
+   - Ensure coderefs returned by overload::Method are called with three
+     parameters, as passing two parameters can break subs imlpemented in XS.
+     Hugo van der Sanden++
+   - Fix explanation message for NumRange/IntRange
+   - Prevent stringification of Error::TypeTiny from clobbering $@.
+     bokutin++
+
+   [ Documentation ]
+   - Fix typos in documentation for wrap_methods from Type::Params.
+
+-------------------------------------------------------------------
 Sun Aug  1 03:09:04 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.012004
