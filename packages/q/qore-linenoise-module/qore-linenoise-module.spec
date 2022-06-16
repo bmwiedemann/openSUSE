@@ -1,7 +1,7 @@
 #
 # spec file for package qore-linenoise-module
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,28 @@
 #
 
 
-%define qore_version 1.0.10
-%define src_name module-linenoise-release-%{qore_version}
+%define src_name module-linenoise-%{version}
 %define module_api %(qore --latest-module-api 2>/dev/null)
 Name:           qore-linenoise-module
-Version:        1.0.0+qore%{qore_version}
+Version:        1.0.0
 Release:        0
 Summary:        Linenoise module for Qore
 License:        LGPL-2.1-or-later OR MIT
 Group:          Development/Languages/Misc
 URL:            https://www.qore.org/
-Source:         https://github.com/qorelanguage/module-linenoise/archive/refs/tags/release-%{qore_version}.tar.gz#/%{src_name}.tar.gz
+Source:         https://github.com/qorelanguage/module-linenoise/archive/refs/tags/v%{version}.tar.gz#/%{src_name}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  qore
-BuildRequires:  qore-devel >= %{qore_version}
+BuildRequires:  qore-devel >= 1.0.0
 Requires:       qore-module(abi)%{?_isa} = %{module_api}
 Suggests:       %{name}-doc = %{version}
+# Version schema changed, remove with 1.0.1 release
+Obsoletes:      %{name} = 1.0.0+qore1.0.10
+Obsoletes:      %{name} = 1.0.0+qore0.9.15
 
 %description
 The linenoise module provides readline-like functionality to Qore,
@@ -55,7 +57,7 @@ linenoise module.
 
 %build
 %cmake
-%make_build docs
+%cmake_build docs
 
 %install
 %cmake_install
@@ -66,6 +68,7 @@ linenoise module.
 %{_libdir}/qore-modules/*
 
 %files doc
-%doc README build/html/*
+%doc README
+%doc %{__builddir}/html
 
 %changelog

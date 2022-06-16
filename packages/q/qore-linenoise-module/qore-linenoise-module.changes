@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun  6 12:59:58 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.0.0
+  * Version / Release schema changed
+- Fix build with qore 1.8.0
+
+-------------------------------------------------------------------
+Sun Jun  5 00:53:45 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.0.0 for Qore 1.0.13
+
+-------------------------------------------------------------------
 Thu Oct 28 09:32:23 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.0.0 for Qore 1.0.10
