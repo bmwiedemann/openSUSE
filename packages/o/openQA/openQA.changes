@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 15 07:11:29 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1655223618.b5506d7:
+  * Extend regex to restart jobs in case of VNC errors automatically
+
+-------------------------------------------------------------------
 Fri Jun 10 09:43:00 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1654784458.53a0598:
