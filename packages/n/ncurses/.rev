@@ -3677,4 +3677,17 @@
   + set &quot;xterm-new&quot; to &quot;xterm-p370&quot;, add &quot;xterm-p371&quot; -TD</comment>
     <requestid>981121</requestid>
   </revision>
+  <revision rev="217" vrev="21">
+    <srcmd5>e884cc8004c64bb97464b6734f7105de</srcmd5>
+    <version>6.3.MACRO</version>
+    <time>1655396374</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20220612
+  + modify waddch_literal() to allow for double-width base character when
+    merging a combining character (report by Gavin Troy).
+  + improve _tracecchar_t2() formatting of base+combining character.
+
+- Add ncurses patch 20220604</comment>
+    <requestid>982383</requestid>
+  </revision>
 </revisionlist>

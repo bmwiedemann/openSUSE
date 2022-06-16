@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 13 08:13:13 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20220612
+  + modify waddch_literal() to allow for double-width base character when
+    merging a combining character (report by Gavin Troy).
+  + improve _tracecchar_t2() formatting of base+combining character.
+
+-------------------------------------------------------------------
 Tue Jun  7 08:20:21 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
-- Add ncurses patch +20220604
+- Add ncurses patch 20220604
   + add note on portable memory-leak checking in man/curs_memleaks.3x
   + remove u6-u9 from teken-2018 -TD
   + set "xterm-new" to "xterm-p370", add "xterm-p371" -TD
