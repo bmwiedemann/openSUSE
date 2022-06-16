@@ -31,4 +31,15 @@
     <comment></comment>
     <requestid>967526</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fed4fe5bc054dc690320adc323858070</srcmd5>
+    <version>6.6.2</version>
+    <time>1655396465</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.6.2:
+  * Fix support for pip&gt;=22.1 (#1618).
+  * Update PyPIRepository::resolve_reqs() for pip&gt;=22.1.1 (#1624).
+- Add ca-certificates to BuildRequires.</comment>
+    <requestid>982919</requestid>
+  </revision>
 </revisionlist>

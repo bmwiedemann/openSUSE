@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 16 05:46:18 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 6.6.2:
+  * Fix support for pip>=22.1 (#1618).
+  * Update PyPIRepository::resolve_reqs() for pip>=22.1.1 (#1624).
+- Add ca-certificates to BuildRequires.
+
+-------------------------------------------------------------------
 Thu Apr  7 11:42:20 UTC 2022 - pgajdos@suse.com
 
 - version update to 6.6.0

@@ -19,11 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pip-tools
-Version:        6.6.0
+Version:        6.6.2
 Release:        0
 Summary:        Tool to keep pinned dependencies up to date
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/jazzband/pip-tools/
 Source:         https://files.pythonhosted.org/packages/source/p/pip-tools/pip-tools-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools_scm}
@@ -46,6 +45,7 @@ BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  ca-certificates
 BuildRequires:  git-core
 # /SECTION
 %python_subpackages
@@ -73,7 +73,7 @@ pip-tools keeps pinned dependencies inside a project up to date.
 
 %check
 export LANG=en_US.UTF-8
-# https://github.com/jazzband/pip-tools/issues/1590
+# test_direct_reference_with_extras also requires network access
 %pytest -k 'not (network or test_direct_reference_with_extras)'
 
 %files %{python_files}
