@@ -358,4 +358,12 @@
     <comment>Scripted push from GNOME:Next (forwarded request 973162 from dimstar)</comment>
     <requestid>973167</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>9bc8bb6059cd60aaccd31a7aaf93c1c0</srcmd5>
+    <version>42.2</version>
+    <time>1655493680</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 982772 from iznogood)</comment>
+    <requestid>983436</requestid>
+  </revision>
 </revisionlist>
