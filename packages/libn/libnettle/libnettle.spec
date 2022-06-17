@@ -112,6 +112,8 @@ autoreconf -fiv
 
 %install
 %make_install
+chmod 0755 %{buildroot}%{_libdir}/libnettle.so.%{soname}
+chmod 0755 %{buildroot}%{_libdir}/libhogweed.so.%{hogweed_soname}
 
 # the hmac hashes:
 #

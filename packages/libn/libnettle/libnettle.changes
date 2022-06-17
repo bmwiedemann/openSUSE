@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 15 14:08:02 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Make shared libraries executable
+
+-------------------------------------------------------------------
 Mon Jan 17 11:20:55 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Provide s390x CPACF/SHA/AES Support for Crypto Libraries

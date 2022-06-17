@@ -357,4 +357,12 @@
     <comment></comment>
     <requestid>947074</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>5809242c014373b32fbc31c04e611b32</srcmd5>
+    <version>3.7.3</version>
+    <time>1655493511</time>
+    <user>dimstar_suse</user>
+    <comment>- Make shared libraries executable (forwarded request 982825 from gmbr3)</comment>
+    <requestid>982832</requestid>
+  </revision>
 </revisionlist>
