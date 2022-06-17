@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 14 07:12:35 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- 5.25.0 tarball got respun. Changes:
+  * Added Landing
+  * KStyle: Fix QQC2 ProgressBar desktop style in RTL layout direction (kde#430101)
+
+-------------------------------------------------------------------
 Thu Jun  9 11:14:56 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.0

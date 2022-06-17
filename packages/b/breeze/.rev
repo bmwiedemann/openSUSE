@@ -1183,4 +1183,15 @@
     <comment>Update to 5.25.0</comment>
     <requestid>981894</requestid>
   </revision>
+  <revision rev="140" vrev="2">
+    <srcmd5>92fec473a8613dde5385ce31688fc2ca</srcmd5>
+    <version>5.25.0</version>
+    <time>1655493498</time>
+    <user>dimstar_suse</user>
+    <comment>- 5.25.0 tarball got respun. Changes:
+  * Added Landing
+  * KStyle: Fix QQC2 ProgressBar desktop style in RTL layout direction (kde#430101)
+</comment>
+    <requestid>982574</requestid>
+  </revision>
 </revisionlist>
