@@ -23,7 +23,7 @@
 #%%global __requires_exclude pkgconfig\\(csound\\)
 
 Name:           gstreamer-plugins-rs
-Version:        0.8.2
+Version:        0.8.4+git20220607.b1b3930e
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -119,32 +119,34 @@ cp %{SOURCE3} %{buildroot}%{_datadir}/appdata/
 %{_libdir}/gstreamer-%{gst_branch}/libgstclaxon.so
 # Disable csound for now, bring issue upstream
 #%%{_libdir}/gstreamer-%%{gst_branch}/libgstcsound.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstrsdav1d.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstfallbackswitch.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstffv1.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstfmp4.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstgif.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstgtk4.so
+%{_libdir}/gstreamer-%{gst_branch}/libgsthlssink3.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsthsv.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstlewton.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrav1e.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstreqwest.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrsaudiofx.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrsclosedcaption.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstrsdav1d.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrsfile.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrsflv.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrsjson.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstrsonvif.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrspng.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrsregex.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrstextwrap.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstrstracers.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrswebp.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrusoto.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstsodium.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstthreadshare.so
-%{_libdir}/gstreamer-%{gst_branch}/libgsttogglerecord.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstffv1.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstfmp4.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstgtk4.so
-%{_libdir}/gstreamer-%{gst_branch}/libgsthlssink3.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstspotify.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsttextahead.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstthreadshare.so
+%{_libdir}/gstreamer-%{gst_branch}/libgsttogglerecord.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsturiplaylistbin.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstvideofx.so
 

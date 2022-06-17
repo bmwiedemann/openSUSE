@@ -1,4 +1,319 @@
 -------------------------------------------------------------------
+Fri Jun 17 10:01:13 UTC 2022 - bjorn.lie@gmail.com
+
+- Move the service to use the main git branch, explicit commit.
+- Update to version0.8.4+git20220607.b1b3930e:
+  * add snapshotting tracer
+  * Add SPDX-License-Identifier to all file headers
+  * audiofx:
+    - Update nnoiseless dependency to 0.4
+    - Update to nnnoiseless 0.5
+  * awstranscribe - increase presisigned url duration to 5 mins
+    from 60s
+  * Bump hrtf to version 0.8
+  * cargo_wrapper.py: added python3 version check for right usage
+    of shutil.move(..)
+  * cdg: update image and cdg_renderer
+  * cea608overlay: handle CLEAR status
+  * cea608tott: Don't zero-pad SRT indices but zero-pad hours to at
+    least two digits
+  * Change default branch from master to main
+  * ci:
+    - cargo test --all-features too...
+    - Fix syntax for coverage reports to the new format
+    - Generate coverage report also for crates with external
+      dependencies
+    - Rebuild image and move coverage job to the stable image
+    - Remove the david checkot after install
+    - Run tests with RUST_BACKTRACE
+  * closedcaption: Update to uuid 1.0
+  * colordetect: Update to color-thief release
+  * Correctly check for the `DISCONT` buffer flag to be set
+  * dav1ddec:
+    - Add 8/16 bit grayscale support
+    - Bump dependency for dav1d 1.0.0
+    - Clean up state tracking a bit
+    - Deal with the possibilty of 0/1 fps in latency math
+    - Don't consider decoding errors as fatal
+    - Expose a couple of decoder settings as properties
+    - Fix compilation after some API changes
+    - Move decoder init from start() to set_format()
+    - Move state to Mutex from Arc
+    - Pass element instance to debug logs
+    - Release input frames that immediately caused a decoding error
+    - Report latency based on frame delay
+    - Require correct alignment and stream format when running with
+      GStreamer 1.20
+    - Switch to dav1d 0.7
+    - Update for fixed dav1d-rs API
+    - Use `AtomicRefCell` instead of `Mutex` for the state
+    - Use sink_pad() convenience accessor
+    - Write src_query() in match syntax for easier extensibility
+  * deny:
+    - Ignore duplicated wasi dependency
+    - Remove duplicated `nom` dependency and add `env_logger`
+    - Remove now unneeded miniz_oxide override
+    - Remove num-rational override
+    - Update for removed duplicated dependencies
+    - Update for tokio-util
+  * fallbacksrc:
+    - Add fallback-{audio,video}-caps properties
+    - Changing the URI of the video fallback is supported in NULL
+      state
+    - Connect to `notify::active-pad` after requesting pads
+    - Disconnect signals on ReadyToNull
+    - Don't forward manual flush events to downstream
+    - Don't panic when shutting down the source and there are
+      source pad blocks but no actual source pads
+    - Flush source before restarting on errors
+    - Remove imagefreeze if it becomes unneeded
+    - Request the main pad first from fallbackswitch
+    - Reset state in fallbacksrc custom source also if changing the
+      state to READY before failed
+    - Unflush downstream pads of the source after shutting down
+      everything
+  * fallbackswitch:
+    - Add missing requires_private
+    - add support for buffers without pts
+    - Clip buffers against the segment
+    - Don't configure a framerate in the test
+    - Explictly set priority of pads in the test
+    - export GEnum used in properties
+    - factor out handle_main_timed_item()
+    - Fix clipping of buffers against the output running time
+    - Fix racy manual switching test
+    - Forward custom downstream events from active sinkpad
+    - Improve debug output of clock times and simplify some code
+    - Improve some debug outputs
+    - Log affected pad when scheduling buffer waiting for it
+    - Minor cleanup in get_sync_time
+    - Move active_sinkpad out of State into its own Mutex
+    - Notify active-pad without state lock held
+    - Only drop raw audio/video buffers if they're trailing
+    - Only notify active-pad property on state changes if it
+      actually changed
+    - Only update the output running time if it's increasing
+    - properly handle GAP events
+    - Recheck active_sinkpad after schedule_timeout
+    - Remove a redundant pad state unlock/lock
+    - Rename debug category from fallback-switch to fallbackswitch
+    - Replace with priorityswitch
+    - Reset timeout_clock_id on timeout
+    - Set end running time as current running time once a buffer
+      has passed
+    - Use cancel_timeout in schedule_timeout
+  * fmp4mux:
+    - adding headers when data resumes after EOS
+    - Add ONVIF variant with support for additional codecs
+    - Add support for multiple input streams
+    - Add support for ONVIF timed XML metadata
+    - Add support for writing out multiple tracks in the
+      serialization code
+    - Add test for muxing of multiple streams
+    - Add to default workspace members
+    - Check for force-keyunit events on both pads in the
+      multistream test
+    - HLS live example
+    - HLS VOD example
+    - Implement handling of GAP events
+    - Implement interleaving based on start timestamps instead of
+      accumulated durations
+    - In live pipelines use the current fragment end time as
+      timeout
+    - Port to aggregator as base class as preparation for
+      supporting multiple streams
+    - Use saturing_sub() in more places
+    - Use saturing subtraction to calculate sample durations
+    - Write sample flags in `tfhd` if there's only a single sample
+  * generic/threadshare: fix for nightly build
+  * .gitlab-ci.yml: Fix deprecated -Zinstrument-coverage switch
+  * gtk4:
+    - Attach main context receiver from the main context's thread
+    - Implement Default for PaintableSink
+  * hlssink3:
+    - Fix version
+    - `PadTemplate::name_template()` returns a `&str` now instead
+      of `Option<String>`
+  * hrtfrender: Switch back to hrtf 0.7
+  * m3u8-rs: Depend on version exactly 3.0.0
+  * mccparse/sccparse: Don't log gst::FlowError::Flushing or Eos as
+    error to the debug logs
+  * meson:
+    - Cleanup our meson integration
+    - Fix building when git isn't available
+  * net/onvif: implement ONVIF metadata processing elements
+  * onvifaggregator:
+    - always push current media buffer on timeout
+    - implement proper EOS support
+    - refactor to support duration-less media buffers
+    - Update for minor `PadTemplate` API changes
+  * rav1enc:
+    - Use `AtomicRefCell` instead of `Mutex` for the state
+    - Don't handle `NeedMoreData` as "soft" error
+    - Expose various new settings
+    - Include stream-format and alignment in the caps
+    - Put container sequence header into the caps
+    - Set mastering display info, content light level and HDR
+      related colorimetry
+    - Simplify code
+    - Support 8 bit grayscale input
+    - Switch from speed preset 5 to 6 as default
+  * README: Mention the colordetect element
+  * Re-license LGPL-2.1 plugins to MPL-2
+  * Remove now unnecessary `Send+Sync` impls for element/etc
+    subclasses
+  * Rename `self_` variables to `imp` for consistency
+  * Replace `Foo::from_instance(foo)` with `foo.imp()`
+  * reqwest: Don't unnecessarily borrow dereferenced values
+    explicitly
+  * Revert
+    - "fallbackswitch: Forward custom downstream events from active
+      sinkpad"
+    - "Revert "uriplaylistbin: disable test deadlocking""
+    - "uriplaylistbin: disable test deadlocking"
+  * rtponvifdepay: Set caps on the source pad
+  * rusoto:
+    - Add missing license file
+    - Export AwsTranscriberResultStability enum
+    - s3sink: Expose property to control all timeout/retry durations
+    - s3sink: Implement timeout/retry for part uploads
+    - s3sink: Make remaining requests bounded in time
+    - s3sink, s3src: Retry on server errors
+    - s3src: Implement timeout and retries
+    - Update async-tungstenite dependency to 0.17
+    - Update to crc 3 and rusoto 0.48
+  * rustfmt.toml: Add file
+  * s3src: Consolidate stream reading into get object retries
+  * Simplify some code around event/query views
+  * spotifyaudiosrc: Update to librespot 0.4
+  * textahead: `PadTemplate::caps()` returns a caps reference now
+  * textwrap: Update for textwrap 0.15 API changes
+  * threadshare:
+    - fix build on Windows
+    - Remove glib::SendUnique usage
+    - Use `into_glib_ptr()` instead of `into_ptr()`
+  * transcriberbin:
+    - Add caption-source property
+    - Don't notify signal inside lock
+    - Fix deadlock
+    - make audioqueue leaky
+    - Protect runtime "passthrough=false" change
+  * ts/examples: add rtp mode with jitter-buffer & trace stop duration
+  * ts/jitterbuffer:
+    - don't wake up immediately...
+    - set jbuf delay when instantiating it
+  * ts: log max throttling when creating Context
+  * ts/rt/Task:
+    - awake the iteration loop when it needs to be aborted
+    - use light weight executor blocking on ack or join handle
+  * tttocea608: expose roll-up timeout property
+  * tutorial/sinesrc: Use pushsrc as direct superclass in the glib::wrapper macro too
+  * Update for event/message/query view API changes
+  * Update license text in the README.md
+  * Update minimum supported GStreamer version to 1.14
+  * Update minimum supported Rust version to 1.57
+  * Update README.md with all the new plugins/elements
+  * Update to gst::_log_macro_
+  * Update to m3u8-rs 4.0
+  * Update to parking_lot 0.12 and hrtf 0.8
+  * Update versions to 0.9.0
+  * uridecodebin: stop using crossbeam_channel
+  * uriplaylistbin:
+    - add Status::ShuttingDown
+    - break reference cycle
+    - disable more tests
+    - disable more tests
+    - disable test deadlocking
+    - display invalid state when panicing
+    - fix deadlock when shutting down
+    - fix number of streaming items
+    - fix race when handling topology change
+    - handle waiting items no longer being set
+    - implement Debug on State
+    - remove pad probe when shutting down
+    - remove useless uridecodebin clone
+    - replace errored with Status enum
+    - skip missing_http test
+    - Update to more-asserts 0.3
+  * Use SPDX license format in Cargo.toml
+  * videofx: Add colordetect video filter
+
+-------------------------------------------------------------------
+Thu Jun 09 15:47:40 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 0.8.4:
+  * audiofx: Update nnoiseless dependency to 0.4
+  * awstranscribe: increase presisigned url duration to 5 mins from
+    60s
+  * cea608tott: Don't zero-pad SRT indices but zero-pad hours to at
+    least two digits
+  * ci: cargo test --all-features too...
+  * ci: run tests with RUST_BACKTRACE
+  * closedcaption: Update to uuid 1.0
+  * Correctly check for the `DISCONT` buffer flag to be set
+  * deny: Ignore duplicated wasi dependency
+  * fallbacksrc:
+    - Changing the URI of the video fallback is supported in NULL
+      state
+    - Disconnect signals on ReadyToNull
+    - Flush source before restarting on errors
+  * fallbackswitch:
+    - Add missing requires_private
+    - add support for buffers without pts
+    - export GEnum used in properties
+    - factor out handle_main_timed_item()
+    - properly handle GAP events
+  * generic/threadshare: fix for nightly build
+  * meson:
+    - Cleanup our meson integration
+    - Fix building when git isn't available
+  * rusoto: s3sink:
+    - Expose property to control all timeout/retry durations
+    - Implement timeout/retry for part uploads
+    - Make remaining requests bounded in time
+    - s3src: Retry on server errors
+  * rusoto: s3src: Implement timeout and retries
+  * rusoto:
+    - Update async-tungstenite dependency to 0.17
+    - Update to crc 3 and rusoto 0.48
+  * rustfmt.toml: Add file
+  * s3src: Consolidate stream reading into get object retries
+  * textwrap: Update for textwrap 0.15 API changes
+  * transcriberbin:
+    - Add caption-source property
+    - Don't notify signal inside lock
+    - Fix deadlock
+    - make audioqueue leaky
+     - Protect runtime "passthrough=false" change
+  * ts/examples: add rtp mode with jitter-buffer & trace stop
+    duration
+  * ts/jitterbuffer: don't wake up immediately...
+  * ts: log max throttling when creating Context
+  * ts/rt/Task:
+    - awake the iteration loop when it needs to be aborted
+    - use light weight executor blocking on ack or join handle
+  * Update Cargo.lock
+  * Update license text in the README.md
+  * Update to m3u8-rs 4.0
+  * uridecodebin: stop using crossbeam_channel
+  * uriplaylistbin:
+    - add Status::ShuttingDown
+    - break reference cycle
+    - disable more tests
+    - disable test deadlocking
+    - display invalid state when panicing
+    - fix deadlock when shutting down
+    - fix number of streaming items
+    - fix race when handling topology change
+    - handle waiting items no longer being set
+    - implement Debug on State
+    - remove pad probe when shutting down
+    - remove useless uridecodebin clone
+    - replace errored with Status enum
+    - skip missing_http test
+  * Use SPDX license format in Cargo.toml
+
+-------------------------------------------------------------------
 Wed Mar 23 08:59:08 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Update constraints for riscv64

@@ -3,17 +3,14 @@ replace-with = "vendored-sources"
 
 [source."https://github.com/gtk-rs/gtk-rs-core"]
 git = "https://github.com/gtk-rs/gtk-rs-core"
-branch = "0.15"
 replace-with = "vendored-sources"
 
 [source."https://github.com/gtk-rs/gtk3-rs"]
 git = "https://github.com/gtk-rs/gtk3-rs"
-branch = "0.15"
 replace-with = "vendored-sources"
 
 [source."https://github.com/gtk-rs/gtk4-rs"]
 git = "https://github.com/gtk-rs/gtk4-rs"
-branch = "0.4"
 replace-with = "vendored-sources"
 
 [source."https://github.com/rust-av/ffv1.git"]
@@ -27,7 +24,6 @@ replace-with = "vendored-sources"
 
 [source."https://gitlab.freedesktop.org/gstreamer/gstreamer-rs"]
 git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs"
-branch = "0.18"
 replace-with = "vendored-sources"
 
 [source.vendored-sources]

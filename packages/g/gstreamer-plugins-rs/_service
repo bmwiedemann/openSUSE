@@ -2,10 +2,10 @@
   <service name="tar_scm" mode="disabled">
     <param name="url">https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git</param>
     <param name="filename">gstreamer-plugins-rs</param>
-    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+    <param name="versionformat">0.8.4+git%cd.%h</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="revision">0.8.2</param>
+    <param name="revision">b1b3930e2bbc6cac739ce6a89988299ec2c41190</param>
     <param name="changesgenerate">enable</param>
     <param name="scm">git</param>
   </service>
