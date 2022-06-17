@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Fri Jun 17 07:42:46 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.15.2:
+  * Fix a defect in the resolution preferences that causes an infinite
+    resolution loop. #1119
+  * Update the poetry importer to support the new [tool.poetry.build] config
+    table. #1131
+  * Fix a bug where dependencies with requires-python pre-release versions 
+    caused pdm update to fail with InvalidPyVersion. #1111
+  * Fix a bug that dependencies are missing from the dep graph when they are
+    depended by a requirement with extras. #1097
+  * Allow specifying lockfile other than pdm.lock by --lockfile option or
+    PDM_LOCKFILE env var. #1038
+  * Ensure the pip module inside venv in installation script. #1053
+  * Fix a bug that file paths in URLs are not correctly unquoted. #1073
+  * Fix a bug on Python 3.11 that overriding an existing command from plugins
+    raises an error. #1075
+  * Fix a bug of missing subdirectory fragment when importing from a
+    requirements.txt. #1036
+  * Fix use_cache.json with corrupted python causes pdm use error. #1039
+  * Fix a bug that requirement with extras isn't resolved to the version as
+    specified by the range. #1001
+  * Support installer 0.5.x. #1002
+  * Don't create project files in pdm search command. #993
+  * Fix a bug that the env vars in source urls in exported result are not
+    expanded. #997
+  * Don't follow symlinks for the paths in the requirement strings. #976
+  * Fix a bug that _.site_packages is overridden by default option value. #985
+  * Filter out the unmatched python versions when listing the available
+    versions. #941
+  * Fix a bug displaying the available python versions. #943
+  * Fix a bug under non-UTF8 console encoding. #960
+  * Fix a bug that data files are not copied to the destination when using
+    installation cache. #961
+  * Switch from pythonfinder to findpython as the Python version finder. #930
+  * Fix a regression issue that prereleases can't be installed if the version
+    specifier of the requirement doesn't imply that. #920
+  * Fix a race condition in parallel installation by changing metadata to a
+    lazy property. This fixes a bug that incompatible wheels are installed
+    unexpectedly. #924
+  * Fix a bug that incompatible platform-specific wheels are installed. #921
+  * Fix the compatibility issue with pip>=22.0. #875
+  * Fix the hash calculation when generating direct_url.json for a local
+    pre-built wheel. #861
+  * Reduce the number of tests that require network, and mark the rest with
+    network marker. #858 
+- Remove artifacts.tar.gz, it is now included in the source tarball.
+- Drop patches because they are included upstream:
+  * mark-network-tests.patch
+  * mark-tests-path.patch
+  * sys-exec-failures.patch
+- Add patch instrumentation-test-case.patch:
+  * Instrument a test case for ease of debugging.
+- Switch to multibuild per Python version since the testsuite takes
+  approximately seven eons.
+
+-------------------------------------------------------------------
 Mon Jan 24 09:37:39 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - My ad-hoc patch failed_test_use_command.patch replaced by the

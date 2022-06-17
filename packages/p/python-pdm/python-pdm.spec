@@ -1,5 +1,5 @@
 #
-# spec file for package python-pdm
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -18,29 +18,38 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-Name:           python-pdm
-Version:        1.12.6
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test-py38"
+%define psuffix -test-py38
+%define skip_python39 1
+%define skip_python310 1
+%bcond_without test
+%endif
+%if "%{flavor}" == "test-py39"
+%define psuffix -test-py39
+%define skip_python38 1
+%define skip_python310 1
+%bcond_without test
+%endif
+%if "%{flavor}" == "test-py310"
+%define psuffix -test-py310
+%define skip_python38 1
+%define skip_python39 1
+%bcond_without test
+%endif
+%if "%{flavor}" == ""
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-pdm%{psuffix}
+Version:        1.15.3
 Release:        0
 Summary:        Python Development Master
 License:        MIT
 URL:            https://github.com/pdm-project/pdm/
 Source0:        https://files.pythonhosted.org/packages/source/p/pdm/pdm-%{version}.tar.gz
-# Artifacts for tests from gh#pdm-project/pdm#864
-Source1:        artifacts.tar.gz
-# PATCH-FIX-UPSTREAM mark-network-tests.patch gh#pdm-project/pdm#858 mcepl@suse.com
-# mark tests which require network connection (gh#pdm-project/pdm#864)
-Patch0:         mark-network-tests.patch
-# PATCH-FIX-OPENSUSE sys-exec-failures.patch mcepl@suse.com
-# sys.executable is too long with python3.10
-Patch1:         sys-exec-failures.patch
-# PATCH-FIX-UPSTREAM mark-tests-path.patch gh#pdm-project/pdm#865 mcepl@suse.com
-# mark tests which depend on exact paths of executables
-# https://github.com/pdm-project/pdm/commit/23f1cf62a302
-Patch2:         mark-tests-path.patch
 BuildRequires:  %{python_module blinker}
 BuildRequires:  %{python_module click >= 7}
-BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
-BuildRequires:  %{python_module installer}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pdm-pep517}
 BuildRequires:  %{python_module pep517}
@@ -54,13 +63,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module shellingham >= 1.3.2}
 BuildRequires:  %{python_module tomli >= 1.1.0}
 BuildRequires:  %{python_module tomlkit}
-BuildRequires:  %{python_module typing-extensions if %python-base < 3.8}
 BuildRequires:  %{python_module wheel >= 0.36.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-blinker
 Requires:       python-click >= 7
-Requires:       python-installer
+Requires:       python-installer >= 0.5
 Requires:       python-packaging
 Requires:       python-pdm-pep517
 Requires:       python-pep517
@@ -79,12 +87,17 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
+%if %{with test}
+BuildRequires:  %{python_module findpython}
+BuildRequires:  %{python_module installer >= 0.5}
+BuildRequires:  %{python_module pdm}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  git
 BuildRequires:  git-lfs
+%endif
 # /SECTION
 %python_subpackages
 
@@ -94,15 +107,19 @@ installs and manages packages in a similar way to npm that
 doesn't need to create a virtualenv at all!
 
 %prep
-%autosetup -p1 -n pdm-%{version} -a1
+%autosetup -p1 -n pdm-%{version}
 
 %build
+%if !%{with test}
 %pyproject_wheel
+%endif
 
 %install
+%if !%{with test}
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pdm
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %post
 %python_install_alternative pdm
@@ -110,14 +127,17 @@ doesn't need to create a virtualenv at all!
 %postun
 %python_uninstall_alternative pdm
 
+%if %{with test}
 %check
-# the test_show_self_package is gh#pdm-project/pdm#865
-%pytest -s -k 'not (network or path or test_show_self_package or test_use_python_by_version)'
+%pytest -x -k 'not (network or path or test_use_command)'
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/pdm
 %{python_sitelib}/pdm*
+%endif
 
 %changelog

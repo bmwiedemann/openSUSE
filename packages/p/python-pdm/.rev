@@ -20,4 +20,41 @@
 - Initial packaging effort for pdm 1.12.6</comment>
     <requestid>948488</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>59bc348db23b68b40166c2d84272127b</srcmd5>
+    <version>1.15.3</version>
+    <time>1655493651</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.15.2:
+  * Fix a defect in the resolution preferences that causes an infinite
+    resolution loop. #1119
+  * Update the poetry importer to support the new [tool.poetry.build] config
+    table. #1131
+  * Fix a bug where dependencies with requires-python pre-release versions 
+    caused pdm update to fail with InvalidPyVersion. #1111
+  * Fix a bug that dependencies are missing from the dep graph when they are
+    depended by a requirement with extras. #1097
+  * Allow specifying lockfile other than pdm.lock by --lockfile option or
+    PDM_LOCKFILE env var. #1038
+  * Ensure the pip module inside venv in installation script. #1053
+  * Fix a bug that file paths in URLs are not correctly unquoted. #1073
+  * Fix a bug on Python 3.11 that overriding an existing command from plugins
+    raises an error. #1075
+  * Fix a bug of missing subdirectory fragment when importing from a
+    requirements.txt. #1036
+  * Fix use_cache.json with corrupted python causes pdm use error. #1039
+  * Fix a bug that requirement with extras isn't resolved to the version as
+    specified by the range. #1001
+  * Support installer 0.5.x. #1002
+  * Don't create project files in pdm search command. #993
+  * Fix a bug that the env vars in source urls in exported result are not
+    expanded. #997
+  * Don't follow symlinks for the paths in the requirement strings. #976
+  * Fix a bug that _.site_packages is overridden by default option value. #985
+  * Filter out the unmatched python versions when listing the available
+    versions. #941
+  * Fix a bug displaying the available python versions. #943
+  * Fix a bug under non-UTF8 console encoding. #960</comment>
+    <requestid>983252</requestid>
+  </revision>
 </revisionlist>
