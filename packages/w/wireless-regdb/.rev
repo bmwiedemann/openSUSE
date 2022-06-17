@@ -504,4 +504,15 @@ The license in the LICENSE file is ISC, not MIT (http://www.spdx.org/licenses/IS
   * Regulatory update for 6 GHz operation in Canada (CA)</comment>
     <requestid>980054</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>bd5745c7bf37522acf076c9775ba6d73</srcmd5>
+    <version>20220606</version>
+    <time>1655493508</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220606:
+  * wireless-regdb: update regulatory database based on preceding changes
+  * wireless-regdb: Unify 6 GHz rules for EU contries
+  * wireless-regdb: Remove AUTO-BW from 6 GHz rules</comment>
+    <requestid>982785</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 15 11:37:45 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20220606:
+  * wireless-regdb: update regulatory database based on preceding changes
+  * wireless-regdb: Unify 6 GHz rules for EU contries
+  * wireless-regdb: Remove AUTO-BW from 6 GHz rules
+
+-------------------------------------------------------------------
 Tue May 31 08:13:24 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20220527:
