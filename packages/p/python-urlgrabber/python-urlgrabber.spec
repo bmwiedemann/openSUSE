@@ -28,14 +28,14 @@ URL:            https://github.com/rpm-software-management/urlgrabber
 Source:         https://github.com/rpm-software-management/%{modname}/releases/download/%{modname}-4-1-0/%{modname}-%{version}.tar.gz
 # PATCH-FIX_UPSTREAM https://github.com/rpm-software-management/urlgrabber/pull/32
 Patch0:         use-binary-mode-when-reopening-files.patch
+# PATCH-FIX_UPSTREAM https://github.com/rpm-software-management/urlgrabber/pull/35
+Patch1:         fix_find_proxy_logic_and_drop_six.patch
 
 BuildRequires:  %{python_module pycurl}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pycurl
-Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch

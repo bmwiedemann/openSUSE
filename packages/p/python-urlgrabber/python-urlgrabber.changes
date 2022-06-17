@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 16 15:20:56 UTC 2022 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix wrong logic on find_proxy method causing proxy not being used
+
+- Added:
+  * fix_find_proxy_logic_and_drop_six.patch
+
+-------------------------------------------------------------------
 Wed Dec 22 09:27:55 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Add missing bugzilla references (bsc#1152514) (bsc#1146683)

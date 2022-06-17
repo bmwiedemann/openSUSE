@@ -1,0 +1,304 @@
+From 403580057acb3477b3f89b53a6e7954652745a9f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Fri, 3 Jun 2022 16:45:32 +0100
+Subject: [PATCH] Fix wrong logic for find_proxy method
+
+Drop six usage
+---
+ scripts/urlgrabber-ext-down |  6 ++----
+ setup.py                    |  1 -
+ test/munittest.py           |  8 +++-----
+ test/test_grabber.py        |  5 ++---
+ urlgrabber/grabber.py       | 32 ++++++++++++++++----------------
+ urlgrabber/mirror.py        |  4 +---
+ urlgrabber/progress.py      |  6 ++----
+ 7 files changed, 26 insertions(+), 36 deletions(-)
+
+diff --git a/scripts/urlgrabber-ext-down b/scripts/urlgrabber-ext-down
+index 40469a7..acc84f6 100755
+--- a/scripts/urlgrabber-ext-down
++++ b/scripts/urlgrabber-ext-down
+@@ -19,15 +19,13 @@
+ #      Boston, MA  02111-1307  USA
+ 
+ import time, os, errno, sys
+-import six
+ from urlgrabber.grabber import \
+     _readlines, URLGrabberOptions, _loads, \
+     PyCurlFileObject, URLGrabError, _to_utf8
+ 
+ def write(fmt, *arg):
+     buf = fmt % arg
+-    if six.PY3:
+-        buf = buf.encode()
++    buf = buf.encode()
+     try:
+         os.write(1, buf)
+     except OSError as e:
+@@ -51,7 +49,7 @@ def main():
+         lines = _readlines(0)
+         if not lines: break
+         for line in lines:
+-            if not isinstance(line, six.string_types):
++            if not isinstance(line, str):
+                 line = line.decode('utf-8')
+             cnt += 1
+             opts = URLGrabberOptions()
+diff --git a/setup.py b/setup.py
+index 6f6a6bd..a751d54 100644
+--- a/setup.py
++++ b/setup.py
+@@ -47,7 +47,6 @@ setup(
+     include_package_data=True,
+     install_requires=[
+         "pycurl",
+-        "six",
+         "setuptools",
+     ],
+     scripts = ['scripts/urlgrabber'],
+diff --git a/test/munittest.py b/test/munittest.py
+index 5fdf6f6..5310cfd 100644
+--- a/test/munittest.py
++++ b/test/munittest.py
+@@ -108,8 +108,6 @@ import os
+ import types
+ import unittest
+ 
+-from six import class_types, string_types
+-
+ try:
+     cmp
+ except NameError:
+@@ -565,7 +563,7 @@ class TestLoader:
+         tests = []
+         for name in dir(module):
+             obj = getattr(module, name)
+-            if (isinstance(obj, class_types) and
++            if (isinstance(obj, type) and
+                 issubclass(obj, TestCase) and
+                 not obj in [TestCase, FunctionTestCase]):
+                 tests.append(self.loadTestsFromTestCase(obj))
+@@ -604,7 +602,7 @@ class TestLoader:
+         import unittest
+         if isinstance(obj, types.ModuleType):
+             return self.loadTestsFromModule(obj)
+-        elif (isinstance(obj, class_types) and
++        elif (isinstance(obj, type) and
+               issubclass(obj, unittest.TestCase)):
+             return self.loadTestsFromTestCase(obj)
+         elif isinstance(obj, types.UnboundMethodType):
+@@ -845,7 +843,7 @@ Examples:
+ """
+     def __init__(self, module='__main__', defaultTest=None,
+                  argv=None, testRunner=None, testLoader=defaultTestLoader):
+-        if isinstance(module, string_types):
++        if isinstance(module, str):
+             self.module = __import__(module)
+             for part in module.split('.')[1:]:
+                 self.module = getattr(self.module, part)
+diff --git a/test/test_grabber.py b/test/test_grabber.py
+index 465e5f5..4c153cd 100644
+--- a/test/test_grabber.py
++++ b/test/test_grabber.py
+@@ -28,7 +28,6 @@ import os
+ import tempfile, random, os
+ import socket
+ from io import BytesIO
+-from six import string_types
+ 
+ if sys.version_info >= (3,):
+     # We do an explicit version check here because because python2
+@@ -333,7 +332,7 @@ class FailureTestCase(TestCase):
+         self.assertEqual(self.kwargs, {'bar': 'baz'})
+         self.assertTrue(isinstance(self.obj, CallbackObject))
+         url = self.obj.url
+-        if not isinstance(url, string_types):
++        if not isinstance(url, str):
+             url = url.decode('utf8')
+         self.assertEqual(url, ref_404)
+         self.assertTrue(isinstance(self.obj.exception, URLGrabError))
+@@ -413,7 +412,7 @@ class CheckfuncTestCase(TestCase):
+         self.assertEqual(self.kwargs, {'bar': 'baz'})
+         self.assertTrue(isinstance(self.obj, CallbackObject))
+         url = self.obj.url
+-        if not isinstance(url, string_types):
++        if not isinstance(url, str):
+             url = url.decode()
+         self.assertEqual(url, short_ref_http)
+ 
+diff --git a/urlgrabber/grabber.py b/urlgrabber/grabber.py
+index b72d089..5ea53e7 100644
+--- a/urlgrabber/grabber.py
++++ b/urlgrabber/grabber.py
+@@ -571,8 +571,6 @@ if sys.version_info >= (3,):
+ else:
+     from cStringIO import StringIO
+ 
+-from six import text_type, string_types
+-
+ from .byterange import range_tuple_normalize, range_tuple_to_header, RangeError
+ 
+ try:
+@@ -584,13 +582,13 @@ except ImportError:
+ 
+ def _bytes_repr(s):
+     "A wrapper to avoid the b'' that python3 insists on when printing bytes"
+-    if isinstance(s, string_types):
++    if isinstance(s, str):
+         return s
+     else:
+         return repr(s)[2:-1]
+ 
+ def _urlunquote_convert(s):
+-    if not isinstance(s, text_type):
++    if not isinstance(s, str):
+         s = s.decode('utf8')
+     return urlunquote(s)
+ 
+@@ -709,7 +707,7 @@ def _(st):
+ def _to_utf8(obj, errors='replace'):
+     '''convert 'unicode' to an encoded utf-8 byte string '''
+     # stolen from yum.i18n
+-    if isinstance(obj, text_type):
++    if isinstance(obj, str):
+         obj = obj.encode('utf-8', errors)
+     return obj
+ 
+@@ -718,7 +716,7 @@ def exception2msg(e):
+         return str(e)
+     except UnicodeEncodeError:
+         # always use byte strings
+-        return text_type(e).encode('utf8')
++        return str(e).encode('utf8')
+ 
+ ########################################################################
+ #                 END UTILITY FUNCTIONS
+@@ -910,7 +908,7 @@ class URLParser:
+         """
+         (scheme, host, path, parm, query, frag) = parts
+         newpath = urlquote(path, safe='/$')
+-        if not isinstance(path, text_type) and isinstance(newpath, text_type):
++        if not isinstance(path, str) and isinstance(newpath, str):
+             newpath = newpath.encode('utf8')
+         return (scheme, host, newpath, parm, query, frag)
+ 
+@@ -926,7 +924,7 @@ class URLParser:
+         else       ->  1
+         """
+         (scheme, host, path, parm, query, frag) = parts
+-        if not isinstance(path, text_type):
++        if not isinstance(path, str):
+             path = path.decode('utf8')
+         if ' ' in path:
+             return 1
+@@ -977,16 +975,18 @@ class URLGrabberOptions:
+         Use the proxies dictionary first, then libproxy.
+         """
+         self.proxy = None
+-        if scheme not in ('ftp', 'http', 'https'):
++        if scheme not in (b'ftp', b'http', b'https'):
+             return
+ 
+         if self.proxies:
+             proxy = self.proxies.get(scheme)
+             if proxy is None:
+-                if scheme == 'http':
+-                    proxy = self.proxies.get('https')
+-                elif scheme == 'https':
++                if scheme == b'http':
+                     proxy = self.proxies.get('http')
++                elif scheme == b'https':
++                    proxy = self.proxies.get('https')
++                elif scheme == b'ftp':
++                    proxy = self.proxies.get('ftp')
+             if proxy == '_none_':
+                 proxy = ''
+             self.proxy = proxy
+@@ -1701,7 +1701,7 @@ class PyCurlFileObject(object):
+     def _build_range(self):
+         reget_length = 0
+         rt = None
+-        if self.opts.reget and isinstance(self.filename, string_types):
++        if self.opts.reget and isinstance(self.filename, str):
+             # we have reget turned on and we're dumping to a file
+             try:
+                 s = os.stat(self.filename)
+@@ -1796,7 +1796,7 @@ class PyCurlFileObject(object):
+         if self._complete:
+             return
+         _was_filename = False
+-        if isinstance(self.filename, string_types) and self.filename:
++        if isinstance(self.filename, str) and self.filename:
+             _was_filename = True
+             self._prog_reportname = str(self.filename)
+             self._prog_basename = os.path.basename(self.filename)
+@@ -2065,10 +2065,10 @@ def _dumps(v):
+     if v is False: return 'False'
+     if isinstance(v, numbers.Number):
+         return str(v)
+-    if isinstance(v, (str, text_type, bytes)):
++    if isinstance(v, (str, str, bytes)):
+         # standarize to str on both py2 to py3
+         if sys.version_info < (3,):
+-            if isinstance(v, text_type):
++            if isinstance(v, str):
+                 v = v.encode('utf8')
+         else:
+             if isinstance(v, bytes):
+diff --git a/urlgrabber/mirror.py b/urlgrabber/mirror.py
+index d95863e..3a62fab 100644
+--- a/urlgrabber/mirror.py
++++ b/urlgrabber/mirror.py
+@@ -105,8 +105,6 @@ try:
+ except ImportError:
+     import urlparse
+ 
+-from six import string_types
+-
+ from .grabber import URLGrabError, CallbackObject, DEBUG, _to_utf8
+ from .grabber import _run_callback, _do_raise
+ from .grabber import exception2msg
+@@ -299,7 +297,7 @@ class MirrorGroup:
+     def _parse_mirrors(self, mirrors):
+         parsed_mirrors = []
+         for m in mirrors:
+-            if isinstance(m, string_types):
++            if isinstance(m, str):
+                 m = {'mirror': _to_utf8(m)}
+             parsed_mirrors.append(m)
+         return parsed_mirrors
+diff --git a/urlgrabber/progress.py b/urlgrabber/progress.py
+index 5b4c450..7c35bed 100644
+--- a/urlgrabber/progress.py
++++ b/urlgrabber/progress.py
+@@ -32,8 +32,6 @@ if sys.version_info >= (3,):
+ else:
+     import thread
+ 
+-from six import integer_types, string_types
+-
+ # Code from http://mail.python.org/pipermail/python-list/2000-May/033365.html
+ def terminal_width(fd=1):
+     """ Get the real terminal width """
+@@ -614,7 +612,7 @@ class TextMultiFileMeter(MultiFileMeter):
+         try:
+             format = "%-30.30s %6.6s %s"
+             fn = meter.text or meter.basename
+-            if isinstance(message, string_types):
++            if isinstance(message, str):
+                 message = message.splitlines()
+             if not message: message = ['']
+             out = '%-79s' % (format % (fn, 'FAILED', message[0] or ''))
+@@ -786,7 +784,7 @@ def format_number(number, SI=0, space=' '):
+         depth  = depth + 1
+         number = number / step
+ 
+-    if isinstance(number, integer_types):
++    if isinstance(number, int):
+         # it's an int or a long, which means it didn't get divided,
+         # which means it's already short enough
+         format = '%i%s%s'
+-- 
+2.36.1
+
