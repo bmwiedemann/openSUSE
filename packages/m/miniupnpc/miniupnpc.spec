@@ -1,7 +1,7 @@
 #
 # spec file for package miniupnpc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,6 +80,7 @@ The MiniUPnP project offers software which supports the UPnP Internet Gateway
 Device (IGD) specifications.
 
 %else
+
 %package -n python2-miniupnpc
 Summary:        Universal Plug'n'Play (UPnP) Client Module for Python
 Group:          Development/Libraries/Python
@@ -113,7 +114,7 @@ make %{?_smp_mflags} \
 %python_build
 
 %install
-%make_install INSTALLDIRLIB=%{_libdir}
+%make_install INSTALLDIRLIB=%{_libdir} LIBDIR=%{_lib}
 
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
