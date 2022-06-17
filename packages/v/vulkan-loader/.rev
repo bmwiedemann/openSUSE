@@ -325,4 +325,12 @@
     <comment>- Update to release SDK-1.3.211.0</comment>
     <requestid>970699</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>de0c79c89bef0157c5c0d396e16bf829</srcmd5>
+    <version>1.3.216.0</version>
+    <time>1655493515</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release SDK-1.3.216</comment>
+    <requestid>982873</requestid>
+  </revision>
 </revisionlist>
