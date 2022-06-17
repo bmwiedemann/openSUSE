@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jun 10 14:12:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.95.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.95.0
+- Changes since 5.94.0:
+  * Fix unused parameter warning
+  * Try to load en_US for LANG=C (kde#410113)
+  * Fix bookkeeping about loaded plugins
+  * Don't load already loaded plugin
+  * Don't warn, just debug about not loadable plugin
+  * Unload skipped/already loaded plugin
+
+-------------------------------------------------------------------
 Tue May 10 08:18:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.94.0
