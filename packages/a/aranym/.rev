@@ -346,4 +346,13 @@
   of sdl12_compat. (forwarded request 979175 from jengelh)</comment>
     <requestid>979196</requestid>
   </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>419ca88698c007e7155a4f52a3213803</srcmd5>
+    <version>1.1.0</version>
+    <time>1655493656</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing build requires
+- includes.patch: add missing includes (forwarded request 983183 from AndreasSchwab)</comment>
+    <requestid>983184</requestid>
+  </revision>
 </revisionlist>

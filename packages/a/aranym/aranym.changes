@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 13 22:03:35 UTC 2022 - Andreas Schwab <schwab@linux-m68k.org>
+
+- Add missing build requires
+- includes.patch: add missing includes
+
+-------------------------------------------------------------------
 Wed May 25 12:01:59 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Use more pkgconfig() buildrequire symbols, in part to make use

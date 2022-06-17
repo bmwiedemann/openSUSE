@@ -27,16 +27,18 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        afros812.zip
 Patch:          pow10.patch
 Patch1:         lto.patch
+Patch2:         includes.patch
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  mpfr-devel
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL_image)
-BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(osmesa)
 BuildRequires:  pkgconfig(sdl)
+BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
 Requires(post): permissions
 
