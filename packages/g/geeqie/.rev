@@ -222,4 +222,16 @@
     <comment></comment>
     <requestid>949104</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e81c16233ee682fbce957540325880a0</srcmd5>
+    <version>1.7.3</version>
+    <time>1655493679</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable support for HEIF (bsc#1199987), JP2, RAW, WEBP, PDF.
+- Enable support for opening archives.
+- Build documentation.
+- Update to version 1.7.3
+  + Fix crash with Flatpak version (forwarded request 979518 from sbrabec)</comment>
+    <requestid>983434</requestid>
+  </revision>
 </revisionlist>

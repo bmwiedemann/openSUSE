@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 27 15:34:12 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
+
+- Enable support for HEIF (bsc#1199987), JP2, RAW, WEBP, PDF.
+- Enable support for opening archives.
+- Build documentation.
+- Update to version 1.7.3
+  + Fix crash with Flatpak version
+
+-------------------------------------------------------------------
 Mon Jan 17 17:29:51 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.7.2
