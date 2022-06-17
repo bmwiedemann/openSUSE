@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 17 08:32:46 UTC 2022 - pgajdos@suse.com
+
+- don't use python-mock: upstream pull request instead of sed
+- added patches
+  fix https://github.com/nteract/papermill/pull/668
+  + python-papermill-no-mock.patch
+
+-------------------------------------------------------------------
 Wed Apr  6 08:39:02 UTC 2022 - pgajdos@suse.com
 
 - do not require python-mock for build

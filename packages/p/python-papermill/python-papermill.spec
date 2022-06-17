@@ -27,6 +27,8 @@ URL:            https://github.com/nteract/papermill
 Source:         https://files.pythonhosted.org/packages/source/p/papermill/papermill-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM papermill-fix-test.patch -- used missing attribute
 Patch1:         https://github.com/nteract/papermill/commit/35a1b6a8a47a4e0dee2612294d467de2dc4d60c6.patch#/papermill-fix-test.patch
+# https://github.com/nteract/papermill/pull/668
+Patch2:         python-papermill-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -88,8 +90,6 @@ and analyzing Jupyter Notebooks.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://github.com/nteract/papermill/issues/659
-sed -i 's:from mock:from unittest.mock:' papermill/tests/test_*.py
 # TestBrokenNotebook2: different output type expected
 %pytest -k "not TestBrokenNotebook2"
 
