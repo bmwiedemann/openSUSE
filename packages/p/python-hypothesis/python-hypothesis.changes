@@ -1,4 +1,176 @@
 -------------------------------------------------------------------
+Mon Jun 13 12:58:35 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.47.1
+  * Our pretty-printer no longer sorts dictionary keys, since
+    iteration order is stable in Python 3.7+ and this can affect
+    reproducing examples (issue #3370). This PR was kindly
+    supported by Ordina Pythoneers.
+- Release 6.47.0
+  * The Ghostwritter can now write tests for @classmethod or
+    @staticmethod methods, in addition to the existing support for
+    functions and other callables (issue #3318). Thanks to Cheuk
+    Ting Ho for the patch.
+- Release 6.46.11
+  * Mention hypothesis.strategies.timezones() in the documentation
+    of hypothesis.strategies.datetimes() for completeness.
+  * Thanks to George Macon for this addition.
+- Release 6.46.10
+  * This release contains some small improvements to our
+    documentation. Thanks to Felix Divo for his contribution!
+- Release 6.46.9
+  * This patch by Adrian Garcia Badaracco adds type annotations to
+    some private internals (issue #3074).
+- Release 6.46.8
+  * This patch by Phillip Schanely makes changes to the floats()
+    strategy when min_value or max_value is present. Hypothesis
+    will now be capable of generating every representable value in
+    the bounds. You may notice that hypothesis is more likely to
+    test values near boundaries, and values that are very close to
+    zero.
+  * These changes also support future integrations with symbolic
+    execution tools and fuzzers (issue #3086).
+- Release 6.46.7
+  * This patch updates the type annotations for tuples() and
+    one_of() so that type-checkers require its arguments to be
+    positional-only, and so that it no longer fails under
+    pyright-strict mode (see issue #3348). Additional changes are
+    made to Hypothesis’ internals improve pyright scans.
+- Release 6.46.6
+  * This patch by Cheuk Ting Ho adds support for PEP 655 Required
+    and NotRequired as attributes of TypedDict in from_type()
+    (issue #3339).
+- Release 6.46.5
+  * This patch fixes from_dtype() with long-precision
+    floating-point datatypes (typecode g; see numpy.typename()).
+- Release 6.46.4
+  * This patch improves some error messages for custom signatures
+    containing invalid parameter names (issue #3317).
+- Release 6.46.3
+  * This patch by Cheuk Ting Ho makes it an explicit error to call
+    from_type() or register_type_strategy() with types that have no
+    runtime instances (issue #3280).
+- Release 6.46.2
+  * This patch fixes silently dropping examples when the @example
+    decorator is applied to itself (issue #3319). This was always a
+    weird pattern, but now it works. Thanks to Ray Sogata, Keeri
+    Tramm, and Kevin Khuong for working on this patch!
+- Release 6.46.1
+  * This patch fixes a rare bug where we could incorrectly treat
+    empty as a type annotation, if the callable had an explicitly
+    assigned __signature__.
+- Release 6.46.0
+  * This release adds an allow_nil argument to uuids(), which you
+    can use to… generate the nil UUID. Thanks to Shlok Gandhi for
+    the patch!
+- Release 6.45.4
+  * This patch fixes some missing imports for certain Ghostwritten
+    tests. Thanks to Mel Seto for fixing issue #3316.
+- Release 6.45.3
+  * This patch teaches the Ghostwriter to recognize many more
+    common argument names (issue #3311).
+- Release 6.45.2
+  * This patch fixes issue #3314, where Hypothesis would raise an
+    internal error from domains() or (only on Windows) from
+    timezones() in some rare circumstances where the installation
+    was subtly broken.
+  * Thanks to Munir Abdinur for this contribution.
+- Release 6.45.1
+  * This release fixes deprecation warnings about sre_compile and
+    sre_parse imports and importlib.resources usage when running
+    Hypothesis on Python 3.11.
+  + Thanks to Florian Bruhin for this contribution.
+- Release 6.45.0
+  * This release updates xps.indices() by introducing an
+    allow_newaxis argument, defaulting to False. If
+    allow_newaxis=True, indices can be generated that add
+    dimensions to arrays, which is achieved by the indexer
+    containing None. This change is to support a specification
+    change that expand dimensions via indexing
+    (data-apis/array-api#408).
+- Release 6.44.0
+  * This release adds a names argument to indexes() and series(),
+    so that you can create Pandas objects with specific or varied
+    names.
+  * Contributed by Sam Watts.
+- Release 6.43.3
+  * This patch updates the type annotations for @given so that
+    type-checkers will warn on mixed positional and keyword
+    arguments, as well as fixing issue #3296.
+- Release 6.43.2
+  * Fixed a type annotation for pyright --strict (issue #3287).
+- Release 6.43.1
+  * This patch makes it an explicit error to call
+    register_type_strategy() with a Pydantic GenericModel and a
+    callable, because GenericModel isn’t actually a generic type at
+    runtime and so you have to register each of the “parametrized
+    versions” (actually subclasses!) manually. See issue #2940 for
+    more details.
+- Release 6.43.0
+  * This release makes it an explicit error to apply
+    @pytest.fixture to a function which has already been decorated
+    with @given(). Previously, pytest would convert your test to a
+    fixture, and then never run it.
+- Release 6.42.3
+  * This patch fixes from_type() on a TypedDict with complex
+    annotations, defined in a file using from __future__ import
+    annotations. Thanks to Katelyn Gigante for identifying and
+    fixing this bug!
+- Release 6.42.2
+  * The Hypothesis pytest plugin was not outputting valid xunit2
+    nodes when --junit-xml was specified. This has been broken
+    since Pytest 5.4, which changed the internal API for adding
+    nodes to the junit report.
+  * This also fixes the issue when using hypothesis with
+    --junit-xml and pytest-xdist where the junit xml report would
+    not be xunit2 compatible. Now, when using with pytest-xdist,
+    the junit report will just omit the <properties> node.
+  * For more details, see this pytest issue, this pytest issue, and
+    issue #1935
+  * Thanks to Brandon Chinn for this bug fix!
+- Release 6.42.1
+  * This patch fixes pretty-printing of regular expressions in
+    Python 3.11.0a7, and updates our vendored list of top-level
+    domains,.
+- Release 6.42.0
+  * This release makes st.functions(pure=True) less noisy (issue
+    #3253), and generally improves pretty-printing of functions.
+- Release 6.41.0
+  * This release changes the implementation of infer to be an alias
+    for Ellipsis. E.g. @given(a=infer) is now equivalent to
+    @given(a=...). Furthermore, @given(...) can now be specified so
+    that @given will infer the strategies for all arguments of the
+    decorated function based on its annotations.
+- Release 6.40.3
+  * This patch simplifies the repr of the strategies namespace
+    returned in make_strategies_namespace(), e.g.
+      >>> from hypothesis.extra.array_api import make_strategies_namespace
+      >>> from numpy import array_api as xp
+      >>> xps = make_strategies_namespace(xp)
+      >>> xps
+      make_strategies_namespace(numpy.array_api)
+- Release 6.40.2
+  * Fixed from_type() support for PEP 604 union types, like int |
+    None (issue #3255).
+- Release 6.40.1
+  * Fixed an internal error when given() was passed a lambda.
+- Release 6.40.0
+  * The Ghostwriter can now write tests which check that two or
+    more functions are equivalent on valid inputs, or raise the
+    same type of exception for invalid inputs (issue #3267).
+- Release 6.39.6
+  * This patch makes some quality-of-life improvements to the
+    Ghostwriter: we guess the text() strategy for arguments named
+    text (…obvious in hindsight, eh?); and improved the error
+    message if you accidentally left in a nothing() or broke your
+    rich install.
+- Release 6.39.5
+  * This patch improves our error detection and message when
+    Hypothesis is run on a Python implementation without support
+    for -0.0, which is required for the floats() strategy but can
+    be disabled by unsafe compiler options (issue #3265).
+
+-------------------------------------------------------------------
 Sat Mar 19 16:19:54 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.39.4

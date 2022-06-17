@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 %bcond_with ringdisabled
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -33,7 +31,7 @@ ExclusiveArch:  do_not_build
 %bcond_with test
 %endif
 Name:           python-hypothesis%{psuffix}
-Version:        6.39.4
+Version:        6.47.1
 Release:        0
 Summary:        A library for property based testing
 License:        MPL-2.0
@@ -73,13 +71,12 @@ BuildRequires:  %{python_module attrs >= 19.2.0}
 BuildRequires:  %{python_module sortedcontainers >= 2.1.0}
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 2.2}
-BuildRequires:  %{python_module backports.zoneinfo if %python-base < 3.9}
+BuildRequires:  %{python_module backports.zoneinfo >= 0.2.1 if %python-base < 3.9}
 BuildRequires:  %{python_module black >= 19.10}
 BuildRequires:  %{python_module dpcontracts >= 0.4}
 BuildRequires:  %{python_module fakeredis}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module hypothesis = %{version}}
-BuildRequires:  %{python_module importlib_resources >= 3.3.0 if %python-base < 3.7}
 BuildRequires:  %{python_module lark-parser >= 0.6.5}
 BuildRequires:  %{python_module libcst >= 0.3.16}
 BuildRequires:  %{python_module numpy >= 1.9.0}
@@ -148,7 +145,20 @@ addopts=
     -n auto
     -ra
 filterwarnings =
+    error
     ignore::hypothesis.errors.NonInteractiveExampleWarning
+    # https://github.com/pandas-dev/pandas/issues/41199
+    default:Creating a LegacyVersion has been deprecated and will be removed in the next major release:DeprecationWarning
+    default:distutils Version classes are deprecated\. Use packaging\.version instead:DeprecationWarning
+    # https://github.com/pandas-dev/pandas/issues/32056 (?)
+    default:numpy\.ufunc size changed, may indicate binary incompatibility\. Expected 216 from C header, got 232 from PyObject:RuntimeWarning
+    # https://github.com/lark-parser/lark/pull/1140
+    default:module 'sre_constants' is deprecated:DeprecationWarning
+    default:module 'sre_parse' is deprecated:DeprecationWarning
+    # https://github.com/pandas-dev/pandas/issues/34848
+    default:`np\.bool` is a deprecated alias for the builtin `bool`:DeprecationWarning
+    default:`np\.complex` is a deprecated alias for the builtin `complex`:DeprecationWarning
+    default:`np\.object` is a deprecated alias for the builtin `object`:DeprecationWarning
 ' > pytest.ini
 %pytest -c pytest.ini -k "not ($donttest)" tests
 %endif
