@@ -51,4 +51,14 @@
     <comment>- Requires at least OCaml 4.08</comment>
     <requestid>915316</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6cedc0370533b3b64fad842cee471f9e</srcmd5>
+    <version>2.36</version>
+    <time>1655493654</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.36.
+  * Compatibility with OCaml 5.0.
+</comment>
+    <requestid>983171</requestid>
+  </revision>
 </revisionlist>

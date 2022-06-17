@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 16 16:26:18 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 2.36.
+  * Compatibility with OCaml 5.0.
+
+-------------------------------------------------------------------
 Tue Aug 31 15:15:15 UTC 2021 - olaf@aepfle.de
 
 - Requires at least OCaml 4.08

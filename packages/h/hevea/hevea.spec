@@ -1,8 +1,8 @@
 #
 # spec file for package hevea
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2019 Aaron Puchert.
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2022 Aaron Puchert.
 # Copyright (c) 2017 Peter Trommler.
 # Copyright (c) 2008 Gernot Hillier.
 #
@@ -20,20 +20,20 @@
 
 
 Name:           hevea
-Version:        2.35
+Version:        2.36
 Release:        0
 Summary:        A fast LaTeX to HTML translator
-License:        QPL-1.0 AND LGPL-2.0-only
+License:        LGPL-2.0-only AND QPL-1.0
 Group:          Productivity/Publishing/HTML/Tools
-URL:            http://hevea.inria.fr/
-Source0:        http://hevea.inria.fr/distri/%{name}-%{version}.tar.gz
-Source1:        http://hevea.inria.fr/distri/%{name}-%{version}-manual.tar.gz
+URL:            https://hevea.inria.fr/
+Source0:        https://hevea.inria.fr/distri/%{name}-%{version}.tar.gz
+Source1:        https://hevea.inria.fr/distri/%{name}-%{version}-manual.tar.gz
 BuildRequires:  ocaml-ocamlbuild
 BuildRequires:  ocaml(ocaml.opt) >= 4.08
 
 %description
-HEVEA is a LaTeX to HTML translator.  The input language is a fairly 
-complete subset of LaTeX2e (old LaTeX style is also accepted) and 
+HEVEA is a LaTeX to HTML translator.  The input language is a fairly
+complete subset of LaTeX2e (old LaTeX style is also accepted) and
 the output language is HTML.
 
 %prep
