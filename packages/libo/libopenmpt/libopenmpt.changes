@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 15 16:59:32 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.6.4
+  * Fix: Ping-pong sample loops sometimes stopped playing at the
+    end of the loop.
+
+-------------------------------------------------------------------
 Mon May 16 08:11:38 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 0.6.3:

@@ -688,4 +688,14 @@ Changes in 0.5.3:
     <comment></comment>
     <requestid>978626</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>7537112281d675b6c232194f9fba003c</srcmd5>
+    <version>0.6.4</version>
+    <time>1655493512</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.4
+  * Fix: Ping-pong sample loops sometimes stopped playing at the
+    end of the loop.</comment>
+    <requestid>982866</requestid>
+  </revision>
 </revisionlist>
