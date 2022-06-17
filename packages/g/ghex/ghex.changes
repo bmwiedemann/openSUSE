@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 15 11:22:07 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.3:
+  + main: Hotfix to workaround gtk #4880 (affects Save As dialogs
+    on X11 primarily).
+  + config: Add GNOME 42+ compatibility for dark mode, and fetch
+    dark settings from portal if possible.
+  + widget: Properly update highlights upon resize.
+  + find-replace: Remove spurious g_object_ref() call.
+
+-------------------------------------------------------------------
 Wed Apr 27 11:26:33 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 42.2:

@@ -19,7 +19,7 @@
 %define so_ver 4
 
 Name:           ghex
-Version:        42.2
+Version:        42.3
 Release:        0
 Summary:        GNOME Binary Editor
 License:        GPL-2.0-or-later

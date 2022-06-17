@@ -452,4 +452,12 @@ Proposed for 12.3, as having a patch addressing the same fix as was done in anot
     <comment>Update to 42.2 (forwarded request 973141 from dimstar)</comment>
     <requestid>973153</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>63485645f87ba19ce0e83fa77fc5ff18</srcmd5>
+    <version>42.3</version>
+    <time>1655493679</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 982777 from iznogood)</comment>
+    <requestid>983435</requestid>
+  </revision>
 </revisionlist>
