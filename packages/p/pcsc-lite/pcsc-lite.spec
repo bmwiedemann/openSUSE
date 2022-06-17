@@ -26,7 +26,7 @@
 %define PKG_USER	scard
 %define PKG_GROUP	scard
 Name:           pcsc-lite
-Version:        1.9.7
+Version:        1.9.8
 Release:        0
 Summary:        PC/SC Smart Cards Library
 License:        BSD-3-Clause AND GPL-3.0-or-later
@@ -175,6 +175,8 @@ install -Dm0644 %{SOURCE9} %{buildroot}%{_sysusersdir}/%{PKG_USER}.conf
 %{_docdir}/%{name}/README.polkit
 %{_docdir}/%{name}/SECURITY
 %{_docdir}/%{name}/TODO
+%{_docdir}/%{name}/install_spy.sh
+%{_docdir}/%{name}/uninstall_spy.sh
 %doc %{_mandir}/man?/*.*
 %{_sbindir}/*
 %dir %{_sysconfdir}/reader.conf.d

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 12 09:56:11 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.9.8
+  * Install install_spy.sh & uninstall_spy.sh scripts in docdir
+  * SCardTransmit(): do not fail if receive buffer is "too large"
+  * SCardControl(): do not fail if receive buffer is "too large"
+  * fix some memory leaks on shutdown
+  * use a better random number generator
+  * Some other minor improvements
+
+-------------------------------------------------------------------
 Fri May 13 11:58:10 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.9.7
