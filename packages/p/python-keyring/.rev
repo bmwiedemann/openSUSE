@@ -505,4 +505,12 @@
   * The correct config root is now used on Windows</comment>
     <requestid>981383</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>710a149190a620e366ac84ec82198340</srcmd5>
+    <version>23.6.0</version>
+    <time>1655493518</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982899</requestid>
+  </revision>
 </revisionlist>
