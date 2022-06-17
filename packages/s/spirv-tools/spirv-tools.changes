@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 15 16:51:34 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to 2022.3~sdk216 (SDK-1.3.216.0)
+  * Add folding rule to generate Fma instructions
+  * Add support for SPV_KHR_subgroup_rotate
+  * spirv-val: Add CullMaskKHR support
+  * Add SPV_KHR_fragment_shader_barycentric support
+  * Add more folding for composite instructions
+  * spirv-val: Add PerVertexKHR
+  * Fold multiply and subtraction into FMA with negation
+
+-------------------------------------------------------------------
 Mon Apr 18 23:33:42 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to 2022.2 (SDK-1.3.211.0)

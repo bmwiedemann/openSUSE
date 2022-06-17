@@ -17,17 +17,18 @@
 
 
 %define _lto_cflags %nil
-%define lname libSPIRV-Tools-suse25
+%define lname libSPIRV-Tools-2022_3_sdk216
 
 Name:           spirv-tools
-Version:        2022.2
+Version:        2022.3~sdk216
 Release:        0
 Summary:        API and commands for processing SPIR-V modules
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/SPIRV-Tools
 
-Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/v%version.tar.gz
+#Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/v%version.tar.gz
+Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/sdk-1.3.216.0.tar.gz
 Source9:        baselibs.conf
 Patch1:         ver.diff
 Patch2:         gcc48.diff
@@ -37,7 +38,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
-BuildRequires:  spirv-headers >= 1.6.1+sdk211
+BuildRequires:  spirv-headers >= 1.6.1+sdk216
 
 %description
 The package includes an assembler, binary module parser,
@@ -65,7 +66,9 @@ validator, and is used in the standalone tools whilst also enabling
 integration into other code bases directly.
 
 %prep
-%autosetup -p1 -n SPIRV-Tools-%version
+%autosetup -p1 -n SPIRV-Tools-sdk-1.3.216.0
+find . -type f -name CMakeLists.txt -exec \
+	perl -i -pe 's{\@PACKAGE_VERSION\@}{%version}' CMakeLists.txt {} +
 
 %build
 %if 0%{?suse_version} >= 1550
@@ -78,6 +81,9 @@ integration into other code bases directly.
 %install
 %cmake_install
 perl -i -lpe 's{^#!/usr/bin/env sh$}{#!/bin/sh}' "%buildroot/%_bindir/spirv-lesspipe.sh"
+for i in "" "-diff" "-link" "-lint" "-opt" "-reduce" "-shared"; do
+	ln -s "libSPIRV-Tools$i-%version.so" "%buildroot/%_libdir/libSPIRV-Tools$i.so"
+done
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
@@ -87,13 +93,7 @@ perl -i -lpe 's{^#!/usr/bin/env sh$}{#!/bin/sh}' "%buildroot/%_bindir/spirv-less
 %doc LICENSE
 
 %files -n %lname
-%_libdir/libSPIRV-Tools.so.*
-%_libdir/libSPIRV-Tools-diff.so.*
-%_libdir/libSPIRV-Tools-link.so.*
-%_libdir/libSPIRV-Tools-lint.so.*
-%_libdir/libSPIRV-Tools-opt.so.*
-%_libdir/libSPIRV-Tools-reduce.so.*
-%_libdir/libSPIRV-Tools-shared.so.*
+%_libdir/libSPIRV-Tools-*2*.so
 
 %files devel
 %_libdir/cmake/
