@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jun 13 13:15:41 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Clean up specfile, only requires flit-core (flit not in Ring1)
+
+-------------------------------------------------------------------
+Sun Jun  5 14:27:12 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * build with flit
+
+- update to version 8.13.0:
+  * New functions
+    + The :func:`subslices` recipe from the itertools docs was added
+      (thanks to rhettinger)
+  * Changes to existing functions
+    + The :func:`ichunked` function is now more efficient (thanks to
+      hjtran0 and seanmacavaney)
+    + The :func:`difference` function is now more efficient (thanks to
+      Masynchin)
+    + The :func:`grouper` recipe now has more features, mirroring the
+      one in the itertools docs (thanks to rhettinger)
+  * Other changes
+    + Some documentation issues were fixed (thanks to medvied and
+      Freed-Wu)
+    + The more_itertools package is now built with flit (thanks to
+      mgorny)
+
+-------------------------------------------------------------------
 Tue Mar 15 08:49:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use python_expand for fdupes 
