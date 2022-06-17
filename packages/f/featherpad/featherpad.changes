@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 17 08:34:55 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.3.0:
+  * An option is added for using system icons where possible.
+  * Small problems in restoring of window size, state and position are fixed.
+  * Automatic scrolling to current item is fixed in the side-pane mode.
+  * Qt6's reaction to SIGTERM is fixed.
+  * Prevented a high CPU usage with selection highlighting when a huge
+    amount of text is selected.
+  * Fixes and enhancements to Yaml and CMake syntax highlighting.
+  * Center page numbers horizontally when printing.
+
+-------------------------------------------------------------------
 Sun Apr 24 09:16:16 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.2.0:
