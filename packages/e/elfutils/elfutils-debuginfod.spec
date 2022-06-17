@@ -99,6 +99,14 @@ Conflicts:      debuginfod-dummy-client = %{version}
 %description -n debuginfod-client
 The elfutils-debuginfod-client package contains a command-line frontend.
 
+%package -n debuginfod-profile
+Summary:        Profile files for build-id HTTP ELF/DWARF server
+Group:          Development/Tools/Building
+
+%description -n debuginfod-profile
+The debuginfod-profile package contains a profile files that set default
+URL for a distribution.
+
 %lang_package
 
 %prep
@@ -190,10 +198,6 @@ export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native
 %files -n libdebuginfod1
 %{_libdir}/libdebuginfod.so.*
 %{_libdir}/libdebuginfod-%{version}.so
-%config %{_sysconfdir}/profile.d/debuginfod.sh
-%config %{_sysconfdir}/profile.d/debuginfod.csh
-%dir %{_sysconfdir}/debuginfod
-%config %{_sysconfdir}/debuginfod/elfutils.urls
 
 %files -n libdebuginfod-devel
 %{_libdir}/pkgconfig/libdebuginfod.pc
@@ -206,6 +210,12 @@ export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native
 %{_bindir}/debuginfod-find
 %{_mandir}/man1/debuginfod-find.1*
 %{_mandir}/man7/debuginfod-client-config.7*
+
+%files -n debuginfod-profile
+%config %{_sysconfdir}/profile.d/debuginfod.sh
+%config %{_sysconfdir}/profile.d/debuginfod.csh
+%dir %{_sysconfdir}/debuginfod
+%config %{_sysconfdir}/debuginfod/elfutils.urls
 
 %pre -f %{name}.pre
 %service_add_pre debuginfod.service

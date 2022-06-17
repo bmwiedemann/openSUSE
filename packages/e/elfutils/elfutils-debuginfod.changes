@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 15 11:28:34 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add debuginfod-profile subpackage that collects settings
+  files (boo#1200100).
+
+-------------------------------------------------------------------
 Fri May 13 12:16:45 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Add config-Move-the-2-dev-null-inside-the-sh-c-quotes-fo.patch
