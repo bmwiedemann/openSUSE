@@ -54,7 +54,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.51
+Version:        0.3.52
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -371,6 +371,7 @@ export CXX=g++-9
 %else
     -Dbluez5-codec-ldac=disabled \
 %endif
+    -Dbluez5-codec-lc3plus=disabled \
 %if %{with libcamera}
     -Dlibcamera=enabled \
 %else
