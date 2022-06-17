@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 14 07:12:38 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- 5.25.0 tarball got respun. Changes:
+  * layout-templates: let ShellCorona choose the available edge
+  * containments/panel: `spacingAtMinSize` use Math.floor (kde#454810)
+  * Correct type for kaccess desktop file (kde#455175)
+  * automount: Disable back automount by default
+
+-------------------------------------------------------------------
 Thu Jun  9 11:15:02 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.0

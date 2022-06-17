@@ -1574,4 +1574,17 @@
     <comment>Update to 5.25.0</comment>
     <requestid>981923</requestid>
   </revision>
+  <revision rev="174" vrev="2">
+    <srcmd5>4b7133b1a73bb8875414eeb7f21429fe</srcmd5>
+    <version>5.25.0</version>
+    <time>1655493497</time>
+    <user>dimstar_suse</user>
+    <comment>- 5.25.0 tarball got respun. Changes:
+  * layout-templates: let ShellCorona choose the available edge
+  * containments/panel: `spacingAtMinSize` use Math.floor (kde#454810)
+  * Correct type for kaccess desktop file (kde#455175)
+  * automount: Disable back automount by default
+</comment>
+    <requestid>982573</requestid>
+  </revision>
 </revisionlist>
