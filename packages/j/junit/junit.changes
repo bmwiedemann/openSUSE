@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun  9 18:02:17 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0001-Port-to-hamcrest-2.2.patch
+    + do not use the org.hamcrest.Factory that was removed in
+      hamcrest 2.x and should have been an internal annotation
+      only
+    + fix some incompatibilities with template types in matchers
+
+-------------------------------------------------------------------
 Fri Mar 18 16:38:08 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source/target levels 8

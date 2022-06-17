@@ -25,9 +25,10 @@ Group:          Development/Libraries/Java
 URL:            https://junit.org/junit4/
 Source0:        https://github.com/junit-team/junit4/archive/r%{version}.tar.gz
 Source1:        build.xml
+Patch0:         0001-Port-to-hamcrest-2.2.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  hamcrest >= 1.3
+BuildRequires:  hamcrest >= 2.2
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 Requires:       mvn(org.hamcrest:hamcrest-core)
@@ -63,14 +64,15 @@ Documentation for %{name}.
 
 %prep
 %setup -q -n %{name}4-r%{version}
+%patch0 -p1
 cp %{SOURCE1} .
 
 find . -type f -name "*.jar" -or -name "*.class" | xargs -t rm -rf
 
-ln -s $(build-classpath hamcrest/all) lib/hamcrest-core-1.3.jar
+ln -s $(build-classpath hamcrest/hamcrest) lib/hamcrest-core-1.3.jar
 
 %build
-export CLASSPATH=$(build-classpath hamcrest/all)
+export CLASSPATH=$(build-classpath hamcrest/hamcrest)
 ant jars javadoc -Dversion-status=
 
 %install
