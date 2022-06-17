@@ -1,7 +1,7 @@
 #
 # spec file for package pari-seadata
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,6 @@ URL:            http://pari.math.u-bordeaux.fr/
 
 Source:         seadata.tar.xz
 Source2:        LICENSE
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  xz
 BuildArch:      noarch
 Conflicts:      libpari-gmp < 2.4.3
@@ -38,7 +37,7 @@ suitable for primes up to 350 bits. These polynomials were extracted
 from the ECHIDNA databases and computed by David R. Kohel.
 
 %prep
-%setup -qn data
+%autosetup -n data
 cp "%_sourcedir/LICENSE" .
 
 %build
@@ -49,8 +48,7 @@ mkdir -p "$c"
 mv seadata "$c/"
 
 %files
-%defattr(-,root,root)
 %_datadir/pari
-%doc LICENSE
+%license LICENSE
 
 %changelog
