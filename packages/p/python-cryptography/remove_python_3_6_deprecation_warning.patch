@@ -1,0 +1,17 @@
+Index: cryptography-37.0.2/src/cryptography/__init__.py
+===================================================================
+--- cryptography-37.0.2.orig/src/cryptography/__init__.py	2022-06-09 18:07:46.169719315 +0200
++++ cryptography-37.0.2/src/cryptography/__init__.py	2022-06-09 18:07:53.853613006 +0200
+@@ -18,12 +18,3 @@ __all__ = [
+     "__author__",
+     "__copyright__",
+ ]
+-
+-if sys.version_info[:2] == (3, 6):
+-    warnings.warn(
+-        "Python 3.6 is no longer supported by the Python core team. "
+-        "Therefore, support for it is deprecated in cryptography and will be"
+-        " removed in a future release.",
+-        CryptographyDeprecationWarning,
+-        stacklevel=2,
+-    )

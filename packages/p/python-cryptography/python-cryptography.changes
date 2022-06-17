@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  9 16:08:17 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Remove Python 3.6 deprecation warning on openSUSE Leap.
+  * Added remove_python_3_6_deprecation_warning.patch
+
+-------------------------------------------------------------------
 Tue May 24 06:57:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 37.0.2:

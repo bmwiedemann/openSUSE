@@ -690,4 +690,12 @@
     :class:`~cryptography.hazmat.primitives.ciphers.algorithms.Blowfish` because</comment>
     <requestid>978871</requestid>
   </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>3c08a3fe15792393ed88c8c33ccd05cd</srcmd5>
+    <version>37.0.2</version>
+    <time>1655493615</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982349</requestid>
+  </revision>
 </revisionlist>

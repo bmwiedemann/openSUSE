@@ -42,6 +42,9 @@ Source2:        vendor.tar.zst
 Source3:        cargo_config
 Source4:        python-cryptography.keyring
 Patch2:         skip_openssl_memleak_test.patch
+%if 0%{?sle_version} && 0%{?sle_version} <= 150400
+Patch3:         remove_python_3_6_deprecation_warning.patch
+%endif
 BuildRequires:  %{python_module cffi >= 1.12}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools-rust}
