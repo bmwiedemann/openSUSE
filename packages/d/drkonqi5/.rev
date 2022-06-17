@@ -695,4 +695,12 @@
     <comment>Update to 5.25.0</comment>
     <requestid>981897</requestid>
   </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>bddfcd37659f38ac570a38b8ad73bc98</srcmd5>
+    <version>5.25.0</version>
+    <time>1655493591</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing runtime dependencies (forwarded request 982454 from wolfi323)</comment>
+    <requestid>982457</requestid>
+  </revision>
 </revisionlist>

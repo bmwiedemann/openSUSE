@@ -60,6 +60,11 @@ BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
+# QML runtime dependencies (not detected automatically because the QML code is embedded as Qt Resource)
+# if kirigami2 is not installed, it falls back to the old QWidgets-based UI though and doesn't need them...
+Requires:       (kdeclarative-components if kirigami2)
+Requires:       (kitemmodels-imports if kirigami2)
+Requires:       (syntax-highlighting-imports if kirigami2)
 # We want useful backtraces
 Recommends:     gdb
 # we want symbol install support
