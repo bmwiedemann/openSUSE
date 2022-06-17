@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jun 15 13:35:15 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Use bundled openjpeg2 on SLE-12-SP5
+
+-------------------------------------------------------------------
+Fri Jun 10 14:00:00 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 7.3.4.2:
+  You can find the complete release notes here:
+  https://wiki.documentfoundation.org/Releases/7.3.4/RC2
+  https://wiki.documentfoundation.org/Releases/7.3.4/RC1
+- Remove upstreamed patches:
+  * bsc1192616.patch
+  * bsc1197497.patch
+- Updated bundled dependencies:
+  * curl-7.79.1.tar.xz -> curl-7.83.1.tar.xz
+
+-------------------------------------------------------------------
+Fri Jun 10 13:03:44 UTC 2022 - Andras Timar <andras.timar@collabora.com>
+
+- Fix bsc#1198665 - LO-L3: PPTX: text on top of circular object misplaced
+  * bsc1198665.patch
+
+-------------------------------------------------------------------
 Tue May 17 09:45:36 UTC 2022 - Andras Timar <andras.timar@collabora.com>
 
 - Fix bsc#1197497 - LO-L3: Loading XLSX with 1M rows is ultra slow (or crashes Calc)

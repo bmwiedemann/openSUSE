@@ -49,7 +49,7 @@
 %endif
 %bcond_with firebird
 Name:           libreoffice
-Version:        7.3.3.2
+Version:        7.3.4.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -107,10 +107,8 @@ Patch3:         mediawiki-no-broken-help.diff
 Patch6:         gcc11-fix-error.patch
 Patch9:         fix_math_desktop_file.patch
 Patch10:        fix_gtk_popover_on_3.20.patch
-# Bug 1192616 - LO-L3: Extraneous/missing lines in table in Impress versus PowerPoint
-Patch13:        bsc1192616.patch
-# Bug 1197497 - LO-L3: Loading XLSX with 1M rows is ultra slow (or crashes Calc)
-Patch14:        bsc1197497.patch
+# Bug 1198665 - LO-L3: PPTX: text on top of circular object misplaced
+Patch15:        bsc1198665.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
@@ -133,7 +131,7 @@ BuildRequires:  cups-devel
 %if %{with system_curl}
 BuildRequires:  curl-devel >= 7.68.0
 %else
-Source2013:     %{external_url}/curl-7.79.1.tar.xz
+Source2013:     %{external_url}/curl-7.83.1.tar.xz
 %endif
 # Needed for tests
 BuildRequires:  dejavu-fonts
@@ -215,7 +213,6 @@ BuildRequires:  pkgconfig(libmspub-0.1) >= 0.1
 BuildRequires:  pkgconfig(libmwaw-0.3) >= 0.3.19
 BuildRequires:  pkgconfig(libnumbertext) >= 1.0.6
 BuildRequires:  pkgconfig(libodfgen-0.1) >= 0.1.4
-BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(liborcus-0.17)
 BuildRequires:  pkgconfig(libpagemaker-0.0)
 BuildRequires:  pkgconfig(libpng)
@@ -315,6 +312,7 @@ BuildRequires:  pkgconfig(icu-i18n)
 BuildConflicts: java < 9
 BuildConflicts: java-devel < 9
 BuildConflicts: java-headless < 9
+BuildRequires:  pkgconfig(libopenjp2)
 %endif
 %if 0%{?suse_version}
 # needed by python3_sitelib
@@ -1022,8 +1020,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch3
 %patch6 -p1
 %patch9 -p1
-%patch13 -p1
-%patch14 -p1
+%patch15 -p1
 %if 0%{?suse_version} < 1500
 %patch10 -p1
 %patch101 -p1
@@ -1178,6 +1175,9 @@ export NOCONFIGURE=yes
 %endif
 %if 0%{?suse_version} < 1500
         --without-system-icu \
+        --without-system-openjpeg \
+%else
+        --with-system-openjpeg \
 %endif
 %if %{with system_curl}
         --with-system-curl \

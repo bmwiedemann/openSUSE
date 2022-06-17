@@ -1,0 +1,391 @@
+From 5319087ab75a01793462c8c41cebfa1996cc688a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Toma=C5=BE=20Vajngerl?= <tomaz.vajngerl@collabora.co.uk>
+Date: Mon, 6 Jun 2022 22:53:23 +0200
+Subject: [PATCH] tdf148321: convert OOXML inset values to text distance values
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Inset values for top, bottom are calcualted differently in OOXML
+and need to be coverted on import to the text distance LO values,
+that place the text relative to the shape correctly.
+
+At export, the values can be converted back to the OOXML inset
+compatible values, but the values are not always converted back to
+the same values as the conversion is not bijective, however they
+do render the same.
+
+This also adds the test for the conversion when importing and
+checks that the exported values are expected.
+
+Change-Id: Ic64eec1a2a80ddad997f916da3e87dc30aaa12be
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/135463
+Tested-by: Jenkins
+Reviewed-by: Tomaž Vajngerl <quikee@gmail.com>
+(cherry picked from commit e216988657e20a1e52986f742ab60464697bcb41)
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/135504
+Reviewed-by: Miklos Vajna <vmiklos@collabora.com>
+---
+ oox/inc/drawingml/textbodyproperties.hxx      |  17 +-
+ oox/source/drawingml/shape.cxx                |   9 +-
+ oox/source/drawingml/textbodyproperties.cxx   | 129 +++++-
+ oox/source/export/drawingml.cxx               |  48 ++-
+ ...ppunitTest_sd_shape_import_export_tests.mk |  74 ++++
+ sd/Module_sd.mk                               |   1 +
+ sd/qa/unit/ShapeImportExportTest.cxx          | 381 ++++++++++++++++++
+ sd/qa/unit/data/TextDistancesInsets1.pptx     | Bin 0 -> 60484 bytes
+ sd/qa/unit/data/TextDistancesInsets2.pptx     | Bin 0 -> 111830 bytes
+ sd/qa/unit/data/TextDistancesInsets3.pptx     | Bin 0 -> 60276 bytes
+ 10 files changed, 619 insertions(+), 40 deletions(-)
+ create mode 100644 sd/CppunitTest_sd_shape_import_export_tests.mk
+ create mode 100644 sd/qa/unit/ShapeImportExportTest.cxx
+ create mode 100644 sd/qa/unit/data/TextDistancesInsets1.pptx
+ create mode 100644 sd/qa/unit/data/TextDistancesInsets2.pptx
+ create mode 100644 sd/qa/unit/data/TextDistancesInsets3.pptx
+
+diff --git a/oox/inc/drawingml/textbodyproperties.hxx b/oox/inc/drawingml/textbodyproperties.hxx
+index 41fbb832a5d8..7cc1b9d8041c 100644
+--- a/oox/inc/drawingml/textbodyproperties.hxx
++++ b/oox/inc/drawingml/textbodyproperties.hxx
+@@ -21,12 +21,15 @@
+ #define INCLUDED_OOX_DRAWINGML_TEXTBODYPROPERTIES_HXX
+
+ #include <com/sun/star/drawing/TextVerticalAdjust.hpp>
++#include <com/sun/star/drawing/XShape.hpp>
+ #include <oox/helper/helper.hxx>
+ #include <oox/helper/propertymap.hxx>
+ #include <optional>
++#include <array>
+
+-namespace oox::drawingml {
++class Size;
+
++namespace oox::drawingml {
+
+ struct TextBodyProperties
+ {
+@@ -35,7 +38,7 @@ struct TextBodyProperties
+     bool                                            mbAnchorCtr;
+     OptValue< sal_Int32 >                           moVert;
+     bool                                            moUpright = false;
+-    std::optional< sal_Int32 >                    moInsets[4];
++    std::array<std::optional<sal_Int32>, 4> moInsets;
+     std::optional< sal_Int32 >                    moTextOffUpper;
+     std::optional< sal_Int32 >                    moTextOffLeft;
+     std::optional< sal_Int32 >                    moTextOffLower;
+@@ -47,10 +50,14 @@ struct TextBodyProperties
+     OUString msHorzOverflow;
+     OUString msVertOverflow;
+
+-    explicit            TextBodyProperties();
++    std::array<std::optional<sal_Int32>, 4> maTextDistanceValues;
++
++    explicit TextBodyProperties();
++
++    void pushTextDistances(Size const& rShapeSize);
++    void readjustTextDistances(css::uno::Reference<css::drawing::XShape> const& xShape);
++    void pushVertSimulation();
+
+-    void                pushRotationAdjustments();
+-    void                pushVertSimulation();
+ };
+
+
+diff --git a/oox/source/drawingml/shape.cxx b/oox/source/drawingml/shape.cxx
+index cd800f892030..bebcbae240b6 100644
+--- a/oox/source/drawingml/shape.cxx
++++ b/oox/source/drawingml/shape.cxx
+@@ -1119,7 +1119,7 @@ Reference< XShape > const & Shape::createAndInsert(
+         // add properties from textbody to shape properties
+         if( mpTextBody )
+         {
+-            mpTextBody->getTextProperties().pushRotationAdjustments();
++            mpTextBody->getTextProperties().pushTextDistances(Size(aShapeRectHmm.Width, aShapeRectHmm.Height));
+             aShapeProps.assignUsed( mpTextBody->getTextProperties().maPropertyMap );
+             // Push char properties as well - specifically useful when this is a placeholder
+             if( mpMasterTextListStyle &&  mpMasterTextListStyle->getListStyle()[0].getTextCharacterProperties().moHeight.has() )
+@@ -1685,9 +1685,14 @@ Reference< XShape > const & Shape::createAndInsert(
+         }
+     }
+
+-    if( mxShape.is() )
++    if (mxShape.is())
++    {
+         finalizeXShape( rFilterBase, rxShapes );
+
++        if (mpTextBody)
++            mpTextBody->getTextProperties().readjustTextDistances(mxShape);
++    }
++
+     return mxShape;
+ }
+
+diff --git a/oox/source/drawingml/textbodyproperties.cxx b/oox/source/drawingml/textbodyproperties.cxx
+index 2ffa7de1085f..e44a103e3865 100644
+--- a/oox/source/drawingml/textbodyproperties.cxx
++++ b/oox/source/drawingml/textbodyproperties.cxx
+@@ -22,9 +22,17 @@
+ #include <drawingml/textbodyproperties.hxx>
+ #include <oox/token/properties.hxx>
+ #include <oox/token/tokens.hxx>
++#include <tools/gen.hxx>
++#include <svx/svdobj.hxx>
++#include <svx/svdotext.hxx>
++#include <svx/svdoashp.hxx>
++#include <svx/sdtditm.hxx>
++
++#include <array>
+
+ using namespace ::com::sun::star::drawing;
+ using namespace ::com::sun::star::text;
++using namespace css;
+
+ namespace oox::drawingml {
+
+@@ -57,14 +65,21 @@ void TextBodyProperties::pushVertSimulation()
+         maPropertyMap.setProperty( PROP_TextHorizontalAdjust, TextHorizontalAdjust_CENTER);
+ }
+
+-/* Push adjusted values, taking into consideration Shape Rotation */
+-void TextBodyProperties::pushRotationAdjustments()
++/* Push text distances / insets, taking into consideration Shape Rotation */
++void TextBodyProperties::pushTextDistances(Size const& rTextAreaSize)
+ {
+-    sal_Int32 nOff      = 0;
+-    static sal_Int32 const aProps[] { PROP_TextLeftDistance, PROP_TextUpperDistance, PROP_TextRightDistance, PROP_TextLowerDistance };
+-    sal_Int32 n         = SAL_N_ELEMENTS( aProps );
++    for (auto & rValue : maTextDistanceValues)
++        rValue.reset();
++
++    sal_Int32 nOff = 0;
++    static constexpr const std::array<sal_Int32, 4> aProps {
++        PROP_TextLeftDistance,
++        PROP_TextUpperDistance,
++        PROP_TextRightDistance,
++        PROP_TextLowerDistance
++    };
+
+-    switch( moRotation.get(0) )
++    switch (moRotation.get(0))
+     {
+         case 90*1*60000: nOff = 3; break;
+         case 90*2*60000: nOff = 2; break;
+@@ -72,28 +87,104 @@ void TextBodyProperties::pushRotationAdjustments()
+         default: break;
+     }
+
+-    for( sal_Int32 i = 0; i < n; i++ )
++    for (size_t i = 0; i < aProps.size(); i++)
+     {
+         sal_Int32 nVal = 0;
+
+         // Hack for n#760986
+         // TODO: Preferred method would be to have a textbox on top
+         // of the shape and the place it according to the (off,ext)
+-        if( nOff == 0 && moTextOffLeft  ) nVal = *moTextOffLeft;
+-        if( nOff == 1 && moTextOffUpper ) nVal = *moTextOffUpper;
+-        if( nOff == 2 && moTextOffRight ) nVal = *moTextOffRight;
+-        if( nOff == 3 && moTextOffLower ) nVal = *moTextOffLower;
+-        if( nVal < 0 ) nVal = 0;
+-
+-        if( moInsets[i] )
+-            maPropertyMap.setProperty( aProps[ nOff ], static_cast< sal_Int32 >( *moInsets[i] + nVal ));
+-        else if( nVal )
+-            maPropertyMap.setProperty( aProps[ nOff ], nVal );
+-
+-        nOff = (nOff+1) % n;
++        if (nOff == 0 && moTextOffLeft)
++            nVal = *moTextOffLeft;
++
++        if (nOff == 1 && moTextOffUpper)
++            nVal = *moTextOffUpper;
++
++
++        if (nOff == 2 && moTextOffRight)
++            nVal = *moTextOffRight;
++
++        if (nOff == 3 && moTextOffLower)
++            nVal = *moTextOffLower;
++
++
++        if( nVal < 0 )
++            nVal = 0;
++
++        sal_Int32 nTextOffsetValue = nVal;
++
++        if (moInsets[i])
++        {
++            nTextOffsetValue = *moInsets[i] + nVal;
++        }
++
++        // if inset is set, then always set the value
++        // this prevents the default to be set (0 is a valid value)
++        if (moInsets[i] || nTextOffsetValue)
++        {
++            maTextDistanceValues[nOff] = nTextOffsetValue;
++        }
++
++        nOff = (nOff + 1) % aProps.size();
++    }
++
++    // Check if bottom and top are set
++    if (maTextDistanceValues[1] && maTextDistanceValues[3])
++    {
++        double nHeight = rTextAreaSize.getHeight();
++
++        double nTop = *maTextDistanceValues[1];
++        double nBottom = *maTextDistanceValues[3];
++
++        // Check if top + bottom is more than text area height.
++        // If yes, we need to adjust the values as defined in OOXML.
++        if (nTop + nBottom >= nHeight)
++        {
++            double diffFactor = (nTop + nBottom - nHeight) / 2.0;
++
++            maTextDistanceValues[1] = nTop - diffFactor;
++            maTextDistanceValues[3] = nBottom - diffFactor;
++        }
++    }
++
++    for (size_t i = 0; i < aProps.size(); i++)
++    {
++        if (maTextDistanceValues[i])
++            maPropertyMap.setProperty(aProps[i], *maTextDistanceValues[i]);
+     }
+ }
+
++/* Readjust the text distances / insets if necessary to take
++   the text area into account, not just the shape area*/
++void TextBodyProperties::readjustTextDistances(uno::Reference<drawing::XShape> const& xShape)
++{
++    // Only for custom shapes (for now)
++    auto* pCustomShape = dynamic_cast<SdrObjCustomShape*>(SdrObject::getSdrObjectFromXShape(xShape));
++    if (pCustomShape)
++    {
++        sal_Int32 nLower = pCustomShape->GetTextLowerDistance();
++        sal_Int32 nUpper = pCustomShape->GetTextUpperDistance();
++
++        pCustomShape->SetMergedItem(makeSdrTextUpperDistItem(0));
++        pCustomShape->SetMergedItem(makeSdrTextLowerDistItem(0));
++
++        tools::Rectangle aAnchorRect;
++        pCustomShape->TakeTextAnchorRect(aAnchorRect);
++        Size aAnchorSize = aAnchorRect.GetSize();
++
++        pushTextDistances(aAnchorSize);
++        if (maTextDistanceValues[1] && maTextDistanceValues[3])
++        {
++            nLower = *maTextDistanceValues[3];
++            nUpper = *maTextDistanceValues[1];
++        }
++
++        pCustomShape->SetMergedItem(makeSdrTextLowerDistItem(nLower));
++        pCustomShape->SetMergedItem(makeSdrTextUpperDistItem(nUpper));
++    }
++}
++
++
+ } // namespace oox::drawingml
+
+ /* vim:set shiftwidth=4 softtabstop=4 expandtab: */
+diff --git a/oox/source/export/drawingml.cxx b/oox/source/export/drawingml.cxx
+index 2a11fa507959..c4795cf9e5b8 100644
+--- a/oox/source/export/drawingml.cxx
++++ b/oox/source/export/drawingml.cxx
+@@ -3132,20 +3132,22 @@ void DrawingML::WriteText(const Reference<XInterface>& rXIface, bool bBodyPr, bo
+                           sal_Int32 nXmlNamespace, bool bWritePropertiesAsLstStyles)
+ {
+     // ToDo: Fontwork in DOCX
+-    Reference< XText > xXText( rXIface, UNO_QUERY );
++    uno::Reference<XText> xXText(rXIface, UNO_QUERY);
+     if( !xXText.is() )
+         return;
+
+-    Reference< XPropertySet > rXPropSet( rXIface, UNO_QUERY );
++    uno::Reference<drawing::XShape> xShape(rXIface, UNO_QUERY);
++    uno::Reference<XPropertySet> rXPropSet(rXIface, UNO_QUERY);
+
+     sal_Int32 nTextPreRotateAngle = 0;
+     double nTextRotateAngle = 0;
+
+-#define DEFLRINS 254
+-#define DEFTBINS 127
+-    sal_Int32 nLeft, nRight, nTop, nBottom;
+-    nLeft = nRight = DEFLRINS;
+-    nTop = nBottom = DEFTBINS;
++    constexpr const sal_Int32 constDefaultLeftRightInset = 254;
++    constexpr const sal_Int32 constDefaultTopBottomInset = 127;
++    sal_Int32 nLeft = constDefaultLeftRightInset;
++    sal_Int32 nRight = constDefaultLeftRightInset;
++    sal_Int32 nTop = constDefaultTopBottomInset;
++    sal_Int32 nBottom = constDefaultTopBottomInset;
+
+     // top inset looks a bit different compared to ppt export
+     // check if something related doesn't work as expected
+@@ -3158,6 +3160,27 @@ void DrawingML::WriteText(const Reference<XInterface>& rXIface, bool bBodyPr, bo
+     if (GetProperty(rXPropSet, "TextLowerDistance"))
+         mAny >>= nBottom;
+
++    // Transform the text distance values so they are compatible with OOXML insets
++    if (xShape.is())
++    {
++        sal_Int32 nTextHeight = xShape->getSize().Width;
++
++        auto* pCustomShape = dynamic_cast<SdrObjCustomShape*>(SdrObject::getSdrObjectFromXShape(xShape));
++        if (pCustomShape)
++        {
++            tools::Rectangle aAnchorRect;
++            pCustomShape->TakeTextAnchorRect(aAnchorRect);
++            nTextHeight = aAnchorRect.GetSize().getHeight();
++        }
++
++        if (nTop + nBottom >= nTextHeight)
++        {
++            sal_Int32 nDiff = std::abs(std::min(nTop, nBottom));
++            nTop += nDiff;
++            nBottom += nDiff;
++        }
++    }
++
+     TextVerticalAdjust eVerticalAlignment( TextVerticalAdjust_TOP );
+     const char* sVerticalAlignment = nullptr;
+     if (GetProperty(rXPropSet, "TextVerticalAdjust"))
+@@ -3229,7 +3252,6 @@ void DrawingML::WriteText(const Reference<XInterface>& rXIface, bool bBodyPr, bo
+     {
+         if (mpTextExport)
+         {
+-            uno::Reference<drawing::XShape> xShape(rXIface, uno::UNO_QUERY);
+             if (xShape)
+             {
+                 auto xTextFrame = mpTextExport->GetUnoTextFrame(xShape);
+@@ -3377,10 +3399,10 @@ void DrawingML::WriteText(const Reference<XInterface>& rXIface, bool bBodyPr, bo
+                                XML_horzOverflow, sHorzOverflow,
+                                XML_vertOverflow, sVertOverflow,
+                                XML_fromWordArt, sax_fastparser::UseIf("1", bFromWordArt),
+-                               XML_lIns, sax_fastparser::UseIf(OString::number(oox::drawingml::convertHmmToEmu(nLeft)), nLeft != DEFLRINS),
+-                               XML_rIns, sax_fastparser::UseIf(OString::number(oox::drawingml::convertHmmToEmu(nRight)), nRight != DEFLRINS),
+-                               XML_tIns, sax_fastparser::UseIf(OString::number(oox::drawingml::convertHmmToEmu(nTop)), nTop != DEFTBINS),
+-                               XML_bIns, sax_fastparser::UseIf(OString::number(oox::drawingml::convertHmmToEmu(nBottom)), nBottom != DEFTBINS),
++                               XML_lIns, sax_fastparser::UseIf(OString::number(oox::drawingml::convertHmmToEmu(nLeft)), nLeft != constDefaultLeftRightInset),
++                               XML_rIns, sax_fastparser::UseIf(OString::number(oox::drawingml::convertHmmToEmu(nRight)), nRight != constDefaultLeftRightInset),
++                               XML_tIns, sax_fastparser::UseIf(OString::number(oox::drawingml::convertHmmToEmu(nTop)), nTop != constDefaultTopBottomInset),
++                               XML_bIns, sax_fastparser::UseIf(OString::number(oox::drawingml::convertHmmToEmu(nBottom)), nBottom != constDefaultTopBottomInset),
+                                XML_anchor, sVerticalAlignment,
+                                XML_anchorCtr, sax_fastparser::UseIf("1", bHorizontalCenter),
+                                XML_vert, sWritingMode,
+@@ -3465,7 +3487,6 @@ void DrawingML::WriteText(const Reference<XInterface>& rXIface, bool bBodyPr, bo
+         {
+             // tdf#112312: only custom shapes obey the TextAutoGrowHeight option
+             bool bTextAutoGrowHeight = false;
+-            uno::Reference<drawing::XShape> xShape(rXIface, uno::UNO_QUERY);
+             auto pSdrObjCustomShape = xShape.is() ? dynamic_cast<SdrObjCustomShape*>(SdrObject::getSdrObjectFromXShape(xShape)) : nullptr;
+             if (pSdrObjCustomShape && GetProperty(rXPropSet, "TextAutoGrowHeight"))
+             {
+@@ -3517,7 +3538,6 @@ void DrawingML::WriteText(const Reference<XInterface>& rXIface, bool bBodyPr, bo
+     if( !enumeration.is() )
+         return;
+
+-    uno::Reference<drawing::XShape> xShape(rXIface, uno::UNO_QUERY);
+     SdrObject* pSdrObject = xShape.is() ? SdrObject::getSdrObjectFromXShape(xShape) : nullptr;
+     const SdrTextObj* pTxtObj = dynamic_cast<SdrTextObj*>( pSdrObject );
+     if (pTxtObj && mpTextExport)
