@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 15 12:39:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.216.0
+  * cube,vulkaninfo: Add portability_enumeration if present
+  * cube: add null check on wl_*_destroy functions
+  * vulkaninfo: Set sType in PhysDevGroupProps
+  * vkcubepp: Use correct extension for portability enumeration
+
+-------------------------------------------------------------------
 Mon Apr 18 23:41:57 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.211.0
