@@ -1,7 +1,7 @@
 #
 # spec file for package pari-nftables
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,7 +26,6 @@ URL:            http://pari.math.u-bordeaux.fr/
 
 Source:         nftables.tar.xz
 Source2:        LICENSE
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  xz
 BuildArch:      noarch
 Conflicts:      libpari-gmp < 2.2.11
@@ -36,7 +35,7 @@ This package contains the historical megrez number field tables
 (errors fixed, 1/10th the size, easier to use) for the PARI CAS.
 
 %prep
-%setup -cqn data
+%autosetup -cn data
 cp "%_sourcedir/LICENSE" .
 
 %build
@@ -47,8 +46,7 @@ mkdir -p "$c"
 mv nftables "$c/"
 
 %files
-%defattr(-,root,root)
 %_datadir/pari
-%doc LICENSE
+%license LICENSE
 
 %changelog

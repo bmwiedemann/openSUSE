@@ -36,4 +36,12 @@
     <comment>- Reformat .spec to be in line with other pari data packages</comment>
     <requestid>632200</requestid>
   </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>6d73f1a5bd1962bdb1f32cef2ecb6c8f</srcmd5>
+    <version>20080929</version>
+    <time>1655493661</time>
+    <user>dimstar_suse</user>
+    <comment>- Specfile modernization</comment>
+    <requestid>983193</requestid>
+  </revision>
 </revisionlist>
