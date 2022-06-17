@@ -16,37 +16,34 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-fakeredis
-Version:        1.7.0
+Version:        1.8.1
 Release:        0
 Summary:        Fake implementation of redis API for testing purposes
 License:        BSD-3-Clause AND MIT
-URL:            https://github.com/jamesls/fakeredis
-Source:         https://files.pythonhosted.org/packages/source/f/fakeredis/fakeredis-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+URL:            https://github.com//dsoftwareinc/fakeredis
+Source:         https://github.com/dsoftwareinc/fakeredis-py/archive/refs/tags/v%{version}.tar.gz#/fakeredis-%{version}-gh.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-packaging
 Requires:       python-redis
-Requires:       python-six >= 1.12
-Requires:       python-sortedcontainers
-Suggests:       python-aioredis
+Requires:       python-six >= 1.16
+Requires:       python-sortedcontainers >= 2.4.0
+Suggests:       (python-aioredis if python-redis < 4.2)
 Suggests:       python-lupa
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module aioredis}
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module lupa}
-BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest >= 4.0}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module redis}
-BuildRequires:  %{python_module six >= 1.12}
-BuildRequires:  %{python_module sortedcontainers}
+BuildRequires:  %{python_module six >= 1.16}
+BuildRequires:  %{python_module sortedcontainers >= 2.4.0}
 # /SECTION
 %python_subpackages
 
@@ -54,13 +51,13 @@ BuildRequires:  %{python_module sortedcontainers}
 Fake implementation of redis API for testing purposes.
 
 %prep
-%setup -q -n fakeredis-%{version}
+%setup -q -n fakeredis-py-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -68,8 +65,8 @@ export LANG="en_US.UTF8"
 %pytest
 
 %files %{python_files}
-%doc README.rst
-%license COPYING
+%doc README.md
+%license LICENSE
 %{python_sitelib}/fakeredis
 %{python_sitelib}/fakeredis-%{version}*-info
 

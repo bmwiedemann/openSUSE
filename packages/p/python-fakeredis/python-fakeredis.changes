@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jun 11 11:17:33 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.8.1
+  * fix: allow redis 4.3.* by @terencehonles in #30
+- Release 1.8
+  * Fix handling url with username and password by @cunla in #27
+  * Refactor tests by @cunla in #28
+- Release 1.7.6
+  * add IMOVE operation by @BGroever in #11
+  * Add SMISMEMBER command by @OlegZv in #20
+  * fix: work with redis.asyncio by @zhongkechen in #10
+  * Migrate to poetry by @cunla in #12
+  * Create annotation for redis4+ tests by @cunla in #14
+  * Make aioredis and lupa optional dependencies by @cunla in #16
+  * Remove aioredis requirement if redis-py 4.2+ by @ikornaselur in
+    #19
+
+-------------------------------------------------------------------
 Sun Jan 23 20:36:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.0
