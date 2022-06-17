@@ -17,7 +17,7 @@
 
 
 Name:           gource
-Version:        0.52
+Version:        0.53
 Release:        0
 Summary:        Software version control visualization tool
 License:        GPL-3.0-or-later

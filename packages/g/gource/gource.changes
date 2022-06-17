@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 16 21:30:11 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 0.53
+  * Add --high-dpi option
+  * Fixed slider timestamp font not affected by --font-scale
+  * Fixed hovering over end of slider stopping time advancing
+
+-------------------------------------------------------------------
 Sat Apr  9 08:35:16 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.52
