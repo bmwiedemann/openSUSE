@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 10 14:12:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.95.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.95.0
+- Changes since 5.94.0:
+  * Add AppletPopup window type to PlasmaShellSurface
+  * fix up foreign docs
+  * Raise minimum plasma-wayland-proto version to 1.7.0
+  * Fix include dir in the generated pri file
+  * client: Bump plasmashell version to 7 (kde#453578)
+
+-------------------------------------------------------------------
 Tue May 10 08:18:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.94.0
