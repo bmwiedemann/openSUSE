@@ -915,4 +915,12 @@ Remove 0001-fix-sqlite3.10.0-test.patch. Applied upstream.</comment>
     ForeignKeyConstraint object.</comment>
     <requestid>975001</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>7638136b7037c9be622f5969a00b4d82</srcmd5>
+    <version>1.4.37</version>
+    <time>1655493610</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>982126</requestid>
+  </revision>
 </revisionlist>
