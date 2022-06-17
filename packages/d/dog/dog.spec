@@ -1,7 +1,7 @@
 #
 # spec file for package dog
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dog
-Version:        0.1.0~git0.445ed98
+Version:        0.1.0
 Release:        0
 Summary:        A command-line DNS client
 License:        EUPL-1.2

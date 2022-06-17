@@ -1,7 +1,7 @@
 <services>
   <service mode="disabled" name="obs_scm">
     <param name="url">https://github.com/ogham/dog.git</param>
-    <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
+    <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
     <param name="revision">v0.1.0</param>
     <param name="match-tag">*</param>

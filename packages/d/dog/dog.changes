@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun 17 10:23:16 UTC 2022 - danilo.spinella@suse.com
+
+- Remove git tag from version
+- Update vendored dependencies to fix build error
+
+-------------------------------------------------------------------
+Tue Apr  5 05:23:49 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Automatic update of vendored dependencies
+
+-------------------------------------------------------------------
 Thu Dec  2 14:03:46 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Initial packaging of version 0.1.0
