@@ -17,7 +17,7 @@
 
 
 Name:           calibre
-Version:        5.43.0
+Version:        5.44.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -28,7 +28,7 @@ Source1:        https://calibre-ebook.com/signatures/calibre-%{version}.tar.xz.s
 Source2:        https://calibre-ebook.com/signatures/kovid.gpg#/%{name}.keyring
 Source3:        %{name}.desktop
 Source100:      %{name}-rpmlintrc
-# PATCH-FIX-OPENSUSE: disabling unrar test
+# PATCH-FIX-OPENSUSE: disabling unrar test, disable zeroconf test
 Patch1:         %{name}-python_test.patch
 # PATCH-FIX-OPENSUSE: install locale files the openSUSE way
 Patch2:         %{name}-setup.install.py.diff
@@ -337,6 +337,6 @@ CALIBRE_PY3_PORT=1 SKIP_QT_BUILD_TEST=1 python3 setup.py test
 %{_datadir}/bash-completion/completions/%{name}*
 %{_datadir}/bash-completion/completions/*ebook*
 %{_datadir}/bash-completion/completions/lrf*
-%{python3_sitelib}/init_calibre.py
+%{python3_sitearch}/init_calibre.py
 
 %changelog

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Jun 17 09:06:09 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update ot 5.44.0
+  * New Features
+    - Amazon metadata download: Add an option to prefer the Kindle
+      edition when multiple book types are returned by the search
+      (Preferences->Metadata download->Configure the Amazon plugin)
+    - Kobo driver: Support for updated firmwareecho
+    - Allow customizing how yes/no columns are displayed
+      (Preferences->Add your own columns)
+    - Manage tags dialog: If tags are present in the add tags input
+      when OK is clicked, add them automatically, without needing
+      to click the plus button first
+  * Bug Fixes
+    - Edit book: Live CSS: Fix @namespace rules causing jumping to
+      rule definition to go to the wrong definition
+    - Workaround for Apple bug in macOS 13 that prevents device
+      detection
+    - Dont use commas in filenames when sending to pbsync and
+      kindle email addresses
+    - Edit book: When quitting while a save is in progress and the
+      save completes while the confirmation popup is visible,
+      dont abort the quit.
+- Rebase calibre-python_test.patch to disable zeroconf test,
+  because newest python-zeroconf from openSUSE rise up an error.
+  
+-------------------------------------------------------------------
 Fri May 27 09:17:04 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 -Update to 5.43.0 
