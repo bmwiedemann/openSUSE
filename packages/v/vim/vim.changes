@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Jun 13 13:00:22 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.5083, fixes the following problems
+  * A finished terminal in a popup window does not show a scrollbar.
+  * Confusing error if first argument of popup_create() is wrong.
+  * Scrollbar thumb in scrolled popup not visible.
+  * Cannot close a terminal popup with "NONE" job.
+  * Scrollbar thumb in tall scrolled popup not visible.
+  * Can open a cmdline window from a substitute expression.
+  * Command line test fails.
+  * Can escape a terminal popup window when the job is finished.
+  * vim_regsub() can overwrite the destination.
+  * CurSearch highlight is often wrong.
+  * When using XIM the gui test may fail.
+  * Insufficient tests for autocommands.
+  * Using freed memory when searching for pattern in path.
+  * Check for autocmd_add() event argument is confusing.
+  * CI checkout step title is a bit cryptic.
+  * Cannot have a comment halfway an expression in an autocmd command block.
+  * No good filetype for conf files similar to dosini.
+  * Statusline is not updated when terminal title changes.
+  * The channel log only contains some of the raw terminal output.
+  * Using gettimeofday() for timeout is very inefficient.
+  * input() does not handle composing characters properly.
+  * Autoconf 2.71 produces many obsolete warnings.
+  * Running configure fails.
+  * C89 requires signal handlers to return void.
+  * Coverity warns for dead code.
+  * Error for a command may go over the end of IObuff.
+  * No test for what 8.1.0052 fixes.
+  * Wrong return type for main() in tee.c.
+  * Can specify multispace listchars only for whole line.
+  * Timer_create is not available on every Mac system. (Hisashi T Fujinaka)
+  * Gcc 12.1 warning when building tee.
+  * Unnecessary code.
+  * With some Mac OS version clockid_t is redefined.
+  * Using uninitialized value and freed memory in spell command.
+  * Clang on MS-Windows produces warnings.
+  * Spell test fails on MS-Windows.
+  * Clang gives an out of bounds warning.
+  * Unnecessary code.
+  * Various warnings from clang on MS-Windows.
+  * Substitute test has a one second delay.
+  * DirChanged autocommand may use freed memory. (Shane-XB Qian)
+  * When indenting gets out of hand it is hard to stop.
+  * Retab test fails.
+
+-------------------------------------------------------------------
 Sun May 29 16:30:57 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.5038, fixes the following problems

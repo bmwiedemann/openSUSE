@@ -5876,4 +5876,41 @@ always built-in because vim has direct perl dependencies anyway.
   * MODE_ enum entries names are too generic.</comment>
     <requestid>979693</requestid>
   </revision>
+  <revision rev="310" vrev="1">
+    <srcmd5>fcb9d1a01a71684e281f092aba5733c1</srcmd5>
+    <version>8.2.5083</version>
+    <time>1655493625</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.5083, fixes the following problems
+  * A finished terminal in a popup window does not show a scrollbar.
+  * Confusing error if first argument of popup_create() is wrong.
+  * Scrollbar thumb in scrolled popup not visible.
+  * Cannot close a terminal popup with &quot;NONE&quot; job.
+  * Scrollbar thumb in tall scrolled popup not visible.
+  * Can open a cmdline window from a substitute expression.
+  * Command line test fails.
+  * Can escape a terminal popup window when the job is finished.
+  * vim_regsub() can overwrite the destination.
+  * CurSearch highlight is often wrong.
+  * When using XIM the gui test may fail.
+  * Insufficient tests for autocommands.
+  * Using freed memory when searching for pattern in path.
+  * Check for autocmd_add() event argument is confusing.
+  * CI checkout step title is a bit cryptic.
+  * Cannot have a comment halfway an expression in an autocmd command block.
+  * No good filetype for conf files similar to dosini.
+  * Statusline is not updated when terminal title changes.
+  * The channel log only contains some of the raw terminal output.
+  * Using gettimeofday() for timeout is very inefficient.
+  * input() does not handle composing characters properly.
+  * Autoconf 2.71 produces many obsolete warnings.
+  * Running configure fails.
+  * C89 requires signal handlers to return void.
+  * Coverity warns for dead code.
+  * Error for a command may go over the end of IObuff.
+  * No test for what 8.1.0052 fixes.
+  * Wrong return type for main() in tee.c.
+  * Can specify multispace listchars only for whole line.</comment>
+    <requestid>982459</requestid>
+  </revision>
 </revisionlist>
