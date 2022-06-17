@@ -205,11 +205,7 @@ Substitute: pkg-config pkgconf-pkg-config
 FileProvides: /usr/bin/glxinfo Mesa-demo-x
 FileProvides: /usr/bin/python python-base
 FileProvides: /usr/bin/python2 python2-base
-%if "%{_repository}" == "snapshot"
-FileProvides: /usr/bin/python3 python38-base
-%else
 FileProvides: /usr/bin/python3 python310-base
-%endif
 FileProvides: /usr/bin/sed busybox-sed sed sed
 FileProvides: /usr/bin/setfacl acl
 FileProvides: /usr/bin/sg_inq sg3_utils
@@ -492,7 +488,7 @@ Prefer: go -go1.13
 Prefer: kernel-default-base
 
 # have choice for kubernetes-kubelet-common (de-prefer the old versions, ensuring to have a new unresolvable when a new version shows up)
-Prefer: -kubernetes1.18-kubelet-common -kubernetes1.19-kubelet-common -kubernetes1.20-kubelet-common -kubernetes1.21-kubelet-common -kubernetes1.22-kubelet-common
+Prefer: -kubernetes1.18-kubelet-common -kubernetes1.19-kubelet-common -kubernetes1.20-kubelet-common -kubernetes1.21-kubelet-common -kubernetes1.22-kubelet-common -kubernetes1.23-client-common
 
 # have choice for html2text
 Prefer: -python38-html2text -python39-html2text -python310-html2text
