@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Jun 10 14:12:43 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.95.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.95.0
+- Changes since 5.94.0:
+  * Don't add empty dictionary to context menu
+  * Fix Qt6 build issue about using QVector without template arg
+  * Fix whitespace slider & group text related options
+  * port to standard C++ smart pointers where possible
+  * Ensure to keep special dictionary setting on replaced word
+  * observe changes on textChanged for QSpinBox (kde#453978)
+  * fix compile with Qt 6
+  * fix comments & add since 5.95 info
+  * export multi cursors to JS
+  * add multi cursor API
+  * Add suggestion on top of context menu
+  * Avoid calling slightly expensive contextMenu() twice
+  * Check for empty selection too
+  * Ensure next right click works properly if there was a selection
+  * Protect replaceWordBySuggestion against segfault
+  * Ugly hack to avoid segfault
+  * Support to change dictionary on words and selections
+  * Use only setVisible, remove SLOT attribute, avoid unneeded settings
+  * Oops! Fix permanent active misspelled range after word selection
+  * Add misspelled word to spell menu action
+  * Remove unneeded set to nullptr
+  * Make only once used member local
+  * Properly support to fix selected words by spell check
+  * Move spellcheck entry in context menu on top
+  * Don't track mouse move for spellcheking
+  * Add an action to remove cursors from empty lines
+  * Add more tests for setCursors and setSelections
+  * Refactor multicursor methods
+  * Make multicursor test methods static
+  * Add methods to set/get cursors and selections
+
+-------------------------------------------------------------------
 Tue May 10 08:18:09 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.94.0
