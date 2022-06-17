@@ -142,6 +142,7 @@ Mon Dec  6 04:38:25 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to runc v1.0.3. Upstream changelog is available from
   https://github.com/opencontainers/runc/releases/tag/v1.0.3. CVE-2021-43784
+  bsc#1193436
 
   * A potential vulnerability was discovered in runc (related to an internal
     usage of netlink), however upon further investigation we discovered that
