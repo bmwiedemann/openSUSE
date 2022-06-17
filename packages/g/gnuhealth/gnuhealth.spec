@@ -25,7 +25,7 @@
 
 Name:           gnuhealth
 
-Version:        %{majorver}.3
+Version:        %{majorver}.4
 Release:        0
 URL:            https://health.gnu.org
 Summary:        A Health and Hospital Information System
@@ -121,7 +121,7 @@ This package provides the interface to Orthanc
 
 %prep
 %setup -q -n %{name}-%{version}
-##%%patch0 -p1
+%patch0 -p1
 cp %{S:1} .
 cp %{S:2} .
 
