@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun  9 14:11:09 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 26.4.12:
+  * WORK_DIR parameter added for garb.cnf and launch scripts to ensure Galera
+    Arbitrator handles recovery files better (this includes command line option to
+    specify working directory), fixing codership/galera#313
+  * Fixes to renaming fc_master_slave to fc_single_primary
+  * Catch local_endpoint() and remote_endpoint() exceptions, so they aren't
+    propagated to the stack, fixing a cluster crash and MDEV-25068
+  * SSL options are explicitly initialised in garbd, fixing MDEV-28158
+
+-------------------------------------------------------------------
 Thu Apr 28 08:18:32 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Fill sysconfig configuration file

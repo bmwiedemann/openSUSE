@@ -25,14 +25,14 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           galera-4
-Version:        26.4.11
+Version:        26.4.12
 Release:        0
 Summary:        Galera: a synchronous multi-master wsrep provider (replication engine)
 License:        GPL-2.0-only
 Group:          Productivity/Databases/Tools
 URL:            https://galeracluster.com/
-Source:         http://releases.galeracluster.com/staging/galera-4/source/%{name}-%{version}.tar.gz
-Source1:        http://releases.galeracluster.com/staging/galera-4/source/%{name}-%{version}.tar.gz.asc
+Source:         https://releases.galeracluster.com/galera-4.12/source/%{name}-%{version}.tar.gz
+Source1:        https://releases.galeracluster.com/galera-4.12/source/%{name}-%{version}.tar.gz.asc
 Source2:        garb-user.conf
 Patch0:         galera-3-25.3.10_fix_startup_scripts.patch
 Patch2:         fix-cmake-install.patch
