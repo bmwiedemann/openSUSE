@@ -17,7 +17,7 @@
 
 
 Name:           patterns-containers
-Version:        5.0
+Version:        5.1
 Release:        0
 Summary:        Patterns for container technologies
 License:        MIT
@@ -31,56 +31,13 @@ This is an internal package that is used to create the patterns as part
 of the installation source setup. Installation of this package does
 not make sense.
 
-%package kubeadm
-Summary:        Kubernetes kubeadm Stack
-Group:          Metapackages
-Provides:       pattern() = kubeadm
-Provides:       pattern-category() = Containers
-Provides:       pattern-icon() = pattern-kubic
-Provides:       pattern-order() = 9030
-Provides:       pattern-visible()
-#Obsolete CaaSP Patterns
-Provides:       patterns-caasp-kubeadm
-Obsoletes:      patterns-caasp-kubeadm <= 4.0
-Requires:       autofs
-Requires:       busybox-k8s-yaml
-Requires:       ceph-common
-Requires:       cri-runtime
-Requires:       cri-tools
-Requires:       flannel-k8s-yaml
-Requires:       health-checker-plugins-kubic
-Requires:       hello-kubic-k8s-yaml
-Requires:       helm
-Requires:       kube-prometheus-k8s-yaml
-Requires:       kuberlr
-Requires:       kubernetes-client
-Requires:       kubernetes-kubeadm
-Requires:       kubernetes-kubeadm-criconfig
-Requires:       kubernetes-kubelet
-Requires:       kured-k8s-yaml
-Requires:       lvm2
-Requires:       metallb-k8s-yaml
-Requires:       nfs-client
-Requires:       nfs-client-provisioner-k8s-yaml
-# ExclusiveArch in the rook package
-%ifarch x86_64 aarch64
-Requires:       rook-k8s-yaml
-%endif
-Requires:       rpcbind
-Requires:       weave-k8s-yaml
-Requires:       pattern() = basesystem
-
-%description kubeadm
-This provides a vanilla kubeadm stack. It contains everything needed to
-setup kubernetes using kubeadm.
-
 %package container_runtime
 Summary:        Container Runtime for non-clustered systems
 Group:          Metapackages
 Provides:       pattern() = container_runtime
 Provides:       pattern-category() = Containers
 Provides:       pattern-icon() = pattern-kubic
-Provides:       pattern-order() = 9040
+Provides:       pattern-order() = 9030
 Provides:       pattern-visible()
 #Obsolete CaaSP Patterns
 Provides:       patterns-caasp-container-runtime
@@ -94,44 +51,6 @@ Requires:       pattern() = basesystem
 %description container_runtime
 This pattern installs the default container runtime packages for non-clustered systems.
 
-%package container_runtime_kubernetes
-Summary:        Container Runtime for kubernetes clustered systems
-Group:          Metapackages
-Provides:       pattern() = container_runtime_kubernetes
-Provides:       pattern-category() = Containers
-Provides:       pattern-icon() = pattern-kubic
-Provides:       pattern-order() = 9041
-Provides:       pattern-visible()
-#Obsolete CaaSP Patterns
-Provides:       patterns-caasp-container-runtime-kubernetes
-Obsoletes:      patterns-caasp-container-runtime-kubernetes <= 4.0
-Requires:       cri-o
-Requires:       cri-o-kubeadm-criconfig
-Requires:       pattern() = basesystem
-
-%description container_runtime_kubernetes
-This pattern installs the default container runtime packages for kubernetes clustered systems.
-
-%package kubernetes_utilities
-Summary:        Utilities to manage kubernetes
-Group:          Metapackages
-Provides:       pattern() = kubernetes_utilities
-Provides:       pattern-category() = Containers
-Provides:       pattern-icon() = pattern-kubic
-Provides:       pattern-order() = 9050
-Provides:       pattern-visible()
-Requires:       helm
-Requires:       k9s
-Requires:       kail
-Requires:       kubectl-who-can
-Requires:       rakkess
-Requires:       rbac-lookup
-Requires:       reg
-Requires:       pattern() = basesystem
-
-%description kubernetes_utilities
-This pattern installs utilities helpful to manage kubernetes.
-
 %prep
 # empty on purpose
 
@@ -140,30 +59,11 @@ This pattern installs utilities helpful to manage kubernetes.
 
 %install
 mkdir -p %buildroot/usr/share/doc/packages/patterns-containers/
-echo 'This file marks the pattern kubeadm to be installed.' >%buildroot/usr/share/doc/packages/patterns-containers/kubeadm.txt
 echo 'This file marks the pattern container_runtime to be installed.' >%buildroot/usr/share/doc/packages/patterns-containers/container_runtime.txt
-echo 'This file marks the pattern container_runtime_kubernetes to be installed.' >%buildroot/usr/share/doc/packages/patterns-containers/container_runtime_kubernetes.txt
-# Kubic specific packages shouldn't build for SLE/Leap
-echo 'This file marks the pattern kubernetes_utilities to be installed.' >%buildroot/usr/share/doc/packages/patterns-containers/kubernetes_utilities.txt
-
-%files kubeadm
-%defattr(-,root,root)
-%dir %{_docdir}/patterns-containers
-%{_docdir}/patterns-containers/kubeadm.txt
 
 %files container_runtime
 %defattr(-,root,root)
 %dir %{_docdir}/patterns-containers
 %{_docdir}/patterns-containers/container_runtime.txt
-
-%files container_runtime_kubernetes
-%defattr(-,root,root)
-%dir %{_docdir}/patterns-containers
-%{_docdir}/patterns-containers/container_runtime_kubernetes.txt
-
-%files kubernetes_utilities
-%defattr(-,root,root)
-%dir %{_docdir}/patterns-containers
-%{_docdir}/patterns-containers/kubernetes_utilities.txt
 
 %changelog

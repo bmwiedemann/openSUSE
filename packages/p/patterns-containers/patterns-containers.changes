@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 15 12:19:13 UTC 2022 - Richard Brown <rbrown@suse.com>
+
+- Remove kubernetes patterns, now found in patterns-kubernetes
+- Bump version to 5.1 for easy provides/obsoletes in patterns-kubernetes 
+
+-------------------------------------------------------------------
 Thu Jun  2 17:58:02 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove patterns for Kubic specific system roles

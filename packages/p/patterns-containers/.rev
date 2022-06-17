@@ -217,4 +217,13 @@
     <comment>- Remove patterns for Kubic specific system roles (forwarded request 980533 from kukuk)</comment>
     <requestid>980534</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e9ea7520dc3d225dc474436e8c6f8e41</srcmd5>
+    <version>5.1</version>
+    <time>1655493595</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove kubernetes patterns, now found in patterns-kubernetes
+- Bump version to 5.1 for easy provides/obsoletes in patterns-kubernetes</comment>
+    <requestid>982845</requestid>
+  </revision>
 </revisionlist>
