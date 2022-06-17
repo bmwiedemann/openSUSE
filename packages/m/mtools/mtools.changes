@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 14 10:28:38 UTC 2022 - pgajdos@suse.com
+
+- fix build
+- deleted patches
+  - mtools-prototypes.diff (not needed)
+
+-------------------------------------------------------------------
+Fri Jun 10 20:35:16 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.0.40:
+  * Better compatibility with legacy platforms
+
+-------------------------------------------------------------------
 Fri Apr 15 00:37:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.39:
