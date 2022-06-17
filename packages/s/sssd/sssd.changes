@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Jun 15 11:28:35 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
+
+- Use pam rpm macros to avoid hardcoding the directory names;
+  (bsc#1191047);
+- Do not take ownership of %_pam_confdir directory, it is owned by
+  pam package
+
+-------------------------------------------------------------------
+Mon Jun 13 14:48:28 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.7.2
+  * A sssd-2.7.1 regression preventing successful authentication of
+    IPA users was fixed.
+  * Default value of pac_check changed to check_upn,
+    check_upn_dns_info_ex (for AD and IPA provider).
+
+-------------------------------------------------------------------
+Thu Jun  2 15:24:57 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.7.1
+  * SSSD can now handle multi-valued RDNs if a unique name must
+    be determined with the help of the RDN.
+  * A regression in pam_sss_gss module causing a failure if
+    KRB5CCNAME environment variable was not set was fixed.
+  * New option `implicit_pac_responder` to control if the PAC
+    responder is started for the IPA and AD providers; the
+    default is true.
+  * New option `krb5_check_pac` to control the PAC validation
+    behavior.
+  * Multiple `crl_file` arguments can be used in the
+    `certificate_verification` option.
+
+-------------------------------------------------------------------
+Mon May 16 21:49:38 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable subid_sss
+
+-------------------------------------------------------------------
+Thu Apr 14 22:43:03 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.7.0
+  * Better default for IPA/AD re_expression. Tunning for group
+    names containing '@' is no longer needed.
+  * A new debug level is added to show statistical and
+    performance data.
+  * Added support for anonymous PKINIT to get FAST credentials.
+  * SSSD now correctly falls back to UPN search if the user was
+    not found even with `cache_first = true`.
+
+-------------------------------------------------------------------
 Mon Feb 21 14:50:38 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Enable selinux support

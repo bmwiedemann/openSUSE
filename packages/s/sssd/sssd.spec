@@ -1,7 +1,7 @@
 #
 # spec file for package sssd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           sssd
-Version:        2.6.3
+Version:        2.7.2
 Release:        0
 Summary:        System Security Services Daemon
 License:        GPL-3.0-or-later and LGPL-3.0-or-later
 Group:          System/Daemons
-URL:            https://pagure.io/SSSD/sssd
-#Git-Clone:	https://pagure.io/SSSD/sssd
+URL:            https://github.com/SSSD/sssd
+#Git-Clone:	https://github.com/SSSD/sssd
 Source:         https://github.com/SSSD/sssd/releases/download/%version/%name-%version.tar.gz
 Source2:        https://github.com/SSSD/sssd/releases/download/%version/%name-%version.tar.gz.asc
 Source3:        baselibs.conf
@@ -61,6 +61,7 @@ BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(ldb) >= 0.9.2
 BuildRequires:  pkgconfig(libcares)
 BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libnfsidmap)
 BuildRequires:  pkgconfig(libnl-3.0) >= 3.0
 BuildRequires:  pkgconfig(libnl-route-3.0) >= 3.0
@@ -77,6 +78,7 @@ BuildRequires:  pkgconfig(tdb) >= 1.1.3
 BuildRequires:  pkgconfig(tevent)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(libsemanage)
+BuildRequires:  libsubid-devel
 %{?systemd_ordering}
 Requires:       sssd-ldap = %version-%release
 Requires(postun): pam-config
@@ -371,23 +373,25 @@ export PATH="$PATH:/usr/sbin"
 
 autoreconf -fiv
 %configure \
-    --with-db-path="%dbpath" \
-    --with-pipe-path="%pipepath" \
-    --with-pubconf-path="%pubconfpath" \
-    --with-gpo-cache-path="%gpocachepath" \
-    --with-init-dir="%_initrddir" \
-    --with-environment-file="%_sysconfdir/sysconfig/sssd" \
-    --with-initscript=systemd \
-    --with-syslog=journald \
-    --with-pid-path="%_rundir" \
-    --enable-nsslibdir="/%_lib" \
-    --enable-pammoddir="/%_lib/security" \
-    --with-ldb-lib-dir="%ldbdir" \
-    --with-selinux=yes \
-    --with-os=suse \
-    --disable-ldb-version-check \
-    --without-secrets \
-    --without-python2-bindings
+	--with-db-path="%dbpath" \
+	--with-pipe-path="%pipepath" \
+	--with-pubconf-path="%pubconfpath" \
+	--with-gpo-cache-path="%gpocachepath" \
+	--with-init-dir="%_initrddir" \
+	--with-environment-file="%_sysconfdir/sysconfig/sssd" \
+	--with-initscript=systemd \
+	--with-syslog=journald \
+	--with-pid-path="%_rundir" \
+	--enable-nsslibdir="/%_lib" \
+	--enable-pammoddir="%_pam_moduledir" \
+	--with-ldb-lib-dir="%ldbdir" \
+	--with-selinux=yes \
+	--with-subid \
+	--with-os=suse \
+	--disable-ldb-version-check \
+	--without-secrets \
+	--without-python2-bindings \
+	--without-oidc-child
 %make_build all
 
 %install
@@ -572,8 +576,7 @@ fi
 %config(noreplace) %_sysconfdir/sssd/sssd.conf
 %config(noreplace) %_sysconfdir/logrotate.d/sssd
 %dir %_sysconfdir/sssd/conf.d
-%dir %_sysconfdir/pam.d/
-%config(noreplace) %_sysconfdir/pam.d/sssd-shadowutils
+%config(noreplace) %_pam_confdir/sssd-shadowutils
 %dir %_datadir/%name/
 %_datadir/%name/cfg_rules.ini
 %_datadir/%name/sssd.api.conf
@@ -584,17 +587,19 @@ fi
 # sssd-client
 #
 /%_lib/libnss_sss.so.2
-/%_lib/security/pam_sss.so
-/%_lib/security/pam_sss_gss.so
+%_pam_moduledir/pam_sss.so
+%_pam_moduledir/pam_sss_gss.so
 %_libdir/krb5/
 %_libdir/%name/modules/sssd_krb5_localauth_plugin.so
+%_libdir/%name/modules/sssd_krb5_idp_plugin.so
+%_libdir/libsubid_sss.so
 %_mandir/??/man8/sssd_krb5_locator_plugin.8*
 %_mandir/??/man8/pam_sss.8*
 %_mandir/??/man8/pam_sss_gss.8*
 %_mandir/man8/pam_sss.8*
 %_mandir/man8/pam_sss_gss.8*
+%_mandir/man8/sssd_krb5_localauth_plugin.8*
 %_mandir/man8/sssd_krb5_locator_plugin.8*
-%_mandir/uk/man8/pam_sss_gss.8*
 # cifs idmap plugin
 %dir %_sysconfdir/cifs-utils
 %cifs_idmap_plugin
