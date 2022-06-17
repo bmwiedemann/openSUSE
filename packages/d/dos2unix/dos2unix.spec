@@ -1,7 +1,7 @@
 #
 # spec file for package dos2unix
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           dos2unix
-Version:        7.4.2
+Version:        7.4.3
 Release:        0
 Summary:        Text converters to and from DOS/MAC to UNIX
 License:        BSD-2-Clause
 Group:          Productivity/Text/Convertors
 URL:            https://waterlan.home.xs4all.nl/dos2unix.html
-Source:         https://waterlan.home.xs4all.nl/dos2unix/dos2unix-%{version}.tar.gz
-Source2:        https://waterlan.home.xs4all.nl/dos2unix/dos2unix-%{version}.tar.gz.asc
+Source0:        https://waterlan.home.xs4all.nl/dos2unix/dos2unix-%{version}.tar.gz
+Source1:        https://waterlan.home.xs4all.nl/dos2unix/dos2unix-%{version}.tar.gz.asc
 # http://keys.gnupg.net/pks/lookup?op=get&search=0x38C1F572B12725BE
-Source3:        %{name}.keyring
+Source2:        %{name}.keyring
 Provides:       unix2dos = %{version}
 Obsoletes:      unix2dos < %{version}
 
@@ -50,9 +50,9 @@ export RPM_OPT_FLAGS
 %find_lang dos2unix --all-name --with-man
 
 %files -f dos2unix.lang
-%defattr(-,root,root,0755)
 %doc %{_defaultdocdir}/%{name}
-%{_bindir}/*
-%{_mandir}/*/*.1%{?ext_man}
+%{_bindir}/{%{name},mac2unix,unix2dos,unix2mac}
+%{_mandir}/man1/{%{name},mac2unix,unix2dos,unix2mac}.1%{?ext_man}
+%dir %{_mandir}/??
 
 %changelog

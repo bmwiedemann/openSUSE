@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun  6 16:03:41 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+
+- Added directory with localized man pages.
+
+-------------------------------------------------------------------
+Sun Jun  5 18:37:10 UTC 2022 - Erwin Waterlander <waterlan@xs4all.nl>
+
+- update to 7.4.3:
+  * translation update
+
+-------------------------------------------------------------------
 Thu Feb 11 23:10:58 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Remove localized man directories from file list: Already provided
@@ -411,4 +422,3 @@ Mon Aug 12 17:52:01 MEST 2002 - bk@suse.de
 Wed Jun 19 17:58:10 CEST 2002 - postadal@suse.cz
 
 - new package dos2unix verison 0.8.0
-
