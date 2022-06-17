@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun 15 06:57:10 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+feat: create new metapackage noto-fonts with all Noto Fonts except CJK and Emoji
+
+-------------------------------------------------------------------
+Sun Jun 12 22:29:40 UTC 2022 - Gordon Leung <pirateclip@protonmail.com> - 20220607
+
+update: 20220524 -> 20220607
+- Noto Sans and Noto Sans Myanmar have been updated
+
+fix(spec): add LICENSE to every package, remove redundant doc package
+- It is likely a legal requirement that the license must be included with the package (rather than only recommends)
+- Using the %license macro and including the license in every subpackage is the norm
+
+fix(sh): prevent redundant .svn files from being compressed into archive
+chore(spec): use install instead of mkdir and cp
+chore(sh): fix typo
+
+-------------------------------------------------------------------
 Wed Jun  1 08:43:48 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - Add obsoletes and provides for google-{arimo,cousine,tinos}-fonts
 

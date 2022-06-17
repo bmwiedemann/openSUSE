@@ -2,9 +2,9 @@
 pkg_name="google-noto-fonts"
 font_dir="ttf"
 
-# Get only the otf fonts
+# Get only the hinted fonts
 svn checkout https://github.com/googlefonts/noto-fonts/trunk/hinted/$font_dir
-tar -cvzf $font_dir.tar.gz $font_dir
+tar -cvzf $font_dir.tar.gz $font_dir/[!\.]*
 
 cp -f $pkg_name.spec.in $pkg_name.spec
 ls $font_dir/ | sed -e 's:Noto::' -e 's:-.*\..tf::' -e 's:\..tf::' -e 's:\.ttc::' | sort -f | uniq | while read font; do
@@ -38,12 +38,8 @@ ls $font_dir/ | sed -e 's:Noto::' -e 's:-.*\..tf::' -e 's:\..tf::' -e 's:\.ttc::
     OBSOLETES=($packagename 'noto-sans-syriacwestern' 'noto-sans-syriacwestern-fonts' 'noto-sans-syriacestrangela' 'noto-sans-syriacestrangela-fonts' 'noto-sans-syriaceastern' 'noto-sans-syriaceastern-fonts')
   elif [ $packagename == "noto-sans-mono" ]; then
     OBSOLETES=($packagename 'noto-mono' 'noto-mono-fonts')
-  elif [ $packagename == "noto-arimo" ]; then
-    OBSOLETES=($packagename 'google-arimo')
-  elif [ $packagename == "noto-cousine" ]; then
-    OBSOLETES=($packagename 'google-cousine')
-  elif [ $packagename == "noto-tinos" ]; then
-    OBSOLETES=($packagename 'google-tinos')
+  elif [ $packagename == "noto-arimo" ] || [ $packagename == "noto-cousine" ] || [ $packagename == "noto-tinos" ]; then
+    OBSOLETES=($packagename `echo "google-$serif-fonts" | tr [A-Z] [a-z]`)
   else
     OBSOLETES=($packagename)
   fi
@@ -53,10 +49,10 @@ ls $font_dir/ | sed -e 's:Noto::' -e 's:-.*\..tf::' -e 's:\..tf::' -e 's:\.ttc::
   else
     summary=`echo "Noto $serif Font" | sed 's:\([a-z]\)\([A-Z]\):\1 \2:g'`
   fi
+  sed -i "s/@LIST_OF_SUBPACKAGES@/Requires:      $packagename\n@LIST_OF_SUBPACKAGES@/" $pkg_name.spec
   sed -i "s/@SUBPACKAGE_HEADERS@/%package -n $packagename\n@SUBPACKAGE_HEADERS@/" $pkg_name.spec
   sed -i "s/@SUBPACKAGE_HEADERS@/Summary:        $summary\n@SUBPACKAGE_HEADERS@/" $pkg_name.spec
   sed -i "s;@SUBPACKAGE_HEADERS@;Group:          System/X11/Fonts\n@SUBPACKAGE_HEADERS@;" $pkg_name.spec
-  sed -i "s/@SUBPACKAGE_HEADERS@/Recommends:     $pkg_name-doc\n@SUBPACKAGE_HEADERS@/" $pkg_name.spec
   for i in "${OBSOLETES[@]}" ; do
     sed -i "s/@SUBPACKAGE_HEADERS@/Obsoletes:      $i < %{version}\n@SUBPACKAGE_HEADERS@/" $pkg_name.spec
     sed -i "s/@SUBPACKAGE_HEADERS@/Provides:       $i = %{version}\n@SUBPACKAGE_HEADERS@/" $pkg_name.spec
@@ -77,6 +73,7 @@ ls $font_dir/ | sed -e 's:Noto::' -e 's:-.*\..tf::' -e 's:\..tf::' -e 's:\.ttc::
 
   sed -i "s/@SUBPACKAGE_FILELISTS@/%files -n $packagename\n@SUBPACKAGE_FILELISTS@/" $pkg_name.spec
   sed -i "s/@SUBPACKAGE_FILELISTS@/%defattr(0644,root,root,755)\n@SUBPACKAGE_FILELISTS@/" $pkg_name.spec
+  sed -i "s/@SUBPACKAGE_FILELISTS@/%license LICENSE\n@SUBPACKAGE_FILELISTS@/" $pkg_name.spec
   sed -i "s/@SUBPACKAGE_FILELISTS@/%dir %{_ttfontsdir}\n@SUBPACKAGE_FILELISTS@/" $pkg_name.spec
   if [ $serif == "Arimo" ] || [ $serif == "Cousine" ] || [ $serif == "Tinos" ]; then
     sed -i "s:@SUBPACKAGE_FILELISTS@:%{_ttfontsdir}/$serif$script$ui-\*.?tf\n@SUBPACKAGE_FILELISTS@:" $pkg_name.spec
@@ -86,7 +83,7 @@ ls $font_dir/ | sed -e 's:Noto::' -e 's:-.*\..tf::' -e 's:\..tf::' -e 's:\.ttc::
   sed -i "s/@SUBPACKAGE_FILELISTS@/\n@SUBPACKAGE_FILELISTS@/" $pkg_name.spec
 done
 
+sed -i 's/@LIST_OF_SUBPACKAGES@//' $pkg_name.spec
 sed -i 's/@SUBPACKAGE_HEADERS@//' $pkg_name.spec
 sed -i 's/@SUBPACKAGE_SCRIPTLETS@//' $pkg_name.spec
 sed -i 's/@SUBPACKAGE_FILELISTS@//' $pkg_name.spec
-
