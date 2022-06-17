@@ -36,4 +36,181 @@
   + Translation updates. (forwarded request 972479 from dimstar)</comment>
     <requestid>972487</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bbf3eaa51b666c4051769b298cf3c5c4</srcmd5>
+    <version>42.2</version>
+    <time>1655493680</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 42.2:
+  + Fix a crash at shutdown after saving state. This didn't cause
+    any data loss, but could be annoying.
+  + Spellcheck underline fixes for various languages.
+  + Various robustness fixes for GTK 4.
+  + Fixes for inconsistent line-endings.
+  + Updated translations.
+- Update to version 42.1:
+  + Improved preference dialog styling for libadwaita. 
+  + Build system fixes.
+  + Fix icons for zoom controls.
+  + Fix titles in save-changes dialog.
+  + Updated translations.
+- Update to version 42.0:
+  + Updated translations.
+- Update to version 42.rc1:
+  + CSS styling tweaks.
+  + The enchant spellcheck backend will now ignore dictionaries
+    which fail to provide a name which can be displayed to the
+    user. This so far has only been seen on macOS but may affect
+    other platforms.
+  + Updated application metadata and screenshots.
+  + Updated translations.
+- Update to version 42.beta.1:
+  + This is our first Beta release as we progress towards GNOME 42.
+    A number of bug fixes have landed since 42.alpha2 and we
+    encourage your further testing to make 42 a great reveal!
+  + Many CSS integration improvements including recoloring
+  + Text Editor will now locate style schemes in additional search
+    paths
+  + Fixes to search bar positioning and focus-in state
+  + You can now tweak many per-document settings using the context
+    menu within the page which can help users determine what
+    settings were/are global from the view menu vs how they were
+    overriden by automatic settings discovery (which can be
+    disabled in preferences).
+  + Smart-Home-End behavior is now enabled in &quot;before&quot; mode
+  + New command line options have been added
+  + Build fixes for macOS
+  + We now advertise the GTK version we require propertly for
+    line-height
+  + Improvements to titles/subtitles to reflect various document
+    capabilities
+  + A new style scheme has been added for printing which is used
+    automatically until we have further settings in
+    GtkPrintOperation via Flatpak portals.
+  + More strict checks in B+Tree code for spell checking. If you
+    find any assertions, please do tell us!
+  + Propertly use AdwApplication base class
+  + Improvements to failure paths when access to underlying GFile
+    or GFileInfo fails to provide reasonable information.
+  + Spellcheck settings are now persisted across sessions using
+    extended attributes.
+  + The buffer monitor is now disabled when a buffer fails to load
+  + The default style scheme is now set to Adwaita propertly
+  + Search now draws various bubbles around the matches to make
+    them easier to differentiate from the background text.
+  + Updated translations.
+- Add appstream-glib and desktop-file-utils BuildRequires: New
+  dependencies, and add check section and run meson_test macro.
+- Add fdupes BuildRequires and macro, remove duplicates.
+- Update to version 42.alpha2:
+  + Mnemonics for the primary menu have be updated to reduce
+    duplicates.
+  + Paths are now properly expanded/collapsed for `wordexp()` when
+    directories with spaces are used.
+  + A new document properties dialog has been added to get
+    information about the document such as number of words,
+    characters, and lines.
+  + Regex search from the search bar works again.
+  + Spellchecking will now use the `def:misspelled-word` style from
+    the GtkSourceStyleScheme when available, allowing schemes to
+    override styling.
+  + Fix the default style scheme to be Adwaita in gsettings.
+  + You can now navigate and select style schemes with the keyboard
+    in the Preferences dialog.
+  + Always show the current style scheme in Preferences.
+  + Style schemes in Preferences are now sorted in lexicographic
+    form along with the presence of an alternate light/dark style.
+  + The open popover empty state design has been improved.
+  + Track monospace-font-name from desktop preferences.
+  + Improve recoloring for some style schemes with metadata
+    overrides.
+  + Various macOS build and runtime fixes.
+  + Add light and dark schemes for both Builder and Peninsula.
+  + You can now restore closed pages with Ctrl+Shift+t.
+  + Improve printing support for various fonts, sizing, margins,
+    and more.
+  + Prune discard drafts when cleaning up session.
+  + CSS fixes for integrating with libadwaita and GtkSourceView.
+  + Various Vim emulation improvements.
+  + Text Editor will now prefer &quot;python3&quot; over &quot;python2&quot; when a
+    documents content-type matches `text/x-python`, as that is
+    overwhelmingly what is found in files today.
+  + When windows are restored, they will no longer restore empty
+    drafts, even if they were modified previously (added text then
+    undo/deleted).
+  + The about dialog show now include proper git commit hashes for
+    development builds (`meson configure -Ddevelopment=true`) to
+    aid in users and distributions submitting helpful bug reports.
+  + Updated translations.
+- Update to version 42.alpha1:
+  + Use libadwaita for access to desktop light/dark modes.
+  + New interface to jump to a given line number.
+  + New keyboard shortcut for delete-current-line, jump-to-line,
+    select-current-line, zooming, and preferences.
+  + The open popover no longer displays document mtimes, but they
+    are used for sorting results.
+  + Tab menus are fixed within the document editor.
+  + Tabs may now be dragged into new windows.
+  + DnD of multiple files into the editor has been restored.
+  + Text Editor can no differntiate between indentation and tab
+    size.
+  + Application startup has been vastly improved.
+  + The session manager now truncates the number of bookmarks to
+    100.
+  + Numerous crash and bug fixes.
+  + Guess a reasonable filename for Save As dialog.
+  + Deleted text is copied into the primary clipboard when using
+    the delete-lines command.
+  + A new custom GMenuModel is used for spelling corrections to
+    allow for faster updates of menus.
+  + Zoom with keybindings and scroll-wheell is now supported.
+  + Text Editor will try to discover if style schemes are light or
+    dark and only show them when appropriate in preferences.
+  + Menus have been significantly tweaked based on usage and
+    feedback.
+  + Text Editor can no follow the system dark-mode preference.
+  + Ensure window is raised when a document is reopened, possibly
+    through an external application such as Nautilus.
+  + Overview map style improvements.
+  + Improved keyboard navigation to and from the open popover.
+  + Text Editor will now restyle it's windows based on the selected
+    GtkSourceStyleScheme.
+  + A new gsetting for how to draw whitespace has been added.
+  + A new gestting to disable window restyling has been added.
+  + Text Editor now has a Vim emulation layer that may be enabled
+    using the org.gnome.TextEditor keybindings gsetting.
+  + A statusbar has been added when the Vim emulation is in use
+    only.
+  + A new and improved preferences dialog which supports previewing
+    the preferences changes without leaving the dialog.
+  + Search and Replace has been improved and restyled.
+  + A new preference to enable restoring the session at startup was
+    added.
+  + A new preference to enable automatically discovering file
+    settings using modelines, editorconfig, and more has been
+    added.
+  + Improved font styling within the application.
+  + Performance and style improvements to the spell checking
+    engine.
+  + Fixed navigation using Up/Down from search bar.
+  + Disabled use of DBusActivatable=true in .desktop file due to
+    breakage with opening command line arguments without the
+    desktop portal.
+  + Improvements to accessibility labels.
+  + Updated translations. 
+- Update to version 41.1:
+  + Improved styling.
+  + Give access to --filesystem=host in Flatpak until we have an
+    improved document portal story.
+  + Raise editor window when raising a page due to opening by an
+    external program.
+  + Fix keyboard navigation with arrows in search entry.
+  + Fix reordering of editor pages with the keyboard.
+  + Updated translations.
+- Add itstool BuildRequires: New dependency.
+- Update to version 41.0:
+  + Updated translations.
+- Initial package, version 41.beta1. (forwarded request 983293 from iznogood)</comment>
+    <requestid>983442</requestid>
+  </revision>
 </revisionlist>

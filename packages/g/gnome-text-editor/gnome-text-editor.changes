@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 13 11:30:24 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.2:
+  + Fix a crash at shutdown after saving state. This didn't cause
+    any data loss, but could be annoying.
+  + Spellcheck underline fixes for various languages.
+  + Various robustness fixes for GTK 4.
+  + Fixes for inconsistent line-endings.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Apr 22 10:31:10 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
 
 - Update to version 42.1:
@@ -6,7 +17,7 @@ Fri Apr 22 10:31:10 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
   + Build system fixes.
   + Fix icons for zoom controls.
   + Fix titles in save-changes dialog.
-  + Translation updates. 
+  + Updated translations.
 
 -------------------------------------------------------------------
 Sun Mar 20 09:03:31 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
