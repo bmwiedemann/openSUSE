@@ -41,6 +41,7 @@ BuildRequires:  golang(API) >= 1.12
 BuildRequires:  golang >= 1.12
 %endif
 %{?systemd_ordering}
+ExcludeArch:    s390
 
 %description
 Wire is a code generation tool that automates connecting components using

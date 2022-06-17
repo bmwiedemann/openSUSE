@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 16 08:24:26 UTC 2022 - Julio González Gil <jgonzalez@suse.com>
+
+- Exclude s390 arch
+
+-------------------------------------------------------------------
 Tue Feb 15 09:03:23 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Refactor conditional golang BuildRequires for RHEL

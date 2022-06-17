@@ -47,4 +47,12 @@
     <comment>Update Jira tickets reference in the changelog (forwarded request 955324 from witekbedyk)</comment>
     <requestid>955506</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>5232e0e8f4450fc95cc581b55c5f8754</srcmd5>
+    <version>0.5.0</version>
+    <time>1655493684</time>
+    <user>dimstar_suse</user>
+    <comment>- Exclude s390 arch (forwarded request 982944 from juliogonzalezgil)</comment>
+    <requestid>983464</requestid>
+  </revision>
 </revisionlist>
