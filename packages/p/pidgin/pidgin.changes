@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jun 11 10:14:42 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 2.14.10:
+  * Minor fixes to emojis, drop QQ smileys
+  * Modernize the desktop file and appdata files
+  * Make privacy settings persist
+  * Fix a use after free that was introduced in 2.14.9
+  * IRC: Fix a crash if the server sends a short form JOIN message
+  * XMPP: multiple fixes
+
+-------------------------------------------------------------------
 Fri Apr 29 11:03:13 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 2.14.9:

@@ -1085,4 +1085,12 @@
     <comment>- Update to version 2.14.9.</comment>
     <requestid>973938</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>297b4e021f3f234bc55dea3a1b00fdc5</srcmd5>
+    <version>2.14.10</version>
+    <time>1655493611</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982154</requestid>
+  </revision>
 </revisionlist>

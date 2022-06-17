@@ -19,7 +19,7 @@
 %define _name   Pidgin
 %define sover   0
 Name:           pidgin
-Version:        2.14.9
+Version:        2.14.10
 Release:        0
 Summary:        Multiprotocol Instant Messaging Client
 License:        GPL-2.0-only
