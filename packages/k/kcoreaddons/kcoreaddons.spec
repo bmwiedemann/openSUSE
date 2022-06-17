@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5CoreAddons5
-%define _tar_path 5.94
+%define _tar_path 5.95
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kcoreaddons
-Version:        5.94.0
+Version:        5.95.0
 Release:        0
 Summary:        Utilities for core application functionality and accessing the OS
 License:        LGPL-2.1-or-later
@@ -95,12 +95,7 @@ replacement, accessing user information and many more. Development files.
 %endif
 
 %post -n %{lname} -p /sbin/ldconfig
-%post
-%mime_database_post
-
 %postun -n %{lname} -p /sbin/ldconfig
-%postun
-%mime_database_postun
 
 %if %{with released}
 %files lang -f %{name}5.lang

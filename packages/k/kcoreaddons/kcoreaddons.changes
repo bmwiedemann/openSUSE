@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jun 10 14:12:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.95.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.95.0
+- Changes since 5.94.0:
+  * KPluginFactory: Create un-deprecated overload to register CreateInstanceWithMetaDataFunction
+  * KSignalHandler: add error warnings when reading or writing signal
+  * Use the versionless KDE_INSTALL_FULL_KSERVICETYPESDIR variant
+  * port to standard C++ smart pointers where possible
+  * kmemoryinfo class
+  * KPluginFactory: Provide better context in error message if instance could not be created
+  * KJob: add method to check if job was started with exec()
+  * Add autotest for KStringHandler::lsqueeze/csqueeze/rsqueeze
+  * new util ksandbox
+  * KDirWatch: handle IN_Q_OVERFLOW events
+  * KProcess: wrap Qt5-only QProcess API also with Qt version check
+  * KListOpenFilesJob: check lsof executable exist in PATH before starting it with QProcess
+  * KProcess: replace an assert with a check for empty
+  * KAboutData: improve the API docs for LicenseKey enum
+  * Install KMemoryInfo headers
+
+-------------------------------------------------------------------
 Tue May 10 08:17:50 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.94.0
