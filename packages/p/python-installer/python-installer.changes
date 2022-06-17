@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 15 01:51:41 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.5.1:
+  * No upstream changelog.
+- Drop importlib-resources and setuptools from BuildRequires, we can
+  bootstrap this package using only flit-core and itself.
+- Inject multibuild to aid bootstrapping.
+- Drop patch remove-mock.patch:
+  * Included upstream.
+
+-------------------------------------------------------------------
 Mon Feb 21 08:58:28 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Add missing BR for importlib_resources

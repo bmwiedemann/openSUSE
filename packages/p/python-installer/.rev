@@ -19,4 +19,18 @@
 - Skip building for python2</comment>
     <requestid>956622</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>274c7770c930720d28d5f50b96a6a998</srcmd5>
+    <version>0.5.1</version>
+    <time>1655493650</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.1:
+  * No upstream changelog.
+- Drop importlib-resources and setuptools from BuildRequires, we can
+  bootstrap this package using only flit-core and itself.
+- Inject multibuild to aid bootstrapping.
+- Drop patch remove-mock.patch:
+  * Included upstream.</comment>
+    <requestid>982698</requestid>
+  </revision>
 </revisionlist>

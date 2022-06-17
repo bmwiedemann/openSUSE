@@ -1,5 +1,5 @@
 #
-# spec file for package python-installer
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -16,24 +16,29 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-Name:           python-installer
-# DO NOT UPGRADE UNTIL PDM WORKS WITH MORE RECENT VERSIONS!!!
-Version:        0.3.0
+%{?!python_module:%define python_module() python3-%{**}}
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define pkg_suffix -test
+%bcond_without test
+%else
+%define pkg_suffix %{nil}
+%bcond_with test
+%endif
+Name:           python-installer%{pkg_suffix}
+Version:        0.5.1
 Release:        0
 Summary:        A library for installing Python wheels
 License:        MIT
-URL:            https://github.com/pradyunsg/installer
+URL:            https://github.com/pypa/installer
 Source:         https://files.pythonhosted.org/packages/source/i/installer/installer-%{version}.tar.gz
-# PATCH-FEATURE-UPSTREAM remove-mock.patch mcepl@suse.com
-# Make dependency on mock package optional
-Patch0:         remove-mock.patch
-BuildRequires:  %{python_module importlib-resources}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with test}
+BuildRequires:  %{python_module installer}
+BuildRequires:  %{python_module pytest}
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -43,19 +48,29 @@ A library for installing Python wheels.
 %prep
 %autosetup -p1 -n installer-%{version}
 
+%if !%{with test}
 %build
-%python_build
+%python_expand $python -m flit_core.wheel
+%endif
 
+%if !%{with test}
 %install
-%python_install
+export PYTHONPATH=src
+%python_expand $python -m installer -d %{buildroot} dist/*.whl
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
 %pytest
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/installer
+%{python_sitelib}/installer*dist-info
+%endif
 
 %changelog
