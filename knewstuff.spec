@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5NewStuff5
-%define _tar_path 5.94
+%define _tar_path 5.95
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           knewstuff
-Version:        5.94.0
+Version:        5.95.0
 Release:        0
 Summary:        Framework for downloading and sharing additional application data
 License:        LGPL-2.1-or-later
@@ -195,26 +195,28 @@ specification. Development files.
 %files core-devel
 %{_kf5_libdir}/libKF5NewStuffCore.so
 %{_kf5_libdir}/cmake/KF5NewStuffCore/
-%{_kf5_includedir}/knewstuffcore_version.h
 %dir %{_kf5_includedir}/KNewStuff3
+%{_kf5_includedir}/KNewStuff3/knewstuffcore_version.h
 %{_kf5_includedir}/KNewStuff3/KNSCore/
 %{_kf5_includedir}/KNewStuff3/knscore/
 %{_kf5_mkspecsdir}/qt_KNewStuffCore.pri
 
 %files quick-devel
 %{_kf5_libdir}/cmake/KF5NewStuffQuick/
-%{_kf5_includedir}/knewstuffquick_version.h
+%dir %{_kf5_includedir}/KNewStuff3
+%{_kf5_includedir}/KNewStuff3/knewstuffquick_version.h
 
 %files devel
 %{_kf5_libdir}/libKF5NewStuff.so
 %{_kf5_libdir}/libKF5NewStuffWidgets.so
 %{_kf5_libdir}/cmake/KF5NewStuff/
-%dir %{_kf5_includedir}/KNewStuff3
+%dir %{_kf5_includedir}/KNewStuff3/
+ %{_kf5_includedir}/KNewStuff3/knewstuff_version.h
+%{_kf5_includedir}/KMoreTools/
 %{_kf5_includedir}/KNewStuff3/KNS3/
 %{_kf5_includedir}/KNewStuff3/kns3/
 %{_kf5_includedir}/KNewStuff3/knswidgets/
 %{_kf5_includedir}/KNewStuff3/KNSWidgets/
-%{_kf5_includedir}/knewstuff_version.h
 %{_kf5_mkspecsdir}/qt_KNewStuff.pri
 
 %changelog
