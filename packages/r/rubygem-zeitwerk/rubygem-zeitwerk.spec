@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-zeitwerk
-Version:        2.5.4
+Version:        2.6.0
 Release:        0
 %define mod_name zeitwerk
 %define mod_full_name %{mod_name}-%{version}

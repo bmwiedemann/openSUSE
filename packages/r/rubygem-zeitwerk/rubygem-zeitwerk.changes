@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Jun 15 14:01:10 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.6.0
+
+  * Directories are processed in lexicographic order.
+
+    Different file systems may list directories in different order, and with this
+    change we ensure that client code eager loads consistently across platforms,
+    for example.
+
+  * Before this release, subdirectories of root directories always represented
+    namespaces (unless ignored or collapsed). From now on, to be considered
+    namespaces they also have to contain at least one non-ignored Ruby file with
+    extension `.rb`, directly or recursively.
+
+    If you know beforehand a certain directory or directory pattern does not
+    represent a namespace, it is intentional and more efficient to tell Zeitwerk
+    to [ignore](https://github.com/fxn/zeitwerk#ignoring-parts-of-the-project) it.
+
+    However, if you don't do so and have a directory `tasks` that only contains
+    Rake files, arguably that directory is not meant to represent a Ruby module.
+    Before, Zeitwerk would define a top-level `Tasks` module after it; now, it
+    does not.
+
+    This feature is also handy for projects that have directories with auxiliary
+    resources mixed in the project tree in a way that is too dynamic for an ignore
+    pattern to be practical. See https://github.com/fxn/zeitwerk/issues/216.
+
+    In the unlikely case that an existing project has an empty directory for the
+    sole purpose of defining a totally empty module (no code, and no nested
+    classes or modules), such module has now to be defined in a file.
+
+    Directories are scanned again on reloads.
+
+  * On setup, loaders created with `Zeitwerk::Loader.for_gem` issue warnings if
+    `lib` has extra, non-ignored Ruby files or directories.
+
+    This is motivated by existing gems with directories under `lib` that are not
+    meant to define Ruby modules, like directories for Rails generators, for
+    instance.
+
+    This warning can be silenced in the unlikely case that the extra stuff is
+    actually autoloadable and has to be managed by Zeitwerk.
+
+    Please, check the [documentation](https://github.com/fxn/zeitwerk#for_gem) for
+    further details.
+
+    This method returns an instance of a private subclass of `Zeitwerk::Loader`
+    now, but you cannot rely on the type, just on the interface.
+
+-------------------------------------------------------------------
 Tue Feb 15 07:46:00 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.5.4
