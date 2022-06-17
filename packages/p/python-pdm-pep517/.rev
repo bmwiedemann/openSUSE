@@ -9,4 +9,34 @@
 - Initial packaging effort for pdm-pep517 0.10.1.</comment>
     <requestid>948291</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9205ddea94e80f2e5d79d2a89e301279</srcmd5>
+    <version>0.12.7</version>
+    <time>1655493648</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.7:
+  * Allow overriding SCM version with env var. This is useful to build
+    from a source tree without SCM. #89
+  * Fallback the README content type to text/plain if no suffix is given. #85
+  * Write license files when preparing metadata for wheels. #86
+  * Do not emit deprecation warnings for license field until PEP 639 is
+    accepted.
+  * Warn about editable not being available for PEP 420 namespace packages. #79
+  * Construct RECORD file using csv.writer to ensure correct quoting on
+    path for each entry. #80
+  * Don't validate license text for PEP 621 license field for now. #78
+  * Implement PEP 639: Improving License Clarity in Project Metadata #76
+  * Mandates the PEP 621 metadata and raise an error if invalid. #76
+  * Release v0.11.2 (2022-02-11)
+  * Change the default editable-backend to path until editables backend is
+    stable.
+  * Fix a bug that version can't be parsed if it is followed by a comment. #75
+  * Drop the support for Python &lt; 3.7. #72
+  * Show meaningful error message when version isn't found in the specified
+    file. #73
+  * Preserve the file mode when building a wheel, also correct the
+    datetime. #69
+  * Use alternatives to replace the deprecated usage of distutils. #69</comment>
+    <requestid>982695</requestid>
+  </revision>
 </revisionlist>
