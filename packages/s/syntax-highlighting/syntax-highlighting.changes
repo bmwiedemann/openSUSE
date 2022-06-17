@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 10 14:12:53 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.95.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.95.0
+- Changes since 5.94.0:
+  * avoid spell checking in diffs
+  * Avoid unprefixed CamelCase headers generated directly in build dir (kde#453759)
+  * Bash: fix comments in double braces (kde#450878)
+  * systemd unit: update to systemd v251
+  * debchangelog: add Kinetic Kudu
+
+-------------------------------------------------------------------
 Tue May 10 08:18:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.94.0
