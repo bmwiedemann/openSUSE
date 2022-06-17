@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 13 08:03:18 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 11.2.229
+  - Fix GCC compilation issues
+  - Allow PSM2 to work with "self,shm" devices without omnipath hardware
+  - Various fixes
+- Spec file cleanups submitted by Dirk Müller <dmueller@suse.com>
+
+-------------------------------------------------------------------
 Mon Apr 11 20:24:48 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Run modprobe.conf handling scriptlets in -compat subpackage (bsc#1198322) 

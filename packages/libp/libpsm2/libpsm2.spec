@@ -16,16 +16,16 @@
 #
 
 
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150300
-%define _modprobedir /lib/modprobe.d
-%endif
 %global modprobe_d_files libpsm2-compat.conf
+%global psm_so 2
+%global git_ver %{nil}
 
-%define git_ver %{nil}
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150300
+%global _modprobedir /lib/modprobe.d
+%endif
 
-%define psm_so 2
 Name:           libpsm2
-Version:        11.2.203
+Version:        11.2.229
 Release:        0
 Summary:        Intel PSM Messaging API libraries
 License:        BSD-2-Clause OR GPL-2.0-only
@@ -38,12 +38,11 @@ Patch2:         libpsm2-use_RPM_OPT_FLAGS.patch
 Patch3:         libpsm2-use-exported-variable-for-version-and-release.patch
 BuildRequires:  libnuma-devel
 BuildRequires:  libuuid-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(udev)
 Conflicts:      opa-libs
 Obsoletes:      hfi-psm
 Obsoletes:      hfi-psm-debuginfo
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #Currently *only* builds on x86_64
 ExclusiveArch:  x86_64
 
@@ -57,7 +56,6 @@ interfaces in parallel environments.
 %package     -n %{name}-%{psm_so}
 Summary:        Intel PSM Messaging API library
 Group:          System/Libraries
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       %{name} = %{version}
 
 %description -n %{name}-%{psm_so}
@@ -89,30 +87,30 @@ Support for MPIs linked with PSM versions < 2.
 %patch2
 %patch3
 
-cp %{S:1} ChangeLog
+cp %{SOURCE1} ChangeLog
 
 %build
 %global optflags %{optflags} -fcommon
 export RPM_OPT_FLAGS
 export VERSION=${Version} RELEASE=${Release}
-make %{?_smp_mflags}
+%make_build
 
 %install
 export DESTDIR=%{buildroot}
 modprobe_dir=%{_modprobedir}
 make %{?_smp_mflags} DESTDIR=%{buildroot} LIBPSM2_COMPAT_CONF_DIR="${modprobe_dir%/*}" install
-install -m0644 %{buildroot}%{_libdir}/psm2-compat/libpsm_infinipath.so.1 %{buildroot}%{_libdir}/libpsm_infinipath.so.1
+install -m0755 %{buildroot}%{_libdir}/psm2-compat/libpsm_infinipath.so.1 %{buildroot}%{_libdir}/libpsm_infinipath.so.1
 # removing file to get rid of rpm errors
 rm  %{buildroot}%{_libdir}/psm2-compat/libpsm_infinipath.so.1
-rm  %{buildroot}/usr/lib/%name/libpsm2-compat.cmds
+rm  %{buildroot}%{_prefix}/lib/%{name}/libpsm2-compat.cmds
 # remove static library
 rm  %{buildroot}%{_libdir}/libpsm2.a
 
 %pre compat
 # Avoid restoring outdated stuff in posttrans
 for _f in %{?modprobe_d_files}; do
-    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
-        mv -f "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}.rpmsave.old" || :
+    [ ! -f "%{_sysconfdir}/modprobe.d/${_f}.rpmsave" ] || \
+        mv -f "%{_sysconfdir}/modprobe.d/${_f}.rpmsave" "%{_sysconfdir}/modprobe.d/${_f}.rpmsave.old" || :
 done
 
 %post -n %{name}-%{psm_so} -p /sbin/ldconfig
@@ -123,19 +121,17 @@ done
 %posttrans compat
 # Migration of modprobe.conf files to _modprobedir
 for _f in %{?modprobe_d_files}; do
-    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
-        mv -fv "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}" || :
+    [ ! -f "%{_sysconfdir}/modprobe.d/${_f}.rpmsave" ] || \
+        mv -fv "%{_sysconfdir}/modprobe.d/${_f}.rpmsave" "%{_sysconfdir}/modprobe.d/${_f}" || :
 done
 
 %files -n %{name}-%{psm_so}
-%defattr(-,root,root,-)
 %{_libdir}/libpsm2.so.*
 %{_udevrulesdir}/40-psm.rules
 %doc README ChangeLog
 %license COPYING
 
 %files devel
-%defattr(-,root,root,-)
 %{_libdir}/libpsm2.so
 %{_includedir}/psm2.h
 %{_includedir}/psm2_mq.h
@@ -146,7 +142,7 @@ done
 %dir %{_includedir}/hfi1diag/linux-x86_64/
 %{_includedir}/hfi1diag/linux-x86_64/bit_ops.h
 %{_includedir}/hfi1diag/linux-x86_64/sysdep.h
-%_includedir/hfi1diag/hfi1_deprecated.h
+%{_includedir}/hfi1diag/hfi1_deprecated.h
 %{_includedir}/hfi1diag/opa_udebug.h
 %{_includedir}/hfi1diag/opa_debug.h
 %{_includedir}/hfi1diag/opa_intf.h
@@ -159,11 +155,9 @@ done
 %{_includedir}/hfi1diag/psmi_wrappers.h
 
 %files compat
-%defattr(-,root,root,-)
 %dir %{_modprobedir}
-
 %{_libdir}/libpsm_infinipath.so.*
 %{_udevrulesdir}/40-psm-compat.rules
-%config %{_modprobedir}/libpsm2-compat.conf
+%{_modprobedir}/libpsm2-compat.conf
 
 %changelog
