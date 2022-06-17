@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jun 10 14:12:22 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.95.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.95.0
+- Changes since 5.94.0:
+  * qmlcontrols: bump `QtQuick` import version to 2.15 for GridViewInternal
+  * port to standard C++ smart pointers where possible
+  * Use the correct engine variable
+  * Remove KDeclarative instance from QmlObject
+  * QmlObject: Use std::shared_ptr to properly track the lifetime of QQmlEngine (kde#451790)
+  * Move type registrations to the plugin initialization
+  * calendareventsplugin: Add label property
+  * calendareventsplugin: Add support for alternate dates and sub-labels
+
+-------------------------------------------------------------------
 Tue May 10 08:17:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.94.0
