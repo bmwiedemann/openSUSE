@@ -53,7 +53,8 @@ Provides:       libcontainers-storage = %{version}
 Obsoletes:      libcontainers-image < %{version}
 Obsoletes:      libcontainers-storage < %{version}
 Requires(post): util-linux-systemd
-Requires(post): grep
+Requires(post): /usr/bin/grep
+Requires(post): /usr/bin/sed
 BuildArch:      noarch
 
 %description
@@ -138,7 +139,8 @@ sed -i 's/ostree_repo = ""/\#ostree_repo = ""/g' /etc/containers/storage.conf
 # If installing, check if /var/lib/containers (or /var/lib in its defect) is btrfs and set driver
 # to "btrfs" if true
 if [ $1 -eq 1 ] ; then
-  fstype=$((findmnt -o FSTYPE -l --target /var/lib/containers || findmnt -o FSTYPE -l --target /var/lib) | grep -v FSTYPE)
+  # Space to avoid ambiguity with arithmetic expansion
+  fstype=$( (findmnt -o FSTYPE -l --target /var/lib/containers || findmnt -o FSTYPE -l --target /var/lib) | grep -v FSTYPE)
   if [ "$fstype" = "btrfs" ]; then
     sed -i 's/driver = "overlay"/driver = "btrfs"/g' %{_sysconfdir}/containers/storage.conf
   fi

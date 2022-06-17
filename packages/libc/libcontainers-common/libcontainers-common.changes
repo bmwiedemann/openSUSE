@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 15 10:20:16 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Use $() again in %post, but with a space for POSIX compliance
+
+-------------------------------------------------------------------
+Tue Jun 14 13:53:43 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Add missing Requires(post): sed, fixes boo#1200524
+- Make %post compatible with dash
+
+-------------------------------------------------------------------
 Wed Jun  8 12:39:46 UTC 2022 - Richard Brown <rbrown@suse.com>
 
 - Add missing comma to previous change 
