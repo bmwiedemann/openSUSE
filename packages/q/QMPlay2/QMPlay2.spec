@@ -19,7 +19,7 @@
 %define __builder Ninja
 
 Name:           QMPlay2
-Version:        22.03.19
+Version:        22.06.16
 Release:        0
 Summary:        A Qt based media player, streamer and downloader
 License:        LGPL-3.0-or-later

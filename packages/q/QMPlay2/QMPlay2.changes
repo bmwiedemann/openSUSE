@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 16 14:15:19 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 22.06.16
+   * make possible to increase but not decrease the effective number of audio channels (RJVB),
+   * fix VA-API on Vulkan on modern Intel GPUs (use VK_EXT_image_drm_format_modifier),
+   * fix timeout error on exclusive full screen on AMD Radeon on Vulkan on Windows,
+   * reorganize menu shortcuts (zo-shin),
+   * fix video rotation with FFmpeg 5.0,
+   * require CMake 3.12.
+
+-------------------------------------------------------------------
 Sat Mar 19 23:42:47 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
 
 - Removed 0001-fix-pipewire-build-error.patch as it is merged upstream
