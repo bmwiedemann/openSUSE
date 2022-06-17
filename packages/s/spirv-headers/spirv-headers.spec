@@ -21,17 +21,17 @@
 # CMakeLists.txt's project() line contains 1.5.5, but this is outdated too
 # The SPIR-V version is 1.6.1 (include/spirv/unified1/spirv.core.grammar.json)
 # They add "SDK" tags that reflect the Vulkan version (1.3),
-# and the independently increasing toolchain release number (211).
+# and the independently increasing toolchain release number (216).
 
 Name:           spirv-headers
-Version:        1.6.1+sdk211
+Version:        1.6.1+sdk216
 Release:        0
 Summary:        Machine-readable files from the SPIR-V registry
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/SPIRV-Headers
 
-Source:         https://github.com/KhronosGroup/SPIRV-Headers/archive/sdk-1.3.211.0.tar.gz
+Source:         https://github.com/KhronosGroup/SPIRV-Headers/archive/sdk-1.3.216.0.tar.gz
 BuildArch:      noarch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
@@ -48,7 +48,7 @@ registry. This includes:
 * The XML registry file.
 
 %prep
-%autosetup -n SPIRV-Headers-sdk-1.3.211.0
+%autosetup -n SPIRV-Headers-sdk-1.3.216.0
 
 %build
 %cmake

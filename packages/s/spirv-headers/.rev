@@ -225,4 +225,12 @@
     <comment>- Update to 1.6.1+sdk211 (4995a2f)</comment>
     <requestid>970692</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>b0d3e2c2a898d7ed1b3a79cd4257e225</srcmd5>
+    <version>1.6.1+sdk216</version>
+    <time>1655493513</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.1+sdk216 (b2a156e)</comment>
+    <requestid>982871</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 15 13:21:30 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to 1.6.1+sdk216 (b2a156e)
+  * Add a SourceLanguage for SYCL
+  * Add NamedBarrierCountINTEL execution mode
+  * Add SPV_KHR_subgroup_rotate, SPV_KHR_ray_cull_mask,
+    SPV_AMD_shader_early_and_late_fragment_tests
+
+-------------------------------------------------------------------
 Mon Apr 18 23:29:28 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to 1.6.1+sdk211 (4995a2f)
