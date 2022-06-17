@@ -17,6 +17,16 @@
 # needssslcertforbuild
 
 
+%if %{undefined sbat_distro}
+%if 0%{?is_opensuse}
+%define sbat_distro opensuse
+%define sbat_distro_summary The openSUSE Project
+%else
+%define sbat_distro sle
+%define sbat_distro_summary SUSE Linux Enterprise
+%endif
+%define sbat_distro_url mailto:security@suse.de
+%endif
 Name:           fwupd-efi
 Version:        1.2
 Release:        0
@@ -48,24 +58,14 @@ executable releases to follow a different cadence.
 %autosetup -p1
 
 %build
-# Since Tumbleweed is still using openSUSE signkey, the SBAT distro id
-# should be opensuse.
-%if 0%{?sle_version}
-distro_id="sle"
-distro_name="SUSE Linux Enterprise"
-%else
-distro_id="opensuse"
-distro_name="The openSUSE project"
-%endif
-
 # Dell support requires direct SMBIOS access,
 # Synaptics requires Dell support, i.e. x86 only
 %meson \
-  -Defi_sbat_distro_id="${distro_id}" \
-  -Defi_sbat_distro_summary="${distro_name}" \
+  -Defi_sbat_distro_id="%{sbat_distro}" \
+  -Defi_sbat_distro_summary="%{sbat_distro_summary}" \
   -Defi_sbat_distro_pkgname="%{name}" \
   -Defi_sbat_distro_version="%{version}" \
-  -Defi_sbat_distro_url="https://build.opensuse.org" \
+  -Defi_sbat_distro_url="%{sbat_distro_url}" \
 %meson_build
 
 %install
