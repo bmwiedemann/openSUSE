@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 10 14:12:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.95.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.95.0
+- Changes since 5.94.0:
+  * Change "Actual Size" Action's text to "Zoom to Actual Size"
+  * KRecentFilesAction: remove the corresponding element in m_recentActions when calling removeAction(action)
+  * KRecentFilesAction: refactor some code related to removing an action
+  * KRecentFilesAction: do not reuse removed actions and adding an URL that is already in the menu
+  * Allow specifying a Qt::ConnectionType in KStandardAction::create
+
+-------------------------------------------------------------------
 Tue May 10 08:17:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.94.0
