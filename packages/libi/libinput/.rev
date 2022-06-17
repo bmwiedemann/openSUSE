@@ -971,4 +971,12 @@ Peter Hutterer (3):
     <comment>- Enable building libinput-replay [boo#1190065]</comment>
     <requestid>977621</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>d83d4f5d9f32571f5da270e9a1e2f266</srcmd5>
+    <version>1.21.0</version>
+    <time>1655493612</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.21</comment>
+    <requestid>982165</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun 11 18:43:21 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.21
+  * This version includes a new configuration option that,
+    similarly to its touchpad counterpart, allows disabling the
+    trackpoint while typing.
+  * The flat acceleration profile has been improved in this
+    version.
+
+-------------------------------------------------------------------
 Mon May 16 21:05:11 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable building libinput-replay [boo#1190065]
