@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 10 17:52:27 UTC 2022 - Marcos de Souza <mpdesouza@suse.com>
+
+- Enable switch_root
+  With this change virtme --force-initramfs works as expected.
+
+-------------------------------------------------------------------
 Wed Mar 30 14:05:16 UTC 2022 - Marcos de Souza <mpdesouza@suse.com>
 
 - Enable udhcpc
