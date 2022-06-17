@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 16 17:08:53 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- tor 0.4.7.8
+  * Important security fix (TROVE-2022-001, CVE-2022-33903)
+
+-------------------------------------------------------------------
 Wed Apr 27 18:29:58 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - tor 0.4.7.7

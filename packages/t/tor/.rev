@@ -952,4 +952,13 @@ nicer version with try-reload-or-restart</comment>
     <comment></comment>
     <requestid>973535</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>5a54947432d4aa0c2d4527b1c81631ed</srcmd5>
+    <version>0.4.7.8</version>
+    <time>1655493683</time>
+    <user>dimstar_suse</user>
+    <comment>tor 0.4.7.8
+  * Important security fix (TROVE-2022-001, CVE-2022-33903)</comment>
+    <requestid>983458</requestid>
+  </revision>
 </revisionlist>
