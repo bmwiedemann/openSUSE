@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Jun 15 07:37:19 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to upstream version 1.3.10
+  * ppc64_cpu: Add support to parse PAPR information for energy and frequency (bsc#1200465 ltc#197256 jsc#SLE-18129)
+  * powerpc-utils: Enhance error message when lparstat -E fails on max config systems (bsc#1198956 ltc#196850)
+  * drmgr: Add support for 'acc' command (jsc#SLE-18644)
+  * hcn-init.service: Add RemainAfterExit=yes
+  * man/drmgr: fix multiple typos
+  * hcnmgr: Add new feature "wicked" in HNV FEATURE list
+  * hcnmgr: Update Makefile and powerpc-utils spec file to support HNV and wicked
+  * hcnmgr: Fix NM HNV setting primary slave
+  * hcnmgr: Add hcn-init.service.suse
+  * hcnmgr: maintain hcnid state for later cleanup
+  * hcnmgr: Support wicked HNV using new wicked functions for bonding
+  * hcnmgr: Add new wicked functions for SuSE to manage bonding
+  * hcnmgr: Factor out NetworkManager nmcli code
+  * hcnmgr: Validate connection manager and add tracing option
+  * bootlist: fix invalid hex number message
+  * bootlist: fix passing -l flag to kpartx as -p delimiter value
+  * lsslot: fix memory leak when listing IO slots
+  * lsslot: Add new DRC type description strings for latest PCIe slot types
+  * lparstat: report LPAR name from lparcfg
+  * errinjct: sanitize devspec output of a newline if one is present
+  * lparstat: Fix reported online memory in legacy format
+  * ofpathname: Add support for NVMf devices
+  * ofpathname: Fix nvme support in ANA mode
+  * hcnmgr: Support vNIC as backup device
+  * hcnmgr: Avoid hexdump squeezing consecutive identical bytes.
+  * lsdevinfo: optimize criteria filtering
+* Remove upstreamed patches
+  - lsdevinfo-optimize-criteria-filtering.patch
+  - hcnmgr-Avoid-hexdum-squeezing-consecutive-identical-.patch
+  - 0001-hcnmgr-Support-vNIC-as-backup-device.patch
+  - 0002-hcnmgr-Remove-some-dead-code.patch
+  - 0003-ofpathname-Fix-nvme-support-in-ANA-mode.patch
+  - 0004-ofpathname-Add-support-for-NVMf-devices.patch
+  - lparstat-Fix-reported-online-memory-in-legacy-format.patch
+  - errinjct-sanitize-devspec-output-of-a-newline-if-one.patch
+  - lparstat-report-LPAR-name-from-lparcfg.patch
+  - lsslot-Add-new-DRC-type-description-strings.patch
+  - 0001-Validate-connection-manager-and-add-option-to-trace-.patch
+  - 0002-Factor-out-NetworkManager-nmcli-code.patch
+  - 0003-Add-new-wicked-functions-from-suse-to-manage-bonding.patch
+  - 0004-Support-wicked-HNV-using-new-wicked-functions-for-bo.patch
+  - 0005-hcnmgr-maintain-hcnid-state-for-later-cleanup.patch
+  - 0006-Add-hcn-init.service.suse.patch
+  - 0007-Fix-NM-HNV-setting-primary-slave.patch
+
+-------------------------------------------------------------------
 Fri Feb 25 19:10:27 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix lsslot showing "Unknown slot type" for recent PCIe slot types (bsc#1196411 ltc#196505).

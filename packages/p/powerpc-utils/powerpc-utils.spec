@@ -17,7 +17,7 @@
 
 
 Name:           powerpc-utils
-Version:        1.3.9
+Version:        1.3.10
 Release:        0
 Summary:        Utilities for PowerPC Hardware
 License:        GPL-2.0-or-later
@@ -27,25 +27,8 @@ Source0:        https://github.com/ibm-power-utilities/powerpc-utils/archive/v%{
 Source1:        nvsetenv
 Patch1:         powerpc-utils-lsprop.patch
 Patch2:         ofpathname_powernv.patch
+Patch3:         fix_kexec_service_name_for_suse.patch
 Patch4:         libvirt-service-dep.patch
-Patch5:         lsdevinfo-optimize-criteria-filtering.patch
-Patch6:         hcnmgr-Avoid-hexdum-squeezing-consecutive-identical-.patch
-Patch7:         0001-hcnmgr-Support-vNIC-as-backup-device.patch
-Patch8:         0002-hcnmgr-Remove-some-dead-code.patch
-Patch9:         0003-ofpathname-Fix-nvme-support-in-ANA-mode.patch
-Patch10:        0004-ofpathname-Add-support-for-NVMf-devices.patch
-Patch11:        lparstat-Fix-reported-online-memory-in-legacy-format.patch
-Patch12:        errinjct-sanitize-devspec-output-of-a-newline-if-one.patch
-Patch14:        fix_kexec_service_name_for_suse.patch
-Patch15:        0001-Validate-connection-manager-and-add-option-to-trace-.patch
-Patch16:        0002-Factor-out-NetworkManager-nmcli-code.patch
-Patch17:        0003-Add-new-wicked-functions-from-suse-to-manage-bonding.patch
-Patch18:        0004-Support-wicked-HNV-using-new-wicked-functions-for-bo.patch
-Patch19:        0005-hcnmgr-maintain-hcnid-state-for-later-cleanup.patch
-Patch20:        0006-Add-hcn-init.service.suse.patch
-Patch21:        lparstat-report-LPAR-name-from-lparcfg.patch
-Patch22:        0007-Fix-NM-HNV-setting-primary-slave.patch
-Patch23:        lsslot-Add-new-DRC-type-description-strings.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libnuma-devel
