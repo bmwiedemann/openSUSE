@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 13 12:48:36 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require perl in the same version as we built against: elinks
+  links to libperl.so, which changes location based on perl
+  version. The relevant path in encoded as RUNPATH into the binary
+  (boo#1199945).
+
+-------------------------------------------------------------------
 Tue Jul 23 20:49:14 CEST 2019 - sbrabec@suse.com
 
 - Update to 20190723 snapshot of version 0.13:

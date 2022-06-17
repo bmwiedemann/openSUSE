@@ -1,7 +1,7 @@
 #
 # spec file for package elinks
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Release:        0
 Summary:        An advanced and well-established feature-rich text mode web browser
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Browsers
-Url:            http://elinks.or.cz/
+URL:            http://elinks.or.cz/
 # Volatile download URL http://elinks.or.cz/download/%{name}-current-%{tar_version}.tar.bz2
 Source0:        %{name}-current-%{tar_version}.tar.bz2
 Patch0:         build-with-new-ruby.patch
@@ -59,6 +59,7 @@ BuildRequires:  zlib-devel
 Provides:       web_browser
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %perl_requires
+%requires_eq    perl
 
 %description
 ELinks is an advanced and well-established feature-rich text mode web
