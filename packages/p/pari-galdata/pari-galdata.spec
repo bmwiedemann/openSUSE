@@ -1,7 +1,7 @@
 #
 # spec file for package pari-galdata
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ URL:            http://pari.math.u-bordeaux.fr/
 
 Source:         galdata.tar.xz
 Source2:        LICENSE
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  fdupes
 BuildRequires:  xz
 BuildArch:      noarch
 Conflicts:      libpari-gmp < 2.2.7
@@ -45,10 +45,10 @@ cp "%_sourcedir/LICENSE" .
 c="%buildroot/%_datadir/pari"
 mkdir -p "$c"
 mv galdata "$c/"
+%fdupes %buildroot/%_prefix
 
 %files
-%defattr(-,root,root)
 %_datadir/pari
-%doc LICENSE
+%license LICENSE
 
 %changelog

@@ -44,4 +44,12 @@
     <comment>- Strip /data/ subdirectory [boo#1106378, boo#1165480]</comment>
     <requestid>789732</requestid>
   </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>2867902b69beef3e6aca4a19fcc7743d</srcmd5>
+    <version>20080411</version>
+    <time>1655493659</time>
+    <user>dimstar_suse</user>
+    <comment>- Specfile modernization</comment>
+    <requestid>983191</requestid>
+  </revision>
 </revisionlist>
