@@ -4907,4 +4907,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   libdrm</comment>
     <requestid>980935</requestid>
   </revision>
+  <revision rev="443" vrev="315">
+    <srcmd5>b094186df2750c021dc6a238acee1a21</srcmd5>
+    <version>unknown</version>
+    <time>1655493506</time>
+    <user>dimstar_suse</user>
+    <comment>- let Mesa-libGL-devel require libX11-devel via pkgconfig(x11)
+  (boo#1200559)</comment>
+    <requestid>982753</requestid>
+  </revision>
 </revisionlist>

@@ -375,6 +375,7 @@ Group:          Development/Libraries/C and C++
 Requires:       Mesa-KHR-devel = %{version}
 Requires:       Mesa-libGL1 = %{version}
 Requires:       libglvnd-devel >= 0.1.0
+Requires:       pkgconfig(x11)
 
 %description libGL-devel
 Mesa is a software library for 3D computer graphics that provides a
