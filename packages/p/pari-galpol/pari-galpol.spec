@@ -1,7 +1,7 @@
 #
 # spec file for package pari-galpol
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ URL:            http://pari.math.u-bordeaux.fr/
 Source:         http://pari.math.u-bordeaux.fr/pub/pari/packages/galpol.tgz
 Source2:        http://pari.math.u-bordeaux.fr/pub/pari/packages/galpol.tgz.asc
 Source3:        LICENSE
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  fdupes
 BuildArch:      noarch
 Conflicts:      libpari-gmp < 2.4.3
 
@@ -36,7 +36,7 @@ PARI package of the GALPOL database of polynomials defining Galois
 extensions of the rationals, accessed by the "galoisgetpol" function.
 
 %prep
-%setup -qn data
+%autosetup -n data
 cp "%_sourcedir/LICENSE" .
 
 %build
@@ -45,10 +45,10 @@ cp "%_sourcedir/LICENSE" .
 c="%buildroot/%_datadir/pari"
 mkdir -p "$c"
 mv galpol "$c/"
+%fdupes %buildroot/%_prefix
 
 %files
-%defattr(-,root,root)
 %_datadir/pari
-%doc LICENSE
+%license LICENSE
 
 %changelog
