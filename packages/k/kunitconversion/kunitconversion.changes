@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun 10 14:12:44 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.95.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.95.0
+- Changes since 5.94.0:
+  * Add "sq [thing]" as activation trigger for various common area measurements (kde#448868)
+  * Match singular form in user input for tea/tablespoon (kde#451278)
+
+-------------------------------------------------------------------
 Tue May 10 08:18:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.94.0
