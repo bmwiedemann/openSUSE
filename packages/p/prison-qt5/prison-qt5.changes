@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jun 10 14:12:50 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.95.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.95.0
+- Changes since 5.94.0:
+  * Let the ForwardingHeaders be found at build time too
+  * Remove PREFIX from ecm_generate_headers for PrisonScanner
+  * Fix decimal/hexadecimal mix-up in the binary detection heuristic
+  * Simplify headers installation location
+  * Install the ForwardingHeaders in Prison/ in the builddir
+  * cmake: add purpose property to 3d-party libraries
+  * Improve Prison documentation
+  * Handle video frames with a non-standard row stride correctly as well
+
+-------------------------------------------------------------------
 Tue May 10 08:18:15 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.94.0
