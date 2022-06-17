@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 12 13:54:32 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.3.1:
+  * Fixed: Better populate global variables for the code version
+    source
+- add a comment explaining why the tests are skipped in obs
+  because they need internet access
+
+-------------------------------------------------------------------
 Thu May 26 16:38:22 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
 
 - creation of the package with version 1.3.0

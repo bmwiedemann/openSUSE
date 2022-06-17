@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-hatchling
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Build backend used by Hatch
 License:        MIT
@@ -62,6 +62,11 @@ This is the extensible, standards compliant build backend used by Hatch.
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/hatchling
+
+%check
+# The tests provided in the tarball relies on internet access to run
+# (git clone, pip install ...), so they cannot work on obs
+# see tests/downstream/integrate.py for details
 
 %post
 %python_install_alternative hatchling
