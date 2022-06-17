@@ -43,7 +43,7 @@
 %bcond_with enable_preview_single_rpmtrans_as_default_for_zypper
 
 Name:           libzypp
-Version:        17.30.0
+Version:        17.30.2
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/libzypp
@@ -59,6 +59,7 @@ Obsoletes:      yast2-packagemanager
 Provides:       libzypp(plugin) = 0.1
 Provides:       libzypp(plugin:appdata) = 0
 Provides:       libzypp(plugin:commit) = 1
+Provides:       libzypp(plugin:repoverification) = 0
 Provides:       libzypp(plugin:services) = 1
 Provides:       libzypp(plugin:system) = 1
 Provides:       libzypp(plugin:urlresolver) = 0
