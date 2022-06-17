@@ -16,25 +16,21 @@
 #
 
 
-%define _version 1.1.2_2022-02-04_0a00cf5339
+%define _version 1.2_2022-05-15_dc2aedaf03
 
 Name:           inkscape
-Version:        1.1.2
+Version:        1.2
 Release:        0
 Summary:        Vector Illustration Program
 License:        GPL-3.0-only
 URL:            https://inkscape.org/
 
-Source:         https://inkscape.org/gallery/item/31668/inkscape-%{version}.tar.xz#/inkscape-%{_version}.tar.xz
+Source:         https://inkscape.org/gallery/item/33449/inkscape-%{version}.tar.xz#/inkscape-%{_version}.tar.xz
 # openSUSE palette file
 Source1:        openSUSE.gpl
 Source2:        inkscape-split-extensions-extra.py
 Source98:       https://media.inkscape.org/media/resources/sigs/inkscape-%{_version}.tar.xz.sig
 Source99:       https://inkscape.org/~MarcJeanmougin/gpg#/%name.keyring
-# PATCH-FIX-UPSTREAM Fix_build_poppler_22030.patch -- Fix build with poppler 22.03.0
-Patch0:         Fix_build_poppler_22030.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         Fix_build_poppler_22040.patch
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
 BuildRequires:  fdupes
@@ -172,13 +168,15 @@ export CXX=g++-10
 # Only useful for translators.
 rm %{buildroot}%{_datadir}/inkscape/extensions/genpofiles.sh
 # Packaging/distribution info.
-rm %{buildroot}%{_datadir}/inkscape/extensions/{LICENSE.txt,MANIFEST.in,README.md,TESTING.md}
+rm %{buildroot}%{_datadir}/inkscape/extensions/{LICENSE.txt,MANIFEST.in,README.md,TESTING.md,CONTRIBUTING.md}
 # Test framework.
-rm %{buildroot}%{_datadir}/inkscape/extensions/setup.{cfg,py} \
-   %{buildroot}%{_datadir}/inkscape/extensions/tox.ini        \
+rm %{buildroot}%{_datadir}/inkscape/extensions/tox.ini        \
    %{buildroot}%{_datadir}/inkscape/extensions/.pylintrc      \
    %{buildroot}%{_datadir}/inkscape/extensions/doxygen-main.dox
 rm -rf %{buildroot}%{_datadir}/inkscape/extensions/.pytest_cache
+# extensions/doc
+rm -rf %{buildroot}%{_datadir}/inkscape/extensions/docs
+rm %{buildroot}%{_datadir}/inkscape/extensions/{.darglint,.pre-commit-config.yaml,inkscape.extension.schema,poetry.lock,pyproject.toml}
 
 install -Dpm 0644 %{SOURCE1} %{buildroot}%{_datadir}/inkscape/palettes/
 

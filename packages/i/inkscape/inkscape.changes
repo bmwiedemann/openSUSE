@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Jun  9 13:08:07 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix version: it's 1.2, not 1.2.0 (fixes download of upstream
+  assets referenced by URL).
+
+-------------------------------------------------------------------
+Sat Jun  4 16:30:50 UTC 2022 - thod_@gmx.de
+
+- Update to version 1.2:
+  + Inkscape documents can now hold multiple pages
+  + Editable markers and dash patterns
+  + Layers and objects dialog merged
+  + On-canvas alignment snapping and Snap settings redesign
+  + New 'Tiling' Live Path Effect
+  + Redesigned Export dialog with preview
+  + Import SVG images from Open Clipart, Wikimedia Commons and others
+  + Selectable object origin for numerical scaling and moving
+  + All alignment options in a single dialog
+  + Gradient editing in the Fill and Stroke dialog
+  + Gradient dithering
+  + SVG Font Editor updated
+  + Flowing text around shapes and text padding
+  + Convenience Boolean operation for splitting paths
+  + Configurable Tool bar
+- Drop patches: Fixed upstream
+  * Fix_build_poppler_22030.patch
+  * Fix_build_poppler_22040.patch
+
+-------------------------------------------------------------------
 Fri Apr 22 09:08:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add poppler 22.04.0 compability fix:
