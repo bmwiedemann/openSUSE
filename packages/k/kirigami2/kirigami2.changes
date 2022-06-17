@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jun 10 14:12:33 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.95.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.95.0
+- Changes since 5.94.0:
+  * Add tools-report-bug to kirigami_package_breeze_icons (kde#454735)
+  * Wrap license text in AboutItem (kde#454738)
+  * OverlaySheet: Always restart the open animation if we abort due to size changes
+  * InlineMessage: Better multiline calculation
+  * port to standard C++ smart pointers where possible
+  * Show tooltip for collapsed "Open Sidebar" button (kde#453771)
+  * [ColumnView] Don't leak SeparatorItems (kde#453201)
+  * controls/private: Allow customizing `heightMode` in `ToolBarPageHeader`
+  * Fix identation of the api doc
+  * controls: Add `SelectableLabel` component to enable text selection in label
+  * Handle NavigationTabButton without icon
+
+-------------------------------------------------------------------
 Tue May 10 08:18:01 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.94.0
