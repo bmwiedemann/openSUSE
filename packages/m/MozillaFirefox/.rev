@@ -5657,4 +5657,12 @@
     CSP bypass enabling stylesheet injection</comment>
     <requestid>980191</requestid>
   </revision>
+  <revision rev="368" vrev="1">
+    <srcmd5>8ad252e51bb48d7f781d2ba9320ee855</srcmd5>
+    <version>101.0.1</version>
+    <time>1655493598</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982081</requestid>
+  </revision>
 </revisionlist>

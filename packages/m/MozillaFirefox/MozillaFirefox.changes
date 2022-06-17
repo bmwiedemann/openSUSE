@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 10 20:45:37 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 101.0.1:
+  * Fixed context menus not appearing when right-clicking
+    Picture-in-Picture windows on some Linux systems (bmo#1771914)
+  * Various stability fixes
+
+-------------------------------------------------------------------
 Sun May 29 08:02:45 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 101.0
