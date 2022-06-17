@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pikepdf
-Version:        5.1.0
+Version:        5.1.5
 Release:        0
 Summary:        Read and write PDFs with Python, powered by qpdf
 License:        MPL-2.0
@@ -77,15 +77,12 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# Ignore some test as it fails on Leap and Tumbleweed
-# despite all other tests passing.
-# %pytest_arch -k 'not (test_unicode or test_bytes or TestName)'
-
 %pytest_arch
 
 %files %{python_files}
 %license LICENSE.txt licenses
 %doc README.md docs/*/*.rst
-%{python_sitearch}/pikepdf*
+%{python_sitearch}/pikepdf/
+%{python_sitearch}/pikepdf-%{version}-py%{python_version}.egg-info/
 
 %changelog

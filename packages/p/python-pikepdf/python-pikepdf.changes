@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 17 00:45:31 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.1.5:
+  * Fixed removal of necessary package packaging. Needed for
+    import.
+- Drop some unnecessary comments.
+- Be more specific with file lists.
+
+-------------------------------------------------------------------
 Sun Mar 27 15:05:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.1.0:
