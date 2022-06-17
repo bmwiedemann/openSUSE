@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  8 11:01:59 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Enable QRTR support
+  * Add BR pkgconfig(qrtr-glib)
+
+-------------------------------------------------------------------
 Fri Feb 18 14:32:32 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 1.18.6:

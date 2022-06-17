@@ -41,6 +41,7 @@ BuildRequires:  pkgconfig(libsystemd) >= 209
 BuildRequires:  pkgconfig(mbim-glib) >= 1.24.0
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.97
 BuildRequires:  pkgconfig(qmi-glib) >= 1.26.0
+BuildRequires:  pkgconfig(qrtr-glib)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 Requires:       hicolor-icon-theme
@@ -110,6 +111,7 @@ test -n "$pppddir" || exit 1
 	--with-udev-base-dir=%{_udevdir} \
 	--with-dbus-sys-dir=%{_datadir}/dbus-1/system.d \
 	--with-qmi \
+	--with-qrtr \
 	--with-mbim \
 	%{nil}
 %make_build
