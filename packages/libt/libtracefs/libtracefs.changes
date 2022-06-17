@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  7 08:34:18 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to latest upstream version (1.4.1)
+  * Raw uprobe API: tracefs_uprobe_alloc(), tracefs_uretprobe_alloc
+  * Return the debugfs mount point from tracefs_debug_dir()
+  * sqlhst: Fix labels being ignored for synthetic event field
+  * sqlhst: Allow same event to be both the start and end event
+  * sqlhst: Use unique names for labels
+  * sqlhst: Report errors when executing commands
+
+-------------------------------------------------------------------
 Tue Apr  5 15:46:56 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to latest upstream version (1.3.1)

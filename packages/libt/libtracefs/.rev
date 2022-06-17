@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>968031</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4e4569d56fd537a298907272becab5f1</srcmd5>
+    <version>1.4.1</version>
+    <time>1655493666</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to latest upstream version (1.4.1)</comment>
+    <requestid>983248</requestid>
+  </revision>
 </revisionlist>
