@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 10 14:12:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.95.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.95.0
+- Changes since 5.94.0:
+  * KArchive::addLocalDirectory: preserve empty directories
+  * Fix zstd KCompressionDevice not compressing as much as it could (kde#451816)
+  * Always delete device if we created it (kde#432726)
+  * port to standard C++ smart pointers where possible
+
+-------------------------------------------------------------------
 Tue May 10 08:17:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.94.0
