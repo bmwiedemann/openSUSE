@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun 17 15:27:30 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1655453312.bf5e2df:
+  * Cover OpenQA::Commands completely
+  * ci: Also test Leap 15.4 in OBS
+  * Fix HTML Devel::Cover report
+  * Fix `t/18-qemu-options.t` on newer QEMU versions
+  * Add general recommendations and s390x specific details to backend docs
+
+-------------------------------------------------------------------
 Wed Jun 15 13:38:13 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1655298846.b80c956:
