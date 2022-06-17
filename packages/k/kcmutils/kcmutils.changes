@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jun 10 14:12:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.95.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.95.0
+- Changes since 5.94.0:
+  * KPluginDelegate: reserve space for subtitle
+  * KPluginSelector: animate placeholder appearance
+  * KPluginSelector: Don't show placeholder message immediately upon load
+  * KPluginSelector: fix placeholder location
+  * Add debug output to print KCM location
+  * AboutPlugin.qml: Do not use translation function when we only have one value
+  * [kcmultidialog] Fix crash in clear()
+
+-------------------------------------------------------------------
 Tue May 10 08:17:47 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.94.0
