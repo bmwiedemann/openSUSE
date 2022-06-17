@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 11 07:45:59 UTC 2022 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Enable appstream-sync-cache.service by default(bsc#1197684).
+
+-------------------------------------------------------------------
 Tue Feb  1 19:07:53 UTC 2022 - Kirk Allan <kallan@suse.com>
 
 - enable vgauthd service for VMWare by default (bsc#1195251)

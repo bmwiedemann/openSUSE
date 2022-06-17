@@ -1,6 +1,7 @@
 enable YaST2-Firstboot.service
 enable YaST2-Second-Stage.service
 enable apparmor.service
+enable appstream-sync-cache.service
 enable auditd.service
 enable avahi-daemon.service
 enable backup-rpmdb.timer
