@@ -1,3 +1,0 @@
-#!/bin/bash
-source /etc/sysconfig/cfssl
-exec /usr/bin/cfssl ocspserve -db-config="$CFSSL_DB_CONFIG" -loglevel="$CFSSL_LOGLEVEL" -address="$CFSSL_OCSPSERVE_ADDRESS" -port="$CFSSL_OCSPSERVE_PORT" -responses="$CFSSL_OCSPSERVE_RESPONSES"
