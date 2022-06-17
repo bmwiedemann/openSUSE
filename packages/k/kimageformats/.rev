@@ -862,4 +862,12 @@
     <comment>KDE Frameworks 5.94.0</comment>
     <requestid>977178</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>c8fcf6f3ea61981e758bd72c71621535</srcmd5>
+    <version>5.95.0</version>
+    <time>1655493592</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable AVIF plugin also on Leap 15.4 (forwarded request 982469 from wolfi323)</comment>
+    <requestid>982471</requestid>
+  </revision>
 </revisionlist>

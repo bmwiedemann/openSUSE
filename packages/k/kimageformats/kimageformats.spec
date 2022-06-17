@@ -16,13 +16,13 @@
 #
 
 
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || (0%{?is_opensuse} && 0%{?sle_version} >= 150400)
 %define with_avif 1
 %endif
 %if 0%{?suse_version} > 1500 || (0%{?is_opensuse} && 0%{?sle_version} >= 150300)
 %define with_heif 1
 %endif
-%define _tar_path 5.94
+%define _tar_path 5.95
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -30,7 +30,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           kimageformats
-Version:        5.94.0
+Version:        5.95.0
 Release:        0
 Summary:        Image format plugins for Qt
 License:        LGPL-2.1-or-later
