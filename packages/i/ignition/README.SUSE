@@ -18,6 +18,11 @@ Changes for openSUSE / SLE:
   Set timeout for Ignition device so boot will just continue if no physical
   Ignition configuration device is attached (e.g. when using platform
   specific configuration).
+* ignition-rmcfg-suse.conf:
+  Adapt systemd service to match our own packaging: We do not support
+  ConditionFirstBoot, and additionally support auto-detection of the platform
+  (see ignition-suse-generator), so the detection whether the stage should be
+  called has to be done via shell script.
 * ignition-touch-selinux-autorelabel.conf:
   Trigger SELinux autorelabel after Ignition runs; Ignition would support
   SELinux itself, however this is a compile time option, so it can't be

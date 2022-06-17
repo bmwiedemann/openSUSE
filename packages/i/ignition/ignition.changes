@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed May 18 12:37:46 UTC 2022 - iforster@suse.com
+
+- Update to version 2.14.0:
+  * NEWS: update v2.14.0
+  * docs/operator-notes: add section on provisioning secrets
+  * Dockerfile.validate: build with Fedora 36
+  * internal/resource: fix gs:// fetches in GCE without a service account
+  * docs/operator-notes: document supported S3 URL formats
+  * internal/resource: fix S3 access point object ARNs
+  * exec/util: fix infinite loop in Depth() if -root is relative
+  * Add ignition-delete-config.service and ignition-rmcfg symlink
+  * providers/virtualbox: support deleting Ignition configs
+  * providers/virtualbox: add comment referencing VirtualBox source
+  * providers/virtualbox: add define for GUEST_PROP_FN_GET_PROP
+  * providers/virtualbox: add helper to set up hypervisor connection
+  * providers/vmware: support deleting Ignition configs
+  * main: add ignition-rmcfg multicall binary
+  * go.mod: add github.com/beevik/etree
+  * providers/vmware: switch to internal copy of OVF parser
+  * internal/resource: fix bucket field in error message
+  * internal/resource: derive AWS region hint from ARN partition field
+  * internal/resource: simplify test
+  * internal/resource: fix minor nits
+  * provider/azure: try to fetch userdata from IMDS
+  * providers/vmware: convert OVF tests to testify
+  * providers/vmware: drop vmw-ovflib docs
+  * providers/vmware: add verbatim copy of vmw-ovflib
+  * providers/vmware: add constants for guestinfo and OVF property names
+  * providers/virtualbox: fix reading properties with flags
+  * internal/resource: support S3 access point URLs
+- Update fixes CVE from [bsc#1199524]; this introduces a new
+  service "ignition-delete-config.service"
+- Add ignition-rmcfg-suse.conf dropin to adapt to SUSE environment
+- Use fixed paths in spec file for hardcoded installation paths
+
+-------------------------------------------------------------------
 Fri Apr  8 13:47:56 UTC 2022 - Ignaz Forster <iforster@suse.com>
 
 - Use /bin/sh instead of /usr/bin/sh (for backwards compatibility

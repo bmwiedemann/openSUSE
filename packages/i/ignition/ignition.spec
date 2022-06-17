@@ -17,7 +17,7 @@
 
 
 Name:           ignition
-Version:        2.13.0
+Version:        2.14.0
 Release:        0
 Summary:        First boot installer and configuration tool
 License:        Apache-2.0
@@ -38,6 +38,7 @@ Source11:       ignition-enable-network.sh
 Source12:       ignition-kargs-helper
 Source13:       ignition-remove-reconfig_system.service
 Source14:       ignition-touch-selinux-autorelabel.conf
+Source15:       ignition-rmcfg-suse.conf
 Source20:       ignition-userconfig-timeout.conf
 Source21:       ignition-userconfig-timeout-arm.conf
 Patch2:         0002-allow-multiple-mounts-of-same-device.patch
@@ -87,7 +88,7 @@ which creates firstboot_happened after the first boot.
 %prep
 %autosetup -p1
 
-mkdir dracut/30ignition-microos grub systemd_suse
+mkdir -p dracut/30ignition-microos grub systemd_suse/ignition-delete-config.service.d
 chmod +x %{SOURCE3} %{SOURCE4} %{SOURCE8} %{SOURCE12}
 cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE8} %{SOURCE9} %{SOURCE10} %{SOURCE11} %{SOURCE13} %{SOURCE14} dracut/30ignition-microos/
 %ifarch aarch64 %{arm}
@@ -97,6 +98,7 @@ cp %{SOURCE20} dracut/30ignition-microos/ignition-userconfig-timeout.conf
 %endif
 cp %{SOURCE5} grub/
 cp %{SOURCE6} systemd_suse/
+cp %{SOURCE15} systemd_suse/ignition-delete-config.service.d/
 cp %{SOURCE7} .
 cp %{SOURCE12} dracut/30ignition/ignition-kargs-helper.sh
 
@@ -108,9 +110,16 @@ env VERSION=%{version} GLDFLAGS='-X github.com/coreos/ignition/v2/internal/distr
 make -o all install DESTDIR=%{buildroot}
 
 install -d %{buildroot}%{_sysconfdir}/grub.d
-install -d %{buildroot}%{_prefix}/lib/systemd/system
+install -d %{buildroot}%{_unitdir}/ignition-delete-config.service.d
 install -p -m 0755 grub/* %{buildroot}%{_sysconfdir}/grub.d/
-install -p -m 0644 systemd_suse/* %{buildroot}%{_prefix}/lib/systemd/system/
+install -p -m 0644 systemd_suse/*.service %{buildroot}%{_prefix}/lib/systemd/system/
+install -p -m 0644 systemd_suse/ignition-delete-config.service.d/* %{buildroot}%{_prefix}/lib/systemd/system/ignition-delete-config.service.d
+install -d %{buildroot}%{_sbindir}/
+mv %{buildroot}/usr/libexec/ignition-rmcfg %{buildroot}/%{_sbindir}/
+rmdir %{buildroot}/usr/libexec
+
+%pre
+%service_add_pre ignition-delete-config.service
 
 %post
 %{?regenerate_initrd_post}
@@ -121,6 +130,13 @@ if [ "$1" -ne 1 ]; then
     mkdir -p %{_rundir}/ignition-dracut/
     touch %{_rundir}/ignition-dracut/isupgrade
 fi
+%service_add_post ignition-delete-config.service
+
+%preun
+%service_del_preun ignition-delete-config.service
+
+%postun
+%service_del_postun_without_restart ignition-delete-config.service
 
 %posttrans
 %{?regenerate_initrd_posttrans}
@@ -152,9 +168,14 @@ fi
 %files
 %license LICENSE
 %doc README.md README.SUSE docs/*.md
-%{_prefix}/lib/dracut/modules.d/30ignition
-%{_prefix}/lib/dracut/modules.d/30ignition-microos
-%{_bindir}/ignition-validate
+# Paths are hardcoded in the Makefile
+/usr/lib/dracut/modules.d/30ignition
+/usr/lib/dracut/modules.d/30ignition-microos
+/usr/bin/ignition-validate
+/usr/lib/systemd/system/ignition-delete-config.service
+%{_sbindir}/ignition-rmcfg
+%dir %{_unitdir}/ignition-delete-config.service.d
+%{_unitdir}/ignition-delete-config.service.d/ignition-rmcfg-suse.conf
 
 %files dracut-grub2
 %license LICENSE
