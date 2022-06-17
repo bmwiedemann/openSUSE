@@ -240,4 +240,32 @@
   * resources: Register MediaTypes before build (forwarded request 981343 from jfkw)</comment>
     <requestid>981347</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>21a11a57b1e80a47aacc5d5f6d4fd46c</srcmd5>
+    <version>0.101.0</version>
+    <time>1655493652</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.101.0:
+  * build: Update to Go 1.18.3
+  * docs: Regen docshelper
+  * markup/highlight: Add hl_inline option
+  * deps: Update github.com/alecthomas/chroma/v2 v2.1.0 =&gt; v2.2.0
+  * build(deps): bump github.com/clbanning/mxj/v2 from 2.5.5 to 2.5.6
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.0.1 to 2.0.2
+  * build(deps): bump golang.org/x/tools from 0.1.10 to 0.1.11
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.11.5 to 2.11.10
+  * build(deps): bump github.com/evanw/esbuild from 0.14.42 to 0.14.43
+  * build(deps): bump github.com/getkin/kin-openapi from 0.94.0 to 0.97.0
+  * deps: Udpate to github.com/alecthomas/chroma/v2
+  * common: Add hugo.GoVersion
+  * resources: Panic on Copy of Resource with .Err
+  * resources/page: Add :slugorfilename attribute
+  * Respect NO_COLOR
+  * readme: Update dependency list
+  * Fix relURL with leading slash when baseURL includes a subdirectory
+  * js: Resolve index.esm.js
+  * Add animated GIF support
+  * resources: Add a Gif source file to golden tests (forwarded request 983164 from jfkw)</comment>
+    <requestid>983166</requestid>
+  </revision>
 </revisionlist>
