@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.94
+%define _tar_path 5.95
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kio
-Version:        5.94.0
+Version:        5.95.0
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later
@@ -226,10 +226,16 @@ export CXX=g++-10
 %{_kf5_plugindir}/kf5/kiod/kioexecd.so
 %{_kf5_plugindir}/kf5/kiod/kpasswdserver.so
 %{_kf5_plugindir}/kf5/urifilters/
-%{_kf5_plugindir}/kcm_cookies.so
-%{_kf5_plugindir}/kcm_netpref.so
 %{_kf5_plugindir}/kcm_proxy.so
-%{_kf5_plugindir}/kcm_smb.so
+%dir %{_kf5_plugindir}/plasma/
+%dir %{_kf5_plugindir}/plasma/kcms/
+%dir %{_kf5_plugindir}/plasma/kcms/systemsettings/
+%dir %{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/
+%{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_netpref.so
+%{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_proxy.so
+%{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_cookies.so
+%{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_webshortcuts.so
+%{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_smb.so
 %dir %{_kf5_plugindir}/designer
 %{_kf5_plugindir}/designer/kio5widgets.so
 %{_kf5_servicesdir}/cookies.desktop

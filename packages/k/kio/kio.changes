@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Jun 10 14:12:33 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.95.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.95.0
+- Changes since 5.94.0:
+  * KCoreUrlNavigator: add urlSelectionRequested signal (kde#453289)
+  * kio_file: fix data race on static user cache (kde#454619)
+  * file_unix: use thread id rather than pid for filehelper socket
+  * [KDirOperator] Add option to show hidden files last
+  * [KFileItemDelegate] Add a semi-transparent effect to the labels of hidden files
+  * PreviewJob: Resolve parent mime types before checking wildcards (kde#453480)
+  * [kemailclientlauncherjob] Allow setting BCC
+  * TrashSizeCache: fix parsing of directory cachesize file and improve code
+  * DirectorySizeJob: use targetUrl as url
+  * KFileItem: GetStatusBarInfo: Improve display for urls
+  * KDirModel: don't nuke query and fragment in URLs
+  * [KFilePlacesView] Show inline eject button only for removable drives (kde#453890)
+  * [KFilePlacesView] Don't show capacity bar for network shares
+  * kpasswdserver: fix mistake
+  * port to standard C++ smart pointers where possible
+  * rfc search provider: Fix URL
+  * Skip generation of KCM symlinks on windows
+  * KCMs: Define plugin id to match the desktop file name
+  * Embed json metadata in KCMs, port to new systemsettings namespaces
+  * quickfix crash if element not found, we want to use the range erase here
+  * Add env var KIO_ENABLE_WORKER_THREADS in case of trouble.
+  * Initialize std::atomic<bool> variables.
+  * SlaveBase: skip sighandlers when run in thread
+  * kio_file: remove use of QDir::setCurrent()
+  * Implement running KIO workers in-process using a thread
+  * [StatJob] Set total amount to 1 Item
+  * KSambashare: handle "Weak crypto is allowed" error message
+  * dropjob: don't create PasteJob when `m_hasArkFormat` is true
+  * KFileWidget: initialize KFilePlaceModel before KUrlNavigator
+  * [previewjob] Deduplicate legacy plugins based on desktop file name instead of pluginId
+
+-------------------------------------------------------------------
 Tue May 10 08:18:00 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.94.0
