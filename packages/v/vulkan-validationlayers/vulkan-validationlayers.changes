@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 16 16:04:56 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.216.0
+  * Validate primitives generated query queue support
+  * Handle CreateDevice, DestroyDevice, Queue Submission,
+    PipelineLayouts and Pipelines in GpuAssistedBase
+  * Validate primitives generated with streams
+  * Validate fragment density render area
+  * Add validation for VK_EXT_primitives_generated_query
+  * Add RenderPass2 validation for FragmentDensityMap
+  * Complete validation of compatible render passes
+  * Validate ray tracing pipeline flags and resource count
+  * Add VK_KHR_ray_tracing_maintenance1
+
+-------------------------------------------------------------------
 Mon Apr 18 20:14:48 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.211.0
