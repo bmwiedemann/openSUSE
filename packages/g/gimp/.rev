@@ -2056,4 +2056,12 @@ General:
     <comment></comment>
     <requestid>978947</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>1b9ee326161feffdf6791e44e5476c5c</srcmd5>
+    <version>2.10.32</version>
+    <time>1655493517</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.10.32: (boo#1199653 CVE-2022-30067)</comment>
+    <requestid>982890</requestid>
+  </revision>
 </revisionlist>

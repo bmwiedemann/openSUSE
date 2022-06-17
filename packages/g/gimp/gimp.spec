@@ -18,6 +18,7 @@
 
 %global abiver 4
 %global apiver 2.0
+%global gegl_version 0.4.36
 
 %if 0%{?suse_version} >= 1550
 %bcond_without libheif
@@ -31,7 +32,7 @@
 %bcond_without python_plugin
 %endif
 Name:           gimp
-Version:        2.10.30
+Version:        2.10.32
 Release:        0
 Summary:        The GNU Image Manipulation Program
 License:        GPL-3.0-or-later
@@ -42,8 +43,6 @@ Source1:        macros.gimp
 # openSUSE palette file
 Source2:        openSUSE.gpl
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM gimp-CVE_2022-30067.patch boo#1199653 mgorse@suse.com -- fix out of memory when reading XCF.
-Patch0:         gimp-CVE_2022-30067.patch
 
 BuildRequires:  aalib-devel
 BuildRequires:  alsa-devel >= 1.0.0
@@ -52,7 +51,7 @@ BuildRequires:  fontconfig-devel >= 2.12.4
 BuildRequires:  gcc-c++
 BuildRequires:  gdk-pixbuf-loader-rsvg
 # For some odd reason build needs gegl executable.
-BuildRequires:  gegl >= 0.4.34
+BuildRequires:  gegl >= %{gegl_version}
 BuildRequires:  ghostscript-devel
 # Explicitly needed, otherwise ghostscript-mini is used during the
 # build, and it's not enough for gimp.
@@ -74,7 +73,7 @@ BuildRequires:  pkgconfig(cairo) >= 1.12.2
 BuildRequires:  pkgconfig(cairo-pdf) >= 1.12.2
 BuildRequires:  pkgconfig(dbus-glib-1) >= 0.70
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.30.8
-BuildRequires:  pkgconfig(gegl-0.4) >= 0.4.34
+BuildRequires:  pkgconfig(gegl-0.4) >= %{gegl_version}
 BuildRequires:  pkgconfig(gexiv2) >= 0.10.6
 BuildRequires:  pkgconfig(glib-2.0) >= 2.54.2
 BuildRequires:  pkgconfig(gtk+-2.0) >= 2.24.32
