@@ -481,4 +481,14 @@
     <comment></comment>
     <requestid>970149</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>13cff120b321453df81e18c933d6e1e0</srcmd5>
+    <version>1.2.0.3</version>
+    <time>1655493522</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.0.3:
+  * Don't ask for licence confirmation if not needed
+  * Deduplicate wifi list</comment>
+    <requestid>982625</requestid>
+  </revision>
 </revisionlist>

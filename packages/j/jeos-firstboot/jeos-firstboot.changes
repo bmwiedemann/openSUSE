@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 14 13:57:32 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.2.0.3:
+  * Don't ask for licence confirmation if not needed
+  * Deduplicate wifi list
+
+-------------------------------------------------------------------
 Thu Apr 14 11:31:37 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.2.0:
