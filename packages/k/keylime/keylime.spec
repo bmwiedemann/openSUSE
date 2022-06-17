@@ -19,13 +19,8 @@
 %global srcname keylime
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-%if 0%{?suse_version} >= 1550
-%bcond_without cfssl
-%else
-%bcond_with cfssl
-%endif
 Name:           keylime
-Version:        6.4.0
+Version:        6.4.1
 Release:        0
 Summary:        Open source TPM software for Bootstrapping and Maintaining Trust
 License:        Apache-2.0 AND MIT
@@ -35,8 +30,6 @@ Source1:        keylime.xml
 Source2:        %{name}-user.conf
 # PATCH-FIX-OPENSUSE keylime.conf.diff
 Patch1:         keylime.conf.diff
-# PATCH-FIX-OPENSUSE config-libefivars.diff
-Patch2:         config-libefivars.diff
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
@@ -108,7 +101,6 @@ Requires:       %{name}-config = %{version}
 Requires:       %{name}-tpm_cert_store = %{version}
 Requires:       python3-%{name} = %{version}
 Recommends:     %{name}-firewalld = %{version}
-Recommends:     cfssl
 
 %description -n %{name}-registrar
 Subpackage of %{name} for registrar service.
@@ -125,9 +117,6 @@ Subpackage of %{name} for verifier service.
 
 %prep
 %autosetup -p1 -n %{name}-v%{version}
-%if !%{with cfssl}
-sed -i "s/ca_implementation = cfssl/ca_implementation = openssl/g" keylime.conf
-%endif
 
 %build
 %python_build

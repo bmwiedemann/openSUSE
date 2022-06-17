@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Jun 13 14:15:49 UTC 2022 - aplanas@suse.com
+
+- Update to version v6.4.1:
+  * Bump version for pypi
+  * verifier: ensure that execptions caused by the agent result in a failure
+  * tpm_main: add failure tagging to measured boot parsing
+  * tpm_main: fix temp file handling in parse_binary_bootlog(..)
+  * pylint: fix bad-option-value and implicit-str-concat warnings
+  * ca: drop support for using CFSSL as a backend
+  * ca_openssl_impl: add basic support for generating a CRL
+  * config: change libefivar.so to libefivar.so.1
+  * elchecking: add workaround for wrong GUID parsing
+  * Add test /functional/measured-boot-swtpm-sanity to Packit CI plan
+  * Fix order of parameters in an error message
+  * pylint: remove usage of distutils because it is deprecated
+  * ca_util: do not use deprecated setDeamon() call
+  * elchecking: error if policy name is invalid, change default to reject-all
+  * Simplify GitHub Actions used for code coverage processing
+  * ima_dm: enable support for dm_target_update events
+  * benchmark: remove benchmark code
+  * ima: remove read_unpack(..) function
+  * Fixes #996, by properly catching exceptions resulting from network problems on the verifier.
+  * List tests in Packit-CI plan explicitly
+  * contributing: add section about code style
+  * fix git blame ignore entry for code style changes
+  * Enable test /functional/basic-attestation-without-mtls
+  * Defer loading PyZMQ to avoid optional dependency
+  * Unify log messages about deleting agent from CV
+  * Ignore reformat commit for git blame
+  * Reformat Keylime with isort and black to new code style
+  * Introducing pre-commit hook to enforce code style with isort and black
+- Drop already merged patches:
+  * config-libefivars.diff
+- Drop cfssl dependency, as uses openssl only
+- Drop cfssl firewalld rule
+
+-------------------------------------------------------------------
 Mon May 23 12:52:23 UTC 2022 - aplanas@suse.com
 
 - Update to version v6.4.0 (CVE-2022-1053, boo#1199253):
