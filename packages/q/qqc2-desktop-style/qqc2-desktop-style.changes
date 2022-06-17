@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Jun 10 14:12:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.95.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.95.0
+- Changes since 5.94.0:
+  * Buttons: Press F to pay respects
+  * DelayButton: Fix invalid id references in transition/animation
+  * ProgressBar,Slider: Draw position smoothly with greater precision
+  * MenuItem: Remove redundant check
+  * Clean up whitespaces and JavaScript: Fix broken syntax
+  * Clean up whitespaces and JavaScript
+  * ProgressBar: Fix rendering of visual position when `from` is non-zero
+  * ProgressBar: Replace hardcoded redraw interval with frame-based animations
+  * RoundButton: Fix expression block may return nothing (undefined)
+  * ScrollView: Stop passing down `enabled` property to the ScrollBars explicitly
+  * ScrollView: Drop support for nullable ScrollBars
+  * ScrollView: Remove id from a scrollbar
+  * ScrollView: Fix aged comment
+  * ScrollView: Fix whitespace
+  * port away from Qt smart pointers where possible
+  * ComboBox: Use qualified ListView.view attached property in delegate
+  * ComboBox: Remove workaround for `editable` property from Qt 5.7 times
+  * ComboBox: Use rect type for rect property
+  * proper fix for the previous commit
+  * Fix overlapping scrollbar (kde#453958)
+  * Relayout the scrollbar when non interactive
+  * Remove code that was only used with Qt <5.8
+
+-------------------------------------------------------------------
 Tue May 10 08:18:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.94.0
