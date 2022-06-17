@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jun 10 14:12:42 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.95.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.95.0
+- Changes since 5.94.0:
+  * autotests: Clean up unneeded includes
+  * RunnerContext: Call addMatch(QList<QueryMatch) internally when addMatch(QueryMatch) is called
+  * RunnerContext::addMatch: Fix broken handling of relevance for often launched entries
+  * Fix Qt6 build with KF 5.94 deprecation level
+  * Port away from deprecated KPluginMetaData::fromDesktopFile
+  * Bump version for disabled KF deprecations
+  * port to standard C++ smart pointers where possible
+  * DBusRunner: Avoid double lookup of match properties
+  * DBusRunner: Add multiline value to property map of RemoteMatch
+
+-------------------------------------------------------------------
 Tue May 10 08:18:09 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.94.0
