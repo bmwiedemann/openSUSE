@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jun 10 14:12:37 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.95.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.95.0
+- Changes since 5.94.0:
+  * Don't use menu as transientParent (kde#454895)
+  * KMoreTools: Fix knewstuff_export.h include
+  * Engine: Provide getter for the pageSize property
+  * Adjust KMoreTools headers installation
+  * Fix core includes in autotests/
+  * Relayout header installation location
+  * EntryDetails: Make summary text selectable
+  * Fix QtQuickDialogWrapper dialog not being usable in konsole (kde#452593)
+  * Fix crash if entry gets deleted (kde#454010)
+  * Add missing translation domain (kde#453827)
+  * Reuse instances of QFileSystemWatcher for KNSCore::Cache
+
+-------------------------------------------------------------------
 Tue May 10 08:18:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.94.0
