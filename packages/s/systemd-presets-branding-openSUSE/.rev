@@ -532,4 +532,13 @@
     <comment></comment>
     <requestid>974302</requestid>
   </revision>
+  <revision rev="64" vrev="20">
+    <srcmd5>b643b3f4b364d02ad84da62df3a37027</srcmd5>
+    <version>12.2</version>
+    <time>1655493617</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove appstream-sync-cache.service: Enabled now in
+  systemd-presets-common-SUSE(bsc#1197684). (forwarded request 982347 from JonathanKang)</comment>
+    <requestid>982356</requestid>
+  </revision>
 </revisionlist>

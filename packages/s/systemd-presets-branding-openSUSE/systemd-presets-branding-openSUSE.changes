@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 11 07:45:59 UTC 2022 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Remove appstream-sync-cache.service: Enabled now in
+  systemd-presets-common-SUSE(bsc#1197684).
+
+-------------------------------------------------------------------
 Mon May  2 04:07:18 UTC 2022 - Simon Lees <sflees@suse.de>
 
 - Enable acpid (boo#1196609), its not installed by default on most
