@@ -37,6 +37,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.56
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gudev-1.0) >= 232
 BuildRequires:  pkgconfig(mbim-glib) >= 1.18
+BuildRequires:  pkgconfig(qrtr-glib)
 
 %description
 libqmi is a glib-based library for talking to WWAN modems and devices
