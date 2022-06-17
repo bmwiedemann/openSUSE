@@ -319,7 +319,6 @@ Provides:       pattern-category() = MicroOS
 Provides:       pattern-icon() = pattern-basis-addon
 Provides:       pattern-order() = 9086
 Provides:       pattern-visible()
-Requires:       cfssl
 Requires:       keylime-firewalld
 Requires:       keylime-registrar
 Requires:       keylime-verifier

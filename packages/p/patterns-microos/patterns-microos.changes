@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 13 14:38:10 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Drop cfssl requirement for ra_verifier, as openssl can now do
+  revocation.
+
+-------------------------------------------------------------------
 Mon May 30 12:30:40 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
 
 - Ensure power-profiles-daemon is installed by Desktop GNOME
