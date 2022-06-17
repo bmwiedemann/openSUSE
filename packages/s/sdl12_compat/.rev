@@ -7,4 +7,15 @@
     <comment>provides (no obsol, confl should be good)</comment>
     <requestid>981107</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f4e75fd9f6a8f2c8a36d474f5568d8d2</srcmd5>
+    <version>1.2.52</version>
+    <time>1655493511</time>
+    <user>dimstar_suse</user>
+    <comment>- Require x11 and xorgproto just like SDL-devel.
+- Depend on the actual libSDL2 library which is being dlopen()'ed.
+- Require pkgconfig(gl) and pkgconfig)glu) from the devel package,
+  as our headers include GL/gl.h and GL/glu.h (boo#1200562).</comment>
+    <requestid>982792</requestid>
+  </revision>
 </revisionlist>

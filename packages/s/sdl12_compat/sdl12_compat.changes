@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 15 12:12:01 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Require x11 and xorgproto just like SDL-devel.
+
+-------------------------------------------------------------------
+Wed Jun 15 10:57:30 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Depend on the actual libSDL2 library which is being dlopen()'ed.
+- Require pkgconfig(gl) and pkgconfig)glu) from the devel package,
+  as our headers include GL/gl.h and GL/glu.h (boo#1200562).
+
+-------------------------------------------------------------------
 Tue May 17 07:44:55 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Add baselibs.conf

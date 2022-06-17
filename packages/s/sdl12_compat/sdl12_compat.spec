@@ -43,6 +43,7 @@ against SDL 1.2, but it uses SDL 2.0 behind the scenes.
 Summary:        SDL Graphics Routines for Primitives and Other Support Functions
 Group:          System/Libraries
 Conflicts:      libSDL-1_2-0
+%requires_eq    %(rpm --qf "%%{name}" -qf $(readlink -f %{_libdir}/libSDL2.so))
 
 %description -n %lname
 This is the "Simple DirectMedia Layer" library built from sdl12_compat.
@@ -53,6 +54,10 @@ against SDL 1.2, but it uses SDL 2.0 behind the scenes.
 Summary:        Libraries, includes and more to develop SDL-1.2 applications
 Group:          Development/Libraries/X11
 Requires:       %lname = %version
+Requires:       pkgconfig(gl)
+Requires:       pkgconfig(glu)
+Requires:       pkgconfig(x11)
+Requires:       pkgconfig(xproto)
 Conflicts:      SDL-devel
 Provides:       SDL-devel = %version-%release
 Provides:       libSDL-devel = %version-%release
