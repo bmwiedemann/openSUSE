@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jun 18 12:34:14 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 3.10.5
+  * Quorum queue could run into an exception when dead lettering a message
+    under certain conditions.
+- Changes from 3.10.4
+  * Avoid seeding default user in old clusters that still use the deprecated
+    management.load_definitions option.
+  * Streams could run into an exception or fetch stale stream position
+    data in some scenarios.
+  * rabbitmqctl set_log_level did not have any effect on logging via
+    amq.rabbitmq.log
+
+-------------------------------------------------------------------
 Sat May 21 06:34:03 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 3.10.2
