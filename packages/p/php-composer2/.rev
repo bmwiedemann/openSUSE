@@ -112,4 +112,12 @@
   * Fixed various type errors (#10753, #10739, #10751)</comment>
     <requestid>981493</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3dbc7b2039ef4e8282df7b4851c95abb</srcmd5>
+    <version>2.3.7</version>
+    <time>1655582779</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>983561</requestid>
+  </revision>
 </revisionlist>
