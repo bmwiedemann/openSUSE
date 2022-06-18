@@ -371,4 +371,12 @@
     <comment></comment>
     <requestid>981058</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>bfb09bec170181f221d2b4022645796a</srcmd5>
+    <version>1.4.4</version>
+    <time>1655582775</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.4.</comment>
+    <requestid>983562</requestid>
+  </revision>
 </revisionlist>

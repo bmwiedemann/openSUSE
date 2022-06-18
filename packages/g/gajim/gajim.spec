@@ -17,12 +17,18 @@
 
 
 %global __requires_exclude ^typelib\\(AppIndicator3\\)
+%if 0%{?suse_version} > 1500
+%define py3ver 3
+%define py3pkg python3
+%define py3pkg_sitelib %{python3_sitelib}
+%else
 # Requires at least python 3.9
 %define py3ver 3.10
 %define py3pkg python310
 %define py3pkg_sitelib %{_prefix}/lib/python%{py3ver}/site-packages
+%endif
 Name:           gajim
-Version:        1.4.3
+Version:        1.4.4
 Release:        0
 Summary:        XMPP client written in Python and Gtk
 License:        GPL-3.0-only
@@ -39,6 +45,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  p11-kit-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+Requires:       %{py3pkg}-Pillow
 Requires:       %{py3pkg}-base
 Requires:       %{py3pkg}-css-parser
 Requires:       %{py3pkg}-gobject-Gdk
@@ -51,8 +58,6 @@ Requires:       %{py3pkg}-pycairo >= 1.16.0
 Requires:       ca-certificates-mozilla
 Requires:       typelib(GtkSource) = 4
 Requires:       typelib(Soup) = 2.4
-# WebP avatars.
-Recommends:     %{py3pkg}-Pillow
 # gajim-remote
 Recommends:     %{py3pkg}-dbus-python
 # OMEMO encryption

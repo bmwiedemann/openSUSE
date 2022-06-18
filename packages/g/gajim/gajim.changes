@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sat Jun 18 09:14:11 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.4.4:
+  * Add support for inputing emoji short codes.
+  * Add freedesktop colorscheme preference support.
+  * Add new CLI command --show.
+  * Add new CLI command --cprofile.
+  * Preferences: Add `Action on Close Button` setting.
+  * Preferences: Add `Show in Taskbar` setting.
+  * Preferences: Add D-Bus Interface setting.
+  * Rewrite gajim-remote.
+  * Logind: Listen to system shutdown and quit Gajim gracefully.
+  * CreateGroupchatWindow: Enable emoji completion for description.
+  * CreateGroupchatWindow: Produce valid addresses from name.
+  * Gateways: Use avatar if published.
+  * History: Add Keep History "Until Gajim is Closed" option.
+  * MUC: Base invitation type on MUC type and affiliation.
+  * Rework DBus Remote Interface.
+  * StatusMessageSelector: Enable emoji completion.
+  * Group chats: Ask for confirmation before leaving.
+  * Preview: Improve layout and display errors.
+  * #10828 Limit message size for styling.
+  * Remove remote AdHocCommands feature.
+  * Remove ask for status settings.
+  * Chat banner: Show phone image if last message came from a
+    phone.
+  * Flatpak: Determine notification backend caps with dbus.
+  * Groupchat: Prevent automatic roster revealer toggling on join.
+  * Make plugins_repository_enabled available via ACE.
+  * MucJoinLeft: Align timestamp correctly.
+  * NotificationManager: Make displaying an invitation more robust.
+  * StatusIcon: Reliably raise/hide window.
+  * Groupchat: Don't steal active msg textbox focus.
+  * Groupchat: Load GroupChatState widget early.
+  * DBus: Unify presence signals.
+  * JingleAudio: Check if webrtcdsp is available.
+  * Groupchat: Show correct icon when toggling roster revealer.
+  * WorkspaceDialog: Show correct settings for workspace if there
+    is only one.
+  * Status messages: Check for correct setting.
+  * MessageInputTextView: Don’t remove tags for spell checking.
+  * Workspaces: Fix image scaling.
+  * AvatarSelector: Add fail-safes for loading images.
+  * Limit max quote recursion.
+  * Make drag & drop more reliable.
+  * Preview: Don’t fail on invalid IPV6 urls.
+  * Remote: Don’t fail on list_contacts.
+  * Preview: Catch PIL errors while generating preview.
+
+-------------------------------------------------------------------
 Mon Jun  6 15:38:25 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update dependency on typelib(GtkSource) to version 4 (boo#1199959)
