@@ -188,7 +188,7 @@ rm -rf src/borg/algorithms/blake2
 # remove precompiled Cython code
 find src/ -name '*.pyx' | sed -e 's/.pyx/.c/g' | xargs rm -f
 # better name for msgpack license
-cp -a %{_datadir}/licenses/python38-msgpack/COPYING LICENSE.msgpack
+cp -a %{_datadir}/licenses/%{python_flavor}-msgpack/COPYING LICENSE.msgpack
 
 %build
 %{borg_openssl_prefix} %{borg_libzstd_prefix} %{borg_liblz4_prefix} CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" python3 setup.py build

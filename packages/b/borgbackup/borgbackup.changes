@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 17 13:06:46 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Don't hardcode the python version
+
+-------------------------------------------------------------------
 Mon Apr 11 18:28:23 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adding 'Requires: python3-msgpack' per boo#1198267.
