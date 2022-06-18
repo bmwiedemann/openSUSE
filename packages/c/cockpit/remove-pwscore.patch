@@ -1,13 +1,13 @@
 Remove dependency on /usr/bin/pwscore that is part of libpwquality-tools
 but we don't ship it in SLES
-diff --git a/pkg/lib/cockpit-components-password.jsx b/pkg/lib/cockpit-components-password.jsx
-index b97aab9..2241a75 100644
---- a/pkg/lib/cockpit-components-password.jsx
-+++ b/pkg/lib/cockpit-components-password.jsx
+Index: cockpit/pkg/lib/cockpit-components-password.jsx
+===================================================================
+--- cockpit.orig/pkg/lib/cockpit-components-password.jsx
++++ cockpit/pkg/lib/cockpit-components-password.jsx
 @@ -18,7 +18,7 @@
   */
  import cockpit from 'cockpit';
- import React from 'react';
+ import React, { useState } from 'react';
 -import { FormGroup, Popover, Progress, ProgressSize, ProgressMeasureLocation, TextInput } from '@patternfly/react-core';
 +import { FormGroup, Popover, TextInput } from '@patternfly/react-core';
  import { HelpIcon } from '@patternfly/react-icons';
@@ -21,7 +21,7 @@ index b97aab9..2241a75 100644
          cockpit.spawn('/usr/bin/pwscore', { err: "message" })
                  .input(password)
                  .done(function(content) {
-@@ -42,6 +43,8 @@ export function password_quality(password, force) {
+@@ -42,6 +43,8 @@ export function password_quality(passwor
                      else
                          resolve({ value: 0 });
                  });
@@ -30,15 +30,32 @@ index b97aab9..2241a75 100644
      });
  }
  
-@@ -53,6 +56,7 @@ export const PasswordFormFields = ({
-     error_password, error_password_confirm,
-     idPrefix, change
+@@ -53,13 +56,12 @@ export const PasswordFormFields = ({
  }) => {
+     const [password, setPassword] = useState(undefined);
+     const [passwordConfirm, setConfirmPassword] = useState(undefined);
+-    const [passwordStrength, setPasswordStrength] = useState("");
+-    const [passwordMessage, setPasswordMessage] = useState("");
+ 
+     function onPasswordChanged(value) {
+         setPassword(value);
+         change("password", value);
+ 
++        /*
+         if (value) {
+             password_quality(value)
+                     .catch(ex => {
+@@ -73,7 +75,9 @@ export const PasswordFormFields = ({
+             setPasswordStrength("");
+             setPasswordMessage("");
+         }
++        */
+     }
 +    /*
+ 
      let variant;
-     if (password_strength === "")
-         variant = "default";
-@@ -62,6 +66,7 @@ export const PasswordFormFields = ({
+     if (passwordStrength === "")
+@@ -84,6 +88,7 @@ export const PasswordFormFields = ({
          variant = "warning";
      else
          variant = "danger";
@@ -46,10 +63,10 @@ index b97aab9..2241a75 100644
  
      return (
          <>
-@@ -79,16 +84,7 @@ export const PasswordFormFields = ({
+@@ -101,16 +106,6 @@ export const PasswordFormFields = ({
                         fieldId={idPrefix + "-pw1"}>
                  <TextInput className="check-passwords" type="password" id={idPrefix + "-pw1"}
-                            value={password} onChange={value => change("password", value)} />
+                            autocomplete="new-password" value={password} onChange={onPasswordChanged} />
 -                <div>
 -                    <Progress id={idPrefix + "-meter"}
 -                              className={"ct-password-strength-meter " + variant}
@@ -57,10 +74,9 @@ index b97aab9..2241a75 100644
 -                              size={ProgressSize.sm}
 -                              measureLocation={ProgressMeasureLocation.none}
 -                              variant={variant}
--                              value={Number.isInteger(password_strength) ? password_strength : 0} />
--                    <div id={idPrefix + "-password-meter-message"} className="pf-c-form__helper-text" aria-live="polite">{password_message}</div>
+-                              value={Number.isInteger(passwordStrength) ? passwordStrength : 0} />
+-                    <div id={idPrefix + "-password-meter-message"} className="pf-c-form__helper-text" aria-live="polite">{passwordMessage}</div>
 -                </div>
-+                <div id={idPrefix + "-password-meter-message"} className="pf-c-form__helper-text" aria-live="polite">{password_message}</div>
              </FormGroup>
  
              {password_confirm_label && <FormGroup label={password_confirm_label}

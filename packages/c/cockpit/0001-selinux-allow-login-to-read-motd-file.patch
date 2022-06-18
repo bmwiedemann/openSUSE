@@ -4,13 +4,13 @@ Date:   Fri Aug 6 15:11:23 2021 +0200
 
     selinux: allow login to read motd file
 
-diff --git a/selinux/cockpit.te b/selinux/cockpit.te
-index 73242aaa1..72db3c1dc 100644
---- a/selinux/cockpit.te
-+++ b/selinux/cockpit.te
-@@ -181,3 +181,11 @@ optional_policy(`
- optional_policy(`
- 	unconfined_domtrans(cockpit_session_t)
+Index: cockpit/selinux/cockpit.te
+===================================================================
+--- cockpit.orig/selinux/cockpit.te
++++ cockpit/selinux/cockpit.te
+@@ -191,3 +191,11 @@ optional_policy(`
+     ')
+     cockpit_read_pid_files(local_login_t)
  ')
 +
 +# login may read motd file through pam

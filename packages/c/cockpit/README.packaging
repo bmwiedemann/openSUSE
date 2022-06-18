@@ -37,4 +37,8 @@ Sending fixes upstream:
 
 if you have any changes that should go upstream, create a new, clean
 branch and cherry pick *one* commit into it. Upstream wants pull
-requests with only one commit 
+requests with only one commit
+
+NOTE: ONLY the .spec file should be in the git.
+
+IDEA: maybe other things should be removed from the git tree then?

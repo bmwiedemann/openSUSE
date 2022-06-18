@@ -169,4 +169,18 @@
     <comment></comment>
     <requestid>962734</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>910de4374b2a4ee8e42072213b193bf1</srcmd5>
+    <version>271</version>
+    <time>1655582729</time>
+    <user>dimstar_suse</user>
+    <comment>- css-overrides.patch: css overrides for better theming support
+
+- new version 271
+  https://cockpit-project.org/blog/cockpit-271.html
+- cockpit-redhatfont.diff: not needed, dropped
+- 0001-selinux-allow-login-to-read-motd-file.patch, hide-docs.patch,
+  hide-pcp.patch remove-pwscore.patch: refreshed</comment>
+    <requestid>983416</requestid>
+  </revision>
 </revisionlist>

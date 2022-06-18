@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 17 10:09:09 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- css-overrides.patch: css overrides for better theming support
+
+-------------------------------------------------------------------
+Fri Jun 10 08:22:31 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- new version 271
+  https://cockpit-project.org/blog/cockpit-271.html
+- cockpit-redhatfont.diff: not needed, dropped
+- 0001-selinux-allow-login-to-read-motd-file.patch, hide-docs.patch,
+  hide-pcp.patch remove-pwscore.patch: refreshed
+
+-------------------------------------------------------------------
 Fri Mar 18 14:28:24 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
 
 - re-add suse-microos-branding.patch from GitHub

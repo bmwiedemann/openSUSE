@@ -1,35 +1,21 @@
-diff --git a/pkg/metrics/metrics.jsx b/pkg/metrics/metrics.jsx
-index 188aad7..a04b094 100644
---- a/pkg/metrics/metrics.jsx
-+++ b/pkg/metrics/metrics.jsx
-@@ -995,6 +995,7 @@ const PCPConfig = ({ buttonVariant, firewalldRequest, needsLogout, setNeedsLogou
-     return (
-         <>
-             <Button variant={buttonVariant} icon={<CogIcon />}
-+                    className="pf-u-display-none"
-                     isDisabled={ invalidService(s_pmlogger) || invalidService(s_pmproxy) || invalidService(s_redis) || invalidService(s_redis_server) }
-                     onClick={ () => {
-                         setDialogLoggerValue(runningService(s_pmlogger));
-@@ -1429,7 +1430,7 @@ export const Application = () => {
-         <PageSection>
-             <CurrentMetrics />
-         </PageSection>
--        <PageSection>
-+        <PageSection className="pf-u-display-none">
-             <MetricsHistory firewalldRequest={setFirewalldRequest}
-                             needsLogout={needsLogout}
-                             setNeedsLogout={setNeedsLogout} />
-
-         </PageSection>
-diff --git a/pkg/metrics/metrics.scss b/pkg/metrics/metrics.scss
-index 025a30b..b4763c2 100644
---- a/pkg/metrics/metrics.scss
-+++ b/pkg/metrics/metrics.scss
-@@ -2,6 +2,7 @@
- @import "../lib/ct-card.scss";
- @import "@patternfly/patternfly/components/Table/table.scss";
- @import "@patternfly/patternfly/components/Toolbar/toolbar.scss";
-+@import "@patternfly/patternfly/utilities/Display/display.scss";
+Index: cockpit/pkg/metrics/metrics.jsx
+===================================================================
+--- cockpit.orig/pkg/metrics/metrics.jsx
++++ cockpit/pkg/metrics/metrics.jsx
+@@ -1234,6 +1234,7 @@ const PCPConfig = ({ buttonVariant, fire
  
- #app {
-     section.pf-c-page__main-breadcrumb {
+     return (
+         <Button variant={buttonVariant} icon={<CogIcon />}
++                className="pf-u-display-none"
+                 isDisabled={ invalidService(s_pmlogger) || invalidService(s_pmproxy) || invalidService(s_redis) || invalidService(s_redis_server) }
+                 onClick={show_dialog}>
+             { _("Metrics settings") }
+@@ -1624,7 +1625,7 @@ export const Application = () => {
+                 <PageSection className="ct-pagesection-mobile">
+                     <CurrentMetrics />
+                 </PageSection>
+-                <PageSection className="ct-pagesection-mobile">
++                <PageSection className="pf-u-display-none">
+                     <MetricsHistory firewalldRequest={setFirewalldRequest}
+                                     needsLogout={needsLogout}
+                                     setNeedsLogout={setNeedsLogout} />
