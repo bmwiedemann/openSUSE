@@ -60,8 +60,6 @@ Patch3:         completion-wordbreaks.diff
 Patch4:         git-prevent_xss-default.diff
 # cook up tcsh completion to be installable (bnc#853183)
 Patch6:         git-tcsh-completion-fixes.diff
-# adapt paths in zsh completion (bnc#853183)
-Patch7:         git-zsh-completion-fixes.diff
 Patch8:         git-asciidoc.patch
 Patch10:        setup-don-t-fail-if-commondir-reference-is-deleted.patch
 BuildRequires:  fdupes
@@ -402,8 +400,8 @@ find %{buildroot}/%{_datadir}/git-core/templates -type f -name "*.sample" -exec 
 %if %{with docs}
 find %{buildroot}/%{_mandir} -type f -exec chmod 644 "{}" "+"
 %endif
-install -m 644 -D contrib/completion/git-completion.bash %{buildroot}%{_sysconfdir}/bash_completion.d/git.sh
-install -m 644 -D contrib/completion/git-prompt.sh %{buildroot}%{_sysconfdir}/bash_completion.d/git-prompt.sh
+install -m 644 -D contrib/completion/git-completion.bash %{buildroot}%{_datadir}/bash-completion/completions/git
+install -m 644 -D contrib/completion/git-prompt.sh %{buildroot}%{_datadir}/bash-completion/completions/git-prompt.sh
 # contrib/credential
 %if %{with git_gnome_keyring}
 install -m 755 -D contrib/credential/gnome-keyring/git-credential-gnome-keyring %{buildroot}/%{gitexecdir}/git-credential-gnome-keyring
@@ -420,7 +418,7 @@ install -m 755 -D contrib/workdir/git-new-workdir %{buildroot}/%{_bindir}
  install -m 644 -D git.csh %{buildroot}%{_sysconfdir}/profile.d/git.csh
 )
 # zsh completion
-install -m 644 -D contrib/completion/git-completion.zsh %{buildroot}%{_sysconfdir}/zsh_completion.d/_git
+install -m 644 -D contrib/completion/git-completion.zsh %{buildroot}%{_datadir}/zsh/site-functions/_git
 #
 # apparmor profile for git-web
 #
@@ -573,10 +571,10 @@ fi
 # We want to prefer the builtin
 %exclude %{gitexecdir}/git-add--interactive
 %{_bindir}/git-new-workdir
-%{_sysconfdir}/bash_completion.d/*.sh
+%{_datadir}/bash-completion/completions/*
 %{_datadir}/tcsh
+%{_datadir}/zsh/site-functions/_git
 %{_sysconfdir}/profile.d/*.csh
-%{_sysconfdir}/zsh_completion.d
 
 %files -n perl-Git
 %license COPYING

@@ -14,7 +14,7 @@ Index: git-2.11.0/contrib/completion/git-completion.tcsh
  
 -set __git_tcsh_completion_original_script = ${HOME}/.git-completion.bash
 -set __git_tcsh_completion_script = ${HOME}/.git-completion.tcsh.bash
-+set __git_tcsh_completion_original_script = /etc/bash_completion.d/git.sh
++set __git_tcsh_completion_original_script = /usr/share/bash-completion/completions/git
 +set __git_tcsh_completion_script = $RPM_BUILD_ROOT/usr/share/tcsh/git.complete
  
 -# Check that the user put the script in the right place

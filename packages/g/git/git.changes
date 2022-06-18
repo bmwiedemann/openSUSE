@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 15 19:39:55 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Fix rpmlint errors/warnings about bash/zsh completion locations.
+- Remove now obsolete git-zsh-completion-fixes.diff.
+- Adjust git-tcsh-completion-fixes.diff.
+
+-------------------------------------------------------------------
 Tue May 24 11:48:21 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not recommend git-cvs and git-svn by git, but rather have
