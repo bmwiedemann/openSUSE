@@ -16,11 +16,13 @@
 #
 
 
-%define libver 4_9
+%define libver 4_10
 %bcond_with static_lib
 %bcond_with pdf_doc
+# julia dropped from oS:Factory [2022-06-10 13:57:27]
+%bcond_with julia
 Name:           gmsh
-Version:        4.9.4
+Version:        4.10.3
 Release:        0
 Summary:        A three-dimensional finite element mesh generator
 License:        GPL-2.0-or-later
@@ -95,6 +97,7 @@ development.
 %package        doc
 Summary:        A three-dimensional finite element mesh generator
 Group:          Documentation/Other
+BuildArch:      noarch
 
 %description    doc
 Gmsh is a 3D finite element grid generator with a build-in CAD engine
@@ -106,6 +109,7 @@ This package contains the documentation for gmsh.
 Summary:        A three-dimensional finite element mesh generator
 Group:          Development/Libraries/C and C++
 Recommends:     %{name}
+BuildArch:      noarch
 
 %description    demos
 Gmsh is a 3D finite element grid generator with a build-in CAD engine
@@ -176,13 +180,20 @@ mv doc/texinfo/gmsh.info %{buildroot}%{_infodir}
 
 chmod 755 %{buildroot}/%{_bindir}/*
 
-%fdupes %{buildroot}/%{_docdir}/%{name}/{examples,tutorials}
-
 # mv python API into python's search path, dito for julia
 mkdir -p %{buildroot}%{python3_sitelib}
 mv %{buildroot}%{_libdir}/gmsh.py %{buildroot}%{python3_sitelib}/gmsh.py
+
+%if %{with julia}
 mkdir -p %{buildroot}%{_datadir}/julia
 mv %{buildroot}%{_libdir}/gmsh.jl %{buildroot}%{_datadir}/julia/gmsh.jl
+%else
+rm %{buildroot}%{_libdir}/gmsh.jl
+rm %{buildroot}%{_docdir}/%{name}/examples/api/*.jl
+rm -Rf %{buildroot}%{_docdir}/%{name}/tutorials/julia
+%endif
+
+%fdupes %{buildroot}/%{_docdir}/%{name}/{examples,tutorials}
 
 %post -n libgmsh%{libver} -p /sbin/ldconfig
 
@@ -202,9 +213,11 @@ mv %{buildroot}%{_libdir}/gmsh.jl %{buildroot}%{_datadir}/julia/gmsh.jl
 %files -n libgmsh%{libver}
 %{_libdir}/libgmsh.so.*
 
+%if %{with julia}
 %files -n gmsh-julia
 %dir %{_datadir}/julia
 %{_datadir}/julia/gmsh.jl
+%endif
 
 %files -n python3-gmsh
 %{python3_sitelib}/gmsh.py

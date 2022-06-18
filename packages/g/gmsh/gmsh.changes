@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sat Jun 18 16:45:10 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 4.10.3
+  * small bug fixes.
+  * New API function: fltk/finalize
+- Update to 4.10.2
+  * fixed regression introduced in 4.9 for recombined meshes
+    with boundary layers
+  * new Geometry.OCCSafeUnbind option to disable boolean
+    optimization introduced in 4.10.0 (for backward compatibility)
+  * new HealShapes command in .geo files
+  * simplified calculation of OCC STL bounding boxes generalized
+    Crack plugin
+  * small bug fixes.
+- Update to 4.10.1
+  * small bug fixes.
+- Update to 4.10.0
+  * more flexible homology/cohomology workflow in the API
+  * "Attractor" field is now just a synonym for the newer (and more
+    efficient) "Distance" field
+  * periodic bsplines now use the same default multiplicities in
+    OCC as in the built-in kernel
+  * model/isInside now also handles discrete entities
+  * speed-up repeated simple boolean operations
+  * C++ api now throws std::runtime_error on errors
+  * small bug fixes.
+  * New API functions:
+    geo/addGeometry, geo/addPointOnGeometry, mesh/addHomologyRequest,
+    mesh/clearHomologyRequests, mesh/setVisibility,
+    mesh/getElementQualities
+  * Incompatible API changes:
+    + additional const qualifiers in C API
+    + removed mesh/computeCohomology
+    + new arguments to occ/getCurveLoops and occ/getSurfaceLoops
+    + changed arguments of mesh/computeHomology
+    + new optional arguments to occ/addCircle, occ/addEllipse,
+      occ/addDisk, occ/addTorus, occ/addWedge, model/addPhysicalGroup,
+      model/geo/addPhysicalGroup, mesh/removeDuplicateNodes and
+      mesh/setRecombine.
+- Update to 4.9.5
+  * dynamic Gmsh library now also only exports public symbols on
+    macOS and Linux, like it does on Windows
+  * better handling of max. thread settings
+  * small bug fixes.
+  * New API function: mesh/getDuplicateNodes
+- Make demos and doc subpackages noarch
+- Some more specfile cleanup
+
+-------------------------------------------------------------------
+Wed Jun 15 10:21:57 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable julia subpackage and do not install related examples and
+  tutorials when building for openSUSE >= 1550 where julia is no
+  longer available.
+
+-------------------------------------------------------------------
 Sun Feb  6 15:21:35 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 4.9.4:
