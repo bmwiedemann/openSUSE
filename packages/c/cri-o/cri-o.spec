@@ -24,7 +24,7 @@
 %define project github.com/cri-o/cri-o
 # Define macros for further referenced sources
 Name:           cri-o
-Version:        1.23.2
+Version:        1.24.0
 Release:        0
 Summary:        OCI-based implementation of Kubernetes Container Runtime Interface
 License:        Apache-2.0
@@ -47,7 +47,7 @@ BuildRequires:  libassuan-devel
 BuildRequires:  libbtrfs-devel
 BuildRequires:  libgpgme-devel
 BuildRequires:  libseccomp-devel
-BuildRequires:  golang(API) = 1.17
+BuildRequires:  golang(API) >= 1.18
 BuildRequires:  sed
 Requires:       patterns-base-apparmor
 Requires:       conntrack-tools

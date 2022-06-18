@@ -1,4 +1,200 @@
 -------------------------------------------------------------------
+Thu May 19 16:13:54 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update BuildRequires: golang(API) >= 1.18
+  * Dependency Go module capnproto.org/go/capnp/v3 requires Go 1.18
+
+-------------------------------------------------------------------
+Thu May 19 06:25:26 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 1.24.0:
+  * oci: Move exec probe process to container cgroup, if enabled
+  * config: Add monitor_exec_cgroup config option
+  * Reenable pod runtime in package spec
+  * dependencies: Upversion conmon dependency to v2.0.27
+  * Sanitize conmonrs log level and print used version
+  * Wrap runtime pod errors
+  * openshift test: use go 1.18
+  * openshift test: add skip_pod_runtime to cri-o spec
+  * Bump nixpkgs and use go1.18
+  * Fix golangci-lint errors
+  * add runtime pod
+  * vendor conmon-rs
+  * oci: add IsInfra method
+  * oci: lock for runtime creation
+  * test: use go 1.18 for lint
+  * Move WillRunSystemd call after iterating the mounts
+  * Add sha256sum bundle files to uploaded artifacts
+  * crio:fix a bug about log container
+  * oci: use runtime handler level monitor fields
+  * config: assume default conmon cgroup if it's not specified
+  * template: add comment to runtimes table
+  * config: replace Conmon specific fields with runtime handler versions
+  * main(): don't treat reexec.Init() == true as an error
+  * crio:try fix integration test failed, because unpause not on time
+  * config: increase pids limit to unlimited and deprecate it and logSizeMax
+  * bump ocicni to 0.3.1
+  * bump containernetworking cni to 1.1.0
+  * crio: unpause ctr after test
+  * crio:fix golint check warning
+  * fix(stats): incorrect id on zfs driver
+  * crio:fix crun it failed
+  * crio:update status after pause/unpause container
+  * oci: cleanup log path if the container failed to create
+  * utils: remove unused io related packages
+  * runtime_vm: use containerd deps for container io directly
+  * remove the external dependency on the conntrack binary
+  * go.{mod,sum}: update CDI deps to v0.3.2.
+  * server: no longer use hardcoded timeouts
+  * fix builds by passing -buildvcs=false on 386
+  * test: bump to go 1.18.1
+  * Disable systemd-mode cgroup detection conditionally
+  * crio: Fix review issues and make format shell file
+  * Add bats test to ensure namespaces are cleaned up on pod stop
+  * pinns: Check calloc return value
+  * bump to 4.11 image
+  * crio: Fix code style
+  * crio: implement extended interface for pause/unpause container
+  * seccomp: drop unshare syscall from default profile
+  * Retry to set CPU load balancing before return the error
+  * build(deps): bump github.com/BurntSushi/toml from 0.4.1 to 1.1.0
+  * Fix integration tests
+  * Switch to registry.k8s.io for the sandbox Image:
+  * Change the mcs order in selinux.bats to test the canonization of selinux label
+  * Canonize selinux label for comparison with filesystem label
+  * oci: fix segfault in pod stop code
+  * capabilities: drop inheritable
+  * Bump ocicni to v0.3.0
+  * Switch to ginkgo/v2
+  * Add bats test for infra_ctr_cpuset taskset
+  * Add bats test for zombie conmon cleanup
+  * Update golangci-lint and config
+  * Bump golang to 1.18.x
+  * pinns: Pass sysctls as repeated '-s' arguments
+  * Fix shell format
+  * README: Update EOL & Version Skew links
+  * config/sysctl: fail if there is a + in the value
+  * Fix critest
+  * Enable `--seccomp-use-default-when-empty` by default
+  * test: update to new runc behavior
+  * Automatically chcon and restorecon on get script
+  * Pin `github.com/u-root/u-root`
+  * Switch to `main` for `get` script
+  * Bump nixpkgs
+  * Pin nixos/nix version
+  * test: allow state of failing tests to be kept intact.
+  * factory: take capabilities setup
+  * Add dedicated security information
+  * test/crio-wipe.bats: don't nuke $TESTDIR too early.
+  * test/cgroups.bats: fix incorrect setup order.
+  * test/cdi.bat: add CDI integration tests.
+  * config,cli: add configuration for CDI.
+  * pkg/container: implement CDI device injection.
+  * go.{mod,sum}: update deps, vendor.
+  * contrib/test: force BATS symlink in place.
+  * contrib/test: always install BATS for integration.
+  * openshift e2e: bump cri-o version
+  * bump to 1.24.0
+  * test: avoid concurrent crictl config writes.
+  * server: stop deleting pod from idIndex if already gone
+  * CI: use kubernetes from git tip
+  * test/e2e: update skipped test list
+  * contrib/test/int/build/kubernetes: rm deprecated RunAsGroup
+  * server: use syncfs instead of fsync
+  * config/sysctls: validate against invalid spaces
+  * [gitpod] use latest workspace full
+  * hack/build-rpms.sh: fix yum-builddep failures
+  * ci: bump shellcheck to 0.8.0
+  * test/apparmor: suppress bogus SC2031/2031
+  * test/cni_plugin_helper: suppress shellcheck warning
+  * test/test_runner: rm eval, fix comment
+  * OWNERS: move rhatdan to emeritus approvers
+  * OWNERS: move runcom to emeritus approvers
+  * utils: Sync: use f.Sync
+  * Deny empty `localhost/` AppArmor profiles
+  * OWNERS: add first round of reviewers
+  * OWNERS: Move @sboeuf to emeritus approver
+  * int/storage: getReferences: fix gocritic warning
+  * server: fix (rather than ignore) gocritic warning
+  * server/streaming: specify the linter
+  * ci: bump golangci-lint to 1.44.0
+  * scripts/release-notes: fix printf args
+  * scripts: fix a typo
+  * int/version: fix forcetypeassert linter warning
+  * server/container_create_linux: fix forcetypeassert warning
+  * utils: fix forcetypeassert linter warnings
+  * server/streaming: fix nolintlint warning
+  * int/storage: fix gosimple warning
+  * int/config/cgmgr: fix stylecheck warnings
+  * Format code using gofumpt 0.2.1
+  * Makefile: fix a comment
+  * test/crio-wipe: fixups
+  * ISSUE_TEMPLATE: fix grammatical error
+  * OWNERS: move @sameo to emeritus_approvers
+  * ISSUE_TEMPLATES: update membership form to be reviewer form
+  * ISSUE_TEMPLATES: add a couple of more
+  * image: use imageCache value for ImageStatus()
+  * contrib/bundle: remove deprecated kubelet option.
+  * minor edit: removed dead link from TOC
+  * oci: drop WaitContainerStateStopped
+  * oci: fix a leaked goroutine
+  * internal/factory/container: initialize from pkg/container
+  * internal/factory/sandbox: initialize from pkg/sandbox
+  * README: update branches
+  * Updated format
+  * Generate checksum files for artifacts
+  * test: add test for skipped sysctls
+  * server: skip sysctls that would affect the host
+  * deep copy List{PodSandbox,Container} structs
+  * GOVERNANCE: fix links
+  * oci: always have conmon log to syslog
+  * README: add reference to governance
+  * add GOVERNANCE.md
+  * issue templates: add membership request form
+  * Add Debian_11 OS variable on installation instructions of Debian Signed-off-by: Wang Kai <persistence201306@gmail.com>
+  * criocli: produce diff-friendlier zsh completions.
+  * ci: use main branch for conmon
+  * server: fix race with kubelet
+  * Fix runtime panic on pod sandbox stats retrieval
+  * update go to 1.17 in go.mod
+  * Reuse createContainerIO in CreateContainer
+  * Fix vm containers couldn't restore after CRI-O restart
+  * ci: use main version of runc
+  * openshift e2e: bump ci image
+  * server: fix a potential NULL-pointer dereference.
+  * Documentation: expand on CNI CIDRs in the kubeadm tutorial
+  * test: update tests for allowed_devices
+  * config: add AllowedDevices option
+  * pass the main mount point to fix crypto profiles binding
+  * Add Nestybox to the CRI-O adopters list.
+  * server: drop duplicate log message
+  * pkg/container: fix container device GID fallback.
+  * bump crio commit for upstream k8s CI
+  * adds config template linting
+  * adds comments to default values
+  * server: don't set memory swap when it's not enabled
+  * Inherits storage configurations from storage.conf if crio config does not set
+  * use cmdrunner singleton
+  * conmonmgr: refactor for new CommandRunner
+  * cmdrunner: update mocks and add target to makefile
+  * config: prepend commands with taskset if InfraCtrCPUSet is configured
+  * cmdrunner: add tests for prepended commands
+  * cmdrunner: create singleton
+  * Use timeout for conmon cgroup move
+  * build(deps): bump google.golang.org/grpc from 1.42.0 to 1.43.0
+  * Fixed a problem where metricImagePullsBytesTotal was getting updated twice and on second call getting incorrect labels
+  * test: add test ensuring a stopped pod is restored
+  * sandbox stop: remove namespaces
+  * restore: handle removed namespaces
+  * Partially revert "restore: restore stop before managing namespace"
+  * restore: ensure containers are wiped on reboot
+  * build(deps): bump go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc
+  * build(deps): bump github.com/opencontainers/runc from 1.0.2 to 1.0.3
+  * vendor: bump c/image to 5.17.0
+  * pinns: Add LDFLAGS to Makefile
+- Packaging: unpin go version to BuildRequires: golang(API) >= 1.17
+
+-------------------------------------------------------------------
 Wed Mar 16 12:10:25 UTC 2022 - rbrown@suse.com
 
 - Update to version 1.23.2:

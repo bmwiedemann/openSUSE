@@ -565,4 +565,12 @@
   * test: update tests for allowed_devices</comment>
     <requestid>962167</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>edc97dfb4d69ef3c24527e2d1457cb9f</srcmd5>
+    <version>1.24.0</version>
+    <time>1655582718</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982784</requestid>
+  </revision>
 </revisionlist>
