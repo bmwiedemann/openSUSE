@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 11 09:33:42 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20220611
+  * A bunch of new functions, but no proper changelog available.
+
+-------------------------------------------------------------------
 Wed Apr 27 12:43:22 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Add libuna-rpmlintrc for shlib-policy-name-error

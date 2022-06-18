@@ -25,7 +25,7 @@
 %define lname libuna1
 
 Name:           libuna%psuffix
-Version:        20220102
+Version:        20220611
 Release:        0
 Summary:        Library to support Unicode and ASCII (byte string) conversions
 License:        LGPL-3.0-or-later
@@ -40,13 +40,13 @@ BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcdatetime) >= 20200510
+BuildRequires:  pkgconfig(libcdatetime) >= 20220104
 BuildRequires:  pkgconfig(libcerror) >= 20220101
 %if "@BUILD_FLAVOR@" != "mini"
 BuildRequires:  pkgconfig(libcfile) >= 20201229
 %endif
-BuildRequires:  pkgconfig(libclocale) >= 20210526
-BuildRequires:  pkgconfig(libcnotify) >= 20200913
+BuildRequires:  pkgconfig(libclocale) >= 20220107
+BuildRequires:  pkgconfig(libcnotify) >= 20220108
 
 %description
 libuna is a library to support Unicode and ASCII (byte string)

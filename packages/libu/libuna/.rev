@@ -129,4 +129,12 @@ Summer 2013 libyal refresh for opensuse 13.1 (forwarded request 184991 from greg
     <comment>- Add libuna-rpmlintrc for shlib-policy-name-error</comment>
     <requestid>973188</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5321654b24c0eb486e0150ac40709f6b</srcmd5>
+    <version>20220611</version>
+    <time>1655582778</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>983560</requestid>
+  </revision>
 </revisionlist>
