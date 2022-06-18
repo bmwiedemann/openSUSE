@@ -143,6 +143,9 @@ ranging from small one-off projects to complete application suites.
 %package -n typelib-1_0-Gtk-3_0
 Summary:        Introspection bindings for the GTK+ toolkit library (version 3)
 Group:          System/Libraries
+Requires:       (python310-gobject-Gdk if python310-gobject)
+Requires:       (python38-gobject-Gdk if python38-gobject)
+Requires:       (python39-gobject-Gdk if python39-gobject)
 
 %description -n typelib-1_0-Gtk-3_0
 GTK+ is a multi-platform toolkit for creating graphical user interfaces.

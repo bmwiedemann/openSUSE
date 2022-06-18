@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 17 08:35:00 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add dependency "python3x-gobject-Gdk if python3x-gobject" to the
+  typelib package (boo#1200614).
+
+-------------------------------------------------------------------
 Thu May 19 09:52:28 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 3.24.34:
