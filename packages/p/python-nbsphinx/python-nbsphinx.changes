@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 17 18:17:32 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to Version 0.8.9 
+  * CSS: support tables in widgets
+  * Avoid empty "raw" directive
+
+-------------------------------------------------------------------
 Sun Feb 27 00:58:44 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:

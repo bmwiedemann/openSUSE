@@ -126,4 +126,15 @@ too small
     <comment></comment>
     <requestid>957877</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b946730641dfb043efe6ca97a49870fc</srcmd5>
+    <version>0.8.9</version>
+    <time>1655582762</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Version 0.8.9 
+  * CSS: support tables in widgets
+  * Avoid empty &quot;raw&quot; directive
+</comment>
+    <requestid>983483</requestid>
+  </revision>
 </revisionlist>

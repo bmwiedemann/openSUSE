@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-nbsphinx
-Version:        0.8.8
+Version:        0.8.9
 Release:        0
 Summary:        Jupyter Notebook Tools for Sphinx
 License:        MIT
@@ -33,7 +33,7 @@ BuildRequires:  %{python_module nbconvert}
 BuildRequires:  %{python_module nbformat}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sphinx_rtd_theme}
-BuildRequires:  %{python_module traitlets}
+BuildRequires:  %{python_module traitlets >= 5}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
@@ -42,7 +42,7 @@ Requires:       python-docutils
 Requires:       python-nbconvert
 Requires:       python-nbformat
 Requires:       python-sphinx_rtd_theme
-Requires:       python-traitlets
+Requires:       python-traitlets >= 5
 Recommends:     mathjax
 Recommends:     pandoc
 Provides:       python-jupyter_nbsphinx = %{version}
@@ -86,6 +86,6 @@ $python -m nbsphinx
 %license LICENSE
 %{python_sitelib}/nbsphinx.py*
 %pycache_only %{python_sitelib}/__pycache__/nbsphinx.*.py*
-%{python_sitelib}/nbsphinx-%{version}-py*.egg-info
+%{python_sitelib}/nbsphinx-%{version}*-info
 
 %changelog
