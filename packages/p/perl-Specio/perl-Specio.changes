@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 12 03:07:32 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.48
+   see /usr/share/doc/packages/perl-Specio/Changes
+
+  0.48     2022-06-11
+
+  - Importing types into a class which inherited from another class that had
+    imported types wouldn't work, leaving the child class with no `t()`
+    sub. Patch by Kerin Millar.
+
+-------------------------------------------------------------------
 Tue Feb 16 10:24:24 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - updated to 0.47

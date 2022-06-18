@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Specio
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Specio
 Name:           perl-Specio
-Version:        0.47
+Version:        0.48
 Release:        0
-Summary:        Type constraints and coercions for Perl
 License:        Artistic-2.0
+Summary:        Type constraints and coercions for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
