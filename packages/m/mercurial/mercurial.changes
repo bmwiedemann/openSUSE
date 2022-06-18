@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Jun 17 10:39:16 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 6.1.4
+  Additional stable release just before 6.2 since we're dropping Python 2.
+
+  * url: raise error if CONNECT request to proxy was unsuccessful
+  * docker: avoid /tmp write access issues by fixing permissions
+  * logcmdutil: use the same data as {file*} template keywords (issue6642)
+  * commit: allow to close branch when committing change over a closed head
+  * rust-status: don't trigger dirstate v1 rewrite when only v2 data is changed
+  * purge: prevent a silly crash with --confirm --files
+  * rust: relax im-rc dependency to allow minor updates
+  * Improve PyPy support
+  * Improve py3 error handling
+  * Documentation fixes 
+
+- Mercurial 6.1.3:
+
+  * security:
+    + narrow_widen_acl: enforce narrowacl in narrow_widen (SEC) 6b10151b9621 
+  * other:
+    + censor: fix [hg update] away from a revision with censored files
+    + amend: stop losing copies when amending
+    + rhg: strengthen dirstate v2 writing in broken filesystems
+    + work around some broken DLL imports in Windows
+    + worker: adapt _blockingreader to work around a python3.8.[0-1] 
+      bug (issue6444)
+    + rhg: correctly handle the case where diffs are encoded relative 
+      to nullrev
+    + fix bugs and race-conditions in the Mercurial test runner
+    + chg: ignore already closed fds when cleaning up 
+
+-------------------------------------------------------------------
 Sat May  7 14:50:39 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
 
 - removed _service in favour of running download_files manually

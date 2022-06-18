@@ -1480,4 +1480,12 @@
   * Fix incorrect metadata causing systematic complete dirstate-v2 rewrite (forwarded request 975576 from develop7)</comment>
     <requestid>975577</requestid>
   </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>502d50d8e528ce76a8a1993bc94ca1d9</srcmd5>
+    <version>6.1.4</version>
+    <time>1655582734</time>
+    <user>dimstar_suse</user>
+    <comment>Mercurial 6.1.4 (forwarded request 983327 from develop7)</comment>
+    <requestid>983429</requestid>
+  </revision>
 </revisionlist>
