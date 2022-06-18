@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 18 12:45:34 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix crash with _FORTIFY_SOURCE=3 (boo#1200656):
+  * 0001-lmsensors-Fix-buffer-size-passed-to-snprintf.patch
+
+-------------------------------------------------------------------
 Sat Jun 26 20:00:47 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - s390 has no libsensors

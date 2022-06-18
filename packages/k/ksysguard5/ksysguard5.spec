@@ -1,7 +1,7 @@
 #
 # spec file for package ksysguard5
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,8 @@ Source2:        plasma.keyring
 Source3:        ksysguardd.service
 # PATCH-FIX-OPENSUSE 0001-Use-run-for-ksysguardd-s-pid-file.patch
 Patch0:         0001-Use-run-for-ksysguardd-s-pid-file.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-lmsensors-Fix-buffer-size-passed-to-snprintf.patch
 BuildRequires:  extra-cmake-modules >= 5.81.0
 BuildRequires:  kf5-filesystem
 %ifnarch s390 s390x
