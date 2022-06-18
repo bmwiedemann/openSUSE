@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jun 16 08:44:26 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Increase required memory to avoid OOM seen on Tumbleweed aarch64
+
+-------------------------------------------------------------------
+Thu Jun 16 08:36:56 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable build on 32-bit arm since upstream does not support
+  32-bit anymore
+
+-------------------------------------------------------------------
+Mon Jun 13 07:40:44 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 3.2.0:
+  way to many to be listed here, check:
+  https://wiki.blender.org/wiki/Reference/Release_Notes/3.2
+  https://www.blender.org/download/releases/3-2/
+- Minor installation clean up to make rpmlint happier
+
+-------------------------------------------------------------------
+Sat Jun  4 12:56:53 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove BuildRequire on pkgconfig(glw), can't find any source
+  using it.
+
+-------------------------------------------------------------------
 Thu Apr 28 15:19:39 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Do not use binutils-gold as it is obsoleted and will

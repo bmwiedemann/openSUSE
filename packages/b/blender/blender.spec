@@ -67,7 +67,7 @@
 %bcond_with openxr
 
 Name:           blender
-Version:        3.1.2
+Version:        3.2.0
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -141,7 +141,6 @@ BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glu)
-BuildRequires:  pkgconfig(glw)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
@@ -161,7 +160,6 @@ BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  pkgconfig(zlib)
-#!BuildIgnore:  libGLwM1
 Requires:       %{py3pkg}-base
 Requires:       %{py3pkg}-numpy
 Requires:       %{py3pkg}-requests
@@ -233,7 +231,7 @@ Requires:       audaspace-plugins
 Obsoletes:      %{name}-cycles-devel = %{version}
 Provides:       %{name}-cycles-devel = %{version}
 %endif
-ExcludeArch:    %{ix86}
+ExcludeArch:    %{ix86} %{arm}
 
 %description
 Blender is a 3D modelling and rendering package. It is the in-house
@@ -288,7 +286,7 @@ mkdir -p extern/glew/include
 sed -i 's|NOT WITH_SYSTEM_GLEW|WITH_SYSTEM_GLEW|' source/blender/gpu/CMakeLists.txt
 %endif
 
-for i in `grep -rl "%{_bindir}/env python"`;do sed -i '1s@^#!.*@#!%{_bindir}/python%{py3ver}@' ${i} ;done
+for i in $(grep -rl "%{_bindir}/env python"); do sed -i '1s@^#!.*@#!%{_bindir}/python%{py3ver}@' ${i}; done
 
 %build
 export SUSE_ASNEEDED=0
@@ -460,11 +458,12 @@ echo "release version = %{_version}"
 # make install
 %cmake_install
 
-rm -f %{buildroot}%{_datadir}/%{name}/%{_version}/scripts/addons/.gitignore
-chmod 644 %{buildroot}%{_datadir}/%{name}/%{_version}/scripts/modules/console_python.py
+# tidy some .dot {files,dirs} installation
+rm -r %{buildroot}%{_datadir}/%{name}/%{_version}/scripts/addons/.git*
+rm %{buildroot}%{_datadir}/%{name}/%{_version}/scripts/addons/rigify/.pep8
 # Fix any .py files with shebangs and wrong permissions.
 find %{buildroot} -name "*.py" -perm 0644 -print0 | \
-	xargs -0r grep -l '#!' | xargs -d'\n' chmod -f 0755;
+	xargs -0r grep -l '^#!' | xargs -d'\n' chmod -f 0755;
 # Copy text files to correct place.
 mkdir -p %{buildroot}%{_docdir}/%{name}
 mv -v %{buildroot}%{_datadir}/doc/blender/* %{buildroot}%{_docdir}/%{name}/
