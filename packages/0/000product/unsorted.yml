@@ -339,6 +339,15 @@ unsorted:
   - adios-gnu-mvapich2-hpc 
   - adios-gnu-mvapich2-hpc-devel 
   - adios-gnu-mvapich2-hpc-devel-static 
+  - adios-gnu-openmpi1-hpc 
+  - adios-gnu-openmpi1-hpc-devel 
+  - adios-gnu-openmpi1-hpc-devel-static 
+  - adios-gnu-openmpi2-hpc 
+  - adios-gnu-openmpi2-hpc-devel 
+  - adios-gnu-openmpi2-hpc-devel-static 
+  - adios-gnu-openmpi3-hpc 
+  - adios-gnu-openmpi3-hpc-devel 
+  - adios-gnu-openmpi3-hpc-devel-static 
   - adios-gnu-openmpi4-hpc 
   - adios-gnu-openmpi4-hpc-devel 
   - adios-gnu-openmpi4-hpc-devel-static 
@@ -360,6 +369,15 @@ unsorted:
   - adios_1_13_1-gnu-mvapich2-hpc 
   - adios_1_13_1-gnu-mvapich2-hpc-devel 
   - adios_1_13_1-gnu-mvapich2-hpc-devel-static 
+  - adios_1_13_1-gnu-openmpi1-hpc 
+  - adios_1_13_1-gnu-openmpi1-hpc-devel 
+  - adios_1_13_1-gnu-openmpi1-hpc-devel-static 
+  - adios_1_13_1-gnu-openmpi2-hpc 
+  - adios_1_13_1-gnu-openmpi2-hpc-devel 
+  - adios_1_13_1-gnu-openmpi2-hpc-devel-static 
+  - adios_1_13_1-gnu-openmpi3-hpc 
+  - adios_1_13_1-gnu-openmpi3-hpc-devel 
+  - adios_1_13_1-gnu-openmpi3-hpc-devel-static 
   - adios_1_13_1-gnu-openmpi4-hpc 
   - adios_1_13_1-gnu-openmpi4-hpc-devel 
   - adios_1_13_1-gnu-openmpi4-hpc-devel-static 
@@ -1872,7 +1890,6 @@ unsorted:
   - cfitsio-devel-doc 
   - cfityk 
   - cflow 
-  - cfssl: [i586] 
   - cg3 
   - cg3-devel 
   - cgal-demo-examples-devel 
@@ -2790,6 +2807,7 @@ unsorted:
   - debugedit 
   - debuginfod-client 
   - debuginfod-dummy-client 
+  - debuginfod-profile 
   - decentxml 
   - decentxml-javadoc 
   - deco 
@@ -6464,6 +6482,7 @@ unsorted:
   - gstreamer-plugins-good-jack-32bit: [x86_64] 
   - gstreamer-plugins-libav-32bit: [x86_64] 
   - gstreamer-plugins-libcamera 
+  - gstreamer-plugins-rs-devel 
   - gstreamer-plugins-ugly-32bit: [x86_64] 
   - gstreamer-plugins-vaapi 
   - gstreamer-rtsp-server-devel 
@@ -6712,8 +6731,6 @@ unsorted:
   - haguichi 
   - haguichi-lang 
   - hamcrest 
-  - hamcrest-core 
-  - hamcrest-demo 
   - hamcrest-javadoc 
   - hamlib 
   - hamlib-devel 
@@ -7663,6 +7680,8 @@ unsorted:
   - jenkins-json-lib 
   - jeos-firstboot 
   - jeos-firstboot-rpiwifi 
+  - jeromq 
+  - jeromq-javadoc 
   - jersey 
   - jersey-javadoc 
   - jetbrains-annotations 
@@ -8614,7 +8633,6 @@ unsorted:
   - kwave 
   - kwave-lang 
   - kwayland-devel 
-  - kwayland-server-devel 
   - kwidgetsaddons-devel 
   - kwin5-devel 
   - kwindowsystem-devel 
@@ -9032,7 +9050,6 @@ unsorted:
   - libKPublicTransport1 
   - libKReport3-4 
   - libKSeExpr4 
-  - libKWaylandServer5 
   - libLASi-devel 
   - libLASi2 
   - libLHAPDF-6_5_1 
@@ -9455,7 +9472,7 @@ unsorted:
   - libSILLY1 
   - libSM-devel: [i586] # devel package of common_locks:libSM6 
   - libSM-devel-32bit: [x86_64] 
-  - libSPIRV-Tools-suse25-32bit: [x86_64] 
+  - libSPIRV-Tools-2022_3_sdk216-32bit: [x86_64] 
   - libSampleICC-devel 
   - libSampleICC2 
   - libSavitar-devel 
@@ -9481,7 +9498,7 @@ unsorted:
   - libVFlib3-10 
   - libVSyntaxHighlighting1 
   - libVTextEdit1 
-  - libVkLayer_utils-1_3_211_0 
+  - libVkLayer_utils-1_3_216_0 
   - libWN3 
   - libWPEBackend-fdo-1_0-1-32bit: [x86_64] 
   - libWildMidi2 
@@ -13316,7 +13333,6 @@ unsorted:
   - libqrencode4-32bit: [x86_64] 
   - libqrtr-glib-devel 
   - libqrtr-glib-devel-doc 
-  - libqrtr-glib0 
   - libqrupdate1 
   - libqsastime0 
   - libqscintilla2_qt5-15 
@@ -17439,6 +17455,7 @@ unsorted:
   - notmuch-emacs 
   - noto-arimo-fonts 
   - noto-cousine-fonts 
+  - noto-fonts 
   - noto-kufiarabic-fonts 
   - noto-loopedlao-fonts 
   - noto-loopedlao-ui-fonts 
@@ -18892,9 +18909,6 @@ unsorted:
   - patterns-ceph-containers-ceph_base: [x86_64] 
   - patterns-cinnamon-cinnamon 
   - patterns-cinnamon-cinnamon_basis 
-  - patterns-containers-container_runtime_kubernetes: [x86_64] 
-  - patterns-containers-kubeadm: [x86_64] 
-  - patterns-containers-kubernetes_utilities: [x86_64] 
   - patterns-deepin-deepin 
   - patterns-deepin-deepin_admin 
   - patterns-deepin-deepin_basis 
@@ -18929,6 +18943,9 @@ unsorted:
   - patterns-kde-devel_qt5 
   - patterns-kde-devel_qt6 
   - patterns-kde-kde_telepathy 
+  - patterns-kubernetes-container_runtime_kubernetes: [x86_64] 
+  - patterns-kubernetes-kubeadm: [x86_64] 
+  - patterns-kubernetes-kubernetes_utilities: [x86_64] 
   - patterns-leechcraft-leechcraft 
   - patterns-leechcraft-leechcraft_browser 
   - patterns-leechcraft-leechcraft_media 
@@ -21937,7 +21954,6 @@ unsorted:
   - python310-DataShape 
   - python310-DateTime 
   - python310-Delorean 
-  - python310-Deprecated 
   - python310-Django 
   - python310-Dumper 
   - python310-Durus 
@@ -23035,6 +23051,7 @@ unsorted:
   - python310-fakeredis 
   - python310-fanficfare 
   - python310-fann2 
+  - python310-fastbencode 
   - python310-fastcluster 
   - python310-fasteners 
   - python310-fastimport 
@@ -23051,6 +23068,7 @@ unsorted:
   - python310-fields 
   - python310-filelock 
   - python310-finance_enums 
+  - python310-findpython 
   - python310-fire 
   - python310-first 
   - python310-fissix 
@@ -26127,6 +26145,7 @@ unsorted:
   - python38-falcon 
   - python38-fanficfare 
   - python38-fann2 
+  - python38-fastbencode 
   - python38-fastcluster 
   - python38-fasteners 
   - python38-fastimport 
@@ -26145,6 +26164,7 @@ unsorted:
   - python38-filelock 
   - python38-filetype 
   - python38-finance_enums 
+  - python38-findpython 
   - python38-fire 
   - python38-first 
   - python38-fissix 
@@ -29386,6 +29406,7 @@ unsorted:
   - python39-falcon 
   - python39-fanficfare 
   - python39-fann2 
+  - python39-fastbencode 
   - python39-fastcluster 
   - python39-fasteners 
   - python39-fastimport 
@@ -29404,6 +29425,7 @@ unsorted:
   - python39-filelock 
   - python39-filetype 
   - python39-finance_enums 
+  - python39-findpython 
   - python39-fire 
   - python39-first 
   - python39-fissix 
@@ -33390,7 +33412,6 @@ unsorted:
   - synergy 
   - synnefo 
   - syntax-highlighting-devel 
-  - syntax-highlighting-imports 
   - sysbench 
   - sysdig 
   - sysdig-kmp-default 
