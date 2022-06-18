@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jun 13 13:32:24 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 4.16.2
+  * Use pathref fd instead of io fd in vfs_default_durable_cookie;
+    (bso#15042);
+  * vfs_gpfs with vfs_shadowcopy2 fail to restore file if original
+    file had been deleted; (bso#15069);
+  * Reintroduce netgroups support; (bso#15087);
+  * net ads info shows LDAP Server: 0.0.0.0 depending on contacted
+    server; (bso#14674);
+  * Update from 4.15  to 4.16 breaks discovery of [homes] on
+    standalone server from Win and IOS; (bso#15062);
+  * waf produces incorrect names for python extensions with Python
+    3.11; (bso#15071);
+  * smbclient -E doesn't work as advertised; (bso#15075);
+  * The samba background daemon doesn't refresh the printcap cache
+    on startup; (bso#15081);
+  * Out-by-4 error in smbd read reply max_send clamp; (bso#14443);
+- Fix samba4.blackbox.net_ads_dns_async test with bind9 >= 9.17.7
+- Support building with MIT Kerberos 1.20
+- Bronze bit and S4U support with MIT Kerberos 1.20 for Samba AD DC;
+  (CVE-2020-17049);
+- Resource Based Constrained Delegation (RBCD) for Samba AD DC
+- Support building with gcc 12.1
+
+-------------------------------------------------------------------
 Wed May 11 09:30:15 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
 
 - Use requires_eq macro to require the libldb2 version available at
