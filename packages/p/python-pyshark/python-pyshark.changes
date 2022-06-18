@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jun 18 17:40:17 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.4.6
+  Changes
+  * Added type hints for major classes.
+  * Edited docs to comply with PEP8.
+  Fixes
+  * Python 3.10 and Python 3.9 compatibility.
+  * Fixed crashed related to LiveRingCapture.
+
+-------------------------------------------------------------------
 Sat Mar  6 13:09:44 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.4.3
