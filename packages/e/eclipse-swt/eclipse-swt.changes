@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 18 18:40:09 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * eclipse-jintlong.patch
+    + fix several incoherences preventing correct JNI calls on x86
+
+-------------------------------------------------------------------
 Thu May 26 13:57:09 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build also the gtk3 support of webkit including the webkit2

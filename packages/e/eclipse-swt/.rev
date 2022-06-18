@@ -31,4 +31,12 @@
     <comment>build gtk3 part too + Fix bug, where bitness was not correctly detected</comment>
     <requestid>979394</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>35a32688d515b3b9502a973ac6f1f322</srcmd5>
+    <version>4.9.0</version>
+    <time>1655582790</time>
+    <user>dimstar_suse</user>
+    <comment>fix JNI calls</comment>
+    <requestid>983621</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,55 @@
+--- "eclipse-platform-sources-I20180906-0745/eclipse.platform.swt/bundles/org.eclipse.swt/Eclipse SWT WebKit/gtk/org/eclipse/swt/internal/webkit/WebKitGTK.java"	2022-05-26 15:32:50.686679543 +0200
++++ "eclipse-platform-sources-I20180906-0745/eclipse.platform.swt/bundles/org.eclipse.swt/Eclipse SWT WebKit/gtk/org/eclipse/swt/internal/webkit/WebKitGTK.java"	2022-05-27 11:05:09.338042020 +0200
+@@ -1945,9 +1945,9 @@
+ }
+ 
+ /** @method flags=dynamic */
+-public static final native void _webkit_web_context_set_web_extensions_initialization_user_data(long /* int */ context, long /* int */ user_data);
+-public static final void webkit_web_context_set_web_extensions_initialization_user_data(long /* int */ context,
+-		long /* int */ user_data) {
++public static final native void _webkit_web_context_set_web_extensions_initialization_user_data(long /*int*/ context, long /*int*/ user_data);
++public static final void webkit_web_context_set_web_extensions_initialization_user_data(long /*int*/ context,
++		long /*int*/ user_data) {
+ 	assert WEBKIT2;
+ 	lock.lock();
+ 	try {
+--- "eclipse-platform-sources-I20180906-0745/eclipse.platform.swt/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/os_custom.c"	2022-05-26 15:32:50.706679667 +0200
++++ "eclipse-platform-sources-I20180906-0745/eclipse.platform.swt/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/os_custom.c"	2022-05-27 11:30:38.463916384 +0200
+@@ -839,7 +839,7 @@
+ 	// Call the Java implementation to ensure AccessibleObjects are removed
+ 	// from the HashMap on the Java side.
+ 	if (private->has_accessible) {
+-		returned_value = call_accessible_object_function("gObjectClass_finalize", "(J)J", object);
++		returned_value = call_accessible_object_function("gObjectClass_finalize", "(" I_J ")" I_J , object);
+ 		if (returned_value != 0) g_critical ("Undefined behavior calling gObjectClass_finalize from C\n");
+ 	}
+ 
+@@ -1872,7 +1872,7 @@
+ 
+ 	// If the method ID isn't NULL
+ 	if (mid == NULL) {
+-		g_critical("JNI method ID pointer is NULL for method %s\n", method_name);
++		g_critical("JNI method ID pointer is NULL for method %s sig: %s\n", method_name, method_signature);
+ 		return 0;
+ 	} else {
+ 		va_start(arg_list, method_signature);
+--- "eclipse-platform-sources-I20180906-0745/eclipse.platform.swt/bundles/org.eclipse.swt/Eclipse SWT WebKit/gtk/library/webkitgtk.c"	2022-05-26 15:32:50.686679543 +0200
++++ "eclipse-platform-sources-I20180906-0745/eclipse.platform.swt/bundles/org.eclipse.swt/Eclipse SWT WebKit/gtk/library/webkitgtk.c"	2022-05-27 06:53:08.736787120 +0200
+@@ -2422,7 +2422,7 @@
+ 
+ #ifndef NO__1webkit_1web_1context_1set_1web_1extensions_1initialization_1user_1data
+ JNIEXPORT void JNICALL WebKitGTK_NATIVE(_1webkit_1web_1context_1set_1web_1extensions_1initialization_1user_1data)
+-	(JNIEnv *env, jclass that, jlong arg0, jlong arg1)
++	(JNIEnv *env, jclass that, jintLong arg0, jintLong arg1)
+ {
+ 	WebKitGTK_NATIVE_ENTER(env, that, _1webkit_1web_1context_1set_1web_1extensions_1initialization_1user_1data_FUNC);
+ /*
+@@ -2431,7 +2431,7 @@
+ 	{
+ 		WebKitGTK_LOAD_FUNCTION(fp, webkit_web_context_set_web_extensions_initialization_user_data)
+ 		if (fp) {
+-			((void (CALLING_CONVENTION*)(jlong, jlong))fp)(arg0, arg1);
++			((void (CALLING_CONVENTION*)(jintLong, jintLong))fp)(arg0, arg1);
+ 		}
+ 	}
+ 	WebKitGTK_NATIVE_EXIT(env, that, _1webkit_1web_1context_1set_1web_1extensions_1initialization_1user_1data_FUNC);
