@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 17 09:49:36 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.6.1
+  * Removed obsolete parser instance to allow pickling of Osc instances 
+
+-------------------------------------------------------------------
 Thu Jun  9 11:53:07 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
 
 - Release 0.6.0
