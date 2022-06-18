@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 13 03:11:27 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.30
+   see /usr/share/doc/packages/perl-Package-Stash-XS/Changes
+
+  0.30      2022-06-12 20:00:39Z
+        - misc tooling updates
+        - fixed redundant argument in sprintf in tests (RT#143205)
+
+-------------------------------------------------------------------
 Mon Dec 31 06:26:11 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.29
