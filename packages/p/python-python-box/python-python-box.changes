@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 17 12:20:56 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.0.2
+  * Adding Cython support to greatly speed up normal Box operations on supported systems
+  * Adding #196 support for sliceable boxes
+  * Changing #208 __repr__ to produce eval-able text
+  * Removing support for ruamel.yaml < 0.17
+
+-------------------------------------------------------------------
 Wed Dec  8 09:55:04 UTC 2021 - pgajdos@suse.com
 
 - version update to 5.4.1

@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-box
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # python_requires='>=3.6'
 %define skip_python2 1
 Name:           python-python-box
-Version:        5.4.1
+Version:        6.0.2
 Release:        0
 Summary:        Advanced Python dictionaries with dot notation access
 License:        MIT
@@ -34,12 +34,12 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module msgpack >= 1.0.0}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module ruamel.yaml >= 0.16.10}
-BuildRequires:  %{python_module toml >= 0.10.1}
+BuildRequires:  %{python_module ruamel.yaml >= 0.17}
+BuildRequires:  %{python_module toml >= 0.10.2}
 # /SECTION
 Requires:       python-msgpack >= 1.0.0
-Requires:       python-ruamel.yaml >= 0.16.10
-Requires:       python-toml >= 0.10.1
+Requires:       python-ruamel.yaml >= 0.17
+Requires:       python-toml >= 0.10.2
 %python_subpackages
 
 %description
