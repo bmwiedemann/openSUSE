@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 16 06:36:51 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.8.40:
+  + Ad-Hoc networks now default to using WPA2 instead of WEP.
+  + WEP is no longer provided as an option for connecting to hidden
+    networks due to its deprecated status.
+- Package docs sub-package as noarch.
+
+-------------------------------------------------------------------
 Thu Apr  7 08:14:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.8.38:

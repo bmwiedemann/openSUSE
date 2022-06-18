@@ -20,7 +20,7 @@
 %define base_ver 1.8
 
 Name:           libnma
-Version:        1.8.38
+Version:        1.8.40
 Release:        0
 Summary:        Shared library for NetworkManager-applet
 License:        GPL-2.0-or-later
@@ -98,6 +98,7 @@ Development Files for %{name}-gtk4.
 
 %package        docs
 Summary:        Documentation files for %{name}
+BuildArch:      noarch
 
 %description    docs
 Documentation files for %{name}.

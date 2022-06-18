@@ -105,4 +105,12 @@
   + Fixed libnma-gtk4 version of mobile-wizard. (forwarded request 967436 from iznogood)</comment>
     <requestid>967856</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f451e1467203d022ec9fbe6b54ec77a1</srcmd5>
+    <version>1.8.40</version>
+    <time>1655582739</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 983255 from iznogood)</comment>
+    <requestid>983437</requestid>
+  </revision>
 </revisionlist>
