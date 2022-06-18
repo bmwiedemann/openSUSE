@@ -3,7 +3,7 @@
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="url">http://github.com/cockpit-project/cockpit-machines.git</param>
     <param name="scm">git</param>
-    <param name="revision">249.1</param>
+    <param name="revision">270.2</param>
     <param name="filename">cockpit-machines</param>
     <param name="without-version">enable</param>
   </service>

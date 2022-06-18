@@ -17,7 +17,7 @@
 
 
 Name:           cockpit-machines
-Version:        243.1
+Version:        270.2
 Release:        0
 Summary:        Cockpit user interface for virtual machines
 License:        LGPL-2.1-or-later AND MIT
@@ -29,6 +29,7 @@ Source10:       package-lock.json
 Source11:       node_modules.spec.inc
 %include %_sourcedir/node_modules.spec.inc
 Patch0:         hide-docs.patch
+Patch1:         load-css-overrides.patch
 # patches for node modules start with 100
 Patch100:       suse-vv-install.patch
 BuildArch:      noarch
@@ -49,7 +50,7 @@ Requires:       virt-install
 Recommends:     libosinfo
 Recommends:     python3-gobject-base
 #
-BuildRequires:  cockpit-devel >= 243
+BuildRequires:  cockpit-devel >= 271
 BuildRequires:  local-npm-registry
 BuildRequires:  sassc
 
@@ -61,12 +62,14 @@ If "virt-install" is installed, you can also create new virtual machines.
 %prep
 %setup -n %{name}
 %patch0 -p1
+%patch1 -p1
 rm -f package-lock.json
 local-npm-registry %{_sourcedir} install --with=dev --legacy-peer-deps || ( find ~/.npm/_logs -name '*-debug.log' -print0 | xargs -0 cat; false)
 %patch100 -p1
 
 %build
-cp -r %{_datadir}/cockpit/devel/lib src/lib
+mkdir -p pkg/lib
+cp -r %{_datadir}/cockpit/devel/lib/* pkg/lib
 NODE_ENV=production npm run build
 
 %install
