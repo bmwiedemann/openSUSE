@@ -1135,4 +1135,14 @@
     <comment>Update to 5.25.0</comment>
     <requestid>981941</requestid>
   </revision>
+  <revision rev="138" vrev="2">
+    <srcmd5>6ca27bbbcbd6d7af12c954d35572cca3</srcmd5>
+    <version>5.25.0</version>
+    <time>1655582732</time>
+    <user>dimstar_suse</user>
+    <comment>- Add backported upower-Prevent-integer-overflow-during-new-brightness.patch
+  * Fixes brightness stuck on low level on systems with multiple GPUS
+    ( boo#1199907 kde#454161 )</comment>
+    <requestid>983420</requestid>
+  </revision>
 </revisionlist>

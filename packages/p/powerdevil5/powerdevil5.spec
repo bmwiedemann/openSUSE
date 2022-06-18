@@ -33,6 +33,8 @@ Source:         powerdevil-%{version}.tar.xz
 Source1:        powerdevil-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM https://invent.kde.org/plasma/powerdevil/-/commit/dd74cdbdd3849fbd86e6613ef7ecab6c7857cb89
+Patch0:         upower-Prevent-integer-overflow-during-new-brightness.patch
 BuildRequires:  extra-cmake-modules >= 1.2.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  systemd-rpm-macros
