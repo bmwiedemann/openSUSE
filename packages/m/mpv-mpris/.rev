@@ -15,4 +15,24 @@
     <comment></comment>
     <requestid>933396</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dd395df05310ecce030d57e8913123c9</srcmd5>
+    <version>0.8.1</version>
+    <time>1655582765</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.1
+  * Fix Unknown Artist for YouTube videos
+    #gh/hoyon/mpv-mpris#76
+  * Emit signal for fullscreen event
+    #gh/hoyon/mpv-mpris#78
+
+- Update to 0.7.1
+  * Add test suite
+  * Emit Stopped Signal on exit.
+    #gh/hoyon/mpv-mpris#61
+    #gh/hoyon/mpv-mpris#22
+  * Set xesam:artist to channel name for YouTube videos.
+    #gh/hoyon/mpv-mpris#50</comment>
+    <requestid>983511</requestid>
+  </revision>
 </revisionlist>
