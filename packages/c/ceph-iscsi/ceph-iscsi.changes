@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 16 20:30:47 UTC 2022 - Stefen Allen <stefen.allen@suse.com>
+
+- Update to 3.5+1655410541.gf482c7a.
+  + Improve werkzeug version checking (bsc#1198435)
+
+-------------------------------------------------------------------
 Fri Mar 18 15:53:42 UTC 2022 - Stefen Allen <stefen.allen@suse.com>
 
 - Update to 3.5+1647618797.gb7bc626.
