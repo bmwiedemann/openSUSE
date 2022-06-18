@@ -4463,4 +4463,17 @@
 - update staging to 7.10 release</comment>
     <requestid>980990</requestid>
   </revision>
+  <revision rev="380" vrev="1">
+    <srcmd5>381385b834a293578ff9543ce26b7400</srcmd5>
+    <version>7.11</version>
+    <time>1655582768</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.11 development release
+  - Android driver converted to PE.
+  - Zero-copy support with GStreamer.
+  - High Unicode planes support in case mappings.
+  - Various bug fixes.
+- update staging to 7.11 release</comment>
+    <requestid>983555</requestid>
+  </revision>
 </revisionlist>
