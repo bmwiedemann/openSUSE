@@ -1,7 +1,7 @@
 #
 # spec file for package mercurial-extension-hg-evolve
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,23 +15,24 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           mercurial-extension-hg-evolve
 Version:        10.5.1
 Release:        0
 Summary:        Flexible evolution of Mercurial history
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Tools/Version Control
 URL:            https://www.mercurial-scm.org/doc/evolution/
 Source0:        https://files.pythonhosted.org/packages/source/h/hg-evolve/hg-evolve-%{version}.tar.gz
 Source90:       tests.blacklist
-BuildRequires:  python-rpm-macros
-BuildRequires:  python3
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-pyflakes
-BuildRequires:  python3-flake8
 BuildRequires:  fdupes
 BuildRequires:  mercurial
 BuildRequires:  mercurial-tests
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3
+BuildRequires:  python3-flake8
+BuildRequires:  python3-pyflakes
+BuildRequires:  python3-setuptools
 BuildRequires:  unzip
 Requires:       mercurial
 BuildArch:      noarch

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 17 17:21:32 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Blacklist test that fails due to distutils deprecation warning.
+
+-------------------------------------------------------------------
 Mon May  2 16:33:42 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 10.5.1.
