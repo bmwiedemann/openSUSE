@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-for-android
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@ Requires:       python-pep517
 Requires:       python-six
 Requires:       python-toml
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     cmake
 Recommends:     python-pip
 Recommends:     python-setuptools
@@ -95,7 +95,7 @@ sed -i "s/'pep517.',/'pep517',/" setup.py
 %python_clone -a %{buildroot}%{_bindir}/p4a
 %{python_expand rm -r %{buildroot}%{$python_sitelib}/ci/ %{buildroot}%{$python_sitelib}/tests/
 
-sed -i "1{s:#!.*$:#!%{_bindir}/$python:}" \
+sed -i "1{s:#!.*$:#!%{_bindir}/python%{$python_bin_suffix}:}" \
   %{buildroot}%{$python_sitelib}/pythonforandroid/tools/*link \
   %{buildroot}%{$python_sitelib}/pythonforandroid/bootstraps/common/build/build.py \
   %{buildroot}%{$python_sitelib}/pythonforandroid/toolchain.py

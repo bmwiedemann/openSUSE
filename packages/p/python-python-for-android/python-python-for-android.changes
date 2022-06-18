@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 17 13:29:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Properly fix shebangs to inject path to python interpreter.
+
+-------------------------------------------------------------------
 Sun Nov 15 01:29:33 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Initial spec for v2020.6.2
