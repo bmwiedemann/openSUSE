@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 22 14:18:53 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.86
+  * Switch to modern XSLoader
+- Used spec-cleaner to modernize the SPEC file
+- Dropped fixed razor-agents-perl522.patch
+
+-------------------------------------------------------------------
 Thu Jun 11 10:58:46 UTC 2015 - hsk@imb-jena.de
 
 - razor-agents-perl522.patch: fix razor man page installation with

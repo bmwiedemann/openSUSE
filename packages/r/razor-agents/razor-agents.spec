@@ -1,7 +1,7 @@
 #
 # spec file for package razor-agents
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define src_name Razor2-Client-Agent
 Name:           razor-agents
-%if 0%{?suse_version} && 0%{?suse_version} < 1200
-BuildRequires:  perl-macros
-%endif
+Version:        2.86
+Release:        0
 Summary:        SPAM catalogue inquiry and update tool
 License:        Artistic-2.0
 Group:          Productivity/Networking/Email/Utilities
-Requires:       perl-razor-agents
-Version:        2.85
-Release:        0
-Url:            http://razor.sourceforge.net/
-Source:         %{name}-%{version}.tar.bz2
+URL:            http://razor.sourceforge.net/
+Source:         https://github.com/toddr/%{src_name}/archive/refs/tags/v%{version}.tar.gz#/%{src_name}-%{version}.tar.gz
 Source1:        README.SUSE
-Patch0:         razor-agents-perl522.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       perl-razor-agents
 %{perl_requires}
 
 %description
@@ -51,12 +47,6 @@ on the network.
 
 Can be used as one of the spamassassin rules.
 
-
-
-Authors:
---------
-    Vipul Ved Prakash <mail@vipul.net>
-
 %package -n perl-razor-agents
 Summary:        The required perl modules for razor-agents
 License:        Artistic-1.0
@@ -69,43 +59,31 @@ razor-agents are little programs to retrieve or update information
 from the razor <http://razor.sourceforge.net/> network to exchange
 signatures of SPAM. This package contains the required perl modules.
 
-
-
-Authors:
---------
-    Vipul Ved Prakash <mail@vipul.net>
-
 %prep
-%setup
-cp %{S:1} .
-%patch0
+%setup -q -n %{src_name}-%{version}
+cp %{SOURCE1} .
 
 %build
-perl Makefile.PL OPTIMIZE="$RPM_OPT_FLAGS -Wall"
+perl Makefile.PL OPTIMIZE="%{optflags} -Wall"
 make
 
 %check
 make test
 
 %install
-make DESTDIR=$RPM_BUILD_ROOT INSTALLMAN5DIR=$RPM_BUILD_ROOT/%{_mandir}/man5 install_vendor
+make DESTDIR=%{buildroot} INSTALLMAN5DIR=%{buildroot}/%{_mandir}/man5 install_vendor
 %perl_process_packlist
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %files -n perl-razor-agents
-%defattr(-,root,root)
-%doc BUGS CREDITS Changes FAQ LICENSE README README.SUSE
-%doc %{_mandir}/man3/Razor*
-%doc %{_mandir}/man5/razor*
+%doc BUGS CREDITS Changes FAQ README.SUSE
+%license LICENSE
+%{_mandir}/man3/Razor*
+%{_mandir}/man5/razor*
 %{perl_vendorarch}/Razor2
 %{perl_vendorarch}/auto/Razor2
-%{perl_vendorarch}/auto/razor-agents
 
 %files
-%defattr(-,root,root)
 %{_mandir}/man1/razor*
-/usr/bin/razor*
+%{_bindir}/razor*
 
 %changelog
