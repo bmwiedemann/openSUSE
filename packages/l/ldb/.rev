@@ -599,4 +599,14 @@ x86-64 when building with python 3.5.</comment>
   + No code changes, just bump version for samba 4.16.0 release</comment>
     <requestid>966946</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>c927d5baa0beef3eb8563112332353b3</srcmd5>
+    <version>2.5.1</version>
+    <time>1655582752</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.5.1
+  + Fix build problems; (bso#15071);
+</comment>
+    <requestid>983454</requestid>
+  </revision>
 </revisionlist>
