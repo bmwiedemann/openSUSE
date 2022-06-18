@@ -2098,4 +2098,12 @@
     <comment>Bump to v9.24.36</comment>
     <requestid>978738</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>32a06b51e067a01efa1ebc939b784575</srcmd5>
+    <version>9.24.41</version>
+    <time>1655582720</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>982951</requestid>
+  </revision>
 </revisionlist>

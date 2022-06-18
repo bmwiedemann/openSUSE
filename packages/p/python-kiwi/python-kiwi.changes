@@ -1,4 +1,127 @@
 -------------------------------------------------------------------
+Thu Jun 09 10:29:53 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.40 → 9.24.41
+
+-------------------------------------------------------------------
+Wed Jun 08 23:06:16 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix helper method to detect dracut outfile format
+
+  The method _get_boot_image_output_file_format_from_dracut_code
+  is used in kiwi to match parts of the dracut code for the used
+  output file format. Beginning with dracut-056 the code part
+  checked has changed syntactically such that the match did
+  no longer work. This commit increases the scope of the match
+  and replace pattern and Fixes #2149
+
+-------------------------------------------------------------------
+Wed Jun 08 18:29:42 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed handling of signing_keys in cmdline options
+
+  When passing signing_keys with the --add-repo|--set-repo
+  commandline options the delimiter to separate the single
+  key information is a colon(:). However, this is stupid when
+  kiwi expects the signing key to be references as an URI
+  format like file://... Therefore this patch changes the
+  delimiter from colon(:) to semicolon(;)
+
+-------------------------------------------------------------------
+Wed Jun 01 11:31:29 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.39 → 9.24.40
+
+-------------------------------------------------------------------
+Wed Jun 01 11:31:00 CEST 2022 - Carlos Bederián <zzzoom@gmail.com>
+
+- Setup SELinux on every system prepare / build (#2148)
+
+  Setup SELinux on every system prepare / build such that all image types benefit from it not only the disk (oem) type
+
+-------------------------------------------------------------------
+Sun May 29 21:26:15 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Install all of QEMU to Ubuntu arm integration test
+
+-------------------------------------------------------------------
+Sun May 29 20:51:24 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- rename user to ubuntu for Ubuntu integration test
+
+-------------------------------------------------------------------
+Sun May 29 20:33:16 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.38 → 9.24.39
+
+-------------------------------------------------------------------
+Sun May 29 20:31:42 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move to sphinx>=5.0.0
+
+-------------------------------------------------------------------
+Sun May 29 20:17:55 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.37 → 9.24.38
+
+-------------------------------------------------------------------
+Sun May 29 20:16:20 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed sphinx extlinks rendering
+
+  In Sphinx v5 warning will be treated as errors. This results in the following
+  warning to be an error: extlinks: Sphinx-6.0 will require a caption string to
+  contain exactly one '%s' and all other '%' need to be escaped as '%%'.
+  This commit applies the required quoting
+
+-------------------------------------------------------------------
+Sun May 29 20:06:52 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.36 → 9.24.37
+
+-------------------------------------------------------------------
+Sat May 28 16:47:35 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added example aarch64 integration test for Ubuntu
+
+  Created a RaspberryPI image description for Ubuntu(jammy)
+  as integration test for building aarch64 images and added
+  it to the integration test matrix
+
+-------------------------------------------------------------------
+Mon May 23 16:53:04 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added --target-arch for image info
+
+  Allow cross arch dependency solving
+
+-------------------------------------------------------------------
+Fri May 20 22:09:33 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- update docs
+
+-------------------------------------------------------------------
+Fri May 20 19:23:22 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for group id in users setting
+
+  Allow to specify the group id in the groups list a user
+  should belong to. The group id can be placed as part of
+  the group name separated by a colon like in the following
+  example:
+
+  <users>
+  <user groups="kiwi,admin:42,users" password="..." name="kiwi"/>
+  </users>
+
+  Please note kiwi checks if the provided group already
+  exists and only creates a group if it is not already present in
+  the system. As default groups are usually provided by the OS
+  itself including its preferred group id, you will intentionally
+  not be able to overwrite group id for existing groups.
+  This Fixes #2064
+
+-------------------------------------------------------------------
 Thu May 19 15:21:54 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 9.24.35 → 9.24.36
