@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 17 14:39:10 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
+
+- Adapt language module to run properly in chroot (bsc#1199840)
+- 4.5.1
+
+-------------------------------------------------------------------
 Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.5.0 (bsc#1198109)
