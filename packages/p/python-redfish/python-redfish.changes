@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 17 21:18:17 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 3.1.6: 
+  * Fixed issue where the 'read' method on response objects always return strings
+  * Modified query parameter encoding to not percent-encode characters allowed in query strings per RFC3986
+
+-------------------------------------------------------------------
 Wed Apr 13 02:13:23 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.1.5:
