@@ -16,19 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
 Name:           python-textdistance
 Version:        4.2.1
 Release:        0
 Summary:        Compute distance between the two texts
 License:        MIT
 URL:            https://github.com/life4/textdistance
-Source:         https://github.com/life4/textdistance/archive/refs/tags/v.%{version}.tar.gz
-# PATCH-FIX-OPENSUSE extend-timeout.patch bsc#[0-9]+ mcepl@suse.com
-# extend timetout for failing test
-Patch0:         extend-timeout.patch
+Source:         https://github.com/life4/textdistance/archive/refs/tags/v.%{version}.tar.gz#/python-textdistance-%{version}.tar.gz
+# PATCH-FEATURE-OPENSUSE hypothesis-profile-conftest.patch -- add hypothesis profile for slow OBS executions, code@bnavigator.de
+Patch1:         hypothesis-profile-conftest.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -53,7 +50,6 @@ implementation, common interface, optional external libs usage.
 
 %prep
 %autosetup -p1 -n textdistance-v.%{version}
-
 chmod a-x README.md
 
 %build
@@ -65,7 +61,7 @@ chmod a-x README.md
 
 %check
 # we don't have all external libraries to test with
-%pytest -m "not external"
+%pytest -m "not external" --hypothesis-profile obs
 
 %files %{python_files}
 %doc README.md

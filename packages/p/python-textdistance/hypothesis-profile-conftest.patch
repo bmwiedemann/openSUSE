@@ -1,0 +1,13 @@
+Index: textdistance-v.4.2.1/tests/conftest.py
+===================================================================
+--- /dev/null
++++ textdistance-v.4.2.1/tests/conftest.py
+@@ -0,0 +1,8 @@
++# increase test deadline for slow obs executions
++import hypothesis
++
++hypothesis.settings.register_profile(
++    'obs',
++    deadline=5000,
++    suppress_health_check=[hypothesis.HealthCheck.too_slow]
++)
