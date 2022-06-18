@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 17 08:40:05 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.38.2:
+  + Fix race condition with pppd that caused failures when
+    activating PPPoE connections.
+  + Unbreak DHCPv6 over PPP.
+  + Don't ignore IPv6 DNS servers received from PPP.
+  + Fix crash while checking WEP capability of Wi-Fi interfaces.
+  + Ensure DHCP is restarted every time the link goes up.
+  + Fix struct alignment issues seen on some architectures.
+  + Various other bugfixes and improvements.
+
+-------------------------------------------------------------------
 Tue May 24 14:23:15 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fold NetworkManager-wifi back into the main package: The dep
@@ -7,7 +20,6 @@ Tue May 24 14:23:15 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
   boo#1199706).
 - As a consequence, also drop the recommends fro the main package
   to -wifi.
-
 
 -------------------------------------------------------------------
 Mon May 16 08:37:25 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>

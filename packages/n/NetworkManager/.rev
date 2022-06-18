@@ -2023,4 +2023,12 @@ WANTED for 13.1 - BLUEZ5 FIX (forwarded request 203010 from Zaitor)</comment>
   to -wifi.</comment>
     <requestid>979001</requestid>
   </revision>
+  <revision rev="242" vrev="1">
+    <srcmd5>35eb844c3df12bd0b1df3801e7e8bf9c</srcmd5>
+    <version>1.38.2</version>
+    <time>1655582740</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 983259 from iznogood)</comment>
+    <requestid>983438</requestid>
+  </revision>
 </revisionlist>

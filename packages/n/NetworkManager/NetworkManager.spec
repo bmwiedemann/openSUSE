@@ -57,7 +57,7 @@
 %endif
 
 Name:           NetworkManager
-Version:        1.38.0
+Version:        1.38.2
 Release:        0
 Summary:        Network Link Manager and user applications for it
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
