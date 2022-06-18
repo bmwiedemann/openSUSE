@@ -1,0 +1,5 @@
+<package name="spooles" project="openSUSE:Factory">
+  <title>A sparse matrix library</title>
+  <description>SPOOLES is a library for solving sparse real and complex linear systems of equations, written in the C language using object oriented design.</description>
+  <devel project="science" package="spooles"/>
+</package>
