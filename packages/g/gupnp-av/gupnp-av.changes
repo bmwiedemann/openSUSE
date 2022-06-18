@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 13 11:29:39 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.14.1:
+  + Add utility function to format GDateTime to the iso variant
+    DIDL expects.
+
+-------------------------------------------------------------------
 Mon Apr 25 14:23:15 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Rename libgupnp-av-1_0-2 subpackage to libgupnp-av-1_0-3,

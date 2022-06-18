@@ -334,4 +334,14 @@
 - Conflict with the wrongly provided libgupnp-av-1_0-2. (forwarded request 972642 from dimstar)</comment>
     <requestid>973138</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>0d39354cd7c81570990a91353f985360</srcmd5>
+    <version>0.14.1</version>
+    <time>1655582748</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.14.1:
+  + Add utility function to format GDateTime to the iso variant
+    DIDL expects. (forwarded request 983298 from iznogood)</comment>
+    <requestid>983443</requestid>
+  </revision>
 </revisionlist>
