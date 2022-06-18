@@ -1469,4 +1469,12 @@ Administrator experience:
     <comment></comment>
     <requestid>970776</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>0f3251867e2bda2129fd35cb16b3c0d5</srcmd5>
+    <version>1.20</version>
+    <time>1655582750</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>981266</requestid>
+  </revision>
 </revisionlist>

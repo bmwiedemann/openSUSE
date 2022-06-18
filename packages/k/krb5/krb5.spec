@@ -21,13 +21,13 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           krb5
-Version:        1.19.3
+Version:        1.20
 Release:        0
 Summary:        MIT Kerberos5 implementation
 License:        MIT
 URL:            https://kerberos.org/dist/
-Source0:        https://kerberos.org/dist/krb5/1.19/krb5-%{version}.tar.gz
-Source1:        https://kerberos.org/dist/krb5/1.19/krb5-%{version}.tar.gz.asc
+Source0:        https://kerberos.org/dist/krb5/1.20/krb5-%{version}.tar.gz
+Source1:        https://kerberos.org/dist/krb5/1.20/krb5-%{version}.tar.gz.asc
 Source2:        krb5.keyring
 Source3:        vendor-files.tar.bz2
 Source4:        baselibs.conf
