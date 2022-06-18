@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Jun 17 15:53:22 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- update to version 0.16.0: 
+  New features
+  * Add bounds attribute to TileLayer by @davidbrochart in #907
+  * Implemented open_popup and close_popup methods by @PROgram52bc in #914
+  Maintainance
+  * Stop layer loading spinner when layer is removed by @clydebw in #903
+  * Added backward compatibility for dict basemaps by @sackh in #901
+  * Pin openssl=1.1.1l in CI script by @trungleduc in #906
+  * Test ipyleaflet widgets with galata by @trungleduc in #905
+  * Clean up UI tests by @davidbrochart in #908
+  * Remove map callbacks when DrawControl removed from map by @clydebw in #916
+  * Add Galata bot by @martinRenou in #938
+  * Fix CI by @martinRenou in #946
+  * Fix Galata screenshot update CI job by @martinRenou in #945
+  * Missing jupyter-packaging on CI by @martinRenou in #948
+  * Fix ui-tests port by @martinRenou in #949
+  * UI-tests: Update scripts to match bot implementation by @martinRenou in #950
+  * Remove OpenSSL pinning by @martinRenou in #952
+  * Update Galata screenshots by @martinRenou in #947
+  * Update build script by @martinRenou in #954
+  * Fix watch script in ipyleaflet by @HaudinFlorence in #963
+  Docs:
+  * Fix docs table by @martinRenou in #898
+  * Update basemaps by @MackyDIARRA in #924
+  * Updates on ipyleaflet documentation by @HaudinFlorence in #953
+  * Change the theme to pydata-sphynx-theme by @HaudinFlorence in #955
+  * Update installation instructions by @martinRenou in #956
+  * Add to ipyleaflet's documentation some missing attributes sections with autodoc. by @HaudinFlorence in #957
+  * Add jupyterlite-sphinx by @HaudinFlorence in #958
+  * Fix formatting issues in the doc for attributes and methods sections using autodoc by @HaudinFlorence in #959
+  * radiation notebook updated with SearchControl object adding by @MackyDIARRA in #899
+
+-------------------------------------------------------------------
 Sun Feb 27 01:00:40 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
