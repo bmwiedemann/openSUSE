@@ -30,6 +30,7 @@ License:        GPL-2.0-only
 Group:          Development/Tools/Version Control
 URL:            http://foss.heptapod.net/mercurial/hg-git
 Source0:        https://files.pythonhosted.org/packages/source/h/hg-git/hg-git-%{version}.tar.gz
+Source90:       tests.blacklist
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  mercurial
@@ -62,7 +63,7 @@ The Hg-Git plugin can convert commits/changesets losslessly from one system to a
 
 %check
 %if %{with test}
-make tests HGPYTHON=python3
+make tests HGPYTHON=python3 TESTFLAGS="--blacklist=%{SOURCE90}"
 %endif
 
 %files
