@@ -17,10 +17,11 @@
 
 
 Name:           mold
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        A Modern Linker (mold)
 License:        AGPL-3.0-or-later
+Group:          Development/Tools/Building
 URL:            https://github.com/rui314/mold
 Source:         https://github.com/rui314/mold/archive/v%{version}/mold-%{version}.tar.gz
 ExclusiveArch:  x86_64 aarch64 riscv64
