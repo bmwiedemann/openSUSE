@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jun  3 03:06:16 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.88
+   see /usr/share/doc/packages/perl-Date-Manip/Changes
+
+  6.88  expected 2022-06-01
+    -  Time zone fixes
+           There were no new timezone fixes on 2022-03-01, so no release made
+           then.
+
+           Newest zoneinfo data (tzdata 2022a).
+
+  6.87  expected 2022-03-01
+    -  Bug fixes
+           The package was being generated with an incorrect MANIFEST file.
+           This is now fixed. RT 140075
+
+-------------------------------------------------------------------
 Tue Nov 16 03:06:11 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.86
