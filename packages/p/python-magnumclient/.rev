@@ -203,4 +203,22 @@
     <comment></comment>
     <requestid>889973</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ceda2f7c5f60f6544deff3f18f987587</srcmd5>
+    <version>3.6.0</version>
+    <time>1655665896</time>
+    <user>dimstar_suse</user>
+    <comment>- added 0001-Fix-test_help_on_subcommand-on-Python-3.10.patch
+
+- update to version 3.6.0
+  - Update master for stable/victoria
+  - Update master for stable/wallaby
+  - Add Python3 wallaby unit tests
+  - Update master for stable/xena
+
+- update to version 3.5.0
+  - Fix failing to parse json error msg
+  - Fix master_lb_enabled for cluster creation</comment>
+    <requestid>983720</requestid>
+  </revision>
 </revisionlist>

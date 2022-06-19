@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jun 19 17:28:25 UTC 2022 - cloud-devel@suse.de
+
+- added 0001-Fix-test_help_on_subcommand-on-Python-3.10.patch
+
+-------------------------------------------------------------------
+Sun Jun 19 12:25:16 UTC 2022 - cloud-devel@suse.de
+
+- update to version 3.6.0
+  - Update master for stable/victoria
+  - Update master for stable/wallaby
+  - Add Python3 wallaby unit tests
+  - Update master for stable/xena
+
+-------------------------------------------------------------------
+Tue Oct 26 21:46:17 UTC 2021 - cloud-devel@suse.de
+
+- update to version 3.5.0
+  - Fix failing to parse json error msg
+  - Fix master_lb_enabled for cluster creation
+
+-------------------------------------------------------------------
 Sun May  2 17:21:08 UTC 2021 - cloud-devel@suse.de
 
 - update to version 3.4.0
