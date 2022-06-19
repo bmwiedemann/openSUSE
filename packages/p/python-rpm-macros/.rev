@@ -487,4 +487,14 @@ prerequisite for new python submission</comment>
 </comment>
     <requestid>982055</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>58c3deee32a5532a6828931724d42ccd</srcmd5>
+    <version>20220618.1ed0055</version>
+    <time>1655665835</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220618.1ed0055:
+  * Update compile-macros.sh
+</comment>
+    <requestid>983633</requestid>
+  </revision>
 </revisionlist>
