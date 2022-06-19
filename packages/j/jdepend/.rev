@@ -137,4 +137,12 @@
     <comment>source/target levels 8</comment>
     <requestid>963094</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>929a97316c8b546050da21ed76737865</srcmd5>
+    <version>2.10</version>
+    <time>1655665831</time>
+    <user>dimstar_suse</user>
+    <comment>minor spec cleanup</comment>
+    <requestid>983619</requestid>
+  </revision>
 </revisionlist>

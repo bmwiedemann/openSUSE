@@ -59,7 +59,7 @@ This package contains demonstration and sample files for JDepend.
 find . -name "*.jar" -exec rm -f {} \;
 
 %build
-%ant \
+%{ant} \
 	-Dant.build.javac.source=1.8 \
 	-Dant.build.javac.target=1.8 \
 	jar
@@ -81,8 +81,9 @@ install -d -m 755 %{buildroot}%{_datadir}/%{name}
 cp -pr sample %{buildroot}%{_datadir}/%{name}
 
 %files
-%attr(644, root, root) %license LICENSE.md
-%attr(644, root, root) %doc CHANGELOG.md README.md
+%defattr(0644,root,root,0755)
+%license LICENSE.md
+%doc CHANGELOG.md README.md
 %{_javadir}/*
 %{_mavenpomdir}/*
 %if %{defined _maven_repository}
@@ -92,6 +93,7 @@ cp -pr sample %{buildroot}%{_datadir}/%{name}
 %endif
 
 %files demo
-%attr(644, root, root) %{_datadir}/%{name}
+%defattr(0644,root,root,0755)
+%{_datadir}/%{name}
 
 %changelog
