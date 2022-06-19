@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jun 15 11:13:51 UTC 2022 - gmbr3@opensuse.org
+
+- Update to version 10.2+git20220504.8690743:
+  * Don't repackage aarch64_ilp32 *-64bit packages
+  * Use pesign for signing on riscv64
+  * Add padding to grub signature correctly (jsc#SLE-18271 bsc#1192764).
+  * kernel-sign-file: Support appending verbatim PKCS#7 signature.
+  * kernel-sign-file: Move x509 parsing into a function.
+  * Support ppc grub signing (jsc#SLE-18271 bsc#1192764).
+  * Handle packages with epochs as well
+  * Turn off rpm fatal warnings for noarch packages
+- Upstreamed patches:
+  * 0001-Support-ppc-grub-signing-jsc-SLE-18271-bsc-1192764.patch
+  * 0002-kernel-sign-file-Move-x509-parsing-into-a-function.patch
+  * 0003-kernel-sign-file-Support-appending-verbatim-PKCS-7-s.patch
+  * 0004-Add-padding-to-grub-signature-correctly-jsc-SLE-1827.patch
+- Added patches:
+  * order.patch - support OrderWithRequires
+
+-------------------------------------------------------------------
 Fri Jan 21 08:49:34 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - Support signing grub on powerpc (jsc#SLE-18271 bsc#1192764).
