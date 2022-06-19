@@ -4,6 +4,7 @@
   <attribute namespace="OBS" name="ApprovedRequestSource"/>
   <attribute namespace="OSRT" name="IgnoredIssues">
     <value>last_seen:
+  boo#1094987: '20220617'
   boo#1172073: '20220614'
   boo#1176553: '20220311'
   boo#1183454: '20220617'
@@ -169,6 +170,7 @@
   poo#112241: '20220608'
   poo#112244: '20220608'
   poo#112580: '20220617'
+  poo#112700: '20220617'
   poo#63397: '20220422'
   poo#80628: '20220323'
   poo#91383: '20220111'
@@ -220,7 +222,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20220617</value>
+    <value>20220618</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
