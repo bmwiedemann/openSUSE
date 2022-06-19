@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-bom
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jackson-bom
-Version:        2.13.0
+Version:        2.13.3
 Release:        0
 Summary:        Bill of materials POM for Jackson projects
 License:        Apache-2.0
@@ -30,7 +30,7 @@ Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 BuildRequires:  javapackages-local
 BuildRequires:  maven-local
 BuildRequires:  xmvn-resolve
-BuildRequires:  mvn(com.fasterxml.jackson:jackson-parent:pom:) >= 2.7.1
+BuildRequires:  mvn(com.fasterxml.jackson:jackson-parent:pom:)
 BuildArch:      noarch
 
 %description

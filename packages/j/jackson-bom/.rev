@@ -47,4 +47,12 @@
     <comment>Version upgrade</comment>
     <requestid>926591</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5f2f7947441326b9873d9e649426d947</srcmd5>
+    <version>2.13.3</version>
+    <time>1655665852</time>
+    <user>dimstar_suse</user>
+    <comment>2.13.3</comment>
+    <requestid>983607</requestid>
+  </revision>
 </revisionlist>
