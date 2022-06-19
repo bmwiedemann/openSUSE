@@ -17,8 +17,8 @@
 
 
 Name:           libvmime
-%define lname	libvmime-suse4
-Version:        0.9.2.165
+%define lname	libvmime-suse5
+Version:        0.9.2.175
 Release:        0
 Summary:        Library for working with RFC 5322, MIME messages and IMAP/POP/SMTP
 License:        GPL-3.0-or-later
@@ -98,6 +98,8 @@ make book_pdf
 popd
 %endif
 
+# for some reason I don't care researching in detail, CentOS8 dies with
+# a PIC-related relocation error during cmake-configure. Hence forcing -fPIC.
 %cmake \
         -DCMAKE_INSTALL_PREFIX:PATH="%_prefix" \
         -DINCLUDE_INSTALL_DIR:PATH="%_includedir" \
@@ -113,9 +115,9 @@ popd
 	-DVMIME_BUILD_STATIC_LIBRARY:BOOL=OFF \
 	-DCMAKE_BUILD_TYPE:STRING="RelWithDebInfo" \
 	-DCMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING="$cf" \
-	-DCMAKE_CXX_FLAGS:STRING=" " \
+	-DCMAKE_CXX_FLAGS:STRING="%{?centos_version:-fPIC} " \
 	-DCMAKE_C_FLAGS_RELWITHDEBINFO:STRING="$cf" \
-	-DCMAKE_C_FLAGS:STRING=" " \
+	-DCMAKE_C_FLAGS:STRING="%{?centos_version:-fPIC} " \
 	-DVMIME_BUILD_DOCUMENTATION:BOOL=OFF
 %cmake_build
 
@@ -135,7 +137,7 @@ mkdir -p "$b/%_datadir"
 
 %files -n %lname
 %license COPYING
-%_libdir/libvmime-suse.so.4*
+%_libdir/libvmime-suse.so.5*
 
 %files devel
 %_includedir/vmime
