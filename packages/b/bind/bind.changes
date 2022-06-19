@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jun 15 12:37:17 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to 9.18.4:
+  Bugs fixed:
+  * Only write key files if the dnssec-policy keymgr has
+    changed the metadata.
+  * When the fetches-per-server quota was adjusted
+    because of an authoritative server timing out more
+    or less frequently, it was incorrectly set to 1
+    rather than the intended value.
+  Notable functional changes:
+  * Key timing options for `dnssec-keygen` and
+    `dnssec-settime` now accept times as printed by
+    `dnssec-settime -p`.
+  * Key timing options for `dnssec-settime` and related
+    utilities now accept "UNSET" times as printed by
+    `dnssec-settime -p`.
+  This obsoletes the following patch:
+  bind-prevent-buffer-overflow.patch
+  [bind-9.18.4.tar.xz, bind-9.18.4.tar.xz.sha512.asc,
+  bind-prevent-buffer-overflow.patch]
+
+-------------------------------------------------------------------
 Thu May 19 07:32:31 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
 
 - Upgrade to 9.18.3:

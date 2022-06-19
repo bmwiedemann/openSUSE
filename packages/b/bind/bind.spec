@@ -56,7 +56,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           bind
-Version:        9.18.3
+Version:        9.18.4
 Release:        0
 Summary:        Domain Name System (DNS) Server (named)
 License:        MPL-2.0
@@ -75,7 +75,6 @@ Source70:       bind.conf
 # configuation file for systemd-sysusers
 Source72:       named.conf
 Patch56:        bind-ldapdump-use-valid-host.patch
-Patch58:        bind-prevent-buffer-overflow.patch
 BuildRequires:  libcap-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libtool
