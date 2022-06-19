@@ -65,4 +65,12 @@
     <comment>sync with sle15</comment>
     <requestid>978554</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>83de0091f97dcec7c153ab5b6fd428a3</srcmd5>
+    <version>2.13.3</version>
+    <time>1655665856</time>
+    <user>dimstar_suse</user>
+    <comment>2.13.3</comment>
+    <requestid>983609</requestid>
+  </revision>
 </revisionlist>

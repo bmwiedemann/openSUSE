@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Jun 15 07:11:21 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.13.3
+  * 2.13.3 (14-May-2022)
+    + #3412: Version 2.13.2 uses 'Method.getParameterCount()' which
+      is not supported on Android before API 26
+    + #3419: Improve performance of 'UnresolvedForwardReference' for
+      forward reference resolution
+    + #3446: 'java.lang.StringBuffer' cannot be deserialized
+    + #3450: DeserializationProblemHandler is not working with
+      wrapper type when returning null
+  * 2.13.2.2 (28-Mar-2022)
+    + No changes since 2.13.2.1 but fixed Gradle Module Metadata
+      ("module.json")
+  * 2.13.2.1 (24-Mar-2022)
+    + #2816: Optimize UntypedObjectDeserializer wrt recursion
+    + #3412: Version 2.13.2 uses 'Method.getParameterCount()' which
+     is not supported on Android before API 26
+  * 2.13.2 (06-Mar-2022)
+    + #3293: Use Method.getParameterCount() where possible
+    + #3344: 'Set.of()' (Java 9) cannot be deserialized with
+      polymorphic handling
+    + #3368: 'SnakeCaseStrategy' causes unexpected
+      'MismatchedInputException' during deserialization
+    + #3369: Deserialization ignores other Object fields when Object
+      or Array value used for enum
+    + #3380: 'module-info.java' is in 'META-INF/versions/11' instead
+      of 'META-INF/versions/9'
+  * 2.13.1 (19-Dec-2021)
+    + #3006: Argument type mismatch for 'enum' with '@JsonCreator'
+      that takes String, gets JSON Number
+    + #3299: Do not automatically trim trailing whitespace from
+      'java.util.regex.Pattern' values
+    + #3305: ObjectMapper serializes 'CharSequence' subtypes as POJO
+      instead of as String (JDK 15+)
+    + #3308: 'ObjectMapper.valueToTree()' fails when
+      'DeserializationFeature.FAIL_ON_TRAILING_TOKENS' is enabled
+    + #3328: Possible DoS if using JDK serialization to serialize
+      JsonNode
+
+-------------------------------------------------------------------
 Wed Oct 20 08:12:34 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 2.13.0 (CVE-2020-36518, bsc#1197132)
