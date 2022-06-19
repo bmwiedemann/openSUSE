@@ -5946,7 +5946,6 @@ unsorted:
   - gmsh-demos 
   - gmsh-devel 
   - gmsh-doc 
-  - gmsh-julia 
   - gmusicbrowser 
   - gmusicbrowser-lang 
   - gn 
@@ -11232,7 +11231,7 @@ unsorted:
   - libgmime-3_0-0-32bit: [x86_64] 
   - libgmpxx4 
   - libgmpxx4-32bit: [x86_64] 
-  - libgmsh4_9 
+  - libgmsh4_10 
   - libgmxapi0 
   - libgnome-bluetooth13 
   - libgnome-desktop-3-devel 
@@ -14053,6 +14052,9 @@ unsorted:
   - libsplinter-3-0 
   - libspnav-devel 
   - libspnav0 
+  - libspooles2_2 
+  - libspooles2_2-openmpi1 
+  - libspooles2_2-openmpi2 
   - libspqr2 
   - libspread-sheet-widget0 
   - libsqlcipher-3_37_2-0 
@@ -26268,7 +26270,6 @@ unsorted:
   - python38-gmpy 
   - python38-gmpy2 
   - python38-gns3fy 
-  - python38-gobject-Gdk 
   - python38-gobject-devel 
   - python38-goobook 
   - python38-google-api-core 
@@ -33148,6 +33149,9 @@ unsorted:
   - spirv-tools-devel-32bit: [x86_64] 
   - splint 
   - splinter-devel 
+  - spooles-devel 
+  - spooles-openmpi1-devel 
+  - spooles-openmpi2-devel 
   - spotify-easyrpm 
   - spotify-qt 
   - spotifyd 
