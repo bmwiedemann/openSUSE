@@ -16,11 +16,11 @@
 #
 
 
-%define sover  82
+%define sover  83
 # disabled for now as 4 of them fail
 %bcond_with tests
 Name:           poco
-Version:        1.11.2
+Version:        1.11.3
 Release:        0
 Summary:        C++ Framework for Network-based Applications
 License:        BSL-1.0

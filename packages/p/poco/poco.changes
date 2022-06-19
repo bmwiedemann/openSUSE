@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 18 16:18:47 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.11.3
+  * fix(openssl-initializer): check legacy provider existence for
+    legacy exception
+  * Redis - add TLS support
+
+-------------------------------------------------------------------
 Tue Apr 19 12:41:20 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.11.2
