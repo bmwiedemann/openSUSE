@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  7 09:17:36 UTC 2022 - cloud-devel@suse.de
+
+- update to version 2.6.0
+  - Update master for stable/yoga
+  - Fixed test for interface key
+  - Add Python3 zed unit tests
+  - Respect 'interface' key from clouds.yaml
+  - Don't fail on extlinks warnings for reno build
+  - Fix TestTagHelps for python3.10
+
+-------------------------------------------------------------------
 Tue May 24 21:07:14 UTC 2022 - cloud-devel@suse.de
 
 - update to version 2.5.0

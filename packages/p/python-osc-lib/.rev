@@ -250,4 +250,18 @@
   - parseractions: Make key validation reusable</comment>
     <requestid>979070</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2b14776650a133f5ca27f924e4b3a99c</srcmd5>
+    <version>2.6.0</version>
+    <time>1655665904</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.6.0
+  - Update master for stable/yoga
+  - Fixed test for interface key
+  - Add Python3 zed unit tests
+  - Respect 'interface' key from clouds.yaml
+  - Don't fail on extlinks warnings for reno build
+  - Fix TestTagHelps for python3.10</comment>
+    <requestid>983770</requestid>
+  </revision>
 </revisionlist>

@@ -17,13 +17,13 @@
 
 
 Name:           python-osc-lib
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        OpenStackClient Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/developer/osc-lib
-Source0:        https://files.pythonhosted.org/packages/source/o/osc-lib/osc-lib-2.5.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/osc-lib/osc-lib-2.6.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-cliff >= 3.2.0
 BuildRequires:  python3-fixtures
@@ -75,7 +75,7 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for the OpenStack client library.
 
 %prep
-%autosetup -p1 -n osc-lib-2.5.0
+%autosetup -p1 -n osc-lib-2.6.0
 %py_req_cleanup
 
 %build
