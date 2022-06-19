@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  7 09:16:22 UTC 2022 - cloud-devel@suse.de
+
+- update to version 4.1.0
+  - Don't test with setuptools local distutils.
+  - Remove the deprecated argument tenant from RequestContext
+  - Update master for stable/xena
+  - Integrate mypy
+  - Add Python3 yoga unit tests
+  - Fix context from_dict() for system_scope
+
+-------------------------------------------------------------------
 Tue Oct 26 21:37:33 UTC 2021 - cloud-devel@suse.de
 
 - update to version 3.3.1

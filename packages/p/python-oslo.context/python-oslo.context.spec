@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.context
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %bcond_without test
 Name:           python-oslo.context
-Version:        3.3.1
+Version:        4.1.0
 Release:        0
 Summary:        OpenStack Oslo context library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.context
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.context/oslo.context-3.3.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.context/oslo.context-4.1.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-pbr >= 2.0.0
 BuildArch:      noarch
@@ -63,7 +63,7 @@ BuildRequires:  python3-openstackdocstheme
 Documentation for the oslo-context library.
 
 %prep
-%autosetup -p1 -n oslo.context-3.3.1
+%autosetup -p1 -n oslo.context-4.1.0
 %py_req_cleanup
 
 %build

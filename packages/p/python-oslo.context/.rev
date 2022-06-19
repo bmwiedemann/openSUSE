@@ -244,4 +244,18 @@
   - Move flake8 as a pre-commit local target.</comment>
     <requestid>927612</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c5a7d4a6843e615f1a478977aba173d4</srcmd5>
+    <version>4.1.0</version>
+    <time>1655665904</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.1.0
+  - Don't test with setuptools local distutils.
+  - Remove the deprecated argument tenant from RequestContext
+  - Update master for stable/xena
+  - Integrate mypy
+  - Add Python3 yoga unit tests
+  - Fix context from_dict() for system_scope</comment>
+    <requestid>983771</requestid>
+  </revision>
 </revisionlist>
