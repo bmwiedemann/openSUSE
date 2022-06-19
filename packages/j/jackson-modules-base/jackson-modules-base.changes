@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jun 15 09:32:45 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Version upgrade to 2.13.3
+  * 2.13.3 (14-May-2022)
+    + #169: Blackbird fails with LinkageError when the same class
+      is used across two separate classloaders
+    + #175: 'jackson-module-jakarta-xmlbind-annotations' should use
+      a Jakarta namespaced Activation API
+  * 2.13.2 (06-Mar-2022)
+    + #138: (blackbird) Blackbird doesn't work on Java 15+
+    + #152: (jakarta-annotations) jakarta.activation version
+      conflict in 2.13
+    + #161: Module name in
+      'jakarta-xmlbind/src/moditect/module-info.java' is invalid
+  * 2.13.1 (19-Dec-2021)
+    + #155: (no-ctor-deser) Fix SPI metadata for
+      'jackson-module-no-ctor-deser'
+    + #159: NoCtorDeserModule missing - Do you mean NoCtorModule
+
+-------------------------------------------------------------------
 Wed Oct 20 09:52:49 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Version upgrade to 2.13.0

@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-modules-base
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jackson-modules-base
-Version:        2.13.0
+Version:        2.13.3
 Release:        0
 Summary:        Jackson modules: Base
 License:        Apache-2.0
@@ -25,10 +25,10 @@ URL:            https://github.com/FasterXML/jackson-modules-base
 Source0:        %{url}/archive/%{name}-%{version}.tar.gz
 BuildRequires:  maven-local
 BuildRequires:  mvn(cglib:cglib)
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations) >= %{version}
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core) >= %{version}
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations) >= 2.13
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core) >= 2.13
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind) >= %{version}
-BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:) >= %{version}
+BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:) >= 2.13
 BuildRequires:  mvn(com.google.code.maven-replacer-plugin:replacer)
 BuildRequires:  mvn(com.google.inject:guice)
 BuildRequires:  mvn(com.thoughtworks.paranamer:paranamer)
