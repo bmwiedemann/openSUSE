@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.log
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,17 @@
 
 
 Name:           python-oslo.log
-Version:        4.6.0
+Version:        5.0.0
 Release:        0
 Summary:        OpenStack log library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.log
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.log/oslo.log-4.6.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.log/oslo.log-5.0.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python3-mock
 BuildRequires:  python3-monotonic
 BuildRequires:  python3-oslo.config >= 5.2.0
-BuildRequires:  python3-oslo.context >= 2.20.0
+BuildRequires:  python3-oslo.context >= 2.21.0
 BuildRequires:  python3-oslo.i18n >= 3.20.0
 BuildRequires:  python3-oslo.serialization >= 2.25.0
 BuildRequires:  python3-oslo.utils >= 3.36.0
@@ -36,7 +35,6 @@ BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr >= 3.1.1
 BuildRequires:  python3-pyinotify >= 0.9.6
 BuildRequires:  python3-python-dateutil >= 2.7.0
-BuildRequires:  python3-six
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testtools
 BuildArch:      noarch
@@ -51,13 +49,12 @@ Summary:        OpenStack log library
 Requires:       python3-debtcollector >= 1.19.0
 Requires:       python3-monotonic
 Requires:       python3-oslo.config >= 5.2.0
-Requires:       python3-oslo.context >= 2.20.0
+Requires:       python3-oslo.context >= 2.21.0
 Requires:       python3-oslo.i18n >= 3.20.0
 Requires:       python3-oslo.serialization >= 2.25.0
 Requires:       python3-oslo.utils >= 3.36.0
 Requires:       python3-pyinotify >= 0.9.6
 Requires:       python3-python-dateutil >= 2.7.0
-Requires:       python3-six
 Requires:       python3-systemd
 %if 0%{?suse_version}
 Obsoletes:      python2-oslo.log < 4.0.0
@@ -79,14 +76,14 @@ BuildRequires:  python3-openstackdocstheme
 Documentation for the oslo.log library.
 
 %prep
-%autosetup -p1 -n oslo.log-4.6.0
+%autosetup -p1 -n oslo.log-5.0.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
 # generate html docs
-PYTHONPATH=. PBR_VERSION=4.6.0 %sphinx_build -b html doc/source doc/build/html
+PYTHONPATH=. PBR_VERSION=5.0.0 %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install

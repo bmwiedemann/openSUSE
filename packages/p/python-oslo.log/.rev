@@ -383,4 +383,24 @@
   - Fix log_rotate_interval help text formatting</comment>
     <requestid>939532</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ad3699391a461998563e9a4f04165efc</srcmd5>
+    <version>5.0.0</version>
+    <time>1655665900</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.0.0
+  - Update CI to use unversioned jobs template
+  - Drop python3.6/3.7 support in testing runtime
+  - Add Yoga to versionutils
+  - Use project when logging the user identity
+  - Add Zed in versionutils
+  - Log Global Request IDs by default
+  - Fix formatting of release list
+  - [Fix] init global_request_id if not in context
+  - Add system scope information to default user identity string
+  - Replace deprecated arguments of RequestContext
+  - Update python testing classifier
+  - Add Python3 yoga unit tests</comment>
+    <requestid>983766</requestid>
+  </revision>
 </revisionlist>

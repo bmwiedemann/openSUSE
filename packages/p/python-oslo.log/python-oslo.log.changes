@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May 24 20:46:47 UTC 2022 - cloud-devel@suse.de
+
+- update to version 5.0.0
+  - Update CI to use unversioned jobs template
+  - Drop python3.6/3.7 support in testing runtime
+  - Add Yoga to versionutils
+  - Use project when logging the user identity
+  - Add Zed in versionutils
+  - Log Global Request IDs by default
+  - Fix formatting of release list
+  - [Fix] init global_request_id if not in context
+  - Add system scope information to default user identity string
+  - Replace deprecated arguments of RequestContext
+  - Update python testing classifier
+  - Add Python3 yoga unit tests
+
+-------------------------------------------------------------------
 Tue Oct 26 21:41:15 UTC 2021 - cloud-devel@suse.de
 
 - update to version 4.6.0
