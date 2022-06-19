@@ -961,4 +961,12 @@ nicer version with try-reload-or-restart</comment>
   * Important security fix (TROVE-2022-001, CVE-2022-33903)</comment>
     <requestid>983458</requestid>
   </revision>
+  <revision rev="105" vrev="2">
+    <srcmd5>6a08f4c33308639e4e9ad85f3ffa9ad2</srcmd5>
+    <version>0.4.7.8</version>
+    <time>1655665891</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>983715</requestid>
+  </revision>
 </revisionlist>

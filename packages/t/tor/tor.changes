@@ -2,7 +2,16 @@
 Thu Jun 16 17:08:53 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - tor 0.4.7.8
-  * Important security fix (TROVE-2022-001, CVE-2022-33903)
+  * Fix a scenario where RTT estimation can become wedged, seriously
+    degrading congestion control performance on all circuits. This
+    impacts clients, onion services, and relays, and can be triggered
+    remotely by a malicious endpoint.
+    (TROVE-2022-001, CVE-2022-33903, boo#1200672)
+  * Regenerate fallback directories generated on June 17, 2022.
+  * Update the geoip files to match the IPFire Location Database, as
+    retrieved on 2022/06/17.
+  * Allow the rseq system call in the sandbox
+  * logging bug fixes
 
 -------------------------------------------------------------------
 Wed Apr 27 18:29:58 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
