@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  7 09:25:34 UTC 2022 - cloud-devel@suse.de
+
+- update to version 2.5.0
+  - Add Python3 yoga unit tests
+  - doc: Avoid duplicate entry warning
+  - Update master for stable/xena
+
+-------------------------------------------------------------------
 Tue Oct 26 21:36:05 UTC 2021 - cloud-devel@suse.de
 
 - update to version 2.4.0

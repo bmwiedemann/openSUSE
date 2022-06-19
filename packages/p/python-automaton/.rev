@@ -222,4 +222,15 @@
   - Remove lower-constraints remnants</comment>
     <requestid>927611</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>af33790c3285af35a5737a9477499049</srcmd5>
+    <version>2.5.0</version>
+    <time>1655665903</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.5.0
+  - Add Python3 yoga unit tests
+  - doc: Avoid duplicate entry warning
+  - Update master for stable/xena</comment>
+    <requestid>983769</requestid>
+  </revision>
 </revisionlist>
