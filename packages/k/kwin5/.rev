@@ -1412,4 +1412,12 @@
     <comment>Update to 5.25.0</comment>
     <requestid>981912</requestid>
   </revision>
+  <revision rev="168" vrev="2">
+    <srcmd5>9c6cd3cb556bc7efce29537dd8567942</srcmd5>
+    <version>5.25.0</version>
+    <time>1655665839</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>983480</requestid>
+  </revision>
 </revisionlist>

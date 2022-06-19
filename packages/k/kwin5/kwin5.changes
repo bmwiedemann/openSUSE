@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 17 13:21:36 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix dragging windows in grid view (kde#455268):
+  * 0001-fix-windows-dragging-in-desktop-grid.patch
+
+-------------------------------------------------------------------
 Thu Jun  9 11:15:00 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.0
