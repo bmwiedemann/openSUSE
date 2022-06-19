@@ -150,4 +150,41 @@
   - setup.cfg: Replace dashes with underscores</comment>
     <requestid>939548</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b7f98f867a34b69edb9512bef60c5ae2</srcmd5>
+    <version>1.16.1</version>
+    <time>1655665896</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.16.1
+  - Handle OVS 2.17 change to Idl.tables
+  - nb: set chassis_name for new gateway chassis
+  - tools: fix OvsOvnVenvFixture init
+  - Log what exception caused abort of the transaction
+  - nb: provide 'discard' value for nexthop
+  - Update master for stable/xena
+  - ic: add support for OVN_IC_Northbound schema
+  - Add cooperative_yield() to OvsdbIdl
+  - Capture test run logging
+  - Update master for stable/yoga
+  - Remove ovsdb_connection singleton for tests
+  - nb: provide lrp_get method
+  - Check WaitEvents for match after other events
+  - Use &quot;api.lookup&quot; to search for a &quot;Logical_Switch&quot;
+  - github no longer accepts git:// connections
+  - Allow functional tests to pass on older OVN w/o IC
+  - nb: fix route.output_port name
+  - Use py3 as the default runtime for tox
+  - Drop lower-constraints.txt and its testing
+  - tools: run functional tests against ovn/main branch
+  - Add Python3 yoga unit tests
+  - Add support for OVN NB Logical_Router_Policy table
+  - Move linters dependencies to tox.ini
+  - remove unicode from code
+  - nb: add support for lrp's gateway chassis API
+  - Fix broken behavior after recent OVS update
+  - Update QoS register in &quot;QoSAddCommand&quot; if exists
+  - nb: add support for set of addresses API
+  - Revert &quot;Add an active wait in the &quot;Backend.lookup&quot;&quot;</comment>
+    <requestid>983762</requestid>
+  </revision>
 </revisionlist>
