@@ -29,4 +29,16 @@
 - Update to 0.79.13</comment>
     <requestid>908392</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cdaa1834f7381184ccfc065677437979</srcmd5>
+    <version>0.79.15</version>
+    <time>1655665840</time>
+    <user>dimstar_suse</user>
+    <comment>- Added 0001-Disable-DSA-in-the-RPM-spec.patch
+- Removed 0002-certmonger-return-type.patch.
+- Updated to version 0.79.15
+- Added minimum libjansson version requirement. 
+</comment>
+    <requestid>983488</requestid>
+  </revision>
 </revisionlist>

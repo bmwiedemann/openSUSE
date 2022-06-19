@@ -1,0 +1,267 @@
+From f95908610574c93efe1b5004efef20e6511f6d90 Mon Sep 17 00:00:00 2001
+From: Rob Crittenden <rcritten@redhat.com>
+Date: Mon, 28 Mar 2022 11:50:33 -0400
+Subject: [PATCH 1/2] Disable DSA in the RPM spec
+
+DSA has been disabled in default crypto policy since Fedora 30
+and will cause crashes if used in FIPS mode.
+
+Refresh the 028-dbus no-DSA expected output. It was out-of-sync
+from previous changes.
+
+https://bugzilla.redhat.com/show_bug.cgi?id=2066439
+
+Signed-off-by: Rob Crittenden <rcritten@redhat.com>
+---
+ certmonger.spec                   |   6 +-
+ tests/028-dbus/expected.out.nodsa | 135 +++---------------------------
+ 2 files changed, 15 insertions(+), 126 deletions(-)
+
+diff --git a/certmonger.spec b/certmonger.spec
+index 02b0c3c7..6102aff6 100644
+--- a/certmonger.spec
++++ b/certmonger.spec
+@@ -28,7 +28,7 @@
+ 
+ Name:		certmonger
+ Version:	0.79.15
+-Release:	1%{?dist}
++Release:	2%{?dist}
+ Summary:	Certificate status monitor and PKI enrollment client
+ 
+ Group:		System Environment/Daemons
+@@ -143,6 +143,7 @@ autoreconf -i -f
+ %if %{with xmlrpc}
+ 	--with-xmlrpc \
+ %endif
++	--disable-dsa \
+ 	--with-tmpdir=/run/certmonger --enable-pie --enable-now
+ %if %{with xmlrpc}
+ # For some reason, some versions of xmlrpc-c-config in Fedora and RHEL just
+@@ -264,6 +265,9 @@ exit 0
+ %endif
+ 
+ %changelog
++* Mon Mar 28 2022 Rob Crittenden <rcritten@redhat.com> - 0.79.15-2
++- Disable DSA. It is not allowed by default crypto policy (#2066439) 
++
+ * Wed Jan  5 2022 Rob Crittenden <rcritten@redhat.com> - 0.79.15-1
+ - update to 0.79.15
+   - Translated using Weblate (Swedish)
+diff --git a/tests/028-dbus/expected.out.nodsa b/tests/028-dbus/expected.out.nodsa
+index 20499bf3..0e1b977f 100644
+--- a/tests/028-dbus/expected.out.nodsa
++++ b/tests/028-dbus/expected.out.nodsa
+@@ -11,12 +11,14 @@ Request ID 'Buddy':
+ 	CA: local
+ 	issuer: CN=$UUID,CN=Local Signing Authority
+ 	subject: CN=localhost
++	issued: sometime
+ 	expires: sometime
+ 	dns: localhost
+ 	principal name: host/localhost@LOCALHOST
+ 	key usage: digitalSignature,dataEncipherment
+ 	eku: id-kp-serverAuth
+ 	certificate template/profile: SomeProfileName
++	profile: SomeProfileName
+ 	pre-save command: echo Pre
+ 	post-save command: echo Post
+ 	track: yes
+@@ -33,10 +35,6 @@ CA 'IPA':
+ 	is-default: no
+ 	ca-type: EXTERNAL
+ 	helper-location: $libexecdir/ipa-submit
+-CA 'certmaster':
+-	is-default: no
+-	ca-type: EXTERNAL
+-	helper-location: $libexecdir/certmaster-submit
+ CA 'dogtag-ipa-renew-agent':
+ 	is-default: no
+ 	ca-type: EXTERNAL
+@@ -44,8 +42,8 @@ CA 'dogtag-ipa-renew-agent':
+ 
+ [[ API ]]
+ [ simpleprop.py ]
+-/org/fedorahosted/certmonger/cas/CA6
+-/org/fedorahosted/certmonger/cas/CA6
++/org/fedorahosted/certmonger/cas/CA5
++/org/fedorahosted/certmonger/cas/CA5
+ : -> : -k admin@localhost -> :
+ 0 -> 1 -> 0
+ [ walk.py ]
+@@ -181,7 +179,7 @@ OK
+ OK
+ 
+ [ /org/fedorahosted/certmonger: org.fedorahosted.certmonger.get_known_cas ]
+-dbus.Array([dbus.ObjectPath('/org/fedorahosted/certmonger/cas/CA1'), dbus.ObjectPath('/org/fedorahosted/certmonger/cas/CA2'), dbus.ObjectPath('/org/fedorahosted/certmonger/cas/CA3'), dbus.ObjectPath('/org/fedorahosted/certmonger/cas/CA4'), dbus.ObjectPath('/org/fedorahosted/certmonger/cas/CA5')], signature=dbus.Signature('o'))
++dbus.Array([dbus.ObjectPath('/org/fedorahosted/certmonger/cas/CA1'), dbus.ObjectPath('/org/fedorahosted/certmonger/cas/CA2'), dbus.ObjectPath('/org/fedorahosted/certmonger/cas/CA3'), dbus.ObjectPath('/org/fedorahosted/certmonger/cas/CA4')], signature=dbus.Signature('o'))
+ 
+ [ /org/fedorahosted/certmonger: org.fedorahosted.certmonger.get_requests ]
+ dbus.Array([dbus.ObjectPath('/org/fedorahosted/certmonger/requests/Request2')], signature=dbus.Signature('o'))
+@@ -272,6 +270,7 @@ OK
+    <arg name="principal_names" type="as" direction="out"/>
+    <arg name="key_usage" type="x" direction="out"/>
+    <arg name="extended_key_usage" type="as" direction="out"/>
++   <arg name="not_before" type="x" direction="out"/>
+   </method>
+   <property name="issuer" type="s" access="read"/>
+   <property name="serial" type="s" access="read"/>
+@@ -433,7 +432,7 @@ Buddy
+ 
+ 
+ [ /org/fedorahosted/certmonger/requests/Request2: org.fedorahosted.certmonger.request.get_cert_info ]
+-(dbus.String('CN=$UUID,CN=Local Signing Authority'), dbus.String('$UUID'), dbus.String('CN=localhost'), dbus.Int64(tomorrow), dbus.Array([], signature=dbus.Signature('s')), dbus.Array([dbus.String('localhost')], signature=dbus.Signature('s')), dbus.Array([dbus.String('host/localhost@LOCALHOST')], signature=dbus.Signature('s')), dbus.Int64(9), dbus.Array([dbus.String('1.3.6.1.5.5.7.3.1')], signature=dbus.Signature('s')))
++(dbus.String('CN=$UUID,CN=Local Signing Authority'), dbus.String('$UUID'), dbus.String('CN=localhost'), dbus.Int64(tomorrow), dbus.Array([], signature=dbus.Signature('s')), dbus.Array([dbus.String('localhost')], signature=dbus.Signature('s')), dbus.Array([dbus.String('host/localhost@LOCALHOST')], signature=dbus.Signature('s')), dbus.Int64(9), dbus.Array([dbus.String('1.3.6.1.5.5.7.3.1')], signature=dbus.Signature('s')), dbus.Int64(recently))
+ 
+ [ /org/fedorahosted/certmonger/requests/Request2: org.fedorahosted.certmonger.request.get_cert_last_checked ]
+ recently
+@@ -507,7 +506,6 @@ After setting template-eku to 1.2.3.4.5.6.7.8.9.10, we got dbus.Array([dbus.Stri
+  <node name="CA2"/>
+  <node name="CA3"/>
+  <node name="CA4"/>
+- <node name="CA5"/>
+ </node>
+ 
+ [ /org/fedorahosted/certmonger/cas/CA1: org.freedesktop.DBus.Introspectable.Introspect ]
+@@ -941,10 +939,10 @@ dbus.Array([], signature=dbus.Signature('s'))
+ </node>
+ 
+ [ /org/fedorahosted/certmonger/cas/CA4: org.fedorahosted.certmonger.ca.get_config_file_path ]
+-$tmpdir/cas/20180327134236-2
++$tmpdir/cas/20180327134236-3
+ 
+ [ /org/fedorahosted/certmonger/cas/CA4: org.fedorahosted.certmonger.ca.get_nickname ]
+-certmaster
++dogtag-ipa-renew-agent
+ 
+ [ /org/fedorahosted/certmonger/cas/CA4: org.fedorahosted.certmonger.ca.get_is_default ]
+ 0
+@@ -956,7 +954,7 @@ EXTERNAL
+ None
+ 
+ [ /org/fedorahosted/certmonger/cas/CA4: org.fedorahosted.certmonger.ca.get_location ]
+-$libexecdir/certmaster-submit
++$libexecdir/dogtag-ipa-renew-agent-submit
+ 
+ [ /org/fedorahosted/certmonger/cas/CA4: org.fedorahosted.certmonger.ca.get_issuer_names ]
+ dbus.Array([], signature=dbus.Signature('s'))
+@@ -964,116 +962,3 @@ dbus.Array([], signature=dbus.Signature('s'))
+ [ /org/fedorahosted/certmonger/cas/CA4: org.fedorahosted.certmonger.ca.refresh ]
+ 1
+ 
+-[ /org/fedorahosted/certmonger/cas/CA5: org.freedesktop.DBus.Introspectable.Introspect ]
+-<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+-"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+-
+-<node name="/org/fedorahosted/certmonger/cas/CA5">
+- <interface name="org.freedesktop.DBus.Introspectable">
+-  <method name="Introspect">
+-   <arg name="xml_data" type="s" direction="out"/>
+-  </method>
+- </interface>
+- <interface name="org.freedesktop.DBus.Properties">
+-  <method name="Get">
+-   <arg name="interface_name" type="s" direction="in"/>
+-   <arg name="property_name" type="s" direction="in"/>
+-   <arg name="value" type="v" direction="out"/>
+-  </method>
+-  <method name="Set">
+-   <arg name="interface_name" type="s" direction="in"/>
+-   <arg name="property_name" type="s" direction="in"/>
+-   <arg name="value" type="v" direction="in"/>
+-  </method>
+-  <method name="GetAll">
+-   <arg name="interface_name" type="s" direction="in"/>
+-   <arg name="props" type="a{sv}" direction="out"/>
+-  </method>
+-  <signal name="PropertiesChanged">
+-   <arg name="interface_name" type="s"/>
+-   <arg name="changed_properties" type="a{sv}"/>
+-   <arg name="invalidated_properties" type="as"/>
+-  </signal>
+- </interface>
+- <interface name="org.fedorahosted.certmonger.ca">
+-  <method name="get_config_file_path">
+-   <arg name="path" type="s" direction="out"/>
+-  </method>
+-  <method name="get_nickname">
+-   <arg name="nickname" type="s" direction="out"/>
+-  </method>
+-  <property name="nickname" type="s" access="read"/>
+-  <property name="aka" type="s" access="read"/>
+-  <method name="get_is_default">
+-   <arg name="default" type="b" direction="out"/>
+-  </method>
+-  <property name="is-default" type="b" access="readwrite"/>
+-  <method name="get_type">
+-   <arg name="type" type="s" direction="out"/>
+-  </method>
+-  <method name="get_serial">
+-   <arg name="serial_hex" type="s" direction="out"/>
+-  </method>
+-  <method name="get_location">
+-   <arg name="path" type="s" direction="out"/>
+-  </method>
+-  <property name="external-helper" type="s" access="readwrite"/>
+-  <method name="get_issuer_names">
+-   <arg name="names" type="as" direction="out"/>
+-  </method>
+-  <method name="refresh">
+-   <arg name="working" type="b" direction="out"/>
+-  </method>
+-  <property name="ca-error" type="s" access="read"/>
+-  <property name="issuer-names" type="as" access="read"/>
+-  <property name="root-certs" type="a(ss)" access="read"/>
+-  <property name="root-other-certs" type="a(ss)" access="read"/>
+-  <property name="other-certs" type="a(ss)" access="read"/>
+-  <property name="required-enroll-attributes" type="as" access="read"/>
+-  <property name="required-renew-attributes" type="as" access="read"/>
+-  <property name="supported-profiles" type="as" access="read"/>
+-  <property name="default-profile" type="s" access="read"/>
+-  <property name="root-cert-files" type="as" access="readwrite"/>
+-  <property name="root-other-cert-files" type="as" access="readwrite"/>
+-  <property name="other-cert-files" type="as" access="readwrite"/>
+-  <property name="root-cert-nssdbs" type="as" access="readwrite"/>
+-  <property name="root-other-cert-nssdbs" type="as" access="readwrite"/>
+-  <property name="other-cert-nssdbs" type="as" access="readwrite"/>
+-  <property name="ca-presave-command" type="s" access="read"/>
+-  <property name="ca-presave-uid" type="s" access="read"/>
+-  <property name="ca-postsave-command" type="s" access="read"/>
+-  <property name="ca-postsave-uid" type="s" access="read"/>
+-  <property name="scep-cipher" type="s" access="readwrite"/>
+-  <property name="scep-digest" type="s" access="readwrite"/>
+-  <property name="scep-ca-identifier" type="s" access="readwrite"/>
+-  <property name="scep-ca-capabilities" type="as" access="read"/>
+-  <property name="scep-ra-cert" type="s" access="read"/>
+-  <property name="scep-ca-cert" type="s" access="read"/>
+-  <property name="scep-other-certs" type="s" access="read"/>
+- </interface>
+-</node>
+-
+-[ /org/fedorahosted/certmonger/cas/CA5: org.fedorahosted.certmonger.ca.get_config_file_path ]
+-$tmpdir/cas/20180327134236-3
+-
+-[ /org/fedorahosted/certmonger/cas/CA5: org.fedorahosted.certmonger.ca.get_nickname ]
+-dogtag-ipa-renew-agent
+-
+-[ /org/fedorahosted/certmonger/cas/CA5: org.fedorahosted.certmonger.ca.get_is_default ]
+-0
+-
+-[ /org/fedorahosted/certmonger/cas/CA5: org.fedorahosted.certmonger.ca.get_type ]
+-EXTERNAL
+-
+-[ /org/fedorahosted/certmonger/cas/CA5: org.fedorahosted.certmonger.ca.get_serial ]
+-None
+-
+-[ /org/fedorahosted/certmonger/cas/CA5: org.fedorahosted.certmonger.ca.get_location ]
+-$libexecdir/dogtag-ipa-renew-agent-submit
+-
+-[ /org/fedorahosted/certmonger/cas/CA5: org.fedorahosted.certmonger.ca.get_issuer_names ]
+-dbus.Array([], signature=dbus.Signature('s'))
+-
+-[ /org/fedorahosted/certmonger/cas/CA5: org.fedorahosted.certmonger.ca.refresh ]
+-1
+-
+-- 
+2.31.1
+

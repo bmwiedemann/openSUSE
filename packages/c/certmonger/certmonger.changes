@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 17 19:47:46 UTC 2022 - Matthew Davis <novell@virtual.drop.net>
+
+- Added 0001-Disable-DSA-in-the-RPM-spec.patch
+- Removed 0002-certmonger-return-type.patch.
+
+-------------------------------------------------------------------
+Fri Jun 17 19:31:56 UTC 2022 - Matthew Davis <novell@virtual.drop.net>
+
+- Updated to version 0.79.15
+- Added minimum libjansson version requirement. 
+
+-------------------------------------------------------------------
 Mon Jul 26 10:05:33 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Use "pkgconfig(systemd)" for the BR to allow hacksaw systemd-mini

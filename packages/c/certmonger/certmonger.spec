@@ -1,7 +1,7 @@
 #
 # spec file for package certmonger
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020 Stasiek Michalski <stasiek@michalski.cc>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,14 @@
 
 
 Name:           certmonger
-Version:        0.79.13
+Version:        0.79.15
 Release:        0
 Summary:        Certificate status monitor and PKI enrollment client
 License:        GPL-3.0-or-later
 
 URL:            http://pagure.io/certmonger/
 Source0:        http://releases.pagure.org/certmonger/certmonger-%{version}.tar.gz
-Patch0002:      0002-certmonger-return-type.patch
+Patch0001:      0001-Disable-DSA-in-the-RPM-spec.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -40,7 +40,7 @@ BuildRequires:  krb5-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libfreebl3-hmac
 BuildRequires:  libidn2-devel
-BuildRequires:  libjansson-devel
+BuildRequires:  libjansson-devel >= 2.12
 BuildRequires:  libsoftokn3-hmac
 BuildRequires:  libtalloc-devel
 BuildRequires:  libtevent-devel
@@ -84,6 +84,7 @@ autoreconf -i -f
 %configure \
     --enable-systemd \
     --enable-tmpfiles \
+    --disable-dsa \
     --with-homedir=/run/certmonger \
     --with-tmpdir=/run/certmonger --enable-pie --enable-now
 
