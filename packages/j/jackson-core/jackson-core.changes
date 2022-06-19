@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 15 06:37:45 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.13.3
+  * 2.13.3 (14-May-2022)
+    + #744: Limit size of exception message in BigDecimalParser
+  * 2.13.2 (06-Mar-2022)
+    + #732: Update Maven wrapper
+    + #739: `JsonLocation` in 2.13 only uses identity comparison
+      for "content reference"
+  * 2.13.1 (19-Dec-2021)
+    + #713: Incorrect parsing of single-quoted surrounded String
+      values containing double quotes
+
+-------------------------------------------------------------------
 Sun Mar 20 16:24:25 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source and target levels 8
