@@ -208,4 +208,18 @@
     <comment></comment>
     <requestid>964660</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c15c34827965d6162115f9fc3d0c91d8</srcmd5>
+    <version>0.6.13</version>
+    <time>1655665892</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.13:
+  * Remove extraneous capability in default device
+  * Refactor deprecated unittest aliases for Python 3.11 compatibility
+  * Added support for environment variable
+  * Migrate from Travis to GitHub Actions
+  * Update Build Pill
+  * add netconf base namespace to edit-config config element if it is missing</comment>
+    <requestid>983726</requestid>
+  </revision>
 </revisionlist>

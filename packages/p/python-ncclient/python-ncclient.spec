@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-ncclient
-Version:        0.6.12
+Version:        0.6.13
 Release:        0
 Summary:        Python library for NETCONF clients
 License:        Apache-2.0
