@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Dec  6 09:33:25 UTC 2021 - cloud-devel@suse.de
+
+- update to version 4.7.0
+  * Improve testing
+  * Add Python3 yoga unit tests
+  * Update master for stable/xena
+  * Replace deprecated assertDictContainsSubset
+  * Update min version of tox to use allowlist
+  * [doc] Fix lldp\_basic name
+  * Expose more interface fields
+  * Add Python3 xena unit tests
+  * Update master for stable/wallaby
+  * Remove redundant items from CI jobs
+  * Update minversion of tox
+  * Move pep8 dependencies from test-requirements to tox.ini
+  * Remove lower-constraints job
+  * Set safe version of hacking
+  * Use python 3.8 in functional tests
+  * Fix l-c job
+  * Add Python3 wallaby unit tests
+  * Update master for stable/victoria
+
+-------------------------------------------------------------------
 Tue Feb  2 00:37:17 UTC 2021 - cloud-devel@suse.de
 
 - update to version 4.4.0

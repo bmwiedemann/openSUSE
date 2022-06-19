@@ -231,4 +231,30 @@
     <comment></comment>
     <requestid>889968</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e5844543a18ea16117957439dc532107</srcmd5>
+    <version>4.7.0</version>
+    <time>1655665901</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.7.0
+  * Improve testing
+  * Add Python3 yoga unit tests
+  * Update master for stable/xena
+  * Replace deprecated assertDictContainsSubset
+  * Update min version of tox to use allowlist
+  * [doc] Fix lldp\_basic name
+  * Expose more interface fields
+  * Add Python3 xena unit tests
+  * Update master for stable/wallaby
+  * Remove redundant items from CI jobs
+  * Update minversion of tox
+  * Move pep8 dependencies from test-requirements to tox.ini
+  * Remove lower-constraints job
+  * Set safe version of hacking
+  * Use python 3.8 in functional tests
+  * Fix l-c job
+  * Add Python3 wallaby unit tests
+  * Update master for stable/victoria</comment>
+    <requestid>983767</requestid>
+  </revision>
 </revisionlist>
