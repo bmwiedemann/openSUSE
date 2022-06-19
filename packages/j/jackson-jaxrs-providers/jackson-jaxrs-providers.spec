@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-jaxrs-providers
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without jp_minimal
 Name:           jackson-jaxrs-providers
-Version:        2.13.0
+Version:        2.13.3
 Release:        0
 Summary:        Jackson JAX-RS providers
 License:        Apache-2.0
@@ -26,10 +26,10 @@ URL:            https://github.com/FasterXML/jackson-jaxrs-providers
 Source0:        %{url}/archive/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core) >= %{version}
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind) >= %{version}
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core) >= 2.13
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind) >= 2.13
 BuildRequires:  mvn(com.fasterxml.jackson.module:jackson-module-jaxb-annotations)
-BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:) >= %{version}
+BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:) >= 2.13
 BuildRequires:  mvn(com.google.code.maven-replacer-plugin:replacer)
 BuildRequires:  mvn(javax.ws.rs:javax.ws.rs-api)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
@@ -42,8 +42,7 @@ BuildRequires:  mvn(com.fasterxml.jackson.dataformat:jackson-dataformat-yaml)
 BuildRequires:  mvn(org.glassfish.jersey.containers:jersey-container-servlet)
 BuildRequires:  mvn(org.glassfish.jersey.core:jersey-server)
 BuildRequires:  mvn(org.jboss.resteasy:resteasy-jaxrs)
-%endif
-%if %{with jp_minimal}
+%else
 Obsoletes:      jackson-jaxrs-cbor-provider < 2.10.0-1
 Obsoletes:      jackson-jaxrs-smile-provider < 2.10.0-1
 Obsoletes:      jackson-jaxrs-xml-provider < 2.10.0-1
