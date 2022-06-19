@@ -82,4 +82,12 @@
     <comment>Ussuri Update</comment>
     <requestid>803584</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>b965319170a03561caa3c79f317e540d</srcmd5>
+    <version>1.7.0</version>
+    <time>1655665899</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to wallaby template</comment>
+    <requestid>983765</requestid>
+  </revision>
 </revisionlist>

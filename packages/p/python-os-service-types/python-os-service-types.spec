@@ -1,7 +1,7 @@
 #
 # spec file for package python-os-service-types
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Python library for consuming OpenStack sevice-types-authority data
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://docs.openstack.org/developer/os-service-types
+URL:            https://docs.openstack.org/os-service-types/latest/
 Source0:        https://files.pythonhosted.org/packages/source/o/os-service-types/os-service-types-%{version}.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-oslotest
@@ -43,7 +43,6 @@ possible and local caching of the fetched data.
 
 %package -n python3-os-service-types
 Summary:        Python library for consuming OpenStack sevice-types-authority data
-Group:          Development/Languages/Python
 Requires:       python3-pbr >= 2.0.0
 
 %description -n python3-os-service-types
@@ -58,7 +57,6 @@ This package contains the Python 3.x module.
 
 %package -n os-service-types-doc
 Summary:        Documentation for OpenStack os-service-types library
-Group:          Development/Languages/Python
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
 
