@@ -1,5 +1,0 @@
-<package name="python-aioredis" project="openSUSE:Factory">
-  <title>AsyncIO Python Redis Support</title>
-  <description>The library is intended to provide simple and clear interface to Redis based on asyncio.</description>
-  <devel project="devel:languages:python" package="python-aioredis"/>
-</package>
