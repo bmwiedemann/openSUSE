@@ -415,4 +415,27 @@
     <comment></comment>
     <requestid>889969</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>559dd8884a56b645c9bdd5106478fb70</srcmd5>
+    <version>4.8.0</version>
+    <time>1655665902</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.8.0
+  - Fix the functional tests
+  - Fix --fields network_data
+  - Fix for missing fonts in PDF jobs
+  - Update master for stable/wallaby
+  - Add lower-constraints job to current development branch
+  - Changed minversion in tox to 3.18.0
+  - Add Python3 xena unit tests
+  - Make baremetal --debug actually work
+  - Add support for 'boot_mode' and 'secure_boot' node resource fields
+  - Add support for changing 'boot_mode' and 'secure_boot' states
+  - setup.cfg: Replace dashes with underscores
+  - Add missing unit tests for provision state commands
+  - Switch testing to Xena testing runtime
+  - Update project conundrum related docs
+  - Include BIOS registry fields in bios setting list command</comment>
+    <requestid>983768</requestid>
+  </revision>
 </revisionlist>
