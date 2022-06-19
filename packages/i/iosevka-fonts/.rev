@@ -860,4 +860,19 @@
 </comment>
     <requestid>980832</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>5c3a36de0aa5113fbd5611bee4e8b1df</srcmd5>
+    <version>15.5.1</version>
+    <time>1655665869</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v15.5.1
+  * Changes of version 15.5.1
+    = Add characters:
+      ~ QUADRUPLE PRIME (U+2057);
+      ~ CARET INSERTION POINT (U+2041);
+      ~ DOTTED CROSS (U+205C);
+    = Unhinted webfonts are added into releases.
+</comment>
+    <requestid>983644</requestid>
+  </revision>
 </revisionlist>

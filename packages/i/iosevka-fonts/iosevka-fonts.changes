@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 19 03:20:33 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v15.5.1
+  * Changes of version 15.5.1
+    = Add characters:
+      ~ QUADRUPLE PRIME (U+2057);
+      ~ CARET INSERTION POINT (U+2041);
+      ~ DOTTED CROSS (U+205C);
+    = Unhinted webfonts are added into releases.
+
+-------------------------------------------------------------------
 Sun Jun  5 00:37:33 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v15.5.0
