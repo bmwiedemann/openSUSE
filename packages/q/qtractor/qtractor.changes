@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Jun 18 13:55:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.26:
+  * Main application icon is now presented in scalable format (SVG).
+  * Have even more tolerance to JACK buffer-size changes, prompting for a complete
+    session reload, only when exceeding the double of the previous/current size.
+  * Added an additional status-bar label to show the session current buffer-size
+  * Migrated command line parsing to QCommandLineParser/Option (Qt >= 5.2)
+    Make last recorded clip current and suitable target for immediate loop
+    recording takes switch or navigation.
+  * Number of takes is now shown on clip titles and tooltips.
+  * Fixed in-flight transport mode changes.
+  * Fixed translations path to be relative to application runtime. 
+  * Hopefully fixed an old MIDI off-timing bug noticeable only when exporting
+    (Track/Export Tracks/Audio...) on large buffer-sizes (>= 2K frames/period).
+  * Clip/File Loop Set menu command is now a toggle.
+  * Fixed problem with punch-in/out and loop-recording being lost when stopping the
+    play-head right after and between the loop-start and punch-in points, even
+    though at least one cycle or take is through.
+  * Dropped autotools (autoconf, automake, etc.) build system.
+  * A more verbose warning question is issued, on whether to continue saving to an
+    existing zip/archive directory and accept to replace and erase all its current
+    data in the future.
+  * Fixed potential crash on session close or application exit, when some plugins
+    have been removed.
+
+-------------------------------------------------------------------
 Wed Feb 23 08:04:25 UTC 2022 - Fabio Pesari <fpesari@tuxfamily.org>
 
 - Removed "Requires: jack" as libjack.so.0 is already automatically

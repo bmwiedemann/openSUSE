@@ -17,13 +17,12 @@
 
 
 Name:           qtractor
-Version:        0.9.24
+Version:        0.9.26
 Release:        0
 Summary:        An Audio/MIDI multi-track sequencer
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
-URL:            http://qtractor.org/
-#GitClone:      https://github.com/rncbc/qtractor
+URL:            https://qtractor.org/
 Source0:        https://download.sourceforge.net/qtractor/qtractor-%{version}.tar.gz
 BuildRequires:  alsa-devel
 BuildRequires:  cmake
@@ -85,18 +84,18 @@ mv %{buildroot}%{_libdir}/qtractor/qtractor_plugin_scan %{buildroot}%{_bindir}
 %endif
 
 %files
-%doc AUTHORS ChangeLog README TODO
-%license COPYING
+%doc ChangeLog README
+%license LICENSE
 %dir %{_datadir}/metainfo/
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/translations
 %{_bindir}/%{name}
 %{_bindir}/qtractor_plugin_scan
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/metainfo/%{name}.appdata.xml
-%{_datadir}/icons/*/*/apps/%{name}.*
-%{_datadir}/icons/*/*/mimetypes/application-x-%{name}-*.*
-%{_datadir}/mime/packages/%{name}.xml
+%{_datadir}/applications/org.rncbc.qtractor.desktop
+%{_datadir}/metainfo/org.rncbc.qtractor.metainfo.xml
+%{_datadir}/icons/*/*/apps/org.rncbc.qtractor*
+%{_datadir}/icons/*/*/mimetypes/org.rncbc.qtractor.*
+%{_datadir}/mime/packages/org.rncbc.qtractor.xml
 %{_mandir}/man1/%{name}.1%{ext_man}
 %{_mandir}/fr/man1/%{name}.1%{ext_man}
 %{_datadir}/%{name}/translations/*
