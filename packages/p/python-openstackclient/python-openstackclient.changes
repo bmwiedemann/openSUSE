@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 19 11:35:22 UTC 2022 - cloud-devel@suse.de
+
+- added 0001-Skip-original_name-from-flavor-info.patch
+
+-------------------------------------------------------------------
 Tue Oct 26 21:57:03 UTC 2021 - cloud-devel@suse.de
 
 - removed 0001-Replace-assertItemsEqual-with-assertCountEqual.patch

@@ -1,0 +1,30 @@
+From f461af0ac801f80668176afc68d2b13b6f6a8bbc Mon Sep 17 00:00:00 2001
+From: Artem Goncharov <Artem.goncharov@gmail.com>
+Date: Fri, 14 Jan 2022 17:37:59 +0100
+Subject: [PATCH] Skip original_name from flavor info
+
+In the new SDK we are going to add additional parameter to the flavor
+which make no use for OSC. Exclude it explicitly since it also cause
+failing tests.
+
+Change-Id: Ie35e60498cf18f05c878611df6f88607a04b1870
+---
+ openstackclient/compute/v2/flavor.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/openstackclient/compute/v2/flavor.py b/openstackclient/compute/v2/flavor.py
+index a55aba2a..8a9eb07a 100644
+--- a/openstackclient/compute/v2/flavor.py
++++ b/openstackclient/compute/v2/flavor.py
+@@ -48,7 +48,7 @@ def _get_flavor_columns(item):
+         'is_public': 'os-flavor-access:is_public'
+ 
+     }
+-    hidden_columns = ['links', 'location']
++    hidden_columns = ['links', 'location', 'original_name']
+     return utils.get_osc_show_columns_for_sdk_resource(
+         item, column_map, hidden_columns)
+ 
+-- 
+2.36.1
+

@@ -569,4 +569,12 @@ update to version 3.1.0
   - Moving IRC network reference to OFTC</comment>
     <requestid>940197</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>1da1a1650ede52c7b9d8b3138f862cdb</srcmd5>
+    <version>5.6.0</version>
+    <time>1655665895</time>
+    <user>dimstar_suse</user>
+    <comment>- added 0001-Skip-original_name-from-flavor-info.patch</comment>
+    <requestid>983692</requestid>
+  </revision>
 </revisionlist>

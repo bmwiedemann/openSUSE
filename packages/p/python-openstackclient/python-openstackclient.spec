@@ -1,7 +1,7 @@
 #
 # spec file for package python-openstackclient
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-openstackclient
 Source0:        https://files.pythonhosted.org/packages/source/p/python-openstackclient/python-openstackclient-5.6.0.tar.gz
+# https://review.opendev.org/c/openstack/python-openstackclient/+/824733
+Patch1:         0001-Skip-original_name-from-flavor-info.patch
 BuildRequires:  openstack-macros
 BuildRequires:  python3-cinderclient >= 3.3.0
 BuildRequires:  python3-cliff >= 3.5.0
@@ -31,9 +33,8 @@ BuildRequires:  python3-ddt
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-glanceclient
 BuildRequires:  python3-keystoneclient >= 3.22.0
-BuildRequires:  python3-mock
 BuildRequires:  python3-novaclient >= 17.0.0
-BuildRequires:  python3-openstacksdk >= 0.56.0
+BuildRequires:  python3-openstacksdk >= 0.61.0
 BuildRequires:  python3-os-client-config
 BuildRequires:  python3-osc-lib >= 2.3.0
 BuildRequires:  python3-oslotest
@@ -62,11 +63,10 @@ Requires:       python3-heatclient
 Requires:       python3-keystoneauth1
 Requires:       python3-keystoneclient >= 3.22.0
 Requires:       python3-novaclient >= 17.0.0
-Requires:       python3-openstacksdk >= 0.56.0
+Requires:       python3-openstacksdk >= 0.61.0
 Requires:       python3-osc-lib >= 2.3.0
 Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-oslo.utils >= 3.33.0
-Requires:       python3-six
 %if 0%{?suse_version}
 Obsoletes:      python2-openstackclient < 4.0.0
 %endif
