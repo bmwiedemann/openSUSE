@@ -1,13 +1,15 @@
-Index: h5py-3.6.0/setup.py
+Index: h5py-3.7.0/setup.py
 ===================================================================
---- h5py-3.6.0.orig/setup.py
-+++ h5py-3.6.0/setup.py
-@@ -46,7 +46,7 @@ SETUP_REQUIRES = []
+--- h5py-3.7.0.orig/setup.py
++++ h5py-3.7.0/setup.py
+@@ -45,8 +45,8 @@ SETUP_REQUIRES = []
  if setup_configure.mpi_enabled():
      RUN_REQUIRES.append('mpi4py >=3.0.2')
      SETUP_REQUIRES.append("mpi4py ==3.0.2; python_version<'3.8'")
--    SETUP_REQUIRES.append("mpi4py ==3.0.3; python_version>='3.8'")
-+    SETUP_REQUIRES.append("mpi4py >=3.0.3; python_version>='3.8'")
+-    SETUP_REQUIRES.append("mpi4py ==3.0.3; python_version=='3.8.*'")
+-    SETUP_REQUIRES.append("mpi4py ==3.1.0; python_version>='3.9'")
++    SETUP_REQUIRES.append("mpi4py >=3.0.3; python_version=='3.8.*'")
++    SETUP_REQUIRES.append("mpi4py >=3.1.0; python_version>='3.9'")
  
  # Set the environment variable H5PY_SETUP_REQUIRES=0 if we need to skip
  # setup_requires for any reason.

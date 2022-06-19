@@ -63,7 +63,7 @@
 %endif
 # /SECTION MPI DEFINITIONS
 Name:           %{pname}%{?my_suffix}
-Version:        3.6.0
+Version:        3.7.0
 Release:        0
 Summary:        Python interface to the Hierarchical Data Format library
 License:        BSD-3-Clause
