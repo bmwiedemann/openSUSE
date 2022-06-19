@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 17 17:02:35 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.4.2:
+  * Stable bug fix release, mainly codecs, filter and format fixes.
+- Refresh ffmpeg-chromium.patch with quilt.
+
+-------------------------------------------------------------------
 Wed Mar 23 21:44:33 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Add conflicts for ffmpeg-5's tools

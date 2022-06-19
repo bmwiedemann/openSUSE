@@ -491,4 +491,12 @@
     <comment>- Add conflicts for ffmpeg-5's tools</comment>
     <requestid>964437</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>6627cea97934a7aab2ad9d0acb5418e4</srcmd5>
+    <version>4.4.2</version>
+    <time>1655665841</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>983492</requestid>
+  </revision>
 </revisionlist>
