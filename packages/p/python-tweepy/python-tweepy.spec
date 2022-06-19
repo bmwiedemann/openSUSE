@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tweepy
-Version:        4.5.0
+Version:        4.9.0
 Release:        0
 Summary:        Twitter library for python
 License:        MIT

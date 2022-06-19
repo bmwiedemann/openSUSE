@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Fri Jun 17 16:29:47 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- update to version 4.9.0: 
+  New Features / Improvements
+  * Add support for Direct Message typing indicator and read receipts (#1856)
+  * Add API.indicate_direct_message_typing and API.mark_direct_message_read
+  * Fallback to "detail" response value for HTTPException message (b6b8241)
+  * Handle "error" key of response being a string in HTTPException (2da4452)
+  * Twitter API Deprecations
+  * Deprecate Stream.sample and note deprecation of compliance messages for Stream.filter (#1876)
+  Misc
+  * Use setup.cfg for coverage.py configuration (e24bb2f)
+  * Explicitly specify coverage >= 4.4.2 requirement for dev extra (b5bd35e)
+  * Use setup.cfg for tox configuration (e24bb2f)
+  * Update lower bound for dev extra tox requirement to >= 3.21.0 (ba6e6b1)
+  * Remove tests_require from setup.py (2870031)
+  * Stop creating universal wheels (9d93ec8)
+  * Update and improve various documentation and tests
+- update to version 4.8.0:
+  New Features / Improvements
+  * Add support for Bookmarks with Twitter API v2 (#1848)
+  * Add Client.remove_bookmark, Client.get_bookmarks, Client.bookmark
+  * Add support for using OAuth 2.0 Authorization Code Flow with Client methods that require the authenticating user's ID (0157d0b)
+  * Raise TypeError for those methods when the access token isn't set
+  * Raise NotFound rather than HTTPException when encountering 404 response status codes in BaseClient.request (b6b8219)
+- update to version 4.7.0:
+  New Features / Improvements
+  * Add support for Quote Tweets lookup with Twitter API v2 (#1844)
+  * Add Client.get_quote_tweets
+  * Python Backwards-Incompatible Changes
+  * Drop support for Python 3.6, which has reached end-of-life status (#1788)
+  Bug Fixes
+  * Fix Client.follow to return response from Client.follow_user rather than None (0742f54)
+  * Fix Client.unfollow to return response from Client.unfollow_user rather than None (c1787f0)
+  Misc
+  * Organize documentation arrangement and improve index / table of contents categorization (c5310d1)
+  * Add documentation for API v2 models
+  * Add documentation for List (360594b)
+  * Add documentation for Media (c2dacc8)
+  * Add documentation for Place (e3fa223)
+  * Add documentation for Poll (61ed5d7)
+  * Add documentation for Space (1a7ea1f)
+  * Add documentation for Tweet (b9cef72)
+  * Add documentation for ReferencedTweet (9a995b5)
+  * Add documentation for User (aa3658e)
+  * Use Read the Docs Sphinx search extension for documentation (72c7e01)
+  * Add and improve API v2 examples (#1835, 6a6ef98)
+  * Use dash instead of underscore for requests-oauthlib requirement (2c94758)
+  * Optimize Tweet.referenced_tweets initialization (3299881)
+  * Update and improve various documentation
+- update to version 4.6.0:
+  This will be the last minor version to support Python 3.6 (#1788).
+  New Features / Improvements
+  * Add support for streaming with Twitter API v2 (86244c1)
+  * Refactor Client and Stream to inherit from new BaseClient and BaseStream classes and add StreamingClient, StreamResponse, and StreamRule
+  * Add support for new max_results and pagination_token parameters for Client.get_liking_users (bdd6b55)
+  * Add support for new max_results and pagination_token parameters for Client.get_retweeters (3479e56)
+  * Add support for new sort_order parameter for Client.search_all_tweets (bd202e5)
+  * Add support for new sort_order parameter for Client.search_recent_tweets (8b47170)
+  * Add Client.get_space_tweets (c8d5d9a)
+  * Add Space.subscriber_count (1ffc8cd)
+  * Use repr of text in Tweet.__repr__ (4e2997e)
+  * This avoids including inconstant newlines, rather than escaped newlines, in the string representation of the Tweet object, making it more consistent
+  * Override Mapping.__contains__ in DataMapping (9f10a58)
+  * This allows membership tests to check for existence within data in Twitter API v2 models, rather than existence of the attribute at all
+  * Initialize Stream.session within Stream.__init__ (80adf5b)
+  * Update the user agent based on Stream.user_agent even if Stream.session is already initialized
+  * Use oauthlib to create code challenge and verifier for PKCE (eb22416)
+  * Explicitly specify oauthlib dependency requirement as >= 3.2.0 (fc0d967)
+  * Update requests_oauthlib dependency requirement to >= 1.2.0 (dd7e2c9)
+  Bug Fixes
+  * Fix datetime endpoint parameter formatting in Client._make_request (#1793)
+  Misc
+  * Remove undocumented debug function (a702325)
+  * Add logging documentation (7701506)
+  * Update and improve various documentation
+
+-------------------------------------------------------------------
 Sun Feb  6 20:32:43 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 4.5.0:
