@@ -18,24 +18,21 @@
 
 
 Name:           pesign-obs-integration
-Version:        10.2+git20210804.ff18da1
+Version:        10.2+git20220504.8690743
 Release:        0
 Summary:        Macros and scripts to sign the kernel and bootloader
 License:        GPL-2.0-only
 Group:          Development/Tools/Other
 URL:            https://en.opensuse.org/openSUSE:UEFI_Image_File_Sign_Tools
 Source:         %{name}-%{version}.tar.gz
-Patch1:         0001-Support-ppc-grub-signing-jsc-SLE-18271-bsc-1192764.patch
-Patch2:         0002-kernel-sign-file-Move-x509-parsing-into-a-function.patch
-Patch3:         0003-kernel-sign-file-Support-appending-verbatim-PKCS-7-s.patch
-Patch4:         0004-Add-padding-to-grub-signature-correctly-jsc-SLE-1827.patch
+Patch:          order.patch
 BuildRequires:  openssl
 Requires:       fipscheck
 Requires:       mozilla-nss-tools
 Requires:       openssl
 # suse-module-tools <= 15.0.10 contains modsign-verify
 Requires:       suse-module-tools >= 15.0.10
-%ifarch %{ix86} x86_64 ia64 aarch64 %{arm}
+%ifarch %{ix86} x86_64 ia64 aarch64 %{arm} riscv64
 Requires:       pesign
 %endif
 
