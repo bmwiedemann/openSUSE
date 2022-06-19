@@ -51,7 +51,11 @@
 %define         python_pkg_name python39
 # Will provide the python3-* provides
 # Will do the /usr/bin/python3 and all the core links
-%define         primary_interpreter 0
+%if 0%{?sle_version} || 0%{?suse_version} >= 1550
+%define primary_interpreter 0
+%else
+%define primary_interpreter 1
+%endif
 # We don't process beta signs well
 %define         folderversion 3.9.13
 %define         tarname    Python-%{tarversion}
@@ -151,9 +155,12 @@ Patch33:        no-skipif-doctests.patch
 # PATCH-FIX-SLE skip-test_pyobject_freed_is_freed.patch mcepl@suse.com
 # skip a test failing on SLE-15
 Patch34:        skip-test_pyobject_freed_is_freed.patch
-# PATCH-FIX-UPSTREAM support-expat-245.patch jsc#SLE-21253 mcepl@suse.com
+# PATCH-FIX-UPSTREAM support-expat-CVE-2022-25236-patched.patch jsc#SLE-21253 mcepl@suse.com
 # Makes Python resilient to changes of API of libexpat
-Patch35:        support-expat-245.patch
+Patch35:        support-expat-CVE-2022-25236-patched.patch
+# PATCH-FIX-UPSTREAM CVE-2015-20107-mailcap-unsafe-filenames.patch bsc#1198511 mcepl@suse.com
+# avoid the command injection in the mailcap module.
+Patch36:        CVE-2015-20107-mailcap-unsafe-filenames.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -181,12 +188,12 @@ BuildRequires:  pkgconfig(libtirpc)
 BuildRequires:  mpdecimal-devel
 %endif
 %if %{with doc}
-%if 0%{?suse_version} >= 1550
-BuildRequires:  %{python_pkg_name}-Sphinx
-BuildRequires:  %{python_pkg_name}-python-docs-theme >= 2022.1
-%else
+%if 0%{?sle_version} && 0%{?sle_version} <= 150300
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-python-docs-theme >= 2022.1
+%else
+BuildRequires:  %{python_pkg_name}-Sphinx
+BuildRequires:  %{python_pkg_name}-python-docs-theme >= 2022.1
 %endif
 %endif
 %if %{with general}
@@ -404,16 +411,15 @@ other applications.
 %patch25 -p1
 %patch29 -p1
 %patch32 -p1
-%if 0%{?suse_version} <= 1500
-%patch33 -p1
-%endif
 %if 0%{?sle_version} && 0%{?sle_version} <= 150300
+%patch33 -p1
 %patch34 -p1
 %endif
 %if %{with mpdecimal}
 %patch05 -p1
 %endif
 %patch35 -p1
+%patch36 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

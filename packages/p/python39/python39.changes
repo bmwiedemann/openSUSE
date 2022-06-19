@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun  9 16:43:30 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2015-20107-mailcap-unsafe-filenames.patch to avoid
+  CVE-2015-20107 (bsc#1198511, gh#python/cpython#68966), the
+  command injection in the mailcap module.
+- Fix building of documentation and the universal configuration of the
+  %primary_interpreter.
+- (bsc#1196784, CVE-2022-25236) Rename patch:
+  support-expat-245.patch to support-expat-CVE-2022-25236-patched.patch
+  and update the patch to detect expat >= 2.4.4 instead of >= 2.4.5
+  as it was fully patched against CVE-2022-25236.
+
+-------------------------------------------------------------------
 Fri May 20 14:18:15 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.9.13:
@@ -250,7 +263,7 @@ Sat Mar 26 22:22:24 UTC 2022 - Matej Cepl <mcepl@suse.com>
     including bugfix for EntryPoint.extras, which was returning
     match objects and not the extras strings.
   - bpo-46985: Upgrade pip wheel bundled with ensurepip (pip
-    22.0.4)
+    22.0.4, bnc#1186819, CVE-2021-3572)
   - bpo-46968: faulthandler: On Linux 5.14 and newer, dynamically
     determine size of signal handler stack size CPython allocates
     using getauxval(AT_MINSIGSTKSZ). This changes allows for
