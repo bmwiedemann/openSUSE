@@ -179,4 +179,41 @@
  - Fix a bug where an error would send duplicate results. by @vaikas in #1797</comment>
     <requestid>978429</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0305b88e5f8f75c69d3b9ea846527886</srcmd5>
+    <version>1.9.0</version>
+    <time>1655665865</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.9.0
+  - Check failure message of policy that fails with issuer mismatch by @vaikas in #1815
+  - [Cosigned] Add signature pull secrets by @DennyHoang in #1805
+  - feat: add rego policy support by @hectorj2f in #1817
+  - Refactor fulcio signer to take in KeyOpts (take 2) by @wlynch in #1818
+  - cosigned: Test unsupported KMS providers by @imjasonh in #1820
+  - chore(deps): Included dependency review by @naveensrinivasan in #1792
+  - Add auth flow option to KeyOpts. by @wlynch in #1827
+  - Document Staging instance usage with Keyless by @k4leung4 in #1824
+  - New flag --oidc-providers-disable to disable OIDC providers by @puerco in #1832
+  - Validate tlog entry when verifying signature via public key. by @wlynch in #1833
+  - Add function to explicitly request a certain provider by @priyawadhwa in #1837
+  - cosigned: Fix podAntiAffinity labels by @elfotografo007 in #1841
+  - remove exclude from go.mod by @cpanato in #1846
+  - [Cosigned] Glob matching improvement by @DennyHoang in #1842
+  - sget: Enable KMS providers for sget by @imjasonh in #1852
+  - Fix piv-tool generate-key command in TOKENS doc by @nealmcb in #1850
+  - Add IBM Cloud Container Registry to tested registry list by @bainsy88 in #1856
+  - If SBOM ref has .json suffix, assume JSON mediatype by @jdolitsky in #1859
+  - Add rekor.0.pub TUF target to unit tests by @priyawadhwa in #1860
+  - Normalize certificate flag names by @haydentherapper in #1868
+  - Check certificate policy flags with only a certificate by @haydentherapper in #1869
+  - Update go to 1.17.10 / cosign image to 1.18.0 and actions setup go by @cpanato in #1861
+  - Point git commmit FUN.md to gitsign! by @wlynch in #1874
+  - [cosigned] remove regex from the image pattern fields by @hectorj2f in #1873
+  - go.mod: format go.mod by @zchee in #1879
+  - Remove dependency on deprecated github.com/pkg/errors by @zchee in #1887
+  - tree: only report artifacts that are present by @ribbybibby in #1872
+  - update README with ebpf modules by @EItanya in #1888
+  - Update github.com/google/go-containerregistry/pkg/authn/k8schain module to f1b065c6cb3d by @vpnachev in #1889 (forwarded request 983635 from msmeissn)</comment>
+    <requestid>983636</requestid>
+  </revision>
 </revisionlist>
