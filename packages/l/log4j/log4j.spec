@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} >= 1550
+%bcond_without extra_modules
+%else
+%bcond_with extra_modules
+%endif
 Name:           log4j
 Version:        2.17.2
 Release:        0
@@ -51,6 +56,17 @@ BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.slf4j:slf4j-ext)
 Obsoletes:      log4j-mini
 BuildArch:      noarch
+%if %{with extra_modules}
+BuildRequires:  mvn(com.fasterxml.jackson.dataformat:jackson-dataformat-xml)
+BuildRequires:  mvn(com.fasterxml.jackson.dataformat:jackson-dataformat-yaml)
+BuildRequires:  mvn(com.fasterxml.woodstox:woodstox-core)
+BuildRequires:  mvn(javax.servlet.jsp:jsp-api)
+BuildRequires:  mvn(javax.servlet:javax.servlet-api)
+BuildRequires:  mvn(org.apache.commons:commons-csv)
+BuildRequires:  mvn(org.apache.geronimo.specs:geronimo-jms_1.1_spec)
+BuildRequires:  mvn(org.lightcouch:lightcouch)
+BuildRequires:  mvn(org.zeromq:jeromq)
+%endif
 
 %description
 Log4j is a tool to help the programmer output log statements to a
@@ -67,6 +83,40 @@ Summary:        Apache Log4j Commons Logging Bridge
 
 %description jcl
 Apache Log4j Commons Logging Bridge.
+
+%if %{with extra_modules}
+%package taglib
+Summary:        Apache Log4j Tag Library
+
+%description taglib
+Apache Log4j Tag Library for Web Applications.
+
+%package jmx-gui
+Summary:        Apache Log4j JMX GUI
+Requires:       java-devel
+
+%description jmx-gui
+Swing-based client for remotely editing the log4j configuration and remotely
+monitoring StatusLogger output. Includes a JConsole plug-in.
+
+%package web
+Summary:        Apache Log4j Web
+
+%description web
+Support for Log4j in a web servlet container.
+
+%package bom
+Summary:        Apache Log4j BOM
+
+%description bom
+Apache Log4j 2 Bill of Material
+
+%package nosql
+Summary:        Apache Log4j NoSql
+
+%description nosql
+Use NoSQL databases such as MongoDB and CouchDB to append log messages.
+%endif
 
 %package        javadoc
 Summary:        API documentation for %{name}
@@ -122,7 +172,6 @@ rm -r log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/kafka
 
 # System scoped dep provided by JDK
 %pom_remove_dep :jconsole %{name}-jmx-gui
-%pom_add_dep sun.jdk:jconsole %{name}-jmx-gui
 
 # old AID is provided by felix, we want osgi-core
 %pom_change_dep -r org.osgi:org.osgi.core org.osgi:osgi.core
@@ -133,34 +182,42 @@ rm -r log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/kafka
 # tests are disabled
 %pom_remove_plugin -r :maven-failsafe-plugin
 
-%pom_disable_module %{name}-taglib
-%pom_disable_module %{name}-jmx-gui
-%pom_disable_module %{name}-bom
-%pom_disable_module %{name}-web
 %pom_disable_module %{name}-core-its
 %pom_disable_module %{name}-jpa
-%pom_disable_module %{name}-couchdb
 %pom_disable_module %{name}-cassandra
 %pom_disable_module %{name}-appserver
 %pom_disable_module %{name}-spring-boot
 %pom_disable_module %{name}-spring-cloud-config
 %pom_disable_module %{name}-kubernetes
+%if %{without extra_modules}
+%pom_disable_module %{name}-bom
+%pom_disable_module %{name}-taglib
+%pom_disable_module %{name}-jmx-gui
+%pom_disable_module %{name}-web
+%pom_disable_module %{name}-couchdb
+%endif
 
+%pom_remove_dep -r :javax.persistence
+%if %{without extra_modules}
 %pom_remove_dep -r :jackson-dataformat-yaml
 %pom_remove_dep -r :jackson-dataformat-xml
 %pom_remove_dep -r :woodstox-core
-%pom_remove_dep -r :javax.persistence
 %pom_remove_dep -r :jboss-jms-api_1.1_spec
 %pom_remove_dep -r :jeromq
 %pom_remove_dep -r :commons-csv
+%else
+%pom_change_dep -r :jboss-jms-api_1.1_spec org.apache.geronimo.specs:geronimo-jms_1.1_spec
+%endif
 
 %pom_add_dep javax.activation:javax.activation-api %{name}-core
 
+%if %{without extra_modules}
 rm -r log4j-core/src/main/java/org/apache/logging/log4j/core/{jackson,config/yaml,parser}
 rm -r log4j-core/src/main/java/org/apache/logging/log4j/core/appender/{db,mom,nosql}
 rm log4j-core/src/main/java/org/apache/logging/log4j/core/layout/*{Csv,Jackson,Xml,Yaml,Json,Gelf}*.java
 rm log4j-1.2-api/src/main/java/org/apache/log4j/builders/layout/*Xml*.java
 rm -r log4j-1.2-api/src/main/java/org/apache/log4j/or/jms
+%endif
 
 %{mvn_package} ':%{name}-slf4j-impl' slf4j
 %{mvn_package} ':%{name}-to-slf4j' slf4j
@@ -182,6 +239,10 @@ rm -r log4j-1.2-api/src/main/java/org/apache/log4j/or/jms
 %mvn_install
 %fdupes -s %{buildroot}%{_javadocdir}
 
+%if %{with extra_modules}
+%jpackage_script org.apache.logging.log4j.jmx.gui.ClientGUI '' '' %{name}/%{name}-jmx-gui:%{name}/%{name}-core %{name}-jmx false
+%endif
+
 %files -f .mfiles
 %dir %{_javadir}/%{name}
 %license LICENSE.txt
@@ -190,6 +251,19 @@ rm -r log4j-1.2-api/src/main/java/org/apache/log4j/or/jms
 %files slf4j -f .mfiles-slf4j
 
 %files jcl -f .mfiles-jcl
+
+%if %{with extra_modules}
+%files taglib -f .mfiles-taglib
+
+%files web -f .mfiles-web
+
+%files bom -f .mfiles-bom
+
+%files nosql -f .mfiles-nosql
+
+%files jmx-gui -f .mfiles-jmx-gui
+%{_bindir}/%{name}-jmx
+%endif
 
 %files javadoc -f .mfiles-javadoc
 %license LICENSE.txt

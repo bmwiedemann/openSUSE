@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 15 06:11:51 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build also taglib, jmx-gui, bom, nosql and web modules, on
+  platforms where we have the dependencies
+
+-------------------------------------------------------------------
 Mon Jun 13 11:21:51 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not package the *.zip artifacts whose content is part of the
