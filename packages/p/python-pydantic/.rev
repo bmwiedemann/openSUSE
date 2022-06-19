@@ -90,4 +90,12 @@
 - Clean up non-required Python 3.6 {Build,}Requires.</comment>
     <requestid>950593</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8a6c4971a25a503b839f106d485cdbcb</srcmd5>
+    <version>1.9.1</version>
+    <time>1655665833</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>983628</requestid>
+  </revision>
 </revisionlist>
