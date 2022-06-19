@@ -220,4 +220,15 @@
     <comment></comment>
     <requestid>889959</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5f82f25e1cea6602fff1afbce344703b</srcmd5>
+    <version>5.2.0</version>
+    <time>1655665887</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build against python 3.10
+- remove unneeded mock dependency 
+
+- update to version 5.2.0</comment>
+    <requestid>983577</requestid>
+  </revision>
 </revisionlist>
