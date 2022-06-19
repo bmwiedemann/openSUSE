@@ -9129,25 +9129,25 @@ unsorted:
   - libOyranosSynnefo-devel-static 
   - libOyranosSynnefo1 
   - libPDAL13 
-  - libPocoActiveRecord82 
-  - libPocoCppParser82 
-  - libPocoCrypto82 
-  - libPocoData82 
-  - libPocoDataMySQL82 
-  - libPocoDataODBC82 
-  - libPocoDataSQLite82 
-  - libPocoEncodings82 
-  - libPocoFoundation82 
-  - libPocoJSON82 
-  - libPocoJWT82 
-  - libPocoMongoDB82 
-  - libPocoNet82 
-  - libPocoNetSSL82 
-  - libPocoPDF82 
-  - libPocoRedis82 
-  - libPocoUtil82 
-  - libPocoXML82 
-  - libPocoZip82 
+  - libPocoActiveRecord83 
+  - libPocoCppParser83 
+  - libPocoCrypto83 
+  - libPocoData83 
+  - libPocoDataMySQL83 
+  - libPocoDataODBC83 
+  - libPocoDataSQLite83 
+  - libPocoEncodings83 
+  - libPocoFoundation83 
+  - libPocoJSON83 
+  - libPocoJWT83 
+  - libPocoMongoDB83 
+  - libPocoNet83 
+  - libPocoNetSSL83 
+  - libPocoPDF83 
+  - libPocoRedis83 
+  - libPocoUtil83 
+  - libPocoXML83 
+  - libPocoZip83 
   - libPythonQt-Qt5-Python3-3 
   - libPythonQt_QtAll-Qt5-Python3-3 
   - libQCSXCAD0 
@@ -14667,7 +14667,7 @@ unsorted:
   - libvmem-devel: [x86_64] 
   - libvmem1: [x86_64] 
   - libvmime-devel 
-  - libvmime-suse4 
+  - libvmime-suse5 
   - libvmmalloc-devel: [x86_64] 
   - libvmmalloc1: [x86_64] 
   - libvmtools-devel 
@@ -15375,10 +15375,15 @@ unsorted:
   - log4cpp-devel 
   - log4cpp-doc 
   - log4j 
+  - log4j-bom 
   - log4j-javadoc 
   - log4j-jcl 
+  - log4j-jmx-gui 
+  - log4j-nosql 
   - log4j-over-slf4j 
   - log4j-slf4j 
+  - log4j-taglib 
+  - log4j-web 
   - log4net 
   - logback 
   - logback-access 
@@ -22184,7 +22189,6 @@ unsorted:
   - python310-aiohttp-socks 
   - python310-aiohttp-theme 
   - python310-aioquic 
-  - python310-aioredis 
   - python310-aioresponses 
   - python310-aiorpcX 
   - python310-aiosmtplib 
@@ -25226,7 +25230,6 @@ unsorted:
   - python38-aiohttp_cors 
   - python38-aioitertools 
   - python38-aioquic 
-  - python38-aioredis 
   - python38-aioresponses 
   - python38-aiorpcX 
   - python38-aiosignal 
@@ -28484,7 +28487,6 @@ unsorted:
   - python39-aiohttp_cors 
   - python39-aioitertools 
   - python39-aioquic 
-  - python39-aioredis 
   - python39-aioresponses 
   - python39-aiorpcX 
   - python39-aiosignal 
