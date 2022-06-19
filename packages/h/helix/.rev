@@ -39,4 +39,12 @@ This will increase possible helix users.</comment>
 ** Finally builds successfully **</comment>
     <requestid>979978</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6af5b6943a20479e5f330bd6ec682893</srcmd5>
+    <version>22.05</version>
+    <time>1655665888</time>
+    <user>dimstar_suse</user>
+    <comment>debuginfo generation reenabled</comment>
+    <requestid>983704</requestid>
+  </revision>
 </revisionlist>

@@ -48,9 +48,6 @@ export HELIX_DISABLE_AUTO_GRAMMAR_BUILD=true
 HELIX_RUNTIME="$PWD/runtime" ./target/release/hx --grammar build
 
 %install
-# Debug info for helix's runtime grammars is not needed nor make sense
-%global __debug_install_post %{nil}
-%global debug_package %{nil}
 
 mkdir -p %{buildroot}%{_libdir}/%{name}
 mkdir -p %{buildroot}%{_helix_runtimedir}
@@ -63,9 +60,6 @@ install -Dm644 runtime/tutor.txt -t %{buildroot}%{_helix_runtimedir}
 ln -sv %{_helix_runtimedir} %{buildroot}%{_libdir}/%{name}/runtime
 install -D -d -m 0755 %{buildroot}%{_bindir}
 ln -sv %{_libdir}/%{name}/hx %{buildroot}%{_bindir}/%{name}
-
-# HACK for disabling debuginfo?
-touch %{_builddir}/%{name}/debugsourcefiles.list
 
 %files
 %license LICENSE

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 19 14:19:51 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- remove disabling of debuginfo generation
+
+-------------------------------------------------------------------
 Mon May 30 23:06:18 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - remove false positive by adding filter to shared-library-without-dependency-information
