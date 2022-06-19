@@ -26,7 +26,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-Babel
-Version:        2.10.1
+Version:        2.10.3
 Release:        0
 Summary:        Internationalization utilities
 License:        BSD-3-Clause

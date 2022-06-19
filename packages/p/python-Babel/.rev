@@ -703,4 +703,12 @@
   * Messages: Fix duplicate locations when writing without lineno</comment>
     <requestid>980789</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>a1a00b62fffaa763f5e874b07c2c80a6</srcmd5>
+    <version>2.10.3</version>
+    <time>1655665843</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>983570</requestid>
+  </revision>
 </revisionlist>

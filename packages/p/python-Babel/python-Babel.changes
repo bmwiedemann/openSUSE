@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jun 17 19:38:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+
+- update to 2.10.3 
+  This is a bugfix release for Babel 2.10.2, which was mistakenly packaged with outdated locale data.
+  Thanks to Michał Górny for pointing this out and Jun Omae for verifying.
+  This and future Babel PyPI packages will be built by a more automated process, which should make problems like this less likely to occur
+- update to 2.10.2 
+  This is a bugfix release for Babel 2.10.1.
+  * Fallback count=”other” format in format_currency() (#872) - Jun Omae
+  * Fix get_period_id() with dayPeriodRule across 0:00 (#871) - Jun Omae
+  * Add support for b and B period symbols in time format (#869) - Jun Omae
+  * chore(docs/typo): Fixes a minor typo in a function comment (#864) - Frank Harrison
+
+-------------------------------------------------------------------
 Sat Jun  4 18:08:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.10.1:
