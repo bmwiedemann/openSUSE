@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 26 21:27:06 UTC 2021 - cloud-devel@suse.de
+
+- update to version 3.12.0
+  - Use py3 as the default runtime for tox
+  - setup.cfg: Replace dashes with underscores
+  - Update master for stable/wallaby
+  - Fix Typo in shell.py
+  - Add Python3 xena unit tests
+
+-------------------------------------------------------------------
 Sun May  2 17:22:04 UTC 2021 - cloud-devel@suse.de
 
 - update to version 3.11.1
