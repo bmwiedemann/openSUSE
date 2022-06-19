@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 24 20:46:28 UTC 2022 - cloud-devel@suse.de
+
+- update to version 2.8.0
+  * Make debug option of wsgi server configurable
+  * Fix fo() backdoor command for non-class objects
+  * Fix BackOffLoopingCall error so it is not misleading
+  * Add Python3 yoga unit tests
+  * Update master for stable/xena
+
+-------------------------------------------------------------------
 Tue Oct 26 21:40:13 UTC 2021 - cloud-devel@suse.de
 
 - update to version 2.6.0
