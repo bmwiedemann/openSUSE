@@ -5,7 +5,7 @@ Maintainer: openSUSE <opensuse@opensuse.org>
 Standards-Version: 4.5.0
 Build-Depends: debhelper-compat (= 12)
 
-Package: libvmime-suse4
+Package: libvmime-suse5
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Library for working with MIME messages and IMAP/POP/SMTP
@@ -13,6 +13,7 @@ Description: Library for working with MIME messages and IMAP/POP/SMTP
 
 Package: libvmime-dev
 Architecture: any
-Depends: ${misc:Depends}, libvmime-suse4 (= ${binary:Version})
+Depends: ${misc:Depends}, libvmime-suse5 (= ${binary:Version}),
+ libgsasl-dev | libgsasl7-dev, libgnutls28-dev
 Description: Development files for vmime, an e-mail message library
  .

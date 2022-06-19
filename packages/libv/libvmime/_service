@@ -2,7 +2,7 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/kisli/vmime</param>
-		<param name="revision">edcb4b4b1f1feb5d823d2eaba6aa6dda462d0b00</param>
+		<param name="revision">fc69321d5304c73be685c890f3b30528aadcfeaf</param>
 		<param name="parent-tag">v0.9.2</param>
 		<param name="versionformat">0.9.2.@TAG_OFFSET@</param>
 	</service>
