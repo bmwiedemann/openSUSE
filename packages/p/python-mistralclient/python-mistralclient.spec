@@ -30,6 +30,7 @@ BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML >= 3.13
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-openstackclient
+BuildRequires:  python3-osc-lib >= 1.8.0
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-osprofiler
 BuildRequires:  python3-pbr >= 2.0.0
