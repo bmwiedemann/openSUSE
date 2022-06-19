@@ -141,4 +141,20 @@ Changes from 0.16.0 to 0.17.0:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>880414</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c85dfda9537356f79e271431925ed198</srcmd5>
+    <version>0.20.0</version>
+    <time>1655665849</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.20.0
+  * Add ipv4 digit lenghts validation
+    (gh#kvesteri/validators#191)
+  * Fix error with international URLs that have more than 2 hyphens
+    (gh#kvesteri/validators#184)
+Changes in 0.19.0:
+  * Improve IPv6 validation
+    (gh#kvesteri/validators#201 gh#kvesteri/validators#107)
+  * Drop support for Python 3.4</comment>
+    <requestid>982861</requestid>
+  </revision>
 </revisionlist>
