@@ -4,8 +4,8 @@
     <param name="url">https://git.code.sf.net/p/rosegarden/git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="match-tag">21.12</param>
-    <param name="versionformat">21.12</param>
+    <param name="match-tag">22.06</param>
+    <param name="versionformat">22.06</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">rosegarden</param>
   </service>

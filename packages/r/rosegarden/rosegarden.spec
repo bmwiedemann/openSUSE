@@ -17,11 +17,11 @@
 
 
 Name:           rosegarden
-Version:        21.12
+Version:        22.06
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Midi, Audio And Notation Editor
-URL:            http://www.rosegardenmusic.com/
+URL:            https://www.rosegardenmusic.com/
 Group:          Productivity/Multimedia/Sound/Midi
 Source0:        rosegarden-%{version}.tar.zst
 Source1:        %{name}.xpm
