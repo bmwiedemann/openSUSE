@@ -31,7 +31,6 @@ BuildRequires:  python3-debtcollector >= 1.2.0
 BuildRequires:  python3-eventlet
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-iso8601 >= 0.1.11
-BuildRequires:  python3-mock
 BuildRequires:  python3-monotonic
 BuildRequires:  python3-netaddr >= 0.7.18
 BuildRequires:  python3-netifaces >= 0.10.4
