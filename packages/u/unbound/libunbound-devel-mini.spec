@@ -22,7 +22,7 @@
 %bcond_without hardened_build
 #
 Name:           libunbound-devel-mini
-Version:        1.15.0
+Version:        1.16.0
 Release:        0
 Summary:        Just a devel package for build loops
 License:        BSD-3-Clause
@@ -104,5 +104,6 @@ rm -rf %{buildroot}%{_mandir} %{buildroot}%{_libdir}/*.la
 %{_includedir}/unbound.h
 %{_includedir}/unbound-event.h
 %{_libdir}/libunbound.so
+%{_libdir}/pkgconfig/libunbound.pc
 
 %changelog

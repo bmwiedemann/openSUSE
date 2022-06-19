@@ -460,4 +460,12 @@ Features
     <comment>update to 1.15.0 and switching to sysuser</comment>
     <requestid>974922</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>84a261549d1a21852ea961f9f682b864</srcmd5>
+    <version>1.16.0</version>
+    <time>1655665846</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>983597</requestid>
+  </revision>
 </revisionlist>
