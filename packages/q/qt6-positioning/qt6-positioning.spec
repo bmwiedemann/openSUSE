@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.3.0
+%define real_version 6.3.1
 %define short_version 6.3
 %define tar_name qtpositioning-everywhere-src
 %define tar_suffix %{nil}
@@ -27,13 +27,14 @@
 %endif
 #
 Name:           qt6-positioning%{?pkg_suffix}
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        Qt 6 Positioning plugins and libraries
 License:        GPL-3.0-or-later
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-positioning-rpmlintrc
+BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-quick-private-devel
 BuildRequires:  cmake(Qt6Core)
@@ -175,8 +176,8 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Bundled_Clip2Tri
 %files
 %dir %{_qt6_pluginsdir}/position
 %{_qt6_pluginsdir}/position/libqtposition_geoclue2.so
-%{_qt6_pluginsdir}/position/libqtposition_nmea.so
 %{_qt6_pluginsdir}/position/libqtposition_positionpoll.so
+%{_qt6_pluginsdir}/position/libqtposition_nmea.so
 
 %files examples
 %{_qt6_examplesdir}/*
@@ -200,6 +201,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Bundled_Clip2Tri
 %{_qt6_libdir}/libQt6Positioning.so
 %{_qt6_metatypesdir}/qt6positioning_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_positioning.pri
+%{_qt6_pkgconfigdir}/Qt6Positioning.pc
 %exclude %{_qt6_includedir}/QtPositioning/%{real_version}
 
 %files -n qt6-positioning-private-devel
@@ -217,6 +219,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Bundled_Clip2Tri
 %{_qt6_libdir}/libQt6PositioningQuick.so
 %{_qt6_metatypesdir}/qt6positioningquick_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_positioningquick.pri
+%{_qt6_pkgconfigdir}/Qt6PositioningQuick.pc
 %exclude %{_qt6_includedir}/QtPositioningQuick/%{real_version}
 
 %files -n qt6-positioningquick-private-devel
