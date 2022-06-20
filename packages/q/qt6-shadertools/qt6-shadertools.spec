@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.3.0
+%define real_version 6.3.1
 %define short_version 6.3
 %define tar_name qtshadertools-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-shadertools%{?pkg_suffix}
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        Qt 6 ShaderTools library
 License:        GPL-3.0-or-later
@@ -38,6 +38,7 @@ Source99:       qt6-shadertools-rpmlintrc
 Patch0:         0001-Fix-encoding-decoding-of-string-literals-for-big-end.patch
 Patch1:         0002-TIntermediate-promoteConstantUnion-fix-conversion-to.patch
 Patch2:         0003-Use-intermOut.cpp-s-IsNan-and-IsInfinity-for-parse-t.patch
+BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Gui)
@@ -70,8 +71,8 @@ Development files for the Qt 6 ShaderTools library
 
 %package private-devel
 Summary:        Non-ABI stable API for the Qt 6 ShaderTools library
-%requires_eq    qt6-core-private-devel
 Requires:       cmake(Qt6ShaderTools) = %{real_version}
+%requires_eq    qt6-core-private-devel
 
 %description private-devel
 This package provides private headers of libQt6ShaderTools that do not have any
@@ -115,6 +116,7 @@ ABI or API guarantees.
 %{_qt6_libdir}/libQt6ShaderTools.so
 %{_qt6_metatypesdir}/qt6shadertools_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_shadertools.pri
+%{_qt6_pkgconfigdir}/Qt6ShaderTools.pc
 %exclude %{_qt6_includedir}/QtShaderTools/%{real_version}/
 
 %files private-devel
