@@ -284,4 +284,23 @@
     scaling factor relative to the input's pixel size, respecting the terminal</comment>
     <requestid>980989</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d3d9af544735f1939d6631982abff44a</srcmd5>
+    <version>1.12.1</version>
+    <time>1655732310</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.12.1:
+  * Increased GLib minimum version to 2.20.
+  * Added 12 new test inputs, including bad inputs to handle gracefully.
+  * Added a few symbols to API documentation that were accidentally left out.
+  * Bug fixes:
+    + huntr.dev CVE-2022-2061: Out-of-bounds read in libnsgif's lzw_decode()
+    + [unfiled] Undefined behavior in libnsgif due to uninitialized frame fields.
+    + [unfiled] Signed integer overflow in chafa_pack_color().
+    + [unfiled] Integer overflow in normalization pass on some images.
+    + [unfiled] Potential unaligned access with corrupt XWD images.
+    + [unfiled] Integer overflow in quantization on some images.
+    + [unfiled] Calculating offset from NULL pointer in LodePNG.</comment>
+    <requestid>983868</requestid>
+  </revision>
 </revisionlist>
