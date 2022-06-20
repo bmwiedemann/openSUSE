@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.3.0
+%define real_version 6.3.1
 %define short_version 6.3
 %define tar_name qtwebengine-everywhere-src
 %define tar_suffix %{nil}
@@ -42,7 +42,7 @@
 %bcond_without system_minizip
 #
 Name:           qt6-webengine%{?pkg_suffix}
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        Web browser engine for Qt applications
 License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
@@ -50,8 +50,6 @@ URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-webengine-rpmlintrc
 # Patches 0-100 are upstream patches #
-Patch0:         qtwebengine-icu70.patch
-Patch1:         0001-Find-GIO-with-QtBase-6.2.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       rtc-dont-use-h264.patch
 # PATCH-FIX-OPENSUSE -- disable-gpu-when-using-nouveau-boo-1005323.diff
@@ -67,6 +65,7 @@ BuildRequires:  Mesa-KHR-devel
 BuildRequires:  bison
 # Not pulled automatically on Leap
 BuildRequires:  cups-config
+BuildRequires:  cups-devel
 BuildRequires:  flex
 BuildRequires:  gperf
 BuildRequires:  krb5-devel
@@ -269,9 +268,9 @@ Summary:        Development files for the Qt 6 WebEngineCore library
 Requires:       libQt6WebEngineCore6 = %{version}
 Requires:       cmake(Qt6Gui)
 Requires:       cmake(Qt6Network)
+Requires:       cmake(Qt6Positioning)
 Requires:       cmake(Qt6Quick)
 Requires:       cmake(Qt6WebChannel)
-Requires:       cmake(Qt6Positioning)
 
 %description -n qt6-webenginecore-devel
 Development files for the Qt 6 WebEngineCore library.
@@ -358,6 +357,7 @@ export NINJAFLAGS="%{?_smp_mflags}"
   -DFEATURE_webengine_developer_build:BOOL=OFF \
   -DFEATURE_webengine_embedded_build:BOOL=OFF \
   -DFEATURE_webengine_extensions:BOOL=ON \
+  -DFEATURE_webengine_printing_and_pdf:BOOL=ON \
   -DFEATURE_webengine_kerberos:BOOL=ON \
   -DFEATURE_webengine_native_spellchecker:BOOL=OFF \
   -DFEATURE_webengine_system_libevent:BOOL=ON \
@@ -425,6 +425,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BuildInternals
 %{_qt6_libdir}/libQt6Pdf.so
 %{_qt6_metatypesdir}/qt6pdf_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_pdf.pri
+%{_qt6_pkgconfigdir}/Qt6Pdf.pc
 %exclude %{_qt6_includedir}/QtPdf/%{real_version}
 
 %files -n qt6-pdf-private-devel
@@ -442,6 +443,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BuildInternals
 %{_qt6_libdir}/libQt6PdfQuick.so
 %{_qt6_metatypesdir}/qt6pdfquick_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_pdfquick.pri
+%{_qt6_pkgconfigdir}/Qt6PdfQuick.pc
 %exclude %{_qt6_includedir}/QtPdfQuick/%{real_version}
 
 %files -n qt6-pdfquick-private-devel
@@ -459,6 +461,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BuildInternals
 %{_qt6_libdir}/libQt6PdfWidgets.so
 %{_qt6_metatypesdir}/qt6pdfwidgets_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_pdfwidgets.pri
+%{_qt6_pkgconfigdir}/Qt6PdfWidgets.pc
 %exclude %{_qt6_includedir}/QtPdfWidgets/%{real_version}
 
 %files -n qt6-pdfwidgets-private-devel
@@ -486,6 +489,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BuildInternals
 %{_qt6_libexecdir}/qwebengine_convert_dict
 %{_qt6_metatypesdir}/qt6webenginecore_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_webenginecore.pri
+%{_qt6_pkgconfigdir}/Qt6WebEngineCore.pc
 %exclude %{_qt6_includedir}/QtWebEngineCore/%{real_version}
 
 %files -n qt6-webenginecore-private-devel
@@ -510,6 +514,8 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BuildInternals
 %{_qt6_metatypesdir}/qt6webenginequickdelegatesqml_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_webenginequick.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_webenginequickdelegatesqml.pri
+%{_qt6_pkgconfigdir}/Qt6WebEngineQuick.pc
+%{_qt6_pkgconfigdir}/Qt6WebEngineQuickDelegatesQml.pc
 %exclude %{_qt6_includedir}/QtWebEngineQuick/%{real_version}
 
 %files -n qt6-webenginequick-private-devel
@@ -528,6 +534,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BuildInternals
 %{_qt6_libdir}/libQt6WebEngineWidgets.so
 %{_qt6_metatypesdir}/qt6webenginewidgets_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_webenginewidgets.pri
+%{_qt6_pkgconfigdir}/Qt6WebEngineWidgets.pc
 %exclude %{_qt6_includedir}/QtWebEngineWidgets/%{real_version}
 
 %files -n qt6-webenginewidgets-private-devel
