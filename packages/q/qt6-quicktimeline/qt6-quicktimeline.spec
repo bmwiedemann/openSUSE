@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.3.0
+%define real_version 6.3.1
 %define short_version 6.3
 %define tar_name qtquicktimeline-everywhere-src
 %define tar_suffix %{nil}
@@ -27,13 +27,14 @@
 %endif
 #
 Name:           qt6-quicktimeline%{?pkg_suffix}
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        Qt 6 module for creating keyframe-based animations
 License:        GPL-3.0-or-later
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-quicktimeline-rpmlintrc
+BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-gui-private-devel
 BuildRequires:  qt6-qml-private-devel
@@ -121,6 +122,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_libdir}/libQt6QuickTimeline.so
 %{_qt6_metatypesdir}/qt6quicktimeline_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quicktimeline.pri
+%{_qt6_pkgconfigdir}/Qt6QuickTimeline.pc
 %exclude %{_qt6_includedir}/QtQuickTimeline/%{real_version}
 
 %files private-devel
