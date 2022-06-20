@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 19 18:33:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.43:
+  * Lazily import url2pathname.
+  * Drop caching of full HTTP response. Attempt #2.
+
+-------------------------------------------------------------------
 Sun May 29 20:02:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.20.42:
