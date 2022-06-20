@@ -17,7 +17,7 @@
 
 
 Name:           noisetorch
-Version:        0.12.0
+Version:        0.12.2
 Release:        0
 Summary:        Real-time microphone noise suppression on Linux
 License:        GPL-3.0-or-later

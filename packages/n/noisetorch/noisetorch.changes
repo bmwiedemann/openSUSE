@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jun 20 10:52:06 UTC 2022 - mvetter@suse.com
+
+- Update to version 0.12.2:
+  * Preparing v0.12.2
+  * fix(update): prefer TrimLeft to slice operator when removing prefixes
+  * fix(update): strip 'v' from version string
+  * Preparing v0.12.1
+  * chore: minor refactoring
+  * chore(views): Reimplement views using slices
+  * Update .github/ISSUE_TEMPLATE/bug_report.md
+  * Update issue templates
+  * Improve code that reads the latest release from GitHub
+  * fix(updates): Handle other possible errors in getLatestRelease()
+  * Add noisetorch/pulseaudio to the vendor folder.
+  * Update vendor dir for noisetorch/pulseaudio.
+  * Update go.mod, go.sum to noisetorch/pulseaudio.
+  * Update imports to point to noisetorch/pulseaudio.
+  * Install instructions for source build
+  * fix(updates): Fix crash when no internet connection
+  * Bump david-a-wheeler/flawfinder from 2.0.19.pre.alpha1 to 2.0.19
+  * fix(dependabot): correct dir for submods & actions
+  * Bump github.com/BurntSushi/toml from 0.4.1 to 1.1.0
+  * README.md
+  * Update README.md
+  * badge rounded edges
+  * Readme Modifications
+
+-------------------------------------------------------------------
 Wed Jun 15 13:51:29 UTC 2022 - rombert@apache.org
 
 - Update to version v0.12.0:

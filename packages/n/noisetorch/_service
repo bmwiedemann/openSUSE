@@ -5,7 +5,7 @@
     <param name="package-meta">yes</param>
     <param name="changesgenerate">enable</param>
     <param name="submodules">enable</param>
-    <param name="revision">v0.12.0</param>
+    <param name="revision">v0.12.2</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
@@ -14,6 +14,6 @@
     <param name="file">*.tar</param>
   </service>
   <service name="go_modules" mode="disabled">
-    <param name="archive">NoiseTorch-0.12.0.tar.gz</param>
+    <param name="archive">NoiseTorch-0.12.2.tar.gz</param>
   </service>
 </services>
