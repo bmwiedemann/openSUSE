@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.3.0
+%define real_version 6.3.1
 %define short_version 6.3
 %define tar_name qtremoteobjects-everywhere-src
 %define tar_suffix %{nil}
@@ -27,13 +27,14 @@
 %endif
 #
 Name:           qt6-remoteobjects%{?pkg_suffix}
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        Qt6 RemoteObjects Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-remoteobjects-rpmlintrc
+BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-qml-private-devel
 BuildRequires:  cmake(Qt6Core)
@@ -53,7 +54,7 @@ module to enable information exchange between processes or computers.
 %if !%{qt6_docs_flavor}
 
 %package imports
-Summary:         Qt 6 RemoteObjects QML files
+Summary:        Qt 6 RemoteObjects QML files
 
 %description imports
 QML files and plugins for the Qt 6 RemoteObjects module
@@ -137,6 +138,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 # Unneeded?
 rm -r %{buildroot}%{_qt6_mkspecsdir}/features
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6RepParser
+rm %{buildroot}%{_qt6_pkgconfigdir}/Qt6RepParser.pc
 
 %post -n libQt6RemoteObjects6 -p /sbin/ldconfig
 %post -n libQt6RemoteObjectsQml6 -p /sbin/ldconfig
@@ -163,6 +165,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6RepParser
 %{_qt6_metatypesdir}/qt6remoteobjects_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_remoteobjects.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_repparser.pri
+%{_qt6_pkgconfigdir}/Qt6RemoteObjects.pc
 %exclude %{_qt6_includedir}/QtRemoteObjects/%{real_version}
 
 %files private-devel
@@ -180,6 +183,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6RepParser
 %{_qt6_libdir}/libQt6RemoteObjectsQml.so
 %{_qt6_metatypesdir}/qt6remoteobjectsqml_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_remoteobjectsqml.pri
+%{_qt6_pkgconfigdir}/Qt6RemoteObjectsQml.pc
 %exclude %{_qt6_includedir}/QtRemoteObjectsQml/%{real_version}
 
 %files -n qt6-remoteobjectsqml-private-devel
