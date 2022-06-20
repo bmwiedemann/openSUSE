@@ -17,7 +17,7 @@
 
 
 Name:           strace
-Version:        5.17
+Version:        5.18
 Release:        0
 Summary:        A utility to trace the system calls of a program
 License:        BSD-3-Clause
@@ -29,7 +29,6 @@ Source:         https://github.com/strace/strace/releases/download/v%{version}/%
 Source2:        https://github.com/strace/strace/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
 Source3:        %{name}.keyring
 Source4:        baselibs.conf
-Patch:          tests-ptrace.patch
 BuildRequires:  haveged
 BuildRequires:  libacl-devel
 BuildRequires:  libaio-devel
@@ -59,7 +58,6 @@ and processes can be seen.  Child processes can also be tracked.
 
 %prep
 %setup -q
-%patch -p1
 
 %build
 %configure \

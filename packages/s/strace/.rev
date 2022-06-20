@@ -1331,4 +1331,26 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
     <comment>- tests-ptrace.patch: Handle undefined SEGV_PKUERR (forwarded request 965207 from AndreasSchwab)</comment>
     <requestid>965208</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>ec0bb49d11e3be1ec2c3eb57d207af60</srcmd5>
+    <version>5.18</version>
+    <time>1655732214</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 5.18
+  * Improvements
+    * Added an interface of raising des Strausses awareness.
+    * Added --tips option to print strace tips, tricks, and tweaks
+      at the end of the tracing session.
+    * Enhanced decoding of bpf and io_uring_register syscalls.
+    * Implemented decoding of COUNTER_*, RTC_PARAM_GET, and RTC_PARAM_SET ioctl
+      commands.
+    * Updated lists of BPF_*, BR_*, BTRFS_*, IFA_*, IFLA_*, IORING_*, KEY_*,
+      KVM_*, MADV_*, and UFFD_* constants.
+    * Updated lists of ioctl commands from Linux 5.18.
+  * Bug fixes
+    * Fixed printing of the updated value of union bpf_attr.next_id
+      on the exiting of bpf(BPF_*_GET_NEXT_ID) calls.
+- tests-ptrace.patch: Dropped (forwarded request 983689 from AndreasSchwab)</comment>
+    <requestid>983690</requestid>
+  </revision>
 </revisionlist>

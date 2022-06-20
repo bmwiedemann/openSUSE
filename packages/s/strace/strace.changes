@@ -1,7 +1,26 @@
 -------------------------------------------------------------------
+Sat Jun 18 20:33:56 UTC 2022 - Andreas Schwab <schwab@linux-m68k.org>
+
+- Update to strace 5.18
+  * Improvements
+    * Added an interface of raising des Strausses awareness.
+    * Added --tips option to print strace tips, tricks, and tweaks
+      at the end of the tracing session.
+    * Enhanced decoding of bpf and io_uring_register syscalls.
+    * Implemented decoding of COUNTER_*, RTC_PARAM_GET, and RTC_PARAM_SET ioctl
+      commands.
+    * Updated lists of BPF_*, BR_*, BTRFS_*, IFA_*, IFLA_*, IORING_*, KEY_*,
+      KVM_*, MADV_*, and UFFD_* constants.
+    * Updated lists of ioctl commands from Linux 5.18.
+  * Bug fixes
+    * Fixed printing of the updated value of union bpf_attr.next_id
+      on the exiting of bpf(BPF_*_GET_NEXT_ID) calls.
+- tests-ptrace.patch: Dropped
+
+-------------------------------------------------------------------
 Sun Mar 27 13:07:04 UTC 2022 - Andreas Schwab <schwab@linux-m68k.org>
 
-- Update to strace 5.16
+- Update to strace 5.17
   * Improvements
     * Extended personality designation syntax of syscall specification expressions
       to support all@pers and %class@pers.
