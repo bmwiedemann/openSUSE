@@ -17,6 +17,13 @@
 
 
 %define rname kdev-python
+%if 0%{suse_version} >= 1550
+# Not compatible with Python 3.10 rh#1898116 #bpo40939
+# https://invent.kde.org/kdevelop/kdev-python/-/issues/4
+%define mypython python39
+%else 
+%define mypython python3
+%endif
 %bcond_without released
 Name:           kdevelop5-plugin-python3
 Version:        22.04.2
@@ -34,8 +41,8 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  kdevelop5
 BuildRequires:  kf5-filesystem
-BuildRequires:  python3 >= 3.4.3
-BuildRequires:  python3-devel >= 3.4.3
+BuildRequires:  %mypython >= 3.4.3
+BuildRequires:  %mypython-devel >= 3.4.3
 BuildRequires:  cmake(KDevPlatform)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5TextEditor)
@@ -45,7 +52,7 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Requires:       kdevelop5
 Recommends:     %{name}-lang
-Recommends:     python3-pep8
+Recommends:     %mypython-pep8
 Provides:       kdevelop4-plugin-python = %{version}
 Obsoletes:      kdevelop4-plugin-python < %{version}
 # The following are needed due to old unstable packages in KDE repositories
