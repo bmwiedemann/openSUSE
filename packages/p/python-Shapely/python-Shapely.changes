@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jun 20 10:48:47 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.8.2
+  - Make Polygons and MultiPolygons closed by definition, like
+    LinearRings. Resolves #1246.
+  - Perform frozen app check for GEOS before conda env check on
+    macos as we already do on linux (#1301).
+  - Fix leak of GEOS coordinate sequence in nearest_points reported
+    in #1098.
+- Release 1.8.1
+  * Wheels for 1.8.1 published on PyPI include GEOS 3.10.2. This
+    version is the best version of GDAL yet. Discrepancies in
+    behavior compared to previous versions are considered to be
+    improvements.
+  * Shapely 1.8.1 works with Pythons 3.6-3.10.
+  * Require Cython >= 0.29.24 to support Python 3.10 (#1224).
+  * Fix array_interface_base (#1235).
+- Fix libgeos* runtime requirement undetected due to the ctypes
+  load
+
+-------------------------------------------------------------------
 Mon Jan 10 22:17:06 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.8.0

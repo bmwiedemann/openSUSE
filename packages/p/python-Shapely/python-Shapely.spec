@@ -16,32 +16,34 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
+%{?!python_module:%define python_module() python3-%{**}}
 %bcond_without test
 %define skip_python2 1
 Name:           python-Shapely
-Version:        1.8.0
+Version:        1.8.2
 Release:        0
 Summary:        Geospatial geometries, predicates, and operations
 License:        BSD-3-Clause
-URL:            https://github.com/Toblerity/Shapely
+URL:            https://github.com/shapely/shapely
 Source:         https://files.pythonhosted.org/packages/source/S/Shapely/Shapely-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 0.19}
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.6}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  geos-devel >= 3.3
+BuildRequires:  geos-devel >= 3.5
 BuildRequires:  python-rpm-macros
 %if 0%{?suse_version} > 1320
 BuildRequires:  %{python_module matplotlib}
 %endif
-Requires:       geos >= 3.3
+# Shapely calls the GEOS libs libgeos and libgeos_c via ctypes in python scripts, undetected by rpm ld analyzer.
+# (libgeos_c1 is detected due to some Cython optimized lib, but libgeos3 is not)
+# use requires_eq in order to be detectable by the python_subpackages rewriter
+%requires_eq    %(rpm -q --requires geos-devel | grep libgeos)
 Recommends:     python-numpy
-Provides:       python-shapely = %{version}
-Obsoletes:      python-shapely < %{version}
+Provides:       python-shapely = %{version}-%{release}
+Obsoletes:      python-shapely < %{version}-%{release}
 %python_subpackages
 
 %description
