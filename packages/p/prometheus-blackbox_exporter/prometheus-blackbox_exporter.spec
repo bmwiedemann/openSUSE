@@ -50,6 +50,7 @@ Requires(pre):  user(prometheus)
 Requires(pre):  group(prometheus)
 Requires(post): permissions
 %endif
+ExcludeArch:    s390
 
 %description
 Prometheus blackbox exporter allows blackbox probing of endpoints over HTTP, HTTPS, DNS, TCP and ICMP.
