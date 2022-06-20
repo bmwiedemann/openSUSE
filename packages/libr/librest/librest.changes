@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 20 08:13:55 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.9.1:
+  + Removed RestAuth object.
+  + Added an demo application to showcase librest.
+  + Removed OAuth1 Proxy.
+  + Added soupapiversion to pkg-config file in order to check the
+    which soup version this library got built with.
+  + Build against libsoup3 by default.
+
+-------------------------------------------------------------------
 Fri Jan 14 18:53:43 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.9.0:

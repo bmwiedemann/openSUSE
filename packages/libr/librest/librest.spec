@@ -22,7 +22,7 @@
 %define abi_pkg 1_0
 %define libname librest-%{abi_pkg}-%{sover}
 Name:           librest
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        Library to access RESTful web services
 License:        LGPL-2.1-only
@@ -117,7 +117,7 @@ can then be called on.
 
 %files -n %{libname}
 %license COPYING
-%doc AUTHORS README
+%doc AUTHORS README.md
 %{_libdir}/librest-%{abi}.so.%{sover}
 %{_libdir}/librest-%{abi}.so.%{sover}.*
 %{_libdir}/librest-extras-%{abi}.so.%{sover}

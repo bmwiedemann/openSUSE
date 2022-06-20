@@ -217,4 +217,12 @@
     <comment>GNOME 42 - ready for impact</comment>
     <requestid>963648</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>20e5fd6ae0507907764068705b685bf4</srcmd5>
+    <version>0.9.1</version>
+    <time>1655732326</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 983877 from iznogood)</comment>
+    <requestid>983913</requestid>
+  </revision>
 </revisionlist>
