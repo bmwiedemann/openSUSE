@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.3.0
+%define real_version 6.3.1
 %define short_version 6.3
 %define tar_name qtwayland-everywhere-src
 %define tar_suffix %{nil}
@@ -30,7 +30,7 @@
 %global with_opengl 1
 %endif
 Name:           qt6-wayland%{?pkg_suffix}
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        Qt 6 Wayland libraries and tools
 # The wayland compositor files are GPL-3.0-or-later
@@ -282,6 +282,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_libdir}/libQt6WaylandClient.so
 %{_qt6_metatypesdir}/qt6waylandclient_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_waylandclient.pri
+%{_qt6_pkgconfigdir}/Qt6WaylandClient.pc
 %exclude %{_qt6_includedir}/QtWaylandClient/%{real_version}
 
 %files -n qt6-waylandclient-private-devel
@@ -299,6 +300,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_libdir}/libQt6WaylandCompositor.so
 %{_qt6_metatypesdir}/qt6waylandcompositor_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_waylandcompositor.pri
+%{_qt6_pkgconfigdir}/Qt6WaylandCompositor.pc
 %exclude %{_qt6_includedir}/QtWaylandCompositor/%{real_version}
 
 %files -n qt6-waylandcompositor-private-devel
