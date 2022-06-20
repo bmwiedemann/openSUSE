@@ -377,4 +377,41 @@
   - Changed minversion in tox to 3.18.0</comment>
     <requestid>979085</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0a9ac0be7d5a3a6b4d3627e2968d0008</srcmd5>
+    <version>0.99.0</version>
+    <time>1655732339</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.99.0
+  - Fix functional test for user message
+  - Block storage - reunite :class: links on single lines
+  - Splits class `TestPlacementProxy`
+  - compute: Server group rules are dicts, not lists of dicts
+  - Skip qos-pps-minimum tests if extension is missing
+  - network: Fix update of network provider
+  - Improve StatsD metric precision
+  - Get rid of normalization for image service
+  - Add &quot;security_group_ids&quot; to Port's query parameters
+  - Switch update_server cloud layer to proxy
+  - Splits class `TestOrchestrationProxy`
+  - Cloud / Compute service - reindentation of the docstrings
+  - Database service - reindentation of the docstrings
+  - Fix misuse of assertTrue
+  - Improve compute flavor handling
+  - Adds storage pools to shared file system
+  - exception: Correct argument
+  - Shared File System - reindentation of the docstrings
+  - Reindentation of the docstrings for baremetal service
+  - Replace the 'try except' block
+  - tests: Handle overridden 'verify_delete' (kw)args
+  - Switch quota methods of cloud layer to proxy
+  - Start splitting the `TestImageProxy` class
+  - Network - reindentation of the docstrings
+  - Splits class `TestInstanceHaProxy`
+  - Fix import order in identity tests
+  - Cloud / Network service - reindentation of the docstrings
+  - Splits the `TestBaremetalProxy` class
+  - Splits class `TestMessageProxy`</comment>
+    <requestid>983961</requestid>
+  </revision>
 </revisionlist>

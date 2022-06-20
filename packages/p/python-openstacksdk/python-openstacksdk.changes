@@ -1,4 +1,136 @@
 -------------------------------------------------------------------
+Tue Jun  7 09:18:31 UTC 2022 - cloud-devel@suse.de
+
+- update to version 0.99.0
+  - Fix functional test for user message
+  - Block storage - reunite :class: links on single lines
+  - Splits class `TestPlacementProxy`
+  - compute: Server group rules are dicts, not lists of dicts
+  - Skip qos-pps-minimum tests if extension is missing
+  - network: Fix update of network provider
+  - Improve StatsD metric precision
+  - Get rid of normalization for image service
+  - Add "security_group_ids" to Port's query parameters
+  - Switch update_server cloud layer to proxy
+  - Splits class `TestOrchestrationProxy`
+  - Cloud / Compute service - reindentation of the docstrings
+  - Database service - reindentation of the docstrings
+  - Fix misuse of assertTrue
+  - Improve compute flavor handling
+  - Adds storage pools to shared file system
+  - exception: Correct argument
+  - Shared File System - reindentation of the docstrings
+  - Reindentation of the docstrings for baremetal service
+  - Replace the 'try except' block
+  - tests: Handle overridden 'verify_delete' (kw)args
+  - Switch quota methods of cloud layer to proxy
+  - Start splitting the `TestImageProxy` class
+  - Network - reindentation of the docstrings
+  - Splits class `TestInstanceHaProxy`
+  - Fix import order in identity tests
+  - Cloud / Network service - reindentation of the docstrings
+  - Splits the `TestBaremetalProxy` class
+  - Splits class `TestMessageProxy`
+  - Extend has_version function to accept version parameter
+  - Fix import order in block_storage tests
+  - Fix import order in orchestration tests
+  - Support description in sg-rule creation
+  - Add user message to shared file system
+  - Functional tests for vpn ike policy resource
+  - Add missing headers in object store
+  - Identity: Add support for system role assignment
+  - Cloud / Floating service - reindentation of the docstrings
+  - Add revert share to snapshot to shared file system.
+  - Indentation of the docstrings
+  - Add limit resource to shared file system
+  - Image service - reindentation of the docstrings
+  - fix: improperly encoded object names
+  - Add QoS min pps rule object and CRUD operations
+  - Cloud / Dns service - reindentation of the docstrings
+  - Network service - reunite :class: links on single lines
+  - resource: Rewrap function signatures
+  - Switch unittests for BS to use v3
+  - Run nodepool job
+  - compute: Add support for migrations API
+  - Fix setting initial object/container metadata.
+  - Restore get_compute_limits backward compatibility
+  - Switch cloud.compute.get_server_by_id to use proxy
+  - tests: Centralize configuration of default flavor, image
+  - trivial: Typo fixes
+  - Allow to filter endpoints by region_id
+  - Instance HA service - reunite :class: links on single lines
+  - Switch create_server cloud method to proxy
+  - Keep creating keystone admin endpoint for heat
+  - Introduce common class for QuotaSet
+  - Introduce QuotaSet in the compute service
+  - Orchestration service - reunite class links (:class:) on one line
+  - compute: Add support for microversion 2.89
+  - Switch Swift cloud layer to proxy
+  - Fix import order in clustering tests
+  - Cloud / Normalize service - reindentation of the docstrings
+  - doc: Remove references to 'examples' test env
+  - Clustering - reindentation of the docstrings
+  - fix creation of protected image
+  - Cloud / Security group service - reindentation of the docstrings
+  - Vpn ike policy resource
+  - Splits class `TestNetworkProxy`
+  - Get rid of normalization in network CL
+  - Revive legacy job
+  - Orchestration- reindentation of the docstrings
+  - Get rid of normalization in compute CL
+  - Add Neutron Local IP CRUD
+  - Compute - reindentation of the docstrings
+  - Switch delete_server cloud method to rely on proxy
+  - resource: Remove deprecated 'allow_get' attribute
+  - doc: Update testing documentation
+  - Add Python3 zed unit tests
+  - Add a manila functional check job
+  - compute: Regroup proxy methods
+  - Add share snapshot to shared file system.
+  - Add QoS rule type filtering keys
+  - Cloud / Baremetal service - reindentation of the docstrings
+  - DNS - reindentation of the docstrings
+  - Introduce QuotaSet in block storage service
+  - Fix key generation for caching
+  - Add R1 summary release note
+  - Cloud / Utils service - reindentation of the docstrings
+  - trivial: Correct docstrings for 'delete' proxy calls
+  - Optimize code by moving misc functions to utils
+  - Add query parameters to local ip
+  - Add user group assignment support in identity
+  - Splits class `TestSharedFileSystemProxy`
+  - image: Add "id" filter for images
+  - Skip tests when needed extensions are disabled
+  - Identity service - reunite :class: links on single lines
+  - Shared file system - reunite :class: links on single lines
+  - Revert "Add "security_group_ids" to Port's query parameters"
+  - Cloud / Identity service - reindentation of the docstrings
+  - Add common metadata mixin to block storage and clustering
+  - Splits class `TestKeyManagerProxy`
+  - Use empty read_acl for swift container
+  - Make metadata a common mixin
+  - Add support for updated_at field for volume objects
+  - Remove '__unicode__' helper
+  - Correct documentation about Load Balancer API
+  - Switch compute limits cloud to proxy
+  - Update master for stable/yoga
+  - compute: Add support for server migrations API
+  - Switch quota_set cloud layer BS methods to proxy
+  - Get rid of normalization in orchestration CL
+  - Fix import order in cloud tests
+  - Move tag mixin into the common
+  - Reindentation of the docstrings
+  - Block storage - reindentation of the docstrings
+  - Rely on proxy for compute.flavor cloud layer operations
+  - Cloud / Coe service - reindentation of the docstrings
+  - Load balancer - reindentation of the docstrings
+  - Get rid of normalization in identity CL
+  - Get rid of normalization in further CL services
+  - Object Store - reindentation of the docstrings
+  - Switch rebuild_server cloud method to rely on proxy
+  - Splits the `TestAcceleratorProxy` class
+
+-------------------------------------------------------------------
 Tue May 24 21:34:59 UTC 2022 - cloud-devel@suse.de
 
 - update to version 0.61.0
