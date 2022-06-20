@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Fri Jun 17 21:31:00 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Clean up some deprecated python-rpm-macro usage and declare
+  BuildRequirement on it explicitly.
+- Provide python dist-info metadata and PyPI names in rpm metadata
+- Fix missing install of typing stub and PySide2.support
+- Fix ctest suite run by providing some extra paths
+
+-------------------------------------------------------------------
+Sat Jun 11 19:43:43 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.15.4
+ * [PYSIDE-955]  QOpenGLContext.versionFunctions() have been
+   implemented. Class QOpenGLVersionFunctionsFactory (from Qt 6)
+   has also been added.
+ * [PYSIDE-1409] signature: The decision heuristics of result
+   tuples have been refined.
+ * [PYSIDE-1438] Crashes in Qt Datavisualization's
+   QBar/SurfaceDataProxy add/set/insertRow() members have been
+   fixed.
+ * [PYSIDE-1502] Import errors will now be properly reported.
+ * [PYSIDE-1513] Documentation on properties has been added.
+ * [PYSIDE-1538] signature: Unrecognized items will no longer raise
+   exceptions.
+ * [PYSIDE-1540] The performance of QPainter::drawPoints(QPolygon)
+   has been improved.
+ * [PYSIDE-1529] Crashes when registering static fields have been
+   fixed.
+
+-------------------------------------------------------------------
+Sat Mar 12 08:44:57 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.15.3. Bugs fixed:
+  * [PYSIDE-454]  namespace std is no longer rejected in the Qt
+    typesystem files.
+  * [PYSIDE-807]  setup.py's 'clean' command has been fixed.
+  * [PYSIDE-1305] The error handling of constructor keyword
+    arguments has been fixed.
+  * [PYSIDE-1422] A crash related to  Signal and __eq__ has
+    been fixed.
+  * [PYSIDE-1432] An ownership issue in QLayout::replaceWidget()
+    has been fixed.
+  * [PYSIDE-1442] QFlags operations have been fixed.
+  * [PYSIDE-1447] A crash related to qApp and Python 3.9 has been
+    fixed.
+  * [PYSIDE-1449] QTestlib's QAbstractItemModelTester has been
+    added.
+  * [PYSIDE-1460] An infinite loop changing up directories in the
+    signature bootstrap code has been fixed.
+  * [PYSIDE-1466] The newly introduced overload QSetting.value()
+    taking a type has been documentated.
+  * [PYSIDE-1478] A bug related to using QQmlContext.setContextProperty()
+    with the snake case feature has been fixed.
+  * [PYSIDE-1347] Inheritance for enum types has been fixed.
+  * [PYSIDE-1448] Code injected at target/end being invoked
+    for multiple overload ids has been fixed.
+  * [PYSIDE-1470] shiboken.delete() can now be used to delete
+    Q*Application.
+  * [PYSIDE-1501] The clang parser has been fixed to be able
+    to handle some Boost headers.
+- Switch to CMake for building pyside2.
+- Add patch:
+  * 0001-Always-link-to-python-libraries.patch
+- Rebase patch:
+  * 0001-Don-t-try-to-install-or-use-uic-rcc-designer-copies.patch
+- Drop now unneeded patches:
+  * lib64.patch
+  * 0002-Fix-the-openSUSE-executable-names.patch
+- Build pyside without QtWebEngine on powerpc and zSystems
+
+-------------------------------------------------------------------
 Tue Oct 12 13:52:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Backport change from pyside6:

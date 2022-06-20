@@ -154,4 +154,41 @@
     <comment></comment>
     <requestid>924908</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b8cbd08515106e7155093dac640a5f2c</srcmd5>
+    <version>5.15.4</version>
+    <time>1655732279</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up some deprecated python-rpm-macro usage and declare
+  BuildRequirement on it explicitly.
+- Provide python dist-info metadata and PyPI names in rpm metadata
+- Fix missing install of typing stub and PySide2.support
+- Fix ctest suite run by providing some extra paths
+
+- Update to 5.15.4
+ * [PYSIDE-955]  QOpenGLContext.versionFunctions() have been
+   implemented. Class QOpenGLVersionFunctionsFactory (from Qt 6)
+   has also been added.
+ * [PYSIDE-1409] signature: The decision heuristics of result
+   tuples have been refined.
+ * [PYSIDE-1438] Crashes in Qt Datavisualization's
+   QBar/SurfaceDataProxy add/set/insertRow() members have been
+   fixed.
+ * [PYSIDE-1502] Import errors will now be properly reported.
+ * [PYSIDE-1513] Documentation on properties has been added.
+ * [PYSIDE-1538] signature: Unrecognized items will no longer raise
+   exceptions.
+ * [PYSIDE-1540] The performance of QPainter::drawPoints(QPolygon)
+   has been improved.
+ * [PYSIDE-1529] Crashes when registering static fields have been
+   fixed.
+
+- Update to 5.15.3. Bugs fixed:
+  * [PYSIDE-454]  namespace std is no longer rejected in the Qt
+    typesystem files.
+  * [PYSIDE-807]  setup.py's 'clean' command has been fixed.
+  * [PYSIDE-1305] The error handling of constructor keyword
+    arguments has been fixed.</comment>
+    <requestid>983779</requestid>
+  </revision>
 </revisionlist>
