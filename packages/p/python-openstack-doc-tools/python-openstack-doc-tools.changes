@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun  7 09:21:29 UTC 2022 - cloud-devel@suse.de
+
+- update to version 3.3.1
+  - Use TOX_CONSTRAINTS_FILE
+  - Use py3 as the default runtime for tox
+  - Use Python 3.8 as the default runtime for tox
+  - Update CI to use unversioned jobs template
+  - Dropping lower constraints testing
+  - Move flake8 as a pre-commit local target.
+  - Adding pre-commit
+
+-------------------------------------------------------------------
+Tue May 24 21:44:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- remove unneded dependencies 
+
+-------------------------------------------------------------------
 Tue Feb  1 02:11:46 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - demjson is no longer required, remove it from BuildRequires. 

@@ -18,19 +18,17 @@
 
 %global module os_doc_tools
 Name:           python-openstack-doc-tools
-Version:        3.3.0
+Version:        3.3.1
 Release:        0
 Summary:        OpenStack Docs Tools
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/openstack-doc-tools
-Source0:        https://files.pythonhosted.org/packages/source/o/openstack-doc-tools/openstack-doc-tools-3.3.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/openstack-doc-tools/openstack-doc-tools-3.3.1.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python3-Babel
 BuildRequires:  python3-PyYAML >= 3.13
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-lxml >= 4.5.0
-BuildRequires:  python3-mock
 BuildRequires:  python3-openstackdocstheme
 BuildRequires:  python3-pbr >= 2.0.0
 BuildArch:      noarch
