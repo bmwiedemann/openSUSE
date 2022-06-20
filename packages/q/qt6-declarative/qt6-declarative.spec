@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.3.0
+%define real_version 6.3.1
 %define short_version 6.3
 %define tar_name qtdeclarative-everywhere-src
 %define tar_suffix %{nil}
@@ -27,15 +27,14 @@
 %endif
 #
 Name:           qt6-declarative%{?pkg_suffix}
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        Qt 6 Declarative Libraries and tools
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-declarative-rpmlintrc
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-CMake-Look-for-QtLanguageServerPrivate.patch
+BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-gui-private-devel
@@ -1033,6 +1032,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_libdir}/libQt6LabsAnimation.so
 %{_qt6_metatypesdir}/qt6labsanimation_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_labsanimation.pri
+%{_qt6_pkgconfigdir}/Qt6LabsAnimation.pc
 %exclude %{_qt6_includedir}/QtLabsAnimation/%{real_version}
 
 %files -n qt6-labsanimation-private-devel
@@ -1050,6 +1050,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_libdir}/libQt6LabsFolderListModel.so
 %{_qt6_metatypesdir}/qt6labsfolderlistmodel_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_labsfolderlistmodel.pri
+%{_qt6_pkgconfigdir}/Qt6LabsFolderListModel.pc
 %exclude %{_qt6_includedir}/QtLabsFolderListModel/%{real_version}
 
 %files -n qt6-labsfolderlistmodel-private-devel
@@ -1067,6 +1068,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_libdir}/libQt6LabsQmlModels.so
 %{_qt6_metatypesdir}/qt6labsqmlmodels_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_labsqmlmodels.pri
+%{_qt6_pkgconfigdir}/Qt6LabsQmlModels.pc
 %exclude %{_qt6_includedir}/QtLabsQmlModels/%{real_version}
 
 %files -n qt6-labsqmlmodels-private-devel
@@ -1084,6 +1086,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_libdir}/libQt6LabsSettings.so
 %{_qt6_metatypesdir}/qt6labssettings_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_labssettings.pri
+%{_qt6_pkgconfigdir}/Qt6LabsSettings.pc
 %exclude %{_qt6_includedir}/QtLabsSettings/%{real_version}
 
 %files -n qt6-labssettings-private-devel
@@ -1101,6 +1104,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_libdir}/libQt6LabsSharedImage.so
 %{_qt6_metatypesdir}/qt6labssharedimage_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_labssharedimage.pri
+%{_qt6_pkgconfigdir}/Qt6LabsSharedImage.pc
 %exclude %{_qt6_includedir}/QtLabsSharedImage/%{real_version}
 
 %files -n qt6-labssharedimage-private-devel
@@ -1118,6 +1122,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_libdir}/libQt6LabsWavefrontMesh.so
 %{_qt6_metatypesdir}/qt6labswavefrontmesh_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_labswavefrontmesh.pri
+%{_qt6_pkgconfigdir}/Qt6LabsWavefrontMesh.pc
 %exclude %{_qt6_includedir}/QtLabsWavefrontMesh/%{real_version}
 
 %files -n qt6-labswavefrontmesh-private-devel
@@ -1150,6 +1155,8 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_mkspecsdir}/features/qtquickcompiler.prf
 %{_qt6_mkspecsdir}/modules/qt_lib_qml.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration.pri
+%{_qt6_pkgconfigdir}/Qt6Qml.pc
+%{_qt6_pkgconfigdir}/Qt6QmlIntegration.pc
 %exclude %{_qt6_includedir}/QtQml/%{real_version}
 
 %files -n qt6-qml-private-devel
@@ -1167,6 +1174,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_libdir}/libQt6QmlCore.so
 %{_qt6_metatypesdir}/qt6qmlcore_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_qmlcore.pri
+%{_qt6_pkgconfigdir}/Qt6QmlCore.pc
 %exclude %{_qt6_includedir}/QtQmlCore/%{real_version}
 
 %files -n qt6-qmlcore-private-devel
@@ -1184,6 +1192,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_libdir}/libQt6QmlLocalStorage.so
 %{_qt6_metatypesdir}/qt6qmllocalstorage_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_qmllocalstorage.pri
+%{_qt6_pkgconfigdir}/Qt6QmlLocalStorage.pc
 %exclude %{_qt6_includedir}/QtQmlLocalStorage/%{real_version}
 
 %files -n qt6-qmllocalstorage-private-devel
@@ -1201,6 +1210,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_libdir}/libQt6QmlModels.so
 %{_qt6_metatypesdir}/qt6qmlmodels_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_qmlmodels.pri
+%{_qt6_pkgconfigdir}/Qt6QmlModels.pc
 %exclude %{_qt6_includedir}/QtQmlModels/%{real_version}
 
 %files -n qt6-qmlmodels-private-devel
@@ -1218,6 +1228,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_libdir}/libQt6QmlWorkerScript.so
 %{_qt6_metatypesdir}/qt6qmlworkerscript_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_qmlworkerscript.pri
+%{_qt6_pkgconfigdir}/Qt6QmlWorkerScript.pc
 %exclude %{_qt6_includedir}/QtQmlWorkerScript/%{real_version}
 
 %files -n qt6-qmlworkerscript-private-devel
@@ -1235,6 +1246,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_libdir}/libQt6QmlXmlListModel.so
 %{_qt6_metatypesdir}/qt6qmlxmllistmodel_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_qmlxmllistmodel.pri
+%{_qt6_pkgconfigdir}/Qt6QmlXmlListModel.pc
 %exclude %{_qt6_includedir}/QtQmlXmlListModel/%{real_version}
 
 %files -n qt6-qmlxmllistmodel-private-devel
@@ -1253,6 +1265,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_libdir}/libQt6Quick.so
 %{_qt6_metatypesdir}/qt6quick_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quick.pri
+%{_qt6_pkgconfigdir}/Qt6Quick.pc
 %exclude %{_qt6_includedir}/QtQuick/%{real_version}
 
 %files -n qt6-quick-private-devel
@@ -1270,6 +1283,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_libdir}/libQt6QuickControls2.so
 %{_qt6_metatypesdir}/qt6quickcontrols2_*.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quickcontrols2.pri
+%{_qt6_pkgconfigdir}/Qt6QuickControls2.pc
 %exclude %{_qt6_includedir}/QtQuickControls2/%{real_version}
 
 %files -n qt6-quickcontrols2-private-devel
@@ -1287,6 +1301,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_libdir}/libQt6QuickControls2Impl.so
 %{_qt6_metatypesdir}/qt6quickcontrols2impl_*.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quickcontrols2impl.pri
+%{_qt6_pkgconfigdir}/Qt6QuickControls2Impl.pc
 %exclude %{_qt6_includedir}/QtQuickControls2Impl/%{real_version}
 
 %files -n qt6-quickcontrols2impl-private-devel
@@ -1304,6 +1319,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_libdir}/libQt6QuickDialogs2.so
 %{_qt6_metatypesdir}/qt6quickdialogs2_*.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quickdialogs2.pri
+%{_qt6_pkgconfigdir}/Qt6QuickDialogs2.pc
 %exclude %{_qt6_includedir}/QtQuickDialogs2/%{real_version}
 
 %files -n qt6-quickdialogs2-private-devel
@@ -1321,6 +1337,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_libdir}/libQt6QuickDialogs2QuickImpl.so
 %{_qt6_metatypesdir}/qt6quickdialogs2quickimpl_*.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quickdialogs2quickimpl.pri
+%{_qt6_pkgconfigdir}/Qt6QuickDialogs2QuickImpl.pc
 %exclude %{_qt6_includedir}/QtQuickDialogs2QuickImpl/%{real_version}
 
 %files -n qt6-quickdialogs2quickimpl-private-devel
@@ -1338,6 +1355,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_libdir}/libQt6QuickDialogs2Utils.so
 %{_qt6_metatypesdir}/qt6quickdialogs2utils_*.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quickdialogs2utils.pri
+%{_qt6_pkgconfigdir}/Qt6QuickDialogs2Utils.pc
 %exclude %{_qt6_includedir}/QtQuickDialogs2Utils/%{real_version}
 
 %files -n qt6-quickdialogs2utils-private-devel
@@ -1355,6 +1373,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_libdir}/libQt6QuickLayouts.so
 %{_qt6_metatypesdir}/qt6quicklayouts_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quicklayouts.pri
+%{_qt6_pkgconfigdir}/Qt6QuickLayouts.pc
 %exclude %{_qt6_includedir}/QtQuickLayouts/%{real_version}
 
 %files -n qt6-quicklayouts-private-devel
@@ -1373,6 +1392,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_libdir}/libQt6QuickTemplates2.so
 %{_qt6_metatypesdir}/qt6quicktemplates2_*.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quicktemplates2.pri
+%{_qt6_pkgconfigdir}/Qt6QuickTemplates2.pc
 %exclude %{_qt6_includedir}/QtQuickTemplates2/%{real_version}
 
 %files -n qt6-quicktemplates2-private-devel
@@ -1390,6 +1410,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_libdir}/libQt6QuickTest.so
 %{_qt6_metatypesdir}/qt6quicktest_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_qmltest.pri
+%{_qt6_pkgconfigdir}/Qt6QuickTest.pc
 %exclude %{_qt6_includedir}/QtQuickTest/%{real_version}
 
 %files -n qt6-quicktest-private-devel
@@ -1407,6 +1428,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_libdir}/libQt6QuickWidgets.so
 %{_qt6_metatypesdir}/qt6quickwidgets_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quickwidgets.pri
+%{_qt6_pkgconfigdir}/Qt6QuickWidgets.pc
 %exclude %{_qt6_includedir}/QtQuickWidgets/%{real_version}
 
 %files -n qt6-quickwidgets-private-devel

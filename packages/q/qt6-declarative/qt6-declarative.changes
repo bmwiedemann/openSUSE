@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 17 15:15:08 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.1:
+  * https://www.qt.io/blog/qt-6.3.1-released
+- Drop patch, now upstream:
+  * 0001-CMake-Look-for-QtLanguageServerPrivate.patch
+
+-------------------------------------------------------------------
 Fri Apr  8 11:56:53 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.3.0:
