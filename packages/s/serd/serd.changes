@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun 18 14:27:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.30.12:
+  * Fix warnings and build issues with clang 13 and VS 2019
+  * Fix writing long literals with triple quotes
+  * Improve documentation style
+  * Support combining several BSD-style command line flags in serdi
+  * Write statements with invalid URI characters in lax mode
+
+-------------------------------------------------------------------
 Sun Aug 29 09:55:41 UTC 2021 - Dave Plater <davejplater@gmail.com>
 
 - Disabled doc build and test for Leap build

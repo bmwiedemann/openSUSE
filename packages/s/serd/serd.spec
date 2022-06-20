@@ -1,7 +1,7 @@
 #
 # spec file for package serd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define sover 0
 Name:           serd
-Version:        0.30.10
+Version:        0.30.12
 Release:        0
 Summary:        A lightweight C library for RDF syntax
 License:        ISC
 Group:          Development/Libraries/C and C++
-URL:            https://drobilla.net/software/serd/
-Source0:        http://download.drobilla.net/serd-%{version}.tar.bz2
+URL:            https://drobilla.net/software/serd.html
+Source0:        https://download.drobilla.net/serd-%{version}.tar.bz2
 Source1:        baselibs.conf
 BuildRequires:  doxygen
 BuildRequires:  graphviz
