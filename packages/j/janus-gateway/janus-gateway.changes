@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Mon Jun 20 11:11:52 UTC 2022 - michael@stroeder.com
+
+- Update to version 1.0.3:
+  * Keep track of RTP extensions when storing packets for retransmission [PR-2981]
+  * Fixed negotiation of RTP extensions when direction is involved
+  * Fixed broken VP8 payload descriptor parsing when 7-bit PictureID are used
+  * Support for batched configure requests in VideoRoom [PR-2986]
+  * Added missing info to VideoRoom publisher's info own event [Issue-2988]
+  * Fixed memory leaks in when upgrading old-style Videoroom requests (thanks @OxleyS!) [PR-3002]
+  * Fixed memory leak in VideoRoom when updating subscriptions with no changes
+  * Added 'kick_all' requests and possibility to remove PIN code to both
+    Audiobridge and Streaming plugins (thanks @mikaelnousiainen!) [PR-2978]
+  * Added support for notifications in the Streaming plugin when metadata
+    for a mountpoint is changed (thanks @amoizard!) [PR-3000]
+  * Fixed missing checks on auth challenges in SIP plugin
+  * Fixed missing Contact header in SUBSCRIBE requests in SIP plugin [PR-2973]
+  * Fixed segfault in SIP plugin when freeing a session with a
+    subscription still active [PR-2974]
+  * Add new shared JavaScript file for settings in demos [PR-2991]
+  * Other smaller fixes and improvements
+
+-------------------------------------------------------------------
+Mon May 23 10:16:33 UTC 2022 - michael@stroeder.com
+
+- Update to version 1.0.2:
+  * Support for dummy publishers in VideoRoom (#2958)
+  * Fixed RED parsing not returning blocks when only primary data is available
+  * Link to -lresolv explicitly when building websockets transport
+  * src/dtls-bio.h: fix build with libressl >= 3.5.0 (#2980)
+  * Temporarily increase VideoRoom subscriber reference while we're creating it (see #2953)
+  * Fix address size in Streaming plugin RTCP sendto call (see #2976)
+  * Make SIP timer T1X64 configurable (#2972)
+  * Added custom headers for SIP SUBSCRIBE requests (#2971)
+  * Fixed incorrect removal of owner/subscriptions mapping (fixes #2965)
+  * Explicitly return list of IDs VideoRoom users are subscribed to for data (fixes #2967)
+  * Fixed typo in stereo support in EchoTest plugin
+  * Added configurable property to put a cap to task threads (see #2964)
+  * Disable IPv6 in WebSockets transport if binding to IPv4 address explicitly (fixes #2969)
+  * Abort DTLS handshake if DTLSv1_handle_timeout returns an error
+  * Fixed data port not being returned when creating Streaming mountpoints with the legacy API
+  * Fixed rtx SSRC incorretly added to SDP when disabled
+  * Fixed rtx not being offered on Janus originated connections
+  * Better cleanup when closing PeerConnection in multistream VideoRoom demo (see #2942)
+
+-------------------------------------------------------------------
+Tue Apr 26 20:24:51 UTC 2022 - michael@stroeder.com
+
+- Update to version 1.0.1:
+  * release v1.0.1
+    - Removed gengetopt as a dependency, to use Glib's GOptionEntry instead [PR-2898]
+    - Fixed occasional problem of duplicate mid attribute in Janus SDPs [Issue-2917]
+    - Fixed receiving=false events not being sent right away for higher simulcast substreams [Issue-2919]
+    - Fix highest sequence number not being properly initialized in the RTCP context [Issues-2920]
+    - Reset rids when renegotiating SDPs [PR-2931]2931)]
+    - Fixed missing PLI when restoring previously paused streams in VideoRoom (thanks @flaviogrossi!) [PR-2922]
+    - Fixed deadlock when using the moderate API in the VideoRoom [Issue-2956]
+    - Check if IPv6 is disabled to avoid failure when creating forwarder sockets in AudioBridge and VideoRoom [PR-2916]
+    - Fixed invalid computation of Streaming mountpoint stream age (thanks @RouquinBlanc!) [PR-2928]
+    - Also return reason header protocol and cause if present in BYE in the SIP plugin (thanks @ajsa-terko!) [PR-2935]
+    - Fixed segfault in UNIX transport teardown caused by pathnames of different sizes
+    - Added new demos on WebAudio and Virtual Backgrounds [PR-2941]
+    - Fixed potential race conditions in multistream VideoRoom demo [Issue-2929]
+    - Other smaller fixes and improvements (thanks to all who contributed pull requests and reported issues!)
+  * release v1.0.0
+    - Refactored Janus to support multistream PeerConnections [PR-2211]
+    - Moved all source files under new 'src' folder to unclutter the repo [PR-2885]
+    - Fixed definition of trylock wrapper when using pthreads [Issue-2894]
+    - Fixed broken RTP when no extensions are negotiated
+    - Added checks when inserting RTP extensions to avoid buffer overflows
+    - Added missing support for disabled rid simulcast substreams in SDP [PR-2888]
+    - Fixed TWCC feedback when simulcast SSRCs are missing (thanks @OxleyS!) [PR-2908]
+    - Added support for playout-delay RTP extension [PR-2895]
+    - Fixed partially broken H.264 support when using Firefox in VideoRoom
+    - Fixed new VideoRoom rtp_forward API ignoring some properties
+    - Fixed deadlock and segfault when stopping Streaming mountpoint recordings [Issue-2902]
+    - Fixed RTSP support in Streaming plugin for cameras that expect path-only DESCRIBE requests (thanks @jp-bennett!) [PR-2909]
+    - Fixed RTP being relayed incorrectly in Lua and Duktape plugins
+    - Added Duktape as optional dependency, instead of embedding the engine code [PR-2886]
+    - Fixed crash at startup when not able to connect to RabbitMQ server
+    - Improved fuzzing and checks on RTP extensions
+    - Removed distinction between simulcast and simulcast2 in janus.js [PR-2887]
+    - Other smaller fixes and improvements (thanks to all who contributed pull requests and reported issues!)
+
+-------------------------------------------------------------------
 Fri Feb 11 22:27:07 UTC 2022 - michael@stroeder.com
 
 - Update to version 0.11.8:

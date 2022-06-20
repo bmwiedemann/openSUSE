@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
             <param name="url">git://github.com/meetecho/janus-gateway.git</param>
-          <param name="changesrevision">21a5fc91d2c508481b9173e474a8688d615fd580</param></service></servicedata>
+          <param name="changesrevision">21a5fc91d2c508481b9173e474a8688d615fd580</param></service><service name="tar_scm">
+                <param name="url">https://github.com/meetecho/janus-gateway.git</param>
+              <param name="changesrevision">95bfcf35969894dd3361b6f2d65fd6a453139b11</param></service></servicedata>
