@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jun 20 06:04:36 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.8.2:
+  * default decorator if not given
+  * guess output decorator class
+  * class shortcut decorators 
+  * python tuple support as base type
+  * Fix a performance issue when detecting cassettes following the old
+    naming format.
+  * New decorators for handling temporary files (MkTemp) and directories
+    (MkDTemp) in a more transparent way. The old implementation based on
+    static paths and counter has been deprecated.
+  * Fix the problem with kwarg decorators that causes the function body
+    not to be executed.
+- Change skipped tests expression due to reorganization.
+- Add GitPython to {Build,}Requires
+
+-------------------------------------------------------------------
 Wed Nov 18 00:26:30 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v0.4.0

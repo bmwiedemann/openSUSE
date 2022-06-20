@@ -7,4 +7,25 @@
     <comment>new dep</comment>
     <requestid>849406</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2ae9dc27956351c4be9f75bf17ccded5</srcmd5>
+    <version>0.8.2</version>
+    <time>1655732295</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.2:
+  * default decorator if not given
+  * guess output decorator class
+  * class shortcut decorators 
+  * python tuple support as base type
+  * Fix a performance issue when detecting cassettes following the old
+    naming format.
+  * New decorators for handling temporary files (MkTemp) and directories
+    (MkDTemp) in a more transparent way. The old implementation based on
+    static paths and counter has been deprecated.
+  * Fix the problem with kwarg decorators that causes the function body
+    not to be executed.
+- Change skipped tests expression due to reorganization.
+- Add GitPython to {Build,}Requires</comment>
+    <requestid>983847</requestid>
+  </revision>
 </revisionlist>
