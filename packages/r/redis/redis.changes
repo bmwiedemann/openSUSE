@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Sun Jun 12 16:30:32 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 7.0.2
+  * Fixed SET and BITFIELD commands being wrongly marked movablekeys (#10837)
+    Regression in 7.0 possibly resulting in excessive roundtrip from cluster clients.
+  * Fix crash when /proc/sys/vm/overcommit_memory is inaccessible (#10848)
+    Regression in 7.0.1 resulting in crash on startup on some configurations.
+
+-------------------------------------------------------------------
+Wed Jun  8 19:24:25 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 7.0.1
+  * Improvements
+    - Add warning for suspected slow system clocksource setting
+      Add --check-system command line option. (#10636)
+    - Allow read-only scripts (*_RO commands, and ones with `no-writes` flag)
+      during CLIENT PAUSE WRITE (#10744)
+    - Add `readonly` flag in COMMAND command for EVAL_RO, EVALSHA_RO and FCALL_RO (#10728)
+    - redis-server command line arguments now accept one string with spaces
+      for multi-arg configs (#10660)
+  * Potentially Breaking Changes
+    - Omitting a config option value in command line argument no longer works (#10660)
+    - Hide the `may_replicate` flag from the COMMAND command response (#10744)
+  * Potentially Breaking Changes for new Redis 7.0 features
+    - Protocol: Sharded pubsub publish emits `smessage` instead of `message` (#10792)
+    - CLUSTER SHARDS returns slots as RESP integers, not strings (#10683)
+    - Block PFCOUNT and PUBLISH in read-only scripts (*_RO commands, and no-writes) (#10744)
+    - Scripts that declare the `no-writes` flag are implicitly `allow-oom` too (#10699)
+  * Changes in CLI tools
+    - redis-cli --bigkeys, --memkeys, --hotkeys, --scan. Finish nicely after Ctrl+C (#10736)
+  * Platform / toolchain support related improvements
+    - Support tcp-keepalive config interval on MacOs (#10667)
+    - Support RSS metrics on Haiku OS (#10687)
+  * INFO fields and introspection changes
+    - Add isolated network metrics for replication. (#10062, #10810)
+  * Module API changes
+    - Add two more new checks to RM_Call script mode (#10786)
+    - Add new RM_Call flag to let Redis automatically refuse `deny-oom` commands (#10786)
+    - Add module API RM_MallocUsableSize (#10795)
+    - Add missing REDISMODULE_NOTIFY_NEW (#10688)
+    - Fix cursor type in RedisModuleScanCursor to handle more than 2^31 elements (#10698)
+    - Fix RM_Yield bugs and RM_Call("EVAL") OOM check bug (#10786)
+    - Fix bugs in enum configs with overlapping bit flags (#10661)
+  * Bug Fixes
+    - FLUSHALL correctly resets rdb_changes_since_last_save INFO field (#10691)
+    - FLUSHDB is now propagated to replicas / AOF, even if the db is empty (#10691)
+    - Replica fail and retry the PSYNC if the master is unresponsive (#10726)
+    - Fix ZRANGESTORE crash when zset_max_listpack_entries is 0 (#10767)
+
+-------------------------------------------------------------------
+Tue May 10 13:31:18 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Unbundle jemalloc, fixes bsc#199164
+  * Add-support-for-USE_SYSTEM_JEMALLOC-flag.patch
+
+-------------------------------------------------------------------
+Tue May 10 08:05:09 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Add ReadWritePaths=/etc/redis to redis-sentinel@.service (bsc#1199198)
+
+-------------------------------------------------------------------
+Fri May  6 17:59:39 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 7.0.0:
+  https://raw.githubusercontent.com/redis/redis/7.0/00-RELEASENOTES
+- Remove upstreamed patch:
+  * getMcontextEip-return-value.patch
+
+-------------------------------------------------------------------
 Wed Apr 27 21:17:06 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - redis 6.2.7:

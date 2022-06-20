@@ -21,6 +21,7 @@ ProtectKernelLogs=true
 ProtectControlGroups=true
 RestrictRealtime=true
 # end of automatic additions 
+ReadWritePaths=/etc/redis
 PIDFile=/run/redis/sentinel-%i.pid
 ExecStart=/usr/sbin/redis-sentinel /etc/redis/sentinel-%i.conf
 LimitNOFILE=10240

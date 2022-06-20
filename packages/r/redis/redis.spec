@@ -20,7 +20,7 @@
 %define _log_dir        %{_localstatedir}/log/%{name}
 %define _conf_dir       %{_sysconfdir}/%{name}
 Name:           redis
-Version:        6.2.7
+Version:        7.0.2
 Release:        0
 Summary:        Persistent key-value database
 License:        BSD-3-Clause
@@ -38,9 +38,10 @@ Source9:        %{name}-user.conf
 Source10:       https://raw.githubusercontent.com/redis/redis-hashes/master/README#/redis.hashes
 # PATCH-MISSING-TAG -- See https://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
 Patch0:         %{name}-conf.patch
-Patch1:         getMcontextEip-return-value.patch
 Patch3:         reproducible.patch
 Patch4:         ppc-atomic.patch
+Patch5:         Add-support-for-USE_SYSTEM_JEMALLOC-flag.patch
+BuildRequires:  jemalloc-devel
 BuildRequires:  libopenssl-devel >= 1.1.1
 BuildRequires:  pkgconfig
 BuildRequires:  procps
@@ -65,13 +66,16 @@ different kind of sorting abilities.
 echo "`grep -F %{name}-%{version}.tar.gz %{SOURCE10} | cut -d' ' -f4`  %{SOURCE0}" | sha256sum -c
 %setup -q
 %patch0
-%patch1 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 export HOST=OBS # for reproducible builds
-%make_build CFLAGS="%{optflags}" BUILD_WITH_SYSTEMD=yes BUILD_TLS=yes
+%make_build CFLAGS="%{optflags}" \
+        BUILD_WITH_SYSTEMD=yes \
+        BUILD_TLS=yes \
+        USE_SYSTEM_JEMALLOC=yes
 %sysusers_generate_pre %{SOURCE9} %{name}
 
 %install

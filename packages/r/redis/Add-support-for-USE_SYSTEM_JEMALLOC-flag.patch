@@ -1,0 +1,123 @@
+From: Chris Lamb <lamby@debian.org>
+Date: Sat, 25 Aug 2018 17:52:13 +0200
+Subject: Add support for USE_SYSTEM_JEMALLOC flag.
+
+https://github.com/antirez/redis/pull/5279
+---
+ deps/Makefile |  2 ++
+ src/Makefile  |  5 +++++
+ src/debug.c   |  4 ++++
+ src/object.c  |  5 +++++
+ src/zmalloc.c | 10 ++++++++++
+ src/zmalloc.h |  4 ++++
+ 6 files changed, 30 insertions(+)
+
+Index: redis-7.0.0/deps/Makefile
+===================================================================
+--- redis-7.0.0.orig/deps/Makefile
++++ redis-7.0.0/deps/Makefile
+@@ -38,7 +38,9 @@ distclean:
+ 	-(cd hiredis && $(MAKE) clean) > /dev/null || true
+ 	-(cd linenoise && $(MAKE) clean) > /dev/null || true
+ 	-(cd lua && $(MAKE) clean) > /dev/null || true
++ifneq ($(USE_SYSTEM_JEMALLOC),yes)
+ 	-(cd jemalloc && [ -f Makefile ] && $(MAKE) distclean) > /dev/null || true
++endif
+ 	-(cd hdr_histogram && $(MAKE) clean) > /dev/null || true
+ 	-(rm -f .make-*)
+ 
+Index: redis-7.0.0/src/Makefile
+===================================================================
+--- redis-7.0.0.orig/src/Makefile
++++ redis-7.0.0/src/Makefile
+@@ -266,10 +266,15 @@ ifeq ($(MALLOC),tcmalloc_minimal)
+ endif
+ 
+ ifeq ($(MALLOC),jemalloc)
++ifeq ($(USE_SYSTEM_JEMALLOC),yes)
++	FINAL_CFLAGS+= -DUSE_JEMALLOC -I/usr/include/jemalloc/include
++	FINAL_LIBS := -ljemalloc $(FINAL_LIBS)
++else
+ 	DEPENDENCY_TARGETS+= jemalloc
+ 	FINAL_CFLAGS+= -DUSE_JEMALLOC -I../deps/jemalloc/include
+ 	FINAL_LIBS := ../deps/jemalloc/lib/libjemalloc.a $(FINAL_LIBS)
+ endif
++endif
+ 
+ ifeq ($(BUILD_TLS),yes)
+ 	FINAL_CFLAGS+=-DUSE_OPENSSL $(OPENSSL_CFLAGS)
+Index: redis-7.0.0/src/debug.c
+===================================================================
+--- redis-7.0.0.orig/src/debug.c
++++ redis-7.0.0/src/debug.c
+@@ -71,6 +71,10 @@ void printCrashReport(void);
+ void bugReportEnd(int killViaSignal, int sig);
+ void logStackTrace(void *eip, int uplevel);
+ 
++#if defined(USE_JEMALLOC) && (USE_SYSTEM_JEMALLOC == yes)
++#define je_mallctl mallctl
++#endif
++
+ /* ================================= Debugging ============================== */
+ 
+ /* Compute the sha1 of string at 's' with 'len' bytes long.
+Index: redis-7.0.0/src/object.c
+===================================================================
+--- redis-7.0.0.orig/src/object.c
++++ redis-7.0.0/src/object.c
+@@ -37,6 +37,11 @@
+ #define strtold(a,b) ((long double)strtod((a),(b)))
+ #endif
+ 
++#if defined(USE_JEMALLOC) && (USE_SYSTEM_JEMALLOC == yes)
++#define je_mallctl mallctl
++#define je_malloc_stats_print malloc_stats_print
++#endif
++
+ /* ===================== Creation and parsing of objects ==================== */
+ 
+ robj *createObject(int type, void *ptr) {
+Index: redis-7.0.0/src/zmalloc.c
+===================================================================
+--- redis-7.0.0.orig/src/zmalloc.c
++++ redis-7.0.0/src/zmalloc.c
+@@ -79,6 +79,15 @@ void zlibc_free(void *ptr) {
+ #define realloc(ptr,size) tc_realloc(ptr,size)
+ #define free(ptr) tc_free(ptr)
+ #elif defined(USE_JEMALLOC)
++#if USE_SYSTEM_JEMALLOC == yes
++#define malloc(size) malloc(size)
++#define calloc(count,size) calloc(count,size)
++#define realloc(ptr,size) realloc(ptr,size)
++#define free(ptr) free(ptr)
++#define mallocx(size,flags) mallocx(size,flags)
++#define dallocx(ptr,flags) dallocx(ptr,flags)
++#define je_mallctl mallctl
++#else
+ #define malloc(size) je_malloc(size)
+ #define calloc(count,size) je_calloc(count,size)
+ #define realloc(ptr,size) je_realloc(ptr,size)
+@@ -86,6 +95,7 @@ void zlibc_free(void *ptr) {
+ #define mallocx(size,flags) je_mallocx(size,flags)
+ #define dallocx(ptr,flags) je_dallocx(ptr,flags)
+ #endif
++#endif
+ 
+ #define update_zmalloc_stat_alloc(__n) atomicIncr(used_memory,(__n))
+ #define update_zmalloc_stat_free(__n) atomicDecr(used_memory,(__n))
+Index: redis-7.0.0/src/zmalloc.h
+===================================================================
+--- redis-7.0.0.orig/src/zmalloc.h
++++ redis-7.0.0/src/zmalloc.h
+@@ -50,7 +50,11 @@
+ #include <jemalloc/jemalloc.h>
+ #if (JEMALLOC_VERSION_MAJOR == 2 && JEMALLOC_VERSION_MINOR >= 1) || (JEMALLOC_VERSION_MAJOR > 2)
+ #define HAVE_MALLOC_SIZE 1
++#if USE_SYSTEM_JEMALLOC == yes
++#define zmalloc_size(p) malloc_usable_size(p)
++#else
+ #define zmalloc_size(p) je_malloc_usable_size(p)
++#endif
+ #else
+ #error "Newer version of jemalloc required"
+ #endif
