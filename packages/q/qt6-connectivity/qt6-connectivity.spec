@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.3.0
+%define real_version 6.3.1
 %define short_version 6.3
 %define tar_name qtconnectivity-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-connectivity%{?pkg_suffix}
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        Qt 6 connectivity tools and libraries
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -141,6 +141,8 @@ The packages that build against these have to require the exact Qt version.
 %{_qt6_metatypesdir}/qt6nfc_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_bluetooth.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_nfc.pri
+%{_qt6_pkgconfigdir}/Qt6Bluetooth.pc
+%{_qt6_pkgconfigdir}/Qt6Nfc.pc
 %exclude %{_qt6_includedir}/QtBluetooth/%{real_version}/
 %exclude %{_qt6_includedir}/QtNfc/%{real_version}/
 
