@@ -48,53 +48,38 @@ Summary:        Python Development Master
 License:        MIT
 URL:            https://github.com/pdm-project/pdm/
 Source0:        https://files.pythonhosted.org/packages/source/p/pdm/pdm-%{version}.tar.gz
-BuildRequires:  %{python_module blinker}
-BuildRequires:  %{python_module click >= 7}
-BuildRequires:  %{python_module packaging}
-BuildRequires:  %{python_module pdm-pep517}
-BuildRequires:  %{python_module pep517}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module platformdirs}
-BuildRequires:  %{python_module poetry}
-BuildRequires:  %{python_module python-dotenv >= 0.15}
-BuildRequires:  %{python_module pythonfinder}
-BuildRequires:  %{python_module resolvelib}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module shellingham >= 1.3.2}
-BuildRequires:  %{python_module tomli >= 1.1.0}
-BuildRequires:  %{python_module tomlkit}
-BuildRequires:  %{python_module wheel >= 0.36.2}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pdm-pep517 >= 0.9}
+BuildRequires:  %{python_module pip >= 20.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-blinker
 Requires:       python-click >= 7
-Requires:       python-installer >= 0.5
+Requires:       python-findpython
+Requires:       python-installer >= 0.5.1
 Requires:       python-packaging
-Requires:       python-pdm-pep517
-Requires:       python-pep517
-Requires:       python-pip
+Requires:       python-pdm-pep517 >= 0.9
+Requires:       python-pep517 >= 0.11
+Requires:       python-pip >= 20.1
 Requires:       python-platformdirs
-Requires:       python-poetry
 Requires:       python-python-dotenv >= 0.15
-Requires:       python-pythonfinder
-Requires:       python-resolvelib
+Requires:       python-resolvelib >= 0.8
 Requires:       python-setuptools
 Requires:       python-shellingham >= 1.3.2
 Requires:       python-tomli >= 1.1.0
-Requires:       python-tomlkit
+Requires:       python-tomlkit >= 0.8.0
 Requires:       python-wheel >= 0.36.2
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 %if %{with test}
-BuildRequires:  %{python_module findpython}
-BuildRequires:  %{python_module installer >= 0.5}
-BuildRequires:  %{python_module pdm}
+BuildRequires:  %{python_module pdm = %{version}}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  ca-certificates
 BuildRequires:  git
 BuildRequires:  git-lfs
 %endif

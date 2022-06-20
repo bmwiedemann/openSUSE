@@ -57,4 +57,12 @@
   * Fix a bug under non-UTF8 console encoding. #960</comment>
     <requestid>983252</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>84febc02c5967987bcae1bd40d3e17af</srcmd5>
+    <version>1.15.3</version>
+    <time>1655732284</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>983790</requestid>
+  </revision>
 </revisionlist>
