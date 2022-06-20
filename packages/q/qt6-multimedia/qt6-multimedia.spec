@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.3.0
+%define real_version 6.3.1
 %define short_version 6.3
 %define short_name qtmultimedia
 %define tar_name qtmultimedia-everywhere-src
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-multimedia%{?pkg_suffix}
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        Qt 6 Multimedia libraries
 License:        GPL-3.0-or-later
@@ -196,6 +196,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_libdir}/libQt6Multimedia.so
 %{_qt6_metatypesdir}/qt6multimedia_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_multimedia.pri
+%{_qt6_pkgconfigdir}/Qt6Multimedia.pc
 %exclude %{_qt6_includedir}/QtMultimedia/%{real_version}
 
 %files private-devel
@@ -213,6 +214,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_libdir}/libQt6MultimediaWidgets.so
 %{_qt6_metatypesdir}/qt6multimediawidgets_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_multimediawidgets.pri
+%{_qt6_pkgconfigdir}/Qt6MultimediaWidgets.pc
 %exclude %{_qt6_includedir}/QtMultimediaWidgets/%{real_version}
 
 %files -n qt6-multimediawidgets-private-devel
