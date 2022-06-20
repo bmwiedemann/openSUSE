@@ -715,4 +715,12 @@
     - Use the correct graph name for Videos. (forwarded request 945105 from iznogood)</comment>
     <requestid>945286</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>e5b2f028c620064a567f47b6d765df94</srcmd5>
+    <version>0.40.4</version>
+    <time>1655732308</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 983500 from iznogood)</comment>
+    <requestid>983865</requestid>
+  </revision>
 </revisionlist>

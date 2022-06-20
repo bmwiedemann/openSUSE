@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 17 20:54:42 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.40.4:
+  + Do not install UI file if preferences are not built.
+  + Renderer: Fix critical if mime_type is missing.
+  + Tracker3: Do not exit if service is missing.
+  + MediaExport: Fix running without media indexing.
+  + Updated translations.
+- Update plugin-tracker Supplements to current standard.
+- Drop plugin-zdf-mediathek Obsoletes, last available 6 years ago,
+  we can expect everyone have moved on by now.
+
+-------------------------------------------------------------------
 Sun Jan  9 10:24:14 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.40.3:

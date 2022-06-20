@@ -17,7 +17,7 @@
 
 
 Name:           rygel
-Version:        0.40.3
+Version:        0.40.4
 Release:        0
 Summary:        UPnP/DLNA home media server for GNOME
 License:        LGPL-2.0-or-later
@@ -62,8 +62,6 @@ Requires:       gstreamer-plugins-base
 Recommends:     gstreamer-plugins-bad
 Recommends:     gstreamer-plugins-good
 Recommends:     gstreamer-plugins-ugly
-# plugin-zdf-mediathek was removed in 0.31.1
-Obsoletes:      plugin-zdf-mediathek
 %{?systemd_ordering}
 
 %description
@@ -204,7 +202,9 @@ Summary:        Tracker plugin for the Rygel UPnP/DLNA media server
 Group:          Productivity/Multimedia/Other
 Requires:       %{name} = %{version}
 Requires:       tracker
-Supplements:    packageand(%{name}:tracker)
+Supplements:    %{name}
+Supplements:    and
+Supplements:    tracker
 
 %description plugin-tracker
 Rygel is a home media server that allows sharing audio, video,
