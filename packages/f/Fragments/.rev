@@ -55,4 +55,12 @@
     <comment></comment>
     <requestid>978862</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>c15e711957acc1beff164a5c931dafb9</srcmd5>
+    <version>2.0.2</version>
+    <time>1655732306</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic update of vendored dependencies (forwarded request 983794 from firstyear)</comment>
+    <requestid>983862</requestid>
+  </revision>
 </revisionlist>
