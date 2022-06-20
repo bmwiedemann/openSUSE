@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.3.0
+%define real_version 6.3.1
 %define short_version 6.3
 %define short_name qtcharts
 %define tar_name qtcharts-everywhere-src
@@ -28,13 +28,14 @@
 %endif
 #
 Name:           qt6-charts%{?pkg_suffix}
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        Qt 6 Charts library
 License:        GPL-3.0-or-later
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-charts-rpmlintrc
+BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Gui)
@@ -151,6 +152,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_libdir}/libQt6Charts.so
 %{_qt6_metatypesdir}/qt6charts_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_charts.pri
+%{_qt6_pkgconfigdir}/Qt6Charts.pc
 %exclude %{_qt6_includedir}/QtCharts/%{real_version}
 
 %files private-devel
@@ -168,6 +170,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_libdir}/libQt6ChartsQml.so
 %{_qt6_metatypesdir}/qt6chartsqml_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_chartsqml.pri
+%{_qt6_pkgconfigdir}/Qt6ChartsQml.pc
 %exclude %{_qt6_includedir}/QtChartsQml/%{real_version}
 
 %files -n qt6-chartsqml-private-devel
