@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.3.0
+%define real_version 6.3.1
 %define short_version 6.3
 %define tar_name qtopcua-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-opcua%{?pkg_suffix}
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        Qt wrapper for existing OPC UA stacks
 # src/plugins/opcua is GPL-3.0-or-later, rest is dual licensed
@@ -37,15 +37,15 @@ URL:            https://www.qt.io
 Source:         %{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-opcua-rpmlintrc
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(openssl)
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-network-private-devel
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6Network)
-BuildRequires:  cmake(Qt6QuickTest)
 BuildRequires:  cmake(Qt6Quick)
+BuildRequires:  cmake(Qt6QuickTest)
 BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  pkgconfig(openssl)
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %{qt6_doc_packages}
@@ -97,8 +97,8 @@ Qt 6 DeclarativeOpcua library.
 %package -n qt6-declarativeopcua-private-devel
 Summary:        Non-ABI stable API for the Qt 6 DeclarativeOpcua library
 Requires:       libQt6DeclarativeOpcua6 = %{version}
-Requires:       cmake(Qt6OpcUa) = %{real_version}
 Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6OpcUa) = %{real_version}
 Requires:       cmake(Qt6Quick)
 
 %description -n qt6-declarativeopcua-private-devel
@@ -149,6 +149,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_libdir}/libQt6OpcUa.so
 %{_qt6_metatypesdir}/qt6opcua_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_opcua.pri
+%{_qt6_pkgconfigdir}/Qt6OpcUa.pc
 %exclude %{_qt6_includedir}/QtOpcUa/%{real_version}
 
 %files private-devel
@@ -170,6 +171,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_metatypesdir}/qt6declarativeopcua_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_declarativeopcua.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_declarativeopcua_private.pri
+%{_qt6_pkgconfigdir}/Qt6DeclarativeOpcua.pc
 
 %endif
 
