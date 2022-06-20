@@ -210,6 +210,8 @@ donttest+=" or (test_wcs and test_spectra)"
 donttest+=" or (test_standard_profile and test_main)"
 # segfaults on obs, but are okay when run on live system -- gh#astropy/astropy/13286
 donttest+=" or test_celprm or test_prjprm"
+# gh#astropy/astropy#13275
+donttest+=" or (test_precision and (test_day_frac_exact or test_resolution_never_decreases_utc))"
 %ifarch aarch64
 # doctest failure because of precision errors
   donttest+=" or bayesian_info_criterion_lsq"
