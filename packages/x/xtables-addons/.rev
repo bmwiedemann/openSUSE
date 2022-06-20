@@ -636,4 +636,12 @@
     <comment>- Update to release 3.20</comment>
     <requestid>968241</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>85cc6efc22ae41020319c17ff15e3f8a</srcmd5>
+    <version>3.21</version>
+    <time>1655732332</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>983935</requestid>
+  </revision>
 </revisionlist>
