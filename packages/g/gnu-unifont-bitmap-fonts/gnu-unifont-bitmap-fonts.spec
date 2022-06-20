@@ -18,10 +18,10 @@
 
 %define	fontdir     %{_fontsdir}/uni
 Name:           gnu-unifont-bitmap-fonts
-Version:        14.0.03
+Version:        14.0.04
 Release:        0
 Summary:        The GNU Unicode Bitmap Font
-License:        OFL-1.1 and GPL-2.0-or-later
+License:        GPL-2.0-or-later AND OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://unifoundry.com/unifont/index.html
 Source0:        https://ftp.gnu.org/gnu/unifont/unifont-%{version}/unifont-%{version}.pcf.gz
@@ -41,11 +41,9 @@ intermediate bitmapped font format.
 cp %{SOURCE2} COPYING
 
 %build
-:
 
 %install
-mkdir -p %{buildroot}%{fontdir}
-install -m 444 -D %{SOURCE0} %{buildroot}%{fontdir}
+install -Dm 444 -t %{buildroot}%{fontdir} %{SOURCE0}
 
 %reconfigure_fonts_scriptlets
 
