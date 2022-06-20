@@ -1,7 +1,7 @@
-Index: fedora-policy-20210716/policy/modules/system/libraries.fc
+Index: fedora-policy-20220428/policy/modules/system/libraries.fc
 ===================================================================
---- fedora-policy-20210716.orig/policy/modules/system/libraries.fc
-+++ fedora-policy-20210716/policy/modules/system/libraries.fc
+--- fedora-policy-20220428.orig/policy/modules/system/libraries.fc
++++ fedora-policy-20220428/policy/modules/system/libraries.fc
 @@ -90,7 +90,7 @@ ifdef(`distro_redhat',`
  /opt/Adobe/Reader.?/Reader/intellinux/plug_ins/.*\.api -- gen_context(system_u:object_r:textrel_shlib_t,s0)
  /opt/Adobe/Reader.?/Reader/intellinux/SPPlugins/.*\.ap[il] -- gen_context(system_u:object_r:lib_t,s0)
@@ -12,7 +12,7 @@ Index: fedora-policy-20210716/policy/modules/system/libraries.fc
  /opt/ibm/java.*/jre/.+\.jar		--	gen_context(system_u:object_r:lib_t,s0)
  /opt/ibm/java.*/jre/.+\.so(\.[^/]*)*	--	gen_context(system_u:object_r:textrel_shlib_t,s0)
 @@ -173,7 +173,8 @@ ifdef(`distro_redhat',`
- /usr/lib/systemd/libsystemd-shared-[0-9]+\.so.*	--	gen_context(system_u:object_r:lib_t,s0)
+ /usr/lib/systemd/libsystemd-.+\.so.*	--	gen_context(system_u:object_r:lib_t,s0)
  
  /usr/.*\.so(\.[^/]*)*		--	gen_context(system_u:object_r:lib_t,s0)
 -/usr/lib/wine/.+\.so	--	gen_context(system_u:object_r:textrel_shlib_t,s0)

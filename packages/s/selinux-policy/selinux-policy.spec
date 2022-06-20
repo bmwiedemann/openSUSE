@@ -33,7 +33,7 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20220124
+Version:        20220520
 Release:        0
 Source:         fedora-policy-%{version}.tar.bz2
 Source1:        selinux-policy-rpmlintrc
@@ -140,6 +140,8 @@ Patch055:       fix_auditd.patch
 Patch056:       fix_wine.patch
 Patch057:       fix_hypervkvp.patch
 Patch058:       fix_bitlbee.patch
+Patch059:       systemd_domain_dyntrans_type.patch
+Patch060:       fix_dnsmasq.patch
 
 Patch100:       sedoctool.patch
 
@@ -274,6 +276,7 @@ rm -f %{buildroot}%{_sharedstatedir}/selinux/%1/active/*.linked \
 %{_sharedstatedir}/selinux/%1/active/seusers \
 %{_sharedstatedir}/selinux/%1/active/file_contexts \
 %{_sharedstatedir}/selinux/%1/active/policy.kern \
+%{_sharedstatedir}/selinux/%1/active/modules_checksum \
 %ghost %{_sharedstatedir}/selinux/%1/active/policy.linked \
 %ghost %{_sharedstatedir}/selinux/%1/active/seusers.linked \
 %ghost %{_sharedstatedir}/selinux/%1/active/users_extra.linked \

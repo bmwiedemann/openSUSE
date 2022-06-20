@@ -1,8 +1,17 @@
-Index: fedora-policy-20220124/policy/modules/system/init.te
+Index: fedora-policy-20220428/policy/modules/system/init.te
 ===================================================================
---- fedora-policy-20220124.orig/policy/modules/system/init.te
-+++ fedora-policy-20220124/policy/modules/system/init.te
-@@ -267,6 +267,8 @@ corecmd_exec_bin(init_t)
+--- fedora-policy-20220428.orig/policy/modules/system/init.te
++++ fedora-policy-20220428/policy/modules/system/init.te
+@@ -187,6 +187,8 @@ allow init_t self:bpf { map_create map_r
+ # setuid (from /sbin/shutdown)
+ # sys_chroot (from /usr/bin/chroot): now provided by corecmd_chroot_exec_chroot()
+ 
++# bsc#1197610, find a better, generic solution
++allow init_t self:file mounton;
+ allow init_t self:fifo_file rw_fifo_file_perms;
+ 
+ allow init_t self:service manage_service_perms;
+@@ -267,6 +269,8 @@ corecmd_exec_bin(init_t)
  corenet_all_recvfrom_netlabel(init_t)
  corenet_tcp_bind_all_ports(init_t)
  corenet_udp_bind_all_ports(init_t)
@@ -11,7 +20,7 @@ Index: fedora-policy-20220124/policy/modules/system/init.te
  
  dev_create_all_files(init_t)
  dev_create_all_chr_files(init_t)
-@@ -394,6 +396,7 @@ logging_manage_audit_config(init_t)
+@@ -396,6 +400,7 @@ logging_manage_audit_config(init_t)
  logging_create_syslog_netlink_audit_socket(init_t)
  logging_write_var_log_dirs(init_t)
  logging_manage_var_log_symlinks(init_t)
@@ -19,7 +28,7 @@ Index: fedora-policy-20220124/policy/modules/system/init.te
  
  seutil_read_config(init_t)
  seutil_read_login_config(init_t)
-@@ -444,10 +447,15 @@ ifdef(`distro_redhat',`
+@@ -446,9 +451,19 @@ ifdef(`distro_redhat',`
  corecmd_shell_domtrans(init_t, initrc_t)
  
  storage_raw_rw_fixed_disk(init_t)
@@ -27,15 +36,19 @@ Index: fedora-policy-20220124/policy/modules/system/init.te
  
  sysnet_read_dhcpc_state(init_t)
  
- optional_policy(`
-+    networkmanager_initrc_read_lnk_files(init_t)
++# bsc#1197610, find a better, generic solution
++optional_policy(`
++    mta_getattr_spool(init_t)
 +')
 +
 +optional_policy(`
++    networkmanager_initrc_read_lnk_files(init_t)
++')
++
+ optional_policy(`
      bootloader_domtrans(init_t)
  ')
- 
-@@ -571,10 +579,10 @@ tunable_policy(`init_audit_control',`
+@@ -573,10 +588,10 @@ tunable_policy(`init_audit_control',`
  allow init_t self:system all_system_perms;
  allow init_t self:system module_load;
  allow init_t self:unix_dgram_socket { create_socket_perms sendto };
@@ -48,7 +61,7 @@ Index: fedora-policy-20220124/policy/modules/system/init.te
  allow init_t self:netlink_selinux_socket create_socket_perms;
  allow init_t self:unix_dgram_socket lock;
  # Until systemd is fixed
-@@ -633,6 +641,7 @@ files_delete_all_spool_sockets(init_t)
+@@ -635,6 +650,7 @@ files_delete_all_spool_sockets(init_t)
  files_create_var_lib_dirs(init_t)
  files_create_var_lib_symlinks(init_t)
  files_read_var_lib_symlinks(init_t)
@@ -56,7 +69,7 @@ Index: fedora-policy-20220124/policy/modules/system/init.te
  files_manage_urandom_seed(init_t)
  files_list_locks(init_t)
  files_list_spool(init_t)
-@@ -669,7 +678,7 @@ fs_list_all(init_t)
+@@ -672,7 +688,7 @@ fs_list_all(init_t)
  fs_list_auto_mountpoints(init_t)
  fs_register_binary_executable_type(init_t)
  fs_relabel_tmpfs_sock_file(init_t)
@@ -65,7 +78,7 @@ Index: fedora-policy-20220124/policy/modules/system/init.te
  fs_relabel_cgroup_dirs(init_t)
  fs_search_cgroup_dirs(init_t)
  # for network namespaces
-@@ -725,6 +734,7 @@ systemd_write_inherited_logind_sessions_
+@@ -728,6 +744,7 @@ systemd_write_inherited_logind_sessions_
  create_sock_files_pattern(init_t, init_sock_file_type, init_sock_file_type)
  
  create_dirs_pattern(init_t, var_log_t, var_log_t)
@@ -73,7 +86,7 @@ Index: fedora-policy-20220124/policy/modules/system/init.te
  
  auth_use_nsswitch(init_t)
  auth_rw_login_records(init_t)
-@@ -1571,6 +1581,8 @@ optional_policy(`
+@@ -1578,6 +1595,8 @@ optional_policy(`
  
  optional_policy(`
  	postfix_list_spool(initrc_t)

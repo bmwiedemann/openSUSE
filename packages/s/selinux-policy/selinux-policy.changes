@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri May 20 13:46:47 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 20220520 to pass stricter 3.4 toolchain checks
+
+-------------------------------------------------------------------
+Fri May 20 09:14:58 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 20220428. Refreshed:
+  * fix_apache.patch
+  * fix_hadoop.patch
+  * fix_init.patch
+  * fix_iptables.patch
+  * fix_kernel_sysctl.patch
+  * fix_networkmanager.patch
+  * fix_systemd.patch
+  * fix_systemd_watch.patch
+  * fix_unprivuser.patch
+  * fix_usermanage.patch
+  * fix_wine.patch
+
+-------------------------------------------------------------------
+Thu May 19 12:25:31 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+- Add fix_dnsmasq.patch to fix problems with virtualization on Microos
+  (bsc#1199518)
+
+-------------------------------------------------------------------
+Tue May  3 13:18:38 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Modified fix_init.patch to allow init to setup contrained environment
+  for accountsservice. This needs a better, more general solution
+  (bsc#1197610)
+
+-------------------------------------------------------------------
+Mon May  2 11:27:49 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Add systemd_domain_dyntrans_type.patch to allow systemd to dyntransition.
+  This happens in certain boot conditions (bsc#1182500)
+- Changed fix_unconfineduser.patch to not transition into ldconfig_t
+  from unconfined_t (bsc#1197169)
+-------------------------------------------------------------------
 Thu Feb 17 12:24:13 UTC 2022 - Klaus Kämpf <kkaempf@suse.com>
 
 - use %license tag for COPYING file
