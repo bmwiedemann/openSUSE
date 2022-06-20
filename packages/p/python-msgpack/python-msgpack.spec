@@ -21,7 +21,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-msgpack
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Summary:        MessagePack (de)serializer
 License:        Apache-2.0

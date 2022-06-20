@@ -105,4 +105,20 @@
   * bugfixes</comment>
     <requestid>945449</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>43589d1535dca29f1b1f7726f654e166</srcmd5>
+    <version>1.0.4</version>
+    <time>1655732224</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.4:
+  * Support Python 3.11 (beta)
+  * refresh ci settings.
+  * Don't define _*ENDIAN macro on Unix.
+  * Update setuptools and black
+  * Use PyFloat_Pack8() on Python 3.11a7
+  * Upgrade black to fix CI
+  * Fix Unpacker max_buffer_length handling
+  * ci: Update action versions.</comment>
+    <requestid>983773</requestid>
+  </revision>
 </revisionlist>

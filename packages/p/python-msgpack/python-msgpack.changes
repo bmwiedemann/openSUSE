@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jun 19 18:30:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.4:
+  * Support Python 3.11 (beta)
+  * refresh ci settings.
+  * Don't define _*ENDIAN macro on Unix.
+  * Update setuptools and black
+  * Use PyFloat_Pack8() on Python 3.11a7
+  * Upgrade black to fix CI
+  * Fix Unpacker max_buffer_length handling
+  * ci: Update action versions.
+
+-------------------------------------------------------------------
 Mon Jan 10 23:20:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.3:
