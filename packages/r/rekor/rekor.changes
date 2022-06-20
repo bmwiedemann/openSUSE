@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jun 20 06:54:51 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- Updated to rekor 0.8.1
+  - Fix indexing bug for intoto attestations by @priyawadhwa in #870
+  - Allow an expired certificate chain to be uploaded and verified by @haydentherapper in #873
+- Updated to rekor 0.8.0
+  - Update go-tuf and sigstore/sigstore to non-vulnerable go-tuf version. by @dhaus67 in #847
+  - Configure rekor server in e2e tests via env variable by @priyawadhwa in #850
+  - update cross-builder image to use go1.17.11 and dockerfile base image by @cpanato in #860
+  - update go.mod to go1.17 by @cpanato in #861
+  - Improve error message when using ED25519 with HashedRekord type by @haydentherapper in #862
+  - Allow retrieving entryIDs or UUIDs via /api/v1/log/entries/retrieve endpoint by @priyawadhwa in #859
+  - Print total tree size, including inactive shards in rekor-cli loginfo by @priyawadhwa in #864
+- Updated to rekor 0.7.0
+  - remove URL fetch of keys/artifacts server-side by @bobcallaway in #735
+  - intoto: add index on materials digest of slsa provenance by @asraa in #793
+  - chore(deps): Included dependency review by @naveensrinivasan in #788
+  - Check if intoto hash is available before accessing it as an index key by @priyawadhwa in #800
+  - Move deprecated dependency: google/trillian/merkle to transparency-dev by @asraa in #807
+  - Retrieve shard tree length if it isn't provided in the config by @priyawadhwa in #810
+  - update release builder images to use go 1.17.10 and cosign image to 1.8.0 by @cpanato in #820
+  - update go to 1.17.10 in the dockerfile by @cpanato in #819
+  - Limit the number of certificates parsed in a chain by @haydentherapper in #823
+  - Breaking change: Remove timestamping authority by @haydentherapper in #813
+  - Add back owners for rfc3161 package type by @haydentherapper in #833
+  - all: remove dependency on deprecated github.com/pkg/errors by @zchee in #834
+  - name stored attestations by digest instead of UUID by @bobcallaway in #769
+
+-------------------------------------------------------------------
 Tue Apr 26 09:41:49 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - Updated to rekor 0.6.0
