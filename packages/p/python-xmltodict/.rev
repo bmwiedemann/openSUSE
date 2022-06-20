@@ -48,4 +48,24 @@
   * Do not run tests that make no sense with a current Expat.</comment>
     <requestid>956659</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a27bdab9ef9d13bbf3c5423e3107a41a</srcmd5>
+    <version>0.13.0</version>
+    <time>1655732223</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.13.0:
+  * Add install info to readme for openSUSE. (#205)
+  * Support defaultdict for namespace mapping (#211)
+  * parse(generator) is now possible (#212)
+  * Processing comments on parsing from xml to dict (connected to #109) (#221)
+  * Add expand_iter kw to unparse to expand iterables (#213)
+  * Fixed some typos
+  * Add support for python3.8
+  * Drop Jython/Python 2 and add Python 3.9/3.10.
+  * Drop OrderedDict in Python &gt;= 3.7
+  * Do not use len() to determine if a sequence is empty
+  * Add more namespace attribute tests
+  * Fix encoding issue in setup.py</comment>
+    <requestid>983728</requestid>
+  </revision>
 </revisionlist>

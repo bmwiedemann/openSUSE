@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jun 19 17:47:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.0:
+  * Add install info to readme for openSUSE. (#205)
+  * Support defaultdict for namespace mapping (#211)
+  * parse(generator) is now possible (#212)
+  * Processing comments on parsing from xml to dict (connected to #109) (#221)
+  * Add expand_iter kw to unparse to expand iterables (#213)
+  * Fixed some typos
+  * Add support for python3.8
+  * Drop Jython/Python 2 and add Python 3.9/3.10.
+  * Drop OrderedDict in Python >= 3.7
+  * Do not use len() to determine if a sequence is empty
+  * Add more namespace attribute tests
+  * Fix encoding issue in setup.py
+
+-------------------------------------------------------------------
 Tue Feb 22 10:27:36 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch skip-tests-expat-245.patch:
