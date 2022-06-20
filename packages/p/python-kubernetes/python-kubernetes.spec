@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-kubernetes
-Version:        23.3.0
+Version:        23.6.0
 Release:        0
 Summary:        Kubernetes python client
 License:        Apache-2.0

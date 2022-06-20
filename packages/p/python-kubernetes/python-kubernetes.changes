@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jun 19 17:41:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.6.0:
+  * Omits alpha-level enums from the static openapi file captured in api/openapi-spec
+  * Fixes a regression in v1beta1 PodDisruptionBudget handling of "strategic
+    merge patch"-type API requests for the `selector` field. Prior to 1.21,
+    these requests would merge `matchLabels` content and replace
+    `matchExpressions` content. In 1.21, patch requests touching the `selector`
+    field started replacing the entire selector. This is consistent with
+    server-side apply and the v1 PodDisruptionBudget behavior, but should not
+    have been changed for v1beta1.
+
+-------------------------------------------------------------------
 Tue May  3 06:28:36 UTC 2022 - pgajdos@suse.com
 
 - version update to 23.3.0

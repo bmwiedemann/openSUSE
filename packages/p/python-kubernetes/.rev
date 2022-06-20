@@ -177,4 +177,20 @@
 </comment>
     <requestid>974767</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>53598cb49e9a22f7cf7cb36d54f8888a</srcmd5>
+    <version>23.6.0</version>
+    <time>1655732222</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.6.0:
+  * Omits alpha-level enums from the static openapi file captured in api/openapi-spec
+  * Fixes a regression in v1beta1 PodDisruptionBudget handling of &quot;strategic
+    merge patch&quot;-type API requests for the `selector` field. Prior to 1.21,
+    these requests would merge `matchLabels` content and replace
+    `matchExpressions` content. In 1.21, patch requests touching the `selector`
+    field started replacing the entire selector. This is consistent with
+    server-side apply and the v1 PodDisruptionBudget behavior, but should not
+    have been changed for v1beta1.</comment>
+    <requestid>983725</requestid>
+  </revision>
 </revisionlist>
