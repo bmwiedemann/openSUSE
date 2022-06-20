@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.3.0
+%define real_version 6.3.1
 %define short_version 6.3
 %define tar_name qtvirtualkeyboard-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-virtualkeyboard%{?pkg_suffix}
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        Framework for writing or integrating input methods and engines for Qt 6
 License:        GPL-3.0-only
@@ -82,9 +82,9 @@ Development files for the Qt 6 VirtualKeyboard library.
 
 %package -n qt6-virtualkeyboard-private-devel
 Summary:        Non-ABI stable API for the Qt 6 VirtualKeyboard library
+Requires:       cmake(Qt6VirtualKeyboard) = %{real_version}
 %requires_eq    qt6-core-private-devel
 %requires_eq    qt6-gui-private-devel
-Requires:       cmake(Qt6VirtualKeyboard) = %{real_version}
 
 %description -n qt6-virtualkeyboard-private-devel
 This package provides private headers of libQt6VirtualKeyboard that do not have
@@ -168,6 +168,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledTcime
 %{_qt6_libdir}/libQt6VirtualKeyboard.so
 %{_qt6_metatypesdir}/qt6virtualkeyboard_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_virtualkeyboard.pri
+%{_qt6_pkgconfigdir}/Qt6VirtualKeyboard.pc
 %exclude %{_qt6_includedir}/QtVirtualKeyboard/%{real_version}/
 
 %files -n qt6-virtualkeyboard-private-devel
