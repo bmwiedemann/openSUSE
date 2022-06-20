@@ -1,10 +1,10 @@
-Index: policycoreutils-3.3/run_init/run_init.pamd
+Index: policycoreutils-3.4-rc3/run_init/run_init.pamd
 ===================================================================
---- policycoreutils-3.3.orig/run_init/run_init.pamd
-+++ policycoreutils-3.3/run_init/run_init.pamd
+--- policycoreutils-3.4-rc3.orig/run_init/run_init.pamd
++++ policycoreutils-3.4-rc3/run_init/run_init.pamd
 @@ -1,8 +1,9 @@
  #%PAM-1.0
- # Uncomment the next line if you do not want to enter your passwd everytime
+ # Uncomment the next line if you do not want to enter your passwd every time
  #auth       sufficient   pam_rootok.so
 -auth       include	system-auth
 -account    include	system-auth

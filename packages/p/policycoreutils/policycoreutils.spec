@@ -17,27 +17,31 @@
 
 
 %define libaudit_ver     2.2
-%define libsepol_ver     3.3
-%define libsemanage_ver  3.3
-%define libselinux_ver   3.3
+%define libsepol_ver     3.4
+%define libsemanage_ver  3.4
+%define libselinux_ver   3.4
 %define setools_ver      4.1.1
 Name:           policycoreutils
-Version:        3.3
+Version:        3.4
 Release:        0
 Summary:        SELinux policy core utilities
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
 URL:            https://github.com/SELinuxProject/selinux
 Source0:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz
-Source1:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/selinux-python-%{version}.tar.gz
-Source2:        system-config-selinux.png
-Source3:        system-config-selinux.desktop
-Source4:        system-config-selinux.pam
-Source5:        system-config-selinux.console
-Source6:        selinux-polgengui.desktop
-Source7:        selinux-polgengui.console
-Source8:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/semodule-utils-%{version}.tar.gz
-Source9:        newrole.pam
+Source1:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
+Source2:        policycoreutils.keyring
+Source3:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/selinux-python-%{version}.tar.gz
+Source4:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/selinux-python-%{version}.tar.gz.asc
+Source5:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/semodule-utils-%{version}.tar.gz
+Source6:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/semodule-utils-%{version}.tar.gz.asc
+Source7:        system-config-selinux.png
+Source8:        system-config-selinux.desktop
+Source9:        system-config-selinux.pam
+Source10:       system-config-selinux.console
+Source11:       selinux-polgengui.desktop
+Source12:       selinux-polgengui.console
+Source13:       newrole.pam
 Patch0:         make_targets.patch
 Patch2:         get_os_version.patch
 Patch3:         run_init.pamd.patch
@@ -159,7 +163,7 @@ system-config-selinux is a utility for managing the SELinux environment.
 %endif
 
 %prep
-%setup -q -a1 -a8
+%setup -q -a3 -a5
 setools_python_pwd="$PWD/selinux-python-%{version}"
 semodule_utils_pwd="$PWD/semodule-utils-%{version}"
 %patch0 -p1
@@ -183,11 +187,11 @@ mkdir -p %{buildroot}%{_mandir}/man8
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d
 mkdir -p %{buildroot}%{_sysconfdir}/security/console.apps
 make LSPP_PRIV=y DESTDIR=%{buildroot} install LIBEXECDIR=%{_libexecdir}
-install -D -m 644 %{SOURCE2} %{buildroot}%{_datadir}/pixmaps/system-config-selinux.png
-install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/pam.d/system-config-selinux
-install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/pam.d/selinux-polgengui
-install -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/security/console.apps/system-config-selinux
-install -m 644 %{SOURCE7} %{buildroot}%{_sysconfdir}/security/console.apps/selinux-polgengui
+install -D -m 644 %{SOURCE12} %{buildroot}%{_datadir}/pixmaps/system-config-selinux.png
+install -m 644 %{SOURCE13} %{buildroot}%{_sysconfdir}/pam.d/system-config-selinux
+install -m 644 %{SOURCE13} %{buildroot}%{_sysconfdir}/pam.d/selinux-polgengui
+install -m 644 %{SOURCE10} %{buildroot}%{_sysconfdir}/security/console.apps/system-config-selinux
+install -m 644 %{SOURCE12} %{buildroot}%{_sysconfdir}/security/console.apps/selinux-polgengui
 rm -f %{buildroot}%{_mandir}/ru/man8/genhomedircon.8.gz
 ln -sf consolehelper %{buildroot}%{_bindir}/system-config-selinux
 ln -sf consolehelper %{buildroot}%{_bindir}/selinux-polgengui
@@ -210,7 +214,7 @@ rm %{buildroot}%{_sysconfdir}/pam.d/selinux-polgengui \
    %{buildroot}%{_datadir}/applications/system-config-selinux.desktop \
    %{buildroot}%{_datadir}/pixmaps/system-config-selinux.png
 %endif
-cp -f %{SOURCE9} %{buildroot}%{_sysconfdir}/pam.d/newrole
+cp -f %{SOURCE13} %{buildroot}%{_sysconfdir}/pam.d/newrole
 mv %{buildroot}/sbin/* %{buildroot}/usr/sbin/
 
 %post newrole

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May  9 10:59:34 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.4
+  * fixfiles: Use parallel relabeling
+- Refreshed patches 
+  * get_os_version.patch
+  * run_init.pamd.patch
+
+-------------------------------------------------------------------
 Wed Apr 20 12:41:52 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix file list: package ru/man8/sepolgen.8 only in the devel
