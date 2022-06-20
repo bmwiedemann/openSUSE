@@ -169,4 +169,15 @@
   - Replace concatenation with f-strings</comment>
     <requestid>939538</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b91454422e7fd4baa2e7a8cc72b2c27b</srcmd5>
+    <version>2.4.0</version>
+    <time>1655732337</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.4.0
+  - Support integer keys of dicts in text serialization
+  - Update CI to use unversioned jobs template
+  - Changed minversion in tox to 3.18.0</comment>
+    <requestid>983959</requestid>
+  </revision>
 </revisionlist>

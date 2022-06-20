@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  7 09:15:33 UTC 2022 - cloud-devel@suse.de
+
+- update to version 2.4.0
+  - Support integer keys of dicts in text serialization
+  - Update CI to use unversioned jobs template
+  - Changed minversion in tox to 3.18.0
+
+-------------------------------------------------------------------
 Tue Oct 26 21:42:27 UTC 2021 - cloud-devel@suse.de
 
 - update to version 2.3.0
