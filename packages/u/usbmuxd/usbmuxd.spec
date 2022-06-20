@@ -25,6 +25,7 @@ License:        GPL-2.0-only OR GPL-3.0-only
 Group:          System/Libraries
 URL:            https://github.com/libimobiledevice/usbmuxd
 Source:         https://github.com/libimobiledevice/usbmuxd/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        %{name}.sysusers
 Source99:       baselibs.conf
 Patch0:         usbmuxd-add-socket-option.patch
 Patch1:         usbmuxd-add-pid-option.patch
@@ -34,6 +35,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libimobiledevice-1.0) >= 1.3.0
 BuildRequires:  pkgconfig(libplist-2.0) >= 2.2.0
@@ -41,7 +43,7 @@ BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.9
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 Requires(pre):  group(nogroup)
-Requires(pre):  shadow
+%sysusers_requires
 %{?systemd_requires}
 
 %description
@@ -55,6 +57,7 @@ multiplexing several conversations onto a single pair of wires.
 %autosetup -p1
 
 %build
+%sysusers_generate_pre %{SOURCE1} %{name} %{name}.conf
 autoreconf -fiv
 %configure \
   --with-udevrulesdir=%{_udevrulesdir} \
@@ -64,11 +67,10 @@ autoreconf -fiv
 %install
 %make_install
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
+install -Dm0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/%{name}.conf
 
-%pre
-getent passwd usbmux >/dev/null || useradd -r -g nogroup -d %{_localstatedir}/lib/%{name} -s /sbin/nologin -c "%{name} daemon" usbmux
+%pre -f %{name}.pre
 %service_add_pre usbmuxd.service
-exit 0
 
 %preun
 %service_del_preun usbmuxd.service
@@ -88,5 +90,6 @@ exit 0
 %{_mandir}/man8/usbmuxd.8%{?ext_man}
 %{_udevrulesdir}/39-usbmuxd.rules
 %{_unitdir}/usbmuxd.service
+%{_sysusersdir}/%{name}.conf
 
 %changelog
