@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jun  9 14:20:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.5.1:
+  * A quick hotfix release. Fixes problems with new video sink on
+    displays with non-100% scaling applied.
+- Changes from version 0.5.0:
+  * Clapper now includes an all new and improved GStreamer video
+    sink. With it, we are moving away from GLArea into using
+    GdkPaintable. This already gives us slight performance
+    improvement in some cases and opens new possibilities to
+    improve it further at a later time. New sink now also handles
+    overlaying and displaying subtitles on the GTK side of things
+    (as a separate GdkTextures instead of drawing them into
+    framebuffer). Old, now called "legacy" sink is still included.
+    If there are any problems with the new one, you can set
+    CLAPPER_USE_LEGACY_SINK=1 env to use the old one.
+  * Networking was ported into libsoup3. The built-in, unfinished
+    web application was removed.
+  * Additionally, app now supports D-Bus launching
+    (DBusActivatable).
+  * Some other misc fixes and few small UI changes were also done.
+  * Updated translations.
+- Update libnames define to align with soname.
+
+-------------------------------------------------------------------
 Sat Feb 26 11:01:56 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.4.1:

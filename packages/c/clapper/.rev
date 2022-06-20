@@ -7,4 +7,33 @@
     <comment>New package</comment>
     <requestid>957803</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1a088c2521344c27d92a83c6d5664df3</srcmd5>
+    <version>0.5.1</version>
+    <time>1655732319</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.1:
+  * A quick hotfix release. Fixes problems with new video sink on
+    displays with non-100% scaling applied.
+- Changes from version 0.5.0:
+  * Clapper now includes an all new and improved GStreamer video
+    sink. With it, we are moving away from GLArea into using
+    GdkPaintable. This already gives us slight performance
+    improvement in some cases and opens new possibilities to
+    improve it further at a later time. New sink now also handles
+    overlaying and displaying subtitles on the GTK side of things
+    (as a separate GdkTextures instead of drawing them into
+    framebuffer). Old, now called &quot;legacy&quot; sink is still included.
+    If there are any problems with the new one, you can set
+    CLAPPER_USE_LEGACY_SINK=1 env to use the old one.
+  * Networking was ported into libsoup3. The built-in, unfinished
+    web application was removed.
+  * Additionally, app now supports D-Bus launching
+    (DBusActivatable).
+  * Some other misc fixes and few small UI changes were also done.
+  * Updated translations.
+- Update libnames define to align with soname.
+</comment>
+    <requestid>983983</requestid>
+  </revision>
 </revisionlist>
