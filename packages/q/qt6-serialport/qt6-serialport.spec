@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.3.0
+%define real_version 6.3.1
 %define short_version 6.3
 %define tar_name qtserialport-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-serialport%{?pkg_suffix}
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        Qt 6 SerialPort library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -72,7 +72,7 @@ Development files for the Qt 6 SerialPort library.
 %package private-devel
 Summary:        Non-ABI stable API for the Qt 6 SerialPort library
 Requires:       cmake(Qt6SerialPort) = %{real_version}
-%requires_eq     qt6-core-private-devel
+%requires_eq    qt6-core-private-devel
 
 %description private-devel
 This package provides private headers of libQt6SerialPort that do not have any
@@ -111,6 +111,7 @@ ABI or API guarantees.
 %{_qt6_libdir}/libQt6SerialPort.so
 %{_qt6_metatypesdir}/qt6serialport_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_serialport.pri
+%{_qt6_pkgconfigdir}/Qt6SerialPort.pc
 %exclude %{_qt6_includedir}/QtSerialPort/%{real_version}/
 
 %files private-devel
