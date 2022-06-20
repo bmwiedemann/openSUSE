@@ -1,7 +1,7 @@
 #
 # spec file for package checkpolicy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,18 @@
 #
 
 
-%define libsepol_ver 3.3
+%define libsepol_ver 3.4
 Name:           checkpolicy
-Version:        3.3
+Version:        3.4
 Release:        0
 Summary:        SELinux policy compiler
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
 URL:            https://github.com/SELinuxProject/selinux
 Source0:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz
-Source1:        checkpolicy-tests.tar.gz
+Source1:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
+Source2:        checkpolicy.keyring
+Source3:        checkpolicy-tests.tar.gz
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  libselinux-devel
