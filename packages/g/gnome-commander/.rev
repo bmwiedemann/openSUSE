@@ -93,4 +93,12 @@
     <comment></comment>
     <requestid>965478</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e3e0bf46e68433a9bbc1400f27751444</srcmd5>
+    <version>1.14.3</version>
+    <time>1655732304</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 983688 from iznogood)</comment>
+    <requestid>983861</requestid>
+  </revision>
 </revisionlist>
