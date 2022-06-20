@@ -246,4 +246,17 @@
   - ignore reno generated artifacts</comment>
     <requestid>934516</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>dff77ac0a02bb5b756f64b6b63dca16c</srcmd5>
+    <version>2.5.0</version>
+    <time>1655732343</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.5.0
+  - Remove unnecessary 'coding' lines
+  - requirements: Remove pbr
+  - Restore reproducibility in docs
+  - Remove references to Python 2 objects
+  - Remove six</comment>
+    <requestid>983967</requestid>
+  </revision>
 </revisionlist>
