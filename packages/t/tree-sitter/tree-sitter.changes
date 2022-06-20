@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun 19 09:12:46 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 0.20.6:
+  * 0.20.6
+  * libs: 0.20.6
+  * Properly incorporate lookahead bytes when recovering via missing token
+  * Improve randomized testing setup
+  * Run cargo test directly on CI
+  * Set CLI as default workspace member
+  * Don't generate primary states array if it will be unused due to abi version setting
+  * tags: 0.20.2
+  * 0.20.5
+  * libs: 0.20.5
+
+-------------------------------------------------------------------
 Tue Feb 22 16:46:36 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.20.4:

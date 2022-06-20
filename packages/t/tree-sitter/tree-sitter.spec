@@ -19,17 +19,16 @@
 %define somajor 0
 %define libdirname tree_sitter
 Name:           tree-sitter
-Version:        0.20.4
+Version:        0.20.6
 Release:        0
 Summary:        An incremental parsing system for programming tools
 License:        MIT
 URL:            https://tree-sitter.github.io/
-Source0:        https://github.com/tree-sitter/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        tree-sitter-vendor.tar.xz
-BuildRequires:  nodejs
-BuildRequires:  npm
-# because of gh#meta-rust/cargo-bitbake#13
-BuildRequires:  cargo > 1.40
+Source0:        https://github.com/tree-sitter/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.xz
+Source1:        vendor.tar.xz
+Source2:        cargo_config
+BuildRequires:  cargo-packaging
+BuildRequires:  rust > 1.40
 Requires:       lib%{name}%{somajor} = %{version}
 
 %description
@@ -64,20 +63,11 @@ developing applications that use %{name}.
 
 %prep
 %autosetup -p1 -a1
-
-rm -v docs/.gitignore
-
-mkdir .cargo
-cat >.cargo/config <<EOF
-[source.crates-io]
-replace-with = "vendored-sources"
-
-[source.vendored-sources]
-directory = "./vendor"
-EOF
+mkdir -p .cargo
+cp %{SOURCE2} .cargo/config
 
 %build
-cargo build --release
+%{cargo_build}
 export CFLAGS='%{optflags}'
 export PREFIX='%{_prefix}' LIBDIR='%{_libdir}'
 %make_build
@@ -85,7 +75,7 @@ export PREFIX='%{_prefix}' LIBDIR='%{_libdir}'
 %install
 export PREFIX='%{_prefix}' LIBDIR='%{_libdir}' INCLUDEDIR='%{_includedir}'
 %make_install
-install -p -m 0755 -D target/release/tree-sitter \
+install -p -m 0755 -D %{_builddir}/%{name}-%{version}/target/release/tree-sitter \
     %{buildroot}%{_bindir}/tree-sitter
 
 find %{buildroot} -type f \( -name "*.la" -o -name "*.a" \) -delete -print

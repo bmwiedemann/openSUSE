@@ -52,4 +52,23 @@
   - Remove unnecessary types from binding.rs</comment>
     <requestid>957067</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>417127a445d63548620d3782ccd1c0ea</srcmd5>
+    <version>0.20.6</version>
+    <time>1655732298</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.20.6:
+  * 0.20.6
+  * libs: 0.20.6
+  * Properly incorporate lookahead bytes when recovering via missing token
+  * Improve randomized testing setup
+  * Run cargo test directly on CI
+  * Set CLI as default workspace member
+  * Don't generate primary states array if it will be unused due to abi version setting
+  * tags: 0.20.2
+  * 0.20.5
+  * libs: 0.20.5
+</comment>
+    <requestid>983938</requestid>
+  </revision>
 </revisionlist>
