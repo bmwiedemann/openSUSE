@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  9 10:50:59 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.4
+  * Support parallel relabeling
+
+-------------------------------------------------------------------
 Thu Dec  2 12:10:11 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Claim ownership for %{_sysconfdir}/selinux
