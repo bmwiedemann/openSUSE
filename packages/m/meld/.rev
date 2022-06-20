@@ -646,4 +646,12 @@
     <comment>Mesonfix and tweaks (forwarded request 950801 from iznogood)</comment>
     <requestid>951407</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>c5a185cdeacd3a77eff80dcb9b82404f</srcmd5>
+    <version>3.21.2</version>
+    <time>1655732303</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 3.21.2 (forwarded request 983543 from stroeder)</comment>
+    <requestid>983860</requestid>
+  </revision>
 </revisionlist>

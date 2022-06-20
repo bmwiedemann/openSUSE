@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Jun 18 06:54:15 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- removed obsolete cc7746c141d976a4779cf868774fae1fe7627a6d.patch
+- Update to version 3.21.2
+  * Features:
+    - Folder comparison now supports compare differently-named files across
+      panes, by marking files for comparison (Helly Guo)
+    - Synchronization points are now significantly easier to use and more
+      robust, and have new user documentation (Roberto Vidal)
+    - Added option to ignore Unicode normalisation form differences when
+      comparing paths (Dan B)
+    - The files or folders being compared can now be swapped in two pane mode,
+      using the new View -> Swap left and right panes menu item (Helly Guo)
+    - Folder comparisons now show a "(scanning...)" indication in tree view
+      rows as an additional visual cue that the comparison is still running
+     (Kai Willadsen)
+    - Folder comparisons have a new optional ISO-format time column (Kai
+      Willadsen)
+  * Fixes:
+    - Update icon usage to support stock icon removal from new Adwaita versions
+      (Jan Tojnar)
+    - Build fix for Meson 0.61.0 (Silvio Fricke)
+    - The new pathlabel widgets now support user-provided custom labels (Kai
+      Willadsen)
+    - Fix file selectors in folder comparisons to always open in the current
+      folder (Kai Willadsen)
+    - Using a custom save path (i.e., the --output flag) now sets a buffer as
+      modified, so that unchanged merges can be saved (Kai Willadsen)
+    - Comparing new or deleted rows in folder comparison now opens a two-pane
+      file comparisons for consistency (Kai Willadsen)
+    - Destructive dialog actions now have appropriate styling (Kai Willadsen)
+    - Invalid user settings for folder comparison columns are now handled more
+      gracefully (Kai Willadsen)
+    - The nightly flatpak build now includes Git to make version control
+      comparisons somewhat functional (Kai Willadsen)
+    - Issues fixed: #11, #85, #188, #319, #381, #475, #492, #581, #620, #638,
+      #645, #660, #662, #672
+  * Improvements to translations
+
+-------------------------------------------------------------------
 Wed Feb  2 18:52:53 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add cc7746c141d976a4779cf868774fae1fe7627a6d.patch: Fix build

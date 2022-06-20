@@ -17,15 +17,13 @@
 
 
 Name:           meld
-Version:        3.21.1
+Version:        3.21.2
 Release:        0
 Summary:        Visual diff and merge tool
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            http://meldmerge.org/
 Source0:        https://download.gnome.org/sources/meld/3.21/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM cc7746c141d976a4779cf868774fae1fe7627a6d.patch -- Fix build with meson 0.61 and newer
-Patch0:         https://gitlab.gnome.org/GNOME/meld/-/commit/cc7746c141d976a4779cf868774fae1fe7627a6d.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
