@@ -1,5 +1,5 @@
 #
-# spec file for python-djangorestframework
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -35,6 +35,9 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            http://django-rest-framework.org/
 Source:         https://github.com/encode/django-rest-framework/archive/%{version}.tar.gz#/djangorestframework-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 8530-update-tests-new-Pygments.patch gh#encode/django-rest-framework#8160 mcepl@suse.com
+# allow work with the current Pygments
+Patch0:         8530-update-tests-new-Pygments.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -52,6 +55,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module Markdown >= 2.6.11}
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module coreapi >= 2.3.1}
 BuildRequires:  %{python_module coreschema >= 0.0.4}
 BuildRequires:  %{python_module django-guardian >= 2.2.0}
@@ -71,7 +75,8 @@ browseable. It also supports a wide range of media types,
 authentication and permission policies out of the box.
 
 %prep
-%setup -q -n django-rest-framework-%{version}
+%autosetup -p1 -n django-rest-framework-%{version}
+
 # Remove pytest params incompatible with older pytest on Leap
 sed -i '/addopts/d' setup.cfg
 
@@ -86,8 +91,7 @@ sed -i '/addopts/d' setup.cfg
 
 %check
 %if %{with test}
-# gh#encode/django-rest-framework#8160
-%pytest -rs -vv -k 'not test_markdown'
+%pytest -rs -vv
 %endif
 
 %if !%{with test}
