@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.3.0
+%define real_version 6.3.1
 %define short_version 6.3
 %define tar_name qttools-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-tools%{?pkg_suffix}
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        Qt 6 Tools libraries and tools
 # TODO Check if it's still valid
@@ -51,6 +51,7 @@ BuildRequires:  clang11-devel
 BuildRequires:  clang-devel >= 8
 %endif
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-dbus-private-devel
 BuildRequires:  qt6-gui-private-devel
@@ -350,6 +351,8 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 %{_qt6_metatypesdir}/qt6designer_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_designer.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_uiplugin.pri
+%{_qt6_pkgconfigdir}/Qt6Designer.pc
+%{_qt6_pkgconfigdir}/Qt6UiPlugin.pc
 %exclude %{_qt6_includedir}/QtDesigner/%{real_version}
 
 %files -n qt6-designer-private-devel
@@ -367,6 +370,7 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 %{_qt6_libdir}/libQt6Help.so
 %{_qt6_metatypesdir}/qt6help_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_help.pri
+%{_qt6_pkgconfigdir}/Qt6Help.pc
 %exclude %{_qt6_includedir}/QtHelp/%{real_version}
 
 %files -n qt6-help-private-devel
@@ -384,6 +388,7 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 %{_qt6_libdir}/libQt6UiTools.so
 %{_qt6_metatypesdir}/qt6uitools_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_uitools.pri
+%{_qt6_pkgconfigdir}/Qt6UiTools.pc
 %exclude %{_qt6_includedir}/QtUiTools/%{real_version}
 
 %files -n qt6-uitools-private-devel
@@ -431,6 +436,7 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 %{_qt6_cmakedir}/Qt6Linguist/
 %{_qt6_cmakedir}/Qt6LinguistTools/
 %{_qt6_mkspecsdir}/modules/qt_lib_linguist.pri
+%{_qt6_pkgconfigdir}/Qt6Linguist.pc
 
 %files qdbus
 %{_bindir}/qdbus6
