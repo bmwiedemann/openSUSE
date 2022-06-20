@@ -18,22 +18,25 @@
 
 %define _name mlt
 %define libname lib%{_name}
-%define lversion 7.4.0
+%define lversion 7.6.0
 %define sover 7
 %define lib_pkgname %{libname}-%{sover}-%{sover}
 %define _name_pp %{_name}++
 %define libname_pp lib%{_name_pp}
 %define sover_pp 7
-%define lversion_pp 7.4.0
+%define lversion_pp 7.6.0
 %define libpp_pkgname %{libname_pp}-%{sover_pp}-%{sover_pp}
 Name:           %{libname}
-Version:        7.4.0
+Version:        7.6.0
 Release:        0
 Summary:        Multimedia framework for television broadcasting
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.mltframework.org
 Source0:        https://github.com/mltframework/mlt/archive/v%{version}.tar.gz#/%{_name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM -- Missing return values in non-void functions
+Patch0:         0001-fix-798-missing-function-returns.patch
+Patch1:         0001-Supply-a-proper-return-value-on-non-void-functions.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -172,8 +175,7 @@ transcoders and web streamers.
 This package contains python bindings.
 
 %prep
-%setup -q -n %{_name}-%{version}
-%autopatch -p1
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
 # WARNING: building opencv module causes multicore issues - boo#1068792

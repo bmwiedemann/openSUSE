@@ -1,0 +1,107 @@
+From 50bc133522cdf636928bda6b1b35541bf055c102 Mon Sep 17 00:00:00 2001
+From: Dan Dennedy <dan@dennedy.org>
+Date: Sun, 19 Jun 2022 14:01:15 -0700
+Subject: [PATCH] fix #798 missing function returns
+
+---
+ src/modules/core/filter_mirror.c       | 1 +
+ src/modules/core/filter_pillar_echo.c  | 7 ++++---
+ src/modules/kdenlive/filter_wave.c     | 1 +
+ src/modules/oldfilm/filter_tcolor.c    | 1 +
+ src/modules/plus/filter_invert.c       | 1 +
+ src/modules/plus/filter_spot_remover.c | 1 +
+ 6 files changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/src/modules/core/filter_mirror.c b/src/modules/core/filter_mirror.c
+index 5d584ad..9dd4530 100644
+--- a/src/modules/core/filter_mirror.c
++++ b/src/modules/core/filter_mirror.c
+@@ -299,6 +299,7 @@ static int do_slice_proc(int id, int index, int jobs, void* data)
+ 			}
+ 		}
+ 	}
++	return 0;
+ }
+ 
+ static int filter_get_image( mlt_frame frame, uint8_t **image, mlt_image_format *format, int *width, int *height, int writable )
+diff --git a/src/modules/core/filter_pillar_echo.c b/src/modules/core/filter_pillar_echo.c
+index a4f8ef8..ae3937c 100644
+--- a/src/modules/core/filter_pillar_echo.c
++++ b/src/modules/core/filter_pillar_echo.c
+@@ -1,6 +1,6 @@
+ /*
+- * filter_pillar_echo.c -- filter to interpolate pixels outside an area of interest
+- * Copyright (c) 2020-2021 Meltytech, LLC
++ * filter_pillar_echo.c -- filter to interpolate pixels outside an area of
++ * interest Copyright (c) 2020-2021 Meltytech, LLC
+  *
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+@@ -14,7 +14,7 @@
+  *
+  * You should have received a copy of the GNU Lesser General Public
+  * License along with this library; if not, write to the Free Software
+- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301 USA
+  */
+ 
+ #include "image_proc.h"
+@@ -159,6 +159,7 @@ static int scale_sliced_proc(int id, int index, int jobs, void* data)
+ 			d += 4;
+ 		}
+ 	}
++	return 0;
+ }
+ 
+ /** Perform a bilinear scale from the rect inside the source to fill the destination
+diff --git a/src/modules/kdenlive/filter_wave.c b/src/modules/kdenlive/filter_wave.c
+index 91b625d..039ad3b 100644
+--- a/src/modules/kdenlive/filter_wave.c
++++ b/src/modules/kdenlive/filter_wave.c
+@@ -78,6 +78,7 @@ static int do_wave_slice_proc(int id, int index, int jobs, void* data)
+ 				*dst++ = getPoint(d->src, w, d->src_h, (x+decalX), (y+decalY), z);
+ 		}
+ 	}
++	return 0;
+ }
+ 
+ static int filter_get_image( mlt_frame frame, uint8_t **image, mlt_image_format *format, int *width, int *height, int writable )
+diff --git a/src/modules/oldfilm/filter_tcolor.c b/src/modules/oldfilm/filter_tcolor.c
+index b7dc2b2..aa55693 100644
+--- a/src/modules/oldfilm/filter_tcolor.c
++++ b/src/modules/oldfilm/filter_tcolor.c
+@@ -51,6 +51,7 @@ static int do_slice_proc(int id, int index, int jobs, void* data)
+ 			p[x+3] = CLAMP( ((double)p[x+3] - 127.0) * desc->over_cr + 127.0, 0, 255);
+ 		}
+ 	}
++	return 0;
+ }
+ 
+ static int filter_get_image( mlt_frame frame, uint8_t **image, mlt_image_format *format, int *width, int *height, int writable )
+diff --git a/src/modules/plus/filter_invert.c b/src/modules/plus/filter_invert.c
+index 28d072b..c524d96 100644
+--- a/src/modules/plus/filter_invert.c
++++ b/src/modules/plus/filter_invert.c
+@@ -54,6 +54,7 @@ static int do_slice_proc(int id, int index, int jobs, void* data)
+ 			p[x+1] = CLAMP(256 - p[x+1], min, max_chroma);
+ 		}
+ 	}
++	return 0;
+ }
+ 
+ static int filter_get_image( mlt_frame frame, uint8_t **image, mlt_image_format *format, int *width, int *height, int writable )
+diff --git a/src/modules/plus/filter_spot_remover.c b/src/modules/plus/filter_spot_remover.c
+index c87265b..d886285 100644
+--- a/src/modules/plus/filter_spot_remover.c
++++ b/src/modules/plus/filter_spot_remover.c
+@@ -126,6 +126,7 @@ static int remove_spot_channel_proc(int id, int index, int jobs, void* data)
+ 			p += step;
+ 		}
+ 	}
++	return 0;
+ }
+ 
+ static int filter_get_image( mlt_frame frame, uint8_t **image, mlt_image_format *format, int *width, int *height, int writable )
+-- 
+2.36.1
+

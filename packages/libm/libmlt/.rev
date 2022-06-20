@@ -727,4 +727,12 @@ Only build sdl2 module.
     <comment></comment>
     <requestid>952099</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>91c65de83ac068791f8912b4cce684a0</srcmd5>
+    <version>7.6.0</version>
+    <time>1655732321</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>983898</requestid>
+  </revision>
 </revisionlist>
