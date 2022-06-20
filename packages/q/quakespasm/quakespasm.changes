@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 15 18:55:59 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.94.5
+  * Compatibility with new SDL2 versioning scheme.
+  * Revised min/max/clamp macros' usage.
+  * Fixed a potential undefined behavior in R_DrawAliasModel.
+  * Fixed parsing of the time argument of svc_fog server message.
+  * Other small improvements elsewhere in the code.
+
+-------------------------------------------------------------------
 Sat May 14 16:34:40 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.94.4
