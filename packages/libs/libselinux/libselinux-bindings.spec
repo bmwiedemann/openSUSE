@@ -17,18 +17,19 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define libsepol_ver 3.3
+%define libsepol_ver 3.4
 Name:           libselinux-bindings
-Version:        3.3
+Version:        3.4
 Release:        0
 Summary:        SELinux runtime library and simple utilities
 License:        SUSE-Public-Domain
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/SELinuxProject/selinux/wiki/Releases
-# embedded is the MD5
-Source:         libselinux-%{version}.tar.gz
-Source1:        selinux-ready
-Source2:        baselibs.conf
+Source0:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/libselinux-%{version}.tar.gz
+Source1:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/libselinux-%{version}.tar.gz.asc
+Source2:        libselinux.keyring
+Source3:        selinux-ready
+Source4:        baselibs.conf
 # PATCH-FIX-UPSTREAM Include <sys/uio.h> for readv prototype
 Patch4:         readv-proto.patch
 # PATCH-FIX-UPSTREAM python3.8-compat.patch mcepl@suse.com

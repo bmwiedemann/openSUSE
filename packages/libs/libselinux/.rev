@@ -596,4 +596,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>956619</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>6895d150e29c41982d0bc27d8cdc1628</srcmd5>
+    <version>3.4</version>
+    <time>1655732209</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978304</requestid>
+  </revision>
 </revisionlist>

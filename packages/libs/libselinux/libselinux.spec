@@ -16,17 +16,19 @@
 #
 
 
-%define libsepol_ver 3.3
+%define libsepol_ver 3.4
 Name:           libselinux
-Version:        3.3
+Version:        3.4
 Release:        0
 Summary:        SELinux runtime library and utilities
 License:        SUSE-Public-Domain
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/SELinuxProject/selinux/wiki/Releases
-Source:         https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz
-Source1:        selinux-ready
-Source2:        baselibs.conf
+Source0:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
+Source2:        libselinux.keyring
+Source3:        selinux-ready
+Source4:        baselibs.conf
 # PATCH-FIX-UPSTREAM Include <sys/uio.h> for readv prototype
 Patch4:         readv-proto.patch
 Patch5:         skip_cycles.patch
@@ -96,7 +98,7 @@ This package contains the static development files, which are
 necessary to develop your own software using libselinux.
 
 %prep
-%setup -q
+%setup -q -n libselinux-%{version}
 %patch4 -p1
 %patch5 -p1
 
@@ -112,7 +114,7 @@ mkdir -p %{buildroot}%{_sbindir}
 make DESTDIR=%{buildroot} LIBDIR="%{_libdir}" SHLIBDIR="%{_libdir}" BINDIR="%{_sbindir}" install
 mv %{buildroot}%{_sbindir}/getdefaultcon %{buildroot}%{_sbindir}/selinuxdefcon
 mv %{buildroot}%{_sbindir}/getconlist %{buildroot}%{_sbindir}/selinuxconlist
-install -m 0755 %{SOURCE1} %{buildroot}%{_sbindir}/selinux-ready
+install -m 0755 %{SOURCE3} %{buildroot}%{_sbindir}/selinux-ready
 # Remove duplicate files
 %fdupes -s %{buildroot}%{_mandir}
 

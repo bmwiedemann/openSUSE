@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May  9 10:23:32 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.4:
+  * Use PCRE2 by default
+  * Make selinux_log() and is_context_customizable() thread-safe
+  * Prevent leakeing file descriptors
+  * Correctly hash specfiles larger than 4G
+- Refreshed skip_cycles.patch
+
+-------------------------------------------------------------------
 Thu Nov 11 13:25:30 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 3.3:
