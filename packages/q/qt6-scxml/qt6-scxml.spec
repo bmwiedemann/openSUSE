@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.3.0
+%define real_version 6.3.1
 %define short_version 6.3
 %define short_name qtscxml
 %define tar_name qtscxml-everywhere-src
@@ -28,13 +28,14 @@
 %endif
 #
 Name:           qt6-scxml%{?pkg_suffix}
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        SCXML (state machine notation) compiler and related tools
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-scxml-rpmlintrc
+BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-gui-private-devel
 BuildRequires:  qt6-qml-private-devel
@@ -70,9 +71,9 @@ The Qt 6 Scxml library.
 
 %package devel
 Summary:        Qt 6 Scxml library - Development files
-Requires:       libQt6Scxml6 = %{version}
 # ScxmlTools requires the scxmlc executable
 Requires:       %{name} = %{version}
+Requires:       libQt6Scxml6 = %{version}
 Requires:       cmake(Qt6Core)
 
 %description devel
@@ -214,6 +215,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %{_qt6_metatypesdir}/qt6scxml_*_metatypes.json
 %{_qt6_mkspecsdir}/features/qscxmlc.prf
 %{_qt6_mkspecsdir}/modules/qt_lib_scxml.pri
+%{_qt6_pkgconfigdir}/Qt6Scxml.pc
 %exclude %{_qt6_includedir}/QtScxml/%{real_version}
 
 %files private-devel
@@ -231,6 +233,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %{_qt6_libdir}/libQt6ScxmlQml.so
 %{_qt6_metatypesdir}/qt6scxmlqml_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_scxmlqml.pri
+%{_qt6_pkgconfigdir}/Qt6ScxmlQml.pc
 %exclude %{_qt6_includedir}/QtScxmlQml/%{real_version}
 
 %files -n qt6-scxmlqml-private-devel
@@ -248,6 +251,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %{_qt6_libdir}/libQt6StateMachine.so
 %{_qt6_metatypesdir}/qt6statemachine_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_statemachine.pri
+%{_qt6_pkgconfigdir}/Qt6StateMachine.pc
 %exclude %{_qt6_includedir}/QtStateMachine/%{real_version}
 
 %files -n qt6-statemachine-private-devel
@@ -265,6 +269,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %{_qt6_libdir}/libQt6StateMachineQml.so
 %{_qt6_metatypesdir}/qt6statemachineqml_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_statemachineqml.pri
+%{_qt6_pkgconfigdir}/Qt6StateMachineQml.pc
 %exclude %{_qt6_includedir}/QtStateMachineQml/%{real_version}
 
 %files -n qt6-statemachineqml-private-devel
