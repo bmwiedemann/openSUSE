@@ -17,7 +17,7 @@
 
 
 Name:           alacarte
-Version:        3.44.1
+Version:        3.44.2
 Release:        0
 Summary:        Menu editor for GNOME
 License:        LGPL-2.1-or-later
