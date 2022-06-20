@@ -444,4 +444,12 @@
     <comment></comment>
     <requestid>795993</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>76a01f33cba24872d5bad15a6780dbca</srcmd5>
+    <version>5.10.4</version>
+    <time>1655739925</time>
+    <user>dimstar_suse</user>
+    <comment>Fix py 3.10 build (forwarded request 983902 from dimstar)</comment>
+    <requestid>983982</requestid>
+  </revision>
 </revisionlist>

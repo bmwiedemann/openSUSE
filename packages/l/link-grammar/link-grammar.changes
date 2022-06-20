@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Fri Jun 17 12:55:49 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.10.4:
+  + English dict: fix relative clause, per mailing list.
+  + Remove assorted length restrictions on word-size.
+  + Add missing files for building link-generator on Windows.
+  + Strip the internally added "._I" from subscripted idioms.
+  + New: Provisional Thai dictionary.
+- Changes from version 5.10.3:
+  + Remove `node.js/package-lock.json` from tarball distribution.
+  + Fix Windows MSVC build break.
+  + Fix memory leak in the "!" link-parser command.
+  + Add C++ regex support. It is now the default for MSVC builds.
+  + Fix spell-guess for run-on words.
+  + Port link-generator to MS-Windows.
+  + Fix apostrophe handling for link-generator w/sqlite3 dicts.
+- Changes from version 5.10.2:
+  + Fix python install path.
+  + Fix size in brand-new `link-generator` (hits 32-bit & ARM).
+- Changes from version 5.10.1:
+  + Fix perl bindings build fail.
+- Changes from version 5.10.0:
+  + Expanded English vocabulary
+  + Support dictionary "#define allow-duplicate-words true".
+  + Fix crash for sentences containing wildcard words.
+  + Add the ability to use underbars in connector names. Connector
+    names starting with underbar are reserved for internal use.
+  + Connector names starting with "ID" are no longer reserved. *
+    ".I" subscripts are no longer reserved; "._" subscripts are
+    reserved. These last two changes introduce linkage
+    incompatibilities.
+  + Fix parsing with nulls when using an sqlite3 dictionary.
+  + Fix regexes for NetBSD when using libc regexes.
+  + English dict: fix many "how?" questions.
+  + English dict: fix conditional sentences.
+- Changes from version 5.9.1:
+  + Fix build break when SQLite3 is not installed.
+- Changes from version 5.9.0:
+  + Use #define for custom configuration in dictionaries.
+  + Panic-mode fixes and extensions. In link-parser see !help
+    panic_variables.
+  + English dict: fix silly mistake with "I love cats and dogs".
+  + Disable maintainer-mode in `configure.ac`.
+  + Fix very rare crash/corruption introduced in v.5.8.1.
+  + English dict: fix problems with "just/only".
+  + English dict: work on hesitation markers.
+  + Fix multi-threading mem-leak.
+  + Provide emscripten javascript wrapper for the command-line
+    parser.
+  + Public API shared library entry points exported automatically.
+  + Provide bindings for the Vala programming language.
+  + Increase number of allowed idiom expressions.
+  + Replace O(n^2) idiom loading algo by an O(n log n) algo.
+  + Disable SAT solver by default.
+  + New tool: Sentence generator! This is an experimental
+    prototype.
+- Changes from version 5.8.1:
+  + Fix macOS/SunOS build break.
+  + English dict: fix numerical identifiers used as adjectives.
+  + English dict: fix post-posed Latin adjectival modifiers.
+  + Merge upstream gentoo patches.
+  + Make -O3 default for CFLAGS/CXXFLAGS, but overridable by the
+    user.
+  + English dict: fix look_at, listen_to person-action
+  + English dict: fix verb "felt" with object-action.
+  + English dict: fix why-perform-action questions.
+  + Fix race condition in spell-guesser.
+- Changes from version 5.8.0:
+  + Java bindings: Remove the obsolete senses API.
+  + swig-4.0 compatibility bug fix.
+  + English dict: Fixes to support questions ending in WH-words.
+  + Copy (merge) Richard van der Dys `node.js` bindings.
+  + English dict: Provide head and tail markers for all
+    conjunctions.
+  + Remove the Python 2 bindings.
+  + Add dialect support to the library.
+  + English dict: support for archaic/poetic abbreviations
+  + English dict: introduce OH link for vocatives/invocations.
+  + English dict: improved parsing of imperatives.
+  + Add !!word/ link-parser command for displaying extended word
+    dict info.
+- Add flex BuildRequires, new dependency.
+- Add py310.patch, and pass PYTHON_NOVERSIONCHECK=1
+  PYTHON=%{__python3} PYTHON_VERSION=%{python3_version} to
+  configure as configure does not yet understand version 3.10.
+
+-------------------------------------------------------------------
 Mon Apr 20 08:57:02 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop python2 bindings:

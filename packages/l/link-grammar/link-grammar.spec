@@ -1,7 +1,7 @@
 #
 # spec file for package link-grammar
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname liblink-grammar5
 Name:           link-grammar
-Version:        5.7.0
+Version:        5.10.4
 Release:        0
 Summary:        Syntactic parser and grammar checker
 License:        LGPL-2.1-only
@@ -26,10 +26,13 @@ Group:          Productivity/Text/Spell
 URL:            https://www.abisource.com/projects/link-grammar/
 Source:         http://www.abisource.com/downloads/link-grammar/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}.rpmlintrc
+Patch:          py310.patch
+
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
+BuildRequires:  flex
 BuildRequires:  minisat-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(hunspell)
@@ -85,9 +88,10 @@ This package contains the development files for development with
 Link Grammar.
 
 %prep
-%setup -q
+%autosetup
 
 %build
+PYTHON_NOVERSIONCHECK=1 PYTHON=%{__python3} PYTHON_VERSION=%{python3_version}
 %configure \
     --disable-static \
     --disable-java-bindings
@@ -108,10 +112,12 @@ find %{buildroot} ! -type d -size 0 -delete
 %{_bindir}/*
 %{_datadir}/link-grammar
 %{_mandir}/man1/link-parser.1%{?ext_man}
+%{_mandir}/man1/link-generator.1%{?ext_man}
 
 %files -n python3-clinkgrammar
 %{python3_sitelib}/linkgrammar.pth
 %{python3_sitelib}/linkgrammar
+%{python3_sitearch}/linkgrammar*
 
 %files -n %{lname}
 %{_libdir}/*.so.*
