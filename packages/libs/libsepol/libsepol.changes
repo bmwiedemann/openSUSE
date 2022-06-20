@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May  9 10:27:53 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.4
+  * Add 'ioctl_skip_cloexec' policy capability
+  * Add sepol_av_perm_to_string
+  * Add policy utilities
+  * Support IPv4/IPv6 address embedding
+  * Hardened/added many validations
+  * Add support for file types in writing out policy.conf
+  * Allow optional file type in genfscon rules
+
+-------------------------------------------------------------------
 Thu Nov 11 13:28:14 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 3.3

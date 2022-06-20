@@ -1,7 +1,7 @@
 #
 # spec file for package libsepol
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,16 @@
 %define libname libsepol2
 
 Name:           libsepol
-Version:        3.3
+Version:        3.4
 Release:        0
 Summary:        SELinux binary policy manipulation library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/SELinuxProject/selinux/wiki/Releases
-Source:         https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz
-Source2:        baselibs.conf
+Source0:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
+Source2:        libsepol.keyring
+Source3:        baselibs.conf
 BuildRequires:  flex
 BuildRequires:  pkgconfig
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -103,6 +105,11 @@ make %{?_smp_mflags}
 %files utils
 %defattr(-,root,root)
 %{_bindir}/chkcon
+%{_bindir}/sepol_check_access
+%{_bindir}/sepol_compute_av
+%{_bindir}/sepol_compute_member
+%{_bindir}/sepol_compute_relabel
+%{_bindir}/sepol_validate_transition
 %{_mandir}/man8/*.8%{ext_man}
 %{_mandir}/ru/man8/*.8%{ext_man}
 
