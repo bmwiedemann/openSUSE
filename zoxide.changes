@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Thu Jun 16 14:47:33 UTC 2022 - Jacob Hansen <me@jacobbaungard.com>
+
+- Updated description in spec file so it matches the description
+  provided by the upstream project.
+
+-------------------------------------------------------------------
+Tue Jun 14 14:08:01 UTC 2022 - Jacob Hansen <me@jacobbaungard.com>
+
+- Ship shell completions for:
+  * bash
+  * zsh
+  * fish
+- Ship man-pages 
+
+-------------------------------------------------------------------
+Fri Jun 10 13:32:04 UTC 2022 - Jacob Hansen <me@jacobbaungard.com>
+
+- Upstream version 0.8.1:
+  * CHANGED: Manpages: moved to man/man1/*.1.
+  * CHANGED: Replace --no-aliases with --no-cmd.
+  * CHANGED: Elvish: upgrade minimum supported version to v0.18.0.
+  * CHANGED: Nushell: upgrade minimum supported version to v0.61.0.
+  * FIXED: Bash/Zsh: rename _z completion function to avoid
+           conflicts with other shell plugins.
+  * FIXED: Fzf: added --keep-right option by default, upgrade
+           minimum supported version to v0.21.0.
+  * FIXED: Bash: only enable completions on 4.4+.
+  * FIXED: Fzf: bypass ls alias in preview window.
+  * FIXED: Retain ownership of database file.
+  * FIXED: zoxide query --interactive should not conflict with --score.
+- Upstream version 0.8.0:
+  * ADDED: Zsh: completions for z command.
+  * CHANGED: Fzf: better default options.
+  * CHANGED: Fish: interactive completions are only triggered when
+             the last argument is empty.
+  * FIXED: Zsh: fix errors with set -eu.
+  * FIXED: Fzf: handle early selection.
+  * FIXED: Fzf: handle spaces correctly in preview window.
+  * FIXED: Bash: avoid initializing completions on older versions.
+- Upstream version 0.7.9:
+  * CHANGED: Bash/Fish: improved completions for z command.
+  * FIXED: Fish: error erasing completions on older versions.
+- Upstream version 0.7.6:
+  * CHANGED: Nushell: upgrade minimum supported version to v0.37.0.
+  * FIXED: Xonsh: error messages in zi.
+  * FIXED: Xonsh: configuration environment variables not being
+           handled correctly.
+- Upstream version 0.7.5
+  * ADDED: Bash/Elvish: completions for z command.
+  * FIXED: Nushell: upgrade minimum supported version to
+           v0.36.0.
+  * FIXED: Elvish: unable to z into directories by path.
+  * FIXED: Elvish: don't show traceback when z or zi fails.
+  * FIXED: Elvish: nested shells do not initialize correctly. 
+- Upstream version 0.7.3:
+  * ADDED: zoxide add and zoxide remove now accept multiple
+           arguments.
+  * FIXED: Xonsh: use shell environment instead of os.environ.
+  * FIXED: Bash: remove extra semicolon when setting
+           $PROMPT_COMMAND.
+  * FIXED: Bash/POSIX: remove conflicting alias definitions when
+           initializing.  
+  * FIXED: Nushell: errors on 0.33.0.
+
+-------------------------------------------------------------------
+Wed Jul 28 14:21:54 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Initial package
