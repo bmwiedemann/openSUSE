@@ -47,4 +47,12 @@ This will increase possible helix users.</comment>
     <comment>debuginfo generation reenabled</comment>
     <requestid>983704</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>bf33175655391eb4ae380ff000f90c4e</srcmd5>
+    <version>22.05</version>
+    <time>1655732288</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>983821</requestid>
+  </revision>
 </revisionlist>
