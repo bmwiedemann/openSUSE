@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jun 18 17:14:53 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.20.1
+  * Add postconf -M parser tested on linux
+  * Update asciitable and asciitable-m parsers to preserve case
+    in key names when using the -r or raw=True options.
+  * Add long options (e.g. --help, --about, --pretty, etc.)
+  * Fix id parser for cases where the user or group name is not
+    present
+- Update to version 1.20.0
+  * Add YAML output option with -y
+  * Add top -b standard and streaming parsers tested on linux
+  * Add plugin_parser_count, standard_parser_count, and
+    streaming_parser_count keys to jc -a output
+  * Add is_compatible function to the utils module
+  * Fix pip-show parser for packages with a multi-line license
+    field
+  * Fix ASCII Table parser for cases where centered headers cause
+    mis-aligned fields
+
+-------------------------------------------------------------------
 Sat May 14 08:16:14 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.19.0
