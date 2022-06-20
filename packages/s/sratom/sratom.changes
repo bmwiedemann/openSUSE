@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 18 14:29:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.10:
+  * Fix documentation installation directory
+  * Fix potential blank node ID truncation
+- drop fix-FORTIFY_SOURCE3.patch: obsolete
+
+-------------------------------------------------------------------
 Tue Apr 12 08:35:33 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Add fix-FORTIFY_SOURCE3.patch that is suggested to upstream:

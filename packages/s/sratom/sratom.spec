@@ -18,15 +18,14 @@
 
 %define sover 0
 Name:           sratom
-Version:        0.6.8
+Version:        0.6.10
 Release:        0
 Summary:        A library for serialising LV2 atoms to/from RDF
 License:        ISC
 Group:          Development/Libraries/C and C++
-URL:            http://drobilla.net/software/sratom/
-Source0:        http://download.drobilla.net/sratom-%{version}.tar.bz2
+URL:            https://drobilla.net/software/sratom.html
+Source0:        https://download.drobilla.net/sratom-%{version}.tar.bz2
 Source1:        baselibs.conf
-Patch0:         fix-FORTIFY_SOURCE3.patch
 BuildRequires:  doxygen
 BuildRequires:  graphviz
 BuildRequires:  pkgconfig
