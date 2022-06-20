@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.3.0
+%define real_version 6.3.1
 %define short_version 6.3
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
@@ -30,7 +30,7 @@
 %global with_gles 1
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 # Legal: qtpaths is BSD-3-Clause
@@ -39,10 +39,6 @@ URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
-Patch0:         0001-CMake-Don-t-hardcode-the-library-directory-name.patch
-Patch1:         0001-XCB-fix-GCC-12-warning-about-uninitialized-variable-.patch
-Patch2:         0001-Fix-build-with-GCC12-avoid-QCborStreamReader-prepars.patch
-Patch3:         0001-QtOpenGL-Fix-build-with-GCC-12-qt_imageForBrush-is-i.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       0001-Tell-the-truth-about-private-API.patch
 %if 0%{?suse_version} == 1500
@@ -799,6 +795,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_openglwidgets_private.pri
 # These files are only useful for the Qt continuous integration
 rm %{buildroot}%{_qt6_libexecdir}/android_*.sh
 rm %{buildroot}%{_qt6_libexecdir}/ensure_pro_file.cmake
+rm %{buildroot}%{_qt6_libexecdir}/qt-testrunner.py
 
 # This is only for Apple platforms and has a python2 dep
 rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
@@ -883,6 +880,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_libexecdir}/tracegen
 %{_qt6_libexecdir}/uic
 %{_qt6_mkspecsdir}/*
+%{_qt6_pkgconfigdir}/Qt6Platform.pc
 %exclude %{_qt6_mkspecsdir}/modules/*.pri
 
 %files -n libQt6Concurrent6
@@ -896,6 +894,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_libdir}/libQt6Concurrent.so
 %{_qt6_metatypesdir}/qt6concurrent_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_concurrent.pri
+%{_qt6_pkgconfigdir}/Qt6Concurrent.pc
 
 %files -n libQt6Core6
 %license LICENSE.*
@@ -924,6 +923,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_mkspecsdir}/modules/qt_lib_core.pri
 # workaround for boo#1195368, QTBUG-100370
 %{_qt6_mkspecsdir}/modules/qt_lib_core_private.pri
+%{_qt6_pkgconfigdir}/Qt6Core.pc
 %exclude %{_qt6_includedir}/QtCore/%{real_version}
 
 %files -n qt6-core-private-devel
@@ -942,6 +942,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_libdir}/libQt6DBus.so
 %{_qt6_metatypesdir}/qt6dbus_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_dbus.pri
+%{_qt6_pkgconfigdir}/Qt6DBus.pc
 %exclude %{_qt6_includedir}/QtDBus/%{real_version}
 
 %files -n qt6-dbus-private-devel
@@ -972,6 +973,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_libdir}/libQt6Gui.so
 %{_qt6_metatypesdir}/qt6gui_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_gui.pri
+%{_qt6_pkgconfigdir}/Qt6Gui.pc
 %exclude %{_qt6_includedir}/QtGui/%{real_version}
 
 %files -n qt6-gui-private-devel
@@ -1017,6 +1019,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_libdir}/libQt6Network.so
 %{_qt6_metatypesdir}/qt6network_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_network.pri
+%{_qt6_pkgconfigdir}/Qt6Network.pc
 %exclude %{_qt6_includedir}/QtNetwork/%{real_version}
 
 %files -n qt6-network-private-devel
@@ -1035,6 +1038,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_libdir}/libQt6OpenGL.so
 %{_qt6_metatypesdir}/qt6opengl_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_opengl.pri
+%{_qt6_pkgconfigdir}/Qt6OpenGL.pc
 %exclude %{_qt6_includedir}/QtOpenGL/%{real_version}
 
 %files -n qt6-opengl-private-devel
@@ -1053,6 +1057,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_libdir}/libQt6OpenGLWidgets.so
 %{_qt6_metatypesdir}/qt6openglwidgets_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_openglwidgets.pri
+%{_qt6_pkgconfigdir}/Qt6OpenGLWidgets.pc
 
 %files -n libQt6PrintSupport6
 %dir %{_qt6_pluginsdir}/printsupport
@@ -1066,6 +1071,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_libdir}/libQt6PrintSupport.so
 %{_qt6_metatypesdir}/qt6printsupport_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_printsupport.pri
+%{_qt6_pkgconfigdir}/Qt6PrintSupport.pc
 %exclude %{_qt6_includedir}/QtPrintSupport/%{real_version}
 
 %files -n qt6-printsupport-private-devel
@@ -1085,6 +1091,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_libdir}/libQt6Sql.so
 %{_qt6_mkspecsdir}/modules/qt_lib_sql.pri
 %{_qt6_metatypesdir}/qt6sql_*_metatypes.json
+%{_qt6_pkgconfigdir}/Qt6Sql.pc
 %exclude %{_qt6_includedir}/QtSql/%{real_version}
 
 %files -n qt6-sql-private-devel
@@ -1103,6 +1110,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_libdir}/libQt6Test.so
 %{_qt6_metatypesdir}/qt6test_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_testlib.pri
+%{_qt6_pkgconfigdir}/Qt6Test.pc
 %exclude %{_qt6_includedir}/QtTest/%{real_version}
 
 %files -n qt6-test-private-devel
@@ -1122,6 +1130,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_libdir}/libQt6Widgets.so
 %{_qt6_metatypesdir}/qt6widgets_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_widgets.pri
+%{_qt6_pkgconfigdir}/Qt6Widgets.pc
 %exclude %{_qt6_includedir}/QtWidgets/%{real_version}
 
 %files -n qt6-widgets-private-devel
@@ -1140,6 +1149,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_libdir}/libQt6Xml.so
 %{_qt6_metatypesdir}/qt6xml_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_xml.pri
+%{_qt6_pkgconfigdir}/Qt6Xml.pc
 %exclude %{_qt6_includedir}/QtXml/%{real_version}
 
 %files -n qt6-xml-private-devel

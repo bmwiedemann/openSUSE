@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun 17 15:15:01 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.1:
+  * https://www.qt.io/blog/qt-6.3.1-released
+- Drop patches, now upstream:
+  * 0001-CMake-Don-t-hardcode-the-library-directory-name.patch
+  * 0001-XCB-fix-GCC-12-warning-about-uninitialized-variable-.patch
+  * 0001-Fix-build-with-GCC12-avoid-QCborStreamReader-prepars.patch
+  * 0001-QtOpenGL-Fix-build-with-GCC-12-qt_imageForBrush-is-i.patch
+
+-------------------------------------------------------------------
 Tue May 10 07:30:33 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add GCC 12 compatibility changes:

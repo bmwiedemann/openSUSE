@@ -168,4 +168,12 @@
   * 0001-QtOpenGL-Fix-build-with-GCC-12-qt_imageForBrush-is-i.patch</comment>
     <requestid>976078</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8f352f216facddb9701f78843afd9783</srcmd5>
+    <version>6.3.1</version>
+    <time>1655732237</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.3.1 (forwarded request 983727 from cgiboudeaux)</comment>
+    <requestid>983730</requestid>
+  </revision>
 </revisionlist>
