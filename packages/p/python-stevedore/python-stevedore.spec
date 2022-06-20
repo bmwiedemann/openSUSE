@@ -1,7 +1,7 @@
 #
 # spec file for package python-stevedore
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,15 @@
 
 
 Name:           python-stevedore
-Version:        3.4.0
+Version:        3.5.0
 Release:        0
 Summary:        Manage dynamic plugins for Python applications
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/stevedore/latest/
-Source0:        https://files.pythonhosted.org/packages/source/s/stevedore/stevedore-3.4.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/s/stevedore/stevedore-3.5.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-docutils
-BuildRequires:  python3-mock
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-pytest
 BuildRequires:  python3-testtools
@@ -47,7 +46,6 @@ dynamically loaded extensions.
 Summary:        Manage dynamic plugins for Python applications
 Requires:       python3-importlib-metadata
 Requires:       python3-pbr >= 2.0.0
-Requires:       python3-six
 
 %description -n python3-stevedore
 Python makes loading code dynamically easy, allowing you to configure
@@ -88,7 +86,7 @@ This package contains documentation in HTML format.
 %py3_build
 
 # generate html docs
-PBR_VERSION=3.4.0 PYTHONPATH=. %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=3.5.0 PYTHONPATH=. %sphinx_build -b html doc/source doc/build/html
 # remove the Sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
@@ -97,6 +95,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %check
 # use pytest instead of stestr to break a build cycle between python-cliff, python-stestr and python-stevedore
+# Skipping test_extension as it fails with Python 3.10 on 22/05/09
 python3 -m pytest stevedore/tests -k "not test_extension"
 
 %files -n python3-stevedore

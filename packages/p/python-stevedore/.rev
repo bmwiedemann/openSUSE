@@ -422,4 +422,17 @@
   - Fix formatting of release list</comment>
     <requestid>975785</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>b62858e01d36948d2bb7b3154cb66b96</srcmd5>
+    <version>3.5.0</version>
+    <time>1655732222</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.5.0
+  - Add Python3 yoga unit tests
+  - Rely on member access, the preferred access since importlib_metadata 4.8.
+  - Update master for stable/xena
+
+- remove unneeded dependencies</comment>
+    <requestid>983719</requestid>
+  </revision>
 </revisionlist>

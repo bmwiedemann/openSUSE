@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun  7 11:05:28 UTC 2022 - cloud-devel@suse.de
+
+- update to version 3.5.0
+  - Add Python3 yoga unit tests
+  - Rely on member access, the preferred access since importlib_metadata 4.8.
+  - Update master for stable/xena
+
+-------------------------------------------------------------------
+Tue May 24 21:43:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- remove unneeded dependencies 
+
+-------------------------------------------------------------------
 Mon May  9 11:01:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - skip test that fails with python 3.10 
