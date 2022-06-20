@@ -411,4 +411,14 @@
     <comment></comment>
     <requestid>942926</requestid>
   </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>0719826ab886e0134a52ec3834df8fe2</srcmd5>
+    <version>1.42.0</version>
+    <time>1655732317</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-buffer-overflow-in-backup.patch in order to address
+  0001-Fix-buffer-overflow-in-Backup.Creator.patch
+- Use autosetup.</comment>
+    <requestid>983885</requestid>
+  </revision>
 </revisionlist>

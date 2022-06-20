@@ -1,7 +1,7 @@
 #
 # spec file for package gammu
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,8 @@ Patch1:         gammu-remove-gplv3-files.patch
 Patch2:         0001-Enable-fPIE-pie.patch
 Patch3:         0001-Update-Python-scripts-to-Python-3.patch
 Patch4:         0001-Docs-Adjust-attributes-order-to-avoid-bugs-in-breath.patch
-Patch5:	harden_gammu-smsd.service.patch
+Patch5:         harden_gammu-smsd.service.patch
+Patch6:         0001-Fix-buffer-overflow-in-Backup.Creator.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  doxygen
 BuildRequires:  gettext
@@ -185,12 +186,7 @@ Currently supported phones include:
 This package contains the Gammu SMS daemon shared library.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%autosetup -p1
 
 # GPL-3.0 licensed files, bnc#775397
 rm -rf contrib/sms-gammu2android
