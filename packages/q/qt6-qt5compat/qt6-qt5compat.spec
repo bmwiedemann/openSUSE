@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.3.0
+%define real_version 6.3.1
 %define short_version 6.3
 %define tar_name qt5compat-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-qt5compat%{?pkg_suffix}
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        Unsupported Qt 5 APIs for Qt 6
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -42,8 +42,8 @@ BuildRequires:  qt6-qml-private-devel
 BuildRequires:  qt6-quick-private-devel
 BuildRequires:  qt6-shadertools-private-devel
 BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6Quick)
 BuildRequires:  cmake(Qt6ShaderTools)
 BuildRequires:  cmake(Qt6Xml)
@@ -129,6 +129,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_libdir}/libQt6Core5Compat.so
 %{_qt6_metatypesdir}/qt6core5compat_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_core5compat.pri
+%{_qt6_pkgconfigdir}/Qt6Core5Compat.pc
 %exclude %{_qt6_includedir}/QtCore5Compat/%{real_version}
 
 %files private-devel
