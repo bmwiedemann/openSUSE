@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.3.0
+%define real_version 6.3.1
 %define short_version 6.3
 %define tar_name qtserialbus-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-serialbus
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        Qt 6 SerialBus library
 License:        LGPL-3.0-only OR GPL-2.0-or-later
@@ -35,6 +35,7 @@ URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-serialbus-rpmlintrc
 BuildRequires:  fdupes
+BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Gui)
@@ -61,8 +62,8 @@ and others.
 
 %package devel
 Summary:        Qt 6 SerialBus library - Development files
-Requires:       libQt6SerialBus6 = %{version}
 Requires:       %{name} = %{version}
+Requires:       libQt6SerialBus6 = %{version}
 Requires:       cmake(Qt6Network)
 Requires:       cmake(Qt6SerialPort)
 
@@ -117,13 +118,13 @@ rm %{buildroot}%{_qt6_cmakedir}/Qt6SerialBus/*Plugin*.cmake
 %files devel
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtSerialBusTestsConfig.cmake
 %{_qt6_cmakedir}/Qt6SerialBus/
-%{_qt6_cmakedir}/Qt6SerialBusTools/
 %{_qt6_descriptionsdir}/SerialBus.json
 %{_qt6_includedir}/QtSerialBus/
 %{_qt6_libdir}/libQt6SerialBus.prl
 %{_qt6_libdir}/libQt6SerialBus.so
 %{_qt6_metatypesdir}/qt6serialbus_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_serialbus.pri
+%{_qt6_pkgconfigdir}/Qt6SerialBus.pc
 %exclude %{_qt6_includedir}/QtSerialBus/%{real_version}/
 
 %files private-devel
