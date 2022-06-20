@@ -304,4 +304,41 @@
     <comment></comment>
     <requestid>890003</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d0fec0b71c3a34c73c9e0c3bc18e7ecb</srcmd5>
+    <version>1.5.29</version>
+    <time>1655732341</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.29:
+  * Configure default initialization when creating a volume
+  * Fix redfish firmware update without progress
+  * Provide access to read redfish location info
+  * Adapt the generic redfish virtual media call
+  * Remove nulls and FFs if present
+  * Add location data to redfish module
+  * Tolerate more standard variations
+  * Fix PSU fan count for 9-PSU chasssis
+  * Some firmware presents GiB instead of GB
+  * Fix SMM build id
+  * Correct mispelling in error message
+  * Update to new form of get gpio command
+  * Improve generic non-support message
+  * Fix TSMA error on media upload attempt
+  * Apply new PSU configuration to non-FPC variants
+  * Improve dense PSU support
+  * Fix SOL behavior after print\_error
+  * Do not error on None callback
+  * Fix user enablement on SMM on python3
+  * Remove null bytes within a string
+  * Support SMMv2 variant of VPD
+  * Add Drip Sensor to water cooled SMMv2
+  * Use most recent python tests
+  * Reduce average memory of XCC Uefi configuration
+  * Remove 2.7 from test
+  * Tolerate spec deviations
+  * Fix relog attempt
+  * Fix redfish FFDC name save with autosuffix
+  * Fix SMMv2 ffdc download</comment>
+    <requestid>983966</requestid>
+  </revision>
 </revisionlist>

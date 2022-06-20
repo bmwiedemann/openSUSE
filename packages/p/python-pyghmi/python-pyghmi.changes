@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Dec  6 09:28:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.29:
+  * Configure default initialization when creating a volume
+  * Fix redfish firmware update without progress
+  * Provide access to read redfish location info
+  * Adapt the generic redfish virtual media call
+  * Remove nulls and FFs if present
+  * Add location data to redfish module
+  * Tolerate more standard variations
+  * Fix PSU fan count for 9-PSU chasssis
+  * Some firmware presents GiB instead of GB
+  * Fix SMM build id
+  * Correct mispelling in error message
+  * Update to new form of get gpio command
+  * Improve generic non-support message
+  * Fix TSMA error on media upload attempt
+  * Apply new PSU configuration to non-FPC variants
+  * Improve dense PSU support
+  * Fix SOL behavior after print\_error
+  * Do not error on None callback
+  * Fix user enablement on SMM on python3
+  * Remove null bytes within a string
+  * Support SMMv2 variant of VPD
+  * Add Drip Sensor to water cooled SMMv2
+  * Use most recent python tests
+  * Reduce average memory of XCC Uefi configuration
+  * Remove 2.7 from test
+  * Tolerate spec deviations
+  * Fix relog attempt
+  * Fix redfish FFDC name save with autosuffix
+  * Fix SMMv2 ffdc download
+  * Accept . for \_ in redfish names
+  * Fix DHCP config logic on static input
+  * Show LXPM bundle information for TSM
+  * Fix TSM LXPM handling
+  * Fix plain rom update of nextscale
+  * Add reseat to redfish command for XCC
+  * Implement support for remote reseat
+  * Support passing file obj for media
+  * Fix data parameter for apply\_license
+
+-------------------------------------------------------------------
 Sun May  2 18:03:16 UTC 2021 - cloud-devel@suse.de
 
 - update to version 1.5.23
