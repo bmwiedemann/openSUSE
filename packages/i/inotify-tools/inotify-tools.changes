@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 19 14:04:47 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.22.6.0:
+  * Cast pointer to char so increments to pointer are at one byte
+    intervals
+
+-------------------------------------------------------------------
 Sat May  7 12:48:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.22.1.0:

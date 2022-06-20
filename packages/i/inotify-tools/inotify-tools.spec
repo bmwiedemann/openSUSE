@@ -17,10 +17,10 @@
 
 
 Name:           inotify-tools
-Version:        3.22.1.0
+Version:        3.22.6.0
 Release:        0
 Summary:        Tools for inotify
-License:        GPL-2.0-only
+License:        GPL-2.0-only WITH Linux-syscall-note AND GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            https://github.com/inotify-tools/inotify-tools
 Source:         https://github.com/inotify-tools/inotify-tools/archive/%{version}.tar.gz
@@ -63,7 +63,7 @@ This package contains the documentation for inotify-tools, which provides
 utilities for the kernel facility inotify.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 ./autogen.sh
@@ -84,22 +84,21 @@ rm %{buildroot}/%{_libdir}/libinotifytools.la
 %make_build check
 
 %files
-%{_bindir}/inotifywait
-%{_bindir}/inotifywatch
-%{_mandir}/man1/inotifywait.1%{?ext_man}
-%{_mandir}/man1/inotifywatch.1%{?ext_man}
-%{_mandir}/man1/fsnotifywait.1%{?ext_man}
-%{_mandir}/man1/fsnotifywatch.1%{?ext_man}
+%license COPYING
+%{_bindir}/*
+%{_mandir}/man1/*.1%{?ext_man}
 
 %files -n libinotifytools0
 %license COPYING
 %{_libdir}/libinotifytools.so.*
 
 %files devel
+%license COPYING
 %{_libdir}/libinotifytools.so
 %{_includedir}/inotifytools/
 
 %files doc
+%license COPYING
 %doc %{_docdir}/%{name}
 
 %changelog

@@ -98,4 +98,12 @@
   * Fix printing of filename when watching a file</comment>
     <requestid>975529</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>850b72b8ea5b6358d6a1a3aeddf36e70</srcmd5>
+    <version>3.22.6.0</version>
+    <time>1655732220</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>983714</requestid>
+  </revision>
 </revisionlist>
