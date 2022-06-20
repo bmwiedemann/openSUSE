@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May  9 10:37:17 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.4
+  * Optionally rebuild policy when modules are changed externally
+  * Fix USE_AFTER_FREE (CWE-672) in semanage_direct_get_module_info()
+  * Allow spaces in user/group names
+
+-------------------------------------------------------------------
 Thu Feb 10 12:37:14 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Drop Buildrequires for libustr-devel, not needed anymore

@@ -20,15 +20,17 @@
 %define libname libsemanage%{soversion}
 
 Name:           libsemanage
-Version:        3.3
+Version:        3.4
 Release:        0
 Summary:        SELinux policy management library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/SELinuxProject/selinux/wiki/Releases
-Source:         https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz
-Source1:        baselibs.conf
-Source2:        semanage.conf
+Source0:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
+Source2:        libsemanage.keyring
+Source3:        baselibs.conf
+Source4:        semanage.conf
 # PATCH-FIX-UPSTREAM bsc#1133102 LTO: Update map file to include new symbols and remove wildcards
 # For now we need to disable this. This breaks e.g. shadow and also other packages in security:SELinux
 #Patch0:         libsemanage-update-map-file.patch
@@ -121,7 +123,7 @@ mkdir -p %{buildroot}%{_includedir}
 mkdir -p %{buildroot}%{_localstatedir}/lib/selinux
 %make_install LIBDIR="%{_libdir}" LIBEXECDIR="%{_libexecdir}" SHLIBDIR="%{_libdir}"
 ln -sf  %{_libdir}/libsemanage.so.%{soversion} %{buildroot}/%{_libdir}/libsemanage.so
-cp %{SOURCE2} %{buildroot}%{_sysconfdir}/selinux/semanage.conf
+cp %{SOURCE4} %{buildroot}%{_sysconfdir}/selinux/semanage.conf
 # Remove duplicate files
 %fdupes -s %{buildroot}%{_mandir}
 
