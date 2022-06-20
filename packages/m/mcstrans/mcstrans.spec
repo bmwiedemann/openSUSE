@@ -1,7 +1,7 @@
 #
 # spec file for package mcstrans
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           mcstrans
-Version:        3.3
+Version:        3.4
 Release:        0
 Summary:        SELinux Translation Daemon
 License:        GPL-2.0-or-later
 Group:          System/Management
 URL:            https://github.com/SELinuxProject/selinux/wiki
-Source:         https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz
-Patch0:         %{name}-writepid.patch
-Patch1:         add_includes.patch
+Source0:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
+Source2:        mcstrans.keyring
 Patch2:         harden_mcstrans.service.patch
 BuildRequires:  aaa_base
 BuildRequires:  libcap-devel
@@ -53,8 +53,6 @@ from internal representations to user defined representation.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 %patch2 -p1
 
 %build
