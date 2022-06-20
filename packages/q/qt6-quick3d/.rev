@@ -30,4 +30,12 @@
     <comment>- Fix the package version.</comment>
     <requestid>971210</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>79f694b02d4643196d46830178818e16</srcmd5>
+    <version>6.3.0</version>
+    <time>1655732255</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.3.1 (forwarded request 983727 from cgiboudeaux)</comment>
+    <requestid>983745</requestid>
+  </revision>
 </revisionlist>

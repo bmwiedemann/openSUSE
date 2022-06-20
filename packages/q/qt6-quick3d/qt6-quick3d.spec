@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.3.0
+%define real_version 6.3.1
 %define short_version 6.3
 %define tar_name qtquick3d-everywhere-src
 %define tar_suffix %{nil}
@@ -413,6 +413,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.
 %{_qt6_libdir}/libQt6Quick3D.so
 %{_qt6_metatypesdir}/qt6quick3d_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3d.pri
+%{_qt6_pkgconfigdir}/Qt6Quick3D.pc
 %exclude %{_qt6_includedir}/QtQuick3D/%{real_version}
 
 %files private-devel
@@ -430,6 +431,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.
 %{_qt6_libdir}/libQt6Quick3DAssetImport.so
 %{_qt6_metatypesdir}/qt6quick3dassetimport_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dassetimport.pri
+%{_qt6_pkgconfigdir}/Qt6Quick3DAssetImport.pc
 %exclude %{_qt6_includedir}/QtQuick3DAssetImport/%{real_version}
 
 %files -n qt6-quick3dassetimport-private-devel
@@ -447,6 +449,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.
 %{_qt6_libdir}/libQt6Quick3DAssetUtils.so
 %{_qt6_metatypesdir}/qt6quick3dassetutils_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dassetutils.pri
+%{_qt6_pkgconfigdir}/Qt6Quick3DAssetUtils.pc
 %exclude %{_qt6_includedir}/QtQuick3DAssetUtils/%{real_version}
 
 %files -n qt6-quick3dassetutils-private-devel
@@ -462,6 +465,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.
 %{_qt6_libdir}/libQt6Quick3DEffects.prl
 %{_qt6_libdir}/libQt6Quick3DEffects.so
 %{_qt6_metatypesdir}/qt6quick3deffects_*_metatypes.json
+%{_qt6_pkgconfigdir}/Qt6Quick3DEffects.pc
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3deffects.pri
 
 %files -n libQt6Quick3DHelpers6
@@ -475,6 +479,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.
 %{_qt6_libdir}/libQt6Quick3DHelpers.so
 %{_qt6_metatypesdir}/qt6quick3dhelpers_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dhelpers.pri
+%{_qt6_pkgconfigdir}/Qt6Quick3DHelpers.pc
 %exclude %{_qt6_includedir}/QtQuick3DHelpers/%{real_version}
 
 %files -n qt6-quick3dhelpers-private-devel
@@ -492,6 +497,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.
 %{_qt6_libdir}/libQt6Quick3DIblBaker.so
 %{_qt6_metatypesdir}/qt6quick3diblbaker_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3diblbaker.pri
+%{_qt6_pkgconfigdir}/Qt6Quick3DIblBaker.pc
 %exclude %{_qt6_includedir}/QtQuick3DIblBaker/%{real_version}
 
 %files -n qt6-quick3diblbaker-private-devel
@@ -509,6 +515,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.
 %{_qt6_libdir}/libQt6Quick3DParticles.so
 %{_qt6_metatypesdir}/qt6quick3dparticles_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticles.pri
+%{_qt6_pkgconfigdir}/Qt6Quick3DParticles.pc
 %exclude %{_qt6_includedir}/QtQuick3DParticles/%{real_version}
 
 %files -n qt6-quick3dparticles-private-devel
@@ -525,6 +532,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.
 %{_qt6_libdir}/libQt6Quick3DParticleEffects.so
 %{_qt6_metatypesdir}/qt6quick3dparticleeffects_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects.pri
+%{_qt6_pkgconfigdir}/Qt6Quick3DParticleEffects.pc
 
 %files -n libQt6Quick3DRuntimeRender6
 %{_qt6_libdir}/libQt6Quick3DRuntimeRender.so.*
@@ -537,6 +545,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.
 %{_qt6_libdir}/libQt6Quick3DRuntimeRender.so
 %{_qt6_metatypesdir}/qt6quick3druntimerender_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3druntimerender.pri
+%{_qt6_pkgconfigdir}/Qt6Quick3DRuntimeRender.pc
 %exclude %{_qt6_includedir}/QtQuick3DRuntimeRender/%{real_version}
 
 %files -n qt6-quick3druntimerender-private-devel
@@ -554,6 +563,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.
 %{_qt6_libdir}/libQt6Quick3DUtils.so
 %{_qt6_metatypesdir}/qt6quick3dutils_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dutils.pri
+%{_qt6_pkgconfigdir}/Qt6Quick3DUtils.pc
 %exclude %{_qt6_includedir}/QtQuick3DUtils/%{real_version}
 
 %files -n qt6-quick3dutils-private-devel
