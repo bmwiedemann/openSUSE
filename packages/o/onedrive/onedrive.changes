@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Jun 18 11:40:34 UTC 2022 - hpj@urpla.net
+
+- Update to version 2.4.19:
+  * Release files for 2.4.19 (#2006)
+  * Update when DB is updated by OneDrive API data and update when file hash is required to be generated (#2004)
+  * Added ONEDRIVE_UPLOADONLY flag for Docker (#2002)
+  * Update advanced-usage.md (#1999)
+  * Documentation updates
+  * Update README.md
+  * Update src/notifications/README (#1992)
+  * Update ubuntu-package-install.md
+  * Update ubuntu-package-install.md (#1990)
+  * Update lock.yml
+  * Update Business Shared Folders to use a /delta query (#1989)
+  * Update lock.yml
+  * Update Docker.md
+  * Update Docker Builds (#1988)
+  * Update ubuntu-package-install.md
+  * Update Documentation (#1985)
+  * Update docker.yaml (#1984)
+  * Trigger Docker build workflow only on pull request merge to 'master' (#1983)
+  * Release 2.4.19 Dev Prep (#1981)
+
+-------------------------------------------------------------------
 Tue Jun  7 07:49:53 UTC 2022 - Enno Gotthold <egotthold@suse.com>
 
 - Update to version 2.4.18:
