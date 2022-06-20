@@ -25,4 +25,14 @@
     <comment></comment>
     <requestid>786242</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e726820009e3c09caa351141ed9c300c</srcmd5>
+    <version>2.3.0</version>
+    <time>1655732284</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove now broken bconds for python2/python3.
+- Add patch pytest-7-support.patch:
+  * Support pytest 7.0+ changes.</comment>
+    <requestid>983793</requestid>
+  </revision>
 </revisionlist>

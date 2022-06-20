@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 20 02:53:04 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove now broken bconds for python2/python3.
+- Add patch pytest-7-support.patch:
+  * Support pytest 7.0+ changes. 
+
+-------------------------------------------------------------------
 Wed Mar 18 15:18:21 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 2.3.0
