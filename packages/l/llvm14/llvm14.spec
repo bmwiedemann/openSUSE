@@ -16,14 +16,14 @@
 #
 
 
-%define _relver 14.0.4
+%define _relver 14.0.5
 %define _version %_relver%{?_rc:rc%_rc}
 %define _tagver %_relver%{?_rc:-rc%_rc}
 %define _minor  14.0
 %define _sonum  14
 %define _itsme14 1
 # Integer version used by update-alternatives
-%define _uaver  1404
+%define _uaver  1405
 %define _soclang 13
 %define _socxx  1
 
@@ -80,6 +80,20 @@
 %define host_runtime gnu
 %endif
 %define host_triple %{host_cpu}-%{_host_vendor}-%{_host_os}-%{host_runtime}
+
+# By default, build everything.
+%global llvm_targets "all"
+%global llvm_experimental_targets "M68k"
+%ifarch %arm ppc64 ppc64le
+# No cross-compilation, but GPU targets.
+%global llvm_targets "host;AMDGPU;BPF;NVPTX"
+%global llvm_experimental_targets ""
+%endif
+%ifarch ppc s390x
+# No graphics cards on System Z; turned off for ppc because of relocation overflows.
+%global llvm_targets "host;BPF"
+%global llvm_experimental_targets ""
+%endif
 
 %define _plv %{!?product_libs_llvm_ver:%{_sonum}}%{?product_libs_llvm_ver}
 
@@ -672,30 +686,6 @@ mv libcxxabi-%{_version}.src projects/libcxxabi
 CFLAGS="%flags"
 CXXFLAGS="%flags"
 
-# By default build everything
-TARGETS_TO_BUILD="all"
-EXPERIMENTAL_TARGETS_TO_BUILD="M68k"
-%ifarch s390 s390x
-# No graphics cards on System z
-TARGETS_TO_BUILD="host;BPF"
-EXPERIMENTAL_TARGETS_TO_BUILD=
-%endif
-%ifarch %arm
-# TODO: Document why those.
-TARGETS_TO_BUILD="host;ARM;AMDGPU;BPF;NVPTX"
-EXPERIMENTAL_TARGETS_TO_BUILD=
-%endif
-%ifarch ppc64 ppc64le
-# TODO: Document why those.
-TARGETS_TO_BUILD="host;AMDGPU;BPF;NVPTX"
-EXPERIMENTAL_TARGETS_TO_BUILD=
-%endif
-%ifarch ppc
-# TODO: Graphics cards turned off because of relocation overflows.
-TARGETS_TO_BUILD="host;BPF"
-EXPERIMENTAL_TARGETS_TO_BUILD=
-%endif
-
 mem_per_compile_job=1200000
 %ifarch i586 ppc armv6hl armv7hl
 # 32-bit arches need less memory than 64-bit arches.
@@ -818,8 +808,8 @@ export LD_LIBRARY_PATH=%{sourcedir}/build/%{_lib}
     -DLLVM_ENABLE_ASSERTIONS=OFF \
     -DLLVM_ENABLE_PIC=ON \
     -DLLVM_BINUTILS_INCDIR=%{_includedir} \
-    -DLLVM_TARGETS_TO_BUILD=${TARGETS_TO_BUILD} \
-    -DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD=${EXPERIMENTAL_TARGETS_TO_BUILD} \
+    -DLLVM_TARGETS_TO_BUILD=%{llvm_targets} \
+    -DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD=%{llvm_experimental_targets} \
     -DLLVM_TOOL_LLVM_EXEGESIS_BUILD:BOOL=OFF \
     -DLLVM_INCLUDE_BENCHMARKS:BOOL=OFF \
     -DCOMPILER_RT_USE_LIBCXX:BOOL=OFF \
