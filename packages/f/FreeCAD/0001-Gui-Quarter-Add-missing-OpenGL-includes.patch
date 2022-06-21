@@ -1,0 +1,47 @@
+From 70b313a5bd282e09129d0643b96dee85f9494c41 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Tue, 14 Jun 2022 20:49:08 +0200
+Subject: [PATCH] [Gui] Quarter: Add missing OpenGL includes
+
+QuarterWidget directly uses e.g. glPushAttrib/glPopAttrib, and thus should
+include the relevant headers.
+
+The headers are required on e.g. ARM platforms where Qt is build with GLES
+instead of Desktop GL, and does not implicitly include the headers.
+
+This fixes a regression introduced with commit 9654786c670b ("[Gui]
+Quarter: remove unused includes").
+---
+ src/Gui/Quarter/QuarterWidget.cpp | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/src/Gui/Quarter/QuarterWidget.cpp b/src/Gui/Quarter/QuarterWidget.cpp
+index 5e1f89e04d..18f418e19e 100644
+--- a/src/Gui/Quarter/QuarterWidget.cpp
++++ b/src/Gui/Quarter/QuarterWidget.cpp
+@@ -72,6 +72,11 @@
+ #include <Inventor/SbByteBuffer.h>
+ #endif
+ 
++#if !defined(FC_OS_MACOSX)
++# include <GL/gl.h>
++# include <GL/glext.h>
++#endif
++
+ #include <Inventor/SbColor.h>
+ #include <Inventor/SbViewportRegion.h>
+ #include <Inventor/SoDB.h>
+@@ -131,10 +136,6 @@ using namespace SIM::Coin3D::Quarter;
+ 
+ #define PRIVATE(obj) obj->pimpl
+ 
+-#ifndef GL_MULTISAMPLE_BIT_EXT
+-#define GL_MULTISAMPLE_BIT_EXT 0x20000000
+-#endif
+-
+ //We need to avoid buffer swapping when initializing a QPainter on this widget
+ class CustomGLWidget : public QOpenGLWidget {
+ public:
+-- 
+2.36.1
+

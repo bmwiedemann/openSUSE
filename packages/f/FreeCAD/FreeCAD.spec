@@ -27,24 +27,17 @@
 %bcond_without smesh
 
 Name:           FreeCAD
-Version:        0.19.4
+Version:        0.20
 Release:        0
 Summary:        General Purpose 3D CAD Modeler
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Graphics/CAD
 URL:            https://www.freecadweb.org/
 Source0:        https://github.com/FreeCAD/FreeCAD/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Use correct import for Python 3 tkinter
-Patch1:         fix_unittestgui_tkinter_py3.patch
-# PATCH-FIX-UPSTREAM Rebased https://github.com/wwmayer/FreeCAD/commit/bb9bcbd51df7
-Patch2:         fix-smesh-vtk9.patch
 # PATCH-FIX-UPSTREAM
-Patch3:         0001-Test-remove-not-needed-u-before-py3-unicode-string.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         0001-Test-fix-exception-handling-in-tests-for-units.patch
-# PATCH-FIX-UPSTREAM
-Patch5:         0001-Test-Provide-more-useful-information-when-unit-trans.patch
-Patch6:         0002-Base-Fix-wrong-character-encoding-for-micro-siemens.patch
+Patch0:         0001-Gui-Quarter-Add-missing-OpenGL-includes.patch
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Avoid-catching-SIGSEGV-defer-to-system-services.patch
 
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x
@@ -71,7 +64,6 @@ BuildRequires:  hicolor-icon-theme
 # We use the internal smesh version with fixes atm
 BuildRequires:  smesh-devel
 %endif
-BuildRequires:  java-devel
 BuildRequires:  libXerces-c-devel
 BuildRequires:  libXi-devel
 BuildRequires:  libmed-devel
@@ -84,8 +76,9 @@ BuildRequires:  proj-devel
 BuildRequires:  sqlite3-devel
 
 # Qt5 & python3
-BuildRequires:  python3-devel
+BuildRequires:  python3-devel >= 3.6.9
 BuildRequires:  python3-matplotlib
+BuildRequires:  python3-pivy
 BuildRequires:  python3-ply
 BuildRequires:  python3-pybind11-devel
 BuildRequires:  python3-pycxx-devel
@@ -109,6 +102,7 @@ Requires:       python3-vtk
 Requires:       python3-pivy
 # For FEM workbench
 Requires:       python3-PyYAML
+Requires:       python3-matplotlib-qt5
 Requires:       python3-ply
 Requires:       python3-six
 
@@ -116,8 +110,6 @@ BuildRequires:  swig
 BuildRequires:  update-desktop-files
 BuildRequires:  vtk-devel
 BuildRequires:  zlib-devel
-# we need to ensure to have the minimum version from build env
-Requires:       libopencascade7 >= %(/bin/bash -c 'rpm -q --qf "%%{version}" libopencascade7')
 
 Recommends:     ccx
 
@@ -182,8 +174,10 @@ rm src/3rdparty/Pivy-0.5 -fr
   -DOCC_INCLUDE_DIR=%{_includedir}/opencascade \
   -DRESOURCEDIR=%{_datadir}/%{name} \
   -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+  -DPYTHON_INCLUDE_DIR=%{python3_sysconfig_path include} \
   -DSHIBOKEN_INCLUDE_DIR=/usr/include/shiboken2/ \
   -DPYSIDE_INCLUDE_DIR=/usr/include/PySide2/ \
+  -DPYBIND11_FINDPYTHON:BOOL=ON \
   -DFREECAD_USE_PYBIND11:BOOL=ON \
   -DBUILD_ENABLE_CXX_STD:STRING="C++17" \
   -DBUILD_QT5=ON \
@@ -204,26 +198,6 @@ rm src/3rdparty/Pivy-0.5 -fr
 
 %install
 %cmake_install
-
-# create parsetab.py for yacc.ply (FEM)
-# https://tracker.freecadweb.org/view.php?id=4840
-pushd %{buildroot}/%{_libdir}/FreeCAD/Mod/Fem
-python3 -B femtools/tokrules.py
-rm femtools/parser.out
-# create parsetab.py for yacc.ply (OpenSCAD)
-export PYTHONPATH=%{buildroot}/%{_libdir}/FreeCAD/lib
-export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}/FreeCAD/lib
-cd ../OpenSCAD
-python3 -B -c "\
-import ply.lex as lex
-import ply.yacc as yacc
-import importCSG
-import tokrules
-from tokrules import tokens
-lex.lex(module=tokrules)
-yacc.yacc(module=importCSG,outputdir=\"./\")
-"
-rm parser.out
 
 # Fix "non-executable-script" rpmlint warning
 # Run after install, as CMake "install(FILES...) sets rw- permissions

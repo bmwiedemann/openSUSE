@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jun 14 17:12:11 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.20:
+  * Lots of bugfixes and new features, for details see
+    https://wiki.freecad.org/Release_notes_0.20 and
+    https://github.com/FreeCAD/FreeCAD/releases/tag/0.20
+- Drop upstream patches:
+  * fix_unittestgui_tkinter_py3.patch
+  * fix-smesh-vtk9.patch
+  * 0001-Test-remove-not-needed-u-before-py3-unicode-string.patch
+  * 0001-Test-fix-exception-handling-in-tests-for-units.patch
+  * 0001-Test-Provide-more-useful-information-when-unit-trans.patch
+  * 0002-Base-Fix-wrong-character-encoding-for-micro-siemens.patch
+  * 0001-improve-search-for-VTK-9.patch
+- Add 0001-Gui-Quarter-Add-missing-OpenGL-includes.patch
+- Add 0001-Avoid-catching-SIGSEGV-defer-to-system-services.patch
+
+-------------------------------------------------------------------
+Wed Mar 16 18:15:57 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove VTK::Java/java-devel dependency, add
+  0001-improve-search-for-VTK-9.patch
+
+-------------------------------------------------------------------
 Thu Mar 10 20:13:02 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use current Coin4 instead of Coin (3).

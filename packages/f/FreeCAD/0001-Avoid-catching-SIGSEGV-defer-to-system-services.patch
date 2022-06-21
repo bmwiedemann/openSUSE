@@ -1,0 +1,29 @@
+From 00d1d5908f85054f3c149c9b6a14fd36a1eaa572 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sun, 20 Mar 2022 04:22:24 +0100
+Subject: [PATCH] Avoid catching SIGSEGV, defer to system services
+
+The current implementation ignores the basic signal handler requirement
+to only call signal safe functions, e.g. backtrace_symbols and
+abi::__cxa_demangle. This causes deadlocks when the handler is called
+from malloc/free and similar.
+---
+ src/App/Application.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/App/Application.cpp b/src/App/Application.cpp
+index 7f93db5775..58e3b1f90f 100644
+--- a/src/App/Application.cpp
++++ b/src/App/Application.cpp
+@@ -1860,7 +1860,7 @@ void Application::init(int argc, char ** argv)
+         std::set_terminate(unhandled_exception_handler);
+            ::set_unexpected(unexpection_error_handler);
+ #elif defined(FC_OS_LINUX)
+-        std::signal(SIGSEGV,segmentation_fault_handler);
++        // std::signal(SIGSEGV,segmentation_fault_handler);
+ #endif
+ #if defined(FC_SE_TRANSLATOR)
+         _set_se_translator(my_se_translator_filter);
+-- 
+2.35.1
+
