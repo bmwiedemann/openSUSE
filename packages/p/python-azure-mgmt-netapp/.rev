@@ -167,4 +167,15 @@
     CHANGELOG.md file provided with this package (forwarded request 962073 from glaubitz)</comment>
     <requestid>962089</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f039333bf3ef7ed402cb21cb85d69f7f</srcmd5>
+    <version>8.0.0</version>
+    <time>1655821986</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 8.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 983626 from glaubitz)</comment>
+    <requestid>984163</requestid>
+  </revision>
 </revisionlist>
