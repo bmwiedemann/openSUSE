@@ -1,0 +1,201 @@
+-------------------------------------------------------------------
+Sun Jun 19 13:03:26 UTC 2022 - Martin Winter <me@letsfindaway.de>
+
+- update to 1.7.0~git47a96e1
+  - use development branch to enable build for Tumbleweed
+    (switch from QWebKit to QWebEngine)
+- add patches fixing known issues according to existing upstream PRs
+  - 0551-common-background-drawing.patch
+  - 0569-scale-mirror-pixmap.patch
+  - 0604-qt-5.12-compatibility.patch
+  - 0629-bug-ruler.patch
+  - 0633-improve-displaymanager.patch
+- remove unused build dependencies
+
+-------------------------------------------------------------------
+Mon Jun 13 09:21:50 UTC 2022 - Martin Winter <me@letsfindaway.de>
+
+- Update to 1.6.3
+  - see https://github.com/OpenBoard-org/OpenBoard/releases/tag/v1.6.3
+
+-------------------------------------------------------------------
+Mon Jun  6 09:38:26 UTC 2022 - Martin Winter <me@letsfindaway.de>
+
+- Update to 1.6.2
+  - see https://github.com/OpenBoard-org/OpenBoard/releases/tag/v1.6.2
+  - adapt 0001-Rewrite-libs.pri.patch
+  - adapt 0002-Install-to-correct-directories-on-linux.patch
+  - drop 0573-compile-with-poppler-22.03.patch (upstreamed)
+
+-------------------------------------------------------------------
+Tue Mar 15 17:28:47 UTC 2022 - Martin Winter <me@letsfindaway.de>
+
+- add 0573-compile-with-poppler-22.03.patch 
+
+-------------------------------------------------------------------
+Tue Dec 28 10:31:51 UTC 2021 - Martin Winter <martin@winter-rosenheim.de>
+
+- update to OpenBoard 1.6.1
+  - adapt patches
+
+-------------------------------------------------------------------
+Mon Feb  8 18:36:17 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- Compile translations so they are installed (bsc#1181857)
+
+-------------------------------------------------------------------
+Mon Nov 23 12:20:56 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- 0001-Rewrite-libs.pri.patch:
+  + update patch and BR on now weirdly named quazip - pkgconfig(quazip1-qt5)
+  + continue to function with with pkgconfig(quazip) in Leap 15.2
+- Remove BR on libx264-devel and fdk-aac-devel as these are no longer
+  available in Factory
+
+-------------------------------------------------------------------
+Sat May 23 15:58:55 UTC 2020 - Frank Schütte <F.Schuette@t-online.de>
+
+- fixed building with patches from https://github.com/flathub/ch.openboard.OpenBoard 
+
+-------------------------------------------------------------------
+Fri May 22 11:48:28 UTC 2020 - Frank Schütte <F.Schuette@t-online.de>
+
+- update to 1.5.4 
+
+-------------------------------------------------------------------
+Mon Jun 10 17:00:17 UTC 2019 - Frank Schütte <F.Schuette@t-online.de>
+
+- remove openssl patch 
+
+-------------------------------------------------------------------
+Mon Jun 10 16:49:24 UTC 2019 - Frank Schütte <F.Schuette@t-online.de>
+
+- Update to OpenBoard 1.5.3
+- updated OpenBoard-no-Third-Party patch 
+
+-------------------------------------------------------------------
+Fri Jan 25 11:44:14 UTC 2019 - F.Schuette@t-online.de
+
+- Update to OpenBoard 1.5.2 
+
+-------------------------------------------------------------------
+Tue Sep 11 21:19:36 UTC 2018 - F.Schuette@t-online.de
+
+- Update to OpenBoard 1.4.1
+  * Add patch for ffmpeg includes.
+
+-------------------------------------------------------------------
+Wed Jan 10 19:01:57 UTC 2018 - antoine.belvire@opensuse.org
+
+- Add compatibility with OpenSSL 1.1 API:
+  * OpenBoard-1.3.6-add-openssl-1.1-compat.patch.
+  * Authorize build with OpenSSL 1.1 by removing version constraint
+    on "BuildRequires".
+- Merge quazip_libname.patch with OpenBoard-no_Third-Party.patch.
+
+-------------------------------------------------------------------
+Tue Jan  9 22:17:13 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 1.3.6:
+  * Fix several issues relating to copy-pasting and
+    cut-and-pasting elements from one page or document to another.
+  * Fix an issue where pen strokes that had been erased with the
+    eraser would reappear after saving and loading.
+  * Fix an issue where duplicating a pen stroke that had been
+    moved could cause the new stroke to be placed in the wrong
+    position.
+  * Fix an issue where strokes could be badly placed after using
+    the "undo" and "redo" functions.
+  * Fix an issue where compass strokes were not saved (when
+    making several strokes, only the first one was saved).
+  * Fix an issue where pages could be truncated when exporting to
+    PDF.
+  * Fix an issue where locked items could be moved when part of a
+    multiple selection
+  * (Document mode) Fix document selection after deleting a
+    trashed document.
+  * Tweak the background grid color for the dark background.
+  * The mask tool can now be resized non-proportionately.
+  * Re-implemented automatic update checking, which will appear
+    to users when the next version is released.
+- Changes from version 1.3.5:
+  * Fix detection of "cloned" multi-monitor setups to avoid
+    multi-screen mode being activated in this configuration.
+    [Note: some problems remain with multi-monitor setups on some
+    Linux versions.].
+  * Text items: Text can no longer be selected or edited if the
+    text item is marked as non-editable through its menu.
+  * Text items: On page load, text items no longer take keyboard
+    focus.
+  * Library pane: Fix moving of items (upon moving an item to a
+    folder, the item would not immediately disappear from its
+    current location).
+  * Library pane: Fix nested folder issue in breadcrumbs trail (two
+    folders that were at the same path and whose names started with
+    the same characters were considered by the breadcrumbs trail to
+    be nested).
+  * Document view: Fix folder names not being saved after renaming
+    them.
+  * Fix audio item saving (v1.3.3 bug): Documents containing an
+    audio item were saved incorrectly, making the audio unplayable
+    upon page load.
+  * Desktop mode: Eraser and marker preview circles now disappear
+    when the cursor hovers over the left or right-hand toolbars, as
+    in board mode.
+- Drop OpenBoard-fix-call-of-overloaded-abs-is-ambiguous.patch
+  (fixed upstream).
+- Fix some rpmlint warnings.
+
+-------------------------------------------------------------------
+Tue Jan  9 20:19:28 UTC 2018 - antoine.belvire@opensuse.org
+
+- Fix build:
+  * Change OpenBoard-XPDFRenderer_with_poppler.patch to make it
+    work with libpoppler >= 0.55.
+  * Force use of OpenSSL 1.0 as build requirement instead of 1.1.
+  * Use "libquazip-qt5-devel" instead of "quazip-qt5-devel" in
+    build requirements to fix build on Leap.
+
+-------------------------------------------------------------------
+Fri Jun 30 13:33:43 UTC 2017 - adam.majer@suse.de
+
+- quazip_libname.patch: Use quazip-qt5 instead of quazip as mixing
+  Qt versions is bad. Qt5 quazip also uses a different library
+  name. (boo#1042040)
+- add missing libpulse BuildRequires
+
+-------------------------------------------------------------------
+Mon Feb 13 19:40:30 UTC 2017 - mrueckert@suse.de
+
+- update to 1.3.4
+  - OS X: fixed desktop drop shadow bug: when switching from
+    desktop mode to board mode and back, shadows were drawn behind
+    annotations; these persisted even if the annotation was erased
+  - Windows: Updated bundled Visual C++ runtime library; fixed
+    installer so that the library installation would be silent (no
+    more dialog box appearing)
+  - Linux: fixed detection of "cloned" multi-monitor setups to
+    avoid multi-screen mode being activated in this configuration.
+    [Note: some problems remain with multi-monitor setups on some
+    Linux versions; see Known Issues]
+  - Text items: text can no longer be selected or edited if the
+    text item is marked as non-editable through its menu
+  - Text items: on page load, text items no longer take keyboard
+    focus
+  - Library pane: fixed moving of items (upon moving an item to a
+    folder, the item would not immediately disappear from its
+    current location)
+  - Library pane: fixed nested folder issue in breadcrumbs trail
+    (two folders that were at the same path and whose names started
+    with the same characters were considered by the breadcrumbs
+    trail to be nested)
+  - Document view: fixed folder names not being saved after
+    renaming them
+  - Fixed audio item saving (v1.3.3 bug): documents containing an
+    audio item were saved incorrectly, making the audio unplayable
+    upon page load
+  - Desktop mode: eraser and marker preview circles now disappear
+    when the cursor hovers over the left or right-hand toolbars, as
+    in board mode
+- refreshed OpenBoard-XPDFRenderer_with_poppler.patch to apply
+  cleanly again

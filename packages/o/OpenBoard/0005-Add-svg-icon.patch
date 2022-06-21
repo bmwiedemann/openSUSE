@@ -1,0 +1,46 @@
+From 1173151df4b941b5210838d35b3f3187d115928b Mon Sep 17 00:00:00 2001
+From: letsfindaway <me@letsfindaway.de>
+Date: Wed, 17 Mar 2021 17:09:03 +0100
+Subject: [PATCH 5/7] Add svg icon
+
+---
+ OpenBoard.pro                               | 4 ++--
+ resources/images/ch.openboard.OpenBoard.svg | 4 ++++
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+ create mode 100644 resources/images/ch.openboard.OpenBoard.svg
+
+diff --git a/OpenBoard.pro b/OpenBoard.pro
+index ad5ab947..2171c5f2 100644
+--- a/OpenBoard.pro
++++ b/OpenBoard.pro
+@@ -85,7 +85,7 @@ UB_LIBRARY.files = resources/library
+ UB_FONTS.files = resources/fonts
+ UB_THIRDPARTY_INTERACTIVE.files = thirdparty/interactive
+ UB_DESKTOP.files = resources/ch.openboard.OpenBoard.desktop
+-UB_ICON.files = resources/images/ch.openboard.OpenBoard.png
++UB_ICON.files = resources/images/ch.openboard.OpenBoard.svg
+ 
+ DEFINES += NO_THIRD_PARTY_WARNINGS
+ DEFINES += UBVERSION=\"\\\"$${LONG_VERSION}\"\\\" \
+@@ -467,7 +467,7 @@ linux-g++* {
+     UB_I18N.path = $$INSTALL_ROOT/$$PREFIX/share/OpenBoard/i18n/
+     UB_ETC.path = $$INSTALL_ROOT/$$PREFIX/share/OpenBoard/
+     UB_DESKTOP.path = $$INSTALL_ROOT/$$PREFIX/share/applications/
+-    UB_ICON.path = $$INSTALL_ROOT/$$PREFIX/share/icons/hicolor/64x64/apps/
++    UB_ICON.path = $$INSTALL_ROOT/$$PREFIX/share/icons/hicolor/scalable/apps/
+     system(mkdir -p $$BUILD_DIR)
+     system(echo "$$VERSION" > $$BUILD_DIR/version)
+     system(echo "$$LONG_VERSION" > $$BUILD_DIR/longversion)
+diff --git a/resources/images/ch.openboard.OpenBoard.svg b/resources/images/ch.openboard.OpenBoard.svg
+new file mode 100644
+index 00000000..4eecaaa2
+--- /dev/null
++++ b/resources/images/ch.openboard.OpenBoard.svg
+@@ -0,0 +1,4 @@
++<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" version="1">
++  <path fill="#505556" d="M451 89c10 0 28 13 34 25l5 14 1 111c-1 105-1 105-3 111-5 14-15 24-30 30l-6 2h-70l-71 1-59 59-61 60v-59l-1-59-65-2c-64 0-64 0-70-2-16-6-29-20-32-36V126c4-15 15-29 30-35l6-2 169-1 169 1m-18 26H222c-149 0-156 0-160 2-5 2-10 8-12 13l-1 106v102l3 6c2 4 4 6 8 8l5 3h74l75 1v42l1 43c1 1 21-19 45-42l44-43 72-1c81 0 75 1 82-7l5-8V131c-3-10-11-16-21-16"/>
++  <path fill="#f48c4f" d="M433 116l-20 35-27 45c-15 23-56 75-65 84-4 5-11 7-15 6-7-1-11-10-8-17a570 570 0 0 1 65-128l62-92c27-40 27-40 38-40 5 0 7 0 11 3s8 9 8 14-2 9-17 35l-14 26"/>
++</svg>
+-- 
+2.26.2
+

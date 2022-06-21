@@ -1,0 +1,39 @@
+From c11766b724da13af41d6f60f352f0bc4b145a8df Mon Sep 17 00:00:00 2001
+From: letsfindaway <me@letsfindaway.de>
+Date: Wed, 17 Mar 2021 17:06:37 +0100
+Subject: [PATCH 3/7] podcast.pri port to pkgconfig
+
+---
+ src/podcast/podcast.pri | 16 +---------------
+ 1 file changed, 1 insertion(+), 15 deletions(-)
+
+diff --git a/src/podcast/podcast.pri b/src/podcast/podcast.pri
+index 873658c9..8e768743 100644
+--- a/src/podcast/podcast.pri
++++ b/src/podcast/podcast.pri
+@@ -58,21 +58,7 @@ linux-g++* {
+                 src/podcast/ffmpeg/UBMicrophoneInput.cpp
+ 
+ 
+-    DEPENDPATH += /usr/lib/x86_64-linux-gnu
+-
+-    LIBS += -lavformat -lavcodec -lswscale -lavutil \
+-            -lva-x11 \
+-            -lva \
+-            -lxcb-shm \
+-            -lxcb-xfixes \
+-            -lxcb-render -lxcb-shape -lxcb -lX11 -lasound -lSDL -lx264 -lpthread -lvpx -lvorbisenc -lvorbis -ltheoraenc -ltheoradec -logg -lopus -lmp3lame -lfreetype -lfdk-aac -lass -llzma -lbz2 -lz -ldl -lswresample -lswscale -lavutil -lm
+-
+-    FFMPEG_VERSION = $$system(ffmpeg --version|& grep -oP "version.*?\K[0-9]\.[0-9]")
+-    equals(FFMPEG_VERSION, 2.8) {
+-        LIBS -= -lswresample
+-        LIBS += -lavresample
+-    }
+-
++    PKGCONFIG += libavformat libavcodec libavutil libswresample libswscale
+ 
+     QMAKE_CXXFLAGS += -std=c++11 # move this to OpenBoard.pro when we can use C++11 on all platforms
+ }
+-- 
+2.26.2
+

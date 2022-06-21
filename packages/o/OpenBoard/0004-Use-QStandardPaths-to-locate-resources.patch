@@ -1,0 +1,39 @@
+From 5b17d8e7cd8f3d02bf902a2cae2a3818cbb47cbf Mon Sep 17 00:00:00 2001
+From: letsfindaway <me@letsfindaway.de>
+Date: Wed, 17 Mar 2021 17:07:41 +0100
+Subject: [PATCH 4/7] Use QStandardPaths to locate resources
+
+---
+ src/frameworks/UBPlatformUtils_linux.cpp | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/src/frameworks/UBPlatformUtils_linux.cpp b/src/frameworks/UBPlatformUtils_linux.cpp
+index de5bdb9f..52c6e30c 100644
+--- a/src/frameworks/UBPlatformUtils_linux.cpp
++++ b/src/frameworks/UBPlatformUtils_linux.cpp
+@@ -31,6 +31,7 @@
+ 
+ #include <QtGui>
+ #include <QApplication>
++#include <QStandardPaths>
+ 
+ #include <unistd.h>
+ #include <X11/keysym.h>
+@@ -45,7 +46,13 @@ void UBPlatformUtils::init()
+ 
+ QString UBPlatformUtils::applicationResourcesDirectory()
+ {
+-    return QApplication::applicationDirPath();
++    QString appDataPath = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
++                                                 QApplication::applicationName() + "/library/applications/",
++                                                 QStandardPaths::LocateDirectory);
++    if (appDataPath.isEmpty())
++        return QApplication::applicationDirPath();
++    else
++        return appDataPath + "../../";
+ }
+ 
+ void UBPlatformUtils::hideFile(const QString &filePath)
+-- 
+2.26.2
+

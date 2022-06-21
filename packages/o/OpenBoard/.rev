@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>822748d5f8f03e2cff30fa88789da19c</srcmd5>
+    <version>1.7.0~git20220608.47a96e1</version>
+    <time>1655821934</time>
+    <user>dimstar_suse</user>
+    <comment>OpenBoard is in the Education project for quite some time now. Recently it could not be built for TW, because it still depended on QWebKit, which is obsolete and no longer available in TW.
+
+There are efforts on the way in the upstream project to move to QWebEngine, and I'm also the main contributor for this transition. It will however take some time until the upstream project releases a new version. In the meantime I compiled an OpenBoard version based on the current git development branch plus a set of pending PRs and I'm maintaining this version in the Education project.
+
+I want to make OpenBoard available again in TW (and later also Leap) and therefore submit this package to Factory.</comment>
+    <requestid>983997</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,94 @@
+From 05a0923e376d730c63dab1422df3bfbbbcce7e1f Mon Sep 17 00:00:00 2001
+From: letsfindaway <me@letsfindaway.de>
+Date: Wed, 17 Mar 2021 16:56:20 +0100
+Subject: [PATCH 1/7] Rewrite libs.pri
+
+---
+ OpenBoard.pro                       |  6 +-----
+ libs.pri                            | 33 +++++++++++++++++++++++++++++
+ plugins/cffadaptor/UBCFFAdaptor.pro |  5 -----
+ 3 files changed, 34 insertions(+), 10 deletions(-)
+ create mode 100644 libs.pri
+
+diff --git a/OpenBoard.pro b/OpenBoard.pro
+index 47bcad47..1bbaeaac 100644
+--- a/OpenBoard.pro
++++ b/OpenBoard.pro
+@@ -43,6 +43,7 @@ QT += core
+ 
+ INCLUDEPATH += src
+ 
++include(libs.pri)
+ include(src/adaptors/adaptors.pri)
+ include(src/api/api.pri)
+ include(src/board/board.pri)
+@@ -450,11 +451,6 @@ linux-g++* {
+     LIBS += -lcrypto
+     #LIBS += -lprofiler
+     LIBS += -lX11
+-    LIBS += -lquazip5
+-    INCLUDEPATH += "/usr/include/quazip5"
+-
+-    LIBS += -lpoppler
+-    INCLUDEPATH += "/usr/include/poppler"
+ 
+     QMAKE_CFLAGS += -fopenmp
+     QMAKE_CXXFLAGS += -fopenmp
+diff --git a/libs.pri b/libs.pri
+new file mode 100644
+index 00000000..9e7df33d
+--- /dev/null
++++ b/libs.pri
+@@ -0,0 +1,33 @@
++THIRD_PARTY_PATH="../OpenBoard-ThirdParty"
++
++linux {
++    CONFIG += link_pkgconfig
++    PKGCONFIG += poppler
++    PKGCONFIG += freetype2
++
++    # Find different versions of quazip
++    packagesExist(quazip1-qt5) {
++        PKGCONFIG += quazip1-qt5
++        message("using quazip >= 0.7.4 with pkgconfig support")
++    } else {
++    PackagesExist(quazip) {
++        PKGCONFIG += quazip
++        message("using quazip >= 0.7.4 with pkgconfig support")
++    } else {
++        exists(/usr/include/quazip5/quazip.h) {
++            INCLUDEPATH += "/usr/include/quazip5"
++            LIBS        += "-lquazip5"
++            message("using quazip =< 0.7.4 without pkgconfig support")
++        } else {
++            DEPENDPATH += $$THIRD_PARTY_PATH/quazip/
++            INCLUDEPATH += $$THIRD_PARTY_PATH/quazip/
++            include($$THIRD_PARTY_PATH/quazip/quazip.pri)
++            message("quazip not found on the system, falling back to ThirdParty")
++        }
++    }
++    }
++}
++
++!linux {
++    include($$THIRD_PARTY_PATH/libs.pri)
++}
+diff --git a/plugins/cffadaptor/UBCFFAdaptor.pro b/plugins/cffadaptor/UBCFFAdaptor.pro
+index f8214d5d..7923c42a 100644
+--- a/plugins/cffadaptor/UBCFFAdaptor.pro
++++ b/plugins/cffadaptor/UBCFFAdaptor.pro
+@@ -51,11 +51,6 @@ DEFINES += NO_THIRD_PARTY_WARNINGS
+ 
+ INCLUDEPATH += src
+ 
+-DEPENDPATH  += $$THIRD_PARTY_PATH/quazip/
+-INCLUDEPATH += $$THIRD_PARTY_PATH/quazip/
+-include($$THIRD_PARTY_PATH/quazip/quazip.pri)
+-
+-
+ SOURCES += \
+     src/UBCFFAdaptor.cpp
+ 
+-- 
+2.26.2
+

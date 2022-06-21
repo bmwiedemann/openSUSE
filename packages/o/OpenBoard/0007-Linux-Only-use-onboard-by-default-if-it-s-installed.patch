@@ -1,0 +1,72 @@
+From f0eb68460191621448fa88a4a35bd3e86a4e2ec7 Mon Sep 17 00:00:00 2001
+From: letsfindaway <me@letsfindaway.de>
+Date: Wed, 17 Mar 2021 17:11:27 +0100
+Subject: [PATCH 7/7] Linux Only use onboard by default if it-s installed
+
+---
+ resources/etc/OpenBoard.config |  1 -
+ src/core/UBSettings.cpp        | 16 +++++++++++++++-
+ src/core/UBSettings.h          |  1 +
+ 3 files changed, 16 insertions(+), 2 deletions(-)
+
+diff --git a/resources/etc/OpenBoard.config b/resources/etc/OpenBoard.config
+index f6a0a3a9..94784561 100644
+--- a/resources/etc/OpenBoard.config
++++ b/resources/etc/OpenBoard.config
+@@ -22,7 +22,6 @@ ToolBarOrientationVertical=false
+ ToolBarPositionedAtTop=true
+ TutorialUrl=http://www.openboard.ch
+ UseMultiscreenMode=true
+-UseSystemOnScreenKeyboard=true
+ 
+ [Board]
+ AutoSaveIntervalInMinutes=3
+diff --git a/src/core/UBSettings.cpp b/src/core/UBSettings.cpp
+index 23bbb069..1dc27703 100644
+--- a/src/core/UBSettings.cpp
++++ b/src/core/UBSettings.cpp
+@@ -227,6 +227,20 @@ void UBSettings::ValidateKeyboardPaletteKeyBtnSize()
+     boardKeyboardPaletteKeyBtnSize->set(supportedKeyboardSizes->at(0));
+ }
+ 
++bool UBSettings::checkSystemOnScreenKeyboardAvailable()
++{
++#ifdef Q_OS_UNIX
++    QProcess oskTestProcess;
++    oskTestProcess.start("which", QStringList() << "onboard");
++
++    return oskTestProcess.waitForFinished() &&
++                    oskTestProcess.exitStatus() == QProcess::NormalExit &&
++                    oskTestProcess.readAll() != "";
++#else
++    return true;
++#endif
++}
++
+ void UBSettings::init()
+ {
+     productWebUrl =  new UBSetting(this, "App", "ProductWebAddress", "http://www.openboard.ch");
+@@ -470,7 +484,7 @@ void UBSettings::init()
+ 
+     libIconSize = new UBSetting(this, "Library", "LibIconSize", defaultLibraryIconSize);
+ 
+-    useSystemOnScreenKeyboard = new UBSetting(this, "App", "UseSystemOnScreenKeyboard", true);
++    useSystemOnScreenKeyboard = new UBSetting(this, "App", "UseSystemOnScreenKeyboard", checkSystemOnScreenKeyboardAvailable());
+ 
+     showDateColumnOnAlphabeticalSort = new UBSetting(this, "Document", "ShowDateColumnOnAlphabeticalSort", false);
+     emptyTrashForOlderDocuments = new UBSetting(this, "Document", "emptyTrashForOlderDocuments", false);
+diff --git a/src/core/UBSettings.h b/src/core/UBSettings.h
+index 653eb6dc..9408b5b6 100644
+--- a/src/core/UBSettings.h
++++ b/src/core/UBSettings.h
+@@ -52,6 +52,7 @@ class UBSettings : public QObject
+         UBSettings(QObject *parent = 0);
+         virtual ~UBSettings();
+         void cleanNonPersistentSettings();
++        bool checkSystemOnScreenKeyboardAvailable();
+ 
+     public:
+ 
+-- 
+2.26.2
+

@@ -1,0 +1,23 @@
+From 53f3077e9506740e32c76a8f1bbdcb68697c2941 Mon Sep 17 00:00:00 2001
+From: letsfindaway <me@letsfindaway.de>
+Date: Sun, 9 Jan 2022 10:40:12 +0100
+Subject: [PATCH] fix: scaling of mirror pixmap
+
+- do not scale the already scaled pixmap when drawing in UBScreenMirror
+---
+ src/gui/UBScreenMirror.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/gui/UBScreenMirror.cpp b/src/gui/UBScreenMirror.cpp
+index db5b65116..628e23446 100644
+--- a/src/gui/UBScreenMirror.cpp
++++ b/src/gui/UBScreenMirror.cpp
+@@ -69,7 +69,7 @@ void UBScreenMirror::paintEvent(QPaintEvent *event)
+         int x = (width() - mLastPixmap.width()) / 2;
+         int y = (height() - mLastPixmap.height()) / 2;
+ 
+-        painter.drawPixmap(x, y, width(), height(), mLastPixmap);
++        painter.drawPixmap(x, y, mLastPixmap);
+     }
+ }
+ 

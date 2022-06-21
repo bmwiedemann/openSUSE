@@ -1,0 +1,57 @@
+From e6e082883e074d1119701c4a65f0fae363573d0d Mon Sep 17 00:00:00 2001
+From: letsfindaway <me@letsfindaway.de>
+Date: Wed, 17 Mar 2021 17:09:55 +0100
+Subject: [PATCH 6/7] pro Remove UB_THIRDPARTY_INTERACTIVE
+
+---
+ OpenBoard.pro | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/OpenBoard.pro b/OpenBoard.pro
+index 2171c5f2..24960176 100644
+--- a/OpenBoard.pro
++++ b/OpenBoard.pro
+@@ -83,7 +83,6 @@ UB_ETC.files = resources/etc
+ UB_I18N.files = resources/i18n/*.qm
+ UB_LIBRARY.files = resources/library
+ UB_FONTS.files = resources/fonts
+-UB_THIRDPARTY_INTERACTIVE.files = thirdparty/interactive
+ UB_DESKTOP.files = resources/ch.openboard.OpenBoard.desktop
+ UB_ICON.files = resources/images/ch.openboard.OpenBoard.svg
+ 
+@@ -138,7 +137,6 @@ win32 {
+    UB_LIBRARY.path = $$DESTDIR
+    UB_I18N.path = $$DESTDIR/i18n
+    UB_ETC.path = $$DESTDIR
+-   UB_THIRDPARTY_INTERACTIVE.path = $$DESTDIR/library
+    system(md $$replace(BUILD_DIR, /, \\))
+    system(echo "$$VERSION" > $$BUILD_DIR/version)
+    system(echo "$$LONG_VERSION" > $$BUILD_DIR/longversion)
+@@ -229,8 +227,6 @@ macx {
+    UB_LIBRARY.path = "$$RESOURCES_DIR"
+    UB_FONTS.files = "resources/fonts"
+    UB_FONTS.path = "$$RESOURCES_DIR"
+-   UB_THIRDPARTY_INTERACTIVE.files = $$files($$THIRD_PARTY_PATH/interactive/*)
+-   UB_THIRDPARTY_INTERACTIVE.path = "$$RESOURCES_DIR/library/interactive"
+    UB_MACX_ICNS.files = $$files(resources/macx/*.icns)
+    UB_MACX_ICNS.path = "$$RESOURCES_DIR"
+    UB_MACX_EXTRAS.files = "resources/macx/Save PDF to OpenBoard.workflow"
+@@ -433,7 +429,6 @@ macx {
+    QMAKE_BUNDLE_DATA += UB_ETC \
+        UB_LIBRARY \
+        UB_FONTS \
+-       UB_THIRDPARTY_INTERACTIVE \
+        UB_MACX_ICNS \
+        UB_MACX_EXTRAS \
+        SPARKLE_KEY \
+@@ -514,7 +509,6 @@ INSTALLS = UB_BINARY \
+    UB_ETC \
+    UB_I18N \
+    UB_LIBRARY \
+-   UB_THIRDPARTY_INTERACTIVE \
+    UB_DESKTOP \
+    UB_ICON
+ 
+-- 
+2.26.2
+

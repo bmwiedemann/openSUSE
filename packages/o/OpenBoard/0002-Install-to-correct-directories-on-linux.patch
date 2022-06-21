@@ -1,0 +1,163 @@
+From 92ca376ce333b21256f1762e6b0af6637ff859e2 Mon Sep 17 00:00:00 2001
+From: letsfindaway <me@letsfindaway.de>
+Date: Wed, 17 Mar 2021 17:05:06 +0100
+Subject: [PATCH] Install to correct directories on linux
+
+---
+ OpenBoard.pro                                 |  35 ++++++++++++------
+ resources/OpenBoard.qrc                       |   2 +-
+ resources/ch.openboard.OpenBoard.desktop      |  12 ++++++
+ ...enBoard.png => ch.openboard.OpenBoard.png} | Bin
+ src/core/UBApplication.cpp                    |   2 +-
+ 5 files changed, 37 insertions(+), 14 deletions(-)
+ create mode 100644 resources/ch.openboard.OpenBoard.desktop
+ rename resources/images/{OpenBoard.png => ch.openboard.OpenBoard.png} (100%)
+
+diff --git a/OpenBoard.pro b/OpenBoard.pro
+index 1bbaeaac..ad5ab947 100644
+--- a/OpenBoard.pro
++++ b/OpenBoard.pro
+@@ -1,4 +1,4 @@
+-TARGET = "OpenBoard"
++TARGET = "openboard"
+ TEMPLATE = app
+ 
+ CONFIG += c++17
+@@ -78,11 +78,14 @@ FORMS += resources/forms/mainWindow.ui \
+    resources/forms/capturePublishing.ui \
+    resources/forms/intranetPodcastPublishingDialog.ui
+ 
++UB_BINARY.files = openboard
+ UB_ETC.files = resources/etc
+ UB_I18N.files = resources/i18n/*.qm
+ UB_LIBRARY.files = resources/library
+ UB_FONTS.files = resources/fonts
+ UB_THIRDPARTY_INTERACTIVE.files = thirdparty/interactive
++UB_DESKTOP.files = resources/ch.openboard.OpenBoard.desktop
++UB_ICON.files = resources/images/ch.openboard.OpenBoard.png
+ 
+ DEFINES += NO_THIRD_PARTY_WARNINGS
+ DEFINES += UBVERSION=\"\\\"$${LONG_VERSION}\"\\\" \
+@@ -101,7 +104,6 @@ CONFIG(release, debug|release) {
+    CONFIG += warn_off
+ }
+ 
+-DESTDIR = $$BUILD_DIR/product
+ OBJECTS_DIR = $$BUILD_DIR/objects
+ MOC_DIR = $$BUILD_DIR/moc
+ RCC_DIR = $$BUILD_DIR/rcc
+@@ -212,14 +214,15 @@ macx {
+    QMAKE_CXXFLAGS_RELEASE += -gdwarf-2 \
+        -mdynamic-no-pic
+ 
+-#    QMAKE_CFLAGS += -fopenmp
+- #   QMAKE_CXXFLAGS += -fopenmp
+-  #  QMAKE_LFLAGS += -fopenmp
++   # QMAKE_CFLAGS += -fopenmp
++   # QMAKE_CXXFLAGS += -fopenmp
++   # QMAKE_LFLAGS += -fopenmp
+ 
+    CONTENTS_DIR = "Contents"
+    RESOURCES_DIR = "Contents/Resources"
+    FRAMEWORKS_DIR = "Contents/Frameworks"
+ 
++
+    UB_ETC.files = "resources/etc"
+    UB_ETC.path = "$$RESOURCES_DIR"
+    UB_LIBRARY.files = "resources/library"
+@@ -447,6 +450,10 @@ macx {
+ }
+ 
+ linux-g++* {
++    isEmpty(PREFIX) {
++        PREFIX = "/usr/"
++    }
++
+     CONFIG += link_prl
+     LIBS += -lcrypto
+     #LIBS += -lprofiler
+@@ -455,10 +462,12 @@ linux-g++* {
+     QMAKE_CFLAGS += -fopenmp
+     QMAKE_CXXFLAGS += -fopenmp
+     QMAKE_LFLAGS += -fopenmp
+-    UB_LIBRARY.path = $$DESTDIR
+-    UB_I18N.path = $$DESTDIR/i18n
+-    UB_ETC.path = $$DESTDIR
+-    UB_THIRDPARTY_INTERACTIVE.path = $$DESTDIR/library
++    UB_BINARY.path = $$INSTALL_ROOT/$$PREFIX/bin/
++    UB_LIBRARY.path = $$INSTALL_ROOT/$$PREFIX/share/OpenBoard/
++    UB_I18N.path = $$INSTALL_ROOT/$$PREFIX/share/OpenBoard/i18n/
++    UB_ETC.path = $$INSTALL_ROOT/$$PREFIX/share/OpenBoard/
++    UB_DESKTOP.path = $$INSTALL_ROOT/$$PREFIX/share/applications/
++    UB_ICON.path = $$INSTALL_ROOT/$$PREFIX/share/icons/hicolor/64x64/apps/
+     system(mkdir -p $$BUILD_DIR)
+     system(echo "$$VERSION" > $$BUILD_DIR/version)
+     system(echo "$$LONG_VERSION" > $$BUILD_DIR/longversion)
+@@ -501,12 +510,14 @@ TRANSLATIONS = resources/i18n/OpenBoard_en.ts \
+    resources/i18n/OpenBoard_hu.ts \
+    resources/i18n/OpenBoard_mg.ts
+ 
+-INSTALLS = UB_ETC \
++INSTALLS = UB_BINARY \
++   UB_ETC \
+    UB_I18N \
+    UB_LIBRARY \
+-   UB_THIRDPARTY_INTERACTIVE
++   UB_THIRDPARTY_INTERACTIVE \
++   UB_DESKTOP \
++   UB_ICON
+ 
+ DISTFILES += \
+     resources/images/moveDown.svg \
+     resources/images/moveDownDisabled.svg
+-
+diff --git a/resources/OpenBoard.qrc b/resources/OpenBoard.qrc
+index 480269c1..07c27288 100644
+--- a/resources/OpenBoard.qrc
++++ b/resources/OpenBoard.qrc
+@@ -1,6 +1,6 @@
+ <RCC>
+     <qresource prefix="/">
+-        <file>images/OpenBoard.png</file>
++        <file>images/ch.openboard.OpenBoard.png</file>
+         <file>images/bigOpenBoard.png</file>
+         <file>images/close.svg</file>
+         <file>images/increase.svg</file>
+diff --git a/resources/ch.openboard.OpenBoard.desktop b/resources/ch.openboard.OpenBoard.desktop
+new file mode 100644
+index 00000000..2104a7b6
+--- /dev/null
++++ b/resources/ch.openboard.OpenBoard.desktop
+@@ -0,0 +1,12 @@
++[Desktop Entry]
++Encoding=UTF-8
++Name=OpenBoard
++GenericName=OpenBoard
++Comment=Interactive whiteboard for schools and universities
++Exec=openboard
++Icon=ch.openboard.OpenBoard
++StartupNotify=true
++Terminal=false
++Type=Application
++MimeType=application/x-OpenBoard;
++Categories=Qt;KDE;Education;Engineering;
+diff --git a/resources/images/OpenBoard.png b/resources/images/ch.openboard.OpenBoard.png
+similarity index 100%
+rename from resources/images/OpenBoard.png
+rename to resources/images/ch.openboard.OpenBoard.png
+diff --git a/src/core/UBApplication.cpp b/src/core/UBApplication.cpp
+index b189c3b8..a7f6172d 100644
+--- a/src/core/UBApplication.cpp
++++ b/src/core/UBApplication.cpp
+@@ -130,7 +130,7 @@ UBApplication::UBApplication(const QString &id, int &argc, char **argv) : QtSing
+     updateProtoActionsState();
+ 
+ #ifndef Q_OS_OSX
+-    setWindowIcon(QIcon(":/images/OpenBoard.png"));
++    setWindowIcon(QIcon(":/images/ch.openboard.OpenBoard.png"));
+ #endif
+ 
+     setStyle("fusion");
+-- 
+2.26.2
+
