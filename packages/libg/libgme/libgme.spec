@@ -84,13 +84,11 @@ sed -i 's/\r$//' changes.txt design.txt gme.txt license.txt readme.txt
 %postun -n libgme%{soname} -p /sbin/ldconfig
 
 %files -n libgme%{soname}
-%defattr(0644, root, root, 0755)
 %license license.txt
 %doc changes.txt gme.txt readme.txt
 %{_libdir}/libgme.so.%{soname}*
 
 %files devel
-%defattr(0644, root, root, 0755)
 %doc design.txt
 %{_includedir}/gme
 %{_libdir}/libgme.so

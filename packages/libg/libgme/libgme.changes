@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 15 13:55:43 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Remove bad %defattr - not needed and causes SHLIB non-executable
+  rpmlint error
+
+-------------------------------------------------------------------
 Sun Feb 28 18:00:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.3:
