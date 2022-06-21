@@ -152,15 +152,12 @@ make %{?_smp_mflags} check
 %postun -n libvorbisfile3 -p /sbin/ldconfig
 
 %files -n libvorbis0
-%defattr(0644,root,root,0755)
 %{_libdir}/libvorbis.so.0*
 
 %files -n libvorbisenc2
-%defattr(0644,root,root,0755)
 %{_libdir}/libvorbisenc.so.2*
 
 %files -n libvorbisfile3
-%defattr(0644,root,root,0755)
 %{_libdir}/libvorbisfile.so.3*
 
 %files devel
