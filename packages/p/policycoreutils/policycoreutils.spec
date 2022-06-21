@@ -175,6 +175,7 @@ mv ${semodule_utils_pwd}/semodule_expand ${semodule_utils_pwd}/semodule_link ${s
 %build
 export PYTHON="python3" LIBDIR="%{_libdir}" CFLAGS="%{optflags} -fPIE" LDFLAGS="-pie -Wl,-z,relro"
 make %{?_smp_mflags} LIBEXECDIR="%{_libexecdir}"
+(cd selinux-python-%{version}/po && make)
 
 %install
 export PYTHON="python3"
@@ -200,7 +201,9 @@ mkdir -p %{buildroot}%{_localstatedir}/lib/sepolgen
 cp %{python3_sitearch}/setools/perm_map %{buildroot}%{_localstatedir}/lib/sepolgen
 %suse_update_desktop_file -i system-config-selinux System Security Settings
 %suse_update_desktop_file -i selinux-polgengui System Security Settings
+(cd selinux-python-%{version}/po && make DESTDIR=%{buildroot} install)
 %find_lang %{name}
+%find_lang selinux-python
 %fdupes -s %{buildroot}%{_datadir}
 
 %if 0%{?suse_version} >= 1500
@@ -290,7 +293,7 @@ mv %{buildroot}/sbin/* %{buildroot}/usr/sbin/
 
 %files lang -f %{name}.lang
 
-%files python-utils
+%files python-utils -f selinux-python.lang
 %{_bindir}/audit2allow
 %{_bindir}/audit2why
 %{_bindir}/chcat
