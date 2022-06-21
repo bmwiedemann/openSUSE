@@ -2431,4 +2431,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
   https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105078. (forwarded request 969342 from marxin)</comment>
     <requestid>969356</requestid>
   </revision>
+  <revision rev="130" vrev="6">
+    <srcmd5>a6b120de8636bdad59ca24aa403b949d</srcmd5>
+    <version>5.15.2+kde294</version>
+    <time>1655824524</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>983990</requestid>
+  </revision>
 </revisionlist>

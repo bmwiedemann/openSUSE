@@ -1,0 +1,75 @@
+From ec68c541a72bde122a1ab5ba89f41b58c370537f Mon Sep 17 00:00:00 2001
+From: Timur Pocheptsov <timur.pocheptsov@qt.io>
+Date: Mon, 14 Jun 2021 14:38:27 +0200
+Subject: [PATCH] H2: remove a rather useless limit on the number of streams
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+SETTINGS for max concurrect number of streams is 'one direction' - this
+is how our peer conveys the possible number of streams _we_ can open,
+not _them_. If they choose to have it unlimited - let it be so.
+
+It's possible to send 0 as maximum number, also, it's possible to
+reduce the maximum compared to initial at some point - then I have
+to avoid integer overflows.
+
+Pick-to: 6.2
+Pick-to: 6.1
+Pick-to: 5.15
+Fixes: QTBUG-94470
+Change-Id: Ia02247acbaedd70998a4cab02082ba10f45cf78c
+Reviewed-by: Mårten Nordheim <marten.nordheim@qt.io>
+Reviewed-by: Edward Welbourne <edward.welbourne@qt.io>
+(cherry picked from commit 46940ca73791e87e2366b80ac2884b3bcce716ce)
+---
+ src/network/access/http2/http2protocol_p.h   |  3 ---
+ src/network/access/qhttp2protocolhandler.cpp | 10 +++-------
+ 2 files changed, 3 insertions(+), 10 deletions(-)
+
+diff --git a/src/network/access/http2/http2protocol_p.h b/src/network/access/http2/http2protocol_p.h
+index b0af5aa919..ed5f2bf561 100644
+--- a/src/network/access/http2/http2protocol_p.h
++++ b/src/network/access/http2/http2protocol_p.h
+@@ -133,9 +133,6 @@ enum Http2PredefinedParameters
+     maxPayloadSize = (1 << 24) - 1, // HTTP/2 6.5.2
+ 
+     defaultSessionWindowSize = 65535, // HTTP/2 6.5.2
+-    // Using 1000 (rather arbitrarily), just to
+-    // impose *some* upper limit:
+-    maxPeerConcurrentStreams  = 1000,
+     maxConcurrentStreams = 100 // HTTP/2, 6.5.2
+ };
+ 
+diff --git a/src/network/access/qhttp2protocolhandler.cpp b/src/network/access/qhttp2protocolhandler.cpp
+index f513139304..21f1c91e29 100644
+--- a/src/network/access/qhttp2protocolhandler.cpp
++++ b/src/network/access/qhttp2protocolhandler.cpp
+@@ -393,7 +393,8 @@ bool QHttp2ProtocolHandler::sendRequest()
+         initReplyFromPushPromise(message, key);
+     }
+ 
+-    const auto streamsToUse = std::min<quint32>(maxConcurrentStreams - activeStreams.size(),
++    const auto streamsToUse = std::min<quint32>(maxConcurrentStreams > activeStreams.size()
++                                                ? maxConcurrentStreams - activeStreams.size() : 0,
+                                                 requests.size());
+     auto it = requests.begin();
+     for (quint32 i = 0; i < streamsToUse; ++i) {
+@@ -1084,13 +1085,8 @@ bool QHttp2ProtocolHandler::acceptSetting(Http2::Settings identifier, quint32 ne
+         QMetaObject::invokeMethod(this, "resumeSuspendedStreams", Qt::QueuedConnection);
+     }
+ 
+-    if (identifier == Settings::MAX_CONCURRENT_STREAMS_ID) {
+-        if (newValue > maxPeerConcurrentStreams) {
+-            connectionError(PROTOCOL_ERROR, "SETTINGS invalid number of concurrent streams");
+-            return false;
+-        }
++    if (identifier == Settings::MAX_CONCURRENT_STREAMS_ID)
+         maxConcurrentStreams = newValue;
+-    }
+ 
+     if (identifier == Settings::MAX_FRAME_SIZE_ID) {
+         if (newValue < Http2::minPayloadLimit || newValue > Http2::maxPayloadSize) {
+-- 
+2.36.1
+
