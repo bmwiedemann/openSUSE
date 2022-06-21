@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 20 11:06:02 UTC 2022 - jtomasiak@suse.com
+
+- Update to version 0.0.3~git10.d8579a3:
+  * Update to cockpit 271
+  * Add translation template
+  * Update translations
+  * Add load-css-overrides.patch to start loading a custom CSS file
+
+-------------------------------------------------------------------
 Thu May 19 13:11:27 UTC 2022 - jan.suse@zerebecki.de
 
 - Update to version 0.0.3~git6.03c747e:

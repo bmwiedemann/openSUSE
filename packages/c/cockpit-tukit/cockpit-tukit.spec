@@ -17,7 +17,7 @@
 
 
 Name:           cockpit-tukit
-Version:        0.0.3~git6.03c747e
+Version:        0.0.3~git10.d8579a3
 Release:        0%{?dist}
 Summary:        Cockpit module for Transactional Update
 License:        LGPL-2.1-or-later
@@ -28,6 +28,7 @@ Source10:       package-lock.json
 Source11:       node_modules.spec.inc
 Source12:       node_modules.sums
 %include %_sourcedir/node_modules.spec.inc
+Patch0:         load-css-overrides.patch
 BuildArch:      noarch
 BuildRequires:  appstream-glib
 BuildRequires:  cockpit-devel >= 251
@@ -46,6 +47,7 @@ Cockpit module for Transactional Update
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch0 -p1
 rm -f package-lock.json
 local-npm-registry %{_sourcedir} install --with=dev --legacy-peer-deps || ( find ~/.npm/_logs -name '*-debug.log' -print0 | xargs -0 cat; false)
 

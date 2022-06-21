@@ -20,4 +20,12 @@
 </comment>
     <requestid>978716</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6b092736f51390bad049b84438a84ba8</srcmd5>
+    <version>0.0.3~git10.d8579a3</version>
+    <time>1655821925</time>
+    <user>dimstar_suse</user>
+    <comment>update changes file to match Factory requirements (forwarded request 983984 from jtomasiak)</comment>
+    <requestid>983985</requestid>
+  </revision>
 </revisionlist>
