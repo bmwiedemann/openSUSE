@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon Jun 20 08:06:56 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.5136, fixes the following problems
+  * Autocmd test still fails on MS-Windows.
+  * When the GUI shows a dialog tests get stuck.
+  * Gcc gives warning for signed/unsigned difference.
+  * CI runs on Windows 2019.
+  * Cannot build with clang on MS-Windows.
+  * Value of cmod_verbose is a bit complicated to use.
+  * Some functions return a different value on failure.
+  * Terminal test fails with some shell commands.
+  * Using "'<,'>" in Ex mode may compare unrelated pointers.
+  * Error message for unknown command may mention the command twice. (Malcolm
+  Rowe)
+  * Terminal test still fails with some shell commands.
+  * Using uninitialized memory when using 'listchars'.
+  * Spelldump test sometimes hangs.
+  * Some terminal tests are not retried.
+  * Memory usage tests are not retried.
+  * MS-Windows with MinGW: $CC may be "cc" instead of "gcc".
+  * Interrupt not caught in test.
+  * Build fails with small features.
+  * Default cmdwin mappings are re-mappable.
+  * Some callers of rettv_list_alloc() check for not OK. (Christ van Willegen)
+  * Retab test disabled because it hangs on MS-Windows.
+  * Mode not updated after CTRL-O CTRL-C in Insert mode.
+  * Icon filetype not recognized from the first line.
+  * No test for --gui-dialog-file.
+  * Timer becomes invalid after fork/exec, :gui gives errors. (Gabriel Dupras)
+  * Time limit on searchpair() does not work properly.
+  * Search timeout is overrun with some patterns.
+  * "limit" option of matchfuzzy() not always respected.
+  * Crash when calling a Lua callback from a :def function. (Bohdan Makohin)
+  * Searching for quotes may go over the end of the line.
+  * Interrupt test sometimes fails.
+  * Lisp indenting my run over the end of the line.
+  * Using invalid index when looking for spell suggestions.
+  * When syntax timeout test fails it does not show the time.
+  * Substitute may overrun destination buffer.
+  * Using assert_true() does not show value on failure.
+  * Syntax highlighting disabled when using synID() in searchpair() skip
+  expression and it times out. (Jaehwang Jung)
+  * Timeout handling is not optimal.
+  * Edit test for mode message fails when using valgrind.
+  * Timeout implementation is not optimal.
+  * :mkview test doesn't test much.
+  * Function has confusing name.
+  * Running configure gives warnings for main() return type.
+
+-------------------------------------------------------------------
 Mon Jun 13 13:00:22 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.5083, fixes the following problems

@@ -5913,4 +5913,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Can specify multispace listchars only for whole line.</comment>
     <requestid>982459</requestid>
   </revision>
+  <revision rev="311" vrev="1">
+    <srcmd5>df4d964904dc2aa9c4e3141ff27299ba</srcmd5>
+    <version>8.2.5136</version>
+    <time>1655824512</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.5136, fixes the following problems
+  * Autocmd test still fails on MS-Windows.
+  * When the GUI shows a dialog tests get stuck.
+  * Gcc gives warning for signed/unsigned difference.
+  * CI runs on Windows 2019.
+  * Cannot build with clang on MS-Windows.
+  * Value of cmod_verbose is a bit complicated to use.
+  * Some functions return a different value on failure.
+  * Terminal test fails with some shell commands.
+  * Using &quot;'&lt;,'&gt;&quot; in Ex mode may compare unrelated pointers.
+  * Error message for unknown command may mention the command twice. (Malcolm
+  Rowe)
+  * Terminal test still fails with some shell commands.
+  * Using uninitialized memory when using 'listchars'.
+  * Spelldump test sometimes hangs.
+  * Some terminal tests are not retried.
+  * Memory usage tests are not retried.
+  * MS-Windows with MinGW: $CC may be &quot;cc&quot; instead of &quot;gcc&quot;.
+  * Interrupt not caught in test.
+  * Build fails with small features.
+  * Default cmdwin mappings are re-mappable.
+  * Some callers of rettv_list_alloc() check for not OK. (Christ van Willegen)
+  * Retab test disabled because it hangs on MS-Windows.
+  * Mode not updated after CTRL-O CTRL-C in Insert mode.
+  * Icon filetype not recognized from the first line.
+  * No test for --gui-dialog-file.
+  * Timer becomes invalid after fork/exec, :gui gives errors. (Gabriel Dupras)
+  * Time limit on searchpair() does not work properly.
+  * Search timeout is overrun with some patterns.
+  * &quot;limit&quot; option of matchfuzzy() not always respected.</comment>
+    <requestid>983876</requestid>
+  </revision>
 </revisionlist>
