@@ -66,4 +66,16 @@ Also for older PostgreSQL versions to keep the packaging consistent.</comment>
   * https://www.postgresql.org/docs/14/release-14-3.html</comment>
     <requestid>977049</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ceb0533b29580885f4de9af213ea0ed4</srcmd5>
+    <version>14.4</version>
+    <time>1655824505</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1200437: Upgrade to 14.4:
+  * Prevent possible corruption of indexes created or rebuilt with 
+    the CONCURRENTLY option.
+  * https://www.postgresql.org/docs/release/14.4/
+  * https://www.postgresql.org/about/news/p-2470/</comment>
+    <requestid>983858</requestid>
+  </revision>
 </revisionlist>

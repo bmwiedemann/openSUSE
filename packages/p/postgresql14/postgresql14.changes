@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 17 06:32:15 UTC 2022 - Reinhard Max <max@suse.com>
+
+- bsc#1200437: Upgrade to 14.4:
+  * Prevent possible corruption of indexes created or rebuilt with 
+    the CONCURRENTLY option.
+  * https://www.postgresql.org/docs/release/14.4/
+  * https://www.postgresql.org/about/news/p-2470/
+
+-------------------------------------------------------------------
 Thu May 12 10:33:20 UTC 2022 - Reinhard Max <max@suse.com>
 
 - Upgrade to 14.3:
