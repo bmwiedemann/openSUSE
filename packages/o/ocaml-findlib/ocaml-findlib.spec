@@ -18,15 +18,14 @@
 
 
 Name:           ocaml-findlib
-Version:        1.9.3
+Version:        1.9.5
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Objective CAML package manager and build helper
 License:        MIT
 Group:          Development/Languages/OCaml
 URL:            https://github.com/ocaml/ocamlfind
-#SourceURL:     http://download.camlcity.org/download/findlib-%version.tar.gz
-Source0:        findlib-%version.tar.xz
+Source0:        %name-%version.tar.xz
 #
 Requires:       ocaml-compiler-libs
 Requires:       ocaml-runtime
@@ -34,9 +33,9 @@ Requires:       ocaml-runtime
 Provides:       ocamlfind = %version
 BuildRequires:  ocaml
 BuildRequires:  ocaml-ocamldoc
-BuildRequires:  ocaml-rpm-macros >= 20220222
+BuildRequires:  ocaml-rpm-macros >= 20220409
 #
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRoot:      %_tmppath/%name-%version-build
 
 %description
 Findlib is a library manager for Objective Caml. It provides a
@@ -57,7 +56,7 @@ The ocaml-findlib-devel package contains libraries and signature files
 for developing applications that use ocaml-findlib.
 
 %prep
-%setup -q -n findlib-%version
+%setup -q
 
 %build
 rm -rfv site-lib-src
@@ -72,7 +71,7 @@ make all
 make opt
 
 %install
-make install prefix=%buildroot
+%make_install
 rm -rfv %buildroot%ocaml_standard_library/ocamlbuild
 rm -rfv %buildroot%ocaml_standard_library/findlib/Makefile.packages
 %ocaml_create_file_list
@@ -82,7 +81,6 @@ rm -rfv %buildroot%ocaml_standard_library/findlib/Makefile.packages
 %ocaml_standard_library/ocamlfind.conf
 %ocaml_standard_library/topfind
 %_bindir/*
-%_mandir/man?/*
 #
 
 %files devel -f %name.files.devel
