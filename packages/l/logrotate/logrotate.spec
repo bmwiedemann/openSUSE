@@ -98,7 +98,6 @@ fi
 %if %{?suse_version} <= 1500
 %dir %{_distconfdir}
 %endif
-%dir %{_distconfdir}/logrotate.d
 %license COPYING
 %doc ChangeLog.md README.md
 %{_sbindir}/logrotate

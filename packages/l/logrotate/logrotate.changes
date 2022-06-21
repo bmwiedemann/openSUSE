@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 20 12:06:17 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Removed %{_distconfdir}/logrotate.d directory from spec file.
+  It will be handled by package filesystem.
+
+-------------------------------------------------------------------
 Wed May 25 20:06:20 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - update to 3.20.1:
