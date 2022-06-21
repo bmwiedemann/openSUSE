@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 21 12:31:22 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Moved logrotate files from user specific directory /etc/logrotate.d
+  to vendor specific directory /usr/etc/logrotate.d.
+
+-------------------------------------------------------------------
 Wed Jul  7 09:27:37 UTC 2021 - Al Cho <acho@suse.com>
 
 - If the kvm service is enabled and the system rebooted,

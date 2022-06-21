@@ -1,7 +1,7 @@
 #
 # spec file for package kvm_stat
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -93,7 +93,12 @@ make -C tools/kvm/kvm_stat %{?_smp_mflags}
 # OBS checks don't like /usr/bin/env in script interpreter lines
 sed -re '1 { s_^#! */usr/bin/env +/_#!/_ ; s_^#! */usr/bin/env +([^/])_#!/usr/bin/\1_ }' -i "tools/kvm/kvm_stat/kvm_stat"
 make -C tools kvm_stat_install INSTALL_ROOT=%{buildroot}
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
+install -D -m 644 %{SOURCE1} %{buildroot}%{_distconfdir}/logrotate.d/kvm_stat
+%else
 install -D -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/logrotate.d/kvm_stat
+%endif
 install -D -m 644 tools/kvm/kvm_stat/kvm_stat.service %{buildroot}%{_unitdir}/kvm_stat.service
 install -d %{buildroot}%{_sbindir}
 ln -sf service %{buildroot}%{_sbindir}/rckvm_stat
@@ -114,7 +119,11 @@ ln -sf service %{buildroot}%{_sbindir}/rckvm_stat
 %defattr(-, root, root)
 %license COPYING
 %{_unitdir}/kvm_stat.service
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/logrotate.d/kvm_stat
+%else
 %config(noreplace) %{_sysconfdir}/logrotate.d/kvm_stat
+%endif
 %{_sbindir}/rckvm_stat
 %{_bindir}/kvm_stat
 %{_mandir}/man1/kvm_stat*
