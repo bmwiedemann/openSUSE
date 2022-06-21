@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun 15 15:18:47 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.12.0:
+  * An improved sqrt() function that can deal with some cases
+    where the matrix representation of multivector is a singular
+    matrix.
+  * The absolute and relative error estimation and approximate
+    equality functions used in test11 have been streamlined and
+    added to glucat/clifford_algebra.h and
+    glucat/clifford_algebra_imp.h as the functions
+    error_squared_tol(), error_squared() and approx_equal().
+
+-------------------------------------------------------------------
 Mon May  2 00:31:38 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.11.0:

@@ -30,7 +30,7 @@
 %endif
 
 Name:           %{pname}%{?psuffix}
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        Library of C++ templates implementing universal Clifford algebras
 License:        LGPL-3.0-only
@@ -192,6 +192,7 @@ make DESTDIR=%{buildroot} install-doc
 
 # REMOVE FILES PKGED USING %%doc ANYWAY OR OTHERWISE NOT NEEDED
 rm -fr %{buildroot}%{_docdir}/%{pname}/{AUTHORS,DESIGN,INSTALL,README,TODO}.md
+rm -fr %{buildroot}%{_docdir}/%{pname}/{AUTHORS,DESIGN,INSTALL,README,TODO}
 rm -fr %{buildroot}%{_docdir}/%{pname}/{COPYING,ChangeLog,NEWS,glucat.lsm}
 
 %fdupes %{buildroot}%{_docdir}/%{pname}/html/
