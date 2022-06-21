@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 20 16:18:23 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
+
+- Don't require wicked nor NetworkManager. Both are optional
+
+-------------------------------------------------------------------
+Mon Jun 20 09:46:22 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.2.0.4:
+  * Rewrite license code
+
+-------------------------------------------------------------------
 Tue Jun 14 13:57:32 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.2.0.3:

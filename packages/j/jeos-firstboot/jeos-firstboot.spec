@@ -17,7 +17,7 @@
 
 
 Name:           jeos-firstboot
-Version:        1.2.0.3
+Version:        1.2.0.4
 Release:        0
 Summary:        Simple text based JeOS first boot wizard
 License:        MIT
@@ -29,7 +29,6 @@ Requires:       dialog
 Requires:       iproute2
 Requires:       live-langset-data
 Requires:       timezone
-Requires:       (NetworkManager or wicked)
 BuildArch:      noarch
 %{?systemd_requires}
 
