@@ -53,15 +53,20 @@ This subpackage contains the header files.
 %autosetup -p1
 
 %build
-%make_build prefix="%_prefix"
+# Not parallel safe - to the point where there is silent corruption
+# (compared to a more common "file not found" in other packages)
+%make_build -j1 V=1 prefix="%_prefix"
 
 %install
-%make_install prefix="%_prefix" \
+%make_install -j1 V=1 prefix="%_prefix" \
 	pkgconfig_dir=%{_libdir}/pkgconfig \
         %nil
 # always the same issues
 find "%buildroot/%_includedir" -type f -name "*.h" -exec chmod a-x {} +
 rm -f "%buildroot/%_libdir"/*.a
+if ldd -r "%buildroot/%_libdir/libtracefs.so" 2>&1 | grep -q undefined; then
+	exit 1
+fi
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig

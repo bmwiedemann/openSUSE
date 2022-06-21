@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 21 11:27:48 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Force make -j1 during build because of object file corruption.
+
+-------------------------------------------------------------------
 Tue Jun  7 08:34:18 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to latest upstream version (1.4.1)

@@ -39,4 +39,12 @@
     <comment>- Update to latest upstream version (1.4.1)</comment>
     <requestid>983248</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>22d8beedd78aef7ee66091fe34685935</srcmd5>
+    <version>1.4.1</version>
+    <time>1655821984</time>
+    <user>dimstar_suse</user>
+    <comment>- Force make -j1 during build because of object file corruption.</comment>
+    <requestid>984148</requestid>
+  </revision>
 </revisionlist>
