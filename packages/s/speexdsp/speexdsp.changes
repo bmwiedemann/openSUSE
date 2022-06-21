@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun 18 13:14:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.1:
+  * CI: add gitlab CI integration
+  * fixed-point: Remove unused MULT16_32_Q1[1-4] macros and inlines
+  * fixed-point: don't truncate 32-bit arg to MULT16_32_Q15
+  * fixed-point resample: remove 1-bit shift right before interpolation
+  * fixed-point: introduce MULT16_32_32 to handle unexpected types in MULT16_32_Q15
+  * Fix incorrect macro names in arch.h
+  * Remove unused stack_alloc.h
+  * autotools: do not use deprecated macros 
+
+-------------------------------------------------------------------
 Thu Jan 14 09:10:01 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update dependencies and update spec file

@@ -1,7 +1,7 @@
 #
 # spec file for package speexdsp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,17 @@
 %define sover   1
 %define libname lib%{name}%{sover}
 Name:           speexdsp
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Patent free speech codec
 License:        BSD-3-Clause
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
 URL:            https://www.speex.org/
 #Git-Clone:     https://github.com/xiph/speexdsp
-Source0:        https://downloads.xiph.org/releases/speex/%{name}-%{version}.tar.gz
+Source0:        https://github.com/xiph/speexdsp/archive/refs/tags/SpeexDSP-%{version}.tar.gz
 Source2:        baselibs.conf
+BuildRequires:  automake
+BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pkgconfig(ogg)
 Conflicts:      speex <= 1.1.999_1.2rc1
@@ -59,9 +61,10 @@ This package contains the files needed to compile programs that use the
 SpeeX library.
 
 %prep
-%autosetup
+%autosetup -n speexdsp-SpeexDSP-%{version}
 
 %build
+./autogen.sh
 # Disable NEON since it doesn't check for availability of the NEON
 # extension at runtime
 %configure \
