@@ -1,7 +1,7 @@
 #
 # spec file for package python-os-client-config
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,6 @@ BuildRequires:  python3-fixtures
 BuildRequires:  python3-glanceclient
 BuildRequires:  python3-jsonschema
 BuildRequires:  python3-keystoneclient
-BuildRequires:  python3-mock
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-python-subunit
 BuildRequires:  python3-stestr

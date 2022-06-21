@@ -306,4 +306,12 @@
     <comment>- switch to wallaby template (url and group cleanups)</comment>
     <requestid>890154</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>d1a7a29fbee4bc694972b09c46d0f96e</srcmd5>
+    <version>2.1.0</version>
+    <time>1655821988</time>
+    <user>dimstar_suse</user>
+    <comment>- drop mock dependency</comment>
+    <requestid>984178</requestid>
+  </revision>
 </revisionlist>

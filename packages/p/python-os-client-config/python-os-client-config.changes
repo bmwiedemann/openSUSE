@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 21 13:16:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- drop mock dependency 
+
+-------------------------------------------------------------------
 Mon May  3 16:23:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - switch to wallaby template (url and group cleanups)
