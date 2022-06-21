@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 15 03:08:39 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.104002
+   see /usr/share/doc/packages/perl-Software-License/Changes
+
+  0.104002  2022-06-14 23:44:29+02:00 Europe/Amsterdam
+          - Add support for ISC license
+          - Add guesser for Apache license and no license
+
+-------------------------------------------------------------------
 Tue Aug  3 03:09:02 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.104001
