@@ -548,4 +548,12 @@
   modified by local admins. (forwarded request 953158 from dimstar)</comment>
     <requestid>953980</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>46e0f815291d533b42cb3403d501228c</srcmd5>
+    <version>6.5</version>
+    <time>1655824516</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>983894</requestid>
+  </revision>
 </revisionlist>

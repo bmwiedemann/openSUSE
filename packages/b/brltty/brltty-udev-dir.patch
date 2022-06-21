@@ -1,0 +1,13 @@
+diff -urp brltty-6.5.orig/Autostart/Udev/Makefile.in brltty-6.5/Autostart/Udev/Makefile.in
+--- brltty-6.5.orig/Autostart/Udev/Makefile.in	2022-05-21 02:30:08.000000000 -0500
++++ brltty-6.5/Autostart/Udev/Makefile.in	2022-06-11 18:32:41.460215052 -0500
+@@ -17,7 +17,7 @@
+ ###############################################################################
+ 
+ UDEV_RULES_SEQUENCE = 90
+-UDEV_PARENT_LOCATION = $(libdir)
++UDEV_PARENT_LOCATION = /usr/lib
+ #UDEV_PARENT_LOCATION = $(sysconfdir)
+ 
+ UDEV_SCRIPTS_DIRECTORY = $(INSTALL_ROOT)$(SCRIPTS_DIRECTORY)
+Only in brltty-6.5.orig/Autostart/Udev: .Makefile.in.swp

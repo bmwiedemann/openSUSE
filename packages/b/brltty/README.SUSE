@@ -6,14 +6,9 @@ USB:
 Most USB Braille displays should be autodetected by udev, starting brltty.
 However, some Braille displays have the same product IDs as generic
 USB-to-serial adapters, and, in order to avoid a conflict with these
-adapters, the brltty udev rule for them has been disabled. If you have
-an Albatross, Cebra, Hims, HandyTech, or MDV display and connect it
-via USB, then you may want to edit /usr/lib/udev/rules.d/69-brltty.rules
-and uncomment the following line:
-#ENV{PRODUCT}=="403/6001/*", ENV{BRLTTY_BRAILLE_DRIVER}="at,ce,hm,ht,md", GOTO="brltty_usb_run"
-
-See https://bugzilla.opensuse.org/show_bug.cgi?id=1007652 for more
-information.
+adapters, the brltty udev rules for them are not installed by default. If
+you have an Albatross, Cebra, Hims, HandyTech, or MDV display and connect it
+via USB, then you may want to install the brltty-udev-generic package.
 
 Alternatively, you can have systemd automatically start brltty at boot. Run
 chkconfig brltty on

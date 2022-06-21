@@ -18,14 +18,14 @@
 
 %{!?tcl_version: %global tcl_version %(echo 'puts $tcl_version' | tclsh)}
 %{!?tcl_sitearch: %global tcl_sitearch %{_libdir}/tcl/tcl%{tcl_version}}
-%define api_version 0.8.3
+%define api_version 0.8.4
 %define sover 0_8
 %define soname libbrlapi%{sover}
 %if 0%{?suse_version} >= 1550
 %define with_sysusersd 1
 %endif
 Name:           brltty
-Version:        6.4
+Version:        6.5
 Release:        0
 # FIXME libbraille driver when libbraille is in factory
 Summary:        Braille display driver for Linux/Unix
@@ -35,6 +35,7 @@ URL:            https://brltty.app/
 
 Source0:        https://brltty.app/archive/%{name}-%{version}.tar.xz
 Source1:        README.SUSE
+Patch0:         brltty-udev-dir.patch
 
 BuildRequires:  bison
 BuildRequires:  doxygen
@@ -162,6 +163,16 @@ refreshable braille display. It drives the braille display and provides
 complete screen review functionality.
 
 This package contains the XWindow braille driver.
+
+%package udev-generic
+Summary:        BRLTTY Udev rules for braille devices that use a generic USB to serial adapter.
+Group:          System/Daemons
+Requires:       %{name} = %{version}-%{release}
+
+%description udev-generic
+This package provides additional rules for managing BRLTTY via Udev.
+
+Install this package in order to support braille devices that use a generic USB to serial adapter.
 
 %package utils
 Summary:        Braille display driver for Linux/Unix
@@ -323,13 +334,6 @@ cp %{_sourcedir}/README.SUSE .
 # Fix "wrong-file-end-of-line-encoding" rpmlint warning
 sed -i 's/\r$//' Documents/Manual-BRLTTY/Portuguese/BRLTTY.txt
 
-# Don't claim generic USB serial adapters (boo#1007652)
-sed -i \
-  -e 's/^ENV{PRODUCT}=="403\/6001\/\*"/#ENV{PRODUCT}=="403\/6001\/\*"/' \
-  -e 's/^ENV{PRODUCT}=="10c4\/ea60\/\*"/#ENV{PRODUCT}=="10c4\/ea60\/\*"/' \
-  -e 's/^ENV{PRODUCT}=="10c4\/ea80\/\*"/#ENV{PRODUCT}=="10c4\/ea80\/\*"/' \
-  Autostart/Udev/device.rules.in
-
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
 DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
 TIME="\"$(date -d "${modified}" "+%%R")\""
@@ -458,15 +462,20 @@ rm -f %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-someth
 %{_bindir}/brltty-config.sh
 %{_bindir}/brltty-ctb
 %{_bindir}/brltty-genkey
+%{_bindir}/brltty-hid
 %{_bindir}/brltty-ktb
 %{_bindir}/brltty-lscmds
 %{_bindir}/brltty-lsinc
 %{_bindir}/brltty-mkuser
 %{_bindir}/brltty-morse
+%{_bindir}/brltty-prologue.bash
+%{_bindir}/brltty-prologue.lua
+%{_bindir}/brltty-prologue.tcl
 %{_bindir}/brltty-prologue.sh
 %{_bindir}/brltty-setcaps
 %{_bindir}/brltty-trtxt
 %{_bindir}/brltty-ttb
+%{_bindir}/brltty-ttysize
 %{_bindir}/brltty-tune
 %{_bindir}/eutp
 %dir %{_datadir}/metainfo
@@ -478,8 +487,9 @@ rm -f %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-someth
 %{_mandir}/man1/brltty.1*
 %{_mandir}/man1/eutp.1.gz
 %{_tmpfilesdir}/%{name}.conf
-%{_udevrulesdir}/90-%{name}-device.rules
+%{_udevrulesdir}/90-%{name}-hid.rules
 %{_udevrulesdir}/90-%{name}-uinput.rules
+%{_udevrulesdir}/90-%{name}-usb-customized.rules
 %{_unitdir}/%{name}.path
 %{_unitdir}/%{name}@.path
 %{_unitdir}/%{name}-device@.service
@@ -516,6 +526,9 @@ rm -f %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-someth
 %files driver-xwindow
 %doc Drivers/Braille/XWindow/README
 %{_libdir}/brltty/libbrlttybxw.so
+
+%files udev-generic
+%{_udevrulesdir}/90-%{name}-usb-generic.rules
 
 %files utils
 %{_bindir}/vstp
