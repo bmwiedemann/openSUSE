@@ -149,7 +149,6 @@ done
 %{_defaultdocdir}/%{name}
 
 %files -n libmp3lame%{sover}
-%defattr(0644,root,root,0755)
 %license COPYING LICENSE
 %{_libdir}/libmp3lame.so.%{sover}
 %{_libdir}/libmp3lame.so.%{sover}.*

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 15 13:55:43 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Remove bad %defattr - not needed and causes SHLIB non-executable
+  rpmlint error
+
+-------------------------------------------------------------------
 Wed Jul  8 20:03:47 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Escape the "$" character in spec file, so that the non-existing
