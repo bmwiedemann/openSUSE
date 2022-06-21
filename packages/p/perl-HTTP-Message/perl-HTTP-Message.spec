@@ -18,10 +18,10 @@
 
 %define cpan_name HTTP-Message
 Name:           perl-HTTP-Message
-Version:        6.36
+Version:        6.37
 Release:        0
-Summary:        HTTP style message (base class)
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        HTTP style message (base class)
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -42,6 +42,7 @@ BuildRequires:  perl(IO::Uncompress::Inflate)
 BuildRequires:  perl(IO::Uncompress::RawInflate)
 BuildRequires:  perl(LWP::MediaTypes) >= 6
 BuildRequires:  perl(Test::More) >= 0.88
+BuildRequires:  perl(Test::Needs)
 BuildRequires:  perl(Try::Tiny)
 BuildRequires:  perl(URI) >= 1.10
 BuildRequires:  perl(URI::URL)
@@ -59,6 +60,8 @@ Requires:       perl(IO::Uncompress::Inflate)
 Requires:       perl(IO::Uncompress::RawInflate)
 Requires:       perl(LWP::MediaTypes) >= 6
 Requires:       perl(URI) >= 1.10
+Recommends:     perl(IO::Compress::Brotli) >= 0.004001
+Recommends:     perl(IO::Uncompress::Brotli) >= 0.004001
 %{perl_requires}
 
 %description
@@ -231,7 +234,7 @@ process its content as a string.
 Apply the given encodings to the content of the message. Returns TRUE if
 successful. The "identity" (non-)encoding is always supported; other
 currently supported encodings, subject to availability of required
-additional modules, are "gzip", "deflate", "x-bzip2" and "base64".
+additional modules, are "gzip", "deflate", "x-bzip2", "base64" and "br".
 
 A successful call to this function will set the 'Content-Encoding' header.
 

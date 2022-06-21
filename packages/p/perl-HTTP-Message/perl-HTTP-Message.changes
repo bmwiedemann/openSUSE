@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 15 03:06:33 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.37
+   see /usr/share/doc/packages/perl-HTTP-Message/Changes
+
+  6.37      2022-06-14 14:08:55Z
+      - Support for Brotli "br" encoding (GH#163) (trizen and Julien Fiegehenn)
+      - Don't test Perl > 5.32 on Windows in GH Actions (GH#174) (Olaf Alders)
+
+-------------------------------------------------------------------
 Thu Jan  6 03:06:20 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.36
