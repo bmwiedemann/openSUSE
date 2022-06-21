@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jun 20 17:26:17 UTC 2022 - cloud-devel@suse.de
+
+- update to version 4.5.0
+  - Remove H402 hacking as it is deprecated
+  - Update master for stable/xena
+  - Clarify that name or ID can be used on TLDs
+  - Updating python testing classifier as per Yoga testing runtime
+  - Add Python3 yoga unit tests
+  - Use py3 as the default runtime for tox
+  - requirements: Drop os-testr
+  - Remove edit-managed from unsupported commands
+  - setup.cfg: Replace dashes with underscores
+  - Add basic osc unit tests
+  - Add profiling support to designateclient
+  - Bump lower-constraint for decorator to 4.2.1
+  - Add Designate hacking checks to the client
+  - Stop to use the __future__ module.
+  - Cap jsonschema 3.2.0 as the minimal version
+
+-------------------------------------------------------------------
 Mon Dec  6 09:33:45 UTC 2021 - cloud-devel@suse.de
 
 - update to version 4.3.0
