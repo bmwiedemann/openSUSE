@@ -29,6 +29,7 @@ BuildRequires:  python3-ddt
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-mock
 BuildRequires:  python3-openstackclient
+BuildRequires:  python3-osc-lib >= 1.10.0
 BuildRequires:  python3-oslo.config >= 5.2.0
 BuildRequires:  python3-oslo.log >= 3.36.0
 BuildRequires:  python3-oslo.serialization >= 2.18.0
@@ -48,6 +49,7 @@ Requires:       python3-Babel >= 2.3.4
 Requires:       python3-PrettyTable >= 0.7.1
 Requires:       python3-debtcollector >= 1.2.0
 Requires:       python3-keystoneclient >= 3.8.0
+Requires:       python3-osc-lib >= 1.10.0
 Requires:       python3-oslo.config >= 5.2.0
 Requires:       python3-oslo.log >= 3.36.0
 Requires:       python3-oslo.serialization >= 2.18.0
