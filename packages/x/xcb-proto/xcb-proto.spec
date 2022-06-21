@@ -16,7 +16,7 @@
 #
 
 
-%define dirsuffix 1.15
+%define dirsuffix 1.15.2
 %if 0%{?suse_version} >= 1500
 %bcond_with python2
 %else
@@ -106,7 +106,7 @@ make %{?_smp_mflags}
 %files devel
 %dir %{_datadir}/xcb
 %doc %{_datadir}/xcb/*
-%{_libdir}/pkgconfig/*.pc
+%{_datadir}/pkgconfig/*.pc
 
 %if %{with python2}
 %files -n python2-xcb-proto-devel
