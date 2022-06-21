@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 20 15:38:03 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove tallow, doesn't work with firewalld using nft anymore
+
+-------------------------------------------------------------------
 Mon Jun 13 14:38:10 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Drop cfssl requirement for ra_verifier, as openssl can now do

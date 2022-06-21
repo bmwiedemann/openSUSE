@@ -109,7 +109,6 @@ Requires:       vim-small
 # people are addicted to sudo
 Requires:       sudo
 Requires:       systemd-presets-branding-MicroOS
-Requires:       tallow
 Requires:       terminfo-base
 Requires:       timezone
 Conflicts:      gettext-runtime-mini
