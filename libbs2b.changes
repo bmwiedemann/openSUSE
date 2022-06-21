@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 15 13:55:43 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Remove bad %defattr - not needed and causes SHLIB non-executable
+  rpmlint error
+- Use %autosetup
+
+-------------------------------------------------------------------
 Tue Apr 19 20:34:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add libbs2b-security.patch to prevent format-security issues
