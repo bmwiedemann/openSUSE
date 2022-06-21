@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Jun 18 17:21:03 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.40
+  * Add config support for log-strip
+  * Add config support for hex-mode
+  * Rename --hex to --hex-mode
+  * Fix completion for -e, --local-echo
+  * Ignore newlines in hex output
+  * Fix newline in warning_printf()
+  * Fix ansi_printf_raw() in no color mode
+  * Enter non-interactive mode when piping to tio
+  * Also strip backspace from log
+  * Socket code cleanup
+  * Cleanup man page
+  * Rename --log-filename to --log-file
+  * Allow strip escape sequence characters from log file
+- Update to version 1.39
+  * Improve key command response for local echo and timestamp
+  * Fix invalid hex character error message
+  * Make sure only matched config section is parsed
+  * Add support for "disable" keyword in config file
+  * Unify error message formating
+  * Cleanup list devices code
+  * Fix command-line tty-device|config parsing
+  * Update bash completion
+  * Add support for IPv4 and IPv6 network sockets
+  * Fix tio deleting unix socket file
+  * Rework color option
+  * Remove print of hex mode status at startup
+  * Remove newline option in hex mode
+  * Fix configfile memory leaks
+  * Remove command-line option inconsistencies
+  * Replace '1' with 'enable' in config files
+  * Convert errors to warnings
+  * Extended hexadecimal mode.
+  * Added option -x, --hex to start in hexadecimal mode.
+
+-------------------------------------------------------------------
 Thu Jun  2 09:05:15 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.38
