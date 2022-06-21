@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 20 06:36:18 UTC 2022 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 3.6.6:
+  * TLS: RSA decryption fails with Extended Master Secret and renegotiation.
+  * "dfilter" file on Windows adds carriage returns, and requires line feeds.
+  * "Browse" button in Prefs/Name Resolution/MaxMind crashes Wireshark on macOS.
+  * TFTP: some packets are not recognized as TFTP packets with 3.6.5.
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-3.6.6.html
+
+-------------------------------------------------------------------
 Thu May  5 07:20:21 UTC 2022 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 3.6.5 and 3.6.4: 
