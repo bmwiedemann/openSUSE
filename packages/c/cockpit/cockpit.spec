@@ -62,10 +62,10 @@ Source97:       node_modules.spec.inc
 Patch1:         0001-selinux-allow-login-to-read-motd-file.patch
 Patch2:         hide-docs.patch
 Patch3:         suse-microos-branding.patch
+Patch4:         css-overrides.patch
 # SLE Micro specific patches
 Patch100:       remove-pwscore.patch
 Patch101:       hide-pcp.patch
-Patch102:       css-overrides.patch
 
 # in RHEL 8 the source package is duplicated: cockpit (building basic packages like cockpit-{bridge,system})
 # and cockpit-appstream (building optional packages like cockpit-{pcp})
@@ -178,7 +178,16 @@ Requires: subscription-manager-cockpit
 %endif
 
 %prep
-%autosetup -p1 -n cockpit-%{version}
+%setup -q -n cockpit-%{version}
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+
+%if 0%{?sle_version}
+%patch100 -p1
+%patch101 -p1
+%endif
 
 cp %SOURCE1 tools/cockpit.pam
 #

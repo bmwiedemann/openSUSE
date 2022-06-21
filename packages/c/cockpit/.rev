@@ -183,4 +183,13 @@
   hide-pcp.patch remove-pwscore.patch: refreshed</comment>
     <requestid>983416</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>576c67620bcd793a5e864e9044118214</srcmd5>
+    <version>271</version>
+    <time>1655824513</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-arrange patches and apply them manually again.
+  Some were accidentally added and should be sle only</comment>
+    <requestid>983884</requestid>
+  </revision>
 </revisionlist>
