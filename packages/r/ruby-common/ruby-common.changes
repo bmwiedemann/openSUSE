@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 13 11:43:30 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- make %gem_unpack and %gem_build work when the default system ruby
+  is not installed:
+
+  both macros now use the %{gem_binary} define and we have a common
+  macro %{set_gem_binary} to set this variable. the set macro will
+  use the ruby-find-versioned to find a versioned version of gem.
+
+-------------------------------------------------------------------
 Wed Feb 23 22:30:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - avoid bashism in gem_build_cleanup 

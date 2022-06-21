@@ -33,6 +33,17 @@
 %rb_vendorlib     %{rb_vendorlibdir}
 %rb_vendorarch    %{rb_vendorarchdir}
 
+%set_gem_binary() \
+  %if "%{?gem_binary}" == "" \
+  %global gem_binary %(/usr/bin/ruby-find-versioned gem|head -n1) \
+  %endif \
+  %if "%{?gem_binary}" == "" \
+  echo "no gem binary found. Exiting." \
+  exit 1 \
+  %endif \
+%{nil}
+
+
 # %%gem_unpack macro unpacks a gem file into %%{_builddir}
 #
 # example:
@@ -42,17 +53,19 @@
 #
 %gem_unpack(s:) \
   source=%{-s:%{-s*}}%{!-s:%{SOURCE0}} \
-  %{?gem_binary}%{!?gem_binary:/usr/bin/gem} unpack --verbose $source \
+  %{set_gem_binary} \
+  %{gem_binary} unpack --verbose $source \
   cd %{mod_name}-%{version} \
   chmod og-w -R . \
-  %{?gem_binary}%{!?gem_binary:/usr/bin/gem} specification --ruby $source > %{mod_name}-%{version}.gemspec \
+  %{gem_binary} specification --ruby $source > %{mod_name}-%{version}.gemspec \
 %{nil}
 
 # %%gem_build macro ...
 #
 %gem_build() \
 GEMSPEC_SOURCE_DIR=`find . -maxdepth 2 -type f -name %{mod_name}-%{version}.gemspec | xargs dirname` \
-cd $GEMSPEC_SOURCE_DIR && %{?gem_binary}%{!?gem_binary:/usr/bin/gem} build --verbose %{mod_name}-%{version}.gemspec \
+%{set_gem_binary} \
+cd $GEMSPEC_SOURCE_DIR && %{gem_binary} build --verbose %{mod_name}-%{version}.gemspec \
 %{nil}
 
 # %%gem_install macro ...

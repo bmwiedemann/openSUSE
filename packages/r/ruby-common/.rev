@@ -204,4 +204,12 @@ For staging:n</comment>
     <comment></comment>
     <requestid>957504</requestid>
   </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>e6a0ef1b8a1764b7ead6f9bb1530d7bf</srcmd5>
+    <version>2.6</version>
+    <time>1655824523</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>983973</requestid>
+  </revision>
 </revisionlist>
