@@ -46,7 +46,7 @@ Source2:        macros.qt5
 Source3:        baselibs.conf
 Source4:        qtlogging.ini
 Source99:       libqt5-qtbase-rpmlintrc
-# patches 0-1000 are openSUSE and/or non-upstream(able) patches #
+# patches 0-999 are openSUSE and/or non-upstream(able) patches #
 Patch3:         0001-Revert-QMenu-hide-when-a-QWidgetAction-fires-the-tri.patch
 # Proposed: https://bugreports.qt.io/browse/QTBUG-88491
 Patch4:         0001-Avoid-SIGABRT-on-platform-plugin-initialization-fail.patch
@@ -64,6 +64,7 @@ Patch24:        fix-fixqt4headers.patch
 # PATCH-FIX-OPENSUSE -- Mitigate -D_FORTIFY_SOURCE=3 issue starting with GCC 12 (https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105078)
 Patch25:        mitigate-FORTIFY_SOURCE-3.patch
 # patches 1000-2000 and above from upstream 5.15 branch #
+Patch1000:      0001-H2-remove-a-rather-useless-limit-on-the-number-of-st.patch
 # patches 2000-3000 and above from upstream qt6/dev branch #
 # Not accepted yet, https://codereview.qt-project.org/c/qt/qtbase/+/255384
 Patch2001:      0002-Synthesize-Enter-LeaveEvent-for-accepted-QTabletEven.patch
