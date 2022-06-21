@@ -184,4 +184,16 @@
     CHANGELOG.md file provided with this package (forwarded request 979846 from glaubitz)</comment>
     <requestid>980113</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b178ce993f9d53f15f6c385558a1a985</srcmd5>
+    <version>2.7.0</version>
+    <time>1655821986</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.7.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 983630 from glaubitz)</comment>
+    <requestid>984165</requestid>
+  </revision>
 </revisionlist>
