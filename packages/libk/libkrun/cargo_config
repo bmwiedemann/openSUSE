@@ -1,10 +1,5 @@
 [source.crates-io]
 replace-with = "vendored-sources"
 
-[source."https://github.com/slp/kvm-ioctls"]
-git = "https://github.com/slp/kvm-ioctls"
-branch = "amdsev"
-replace-with = "vendored-sources"
-
 [source.vendored-sources]
 directory = "vendor"

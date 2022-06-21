@@ -1,0 +1,53 @@
+diff -Nru libkrun/Makefile libkrun_nosoname/Makefile
+--- libkrun/Makefile	2022-06-17 16:23:14.776403669 +0200
++++ libkrun_nosoname/Makefile	2022-06-17 19:08:28.469071074 +0200
+@@ -11,13 +11,9 @@
+ 
+ OS = $(shell uname -s)
+ 
+-KRUN_BINARY_Linux = libkrun$(VARIANT).so.$(FULL_VERSION)
+-KRUN_SONAME_Linux = libkrun$(VARIANT).so.$(ABI_VERSION)
+-KRUN_BASE_Linux = libkrun$(VARIANT).so
++KRUN_BINARY_Linux = libkrun$(VARIANT).so
+ 
+ KRUN_BINARY_Darwin = libkrun.$(FULL_VERSION).dylib
+-KRUN_SONAME_Darwin = libkrun.$(ABI_VERSION).dylib
+-KRUN_BASE_Darwin = libkrun.dylib
+ 
+ LIBRARY_RELEASE_Linux = target/release/$(KRUN_BINARY_Linux)
+ LIBRARY_DEBUG_Linux = target/debug/$(KRUN_BINARY_Linux)
+@@ -43,23 +39,16 @@
+ $(LIBRARY_RELEASE_$(OS)): $(INIT_BINARY)
+ 	cargo build --release $(FEATURE_FLAGS)
+ ifeq ($(SEV),1)
+-	mv target/release/libkrun.so target/release/$(KRUN_BASE_$(OS))
++	mv target/release/libkrun.so $(LIBRARY_RELEASE_$(OS))
+ endif
+ ifeq ($(OS),Linux)
+-	patchelf --set-soname $(KRUN_SONAME_$(OS)) --output $(LIBRARY_RELEASE_$(OS)) target/release/$(KRUN_BASE_$(OS))
+-else
+-	cp target/release/$(KRUN_BASE_$(OS)) $(LIBRARY_RELEASE_$(OS))
++	strip $(LIBRARY_RELEASE_$(OS))
+ endif
+ 
+ $(LIBRARY_DEBUG_$(OS)): $(INIT_BINARY)
+ 	cargo build $(FEATURE_FLAGS)
+ ifeq ($(SEV),1)
+-	mv target/debug/libkrun.so target/debug/$(KRUN_BASE_$(OS))
+-endif
+-ifeq ($(OS),Linux)
+-	patchelf --set-soname $(KRUN_SONAME_$(OS)) --output $(LIBRARY_DEBUG_$(OS)) target/debug/$(KRUN_BASE_$(OS))
+-else
+-	cp target/debug/$(KRUN_BASE_$(OS)) $(LIBRARY_DEBUG_$(OS))
++	mv target/debug/libkrun.so $(LIBRARY_DEBUG_$(OS))
+ endif
+ 
+ install: $(LIBRARY_RELEASE_$(OS))
+@@ -67,7 +56,6 @@
+ 	install -d $(DESTDIR)$(PREFIX)/include
+ 	install -m 644 $(LIBRARY_HEADER) $(DESTDIR)$(PREFIX)/include
+ 	install -m 755 $(LIBRARY_RELEASE_$(OS)) $(DESTDIR)$(PREFIX)/$(LIBDIR_$(OS))/
+-	cd $(DESTDIR)$(PREFIX)/$(LIBDIR_$(OS))/ ; ln -s $(KRUN_BINARY_$(OS)) $(KRUN_SONAME_$(OS)) ; ln -s $(KRUN_SONAME_$(OS)) $(KRUN_BASE_$(OS))
+ 
+ clean:
+ 	rm -f $(INIT_BINARY)

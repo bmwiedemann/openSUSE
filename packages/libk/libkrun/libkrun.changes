@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Jun 17 14:23:15 UTC 2022 - dfaggioli@suse.com
+
+- Update to version 1.1.0:
+  * vsock: restore lost port mapping feature
+  * vsock: translate errno to macOS to Linux
+  * vsock: use MSG_NOSIGNAL to avoid SIGPIPE
+  * vsock: update to nix 0.24.1
+  * vsock: make accept() and explicit operation
+- Update to version to v1.0.0
+  * Update README.md
+  * CI: run clippy tests with amd-sev feature too
+  * Implement virtio-rng device
+  * vmm: disable test_get_supported_cpuid
+  * sev: use a different name when building with SEV
+  * sev: switch to upstream kvm-bindings/ioctls
+  * Makefile: add versioning to the output library
+  * arch/aarch64: remove dependency on device_tree
+  * libkrun: remove unneeded "cc" dependency
+- Update to version to 0.2.0
+  * Replace old vsock with TSIv2's vsock
+  * macos: operate directly on kqueue in epoll
+  * utils: Allow Epoll to be cloned
+  * Replace "logger" crate with env_logger+log
+- Patches added:
+  * not-set-soname-as-it-is-plugin.patch
+
+-------------------------------------------------------------------
 Fri May 27 12:23:06 UTC 2022 - dfaggioli@suse.com
 
 - Automatic update of vendored dependencies

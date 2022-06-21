@@ -18,7 +18,7 @@
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           libkrun
-Version:        0.1.8
+Version:        1.1.0
 Release:        0
 Summary:        A dynamic library providing KVM-based process isolation capabilities
 License:        Apache-2.0
@@ -26,11 +26,15 @@ URL:            https://github.com/containers/libkrun
 Source0:        libkrun-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Source2:        cargo_config
+# libkrunfw is a plugin for us, more than a full-fledged library,
+# so let's avoid setting up a SONAME etc (which upstream is now doing).
+Patch1:         not-set-soname-as-it-is-plugin.patch
 ExclusiveArch:  x86_64 aarch64
 BuildRequires:  cargo >= 1.43.0
 BuildRequires:  gcc
 BuildRequires:  glibc-static
 BuildRequires:  libkrunfw >= 0.6
+BuildRequires:  libopenssl-devel
 BuildRequires:  rust
 Requires:       libkrunfw >= 0.6
 %ifarch aarch64
@@ -46,21 +50,31 @@ It integrates a VMM (Virtual Machine Monitor, the userspace side of an Hyperviso
 
 %prep
 %setup -qa1
+%patch1 -p1
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
 %build
 export RUSTFLAGS=%{rustflags}
 %make_build
+%ifarch x86_64
+%make_build SEV=1
+%endif
 
 %install
 export RUSTFLAGS=%{rustflags}
 %make_install PREFIX=%{_prefix}
+%ifarch x86_64
+%make_install SEV=1 PREFIX=%{_prefix}
+%endif
 
 %files
 %license LICENSE
 %doc README.md
 %{_libdir}/libkrun.so
+%ifarch x86_64
+%{_libdir}/libkrun-sev.so
+%endif
 %{_includedir}/libkrun.h
 
 %changelog
