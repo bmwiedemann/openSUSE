@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-cairo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           ocaml-cairo
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 Summary:        Binding to Cairo, a 2D Vector Graphics Library.  
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/cairo2
-Source:         %{name}-%{version}.tar.xz
+Source:         %name-%version.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210121
+BuildRequires:  ocaml-dune >= 2.7
+BuildRequires:  ocaml-rpm-macros >= 20220409
 BuildRequires:  pkg-config
 BuildRequires:  ocamlfind(bigarray)
 BuildRequires:  ocamlfind(dune-configurator)
@@ -42,13 +42,13 @@ BuildRequires:  pkgconfig(gtk+-2.0)
 This is an OCaml binding for the Cairo library, a 2D graphics library with support for multiple output devices.
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Requires:       %name = %version
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
 %autosetup -p1
@@ -66,8 +66,8 @@ dune_release_pkgs='cairo2,cairo2-pango,cairo2-gtk'
 dune_test_tolerate_fail='dune_test_tolerate_fail issue#19'
 %ocaml_dune_test
 
-%files -f %{name}.files
+%files -f %name.files
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 
 %changelog
