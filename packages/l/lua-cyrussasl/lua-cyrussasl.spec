@@ -40,26 +40,22 @@ Name:           %{flavor}-%{mod_name}
 Provides Lua bindings for Cyrus SASL authentication library.
 
 %prep
-%autosetup -p1 -n lua-%{mod_name}-%{version}
+%autosetup -n lua-%{mod_name}-%{version}
 
 %build
-make \
-    CFLAGS="%{optflags} -fPIC -I%{lua_incdir}" \
-    LDFLAGS="-shared -fpic -lsasl2" \
-	LUAPATH=%{lua_noarchdir}/ \
-	CPATH=%{lua_archdir}/
+export cmd='cc %{optflags} -fpic -I%{lua_incdir} -fno-common'
+$cmd -DVERSION="\"1.1\"" -c cyrussasl.c -o cyrussasl.o
+$cmd -DVERSION="\"1.1\"" -c luaabstract.c -o luaabstract.o
+$cmd -DVERSION="\"1.1\"" -c context.c -o context.o
+cc -Wl,--no-as-needed -shared -fpic -lsasl2 -o cyrussasl.so cyrussasl.o luaabstract.o context.o
 
 %install
 mkdir -p %{buildroot}%{lua_archdir}
-make install \
-    CFLAGS="%{optflags}" \
-    LDFLAGS="-O -shared -fpic -lsasl2" \
-    LUAPATH=%{buildroot}%{lua_noarchdir}/ \
-    CPATH=%{buildroot}%{lua_archdir}/
+cp cyrussasl.so %{buildroot}%{lua_archdir}
 
 %files
 %license LICENSE
 %doc README
-%{lua_archdir}/%{mod_name}.so*
+%{lua_archdir}/%{mod_name}.so
 
 %changelog

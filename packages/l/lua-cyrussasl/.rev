@@ -7,4 +7,12 @@
     <comment>Initial packaging effort (requested by bsc#1181027).</comment>
     <requestid>899074</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>95e265fbce5b4206c163a6ce32d8e4cd</srcmd5>
+    <version>1.1.0</version>
+    <time>1655821973</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984135</requestid>
+  </revision>
 </revisionlist>
