@@ -18,7 +18,7 @@
 
 %define cpan_name WWW-Mechanize
 Name:           perl-WWW-Mechanize
-Version:        2.07
+Version:        2.09
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Handy web browsing in a Perl object
@@ -28,7 +28,6 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(CGI) >= 4.32
 BuildRequires:  perl(HTML::Form) >= 1.00
 BuildRequires:  perl(HTML::HeadParser)
 BuildRequires:  perl(HTML::TokeParser)
@@ -38,7 +37,6 @@ BuildRequires:  perl(HTTP::Daemon) >= 6.12
 BuildRequires:  perl(HTTP::Request) >= 1.30
 BuildRequires:  perl(HTTP::Request::Common)
 BuildRequires:  perl(HTTP::Response)
-BuildRequires:  perl(HTTP::Server::Simple::CGI)
 BuildRequires:  perl(LWP)
 BuildRequires:  perl(LWP::Simple)
 BuildRequires:  perl(LWP::UserAgent) >= 6.45

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun 15 03:10:13 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.09
+   see /usr/share/doc/packages/perl-WWW-Mechanize/Changes
+
+  2.09      2022-06-14 14:20:04Z
+      [DOCUMENTATION]
+      - Various POD fixes (Julien Fiegehenn)
+
+  2.08      2022-05-30 17:32:33Z
+      [TESTS]
+      - Drop CGI and HTTP::Server::Simple::CGI test dependencies (GH#327) (Graham
+        Knop)
+
+-------------------------------------------------------------------
 Sat Apr 30 03:08:47 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.07
