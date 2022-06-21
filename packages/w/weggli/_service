@@ -1,7 +1,2 @@
 <services>
-  <service name="cargo_vendor" mode="disabled">
-     <param name="srcdir">weggli-0.2.3</param>
-     <param name="compression">xz</param>
-     <param name="update">true</param>
-  </service>
-</services>
+  </services>

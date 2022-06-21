@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           weggli
@@ -58,6 +59,7 @@ Greedy: weggli's pattern matching is designed to find as many (useful) matches
 as possible for a specific query. While this increases the risk of false
 positives it simplifies query creation. For example, the query $x = 10; will
 match both assignment expressions (foo = 10;) and declarations (int bar = 10;).
+
 %prep
 %autosetup -p1 -a1
 
@@ -81,4 +83,3 @@ rm -f %{buildroot}%{_prefix}/.crates*
 %{_bindir}/weggli
 
 %changelog
-
