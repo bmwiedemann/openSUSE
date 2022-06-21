@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 21 09:46:29 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Backport https://github.com/zlib-ng/zlib-ng/pull/1297 to fix
+  boo#1200578:
+  * 1297.patch
+
+-------------------------------------------------------------------
 Mon May  9 04:48:04 UTC 2022 - Lubos Lunak <l.lunak@centrum.cz>
 
 - Add 'Provides: zlib-devel' to the compat package
