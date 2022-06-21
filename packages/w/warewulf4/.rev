@@ -65,4 +65,16 @@
 </comment>
     <requestid>970201</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>398adf91e2e60e465c5466a1a35ad03f</srcmd5>
+    <version>4.3.0</version>
+    <time>1655821928</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 4.3.0
+  * fixed bug which for single node profile set
+- update to 4.3.0rc6 what should the final release candidate
+  * using compressed images again, as PXE else would fail
+</comment>
+    <requestid>983991</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 ExclusiveArch:  x86_64 aarch64
 
 Name:           warewulf4
-Version:        4.3.0rc2
+Version:        4.3.0
 Release:        0
 Summary:        A suite of tools for clustering
 License:        BSD-3-Clause
@@ -28,8 +28,6 @@ URL:            https://warewulf.org
 Source0:        https://github.com/hpcng/warewulf/archive/v%{version}.tar.gz#/warewulf4-v%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source3:        warewulf4-rpmlintrc
-
-#Patch1:         overlay-host.patch
 
 # no firewalld in sle12
 %if 0%{?sle_version} >= 150000 || 0%{?suse_version} > 1500
@@ -117,6 +115,9 @@ export NO_BRP_STALE_LINK_ERROR=yes
 %{makeinstall}
 
 # cleanup
+mv %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/etc/dhcp/dhcpd.conf.ww \
+  %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/etc/dhcpd.conf.ww
+rmdir %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/etc/dhcp
 mkdir -p %{buildroot}%{_sbindir}/
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcwarewulfd
 mkdir -p %{buildroot}%{_datadir}/bash-completion/completions
@@ -194,7 +195,7 @@ EOF
 %exclude  %{_localstatedir}/lib/warewulf/overlays/generic/etc/munge
 
 %files ipxe
-/srv/tftpboot/warewulf
+#/srv/tftpboot/warewulf
 %{_datadir}/warewulf
 
 %files slurm

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 20 12:57:09 UTC 2022 - Christian Goll <cgoll@suse.com>
+
+- updated to 4.3.0
+  * fixed bug which for single node profile set
+
+-------------------------------------------------------------------
+Fri Jun 10 08:43:39 UTC 2022 - Christian Goll <cgoll@suse.com>
+
+- update to 4.3.0rc6 what should the final release candidate
+  * using compressed images again, as PXE else would fail
+
+-------------------------------------------------------------------
 Thu Apr 14 13:18:23 UTC 2022 - Christian Goll <cgoll@suse.com>
 
 - update to v4.3.0rc2 with following major changes:
