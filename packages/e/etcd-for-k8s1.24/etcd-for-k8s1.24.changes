@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Mon Jun 20 15:05:49 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Remove duplicate files go.mod, go.sum present in etcdctl source
+
+-------------------------------------------------------------------
+Mon May  9 05:57:21 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Initial package version 3.5.3:
+  * Version specified in kubernetes-1.24 build/dependencies.yaml
