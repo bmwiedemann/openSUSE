@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 20 08:14:49 UTC 2022 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 1.2.7.1:
+  updates of various device-specific profiles.  For details, see
+   https://www.alsa-project.org/wiki/Changes_v1.2.7_v1.2.7.1#alsa-ucm-conf
+- Drop obsoleted patches:  
+  0001-Steinberg-UR44-fix-the-Line2-channel-mapping.patch
+  0002-Steinberg-UR44-fix-the-Line2-channel-mapping-2nd.patch
+  0003-Steinberg-UR44-fix-the-direction-for-steinberg_ur44_.patch
+
+-------------------------------------------------------------------
 Mon Jun  6 10:58:35 UTC 2022 - Takashi Iwai <tiwai@suse.com>
 
 - Backport upstream fixes for Steinberg UR44:

@@ -188,4 +188,12 @@ Now required by the upcoming alsa-1.2.1 release</comment>
   0003-Steinberg-UR44-fix-the-direction-for-steinberg_ur44_.patch</comment>
     <requestid>980995</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>36095da6407c95680c0dfc87117842de</srcmd5>
+    <version>1.2.7.1</version>
+    <time>1655824528</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984000</requestid>
+  </revision>
 </revisionlist>

@@ -17,16 +17,13 @@
 
 
 Name:           alsa-ucm-conf
-Version:        1.2.7
+Version:        1.2.7.1
 Release:        0
 Summary:        ALSA UCM Profiles
 License:        BSD-3-Clause
 URL:            https://www.alsa-project.org
 Source:         %{url}/files/pub/lib/alsa-ucm-conf-%{version}.tar.bz2
 Source1:        %{url}/files/pub/lib/alsa-ucm-conf-%{version}.tar.bz2.sig
-Patch1:         0001-Steinberg-UR44-fix-the-Line2-channel-mapping.patch
-Patch2:         0002-Steinberg-UR44-fix-the-Line2-channel-mapping-2nd.patch
-Patch3:         0003-Steinberg-UR44-fix-the-direction-for-steinberg_ur44_.patch
 BuildRequires:  fdupes
 BuildArch:      noarch
 Requires:       libasound2 >= 1.2.6.1
