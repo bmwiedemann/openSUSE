@@ -11156,7 +11156,6 @@ unsorted:
   - libgeotiff5 
   - libgepub-devel 
   - libgerbv1 
-  - libges-1_0-0 
   - libgexiv2-2-32bit: [x86_64] 
   - libgexiv2-devel 
   - libgf2x3 
@@ -11354,7 +11353,8 @@ unsorted:
   - libgstaudio-1_0-0-32bit: [x86_64] 
   - libgstbadaudio-1_0-0-32bit: [x86_64] 
   - libgstbasecamerabinsrc-1_0-0-32bit: [x86_64] 
-  - libgstclapper-1 
+  - libgstclapper-1_0-0 
+  - libgstclapperglbaseimporter0 
   - libgstcodecparsers-1_0-0-32bit: [x86_64] 
   - libgstcodecs-1_0-0-32bit: [x86_64] 
   - libgstfft-1_0-0-32bit: [x86_64] 
@@ -11380,7 +11380,6 @@ unsorted:
   - libgsttranscoder-1_0-0 
   - libgsturidownloader-1_0-0-32bit: [x86_64] 
   - libgstva-1_0-0-32bit: [x86_64] 
-  - libgstvalidate-1_0-0 
   - libgstvideo-1_0-0-32bit: [x86_64] 
   - libgstvulkan-1_0-0-32bit: [x86_64] 
   - libgstwayland-1_0-0-32bit: [x86_64] 
@@ -13775,10 +13774,7 @@ unsorted:
   - librvngabw-devel 
   - librvngabw-devel-doc 
   - librxtx2 
-  - librygel-db-2_6-2 
-  - librygel-renderer-2_6-2 
   - librygel-renderer-gst-2_6-2 
-  - librygel-ruih-2_0-1 
   - libryml0_4_1 
   - libs3-4 
   - libs3-devel 
@@ -32473,11 +32469,8 @@ unsorted:
   - rxtx-java 
   - rxtx-java-javadoc 
   - rxvt-unicode 
-  - rygel 
   - rygel-devel 
-  - rygel-lang 
   - rygel-plugin-gstreamer-renderer 
-  - rygel-plugin-tracker 
   - rypper 
   - s-tui 
   - s3backer 
@@ -42546,7 +42539,6 @@ unsorted:
   - typelib-1_0-FwupdPlugin-1_0 
   - typelib-1_0-GCab-1_0 
   - typelib-1_0-GData-0_0 
-  - typelib-1_0-GES-1_0 
   - typelib-1_0-GExiv2-0_10 
   - typelib-1_0-GFBGraph-0_2 
   - typelib-1_0-GMime-3_0 
@@ -44083,6 +44075,7 @@ unsorted:
   - znc-tcl 
   - zonefs-tools 
   - zopfli 
+  - zoxide 
   - zp 
   - zpaq 
   - zram-generator 
