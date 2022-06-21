@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 20 10:31:02 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Cleanup spec file:
+  -- Removed %{_distconfdir}/logrotate.d from dirlist. It will be
+     handled by package filelist now.
+  -- %{_distconfdir}/logrotate.d/* can be changed by vendor only.
+     So it will be replaced by an RPM update.
+
+-------------------------------------------------------------------
 Wed Jun 15 10:57:00 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Moved logrotate files from user specif directory /etc/logrotate.d

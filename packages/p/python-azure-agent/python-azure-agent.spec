@@ -206,9 +206,8 @@ cp -r tests %{buildroot}/%{python_sitelib}/azurelinuxagent
 %attr(0755,root,root) %{_sbindir}/waagent
 %attr(0755,root,root) %{_sbindir}/waagent2.0
 %if 0%{?suse_version} > 1500
-%dir %{_distconfdir}/logrotate.d
-%config(noreplace) %{_distconfdir}/logrotate.d/waagent
-%config(noreplace) %{_distconfdir}/logrotate.d/waagent-extn
+%config %{_distconfdir}/logrotate.d/waagent
+%config %{_distconfdir}/logrotate.d/waagent-extn
 %else
 %config(noreplace) %{_sysconfdir}/logrotate.d/waagent
 %config(noreplace) %{_sysconfdir}/logrotate.d/waagent-extn
