@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 21 08:30:07 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Do not require python-mock for build
+
+-------------------------------------------------------------------
 Sun May 15 03:10:08 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Add pr_34.patch for DRF 3.13 compatibility

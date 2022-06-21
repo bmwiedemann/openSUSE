@@ -41,9 +41,8 @@ BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module dateutils}
 BuildRequires:  %{python_module django-extensions}
 BuildRequires:  %{python_module djangorestframework}
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module pytest-django}
+BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages
@@ -58,6 +57,7 @@ sed -i 's/from collections import Mapping/from collections.abc import Mapping/' 
 
 sed -i '/argparse/d' setup.* requirements*
 sed -i '/\.admin/d' tests/settings.py
+sed -i 's/^import mock/from unittest import mock/' drf_braces/tests/test_mixins.py drf_braces/tests/*/test_*.py
 
 %build
 %python_build
