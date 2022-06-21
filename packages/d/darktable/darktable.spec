@@ -273,7 +273,7 @@ rm -rf src/external/lua/
 %build
 %global cmake_options \\\
    -DCMAKE_INSTALL_LIBDIR=%{_lib} \\\
-   -DCMAKE_SKIP_RPATH:BOOL=OFF \\\
+   -DCMAKE_SKIP_RPATH:BOOL=OFF -DCMAKE_SKIP_INSTALL_RPATH:BOOL=OFF \\\
    -DCMAKE_INSTALL_DATAROOTDIR="share" \\\
    -DCMAKE_INSTALL_LIBEXECDIR="%{_libexecdir}" \\\
    -DCMAKE_INSTALL_DOCDIR="%{_defaultdocdir}/%{pkg_name}" \\\
