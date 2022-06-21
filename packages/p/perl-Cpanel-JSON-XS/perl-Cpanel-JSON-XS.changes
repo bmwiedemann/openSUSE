@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 17 03:06:07 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.30
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  4.30 2022-06-14 (rurban)
+          - Fix perl 5.37 utf8n_to_uvuni deprecation. GH #196
+
+-------------------------------------------------------------------
 Sat May 28 03:06:08 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.29
