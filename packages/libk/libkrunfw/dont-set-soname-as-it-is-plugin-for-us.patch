@@ -1,0 +1,38 @@
+diff -Nru libkrunfw-3.0.0_orig/Makefile libkrunfw-3.0.0/Makefile
+--- libkrunfw-3.0.0_orig/Makefile	2022-06-17 12:34:59.000000000 +0200
++++ libkrunfw-3.0.0/Makefile	2022-06-17 17:30:58.478246182 +0200
+@@ -22,14 +22,9 @@
+ KERNEL_BINARY_x86_64 = $(KERNEL_SOURCES)/vmlinux
+ KERNEL_BINARY_aarch64 = $(KERNEL_SOURCES)/arch/arm64/boot/Image
+ 
+-KRUNFW_BINARY_Linux = libkrunfw$(VARIANT).so.$(FULL_VERSION)
+-KRUNFW_SONAME_Linux = libkrunfw$(VARIANT).so.$(ABI_VERSION)
+-KRUNFW_BASE_Linux = libkrunfw$(VARIANT).so
+-SONAME_Linux = -Wl,-soname,$(KRUNFW_SONAME_Linux)
+-
+-KRUNFW_BINARY_Darwin = libkrunfw.$(FULL_VERSION).dylib
+-KRUNFW_SONAME_Darwin = libkrunfw.$(ABI_VERSION).dylib
+-KRUNFW_BASE_Darwin = libkrunfw.dylib
++KRUNFW_BINARY_Linux = libkrunfw$(VARIANT).so
++
++KRUNFW_BINARY_Darwin = libkrunfw.dylib
+ SONAME_Darwin =
+ 
+ LIBDIR_Linux = lib64
+@@ -78,7 +73,7 @@
+ endif
+ 
+ $(KRUNFW_BINARY_$(OS)): $(KERNEL_C_BUNDLE) $(QBOOT_C_BUNDLE) $(INITRD_C_BUNDLE)
+-	gcc -fPIC -DABI_VERSION=$(ABI_VERSION) -shared $(SONAME_$(OS)) -o $@ $(KERNEL_C_BUNDLE) $(QBOOT_C_BUNDLE) $(INITRD_C_BUNDLE)
++	gcc -fPIC -DABI_VERSION=$(ABI_VERSION) -shared  -o $@ $(KERNEL_C_BUNDLE) $(QBOOT_C_BUNDLE) $(INITRD_C_BUNDLE)
+ ifeq ($(OS),Linux)
+ 	strip $(KRUNFW_BINARY_$(OS))
+ endif
+@@ -86,7 +81,6 @@
+ install: $(KRUNFW_BINARY_$(OS))
+ 	install -d $(DESTDIR)$(PREFIX)/$(LIBDIR_$(OS))/
+ 	install -m 755 $(KRUNFW_BINARY_$(OS)) $(DESTDIR)$(PREFIX)/$(LIBDIR_$(OS))/
+-	cd $(DESTDIR)$(PREFIX)/$(LIBDIR_$(OS))/ ; ln -s $(KRUNFW_BINARY_$(OS)) $(KRUNFW_SONAME_$(OS)) ; ln -s $(KRUNFW_SONAME_$(OS)) $(KRUNFW_BASE_$(OS))
+ 
+ clean:
+ 	rm -fr $(KERNEL_SOURCES) $(KERNEL_C_BUNDLE) $(QBOOT_C_BUNDLE) $(INITRD_C_BUNDLE) $(KRUNFW_BINARY_$(OS))

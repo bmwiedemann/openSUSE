@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jun 17 14:30:49 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to latest upstream version, v.3.0.0
+  * Update to latest LTS: 5.15.47
+  * Update TSI patch
+- Update to version v2.0.0
+  * Enable virtio-rng device
+- Update to version v2.1.2
+  * Incorporate AMD SEV support in the main branch
+  * Update to the latest LTS: 5.15.45
+- Update to version v2.1.0
+  * Makefile: add versioning to the output library by @slp in #12
+- Update to version v2.0.0
+  * Update to the latest LTS: 5.15.44
+- Update to version v.2.0.0
+  * Update to TSIv2 and 5.15.43
+  * Adopt SemVer and make the major version follow the internal ABI version,
+    as it's the one signalling breaking changes.
+- Patches added:
+  * dont-set-soname-as-it-is-plugin-for-us.patch
+- Patches dropped:
+  * fix-build-with-gcc12.patch
+
+-------------------------------------------------------------------
 Mon May 16 17:08:46 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - Fix the build with gcc12
