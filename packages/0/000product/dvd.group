@@ -1920,6 +1920,7 @@
     <package name="libgegl-0_4-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgeocode-glib0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgepub-0_6-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="libges-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgexiv2-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgfbgraph-0_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgfortran5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2026,6 +2027,7 @@
     <package name="libgsttag-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgsturidownloader-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libgstva-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libgstvalidate-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgstvideo-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgstvulkan-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libgstwayland-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -2547,8 +2549,11 @@
     <package name="librsync2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="librubberband2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libruby3_1-3_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="librygel-core-2_6-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="librygel-server-2_6-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="librygel-core-2_6-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="librygel-db-2_6-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="librygel-renderer-2_6-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="librygel-ruih-2_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="librygel-server-2_6-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsamba-policy0-python3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
     <package name="libsamplerate0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsane1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4280,6 +4285,9 @@
     <package name="ruby3.1-rubygem-zeitwerk" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="rubygem-passenger" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="rubygem-passenger-apache2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="rygel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="rygel-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="rygel-plugin-tracker" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="rzip" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="rzsz" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="sac" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -4571,6 +4579,7 @@
     <package name="typelib-1_0-EvinceDocument-3_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-EvinceView-3_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Fwupd-2_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="typelib-1_0-GES-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-GMenu-3_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-GVnc-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="typelib-1_0-GWeather-4_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
