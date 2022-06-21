@@ -113,8 +113,14 @@ export CFLAGS="%{optflags} -fPIE"
 %install
 %make_install
 ln -sf fetchmail.1.gz %{buildroot}%{_mandir}/man1/fetchmailconf.1.gz
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_sysconfdir}
+mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
+cp fetchmail.logrotate %{buildroot}%{_distconfdir}/logrotate.d/fetchmail
+%else
 mkdir -p %{buildroot}%{_sysconfdir}/logrotate.d
 cp fetchmail.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/fetchmail
+%endif
 mkdir -p %{buildroot}/sbin
 mkdir -p %{buildroot}%{_unitdir}
 mkdir -p %{buildroot}%{_tmpfilesdir}
@@ -163,7 +169,11 @@ rm -r contrib/gai*
 %ghost %attr(0600, fetchmail, root) %{_localstatedir}/log/fetchmail
 %{_mandir}/man1/fetchmail.1%{?ext_man}
 %ghost %config(noreplace) %attr(0600, fetchmail, root) %{_sysconfdir}/fetchmailrc
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/logrotate.d/fetchmail
+%else
 %config(noreplace) %{_sysconfdir}/logrotate.d/fetchmail
+%endif
 %{_unitdir}/%{name}.service
 %{_sbindir}/rc%{name}
 %{_libexecdir}/%{name}-systemd-exec
