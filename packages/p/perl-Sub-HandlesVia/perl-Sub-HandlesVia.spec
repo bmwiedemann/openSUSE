@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Sub-HandlesVia
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,16 @@
 #
 
 
-Name:           perl-Sub-HandlesVia
-Version:        0.016
-Release:        0
 %define cpan_name Sub-HandlesVia
-Summary:        Alternative handles_via implementation
+Name:           perl-Sub-HandlesVia
+Version:        0.025
+Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        Alternative handles_via implementation
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Class::Method::Modifiers)
@@ -35,9 +34,11 @@ BuildRequires:  perl(Eval::TypeTiny)
 BuildRequires:  perl(Exporter::Shiny)
 BuildRequires:  perl(List::Util) >= 1.54
 BuildRequires:  perl(Role::Tiny)
+BuildRequires:  perl(Scope::Guard)
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::Requires)
+BuildRequires:  perl(Try::Tiny)
 BuildRequires:  perl(Type::Params) >= 1.004000
 BuildRequires:  perl(Types::Standard)
 Requires:       perl(Class::Method::Modifiers)
@@ -46,6 +47,7 @@ Requires:       perl(Eval::TypeTiny)
 Requires:       perl(Exporter::Shiny)
 Requires:       perl(List::Util) >= 1.54
 Requires:       perl(Role::Tiny)
+Requires:       perl(Scope::Guard)
 Requires:       perl(Type::Params) >= 1.004000
 Requires:       perl(Types::Standard)
 Recommends:     perl(Sub::Util)
@@ -62,12 +64,16 @@ ring to rule them all, so to speak.
 Also, unlike MooX::HandlesVia, it honours type constraints, plus it doesn't
 have the limitation that it can't mutate non-reference values.
 
+Note: as Sub::HandlesVia needs to detect whether you're using Moo, Moose,
+or Mouse, and often needs to detect whether your package is a class or a
+role, it needs to be loaded _after_ Moo/Moose/Mouse.
+
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -78,7 +84,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes COPYRIGHT CREDITS doap.ttl README
 %license LICENSE
 
