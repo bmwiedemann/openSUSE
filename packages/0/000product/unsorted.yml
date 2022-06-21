@@ -53,6 +53,7 @@ unsorted:
   - FlightGear-docs 
   - Fragments 
   - Fragments-lang 
+  - FreeCAD: [x86_64] 
   - FreeFileSync 
   - GraphicsMagick 
   - GraphicsMagick-devel 
@@ -149,6 +150,7 @@ unsorted:
   - NetworkManager-strongswan-gnome 
   - NetworkManager-strongswan-lang 
   - OOKiedokie 
+  - OpenBoard 
   - OpenCSD 
   - OpenCSD-devel 
   - OpenCSD-doc 
@@ -1439,6 +1441,7 @@ unsorted:
   - brlemu 
   - brltty-driver-espeak 
   - brltty-driver-libbraille 
+  - brltty-udev-generic 
   - brltty-utils 
   - broadvoice16 
   - broadvoice16-32bit: [x86_64] 
@@ -3478,6 +3481,7 @@ unsorted:
   - etcd-for-k8s1.19: [x86_64] 
   - etcd-for-k8s1.22: [x86_64] 
   - etcd-for-k8s1.23: [x86_64] 
+  - etcd-for-k8s1.24: [x86_64] 
   - etcdctl: [x86_64] 
   - etcdutl: [x86_64] 
   - etckeeper 
@@ -7349,7 +7353,7 @@ unsorted:
   - iprange 
   - iproute2-arpd 
   - iproute2-bash-completion 
-  - ipset: [i586] 
+  - ipset 
   - ipset-devel 
   - iptables-backend-nft 
   - iptraf-ng 
@@ -11807,7 +11811,7 @@ unsorted:
   - libipopt3: [x86_64] 
   - libipq-devel 
   - libipq0 
-  - libipset13: [i586] 
+  - libipset13 
   - libiptc-devel 
   - libiptcdata-devel 
   - libiptcdata-doc 
@@ -13288,6 +13292,7 @@ unsorted:
   - libpython3_10-1_0-32bit: [x86_64] 
   - libpython3_11-1_0 
   - libpython3_11-1_0-32bit: [x86_64] 
+  - libpython3_8-1_0 
   - libpython3_8-1_0-32bit: [x86_64] 
   - libpython3_9-1_0 
   - libpython3_9-1_0-32bit: [x86_64] 
@@ -15776,7 +15781,6 @@ unsorted:
   - mako 
   - malaga-suomi 
   - malcontent-devel 
-  - mame 
   - man-pages-fi 
   - man-pages-id 
   - man-pages-mk 
@@ -24947,6 +24951,7 @@ unsorted:
   - python311-testsuite 
   - python311-tk 
   - python311-tools 
+  - python38 
   - python38-32bit: [x86_64] 
   - python38-APScheduler 
   - python38-AnyQt 
@@ -25262,6 +25267,7 @@ unsorted:
   - python38-apipkg 
   - python38-apiron 
   - python38-apns2 
+  - python38-appdirs 
   - python38-application 
   - python38-applicationinsights 
   - python38-apptools 
@@ -25628,6 +25634,7 @@ unsorted:
   - python38-backports.entry_points_selectable 
   - python38-backports.zoneinfo 
   - python38-baron 
+  - python38-base 
   - python38-base-32bit: [x86_64] 
   - python38-base58 
   - python38-bashate 
@@ -25869,6 +25876,7 @@ unsorted:
   - python38-cufflinks 
   - python38-curio 
   - python38-curlylint 
+  - python38-curses 
   - python38-curtsies 
   - python38-cwcwidth 
   - python38-cx_Freeze 
@@ -25901,6 +25909,7 @@ unsorted:
   - python38-datrie 
   - python38-dbf 
   - python38-dbfread 
+  - python38-dbm 
   - python38-dbus-deviation 
   - python38-dbus-python 
   - python38-dbus-python-devel 
@@ -26269,6 +26278,9 @@ unsorted:
   - python38-gmpy 
   - python38-gmpy2 
   - python38-gns3fy 
+  - python38-gobject 
+  - python38-gobject-Gdk 
+  - python38-gobject-cairo 
   - python38-gobject-devel 
   - python38-goobook 
   - python38-google-api-core 
@@ -26912,6 +26924,7 @@ unsorted:
   - python38-orange-widget-base 
   - python38-orangebox 
   - python38-ordered-namespace 
+  - python38-ordered-set 
   - python38-orderedmultidict 
   - python38-osc-tiny 
   - python38-oscrypto 
@@ -26922,6 +26935,7 @@ unsorted:
   - python38-ovirt-engine-sdk 
   - python38-ovs 
   - python38-pa-ringbuffer 
+  - python38-packaging 
   - python38-padaos 
   - python38-padatious 
   - python38-paho-mqtt 
@@ -27006,6 +27020,7 @@ unsorted:
   - python38-pikepdf 
   - python38-pilkit 
   - python38-pingparsing 
+  - python38-pip 
   - python38-pip-api 
   - python38-pip-licenses 
   - python38-pip-shims 
@@ -27138,6 +27153,7 @@ unsorted:
   - python38-pybluez 
   - python38-pybtex 
   - python38-pybugz 
+  - python38-pycairo 
   - python38-pycairo-devel 
   - python38-pycapnp 
   - python38-pycares 
@@ -27258,6 +27274,7 @@ unsorted:
   - python38-pyp 
   - python38-pypandoc: [x86_64] 
   - python38-pyparallel 
+  - python38-pyparsing 
   - python38-pyperclip 
   - python38-pyperf 
   - python38-pypet 
@@ -27714,6 +27731,7 @@ unsorted:
   - python38-service_identity 
   - python38-setproctitle 
   - python38-setupmeta 
+  - python38-setuptools 
   - python38-setuptools-declarative-requirements 
   - python38-setuptools-git 
   - python38-setuptools-rust 
@@ -33499,7 +33517,7 @@ unsorted:
   - talk 
   - talk-server 
   - talloc-man 
-  - tallow: [i586] 
+  - tallow 
   - tamago 
   - tamil-gtk2im 
   - tamil-gtk2im-32bit: [x86_64] 

@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20220620" schemaversion="4.1">
+<image name="OBS__MicroOS___20220621" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220620</productvar>
+      <productvar name="VERSION">20220621</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220620,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220621,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220620/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220621/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -311,7 +311,6 @@
       <repopackage name="hyper-v" arch="x86_64"/>
       <repopackage name="iio-sensor-proxy" arch="x86_64"/>
       <repopackage name="iproute2" arch="x86_64"/>
-      <repopackage name="ipset" arch="x86_64"/>
       <repopackage name="iptables" arch="x86_64"/>
       <repopackage name="iputils" arch="x86_64"/>
       <repopackage name="irqbalance" arch="x86_64"/>
@@ -686,7 +685,6 @@
       <repopackage name="libinput10" arch="x86_64"/>
       <repopackage name="libip4tc2"/>
       <repopackage name="libip6tc2" arch="x86_64"/>
-      <repopackage name="libipset13" arch="x86_64"/>
       <repopackage name="libiptcdata" arch="x86_64"/>
       <repopackage name="libiptcdata0" arch="x86_64"/>
       <repopackage name="libisl23" arch="x86_64"/>
@@ -1457,7 +1455,6 @@
       <repopackage name="systemsettings5" arch="x86_64"/>
       <repopackage name="sysuser-shadow"/>
       <repopackage name="sysvinit-tools" arch="x86_64"/>
-      <repopackage name="tallow" arch="x86_64"/>
       <repopackage name="tar" arch="x86_64"/>
       <repopackage name="terminfo-base"/>
       <repopackage name="tftpboot-installation-openSUSE-MicroOS-x86_64" arch="x86_64"/>
