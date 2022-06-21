@@ -18,9 +18,9 @@
 
 %define cpan_name Chart
 Name:           perl-Chart
-Version:        2.401.1
+Version:        2.402.3
 Release:        0
-License:        Artistic-2.0
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Series of charting modules
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/L/LI/LICHTKIND/%{cpan_name}-v%{version}.tar.gz
@@ -31,6 +31,8 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(Carp) >= 1.35
 BuildRequires:  perl(File::Temp) >= 0.19
 BuildRequires:  perl(GD) >= 2
+BuildRequires:  perl(Test::More) >= 1.3
+BuildRequires:  perl(Test::Warn) >= 0.30
 Requires:       perl(Carp) >= 1.35
 Requires:       perl(GD) >= 2
 %{perl_requires}
@@ -63,7 +65,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CONTRIBUTING doc Documentation.pdf README Readme.md TODO
+%doc Changes CONTRIBUTING doc Documentation.pdf README TODO
 %license LICENSE
 
 %changelog

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 19 03:06:53 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.402.3
+   see /usr/share/doc/packages/perl-Chart/Changes
+
+  2.402.3 2022-07-18 lichtkind
+  -------
+      * + string method to color objects
+      * ? document that y_ticks1, y_ticks2 is composite only
+      * ! fixed (not returning from Color::Value even sub sub carped)
+
+-------------------------------------------------------------------
 Wed Apr  6 03:06:29 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.401.1
