@@ -64,8 +64,7 @@ Tools (bs2bconvert and bs2bstream) to use the Bauer stereophonic-to-binaural
 DSP.
 
 %prep
-%setup -q
-%patch -p1
+%autosetup -p1
 
 %build
 %configure --disable-static
@@ -79,19 +78,16 @@ rm -f '%{buildroot}%{_libdir}/libbs2b.la'
 %postun -n libbs2b%{soname} -p /sbin/ldconfig
 
 %files -n libbs2b%{soname}
-%defattr(0644, root, root, 0755)
 %license COPYING
 %doc AUTHORS ChangeLog README
 %{_libdir}/libbs2b.so.%{soname}*
 
 %files -n libbs2b-devel
-%defattr(0644, root, root, 0755)
 %{_libdir}/libbs2b.so
 %{_includedir}/bs2b
 %{_libdir}/pkgconfig/libbs2b.pc
 
 %files -n bs2b-tools
-%defattr(0755, root, root, 0755)
 %{_bindir}/bs2bconvert
 %{_bindir}/bs2bstream
 
