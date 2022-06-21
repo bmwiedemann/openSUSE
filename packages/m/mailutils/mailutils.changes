@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 20 13:39:33 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Fix number check of test (builtin) in %pre scriptlet (boo#1200676)
+
+-------------------------------------------------------------------
 Sun Feb 20 22:11:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - udpate to 3.14:

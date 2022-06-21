@@ -251,4 +251,12 @@
   ** Fixed corner case in mu_make_file_name_suf function (forwarded request 956189 from dirkmueller)</comment>
     <requestid>956339</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>709a9e8c178b7b9d376d0455f07c1703</srcmd5>
+    <version>3.14</version>
+    <time>1655824526</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix number check of test (builtin) in %pre scriptlet (boo#1200676)</comment>
+    <requestid>983992</requestid>
+  </revision>
 </revisionlist>

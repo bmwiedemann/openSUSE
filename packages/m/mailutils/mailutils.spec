@@ -404,7 +404,7 @@ fi
 
 %pre
 # removing old update-alternatives entries
-if [ "$1" > 0 ] && [ -f %{_sbindir}/update-alternatives ] ; then
+if [ "$1" -gt 0 ] && [ -f %{_sbindir}/update-alternatives ] ; then
   %{_sbindir}/update-alternatives --quiet --force --remove mail %{_bindir}/mu-mail
 fi
 %endif
