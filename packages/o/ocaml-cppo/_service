@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-cppo</param>
-    <param name="revision">94b2d0f21fcda5473773518a12afbcff45a52990</param>
+    <param name="revision">31c1365214d2381b12127c657156778e921357f8</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/ocaml-community/cppo.git</param>
