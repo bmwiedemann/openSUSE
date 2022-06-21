@@ -1013,4 +1013,34 @@
     <comment></comment>
     <requestid>946015</requestid>
   </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>93eea3ff8335b9288412d29450b984d6</srcmd5>
+    <version>5.4.3</version>
+    <time>1655824504</time>
+    <user>dimstar_suse</user>
+    <comment>- Use wxGTK3 instead of GTK2 wxWidgets.
+- Update to gnuplot 5.4.3
+  * NEW &quot;set pm3d border retrace&quot; will use quadrangle color for the border
+  * NEW &quot;nogrid&quot; flag for plots to opt out of dgrid3d processing
+  * NEW option &quot;above|below y=&lt;val&gt;&quot; for &quot;plot with fillsteps&quot;
+  * NEW &quot;set style histogram nokeyseparators&quot; suppress blank key entries Bug #2473
+  * CHANGE always allow palette color for non-plot elements of 2D plot
+  * FIX contours were incorrectly allocated space in the key even if &quot;notitle&quot;
+  * FIX evaluation of unary minus in front of ternary operator Bug #2468
+  * FIX arm and s390 require &quot;signed char&quot; Bugs #2467 #2450
+  * FIX range errors if &quot;smooth csplines&quot; applied with x-axis reversed Bug #2465
+  * FIX handle various corner cases found by fuzzing
+  * FIX textcolor should accept &quot;linetype N&quot;  Bug #2459
+  * FIX Windows:  handling of Window messages for piped input Bugs #2204 #2412
+  * FIX aquaterm: auto-configuration use of Frameworks  Bug #2419
+  * FIX qt:       pm3d quadrangle borders for transparent surfaces
+  * FIX png/gif:  gdlib auto-configuration issues
+  * FIX dumb:     limit enhanced text markup to single-line vertical displacement
+- This update fixes CVE-2021-44917 (boo#1194017)
+- Port patches
+  * gnuplot-4.6.0.dif
+  * gnuplot-gd.patch
+- Use wxGTK3 instead of GTK2 wxWidgets. (forwarded request 983724 from StefanBruens)</comment>
+    <requestid>983854</requestid>
+  </revision>
 </revisionlist>

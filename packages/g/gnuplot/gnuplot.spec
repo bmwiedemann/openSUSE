@@ -36,14 +36,13 @@ BuildRequires:  cairo-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
-BuildRequires:  gtk2-devel
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  lua-devel
 BuildRequires:  netpbm
 BuildRequires:  pango-devel
 BuildRequires:  plotutils-devel
 BuildRequires:  readline-devel
-BuildRequires:  wxWidgets-devel >= 3
+BuildRequires:  wxGTK3-devel >= 3
 BuildRequires:  zziplib
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -254,8 +253,8 @@ autoreconf -fi
     install -m 0444 %{SOURCE3}        %{buildroot}/%{_docdir}/gnuplot/
     rm -f %{buildroot}/%{_docdir}/gnuplot/demo/Makefile*
     install -m 0444 %{S:1}            %{buildroot}/%{_docdir}/gnuplot/
+    %fdupes %{buildroot}/%{_docdir}
 %endif
-    %fdupes -s %{buildroot}
 
 %if "%{flavor}" == "doc"
 %post

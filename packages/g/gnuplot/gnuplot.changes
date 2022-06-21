@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 19 17:31:46 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use wxGTK3 instead of GTK2 wxWidgets.
+
+-------------------------------------------------------------------
 Mon Jan 10 09:31:15 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Update to gnuplot 5.4.3
