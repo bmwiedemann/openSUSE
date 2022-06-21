@@ -1,7 +1,7 @@
 #
 # spec file for package python-mautrix
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-mautrix
-Version:        0.9.3
+Version:        0.16.8
 Release:        0
 Summary:        A Python 3 asyncio Matrix framework
 License:        MPL-2.0
@@ -42,7 +42,6 @@ BuildRequires:  %{python_module python-magic >= 0.4.15}
 BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module sqlalchemy}
 BuildRequires:  %{python_module yarl >= 1}
-
 %python_subpackages
 
 %description
@@ -58,9 +57,13 @@ A Python 3 asyncio Matrix framework.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%check
+# Yes, they don't have a test suite. At all.
+
 %files %{python_files}
-%doc README.rst
+%doc README.rst CHANGELOG.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/mautrix*
+%{python_sitelib}/mautrix-%{version}*-info
 
 %changelog
