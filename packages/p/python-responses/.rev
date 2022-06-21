@@ -265,4 +265,20 @@
     <comment></comment>
     <requestid>967908</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7562bf6891bd60397edf4a754cfecf92</srcmd5>
+    <version>0.21.0</version>
+    <time>1655824517</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.21.0:
+  * Add `threading.Lock()` to allow `responses` working with `threading` module.
+  * Add `urllib3` `Retry` mechanism. See #135
+  * Removed internal `_cookies_from_headers` function
+  * Now `add`, `upsert`, `replace` methods return registered response.
+    `remove` method returns list of removed responses.
+  * Added null value support in `urlencoded_params_matcher` via `allow_blank` keyword argument
+  * Added strict version of decorator. Now you can apply `@responses.activate(assert_all_requests_are_fired=True)`
+    to your function to validate that all requests were executed in the wrapped function. See #183</comment>
+    <requestid>983897</requestid>
+  </revision>
 </revisionlist>

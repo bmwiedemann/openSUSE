@@ -20,15 +20,13 @@
 %global skip_python2 1
 %global skip_python36 1
 Name:           python-responses
-Version:        0.20.0
+Version:        0.21.0
 Release:        0
 Summary:        A utility library for mocking out the `requests` Python library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/getsentry/responses
-#Source:         https://files.pythonhosted.org/packages/source/r/responses/responses-%{version}.tar.gz
-# tests dir will be available next release: https://github.com/getsentry/responses/commit/72238a7212665174416bce788bda26a78547aaf4
-Source:         https://github.com/getsentry/responses/archive/refs/tags/0.20.0.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/r/responses/responses-%{version}.tar.gz
 # test requirements
 BuildRequires:  %{python_module cookies}
 BuildRequires:  %{python_module pytest-localserver}
