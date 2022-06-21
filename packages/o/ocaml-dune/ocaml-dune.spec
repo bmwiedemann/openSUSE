@@ -25,7 +25,7 @@
 %define     pkg ocaml-dune
 %global  _buildshell /bin/bash
 Name:           %pkg%nsuffix
-Version:        3.1.1
+Version:        3.2.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 License:        MIT
@@ -59,6 +59,7 @@ Obsoletes:      ocaml-dune-configurator-devel <  %version-%release
 
 %description
 This package provides various libraries:
+chrome-trace
 dune-action-plugin
 dune-build-info
 dune-configurator
@@ -80,9 +81,13 @@ xdg
 %build
 mv -vb src/dune_rules/setup.defaults.ml src/dune_rules/setup.ml
 ocaml configure.ml \
+	'--bindir=%_bindir' \
+	'--datadir=%_datadir' \
 	'--etcdir=%_sysconfdir' \
 	'--libdir=%ocaml_standard_library' \
+	'--libexecdir=%_libexecdir' \
 	'--mandir=%_mandir' \
+	'--sbindir=%_sbindir' \
 	%nil
 #
 %if "%build_flavor" == ""
@@ -103,6 +108,7 @@ ln -s ../dune.exe .bin/dune
 #
 %if "%build_flavor" == "devel"
 pkgs=(
+chrome-trace
 dune-action-plugin
 dune-build-info
 dune-configurator
