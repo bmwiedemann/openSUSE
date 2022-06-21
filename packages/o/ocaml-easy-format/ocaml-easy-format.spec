@@ -18,7 +18,7 @@
 
 
 Name:           ocaml-easy-format
-Version:        1.3.3
+Version:        1.3.4
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Data pretty printing made easy
@@ -27,7 +27,7 @@ Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/easy-format
 Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-dune >= 2.9
+BuildRequires:  ocaml-dune >= 3.2
 BuildRequires:  ocaml-rpm-macros >= 20220409
 
 %description
