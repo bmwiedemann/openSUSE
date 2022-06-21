@@ -1779,4 +1779,12 @@
   0002-control-eld-fix-the-decoding-for-older-hw.patch</comment>
     <requestid>980994</requestid>
   </revision>
+  <revision rev="216" vrev="1">
+    <srcmd5>e5bffa6bca783fe03b1749e4f80cee72</srcmd5>
+    <version>1.2.7.1</version>
+    <time>1655824527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>983999</requestid>
+  </revision>
 </revisionlist>

@@ -32,7 +32,7 @@
 %endif
 
 Name:           alsa
-Version:        1.2.7
+Version:        1.2.7.1
 Release:        0
 Summary:        Advanced Linux Sound Architecture
 License:        LGPL-2.1-or-later
@@ -53,8 +53,6 @@ Source30:       all_notes_off
 Source31:       all_notes_off.bin
 Source32:       all_notes_off.mid
 Source34:       alsa-init.sh
-Patch1:         0001-conf-Use-ino64_t-to-save-and-compare-inode-numbers.patch
-Patch2:         0002-control-eld-fix-the-decoding-for-older-hw.patch
 # rest suse fixes
 Patch101:       alsa-lib-ignore-non-accessible-ALSA_CONFIG_PATH.patch
 BuildRequires:  doxygen
@@ -143,8 +141,6 @@ This package contains the library for ALSA topology support.
 
 %prep
 %setup -q -n alsa-lib-%{version}
-%patch1 -p1
-%patch2 -p1
 %patch101 -p1
 
 %build
