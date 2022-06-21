@@ -19,7 +19,7 @@
 
 %define majorver 4.0
 Name:           gnuhealth-client
-Version:        %{majorver}.0
+Version:        %{majorver}.1
 Release:        0
 Summary:        The client of the GNU Health Hospital system
 License:        GPL-3.0-only
@@ -81,9 +81,9 @@ tar  -xzvf %{SOURCE2}
 tar  -xzvf %{SOURCE3}
 
 #workaround for tryton bug: directory name with version is not considered
-mv gnuhealth_plugin_camera* camera
-mv gnuhealth_plugin_crypto* crypto
-mv gnuhealth_plugin_frl* frl
+mv gnuhealth_camera* camera
+## mv gnuhealth_crypto* crypto
+##  mv gnuhealth_frl* frl
 
 # Remove pycache
 rm -rf */__pycache__

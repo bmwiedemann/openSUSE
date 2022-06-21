@@ -169,4 +169,12 @@
     <comment>version bump (forwarded request 959967 from DocB)</comment>
     <requestid>959987</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7bc8a8dfe1e5746904061d411aea0b45</srcmd5>
+    <version>4.0.1</version>
+    <time>1655821959</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix version</comment>
+    <requestid>984049</requestid>
+  </revision>
 </revisionlist>
