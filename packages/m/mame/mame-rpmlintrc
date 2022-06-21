@@ -1,9 +1,0 @@
-# Even though rom hash files may have the same contents, they aren't the same
-addFilter("files-duplicate (.*/mame/hash/.*)?")
-
-# don't check for locale locations, MAME doesn't use them in the same way as
-# standard Linux programs
-addFilter("file-not-in-%lang .*")
-
-# Some tools don't have man pages
-addFilter("W: no-manual-page-for-binary .*")
