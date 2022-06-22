@@ -1,7 +1,7 @@
 #
 # spec file for package keyutils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -89,8 +89,10 @@ ln -s /%{_sbindir}/request-key %{buildroot}/sbin
 install -m 0750 -d \
 	%{buildroot}%{_sysconfdir}/keys \
 	%{buildroot}%{_sysconfdir}/keys/ima \
+	%{buildroot}%{_sysconfdir}/keys/evm \
 	%{buildroot}%{_distconfdir}/keys \
-	%{buildroot}%{_distconfdir}/keys/ima
+	%{buildroot}%{_distconfdir}/keys/ima \
+	%{buildroot}%{_distconfdir}/keys/evm
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
@@ -110,9 +112,11 @@ install -m 0750 -d \
 %dir %{_sysconfdir}/request-key.d/
 %dir %{_sysconfdir}/keys/
 %dir %{_sysconfdir}/keys/ima/
+%dir %{_sysconfdir}/keys/evm/
 %if %{defined use_usretc}
 %dir %{_distconfdir}/keys/
 %dir %{_distconfdir}/keys/ima/
+%dir %{_distconfdir}/keys/evm/
 %endif
 
 %files -n %{lname}

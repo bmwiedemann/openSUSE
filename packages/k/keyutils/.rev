@@ -336,4 +336,12 @@
     <comment></comment>
     <requestid>914583</requestid>
   </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>8d673ec242d0b3dd7db4ec2f83268541</srcmd5>
+    <version>1.6.3</version>
+    <time>1655907525</time>
+    <user>dimstar_suse</user>
+    <comment>- Add /etc/keys/evn and /usr/etc/keys/evm together with the IMA ones</comment>
+    <requestid>984110</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 21 08:26:54 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add /etc/keys/evn and /usr/etc/keys/evm together with the IMA ones
+
+-------------------------------------------------------------------
 Thu Jun 24 12:54:11 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add /etc/keys/ and /usr/etc/keys/ directory (bsc#1187654)
