@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun 22 13:17:49 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to version 2.187.0:
+  * Allow container domains to use /dev/zero
+- Changes from 2.186.0:
+  * Create policy for a container_device_t 
+  * Allow containers to shutdown & setopt userdomain:sockets
+- Changes from 2.183.0:
+  * Allow containers to inherit all socket classes from container runtimes.
+- Changes from 2.182.0:
+  * Allow containers to inherit all socket classes
+- Changes from 2.181.0:
+  * Allow socket activated domains for tcp sockets from init_t and userdomains.
+
+-------------------------------------------------------------------
 Tue Mar 22 08:35:54 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Add udica templates to the package

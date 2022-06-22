@@ -100,4 +100,11 @@
     <comment></comment>
     <requestid>964617</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f68857bed86e701f0d512adc35bb0f01</srcmd5>
+    <version>2.187.0</version>
+    <time>1655907496</time>
+    <user>dimstar_suse</user>
+    <comment>osc copypac from project:home:fcrozat:branches:security:SELinux package:container-selinux revision:2, using expand</comment>
+  </revision>
 </revisionlist>
