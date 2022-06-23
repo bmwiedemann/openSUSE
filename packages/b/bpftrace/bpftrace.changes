@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 21 08:36:57 UTC 2022 - pgajdos@suse.com
+
+- do not link against the shared BFD libraries [bsc#1200630]
+
+-------------------------------------------------------------------
 Fri Apr 22 07:35:09 UTC 2022 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update to 0.14.1

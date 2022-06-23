@@ -86,12 +86,6 @@ find tools -name '*.bt' -type f \
 	-exec sed -i '1s|^#!%{_bindir}/env bpftrace|#!%{_bindir}/bpftrace|' '{}' ';'
 
 %build
-# Find libbfd.so and libopcodes.so. This is necessary because binutils gives
-# these libraries very strange names which CMake cannot find. See boo#1162312.
-LIBBFD="$(find "%{_libdir}" -type f -name 'libbfd*.so*')"
-LIBOPCODES="$(find "%{_libdir}" -type f -name 'libopcodes*.so*')"
-LLVM_VERSION="$(llvm-config --version | grep -o '^[^.]*')"
-
 # We need to build with clang.
 %define _lto_cflags %{nil}
 export CC="clang"
