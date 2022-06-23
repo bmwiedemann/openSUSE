@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 21 11:12:12 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Removed %config flag for files in /usr directory.
+
+-------------------------------------------------------------------
 Mon Jun 20 10:31:02 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Cleanup spec file:
@@ -10,8 +15,8 @@ Mon Jun 20 10:31:02 UTC 2022 - Stefan Schubert <schubi@suse.com>
 -------------------------------------------------------------------
 Wed Jun 15 10:57:00 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
-- Moved logrotate files from user specif directory /etc/logrotate.d
-  to vendor specif directory /usr/etc/logrotate.d.
+- Moved logrotate files from user specific directory /etc/logrotate.d
+  to vendor specific directory /usr/etc/logrotate.d.
 
 -------------------------------------------------------------------
 Tue May 17 15:11:53 UTC 2022 - pgajdos@suse.com
