@@ -1129,4 +1129,12 @@ found conflict of filesystem-15.5-261.1.x86_64 with oxygen5-sounds-5.21.5-2.1.no
     <comment>Update to 5.25.0</comment>
     <requestid>981919</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>8e6834fcea1b6c5e7f8c1cdceb8f2909</srcmd5>
+    <version>5.25.1</version>
+    <time>1655972623</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.1. As usual, completely untested. (forwarded request 984192 from Vogtinator)</comment>
+    <requestid>984346</requestid>
+  </revision>
 </revisionlist>
