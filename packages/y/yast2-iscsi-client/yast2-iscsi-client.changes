@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 21 13:19:31 UTC 2022 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Stop using the deprecated agent "background".
+- Ensure iSCSI discovery works when YaST is configuring a different
+  target system (bsc#1199840).
+- 4.5.4
+
+-------------------------------------------------------------------
 Mon May 16 10:11:13 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Fix a crash when opening the main dialog (bsc#1199552).
