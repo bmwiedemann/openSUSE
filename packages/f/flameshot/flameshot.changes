@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jun 22 14:45:30 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to version 12.0.0
+  * Created basic layer movement functionality
+  * Added a new widget to allow the colorwheel to be more easily customized
+  * Added magnifier for more precise selections
+  * Incremental markers can now have a point if you drag when placing them
+  * Pinned screenshots can now be copied to the clipboard or saved to a file
+    if a user right clicks on the pinned image
+  * Pinned screenshots can now be zoomed with a pinch gesture
+  * Make KDE use Freedesktop portal
+  * Pinned images can now be moved partially offscreen on linux
+  * Wayland builds now use KF Gui (KDE Framework tools) to fix some issues
+  * Full changelog: https://github.com/flameshot-org/flameshot/releases/tag/v12.0.0
+- Enable Wayland clipboard for Leap 15.4+ and Tumbleweed
+
+-------------------------------------------------------------------
 Fri Jan 21 14:04:18 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Fix requires for zsh-completion

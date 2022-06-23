@@ -17,7 +17,7 @@
 
 
 Name:           flameshot
-Version:        11.0.0
+Version:        12.0.0
 Release:        0
 Summary:        Screenshot software
 License:        GPL-3.0-only
@@ -37,6 +37,9 @@ BuildRequires:  pkgconfig(Qt5Gui) >= 5
 BuildRequires:  pkgconfig(Qt5Network) >= 5
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
+BuildRequires:  cmake(KF5GuiAddons) >= 5.89.0
+%endif
 Suggests:       %{name}-bash-completion
 Suggests:       %{name}-fish-completion
 Suggests:       %{name}-zsh-completion
@@ -86,7 +89,11 @@ Fish command line completion support for %{name}.
 %setup -q
 
 %build
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
+%cmake -DUSE_WAYLAND_CLIPBOARD:BOOL=ON
+%else
 %cmake
+%endif
 %cmake_build
 
 %install
