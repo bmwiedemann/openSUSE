@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Jun 21 11:39:44 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.1
+- Changes since 5.25.0:
+  * effects/desktopgrid: Allow switching between desktops using digit and function keys (kde#455292)
+  * Unvirtualize Scene::paintWindow()
+  * Fix computation of effective opaque region of SurfaceItemX11 (kde#455617)
+  * Fix dragging especially by touch (kde#455268)
+  * Fix typo in qml margin
+  * backends/drm: do cross-gpu imports again for test commits (kde#454086)
+  * effects/windowview: Search on all screens (kde#455353)
+  * effects: Improve gesture handling in some effects
+  * qpa: Fix a crash in EGLPlatformContext::swapBuffers() (kde#455435)
+  * backends/drm: use GBM_BO_USE_SCANOUT when importing buffers for multi gpu
+  * Don't use  the plasma theme for icons in overview (kde#455368)
+  * fix windows dragging in desktop grid (kde#455268)
+  * effects/windowview: Redirect key events to search field (kde#455100)
+  * [xwl] Restart xwayland regardless of exit value
+  * effects/slide: Ensure that there's only one visibility ref per window (kde#455237)
+  * Remove redundant initializeX11() in Compositor
+  * Always send a done after commit for text input v3.
+  * core: Make screen area safer in Workspace::clientArea()
+  * scripting: Handle bad output and desktop ids gracefully
+  * effects/windowview: do close animation after gesture ended
+  * Disable screen edge approach area if the edge is blocked (kde#454503)
+  * wayland: Explicitly initialize surface size to 0 (kde#454535)
+  * Fix KWin scripts KCM not writing it's pending states to config (kde#455015)
+- Drop patches, now upstream:
+  * 0001-fix-windows-dragging-in-desktop-grid.patch
+
+-------------------------------------------------------------------
 Fri Jun 17 13:21:36 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix dragging windows in grid view (kde#455268):
