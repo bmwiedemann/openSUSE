@@ -1,7 +1,11 @@
-Index: Wrapper/FreeImagePlus/doc/FreeImagePlus.dox
+---
+ Wrapper/FreeImagePlus/doc/FreeImagePlus.dox |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: FreeImage/Wrapper/FreeImagePlus/doc/FreeImagePlus.dox
 ===================================================================
---- Wrapper/FreeImagePlus/doc/FreeImagePlus.dox.orig
-+++ Wrapper/FreeImagePlus/doc/FreeImagePlus.dox
+--- FreeImage.orig/Wrapper/FreeImagePlus/doc/FreeImagePlus.dox
++++ FreeImage/Wrapper/FreeImagePlus/doc/FreeImagePlus.dox
 @@ -58,7 +58,7 @@ PROJECT_LOGO           =
  # entered, it will be relative to the location where doxygen was started. If
  # left blank the current directory will be used.

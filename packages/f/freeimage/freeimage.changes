@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 18 15:55:52 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Adjust unbundle.patch to work with tiff >= 4.4.0 [boo#1200451]
+- Refresh doxygen.patch as -p1, use %autosetup
+- Trim redundant information from descriptions
+
+-------------------------------------------------------------------
 Wed Apr 14 11:22:53 UTC 2021 - pgajdos@suse.com
 
 - added patches

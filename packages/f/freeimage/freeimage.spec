@@ -1,7 +1,7 @@
 #
 # spec file for package freeimage
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Version:        3.18.0
 Release:        0
 Summary:        Multi-format Image Decoder Library
 License:        GPL-2.0-only OR GPL-3.0-only
-URL:            https://freeimage.sourceforge.net/
+URL:            https://freeimage.sourceforge.io/
 Source0:        https://downloads.sourceforge.net/freeimage/FreeImage%{tarver}.zip
 Patch0:         unbundle.patch
 # PATCH-FIX-OPENSUSE doxygen.patch asterios.dramis@gmail.com -- Fix documentation building (Based on patch from Fedora)
@@ -53,10 +53,9 @@ BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(zlib)
 
 %description
-FreeImage is an Open Source library project for developers who would like to
-support popular graphics image formats like PNG, BMP, JPEG, TIFF and others as
-needed by today's multimedia applications. FreeImage is easy to use, fast,
-multithreading safe.
+FreeImage is a library for developers who would like to support
+graphics image formats like PNG, BMP, JPEG, TIFF and others as needed
+by today's multimedia applications.
 
 %package devel
 Summary:        Development Files for FreeImage
@@ -74,31 +73,22 @@ software using FreeImage.
 Summary:        Multi-format Image Decoder Library
 
 %description -n lib%{name}%{so_ver}
-FreeImage is an Open Source library project for developers who would like to
-support popular graphics image formats like PNG, BMP, JPEG, TIFF and others as
-needed by today's multimedia applications. FreeImage is easy to use and fast,
-multithreading safe.
+FreeImage is a library for developers who would like to support
+graphics image formats like PNG, BMP, JPEG, TIFF and others as needed
+by today's multimedia applications.
 
 %package -n lib%{name}plus%{so_ver}
 Summary:        Multi-format Image Decoder Library
 
 %description -n lib%{name}plus%{so_ver}
-FreeImage is an Open Source library project for developers who would like to
-support popular graphics image formats like PNG, BMP, JPEG, TIFF and others as
-needed by today's multimedia applications. FreeImage is easy to use and fast,
-multithreading safe.
+FreeImage is a library for developers who would like to support
+graphics image formats like PNG, BMP, JPEG, TIFF and others as needed
+by today's multimedia applications.
 
 %prep
-%setup -q -n FreeImage
-%patch0 -p1
-%patch1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
+%autosetup -n FreeImage -p1
 
+%build
 # Remove bundled libs to make sure these don't get used during compile
 rm -rf Source/LibPNG/ Source/LibRawLite/ Source/OpenEXR/ Source/ZLib/ Source/LibOpenJPEG/ Source/LibJPEG/
 
@@ -115,7 +105,6 @@ for file in `find . -type f -name '*.c' -or -name '*.cpp' -or -name '*.h' -or -n
   touch -r $file $file.new && mv $file.new $file
 done
 
-%build
 sh ./gensrclist.sh
 sh ./genfipsrclist.sh
 
