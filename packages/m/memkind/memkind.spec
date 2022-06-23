@@ -1,7 +1,7 @@
 #
 # spec file for package memkind
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,6 +50,7 @@ ExclusiveArch:  x86_64 aarch64 ppc64 ppc64le s390x
 %{!?buildsubdir: %define buildsubdir %{namespace}-%{commit}}
 Source0:        https://github.com/%{namespace}/%{namespace}/archive/v%{commit}/%{buildsubdir}.tar.gz
 Patch0:         memkind-fix-build.diff
+Patch1:         memkind-dont-redefine-fortify.diff
 
 %description
 The memkind library is an user extensible heap manager built on top
@@ -85,6 +86,7 @@ Header files for building applications with libmemkind.
 %prep
 %setup -q -n memkind-%{version}
 %patch0
+%patch1
 
 %build
 

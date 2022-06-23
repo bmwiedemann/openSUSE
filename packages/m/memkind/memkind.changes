@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 23 09:52:48 UTC 2022 - Michael Matz <matz@suse.com>
+
+- Add memkind-dont-redefine-fortify.diff to not redefine
+  _FORTIFY_SOURCE if already included in CFLAGS.
+
+-------------------------------------------------------------------
 Thu Sep 30 16:05:38 UTC 2021 - Antoine Ginies <aginies@suse.com>
 
 - update to version 1.12.0 (JSC#SLE-22050)
