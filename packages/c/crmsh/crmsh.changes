@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jun 19 03:32:41 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.0+20220619.cc0a81a5:
+  * Dev: CI: Run delivery and submit stage only at ClusterLabs/crmsh repo
+
+-------------------------------------------------------------------
+Tue Jun 14 03:32:25 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.0+20220614.f76fee26:
+  * Dev: doc: add help info for related: prefix for 'configure show' command
+  * Dev: cinconfig: enable "related:" prefix to show the objects by given ra type
+
+-------------------------------------------------------------------
+Fri Jun 10 02:17:56 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.0+20220610.16cc8d68:
+  * Fix: crm report: use sudo when under non root and hacluster user (bsc#1199634)
+
+-------------------------------------------------------------------
 Wed Jun 01 02:36:16 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.0+20220601.b8c2952f:
