@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun 22 00:34:34 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.12.2:
+  * Match against complete spec name when determining dynamic
+    watchers (gh#holoviz/param#615).
+  * Ensure async functionality does not cause python2 syntax
+    errors (gh#holoviz/param#624).
+  * Allow (de)serializing CalendarRange and DateRange Parameters
+    (gh#holoviz/param#625).
+  * Improve DateRange validation (gh#holoviz/param#627).
+  * Fix regression in @param.depends execution ordering
+    (gh#holoviz/param#628).
+  * Ensure named_objs does not fail on unhashable objects
+    (gh#holoviz/param#632).
+  * Support comparing date-like objects (gh#holoviz/param#629).
+  * Fixed BinaryPower example in the docs to use the correct name
+    EvenInteger(gh#holoviz/param#634).
+
+-------------------------------------------------------------------
 Sun May  1 18:58:42 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.12.1:
