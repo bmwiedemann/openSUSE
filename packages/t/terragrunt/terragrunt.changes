@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jun 22 20:45:14 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.38.1:
+  * feat: fetch dependency output from state (#2123)
+  * Add ability to customize SSE settings for the remote state bucket (#2157)
+  * Add ability to disable auto-approve (#2156)
+
+-------------------------------------------------------------------
+Wed Jun 22 07:54:16 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.38.0:
+  * Test against terraform 1.2 (#2147)
+
+-------------------------------------------------------------------
+Wed Jun 22 07:50:00 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.37.4:
+  * Make include_in_copy work for patterns containing parent folders (#2112)
+
+-------------------------------------------------------------------
+Wed Jun 22 07:44:55 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.37.3:
+  * feat: improve local source code download behaviour (#2006)
+
+-------------------------------------------------------------------
 Thu Jun 09 17:10:17 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.37.2:
