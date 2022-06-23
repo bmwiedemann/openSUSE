@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 15 06:56:09 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add dbxtool-FORTIFY_SOURCE.patch: Do not redefine FORTIFY_SOURCE
+  without resetting it first.
+
+-------------------------------------------------------------------
 Fri Oct 15 12:11:38 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Drop ProtectClock hardening, can cause issues if other device acceess is needed

@@ -1,7 +1,7 @@
 #
 # spec file for package dbxtool
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,21 +28,20 @@ Requires:       efivar >= 26-1
 Source0:        https://github.com/rhboot/dbxtool/releases/download/dbxtool-%version/dbxtool-%version.tar.bz2
 Patch0:         dbxtool-fixes.patch
 Patch1:         harden_dbxtool.service.patch
+Patch2:         dbxtool-FORTIFY_SOURCE.patch
 %systemd_requires
 
 %description
 This package contains DBX updates for UEFI Secure Boot.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 make CFLAGS="%optflags"
 
 %install
-%make_install 
+%make_install
 
 rm %buildroot/usr/share/doc/dbxtool/COPYING
 

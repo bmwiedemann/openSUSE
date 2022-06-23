@@ -48,4 +48,13 @@
     <comment></comment>
     <requestid>925599</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>d0378407e4af320b927a4222c3e9d47d</srcmd5>
+    <version>8</version>
+    <time>1655980384</time>
+    <user>dimstar_suse</user>
+    <comment>- Add dbxtool-FORTIFY_SOURCE.patch: Do not redefine FORTIFY_SOURCE
+  without resetting it first.</comment>
+    <requestid>984689</requestid>
+  </revision>
 </revisionlist>
