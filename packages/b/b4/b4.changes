@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Jun 19 07:51:21 UTC 2022 - jslaby@suse.cz
+
+- Update to version 0.9.0+0:
+  * Add ability to exit before git-merge is invoked
+  * Implement "b4 shazam -M" that execs git-merge
+  * Add a note about proxying requests
+  * Allow breaking threads using --no-parent
+  * Improve identity matching for DKIM
+  * Lowercase identities for comparison
+  * am: Fix broken guessbranch handling
+  * Remove unnecessary lookup when /all/ is used in midmask
+  * Add support for mailmap and excluding mail in b4-ty
+  * Allow whitespace at the start of non-wrapped trailers
+  * Reimplement unicode control character logic
+  * mbox: initial support to check for unicode control chars
+  * ty: fix problems with smtplib and 8BITMIME
+  * ty: fix bugs introduced when switching -s to -t
+  * ty: document flag changes
+  * shazam: change default behaviour to be "apply-here"
+  * Initial implementation of native mail sending
+  * Fix shazam for multiple git worktrees
+  * validate: Use patatt's configured keyring as fallback
+  * Add keyring key for keescook
+  * shazam: document template usage in manpage
+  * shazam: implement custom merge message templates
+  * shazam: implement better merging strings
+  * shazam: allow configuring "git am" flags
+  * am/shazam: Restore thank-you recording
+  * Simplify sparse worktree preparation
+  * Add "b4 shazam" that is like b4 am + git am
+
+-------------------------------------------------------------------
 Mon Mar 21 10:21:21 UTC 2022 - jslaby@suse.cz
 
 - Update to version 0.8.0+2:
