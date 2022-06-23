@@ -16,9 +16,9 @@
 #
 
 
-%define version_unconverted 0.8.0+2
+%define version_unconverted 0.9.0+0
 Name:           b4
-Version:        0.8.0+2
+Version:        0.9.0+0
 Release:        0
 Summary:        Helper scripts for kernel.org patches
 License:        GPL-2.0-or-later
@@ -70,8 +70,8 @@ export PYTHONPATH="./"
 THEIRS=`%{buildroot}/%{_bindir}/b4 --version`
 OURS=`sed -n "s/__VERSION__ = '\(.*\)'/\1/p" b4/__init__.py`
 test "$THEIRS" = "$OURS"
-%{buildroot}/%{_bindir}/b4 --help |grep -q 'mbox,am,attest'
-%{buildroot}/%{_bindir}/b4 mbox abc |& grep -q 'Looking up https://lore.kernel.org/r/abc'
+%{buildroot}/%{_bindir}/b4 --help |grep -q 'mbox,am,shazam,attest'
+%{buildroot}/%{_bindir}/b4 mbox abc |& grep -q 'Grabbing thread from lore.kernel.org/all/abc/t.mbox.gz'
 
 %files
 %doc README.rst

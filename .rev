@@ -308,4 +308,40 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>965356</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>0ec165560a0d3072a53a83142e0104e5</srcmd5>
+    <version>0.9.0+0</version>
+    <time>1655972639</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.0+0:
+  * Add ability to exit before git-merge is invoked
+  * Implement &quot;b4 shazam -M&quot; that execs git-merge
+  * Add a note about proxying requests
+  * Allow breaking threads using --no-parent
+  * Improve identity matching for DKIM
+  * Lowercase identities for comparison
+  * am: Fix broken guessbranch handling
+  * Remove unnecessary lookup when /all/ is used in midmask
+  * Add support for mailmap and excluding mail in b4-ty
+  * Allow whitespace at the start of non-wrapped trailers
+  * Reimplement unicode control character logic
+  * mbox: initial support to check for unicode control chars
+  * ty: fix problems with smtplib and 8BITMIME
+  * ty: fix bugs introduced when switching -s to -t
+  * ty: document flag changes
+  * shazam: change default behaviour to be &quot;apply-here&quot;
+  * Initial implementation of native mail sending
+  * Fix shazam for multiple git worktrees
+  * validate: Use patatt's configured keyring as fallback
+  * Add keyring key for keescook
+  * shazam: document template usage in manpage
+  * shazam: implement custom merge message templates
+  * shazam: implement better merging strings
+  * shazam: allow configuring &quot;git am&quot; flags
+  * am/shazam: Restore thank-you recording
+  * Simplify sparse worktree preparation
+  * Add &quot;b4 shazam&quot; that is like b4 am + git am
+</comment>
+    <requestid>984374</requestid>
+  </revision>
 </revisionlist>
