@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 22 16:10:04 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
+
+- New version 4.9.2
+  * see https://modwsgi.readthedocs.io/en/latest/release-notes/version-4.9.2.html
+  * dropped wsgi_fixVersionCheck.patch
+
+-------------------------------------------------------------------
 Fri Oct  1 13:46:46 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add missing bug reference to allow inclusion in SLE-15:SP4.

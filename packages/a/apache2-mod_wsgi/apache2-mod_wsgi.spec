@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_wsgi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,15 +27,13 @@ BuildRequires:  httpd
 BuildRequires:  httpd-devel
 %endif
 Name:           apache2-mod_wsgi
-Version:        4.7.1
+Version:        4.9.2
 Release:        0
 Summary:        A WSGI interface for Python3 web applications in Apache
 License:        Apache-2.0
 Group:          Productivity/Networking/Web/Servers
 URL:            https://github.com/GrahamDumpleton/mod_wsgi
 Source:         https://github.com/GrahamDumpleton/mod_wsgi/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
-## Work around for inconsistent Apache source tree in SLE 12, see bnc#915479
-Patch0:         wsgi_fixVersionCheck.patch
 BuildRequires:  apache-rex
 %apache_rex_deps
 BuildRequires:  python3-devel
@@ -62,8 +60,7 @@ for hosting WSGI applications within Apache has a lower overhead than using
 existing WSGI adapters for mod_python or CGI.
 
 %prep
-%setup -q -n %{modname}-%{version}
-%patch0 -p1
+%autosetup -n %{modname}-%{version}
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"

@@ -542,4 +542,12 @@
 - initial package (version 1.3) (forwarded request 922567 from mcepl)</comment>
     <requestid>922933</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>9bff2715530641e35f3f52dde133596b</srcmd5>
+    <version>4.9.2</version>
+    <time>1655972709</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984653</requestid>
+  </revision>
 </revisionlist>
