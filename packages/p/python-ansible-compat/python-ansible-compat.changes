@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 14 21:02:38 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 2.1.0:
+ - Minor Changes
+  - Add module to work with schemas (#143) @ssbarnea
+ - Bugfixes
+  - Expose role_name_check in prepare_environment (#147) @zhan9san
+  - Install role in cache dir (#135) @zhan9san
+  - Prevent occasional FileExistsError with symlink recreation (#145) @ssbarnea
+
+-------------------------------------------------------------------
 Sun May 22 10:21:20 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 2.0.4:

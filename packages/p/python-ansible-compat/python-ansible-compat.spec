@@ -19,7 +19,7 @@
 # only works with the python version which the package 'ansible' uses
 %define pythons python3
 Name:           python-ansible-compat
-Version:        2.0.4
+Version:        2.1.0
 Release:        0
 Summary:        Compatibility shim for Ansible 2.9 and newer
 License:        MIT
@@ -35,6 +35,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module flaky}
+BuildRequires:  %{python_module jsonschema >= 4.5.1}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module subprocess-tee}
 BuildRequires:  ansible
