@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jun 22 08:33:50 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.40.0:
+  * update grype to latest syft patch v0.48.1 (#790)
+  * fix: add golang to documentation (#788)
+  * fix: accept templates with custom functions (#786)
+  * add db staleness check (#785)
+  * feat: add compose workflow for local dev (#783)
+  * ignore gemfile rich version for semVer comparison (#776)
+  * Support namespace and language as additional criteria for ignoring vulnerability matches (#780)
+
+-------------------------------------------------------------------
+Wed Jun 22 08:19:33 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.39.0:
+  * update syft version to v0.47.0 (#781)
+  * use anchore fork of glebarez/sqlite (#778)
+  * template: Check sanity for template file (#674)
+  * Add announcement for Anchore OSS Meetup (#775)
+  * Bump github.com/hashicorp/go-getter from 1.5.11 to 1.6.1 (#770)
+  * publish release to reduce user friction (#766)
+  * Update Syft to v0.46.3 (#761)
+  * Add reference to logrus logging levels (#758)
+  * README: add MacPorts install info (#759)
+
+-------------------------------------------------------------------
 Mon Jun  6 19:46:12 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - new package grype at version 0.38.0: A vulnerability scanner for container images and filesystems
