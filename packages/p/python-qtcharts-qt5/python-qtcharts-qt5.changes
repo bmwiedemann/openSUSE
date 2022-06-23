@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 21 11:33:52 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.15.6
+  * Added the missing QXYSeries.points().
+- Release 5.15.5
+  * Added support for Python v3.10.
+
+-------------------------------------------------------------------
 Fri Jun 18 21:46:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Provide the PyPI name, without the s at the end
