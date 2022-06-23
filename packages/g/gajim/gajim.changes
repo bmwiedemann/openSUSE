@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jun 21 20:06:05 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.4.5:
+  * Add new Shortcut for toggling the chat list.
+  * Preferences: Add setting for emoji shortcodes.
+  * Disable plugin updates by Gajim on flatpak.
+  * Use nickname provided in subscription requests everywhere.
+  * GroupchatOutcasts: Make removing users work.
+  * Chat: Display corrections for /me messages correctly.
+  * Styling: Process URIs when using /me command.
+  * Preview: Align link button correctly.
+  * MUC: Don’t fail on presence from unknown occupants.
+  * SystemStyleListener: Fix handling of colour scheme states.
+  * Styling: Improve address regex.
+  * Styling: Improve uri regex.
+  * Styling: Parse text correctly which contains uris and
+    addresses.
+  * Main: Process window shortcuts when no chat is open.
+  * Restore minimal AdHoc module.
+
+-------------------------------------------------------------------
 Sat Jun 18 09:14:11 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.4.4:

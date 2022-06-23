@@ -379,4 +379,12 @@
     <comment>- Update to version 1.4.4.</comment>
     <requestid>983562</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>5a8c76bacb5ce9b0063e3779b9375d57</srcmd5>
+    <version>1.4.5</version>
+    <time>1655972615</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.5.</comment>
+    <requestid>984248</requestid>
+  </revision>
 </revisionlist>
