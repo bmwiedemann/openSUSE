@@ -921,4 +921,12 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
   - Fix C error and exception handling for snapshots</comment>
     <requestid>977663</requestid>
   </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>23cee42ae620c4853a7fb568382dd6d1</srcmd5>
+    <version>4.0.0~rc4</version>
+    <time>1655972533</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984156</requestid>
+  </revision>
 </revisionlist>

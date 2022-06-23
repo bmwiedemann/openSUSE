@@ -183,6 +183,12 @@ rm -rf %{buildroot}%{_libdir}/*.la
 # Delete unwanted HTML documentation
 rm -rf %{buildroot}%{_docdir}/%{name}/*.html
 
+# move logrotate files from /etc/logrotate.d to /usr/etc/logrotate.d
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
+mv %{buildroot}/%{_sysconfdir}/logrotate.d/transactional-update %{buildroot}%{_distconfdir}/logrotate.d
+%endif
+
 %pre
 %systemd_pre %{name}.service %{name}.timer
 %systemd_pre %{name}-cleanup.service %{name}-cleanup.timer
@@ -240,7 +246,11 @@ rm -rf %{buildroot}%{_docdir}/%{name}/*.html
 %license COPYING
 %doc NEWS
 %doc %{_docdir}/%{name}/transactional-update.txt
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/logrotate.d/transactional-update
+%else
 %config(noreplace) %{_sysconfdir}/logrotate.d/transactional-update
+%endif
 %{_unitdir}/transactional-update.service
 %{_unitdir}/transactional-update.timer
 %{_unitdir}/transactional-update-cleanup.service
