@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8bf5b3710e7f8d759b01c6cba3f2e514</srcmd5>
+    <version>1.23.0</version>
+    <time>1655972602</time>
+    <user>dimstar_suse</user>
+    <comment>removed python3-setuptools: only python3-base is needed</comment>
+    <requestid>984244</requestid>
+  </revision>
+</revisionlist>

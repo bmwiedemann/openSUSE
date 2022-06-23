@@ -1,0 +1,143 @@
+<!--
+# vim: set syntax=xml
+-->
+
+<services>
+  <!--
+   Build Deno and rusty_v8 as completely from
+   scratch as we can. We pull in all the sources
+   through git.
+   TODO: migrate to obs_scm as soon as "exclude"
+   works there.
+   -->
+  <service name="tar_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/denoland/deno</param>
+    <param name="revision">v1.23.0</param>
+    <param name="version">1.23.0</param>
+
+    <!-- remove large docs -->
+    <param name="exclude">docs</param>
+    <param name="exclude">Releases.md</param>
+    <param name="exclude">CODE*.md</param>
+    <param name="exclude">*/README.md</param>
+    <param name="exclude">**/*/*.md</param>
+    <!-- remove things not required for build -->
+    <param name="exclude">.editorconfig</param>
+    <param name="exclude">.github</param>
+    <param name="exclude">.gitattributes</param>
+    <param name="exclude">tools</param>
+    <param name="exclude">third_party</param>
+    <param name="exclude">cli/tests</param>
+    <param name="exclude">test_util/wpt</param>
+    <param name="exclude">std/wasi/testdata</param>
+    <param name="exclude">core/examples</param>
+    <param name="exclude">runtime/examples</param>
+  </service>
+  <service name="tar_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/denoland/rusty_v8</param>
+    <param name="revision">v0.44.1</param>
+    <param name="version">0.44.1</param>
+    <param name="exclude">.github</param>
+
+    <!--
+      mirror pruning of build tree expressed in Cargo.toml
+      except for LICENSE +README, which we ship
+     -->
+    <param name="exclude">*.settings</param>
+    <param name="exclude">*.txt</param>
+    <param name="exclude">AUTHORS</param>
+    <param name="exclude">build/android</param>
+    <param name="exclude">build/chromeos</param>
+    <param name="exclude">build/fuchsia</param>
+
+    <!-- todo: send upstream: deno doesnt run on 32-bit
+    <param name="exclude">v8/src/compiler/backend/ia32</param>
+    <param name="exclude">v8/src/codegen/ia32</param>
+    <param name="exclude">v8/src/builtins/ia32</param>
+    <param name="exclude">v8/src/execution/ia32</param>
+    <param name="exclude">v8/src/diagnostics/ia32</param>
+    <param name="exclude">v8/src/wasm/baseline/ia32</param>
+    <param name="exclude">v8/src/regexp/ia32</param>
+    -->
+
+    <!-- additional platforms that can be dropped todo: send relevant upstream
+    <param name="exclude">build/apple</param>
+    <param name="exclude">build/ios</param>
+    <param name="exclude">build/mac</param>
+    <param name="exclude">build/win</param>
+    <param name="exclude">build/toolchain/win</param>
+    <param name="exclude">build/toolchain/mac</param>
+    <param name="exclude">build/toolchain/apple</param>
+    <param name="exclude">build/toolchain/aix</param>
+    <param name="exclude">build/toolchain/android</param>
+    <param name="exclude">build/toolchain/fuchsia</param>
+    -->
+
+    <!-- todo: send this batch upstream:
+    <param name="exclude">build/config/android</param>
+    <param name="exclude">build/config/ios</param>
+    <param name="exclude">build/config/mac</param>
+    <param name="exclude">build/config/win</param>
+    <param name="exclude">build/config/fuchsia</param>
+    <param name="exclude">build/config/chromeos</param>
+    <param name="exclude">build/config/chromecast</param>
+    <param name="exclude">build/config/aix</param>
+    <param name="exclude">build/config/apple</param>
+    -->
+
+    <param name="exclude">buildtools/checkdeps</param>
+    <param name="exclude">buildtools/clang_format</param>
+    <param name="exclude">buildtools/third_party/libc++/trunk/benchmarks</param>
+    <param name="exclude">buildtools/third_party/libc++/trunk/docs</param>
+    <param name="exclude">buildtools/third_party/libc++/trunk/lib</param>
+    <param name="exclude">buildtools/third_party/libc++/trunk/test</param>
+    <param name="exclude">buildtools/third_party/libc++/trunk/utils</param>
+    <param name="exclude">buildtools/third_party/libc++/trunk/www</param>
+    <param name="exclude">buildtools/third_party/libc++abi/trunk/test</param>
+    <param name="exclude">v8/ChangeLog</param>
+    <param name="exclude">v8/benchmarks/</param>
+    <param name="exclude">v8/docs/</param>
+    <param name="exclude">v8/samples</param>
+
+    <!-- tests are bloated but there isnt a clear way to skip
+    <param name="exclude">v8/test/cctest</param>
+    <param name="exclude">v8/test/mjsunit</param>
+    <param name="exclude">v8/test/webkit</param>
+    <param name="exclude">v8/test/unittests</param>
+    <param name="exclude">v8/test/inspector</param>
+    <param name="exclude">v8/test/debugger</param>
+    <param name="exclude">v8/test/js-perf-test</param>
+    <param name="exclude">v8/test/intl</param>
+    <param name="exclude">v8/test/message</param>
+    -->
+
+    <param name="exclude">v8/tools/*.js</param>
+    <param name="exclude">v8/tools/*.mjs</param>
+    <param name="exclude">v8/tools/*.html</param>
+    <param name="exclude">v8/tools/turbolizer</param>
+
+    <!-- 
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      When trimming the build.... remember that the following files
+      are required to build and cannot be the subject of any
+      exclusion rules:
+
+    v8/test (most things)
+    v8/test/torque/test-torque.tq
+    v8/tools/gen-postmortem-metadata.py
+    v8/tools/js2c.py
+    v8/tools/run.py
+    v8/tools/snapshot/asm_to_inline_asm.py
+    v8/tools/testrunner/utils/dump_build_config.py
+    -->
+
+  </service>
+  <service name="tar" mode="disabled"/>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>
+

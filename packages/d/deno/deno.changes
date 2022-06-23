@@ -1,0 +1,1789 @@
+-------------------------------------------------------------------
+Tue Jun 21 17:22:03 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- apply workaround so that /usr/bin/python resolves to python3
+
+-------------------------------------------------------------------
+Sat Jun 18 21:18:04 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.23.0:
+  * BREAKING: remove Intl.v8BreakIterator (#14864)
+  * BREAKING: Remove unstable Deno.sleepSync (#14719)
+  * Deno.exit() is an alias to self.close() in worker contexts (#14826)
+  * feat(console): pass options and depth to custom inspects (#14855)
+  * feat(ext/crypto): export elliptic keys as "raw" (#14764)
+  * feat(ext/ffi): support passing and returning bigints (#14523)
+  * feat(fmt): remove some unnecessary parens in types (#14841)
+  * feat(fmt): support formatting cjs, cts, mjs, and mts files (#14837)
+  * feat(ops): 'hybrid' ops - sync returning future (#14640)
+  * feat(repl): Add key binding to force a new line (#14536)
+  * feat(runtime/signal): implement SIGINT and SIGBREAK for windows (#14694)
+  * feat(task): add --cwd flag for configuring the working directory (#14823)
+  * feat(task): support redirects, cat, xargs (#14859)
+  * feat(test): update test summary report (#14629)
+  * feat(vendor): support using an existing import map (#14836)
+  * feat: make Child.kill argument optional (#14669)
+  * feat: no type-check by default (#14691)
+  * feat: update to TypeScript 4.7 (#14242)
+  * feat(web): enable deflate-raw compression format (#14863)
+  * fix(check): use "moduleDetection": "force" (#14875)
+  * fix(cli): add config flag to deno info (#14706)
+  * fix(console): constrol inspect() indent with option (#14867)
+  * fix(url): properly indent when inspecting URLs (#14867)
+  * upgrade: v8 10.4.132.5 (#14874)
+- includes 1.22.3:
+  * fix(ext/fetch): remove deprecation of URL in deno fetch (#14769)
+  * fix(http/upgradewebsocket): check for open state for idle timeout (#14813)
+  * fix(lsp): change glob to watch json and jsonc files (#14828)
+  * fix(lsp): handle get diagnostic errors better (#14776)
+  * fix(task): support parsing quotes in a word (#14807)
+  * fix: Format non-error exceptions (#14604)
+  * fix: watch dynamic imports in --watch (#14775)
+- includes 1.22.2
+  * feat(unstable): add Deno.getGid (#14528)
+  * fix(cli/dts): add captureStackTrace to lib.dom.extras (#14748)
+  * fix(ext/crypto): adjust getRandomValues types (#14714)
+  * fix(fmt): do panic for import decl with empty named imports and
+    default import (#14773)
+- includes 1.22.1:
+  * fix(bench): update typo in bench summary (#14672)
+  * fix(cli/dts): change ChildStatus.signal from string to Deno.Signal
+    (#14690)
+  * fix(core): op metrics op_names mismatch (#14716)
+  * fix(core): rethrow exception during structured cloning
+    serialization (#14671)
+  * fix(coverage): do not report transpiled files with no lines (#14699)
+  * fix(ext/websocket): WebSocket dispatch single close event (#13443)
+  * fix(fmt): prevent infinite loop when formatting certain binary
+    expressions (#14725)
+  * fix(runtime): improve permission descriptor validation (#14676)
+  * fix(vendor): handle relative imports when mapped local folder name
+    differs from remote's (#14465)
+  * fix: deno task should actually use current exe for deno command (#14705)
+  * fix: prevent Deno.exit to fail when dispatchEvent tampered (#14665)
+  * fix: read raw stdin to prevent buffering (regression) (#14704)
+- includes 1.22.0:
+  * BREAKING(unstable): Enable Deno namespace in workers by default (#14581)
+  * BREAKING: Remove unstable Deno.applySourceMap API (#14473)
+  * BREAKING: Remove unstable Deno.emit and Deno.formatDiagnostics APIs (#14463)
+  * feat(core): deterministic snapshots (#14037)
+  * feat(core): Revert "core: don't include_str extension js code (#10786)"
+    (#14614)
+  * feat(ext/net): add "NS" record support in Deno.resolveDns API (#14372)
+  * feat(ext/net): add CAA DNS record support in Deno.resolveDns() API (#14624)
+  * feat(ext/net): add support for SOA records in Deno.resolveDns() API (#14534)
+  * feat(ext/net): support NAPTR records in Deno.resolveDns() API (#14613)
+  * feat(ext/net): support full SOA record interface (#14617)
+  * feat(ext/web): add performance.toJSON (#14548)
+  * feat(ext/web): implement static Response.json (#14566)
+  * feat(lsp): enable linting by default (#14583)
+  * feat(ops): #[op(v8)] (#14582)
+  * feat(ops): allow passing scope handle to ops (#14574)
+  * feat(ops): infallible / result-free ops (#14585)
+  * feat(ops): sync Rc<RefCell> (#14438)
+  * feat(runtime/spawn): add AbortSignal support (#14538)
+  * feat(serde_v8): bytes::Bytes support (#14412)
+  * feat(test): Represent uncaught errors (#14513)
+  * feat(test): Show Deno.test() call locations for failures (#14484)
+  * feat(test): change "failures:" headers in test report (#14490)
+  * feat(test): repeat test name if there's user output (#14495)
+  * feat(unstable/task): resolve the current executable for the deno command
+    (#14462)
+  * feat(web): add performance.timeOrigin (#14489)
+  * feat: add --no-config flag (#14555)
+  * feat: add userAgent property to Navigator's prototype (#14415)
+  * feat: return a signal string instead number on ChildStatus (#14643)
+  * feat: subcommands type-check only local files by default (#14623)
+  * fix(core): support classifying ENOTDIR (#14646)
+  * fix(ext/http): error on invalid headers (#14642)
+  * fix(ext/http): make serveHttp compress for Accept-Encoding: deflate, gzip
+    (#14525)
+  * fix(ext/http): no response body reader when cancelling during shutdown
+    (#14653)
+  * fix(ext/http): skip auto-compression if content-encoding present (#14641)
+  * fix(ext/tls): ability to ignore IP-address certificate errors (#14610)
+  * fix(ext/web): throw if listener and signal are null (#14601)
+  * fix(lsp): correct positions in some scenarios (#14359)
+  * fix: base64 encoding of source maps with emojis (#14607)
+  * perf(core): optimize encode on large strings (#14619)
+  * perf(ext/http): faster accept-encoding parsing (#14654)
+  * perf(ext/web): Add fast path for non-streaming TextDecoder (#14217)
+  * perf(serde_v8): fast path for large strings (#14450)
+- includes 1.21.3:
+  * fix(cli): add deno version to manual links (#14505)
+  * fix(core): avoid panic on non-string Error.name (#14529)
+  * fix(ext/tls): finish TLS handshake before shutting down (#14547)
+  * fix(runtime): stdout and stderr encoding on Windows (#14559)
+  * fix(task): accept double hyphen arg immediately following task name (#14567)
+  * fix(test): do not panic on TestOutputPipe::flush when receiver
+    dropped (#14560)
+  * fix(workers): make module evaluation result deterministic (#14553)
+- includes 1.21.2:
+  * fix(cli): add dom.extras lib (#14430)
+  * fix(coverage): exclude .snap files (#14480)
+  * fix(ext/http): explicitly close resource after reading (#14471)
+  * fix(runtime): lossy utf8 readTextFile (#14456)
+  * fix(task): allow hyphen values after task name (#14434)
+  * fix(task): support forwarding lone double hyphen (#14436)
+  * fix(test): actually capture stdout and stderr in workers (#14435)
+  * fix(test/bench): accept file protocol module specifier CLI args (#14429)
+  * fix(vendor): do not panic on relative specifier with scheme-like
+    folder name (#14453)
+  * fix: improve formatting jsdocs with asterisk as first char on line (#14446)
+
+-------------------------------------------------------------------
+Mon May  2 00:14:20 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.21.1:
+  * feat(ext/console): Add string abbreviation size option for
+    "Deno.inspect" (#14384)
+  * fix(ext/console): Compact empty iterables when calling
+    Deno.inspect with compact false (#14387)
+  * feat(ext/http): stream auto resp body compression (#14345)
+  * fix: change shade of "gray" color in eye-catchers (#14309)
+  * fix(bench): eliminate sanitizeExit overhead (#14361)
+  * fix(bench): report pending summary before clearing (#14369)
+  * fix(bench): reset reporter context (#14360)
+  * fix(cli): wrap long line of the env variables help (#14422)
+  * fix(ext/http): truncate read bytes when streaming bodies (#14389)
+  * fix(runtime/js/spawn): Pass stdio options for spawn() and
+    spawnSync() (#14358)
+  * fix(test): capture inherited stdout and stderr for subprocesses
+    in test output (#14395)
+  * fix(test): capture worker stdout and stderr in test output (#14410)
+  * fix(watcher): don't clear screen on start (#14351)
+  * fix(workers): Make worker.terminate() not block the
+    current thread (#13941)
+  * fix: deno task forward double hyphen (#14419)
+  * perf(ext/http): fast path for uncompressed bodies (#14366)
+  * perf(ext/http): faster is_content_compressible (#14383)
+  * perf(ext/http): optimize ReadableStreams backed by a resource (#14346)
+  * perf(runtime): read entire files in single ops (#14261)
+  * perf(serde_v8): zero-copy StringOrBuffer (#14381)
+
+-------------------------------------------------------------------
+Thu Apr 21 17:06:27 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.21.0:
+  * feat(bench): update API, new console reporter (#14305)
+  * feat(cli/fmt): ignore .git folder when formatting files (#14138)
+  * feat(core): Add initial support for realms (#14019)
+  * feat(ext/net): Deno.upgradeHttp handles unix connections (#13987)
+  * feat(ext/web): add globalThis.reportError() (#13799)
+  * feat(repl): Don't type check when importing modules (#14112)
+  * feat(repl): add --eval-file flag to execute a script file on
+    startup (#14247)
+  * feat(repl): add global clear() function (#14332)
+  * feat(runtime): two-tier subprocess API (#11618)
+  * feat(test): Add name, origin and parent to Deno.TestContext (#14007)
+  * feat(test): Improve testing report output (#14255)
+  * feat(test): format user code output (#14271)
+  * feat(test): skip internal stack frames for errors (#14302)
+  * feat(test): use structured data for JavaScript errors in tests (#14287)
+  * feat: Add "deno check" subcommand for type checking (#14072)
+  * feat: Add DENO_NO_PROMPT variable (#14209)
+  * feat: Better formatting for AggregateError (#14285)
+  * fix(cli/emit): Check JS roots with // @ts-check (#14090)
+  * fix(cli/tools/test): Prefix test module paths with ./ (#14301)
+  * fix(fmt): regression where some short if stmt headers being split
+     on multiple lines (#14292)
+  * fix(permissions): fallback to denied access if the permission
+    prompt fails (#14235)
+  * fix: --watch was losing items (#14317)
+  * fix: panic when trying to pledge permissions before restoring
+    previous pledge (#14306)
+  * perf(fmt/lint): incremental formatting and linting (#14314)
+  * perf(runtime): bypass tokio file and bump op buffer size to 64K (#14319)
+  * perf: move Deno.writeTextFile and like functions to Rust (#14221)
+  * upgrade: rusty_v8 0.42.0 (#14334)
+
+-------------------------------------------------------------------
+Wed Apr 20 22:23:15 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.20.6:
+  * fix(serde_v8): more robust number deserialization (#14216)
+  * fix(test): Don't error on missing op details (#14184)
+  * fix: upgrade to swc_ecmascript 0.143 (#14238)
+
+-------------------------------------------------------------------
+Fri Apr  8 19:59:34 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.20.5:
+  * feat(lsp/unstable): add experimental testing API (#13798)
+  * feat(lsp/unstable): support tasks in the config file (#14139)
+  * feat(unstable): add ref/unref to Listener (#13961)
+  * fix(cli/install): preserve compat flag (#14223)
+  * fix(ext/crypto): check extractable in exportKey (#14222)
+- including v1.20.4:
+  * fix(compile): follow redirects when resolving (#14161)
+  * fix(ext/fetch): extend deprecated fetch() overload with
+    string | Request (#14134)
+  * fix(lsp): watch .jsonc files (#14135)
+  * fix(runtime/ops/signal.rs): Add Solaris signals (#13931)
+  * fix(task): handle PATHEXT with trailing semi-colon (#14140)
+  * perf: micro-optimize core.encode (#14120)
+
+-------------------------------------------------------------------
+Sun Mar 27 16:14:58 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.20.3:
+  * fix(ext/fetch): deprecate URL as the first arg in types (#14113)
+  * fix(ext/ffi): enforce unstable check on ops (#14115)
+  * fix(runtime): do not modify user provided cmd array in Deno.run (#14109)
+- includes changes from 1.20.2:
+  * feat(lsp): support deno.enablePaths setting (#13978)
+  * fix(bench): require --unstable flag in JavaScript (#14091)
+  * fix(test): don't error on missing op details (#14074)
+  * fix(compat): Changes an instance of collect::<Vec<_>>().join("") to
+    collect::() (#14082)
+  * fix(tests): do not use global env vars in install tests (#14078)
+  * fix(ext/fetch): Connect async error stack with user code (#13899)
+  * fix(unstable): upgrade deno_task_shell to 0.2 (#14073)
+  * fix: upgrade to swc_ecmascript 0.137.0 (#14067)
+  * fix(fetch): Fix uncaught rejection panic with
+    WebAssembly.instantiateStreaming (#13925)
+  * fix(core): variadic opSync/opAsync (#14062)
+  * fix(runtime): actually don't inherit runtime permissions (#14024)
+  * fix(ext/console): fix error with a Proxy of a Map (#14032)
+  * fix(ops): throw TypeError on op return failure (#14033)
+  * fix(cli): improve deno compile error messages (#13944)
+  * fix(cli): add support for DENO_CERT in upgrade command (#13862)
+  * fix(config-file): fix config-file.v1.json schema to allow colons in the task
+    name (#14013)
+  * perf(http): avoid Set.has() when closing connection resource (#14085)
+  * perf(http): avoid checking promise every request (#14079)
+  * perf(http): avoid per header alloc (#14051)
+
+-------------------------------------------------------------------
+Fri Mar 18 02:00:07 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.20.1:
+  * BREAKING: don't inherit permissions by default (#13668)
+  * feat(cli): support data url (#13667)
+  * feat(cli): update to TypeScript 4.6.2 (#13474)
+  * feat(compat): CJS/ESM interoperability (#13553)
+  * feat(core): Event loop middlewares for Extensions (#13816)
+  * feat(core): codegen ops (#13861)
+  * feat(ext/crypto): AES-GCM support for 128bit IVs (#13805)
+  * feat(ext/fetch): Allow Response status 101 (#13969)
+  * feat(ext/http): auto-compression of fixed response bodies (#13769)
+  * feat(ext/net): Use socket2 crate to create TcpListener (#13808)
+  * feat(ext/net): support cert, key options in listenTls (#13740)
+  * feat(ext/web): Add AbortSignal.timeout() (#13687)
+  * feat(net): add Deno.UnixConn interface (#13787)
+  * feat(ops): custom arity (#13949)
+  * feat(ops): optional OpState (#13954)
+  * feat(unstable): Add Deno.upgradeHttp API (#13618)
+  * feat: "deno bench" subcommand (#13713)
+  * feat: "deno task" subcommand (#13725)
+  * feat: Add Deno.TcpConn class, change return type from Deno.connect (#13714)
+  * feat: allow specification of import map in config file (#13739)
+  * feat: deno test --trace-ops (#13770)
+  * fix(compat): cjs/esm interop for dynamic imports (#13792)
+  * fix(core): Don't override structured clone error messages from V8 (#13942)
+  * fix(core): nuke Deno.core.ops pre-snapshot (#13970)
+  * fix(ext/crypto): handle JWK import with "use" (#13912)
+  * fix(ext/crypto): use EcKeyImportParams dictionary (#13894)
+  * fix(ext/http): drop content-length header on compression (#13866)
+  * fix(info): print deno info paths with unescaped backslashes on windows (#13847)
+  * fix(test): skip typechecking for blocks inside HTML comments (#13889)
+  * fix: shell completion hints (#13876)
+  * fix: upgrade reqwest to 0.11.10 (#13951)
+  * perf(web): Optimize TextDecoder by adding a new U16String type (#13923)
+  * perf(web): optimize Blob.text and Blob.arrayBuffer (#13981)
+  * perf(web): use DOMString for BlobParts (#13979)
+  * perf: opt-level-3 all of ext (#13940)
+- includes v1.19.3:
+  * fix(ci): restore compatibility with older glibc (#13846)
+  * fix(test): typecheck blocks annotated with long js/ts notations (#13785)
+  * perf(core): micro-optimize OpsTracker (#13868)
+  * perf(ext/web): optimize atob/btoa (#13841)
+  * perf(serde_v8): avoid SerializablePkg allocs (#13860)
+  * perf(serde_v8): optimize ByteString deserialization (#13853)
+- includes v1.19.2:
+  * fix(cli): disable config discovery for remote script (#13745)
+  * fix(repl): fix null eval result (#13804)
+  * fix(runtime): disable console color for non tty stdout (#13782)
+  * fix(test): use --no-prompt by default (#13777)
+- includes v1.19.1:
+  * feat(ext/ffi/unstable): Support read only global statics (#13662)
+  * fix(compile): Support import maps (#13756)
+  * fix(upgrade): move the file permission check to the beginning of the upgrade
+    process (#13726)
+  * fix(vendor): do not add absolute specifiers to scopes (#13710)
+
+-------------------------------------------------------------------
+Thu Feb 17 23:40:15 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.19.0:
+  * feat: Add Deno.FsFile, deprecate Deno.File (#13660)
+  * feat: Add hint to permission prompt to display allow flag (#13695)
+  * feat: deno vendor (#13670)
+  * feat: never prompt for hrtime permission (#13696)
+  * feat: permission prompt by default (#13650)
+  * feat(compat): support --compat in web workers (#13629)
+  * feat(compile): Replace bundling with eszip in deno compile (#13563)
+  * feat(coverage): add "--output" flag (#13289)
+  * feat(ext/console): better circular information in object inspection (#13555)
+  * feat(ext/http): add support for unix domain sockets (#13628)
+  * feat(ext/net): Add Conn.setNoDelay and Conn.setKeepAlive (#13103)
+  * feat(ext/web): add CompressionStream API (#11728)
+  * feat(lsp): add redirect diagnostic and quick fix (#13580)
+  * feat(lsp): provide completions from import map if available (#13624)
+  * feat(lsp): support linking to symbols in JSDoc on hover (#13631)
+  * feat(runtime): stabilize addSignalListener API (#13438)
+  * feat(runtime): web streams in fs & net APIs (#13615)
+  * feat(test): better errors for resource sanitizer (#13296)
+  * feat(test): improved op sanitizer errors + traces (#13676)
+  * feat(watch): add "--no-clear-screen" flag (#13454)
+  * fix(compat): ESM resolver for package subpath (#13599)
+  * fix(ext/console): fix uncaught TypeError in css styling (#13567)
+  * fix(ext/console): print circular ref indicator in cyan (#13684)
+  * fix(ext/crypto): optional additionalData in encrypt/decrypt (#13669)
+  * fix(ext/crypto): support EC p256 private key material in exportKey (#13547)
+  * fix(lsp): do not panic getting root_uri to auto discover configuration file
+    (#13603)
+  * fix(lsp): independent diagnostic publishing should include all diagnostic
+    sources on each publish (#13483)
+  * fix(lsp): op_exists handles bad specifiers (#13612)
+- includes changes from v1.18.2:
+  * feat(unstable): add Deno.getUid (#13496)
+  * fix: don't crash when $HOME is a relative path (#13581)
+  * fix(cli): handle extensionless imports better (#13548)
+  * fix(cli): handle local files with query params on emit (#13568)
+  * fix(cli/dts/webgpu): make GPUBlendComponent properties optional (#13574)
+  * fix(ext/crypto): enforce 128bits tagLength for AES-GCM decryption (#13536)
+  * fix(ext/crypto): utf16 jwk encoding (#13535)
+  * fix(lsp): properly display x-deno-warning with redirects (#13554)
+  * fix(lsp): regression where certain diagnostics were showing for disabled files
+    (#13530)
+  * fix(repl): tab completions (#13540)
+  * perf(lsp): cancellable TS diagnostics (#13565)
+
+-------------------------------------------------------------------
+Mon Jan 31 17:26:54 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.18.1:
+  * feat(unstable): add Deno.networkInterfaces (#13475)
+  * fix(ext/crypto): duplicate RsaHashedImportParams types (#13466)
+  * fix(lsp): respect DENO_CERT and other options related to TLS certs (#13467)
+  * perf(lsp): improve some tsc op hot paths (#13473)
+  * perf(lsp): independent diagnostic source publishes (#13427)
+
+-------------------------------------------------------------------
+Fri Jan 21 20:28:25 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.18.0:
+  * feat: auto-discover config file (#13313)
+  * feat: output cause on JS runtime errors (#13209)
+  * feat: stabilize test steps API (#13400)
+  * feat(cli, runtime): compress snapshots (#13320)
+  * feat(cli): add ignore directives to bundled code (#13309)
+  * feat(compat) preload Node.js built-in modules in global vars REPL (#13127)
+  * feat(ext/crypto): implement AES-GCM decryption (#13319)
+  * feat(ext/crypto): implement AES-GCM encryption (#13119)
+  * feat(ext/crypto): implement AES-KW for wrapKey/unwrapKey (#13286)
+  * feat(ext/crypto): implement pkcs8/JWK for P-384 curves (#13154)
+  * feat(ext/crypto): implement pkcs8/spki/jwk exportKey for ECDSA and ECDH
+    (#13104)
+  * feat(ext/crypto): JWK support for unwrapKey/wrapKey (#13261)
+  * feat(ext/crypto): support AES-CTR encrypt/decrypt (#13177)
+  * feat(ext/crypto): support importing raw EC keys (#13079)
+  * feat(ext/ffi): infer symbol types (#13221)
+  * feat(ext/ffi): support alias names for symbol definitions (#13090)
+  * feat(ext/ffi): UnsafeFnPointer API (#13340)
+  * feat(ext/websocket): add header support to WebSocketStream (#11887)
+  * feat(ext/websocket): server automatically handle ping/pong for
+    incoming WebSocket (#13172)
+  * feat(lsp): provide registry details on hover if present (#13294)
+  * feat(runtime): add op_network_interfaces (#12964)
+  * feat(serde_v8): deserialize ArrayBuffers (#13436)
+  * feat(streams): reject pending reads when releasing reader (#13375)
+  * feat(test): Add support for "deno test --compat" (#13235)
+  * fix(cli): Don't strip shebangs from modules (#13220)
+  * fix(cli): fix deno install --prompt (#13349)
+  * fix(cli/dts): add NotSupported error type (#13432)
+  * fix(ext/console): don't depend on globalThis present (#13387)
+  * fix(ext/crypto): validate maskGenAlgorithm asn1 in importKey (#13421)
+  * fix(ext/ffi): pointer type can accept null (#13335)
+  * fix(fmt): markdown formatting should not remove backslashed backslash
+    at start of paragraph (#13429)
+  * fix(lsp): better handling of registry config errors (#13418)
+  * fix(runtime): don't crash when window is deleted (#13392)
+  * fix(streams): update TypeError message for pending reads when releasing
+    reader (#13376)
+  * fix(tsc): Add typings for Intl.ListFormat (#13301)
+
+
+-------------------------------------------------------------------
+Sun Jan 16 18:03:34 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.17.3:
+  * fix: Get lib.deno_core.d.ts to parse correctly (#13238)
+  * fix: expose "Deno.memoryUsage()" in worker context (#13293)
+  * fix: install shim with --allow-all should not output each permission
+    individually (#13325)
+  * fix(compile): fix output flag behaviour on compile command (#13299)
+  * fix(coverage): don't type check (#13324)
+  * fix(coverage): merge coverage ranges (#13334)
+  * fix(ext/web): handle no arguments in atob (#13341)
+  * fix(serde_v8): support #[serde(default)] (#13300)
+
+-------------------------------------------------------------------
+Sat Jan  8 18:32:45 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.17.2:
+  * fix(cli): include JSON modules in bundle (#13188)
+  * fix(core): inspector works if no "Runtime.runIfWaitingForDebugger"
+    message is sent (#13191)
+  * fix(coverage): use only string byte indexes and 0-indexed
+    line numbers (#13190)
+  * fix(doc): Make private types which show up in the rustdocs public (#13230)
+  * fix(ext/console): map basic css color keywords to ansi (#13175)
+  * fix(ext/crypto) - exportKey JWK for AES/HMAC must use base64url (#13264)
+  * fix(ext/crypto) include AES-CTR for deriveKey (#13174)
+  * fix(ext/crypto): use forgiving base64 encoding for JWK (#13240)
+  * fix(ext/ffi): throw errors instead of panic (#13283)
+  * fix(lsp): add code lens for tests just using named functions (#13218)
+  * fix(lsp): better handling of folders in registry completions (#13250)
+  * fix(lsp): handle repeating patterns in registry correctly (#13275)
+  * fix(lsp): properly generate data URLs for completion items (#13246)
+  * fix(signals): prevent panic when listening to forbidden signals (#13273)
+  * fix: support mts, cjs & cts files for deno test & deno fmt (#13274)
+  * fix: upgrade swc_ecmascript to 0.103 (#13284)
+
+-------------------------------------------------------------------
+Sat Dec 25 20:13:09 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.17.1:
+  * feat(lsp, unstable): add code lens for debugging tests (#13138)
+  * feat(lsp, unstable): supply accept header when fetching registry config
+    (#13159)
+  * fix: inspector prompts (#13123)
+  * fix(coverage): Split sources by char index (#13114)
+  * fix(ext/ffi): use c_char instead of i8 for reading strings (#13118)
+  * fix(ext/websocket): WebSocketStream don't error with "sending after closing"
+    when closing (#13134)
+  * fix(repl): support assertions on import & export declarations (#13121)
+
+-------------------------------------------------------------------
+Fri Dec 17 18:00:20 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.17.0:
+  * feat: add --no-check=remote flag (#12766)
+  * feat: Add support for import assertions and JSON modules (#12866)
+  * feat: REPL import specifier auto-completions (#13078)
+  * feat: support abort reasons in Deno APIs and WebSocketStream (#13066)
+  * feat: support compat mode in REPL (#12882)
+  * feat(cli): update to TypeScript 4.5 (#12410)
+  * feat(core): Add ability to "ref" and "unref" pending ops (#12889)
+  * feat(core): intercept unhandled promise rejections (#12910)
+  * feat(ext/crypto): implement unwrapKey (#12539)
+  * feat(ext/crypto): support importKey in SPKI format (#12921)
+  * feat(ext/crypto): support exporting RSA JWKs (#13081)
+  * feat(ext/crypto): support importing ECSDA and ECDH (#13088)
+  * feat(ext/crypto): support importing exporting AES JWK keys (#12444)
+  * feat(ext/crypto): support importing RSA JWKs (#13071)
+  * feat(ext/fetch): Support WebAssembly.instantiateStreaming for file fetches (#12901)
+  * feat(ext/fetch): support abort reasons in fetch (#13106)
+  * feat(ext/ffi): implement UnsafePointer and UnsafePointerView (#12828)
+  * feat(ext/net): ALPN support in Deno.connectTls() (#12786)
+  * feat(ext/net): enable sending to broadcast address (#12860)
+  * feat(ext/timers): add refTimer, unrefTimer API (#12953)
+  * feat(ext/web): implement AbortSignal.prototype.throwIfAborted() (#13044)
+  * feat(lsp): add type definition provider (#12789)
+  * feat(lsp): add workspace symbol provider (#12787)
+  * feat(lsp): improve registry completion suggestions (#13023)
+  * feat(lsp): registry suggestion cache respects cache headers (#13010)
+  * feat(repl): add --unsafe-ignore-certificate-errors flag (#13045)
+  * feat(runtime): add op_set_exit_code (#12911)
+  * feat(streams): support abort reasons in streams (#12991)
+  * feat(test): Add more overloads for "Deno.test" (#12749)
+  * feat(watch): clear screen on each restart (#12613)
+  * feat(watch): support watching external files (#13087)
+  * fix: support "other" event type in FSWatcher (#12836)
+  * fix(cli): config file should resolve paths relative to the config file (#12867)
+  * fix(cli): don't add colors for non-tty outputs (#13031)
+  * fix(cli): don't cache .tsbuildinfo unless emitting (#12830)
+  * fix(cli): fix slow test, unbreak ci (#12897)
+  * fix(cli): skip bundling for pre-bundled code in "compile" (#12687)
+  * fix(ext/crypto): throw on key & op algo mismatch (#12838)
+  * fix(ext/crypto): various cleanup in JWK imports (#13092)
+  * fix(ext/net): make unix and tcp identical on close (#13075)
+  * fix(ext/timers): fix flakiness of httpConnAutoCloseDelayedOnUpgrade test (#13017)
+  * fix(ext/web): set location undefined when --location is not specified (#13046)
+  * fix(lsp): handle import specifier not having a trailing quote (#13074)
+  * fix(lsp): lsp should respect include/exclude files in format config (#12876)
+  * fix(lsp): normalize urls in did_change_watched_files (#12873)
+  * fix(lsp): provide diagnostics for import assertions (#13105)
+  * fix(workers): Make worker.terminate() not immediately kill the isolate (#12831)
+
+-------------------------------------------------------------------
+Sat Dec  4 15:57:33 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.16.4:
+  * fix(core): Wake up the runtime if there are ticks scheduled (#12933)
+  * fix(core): throw on invalid callConsole args (#12973)
+  * fix(ext/crypto): throw on key & op algo mismatch (#12838)
+  * fix(test): Improve reliability of deno test's op sanitizer with timers (#12934)
+  * fix(websocket): bad rid on WebSocketStream abort (#12913)
+  * fix(workers): Make worker.terminate() not immediately kill the isolate (#12831)
+
+-------------------------------------------------------------------
+Thu Nov 25 15:10:46 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.16.3:
+  * fix(cli): config file should resolve paths relative to the config file
+    (#12867)
+  * fix(cli): don't cache .tsbuildinfo unless emitting (#12830)
+  * fix(cli/compile): skip bundling for pre-bundled code (#12687)
+  * fix(core): don't panic when evaluating module after termination (#12833)
+  * fix(core): keep event loop alive if there are ticks scheduled (#12814)
+  * fix(ext/crypto): don't panic on decryption failure (#12840)
+  * fix(ext/fetch): HTTP/1.x header case got discarded on the wire (#12837)
+  * fix(fmt): markdown formatting was incorrectly removing some non-breaking space
+    html entities (#12818)
+  * fix(lsp): lsp should respect include/exclude files in format config (#12876)
+  * fix(lsp): normalize urls in did_change_watched_files (#12873)
+  * fix(lsp): tag deprecated diagnostics properly (#12801)
+  * fix(lsp): use lint exclude files list from the config file (#12825)
+  * fix(runtime): support "other" event type in FSWatcher (#12836)
+  * fix(runtime): support reading /proc using readFile (#12839)
+  * fix(test): do not throw on error.errors.map (#12810)
+- includes v1.16.2:
+  * feat(unstable/test): include test step pass/fail/ignore counts in final report (#12432)
+  * fix(cli): short-circuit in prepare_module_load() (#12604)
+  * fix(lsp): retain module dependencies when parse is invalid (#12782)
+  * fix(test): support typechecking docs with CRLF line endings (#12748)
+  * fix(transpile): do not panic on swc_ecma_utils::HANDLER diagnostics (#12773)
+- includes v1.16.1:
+  * feat(core): streams (#12596)
+  * fix(crypto): handling large key length in HKDF (#12692)
+  * fix: add typings for AbortSignal.reason (#12730)
+  * fix(http): non ascii bytes in response (#12728)
+  * fix: update unstable Deno props for signal API (#12723)
+- includes v1.16.0
+  * BREAKING(ext/web): remove ReadableStream.getIterator (#12652)
+  * feat(cli): support React 17 JSX transforms (#12631)
+  * feat(compat): add .code to dyn import error (#12633)
+  * feat(compat): integrate import map and classic resolutions in ESM resolution (#12549)
+  * feat(ext/console): Display error.cause in console (#12462)
+  * feat(ext/fetch): support fetching local files (#12545)
+  * feat(ext/net): add TlsConn.handshake() (#12467)
+  * feat(ext/web): BYOB support for ReadableStream (#12616)
+  * feat(ext/web): WritableStreamDefaultController.signal (#12654)
+  * feat(ext/web): add AbortSignal.reason (#12697)
+  * feat(ext/webstorage): use implied origin when --location not set (#12548)
+  * feat(runtime): add Deno.addSignalListener API (#12512)
+  * feat(runtime): give OS errors .code attributes (#12591)
+  * feat(test): better formatting for test elapsed time (#12610)
+  * feat(runtime): Stabilize Deno.TestDefinition.permissions (#12078)
+  * feat(runtime): stabilize Deno.startTls (#12581)
+  * feat(core): update to V8 9.7 (#12685)
+  * fix(cli): do not cache emit when diagnostics present (#12541)
+  * fix(cli): don't panic when mapping unknown errors (#12659)
+  * fix(cli): lint/format all discoverd files on each change (#12518)
+  * fix(cli): linter/formater watches current directory without args (#12550)
+  * fix(cli): no-check respects inlineSources compiler option (#12559)
+  * fix(cli/upgrade): nice error when unzip is missing (#12693)
+  * fix(encoding): support additional encoding labels (#12586)
+  * fix(ext/fetch): Replace redundant local variable with inline return statement (#12583)
+  * fix(ext/http): allow multiple values in upgrade header for websocket (#12551)
+  * fix(ext/net): expose all tls ops (#12699)
+  * fix(fetch): set content-length for empty POST/PUT (#12703)
+  * fix(fmt): reduce likelihood of deno fmt panic for file with multi-byte chars (#12623)
+  * fix(fmt/lint): strip unc paths on Windows when displaying file paths in lint and fmt (#12606)
+  * fix(lint): use recommended tag if there is no tags in config file or flags (#12644)
+  * fix(lint): use recommended tags when no tags specified in config, but includes or excludes are (#12700)
+  * fix(lsp): cache unsupported import completion origins (#12661)
+  * fix(lsp): display module types only dependencies on hover (#12683)
+  * fix(lsp): display signature docs as markdown (#12636)
+  * fix(runtime): require full read and write permissions to create symlinks (#12554)
+  * fix(tls): Make TLS clients support HTTP/2 (#12530)
+  * fix(webidl): Don't throw when converting a detached buffer source (#12585)
+  * fix(workers): Make importScripts() use the same HTTP client as fetch (#12540)
+  * fix: Deno.emit crashes with BorrowMutError (#12627)
+  * fix: support verbatim UNC prefixed paths on Windows (#12438)
+  * fix: typings for BYOB stream readers (#12651)
+  * perf(core): optimize waker capture in AsyncRefCell (#12332)
+  * perf(encoding): avoid copying the input data in TextDecoder (#12573)
+  * perf(http): encode string bodies in op-layer (#12451)
+    perf: optimize some important crates more aggressively (#12332)
+
+-------------------------------------------------------------------
+Sun Oct 31 18:02:53 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.15.3:
+  * feat(serde_v8): StringOrBuffer (#12503)
+  * feat(serde_v8): allow all values to deserialize to unit type (#12504)
+  * fix(cli/dts): update std links for deprecations (#12496)
+  * fix(cli/tests): flaky Deno.watchFs() tests (#12485)
+  * fix(core): avoid op_state.borrow_mut() for OpsTracker (#12525)
+  * fix(core/bindings): use is_instance_of_error() instead of is_native_error()
+    (#12479)
+  * fix(ext/net): fix TLS bugs and add 'op_tls_handshake' (#12501)
+  * fix(ext/websocket): prevent 'closed normally' panic (#12437)
+  * fix(lsp): formatting should error on certain additional swc diagnostics
+    (#12491)
+  * fix: declare web types as global (#12497)
+- includes v1.15.2:
+  * feat(unstable): Node CJS and ESM resolvers for compat mode (#12424)
+  * fix(cli): re-enable allowSyntheticDefaultImports for tsc (#12435)
+  * fix(cli/fmt_errors): don't panic on source line formatting errors (#12449)
+  * fix(cli/tests): move worker test assertions out of message handlers (#12439)
+  * fix(console): fix display of primitive wrapper objects (#12425)
+  * fix(core): avoid polling future after cancellation (#12385)
+  * fix(core): poll async ops eagerly (#12385)
+  * fix(fmt): keep parens for JS doc type assertions (#12475)
+  * fix(fmt): should not remove parens around sequence expressions (#12461)
+  * fix(runtime/ops/worker_host): move permission arg parsing to Rust (#12297)
+- includes v1.15.1:
+  * fix: --no-check not properly handling code nested in TS expressions (#12416)
+  * fix: bundler panic when encountering export specifier with an alias (#12418)
+- includes v1.15.0:
+  * feat: add --compat flag to provide built-in Node modules (#12293)
+  * feat: provide ops details for ops sanitizer failures (#12188)
+  * feat: Show the URL of streaming WASM modules in stack traces (#12268)
+  * feat: Stabilize Deno.kill and Deno.Process.kill (#12375)
+  * feat: stabilize Deno.resolveDns (#12368)
+  * feat: stabilize URLPattern API (#12256)
+  * feat: support serializing WebAssembly.Module objects (#12140)
+  * feat(cli/uninstall): add uninstall command (#12209)
+  * feat(ext/crypto): decode RSAES-OAEP-params with default values (#12292)
+  * feat(ext/crypto): export spki for RSA (#12114)
+  * feat(ext/crypto): implement AES-CBC encryption & decryption (#12123)
+  * feat(ext/crypto): implement deriveBits for ECDH (p256) (#11873)
+  * feat(ext/crypto): implement deriveKey (#12117)
+  * feat(ext/crypto): implement wrapKey (#12125)
+  * feat(ext/crypto): support importing raw ECDSA keys (#11871)
+  * feat(ext/crypto): support importing/exporting raw AES keys (#12392)
+  * feat(ext/ffi): add support for buffer arguments (#12335)
+  * feat(ext/ffi): Non-blocking FFI (#12274)
+  * feat(ext/net): relevant errors for resolveDns (#12370)
+  * feat(lint): add support for --watch flag (#11983)
+  * feat(runtime): allow passing extensions via Worker options (#12362)
+  * feat(runtime): improve error messages of runtime fs (#11984)
+  * feat(tls): custom in memory CA certificates (#12219)
+  * feat(unstable/test): imperative test steps API (#12190)
+  * feat(web): Implement DOMException's stack property (#12294)
+  * fix: Don't panic when a worker is closed in the reactions to a wasm operation (#12270)
+  * fix: worker environment permissions should accept an array (#12250)
+  * fix(core/runtime): sync_ops_cache if nuked Deno ns (#12302)
+  * fix(ext/crypto): decode id-RSASSA-PSS with default params (#12147)
+  * fix(ext/crypto): key generation based on AES key length (#12146)
+  * fix(ext/crypto): missing Aes key typings (#12307)
+  * fix(ext/crypto): use NotSupportedError for importKey() (#12289)
+  * fix(ext/fetch): avoid panic when header is invalid (#12244)
+  * fix(ext/ffi): don't panic in dlopen (#12344)
+  * fix(ext/ffi): formatting dlopen errors on Windows (#12301)
+  * fix(ext/ffi): missing "buffer" type definitions (#12371)
+  * fix(ext/ffi): types for nonblocking FFI (#12345)
+  * fix(ext/http): merge identical if/else branches (#12269)
+  * fix(ext/net): should not panic when listening to unix abstract address (#12300)
+  * fix(ext/web): Format DOMException stack property (#12333)
+  * fix(lsp): lint diagnostics respect config file (#12338)
+  * fix(repl): avoid panic when assigned to globalThis (#12273)
+  * fix(runtime): Declare Window.self and DedicatedWorkerGlobalScope.name with
+  * util.writable() (#12378)
+  * fix(runtime): don't equate SIGINT to SIGKILL on Windows (#12356)
+  * fix(runtime): Getting navigator.hardwareConcurrency on workers
+    shouldn't throw (#12354)
+  * fix(runtime/js/workers): throw errors instead of using an op (#12249)
+  * fix(runtime/testing): format aggregate errors (#12183)
+  * perf(core): use opcall() directly (#12310)
+  * perf(fetch): fast path Uint8Array in extractBody() (#12351)
+  * perf(fetch): optimize fillHeaders() key iteration (#12287)
+  * perf(web): ~400x faster http header trimming (#12277)
+  * perf(web): optimize byteLowerCase() (#12282)
+  * perf(web/Event): move last class field to constructor (#12265)
+  * perf(webidl): fix typo from #12286 (#12336)
+  * perf(webidl): inline ResponseInit converter (#12285)
+  * perf(webidl): optimize createDictionaryConverter() (#12279)
+  * perf(webidl): optimize createRecordConverter() (#12286)
+  * perf(webidl/DOMString): don't wrap string primitives (#12266)
+- update deno_std to 0.111.0:
+  * BREAKING(fs): deprecate exists and existsSync (#1364)
+  * BREAKING(hash): deprecate std/hash (#1350)
+  * BREAKING(io): reorganize modules (#813)
+  * feat: streams utilities (#1141)
+  * feat(node): Add dns and net modules (#1375)
+  * feat(node): first iteration of http (#1383)
+  * feat(node): update built-in modules in node/module.ts (#1378)
+  * feat(node/crypto): add randomFillSync an randomFill (#1340)
+  * feat(node/crypto): add randomInt (#1356)
+  * feat(node/http): Export STATUS_CODES and METHODS (#1357)
+  * feat(node/url): add support for UNC path (#1365)
+  * fix(async/delay): reject if signal is already aborted (#1363)
+  * fix(encoding/base64url): allow passing strings to encode (#1361)
+  * fix(node): typo from #1380 (#1381)
+  * fix(node/url): improve compatibility of fileURLToPath (#1342)
+  * perf(bytes): switch equals to simd for large byte arrays (#1349)
+
+-------------------------------------------------------------------
+Sun Oct 10 06:43:49 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.14.3:
+  * feat(core): implement Deno.core.isProxy() (#12288)
+  * fix(core/runtime): sync_ops_cache if nuked Deno ns (#12302)
+  * fix(ext/crypto): decode id-RSASSA-PSS with default params (#12147)
+  * fix(ext/crypto): missing Aes key typings (#12307)
+  * fix(ext/crypto): use NotSupportedError for importKey() (#12289)
+  * fix(ext/fetch): avoid panic when header is invalid (#12244)
+  * fix(ext/http): merge identical if/else branches (#12269)
+  * fix(ext/net): should not panic when listening to unix abstract address
+    (#12300)
+  * fix(repl): avoid panic when assigned to globalThis (#12273)
+  * fix(runtime/js/workers): throw errors instead of using an op (#12249)
+  * fix(runtime/testing): format aggregate errors (#12183)
+  * fix: Don't panic when a worker is closed in the reactions to a wasm operation.
+    (#12270)
+  * fix: worker environment permissions should accept an array (#12250)
+  * perf(core): use opcall() directly (#12310)
+  * perf(fetch): optimize fillHeaders() key iteration (#12287)
+  * perf(web): optimize byteLowerCase() (#12282)
+  * perf(web): ~400x faster http header trimming (#12277)
+  * perf(web/Event): move last class field to constructor (#12265)
+  * perf(webidl): optimize createDictionaryConverter() (#12279)
+  * perf(webidl): optimize createRecordConverter() (#12286)
+  * perf(webidl/DOMString): don't wrap string primitives (#12266)
+- includes v1.14.2:
+  * feat(cli/fmt): support more markdown extensions (#12195)
+  * fix(cli/permissions): ensure revoked permissions are no longer granted
+    (#12159)
+  * fix(ext/http): fortify "is websocket?" check (#12179)
+  * fix(ext/http): include port number in h2 urls (#12181)
+  * fix(ext/web): FileReader error messages (#12218)
+  * fix(ext/webidl): correctly apply [SymbolToStringTag] to interfaces (#11851)
+  * fix(http): panic when responding to a closed conn (#12216)
+  * fix(workers): Don't panic when a worker's parent thread stops running (#12156)
+  * fix: subprocess kill support on windows (#12134)
+  * perf(ext/fetch): Use the WebIDL conversion to DOMString rather than USVString
+    for Response constructor (#12201)
+  * perf(ext/fetch): skip USVString webidl conv on string constructor (#12168)
+  * perf(fetch): optimize InnerBody constructor (#12232)
+  * perf(fetch): optimize newInnerRequest blob url check (#12245)
+  * perf(fetch/Response): avoid class fields (#12237)
+  * perf(fetch/headers): optimize appendHeader (#12234)
+  * perf(ops): optimize permission check (#11800)
+  * perf(web): optimize Event constructor (#12231)
+  * perf(webidl/ByteString): 3x faster ASCII check (#12230)
+  * quickfix(ci): only run "Build product size info" on main/tag (#12184)
+  * upgrade serde_v8 and rusty_v8 (#12175)
+
+-------------------------------------------------------------------
+Sun Sep 26 09:22:08 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.14.1:
+  * fix(cli): don't ignore diagnostics about for await (#12116)
+  * fix(cli): move Deno.flock and Deno.funlock to
+    unstable types (#12138)
+  * fix(cli/fmt_errors): Abbreviate long data URLs in
+    stack traces (#12127)
+  * fix(config-schema): correct default value of "lib" (#12145)
+  * fix(core): prevent multiple main module loading (#12128)
+  * fix(ext/crypto): don't use core.decode for encoding
+    jwk keys (#12088)
+  * fix(ext/crypto): use DataError in importKey() (#12071)
+  * fix(lsp): align filter text to vscode logic (#12081)
+  * fix(runtime/ops/signal.rs): Add FreeBSD signal
+    definitions (#12084)
+  * perf(ext/web): optimize EventTarget (#12166)
+  * perf(runtime/fs): optimize readFile by using a single large
+    buffer (#12057)
+  * perf(web): optimize AbortController (#12165)
+
+-------------------------------------------------------------------
+Sat Sep 18 01:52:36 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.14.0:
+  * v8 updated to 9.4.146.15 (rusty_v8 0.28.0) (#12026)
+  * BREAKING(unstable): Fix casing in FfiPermissionDescriptor (#11659)
+  * BREAKING(unstable): Remove Deno.Signals enum, Deno.signals. (#11909)
+  * perf(ext/http): optimize auto cleanup of request resource (#11978)
+  * feat(cli): Support Basic authentication in DENO_AUTH_TOKENS (#11910)
+  * feat(cli): Update to TypeScript 4.4 (#11678)
+  * feat(cli): add --ignore flag to test command (#11712)
+  * feat(cli): close test worker once all tests complete (#11727)
+  * feat(core): facilitate op-disabling middleware (#11858)
+  * feat(ext/crypto): AES key generation (#11869)
+  * feat(ext/crypto): export RSA keys as pkcs#8 (#11880)
+  * feat(ext/crypto): generate ECDH keys (#11870)
+  * feat(ext/crypto): implement HKDF operations (#11865)
+  * feat(ext/crypto): implement encrypt, decrypt & generateKey for RSA-OAEP (#11654)
+  * feat(ext/crypto): implement importKey and deriveBits for PBKDF2 (#11642)
+  * feat(ext/crypto): import RSA pkcs#8 keys (#11891)
+  * feat(ext/crypto): support JWK export for HMAC (#11864)
+  * feat(ext/crypto): support JWK import for HMAC (#11716)
+  * feat(ext/crypto): verify ECDSA signatures (#11739)
+  * feat(extensions/console): right align numeric columns in table (#11748)
+  * feat(fetch): mTLS client certificates for fetch() (#11721)
+  * feat(fmt): add basic JS doc formatting (#11902)
+  * feat(fmt): add support for configuration file (#11944)
+  * feat(lint): add support for config file and CLI flags for rules (#11776)
+  * feat(lsp): ignore specific lint for entire file (#12023)
+  * feat(unstable): Add file locking APIs (#11746)
+  * feat(unstable): Support file URLs in Deno.dlopen() (#11658)
+  * feat(unstable): allow specifing gid and uid for subprocess (#11586)
+  * feat(workers): Make the Deno namespace configurable and unfrozen (#11888)
+  * feat: ArrayBuffer in structured clone transfer (#11840)
+  * feat: add URLPattern API (#11941)
+  * feat: add option flags to 'deno fmt' (#12060)
+  * feat: stabilise Deno.upgradeWebSocket (#12024)
+  * fix(cli): better handling of source maps (#11954)
+  * fix(cli): dispatch unload event on watch drop (#11696)
+  * fix(cli): retain path based test mode inference (#11878)
+  * fix(cli): use updated names in deno info help text (#11989)
+  * fix(doc): fix rustdoc bare_urls warning (#11921)
+  * fix(ext/crypto): KeyAlgorithm typings for supported algorithms (#11738)
+  * fix(ext/crypto): add HkdfParams and Pkdf2Params types (#11991)
+  * fix(ext/fetch): Properly cancel upload stream when aborting (#11966)
+  * fix(ext/http): resource leak if request body is not consumed (#11955)
+  * fix(ext/http): websocket upgrade header check (#11830)
+  * fix(ext/web): Format terminal DOMExceptions properly (#11834)
+  * fix(ext/web): Preserve stack traces for DOMExceptions (#11959)
+  * fix(lsp): correctly parse registry patterns (#12063)
+  * fix(lsp): support data urls in deno.importMap option (#11397)
+  * fix(runtime): return error instead of panicking for windows signals (#11940)
+  * fix(test): propagate join errors in deno test (#11953)
+  * fix(typings): fix property name in DiagnosticMessageChain interface (#11821)
+  * fix(workers): don't drop messages from workers that have already been closed (#11913)
+  * fix: FileReader onevent attributes don't conform to spec (#11908)
+  * fix: FileReader.readAsText compat (#11814)
+  * fix: Query string percent-encoded in import map (#11976)
+  * fix: a Request whose URL is a revoked blob URL should still fetch (#11947)
+  * fix: bring back Deno.Signal to unstable props (#11945)
+  * fix: change assertion in httpServerIncompleteMessage test (#12052)
+  * fix: exit process on panic in a tokio task (#11942)
+  * fix: move unstable declarations to deno.unstable (#11876)
+  * fix: permission prompt stuffing (#11931)
+  * fix: permission prompt stuffing on Windows (#11969)
+  * fix: worker_message_before_close was flaky (#12019)
+  * fix: remove windows-only panic when calling Deno.kill (#11948)
+- update to std 0.107.0:
+  * BREAKING(http): cookie headers as params (#1041)
+  * feat(collection): add findSingle (#1166)
+  * feat(collections): Add associatewith (#1213)
+  * feat(collections): add runningReduce (#1226)
+  * feat(collections): add sample API (#1212)
+  * feat(collections): add dropWhile (#1185)
+  * feat(collections): add maxWith (#1170)
+  * feat(collections): add minWith (#1169)
+  * feat(collections): add reduceGroups (#1187)
+  * feat(collections): add slidingWindows (#1191)
+  * feat(io/streams): propagate cancel in readableStreamFromIterable() (#1274)
+  * fix(collections/includesValue): prevent enumerable prototype check (#1225)
+  * fix(testing/asserts): export Constructor type (#1208)
+  * fix(tests/yaml): expect !!js/function parse/stringify to throw (#1276)
+  * fix: update to latest signal API changes
+  * security(encoding/yaml): disable functions (#1275)
+
+-------------------------------------------------------------------
+Thu Aug 26 18:41:36 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.13.2:
+  * fix(cli/flags): require a non zero usize for concurrent jobs (#11802)
+  * fix(ext/crypto): exportKey() for HMAC (#11737)
+  * fix(ext/crypto): remove duplicate Algorithm interface definition (#11807)
+  * fix(ext/ffi): don't panic on invalid enum values (#11815)
+  * fix(ext/http): resource leak on HttpConn.close() (#11805)
+  * fix(lsp): better handling of languageId (#11755)
+  * fix(runtime): event loop panics in classic workers (#11756)
+  * fix(ext/fetch): Headers constructor error message (#11778)
+  * perf(ext/url): cleanup and optimize url parsing op args (#11763)
+  * perf(ext/url): optimize UrlParts op serialization (#11765)
+  * perf(ext/url): use DOMString instead of USVString as webidl converter
+    for URL parsing (#11775)
+  * perf(url): build with opt-level 3 (#11779)
+
+-------------------------------------------------------------------
+Tue Aug 17 15:51:29 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.13.1:
+  * fix: Blob#slice arguments should be optional (#11665)
+  * fix: correct spelling of certificate in --unsafely-ignore-certificate
+    -errors warning message (#11634)
+  * fix: don't statically type name on Deno.errors (#11715)
+  * fix: parse error when transpiling code with BOM (#11688)
+  * fix(cli): allow specifiers of unknown media types with
+    test command (#11652)
+  * fix(cli): explicitly scan for ignore attribute in inline tests (#11647)
+  * fix(cli): retain input order of remote specifiers (#11700)
+  * fix(cli/lint): don't use gray in diagnostics output for
+    visibility (#11702)
+  * fix(cli/tools/repl): don't highlight candidate when completion
+    is list (#11697)
+  * fix(ext/crypto): enable non-extractable keys (#11705)
+  * fix(ext/crypto): fix copying buffersource (#11714)
+  * fix(ext/crypto): handle idlValue not being present (#11685)
+  * fix(ext/crypto): importKey() SecurityError on non-extractable keys (#11662)
+  * fix(ext/crypto): take a copy of keyData bytes (#11666)
+  * fix(ext/fetch): better error if no content-type
+  * fix(ext/fetch): don't use global Deno object
+  * fix(ext/http): remove unwrap() when HTTP conn errors (#11674)
+  * fix(ext/web): use Array primordials in MessagePort (#11680)
+  * fix(http/ws): support multiple options in connection header (#11675)
+  * fix(lint): add links to help at lint.deno.land (#11667)
+  * fix(test): dispatch load event before tests are run (#11708)
+  * fix(test): sort file module specifiers (#11656)
+  * perf: improve localStorage throughput (#11709)
+  * perf(ext/http): faster req_url string assembly (#11711)
+  * perf(wpt/crypto): optimize num-bigint-dig for debug builds (#11681)
+
+-------------------------------------------------------------------
+Wed Aug 11 02:17:35 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.13.0
+  * BREAKING(unstable): Rename Deno.WebSocketUpgrade::websocket to
+    socket (#11542)
+  * feat: Add --unsafely-ignore-certificate-errors flag to disable SSL
+    verification (#11324)
+  * feat: add experimental WebSocketStream API (#10365)
+  * feat: FFI API replacing native plugins (#11152)
+  * feat: stabilize Deno.serveHttp() (#11544)
+  * feat: support AbortSignal in writeFile (#11568)
+  * feat: support client certificates for connectTls (#11598)
+  * feat: type check codeblocks in Markdown file with
+    "deno test --doc" (#11421)
+  * feat(extensions/crypto): implement importKey and exportKey for
+    raw HMAC keys (#11367)
+  * feat(extensions/crypto): implement verify() for HMAC (#11387)
+  * feat(extensions/tls): Optionally support loading native certs (#11491)
+  * feat(extensions/web): add structuredClone function (#11572)
+  * feat(fmt): format top-level JSX elements/fragments with parens
+    when multi-line (#11582)
+  * feat(lsp): ability to set DENO_DIR via settings (#11527)
+  * feat(lsp): implement refactoring code actions (#11555)
+  * feat(lsp): support clients which do not support disabled code
+    actions (#11612)
+  * feat(repl): add --eval flag for evaluating code when the repl
+    starts (#11590)
+  * feat(repl): support exports in the REPL (#11592)
+  * feat(runtime): allow URL for permissions (#11578)
+  * feat(runtime): implement navigator.hardwareConcurrency (#11448)
+  * feat(unstable): clean environmental variables for subprocess (#11571)
+  * fix: support windows file specifiers with import maps (#11551)
+  * fix: Type Deno.errors.* as subclasses of Error (#10702)
+  * fix(doc): panic on invalid url (#11536)
+  * fix(extensions/fetch): Add Origin header to outgoing requests
+    for fetch (#11557)
+  * fix(extensions/websocket): allow any close code for server (#11614)
+  * fix(lsp): do not output to stderr before exiting the process (#11562)
+- deno_std updated to 0.104.0:
+  * feat: Add collections module (#993, #1075, #1103, #1062, #1062, #1109,
+    #1108, #1071, #1069, #1104, #1097, #1110, #1116)
+  * feat(crypto): add std/crypto wrapping and extending runtime
+    WebCrypto (#1025)
+  * feat(http/file_server): return code 304 based on If-Modified-Since Header
+    (#1078)
+  * feat(node): add remaining Node.js builtin aliases (#1085)
+  * feat(node): add shim for perf_hooks (#1088)
+  * feat(node): assert/strict alias (#1084)
+  * feat(node): fs/promises implementation (#1083)
+  * feat(testing): add assertRejects, deprecate assertThrowsAsync (#1101)
+  * fix(async): make it so exception of deadline can be caught (#1105)
+  * fix(http/file_server): fix flaky 'file_server sets Date header
+    correctly' test case (#1095)
+  * fix(node): assert/strict, fs/promises, perf_hooks modules
+    could not be required (#1107)
+  * fix(node/events): optimize listener management (#1113)
+  * fix(testing): change assertThrows and assertThrowsAsync
+    return type to void and Promise<void> (#1052)
+
+-------------------------------------------------------------------
+Mon Jul 26 23:19:02 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.12.2
+  * feat(lsp, unstable): add workspace config to status page (#11459)
+  * fix: panic for non-WS connections to inspector (#11466)
+  * fix: support --cert flag for TLS connect APIs (#11484)
+  * fix(cli): info now displays type reference deps (#11478)
+  * fix(cli): normalize test command errors (#11375)
+  * fix(cli): rebuild when environment variables change (#11471)
+  * fix(cli): side-load test modules (#11515)
+  * fix(extensions/fetch): close fetch response body on GC (#11467)
+  * fix(extensions/http): support multiple options in connection header
+    for websocket (#11505)
+  * fix(extensions/websocket): case insensitive connection header (#11489)
+  * fix(lsp): do not populate maybe_type slot with import type dep (#11477)
+  * fix(lsp): handle importmaps properly (#11496)
+- deno_std updated to 0.103.0:
+  * feat(async): add status to deferred promises (#1047)
+  * feat(http): add range request and etag support to file_server.ts (#1028)
+  * fix(async/deferred): rename .status -> .state (#1055)
+  * fix(encoding/base64url): throw TypeError in case of invalid base64url
+    string (#1040)
+  * fix(encoding/toml): fix inline table and nested array (#1042)
+  * fix(encoding/yaml): fix parseAll type definition by using overloads (#1048)
+  * fix(testing): assertThrowsAsync always reporting Error instead
+    of actual error class (#1051)
+  * fix(testing/asserts): cater for different class constructor
+    functions (#1000)
+
+-------------------------------------------------------------------
+Wed Jul 21 21:11:26 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.12.1
+  * fix: Big{U|}Int64Array in crypto.getRandomValues (#11447)
+  * fix(extensions/http): correctly concat cookie headers (#11422)
+  * fix(extensions/web): aborting a FileReader should not affect later
+    reads (#11381)
+  * fix(repl): output error without hanging when input is invalid (#11426)
+  * fix(tsc): add .at() types manually to tsc (#11443)
+  * fix(workers): silently ignore non-existent worker IDs (#11417)
+- deno_std updated to 0.102.0:
+  * feat: Add std/collections (#993)
+  * fix(encoding/toml): fix comment line starting with whitespaces (#1017)
+  * fix(encoding/toml): parse keys correctly (#1019)
+  * fix(hash): fix handling of non-byte-sized TypedArray views (#1012)
+  * fix(testing): Don't merge diff when it's not spaces even if it's
+    surrounded by word-diff (#1032)
+- includes rusty_v8 rev with v8 9.3.345.3
+
+-------------------------------------------------------------------
+Tue Jul 13 19:12:54 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.12.0
+  * feat: rusty_v8 v0.23.0 with v8 9.2.230.14
+  * feat: Add MessageChannel and MessagePort APIs (#11051)
+  * feat: Deno namespace configurable and unfrozen (#11062)
+  * feat: Enable WebAssembly.instantiateStreaming and WebAssembly.
+    compileStreaming (#11200)
+  * feat: Support "types" option when type checking (#10999)
+  * feat: Support SharedArrayBuffer sharing between workers (#11040)
+  * feat: Transfer MessagePort between workers (#11076)
+  * feat(extensions/crypto): Implement generateKey() and sign() (#9614)
+  * feat(extensions/crypto): Implement verify() for RSA (#11312)
+  * feat(extensions/fetch): Add programmatic proxy (#10907)
+  * feat(extensions/http): Server side websocket support (#10359)
+  * feat(inspector): Improve inspector prompt in Chrome Devtools (#11187)
+  * feat(inspector): Pipe console messages between terminal and inspector (#11134)
+  * feat(lsp): Dependency hover information (#11090)
+  * feat(repl): Show list completion (#11001)
+  * feat(repl): Support autocomplete on declarations containing a primitive (#11325)
+  * feat(repl): Support import declarations in the REPL (#11086)
+  * feat(repl): Type stripping in the REPL (#10934)
+  * feat(test): Add "--shuffle" flag to randomize test ordering (#11163)
+  * feat(test): Add support for "--fail-fast=N" (#11316)
+  * fix: Align DedicatedWorkerGlobalScope event handlers to spec (#11353)
+  * fix: Move stable/unstable types/APIs to their correct places (#10880)
+  * fix(core): Fix concurrent loading of dynamic imports (#11089)
+  * fix(extensions/console): Eliminate panic inspecting event classes (#10979)
+  * fix(extensions/console): Inspecting prototypes of built-ins with custom
+    inspect implementations should not throw (#11308)
+  * fix(extensions/console): Left align table entries (#11295)
+  * fix(extensions/crypto): Hash input for RSASSA-PKCS1-v1_5 before signing (#11314)
+  * fix(extensions/fetch): Consumed body with a non-stream source should
+    result in a disturbed stream (#11217)
+  * fix(extensions/fetch): Encode and decode headers as byte strings (#11070)
+  * fix(extensions/fetch): Filter out custom HOST headers (#11020)
+  * fix(extensions/fetch): OPTIONS should be allowed a non-null body (#11242)
+  * fix(extensions/fetch): Proxy body for requests created from other requests (#11093)
+  * fix(extensions/http): Encode and decode headers as byte strings in
+    the HTTP server (#11144)
+  * fix(extensions/http): Panic in request body streaming (#11191)
+  * fix(extensions/http): Specify AbortSignal for native http requests (#11126)
+  * fix(extensions/timers): Spec conformance for performance API (#10887)
+  * fix(extensions/url): Use USVStrings in URLSearchParams constructor (#11101)
+  * fix(extensions/web): AddEventListenerOptions.signal shouldn't be nullable (#11348)
+  * fix(extensions/webgpu): Align error scopes to spec (#9797)
+  * fix(lsp): Handle invalid config setting better (#11104)
+  * fix(lsp): Reload import registries should not error when the module
+    registries directory does not exist (#11123)
+  * fix(repl): Panic when Deno.inspect throws (#11292)
+  * fix(runtime): Fix signal promise API (#11069)
+  * fix(runtime): Ignored tests should not cause permission changes (#11278)
+- update deno_std to 0.101.0:
+  * BREAKING(encoding/hex): remove encodedLen, encodeToString, decodedLen,
+    decodeString, errInvalidByte, errLength (#733)
+  * BREAKING(mime/multipart): return array for multiple values with same
+    form name (#722)
+  * BREAKING(std/uuid): rework v4 and v5 module (#971)
+  * feat(async): add deadline to async module (#1022)
+  * feat(async): add debounce method to async module (#1006)
+  * feat(encoding/toml): fix bad string format. Improve coverage (#991)
+  * feat(hash): add BLAKE3 hash support (#994)
+  * feat(http): Add Cookie domain validation (#1009)
+  * feat(http): Allow passing path and domain attributes while removing
+    cookies (#1005)
+  * feat(io): add copy function (#1016)
+  * feat(io/streams): add autoClose option to writableStreamFromWriter (#964)
+  * feat(std/node): add writeBuffer of internal binding fs module (#888)
+  * fix: improve type safety for browser-compatible modules (#995)
+  * fix(encoding/toml): serializes mixed array (#1001)
+  * fix(encoding/toml): throws parse error when toml uses invalid whitespaces
+    (#1013)
+  * fix(http): setCookie with maxAge of 0 (#992)
+  * fix(http/server): Swallow NotConnected errors from listener.accept() (#761)
+  * fix(io/bufio): fix handling of trailing new line (#990)
+  * fix(node/module): More descriptive error in "createRequire" (#997)
+  * fix(path): Add question mark as a glob indicator (#1024)
+  * fix(testing): use return type of never for fail (#1002)
+- mark dependency on rust >= 1.53 (due to swc)
+- remove deno-69.patch (upstreamed)
+- remove ff-serde.patch (upstreamed)
+- remove icudtl.dat (upstreamed)
+
+-------------------------------------------------------------------
+Sun Jul  4 05:16:39 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- pass --sparkplug v8 flag
+- added ff-serde.patch
+- rework deno-69.patch with more breaking changes
+- manually update serde_v8 to 0.8.0 in vendor tarball
+
+-------------------------------------------------------------------
+Sun Jul  4 01:09:17 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.11.5:
+  * ci: don't set DENO_CANARY when releasing, attempt 2 (#11214)
+- includes v1.11.4:
+  * upgrade: swc 0.44.0 (#11197)
+  * ci: don't set DENO_CANARY when releasing (#11181)
+- includes v1.11.3:
+  * fix(#10761): graph errors reported as diagnostics for Deno.emit() (#10767)
+  * fix(core): don't panic on stdout/stderr write failures in Deno.core.print (#11039)
+  * fix(core): top-level-await is now always enabled (#11082)
+  * fix(extensions/fetch): Filter out custom HOST headers (#11020)
+  * fix(fetch): proxy body for requests created from other requests (#11093)
+  * fix(http): remove unwrap() in HTTP bindings (#11130)
+  * fix(inspect): eliminate panic inspecting event classes (#10979)
+  * fix(lsp): reload import registries should not error when the module
+    registries directory does not exist (#11123)
+  * fix(runtime): fix signal promise API (#11069)
+  * fix(runtime/signal): use op_async_unref for op_signal_poll (#11097)
+  * fix(url): use USVStrings in URLSearchParams constructor (#11101)
+  * fix(webstorage): increase localStorage limit to 10MB (#11081)
+  * fix: make readonly Event properties readonly (#11106)
+  * fix: specify AbortSignal for native http requests (#11126)
+  * chore: upgrade crates (#11007)
+  * chore: use lsp to get parent process id (#11083)
+- update deno_std to v0.100.0:
+  * feat(testing/asserts): improved strings diff (#948)
+  * feat(testing/asserts): use assertion signature for "assertExists" (#969)
+  * fix(node/events): align EventEmitter#addListener with native node tests (#976)
+  * fix(path): fix type error in glob.ts with noImplicitAny: false config (#977)
+- includes rusty_v8 0.25.1
+
+-------------------------------------------------------------------
+Wed Jun 23 21:25:08 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.11.2:
+  * feat(unstable, lsp): quick fix actions to ignore lint errors (#10627)
+  * fix: add support for module es2020 to Deno.emit (#11065)
+  * fix: align Console to spec (#10983)
+  * fix: align URL / URLSearchParams to spec (#11005)
+  * fix: align Websocket to spec (#11010)
+  * fix: closing / aborting WritableStream is racy (#10982)
+  * fix: fetch with method HEAD should not have body (#11003)
+  * fix: Worker accepts specifier as URL (#11038)
+  * fix(lsp): do not rename in strings and comments (#11041)
+
+-------------------------------------------------------------------
+Sat Jun 19 05:38:31 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.11.1:
+  * feat(unstable): add additional logging information in LSP (#10890)
+  * fix: Deno.inspect should inspect the object the proxy represents
+    rather than the target of the proxy (#10977)
+  * fix: early binding to dispatchEvent in workers (#10904)
+  * fix: hang in Deno.serveHttp() (#10923)
+  * fix: improve worker types (#10965)
+  * fix: make WHATWG streams more compliant (#10967, #10970)
+  * fix: poll connection after writing response chunk in Deno.serveHttp()
+    (#10961)
+  * fix: set minimum timeout to be 4 milliseconds (#10972)
+  * fix(repl): Complete declarations (#10963)
+  * fix(repl): Fix undefined result colour in cmd (#10964)
+- update deno_std to 0.99.0:
+  * feat(mime): make createPart of MultipartWriter public (#960)
+  * feat(node/util): add inherits (#958)
+  * fix(node/events): fix EventEmitter#removeAllListeners (#968)
+  * fix(node/process): make process.env enumerable (#957)
+  * fix(node/util): fix util.inherits (#959)
+- includes V8 9.2.230.10 (rusty_v8/#700)
+- add deno-69.patch for rusty_v8/#702 parity
+
+-------------------------------------------------------------------
+Wed Jun  9 05:15:53 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.11.0:
+  * feat: upgrade to TypeScript 4.3
+  * feat: Add FsWatcher interface
+  * feat: Add origin data dir to deno info
+  * feat: Initialize runtime_compiler ops in deno compile
+  * feat: Make 'deno lint' stable
+  * feat: Support data uri dynamic imports in deno compile
+  * feat(extensions): add BroadcastChannel
+  * feat(extensions/crypto): implement randomUUID
+  * feat(extensions/crypto): implement subtle.digest
+  * feat(extensions/fetch): implement abort
+  * feat(extensions/web): Implement TextDecoderStream and TextEncoderStream
+  * feat(lsp): add test code lens
+  * feat(lsp): registry auto discovery
+  * fix: change Crypto to interface
+  * fix: Support the stream option to TextDecoder#decode
+  * fix(extensions/fetch): implement newline normalization and escapes
+    in the multipart/form-data serializer
+  * fix(runtime/http): Hang in Deno.serveHttp
+  * fix(streams): expose ReadableByteStreamController &
+    TransformStreamDefaultController
+- includes rusty_v8 0.22.3 with v8 9.1.269.35
+
+-------------------------------------------------------------------
+Thu Jun  3 15:19:42 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.10.3:
+  * feat(lsp): diagnostics for deno types and triple-slash refs
+  * feat(lsp): provide X-Deno-Warning as a diagnostic
+  * feat(lsp): show hints from deno_lint in addition to messages
+  * feat(lsp): support formatting json and markdown files
+  * fix(cli): always allow documentation modules to be checked
+  * fix(cli): canonicalize coverage dir
+  * fix(cli): don't statically error on dynamic unmapped bare specifiers
+  * fix(cli): empty tsconfig.json file does not cause error
+  * fix(cli): support source maps with Deno.emit() and bundle
+  * fix(cli/dts): fix missing error class (NotSupported) in types
+  * fix(cli/install): support file: scheme URLs
+  * fix(cli/test): don't use reserved symbol : in specifier
+  * fix(cli/test): ensure coverage dir exists
+  * fix(cli/upgrade): modify download size paddings
+  * fix(runtime/http): expose nextRequest() errors in respondWith()
+  * fix(runtime/http): fix empty blob response
+  * fix(serde_v8): remove intentional deserialization error on non-utf8 strings
+  * fix(ext/fetch): fix error message of Request constructor
+  * fix(ext/fetch): make prototype properties writable
+  * fix(ext/fetch): remove unimplemented Request attributes
+  * fix(ext/file): update File constructor following the spec
+  * fix(ext/webstorage): use opstate for sqlite connection
+  * fix(lsp): deps diagnostics include data property
+  * fix(lsp): ignore type definition not found diagnostic
+  * fix(lsp): local module import added by code action now has file ext
+  * fix(lsp): make failed to load config error descriptive
+  * fix(lsp): memoize script versions per tsc request
+  * fix(lsp): re-enable the per resource configuration without a deadlock
+  * docs(runtime): fix fetch API usage of HTTP server
+  * docs(cli): update getting started for clarity
+  * docs(cli/dts) replace read() with readSync()
+  * docs(cli/dts): fix plugin example
+  * docs(cli/dts): fix unix socket examples
+  * docs(cli/dts): make worker example pass
+  * docs(cli/dts): tag test permission example as typescript
+  * docs(cli/dts): fix typo in TestDefinition.only description
+  * docs(permissions): fix grammatical error in permissions docs
+  * docs(testing): fix misspelling
+  * docs(typescript): fix typo in faqs
+
+-------------------------------------------------------------------
+Mon May 17 16:03:53 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.10.2:
+  * fix: static import permissions in dynamic imports
+  * fix(lsp): remove duplicate cwd in config path
+  * fix(cli): ignore x-typescript-types header when media type is not js/jsx
+  * chore: upgrade Tokio to 1.6.0
+- update deno_std to 0.97.0:
+  * fix(io/buffer): make Buffer compatible with Deploy
+  * fix(io/bufio): readDelim returns wrong result if delim strides over chunks
+  * fix(node/events): accept only functions as listener arguments
+  * fix(testing): support array values in assertObjectMatch
+
+-------------------------------------------------------------------
+Wed May 12 20:16:56 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.10.1:
+  * Disable lsp workspaces from 1.10 release, resolve deadlock bug
+- includes v1.10:
+  * denort removed
+  * feat: "deno test" prompts number of tests and origin
+  * feat: "Worker.postMessage()" uses structured clone algorithm
+  * feat: add "deno test --doc"
+  * feat: add "deno test --jobs"
+  * feat: add "deno test --watch"
+  * feat: add test permissions to Deno.test
+  * feat: add WebStorage API
+  * feat: align plugin api with "deno_core::Extension"
+  * feat: support deno-fmt-ignore-file for markdown formatting
+  * feat(core): enable WASM shared memory
+  * feat(core): introduce Extension
+  * feat(lsp): add internal debugging logging
+  * fix: invalid types for asynchronous and synchronous File#truncate
+  * fix: rename Deno.emit() bundle options to "module" and "classic"
+  * fix: sleepSync doesn't return a Promise
+  * fix: TextEncoder#encodeInto spec compliance
+  * fix: typings for Deno.os.arch
+  * fix(extensions/fetch): infinite loop on fill headers
+  * fix(extensions/fetch): Prevent throwing when inspecting a request
+  * fix(installer): allow remote import maps
+  * fix(lsp): remove code_action/diagnostics deadlock
+  * fix(tls): flush send buffer in the background after closing TLS stream
+  * fix(tls): throw meaningful error when hostname is invalid
+- update deno_std to 0.96.0:
+  * feat(fs/walk): show path in walk error
+  * feat(http): allow custom response code
+  * feat(io): add readRange, readRangeSync
+  * feat(mime/multipart): add options to readForm
+  * feat(node): add console module
+  * feat(node/assert): add rejects and doesNotReject
+  * feat(std/node): add implementation of os.homedir()
+  * fix(http/file_server): keep url and name consistent
+  * fix(io): Improve readDelims() performance
+  * fix(io/streams): don't use a byte ReadableStream
+  * fix(node/assert): enable test-assert-fail.js and align assert.fail to it
+  * fix(node/child_process): Try to fix flaky tests
+  * fix(node/stream): make Stream the default export
+
+-------------------------------------------------------------------
+Tue Apr 27 17:28:33 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.9.2:
+  * fix: parse websocket messages correctly
+  * fix: standalone bin corruption on M1
+  * fix: don't gray-out internal error frames
+  * fix(op_crates/fetch): Response inspect regression
+  * fix(runtime): do not panic on not found cwd
+  * fix(op_crates/webgpu): move non-null op buffer arg check when needed
+  * fix(lsp): document symbol performance mark
+- includes v1.9.1:
+  * feat(lsp, unstable): Implement textDocument/documentSymbol
+  * feat(lsp, unstable): implement textDocument/prepareCallHierarchy
+  * feat(lsp, unstable): Implement textDocument/semanticTokens/full
+  * feat(lsp, unstable): improve diagnostic status page
+  * fix(lsp): handle x-typescript-types header on type only imports properly
+  * fix(lsp): remove documents when closed
+  * fix(runtime): correct URL in Request
+  * fix(runtime): handle race condition in postMessage where worker has terminated
+  * fix(runtime): hang during HTTP server response
+  * fix(runtime): include HTTP ops in WebWorker scope
+  * fix: revert changes to Deno.Conn type
+- update deno_std to 0.95.0 (includes 0.94.0):
+  * feat(node): add basic support for child_process.spawn
+  * feat(node/fs): add fstat and fstatSync
+  * fix(node/fs): actually export everything
+  * fix(path): reduce circular dependency
+  * fix(testing): equals does not differentiate undefined/absent keys
+  * feat(path/glob): add caseInsensitive option
+  * feat(streams): add readableStreamFromReader
+
+-------------------------------------------------------------------
+Tue Apr 13 22:18:35 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.9.0:
+  * feat: blob URL support
+  * feat: blob URL support in fetch
+  * feat: data URL support in fetch
+  * feat: native HTTP bindings
+  * feat: raise file descriptor limit on startup
+  * feat: set useDefineForClassFields to true
+  * feat: stabilize Deno.ftruncate and Deno.ftruncateSync
+  * feat: stricter typings for Listener & Conn
+  * feat(lsp): add import completions
+  * feat(lsp): add registry import auto-complete
+  * feat(lsp): implement textDocument/foldingRange
+  * feat(lsp): implement textDocument/selectionRange
+  * feat(permissions): allow env permission to take values
+  * feat(permissions): allow run permission to take values
+  * feat(runtime): add stat and statSync methods to Deno.File
+  * feat(runtime): add truncate and truncateSync methods to Deno.File
+  * feat(runtime): stabilize Deno.fstat and Deno.fstatSync
+  * feat(runtime/permissions): prompt fallback
+  * feat(unstable): Add Deno.memoryUsage()
+  * feat(unstable): ALPN config in listenTls
+  * fix: include deno.crypto in "deno types"
+  * fix: Properly await already evaluating dynamic imports
+  * fix(lsp): don't error on tsc debug failures for code actions
+  * fix(lsp): ensure insert_text is passed back on completions
+  * fix(lsp): folding range adjustment panic
+  * fix(lsp): normalize windows file URLs properly
+  * fix(lsp): properly handle encoding URLs from lsp client
+  * fix(op_crates/console): console.table value misalignment with varying keys
+  * fix(permissions): don't panic when no input is given
+  * fix(runtime/js/timers): Use (0, eval) instead of eval()
+  * fix(runtime/readFile): close resources on error during read
+  * fix(websocket): ignore resource close error
+- update deno_std to 0.93.0:
+  * feat: add iter and iterSync to io/util
+  * feat(node/fs): add fdatasync and fdatasyncSync
+  * feat(node/fs): add fsync and fsyncSync
+  * feat(node/fs): add ftruncate and ftruncateSync
+  * feat(node/fs): add futimes and futimesSync
+  * fix(testing): Function signature of assertObjectEquals() does not accept interfaces
+- includes rusty_v8 0.22.1 for v8 9.1.269.5
+
+-------------------------------------------------------------------
+Wed Apr  7 16:16:27 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.8.3:
+  * feat(lsp): add import completions
+  * feat(lsp): implement textDocument/selectionRange
+  * fix(websocket): ignore resource close error
+  * fix(lsp): ensure insert_text is passed back on completions
+  * fix(web): add AbortController.abort()
+  * fix(crypto): include deno.crypto in deno types
+  * fix(cli): re-add dom.asynciterable lib
+- update deno_std to 0.92.0:
+  * feat: make bufio compatible to Deno Deploy
+  * feat: add symlink adn symlinkSync to node/fs
+  * feat: add format and improve deprecate in node/util
+  * feat: add io/buffer and io/util module
+  * fix: handle upstream type changes
+  * chore: remove unused import in http
+  * refactor: remove boilerplate Promise<void> return types in encoding
+
+-------------------------------------------------------------------
+Sun Mar 21 21:52:50 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.8.2:
+  * upgrade: rusty_v8 0.21.0
+  * upgrade: tokio 1.4.0
+  * fix: fallback to default UA and CA data for Deno.createHttpClient()
+  * fix: getBindGroupLayout always illegal invocation
+  * fix(cli/bundle): display anyhow error chain
+  * fix(core): don't panic on invalid arguments for Deno.core.print
+  * fix(doc): update example for sub processes
+  * fix(fmt): Correctly format hard breaks in markdown
+  * fix(lsp): allow on disk files to change
+  * fix(lsp): diagnostics use own thread and debounce
+  * fix(op_crates/webgpu): create instance only when required
+  * fix(runtime): do not require deno namespace in workers for crypto
+  * refactor: enforce type ResourceId across codebase
+  * refactor: Clean up permission handling
+  * refactor: Move bin ops to deno_core and unify logic with json ops
+  * refactor: Move Console to op_crates/console
+  * refactor: Split web op crate
+  * refactor: Simplify icu data alignment
+  * refactor: Update minimal ops & rename to buffer ops
+  * refactor: Use serde ops more
+  * refactor(lsp): refactor completions and add tests
+  * refactor(lsp): slightly reorganize diagnostics debounce logic
+- update deno_std to 0.91.0:
+  * feat(encoding/yaml): add support for JS types and user types
+  * feat(io/streams): Add readerFromIterable()
+  * feat(std/node): add utimes and utimesSync
+  * fix(multipart): support useDefineForClassFields
+  * fix(node): fix node/cli.ts
+  * fix(node): move throw error in fs.writeFile to pass no-unsafe-finally
+  * fix(path): enable and fix file URL tests
+  * refactor(node/fs): update fs import
+
+-------------------------------------------------------------------
+Wed Mar 10 03:34:32 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.8.1:
+  * fix(cli/ast): Pass importsNotUsedAsValues to swc
+  * fix(cli/compile): Do not append .exe depending on target
+  * fix(cli/coverage): Ensure single line functions don't yield false positives
+  * fix(core): Shared queue assertion failure in case of js error
+  * fix(runtime): Add navigator interface objects
+  * fix(runtime/web_worker): Don't block self.onmessage with TLA
+  * fix(webgpu): Add Uint32Array type for code in ShaderModuleDescriptor
+  * fix(webgpu): Add webidl records and simple unions
+- update deno_std to 0.90.0:
+  * feat(node): Add CLI for running Node.js script with std/node
+  * feat(node): Add "module" polyfill
+  * fix(node): fix assert module, enable test cases
+  * fix(http): Create a single encoder instance
+
+-------------------------------------------------------------------
+Tue Mar  2 23:49:39 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.8.0
+  * upgrade: TypeScript 4.2
+  * upgrade: rusty_v8 to 0.20.0 (V8 9.0.257.3)
+  * feat: Align import map to spec and stabilize
+  * feat: Deno.emit supports bundling as IIFE
+  * feat: Use top user frame for error source lines
+  * feat: WebGPU API
+  * feat: add "deno coverage" subcommand
+  * feat: add --ext flag to deno eval
+  * feat: add exit sanitizer to Deno.test
+  * feat: add json(c) support to deno fmt
+  * feat: add structured cloning to Deno.core
+  * feat: per op metrics (unstable)
+  * feat: represent type dependencies in info
+  * feat: stabilize Deno.permissions
+  * feat: stabilize Deno.link and Deno.linkSync
+  * feat: stabilize Deno.symlink and Deno.symlinkSync
+  * feat: support auth tokens for accessing private modules
+  * feat: support loading import map from URL
+  * feat: use type definitions "deno doc" if available
+  * fix(core): Add stacks for dynamic import resolution errors
+  * fix(core): Fix dynamic imports for already rejected modules
+  * fix(lsp): improve exception handling on tsc snapshots
+  * fix(repl): filter out symbol candidates
+  * fix(runtime): do not panic on irregular dir entries
+  * fix(runtime/testing): false positive for timers when an error is thrown
+  * fix(websocket): default to close code 1005
+  * fix: lint and fmt error if no target files are found
+  * fix: panic caused by Deno.env.set("", "")
+  * fix: typo in coverage exit_unstable
+- update deno_std to 0.89.0
+  * BREAKING(io/streams): Strengthen iterator to readable stream conversion
+  * build: collect and upload code coverage
+  * feat(node): add constants module
+  * feat(node): add crypto.createHash
+  * feat(node): add process.hrtime function
+  * feat(node): add truncate and truncateSync
+  * fix(node): export promisify & callbackify
+  * fix(node): fix export items of events
+  * fix(node): ignore shebang
+  * fix(node): native module needs to be extensible
+  * fix(node/process): make process.argv an array
+  * fix: fix type errors in canary test
+  * refactor: fix codes to pass no-unused-vars lint
+  * test(path): update test cases for canary
+
+-------------------------------------------------------------------
+Sat Feb 20 20:18:54 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.7.5
+  * fix: align btoa to spec
+  * fix: Don't use file names from source maps
+  * fix: Make dynamic import async errors catchable
+  * fix: webidl utils and align Event to spec
+  * fix(lsp): document spans use original range
+  * fix(lsp): handle cached type dependencies properly
+  * fix(lsp): handle data URLs properly
+  * std updated to v0.88.0:
+    + BREAKING(encoding): remove module utf8.ts
+    + chore: fix typo in contributing section
+    + docs(bytes): improve README.md
+    + feat(node): add native module polyfills: url, crypto
+    + feat(node): add tty module
+    + feat(node): support conditional exports
+    + fix(std/testing) : Handle Symbols correctly in deep equalities
+    + test(node): run external tests with --quiet
+- includes v1.7.4
+  * nothing different since 1.7.3
+- includes revision with rusty_v8 0.19.0
+
+-------------------------------------------------------------------
+Fri Feb 12 17:23:17 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.7.3
+  * upgrade: rusty_v8 0.17.0, v8 9.0.123
+  * upgrade: deno_doc, deno_lint, dprint, swc_ecmascript, swc_bundler
+  * feat(unstable, lsp): add deno cache code actions
+  * feat(unstable, lsp): add implementations code lens
+  * fix(cli): check for inline source maps before external ones
+  * fix(cli): fix WebSocket close
+  * fix(cli): import maps handles data URLs
+  * fix(console): log function object properties / do not log
+    non-enumerable props by default
+  * fix(lsp): handle code lenses for non-documents
+  * fix(lsp): handle type deps properly
+  * fix(lsp): prepare diagnostics when the config changes
+  * fix(lsp): properly handle static assets
+  * fix(lsp): support codeAction/resolve
+  * fix(op_crates): Don't use `Deno.inspect` in op crates
+  * fix(runtime/tls): handle invalid host for connectTls/startTls
+  * std:BREAKING(http/cookie): remove Cookies and SameSite type aliases
+  * std:docs(fmt): fix examples in fmt/colors.ts
+  * std:docs(io/ioutil): improve jsdoc
+  * std:fix(http/file_server): svg media type
+  * std:refactor(hash/md5): throw TypeError for wrong type
+  * std:test(node): enable native node tests
+
+-------------------------------------------------------------------
+Fri Feb  5 21:14:55 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.7.2
+  * feat(lsp, unstable): add references code lens
+  * feat(lsp, unstable): add TS quick fix code actions
+  * fix: improve http client builder error message
+  * fix(cli): fix handling of non-normalized specifier
+  * fix(cli/coverage): display mapped instrumentation line counts
+  * fix(cli/lsp): fix using jsx/tsx when not emitting via tsc
+  * fix(repl): prevent symbol completion panic
+  * refactor: rewrite Blob implementation
+  * refactor: rewrite File implementation
+  * std:feat(http/file_server): support do not show dotfiles
+  * std:feat(http/file_server): show ../ if it makes sense & end dirs with /
+
+-------------------------------------------------------------------
+Fri Jan 29 17:34:16 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.7.1
+  * feat(std/node): Add support for process.on("exit")
+  * fix(std/node): Stop callbacks being called twice when callback throws error
+  * fix(std/node): replace uses of window with globalThis
+  * fix(std/async): make pooledMap() errors catchable
+  * feat(lsp, unstable): add performance measurements
+  * fix(lsp): complete list of unused diagnostics
+  * fix(lsp): fix deadlocks, use one big mutex
+  * fix(lsp): handle mbc documents properly
+  * fix(lsp): handle mbc properly when formatting
+  * fix(lsp): reduce deadlocks with in memory documents
+  * fix(cli): IO resource types, fix concurrent read/write and graceful close
+  * fix(cli): Move WorkerOptions::deno types to unstable
+  * fix(cli): add lib dom.asynciterable
+  * fix(cli): correctly determine emit state with redirects
+  * fix(cli): early abort before type checking on missing modules
+  * fix(cli): enable url wpt
+  * fix(cli): fix panic in Deno.emit
+  * fix(cli): fix panic in op_dns_resolve
+  * fix(cli): fix recursive dispatches of unload event
+  * fix(cli): fmt command help message
+  * fix(cli): use DOMException in Performance#measure
+  * fix(cli/flags): don't panic on invalid location scheme
+  * fix(compile): fix panic when cross-compiling between windows and unix
+  * fix(core): Handle prepareStackTrace() throws
+  * fix(coverage): ignore comments
+  * fix(coverage): use source maps when printing pretty reports
+  * fix(op_crates/fetch): fix ReadableStream.pipeThrough()
+  * fix(op_crates/web): Add gb18030 and GBK encodings
+  * fix(op_crates/web): Improve customInspect for Location
+  * chore: new typescript WPT runner
+
+-------------------------------------------------------------------
+Wed Jan 20 14:08:20 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.7.0
+  * upgrade: rusty_v8 0.16.0, v8 8.9.255.3
+  * upgrade: tokio 1.0
+  * upgrade: Rust 1.49.0
+  * upgrade: deno_doc, deno_lint, dprint, swc_ecmascript, swc_bundler
+  * upgrade: deno_lint to 0.2.16
+  * upgrade: swc_bundler 0.19.2
+  * BREAKING(std/wasi): hide implementation details
+  * BREAKING(std/wasi): return exit code from start
+  * BREAKING(unstable): Use hosts for net allowlists
+  * BREAKING(unstable): remove CreateHttpClientOptions.caFile
+  * feat(std/wasi): allow stdio resources to be specified
+  * feat(unstable): add Deno.resolveDns API
+  * feat(unstable): runtime compiler APIs consolidated to Deno.emit()
+  * feat: Add WorkerOptions interface to type declarations
+  * feat: Add configurable permissions for Workers
+  * feat: Standalone lite binaries and cross compilation
+  * feat: add --location= and globalThis.location
+  * feat: add global tls session cache
+  * feat: add markdown support to deno fmt
+  * feat: add utf-16 and big5 to TextEncoder/TextDecoder
+  * feat: denort binary
+  * feat: stabilize Deno.shutdown() and Conn#closeWrite()
+  * feat: support data urls
+  * feat: support runtime flags for deno compile
+  * feat: upload release zips to dl.deno.land
+  * fix(cli): dispatch unload on exit
+  * fix(cli): print a newline after help and version
+  * fix(coverage): do not store source inline in raw reports
+  * fix(coverage): merge duplicate reports
+  * fix(coverage): report partial lines as uncovered
+  * fix(inspector): kill child process after test
+  * fix(install): fix cached-only flag
+  * fix(lsp): Add textDocument/implementation
+  * fix(lsp): Respect client capabilities for config and dynamic registration
+  * fix(lsp): support specifying a tsconfig file
+  * fix(op_crates/fetch): add back ReadableStream.getIterator and deprecate
+  * fix(op_crates/fetch): align streams to spec
+  * fix(op_crates/fetch): correct regexp for fetch header
+  * fix(op_crates/fetch): req streaming + 0-copy resp streaming
+  * fix(op_crates/web) let TextEncoder#encodeInto accept detached ArrayBuffers
+  * fix(op_crates/web): Use WorkerLocation for location in workers
+  * fix(op_crates/web): fix atob to throw spec aligned DOMException
+  * fix(op_crates/websocket): respond to ping with pong
+  * fix(std): Don't use JSDoc syntax for browser-compatibility headers
+  * fix(std/http): Use ES private fields in server
+  * fix(std/http): parsing of HTTP version header
+  * fix(std/node): resolve files in symlinked directories
+  * fix(watcher): keep working even when imported file has invalid syntax
+  * fix: Use "none" instead of false to sandbox Workers
+  * fix: Worker hangs when posting "undefined" as message
+  * fix: align DOMException API to the spec and add web platform testing of it.
+  * fix: don't error on version and help flag
+  * fix: don't swallow customInspect exceptions
+  * fix: enable WPT tests
+  * fix: full commit hash in canary compile download
+  * fix: ignore "use asm"
+  * fix: implement DOMException#code
+  * fix: incremental build for deno declaration files
+  * fix: panic during deno compile with no args
+  * fix: panic on invalid file:// module specifier
+  * fix: race condition in file watcher
+  * fix: redirect in --location relative fetch
+  * fix: stronger input checking for setTimeout; add function overload
+  * fix: use inline source maps when present in js
+  * fix: use tokio for async fs ops
+  * refactor(cli): remove 'js' module, simplify compiler snapshot
+  * refactor(op_crates/crypto): Prefix ops with "op_crypto_"
+  * refactor(op_crates/websocket): refactor event loop
+  * refactor: Print cause chain when downcasting AnyError fails
+  * refactor: make Process#kill() throw sensible errors on Windows
+  * refactor: move WebSocket API to an op_crate
+- pass -s to link flags to strip debug symbols from binary
+- revendor: apply mktemp fix from Matthias Eliasson (re: boo#1180782)
+
+-------------------------------------------------------------------
+Thu Dec 31 20:57:31 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.6.3
+  * upgrade: rusty_v8 0.15.0, v8 8.8.294
+  * upgrade: dprint, swc_bundler, swc_common, swc_ecmascript
+  * feat(lsp): Add cache command
+  * feat(lsp): Implement textDocument/rename
+  * feat(std/node): adds fs.mkdtemp & fs.mkdtempSync
+  * feat(unstable): collect coverage from the run command
+  * fix(core): Fix incorrect index in Promise.all error reporting
+  * fix(lsp): handle ts debug errors better
+  * fix(lsp): provide diagnostics for unresolved modules
+  * fix(std/http): Don't expose ServerRequest::done as Deferred
+  * fix: fetch bad URL will not panic
+  * fix: info does not panic on missing modules
+
+-------------------------------------------------------------------
+Mon Dec 28 05:46:18 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Build from the 2 source repos (deno and rusty_v8)
+  * No need to depend on published crate
+- Add revendor_source.sh to carry the bucket for "cargo vendor"
+- Remove ninja/gn env vars (fix upstreamed)
+- Optimize exclusions (including removal of winapi binaries)
+
+-------------------------------------------------------------------
+Fri Dec 25 20:04:58 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.6.2
+  * upgrade TypeScript to 4.1.3
+  * feat(lsp): support the unstable setting
+  * feat(std/node): Added os.type
+  * feat(unstable): record raw coverage into a directory
+  * feat(unstable): support in memory certificate data for Deno.createHttpClient
+  * fix: atomically write files to $DENO_DIR
+  * fix: implement ReadableStream fetch body handling
+  * fix: make DNS resolution async
+  * fix: make dynamic import errors catchable
+  * fix: respect enable flag for requests in lsp
+  * refactor: optimise static assets in lsp
+  * refactor: rename runtime/rt to runtime/js
+  * refactor: rewrite lsp to be async
+  * refactor: rewrite ops to use ResourceTable2
+
+-------------------------------------------------------------------
+Sun Dec 20 11:30:43 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Build completely from source
+- Dropped librusty_v8_release_x86_64-unknown-linux-gnu.a
+
+-------------------------------------------------------------------
+Sat Dec 19 08:57:04 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to v1.6.1
+  * upgrade: swc_ecmascript to 0.15.0
+  * feat(lsp): support import maps
+  * fix(compile): error when the output path already exists
+  * fix(lsp): only resolve sources with supported schemas
+  * fix(op_crates/fetch): support non-ascii response headers value
+  * fix(repl): recover from invalid input
+  * fix: show canary string in long version
+  * fix: zsh completions
+  * refactor: deno_runtime crate
+- includes v1.6.0
+  * rusty_v8 updated to 0.14.0
+  * break: std/bytes changes
+  * break: isolatedModules non-configurable
+- add _constraints to request memory for build
+- cleanup description
+
+-------------------------------------------------------------------
+Fri Dec  4 02:20:19 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- init pkg at v1.5.4
