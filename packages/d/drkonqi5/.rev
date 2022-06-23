@@ -703,4 +703,12 @@
     <comment>- Add missing runtime dependencies (forwarded request 982454 from wolfi323)</comment>
     <requestid>982457</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>ecd817b0ab1b3e5c3c0d9c3432c40501</srcmd5>
+    <version>5.25.1</version>
+    <time>1655972592</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.1</comment>
+    <requestid>984372</requestid>
+  </revision>
 </revisionlist>

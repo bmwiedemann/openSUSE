@@ -23,22 +23,22 @@ Name:           drkonqi5
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.25.0
+Version:        5.25.1
 Release:        0
 Summary:        Helper for debugging and reporting crashes
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            http://www.kde.org/
-Source:         drkonqi-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/drkonqi-%{version}.tar.xz
 %if %{with released}
-Source1:        drkonqi-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/drkonqi-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCHES 100-199 are from upstream 5.16 branch
 # PATCHES 200-299 and above are from upstream master/5.17+ branch
 BuildRequires:  extra-cmake-modules >= 1.8.0
 BuildRequires:  cmake(KF5Completion) >= %{kf5_version}
-BuildRequires:  cmake(KF5ConfigWidgets) >= %{kf5_version}
+BuildRequires:  cmake(KF5Config) >= %{kf5_version}
 BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5Crash) >= %{kf5_version}
 BuildRequires:  cmake(KF5Declarative) >= %{kf5_version}
