@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun 22 07:30:36 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.4.6:
+  + Translations actually work this time.
+  + Assorted build system improvements.
+  + DAAP plugin no longer enabled by default.
+  + Bugs fixed: glgo#GNOME/rhythmbox#1972,
+    glgo#GNOME/rhythmbox#1974, glgo#GNOME/rhythmbox#1988,
+    glgo#GNOME/rhythmbox#1985, glgo#GNOME/rhythmbox!146,
+    glgo#GNOME/rhythmbox!148, glgo#GNOME/rhythmbox!150,
+    glgo#GNOME/rhythmbox!151, glgo#GNOME/rhythmbox!152.
+  + Updated translations.
+- Drop meson.patch: Fixed upstream.
+- Pass tests=disabled to meson, bypass check as a BuildRequires,
+  since we currently do not run tests as a part of the build.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Fri May  6 13:16:22 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
 
 - Update to version 3.4.5:
@@ -15,13 +33,14 @@ Fri May  6 13:16:22 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
      streams now.
    + Better reporting of progress when transferring to Android
      or MTP devices.
-   + Bugs fixed: #1634, #1690, #1743, #1744, #1746, #1749, #1750, 
+   + Bugs fixed: #1634, #1690, #1743, #1744, #1746, #1749, #1750,
      #1751, #1758, #1759, #1760, #1762, #1763, #1764, #1767, #1769,
      #1771, #1772, #1773, #1775, #1780, #1781, #1782, #1787, #1795
      #1796, #1803, #1822, #1829, #1844, #1845, #1846, #1849, #1876
-     #1883, #1909, #1923, #1934, #1944, #1963 
+     #1883, #1909, #1923, #1934, #1944, #1963.
    + Updated translations.
 - Patched meson build system, include meson.patch
+
 -------------------------------------------------------------------
 Mon Sep 20 20:19:58 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 

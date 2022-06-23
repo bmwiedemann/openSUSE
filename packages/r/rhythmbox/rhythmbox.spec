@@ -17,18 +17,15 @@
 
 
 Name:           rhythmbox
-Version:        3.4.5
+Version:        3.4.6
 Release:        0
 Summary:        GNOME Music Management Application
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://wiki.gnome.org/Apps/Rhythmbox
 Source:         https://download.gnome.org/sources/rhythmbox/3.4/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM meson.patch, glgo#GNOME/rhythmbox#1976
-Patch0:         meson.patch
 
 BuildRequires:  fdupes
-
 BuildRequires:  intltool
 BuildRequires:  lirc-devel
 BuildRequires:  meson >= 0.59
@@ -97,7 +94,9 @@ This package contains the development requirements to extend rhythmbox.
 %build
 export MOZILLA_PLUGINDIR=%{_libdir}/browser-plugins
 export PYTHON=%{_bindir}/python3
-%meson
+%meson \
+	-D tests=disabled \
+	%{nil}
 %meson_build
 
 %install
@@ -112,8 +111,7 @@ rm -rf %{buildroot}%{_libdir}/rhythmbox/plugins/rbzeitgeist/
 %fdupes -s %{buildroot}%{_datadir}
 %fdupes %{buildroot}%{_libdir}
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license COPYING
