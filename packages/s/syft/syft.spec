@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           syft
-Version:        0.46.3
+Version:        0.48.1
 Release:        0
 Summary:        CLI tool and library for generating a Software Bill of Materials
 License:        Apache-2.0
@@ -36,9 +36,12 @@ A CLI tool and Go library for generating a Software Bill of Materials (SBOM) fro
 %setup -q -T -D -a 1
 
 %build
+DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
+BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
 go build \
    -mod=vendor \
    -buildmode=pie \
+   -ldflags="-X github.com/anchore/syft/internal/version.version=%{version} -X github.com/anchore/syft/internal/version.buildDate=$BUILD_DATE" \
    -o bin/syft ./cmd/syft
 
 %install

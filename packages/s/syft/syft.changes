@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jun 22 08:47:26 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.48.1:
+  * update stereoscope to latest version (#1052)
+
+-------------------------------------------------------------------
+Wed Jun 22 08:34:13 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.48.0:
+  * update zip_read_closer to incorporate zip64 support (#1041)
+  * Add pacman (alpm) parser support (#943)
+
+-------------------------------------------------------------------
+Wed Jun 22 08:23:30 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.47.0:
+  * Update of README.md (#1027)
+  * bump cosign to v1.9.0 to resolve reporting of GHSA-66x3-6cw3-v5gj (#1025)
+  * add workflows to test new project automation (#1023)
+  * improve LanguageByName and add unit tests (#1034)
+  * Read Description from dpkg status files (#996)
+  * Add announcement for Anchore OSS Virtual Meetup (#1033)
+  * add main module field to go bin metadata (#1026)
+  * Add filters to package cataloger (#1021)
+  * change draft to false for release process (#1016)
+  * Support RPM distros with newer RPM db formats (#1018)
+  * fix: add component list to prevent cyclone-dx panic (#1015)
+
+-------------------------------------------------------------------
 Mon Jun  6 19:43:54 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - first version of package syft at version 0.46.3
