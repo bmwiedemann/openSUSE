@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 12 11:03:41 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- Updated to Xdebug 3.1.5
+  * Fixed bug #2056: Install documentation gives wrong arch for
+    installation on M1 Macs
+  * Fixed bug #2082: phpize --clean removes required clocks.m4 file
+  * Fixed bug #2083: Constant defined with an enum case produce double
+    "facet" attribute in context_get response
+  * Fixed bug #2085: Crash when used with source guardian encoded files
+  * Fixed bug #2090: Segfault in __callStatic() after FFI initialization
+
+-------------------------------------------------------------------
 Tue Apr 12 17:40:33 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - Updated to Xdebug 3.1.4
