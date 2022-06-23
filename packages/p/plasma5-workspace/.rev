@@ -1911,4 +1911,12 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
   * 0001-shell-refresh-geometries-of-all-DesktopView-and-Pane.patch (forwarded request 981524 from fusionfuture)</comment>
     <requestid>982011</requestid>
   </revision>
+  <revision rev="191" vrev="1">
+    <srcmd5>cf00b1e4b95fc7321713203cd19f01f2</srcmd5>
+    <version>5.25.1</version>
+    <time>1655972586</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.1. As usual, completely untested. (forwarded request 984192 from Vogtinator)</comment>
+    <requestid>984364</requestid>
+  </revision>
 </revisionlist>

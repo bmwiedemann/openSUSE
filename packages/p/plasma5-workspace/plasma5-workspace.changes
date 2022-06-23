@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jun 21 11:39:48 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.1
+- Changes since 5.25.0:
+  * Fix checkbox not switching when choosing an accent color using color picker
+  * kcms/fonts: Fix font hinting preview (kde#413673)
+  * colorsapplicator: make accent-coloured titlebars more robust/foolproof
+  * Klipper (classic widget): Fix a system tray menu memory leak
+  * shell/scripting: call `flushPendingConstraintsEvents` in `setLocation`
+  * Fix missing index validity check for cursortheme (kde#454829)
+  * [KSystemActivityDialog] Fix loading default settings (kde#454566)
+  * kcms/colors: Fix alternateBackgroundColor for Button not having accents
+  * kcms/colors: Ensure that accent color dots always fit on narrow screens
+
+-------------------------------------------------------------------
 Thu Jun  9 11:39:29 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
 
 - Add patch to fix a multiscreen bug when PLASMA_USE_QT_SCALING=1
