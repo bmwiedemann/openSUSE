@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 21 11:39:46 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.1
+- Changes since 5.25.0:
+  * Add missing i18n
+  * desktoppackage: fix unable to apply wallpaper settings after switching layout (kde#407619)
+
+-------------------------------------------------------------------
 Tue Jun 14 07:12:38 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - 5.25.0 tarball got respun. Changes:
