@@ -27,7 +27,7 @@
 %endif
 %define skip_python2 1
 Name:           python-Sphinx%{psuffix}
-Version:        4.5.0
+Version:        5.0.2
 Release:        0
 Summary:        Python documentation generator
 License:        BSD-2-Clause
@@ -38,7 +38,7 @@ Source1:        https://files.pythonhosted.org/packages/source/S/Sphinx/Sphinx-%
 # Provide intersphinx inventory offline
 # https://docs.python.org/3/objects.inv#/python3.inv
 Source2:        python3.inv
-# https://docs.python-requests.org/en/master/objects.inv#/requests.inv
+# https://requests.readthedocs.io/en/stable/objects.inv#/requests.inv
 Source3:        requests.inv
 # https://docs.readthedocs.io/en/stable/objects.inv#/readthedocs.inv
 Source4:        readthedocs.inv
