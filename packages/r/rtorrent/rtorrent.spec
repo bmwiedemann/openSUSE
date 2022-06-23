@@ -1,7 +1,7 @@
 #
 # spec file for package rtorrent
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source2:        rtorrent.desktop
 # This manpage copied from the 0.9.2 tarball as it was missing in later versions
 Source3:        rtorrent.1
 Source4:        rtorrent.service
+Patch1:         0001-utils-lockfile-avoid-stack-overflow-for-lockfile-buf.patch
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -47,7 +48,7 @@ background using screen. It supports fast-resume and session
 management.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 # It's full of type pun violations

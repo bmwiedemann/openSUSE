@@ -78,4 +78,14 @@
     <comment></comment>
     <requestid>932825</requestid>
   </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>599d411258e80fee6b3314c29a4a3b3a</srcmd5>
+    <version>0.9.8</version>
+    <time>1655972653</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport fix which resolves a crashing issue on startup on openSUSE.
+  https://github.com/rakshasa/rtorrent/pull/1169
+  + 0001-utils-lockfile-avoid-stack-overflow-for-lockfile-buf.patch</comment>
+    <requestid>984398</requestid>
+  </revision>
 </revisionlist>

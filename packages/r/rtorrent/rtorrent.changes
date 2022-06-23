@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 21 00:28:35 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+- Backport fix which resolves a crashing issue on startup on openSUSE.
+  https://github.com/rakshasa/rtorrent/pull/1169
+  + 0001-utils-lockfile-avoid-stack-overflow-for-lockfile-buf.patch
+
+-------------------------------------------------------------------
 Tue Nov 16 12:09:53 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
@@ -51,7 +58,7 @@ Wed Jul 24 17:52:33 UTC 2019 - hiwatari.seiji@gmail.com
 	* Fix no // are at start of expanded paths. (pyroscope)
 	* Fix ncurses header include. (theirix)
 	* Fix segfault when viewing a magnet download in the leeching view. (slingamn)
-    
+
 - Remove rtorrent-vim package because it was made for the old (now discouraged) config syntax
 	* See: https://github.com/rakshasa/rtorrent/wiki/CONFIG-Template
 
