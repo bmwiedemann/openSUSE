@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 21 16:58:12 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update devel runtime requirements and supplements
+
+-------------------------------------------------------------------
+Tue Jun 21 10:13:32 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.3.1
+  * Bug fixes.
+- Drop PyQt6-DataVisualization-6.3-fix-timeline.patch
+
+-------------------------------------------------------------------
 Wed Apr 13 08:23:12 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 6.3.0

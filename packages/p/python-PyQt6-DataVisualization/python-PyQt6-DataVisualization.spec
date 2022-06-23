@@ -18,20 +18,17 @@
 
 %define qtlib DataVisualization
 %define mname PyQt6-%{qtlib}
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 %define pyqt_build_for_qt6 1
+%define plainpython python
 Name:           python-%{mname}
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        Python bindings for the Qt Data Visualization library
 License:        GPL-3.0-only
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqtdatavisualization
-Source:         https://files.pythonhosted.org/packages/source/P/PyQt6-%{qtlib}/PyQt6_%{qtlib}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM PyQt6-DataVisualization-6.3-fix-timeline.patch -- https://www.riverbankcomputing.com/pipermail/pyqt/2022-April/044562.html
-Patch0:         PyQt6-DataVisualization-6.3-fix-timeline.patch
-BuildRequires:  %{python_module PyQt6-devel >= %{version}}
+Source:         https://files.pythonhosted.org/packages/source/P/%{mname}/PyQt6_%{qtlib}-%{version}.tar.gz
+BuildRequires:  %{python_module PyQt6-devel >= 6.2}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pyqt-builder >= 1.10}
 BuildRequires:  %{python_module sip-devel >= 6}
@@ -44,14 +41,16 @@ Provides:       python-qtdatavisualization-qt6 = %{version}-%{release}
 %python_subpackages
 
 %description
-PyQt6-3D is a set of Python bindings for The Qt Company’s Qt Data Visualization library.
+%{mname} is a set of Python bindings for The Qt Company’s Qt %{qtlib} framework.
 The bindings sit on top of PyQt6 and are implemented as a single module.
 
 %package devel
 Summary:        Devel files for %{name}
 Group:          Development/Tools/IDE
 Requires:       python-PyQt6-devel
-Supplements:    packageand(eric:python-%{mname})
+Requires:       %plainpython(abi) = %{python_version}
+Supplements:    (eric and python-%{mname})
+Supplements:    (python-PyQt6-devel and python-%{mname})
 
 %description devel
 This package provides Qt6 API files for the Eric IDE and the SIP files
