@@ -1007,4 +1007,12 @@
 </comment>
     <requestid>982575</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>6893776eb060c9a9e595305560a77d0c</srcmd5>
+    <version>5.25.1</version>
+    <time>1655972633</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.1. As usual, completely untested. (forwarded request 984192 from Vogtinator)</comment>
+    <requestid>984365</requestid>
+  </revision>
 </revisionlist>
