@@ -60,4 +60,12 @@
   * cmake: remove unneeded monero_gui_add_library()</comment>
     <requestid>981110</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>050c55b1c58f44814aae15a65b7ed02f</srcmd5>
+    <version>0.17.3.2</version>
+    <time>1655972703</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984612</requestid>
+  </revision>
 </revisionlist>

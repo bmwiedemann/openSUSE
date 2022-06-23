@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 16 12:49:03 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints for aarch64 to avoid OOM
+
+-------------------------------------------------------------------
 Tue Jun  7 08:30:10 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.17.3.2:
