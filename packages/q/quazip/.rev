@@ -222,4 +222,12 @@
     <comment>Update to 1.3</comment>
     <requestid>970505</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>4a01ad60f9ab8519624079052079c112</srcmd5>
+    <version>1.3</version>
+    <time>1655972613</time>
+    <user>dimstar_suse</user>
+    <comment>- Install the pkgconfig file when building against Qt 6.3.1</comment>
+    <requestid>984240</requestid>
+  </revision>
 </revisionlist>

@@ -20,18 +20,18 @@
 %if "%{quazip_flavor}" == ""
 ExclusiveArch:  do_not_build
 %endif
+%define no_pkgconfig 0
 %if "%{quazip_flavor}" == "qt6"
 %define qt6 1
 %define pkg_suffix -qt6
-# No pkgconfig file before 6.4
-%if %{pkg_vcmp cmake(Qt6Core) <= 6.4.0}
+# No pkgconfig file before 6.3.1
+%if %{pkg_vcmp cmake(Qt6Core) <= 6.3.0}
 %define no_pkgconfig 1
 %endif
 %endif
 %if "%{quazip_flavor}" == "qt5"
 %define qt5 1
 %define pkg_suffix -qt5
-%define no_pkgconfig 0
 %endif
 %define so_ver 1
 %define lib_ver 1_3_0
