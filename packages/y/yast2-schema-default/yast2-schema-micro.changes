@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu May 26 15:34:50 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Support for flatten and nested "category_filter" element in the
+  "online_update_configuration" section (bsc#1198848).
+- 4.5.3
+
+-------------------------------------------------------------------
+Mon Apr 11 10:16:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fix up for the previous change (related to bsc#1183893)
+- 4.5.2
+
+-------------------------------------------------------------------
+Fri Apr  8 15:53:45 UTC 2022 - José Iván López González <jlopez@suse.com>
+
+- Remove dependency of YaST NIS packages from TW (bsc#1183893).
+- 4.5.1
+
+-------------------------------------------------------------------
 Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.5.0 (bsc#1198109)

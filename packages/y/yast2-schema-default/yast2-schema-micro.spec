@@ -17,7 +17,7 @@
 
 
 Name:           yast2-schema-micro
-Version:        4.5.2
+Version:        4.5.3
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -39,8 +39,8 @@ BuildRequires:  libxml2-tools
 BuildRequires:  trang
 BuildRequires:  yast2-devtools
 
-# use SLE15 SP3 Update dependencies as micro is based on SP3
-BuildRequires:  autoyast2 >= 4.3.94
+# fix 'rules' validation ('conflicts' and 'dialog')
+BuildRequires:  autoyast2 >= 4.5.1
 BuildRequires:  yast2
 BuildRequires:  yast2-add-on >= 4.3.3
 # set 't' element in 'initrd_module' element

@@ -18,7 +18,7 @@
 
 Name:           yast2-schema-default
 # Keep versions in sync with yast2-schema-micro
-Version:        4.5.2
+Version:        4.5.3
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -40,8 +40,8 @@ BuildRequires:  yast2-devtools
 # All packages providing RNG files for AutoYaST
 # in /usr/share/YaST2/schema/autoyast/rng/*.rng
 
-# add 'efi' element to the rules schema
-BuildRequires:  autoyast2 >= 4.4.21
+# fix 'rules' validation ('conflicts' and 'dialog')
+BuildRequires:  autoyast2 >= 4.5.1
 BuildRequires:  yast2
 # add_on_products and add_on_others types
 BuildRequires:  yast2-add-on >= 4.3.3
@@ -78,7 +78,8 @@ BuildRequires:  yast2-nis-client
 BuildRequires:  yast2-nis-server
 %endif
 BuildRequires:  yast2-ntp-client
-BuildRequires:  yast2-online-update-configuration
+# nested category_filter (bsc#1198848)
+BuildRequires:  yast2-online-update-configuration >= 4.5.1
 BuildRequires:  yast2-printer
 BuildRequires:  yast2-proxy
 # registration is available only where suse connect is also available

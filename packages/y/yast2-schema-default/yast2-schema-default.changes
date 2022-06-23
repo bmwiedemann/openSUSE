@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 26 15:34:50 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Support for flatten and nested "category_filter" element in the
+  "online_update_configuration" section (bsc#1198848).
+- 4.5.3
+
+-------------------------------------------------------------------
 Mon Apr 11 10:16:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Fix up for the previous change (related to bsc#1183893)
