@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-panel
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -29,7 +29,7 @@
 %define skip_python36 1
 %define modname panel
 Name:           python-panel%{psuffix}
-Version:        0.13.0
+Version:        0.13.1
 Release:        0
 Summary:        A high level app and dashboarding solution for Python
 License:        BSD-3-Clause
