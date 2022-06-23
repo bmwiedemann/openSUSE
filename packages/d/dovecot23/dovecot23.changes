@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 14 14:17:29 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 2.3.19.1
+  * doveadm deduplicate: Non-duplicate mails were deleted. v2.3.19 regression.
+  * auth: Crash would occur when iterating multiple backends.
+    Fixes: Panic: file userdb-blocking.c: line 125 (userdb_blocking_iter_next): assertion failed: (ctx->conn != NULL)
+  
+-------------------------------------------------------------------
 Tue May 10 17:55:17 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 2.3.19 and pigeonhole 0.5.19
