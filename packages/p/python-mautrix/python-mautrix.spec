@@ -16,14 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%if 0%{?suse_version} >= 1550
+%bcond_without test
+%else
+# Leap 15.x: Ignore that upstream doesn't support Python < 3.8 and does not have the test requirements
+%define skip_python2 1
+%bcond_with test
+%endif
+
 Name:           python-mautrix
 Version:        0.16.8
 Release:        0
 Summary:        A Python 3 asyncio Matrix framework
 License:        MPL-2.0
-URL:            https://github.com/tulir/mautrix-python
-Source:         https://files.pythonhosted.org/packages/source/m/mautrix/mautrix-%{version}.tar.gz
+URL:            https://github.com/mautrix/python
+# The GitHub Archive has json data required for the test suite
+Source:         https://github.com/mautrix/python/archive/refs/tags/v0.16.8.tar.gz#/mautrix-python-%{version}-gh.tar.gz
+BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -32,23 +41,26 @@ Requires:       python-attrs >= 18.1.0
 Requires:       python-yarl >= 1
 Suggests:       python-python-magic >= 0.4.15
 BuildArch:      noarch
-# SECTION test requirements
 BuildRequires:  %{python_module aiohttp >= 3.0.1}
 BuildRequires:  %{python_module attrs >= 18.1.0}
-BuildRequires:  %{python_module commonmark}
-BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-magic >= 0.4.15}
-BuildRequires:  %{python_module ruamel.yaml}
-BuildRequires:  %{python_module sqlalchemy}
 BuildRequires:  %{python_module yarl >= 1}
+# SECTION optional requirements
+BuildRequires:  %{python_module python-magic >= 0.4.15}
+# /SECTION optional requirements
+%if %{with test}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module asyncpg}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module aiosqlite}
+BuildRequires:  %{python_module sqlalchemy}
+%endif
 %python_subpackages
 
 %description
 A Python 3 asyncio Matrix framework.
 
 %prep
-%setup -q -n mautrix-%{version}
+%setup -q -n python-%{version}
 
 %build
 %python_build
@@ -57,13 +69,15 @@ A Python 3 asyncio Matrix framework.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%if %{with test}
 %check
-# Yes, they don't have a test suite. At all.
+%pytest
+%endif
 
 %files %{python_files}
 %doc README.rst CHANGELOG.md
 %license LICENSE
-%{python_sitelib}/mautrix*
+%{python_sitelib}/mautrix
 %{python_sitelib}/mautrix-%{version}*-info
 
 %changelog
