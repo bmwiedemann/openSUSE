@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 21 07:30:46 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix bugs boo#1200557 and boo#1199924
+- Now that boo#1199924 is fixed, re-enable FORTIFY_SOURCE=3
+* Patches added:
+  pci-fix-overflow-in-snprintf-string-form.patch
+  sphinx-change-default-language-to-en.patch
+
+-------------------------------------------------------------------
 Fri May 27 14:07:50 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - It has been observed that building QEMU with _FORTIFY_SOURCE=3
