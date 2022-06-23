@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Jun 21 16:49:28 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Move config file in vendor specific path by default
+  * Patch added:
+    0001-Read-config-in-usr-etc-too.patch
+- Update to latest version, 1.3.1
+  * all: allow users to specify non_interactive=true/false
+  * all: improve code readability and formatting, follow happy paths
+  * create: make it clearer to the user the container creation output
+  * create: remove check about clone and image name
+  * docs: Fix typo by @rugk in #308
+  * docs: remove WSL2 entry, cannot actively check if works correctly
+  * enter: automatically create containers during 'distrobox-enter' (if they don't exist!)
+  * export: add --root to rooful containers
+  * export: fix DBusActivatable not working
+  * host-exec docs: 755 -> 644
+  * host-exec: change [N/y] to [y/N]
+  * init: fix apt hooks to make systemd install work
+  * init: move zypper recommends after the basic packages install,
+    make OpenSUSE containers creation faster
+  * install: add --next flag to install latest commit from git
+  * stop: update misleading comment
+  * uninstall: interactive rm won't work when executed throught pipe
+  * docs: update compatibility list
+  * Confirm support for:
+     Redhat UBI 9
+     Redhat UBI 9-init
+     Redhat UBI 9-minimal
+     AlmaLinux 8-minimal
+     AlmaLinux 9-minimal
+     AlmaLinux 9
+
+-------------------------------------------------------------------
 Mon May 30 13:16:32 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - Update to latest version, 1.3.0:

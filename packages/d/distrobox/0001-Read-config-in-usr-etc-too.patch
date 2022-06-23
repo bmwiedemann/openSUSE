@@ -1,0 +1,90 @@
+From fd1243898d3547e890bd11cc69077fb2c57cf2df Mon Sep 17 00:00:00 2001
+From: Dario Faggioli <dfaggioli@suse.com>
+Date: Tue, 21 Jun 2022 18:17:59 +0200
+Subject: [PATCH] Read config in /usr/etc too
+
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ distrobox-create | 1 +
+ distrobox-enter  | 1 +
+ distrobox-list   | 1 +
+ distrobox-rm     | 1 +
+ distrobox-stop   | 1 +
+ docs/README.md   | 1 +
+ 6 files changed, 6 insertions(+)
+
+diff --git a/distrobox-create b/distrobox-create
+index b0bb0e9..94fe003 100755
+--- a/distrobox-create
++++ b/distrobox-create
+@@ -79,6 +79,7 @@ version="1.3.1"
+ # leave priority to environment variables.
+ config_files="
+ 	/usr/share/distrobox/distrobox.conf
++	/usr/etc/distrobox/distrobox.conf
+ 	/etc/distrobox/distrobox.conf
+ 	${HOME}/.config/distrobox/distrobox.conf
+ 	${HOME}/.distroboxrc
+diff --git a/distrobox-enter b/distrobox-enter
+index 138446c..2ddf9ac 100755
+--- a/distrobox-enter
++++ b/distrobox-enter
+@@ -69,6 +69,7 @@ version="1.3.1"
+ # leave priority to environment variables.
+ config_files="
+ 	/usr/share/distrobox/distrobox.conf
++	/usr/etc/distrobox/distrobox.conf
+ 	/etc/distrobox/distrobox.conf
+ 	${HOME}/.config/distrobox/distrobox.conf
+ 	${HOME}/.distroboxrc
+diff --git a/distrobox-list b/distrobox-list
+index f62da97..36788df 100755
+--- a/distrobox-list
++++ b/distrobox-list
+@@ -42,6 +42,7 @@ container_manager="autodetect"
+ # leave priority to environment variables.
+ config_files="
+ 	/usr/share/distrobox/distrobox.conf
++	/usr/etc/distrobox/distrobox.conf
+ 	/etc/distrobox/distrobox.conf
+ 	${HOME}/.config/distrobox/distrobox.conf
+ 	${HOME}/.distroboxrc
+diff --git a/distrobox-rm b/distrobox-rm
+index 4d6b0a8..e23a1d7 100755
+--- a/distrobox-rm
++++ b/distrobox-rm
+@@ -46,6 +46,7 @@ version="1.3.1"
+ # leave priority to environment variables.
+ config_files="
+ 	/usr/share/distrobox/distrobox.conf
++	/usr/etc/distrobox/distrobox.conf
+ 	/etc/distrobox/distrobox.conf
+ 	${HOME}/.config/distrobox/distrobox.conf
+ 	${HOME}/.distroboxrc
+diff --git a/distrobox-stop b/distrobox-stop
+index accfce0..f848b7e 100755
+--- a/distrobox-stop
++++ b/distrobox-stop
+@@ -45,6 +45,7 @@ version="1.3.1"
+ # leave priority to environment variables.
+ config_files="
+ 	/usr/share/distrobox/distrobox.conf
++	/usr/etc/distrobox/distrobox.conf
+ 	/etc/distrobox/distrobox.conf
+ 	${HOME}/.config/distrobox/distrobox.conf
+ 	${HOME}/.distroboxrc
+diff --git a/docs/README.md b/docs/README.md
+index df00785..61b2c7a 100644
+--- a/docs/README.md
++++ b/docs/README.md
+@@ -243,6 +243,7 @@ Configuration files can be placed in the following paths, from the least importa
+ to the most important:
+ 
+ - /usr/share/distrobox/distrobox.conf
++- /usr/etc/distrobox/distrobox.conf
+ - /etc/distrobox/distrobox.conf
+ - ${HOME}/.config/distrobox/distrobox.conf
+ - ${HOME}/.distroboxrc
+-- 
+2.36.1
+

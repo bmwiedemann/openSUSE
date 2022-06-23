@@ -16,13 +16,15 @@
 #
 
 Name:           distrobox
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Use any linux distribution inside your terminal
 License:        GPL-3.0
 URL:            https://github.com/89luca89/distrobox
 Source:         distrobox-%{version}.tar.gz
 Source1:        distrobox.conf
+# Read the config from vendor specific directory (/usr/etc/distrobox) too
+Patch1:         0001-Read-config-in-usr-etc-too.patch
 Requires:       %{_bindir}/basename
 Requires:       %{_bindir}/find
 Requires:       %{_bindir}/grep
@@ -39,17 +41,22 @@ external USB devices and graphical apps (X11/Wayland), and audio.
 
 %prep
 %setup -q -n distrobox-%{version}
+%patch1 -p1
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_bindir}
-mkdir -p %{buildroot}%{_sysconfdir}/distrobox
 mkdir -p %{buildroot}%{_docdir}/%{name}
 ./install --prefix %{buildroot}/%{_prefix}
 install -m 0644 docs/*.md %{buildroot}%{_docdir}/%{name}
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_distconfdir}/distrobox
+install -m 0644 %{SOURCE1} %{buildroot}%{_distconfdir}/distrobox/distrobox.conf
+%else
+mkdir -p %{buildroot}%{_sysconfdir}/distrobox
 install -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/distrobox/distrobox.conf
-
+%endif
 %files
 %license COPYING.md
 %doc %{_docdir}/%{name}
@@ -57,7 +64,14 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/distrobox/distrobox.conf
 %{_bindir}/%{name}-*
 %{_mandir}/man1/%{name}.1.gz
 %{_mandir}/man1/%{name}-*.1.gz
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/distrobox
+%else
 %config %{_sysconfdir}/distrobox
-%config %{_sysconfdir}/distrobox/distrobox.conf
-
+%endif
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/distrobox/distrobox.conf
+%else
+%config(noreplace) %{_sysconfdir}/distrobox/distrobox.conf
+%endif
 %changelog
