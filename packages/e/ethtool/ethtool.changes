@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 13 23:07:06 UTC 2022 - Michal Kubecek <mkubecek@suse.cz>
+
+- update to upstream release 5.18
+  * Feature: get/set cqe size (-g and -G)
+  * Fix: fix typo in man page
+  * Fix: fix help text alignment
+  * Fix: improve attribute label (--show-fec)
+
+-------------------------------------------------------------------
 Mon Apr  4 00:11:20 UTC 2022 - Michal Kubecek <mkubecek@suse.cz>
 
 - update to upstream release 5.17
