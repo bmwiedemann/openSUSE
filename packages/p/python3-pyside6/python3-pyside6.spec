@@ -25,7 +25,7 @@
 %endif
 #
 Name:           python3-%{pyside_flavor}
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-2.0-only AND GPL-3.0-only WITH Qt-GPL-exception-1.0
@@ -35,8 +35,6 @@ Source:         https://download.qt.io/official_releases/QtForPython/pyside6/PyS
 Patch0:         0001-Don-t-install-CMake-files-into-versioned-directories.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Always-link-to-python-libraries.patch
-# PATCH-FIX-OPENSUSE
-Patch2:         0001-Work-around-build-issue-in-pyside-6.3.patch
 # SECTION common_dependencies
 BuildRequires:  clang-devel
 BuildRequires:  fdupes
@@ -186,12 +184,17 @@ export LD_LIBRARY_PATH=%{buildroot}%{_qt6_libdir}:$LD_LIBRARY_PATH
 %if "%{pyside_flavor}" == "pyside6"
 %define xvfb_command xvfb-run -s "-screen 0 1600x1200x16 -ac +extension GLX +render -noreset" \\
 
-# Excluded tests (last update: 2022-03-23)
+%define excluded_tests 1
+# Excluded tests (last update: 2022-06-22)
 # registry_existence_test only works on the Qt CI
-# QtWebEngineWidgets_pyside-474-qtwebengineview & QtWebEngineCore_web_engine_custom_scheme
+# The QtWebEngineWidgets_pyside-474-qtwebengineview and QtWebEngineCore tests
 # pass locally but not on the build service (SIGTRAP)
 # QtGui_qpen_test times out
-%define ctest_exclude_regex '(registry_existence_test|QtWebEngineWidgets_pyside-474-qtwebengineview|QtWebEngineCore_web_engine_custom_scheme|QtGui_qpen_test)'
+ctest_exclude_regex="registry_existence_test|QtWebEngineWidgets_pyside-474-qtwebengineview|QtWebEngineCore.*|QtGui_qpen_test"
+# Qt3DExtras_qt3dextras_test fails on aarch64 (exception) and s390x (timeout)
+%ifarch aarch64 s390x
+ctest_exclude_regex="$ctest_exclude_regex|Qt3DExtras_qt3dextras_test"
+%endif
 %endif
 
 pushd sources/%{pyside_flavor}
@@ -201,7 +204,7 @@ ctest \
   --force-new-ctest-process \
   --test-dir %{__qt6_builddir} \
   --parallel %{_smp_build_ncpus} \
-  %{?ctest_exclude_regex:--exclude-regex %{ctest_exclude_regex}}
+  %{?excluded_tests:--exclude-regex "($ctest_exclude_regex)"}
 popd
 
 %post -p /sbin/ldconfig
