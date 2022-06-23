@@ -62,7 +62,11 @@ Obsoletes:      python39%{?1:-%{1}}
 %define         python_pkg_name python310
 # Will provide the python3-* provides
 # Will do the /usr/bin/python3 and all the core links
-%define         primary_interpreter 1
+%if 0%{?sle_version} || 0%{?suse_version} < 1550
+%define primary_interpreter 0
+%else
+%define primary_interpreter 1
+%endif
 # We don't process beta signs well
 %define         folderversion 3.10.5
 %define         tarname    Python-%{tarversion}
@@ -160,6 +164,12 @@ Patch34:        skip-test_pyobject_freed_is_freed.patch
 # PATCH-FIX-SLE fix_configure_rst.patch bpo#43774 mcepl@suse.com
 # remove duplicate link targets and make documentation with old Sphinx in SLE
 Patch35:        fix_configure_rst.patch
+# PATCH-FIX-UPSTREAM bpo-46811 gh#python/cpython#7da97f61816f mcepl@suse.com
+# NOTE: SUSE version of expat 2.4.4 is patched in SUSE for CVE-2022-25236
+Patch36:        support-expat-CVE-2022-25236-patched.patch
+# PATCH-FIX-UPSTREAM CVE-2015-20107-mailcap-unsafe-filenames.patch bsc#1198511 mcepl@suse.com
+# avoid the command injection in the mailcap module.
+Patch37:        CVE-2015-20107-mailcap-unsafe-filenames.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -187,7 +197,11 @@ BuildRequires:  pkgconfig(libtirpc)
 BuildRequires:  mpdecimal-devel
 %endif
 %if %{with doc}
+%if 0%{?sle_version} && 0%{?sle_version} <= 150300
 BuildRequires:  python3-Sphinx
+%else
+BuildRequires:  python3-Sphinx >= 3.2.0
+%endif
 %if 0%{?suse_version} >= 1500
 BuildRequires:  python3-python-docs-theme >= 2022.1
 %endif
@@ -418,13 +432,13 @@ other applications.
 %patch09 -p1
 %patch15 -p1
 %patch29 -p1
-%if 0%{?suse_version} <= 1500
-%patch33 -p1
-%endif
 %if 0%{?sle_version} && 0%{?sle_version} <= 150300
+%patch33 -p1
 %patch34 -p1
 %endif
 %patch35 -p1
+%patch36 -p1
+%patch37 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
