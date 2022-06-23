@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 22 07:36:02 UTC 2022 - dfaggioli@suse.com
+
+- Run services and update vendored dependencies
+- Update to version 1.2.1:
+  * Bump vm-memory dependency from 0.7.0 to 0.8.0
+- Update to version to 1.2.0:
+  * Disable virtio-fs DAX
+    + Fixes a bug triggered when using openSUSE images 
+  * vsock: defer TSI proxy removal
+
+-------------------------------------------------------------------
 Fri Jun 17 14:23:15 UTC 2022 - dfaggioli@suse.com
 
 - Update to version 1.1.0:

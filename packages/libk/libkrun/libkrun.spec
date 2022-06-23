@@ -18,7 +18,7 @@
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           libkrun
-Version:        1.1.0
+Version:        1.2.1
 Release:        0
 Summary:        A dynamic library providing KVM-based process isolation capabilities
 License:        Apache-2.0
