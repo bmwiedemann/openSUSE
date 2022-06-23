@@ -255,7 +255,6 @@ unsorted:
   - SDL2_sound-devel 
   - SDL_Pango-devel 
   - SDL_sound-devel 
-  - SDLmm-devel 
   - SHERPA-MC-devel 
   - SVT-AV1: [x86_64] 
   - SVT-AV1-devel: [x86_64] # devel package of common_locks:libSvtAv1Enc1 
@@ -2122,6 +2121,7 @@ unsorted:
   - cockpit-pcp 
   - cockpit-podman: [i586] 
   - cockpit-storaged 
+  - cockpit-suse-theme 
   - cockpit-system: [i586] 
   - cockpit-tests 
   - cockpit-tukit 
@@ -2920,6 +2920,7 @@ unsorted:
   - deluge-lang 
   - delve 
   - demumble 
+  - deno: [x86_64] 
   - desktopfolder 
   - desktopfolder-lang 
   - deutex 
@@ -9467,7 +9468,6 @@ unsorted:
   - libSDL_ttf-2_0-0-32bit: [x86_64] 
   - libSDL_ttf-devel 
   - libSDL_ttf-devel-32bit: [x86_64] 
-  - libSDLmm-0_1-8 
   - libSFCGAL1 
   - libSHERPA-MC0 
   - libSHERPA-MC0-config 
@@ -24316,6 +24316,7 @@ unsorted:
   - python310-pyuca 
   - python310-pyupgrade 
   - python310-pyusb 
+  - python310-pyuv 
   - python310-pyux 
   - python310-pyvdr 
   - python310-pyvips 
@@ -24575,7 +24576,6 @@ unsorted:
   - python310-sphinx-version-warning 
   - python310-sphinx_press_theme 
   - python310-sphinx_rtd_theme 
-  - python310-sphinxcontrib-actdiag 
   - python310-sphinxcontrib-apidoc 
   - python310-sphinxcontrib-applehelp 
   - python310-sphinxcontrib-asyncio 
@@ -27818,7 +27818,6 @@ unsorted:
   - python38-sphinx-version-warning 
   - python38-sphinx_press_theme 
   - python38-sphinx_rtd_theme 
-  - python38-sphinxcontrib-actdiag 
   - python38-sphinxcontrib-apidoc 
   - python38-sphinxcontrib-applehelp 
   - python38-sphinxcontrib-asyncio 
@@ -31085,7 +31084,6 @@ unsorted:
   - python39-sphinx-version-warning 
   - python39-sphinx_press_theme 
   - python39-sphinx_rtd_theme 
-  - python39-sphinxcontrib-actdiag 
   - python39-sphinxcontrib-apidoc 
   - python39-sphinxcontrib-applehelp 
   - python39-sphinxcontrib-asyncio 
@@ -33240,6 +33238,7 @@ unsorted:
   - stardict-tools 
   - starfighter 
   - starfighter-lang 
+  - starship 
   - startup-notification-devel 
   - statgrab 
   - statserial 
@@ -33517,7 +33516,6 @@ unsorted:
   - talk 
   - talk-server 
   - talloc-man 
-  - tallow 
   - tamago 
   - tamil-gtk2im 
   - tamil-gtk2im-32bit: [x86_64] 
@@ -43946,6 +43944,7 @@ unsorted:
   - yast2-rdp 
   - yast2-rear 
   - yast2-registration: [x86_64] 
+  - yast2-rmt: [x86_64] 
   - yast2-samba-provision 
   - yast2-schema-collection 
   - yast2-schema-micro 
