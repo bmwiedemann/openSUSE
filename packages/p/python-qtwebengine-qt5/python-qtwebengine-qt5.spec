@@ -21,7 +21,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-%{mname}
-Version:        5.15.5
+Version:        5.15.6
 Release:        0
 Summary:        Python bindings for the Qt5 WebEngine framework
 License:        GPL-3.0-only
@@ -30,12 +30,12 @@ URL:            https://www.riverbankcomputing.com/software/pyqtwebengine/intro
 Source:         https://files.pythonhosted.org/packages/source/P/PyQtWebEngine/PyQtWebEngine-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pyqt-builder >= 1.9}
-BuildRequires:  %{python_module qt5-devel}
+BuildRequires:  %{python_module qt5-devel >= 5.15.4}
 BuildRequires:  %{python_module sip-devel >= 5.3}
 BuildRequires:  python-pyqt-rpm-macros
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(Qt5WebEngine)
-Requires:       python-qt5 >= %{version}
+%requires_ge    python-qt5
 Requires:       python-qt5-sip
 Provides:       python-PyQtWebEngine = %{version}-%{release}
 
