@@ -1088,4 +1088,12 @@ Fri Sep 26 09:09:31 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Update to 5.25.0</comment>
     <requestid>981922</requestid>
   </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>1db67f297be240d2ce084b1c51cc90bd</srcmd5>
+    <version>5.25.1</version>
+    <time>1655972578</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.1. As usual, completely untested. (forwarded request 984192 from Vogtinator)</comment>
+    <requestid>984352</requestid>
+  </revision>
 </revisionlist>

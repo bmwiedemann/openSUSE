@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun 21 11:39:46 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.1
+- Changes since 5.25.0:
+  * wallpapers/potd: fix multimonitor support (kde#454333)
+  * wallpapers/potd: move providers to providers folder
+  * Drop no longer necessary KF5WindowSystem dependency
+  * [applets/userswitcher] Fix illegal property value
+  * [applets/userswitcher] Use onPressed: wasExpanded... idiom
+
+-------------------------------------------------------------------
 Thu Jun  9 11:15:02 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.0
