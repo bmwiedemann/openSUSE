@@ -1491,4 +1491,12 @@ Changes:
 - avod aio=io_uring for now on SLE15-SP4 workers</comment>
     <requestid>973940</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>f1904bd20e4024343e4a277dfcdfb548</srcmd5>
+    <version>20220613</version>
+    <time>1655972523</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>983980</requestid>
+  </revision>
 </revisionlist>
