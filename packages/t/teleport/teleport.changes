@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Wed Jun 22 20:44:53 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 9.3.7:
+  * Release 9.3.7 (#13742)
+  * Backport #10708 to branch/v9 (#13250)
+  * Backport #12946 to branch/v9 (#13244)
+  * [v9] Fix Teleport welcome screen image (#13710)
+  * Update libbpf to 0.7.0-teleport (#13650)
+  * [v9] Add better error handling for ec2 labels (#13487)
+  * Fixes potential `cgo.Handle` panic (#13479) (#13590)
+  * Fixed AWS 'teleport-generate-config' script when IMDSV2 is used (#13537)
+  * [auto] Update webassets in branch/v9 (#13665)
+  * Error out if port is already bound (#13679)
+  * Fix panic when tsh kube exec is invoked (#13655)
+  * [V9] Add `sshLogins` to nodes endpoint on `webapi` (GET /nodes)  (#13474)
+  * deflake TestAgentForwardPermission (#13638)
+  * Update our list of support databases (#12841)
+  * docs(helm): remove wrong statement from kube-agent highAvailability (#13262)
+  * Drop rdpsnd messages (#13496)
+  * Deflake TestX11Forward (#13493)
+  * [v9] `tsh` list resources accross proxies and clusters (#12934) (#13313)
+  * Backport #12828 to branch/v9 (#13421)
+  * Update docs self-hosted version to 9.3.6 (#13533)
+  * Naji/backport 13287 (#13520)
+  * Update downloads.mdx (#13431)
+  * Optimize instance metadata availability check (#13167)
+  * Fix CA rotation watcher not starting when database svc enabled w/ no cfg (#13470) (#13517)
+  * Replaced bsh with code blocking in docs (#13486)
+
+-------------------------------------------------------------------
+Wed Jun 22 12:17:21 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 9.3.6:
+  * Release 9.3.6 (#13500)
+  * [v9] Check for unimplemented error during stream receive in Client.GetAccessRequests (#13490)
+  * Backport of #10746 to v9 (#13197)
+  * Rephrase the Teleport Cloud introduction (#13422)
+  * Add de-duplicating apps, dbs, and desktops when sorting/totalCount is needed (#12685) (#13451)
+  * Backport #12840 to branch/v9 (#13420)
+  * [v9] Aurora serverless v2 support (#13203)
+  * [v9] Wait for app requests to finish before closing the session chunk (#13469)
+  * [v9] Backport #12891 (#13391)
+  * [v9] Deflake TestNoReadWhenOff (#13415)
+  * [v9] Fix file descriptor leaks in `tbot` (#13386)
+
+-------------------------------------------------------------------
+Wed Jun 22 11:18:01 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 9.3.5:
+  * Release 9.3.5 (#13449)
+  * Added debugging packages to Docker images (#13199)
+  * [v9] Access request compatibility for servers without v2 api (#13428)
+  * Backport #12712 to branch/v9 (#12881)
+  * Hide Access Controls links/pages based on scope (#12880)
+  * CamelCase GitHub (#13269)
+  * Hide Getting Started pages/links based on scope (#12882)
+  * Hide Server Access menu items based on scope (#12883)
+  * Hide Setup menu items based on scope (#12886)
+  * [v9] Backport docs PRs related to scoped visibility (#12888)
+  * Backport #12682 to branch/v9 (#12950)
+  * Update the tctl auth sign --ttl flag docs (#12947)
+  * Add a more complete Teleport Cloud introduction (#13081)
+  * [v9] backport #13310 (use `auth_servers` when proxying) (#13399)
+  * [v9] Forward kubernetes errors to user when running in remote exec mode (#13400)
+  * Improve kube exec Audit Log events (#13381)
+  * [v9] Deflake TestAgentForward (#13166) (#13358)
+  * [v9] Enable Database and Application Access in AWS Terraforms (#13383)
+  * [v9] Backport #13016 (Buddy merge for #11939)
+  * [v9] Fix help string for "tctl version" (#13255)
+  * SQLServer add suport for SSMS client (#13337)
+  * Update upcoming-releases.mdx (#13344)
+  * Implement proxy templates (#13311)
+  * [v9] Make `TestDefaultTemplateRendering` less failure prone (#13002) (#13225)
+  * Update to 9.3.4 for self-hosted (#13339)
+  * V9: Backport #13029 (thread context.Context in tctl) (#13185)
+  * Minor bugfix to correct dronegen error link in v9 (#13200)
+
+-------------------------------------------------------------------
 Fri Jun 10 19:32:42 UTC 2022 - kastl@b1-systems.de
 
 - skipped non-existent version 9.3.3
