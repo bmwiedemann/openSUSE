@@ -1,4 +1,19 @@
 --------------------------------------------------------------------
+Wed Jun 22 11:32:28 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#884
+- handle rootprefix when reading fstab, crypttab and mdadm.conf
+- 4.5.23
+
+--------------------------------------------------------------------
+Tue Jun 21 07:49:17 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#883
+- coding style
+- fixed typos and coding style
+- 4.5.22
+
+--------------------------------------------------------------------
 Fri Jun 17 10:56:28 UTC 2022 - opensuse-packaging@opensuse.org
 
 - Translated using Weblate (Portuguese (Brazil)) (bsc#1149754)
