@@ -143,4 +143,14 @@ There are 4 months worth of complicated commit, and I cannot go through them all
 </comment>
     <requestid>960038</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fc30c4eba239e9a06840d28105112ea7</srcmd5>
+    <version>1.91.3</version>
+    <time>1655972699</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.91.3
+  * No changelog was made available by upstream
+</comment>
+    <requestid>984596</requestid>
+  </revision>
 </revisionlist>
