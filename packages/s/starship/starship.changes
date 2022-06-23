@@ -1,0 +1,556 @@
+-------------------------------------------------------------------
+Thu Jun 16 13:02:16 UTC 2022 - Dead Mozay <dead-mozay@opensuse.org>
+
+- Update to version 1.8.0:
+  * Add support for Daml.
+  * kubernetes: add user alias.
+  * escape text segments in meta variables.
+  * fish: add proper vi mode detection for fish shell.
+  * install: ignore tarfile ownership values when installing as root.
+  * nu: don't use cygpath for starship binary path in init. 
+
+-------------------------------------------------------------------
+Wed May 25 12:04:42 UTC 2022 - Dead Mozay <dead-mozay@opensuse.org>
+
+- Update to version 1.7.1:
+  * go: check for go.work file to show Go module in prompt.
+  * hostname: add ssh_symbol for ssh connections.
+  * package: Extract package version from PEP 621 
+    compliant pyproject.toml.
+  * rust: Display toolchain names.
+  * Do not panic in config if editor not found.
+  * module: list option not working.
+  * nu: use the most recent starship init.
+  * Use git2::Repository::open_ext() instead of discover().
+
+-------------------------------------------------------------------
+Wed Apr 27 02:56:44 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.6.3:
+  * git_branch: correct variable name for remote branch. 
+
+-------------------------------------------------------------------
+Sat Apr 16 17:08:13 UTC 2022 - Dead Mozay <dead-mozay@opensuse.org>
+
+- Update to version 1.6.2:
+  * Add a module for C projects.
+  * allow printing config file schema.
+  * aws: add option to force AWS display.
+  * cmd_duration: make notify feature optional (compat with nix darwin).
+  * spack: Add Spack module.
+  * bash: ensure checkwinsize is enabled for $COLUMNS
+  * directory: enable repo_root_style when truncation_length is zero.
+  * docker_context: ignore the "default" context.
+  * fish: allow generating session keys in older versions of fish.
+  * init: Change Elvish init to catch for 0.18.
+  * nu: Use = instead of space to pass command line parameters.
+  * nu: use shell-provided terminal width. 
+
+-------------------------------------------------------------------
+Fri Mar 25 04:58:06 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.5.4:
+  * aws: Add profile aliases.
+  * buf: Add Buf module.
+  * git_branch: add 'ignore_branches' option.
+  * haskell: Add Haskell module.
+  * nodejs: check for .mts and .cts files.
+  * aws: accept sso credentials.
+  * aws: Make AWS_REGION orverrides AWS_DEFAULT_REGION.
+  * docs: fix and cleanup VuePress config.
+  * init: Change Nushell init for nu 0.60.
+  * status: Make status module work even when the status is 0. 
+
+-------------------------------------------------------------------
+Fri Mar 11 16:55:57 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.4.2:
+  * No changelog available. 
+
+-------------------------------------------------------------------
+Wed Mar  9 04:09:20 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.4.0:
+  * Exclude vuepress output from dprint.
+  * ignore empty --jobs argument.
+  * aws: Only display AWS if there are credentials configured.
+  * fish: Emit clear-screen escape sequence only in left prompt.
+  * localip: disable localip module default.
+  * pwsh: Use global:error[0] for most recent error in powershell. 
+
+-------------------------------------------------------------------
+Mon Feb  7 17:40:33 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.3.0:
+  * add username to Pulumi module.
+  * Enable Undistract Me for Linux.
+  * starship bug-report sets syntax highlighting for config file.
+  * add a container indicator.
+  * cli: Print arguments if argument parsing fails.
+  * cmd_duration: Make notification timeout configurable.
+  * install: Add posix shell check.
+  * localip: add module to print the current ipv4 address.
+  * pwsh: Set ExtraPromptLineCount.
+  * pwsh: Set STARSHIP_SHELL to pwsh on PS >5.
+  * Correctly detect older versions of powershell in bug-report.
+  * bash: Restore previous exit status in bash init.
+  * elvish: use $pwd for logical-path.
+  * nodejs: use e718 as the default of symbol in node configuration.
+  * status: Enable to convert from i64 to hex_status by casting
+    instead of parsing status.
+  * Improve compatibility with Zsh prompt theme system.
+  * zsh: using add-zsh-hook instead of add hook manually.
+  * elvish: Use built-in randint instead of starship session.
+
+-------------------------------------------------------------------
+Sat Jan 15 12:01:11 UTC 2022 - Dead Mozay <dead-mozay@opensuse.org>
+
+- Update to version 1.2.1:
+  * properties: fix regressions in status, pipestatus 
+    and terminal-width handling.
+  * pwsh: Avoid polluting the global function namespace.
+
+-------------------------------------------------------------------
+Fri Jan 14 13:39:20 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.2.0:
+  * No changelog available. 
+
+-------------------------------------------------------------------
+Wed Dec 22 07:02:21 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.1.1:
+  * Add package version detection for sbt projects.
+  * print-config subset of config.
+  * azure: Azure module.
+  * module: Add sudo module.
+  * status: Add hex_status.
+  * Display durations of 0ms.
+  * Store $? and $LASTEXITCODE first in PowerShell.
+  * aws: prevent endless loop when AWS config file is a directory.
+  * directory: improve truncation detection.
+  * docs: remove superfluous space.
+  * git_branch: more robust handling of .git.
+
+-------------------------------------------------------------------
+Fri Nov 26 14:24:34 UTC 2021 - Dead Mozay <dead-mozay@opensuse.org>
+
+- Update to version 1.0.0:
+  * Add starship_precmd_user_func support for PowerShell.
+  * style git repo root.
+  * Add pulumi module.
+  * also read from DOCKER_MACHINE_NAME.
+  * docs: Add copy button for code snippets via plugin.
+  * explain: allow specifying prompt arguments in explain and
+    timings subcommands.
+  * fill: add disabled option for fill module.
+  * package: Add support for crystal shards.
+  * python: Show value of PYENV_VERSION when present.
+  * ruby: Add environment variable checks to ruby module.
+  * shell: Add style config for shell module.
+  * Modules not working in fish RPROMPT.
+  * replace battery with starship-battery.
+  * pipestatus quoting on Zsh/Bash.
+  * allow unset KEYMAP and STARSHIP_DURATION in zsh.
+  * ignore scan_dir timeout in tests.
+  * init script line endings.
+  * only print root level config logs a single time.
+  * save pipestatus in fish init functions.
+  * configure: preserve formatting and comments.
+  * escaping: move escaping to individual variables.
+  * fill: Add terminal-width argument to explicitly define
+    terminal's width.
+  * init: Use stderr for init error message.
+  * memory_usage: remove duplicate % handling.
+  * status: Don't show status if all exit codes are 0.
+  * terraform: Improve module triggers.
+  * replace term_size with terminal_size.
+
+-------------------------------------------------------------------
+Wed Sep 22 01:44:25 UTC 2021 - Dead Mozay <dead-mozay@opensuse.org>
+
+- Update to version 0.58.0:
+  * Add a fill module to pad out the line.
+  * Add support for RPROMPT (right prompt).
+  * cobol: added COBOL module.
+  * git_metrics: Git metrics show only nonzero diffs.
+  * print-config: list expanded $all variable.
+  * config: inherit stdin/stdout/stderr instead of piping to fix editor invocation.
+  * package: Ignore setup.cfg attr: and file:.
+  * print-config: add missing format_right to FullConfig.
+  * zsh: always escape percent character.
+  * zsh init script: avoid adding preexec commands twice. 
+
+-------------------------------------------------------------------
+Thu Aug 26 16:03:03 UTC 2021 - Dead Mozay <dead-mozay@opensuse.org>
+
+- Update to version 0.57.0:
+  * clippy: fix new clippy lints.
+  * git_status: show working tree status if index status is present.
+  * init: remove quotes in bash init.
+  * jobs: Add the symbol and number thresholds respecting the threshold option.
+  * print-config: fix battery module and add missing modules.
+  * add support for xonsh.
+  * git_status: dont render module output if not in git repository.
+  * git_status: added symbol for local repos up-to-date with remote.
+  * kubernetes: implements regex matching for context aliases.
+  * package: Add ability to format the version.
+  * package: Support package version from setup.cfg (python).
+  * status: Add pipestatus display in status module. 
+
+-------------------------------------------------------------------
+Wed Jul 14 03:02:04 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.56.0:
+  * clippy: fix additional clippy lints in tests.
+  * dotnet: make default format consistent with other module.
+  * git_status: Fix when the worktree != root dir.
+  * init: improve starship path escaping.
+  * nu: use correct session key variable name.
+  * pwsh: replace Get-Error with $error[0].
+  * rust: support for rust-toolchain.toml.
+  * Add the git_metrics module.
+  * add support for nu shell.
+  * treat empty string as none when formating.
+  * docker_context: Use DOCKER_HOST and DOCKER_CONTEXT enviroment variables.
+  * env_var: allow multiple instances.
+  * Improve custom config OS.
+  * enforce ALL_MODULES ordering in test.
+  * fix name of battery info provider implementation. 
+
+-------------------------------------------------------------------
+Mon Jun 21 02:44:58 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.55.0:
+  * remove trailing whitespace from Terraform version.
+  * clippy: fix new lint warning
+  * dotnet: Don't treat folder with .sln file as a .NET project.
+  * Add Operating System condition to custom commands.
+  * r-lang: add module for R programming language. 
+
+-------------------------------------------------------------------
+Sun May 16 13:21:08 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.54.0:
+  * add missing project filter rules.
+  * git_commit: leading space in git commit tag.
+  * git_status: Show git add -N files as unstaged.
+  * zsh: preserve zle-keymap-select. 
+
+-------------------------------------------------------------------
+Sun May  2 08:54:25 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.53.0:
+  * configure: fix launching .cmd editors
+  * fish: explicitly set scope in fish init script
+  * gcloud: add double space after cloud emoji symbol
+  * init: always use lf line endings
+  * print-config: add red module to Default impl
+  * print-config: use proper defaults for top-level values
+  * zsh: Reverts changes to background jobs retaining improvements 
+    around START_TIME
+
+-------------------------------------------------------------------
+Thu Apr 22 17:06:16 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.52.1:
+  * fix docker_context module name in nf preset 
+  * Add a missing ' ' to the end of the python prompt
+  * context: remove unwrap when pwd is unavailable
+  * elixir: correctly parse dev and rc versions
+  * git_branch: Make Git branch module support bare repositories
+  * jobs: Handle zero jobs with zero thresholds
+  * nodejs: Check for .nvmrc
+  * shell: Support conditional format strings for $indicator
+  * vcsh: Add new module for VCSH
+  * git_status: replace git2 in git status module with git cli
+  * battery: add space between icon and text for better visual
+  * directory: Add comments for test settings
+  * init: Cleanup the unknown shell message 
+
+-------------------------------------------------------------------
+Wed Mar 24 03:22:57 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.51.0:
+  * correct fish syntax error when setting variables.
+  * Add a fallback prompt under TERM=dumb.
+  * bash: escape interpretable characters.
+  * cmake: Change cmake symbol to unicode triangle.
+  * directory: contract git repo with display path.
+  * directory: Handle non-UTF-8 folder names.
+  * docs: "Command Duration" section link target.
+  * init: Quote path for elvish init.
+  * init: make log messages on pwsh visible again.
+  * java: use consistent separators for java path.
+  * nodejs: Change symbol to nerd-font.
+  * package: fix meson version extraction if 'meson_version' is present.
+  * python: Handle PyPy python version correctly.
+  * tcsh: remove quotes and escape backticks.
+  * utils: Sefely unwrap the command output.
+  * zsh: Set PROMPT just once.
+  * allow changing default command timeout.
+  * create shell module.
+  * add support for tcsh.
+  * aws: add support for getting profile from awsu.
+  * cmake: Configure when the module is shown.
+  * crystal: Configure when the module is shown.
+  * dart: Configure when the module is shown.
+  * docker_context: Configure when module is shown.
+  * dotnet: Configure when module is shown.
+  * elixir: Configure when module is shown.
+  * elm: Configure when the module is shown.
+  * erlang: Configure when the module is shown.
+  * golang: Configure when the module is shown.
+  * helm: Configure when the module is shown.
+  * install: make install script posix compliant.
+  * java: Configure when the module is shown.
+  * julia: Configure when the module is shown.
+  * kotlin: Configure when the module is shown.
+  * lua: Configure when the module is shown.
+  * nim: Configure when the module is shown.
+  * nodejs: Configure when the module is shown.
+  * ocaml: Configure when the module is shown.
+  * perl: Configure when the module is shown.
+  * php: Configure when the module is shown.
+  * purescript: Configure when the module is shown.
+  * python: Configure when the module is shown.
+  * ruby: Configure when the module is shown.
+  * scala: Add scala module.
+  * swift: Configure when the module is shown.
+  * terraform: Configure when the module is shown.
+  * test: allow dynamic mocking of commands.
+  * vagrant: Configure when the module is shown.
+  * zig: Configure when the module is shown.
+  * init: Prefer set -x over export for fish users.
+  * username: get uid without external command.
+  * aws: Add spacing between profile and region.
+
+-------------------------------------------------------------------
+Wed Feb  3 04:25:17 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.50.0:
+  * add support for elvish shell
+  * vagrant: Add support for Vagrant 
+
+-------------------------------------------------------------------
+Mon Feb  1 03:54:22 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.49.0:
+  * Adjust default format strings
+  * Applied clippy warnings
+  * bash: Fix broken bash init script
+  * bash: bash-preexec detection and implementation
+  * cmake: Fix spacing with missing variable
+  * docker_context: enable if either yml or yaml is found
+  * command: add 'toggle' command 
+  * directory: Add home directory symbol
+  * status: Convert known status code to their meaning 
+
+-------------------------------------------------------------------
+Sun Jan  3 17:43:52 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.48.0:
+  * apply nightly clippy & fmt suggestions
+  * bg:none overwrites foreground colour
+  * bash: Fix background jobs with z/autojump
+  * config: log as error if failure to read config wasn't caused by NotFound 
+  * git_commit: show last created tag on current commit
+  * git_state: Handle gitdir indirection when rebasing
+  * swift: parsing swift version
+  * i18n: add French and Spanish doc translations
+  * battery: make module behaviour more obvious
+  * git_branch: show remote name
+  * git_branch: add remote branch name if different than local branch
+  * git_branch: add 'only_attached' config bool
+  * init: prefix STATUS and PREEXEC_READY shell vars with STARSHIP_
+  * java: Show Java module for Clojure projects
+  * kotlin: Add the kotlin module
+  * nodejs: check node engines version in package.json
+  * package: Meson package support
+  * python: Smarter python binary usage
+  * rust: Support new rust-toolchain format
+  * shlvl: Add repeat option
+  * username: Try harder to guess if inside ssh
+  * memory_usage: replace sysinfo with sys-info
+  * Latest clippy suggestions
+  * Add comments for bash preexec fix 
+
+-------------------------------------------------------------------
+Sun Nov 15 18:58:58 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.47.0:
+  * docs: Alphabetic sorting of config subsections (#1877)
+  * feat(terraform): Add hcl extension support to Terraform 
+    module (#1875)
+  * fix(pwsh): fix crash on error in shell with old pwsh (#1861)
+  * perf(init/pwsh): use get-random for session-key instead of 
+    invoking starship session (#1860)
+  * perf(init): use $RANDOM env-var instead of starship session 
+    to generate session-key (#1755)
+  * fix(gcloud): respect overides of the active gcloud 
+    config (#1846)
+  * docs(cmd_duration): Document cmd_duration 
+    notifications (#1831)
+  * docs(pwsh/init): various fixes for init doc (#1793)
+  * fix(bug-report): verify exit code of open, always 
+    print url (#1839)
+  * feat(lua): Add a Lua module (#1815)
+  * fix(zsh): Ensure existing keymap change functions are not 
+    overriden (#1826)
+  * feat(logger): don't create empty log files (#1836)
+  * fix(install): Better platform detection (#1827)
+  * feat(openstack): Add module for OpenStack (#1664)
+  * fix(pwsh): Switched pwsh profile to use dollar hook for a more 
+    accurate success/failure handling  (#1745)
+  * feat(git_commit): add git tag to module (#950)
+  * fix(kubernetes): Parse stacked kubeconfigs (#1678)
+  * fix(pwsh): preserve original console encondings (#1810)
+  * docs(memory): Remove removed options from Memory example (#1800)
+
+-------------------------------------------------------------------
+Thu Oct 15 02:28:39 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.46.2:
+  * docs: Update document for installing on windows (#1760)
+  * fix: replace emoji for cmake and erlang (#1787)
+  * fix(directory): preserve substitution order (#1782)
+  * fix: apply clippy suggestions (#1756)
+  * docs: Update defaults in config docs (#1759)
+
+-------------------------------------------------------------------
+Fri Oct 09 03:09:00 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.46.0:
+  * fix(python): Read venv prompt from pyvenv.cfg (#1747)
+  * docs(python): Update the python_binary option (#1731)
+  * docs(FAQ): add FAQ about shell completions
+  * feat(directory): add ellipsis to truncated paths (#1563)
+  * fix(utils): reduce log level of errors in utils. (#1730)
+  * fix(bug-report): use correct path for ion config (#1726)
+
+-------------------------------------------------------------------
+Thu Oct 01 04:07:27 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.45.2:
+  * No changelog.
+
+-------------------------------------------------------------------
+Wed Sep 30 08:04:11 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.45.0:
+  * Bug Fixes
+    - bash: init breaks if PROMPT_COMMAND includes starship_precmd 
+      as an intermediate command (#1541)
+    - config: don't panic when hex color is too short (#1473)
+    - docs: Fix Explore The Starship link in guide (#1553)
+    - explain: align table correctly (#1482)
+    - git-state: Fix discrepancy between v0.44.0 and master (#1672)
+    - git_state: panic on interactive rebase (#1552)
+    - git_status: Fix file rename inconsistency compared to git (#1411)
+    - install: switch to install the musl binaries by default (#1590)
+    - nodejs: remove line break from version (#1464)
+    - ocaml: Stop new line being included in ocaml version (#1479)
+    - pwsh: update init script to propagate $LASTEXITCODE and $?
+    - pwsh: stop paths from being interpreted as patterns (#1569)
+    - zsh: work when setopt ksh_arrays is set (#1612)
+  * Docs
+    - Update example config to remove old var (#1546)
+    - add a migration guide for the format string changes (#1624)
+    - update clippy command in the CONTRIBUTING.md (#1665)
+    - Improvements in docs for custom modules (#1615)
+    - Drop inexistent "number" variable from hostname section (#1586)
+    - Add perl official logo in NerdFont (#1558)
+    - fix code block overflow on mobile (#1492)
+    - add uninstallation instructions to FAQ (#1474)
+    - update font in FAQ from Fira Code → FiraCode Nerd Font
+    - replace powerline requirement with nerd font requirement
+    - git_status: Update git_status module docs (#1667)
+    - i18n: New Crowdin translations (#1366)
+
+-------------------------------------------------------------------
+Tue Jul 07 05:57:03 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.44.0:
+  * No chengelog.
+
+-------------------------------------------------------------------
+Sat Jun 27 17:12:19 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.43.0:
+  * Bug Fixes
+    - errant space breaks tar in installer (#1314)
+    - bash: last command status and command duration (#1185)
+    - directory: Fix path contractions for symlinked git repos (#1299)
+    - php: Stop including error messages in the version
+  * Docs
+    - update dotfile link in FAQ
+    - instruct users to install a nerd-font (#1383)
+    - Add FAQ entry on missing symbols (#1307)
+    - remove redundant settings in Contributing guide (#1326)
+  * Features
+    - dotnet: adds additional files to detect .net projects (#1303)
+    - git: honor GIT_DIR environment variable (#1348)
+    - nodejs: support additional file patterns (#1311)
+    - python: Add option to change the python binary (#1297)
+
+-------------------------------------------------------------------
+Wed Jun 10 03:00:56 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.42.0:
+  * Bug Fixes
+    - Retain previous command state on zsh keymap select (#958)
+    - custom: improve handling of Powershell prompts (#1237)
+  * Docs
+    - Updated config with a tip for PowerShell user (#1216)
+    - fix example Starship implementation in bash
+    - custom: add warning about custom command potentially freezing
+      terminal (#1242)
+
+-------------------------------------------------------------------
+Sat May 16 13:43:48 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.41.3:
+  * No chengelog.
+
+-------------------------------------------------------------------
+Fri May 15 03:47:48 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version v0.41.1:
+  * Bug Fixes
+    - directory: avoid confusing modules with PowerShell paths (#1114)
+  * Docs
+    - correct the configuration docs (#1195)
+    - i18n: new Crowdin translations (#1059)
+
+-------------------------------------------------------------------
+Wed Apr 29 05:01:56 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version v0.41.0:
+  * Revert
+    - fix(git_branch,git_status): implement fallback branch_n… (#1092)
+
+-------------------------------------------------------------------
+Mon Apr 13 19:01:10 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version v0.40.1:
+  * Bug Fixes
+    - Fix variable styles in string formatter (#1069)
+    - implement fallback branch_name for bare git repos (#1035)
+    - Fix typo (#1054)
+    - ruby: do not assume length when retrieving version
+  * Docs
+    - Add details about musl build to readme (#997)
+    - update NerdFont preset to include new modules (#1077)
+    - add Open Collective to README
+    - i18n: new Crowdin translations (#1047)
+  * Features
+    - add support for custom modules
+    - nix_shell: add symbol to nix-shell module (#1058)
+    - package: Add project version for Elixir (#1067)
+  * Improvement
+    - add parser for format strings (#1021)
+
+-------------------------------------------------------------------
+Mon Apr 13 18:53:44 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Initial package 

@@ -1,0 +1,63 @@
+#
+# spec file for package starship
+#
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
+#
+
+%global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
+Name:           starship
+Version:        1.8.0
+Release:        0
+Summary:        The minimal, blazing-fast, and infinitely customizable prompt for any shell
+License:        ISC
+Url:            https://starship.rs/
+Source0:        %{name}-%{version}.tar.gz
+Source1:        vendor.tar.xz
+Source2:        cargo_config
+BuildRequires:  rust-packaging
+BuildRequires:  pkgconfig(openssl)
+
+
+%description
+The minimal, blazing-fast, and infinitely customizable prompt for any shell!
+    Fast: it's fast – really really fast! rocket
+    Customizable: configure every aspect of your prompt.
+    Universal: works on any shell, on any operating system.
+    Intelligent: shows relevant information at a glance.
+    Feature rich: support for all your favorite tools.
+    Easy: quick to install – start using it in minutes.
+
+
+%prep
+%setup -qa1
+mkdir -p .cargo
+cp %{SOURCE2} .cargo/config
+
+%build
+RUSTFLAGS=%{rustflags} cargo build --release
+
+%install
+RUSTFLAGS=%{rustflags} cargo install --root=%{buildroot}%{_prefix} --path .
+# remove residue crate file
+rm %{buildroot}%{_prefix}/.crates.toml
+rm %{buildroot}%{_prefix}/.crates2.json
+
+
+%files
+%doc README.md
+%license LICENSE
+%{_bindir}/starship
+
+%changelog
+
