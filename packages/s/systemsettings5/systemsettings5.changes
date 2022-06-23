@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 21 11:39:49 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.1
+- Changes since 5.25.0:
+  * systemsettingsrunner: Fix drag and drop for KCMs using embedded json metadata
+  * IconMode: Switch to the selected KCM (kde#444565)
+
+-------------------------------------------------------------------
 Thu Jun  9 11:15:07 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.0
