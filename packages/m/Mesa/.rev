@@ -4916,4 +4916,16 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   (boo#1200559)</comment>
     <requestid>982753</requestid>
   </revision>
+  <revision rev="444" vrev="316">
+    <srcmd5>d6407be37b54577258f37814ed939314</srcmd5>
+    <version>unknown</version>
+    <time>1655972525</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 22.1.2
+  &quot; There's a lot of zink here, thanks to Mike for help with manually
+    backporting parts of it! We've als got a bunch of fixes for panfrost,
+    and some for intel, radeon, llvmpip, dzn, broadcom, nir, core gallium,
+    the va state tracker, and freedren.&quot;</comment>
+    <requestid>984036</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 20 15:28:30 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 22.1.2
+  " There's a lot of zink here, thanks to Mike for help with manually
+    backporting parts of it! We've als got a bunch of fixes for panfrost,
+    and some for intel, radeon, llvmpip, dzn, broadcom, nir, core gallium,
+    the va state tracker, and freedren."
+
+-------------------------------------------------------------------
 Wed Jun 15 10:09:09 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - let Mesa-libGL-devel require libX11-devel via pkgconfig(x11)
