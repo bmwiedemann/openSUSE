@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 22 07:37:06 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.33.0:
+  * dflags generics - added WithInputMutator and WithValueMutator too (#593)
+  * exit with status 1 if grpcping -health isn't SERVING. (#589)
+
+-------------------------------------------------------------------
 Sat Jun 04 18:59:38 UTC 2022 - kastl@b1-systems.de
 
 - BuildRequire go1.18
