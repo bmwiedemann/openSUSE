@@ -1,7 +1,7 @@
 #
 # spec file for package rpcsvc-proto
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           rpcsvc-proto
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        RPC protocol definitions
 License:        BSD-3-Clause
 Group:          System/Libraries
-URL:            http://github.com/thkukuk/rpcsvc-proto
-Source:         %{name}-%{version}.tar.xz
+URL:            https://github.com/thkukuk/rpcsvc-proto
+Source:         https://github.com/thkukuk/rpcsvc-proto/releases/download/v%{version}/rpcsvc-proto-%{version}.tar.xz
 
 %description
 The rpcsvc-proto package includes several rpcsvc header files
@@ -54,7 +54,7 @@ The input to rpcgen is a language similar to C known as RPC Language
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -67,6 +67,6 @@ make %{?_smp_mflags}
 %files -n rpcgen
 %license COPYING
 %{_bindir}/rpcgen
-%{_mandir}/man1/rpcgen.1*
+%{_mandir}/man1/rpcgen.1%{?ext_man}
 
 %changelog

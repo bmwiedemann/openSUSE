@@ -49,4 +49,12 @@
   - Add support for external libintl</comment>
     <requestid>817719</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3d41ead26953a84ebc0731ce344f111a</srcmd5>
+    <version>1.4.3</version>
+    <time>1655972528</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984045</requestid>
+  </revision>
 </revisionlist>
