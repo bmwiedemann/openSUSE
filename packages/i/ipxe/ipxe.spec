@@ -35,14 +35,14 @@ BuildRequires:  binutils-devel
 %if 0%{?sle_version} >= 150000 && 0%{?sle_version} < 159999
 BuildRequires:  cross-x86_64-gcc7
 %else
-BuildRequires:  cross-x86_64-gcc10
+BuildRequires:  cross-x86_64-gcc%{gcc_version}
 %endif
 %endif
 %ifarch x86_64
 %if 0%{?sle_version} >= 150000 && 0%{?sle_version} < 159999
 BuildRequires:  cross-aarch64-gcc7
 %else
-BuildRequires:  cross-aarch64-gcc10
+BuildRequires:  cross-aarch64-gcc%{gcc_version}
 %endif
 %endif
 BuildRequires:  perl

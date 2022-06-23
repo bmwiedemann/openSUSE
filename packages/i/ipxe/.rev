@@ -134,4 +134,12 @@ use xorrisofs for creating iso
     <comment></comment>
     <requestid>978769</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>4e241d4c01f02da8c204bf681b84f8ef</srcmd5>
+    <version>1.21.1+git20210908.02ec659b</version>
+    <time>1655972698</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984582</requestid>
+  </revision>
 </revisionlist>
