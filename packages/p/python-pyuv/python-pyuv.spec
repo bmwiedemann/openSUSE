@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyuv
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python310 1
 Name:           python-pyuv
 Version:        1.4.0
 Release:        0
@@ -56,7 +55,17 @@ sed -i 's:"proc_:"tests/proc_:' tests/test_process.py
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%{python_expand \
+# fix for py3.10, but it doesn't work for py3.8 and lower
+# https://github.com/saghul/pyuv/issues/271
+%if %{$python_version_nodots} > 38
+sed -i 's/Py_REFCNT(self) = refcnt/Py_SET_REFCNT(self, refcnt)/' src/handle.c
+%else
+# what if python3.8 isn't first in the line?
+sed -i 's/Py_SET_REFCNT(self, refcnt)/Py_REFCNT(self) = refcnt/' src/handle.c
+%endif
+$python setup.py build
+}
 
 %install
 %python_install

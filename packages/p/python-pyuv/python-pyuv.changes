@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 22 14:31:39 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Fix build with Python 3.10
+
+-------------------------------------------------------------------
 Sat Jan 29 20:41:27 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Skip python310 build (no support)
