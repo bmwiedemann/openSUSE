@@ -860,4 +860,12 @@ This version removes the unneeded ldconfig call.</comment>
     <comment>Update to 5.25.0</comment>
     <requestid>981921</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>a41c13bb7afcb59afa06cfd9c20caa40</srcmd5>
+    <version>5.25.1</version>
+    <time>1655972625</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.1. As usual, completely untested. (forwarded request 984192 from Vogtinator)</comment>
+    <requestid>984348</requestid>
+  </revision>
 </revisionlist>
