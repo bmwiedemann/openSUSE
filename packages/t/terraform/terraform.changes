@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jun 22 07:58:20 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to 1.2.3:
+  * UPGRADE NOTES:
+    The following remote state backends are now marked as deprecated, and are
+    planned to be removed in a future Terraform release. These backends have
+    been unmaintained since before Terraform v1.0, and may contain known bugs,
+    outdated packages, or security vulnerabilities.
+    - artifactory
+    - etcd
+    - etcdv3
+    - manta
+    - swift
+  * BUG FIXES:
+    - Missing check for error diagnostics in GetProviderSchema could result in panic (#31184)
+    - Module registries returning X-Terraform-Get locations with no URL would error with "no getter available for X-Terraform-Get source protocol" (#31237)
+    - Fix crash from concurrent operation on shared set of resource instance dependencies (#31246)
+    - backend/cos: tencentcloud-terraform-lock tag was not removed in all cases (#31223)
+
+-------------------------------------------------------------------
 Sun Jun 05 12:36:36 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.2.2:
