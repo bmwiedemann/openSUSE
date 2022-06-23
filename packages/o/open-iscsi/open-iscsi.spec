@@ -138,7 +138,12 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rciscsiuio
 echo > %{buildroot}%{_sysconfdir}/iscsi/initiatorname.iscsi
 %make_install -C iscsiuio
 # rename iscsiuio logrotate file to proper name
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
+mv %{buildroot}%{_sysconfdir}/logrotate.d/iscsiuiolog %{buildroot}%{_distconfdir}/logrotate.d/iscsiuio
+%else
 mv %{buildroot}%{_sysconfdir}/logrotate.d/iscsiuiolog %{buildroot}%{_sysconfdir}/logrotate.d/iscsiuio
+%endif
 %fdupes %{buildroot}/%{_prefix}
 
 %post
@@ -217,7 +222,12 @@ fi
 %{_sbindir}/iscsiuio
 %{_sbindir}/brcm_iscsiuio
 %{_mandir}/man8/iscsiuio.8%{ext_man}
+%if 0%{?suse_version} > 1500
+%dir %{_distconfdir}/logrotate.d
+%{_distconfdir}/logrotate.d/iscsiuio
+%else
 %config %{_sysconfdir}/logrotate.d/iscsiuio
+%endif
 %{_unitdir}/iscsiuio.service
 %{_unitdir}/iscsiuio.socket
 %{_sbindir}/rciscsiuio

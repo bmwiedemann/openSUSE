@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 17 16:06:29 UTC 2022 - Lee Duncan <lduncan@suse.com>
+
+- For Tumbleweed, moved logrotate files from user-specific
+  directory /etc/logrotate.d to vendor-specific
+  /usr/etc/logrotate.d
+  (for Stefan Schubert <schubi@suse.com>)
+
+-------------------------------------------------------------------
 Fri May 13 20:53:23 UTC 2022 - Lee Duncan <lduncan@suse.com>
 
 - Set initiatorname in %post (at end of install), for cases
