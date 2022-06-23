@@ -26,7 +26,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           lighttpd
-Version:        1.4.64
+Version:        1.4.65
 Release:        0
 #
 Summary:        A Secure, Fast, Compliant, and Very Flexible Web Server

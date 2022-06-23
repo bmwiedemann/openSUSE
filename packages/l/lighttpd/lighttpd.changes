@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jun 21 20:30:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.65:
+  * WebSockets over HTTP/2
+  * RFC 8441 Bootstrapping WebSockets with HTTP/2
+  * HTTP/2 PRIORITY_UPDATE
+  * RFC 9218 Extensible Prioritization Scheme for HTTP
+  * prefix/suffix conditions in lighttpd.conf
+  * mod_webdav safe partial-PUT
+  * webdav.opts += (“partial-put-copy-modify” => “enable”)
+  * mod_accesslog option: accesslog.escaping = “json”
+  * mod_deflate libdeflate build option
+  * speed up request body uploads via HTTP/2
+  * Behavior Changes
+  * change default server.max-keep-alive-requests = 1000 to adjust
+  * to increasing HTTP/2 usage and to web2/web3 application usage
+  * (prior default was 100)
+  * mod_status HTML now includes HTTP/2 control stream id 0 in the output
+  * which contains aggregate counts for the HTTP/2 connection
+  * (These lines can be identified with URL ‘*’, part of “PRI *” preface)
+  * alternative: https://wiki.lighttpd.net/ModMagnetExamples#lua-mod_status
+  * MIME type application/javascript is translated to text/javascript (RFC 9239)
+
+-------------------------------------------------------------------
 Thu Feb  3 08:21:55 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Set ProtectHome to read-only, otherwise access to the users public_html can
