@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 20 12:34:56 UTC 2022 - olaf@aepfle.de
+
+- fix objdump parsing for non-executable sections (#53)
+
+-------------------------------------------------------------------
+Mon Jun 13 13:13:13 UTC 2022 - olaf@aepfle.de
+
+- fix objdump parsing (#52)
+
+-------------------------------------------------------------------
 Fri Mar  4 12:34:56 UTC 2022 - olaf@aepfle.de
 
 - handle -a also in same-build-result.sh
@@ -216,7 +226,7 @@ Thu Jan  5 11:01:53 UTC 2017 - olaf@aepfle.de
 -------------------------------------------------------------------
 Wed Dec 14 08:44:11 UTC 2016 - olaf@aepfle.de
 
-- Remove warning about python mtime mismatch, a republish will not help
+- Remove warning about python mtime mismatch, a republish will not help (bsc#915948)
 - Handle yet another variant of numbered anchor in html file
 
 -------------------------------------------------------------------

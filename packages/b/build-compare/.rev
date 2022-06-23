@@ -1049,4 +1049,16 @@ In home:RedDwarf/kdenlive makes a difference. You can see the openSUSE_Factory/x
 - Add extra handling for KMP versions</comment>
     <requestid>959841</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>68f8918bfd2fbde564ed82e9e4d97297</srcmd5>
+    <version>20220620T150329.a852498</version>
+    <time>1655972525</time>
+    <user>dimstar_suse</user>
+    <comment>- fix objdump parsing for non-executable sections (#53)
+
+- fix objdump parsing (#52)
+
+- Remove warning about python mtime mismatch, a republish will not help (bsc#915948)</comment>
+    <requestid>984012</requestid>
+  </revision>
 </revisionlist>
