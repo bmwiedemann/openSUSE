@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 21 16:53:03 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update devel runtime requirements and supplements
+
+-------------------------------------------------------------------
+Tue Jun 21 10:10:20 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.3.1
+  * Added the missing QXYSeries.points()
+
+-------------------------------------------------------------------
 Wed Apr 13 08:22:20 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 6.3.0

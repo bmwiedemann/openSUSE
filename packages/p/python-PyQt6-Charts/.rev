@@ -32,4 +32,12 @@
     <comment></comment>
     <requestid>970209</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6ee006a50b182003ad6cbd78e98c1ca2</srcmd5>
+    <version>6.3.1</version>
+    <time>1655972612</time>
+    <user>dimstar_suse</user>
+    <comment>- Update devel runtime requirements and supplements (forwarded request 984231 from bnavigator)</comment>
+    <requestid>984232</requestid>
+  </revision>
 </revisionlist>
