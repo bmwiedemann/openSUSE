@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           ktop
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        A top-like tool for your Kubernetes clusters
 License:        Apache-2.0

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 22 07:58:04 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.3.0:
+  * GitHub Action and release automation
+  * test user yaml
+  * Fixes for authorization detection; client-go updates; UI updates
+  * Refactor code to use typed clients and informers
+  * GUI updates and doc adjustments
+  * chore: Rename Nmspaces to Namespaces
+
+-------------------------------------------------------------------
 Tue Jan 11 08:21:37 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - BuildRequire go 1.17 or higher
