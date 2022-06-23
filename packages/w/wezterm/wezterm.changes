@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jun 16 13:04:52 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 20220408.101518.b908e2dd^git356:
+  * macos: use shift-tab hack with ctrl-shift-tab as well
+  * docs: changelog for https://github.com/wez/wezterm/issues/2063
+  * rename focus_change_repaint_delay -> x11_focus_change_repaint_delay_ms
+  * x11: query focus after repaint delay
+  * x11: allow configuration of repaint delay
+  * macos: allow for keyboard translation data to be null
+  * term: implement OSC 1337 ReportCellSize
+  * track dpi in mux and terminal model
+  * avoid spawn failures after using `sudo -i`
+  * docs: changelog for #2125 #2052
+  * Update wezterm.desktop
+  * appease dependabot security alerts
+  * exit_behavior = "Close" is now the default
+  * make enable_wayland = true the default
+
+-------------------------------------------------------------------
 Tue Jun 14 14:41:05 UTC 2022 - socvirnyl.estela@gmail.com
 
 - add completions for bash, fish, and zsh
