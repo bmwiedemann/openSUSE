@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           powerdevil5
-Version:        5.25.0
+Version:        5.25.1
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,13 +28,11 @@ Summary:        KDE Power Management module
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         powerdevil-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/powerdevil-%{version}.tar.xz
 %if %{with released}
-Source1:        powerdevil-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/powerdevil-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM https://invent.kde.org/plasma/powerdevil/-/commit/dd74cdbdd3849fbd86e6613ef7ecab6c7857cb89
-Patch0:         upower-Prevent-integer-overflow-during-new-brightness.patch
 BuildRequires:  extra-cmake-modules >= 1.2.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  systemd-rpm-macros
