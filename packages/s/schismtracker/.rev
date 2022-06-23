@@ -157,4 +157,12 @@
     <comment>- Employ pkgconfig(sdl) to allow pulling in sdl12_compat.</comment>
     <requestid>977670</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>2d3f2f79b2a246d35b5497702420152b</srcmd5>
+    <version>20220506</version>
+    <time>1655972703</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-configure.ac-Accept-SDL-1.2.50.patch</comment>
+    <requestid>984615</requestid>
+  </revision>
 </revisionlist>

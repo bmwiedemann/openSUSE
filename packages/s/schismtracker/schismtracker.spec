@@ -28,6 +28,7 @@ Source2:        %name.desktop
 Patch1:         schism-alsa.diff
 Patch2:         schism-nodate.diff
 Patch3:         schism-deptrack.diff
+Patch4:         0001-configure.ac-Accept-SDL-1.2.50.patch
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
 BuildRequires:  automake

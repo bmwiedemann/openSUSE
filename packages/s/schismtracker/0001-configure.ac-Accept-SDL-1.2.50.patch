@@ -1,0 +1,28 @@
+From e52565aa278d4662a3ed1e2ef413a8c6d1f09f0c Mon Sep 17 00:00:00 2001
+From: "Haelwenn (lanodan) Monnier" <contact@hacktivis.me>
+Date: Sun, 12 Jun 2022 19:56:16 +0200
+Subject: [PATCH] configure.ac: Accept SDL 1.2.50+
+
+1.2.50+ (currently 1.2.52) is the version returned by the SDL 1.2 compatibility library[1].
+
+1: https://github.com/libsdl-org/sdl12-compat
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 58bf2963..0e6b2eb3 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -64,7 +64,7 @@ AC_SUBST(SDL_CONFIG)
+ if test "x$SDL_CONFIG" == "x"; then
+         AC_MSG_ERROR([*** sdl-config not found.])
+ fi
+-if $SDL_CONFIG --version | grep -qv 1.2.1; then
++if $SDL_CONFIG --version | grep -qv '1.2.\[1-9\]'; then
+         AC_MSG_ERROR([*** SDL version >= 1.2.10 not found.])
+ fi
+ SDL_CFLAGS=$($SDL_CONFIG --cflags)
+-- 
+2.36.1
+

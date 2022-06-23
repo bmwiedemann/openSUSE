@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 22 22:44:47 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-configure.ac-Accept-SDL-1.2.50.patch
+
+-------------------------------------------------------------------
 Tue May 17 08:16:41 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Employ pkgconfig(sdl) to allow pulling in sdl12_compat.
