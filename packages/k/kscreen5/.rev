@@ -1059,4 +1059,12 @@ If possible, please copy to 13.2 - many thanks!
     <comment>Update to 5.25.0</comment>
     <requestid>981907</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>df521176fecb10ada98b0c8db59b577d</srcmd5>
+    <version>5.25.1</version>
+    <time>1655972562</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.1. As usual, completely untested. (forwarded request 984192 from Vogtinator)</comment>
+    <requestid>984334</requestid>
+  </revision>
 </revisionlist>
