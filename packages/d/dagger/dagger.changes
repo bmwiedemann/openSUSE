@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Wed Jun 22 07:48:26 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.20:
+  * Start w getting started (#2690)
+  * docs: Provide more examples on `client: commands` and `platform` (#2668)
+  * feat: Support Helm upgrade and custom namespace (#2674)
+  * fix: correct GitHub camel case (#2678)
+  * Use a worker pool to send telemetry data
+  * docs: fix no-bare-urls rule
+  * docs: add dagger cloud url to docs
+  * chore: bump dagger patch version from 11 to 19 (#2652)
+  * fix: added a variable to customize the binary in go.#Build
+  * docs: Minor grammar fix for core concepts (#2675)
+  * universe(x): move Scaleway pkg from x to alpha
+  * universe(x): add experimental Scaleway package tests
+  * universe(x): add experimental Scaleway package
+  * fix: reverse `go.mod` change in merged PR
+  * docs: Clarify git tag format when installing a package
+  * updated the dagger cloud doc
+  * docs: remove log-level insturctions for dagger cloud
+  * docs: Add windows example in `cli.#Load` using socket
+  * docs: Improve explanations in the docker guide's export admonitions
+  * feat: Add install directory customization
+  * Added package to use the package manager composer (#2620)
+  * feat: allow custom image usage on go.#Build (#2632)
+  * docs: Make contributing guidelines more visible
+  * feat: add golangci to alpha universe (#2654)
+  * fix: add additional flags to command (#2641)
+  * build(deps-dev): bump concurrently from 7.2.0 to 7.2.2 in /website
+  * add offline_access scope so refresh token flow can be performed
+  * docs: Add docker package guide
+  * chore: Add deprecation message
+  * Add alpha and beta paths
+  * build(deps-dev): bump cypress from 10.0.0 to 10.1.0 in /website
+  * core: `#Mount` supports inline file
+
+-------------------------------------------------------------------
+Wed Jun 22 07:42:41 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.19:
+  * chore: Add 'always' field to terraform.#Run from #2588 (#2618)
+  * docs: fix dagger-cloud slug
+  * docs: move dagger cloud under logdebug docs section
+  * Add blurb about large changes to CONTRIBUTION.md
+  * build(deps): bump sass from 1.52.1 to 1.52.3 in /website
+  * docs: update engine version in dagger cloud docs
+  * fix: make log level field names explicit
+  * ci: disable old docs integration tests from the main plan
+  * build(deps): bump github.com/rs/zerolog from 1.26.1 to 1.27.0
+  * Add optional 'always' field to terraform.#Run, which will be passed to docker.#Run
+  * build(deps-dev): bump cypress-localstorage-commands in /website
+  * docs: link back to Source faq
+  * fix: rename _op to _pull for better log UX
+
+-------------------------------------------------------------------
+Wed Jun 22 07:38:53 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.18:
+  * bugfix: don't send 'run started' event on 'dagger do --help'
+  * Add event to push action logs to Dagger Cloud
+  * Rename ActionTransition to ActionTransitioned
+  * Revert "Rename LogEmitted to Logger"
+  * Rename LogEmitted to Logger
+  * code: revert Data field type back to Properties in Event struct
+  * Remove unused var
+  * Remove redundant TODO
+  * Replace all occurences of targetPath.String()
+  * Track plan start & end via events ONLY, not logs
+  * Send logs as strongly typed events ONLY
+  * Rename ActionUpdated to ActionTransition
+  * Reuse variable in otel tracer
+  * Use an empty interface for event data
+  * Revert StateRunning to StateComputing
+  * Send strongly typed cloud logs, via Telemetry (not Logger)
+  * Track run state changes explicitly, via Telemetry
+  * Add experimental --telemetry-log flag
+  * Cleanup event errors & test
+  * action events
+  * universe: new namespace universe.dagger.io/alpha
+  * docs: add "how to submit a help request" section
+  * build(deps): bump github.com/stretchr/testify from 1.7.1 to 1.7.2 (#2584)
+  * docs(faq): explain field shadowing
+
+-------------------------------------------------------------------
 Thu Jun 09 17:05:40 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.2.17:
