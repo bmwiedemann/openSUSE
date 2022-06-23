@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 22 07:54:03 UTC 2022 - FSchreiner@suse.com
+
+- Update to version 0.12.6:
+  * [dist] updated KankuFile.ubuntu to jammy
+  * [dist] updated KankuFile.ubuntu to focal
+  * [examples] new KankuFile for vmdk
+  * [cli] up: removed debug output
+  * [core] fixed kanku job sostw
+  * [core] updated TODO
+  * [cli] up: new job handling
+  * [handler] added K::H::CopyProfile
+  * added changelog to kanku-common and kanku-cli
+
+-------------------------------------------------------------------
 Thu Jun 09 14:14:00 UTC 2022 - FSchreiner@suse.com
 
 - Update to version 0.12.5:

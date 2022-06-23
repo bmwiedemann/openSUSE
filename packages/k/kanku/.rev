@@ -125,4 +125,21 @@
     <comment>update to version 0.12.5</comment>
     <requestid>982700</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4e420ab6e57c7ae136b26095cbca9bbf</srcmd5>
+    <version>0.12.6</version>
+    <time>1655972656</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.12.6:
+  * [dist] updated KankuFile.ubuntu to jammy
+  * [dist] updated KankuFile.ubuntu to focal
+  * [examples] new KankuFile for vmdk
+  * [cli] up: removed debug output
+  * [core] fixed kanku job sostw
+  * [core] updated TODO
+  * [cli] up: new job handling
+  * [handler] added K::H::CopyProfile
+  * added changelog to kanku-common and kanku-cli</comment>
+    <requestid>984400</requestid>
+  </revision>
 </revisionlist>
