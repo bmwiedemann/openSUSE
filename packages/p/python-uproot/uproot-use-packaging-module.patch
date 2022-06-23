@@ -1,8 +1,8 @@
-Index: uproot-4.2.1/src/uproot/_util.py
+Index: uproot-4.3.0/src/uproot/_util.py
 ===================================================================
---- uproot-4.2.1.orig/src/uproot/_util.py
-+++ uproot-4.2.1/src/uproot/_util.py
-@@ -16,7 +16,7 @@ from collections.abc import Iterable
+--- uproot-4.3.0.orig/src/uproot/_util.py
++++ uproot-4.3.0/src/uproot/_util.py
+@@ -17,7 +17,7 @@ from collections.abc import Iterable
  from urllib.parse import unquote, urlparse
  
  import numpy
@@ -11,7 +11,7 @@ Index: uproot-4.2.1/src/uproot/_util.py
  
  win = platform.system().lower().startswith("win")
  
-@@ -92,10 +92,10 @@ def parse_version(version):
+@@ -93,10 +93,10 @@ def parse_version(version):
      Converts a semver string into a Version object that can be compared with
      ``<``, ``>=``, etc.
  

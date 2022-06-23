@@ -20,7 +20,7 @@
 %define skip_python36 1
 %global modname uproot
 Name:           python-uproot
-Version:        4.2.2
+Version:        4.3.0
 Release:        0
 Summary:        ROOT I/O in pure Python and Numpy
 License:        BSD-3-Clause
