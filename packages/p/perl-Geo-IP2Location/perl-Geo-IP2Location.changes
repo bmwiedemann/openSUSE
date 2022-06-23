@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 22 06:08:14 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Update to 8.60
+      Twenty-second release under the Geo::IP2Location
+      Reduced file I/O to improve query performance
+
+-------------------------------------------------------------------
 Fri Sep 17 06:30:55 UTC 2021 - Elisei Roca <eroca@suse.com>
 
 - initial package 8.51

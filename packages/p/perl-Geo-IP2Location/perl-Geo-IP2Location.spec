@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Geo-IP2Location
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Geo-IP2Location
 Name:           perl-Geo-IP2Location
-Version:        8.51
+Version:        8.60
 Release:        0
 #Upstream: CHECK(Artistic-1.0 or GPL-1.0-or-later)
 Summary:        Lookup of country, region, city, latitude, longitude, ZIP code, time zon[cut]
