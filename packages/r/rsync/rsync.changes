@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 21 10:34:12 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Removed %config flag for files in /usr directory.
+
+-------------------------------------------------------------------
+Mon Jun 20 13:25:06 UTC 2022 - Stefan Schubert <schubi@suse.de>
+
+- Moved logrotate files from user specific directory /etc/logrotate.d
+  to vendor specific directory /usr/etc/logrotate.d.
+
+-------------------------------------------------------------------
 Tue Apr 19 06:38:55 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Update to 3.2.4

@@ -105,13 +105,18 @@ export LDFLAGS="-Wl,-z,relro,-z,now -fPIE -pie"
 %install
 %make_install
 rm -f %{buildroot}%{_sbindir}/rsyncd
-install -d %{buildroot}%{_sysconfdir}/logrotate.d
 install -d %{buildroot}%{_sysconfdir}/init.d
 install -d %{buildroot}%{_sysconfdir}/xinetd.d
 install -d %{buildroot}%{_sbindir}
 ln -sf ../bin/rsync %{buildroot}%{_sbindir}/rsyncd
 install -m 755 support/rsyncstats %{buildroot}%{_bindir}
+%if 0%{?suse_version} > 1500
+install -d %{buildroot}%{_distconfdir}/logrotate.d
+install -m 644 %{SOURCE2} %{buildroot}%{_distconfdir}/logrotate.d/rsync
+%else
+install -d %{buildroot}%{_sysconfdir}/logrotate.d
 install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/logrotate.d/rsync
+%endif
 install -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/rsyncd.conf
 install -m 600 %{SOURCE6} %{buildroot}%{_sysconfdir}/rsyncd.secrets
 install -D -m 0644 %{SOURCE9} %{buildroot}%{_unitdir}/rsyncd@.service
@@ -139,7 +144,11 @@ ln -sf service %{buildroot}%{_sbindir}/rcrsyncd
 %{_unitdir}/rsyncd.socket
 %config(noreplace) %{_sysconfdir}/rsyncd.conf
 %config(noreplace) %{_sysconfdir}/rsyncd.secrets
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/logrotate.d/rsync
+%else
 %config(noreplace) %{_sysconfdir}/logrotate.d/rsync
+%endif
 %{_sbindir}/rcrsyncd
 %{_sbindir}/rsyncd
 %{_bindir}/rsyncstats
