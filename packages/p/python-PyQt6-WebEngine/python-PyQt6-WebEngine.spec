@@ -18,21 +18,19 @@
 
 %define mname PyQt6-WebEngine
 %define muname PyQt6_WebEngine
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 %define pyqt_build_for_qt6 1
 Name:           python-%{mname}
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        Python bindings for the Qt WebEngine framework
 License:        GPL-3.0-only
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqt3d
 Source:         https://files.pythonhosted.org/packages/source/P/%{mname}/%{muname}-%{version}.tar.gz
-BuildRequires:  %{python_module PyQt6-devel}
+BuildRequires:  %{python_module PyQt6-devel >= 6.2}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pyqt-builder >= 1.11}
-BuildRequires:  %{python_module sip-devel >= 6.2}
+BuildRequires:  %{python_module sip-devel >= 6}
 BuildRequires:  fdupes
 BuildRequires:  python-pyqt-rpm-macros
 BuildRequires:  python-rpm-macros
