@@ -118,6 +118,7 @@ export NO_BRP_STALE_LINK_ERROR=yes
 mv %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/etc/dhcp/dhcpd.conf.ww \
   %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/etc/dhcpd.conf.ww
 rmdir %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/etc/dhcp
+rm %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/etc/dhcpd.conf
 mkdir -p %{buildroot}%{_sbindir}/
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcwarewulfd
 mkdir -p %{buildroot}%{_datadir}/bash-completion/completions

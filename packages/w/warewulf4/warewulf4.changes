@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 21 14:44:06 UTC 2022 - Christian Goll <cgoll@suse.com>
+
+- fixed symlink dhcpd.conf collision 
+
+-------------------------------------------------------------------
 Mon Jun 20 12:57:09 UTC 2022 - Christian Goll <cgoll@suse.com>
 
 - updated to 4.3.0
