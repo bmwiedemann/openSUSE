@@ -1,25 +1,25 @@
-From ce3bfd63c220437d4921eac3660e57de22698493 Mon Sep 17 00:00:00 2001
+From 4b81caf95e5dc8e5eeba3f10f5c61584ddfd3101 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Wed, 1 Apr 2020 22:34:10 +0200
-Subject: [PATCH] Use opensuse/Tumbleweed.$(uname -m) box instead of Fedora/34
+Subject: [PATCH] Use opensuse/Tumbleweed.$(uname -m) box instead of Fedora/36
 
 ---
  test/misc/Vagrantfile | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/test/misc/Vagrantfile b/test/misc/Vagrantfile
-index ce390ea..9874f79 100644
+index 834ef40..92c4d16 100644
 --- a/test/misc/Vagrantfile
 +++ b/test/misc/Vagrantfile
-@@ -22,7 +22,7 @@ Vagrant.configure(2) do |config|
-     config.vm.synced_folder "/tmp/reverse_mount_etc/", "/etc", type: "sshfs", reverse: true
+@@ -41,7 +41,7 @@ Vagrant.configure(2) do |config|
+         mount_options: ['ro']
  
      host = 'sshfs-tests'
--    box  = 'fedora/34-cloud-base'
+-    box  = 'fedora/36-cloud-base'
 +    box  = "opensuse/Tumbleweed.#{(RUBY_PLATFORM.split '-')[0]}"
  
      config.vm.define host do | tmp |
          tmp.vm.hostname = host
 -- 
-2.27.0
+2.35.3
 

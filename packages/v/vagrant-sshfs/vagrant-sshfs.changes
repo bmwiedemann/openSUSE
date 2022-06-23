@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jun 21 08:43:04 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.3.7
+
+Dusty Mabe <dusty@dustymabe.com> (12):
+      00f5737 guest: Enterprise Linux 9 has landed
+      e90bbdb guest: add Alma Linux support
+      e76db4d guest: handle Alma/Rocky until fixes land upstream
+      b77809e add support for owner, group, and mount_options
+      b37e1e5 tests: switch config.ssh.insert_key to boolean in Vagrantfile
+      dba8c30 Update to Fedora 36 for build container and test VM
+      cc887ad guest: upload fuse module loading for FreeBSD
+      08c1c83 sshfs_reverse_mount: fixup botched copy/paste
+      bf72f0f sshfs_reverse_mount: create guest directory if not exists
+      51be8cb sshfs_reverse_mount: use ruby Etc lib for owner/group
+      3f13f07 Gemfile: bump to latest versions of vagrant and vagrant-libvirt
+      f60ff0e version: bump to 1.3.7
+
+Even Onsager <even.onsager@gmail.com> (3):
+      ecb8c03 Add guest capabilities file for Rocky (based on CentOS)
+      95e8ffc Add Rocky guest_capability to plugin.rb
+      ade5564 Remove superfluous case/when (only rocky_8 exists)
+
+-------------------------------------------------------------------
 Mon Jun 13 07:25:17 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - Add missing requires /usr/bin/fusermount
