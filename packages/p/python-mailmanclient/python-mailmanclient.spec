@@ -1,7 +1,7 @@
 #
 # spec file for package python-mailmanclient
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,11 +36,14 @@ BuildRequires:  python-rpm-macros
 Requires:       python-requests
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  mailman3 >= 3.3.5
 BuildRequires:  %{python_module falcon}
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 BuildRequires:  %{python_module httpx}
 %endif
-BuildRequires:  %{python_module mailman}
+%if 0%{?sle_version} <= 150400
+BuildRequires:  %{python_module async_generator}
+%endif
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-services}
 BuildRequires:  %{python_module pytest-vcr}

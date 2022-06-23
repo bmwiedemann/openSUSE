@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  9 08:48:24 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix BR for mailman3 (package has been renamed)
+- Add missing BR for async_generator on openSUSE Leap >= 15.3
+
+-------------------------------------------------------------------
 Fri Nov 19 09:22:22 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix running the tests
