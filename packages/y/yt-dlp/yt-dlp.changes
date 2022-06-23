@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 22 07:25:09 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2022.06.22.1
+  * Add option --download-sections
+  * extractor/youtube: Support downloading clips
+  * Add slicing notation to --playlist-items
+
+-------------------------------------------------------------------
 Fri May 20 15:28:51 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2022.05.18
