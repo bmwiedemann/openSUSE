@@ -16,17 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-PyQt6-sip
-Version:        13.3.1
+Version:        13.4.0
 Release:        0
 Summary:        The sip module support for PyQt6
 License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
 URL:            https://www.riverbankcomputing.com/software/sip/
 Source0:        https://files.pythonhosted.org/packages/source/P/PyQt6-sip/PyQt6_sip-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
