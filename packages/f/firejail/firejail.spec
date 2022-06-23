@@ -17,7 +17,7 @@
 
 
 Name:           firejail
-Version:        0.9.68
+Version:        0.9.70
 Release:        0
 Summary:        Linux namepaces sandbox program
 License:        GPL-2.0-only
@@ -27,10 +27,6 @@ Source0:        https://github.com/netblue30/%{name}/releases/download/%{version
 Source1:        https://github.com/netblue30/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 # https://firejail.wordpress.com/download-2/
 Source2:        %{name}.keyring
-# PATCH-FIX-UPSTREAM fix-internet-access.patch -- from https://github.com/netblue30/firejail/commit/bb334a8fd4f0911a8dfa1538d02fbd0574b81333.patch
-Patch0:         fix-internet-access.patch
-# PATCH-FIX-UPSTREAM fix-CVE-2022-31214.patch -- from https://github.com/netblue30/firejail/commit/27cde3d7d1e4e16d4190932347c7151dc2a84c50 and https://github.com/netblue30/firejail/commit/dab835e7a0eb287822016f5ae4e87f46e1d363e7.patch and https://github.com/netblue30/firejail/commit/1884ea22a90d225950d81c804f1771b42ae55f54
-Patch1:         fix-CVE-2022-31214.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libapparmor-devel
@@ -69,8 +65,6 @@ Optional dependency offering zsh completion for firejail
 %prep
 %setup -q
 sed -i '1s/^#!\/usr\/bin\/env /#!\/usr\/bin\//' contrib/fj-mkdeb.py contrib/fjclip.py contrib/fjdisplay.py contrib/fjresize.py contrib/sort.py contrib/fix_private-bin.py contrib/jail_prober.py
-%patch0 -p1
-%patch1 -p1
 
 %build
 %configure --docdir=%{_docdir}/%{name} \
