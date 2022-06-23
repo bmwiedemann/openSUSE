@@ -1,7 +1,7 @@
 #
 # spec file for package fzf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,15 @@
 
 
 Name:           fzf
-Version:        0.29.0
+Version:        0.30.0
 Release:        0
 Summary:        A command-line fuzzy finder
 License:        MIT
 Group:          Productivity/File utilities
 URL:            https://github.com/junegunn/fzf
-Source0:        https://github.com/junegunn/%{name}/archive/%{version}.tar.gz
-# Run go build && go mod vendor to get vendor/ subdirectory
-Source1:        vendor.tar.xz
-BuildRequires:  golang(API) >= 1.13
+Source0:        https://github.com/junegunn/fzf/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
+BuildRequires:  golang(API) = 1.18
 
 %description
 fzf is an interactive Unix filter for command-line that can be used with any list; files,
@@ -35,7 +34,7 @@ command history, processes, hostnames, bookmarks, git commits, etc.
 %package tmux
 Summary:        Tmux integration for fzf
 Group:          Productivity/File utilities
-Supplements:    packageand(fzf:tmux)
+Supplements:    (fzf and tmux)
 BuildArch:      noarch
 
 %description tmux
@@ -46,7 +45,7 @@ separate tmux pane.
 Summary:        Bash completion for fzf
 Group:          Productivity/File utilities
 Requires:       bash-completion
-Supplements:    packageand(fzf:bash)
+Supplements:    (fzf and bash-completion)
 BuildArch:      noarch
 
 %description bash-completion
@@ -56,7 +55,7 @@ Bash shell completions for fzf
 Summary:        Fish completion for fzf
 Group:          Productivity/File utilities
 Requires:       fish
-Supplements:    packageand(fzf:fish)
+Supplements:    (fzf and fish)
 BuildArch:      noarch
 
 %description fish-completion
@@ -73,7 +72,7 @@ end
 %package zsh-completion
 Summary:        ZSH completion for fzf
 Group:          Productivity/File utilities
-Supplements:    packageand(fzf:zsh)
+Supplements:    (fzf and zsh)
 BuildArch:      noarch
 
 %description zsh-completion
@@ -84,8 +83,8 @@ zsh shell completions for fzf
 %package -n vim-fzf
 Summary:        Vim plugin for fzf
 Group:          Productivity/File utilities
-BuildArch:      noarch
 Requires:       (vim or neovim)
+BuildArch:      noarch
 
 %description -n vim-fzf
 Plugin for vim allowing use of fzf.

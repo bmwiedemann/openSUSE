@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jun 22 11:08:05 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Supplement fzf-bash-completion against bash-completion, not bash.
+
+-------------------------------------------------------------------
+Tue Jun 21 20:14:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.30.0:
+  * Fixed cursor flickering over the screen by hiding it during rendering
+  * Added --ellipsis option. You can take advantage of it to make fzf
+    effectively search non-visible parts of the item.
+  * Added rebind action for restoring bindings after unbind
+  * Switching between Ripgrep mode and fzf mode
+  * Bug fixes and improvements
+
+-------------------------------------------------------------------
 Fri Dec 24 22:54:43 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.29.0:
