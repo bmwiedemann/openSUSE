@@ -17,15 +17,15 @@
 
 
 Name:           gosec
-Version:        2.11.0
+Version:        2.12.0
 Release:        0
 Summary:        Golang security checker
 License:        Apache-2.0
 URL:            https://github.com/securego/gosec
 Source:         gosec-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang-packaging
 BuildRequires:  go >= 1.16
+BuildRequires:  golang-packaging
 %{go_nostrip}
 
 %description
@@ -58,4 +58,3 @@ install -Dm 755 gosec %{buildroot}/%{_bindir}/gosec
 %{_bindir}/gosec
 
 %changelog
-

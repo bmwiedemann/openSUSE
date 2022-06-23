@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jun 21 03:00:17 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Enable _service tar_scm changelog automation
+- Commit _servicedata to support tar_scm changelog automation
+
+-------------------------------------------------------------------
+Wed Jun 15 06:40:28 UTC 2022 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Update to version 2.12.0:
+  * chore(deps): update all dependencies (#822)
+  * Add check for usage of Rat.SetString in math/big with an overflow error (#819)
+  * Remove additional `--update` for apk in Dockerfile (#818)
+  * Update x/tools to pick up fix for golang/go#51629 (#817)
+  * chore(deps): update all dependencies (#816)
+  * chore(deps): update all dependencies (#812)
+  * chore(deps): update all dependencies (#811)
+  * Add new rule for Slowloris Attack
+  * Fix the dependencies after renovate upate (#806)
+  * chore(deps): update all dependencies (#805)
+  * Update the description message of template rule (#803)
+  * Fix typo in ReadMe (#802)
+  * Fix build after renovate update (#800)
+  * Fix use rule IDs to retrieve the rule config
+  * chore(deps): update all dependencies (#796)
+
+-------------------------------------------------------------------
 Tue Mar 22 08:10:13 UTC 2022 - Felix Niederwanger <felix.niederwanger@suse.com>
 
 * Update to version 2.11.0
