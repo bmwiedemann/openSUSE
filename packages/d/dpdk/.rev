@@ -552,4 +552,13 @@
     <comment></comment>
     <requestid>979716</requestid>
   </revision>
+  <revision rev="54" vrev="4">
+    <srcmd5>257e5d60f804791d4948f327d95160d2</srcmd5>
+    <version>21.11.1</version>
+    <time>1655972543</time>
+    <user>dimstar_suse</user>
+    <comment>- also strip meson generated runpaths when installing examples
+  manually (bsc#1200620)</comment>
+    <requestid>984183</requestid>
+  </revision>
 </revisionlist>

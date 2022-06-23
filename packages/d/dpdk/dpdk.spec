@@ -20,7 +20,6 @@
 %define flavor @BUILD_FLAVOR@%{nil}
 %define aarch64_machine armv8a
 %define exclusive_arch aarch64 x86_64 ppc64le
-
 %define name_tag %{nil}
 %define summary_tag %{nil}
 %if "%{flavor}" == "thunderx"
@@ -29,7 +28,6 @@
 %define aarch64_machine thunderx
 %define exclusive_arch aarch64
 %endif
-
 # http://doc.dpdk.org/guides-21.11/linux_gsg/build_dpdk.html#adjusting-build-options
 %define platform generic
 %define machine  auto
@@ -67,6 +65,7 @@ BuildRequires:  kernel-syms
 BuildRequires:  libfdt-devel
 BuildRequires:  meson >= 0.49.2
 BuildRequires:  modutils
+BuildRequires:  patchelf
 BuildRequires:  pesign-obs-integration
 BuildRequires:  pkgconfig
 BuildRequires:  python3
@@ -214,15 +213,18 @@ done
 %install
 examples="%{?with_examples:all}"
 for flavor in %{flavors_to_build}; do
-  %meson_install
-  # Also install the example binaries
-  if [ ! -z "$examples" ]; then
-    for f in %{_vpath_builddir}/examples/dpdk-*; do
-      bn=$(basename "$f")
-      [ -f "$f" ] && install -Dm 0755 ${f} "%{buildroot}%{_bindir}/${bn/dpdk-/dpdk_example_}"
-    done
-  fi
-  examples=""
+    %meson_install
+    # Also install the example binaries
+    if [ ! -z "$examples" ]; then
+        for f in %{_vpath_builddir}/examples/dpdk-*; do
+            bn=$(basename "$f")
+            if [ -f "$f" ] ; then
+                install -Dm 0755 ${f} "%{buildroot}%{_bindir}/${bn/dpdk-/dpdk_example_}"
+                patchelf --remove-rpath "%{buildroot}%{_bindir}/${bn/dpdk-/dpdk_example_}"
+            fi
+        done
+    fi
+    examples=""
 done
 
 # Fix Kernel modules on Factory (/usr merge)
@@ -232,8 +234,8 @@ mv %{buildroot}/lib/modules %{buildroot}%{_prefix}/lib
 %endif
 
 # Fix documentation
-mkdir -p %{buildroot}%{docdir}
-mv %{buildroot}%{_datadir}/doc/dpdk %{buildroot}%{docdir}
+mkdir -p %{buildroot}%docdir
+mv %{buildroot}%{_datadir}/doc/dpdk %{buildroot}%docdir
 
 %if ! %{with tools}
 # Remove tools if not needed
@@ -251,7 +253,7 @@ find %{buildroot} -name "*.py" -exec sed -i 's|python$|python3|' \{\} +
 find %{buildroot} -name "*.py" -exec sed -i 's|env python|python|' \{\} +
 
 # Remove duplicates
-%fdupes %{buildroot}/%{docdir}
+%fdupes %{buildroot}/%docdir
 %fdupes %{buildroot}/%{sdkdir}/examples
 
 # Fix broken symlink (yes with * in its name)

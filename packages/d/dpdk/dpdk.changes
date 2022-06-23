@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 21 13:20:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- also strip meson generated runpaths when installing examples
+  manually (bsc#1200620) 
+
+-------------------------------------------------------------------
 Wed May 25 10:13:44 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
 
 - add kni-fix-build-with-Linux-5.18.patch to fix build with kernel
