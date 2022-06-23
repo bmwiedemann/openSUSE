@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 21 11:39:45 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.1
+- Changes since 5.25.0:
+  * ResultDelegate: Fix action buttons fully expanding on height
+
+-------------------------------------------------------------------
 Thu Jun  9 11:15:02 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.0
