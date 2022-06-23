@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 22 04:40:50 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+- Always build with seccomp support on every architecture. boo#1199963
+
+-------------------------------------------------------------------
 Sun Jun  5 09:38:47 UTC 2022 - munix9@googlemail.com
 
 - Fix Tumbleweed build.
@@ -44,7 +49,7 @@ Tue Oct 12 08:03:52 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
 -------------------------------------------------------------------
 Mon May 31 06:57:57 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
 
-- fix wrong Source URLs in spec 
+- fix wrong Source URLs in spec
 
 -------------------------------------------------------------------
 Mon May 24 06:26:48 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>

@@ -56,9 +56,7 @@ BuildRequires:  libselinux-devel
 BuildRequires:  libtool
 BuildRequires:  pam-devel
 BuildRequires:  pkg-config
-%ifarch %ix86 x86_64
 BuildRequires:  libseccomp-devel
-%endif
 BuildRequires:  bash-completion
 BuildRequires:  docbook-utils
 BuildRequires:  docbook2x
@@ -134,6 +132,7 @@ Bash command line completion support for %{name}.
 ./autogen.sh
 %configure \
 	--enable-pam \
+	--enable-seccomp \
 %if 0%{?is_opensuse} && 0%{?suse_version} >= 1500
 	--with-pamdir=%_pam_moduledir \
 %endif
