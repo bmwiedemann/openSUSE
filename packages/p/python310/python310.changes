@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun  9 16:43:30 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2015-20107-mailcap-unsafe-filenames.patch to avoid
+  CVE-2015-20107 (bsc#1198511, gh#python/cpython#68966), the
+  command injection in the mailcap module.
+- Fix building of documentation and the universal configuration of the
+  %primary_interpreter.
+
+-------------------------------------------------------------------
 Mon Jun  6 22:29:23 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.10.5:
@@ -240,7 +249,8 @@ Tue May 10 14:35:52 UTC 2022 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Thu May  5 14:35:56 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
-- Switch primary_interpreter from python38 to python310
+- Switch primary_interpreter from python38 to python310 for
+  Factory (only)
 
 -------------------------------------------------------------------
 Sat Mar 26 22:52:45 UTC 2022 - Matej Cepl <mcepl@suse.com>
@@ -523,8 +533,13 @@ Sat Mar 26 22:52:45 UTC 2022 - Matej Cepl <mcepl@suse.com>
   - bpo-14916: Fixed bug in the tokenizer that prevented
     PyRun_InteractiveOne from parsing from the provided FD.
 
-- Remove upstreamed patches:
-  - support-expat-245.patch
+-------------------------------------------------------------------
+Thu Mar 24 18:55:46 UTC 2022 - David Anes <david.anes@suse.com>
+
+- (bsc#1196784, CVE-2022-25236) Rename patch:
+  support-expat-245.patch to support-expat-CVE-2022-25236-patched.patch
+  and update the patch to detect expat >= 2.4.4 instead of >= 2.4.5
+  as it was fully patched against CVE-2022-25236.
 
 -------------------------------------------------------------------
 Tue Feb 22 05:53:06 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>

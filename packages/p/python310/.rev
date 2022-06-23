@@ -209,4 +209,24 @@
     <comment>Synchronize the changelog with SLE, so that we can update from Factory.</comment>
     <requestid>981085</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>dd78f2086e07ba245c0ccd06dd8da836</srcmd5>
+    <version>3.10.5</version>
+    <time>1655972520</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2015-20107-mailcap-unsafe-filenames.patch to avoid
+  CVE-2015-20107 (bsc#1198511, gh#python/cpython#68966), the
+  command injection in the mailcap module.
+- Fix building of documentation and the universal configuration of the
+  %primary_interpreter.
+
+- Switch primary_interpreter from python38 to python310 for
+  Factory (only)
+
+- (bsc#1196784, CVE-2022-25236) Rename patch:
+  support-expat-245.patch to support-expat-CVE-2022-25236-patched.patch
+  and update the patch to detect expat &gt;= 2.4.4 instead of &gt;= 2.4.5
+  as it was fully patched against CVE-2022-25236.</comment>
+    <requestid>983936</requestid>
+  </revision>
 </revisionlist>
