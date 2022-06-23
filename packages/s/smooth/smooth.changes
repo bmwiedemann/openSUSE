@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Wed Jun 22 12:09:55 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.9.9
+  - instream.cpp
+    - prevent opening folders with file IO classes
+    - abort InputLine call when encoutering NUL bytes
+  - datetime.cpp
+    - fixed potential crash upon failed time conversion
+  - filedlg_cocoa.mm
+    - fixed incompatibility with macOS 12.0 Monterey
+  - dirdlg_win32.cpp
+    - prepend a newline to caption for improved layout
+  - added support for building Windows ARM64 binaries
+  - upgraded fribidi to version 1.0.11
+  - upgraded libcpuid to version 0.5.1
+  - upgraded libxml2 to version 2.9.12
+  - upgraded libjpeg to version 9e
+- Changes from 0.9.8
+  - imageloader.cpp
+    - added support for auto-detecting image formats
+  - webp.cpp
+    - added support for WebP image decoding
+  - windowgdi.cpp
+    - improved scaling when setting icons via SetIcon()
+  - init.cpp
+    - warn about incomplete application shutdown in debug builds
+  - thread.cpp
+    - made it illegal to call Stop on the current thread
+    - fixed thread synchronization issues in wait and exit functions
+  - array.cpp
+    - fixed thread synchronization issues when accessing arrays
+  - rwlock.cpp
+    - fixed thread synchronization issues
+  - combobox.cpp
+    - fixed dropdown staying open when parent window moves or resizes
+  - popupmenu.cpp
+    - fixed popup staying open when parent window moves or resizes
+  - popupmenuentry.cpp
+    - fixed occasional crashes when opening third level popup menus
+  - backendxlib.cpp
+    - fixed timers being invoked in GTK threads despite denyTimerInterrupts state
+  - backendcocoa.mm
+    - fixed possible crash when quitting applications through a dock command
+  - surfacecocoa.mm
+    - fixed rendering of bitmaps with alpha channel
+  - surfacecairo.cpp
+    - fixed drawing of diagonal lines when running in a Wayland session
+    - respect custom DPI settings on Xfce desktop
+  - windowxlib.cpp
+    - fixed possible crash on exit when running in a Wayland session
+    - fixed drag & drop working unreliably
+    - fixed incorrect usage of XGetInputFocus API
+  - application.cpp
+    - fixed determination of binary path on FreeBSD
+  - file.cpp
+    - fixed accessing files via file:// URLs
+  - fixed several instances of undefined behavior found with -fsanitize=undefined
+  - fixed translation field not being focused after selecting entries in Translator utility
+  - upgraded libcurl to version 7.77.0
+
+-------------------------------------------------------------------
 Tue Apr 13 07:59:37 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.9.7
