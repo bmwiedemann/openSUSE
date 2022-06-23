@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 20 07:21:22 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20220618
+  + add a null-pointer check for term_names field in copy_termtype(),
+    needed for MinGW port (report by Peiyuan Song, cf: 20220521).
+  + revise kon/kon2/jfbterm to undo "linux2.6" change to
+    smacs/rmacs/enacs (Debian #1012800) -TD
+  + amended note for att610+cvis0, as per documentation for att610,
+    att620, att730 -TD
+
+-------------------------------------------------------------------
 Mon Jun 13 08:13:13 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20220612

@@ -3690,4 +3690,18 @@
 - Add ncurses patch 20220604</comment>
     <requestid>982383</requestid>
   </revision>
+  <revision rev="218" vrev="22">
+    <srcmd5>fc4e442f80d8f3607c3180e48b7bb46f</srcmd5>
+    <version>6.3.MACRO</version>
+    <time>1655972522</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20220618
+  + add a null-pointer check for term_names field in copy_termtype(),
+    needed for MinGW port (report by Peiyuan Song, cf: 20220521).
+  + revise kon/kon2/jfbterm to undo &quot;linux2.6&quot; change to
+    smacs/rmacs/enacs (Debian #1012800) -TD
+  + amended note for att610+cvis0, as per documentation for att610,
+    att620, att730 -TD</comment>
+    <requestid>983972</requestid>
+  </revision>
 </revisionlist>
