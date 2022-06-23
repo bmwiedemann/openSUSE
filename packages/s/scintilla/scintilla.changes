@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun 22 01:03:00 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.2.3:
+  * Improve performance of SCI_FOLDALL(SC_FOLDACTION_EXPAND) by
+    not lexing whole document as it does not depend on folding
+    structure.
+  * Fix partial updates and non-responsive scroll bars on Xorg.
+    This defers scroll bar changes to an idle task so could affect
+    applications that depend on the scroll position being updated.
+    Bug #2322, Bug #2196, Bug #2312.
+  * Fix problem with horizontally inverted glyphs with buffered
+    drawing and WS_EX_LAYOUTRTL set on Win32 GDI. Feature #1435.
+  * For Qt 6, fix "modified" signal when text is null but length
+    non-0. Bug #2328.
+  * Fix pink selection background when printing by making it
+    completely transparent. 
+
+-------------------------------------------------------------------
 Sun May  1 23:32:22 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.2.2:
