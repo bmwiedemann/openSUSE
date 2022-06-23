@@ -1,7 +1,7 @@
 #
 # spec file for package onboard
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,14 +30,14 @@ Source1:        onboard-defaults.conf
 Patch0:         onboard-remove-dep-typelib-appindicator3.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  python3-devel
-BuildRequires:  python3-distutils-extra
 # Needed for typelib() - Requires.
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  librsvg-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python3-devel
+BuildRequires:  python3-distutils-extra
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dconf)
@@ -59,7 +59,9 @@ Requires:       python3-cairo
 Requires:       python3-gobject-Gdk
 Requires:       python3-gobject-cairo
 Recommends:     %{name}-data
+%if 0%{?suse_version} <= 1320
 %glib2_gsettings_schema_requires
+%endif
 
 %description
 Onboard is an onscreen keyboard useful for tablet PC users and for mobility impaired users.
@@ -78,7 +80,7 @@ Summary:        GNOME Shell extension for onboard, an on-screen keyboard
 Group:          System/GUI/GNOME
 Requires:       %{name} = %{version}
 Requires:       gnome-shell
-Supplements:    packageand(%{name}:gnome-shell)
+Supplements:    (%{name} and gnome-shell)
 BuildArch:      noarch
 
 %description -n gnome-shell-extension-onboard
@@ -166,8 +168,9 @@ sed -i "1,4{/#!\/usr\/bin/d}" \
 %{python3_sitearch}/%{name}-%{version}-py%{py3_ver}.egg-info
 %{_datadir}/onboard/onboard-default-settings.gschema.override.example
 %{_datadir}/icons/hicolor/*/apps/onboard.png
-%{_mandir}/man1/onboard.1%{ext_man}
-%{_mandir}/man1/onboard-settings.1%{ext_man}
+%{_mandir}/man1/onboard.1%{?ext_man}
+%{_mandir}/man1/onboard-settings.1%{?ext_man}
+%{_sysconfdir}/xdg/autostart/%{name}-autostart.desktop
 
 %files lang -f %{name}.lang
 

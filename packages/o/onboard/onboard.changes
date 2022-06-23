@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 21 13:54:31 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build: package onboard.autostart.desktop.
+- Spec file cleanup: Boolean dep supplements form instead of
+  packageand.
+
+-------------------------------------------------------------------
 Mon May  4 03:37:11 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
 
 - Requires iso-codes as it is needed implicitly in

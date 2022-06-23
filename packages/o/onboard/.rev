@@ -71,4 +71,12 @@
     <comment>Requires iso-codes as it is needed implicitly in Onboard/LanguageSupport.py. (forwarded request 799920 from yfjiang)</comment>
     <requestid>800064</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>e0a2df71f5dc340910f1b6c87eaa1f9d</srcmd5>
+    <version>1.4.1</version>
+    <time>1655972686</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984505</requestid>
+  </revision>
 </revisionlist>
