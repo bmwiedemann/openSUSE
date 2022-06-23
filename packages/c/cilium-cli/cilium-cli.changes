@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Wed Jun 22 16:18:13 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.11.10:
+  * Prepare for v0.11.10 release
+  * RELEASE.md: minor fixes
+  * go.mod, vendor: pull in latest cilium/charts for v1.12.0-rc3
+  * go.mod, vendor: update cilium/cilium to v1.12.0-rc3
+  * build(deps): bump github.com/spf13/cobra from 1.4.0 to 1.5.0
+  * build(deps): bump azure/login from 1.4.4 to 1.4.5
+  * ci: explicitly wait for cilium status after enabling Hubble relay
+  * README.md: update AKS test badges
+  * Use OCI container reference parser to extract Cilium's version
+
+-------------------------------------------------------------------
+Wed Jun 22 08:14:14 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.11.9:
+  * Prepare for v0.11.9 release
+  * ci: bump Cilium version to v1.11.6
+  * defaults: update default Cilium version to v1.11.6
+  * go.mod, vendor: pull in latest cilium/charts for v1.11.6, v1.10.12, v1.9.17
+  * hubble port-forward: Don't generate Helm manifests
+  * connectivity: Don't fail if cilium-cli-helm-values doesn't exist
+  * ci: re-add AKS (Azure IPAM) workflow
+  * ci: rename AKS workflow to AKS (BYOCNI)
+  * build(deps): bump helm/kind-action from 1.2.0 to 1.3.0
+  * RELEASE.md: update to reflect current release process
+
+-------------------------------------------------------------------
+Wed Jun 22 08:00:10 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.11.8:
+  * Prepare for v0.11.8 release
+  * Re-add stable.txt
+  * ci: bump kind to v0.14.0
+  * ci: use BYOCNI in CI
+  * add new `aks-byocni` datapath mode
+  * vendor: update yaml.v3 to v3.0.1
+  * sysdump: Use --hubble-flows-timeout flag
+  * install: make `datapath-mode` the main flag, deprecate some flags
+  * utils: Remove baseVersion from ParseCiliumVersion
+  * hubble: Remove --base-version flag
+  * connectivity: Remove --base-version flag
+  * k8s: Add GetHelmState function
+  * install: Remove --base-version flag
+  * Update Go to 1.18.3
+  * ci, make: update golangci-lint to 1.46.2
+  * gha: Wait for hubble-relay in eks.sh
+  * gha: Bump kubectl version in cilium test job
+  * gha: Lock helm version to v3.8.2
+  * ci: create a new subnetwork for each new GKE cluster
+  * install: Add --list-versions flag
+  * build(deps): bump google.golang.org/grpc from 1.46.2 to 1.47.0
+  * ingress: Create ingress class if required.
+  * build(deps): bump actions/setup-go from 3.1.0 to 3.2.0
+  * build(deps): bump github.com/cilium/workerpool from 1.1.2 to 1.1.3
+  * README.md: fix binary installation instructions
+  * Add ctags/cscope target
+  * sysdump: Collect hubble observe --debug and stderr
+  * :sparkles:feat(connectivity):support private image
+  * build(deps): bump actions/upload-artifact from 3.0.0 to 3.1.0
+  * go.mod, vendor: update cilium/cilium to latest master
+  * go.mod, vendor: update k8s deps to v1.24.0
+  * .github: enable GH action updates on v0.10 branch
+  * hubble: Fix version check for generatePeerService
+  * ci: run `cilium status` with `sudo` in external workloads post-test phase
+
+-------------------------------------------------------------------
 Wed May 18 09:05:57 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.11.7:
