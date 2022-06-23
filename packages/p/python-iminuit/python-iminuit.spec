@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-iminuit
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -22,7 +22,7 @@
 %define skip_python36 1
 %define modname iminuit
 Name:           python-%{modname}
-Version:        2.11.2
+Version:        2.12.0
 Release:        0
 Summary:        Python bindings for MINUIT2
 License:        MIT
@@ -32,6 +32,8 @@ BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy >= 1.11.3}
 BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module pybind11-devel}
+BuildRequires:  %{python_module pybind11 >= 2.9.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake >= 3.13
 BuildRequires:  fdupes
@@ -56,9 +58,12 @@ and to get model parameter error estimates from likelihood profile analysis.
 
 %prep
 %setup -q -n %{modname}-%{version}
+# We use external pybind11, just to be sure remove bundled pybind11 entirely
+rm -fr extern/pybind11
 
 %build
 export CFLAGS="%{optflags}"
+export CMAKE_ARGS="-DIMINUIT_EXTERNAL_PYBIND11=ON"
 %python_build
 
 %install
