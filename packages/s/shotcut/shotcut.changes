@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jun 23 06:21:58 UTC 2022 - Dave Plater <davejplater@gmail.com>
+
+- Update to 22.04.25
+- Upstream changes:
+  *Fixed Filters > Paste filters for some filters (broke in v22.03.30):
+        Normalize: Two Pass
+        Chroma Key: Simple
+        Crop: Source
+        Mask: Apply
+        Time Remap
+  *Fixed Export > Color range > Full if resolution or frame rate
+   were changed.
+  *Fixed changing Export > Format does not suggest a file name
+   extension.
+  *Fixed keyframes for Corner Pin video filter.
+  *Fixed keyframes for Rotate parameter of the Size, 
+   Position & Rotate video filter after trimming the clip.
+  *Fixed Size, Position & Rotate video filter UI incorrect for
+   non-square pixels.
+  *Fixed running Analyze more than once in Normalize:
+   Two Pass audio filter.
+  *Added Detected Loudness and Normalization Gain status fields to
+   Normalize: Two Pass audio filter.
+
+-------------------------------------------------------------------
 Tue Feb  1 14:58:44 UTC 2022 - Dave Plater <davejplater@gmail.com>
 
 - Update to version 22.01.30
