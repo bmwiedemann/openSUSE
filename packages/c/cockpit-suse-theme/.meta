@@ -1,0 +1,8 @@
+<package name="cockpit-suse-theme" project="openSUSE:Factory">
+  <title>Cockpit SUSE theme</title>
+  <description>A package holding needed resources for changing Cockpit styling to match the SUSE look&amp;feel by using the workaround described at https://github.com/cockpit-project/cockpit/pull/17437
+
+Intended changes only take effect when using a Cockpit version patched for loading the CSS overrides file in each HTML page.</description>
+  <devel project="systemsmanagement:cockpit" package="cockpit-suse-theme"/>
+  <url>https://github.com/dgdavid/cockpit-suse-theme</url>
+</package>
