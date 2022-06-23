@@ -21,15 +21,15 @@
 %global have_fwupd (0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300)
 
 Name:           discover
-Version:        5.25.0
+Version:        5.25.1
 Release:        0
 Summary:        Software store for the KDE Plasma desktop
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            https://quickgit.kde.org/?p=discover.git
-Source:         discover-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/discover-%{version}.tar.xz
 %if %{with released}
-Source1:        discover-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/discover-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -49,7 +49,6 @@ BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IdleTime)
-BuildRequires:  cmake(KF5ItemModels)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Kirigami2)
@@ -68,7 +67,6 @@ BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  cmake(packagekitqt5) >= 1.0.1
 %if %{have_fwupd}
