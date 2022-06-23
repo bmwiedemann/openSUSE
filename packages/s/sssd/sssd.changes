@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 21 10:19:54 UTC 2022 - Stefan Schubert <schubi@localhost>
+
+- Removed %config flag for files in /usr directory.
+
+-------------------------------------------------------------------
+Tue Jun 21 06:43:27 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Moved logrotate files from user-specific directory /etc/logrotate.d
+  to vendor-specific directory /usr/etc/logrotate.d.
+
+-------------------------------------------------------------------
 Wed Jun 15 11:28:35 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
 
 - Use pam rpm macros to avoid hardcoding the directory names;

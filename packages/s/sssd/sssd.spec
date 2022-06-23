@@ -404,8 +404,13 @@ b="%buildroot"
 mkdir -pv "$b/%_sysconfdir/sssd" "$b/%_sysconfdir/sssd/conf.d"
 install -m600 src/examples/sssd-example.conf "$b/%_sysconfdir/sssd/sssd.conf"
 install -d "$b/%_unitdir"
+%if 0%{?suse_version} > 1500
+install -d "$b/%_distconfdir/logrotate.d"
+install -m644 src/examples/logrotate "$b/%_distconfdir/logrotate.d/sssd"
+%else
 install -d "$b/%_sysconfdir/logrotate.d"
 install -m644 src/examples/logrotate "$b/%_sysconfdir/logrotate.d/sssd"
+%endif
 
 rm -Rfv "$b/%_initddir"
 mkdir -pv "$b/%sssdstatedir/mc"
@@ -574,7 +579,11 @@ fi
 %attr(750,root,root) %dir %_localstatedir/log/%name/
 %dir %_sysconfdir/sssd/
 %config(noreplace) %_sysconfdir/sssd/sssd.conf
+%if 0%{?suse_version} > 1500
+%_distconfdir/logrotate.d/sssd
+%else
 %config(noreplace) %_sysconfdir/logrotate.d/sssd
+%endif
 %dir %_sysconfdir/sssd/conf.d
 %config(noreplace) %_pam_confdir/sssd-shadowutils
 %dir %_datadir/%name/
