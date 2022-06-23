@@ -919,4 +919,12 @@
     <comment>Update to 5.25.0</comment>
     <requestid>981903</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>b9a6c46b4b8a7989f94a7b391cb71912</srcmd5>
+    <version>5.25.1</version>
+    <time>1655972557</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.1. As usual, completely untested. (forwarded request 984192 from Vogtinator)</comment>
+    <requestid>984330</requestid>
+  </revision>
 </revisionlist>
