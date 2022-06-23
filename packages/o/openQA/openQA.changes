@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 22 07:11:37 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1655873339.ed30901:
+  * Dependency cron 2022-06-22
+  * Use ANY instead of IN for SQL query with variable placeholders
+  * Fix perl 5.36 warnings on use of @_ in functions with signature
+
+-------------------------------------------------------------------
 Sun Jun 19 23:11:34 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1655534464.7831729:
