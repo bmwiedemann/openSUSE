@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun 21 13:31:34 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Updated to remmina version 1.4.27
+  * Fix dangling pointer after scrolled container destruction.
+  * Strengthen remmina file set string
+  * Refactoring and minor fixes
+  * launcher.sh is compatible with xfce4-terminal and gnome-terminal now.
+  * Fix #2473 - revive rcw_focus_out_event to avoid sticky Alt on Alt-TAB
+  * New SSH color schemes.
+  * Some grammar fixes.
+
+- Removed 2734-flatpak-crash.patch
+
+-------------------------------------------------------------------
 Wed Jun  1 12:42:42 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Added 2734-flatpak-crash.patch to fix an issue reported on upstream:
