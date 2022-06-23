@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Jun 22 12:42:46 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.4.0:
+  * Revert "fix: compose flag on okteto up (#2804)" (#2812)
+  * fix: compose flag on okteto up (#2804) (#2808)
+  * [2.4] Release fixes (#2796)
+  * fix: integration tests (#2782)
+  * fix: could not detect manifest error (#2781)
+  * test: use `T.TempDir` to create temporary test directory (#2763)
+  * Fix stack name when manifest at .okteto folder (#2742)
+  * Replace imageref in Okteto Registry by their sha to enforce redeployments if the image is updated (#2777)
+  * Update bad link to installation guide (#2776)
+  * use OKTETO_VERSION in get-okteto.sh if provided (#2769)
+  * build(deps): Bump actions/setup-python from 3 to 4 (#2766)
+  * Release docs (#2743)
+  * use default temp dir in tests (#2760)
+  * Add release channels to CI (#2727)
+  * feat: upgrade syncthing to 1.20.1 (#2756)
+  * Added condition to skip lines starting with exclamation (#2751)
+  * fix: fallback buildv1 when no okteto file detected (#2754)
+  * fix: translate stacks to compose ports when unmarshalling (#2748)
+  * fix: not fallback buildv1 if error unmarshalling manifest (#2711)
+  * build(deps): Bump github.com/hashicorp/go-getter from 1.5.11 to 1.6.1 (#2746)
+  * fix: main branch stack endpoints generation (#2736)
+  * refactor: added resize window signal to update while ssh (#2731)
+  * build(deps): Bump github/super-linter from 4.9.3 to 4.9.4 (#2733)
+  * fix: not show two times same error (#2695)
+  * Remove global optimisation e2e (#2726)
+  * Remove warning when failing to add dev annotations (#2721)
+  * Revert "Jlopezbarb/refactor unit test folders and envs (#2713)" (#2725)
+  * Jlopezbarb/refactor unit test folders and envs (#2713)
+  * Fix "okteto up" metrics for vanilla clusters (#2718)
+  * build(deps): Bump github/super-linter from 4.9.2 to 4.9.3 (#2714)
+  * Remove dead code handling old Okteto API < 0.10 (#2717)
+  * fix: build okteto with volumes tag per commit (#2710)
+  * fix: check if has access to namespace when working with vanilla cluster (#2697)
+  * Only create readiness probes for docker-compose health checks (#2699)
+  * Add codecov to makefile (#2708)
+  * feat: disable 'build' flag when 'okteto up' (#2698)
+  * fix: omit init volume initialization logs (#2701)
+  * fix: update error message. Use devPath in '-f' arg only if present (#2691)
+
+-------------------------------------------------------------------
 Mon Jun 06 18:34:12 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.3.3:
