@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Jun 22 08:50:13 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220617T025250Z:
+  * Update version printing to include more information (#4125)
+  * filter out hidden flags from error printing (#4122)
+  * Healing finish estimation time relies on disk usage space (#4124)
+  * fix: help output formatting for cluster bucket export/import
+  * add unfreeze command to 'unfreeze' S3 API calls (#4121)
+  * Add commands to enable/disable callhome and logs (#4107)
+  * improve UI for driveperf inspired from object perf test (#4118)
+  * add import/export bucket metadata command (#4087)
+  * extend Go's time.ParseDuration to support days, weeks and years (#4116)
+  * improve UI for netperf inspired from object perf test (#4117)
+
+-------------------------------------------------------------------
+Wed Jun 22 08:44:44 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220611T211036Z:
+  * fix: 'mc admin top api' IOPs, RX/TX remove them (#4115)
+
+-------------------------------------------------------------------
+Wed Jun 22 08:39:48 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220610T222912Z:
+  * Improve success message in `support register` cmd (#4108)
+  * ignore remove errors for WORM protected objects (#4111)
+  * Bump up linter version (#4114)
+  * update help for 'mc admin top api'
+  * feat: Add 'mc admin top api' for realtime view (#4112)
+  * heal: Fix single disk healing ETA reporting (#4113)
+  * fix: callhome get error when subnet hook not set (#4089)
+  * Fix replicate status detail summary (#4104)
+  * add hidden force-delete option (#4097)
+  * cleanup print message for 'support profile' (#4099)
+  * update go deps for yaml.v3 and minio-go
+  * regression: update golang.org/x/crypto (#4096)
+  * Hide `mc support callhome` command (#4091)
+  * alias: Enable self signed TLS prompt in darwin platforms (#4094)
+  * fix: SubKeyId may not be same AuthorityKeyId for self-signed CA (#4093)
+  * Deprecate --name flag from `support diag` (#4092)
+  * add JSON flag support for decom status (#4086)
+  * modify support profile command (#4061)
+  * trace: Show milliseconds in trace output (#4083)
+
+-------------------------------------------------------------------
 Sat May 14 18:38:17 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 20220509T040826Z:
