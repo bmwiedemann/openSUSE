@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jun 22 08:17:51 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.7.1:
+  * tag v1.7.1 (#4132)
+  * fix build failures
+  * fix: bool fields in image verification types (#4053)
+  * cherry-pick #4013
+  * Release 1.7 (#4130)
+  * fix: use policyName key to get the policy name (#4113)
+  * chore(dockerfile): use buildx features for cross-compilation (#4023) (#4123)
+  * Updated jp command flags and also added URL for help. (#4122)
+  * fix: handle nil ur while retry (#4109)
+  * Release 1.7 (#4099)
+  * Bump Charts version to 2.5.0 (#4092)
+  * bump chart versions to v2.4.2 (#4089)
+  * cherry-pick #4079 (#4088)
+  * Remove s390X (#4063) (#4064)
+  * Bump charts version to 2.4.1 (#4061)
+  * Ensure preconditions are present with default values (#4046)
+  * Fix handling of kyverno-policies version check when port in image tag (#4042)
+
+-------------------------------------------------------------------
 Sat Jun 04 18:55:18 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.7.0:
