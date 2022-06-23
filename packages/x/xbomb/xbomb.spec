@@ -1,7 +1,7 @@
 #
 # spec file for package xbomb
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           xbomb
 Version:        2.2b
 Release:        0
 Summary:        Athena-based Minesweeper clone
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Amusements/Games
-Url:            http://gedanken.org.uk/software/xbomb/
+URL:            http://gedanken.org.uk/software/xbomb/
 Source:         http://gedanken.org.uk/software/xbomb/download/%name-%version.tgz
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xaw7)
@@ -33,10 +33,10 @@ be played with the traditional square tiling, and also offers
 hexagonal and triangle tiling.
 
 %prep
-%setup -q 
+%autosetup
 
 %build
-make %{?_smp_mflags} CFLAGS="%optflags"
+%make_build CFLAGS="%optflags"
 
 %install
 b="%buildroot"
@@ -46,8 +46,8 @@ cp -a xbomb.6 "$b/%_mandir/man6/"
 cp -a xbomb.ad "$b/%_datadir/X11/app-defaults/XBomb"
 
 %files
-%defattr(-,root,root)
-%doc README COPYING ChangeLog
+%license COPYING
+%doc README ChangeLog
 %_bindir/xbomb
 %_mandir/man6/*
 %_datadir/X11/
