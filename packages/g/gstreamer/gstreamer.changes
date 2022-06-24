@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Jun 22 09:59:29 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to version 1.20.3
+  + Highlighted bugfixes:
+    - Security fixes in Matroska, MP4 and AVI demuxers
+    - Fix scrambled video playback with hardware-accelerated 
+      VA-API decoders on certain Intel hardware
+    - playbin3/decodebin3 regression fix for unhandled streams
+    - Fragmented MP4 playback fixes
+    - Android H.265 encoder mapping
+    - Playback of MXF files produced by FFmpeg before March 2022
+    - Fix rtmp2sink crashes on 32-bit platforms
+    - WebRTC improvements
+    - D3D11 video decoder and screen recorder fixes
+    - Performance improvements
+    - Support for building against OpenCV 4.6 and other build fixes
+    - Miscellaneous bug fixes, memory leak fixes, and other
+      stability and reliability improvements
+  + gstreamer:      
+    - clock: Avoid creating a weakref with every entry 
+      (performance improvement)
+    - plugin: add Apache 2 license to list of known licenses to avoid 
+      warning
+    - gst_plugin_load_file: force plugin reload if filename differs
+      Add support for LoongArch
+
+-------------------------------------------------------------------
 Mon May  9 08:58:55 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Enable use of libunwind on riscv64
