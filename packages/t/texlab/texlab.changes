@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jun 19 15:48:32 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- removing cargo tests. not useful
+
+-------------------------------------------------------------------
+Sun Jun 19 15:37:46 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 4.1.0:
+  * Bump version to v4.1.0
+  * Fix crates.io deployment job
+  * Enable incremental compilation for release builds
+  * Add missing env variables to deploy workflow
+  * Revert "Switch to glassbench instead of criterion"
+  * Improve the heuristic for finding artifacts
+  * Use thin LTO for release builds
+  * Remove unused dev dependencies
+  * Switch to glassbench instead of criterion
+  * Bump uuid from 1.1.0 to 1.1.2 (#646)
+
+-------------------------------------------------------------------
 Wed Jun 01 12:26:32 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 4.0.0:

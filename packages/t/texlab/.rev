@@ -15,4 +15,24 @@
     <comment></comment>
     <requestid>980346</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2859f7e6ff9d2244301098be404beb32</srcmd5>
+    <version>4.1.0</version>
+    <time>1656056721</time>
+    <user>dimstar_suse</user>
+    <comment>- removing cargo tests. not useful
+- Update to version 4.1.0:
+  * Bump version to v4.1.0
+  * Fix crates.io deployment job
+  * Enable incremental compilation for release builds
+  * Add missing env variables to deploy workflow
+  * Revert &quot;Switch to glassbench instead of criterion&quot;
+  * Improve the heuristic for finding artifacts
+  * Use thin LTO for release builds
+  * Remove unused dev dependencies
+  * Switch to glassbench instead of criterion
+  * Bump uuid from 1.1.0 to 1.1.2 (#646)
+</comment>
+    <requestid>984784</requestid>
+  </revision>
 </revisionlist>
