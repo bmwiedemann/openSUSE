@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Wed Jun 22 21:40:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update requirements and test suite setup
+
+-------------------------------------------------------------------
+Wed Jun 22 13:38:36 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update requirements
+  * switch to pyproject.toml build
+
+- update to version 6.15.0:
+  * Bugs fixed
+    + Fix compatibility with tornado 6.2 beta #956 (@minrk)
+  * Maintenance and upkeep improvements
+    + Back to top-level tornado IOLoop #958 (@minrk)
+    + Explicitly require pyzmq >= 17 #957 (@minrk)
+    + [pre-commit.ci] pre-commit autoupdate #954 (@pre-commit-ci)
+
+- changes from version 6.14.0:
+  * Enhancements made
+    + Add cpu_count to the usage_reply #952 (@echarles)
+  * Bugs fixed
+    + use pss memory info type if available for the resource usage
+      reply #948 (@echarles)
+    + Ensure psutil for the process is accurate #937 (@echarles)
+  * Maintenance and upkeep improvements
+    + Fix sphinx 5.0 support #951 (@blink1073)
+    + [pre-commit.ci] pre-commit autoupdate #950 (@pre-commit-ci)
+
+- changes from version 6.13.1:
+  * Bugs fixed
+    + Fix richInspectVariables #943 (@davidbrochart)
+    + Force debugger metadata in built wheel #941 (@blink1073)
+  * Maintenance and upkeep improvements
+    + [pre-commit.ci] pre-commit autoupdate #945 (@pre-commit-ci)
+    + Clean up typings #939 (@blink1073)
+    + [pre-commit.ci] pre-commit autoupdate #938 (@pre-commit-ci)
+    + Clean up types #933 (@blink1073)
+    + [pre-commit.ci] pre-commit autoupdate #932 (@pre-commit-ci)
+    + Switch to hatch backend #931 (@blink1073)
+    + [pre-commit.ci] pre-commit autoupdate #928 (@pre-commit-ci)
+    + [pre-commit.ci] pre-commit autoupdate #926 (@pre-commit-ci)
+    + Allow enforce PR label workflow to add labels #921 (@blink1073)
+    + [pre-commit.ci] pre-commit autoupdate #920 (@pre-commit-ci)
+    + [pre-commit.ci] pre-commit autoupdate #919 (@pre-commit-ci)
+    + [pre-commit.ci] pre-commit autoupdate #917 (@pre-commit-ci)
+
+- changes from version 6.13.0:
+  * Enhancements made
+    + Add the PID to the resource usage reply #908 (@echarles)
+  * Bugs fixed
+    + Fix qtconsole spawn #915 (@andia89)
+  * Maintenance and upkeep improvements
+    + Add basic mypy support #913 (@blink1073)
+    + Clean up pre-commit #911 (@blink1073)
+    + Update setup.py #909 (@tlinhart)
+    + [pre-commit.ci] pre-commit autoupdate #906 (@pre-commit-ci)
+
+- changes from version 6.12.1:
+  * Maintenance and upkeep improvements
+    + Clean up test deps and test setup #904 (@blink1073)
+
+- changes from version 6.12.0:
+  * Enhancements made
+    + use packaging instead of pkg_resources to parse versions #900
+      (@minrk)
+  * Bugs fixed
+    + Make cell_id optional #902 (@blink1073)
+    + Do not try to send on iostream if closed #899 (@blink1073)
+
+- changes from version 6.11.0:
+  * Enhancements made
+    + Include method signatures in experimental completion results
+      #895 (@MrBago)
+    + Try to pass cell id to executing kernel. #886 (@Carreau)
+  * Maintenance and upkeep improvements
+    + Handle warnings in tests #896 (@blink1073)
+    + Run flake and remove deprecated import #894 (@blink1073)
+    + Add ignore-revs file #893 (@blink1073)
+    + Autoformat with black and isort #892 (@blink1073)
+    + Add pytest opts and pre-commit #889 (@blink1073)
+
+- changes from version 6.10.0:
+  * Enhancements made
+    + Improve performance of stderr and stdout stream buffer #888
+      (@MrBago)
+  * Bugs fixed
+    + Check if the current thread is the io thread #884 (@jamadeo)
+  * Maintenance and upkeep improvements
+    + More CI cleanup #887 (@blink1073)
+    + CI cleanup #885 (@blink1073)
+  * Documentation improvements
+    + Add precision about subprocess stdout/stderr capturing #883
+      (@lesteve)
+
+-------------------------------------------------------------------
 Fri Mar 18 18:23:12 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Skip the new shutdown test: too flaky for obs

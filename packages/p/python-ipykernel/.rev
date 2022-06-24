@@ -227,4 +227,41 @@
     <comment></comment>
     <requestid>962924</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ea1d56d8883c23ede92449d8bd1b21d2</srcmd5>
+    <version>6.15.0</version>
+    <time>1656053100</time>
+    <user>dimstar_suse</user>
+    <comment>- Update requirements and test suite setup
+
+- specfile:
+  * update requirements
+  * switch to pyproject.toml build
+- update to version 6.15.0:
+  * Bugs fixed
+    + Fix compatibility with tornado 6.2 beta #956 (@minrk)
+  * Maintenance and upkeep improvements
+    + Back to top-level tornado IOLoop #958 (@minrk)
+    + Explicitly require pyzmq &gt;= 17 #957 (@minrk)
+    + [pre-commit.ci] pre-commit autoupdate #954 (@pre-commit-ci)
+- changes from version 6.14.0:
+  * Enhancements made
+    + Add cpu_count to the usage_reply #952 (@echarles)
+  * Bugs fixed
+    + use pss memory info type if available for the resource usage
+      reply #948 (@echarles)
+    + Ensure psutil for the process is accurate #937 (@echarles)
+  * Maintenance and upkeep improvements
+    + Fix sphinx 5.0 support #951 (@blink1073)
+    + [pre-commit.ci] pre-commit autoupdate #950 (@pre-commit-ci)
+- changes from version 6.13.1:
+  * Bugs fixed
+    + Fix richInspectVariables #943 (@davidbrochart)
+    + Force debugger metadata in built wheel #941 (@blink1073)
+  * Maintenance and upkeep improvements
+    + [pre-commit.ci] pre-commit autoupdate #945 (@pre-commit-ci)
+    + Clean up typings #939 (@blink1073)
+    + [pre-commit.ci] pre-commit autoupdate #938 (@pre-commit-ci) (forwarded request 984608 from bnavigator)</comment>
+    <requestid>984609</requestid>
+  </revision>
 </revisionlist>
