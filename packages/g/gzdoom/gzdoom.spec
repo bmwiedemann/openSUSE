@@ -17,7 +17,7 @@
 
 
 Name:           gzdoom
-Version:        4.7.1
+Version:        4.8.0
 Release:        0
 Summary:        A DOOM source port with graphic and modding extensions
 License:        GPL-3.0-only
@@ -31,7 +31,11 @@ Patch2:         gzdoom-lzma.patch
 Patch3:         gzdoom-asmjit.patch
 Patch4:         gzdoom-sdlbug.patch
 Patch5:         gzdoom-vulkan.patch
+Patch6:         gzdoom-discord.patch
+Patch7:         0001-Resolve-build-failure-on-i686-linux.patch
+Patch8:         0001-Revert-load-the-hex-font-as-early-as-possible.patch
 BuildRequires:  cmake >= 2.8.7
+BuildRequires:  discord-rpc-devel
 BuildRequires:  gcc-c++
 BuildRequires:  glslang-devel
 BuildRequires:  libjpeg-devel
@@ -45,6 +49,7 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(sdl2) >= 2.0.6
+BuildRequires:  pkgconfig(vpx)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(zlib)
 Suggests:       freedoom
@@ -69,8 +74,9 @@ GZDoom is a port (a modification) of the original Doom source code, featuring:
 
 %prep
 %autosetup -n %name-g%version -p1
+perl -i -pe 's{__DATE__}{"does not matter when"}g' src/common/platform/posix/sdl/i_main.cpp
+perl -i -pe 's{<unknown version>}{%version}g' tools/updaterevision/UpdateRevision.cmake
 rm -Rf glslang src/common/rendering/vulkan/thirdparty/vulkan
-perl -i -pe 's{__DATE__}{""}g' src/common/platform/posix/sdl/i_main.cpp
 mkdir -p extra_include/glslang
 %if 0%{?suse_version} && 0%{?suse_version} < 1550
 touch extra_include/glslang/build_info.h

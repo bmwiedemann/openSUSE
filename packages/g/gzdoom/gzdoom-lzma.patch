@@ -9,10 +9,10 @@ Use LZMA system libraries instead of bundled code.
  tools/zipdir/CMakeLists.txt |    4 ++--
  3 files changed, 6 insertions(+), 6 deletions(-)
 
-Index: gzdoom-g4.6.0/CMakeLists.txt
+Index: gzdoom-g4.8.0/CMakeLists.txt
 ===================================================================
---- gzdoom-g4.6.0.orig/CMakeLists.txt
-+++ gzdoom-g4.6.0/CMakeLists.txt
+--- gzdoom-g4.8.0.orig/CMakeLists.txt
++++ gzdoom-g4.8.0/CMakeLists.txt
 @@ -17,6 +17,7 @@ endif()
  
  list( APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake )
@@ -21,16 +21,16 @@ Index: gzdoom-g4.6.0/CMakeLists.txt
  
  # Support cross compiling
  option( FORCE_CROSSCOMPILE "Turn on cross compiling." NO )
-@@ -378,7 +379,7 @@ else()
+@@ -392,7 +393,7 @@ else()
+ 	set( BZIP2_LIBRARY bz2 )
  endif()
- 
  
 -set( LZMA_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/libraries/lzma/C" )
 +pkg_check_modules(LZMA REQUIRED clzma)
  
  if( NOT CMAKE_CROSSCOMPILING )
  	if( NOT CROSS_EXPORTS )
-@@ -398,7 +399,6 @@ install(DIRECTORY docs/
+@@ -412,7 +413,6 @@ install(DIRECTORY docs/
  
  option( DYN_OPENAL "Dynamically load OpenAL" ON )
  
@@ -38,32 +38,32 @@ Index: gzdoom-g4.6.0/CMakeLists.txt
  add_subdirectory( tools )
  add_subdirectory( libraries/gdtoa )
  add_subdirectory( wadsrc )
-Index: gzdoom-g4.6.0/src/CMakeLists.txt
+Index: gzdoom-g4.8.0/src/CMakeLists.txt
 ===================================================================
---- gzdoom-g4.6.0.orig/src/CMakeLists.txt
-+++ gzdoom-g4.6.0/src/CMakeLists.txt
-@@ -406,7 +406,7 @@ set( ZDOOM_LIBS ${ZDOOM_LIBS} "${ZLIB_LI
- if (HAVE_VULKAN)
- 	set( ZDOOM_LIBS ${ZDOOM_LIBS} "glslang" "SPIRV" "OGLCompiler")
+--- gzdoom-g4.8.0.orig/src/CMakeLists.txt
++++ gzdoom-g4.8.0/src/CMakeLists.txt
+@@ -427,7 +427,7 @@ else()
+ 	message( SEND_ERROR "Could not find libvpx" )
  endif()
--include_directories( "${ZLIB_INCLUDE_DIR}" "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIR}" "${JPEG_INCLUDE_DIR}" "${ZMUSIC_INCLUDE_DIR}" )
-+include_directories( "${ZLIB_INCLUDE_DIR}" "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIRS}" "${JPEG_INCLUDE_DIR}" "${ZMUSIC_INCLUDE_DIR}" )
+ 
+-include_directories( "${ZLIB_INCLUDE_DIR}" "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIR}" "${JPEG_INCLUDE_DIR}" "${ZMUSIC_INCLUDE_DIR}" "${DRPC_INCLUDE_DIR}")
++include_directories( "${ZLIB_INCLUDE_DIR}" "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIRS}" "${JPEG_INCLUDE_DIR}" "${ZMUSIC_INCLUDE_DIR}" "${DRPC_INCLUDE_DIR}")
  
  if( ${HAVE_VM_JIT} )
  	add_definitions( -DHAVE_VM_JIT )
-@@ -1231,7 +1231,7 @@ if( UNIX )
+@@ -1297,7 +1297,7 @@ if( UNIX )
  	endif()
  endif()
  
--target_link_libraries( zdoom ${ZDOOM_LIBS} gdtoa lzma ${ZMUSIC_LIBRARIES} )
-+target_link_libraries( zdoom ${ZDOOM_LIBS} gdtoa ${LZMA_LIBRARIES} ${ZMUSIC_LIBRARIES} )
+-target_link_libraries( zdoom ${PROJECT_LIBRARIES} gdtoa lzma ${ZMUSIC_LIBRARIES} )
++target_link_libraries( zdoom ${PROJECT_LIBRARIES} gdtoa ${LZMA_LIBRARIES} ${ZMUSIC_LIBRARIES} )
  
  include_directories( .
  	common/audio/sound
-Index: gzdoom-g4.6.0/tools/zipdir/CMakeLists.txt
+Index: gzdoom-g4.8.0/tools/zipdir/CMakeLists.txt
 ===================================================================
---- gzdoom-g4.6.0.orig/tools/zipdir/CMakeLists.txt
-+++ gzdoom-g4.6.0/tools/zipdir/CMakeLists.txt
+--- gzdoom-g4.8.0.orig/tools/zipdir/CMakeLists.txt
++++ gzdoom-g4.8.0/tools/zipdir/CMakeLists.txt
 @@ -1,9 +1,9 @@
  cmake_minimum_required( VERSION 3.1.0 )
  

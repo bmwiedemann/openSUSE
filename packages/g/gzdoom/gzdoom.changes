@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jun 23 21:42:38 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-Revert-load-the-hex-font-as-early-as-possible.patch
+
+-------------------------------------------------------------------
+Mon Jun  6 21:22:12 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.8.0
+  * Added Raze-style HUD scaling. Not exposed in the menu yet,
+    Set hud_oldscale to 0 and use shift with the screen resize
+    keys to scale the status bar.
+  * Handle the start/endoom screens with the ingame renderer.
+    They are now present on all platforms and use the full screen
+    size of the game.
+  * Many MBF21 fixes.
+  * Added the cutscene system from Raze.
+- Add gzdoom-discord.patch
+- Add 0001-Resolve-build-failure-on-i686-linux.patch
+
+-------------------------------------------------------------------
 Sat Apr 23 01:04:05 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Reenable use of system vulkan libraries on Tumbleweed.
