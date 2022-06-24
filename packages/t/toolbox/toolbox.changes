@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 22 19:48:29 UTC 2022 - kukuk@suse.com
+
+- Update to version 2.3+git20220622.32785f7:
+  * Only set --userns=keep-id when running rootless
+
+-------------------------------------------------------------------
 Fri Jun 03 11:13:15 UTC 2022 - kukuk@suse.com
 
 - Update to version 2.3+git20220603.bbeda2e:

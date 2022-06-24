@@ -224,4 +224,13 @@
   * Add a &quot;more sandboxing&quot; mode</comment>
     <requestid>980625</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e6ec929bb855e56f6bffed0179cf9522</srcmd5>
+    <version>2.3+git20220622.32785f7</version>
+    <time>1656053098</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3+git20220622.32785f7:
+  * Only set --userns=keep-id when running rootless</comment>
+    <requestid>984598</requestid>
+  </revision>
 </revisionlist>
