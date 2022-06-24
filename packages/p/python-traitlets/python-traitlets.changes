@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 22 14:01:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.3.0
+  * Fix traitlet name in docstring by @fcollonval in #745
+  * Re-support multiple-alias key for ArgParseConfigLoader by
+    @azjps in #687
+- Drop traitlets-pr739-fixversion.patch
+
+-------------------------------------------------------------------
 Sun Jun  5 16:53:54 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.2.2

@@ -17,14 +17,12 @@
 
 
 Name:           python-traitlets
-Version:        5.2.2
+Version:        5.3.0
 Release:        0
 Summary:        Traitlets Python configuration system
 License:        BSD-3-Clause
 URL:            https://github.com/ipython/traitlets
 Source:         https://files.pythonhosted.org/packages/source/t/traitlets/traitlets-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM traitlets-pr739-fixversion.patch -- gh#ipython/traitlets#739
-Patch1:         https://github.com/ipython/traitlets/pull/739.patch#/traitlets-pr739-fixversion.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatchling >= 0.25}
 BuildRequires:  %{python_module pip}
