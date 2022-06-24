@@ -21,13 +21,18 @@ Version:        0.5.7
 Release:        0
 Summary:        Library of utility functions for CMPI providers
 License:        LGPL-2.1-or-later
-URL:            http://libvirt.org/CIM/
+URL:            http://libvirt.org/sources/CIM/
 Group:          Development/Libraries/C and C++
 Source:         %{name}-%{version}.tar.bz2
-Patch1:         fix-arm.patch
-Patch2:         0001-libcmpiutil-Fix-endianness-issues-in-embedded-object.patch
+Patch1:         0001-libcmpiutil-Fix-endianness-issues-in-embedded-object.patch
+Patch2:         0002-fix-ARM-build.patch
+Patch3:         0003-drop-duplicate-definition-of-_FORTIFY_SOURCE.patch
+BuildRequires:  autoconf
+BuildRequires:  autoconf-archive
+BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  flex
+BuildRequires:  libtool
 BuildRequires:  libxml2-devel
 %if 0%{?fedora_version} || 0%{?centos_version} || 0%{?rhel_version} || 0%{?fedora} || 0%{?rhel}
 BuildRequires:  pkgconfig
@@ -76,14 +81,19 @@ standardizing method dispatch and argument checking.
 
 %prep
 %setup -q
-%ifarch %arm
 %patch1 -p1
-%endif
+%ifarch %arm
 %patch2 -p1
+%endif
+%patch3 -p1
 chmod -x *.c *.y *.h *.l
 
 %build
 export CFLAGS="%{optflags} -fgnu89-inline"
+rm -f aclocal.m4 configure Makefile.in
+touch AUTHORS ChangeLog NEWS
+autoupdate acinclude.m4 configure.ac Makefile.am
+autoreconf -fi
 %configure --enable-static=no
 %if 0%{?make_build:1}
 %make_build

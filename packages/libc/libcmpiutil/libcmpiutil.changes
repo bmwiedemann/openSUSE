@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 23 12:32:10 UTC 2022 - Klaus Kämpf <kkaempf@suse.com>
+
+- adapt to latest autotools
+- rename fix-arm.patch to 0002-fix-ARM-build.patch
+- add 0003-drop-duplicate-definition-of-_FORTIFY_SOURCE.patch
+
+-------------------------------------------------------------------
 Wed Apr 27 09:34:33 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Resolve rpmlint report "libcmpiutil.x86_64: E:
