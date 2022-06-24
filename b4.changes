@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 23 11:39:42 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix _service: Do not add +0 to version when we are directly on a
+  tagged revision (so: 0.9.0 instead of 0.9.0+0).
+
+-------------------------------------------------------------------
 Sun Jun 19 07:51:21 UTC 2022 - jslaby@suse.cz
 
 - Update to version 0.9.0+0:
