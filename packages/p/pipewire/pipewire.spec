@@ -64,6 +64,8 @@ Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-settings-remove-44.1KHz-from-allowed-rates-again.patch
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -334,6 +336,7 @@ This package provides a PulseAudio implementation based on PipeWire
 %if 0%{?sle_version} == 150300
 %patch0 -p1
 %endif
+%patch1 -p1
 
 %build
 %if %{pkg_vcmp gcc < 8}

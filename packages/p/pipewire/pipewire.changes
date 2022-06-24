@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 22 17:47:19 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to remove 44.1kHz from allowed rates. 
+  This reverts the new behaviour in 0.3.52 which is causing
+  problems to too many people (boo#1200760):
+  * 0001-settings-remove-44.1KHz-from-allowed-rates-again.patch
+
+-------------------------------------------------------------------
 Thu Jun  9 15:02:18 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.3.52:
