@@ -1,7 +1,7 @@
 #
 # spec file for package systemd-presets-common-SUSE
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,6 +68,7 @@ if [ $1 -gt 1 -a -x %{_prefix}/lib/%{generic_name}/branding-preset-states ] ; th
 	# Note: the old version of the script is used here.
 	#
 	%{_prefix}/lib/%{generic_name}/branding-preset-states save
+	%{_prefix}/lib/%{generic_name}/branding-preset-states save user
 elif [ $1 -eq 1 ]; then
   touch /run/rpm-%{name}-preset-all
 fi
@@ -79,6 +80,7 @@ if [ $1 -gt 1 ] ; then
 	# that have been changed and apply "systemct preset" on them.
 	#
 	%{_prefix}/lib/%{generic_name}/branding-preset-states apply-changes
+	%{_prefix}/lib/%{generic_name}/branding-preset-states apply-changes user
 fi
 
 %posttrans

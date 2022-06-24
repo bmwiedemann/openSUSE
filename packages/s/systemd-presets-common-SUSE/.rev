@@ -192,4 +192,18 @@ It fits better in common-SUSE. I'll remove it from branding. (forwarded request 
     <comment>- Enable appstream-sync-cache.service by default(bsc#1197684). (forwarded request 982346 from JonathanKang)</comment>
     <requestid>982355</requestid>
   </revision>
+  <revision rev="24" vrev="24">
+    <srcmd5>a62da86d7e92cdc30a0cb54fe7b09a57</srcmd5>
+    <version>15</version>
+    <time>1656053116</time>
+    <user>dimstar_suse</user>
+    <comment>- Modify branding-preset-states to fix systemd-presets-common-SUSE
+  not enabling new user systemd service preset configuration just
+  as it handles system service presets. By passing an (optional)
+  second parameter &quot;user&quot;, the save/apply-changes commands now
+  work with user services instead of system ones (boo#1200485)
+
+- enable ignition-delete-config by default (bsc#1199524)</comment>
+    <requestid>984452</requestid>
+  </revision>
 </revisionlist>

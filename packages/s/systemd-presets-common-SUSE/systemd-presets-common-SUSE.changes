@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun 14 09:25:09 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Modify branding-preset-states to fix systemd-presets-common-SUSE
+  not enabling new user systemd service preset configuration just
+  as it handles system service presets. By passing an (optional)
+  second parameter "user", the save/apply-changes commands now
+  work with user services instead of system ones (boo#1200485)
+
+-------------------------------------------------------------------
+Mon May 23 12:37:54 UTC 2022 - Ignaz Forster <iforster@suse.com>
+
+- enable ignition-delete-config by default (bsc#1199524)
+
+-------------------------------------------------------------------
 Mon Apr 11 07:45:59 UTC 2022 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Enable appstream-sync-cache.service by default(bsc#1197684).
