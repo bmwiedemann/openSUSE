@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 23 15:45:02 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.8.2:
+  * bump base images to latest available
+  * add new _bin dir to gitignore
+  * Increase ACME client HTTP timeout to 90s
+  * Remove timeouts in ACME logging middleware
+  * Incease issuer and clusterissuer controller timeouts
+  * Set static (Cluster)Issuers timeout to 90 seconds
+
+-------------------------------------------------------------------
 Wed Jun 22 12:43:03 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.8.1:
