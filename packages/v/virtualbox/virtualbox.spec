@@ -248,7 +248,6 @@ BuildRequires:  pkgconfig(xmu)
 BuildRequires:  pkgconfig(xproto)
 BuildRequires:  pkgconfig(xrandr)
 Requires:       %{name}-kmp = %{version}
-Requires(post): sysvinit(syslog)
 Requires(pre):  %fillup_prereq
 Requires(pre):  permissions
 Requires(pre):  shadow
@@ -297,6 +296,7 @@ the terms of the GNU Public License (GPL).
 
 
 
+
 ##########################################
 %package qt
 Summary:        Qt GUI part for %{name}
@@ -316,6 +316,7 @@ This package contains the code for the GUI used to control VMs.
 
 
 
+
 #########################################
 %package websrv
 Summary:        WebService GUI part for %{name}
@@ -327,6 +328,7 @@ Obsoletes:      %{name}-vboxwebsrv < %{version}
 
 %description websrv
 The VirtualBox web server is used to control headless VMs using a browser.
+
 
 
 
@@ -343,6 +345,7 @@ Obsoletes:      xorg-x11-driver-virtualbox-ose < %{version}
 
 %description guest-x11
 This package contains X11 guest utilities and X11 guest mouse and video drivers
+
 
 
 
@@ -366,6 +369,7 @@ VirtualBox guest addition tools.
 
 
 
+
 ###########################################
 %package -n python3-%{name}
 Summary:        Python bindings for %{name}
@@ -386,6 +390,7 @@ Python XPCOM bindings to %{name}. Used e.g. by vboxgtk package.
 
 
 
+
 ###########################################
 %package devel
 Summary:        Devel files for %{name}
@@ -398,6 +403,7 @@ Obsoletes:      %{name}-ose-devel < %{version}
 
 %description devel
 Development file for %{name}
+
 
 
 
@@ -433,6 +439,7 @@ sudo %{_sbindir}/vboxguestconfig
 
 
 
+
 ###########################################
 %package guest-desktop-icons
 Summary:        Icons for guest desktop files
@@ -443,6 +450,7 @@ BuildArch:      noarch
 
 %description guest-desktop-icons
 This package contains icons for guest desktop files that were created on the desktop.
+
 
 
 
@@ -688,13 +696,13 @@ ln -s %{_vbox_instdir}/VBoxManage		%{buildroot}%{_bindir}/VBoxManage
 ln -s %{_vbox_instdir}/VBoxHeadless 		%{buildroot}%{_bindir}/VBoxHeadless
 ln -s %{_vbox_instdir}/VBoxSDL			%{buildroot}%{_bindir}/VBoxSDL
 ln -s %{_vbox_instdir}/VBoxTunctl		%{buildroot}%{_bindir}/VBoxTunctl
+ln -s %{_vbox_instdir}/vboximg-mount		%{buildroot}%{_bindir}/vboximg-mount
 install -m 755 VBoxSVC 				%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxXPCOMIPCD 			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxExtPackHelperApp		%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxTestOGL			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxPermissionMessage		%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxSUIDMessage			%{buildroot}%{_vbox_instdir}
-install -m 755 vboximg-mount			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxUSB_DevRules			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxNetDHCP			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxNetAdpCtl			%{buildroot}%{_vbox_instdir}
@@ -956,6 +964,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_bindir}/VBoxManage
 %{_bindir}/VBoxHeadless
 %{_bindir}/VBoxTunctl
+%{_bindir}/vboximg-mount
 %dir %{_vbox_instdir}
 %{_vbox_instdir}/VBoxAutostart
 %{_vbox_instdir}/VBoxBalloonCtrl

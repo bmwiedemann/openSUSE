@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 21 20:17:02 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
+
+- Package vboximg-mount correctly. boo#1200769.
+
+-------------------------------------------------------------------
 Wed Jun  8 07:54:46 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Explicitly BuildRequire pkgconfig(glx) and pkgconfig(glu): This
