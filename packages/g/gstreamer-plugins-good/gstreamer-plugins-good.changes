@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jun 22 10:30:08 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to version 1.20.3:
+  + deinterlace: various bug fixes for yadif method
+  + deinterlace: Refactor greedyh and fix planar formats
+  + deinterlace: Prevent race between method configuration and 
+    latency query
+  + gtk video sink: Fix rotation not being applied when paused
+  + jpegdec: fix RGB conversion handling
+  + matroskademux: improved ProRes video handling
+  + matroskamux: Handle multiview-mode/flags/pixel-aspect-ratio 
+    caps fields correctly when checking caps equality on 
+    input caps changes
+  + rtprtx: don't access type-system per buffer 
+    (performance optimisation); code cleanups
+  + rtpulpfecenc: fix unmatched g_slice_free()
+  + rtpvp8depay: fix crash when making GstRTPPacketLost custom
+    event
+  + qtmux: Don't post an error message if pushing a sample failed
+    with FLUSHING (e.g. on pipeline shutdown)
+  + soup: Lookup libsoup dylib files on Apple platforms & fix 
+    Cerbero static build on Android and iOS
+  + souphttpsrc: element not present on iOS after 1.20.0 update
+  + v4l2tuner: return NULL if no norm set
+  + v4l2bufferpool: Fix race condition between qbuf and pool
+    streamoff
+  + meson: Don't build lame plugin with -Dlame=disabled
+
+-------------------------------------------------------------------
 Mon May  9 10:59:42 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.20.2:
