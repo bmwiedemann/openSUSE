@@ -194,4 +194,16 @@ This needs to go into openSUSE:Factory:Staging:adi:49 with the other jupyter sub
     <comment></comment>
     <requestid>968071</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c88ec87a03bddb296b89697d1919a594</srcmd5>
+    <version>5.3.1</version>
+    <time>1656056714</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.3.1:
+  * Fix segfault when performing code completion on Qt6.
+  * Fix mixed input and print statements.
+  * Fix switching syntax highlighting styles on PySide2 and PySide6.
+</comment>
+    <requestid>984518</requestid>
+  </revision>
 </revisionlist>

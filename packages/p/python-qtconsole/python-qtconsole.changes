@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 22 13:36:44 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.3.1:
+  * Fix segfault when performing code completion on Qt6.
+  * Fix mixed input and print statements.
+  * Fix switching syntax highlighting styles on PySide2 and PySide6.
+
+-------------------------------------------------------------------
 Sat Apr  9 22:04:33 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 5.3.0

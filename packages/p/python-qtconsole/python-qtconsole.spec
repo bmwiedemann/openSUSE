@@ -24,7 +24,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-qtconsole
-Version:        5.3.0
+Version:        5.3.1
 Release:        0
 Summary:        Jupyter Qt console
 License:        BSD-3-Clause
@@ -52,6 +52,8 @@ Requires:       python-ipython_genutils
 Requires:       python-jupyter-client >= 4.1
 Requires:       python-jupyter-core
 Requires:       python-traitlets
+Conflicts:      python-traitlets = 5.2.1
+Conflicts:      python-traitlets = 5.2.2
 Provides:       python-jupyter_qtconsole = %{version}
 Obsoletes:      python-jupyter_qtconsole < %{version}
 BuildArch:      noarch
