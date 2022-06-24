@@ -7,4 +7,12 @@
     <comment>Theme cockpit using SUSE branding</comment>
     <requestid>984504</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b62888a8cec1124d2cdb831659f6b5ef</srcmd5>
+    <version>0.1</version>
+    <time>1656053120</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix dependencies</comment>
+    <requestid>984703</requestid>
+  </revision>
 </revisionlist>

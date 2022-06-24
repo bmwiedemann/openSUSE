@@ -21,11 +21,10 @@ Version:        0.1
 Release:        0
 Summary:        A Cockpit green-ish theme
 Source:         %{name}-%{version}.tar.xz
-Url:            https://github.com/dgdavid/cockpit-suse-theme
+URL:            https://github.com/dgdavid/cockpit-suse-theme
 License:        MIT
 
-Requires:       cockpit-ws
-BuildRequires:  cockpit-ws
+Supplements:    cockpit-ws
 BuildArch:      noarch
 
 %description
@@ -39,6 +38,8 @@ loading the CSS overrides file in each HTML page.
 %prep
 %setup -q
 
+%build
+
 %install
 mkdir -p %{buildroot}%{_datadir}/cockpit/branding/default
 cp src/css-overrides.css %{buildroot}%{_datadir}/cockpit/branding/default
@@ -47,6 +48,8 @@ cp -a src/fonts %{buildroot}%{_datadir}/cockpit/branding/default
 
 %files
 %dir %{_datadir}/cockpit
+%dir %{_datadir}/cockpit/branding
+%dir %{_datadir}/cockpit/branding/default
 %{_datadir}/cockpit/branding/default/*
 
 %changelog
