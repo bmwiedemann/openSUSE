@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 22 13:54:26 MDT 2022 - carnold@suse.com
+
+- bsc#1200691 - SLES 15 SP4 GMC --os-variant tag shouldn't be
+  mandatory on s390x (see also bsc#1200422)
+  revert-363fca41-virt-install-Require-osinfo-for-non-x86-HVM-case-too.patch
+
+-------------------------------------------------------------------
 Mon May 23 08:10:42 MDT 2022 - carnold@suse.com
 
 - Change dependency on package xorriso to Requires from Recommends

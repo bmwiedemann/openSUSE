@@ -32,6 +32,7 @@ Source1:        virt-install.rb
 Source2:        virt-install.desktop
 Source3:        virt-manager-supportconfig
 # Upstream Patches
+Patch1:         revert-363fca41-virt-install-Require-osinfo-for-non-x86-HVM-case-too.patch
 # SUSE Only
 Patch70:        virtman-desktop.patch
 Patch71:        virtman-kvm.patch
@@ -158,6 +159,7 @@ machine).
 %prep
 %setup -q
 # Upstream Patches
+%patch1 -p1
 # SUSE Only
 %patch70 -p1
 %patch71 -p1

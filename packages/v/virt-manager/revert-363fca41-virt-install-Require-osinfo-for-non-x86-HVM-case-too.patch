@@ -1,0 +1,58 @@
+References: bsc#1200691, an IBM request
+This patch reverts commit 363fca413cae336a0ca86cbdcbb2f65fead948ee.
+Only x86 will have a hard requirement for the --osinfo option.
+
+From: Cole Robinson crobinso@redhat.com Sun Feb 20 11:40:35 2022 -0500
+Subject: virt-install: Require --osinfo for non-x86 HVM case too
+Date: Sun Feb 20 11:40:35 2022 -0500:
+Git: 363fca413cae336a0ca86cbdcbb2f65fead948ee
+
+It's generally not as valuable for non-x86 where we don't have the
+history of supporting non-virtio OSes, but as time goes on it will
+likely become more relevant for non-x86 arches, so let's make this
+change now to get ahead of it.
+
+Signed-off-by: Cole Robinson <crobinso@redhat.com>
+
+--- a/man/virt-install.rst
++++ b/man/virt-install.rst
+@@ -1040,8 +1040,8 @@ all other settings off or unset.
+ 
+ By default, virt-install will always attempt ``--osinfo detect=on``
+ for appropriate install media. If no OS is detected, we will fail
+-in most common cases. This fatal error was added in 2022. You can
+-work around this by using the fallback example
++in certain common cases (x86 KVM for example). This fatal error was
++added in 2022. You can work around this by using the fallback example
+ above, or disabling the ``require`` option. If you just need to get back
+ to the old non-fatal behavior ASAP, set the environment variable
+ VIRTINSTALL_OSINFO_DISABLE_REQUIRE=1.
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -1162,7 +1162,6 @@ c.add_compare("--connect %(URI-KVM-ARMV7
+ #################
+ 
+ c.add_valid("--arch aarch64 --osinfo fedora19 --nodisks --pxe --connect " + utils.URIs.kvm_x86_nodomcaps, grep="Libvirt version does not support UEFI")  # attempt to default to aarch64 UEFI, but it fails, but should only print warnings
+-c.add_invalid("--arch aarch64 --nodisks --pxe --connect " + utils.URIs.kvm_x86, grep="OS name is required")  # catch missing osinfo for non-x86
+ c.add_compare("--arch aarch64 --osinfo fedora19 --machine virt --boot kernel=/f19-arm.kernel,initrd=/f19-arm.initrd,kernel_args=\"console=ttyAMA0,1234 rw root=/dev/vda3\" --disk %(EXISTIMG1)s", "aarch64-machvirt")
+ c.add_compare("--arch aarch64 --osinfo fedora19 --boot kernel=/f19-arm.kernel,initrd=/f19-arm.initrd,kernel_args=\"console=ttyAMA0,1234 rw root=/dev/vda3\" --disk %(EXISTIMG1)s", "aarch64-machdefault")
+ c.add_compare("--arch aarch64 --cdrom %(ISO-F26-NETINST)s --boot loader=CODE.fd,nvram.template=VARS.fd --disk %(EXISTIMG1)s --cpu none --events on_crash=preserve,on_reboot=destroy,on_poweroff=restart", "aarch64-cdrom")  # cdrom test, but also --cpu none override, --events override, and headless
+--- a/virtinst/virtinstall.py
++++ b/virtinst/virtinstall.py
+@@ -355,13 +355,9 @@ def _show_memory_warnings(guest):
+ 
+ 
+ def _needs_accurate_osinfo(guest):
+-    # HVM is really the only case where OS impacts what we set for defaults,
+-    # so far.
+-    #
+-    # Historically we would only warn about missing osinfo on x86, but
+-    # with the change to make osinfo mandatory we relaxed the arch check,
+-    # so virt-install behavior is more consistent.
+-    return guest.os.is_hvm()
++    # Limit it to hvm x86 guests which presently our defaults
++    # only really matter for
++    return guest.os.is_x86() and guest.os.is_hvm()
+ 
+ 
+ def show_guest_warnings(options, guest):
