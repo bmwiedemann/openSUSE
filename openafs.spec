@@ -57,23 +57,23 @@
 
 # used for %setup only
 # leave upstream tar-balls untouched for integrity checks.
-%define upstream_version 1.8.8.1
+%define upstream_version stable-1_8_x
 
 Name:           openafs
 
-Version:        1.8.8.1
+Version:        1.8.8.2~rc1
 Release:        0
 Summary:        OpenAFS Distributed File System
 License:        IPL-1.0
 Group:          System/Filesystems
 URL:            http://www.openafs.org/
 
-Source0:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2
-Source1:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2
-Source2:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2.md5
-Source3:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2.md5
-Source4:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2.sha256
-Source5:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2.sha256
+Source0:        openafs-%{upstream_version}-src.tar.bz2
+Source1:        openafs-%{upstream_version}-doc.tar.bz2
+Source2:        openafs-%{upstream_version}-src.tar.bz2.md5
+Source3:        openafs-%{upstream_version}-doc.tar.bz2.md5
+Source4:        openafs-%{upstream_version}-src.tar.bz2.sha256
+Source5:        openafs-%{upstream_version}-doc.tar.bz2.sha256
 
 Source10:       README.SUSE.openafs
 Source15:       logrotate.openafs-server
@@ -102,15 +102,14 @@ Source57:       openafs.ThisCell
 Source58:       openafs.cacheinfo
 Source98:       kmp_only.files
 Source99:       openafs.changes
-# PATCH-FIX-UPSTREAM KMP build
-Patch1:         a714e86.diff
-Patch2:         449d1fa.diff
-# PATCH-FIX-UPSTREAM use gcc-11
-Patch3:         gcc-11.diff
+
+# PATCH-FIX-UPSTREAM KMP build and gcc
+# required patches for Linux-5.18 as mentionend on
+# https://wiki.openafs.org/devel/Whiteboard/ (June 2022)
+Patch1:         fix_gcc_12_linux_5.18.diff
 # PATCH-FIX-UPSTREAM make configure detect ncurses 6 correctly
 Patch4:         4cf7a9a.diff
 
-#
 #	GENERAL BuildRequires and Requires
 #
 
@@ -320,8 +319,6 @@ done
 
 %setup -q -n openafs-%{upstream_version} -T -b 0 -b 1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
 %patch4 -p1
 
 ./regen.sh
