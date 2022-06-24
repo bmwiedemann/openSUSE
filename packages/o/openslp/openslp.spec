@@ -1,7 +1,7 @@
 #
 # spec file for package openslp
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -180,7 +180,12 @@ cat > %{buildroot}%{_sbindir}/rcopenslp <<'EOF'
 exec %{_sbindir}/rcslpd "$@"
 EOF
 chmod 755 %{buildroot}%{_sbindir}/rcopenslp
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
+install -D -m 0644 %{SOURCE10} %{buildroot}%{_distconfdir}/logrotate.d/openslp-server
+%else
 install -D -m 0644 %{SOURCE10} %{buildroot}%{_sysconfdir}/logrotate.d/openslp-server
+%endif
 # install susehelp file
 mkdir -p %{buildroot}%{_datadir}/susehelp/meta/Administration/
 install -m 0644 %{SOURCE3} \
@@ -197,6 +202,7 @@ install -D -m 644 %{SOURCE9} %{buildroot}%{_unitdir}/slpd.service
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
+
 %pre server
 getent passwd openslp >/dev/null || useradd -r -g daemon -d %{_localstatedir}/lib/empty -s /sbin/nologin -c "openslp daemon" openslp
 %service_add_pre slpd.service
@@ -240,7 +246,11 @@ getent passwd openslp >/dev/null || useradd -r -g daemon -d %{_localstatedir}/li
 %{_sbindir}/rcslpd
 %{_sbindir}/slpd
 %config(noreplace) %{_sysconfdir}/slp.reg
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/logrotate.d/openslp-server
+%else
 %config(noreplace) %{_sysconfdir}/logrotate.d/openslp-server
+%endif
 %{_unitdir}/slpd.service
 
 %files devel
