@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 23 14:49:14 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 20220408.101518.b908e2dd^git413:
+  * fonts: add negative cache into LoadedFont
+  * show-keys: make keys more readable to humans
+  * debug overlay: now supports statements as well as expressions
+  * add wezterm show-keys command
+  * x11: flush prior to mapping window
+  * docs: changelog for #1913 #2158
+  * fonts: remove no_glyphs cache from FontConfigInner
+  * Update copymode.md: description of `O` key assignment (#2156)
+  * add sample matched strings
+  * github hyperlink example
+
+-------------------------------------------------------------------
 Thu Jun 16 13:04:52 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 20220408.101518.b908e2dd^git356:
