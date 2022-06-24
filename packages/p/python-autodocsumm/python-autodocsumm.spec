@@ -29,7 +29,7 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       (python-Sphinx >= 2.2 and python-Sphinx < 5.0)
+Requires:       python-Sphinx >= 2.2
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Sphinx >= 2.2}
@@ -44,6 +44,8 @@ Extended sphinx autodoc including automatic autosummaries
 
 %prep
 %setup -q -n autodocsumm-%{version}
+# Remove guard from Sphinx version
+sed -i 's/,<5.0//' setup.py
 
 %build
 %python_build
