@@ -876,4 +876,35 @@
   * Fixed in the &quot;ssl_session_ticket_key&quot; when using TLSv1.3.</comment>
     <requestid>950462</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>49eddced9169656f1fa42b0c733ad45b</srcmd5>
+    <version>1.23.0</version>
+    <time>1656053110</time>
+    <user>dimstar_suse</user>
+    <comment>- Changed nginx.keyring to Konstantin Pavlov’s PGP public key.
+- Removed nginx.init.
+- Updated to 1.23.0
+  * https://nginx.org/en/CHANGES
+  * Now header lines are represented as linked lists.
+  * Now nginx combines arbitrary header lines with identical
+    names when sending to FastCGI, SCGI, and uwsgi backends, in the
+    $r-&gt;header_in() method of the ngx_http_perl_module, and during lookup
+    of the &quot;$http_...&quot;, &quot;$sent_http_...&quot;, &quot;$sent_trailer_...&quot;,
+    &quot;$upstream_http_...&quot;, and &quot;$upstream_trailer_...&quot; variables.
+  * Fixed: if there were multiple &quot;Vary&quot; header lines in the backend
+    response, nginx only used the last of them when caching.
+  * Fixed: if there were multiple &quot;WWW-Authenticate&quot; header lines in the
+    backend response and errors with code 401 were intercepted or the
+    &quot;auth_request&quot; directive was used, nginx only sent the first of the
+    header lines to the client.
+  * The logging level of the &quot;application data after close
+    notify&quot; SSL errors has been lowered from &quot;crit&quot; to &quot;info&quot;.
+  * Fixed: connections might hang if nginx was built on Linux 2.6.17 or
+    newer, but was used on systems without EPOLLRDHUP support, notably
+    with epoll emulation layers; the bug had appeared in 1.17.5.
+  * Fixed: nginx did not cache the response if the &quot;Expires&quot; response
+    header line disabled caching, but following &quot;Cache-Control&quot; header
+    line enabled caching.</comment>
+    <requestid>984278</requestid>
+  </revision>
 </revisionlist>

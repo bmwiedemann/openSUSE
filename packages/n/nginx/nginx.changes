@@ -1,5 +1,33 @@
 -------------------------------------------------------------------
-Tue Feb  1 14:50:56 UTC 2022 - Илья Индиго <ilya@ilya.pp.ua>
+Tue Jun 21 23:46:03 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+
+- Changed nginx.keyring to Konstantin Pavlov’s PGP public key.
+- Removed nginx.init.
+- Updated to 1.23.0
+  * https://nginx.org/en/CHANGES
+  * Now header lines are represented as linked lists.
+  * Now nginx combines arbitrary header lines with identical
+    names when sending to FastCGI, SCGI, and uwsgi backends, in the
+    $r->header_in() method of the ngx_http_perl_module, and during lookup
+    of the "$http_...", "$sent_http_...", "$sent_trailer_...",
+    "$upstream_http_...", and "$upstream_trailer_..." variables.
+  * Fixed: if there were multiple "Vary" header lines in the backend
+    response, nginx only used the last of them when caching.
+  * Fixed: if there were multiple "WWW-Authenticate" header lines in the
+    backend response and errors with code 401 were intercepted or the
+    "auth_request" directive was used, nginx only sent the first of the
+    header lines to the client.
+  * The logging level of the "application data after close
+    notify" SSL errors has been lowered from "crit" to "info".
+  * Fixed: connections might hang if nginx was built on Linux 2.6.17 or
+    newer, but was used on systems without EPOLLRDHUP support, notably
+    with epoll emulation layers; the bug had appeared in 1.17.5.
+  * Fixed: nginx did not cache the response if the "Expires" response
+    header line disabled caching, but following "Cache-Control" header
+    line enabled caching.
+
+-------------------------------------------------------------------
+Tue Feb  1 14:50:56 UTC 2022 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 1.21.6
   * https://nginx.org/en/CHANGES
@@ -20,7 +48,7 @@ Wed Dec 29 11:03:27 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
     with the "sendfile" and "aio" directives.
 
 -------------------------------------------------------------------
-Fri Nov  5 21:24:19 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+Fri Nov  5 21:24:19 UTC 2021 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 1.21.4
   * https://nginx.org/en/CHANGES
@@ -59,7 +87,7 @@ Mon Oct 11 09:26:39 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
   * nginx.service
 
 -------------------------------------------------------------------
-Fri Sep 10 17:44:54 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+Fri Sep 10 17:44:54 UTC 2021 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 1.21.3
   * https://nginx.org/en/CHANGES
@@ -68,7 +96,7 @@ Fri Sep 10 17:44:54 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
     buffering of the data being processed.
 
 -------------------------------------------------------------------
-Wed Sep  1 07:09:54 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+Wed Sep  1 07:09:54 UTC 2021 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 1.21.2
   * https://nginx.org/en/CHANGES
@@ -88,7 +116,7 @@ Wed Sep  1 07:09:54 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
     disk if the "Content-Length" header line was not present in the request.
 
 -------------------------------------------------------------------
-Wed Jul  7 18:53:17 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+Wed Jul  7 18:53:17 UTC 2021 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 1.21.1
   * https://nginx.org/en/CHANGES
@@ -137,7 +165,7 @@ Thu May 27 16:35:26 UTC 2021 - Dirk Müller <dmueller@suse.com>
     closed unexpectedly when using SMTP pipelining.
 
 -------------------------------------------------------------------
-Wed May 26 02:44:27 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+Wed May 26 02:44:27 UTC 2021 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 1.20.1
   * https://nginx.org/en/CHANGES
@@ -153,13 +181,13 @@ Wed Apr 21 04:54:21 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
   also installed or selected (boo#1183710)
 
 -------------------------------------------------------------------
-Tue Apr 20 20:41:21 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+Tue Apr 20 20:41:21 UTC 2021 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 1.20.0
   * 1.20.x stable branch.
 
 -------------------------------------------------------------------
-Wed Apr 14 11:09:07 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+Wed Apr 14 11:09:07 UTC 2021 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 1.19.10
   * https://nginx.org/en/CHANGES
@@ -169,7 +197,7 @@ Wed Apr 14 11:09:07 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
     appeared in logs when using zlib-ng.
 
 -------------------------------------------------------------------
-Sat Apr  3 10:29:25 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+Sat Apr  3 10:29:25 UTC 2021 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 1.19.9
   * https://nginx.org/en/CHANGES
@@ -201,7 +229,7 @@ Fri Mar 12 20:17:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Bugfix: in the eventport method.
 
 -------------------------------------------------------------------
-Sat Feb 27 12:04:02 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+Sat Feb 27 12:04:02 UTC 2021 - Илья Индиго <ilya@ilya.cf>
 
 - Refreshed spec-file via spec-cleaner and manual optimizations.
   * Droped obsolete conditional constructs.
@@ -260,7 +288,7 @@ Wed Dec 23 07:18:28 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
   * Fix in the ngx_http_flv_module and ngx_http_mp4_module.
 
 -------------------------------------------------------------------
-Tue Nov 24 19:30:01 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Tue Nov 24 19:30:01 UTC 2020 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 1.19.5
   * https://nginx.org/en/CHANGES
@@ -273,12 +301,12 @@ Tue Nov 24 19:30:01 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
   * Fix in request body filters internal API.
 
 -------------------------------------------------------------------
-Mon Nov  9 11:07:07 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Mon Nov  9 11:07:07 UTC 2020 - Илья Индиго <ilya@ilya.cf>
 
 - Refresh spec-file via spec-cleaner and manual optimizations.
 
 -------------------------------------------------------------------
-Tue Oct 27 20:23:09 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Tue Oct 27 20:23:09 UTC 2020 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 1.19.4
   * https://nginx.org/en/CHANGES
@@ -304,7 +332,7 @@ Fri Oct  2 01:58:09 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 - The rtmp module is replaced with nginx-module-http-flv
 
 -------------------------------------------------------------------
-Wed Sep 30 11:28:16 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Wed Sep 30 11:28:16 UTC 2020 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 1.19.3
   * https://nginx.org/en/CHANGES
@@ -327,7 +355,7 @@ Wed Sep 30 11:28:16 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
   * Fix socket leak when using HTTP/2 and subrequests in the njs module.
 
 -------------------------------------------------------------------
-Wed Aug 12 15:23:16 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Wed Aug 12 15:23:16 UTC 2020 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 1.19.2
   * https://nginx.org/en/CHANGES
@@ -356,7 +384,7 @@ Tue Aug  4 19:10:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
   * remove geoip_module which is no longer compiled (bsc#1156202)
 
 -------------------------------------------------------------------
-Wed Jul  8 11:52:53 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Wed Jul  8 11:52:53 UTC 2020 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 1.19.1
   * https://nginx.org/en/CHANGES
@@ -382,7 +410,7 @@ Wed Jul  8 11:52:53 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
     a memcached server returned a malformed response.
 
 -------------------------------------------------------------------
-Thu May 28 01:46:00 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Thu May 28 01:46:00 UTC 2020 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 1.19.0
   * https://nginx.org/en/CHANGES
@@ -401,7 +429,7 @@ Thu May  7 16:15:48 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
  system's default (sysctl net.core.somaxconn)
 
 -------------------------------------------------------------------
-Wed Apr 22 16:46:27 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Wed Apr 22 16:46:27 UTC 2020 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 1.18.0
   * 1.18.x stable branch.
@@ -413,7 +441,7 @@ Fri Apr 17 12:28:02 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 - Remove self-conflict
 
 -------------------------------------------------------------------
-Wed Apr 15 13:12:58 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Wed Apr 15 13:12:58 UTC 2020 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 1.17.10
   * https://nginx.org/en/CHANGES
@@ -426,7 +454,7 @@ Tue Mar 10 10:49:35 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
   (bsc#1156202)
 
 -------------------------------------------------------------------
-Wed Mar  4 12:35:47 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Wed Mar  4 12:35:47 UTC 2020 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 1.17.9
   * https://nginx.org/en/CHANGES
@@ -458,7 +486,7 @@ Tue Jan 21 16:35:28 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
   without sysemd, too.
 
 -------------------------------------------------------------------
-Sat Dec 28 11:03:16 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
+Sat Dec 28 11:03:16 UTC 2019 - Илья Индиго <ilya@ilya.cf>
 
 - Refresh spec-file via spec-cleaner.
 - Add in service-file Wants=network-online.target (boo#1155690)
@@ -498,7 +526,7 @@ Mon Oct 28 01:37:06 UTC 2019 - Cristian Rodríguez <crrodriguez@opensuse.org>
   no longer needed.
 
 -------------------------------------------------------------------
-Wed Oct 23 17:04:53 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
+Wed Oct 23 17:04:53 UTC 2019 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 1.17.5
   * https://nginx.org/en/CHANGES
@@ -511,7 +539,7 @@ Wed Oct 23 17:04:53 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
   * nginx could not be built with MinGW-w64 gcc 8.1 or newer.
 
 -------------------------------------------------------------------
-Mon Oct 21 22:27:00 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
+Mon Oct 21 22:27:00 UTC 2019 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 1.17.4
   * https://nginx.org/en/CHANGES
