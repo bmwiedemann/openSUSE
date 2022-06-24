@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 23 14:50:05 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Remove user downgrade mechanism from the package (CVE-2022-31250, bsc#1200885)
+
+-------------------------------------------------------------------
+Thu Jun 23 08:49:30 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add logrotate configuration for the services
+- Create run directory as non-root user
+- Conflict with rust-keylime
+- Consolidate in _distconfdir when possible
+
+-------------------------------------------------------------------
 Mon Jun 13 14:15:49 UTC 2022 - aplanas@suse.com
 
 - Update to version v6.4.1:

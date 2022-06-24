@@ -16,6 +16,14 @@
 #
 
 
+# Consolidate _distconfdir and _sysconfdir
+%if 0%{?_distconfdir:1}
+  %define _config_norepl %nil
+%else
+  %define _distconfdir   %{_sysconfdir}
+  %define _config_norepl %config(noreplace)
+%endif
+
 %global srcname keylime
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
@@ -28,6 +36,8 @@ URL:            https://github.com/keylime/keylime
 Source0:        %{name}-v%{version}.tar.xz
 Source1:        keylime.xml
 Source2:        %{name}-user.conf
+Source3:        logrotate.%{name}
+Source4:        tmpfiles.%{name}
 # PATCH-FIX-OPENSUSE keylime.conf.diff
 Patch1:         keylime.conf.diff
 BuildRequires:  %{python_module setuptools}
@@ -55,6 +65,7 @@ Requires:       tpm2.0-abrmd
 Requires:       tpm2.0-tools
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+Conflicts:      rust-keylime
 BuildArch:      noarch
 %python_subpackages
 
@@ -87,6 +98,7 @@ Subpackage of %{name} for storing the TPM certificates.
 %package -n %{name}-agent
 Summary:        Keylime agent service
 Requires:       %{name}-config = %{version}
+Requires:       %{name}-logrotate = %{version}
 Requires:       %{name}-tpm_cert_store = %{version}
 Requires:       python3-%{name} = %{version}
 Recommends:     %{name}-firewalld = %{version}
@@ -98,6 +110,7 @@ Subpackage of %{name} for agent service.
 %package -n %{name}-registrar
 Summary:        Keylime registrar service
 Requires:       %{name}-config = %{version}
+Requires:       %{name}-logrotate = %{version}
 Requires:       %{name}-tpm_cert_store = %{version}
 Requires:       python3-%{name} = %{version}
 Recommends:     %{name}-firewalld = %{version}
@@ -108,12 +121,20 @@ Subpackage of %{name} for registrar service.
 %package -n %{name}-verifier
 Summary:        Keylime verifier service
 Requires:       %{name}-config = %{version}
+Requires:       %{name}-logrotate = %{version}
 Requires:       %{name}-tpm_cert_store = %{version}
 Requires:       python3-%{name} = %{version}
 Recommends:     %{name}-firewalld = %{version}
 
 %description -n %{name}-verifier
 Subpackage of %{name} for verifier service.
+
+%package -n %{name}-logrotate
+Summary:        Logrotate for Keylime servies
+Requires:       logrotate
+
+%description -n %{name}-logrotate
+Subpacakge of %{name} for logrotate for Keylime services
 
 %prep
 %autosetup -p1 -n %{name}-v%{version}
@@ -140,24 +161,21 @@ cp -r %{srcname}/static %{buildroot}%{python_sitelib}/%{srcname}
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if 0%{?suse_version} >= 1550
-install -Dpm 600 %{srcname}.conf %{buildroot}%{_prefix}%{_sysconfdir}/%{srcname}.conf
-%else
-install -Dpm 600 %{srcname}.conf %{buildroot}%{_sysconfdir}/%{srcname}.conf
-%endif
-install -Dpm 644 ./services/%{srcname}_agent.service %{buildroot}%{_unitdir}/%{srcname}_agent.service
-install -Dpm 644 ./services/%{srcname}_agent_secure.mount %{buildroot}%{_unitdir}/var-lib-%{srcname}-secure.mount
-install -Dpm 644 ./services/%{srcname}_verifier.service %{buildroot}%{_unitdir}/%{srcname}_verifier.service
-install -Dpm 644 ./services/%{srcname}_registrar.service %{buildroot}%{_unitdir}/%{srcname}_registrar.service
+install -Dpm 0600 %{srcname}.conf %{buildroot}%{_distconfdir}/%{srcname}.conf
+install -Dpm 0644 ./services/%{srcname}_agent.service %{buildroot}%{_unitdir}/%{srcname}_agent.service
+install -Dpm 0644 ./services/%{srcname}_agent_secure.mount %{buildroot}%{_unitdir}/var-lib-%{srcname}-secure.mount
+install -Dpm 0644 ./services/%{srcname}_verifier.service %{buildroot}%{_unitdir}/%{srcname}_verifier.service
+install -Dpm 0644 ./services/%{srcname}_registrar.service %{buildroot}%{_unitdir}/%{srcname}_registrar.service
 
-install -D -m 644 %{SOURCE1} %{buildroot}%{_prefix}/lib/firewalld/services/%{srcname}.xml
+install -Dpm 0644 %{SOURCE1} %{buildroot}%{_prefix}/lib/firewalld/services/%{srcname}.xml
+install -Dpm 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/%{name}-user.conf
+install -Dpm 0644 %{SOURCE3} %{buildroot}%{_distconfdir}/logrotate.d/%{name}
+install -Dpm 0644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/%{name}.conf
+install -d %{buildroot}%{_localstatedir}/log/%{name}
 
-mkdir -p %{buildroot}/%{_sharedstatedir}/%{srcname}
-cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
-%fdupes %{buildroot}%{_sharedstatedir}/%{srcname}/
-
-mkdir -p %{buildroot}%{_sysusersdir}
-install -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/
+mkdir -p %{buildroot}/%{_localstatedir}/%{srcname}
+cp -r ./tpm_cert_store %{buildroot}%{_localstatedir}/%{srcname}/
+%fdupes %{buildroot}%{_localstatedir}/%{srcname}/
 
 # %%check
 # %%pyunittest -v
@@ -190,13 +208,7 @@ install -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/
 %pre -n %{srcname}-tpm_cert_store -f %{srcname}.pre
 
 %post -n %{srcname}-tpm_cert_store
-# Help the upgrade process when moving to a non-root services
-chown -R keylime:tss %{_sharedstatedir}/%{srcname}/ca 2> /dev/null || :
-chown -R keylime:tss %{_sharedstatedir}/%{srcname}/secure 2> /dev/null || :
-chown -R keylime:tss %{_sharedstatedir}/%{srcname}/cv_ca 2> /dev/null || :
-chown keylime:tss %{_sharedstatedir}/%{srcname}/*.sqlite 2> /dev/null || :
-chown keylime:tss %{_sharedstatedir}/%{srcname}/*.yml 2> /dev/null || :
-chown keylime:tss %{_sysconfdir}/%{srcname}.conf 2> /dev/null || :
+%tmpfiles_create %{srcname}.conf
 
 %pre -n %{srcname}-verifier
 %service_add_pre %{srcname}_verifier.service
@@ -253,11 +265,7 @@ chown keylime:tss %{_sysconfdir}/%{srcname}.conf 2> /dev/null || :
 %{python_sitelib}/*
 
 %files -n %{srcname}-config
-%if 0%{?suse_version} >= 1550
-%attr (600,keylime,tss) %{_prefix}%{_sysconfdir}/%{srcname}.conf
-%else
-%config(noreplace) %attr (600,keylime,tss) %{_sysconfdir}/%{srcname}.conf
-%endif
+%{_config_norepl} %attr (600,keylime,tss) %{_distconfdir}/%{srcname}.conf
 
 %files -n %{srcname}-firewalld
 %dir %{_prefix}/lib/firewalld
@@ -265,19 +273,27 @@ chown keylime:tss %{_sysconfdir}/%{srcname}.conf 2> /dev/null || :
 %{_prefix}/lib/firewalld/services/%{srcname}.xml
 
 %files -n %{srcname}-tpm_cert_store
-%dir %attr(0700,keylime,tss) %{_sharedstatedir}/%{srcname}
-%dir %{_sharedstatedir}/%{srcname}/tpm_cert_store
-%{_sharedstatedir}/%{srcname}/tpm_cert_store/*
+%dir %{_localstatedir}/%{srcname}/tpm_cert_store
+%{_localstatedir}/%{srcname}/tpm_cert_store/*
+# We use this subpackage to store other unrelated things, as far as is
+# required by all the services
+%dir %attr(0700,keylime,tss) %{_localstatedir}/%{srcname}
 %{_sysusersdir}/%{srcname}-user.conf
-
-%files -n %{srcname}-verifier
-%{_unitdir}/%{srcname}_verifier.service
-
-%files -n %{srcname}-registrar
-%{_unitdir}/%{srcname}_registrar.service
+%ghost %dir %attr(0700,keylime,tss) %{_rundir}/%{srcname}
+%{_tmpfilesdir}/%{srcname}.conf
 
 %files -n %{srcname}-agent
 %{_unitdir}/%{srcname}_agent.service
 %{_unitdir}/var-lib-%{srcname}-secure.mount
+
+%files -n %{srcname}-registrar
+%{_unitdir}/%{srcname}_registrar.service
+
+%files -n %{srcname}-verifier
+%{_unitdir}/%{srcname}_verifier.service
+
+%files -n %{srcname}-logrotate
+%{_config_norepl} %{_distconfdir}/logrotate.d/%{srcname}
+%dir %attr(750,keylime,tss) %{_localstatedir}/log/%{srcname}
 
 %changelog
