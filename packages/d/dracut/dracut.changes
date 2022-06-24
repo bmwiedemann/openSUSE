@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 21 14:02:11 UTC 2022 - antonio.feijoo@suse.com
+
+- Update to version 057+suse.292.g508db4cd:
+  See https://github.com/dracutdevs/dracut/releases/tag/057 for details.
+  Additional changes:
+  * fix(integrity): do not enable EVM if there is no key (bsc#1200718)
+  * fix(dracut.sh): temporary workaround for kiwi (bsc#1199051)
+  * chore(suse): update spec
+
+-------------------------------------------------------------------
 Fri Apr 22 08:01:44 UTC 2022 - antonio.feijoo@suse.com
 
 - Update to version 056+suse.275.g4ce7a6a7:

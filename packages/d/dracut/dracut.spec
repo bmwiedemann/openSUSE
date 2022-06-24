@@ -25,7 +25,7 @@
 %endif
 
 Name:           dracut
-Version:        056+suse.275.g4ce7a6a7
+Version:        057+suse.292.g508db4cd
 Release:        0
 Summary:        Event driven initramfs infrastructure
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -249,7 +249,6 @@ fi
 %{dracutlibdir}/modules.d/02caps
 %{dracutlibdir}/modules.d/00dash
 %{dracutlibdir}/modules.d/05busybox
-%{dracutlibdir}/modules.d/50gensplash
 %{dracutlibdir}/modules.d/90ppcmac
 
 # RH-specific s390 modules, we take another approach
@@ -353,6 +352,7 @@ fi
 %{dracutlibdir}/modules.d/09dbus
 %{dracutlibdir}/modules.d/10i18n
 %{dracutlibdir}/modules.d/30convertfs
+%{dracutlibdir}/modules.d/35connman
 %{dracutlibdir}/modules.d/35network-legacy
 %{dracutlibdir}/modules.d/35network-manager
 %{dracutlibdir}/modules.d/35network-wicked
@@ -364,6 +364,7 @@ fi
 %{dracutlibdir}/modules.d/62bluetooth
 %{dracutlibdir}/modules.d/80cms
 %{dracutlibdir}/modules.d/80lvmmerge
+%{dracutlibdir}/modules.d/80lvmthinpool-monitor
 %{dracutlibdir}/modules.d/81cio_ignore
 %{dracutlibdir}/modules.d/90btrfs
 %{dracutlibdir}/modules.d/90crypt
@@ -408,6 +409,7 @@ fi
 %{dracutlibdir}/modules.d/95terminfo
 %{dracutlibdir}/modules.d/95udev-rules
 %{dracutlibdir}/modules.d/95virtfs
+%{dracutlibdir}/modules.d/95virtiofs
 %{dracutlibdir}/modules.d/95zfcp_rules
 %{dracutlibdir}/modules.d/97biosdevname
 %{dracutlibdir}/modules.d/98dracut-systemd

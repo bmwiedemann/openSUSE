@@ -2083,4 +2083,12 @@ and stuff that has no relevance to the end user (i.e CI related commits) (forwar
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1199051</comment>
   </revision>
+  <revision rev="192" vrev="1">
+    <srcmd5>9b46e85acd43150736af375e3493cb6d</srcmd5>
+    <version>057+suse.292.g508db4cd</version>
+    <time>1656053115</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984449</requestid>
+  </revision>
 </revisionlist>
