@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Thu Jun 23 09:16:55 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#113
+- Keep NVMe's namespace output consistency when
+  nvme_core.multipath=1 (bsc#1199948)
+- 21.82
+
+--------------------------------------------------------------------
 Wed Apr 13 07:20:43 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/hwinfo#112
