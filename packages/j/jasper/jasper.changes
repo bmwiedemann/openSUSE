@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 23 14:09:05 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.0.5:
+  * Fix a minor build issue (#328).
+
+-------------------------------------------------------------------
 Fri Jun  3 12:41:24 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.0.4:
