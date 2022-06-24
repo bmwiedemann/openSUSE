@@ -2020,4 +2020,18 @@ let build start it or we will get libvirt errors.
   * Fixed targeting bug, especially visible when using syndic and user auth. (CVE-2022-22941)</comment>
     <requestid>969843</requestid>
   </revision>
+  <revision rev="129" vrev="7">
+    <srcmd5>c21434ae5b37c6fef9d35d21e78bdd7b</srcmd5>
+    <version>3004</version>
+    <time>1656053104</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix PAM auth issue due missing check for PAM_ACCT_MGM return value (CVE-2022-22967) (bsc#1200566)
+- Added:
+  * fix-for-cve-2022-22967-bsc-1200566.patch
+
+- Make sure SaltCacheLoader use correct fileclient (bsc#1199149)
+- Added:
+  * make-sure-saltcacheloader-use-correct-fileclient-519.patch</comment>
+    <requestid>984677</requestid>
+  </revision>
 </revisionlist>

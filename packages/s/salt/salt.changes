@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun 16 09:52:06 UTC 2022 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix PAM auth issue due missing check for PAM_ACCT_MGM return value (CVE-2022-22967) (bsc#1200566)
+
+- Added:
+  * fix-for-cve-2022-22967-bsc-1200566.patch
+
+-------------------------------------------------------------------
+Thu May 19 11:00:15 UTC 2022 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Make sure SaltCacheLoader use correct fileclient (bsc#1199149)
+
+- Added:
+  * make-sure-saltcacheloader-use-correct-fileclient-519.patch
+
+-------------------------------------------------------------------
 Tue Apr 12 09:21:38 UTC 2022 - Victor Zhestkov <victor.zhestkov@suse.com>
 
 - Prevent data pollution between actions proceesed

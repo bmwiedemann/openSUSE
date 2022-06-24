@@ -304,6 +304,10 @@ Patch78:        prevent-affection-of-ssh.opts-with-lazyloader-bsc-11.patch
 
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/506
 Patch79:        fix-regression-with-depending-client.ssh-on-psutil-b.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61895
+Patch80:        make-sure-saltcacheloader-use-correct-fileclient-519.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/commit/e068a34ccb2e17ae7224f8016a24b727f726d4c8
+Patch81:        fix-for-cve-2022-22967-bsc-1200566.patch
 
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
