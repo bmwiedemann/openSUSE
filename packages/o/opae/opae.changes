@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 23 10:43:36 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add opae-disable-FORTIFY_SOURCE.patch to only use the FORTIFY_SOURCE from the RPM flags
+  and avoid any conflicts. Fixes a build issue with Tumbleweed.
+
+-------------------------------------------------------------------
 Fri Sep 10 08:45:59 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Add opae-fix-support-with-newer-spdlog.patch to fix compilation
