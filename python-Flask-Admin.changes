@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 24 04:28:31 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch redirect-location-assertions.patch:
+  * Remove hostname when checking location from redirects.
+- Add PyYAML and requre to BuildRequires.
+
+-------------------------------------------------------------------
 Sat Feb 19 19:09:29 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:

@@ -25,16 +25,19 @@ Summary:        Extensible admin interface framework for Flask
 License:        BSD-3-Clause
 URL:            https://github.com/flask-admin/flask-admin/
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Admin/Flask-Admin-%{version}.tar.gz
+Patch0:         redirect-location-assertions.patch
 BuildRequires:  %{python_module Flask >= 0.7}
 BuildRequires:  %{python_module Flask-BabelEx}
 BuildRequires:  %{python_module Flask-SQLAlchemy}
 BuildRequires:  %{python_module Pillow >= 3.3.2}
+BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module SQLAlchemy-Utils}
 BuildRequires:  %{python_module WTForms}
 BuildRequires:  %{python_module arrow}
 BuildRequires:  %{python_module colour}
 BuildRequires:  %{python_module peewee}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requre}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -52,7 +55,7 @@ developer has more control over the look, feel and functionality of
 the resulting application.
 
 %prep
-%setup -q -n Flask-Admin-%{version}
+%autosetup -p1 -n Flask-Admin-%{version}
 
 # remove contrib tests that pull in too many dependencies
 rm -rf flask_admin/tests/geoa
