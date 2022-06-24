@@ -38,7 +38,6 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-xml
 Requires:       docbook-xsl-stylesheets
 Requires:       python3-xml
-Recommends:     %{name}-latex-backend
 # a2x needs /usr/bin/xsltproc
 Recommends:     libxslt
 BuildArch:      noarch
@@ -61,6 +60,7 @@ This package contains examples and documents of asciidoc.
 Summary:        Provide latex backend dependencies
 Requires:       %{name} = %{version}
 Requires:       dblatex
+Supplements:    (%{name} and dblatex)
 # some of them are actually required by dblatex, but it's easier to keep them all in here
 Requires:       texlive-metafont-bin
 Requires:       tex(8r.enc)
