@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 22 16:13:18 UTC 2022 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- apply patches adressing:
+  * Linux-5.17 and 5.18, gcc-11 and 12: fix_gcc_12_linux_5.18.diff
+- remove patches from previous commit:
+  * a714e86.diff and 449d1fa.diff
+  * gcc-11.diff
+
+-------------------------------------------------------------------
 Wed Apr 20 06:24:41 UTC 2022 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
 
 - apply patches marked for upcoming release:

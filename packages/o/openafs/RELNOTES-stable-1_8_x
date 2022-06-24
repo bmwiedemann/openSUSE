@@ -1,0 +1,15 @@
+                       User-Visible OpenAFS Changes
+
+OpenAFS 1.8.8.2~rc1
+
+  Linux clients
+
+    * Support mainline kernels 5.17 and likely 5.18
+    * Support for gcc-12, clang-14
+
+  Maybe others
+
+This is an intermediate package based on the git-branch
+stable-1_8_x with additional patches
+to fill the need of supporting Linux-5.18
+
