@@ -22,7 +22,7 @@
 %define with_libostree 1
 %endif
 Name:           podman
-Version:        4.0.3
+Version:        4.1.1
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -32,11 +32,6 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        podman.conf
 Source3:        %{name}-rpmlintrc
 Source4:        README.SUSE.SLES
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Relabel-relabel-links-instead-of-their-targets.patch
-Patch2:         0002-specgen-do-not-set-OOMScoreAdj-by-default.patch
-Patch3:         0001-Adjust-buildah-to-opencontainers-selinux-v1.10.1.patch
-Patch4:         0004-fix-Container.cGroupPath-skip-empty-line-to-avoid-fa.patch
 BuildRequires:  bash-completion
 BuildRequires:  cni
 BuildRequires:  device-mapper-devel
