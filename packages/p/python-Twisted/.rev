@@ -1429,4 +1429,12 @@
     <comment>Synchronize changelog with the SLE package.</comment>
     <requestid>981084</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>d1a84007dfa77b2b722dccb27e8344e5</srcmd5>
+    <version>22.4.0</version>
+    <time>1656053113</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984316</requestid>
+  </revision>
 </revisionlist>
