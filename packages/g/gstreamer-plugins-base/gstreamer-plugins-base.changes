@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jun 22 10:24:56 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to version 1.20.3:
+  + typefindfunctions: Fix WebVTT format detection for very short 
+    files
+  + gldisplay: Reorder GST_GL_WINDOW check for egl-device
+  + rtpbasepayload: Copy all buffer metadata instead of just 
+    GstMetas for the input meta buffer
+  + codec-utils: Avoid out-of-bounds error
+  + navigation: Fix Since markers for mouse scroll events
+  + videoaggregator: Fix for unhandled negative rate
+  + videoaggregator: Use floor() to calculate current position
+  + video-color: Fix for missing clipping in PQ EOTF function
+  + gst-play-1.0: Fix trick-mode handling in keyboard shortcut
+  + audiovisualizer: shader: Fix out of bound write
+
+-------------------------------------------------------------------
 Mon May  9 10:55:50 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.20.2:
