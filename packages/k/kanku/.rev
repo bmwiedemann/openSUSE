@@ -142,4 +142,12 @@
   * added changelog to kanku-common and kanku-cli</comment>
     <requestid>984400</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f95f77c0c3231ac8d5574330c878e30a</srcmd5>
+    <version>0.12.7</version>
+    <time>1656053153</time>
+    <user>dimstar_suse</user>
+    <comment>update to 0.12.7</comment>
+    <requestid>984748</requestid>
+  </revision>
 </revisionlist>
