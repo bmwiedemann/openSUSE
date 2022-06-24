@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Jun 22 10:18:08 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to version 1.20.3:
+  + GstPlay: Fix new error + warning parsing API (was unusuable
+    before)
+  + av1parse: let the parser continue on verbose OBUs
+  + d3d11converter: Fix RGB to GRAY conversion, broken debug
+    messages, and add missing GRAY conversion
+  + gs: look for google_cloud_cpp_storage.pc
+  + ipcpipeline: fix crash and error on windows with SOCKET or
+    _pipe()
+  + ivfparse: Don't set zero resolution on caps
+  + mpegtsdemux: Handle PES headers bigger than a mpeg-ts packet;
+    fix locking in error code path; handle more program updates
+  + mpegtsmux: Start last_ts with GST_CLOCK_TIME_NONE to fix VBR
+    muxing behaviour
+  + mpegtsmux: Thread safety fixes: lock mux->tsmux, the programs 
+    hash table, and pad streams
+  + mpegtsmux: Skip empty buffers
+  + osxaudiodeviceprovider: Add initial support for duplex devices
+    on OSX
+  + rtpldacpay: Fix missing payload information
+  + sdpdemux: add media attributes to caps, fixes ptp clock
+    handling
+  + mfaudioenc: Handle empty IMFMediaBuffer
+  + nvdecoder: Various fixes for 4:4:4 and high-bitdepth decoding
+  + nvenc: Fix deadlock because of too strict buffer pool size
+  + va: fix library build issues, caps leaks in the vpp transform 
+    function, and add vaav1dec to documentation
+  + v4l2codecs: vp9: Minor fixes
+  + v4l2codecs: h264: Correct scaling matrix ABI check
+  + dtlstransport: Notify ICE transport property changes
+  + webrtc: Various fixes to the webrtc-sendrecv python example
+  + webrtc-ice: Fix memory leaks in gst_webrtc_ice_add_candidate()
+  + Support build against libfreeaptx in openaptx plugin
+  + Fix linking issues on Illumos distros
+
+-------------------------------------------------------------------
 Sun Jun  5 20:46:25 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - removed libkms BuildRequires, since it has been dropped from
