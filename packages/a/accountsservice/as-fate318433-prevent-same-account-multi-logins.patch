@@ -1,36 +1,7 @@
-Index: b/src/libaccountsservice/act-user-manager.c
-===================================================================
---- a/src/libaccountsservice/act-user-manager.c	2019-09-11 17:40:53.726949739 +0800
-+++ b/src/libaccountsservice/act-user-manager.c	2019-09-11 17:41:00.547007450 +0800
-@@ -1752,12 +1752,22 @@ maybe_add_new_session (ActUserManagerNew
-         if (new_session->x11_display == NULL) {
-                 g_debug ("AcUserManager: (mostly) ignoring session '%s' since it's not graphical",
-                          new_session->id);
--                is_ours = FALSE;
-+                /* SLE: ignore non-graphical session completely */
-+                /* see `act_user_is_logged_in_anywhere` */
-+                unload_new_session (new_session);
-+                return;
-         } else if (session_is_login_window (manager, new_session->id)) {
-                 new_session->state = ACT_USER_MANAGER_NEW_SESSION_STATE_LOADED;
-                 unload_new_session (new_session);
-                 return;
-         } else if (!session_is_on_our_seat (manager, new_session->id)) {
-+                /**
-+                 * NOTE: if `manager->priv->seat.id` or `new_session->id` is
-+                 * either NULL, it's not on our seat: this is reasonable, as
-+                 * non-seat session is not switchable and thus no need to be
-+                 * ours. However, this nondiscrimination for all non-seated
-+                 * sessions is possibly a source for bugs.
-+                 */
-                 is_ours = FALSE;
-         }
- 
-Index: b/src/libaccountsservice/act-user.c
-===================================================================
---- a/src/libaccountsservice/act-user.c	2019-09-11 17:40:53.726949739 +0800
-+++ b/src/libaccountsservice/act-user.c	2019-09-11 17:41:00.547007450 +0800
-@@ -868,6 +868,8 @@ act_user_is_logged_in (ActUser *user)
+diff -Nur accountsservice-22.08.8/src/libaccountsservice/act-user.c new/src/libaccountsservice/act-user.c
+--- accountsservice-22.08.8/src/libaccountsservice/act-user.c	2022-02-23 16:27:48.000000000 +0100
++++ new/src/libaccountsservice/act-user.c	2022-04-30 22:34:42.160346848 +0200
+@@ -878,6 +878,8 @@
   * (Currently, this function is only implemented for systemd-logind.
   * For ConsoleKit, it is equivalent to act_user_is_logged_in.)
   *
@@ -39,7 +10,7 @@ Index: b/src/libaccountsservice/act-user.c
   * Returns: %TRUE or %FALSE
   */
  gboolean
-@@ -896,6 +898,24 @@ act_user_get_saved (ActUser *user)
+@@ -906,6 +908,24 @@
  }
  
  /**
@@ -64,11 +35,10 @@ Index: b/src/libaccountsservice/act-user.c
   * act_user_get_locked:
   * @user: a #ActUser
   *
-Index: b/src/libaccountsservice/act-user.h
-===================================================================
---- a/src/libaccountsservice/act-user.h	2019-09-11 17:40:53.726949739 +0800
-+++ b/src/libaccountsservice/act-user.h	2019-09-11 17:41:00.547007450 +0800
-@@ -67,6 +67,7 @@ guint          act_user_get_num_sessions
+diff -Nur accountsservice-22.08.8/src/libaccountsservice/act-user.h new/src/libaccountsservice/act-user.h
+--- accountsservice-22.08.8/src/libaccountsservice/act-user.h	2022-02-23 16:27:48.000000000 +0100
++++ new/src/libaccountsservice/act-user.h	2022-04-30 22:34:42.164346848 +0200
+@@ -61,6 +61,7 @@
  guint          act_user_get_num_sessions_anywhere (ActUser   *user);
  gboolean       act_user_is_logged_in              (ActUser   *user);
  gboolean       act_user_is_logged_in_anywhere     (ActUser   *user);
@@ -76,3 +46,30 @@ Index: b/src/libaccountsservice/act-user.h
  int            act_user_get_login_frequency       (ActUser   *user);
  gint64         act_user_get_login_time            (ActUser   *user);
  const GVariant*act_user_get_login_history         (ActUser   *user);
+diff -Nur accountsservice-22.08.8/src/libaccountsservice/act-user-manager.c new/src/libaccountsservice/act-user-manager.c
+--- accountsservice-22.08.8/src/libaccountsservice/act-user-manager.c	2022-02-23 16:27:48.000000000 +0100
++++ new/src/libaccountsservice/act-user-manager.c	2022-04-30 22:34:42.160346848 +0200
+@@ -1366,12 +1366,22 @@
+         if (new_session->x11_display == NULL) {
+                 g_debug ("AcUserManager: (mostly) ignoring session '%s' since it's not graphical",
+                          new_session->id);
+-                is_ours = FALSE;
++                /* SLE: ignore non-graphical session completely */
++                /* see `act_user_is_logged_in_anywhere` */
++                unload_new_session (new_session);
++                return;
+         } else if (session_is_login_window (manager, new_session->id)) {
+                 new_session->state = ACT_USER_MANAGER_NEW_SESSION_STATE_LOADED;
+                 unload_new_session (new_session);
+                 return;
+         } else if (!session_is_on_our_seat (manager, new_session->id)) {
++                /**
++                 * NOTE: if `manager->priv->seat.id` or `new_session->id` is
++                 * either NULL, it's not on our seat: this is reasonable, as
++                 * non-seat session is not switchable and thus no need to be
++                 * ours. However, this nondiscrimination for all non-seated
++                 * sessions is possibly a source for bugs.
++                 */
+                 is_ours = FALSE;
+         }
+ 

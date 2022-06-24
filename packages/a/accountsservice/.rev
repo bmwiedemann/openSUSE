@@ -1110,4 +1110,12 @@ By now, it's required for sle-15, so synchronized the updated specfile and chang
     <user>dimstar_suse</user>
     <comment>Revert to 0.6.65 - https://bugzilla.opensuse.org/show_bug.cgi?id=1197610</comment>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>4f79edda24c8ecf1f0ee50f11499deb9</srcmd5>
+    <version>22.08.8</version>
+    <time>1656053105</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Factory</comment>
+    <requestid>984690</requestid>
+  </revision>
 </revisionlist>
