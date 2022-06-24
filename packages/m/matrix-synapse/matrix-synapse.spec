@@ -16,6 +16,102 @@
 #
 
 
+%bcond_without use_poetry_for_dependencies
+
+# NOTE: Keep this is in the same order as pyproject.toml.
+%if %{with use_poetry_for_dependencies}
+%global Jinja2_version                3.0.3
+%global Pillow_version                9.0.1
+%global PyYAML_version                6.0
+%global Twisted_version               22.4.0
+%global attrs_version                 21.4.0
+%global bcrypt_version                3.2.0
+%global bleach_version                3.3.0
+%global canonicaljson_version         1.6.0
+%global cryptography_version          36.0.1
+%global frozendict_version            2.3.0
+%global idna_version                  3.3
+%global ijson_version                 3.1.4
+%global jsonschema_version            4.4.6
+%global matrix_common_version         1.1.0
+%global msgpack_version               1.0.3
+%global netaddr_version               0.8.0
+%global phonenumbers_version          8.12.44
+%global prometheus_client_version     0.14.0
+%global psutil_version                2.0.0
+%global pyOpenSSL_version             22.0.0
+%global pyasn1_version                0.4.8
+%global pyasn1_modules_version        0.2.8
+%global pymacaroons_version           0.13.0
+%global service_identity_version      21.1.0
+%global signedjson_version            1.1.4
+%global six_version                   1.16.0
+%global sortedcontainers_version      2.4.0
+%global systemd_version               234
+%global typing_extensions_version     4.1.1
+%global treq_version                  22.2.0
+%global unpaddedbase64_version        2.1.0
+%global matrix_synapse_ldap3_version  0.2.0
+%global packaging_version             21.3
+%global psycopg2_version              2.9.3
+%global pysaml2_version               7.1.2
+%global Authlib_version               0.15.5
+%global lxml_version                  4.8.0
+%global sentry_sdk_version            1.5.11
+%global PyJWT_version                 2.4.0
+%global jaeger_client_version         4.8.0
+%global opentracing_version           2.4.0
+%global hiredis_version               2.0.0
+%global txredisapi_version            1.4.7
+%global Pympler_version               1.0.1
+%else
+# some version locks based on poetry.lock
+%global Jinja2_version                3.0
+%global Pillow_version                5.4.0
+%global PyYAML_version                3.11
+%global Twisted_version               18.9.0
+%global attrs_version                 21.1.1
+%global bcrypt_version                3.1.0
+%global bleach_version                1.4.3
+%global canonicaljson_version         1.4.0
+%global cryptography_version          3.4.7
+%global frozendict_version            2.1.3
+%global idna_version                  2.5
+%global ijson_version                 3.1.4
+%global jsonschema_version            3.0.0
+%global matrix_common_version         1.1.0
+%global msgpack_version               0.5.2
+%global netaddr_version               0.7.18
+%global phonenumbers_version          8.2.0
+%global prometheus_client_version     0.4.0
+%global psutil_version                2.0.0
+%global pyOpenSSL_version             16.0.0
+%global pyasn1_version                0.1.9
+%global pyasn1_modules_version        0.0.7
+%global pymacaroons_version           0.13.0
+%global service_identity_version      18.1.0
+%global signedjson_version            1.1.0
+%global six_version                   1.16.0
+%global sortedcontainers_version      1.4.4
+%global systemd_version               231
+%global typing_extensions_version     3.10.0
+%global treq_version                  15.1
+%global unpaddedbase64_version        2.1.0
+%global matrix_synapse_ldap3_version  0.1.0
+%global packaging_version             16.1
+%global psycopg2_version              2.8
+%global pysaml2_version               4.5.0
+%global Authlib_version               0.14.0
+%global lxml_version                  4.8.0
+%global sentry_sdk_version            1.5.11
+%global PyJWT_version                 1.6.4
+%global jaeger_client_version         4.0.0
+%global opentracing_version           2.2.0
+%global hiredis_version               2.0.0
+%global txredisapi_version            1.4.7
+%global Pympler_version               1.0.1
+%endif
+
 %define requires_peq() %(echo '%*' | LC_ALL=C xargs -r rpm -q --whatprovides --qf 'Requires: %%{name} = %%{epoch}:%%{version}\\n' | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
 %define pythons python3
 
@@ -51,7 +147,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.60.0
+Version:        1.61.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -86,108 +182,107 @@ BuildRequires:  unzip
 %{?systemd_ordering}
 %{sysusers_requires}
 %requires_peq   %{use_python}-base
-# NOTE: Keep this is in the same order as synapse/python_dependencies.py.
-BuildRequires:  %{use_python}-Jinja2 >= 3.0
+# NOTE: Keep this is in the same order as pyproject.toml.
+# some version locks based on poetry.lock
+BuildRequires:  %{use_python}-Jinja2 >= %{Jinja2_version}
 %requires_peq   %{use_python}-Jinja2
-BuildRequires:  %{use_python}-Pillow >= 5.4.0
+BuildRequires:  %{use_python}-Pillow >= %{Pillow_version}
 %requires_peq   %{use_python}-Pillow
-BuildRequires:  %{use_python}-PyNaCl >= 1.2.1
-%requires_peq   %{use_python}-PyNaCl
-BuildRequires:  %{use_python}-PyYAML >= 3.11
+BuildRequires:  %{use_python}-PyYAML >= %{PyYAML_version}
 %requires_peq   %{use_python}-PyYAML
-BuildRequires:  %{use_python}-Twisted >= 20.3.0
+BuildRequires:  %{use_python}-Twisted >= %{Twisted_version}
 %requires_peq   %{use_python}-Twisted
-BuildRequires:  %{use_python}-attrs > 21.1.0
+BuildRequires:  %{use_python}-attrs >= %{attrs_version}
 %requires_peq   %{use_python}-attrs
-BuildRequires:  %{use_python}-bcrypt >= 3.2.0
+BuildRequires:  %{use_python}-bcrypt >= %{bcrypt_version}
 %requires_peq   %{use_python}-bcrypt
-BuildRequires:  %{use_python}-bleach >= 1.4.3
+BuildRequires:  %{use_python}-bleach >= %{bleach_version}
 %requires_peq   %{use_python}-bleach
-BuildRequires:  %{use_python}-canonicaljson >= 1.4.0
+BuildRequires:  %{use_python}-canonicaljson >= %{canonicaljson_version}
 %requires_peq   %{use_python}-canonicaljson
-BuildRequires:  %{use_python}-cryptography >= 3.4.7
+BuildRequires:  %{use_python}-cryptography >= %{cryptography_version}
 %requires_peq   %{use_python}-cryptography
-BuildRequires:  %{use_python}-frozendict >= 2.1.3
+BuildRequires:  %{use_python}-frozendict >= %{frozendict_version}
 %requires_peq   %{use_python}-frozendict
-BuildRequires:  %{use_python}-idna >= 2.5
+BuildRequires:  %{use_python}-idna >= %{idna_version}
 %requires_peq   %{use_python}-idna
-BuildRequires:  %{use_python}-ijson >= 3.1.4
+BuildRequires:  %{use_python}-ijson >= %{ijson_version}
 %requires_peq   %{use_python}-ijson
-BuildRequires:  %{use_python}-jsonschema >= 3.0.0
+BuildRequires:  %{use_python}-jsonschema >= %{jsonschema_version}
 %requires_peq   %{use_python}-jsonschema
-BuildRequires:  %{use_python}-matrix_common >= 1.1.0
+BuildRequires:  %{use_python}-matrix_common >= %{matrix_common_version}
 %requires_peq   %{use_python}-matrix_common
-BuildRequires:  %{use_python}-msgpack >= 0.5.2
+BuildRequires:  %{use_python}-msgpack >= %{msgpack_version}
 %requires_peq   %{use_python}-msgpack
-BuildRequires:  %{use_python}-netaddr >= 0.7.18
+BuildRequires:  %{use_python}-netaddr >= %{netaddr_version}
 %requires_peq   %{use_python}-netaddr
-BuildRequires:  %{use_python}-phonenumbers >= 8.2.0
+BuildRequires:  %{use_python}-phonenumbers >= %{phonenumbers_version}
 %requires_peq   %{use_python}-phonenumbers
-BuildRequires:  %{use_python}-prometheus_client >= 0.13.1
+BuildRequires:  %{use_python}-prometheus_client >= %{prometheus_client_version}
 %requires_peq   %{use_python}-prometheus_client
-BuildRequires:  %{use_python}-psutil >= 2.0.0
+BuildRequires:  %{use_python}-psutil >= %{psutil_version}
 %requires_peq   %{use_python}-psutil
-BuildRequires:  %{use_python}-pyOpenSSL >= 16.0.0
+BuildRequires:  %{use_python}-pyOpenSSL >= %{pyOpenSSL_version}
 %requires_peq   %{use_python}-pyOpenSSL
-BuildRequires:  %{use_python}-pyasn1 >= 0.1.9
+BuildRequires:  %{use_python}-pyasn1 >= %{pyasn1_version}
 %requires_peq   %{use_python}-pyasn1
-BuildRequires:  %{use_python}-pyasn1-modules >= 0.0.7
+BuildRequires:  %{use_python}-pyasn1-modules >= %{pyasn1_modules_version}
 %requires_peq   %{use_python}-pyasn1-modules
-BuildRequires:  %{use_python}-pymacaroons >= 0.13.0
+BuildRequires:  %{use_python}-pymacaroons >= %{pymacaroons_version}
 %requires_peq   %{use_python}-pymacaroons
-BuildRequires:  %{use_python}-service_identity >= 18.1.0
+BuildRequires:  %{use_python}-service_identity >= %{service_identity_version}
 %requires_peq   %{use_python}-service_identity
-BuildRequires:  %{use_python}-signedjson >= 1.1.0
+BuildRequires:  %{use_python}-signedjson >= %{signedjson_version}
 %requires_peq   %{use_python}-signedjson
-BuildRequires:  %{use_python}-six >= 1.10
+BuildRequires:  %{use_python}-six >= %{six_version}
 %requires_peq   %{use_python}-six
-BuildRequires:  %{use_python}-sortedcontainers >= 1.4.4
+BuildRequires:  %{use_python}-sortedcontainers >= %{sortedcontainers_version}
 %requires_peq   %{use_python}-sortedcontainers
-BuildRequires:  %{use_python}-systemd  >= 231
+BuildRequires:  %{use_python}-systemd  >= %{systemd_version}
 %requires_peq   %{use_python}-systemd
-BuildRequires:  %{use_python}-typing_extensions >= 3.10.0.1
+BuildRequires:  %{use_python}-typing_extensions >= %{typing_extensions_version}
 %requires_peq   %{use_python}-typing_extensions
-BuildRequires:  %{use_python}-treq >= 15.1
+BuildRequires:  %{use_python}-treq >= %{treq_version}
 %requires_peq   %{use_python}-treq
-BuildRequires:  %{use_python}-unpaddedbase64 >= 1.1.0
+BuildRequires:  %{use_python}-unpaddedbase64 >= %{unpaddedbase64_version}
 %requires_peq   %{use_python}-unpaddedbase64
 # Specify all CONDITIONAL_REQUIREMENTS (we Require them to avoid no-recommends
 # breaking very commonly-used bits of matrix-synapse such as postgresql).
 %if %{with synapse_ldap}
-BuildRequires:  %{use_python}-matrix-synapse-ldap3 >= 0.1
+BuildRequires:  %{use_python}-matrix-synapse-ldap3 >= %{matrix_synapse_ldap3_version}
 %requires_peq   %{use_python}-matrix-synapse-ldap3
 %endif
-BuildRequires:  %{use_python}-packaging >= 16.1
+BuildRequires:  %{use_python}-packaging >= %{packaging_version}
 %requires_peq   %{use_python}-packaging
-BuildRequires:  %{use_python}-psycopg2 >= 2.8
+BuildRequires:  %{use_python}-psycopg2 >= %{psycopg2_version}
 %requires_peq   %{use_python}-psycopg2
-BuildRequires:  %{use_python}-pysaml2 >= 4.5.0
+BuildRequires:  %{use_python}-pysaml2 >= %{pysaml2_version}
 %requires_peq   %{use_python}-pysaml2
 %if %{with synapse_oidc}
-BuildRequires:  %{use_python}-Authlib >= 0.15.1
+BuildRequires:  %{use_python}-Authlib >= %{Authlib_version}
 %requires_peq   %{use_python}-Authlib
 %endif
-BuildRequires:  %{use_python}-lxml >= 4.2.0
+BuildRequires:  %{use_python}-lxml >= %{lxml_version}
 %requires_peq   %{use_python}-lxml
 %if %{with synapse_sentry}
-BuildRequires:  %{use_python}-sentry-sdk >= 0.7.2
+BuildRequires:  %{use_python}-sentry-sdk >= %{sentry_sdk_version}
 %requires_peq   %{use_python}-sentry-sdk
 %endif
-BuildRequires:  %{use_python}-PyJWT >= 1.6.4
+BuildRequires:  %{use_python}-PyJWT >= %{PyJWT_version}
 %requires_peq   %{use_python}-PyJWT
 %if %{with synapse_opentracing}
-BuildRequires:  %{use_python}-jaeger-client >= 4.0.0
+BuildRequires:  %{use_python}-jaeger-client >= %{jaeger_client_version}
 %requires_peq   %{use_python}-jaeger-client
-BuildRequires:  %{use_python}-opentracing   >= 2.2.0
+BuildRequires:  %{use_python}-opentracing   >= %{opentracing_version}
 %requires_peq   %{use_python}-opentracing
 %endif
 %if %{with synapse_redis}
-BuildRequires:  %{use_python}-hiredis >= 1.0.1
+BuildRequires:  %{use_python}-hiredis >= %{hiredis_version}
 %requires_peq   %{use_python}-hiredis
-BuildRequires:  %{use_python}-txredisapi >= 1.4.7
+BuildRequires:  %{use_python}-txredisapi >= %{txredisapi_version}
 %requires_peq   %{use_python}-txredisapi
 %endif
-BuildRequires:  %{use_python}-Pympler >= 0.8
+BuildRequires:  %{use_python}-Pympler >= %{Pympler_version}
 %requires_peq   %{use_python}-Pympler
 BuildArch:      noarch
 # We only provide/obsolete python2 to ensure that users upgrade.
