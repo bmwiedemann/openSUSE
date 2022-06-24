@@ -10,7 +10,7 @@
       <containerconfig
         name="kubic/pause"
         tag="latest"
-        additionaltags="%PKG_VERSION%,%PKG_VERSION%.%RELEASE%,3.4.1,3.5,3.6"
+        additionaltags="%PKG_VERSION%,%PKG_VERSION%.%RELEASE%,3.4.1,3.5,3.6,3.7,3.8"
         maintainer="Fabian Vogt &lt;fvogt@suse.com&gt;">
         <entrypoint execute="/usr/bin/pause"/>
         <labels>
