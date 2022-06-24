@@ -40,4 +40,18 @@
 - Install license file</comment>
     <requestid>745400</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>376f55a730aa033bdc54a226b207ca1b</srcmd5>
+    <version>0.11.0</version>
+    <time>1656053109</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.0:
+  * Added Cycler.by_key, which produces values by key (#26)
+  * Added Cycler.__contains__, which adds support for in checks (#34)
+  * Wheels now includes the LICENSE file (#48)
+  * The sdist now includes the LICENSE (#58) and tests (#32)
+  * Cycler no longer supports Python 2. Supported versions of Python are 3.6 and above.
+- enable tests</comment>
+    <requestid>984245</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 21 19:51:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.0:
+  * Added Cycler.by_key, which produces values by key (#26)
+  * Added Cycler.__contains__, which adds support for in checks (#34)
+  * Wheels now includes the LICENSE file (#48)
+  * The sdist now includes the LICENSE (#58) and tests (#32)
+  * Cycler no longer supports Python 2. Supported versions of Python are 3.6 and above.
+- enable tests
+
+-------------------------------------------------------------------
 Tue Nov  5 09:50:26 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Format with spec-cleaner
