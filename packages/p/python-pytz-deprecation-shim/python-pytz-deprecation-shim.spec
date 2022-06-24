@@ -16,7 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+# Upstream also supports shimming python2.7, but we assume Python >= 3.6 here (if 15.3 were resolvable for the python3 flavor)
+%global skip_python2 1
 %define modname pytz-deprecation-shim
 Name:           python-%{modname}
 Version:        0.1.0.post0
@@ -36,6 +38,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if 0%{?python_version_nodots} < 39
+Requires:       python-backports.zoneinfo
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -57,6 +62,8 @@ pytz.
 
 %prep
 %setup -q -n pytz_deprecation_shim-%{version}
+# assume that we have tzdata from the system and never need the PyPI package
+sed -i '/tzdata/ d' setup.cfg
 
 %build
 %pyproject_wheel

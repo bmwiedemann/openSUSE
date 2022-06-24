@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 21 21:35:54 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Remove tzdata from the dist metadata, as we neither have nor need
+  it.
+- Follow the rest of the metadata, assuming Py >= 3.6 in order to
+  avoid import errors on consuming libs.
+
+-------------------------------------------------------------------
+Sun Jun 19 07:49:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- skip python2 build 
+
+-------------------------------------------------------------------
 Wed Feb 23 14:22:19 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Clean up the SPEC file to actually work.
