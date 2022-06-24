@@ -23,4 +23,33 @@
   * Replace stray Imath:: with IMATH_INTERNAL_NAMESPACE::</comment>
     <requestid>940214</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3c0ecebd42e13c07258b397aeda8dec8</srcmd5>
+    <version>3.1.5</version>
+    <time>1656053114</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.5:
+  * Update CI workflow matrix for VFX-CY2022
+  * Use _WIN32 instead of _MSC_VER to fix mingw build
+  * Fix 32-bit x86 build failure with 16c instructions
+  * Move numeric_limits specializations into half.h
+  * Change references to &quot;master&quot; branch to &quot;main&quot;
+  * Remove some simple typos in the code
+  * Added missing check _M_IX86 or _M_X64 when using __lzcnt.
+  * SolveNormalizedCubic fix to return proper real root
+  * Add docs target only if not a subproject
+  * Fix docs race condition and make installation optional
+  * Remove dead PyImath code and references to ilmbase
+  * Use equalWithAbsError instead of equal operator for float
+  * Fix sphinx warnings and man page filenames
+  * Adding missing stdexcept header
+  * for better SIMD auto-vectorization
+  * Remove extra project layer for the pyimath code
+  * Successor/predecessor functions use isnan() and isinf()
+  * Fix python imath export
+  * Cuda safety fixes
+  * Sort Imath source files
+  * Fix formatting in release notes (forwarded request 984250 from dirkmueller)</comment>
+    <requestid>984410</requestid>
+  </revision>
 </revisionlist>
