@@ -1,8 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 23 06:20:27 UTC 2022 - christophe@krop.fr
+
+- Update to version 2.9.75git.20220614T014846~dc55a00143:
+  * Mark Amarok as a single main window program
+- Update translations
+- Rebase flac_mimetype_bnc671581.diff
+
+-------------------------------------------------------------------
 Thu Feb 24 10:54:21 UTC 2022 - christophe@krop.fr
 
 - Update to version 2.9.75git.20220224T114455~9300034c57:
-  * Add DBus service file to actually make it activatable
+  * Add DBus service file to actually make it activatable (boo#1200767)
   * No need to link to KF5::KIONTLM
 
 -------------------------------------------------------------------

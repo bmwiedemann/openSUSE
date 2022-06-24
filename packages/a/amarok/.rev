@@ -1183,4 +1183,17 @@ https://git.reviewboard.kde.org/r/104878/ (forwarded request 116659 from StefanB
   * No need to link to KF5::KIONTLM</comment>
     <requestid>957325</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>97bda624fa591b3c232fabf63bec916a</srcmd5>
+    <version>2.9.75git.20220614T014846~dc55a00143</version>
+    <time>1656053102</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.9.75git.20220614T014846~dc55a00143:
+  * Mark Amarok as a single main window program
+- Update translations
+- Rebase flac_mimetype_bnc671581.diff
+
+  * Add DBus service file to actually make it activatable (boo#1200767)</comment>
+    <requestid>984663</requestid>
+  </revision>
 </revisionlist>
