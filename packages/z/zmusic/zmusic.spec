@@ -1,7 +1,7 @@
 #
 # spec file for package zmusic
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           zmusic
-Version:        1.1.8
+Version:        1.1.9
 Release:        0
 Summary:        ZDoom component library for music handling
 License:        GPL-3.0-only

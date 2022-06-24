@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jun 23 21:46:14 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.9
+  * Improve ALSA MIDI backend: No longer exclude builtin MIDI
+    passthrough ports
+  * Add handling for KeyPress events and avoid calling
+    snd_seq_sync_output_queue twice
+  * Add a 32-bit float sample type
+  * Add a new ZMusic_GetStreamInfoEx function
+  * Implement ZMusic_GetStreamInfo using GetStreamInfoEx
+  * Better handle various formats in SndFileSong
+  * Handle non-int16 samples in dumb_decode_vorbis
+  * Add missing GetStreamInfoEx for CDSong
+  * Fixes for gus and wildmidi emulation - fixed gus emulation
+    not working with DMXGUS and DMXGUSC lump
+
+-------------------------------------------------------------------
 Sat May 29 10:28:30 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to release 1.1.8
