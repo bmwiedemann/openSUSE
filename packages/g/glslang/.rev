@@ -278,4 +278,12 @@
     <comment>- Update to release 11.9.0</comment>
     <requestid>970694</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>8540c508c5f781a96b7104b769a3bd08</srcmd5>
+    <version>11.10.0</version>
+    <time>1656053095</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>984587</requestid>
+  </revision>
 </revisionlist>

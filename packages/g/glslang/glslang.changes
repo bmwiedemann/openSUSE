@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 15 17:12:04 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.10.0
+  * Generate OpLine before OpFunction
+  * Add support for VK_EXT_fragment_shader_barycentric
+  * Add whitelist filtering for debug comments in SPIRV-Remap
+  * Add support for GL_EXT_ray_cull_mask
+
+-------------------------------------------------------------------
 Mon Apr 18 23:15:08 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.9.0
