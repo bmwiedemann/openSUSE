@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Jun 24 04:52:12 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 22.06
+  Added features:
+  * MXF: FFV1 support
+  * Dolby Vision: add info about more profiles
+  * AAC: check of missing ID_END and incoherent count of channels
+  * NSV: better handling of buggy StarDiva agenda negative
+    timestamps
+  * Text: Show text frame rate
+  * Text: frame rate precise numerator/denominator also for text
+    streams
+  * CDP: readout of display aspect ratio
+  * MPEG-4/MOV: support of time codes >30 fps
+  * TTML: Support of more timeExpression flavors
+  Fixed bugs:
+  * ADM: correctly map Dolby binaural render mode to track UID
+  * Dolby Audio Metadata: first frame of action in HH:MM:SS:FF
+    format
+  * Dolby Vision: profiles and levels in decimal rather than in
+    hexadecimal
+  * MXF: fix of Dolby Vision Metadata not displayed if HDR10
+    metadata is present
+  * MPEG-4/MOV: avoid buggy frame rates by taking frame rate
+    from stts atom
+  * CDP: better catching of wrong line21_field value
+  * NSV: better handling of invalid frames
+  * MXF: Include frame count in SDTI and SystemScheme1 time
+    codes to time stamp conversion
+  * TTML: do not show frame rate if it is from MediaInfo options
+  * DV: timecode trace in HH:MM:SS:FF format
+
+-------------------------------------------------------------------
 Thu Mar 31 14:15:50 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 22.03
