@@ -16,9 +16,9 @@
 #
 
 
-%define uver	3_10_2
+%define uver	3_10_3
 Name:           geos
-Version:        3.10.2
+Version:        3.10.3
 Release:        0
 Summary:        Geometry Engine - Open Source
 License:        LGPL-2.1-only
@@ -39,6 +39,8 @@ functions such as IsValid().
 %package -n libgeos%{uver}
 Summary:        Geometry Engine library
 Group:          System/Libraries
+# Old version was not conforming to SLPP
+Conflicts:      geos <= 3.5.0
 
 %description -n libgeos%{uver}
 GEOS (Geometry Engine - Open Source) is a C++ port of the Java Topology
@@ -50,8 +52,7 @@ functions such as IsValid().
 %package -n libgeos_c1
 Summary:        C language interface for the GEOS library
 Group:          System/Libraries
-Provides:       geos = %{version}-%{release}
-Obsoletes:      geos < %{version}-%{release}
+Conflicts:      geos <= 3.5.0
 
 %description -n libgeos_c1
 This subpackage contains a shared library providing a C linkage
@@ -60,9 +61,9 @@ interface for the (C++) GEOS library.
 %package devel
 Summary:        Development files for GEOS
 Group:          Development/Libraries/C and C++
-Requires:       libgeos%{uver} = %{version}
-Requires:       libgeos_c1 = %{version}
-Provides:       lib%{name}-devel = %{version}
+Requires:       libgeos%{uver} = %{version}-%{release}
+Requires:       libgeos_c1 = %{version}-%{release}
+Provides:       lib%{name}-devel = %{version}-%{release}
 
 %description devel
 GEOS (Geometry Engine - Open Source) is a C++ port of the Java Topology
@@ -75,7 +76,7 @@ This package contains the development files to build applications that
 use GEOS.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %cmake
