@@ -19,7 +19,7 @@
 
 %global __requires_exclude typelib\\(AyatanaAppIndicator3\\)
 Name:           variety
-Version:        0.8.5
+Version:        0.8.8
 Release:        0
 Summary:        Wallpaper changer
 License:        GPL-3.0-only
@@ -35,6 +35,7 @@ Patch0:         variety-appdata-path.patch
 Patch1:         variety-fix-data-path.patch
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
@@ -83,15 +84,25 @@ can be used to fetch wallpapers according to user-specified criteria.
 # Create our own desktop file and remove the pre-installed version
 rm build/share/applications/%{name}.desktop
 cp %{SOURCE1} .
-# Todo: Add support for FDO icon standard upstream
+%if 0%{?suse_version} <= 1500
 install -Dm0644 data/media/variety.svg %{buildroot}%{_datadir}/pixmaps/variety.svg
+%endif
 cp VarietyIcons/* %{buildroot}%{_datadir}/variety/media/
 %suse_update_desktop_file -i %{name}
 %fdupes -s %{buildroot}
 # Remove README.md as we install in %%doc
 rm -rf %{buildroot}%{_datadir}/doc/variety
 
+# Not sure why Leap 15 doesn't pick up translations.
+%if 0%{?suse_version} > 1500
+%find_lang variety
+%endif
+
+%if 0%{?suse_version} > 1500
+%files -f variety.lang
+%else
 %files
+%endif
 %defattr(-,root,root)
 %doc AUTHORS README.md
 %license LICENSE
@@ -103,7 +114,13 @@ rm -rf %{buildroot}%{_datadir}/doc/variety
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/variety.appdata.xml
 %{_datadir}/applications/%{name}.desktop
+%if 0%{?suse_version} > 1500
+%{_datadir}/icons/hicolor/scalable/apps/variety.svg
+%{_datadir}/icons/hicolor/22x22/apps/variety-indicator-dark.png
+%{_datadir}/icons/hicolor/22x22/apps/variety-indicator.png
+%else
 %{_datadir}/pixmaps/variety.svg
+%endif
 %{_datadir}/%{name}
 
 %changelog

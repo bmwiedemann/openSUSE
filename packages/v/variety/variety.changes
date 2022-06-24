@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Jun 21 12:37:32 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- Update to 0.8.8
+  * Feature #89: Added options to select fit size / wallpaper mode.
+    Added an image-dependent smart fit mode.
+  * Bugfix #519: Fix issues with autostart.
+  * Bugfix #534: Fix the fallback Wallhaven non-API downloading
+    mode used for some Wallhaven URLs.
+  * Bugfix #480: Improve image searching: Avoid deep/huge folders
+    causing Variety to ignore the other folders.
+- From Previous releases
+  * Added a global switch to turn Internet connectivity for Variety
+    off or on
+  * Wallhaven sources now use the Wallhaven API, not html parsing
+    (Thanks to @nlpsuge).
+  * Support for fetching NSFW images from Wallhaven
+    (Thanks to @nlpsuge).
+  * When adding Wallhaven sources, you can provide your own Wallhaven
+    API key. If provided, and the source URL is set to search for NSFW
+    images, Variety will obey.
+  * Auto-upgrade set_wallpaper/get_wallpaper scripts.
+  * Starting from this release, Variety will always automatically
+    upgrade
+  * the set_wallpaper/get_wallpaper scripts to make sure fixes to
+    those are picked up. Your old files have been preserved in the
+    ~/.config/variety/scripts folder.
+  * If you need to use custom scripts, please set their paths in the
+    set_wallpaper_script/get_wallpaper_script properties
+    in ~/.config/variety/variety.conf.
+  * New source: National Geographic's photo of the day
+    (thanks to @TheLastZombie)
+  * New source: ArtStation (thanks to @denis-gordeev)
+  * Add support for Gnome's Dark style
+  * Change default font for quotes and clock to Serif for greater
+    compatibility
+  * Translation updates and bugfixes
+
+-------------------------------------------------------------------
 Thu Jan  6 20:20:03 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
 
 - Add subtle missed python3-requests runtime requirement due to
@@ -168,7 +206,7 @@ Sat Sep 23 21:30:47 UTC 2017 - malcolmlewis@opensuse.org
 -------------------------------------------------------------------
 Thu Mar  3 14:19:58 UTC 2016 - sflees@suse.de
 
-- Spec cleaner run 
+- Spec cleaner run
 
 -------------------------------------------------------------------
 Tue Mar  1 12:30:32 UTC 2016 - simon@simotek.net
@@ -176,7 +214,7 @@ Tue Mar  1 12:30:32 UTC 2016 - simon@simotek.net
 - Update to 0.6.0
   * Support for variety slideshow (Separate package to come later)
   * Using official Unsplash JSON API.
-  * support for i3, openbox, Awesome WM (Awesome requires manual 
+  * support for i3, openbox, Awesome WM (Awesome requires manual
     changes to set_wallpaper script)
 
 -------------------------------------------------------------------
@@ -270,7 +308,7 @@ Wed Feb  4 02:27:36 UTC 2015 - simon@simotek.net
     folder.
   + Unicode: Make _u and _str transparent for None
   + Util.get_xdg_pictures_folder uses GLib.get_user_special_dir
-    (GLib.USER_DIRECTORY_PICTURES), not subprocess call to 
+    (GLib.USER_DIRECTORY_PICTURES), not subprocess call to
     xdg-user-dir.
   + Merge in multi-screen Enlightenment-related changes from
     Simotek.
@@ -345,7 +383,7 @@ Wed Aug 13 19:52:35 UTC 2014 - malcolmlewis@opensuse.org
     xfconf-query is not present.
   + Unicode-related fixes (logging with -vvv was throwing
     Unicode-related errors).
-- Changes from version 0.4.19: 
+- Changes from version 0.4.19:
   + Fix to Facebook first run dialog.
   + Separate Author entry in menu for images from Panoramio.
   + Save author when dowloading from Panoramio.
@@ -387,4 +425,3 @@ Mon Jul 14 16:29:41 UTC 2014 - malcolmlewis@cableone.net
 - Initial build.
 - Add patch variety-fix-varietyconfig-path.patch: Set correct path
   to /usr/share/variety.
-

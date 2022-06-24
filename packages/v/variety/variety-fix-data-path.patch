@@ -1,12 +1,13 @@
-diff -Naur a/variety_lib/varietyconfig.py b/variety_lib/varietyconfig.py
---- a/variety_lib/varietyconfig.py	2020-12-02 00:11:48.000000000 -0600
-+++ b/variety_lib/varietyconfig.py	2020-12-15 19:32:57.741172942 -0600
-@@ -21,7 +21,7 @@
+Index: variety-0.8.8/variety_lib/varietyconfig.py
+===================================================================
+--- variety-0.8.8.orig/variety_lib/varietyconfig.py
++++ variety-0.8.8/variety_lib/varietyconfig.py
+@@ -21,7 +21,7 @@ try:
  except ImportError:
      # Variety's data directory. This is set by setup.py for permanent installations, but defaults to ../data
      # for easy development / running from source.
 -    __variety_data_directory__ = "../data"
 +    __variety_data_directory__ = "/usr/share/variety"
  __license__ = "GPL-3"
- __version__ = "0.8.5"
+ __version__ = "0.8.8"
  
