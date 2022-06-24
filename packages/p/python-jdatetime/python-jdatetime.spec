@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jdatetime
-Version:        3.8.2
+Version:        4.1.0
 Release:        0
 Summary:        Jalali datetime binding for python
 License:        Python-2.0

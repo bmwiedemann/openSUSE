@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 23 01:06:35 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 4.1.0
+  * Add support for %z directive in ``jdatetime.datetime.strptime`
+  * Add support for %b and %B directive directive in ``jdatetime.datetime.strptime`
+  Changed
+  * Potential breaking change: Replace spaces with ZWNJ (نیم‌فاصله) in output of ``jdatetime.datetime.strftime`
+- Update to 4.0.0: 
+  * Add fold attribute to jdatetime.datetime
+  * Change
+  * Drop Python < 3.7 support
+
+-------------------------------------------------------------------
 Thu Jan 27 20:11:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.8.2:
