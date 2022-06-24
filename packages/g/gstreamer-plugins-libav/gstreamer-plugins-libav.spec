@@ -19,7 +19,7 @@
 %define gst_branch 1.0
 
 Name:           gstreamer-plugins-libav
-Version:        1.20.2
+Version:        1.20.3
 Release:        0
 Summary:        A ffmpeg/libav plugin for GStreamer
 License:        LGPL-2.1-or-later
