@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 22 13:09:54 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Actually requires twisted[tls]: python-Twisted-tls
+- Test suite is run by twisted.trial instead of pytest
+- Add remove-infinite-tmpfile-creation.patch
+  * gh#twisted/ldaptor#238
+
+-------------------------------------------------------------------
 Fri Apr 30 20:08:05 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 21.2.0

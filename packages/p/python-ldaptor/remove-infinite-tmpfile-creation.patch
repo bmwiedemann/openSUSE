@@ -1,0 +1,12 @@
+Index: ldaptor-21.2.0/ldaptor/test/test_config.py
+===================================================================
+--- ldaptor-21.2.0.orig/ldaptor/test/test_config.py
++++ ldaptor-21.2.0/ldaptor/test/test_config.py
+@@ -24,7 +24,6 @@ def reloadFromContent(testCase, content)
+     writeFile(config_path, content)
+ 
+     # Reload with empty content to reduce the side effects.
+-    testCase.addCleanup(reloadFromContent, testCase, b"")
+ 
+     return config.loadConfig(
+         configFiles=[config_path],

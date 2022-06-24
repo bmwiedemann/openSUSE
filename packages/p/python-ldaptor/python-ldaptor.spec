@@ -1,7 +1,7 @@
 #
 # spec file for package python-ldaptor
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define binaries ldaptor-fetchschema ldaptor-find-server ldaptor-getfreenumber ldaptor-ldap2dhcpconf ldaptor-ldap2dnszones ldaptor-ldap2maradns ldaptor-ldap2passwd ldaptor-ldap2pdns ldaptor-ldifdiff ldaptor-ldifpatch ldaptor-namingcontexts ldaptor-passwd ldaptor-rename ldaptor-search
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-ldaptor
 Version:        21.2.0
@@ -27,17 +27,18 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/twisted/ldaptor
 Source:         https://files.pythonhosted.org/packages/source/l/ldaptor/ldaptor-%{version}.tar.gz
-BuildRequires:  %{python_module Twisted}
+# PATCH-FIX-UPSTREAM remove-infinite-tmpfile-creation.patch -- gh#twisted/ldaptor#238
+Patch1:         remove-infinite-tmpfile-creation.patch
+BuildRequires:  %{python_module Twisted-tls}
 BuildRequires:  %{python_module passlib}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyparsing}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Twisted
+Requires:       python-Twisted-tls
 Requires:       python-passlib
 Requires:       python-pyparsing
 Requires:       python-zope.interface
@@ -56,13 +57,17 @@ Ldaptor is a pure-Python library that implements:
 - Samba password changing logic
 
 %prep
-%setup -q -n ldaptor-%{version}
+%autosetup -p1 -n ldaptor-%{version}
 sed -i '1 {/env python/ d}' ldaptor/ldapfilter.py
+# six is not used anymore, remove from metadata
+sed -i '/six/d' setup.cfg
 
 %build
 %pyproject_wheel
 
 %install
+# remove .egg for proper pip install in 15.4
+rm -r ldaptor.egg-info
 %pyproject_install
 for b in %{binaries}; do
   %python_clone -a %{buildroot}%{_bindir}/$b
@@ -70,7 +75,10 @@ done
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%{python_expand # twisted.trial: see tox config
+export PYTHONPATH=%{buildroot}/%{$python_sitelib}
+$python -m twisted.trial ldaptor
+}
 
 %post
 %{lua:for b in rpm.expand("%{binaries}"):gmatch("%S+") do
