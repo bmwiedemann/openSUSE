@@ -192,7 +192,9 @@ mkdir -p %{buildroot}%{_modprobedir}
 mv %{buildroot}%{_sysconfdir}/modprobe.d/* %{buildroot}%{_modprobedir}
 %if 0%{?suse_version} >= 1550
 mkdir -p %{buildroot}%{_distconfdir}/xdg/autostart
+mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
 mv %{buildroot}%{_sysconfdir}/xdg/autostart/* %{buildroot}%{_distconfdir}/xdg/autostart
+mv %{buildroot}%{_sysconfdir}/logrotate.d/firewalld %{buildroot}%{_distconfdir}/logrotate.d/firewalld
 %endif
 
 %fdupes %{buildroot}%{python3_sitelib}
@@ -283,7 +285,11 @@ fi
 %{_modprobedir}/firewalld-sysctls.conf
 %config(noreplace) %{_sysconfdir}/firewalld/firewalld.conf
 %config(noreplace) %{_sysconfdir}/firewalld/lockdown-whitelist.xml
+%if 0%{?suse_version} > 1550
+%{_distconfdir}/logrotate.d/firewalld
+%else
 %config(noreplace) %{_sysconfdir}/logrotate.d/firewalld
+%endif
 %attr(0750,root,root) %dir %{_sysconfdir}/firewalld
 %attr(0750,root,root) %dir %{_sysconfdir}/firewalld/icmptypes
 %attr(0750,root,root) %dir %{_sysconfdir}/firewalld/services
