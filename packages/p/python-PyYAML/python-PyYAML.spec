@@ -32,6 +32,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  libyaml-devel
 BuildRequires:  python-rpm-macros
+%python_subpackages
 
 %description
 YAML is a data serialization format designed for human readability
@@ -45,8 +46,6 @@ allow to represent an arbitrary Python object.
 
 PyYAML is applicable for a broad range of tasks from complex
 configuration files to object serialization and persistance.
-
-%python_subpackages
 
 %prep
 %setup -q -n PyYAML-%{version}

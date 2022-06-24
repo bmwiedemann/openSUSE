@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 15 05:09:29 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Clean up the SPEC file.
+
+-------------------------------------------------------------------
 Wed Mar  9 12:51:17 UTC 2022 - pgajdos@suse.com
 
 - do not use setup.py test construct
