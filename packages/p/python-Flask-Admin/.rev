@@ -95,4 +95,14 @@
     <comment></comment>
     <requestid>956062</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>7f562660471f0f8334d76e798c518902</srcmd5>
+    <version>1.6.0</version>
+    <time>1656053162</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch redirect-location-assertions.patch:
+  * Remove hostname when checking location from redirects.
+- Add PyYAML and requre to BuildRequires.</comment>
+    <requestid>984782</requestid>
+  </revision>
 </revisionlist>
