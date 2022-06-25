@@ -54,7 +54,6 @@ BuildRequires:  ant
 %else
 Name:           %{base_name}
 BuildRequires:  xmvn
-BuildRequires:  mvn(org.apache.maven.plugin-testing:maven-plugin-testing-harness)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-compiler-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-jar-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-javadoc-plugin)
@@ -90,6 +89,9 @@ cp %{SOURCE1} build.xml
 %patch0 -p1
 %endif
 %patch1 -p1
+
+# Remove all dependencies with scope test, since a raw xmvn does not hide them
+%pom_remove_dep -r :::test:
 
 %build
 # Test class MockArtifact doesn't override method getMetadata
