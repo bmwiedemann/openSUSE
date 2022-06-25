@@ -165,7 +165,6 @@ make %{?_smp_mflags} BINDIR=%{_sbindir} LOG_BUFFER_SIZE=-DLOG_BUFFER_SIZE=131072
 
 %install
 mkdir -p %{buildroot}/etc
-mkdir -p %{buildroot}%{_sysconfdir}/logrotate.d
 mkdir -p %{buildroot}/sbin
 mkdir -p %{buildroot}/%{_sbindir}
 mkdir -p %{buildroot}/%{_mandir}/man{5,8}
@@ -173,7 +172,13 @@ mkdir -p %{buildroot}%{_fillupdir}
 mkdir -p %{buildroot}%{_unitdir}
 mkdir -p -m 0755 %{buildroot}/%{_rundir}/syslogd
 make install MANDIR=%{_mandir} BINDIR=%{_sbindir} DESTDIR=%{buildroot}
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
+install -m 644 %{SOURCE1} %{buildroot}%{_distconfdir}/logrotate.d/syslog
+%else
+mkdir -p %{buildroot}%{_sysconfdir}/logrotate.d
 install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/logrotate.d/syslog
+%endif
 install -m 644 %{SOURCE2} %{buildroot}%{_fillupdir}
 install -m 644 %{SOURCE3} %{buildroot}%{_fillupdir}
 install -m 644 %{SOURCE5} %{buildroot}/%{_mandir}/man8/syslog.8
@@ -389,7 +394,11 @@ rm -f %{_sysconfdir}/systemd/system/multi-user.target.wants/syslog.service
 %files -n syslog-service
 %defattr(-,root,root)
 %{_fillupdir}/sysconfig.boot
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/logrotate.d/syslog
+%else
 %config(noreplace) %{_sysconfdir}/logrotate.d/syslog
+%endif
 %{_unitdir}/klog.service
 %{_mandir}/man8/syslog.8%{ext_man}
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 21 12:20:58 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Moved logrotate files from user specific directory /etc/logrotate.d
+  to vendor specific directory /usr/etc/logrotate.d.
+
+-------------------------------------------------------------------
 Tue Apr 19 14:51:10 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - https urls, added gpg signature (but not the keyring, could not

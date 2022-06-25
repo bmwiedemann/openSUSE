@@ -806,4 +806,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>972926</requestid>
   </revision>
+  <revision rev="99" vrev="798">
+    <srcmd5>b2ded3bcc53cf064ee7114fb165f9ad1</srcmd5>
+    <version>unknown</version>
+    <time>1656145433</time>
+    <user>dimstar_suse</user>
+    <comment>- Moved logrotate files from user specific directory /etc/logrotate.d
+  to vendor specific directory /usr/etc/logrotate.d. (forwarded request 984155 from schubi2)</comment>
+    <requestid>984896</requestid>
+  </revision>
 </revisionlist>
