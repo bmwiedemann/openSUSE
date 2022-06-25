@@ -24,9 +24,11 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://picocli.info/
 Source0:        https://github.com/remkop/%{name}/archive/v%{version}.tar.gz
+Source1:        %{name}-build.xml
+BuildRequires:  ant
 BuildRequires:  aqute-bnd
 BuildRequires:  fdupes
-BuildRequires:  maven-local
+BuildRequires:  javapackages-local
 BuildArch:      noarch
 
 %description
@@ -44,9 +46,10 @@ This package contains the API documentation for %{name}.
 %prep
 %setup -q -n %{name}-%{version}
 %pom_xpath_set pom:project/pom:version %{version}
+cp %{SOURCE1} build.xml
 
 %build
-%mvn_build -f
+%ant jar javadoc
 # Convert to OSGi bundle
 bnd wrap \
  --bsn %{name} \
@@ -57,14 +60,24 @@ bnd wrap \
 mv target/%{name}-%{version}.bar target/%{name}-%{version}.jar
 
 %install
-%mvn_install
+#jar
+install -dm 0755 %{buildroot}%{_javadir}/%{name}
+install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
+#pom
+install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
+install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
+#javadoc
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+cp -r target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 %license LICENSE
 %doc README.md
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE
 
 %changelog
