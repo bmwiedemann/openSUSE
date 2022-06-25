@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 20 21:19:02 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.13.0
+  * The default ABI versions are now v12.11 and v13.4 so that
+    wrapped classes can be used by sip.array.
+  * Removed support for bundling version of Qt older than v5.15.
+  * Removed support for Python v3.6.
+
+-------------------------------------------------------------------
 Fri Oct 29 15:02:35 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.12.2
