@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 24 09:44:50 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Remove all dependencies with scope test, since a raw xmvn does
+  not hide them from maven.
+
+-------------------------------------------------------------------
 Thu Apr 28 11:51:20 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 3.2.0
