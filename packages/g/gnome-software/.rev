@@ -869,4 +869,14 @@ cd - (forwarded request 199127 from Zaitor)</comment>
     <comment>GNOME 42.2 (forwarded request 979895 from dimstar)</comment>
     <requestid>980033</requestid>
   </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>909ac0cb2ad29b7c2315bbc48e13e548</srcmd5>
+    <version>42.2</version>
+    <time>1656145429</time>
+    <user>dimstar_suse</user>
+    <comment>- Ship software-opensuse.gschema.override, declaring the
+  repositories 'repo-oss', 'repo-update', and 'repo-non-oss' as the
+  official repositories (boo#1189907). (forwarded request 984724 from dimstar)</comment>
+    <requestid>984839</requestid>
+  </revision>
 </revisionlist>
