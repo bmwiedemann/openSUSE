@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jun 25 07:03:24 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Update to opensbi 1.1
+  * SBI PMU improvements
+  * RISC-V AIA v0.3.0 draft support
+  * Simple external interrupt handling framework
+  * Xilinx UART-Lite driver
+  * RISC-V privilege specification v1.12 support
+  * RISC-V Svpbmt extension support
+  * RISC-V Smstateen extension support
+  * RISC-V Sstc extension support
+  * RISC-V privilege specification version detection
+  * Platform callback to populate HART extensions
+  * Compile time C arrays support
+  * Probing FDT based drivers using compile time C arrays
+  * SBI HSM improvements
+  * Allwinner D1 platform support
+  * Trap redirection improvements related to [m|h]tinst CSR
+  * SBI v1.0 specification support
+
+-------------------------------------------------------------------
 Fri Dec 24 12:35:41 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Update to opensbi 1.0
