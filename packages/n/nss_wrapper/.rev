@@ -127,4 +127,71 @@
     <comment></comment>
     <requestid>883723</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5fa36fa8c036853be7900871d52adfb5</srcmd5>
+    <version>1.1.12</version>
+    <time>1656145431</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.12
+  * Added (de)contructor support on AIX with pragma init/finish
+  * Fixed possible crash in getaddrinfo()
+  * Fixed issues with processes closing all fds when forking
+  * Fixed issues with setgrent() and endpwent() nss module support
+- avoid filelist from filesystem package
+- Update to version 1.1.11
+  * https://gitlab.com/cwrap/nss_wrapper/-/blob/nss_wrapper-1.1.11/CHANGELOG
+- Update to version 1.1.10
+  * Fixed crash bug in OpenLDAP libraries with gethostbyname_r()
+  * Code cleanup in gethostbyname(2)(_r) functions
+- Update to version 1.1.9
+  * Fixed log spam when loading modules
+- Update to version 1.1.8
+  * Fixed path to library in nss_wrapper.pc
+  * Try different backends for gethostbyaddr nd gethostbyname
+- Update to version 1.1.7
+  * Added NSS_WRAPPER_DISABLE_DEEPBIND env variable
+  * Improvded logging
+  * Fixed location in cmake config
+- Change Requires to Recommends for cmake and pkgconf
+- Update to version 1.1.6
+  * Fixed issues with memory alignment of getgrnam()
+  * Fixed getpwnam() on FreeBSD
+  * Started to use modern cmake (&gt;= 3.5.0)
+- Update to version 1.1.5
+  * Fixed running on older distributions
+- Update to version 1.1.4
+  * Fixed module getpw* functions
+  * Fixed nss_wrapper.pl to use correct perl binary
+  * Fixed compatibility with musl-libc
+- Update to version 1.1.3
+  * Added support for BSD 'struct passwd' members
+  * Replaced strcpy() with snprintf()
+- Editorial fixes to the description
+- Use %_smp_mflags for parallel build instead
+- Update to version 1.1.2
+  * Fixed segfault while reloading hosts file
+  * Fixed issue where are not fault tolerant if an alias has already
+    been added
+  * Fixed nss_wrapper build on Solaris
+- Update to version 1.1.0
+  * Added support for initgroups()
+  * Added support for shadow files (getspnam(), etc.)
+  * Improved support for multi address handling in getaddrinfo()
+  * Improved file parser
+  * Fixed compilation on machines without IPv4 support
+  * Fixed service string sanity check in getaddrinfo() (bso #11501)
+  * Fixed AI_NUMERICHOST handling in getaddrinfo() (bso # 11477)
+- Rename rpmlintrc to match packaging guidelines
+- Add rpmlintrc as source
+- Cleanup specfile
+- Update to version 1.0.3.
+  * Added a nss_wrapper manpage.
+  * Fixed cmake find_package configs.
+  * Fixed resolving hostnames with a trailing dot.
+  * Fixed an overflow when checking if a IPv6 address is IPv4.
+  * Fall back to RTLD_NEXT for symbol binding if we can't find libc.
+- Initial package.
+</comment>
+    <requestid>984842</requestid>
+  </revision>
 </revisionlist>

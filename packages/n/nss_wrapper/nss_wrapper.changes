@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 24 08:14:05 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.1.12
+  * Added (de)contructor support on AIX with pragma init/finish
+  * Fixed possible crash in getaddrinfo()
+  * Fixed issues with processes closing all fds when forking
+  * Fixed issues with setgrent() and endpwent() nss module support
+
+-------------------------------------------------------------------
 Wed Apr  7 22:07:59 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- avoid filelist from filesystem package  
+- avoid filelist from filesystem package
 
 -------------------------------------------------------------------
 Wed Mar 31 14:00:41 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
