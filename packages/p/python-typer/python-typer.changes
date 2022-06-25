@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jun 24 18:20:30 UTC 2022 - Matthias Bach <marix@marix.org> - 0.4.1
+
+- Add run-subprocesses-with-correct-python.patch to ensure tests
+  aren't accidentally running subprocesses using the wrong Python
+  version.
+- Add set-proper-pythonpath-for-tutorial-script-tests.patch to fix
+  issue with build failing due to import failures.
+
+-------------------------------------------------------------------
+Tue Jun 14 14:37:26 UTC 2022 - Matthias Bach <marix@marix.org> - 0.4.1
+
+- Update to upstream version 0.4.1
+  * Fix import of get_terminal_size for Click 8.1.0 support.
+- Switch from traditional setup.py installation to pyproject macros
+  as upstream no longer ships its setup.py compability wrapper.
+
+-------------------------------------------------------------------
 Mon Aug 30 19:31:17 UTC 2021 - Matthias Bach <marix@marix.org> - 0.4.0
 
 - Update to upstream version 0.4.0

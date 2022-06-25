@@ -1,7 +1,7 @@
 #
 # spec file for package python-typer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021 Matthias Bach <marix@marix.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,17 +19,19 @@
 
 %define skip_python2 1
 Name:           python-typer
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Typer, build great CLIs. Easy to code. Based on Python type hints
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/tiangolo/typer
 Source:         https://files.pythonhosted.org/packages/source/t/typer/typer-%{version}.tar.gz
-Source1:        %{name}-rpmlintrc
+Patch0:         run-subprocesses-with-correct-python.patch
+Patch1:         set-proper-pythonpath-for-tutorial-script-tests.patch
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module shellingham}
 BuildRequires:  fdupes
@@ -50,12 +52,13 @@ This package provides the Typer Python package required to build and run Typer-b
 
 %prep
 %setup -q -n typer-%{version}
+%autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
