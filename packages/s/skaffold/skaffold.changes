@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jun 24 06:14:12 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.39.0:
+  * release: v1.39.0 (#7580)
+  * feat: add `hostPlatform` and `targetPlatforms` (#7550) (#7559)
+  * feat: Add privateWorkerPool and location configuration for gcb (#7440)
+  * chore: skip config in v2 package when generating new schema, add v2beta29 version schema (#7436)
+  * feat: [V1] Add helm3.1deployer no op (#7423)
+  * refactor: rename helm.Deployer to helm.Deployer3 to prepare for helm.Deployer31 (#7415)
+  * docs: use `image` instead of `imageKey` to improve consistency in Helm documentation (#7407)
+  * fix: change error to warning for build platform (#7402) (#7404)
+  * fix: fetch images by platform tag when using` --platform` (#7393)
+  * feat: add tests (#7319)
+  * chore: [v1] cherry pick the fix to collect cluster type on v1 branch (#7316)
+  * ci: update permissions for verify-examples GitHub actions (#7291)
+  * fix: fix kubectl result formatting for debug logs (#7293)
+  * chore: remove `v1` config package and move it to `latest` package. (#7290)
+  * chore(deps): bump actions/setup-go from 2 to 3 (#7283)
+  * fix: add default value for status-check flag when no value is specified (#7278)
+  * fix: add panic fix and recovery logic to reflection for yaml line number info (#7276)
+
+-------------------------------------------------------------------
 Thu Apr 14 20:14:13 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.38.0:
