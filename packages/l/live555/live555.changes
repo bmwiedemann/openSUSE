@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 24 12:15:38 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2022.06.16:
+  + Both our RTSP client and RTSP server implementations now
+    support (optional) RTSP-over-HTTPS streaming, when
+    RTSP-over-TLS would otherwise be available.
+- Changes from version 2022.06.14:
+  + Added optional support (via #ifdefs) to the
+    "testOnDemandRTSPServer" demo application for streaming via
+    RTSPS (RTSP-over-TLS) and optionally SRTP (encrypted RTP/RTCP).
+    To use this, you would need to define SERVER_USE_TLS, and
+    PATHNAME_TO_CERTIFICATE_FILE and PATHNAME_TO_PRIVATE_KEY_FILE.
+
+-------------------------------------------------------------------
 Wed May  4 20:28:27 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2022.04.26:
