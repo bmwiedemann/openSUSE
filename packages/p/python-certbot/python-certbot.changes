@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 24 19:24:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.28.0:
+  * Updated Apache/NGINX TLS configs to document contents are based on ssl-config.mozilla.org
+  * A change to order finalization has been made to the `acme` module and Certbot:
+    - An order's `certificate` field will only be processed if the order's `status` is `valid`.
+    - An order's `error` field will only be processed if the order's `status` is `invalid`.
+
+-------------------------------------------------------------------
 Mon May 30 09:13:58 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Update to version 1.27.0
