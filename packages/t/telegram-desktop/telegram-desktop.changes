@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Jun 24 09:16:23 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update tg_owt; this does not include pipewire anymore, therefore:
+  * Add BuildRequires: pkgconfig(libpipewire-0.3)
+- Remove patches no longer needed:
+  * 0002-tg_owt-fix-name-confliction.patch
+  * 0005-add-wayland-include-path.patch
+  * fix-unused-variable-error.patch
+- Add suport for Qt version 6
+
+- Update to version 4.0.0
+  * Premium: Send media and files each up to 4 GB in size.
+  * Premium: Download media and files at the fastest possible speed,
+    with no limits.
+  * Premium: Double most of the limits in the app.
+  * Premium: Get a new button next to any voice message to generate
+    a transcript of its audio.
+  * Premium: React with even more emoji, including :clown: and 😍.
+  * Premium: Send unique stickers with additional effects, updated
+    monthly.
+  * Premium: Set a default chat folder or enable tools to
+    auto-archive and hide new chats.
+  * Premium: Subscribers have a badge next to their name, showing
+    they help support Telegram.
+  * Premium: Show off your profile video that will be animated for
+    everyone in chats and the chat list.
+  * Premium: Sponsored Messages that are sometimes shown in public
+    channels will no longer appear.
+  * Enable join requests for your public groups – no invite links
+    required.
+  * Users who open the group will see an Apply to Join Group button.
+  * Once approved by an admin, users will be able to participate in
+    the chat.
+  * Bots that are integrated into the attachment menu can be programmed
+    to work in groups and channels.
+- Update to version 3.7.6
+  * Settings > Advanced > Experimental adds an option to open chats
+    in separate windows.
+  * Fix possible crash in video chat reconnection.
+  * Fix possible crash after account switch.
+- Update to version 3.7.5
+  * Improve cloud password management design.
+  * Fix a crash in shared media search.
+  * Fix audio recording on macOS.
+- Update to version 3.7.4
+  * More icons for chat folders.
+  * Improve some more sections design.
+  * Update the OpenAL library to 1.22.0.
+
+-------------------------------------------------------------------
 Fri Jun  3 08:08:46 UTC 2022 - marec <marec@detebe.org>
 
 - fix for leap 15.4

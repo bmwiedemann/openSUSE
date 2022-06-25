@@ -33,8 +33,10 @@
 %define _dwz_low_mem_die_limit  40000000
 %define _dwz_max_die_limit     200000000
 
+%define qt_major_version 6
+
 Name:           telegram-desktop
-Version:        3.7.3
+Version:        4.0.0
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -48,15 +50,9 @@ Source2:        tg_owt-master.zip
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-use-bundled-ranged-exptected-gsl.patch
 # PATCH-FIX-OPENSUSE
-Patch2:         0002-tg_owt-fix-name-confliction.patch
-# PATCH-FIX-OPENSUSE
 Patch3:         0003-revert-webrtc-cmake-target-file.patch
 # PATCH-FIX-OPENSUSE
 Patch4:         0004-use-dynamic-x-libraries.patch
-# PATCH-FIX-OPENSUSE
-Patch5:         0005-add-wayland-include-path.patch
-# PATCH-FIX-OPENSUSE
-Patch6:         fix-unused-variable-error.patch
 # There is an (incomplete) patch available for part of the source:
 # https://github.com/desktop-app/lib_base.git 3582bca53a1e195a31760978dc41f67ce44fc7e4
 # but tdesktop itself still falls short, and it looks to be something
@@ -81,8 +77,6 @@ BuildRequires:  liblz4-devel
 BuildRequires:  libwebrtc_audio_processing-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-gui-private-devel
-BuildRequires:  qt6-waylandclient-private-devel
 BuildRequires:  unzip
 BuildRequires:  wayland-devel
 BuildRequires:  webkit2gtk3-devel
@@ -91,17 +85,25 @@ BuildRequires:  xxhash-devel
 BuildRequires:  xz
 BuildRequires:  yasm
 BuildRequires:  cmake(KF5Wayland)
-BuildRequires:  cmake(Qt6Concurrent)
-BuildRequires:  cmake(Qt6Core5Compat)
-BuildRequires:  cmake(Qt6DBus)
-BuildRequires:  cmake(Qt6Network)
-BuildRequires:  cmake(Qt6OpenGL)
-BuildRequires:  cmake(Qt6OpenGLWidgets)
-BuildRequires:  cmake(Qt6Svg)
-BuildRequires:  cmake(Qt6WaylandClient)
-BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt%{qt_major_version}Concurrent)
+BuildRequires:  cmake(Qt%{qt_major_version}Core)
+BuildRequires:  cmake(Qt%{qt_major_version}DBus)
+BuildRequires:  cmake(Qt%{qt_major_version}Network)
+BuildRequires:  cmake(Qt%{qt_major_version}OpenGL)
+BuildRequires:  cmake(Qt%{qt_major_version}Svg)
+BuildRequires:  cmake(Qt%{qt_major_version}WaylandClient)
+BuildRequires:  cmake(Qt%{qt_major_version}Widgets)
+%if %{qt_major_version} >= 6
+BuildRequires:  qt%{qt_major_version}-gui-private-devel
+BuildRequires:  qt%{qt_major_version}-waylandclient-private-devel
+BuildRequires:  cmake(Qt%{qt_major_version}Core5Compat)
+BuildRequires:  cmake(Qt%{qt_major_version}OpenGLWidgets)
+%else
+BuildRequires:  libQt5Gui-private-headers-devel
+BuildRequires:  libqt5-qtwayland-private-headers-devel
+BuildRequires:  pkgconfig(dbusmenu-qt%{qt_major_version})
+%endif
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(dbusmenu-qt5)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
@@ -125,6 +127,7 @@ BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(libpcre16)
 BuildRequires:  pkgconfig(libpcrecpp)
 BuildRequires:  pkgconfig(libpcreposix)
+BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libproxy-1.0)
 BuildRequires:  pkgconfig(libpulse)
@@ -161,11 +164,16 @@ BuildRequires:  pkgconfig(zlib)
 # Runtime requirements
 Requires:       hicolor-icon-theme
 Requires:       icu
-Requires:       qt6-imageformats
+%if %{qt_major_version} >= 6
+Requires:       qt%{qt_major_version}-imageformats
+Recommends:     qt%{qt_major_version}-wayland
+%else
+Requires:       libqt%{qt_major_version}-qtimageformats
+Recommends:     libqt%{qt_major_version}-qtwayland
+%endif
 # TDesktop can fall back to a simple GTK file picker but prefers the portal
 Recommends:     xdg-desktop-portal
 Recommends:     google-opensans-fonts
-Recommends:     qt6-wayland
 
 %description
 Telegram is a non-profit cloud-based instant messaging service.
@@ -179,14 +187,11 @@ The service also provides APIs to independent developers.
 %patch1 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
-%patch6 -p1
 
 cd ../
 unzip -q %{SOURCE2}
 mkdir Libraries
 mv tg_owt-master Libraries/tg_owt
-%patch2 -p2 -d Libraries/tg_owt
 
 %build
 %if %{with compiler_upgrade}
@@ -219,7 +224,13 @@ cd %{_builddir}/tdesktop-%{version}-full
 %cmake \
       -DCMAKE_INSTALL_PREFIX=%{_prefix} \
       -DCMAKE_BUILD_TYPE=Release \
+%if %{qt_major_version} == 6
       -DDESKTOP_APP_QT6=ON \
+%else
+      -DDESKTOP_APP_QT6=OFF \
+      -DDESKTOP_APP_DISABLE_WAYLAND_INTEGRATION=ON \
+      -DDESKTOP_APP_USE_ENCHANT=ON \
+%endif
       -DTDESKTOP_API_ID=611335 \
       -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c \
       -DDESKTOP_APP_USE_GLIBC_WRAPS=OFF \
