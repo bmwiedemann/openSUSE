@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 23 07:34:55 CEST 2022 - aschnell@suse.com
+
+- drop type flag (SUSE specific) to fix bsc#1190847
+  refreshed patches:
+  - parted-mac.patch
+  - tests-adapt-to-SUSE.patch
+  drop patches:
+  - parted-type.patch
+  - parted-type-accept-hex.patch
+  - parted-json-no-type-flag.patch
+
+-------------------------------------------------------------------
 Wed Jun  1 09:27:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use static keyring file (and switch to the release team keyring) 

@@ -152,29 +152,29 @@ Index: parted-3.3/parted/parted.c
 ===================================================================
 --- parted-3.3.orig/parted/parted.c
 +++ parted-3.3/parted/parted.c
-@@ -929,6 +929,7 @@ static char*
+@@ -946,6 +946,7 @@
+ static char*
  partition_print_flags (PedPartition const *part)
  {
-         int  xtype;
-+	const char* sysname;
-         char *res = xstrdup ("");
-         if (!part)
-                 return res;
-@@ -961,6 +962,17 @@ partition_print_flags (PedPartition cons
-                 }
++  const char* sysname;
+   char *res = xstrdup ("");
+   if (!part)
+     return res;
+@@ -967,6 +968,17 @@
          }
+     }
  
-+	sysname = ped_partition_get_system_name( part );
-+	if (sysname) {
-+                char tmpstr[21];
-+                snprintf(tmpstr, sizeof(tmpstr) - 1, "type=%s", sysname);
-+                size_t new_len = res_buf_len + strlen(sep) + strlen(tmpstr);
-+                res = xrealloc(res, new_len);
-+                stpcpy (stpcpy (res + res_buf_len - 1, sep), tmpstr);
-+                res_buf_len = new_len;
-+                sep = ", ";
-+	}
++  sysname = ped_partition_get_system_name( part );
++  if (sysname) {
++      char tmpstr[21];
++      snprintf(tmpstr, sizeof(tmpstr) - 1, "type=%s", sysname);
++      size_t new_len = res_buf_len + strlen(sep) + strlen(tmpstr);
++      res = xrealloc(res, new_len);
++      stpcpy (stpcpy (res + res_buf_len - 1, sep), tmpstr);
++      res_buf_len = new_len;
++      sep = ", ";
++  }
 +
-         return res;
+   return res;
  }
  

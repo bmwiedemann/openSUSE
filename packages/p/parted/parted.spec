@@ -39,7 +39,6 @@ Patch12:        libparted-partition-naming.patch
 #PATCH-FEATURE-SUSE more-reliable-informing-the-kernel.patch bnc#657360 petr.uzel@suse.cz
 Patch13:        more-reliable-informing-the-kernel.patch
 Patch14:        dummy-bootcode-only-for-x86.patch
-Patch15:        parted-type.patch
 Patch16:        parted-mac.patch
 Patch17:        libparted-use-BLKRRPART-for-DASD.patch.patch
 Patch18:        libparted-make-BLKRRPART-more-robust.patch
@@ -59,7 +58,6 @@ Patch31:        parted-add-ignore-busy-option.patch
 Patch32:        parted-fix-resizepart-and-rm-command.patch
 Patch33:        libparted-use-BLKRRPART-only-when-needed.patch
 Patch34:        libparted-canonicalize-dev-md-paths.patch
-Patch35:        parted-json-no-type-flag.patch
 # bsc#1168756
 Patch36:        libparted-linux-pmem-path.patch
 # bsc#1164260
@@ -67,7 +65,6 @@ Patch37:        parted-print-max-partitions-for-yast.patch
 Patch38:        direct-handling-of-partition-type-id-and-uuid.patch
 Patch39:        type-command.patch
 # bsc#1164907
-Patch64:        parted-type-accept-hex.patch
 # Fatresize
 Patch100:       parted-fatresize-autoconf.patch
 Patch101:       fatresize-fix-getting-dev-name.patch
@@ -143,7 +140,6 @@ to develop applications that require these.
 %patch12 -p1
 %patch13 -p1
 %patch14 -p1
-%patch15 -p1
 %patch16 -p1
 %patch17 -p1
 %patch18 -p1
@@ -160,12 +156,10 @@ to develop applications that require these.
 %patch32 -p1
 %patch33 -p1
 %patch34 -p1
-%patch35 -p1
 %patch36 -p1
 %patch37 -p1
 %patch38 -p1
 %patch39 -p1
-%patch64 -p1
 %patch100 -p1
 %patch101 -p1
 %patch156 -p1
