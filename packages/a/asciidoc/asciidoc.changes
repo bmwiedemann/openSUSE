@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jun 23 11:33:12 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 10.2.0:
+  + Future feature:
+    - As part of the intended 10.3.0 release, the following
+      document attribute flags will be reserved for modifying
+      asciidoc-py runtime behavior:
+      . future-compat
+      . legacy-compat
+      . compat-mode
+    - Please see GH issue #254 for more information.
+  + Bug fixes: Fix verbose output not working when using a2x or
+    asciidoc entry points.
+  + Miscellaneous: Automate publishing asciidoc-py website as part
+    of release process.
+
+-------------------------------------------------------------------
 Wed Jun 22 15:43:52 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not recommend asciidoc-latex-backend: Do not pull in the LaTeX

@@ -22,7 +22,7 @@
 %endif
 
 Name:           asciidoc%{?name_suffix}
-Version:        10.1.4
+Version:        10.2.0
 Release:        0
 Summary:        Text-Based Document Generation
 License:        GPL-2.0-or-later
