@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-certbot-dns-cloudxns
-Version:        1.27.0
+Version:        1.28.0
 Release:        0
 Summary:        CloudXNS Authenticator plugin for Certbot
 License:        Apache-2.0
