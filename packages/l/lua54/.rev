@@ -183,4 +183,12 @@
     <comment></comment>
     <requestid>980769</requestid>
   </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>7552468bb7878a9417c1d0eb37ae9d76</srcmd5>
+    <version>5.4.4</version>
+    <time>1656145454</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1192613, bsc#1194575</comment>
+    <requestid>984874</requestid>
+  </revision>
 </revisionlist>

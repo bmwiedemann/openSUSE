@@ -49,13 +49,13 @@ Thu Dec 30 13:41:04 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update upstream-bugs.patch and upstream-bugs-test.patch to fix
   bugs 9,10,12 for build and tests respectively. Bug 11 changes
-  interface of luaD_pretailcall.
+  interface of luaD_pretailcall. (bsc#1194575,CVE-2021-44647)
 
 -------------------------------------------------------------------
 Sat Nov 27 16:54:20 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update upstream-bugs.patch and upstream-bugs-test.patch to fix
-  bugs 7,8 for build and tests respectively.
+  bugs 7,8 for build and tests respectively. (bsc#1192613,CVE-2021-43519)
 
 -------------------------------------------------------------------
 Thu Jul 29 16:31:23 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
