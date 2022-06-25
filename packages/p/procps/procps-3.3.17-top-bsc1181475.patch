@@ -1,0 +1,37 @@
+---
+ top/top.1 |    4 ++--
+ top/top.c |    6 ++++--
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+
+--- top/top.1
++++ top/top.1	2022-06-22 12:05:55.572154830 +0000
+@@ -565,8 +565,8 @@ visual graphs of those representations.
+ 
+ In the case of \*(MP, the percentage represents the \fBtotal\fR minus the estimated
+ \fBavail\fR noted above.
+-The `Mem' graph itself is divided between \fBused\fR and any remaining memory not
+-otherwise accounted for by \fBavail\fR.
++The `Mem' graph itself is divided between the non-cached portion of \fBused\fR and
++any remaining memory not otherwise accounted for by \fBavail\fR.
+ \*(XT 4b. SUMMARY AREA Commands and the `m' command for additional information
+ on that special 4-way toggle.
+ 
+--- top/top.c
++++ top/top.c	2022-06-22 12:03:17.911044097 +0000
+@@ -6086,12 +6086,14 @@ numa_nope:
+          char used[SMLBUFSIZ], util[SMLBUFSIZ], dual[MEDBUFSIZ];
+          float pct_used, pct_misc, pct_swap;
+          int ix, num_used, num_misc;
++         unsigned long my_ulong;
+ 
+-         pct_used = (float)kb_main_used * (100.0 / (float)kb_main_total);
++         my_ulong = kb_main_total - kb_main_buffers - kb_main_cached - kb_main_free;
++         pct_used = (float)my_ulong * (100.0 / (float)kb_main_total);
+ #ifdef MEMGRAPH_OLD
+          pct_misc = (float)(kb_main_buffers + kb_main_cached) * (100.0 / (float)kb_main_total);
+ #else
+-         pct_misc = (float)(kb_main_total - kb_main_available - kb_main_used) * (100.0 / (float)kb_main_total);
++         pct_misc = (float)(kb_main_total - kb_main_available - my_ulong) * (100.0 / (float)kb_main_total);
+ #endif
+          if (pct_used + pct_misc > 100.0 || pct_misc < 0) pct_misc = 0;
+          pct_swap = kb_swap_total ? (float)kb_swap_used * (100.0 / (float)kb_swap_total) : 0;

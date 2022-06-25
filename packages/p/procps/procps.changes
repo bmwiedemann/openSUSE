@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 22 12:12:35 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add the patches
+  * procps-3.3.17-library-bsc1181475.patch
+  * procps-3.3.17-top-bsc1181475.patch
+  which are backports of current newlib tree to solve bug bsc#1181475 
+  * 'free' command reports misleading "used" value
+
+-------------------------------------------------------------------
 Fri Feb  4 09:21:59 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch bsc1195468-23da4f40.patch to fix bsc#1195468 that is

@@ -64,6 +64,9 @@ Patch33:        procps-ng-3.3.11-pmap4suse.patch
 Patch34:        procps-3.3.17-bsc1181976.patch
 # PATCH-FIX-UPSTREAM -- bsc#1195468
 Patch35:        bsc1195468-23da4f40.patch
+# PATCH-BACKPORT-FROM-UPSTREAM -- bsc#1181475: 'free' command reports misleading "used" value
+Patch42:        procps-3.3.17-library-bsc1181475.patch
+Patch43:        procps-3.3.17-top-bsc1181475.patch
 BuildRequires:  automake
 BuildRequires:  dejagnu
 BuildRequires:  diffutils
@@ -145,6 +148,8 @@ the process information pseudo-file system.
 %patch33 -b .pmap4us
 %patch34
 %patch35 -p1
+%patch42
+%patch43
 
 %build
 test -s .tarball-version || echo %{version} > .tarball-version

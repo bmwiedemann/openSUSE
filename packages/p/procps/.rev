@@ -1312,4 +1312,16 @@ There are also man pages translations but they doesn't get installed automatical
     <comment>Revert, see https://bugzilla.opensuse.org/show_bug.cgi?id=1198266</comment>
     <requestid>969331</requestid>
   </revision>
+  <revision rev="128" vrev="9">
+    <srcmd5>24ab1bda24b6a8ed5eca76f7205b9859</srcmd5>
+    <version>3.3.17</version>
+    <time>1656145421</time>
+    <user>dimstar_suse</user>
+    <comment>- Add the patches
+  * procps-3.3.17-library-bsc1181475.patch
+  * procps-3.3.17-top-bsc1181475.patch
+  which are backports of current newlib tree to solve bug bsc#1181475 
+  * 'free' command reports misleading &quot;used&quot; value</comment>
+    <requestid>984476</requestid>
+  </revision>
 </revisionlist>
