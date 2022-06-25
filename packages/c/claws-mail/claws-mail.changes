@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 23 20:43:56 UTC 2022 - <d_werner@gmx.net>
+
+- claws-mail 4.x.x with GTK 3 ignores the plugin setting in the 
+  clawsrc file in range [Plugins_GTK2] - change it to
+  [Plugins_GTK3] in the skel/.claws-mail/clawsrc file (bnc#1200880)
+
+-------------------------------------------------------------------
 Tue Apr  5 17:42:46 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Disable pilot-link also on openSUSE Leap >= 15.4 

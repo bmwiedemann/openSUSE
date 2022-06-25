@@ -233,7 +233,7 @@ chmod 644 %{buildroot}%{_datadir}/claws-mail/tools/multiwebsearch.conf
 %fdupes %{buildroot}%{_libdir}/%{name}/plugins/
 install -d %{buildroot}%{_sysconfdir}/skel/.claws-mail/
 cat <<EOF > %{buildroot}%{_sysconfdir}/skel/.claws-mail/clawsrc
-[Plugins_GTK2]
+[Plugins_GTK3]
 %{_libdir}/claws-mail/plugins/pgpcore.so
 %{_libdir}/claws-mail/plugins/pgpinline.so
 %{_libdir}/claws-mail/plugins/pgpmime.so
