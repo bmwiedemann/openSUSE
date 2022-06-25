@@ -2345,4 +2345,12 @@ See bugzilla 1167537 for the gory details.</comment>
   this comes from rpm-config-SUSE now</comment>
     <requestid>973837</requestid>
   </revision>
+  <revision rev="298" vrev="8">
+    <srcmd5>14db4561d0a29a85c550b1c2135e9c94</srcmd5>
+    <version>4.17.0</version>
+    <time>1656145412</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>984473</requestid>
+  </revision>
 </revisionlist>

@@ -1,6 +1,6 @@
---- ./lib/rpmscript.c.orig	2019-10-02 12:19:15.694519983 +0000
-+++ ./lib/rpmscript.c	2019-10-02 12:22:32.838112185 +0000
-@@ -411,7 +411,7 @@ rpmRC rpmScriptRun(rpmScript script, int
+--- ./lib/rpmscript.c
++++ ./lib/rpmscript.c
+@@ -390,7 +390,7 @@ rpmRC rpmScriptRun(rpmScript script, int
      if (script == NULL) return RPMRC_OK;
  
      ARGV_t args = NULL;
@@ -9,7 +9,7 @@
  		    RPMLOG_ERR : RPMLOG_WARNING;
      rpmRC rc;
      int script_type = RPMSCRIPTLET_FORK | RPMSCRIPTLET_EXEC;
-@@ -654,5 +654,8 @@ rpmscriptTypes rpmScriptType(rpmScript s
+@@ -637,5 +637,8 @@ rpmscriptTypes rpmScriptType(rpmScript s
  
  rpmscriptFlags rpmScriptFlags(rpmScript script)
  {
@@ -19,13 +19,13 @@
 +	flags |= RPMSCRIPT_FLAG_CRITICAL;
 +    return flags;
  }
---- ./macros.in.orig	2019-10-02 12:12:13.027399050 +0000
-+++ ./macros.in	2019-10-02 12:12:19.799384783 +0000
-@@ -1318,5 +1318,10 @@ end}
- %requires_eq() %(echo '%*' | LC_ALL=C xargs -r rpm -q --qf 'Requires: %%{name} = %%{epoch}:%%{version}\\n' | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
- %requires_ge() %(echo '%*' | LC_ALL=C xargs -r rpm -q --qf 'Requires: %%{name} >= %%{epoch}:%%{version}\\n' | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
+--- ./macros.in
++++ ./macros.in
+@@ -1293,5 +1293,10 @@ end
+ %{expand:%__scm_setup_%{__scm} %{!-v:-q}}\
+ %{!-N:%autopatch %{-v} %{-p:-p%{-p*}}}
  
-+# Should errors in %post scriptlet be propagated as errors? 
++# Should errors in %post scriptlet be propagated as errors?
 +#
 +# Note: set to 1 for legacy compatibility.
 +%_fail_on_postinstall_errors  0

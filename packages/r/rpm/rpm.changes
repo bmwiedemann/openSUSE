@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 31 19:58:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- drop requires-ge-macro.diff: this is already in rpm-config-SUSE 
+- enable-postin-scripts-error.diff: refresh
+
+-------------------------------------------------------------------
 Thu Apr 21 13:39:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update rpm-shorten-changelog.diff: fix shortening of changelog,

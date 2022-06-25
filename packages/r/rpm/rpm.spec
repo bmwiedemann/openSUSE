@@ -90,7 +90,6 @@ Patch38:        build.diff
 Patch43:        rpm-shorten-changelog.diff
 Patch45:        whatrequires-doc.diff
 Patch46:        remove-brp-strips.diff
-Patch47:        requires-ge-macro.diff
 Patch51:        specfilemacro.diff
 Patch60:        safeugid.diff
 Patch61:        noprereqdeprec.diff
@@ -238,7 +237,7 @@ rm -rf sqlite
 %patch -P  5      -P 12 -P 13             -P 16       -P 18
 %patch                         -P 24 -P 25 -P 26             -P 29
 %patch -P 30       -P 32 -P 33 -P 34       -P 36       -P 38
-%patch                   -P 43       -P 45 -P 46 -P 47
+%patch                   -P 43       -P 45 -P 46
 %patch       -P 51
 %patch -P 60 -P 61                         -P 66 -P 67       -P 69
 %patch -P 70 -P 71       -P 73                   -P 77 -P 78 -P 79
