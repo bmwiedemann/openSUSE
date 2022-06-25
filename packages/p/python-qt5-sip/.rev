@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>970704</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4101d2962df80e974c71e9ff2ac9e02d</srcmd5>
+    <version>12.11.0</version>
+    <time>1656145423</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to ABI version 12.11.0
+  * The array type is now accessible from the sip module.</comment>
+    <requestid>984545</requestid>
+  </revision>
 </revisionlist>
