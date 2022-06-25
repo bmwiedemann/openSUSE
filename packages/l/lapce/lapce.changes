@@ -1,4 +1,120 @@
 -------------------------------------------------------------------
+Fri Jun 17 12:27:37 UTC 2022 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to version 0.1.2~0:
+  * bump version
+  * vertical scroll for horizontal scroll on editor tab header
+  * clean up
+  * clean up
+  * clean up
+  * clean up
+  * clean up
+  * clean up
+  * code cleanup
+  * code clean up
+  * store cursor position for undo/redo
+  * minimum rust version
+  * fix buffer update size
+  * fix editor height
+  * ctrl+right change to word_end_forward
+  * fix text overlapping
+  * add config for scroll beyond last line
+  * Fix new line ident bug
+  * add cut/copy/paste to context menu
+  * watch plugin themes
+  * load plugin themes
+  * Fix typo
+  * plugin download themes
+  * add extra elixir file extensions for syntax highlighting
+  * install local theme
+  * watch theme folder
+  * local theme lower string
+  * metadata if exits
+  * case insenstive of theme name
+  * bump git2 version
+  * bump regex version
+  * set syntax on scratch buffer
+  * export theme
+  * put theme colors together
+  * theme settings from kind
+  * color case
+  * settings reset to default
+  * reset settings
+  * reset button
+  * update setting change
+  * fix event
+  * add settings value kind
+  * rename buffer content value to settingsvalue
+  * add idle timer to editor view
+  * theme setting layout change
+  * use raw data
+  * hashmap change
+  * change the way to load theme
+  * add theme config
+  * fix: typo
+  * fix: format code
+  * switch ureq to reqwest for system proxy support
+  * feat: change `lapce warn` color
+  * feat: change `lapce warn` color
+  * feat: add `plugin load failed` message
+  * feat: add `plugin load failed` message
+  * Fix `Language` in toml files
+  * Update minimum cargo version
+  * added whitespace after comma
+  * Indicate minimum toolchain version preventing #572
+  * first pass of new documentation
+  * formatting error fix
+  * wgpu -> opengl readme
+  * Reviewed and tidied changes
+  * Refreshed readme and contributing files
+  * fix: don't overwrite permissions
+  * bump parley
+  * Fix formatting. Grrr.
+  * Restore comment in get_name_for_new_file.
+  * Only allocate one new string.
+  * Give names to several toggle commands
+  * cursor blink
+  * Change name of new scratch docs to 'Untitled-N'
+  * fix jump in the same file
+  * Run rustfmt.
+  * Today I learn about the funky (..) discard syntax.
+  * Implement 'new N' names for scratch buffers.
+  * style change
+  * default to no drop shadow
+  * header text change
+  * drop shadow width
+  * settings and key bindings
+  * focus on settings when open
+  * clippy fix
+  * settings event fix
+  * editor tab minum width
+  * editor tab header improvement
+  * setttings in editor tab
+  * generate new editor id when copy editor
+  * remove cancelcodeactions
+  * remove code action widget
+  * config menu position change
+  * code actions menu position
+  * code action to use context menu
+  * cancel completion and hover fix
+  * fix toggle modal in palette
+  * some more settings
+  * add config to change header height
+  * santilize modifiers
+  * Show diagnostics on hover
+  * bump parley to fix font issue
+  * linux build on ubuntu 18.04 to have a lower glibc version target
+  * more settings
+  * terminal config
+  * bump druid
+  * window icon
+  * tab for completion
+  * add some mac key maps
+  * Remove some deps
+  * Update README.md
+  * Add Fedora build deps
+
+-------------------------------------------------------------------
 Tue May 24 07:21:21 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 0.1.1~0:
