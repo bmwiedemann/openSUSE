@@ -11,4 +11,16 @@ There are efforts on the way in the upstream project to move to QWebEngine, and 
 I want to make OpenBoard available again in TW (and later also Leap) and therefore submit this package to Factory.</comment>
     <requestid>983997</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4c50de6dfb5cc06552fe955a2efed2a8</srcmd5>
+    <version>1.7.0~git20220608.47a96e1</version>
+    <time>1656145450</time>
+    <user>dimstar_suse</user>
+    <comment>- fix several issues
+  - add 0008-install-fonts.patch
+  - add 0637-fix-pdf-background-export.patch
+  - add 0641-fix-font-handling.patch
+</comment>
+    <requestid>984870</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,30 @@
+diff --git a/OpenBoard.pro b/OpenBoard.pro
+index b1c8ad72..877d3a2c 100644
+--- a/OpenBoard.pro
++++ b/OpenBoard.pro
+@@ -88,6 +88,7 @@ UB_ETC.files = resources/etc
+ UB_I18N.files = resources/i18n/*.qm
+ UB_LIBRARY.files = resources/library
+ UB_FONTS.files = resources/fonts
++UB_CUSTOM_FONTS.files = resources/customizations/fonts
+ UB_DESKTOP.files = resources/ch.openboard.OpenBoard.desktop
+ UB_ICON.files = resources/images/ch.openboard.OpenBoard.svg
+ 
+@@ -465,6 +466,8 @@ linux-g++* {
+     UB_LIBRARY.path = $$INSTALL_ROOT/$$PREFIX/share/OpenBoard/
+     UB_I18N.path = $$INSTALL_ROOT/$$PREFIX/share/OpenBoard/i18n/
+     UB_ETC.path = $$INSTALL_ROOT/$$PREFIX/share/OpenBoard/
++    UB_FONTS.path = $$INSTALL_ROOT/$$PREFIX/share/OpenBoard
++    UB_CUSTOM_FONTS.path = $$INSTALL_ROOT/$$PREFIX/share/OpenBoard/customizations
+     UB_DESKTOP.path = $$INSTALL_ROOT/$$PREFIX/share/applications/
+     UB_ICON.path = $$INSTALL_ROOT/$$PREFIX/share/icons/hicolor/scalable/apps/
+     system(mkdir -p $$BUILD_DIR)
+@@ -511,6 +514,8 @@ TRANSLATIONS = resources/i18n/OpenBoard_en.ts \
+ 
+ INSTALLS = UB_BINARY \
+    UB_ETC \
++   UB_FONTS \
++   UB_CUSTOM_FONTS \
+    UB_I18N \
+    UB_LIBRARY \
+    UB_DESKTOP \

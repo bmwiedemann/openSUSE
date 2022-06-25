@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 24 09:56:26 UTC 2022 - Martin Winter <me@letsfindaway.de>
+
+- minor changes in spec file
+
+-------------------------------------------------------------------
+Fri Jun 24 09:13:52 UTC 2022 - Martin Winter <me@letsfindaway.de>
+
+- fix several issues
+  - add 0008-install-fonts.patch
+  - add 0637-fix-pdf-background-export.patch
+  - add 0641-fix-font-handling.patch
+
+-------------------------------------------------------------------
 Sun Jun 19 13:03:26 UTC 2022 - Martin Winter <me@letsfindaway.de>
 
 - update to 1.7.0~git47a96e1

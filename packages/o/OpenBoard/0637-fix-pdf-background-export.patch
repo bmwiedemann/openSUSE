@@ -1,0 +1,30 @@
+From e360c574f9a8ce73795d73c9f7431c6262e588aa Mon Sep 17 00:00:00 2001
+From: letsfindaway <me@letsfindaway.de>
+Date: Wed, 22 Jun 2022 09:30:31 +0200
+Subject: [PATCH] fix: restore PDF background export
+
+- was not enabled with UBExportFullPDF
+---
+ src/adaptors/UBExportFullPDF.cpp | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/adaptors/UBExportFullPDF.cpp b/src/adaptors/UBExportFullPDF.cpp
+index baa38de4c..a3afc232d 100644
+--- a/src/adaptors/UBExportFullPDF.cpp
++++ b/src/adaptors/UBExportFullPDF.cpp
+@@ -142,7 +142,6 @@ void UBExportFullPDF::saveOverlayPdf(UBDocumentProxy* pDocumentProxy, const QStr
+             if (pageIndex != 0) pdfPrinter.newPage();
+ 
+             //render to PDF
+-            scene->setDrawingMode(true);
+             scene->render(pdfPainter, QRectF(), scene->normalizedSceneRect());
+ 
+             //restore screen rendering quality
+@@ -150,7 +149,6 @@ void UBExportFullPDF::saveOverlayPdf(UBDocumentProxy* pDocumentProxy, const QStr
+             scene->setRenderingQuality(UBItem::RenderingQualityNormal, UBItem::CacheAllowed);
+ 
+             //restore background state
+-            scene->setDrawingMode(false);
+             scene->setBackground(isDark, pageBackground);
+         }
+ 

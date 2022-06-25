@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,11 +25,11 @@ Name:           OpenBoard
 %define         gitdate  20220608
 %define         buildver 0608
 Version:        1.7.0~git%{gitdate}.%{gitshort}
-Release:        1
+Release:        0
 Summary:        Interactive whiteboard for schools and universities
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Amusements/Teaching/Other
-Url:            http://openboard.ch
+URL:            http://openboard.ch
 Source0:        https://github.com/OpenBoard-org/OpenBoard/archive/%{githash}.zip#/OpenBoard-%{githash}.zip
 Patch0:         0001-Rewrite-libs.pri.patch
 Patch1:         0002-Install-to-correct-directories-on-linux.patch
@@ -38,6 +38,7 @@ Patch3:         0004-Use-QStandardPaths-to-locate-resources.patch
 Patch4:         0005-Add-svg-icon.patch
 Patch5:         0006-pro-Remove-UB_THIRDPARTY_INTERACTIVE.patch
 Patch6:         0007-Linux-Only-use-onboard-by-default-if-it-s-installed.patch
+Patch7:         0008-install-fonts.patch
 # https://github.com/OpenBoard-org/OpenBoard/pull/551
 Patch551:       0551-common-background-drawing.patch
 # https://github.com/OpenBoard-org/OpenBoard/pull/569
@@ -48,11 +49,16 @@ Patch604:       0604-qt-5.12-compatibility.patch
 Patch629:       0629-bug-ruler.patch
 # https://github.com/OpenBoard-org/OpenBoard/pull/633
 Patch633:       0633-improve-displaymanager.patch
+# https://github.com/OpenBoard-org/OpenBoard/pull/637
+Patch637:       0637-fix-pdf-background-export.patch
+# https://github.com/OpenBoard-org/OpenBoard/pull/641
+Patch641:       0641-fix-font-handling.patch
 
-BuildRequires:  unzip
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  ffmpeg-devel
+BuildRequires:  unzip
+BuildRequires:  unzip
 %if 0%{?sle_version} > 150200 || 0%{?suse_version} > 1520
 BuildRequires:  pkgconfig(quazip1-qt5)
 %else
@@ -70,9 +76,9 @@ BuildRequires:  pkgconfig(Qt5UiTools)
 BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5XmlPatterns)
+BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(poppler)
-BuildRequires:  pkgconfig(freetype2)
 
 %description
 OpenBoard is an open source cross-platform interactive white board
@@ -89,11 +95,14 @@ Uniboard.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 %patch551 -p1
 %patch569 -p1
 %patch604 -p1
 %patch629 -p1
 %patch633 -p1
+%patch637 -p1
+%patch641 -p1
 
 # insert version
 sed -i 's/VERSION_BUILD = 0225/VERSION_BUILD = %{buildver}/g' OpenBoard.pro
