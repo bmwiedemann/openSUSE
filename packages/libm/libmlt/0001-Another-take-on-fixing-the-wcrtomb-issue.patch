@@ -1,0 +1,33 @@
+From 19b80f67f2700f6e32b59e5c9a68c2227fee301a Mon Sep 17 00:00:00 2001
+From: Hans-Peter Jansen <hp@urpla.net>
+Date: Thu, 23 Jun 2022 17:06:50 +0200
+Subject: [PATCH] Another take on fixing the wcrtomb issue
+
+that boils down to a problem in glibc:
+https://github.com/bminor/glibc/commit/9bcd12d223a8990254b65e2dada54faa5d2742f3
+that appears, if sources are compiled with _FORTIFY_SOURCE=3, which is standard
+by a few distributions already.
+
+Make sure, a pointer, given to wcrtomb as first argument always has at least
+MB_CUR_MAX bytes available.
+---
+ src/modules/avformat/producer_avformat.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/modules/avformat/producer_avformat.c b/src/modules/avformat/producer_avformat.c
+index 6ec1ac63..0e4600f2 100644
+--- a/src/modules/avformat/producer_avformat.c
++++ b/src/modules/avformat/producer_avformat.c
+@@ -334,7 +334,8 @@ static char* filter_restricted( const char *in )
+ {
+ 	if ( !in ) return NULL;
+ 	size_t n = strlen( in );
+-	char *out = calloc( 1, n*3 + 1 );
++	// https://github.com/bminor/glibc/commit/9bcd12d223a8990254b65e2dada54faa5d2742f3
++	char *out = calloc( n + MB_CUR_MAX, 1 );
+ 	char *p = out;
+ 	mbstate_t mbs;
+ 	memset( &mbs, 0, sizeof(mbs) );
+-- 
+2.36.1
+

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Jun 23 15:20:03 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 7.8.0
+  + Framework
+    * Added mlt_frame_get_alpha_size() and refactored code to use
+      it.
+    * Fixed a possible null pointer crash in
+      mlt_service_apply_filters().
+  + Modules
+    * Added a glaxnimate producer to the glaxnimate module.
+    * Added new file extensions for glaxnimate producer: json,
+      lottie, rawr, tgs.
+    * Removed Qt4 compatibility from the qt module.
+    * Added Qt6 compatibility to the qt module.
+    * Added new file extensions for qimage producer: avif, heic,
+      heif, jxl.
+    * Fixed color_range when using the multi consumer.
+    * Fixed reloading updated results in the loudness filter.
+    * Fixed image_mode=blend in the timeremap link.
+    * Fixed crash regression in swscale filter with odd size YUV
+      image.
+    * Fixed the choppy filter may result in black frames with
+      transitions.
+    * Prevent a crash in avfilter producer for a bug in glibc with
+      _FORTIFY_SOURCE=3.
+
+- Remove merged upstream fixes
+  * 0001-fix-798-missing-function-returns.patch
+  * 0001-Supply-a-proper-return-value-on-non-void-functions.patch
+
+- Add
+  * 0001-Another-take-on-fixing-the-wcrtomb-issue.patch
+
+-------------------------------------------------------------------
 Fri May 27 15:54:21 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 7.6.0

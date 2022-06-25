@@ -1,5 +1,5 @@
 #
-# spec file for package libmlt
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -18,25 +18,23 @@
 
 %define _name mlt
 %define libname lib%{_name}
-%define lversion 7.6.0
+%define lversion 7.8.0
 %define sover 7
 %define lib_pkgname %{libname}-%{sover}-%{sover}
 %define _name_pp %{_name}++
 %define libname_pp lib%{_name_pp}
 %define sover_pp 7
-%define lversion_pp 7.6.0
+%define lversion_pp 7.8.0
 %define libpp_pkgname %{libname_pp}-%{sover_pp}-%{sover_pp}
 Name:           %{libname}
-Version:        7.6.0
+Version:        7.8.0
 Release:        0
 Summary:        Multimedia framework for television broadcasting
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.mltframework.org
 Source0:        https://github.com/mltframework/mlt/archive/v%{version}.tar.gz#/%{_name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM -- Missing return values in non-void functions
-Patch0:         0001-fix-798-missing-function-returns.patch
-Patch1:         0001-Supply-a-proper-return-value-on-non-void-functions.patch
+Patch0:         0001-Another-take-on-fixing-the-wcrtomb-issue.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
