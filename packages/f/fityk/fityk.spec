@@ -1,7 +1,7 @@
 #
 # spec file for package fityk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,10 @@ URL:            https://fityk.nieto.pl/
 Source:         https://github.com/wojdyr/fityk/releases/download/v%{version}/fityk-%{version}.tar.bz2
 # PATCH-FIX-UPSTREAM fityk-support-lua-5.4.patch badshah400@gmail.com -- Support lua up to version 5.4; patch taken from upstream git commit
 Patch0:         fityk-support-lua-5.4.patch
+# PATCH-FIX-UPSTREAM fityk-drop-dynamic-exceptions.patch gh#wojdyr/fityk#38 badshah400@gmail.com -- Drop dynamic exceptions to build with c++17 std; patch taken from upstream merge request
+Patch1:         fityk-drop-dynamic-exceptions.patch
+# PATCH-FIX-UPSTREAM fityk-ignore-distutils-deprecation-warning.patch badshah400@gmail.com -- Disable deprecation warning when importing distutils.
+Patch2:         fityk-ignore-distutils-deprecation-warning.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -101,11 +105,6 @@ This package contains python bindings to Fityk library.
 %autosetup -p1
 
 %build
-# Force c++14 to continue using dynamic exceptions removed in c+=17
-# https://github.com/wojdyr/fityk/issues/37
-%if 0%{?suse_version} >= 1550
-export CXXFLAGS+=' -std=c++14'
-%endif
 export PYTHON=%{_bindir}/python3
 autoreconf -fvi
 %configure \

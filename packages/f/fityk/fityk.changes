@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun 22 15:41:16 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add fityk-ignore-distutils-deprecation-warning.patch: Ignore
+  deprecation warning when import distutils for python so that the
+  configure script does not error out.
+
+-------------------------------------------------------------------
+Fri Apr 29 12:41:10 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add fityk-drop-dynamic-exceptions.patch: Drop dynamic exceptions
+  to build with c++17 std; patch taken from upstream merge request
+  [gh#wojdyr/fityk#38].
+- Drop enforced `std=c++14` in light of above patch.
+
+-------------------------------------------------------------------
 Sun Jun 13 12:09:46 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Enforce `std=c++14` when building on openSUSE >= 1550 where
