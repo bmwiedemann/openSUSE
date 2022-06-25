@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 24 08:47:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- The build does not depend on easymock
+
+-------------------------------------------------------------------
 Mon May 16 15:56:00 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

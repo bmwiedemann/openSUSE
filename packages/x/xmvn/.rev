@@ -87,4 +87,12 @@
     <comment>Sync changes with sle</comment>
     <requestid>979222</requestid>
   </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>7f4a4aedbe1e85dd99548e7ac59534d1</srcmd5>
+    <version>4.0.0</version>
+    <time>1656145450</time>
+    <user>dimstar_suse</user>
+    <comment>Unnecessary dependency</comment>
+    <requestid>984862</requestid>
+  </revision>
 </revisionlist>

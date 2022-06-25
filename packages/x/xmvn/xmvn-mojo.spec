@@ -55,7 +55,6 @@ BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-container-default)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
-BuildRequires:  mvn(org.easymock:easymock)
 #!BuildRequires: maven-compiler-plugin-bootstrap
 #!BuildRequires: maven-jar-plugin-bootstrap
 #!BuildRequires: maven-javadoc-plugin-bootstrap
