@@ -418,4 +418,24 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>966142</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>822b77b3a0b18ceea935d22873599038</srcmd5>
+    <version>1.28.15</version>
+    <time>1656145436</time>
+    <user>dimstar_suse</user>
+    <comment>- Spec file: Removed URL from source line 
+
+- Update to version 1.28.15:
+  * pdftops: Identify old LaserJets more precisely for swicth to Poppler
+  * Make pdftopdf also work correctly with auro-rotating off
+  * libcupsfilters: Make pdftopdf() correctly working with &quot;landscape&quot; option
+  * rastertopdf: Filter fails if no PCLm default resolution given by printer
+  * pdftopdf: Fix N-up printing with long-edge-first
+  * libcupsfilters: In pdftopdf() fix cropping with long-edge-first
+  * pdftops: Use Poppler for all Apple LaserWriter models
+
+- Enable OBS source services. Stay at 1.28.12 for now.
+  * add _service file</comment>
+    <requestid>984904</requestid>
+  </revision>
 </revisionlist>

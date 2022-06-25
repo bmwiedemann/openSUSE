@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jun 24 14:06:36 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Spec file: Removed URL from source line 
+
+-------------------------------------------------------------------
+Thu Jun 09 10:39:52 UTC 2022 - mwilck@suse.com
+
+- Update to version 1.28.15:
+  * pdftops: Identify old LaserJets more precisely for swicth to Poppler
+  * Make pdftopdf also work correctly with auro-rotating off
+  * libcupsfilters: Make pdftopdf() correctly working with "landscape" option
+  * rastertopdf: Filter fails if no PCLm default resolution given by printer
+  * pdftopdf: Fix N-up printing with long-edge-first
+  * libcupsfilters: In pdftopdf() fix cropping with long-edge-first
+  * pdftops: Use Poppler for all Apple LaserWriter models
+
+-------------------------------------------------------------------
+Thu Jun 09 10:24:22 UTC 2022 - mwilck@suse.com
+
+- Enable OBS source services. Stay at 1.28.12 for now.
+  * add _service file
+
+-------------------------------------------------------------------
 Tue Mar 22 18:38:20 UTC 2022 - Aurélien Joga <aurelienjoga@gmail.com>
 
 - Version upgrade to 1.28.12
