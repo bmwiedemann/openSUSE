@@ -15,11 +15,11 @@ Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
  Config/std.h |    2 ++
  1 file changed, 2 insertions(+)
 
-Index: ThePEG-2.1.1/Config/std.h
+Index: ThePEG-2.2.3/Config/std.h
 ===================================================================
---- ThePEG-2.1.1.orig/Config/std.h
-+++ ThePEG-2.1.1/Config/std.h
-@@ -100,6 +100,8 @@ using std::sqrt;
+--- ThePEG-2.2.3.orig/Config/std.h
++++ ThePEG-2.2.3/Config/std.h
+@@ -103,6 +103,8 @@ using std::sqrt;
  using std::abs;
  using std::atan2;
  using std::isfinite;

@@ -1,7 +1,7 @@
 #
 # spec file for package ThePEG
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_with java
 
 Name:           ThePEG
-Version:        2.2.2
+Version:        2.2.3
 Release:        0
 Summary:        Toolkit providing a common platform for event generators in C++
 License:        GPL-2.0-only
