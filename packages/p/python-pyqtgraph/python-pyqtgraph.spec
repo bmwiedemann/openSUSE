@@ -17,15 +17,15 @@
 
 
 %{?!python_module:%define python_module() python3-%{**}}
-%bcond_without  test
 %define skip_python2 1
+%bcond_without  test
 Name:           python-pyqtgraph
-Version:        0.12.3
+Version:        0.12.4
 Release:        0
 Summary:        Scientific Graphics and GUI Library for Python
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://www.pyqtgraph.org/
+URL:            https://www.pyqtgraph.org/
 # test data is only in the GitHub archive
 Source:         https://github.com/pyqtgraph/pyqtgraph/archive/refs/tags/pyqtgraph-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
@@ -35,6 +35,14 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210628
 BuildRequires:  python3-Sphinx
+Requires:       python-numpy >= 1.17
+Recommends:     python-colorcet
+Recommends:     python-cupy
+Recommends:     python-h5py
+Recommends:     python-numba
+Recommends:     python-opengl
+Recommends:     python-scipy
+BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module PyQt6 >= 6.1}
 BuildRequires:  %{python_module h5py}
@@ -49,19 +57,11 @@ BuildRequires:  python3-pyside2 >= 5.12
 # Tests fail
 #BuildRequires:  python3-pyside6
 %endif
-Requires:       python-numpy >= 1.17
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 Requires:       (python-qt5 >= 5.12 or python-PyQt6 >= 6.1 or python3-pyside2 >= 5.12)
 %else
 Requires:       (python-qt5 >= 5.12 or python-PyQt6 >= 6.1)
 %endif
-Recommends:     python-colorcet
-Recommends:     python-cupy
-Recommends:     python-h5py
-Recommends:     python-numba
-Recommends:     python-opengl
-Recommends:     python-scipy
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -83,13 +83,13 @@ Documentation and help files for %{name}
 %prep
 %setup -q -n pyqtgraph-pyqtgraph-%{version}
 # Fix rpmlint
-chmod a-x examples/Symbols.py
+chmod a-x pyqtgraph/examples/Symbols.py
 # only a handful of example scripts have interpreter lines, remove all, they don't have executable bits
-sed -i '1{/^#!/ d}' examples/*.py
+sed -i '1{/^#!/ d}' pyqtgraph/examples/*.py
 # fix eol encoding
-sed -i 's/\r//' examples/DateAxisItem_QtDesigner.ui
+sed -i 's/\r//' pyqtgraph/examples/DateAxisItem_QtDesigner.ui
 # gcc calls, but not properly marked as script
-chmod -x examples/verlet_chain/make
+chmod -x pyqtgraph/examples/verlet_chain/make
 
 %build
 %python_build
@@ -105,9 +105,9 @@ popd
 mkdir -p %{buildroot}%{_docdir}/%{name}/
 cp -r doc/build/html %{buildroot}%{_docdir}/%{name}/
 cp -r doc/build/doctrees %{buildroot}%{_docdir}/%{name}/
-cp -r examples %{buildroot}%{_docdir}/%{name}/
+cp -r pyqtgraph/examples %{buildroot}%{_docdir}/%{name}/
 
-%python_compileall
+%{python_compileall}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %fdupes %{buildroot}%{_docdir}/%{name}/
 
