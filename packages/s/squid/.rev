@@ -1037,4 +1037,18 @@ from the squid 3.x changelog</comment>
     <comment>- Do not try to set special permissions for basic_pam_auth (bsc#1197649)</comment>
     <requestid>966241</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>1a9031d630aeeaf5d2abe16400e7847a</srcmd5>
+    <version>5.6</version>
+    <time>1656145454</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.6:
+  * Improve handling of Gopher responses (bsc#1200907, CVE-2021-46784)
+- Changes in 5.5:
+  * fixes regression Bug 5192: esi_parser default is incorrect
+  * Bug 5177: clientca certificates sent to https_port clients
+  * Bug 5090: Must(!request-&gt;pinnedConnection()) violation
+  * Kid restart leads to persistent queue overflows, delays/timeouts</comment>
+    <requestid>984871</requestid>
+  </revision>
 </revisionlist>

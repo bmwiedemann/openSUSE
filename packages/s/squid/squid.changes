@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 24 09:26:49 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Update to 5.6:
+  * Improve handling of Gopher responses (bsc#1200907, CVE-2021-46784)
+
+- Changes in 5.5:
+  * fixes regression Bug 5192: esi_parser default is incorrect
+  * Bug 5177: clientca certificates sent to https_port clients
+  * Bug 5090: Must(!request->pinnedConnection()) violation
+  * Kid restart leads to persistent queue overflows, delays/timeouts
+
+-------------------------------------------------------------------
 Thu Mar 31 14:24:59 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - Do not try to set special permissions for basic_pam_auth (bsc#1197649)
