@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 23 06:30:01 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * require python >= 3.7 and updated numpy version requirement
+
+- update to version 0.13.0
+  * Dropped support for Python versions older than 3.7, in particular,
+    for Python 2.7.
+  * Dropped support for NumPy versions older than 1.16
+  * Switched test runner to pytest, and CI to Github Actions
+
+-------------------------------------------------------------------
 Sat Nov 27 20:40:23 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - specfile:
