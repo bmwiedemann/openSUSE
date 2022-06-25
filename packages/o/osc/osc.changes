@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun 24 13:33:36 UTC 2022 - Daniel Mach <daniel.mach@suse.com>
+
+- 0.180.0
+  - warn when trying to commit a prj/pac managed in scm
+  - fix crash on "osc up" for git based package/projects
+  - don't traceback on invalid credentials manager
+  - improve README, rename it to README.md
+  - declare OscHTTPSignatureAuthHandler as a new-style class
+  - remove illegal character in comment 
+
+-------------------------------------------------------------------
 Thu Jun  2 12:31:16 UTC 2022 - Daniel Mach <daniel.mach@suse.com>
 
 - 0.179.0

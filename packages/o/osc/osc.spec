@@ -27,7 +27,7 @@
 %define use_python python
 %endif
 
-%define version_unconverted 0.179.0
+%define version_unconverted 0.180.0
 %define osc_plugin_dir %{_prefix}/lib/osc-plugins
 %define macros_file macros.osc
 %if ! %{defined _rpmmacrodir}
@@ -35,7 +35,7 @@
 %endif
 
 Name:           osc
-Version:        0.179.0
+Version:        0.180.0
 Release:        0
 Summary:        Open Build Service Commander
 License:        GPL-2.0-or-later
@@ -192,9 +192,9 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 %if 0%{?suse_version} >= 1500
 %license COPYING
-%doc AUTHORS README TODO NEWS
+%doc AUTHORS README.md TODO NEWS
 %else
-%doc AUTHORS README TODO NEWS COPYING
+%doc AUTHORS README.md TODO NEWS COPYING
 %endif
 %{_bindir}/osc*
 %{python_sitelib}/*
