@@ -1,7 +1,7 @@
-Index: fedora-policy/policy/modules/system/locallogin.te
+Index: fedora-policy-20220624/policy/modules/system/locallogin.te
 ===================================================================
---- fedora-policy.orig/policy/modules/system/locallogin.te	2020-02-19 09:36:25.440182406 +0000
-+++ fedora-policy/policy/modules/system/locallogin.te	2020-02-21 08:52:35.961803038 +0000
+--- fedora-policy-20220624.orig/policy/modules/system/locallogin.te
++++ fedora-policy-20220624/policy/modules/system/locallogin.te
 @@ -63,6 +63,7 @@ kernel_read_system_state(local_login_t)
  kernel_read_kernel_sysctls(local_login_t)
  kernel_search_key(local_login_t)
@@ -10,3 +10,11 @@ Index: fedora-policy/policy/modules/system/locallogin.te
  
  corecmd_list_bin(local_login_t)
  corecmd_read_bin_symlinks(local_login_t)
+@@ -137,6 +138,7 @@ auth_rw_faillog(local_login_t)
+ auth_manage_pam_console_data(local_login_t)
+ auth_domtrans_pam_console(local_login_t)
+ auth_use_nsswitch(local_login_t)
++auth_read_shadow(local_login_t)
+ 
+ init_dontaudit_use_fds(local_login_t)
+ init_stream_connect(local_login_t)

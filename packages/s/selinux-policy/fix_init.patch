@@ -1,7 +1,7 @@
-Index: fedora-policy-20220428/policy/modules/system/init.te
+Index: fedora-policy-20220624/policy/modules/system/init.te
 ===================================================================
---- fedora-policy-20220428.orig/policy/modules/system/init.te
-+++ fedora-policy-20220428/policy/modules/system/init.te
+--- fedora-policy-20220624.orig/policy/modules/system/init.te
++++ fedora-policy-20220624/policy/modules/system/init.te
 @@ -187,6 +187,8 @@ allow init_t self:bpf { map_create map_r
  # setuid (from /sbin/shutdown)
  # sys_chroot (from /usr/bin/chroot): now provided by corecmd_chroot_exec_chroot()
@@ -28,7 +28,7 @@ Index: fedora-policy-20220428/policy/modules/system/init.te
  
  seutil_read_config(init_t)
  seutil_read_login_config(init_t)
-@@ -446,9 +451,19 @@ ifdef(`distro_redhat',`
+@@ -448,9 +453,19 @@ ifdef(`distro_redhat',`
  corecmd_shell_domtrans(init_t, initrc_t)
  
  storage_raw_rw_fixed_disk(init_t)
@@ -46,9 +46,9 @@ Index: fedora-policy-20220428/policy/modules/system/init.te
 +')
 +
  optional_policy(`
-     bootloader_domtrans(init_t)
- ')
-@@ -573,10 +588,10 @@ tunable_policy(`init_audit_control',`
+ 	anaconda_stream_connect(init_t)
+ 	anaconda_create_unix_stream_sockets(init_t)
+@@ -580,10 +595,10 @@ tunable_policy(`init_audit_control',`
  allow init_t self:system all_system_perms;
  allow init_t self:system module_load;
  allow init_t self:unix_dgram_socket { create_socket_perms sendto };
@@ -61,7 +61,7 @@ Index: fedora-policy-20220428/policy/modules/system/init.te
  allow init_t self:netlink_selinux_socket create_socket_perms;
  allow init_t self:unix_dgram_socket lock;
  # Until systemd is fixed
-@@ -635,6 +650,7 @@ files_delete_all_spool_sockets(init_t)
+@@ -642,6 +657,7 @@ files_delete_all_spool_sockets(init_t)
  files_create_var_lib_dirs(init_t)
  files_create_var_lib_symlinks(init_t)
  files_read_var_lib_symlinks(init_t)
@@ -69,7 +69,7 @@ Index: fedora-policy-20220428/policy/modules/system/init.te
  files_manage_urandom_seed(init_t)
  files_list_locks(init_t)
  files_list_spool(init_t)
-@@ -672,7 +688,7 @@ fs_list_all(init_t)
+@@ -679,7 +695,7 @@ fs_list_all(init_t)
  fs_list_auto_mountpoints(init_t)
  fs_register_binary_executable_type(init_t)
  fs_relabel_tmpfs_sock_file(init_t)
@@ -78,7 +78,7 @@ Index: fedora-policy-20220428/policy/modules/system/init.te
  fs_relabel_cgroup_dirs(init_t)
  fs_search_cgroup_dirs(init_t)
  # for network namespaces
-@@ -728,6 +744,7 @@ systemd_write_inherited_logind_sessions_
+@@ -735,6 +751,7 @@ systemd_write_inherited_logind_sessions_
  create_sock_files_pattern(init_t, init_sock_file_type, init_sock_file_type)
  
  create_dirs_pattern(init_t, var_log_t, var_log_t)
@@ -86,7 +86,7 @@ Index: fedora-policy-20220428/policy/modules/system/init.te
  
  auth_use_nsswitch(init_t)
  auth_rw_login_records(init_t)
-@@ -1578,6 +1595,8 @@ optional_policy(`
+@@ -1589,6 +1606,8 @@ optional_policy(`
  
  optional_policy(`
  	postfix_list_spool(initrc_t)

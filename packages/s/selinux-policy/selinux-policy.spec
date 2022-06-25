@@ -33,7 +33,7 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20220520
+Version:        20220624
 Release:        0
 Source:         fedora-policy-%{version}.tar.bz2
 Source1:        selinux-policy-rpmlintrc
@@ -88,7 +88,6 @@ Source131:      rebootmgr.fc
 Patch001:       fix_djbdns.patch
 Patch002:       fix_dbus.patch
 Patch004:       fix_java.patch
-Patch005:       fix_hadoop.patch
 Patch006:       fix_thunderbird.patch
 Patch007:       fix_postfix.patch
 Patch008:       fix_nscd.patch

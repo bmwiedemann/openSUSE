@@ -1,7 +1,7 @@
-Index: fedora-policy-20211111/policy/modules/system/logging.fc
+Index: fedora-policy-20220624/policy/modules/system/logging.fc
 ===================================================================
---- fedora-policy-20211111.orig/policy/modules/system/logging.fc
-+++ fedora-policy-20211111/policy/modules/system/logging.fc
+--- fedora-policy-20220624.orig/policy/modules/system/logging.fc
++++ fedora-policy-20220624/policy/modules/system/logging.fc
 @@ -3,6 +3,8 @@
  /etc/rsyslog.conf		gen_context(system_u:object_r:syslog_conf_t,s0)
  /etc/syslog.conf		gen_context(system_u:object_r:syslog_conf_t,s0)
@@ -19,11 +19,11 @@ Index: fedora-policy-20211111/policy/modules/system/logging.fc
  /var/run/systemd/journal/syslog	-s	gen_context(system_u:object_r:devlog_t,mls_systemhigh)
  
  /var/spool/audit(/.*)?		gen_context(system_u:object_r:audit_spool_t,mls_systemhigh)
-Index: fedora-policy-20211111/policy/modules/system/logging.if
+Index: fedora-policy-20220624/policy/modules/system/logging.if
 ===================================================================
---- fedora-policy-20211111.orig/policy/modules/system/logging.if
-+++ fedora-policy-20211111/policy/modules/system/logging.if
-@@ -1787,3 +1787,22 @@ interface(`logging_dgram_send',`
+--- fedora-policy-20220624.orig/policy/modules/system/logging.if
++++ fedora-policy-20220624/policy/modules/system/logging.if
+@@ -1788,3 +1788,22 @@ interface(`logging_dgram_send',`
  
  	allow $1 syslogd_t:unix_dgram_socket sendto;
  ')

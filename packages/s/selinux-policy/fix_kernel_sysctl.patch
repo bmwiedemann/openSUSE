@@ -1,8 +1,8 @@
-Index: fedora-policy-20220428/policy/modules/kernel/files.fc
+Index: fedora-policy-20220624/policy/modules/kernel/files.fc
 ===================================================================
---- fedora-policy-20220428.orig/policy/modules/kernel/files.fc
-+++ fedora-policy-20220428/policy/modules/kernel/files.fc
-@@ -236,6 +236,8 @@ ifdef(`distro_redhat',`
+--- fedora-policy-20220624.orig/policy/modules/kernel/files.fc
++++ fedora-policy-20220624/policy/modules/kernel/files.fc
+@@ -242,6 +242,8 @@ ifdef(`distro_redhat',`
  /usr/lib/ostree-boot(/.*)?                gen_context(system_u:object_r:usr_t,s0)
  /usr/lib/modules(/.*)/vmlinuz         -- 	gen_context(system_u:object_r:usr_t,s0)
  /usr/lib/modules(/.*)/initramfs.img   --	gen_context(system_u:object_r:usr_t,s0)
@@ -11,10 +11,10 @@ Index: fedora-policy-20220428/policy/modules/kernel/files.fc
  
  /usr/doc(/.*)?/lib(/.*)?	gen_context(system_u:object_r:usr_t,s0)
  
-Index: fedora-policy-20220428/policy/modules/system/systemd.te
+Index: fedora-policy-20220624/policy/modules/system/systemd.te
 ===================================================================
---- fedora-policy-20220428.orig/policy/modules/system/systemd.te
-+++ fedora-policy-20220428/policy/modules/system/systemd.te
+--- fedora-policy-20220624.orig/policy/modules/system/systemd.te
++++ fedora-policy-20220624/policy/modules/system/systemd.te
 @@ -1052,6 +1052,8 @@ init_stream_connect(systemd_sysctl_t)
  logging_send_syslog_msg(systemd_sysctl_t)
  

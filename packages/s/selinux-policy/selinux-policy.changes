@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 24 06:32:55 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 20220624. Refreshed:
+  * fix_init.patch
+  * fix_kernel_sysctl.patch
+  * fix_logging.patch
+  * fix_networkmanager.patch
+  * fix_unprivuser.patch
+  Dropped fix_hadoop.patch, not necessary anymore
+* Updated fix_locallogin.patch to allow accesses for nss-systemd 
+  (bsc#1199630)
+
+-------------------------------------------------------------------
 Fri May 20 13:46:47 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 20220520 to pass stricter 3.4 toolchain checks
