@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 23 11:09:31 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch mem-used-bsc1181475.patch (bsc#1181475)
+  * Adopt change of used memory calculation from upstream of procps
+
+-------------------------------------------------------------------
 Tue May 24 17:53:52 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - removed obsolete skip-partitions-erros.patch

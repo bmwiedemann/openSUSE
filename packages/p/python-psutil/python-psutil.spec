@@ -36,6 +36,8 @@ Patch1:         skip-obs.patch
 Patch2:         skip_failing_tests.patch
 # PATCH-FIX-SLE skip_rlimit_tests_on_python2.patch alarrosa@suse.com
 Patch3:         skip_rlimit_tests_on_python2.patch
+# PATCH-FIX-SLE adopt change of used memory of procps
+Patch4:         mem-used-bsc1181475.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
