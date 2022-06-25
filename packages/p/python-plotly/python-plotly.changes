@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue May 31 03:06:21 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.8.0:
+  * Fixed
+    + Improve support for type checking and IDE auto-completion by
+      bypassing lazy-loading when type checking. #3425 with thanks to
+      @JP-Ellis
+    + line dash-style validators are now correctly used everywhere so
+      that values like 10px 2px are accepted #3722
+    + Resolved various deprecation warning messages and compatibility
+      issues with upstream dependencies and Python 3.11, plus removed
+      dependency on six, with thanks to @maresb, @hugovk, @tirkarthi,
+      @martinRenou, and @BjoernLudwigPTB
+    + Better support for MathJax 3 #3706
+  * Added
+    + Type annotations for Plotly Express functions and chainable
+      go.Figure methods, for better IDE auto-completion #3708
+  * Updated
+    + Updated Plotly.js to from version 2.11.1 to version 2.12.1. See
+      the plotly.js CHANGELOG for more information. Notable changes
+      include:
+      - Add minor ticks to cartesian axes
+      - Add griddash option to most axes
+
+- changes from version 5.7.0:
+  * Added
+    + added pattern_shape options to px.area() #3668
+  * Updated
+    + Updated Plotly.js to from version 2.9.0 to version 2.11.1. See
+      the plotly.js CHANGELOG for more information. Notable changes
+      include:
+      - Add fillpattern options to scatter trace
+      - Various JS-specific improvements such as MathJax 3.0 support
+
+-------------------------------------------------------------------
 Thu Feb 10 04:17:07 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 5.6.0:

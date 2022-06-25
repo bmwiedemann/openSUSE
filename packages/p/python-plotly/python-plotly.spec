@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-plotly
-Version:        5.6.0
+Version:        5.8.0
 Release:        0
 Summary:        Library for collaborative, interactive, publication-quality graphs
 License:        MIT
@@ -130,10 +130,7 @@ find . -name __init__.py -exec touch -m -r plotly/__init__.py '{}' ';'
 %check
 # No test suite in the PyPI package, which is required for the bundled JS files, go to the GitHub repo tree now.
 cd ../plotly.py-%{version}/packages/python/plotly
-%{pytest plotly/tests/test_core
-# cleanup between flavor runs
-rm plotly/tests/test_core/test_offline/plotly.min.js
-}
+%{pytest plotly/tests/test_core}
 # most of the optional packages are not available on python36: skip entire test suite
 python36_skip="-V"
 # not available
