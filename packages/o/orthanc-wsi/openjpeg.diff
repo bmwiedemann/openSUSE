@@ -1,0 +1,11 @@
+diff -U 3 -dHrN -- a/Resources/CMake/OpenJpegConfiguration.cmake b/Resources/CMake/OpenJpegConfiguration.cmake
+--- a/Resources/CMake/OpenJpegConfiguration.cmake	2021-12-11 16:04:43.000000000 +0100
++++ b/Resources/CMake/OpenJpegConfiguration.cmake	2022-06-23 14:27:56.975874624 +0200
+@@ -124,6 +124,7 @@
+     /usr/include/openjpeg-2.2/
+     /usr/include/openjpeg-2.3/
+     /usr/include/openjpeg-2.4/
++    /usr/include/openjpeg-2.5/
+     /usr/local/include/
+     )
+ 

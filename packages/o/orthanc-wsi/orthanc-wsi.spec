@@ -1,7 +1,7 @@
 #
 # spec file for package orthanc-wsi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,6 +27,7 @@ URL:            https://orthanc-server.com
 Source0:        https://www.orthanc-server.com/downloads/get.php?path=/whole-slide-imaging/OrthancWSI-%{version}.tar.gz
 Source1:        openlayers-3.19.0-dist.zip
 Source11:       orthanc-wsi-readme.SUSE
+Patch0:         openjpeg.diff
 BuildRequires:  cmake
 BuildRequires:  curl-devel
 BuildRequires:  dcmtk
@@ -68,6 +69,7 @@ The Orthanc project provides three official tools to support DICOM for whole-sli
 
 %prep
 %setup -q -n OrthancWSI-%{version}
+%autopatch -p1
 
 #OrthanPlugin may ask for additional files to be loaded
 #Putting them into this folder prevents download of sources from the web
