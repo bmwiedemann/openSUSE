@@ -3,7 +3,7 @@
     <param name="url">https://github.com/rust-lang/rust-analyzer</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">366bd7242ed00c65f293497a26eb81c7510ac682</param>
+    <param name="revision">427061da19723f2206fe4dcb175c9c43b9a6193d</param>
     <param name="versionrewrite-pattern">(\d+)-(\d+)-(\d+)</param>
     <param name="versionrewrite-replacement">\1.\2.\3</param>
     <param name="changesgenerate">enable</param>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 24 05:08:38 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 2022.06.20:
+  * fix: attribute macros not being properly diagnosed
+  * internal: Handle fractional release numbers in changelog naming
+  * Consider walking up macro expansions when searching for surrounding entities in completion analysis
+  * Move `CompletionContext::impl_def` into corresponding entities
+  * Move `CompletionContext::incomplete_let` into `PathKind::Expr`
+  * feat: add fold range for multi line match arm list
+  * Move `CompletionContext::function_def` into `PathKind::Expr`
+
+-------------------------------------------------------------------
 Tue Jun 14 06:39:35 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 2022.06.13:
