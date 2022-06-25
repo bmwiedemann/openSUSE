@@ -20,7 +20,7 @@
 %define api_ver 5
 %define libamtk libamtk-%{api_ver}-0
 Name:           amtk
-Version:        5.4.0
+Version:        5.4.1
 Release:        0
 Summary:        An Actions, Menus and Toolbars Kit
 License:        LGPL-3.0-or-later

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 23 10:52:26 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 5.4.1:
+  + Build system: check if compiler supports --version-script
+    linker option.
+  + Documentation improvements.
+
+-------------------------------------------------------------------
 Tue May 17 08:32:10 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 5.4.0:
