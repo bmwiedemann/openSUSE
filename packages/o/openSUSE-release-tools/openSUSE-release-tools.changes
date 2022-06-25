@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 24 13:26:13 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220624.4137841c:
+  * ci/testenv-tumbleweed: Add scm-obs-bridge for source_checker to container
+  * package: require git-scm-bridge by osrt-check-source
+
+-------------------------------------------------------------------
 Mon Jun 20 15:29:08 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220620.4d3c1856:

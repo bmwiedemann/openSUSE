@@ -20,7 +20,7 @@
 %define source_dir openSUSE-release-tools
 %define announcer_filename factory-package-news
 Name:           openSUSE-release-tools
-Version:        20220620.4d3c1856
+Version:        20220624.4137841c
 Release:        0
 Summary:        Tools to aid in staging and release work for openSUSE/SUSE
 License:        GPL-2.0-or-later AND MIT
@@ -103,6 +103,7 @@ OBS product release announcer for generating email diffs summaries.
 %package check-source
 Summary:        Check source review bot
 Group:          Development/Tools/Other
+Requires:       obs-scm-bridge
 Requires:       obs-service-download_files
 Requires:       obs-service-source_validator
 Requires:       osclib = %{version}
