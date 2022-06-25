@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 23 13:46:51 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Ship software-opensuse.gschema.override, declaring the
+  repositories 'repo-oss', 'repo-update', and 'repo-non-oss' as the
+  official repositories (boo#1189907).
+
+-------------------------------------------------------------------
 Mon May 30 14:59:55 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 42.2:

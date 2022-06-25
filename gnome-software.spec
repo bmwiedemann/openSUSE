@@ -107,6 +107,11 @@ rm %{buildroot}%{_datadir}/doc/%{name}/README.md
 mkdir -p %{buildroot}%{_distconfdir}/xdg/autostart
 mv %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.Software.desktop %{buildroot}%{_distconfdir}/xdg/autostart/org.gnome.Software.desktop
 
+cat >> %{buildroot}%{_datadir}/glib-2.0/schemas/org.gnome.software-opensuse.gschema.override << FOE
+[org.gnome.software]
+official-repos = [ 'repo-oss', 'repo-update', 'repo-non-oss' ]
+FOE
+
 %files
 %license COPYING
 %doc NEWS README.md
@@ -119,6 +124,7 @@ mv %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.Software.desktop %{buildro
 %{_datadir}/dbus-1/services/org.gnome.Software.service
 %{_datadir}/dbus-1/services/org.freedesktop.PackageKit.service
 %{_datadir}/glib-2.0/schemas/org.gnome.software.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.software-opensuse.gschema.override
 %dir %{_datadir}/gnome-shell
 %dir %{_datadir}/gnome-shell/search-providers
 %{_datadir}/gnome-shell/search-providers/org.gnome.Software-search-provider.ini
