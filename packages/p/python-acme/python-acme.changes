@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 24 19:25:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.28.0:
+  * use order "status" to determine action during finalization 
+
+-------------------------------------------------------------------
 Mon May 30 09:04:49 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Update to version 1.27.0
