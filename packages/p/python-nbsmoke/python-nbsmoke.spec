@@ -26,6 +26,8 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pyviz-dev/nbsmoke
 Source:         https://files.pythonhosted.org/packages/source/n/nbsmoke/nbsmoke-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE nbsmoke-obs-nounraisableexception.patch, don't error on warnings about obs not closing sockets in time, code@bnavigator.de
+Patch1:         nbsmoke-obs-nounraisableexception.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -62,7 +64,7 @@ Basic notebook smoke tests for checking whether the notebooks run,
 and whether they contain lint.
 
 %prep
-%setup -q -n nbsmoke-%{version}
+%autosetup -p1 -n nbsmoke-%{version}
 
 %build
 %python_build
