@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 23 06:34:32 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 3.1.7:
+  * Emphasis added for automatic differentiation
+  * Made the automatic differentiation capabilities clearer
+
+-------------------------------------------------------------------
 Thu Jul 22 02:06:55 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - update to version 3.1.6:
