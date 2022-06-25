@@ -76,7 +76,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        4.6.1655873339.ed30901
+Version:        4.6.1656072301.e097342
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -322,6 +322,7 @@ export OPENQA_TEST_TIMEOUT_SCALE_CI=10
 # docker-compose. Also, these tests are less relevant (or not relevant) for
 # packaging
 export CONTAINER_TEST=0
+export HELM_TEST=0
 make test PROVE_ARGS='-r -v' CHECKSTYLE=0 TEST_PG_PATH=%{buildroot}/DB
 rm -rf %{buildroot}/DB
 %endif

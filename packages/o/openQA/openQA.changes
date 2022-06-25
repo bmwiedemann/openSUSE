@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jun 24 15:11:36 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1656072301.e097342:
+  * Fix use of --no-refresh in continuous-update
+  * Avoid unintended vendor changes in openqa-continuous-update
+  * Makefile: Ensure "test" includes also helm tests
+  * Makefile: Prevent repetition of test-with-database call definition
+  * Retry hook scripts that use the exit code 142
+  * Add Chart Testing tool to CI workflow
+  * Add simple static check for Helm chart
+  * Add sub charts as dependencies to allow linting
+  * Add Helm chart for openQA-webui
+  * Exclude templated helm files from yamllint check
+  * Add Helm chart for openQA-worker
+  * Document working on database-related performance problems
+  * Fix warning "Query returned more than one row" for linked comments
+  * Avoid running out of database IDs - worker tables
+  * Fix too verbose message about unrecognized referer
+
+-------------------------------------------------------------------
 Wed Jun 22 07:11:37 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1655873339.ed30901:
