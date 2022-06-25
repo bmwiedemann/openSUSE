@@ -66,4 +66,30 @@
 </comment>
     <requestid>951796</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8aecb13513a17ac2222ca54364cc0822</srcmd5>
+    <version>6.6.2</version>
+    <time>1656145423</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.6.2
+  * Enums created with ABI v13 now handle unexpected values by
+    creating corresponding pseudo-members.
+  * Any config settings passed by a PEP 571 frontend are now used.
+  * The 'array' type is now accessible from the sip module.
+  * 'array' can now create one dimensional arrays of wrapped types
+    that can be modified in situ.
+  * Arguments using the /Array/ (and /ArraySize/) annotations will
+    now accept 'array' objects of the corresponding type.
+  * The latest version of ABI v13 is v13.4.0.
+  * The latest version of ABI v12 is v12.11.0.
+  * Bug fixes.
+- Update to version 6.6.1
+  * Python v3.6 is no longer supported.
+  * The .sip file parser (created using flex and bison) has been
+    replaced with a pure Python implementation using PLY.
+  * The latest version of ABI v13 is v13.3.1.
+  * The latest version of ABI v12 is v12.10.1.
+</comment>
+    <requestid>984595</requestid>
+  </revision>
 </revisionlist>

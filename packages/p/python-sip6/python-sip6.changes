@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jun 20 21:15:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.6.2
+  * Enums created with ABI v13 now handle unexpected values by
+    creating corresponding pseudo-members.
+  * Any config settings passed by a PEP 571 frontend are now used.
+  * The 'array' type is now accessible from the sip module.
+  * 'array' can now create one dimensional arrays of wrapped types
+    that can be modified in situ.
+  * Arguments using the /Array/ (and /ArraySize/) annotations will
+    now accept 'array' objects of the corresponding type.
+  * The latest version of ABI v13 is v13.4.0.
+  * The latest version of ABI v12 is v12.11.0.
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Wed Apr 13 08:06:26 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.6.1
+  * Python v3.6 is no longer supported.
+  * The .sip file parser (created using flex and bison) has been
+    replaced with a pure Python implementation using PLY.
+  * The latest version of ABI v13 is v13.3.1.
+  * The latest version of ABI v12 is v12.10.1.
+
+-------------------------------------------------------------------
 Sat Feb  5 20:26:49 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 6.5.1
