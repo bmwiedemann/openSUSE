@@ -17,10 +17,10 @@
 
 
 %define sover 2
-%define min_sover 2
+%define min_sover 3
 
 Name:           stellarsolver
-Version:        2.2
+Version:        2.3
 Release:        0
 Summary:        Astrometric Solver
 License:        GPL-3.0-or-later
@@ -40,6 +40,13 @@ BuildRequires:  pkgconfig(wcslib)
 %description
 An Astrometric Plate Solver for Mac, Linux, and Windows,
 built on Astrometry.net and SEP (sextractor).
+
+%package -n stellarbatchsolver
+Summary:        Batch images solver based on stellarsolver
+
+%description  -n stellarbatchsolver
+Tool that one could use to automatically solve, extract, and export a large number of images.
+This program is primarily meant for data reduction, but could also be used as a test for the library.
 
 %package -n libstellarsolver%{sover}
 Summary:        Astrometric Solver runtime library
@@ -61,9 +68,13 @@ Development headers and libraries for %{name}.
 
 %prep
 %autosetup -p1
+find . -name *DS_Store -delete
+sed -i 's/Version=2.2/Version=1.4/' stellarbatchsolver/com.github.rlancaste.stellarbatchsolver.desktop
 
 %build
-%cmake -DCMAKE_INSTALL_LIBDIR=%{_lib}
+%cmake \
+  -DCMAKE_INSTALL_LIBDIR=%{_lib} \
+  -DBUILD_BATCH_SOLVER=On
 %cmake_build
 
 %install
@@ -71,6 +82,26 @@ Development headers and libraries for %{name}.
 
 %post -n libstellarsolver%{sover} -p /sbin/ldconfig
 %postun -n libstellarsolver%{sover} -p /sbin/ldconfig
+
+%files -n stellarbatchsolver
+%{_bindir}/StellarBatchSolver
+%{_datadir}/applications/com.github.rlancaste.stellarbatchsolver.desktop
+%dir %{_datadir}/icons/hicolor
+%dir %{_datadir}/icons/hicolor/128x128/
+%dir %{_datadir}/icons/hicolor/128x128/apps
+%dir %{_datadir}/icons/hicolor/64x64/
+%dir %{_datadir}/icons/hicolor/64x64/apps
+%dir %{_datadir}/icons/hicolor/48x48/
+%dir %{_datadir}/icons/hicolor/48x48/apps
+%dir %{_datadir}/icons/hicolor/32x32/
+%dir %{_datadir}/icons/hicolor/32x32/apps
+%dir %{_datadir}/icons/hicolor/16x16/
+%dir %{_datadir}/icons/hicolor/16x16/apps
+%{_datadir}/icons/hicolor/128x128/apps/StellarBatchSolverIcon.png
+%{_datadir}/icons/hicolor/16x16/apps/StellarBatchSolverIcon.png
+%{_datadir}/icons/hicolor/32x32/apps/StellarBatchSolverIcon.png
+%{_datadir}/icons/hicolor/48x48/apps/StellarBatchSolverIcon.png
+%{_datadir}/icons/hicolor/64x64/apps/StellarBatchSolverIcon.png
 
 %files -n libstellarsolver%{sover}
 %license LICENSE

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 16 06:05:43 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.3:
+  * It can now selected the color channel one would like to extract or solve,
+    if it is an RGB image, or one can select to integrate or average the channels.
+  * Add StellarBatchSolver, a tool that can be used to automatically solve, extract,
+    and export a large number of images.
+  * Improvements to memory management.
+  * Performance improvements.
+  * Bug fixes.
+
+-------------------------------------------------------------------
 Wed Mar 16 06:49:12 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.2:
