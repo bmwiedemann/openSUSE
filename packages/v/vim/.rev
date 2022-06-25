@@ -5950,4 +5950,33 @@ always built-in because vim has direct perl dependencies anyway.
   * &quot;limit&quot; option of matchfuzzy() not always respected.</comment>
     <requestid>983876</requestid>
   </revision>
+  <revision rev="312" vrev="1">
+    <srcmd5>c0e524ff51dfb77d17e8ab634b3645a7</srcmd5>
+    <version>8.2.5154</version>
+    <time>1656145428</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.5154, fixes the following problems
+- fixed boo#1200184
+  * Debugger test fails when run with valgrind.
+  * Cannot build without the +channel feature. (Dominique Pellé)
+  * Various small issues.
+  * TIME_WITH_SYS_TIME is no longer supported by autoconf.
+  * Seachpair timeout test is flaky.
+  * Using &quot;volatile int&quot; in a signal handler might be wrong.
+  * Startup test fails if there is a status bar at the top of the
+  screen. (Ernie Rael)
+  * Some tests fail when using valgrind. Spurious leak reports.
+  * With 'lazyredraw' set completion menu may be displayed wrong.
+  * Exit test causes spurious valgrind reports.
+  * Memory leak when substitute expression nests.
+  * Flaky test always fails on retry.
+  * Invalid memory access when using an expression on the command line.
+  * Cannot build without the +eval feature. (Tony Mechelynck)
+  * Read past the end of the first line with &quot;:0;'{&quot;.
+  * Reading beyond the end of the line with lisp indenting.
+  * search() gets stuck with &quot;c&quot; and skip evaluates to true.
+  * &quot;make uninstall&quot; does not remove colors/lists.
+  * Still mentioning version8, some cosmetic issues.</comment>
+    <requestid>984835</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jun 24 07:47:35 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.5154, fixes the following problems
+- fixed boo#1200184
+  * Debugger test fails when run with valgrind.
+  * Cannot build without the +channel feature. (Dominique Pellé)
+  * Various small issues.
+  * TIME_WITH_SYS_TIME is no longer supported by autoconf.
+  * Seachpair timeout test is flaky.
+  * Using "volatile int" in a signal handler might be wrong.
+  * Startup test fails if there is a status bar at the top of the
+  screen. (Ernie Rael)
+  * Some tests fail when using valgrind. Spurious leak reports.
+  * With 'lazyredraw' set completion menu may be displayed wrong.
+  * Exit test causes spurious valgrind reports.
+  * Memory leak when substitute expression nests.
+  * Flaky test always fails on retry.
+  * Invalid memory access when using an expression on the command line.
+  * Cannot build without the +eval feature. (Tony Mechelynck)
+  * Read past the end of the first line with ":0;'{".
+  * Reading beyond the end of the line with lisp indenting.
+  * search() gets stuck with "c" and skip evaluates to true.
+  * "make uninstall" does not remove colors/lists.
+  * Still mentioning version8, some cosmetic issues.
+
+-------------------------------------------------------------------
 Mon Jun 20 08:06:56 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.5136, fixes the following problems
