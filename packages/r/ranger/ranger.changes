@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Jun 17 18:11:37 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding 'Recommends: python3-Pillow'
+
+-------------------------------------------------------------------
+Fri Jun 17 16:32:21 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.9.3+git20220615.7e2d1613:
+  * browsercolumn: Only add the separator when needed
+  * GHActions: Refrain from installing PyLint for tests
+  * browsercolumn: Fix separator depth
+  * GHActions: Rerun PyLint when requirements.txt changes
+  * pylint: Pin to 2.13.9
+  * browsercolumn: Use number of items for width
+  * browsercolumn: Take into account one_indexed setting
+  * browsercolumn: Lowercase line_numbers in key
+  * browsercolumn: Refactor linum_text_len
+  * browsercolumn: Fix relative line number width
+  * browsercolumn: Include linum_text_len in key
+  * browsercolumn: Remove off-by-one trailing space
+  * browsercolumn: Accept line_numbers case insensitively
+  * browsercolumn: Fix off-by-one in line number width
+  * Add viewnior in rifle config
+
+-------------------------------------------------------------------
+Fri May 27 19:29:58 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.9.3+git20220526.aaf03225:
+  * test_py2_compat: Ignore error message positions
+  * runner: Initialize variables outside of try-except
+  * accumulator: Make get_list an abstract method
+  * colorscheme: Make use an abstract method
+
+-------------------------------------------------------------------
 Fri Apr 22 20:07:58 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version 1.9.3+git20220401.391f061c:

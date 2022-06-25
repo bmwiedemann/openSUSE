@@ -18,7 +18,7 @@
 %define short_version 1.9.3
 
 Name:           ranger
-Version:        1.9.3+git20220401.391f061c
+Version:        1.9.3+git20220615.7e2d1613
 Release:        0
 Summary:        Console File Manager
 License:        GPL-3.0-or-later
@@ -37,6 +37,7 @@ Recommends:     atool
 Recommends:     highlight
 Recommends:     mediainfo
 Recommends:     w3m
+Recommends:     python3-Pillow
 BuildArch:      noarch
 
 %description
