@@ -212,4 +212,12 @@ This version works with llvm 4.</comment>
     <comment></comment>
     <requestid>946530</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>36373defb953d32a4dd093c871d37c1f</srcmd5>
+    <version>0.38.1</version>
+    <time>1656145458</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984879</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 23 07:17:01 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.38.1:
+  * PR `#841 <https://github.com/numba/llvmlite/pull/841>`_: Merge
+    pull request #813 from seibert/m1_support (`esc
+  * PR `#845 <https://github.com/numba/llvmlite/pull/845>`_: Backport
+    #786 for 0.38.1
+
+-------------------------------------------------------------------
 Fri Jan 14 17:12:17 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.38.0
