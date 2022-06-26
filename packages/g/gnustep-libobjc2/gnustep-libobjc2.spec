@@ -1,7 +1,7 @@
 #
 # spec file for package gnustep-libobjc2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ License:        MIT
 Group:          Development/Languages/C and C++
 URL:            https://github.com/gnustep/libobjc2
 Source:         https://github.com/gnustep/libobjc2/archive/v%{version}/%{_oname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gnustep-libobjc2-2.1-fix-trampoline-flags.patch -- gh#gnustep/libobjc2#177
+Patch0:         gnustep-libobjc2-2.1-fix-trampoline-flags.patch
 BuildRequires:  cmake >= 3.1
 BuildRequires:  fdupes
 BuildRequires:  gnustep-make
@@ -69,7 +71,7 @@ This package contains all necessary include files and libraries needed
 to develop applications with the GNUstep Objective-C runtime.
 
 %prep
-%setup -q -n %{_oname}-%{version}
+%autosetup -p1 -n %{_oname}-%{version}
 # Add link to build against system's robin-map-devel
 mkdir third_party/robin-map/include
 ln -s %{_includedir}/tsl third_party/robin-map/include/tsl
