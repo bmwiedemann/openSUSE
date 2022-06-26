@@ -36,7 +36,7 @@
 %define qt_major_version 6
 
 Name:           telegram-desktop
-Version:        4.0.0
+Version:        4.0.2
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only

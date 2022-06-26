@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jun 25 08:19:33 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.0.2
+  * Fix window title on Windows 7. (again)
+  * Fix file chooser and global menu on macOS.
+  * Crash fix and OpenAL check for PipeWire fix on Linux.
+
+-------------------------------------------------------------------
+Fri Jun 24 17:38:01 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.0.1
+  * Fix window title on Windows 7.
+  * Bug fixes and other minor improvements.
+
+-------------------------------------------------------------------
 Fri Jun 24 09:16:23 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update tg_owt; this does not include pipewire anymore, therefore:
