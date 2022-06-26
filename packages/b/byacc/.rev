@@ -264,4 +264,17 @@ http://invisible-island.net/byacc/CHANGES (forwarded request 185697 from elvigia
     <comment></comment>
     <requestid>925967</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>55448304ddc5c91c69147922f8ffb5df</srcmd5>
+    <version>20220128</version>
+    <time>1656237520</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20220128:
+  * change a few malloc's to calloc's so clang analyzer can see initialized data
+  * modify address computation in closure.c to avoid undefined behavior on
+    machines which do not support large offsets (analysis/patch by Jessica Clarke,
+    cf: 2014-09-17)
+  * testsuite and autotools/build script fixes</comment>
+    <requestid>985077</requestid>
+  </revision>
 </revisionlist>
