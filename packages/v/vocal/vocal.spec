@@ -1,7 +1,7 @@
 #
 # spec file for package vocal
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://vocalproject.net/
 Source:         https://github.com/needle-and-thread/vocal/archive/%{version}.tar.gz
 # PATCH-FIX-UPSTREAM vocal-fix-build.patch -- https://github.com/needle-and-thread/vocal/issues/483
 Patch:          vocal-fix-build.patch
+# PATCH-FIX-UPSTREAM vocal-2.4.2-vala-0.56.patch -- https://github.com/VocalPodcastProject/vocal/pull/503, rebased on 2.4.2
+Patch1:         vocal-2.4.2-vala-0.56.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

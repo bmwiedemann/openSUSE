@@ -1,0 +1,23 @@
+From bff6ca4ee0ddc194abbc736e88a6478d06008b55 Mon Sep 17 00:00:00 2001
+From: Bobby Rong <rjl931189261@126.com>
+Date: Mon, 14 Mar 2022 23:08:48 +0800
+Subject: [PATCH] Fix build with vala 0.56
+
+Otherwise the build fails with /build/vocal/src/Vocal.vala:67.50-70.9: error: value is less accessible than constant `Vocal.VocalApp.app_options'
+---
+ src/Vocal.vala | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Vocal.vala b/src/Vocal.vala
+index 2a64a95..7b511e3 100644
+--- a/src/Vocal.vala
++++ b/src/Vocal.vala
+@@ -62,7 +62,7 @@ namespace Vocal {
+             set_options();
+         }
+ 
+-        public const OptionEntry[] app_options = {
++        private const OptionEntry[] app_options = {
+             { "hidden", 'h', 0, OptionArg.NONE, out Option.OPEN_HIDDEN, "Open without displaying the window so podcasts will continue to update", null },
+             { null }
+         };

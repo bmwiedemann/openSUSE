@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 25 20:57:41 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Add vocal-2.4.2-vala-0.56.patch: Fix build with Vala 0.56.
+
+-------------------------------------------------------------------
 Thu Oct  7 13:20:10 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add vocal-fix-build.patch: Fix build with granite 6.0 and newer.
