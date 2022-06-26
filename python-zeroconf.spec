@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-zeroconf
-Version:        0.38.6
+Version:        0.38.7
 Release:        0
 Summary:        Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)
 License:        LGPL-2.0-only
@@ -56,7 +56,12 @@ does not force you to use a particular event loop or python-twisted.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest tests -k 'not (test_integration_with_listener_ipv6 or test_launch or test_close_multiple_times)'
+# Skip tests:
+# - test_integration_with_listener_ipv6: Requires network access
+# - test_launch*: Require network access
+# - test_close_multiple_times: Requires network access
+# - test_service_browser_expire_callbacks: Flakey (gh#jstasiak/python-zeroconf#1077)
+%pytest tests -k 'not (test_integration_with_listener_ipv6 or test_launch or test_close_multiple_times or test_service_browser_expire_callbacks)'
 
 %files %{python_files}
 %doc README.rst

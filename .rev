@@ -333,4 +333,16 @@
   * Fix IP Address updates when hostname is uppercase</comment>
     <requestid>980756</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>131e1baa87bf8f8a0af267c2719fe860</srcmd5>
+    <version>0.38.7</version>
+    <time>1656237555</time>
+    <user>dimstar_suse</user>
+    <comment>- Ignore flakey test (gh#jstasiak/python-zeroconf#1077).
+- update to 0.38.7: 
+  * Performance improvements for parsing incoming packet data
+    (gh#jstasiak/python-zeroconf#1076).
+</comment>
+    <requestid>985062</requestid>
+  </revision>
 </revisionlist>
