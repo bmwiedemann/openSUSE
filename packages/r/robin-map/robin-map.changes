@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jun 25 14:44:09 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 1.0.1:
+  * For the tests, force the usage of the Boost static libraries by
+    setting Boost_USE_STATIC_LIBS to ON in CMake
+    (gh#Tessil/robin-map#50).
+- Changes from version 1.0:
+  * Add support for efficient serialization.
+  * Remove compilation warnings when -Wshadow flag is set.
+  * Fix USE_STORED_HASH_ON_REHASH to return true when bucket_count
+    is 0, STORE_HASH is true and is_power_of_two_policy::value is
+    true.
+  * Fix CMake warning by specifying a project language before
+    including GNUInstallDirs.
+  * Create a local tsl-robin-mapTargets.cmake
+    (gh#Tessil/robin-map#45).
+
+-------------------------------------------------------------------
 Sat Feb 27 14:07:52 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 0.6.3:

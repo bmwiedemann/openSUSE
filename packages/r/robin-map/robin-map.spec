@@ -1,7 +1,7 @@
 #
 # spec file for package robin-map
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           robin-map
-Version:        0.6.3
+Version:        1.0.1
 Release:        0
 Summary:        C++ implementation of a fast hash map and hash set using robin hood hashing
 License:        MIT
