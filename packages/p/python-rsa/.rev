@@ -182,4 +182,18 @@
     <comment></comment>
     <requestid>929838</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>cd202490d2e89a7a71eb63fe7cecd924</srcmd5>
+    <version>4.8</version>
+    <time>1656237521</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.8:
+  - Switch to [Poetry](https://python-poetry.org/) for dependency and release management.
+  - Compatibility with Python 3.10.
+  - Chain exceptions using `raise new_exception from old_exception`
+  - Added marker file for PEP 561. This will allow type checking tools in dependent projects
+  - Use the Chinese Remainder Theorem when decrypting with a private key. This
+    makes decryption 2-4x faster</comment>
+    <requestid>985079</requestid>
+  </revision>
 </revisionlist>
