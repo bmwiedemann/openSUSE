@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Jun 25 10:43:48 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Chromium 103.0.5060.53 (boo#1200783)
+  * CVE-2022-2156: Use after free in Base
+  * CVE-2022-2157: Use after free in Interest groups
+  * CVE-2022-2158: Type Confusion in V8
+  * CVE-2022-2160: Insufficient policy enforcement in DevTools
+  * CVE-2022-2161: Use after free in WebApp Provider
+  * CVE-2022-2162: Insufficient policy enforcement in File System API
+  * CVE-2022-2163: Use after free in Cast UI and Toolbar
+  * CVE-2022-2164: Inappropriate implementation in Extensions API
+  * CVE-2022-2165: Insufficient data validation in URL formatting
+- Added patches:
+  * chromium-103-FrameLoadRequest-type.patch
+  * chromium-103-SubstringSetMatcher-packed.patch
+  * chromium-103-VirtualCursor-std-layout.patch
+  * chromium-103-compiler.patch
+- Removed patches:
+  * chromium-102-compiler.patch
+  * chromium-91-sql-standard-layout-type.patch
+  * chromium-101-libxml-unbundle.patch
+  * chromium-102-fenced_frame_utils-include.patch
+  * chromium-102-swiftshader-template-instantiation.patch
+  * chromium-102-symbolize-include.patch
+  * chromium-97-arm-tflite-cast.patch
+  * chromium-97-ScrollView-reference.patch
+
+-------------------------------------------------------------------
 Fri Jun 10 15:35:20 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 102.0.5005.115 (boo#1200423)

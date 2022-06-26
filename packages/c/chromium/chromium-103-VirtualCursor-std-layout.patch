@@ -1,30 +1,22 @@
-From 80368f8ba7a8bab13440463a254888311efe3986 Mon Sep 17 00:00:00 2001
+From 144479ad7b4287bee4067f95e4218f614798a865 Mon Sep 17 00:00:00 2001
 From: Stephan Hartmann <stha09@googlemail.com>
-Date: Tue, 4 May 2021 15:00:19 +0000
+Date: Sun, 16 Jan 2022 19:15:26 +0000
 Subject: [PATCH] sql: make VirtualCursor standard layout type
 
 sql::recover::VirtualCursor needs to be a standard layout type, but
 has members of type std::unique_ptr. However, std::unique_ptr is not
 guaranteed to be standard layout. Compiling with clang combined with
-gcc-11 libstdc++ fails because of this. Replace std::unique_ptr with
-raw pointers.
+gcc-11 libstdc++ fails because of this.
 
 Bug: 1189788
 Change-Id: Ia6dc388cc5ef1c0f2afc75f8ca45b9f12687ca9c
 ---
- sql/recover_module/btree.cc  | 21 +++++++++++++++------
- sql/recover_module/btree.h   | 17 +++++++++++++----
- sql/recover_module/cursor.cc | 24 ++++++++++++------------
- sql/recover_module/cursor.h  |  2 +-
- sql/recover_module/pager.cc  |  7 +++----
- sql/recover_module/pager.h   |  5 +++--
- 6 files changed, 47 insertions(+), 29 deletions(-)
 
-Index: chromium-98.0.4758.80/sql/recover_module/btree.cc
-===================================================================
---- chromium-98.0.4758.80.orig/sql/recover_module/btree.cc
-+++ chromium-98.0.4758.80/sql/recover_module/btree.cc
-@@ -136,16 +136,25 @@ static_assert(std::is_trivially_destruct
+diff --git a/sql/recover_module/btree.cc b/sql/recover_module/btree.cc
+index cc9420e5..f12d8fa 100644
+--- a/sql/recover_module/btree.cc
++++ b/sql/recover_module/btree.cc
+@@ -136,16 +136,22 @@
                "Move the destructor to the .cc file if it's non-trival");
  #endif  // !DCHECK_IS_ON()
  
@@ -34,46 +26,47 @@ Index: chromium-98.0.4758.80/sql/recover_module/btree.cc
 -      cell_count_(ComputeCellCount(db_reader)),
 -      next_read_index_(0),
 -      last_record_size_(0) {
++LeafPageDecoder::LeafPageDecoder() noexcept = default;
++
 +void LeafPageDecoder::Initialize(DatabasePageReader* db_reader) {
-+  DCHECK(db_reader);
-   DCHECK(IsOnValidPage(db_reader));
 +  page_id_ = db_reader->page_id();
 +  db_reader_ = db_reader;
 +  cell_count_ = ComputeCellCount(db_reader);
 +  next_read_index_ = 0;
 +  last_record_size_ = 0;
+   DCHECK(IsOnValidPage(db_reader));
    DCHECK(DatabasePageReader::IsValidPageId(page_id_));
  }
  
 +void LeafPageDecoder::Reset() {
 +  db_reader_ = nullptr;
-+  page_id_ = 0;
-+  cell_count_ = 0;
-+  next_read_index_ = 0;
-+  last_record_size_ = 0;
 +}
 +
  bool LeafPageDecoder::TryAdvance() {
    DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
    DCHECK(CanAdvance());
-Index: chromium-98.0.4758.80/sql/recover_module/btree.h
-===================================================================
---- chromium-98.0.4758.80.orig/sql/recover_module/btree.h
-+++ chromium-98.0.4758.80/sql/recover_module/btree.h
-@@ -103,7 +103,7 @@ class LeafPageDecoder {
+diff --git a/sql/recover_module/btree.h b/sql/recover_module/btree.h
+index eaa087a5..df0e0c9 100644
+--- a/sql/recover_module/btree.h
++++ b/sql/recover_module/btree.h
+@@ -101,9 +101,7 @@
+  public:
+   // Creates a decoder for a DatabasePageReader's last read page.
    //
-   // |db_reader| must have been used to read an inner page of a table B-tree.
-   // |db_reader| must outlive this instance.
+-  // |db_reader| must have been used to read an inner page of a table B-tree.
+-  // |db_reader| must outlive this instance.
 -  explicit LeafPageDecoder(DatabasePageReader* db_reader) noexcept;
-+  explicit LeafPageDecoder() noexcept = default;
++  LeafPageDecoder() noexcept;
    ~LeafPageDecoder() noexcept = default;
  
    LeafPageDecoder(const LeafPageDecoder&) = delete;
-@@ -151,6 +151,15 @@ class LeafPageDecoder {
+@@ -151,6 +149,17 @@
    // read as long as CanAdvance() returns true.
    bool TryAdvance();
  
 +  // Initialize with DatabasePageReader
++  // |db_reader| must have been used to read an inner page of a table B-tree.
++  // |db_reader| must outlive this instance.
 +  void Initialize(DatabasePageReader* db_reader);
 +
 +  // Reset internal DatabasePageReader
@@ -85,7 +78,7 @@ Index: chromium-98.0.4758.80/sql/recover_module/btree.h
    // True if the given reader may point to an inner page in a table B-tree.
    //
    // The last ReadPage() call on |db_reader| must have succeeded.
-@@ -164,14 +173,14 @@ class LeafPageDecoder {
+@@ -164,14 +173,14 @@
    static int ComputeCellCount(DatabasePageReader* db_reader);
  
    // The number of the B-tree page this reader is reading.
@@ -103,11 +96,11 @@ Index: chromium-98.0.4758.80/sql/recover_module/btree.h
  
    // The reader's cursor state.
    //
-Index: chromium-98.0.4758.80/sql/recover_module/cursor.cc
-===================================================================
---- chromium-98.0.4758.80.orig/sql/recover_module/cursor.cc
-+++ chromium-98.0.4758.80/sql/recover_module/cursor.cc
-@@ -28,7 +28,7 @@ VirtualCursor::~VirtualCursor() {
+diff --git a/sql/recover_module/cursor.cc b/sql/recover_module/cursor.cc
+index 4f827ed..240de499 100644
+--- a/sql/recover_module/cursor.cc
++++ b/sql/recover_module/cursor.cc
+@@ -28,7 +28,7 @@
  int VirtualCursor::First() {
    DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
    inner_decoders_.clear();
@@ -116,7 +109,7 @@ Index: chromium-98.0.4758.80/sql/recover_module/cursor.cc
  
    AppendPageDecoder(table_->root_page_id());
    return Next();
-@@ -38,18 +38,18 @@ int VirtualCursor::Next() {
+@@ -38,18 +38,18 @@
    DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
    record_reader_.Reset();
  
@@ -142,7 +135,7 @@ Index: chromium-98.0.4758.80/sql/recover_module/cursor.cc
          continue;
        }
        if (!record_reader_.Initialize())
-@@ -101,13 +101,13 @@ int VirtualCursor::ReadColumn(int column
+@@ -101,13 +101,13 @@
  int64_t VirtualCursor::RowId() {
    DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
    DCHECK(record_reader_.IsInitialized());
@@ -159,7 +152,7 @@ Index: chromium-98.0.4758.80/sql/recover_module/cursor.cc
        << __func__
        << " must only be called when the current path has no leaf decoder";
  
-@@ -115,7 +115,7 @@ void VirtualCursor::AppendPageDecoder(in
+@@ -115,7 +115,7 @@
      return;
  
    if (LeafPageDecoder::IsOnValidPage(&db_reader_)) {
@@ -168,11 +161,11 @@ Index: chromium-98.0.4758.80/sql/recover_module/cursor.cc
      return;
    }
  
-Index: chromium-98.0.4758.80/sql/recover_module/cursor.h
-===================================================================
---- chromium-98.0.4758.80.orig/sql/recover_module/cursor.h
-+++ chromium-98.0.4758.80/sql/recover_module/cursor.h
-@@ -130,7 +130,7 @@ class VirtualCursor {
+diff --git a/sql/recover_module/cursor.h b/sql/recover_module/cursor.h
+index 845b785..cc4e85f8 100644
+--- a/sql/recover_module/cursor.h
++++ b/sql/recover_module/cursor.h
+@@ -130,7 +130,7 @@
    std::vector<std::unique_ptr<InnerPageDecoder>> inner_decoders_;
  
    // Decodes the leaf page containing records.
@@ -181,44 +174,44 @@ Index: chromium-98.0.4758.80/sql/recover_module/cursor.h
  
    SEQUENCE_CHECKER(sequence_checker_);
  };
-Index: chromium-98.0.4758.80/sql/recover_module/pager.cc
-===================================================================
---- chromium-98.0.4758.80.orig/sql/recover_module/pager.cc
-+++ chromium-98.0.4758.80/sql/recover_module/pager.cc
-@@ -23,8 +23,7 @@ static_assert(DatabasePageReader::kMaxPa
+diff --git a/sql/recover_module/pager.cc b/sql/recover_module/pager.cc
+index 58e75de..69d98cef 100644
+--- a/sql/recover_module/pager.cc
++++ b/sql/recover_module/pager.cc
+@@ -23,8 +23,7 @@
                "ints are not appropriate for representing page IDs");
  
  DatabasePageReader::DatabasePageReader(VirtualTable* table)
 -    : page_data_(std::make_unique<uint8_t[]>(table->page_size())),
 -      table_(table) {
-+    : page_data_(), table_(table) {
++    : page_data_(table->page_size()), table_(table) {
    DCHECK(table != nullptr);
    DCHECK(IsValidPageSize(table->page_size()));
  }
-@@ -57,8 +56,8 @@ int DatabasePageReader::ReadPage(int pag
-                     std::numeric_limits<int64_t>::max(),
+@@ -58,7 +57,7 @@
                  "The |read_offset| computation above may overflow");
  
--  int sqlite_status =
+   int sqlite_status =
 -      RawRead(sqlite_file, read_size, read_offset, page_data_.get());
-+  int sqlite_status = RawRead(sqlite_file, read_size, read_offset,
-+                              const_cast<uint8_t*>(page_data_.data()));
++      RawRead(sqlite_file, read_size, read_offset, page_data_.data());
  
    // |page_id_| needs to be set to kInvalidPageId if the read failed.
    // Otherwise, future ReadPage() calls with the previous |page_id_| value
-Index: chromium-98.0.4758.80/sql/recover_module/pager.h
-===================================================================
---- chromium-98.0.4758.80.orig/sql/recover_module/pager.h
-+++ chromium-98.0.4758.80/sql/recover_module/pager.h
-@@ -5,6 +5,7 @@
- #ifndef SQL_RECOVER_MODULE_PAGER_H_
+diff --git a/sql/recover_module/pager.h b/sql/recover_module/pager.h
+index 07cac3cb..d08f093 100644
+--- a/sql/recover_module/pager.h
++++ b/sql/recover_module/pager.h
+@@ -6,8 +6,8 @@
  #define SQL_RECOVER_MODULE_PAGER_H_
  
-+#include <array>
  #include <cstdint>
- #include <memory>
+-#include <memory>
  #include <ostream>
-@@ -72,7 +73,7 @@ class DatabasePageReader {
++#include <vector>
+ 
+ #include "base/check_op.h"
+ #include "base/memory/raw_ptr.h"
+@@ -72,7 +72,7 @@
      DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
      DCHECK_NE(page_id_, kInvalidPageId)
          << "Successful ReadPage() required before accessing pager state";
@@ -227,12 +220,12 @@ Index: chromium-98.0.4758.80/sql/recover_module/pager.h
    }
  
    // The number of bytes in the page read by the last ReadPage() call.
-@@ -139,7 +140,7 @@ class DatabasePageReader {
+@@ -139,7 +139,7 @@
    int page_id_ = kInvalidPageId;
    // Stores the bytes of the last page successfully read by ReadPage().
    // The content is undefined if the last call to ReadPage() did not succeed.
 -  const std::unique_ptr<uint8_t[]> page_data_;
-+  const std::array<uint8_t, kMaxPageSize> page_data_;
++  std::vector<uint8_t> page_data_;
    // Raw pointer usage is acceptable because this instance's owner is expected
    // to ensure that the VirtualTable outlives this.
    const raw_ptr<VirtualTable> table_;
