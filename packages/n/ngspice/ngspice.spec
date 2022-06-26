@@ -27,7 +27,7 @@
 
 Name:           %pname%{?build_shared:-shared}
 %define so_ver 0
-Version:        36
+Version:        37
 Release:        0
 Summary:        Mixed-level, Mixed-signal Circuit Simulator Based on spice3f5
 License:        BSD-2-Clause
@@ -35,7 +35,6 @@ Group:          Productivity/Scientific/Electronics
 URL:            http://ngspice.sourceforge.net
 Source0:        http://downloads.sourceforge.net/%{pname}/%{pname}-%{version}.tar.gz
 Source1:        http://ngspice.sourceforge.net/docs/ngspice-%{version}-manual.pdf
-Patch1:         ngspice-Use-gnuplot-terminal-auto-detection.patch
 BuildRequires:  bison
 BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
@@ -49,9 +48,7 @@ BuildRequires:  libXmu-devel
 %endif
 Requires:       %{pname}-scripts = %{version}
 Requires:       %{pname}-xspice-cm = %{version}
-Requires:       lib%{pname}%{so_ver} = %{version}
 Recommends:     %{pname}-doc = %{version}
-Provides:       ng-spice-rework = %{version}
 
 %description
 Ngspice is a mixed-level/mixed-signal circuit simulator. Its code
@@ -76,7 +73,8 @@ ngspice package:
 %package doc
 Summary:        Documentation for ngspice
 Group:          Documentation/Other
-Requires:       %{pname} = %{version}
+Recommends:     %{pname} = %{version}
+BuildArch:      noarch
 
 %description doc
 Ngspice is a mixed-level/mixed-signal circuit simulator. Its code
@@ -95,6 +93,7 @@ and Xspice. This package contains the Xspice code model plugins.
 %package scripts
 Summary:        Ngspice init scripts
 Group:          Productivity/Scientific/Electronics
+BuildArch:      noarch
 
 %description scripts
 Ngspice is a mixed-level/mixed-signal circuit simulator. Its code
@@ -126,7 +125,7 @@ and Xspice. This package contains the development files.
 %prep
 %setup -q -n ngspice-%{version}
 cp %{S:1} .
-%patch1 -p1
+%autopatch -p1
 
 %build
 export CFLAGS="%{optflags} -fPIE"

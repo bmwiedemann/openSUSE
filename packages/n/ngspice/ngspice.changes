@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jun 25 13:20:17 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 37:
+  * New features:
+    + .probe command to measure currents, differential potentials
+      or device power dissipation
+    + S-parameter simulation with command .sp
+    + command 'esave' to save only relevant digital nodes
+    + substantail speed-up of plotting under MS Windows
+    + flags 'alle' and 'digitop' to the plot command
+    + reduce XSPICE memory consumption dramatically
+    + For a list of all new features please have a look at the
+      included NEWS file.
+  * Patches:
+    Many developer and user provided patches and bug fixes have
+    been applied. Other bugs and some memory leaks have been
+    removed as well.
+- Remove obsolete ngspice-Use-gnuplot-terminal-auto-detection.patch
+- Spec file cleanup
+
+-------------------------------------------------------------------
 Fri Feb 11 03:44:05 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 36:
