@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 25 10:18:14 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update requirements
+  * Be very specific with python3-msgpack: This prevents users to
+    upgrade their Tumbleweed system with an incompatible version
+  * Clean up
+
+-------------------------------------------------------------------
 Fri Jun 24 11:06:59 UTC 2022 - Andreas Prittwitz <m4ng4n@gmx.de>
 
 - Update to 1.2.1

@@ -54,7 +54,7 @@ Source2:        %{name}.keyring
 # python3-guzzle_sphinx_theme isn't available everywhere,
 # fall back to Sphinx default theme for older distributions
 Patch0:         borgbackup-1.1.4-sphinx-default-theme.patch
-# build dependencies
+# SECTION build dependencies
 BuildRequires:  bash
 BuildRequires:  fdupes
 BuildRequires:  fish
@@ -62,24 +62,14 @@ BuildRequires:  gcc-c++
 BuildRequires:  libacl-devel
 BuildRequires:  openssl-devel >= 1.0.0
 BuildRequires:  pkgconfig
-# ver >= 1.2.0 requires python3 >= 3.8
-BuildRequires:  python3 >= 3.8
 BuildRequires:  python3-Cython
-# docs requirements
-BuildRequires:  python3-Sphinx
-# New requirements as of borg version >= 1.2.0
-BuildRequires:  python3-dateutil
+BuildRequires:  python3-base >= 3.8
 BuildRequires:  python3-devel
-# msgpack is not included with borg version >= 1.2.0 anymore
-BuildRequires:  python3-msgpack
-# "ModuleNotFoundError: No module named 'msgpack'" otherwise
-Requires:       python3-msgpack
+BuildRequires:  python3-packaging
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-setuptools_scm
-BuildRequires:  python3-sphinx_rtd_theme
 BuildRequires:  zsh
 BuildRequires:  pkgconfig(libxxhash)
-Requires:       python3-setuptools
 %if 0%{?suse_version} == 1320 || 0%{?sle_version} == 120200
 BuildRequires:  bash-completion
 %endif
@@ -90,22 +80,39 @@ BuildRequires:  libb2-devel
 BuildRequires:  liblz4-devel >= 1.7.0
 BuildRequires:  libzstd-devel >= 1.3.0
 %endif
-%if %{with borg_guzzle}
-BuildRequires:  python3-guzzle_sphinx_theme
-%endif
-# testing requirements
-%if %{with borg_test}
-BuildRequires:  python3-pytest
-BuildRequires:  python3-pytest-benchmark
-BuildRequires:  python3-pytest-cov
-BuildRequires:  python3-pytest-xdist
-%endif
+# /SECTION
+# SECTION runtime and extra requrements
+# msgpack is not included with borg version >= 1.2.0 anymore
+# The metadata is very specific about the version, the command will fail if msgpack is out of range -- boo#1198267
+# See https://github.com/borgbackup/borg/blob/1.2.1/setup.py#L68 and update this for every version bump!
+BuildRequires:  (python3-msgpack >= 0.5.6 with python3-msgpack <= 1.0.4)
+BuildConflicts: python3-msgpack = 1.0.1
+Conflicts:      python3-msgpack = 1.0.1
+Requires:       python3-packaging
+Requires:       (python3-msgpack >= 0.5.6 with python3-msgpack <= 1.0.4)
 %if 0%{?suse_version} > 1500
 # upstream recommends a "Requires" if pyfuse3 is available
 Requires:       python3-pyfuse3 >= 3.1.1
 %else
 Recommends:     python3-llfuse
 %endif
+# /SECTION
+# SECTION docs requirements
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-sphinx_rtd_theme
+%if %{with borg_guzzle}
+BuildRequires:  python3-guzzle_sphinx_theme
+%endif
+# /SECTION
+# SECTION testing requirements
+%if %{with borg_test}
+BuildRequires:  python3-dateutil
+BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest-benchmark
+BuildRequires:  python3-pytest-cov
+BuildRequires:  python3-pytest-xdist
+%endif
+# /SECTION
 
 %description
 BorgBackup is a deduplicating backup program which stores deltas. It
@@ -116,6 +123,7 @@ targets.
 %package doc
 Summary:        Documentation files for borgbackup
 Group:          Documentation/HTML
+BuildArch:      noarch
 
 %description doc
 BorgBackup is a deduplicating backup program which stores deltas. It
