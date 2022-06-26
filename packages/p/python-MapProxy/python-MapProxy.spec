@@ -114,6 +114,8 @@ donttest="$donttest or test_bad_config_geopackage_"
 # https://github.com/mapproxy/mapproxy/issues/564
 donttest="$donttest or test_output_formats_greyscale_png"
 donttest="$donttest or test_output_formats_png8"
+# flaky
+donttest="$donttest or (TestWMS130 and test_get_map)"
 %pytest mapproxy -ra -k "not ($donttest)"
 
 %post
