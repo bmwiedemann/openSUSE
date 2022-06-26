@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jun 26 08:23:26 UTC 2022 - marix@marix.org - 0.7
+
+- Update to version 0.7:
+  * New and improved devices:
+    * Logitech G602
+    * Logitech G903
+    * Logitech MX Anywhere 2
+    * Logitech MX Anywhere 3
+    * Logitech MX Vertical
+    * Mars Gaming MM4
+    * SN TECH T3 Gaming Mouse
+  * Added Ukrainian translation
+  * Fix apply button activation on rates toggle
+- Fix ratbagd dependency to properly require at least version 0.14
+
+-------------------------------------------------------------------
 Tue Jul 27 18:18:49 UTC 2021 - marix@marix.org - 0.6
 
 - Update to version 0.6:

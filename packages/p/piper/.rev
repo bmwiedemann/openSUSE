@@ -138,4 +138,12 @@ changes incompatibly.</comment>
   * Adds missing SVGs and device IDs for multiple devices.</comment>
     <requestid>908652</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>688d317b15ccdb363ec7c49f8cb71a24</srcmd5>
+    <version>0.7</version>
+    <time>1656240908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985122</requestid>
+  </revision>
 </revisionlist>
