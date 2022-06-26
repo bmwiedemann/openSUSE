@@ -16,13 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define plainpython python
-%define skip_python2 1
 %define mname PyQt6
 %define pyqt_build_for_qt6 1
 Name:           python-%{mname}
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        GPL-3.0-only OR SUSE-GPL-2.0-with-FLOSS-exception OR NonFree
@@ -33,7 +31,7 @@ Source:         https://files.pythonhosted.org/packages/source/P/PyQt6/PyQt6-%{v
 Patch0:         disable-rpaths.diff
 # PATCH-FIX-OPENSUSE - install binary dbus mainloop integration in arch dependent directory
 Patch1:         0001-Use-a-noarch-wrapper-for-dbus-mainloop-integration.patch
-BuildRequires:  %{python_module PyQt6-sip}
+BuildRequires:  %{python_module PyQt6-sip >= 13.4}
 BuildRequires:  %{python_module dbus-python-devel >= 0.8}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pyqt-builder >= 1.11}
@@ -66,7 +64,7 @@ BuildRequires:  cmake(Qt6WebSockets)
 BuildRequires:  cmake(Qt6Quick3D)
 BuildRequires:  cmake(Qt6Quick3DRuntimeRender)
 %endif
-Requires:       python-PyQt6-sip
+%requires_ge    python-PyQt6-sip
 %requires_ge    python-dbus-python
 Provides:       python-qt6 = %{version}-%{release}
 %python_subpackages

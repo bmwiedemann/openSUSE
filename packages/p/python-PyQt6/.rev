@@ -72,4 +72,12 @@ in order to avoid conflicts like boo#1192300</comment>
     <comment></comment>
     <requestid>970213</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>24fd236a0698cc548899d4694d9b86f9</srcmd5>
+    <version>6.3.1</version>
+    <time>1656237522</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985022</requestid>
+  </revision>
 </revisionlist>

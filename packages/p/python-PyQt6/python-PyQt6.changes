@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jun 20 21:35:19 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.3.1
+  * Added qRegisterResourceData() and qUnregisterResourceData() to
+    QtCore to help in supporting legacy resource files from PyQt5.
+  * Requires v13.4 of the sip module which adds support for enums
+    with missing members and the sip.array support.
+  * Reverted the Qt.GestureType related changes made in v6.2.3 as
+    they are no longer necessary with the support for missing enum
+    members.
+  * The QEvent constructor that takes an int argument is now
+    deprecated.
+  * Refactored the draw methods of QPainter to accept sip.array
+    objects of appropriate types.  Such arrays, once initialised,
+    can be used very efficiently as they do not require repeated
+    conversion from the usual Python collection types.
+  * Added resize() to QPolygon, QPolygonF and QXmlStreamAttributes.
+  * Bug fixes.
+
+-------------------------------------------------------------------
 Wed Apr 13 08:12:05 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 6.3.0
