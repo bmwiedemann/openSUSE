@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun 21 10:20:23 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.15.7
+  * Refactored the draw methods of QPainter to accept sip.array
+    objects of appropriate types.  Such arrays, once initialised,
+    can be used very efficiently as they do not require repeated
+    conversion from the usual Python collection types.
+  * Added the missing QBluetoothUuid constructors.
+  * PyQt5-sip v12.11 is now required to enable support for
+    sip.array.
+  * Bug fixes.
+- PyQt5-sip 12.11 does not support Python 3.6: No build for SLE or
+  Leap 15.x anymore!
+
+-------------------------------------------------------------------
 Thu Dec 23 09:09:08 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix dependencies of python-qt5-remoteobjects: do not require all

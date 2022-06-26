@@ -612,4 +612,12 @@ Thu May 29 20:49:46 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>fix subpackage dependencies</comment>
     <requestid>942215</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>36b3ca2bc97be0bb7affd8af9df055de</srcmd5>
+    <version>5.15.7</version>
+    <time>1656237519</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985021</requestid>
+  </revision>
 </revisionlist>
