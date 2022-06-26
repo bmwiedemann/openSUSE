@@ -710,4 +710,12 @@
     <comment>Update to version 0.62</comment>
     <requestid>974623</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>022ffa5e55d90df54fd25b6fd99fd8d5</srcmd5>
+    <version>0.62.2</version>
+    <time>1656237518</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984920</requestid>
+  </revision>
 </revisionlist>

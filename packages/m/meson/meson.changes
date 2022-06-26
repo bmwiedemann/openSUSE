@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 24 12:53:02 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.62.2:
+  + qt module: fix broken install_dir kwarg.
+  + qt module: fix missing sanity check for install_dir + install.
+  + dependencies: tighten type checking and fix cmake API
+    violation.
+  + cmake: Fix CMake LLVM dependency error.
+  + Limit parallelism to hopefully work on machines with 160 cores.
+  + Fix --allow-shlib-undefined for LLVM versions > 9.
+  + i18n: fix bug where disabling gettext() broke merge_file().
+  + Fix sandbox violation when using subproject as a symlink.
+
+-------------------------------------------------------------------
 Tue Apr 26 12:49:05 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Added 0001-gnome-Use-doc-install_tag-for-gnome.yelp.patch
