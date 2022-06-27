@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 26 11:31:45 UTC 2022 - Berthold Gunreben <azouhr@opensuse.org>
+
+- Disable s390x build, unsupported target architecture.
+
+-------------------------------------------------------------------
 Thu Jul 29 14:18:57 UTC 2021 - Dave Plater <davejplater@gmail.com>
 
 - Disable 32 bit build, causes gcc bug.
