@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun 24 13:08:27 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.3.0
+  * Add dialog if user has no write access to target directory
+  * New camera features: zoom, stepless resizing and moving as
+    frameless window
+  * Various bug fixes
+  * Translation updates
+
+-------------------------------------------------------------------
 Tue Mar 29 19:44:24 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 3.2.0

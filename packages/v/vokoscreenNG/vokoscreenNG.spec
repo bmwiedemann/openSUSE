@@ -17,7 +17,7 @@
 
 
 Name:           vokoscreenNG
-Version:        3.2.0
+Version:        3.3.0
 Release:        0
 Summary:        Screencast creator
 License:        GPL-2.0-only
@@ -38,6 +38,7 @@ BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  pkgconfig(gstreamer-video-1.0)
 
 %if 0%{?sle_version} && 0%{?sle_version} < 150300
 Requires:       pulseaudio
@@ -84,7 +85,6 @@ cp src/applications/vokoscreenNG.appdata.xml %{buildroot}/usr/share/metainfo/
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata.xml
 
 %files
-%doc README.md
 %license COPYING
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop

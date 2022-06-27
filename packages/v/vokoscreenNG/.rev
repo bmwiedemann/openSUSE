@@ -127,4 +127,17 @@
     <comment></comment>
     <requestid>966613</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>de871ec4f5ca363eec2b017004214f62</srcmd5>
+    <version>3.3.0</version>
+    <time>1656321958</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.0
+  * Add dialog if user has no write access to target directory
+  * New camera features: zoom, stepless resizing and moving as
+    frameless window
+  * Various bug fixes
+  * Translation updates (forwarded request 984901 from tux93)</comment>
+    <requestid>985246</requestid>
+  </revision>
 </revisionlist>
