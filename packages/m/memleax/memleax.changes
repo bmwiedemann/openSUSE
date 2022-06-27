@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 26 13:40:39 UTC 2022 - Berthold Gunreben <azouhr@opensuse.org>
+
+- Package unsupported for s390x. Disable s390x builds.
+
+-------------------------------------------------------------------
 Wed Mar 10 18:09:12 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix download url for source

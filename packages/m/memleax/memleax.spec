@@ -1,7 +1,7 @@
 #
 # spec file for package memleax
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Source0:        https://github.com/WuBingzheng/memleax/archive/v%{version}.tar.g
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libunwind-devel
+ExcludeArch:    s390x
 
 %description
 Memleax is capable of debugging memory leak of a running process by
