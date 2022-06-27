@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 26 14:29:20 UTC 2022 - Berthold Gunreben <azouhr@opensuse.org>
+
+- This tool only runs on Little Endian machines
+  Exclude s390x
+
+-------------------------------------------------------------------
 Wed Aug 24 18:47:22 UTC 2016 - aloisio@gmx.com
 
 - Update to latest svn version (1.0r60)

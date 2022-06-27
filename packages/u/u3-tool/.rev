@@ -114,4 +114,12 @@
  * Fix linking to libusb; recommended over SG</comment>
     <requestid>424402</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>86fc0e73055d353628eee45ee98ccf1d</srcmd5>
+    <version>1.0+svn60</version>
+    <time>1656321944</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985221</requestid>
+  </revision>
 </revisionlist>
