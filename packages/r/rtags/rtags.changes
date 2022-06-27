@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 25 20:49:16 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Add rtags-2.38-emacs-28.patch: Fix build with emacs 28.
+
+-------------------------------------------------------------------
 Sat Jan  2 00:59:30 UTC 2021 - Cameron Rapp <camspam@redhyena.net>
 
 - Update obsolete BuildRequires: llvm-clang-devel -> clang-devel.

@@ -1,7 +1,7 @@
 #
 # spec file for package rtags
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,12 @@ License:        GPL-3.0-or-later
 Group:          Development/Tools/Navigators
 URL:            https://github.com/Andersbakken/rtags
 Source0:        https://github.com/Andersbakken/rtags/releases/download/v%{version}/rtags-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM rtags-2.38-emacs-28.patch -- Fix build with Emacs 28
+Patch0:         rtags-2.38-emacs-28.patch
+BuildRequires:  clang-devel
 BuildRequires:  cmake
 BuildRequires:  emacs-nox
 BuildRequires:  gcc-c++
-BuildRequires:  clang-devel
 BuildRequires:  llvm-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ncurses)
@@ -41,7 +43,7 @@ Rtags is Clang based source file indexer supporting C/C++/Objective-C(++) code.
 %define _scriptdir %{_datadir}/rtags/
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %cmake \

@@ -1,0 +1,31 @@
+From 63f18acb21e664fd92fbc19465f0b5df085b5e93 Mon Sep 17 00:00:00 2001
+From: Przemyslaw Kryger <pkryger@gmail.com>
+Date: Sat, 13 Mar 2021 15:35:18 +0000
+Subject: [PATCH] Add when argument to define-obsolete-function-alias
+
+The `when` has become mandatory since
+https://emba.gnu.org/emacs/emacs/-/commit/32c6732d16385f242b1109517f25e9aefd6caa5c (credit
+to @zflat).
+
+Fortunately the emacs-24.3 (the lowest supported version according to package),
+has already support for the `when` parameter.
+
+I've used `v2.2` as this is the tag that follows commit that added the obsolete
+call (dbf1ca3b2518d43f8c1b897d71126cfd132ef30b).
+---
+ src/rtags.el | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/rtags.el b/src/rtags.el
+index 32961934a..0f3cf5a90 100644
+--- a/src/rtags.el
++++ b/src/rtags.el
+@@ -4689,7 +4689,7 @@ definition."
+        (and rtags-autostart-diagnostics (rtags-diagnostics))
+        (set-process-query-on-exit-flag rtags-rdm-process nil)
+        (set-process-sentinel rtags-rdm-process 'rtags-sentinel)))))
+-(define-obsolete-function-alias 'rtags-start-process-maybe 'rtags-start-process-unless-running)
++(define-obsolete-function-alias 'rtags-start-process-maybe 'rtags-start-process-unless-running "v2.2")
+ 
+ (defun rtags-sentinel (process _event)
+   "Watch the activity of RTags process (rdm)."
