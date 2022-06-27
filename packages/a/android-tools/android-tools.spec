@@ -56,6 +56,7 @@ BuildRequires:  gcc10-c++
 %else
 BuildRequires:  gcc-c++
 %endif
+ExcludeArch:    s390x
 
 %description
 Android SDK Platform-Tools is a component for the Android SDK.

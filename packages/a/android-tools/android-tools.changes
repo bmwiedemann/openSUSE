@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 26 11:41:52 UTC 2022 - Berthold Gunreben <azouhr@opensuse.org>
+
+- Unknown processor:s390x. Disable build for s390x.
+
+-------------------------------------------------------------------
 Fri Jun 10 05:12:20 UTC 2022 - munix9@googlemail.com
 
 - Add fix-add-functional-include.patch (fix gcc 12 build)
