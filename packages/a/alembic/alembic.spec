@@ -34,7 +34,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(OpenEXR)
 BuildRequires:  pkgconfig(zlib)
 # Ogawa does only support little endianess
-ExcludeArch:    ppc64
+ExcludeArch:    ppc64 s390x
 
 %description
 Alembic distills complex, animated scenes into a non-procedural, application-

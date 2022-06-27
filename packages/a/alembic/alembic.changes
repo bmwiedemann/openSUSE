@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 26 11:35:22 UTC 2022 - Berthold Gunreben <azouhr@opensuse.org>
+
+- Ogawa only supports little endian. Disable s390x builds.
+
+-------------------------------------------------------------------
 Tue Jan  4 21:13:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.3:
