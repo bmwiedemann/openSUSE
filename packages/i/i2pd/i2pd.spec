@@ -2,6 +2,7 @@
 # spec file for package i2pd
 #
 # Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 PurpleI2P team
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +20,7 @@
 %define sysuser i2pd
 %define sysgroup i2pd
 Name:           i2pd
-Version:        2.38.0
+Version:        2.42.1
 Release:        0
 Summary:        C++ implementation of an I2P client
 License:        BSD-3-Clause
@@ -88,9 +89,8 @@ cat debian/%{name}.links | while read _links; do
   ln -s $(echo $_links | sed 's|\(.*\ \+\)|/\1%{buildroot}/|')
 done
 
-mkdir -p %{buildroot}%{_sysconfdir}/i2pd/tunnels.conf.d/tunnels.d
-cp -rf contrib/tunnels.d/* %{buildroot}%{_sysconfdir}/i2pd/tunnels.conf.d/tunnels.d
-rm %{buildroot}%{_sysconfdir}/i2pd/tunnels.conf.d/tunnels.d/README
+mkdir -p %{buildroot}%{_sysconfdir}/i2pd/tunnels.conf.d
+cp -rf contrib/tunnels.d/README %{buildroot}%{_sysconfdir}/i2pd/tunnels.conf.d
 
 install -Dm0644 %{name}.service.in %{buildroot}%{_unitdir}/%{name}.service
 install -Dm0644 %{name}.tmpfile.in %{buildroot}%{_tmpfilesdir}/%{name}.conf
@@ -135,20 +135,15 @@ exit 0
 %attr(0750,%{sysuser},%{sysgroup}) %dir %{_datadir}/i2pd/certificates
 %attr(0750,%{sysuser},%{sysgroup}) %dir %{_datadir}/i2pd/certificates/family
 %attr(0750,%{sysuser},%{sysgroup}) %dir %{_datadir}/i2pd/certificates/reseed
-%attr(0750,%{sysuser},%{sysgroup}) %dir %{_datadir}/i2pd/certificates/router
 %{_datadir}/i2pd/certificates/family/
 %{_datadir}/i2pd/certificates/reseed/
-%{_datadir}/i2pd/certificates/router/
 %attr(0750,%{sysuser},%{sysgroup}) %dir %{_localstatedir}/lib/i2pd
 %{_localstatedir}/lib/i2pd/
 %attr(0750,%{sysuser},%{sysgroup}) %dir %{_sysconfdir}/i2pd
 %attr(0750,%{sysuser},%{sysgroup}) %dir %{_sysconfdir}/i2pd/tunnels.conf.d
-%attr(0750,%{sysuser},%{sysgroup}) %dir %{_sysconfdir}/i2pd/tunnels.conf.d/tunnels.d
 %config(noreplace) %{_sysconfdir}/i2pd/i2pd.conf
 %config(noreplace) %{_sysconfdir}/i2pd/subscriptions.txt
 %config(noreplace) %{_sysconfdir}/i2pd/tunnels.conf
-%config(noreplace) %{_sysconfdir}/i2pd/tunnels.conf.d/tunnels.d/IRC-Ilita.conf
-%config(noreplace) %{_sysconfdir}/i2pd/tunnels.conf.d/tunnels.d/IRC-Irc2P.conf
 %{_sysconfdir}/i2pd/tunnels.conf.d/README
 
 %changelog
