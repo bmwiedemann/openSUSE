@@ -17,7 +17,7 @@
 
 
 Name:           wezterm
-Version:        20220408.101518.b908e2dd^git413
+Version:        20220624.141144.bd1b7c5d+git17
 Release:        0
 Summary:        GPU-accelerated cross-platform terminal emulator and multiplexer
 URL:            https://github.com/wez/wezterm

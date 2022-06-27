@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jun 27 01:56:50 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 20220624.141144.bd1b7c5d+git17:
+  * docs: https://github.com/wez/wezterm/issues/2185
+  * fix `winget list` causes toast notification spam
+  * fix(#2175): correct get-dep script for arch distro's
+  * ActivateKeyTable replace_current wasn't actually optional
+  * docs: Use new `wezterm.action.Action` syntax in rest of the docs
+  * allow action=wezterm.action.ExtendSelectionToMouseCursor(nil)
+  * lua: catch non-array style keys in array style table
+  * docs: Improve clarity of wezterm.on wrt. callback params and example
+  * ci: make deterministic again!
+  * docs: update keyassignment reference for more ergnomic wezterm.action syntax
+  * docs: wezterm.action ergnomics
+  * ci: revise release info mapping for adjusted rpm names
+  * ci: distroid - to _
+  * ci: refine distroid
+  * ci: revise rpm filenames
+  * docs: update for newly available stable binary downloads
+  * docs: update for release
+  * docs: more tweak
+  * docs: tweak changelog
+  * macos: really really fix ctrl-shift-tab
+  * docs: add show-keys command
+  * fix: properly restore cooked mode in windows
+  * Added winapi feature "shellapi" to procinfo
+
+-------------------------------------------------------------------
 Thu Jun 23 14:49:14 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 20220408.101518.b908e2dd^git413:
