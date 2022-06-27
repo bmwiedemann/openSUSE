@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Jun 26 14:52:56 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.30.0
+  build:
+  * Use dummy as default module when no other outputs are
+    enabled. This also fixes a non-module build with just the
+    dummy.
+  * Use CMAKE_CURRENT_SOURCE_DIR in CMake build to help nested
+    use.
+  mpg123:
+  * new network backend using external tools/libraries to also
+    support HTTPS
+  * old network backend changed to use h_addr_list[0] instead of
+    h_addr
+  * terminal control keys now case-sensitive (fixing smal/big
+    pitch controls)
+  * additional terminal control keys for simple equalizer
+    control (A/a for bass, J/j for mids, N/n for treble, e for
+    reset, E for printout)
+  * terminal volume control now in decibel steps and bounded to
+    +/- 60 dB
+  * terminal control now also with audio from stdin (bug 338) via
+    /dev/tty or ctermid()
+  * re-print tag info on decrease of terminal width for a bit
+    less mess
+  * always print an empty line after tag info for cleaner
+    appearance
+  * print lyrics also to stderr
+  * remote control API v10 with "@P 3" as additonal message on
+    track end
+  * also added PROGRESS command as opposite of SILENCE
+  * fix some verbosity, tweak help for --icy-interval
+  * added --auth-file
+  * also obscure argument to --auth for others
+  libout123:
+  * pulse: initialize more error codes to avoid bogus error
+    messages
+  version 1.29.4:
+  libmpg123:
+  * Saturate reader file position at off_t limit to satisfy
+    undefined behaviour checkers.
+  * Avoid harmless unitialized value in ID3v1 check (filepos,
+    later being set before actual use).
+
+-------------------------------------------------------------------
 Sun Dec 12 11:48:03 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.29.3
