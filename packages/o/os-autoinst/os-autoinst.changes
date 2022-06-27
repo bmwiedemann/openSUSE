@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 26 23:12:05 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1656152564.8735fa2:
+  * ci: Fully cover OpenQA::Qemu::Proc
+  * Remove unused variables in VNC code
+  * Remove unused method gen_runfile
+  * Remove unused method gen_qemu_img_commit
+  * ci: Cover OpenQA::Qemu::MutParams
+
+-------------------------------------------------------------------
 Fri Jun 24 15:39:04 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1656071262.52a4665:
