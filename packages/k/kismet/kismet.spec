@@ -69,6 +69,9 @@ Recommends:     kismet-capture-sdr-rtladsb
 Recommends:     kismet-capture-sdr-rtlamr
 Recommends:     kismet-capture-ti-cc2540
 Recommends:     kismet-logtools
+Requires(pre):  permissions
+Requires(pre):  shadow
+Provides:       group(kismet)
 %if 0%{with ubertooth}
 Recommends:     kismet-capture-ubertooth-one
 %endif
@@ -122,6 +125,7 @@ This subpackage contains Kismet Linux WiFi capture helper.
 Summary:        Kismet SDR rtl433 capture helper
 Group:          Productivity/Networking/Diagnostic
 Requires:       python3-protobuf >= 3.0.0
+Requires:       python3-websockets
 Requires:       rtl_433
 
 %description capture-sdr-rtl433
@@ -136,6 +140,7 @@ Summary:        Kismet SDR rtlamr capture helper
 Group:          Productivity/Networking/Diagnostic
 Requires:       python3-numpy
 Requires:       python3-protobuf >= 3.0.0
+Requires:       python3-websockets
 Recommends:     rtl_amr
 
 %description capture-sdr-rtlamr
@@ -150,6 +155,7 @@ Summary:        Kismet SDR rtladsb capture helper
 Group:          Productivity/Networking/Diagnostic
 Requires:       python3-numpy
 Requires:       python3-protobuf >= 3.0.0
+Requires:       python3-websockets
 Requires:       rtl-sdr
 
 %description capture-sdr-rtladsb
@@ -316,12 +322,20 @@ install -D plugin-alertsyslog/alertsyslog.so %{buildroot}%{_libdir}/kismet/alert
 
 %pre
 %service_add_pre %{name}.service
+getent group kismet >/dev/null || groupadd -r kismet
+
+%verifyscript
+%verify_permissions -e %{_bindir}/kismet_cap_linux_bluetooth
+%verify_permissions -e %{_bindir}/kismet_cap_linux_wifi
 
 %preun
 %service_del_preun %{name}.service
 
 %post
 %service_add_post %{name}.service
+%set_permissions %{_bindir}/kismet_cap_linux_bluetooth
+%set_permissions %{_bindir}/kismet_cap_linux_wifi
+exit 0
 
 %postun
 %service_del_postun %{name}.service
@@ -364,10 +378,10 @@ install -D plugin-alertsyslog/alertsyslog.so %{buildroot}%{_libdir}/kismet/alert
 %{_bindir}/kismetdb_to_wiglecsv
 
 %files capture-linux-bluetooth
-%{_bindir}/kismet_cap_linux_bluetooth
+%verify(not mode caps) %attr(0750,root,kismet) %caps(cap_net_raw,cap_net_admin=ep) %{_bindir}/kismet_cap_linux_bluetooth
 
 %files capture-linux-wifi
-%{_bindir}/kismet_cap_linux_wifi
+%verify(not mode caps) %attr(0750,root,kismet) %caps(cap_net_raw,cap_net_admin=ep) %{_bindir}/kismet_cap_linux_wifi
 
 %files capture-nrf-mousejack
 %{_bindir}/kismet_cap_nrf_mousejack
