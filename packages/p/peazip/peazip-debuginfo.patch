@@ -1,7 +1,7 @@
-Index: peazip-8.6.0.src/project_peach.lpi
+Index: peazip-8.6.0.src/dev/project_peach.lpi
 ===================================================================
---- peazip-8.6.0.src.orig/project_peach.lpi
-+++ peazip-8.6.0.src/project_peach.lpi
+--- peazip-8.6.0.src.orig/dev/project_peach.lpi
++++ peazip-8.6.0.src/dev/project_peach.lpi
 @@ -1588,7 +1588,7 @@
      </CodeGeneration>
      <Linking>
@@ -11,10 +11,10 @@ Index: peazip-8.6.0.src/project_peach.lpi
        </Debugging>
        <Options>
          <PassLinkerOptions Value="True"/>
-Index: peazip-8.6.0.src/project_pea.lpi
+Index: peazip-8.6.0.src/dev/project_pea.lpi
 ===================================================================
---- peazip-8.6.0.src.orig/project_pea.lpi
-+++ peazip-8.6.0.src/project_pea.lpi
+--- peazip-8.6.0.src.orig/dev/project_pea.lpi
++++ peazip-8.6.0.src/dev/project_pea.lpi
 @@ -548,7 +548,7 @@
      </CodeGeneration>
      <Linking>

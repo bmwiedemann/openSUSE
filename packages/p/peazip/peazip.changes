@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jun 26 13:12:27 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 8.7.0:
+  BACKEND
+    * 7z 22.00
+    * Pea 1.08
+  CODE
+    * Can now optionally check hash of backend binaries called by PeaZip in order to detect modified ones
+    * Can now optionally hardcode paths of backend binaries, configuration, and non-binary resources directories as absoulte paths at compile time
+  FILE MANAGER
+    * Added "Open in a new tab" to breadcrumb navigation menu
+    * Can now export content of navigation/search filter as CSV, from column's header menu, and Main menu > Navigation submenu
+    * CSV separator can now be customised from Options > Settings, General Tab, on the right of Localization selector
+    * File manager now displays file size and compressed file size of directories inside archives, CRC column displays files and sub-directores count for directories
+    * Many visual enhancements
+  EXTRACTION and ARCHIVING
+    * Can now remember default archive creation action (force new archive, add, update, sync...)
+    * Improved displaying directory size in archive creation screen: items are now recursively enumerated asynchronously (non blocking) by default, so it is possible to proceed with archiving operations (confirm, cancel, modify parameters...) without needing the input count to be completed
+    * Re-organized Archive manager settings page in Options > Settings
+    * For Zpaq format now "Absolute paths" extraction option is enabled by default (in Advanced tab of extraction screen)
+
+-------------------------------------------------------------------
 Thu Apr 14 05:38:23 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 8.6.0:

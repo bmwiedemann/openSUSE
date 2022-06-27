@@ -17,9 +17,9 @@
 
 
 %define         _peazipinstalldir %{_libdir}/peazip
-%define         _helpver 8.6.0
+%define         _helpver 8.7.0
 Name:           peazip
-Version:        8.6.0
+Version:        8.7.0
 Release:        0
 Summary:        Graphical file archiver
 License:        LGPL-3.0-only
@@ -98,6 +98,7 @@ mv res/share/copying/copying.txt .
 cp %{SOURCE2} peazip_help.pdf
 
 %build
+cd dev
 lazbuild \
 	--lazarusdir=%{_libdir}/lazarus \
 %ifarch x86_64
@@ -127,9 +128,9 @@ ln -s %{_bindir}/brotli  %{buildroot}%{_peazipinstalldir}/res/brotli/brotli
 ln -s %{_bindir}/zpaq  %{buildroot}%{_peazipinstalldir}/res/zpaq/zpaq
 ln -s %{_bindir}/zstd  %{buildroot}%{_peazipinstalldir}/res/zstd/zstd
 
-install -m755 peazip %{buildroot}%{_peazipinstalldir}
+install -m755 dev/peazip %{buildroot}%{_peazipinstalldir}
 ln -s %{_peazipinstalldir}/peazip %{buildroot}%{_bindir}/peazip
-install -m755 pea %{buildroot}%{_peazipinstalldir}/res
+install -m755 dev/pea %{buildroot}%{_peazipinstalldir}/res
 ln -s %{_peazipinstalldir}/res/pea %{buildroot}%{_bindir}/pea
 
 mkdir -p  %{buildroot}%{_datadir}/applications/

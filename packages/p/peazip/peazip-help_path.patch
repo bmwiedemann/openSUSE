@@ -1,7 +1,7 @@
-Index: peazip-8.6.0.src/peach.pas
+Index: peazip-8.6.0.src/dev/peach.pas
 ===================================================================
---- peazip-8.6.0.src.orig/peach.pas
-+++ peazip-8.6.0.src/peach.pas
+--- peazip-8.6.0.src.orig/dev/peach.pas
++++ peazip-8.6.0.src/dev/peach.pas
 @@ -41307,7 +41307,7 @@ end;
  
  procedure TForm_peach.baboutlocalhelpClick(Sender: TObject);
