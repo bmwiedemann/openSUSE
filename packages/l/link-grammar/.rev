@@ -452,4 +452,12 @@
     <comment>Fix py 3.10 build (forwarded request 983902 from dimstar)</comment>
     <requestid>983982</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>b33b4999fa67855d645ac4f66b358c42</srcmd5>
+    <version>5.10.5</version>
+    <time>1656321950</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.10.5 (forwarded request 984887 from dimstar)</comment>
+    <requestid>985232</requestid>
+  </revision>
 </revisionlist>

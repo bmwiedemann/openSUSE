@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 24 12:13:37 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 5.10.5:
+  + English dict: broader handling of ellipsis.
+  + Updated Thai dicts.
+  + Fix Thai regex's to work even with basic C++ regex lib.
+  + Performance improvements.
+
+-------------------------------------------------------------------
 Fri Jun 17 12:55:49 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 5.10.4:
