@@ -19,7 +19,7 @@
 %define realname qTox
 
 Name:           qtox
-Version:        1.17.4
+Version:        1.17.6
 Release:        0
 Summary:        Tox client
 License:        GPL-3.0-only

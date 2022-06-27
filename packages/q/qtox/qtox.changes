@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jun 26 13:01:27 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.17.6
+  * Bug Fixes
+    - Windows: Correct Program Files directory for 32-bit Windows (47406e74)
+    - macos: update deprecated AVFoundation API (484ea7ce)
+- Changes from 1.17.5
+  * Bug Fixes
+    - Update video API usage for newer libavcodec (f5fabc2f)
+    + Windows:
+      - Restrict non-default install directory permissions (553bd47e)
+      - Build NSIS installer in Unicode mode (9f84184b)
+      - Define installer language before trying to access it (1353fc93)
+  * Features
+    - Settings: Add setting for hiding group join and leave system messages (916e797c)
+    - UI: Add UI For controlling group join and leave system messages setting (423049db)
+    - chatlog: Disable join and leave system messages based on setting (ee0334ac)
+
+-------------------------------------------------------------------
 Mon Feb 14 13:33:42 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.17.4
