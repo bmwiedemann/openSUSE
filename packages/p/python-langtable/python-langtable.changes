@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jun 26 20:07:21 UTC 2022 - Gordon Leung <pirateclip@protonmail.com> - 0.0.58
+
+update: 0.0.51 -> 0.0.58
+- add list_common_keyboards() to public api (Sundeep Anand suanand@redhat.com)
+- Capitalize the return values of language_name() and territory_name()
+  * gh#rhinstaller/anaconda#2837
+- Add more translations and changes from CLDR
+- add list_common_languages derived from gnome-control-center (Sundeep Anand suanand@redhat.com)
+- Make inscript2 instead of inscript input methods the default
+  * https://fedoraproject.org/wiki/Changes/Enhanced_Inscript_as_default_Indic_IM
+- Make ibus/m17n:vi:telex the default input method for Vietnamese
+- Fallback to translations in “xx” from “xx_Zzzz” only if “Zzzz” is the main script of “xx”
+  * gh#mike-fabian/langtable#13
+- Replace “ibus/cangjie” with “ibus/table:cangjie5”
+- Update Sami languages and Finnish keyboard layouts (from Marko Myllynen)
+- Add syr and ab_GE locales
+- Add rif language
+
+-------------------------------------------------------------------
 Tue Jan 11 21:07:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add python-rpm-macros dependency 
