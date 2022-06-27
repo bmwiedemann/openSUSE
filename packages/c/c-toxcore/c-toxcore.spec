@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 %define _soversion 2
 Name:           c-toxcore
-Version:        0.2.15
+Version:        0.2.18
 Release:        0
 Summary:        Secure decentralized instant messaging application
 License:        GPL-3.0-only
@@ -27,8 +27,10 @@ Group:          Productivity/Networking/Instant Messenger
 URL:            https://tox.chat/
 Source0:        https://github.com/TokTok/c-toxcore/archive/v%{version}.tar.gz#./%{name}-%{version}.tar.gz
 Source1:        %{name}.tmpfiles.d
-Source2:        https://github.com/TokTok/c-toxcore/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
+# Dont't find right key at this time. :(
+#Source2:        https://github.com/TokTok/c-toxcore/releases/download/v%%{version}/%%{name}-%%{version}.tar.gz.asc
 Source3:        %{name}.keyring
+Source10:       https://github.com/camgunz/cmp/archive/v20/cmp-v20.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libconfig-devel
@@ -37,6 +39,7 @@ BuildRequires:  libsodium-devel
 BuildRequires:  libtool
 BuildRequires:  libvpx-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(msgpack)
 BuildRequires:  pkgconfig(systemd)
 Requires(pre):  shadow
 %{?systemd_requires}
@@ -75,6 +78,10 @@ This are the Core library for toxcore.
 
 %prep
 %setup -q
+# install submodules
+pushd third_party/cmp
+tar xvzf %{SOURCE10} --strip 1
+popd
 # change location of bootstrap bin
 sed -ri 's:%{_prefix}/local/bin/tox-bootstrapd:%{_bindir}/tox-bootstrapd:g' other/bootstrap_daemon/tox-bootstrapd.service
 # change user and of bootstrapd
@@ -157,6 +164,7 @@ systemd-tmpfiles --create %{_prefix}/lib/tmpfiles.d/tox-bootstrapd.conf
 %dir %{_sysconfdir}/tox
 %dir %{_sysconfdir}/tox/bootstrapd
 %config(noreplace) %{_sysconfdir}/tox/bootstrapd/tox-bootstrapd.conf
+%{_datadir}/bash-completion/completions/tox-bootstrapd
 %{_bindir}/DHT_bootstrap
 %{_bindir}/tox-bootstrapd
 %{_unitdir}/tox-bootstrapd.service
