@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun 25 21:30:06 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 1.2.8
+  * Improve boundaries and cloud elements
+  * Add and edit newlines in diagram elements #119
+  * Deselect items before exporting images #113
+  * Add a Markdown export filter (experimental) #110
+  * Update waf to 2.0.24 and improve the build on Ubuntu Jammy
+
+-------------------------------------------------------------------
 Thu Jun 24 10:42:10 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.2.7
