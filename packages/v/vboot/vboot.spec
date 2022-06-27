@@ -1,7 +1,7 @@
 #
 # spec file for package vboot
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@ BuildRequires:  libyaml-devel
 BuildRequires:  python
 BuildRequires:  trousers-devel
 BuildRequires:  xz-devel
-ExcludeArch:    ppc ppc64 ppc64le riscv64
+ExcludeArch:    ppc ppc64 ppc64le riscv64 s390x
 
 %description
 VBoot contains verified boot reference implementation and

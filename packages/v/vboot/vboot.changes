@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 26 14:34:06 UTC 2022 - Berthold Gunreben <azouhr@opensuse.org>
+
+- s390x is unsupported. Disable architecture. 
+
+-------------------------------------------------------------------
 Sun Jun  7 16:18:07 UTC 2020 - Misha Komarovskiy <zombah@gmail.com>
 
 - add fix_vboot_version.patch to fix gcc10 build 
