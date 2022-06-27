@@ -7,4 +7,12 @@
     <comment>New package delve v1.8.3 is a debugger for the Go programming language.</comment>
     <requestid>978032</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>df8b755b3834fdf0f4782a372dbb3eeb</srcmd5>
+    <version>1.8.3</version>
+    <time>1656321943</time>
+    <user>dimstar_suse</user>
+    <comment>Package can not build on s390x (forwarded request 985137 from azouhr)</comment>
+    <requestid>985192</requestid>
+  </revision>
 </revisionlist>

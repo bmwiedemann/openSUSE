@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 26 13:06:35 UTC 2022 - Berthold Gunreben <azouhr@opensuse.org>
+
+- s390x is not in list of supported CPUs. Disable building for s390x.
+
+-------------------------------------------------------------------
 Wed May 18 20:52:48 UTC 2022 - jkowalczyk@suse.com
 
 - Initial package version 1.8.3:
