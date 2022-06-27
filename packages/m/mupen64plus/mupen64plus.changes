@@ -1,5 +1,10 @@
 -------------------------------------------------------------------
-Thu Dec  9 12:13:00 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+Mon Jun 27 03:05:54 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+
+- Added file mupen64plus.rpmlinrc to filter build errors in Tumbleweed.
+
+-------------------------------------------------------------------
+Thu Dec  9 12:13:00 UTC 2021 - Илья Индиго <ilya@ilya.cf>
 
 - Refreshed spec-file via spec-cleaner and manual optimizations.
   * Removed file mupen64plus-rpmlintrc (had no useful effect).

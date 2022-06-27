@@ -1,0 +1,2 @@
+addFilter("libmupen64plus2.* executable-stack")
+addFilter("libmupen64plus-devel.* no-binary")

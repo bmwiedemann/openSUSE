@@ -1,7 +1,7 @@
 #
 # spec file for package mupen64plus
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,7 @@ Summary:        Plugin-Based Nintendo 64 Emulator
 License:        GPL-2.0-or-later
 URL:            https://mupen64plus.org
 Source0:        https://github.com/%{name}/%{name}-core/releases/download/%{version}/%{name}-bundle-src-%{version}.tar.gz
+Source1:        %{name}.rpmlintrc
 Patch0:         %{name}-fix-cflags.patch
 Patch1:         %{name}-use-system-font.patch
 Patch2:         %{name}-binutils-2_29.patch
@@ -41,6 +42,7 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(zlib)
+ExcludeArch:    s390x
 
 %description
 Mupen64Plus is a plugin-based N64 emulator which is capable of accurately
@@ -74,7 +76,7 @@ Requires:       %{name}-plugin-audio
 Requires:       %{name}-plugin-input
 Requires:       %{name}-plugin-rsp
 Requires:       %{name}-plugin-video
-Requires:       lib%{name}2
+Requires:       lib%{name}2 = %{version}
 
 %description ui-console
 Mupen64Plus is a plugin-based N64 emulator which is capable of accurately

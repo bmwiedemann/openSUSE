@@ -12,4 +12,12 @@
   * Used %autosetup, %license and %{name} macros wherever possible.</comment>
     <requestid>937776</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6be0cfd3553240191c4a3f3c5d850c3a</srcmd5>
+    <version>2.5.9</version>
+    <time>1656321936</time>
+    <user>dimstar_suse</user>
+    <comment>- Added file mupen64plus.rpmlinrc to filter build errors in Tumbleweed.</comment>
+    <requestid>985189</requestid>
+  </revision>
 </revisionlist>
