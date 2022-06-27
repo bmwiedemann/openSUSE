@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 26 11:47:35 UTC 2022 - Berthold Gunreben <azouhr@opensuse.org>
+
+- #error All sample block data is little endian...big endian not yet supported
+  Disable s390x builds. 
+
+-------------------------------------------------------------------
 Mon May  2 15:40:23 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on non-x86_64 by not requiring carla-devel

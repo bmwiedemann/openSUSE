@@ -95,7 +95,8 @@ Obsoletes:      %{name}-plugins <= 2.4.2
 # causes a sigsev See https://bugzilla.suse.com/show_bug.cgi?id=1191585
 #Conflicts:      pipewire-libjack-0_3
 #Doesn't build for 32 bit anymore
-ExcludeArch:    i586
+#error All sample block data is little endian...big endian not yet supported
+ExcludeArch:    i586 s390x
 
 %description
 Audacity is a program that manipulates digital audio wave forms.
