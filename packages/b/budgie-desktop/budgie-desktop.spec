@@ -65,7 +65,7 @@ Conflicts:      gnome-shell
 Requires:       budgie-desktop-view >= 1.2+0
 Requires:       budgie-screensaver >= 5.0.1+0
 Requires:       typelib-1_0-Budgie-1_0 >= %{version}
-Requires:       budgie-desktop-branding >= 20220316.1
+Requires:       budgie-desktop-branding >= 20220627.1
 Requires:       budgie-control-center >= 1.0.2+0
 #
 # unchanged SOVER but new APIs

@@ -401,4 +401,12 @@
     <comment>10.6.1</comment>
     <requestid>979495</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>6fe9b544f96bb2f607caccbee9cc786b</srcmd5>
+    <version>10.6.1+0</version>
+    <time>1656422486</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>985348</requestid>
+  </revision>
 </revisionlist>
