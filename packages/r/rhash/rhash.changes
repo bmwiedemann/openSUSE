@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jun 18 13:23:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.3:
+  * Support runtime loading of OpenSSL 3.0
+  * Bugfix: Show total speed in the update mode
+  * LibRHash: add rhash_import() and rhash_export() functions
+  * Bugfix: fix building of the LibRHash static library on Solaris
+  * Honor hash file extension in --update mode
+  * Support --ignore-missing option, to ignore missing files in --check mode
+  * Support --brief option to show verification report without header and footer
+  * Bugfix: hash options were sometimes ignored in the --check mode
+  * Allow simultaneous usage of --update and --check options
+  * Honor --lowercase option while --embed-crc is in action
+  * Improve ripemd160 performance
+  * Add --bt-transmission option to create Transmission compatible torrent files
+  * Bugfix: star character at the start of filepath must be ignored
+  
+-------------------------------------------------------------------
 Tue Jul 27 07:00:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.2:
