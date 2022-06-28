@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 22 03:08:12 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.99036
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99036  Jun 21 2022 Alexander Nalobin
+      - Fix whois servers for .cat and .tel
+
+  2.99035  May 25 2022    Alexander Nalobin
+      - Added .ink, .wiki, .design not found patterns
+
+-------------------------------------------------------------------
 Tue Apr 19 03:08:05 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.99034
