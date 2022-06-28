@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jun 25 03:08:07 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.999836
+   see /usr/share/doc/packages/perl-Math-BigInt/CHANGES
+
+  1.999836 2022-06-24
+   * Improve compatibility with older versions of the Math-BigRat distribution.
+     Math-BigInt version 1.999835 works with Math-BigRat version 0.2623 and newer.
+     Math-BigInt version 1.999836 works with Math-BigRat version 0.2618 and newer.
+   * Re-enable upgrading in Math::BigFloat->bdiv().
+   * Fix an error in the enabling/disabling of upgrading/downgrading.
+   * Fix typos and other formatting errors.
+
+-------------------------------------------------------------------
 Wed May 25 03:08:02 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.999835
