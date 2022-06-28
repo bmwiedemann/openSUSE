@@ -22,20 +22,15 @@
 %endif
 
 %define libname lib%{name}
-%define soname 405
+%define soname 406
 # disabled by default as many fail
 %bcond_with    tests
 %bcond_without gapi
 %bcond_without ffmpeg
-%if %{suse_version} < 1550
-%bcond_without python2
-%else
-%bcond_with    python2
-%endif
 %bcond_without python3
 %bcond_without openblas
 Name:           opencv
-Version:        4.5.5
+Version:        4.6.0
 Release:        0
 Summary:        Collection of algorithms for computer vision
 # GPL-2.0 AND Apache-2.0 files are in 3rdparty/ittnotify which is not build
@@ -45,12 +40,6 @@ URL:            https://opencv.org/
 Source0:        https://github.com/opencv/opencv/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # Several modules from the opencv_contrib package
 Source1:        https://github.com/opencv/opencv_contrib/archive/%{version}.tar.gz#/opencv_contrib-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-highgui-Fix-unresolved-OpenGL-functions-for-Qt-backe.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         https://github.com/opencv/opencv/pull/21754.patch#/videoio_initial_FFmpeg_5_0_support.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         https://github.com/opencv/opencv/commit/271f7df3435c619ceba9261f88dcfbb0714b0b0d.patch#/videoio_ffmpeg_avoid_memory_leaks.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libeigen3-devel
@@ -82,11 +71,6 @@ BuildRequires:  ade-devel >= 0.1.0
 %if %{with openblas}
 BuildRequires:  openblas-devel
 %endif
-%if %{with python2}
-BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(python)
-BuildRequires:  python2-numpy-devel
-%endif
 %if %{with python3}
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-numpy-devel
@@ -113,7 +97,7 @@ Computer Vision algorithms.
 Summary:        Classifier cascades for OpenCV
 License:        BSD-3-Clause
 Group:          System/Libraries
-Conflicts:      %{name} < %{version}-%{release}
+Conflicts:      %{name} < 4.5.1
 Provides:       %{name}:%{_datadir}/opencv4/lbpcascades/lbpcascade_silverware.xml
 BuildArch:      noarch
 
@@ -148,11 +132,18 @@ Requires:       %{name}4-cascades-data
 %description -n libopencv_face%{soname}
 Face detection libraries for OpenCV
 
+%package -n libopencv_gapi%{soname}
+Summary:        G-API library component for OpenCV
+License:        BSD-3-Clause
+Group:          System/Libraries
+
+%description -n libopencv_gapi%{soname}
+G-API library component for OpenCV
+
 %package -n libopencv_highgui%{soname}
 Summary:        Higlevel GUI libraries for OpenCV
 License:        BSD-3-Clause
 Group:          System/Libraries
-Conflicts:      %{libname}%{soname} < %{version}-%{release}
 
 %description -n libopencv_highgui%{soname}
 Higlevel GUI libraries for OpenCV
@@ -161,7 +152,6 @@ Higlevel GUI libraries for OpenCV
 Summary:        Image codec libraries for OpenCV
 License:        BSD-3-Clause
 Group:          System/Libraries
-Conflicts:      %{libname}%{soname} < %{version}-%{release}
 
 %description -n libopencv_imgcodecs%{soname}
 Image codec libraries for OpenCV
@@ -170,7 +160,6 @@ Image codec libraries for OpenCV
 Summary:        Superresolution libraries for OpenCV
 License:        BSD-3-Clause
 Group:          System/Libraries
-Conflicts:      %{libname}%{soname} < %{version}-%{release}
 
 %description -n libopencv_superres%{soname}
 Superresolution libraries for OpenCV
@@ -179,17 +168,23 @@ Superresolution libraries for OpenCV
 Summary:        Face detection libraries for OpenCV
 License:        BSD-3-Clause
 Group:          System/Libraries
-Conflicts:      %{libname}%{soname} < %{version}-%{release}
 Requires:       %{name}4-cascades-data
 
 %description -n libopencv_objdetect%{soname}
 Object detection libraries for OpenCV
 
+%package -n libopencv_optflow%{soname}
+Summary:        Optical flow calculation libraries for OpenCV
+License:        BSD-3-Clause
+Group:          System/Libraries
+
+%description -n libopencv_optflow%{soname}
+Optical flow calculation libraries for OpenCV
+
 %package -n libopencv_videoio%{soname}
 Summary:        Video IO libraries for OpenCV
 License:        BSD-3-Clause
 Group:          System/Libraries
-Conflicts:      %{libname}%{soname} < %{version}-%{release}
 
 %description -n libopencv_videoio%{soname}
 Video IO libraries for OpenCV
@@ -198,7 +193,6 @@ Video IO libraries for OpenCV
 Summary:        Video stabilization libraries for OpenCV
 License:        BSD-3-Clause
 Group:          System/Libraries
-Conflicts:      %{libname}%{soname} < %{version}-%{release}
 
 %description -n libopencv_videostab%{soname}
 Video stabilization libraries for OpenCV
@@ -207,7 +201,6 @@ Video stabilization libraries for OpenCV
 Summary:        Image processing libraries for OpenCV
 License:        BSD-3-Clause
 Group:          System/Libraries
-Conflicts:      %{libname}%{soname} < %{version}-%{release}
 
 %description -n libopencv_ximgproc%{soname}
 Image processing libraries for OpenCV
@@ -219,9 +212,11 @@ Group:          Development/Libraries/C and C++
 Requires:       %{libname}%{soname} = %{version}
 Requires:       libopencv_aruco%{soname} = %{version}
 Requires:       libopencv_face%{soname} = %{version}
+Requires:       libopencv_gapi%{soname} = %{version}
 Requires:       libopencv_highgui%{soname} = %{version}
 Requires:       libopencv_imgcodecs%{soname} = %{version}
 Requires:       libopencv_objdetect%{soname} = %{version}
+Requires:       libopencv_optflow%{soname} = %{version}
 Requires:       libopencv_superres%{soname} = %{version}
 Requires:       libopencv_videoio%{soname} = %{version}
 Requires:       libopencv_videostab%{soname} = %{version}
@@ -241,18 +236,6 @@ This package contains the OpenCV C/C++ library and header files, as well as
 documentation. It should be installed if you want to develop programs that will
 use the OpenCV library.
 
-%package -n python2-%{name}
-Summary:        Python 2 bindings for apps which use OpenCV
-License:        BSD-3-Clause
-Group:          Development/Libraries/Python
-Provides:       python-%{name} = %{version}-%{release}
-Obsoletes:      python-%{name} < %{version}-%{release}
-Provides:       python-%{name}-qt5 = %{version}
-Obsoletes:      python-%{name}-qt5 < %{version}
-
-%description -n python2-%{name}
-This package contains Python 2 bindings for the OpenCV library.
-
 %package -n python3-%{name}
 Summary:        Python 3 bindings for apps which use OpenCV
 License:        BSD-3-Clause
@@ -267,11 +250,11 @@ This package contains Python 3 bindings for the OpenCV library.
 Summary:        Documentation and examples for OpenCV
 License:        BSD-3-Clause
 Group:          Documentation/Other
-Recommends:     python
 # Since this package also contains examples that need -devel to be compiled
 Suggests:       %{name}-devel
 Provides:       %{name}-qt5-doc = %{version}
 Obsoletes:      %{name}-qt5-doc < %{version}
+BuildArch:      noarch
 
 %description doc
 This package contains the documentation and examples for the OpenCV library.
@@ -282,6 +265,7 @@ This package contains the documentation and examples for the OpenCV library.
 
 # Only copy over modules we need
 mv opencv_contrib-%{version}/modules/{aruco,face,tracking,optflow,plot,shape,superres,videostab,ximgproc} modules/
+rm -Rf opencv_contrib-%{version}/modules/*
 cp opencv_contrib-%{version}/LICENSE LICENSE.contrib
 
 # Remove Windows specific files
@@ -307,9 +291,10 @@ rm -f doc/packaging.txt
       -DOPENCV_GENERATE_PKGCONFIG=ON \
       -DINSTALL_C_EXAMPLES=ON \
       -DINSTALL_PYTHON_EXAMPLES=ON \
-      -DENABLE_OMIT_FRAME_POINTER=OFF \
+      -DENABLE_OMIT_FRAME_POINTER=ON \
       -DWITH_QT=ON \
       -DWITH_OPENGL=ON \
+      -DOpenGL_GL_PREFERENCE:STRING="GLVND" \
       -DWITH_UNICAP=ON \
       -DWITH_XINE=ON \
       -DWITH_IPP=OFF \
@@ -342,7 +327,6 @@ rm -f doc/packaging.txt
 %endif
       -DPYTHON_DEFAULT_EXECUTABLE=%{_bindir}/python3 \
       -DOPENCV_SKIP_PYTHON_LOADER=ON \
-      -DOPENCV_PYTHON2_INSTALL_PATH=%{python2_sitearch} \
       -DOPENCV_PYTHON3_INSTALL_PATH=%{python3_sitearch} \
       -DOPENCV_DOWNLOAD_TRIES_LIST:STRING="" \
       -DWITH_JASPER=OFF \
@@ -362,6 +346,7 @@ chmod 644 %{buildroot}%{_docdir}/%{name}-doc/examples/python/*.py
 rm %{buildroot}%{_bindir}/setup_vars_opencv4.sh
 
 # Fix duplicated install prefix in pkg-config file
+cat %{buildroot}%{_libdir}/pkgconfig/opencv4.pc
 sed -i -e 's|//usr||g' %{buildroot}%{_libdir}/pkgconfig/opencv4.pc
 
 %fdupes -s %{buildroot}%{_docdir}/%{name}-doc/examples
@@ -384,12 +369,16 @@ grep -E 'model|stepping|flags' /proc/cpuinfo | head -n4
 %postun -n libopencv_aruco%{soname} -p /sbin/ldconfig
 %post -n libopencv_face%{soname} -p /sbin/ldconfig
 %postun -n libopencv_face%{soname} -p /sbin/ldconfig
+%post -n libopencv_gapi%{soname} -p /sbin/ldconfig
+%postun -n libopencv_gapi%{soname} -p /sbin/ldconfig
 %post -n libopencv_highgui%{soname} -p /sbin/ldconfig
 %postun -n libopencv_highgui%{soname} -p /sbin/ldconfig
 %post -n libopencv_imgcodecs%{soname} -p /sbin/ldconfig
 %postun -n libopencv_imgcodecs%{soname} -p /sbin/ldconfig
 %post -n libopencv_objdetect%{soname} -p /sbin/ldconfig
 %postun -n libopencv_objdetect%{soname} -p /sbin/ldconfig
+%post -n libopencv_optflow%{soname} -p /sbin/ldconfig
+%postun -n libopencv_optflow%{soname} -p /sbin/ldconfig
 %post -n libopencv_superres%{soname} -p /sbin/ldconfig
 %postun -n libopencv_superres%{soname} -p /sbin/ldconfig
 %post -n libopencv_videoio%{soname} -p /sbin/ldconfig
@@ -417,12 +406,8 @@ grep -E 'model|stepping|flags' /proc/cpuinfo | head -n4
 %{_libdir}/libopencv_dnn.so.*
 %{_libdir}/libopencv_features2d.so.*
 %{_libdir}/libopencv_flann.so.*
-%if %{with gapi}
-%{_libdir}/libopencv_gapi.so.*
-%endif
 %{_libdir}/libopencv_imgproc.so.*
 %{_libdir}/libopencv_ml.so.*
-%{_libdir}/libopencv_optflow.so.*
 %{_libdir}/libopencv_photo.so.*
 %{_libdir}/libopencv_plot.so.*
 %{_libdir}/libopencv_shape.so.*
@@ -436,6 +421,11 @@ grep -E 'model|stepping|flags' /proc/cpuinfo | head -n4
 %files -n libopencv_face%{soname}
 %{_libdir}/libopencv_face.so.*
 
+%if %{with gapi}
+%files -n libopencv_gapi%{soname}
+%{_libdir}/libopencv_gapi.so.*
+%endif
+
 %files -n libopencv_highgui%{soname}
 %{_libdir}/libopencv_highgui.so.*
 
@@ -444,6 +434,9 @@ grep -E 'model|stepping|flags' /proc/cpuinfo | head -n4
 
 %files -n libopencv_objdetect%{soname}
 %{_libdir}/libopencv_objdetect.so.*
+
+%files -n libopencv_optflow%{soname}
+%{_libdir}/libopencv_optflow.so.*
 
 %files -n libopencv_superres%{soname}
 %{_libdir}/libopencv_superres.so.*
@@ -466,12 +459,6 @@ grep -E 'model|stepping|flags' /proc/cpuinfo | head -n4
 %{_libdir}/cmake/opencv4/OpenCVConfig*.cmake
 %{_libdir}/cmake/opencv4/OpenCVModules*.cmake
 %{_datadir}/opencv4/valgrind*
-
-%if %{with python2}
-%files -n python2-%{name}
-%license LICENSE LICENSE.contrib
-%{python_sitearch}/cv2.so
-%endif
 
 %if %{with python3}
 %files -n python3-%{name}

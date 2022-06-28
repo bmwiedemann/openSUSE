@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Sun Jun 19 13:25:26 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.6.0, highlights below, for details check
+  https://github.com/opencv/opencv/wiki/ChangeLog#version460
+  * OpenCV project infrastructure migrating on GitHub Actions
+    workflows for CI and release purposes
+  * Added support for GCC 12, Clang 15
+  * Added support for FFmpeg 5.0
+  * DNN module patches:
+    + Improved layers / activations / supported more models:
+      - LSTM (+CUDA), resize (+ONNX13), Sign, Shrink, Reciprocal,
+        depth2space, space2depth
+      - fixes in Reduce, Slice, Expand
+    + Disabled floating-point denormals processing #21521
+    + Changed layer names in ONNX importer to support "output"
+      entities properly
+    + Added TIM-VX NPU backend support:
+      https://github.com/opencv/opencv/wiki/TIM-VX-Backend-For-Running-OpenCV-On-NPU
+    + Added Softmax parameter to ClassificationModel
+    + Added audio speech recognition sample (C++) #21458
+    + Intel® Inference Engine backend (OpenVINO):
+      - added initial support for OpenVINO 2022.1 release
+      - removed support of legacy API (dropped since 2020.3)
+  * G-API module:
+    + G-API framework:
+      - Introduced a Grayscale image format support for
+        cv::MediaFrame: #21511;
+      - Enabeled .reshape() support in the CPU backend: #21669;
+      - Fixed possible hang in streaming execution mode with constant
+        inputs: #21567;
+      - Introduced proper error/exception propagation in the
+        asynchronous streaming execution mode: #21660;
+      - Fixed new stream event handling: #21731.
+    + Fluid backend:
+      - Fixed horizontal pass in the Resize kernel, fixed Valgrind
+        issues: #21144;
+      - Extended Resize kernel with F32 version: #21678,
+        added AVX: #21728.
+      - Enabled dynamic dispatch for Split4 kernel: #21520;
+      - Enabled dynamic dispatch for Merge3 kernel: #21529;
+      - Added a SIMD version for DivC kernel: #21474;
+      - Added a SIMD version for DivRC kernel: #21530;
+      - Enabled dynamic dispatch for Add kernel: #21686;
+      - Enabled dynamic dispatch for Sub kernel: #21746;
+      - Added a SIMD version for ConvertTo kernel: #21777;
+      - Fixed kernel matrix size for Sobel kernel: #21613.
+    + Intel® OpenVINO™ inference backend:
+      - Fixed NV12 format support for remote memory when OpenVINO
+        remote context is used: #21424.
+      - Implemented correct error handling in the backend: #21579.
+      - Fixed ngraph warnings #21362.
+    + OpenCV AI Kit backend:
+      - Introduced a new backend to program OpenCV AI Kit boards via
+        G-API. Currently the backend is in experimental state, but allows
+        to build Camera+NN pipeline and supports heterogeneity (mixing
+        with host-side code): #20785, #21504.
+    + Media integration:
+      - Enabled GPU inference with oneVPL and DirectX11 on Windows in
+        Intel OpenVINO inference backend: #21232, #21618, #21658, #21687,
+        #21688. Now GPU textures decoded by oneVPL decoder can be
+        preprocessed and inferred on GPU with no extra host processing.
+      - Enabled oneVPL support on Linux: #21883.
+      - Extended GStreamer pipeline source with Grayscale image format
+        support: #21560.
+    + Python bindings:
+      - Exposed GStreamer pipeline source in Python bindings: #20832.
+      - Fixed Python bindings for CudaBufferPool, cudacodec and cudastereo
+        modules in OpenCV Contrib.
+    + Samples:
+      - Introduced a pipeline modelling tool for cascaded model
+        benchmarking: #21477, #21636, #21719. The tool supports a
+        declarative YAML-based config to describe pipelines with simulated
+        pre-/post-processing. The tool collects and reports latency and
+        throughput information for the modelled pipeline.
+    + Other changes and fixes:
+      - Moved GKernelPackage into cv:: namespace by default, its cv::gapi::
+        alias remain for compatibility: #21318;
+      - Moved Resize kernel from core to imgproc kernel packages for
+        CPU, OpenCL, and Fluid backends: #21157. Also moved tests
+        appropriately: #21475;
+      - Avoided sporadic test failures in DivC: #21626;
+      - Fixed 1D Mat handling in the framework: #21782;
+      - Reduced the number of G-API generated accuracy tests: #21909.
+- Drop upstream patches:
+  * 0001-highgui-Fix-unresolved-OpenGL-functions-for-Qt-backe.patch
+  * videoio_initial_FFmpeg_5_0_support.patch
+  * videoio_ffmpeg_avoid_memory_leaks.patch
+
+-------------------------------------------------------------------
 Fri Apr 29 16:54:16 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add upstream patches for FFmpeg 5.0 support, add
