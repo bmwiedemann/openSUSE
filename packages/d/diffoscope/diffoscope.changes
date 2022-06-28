@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Jun 21 09:09:17 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 216:
+ - Print profile output if we were called with --profile and we receive a
+   TERM signal.
+ - Emit a warning if/when we are handling a TERM signal.
+ - Clarify in the code in what situations the main "finally" block gets
+   called, especially in relation to handling TERM signals.
+ - Clarify and tidy some unconditional control flow in diffoscope.profiling.
+- update to version 215:
+ - Bug fixes:
+   - Also catch IndexError (in addition to ValueError) when parsing .pyc
+     files. (Closes: #1012258)
+   - Strip "sticky" etc. from "x.deb: sticky Debian binary package […]".
+     Thanks to David Prévot for the report. (Closes: #1011635)
+   - Correctly package diffoscope's scripts/ directory, fixing the extraction
+     of vmlinuz kernel images. (Closes: reproducible-builds/diffoscope#305)
+   - Correct the logic for supporting different versions of argcomplete in
+     debian/rules.
+ - New features:
+   - Support both PyPDF 1.x and 2.x.
+ - Codebase improvements:
+   - Don't call re.compile and then call .sub on the result; just call
+     re.sub directly.
+   - Clarify the logic around the difference between --usage and --help.
+ - Testsuite improvements:
+   - Integrate test coverage with GitLab's concept of artifacts.
+   - Re-enable Gnumeric tests as its now available again.
+   - Test --help and --usage, and additionally test that --help includes
+     the programmatically-generated file format list as well.
+ - Bump Standards Version field in debian/control to 4.6.1.
+
+-------------------------------------------------------------------
 Fri May 27 06:33:01 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 214:
