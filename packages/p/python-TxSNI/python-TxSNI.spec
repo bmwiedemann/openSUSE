@@ -1,7 +1,7 @@
 #
 # spec file for package python-TxSNI
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,11 +25,11 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/glyph/txsni
 Source0:        https://github.com/glyph/txsni/archive/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module Twisted >= 14.0.0}
+BuildRequires:  %{python_module Twisted-tls >= 14.0.0}
 BuildRequires:  %{python_module pyOpenSSL >= 0.14}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Twisted >= 14.0.0
+Requires:       python-Twisted-tls >= 14.0.0
 Requires:       python-pyOpenSSL >= 0.14
 BuildArch:      noarch
 %python_subpackages
