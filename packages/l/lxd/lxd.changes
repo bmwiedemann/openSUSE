@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 27 23:57:42 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 5.3. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-5-3-has-been-released/14439
+  boo#1200974
+
+  + Extended raw.qemu support
+  + fscache support for cephfs storage pools
+
+-------------------------------------------------------------------
 Sun May 29 02:18:04 UTC 2022 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 5.2. The full upstream changelog is available from:
