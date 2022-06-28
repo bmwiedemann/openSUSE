@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 28 02:24:28 UTC 2022 - gmg 137 <gmg137@live.com>
+
+- Updata to version 2.0.0
+ + Refactoring with gtk4+ libadwaita.
+ + Add cell phone number to login.
+ + Add scan QR code to login.
+ + Add web proxy support.
+ + Add custom skin support. 
+
+-------------------------------------------------------------------
 Fri Nov  5 03:42:50 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Add cargo audit service to detect potential security issues

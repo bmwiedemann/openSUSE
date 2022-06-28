@@ -1,7 +1,7 @@
 #
 # spec file for package netease-cloud-music-gtk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) specCURRENT_YEAR SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,22 +17,21 @@
 #
 
 
+%global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
+%define _lto_cflags %{nil}
 Name:           netease-cloud-music-gtk
-Version:        1.2.1
+Version:        2.0.0
 Release:        0
-Summary:        Linux 平台下基于 Rust + GTK 开发的网易云音乐播放器
+Summary:        Linux 平台下基于 Rust + GTK4 开发的网易云音乐播放器
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://github.com/gmg137/netease-cloud-music-gtk
 Source:         %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 
-BuildRequires:  cargo
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig
-BuildRequires:  rust >= 1.41
-BuildRequires:  rust-std
+BuildRequires:  git
+BuildRequires:  meson
+BuildRequires:  rust-packaging
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
@@ -45,7 +44,8 @@ BuildRequires:  pkgconfig(gstreamer-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-player-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(openssl)
 Requires:       gstreamer
 Requires:       gstreamer-plugins-bad
@@ -55,7 +55,9 @@ Requires:       gstreamer-plugins-ugly
 Requires:       openssl
 
 %description
-netease-cloud-music-gtk 是基于 Rust + GTK 开发的网易云音乐播放器，专为 Linux 系统打造。
+netease-cloud-music-gtk 是基于 Rust + GTK4 开发的网易云音乐播放器，专为 Linux 系统打造。
+
+%lang_package
 
 %prep
 %setup -q -a1
@@ -69,22 +71,25 @@ directory = './vendor'
 EOF
 
 %build
-export CARGO_HOME=$PWD
-%if 0%{?suse_version} <= 1510
-cargo build --release --no-default-features --features gtk_3_18
-%else
-cargo build --release
-%endif
+%meson
+%meson_build
 
 %install
-install -Dm 755 target/release/%{name} %{buildroot}%{_bindir}/%{name}
-install -Dm 644 %{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
-install -Dm 644 icons/%{name}.svg %{buildroot}%{_datadir}/pixmaps/%{name}.svg
+%meson_install
+%suse_update_desktop_file -r com.gitee.gmg137.NeteaseCloudMusicGtk4 "GTK;GNOME;Audio;"
+%find_lang %{name}4
 
 %files
-%defattr(-,root,root,-)
-%{_bindir}/%{name}
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/pixmaps/%{name}.svg
+%license  COPYING
+%{_bindir}/%{name}4
+%{_datadir}/appdata/com.gitee.gmg137.NeteaseCloudMusicGtk4.appdata.xml
+%{_datadir}/applications/*.desktop
+%{_datadir}/glib-2.0/schemas/com.gitee.gmg137.NeteaseCloudMusicGtk4.gschema.xml
+%{_datadir}/icons/hicolor/scalable/apps/com.gitee.gmg137.NeteaseCloudMusicGtk4.svg
+%{_datadir}/icons/hicolor/symbolic/apps/com.gitee.gmg137.NeteaseCloudMusicGtk4-symbolic.svg
+%{_datadir}/netease-cloud-music-gtk4
+%{_datadir}/netease-cloud-music-gtk4/%{name}4.gresource
+
+%files lang -f %{name}4.lang
 
 %changelog

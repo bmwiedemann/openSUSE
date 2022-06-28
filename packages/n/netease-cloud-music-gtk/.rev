@@ -75,4 +75,18 @@
     <comment></comment>
     <requestid>932767</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ab2b35f1b09cfa344de46ed58f0aff08</srcmd5>
+    <version>2.0.0</version>
+    <time>1656422559</time>
+    <user>dimstar_suse</user>
+    <comment>- Updata to version 2.0.0
+ + Refactoring with gtk4+ libadwaita.
+ + Add cell phone number to login.
+ + Add scan QR code to login.
+ + Add web proxy support.
+ + Add custom skin support. 
+</comment>
+    <requestid>985506</requestid>
+  </revision>
 </revisionlist>
