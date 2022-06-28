@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jun 24 21:23:46 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- spec: Include aarch64 in the list of architectures that 'Require'
+  dmidecode
+  boo#1196087
+
+-------------------------------------------------------------------
+Tue Jun 21 17:55:38 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- spec: Move logrotate config files from /etc/logrotate.d to
+  /usr/etc/logrotate.d
+
+-------------------------------------------------------------------
+Tue Jun 14 00:23:15 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- spec: Closer alignment with upstream spec file, including
+  enabling more unit tests
+
+-------------------------------------------------------------------
 Wed Jun  1 14:10:53 UTC 2022 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 8.4.0

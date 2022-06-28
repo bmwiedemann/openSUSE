@@ -363,7 +363,7 @@ Requires:       iproute
 Requires:       logrotate
 Requires:       pkgconfig(udev) >= 145
 Recommends:     polkit >= 0.112
-%ifarch %ix86 x86_64 ia64
+%ifarch %ix86 x86_64 aarch64
 # For virConnectGetSysinfo
 Requires:       dmidecode
 %endif
@@ -950,6 +950,15 @@ libvirt plugin for NSS for translating domain names into IP addresses.
     %define arg_loader_nvram -Dloader-nvram="$LOADERS"
 %endif
 
+# Macros for moving vendor provided configuration from /etc to /usr
+%if 0%{?suse_version} > 1500
+    %define logrotate_prefix %nil
+    %define logrotate_dir %{_distconfdir}/logrotate.d
+%else
+    %define logrotate_prefix %config(noreplace)
+    %define logrotate_dir %{_sysconfdir}/logrotate.d
+%endif
+
 %meson \
            --libexecdir=%{_libdir}/%{name} \
            -Drunstatedir=%{_rundir} \
@@ -984,8 +993,6 @@ libvirt plugin for NSS for translating domain names into IP addresses.
            %{?arg_storage_iscsi_direct} \
            -Dstorage_zfs=disabled \
            -Dstorage_vstorage=disabled \
-           %{?arg_libssh} \
-           %{?arg_libssh2} \
            %{?arg_numactl} \
            %{?arg_numad} \
            -Dcapng=enabled \
@@ -1000,23 +1007,28 @@ libvirt plugin for NSS for translating domain names into IP addresses.
            -Dyajl=enabled \
            %{?arg_sanlock} \
            -Dlibpcap=enabled \
+           -Dlibnl=enabled \
            -Daudit=enabled \
            -Ddtrace=enabled \
            -Dfirewalld=enabled \
            %{?arg_firewalld_zone} \
            %{?arg_wireshark} \
+           %{?arg_libssh} \
+           %{?arg_libssh2} \
+           -Dpm_utils=disabled \
            -Dnss=enabled \
            -Dqemu_user=%{qemu_user} \
            -Dqemu_group=%{qemu_group} \
            -Dqemu_moddir=%{qemu_moddir} \
            -Dqemu_datadir=%{qemu_datadir} \
+           -Dexpensive_tests=enabled \
            %{?arg_loader_nvram} \
-           -Dlogin_shell=disabled \
            -Dinit_script=systemd \
            -Ddocs=enabled \
            -Dtests=enabled \
            -Drpath=disabled \
-	   %{nil}
+           -Dlogin_shell=disabled \
+          %{nil}
 
 %meson_build
 
@@ -1030,6 +1042,14 @@ do
   rm -rfv "$dir"
 done
 
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}/%{logrotate_dir}
+mv %{buildroot}/%{_sysconfdir}/logrotate.d/libvirtd.lxc %{buildroot}/%{logrotate_dir}
+mv %{buildroot}/%{_sysconfdir}/logrotate.d/libvirtd.qemu %{buildroot}/%{logrotate_dir}
+mv %{buildroot}/%{_sysconfdir}/logrotate.d/libvirtd.libxl %{buildroot}/%{logrotate_dir}
+mv %{buildroot}/%{_sysconfdir}/logrotate.d/libvirtd %{buildroot}/%{logrotate_dir}
+%endif
+
 mkdir -p %{buildroot}/%{_localstatedir}/lib/%{name}
 mkdir -p %{buildroot}/%{_sysconfdir}/%{name}/hooks
 %find_lang %{name}
@@ -1042,19 +1062,19 @@ rm -f %{buildroot}/%{_sysconfdir}/%{name}/qemu/networks/autostart/default.xml
 rm -f %{buildroot}/%{_sysconfdir}/%{name}/lxc.conf
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/libvirtd_lxc.aug
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/tests/test_libvirtd_lxc.aug
-rm -f %{buildroot}/%{_sysconfdir}/logrotate.d/libvirtd.lxc
+rm -f %{buildroot}/%{logrotate_dir}/libvirtd.lxc
 %endif
 %if ! %{with_qemu}
 rm -f %{buildroot}/%{_sysconfdir}/%{name}/qemu.conf
 rm -f %{buildroot}/%{_sysconfdir}/apparmor.d/usr.sbin.virtqemud
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/libvirtd_qemu.aug
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/tests/test_libvirtd_qemu.aug
-rm -f %{buildroot}/%{_sysconfdir}/logrotate.d/libvirtd.qemu
+rm -f %{buildroot}/%{logrotate_dir}/libvirtd.qemu
 %endif
 %if ! %{with_libxl}
 rm -f %{buildroot}/%{_sysconfdir}/%{name}/libxl.conf
 rm -f %{buildroot}/%{_sysconfdir}/apparmor.d/usr.sbin.virtxend
-rm -f %{buildroot}/%{_sysconfdir}/logrotate.d/libvirtd.libxl
+rm -f %{buildroot}/%{logrotate_dir}/libvirtd.libxl
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/libvirtd_libxl.aug
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/tests/test_libvirtd_libxl.aug
 %endif
@@ -1349,7 +1369,7 @@ fi
 %{_bindir}/virt-host-validate
 %config(noreplace) %{_sysconfdir}/%{name}/libvirtd.conf
 %config(noreplace) %{_sysconfdir}/%{name}/virtproxyd.conf
-%config(noreplace) %{_sysconfdir}/logrotate.d/libvirtd
+%{logrotate_prefix} %{logrotate_dir}/libvirtd
 %config(noreplace) %{_sysconfdir}/%{name}/virtlogd.conf
 %config(noreplace) %{_sysconfdir}/%{name}/virtlockd.conf
 %dir %{_sysconfdir}/sasl2/
@@ -1581,7 +1601,7 @@ fi
 %{_sbindir}/rcvirtqemud
 %config(noreplace) %{_sysconfdir}/%{name}/qemu.conf
 %config(noreplace) %{_sysconfdir}/%{name}/qemu-lockd.conf
-%config(noreplace) %{_sysconfdir}/logrotate.d/libvirtd.qemu
+%{logrotate_prefix} %{logrotate_dir}/libvirtd.qemu
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/qemu/autostart/
 %dir %attr(0751, %{qemu_user}, %{qemu_group}) %{_localstatedir}/lib/%{name}/qemu/
 %dir %attr(0750, root, root) %{_localstatedir}/cache/%{name}/qemu/
@@ -1614,7 +1634,7 @@ fi
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/lxc/
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/lxc/autostart/
 %config(noreplace) %{_sysconfdir}/%{name}/lxc.conf
-%config(noreplace) %{_sysconfdir}/logrotate.d/libvirtd.lxc
+%{logrotate_prefix} %{logrotate_dir}/libvirtd.lxc
 %dir %attr(0700, root, root) %{_localstatedir}/lib/%{name}/lxc/
 %dir %attr(0700, root, root) %{_localstatedir}/log/%{name}/lxc/
 %attr(0755, root, root) %{_libdir}/%{name}/libvirt_lxc
@@ -1641,7 +1661,7 @@ fi
 %{_sbindir}/virtxend
 %{_sbindir}/rcvirtxend
 %config(noreplace) %{_sysconfdir}/%{name}/libxl.conf
-%config(noreplace) %{_sysconfdir}/logrotate.d/libvirtd.libxl
+%{logrotate_prefix} %{logrotate_dir}/libvirtd.libxl
 %config(noreplace) %{_sysconfdir}/%{name}/libxl-lockd.conf
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/libxl/
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/libxl/autostart/
