@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-table-chinese
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           ibus-table-chinese
-Version:        1.8.3
+Version:        1.8.8
 Release:        0
 Summary:        Various Chinese input method table for the IBus framework
 License:        GPL-3.0-or-later
 Group:          System/I18n/Chinese
-URL:            https://github.com/definite/ibus-table-chinese
-Source:         https://github.com/definite/ibus-table-chinese/archive/%{version}/%{name}-%{version}.tar.gz
+URL:            https://github.com/mike-fabian/ibus-table-chinese
+Source:         https://github.com/mike-fabian/ibus-table-chinese/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
-BuildRequires:  cmake-fedora-modules
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ibus-table)
 BuildArch:      noarch
@@ -199,20 +198,18 @@ Provides:       locale(ibus:zh_CN)
 YongMa input method.
 
 %prep
-%setup -q
-sed -i 's/\r//' tables/wubi-haifeng/COPYING
+%autosetup
 
 %build
 export PYTHON=python3
 cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
       -DDATA_DIR=%{_datadir} \
-      -DPRJ_DOC_DIR=%{_docdir}/%{name} \
-      -DCMAKE_FEDORA_TMP_DIR=.
+      -DPRJ_DOC_DIR=%{_docdir}/%{name}
 make -j1 V=1
 
 %install
 %make_install
-rm -rf %{buildroot}%{_docdir}/%{name}
+rm -rf %{buildroot}/usr/share/doc/%{name}
 
 %post array
 %ibus_table_index_post array30
@@ -339,8 +336,6 @@ rm -rf %{buildroot}%{_docdir}/%{name}
 %files wubi-haifeng
 %license COPYING
 %doc ChangeLog AUTHORS NEWS README RELEASE-NOTES.txt
-%license tables/wubi-haifeng/COPYING
-%doc tables/wubi-haifeng/README
 %{_ibus_icondir}/wubi-haifeng86.*
 %{_ibus_tabledir}/wubi-haifeng86.db
 

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jun 25 17:30:05 UTC 2022 - Gordon Leung <pirateclip@protonmail.com> - 1.8.8
+
+update: 1.8.3 -> 1.8.8
+- Move source to mike-fabian's repo as previous repo is now deprecated
+  * https://github.com/definite/ibus-table-chinese/blob/master/README
+- Simplify CMakeLists.txt to avoid requiring cmake-fedora
+- cangjie5.txt improvement gh#mike-fabian/ibus-table-chinese#87
+- quick5.txt improvement gh#mike-fabian/ibus-table-chinese#4
+- Add table_extra tag gh#definite/ibus-table-chinese#18
+- "Traditional Chinese only" is now the default for cangjie5 and quick5
+  * gh#mike-fabian/ibus-table-chinese#2
+- Build outside of source tree gh#mike-fabian/ibus-table-chinese#2
+
+chore: clean up specfile
+
+-------------------------------------------------------------------
 Tue Jan 12 22:06:52 UTC 2021 - Dingzhong Chen <wsxy162@gmail.com>
 
 - Update to official release 1.8.3

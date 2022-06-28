@@ -218,4 +218,12 @@
 - Drop Source cmake-fedora, add BuildRequires cmake-fedora-modules (forwarded request 862749 from wsxy162)</comment>
     <requestid>862761</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>2407019e478b8b7992f33ad725e162d5</srcmd5>
+    <version>1.8.8</version>
+    <time>1656422585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985581</requestid>
+  </revision>
 </revisionlist>
