@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 28 02:57:26 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- add Requires: typelib-1_0-Gtk-3_0
+  * fix boo#1200948
+
+-------------------------------------------------------------------
 Thu Jun  2 14:29:40 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - spec file cleanup

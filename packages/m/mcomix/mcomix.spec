@@ -1,7 +1,7 @@
 #
 # spec file for package mcomix
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           mcomix
 Version:        2.0.2
@@ -21,17 +22,18 @@ Release:        0
 Summary:        Comics Viewer
 License:        GPL-2.0-only
 Group:          Productivity/Graphics/Viewers
-Url:            http://sourceforge.net/p/mcomix/wiki/Home/
+URL:            http://sourceforge.net/p/mcomix/wiki/Home/
 Source0:        https://sourceforge.net/projects/mcomix/files/MComix-%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  python3-setuptools
 BuildRequires:  gobject-introspection
+BuildRequires:  python3-setuptools
+Requires:       /usr/bin/7z
 Requires:       python3-Pillow
 Requires:       python3-gobject-Gdk
 Requires:       python3-pycairo
-Requires:       /usr/bin/7z
-Recommends:     unrar
+Requires:       typelib-1_0-Gtk-3_0
 Recommends:     /usr/bin/lha
 Recommends:     mupdf
+Recommends:     unrar
 BuildArch:      noarch
 %if 0%{?suse_version}
 BuildRequires:  fdupes
@@ -58,7 +60,6 @@ python3 setup.py install --root %{buildroot} --prefix "%{_prefix}"
 %fdupes -s %{buildroot}%{python_sitelib}/mcomix
 %fdupes -s %{buildroot}%{python_sitelib}/mcomix-*
 %endif
-
 
 %files -n %{name} -f %{name}.lang
 %{_bindir}/mcomix

@@ -7,4 +7,14 @@
     <comment>mcomix for python3. With spec file cleanup.</comment>
     <requestid>980518</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ccc09bc33c377d905abafa09ef5d3b70</srcmd5>
+    <version>2.0.2</version>
+    <time>1656422555</time>
+    <user>dimstar_suse</user>
+    <comment>- add Requires: typelib-1_0-Gtk-3_0
+  * fix boo#1200948
+</comment>
+    <requestid>985411</requestid>
+  </revision>
 </revisionlist>
