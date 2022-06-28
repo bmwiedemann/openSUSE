@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 27 16:37:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10
+  * New msvcrt10, 20, 40, 70 and 71 import libraries.
+  * Updated wine imports
+  * Fix intrin.h compatibility with GCC-11
+
+-------------------------------------------------------------------
 Thu Jul  8 07:13:22 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

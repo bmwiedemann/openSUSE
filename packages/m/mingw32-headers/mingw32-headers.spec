@@ -1,7 +1,7 @@
 #
 # spec file for package mingw32-headers
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           mingw32-headers
-Version:        9.0.0
+Version:        10.0.0
 Release:        0
 Summary:        MinGW-w64 headers for Win32 and Win64
 License:        SUSE-Public-Domain
 Group:          Development/Libraries/C and C++
 URL:            http://mingw-w64.sf.net/
-Source:         http://downloads.sf.net/mingw-w64/mingw-w64-v%{version}.tar.bz2
+Source:         http://downloads.sf.net/mingw-w64/mingw-w64-v%version.tar.bz2
 Source1000:     %name-rpmlintrc
 Patch0:         mingw-w64-v9.0.0-strnlen_s.patch
 BuildRequires:  mingw32-filesystem
