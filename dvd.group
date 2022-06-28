@@ -696,6 +696,7 @@
     <package name="gnome-weather" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-weather-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnomekbd-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="gnu-unifont-bitmap-fonts" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="gnutls" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="google-carlito-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="google-droid-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->

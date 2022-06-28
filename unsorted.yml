@@ -958,6 +958,7 @@ unsorted:
   - authbind 
   - authselect 
   - authselect-compat 
+  - authselect-lang 
   - authselect-profiles 
   - auto 
   - auto-common 
@@ -6041,7 +6042,6 @@ unsorted:
   - gnu-regexp 
   - gnu-regexp-demo 
   - gnu-regexp-javadoc 
-  - gnu-unifont-bitmap-fonts 
   - gnu-unifont-legacy-bitmap-fonts 
   - gnu_ddrescue 
   - gnu_parallel 
@@ -8160,29 +8160,6 @@ unsorted:
   - kicad-doc-zh 
   - kicad-footprints 
   - kicad-lang 
-  - kicad-lang-bg 
-  - kicad-lang-ca 
-  - kicad-lang-cs 
-  - kicad-lang-de 
-  - kicad-lang-el 
-  - kicad-lang-en 
-  - kicad-lang-es 
-  - kicad-lang-fi 
-  - kicad-lang-fr 
-  - kicad-lang-hu 
-  - kicad-lang-it 
-  - kicad-lang-ja 
-  - kicad-lang-ko 
-  - kicad-lang-lt 
-  - kicad-lang-nl 
-  - kicad-lang-pl 
-  - kicad-lang-pt 
-  - kicad-lang-ru 
-  - kicad-lang-sk 
-  - kicad-lang-sl 
-  - kicad-lang-sv 
-  - kicad-lang-zh_CN 
-  - kicad-lang-zh_TW 
   - kicad-packages3D 
   - kicad-symbols 
   - kicad-templates 
@@ -10545,7 +10522,7 @@ unsorted:
   - libdirac_encoder0-32bit: [x86_64] 
   - libdiscid-devel 
   - libdiscid0-32bit: [x86_64] 
-  - libdiscord-rpc 
+  - libdiscord-rpc3_4_0 
   - libdisomaster1 
   - libdispatch-devel 
   - libdispatch1_3 
@@ -12157,6 +12134,9 @@ unsorted:
   - libmbedx509-1 
   - libmbedx509-1-32bit: [x86_64] 
   - libmbim-devel 
+  - libmbus 
+  - libmbus-devel 
+  - libmbus0 
   - libmca_common_dstore1: [x86_64] 
   - libmcpp0 
   - libmd-devel 
@@ -12694,16 +12674,18 @@ unsorted:
   - libopencsd_c_api1 
   - libopencsg1 
   - libopencv3_4 
-  - libopencv405 
-  - libopencv_aruco405 
-  - libopencv_face405 
-  - libopencv_highgui405 
-  - libopencv_imgcodecs405 
-  - libopencv_objdetect405 
-  - libopencv_superres405 
-  - libopencv_videoio405 
-  - libopencv_videostab405 
-  - libopencv_ximgproc405 
+  - libopencv406 
+  - libopencv_aruco406 
+  - libopencv_face406 
+  - libopencv_gapi406 
+  - libopencv_highgui406 
+  - libopencv_imgcodecs406 
+  - libopencv_objdetect406 
+  - libopencv_optflow406 
+  - libopencv_superres406 
+  - libopencv_videoio406 
+  - libopencv_videostab406 
+  - libopencv_ximgproc406 
   - libopendkim11 
   - libopenhpi4 
   - libopenjp2-7-32bit: [x86_64] 
@@ -17237,6 +17219,7 @@ unsorted:
   - netdate 
   - netdiscover 
   - netease-cloud-music-gtk 
+  - netease-cloud-music-gtk-lang 
   - netgen: [x86_64] 
   - netgen-devel: [x86_64] 
   - netgen-examples: [x86_64] 
