@@ -31,4 +31,12 @@
     <comment>- Update to release 9.0.0</comment>
     <requestid>905554</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>03df5e1dc26137bc9f2eb8275c514dac</srcmd5>
+    <version>10.0.0</version>
+    <time>1656422563</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985444</requestid>
+  </revision>
 </revisionlist>
