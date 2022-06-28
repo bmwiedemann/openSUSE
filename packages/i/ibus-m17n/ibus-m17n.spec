@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-m17n
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ibus-m17n
-Version:        1.4.6
+Version:        1.4.9
 Release:        0
 Summary:        The M17N engine for IBus platform
 License:        GPL-2.0-or-later

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jun 26 18:48:40 UTC 2022 - Gordon Leung <pirateclip@protonmail.com> - 1.4.9
+
+update: 1.4.6 -> 1.4.9
+- Allow use of kbd engines gh#ibus/ibus-m17n#32
+- Assign symbols to all the new inscript2 engines (and add some other missing symbols)
+  * gh#ibus/ibus-m17n#37
+- Remove gnome-common requirement and re-write autogen.sh (by Parag Nemade)
+  * gh#ibus/ibus-m17n#37
+- Update weblate translation for Sinhala
+- Free lang and name after engine_name is built gh#ibus/ibus-m17n#39
+- Just return from ibus_m17n_engine_callback with nullable m17n
+- Hide status from the panel if status == title (by Daiki Ueno)
+
+-------------------------------------------------------------------
 Fri Jul 16 12:22:27 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.4.6
