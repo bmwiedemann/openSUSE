@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 27 12:59:21 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- fix-bash-template.patch: convert one bash emitter to new jinja method.
+  (bsc#1200163)
+
+-------------------------------------------------------------------
 Thu Jun  9 15:31:50 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - add python3-setuptools for all builds (so it is also used on debian 

@@ -53,6 +53,8 @@ Packager:       SUSE Security Team <security@suse.de>
 %endif
 Source:         https://github.com/ComplianceAsCode/content/archive/v%{version}.tar.gz
 Patch0:         scap-security-guide-UnicodeEncodeError-character-fix.patch
+# upstream d9aa7a49d135be60e1a6f9d2ce4e29560482b3d0 and 3485c8298957b24d97a563079fd648004a92822b
+Patch1:         fix-bash-template.patch
 BuildRequires:  cmake
 
 %if "%{_vendor}" == "debbuild"
@@ -178,6 +180,7 @@ Note that the included profiles are community supplied and not officially suppor
 %prep
 %setup -n content-%version
 %patch0 -p0
+%patch1 -p1
 
 %build
 cd build
