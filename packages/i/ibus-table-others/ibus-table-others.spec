@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-table-others
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ibus-table-others
-Version:        1.3.12
+Version:        1.3.13
 Release:        0
 Summary:        Other non-Chinese tables for ibus
 License:        GPL-3.0-or-later
@@ -38,7 +38,7 @@ Yawerty. This package contains only COPYING and Documents, Please select the
 table you want to use.
 
 %package -n ibus-table-latex
-Summary:        Latex input method for IBus framework  
+Summary:        Latex input method for IBus framework
 Group:          System/Localization
 Requires:       ibus-table
 
@@ -46,7 +46,7 @@ Requires:       ibus-table
 ibus-table-latex provides Latex input method on IBus Table under IBus framework.
 
 %package -n ibus-table-cns11643
-Summary:        CNS11643 input method for IBus framework  
+Summary:        CNS11643 input method for IBus framework
 Group:          System/Localization
 Requires:       ibus-table
 
@@ -55,7 +55,7 @@ ibus-table-cns11643 provides CNS11643 input method on IBus Table under IBus
 framework.
 
 %package -n ibus-table-emoji
-Summary:        Emoji input method for IBus framework  
+Summary:        Emoji input method for IBus framework
 Group:          System/Localization
 Requires:       ibus-table
 
@@ -63,7 +63,7 @@ Requires:       ibus-table
 ibus-table-emoji provides Emoji input method on IBus Table under IBus framework.
 
 %package -n ibus-table-rustrad
-Summary:        Rustrad input method for IBus framework  
+Summary:        Rustrad input method for IBus framework
 Group:          System/Localization
 Provides:       locale(ibus:ru)
 Requires:       ibus-table
@@ -73,7 +73,7 @@ ibus-table-rustrad provides Rustrad input method on IBus Table under IBus
 framework.
 
 %package -n ibus-table-translit
-Summary:        Translit input method for IBus framework  
+Summary:        Translit input method for IBus framework
 Group:          System/Localization
 Provides:       locale(ibus:ru)
 Requires:       ibus-table
@@ -83,7 +83,7 @@ ibus-table-translit provides Translit input method on IBus Table under IBus
 framework.
 
 %package -n ibus-table-translit-ua
-Summary:        Translit-ua input method for IBus framework  
+Summary:        Translit-ua input method for IBus framework
 Group:          System/Localization
 Provides:       locale(ibus:uk)
 Requires:       ibus-table
@@ -93,7 +93,7 @@ ibus-table-translit-ua provides Translit-ua input method on IBus Table under
 IBus framework.
 
 %package -n ibus-table-yawerty
-Summary:        Yawerty input method for IBus framework    
+Summary:        Yawerty input method for IBus framework
 Group:          System/Localization
 Requires:       ibus-table
 
@@ -102,7 +102,7 @@ ibus-table-yawerty provides Yawerty input method on IBus Table under IBus
 framework.
 
 %package -n ibus-table-compose
-Summary:        The Compose table for ibus-table  
+Summary:        The Compose table for ibus-table
 Group:          System/Localization
 Requires:       ibus-table
 
@@ -110,7 +110,7 @@ Requires:       ibus-table
 ibus-table-compose provides the Compose table for ibus-table.
 
 %package -n ibus-table-ipa-x-sampa
-Summary:        The ipa-x-sampa table for ibus-table  
+Summary:        The ipa-x-sampa table for ibus-table
 Group:          System/Localization
 Requires:       ibus-table
 
@@ -118,16 +118,16 @@ Requires:       ibus-table
 ibus-table-ipa-x-sampa provides the ipa-x-sampa table for ibus-table.
 
 %package -n ibus-table-thai
-Summary:        The Thai table for ibus-table  
+Summary:        The Thai table for ibus-table
 Group:          System/Localization
 Requires:       ibus-table
 
 %description -n ibus-table-thai
 ibus-table-thai provides the Thai table for ibus-table.
-ภาษาไทย / Thai 
+ภาษาไทย / Thai
 
 %package -n ibus-table-viqr
-Summary:        The Viqr (Vietnamese) table for ibus-table  
+Summary:        The Viqr (Vietnamese) table for ibus-table
 Group:          System/Localization
 Provides:       locale(ibus:vi)
 Requires:       ibus-table
@@ -137,7 +137,7 @@ ibus-table-viqr provides the Viqr (Vietnamese) table for ibus-table. Tiếng Vi�
 / Vietnamese
 
 %package -n ibus-table-mathwriter
-Summary:        Mathematics symbols table for ibus-table  
+Summary:        Mathematics symbols table for ibus-table
 Group:          System/Localization
 Requires:       ibus-table
 
@@ -145,7 +145,7 @@ Requires:       ibus-table
 The package contains table for writing Unicode mathematics symbols.
 
 %package -n ibus-table-rusle
-Summary:        Rusle table for ibus-table  
+Summary:        Rusle table for ibus-table
 Group:          System/Localization
 Requires:       ibus-table
 
@@ -153,7 +153,7 @@ Requires:       ibus-table
 ibus-table-rusle provides the Rusle table for ibus-table.
 
 %package -n ibus-table-hu-old-hungarian-rovas
-Summary:        Hu old hungarian rovas table for ibus-table  
+Summary:        Hu old hungarian rovas table for ibus-table
 Group:          System/Localization
 Requires:       ibus-table
 
@@ -161,7 +161,7 @@ Requires:       ibus-table
 ibus-table-rusle provides the Hu old hungarian rovas table for ibus-table.
 
 %package -n ibus-table-mongol-bichig
-Summary:        Mongol Bichig table for ibus-table  
+Summary:        Mongol Bichig table for ibus-table
 Group:          System/Localization
 Requires:       ibus-table
 
@@ -169,7 +169,7 @@ Requires:       ibus-table
 ibus-table-mongol-bichig provides the Mongol Bichig table for ibus-table.
 
 %package -n ibus-table-telex
-Summary:        Telex table for ibus-table  
+Summary:        Telex table for ibus-table
 Group:          System/Localization
 Requires:       ibus-table
 
@@ -177,7 +177,7 @@ Requires:       ibus-table
 ibus-table-telex provides the Vietnamese telex table for ibus-table.
 
 %package -n ibus-table-vni
-Summary:        Vni table for ibus-table  
+Summary:        Vni table for ibus-table
 Group:          System/Localization
 Requires:       ibus-table
 
