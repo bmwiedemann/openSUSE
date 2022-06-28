@@ -1,7 +1,7 @@
 #
 # spec file for package libsigrokdecode
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,10 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
 URL:            https://sigrok.org/
 Source0:        https://sigrok.org/download/source/libsigrokdecode/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE
 Patch0:         libsigrokdecode-versioned-decoders.patch
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Properly-detect-python-library-for-3.9.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  check-devel >= 0.9.4
@@ -35,8 +38,6 @@ BuildRequires:  glib2-devel >= 2.24.0
 BuildRequires:  libsigrok-devel >= 0.3.0
 BuildRequires:  libtool
 BuildRequires:  python3-devel >= 3.2
-Requires:       python3
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The sigrok project aims at creating a portable, cross-platform,
@@ -78,13 +79,13 @@ are written in Python.
 
 %prep
 %setup -q
-%patch0 -p1
+%autopatch -p1
 
 %build
 autoreconf -fiv
 %configure \
         --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
