@@ -263,4 +263,12 @@
   * Fixes for command and response fifo corner cases</comment>
     <requestid>935566</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>4450bd7da6a456c8e5ed2b807a9ae8dd</srcmd5>
+    <version>2021.11.08</version>
+    <time>1656422588</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985586</requestid>
+  </revision>
 </revisionlist>

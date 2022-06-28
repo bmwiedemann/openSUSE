@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 27 20:43:08 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Add kakoune-2021.11.08-gcc-12.patch: Fix build with gcc 12.
+
+-------------------------------------------------------------------
 Fri Dec  3 18:25:50 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2021.11.08:

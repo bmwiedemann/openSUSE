@@ -24,6 +24,8 @@ License:        Unlicense
 Group:          Productivity/Text/Editors
 URL:            https://kakoune.org/
 Source:         https://github.com/mawww/kakoune/releases/download/v%{version}/kakoune-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM kakoune-2021.11.08-gcc-12.patch -- Fix build with gcc 12 (gh#mawww/kakoune#4544)
+Patch:          kakoune-2021.11.08-gcc-12.patch
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 5.0
