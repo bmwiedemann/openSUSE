@@ -20,7 +20,7 @@
 %global __requires_exclude qmlimport\\(Cura.*
 
 Name:           cura-lulzbot
-Version:        3.6.23
+Version:        3.6.37
 Release:        0
 Summary:        3D printer control software
 License:        AGPL-3.0-only
@@ -51,8 +51,8 @@ BuildRequires:  qml-autoreqprov
 Requires:       cura-engine-lulzbot >= 3.6.21
 Requires:       uranium-lulzbot >= 3.6.21
 # dependency scripts do not find qtquickcontrols automatically
-Requires:       libqt5-qtquickcontrols
-Requires:       libqt5-qtquickcontrols2
+#Requires:       libqt5-qtquickcontrols
+#Requires:       libqt5-qtquickcontrols2
 Requires:       python3-Arcus
 Requires:       python3-numpy
 Requires:       python3-opengl
@@ -93,10 +93,6 @@ cd build
 %make_install
 install -m 0644 ../version.json %buildroot/usr/share/cura/
 %suse_update_desktop_file cura-lulzbot Graphics 3DGraphics
-sed -i -e 's,^Exec=.*,Exec=cura-lulzbot %F,' \
-       -e 's,^#!/usr/bin/env.*,#!/usr/bin/python3,' \
-    %{buildroot}%{_datadir}/applications/cura-lulzbot.desktop
-%fdupes %buildroot
 
 %files
 %license LICENSE
