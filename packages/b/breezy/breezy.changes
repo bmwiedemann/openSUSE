@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 20 02:14:30 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.2.2:
+  * Breezy now relies on an external fastbencode Python module.
+  * Basic support for nested trees in Git repositories, in the form
+    of Git submodules.
+- Add fastbencode to {Build,}Requires.
+- No longer skip a test that passes, and add another broken one.
+
+-------------------------------------------------------------------
 Tue May 10 05:26:43 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded {Build,}Requires on python3-six. 

@@ -17,7 +17,7 @@
 
 
 Name:           breezy
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        Friendly distributed version control system
 License:        GPL-2.0-or-later
@@ -34,6 +34,7 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 Requires:       python3-configobj
 Requires:       python3-dulwich >= 0.19.11
+Requires:       python3-fastbencode
 Requires:       python3-fastimport >= 0.9.8
 Requires:       python3-patiencediff
 Suggests:       python3-launchpadlib >= 1.6.3
@@ -42,6 +43,7 @@ Obsoletes:      bzr < %{version}
 # SECTION test requirements
 BuildRequires:  python3-configobj
 BuildRequires:  python3-dulwich >= 0.19.11
+BuildRequires:  python3-fastbencode
 BuildRequires:  python3-fastimport >= 0.9.8
 BuildRequires:  python3-fixtures >= 1.3.0
 BuildRequires:  python3-patiencediff
@@ -73,10 +75,10 @@ echo ".so man1/brz.1" > %{buildroot}%{_mandir}/man1/bzr.1
 export PYTHONPATH=%{buildroot}%{python3_sitearch}
 export LANG=en_US.UTF8
 # log_C log_BOGUS - borked with py3.8+ as you can't change encoding
-# test_pack_revision - endswith first arg must be bytes or a tuple of bytes, not str
 # test_ancient_{ctime,mtime} - broken on aarch64 %%arm ppc ppc64le
 # test_distant_{ctime,mtime} - broken on %%arm
 # test_plugins lp#1927523
+# test_simple_local_git - pulls in forbidden modules with 3.10+
 %{buildroot}%{_bindir}/bzr selftest -v --parallel=fork \
   -Oselftest.timeout=6000 -x bash_completion \
   -x breezy.tests.test_transport.TestSSHConnections.test_bzr_connect_to_bzr_ssh -x test_export_pot \
@@ -89,15 +91,15 @@ export LANG=en_US.UTF8
   -x breezy.tests.test__dirstate_helpers.TestPackStat.test_distant_ctime \
   -x breezy.tests.test__dirstate_helpers.TestPackStat.test_distant_mtime \
 %endif
-  -x breezy.tests.test_xml.TestSerializer.test_pack_revision_5 \
   -x breezy.tests.test_xml.TestSerializer.test_revision_text_v8 \
   -x breezy.tests.test_xml.TestSerializer.test_revision_text_v7 \
   -x breezy.tests.test_xml.TestSerializer.test_revision_text_v6 \
   -x breezy.tests.test_plugins.TestPlugins \
-  -x breezy.tests.test_plugins.TestLoadingPlugins.test_plugin_with_error
+  -x breezy.tests.test_plugins.TestLoadingPlugins.test_plugin_with_error \
+  -x breezy.tests.test_import_tariff.TestImportTariffs.test_simple_local_git
 
 %files
-%doc NEWS README.rst README_BDIST_RPM
+%doc NEWS README.rst
 %license COPYING.txt
 %{_bindir}/bzr-receive-pack
 %{_bindir}/bzr-upload-pack
