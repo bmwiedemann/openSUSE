@@ -30,3 +30,17 @@ index 35212be5d..5b587559f 100644
      # TODO: Needs a "if X11_GFX == 'nvidia'" here. The workaround is only needed on Ubuntu+NVidia drivers. Other drivers are not affected, but fine with this fix.
      import ctypes
      from ctypes.util import find_library
+diff --git a/cura/CuraSplashScreen.py b/cura/CuraSplashScreen.py
+index 863c5f443..c668ce294 100644
+--- a/cura/CuraSplashScreen.py
++++ b/cura/CuraSplashScreen.py
+@@ -44,8 +44,7 @@ class CuraSplashScreen(QSplashScreen):
+         pass
+ 
+     def drawContents(self, painter):
+-        if self._to_stop:
+-            return
++        return
+ 
+         painter.save()
+         painter.setPen(QColor(0, 0, 0, 255))

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 27 14:04:12 UTC 2022 - Adrian Schröter <adrian@suse.de>
+
+- fix startup crash with python 3.10
+
+-------------------------------------------------------------------
 Fri Aug 20 09:04:34 UTC 2021 - Adrian Schröter <adrian@suse.de>
 
 - fix dependency error

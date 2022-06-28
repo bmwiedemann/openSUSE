@@ -1,7 +1,7 @@
 #
 # spec file for package cura-lulzbot
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,8 +34,8 @@ Patch2:         CuraEngine-lulzbot.patch
 BuildArch:      noarch
 Provides:       cura2-lulzbot
 Obsoletes:      cura2-lulzbot < 3
-Conflicts:      cura
 Conflicts:      ModemManager
+Conflicts:      cura
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -64,7 +64,7 @@ Requires:       python3-zeroconf
 # No 32bit support anymore
 ExcludeArch:    %ix86 %arm s390
 
-# There is a hardcoded version to the firmware in the code :/ 
+# There is a hardcoded version to the firmware in the code :/
 Requires:       uranium-firmware-lulzbot = %( tar xf %{S:0} --wildcards \*/USBPrinterOutputDeviceManager.py --to-command='sed -n -e "s,.*Marlin_Mini_SingleExtruder_\([^_]*_[^_]*\).hex.*,\1,p"' )
 
 %description
