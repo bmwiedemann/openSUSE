@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 27 13:20:36 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.40.1:
+  * update syft => v0.49.0 (#804)
+  * remove oss meetup message (#799)
+  * fix: add fixed versions to cyclonedxjson output (#763)
+  * docs: update to include php (#793)
+
+-------------------------------------------------------------------
 Wed Jun 22 08:33:50 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.40.0:
