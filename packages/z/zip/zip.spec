@@ -1,7 +1,7 @@
 #
 # spec file for package zip
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        File compression program
 License:        BSD-3-Clause
 Group:          Productivity/Archiving/Compression
-Url:            https://github.com/distropatches/zip/commits/opensuse
+URL:            https://github.com/distropatches/zip/commits/opensuse
 Source:         http://downloads.sourceforge.net/project/infozip/Zip%203.x%20%28latest%29/3.0/zip30.tar.gz
 Patch2:         zip-3.0-iso8859_2.patch
 Patch3:         zip-3.0-add_options_to_help.patch
@@ -61,7 +61,9 @@ PKZIP(tm) 2.04g (Phil Katz ZIP) for MS-DOS systems.
 %patch12 -p1
 
 %build
-make %{?_smp_mflags} -f unix/Makefile prefix=/usr CC="gcc %{optflags} -DLARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64" generic_gcc
+# Remove FORTIFY_SOURCE=3 for bsc#1200712
+EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g') -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
+make %{?_smp_mflags} -f unix/Makefile prefix=/usr CC="gcc $EXTRA_CFLAGS -DLARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64" generic_gcc
 
 %install
 mkdir -p %{buildroot}%{_prefix}/bin

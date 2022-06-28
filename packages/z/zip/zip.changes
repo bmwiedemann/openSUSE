@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 21 14:35:28 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Remove FORTIFY_SOURCE=3 as it triggers a buffer overflow,
+  fixes bsc#1200712
+
+-------------------------------------------------------------------
 Sun Feb 13 08:37:38 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add 0002-unix-reproducible-directory-order-scandir.patch
