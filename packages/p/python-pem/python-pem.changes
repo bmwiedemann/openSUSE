@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun 21 20:37:10 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 21.2.0
+  * Added support for pem.OpenSSLTrustedCertificate (-----BEGIN
+    TRUSTED CERTIFICATE-----), as defined in openssl x509 manual.
+    #28
+  * Added support for DSA private keys (BEGIN DSA PRIVATE). This is
+    also the OpenSSH legacy PEM format. #49
+  * Added support for pem.SSHPublicKey (---- BEGIN SSH2 PUBLIC KEY
+    ----), as defined in RFC 4716. #46
+  * Added support for pem.SSHCOMPrivateKey (---- BEGIN SSH2
+    ENCRYPTED PRIVATE KEY ----), the SSH.com / Tectia private key
+    format (plain or encrypted). #46
+- Actually requires twisted[tls]: python-Twisted-tls
+
+-------------------------------------------------------------------
 Tue Mar 24 13:24:05 UTC 2020 - pgajdos@suse.com
 
 - version update to 20.1.0

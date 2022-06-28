@@ -1,7 +1,7 @@
 #
 # spec file for package python-pem
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pem
-Version:        20.1.0
+Version:        21.2.0
 Release:        0
 Summary:        PEM file parsing in Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/hynek/pem
 Source0:        https://github.com/hynek/pem/archive/%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module Twisted}
+BuildRequires:  %{python_module Twisted-tls}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pyOpenSSL}
