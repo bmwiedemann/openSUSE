@@ -47,8 +47,14 @@ Source0:        https://github.com/telegramdesktop/tdesktop/releases/download/v%
 # Usage: python tg_owt-packager.py --repo-dir $PWD/tg_owt-master
 Source1:        tg_owt-packager.py
 Source2:        tg_owt-master.zip
+%if 0%{?suse_version} > 01500
 # PATCH-FIX-OPENSUSE
-Patch1:         0001-use-bundled-ranged-exptected-gsl.patch
+Patch1:         0001-use-bundled-webrtc.patch
+%else
+Source3:        rnnoise-git20210122.tar.gz
+# PATCH-FIX-OPENSUSE
+Patch1:         0002-use-bundled-rnnoise-expected-gsl-ranges-webrtc.patch
+%endif
 # PATCH-FIX-OPENSUSE
 Patch3:         0003-revert-webrtc-cmake-target-file.patch
 # PATCH-FIX-OPENSUSE
@@ -145,7 +151,17 @@ BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(opusurl)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(portaudiocpp)
+# Use system rnnoise on TW, self-build on others
+%if 0%{?suse_version} > 01500
+BuildRequires:  expect-devel
+BuildRequires:  range-v3-devel
+BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(rnnoise)
+%else
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
+%endif
 BuildRequires:  pkgconfig(tslib)
 BuildRequires:  pkgconfig(vdpau)
 BuildRequires:  pkgconfig(vpx)
@@ -187,10 +203,16 @@ The service also provides APIs to independent developers.
 %patch1 -p1
 %patch3 -p1
 %patch4 -p1
+mkdir ../Libraries
+
+# If not TW, unpack rnnoise source
+%if 0%{?suse_version} <= 01500
+%setup -q -T -D -b 3 -n tdesktop-%{version}-full
+mv ../rnnoise-git20210122 ../Libraries/rnnoise
+%endif
 
 cd ../
 unzip -q %{SOURCE2}
-mkdir Libraries
 mv tg_owt-master Libraries/tg_owt
 
 %build
@@ -201,6 +223,15 @@ export CXX=g++-10
 
 # Fix build failures due to not finding installed headers for xkbcommon and wayland-client
 export CXXFLAGS+="`pkg-config --cflags xkbcommon wayland-client`"
+
+# If not TW, build rnnoise
+%if 0%{?suse_version} <= 01500
+pushd %{_builddir}/Libraries/rnnoise
+./autogen.sh
+%configure
+%make_build
+popd
+%endif
 
 cd %{_builddir}/Libraries/tg_owt
 mkdir -p out/Release

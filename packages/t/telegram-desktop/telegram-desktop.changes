@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 26 14:21:10 UTC 2022 - Xu Zhao <i@xuzhao.net>
+
+- Add 0002-use-bundled-rnnoise-expected-gsl-ranges-webrtc.patch
+  * Fix the build on openSUSE 15.4
+- Rename 0001-use-bundled-ranged-exptected-gsl.patch to
+  0001-use-bundled-webrtc.patch
+  * Use system provided ranged, gsl, and ranges library.
+
+-------------------------------------------------------------------
 Sat Jun 25 08:19:33 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.0.2
