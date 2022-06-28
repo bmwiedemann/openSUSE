@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 23 04:55:58 UTC 2022 - Jason Sikes <jsikes@suse.com>
+
+- Update to 1.1.1p:
+  * bsc#1185637 - updated certificates required for testing that failed
+    when date is later than 1 June 2022
+    - removed openssl-update_expired_certificates.patch
+  * [bsc#1200550, CVE-2022-2068] - more shell code injection issues in c_rehash
+
+-------------------------------------------------------------------
 Thu Jun  2 20:54:04 UTC 2022 - Jason Sikes <jsikes@suse.com>
 
 - Update to 1.1.1o: [CVE-2022-1292, bsc#1199166]

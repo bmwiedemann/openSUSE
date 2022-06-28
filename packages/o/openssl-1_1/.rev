@@ -290,4 +290,12 @@
   * Sourced from https://github.com/openssl/openssl/pull/18446/commits</comment>
     <requestid>981089</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>b257d1e594b34e99ecfe853b2716716a</srcmd5>
+    <version>1.1.1p</version>
+    <time>1656422467</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985235</requestid>
+  </revision>
 </revisionlist>
