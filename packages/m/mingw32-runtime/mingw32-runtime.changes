@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 27 16:37:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10
+  * New msvcrt10, 20, 40, 70 and 71 import libraries.
+  * Updated wine imports
+
+-------------------------------------------------------------------
 Tue Sep 21 08:39:19 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Silence rpmlint2: devel-file-in-non-devel-package

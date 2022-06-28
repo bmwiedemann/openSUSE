@@ -1,7 +1,7 @@
 #
 # spec file for package mingw32-runtime
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mingw32-runtime
-Version:        9.0.0
+Version:        10.0.0
 Release:        0
 Summary:        MinGW-w64 runtime libraries for Win32
 License:        SUSE-Public-Domain
