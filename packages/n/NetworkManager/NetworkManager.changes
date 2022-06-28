@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 24 10:21:43 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
+
+- Bring back /sbin/netconfig as build option since the netconfig
+  in SLE is not ready for usrmerge.
+
+-------------------------------------------------------------------
 Fri Jun 17 08:40:05 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.38.2:

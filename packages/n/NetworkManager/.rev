@@ -2031,4 +2031,13 @@ WANTED for 13.1 - BLUEZ5 FIX (forwarded request 203010 from Zaitor)</comment>
     <comment>New stable release (forwarded request 983259 from iznogood)</comment>
     <requestid>983438</requestid>
   </revision>
+  <revision rev="243" vrev="2">
+    <srcmd5>c4624cab6c642ae9eb82ffa99b57a608</srcmd5>
+    <version>1.38.2</version>
+    <time>1656422484</time>
+    <user>dimstar_suse</user>
+    <comment>- Bring back /sbin/netconfig as build option since the netconfig
+  in SLE is not ready for usrmerge.</comment>
+    <requestid>985521</requestid>
+  </revision>
 </revisionlist>

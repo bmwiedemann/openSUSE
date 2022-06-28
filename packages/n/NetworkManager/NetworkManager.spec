@@ -316,7 +316,11 @@ export PYTHON=%{_bindir}/python3
     -Dpppd_plugin_dir=%{_pppddir} \
     -Dnm_cloud_setup=true \
     -Dbluez5_dun=true \
+%if %{suse_version} >= 1550
     -Dnetconfig=%{_sbindir}/netconfig \
+%else
+    -Dnetconfig=/sbin/netconfig \
+%endif
     -Dconfig_dhcp_default=internal \
     -Ddhcpcanon=no \
     -Ddhcpcd=no \
