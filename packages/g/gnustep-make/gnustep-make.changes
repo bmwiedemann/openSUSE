@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jun 25 20:44:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to version 2.9.0
+  * Better check for objc runtime on Windows.
+  * Split linker flags to better support partial linking: 'ALL_LDFLAGS'
+    is now a combination of 'FINAL_LDFLAGS' and 'ALL_LDFLAGS'.
+  * Better support for newer gcc versions.
+  * Add support for storyboard files.
+  * Increase autoconf version to 2.65 and make autoconf handle
+    Objective-C++ and OBJCXX variables directly.
+  * Fix bug that prevented ARC from getting used.
+  * Link subproject object files directly instead of first merging them
+    into 'subproject.o'.
+  * Support building on Windows with Clang MSVC target.
+  * Improve mingw64 support: for instance, adopt the triplet used by
+    the mingw-w64 project rather than using the one returned by
+    autoconf.  Fixes building Gorm.
+- add keyring for source validation
+
+-------------------------------------------------------------------
 Tue Apr 14 10:48:02 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.8.0
