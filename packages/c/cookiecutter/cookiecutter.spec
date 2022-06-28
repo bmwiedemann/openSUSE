@@ -19,7 +19,7 @@
 
 %define skip_python2 1
 Name:           cookiecutter
-Version:        2.0.2
+Version:        2.1.1
 Release:        0
 Summary:        A command-line utility that creates projects from project templates
 License:        BSD-3-Clause
@@ -29,8 +29,6 @@ Source:         https://github.com/cookiecutter/cookiecutter/archive/refs/tags/%
 # recent versions are not published on PyPI: https://github.com/cookiecutter/cookiecutter/issues/1636
 #Source:         https://files.pythonhosted.org/packages/source/c/cookiecutter/cookiecutter-%%{version}.tar.gz
 Source1:        ccext.py
-# PATCH-FIX-UPSTREAM -- cookiecutter-fix-setup.patch https://github.com/cookiecutter/cookiecutter/pull/1656
-Patch0:         cookiecutter-fix-setup.patch
 BuildRequires:  %{python_module Jinja2 >= 2.7 with %python-Jinja2 < 4}
 BuildRequires:  %{python_module binaryornot >= 0.2.0}
 BuildRequires:  %{python_module click >= 7 with %python-click < 9}
