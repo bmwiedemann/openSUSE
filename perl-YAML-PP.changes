@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 28 03:09:17 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.033
+   see /usr/share/doc/packages/perl-YAML-PP/Changes
+
+  0.033 2022-06-27 16:31:32+02:00
+
+      - Fix add_mapping_resolver + on_create (tie existing data)
+
+-------------------------------------------------------------------
 Wed Mar  9 03:07:37 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.032
