@@ -30,7 +30,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  pkgconfig(edje) >= 1.8.0
 # SECTION Check list of dependencies
-BuildRequires:  adwaita-icon-theme
 BuildRequires:  connman
 BuildRequires:  python3-efl
 Requires:       connman
@@ -64,19 +63,6 @@ make %{?_smp_mflags}
 %install
 %make_install
 
-# Fix: Icon file not found
-for _file in $(find %{buildroot} -name \*.desktop); do
-    _icon=$(sed -ne '/^Icon/s/[^=]*=//p' -ne '/^Icon/s/\..*//p' $_file)
-    if ! find %{buildroot} -name "${_icon##*/}.??g" | grep -q .; then
-        for _icon in $(find %{_datadir}/icons -name network-wired.png | sort -r | head -n1); do
-          install -Dm0644 "$_icon" "%{buildroot}%{_datadir}/pixmaps/${_icon##*/}"
-          sed -i '/^Icon/s/[^=]*$/network-wired/' $_file
-        done
-    else
-        "$_icon file exists" 2> /dev/null
-    fi
-done
-
 %if 0%{?suse_version}
 %suse_update_desktop_file -r %{name} Enlightenment Network Settings
 %suse_update_desktop_file -u -r %{name} Enlightenment Network Settings
@@ -88,6 +74,5 @@ done
 %{_bindir}/%{name}-bin
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{name}*.desktop
-%{_datadir}/pixmaps/network-wired.??g
 
 %changelog
