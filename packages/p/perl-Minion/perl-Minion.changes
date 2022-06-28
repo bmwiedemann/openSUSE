@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun 25 03:08:48 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 10.25
+   see /usr/share/doc/packages/perl-Minion/Changes
+
+  10.25  2022-06-24
+    - Added workers field to stats methods in Minion and Minion::Backend::Pg.
+
+-------------------------------------------------------------------
 Fri Apr 29 03:07:56 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 10.24
