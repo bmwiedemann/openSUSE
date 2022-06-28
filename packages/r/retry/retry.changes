@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 27 12:33:18 UTC 2022 - okurz@suse.com
+
+- Update to version 1655407786.7ff7de5:
+  * CI: Fix mergify branch rule
+  * Add optional parameter for fine-tuning base factor
+  * Add mock for sleep
+  * Add tests for exponential back-off
+  * Add simple binary exponential back-off algorithm
+  * Document default sleep value
+  * dist: Rephrase summary trying to prevent name repetition
+  * dist: Skip build-tests due to test-more-bash absence
+  * CI: Rely on environment provided checkbashisms by default
+
+-------------------------------------------------------------------
 Sun Jun 12 08:25:54 UTC 2022 - Oliver Kurz <okurz@suse.com>
 
 - Initial package creation
