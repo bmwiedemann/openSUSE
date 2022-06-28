@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 27 07:35:14 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.7.4
+  * Fixed git diff parsing issues (filename with spaces,
+    only one added/deleted file).
+
+-------------------------------------------------------------------
 Wed Feb  9 09:34:10 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to version 0.7.3
