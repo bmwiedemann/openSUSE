@@ -1,9 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun 28 12:09:08 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- updated to 0.231
+  - MANIFEST.SKIP: add bootstrap.sh
+  - bootstrap.sh: install cpanspec package
+
+  0.230 2022-06-28 11:18 CEST
+  - CONTRIBUTING.rst: add new file
+  - bootstrap.sh: add new file and update README.rst
+
+-------------------------------------------------------------------
 Thu Feb 13 03:07:11 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.229
    see /usr/share/doc/packages/perl-App-CELL/Changes
-
   
   0.229 2020-02-12 12:13 CET
   - Qualify all calls to CORE::caller()
@@ -308,4 +318,3 @@ Sat May 24 16:23:35 UTC 2014 - ncutler@suse.com
 - initial package 0.088
     * created by cpanspec 1.78.07
 - set License to AGPL-3.0+
-

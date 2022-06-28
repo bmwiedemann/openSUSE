@@ -31,4 +31,18 @@
     <comment></comment>
     <requestid>774207</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4a15f8fa44d39754f882fc0a5d35c601</srcmd5>
+    <version>0.231</version>
+    <time>1656422587</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.231
+  - MANIFEST.SKIP: add bootstrap.sh
+  - bootstrap.sh: install cpanspec package
+  0.230 2022-06-28 11:18 CEST
+  - CONTRIBUTING.rst: add new file
+  - bootstrap.sh: add new file and update README.rst
+</comment>
+    <requestid>985583</requestid>
+  </revision>
 </revisionlist>

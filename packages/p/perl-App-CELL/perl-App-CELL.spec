@@ -1,7 +1,7 @@
 #
 # spec file for package perl-App-CELL
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-App-CELL
-Version:        0.229
-Release:        0
 %define cpan_name App-CELL
-Summary:        Configuration, Error-handling, Localization, and Logging
+Name:           perl-App-CELL
+Version:        0.231
+Release:        0
 License:        BSD-3-Clause
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+Summary:        Configuration, Error-handling, Localization, and Logging
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SM/SMITHFARM/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Date::Format)
@@ -63,7 +61,7 @@ For details, read the POD in the App::CELL distro. For an introduction,
 read App::CELL::Guide.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Build.PL installdirs=vendor
@@ -77,8 +75,7 @@ perl Build.PL installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes README.rst WISHLIST
+%doc Changes CONTRIBUTING.rst README.rst WISHLIST
 %license LICENSE
 
 %changelog
