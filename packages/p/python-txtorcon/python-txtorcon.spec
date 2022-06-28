@@ -29,14 +29,14 @@ BuildRequires:  %{python_module setuptools >= 36.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Automat
-Requires:       python-Twisted >= 15.5.0
+Requires:       python-Twisted-tls >= 15.5.0
 Requires:       python-incremental
 Requires:       python-zope.interface >= 3.6.1
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  lsof
 BuildRequires:  %{python_module Automat}
-BuildRequires:  %{python_module Twisted >= 15.5.0}
+BuildRequires:  %{python_module Twisted-tls >= 15.5.0}
 BuildRequires:  %{python_module zope.interface >= 3.6.1}
 %if %{with python2}
 BuildRequires:  python-ipaddress
