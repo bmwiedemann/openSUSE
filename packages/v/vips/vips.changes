@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jun 18 14:40:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.12.2:
+  * make exif resuint optional and default to inch
+  * win: don't set create time on inappropriate file descriptors [lovell]
+  * fall back to magicksave for gif if cgif is not present [erik-frontify]
+  * fix a crash with 0 length vectors 
+  * change default frame delay for GIFs from 1s to 0.1s
+  * remove stray trailing comma from iiif3 dirnames [whalehub]
+  * fix TTF load [chregu]
+  * revise GIF save alpha threshold [jfcalvo]
+  * raise libpng pixel size limit from 1m to 10m pixels [jskrzypek]
+  * fix gif save change detector [TheEssem] 
+  * fix load from pipe with variable size reads
+
+-------------------------------------------------------------------
 Fri Jan 21 19:36:55 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 8.12.1

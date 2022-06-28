@@ -23,7 +23,7 @@
 %define short_version_ 8_12
 %define somajor 42
 Name:           vips
-Version:        8.12.1
+Version:        8.12.2
 Release:        0
 Summary:        C/C++ library for processing large images
 License:        LGPL-2.1-only
@@ -103,10 +103,10 @@ Summary:        Development files for the VIPS library
 Group:          Development/Libraries/C and C++
 Requires:       %{libname}%{somajor} = %{version}
 Requires:       pkgconfig
+Requires:       pkgconfig(gobject-2.0)
 Requires:       pkgconfig(libjpeg)
 Requires:       pkgconfig(libtiff-4)
 Requires:       pkgconfig(zlib)
-Requires:       pkgconfig(gobject-2.0)
 
 %description -n %{libname}-devel
 This package contains the development files for developing applications that

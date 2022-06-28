@@ -499,4 +499,12 @@
 - Fix requires of the devel package to match the pkg-config files (forwarded request 948016 from darix)</comment>
     <requestid>949189</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>6ac913a3fe22875e9e5a3fb8e3733a1e</srcmd5>
+    <version>8.12.2</version>
+    <time>1656422589</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985585</requestid>
+  </revision>
 </revisionlist>
