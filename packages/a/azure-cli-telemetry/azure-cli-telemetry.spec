@@ -1,7 +1,7 @@
 #
 # spec file for package azure-cli-telemetry
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source:         https://files.pythonhosted.org/packages/source/a/azure-cli-telem
 Source1:        LICENSE.txt
 BuildRequires:  azure-cli-nspkg
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-azure-nspkg >= 3.0.0
 BuildRequires:  python3-setuptools
 Requires:       azure-cli-nspkg

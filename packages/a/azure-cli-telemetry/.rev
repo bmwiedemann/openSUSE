@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>831456</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>0c085869803e597d2247eeced369c86e</srcmd5>
+    <version>1.0.6</version>
+    <time>1656422501</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing python-rpm-macros package to BuildRequires (forwarded request 985302 from glaubitz)</comment>
+    <requestid>985303</requestid>
+  </revision>
 </revisionlist>

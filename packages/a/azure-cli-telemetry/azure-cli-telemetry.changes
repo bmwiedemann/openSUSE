@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 27 11:05:06 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add missing python-rpm-macros package to BuildRequires
+
+-------------------------------------------------------------------
 Wed Sep  2 12:35:06 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
