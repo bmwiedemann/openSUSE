@@ -17,15 +17,17 @@
 
 
 Name:           python-sunpy
-Version:        4.0.0
+Version:        4.0.2
 Release:        0
 Summary:        SunPy: Python for Solar Physics
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT
 URL:            https://github.com/sunpy/sunpy
 Source0:        https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-%{version}.tar.gz
 Source100:      python-sunpy-rpmlintrc
-# PATCH-FIX-OPENSSUSE sunpy-test-ignore-warnings.patch -- g#sunpy/sunpy#6030
-Patch1:         sunpy-test-ignore-warnings.patch
+# PATCH-FIX-OPENSUSE use custom hypothesis profile for slow OBS executions
+Patch1:         sunpy-obs-profile.patch
+# PATCH-FIX-UPSTREAM sunpy-scikit-image-deprecation.patch  -- required until scikit-image in the distribution is updated gh#sunpy/sunpy#5866
+Patch2:         sunpy-scikit-image-deprecation.patch
 BuildRequires:  %{python_module aioftp}
 BuildRequires:  %{python_module astropy >= 4.2.1}
 BuildRequires:  %{python_module base => 3.8}

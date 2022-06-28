@@ -1,0 +1,27 @@
+Index: sunpy-4.0.2/sunpy/conftest.py
+===================================================================
+--- sunpy-4.0.2.orig/sunpy/conftest.py
++++ sunpy-4.0.2/sunpy/conftest.py
+@@ -3,6 +3,7 @@ import logging
+ import tempfile
+ import importlib
+ 
++import hypothesis
+ import pytest
+ 
+ import astropy
+@@ -31,6 +32,14 @@ HAVE_REMOTEDATA = remotedata_spec is not
+ # Do not collect the sample data file because this would download the sample data.
+ collect_ignore = ["data/sample.py"]
+ 
++hypothesis.settings.register_profile(
++    'obs',
++    deadline=5000,
++    suppress_health_check=[hypothesis.HealthCheck.too_slow]
++)
++# this loads the profile after the pytest header printout, so don't be confused by the
++# 'default' there.
++hypothesis.settings.load_profile('obs')
+ 
+ console_logger = logging.getLogger()
+ console_logger.setLevel('INFO')

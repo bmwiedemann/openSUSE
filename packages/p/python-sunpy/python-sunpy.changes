@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Mon Jun 27 12:26:19 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v4.0.2
+  * Added a SDO/AIA 1600 file of the Venus transit to the sunpy
+    sample data. (#6242)
+  * Expose GOES quality flags in order to allow filtering corrupt
+    values when using the
+    ~sunpy.timeseries.sources.goes.XRSTimeSeries. (#6260)
+  * The sunpy.net.dataretriever.sources.noaa.SRSClient was not
+    correctly setting the passive mode for FTP connection resulting
+    in a permission error. This has been fixed. (#6256)
+  * Changed the default scaling for ~sunpy.map.sources.EUIMap from
+    a linear stretch to a asinh stretch. To revert to the previous
+        linear stretch do the following: from astropy.visualization
+        import ImageNormalize, LinearStretch
+        euimap.plot_settings["norm"] =
+        ImageNormalize(stretch=LinearStretch())
+  * Add support for upcoming parfive 2.0 release. (#6243)
+  * The primary sample-data URL will be changing from
+    https://github.com/sunpy/sample-data/raw/master/sunpy/v1/ to
+    https://github.com/sunpy/data/raw/main/sunpy/v1/. We expect
+    GitHub to redirect from the old URL for sometime but will
+    eventually expire it. The data.sunpy.org mirror will continue
+    to be available. (#6289)
+  * Add support for downloading sample data from more than two
+    mirror locations. (#6295)
+- Relese 4.0.1
+  * Updated the sample data file, AIA_171_ROLL_IMAGE to be rice
+    compressed instead of gzip compressed. This means that the data
+    is now stored in the second HDU. (#6221)
+  * Three new maps have been added to the sample data from STEREO A
+    and STEREO B at 195 Angstrom, and AIA at 193 Angstrom. These
+    images are from a time when the three spacecraft were equally
+    spaced around the Sun, and therefore form near complete
+    instantaneous coverage of the solar surface.
+  * Users upgrading to this version will find this three files
+    download when they use the sample data for the first time.
+    (#6197)
+  * Fix a bug that prevented EUI maps with missing wavelength
+    metadata loading. (#6199)
+  * Improved annotations in the SRS active regions plotting
+    example. (#6196)
+  * Updated gallery examples that use STEREO data to use sample
+    data instead of searching for and downloading data via Fido.
+    (#6197)
+  * Updated the info_url for the
+    ~sunpy.net.dataretriever.sources.goes.XRSClient to account for
+    the different default sources that vary based on GOES satellite
+    number. (#6152)
+  * Added automatic conversion of unit strings in CDF files to
+    astropy unit objects for the following instruments: PSP/ISOIS,
+    SOHO/CELIAS, SOHO/COSTEP-EPHIN, and SOHO/ERNE. (#6159)
+  * Add an environment variable SUNPY_NO_BUILD_ANA_EXTENSION which
+    when present will cause sunpy to not compile the ANA C
+    extension when building from source. (#6166)
+  * sunpy now uses the Limited Python API. Therefore, one binary
+    distribution (wheel) per platform is now published and it is
+    compatible with all Python versions sunpy supports. (#6171)
+- Replace sunpy-test-ignore-warnings.patch by
+  sunpy-obs-profile.patch and sunpy-scikit-image-deprecation.patch
+
+-------------------------------------------------------------------
 Wed Jun  8 21:01:43 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to v4.0.0
