@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 27 16:37:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10
+  * New msvcrt10, 20, 40, 70 and 71 import libraries.
+  * Drop x86_64 64-bit crtdll.dll
+  * Updated wine imports
+
+-------------------------------------------------------------------
 Sat Jul  3 10:32:06 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 9.0.0
