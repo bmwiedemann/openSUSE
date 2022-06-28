@@ -25,7 +25,7 @@
 %define bversion %{nsuffix}
 %endif
 Name:           budgie-desktop-branding
-Version:        20220316.1
+Version:        20220627.1
 Release:        0
 Summary:        Branding of the Budgie Desktop Environment
 License:        CC-BY-SA-3.0 AND GPL-2.0-only
@@ -50,8 +50,7 @@ Requires:       gtk3-metatheme-greybird-geeko
 Requires:       wallpaper-branding-%{nsuffix}
 Requires:       adwaita-icon-theme
 Requires:       gio-branding-%{nsuffix}
-Requires:       hicolor-icon-theme
-Requires:       sound-theme-freedesktop
+Requires:       papirus-icon-theme
 Requires:       systemd-icon-branding
 Recommends:     MozillaFirefox
 # Recommend openSUSE favourited packages
@@ -72,8 +71,8 @@ desktop environment.
 Summary:        Upstream branding of the Budgie Desktop Environment
 Requires:       adwaita-icon-theme
 Requires:       budgie-desktop
-Requires:       gtk3-metatheme-greybird
-Requires:       hicolor-icon-theme
+Requires:       materia-gtk-theme
+Requires:       papirus-icon-theme
 Supplements:    (budgie-desktop and branding-upstream)
 Conflicts:      budgie-desktop-branding
 Provides:       budgie-desktop-branding = %{version}
