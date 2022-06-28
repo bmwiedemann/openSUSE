@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jun 27 15:48:12 UTC 2022 - Jean Delvare <jdelvare@suse.de>
+
+- Update to upstream version 3.4:
+  * Support for SMBIOS 3.4.0. This includes new memory device types, new
+    processor upgrades, new slot types and characteristics, decoding of memory
+    module extended speed, new system slot types, new processor characteristics
+    and new format of Processor ID.
+  * Support for SMBIOS 3.5.0. This includes new processor upgrades, BIOS
+    characteristics, new slot characteristics, new on-board device types, new
+    pointing device interface types, and a new record type (type 45 -
+    Firmware Inventory Information).
+  * Decode HPE OEM records 194, 199, 203, 236, 237, 238 ans 240.
+  * Bug fixes:
+    Fix OEM vendor name matching
+  * Minor improvements:
+    Skip details of uninstalled memory modules
+    Don't display the raw CPU ID in quiet mode
+    Improve the formatting of the manual pages
+  * Obsoletes dmidecode-fix-crash-with-u-option.patch and
+    dmidecode-fix-the-condition-error-in-ascii_filter.patch.
+
+-------------------------------------------------------------------
 Fri Jan 22 14:58:16 UTC 2021 - Jean Delvare <jdelvare@suse.de>
 
 2 recommended fixes from upstream:

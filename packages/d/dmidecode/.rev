@@ -392,4 +392,27 @@ Partial support for SMBIOS 3.3.0:
   with -u option.</comment>
     <requestid>866086</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>63c7ad7d701a009ce72fd472c6c5be23</srcmd5>
+    <version>3.4</version>
+    <time>1656422483</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream version 3.4:
+  * Support for SMBIOS 3.4.0. This includes new memory device types, new
+    processor upgrades, new slot types and characteristics, decoding of memory
+    module extended speed, new system slot types, new processor characteristics
+    and new format of Processor ID.
+  * Support for SMBIOS 3.5.0. This includes new processor upgrades, BIOS
+    characteristics, new slot characteristics, new on-board device types, new
+    pointing device interface types, and a new record type (type 45 -
+    Firmware Inventory Information).
+  * Decode HPE OEM records 194, 199, 203, 236, 237, 238 ans 240.
+  * Bug fixes:
+    Fix OEM vendor name matching
+  * Minor improvements:
+    Skip details of uninstalled memory modules
+    Don't display the raw CPU ID in quiet mode
+    Improve the formatting of the manual pages</comment>
+    <requestid>985364</requestid>
+  </revision>
 </revisionlist>
