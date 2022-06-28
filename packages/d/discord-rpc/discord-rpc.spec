@@ -1,7 +1,7 @@
 #
 # spec file for package discord-rpc
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           discord-rpc
 Version:        3.4.0
+%define shver	3_4_0
 Release:        0
 Summary:        Discord rich presence library
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/discordapp/discord-rpc
+URL:            https://github.com/discordapp/discord-rpc
 Source:         https://github.com/discordapp/%{name}/archive/v%{version}.tar.gz
+Patch1:         0001-Add-some-library-versioning.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  rapidjson-devel
@@ -32,23 +34,25 @@ BuildRequires:  rapidjson-devel
 This is a library for interfacing your game with a locally running Discord
 desktop client.
 
-%package -n libdiscord-rpc
+%package -n libdiscord-rpc%{shver}
 Summary:        Discord RPC library
 Group:          System/Libraries
 Recommends:     discord
 
-%description -n libdiscord-rpc
-Discord RPC shared library
+%description -n libdiscord-rpc%{shver}
+This is a library for interfacing your game with a locally running Discord
+desktop client.
 
 %package devel
 Summary:        Development files for libdiscord-rpc
-Requires:       libdiscord-rpc = %{version}
+Requires:       libdiscord-rpc%{shver} = %{version}-%{release}
 
 %description devel
-Header files for the discord-rpc library
+Header files for the discord-rpc library.
 
 %prep
-%setup -q
+%autosetup -p1
+perl -i -lpe 's{\@PACKAGE_VERSION\@}{%version}g' src/CMakeLists.txt
 
 %build
 %cmake
@@ -63,9 +67,9 @@ Header files for the discord-rpc library
 %doc README.md
 %{_includedir}/discord_register.h
 %{_includedir}/discord_rpc.h
-
-%files -n libdiscord-rpc
 %{_libdir}/libdiscord-rpc.so
 
-%changelog
+%files -n libdiscord-rpc%{shver}
+%{_libdir}/libdiscord-rpc.so.%{version}
 
+%changelog
