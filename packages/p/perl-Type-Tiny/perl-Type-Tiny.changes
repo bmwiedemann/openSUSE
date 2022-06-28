@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Tue Jun 28 03:08:37 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.014000
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.014000	2022-06-27
+   [ Documentation ]
+   - Update copyright dates to 2022.
+   - Various minor documentation improvements.
+   [ Test Suite ]
+   - Eliminate some warnings and other noise from the test suite.
+   - Rename some directories in the test suite to better reflect their
+     contents.
+   [ Packaging ]
+   - Repackaged as stable version.
+   [ Other ]
+   - Added: $Type::Tiny::SafePackage variable.
+   - Added: Error::TypeTiny now has a `throw_cb` method which acts like
+     `throw` but takes an initial callback parameter.
+     jsf116++
+   - Added: Type::Params `compile`, `compile_named`, and `compile_named_oo`
+     functions now support an `on_die` callback.
+     jsf116++
+   - Eliminate warnings while generating deep explanations for type
+     constraint check fails under some circumstances. (Mostly affects
+     StrMatch when Regexp::Util isn't installed.)
+     James Wright++
+  1.013_001	2022-06-23
+   [ Documentation ]
+   - Various minor documentation improvements.
+   [ Other ]
+   - Added: $Type::Tiny::SafePackage variable.
+  1.013_000	2022-06-09
+   [ Documentation ]
+   - Update copyright dates to 2022.
+   - Various minor documentation improvements.
+   [ Test Suite ]
+   - Eliminate some warnings and other noise from the test suite.
+   - Rename some directories in the test suite to better reflect their
+     contents.
+   [ Other ]
+   - Added: Error::TypeTiny now has a `throw_cb` method which acts like
+     `throw` but takes an initial callback parameter.
+     jsf116++
+   - Added: Type::Params `compile`, `compile_named`, and `compile_named_oo`
+     functions now support an `on_die` callback.
+     jsf116++
+   - Eliminate warnings while generating deep explanations for type
+     constraint check fails under some circumstances. (Mostly affects
+     StrMatch when Regexp::Util isn't installed.)
+     James Wright++
+
+-------------------------------------------------------------------
 Wed Jun  8 03:09:08 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.012005
