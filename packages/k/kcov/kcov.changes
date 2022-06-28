@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 26 13:25:13 UTC 2022 - Berthold Gunreben <azouhr@opensuse.org>
+
+- solib-parser/lib.c:99:3: error: #error Unsupported architecture
+  Disable s390x builds.
+
+-------------------------------------------------------------------
 Thu Sep 17 06:41:18 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 38:

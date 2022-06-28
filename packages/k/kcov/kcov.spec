@@ -1,7 +1,7 @@
 #
 # spec file for package kcov
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
 BuildRequires:  python3
 BuildRequires:  zlib-devel
+ExcludeArch:    s390x
 
 %description
 Kcov is a code coverage tester for compiled programs, Python scripts and shell
