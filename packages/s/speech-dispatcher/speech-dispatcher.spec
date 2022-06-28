@@ -195,7 +195,12 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcspeech-dispatcherd
 # Create log dir. 0700 since the logs can contain user information.
 install -d -m 0700 %{buildroot}%{_localstatedir}/log/speech-dispatcher/
 # Install logrotate script
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
+install -D -m 0644 %{SOURCE2} %{buildroot}%{_distconfdir}/logrotate.d/speech-dispatcher
+%else
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/logrotate.d/speech-dispatcher
+%endif
 # Remove config files for modules we don't support
 rm %{buildroot}%{_sysconfdir}/speech-dispatcher/modules/flite.conf
 rm -f %{buildroot}%{_sysconfdir}/speech-dispatcher/modules/ibmtts.conf
@@ -260,7 +265,11 @@ sed -i -e 's|/usr/bin/env python3|/usr/bin/python3|g' %{buildroot}%{_bindir}/spd
 %{_infodir}/ssip.info.gz
 # logs
 %dir %attr(0700, root, root) %{_localstatedir}/log/speech-dispatcher/
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/logrotate.d/speech-dispatcher
+%else
 %config(noreplace) %{_sysconfdir}/logrotate.d/speech-dispatcher
+%endif
 # systemd service file
 %{_unitdir}/speech-dispatcherd.service
 %{_sbindir}/rcspeech-dispatcherd
