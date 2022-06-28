@@ -1,7 +1,7 @@
 #
 # spec file for package python-deepdiff
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
 Name:           python-deepdiff
-Version:        5.6.0
+Version:        5.8.1
 Release:        0
 Summary:        Deep Difference and Search of any Python object/data
 License:        MIT
 URL:            https://github.com/seperman/deepdiff
-Source:         https://github.com/seperman/deepdiff/archive/%{version}.tar.gz#/deepdiff-%{version}-gh.tar.gz
+Source:         https://github.com/seperman/deepdiff/archive/v%{version}.tar.gz#/deepdiff-%{version}-gh.tar.gz
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module jsonpickle}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module ordered-set}
+BuildRequires:  %{python_module ordered-set >= 4.0.2 with %python-ordered-set < 4.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
@@ -39,7 +37,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-Requires:       python-ordered-set
+Requires:       (python-ordered-set >= 4.0.2 with python-ordered-set < 4.2)
 Recommends:     python-clevercsv
 Recommends:     python-click
 Recommends:     python-jsonpickle
@@ -69,10 +67,6 @@ sed -i '1{/env python/d}' deepdiff/deephash.py deepdiff/diff.py deepdiff/search.
 %check
 # we don't have the (optional) requirement CleverCSV for csv diffing
 donttest="(TestCommands and (csv or group_by)) or (test_load_path_content and csv)"
-if [ $(getconf LONG_BIT) -eq 32 ]; then
-  # reference expects int64 where 32-bit platforms return int32
-  donttest+=" or (test_numpy_delta_cases and delta_numpy7_arrays_of_different_sizes)"
-fi
 %pytest -k "not ($donttest)"
 
 %post

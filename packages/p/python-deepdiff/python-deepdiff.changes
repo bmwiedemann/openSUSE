@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jun 24 13:00:27 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 5.8.2
+  * Fixing dependency for Py3.6
+- DeepDiff 5.8.1 includes bug fixes:
+  * Fixed test suite for 32bit systems
+  * Fixed the issue when using ignore_order=True and group_by
+    simultaneously
+  * Added the support for diffing object properties (@property)
+  * Better support of diffing private variables
+- DeepDiff 5.8.0 includes bug fixes and improvements:
+  * Fixed the bug with delta randomly not producing the same
+    results when ignore_order=True
+  * Display detailed pretty when verbose
+  * Allow ordered-set version 4.1.x
+  * Removing extra logging when key is not found in DeepHash
+  * Fixed error when comparing non-utf8 byte strings with
+    ignore_order=True
+  * Fixed Tests fail after 2022-05-14
+  * Fixed TypeError is thrown when comparing bool and str
+
+-------------------------------------------------------------------
 Wed Jan 26 09:55:05 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update to 5.6.0
