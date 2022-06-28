@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 21 08:52:27 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.33.0:
+ - feat: rewrite deprecated unittest methods
+ - Fix typos
+   * README.md
+   * tests/features/typing_classes_test.py
+   * tests/features/yield_from_test.py
+
+-------------------------------------------------------------------
 Sun May 22 10:39:56 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 2.32.1:
