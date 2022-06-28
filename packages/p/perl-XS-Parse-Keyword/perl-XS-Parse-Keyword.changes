@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun 27 03:06:59 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.24
+   see /usr/share/doc/packages/perl-XS-Parse-Keyword/Changes
+
+  0.24    2022-06-26
+          [CHANGES]
+           * Skip attempting to create duplicate wrapper funcs, in case of
+             multiple registrations of the same operator with different
+             spellings
+
+          [BUGFIXES]
+           * Arrange extra_linker_flags correctly while building probe program
+             for PL_infix_plugin
+
+-------------------------------------------------------------------
 Thu May 19 03:07:43 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.23
