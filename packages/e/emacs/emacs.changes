@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 19 23:02:39 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+replace: efont-unicode with gnu-unifont-bitmap-fonts in emacs-x11 requires
+- efonts have not been updated since 2003, meanwhile GNU has made their
+  own unicode bitmap fonts which they have updated even within this month
+
+-------------------------------------------------------------------
 Tue Apr  5 07:00:31 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Replace emacs-27.2-pdf.tar.xz with refreshed emacs-28.1-pdf.tar.xz

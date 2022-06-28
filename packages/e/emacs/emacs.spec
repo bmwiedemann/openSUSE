@@ -239,7 +239,7 @@ Requires:       emacs = %{version}-%{release}
 Requires:       emacs-eln = %{version}
 %endif
 Provides:       emacs_program = %{version}-%{release}
-Requires:       efont-unicode
+Requires:       gnu-unifont-bitmap-fonts
 Requires:       ifnteuro
 Requires:       xorg-x11-fonts
 Requires:       xorg-x11-fonts-core

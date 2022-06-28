@@ -1691,4 +1691,12 @@ Now one could consider building emacs with gsettings support (both debian and fe
 - Port and rename patch emacs-27.1.dif which is now emacs-28.1.dif</comment>
     <requestid>967453</requestid>
   </revision>
+  <revision rev="166" vrev="2">
+    <srcmd5>958718e34d9e72c942301e0d8e420227</srcmd5>
+    <version>28.1</version>
+    <time>1656422470</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>985180</requestid>
+  </revision>
 </revisionlist>
