@@ -1,7 +1,7 @@
 #
 # spec file for package libglib-testing
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           libglib-testing
-Version:        0.1.0
+Version:        0.1.1
 Release:        0
 Summary:        GLib test harness and mocking framework
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.gnome.org/pwithnall/libglib-testing
 Source:         %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
-BuildRequires:  meson >= 0.45.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.44
-BuildRequires:  pkgconfig(gio-2.0) >= 2.44
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.44
 BuildRequires:  gtk-doc
+BuildRequires:  meson >= 0.45.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.44
+BuildRequires:  pkgconfig(glib-2.0) >= 2.44
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.44
 
 %description
 libglib-testing is a test library providing test harnesses and mock
@@ -36,17 +36,17 @@ intended to be used by any project which uses GLib and which wants
 to write internal unit tests.
 
 %package -n libglib-testing-0-0
-Summary:  GLib test harness and mocking framework
+Summary:        GLib test harness and mocking framework
 
-%description -n libglib-testing-0-0 
+%description -n libglib-testing-0-0
 libglib-testing is a test library providing test harnesses and mock
 classes which complement the classes provided by GLib. It is
 intended to be used by any project which uses GLib and which wants
 to write internal unit tests.
 
 %package devel
-Summary: GLib test harness and mocking framework
-Requires: libglib-testing-0-0 = %{version}
+Summary:        GLib test harness and mocking framework
+Requires:       libglib-testing-0-0 = %{version}
 
 %description devel
 libglib-testing is a test library providing test harnesses and mock
@@ -66,8 +66,6 @@ to write internal unit tests.
 
 %post   -n libglib-testing-0-0 -p /sbin/ldconfig
 %postun -n libglib-testing-0-0 -p /sbin/ldconfig
-
-
 
 %files -n libglib-testing-0-0
 %license COPYING

@@ -7,4 +7,12 @@
     <comment>Add malcontent; new dep to GNOME 3.38</comment>
     <requestid>847076</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>29db8bf9eb4aa4c5b6e723dce550df6c</srcmd5>
+    <version>0.1.1</version>
+    <time>1656422475</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.1.1 (forwarded request 984884 from dimstar)</comment>
+    <requestid>985231</requestid>
+  </revision>
 </revisionlist>
