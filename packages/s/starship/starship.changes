@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun 28 03:06:50 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.9.1:
+  * add Raku module.
+  * character: Standadise Vim config names.
+  * Removed strip binary.
+ 
+
+-------------------------------------------------------------------
+Wed Jun 22 11:08:27 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Fix W: unstripped-binary-or-object. 
+
+-------------------------------------------------------------------
 Thu Jun 16 13:02:16 UTC 2022 - Dead Mozay <dead-mozay@opensuse.org>
 
 - Update to version 1.8.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package starship
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           starship
-Version:        1.8.0
+Version:        1.9.1
 Release:        0
 Summary:        The minimal, blazing-fast, and infinitely customizable prompt for any shell
 License:        ISC
-Url:            https://starship.rs/
+URL:            https://starship.rs/
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  rust-packaging
 BuildRequires:  pkgconfig(openssl)
-
 
 %description
 The minimal, blazing-fast, and infinitely customizable prompt for any shell!
@@ -37,7 +37,6 @@ The minimal, blazing-fast, and infinitely customizable prompt for any shell!
     Intelligent: shows relevant information at a glance.
     Feature rich: support for all your favorite tools.
     Easy: quick to install – start using it in minutes.
-
 
 %prep
 %setup -qa1
@@ -53,11 +52,9 @@ RUSTFLAGS=%{rustflags} cargo install --root=%{buildroot}%{_prefix} --path .
 rm %{buildroot}%{_prefix}/.crates.toml
 rm %{buildroot}%{_prefix}/.crates2.json
 
-
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/starship
 
 %changelog
-
