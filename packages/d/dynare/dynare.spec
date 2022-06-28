@@ -35,6 +35,8 @@ Source:         https://www.dynare.org/release/source/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM dynare-no-return-in-non-void-function.patch badshah400@gmail.com -- Return trivial value from a function that is not declared as returning void
 Patch0:         dynare-no-return-in-non-void-function.patch
 Patch1:         dynare-octave7-compat.patch
+# PATCH-FIX-UPSTREAM dynare-5.1-gcc-12.patch -- Fix build with gcc 12 (https://git.dynare.org/Dynare/dynare/-/issues/1852)
+Patch2:         dynare-5.1-gcc-12.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc%{gccver}-c++
 BuildRequires:  gcc%{gccver}-fortran
@@ -80,7 +82,10 @@ Summary:        Documentation for dynare in HTML format
 This package provides documentation for %{name} in HTML format.
 
 %prep
-%autosetup -p1
+%setup -q
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1 -d preprocessor
 
 %build
 autoreconf -fvi
