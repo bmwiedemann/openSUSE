@@ -31,4 +31,12 @@
     <comment>- Add arch-independent-package-contains-binary-or-object to rpmlintrc</comment>
     <requestid>920849</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d2a4f54e28e4291bbc469206c9f45f82</srcmd5>
+    <version>10.0.0</version>
+    <time>1656422567</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 10</comment>
+    <requestid>985451</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-winpthreads
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           mingw64-winpthreads
-Version:        9.0.0
+Version:        10.0.0
 Release:        0
 Summary:        A pthreads implementation for Windows
 License:        BSD-3-Clause AND MIT
 Group:          Development/Libraries/C and C++
 URL:            http://mingw-w64.sf.net/
-Source:         http://downloads.sf.net/mingw-w64/mingw-w64-v%{version}.tar.bz2
+Source:         http://downloads.sf.net/mingw-w64/mingw-w64-v%version.tar.bz2
 Source9:        %name-rpmlintrc
 BuildRequires:  mingw64-cross-gcc-bootstrap
 BuildRequires:  mingw64-cross-pkg-config
@@ -74,10 +74,10 @@ popd
 
 # No ssp support in gcc-cross-bootstrap
 # Hence we use dedicated LDFLAGS (without -fstack-protector)
-%{_mingw64_configure} \
+%_mingw64_configure \
 	--enable-static \
 	--enable-shared \
-    LDFLAGS="%{_mingw64_ldflags_bootstrap}"
+    LDFLAGS="%_mingw64_ldflags_bootstrap"
 %make_build
 
 %install
