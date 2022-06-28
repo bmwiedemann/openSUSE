@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 27 13:19:56 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.9.0:
+  * Bump github.com/stretchr/testify from 1.7.2 to 1.7.4 (#338)
+  * FWI-2191: Make versions.yaml available to users of Pluto packages, update Go module path with `/v5` (#331)
+  * Bump github.com/stretchr/testify from 1.7.1 to 1.7.2 (#328)
+
+-------------------------------------------------------------------
 Wed Jun 22 08:18:56 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 5.8.0:

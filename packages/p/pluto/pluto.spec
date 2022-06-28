@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           pluto
-Version:        5.8.0
+Version:        5.9.0
 Release:        0
 Summary:        A cli tool to help discover deprecated apiVersions in Kubernetes
 License:        Apache-2.0
@@ -38,11 +38,13 @@ Pluto is a utility to help users find deprecated Kubernetes apiVersions in their
 %build
 go build \
    -mod=vendor \
-   -ldflags="-X main.Version=%{version}"
+   -buildmode=pie \
+   -ldflags="-X main.Version=%{version}" \
+   -o bin/pluto ./cmd/pluto/
 
 %install
 # Install the binary.
-install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0755 ./bin/%{name} "%{buildroot}/%{_bindir}/%{name}"
 
 %files
 %doc README.md
