@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 21 03:09:18 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.20
+   see /usr/share/doc/packages/perl-URI-db/Changes
+
+  0.20  2022-06-20T17:48:44Z
+        - Added URI::cockroach and URI::yugabyte.
+
+-------------------------------------------------------------------
 Fri Jul 20 06:13:19 UTC 2018 - coolo@suse.com
 
 - updated to 0.19
