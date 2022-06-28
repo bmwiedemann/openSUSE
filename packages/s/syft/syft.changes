@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 27 13:20:51 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.49.0:
+  * Updates parsing of `yarn.lock` to use `resolved` URLs that are pulled from yarn and npm registries (#926)
+  * remove OSS Meetup message (#1057)
+  * add pom.xml cataloger (#1055)
+  * Add support for CBL-Mariner distroless images (#1045)
+  * Add catalogers configuration (#1038)
+  * add template output (#1051)
+
+-------------------------------------------------------------------
 Wed Jun 22 08:47:26 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.48.1:
