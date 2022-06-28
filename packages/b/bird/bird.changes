@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 27 09:13:20 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.10
+  * BGP performance improvements
+  * BFD: New 'strict bind' option
+  * RPKI: VRF support
+  * Allow use of 240.0.0.0/4 as a private range
+  * BIRD client uses exit status to report errors
+  * Important bugfixes
+
+-------------------------------------------------------------------
 Thu Feb 24 20:50:25 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.9
