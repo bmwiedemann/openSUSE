@@ -1,7 +1,7 @@
 #
 # spec file for package SHERPA-MC
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ URL:            https://sherpa-team.gitlab.io/
 Source:         https://www.hepforge.org/downloads/sherpa/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM SHERPA-MC-no-return-in-non-void-function.patch badshah400@gmail.com -- Fix a non-void (bool) function that was not returning any data to return "true"
 Patch0:         SHERPA-MC-no-return-in-non-void-function.patch
+# PATCH-FIX-UPSTREAM SHERPA-MC-ignore-distutils-deprecation-warning.patch badshah400@gmail.com -- Disable deprecation warning when importing distutils from python3.10, so that autotools can still work
+Patch1:         SHERPA-MC-ignore-distutils-deprecation-warning.patch
 BuildRequires:  HepMC-devel >= 3.0
 BuildRequires:  LHAPDF-devel
 BuildRequires:  Rivet-devel
@@ -144,6 +146,7 @@ sed -E -i "1{s|#!/usr/bin/env python2||}" Examples/API/ME2-Python/test.py.in
 %build
 export PYTHON=python3
 export PYTHON_VERSION=%{py3_ver}
+autoreconf -fvi
 %configure \
   --docdir=%{_docdir}/%{name}  \
   --enable-ufo                 \
