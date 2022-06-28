@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-PyYAML
 Version:        6.0
@@ -53,7 +52,6 @@ configuration files to object serialization and persistance.
 
 %build
 export CFLAGS="%{optflags}"
-export PYYAML_FORCE_LIBYAML=0  # we don't actually want to build the python lib
 %python_build
 # Fix example permissions.
 find examples/ -type f | xargs chmod a-x
@@ -74,6 +72,6 @@ ulimit -Sn 2048
 %doc CHANGES README.md examples/
 %{python_sitearch}/yaml
 %{python_sitearch}/_yaml
-%{python_sitearch}/PyYAML-%{version}-py%{python_version}.egg-info
+%{python_sitearch}/PyYAML-%{version}*-info
 
 %changelog
