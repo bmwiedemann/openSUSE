@@ -1,7 +1,7 @@
 #
 # spec file for package libhtp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover   2
 %define lname   %{name}%{sover}
 Name:           libhtp
-Version:        0.5.39
+Version:        0.5.40
 Release:        0
 Summary:        HTTP normalizer and parser
 License:        BSD-3-Clause

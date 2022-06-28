@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun 27 21:32:51 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to version 0.5.40
+  * uri: optionally allows spaces in uri
+  * ints: integer handling improvements
+  * headers: continue on nul byte
+  * headers: consistent trailing space handling
+  * list: fix integer overflow
+  * util: remove unused htp_utf8_decode
+  * fix 100-continue with CL 0
+  * lzma: don't do unnecessary realloc
+
+-------------------------------------------------------------------
 Thu Nov 18 20:57:18 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.5.39
