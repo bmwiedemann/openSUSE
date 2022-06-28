@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 24 02:55:18 UTC 2022 - Manuel Jacob <me@manueljacob.de>
+
+- Patch PKG-INFO to avoid pip failing on Python 3.6 with 
+  `ERROR: Package 'MarkupSafe' requires a different Python:
+   3.6.15 not in '>=3.7'`.
+
+-------------------------------------------------------------------
 Thu Jun  9 07:59:18 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Require python 3.6. There is no need to require a newer version and

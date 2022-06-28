@@ -57,6 +57,10 @@ export CFLAGS="%{optflags}"
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %python_expand rm %{buildroot}%{$python_sitearch}/markupsafe/_speedups.c
+# Upstream changed the Python package metadata to require Python 3.7, but the tests pass on Python 3.6.
+%if %python_version_nodots == 36
+%python_expand sed 's/Requires-Python: >=3.7/Requires-Python: >=3.6/' -i %{buildroot}%{python_sitearch}/MarkupSafe-%{version}-py3.6.egg-info/PKG-INFO
+%endif
 
 %if %{with test}
 %check
