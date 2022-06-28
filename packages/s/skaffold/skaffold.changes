@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 28 06:25:53 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.39.1:
+  * release: v1.39.1 (#7596)
+  * fix: index out of range error (#7593)
+  * release: v1.39.1 (#7586)
+  * Revert helm 3.0 and 3.1 deployer changes. (#7585)
+
+-------------------------------------------------------------------
 Fri Jun 24 06:14:12 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.39.0:
