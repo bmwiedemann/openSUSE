@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 14 21:52:39 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 1.8.0:
+  * Improve animation for pull.
+  * Add completion for bash and zsh.
+- Fix typo in description.
+
+-------------------------------------------------------------------
 Mon Feb 22 23:04:55 UTC 2021 - antoine.belvire@opensuse.org
 
 - Update to 1.7.0:
