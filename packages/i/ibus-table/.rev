@@ -336,4 +336,12 @@
     Chinese in Hong Kong only). (Resolves: ibus/ibus#2323) (forwarded request 898916 from hillwood)</comment>
     <requestid>898981</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>6ca28ef235c4c2971d05c458019b8310</srcmd5>
+    <version>1.16.9</version>
+    <time>1656422584</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985580</requestid>
+  </revision>
 </revisionlist>

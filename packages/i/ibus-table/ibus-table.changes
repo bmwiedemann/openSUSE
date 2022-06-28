@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jun 25 18:07:26 UTC 2022 - Gordon Leung <pirateclip@protonmail.com> - 1.16.9
+
+update: 1.13.3 -> 1.16.9
+- Now requires Python >= 3.6 to build
+- Update Unihan_Variants.txt to "2022-04-26 Unicode 15.0.0 draft"
+- Update weblate translations
+- Add option to set dynamic adjust at runtime gh#mike-fabian/ibus-table#70
+- Add button to forget all data learned by typing and selecting candidates
+  * gh#kaio/ibus-table#75
+- Fix problems with goucima for erbi-qs table gh#kaio/ibus-table#77
+- Fix gh#mike-fabian/ibus-table#85
+- 栗 U+6817 is used in Traditional Chinese as well gh#mike-fabian/ibus-table#95
+- Ignore MOD3_MASK (Scroll Lock) when matching key bindings gh#mike-fabian/ibus-table#102
+- When a Modifier key release matches a hotkey command, return False not True
+  * gh#mike-fabian/ibus-table#102
+
+-------------------------------------------------------------------
 Thu Jun 10 03:24:45 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.13.3
