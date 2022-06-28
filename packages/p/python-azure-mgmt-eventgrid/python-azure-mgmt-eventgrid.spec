@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-eventgrid
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-eventgrid
-Version:        10.1.0
+Version:        10.2.0
 Release:        0
 Summary:        Microsoft Azure EventGrid Management Client Library
 License:        MIT
