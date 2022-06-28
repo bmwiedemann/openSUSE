@@ -1,9 +1,9 @@
 #
 # spec file for package authselect
 #
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017-2020 Red Hat, Inc.
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
-# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,19 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# Shared library package names
+
 %global somajor 3
 %global libname lib%{name}%{somajor}
 %global devname lib%{name}-devel
 
 Name:           authselect
-Version:        1.2.3
+Version:        1.4.0+git.0.2c30265
 Release:        0
+Group:          System/Libraries
 Summary:        Configures authentication and identity sources from supported profiles
 License:        GPL-3.0-or-later
 URL:            https://github.com/authselect/authselect
-Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  asciidoc
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -60,7 +61,7 @@ supported by authselect.
 
 %package -n %{libname}
 Summary:        Utility library used by the authselect tool
-Requires:       %{name}-profiles = %{version}-%{release}
+Requires:       %{name}-profiles >= %{version}-%{release}
 # Package split
 Conflicts:      libauthselect1 < %{version}-%{release}
 Obsoletes:      libauthselect1 < %{version}-%{release}
@@ -74,13 +75,13 @@ Summary:        Authentication configuration profiles
 BuildArch:      noarch
 # Required by scriptlets
 Requires(pre):  coreutils
-Requires(posttrans): coreutils
-Requires(posttrans): findutils
-Requires(posttrans): gawk
-Requires(posttrans): grep
-Requires(posttrans): pam >= 1.3.1-23
-Requires(posttrans): sed
-Requires(posttrans): systemd
+Requires(posttrans):coreutils
+Requires(posttrans):findutils
+Requires(posttrans):gawk
+Requires(posttrans):grep
+Requires(posttrans):pam >= 1.3.1-23
+Requires(posttrans):sed
+Requires(posttrans):systemd
 # Package split
 Conflicts:      libauthselect1 < %{version}-%{release}
 Obsoletes:      libauthselect1 < %{version}-%{release}
@@ -105,8 +106,15 @@ translate some of the authconfig calls into authselect calls. It provides
 only minimum backward compatibility and users are encouraged to migrate
 to authselect completely.
 
+%package lang
+Summary:        Language translations for authselect
+
+%description lang
+This package contains the language translation files for authselect
+
 %package -n %{devname}
 Summary:        Development libraries and headers for authselect
+Group:          Development/Libraries/Other
 Requires:       %{libname}%{?_isa} = %{version}-%{release}
 Provides:       %{name}-devel = %{version}-%{release}
 Provides:       %{name}-devel%{?_isa} = %{version}-%{release}
@@ -120,7 +128,7 @@ you develop a front-end for the authselect library.
 
 %build
 autoreconf -fiv
-%configure --with-pythonbin="%{__python3}"
+%configure --with-pythonbin="%{__python3}" --with-compat
 %make_build
 
 %check
@@ -178,11 +186,13 @@ mv %{buildroot}%{_sysconfdir}/bash_completion.d/authselect-completion.sh %{build
 %dir %{_datadir}/authselect/default/winbind/
 %{_datadir}/authselect/default/minimal/dconf-db
 %{_datadir}/authselect/default/minimal/dconf-locks
+%{_datadir}/authselect/default/minimal/fingerprint-auth
 %{_datadir}/authselect/default/minimal/nsswitch.conf
 %{_datadir}/authselect/default/minimal/password-auth
 %{_datadir}/authselect/default/minimal/postlogin
 %{_datadir}/authselect/default/minimal/README
 %{_datadir}/authselect/default/minimal/REQUIREMENTS
+%{_datadir}/authselect/default/minimal/smartcard-auth
 %{_datadir}/authselect/default/minimal/system-auth
 %{_datadir}/authselect/default/nis/dconf-db
 %{_datadir}/authselect/default/nis/dconf-locks
@@ -192,6 +202,7 @@ mv %{buildroot}%{_sysconfdir}/bash_completion.d/authselect-completion.sh %{build
 %{_datadir}/authselect/default/nis/postlogin
 %{_datadir}/authselect/default/nis/README
 %{_datadir}/authselect/default/nis/REQUIREMENTS
+%{_datadir}/authselect/default/nis/smartcard-auth
 %{_datadir}/authselect/default/nis/system-auth
 %{_datadir}/authselect/default/sssd/dconf-db
 %{_datadir}/authselect/default/sssd/dconf-locks
@@ -211,6 +222,7 @@ mv %{buildroot}%{_sysconfdir}/bash_completion.d/authselect-completion.sh %{build
 %{_datadir}/authselect/default/winbind/postlogin
 %{_datadir}/authselect/default/winbind/README
 %{_datadir}/authselect/default/winbind/REQUIREMENTS
+%{_datadir}/authselect/default/winbind/smartcard-auth
 %{_datadir}/authselect/default/winbind/system-auth
 %{_mandir}/man5/authselect-profiles.5*
 
@@ -224,7 +236,9 @@ mv %{buildroot}%{_sysconfdir}/bash_completion.d/authselect-completion.sh %{build
 %{_libdir}/libauthselect.so
 %{_libdir}/pkgconfig/authselect.pc
 
-%files -f %{name}.lang -f %{name}.8.lang
+%files lang -f %{name}.lang -f %{name}.8.lang
+
+%files
 %{_bindir}/authselect
 %{_mandir}/man8/authselect.8*
 %{_mandir}/man7/authselect-migration.7*

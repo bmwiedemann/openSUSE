@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jun 25 17:49:26 UTC 2022 - Matthew Davis opensuse@virtual.drop.net
+
+- Update to version 1.4.0+git.0.2c30265:
+  * Release authselect-1.4.0
+  * po: update translations
+  * pot: update pot files
+  * po: update translations
+  * sssd: ignore unknown users in pam_sss when with-smartcard is set
+  * ci: add final copr status
+  * ci: avoid concurrent runs
+  * ci: add covscan and cppcheck
+  * ci: switch to next-actions/copr
+  * ci: run analyze workflow on all branches
+  * converted to use source services
+  * split language translation into seperate package
+
+-------------------------------------------------------------------
 Sat Jul 17 11:52:03 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Move the scriptlet dependencies to the profiles subpackage
