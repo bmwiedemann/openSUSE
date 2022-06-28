@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 27 13:22:50 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220626T185148Z:
+  * change admin console to support logs show (#4132)
+  * admin: add admin cluster iam import/export cmd (#4102)
+  * Save license at the time of registration (#4123)
+  * add further license banners in default 'help' output (#4129)
+  * Switch to last commit time based release (#4128)
+
+-------------------------------------------------------------------
 Wed Jun 22 08:50:13 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 20220617T025250Z:
