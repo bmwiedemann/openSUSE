@@ -28,7 +28,7 @@ URL:            https://github.com/warner/magic-wormhole-mailbox-server
 Source:         https://files.pythonhosted.org/packages/source/m/magic-wormhole-mailbox-server/magic-wormhole-mailbox-server-%{version}.tar.gz
 # https://github.com/magic-wormhole/magic-wormhole/issues/439
 Patch0:         python-magic-wormhole-mailbox-server-no-mock.patch
-BuildRequires:  %{python_module Twisted >= 17.5.0}
+BuildRequires:  %{python_module Twisted-tls >= 17.5.0}
 BuildRequires:  %{python_module attrs >= 16.3.0}
 BuildRequires:  %{python_module autobahn >= 0.14.1}
 BuildRequires:  %{python_module pip}
@@ -39,7 +39,7 @@ BuildRequires:  %{python_module treq}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Twisted >= 17.5.0
+Requires:       python-Twisted-tls >= 17.5.0
 Requires:       python-attrs >= 16.3.0
 Requires:       python-autobahn >= 0.14.1
 Requires:       python-six
