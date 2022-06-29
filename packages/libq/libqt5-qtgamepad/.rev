@@ -151,4 +151,12 @@
     <comment>- Add QML imports for QtGamepad</comment>
     <requestid>925722</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>36979ceb72f4882f1b898fe483225611</srcmd5>
+    <version>5.15.5+kde0</version>
+    <time>1656511264</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.5 with patch collection + qtscript 5.15.10 (forwarded request 985459 from favogt)</comment>
+    <requestid>985476</requestid>
+  </revision>
 </revisionlist>
