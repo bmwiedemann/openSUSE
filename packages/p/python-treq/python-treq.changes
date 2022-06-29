@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 21 20:54:17 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Actually requires twisted[tls]: python-Twisted-tls on Tumbleweed
+
+-------------------------------------------------------------------
 Tue Jun  7 16:22:40 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 22.2.0
