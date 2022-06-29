@@ -91,9 +91,9 @@ Tue Jun  1 11:04:14 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 Tue Jun  1 03:02:25 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.9.12
-  * Fix CVE-2021-3541, CVE-2021-3537, CVE-2021-3518, CVE-2021-3517,
-    CVE-2021-3516, CVE-2020-7595, CVE-2019-20388, CVE-2020-24977,
-    and CVE-2019-19956
+  * Fix CVE-2021-3541, CVE-2021-3537 (bsc#1185698, bsc#1185879),
+    CVE-2021-3518, CVE-2021-3517, CVE-2021-3516, CVE-2020-7595,
+    CVE-2019-20388, CVE-2020-24977, and CVE-2019-19956 (bsc#1159928)
   * Fix null deref in legacy SAX1 parser
   * Fix handling of unexpected EOF in xmlParseContent
   * Fix user-after-free
