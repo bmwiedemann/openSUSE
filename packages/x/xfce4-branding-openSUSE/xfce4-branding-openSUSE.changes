@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 28 09:48:20 UTC 2022 - maurizio.galli@gmail.com
+
+- Update to version 4.16.1+git0.77ba799:
+  * Changed icon theme to adwaita-xfce as it obsoletes openSUSE-xfce
+  * Modified gtk theme naming to follow upstream name change
+  * Update default xfwm4 theme to follow upstream name change
+  * Switch notication bubble theme to Default
+  * Update README.md
+  * Switch sources to https://code.opensuse.org/xfce/xfce4-branding-openSUSE
+
+-------------------------------------------------------------------
 Mon Jun 21 00:36:05 UTC 2021 - maurizio.galli@gmail.com
 
 - Update to version 4.16.0+git7.8b06717:

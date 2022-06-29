@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-branding-openSUSE
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 %define thunar_volman_version   %(rpm -q --queryformat '%%{VERSION}' thunar-volman)
 
 Name:           xfce4-branding-openSUSE
-Version:        4.16.0+git7.8b06717
+Version:        4.16.1+git0.77ba799
 Release:        0
 Summary:        openSUSE Branding of the Xfce Desktop Environment
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later
@@ -47,14 +47,13 @@ BuildRequires:  wallpaper-branding
 Requires:       libgio-2_0-0
 # for regenerating xfce-mimeapps.list
 BuildRequires:  desktop-file-utils
+BuildRequires:  adwaita-xfce-icon-theme
 BuildRequires:  gtk2-metatheme-greybird-geeko
 BuildRequires:  gtk3-metatheme-greybird-geeko
 BuildRequires:  hack-fonts
 BuildRequires:  metatheme-greybird-geeko-common
 BuildRequires:  noto-coloremoji-fonts
 BuildRequires:  noto-sans-fonts
-BuildRequires:  openSUSE-xfce-icon-theme
-BuildRequires:  openSUSE-xfce-icon-theme
 BuildRequires:  thunar-volman
 BuildRequires:  xfce4-notifyd
 BuildRequires:  xfce4-panel
@@ -94,10 +93,10 @@ Group:          System/GUI/XFCE
 Requires:       libgio-2_0-0
 # for regenerating xfce-mimeapps.list
 Requires:       desktop-file-utils
+Requires:       adwaita-xfce-icon-theme
 Requires:       gtk2-metatheme-greybird-geeko
 Requires:       gtk3-metatheme-greybird-geeko
 Requires:       metatheme-greybird-geeko-common
-Requires:       openSUSE-xfce-icon-theme
 Requires:       thunar-volman
 Conflicts:      otherproviders(xfce4-session-branding)
 Provides:       xfce4-session-branding = %{xfce4_session_version}
@@ -110,6 +109,8 @@ This package provides the openSUSE look and feel for the Xfce Session Manager.
 Summary:        openSUSE Branding of xfce4-settings
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later
 Group:          System/GUI/XFCE
+Requires:       adwaita-xfce-icon-theme
+Requires:       adwaita-xfce-icon-theme
 Requires:       desktop-data-openSUSE
 Requires:       gtk2-metatheme-adwaita
 Requires:       gtk2-metatheme-greybird-geeko
@@ -119,8 +120,6 @@ Requires:       hack-fonts
 Requires:       metatheme-greybird-geeko-common
 Requires:       noto-coloremoji-fonts
 Requires:       noto-sans-fonts
-Requires:       openSUSE-xfce-icon-theme
-Requires:       openSUSE-xfce-icon-theme
 Conflicts:      otherproviders(xfce4-settings-branding)
 Provides:       xfce4-settings-branding = %{xfce4_settings_version}
 Supplements:    packageand(xfce4-settings:branding-openSUSE)
