@@ -1,7 +1,7 @@
 #
 # spec file for package sord
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define sover 0
 Name:           sord
-Version:        0.16.8
+Version:        0.16.10
 Release:        0
 Summary:        Utilities to work with RDF data
 License:        ISC
 Group:          Productivity/File utilities
 URL:            https://drobilla.net/software/sord/
-Source0:        http://download.drobilla.net/sord-%{version}.tar.bz2
+Source0:        https://download.drobilla.net/sord-%{version}.tar.bz2
 Source1:        baselibs.conf
 BuildRequires:  doxygen
 BuildRequires:  graphviz

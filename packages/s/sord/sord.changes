@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 27 20:36:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.16.10:
+  * Fix Windows build
+  * Fix potential crash or incorrectness issue with GCC 10 again
+
+-------------------------------------------------------------------
 Tue Jan 19 22:16:29 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.16.8:
