@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 27 13:09:20 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.5+kde0, rebased upstream:
+  * Fix QML theme showing totally dark
+  * Revert "Update commercial license headers"
+  * QSurfaceDataProxy: Fix crashes adding the first row of data
+  * Update commercial license headers
+- Drop 0001-Revert-Bump-version.patch, it's versioned correctly now
+
+-------------------------------------------------------------------
 Tue Jun 22 19:38:51 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Switch to KDE's maintenance branch
