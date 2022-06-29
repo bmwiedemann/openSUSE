@@ -18,9 +18,10 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%bcond_without cythonize
+# cythonized pywbem produces yacc parser errors
+%bcond_with cythonize
 Name:           python-pywbem
-Version:        1.3.0
+Version:        1.4.1
 Release:        0
 Summary:        Python module for making CIM operation calls using the WBEM protocol
 License:        LGPL-2.1-or-later
@@ -29,7 +30,6 @@ URL:            https://pywbem.github.io/
 Source0:        https://github.com/pywbem/pywbem/archive/%{version}.tar.gz#/pywbem-%{version}.tar.gz
 BuildRequires:  %{python_module FormEncode >= 2.0.0}
 BuildRequires:  %{python_module PyYAML > 5.3.1}
-BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module httpretty}
 BuildRequires:  %{python_module lxml >= 4.6.4}
 BuildRequires:  %{python_module nocasedict >= 1.0.1}
@@ -45,6 +45,7 @@ BuildRequires:  %{python_module testfixtures}
 BuildRequires:  %{python_module urllib3 >= 1.26.5}
 BuildRequires:  %{python_module yamlloader >= 0.5.5}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module pip}
 %if %{with cythonize}
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
@@ -76,10 +77,19 @@ protocol to query and update managed objects.
 %autopatch -p1
 
 %build
-%python_build
+%if %{with cythonize}
+%{python_expand # build cythonized wheel
+$python setup.py bdist_wheel --cythonized
+mv dist/pywbem-%{version}-cp%{$python_version_nodots}*.whl build/
+}
+%else
+# build one noarch wheel for all flavor installs
+python3 setup.py bdist_wheel
+mv dist/pywbem-%{version}-*py3-none-any.whl .
+%endif
 
 %install
-%python_install
+%pyproject_install
 %fdupes %{buildroot}
 rm %{buildroot}%{_bindir}/*.bat
 %python_clone -a %{buildroot}%{_bindir}/mof_compiler
@@ -98,8 +108,14 @@ rm %{buildroot}%{_bindir}/*.bat
 %doc README.rst
 %license LICENSE.txt
 %python_alternative %{_bindir}/mof_compiler
+%if %{with cythonize}
+%{python_sitearch}/pywbem
+%{python_sitearch}/pywbem_mock
+%{python_sitearch}/pywbem-%{version}*-info
+%else
 %{python_sitelib}/pywbem
 %{python_sitelib}/pywbem_mock
 %{python_sitelib}/pywbem-%{version}*-info
+%endif
 
 %changelog

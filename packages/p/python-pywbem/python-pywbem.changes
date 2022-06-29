@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Jun 23 10:37:07 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.4.1
+  * Fix issue where the DeepInheritance parameter not passed to the
+    mocker OpenEnumerateInstances method so the result is that the
+    mocker always uses the default (DeepInheritance=True). (see
+    issue #2839)
+  * Modified compiler and pywbem_mock to allow creating instances
+    from abstract classes because SNIA ignored DMTF rule making
+    this illegal and many MOF compilers also ignored it.  Pywbem
+    now issue a warning from the MOF compiler if an instance of an
+    abstract class is compiled but complete the compile and another
+    warning from pywbem_mock.CreateInstance if the instance is for
+    an abstract class. (see issue #2825)
+- Release 1.4.0
+  * Aligned minimum versions of pip,setuptools,wheel with
+    pywbemtools, nocasedict,nocaselist. This increased the minimum
+    version of pip on Python 3.5 to fix an issue.
+  * Improved verbosity of namespace creation and deletion: Added
+    optional 'verbose' parameters to the create_namecpace() and
+    delete_namespace() methods of WBEMServer, and to the
+    add_namecpace() and remove_namespace() methods of
+    FakedWBEMConnection (and subsequently to BaseProvider) in the
+    mock support.
+- Actually cythonize if --with cythonize is given
+  * switched off by default, because the produced commands throw
+    yacc parser errors in the pywbemtools tests
+
+-------------------------------------------------------------------
 Sun Dec 26 15:34:59 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.3.0
