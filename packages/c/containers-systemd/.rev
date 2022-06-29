@@ -299,4 +299,13 @@
   * Use Type=notify instead of forking (following podman upstream)</comment>
     <requestid>950221</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d506653800132270a0573fc53697d92f</srcmd5>
+    <version>0.0+git20220628.ee9e63c</version>
+    <time>1656511253</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20220628.ee9e63c:
+  * Add files to renew certificates with certbot</comment>
+    <requestid>985537</requestid>
+  </revision>
 </revisionlist>

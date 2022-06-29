@@ -17,7 +17,7 @@
 
 
 %define containers bind dhcp-server dovecot fetchmail haproxy mariadb minidlna nfs-server nginx openldap postfix roundcube samba spamassassin squid wsdd
-%define container_services container-bind.service container-dhcp-server.service container-dhcp6-server.service container-dovecot.service container-fetchmail.service container-haproxy.service container-mariadb.service container-minidlna.service container-nfs-server.service container-nginx.service container-openldap.service container-postfix.service container-roundcube.service container-samba.service container-spamassassin.service container-squid.service container-wsdd.service container-image-prune.service container-image-prune.timer
+%define container_services container-bind.service container-dhcp-server.service container-dhcp6-server.service container-dovecot.service container-fetchmail.service container-haproxy.service container-mariadb.service container-minidlna.service container-nfs-server.service container-nginx.service container-openldap.service container-postfix.service container-roundcube.service container-samba.service container-spamassassin.service container-squid.service container-wsdd.service container-image-prune.service container-image-prune.timer container-certbot-renew.service container-certbot-renew.timer
 
 %if %{undefined service_del_postun_without_restart}
 %define service_del_postun_without_restart() \
@@ -26,11 +26,11 @@ DISABLE_RESTART_ON_UPDATE=1 \
 %endif
 
 Name:           containers-systemd
-Version:        0.0+git20220131.79f09c7
+Version:        0.0+git20220628.ee9e63c
 Release:        0
 Summary:        Systemd service files and config files for openSUSE container
 License:        MIT
-URL:            https://github.com/kubic-project/containers-systemd
+URL:            https://github.com/openSUSE/containers-systemd
 Source:         containers-systemd-%{version}.tar.xz
 Source1:        containers-systemd.rpmlintrc
 BuildArch:      noarch
@@ -59,6 +59,9 @@ for i in %{containers}; do
     # create symlink for rccontainer-*
     ln -s /sbin/service %{buildroot}%{_sbindir}/rccontainer-$i
 done
+install -m 644 container-certbot.default %{buildroot}%{_distconfdir}/default/container-certbot
+install -m 644 container-certbot-renew.service %{buildroot}%{_unitdir}/
+install -m 644 container-certbot-renew.timer %{buildroot}%{_unitdir}/
 install -m 644 container-dhcp6-server.service %{buildroot}%{_unitdir}/
 ln -s /sbin/service %{buildroot}%{_sbindir}/rccontainer-dhcp6-server
 install -m 644 container-image-prune.service %{buildroot}%{_unitdir}/
@@ -96,6 +99,9 @@ done
 %{_distconfdir}/default/container-bind
 %{_sbindir}/rccontainer-bind
 %ghost %dir /srv/bind
+%{_unitdir}/container-certbot-renew.service
+%{_unitdir}/container-certbot-renew.timer
+%{_distconfdir}/default/container-certbot
 %{_unitdir}/container-dhcp-server.service
 %{_unitdir}/container-dhcp6-server.service
 %{_distconfdir}/default/container-dhcp-server
