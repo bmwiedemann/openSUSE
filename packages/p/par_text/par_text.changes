@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 28 10:12:55 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add par-1.53-i18n.1.patch (which is port of
+  http://sysmic.org/dl/par/par-1.52-i18n.4.patch to the current master).
+  Suggested fix for bt#amc-nicemice/par#6.
+
+-------------------------------------------------------------------
 Mon Sep 21 10:25:57 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Make services disabled, so the repository carries regular
