@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-aiobotocore
-Version:        2.2.0
+Version:        2.3.4
 Release:        0
 Summary:        Async client for aws services
 License:        Apache-2.0
@@ -46,11 +46,17 @@ BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wrapt >= 1.10.10}
+%if 0%{?suse_version} < 1550
+BuildRequires:  %{python_module async_generator}
+%endif
 # /SECTION
 Requires:       python-aiohttp >= 3.3.1
 Requires:       python-aioitertools >= 0.5.1
 Requires:       python-botocore >= 1.24.21
 Requires:       python-wrapt >= 1.10.10
+%if 0%{?python_version_nodots} < 37
+Requires:       python-async_generator
+%endif
 Recommends:     aws-cli >= 1.22.76
 Recommends:     python-boto3 >= 1.21.21
 BuildArch:      noarch
@@ -86,6 +92,9 @@ donttest+=" or test_publish_to_http"
 donttest+=" or test_dynamodb"
 # s3client fails with KeyError for resp['Contents'] -- https://github.com/spulec/moto/issues/5030
 donttest+=" or test_can_delete_urlencoded_object"
+# fail to fetch fake AWS credentials https://github.com/aio-libs/aiobotocore/issues/948
+donttest+=" or (test_credentials and (sso or test_required_config_not_set))"
+
 %pytest -m moto -n auto -k "not ($donttest)"
 
 %files %{python_files}
