@@ -419,4 +419,12 @@ This is a part of the 5.4 release, but can be built and used with older Qt relea
   * 0001-Use-proper-dependencies-in-compile-tests.patch</comment>
     <requestid>956939</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>0eb74c3474c34f7b26d85d9d7fbbf86c</srcmd5>
+    <version>5.15.5+kde39</version>
+    <time>1656511245</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.5 with patch collection + qtscript 5.15.10 (forwarded request 985459 from favogt)</comment>
+    <requestid>985498</requestid>
+  </revision>
 </revisionlist>
