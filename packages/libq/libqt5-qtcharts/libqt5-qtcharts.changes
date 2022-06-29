@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun 27 13:09:11 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.5+kde1, rebased upstream:
+  * Revert "Fix X axis labels to not draw over each other"
+  * Fix X axis labels to not draw over each other
+  * Add comments and clarify some code
+  * Add text bounds cache
+  * Revert "Update the commercial license header to Qt Charts files"
+  * Doc: Fix issues in Q[H|V]XYModelMapper documentation
+  * Only create the GLXYSeriesData if there is no existing data
+  * Update the commercial license header to Qt Charts files
+  * QtCharts: Append branch condition fix in QLegend
+- Drop 0001-Revert-Bump-version.patch, it's versioned correctly now
+
+-------------------------------------------------------------------
 Tue Jun 22 19:38:47 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Switch to KDE's maintenance branch

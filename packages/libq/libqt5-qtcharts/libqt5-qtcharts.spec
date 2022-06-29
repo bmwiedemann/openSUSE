@@ -19,19 +19,17 @@
 %define qt5_snapshot 1
 %define libname libQt5Charts5
 %define base_name libqt5
-%define real_version 5.15.2
-%define so_version 5.15.2
+%define real_version 5.15.5
+%define so_version 5.15.5
 %define tar_version qtcharts-everywhere-src-%{version}
 Name:           libqt5-qtcharts
-Version:        5.15.2+kde2
+Version:        5.15.5+kde1
 Release:        0
 Summary:        Qt 5 Charts Library
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://doc.qt.io/qt-5/qtcharts-index.html
 Source:         %{tar_version}.tar.xz
-# PATCH-FIX-OPENSUSE
-Patch1:         0001-Revert-Bump-version.patch
 BuildRequires:  fdupes
 BuildRequires:  libqt5-qtdeclarative-devel >= %{real_version}
 %if %{qt5_snapshot}
