@@ -80,4 +80,35 @@
     <comment>Upgrade to Xfce 4.16</comment>
     <requestid>860852</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>162d804fce29dd0771f2f3a27511716c</srcmd5>
+    <version>3.23.1+git1.77c0887</version>
+    <time>1656511256</time>
+    <user>dimstar_suse</user>
+    <comment>- Prevent Unity desktop theme from being installed
+  Added disable-unity_v3.23.1.patch
+- Update to version 3.23.1+git1.77c0887:
+  * Cleanup leftovers and correct emerald file mistakinly being renamed
+- Update to version 3.23.1+git0.a96e825:
+  * Sync with Greybird 3.23.1
+  * Add initial support for Gtk4 and libhandy
+  * Fix dark xfwm4-a11y install path
+  * Fix xfwm4-a11y and xfwm4-compact install path
+  * Fix: GtkLabel: Backdropped selection color adjusted
+  * Fix: Backdropped selection: GtkListBoxes weren't grey
+  * Hotfix: removed background color for non-bg items
+  * Gtk3: Adjusted selected backdrop fg/bg colors: shades of grey.
+  * Changes the xfwm4 border colors
+  * build: refactor meson
+  * Correct gradients for horizontal scrollbars
+  * Reduce messagedialog buttonbox size
+  * Make CSD titlebars slimmer
+  * Correct gradients for horizontal scrollbars (shimmerproject/Greybird#288)
+  * Greybird-Dark titlebar decorations now match their CSD counterparts (shimmerproject/Greybird#301)
+  * Background selection colors are now grey instead of blue for better readability
+  * Add initial support for Gtk4 and libhandy
+  * Install index.theme 
+</comment>
+    <requestid>985561</requestid>
+  </revision>
 </revisionlist>

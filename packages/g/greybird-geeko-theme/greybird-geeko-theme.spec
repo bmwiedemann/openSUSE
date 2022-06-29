@@ -1,7 +1,7 @@
 #
 # spec file for package greybird-geeko-theme
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,39 +16,42 @@
 #
 
 
-%define name_light Greybird-Geeko-Light
-%define name_dark Greybird-Geeko-Dark
+%define name_light Greybird-geeko
+%define name_dark Greybird-geeko-dark
 %define _name Greybird-Geeko
 
 Name:           greybird-geeko-theme
-Version:        3.22.11+git10.2f4304a
+Version:        3.23.1+git1.77c0887
 Release:        0
 URL:            https://github.com/shimmerproject/Greybird-Geeko
 Summary:        A grey theme for GNOME, XFCE, GTK+ 2 and 3
-License:        GPL-2.0-or-later OR CC-BY-SA-3.0 AND GPL-3.0-or-later
+License:        (CC-BY-SA-3.0 AND GPL-3.0-or-later) OR GPL-2.0-or-later
 Group:          System/GUI/GNOME
 Source:         %{_name}-%{version}.tar.xz
+# PATCH-FIX-OPENSUSE disable-unity_v3.23.1.patch maurizio.galli@gmail.com -- remove unity desktop
+Patch0:         disable-unity_v3.23.1.patch
 BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf-devel
 BuildRequires:  gdk-pixbuf-loader-rsvg
 BuildRequires:  glib2-devel
 BuildRequires:  meson
 BuildRequires:  sassc
+BuildRequires:  pkgconfig(gtk4)
 BuildArch:      noarch
 
 %description
-This theme for GTK2/3 and xfwm4/emerald/metacity is a 
+This theme for GTK2/3 and xfwm4/emerald/metacity is a
 fork of Greybird with openSUSE branding elements added.
-
 
 %package -n metatheme-greybird-geeko-common
 Summary:        Common files for the Greybird theme
 Group:          System/GUI/GNOME
 Suggests:       gtk2-metatheme-greybird-geeko
 Suggests:       gtk3-metatheme-greybird-geeko
+Suggests:       gtk4-metatheme-greybird-geeko
 
 %description -n metatheme-greybird-geeko-common
-The Greybird theme for GTK2/3 and xfwm4/emerald/metacity started out on the
+The Greybird theme for GTK2/3/4 and xfwm4/emerald/metacity started out on the
 basis of Bluebird, but aims at reworking the intense blue tone to a more
 neutral grey-ish look.
 
@@ -63,27 +66,29 @@ Requires:       metatheme-greybird-geeko-common = %{version}
 Supplements:    packageand(metatheme-greybird-geeko-common:gtk2)
 
 %description -n gtk2-metatheme-greybird-geeko
-The Greybird Theme for GTK2/3 and xfwm4/emerald/metacity started out on the
-basis of Bluebird, but aims at reworking the intense blue tone to a more
-neutral grey-ish look.
-
-This package provides the GTK+ 2 support of Greybird.
+This package provides the GTK+ 2 support of Greybird-geeko.
 
 %package -n gtk3-metatheme-greybird-geeko
-Summary:        GTK+ 3 support for the Greybird theme
+Summary:        GTK+ 3 support for the Greybird-geeko theme
 Group:          System/GUI/GNOME
 Requires:       metatheme-greybird-geeko-common = %{version}
 Supplements:    packageand(metatheme-greybird-geeko-common:gtk3)
 
 %description -n gtk3-metatheme-greybird-geeko
-The Greybird Theme for GTK2/3 and xfwm4/emerald/metacity started out on the
-basis of Bluebird, but aims at reworking the intense blue tone to a more
-neutral grey-ish look.
+This package provides the GTK+ 3 support of Greybird-geeko.
 
-This package provides the GTK+ 3 support of Greybird.
+%package -n gtk4-metatheme-greybird-geeko
+Summary:        GTK+ 4 support for the Greybird-geeko theme
+Group:          System/GUI/GNOME
+Requires:       metatheme-greybird-geeko-common = %{version}
+Supplements:    packageand(metatheme-greybird-geeko-common:gtk4)
+
+%description -n gtk4-metatheme-greybird-geeko
+This package provides the GTK+ 4 support of Greybird-geeko.
 
 %prep
 %setup -q -n %{_name}-%{version}
+%patch0 -p1
 
 %build
 %meson
@@ -99,20 +104,20 @@ This package provides the GTK+ 3 support of Greybird.
 %fdupes -s %{buildroot}/%{_datadir}/themes/{%{name_light},%{name_dark}}/gtk-2.0/*
 
 %files -n metatheme-greybird-geeko-common
-%doc README.md 
+%doc README.md
 %license LICENSE.CC LICENSE.GPL
-%dir %{_datadir}/themes/{%{name_light},%{name_dark}}
+%dir %{_datadir}/themes/{%{name_light},%{name_dark},%{name_light}-bright}
 %{_datadir}/themes/{%{name_light},%{name_dark}}/{%{name_light},%{name_dark}}.emerald
 %{_datadir}/themes/{%{name_light},%{name_dark}}/metacity-1
-%{_datadir}/themes/{%{name_light},%{name_dark}}/xfce-notify-4.0
+%{_datadir}/themes/{%{name_light},%{name_light}-bright}/xfce-notify-4.0
 %{_datadir}/themes/{%{name_light},%{name_dark}}/xfwm4
 %{_datadir}/themes/{%{name_light},%{name_dark}}/index.theme
-%{_datadir}/themes/{%{name_light},%{name_dark}}/plank
-%dir %{_datadir}/themes/{%{name_light},%{name_dark}}-{Accessibility,Compact}
-%{_datadir}/themes/{%{name_light},%{name_dark}}-{Accessibility,Compact}/*
 %dir %{_datadir}/themes/{%{name_light},%{name_dark}}/gnome-shell
 %{_datadir}/themes/{%{name_light},%{name_dark}}/gnome-shell/*
+%dir %{_datadir}/themes/{%{name_light},%{name_dark}}/plank
 %{_datadir}/themes/{%{name_light},%{name_dark}}/plank/*
+%dir %{_datadir}/themes/{%{name_light},%{name_dark}}-{accessibility,compact}
+%{_datadir}/themes/{%{name_light},%{name_dark}}-{accessibility,compact}/*
 
 %files -n gtk2-metatheme-greybird-geeko
 %{_datadir}/themes/{%{name_light},%{name_dark}}/gtk-2.0
@@ -121,5 +126,8 @@ This package provides the GTK+ 3 support of Greybird.
 %files -n gtk3-metatheme-greybird-geeko
 %{_datadir}/themes/{%{name_light},%{name_dark}}/gtk-3.0
 %endif
+
+%files -n gtk4-metatheme-greybird-geeko
+%{_datadir}/themes/{%{name_light},%{name_dark}}/gtk-4.0
 
 %changelog

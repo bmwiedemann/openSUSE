@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Jun 28 03:38:48 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Prevent Unity desktop theme from being installed
+  Added disable-unity_v3.23.1.patch
+
+-------------------------------------------------------------------
+Mon Jun 27 15:22:43 UTC 2022 - maurizio.galli@gmail.com
+
+- Update to version 3.23.1+git1.77c0887:
+  * Cleanup leftovers and correct emerald file mistakinly being renamed
+
+-------------------------------------------------------------------
+Mon Jun 27 14:26:47 UTC 2022 - maurizio.galli@gmail.com
+
+- Update to version 3.23.1+git0.a96e825:
+  * Sync with Greybird 3.23.1
+  * Add initial support for Gtk4 and libhandy
+  * Fix dark xfwm4-a11y install path
+  * Fix xfwm4-a11y and xfwm4-compact install path
+  * Fix: GtkLabel: Backdropped selection color adjusted
+  * Fix: Backdropped selection: GtkListBoxes weren't grey
+  * Hotfix: removed background color for non-bg items
+  * Gtk3: Adjusted selected backdrop fg/bg colors: shades of grey.
+  * Changes the xfwm4 border colors
+  * build: refactor meson
+  * Correct gradients for horizontal scrollbars
+  * Reduce messagedialog buttonbox size
+  * Make CSD titlebars slimmer
+  * Correct gradients for horizontal scrollbars (shimmerproject/Greybird#288)
+  * Greybird-Dark titlebar decorations now match their CSD counterparts (shimmerproject/Greybird#301)
+  * Background selection colors are now grey instead of blue for better readability
+  * Add initial support for Gtk4 and libhandy
+  * Install index.theme 
+
+-------------------------------------------------------------------
 Fri Dec 18 11:45:46 UTC 2020 - maurizio.galli@gmail.com
 
 - Update to version 3.22.11+git10.2f4304a:
