@@ -428,4 +428,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment> (forwarded request 974306 from favogt)</comment>
     <requestid>974307</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>24b903734a69b6444a244060940ae2bc</srcmd5>
+    <version>5.15.5+kde1</version>
+    <time>1656511236</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.5 with patch collection + qtscript 5.15.10 (forwarded request 985459 from favogt)</comment>
+    <requestid>985481</requestid>
+  </revision>
 </revisionlist>
