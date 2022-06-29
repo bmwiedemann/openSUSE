@@ -418,7 +418,7 @@ Wed Jan 19 21:50:04 UTC 2022 - Matej Cepl <mcepl@suse.com>
 Mon Nov 29 00:17:07 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Remove shebangs from from python-base libraries in _libdir
-  (bsc#1193179).
+  (bsc#1193179, bsc#1192249).
 - Readjust patches:
   - bpo-31046_ensurepip_honours_prefix.patch
   - decimal.patch

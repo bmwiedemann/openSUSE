@@ -656,4 +656,12 @@
     22.0.4, bnc#1186819, CVE-2021-3572)</comment>
     <requestid>983632</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>2a8761e87f0c160a6a9f8be5d2614d5b</srcmd5>
+    <version>3.9.13</version>
+    <time>1656511252</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>985337</requestid>
+  </revision>
 </revisionlist>
