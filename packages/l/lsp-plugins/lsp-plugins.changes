@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jun 28 23:23:00 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- add upstream patch:
+  02-Fixed-the-improper-use-of-nanosleep.patch
+- fix build and vl2lint check:
+  01-Append-CXXFLAGS.patch 
+
+-------------------------------------------------------------------
+Mon Jun 27 09:15:05 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Version 1.2.2
+
+  * Implemented Multiband Dynamic Processor plugin series.
+  * Changed donation methods.
+  * Added german translations (contributed by Johannes Guenther).
+  * Added pitch control for the sample in the Sampler and Multisampler
+    plugin series (contributed by Vitalius Kuchalskis).
+  * Added pitch control for the sample in the Trigger plugin series.
+  * Fixed plugin version tracking which didn't save the updated version
+    to the configuration file.
+  * Fixed improper configuration file import in JACK headless mode.
+  * Fixed segmentation fault error in JACK headless mode when JACK
+    connection was lost.
+  * Added window scaling button function for plugin window.
+
+-------------------------------------------------------------------
 Wed May  4 01:21:07 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - remove patches, now upstream:

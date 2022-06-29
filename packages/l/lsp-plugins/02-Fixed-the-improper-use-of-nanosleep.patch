@@ -1,0 +1,59 @@
+From dbc16bcfb151c0b1d24f40e51316f8e3f34bb7da Mon Sep 17 00:00:00 2001
+From: sadko4u <sadko4u@gmail.com>
+Date: Fri, 24 Jun 2022 15:18:19 +0300
+Subject: [PATCH] Fixed the improper use of nanosleep when introducing the
+ sleep function.
+
+---
+ CHANGELOG                   |  1 +
+ src/main/runtime/system.cpp | 31 +++++++++++++++++--------------
+ 2 files changed, 18 insertions(+), 14 deletions(-)
+
+diff --git a/CHANGELOG b/CHANGELOG
+index 798e4aa..c2ccbb6 100644
+diff --git a/src/main/runtime/system.cpp b/src/main/runtime/system.cpp
+index 46aaaea..1ced834 100644
+--- a/src/main/runtime/system.cpp
++++ b/src/main/runtime/system.cpp
+@@ -389,24 +389,27 @@ namespace lsp
+             struct timespec req, rem;
+             req.tv_nsec = (delay % 1000) * 1000000;
+             req.tv_sec  = delay / 1000;
++            rem.tv_nsec = 0;
++            rem.tv_sec  = 0;
+ 
+-            while ((req.tv_nsec > 0) && (req.tv_sec > 0))
++            while ((req.tv_nsec > 0) || (req.tv_sec > 0))
+             {
+-                int res = ::nanosleep(&req, &rem);
+-                if (res != 0)
++                // Perform nanosleep for the specific period of time.
++                // If function succeeded and waited the whole desired period
++                // of time, it should return 0.
++                if (::nanosleep(&req, &rem) == 0)
++                    break;
++
++                // If the sleep was interrupted, we need to update
++                // the remained number of time to sleep.
++                switch (errno)
+                 {
+-                    switch (errno)
+-                    {
+-                        case EFAULT:
+-                        case EINVAL:
+-                            return STATUS_UNKNOWN_ERR;
+-                        case EINTR:
+-                        default:
+-                            break;
+-                    }
++                    case EINTR:
++                        req = rem;
++                        break;
++                    default:
++                        return STATUS_UNKNOWN_ERR;
+                 }
+-                else
+-                    req = rem;
+             }
+ 
+             return STATUS_OK;

@@ -1,0 +1,21 @@
+diff -ur lsp-plugins.orig/make/tools.mk lsp-plugins/make/tools.mk
+--- lsp-plugins.orig/make/tools.mk	2022-06-23 08:18:02.677549495 +1000
++++ lsp-plugins/make/tools.mk	2022-06-29 09:18:03.229839836 +1000
+@@ -110,7 +110,7 @@
+ endif
+ 
+ # Define flags for (cross) build
+-CFLAGS             ?= \
++CFLAGS             += \
+   $(CFLAGS_EXT) \
+   -fdata-sections \
+   -ffunction-sections \
+@@ -120,7 +120,7 @@
+ 
+ CDEFS              += -DLSP_INSTALL_PREFIX=\\\"$(PREFIX)\\\"
+   
+-CXXFLAGS           ?= \
++CXXFLAGS           += \
+   $(CXXFLAGS_EXT) \
+   -std=c++98 \
+   -fno-exceptions \

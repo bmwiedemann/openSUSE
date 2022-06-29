@@ -19,14 +19,18 @@
 %ifarch %arm aarch64
 %define _lto_cflags %{nil}
 %endif
+%global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
+
 Name:           lsp-plugins
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Linux Studio Plugins Project (Stand-alone)
 License:        LGPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://lsp-plug.in/
 Source0:        https://github.com/sadko4u/lsp-plugins/releases/download/%{version}/%{name}-src-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch1:         01-Append-CXXFLAGS.patch
+Patch2:         02-Fixed-the-improper-use-of-nanosleep.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ladspa
@@ -40,6 +44,7 @@ BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(lv2)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xrandr)
 Requires:       %{name}-common = %{version}
 
 %description
@@ -117,6 +122,9 @@ Development files for Linux Studio Plugins
 
 %prep
 %setup -qn %{name}
+
+%patch1 -p1
+%patch2 -d modules/lsp-runtime-lib -p1
 
 %build
 #export PREFIX="%{_prefix}" DOC_PATH="%{_docdir}" LIB_PATH="%{_libdir}"
