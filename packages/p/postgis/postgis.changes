@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 28 10:50:10 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- no longer pull clang-devel and llvm-devel directory the correct
+  version will be pulled via %{pg_name}-llvmjit-devel
+
+-------------------------------------------------------------------
 Tue Mar 15 10:13:23 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix Name in spec when %{pgname} is not defined

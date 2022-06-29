@@ -32,8 +32,6 @@ Source1:        https://download.osgeo.org/postgis/source/%{ext_name}-%{version}
 Patch0:         patch-tests-results.patch
 BuildRequires:  %{pg_name}-server-devel
 BuildRequires:  %{pg_name}-llvmjit-devel
-BuildRequires:  clang-devel
-BuildRequires:  llvm-devel
 BuildRequires:  cgal-devel
 BuildRequires:  cunit-devel
 BuildRequires:  fdupes
