@@ -19,11 +19,11 @@
 %define qt5_snapshot 1
 %define libname libQt5X11Extras5
 %define base_name libqt5
-%define real_version 5.15.2
-%define so_version 5.15.2
+%define real_version 5.15.5
+%define so_version 5.15.5
 %define tar_version qtx11extras-everywhere-src-%{version}
 Name:           libqt5-qtx11extras
-Version:        5.15.2+kde1
+Version:        5.15.5+kde0
 Release:        0
 Summary:        Qt 5 X11 Extras Addon
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -31,8 +31,6 @@ Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 Source:         %{tar_version}.tar.xz
 Source1:        baselibs.conf
-# PATCH-FIX-OPENSUSE
-Patch1:         0001-Revert-Bump-version.patch
 BuildRequires:  fdupes
 BuildRequires:  libQt5Gui-private-headers-devel >= %{real_version}
 BuildRequires:  libQt5PlatformHeaders-devel >= %{real_version}
