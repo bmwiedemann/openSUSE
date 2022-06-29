@@ -1,5 +1,5 @@
---- ./scripts/brp-compress.orig	2020-05-28 10:04:25.075136894 +0000
-+++ ./scripts/brp-compress	2020-10-27 15:23:57.970737863 +0000
+--- scripts/brp-compress.orig	2020-05-28 10:04:25.075136894 +0000
++++ scripts/brp-compress	2020-10-27 15:23:57.970737863 +0000
 @@ -5,6 +5,9 @@ if [ -z "$RPM_BUILD_ROOT" ] || [ "$RPM_B
  	exit 0
  fi

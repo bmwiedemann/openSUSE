@@ -1,5 +1,5 @@
---- ./scripts/find-debuginfo.in.orig	2021-09-23 20:25:41.059184871 +0000
-+++ ./scripts/find-debuginfo.in	2021-09-23 20:26:40.363063418 +0000
+--- scripts/find-debuginfo.in.orig	2021-09-23 20:25:41.059184871 +0000
++++ scripts/find-debuginfo.in	2021-09-23 20:26:40.363063418 +0000
 @@ -643,19 +643,25 @@ if $run_dwz \
    fi
  fi

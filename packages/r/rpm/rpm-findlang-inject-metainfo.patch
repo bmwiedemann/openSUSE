@@ -1,5 +1,5 @@
---- ./scripts/find-lang.sh.orig	2018-01-31 13:37:22.810352621 +0000
-+++ ./scripts/find-lang.sh	2018-01-31 13:39:38.117990971 +0000
+--- scripts/find-lang.sh.orig	2018-01-31 13:37:22.810352621 +0000
++++ scripts/find-lang.sh	2018-01-31 13:39:38.117990971 +0000
 @@ -32,6 +32,7 @@ Additional options:
    --with-man		find localized man pages
    --all-name		match all package/domain names

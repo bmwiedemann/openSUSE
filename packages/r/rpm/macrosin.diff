@@ -1,5 +1,5 @@
---- ./macros.in.orig	2021-09-23 19:13:54.532045005 +0000
-+++ ./macros.in	2021-09-23 19:13:59.592034687 +0000
+--- macros.in.orig	2021-09-23 19:13:54.532045005 +0000
++++ macros.in	2021-09-23 19:13:59.592034687 +0000
 @@ -170,6 +170,7 @@
      %{?_unique_debug_names:--unique-debug-suffix "-%{VERSION}-%{RELEASE}.%{_arch}"} \\\
      %{?_unique_debug_srcs:--unique-debug-src-base "%{name}-%{VERSION}-%{RELEASE}.%{_arch}"} \\\

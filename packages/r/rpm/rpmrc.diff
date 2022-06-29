@@ -1,5 +1,5 @@
---- ./rpmrc.in.orig	2019-06-26 14:17:31.451985635 +0000
-+++ ./rpmrc.in	2019-10-02 11:24:49.601403844 +0000
+--- rpmrc.in.orig	2019-06-26 14:17:31.451985635 +0000
++++ rpmrc.in	2019-10-02 11:24:49.601403844 +0000
 @@ -12,16 +12,16 @@
  # "fat" binary with both archs, for Darwin
  optflags: fat -O2 -g -arch i386 -arch ppc

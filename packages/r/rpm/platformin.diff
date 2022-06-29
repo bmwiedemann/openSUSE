@@ -1,5 +1,5 @@
---- ./platform.in.orig	2014-06-26 06:51:54.822818260 +0000
-+++ ./platform.in	2014-08-04 12:38:55.389245494 +0000
+--- platform.in.orig	2014-06-26 06:51:54.822818260 +0000
++++ platform.in	2014-08-04 12:38:55.389245494 +0000
 @@ -41,7 +41,7 @@
  %_oldincludedir		@oldincludedir@
  %_infodir		@infodir@

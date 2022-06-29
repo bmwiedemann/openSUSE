@@ -1,5 +1,5 @@
---- ./scripts/find-lang.sh.orig	2018-01-31 13:25:25.229266078 +0000
-+++ ./scripts/find-lang.sh	2018-01-31 13:26:15.128133281 +0000
+--- scripts/find-lang.sh.orig	2018-01-31 13:25:25.229266078 +0000
++++ scripts/find-lang.sh	2018-01-31 13:26:15.128133281 +0000
 @@ -119,6 +119,23 @@ fi
  MO_NAME_NEW=$MO_NAME.tmp.$$
  rm -f $MO_NAME_NEW

@@ -1,5 +1,5 @@
---- ./lib/rpmscript.c
-+++ ./lib/rpmscript.c
+--- lib/rpmscript.c
++++ lib/rpmscript.c
 @@ -390,7 +390,7 @@ rpmRC rpmScriptRun(rpmScript script, int
      if (script == NULL) return RPMRC_OK;
  
@@ -19,8 +19,8 @@
 +	flags |= RPMSCRIPT_FLAG_CRITICAL;
 +    return flags;
  }
---- ./macros.in
-+++ ./macros.in
+--- macros.in
++++ macros.in
 @@ -1293,5 +1293,10 @@ end
  %{expand:%__scm_setup_%{__scm} %{!-v:-q}}\
  %{!-N:%autopatch %{-v} %{-p:-p%{-p*}}}

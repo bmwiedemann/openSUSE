@@ -1,5 +1,5 @@
---- ./scripts/find-lang.sh.orig	2021-06-21 12:00:44.650612737 +0000
-+++ ./scripts/find-lang.sh	2021-09-23 19:12:01.428275661 +0000
+--- scripts/find-lang.sh.orig	2021-06-21 12:00:44.650612737 +0000
++++ scripts/find-lang.sh	2021-09-23 19:12:01.428275661 +0000
 @@ -37,11 +37,11 @@ the top of the tree containing the files
  PACKAGE_NAME is the %{name} of the package. This should also be
  the basename of the .mo files.  the output is written to

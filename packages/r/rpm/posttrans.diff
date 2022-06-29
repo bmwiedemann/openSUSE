@@ -1,5 +1,5 @@
---- ./lib/poptI.c.orig	2021-04-09 11:28:12.359647290 +0000
-+++ ./lib/poptI.c	2021-04-09 11:28:15.523640983 +0000
+--- lib/poptI.c.orig	2021-04-09 11:28:12.359647290 +0000
++++ lib/poptI.c	2021-04-09 11:28:15.523640983 +0000
 @@ -265,6 +265,10 @@ struct poptOption rpmInstallPoptTable[]
  	&rpmIArgs.installInterfaceFlags, (INSTALL_REINSTALL|INSTALL_INSTALL),
  	N_("reinstall package(s)"),
@@ -11,8 +11,8 @@
  
     POPT_TABLEEND
  };
---- ./lib/psm.c.orig	2021-04-09 11:28:12.359647290 +0000
-+++ ./lib/psm.c	2021-04-09 11:28:15.527640975 +0000
+--- lib/psm.c.orig	2021-04-09 11:28:12.359647290 +0000
++++ lib/psm.c	2021-04-09 11:28:15.527640975 +0000
 @@ -810,7 +810,7 @@ static rpmRC rpmPackageErase(rpmts ts, r
  	}
  	if (rc) break;
@@ -22,8 +22,8 @@
  	    /* Prepare post transaction uninstall triggers */
  	    rpmtriggersPrepPostUnTransFileTrigs(psm->ts, psm->te);
  	}
---- ./lib/rpmcli.h.orig	2021-04-09 11:28:12.359647290 +0000
-+++ ./lib/rpmcli.h	2021-04-09 11:28:15.527640975 +0000
+--- lib/rpmcli.h.orig	2021-04-09 11:28:12.359647290 +0000
++++ lib/rpmcli.h	2021-04-09 11:28:15.527640975 +0000
 @@ -304,6 +304,7 @@ enum rpmInstallFlags_e {
      INSTALL_ERASE	= (1 << 8),	/*!< from --erase */
      INSTALL_ALLMATCHES	= (1 << 9),	/*!< from --allmatches */
@@ -48,8 +48,8 @@
   */
  extern struct rpmInstallArguments_s rpmIArgs;
  
---- ./lib/rpminstall.c.orig	2021-04-09 11:28:12.363647282 +0000
-+++ ./lib/rpminstall.c	2021-04-09 11:28:15.527640975 +0000
+--- lib/rpminstall.c.orig	2021-04-09 11:28:12.363647282 +0000
++++ lib/rpminstall.c	2021-04-09 11:28:15.527640975 +0000
 @@ -4,6 +4,8 @@
  
  #include "system.h"
@@ -92,8 +92,8 @@
 +    argvFree(manifest);
 +    return rc;
 +}
---- ./lib/rpmtriggers.c.orig	2021-04-09 11:28:12.363647282 +0000
-+++ ./lib/rpmtriggers.c	2021-04-09 11:31:46.999219563 +0000
+--- lib/rpmtriggers.c.orig	2021-04-09 11:28:12.363647282 +0000
++++ lib/rpmtriggers.c	2021-04-09 11:31:46.999219563 +0000
 @@ -1,5 +1,6 @@
  #include "system.h"
  
@@ -142,8 +142,8 @@
      if (tm == RPMSCRIPT_FILETRIGGER) {
  	priorityTag = RPMTAG_FILETRIGGERPRIORITIES;
      } else {
---- ./lib/rpmtriggers.h.orig	2021-04-09 11:28:12.363647282 +0000
-+++ ./lib/rpmtriggers.h	2021-04-09 11:28:15.527640975 +0000
+--- lib/rpmtriggers.h.orig	2021-04-09 11:28:12.363647282 +0000
++++ lib/rpmtriggers.h	2021-04-09 11:28:15.527640975 +0000
 @@ -27,6 +27,10 @@ rpmtriggers rpmtriggersCreate(unsigned i
  RPM_GNUC_INTERNAL
  rpmtriggers rpmtriggersFree(rpmtriggers triggers);
@@ -155,8 +155,8 @@
  /*
   * Prepare post trans uninstall file triggers. After transcation uninstalled
   * files are not saved anywhere. So we need during uninstalation of every
---- ./lib/rpmts.h.orig	2021-04-09 11:28:12.363647282 +0000
-+++ ./lib/rpmts.h	2021-04-09 11:28:15.527640975 +0000
+--- lib/rpmts.h.orig	2021-04-09 11:28:12.363647282 +0000
++++ lib/rpmts.h	2021-04-09 11:28:15.527640975 +0000
 @@ -229,6 +229,15 @@ int rpmtsOrder(rpmts ts);
  int rpmtsRun(rpmts ts, rpmps okProbs, rpmprobFilterFlags ignoreSet);
  
@@ -173,8 +173,8 @@
   * Reference a transaction set instance.
   * @param ts		transaction set
   * @return		new transaction set reference
---- ./lib/rpmts_internal.h.orig	2021-04-09 11:28:12.363647282 +0000
-+++ ./lib/rpmts_internal.h	2021-04-09 11:28:15.527640975 +0000
+--- lib/rpmts_internal.h.orig	2021-04-09 11:28:12.363647282 +0000
++++ lib/rpmts_internal.h	2021-04-09 11:28:15.527640975 +0000
 @@ -87,6 +87,7 @@ struct rpmts_s {
      rpmtriggers trigs2run;   /*!< Transaction file triggers */
  
@@ -183,8 +183,8 @@
  };
  
  #ifdef __cplusplus
---- ./lib/transaction.c.orig	2021-04-09 11:28:12.363647282 +0000
-+++ ./lib/transaction.c	2021-04-09 11:33:22.247029757 +0000
+--- lib/transaction.c.orig	2021-04-09 11:28:12.363647282 +0000
++++ lib/transaction.c	2021-04-09 11:33:22.247029757 +0000
 @@ -1468,6 +1468,8 @@ static int rpmtsSetup(rpmts ts, rpmprobF
      /* Get available space on mounted file systems. */
      (void) rpmtsInitDSI(ts);
@@ -336,8 +336,8 @@
 +    rpmtsEmpty(ts);
 +    return rc;
 +}
---- ./rpm.c.orig	2021-04-09 11:28:12.363647282 +0000
-+++ ./rpm.c	2021-04-09 11:28:15.527640975 +0000
+--- rpm.c.orig	2021-04-09 11:28:12.363647282 +0000
++++ rpm.c	2021-04-09 11:28:15.527640975 +0000
 @@ -19,6 +19,7 @@ enum modes {
      MODE_INSTALL	= (1 <<  1),
      MODE_ERASE		= (1 <<  2),

@@ -1,5 +1,5 @@
---- ./tools/elfdeps.c.orig	2014-06-26 06:51:55.768815677 +0000
-+++ ./tools/elfdeps.c	2014-08-04 13:02:16.981081591 +0000
+--- tools/elfdeps.c.orig	2014-06-26 06:51:55.768815677 +0000
++++ tools/elfdeps.c	2014-08-04 13:02:16.981081591 +0000
 @@ -17,6 +17,7 @@ int soname_only = 0;
  int fake_soname = 1;
  int filter_soname = 1;

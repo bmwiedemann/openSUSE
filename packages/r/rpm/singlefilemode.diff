@@ -1,5 +1,5 @@
---- ./scripts/find-debuginfo.in.orig	2021-09-24 09:10:06.477724685 +0000
-+++ ./scripts/find-debuginfo.in	2021-09-24 09:10:26.557680705 +0000
+--- scripts/find-debuginfo.in.orig	2021-09-24 09:10:06.477724685 +0000
++++ scripts/find-debuginfo.in	2021-09-24 09:10:26.557680705 +0000
 @@ -168,7 +168,6 @@ while [ $# -gt 0 ]; do
      ;;
    --dwz-single-file-mode)

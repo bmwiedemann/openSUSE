@@ -1,8 +1,8 @@
 --- ../safeugid.diff	2019-10-02 13:37:13.191868203 +0200
 +++ P	2019-10-02 13:36:09.036002978 +0200
 @@ -0,0 +1,211 @@
-+--- ./lib/rpmchroot.c.orig	2019-06-26 14:17:31.411985696 +0000
-++++ ./lib/rpmchroot.c	2019-10-02 11:35:58.788024507 +0000
++--- lib/rpmchroot.c.orig	2019-06-26 14:17:31.411985696 +0000
+++++ lib/rpmchroot.c	2019-10-02 11:35:58.788024507 +0000
 +@@ -126,6 +126,7 @@ int rpmChrootIn(void)
 + 
 + 	if (chdir("/") == 0 && chroot(rootState.rootDir) == 0) {
@@ -19,8 +19,8 @@
 + 	} else {
 + 	    rpmlog(RPMLOG_ERR, _("Unable to restore root directory: %m\n"));
 + 	    rc = -1;
-+--- ./lib/rpmug.c.orig	2019-06-26 14:17:31.418985685 +0000
-++++ ./lib/rpmug.c	2019-10-02 11:35:58.788024507 +0000
++--- lib/rpmug.c.orig	2019-06-26 14:17:31.418985685 +0000
+++++ lib/rpmug.c	2019-10-02 11:35:58.788024507 +0000
 +@@ -11,6 +11,47 @@
 + #include "lib/rpmug.h"
 + #include "debug.h"
@@ -203,8 +203,8 @@
 ++    inchroot = in;
 ++#endif
 ++}
-+--- ./lib/rpmug.h.orig	2019-06-26 14:17:31.418985685 +0000
-++++ ./lib/rpmug.h	2019-10-02 11:35:58.788024507 +0000
++--- lib/rpmug.h.orig	2019-06-26 14:17:31.418985685 +0000
+++++ lib/rpmug.h	2019-10-02 11:35:58.788024507 +0000
 +@@ -15,4 +15,6 @@ int rpmugInit(void);
 + 
 + void rpmugFree(void);

@@ -1,5 +1,5 @@
---- ./macros.in.orig	2021-09-23 19:54:19.515028659 +0000
-+++ ./macros.in	2021-09-23 19:54:25.495016311 +0000
+--- macros.in.orig	2021-09-23 19:54:19.515028659 +0000
++++ macros.in	2021-09-23 19:54:25.495016311 +0000
 @@ -1150,6 +1150,7 @@ package or when debugging this package.\
  # %files -f %{name}.lang
  #
@@ -8,8 +8,8 @@
  
  # Commands + opts to use for retrieving remote files
  # Proxy opts can be set through --httpproxy/--httpport popt aliases,
---- ./scripts/find-lang.sh.orig	2021-09-23 19:54:19.507028675 +0000
-+++ ./scripts/find-lang.sh	2021-09-23 19:54:25.495016311 +0000
+--- scripts/find-lang.sh.orig	2021-09-23 19:54:19.507028675 +0000
++++ scripts/find-lang.sh	2021-09-23 19:54:25.495016311 +0000
 @@ -75,6 +75,8 @@ MO=
  MO_NAME=${NAMES[0]}.lang
  ALL_NAME=#

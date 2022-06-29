@@ -1,5 +1,5 @@
---- ./scripts/find-lang.sh.orig	2021-09-23 19:57:49.046595975 +0000
-+++ ./scripts/find-lang.sh	2021-09-23 19:59:36.182374732 +0000
+--- scripts/find-lang.sh.orig	2021-09-23 19:57:49.046595975 +0000
++++ scripts/find-lang.sh	2021-09-23 19:59:36.182374732 +0000
 @@ -305,7 +305,9 @@ s:%lang(C) ::
  
  find "$TOP_DIR" -type f -o -type l|sed '

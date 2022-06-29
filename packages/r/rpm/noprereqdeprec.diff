@@ -1,5 +1,5 @@
---- ./build/parsePreamble.c.orig	2019-10-02 11:38:15.807736662 +0000
-+++ ./build/parsePreamble.c	2019-10-02 11:39:12.495617575 +0000
+--- build/parsePreamble.c.orig	2019-10-02 11:38:15.807736662 +0000
++++ build/parsePreamble.c	2019-10-02 11:39:12.495617575 +0000
 @@ -1032,7 +1032,7 @@ static struct PreambleRec_s const preamb
      {RPMTAG_SUGGESTNAME,	0, 0, 0, LEN_AND_STR("suggests")},
      {RPMTAG_SUPPLEMENTNAME,	0, 0, 0, LEN_AND_STR("supplements")},

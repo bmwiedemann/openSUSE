@@ -12,8 +12,8 @@ Fixes: a6fe37c39b39acbcbd014dd1e6d5653ff84254a1
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 
---- ./fileattrs/ocaml.attr.orig	2021-06-21 12:00:44.587611741 +0000
-+++ ./fileattrs/ocaml.attr	2021-12-22 13:54:20.384959876 +0000
+--- fileattrs/ocaml.attr.orig	2021-06-21 12:00:44.587611741 +0000
++++ fileattrs/ocaml.attr	2021-12-22 13:54:20.384959876 +0000
 @@ -1,5 +1,5 @@
  %__ocaml_provides	%{_rpmconfigdir}/ocamldeps.sh --provides
  %__ocaml_requires	%{_rpmconfigdir}/ocamldeps.sh --requires
@@ -22,8 +22,8 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 +%__ocaml_magic		^(Objective caml|OCaml) .*$
 +%__ocaml_path		.(cma|cmi|cmo|cmx|cmxa)$
  %__ocaml_flags		magic_and_path
---- ./scripts/ocamldeps.sh.orig	2021-06-21 12:00:44.650612737 +0000
-+++ ./scripts/ocamldeps.sh	2021-12-22 13:54:20.384959876 +0000
+--- scripts/ocamldeps.sh.orig	2021-06-21 12:00:44.650612737 +0000
++++ scripts/ocamldeps.sh	2021-12-22 13:54:20.384959876 +0000
 @@ -32,6 +32,10 @@
  #   Implementations imported:
  #     HASH NAME_FROM_OTHER_MODULE

@@ -1,5 +1,5 @@
---- ./docs/man/rpm.8.orig	2021-09-23 19:20:46.991203867 +0000
-+++ ./docs/man/rpm.8	2021-09-23 19:22:45.918961340 +0000
+--- docs/man/rpm.8.orig	2021-09-23 19:20:46.991203867 +0000
++++ docs/man/rpm.8	2021-09-23 19:22:45.918961340 +0000
 @@ -601,6 +601,11 @@ Query all packages that provide the \f[I
  \f[B]--whatrequires \f[R]\f[I]CAPABILITY\f[R]
  Query all packages that require \f[I]CAPABILITY\f[R] for proper

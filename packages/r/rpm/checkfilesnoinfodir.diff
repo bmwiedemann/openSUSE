@@ -1,8 +1,8 @@
 Exclude /usr/share/info/dir from check-files. Probably only
 interesting for SUSE.
 
---- ./scripts/check-files.orig	2020-09-30 12:36:56.398762048 +0000
-+++ ./scripts/check-files	2020-09-30 12:41:15.294176572 +0000
+--- scripts/check-files.orig	2020-09-30 12:36:56.398762048 +0000
++++ scripts/check-files	2020-09-30 12:41:15.294176572 +0000
 @@ -28,5 +28,5 @@ trap "rm -f \"${FILES_DISK}\"" 0 2 3 5 1
  # Find non-directory files in the build root and compare to the manifest.
  # TODO: regex chars in last sed(1) expression should be escaped

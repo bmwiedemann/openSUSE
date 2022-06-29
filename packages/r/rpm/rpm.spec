@@ -88,7 +88,6 @@ Patch34:        rpmrc.diff
 Patch36:        rpmqpack.diff
 Patch38:        build.diff
 Patch43:        rpm-shorten-changelog.diff
-Patch45:        whatrequires-doc.diff
 Patch46:        remove-brp-strips.diff
 Patch51:        specfilemacro.diff
 Patch60:        safeugid.diff
@@ -118,6 +117,8 @@ Patch133:       zstdpool.diff
 Patch134:       zstdthreaded.diff
 Patch135:       ocaml-cmxs.diff
 Patch136:       0001-fix-minimize_writes.patch
+# touches a generated file
+Patch180:       whatrequires-doc.diff
 Patch200:       finddebuginfo.diff
 Patch201:       finddebuginfo-absolute-links.diff
 Patch202:       debugsubpkg.diff
@@ -237,7 +238,7 @@ rm -rf sqlite
 %patch -P  5      -P 12 -P 13             -P 16       -P 18
 %patch                         -P 24 -P 25 -P 26             -P 29
 %patch -P 30       -P 32 -P 33 -P 34       -P 36       -P 38
-%patch                   -P 43       -P 45 -P 46
+%patch                   -P 43             -P 46
 %patch       -P 51
 %patch -P 60 -P 61                         -P 66 -P 67       -P 69
 %patch -P 70 -P 71       -P 73                   -P 77 -P 78 -P 79
@@ -247,6 +248,7 @@ rm -rf sqlite
 %patch                                                  -P 117
 %patch -P 122 -P 123               -P 131 -P 132 -P 133 -P 134
 %patch -P 135 -P 136
+%patch -P 180
 
 # debugedit patches
 pushd debugedit-5.0

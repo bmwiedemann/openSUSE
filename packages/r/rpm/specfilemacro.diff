@@ -1,5 +1,5 @@
---- ./build/parseSpec.c.orig	2013-06-10 15:55:10.000000000 +0000
-+++ ./build/parseSpec.c	2013-07-12 12:04:11.000000000 +0000
+--- build/parseSpec.c.orig	2013-06-10 15:55:10.000000000 +0000
++++ build/parseSpec.c	2013-07-12 12:04:11.000000000 +0000
 @@ -561,6 +561,7 @@ static rpmSpec parseSpec(const char *spe
      spec = newSpec();
  

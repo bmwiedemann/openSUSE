@@ -1,5 +1,5 @@
---- ./rpmio/macro.c.orig
-+++ ./rpmio/macro.c
+--- rpmio/macro.c.orig
++++ rpmio/macro.c
 @@ -1141,7 +1141,10 @@ static size_t doExpand(MacroBuf mb, rpmMacroEntry me, ARGV_t argv)
  
  static size_t doVerbose(MacroBuf mb, rpmMacroEntry me, ARGV_t argv)

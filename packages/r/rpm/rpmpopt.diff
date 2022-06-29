@@ -1,5 +1,5 @@
---- ./rpmpopt.in.orig	2017-12-01 14:58:11.404041985 +0000
-+++ ./rpmpopt.in	2017-12-01 14:59:06.275882759 +0000
+--- rpmpopt.in.orig	2017-12-01 14:58:11.404041985 +0000
++++ rpmpopt.in	2017-12-01 14:59:06.275882759 +0000
 @@ -101,7 +101,8 @@ Relocations : %|PREFIXES?{[%{PREFIXES} ]
  %|URL?{URL         : %{URL}\n}|\
  %|BUGURL?{Bug URL     : %{BUGURL}\n}|\

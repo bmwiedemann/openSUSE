@@ -12,8 +12,8 @@ Signed-off-by: Denys Vlasenko <dvlasenk@redhat.com>
  sign/rpmgensig.c | 1 -
  3 files changed, 5 deletions(-)
 
---- ./build/rpmfc.c
-+++ ./build/rpmfc.c
+--- build/rpmfc.c
++++ build/rpmfc.c
 @@ -319,7 +319,6 @@ static int getOutputFrom(ARGV_t argv,
  	if (buildRoot)
  	    setenv("RPM_BUILD_ROOT", buildRoot, 1);
@@ -22,8 +22,8 @@ Signed-off-by: Denys Vlasenko <dvlasenk@redhat.com>
  	execvp(argv[0], (char *const *)argv);
  	rpmlog(RPMLOG_ERR, _("Couldn't exec %s: %s\n"),
  		argv[0], strerror(errno));
---- ./lib/rpmscript.c
-+++ ./lib/rpmscript.c
+--- lib/rpmscript.c
++++ lib/rpmscript.c
 @@ -245,9 +245,6 @@ static void doScriptExec(ARGV_const_t argv, ARGV_const_t prefixes,
      }
  	
@@ -34,8 +34,8 @@ Signed-off-by: Denys Vlasenko <dvlasenk@redhat.com>
  	xx = execv(argv[0], argv);
  	if (xx) {
  	    rpmlog(RPMLOG_ERR,
---- ./sign/rpmgensig.c
-+++ ./sign/rpmgensig.c
+--- sign/rpmgensig.c
++++ sign/rpmgensig.c
 @@ -216,7 +216,6 @@ static int runGPG(sigTarget sigt, const char *sigfile)
  	dup2(pipefd[0], STDIN_FILENO);
  	close(pipefd[1]);

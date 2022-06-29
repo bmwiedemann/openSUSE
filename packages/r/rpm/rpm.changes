@@ -53,6 +53,11 @@ Fri Jan 28 14:19:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
   by ~220MB (bsc#1195390)
 
 -------------------------------------------------------------------
+Thu Jan 27 13:26:07 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
+
+- make patches git quiltimport friendlier
+
+-------------------------------------------------------------------
 Wed Dec 22 14:57:27 CET 2021 - olaf@aepfle.de
 
 - Update OCaml requires/provides generators to ignore cmxs

@@ -1,5 +1,5 @@
---- ./build/pack.c
-+++ ./build/pack.c
+--- build/pack.c.orig
++++ build/pack.c
 @@ -683,6 +683,71 @@
      return rc;
  }
@@ -84,8 +84,8 @@
  
      headerPutString(pkg->header, RPMTAG_RPMVERSION, VERSION);
      headerPutString(pkg->header, RPMTAG_BUILDHOST, spec->buildHost);
---- ./build/parseChangelog.c
-+++ ./build/parseChangelog.c
+--- build/parseChangelog.c.orig
++++ build/parseChangelog.c
 @@ -267,6 +267,11 @@
  	    goto exit;
  	}
