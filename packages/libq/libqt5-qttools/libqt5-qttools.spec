@@ -18,8 +18,8 @@
 
 %define qt5_snapshot 1
 %define base_name libqt5
-%define real_version 5.15.2
-%define so_version 5.15.2
+%define real_version 5.15.5
+%define so_version 5.15.5
 %define tar_version qttools-everywhere-src-%{version}
 %if 0%{?suse_version} >= 1330
 %bcond_without qdoc
@@ -28,7 +28,7 @@
 %bcond_with qdoc
 %endif
 Name:           libqt5-qttools
-Version:        5.15.2+kde17
+Version:        5.15.5+kde1
 Release:        0
 Summary:        Qt 5 QtTools Module
 # Legal:
@@ -47,8 +47,6 @@ Source12:       linguist5.desktop
 Source13:       assistant5.desktop
 Source14:       qdbusviewer5.desktop
 Source99:       libqt5-qttools-rpmlintrc
-# PATCH-FIX-OPENSUSE
-Patch1:         0001-Revert-Bump-version.patch
 %if %{with qdoc}
 BuildRequires:  clang-devel >= 3.9.0
 %endif

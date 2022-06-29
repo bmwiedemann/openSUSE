@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jun 27 13:10:31 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.5+kde1, rebased upstream:
+  * Ensure FileAttributeSetTable is filled ordered so we get the same qch file each time
+  * Fix regression in lconvert handling empty translations
+  * Qt Designer: Fix alignment when adding new QTableWidget columns
+  * Qt Designer: Fix alignment of horizontal QTableWidget headers
+  * Qt Designer: Fix saving of item view header visibility on page based containers
+  * Qt Designer: Slow down wheel scrolling of the widget box
+  * Revert "Update commercial license headers"
+  * QDoc: Fix possible crash in WebXMLGenerator
+  * Fix check for malformed input when decoding translations
+  * Fix redeclared variable name
+  * qdoc: Allow any type of page as qhp indexTitle
+  * qdoc: Don't clear the warning count in single-exec mode
+  * Bump copyright year to 2021
+  * qdoc: Fix generation of TOC for basic QML/JS types
+  * Update commercial license headers
+  * qdoc: Fix addendums for QML signals that contain '.' in the name
+  * qdoc: Ignore empty example meta tags
+  * qdoc: Fix breadcrumb generation for normal page nodes
+- Drop 0001-Revert-Bump-version.patch, it's versioned correctly now
+
+-------------------------------------------------------------------
 Tue Jun 22 19:35:06 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Switch to KDE's maintenance branch
