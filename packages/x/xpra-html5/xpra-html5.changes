@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Jun 21 17:48:10 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 5.0+git20220610.56f906c:
+  * brotli return value needs casting
+  * remove leftover bencode support
+  * more useful error: log protocol flags and packet data
+  * show builds from 'git master' as 'beta' builds
+  * Remove bencode lib
+  * fix sound-data buffer check
+  * these packet encoder workarounds are no longer necessary
+  * fix beep
+  * require 'rencodeplus' and remove bencode + plain rencode
+  * remove zlib
+  * Allow up to 3 repeats of strings
+  * De-index-ify for loops without using `[index, element]` syntax
+  * Format .json files in pre-commit hook
+  * Silence warnings from format script
+  * Extract all packet types into constants
+  * Organize client string constants
+  * Simplify prototype calls with `Object.hasOwn`
+  * Rename image variable for clarity
+  * Simplify trivial (& error-prone) indexing operations
+  * Rename keystring variable for clarity
+  * Downgrade remaining GitHub lint errors to warnings, for future fixing
+  * Simplify confusing function declaration
+  * Flatten nested template string
+  * Fix auto-fixable GitHub lint errors
+  * Add GitHub lint plugin to find & fix code smells
+  * Downgrade remaining unicorn lint errors to warnings, for future fixing
+  * Rename all JS files to PascalCase for consistency
+  * Simplify constructed booleans
+  * Prefer `.querySelector()` for consistency
+  * Remove "use strict" directives to embrace JS modules
+  * Expand abbreviations in variable names
+  * Fix auto-fixable unicorn lint errors
+  * Turn off a rule with broken auto-fix
+  * Turn off a rule that caused problems in the past
+  * Add unicorn lint plugin to find & fix code smells
+  * Simplify duplicate functions to soften redundancy
+  * Simplify boolean expressions
+  * De-duplicate debug/error/log utility methods
+  * Merge trivially-nested if statements
+  * Consolidate url construction into a Window class method
+  * Deduplicate string literals with new constants
+  * Add SonarJS lint plugin to find code smells
+  * Upgrade turned-off (but useful) lint rules to warnings
+  * Lint-ignore sw.js
+  * Undo sw.js formatting from #178
+  * #189 guard against client being unset, somehow
+
+-------------------------------------------------------------------
 Wed Jun 01 13:46:29 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version 5.0+git20220601.d52ebb5:
