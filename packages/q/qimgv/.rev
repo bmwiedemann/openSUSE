@@ -219,4 +219,12 @@
 - Cleaning up 'Source0' definition.</comment>
     <requestid>978019</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>24328571186fe753f8c084973993a9ac</srcmd5>
+    <version>1.0.3a+git20220621.b219278c</version>
+    <time>1656511289</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>985618</requestid>
+  </revision>
 </revisionlist>

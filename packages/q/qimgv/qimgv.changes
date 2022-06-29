@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Jun 21 14:08:47 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.0.3a+git20220621.b219278c:
+  * [panel] upd pin icon
+  * pinnable panel #400 #279 #66
+  * [contextmenu] hook up menu config button #406
+  * update 'document-view' icon
+  * [contextmenu] more tweaks
+  * [contextmenu] adjust layout & icons
+
+-------------------------------------------------------------------
+Fri Jun 10 23:51:27 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.0.3a+git20220610.a5bcc36a:
+  * [windows] setWallpaper
+  * fix viewport being 1px off in some cases #417
+  * fix bg #417
+  * checkerboard pattern bg option #417
+
+-------------------------------------------------------------------
+Thu Jun 02 14:32:28 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.0.3a+git20220602.f034734d:
+  * .
+  * fix wheelEvent
+  * nicer list scrolling; turn off smoothscroll by default
+  * fix #414
+
+-------------------------------------------------------------------
 Wed May 18 23:25:22 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Removing patch files which aren't needed since items were fixed upstream:
