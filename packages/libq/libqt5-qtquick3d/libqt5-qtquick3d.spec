@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtquick3d
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,11 +26,11 @@
 
 %define qt5_snapshot 1
 %define base_name libqt5
-%define real_version 5.15.2
-%define so_version 5.15.2
+%define real_version 5.15.5
+%define so_version 5.15.5
 %define tar_version qtquick3d-everywhere-src-%{version}
 Name:           libqt5-qtquick3d
-Version:        5.15.2+kde19
+Version:        5.15.5+kde1
 Release:        0
 Summary:        Qt 5 Quick 3D Module
 License:        GPL-3.0-or-later
@@ -39,8 +39,6 @@ URL:            https://www.qt.io
 Source:         %{tar_version}.tar.xz
 # PATCH-FIX-UPSTREAM
 Patch0:         qt5-quick3d-assimp-5.1.patch
-# PATCH-FIX-OPENSUSE
-Patch1:         0001-Revert-Bump-version.patch
 BuildRequires:  fdupes
 %if %{with system_assimp}
 BuildRequires:  pkgconfig(assimp) >= 5.0.0

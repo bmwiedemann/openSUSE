@@ -57,4 +57,12 @@
     <comment></comment>
     <requestid>943310</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>eec8b1d3c7fea412634a02dc630f95dc</srcmd5>
+    <version>5.15.5+kde1</version>
+    <time>1656511266</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.5 with patch collection + qtscript 5.15.10 (forwarded request 985459 from favogt)</comment>
+    <requestid>985483</requestid>
+  </revision>
 </revisionlist>
