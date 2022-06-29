@@ -29,15 +29,15 @@
 %bcond_without harfbuzz
 
 Name:           libqt5-qtbase
-Version:        5.15.2+kde294
+Version:        5.15.5+kde165
 Release:        0
 Summary:        C++ Program Library, Core Components
 License:        LGPL-3.0-only or GPL-3.0-with-Qt-Company-Qt-exception-1.1
 Group:          System/Libraries
 Url:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.15.2
-%define so_version 5.15.2
+%define real_version 5.15.5
+%define so_version 5.15.5
 %define tar_version qtbase-everywhere-src-%{version}
 Source:         %{tar_version}.tar.xz
 # to get mtime of file:
@@ -50,7 +50,6 @@ Source99:       libqt5-qtbase-rpmlintrc
 Patch3:         0001-Revert-QMenu-hide-when-a-QWidgetAction-fires-the-tri.patch
 # Proposed: https://bugreports.qt.io/browse/QTBUG-88491
 Patch4:         0001-Avoid-SIGABRT-on-platform-plugin-initialization-fail.patch
-Patch5:         0001-Revert-Bump-version.patch
 # PATCH-FIX-OPENSUSE disable-rc4-ciphers-bnc865241.diff bnc#865241-- Exclude rc4 ciphers from being used by default
 Patch6:         disable-rc4-ciphers-bnc865241.diff
 Patch8:         tell-the-truth-about-private-api.patch
@@ -61,15 +60,10 @@ Patch12:        0001-Add-remote-print-queue-support.patch
 # PATCH-FIX-OPENSUSE
 Patch21:        0001-Don-t-white-list-recent-Mesa-versions-for-multithrea.patch
 Patch24:        fix-fixqt4headers.patch
-# PATCH-FIX-OPENSUSE -- Mitigate -D_FORTIFY_SOURCE=3 issue starting with GCC 12 (https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105078)
-Patch25:        mitigate-FORTIFY_SOURCE-3.patch
 # patches 1000-2000 and above from upstream 5.15 branch #
-Patch1000:      0001-H2-remove-a-rather-useless-limit-on-the-number-of-st.patch
 # patches 2000-3000 and above from upstream qt6/dev branch #
 # Not accepted yet, https://codereview.qt-project.org/c/qt/qtbase/+/255384
 Patch2001:      0002-Synthesize-Enter-LeaveEvent-for-accepted-QTabletEven.patch
-# Not accepted yet, https://codereview.qt-project.org/c/qt/qtbase/+/393113
-Patch2002:      0001-QProcess-Unix-ensure-we-don-t-accidentally-execute-s.patch
 BuildRequires:  cups-devel
 BuildRequires:  double-conversion-devel
 BuildRequires:  gcc-c++

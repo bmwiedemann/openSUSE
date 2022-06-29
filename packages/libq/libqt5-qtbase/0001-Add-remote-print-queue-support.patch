@@ -1,4 +1,4 @@
-From d3faa880d19d9bf5b411dc81c0d5d881a323997d Mon Sep 17 00:00:00 2001
+From 81f14d2b93f2691a5887207b137fdffb7238d87b Mon Sep 17 00:00:00 2001
 From: Antonio Larrosa <larrosa@kde.org>
 Date: Tue, 6 Jun 2017 16:34:32 +0200
 Subject: [PATCH] Add remote print queue support
@@ -9,19 +9,19 @@ is opened in order to search for print queues . Because of this delay,
 the remote print queue discovery is disabled by default and can be enabled
 by setting the QT_ENABLE_PRINTER_DISCOVERY environment variable to 1.
 
-The commit to Qt (which enabled the discovery by default) has 
+The commit to Qt (which enabled the discovery by default) has
 a Change-Id: Ib70715d331e8f380a3c9039011bb8521986652aa
 ---
- src/plugins/printsupport/cups/qcupsprintengine.cpp | 35 +++++++-
- .../printsupport/cups/qcupsprintersupport.cpp      | 95 ++++++++++++++++++++--
- .../printsupport/cups/qcupsprintersupport_p.h      |  8 ++
- src/plugins/printsupport/cups/qppdprintdevice.cpp  | 33 +++++++-
- 4 files changed, 160 insertions(+), 11 deletions(-)
+ .../printsupport/cups/qcupsprintengine.cpp    | 35 ++++++-
+ .../printsupport/cups/qcupsprintersupport.cpp | 95 +++++++++++++++++--
+ .../printsupport/cups/qcupsprintersupport_p.h |  8 ++
+ .../printsupport/cups/qppdprintdevice.cpp     | 30 +++++-
+ 4 files changed, 157 insertions(+), 11 deletions(-)
 
-Index: qtbase-everywhere-src-5.14.0-alpha/src/plugins/printsupport/cups/qcupsprintengine.cpp
-===================================================================
---- qtbase-everywhere-src-5.14.0-alpha.orig/src/plugins/printsupport/cups/qcupsprintengine.cpp
-+++ qtbase-everywhere-src-5.14.0-alpha/src/plugins/printsupport/cups/qcupsprintengine.cpp
+diff --git a/src/plugins/printsupport/cups/qcupsprintengine.cpp b/src/plugins/printsupport/cups/qcupsprintengine.cpp
+index 1f9cbc4565..522cfc81b6 100644
+--- a/src/plugins/printsupport/cups/qcupsprintengine.cpp
++++ b/src/plugins/printsupport/cups/qcupsprintengine.cpp
 @@ -48,6 +48,7 @@
  #include <qbuffer.h>
  #include "private/qcups_p.h" // Only needed for PPK_CupsOptions
@@ -30,7 +30,7 @@ Index: qtbase-everywhere-src-5.14.0-alpha/src/plugins/printsupport/cups/qcupspri
  
  #include <cups/cups.h>
  
-@@ -252,8 +253,40 @@ void QCupsPrintEnginePrivate::closePrint
+@@ -254,8 +255,40 @@ void QCupsPrintEnginePrivate::closePrintDevice()
          const auto parts = printerName.splitRef(QLatin1Char('/'));
          const auto printerOriginalName = parts.at(0);
          cups_option_t* optPtr = cupsOptStruct.size() ? &cupsOptStruct.first() : 0;
@@ -72,10 +72,10 @@ Index: qtbase-everywhere-src-5.14.0-alpha/src/plugins/printsupport/cups/qcupspri
  
          QFile::remove(tempFile);
      }
-Index: qtbase-everywhere-src-5.14.0-alpha/src/plugins/printsupport/cups/qcupsprintersupport.cpp
-===================================================================
---- qtbase-everywhere-src-5.14.0-alpha.orig/src/plugins/printsupport/cups/qcupsprintersupport.cpp
-+++ qtbase-everywhere-src-5.14.0-alpha/src/plugins/printsupport/cups/qcupsprintersupport.cpp
+diff --git a/src/plugins/printsupport/cups/qcupsprintersupport.cpp b/src/plugins/printsupport/cups/qcupsprintersupport.cpp
+index 1131d43f64..0806ba3abd 100644
+--- a/src/plugins/printsupport/cups/qcupsprintersupport.cpp
++++ b/src/plugins/printsupport/cups/qcupsprintersupport.cpp
 @@ -61,6 +61,35 @@
  # include <cups/language.h>
  #endif
@@ -112,7 +112,7 @@ Index: qtbase-everywhere-src-5.14.0-alpha/src/plugins/printsupport/cups/qcupspri
  QT_BEGIN_NAMESPACE
  
  #if QT_CONFIG(dialogbuttonbox)
-@@ -159,17 +188,35 @@ QPrintDevice QCupsPrinterSupport::create
+@@ -159,11 +188,26 @@ QPrintDevice QCupsPrinterSupport::createPrintDevice(const QString &id)
  
  QStringList QCupsPrinterSupport::availablePrintDeviceIds() const
  {
@@ -141,9 +141,11 @@ Index: qtbase-everywhere-src-5.14.0-alpha/src/plugins/printsupport/cups/qcupspri
 +    list.reserve(qt_cups_num_printers);
 +    for (int i = 0; i < qt_cups_num_printers; ++i) {
          QString printerId = QString::fromLocal8Bit(dests[i].name);
-         if (dests[i].instance)
+         if (dests[i].instance) {
              printerId += QLatin1Char('/') + QString::fromLocal8Bit(dests[i].instance);
-         list.append(printerId);
+@@ -172,7 +216,10 @@ QStringList QCupsPrinterSupport::availablePrintDeviceIds() const
+             list.append(printerId);
+         }
      }
 -    cupsFreeDests(count, dests);
 +    if (!enablePrinterDiscovery) {
@@ -153,7 +155,7 @@ Index: qtbase-everywhere-src-5.14.0-alpha/src/plugins/printsupport/cups/qcupspri
      return list;
  }
  
-@@ -182,8 +229,18 @@ QString QCupsPrinterSupport::staticDefau
+@@ -185,8 +232,18 @@ QString QCupsPrinterSupport::staticDefaultPrintDeviceId()
  {
      QString printerId;
      cups_dest_t *dests;
@@ -174,7 +176,7 @@ Index: qtbase-everywhere-src-5.14.0-alpha/src/plugins/printsupport/cups/qcupspri
          if (dests[i].is_default) {
              printerId = QString::fromLocal8Bit(dests[i].name);
              if (dests[i].instance) {
-@@ -192,8 +249,30 @@ QString QCupsPrinterSupport::staticDefau
+@@ -195,8 +252,30 @@ QString QCupsPrinterSupport::staticDefaultPrintDeviceId()
              }
          }
      }
@@ -206,10 +208,10 @@ Index: qtbase-everywhere-src-5.14.0-alpha/src/plugins/printsupport/cups/qcupspri
 +
 +
  QT_END_NAMESPACE
-Index: qtbase-everywhere-src-5.14.0-alpha/src/plugins/printsupport/cups/qcupsprintersupport_p.h
-===================================================================
---- qtbase-everywhere-src-5.14.0-alpha.orig/src/plugins/printsupport/cups/qcupsprintersupport_p.h
-+++ qtbase-everywhere-src-5.14.0-alpha/src/plugins/printsupport/cups/qcupsprintersupport_p.h
+diff --git a/src/plugins/printsupport/cups/qcupsprintersupport_p.h b/src/plugins/printsupport/cups/qcupsprintersupport_p.h
+index c2b4895c7f..9531a0c368 100644
+--- a/src/plugins/printsupport/cups/qcupsprintersupport_p.h
++++ b/src/plugins/printsupport/cups/qcupsprintersupport_p.h
 @@ -56,6 +56,8 @@
  
  #include <QtCore/qstringlist.h>
@@ -234,11 +236,11 @@ Index: qtbase-everywhere-src-5.14.0-alpha/src/plugins/printsupport/cups/qcupspri
  };
  
  QT_END_NAMESPACE
-Index: qtbase-everywhere-src-5.14.0-alpha/src/plugins/printsupport/cups/qppdprintdevice.cpp
-===================================================================
---- qtbase-everywhere-src-5.14.0-alpha.orig/src/plugins/printsupport/cups/qppdprintdevice.cpp
-+++ qtbase-everywhere-src-5.14.0-alpha/src/plugins/printsupport/cups/qppdprintdevice.cpp
-@@ -65,10 +65,36 @@ QPpdPrintDevice::QPpdPrintDevice(const Q
+diff --git a/src/plugins/printsupport/cups/qppdprintdevice.cpp b/src/plugins/printsupport/cups/qppdprintdevice.cpp
+index 8bfa239dbe..b38a2081bc 100644
+--- a/src/plugins/printsupport/cups/qppdprintdevice.cpp
++++ b/src/plugins/printsupport/cups/qppdprintdevice.cpp
+@@ -65,10 +65,36 @@ QPpdPrintDevice::QPpdPrintDevice(const QString &id)
          if (parts.size() > 1)
              m_cupsInstance = parts.at(1).toUtf8();
  
@@ -277,3 +279,6 @@ Index: qtbase-everywhere-src-5.14.0-alpha/src/plugins/printsupport/cups/qppdprin
              if (ppdFile) {
                  m_ppd = ppdOpenFile(ppdFile);
                  unlink(ppdFile);
+-- 
+2.36.1
+
