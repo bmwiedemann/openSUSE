@@ -1,7 +1,7 @@
 #
 # spec file for package pdfmixtool
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pdfmixtool
-Version:        1.0.2
+Version:        1.1
 Release:        0
 Summary:        Split, Merge, Rotate and Mix PDF Files
 License:        GPL-3.0-only
@@ -31,7 +31,10 @@ BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  pkgconfig(Magick++)
 BuildRequires:  pkgconfig(libqpdf)
 
 %description
@@ -46,7 +49,7 @@ An application to split, merge, rotate, mix and create multipage PDF files.
 
 %install
 %cmake_install
-%suse_update_desktop_file -r -G "PDF Mix Tool" eu.scarpetta.PDFMixTool Qt Office Publishing Graphics Viewer
+%suse_update_desktop_file -r -G "PDF Tools" eu.scarpetta.PDFMixTool Qt Office Publishing Graphics Viewer
 
 %files
 %license LICENSE

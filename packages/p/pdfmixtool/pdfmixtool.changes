@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 28 19:09:16 UTC 2022 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Update to version 1.1:
+  * Add "Extract images" operation
+  * Improve GUI appearance and HiDPI support
+  * Add options to generate two booklets in one sheet
+- Added new build requirements: cmake(Qt5Svg), cmake(Qt5Xml) and
+  pkgconfig(Magick++).
+
+-------------------------------------------------------------------
 Thu Jun 24 21:00:15 UTC 2021 - Asterios Dramis <asterios.dramis@gmail.com>
 
 - Removed fix for rpmlint warning "files-duplicate" and fdupes
