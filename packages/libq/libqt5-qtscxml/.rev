@@ -157,4 +157,12 @@
   * 0001-Revert-Bump-version.patch</comment>
     <requestid>902531</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a1a3cededbf250abcee835c7b2c332e0</srcmd5>
+    <version>5.15.5+kde0</version>
+    <time>1656511273</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.5 with patch collection + qtscript 5.15.10 (forwarded request 985459 from favogt)</comment>
+    <requestid>985489</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 27 13:10:18 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.5+kde0, rebased upstream:
+  * Fix calling of the overloaded Scxml statemachine methods
+  * Revert "Update commercial license headers"
+  * Mark dynamic state machines' metaobjects as fully dynamic
+  * Update commercial license headers
+- Drop 0001-Revert-Bump-version.patch, it's versioned correctly now
+
+-------------------------------------------------------------------
 Sat Jun 26 13:36:04 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Fix requirement in baselibs.conf
