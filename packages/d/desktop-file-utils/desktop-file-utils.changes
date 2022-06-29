@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 24 07:32:30 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patches to avoid bogus errors in post-build checks:
+  * 0001-validate-support-SingleMainWindow-key-from-1.5.patch
+  * 0002-validate-Support-version-1.5.patch
+
+-------------------------------------------------------------------
 Fri Mar 25 14:02:47 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - suse-update-mime-defaults: add Budgie desktop environment
