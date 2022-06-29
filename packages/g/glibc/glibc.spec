@@ -299,6 +299,10 @@ Patch1005:      nptl-spurious-eintr.patch
 Patch1006:      strncpy-power9-vsx.patch
 # PATCH-FIX-UPSTREAM nptl: Fix __libc_cleanup_pop_restore asynchronous restore (BZ #29214)
 Patch1007:      nptl-cleanup-async-restore.patch
+# PATCH-FIX-UPSTREAM debug: make __read_chk a cancellation point (BZ #29274)
+Patch1008:      read-chk-cancel.patch
+# PATCH-FIX-UPSTREAM wcrtomb: Make behavior POSIX compliant
+Patch1009:      wcrtomb-fortify.patch
 
 ###
 # Patches awaiting upstream approval
@@ -498,6 +502,10 @@ AutoReqProv:    off
 These libraries are needed to develop programs which use the standard C
 library in a cross compilation setting.
 
+%if 0%{suse_version} >= 1500
+%define make_output_sync -Oline
+%endif
+
 %prep
 %setup -n glibc-%{version} -q -a 4
 %patch6 -p1
@@ -526,6 +534,8 @@ library in a cross compilation setting.
 %patch1005 -p1
 %patch1006 -p1
 %patch1007 -p1
+%patch1008 -p1
+%patch1009 -p1
 
 %patch2000 -p1
 %patch2001 -p1
@@ -706,14 +716,14 @@ profile="--disable-profile"
     exit $rc;
   }
 
-make %{?_smp_mflags} CFLAGS="$BuildFlags $ExtraBuildFlags"
+make %{?_smp_mflags} %{?make_output_sync} CFLAGS="$BuildFlags $ExtraBuildFlags"
 cd ..
 
 #
 # Build html documentation
 #
 %if %{build_html}
-make %{?_smp_mflags} -C cc-base html
+make %{?_smp_mflags} %{?make_output_sync} -C cc-base html
 %endif
 
 %check
@@ -726,7 +736,7 @@ export SUSE_ZNOW=0
 export TIMEOUTFACTOR=16
 # The testsuite does its own malloc checking
 unset MALLOC_CHECK_
-make %{?_smp_mflags} -C cc-base -k check || {
+make %{?_smp_mflags} %{?make_output_sync} -C cc-base -k check || {
   cd cc-base
   o=$-
   set +x
@@ -751,7 +761,7 @@ make %{?_smp_mflags} -C cc-base -k check || {
 # This has to pass on all platforms!
 # Exceptions:
 # None!
-make %{?_smp_mflags} -C cc-base check-abi
+make %{?_smp_mflags} %{?make_output_sync} -C cc-base check-abi
 %endif
 
 %define rtldlib %{_lib}
@@ -869,7 +879,7 @@ cp %{tar_package_name} %{_topdir}/OTHER
 export STRIP_KEEP_SYMTAB=*.so*
 
 # Install base glibc
-make %{?_smp_mflags} install_root=%{buildroot} install -C cc-base
+make %{?_smp_mflags} %{?make_output_sync} install_root=%{buildroot} install -C cc-base
 
 # Install locales
 %if %{build_locales}
@@ -880,7 +890,7 @@ make %{?_smp_mflags} install_root=%{buildroot} install -C cc-base
 	# Still, on my system this is a speed advantage:
 	# non-parallel build for install-locales: 9:34mins
 	# parallel build with fdupes: 7:08mins
-	make %{?_smp_mflags} install_root=%{buildroot} localedata/install-locales
+	make %{?_smp_mflags} %{?make_output_sync} install_root=%{buildroot} localedata/install-locales
 	# Avoid hardlinks across subpackages
 	mv %{buildroot}/usr/lib/locale/{en_US,C}.utf8 .
 	%fdupes %{buildroot}/usr/lib/locale

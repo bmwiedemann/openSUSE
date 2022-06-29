@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 23 09:46:45 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- read-chk-cancel.patch: debug: make __read_chk a cancellation point
+  (bsc#1200682, BZ #29274)
+- wcrtomb-fortify.patch: wcrtomb: Make behavior POSIX compliant
+  (bsc#1200688)
+
+-------------------------------------------------------------------
 Thu Jun  9 12:01:07 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Set SUSE_ZNOW=0

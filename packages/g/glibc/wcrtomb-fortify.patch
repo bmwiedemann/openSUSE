@@ -1,0 +1,224 @@
+From 9bcd12d223a8990254b65e2dada54faa5d2742f3 Mon Sep 17 00:00:00 2001
+From: Siddhesh Poyarekar <siddhesh@sourceware.org>
+Date: Fri, 13 May 2022 19:10:15 +0530
+Subject: [PATCH] wcrtomb: Make behavior POSIX compliant
+
+The GNU implementation of wcrtomb assumes that there are at least
+MB_CUR_MAX bytes available in the destination buffer passed to wcrtomb
+as the first argument.  This is not compatible with the POSIX
+definition, which only requires enough space for the input wide
+character.
+
+This does not break much in practice because when users supply buffers
+smaller than MB_CUR_MAX (e.g. in ncurses), they compute and dynamically
+allocate the buffer, which results in enough spare space (thanks to
+usable_size in malloc and padding in alloca) that no actual buffer
+overflow occurs.  However when the code is built with _FORTIFY_SOURCE,
+it runs into the hard check against MB_CUR_MAX in __wcrtomb_chk and
+hence fails.  It wasn't evident until now since dynamic allocations
+would result in wcrtomb not being fortified but since _FORTIFY_SOURCE=3,
+that limitation is gone, resulting in such code failing.
+
+To fix this problem, introduce an internal buffer that is MB_LEN_MAX
+long and use that to perform the conversion and then copy the resultant
+bytes into the destination buffer.  Also move the fortification check
+into the main implementation, which checks the result after conversion
+and aborts if the resultant byte count is greater than the destination
+buffer size.
+
+One complication is that applications that assume the MB_CUR_MAX
+limitation to be gone may not be able to run safely on older glibcs if
+they use static destination buffers smaller than MB_CUR_MAX; dynamic
+allocations will always have enough spare space that no actual overruns
+will occur.  One alternative to fixing this is to bump symbol version to
+prevent them from running on older glibcs but that seems too strict a
+constraint.  Instead, since these users will only have made this
+decision on reading the manual, I have put a note in the manual warning
+them about the pitfalls of having static buffers smaller than
+MB_CUR_MAX and running them on older glibc.
+
+Benchmarking:
+
+The wcrtomb microbenchmark shows significant increases in maximum
+execution time for all locales, ranging from 10x for ar_SA.UTF-8 to
+1.5x-2x for nearly everything else.  The mean execution time however saw
+practically no impact, with some results even being quicker, indicating
+that cache locality has a much bigger role in the overhead.
+
+Given that the additional copy uses a temporary buffer inside wcrtomb,
+it's likely that a hot path will end up putting that buffer (which is
+responsible for the additional overhead) in a similar place on stack,
+giving the necessary cache locality to negate the overhead.  However in
+situations where wcrtomb ends up getting called at wildly different
+spots on the call stack (or is on different call stacks, e.g. with
+threads or different execution contexts) and is still a hotspot, the
+performance lag will be visible.
+
+Signed-off-by: Siddhesh Poyarekar <siddhesh@sourceware.org>
+---
+ debug/tst-fortify.c |  7 ++++++-
+ debug/wcrtomb_chk.c |  8 ++------
+ include/wchar.h     |  4 ++++
+ manual/charset.texi | 11 ++++++-----
+ wcsmbs/wcrtomb.c    | 31 +++++++++++++++++++++++--------
+ 5 files changed, 41 insertions(+), 20 deletions(-)
+
+diff --git a/debug/tst-fortify.c b/debug/tst-fortify.c
+index 03c9867714..8e94643bf2 100644
+--- a/debug/tst-fortify.c
++++ b/debug/tst-fortify.c
+@@ -1478,10 +1478,15 @@ do_test (void)
+ 	 character which has a multibyte representation which does not
+ 	 fit.  */
+       CHK_FAIL_START
+-      char smallbuf[2];
++      char smallbuf[1];
+       if (wcrtomb (smallbuf, L'\x100', &s) != 2)
+ 	FAIL ();
+       CHK_FAIL_END
++
++      /* Same input with a large enough buffer and we're good.  */
++      char bigenoughbuf[2];
++      if (wcrtomb (bigenoughbuf, L'\x100', &s) != 2)
++	FAIL ();
+ #endif
+ 
+       wchar_t wenough[10];
+diff --git a/debug/wcrtomb_chk.c b/debug/wcrtomb_chk.c
+index 8b6d026560..28c3ea0d2d 100644
+--- a/debug/wcrtomb_chk.c
++++ b/debug/wcrtomb_chk.c
+@@ -1,4 +1,5 @@
+ /* Copyright (C) 2005-2022 Free Software Foundation, Inc.
++   Copyright The GNU Toolchain Authors.
+    This file is part of the GNU C Library.
+ 
+    The GNU C Library is free software; you can redistribute it and/or
+@@ -25,10 +26,5 @@
+ size_t
+ __wcrtomb_chk (char *s, wchar_t wchar, mbstate_t *ps, size_t buflen)
+ {
+-  /* We do not have to implement the full wctomb semantics since we
+-     know that S cannot be NULL when we come here.  */
+-  if (buflen < MB_CUR_MAX)
+-    __chk_fail ();
+-
+-  return __wcrtomb (s, wchar, ps);
++  return __wcrtomb_internal (s, wchar, ps, buflen);
+ }
+diff --git a/include/wchar.h b/include/wchar.h
+index 4267985625..db83297bca 100644
+--- a/include/wchar.h
++++ b/include/wchar.h
+@@ -172,6 +172,10 @@ libc_hidden_proto (__mbrtowc)
+ libc_hidden_proto (__mbrlen)
+ extern size_t __wcrtomb (char *__restrict __s, wchar_t __wc,
+ 			 __mbstate_t *__restrict __ps) attribute_hidden;
++extern size_t __wcrtomb_internal (char *__restrict __s, wchar_t __wc,
++				  __mbstate_t *__restrict __ps,
++				  size_t __s_size)
++     attribute_hidden;
+ extern size_t __mbsrtowcs (wchar_t *__restrict __dst,
+ 			   const char **__restrict __src,
+ 			   size_t __len, __mbstate_t *__restrict __ps)
+diff --git a/manual/charset.texi b/manual/charset.texi
+index a9b5cb4a37..427db3bc80 100644
+--- a/manual/charset.texi
++++ b/manual/charset.texi
+@@ -883,11 +883,12 @@ the string @var{s}.  This includes all bytes representing shift
+ sequences.
+ 
+ One word about the interface of the function: there is no parameter
+-specifying the length of the array @var{s}.  Instead the function
+-assumes that there are at least @code{MB_CUR_MAX} bytes available since
+-this is the maximum length of any byte sequence representing a single
+-character.  So the caller has to make sure that there is enough space
+-available, otherwise buffer overruns can occur.
++specifying the length of the array @var{s}, so the caller has to make sure
++that there is enough space available, otherwise buffer overruns can occur.
++This version of @theglibc{} does not assume that @var{s} is at least
++@var{MB_CUR_MAX} bytes long, but programs that need to run on @glibcadj{}
++versions that have this assumption documented in the manual must comply
++with this limit.
+ 
+ @pindex wchar.h
+ @code{wcrtomb} was introduced in @w{Amendment 1} to @w{ISO C90} and is
+diff --git a/wcsmbs/wcrtomb.c b/wcsmbs/wcrtomb.c
+index e17438989f..c0cce3792f 100644
+--- a/wcsmbs/wcrtomb.c
++++ b/wcsmbs/wcrtomb.c
+@@ -1,4 +1,5 @@
+ /* Copyright (C) 1996-2022 Free Software Foundation, Inc.
++   Copyright The GNU Toolchain Authors.
+    This file is part of the GNU C Library.
+ 
+    The GNU C Library is free software; you can redistribute it and/or
+@@ -20,6 +21,7 @@
+ #include <errno.h>
+ #include <gconv.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <wchar.h>
+ #include <wcsmbsload.h>
+ 
+@@ -34,7 +36,7 @@
+ static mbstate_t state;
+ 
+ size_t
+-__wcrtomb (char *s, wchar_t wc, mbstate_t *ps)
++__wcrtomb_internal (char *s, wchar_t wc, mbstate_t *ps, size_t s_size)
+ {
+   char buf[MB_LEN_MAX];
+   struct __gconv_step_data data;
+@@ -52,14 +54,11 @@ __wcrtomb (char *s, wchar_t wc, mbstate_t *ps)
+   /* A first special case is if S is NULL.  This means put PS in the
+      initial state.  */
+   if (s == NULL)
+-    {
+-      s = buf;
+-      wc = L'\0';
+-    }
++    wc = L'\0';
+ 
+   /* Tell where we want to have the result.  */
+-  data.__outbuf = (unsigned char *) s;
+-  data.__outbufend = (unsigned char *) s + MB_CUR_MAX;
++  data.__outbuf = (unsigned char *) buf;
++  data.__outbufend = (unsigned char *) buf + sizeof buf;
+ 
+   /* Get the conversion functions.  */
+   fcts = get_gconv_fcts (_NL_CURRENT_DATA (LC_CTYPE));
+@@ -101,7 +100,17 @@ __wcrtomb (char *s, wchar_t wc, mbstate_t *ps)
+ 
+   if (status == __GCONV_OK || status == __GCONV_EMPTY_INPUT
+       || status == __GCONV_FULL_OUTPUT)
+-    result = data.__outbuf - (unsigned char *) s;
++    {
++      result = data.__outbuf - (unsigned char *) buf;
++
++      if (s != NULL)
++	{
++	  if (result > s_size)
++	    __chk_fail ();
++
++	  memcpy (s, buf, result);
++	}
++    }
+   else
+     {
+       result = (size_t) -1;
+@@ -110,5 +119,11 @@ __wcrtomb (char *s, wchar_t wc, mbstate_t *ps)
+ 
+   return result;
+ }
++
++size_t
++__wcrtomb (char *s, wchar_t wc, mbstate_t *ps)
++{
++  return __wcrtomb_internal (s, wc, ps, (size_t) -1);
++}
+ weak_alias (__wcrtomb, wcrtomb)
+ libc_hidden_weak (wcrtomb)
+-- 
+2.35.3
+

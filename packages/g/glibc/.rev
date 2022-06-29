@@ -2646,4 +2646,15 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
     <comment>- Set SUSE_ZNOW=0 (forwarded request 981499 from Andreas_Schwab)</comment>
     <requestid>981500</requestid>
   </revision>
+  <revision rev="261" vrev="5">
+    <srcmd5>63a3dcdfa8576e5eb91bd104244f0733</srcmd5>
+    <version>2.35</version>
+    <time>1656511210</time>
+    <user>dimstar_suse</user>
+    <comment>- read-chk-cancel.patch: debug: make __read_chk a cancellation point
+  (bsc#1200682, BZ #29274)
+- wcrtomb-fortify.patch: wcrtomb: Make behavior POSIX compliant
+  (bsc#1200688) (forwarded request 985277 from Andreas_Schwab)</comment>
+    <requestid>985279</requestid>
+  </revision>
 </revisionlist>

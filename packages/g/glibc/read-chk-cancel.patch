@@ -1,0 +1,129 @@
+From dc30acf20bd635d71cd4c84100e842fdf0429e48 Mon Sep 17 00:00:00 2001
+From: Andreas Schwab <schwab@suse.de>
+Date: Wed, 22 Jun 2022 13:16:30 +0200
+Subject: [PATCH] debug: make __read_chk a cancellation point (bug 29274)
+
+The __read_chk function, as the implementation behind the fortified read
+function, must be a cancellation point, thus it cannot use INLINE_SYSCALL.
+---
+ debug/Makefile              |  7 ++++++
+ debug/read_chk.c            | 10 --------
+ debug/tst-read-chk-cancel.c | 50 +++++++++++++++++++++++++++++++++++++
+ 3 files changed, 57 insertions(+), 10 deletions(-)
+ create mode 100644 debug/tst-read-chk-cancel.c
+
+diff --git a/debug/Makefile b/debug/Makefile
+index 96029f32ee..456b349c4d 100644
+--- a/debug/Makefile
++++ b/debug/Makefile
+@@ -110,6 +110,7 @@ CPPFLAGS-tst-longjmp_chk2.c += -D_FORTIFY_SOURCE=1
+ CFLAGS-tst-longjmp_chk3.c += -fexceptions -fasynchronous-unwind-tables
+ CPPFLAGS-tst-longjmp_chk3.c += -D_FORTIFY_SOURCE=1
+ CPPFLAGS-tst-realpath-chk.c += -D_FORTIFY_SOURCE=2
++CPPFLAGS-tst-read-chk-cancel.c += -D_FORTIFY_SOURCE=2
+ 
+ # _FORTIFY_SOURCE tests.
+ # Auto-generate tests for _FORTIFY_SOURCE for different levels, compilers and
+@@ -204,6 +205,10 @@ ifeq ($(have-ssp),yes)
+ tests += tst-ssp-1
+ endif
+ 
++ifeq ($(have-thread-library), yes)
++tests += tst-read-chk-cancel
++endif
++
+ ifeq (,$(CXX))
+ tests-unsupported = $(tests-cc-chk)
+ endif
+@@ -242,3 +247,5 @@ $(objpfx)xtrace: xtrace.sh
+ 	    -e 's|@BINDIR@|$(bindir)|' -e 's|@PKGVERSION@|$(PKGVERSION)|' \
+ 	    -e 's|@REPORT_BUGS_TO@|$(REPORT_BUGS_TO)|' $^ > $@.new \
+ 	&& rm -f $@ && mv $@.new $@ && chmod +x $@
++
++$(objpfx)tst-read-chk-cancel: $(shared-thread-library)
+diff --git a/debug/read_chk.c b/debug/read_chk.c
+index 0cd58db8cb..274b4f93e9 100644
+--- a/debug/read_chk.c
++++ b/debug/read_chk.c
+@@ -16,12 +16,6 @@
+    <https://www.gnu.org/licenses/>.  */
+ 
+ #include <unistd.h>
+-#include <sys/param.h>
+-#ifdef HAVE_INLINED_SYSCALLS
+-# include <errno.h>
+-# include <sysdep.h>
+-#endif
+-
+ 
+ ssize_t
+ __read_chk (int fd, void *buf, size_t nbytes, size_t buflen)
+@@ -29,9 +23,5 @@ __read_chk (int fd, void *buf, size_t nbytes, size_t buflen)
+   if (nbytes > buflen)
+     __chk_fail ();
+ 
+-#ifdef HAVE_INLINED_SYSCALLS
+-  return INLINE_SYSCALL (read, 3, fd, buf, nbytes);
+-#else
+   return __read (fd, buf, nbytes);
+-#endif
+ }
+diff --git a/debug/tst-read-chk-cancel.c b/debug/tst-read-chk-cancel.c
+new file mode 100644
+index 0000000000..7e06afb596
+--- /dev/null
++++ b/debug/tst-read-chk-cancel.c
+@@ -0,0 +1,50 @@
++/* Test that __read_chk is a cancellation point (BZ #29274)
++   Copyright (C) 2022 Free Software Foundation, Inc.
++   This file is part of the GNU C Library.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, see
++   <https://www.gnu.org/licenses/>.  */
++
++#include <stdint.h>
++#include <support/xunistd.h>
++#include <support/xthread.h>
++
++static int pipe_fds[2];
++static pthread_barrier_t barrier;
++
++static void *
++read_thread (void *n)
++{
++  xpthread_barrier_wait (&barrier);
++  char c;
++  /* This call should be forwarded to __read_chk because the buffer size
++     is known, but the read length is non-constant.  */
++  if (read (pipe_fds[0], &c, (uintptr_t) n) != 1)
++    return (void *) -1L;
++  return 0;
++}
++
++static int
++do_test (void)
++{
++  xpthread_barrier_init (&barrier, 0, 2);
++  xpipe (pipe_fds);
++  pthread_t thr = xpthread_create (0, read_thread, (void *) 1L);
++  xpthread_barrier_wait (&barrier);
++  xpthread_cancel (thr);
++  xpthread_join (thr);
++  return 0;
++}
++
++#include <support/test-driver.c>
+-- 
+2.35.3
+
