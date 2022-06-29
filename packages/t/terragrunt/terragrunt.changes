@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 28 14:22:42 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.38.2:
+  * #2045 Fixed pattern matching for error hooks  (#2101)
+
+-------------------------------------------------------------------
 Wed Jun 22 20:45:14 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.38.1:
