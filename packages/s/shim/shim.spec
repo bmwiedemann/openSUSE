@@ -36,7 +36,7 @@
 %endif
 
 Name:           shim
-Version:        15.4
+Version:        15.6
 Release:        0
 Summary:        UEFI shim loader
 License:        BSD-2-Clause
@@ -75,26 +75,10 @@ Patch3:         shim-bsc1177315-verify-eku-codesign.patch
 Patch4:         shim-bsc1177789-fix-null-pointer-deref-AuthenticodeVerify.patch
 # PATCH-FIX-SUSE remove_build_id.patch -- Remove the build ID to make the binary reproducible when building with AArch64 container
 Patch5:         remove_build_id.patch
-# PATCH-FIX-UPSTREAM shim-bsc1184454-allocate-mok-config-table-BS.patch bsc#1184454 glin@suse.com -- Allocate MOK config table as BootServicesData to avoid the error message from linux kernel
-Patch6:         shim-bsc1184454-allocate-mok-config-table-BS.patch
-# PATCH-FIX-UPSTREAM shim-bsc1185441-fix-handling-of-ignore_db-and-user_insecure_mode.patch bsc#1184454 glin@suse.com -- Handle ignore_db and user_insecure_mode correctly
-Patch7:         shim-bsc1185441-fix-handling-of-ignore_db-and-user_insecure_mode.patch
-# PATCH-FIX-UPSTREAM shim-bsc1185621-relax-max-var-sz-check.patch bsc#1185621 glin@suse.com -- Relax the maximum variable size check for u-boot
-Patch8:         shim-bsc1185621-relax-max-var-sz-check.patch
-# PATCH-FIX-UPSTREAM shim-bsc1185261-relax-import_mok_state_check.patch bsc#1185261 glin@suse.com -- Relax the check for import_mok_state() when Secure Boot is off
-Patch9:         shim-bsc1185261-relax-import_mok_state-check.patch
-# PATCH-FIX-UPSTREAM shim-bsc1185232-relax-loadoptions-length-check.patch bsc#1185232 glin@suse.com -- Relax the check for the LoadOptions length
-Patch10:        shim-bsc1185232-relax-loadoptions-length-check.patch
-# PATCH-FIX-UPSTREAM shim-fix-aa64-relsz.patch glin@suse.com -- Fix the size of rela* sections for AArch64
-Patch11:        shim-fix-aa64-relsz.patch
 # PATCH-FIX-SUSE shim-disable-export-vendor-dbx.patch bsc#1185261 glin@suse.com -- Disable exporting vendor-dbx to MokListXRT
-Patch12:        shim-disable-export-vendor-dbx.patch
-# PATCH-FIX-UPSTREAM shim-bsc1187260-fix-efi-1.10-machines.patch bsc#1187260 glin@suse.com -- Don't call QueryVariableInfo() on EFI 1.10 machines
-Patch13:        shim-bsc1187260-fix-efi-1.10-machines.patch
-# PATCH-FIX-UPSTREAM shim-bsc1185232-fix-config-table-copying.patch bsc#1185232 glin@suse.com -- Avoid buffer overflow when copying the MOK config table
-Patch14:        shim-bsc1185232-fix-config-table-copying.patch
-# PATCH-FIX-UPSTREAM shim-bsc1187696-avoid-deleting-rt-variables.patch bsc#1187696 glin@suse.com -- Avoid deleting the mirrored RT variables
-Patch15:        shim-bsc1187696-avoid-deleting-rt-variables.patch
+Patch6:         shim-disable-export-vendor-dbx.patch
+# PATCH-FIX-OPENSUSE shim-bsc1198101-opensuse-cert-prompt.patch glin@suse.com -- Show the prompt to ask whether the user trusts openSUSE certificate or not
+Patch100:	shim-bsc1198101-opensuse-cert-prompt.patch
 BuildRequires:  dos2unix
 BuildRequires:  mozilla-nss-tools
 BuildRequires:  openssl >= 0.9.8
@@ -111,6 +95,7 @@ Requires:       perl-Bootloader
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # For shim-install script
 Requires:       grub2-%{grubplatform}
+Requires:       mokutil
 ExclusiveArch:  x86_64 aarch64
 
 %description
@@ -139,15 +124,7 @@ The source code of UEFI shim loader
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
+%patch100 -p1
 
 %build
 # generate the vendor SBAT metadata
@@ -168,6 +145,8 @@ make RELEASE=0 \
      MMSTEM=MokManager FBSTEM=fallback \
      MokManager.efi.debug fallback.efi.debug \
      MokManager.efi fallback.efi
+# make sure all object files gets rebuilt
+rm -f *.o
 
 # now build variants of shim that embed different certificates
 default=''
@@ -317,6 +296,22 @@ cp -r source/* %{buildroot}/usr/src/debug/%{name}-%{version}
 %else
 /sbin/update-bootloader --reinit || true
 %endif
+
+# copy from kernel-scriptlets/cert-script
+is_efi () {
+    local msg rc=0
+# The below statement fails if mokutil isn't installed or UEFI is unsupported.
+# It doesn't fail if UEFI is available but secure boot is off.
+    msg="$(mokutil --sb-state 2>&1)" || rc=$?
+    return $rc
+}
+# run mokutil for setting sbat policy to latest mode
+SBAT_POLICY=/sys/firmware/efi/efivars/SbatPolicy-605dab50-e046-4300-abb6-3dd810dd8b23
+if is_efi; then
+        if [ ! -f "$SBAT_POLICY" ]; then
+                mokutil --set-sbat-policy latest
+        fi
+fi
 
 %if %{defined update_bootloader_posttrans}
 %posttrans

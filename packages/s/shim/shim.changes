@@ -1,4 +1,160 @@
 -------------------------------------------------------------------
+Tue Jun 28 04:03:45 UTC 2022 - Joey Lee <jlee@suse.com>
+
+- Update to 15.6 (bsc#1198458)
+    - shim-15.6.tar.bz2 is downloaded from bsc#1198458#c76
+      which is from upstream grub2.cve_2021_3695.ms keybase channel.
+    - For building 15.6~rc1 aarch64 image (d6eb9c6 Modernize aarch64), objcopy needs to
+      support efi-app-aarch64 target. So we need the following patches in bintuils:
+        - binutils-AArch64-Add-support-for-AArch64-EFI-efi-aarch64.patch
+                b69c9d41e8 AArch64: Add support for AArch64 EFI (efi-*-aarch64).
+        - binutils-Re-AArch64-Add-support-for-AArch64-EFI-efi-aarch64.patch
+                32384aa396 Re: AArch64: Add support for AArch64 EFI (efi-*-aarch64)
+        - binutils-Re-Add-support-for-AArch64-EFI-efi-aarch64.patch
+                d91c67e873 Re: Add support for AArch64 EFI (efi-*-aarch64)
+    - Patches (git log --oneline --reverse 15.5~..77144e5a4)
+        448f096 MokManager: removed Locate graphic output protocol fail error message (bsc#1193315, bsc#1198458)
+        a2da05f shim: implement SBAT verification for the shim_lock protocol
+        bda03b8 post-process-pe: Fix a missing return code check
+        af18810 CI: don't cancel testing when one fails
+        ba580f9 CI: remove EOL Fedoras from github actions
+        bfeb4b3 Remove aarch64 build tests before f35
+        38cc646 CI: Add f36 and centos9 CI build tests.
+        b5185cb post-process-pe: Fix format string warnings on 32-bit platforms
+        31094e5 tests: also look for system headers in multi-arch directories
+        4df989a mock-variables.c: fix gcc warning
+        6aac595 test-str.c: fix gcc warnings with FORTIFY_SOURCE enabled
+        2670c6a Allow MokListTrusted to be enabled by default
+        5c44aaf Add code of conduct
+        d6eb9c6 Modernize aarch64
+        9af50c1 Use ASCII as fallback if Unicode Box Drawing characters fail
+        de87985 make: don't treat cert.S specially
+        803dc5c shim: use SHIM_DEVEL_VERBOSE when built in devel mode
+        6402f1f SBAT matching: Break out of the inner sbat loop if we find the entry.
+        bb4b60e Add verify_image
+        acfd48f Abstract out image reading
+        35d7378 Load additional certs from a signed binary
+        8ce2832 post-process-pe: there is no 's' argument.
+        465663e Add some missing PE image flag definitions
+        226fee2 PE Loader: support and require NX
+        df96f48 Add MokPolicy variable and MOK_POLICY_REQUIRE_NX
+        b104fc4 post-process-pe: set EFI_IMAGE_DLLCHARACTERISTICS_NX_COMPAT
+        f81a7cc SBAT revocation management
+        abe41ab make: unbreak scan-build again for gnu-efi
+        610a1ac sbat.h: minor reformatting for legibility
+        f28833f peimage.h: make our signature macros force the type
+        5d789ca Always initialize data/datasize before calling read_image()
+        a50d364 sbat policy: make our policy change actions symbolic
+        5868789 load_certs: trust dir->Read() slightly less.
+        a78673b mok.c: fix a trivial dead assignment
+        759f061 Fix preserve_sbat_uefi_variable() logic
+        aa61fdf Give the Coverity scanner some more GCC blinders...
+        0214cd9 load_cert_file(): don't defererence NULL
+        1eca363 mok import: handle OOM case
+        75449bc sbat: Make nth_sbat_field() honor the size limit
+        c0bcd04 shim-15.6~rc1
+        77144e5 SBAT Policy latest should be a one-shot
+    - 15.5 release note https://github.com/rhboot/shim/releases
+	Broken ia32 relocs and an unimportant submodule change. by @vathpela in #357
+	mok: allocate MOK config table as BootServicesData by @lcp in #361
+	Don't call QueryVariableInfo() on EFI 1.10 machines by @vathpela in #364
+	Relax the check for import_mok_state() by @lcp in #372
+	SBAT.md: trivial changes by @hallyn in #389
+	shim: another attempt to fix load options handling by @chrisccoulson in #379
+	Add tests for our load options parsing. by @vathpela in #390
+	arm/aa64: fix the size of .rela* sections by @lcp in #383
+	mok: fix potential buffer overrun in import_mok_state by @jyong2 in #365
+	mok: relax the maximum variable size check by @lcp in #369
+	Don't unhook ExitBootServices when EBS protection is disabled by @sforshee in #378
+	fallback: find_boot_option() needs to return the index for the boot entry in optnum by @jsetje in #396
+	httpboot: Ignore case when checking HTTP headers by @frozencemetery in #403
+	Fallback allocation errors by @vathpela in #402
+	shim: avoid BOOTx64.EFI in message on other architectures by @xypron in #406
+	str: remove duplicate parameter check by @xypron in #408
+	fallback: add compile option FALLBACK_NONINTERACTIVE by @xnox in #359
+	Test mok mirror by @vathpela in #394
+	Modify sbat.md to help with readability. by @eshiman in #398
+	csv: detect end of csv file correctly by @xypron in #404
+	Specify that the .sbat section is ASCII not UTF-8 by @daxtens in #413
+	tests: add "include-fixed" GCC directory to include directories by @diabonas in #415
+	pe: simplify generate_hash() by @xypron in #411
+	Don't make shim abort when TPM log event fails (RHBZ #2002265) by @rmetrich in #414
+	Fallback to default loader if parsed one does not exist by @julian-klode in #393
+	fallback: Fix for BootOrder crash when index returned by find_boot_option() is not in current BootOrder list by @rmetrich in #422
+	Better console checks by @vathpela in #416
+	docs: update SBAT UEFI variable name by @nicholasbishop in #421
+	Don't parse load options if invoked from removable media path by @julian-klode in #399
+	fallback: fix fallback not passing arguments of the first boot option by @martinezjavier in #433
+	shim: Don't stop forever at "Secure Boot not enabled" notification by @rmetrich in #438
+	Shim 15.5 coverity by @vathpela in #439
+	Allocate mokvar table in runtime memory. by @vathpela in #447
+	Remove post-process-pe on 'make clean' by @vathpela in #448
+	pe: missing perror argument by @xypron in #443
+    - Drop upstreamed patch:
+	- shim-bsc1184454-allocate-mok-config-table-BS.patch
+		- Allocate MOK config table as BootServicesData to avoid the error message
+		  from linux kernel
+		- 4068fd42c8		15.5-rc1~70
+	- shim-bsc1185441-fix-handling-of-ignore_db-and-user_insecure_mode.patch
+		- Handle ignore_db and user_insecure_mode correctly
+		- 822d07ad4f07		15.5-rc1~73
+	- shim-bsc1185621-relax-max-var-sz-check.patch
+		- Relax the maximum variable size check for u-boot
+		- 3f327f546c219634b2	15.5-rc1~49
+	- shim-bsc1185261-relax-import_mok_state-check.patch
+		- Relax the check for import_mok_state() when Secure Boot is off
+		- 9f973e4e95b113	15.5-rc1~67
+	- shim-bsc1185232-relax-loadoptions-length-check.patch
+		- Relax the check for the LoadOptions length
+		- ada7ff69bd8a95	15.5-rc1~52
+	- shim-fix-aa64-relsz.patch
+		- Fix the size of rela* sections for AArch64
+		- 34e3ef205c5d65	15.5-rc1~51
+	- shim-bsc1187260-fix-efi-1.10-machines.patch
+		- Don't call QueryVariableInfo() on EFI 1.10 machines
+		- 493bd940e5		15.5-rc1~69
+	- shim-bsc1185232-fix-config-table-copying.patch
+		- Avoid buffer overflow when copying the MOK config table
+		- 7501b6bb44		15.5-rc1~50
+	- shim-bsc1187696-avoid-deleting-rt-variables.patch
+		- Avoid deleting the mirrored RT variables
+		- b1fead0f7c9		15.5-rc1~37
+    - Add "rm -f *.o" after building MokManager/fallback in shim.spec
+      to make sure all object files gets rebuilt
+        - reference: https://github.com/rhboot/shim/pull/461
+- The following fix-CVE-2022-28737-v6 patches against bsc#1198458 are included
+  in shim-15.6.tar.bz2 
+    - shim-bsc1198458-pe-Fix-a-buffer-overflow-when-SizeOfRawData-VirtualS.patch
+        pe: Fix a buffer overflow when SizeOfRawData VirtualSize 
+    - shim-bsc1198458-pe-Perform-image-verification-earlier-when-loading-g.patch
+        pe: Perform image verification earlier when loading grub
+    - shim-bsc1198458-Update-advertised-sbat-generation-number-for-shim.patch
+        Update advertised sbat generation number for shim
+    - shim-bsc1198458-Update-SBAT-generation-requirements-for-05-24-22.patch
+        Update SBAT generation requirements for 05/24/22
+    - shim-bsc1198458-Also-avoid-CVE-2022-28737-in-verify_image.patch
+        Also avoid CVE-2022-28737 in verify_image()
+    - 0006-shim-15.6-rc2.patch
+    - 0007-sbat-add-the-parsed-SBAT-variable-entries-to-the-deb.patch
+        sbat: add the parsed SBAT variable entries to the debug log
+    - 0008-bump-version-to-shim-15.6.patch
+- Add mokutil command to post script for setting sbat policy to latest mode
+  when the SbatPolicy-605dab50-e046-4300-abb6-3dd810dd8b23 is not created.
+  (bsc#1198458)
+- Add shim-bsc1198101-opensuse-cert-prompt.patch back to openSUSE shim to
+  show the prompt to ask whether the user trusts openSUSE certificate or not
+  (bsc#1198101)
+- Updated vendor dbx binary and script (bsc#1198458)
+    - Updated dbx-cert.tar.xz and vendor-dbx-sles.bin for adding
+      SLES-UEFI-SIGN-Certificate-2021-05.crt to vendor dbx list.
+    - Updated dbx-cert.tar.xz and vendor-dbx-opensuse.bin for adding
+      openSUSE-UEFI-SIGN-Certificate-2021-05.crt to vendor dbx list.
+    - Updated vendor-dbx.bin for adding SLES-UEFI-SIGN-Certificate-2021-05.crt
+      and openSUSE-UEFI-SIGN-Certificate-2021-05.crt for testing environment.
+    - Updated generate-vendor-dbx.sh script for generating a vendor-dbx.bin
+      file which includes all .der for testing environment.
+
+-------------------------------------------------------------------
 Thu Jul  1 04:07:03 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add shim-bsc1187696-avoid-deleting-rt-variables.patch to avoid
