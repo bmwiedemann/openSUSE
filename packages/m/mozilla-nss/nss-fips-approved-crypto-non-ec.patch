@@ -258,7 +258,7 @@ Index: nss/lib/freebl/fips.h
 ===================================================================
 --- nss.orig/lib/freebl/fips.h
 +++ nss/lib/freebl/fips.h
-@@ -8,8 +8,20 @@
+@@ -8,9 +8,21 @@
  #ifndef FIPS_H
  #define FIPS_H
  
@@ -267,13 +267,14 @@ Index: nss/lib/freebl/fips.h
 +
 +#define IN_FIPS_RETURN(rv) \
 +    do { \
-+	if (FIPS_mode()) { \
++	if (FIPS_mode_allow_tests()) { \
 +	    PORT_SetError(SEC_ERROR_INVALID_ALGORITHM); \
 +	    return rv; \
 +	} \
 +    } while (0)
 +
  int	FIPS_mode(void);
+ int	FIPS_mode_allow_tests(void);
  char*	FIPS_rngDev(void);
 +PRBool	FIPS_hashAlgApproved(HASH_HashType hashAlg);
  
@@ -495,3 +496,99 @@ Index: nss/lib/softoken/pkcs11c.c
                      PORT_Memset(crsrdata, 0, sizeof crsrdata);
                      crv = CKR_HOST_MEMORY;
                      break;
+Index: nss/lib/freebl/desblapi.c
+===================================================================
+--- nss.orig/lib/freebl/desblapi.c
++++ nss/lib/freebl/desblapi.c
+@@ -18,6 +18,8 @@
+ #include <stddef.h>
+ #include "secerr.h"
+ 
++#include "fips.h"
++
+ #if defined(NSS_X86_OR_X64)
+ /* Intel X86 CPUs do unaligned loads and stores without complaint. */
+ #define COPY8B(to, from, ptr) \
+@@ -136,6 +138,8 @@ DES_EDE3CBCDe(DESContext *cx, BYTE *out,
+ DESContext *
+ DES_AllocateContext(void)
+ {
++    IN_FIPS_RETURN(NULL);
++
+     return PORT_ZNew(DESContext);
+ }
+ 
+@@ -145,12 +149,16 @@ DES_InitContext(DESContext *cx, const un
+                 unsigned int unused)
+ {
+     DESDirection opposite;
++
++    IN_FIPS_RETURN(SECFailure);
++
+     if (!cx) {
+         PORT_SetError(SEC_ERROR_INVALID_ARGS);
+         return SECFailure;
+     }
+     cx->direction = encrypt ? DES_ENCRYPT : DES_DECRYPT;
+     opposite = encrypt ? DES_DECRYPT : DES_ENCRYPT;
++
+     switch (mode) {
+         case NSS_DES: /* DES ECB */
+             DES_MakeSchedule(cx->ks0, key, cx->direction);
+@@ -201,8 +209,13 @@ DES_InitContext(DESContext *cx, const un
+ DESContext *
+ DES_CreateContext(const BYTE *key, const BYTE *iv, int mode, PRBool encrypt)
+ {
+-    DESContext *cx = PORT_ZNew(DESContext);
+-    SECStatus rv = DES_InitContext(cx, key, 0, iv, mode, encrypt, 0);
++    DESContext *cx;
++    SECStatus rv;
++
++    IN_FIPS_RETURN(NULL);
++
++    cx = PORT_ZNew(DESContext);
++    rv = DES_InitContext(cx, key, 0, iv, mode, encrypt, 0);
+ 
+     if (rv != SECSuccess) {
+         PORT_ZFree(cx, sizeof *cx);
+@@ -214,6 +227,8 @@ DES_CreateContext(const BYTE *key, const
+ void
+ DES_DestroyContext(DESContext *cx, PRBool freeit)
+ {
++    IN_FIPS_RETURN();
++
+     if (cx) {
+         memset(cx, 0, sizeof *cx);
+         if (freeit)
+@@ -225,6 +240,7 @@ SECStatus
+ DES_Encrypt(DESContext *cx, BYTE *out, unsigned int *outLen,
+             unsigned int maxOutLen, const BYTE *in, unsigned int inLen)
+ {
++    IN_FIPS_RETURN(SECFailure);
+ 
+     if ((inLen % 8) != 0 || maxOutLen < inLen || !cx ||
+         cx->direction != DES_ENCRYPT) {
+@@ -242,6 +258,7 @@ SECStatus
+ DES_Decrypt(DESContext *cx, BYTE *out, unsigned int *outLen,
+             unsigned int maxOutLen, const BYTE *in, unsigned int inLen)
+ {
++    IN_FIPS_RETURN(SECFailure);
+ 
+     if ((inLen % 8) != 0 || maxOutLen < inLen || !cx ||
+         cx->direction != DES_DECRYPT) {
+Index: nss/lib/softoken/fips_algorithms.h
+===================================================================
+--- nss.orig/lib/softoken/fips_algorithms.h
++++ nss/lib/softoken/fips_algorithms.h
+@@ -111,8 +111,11 @@ SFTKFIPSAlgorithmList sftk_fips_mechs[]
+     { CKM_AES_KEY_WRAP, { AES_FB_KEY, CKF_ENC }, AES_FB_STEP, SFTKFIPSNone },
+     { CKM_AES_KEY_WRAP_PAD, { AES_FB_KEY, CKF_ENC }, AES_FB_STEP, SFTKFIPSNone },
+     { CKM_AES_KEY_WRAP_KWP, { AES_FB_KEY, CKF_ENC }, AES_FB_STEP, SFTKFIPSNone },
++#if 0
++    /* Not approved in FIPS mode */
+     { CKM_AES_XCBC_MAC_96, { 96, 96, CKF_SGN }, 1, SFTKFIPSNone },
+     { CKM_AES_XCBC_MAC, { 128, 128, CKF_SGN }, 1, SFTKFIPSNone },
++#endif
+     /* ------------------------- Hashing Operations ----------------------- */
+     { CKM_SHA224, { 0, 0, CKF_HSH }, 1, SFTKFIPSNone },
+     { CKM_SHA224_HMAC, { 112, 224, CKF_SGN }, 1, SFTKFIPSNone },

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Jun 25 12:30:25 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- sync with current SLE
+  * latest FIPS changes incl. testsuite fixes (enabled now)
+    nss-fips-180-3-csp-clearing.patch
+    nss-fips-tests-enable-fips.patch
+    nss-fips-tests-skip.patch
+    nss-fips-pbkdf-kat-compliance.patch
+
+-------------------------------------------------------------------
+Sun Jun 12 08:57:06 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.79
+  * bmo#205717 - Use PK11_GetSlotInfo instead of raw C_GetSlotInfo calls.
+  * bmo#1766907 - Update mercurial in clang-format docker image.
+  * bmo#1454072 - Use of uninitialized pointer in lg_init after alloc fail.
+  * bmo#1769295 - selfserv and tstclnt should use PR_GetPrefLoopbackAddrInfo.
+  * bmo#1753315 - Add SECMOD_LockedModuleHasRemovableSlots.
+  * bmo#1387919 - Fix secasn1d parsing of indefinite SEQUENCE inside
+                  indefinite GROUP.
+  * bmo#1765753 - Added RFC8422 compliant TLS <= 1.2 undefined/compressed
+                  ECPointFormat extension alerts.
+  * bmo#1765753 - TLS 1.3 Server: Send protocol_version alert on
+                  unsupported ClientHello.legacy_version.
+  * bmo#1764788 - Correct invalid record inner and outer content type alerts.
+  * bmo#1757075 - NSS does not properly import or export pkcs12 files
+                  with large passwords and pkcs5v2 encoding.
+  * bmo#1766978 - improve error handling after nssCKFWInstance_CreateObjectHandle.
+  * bmo#1767590 - Initialize pointers passed to
+                  NSS_CMSDigestContext_FinishMultiple.
+  * bmo#1769302 - NSS 3.79 should depend on NSPR 4.34
+
+-------------------------------------------------------------------
 Tue May 31 19:24:59 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.78.1

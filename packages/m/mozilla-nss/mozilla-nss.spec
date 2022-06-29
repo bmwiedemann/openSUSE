@@ -17,14 +17,14 @@
 #
 
 
-%global nss_softokn_fips_version 3.78
-%define NSPR_min_version 4.32
+%global nss_softokn_fips_version 3.79
+%define NSPR_min_version 4.34
 %define nspr_ver %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 %define nssdbdir %{_sysconfdir}/pki/nssdb
 Name:           mozilla-nss
-Version:        3.78.1
+Version:        3.79
 Release:        0
-%define underscore_version 3_78_1
+%define underscore_version 3_79
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries
@@ -70,8 +70,12 @@ Patch24:        nss-fips-use-strong-random-pool.patch
 Patch25:        nss-fips-detect-fips-mode-fixes.patch
 Patch26:        nss-fips-combined-hash-sign-dsa-ecdsa.patch
 Patch27:        nss-fips-aes-keywrap-post.patch
-Patch28:        nss-fips-fix-missing-nspr.patch
-Patch29:        nss-fips-stricter-dh.patch
+Patch37:        nss-fips-fix-missing-nspr.patch
+Patch38:        nss-fips-stricter-dh.patch
+Patch40:        nss-fips-180-3-csp-clearing.patch
+Patch41:        nss-fips-pbkdf-kat-compliance.patch
+Patch42:        nss-fips-tests-skip.patch
+Patch44:        nss-fips-tests-enable-fips.patch
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
 # aarch64 + gcc4.8 fails to build on SLE-12 due to undefined references
 BuildRequires:  gcc9-c++
@@ -92,8 +96,7 @@ Requires:       libnssckbi.so
 %endif
 %ifnarch %sparc
 %if ! 0%{?qemu_user_space_build}
-# disabled temporarily bmo#1236340
-%define run_testsuite 0
+%define run_testsuite 1
 %endif
 %endif
 
@@ -227,8 +230,12 @@ cd nss
 %patch25 -p1
 %patch26 -p1
 %patch27 -p1
-%patch28 -p1
-%patch29 -p1
+%patch37 -p1
+%patch38 -p1
+%patch40 -p1
+%patch41 -p1
+%patch42 -p1
+%patch44 -p1
 
 # additional CA certificates
 #cd security/nss/lib/ckfw/builtins
@@ -268,6 +275,8 @@ export USE_64=1
 %endif
 export NSS_DISABLE_GTESTS=1
 export NSS_USE_SYSTEM_SQLITE=1
+export NSS_ENABLE_FIPS_INDICATORS=1
+export NSS_FIPS_MODULE_ID="\"SUSE Linux Enterprise NSS %{version}-%{release}\""
 #export SQLITE_LIB_NAME=nsssqlite3
 MAKE_FLAGS="BUILD_OPT=1"
 make %{?_smp_mflags} nss_build_all $MAKE_FLAGS
@@ -275,7 +284,7 @@ make %{?_smp_mflags} nss_build_all $MAKE_FLAGS
 %if 0%{?run_testsuite}
 export BUILD_OPT=1
 export HOST="localhost"
-export DOMSUF=" "
+export DOMSUF="localdomain"
 export USE_IP=TRUE
 export IP_ADDRESS="127.0.0.1"
 cd tests

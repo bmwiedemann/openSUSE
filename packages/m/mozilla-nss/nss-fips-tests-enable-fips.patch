@@ -1,0 +1,25 @@
+Index: nss/tests/cert/cert.sh
+===================================================================
+--- nss.orig/tests/cert/cert.sh
++++ nss/tests/cert/cert.sh
+@@ -1353,6 +1353,11 @@ cert_stresscerts()
+ ##############################################################################
+ cert_fips()
+ {
++  OLD_FIPS_MODE=`echo ${NSS_FIPS}`
++  OLD_CHECKSUMS_MODE=`echo ${NSS_IGNORE_CHECKSUMS}`
++  export NSS_FIPS=1
++  export NSS_IGNORE_CHECKSUMS=1
++
+   CERTFAILED=0
+   echo "$SCRIPTNAME: Creating FIPS 140 DSA Certificates =============="
+   cert_init_cert "${FIPSDIR}" "FIPS PUB 140 Test Certificate" 1000 "${D_FIPS}"
+@@ -1393,6 +1398,8 @@ MODSCRIPT
+     cert_log "SUCCESS: FIPS passed"
+   fi
+ 
++  export NSS_FIPS=${OLD_FIPS_MODE}
++  export NSS_IGNORE_CHECKSUMS=${OLD_CHECKSUMS_MODE}
+ }
+ 
+ ########################## cert_rsa_exponent #################################

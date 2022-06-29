@@ -67,7 +67,7 @@ Index: nss/lib/freebl/fips-selftest.inc
 ===================================================================
 --- /dev/null
 +++ nss/lib/freebl/fips-selftest.inc
-@@ -0,0 +1,306 @@
+@@ -0,0 +1,355 @@
 +/*
 + * PKCS #11 FIPS Power-Up Self Test - common stuff.
 + *
@@ -117,6 +117,9 @@ Index: nss/lib/freebl/fips-selftest.inc
 +static int fips_state = -1;
 +
 +static int fips_wanted = -1;
++
++static int fips_is_env = 0;
++static int fips_ignore_checksums = 0;
 +
 +/* debug messages are sent to stderr */
 +static void
@@ -209,6 +212,21 @@ Index: nss/lib/freebl/fips-selftest.inc
 +    return PR_FALSE;
 +}
 +
++static PRBool
++getIgnoreChecksumsEnv(void)
++{
++    char *checksumEnv = getenv("NSS_IGNORE_CHECKSUMS");
++    if (!checksumEnv) {
++	return PR_FALSE;
++    }
++    if ((strcasecmp(checksumEnv,"true") == 0) ||
++	(strcasecmp(checksumEnv,"on") == 0) ||
++	(strcasecmp(checksumEnv,"1") == 0)) {
++	 return PR_TRUE;
++    }
++    return PR_FALSE;
++}
++
 +static int
 +fips_isWantedEnv(void)
 +{
@@ -222,8 +240,52 @@ Index: nss/lib/freebl/fips-selftest.inc
 +#ifdef LINUX
 +    fips_requests += fips_isWantedProc();
 +#endif
++    if (fips_requests < 1)
++    {
++        fips_is_env = 1;
++        fips_ignore_checksums = getIgnoreChecksumsEnv();
++    }
 +    fips_requests += fips_isWantedEnv();
++
 +    return fips_requests;
++}
++
++static PRBool
++fips_check_signature_external (const char *full_lib_name, int *err)
++{
++        char *p0, *p1;
++        char *ld_path;
++        PRBool rv = PR_FALSE;
++
++        p0 = getenv ("LD_LIBRARY_PATH");
++        p0 = ld_path = strdup (p0 ? p0 : "");
++
++        for (p1 = strchr (p0, ':'); p1 && !rv; p1 = strchr (p0, ':'))
++        {
++                char *path;
++
++                *p1 = '\0';
++                path = malloc (strlen (p0) + strlen (full_lib_name) + 2);
++                strcpy (path, p0);
++                strcat (path, "/");
++                strcat (path, full_lib_name);
++
++		rv = BLAPI_SHVerifyFile (path, err);
++
++                free (path);
++                p0 = p1 + 1;
++        }
++
++        if (!rv)
++        {
++                char *path = malloc (strlen ("/usr/lib64/") + strlen (full_lib_name) + 1);
++                strcpy (path, "/usr/lib64/");
++                strcat (path, full_lib_name);
++		rv = BLAPI_SHVerifyFile (path, err);
++        }
++
++        free (ld_path);
++        return rv;
 +}
 +
 +/* check integrity signatures (if present) */
@@ -249,24 +311,11 @@ Index: nss/lib/freebl/fips-selftest.inc
 +	l -= strlen(libName);
 +	strncat(full_lib_name, SHLIB_VERSION"."SHLIB_SUFFIX, l);
 +	l -= strlen(SHLIB_VERSION"."SHLIB_SUFFIX);
-+#if 1
-+	if (NULL == addr) {
-+		char full_path [PATH_MAX+1];
 +
-+		full_path [0] = '\0';
-+		l = PATH_MAX;
-+		strncat (full_path, "/usr/lib64/", l);
-+		l -= strlen ("/usr/lib64/");
-+		strncat (full_path, full_lib_name, l);
-+		l -= strlen (full_lib_name);
-+
-+		rv = BLAPI_SHVerifyFile(full_path, &err);
-+	}
++	if (NULL == addr)
++                rv = fips_check_signature_external (full_lib_name, &err);
 +	else
 +		rv = BLAPI_SHVerify(full_lib_name, addr, &err);
-+#else
-+	rv = 1;
-+#endif
 +    }
 +
 +    if (rv) {
@@ -390,7 +439,7 @@ Index: nss/lib/freebl/fips.h
 ===================================================================
 --- /dev/null
 +++ nss/lib/freebl/fips.h
-@@ -0,0 +1,15 @@
+@@ -0,0 +1,16 @@
 +/*
 + * PKCS #11 FIPS Power-Up Self Test.
 + *
@@ -402,6 +451,7 @@ Index: nss/lib/freebl/fips.h
 +#define FIPS_H
 +
 +int	FIPS_mode(void);
++int	FIPS_mode_allow_tests(void);
 +char*	FIPS_rngDev(void);
 +
 +#endif
@@ -591,7 +641,7 @@ Index: nss/lib/freebl/fipsfreebl.c
  }
  
  /*
-@@ -2251,28 +2279,91 @@ bl_startup_tests(void)
+@@ -2251,28 +2279,104 @@ bl_startup_tests(void)
   * power on selftest failed.
   */
  SECStatus
@@ -646,6 +696,19 @@ Index: nss/lib/freebl/fipsfreebl.c
 +	    fatal("Fatal error: internal error at %s:%u"
 +		, __FILE__, __LINE__);
 +    }
++}
++
++/* Returns the FIPS mode we are running in. If the tests have not completed yet,
++ * return FALSE. This allows testing of modules that are not allowed in FIPS
++ * mode. */
++int
++FIPS_mode_allow_tests(void)
++{
++    int fips;
++
++    fips = (-1 != fips_state) ? fips_state : 0;
++
++    return fips;
 +}
 +
 +/* returns string specifying what system RNG file to use for seeding */
@@ -943,7 +1006,7 @@ Index: nss/lib/softoken/fips.c
 ===================================================================
 --- /dev/null
 +++ nss/lib/softoken/fips.c
-@@ -0,0 +1,36 @@
+@@ -0,0 +1,40 @@
 +#include "../freebl/fips-selftest.inc"
 +
 +#include "fips.h"
@@ -971,9 +1034,13 @@ Index: nss/lib/softoken/fips.c
 +{
 +    fips_state = fips_initTest("softokn", (PRFuncPtr)fips_initTestSoftoken, fips_checkCryptoSoftoken);
 +
-+    /* The legacy DB must be checked unconditionally in FIPS mode. */
++    /* The legacy DB must be checked unconditionally in FIPS mode. As an exception,
++     * this can be turned off for the build-time tests using the env var
++     * NSS_IGNORE_CHECKSUMS. This is necessary because the files cannot be
++     * located before they're installed. It only works if FIPS mode is enabled
++     * via NSS_FIPS=1, not if it's set in /proc. */
 +
-+    if (fips_state)
++    if (fips_state && !(fips_is_env && fips_ignore_checksums))
 +    {
 +        fips_state = fips_initTest("nssdbm", (PRFuncPtr) NULL, NULL);
 +    }
