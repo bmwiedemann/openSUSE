@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 29 05:40:07 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2022.06.29
+  * Fix --downloader native
+  * Fix section_end of clips
+  * Fix playlist error handling
+
+-------------------------------------------------------------------
 Wed Jun 22 07:25:09 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2022.06.22.1
