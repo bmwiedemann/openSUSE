@@ -367,4 +367,16 @@
     <comment></comment>
     <requestid>961034</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>555471957e319b54bbfd2b2b85530c6f</srcmd5>
+    <version>3.15.0</version>
+    <time>1656511309</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.15.0:
+  * Add support for curves Ed25519 and Ed448, including export and import of keys.
+  * Add support for EdDSA signatures.
+  * Add support for Asymmetric Key Packages (RFC5958) to import private keys.
+  * GH#620: for Crypto.Util.number.getPrime , do not sequentially scan numbers searching for a prime.</comment>
+    <requestid>985713</requestid>
+  </revision>
 </revisionlist>
