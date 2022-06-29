@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 21 08:26:38 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Support gcc-g++13
+
+-------------------------------------------------------------------
 Wed May 25 09:36:56 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Use the found perl version for requiring perl-base in perl-biber (boo#1199795) 

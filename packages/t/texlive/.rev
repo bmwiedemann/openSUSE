@@ -976,4 +976,12 @@
     <comment>- Use the found perl version for requiring perl-base in perl-biber (boo#1199795)</comment>
     <requestid>979154</requestid>
   </revision>
+  <revision rev="80" vrev="83">
+    <srcmd5>ac811b56433b884f0fb1424d0c977a5c</srcmd5>
+    <version>unknown</version>
+    <time>1656511250</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>985524</requestid>
+  </revision>
 </revisionlist>

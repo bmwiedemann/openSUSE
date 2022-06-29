@@ -3834,7 +3834,7 @@ This package is required by the package texlive-biber-bin.
     CC=gcc
     CXX=g++
     XCFLAGS="$RPM_OPT_FLAGS -D_GNU_SOURCE"
-    XCXXFLAGS="$XCFLAGS"
+    XCXXFLAGS="$XCFLAGS -include cstdint"
     cflags ()
     {
 	local flag=$1; shift || return
