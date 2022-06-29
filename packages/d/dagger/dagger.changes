@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Jun 28 18:14:48 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.21:
+  * universe: php: composer: Removed string as argument for repository
+  * universe: php: composer: Allow container to accept a docker.#image
+  * universe: php: composer: Use env directly and restructure output to be one entry
+  * chore: Back these files to the status that they have in the main branch
+  * Fixes a somekind of markdown issue
+  * Change to follow the style in the original guide
+  * Fixes a markdown issue
+  * Avoid to make more complex the build command adding the cache stuff
+  * build(deps): bump github.com/spf13/cobra from 1.4.0 to 1.5.0 (#2699)
+  * fix: Correct case for private definition per style (#2691)
+  * Add a possible configuration to use dagger in TravisCi
+  * [Docs] Categories UI improvement
+  * build(deps): bump github.com/stretchr/testify from 1.7.2 to 1.7.4 (#2698)
+  * build(deps): bump sass from 1.52.3 to 1.53.0 in /website
+  * build(deps-dev): bump cypress from 10.1.0 to 10.2.0 in /website
+  * build(deps): bump github.com/spf13/cobra from 1.4.0 to 1.5.0 (#2699)
+  * fix: Correct case for private definition per style (#2691)
+  * [Docs] Fix hyperlinks rendering inside admonitions
+  * fix: visual fix
+  * fix: redirect better visually
+  * fix: Correct docs routes
+  * print Dagger Cloud URL when starting plan
+  * Effectively use embedding
+  * enforce configuration mount
+  * revert useless image configurations
+  * universe: php: composer: Formatted code
+  * universe: php: composer: Make image and repository configurable
+  * universe: php: composer: Pulled apart image and container to seperate file and made package more extensible
+  * feat: add support for aws sso credentials and container credentials relative uri
+
+-------------------------------------------------------------------
 Wed Jun 22 07:48:26 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.2.20:
