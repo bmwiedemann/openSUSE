@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Tue Jun 28 03:09:31 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Fix Provides/Obsoletes mechanism in spec file
+
+-------------------------------------------------------------------
+Mon Jun 27 14:15:34 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Add obsolete openSUSE-xfce-icon-theme because upstream project is 
+  replaced by adwaita-xfce.
+
+-------------------------------------------------------------------
+Fri May 20 06:52:20 UTC 2022 - mauriziogalli@opensuse.org
+
+- Update to version 0.0.1+git0.e151182:
+  * Just a release for the initial build
+
+-------------------------------------------------------------------
+Fri May 20 06:31:38 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Initial build 
