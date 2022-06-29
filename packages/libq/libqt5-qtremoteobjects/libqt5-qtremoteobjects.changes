@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jun 27 13:10:12 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.5+kde0, rebased upstream:
+  * Update the replica when the layoutChanged signal is emitted
+  * Simplify the FetchData test-helper class
+  * Fix an error in TestModelView::testDataRemoval test
+  * Simplify the WaitForDataChanged test-helper class
+  * Refactor the TestModelView test
+  * Add a helper class for waiting for model changes in tests
+  * Revert "Update commercial license headers"
+  * ExternalIODevice fixes
+  * Document the QtRemoteObjects namespace
+  * Regenerate certificates to match new macOS 10.15 restrictions
+  * Attempt to fix flaky test
+  * Try to stabilize flaky tests
+  * Migrate from old signal/slot connection syntax (part 2)
+  * Fix prefetching data for QAIM when no roles hint is provided
+  * Document the QtRemoteObjects::InitialAction enum and its usage
+  * Migrate from old signal/slot connection syntax
+  * tst_external_IODevice: skip the test for macOS 10.15
+  * Update commercial license headers
+- Drop 0001-Revert-Bump-version.patch, it's versioned correctly now
+
+-------------------------------------------------------------------
 Sat Jun 26 13:36:57 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Fix requirement in baselibs.conf
