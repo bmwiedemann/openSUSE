@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Jun 21 13:20:12 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.4+20220615.dc6eb4362 (Pacemaker-2.1.4)
+
+-------------------------------------------------------------------
+Thu Jun 09 17:12:47 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.3+20220608.d7fce3868:
+- libstonithd: pull exit reason directly from history replies
+- fencer: assume unknown status from older fencers' history replies
+- resources: add SystemHealth parameter to its meta-data
+- resources: remove no-longer-relevant DTD reference from meta-data
+- resources: typo in HealthSMART meta-data
+
+-------------------------------------------------------------------
+Tue Jun 07 10:45:08 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.3+20220603.ea9bebf6c (Pacemaker-2.1.4-rc1):
+- fencer: avoid use-after-free with self-fencing and topology
+- fencer: get target-by-attribute working again
+- libcrmcommon: fix a wrong separator in the .warning CSS declaration
+- fencer: avoid memory leaks when processing topology requests
+- Fix print spec for unsigned int count
+- fencing: delegate shouldn't matter when checking equivalent fencing
+
+-------------------------------------------------------------------
+Thu Jun 02 07:38:49 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.3+20220601.da2fd79c8 (Pacemaker-2.1.3)
+
+-------------------------------------------------------------------
 Thu May 26 19:24:22 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Use the project upstream name for the -devel subpackage
