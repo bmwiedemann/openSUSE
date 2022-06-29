@@ -1,0 +1,231 @@
+-------------------------------------------------------------------
+Tue Jun 28 13:58:08 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Python subpackage is python3-pylibiio now, in accordance with PyPi.
+
+-------------------------------------------------------------------
+Tue Feb 15 17:41:36 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.23, for details see
+  https://github.com/analogdevicesinc/libiio/releases/tag/0.23
+
+-------------------------------------------------------------------
+Sun Jun 13 20:15:13 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.21, for details see
+  https://github.com/analogdevicesinc/libiio/releases/tag/0.21
+
+-------------------------------------------------------------------
+Fri Feb 14 14:02:05 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versoin 0.19
+  * network: Fix typo in error message related to iiod client open
+  * Increase error reporting on iiod and network backend
+  * iio_attr : Add a feature which auto-generates C code
+  * iio_info: warn when iio_channel_get_type = IIO_CHAN_TYPE_UNKNOWN
+  * Handle channel IDs without index or modifier correctly
+  * local: Fix the checking of the buffer size returned by kernel
+  * man: add some default man pages
+  * Improved matching on global attributes for differential channels
+  * cmake : on the CI, turn on WITH_DOC, so gh-pages is updated
+  * cmake: Make the WITH_DOC (Doxygen) optional, defaulting off
+  * iio.h: improve consistancy of doxygen generated content
+  * iio.h: Fix whitespace differences/inconsistances
+  * First attempt to match global attributes for differential
+    channels.
+  * Improve URI documentation for iio_create_context_from_uri
+  * Bindings : NB Add Cmake flags to turn on bindings (Default=off)
+  * ./tests/iio_attr : move from allocating space on stack to malloc
+  * by accepting avahi null names, and install avahi service file
+  * Python3: fixed string type checking in iio.NetworkContext to
+    be compatible with Python 2 and Python 3.
+  * Fixed loading of libiio on non-Windows systems where
+    find_library shall find it in the path if the specified name
+    is 'iio'.
+  * Use "include(FindPythinInterp)" when compiling with CMake
+    older than 3.12.
+  * ad9361-iiostream.c example takes Command line arguments to
+    select local context vs uri context.
+  * Python: More robust loading of IIO library that works on
+    different platforms.
+  * CMake python bindings: "use find_package (Python COMPONENTS
+    Interpreter)" instead of deprecated "include(FindPythonInterp)"
+  * network: only resolve interface name on ipv6 ll
+  * Add example for ADRV9009
+  * local.c: make sure dst is null-terminated if fread fails
+  * fix install of binaries with a static only library
+  * iiod: usbd: Fix wrong null pointer check
+
+-------------------------------------------------------------------
+Sat May  4 09:35:40 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.18
+  * This fixes a channel sorting bug which has caused compatibility
+    issues, in case the local and remote libiio differed in version.
+    This will revert the channel sorting changes and thus restore
+    backward compatibility to v0.15 and before.
+    Version 0.16 and 0.17 should not be used.
+- Add missing compat suse rclink
+
+-------------------------------------------------------------------
+Thu Jan 24 19:59:35 UTC 2019 - mardnh@gmx.de
+
+- Update to version 0.17
+  * Revert "sort: when sorting iio_channels, if the index is the
+    same, use ID"
+
+- Update to version 0.16
+  * fix snprintf warnings from gcc 8
+  * channel: Fix #219 get_modifier and get_type seems to work incorrectly
+  * sorting: ensure sorting happens after global attributes are added
+  * Revert "sort: Move channel attribute sorting to context creation" fix #215
+  * cmake: set the CPACK_DEBIAN_PACKAGE_ARCHITECTURE for old versions of Cmake
+  * buffer: Fix bug in mask bit tests (continued)
+  * IIOD: Fix bug in mask bit tests (continued)
+  * add note about triggered buffers in dox source
+  * local: pass errors up the stack
+  * usb: Increase ctrl pipe timeout
+  * usb: add libusb version to context attributes
+  * usb: be more verbose when unable to claim an interface
+  * Ensure iio_info can find a locally installed libiio.so
+  * fix whitespace damage from previous commits
+  * sort: when sorting iio_channels, if the index is the same, use ID
+  * sort: Move channel attribute sorting to context creation
+  * sort: change function names to be more descriptive/accurate
+  * Update FIR enable function in ML bindings to not force sample rate ahead of filter write.
+  * local: Sort devices, channels and attributes when adding them.
+  * Fix FIR load function in ML bindings to actually enable the FIR once loaded.
+  * spelling fonction->function
+  * Fix bug in mask bit tests
+  * cmake: Suppress errors when looking up the git repository path
+
+-------------------------------------------------------------------
+Mon Oct  1 19:22:12 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Enable support for USB backend, create usb-udev-rules
+- Enable autodiscovery for the network backend using avahi/mDNS/DNS-SD
+
+-------------------------------------------------------------------
+Tue May  8 14:27:26 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.15
+  * network: Add workaround for Microsoft Windows Subsystem for Linux
+  * examples/dummy-iiostream: Fix instructions
+  * local: Fix low-speed mode
+  * appveyor.yml: Add workaround for 32-bit build
+  * appveyor.yml: Fix libzip dll name pattern
+  * Fix buffer/device mixup in docs
+  * Prevent out-of-bounds access in read_each_attr()/iio_channel_attr_read_all()
+  * tests/iio_writedev: Add iio_writedev analogous to iio_readdev
+  * iio_adi_xflow_check: Avoid accessing device after context destruction
+  * Install iiod upstart conf file
+  * Install iiod SysVinit script
+  * Install iiod.service file
+  * Fix typo in CMakeLists.txt
+  * iio_readdev: Fix getopt() handling
+  * iio_info: Fix getopt() handling
+  * iio_genxml: Fix getopt() handling
+  * iio_attr: Fix getopt() handling
+  * iio_adi_xflow_check: Fix getopt() handling
+  * appveyor.yml: Drop the initial core update which updates the package list and
+    upgrades all the outdated packages. The conflicts are not handled properly when
+    using the --noconfirm option(default values).
+  * CMakeLists.txt: Fill in the Windows file information (version, name, copyright, year).
+  * appveyor.yml: Install windres for reading Windows resource files (.rc)
+  * Added a new variable to iio.Buffer stored in self._ctx, this is reference to a
+    Context variable. This reference ensures that the Context outlives the buffer,
+    if this is not the case a segmentation violation will occur when destroying the
+    buffer.
+
+-------------------------------------------------------------------
+Wed Apr  4 17:12:12 UTC 2018 - tuukka.pasanen@ilmi.fi
+
+- Update to version 0.14
+  * network: Fix buffer reuse
+  * appveyor.yml: Downgrade llvm and clang packages for the moment
+  * Bump to version v0.13
+  * network: Fix crash when lots of file descriptors are open
+  * Revert "RFC: Fix channel identifier heuristics"
+  * local: fix last_dequeued is not invalidated in case of a timeout (blocking)
+    or on retry (non-blocking) buffer
+  * RFC: Fix channel identifier heuristics
+  * appveyor.yml: Copy the README file in the .zip artifact.
+  * Sync README and appveyor so the README points to the latest master.
+  * appveyor.yml: Change the name of the zip artifact.
+  * Create zip.txt
+  * network: Adjust switch statment "fall-through" comment position
+  * iio_attr: Add support for buffer attribtues
+  * iio_info: Add support for buffer attributes
+  * iiod: Add support for buffer attributes
+  * device: Add support for buffer attributes
+  * local: Track buffer attributes
+  * iiod: usbd: initialize the SuperSpeed Endpoint Companion descriptors
+  * travis-ci: fix typo in matrix
+  * CMake: quote arguments for STREQUAL
+  * examples/ad9371-iiostream.c: Add AD9371/5 IIO Streaming example
+  * local: Track requested and allocated number of blocks independently
+  * local: Return error when no blocks could be allocated
+  * Cmake: If the version of libserialport isn't 0.1.1; don't fail, just warn, and continue 
+    building without it. This makes it easier for those (Ubuntu 16 LTS), who are using 
+    distributions that don't keep up to date.
+  * Update channel type and modifier lists
+  * iiod: fix crash setting buffers on invalid device
+  * appveyor.yml: Move all the MSVC and MinGW builds into a single ZIP artifact.
+  * travis-ci: Allow before_deploy to be run twice, which is what happens on a release/tag, 
+    without erroring
+  * travis-ci: Deploy OS-X files on releases
+  * appveyor.yml: Create MinGW builds for Windows 32 bit and 64 bit.
+
+-------------------------------------------------------------------
+Wed Jan 17 19:48:50 UTC 2018 - mardnh@gmx.de
+
+- Force usage of python3
+
+-------------------------------------------------------------------
+Tue Dec  5 10:01:58 UTC 2017 - wk@ire.pw.edu.pl
+
+- Update to version 0.11:
+  * Lots of bug fixes
+  * Add 'ip,ip-addr' context attribute to network contexts
+  * Better handling of communication timeouts on Windows
+  * IIOD can now stream much faster, up to the link's speed
+  * Fix USB backend and IIOD not handling huge buffers
+  * Channels are now disabled when a iio_buffer is destroyed
+  * Libiio/IIOD can now handle channels that share their index
+  * Add 'iio_attr' tool to read/write device/channel attributes
+
+
+-------------------------------------------------------------------
+Mon Jul 24 17:35:33 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.10:
+  * Lots of bug fixes
+  * Add 'ip,ip-addr' context attribute to network contexts
+  * Better handling of communication timeouts on Windows
+  * IIOD can now stream much faster, up to the link's speed
+  * Fix USB backend and IIOD not handling huge buffers
+  * Channels are now disabled when a iio_buffer is destroyed
+  * Libiio/IIOD can now handle channels that share their index
+  * Add 'iio_attr' tool to read/write device/channel attributes
+
+-------------------------------------------------------------------
+Tue May 23 22:09:16 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Update to v0.9 - Changelog:
+  * Introduced context attributes
+  * Add API for querying the list of enabled backends
+  * IIOD can now serve over USB (using FunctionFS)
+  * Fix occasional buffer drops in IIOD
+  * Python bindings are now compatible with Python 3
+  * Add support for scanning in Python bindings
+  * Fix USB backend on Windows >= 8.1
+  * Add auto context creation in iio_readdev/iio_info
+  * Lots, lots of bug fixes
+- Update to v0.8 - no changelog provided
+- drop libiio_systemd.patch, taken from upstream
+
+-------------------------------------------------------------------
+Sun Oct 30 12:27:05 UTC 2016 - afaerber@suse.de
+
+- Initial (v0.7)
+
