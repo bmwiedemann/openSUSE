@@ -319,4 +319,12 @@
 - Update to version 0.941:</comment>
     <requestid>965437</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>b4d6e0debc17c2c45039ccc354c95673</srcmd5>
+    <version>0.961</version>
+    <time>1656511259</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>985591</requestid>
+  </revision>
 </revisionlist>

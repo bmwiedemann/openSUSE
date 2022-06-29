@@ -21,7 +21,7 @@
 %define skip_python2 1
 %define typed_ast_version 1.5.1
 Name:           mypy
-Version:        0.942
+Version:        0.961
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
@@ -31,9 +31,6 @@ Source0:        https://files.pythonhosted.org/packages/source/m/mypy/mypy-%{ver
 # License Source1: Apache-2.0. Only for the test suite, not packaged here.
 Source1:        https://files.pythonhosted.org/packages/source/t/types-typed-ast/types-typed-ast-%{typed_ast_version}.tar.gz
 Source99:       mypy-rpmlintrc
-# PATCH-FIX-UPSTREAM 12452-stringent-err-msg.patch gh#python/mypy#12451 mcepl@suse.com
-# Work with more stringent error messages in Python >= 3.10.3
-Patch0:         12452-stringent-err-msg.patch
 BuildRequires:  %{python_module mypy_extensions >= 0.4.3}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tomli >= 1.1.0}
@@ -96,10 +93,11 @@ mv types-typed-ast-%{typed_ast_version}/typed_ast-stubs mystubs/typed_ast
 
 %build
 %python_build
-pushd docs
-%make_build html
-rm build/html/.buildinfo
-popd
+# building docs fails due to missing theme 'furo'
+#pushd docs
+#%%make_build html
+#rm build/html/.buildinfo
+#popd
 
 %install
 %python_install
@@ -144,7 +142,7 @@ donttest+=" or teststubtest"
 %python_uninstall_alternative mypy
 
 %files %{python_files}
-%doc docs/README.md docs/build/html/
+%doc docs/
 %license LICENSE
 %{python_sitelib}/mypy
 %{python_sitelib}/mypyc
