@@ -26,7 +26,7 @@ Source0:        https://github.com/WuBingzheng/memleax/archive/v%{version}.tar.g
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libunwind-devel
-ExcludeArch:    s390x
+ExclusiveArch:  %ix86 x86_64 %arm aarch64
 
 %description
 Memleax is capable of debugging memory leak of a running process by
