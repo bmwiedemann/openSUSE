@@ -21,12 +21,12 @@
 %define qt5_snapshot 1
 %define libname libQt53DCore5
 %define base_name libqt5
-%define real_version 5.15.2
-%define so_version 5.15.2
+%define real_version 5.15.5
+%define so_version 5.15.5
 %define tar_version qt3d-everywhere-src-%{version}
 %global enable_assimp (0%{?suse_version} >= 1550)
 Name:           libqt5-qt3d
-Version:        5.15.2+kde39
+Version:        5.15.5+kde15
 Release:        0
 Summary:        Qt 5 3D Addon
 # Legal: some files are GPL-3.0-only WITH Qt-GPL-exception-1.0
@@ -35,8 +35,6 @@ License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 Source:         %{tar_version}.tar.xz
-# PATCH-FIX-OPENSUSE
-Patch1:         0001-Revert-Bump-version.patch
 BuildRequires:  fdupes
 BuildRequires:  libQt5Bootstrap-devel-static >= %{real_version}
 BuildRequires:  libQt5Concurrent-devel >= %{real_version}
