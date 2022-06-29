@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun 29 11:19:32 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.11.0:
+  * fix: fixes file operations to work when not running from the chart root and fixes several tests
+  * adding ignore-non-descriptions flag
+  * fix broken file sorting
+  * Add an option to list charts to generate
+  * Added file lazy loading
+  * Improve code according to mjpitz suggestions
+  * Rename @section to @raw
+  * Add option for ignoring values
+  * chore: generate READMEs for example charts with new version
+  * Added Helm .Files
+
+-------------------------------------------------------------------
 Sat May 14 11:41:14 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.10.0:
