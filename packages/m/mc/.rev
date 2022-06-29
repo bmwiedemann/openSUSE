@@ -762,4 +762,17 @@ SLE* needs fixing anyway (forwarded request 206981 from dnh)</comment>
     <comment></comment>
     <requestid>965369</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>66d04797acb02b70a1a8f5bab398cbe4</srcmd5>
+    <version>4.8.28</version>
+    <time>1656511228</time>
+    <user>dimstar_suse</user>
+    <comment>- Include review comments: don't depend on fish.
+
+- Add 4258-fish-subshell-prompt.patch fixing
+  https://midnight-commander.org/ticket/4258 stopping fish from sending
+  \r while printing prompt and mc erases prompt buffer.
+- Add mc.fish, which the fish equivalent of /usr/share/mc/mc-wrapper.sh</comment>
+    <requestid>985468</requestid>
+  </revision>
 </revisionlist>

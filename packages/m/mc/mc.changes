@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun 27 19:36:16 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Include review comments: don't depend on fish.
+
+-------------------------------------------------------------------
+Wed Jun 15 15:05:02 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add 4258-fish-subshell-prompt.patch fixing
+  https://midnight-commander.org/ticket/4258 stopping fish from sending
+  \r while printing prompt and mc erases prompt buffer.
+- Add mc.fish, which the fish equivalent of /usr/share/mc/mc-wrapper.sh
+
+-------------------------------------------------------------------
 Sun Mar 27 19:39:05 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 4.8.28:

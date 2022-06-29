@@ -29,6 +29,7 @@ Source2:        %{name}.desktop
 Source3:        %{name}.png
 Source4:        cmake.syntax
 Source6:        http://ftp.midnight-commander.org/%{name}-%{version}.sha256
+Source7:        mc.fish
 Patch0:         mc-fix_lib_search_path.patch
 Patch12:        mc-wrapper.patch
 Patch16:        mc-esc-seq.patch
@@ -44,6 +45,9 @@ Patch23:        mc-extfs-iso9660-xorriso.patch
 Patch32:        20_wrong_path_to_wrappers.patch
 # PATCH-FIX-UPSTREAM mc-multi-press-f-keys.patch mc287 sbrabec@suse.cz - Fixed Esc + Numeral F-key emulation.
 Patch41:        mc-multi-press-f-keys.patch
+# PATCH-FIX-UPSTREAM 4258-fish-subshell-prompt.patch https://midnight-commander.org/ticket/4258 mcepl@suse.com
+# don't send \r while printing prompt
+Patch42:        4258-fish-subshell-prompt.patch
 # Patches from Fedora
 #Patch adding -fpie and -pie to compilation and linking of setuid binaries
 Patch52:        mc-pie.patch
@@ -69,6 +73,7 @@ BuildRequires:  xorg-x11-devel
 BuildRequires:  xz
 Requires(pre):  permissions
 Recommends:     %{name}-lang = %{version}
+Enhances:       fish
 Recommends:     mkisofs
 Recommends:     xorriso
 
@@ -105,10 +110,12 @@ echo "`grep %{name}-%{version}.tar.xz %{SOURCE6} | head -n1 | cut -c1-64`  %{SOU
 %patch23
 %patch32
 %patch41 -p1
+%patch42 -p1
 %patch52 -p1
 %patch100 -p1
 
 %build
+%{?!make_build:%define make_build make -O %_smp_mflags V=1 VERBOSE=1}
 autoreconf -fvi
 %define warn_flags -W -Wall -Wstrict-prototypes -Wpointer-arith -Wformat-security -Wno-unused-parameter
 export CFLAGS="%{optflags} %{warn_flags}"
@@ -139,6 +146,10 @@ ln -fs -t %{buildroot}%{_sysconfdir}/profile.d %{_datadir}/mc/mc.{,c}sh
 install -m 755 %{SOURCE1} %{buildroot}%{_datadir}/mc/
 install -D -m 644 %{SOURCE3} %{buildroot}%{_datadir}/pixmaps/%{name}.png
 install -D -m 644 %{SOURCE3} %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/%{name}.png
+
+# Fish wrapper script
+install -D -m 644 %{SOURCE7} \
+    %{buildroot}%{_datadir}/fish/vendor_functions.d/mc.fish
 
 for f in ext.d/misc.sh ext.d/sound.sh ext.d/video.sh \
     extfs.d/gitfs+ extfs.d/uace extfs.d/uarc ;
@@ -192,6 +203,10 @@ rm -rf  %{buildroot}%{_datadir}/locale/be@tarask
 %{_datadir}/mc/help/mc.hlp
 %exclude %{_datadir}/mc/help/mc.hlp.*
 %exclude %{_datadir}/locale/*/LC_MESSAGES/mc.mo
+
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_functions.d
+%{_datadir}/fish/vendor_functions.d/mc.fish
 
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
