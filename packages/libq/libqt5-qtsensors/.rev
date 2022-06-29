@@ -384,4 +384,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>- Make sure iio-sensor-proxy is available (boo#1188098)</comment>
     <requestid>904842</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>325236eeaecd45c9264c899e67866fec</srcmd5>
+    <version>5.15.5+kde0</version>
+    <time>1656511240</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.5 with patch collection + qtscript 5.15.10 (forwarded request 985459 from favogt)</comment>
+    <requestid>985490</requestid>
+  </revision>
 </revisionlist>

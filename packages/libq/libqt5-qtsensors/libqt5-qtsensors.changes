@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 27 13:10:20 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.5+kde0, rebased upstream:
+  * Android: Fix build error issue in examples
+  * Revert "Update commercial license headers"
+  * Update commercial license headers
+  * Android rotation sensor value and datarate fix
+- Drop 0001-Revert-Bump-version.patch, it's versioned correctly now
+
+-------------------------------------------------------------------
 Thu Jul  8 11:07:17 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Make sure iio-sensor-proxy is available (boo#1188098)
