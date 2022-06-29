@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Jun 21 17:37:18 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 4.4+git20220621.872c7f8d8:
+  * #3559 set non zero global quality with vaapi
+  * #2400 more indirect dependencies
+  * add example pkgconfig files
+  * #3543 make it easier to disable inotify watcher
+  * move away from slow zlib compression
+  * #3556 don't enable hevc by default
+  * report codec information using strings
+  * add docstring
+  * add missing codecs to clean list
+  * #3457 add missing toggle for avif
+  * #3553 extra args for vfb command
+  * Update randr_bindings.pyx
+  * Allow override of idealVSync by env. vars
+  * Fedora 36 build fix: use a more crude glob
+  * doh, typo
+  * #3458 disable LTO on Fedora 36
+  * new upstream release: 11.515.48
+  * show builds from 'git master' as 'beta' builds
+  * utility function to hide platform import ugliness
+  * better error message formating
+  * #3552 only initialize X11 gdk display source on X11..
+  * #56 this function must return an int
+  * #56 we may have already added this mode
+  * #56 don't bother with xinerama workaround when we have randr16
+  * better wording
+  * oops: was meant to specify the list values
+  * fix more warnings
+  * silence some minor warnings
+  * make code more readable
+  * error message would itself cause an error
+  * fix chunk number verification
+  * cosmetic
+
+-------------------------------------------------------------------
 Tue May 31 15:24:59 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version 4.4+git20220531.56f76c715:
