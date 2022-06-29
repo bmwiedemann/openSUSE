@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jun 28 15:46:51 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.25.20:
+  * K9s release v0.25.20 (#1621)
+  * Issue #1620 popeye view shows duplicate pdb
+  * Issue #1616 Age in nodes view are n/a
+
+-------------------------------------------------------------------
+Tue Jun 28 06:37:48 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire go1.18, as upstream says in go.mod
+
+-------------------------------------------------------------------
+Tue Jun 28 06:30:05 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.25.19:
+  * update deps
+  * K9s release v0.25.19 (#1610)
+  * Fix typo in FastForwards annotation name (#1600)
+  * Capitalise true/false when checking suspension (#1601)
+  * Allow all deletion propagation policies (#1553)
+  * fix: correct typo (#1566)
+  * Add Helm values support (#1518)
+  * Add locking favorite namespaces (#1449) (#1519)
+  * plugin to allow default chart values retrieval (#1539)
+  * fix view details secret fullscreen padding to 0 (#1493)
+  * Fix the flux plugin to use the context of the currently running instance (#1366)
+  * Fix Typo (#1422)
+
+-------------------------------------------------------------------
 Wed Jan 05 20:10:35 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.25.18:

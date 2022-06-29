@@ -17,14 +17,14 @@
 
 
 Name:           k9s
-Version:        0.25.18
+Version:        0.25.20
 Release:        0
 Summary:        Curses based terminal UI for Kubernetes clusters
 License:        Apache-2.0
 URL:            https://github.com/derailed/k9s
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) = 1.16
+BuildRequires:  golang(API) = 1.18
 ExcludeArch:    s390
 ExcludeArch:    %{ix86}
 
