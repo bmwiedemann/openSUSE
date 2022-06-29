@@ -44,7 +44,7 @@ This is a systemd unit generator that enables swap on zram.
 (With zram, there is no physical swap device. Part of the avaialable RAM
 is used to store compressed pages, essentially trading CPU cycles for memory.)
 
-To configure and activate swap and zram devices with file-systems,  create a configuration file in /etc/systemd/zram.generator.conf. You can consult  %{_datadir}/doc/%{name}/zram-generator.conf.example for an example and a list of available settings.
+To configure and activate swap and zram devices with file-systems,  create a configuration file in /etc/systemd/zram-generator.conf. You can consult  %{_datadir}/doc/%{name}/zram-generator.conf.example for an example and a list of available settings.
 
 %prep
 %autosetup -a1 -p1 -n %{name}-%{version}
