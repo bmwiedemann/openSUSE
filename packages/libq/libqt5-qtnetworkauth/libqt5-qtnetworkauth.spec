@@ -19,11 +19,11 @@
 %define qt5_snapshot 1
 %define libname libQt5NetworkAuth5
 %define base_name libqt5
-%define real_version 5.15.2
-%define so_version 5.15.2
+%define real_version 5.15.5
+%define so_version 5.15.5
 %define tar_version qtnetworkauth-everywhere-src-%{version}
 Name:           libqt5-qtnetworkauth
-Version:        5.15.2+kde2
+Version:        5.15.5+kde0
 Release:        0
 Summary:        Qt 5 NetworkAuth Library
 License:        GPL-3.0-or-later
@@ -31,8 +31,6 @@ Group:          Development/Libraries/X11
 URL:            https://qt.io
 Source:         %{tar_version}.tar.xz
 Source1:        baselibs.conf
-# PATCH-FIX-OPENSUSE
-Patch1:         0001-Revert-Bump-version.patch
 BuildRequires:  libQt5Core-private-headers-devel >= %{real_version}
 BuildRequires:  libqt5-qtbase-devel >= %{real_version}
 %if %{qt5_snapshot}
