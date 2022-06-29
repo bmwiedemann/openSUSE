@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jun 22 05:54:02 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 0.8.7
+  * Deal with new archive_progress key (#1353)
+  * Raise ValueError in case of unknown change type in diff json. By @real-yfprojects (#1350)
+  * Fix unlink action when repo combobox is empty. By @real-yfprojects (#1342)
+  * Show date of next backup. By @tal66 (#1319)
+- Update to 0.8.6
+  * Remove call to QTranslator.language() in get_locale. (#1316)
+- Update to 0.8.5
+  * Fix macOS Archive settings form sizing (#1311)
+  * Fix copying the current repo to the clipboard. By @real-yfprojects (#1313)
+  * Determine source files for translations dynamically. By @real-yfprojects (#1309)
+  * Remove leftovers in repo selector (#1308)
+  * Pause scheduling temporarily on failures. By @real-yfprojects (#1299)
+  * Only schedule backup after a manual run, improve labels. @real-yfprojects (#1302)
+  * Select and delete multiple archives. By @real-yfprojects (#1307)
+  * Preserve last creation log per profile for scheduler. By @real-yfprojects (#1296)
+  * Don't schedule if no repo is set. By @real-yfprojects (#1288)
+  * Hotfix for right-click archive menu. By @real-yfprojects (#1285)
+
+-------------------------------------------------------------------
 Fri May 20 15:05:01 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 0.8.4
