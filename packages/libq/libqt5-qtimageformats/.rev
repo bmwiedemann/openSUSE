@@ -342,4 +342,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.2 + KDE patch collection</comment>
     <requestid>902333</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>cdf3d7a1eb585078b7e34591225d153b</srcmd5>
+    <version>5.15.5+kde3</version>
+    <time>1656511234</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.5 with patch collection + qtscript 5.15.10 (forwarded request 985459 from favogt)</comment>
+    <requestid>985478</requestid>
+  </revision>
 </revisionlist>

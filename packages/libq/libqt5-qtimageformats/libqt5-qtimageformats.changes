@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun 27 13:09:29 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.5+kde3, rebased upstream:
+  * jp2: use correct buffer_size for jas_stream_memopen
+  * Check earlier to avoid sanitzer warnings
+  * Add some basic checking against corrupt input
+  * Revert "Update commercial license headers"
+  * Avoid scanline overflow when reading corrupt tiffs
+  * Update bundled libtiff to version 4.2.0
+  * Update bundled libwebp to version 1.2.0
+  * Avoid oob access when reading certain corrupt tiled tiffs
+  * Avoid oob access when reading certain corrupt tiled tiffs
+  * Update commercial license headers
+- Drop 0001-Revert-Bump-version.patch, it's versioned correctly now
+
+-------------------------------------------------------------------
 Mon Jun 21 20:24:44 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Switch to KDE's maintenance branch
