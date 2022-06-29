@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Jun 29 00:09:40 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to 22.06.23
+- Change the build system from qmake to CMake
+- add shotcut-libdir.patch
+- Upstream changes:
+  *Added Edit... to Timeline > Output > Properties.
+  *Added Timeline > menu > More > Align To Reference Track to synchronize clips based on similar audio.
+    See its documentation.
+  *Added support for reading Lottie and rawr JSON animation formats.
+  *Added Open Other > Animation.
+  *Added a Mask: Draw (Glaxnimate) video filter.
+  *Added Glaxnimate vector animation tool with a video preview of Shotcut. 
+  *Added support for Keyframes to the following audio filters:
+    Low Pass
+    High Pass
+    Reverb
+  *Added keyboard shortcut Ctrl+Alt+A to select all clips on the current track.
+    (option+command+A on macOS)
+  *Added an options dialog to File > Export > Markers as Chapters to exclude colors or include range markers.
+  *Added support for fractional display scale (125%, 150%, 175%) on Windows.
+  *Fixed Text: Rich does not export the same as preview on system with fractional display scale on Windows.
+  *Fixed Record Audio and Open Other > Audio/Video Device crashing on macOS due to insufficient entitlements.
+  *Fixed Time Remap > Image mode > Blend not working.
+  *Fixed a crash combining two Size, Position & Rotate filters with a mask filter on a square video mode.
+  *Fixed a possible crash with an odd width video.
+  *Fixed dragging a clip leftward beyond other clips with Timeline > Ripple turned on.
+  *Fixed changing the color of a color clip resets a custom name.
+  *Fixed changing Properties > Speed drops a Crop: Source filter if added.
+  *Fixed prompting for a duration and possibly a crash when dragging non-seekable files to Playlist.
+  *Fixed filters on a clip are removed when Undo after a change to Properties.
+  *Fixed File > Export > Markers as Chapters incorrect text encoding resulting in corrupt unicode characters.
+  *Fixed video track blending may be broken after moving a track.
+  *Fixed repairing a project with Settings > Proxy > Use Proxy on saves proxy file paths into repaired project file.
+  *Fixed Ripple Markers not working with ripple trimming.
+  *Fixed trimming a clip on timeline may change the length of a neighboring clip.
+  *Converted the build system from qmake to CMake (qmake is removed).
+
+-------------------------------------------------------------------
 Thu Jun 23 06:21:58 UTC 2022 - Dave Plater <davejplater@gmail.com>
 
 - Update to 22.04.25

@@ -1,0 +1,17 @@
+--- CuteLogger/CMakeLists.txt.orig	2022-06-07 20:54:20.000000000 +0200
++++ CuteLogger/CMakeLists.txt	2022-06-24 19:07:29.721554683 +0200
+@@ -6,6 +6,8 @@
+ 
+ ADD_DEFINITIONS(-DCUTELOGGER_LIBRARY)
+ 
++include(GNUInstallDirs)
++
+ INCLUDE_DIRECTORIES(BEFORE include)
+ 
+ SET(sources
+@@ -39,4 +41,4 @@
+ 
+ ADD_LIBRARY(${library_target} SHARED ${sources} ${includes})
+ TARGET_LINK_LIBRARIES(${library_target} Qt5::Core)
+-INSTALL(TARGETS ${library_target} DESTINATION lib)
++INSTALL(TARGETS ${library_target} DESTINATION ${CMAKE_INSTALL_LIBDIR})

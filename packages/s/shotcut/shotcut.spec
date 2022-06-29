@@ -25,7 +25,7 @@
 %global __requires_exclude qmlimport\\((Shotcut\\.Controls|org\\.shotcut\\.qml).*
 
 Name:           shotcut
-Version:        22.04.25
+Version:        22.06.23
 Release:        0
 # This package creates a build time version from the current date and uses it to check
 # for updates. See patch1 and prep/build section. For reproducible builds.
@@ -35,11 +35,13 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            http://www.shotcut.org/
 Source:         https://github.com/mltframework/shotcut/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch1:         shotcut-libdir.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-qtdeclarative-private-headers-devel
 BuildRequires:  mc
+BuildRequires:  cmake
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core) >= 5.9.0
@@ -54,6 +56,7 @@ BuildRequires:  pkgconfig(Qt5UiTools)
 BuildRequires:  pkgconfig(Qt5WebSockets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(mlt++-7)
 BuildRequires:  pkgconfig(mlt-framework-7)
 BuildRequires:  pkgconfig(sdl2)
@@ -87,26 +90,22 @@ Shotcut can test MLT XML files, too.
 %prep
 %setup -q
 echo "Qt5Core = %{qt5version}"
-%autopatch -p1
+%autosetup -p0
 
 # Search for executable files
 find . \
 \( -name \*.html -o -name \*.js \) -type f -executable -exec chmod a-x {} + || :
 
 %build
-##if LIBMLT_VERSION_INT >= MLT_VERSION_CPP_UPDATED 397568
-##define LIBMLT_VERSION_INT 397312     ((LIBMLT_VERSION_MAJOR<<16)+(LIBMLT_VERSION_MINOR<<8)+LIBMLT_VERSION_REVISION)
-%qmake5 \
-	QMAKE_STRIP="" \
-        PREFIX="%{_prefix}" -Wall -recursive \
-        SHOTCUT_VERSION=%{version} \
-        DEFINES+=SHOTCUT_NOUPGRADE
-
-make %{_smp_mflags} VERBOSE=1
+%cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+       -DCMAKE_BUILD_TYPE=Release \
+       -DSHOTCUT_VERSION=%{version} \
+       -DDEFINES+=SHOTCUT_NOUPGRADE
+%cmake_build
 
 # CC=gcc-8 CPP=cpp-8 CXX=g++-8
 %install
-%qmake5_install
+%cmake_install
 
 install -D icons/%{name}-logo-64.png %{buildroot}/%{_datadir}/pixmaps/%{name}.png
 
@@ -155,6 +154,8 @@ chmod 0755 %{buildroot}/%{_datadir}/%{name}/qml/export-edl/rebuild.sh
 %{_datadir}/mime/packages/*
 %{_datadir}/applications/org.%{name}.Shotcut.desktop
 %exclude %{_datadir}/%{name}/translations
+%{_libdir}/libCuteLogger.so
+
 
 %files lang -f %{name}.lang
 %defattr(-,root,root)
