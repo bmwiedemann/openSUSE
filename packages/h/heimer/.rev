@@ -20,4 +20,20 @@
     delete before dropping the node, crashes the program</comment>
     <requestid>978869</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>34d9b2f4c3cd232aea4ccb270c8b9389</srcmd5>
+    <version>3.4.0</version>
+    <time>1656511278</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.0:
+  * Fetch the newest version and show in status bar if newer
+    version available
+  * Fix GitHub Issue #210: Option to set shadow offset and disable shadows
+    + Adds effects tab to the settings dialog
+    + Shadow offset and blur radius can now be set
+  * Fix GitHub Issue #211: Color defaults
+    + Default colors can now be set via the default settings tab
+  * Make it possible to tune shadow colors via the effects tab</comment>
+    <requestid>985587</requestid>
+  </revision>
 </revisionlist>

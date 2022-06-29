@@ -18,7 +18,7 @@
 
 
 Name:           heimer
-Version:        3.3.0
+Version:        3.4.0
 Release:        0
 Summary:        Mind map, diagram, and note-taking tool
 License:        CC-BY-SA-3.0 AND GPL-3.0-only
@@ -33,6 +33,7 @@ BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Xml)
