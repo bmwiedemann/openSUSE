@@ -308,4 +308,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>New snapshots</comment>
     <requestid>948157</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>68eb41e4e1204a98710dee8a511749cd</srcmd5>
+    <version>5.15.5+kde3</version>
+    <time>1656511246</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.5 with patch collection + qtscript 5.15.10 (forwarded request 985459 from favogt)</comment>
+    <requestid>985500</requestid>
+  </revision>
 </revisionlist>
