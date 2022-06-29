@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 27 12:50:15 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Update to 5.15.5:
+  * See individual module packages for changelogs
+- Drop patches, now upstream:
+  * 0001-Fix-build-with-GCC-11-include-limits.patch
+- Rebase patches:
+  * 0002-Build-fixes-for-GCC-11.patch
+  * 0001-Partially-revert-813a928c7c3cf98670b6043149880ed5c95.patch
+
+-------------------------------------------------------------------
 Fri May 28 08:17:31 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix possible crash caused by GCC 11 build fix:

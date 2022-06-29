@@ -14,23 +14,10 @@ Reviewed-by: Thiago Macieira <thiago.macieira@intel.com>
  src/plugins/platforms/xcb/qxcbwindow.cpp | 2 +-
  3 files changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/qtbase/src/corelib/text/qbytearraymatcher.h b/qtbase/src/corelib/text/qbytearraymatcher.h
-index 0eedfc1d20..f5f9bef7b8 100644
---- a/qtbase/src/corelib/text/qbytearraymatcher.h
-+++ b/qtbase/src/corelib/text/qbytearraymatcher.h
-@@ -42,6 +42,8 @@
- 
- #include <QtCore/qbytearray.h>
- 
-+#include <limits>
-+
- QT_BEGIN_NAMESPACE
- 
- 
-diff --git a/qtbase/src/corelib/tools/qsharedpointer_impl.h b/qtbase/src/corelib/tools/qsharedpointer_impl.h
-index 790c187cb9..4aee98af53 100644
---- a/qtbase/src/corelib/tools/qsharedpointer_impl.h
-+++ b/qtbase/src/corelib/tools/qsharedpointer_impl.h
+Index: qt-everywhere-src-5.15.5/qtbase/src/corelib/tools/qsharedpointer_impl.h
+===================================================================
+--- qt-everywhere-src-5.15.5.orig/qtbase/src/corelib/tools/qsharedpointer_impl.h
++++ qt-everywhere-src-5.15.5/qtbase/src/corelib/tools/qsharedpointer_impl.h
 @@ -155,9 +155,6 @@ namespace QtSharedPointer {
  #endif
          inline void checkQObjectShared(...) { }
@@ -41,10 +28,10 @@ index 790c187cb9..4aee98af53 100644
      };
      // sizeof(ExternalRefCountData) = 12 (32-bit) / 16 (64-bit)
  
-diff --git a/qtbase/src/plugins/platforms/xcb/qxcbwindow.cpp b/qtbase/src/plugins/platforms/xcb/qxcbwindow.cpp
-index 9e7e1a5572..f0866a90ac 100644
---- a/qtbase/src/plugins/platforms/xcb/qxcbwindow.cpp
-+++ b/qtbase/src/plugins/platforms/xcb/qxcbwindow.cpp
+Index: qt-everywhere-src-5.15.5/qtbase/src/plugins/platforms/xcb/qxcbwindow.cpp
+===================================================================
+--- qt-everywhere-src-5.15.5.orig/qtbase/src/plugins/platforms/xcb/qxcbwindow.cpp
++++ qt-everywhere-src-5.15.5/qtbase/src/plugins/platforms/xcb/qxcbwindow.cpp
 @@ -698,7 +698,7 @@ void QXcbWindow::show()
          if (isTransient(window())) {
              const QWindow *tp = window()->transientParent();
@@ -54,6 +41,3 @@ index 9e7e1a5572..f0866a90ac 100644
              // Default to client leader if there is no transient parent, else modal dialogs can
              // be hidden by their parents.
              if (!transientXcbParent)
--- 
-2.25.1
-

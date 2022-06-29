@@ -381,4 +381,12 @@
   (bsc#1154344).</comment>
     <requestid>946157</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>a514eda26c0fb25c99818a42a2826794</srcmd5>
+    <version>5.15.5</version>
+    <time>1656511264</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.5 with patch collection + qtscript 5.15.10 (forwarded request 985459 from favogt)</comment>
+    <requestid>985475</requestid>
+  </revision>
 </revisionlist>

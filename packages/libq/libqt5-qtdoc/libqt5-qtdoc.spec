@@ -17,10 +17,10 @@
 # nodebuginfo
 
 
-%define real_version 5.15.2
-%define tar_version qt-everywhere-src-5.15.2
+%define real_version 5.15.5
+%define tar_version qt-everywhere-opensource-src-5.15.5
 Name:           libqt5-qtdoc
-Version:        5.15.2
+Version:        5.15.5
 Release:        0
 Summary:        Qt 5 API Documentation
 License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 or LGPL-3.0-only
@@ -28,7 +28,6 @@ Group:          Documentation/Other
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/single/%{tar_version}.tar.xz
 # PATCH-FIX-UPSTREAM
-Patch1:         0001-Fix-build-with-GCC-11-include-limits.patch
 Patch2:         0002-Build-fixes-for-GCC-11.patch
 Patch3:         0001-Partially-revert-813a928c7c3cf98670b6043149880ed5c95.patch
 # Breaks make_jobs
@@ -126,8 +125,7 @@ This package contains the QDoc index files and the doxygen tag files to create c
 required.
 
 %prep
-%setup -q -n %{tar_version}
-%autopatch -p1
+%autosetup -p1 -n qt-everywhere-src-%{version}
 
 %build
 # We need to link to some of the programs used as that the source assumes they were just built.
