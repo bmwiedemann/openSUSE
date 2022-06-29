@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun 27 13:21:00 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.10:
+  * Bump version to 5.15.10
+  * Blacklist two tests that fail on macOS ARM
+  * Bump version from 5.15.8 to 5.15.9
+  * Bump version from 5.15.7 to 5.15.8
+  * Bump version from 5.15.6 to 5.15.7
+  * Bump version from 5.15.5 to 5.15.6
+  * Bump version from 5.15.4 to 5.15.5
+- Drop patches, it's versioned correctly now:
+  * 0001-Revert-Bump-version-from-5.15.3-to-5.15.4.patch
+  * 0002-Revert-Bump-version.patch
+
+-------------------------------------------------------------------
 Tue Jun 22 19:40:05 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Switch to KDE's maintenance branch
