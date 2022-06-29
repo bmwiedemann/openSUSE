@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 28 08:11:34 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Prefer podman as container runtime
+  (unrelated part of [bnc#1200976])
+
+-------------------------------------------------------------------
 Wed Jun 22 19:48:29 UTC 2022 - kukuk@suse.com
 
 - Update to version 2.3+git20220622.32785f7:

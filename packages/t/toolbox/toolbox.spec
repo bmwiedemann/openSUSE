@@ -25,6 +25,7 @@ Group:          System/Management
 URL:            https://github.com/openSUSE/microos-toolbox
 Source:         microos-toolbox-%{version}.tar.xz
 Requires:       (podman or docker)
+Suggests:       podman
 BuildArch:      noarch
 
 %description
