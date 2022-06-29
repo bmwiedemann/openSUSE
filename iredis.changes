@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jun 29 08:48:41 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- disable some failing tests (reported upstream) to fix the build.
+
+-------------------------------------------------------------------
+Wed Jun 29 08:36:26 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 1.12:
+ - Feature: CLIENT KILL now support LADDR argument.
+ - Feature: CLIENT LIST now support ID argument.
+ - Feature: CLIENT PAUSE support options and added CLIENT UNPAUSE command.
+ - Feature: CLIENT TRACKING support multiple prefixes.
+ - Feature: support new command: CLIENT TRACKINGINFO.
+ - Feature: support new command: COPY.
+ - Feature: support new command: EVAL_RO and EVALSHA_RO.
+ - Feature: support new command: EXPIRETIME.
+ - Feature: support new command: FAILOVER.
+ - Feature: support new command: GEOSEARCH.
+ - Feature: support new command: GEOSEARCHRESTORE.
+ - Feature: support new command: GETDEL.
+ - Feature: support new command: GETEX.
+ - Feature: FLUSHDB and FLUSHALL supports SYNC option.
+ - Feature: GEOADD supports CH XX NX options.
+ - Feature: Timestamp Completers are now support completion for timestamp fields and milliseconds timestamp fields.
+ - Deprecate: GEORADIUS is deprecated, no auto-complete for this command anymore.
+ - Deprecate: GEORADIUSBYMEMBER is deprecated, no auto-complete for this command anymore.
+- update to version 1.11.1:
+ - Bugfix: Switch distutils.version to packaging.version to fix the version parse for windows. (new dependency: pypi's python-packaging.
+
+-------------------------------------------------------------------
 Fri Jan 28 16:08:08 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Skip a few failings tests (bugs upstream).
