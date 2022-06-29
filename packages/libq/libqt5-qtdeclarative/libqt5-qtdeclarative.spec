@@ -19,11 +19,11 @@
 %define qt5_snapshot 1
 %define libname libQtQuick5
 %define base_name libqt5
-%define real_version 5.15.2
-%define so_version 5.15.2
+%define real_version 5.15.5
+%define so_version 5.15.5
 %define tar_version qtdeclarative-everywhere-src-%{version}
 Name:           libqt5-qtdeclarative
-Version:        5.15.2+kde43
+Version:        5.15.5+kde19
 Release:        0
 Summary:        Qt 5 Declarative Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -31,8 +31,6 @@ Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 Source:         %{tar_version}.tar.xz
 Source1:        baselibs.conf
-# PATCH-FIX-OPENSUSE
-Patch1:         0001-Revert-Bump-version.patch
 # PATCH-FIX-OPENSUSE sse2_nojit.patch -- enable JIT and sse2 only on sse2 case
 Patch100:       sse2_nojit.patch
 Patch103:       qtdeclarative-5.15.0-FixMaxXMaxYExtent.patch

@@ -634,4 +634,12 @@ depends on sr#251413</comment>
     <comment></comment>
     <requestid>967191</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>39f2d8b87764f3462b5d157884c75e17</srcmd5>
+    <version>5.15.5+kde19</version>
+    <time>1656511232</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.5 with patch collection + qtscript 5.15.10 (forwarded request 985459 from favogt)</comment>
+    <requestid>985474</requestid>
+  </revision>
 </revisionlist>

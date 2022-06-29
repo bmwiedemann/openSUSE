@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Mon Jun 27 12:41:54 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.5+kde19, rebased upstream:
+  * Fix Flickable with QTBUG-56075 patch applied
+  * Fix Flickable wheel velocity calculation
+  * QSGOpenGLDistanceFieldGlyphCache: fix UB (ordering of pointers not from the same array)
+  * QSGOpenGLDistanceFieldGlyphCache: fix multiplication result truncation
+  * QQuickItem: Guard against cycles in nextPrevItemInTabFocusChain
+  * Make sure QQuickWidget and its offscreen window's screens are always in sync
+  * V4: Do not call dtor of an object we continue to use
+  * doc: Improve QQuickItem::ItemChangeData docs
+  * Remove tst_pixel
+  * docs: Clarify EventPoint properties
+  * Consistent naming for (to|from)Is(Defined|Sourced) in animations
+  * Map window coordinates to the same coordinate system as the QPointerEvent point
+  * Doc: Fix the Shapes table to reflect reality
+  * Doc: Clarify preconditions for using QML_ELEMENT et al
+  * Do full overlap checks within the alpha render list when rebuilding
+  * MASM: Put pageSize into an inline namespace
+  * TextEdit: update all glyphnodes on QTD::contentsChanged() signal
+  * qquicktableview: upon forceLayout(), check for visible rows/columns at the origin
+  * V4 Debugger: Collect locals also from block scopes
+  * Make PinchArea translate correctly inside a rotated parent
+  * Avoid stale QSGTexture pointer accesses
+  * V4 debugger: Properly count break points
+  * Fix build with GCC 11: include <limits>
+  * Document QQmlComponent::createWithInitialProperties() error handling
+  * QQmlComponentPrivate::setInitialProperty: improve error message
+  * Remove extra colon
+  * Fix warning and assert when removing items from groups
+  * Document that QML_SINGLETON only works with QObjects
+  * qqmlirbuilder: Fix treating parser warnings as errros
+  * Prevent infinite recursion in QQuickItemPrivate::itemToWindowTransform
+  * Avoid crash when accessing an empty QTextLine
+  * doc: fix up QQuickItem::contains() docs
+  * QQuickTextInput: update cursor rectangle after padding changed
+  * Assert that pointer is non-null
+  * qqmlapplicationengine: Handle errors during component creation
+  * Do not batch lines with > 1 width in alpha pass
+  * Don't crash when trying to invoke non-existing string converter
+  * Fix incorrect depth test state with QSGRenderNode::DepthAwareRendering
+  * Do not auto-clean components with live inline components
+  * QuickTest: Do not recurse forever on inline components in enumerateTestCases
+  * DelegateModelGroup: Fix bug where item could be removed from the model
+  * Remove unnecessary forward declaration
+  * QQuickTableView: always update content size when rebuilding small tables
+  * Do less work when there are no active ImageParticle particles
+  * Revert "Update commercial license headers"
+  * QQuickTableView: forceLayout() should work, even when no items are loaded
+  * Revert "Use unique_ptr to clarify ownership of QQuickDefaultClipNode objects"
+  * Ensure that the case of the path will match then QUrl for a UNC path
+  * Use unique_ptr to clarify ownership of QQuickDefaultClipNode objects
+  * MouseArea: fix containsMouse behavior during visibility changes
+  * QQuickTextControl: commit pre-edit after key press
+  * qv4generatorobject: Fix crash when creating new properties
+  * QQmlIncubator: handle clear inside setinitialState
+  * Fix release-only windows builds
+  * Fix lookup of existing inline components by name
+  * qquicktextinput: Fix validation for IM event
+  * docs: Fix documentation of the Locale numberOptions property
+  * QQmlPropertyPrivate::signalExpression: handle object being null
+  * qquicktextinput: Fix Undo history for IM event
+  * QQuickWindowIncubationController: Use QPointer to guard QSGRenderLoop reference
+  * qmlplugindump: Fix overload ambiguity
+  * QV4 Engine: Remove MSVC special casing
+  * QQuickTextEdit: ensure we update after changing padding
+  * QQuickItemParticle give() method kill particle
+  * QSequentialAnimationGroupJob: Protect against self-deletion
+  * Change QQuickShortcut::setSequences to bind to all sequences
+  * qquicktextinput: ensure we update IM when cursor changes position
+  * QQuickListView: Add autotest so that animated delegate does not crash
+  * QQmlIRLoader: Actually load RequiredPropertyExtraData
+  * Doc: Fix broken QDoc markup
+  * Update commercial license headers
+  * QQmlProperty: Guard QQmlContextData with QQmlGuardedContextData
+  * ListModel: Fix move handling in sync
+  * tst_EcmaScriptTests: Raise timeout
+  * QuickLayouts: fix crash when layout width depends on parent width
+  * export QAcccessibleQuickItem
+  * QAnimationGroupJob: Don't call virtual functions from dtor
+  * Fix QQuickShortcut::setContext so re-grab all shortcuts
+  * Revert "Set the stencil buffer zone" and "Add clipNext null pointer guard"
+  * Fix Text with ElideRight not being rendered when width goes from 0 to >0
+  * Cache static compilation units
+  * Regenerate Shape fill geometry when alpha changes to non-zero
+  * Remove QQmlCleanup from QQmlScriptData
+  * Add Lancelot tests for both types of clipping
+  * masm: Add error handling for failed mprotect()
+  * QQuickLoader: prevent clearing initial properties after active = true
+  * Correct #if-ery in QML locale's time-zone update test
+  * Doc: mention that Item's childrenRect property is local to the item
+- Commits dropped by the rebase:
+  * Add missing limits include to fix build with GCC 11
+- Drop 0001-Revert-Bump-version.patch, it's versioned correctly now
+- Rebase qtdeclarative-5.15.0-FixMaxXMaxYExtent.patch
+
+-------------------------------------------------------------------
 Wed Apr  6 06:50:15 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Increase the disk constraint to 6GB since the SLE build use

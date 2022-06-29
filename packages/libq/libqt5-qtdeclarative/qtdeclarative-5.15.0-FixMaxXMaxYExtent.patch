@@ -1,10 +1,7 @@
-Parent:     f5a4e984 (QQuickTextInputPrivate: refactor getImplicitWidth() to calculateImplicitWidth())
-Author:     David Redondo <qt@david-redondo.de>
-AuthorDate: 2020-05-13 11:04:23 +0200
-Commit:     Mitch Curtis <mitch.curtis@qt.io>
-CommitDate: 2020-05-25 10:58:35 +0200
-
-QQuickItemView: Fix max(X/Y)Extent()
+From 6a07dafec274076303573555f256c27aaf309d7e Mon Sep 17 00:00:00 2001
+From: David Redondo <qt@david-redondo.de>
+Date: Mon, 27 Jun 2022 15:31:10 +0200
+Subject: [PATCH] QQuickItemView: Fix max(X/Y)Extent()
 
 QQuickFlickable maxXExtent() and maxYExtent() return the amount of space
 that is not shown when inside a ScrollView. QQuickItemView however just
@@ -20,12 +17,24 @@ tests.
 
 Fixes: QTBUG-83890
 Pick-to: 5.15
-Change-Id: I7f4060c2f46ae07611bedceca0d322c5f7f6affb
-========================================================================================================================
-Index: qtdeclarative-everywhere-src-5.15.2/src/quick/items/qquickitemview.cpp
-===================================================================
---- qtdeclarative-everywhere-src-5.15.2.orig/src/quick/items/qquickitemview.cpp
-+++ qtdeclarative-everywhere-src-5.15.2/src/quick/items/qquickitemview.cpp
+---
+ src/quick/items/qquickitemview.cpp            |   4 +-
+ .../qquicklistview/tst_qquicklistview.cpp     |   6 +
+ .../quick/qquicklistview2/data/maxXExtent.qml |  54 +++++++++
+ .../quick/qquicklistview2/data/maxYExtent.qml |  55 +++++++++
+ .../quick/qquicklistview2/qquicklistview2.pro |  12 ++
+ .../qquicklistview2/tst_qquicklistview2.cpp   | 114 ++++++++++++++++++
+ tests/auto/quick/quick.pro                    |   1 +
+ 7 files changed, 244 insertions(+), 2 deletions(-)
+ create mode 100644 tests/auto/quick/qquicklistview2/data/maxXExtent.qml
+ create mode 100644 tests/auto/quick/qquicklistview2/data/maxYExtent.qml
+ create mode 100644 tests/auto/quick/qquicklistview2/qquicklistview2.pro
+ create mode 100644 tests/auto/quick/qquicklistview2/tst_qquicklistview2.cpp
+
+diff --git a/src/quick/items/qquickitemview.cpp b/src/quick/items/qquickitemview.cpp
+index 010a0152e1..965beed7bc 100644
+--- a/src/quick/items/qquickitemview.cpp
++++ b/src/quick/items/qquickitemview.cpp
 @@ -1393,7 +1393,7 @@ qreal QQuickItemView::maxYExtent() const
  {
      Q_D(const QQuickItemView);
@@ -44,10 +53,10 @@ Index: qtdeclarative-everywhere-src-5.15.2/src/quick/items/qquickitemview.cpp
  
      if (d->hData.maxExtentDirty) {
          d->maxExtent = d->maxExtentForAxis(d->hData, true);
-Index: qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/qquicklistview/tst_qquicklistview.cpp
-===================================================================
---- qtdeclarative-everywhere-src-5.15.2.orig/tests/auto/quick/qquicklistview/tst_qquicklistview.cpp
-+++ qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/qquicklistview/tst_qquicklistview.cpp
+diff --git a/tests/auto/quick/qquicklistview/tst_qquicklistview.cpp b/tests/auto/quick/qquicklistview/tst_qquicklistview.cpp
+index a7aefbe432..afe5c5ac1a 100644
+--- a/tests/auto/quick/qquicklistview/tst_qquicklistview.cpp
++++ b/tests/auto/quick/qquicklistview/tst_qquicklistview.cpp
 @@ -73,6 +73,8 @@ public:
      tst_QQuickListView();
  
@@ -57,17 +66,17 @@ Index: qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/qquicklistview/tst_q
      void init();
      void cleanupTestCase();
      // Test QAbstractItemModel model types
-@@ -299,6 +301,8 @@ private slots:
-     void requiredObjectListModel();
+@@ -300,6 +302,8 @@ private slots:
      void clickHeaderAndFooterWhenClip();
+     void animatedDelegate();
  
 +    // WARNING: please add new tests to tst_qquicklistview2; this file is too slow to work with.
 +
  private:
      template <class T> void items(const QUrl &source);
      template <class T> void changed(const QUrl &source);
-@@ -10094,6 +10098,8 @@ void tst_QQuickListView::clickHeaderAndF
-     QVERIFY(root->property("footerPressed").toBool());
+@@ -10109,6 +10113,8 @@ void tst_QQuickListView::animatedDelegate()
+     }
  }
  
 +// WARNING: please add new tests to tst_qquicklistview2; this file is too slow to work with.
@@ -75,10 +84,11 @@ Index: qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/qquicklistview/tst_q
  QTEST_MAIN(tst_QQuickListView)
  
  #include "tst_qquicklistview.moc"
-Index: qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/qquicklistview2/data/maxXExtent.qml
-===================================================================
+diff --git a/tests/auto/quick/qquicklistview2/data/maxXExtent.qml b/tests/auto/quick/qquicklistview2/data/maxXExtent.qml
+new file mode 100644
+index 0000000000..3a50ae9edd
 --- /dev/null
-+++ qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/qquicklistview2/data/maxXExtent.qml
++++ b/tests/auto/quick/qquicklistview2/data/maxXExtent.qml
 @@ -0,0 +1,54 @@
 +/****************************************************************************
 +**
@@ -134,10 +144,11 @@ Index: qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/qquicklistview2/data
 +        }
 +    }
 +}
-Index: qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/qquicklistview2/data/maxYExtent.qml
-===================================================================
+diff --git a/tests/auto/quick/qquicklistview2/data/maxYExtent.qml b/tests/auto/quick/qquicklistview2/data/maxYExtent.qml
+new file mode 100644
+index 0000000000..2c73092aad
 --- /dev/null
-+++ qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/qquicklistview2/data/maxYExtent.qml
++++ b/tests/auto/quick/qquicklistview2/data/maxYExtent.qml
 @@ -0,0 +1,55 @@
 +/****************************************************************************
 +**
@@ -194,10 +205,11 @@ Index: qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/qquicklistview2/data
 +        }
 +    }
 +}
-Index: qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/qquicklistview2/qquicklistview2.pro
-===================================================================
+diff --git a/tests/auto/quick/qquicklistview2/qquicklistview2.pro b/tests/auto/quick/qquicklistview2/qquicklistview2.pro
+new file mode 100644
+index 0000000000..1128c242c7
 --- /dev/null
-+++ qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/qquicklistview2/qquicklistview2.pro
++++ b/tests/auto/quick/qquicklistview2/qquicklistview2.pro
 @@ -0,0 +1,12 @@
 +CONFIG += testcase
 +TARGET = tst_qquicklistview2
@@ -211,10 +223,11 @@ Index: qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/qquicklistview2/qqui
 +TESTDATA = data/*
 +
 +QT += core-private gui-private qml-private quick-private testlib qmltest
-Index: qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/qquicklistview2/tst_qquicklistview2.cpp
-===================================================================
+diff --git a/tests/auto/quick/qquicklistview2/tst_qquicklistview2.cpp b/tests/auto/quick/qquicklistview2/tst_qquicklistview2.cpp
+new file mode 100644
+index 0000000000..916c8730f4
 --- /dev/null
-+++ qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/qquicklistview2/tst_qquicklistview2.cpp
++++ b/tests/auto/quick/qquicklistview2/tst_qquicklistview2.cpp
 @@ -0,0 +1,114 @@
 +/****************************************************************************
 +**
@@ -330,10 +343,10 @@ Index: qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/qquicklistview2/tst_
 +QTEST_MAIN(tst_QQuickListView2)
 +
 +#include "tst_qquicklistview2.moc"
-Index: qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/quick.pro
-===================================================================
---- qtdeclarative-everywhere-src-5.15.2.orig/tests/auto/quick/quick.pro
-+++ qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/quick.pro
+diff --git a/tests/auto/quick/quick.pro b/tests/auto/quick/quick.pro
+index 45bcf8a9ce..00f7d64d1e 100644
+--- a/tests/auto/quick/quick.pro
++++ b/tests/auto/quick/quick.pro
 @@ -67,6 +67,7 @@ QUICKTESTS += \
      qquickitem2 \
      qquickitemlayer \
@@ -342,3 +355,6 @@ Index: qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/quick.pro
      qquicktableview \
      qquickloader \
      qquickmousearea \
+-- 
+2.36.1
+
