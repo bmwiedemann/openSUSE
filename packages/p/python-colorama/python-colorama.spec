@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-colorama
-Version:        0.4.4
+Version:        0.4.5
 Release:        0
 Summary:        Cross-platform colored terminal text
 License:        BSD-3-Clause

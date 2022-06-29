@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 27 20:33:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.5:
+  * Catch a racy ValueError that could occur on exit.
+  * Create README-hacking.md, for Colorama contributors.
+  * Tweak some README unicode characters that don't render correctly on PyPI.
+  * Fix some tests that were failing on some operating systems.
+  * Add support for Python 3.9.
+  * Add support for PyPy3.
+  * Add support for pickling with the ``dill`` module.
+
+-------------------------------------------------------------------
 Tue Mar  8 13:08:03 UTC 2022 - pgajdos@suse.com
 
 - python-mock is actually not required for build
