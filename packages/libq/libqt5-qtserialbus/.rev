@@ -168,4 +168,12 @@
     <comment>Qt 5.15.2 + KDE patch collection</comment>
     <requestid>902336</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>61a276f2170748004485101b212f5258</srcmd5>
+    <version>5.15.5+kde0</version>
+    <time>1656511274</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.5 with patch collection + qtscript 5.15.10 (forwarded request 985459 from favogt)</comment>
+    <requestid>985491</requestid>
+  </revision>
 </revisionlist>
