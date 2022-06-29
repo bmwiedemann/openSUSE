@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jun 27 13:09:16 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.5+kde5, rebased upstream:
+  * Add QIODevice::canReadLine call to QBluetoothSocket
+  * Handle LE enhanced connection complete in Bluez peripheral
+  * Keep the bluetooth service name if the remote has provided it
+  * Use the service's socket protocol info on Bluez bluetooth socket
+  * Fix Linux bluetooth service discovery crash with multiple services
+  * Fix "loop variable creates a copy" warning
+  * Prefer QChar over QString that consists of a single QChar
+  * CoreBluetooth: add a workaround to enable using scan options
+  * Backport a fix from Qt 6 (stop using a deprecated API)
+  * Revert "Update commercial license headers"
+  * Fix bug: Let QBluetoothsocket::close emit disconnected only once
+  * Change tst_qlowenergycontroller to wait for disconnects
+  * Update commercial license headers
+- Drop 0001-Revert-Bump-version.patch, it's versioned correctly now
+
+-------------------------------------------------------------------
 Fri Jan 21 08:12:36 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.2+kde5:
