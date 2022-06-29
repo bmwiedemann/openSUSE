@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Tue Jun 28 11:45:53 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#885
+- added some GPT type GUIDs from the Discoverable Partitions
+  Specification
+- 4.5.24
+
+--------------------------------------------------------------------
 Wed Jun 22 11:32:28 UTC 2022 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#884
