@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 29 13:06:04 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.8.3:
+  * fix search with tiny lz4 files
+  * skip empty zip files
+
+-------------------------------------------------------------------
 Sat Jun 11 07:38:38 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.8.2:
